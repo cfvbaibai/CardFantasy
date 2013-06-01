@@ -1,0 +1,62 @@
+package cfvbaibai.cardfantasy.test;
+
+import static org.junit.Assert.assertEquals;
+
+import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
+
+import cfvbaibai.cardfantasy.data.Card;
+import cfvbaibai.cardfantasy.data.CardData;
+import cfvbaibai.cardfantasy.data.CardDataStore;
+import cfvbaibai.cardfantasy.data.PlayerInfo;
+import cfvbaibai.cardfantasy.engine.GameResult;
+import cfvbaibai.cardfantasy.engine.OneOneGameEngine;
+import cfvbaibai.cardfantasy.engine.Rule;
+
+public class CardFantasyTest {
+
+    private PlayerInfo player1Info;
+    private PlayerInfo player2Info;
+    private CardDataStore cardDataStore;
+    
+    @BeforeClass
+    public static void setUpBeforeClass() throws Exception {
+    }
+
+    @AfterClass
+    public static void tearDownAfterClass() throws Exception {
+    }
+
+    @Before
+    public void setUp() throws Exception {
+        this.cardDataStore = CardDataStore.loadDefault();
+        this.player1Info = new PlayerInfo("<Tom>", 1, getTestCards(10));
+        this.player2Info = new PlayerInfo("<Jerry>", 1, getTestCards(2));
+    }
+
+    private Card[] getTestCards(int count) {
+        Card[] cards = new Card[count];
+        for (int i = 0; i < cards.length; ++i) {
+            cards[i] = new Card(cardDataStore.getCardInfo("³ÇÕò¹­¼ý±ø"));
+        }
+        return cards;
+    }
+
+    @After
+    public void tearDown() throws Exception {
+    }
+
+    @Test
+    public void testPlayGame() {
+        System.out.println("testPlayGame");
+        OneOneGameEngine engine = new OneOneGameEngine(new TestGameUI(), new Rule(3, 5));
+        engine.RegisterPlayers(player1Info, player2Info);
+        GameResult result = engine.playGame();
+        assertEquals("<Tom>", result.getWinner().getId());
+        assertEquals(6, engine.getRound());
+    }
+
+}

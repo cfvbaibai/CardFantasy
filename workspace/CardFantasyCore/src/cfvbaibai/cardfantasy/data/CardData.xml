@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Cards>
+    <Card id="1" name="城镇弓箭兵" race="Kingdom" speed="2" star="1" cost="3" at="110" hp="370" incrAT="18" incrHP="8">
+        <Feature type="Snipe" level="4" unlock="5" />
+        <Feature type="ChainLightening" level="2" unlock="10" />
+    </Card>
+</Cards>
