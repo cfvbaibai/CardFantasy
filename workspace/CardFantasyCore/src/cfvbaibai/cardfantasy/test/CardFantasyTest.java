@@ -14,7 +14,7 @@ import cfvbaibai.cardfantasy.data.CardDataStore;
 import cfvbaibai.cardfantasy.data.PlayerInfo;
 import cfvbaibai.cardfantasy.engine.GameEndCause;
 import cfvbaibai.cardfantasy.engine.GameResult;
-import cfvbaibai.cardfantasy.engine.OneOneGameEngine;
+import cfvbaibai.cardfantasy.engine.GameEngine;
 import cfvbaibai.cardfantasy.engine.Rule;
 
 public class CardFantasyTest {
@@ -42,6 +42,7 @@ public class CardFantasyTest {
         Card[] cards = new Card[count];
         for (int i = 0; i < cards.length; ++i) {
             cards[i] = new Card(cardDataStore.getCardInfo("³ÇÕò¹­¼ý±ø"));
+            cards[i].growToLevel(5);
         }
         return cards;
     }
@@ -53,7 +54,7 @@ public class CardFantasyTest {
     @Test
     public void testPlayGame() {
         System.out.println("testPlayGame");
-        OneOneGameEngine engine = new OneOneGameEngine(new TestGameUI(), new Rule(3, 50));
+        GameEngine engine = new GameEngine(new TestGameUI(), new Rule(3, 50));
         engine.RegisterPlayers(player1Info, player2Info);
         GameResult result = engine.playGame();
         assertEquals("Tom", result.getWinner().getId());

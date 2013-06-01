@@ -20,7 +20,8 @@ public class CardData {
     public CardData() {
         this.name = "";
         this.features = new ArrayList<Feature>();
-        this.growth = new Growth(100, 200, 300, 400);
+        // TODO: Apply real growth
+        this.growth = new Growth(100, 200, 300, 400, 500, 600, 700, 800, 900, 1000);
     }
     
     public int getId() {
@@ -105,5 +106,9 @@ public class CardData {
 
     public Growth getGrowth() {
         return this.growth;
+    }
+    
+    public List <Feature> getFeatures() {
+        return this.features;
     }
 }

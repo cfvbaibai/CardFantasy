@@ -4,6 +4,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
+import cfvbaibai.cardfantasy.data.Feature;
 import cfvbaibai.cardfantasy.engine.Board;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.Deck;
@@ -14,6 +15,7 @@ import cfvbaibai.cardfantasy.engine.Grave;
 import cfvbaibai.cardfantasy.engine.Hand;
 import cfvbaibai.cardfantasy.engine.Phase;
 import cfvbaibai.cardfantasy.engine.Player;
+import cfvbaibai.cardfantasy.engine.StageInfo;
 
 public class TestGameUI extends GameUI {
     
@@ -73,8 +75,9 @@ public class TestGameUI extends GameUI {
     }
 
     @Override
-    public List<CardInfo> summonCards(Player player, int round) {
+    public List<CardInfo> summonCards(StageInfo stage) {
         List<CardInfo> summonedCards = new LinkedList<CardInfo>();
+        Player player = stage.getActivePlayer();
         for (CardInfo card : player.getHand()) {
             if (card.getSummonDelay() == 0) {
                 summonedCards.add(card);
@@ -85,8 +88,12 @@ public class TestGameUI extends GameUI {
     }
     
     @Override
-    public void attackCard(CardInfo attacker, CardInfo defender, int damage) {
+    public void attackCard(CardInfo attacker, CardInfo defender, Feature feature, int damage) {
+        if (feature == null) {
         sayF("%s attacks %s. Damage: %d", attacker.getShortDesc(), defender.getShortDesc(), damage);
+        } else {
+            sayF("%s attacks %s by [[%s]]. Damage: %d", attacker.getShortDesc(), defender.getShortDesc(), feature.getShortDesc(), damage);
+        }
     }
 
     @Override
@@ -127,28 +134,42 @@ public class TestGameUI extends GameUI {
     }
 
     private void showGrave(Grave grave) {
-        showCards(grave, "Grave");
+        StringBuffer sb = new StringBuffer();
+        sb.append("Grave: ");
+        for (CardInfo card : grave) {
+            sb.append(String.format("%s (LV=%d, IAT=%d, MHP=%d), ",
+                    card.getCard().getName(), card.getCard().getLevel(), card.getCard().getInitAT(), card.getCard().getMaxHP()));
+        }
+        say(sb.toString());
     }
 
     private void showField(Field field) {
-        showCards(field, "Field");
+        StringBuffer sb = new StringBuffer();
+        sb.append("Field: ");
+        for (CardInfo card : field) {
+            sb.append(String.format("%s (LV=%d, AT=%d/%d, HP=%d/%d, ST=%s), ",
+                    card.getCard().getName(), card.getCard().getLevel(), card.getAT(), card.getCard().getInitAT(),
+                    card.getHP(), card.getCard().getMaxHP(), card.getStatus().getType()));
+        }
+        say(sb.toString());
     }
 
     private void showHand(Hand hand) {
-        showCards(hand, "Hand");
-
+        StringBuffer sb = new StringBuffer();
+        sb.append("Hand: ");
+        for (CardInfo card : hand) {
+            sb.append(String.format("%s (LV=%d, IAT=%d, MHP=%d, SD=%d), ",
+                    card.getCard().getName(), card.getCard().getLevel(), card.getCard().getInitAT(), card.getCard().getMaxHP(), card.getSummonDelay()));
+        }
+        say(sb.toString());
     }
 
     private void showDeck(Deck deck) {
-        showCards(deck, "Deck");
-    }
-
-    private void showCards(Iterable<CardInfo> cards, String title) {
         StringBuffer sb = new StringBuffer();
-        sb.append(title);
-        sb.append(": ");
-        for (CardInfo card : cards) {
-            sb.append(String.format("%s (AT=%d, HP=%d, SD=%d), ", card.getCard().getName(), card.getAT(), card.getHP(), card.getSummonDelay()));
+        sb.append("Deck: ");
+        for (CardInfo card : deck) {
+            sb.append(String.format("%s (LV=%d, IAT=%d, MHP=%d), ",
+                    card.getCard().getName(), card.getCard().getLevel(), card.getCard().getInitAT(), card.getCard().getMaxHP()));
         }
         say(sb.toString());
     }

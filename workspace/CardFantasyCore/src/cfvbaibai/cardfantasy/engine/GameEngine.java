@@ -7,57 +7,40 @@ import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
 import cfvbaibai.cardfantasy.GameOverSignal;
 import cfvbaibai.cardfantasy.data.PlayerInfo;
 
-public class OneOneGameEngine {
+public class GameEngine {
 
-    private Board board;
-    private Rule rule;
-    private GameUI ui;
-    private int activePlayerNumber;
-
-    private int getActivePlayerNumber() {
-        return activePlayerNumber;
+    private StageInfo stage;
+    private Board getBoard() {
+        return this.stage.getBoard();
     }
 
-    private void setActivePlayerNumber(int activePlayerNumber) {
-        this.activePlayerNumber = activePlayerNumber;
+    public GameEngine(GameUI ui, Rule rule) {
+        this.stage = new StageInfo(new Board(), ui, rule);
     }
-
+    
     private Player getActivePlayer() {
-        return this.board.getPlayer(this.getActivePlayerNumber());
+        return this.stage.getActivePlayer();
     }
-
+    
     private Player getInactivePlayer() {
-        assert (this.board.getPlayerCount() == 2);
-        return this.board.getPlayer(1 - this.getActivePlayerNumber());
-    }
-
-    private int round;
-
-    public int getRound() {
-        return this.round;
-    }
-
-    public OneOneGameEngine(GameUI ui, Rule rule) {
-        board = new Board();
-        this.rule = rule;
-        this.ui = ui;
+        return this.stage.getInactivePlayers().get(0);
     }
 
     public void RegisterPlayers(PlayerInfo player1Info, PlayerInfo player2Info) {
         Player player1 = new Player(player1Info);
-        board.addPlayer(player1);
-        ui.playerAdded(player1);
+        getBoard().addPlayer(player1);
+        stage.getUI().playerAdded(player1);
         Player player2 = new Player(player2Info);
-        board.addPlayer(player2);
-        ui.playerAdded(player2);
+        getBoard().addPlayer(player2);
+        stage.getUI().playerAdded(player2);
     }
 
     public GameResult playGame() {
-        this.ui.gameStarted(board, rule);
-        this.setActivePlayerNumber(0);
-        this.round = 0;
+        this.stage.getUI().gameStarted(getBoard(), this.stage.getRule());
+        this.stage.setActivePlayerNumber(0);
+        this.stage.setRound(0);
         GameResult result = proceedGame();
-        this.ui.gameEnded(result);
+        this.stage.getUI().gameEnded(result);
         return result;
     }
 
@@ -81,16 +64,16 @@ public class OneOneGameEngine {
                 } else {
                     throw new CardFantasyRuntimeException(String.format("Unknown phase encountered: %s", phase));
                 }
-                ui.phaseChanged(getActivePlayer(), phase, nextPhase);
+                stage.getUI().phaseChanged(getActivePlayer(), phase, nextPhase);
                 phase = nextPhase;
                 nextPhase = Phase.Unknown;
             }
         } catch (GameOverSignal signal) {
-            return new GameResult(this.board, this.board.getPlayer(0), this.round, GameEndCause.TOO_LONG);
+            return new GameResult(this.getBoard(), this.getBoard().getPlayer(0), stage.getRound(), GameEndCause.TOO_LONG);
         } catch (HeroDieSignal signal) {
-            return new GameResult(this.board, getOpponent(signal.getDeadPlayer()), this.round, GameEndCause.HERO_DIE);
+            return new GameResult(this.getBoard(), getOpponent(signal.getDeadPlayer()), this.stage.getRound(), GameEndCause.HERO_DIE);
         } catch (AllCardsDieSignal signal) {
-            return new GameResult(this.board, getOpponent(signal.getDeadPlayer()), this.round, GameEndCause.ALL_CARDS_DIE);
+            return new GameResult(this.getBoard(), getOpponent(signal.getDeadPlayer()), this.stage.getRound(), GameEndCause.ALL_CARDS_DIE);
         }
     }
 
@@ -99,11 +82,12 @@ public class OneOneGameEngine {
     }
 
     private Phase summonCards() {
-        List<CardInfo> summonedCards = this.ui.summonCards(this.getActivePlayer(), round);
+        List<CardInfo> summonedCards = this.stage.getUI().summonCards(stage);
         Hand hand = this.getActivePlayer().getHand();
         Field field = this.getActivePlayer().getField();
         for (CardInfo summonedCard : summonedCards) {
             hand.removeCard(summonedCard);
+            summonedCard.reset();
             field.addCard(summonedCard);
         }
         return Phase.Battle;
@@ -114,7 +98,7 @@ public class OneOneGameEngine {
     }
 
     private Phase roundEnd() {
-        Collection<CardInfo> allHandCards = this.board.getAllHandCards();
+        Collection<CardInfo> allHandCards = this.getBoard().getAllHandCards();
         for (CardInfo card : allHandCards) {
             int summonDelay = card.getSummonDelay();
             if (summonDelay > 0) {
@@ -123,12 +107,12 @@ public class OneOneGameEngine {
         }
 
         Player previousPlayer = getActivePlayer();
-        this.ui.roundEnded(previousPlayer, this.round);
-        ++this.round;
-        int nextPlayerNumber = (this.getActivePlayerNumber() + 1) % board.getPlayerCount();
-        this.setActivePlayerNumber(nextPlayerNumber);
+        this.stage.getUI().roundEnded(previousPlayer, stage.getRound());
+        this.stage.setRound(stage.getRound() + 1);
+        int nextPlayerNumber = (this.stage.getActivePlayerNumber() + 1) % getBoard().getPlayerCount();
+        this.stage.setActivePlayerNumber(nextPlayerNumber);
         Player nextPlayer = this.getActivePlayer();
-        ui.playerChanged(previousPlayer, nextPlayer);
+        stage.getUI().playerChanged(previousPlayer, nextPlayer);
         return Phase.Start;
     }
 
@@ -154,6 +138,7 @@ public class OneOneGameEngine {
             } else {
                 attackCard(myCard, opCard);
             }
+            stage.getResolver().resolvePostAttackFeature(myCard, getInactivePlayer());
         }
 
         myField.compact();
@@ -162,39 +147,24 @@ public class OneOneGameEngine {
         return Phase.End;
     }
 
-    private void attackCard(CardInfo myCard, CardInfo opCard) {
-        opCard.setHP(opCard.getHP() - myCard.getAT());
-        this.ui.attackCard(myCard, opCard, myCard.getAT());
-        if (opCard.getHP() <= 0) {
-            cardDead(opCard);
+    private void attackCard(CardInfo attacker, CardInfo defender) {
+        defender.setHP(defender.getHP() - attacker.getAT());
+        this.stage.getUI().attackCard(attacker, defender, null, attacker.getAT());
+        if (defender.getHP() <= 0) {
+            this.stage.getResolver().cardDead(defender);
         }
     }
 
-    private void cardDead(CardInfo deadCard) {
-        Player owner = deadCard.getOwner();
-        Field field = owner.getField();
-        // Set field position to null
-        for (int i = 0; i < field.size(); ++i) {
-            CardInfo card = field.getCard(i);
-            if (deadCard == card) {
-                field.expelCard(i);
-                owner.getGrave().addCard(card);
-                break;
-            }
-        }
-        this.ui.cardDead(deadCard);
-    }
-
-    private void attackHero(CardInfo myCard, Player targetPlayer) throws HeroDieSignal {
+    private void attackHero(CardInfo attacker, Player defenderPlayer) throws HeroDieSignal {
         try {
-            targetPlayer.setLife(targetPlayer.getLife() - myCard.getAT());
+            defenderPlayer.setLife(defenderPlayer.getLife() - attacker.getAT());
         } finally {
-            this.ui.attackHero(myCard, targetPlayer, myCard.getAT());
+            stage.getUI().attackHero(attacker, defenderPlayer, attacker.getAT());
         }
     }
 
     private Phase roundStart() throws GameOverSignal, AllCardsDieSignal {
-        if (this.round > rule.getMaxRound()) {
+        if (this.stage.getRound() > stage.getRule().getMaxRound()) {
             throw new GameOverSignal();
         }
         if (this.getActivePlayer().getDeck().size() == 0 &&
@@ -203,25 +173,26 @@ public class OneOneGameEngine {
             throw new AllCardsDieSignal(this.getActivePlayer());
         }
 
-        this.ui.roundStarted(this.getActivePlayer(), this.round);
+        this.stage.getUI().roundStarted(this.getActivePlayer(), this.stage.getRound());
         return Phase.Draw;
     }
 
     private Phase drawCard() {
         Player activePlayer = this.getActivePlayer();
         Hand hand = activePlayer.getHand();
-        if (hand.size() >= this.rule.getMaxHandCards()) {
-            ui.cantDrawHandFull(activePlayer);
+        if (hand.size() >= this.stage.getRule().getMaxHandCards()) {
+            stage.getUI().cantDrawHandFull(activePlayer);
             return Phase.Standby;
         }
         Deck deck = activePlayer.getDeck();
         if (deck.isEmpty()) {
-            ui.cantDrawDeckEmpty(activePlayer);
+            stage.getUI().cantDrawDeckEmpty(activePlayer);
             return Phase.Standby;
         }
         CardInfo newCard = deck.draw();
+        newCard.resetSummonDelay();
         hand.addCard(newCard);
-        ui.cardDrawed(activePlayer, newCard);
+        stage.getUI().cardDrawed(activePlayer, newCard);
         return Phase.Standby;
     }
 }

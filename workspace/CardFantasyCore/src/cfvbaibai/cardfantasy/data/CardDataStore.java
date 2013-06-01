@@ -41,7 +41,14 @@ public class CardDataStore {
                 cardData.setIncrAT(Integer.parseInt(cardNode.valueOf("@incrAT")));
                 cardData.setIncrHP(Integer.parseInt(cardNode.valueOf("@incrHP")));
                 
-                // TODO: Load features.
+                @SuppressWarnings("unchecked")
+                List<Node> featureNodes = cardNode.selectNodes("Feature");
+                for (Node featureNode : featureNodes) {
+                    FeatureType type = FeatureType.valueOf(featureNode.valueOf("@type"));
+                    int level = Integer.parseInt(featureNode.valueOf("@level"));
+                    int unlockLevel = Integer.parseInt(featureNode.valueOf("@unlock"));
+                    cardData.getFeatures().add(new Feature(type, level, unlockLevel));
+                }
                 store.addCard(cardData);
             }
             return store;

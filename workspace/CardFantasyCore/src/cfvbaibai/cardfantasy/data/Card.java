@@ -1,26 +1,17 @@
 package cfvbaibai.cardfantasy.data;
 
+import java.util.List;
+
 
 public class Card implements Cloneable {
     private CardData sourceInfo;
     private Adjustments adjustments;
     private int exp;
     
-    private Card() {
-    }
-    
     public Card(CardData sourceInfo) {
         this.sourceInfo = sourceInfo;
         this.adjustments = new Adjustments();
         this.exp = 0;
-    }
-    
-    public Card clone() {
-        Card card = new Card();
-        card.sourceInfo = this.sourceInfo;
-        card.exp = this.exp;
-        card.adjustments = new Adjustments(this.adjustments);
-        return card;
     }
     
     public String getName() {
@@ -41,5 +32,13 @@ public class Card implements Cloneable {
     
     public int getMaxHP() {
         return this.sourceInfo.getBaseHP() + this.sourceInfo.getIncrHP() * this.getLevel();
+    }
+
+    public List<Feature> getAllFeatures() {
+        return sourceInfo.getFeatures();
+    }
+
+    public void growToLevel(int level) {
+        this.exp = sourceInfo.getGrowth().getRequiredExp(level);
     }
 }
