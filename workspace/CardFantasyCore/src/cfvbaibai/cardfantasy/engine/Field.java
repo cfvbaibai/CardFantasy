@@ -1,24 +1,38 @@
 package cfvbaibai.cardfantasy.engine;
 
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
+import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
 
-public class Field implements Iterable<CardInfo>{
+public class Field extends CardPile {
 
-    private List<CardInfo> cards;
-    
     public Field() {
-        this.cards = new LinkedList<CardInfo>();
     }
 
-    public void addCard(CardInfo summonedCard) {
-        this.cards.add(summonedCard);
-    }
-    
-    @Override
-    public Iterator<CardInfo> iterator() {
-        return this.cards.iterator();
+    public CardInfo getCard(int i) {
+        if (i < 0) {
+            throw new CardFantasyRuntimeException("Invalid parameter i: " + i + ". i must be a positive integer.");
+        }
+        if (i >= size()) {
+            return null;
+        } else {
+            return this.getCards().get(i);
+        }
     }
 
+    public void expelCard(int i) {
+        if (i < 0 || i >= getCards().size()) {
+            throw new CardFantasyRuntimeException("Invalid parameter i: " + i + ". Card count = " + size());
+        }
+        getCards().set(i, null);
+    }
+
+    public void compact() {
+        int i = 0;
+        while (i < size()) {
+            if (getCards().get(i) == null) {
+                getCards().remove(i);
+            } else {
+                ++i;
+            }
+        }
+    }
 }

@@ -1,5 +1,10 @@
 package cfvbaibai.cardfantasy.engine;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
+import cfvbaibai.cardfantasy.data.Card;
 import cfvbaibai.cardfantasy.data.PlayerInfo;
 
 public class Player {
@@ -8,15 +13,15 @@ public class Player {
     private Hand hand;
     private Grave grave;
     private Field field;
-    private int life;
+    private int hp;
     
     public Player(PlayerInfo playerInfo) {
         this.playerInfo = playerInfo;
-        this.deck = playerInfo.prepareDeck();
+        this.deck = prepareDeck();
         this.hand = new Hand();
         this.grave = new Grave();
         this.field = new Field();
-        this.life = playerInfo.getMaxLife();
+        this.hp = playerInfo.getMaxHP();
     }
     
     private PlayerInfo getPlayerInfo() {
@@ -40,10 +45,26 @@ public class Player {
     }
 
     public int getLife() {
-        return this.life;
+        return this.hp;
     }
 
     public String getId() {
         return this.getPlayerInfo().getId();
+    }
+
+    public void setLife(int hp) throws HeroDieSignal {
+        this.hp = hp;
+        if (this.hp <= 0) {
+            throw new HeroDieSignal(this);
+        }
+    }
+    
+    private Deck prepareDeck() {
+        Collection <Card> cards = this.getPlayerInfo().getCards();
+        List<CardInfo> cardInfos = new ArrayList<CardInfo>();
+        for (Card card : cards) {
+            cardInfos.add(new CardInfo(card, this));
+        }
+        return new Deck(cardInfos);
     }
 }

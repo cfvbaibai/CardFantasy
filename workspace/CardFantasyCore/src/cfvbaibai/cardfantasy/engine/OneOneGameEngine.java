@@ -13,6 +13,7 @@ public class OneOneGameEngine {
     private Rule rule;
     private GameUI ui;
     private int activePlayerNumber;
+
     private int getActivePlayerNumber() {
         return activePlayerNumber;
     }
@@ -20,12 +21,18 @@ public class OneOneGameEngine {
     private void setActivePlayerNumber(int activePlayerNumber) {
         this.activePlayerNumber = activePlayerNumber;
     }
-    
+
     private Player getActivePlayer() {
         return this.board.getPlayer(this.getActivePlayerNumber());
     }
-    
+
+    private Player getInactivePlayer() {
+        assert (this.board.getPlayerCount() == 2);
+        return this.board.getPlayer(1 - this.getActivePlayerNumber());
+    }
+
     private int round;
+
     public int getRound() {
         return this.round;
     }
@@ -79,8 +86,16 @@ public class OneOneGameEngine {
                 nextPhase = Phase.Unknown;
             }
         } catch (GameOverSignal signal) {
-            return signal.getResult();
+            return new GameResult(this.board, this.board.getPlayer(0), this.round, GameEndCause.TOO_LONG);
+        } catch (HeroDieSignal signal) {
+            return new GameResult(this.board, getOpponent(signal.getDeadPlayer()), this.round, GameEndCause.HERO_DIE);
+        } catch (AllCardsDieSignal signal) {
+            return new GameResult(this.board, getOpponent(signal.getDeadPlayer()), this.round, GameEndCause.ALL_CARDS_DIE);
         }
+    }
+
+    private Player getOpponent(Player player) {
+        return this.getActivePlayer() == player ? this.getInactivePlayer() : this.getActivePlayer();
     }
 
     private Phase summonCards() {
@@ -99,14 +114,14 @@ public class OneOneGameEngine {
     }
 
     private Phase roundEnd() {
-        Collection <CardInfo> allHandCards = this.board.getAllHandCards();
+        Collection<CardInfo> allHandCards = this.board.getAllHandCards();
         for (CardInfo card : allHandCards) {
             int summonDelay = card.getSummonDelay();
             if (summonDelay > 0) {
                 card.setSummonDelay(summonDelay - 1);
             }
         }
-        
+
         Player previousPlayer = getActivePlayer();
         this.ui.roundEnded(previousPlayer, this.round);
         ++this.round;
@@ -117,14 +132,77 @@ public class OneOneGameEngine {
         return Phase.Start;
     }
 
-    private Phase battle() throws GameOverSignal {
-        if (this.round > rule.getMaxRound()) {
-            throw new GameOverSignal(new GameResult(board, activePlayerNumber, round, Cause.tooLong()));
+    private Phase battle() throws HeroDieSignal {
+        /***
+         * Algorithm: For each card in field of active user: Check whether
+         * target player has a card in field in the same position - Yes: Attack.
+         * Card died? - Yes: Move card to grave. Leave an empty position. - No:
+         * Go on. - No: Attack Hero. Trigger hero HP check. Remove all empty
+         * position in fields.
+         */
+
+        Field myField = getActivePlayer().getField();
+        Field opField = getInactivePlayer().getField();
+        for (int i = 0; i < myField.size(); ++i) {
+            CardInfo myCard = myField.getCard(i);
+            CardInfo opCard = opField.getCard(i);
+            if (myCard == null) {
+                continue;
+            }
+            if (opCard == null) {
+                attackHero(myCard, getInactivePlayer());
+            } else {
+                attackCard(myCard, opCard);
+            }
         }
+
+        myField.compact();
+        opField.compact();
+
         return Phase.End;
     }
 
-    private Phase roundStart() {
+    private void attackCard(CardInfo myCard, CardInfo opCard) {
+        opCard.setHP(opCard.getHP() - myCard.getAT());
+        this.ui.attackCard(myCard, opCard, myCard.getAT());
+        if (opCard.getHP() <= 0) {
+            cardDead(opCard);
+        }
+    }
+
+    private void cardDead(CardInfo deadCard) {
+        Player owner = deadCard.getOwner();
+        Field field = owner.getField();
+        // Set field position to null
+        for (int i = 0; i < field.size(); ++i) {
+            CardInfo card = field.getCard(i);
+            if (deadCard == card) {
+                field.expelCard(i);
+                owner.getGrave().addCard(card);
+                break;
+            }
+        }
+        this.ui.cardDead(deadCard);
+    }
+
+    private void attackHero(CardInfo myCard, Player targetPlayer) throws HeroDieSignal {
+        try {
+            targetPlayer.setLife(targetPlayer.getLife() - myCard.getAT());
+        } finally {
+            this.ui.attackHero(myCard, targetPlayer, myCard.getAT());
+        }
+    }
+
+    private Phase roundStart() throws GameOverSignal, AllCardsDieSignal {
+        if (this.round > rule.getMaxRound()) {
+            throw new GameOverSignal();
+        }
+        if (this.getActivePlayer().getDeck().size() == 0 &&
+            this.getActivePlayer().getField().size() == 0 &&
+            this.getActivePlayer().getHand().size() == 0) {
+            throw new AllCardsDieSignal(this.getActivePlayer());
+        }
+
         this.ui.roundStarted(this.getActivePlayer(), this.round);
         return Phase.Draw;
     }

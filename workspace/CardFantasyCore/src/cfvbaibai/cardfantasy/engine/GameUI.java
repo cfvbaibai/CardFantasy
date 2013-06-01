@@ -49,4 +49,8 @@ public abstract class GameUI {
     
     public abstract void roundStarted(Player player, int round);
     public abstract void roundEnded(Player player, int round);
+
+    public abstract void attackCard(CardInfo attacker, CardInfo defender, int damage);
+    public abstract void cardDead(CardInfo deadCard);
+    public abstract void attackHero(CardInfo attacker, Player hero, int damage);
 }

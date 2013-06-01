@@ -28,14 +28,14 @@ public class TestGameUI extends GameUI {
 
     @Override
     public void roundStarted(Player player, int round) {
-        say("================================");
-        sayF("Round started for player %s: %d", player.getId(), round);
+        say("================================================================================================================================");
+        sayF("================================ Round %d started for player <%s> ================================", round, player.getId());
+        say("================================================================================================================================");
     }
 
     @Override
     public void roundEnded(Player player, int round) {
-        sayF("Round ended for player %s: %d", player.getId(), round);
-        say("================================");
+        sayF("Round %d ended for player <%s>", round, player.getId());
     }
     
     @Override
@@ -46,29 +46,29 @@ public class TestGameUI extends GameUI {
 
     @Override
     public void phaseChanged(Player player, Phase previous, Phase current) {
-        sayF("Phase Changed: %s => %s", previous.name(), current.name());
+        sayF("Phase Changed: %s => %s", previous.name().toUpperCase(), current.name().toUpperCase());
     }
 
     @Override
     public void playerChanged(Player previousPlayer, Player nextPlayer) {
-        sayF("Player Changed: %s => %s", previousPlayer.getId(), nextPlayer.getId());
+        sayF("Player Changed: <%s> => <%s>", previousPlayer.getId(), nextPlayer.getId());
     }
 
     @Override
     public void cardDrawed(Player drawer, CardInfo card) {
-        sayF("%s Drawed a card: %s", drawer.getId(), card.getCard().getName());
+        sayF("<%s> draws a card: <%s>", drawer.getId(), card.getCard().getName());
         showBoard();
     }
 
     @Override
     public void cantDrawDeckEmpty(Player drawer) {
-        sayF("Player %s's deck is empty. Cannot draw card.", drawer.getId());
+        sayF("Player <%s>'s deck is empty. Cannot draw card.", drawer.getId());
         this.showBoard();
 }
 
     @Override
     public void cantDrawHandFull(Player drawer) {
-        sayF("Player %s's hand is full. Cannot draw card.", drawer.getId());
+        sayF("Player <%s>'s hand is full. Cannot draw card.", drawer.getId());
         this.showBoard();
     }
 
@@ -78,15 +78,30 @@ public class TestGameUI extends GameUI {
         for (CardInfo card : player.getHand()) {
             if (card.getSummonDelay() == 0) {
                 summonedCards.add(card);
-                sayF("Summon card: %s", card.getCard().getName());
+                sayF("<%s> summons card: <%s>", player.getId(), card.getCard().getName());
             }
         }
         return summonedCards;
     }
     
     @Override
+    public void attackCard(CardInfo attacker, CardInfo defender, int damage) {
+        sayF("%s attacks %s. Damage: %d", attacker.getShortDesc(), defender.getShortDesc(), damage);
+    }
+
+    @Override
+    public void cardDead(CardInfo deadCard) {
+        sayF("%s dies!", deadCard.getShortDesc());
+    }
+
+    @Override
+    public void attackHero(CardInfo attacker, Player hero, int damage) {
+        sayF("%s attacks <%s> directly! Damage: %d", attacker.getShortDesc(), hero.getId(), damage);
+    }
+    
+    @Override
     public void gameEnded(GameResult result) {
-        sayF("Game ended. Winner: %s", result.getWinner().getId());
+        sayF("Game ended. Winner: <%s>, GameEndCause: %s", result.getWinner().getId(), result.getCause().toString());
     }
 
     @Override
@@ -112,8 +127,7 @@ public class TestGameUI extends GameUI {
     }
 
     private void showGrave(Grave grave) {
-        // TODO Auto-generated method stub
-
+        showCards(grave, "Grave");
     }
 
     private void showField(Field field) {

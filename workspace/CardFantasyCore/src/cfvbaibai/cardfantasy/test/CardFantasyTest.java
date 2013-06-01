@@ -12,6 +12,7 @@ import cfvbaibai.cardfantasy.data.Card;
 import cfvbaibai.cardfantasy.data.CardData;
 import cfvbaibai.cardfantasy.data.CardDataStore;
 import cfvbaibai.cardfantasy.data.PlayerInfo;
+import cfvbaibai.cardfantasy.engine.GameEndCause;
 import cfvbaibai.cardfantasy.engine.GameResult;
 import cfvbaibai.cardfantasy.engine.OneOneGameEngine;
 import cfvbaibai.cardfantasy.engine.Rule;
@@ -33,8 +34,8 @@ public class CardFantasyTest {
     @Before
     public void setUp() throws Exception {
         this.cardDataStore = CardDataStore.loadDefault();
-        this.player1Info = new PlayerInfo("<Tom>", 1, getTestCards(10));
-        this.player2Info = new PlayerInfo("<Jerry>", 1, getTestCards(2));
+        this.player1Info = new PlayerInfo("Tom", 1, getTestCards(10));
+        this.player2Info = new PlayerInfo("Jerry", 1, getTestCards(2));
     }
 
     private Card[] getTestCards(int count) {
@@ -52,11 +53,11 @@ public class CardFantasyTest {
     @Test
     public void testPlayGame() {
         System.out.println("testPlayGame");
-        OneOneGameEngine engine = new OneOneGameEngine(new TestGameUI(), new Rule(3, 5));
+        OneOneGameEngine engine = new OneOneGameEngine(new TestGameUI(), new Rule(3, 50));
         engine.RegisterPlayers(player1Info, player2Info);
         GameResult result = engine.playGame();
-        assertEquals("<Tom>", result.getWinner().getId());
-        assertEquals(6, engine.getRound());
+        assertEquals("Tom", result.getWinner().getId());
+        assertEquals(GameEndCause.ALL_CARDS_DIE, result.getCause());
     }
 
 }

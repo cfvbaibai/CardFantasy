@@ -28,22 +28,18 @@ public class PlayerInfo {
 
     private Adjustments adjustments;
 
-    public int getMaxLife() {
+    public int getMaxHP() {
         // TODO: Apply adjustments
 
         // TODO: Apply real life algorithm
-        return level * 100;
+        return level * 1000;
     }
     
     public String getId() {
         return this.id;
     }
 
-    public Deck prepareDeck() {
-        List<CardInfo> cardInfos = new ArrayList<CardInfo>(cards.size());
-        for (Card card : cards) {
-            cardInfos.add(new CardInfo(card));
-        }
-        return new Deck(cardInfos);
+    public Collection<Card> getCards() {
+        return this.cards;
     }
 }

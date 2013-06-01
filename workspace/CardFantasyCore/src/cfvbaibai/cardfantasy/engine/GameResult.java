@@ -1,21 +1,24 @@
 package cfvbaibai.cardfantasy.engine;
 
-import cfvbaibai.cardfantasy.data.PlayerInfo;
 
 public class GameResult {
     private Board finalBoard;
-    private int winnerNumber;
+    private Player winner;
     private int round;
-    private Cause cause;
+    private GameEndCause gameEndCause;
 
-    public GameResult(Board finalBoard, int winnerNumber, int round, Cause cause) {
+    public GameResult(Board finalBoard, Player winner, int round, GameEndCause gameEndCause) {
         this.finalBoard = finalBoard;
-        this.winnerNumber = winnerNumber;
+        this.winner = winner;
         this.round = round;
-        this.cause = cause;
+        this.gameEndCause = gameEndCause;
     }
 
     public Player getWinner() {
-        return this.finalBoard.getPlayer(this.winnerNumber);
+        return winner;
+    }
+
+    public GameEndCause getCause() {
+        return this.gameEndCause;
     }
 }

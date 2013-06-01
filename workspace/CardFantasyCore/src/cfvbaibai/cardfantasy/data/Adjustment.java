@@ -1,8 +1,8 @@
 package cfvbaibai.cardfantasy.data;
 
-import cfvbaibai.cardfantasy.engine.Cause;
+import cfvbaibai.cardfantasy.engine.GameEndCause;
 
 public class Adjustment {
     private Change change;
-    private Cause cause;
+    private GameEndCause gameEndCause;
 }

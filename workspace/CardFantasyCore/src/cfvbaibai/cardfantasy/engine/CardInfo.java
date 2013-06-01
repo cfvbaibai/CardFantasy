@@ -8,13 +8,19 @@ public class CardInfo {
     private int at;
     private int summonDelay;
     private CardStatus status;
+    private Player owner;
 
-    public CardInfo(Card card) {
+    public CardInfo(Card card, Player owner) {
         this.card = card;
         this.hp = card.getMaxHP();
         this.at = card.getInitAT();
         this.summonDelay = card.getSummonSpeed();
         this.status = CardStatus.normal();
+        this.owner = owner;
+    }
+    
+    public Player getOwner() {
+        return this.owner;
     }
 
     public Card getCard() {
@@ -51,5 +57,9 @@ public class CardInfo {
 
     public void setStatus(CardStatus status) {
         this.status = status;
+    }
+
+    public String getShortDesc() {
+        return String.format("<%s>.<%s>", this.getOwner().getId(), this.getCard().getName());
     }
 }
