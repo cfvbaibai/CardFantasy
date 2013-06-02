@@ -9,12 +9,11 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import cfvbaibai.cardfantasy.data.Card;
-import cfvbaibai.cardfantasy.data.CardData;
 import cfvbaibai.cardfantasy.data.CardDataStore;
 import cfvbaibai.cardfantasy.data.PlayerInfo;
 import cfvbaibai.cardfantasy.engine.GameEndCause;
-import cfvbaibai.cardfantasy.engine.GameResult;
 import cfvbaibai.cardfantasy.engine.GameEngine;
+import cfvbaibai.cardfantasy.engine.GameResult;
 import cfvbaibai.cardfantasy.engine.Rule;
 
 public class CardFantasyTest {

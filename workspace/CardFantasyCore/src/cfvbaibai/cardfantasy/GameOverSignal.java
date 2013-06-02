@@ -1,6 +1,5 @@
 package cfvbaibai.cardfantasy;
 
-import cfvbaibai.cardfantasy.engine.GameResult;
 
 public class GameOverSignal extends Throwable {
 

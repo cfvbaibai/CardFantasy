@@ -2,10 +2,6 @@ package cfvbaibai.cardfantasy.data;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
-
-import cfvbaibai.cardfantasy.engine.CardInfo;
-import cfvbaibai.cardfantasy.engine.Deck;
 
 /**
  * Immutable

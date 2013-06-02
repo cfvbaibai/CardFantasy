@@ -3,7 +3,6 @@ package cfvbaibai.cardfantasy.test;
 import java.util.LinkedList;
 import java.util.List;
 
-import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 
 import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
