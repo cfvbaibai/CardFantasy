@@ -132,18 +132,19 @@ public class GameEngine {
             if (myField.getCard(i) == null) {
                 continue;
             }
+            // Pre-attack Features: CHAIN LIGHTENING
             stage.getResolver().resolvePreAttackFeature(myField.getCard(i), getInactivePlayer());
             if (myField.getCard(i) == null) {
                 continue;
             }
             if (opField.getCard(i) == null) {
-                attackHero(myField.getCard(i), getInactivePlayer());
+                stage.getResolver().attackHero(myField.getCard(i), getInactivePlayer(), null, myField.getCard(i).getAT());
             } else {
-                attackCard(myField.getCard(i), opField.getCard(i));
+                int damage = attackCard(myField.getCard(i), opField.getCard(i));
+                // Extra-attack Features: PENETRATION
+                stage.getResolver().resolveExtraAttackFeature(myField.getCard(i), opField.getCard(i), getInactivePlayer(), damage);
             }
-            if (myField.getCard(i) == null) {
-                continue;
-            }
+            // Post-attack Features: SNIPE
             stage.getResolver().resolvePostAttackFeature(myField.getCard(i), getInactivePlayer());
         }
 
@@ -153,22 +154,17 @@ public class GameEngine {
         return Phase.End;
     }
 
-    private void attackCard(CardInfo attacker, CardInfo defender) {
-        if (stage.getResolver().resolveAttackBlockingFeature(attacker, defender, null).isBlocked) {
-            return;
+    private int attackCard(CardInfo attacker, CardInfo defender) {
+        OnAttackBlockingResult blockingResult = stage.getResolver().resolveAttackBlockingFeature(attacker, defender, null);
+        if (blockingResult.isBlocked) {
+            return 0;
         }
-        this.stage.getUI().attackCard(attacker, defender, null, attacker.getAT());
-        if (stage.getResolver().applyDamage(defender, attacker.getAT()).cardDead) {
+        this.stage.getUI().attackCard(attacker, defender, null, blockingResult.damage);
+        OnDamagedResult damagedResult = stage.getResolver().applyDamage(defender,blockingResult.damage);
+        if (damagedResult.cardDead) {
             stage.getResolver().resolveDyingFeature(attacker, defender, null);
         }
-    }
-
-    private void attackHero(CardInfo attacker, Player defenderPlayer) throws HeroDieSignal {
-        try {
-            defenderPlayer.setLife(defenderPlayer.getLife() - attacker.getAT());
-        } finally {
-            stage.getUI().attackHero(attacker, defenderPlayer, attacker.getAT());
-        }
+        return damagedResult.actualDamage;
     }
 
     private Phase roundStart() throws GameOverSignal, AllCardsDieSignal {

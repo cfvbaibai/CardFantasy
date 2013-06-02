@@ -4,4 +4,9 @@
         <Feature type="Snipe" level="4" unlock="5" />
         <Feature type="ChainLightening" level="2" unlock="10" />
     </Card>
+    <Card id="2" name="城镇长矛兵" race="Kingdom" speed="2" star="1" cost="4" at="95" hp="330" incrAT="18" incrHP="8">
+        <Feature type="Penetration" level="1" unlock="0" />
+        <Feature type="HolyLight" level="3" unlock="5" />
+        <Feature type="Block" level="4" unlock="10" />
+    </Card>
 </Cards>

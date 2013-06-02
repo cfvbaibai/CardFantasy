@@ -10,6 +10,15 @@ import cfvbaibai.cardfantasy.engine.FeatureResolver;
 import cfvbaibai.cardfantasy.engine.GameUI;
 import cfvbaibai.cardfantasy.engine.Player;
 
+/**
+ * Chain Lightening give 25 * level damages to 3 enemy's cards and 40% probability to cause paralyzed.
+ * 
+ * Can be blocked by Immue.
+ * Can be reflected by Magic Reflection.
+ * Can activate dying feature.
+ * @author °×°×
+ *
+ */
 public final class ChainLighteningFeature {
     public static void apply(Feature feature, FeatureResolver resolver, CardInfo attacker, Player defender) {
         int damage = feature.getLevel() * 25;

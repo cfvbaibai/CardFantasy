@@ -4,7 +4,8 @@ public enum FeatureType {
     Snipe("狙击"),
     ChainLightening("连锁闪电"),
     Penetration("穿刺"),
-    HolyLight("圣光");
+    HolyLight("圣光"),
+    Block("格挡");
     
     private String displayName;
     FeatureType(String displayName) {

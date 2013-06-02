@@ -16,14 +16,21 @@ import cfvbaibai.cardfantasy.engine.Player;
  *
  */
 public final class SnipeFeature {
-    public static void apply(Feature feature, FeatureResolver resolver, CardInfo attacker, Player defender) {
+    public static void apply(Feature feature, FeatureResolver resolver, CardInfo attacker, Player defenderPlayer) {
         int damage = feature.getLevel() * 25;
-        for (CardInfo card : defender.getField()) {
-            if (card == null) {
+        CardInfo victim = null;
+        for (CardInfo defender : defenderPlayer.getField()) {
+            if (defender == null) {
                 continue;
             }
-            resolver.getStage().getUI().attackCard(attacker, card, feature, damage);
-            resolver.applyDamage(card, damage);
+            if (victim == null || victim.getHP() > defender.getHP()) {
+                victim = defender;
+            }
+        }
+        if (victim != null) {
+            resolver.getStage().getUI().useSkill(attacker, victim, feature);
+            resolver.getStage().getUI().attackCard(attacker, victim, feature, damage);
+            resolver.applyDamage(victim, damage);
         }
     }
 }

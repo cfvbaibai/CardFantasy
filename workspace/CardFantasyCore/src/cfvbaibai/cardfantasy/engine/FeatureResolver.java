@@ -3,6 +3,7 @@ package cfvbaibai.cardfantasy.engine;
 import cfvbaibai.cardfantasy.data.Feature;
 import cfvbaibai.cardfantasy.data.FeatureType;
 import cfvbaibai.cardfantasy.engine.feature.ChainLighteningFeature;
+import cfvbaibai.cardfantasy.engine.feature.PenetrationFeature;
 import cfvbaibai.cardfantasy.engine.feature.SnipeFeature;
 
 public class FeatureResolver {
@@ -34,12 +35,16 @@ public class FeatureResolver {
         
     }
 
-    public OnDamangedResult applyDamage(CardInfo card, int damage) {
+    public OnDamagedResult applyDamage(CardInfo card, int damage) {
+        int originalHP = card.getHP();
         card.setHP(card.getHP() - damage);
-        OnDamangedResult result = new OnDamangedResult();
+        OnDamagedResult result = new OnDamagedResult();
         if (card.getHP() <= 0) {
             result.cardDead = true;
+            result.actualDamage = originalHP;
             cardDead(card);
+        } else {
+            result.actualDamage = damage;
         }
         return result;
     }
@@ -59,8 +64,13 @@ public class FeatureResolver {
         }
     }
 
+    public void attackHero(CardInfo attacker, Player defenderPlayer, Feature feature, int damage) throws HeroDieSignal {
+        stage.getUI().attackHero(attacker, defenderPlayer, feature, damage);
+        defenderPlayer.setLife(defenderPlayer.getLife() - damage);
+    }
+    
     public OnAttackBlockingResult resolveAttackBlockingFeature(CardInfo attacker, CardInfo card, Feature feature) {
-        OnAttackBlockingResult result = new OnAttackBlockingResult(false);
+        OnAttackBlockingResult result = new OnAttackBlockingResult(false, 0);
         if (feature == null) {
             // Normal attack could be blocked by Dodge or PARALYZED, FROZEN, TRAPPED status.
             CardStatusType statusType = attacker.getStatus().getType();
@@ -69,11 +79,18 @@ public class FeatureResolver {
                 result.isBlocked = true;
             }
         }
+        result.damage = attacker.getAT();
         return result;
     }
 
     public void resolveDyingFeature(CardInfo attacker, CardInfo card, Feature feature) {
         // TODO Auto-generated method stub
         return;
+    }
+
+    public void resolveExtraAttackFeature(CardInfo attacker, CardInfo defender, Player defenderHero, int normalAttackDamage) throws HeroDieSignal {
+        for (Feature feature : attacker.getUsableFeaturesOf(FeatureType.Penetration)) {
+            PenetrationFeature.apply(feature, this, attacker, defenderHero, normalAttackDamage);
+        }
     }
 }

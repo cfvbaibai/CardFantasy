@@ -94,12 +94,16 @@ public class TestGameUI extends GameUI {
 
     @Override
     public void attackCard(CardInfo attacker, CardInfo defender, Feature feature, int damage) {
-        if (feature == null) {
-            sayF("%s attacks %s. Damage: %d. HP: %d -> %d", attacker.getShortDesc(), defender.getShortDesc(), damage,
-                    defender.getHP(), defender.getHP() - damage);
+        String featureClause = feature == null ? "" : (" by [[" + feature.getShortDesc() + "]]");
+        int logicalRemainingHP = defender.getHP() - damage;
+        if (logicalRemainingHP < 0) {
+            sayF("%s attacks %s%s. Damage: %d (%d overflow). HP: %d -> 0.",
+                attacker.getShortDesc(), defender.getShortDesc(), featureClause,
+                damage, -logicalRemainingHP, defender.getHP()); 
         } else {
-            sayF("%s attacks %s by [[%s]]. Damage: %d. HP: %d -> %d", attacker.getShortDesc(), defender.getShortDesc(),
-                    feature.getShortDesc(), damage, defender.getHP(), defender.getHP() - damage);
+            sayF("%s attacks %s%s. Damage: %d. HP: %d -> %d",
+                attacker.getShortDesc(), defender.getShortDesc(), featureClause,
+                damage, defender.getHP(), logicalRemainingHP);
         }
     }
 
@@ -109,8 +113,14 @@ public class TestGameUI extends GameUI {
     }
 
     @Override
-    public void attackHero(CardInfo attacker, Player hero, int damage) {
-        sayF("%s attacks <%s> directly! Damage: %d", attacker.getShortDesc(), hero.getId(), damage);
+    public void attackHero(CardInfo attacker, Player hero, Feature feature, int damage) {
+        if (feature == null) {
+            sayF("%s attacks <%s> directly! Damage: %d. HP: %d -> %d",
+                attacker.getShortDesc(), hero.getId(), damage, hero.getLife(), hero.getLife() - damage);
+        } else {
+            sayF("%s attacks <%s> directly by [[%s]]! Damage: %d. HP: %d -> %d",
+                attacker.getShortDesc(), hero.getId(), feature.getShortDesc(), damage, hero.getLife(), hero.getLife() - damage);
+        }
     }
 
     @Override
@@ -121,6 +131,11 @@ public class TestGameUI extends GameUI {
         }
         String victimsText = StringUtils.join(victimTexts, ",");
         sayF("%s uses [[%s]] to { %s }!", attacker.getShortDesc(), feature.getShortDesc(), victimsText);
+    }
+    
+    @Override
+    public void useSkillToHero(CardInfo attacker, Player victimHero, Feature feature) {
+        sayF("%s uses [[%s]] to enemy hero <%s>!", attacker.getShortDesc(), feature.getShortDesc(), victimHero.getId());
     }
 
     @Override

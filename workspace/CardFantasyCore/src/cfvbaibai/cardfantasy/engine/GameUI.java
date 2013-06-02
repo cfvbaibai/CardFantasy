@@ -1,5 +1,6 @@
 package cfvbaibai.cardfantasy.engine;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
@@ -52,9 +53,15 @@ public abstract class GameUI {
 
     public abstract void attackCard(CardInfo attacker, CardInfo defender, Feature feature, int damage);
     public abstract void cardDead(CardInfo deadCard);
-    public abstract void attackHero(CardInfo attacker, Player hero, int damage);
+    public abstract void attackHero(CardInfo attacker, Player hero, Feature feature, int damage);
 
     public abstract void useSkill(CardInfo attacker, List<CardInfo> victims, Feature feature);
+    public void useSkill(CardInfo attacker, CardInfo victim, Feature feature) {
+        List<CardInfo> victims = new ArrayList<CardInfo>();
+        victims.add(victim);
+        useSkill(attacker, victims, feature);
+    }
+    public abstract void useSkillToHero(CardInfo attacker, Player victimHero, Feature feature);
     public abstract void changeCardStatus(CardInfo attacker, CardInfo victim, Feature feature, CardStatus status);
 
     public abstract void battleBegins();
