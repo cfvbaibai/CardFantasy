@@ -8,7 +8,6 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import cfvbaibai.cardfantasy.data.Card;
 import cfvbaibai.cardfantasy.engine.GameEndCause;
 import cfvbaibai.cardfantasy.engine.GameResult;
 
@@ -33,10 +32,9 @@ public class CardFantasyTest {
     @Test
     public void testGameBasic() {
         GameResult result = GameBuilder.play(
-                PlayerBuilder.build("TOM", 10, "城镇弓箭兵-10*10"),
+                PlayerBuilder.build("TOM", 10, "城镇弓箭兵-10*2"),
                 PlayerBuilder.build("JERRY", 10, "城镇长矛兵-10*5"));
         assertEquals("TOM", result.getWinner().getId());
         assertEquals(GameEndCause.ALL_CARDS_DIE, result.getCause());
     }
-
 }

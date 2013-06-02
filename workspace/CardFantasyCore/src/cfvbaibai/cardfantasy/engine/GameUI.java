@@ -69,4 +69,6 @@ public abstract class GameUI {
     public abstract void attackBlocked(CardInfo attacker, CardInfo defender, Feature atFeature, Feature dfFeature);
 
     public abstract void adjustAT(CardInfo attacker, int adjAT, Feature feature);
+
+    public abstract void blockDamage(CardInfo attacker, CardInfo defender, Feature feature, int originalDamage, int actualDamage);
 }

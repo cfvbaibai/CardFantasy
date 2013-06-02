@@ -21,12 +21,12 @@ import cfvbaibai.cardfantasy.engine.Player;
  */
 public final class ChainLighteningFeature {
     public static void apply(Feature feature, FeatureResolver resolver, CardInfo attacker, Player defender) {
-        int damage = feature.getLevel() * 25;
+        int damage = feature.getImpact();
         List <CardInfo> victims = defender.getField().pickRandom(3, true);
         GameUI ui = resolver.getStage().getUI();
         ui.useSkill(attacker, victims, feature);
         for (CardInfo victim : victims) {
-            if (resolver.resolveAttackBlockingFeature(attacker, victim, feature).isBlocked) {
+            if (!resolver.resolveAttackBlockingFeature(attacker, victim, feature).attackable) {
                 continue;
             }
             ui.attackCard(attacker, victim, feature, damage);

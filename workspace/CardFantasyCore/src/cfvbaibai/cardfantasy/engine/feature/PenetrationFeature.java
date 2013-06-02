@@ -16,7 +16,10 @@ import cfvbaibai.cardfantasy.engine.Player;
 public final class PenetrationFeature {
     public static void apply(Feature feature, FeatureResolver resolver, CardInfo attacker, Player defender, int normalAttackDamage)
             throws HeroDieSignal {
-        int damage = (int) (normalAttackDamage * 0.15);
+        if (normalAttackDamage <= 0) {
+            return;
+        }
+        int damage = normalAttackDamage * feature.getImpact() / 100;
         GameUI ui = resolver.getStage().getUI();
         ui.useSkillToHero(attacker, defender, feature);
         resolver.attackHero(attacker, defender, feature, damage);

@@ -131,7 +131,8 @@ public class TestGameUI extends GameUI {
             victimTexts.add(victim.getShortDesc());
         }
         String victimsText = StringUtils.join(victimTexts, ",");
-        sayF("%s uses %s to { %s }!", attacker.getShortDesc(), feature.getShortDesc(), victimsText);
+        String featureDesc = feature == null ? "¡¾ÆÕÍ¨¹¥»÷¡¿" : feature.getShortDesc();
+        sayF("%s uses %s to { %s }!", attacker.getShortDesc(), featureDesc, victimsText);
     }
     
     @Override
@@ -254,5 +255,11 @@ public class TestGameUI extends GameUI {
     public void adjustAT(CardInfo attacker, int adjAT, Feature feature) {
         sayF("%s's AT increased by %s ! %d -> %d.",
             attacker.getShortDesc(), feature.getShortDesc(), attacker.getAT(), attacker.getAT() + adjAT);
+    }
+
+    @Override
+    public void blockDamage(CardInfo attacker, CardInfo defender, Feature feature, int originalDamage, int actualDamage) {
+        sayF("%s blocks the attack from %s by %s. Damage: %d -> %d",
+            defender.getShortDesc(), attacker.getShortDesc(), feature.getShortDesc(), originalDamage, actualDamage);
     }
 }

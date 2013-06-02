@@ -159,9 +159,10 @@ public class GameEngine {
     }
 
     private int attackCard(CardInfo attacker, CardInfo defender) {
+        this.stage.getUI().useSkill(attacker, defender, null);
         OnAttackBlockingResult blockingResult = stage.getResolver().resolveAttackBlockingFeature(attacker, defender, null);
-        if (blockingResult.isBlocked) {
-            return 0;
+        if (!blockingResult.attackable) {
+            return -1;
         }
         this.stage.getUI().attackCard(attacker, defender, null, blockingResult.damage);
         OnDamagedResult damagedResult = stage.getResolver().applyDamage(defender,blockingResult.damage);

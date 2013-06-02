@@ -35,4 +35,8 @@ public class Feature {
     public String getShortDesc() {
         return String.format("¡¾%s%d¡¿", type.getDisplayName(), level);
     }
+    
+    public int getImpact() {
+        return type.getImpact(this.level);
+    }
 }

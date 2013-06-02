@@ -10,8 +10,7 @@ import cfvbaibai.cardfantasy.engine.FeatureResolver;
 public final class HolyLightFeature {
     public static void apply(Feature feature, FeatureResolver resolver, CardInfo attacker, CardInfo defender) {
         if (defender.getRace() == Race.Hell) {
-            double rate = 0.15 + ((double)feature.getLevel()) * 0.15;
-            int adjAT = (int) (attacker.getOriginalAT() * rate);
+            int adjAT = (int) (attacker.getOriginalAT() * feature.getImpact() / 100);
             resolver.getStage().getUI().adjustAT(attacker, adjAT, feature);
             attacker.addEffect(new FeatureEffect(FeatureEffectType.ATTACK_CHANGE, feature.getType(), adjAT));
         }
