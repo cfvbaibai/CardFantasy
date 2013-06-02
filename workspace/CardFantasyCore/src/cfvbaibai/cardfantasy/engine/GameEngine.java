@@ -125,20 +125,26 @@ public class GameEngine {
          * position in fields.
          */
 
+        stage.getUI().battleBegins();
         Field myField = getActivePlayer().getField();
         Field opField = getInactivePlayer().getField();
         for (int i = 0; i < myField.size(); ++i) {
-            CardInfo myCard = myField.getCard(i);
-            CardInfo opCard = opField.getCard(i);
-            if (myCard == null) {
+            if (myField.getCard(i) == null) {
                 continue;
             }
-            if (opCard == null) {
-                attackHero(myCard, getInactivePlayer());
-            } else {
-                attackCard(myCard, opCard);
+            stage.getResolver().resolvePreAttackFeature(myField.getCard(i), getInactivePlayer());
+            if (myField.getCard(i) == null) {
+                continue;
             }
-            stage.getResolver().resolvePostAttackFeature(myCard, getInactivePlayer());
+            if (opField.getCard(i) == null) {
+                attackHero(myField.getCard(i), getInactivePlayer());
+            } else {
+                attackCard(myField.getCard(i), opField.getCard(i));
+            }
+            if (myField.getCard(i) == null) {
+                continue;
+            }
+            stage.getResolver().resolvePostAttackFeature(myField.getCard(i), getInactivePlayer());
         }
 
         myField.compact();
@@ -148,10 +154,12 @@ public class GameEngine {
     }
 
     private void attackCard(CardInfo attacker, CardInfo defender) {
-        defender.setHP(defender.getHP() - attacker.getAT());
+        if (stage.getResolver().resolveAttackBlockingFeature(attacker, defender, null).isBlocked) {
+            return;
+        }
         this.stage.getUI().attackCard(attacker, defender, null, attacker.getAT());
-        if (defender.getHP() <= 0) {
-            this.stage.getResolver().cardDead(defender);
+        if (stage.getResolver().applyDamage(defender, attacker.getAT()).cardDead) {
+            stage.getResolver().resolveDyingFeature(attacker, defender, null);
         }
     }
 

@@ -53,4 +53,11 @@ public abstract class GameUI {
     public abstract void attackCard(CardInfo attacker, CardInfo defender, Feature feature, int damage);
     public abstract void cardDead(CardInfo deadCard);
     public abstract void attackHero(CardInfo attacker, Player hero, int damage);
+
+    public abstract void useSkill(CardInfo attacker, List<CardInfo> victims, Feature feature);
+    public abstract void changeCardStatus(CardInfo attacker, CardInfo victim, Feature feature, CardStatus status);
+
+    public abstract void battleBegins();
+
+    public abstract void attackBlocked(CardInfo attacker, CardInfo defender, Feature atFeature, Feature dfFeature);
 }

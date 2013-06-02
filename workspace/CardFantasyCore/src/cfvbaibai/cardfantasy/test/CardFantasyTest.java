@@ -42,7 +42,7 @@ public class CardFantasyTest {
         Card[] cards = new Card[count];
         for (int i = 0; i < cards.length; ++i) {
             cards[i] = new Card(cardDataStore.getCardInfo("³ÇÕò¹­¼ı±ø"));
-            cards[i].growToLevel(5);
+            cards[i].growToLevel(10);
         }
         return cards;
     }

@@ -3,8 +3,8 @@ package cfvbaibai.cardfantasy.data;
 import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
 
 public class Growth {
-    /// From level 0. requiredExp[i] means the required exp to grow to level i.
-    /// requiredExp must be incremental.
+    // / From level 0. requiredExp[i] means the required exp to grow to level i.
+    // / requiredExp must be incremental.
     private int[] requiredExp;
 
     public Growth(int... requiredExps) {
@@ -27,8 +27,8 @@ public class Growth {
 
     public int getRequiredExp(int level) {
         if (level < 0 || level >= requiredExp.length) {
-            throw new CardFantasyRuntimeException("Invalid level " + level + ". Level must be between " + 0 + " and "
-                    + requiredExp.length);
+            throw new CardFantasyRuntimeException("Invalid level " + level + ". Level must be between 0 and "
+                    + (requiredExp.length - 1));
         }
         return requiredExp[level];
     }

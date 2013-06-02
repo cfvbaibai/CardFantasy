@@ -2,6 +2,7 @@ package cfvbaibai.cardfantasy.engine;
 
 import cfvbaibai.cardfantasy.data.Feature;
 import cfvbaibai.cardfantasy.data.FeatureType;
+import cfvbaibai.cardfantasy.engine.feature.ChainLighteningFeature;
 import cfvbaibai.cardfantasy.engine.feature.SnipeFeature;
 
 public class FeatureResolver {
@@ -17,9 +18,15 @@ public class FeatureResolver {
         return this.stage;
     }
     
-    public void resolvePostAttackFeature(CardInfo card, Player defender) {
-        for (Feature feature : card.getUsableFeaturesOf(FeatureType.Snipe)) {
-            SnipeFeature.apply(feature, this, card, defender);
+    public void resolvePreAttackFeature(CardInfo attacker, Player defender) {
+        for (Feature feature : attacker.getUsableFeaturesOf(FeatureType.ChainLightening)) {
+            ChainLighteningFeature.apply(feature, this, attacker, defender);
+        }
+    }
+    
+    public void resolvePostAttackFeature(CardInfo attacker, Player defender) {
+        for (Feature feature : attacker.getUsableFeaturesOf(FeatureType.Snipe)) {
+            SnipeFeature.apply(feature, this, attacker, defender);
         }
     }
     
@@ -53,7 +60,16 @@ public class FeatureResolver {
     }
 
     public OnAttackBlockingResult resolveAttackBlockingFeature(CardInfo attacker, CardInfo card, Feature feature) {
-        return new OnAttackBlockingResult(false);
+        OnAttackBlockingResult result = new OnAttackBlockingResult(false);
+        if (feature == null) {
+            // Normal attack could be blocked by Dodge or PARALYZED, FROZEN, TRAPPED status.
+            CardStatusType statusType = attacker.getStatus().getType();
+            if (statusType == CardStatusType.FROZEN || statusType == CardStatusType.PARALYZED || statusType == CardStatusType.TRAPPED) {
+                stage.getUI().attackBlocked(attacker, card, feature, null);
+                result.isBlocked = true;
+            }
+        }
+        return result;
     }
 
     public void resolveDyingFeature(CardInfo attacker, CardInfo card, Feature feature) {
