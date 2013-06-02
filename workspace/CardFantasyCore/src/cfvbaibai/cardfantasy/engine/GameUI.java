@@ -67,4 +67,6 @@ public abstract class GameUI {
     public abstract void battleBegins();
 
     public abstract void attackBlocked(CardInfo attacker, CardInfo defender, Feature atFeature, Feature dfFeature);
+
+    public abstract void adjustAT(CardInfo attacker, int adjAT, Feature feature);
 }

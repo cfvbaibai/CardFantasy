@@ -41,4 +41,8 @@ public class Card implements Cloneable {
     public void growToLevel(int level) {
         this.exp = sourceInfo.getGrowth().getRequiredExp(level);
     }
+    
+    public Race getRace() {
+        return this.sourceInfo.getRace();
+    }
 }

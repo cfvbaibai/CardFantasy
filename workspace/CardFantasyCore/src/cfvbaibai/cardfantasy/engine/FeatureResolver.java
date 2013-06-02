@@ -3,6 +3,7 @@ package cfvbaibai.cardfantasy.engine;
 import cfvbaibai.cardfantasy.data.Feature;
 import cfvbaibai.cardfantasy.data.FeatureType;
 import cfvbaibai.cardfantasy.engine.feature.ChainLighteningFeature;
+import cfvbaibai.cardfantasy.engine.feature.HolyLightFeature;
 import cfvbaibai.cardfantasy.engine.feature.PenetrationFeature;
 import cfvbaibai.cardfantasy.engine.feature.SnipeFeature;
 
@@ -91,6 +92,21 @@ public class FeatureResolver {
     public void resolveExtraAttackFeature(CardInfo attacker, CardInfo defender, Player defenderHero, int normalAttackDamage) throws HeroDieSignal {
         for (Feature feature : attacker.getUsableFeaturesOf(FeatureType.Penetration)) {
             PenetrationFeature.apply(feature, this, attacker, defenderHero, normalAttackDamage);
+        }
+    }
+
+    public void resolvePreAttackCardFeature(CardInfo attacker, CardInfo defender) {
+        for (Feature feature : attacker.getUsableFeaturesOf(FeatureType.HolyLight)) {
+            HolyLightFeature.apply(feature, this, attacker, defender);
+        }
+    }
+
+    public void removeEffects(CardInfo card, FeatureType ... causes) {
+        if (card == null) {
+            return;
+        }
+        for (FeatureType cause : causes) {
+            card.removeEffectsCausedBy(cause);
         }
     }
 }

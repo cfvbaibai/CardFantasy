@@ -33,6 +33,6 @@ public class Feature {
     }
 
     public String getShortDesc() {
-        return String.format("%s%d", type.getDisplayName(), level);
+        return String.format("¡¾%s%d¡¿", type.getDisplayName(), level);
     }
 }

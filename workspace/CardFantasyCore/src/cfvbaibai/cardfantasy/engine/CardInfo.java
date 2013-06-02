@@ -1,11 +1,15 @@
 package cfvbaibai.cardfantasy.engine;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 import cfvbaibai.cardfantasy.data.Card;
 import cfvbaibai.cardfantasy.data.Feature;
 import cfvbaibai.cardfantasy.data.FeatureType;
+import cfvbaibai.cardfantasy.data.Race;
 
 public class CardInfo {
     private Card card;
@@ -14,6 +18,8 @@ public class CardInfo {
     private int summonDelay;
     private CardStatus status;
     private Player owner;
+    
+    private Map<FeatureType, List<FeatureEffect>> effects;
 
     public CardInfo(Card card, Player owner) {
         this.card = card;
@@ -22,6 +28,18 @@ public class CardInfo {
         this.summonDelay = card.getSummonSpeed();
         this.status = CardStatus.normal();
         this.owner = owner;
+        this.effects = new HashMap<FeatureType, List<FeatureEffect>>();
+    }
+    
+    public void addEffect(FeatureEffect effect) {
+        if (!effects.containsKey(effect.getCause())) {
+            effects.put(effect.getCause(), new LinkedList<FeatureEffect>());
+        }
+        this.effects.get(effect.getCause()).add(effect);
+    }
+    
+    public void removeEffectsCausedBy(FeatureType cause) {
+        effects.remove(cause);
     }
     
     public int getPosition() {
@@ -43,11 +61,15 @@ public class CardInfo {
     }
 
     public int getAT() {
-        return this.at;
-    }
-    
-    public void setAT(int at) {
-        this.at = at;
+        int actualAT = this.getOriginalAT();
+        for (List<FeatureEffect> effects : this.effects.values()) {
+            for (FeatureEffect effect : effects) {
+                if (effect.getType() == FeatureEffectType.ATTACK_CHANGE) {
+                    actualAT += effect.getValue();
+                }
+            }
+        }
+        return actualAT;
     }
     
     public int getHP() {
@@ -101,5 +123,13 @@ public class CardInfo {
             }
         }
         return features;
+    }
+
+    public Race getRace() {
+        return getCard().getRace();
+    }
+
+    public int getOriginalAT() {
+        return this.at;
     }
  }

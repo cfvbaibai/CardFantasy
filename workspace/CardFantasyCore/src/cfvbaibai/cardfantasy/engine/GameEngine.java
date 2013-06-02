@@ -5,6 +5,7 @@ import java.util.List;
 
 import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
 import cfvbaibai.cardfantasy.GameOverSignal;
+import cfvbaibai.cardfantasy.data.FeatureType;
 import cfvbaibai.cardfantasy.data.PlayerInfo;
 
 public class GameEngine {
@@ -132,7 +133,7 @@ public class GameEngine {
             if (myField.getCard(i) == null) {
                 continue;
             }
-            // Pre-attack Features: CHAIN LIGHTENING
+            // CHAIN LIGHTENING
             stage.getResolver().resolvePreAttackFeature(myField.getCard(i), getInactivePlayer());
             if (myField.getCard(i) == null) {
                 continue;
@@ -140,11 +141,14 @@ public class GameEngine {
             if (opField.getCard(i) == null) {
                 stage.getResolver().attackHero(myField.getCard(i), getInactivePlayer(), null, myField.getCard(i).getAT());
             } else {
+                // HOLY LIGHT
+                stage.getResolver().resolvePreAttackCardFeature(myField.getCard(i), opField.getCard(i));
                 int damage = attackCard(myField.getCard(i), opField.getCard(i));
-                // Extra-attack Features: PENETRATION
+                // PENETRATION
                 stage.getResolver().resolveExtraAttackFeature(myField.getCard(i), opField.getCard(i), getInactivePlayer(), damage);
+                stage.getResolver().removeEffects(myField.getCard(i), FeatureType.HolyLight);
             }
-            // Post-attack Features: SNIPE
+            // SNIPE
             stage.getResolver().resolvePostAttackFeature(myField.getCard(i), getInactivePlayer());
         }
 
