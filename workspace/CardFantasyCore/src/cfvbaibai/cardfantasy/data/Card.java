@@ -14,6 +14,11 @@ public class Card implements Cloneable {
         this.exp = 0;
     }
     
+    public Card(CardData sourceInfo, int cardLevel) {
+        this(sourceInfo);
+        this.growToLevel(cardLevel);
+    }
+
     public String getName() {
         return this.sourceInfo.getName();
     }
