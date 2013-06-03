@@ -1,9 +1,17 @@
 package cfvbaibai.cardfantasy.engine;
 
 public enum CardStatusType {
-    NORMAL,
-    PARALYZED,
-    FROZEN,
-    POISONED,
-    TRAPPED;
+    PARALYZED(false),
+    FROZEN(false),
+    POISONED(true),
+    TRAPPED(false);
+    
+    private boolean quantitive;
+    public boolean isQuantitive() {
+        return this.quantitive;
+    }
+    
+    CardStatusType(boolean quantitive) {
+        this.quantitive = quantitive;
+    }
 }

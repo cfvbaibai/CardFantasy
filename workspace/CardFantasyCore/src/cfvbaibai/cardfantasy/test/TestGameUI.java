@@ -10,6 +10,8 @@ import cfvbaibai.cardfantasy.data.Feature;
 import cfvbaibai.cardfantasy.engine.Board;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.CardStatus;
+import cfvbaibai.cardfantasy.engine.CardStatusItem;
+import cfvbaibai.cardfantasy.engine.CardStatusType;
 import cfvbaibai.cardfantasy.engine.Deck;
 import cfvbaibai.cardfantasy.engine.Field;
 import cfvbaibai.cardfantasy.engine.GameResult;
@@ -141,9 +143,9 @@ public class TestGameUI extends GameUI {
     }
 
     @Override
-    public void changeCardStatus(CardInfo attacker, CardInfo victim, Feature feature, CardStatus status) {
-        sayF("%s.%s changes %s's status to: %s(%d)", attacker.getShortDesc(), feature.getShortDesc(),
-                victim.getShortDesc(), status.getType(), status.getEffect());
+    public void addCardStatus(CardInfo attacker, CardInfo victim, Feature feature, CardStatusItem item) {
+        sayF("%s.%s adds a new status to %s: ¡¾%s¡¿", attacker.getShortDesc(), feature.getShortDesc(),
+                victim.getShortDesc(), item.getShortDesc());
     }
 
     @Override
@@ -197,7 +199,7 @@ public class TestGameUI extends GameUI {
         for (CardInfo card : field) {
             sb.append(String.format("%s (LV=%d, AT=%d/%d, HP=%d/%d, ST=%s), ", card.getCard().getName(), card.getCard()
                     .getLevel(), card.getAT(), card.getCard().getInitAT(), card.getHP(), card.getCard().getMaxHP(),
-                    card.getStatus().getType()));
+                    card.getStatus().getShortDesc()));
         }
         say(sb.toString());
     }
@@ -238,12 +240,12 @@ public class TestGameUI extends GameUI {
     @Override
     public void attackBlocked(CardInfo attacker, CardInfo defender, Feature atFeature, Feature dfFeature) {
         if (atFeature == null && dfFeature == null) {
-            sayF("%s is in status %s so cannot attack!", attacker.getShortDesc(), attacker.getStatus().getType());
+            sayF("%s is in status %s so cannot attack!", attacker.getShortDesc(), attacker.getStatus().getShortDesc());
         } else if (atFeature == null && dfFeature != null) {
             sayF("%s's attack is blocked by %s due to %s!", attacker.getShortDesc(), defender.getShortDesc(),
                     dfFeature.getShortDesc());
         } else if (atFeature != null && dfFeature == null) {
-            sayF("%s is in status %s so cannot activate %s!", attacker.getShortDesc(), attacker.getStatus().getType(),
+            sayF("%s is in status %s so cannot activate %s!", attacker.getShortDesc(), attacker.getStatus().getShortDesc(),
                     atFeature.getShortDesc());
         } else if (atFeature != null && dfFeature != null) {
             sayF("%s's feature %s is blocked by %s due to %s!", attacker.getShortDesc(), atFeature.getShortDesc(),
@@ -261,5 +263,11 @@ public class TestGameUI extends GameUI {
     public void blockDamage(CardInfo attacker, CardInfo defender, Feature feature, int originalDamage, int actualDamage) {
         sayF("%s blocks the attack from %s by %s. Damage: %d -> %d",
             defender.getShortDesc(), attacker.getShortDesc(), feature.getShortDesc(), originalDamage, actualDamage);
+    }
+
+    @Override
+    public void debuffDamage(CardInfo card, CardStatusItem item, int damage) {
+        sayF("%s gets damage in status %s. Damage: %d. HP: %d -> %d",
+            card.getShortDesc(), item.getShortDesc(), damage, card.getHP(), Math.max(0, card.getHP() - damage));
     }
 }

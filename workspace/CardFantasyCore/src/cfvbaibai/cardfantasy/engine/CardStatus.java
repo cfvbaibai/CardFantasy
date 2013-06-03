@@ -1,47 +1,62 @@
 package cfvbaibai.cardfantasy.engine;
 
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+
 public class CardStatus {
-    private CardStatusType type;
-    private int effect;
+    private List<CardStatusItem> items;
     
-    CardStatus(CardStatusType type, int effect) {
-        this.type = type;
-        this.effect = effect;
-    }
-
-    public CardStatusType getType() {
-        return type;
-    }
-
-    public void setType(CardStatusType type) {
-        this.type = type;
-    }
-
-    public int getEffect() {
-        return effect;
-    }
-
-    public void setEffect(int effect) {
-        this.effect = effect;
-    }
-
-    public static CardStatus normal() {
-        return new CardStatus(CardStatusType.NORMAL, 0);
+    public CardStatus() {
+        this.items = new LinkedList<CardStatusItem>();
     }
     
-    public static CardStatus paralyzed() {
-        return new CardStatus(CardStatusType.PARALYZED, 0);
+    public void add(CardStatusItem item) {
+        this.items.add(item);
+    }
+    
+    public void remove(CardStatusType type) {
+        Iterator<CardStatusItem> iterator = items.iterator();
+        while (iterator.hasNext()) {
+            CardStatusItem next = iterator.next();
+            if (next.getType() == type) {
+                iterator.remove();
+            }
+        }
+    }
+    
+    public boolean containsStatus(CardStatusType type) {
+        for (CardStatusItem item : items) {
+            if (item.getType() == type) {
+                return true;
+            }
+        }
+        return false;
     }
 
-    public static CardStatus frozen() {
-        return new CardStatus(CardStatusType.FROZEN, 0);
+    public List<CardStatusItem> getStatusOf(CardStatusType type) {
+        List <CardStatusItem> result = new LinkedList <CardStatusItem> ();
+        for (CardStatusItem item : items) {
+            if (item.getType() == type) {
+                result.add(item);
+            }
+        }
+        return result;
     }
 
-    public static CardStatus poisoned(int effect) {
-        return new CardStatus(CardStatusType.POISONED, effect);
-    }
-
-    public static CardStatus trapped() {
-        return new CardStatus(CardStatusType.TRAPPED, 0);
+    public String getShortDesc() {
+        if (items.size() == 0) {
+            return "¡¾-¡¿";
+        }
+        StringBuffer sb = new StringBuffer(); 
+        sb.append("¡¾");
+        for (CardStatusItem item : items) {
+            sb.append(item.getShortDesc());
+            sb.append(", ");
+        }
+        sb.deleteCharAt(sb.length() - 1);
+        sb.deleteCharAt(sb.length() - 1);
+        sb.append("¡¿");
+        return sb.toString();
     }
 }

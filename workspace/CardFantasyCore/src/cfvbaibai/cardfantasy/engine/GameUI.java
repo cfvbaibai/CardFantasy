@@ -62,7 +62,7 @@ public abstract class GameUI {
         useSkill(attacker, victims, feature);
     }
     public abstract void useSkillToHero(CardInfo attacker, Player victimHero, Feature feature);
-    public abstract void changeCardStatus(CardInfo attacker, CardInfo victim, Feature feature, CardStatus status);
+    public abstract void addCardStatus(CardInfo attacker, CardInfo victim, Feature feature, CardStatusItem item);
 
     public abstract void battleBegins();
 
@@ -71,4 +71,6 @@ public abstract class GameUI {
     public abstract void adjustAT(CardInfo attacker, int adjAT, Feature feature);
 
     public abstract void blockDamage(CardInfo attacker, CardInfo defender, Feature feature, int originalDamage, int actualDamage);
+
+    public abstract void debuffDamage(CardInfo card, CardStatusItem item, int effect);
 }

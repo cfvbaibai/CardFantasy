@@ -26,7 +26,7 @@ public class CardInfo {
         this.hp = card.getMaxHP();
         this.at = card.getInitAT();
         this.summonDelay = card.getSummonSpeed();
-        this.status = CardStatus.normal();
+        this.status = new CardStatus();
         this.owner = owner;
         this.effects = new HashMap<FeatureType, List<FeatureEffect>>();
     }
@@ -92,8 +92,12 @@ public class CardInfo {
         return status;
     }
 
-    public void setStatus(CardStatus status) {
-        this.status = status;
+    public void addStatus(CardStatusItem statusItem) {
+        this.status.add(statusItem);
+    }
+    
+    public void removeStatus(CardStatusType type) {
+        this.status.remove(type);
     }
 
     public String getShortDesc() {
@@ -104,7 +108,7 @@ public class CardInfo {
     public void reset() {
         this.hp = this.card.getMaxHP();
         this.at = this.card.getInitAT();
-        this.status = CardStatus.normal();
+        this.status = new CardStatus();
     }
 
     public void resetSummonDelay() {
@@ -131,5 +135,15 @@ public class CardInfo {
 
     public int getOriginalAT() {
         return this.at;
+    }
+
+    public List<Feature> getUsableFeatures() {
+        List<Feature> features = new ArrayList<Feature>(4);
+        for (Feature feature : getAllFeatures()) {
+            if (feature.getUnlockLevel() <= this.getCard().getLevel()) {
+                features.add(feature);
+            }
+        }
+        return features;
     }
  }

@@ -6,6 +6,7 @@ public enum FeatureType {
     Penetration("´©´Ì", 15),
     HolyLight("Ê¥¹â", 15, 15),
     Block("¸ñµ²", 20),
+    Trap("ÏÝÚå", 1),
     MagicShield("Ä§¼×", 140, -10);
     
     private String displayName;

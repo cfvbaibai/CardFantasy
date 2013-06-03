@@ -11,30 +11,25 @@ import cfvbaibai.cardfantasy.engine.GameUI;
 import cfvbaibai.cardfantasy.engine.Player;
 
 /**
- * Chain Lightening give 25 * level damages to 3 enemy's cards and 40% probability to cause paralyzed.
+ * Trap 1*level enemy card at 65% probability.
  * 
- * Can be blocked by Immue.
- * Can be reflected by Magic Reflection.
- * Can activate dying feature.
+ * Can be blocked by Immue
  * @author °×°×
  *
  */
-public final class ChainLighteningFeature {
+public final class TrapFeature {
     public static void apply(Feature feature, FeatureResolver resolver, CardInfo attacker, Player defender) {
-        int damage = feature.getImpact();
-        List <CardInfo> victims = defender.getField().pickRandom(3, true);
+        int targetCount = feature.getImpact();
+        List <CardInfo> victims = defender.getField().pickRandom(targetCount, true);
         GameUI ui = resolver.getStage().getUI();
         ui.useSkill(attacker, victims, feature);
         for (CardInfo victim : victims) {
             if (!resolver.resolveAttackBlockingFeature(attacker, victim, feature).attackable) {
                 continue;
             }
-            ui.attackCard(attacker, victim, feature, damage);
-            if (resolver.applyDamage(victim, damage).cardDead) {
-                resolver.resolveDyingFeature(attacker, victim, feature);
-            } else if (Randomizer.roll100() <= 40) {
-                ui.addCardStatus(attacker, victim, feature, CardStatusItem.paralyzed());
-                victim.addStatus(CardStatusItem.paralyzed());
+            if (Randomizer.roll100() <= 65) {
+                ui.addCardStatus(attacker, victim, feature, CardStatusItem.trapped());
+                victim.addStatus(CardStatusItem.trapped());
             }
         }
     }

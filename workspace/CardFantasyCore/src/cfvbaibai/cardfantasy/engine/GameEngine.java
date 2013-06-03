@@ -126,7 +126,10 @@ public class GameEngine {
          * position in fields.
          */
 
-        stage.getUI().battleBegins();
+        FeatureResolver resolver = stage.getResolver();
+        GameUI ui = stage.getUI();
+        
+        ui.battleBegins();
         Field myField = getActivePlayer().getField();
         Field opField = getInactivePlayer().getField();
         for (int i = 0; i < myField.size(); ++i) {
@@ -134,26 +137,45 @@ public class GameEngine {
                 continue;
             }
             // CHAIN LIGHTENING
-            stage.getResolver().resolvePreAttackFeature(myField.getCard(i), getInactivePlayer());
+            resolver.resolvePreAttackFeature(myField.getCard(i), getInactivePlayer());
             if (myField.getCard(i) == null) {
                 continue;
             }
             if (opField.getCard(i) == null) {
-                stage.getResolver().attackHero(myField.getCard(i), getInactivePlayer(), null, myField.getCard(i).getAT());
+                resolver.attackHero(myField.getCard(i), getInactivePlayer(), null, myField.getCard(i).getAT());
             } else {
                 // HOLY LIGHT
-                stage.getResolver().resolvePreAttackCardFeature(myField.getCard(i), opField.getCard(i));
+                resolver.resolvePreAttackCardFeature(myField.getCard(i), opField.getCard(i));
                 int damage = attackCard(myField.getCard(i), opField.getCard(i));
                 // PENETRATION
-                stage.getResolver().resolveExtraAttackFeature(myField.getCard(i), opField.getCard(i), getInactivePlayer(), damage);
-                stage.getResolver().removeEffects(myField.getCard(i), FeatureType.HolyLight);
+                resolver.resolveExtraAttackFeature(myField.getCard(i), opField.getCard(i), getInactivePlayer(), damage);
+                // Remove lasting effects
+                resolver.removeEffects(myField.getCard(i), FeatureType.HolyLight);
             }
             // SNIPE
-            stage.getResolver().resolvePostAttackFeature(myField.getCard(i), getInactivePlayer());
+            resolver.resolvePostAttackFeature(myField.getCard(i), getInactivePlayer());
+            
+            // Resolve POISON damage
+            if (myField.getCard(i) == null) {
+                continue;
+            }
+            
+            List<CardStatusItem> items = myField.getCard(i).getStatus().getStatusOf(CardStatusType.POISONED);
+            for (CardStatusItem item : items) {
+                ui.debuffDamage(myField.getCard(i), item, item.getEffect());
+                resolver.applyDamage(myField.getCard(i), item.getEffect());
+            }
         }
 
         myField.compact();
         opField.compact();
+        
+        for (CardInfo card : myField) {
+            card.getStatus().remove(CardStatusType.FROZEN);
+            card.getStatus().remove(CardStatusType.PARALYZED);
+            card.getStatus().remove(CardStatusType.TRAPPED);
+            card.getStatus().remove(CardStatusType.POISONED);
+        }
 
         return Phase.End;
     }

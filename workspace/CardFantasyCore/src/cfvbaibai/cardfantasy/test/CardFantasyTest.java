@@ -30,10 +30,19 @@ public class CardFantasyTest {
     }
 
     @Test
-    public void testGameBasic() {
+    public void 城镇弓箭兵vs城镇长矛兵() {
         GameResult result = GameBuilder.play(
-                PlayerBuilder.build("TOM", 10, "城镇弓箭兵-10*2"),
+                PlayerBuilder.build("TOM", 10, "城镇弓箭兵-10*5"),
                 PlayerBuilder.build("JERRY", 10, "城镇长矛兵-10*5"));
+        assertEquals("TOM", result.getWinner().getId());
+        assertEquals(GameEndCause.ALL_CARDS_DIE, result.getCause());
+    }
+    
+    @Test
+    public void 城镇弓箭兵vs城镇巡逻兵() {
+        GameResult result = GameBuilder.play(
+                PlayerBuilder.build("TOM", 10, "城镇弓箭兵-10*5"),
+                PlayerBuilder.build("JERRY", 10, "城镇巡逻兵-10*5"));
         assertEquals("TOM", result.getWinner().getId());
         assertEquals(GameEndCause.ALL_CARDS_DIE, result.getCause());
     }

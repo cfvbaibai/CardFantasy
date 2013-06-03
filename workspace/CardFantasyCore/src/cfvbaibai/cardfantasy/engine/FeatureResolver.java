@@ -8,6 +8,7 @@ import cfvbaibai.cardfantasy.engine.feature.ChainLighteningFeature;
 import cfvbaibai.cardfantasy.engine.feature.HolyLightFeature;
 import cfvbaibai.cardfantasy.engine.feature.PenetrationFeature;
 import cfvbaibai.cardfantasy.engine.feature.SnipeFeature;
+import cfvbaibai.cardfantasy.engine.feature.TrapFeature;
 
 public class FeatureResolver {
     private Board board;
@@ -23,8 +24,12 @@ public class FeatureResolver {
     }
     
     public void resolvePreAttackFeature(CardInfo attacker, Player defender) {
-        for (Feature feature : attacker.getUsableFeaturesOf(FeatureType.ChainLightening)) {
-            ChainLighteningFeature.apply(feature, this, attacker, defender);
+        for (Feature feature : attacker.getUsableFeatures()) {
+            if (feature.getType() == FeatureType.ChainLightening) {
+                ChainLighteningFeature.apply(feature, this, attacker, defender);
+            } else if (feature.getType() == FeatureType.Trap) {
+                TrapFeature.apply(feature, this, attacker, defender);
+            }
         }
     }
     
@@ -76,8 +81,10 @@ public class FeatureResolver {
         OnAttackBlockingResult result = new OnAttackBlockingResult(true, feature == null ? attacker.getAT() : feature.getImpact());
         if (feature == null) {
             // Normal attack could be blocked by Dodge or PARALYZED, FROZEN, TRAPPED status.
-            CardStatusType statusType = attacker.getStatus().getType();
-            if (statusType == CardStatusType.FROZEN || statusType == CardStatusType.PARALYZED || statusType == CardStatusType.TRAPPED) {
+            CardStatus status = attacker.getStatus();
+            if (status.containsStatus(CardStatusType.FROZEN) ||
+                    status.containsStatus(CardStatusType.PARALYZED) ||
+                    status.containsStatus(CardStatusType.TRAPPED)) {
                 stage.getUI().attackBlocked(attacker, defender, feature, null);
                 result.attackable = false;
                 result.damage = 0;
@@ -87,8 +94,8 @@ public class FeatureResolver {
                 }
             }
         } else {
-            CardStatusType statusType = attacker.getStatus().getType();
-            if (statusType == CardStatusType.FROZEN || statusType == CardStatusType.TRAPPED) {
+            CardStatus status = attacker.getStatus();
+            if (status.containsStatus(CardStatusType.FROZEN) || status.containsStatus(CardStatusType.TRAPPED)) {
                 stage.getUI().attackBlocked(attacker, defender, feature, null);
                 result.attackable = false;
                 result.damage = 0;
