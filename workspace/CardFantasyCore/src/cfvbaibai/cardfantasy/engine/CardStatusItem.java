@@ -26,19 +26,19 @@ public class CardStatusItem {
     }
     
     public static CardStatusItem paralyzed() {
-        return new CardStatusItem(CardStatusType.PARALYZED, 0);
+        return new CardStatusItem(CardStatusType.Âé±Ô, 0);
     }
 
     public static CardStatusItem frozen() {
-        return new CardStatusItem(CardStatusType.FROZEN, 0);
+        return new CardStatusItem(CardStatusType.±ù¶³, 0);
     }
 
     public static CardStatusItem poisoned(int effect) {
-        return new CardStatusItem(CardStatusType.POISONED, effect);
+        return new CardStatusItem(CardStatusType.ÖÐ¶¾, effect);
     }
 
     public static CardStatusItem trapped() {
-        return new CardStatusItem(CardStatusType.TRAPPED, 0);
+        return new CardStatusItem(CardStatusType.Ëø¶¨, 0);
     }
 
     public String getShortDesc() {

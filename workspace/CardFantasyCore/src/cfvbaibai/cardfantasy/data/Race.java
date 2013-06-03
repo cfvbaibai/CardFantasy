@@ -1,8 +1,8 @@
 package cfvbaibai.cardfantasy.data;
 
 public enum Race {
-    Kingdom,
-    Forest,
-    Savage,
-    Hell,
+    王国,
+    森林,
+    蛮荒,
+    地狱,
 }

@@ -1,11 +1,11 @@
 package cfvbaibai.cardfantasy.engine;
 
 public enum CardStatusType {
-    PARALYZED(false),
-    FROZEN(false),
-    POISONED(true),
-    TRAPPED(false);
-    
+    Âé±Ô(false),
+    ±ù¶³(false),
+    ÖÐ¶¾(true),
+    Ëø¶¨(false);
+
     private boolean quantitive;
     public boolean isQuantitive() {
         return this.quantitive;

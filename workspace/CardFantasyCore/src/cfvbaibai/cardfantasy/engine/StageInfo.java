@@ -19,7 +19,7 @@ public class StageInfo {
         this.round = -1;
         this.ui = ui;
         this.rule = rule;
-        this.resolver = new FeatureResolver(board, this);
+        this.resolver = new FeatureResolver(this);
     }
     
     public FeatureResolver getResolver() {

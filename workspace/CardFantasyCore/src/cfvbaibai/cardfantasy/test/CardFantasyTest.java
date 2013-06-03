@@ -12,7 +12,7 @@ import cfvbaibai.cardfantasy.engine.GameEndCause;
 import cfvbaibai.cardfantasy.engine.GameResult;
 
 public class CardFantasyTest {
-    
+
     @BeforeClass
     public static void setUpBeforeClass() throws Exception {
     }
@@ -29,21 +29,38 @@ public class CardFantasyTest {
     public void tearDown() throws Exception {
     }
 
+    private void game5vs5(String card1, String card2) {
+        GameBuilder.play(PlayerBuilder.build("英雄" + card1, 10, card1 + "-10*5"),
+                PlayerBuilder.build("英雄" + card2, 10, card2 + "-10*5"));
+    }
+
     @Test
     public void 城镇弓箭兵vs城镇长矛兵() {
-        GameResult result = GameBuilder.play(
-                PlayerBuilder.build("TOM", 10, "城镇弓箭兵-10*5"),
-                PlayerBuilder.build("JERRY", 10, "城镇长矛兵-10*5"));
-        assertEquals("TOM", result.getWinner().getId());
-        assertEquals(GameEndCause.ALL_CARDS_DIE, result.getCause());
+        game5vs5("城镇弓箭兵", "城镇长矛兵");
+    }
+
+    @Test
+    public void 城镇弓箭兵vs城镇巡逻兵() {
+        game5vs5("城镇弓箭兵", "城镇巡逻兵");
     }
     
     @Test
-    public void 城镇弓箭兵vs城镇巡逻兵() {
-        GameResult result = GameBuilder.play(
-                PlayerBuilder.build("TOM", 10, "城镇弓箭兵-10*5"),
-                PlayerBuilder.build("JERRY", 10, "城镇巡逻兵-10*5"));
-        assertEquals("TOM", result.getWinner().getId());
-        assertEquals(GameEndCause.ALL_CARDS_DIE, result.getCause());
+    public void 城镇长矛兵vs城镇巡逻兵() {
+        game5vs5("城镇长矛兵", "城镇巡逻兵");
+    }
+    
+    @Test
+    public void 城镇弓箭兵vs城镇突击兵() {
+        game5vs5("城镇弓箭兵", "城镇突击兵");
+    }
+
+    @Test
+    public void 城镇长矛兵vs城镇突击兵() {
+        game5vs5("城镇长矛兵", "城镇突击兵");
+    }
+
+    @Test
+    public void 城镇巡逻兵vs城镇突击兵() {
+        game5vs5("城镇巡逻兵", "城镇突击兵");
     }
 }

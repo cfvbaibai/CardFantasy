@@ -46,7 +46,7 @@ public class CardStatus {
 
     public String getShortDesc() {
         if (items.size() == 0) {
-            return "¡¾-¡¿";
+            return "-";
         }
         StringBuffer sb = new StringBuffer(); 
         sb.append("¡¾");

@@ -128,13 +128,17 @@ public class TestGameUI extends GameUI {
 
     @Override
     public void useSkill(CardInfo attacker, List<CardInfo> victims, Feature feature) {
-        List<String> victimTexts = new LinkedList<String>();
-        for (CardInfo victim : victims) {
-            victimTexts.add(victim.getShortDesc());
+        if (victims.isEmpty()) {
+            sayF("%s cannot find target to use %s.", attacker.getShortDesc(), feature.getShortDesc());
+        } else {
+            List<String> victimTexts = new LinkedList<String>();
+            for (CardInfo victim : victims) {
+                victimTexts.add(victim.getShortDesc());
+            }
+            String victimsText = StringUtils.join(victimTexts, ",");
+            String featureDesc = feature == null ? "¡¾ÆÕÍ¨¹¥»÷¡¿" : feature.getShortDesc();
+            sayF("%s uses %s to { %s }!", attacker.getShortDesc(), featureDesc, victimsText);
         }
-        String victimsText = StringUtils.join(victimTexts, ",");
-        String featureDesc = feature == null ? "¡¾ÆÕÍ¨¹¥»÷¡¿" : feature.getShortDesc();
-        sayF("%s uses %s to { %s }!", attacker.getShortDesc(), featureDesc, victimsText);
     }
     
     @Override
@@ -269,5 +273,10 @@ public class TestGameUI extends GameUI {
     public void debuffDamage(CardInfo card, CardStatusItem item, int damage) {
         sayF("%s gets damage in status %s. Damage: %d. HP: %d -> %d",
             card.getShortDesc(), item.getShortDesc(), damage, card.getHP(), Math.max(0, card.getHP() - damage));
+    }
+
+    @Override
+    public void cannotAction(CardInfo card) {
+        sayF("%s is in status %s and cannot action!", card.getShortDesc(), card.getStatus().getShortDesc());
     }
 }

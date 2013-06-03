@@ -136,31 +136,49 @@ public class GameEngine {
             if (myField.getCard(i) == null) {
                 continue;
             }
-            // CHAIN LIGHTENING
-            resolver.resolvePreAttackFeature(myField.getCard(i), getInactivePlayer());
-            if (myField.getCard(i) == null) {
-                continue;
-            }
-            if (opField.getCard(i) == null) {
-                resolver.attackHero(myField.getCard(i), getInactivePlayer(), null, myField.getCard(i).getAT());
+            
+            CardStatus status = myField.getCard(i).getStatus();
+            if (status.containsStatus(CardStatusType.±ù¶³) || status.containsStatus(CardStatusType.Ëø¶¨)) {
+                ui.cannotAction(myField.getCard(i));
             } else {
-                // HOLY LIGHT
-                resolver.resolvePreAttackCardFeature(myField.getCard(i), opField.getCard(i));
-                int damage = attackCard(myField.getCard(i), opField.getCard(i));
-                // PENETRATION
-                resolver.resolveExtraAttackFeature(myField.getCard(i), opField.getCard(i), getInactivePlayer(), damage);
-                // Remove lasting effects
-                resolver.removeEffects(myField.getCard(i), FeatureType.HolyLight);
+                // SNIPE, CHAIN LIGHTENING
+                resolver.resolvePreAttackFeature(myField.getCard(i), getInactivePlayer());
+                if (myField.getCard(i) == null) {
+                    continue;
+                }
+                if (opField.getCard(i) == null) {
+                    resolver.attackHero(myField.getCard(i), getInactivePlayer(), null, myField.getCard(i).getAT());
+                } else {
+                    // HOLY LIGHT
+                    resolver.resolvePreAttackCardFeature(myField.getCard(i), opField.getCard(i));
+                    if (myField.getCard(i) == null) {
+                        continue;
+                    }
+                    if (opField.getCard(i) == null) {
+                        resolver.attackHero(myField.getCard(i), getInactivePlayer(), null, myField.getCard(i).getAT());
+                    } else {
+                        CardInfo defender = opField.getCard(i);
+                        int damage = attackCard(myField.getCard(i), defender);
+                        // PENETRATION
+                        resolver.resolveExtraAttackFeature(myField.getCard(i), opField.getCard(i), getInactivePlayer(), damage);
+                        if (myField.getCard(i) == null) {
+                            continue;
+                        }
+                        // COUNTER ATTACK
+                        resolver.resolveCounterAttackFeature(myField.getCard(i), defender, null);
+                        // Remove lasting effects
+                        resolver.removeEffects(myField.getCard(i), FeatureType.Ê¥¹â);
+                    }
+                }
+                // 
+                resolver.resolvePostAttackFeature(myField.getCard(i), getInactivePlayer());
             }
-            // SNIPE
-            resolver.resolvePostAttackFeature(myField.getCard(i), getInactivePlayer());
-            
-            // Resolve POISON damage
+
             if (myField.getCard(i) == null) {
                 continue;
             }
-            
-            List<CardStatusItem> items = myField.getCard(i).getStatus().getStatusOf(CardStatusType.POISONED);
+            // Resolve POISON damage
+            List<CardStatusItem> items = myField.getCard(i).getStatus().getStatusOf(CardStatusType.ÖÐ¶¾);
             for (CardStatusItem item : items) {
                 ui.debuffDamage(myField.getCard(i), item, item.getEffect());
                 resolver.applyDamage(myField.getCard(i), item.getEffect());
@@ -171,10 +189,10 @@ public class GameEngine {
         opField.compact();
         
         for (CardInfo card : myField) {
-            card.getStatus().remove(CardStatusType.FROZEN);
-            card.getStatus().remove(CardStatusType.PARALYZED);
-            card.getStatus().remove(CardStatusType.TRAPPED);
-            card.getStatus().remove(CardStatusType.POISONED);
+            card.getStatus().remove(CardStatusType.±ù¶³);
+            card.getStatus().remove(CardStatusType.Âé±Ô);
+            card.getStatus().remove(CardStatusType.Ëø¶¨);
+            card.getStatus().remove(CardStatusType.ÖÐ¶¾);
         }
 
         return Phase.End;

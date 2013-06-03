@@ -73,4 +73,6 @@ public abstract class GameUI {
     public abstract void blockDamage(CardInfo attacker, CardInfo defender, Feature feature, int originalDamage, int actualDamage);
 
     public abstract void debuffDamage(CardInfo card, CardStatusItem item, int effect);
+
+    public abstract void cannotAction(CardInfo card);
 }

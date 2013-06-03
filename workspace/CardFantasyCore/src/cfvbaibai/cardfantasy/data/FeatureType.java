@@ -1,34 +1,29 @@
 package cfvbaibai.cardfantasy.data;
 
 public enum FeatureType {
-    Snipe("¾Ñ»÷", 25),
-    ChainLightening("Á¬ËøÉÁµç", 25),
-    Penetration("´©´Ì", 15),
-    HolyLight("Ê¥¹â", 15, 15),
-    Block("¸ñµ²", 20),
-    Trap("ÏÝÚå", 1),
-    MagicShield("Ä§¼×", 140, -10);
-    
-    private String displayName;
+    ¾Ñ»÷(25),
+    Á¬»·ÉÁµç(25),
+    ´©´Ì(15),
+    Ê¥¹â(15, 15),
+    ¸ñµ²(20),
+    ÏÝÚå(1),
+    ·´»÷(20),
+    Ä§¼×(140, -10);
+
     private int initImpact;
     private int incrImpact;
-   
-    FeatureType(String displayName) {
-        this(displayName, 0, 0);
+    
+    FeatureType(int incrImpact) {
+        this(0, incrImpact);
     }
     
-    FeatureType(String displayName, int incrImpact) {
-        this(displayName, 0, incrImpact);
-    }
-    
-    FeatureType(String displayName, int initImpact, int incrImpact) {
-        this.displayName = displayName;
+    FeatureType(int initImpact, int incrImpact) {
         this.initImpact = initImpact;
         this.incrImpact = incrImpact;
     }
     
     public String getDisplayName() {
-        return this.displayName;
+        return this.name();
     }
 
     public int getImpact(int level) {
