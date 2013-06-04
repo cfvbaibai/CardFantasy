@@ -141,7 +141,7 @@ public class GameEngine {
             if (status.containsStatus(CardStatusType.±ù¶³) || status.containsStatus(CardStatusType.Ëø¶¨)) {
                 ui.cannotAction(myField.getCard(i));
             } else {
-                // SNIPE, CHAIN LIGHTENING
+
                 resolver.resolvePreAttackFeature(myField.getCard(i), getInactivePlayer());
                 if (myField.getCard(i) == null) {
                     continue;
@@ -149,7 +149,7 @@ public class GameEngine {
                 if (opField.getCard(i) == null) {
                     resolver.attackHero(myField.getCard(i), getInactivePlayer(), null, myField.getCard(i).getAT());
                 } else {
-                    // HOLY LIGHT
+
                     resolver.resolvePreAttackCardFeature(myField.getCard(i), opField.getCard(i));
                     if (myField.getCard(i) == null) {
                         continue;
@@ -159,15 +159,15 @@ public class GameEngine {
                     } else {
                         CardInfo defender = opField.getCard(i);
                         int damage = attackCard(myField.getCard(i), defender);
-                        // PENETRATION
+
                         resolver.resolveExtraAttackFeature(myField.getCard(i), opField.getCard(i), getInactivePlayer(), damage);
                         if (myField.getCard(i) == null) {
                             continue;
                         }
-                        // COUNTER ATTACK
+
                         resolver.resolveCounterAttackFeature(myField.getCard(i), defender, null);
                         // Remove lasting effects
-                        resolver.removeEffects(myField.getCard(i), FeatureType.Ê¥¹â);
+                        resolver.removeEffects(myField.getCard(i), FeatureType.Ê¥¹â, FeatureType.±©»÷);
                     }
                 }
                 // 

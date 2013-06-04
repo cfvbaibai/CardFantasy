@@ -1,10 +1,13 @@
 package cfvbaibai.cardfantasy.engine;
 
+import java.util.List;
+
 import cfvbaibai.cardfantasy.data.Feature;
 import cfvbaibai.cardfantasy.data.FeatureType;
 import cfvbaibai.cardfantasy.engine.feature.BlockFeature;
 import cfvbaibai.cardfantasy.engine.feature.ChainLighteningFeature;
 import cfvbaibai.cardfantasy.engine.feature.CounterAttackFeature;
+import cfvbaibai.cardfantasy.engine.feature.CriticalAttackFeature;
 import cfvbaibai.cardfantasy.engine.feature.FireballFeature;
 import cfvbaibai.cardfantasy.engine.feature.HolyLightFeature;
 import cfvbaibai.cardfantasy.engine.feature.IceBoltFeature;
@@ -103,8 +106,12 @@ public class FeatureResolver {
     }
 
     public void resolvePreAttackCardFeature(CardInfo attacker, CardInfo defender) {
-        for (Feature feature : attacker.getUsableFeaturesOf(FeatureType.Ê¥¹â)) {
-            HolyLightFeature.apply(feature, this, attacker, defender);
+        for (Feature feature : attacker.getUsableFeatures()) {
+            if (feature.getType() == FeatureType.Ê¥¹â) {
+                HolyLightFeature.apply(feature, this, attacker, defender);
+            } else if (feature.getType() == FeatureType.±©»÷) {
+                CriticalAttackFeature.apply(feature, this, attacker, defender);
+            }
         }
     }
 
@@ -147,7 +154,17 @@ public class FeatureResolver {
             return;
         }
         for (FeatureType cause : causes) {
-            card.removeEffectsCausedBy(cause);
+            List<FeatureEffect> effects = card.getEffectsCauseBy(cause);
+            if (effects == null) {
+                continue;
+            }
+            for (FeatureEffect effect : effects) {
+                if (cause == FeatureType.Ê¥¹â) {
+                    HolyLightFeature.remove(this, effect, card);
+                } else if (cause == FeatureType.±©»÷) {
+                    CriticalAttackFeature.remove(this, effect, card);
+                }
+            }
         }
     }
 }

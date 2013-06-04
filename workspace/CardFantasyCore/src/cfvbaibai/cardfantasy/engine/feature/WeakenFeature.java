@@ -1,5 +1,7 @@
 package cfvbaibai.cardfantasy.engine.feature;
 
+import java.util.List;
+
 import cfvbaibai.cardfantasy.data.Feature;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.FeatureEffect;
@@ -26,6 +28,22 @@ public final class WeakenFeature {
             return;
         }
         resolver.getStage().getUI().adjustAT(defender, -attackWeakened, feature);
+        List<FeatureEffect> effects = defender.getEffects();
+        for (FeatureEffect effect : effects) {
+            if (effect.getType() == FeatureEffectType.ATTACK_CHANGE && effect.getValue() > 0) {
+                if (attackWeakened > effect.getValue()) {
+                    attackWeakened -= effect.getValue();
+                    effect.setValue(0);
+                } else {
+                    attackWeakened = 0;
+                    effect.setValue(effect.getValue() - attackWeakened);
+                }
+            }
+            if (attackWeakened == 0) {
+                break;
+            }
+        }
+        
         defender.addEffect(new FeatureEffect(FeatureEffectType.ATTACK_CHANGE, feature.getType(), -attackWeakened));
     }
 }

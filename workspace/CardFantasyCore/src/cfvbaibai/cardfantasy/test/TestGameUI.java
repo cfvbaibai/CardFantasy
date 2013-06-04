@@ -7,6 +7,7 @@ import org.apache.commons.lang3.StringUtils;
 
 import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
 import cfvbaibai.cardfantasy.data.Feature;
+import cfvbaibai.cardfantasy.data.FeatureType;
 import cfvbaibai.cardfantasy.engine.Board;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.CardStatus;
@@ -87,7 +88,8 @@ public class TestGameUI extends GameUI {
         for (CardInfo card : player.getHand()) {
             if (card.getSummonDelay() == 0) {
                 summonedCards.add(card);
-                sayF("<%s> summons card: <%s (LV: %d)>", player.getId(), card.getCard().getName(), card.getCard().getLevel());
+                sayF("<%s> summons card: <%s (LV: %d)>", player.getId(), card.getCard().getName(), card.getCard()
+                        .getLevel());
             }
         }
         return summonedCards;
@@ -98,13 +100,11 @@ public class TestGameUI extends GameUI {
         String featureClause = feature == null ? "" : (" by " + feature.getShortDesc() + "");
         int logicalRemainingHP = defender.getHP() - damage;
         if (logicalRemainingHP < 0) {
-            sayF("%s attacks %s%s. Damage: %d (%d overflow). HP: %d -> 0.",
-                attacker.getShortDesc(), defender.getShortDesc(), featureClause,
-                damage, -logicalRemainingHP, defender.getHP()); 
+            sayF("%s attacks %s%s. Damage: %d (%d overflow). HP: %d -> 0.", attacker.getShortDesc(),
+                    defender.getShortDesc(), featureClause, damage, -logicalRemainingHP, defender.getHP());
         } else {
-            sayF("%s attacks %s%s. Damage: %d. HP: %d -> %d",
-                attacker.getShortDesc(), defender.getShortDesc(), featureClause,
-                damage, defender.getHP(), logicalRemainingHP);
+            sayF("%s attacks %s%s. Damage: %d. HP: %d -> %d", attacker.getShortDesc(), defender.getShortDesc(),
+                    featureClause, damage, defender.getHP(), logicalRemainingHP);
         }
     }
 
@@ -118,11 +118,11 @@ public class TestGameUI extends GameUI {
         String featureClause = feature == null ? "" : (" by " + feature.getShortDesc() + "");
         int logicalRemainingHP = hero.getLife() - damage;
         if (logicalRemainingHP < 0) {
-            sayF("%s attacks <%s> directly%s! Damage: %d (%d overflow). HP: %d -> %d",
-                attacker.getShortDesc(), hero.getId(), featureClause, damage, -logicalRemainingHP, hero.getLife(), 0);
+            sayF("%s attacks <%s> directly%s! Damage: %d (%d overflow). HP: %d -> %d", attacker.getShortDesc(),
+                    hero.getId(), featureClause, damage, -logicalRemainingHP, hero.getLife(), 0);
         } else {
-            sayF("%s attacks <%s> directly%s! Damage: %d. HP: %d -> %d",
-                attacker.getShortDesc(), hero.getId(), featureClause, damage, hero.getLife(), hero.getLife() - damage);
+            sayF("%s attacks <%s> directly%s! Damage: %d. HP: %d -> %d", attacker.getShortDesc(), hero.getId(),
+                    featureClause, damage, hero.getLife(), hero.getLife() - damage);
         }
     }
 
@@ -140,7 +140,7 @@ public class TestGameUI extends GameUI {
             sayF("%s uses %s to { %s }!", attacker.getShortDesc(), featureDesc, victimsText);
         }
     }
-    
+
     @Override
     public void useSkillToHero(CardInfo attacker, Player victimHero, Feature feature) {
         sayF("%s uses %s to enemy hero <%s>!", attacker.getShortDesc(), feature.getShortDesc(), victimHero.getId());
@@ -175,12 +175,12 @@ public class TestGameUI extends GameUI {
         say("");
         showField(player.getField());
         say("");
-        
+
         player = board.getPlayer(1);
         say("");
         showField(player.getField());
         say("");
-        showHand(player.getHand());        
+        showHand(player.getHand());
         showDeck(player.getDeck());
         showGrave(player.getGrave());
         sayF("Player %d: %s - Life: %d", 1, player.getId(), player.getLife());
@@ -249,8 +249,8 @@ public class TestGameUI extends GameUI {
             sayF("%s's attack is blocked by %s due to %s!", attacker.getShortDesc(), defender.getShortDesc(),
                     dfFeature.getShortDesc());
         } else if (atFeature != null && dfFeature == null) {
-            sayF("%s is in status %s so cannot activate %s!", attacker.getShortDesc(), attacker.getStatus().getShortDesc(),
-                    atFeature.getShortDesc());
+            sayF("%s is in status %s so cannot activate %s!", attacker.getShortDesc(), attacker.getStatus()
+                    .getShortDesc(), atFeature.getShortDesc());
         } else if (atFeature != null && dfFeature != null) {
             sayF("%s's feature %s is blocked by %s due to %s!", attacker.getShortDesc(), atFeature.getShortDesc(),
                     defender.getShortDesc(), dfFeature.getShortDesc());
@@ -259,24 +259,30 @@ public class TestGameUI extends GameUI {
 
     @Override
     public void adjustAT(CardInfo attacker, int adjAT, Feature feature) {
-        sayF("%s's AT increased by %s ! %d -> %d.",
-            attacker.getShortDesc(), feature.getShortDesc(), attacker.getAT(), attacker.getAT() + adjAT);
+        sayF("%s's AT increased by %s ! %d -> %d.", attacker.getShortDesc(), feature.getShortDesc(), attacker.getAT(),
+                attacker.getAT() + adjAT);
     }
 
     @Override
     public void blockDamage(CardInfo attacker, CardInfo defender, Feature feature, int originalDamage, int actualDamage) {
-        sayF("%s blocks the attack from %s by %s. Damage: %d -> %d",
-            defender.getShortDesc(), attacker.getShortDesc(), feature.getShortDesc(), originalDamage, actualDamage);
+        sayF("%s blocks the attack from %s by %s. Damage: %d -> %d", defender.getShortDesc(), attacker.getShortDesc(),
+                feature.getShortDesc(), originalDamage, actualDamage);
     }
 
     @Override
     public void debuffDamage(CardInfo card, CardStatusItem item, int damage) {
-        sayF("%s gets damage in status %s. Damage: %d. HP: %d -> %d",
-            card.getShortDesc(), item.getShortDesc(), damage, card.getHP(), Math.max(0, card.getHP() - damage));
+        sayF("%s gets damage in status %s. Damage: %d. HP: %d -> %d", card.getShortDesc(), item.getShortDesc(), damage,
+                card.getHP(), Math.max(0, card.getHP() - damage));
     }
 
     @Override
     public void cannotAction(CardInfo card) {
         sayF("%s is in status %s and cannot action!", card.getShortDesc(), card.getStatus().getShortDesc());
+    }
+
+    @Override
+    public void recoverAT(CardInfo card, FeatureType cause, int recoveredAT) {
+        sayF("%s's AT recovered from ¡¾%s¡¿. AT: %d -> %d", card.getShortDesc(), cause.name(), card.getAT(), card.getAT()
+                - recoveredAT);
     }
 }

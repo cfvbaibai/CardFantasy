@@ -11,7 +11,9 @@ public enum FeatureType {
     Ï÷Èõ(10),
     »ðÇò(25),
     ±ùµ¯(20),
+    ±©»÷(20),
     Ä§¼×(140, -10);
+    
 
     private int initImpact;
     private int incrImpact;

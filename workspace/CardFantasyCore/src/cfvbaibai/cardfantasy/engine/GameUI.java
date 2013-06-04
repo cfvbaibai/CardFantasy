@@ -5,6 +5,7 @@ import java.util.List;
 
 import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
 import cfvbaibai.cardfantasy.data.Feature;
+import cfvbaibai.cardfantasy.data.FeatureType;
 
 public abstract class GameUI {
 
@@ -75,4 +76,6 @@ public abstract class GameUI {
     public abstract void debuffDamage(CardInfo card, CardStatusItem item, int effect);
 
     public abstract void cannotAction(CardInfo card);
+
+    public abstract void recoverAT(CardInfo card, FeatureType cause, int recoveredAT);
 }

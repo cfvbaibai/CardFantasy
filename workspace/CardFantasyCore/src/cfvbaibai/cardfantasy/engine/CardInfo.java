@@ -42,6 +42,10 @@ public class CardInfo {
         effects.remove(cause);
     }
     
+    public List<FeatureEffect> getEffectsCauseBy(FeatureType cause) {
+        return effects.get(cause);
+    }
+    
     public int getPosition() {
         Field field = owner.getField();
         for (int i = 0; i < field.size(); ++i) {
@@ -146,5 +150,17 @@ public class CardInfo {
             }
         }
         return features;
+    }
+
+    public void removeEffect(FeatureEffect effect) {
+        this.effects.remove(effect);
+    }
+
+    public List<FeatureEffect> getEffects() {
+        List<FeatureEffect> result = new ArrayList<FeatureEffect>();
+        for (List<FeatureEffect> effects : this.effects.values()) {
+            result.addAll(effects);
+        }
+        return result;
     }
  }

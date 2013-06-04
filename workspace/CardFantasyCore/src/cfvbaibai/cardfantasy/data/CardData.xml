@@ -22,4 +22,8 @@
         <Feature type="火球" level="2" unlock="5" />
         <Feature type="冰弹" level="4" unlock="10" />
     </Card>
+    <Card id="6" name="攻城弩车手" race="王国" speed="4" star="2" cost="7" at="150" hp="500" incrAT="21" incrHP="19">
+        <Feature type="穿刺" level="6" unlock="5" />
+        <Feature type="暴击" level="5" unlock="10" />
+    </Card>
 </Cards>

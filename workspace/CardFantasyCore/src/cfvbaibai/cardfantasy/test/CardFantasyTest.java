@@ -30,8 +30,8 @@ public class CardFantasyTest {
     }
 
     private void game5vs5(String card1, String card2) {
-        GameBuilder.play(PlayerBuilder.build("英雄" + card1, 10, card1 + "-10*5"),
-                PlayerBuilder.build("英雄" + card2, 10, card2 + "-10*5"));
+        GameBuilder.play(PlayerBuilder.build("英雄" + card1, 50, card1 + "-10*5"),
+                PlayerBuilder.build("英雄" + card2, 50, card2 + "-10*5"));
     }
 
     @Test
@@ -67,5 +67,10 @@ public class CardFantasyTest {
     @Test
     public void 城镇巡逻兵vs魔法小丑() {
         game5vs5("城镇巡逻兵", "魔法小丑");
+    }
+    
+    @Test
+    public void 城镇弓箭兵vs攻城弩车手() {
+        game5vs5("城镇弓箭兵", "攻城弩车手");
     }
 }
