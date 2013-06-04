@@ -8,6 +8,9 @@ public enum FeatureType {
     ¸ñµ²(20),
     ÏÝÚå(1),
     ·´»÷(20),
+    Ï÷Èõ(10),
+    »ðÇò(25),
+    ±ùµ¯(20),
     Ä§¼×(140, -10);
 
     private int initImpact;

@@ -109,6 +109,7 @@ public class CardInfo {
         this.hp = this.card.getMaxHP();
         this.at = this.card.getInitAT();
         this.status = new CardStatus();
+        this.effects.clear();
     }
 
     public void resetSummonDelay() {

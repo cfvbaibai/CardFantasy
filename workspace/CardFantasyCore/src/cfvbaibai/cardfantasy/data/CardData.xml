@@ -13,8 +13,13 @@
         <Feature type="圣光" level="2" unlock="5" />
         <Feature type="陷阱" level="1" unlock="10" />
     </Card>
-    <Card id="3" name="城镇突击兵" race="王国" speed="2" star="1" cost="5" at="105" hp="360" incrAT="15" incrHP="21">
+    <Card id="4" name="城镇突击兵" race="王国" speed="2" star="1" cost="5" at="105" hp="360" incrAT="15" incrHP="21">
         <Feature type="陷阱" level="1" unlock="5" />
         <Feature type="反击" level="4" unlock="10" />
+    </Card>
+    <Card id="5" name="魔法小丑" race="王国" speed="2" star="1" cost="4" at="80" hp="285" incrAT="13" incrHP="27">
+        <Feature type="削弱" level="1" unlock="0" />
+        <Feature type="火球" level="2" unlock="5" />
+        <Feature type="冰弹" level="4" unlock="10" />
     </Card>
 </Cards>

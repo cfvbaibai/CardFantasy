@@ -13,6 +13,14 @@ public class GameResult {
         this.round = round;
         this.gameEndCause = gameEndCause;
     }
+    
+    public int getRound() {
+        return this.round;
+    }
+    
+    public Board getFinalBoard() {
+        return this.finalBoard;
+    }
 
     public Player getWinner() {
         return winner;

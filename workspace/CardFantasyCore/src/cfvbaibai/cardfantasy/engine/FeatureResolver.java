@@ -5,10 +5,13 @@ import cfvbaibai.cardfantasy.data.FeatureType;
 import cfvbaibai.cardfantasy.engine.feature.BlockFeature;
 import cfvbaibai.cardfantasy.engine.feature.ChainLighteningFeature;
 import cfvbaibai.cardfantasy.engine.feature.CounterAttackFeature;
+import cfvbaibai.cardfantasy.engine.feature.FireballFeature;
 import cfvbaibai.cardfantasy.engine.feature.HolyLightFeature;
+import cfvbaibai.cardfantasy.engine.feature.IceBoltFeature;
 import cfvbaibai.cardfantasy.engine.feature.PenetrationFeature;
 import cfvbaibai.cardfantasy.engine.feature.SnipeFeature;
 import cfvbaibai.cardfantasy.engine.feature.TrapFeature;
+import cfvbaibai.cardfantasy.engine.feature.WeakenFeature;
 
 public class FeatureResolver {
     private StageInfo stage;
@@ -29,6 +32,10 @@ public class FeatureResolver {
                 TrapFeature.apply(feature, this, attacker, defender);
             } else if (feature.getType() == FeatureType.¾Ñ»÷) {
                 SnipeFeature.apply(feature, this, attacker, defender);
+            } else if (feature.getType() == FeatureType.»ðÇò) {
+                FireballFeature.apply(feature, this, attacker, defender);
+            } else if (feature.getType() == FeatureType.±ùµ¯) {
+                IceBoltFeature.apply(feature, this, attacker, defender);
             }
         }
     }
@@ -86,8 +93,12 @@ public class FeatureResolver {
 
     public void resolveExtraAttackFeature(CardInfo attacker, CardInfo defender, Player defenderHero,
             int normalAttackDamage) throws HeroDieSignal {
-        for (Feature feature : attacker.getUsableFeaturesOf(FeatureType.´©´Ì)) {
-            PenetrationFeature.apply(feature, this, attacker, defenderHero, normalAttackDamage);
+        for (Feature feature : attacker.getUsableFeatures()) {
+            if (feature.getType() == FeatureType.´©´Ì) {
+                PenetrationFeature.apply(feature, this, attacker, defenderHero, normalAttackDamage);
+            } else if (feature.getType() == FeatureType.Ï÷Èõ) {
+                WeakenFeature.apply(feature, this, attacker, defender, normalAttackDamage);
+            }
         }
     }
 

@@ -11,7 +11,7 @@ public class Deck extends CardPile {
 
     public Deck(Collection <CardInfo> cards) {
         List <CardInfo> cloned = new ArrayList<CardInfo>(cards);
-        Collections.shuffle(cloned, Randomizer.getRandom());
+        Randomizer.shuffle(cloned);
         this.getCards().addAll(cloned);
     }
     

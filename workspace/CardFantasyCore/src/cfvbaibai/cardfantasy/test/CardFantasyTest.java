@@ -63,4 +63,9 @@ public class CardFantasyTest {
     public void 城镇巡逻兵vs城镇突击兵() {
         game5vs5("城镇巡逻兵", "城镇突击兵");
     }
+    
+    @Test
+    public void 城镇巡逻兵vs魔法小丑() {
+        game5vs5("城镇巡逻兵", "魔法小丑");
+    }
 }
