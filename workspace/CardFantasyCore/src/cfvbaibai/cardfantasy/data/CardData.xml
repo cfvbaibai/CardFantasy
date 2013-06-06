@@ -44,4 +44,9 @@
         <Feature type="狂热" level="3" unlock="5" />
         <Feature type="横扫" level="0" unlock="10" />
     </Card>
+    <Card id="11" name="见习圣骑" race="王国" speed="2" star="2" cost="7" at="135" hp="500" incrAT="24" incrHP="9">
+        <Feature type="格挡" level="3" unlock="0" />
+        <Feature type="圣光" level="4" unlock="5" />
+        <Feature type="闪避" level="3" unlock="10" />
+    </Card>
 </Cards>

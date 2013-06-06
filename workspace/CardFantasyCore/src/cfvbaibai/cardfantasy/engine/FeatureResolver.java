@@ -8,6 +8,7 @@ import cfvbaibai.cardfantasy.engine.feature.BlockFeature;
 import cfvbaibai.cardfantasy.engine.feature.ChainLighteningFeature;
 import cfvbaibai.cardfantasy.engine.feature.CounterAttackFeature;
 import cfvbaibai.cardfantasy.engine.feature.CriticalAttackFeature;
+import cfvbaibai.cardfantasy.engine.feature.DodgeFeature;
 import cfvbaibai.cardfantasy.engine.feature.FireballFeature;
 import cfvbaibai.cardfantasy.engine.feature.GuardFeature;
 import cfvbaibai.cardfantasy.engine.feature.HolyLightFeature;
@@ -73,7 +74,18 @@ public class FeatureResolver {
                 result.attackable = false;
                 result.damage = 0;
             } else {
+                for (Feature blockFeature : defender.getUsableFeaturesOf(FeatureType.…¡±‹)) {
+                    if (!result.attackable) {
+                        continue;
+                    }
+                    if (blockFeature.getType() == FeatureType.…¡±‹) {
+                        result.attackable = !DodgeFeature.apply(blockFeature, this, attacker, defender, result.damage);
+                    }
+                }
                 for (Feature blockFeature : defender.getUsableFeatures()) {
+                    if (!result.attackable) {
+                        continue;
+                    }
                     if (blockFeature.getType() == FeatureType.∏Òµ≤) {
                         result.damage = BlockFeature.apply(blockFeature, this, attacker, defender, result.damage);
                     }
