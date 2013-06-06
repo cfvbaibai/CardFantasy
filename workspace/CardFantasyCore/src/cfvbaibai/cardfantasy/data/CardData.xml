@@ -26,4 +26,22 @@
         <Feature type="穿刺" level="6" unlock="5" />
         <Feature type="暴击" level="5" unlock="10" />
     </Card>
+    <Card id="7" name="狙击箭弩兵" race="王国" speed="2" star="2" cost="7" at="110" hp="450" incrAT="19" incrHP="22">
+        <Feature type="狙击" level="2" unlock="0" />
+        <Feature type="削弱" level="3" unlock="5" />
+        <Feature type="狙击" level="6" unlock="10" />
+    </Card>
+    <Card id="8" name="轻甲盾卫兵" race="王国" speed="2" star="2" cost="6" at="80" hp="610" incrAT="9" incrHP="44">
+        <Feature type="格挡" level="3" unlock="0" />
+        <Feature type="守护" level="0" unlock="5" />
+        <Feature type="回春" level="6" unlock="10" />
+    </Card>
+    <Card id="9" name="见习魔剑士" race="王国" speed="2" star="2" cost="6" at="155" hp="500" incrAT="21" incrHP="15">
+        <Feature type="暴击" level="3" unlock="5" />
+        <Feature type="连环闪电" level="2" unlock="10" />
+    </Card>
+    <Card id="10" name="冲锋斩斧兵" race="王国" speed="4" star="2" cost="6" at="160" hp="520" incrAT="22" incrHP="15">
+        <Feature type="狂热" level="3" unlock="5" />
+        <Feature type="横扫" level="0" unlock="10" />
+    </Card>
 </Cards>

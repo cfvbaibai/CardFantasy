@@ -4,8 +4,6 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
-import cfvbaibai.cardfantasy.engine.CardInfo;
-
 public class Randomizer {
     private static Random random = new Random();
     

@@ -2,7 +2,6 @@ package cfvbaibai.cardfantasy.engine;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 
 import cfvbaibai.cardfantasy.Randomizer;

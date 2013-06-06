@@ -18,7 +18,7 @@ public class CardInfo {
     private int summonDelay;
     private CardStatus status;
     private Player owner;
-    
+
     private Map<FeatureType, List<FeatureEffect>> effects;
 
     public CardInfo(Card card, Player owner) {
@@ -30,22 +30,22 @@ public class CardInfo {
         this.owner = owner;
         this.effects = new HashMap<FeatureType, List<FeatureEffect>>();
     }
-    
+
     public void addEffect(FeatureEffect effect) {
         if (!effects.containsKey(effect.getCause())) {
             effects.put(effect.getCause(), new LinkedList<FeatureEffect>());
         }
         this.effects.get(effect.getCause()).add(effect);
     }
-    
+
     public void removeEffectsCausedBy(FeatureType cause) {
         effects.remove(cause);
     }
-    
+
     public List<FeatureEffect> getEffectsCauseBy(FeatureType cause) {
         return effects.get(cause);
     }
-    
+
     public int getPosition() {
         Field field = owner.getField();
         for (int i = 0; i < field.size(); ++i) {
@@ -55,7 +55,7 @@ public class CardInfo {
         }
         return -1;
     }
-    
+
     public Player getOwner() {
         return this.owner;
     }
@@ -75,11 +75,11 @@ public class CardInfo {
         }
         return actualAT;
     }
-    
+
     public int getHP() {
         return this.hp;
     }
-    
+
     public void setHP(int hp) {
         this.hp = hp;
     }
@@ -91,7 +91,7 @@ public class CardInfo {
     public void setSummonDelay(int summonDelay) {
         this.summonDelay = summonDelay;
     }
-    
+
     public CardStatus getStatus() {
         return status;
     }
@@ -99,14 +99,15 @@ public class CardInfo {
     public void addStatus(CardStatusItem statusItem) {
         this.status.add(statusItem);
     }
-    
+
     public void removeStatus(CardStatusType type) {
         this.status.remove(type);
     }
 
     public String getShortDesc() {
         int position = this.getPosition();
-        return String.format("<%s>.<%s%s>", this.getOwner().getId(), this.getCard().getName(), position < 0 ? "" : String.valueOf(position));
+        return String.format("<%s>.<%s%s>", this.getOwner().getId(), this.getCard().getName(), position < 0 ? ""
+                : String.valueOf(position));
     }
 
     public void reset() {
@@ -120,10 +121,10 @@ public class CardInfo {
         this.setSummonDelay(this.card.getSummonSpeed());
     }
 
-    public List <Feature> getAllFeatures() {
+    public List<Feature> getAllFeatures() {
         return this.card.getAllFeatures();
     }
-    
+
     public List<Feature> getUsableFeaturesOf(FeatureType type) {
         List<Feature> features = new ArrayList<Feature>(4);
         for (Feature feature : getAllFeatures()) {
@@ -153,7 +154,11 @@ public class CardInfo {
     }
 
     public void removeEffect(FeatureEffect effect) {
-        this.effects.remove(effect);
+        List<FeatureEffect> result = this.effects.get(effect.getCause());
+        if (result == null) {
+            return;
+        }
+        result.remove(effect);
     }
 
     public List<FeatureEffect> getEffects() {
@@ -163,4 +168,4 @@ public class CardInfo {
         }
         return result;
     }
- }
+}

@@ -1,16 +1,19 @@
 package cfvbaibai.cardfantasy.engine;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
 import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
 import cfvbaibai.cardfantasy.GameOverSignal;
+import cfvbaibai.cardfantasy.data.Feature;
 import cfvbaibai.cardfantasy.data.FeatureType;
 import cfvbaibai.cardfantasy.data.PlayerInfo;
 
 public class GameEngine {
 
     private StageInfo stage;
+
     private Board getBoard() {
         return this.stage.getBoard();
     }
@@ -18,11 +21,11 @@ public class GameEngine {
     public GameEngine(GameUI ui, Rule rule) {
         this.stage = new StageInfo(new Board(), ui, rule);
     }
-    
+
     private Player getActivePlayer() {
         return this.stage.getActivePlayer();
     }
-    
+
     private Player getInactivePlayer() {
         return this.stage.getInactivePlayers().get(0);
     }
@@ -70,11 +73,14 @@ public class GameEngine {
                 nextPhase = Phase.Unknown;
             }
         } catch (GameOverSignal signal) {
-            return new GameResult(this.getBoard(), this.getBoard().getPlayer(0), stage.getRound(), GameEndCause.TOO_LONG);
+            return new GameResult(this.getBoard(), this.getBoard().getPlayer(0), stage.getRound(),
+                    GameEndCause.TOO_LONG);
         } catch (HeroDieSignal signal) {
-            return new GameResult(this.getBoard(), getOpponent(signal.getDeadPlayer()), this.stage.getRound(), GameEndCause.HERO_DIE);
+            return new GameResult(this.getBoard(), getOpponent(signal.getDeadPlayer()), this.stage.getRound(),
+                    GameEndCause.HERO_DIE);
         } catch (AllCardsDieSignal signal) {
-            return new GameResult(this.getBoard(), getOpponent(signal.getDeadPlayer()), this.stage.getRound(), GameEndCause.ALL_CARDS_DIE);
+            return new GameResult(this.getBoard(), getOpponent(signal.getDeadPlayer()), this.stage.getRound(),
+                    GameEndCause.ALL_CARDS_DIE);
         }
     }
 
@@ -128,7 +134,7 @@ public class GameEngine {
 
         FeatureResolver resolver = stage.getResolver();
         GameUI ui = stage.getUI();
-        
+
         ui.battleBegins();
         Field myField = getActivePlayer().getField();
         Field opField = getInactivePlayer().getField();
@@ -136,7 +142,7 @@ public class GameEngine {
             if (myField.getCard(i) == null) {
                 continue;
             }
-            
+
             CardStatus status = myField.getCard(i).getStatus();
             if (status.containsStatus(CardStatusType.±˘∂≥) || status.containsStatus(CardStatusType.À¯∂®)) {
                 ui.cannotAction(myField.getCard(i));
@@ -158,19 +164,46 @@ public class GameEngine {
                         resolver.attackHero(myField.getCard(i), getInactivePlayer(), null, myField.getCard(i).getAT());
                     } else {
                         CardInfo defender = opField.getCard(i);
-                        int damage = attackCard(myField.getCard(i), defender);
 
-                        resolver.resolveExtraAttackFeature(myField.getCard(i), opField.getCard(i), getInactivePlayer(), damage);
+                        for (Feature feature : myField.getCard(i).getUsableFeatures()) {
+                            if (feature.getType() == FeatureType.∫·…®) {
+                                ui.useSkill(myField.getCard(i), defender, feature);
+                            }
+                        }
+                        int damage = attackCard(resolver, myField, i, defender);
+
+                        resolver.resolveExtraAttackFeature(myField.getCard(i), opField.getCard(i), getInactivePlayer(),
+                                damage);
                         if (myField.getCard(i) == null) {
                             continue;
                         }
 
                         resolver.resolveCounterAttackFeature(myField.getCard(i), defender, null);
+
+                        if (damage > 0 && myField.getCard(i) != null) {
+                            for (Feature feature : myField.getCard(i).getUsableFeatures()) {
+                                if (feature.getType() == FeatureType.∫·…®) {
+
+                                    List<CardInfo> sweepDefenders = new ArrayList<CardInfo>();
+                                    if (i > 0 && opField.getCard(i) != null) {
+                                        sweepDefenders.add(opField.getCard(i));
+                                    }
+                                    if (opField.getCard(i + 1) != null) {
+                                        sweepDefenders.add(opField.getCard(i + 1));
+                                    }
+
+                                    for (CardInfo sweepDefender : sweepDefenders) {
+                                        ui.useSkill(myField.getCard(i), sweepDefender, feature);
+                                        attackCard(resolver, myField, i, sweepDefender);
+                                    }
+                                }
+                            }
+                        }
                         // Remove lasting effects
                         resolver.removeEffects(myField.getCard(i), FeatureType. •π‚, FeatureType.±©ª˜);
                     }
                 }
-                // 
+                //
                 resolver.resolvePostAttackFeature(myField.getCard(i), getInactivePlayer());
             }
 
@@ -183,11 +216,17 @@ public class GameEngine {
                 ui.debuffDamage(myField.getCard(i), item, item.getEffect());
                 resolver.applyDamage(myField.getCard(i), item.getEffect());
             }
+
+            if (myField.getCard(i) == null) {
+                continue;
+            }
+            // ªÿ¥∫
+            resolver.resolveCardRoundEndingFeature(myField.getCard(i));
         }
 
         myField.compact();
         opField.compact();
-        
+
         for (CardInfo card : myField) {
             card.getStatus().remove(CardStatusType.±˘∂≥);
             card.getStatus().remove(CardStatusType.¬È±‘);
@@ -198,27 +237,19 @@ public class GameEngine {
         return Phase.End;
     }
 
-    private int attackCard(CardInfo attacker, CardInfo defender) {
-        this.stage.getUI().useSkill(attacker, defender, null);
-        OnAttackBlockingResult blockingResult = stage.getResolver().resolveAttackBlockingFeature(attacker, defender, null);
-        if (!blockingResult.attackable) {
-            return -1;
-        }
-        this.stage.getUI().attackCard(attacker, defender, null, blockingResult.damage);
-        OnDamagedResult damagedResult = stage.getResolver().applyDamage(defender,blockingResult.damage);
-        if (damagedResult.cardDead) {
-            stage.getResolver().resolveDyingFeature(attacker, defender, null);
-        }
-        return damagedResult.actualDamage;
+    private int attackCard(FeatureResolver resolver, Field myField, int i, CardInfo defender) throws HeroDieSignal {
+        int damage = resolver.attackCard(myField.getCard(i), defender);
+        resolver.resolveExtraAttackFeature(myField.getCard(i), defender, getInactivePlayer(), damage);
+        resolver.resolveCounterAttackFeature(myField.getCard(i), defender, null);
+        return damage;
     }
 
     private Phase roundStart() throws GameOverSignal, AllCardsDieSignal {
         if (this.stage.getRound() > stage.getRule().getMaxRound()) {
             throw new GameOverSignal();
         }
-        if (this.getActivePlayer().getDeck().size() == 0 &&
-            this.getActivePlayer().getField().size() == 0 &&
-            this.getActivePlayer().getHand().size() == 0) {
+        if (this.getActivePlayer().getDeck().size() == 0 && this.getActivePlayer().getField().size() == 0
+                && this.getActivePlayer().getHand().size() == 0) {
             throw new AllCardsDieSignal(this.getActivePlayer());
         }
 

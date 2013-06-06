@@ -30,7 +30,9 @@ public final class SnipeFeature {
         if (victim != null) {
             resolver.getStage().getUI().useSkill(attacker, victim, feature);
             resolver.getStage().getUI().attackCard(attacker, victim, feature, damage);
-            resolver.applyDamage(victim, damage);
+            if (resolver.applyDamage(victim, damage).cardDead) {
+                resolver.resolveDyingFeature(attacker, victim, feature);
+            }
         }
     }
 }

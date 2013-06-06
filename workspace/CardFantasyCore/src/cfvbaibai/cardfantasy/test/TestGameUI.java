@@ -10,9 +10,7 @@ import cfvbaibai.cardfantasy.data.Feature;
 import cfvbaibai.cardfantasy.data.FeatureType;
 import cfvbaibai.cardfantasy.engine.Board;
 import cfvbaibai.cardfantasy.engine.CardInfo;
-import cfvbaibai.cardfantasy.engine.CardStatus;
 import cfvbaibai.cardfantasy.engine.CardStatusItem;
-import cfvbaibai.cardfantasy.engine.CardStatusType;
 import cfvbaibai.cardfantasy.engine.Deck;
 import cfvbaibai.cardfantasy.engine.Field;
 import cfvbaibai.cardfantasy.engine.GameResult;
@@ -143,7 +141,8 @@ public class TestGameUI extends GameUI {
 
     @Override
     public void useSkillToHero(CardInfo attacker, Player victimHero, Feature feature) {
-        sayF("%s uses %s to enemy hero <%s>!", attacker.getShortDesc(), feature.getShortDesc(), victimHero.getId());
+        String featureDesc = feature == null ? "¡¾ÆÕÍ¨¹¥»÷¡¿" : feature.getShortDesc();
+        sayF("%s uses %s to enemy hero <%s>!", attacker.getShortDesc(), featureDesc, victimHero.getId());
     }
 
     @Override
@@ -284,5 +283,11 @@ public class TestGameUI extends GameUI {
     public void recoverAT(CardInfo card, FeatureType cause, int recoveredAT) {
         sayF("%s's AT recovered from ¡¾%s¡¿. AT: %d -> %d", card.getShortDesc(), cause.name(), card.getAT(), card.getAT()
                 - recoveredAT);
+    }
+
+    @Override
+    public void healCard(CardInfo healer, CardInfo healee, Feature feature, int healHP) {
+        sayF("%s heals %s by %s for %d points. HP: %d -> %d", healer.getShortDesc(), healee.getShortDesc(),
+                feature.getShortDesc(), healHP, healee.getHP(), healee.getHP() + healHP);
     }
 }

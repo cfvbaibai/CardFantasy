@@ -1,15 +1,10 @@
 package cfvbaibai.cardfantasy.test;
 
-import static org.junit.Assert.assertEquals;
-
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-
-import cfvbaibai.cardfantasy.engine.GameEndCause;
-import cfvbaibai.cardfantasy.engine.GameResult;
 
 public class CardFantasyTest {
 
@@ -72,5 +67,40 @@ public class CardFantasyTest {
     @Test
     public void ³ÇÕò¹­¼ı±øvs¹¥³Çåó³µÊÖ() {
         game5vs5("³ÇÕò¹­¼ı±ø", "¹¥³Çåó³µÊÖ");
+    }
+    
+    @Test
+    public void ³ÇÕò¹­¼ı±øvs¾Ñ»÷¼ıåó±ø() {
+        game5vs5("³ÇÕò¹­¼ı±ø", "¾Ñ»÷¼ıåó±ø");
+    }
+    
+    @Test
+    public void Ä§·¨Ğ¡³óvs¾Ñ»÷¼ıåó±ø() {
+        game5vs5("Ä§·¨Ğ¡³ó", "¾Ñ»÷¼ıåó±ø");
+    }
+    
+    @Test
+    public void ³ÇÕò¹­¼ı±øvsÇá¼×¶ÜÎÀ±ø() {
+        game5vs5("³ÇÕò¹­¼ı±ø", "Çá¼×¶ÜÎÀ±ø");
+    }
+    
+    @Test
+    public void ¾Ñ»÷¼ıåó±øvsÇá¼×¶ÜÎÀ±ø() {
+        game5vs5("¾Ñ»÷¼ıåó±ø", "Çá¼×¶ÜÎÀ±ø");
+    }
+    
+    @Test
+    public void ¾Ñ»÷¼ıåó±øvs¼ûÏ°Ä§½£Ê¿() {
+        game5vs5("¾Ñ»÷¼ıåó±ø", "¼ûÏ°Ä§½£Ê¿");
+    }
+    
+    @Test
+    public void Çá¼×¶ÜÎÀ±øvs¼ûÏ°Ä§½£Ê¿() {
+        game5vs5("Çá¼×¶ÜÎÀ±ø", "¼ûÏ°Ä§½£Ê¿");
+    }
+
+    @Test
+    public void ³å·æÕ¶¸«±øvs¼ûÏ°Ä§½£Ê¿() {
+        game5vs5("³å·æÕ¶¸«±ø", "¼ûÏ°Ä§½£Ê¿");
     }
 }

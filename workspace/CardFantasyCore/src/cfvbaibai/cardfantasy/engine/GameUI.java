@@ -78,4 +78,6 @@ public abstract class GameUI {
     public abstract void cannotAction(CardInfo card);
 
     public abstract void recoverAT(CardInfo card, FeatureType cause, int recoveredAT);
+
+    public abstract void healCard(CardInfo healer, CardInfo healee, Feature feature, int healHP);
 }

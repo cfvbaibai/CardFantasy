@@ -20,6 +20,8 @@ public final class CounterAttackFeature {
         GameUI ui = resolver.getStage().getUI();
         ui.useSkill(defender, attacker, feature);
         ui.attackCard(defender, attacker, feature, damage);
-        resolver.applyDamage(attacker, damage);
+        if (resolver.applyDamage(attacker, damage).cardDead) {
+            resolver.resolveDyingFeature(attacker, defender, feature);
+        }
     }
 }
