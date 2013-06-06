@@ -49,4 +49,9 @@
         <Feature type="圣光" level="4" unlock="5" />
         <Feature type="闪避" level="3" unlock="10" />
     </Card>
+    <Card id="12" name="牧师" race="王国" speed="4" star="2" cost="8" at="125" hp="460" incrAT="15" incrHP="36">
+        <Feature type="治疗" level="3" unlock="0" />
+        <Feature type="圣光" level="6" unlock="5" />
+        <Feature type="甘霖" level="5" unlock="10" />
+    </Card>
 </Cards>

@@ -13,6 +13,7 @@ public final class RejuvenateFeature {
         if (healHP == 0) {
             return;
         }
+        // TODO: аяик
         resolver.getStage().getUI().healCard(card, card, feature, healHP);
         resolver.applyDamage(card, -healHP);
     }

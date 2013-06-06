@@ -11,9 +11,11 @@ import cfvbaibai.cardfantasy.engine.feature.CriticalAttackFeature;
 import cfvbaibai.cardfantasy.engine.feature.DodgeFeature;
 import cfvbaibai.cardfantasy.engine.feature.FireballFeature;
 import cfvbaibai.cardfantasy.engine.feature.GuardFeature;
+import cfvbaibai.cardfantasy.engine.feature.HealFeature;
 import cfvbaibai.cardfantasy.engine.feature.HolyLightFeature;
 import cfvbaibai.cardfantasy.engine.feature.IceBoltFeature;
 import cfvbaibai.cardfantasy.engine.feature.PenetrationFeature;
+import cfvbaibai.cardfantasy.engine.feature.RainfallFeature;
 import cfvbaibai.cardfantasy.engine.feature.RejuvenateFeature;
 import cfvbaibai.cardfantasy.engine.feature.SnipeFeature;
 import cfvbaibai.cardfantasy.engine.feature.TrapFeature;
@@ -43,6 +45,10 @@ public class FeatureResolver {
                 FireballFeature.apply(feature, this, attacker, defender);
             } else if (feature.getType() == FeatureType.±˘µØ) {
                 IceBoltFeature.apply(feature, this, attacker, defender);
+            } else if (feature.getType() == FeatureType.÷Œ¡∆) {
+                HealFeature.apply(feature, this, attacker);
+            } else if (feature.getType() == FeatureType.∏ ¡ÿ) {
+                RainfallFeature.apply(feature, this, attacker);
             }
         }
     }
@@ -240,5 +246,16 @@ public class FeatureResolver {
             stage.getResolver().resolveDyingFeature(attacker, defender, null);
         }
         return damagedResult.actualDamage;
+    }
+
+    public CardInfo pickHealee(CardInfo healer) {
+        Field field = healer.getOwner().getField();
+        CardInfo healee = null;
+        for (CardInfo card : field) {
+            if (healee == null || card.getHP() < healee.getHP()) {
+                healee = card;
+            }
+        }
+        return healee;
     }
 }
