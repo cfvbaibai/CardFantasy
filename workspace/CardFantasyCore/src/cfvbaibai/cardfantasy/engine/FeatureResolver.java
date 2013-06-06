@@ -159,6 +159,9 @@ public class FeatureResolver {
     }
 
     public void attackHero(CardInfo attacker, Player defenderPlayer, Feature feature, int damage) throws HeroDieSignal {
+        if (attacker == null) {
+            return;
+        }
         stage.getUI().useSkillToHero(attacker, defenderPlayer, null);
         if (!this.resolveAttackHeroBlockingFeatures(attacker, defenderPlayer, feature, damage)) {
             stage.getUI().attackHero(attacker, defenderPlayer, feature, damage);
@@ -202,13 +205,16 @@ public class FeatureResolver {
     }
 
     public void resolveCardRoundEndingFeature(CardInfo card) {
+        if (card == null) {
+            return;
+        }
         for (Feature feature : card.getUsableFeatures()) {
             if (feature.getType() == FeatureType.»Ø´º) {
                 RejuvenateFeature.apply(feature, this, card);
             }
         }
     }
-    
+
     public int attackCard(CardInfo attacker, CardInfo defender) {
         this.stage.getUI().useSkill(attacker, defender, null);
         OnAttackBlockingResult blockingResult = stage.getResolver().resolveAttackBlockingFeature(attacker, defender,

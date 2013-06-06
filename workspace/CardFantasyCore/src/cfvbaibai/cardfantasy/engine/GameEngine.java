@@ -147,78 +147,16 @@ public class GameEngine {
             if (status.containsStatus(CardStatusType.±ù¶³) || status.containsStatus(CardStatusType.Ëø¶¨)) {
                 ui.cannotAction(myField.getCard(i));
             } else {
+                tryAttackEnemy(myField, opField, i);
+            }
 
-                resolver.resolvePreAttackFeature(myField.getCard(i), getInactivePlayer());
-                if (myField.getCard(i) == null) {
-                    continue;
+            if (myField.getCard(i) != null) {
+                // Resolve POISON damage
+                List<CardStatusItem> items = myField.getCard(i).getStatus().getStatusOf(CardStatusType.ÖÐ¶¾);
+                for (CardStatusItem item : items) {
+                    ui.debuffDamage(myField.getCard(i), item, item.getEffect());
+                    resolver.applyDamage(myField.getCard(i), item.getEffect());
                 }
-                if (opField.getCard(i) == null) {
-                    resolver.attackHero(myField.getCard(i), getInactivePlayer(), null, myField.getCard(i).getAT());
-                } else {
-
-                    resolver.resolvePreAttackCardFeature(myField.getCard(i), opField.getCard(i));
-                    if (myField.getCard(i) == null) {
-                        continue;
-                    }
-                    if (opField.getCard(i) == null) {
-                        resolver.attackHero(myField.getCard(i), getInactivePlayer(), null, myField.getCard(i).getAT());
-                    } else {
-                        CardInfo defender = opField.getCard(i);
-
-                        for (Feature feature : myField.getCard(i).getUsableFeatures()) {
-                            if (feature.getType() == FeatureType.ºáÉ¨) {
-                                ui.useSkill(myField.getCard(i), defender, feature);
-                            }
-                        }
-                        int damage = attackCard(resolver, myField, i, defender);
-
-                        resolver.resolveExtraAttackFeature(myField.getCard(i), opField.getCard(i), getInactivePlayer(),
-                                damage);
-                        if (myField.getCard(i) == null) {
-                            continue;
-                        }
-
-                        resolver.resolveCounterAttackFeature(myField.getCard(i), defender, null);
-
-                        if (damage > 0 && myField.getCard(i) != null) {
-                            for (Feature feature : myField.getCard(i).getUsableFeatures()) {
-                                if (feature.getType() == FeatureType.ºáÉ¨) {
-
-                                    List<CardInfo> sweepDefenders = new ArrayList<CardInfo>();
-                                    if (i > 0 && opField.getCard(i) != null) {
-                                        sweepDefenders.add(opField.getCard(i));
-                                    }
-                                    if (opField.getCard(i + 1) != null) {
-                                        sweepDefenders.add(opField.getCard(i + 1));
-                                    }
-
-                                    for (CardInfo sweepDefender : sweepDefenders) {
-                                        ui.useSkill(myField.getCard(i), sweepDefender, feature);
-                                        attackCard(resolver, myField, i, sweepDefender);
-                                    }
-                                }
-                            }
-                        }
-                        // Remove lasting effects
-                        resolver.removeEffects(myField.getCard(i), FeatureType.Ê¥¹â, FeatureType.±©»÷);
-                    }
-                }
-                //
-                resolver.resolvePostAttackFeature(myField.getCard(i), getInactivePlayer());
-            }
-
-            if (myField.getCard(i) == null) {
-                continue;
-            }
-            // Resolve POISON damage
-            List<CardStatusItem> items = myField.getCard(i).getStatus().getStatusOf(CardStatusType.ÖÐ¶¾);
-            for (CardStatusItem item : items) {
-                ui.debuffDamage(myField.getCard(i), item, item.getEffect());
-                resolver.applyDamage(myField.getCard(i), item.getEffect());
-            }
-
-            if (myField.getCard(i) == null) {
-                continue;
             }
             // »Ø´º
             resolver.resolveCardRoundEndingFeature(myField.getCard(i));
@@ -237,7 +175,62 @@ public class GameEngine {
         return Phase.End;
     }
 
-    private int attackCard(FeatureResolver resolver, Field myField, int i, CardInfo defender) throws HeroDieSignal {
+    private void tryAttackEnemy(Field myField, Field opField, int i) throws HeroDieSignal {
+        FeatureResolver resolver = this.stage.getResolver();
+        resolver.resolvePreAttackFeature(myField.getCard(i), getInactivePlayer());
+        if (opField.getCard(i) == null) {
+            resolver.attackHero(myField.getCard(i), getInactivePlayer(), null, myField.getCard(i).getAT());
+        } else {
+            tryAttackCard(myField, opField, i);
+        }
+        //
+        resolver.resolvePostAttackFeature(myField.getCard(i), getInactivePlayer());
+    }
+
+    private void tryAttackCard(Field myField, Field opField, int i) throws HeroDieSignal {
+        FeatureResolver resolver = this.stage.getResolver();
+        resolver.resolvePreAttackCardFeature(myField.getCard(i), opField.getCard(i));
+        if (opField.getCard(i) == null) {
+            resolver.attackHero(myField.getCard(i), getInactivePlayer(), null, myField.getCard(i).getAT());
+        } else {
+            processAttackCard(myField, opField, i);
+        }
+    }
+
+    private void processAttackCard(Field myField, Field opField, int i) throws HeroDieSignal {
+        CardInfo defender = opField.getCard(i);
+        FeatureResolver resolver = this.stage.getResolver();
+        GameUI ui = this.stage.getUI();
+        for (Feature feature : myField.getCard(i).getUsableFeatures()) {
+            if (feature.getType() == FeatureType.ºáÉ¨) {
+                ui.useSkill(myField.getCard(i), defender, feature);
+            }
+        }
+        int damage = doAttackCard(resolver, myField, i, defender);
+        if (damage > 0 && myField.getCard(i) != null) {
+            for (Feature feature : myField.getCard(i).getUsableFeatures()) {
+                if (feature.getType() == FeatureType.ºáÉ¨) {
+
+                    List<CardInfo> sweepDefenders = new ArrayList<CardInfo>();
+                    if (i > 0 && opField.getCard(i) != null) {
+                        sweepDefenders.add(opField.getCard(i));
+                    }
+                    if (opField.getCard(i + 1) != null) {
+                        sweepDefenders.add(opField.getCard(i + 1));
+                    }
+
+                    for (CardInfo sweepDefender : sweepDefenders) {
+                        ui.useSkill(myField.getCard(i), sweepDefender, feature);
+                        doAttackCard(resolver, myField, i, sweepDefender);
+                    }
+                }
+            }
+        }
+        // Remove lasting effects
+        resolver.removeEffects(myField.getCard(i), FeatureType.Ê¥¹â, FeatureType.±©»÷);
+    }
+
+    private int doAttackCard(FeatureResolver resolver, Field myField, int i, CardInfo defender) throws HeroDieSignal {
         int damage = resolver.attackCard(myField.getCard(i), defender);
         resolver.resolveExtraAttackFeature(myField.getCard(i), defender, getInactivePlayer(), damage);
         resolver.resolveCounterAttackFeature(myField.getCard(i), defender, null);

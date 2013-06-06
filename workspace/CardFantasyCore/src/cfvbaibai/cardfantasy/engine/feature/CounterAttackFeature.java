@@ -16,6 +16,9 @@ import cfvbaibai.cardfantasy.engine.GameUI;
  */
 public final class CounterAttackFeature {
     public static void apply(Feature feature, FeatureResolver resolver, CardInfo attacker, CardInfo defender) {
+        if (attacker == null) {
+            return;
+        }
         int damage = feature.getImpact();
         GameUI ui = resolver.getStage().getUI();
         ui.useSkill(defender, attacker, feature);
