@@ -133,4 +133,9 @@ public class CardFantasyTest {
     public void 魔法小丑vs魔剑士() {
         game5vs5("魔法小丑", "魔剑士");
     }
+    
+    @Test
+    public void 魔法小丑vs重甲骑兵() {
+        game5vs5("魔法小丑", "重甲骑兵");
+    }
 }

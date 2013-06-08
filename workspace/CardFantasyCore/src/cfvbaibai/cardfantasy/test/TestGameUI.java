@@ -258,7 +258,8 @@ public class TestGameUI extends GameUI {
 
     @Override
     public void adjustAT(CardInfo source, CardInfo target, int adjAT, Feature feature) {
-        sayF("%s increases %s's AT by %s ! %d -> %d.", source.getShortDesc(), target.getShortDesc(),
+        String verb = adjAT > 0 ? "increases" : "decreases";
+        sayF("%s %s %s's AT by %s ! %d -> %d.", source.getShortDesc(), verb, target.getShortDesc(),
                 feature.getShortDesc(), target.getAT(), target.getAT() + adjAT);
     }
 

@@ -24,7 +24,9 @@ public enum FeatureType {
     祈祷(50),
     王国之力(25),
     法力反射(30),
-    魔甲(140, -10);
+    魔甲(140, -10),
+    盾刺(20),
+    未知(0);
     
 
     private int initImpact;

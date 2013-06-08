@@ -1,7 +1,9 @@
 package cfvbaibai.cardfantasy.engine;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
 import cfvbaibai.cardfantasy.data.Feature;
 import cfvbaibai.cardfantasy.data.FeatureTag;
 import cfvbaibai.cardfantasy.data.FeatureType;
@@ -23,6 +25,7 @@ import cfvbaibai.cardfantasy.engine.feature.PrayFeature;
 import cfvbaibai.cardfantasy.engine.feature.RainfallFeature;
 import cfvbaibai.cardfantasy.engine.feature.RejuvenateFeature;
 import cfvbaibai.cardfantasy.engine.feature.SnipeFeature;
+import cfvbaibai.cardfantasy.engine.feature.SpikeFeature;
 import cfvbaibai.cardfantasy.engine.feature.TrapFeature;
 import cfvbaibai.cardfantasy.engine.feature.WeakenFeature;
 import cfvbaibai.cardfantasy.engine.feature.ZealotFeature;
@@ -36,6 +39,26 @@ public class FeatureResolver {
 
     public StageInfo getStage() {
         return this.stage;
+    }
+    
+    public List<CardInfo> getAdjacentCards(CardInfo card) {
+        if (card == null) {
+            throw new CardFantasyRuntimeException("card is null!");
+        }
+        List<CardInfo> cards = new ArrayList<CardInfo>();
+        cards.add(card);
+        int i = card.getPosition();
+        if (i > 0) {
+            CardInfo leftSide = card.getOwner().getField().getCard(i - 1);
+            if (leftSide != null) {
+                cards.add(leftSide);
+            }
+        }
+        CardInfo rightSide = card.getOwner().getField().getCard(i + 1);
+        if (rightSide != null) {
+            cards.add(rightSide);
+        }
+        return cards;
     }
 
     public void resolvePreAttackFeature(CardInfo attacker, Player defender) throws HeroDieSignal {
@@ -72,6 +95,8 @@ public class FeatureResolver {
             for (Feature feature : defender.getUsableFeatures()) {
                 if (feature.getType() == FeatureType.·´»÷) {
                     CounterAttackFeature.apply(feature, this, attacker, defender);
+                } else if (feature.getType() == FeatureType.¶Ü´Ì) {
+                    SpikeFeature.apply(feature, this, attacker, defender);
                 }
             }
         }

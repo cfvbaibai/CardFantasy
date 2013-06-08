@@ -69,9 +69,14 @@
         <Feature type="狙击" level="5" unlock="5" />
         <Feature type="闪避" level="3" unlock="10" />
     </Card>
-    <Card id="16" name="魔剑士" race="王国" speed="2" star="4" cost="9" at="125" hp="820" incrAT="10" incrHP="42">
+    <Card id="16" name="魔剑士" race="王国" speed="2" star="3" cost="9" at="125" hp="820" incrAT="10" incrHP="42">
         <Feature type="守护" level="0" unlock="0" />
         <Feature type="格挡" level="4" unlock="5" />
         <Feature type="魔甲" level="8" unlock="10" />
+    </Card>
+    <Card id="17" name="重甲骑兵" race="王国" speed="4" star="3" cost="9" at="180" hp="620" incrAT="20" incrHP="25">
+        <Feature type="暴击" level="2" unlock="0" />
+        <Feature type="法力反射" level="2" unlock="5" />
+        <Feature type="盾刺" level="5" unlock="10" />
     </Card>
 </Cards>
