@@ -12,6 +12,7 @@ import cfvbaibai.cardfantasy.engine.Board;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.CardStatusItem;
 import cfvbaibai.cardfantasy.engine.Deck;
+import cfvbaibai.cardfantasy.engine.FeatureEffect;
 import cfvbaibai.cardfantasy.engine.Field;
 import cfvbaibai.cardfantasy.engine.GameResult;
 import cfvbaibai.cardfantasy.engine.GameUI;
@@ -63,7 +64,7 @@ public class TestGameUI extends GameUI {
 
     @Override
     public void cardDrawed(Player drawer, CardInfo card) {
-        sayF("<%s> draws a card: <%s (LV: %d)>", drawer.getId(), card.getCard().getName(), card.getCard().getLevel());
+        sayF("<%s> draws a card: <%s (LV: %d)>", drawer.getId(), card.getName(), card.getLevel());
         showBoard();
     }
 
@@ -86,8 +87,7 @@ public class TestGameUI extends GameUI {
         for (CardInfo card : player.getHand()) {
             if (card.getSummonDelay() == 0) {
                 summonedCards.add(card);
-                sayF("<%s> summons card: <%s (LV: %d)>", player.getId(), card.getCard().getName(), card.getCard()
-                        .getLevel());
+                sayF("<%s> summons card: <%s (LV: %d)>", player.getId(), card.getName(), card.getLevel());
             }
         }
         return summonedCards;
@@ -142,7 +142,7 @@ public class TestGameUI extends GameUI {
     @Override
     public void useSkillToHero(CardInfo attacker, Player victimHero, Feature feature) {
         String featureDesc = feature == null ? "¡¾ÆÕÍ¨¹¥»÷¡¿" : feature.getShortDesc();
-        sayF("%s uses %s to enemy hero <%s>!", attacker.getShortDesc(), featureDesc, victimHero.getId());
+        sayF("%s uses %s to hero <%s>!", attacker.getShortDesc(), featureDesc, victimHero.getId());
     }
 
     @Override
@@ -190,8 +190,8 @@ public class TestGameUI extends GameUI {
         StringBuffer sb = new StringBuffer();
         sb.append("Grave: ");
         for (CardInfo card : grave) {
-            sb.append(String.format("%s (LV=%d, IAT=%d, MHP=%d), ", card.getCard().getName(),
-                    card.getCard().getLevel(), card.getCard().getInitAT(), card.getCard().getMaxHP()));
+            sb.append(String.format("%s (LV=%d, IAT=%d, MHP=%d), ", card.getName(), card.getLevel(), card.getInitAT(),
+                    card.getMaxHP()));
         }
         say(sb.toString());
     }
@@ -200,9 +200,9 @@ public class TestGameUI extends GameUI {
         StringBuffer sb = new StringBuffer();
         sb.append("Field: ");
         for (CardInfo card : field) {
-            sb.append(String.format("%s (LV=%d, AT=%d/%d, HP=%d/%d, ST=%s), ", card.getCard().getName(), card.getCard()
-                    .getLevel(), card.getAT(), card.getCard().getInitAT(), card.getHP(), card.getCard().getMaxHP(),
-                    card.getStatus().getShortDesc()));
+            sb.append(String.format("\r\n%s%s (LV=%d, AT=%d/%d, HP=%d/%d, ST=%s, EF=%s)", card.getName(),
+                    card.getPosition(), card.getLevel(), card.getAT(), card.getInitAT(), card.getHP(), card.getMaxHP(),
+                    card.getStatus().getShortDesc(), card.getEffectsDesc()));
         }
         say(sb.toString());
     }
@@ -211,8 +211,8 @@ public class TestGameUI extends GameUI {
         StringBuffer sb = new StringBuffer();
         sb.append("Hand : ");
         for (CardInfo card : hand) {
-            sb.append(String.format("%s (LV=%d, IAT=%d, MHP=%d, SD=%d), ", card.getCard().getName(), card.getCard()
-                    .getLevel(), card.getCard().getInitAT(), card.getCard().getMaxHP(), card.getSummonDelay()));
+            sb.append(String.format("%s (LV=%d, IAT=%d, MHP=%d, SD=%d), ", card.getName(), card.getLevel(),
+                    card.getInitAT(), card.getMaxHP(), card.getSummonDelay()));
         }
         say(sb.toString());
     }
@@ -221,8 +221,8 @@ public class TestGameUI extends GameUI {
         StringBuffer sb = new StringBuffer();
         sb.append("Deck : ");
         for (CardInfo card : deck) {
-            sb.append(String.format("%s (LV=%d, IAT=%d, MHP=%d), ", card.getCard().getName(),
-                    card.getCard().getLevel(), card.getCard().getInitAT(), card.getCard().getMaxHP()));
+            sb.append(String.format("%s (LV=%d, IAT=%d, MHP=%d), ", card.getName(), card.getLevel(), card.getInitAT(),
+                    card.getMaxHP()));
         }
         say(sb.toString());
     }
@@ -257,9 +257,9 @@ public class TestGameUI extends GameUI {
     }
 
     @Override
-    public void adjustAT(CardInfo attacker, int adjAT, Feature feature) {
-        sayF("%s's AT increased by %s ! %d -> %d.", attacker.getShortDesc(), feature.getShortDesc(), attacker.getAT(),
-                attacker.getAT() + adjAT);
+    public void adjustAT(CardInfo source, CardInfo target, int adjAT, Feature feature) {
+        sayF("%s increases %s's AT by %s ! %d -> %d.", source.getShortDesc(), target.getShortDesc(),
+                feature.getShortDesc(), target.getAT(), target.getAT() + adjAT);
     }
 
     @Override
@@ -289,5 +289,17 @@ public class TestGameUI extends GameUI {
     public void healCard(CardInfo healer, CardInfo healee, Feature feature, int healHP) {
         sayF("%s heals %s by %s for %d points. HP: %d -> %d", healer.getShortDesc(), healee.getShortDesc(),
                 feature.getShortDesc(), healHP, healee.getHP(), healee.getHP() + healHP);
+    }
+
+    @Override
+    public void healHero(CardInfo healer, Player healee, Feature feature, int healHP) {
+        sayF("%s heals %s by %s for %d points. HP: %d -> %d", healer.getShortDesc(), healee.getShortDesc(),
+                feature.getShortDesc(), healHP, healee.getLife(), healee.getLife() + healHP);
+    }
+
+    @Override
+    public void loseAdjustAttackEffect(CardInfo ally, FeatureEffect effect) {
+        sayF("%s loses effect caused by %s from %s. AT: %d -> %d.", ally.getShortDesc(), effect.getCause().getShortDesc(), effect
+                .getSource().getShortDesc(), ally.getAT(), ally.getAT() - effect.getValue());
     }
 }

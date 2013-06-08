@@ -23,7 +23,7 @@ public final class FireballFeature {
             boolean cardDead = resolver.applyDamage(victim, damage).cardDead;
             resolver.resolveCounterAttackFeature(attacker, victim, feature);
             if (cardDead){
-                resolver.resolveDyingFeature(attacker, victim, feature);
+                resolver.resolveDeathFeature(attacker, victim, feature);
             }
         }
     }

@@ -14,7 +14,9 @@ import cfvbaibai.cardfantasy.engine.feature.GuardFeature;
 import cfvbaibai.cardfantasy.engine.feature.HealFeature;
 import cfvbaibai.cardfantasy.engine.feature.HolyLightFeature;
 import cfvbaibai.cardfantasy.engine.feature.IceBoltFeature;
+import cfvbaibai.cardfantasy.engine.feature.KingdomPowerFeature;
 import cfvbaibai.cardfantasy.engine.feature.PenetrationFeature;
+import cfvbaibai.cardfantasy.engine.feature.PrayFeature;
 import cfvbaibai.cardfantasy.engine.feature.RainfallFeature;
 import cfvbaibai.cardfantasy.engine.feature.RejuvenateFeature;
 import cfvbaibai.cardfantasy.engine.feature.SnipeFeature;
@@ -33,7 +35,7 @@ public class FeatureResolver {
         return this.stage;
     }
 
-    public void resolvePreAttackFeature(CardInfo attacker, Player defender) {
+    public void resolvePreAttackFeature(CardInfo attacker, Player defender) throws HeroDieSignal {
         for (Feature feature : attacker.getUsableFeatures()) {
             if (feature.getType() == FeatureType.连环闪电) {
                 ChainLighteningFeature.apply(feature, this, attacker, defender);
@@ -49,6 +51,8 @@ public class FeatureResolver {
                 HealFeature.apply(feature, this, attacker);
             } else if (feature.getType() == FeatureType.甘霖) {
                 RainfallFeature.apply(feature, this, attacker);
+            } else if (feature.getType() == FeatureType.祈祷) {
+                PrayFeature.apply(feature, this, attacker);
             }
         }
     }
@@ -112,24 +116,28 @@ public class FeatureResolver {
         return result;
     }
 
-    public void resolveDyingFeature(CardInfo attacker, CardInfo card, Feature feature) {
-        // TODO Auto-generated method stub
+    public void resolveDeathFeature(CardInfo attacker, CardInfo defender, Feature feature) {
+        for (FeatureInfo deadCardFeature : defender.getUsableFeatures()) {
+            if (deadCardFeature.getType() == FeatureType.王国之力) {
+                KingdomPowerFeature.remove(this, deadCardFeature, defender);
+            }
+        }
         return;
     }
 
     public void resolveExtraAttackFeature(CardInfo attacker, CardInfo defender, Player defenderHero,
             int normalAttackDamage) throws HeroDieSignal {
         if (attacker != null) {
-            for (Feature feature : attacker.getUsableFeatures()) {
+            for (FeatureInfo feature : attacker.getUsableFeatures()) {
                 if (feature.getType() == FeatureType.穿刺) {
                     PenetrationFeature.apply(feature, this, attacker, defenderHero, normalAttackDamage);
                 } else if (feature.getType() == FeatureType.削弱) {
-                    WeakenFeature.apply(feature, this, attacker, defender, normalAttackDamage);
+                    WeakenFeature.apply(this, feature, attacker, defender, normalAttackDamage);
                 }
             }
         }
         if (defender != null) {
-            for (Feature feature : defender.getUsableFeatures()) {
+            for (FeatureInfo feature : defender.getUsableFeatures()) {
                 if (feature.getType() == FeatureType.狂热) {
                     ZealotFeature.apply(feature, this, attacker, defender, normalAttackDamage);
                 }
@@ -138,11 +146,11 @@ public class FeatureResolver {
     }
 
     public void resolvePreAttackCardFeature(CardInfo attacker, CardInfo defender) {
-        for (Feature feature : attacker.getUsableFeatures()) {
+        for (FeatureInfo feature : attacker.getUsableFeatures()) {
             if (feature.getType() == FeatureType.圣光) {
-                HolyLightFeature.apply(feature, this, attacker, defender);
+                HolyLightFeature.apply(this, feature, attacker, defender);
             } else if (feature.getType() == FeatureType.暴击) {
-                CriticalAttackFeature.apply(feature, this, attacker, defender);
+                CriticalAttackFeature.apply(this, feature, attacker, defender);
             }
         }
     }
@@ -180,7 +188,7 @@ public class FeatureResolver {
         if (attacker == null) {
             return;
         }
-        stage.getUI().useSkillToHero(attacker, defenderPlayer, null);
+        stage.getUI().useSkillToHero(attacker, defenderPlayer, feature);
         if (!this.resolveAttackHeroBlockingFeatures(attacker, defenderPlayer, feature, damage)) {
             stage.getUI().attackHero(attacker, defenderPlayer, feature, damage);
             defenderPlayer.setLife(defenderPlayer.getLife() - damage);
@@ -208,15 +216,15 @@ public class FeatureResolver {
             return;
         }
         for (FeatureType cause : causes) {
-            List<FeatureEffect> effects = card.getEffectsCauseBy(cause);
+            List<FeatureEffect> effects = card.getEffectsCausedBy(cause);
             if (effects == null) {
                 continue;
             }
             for (FeatureEffect effect : effects) {
                 if (cause == FeatureType.圣光) {
-                    HolyLightFeature.remove(this, effect, card);
+                    HolyLightFeature.remove(this, effect.getCause(), card);
                 } else if (cause == FeatureType.暴击) {
-                    CriticalAttackFeature.remove(this, effect, card);
+                    CriticalAttackFeature.remove(this, effect.getCause(), card);
                 }
             }
         }
@@ -243,7 +251,7 @@ public class FeatureResolver {
         this.stage.getUI().attackCard(attacker, defender, null, blockingResult.damage);
         OnDamagedResult damagedResult = stage.getResolver().applyDamage(defender, blockingResult.damage);
         if (damagedResult.cardDead) {
-            stage.getResolver().resolveDyingFeature(attacker, defender, null);
+            stage.getResolver().resolveDeathFeature(attacker, defender, null);
         }
         return damagedResult.actualDamage;
     }
@@ -257,5 +265,15 @@ public class FeatureResolver {
             }
         }
         return healee;
+    }
+
+    public void resolveSummoningFeature(Field field) {
+        for (CardInfo card : field) {
+            for (FeatureInfo feature : card.getUsableFeatures()) {
+                if (feature.getType() == FeatureType.王国之力) {
+                    KingdomPowerFeature.apply(this, feature, card);
+                }
+            }
+        }
     }
 }

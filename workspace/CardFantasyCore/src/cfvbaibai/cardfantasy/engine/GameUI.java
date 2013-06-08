@@ -69,7 +69,7 @@ public abstract class GameUI {
 
     public abstract void attackBlocked(CardInfo attacker, CardInfo defender, Feature atFeature, Feature dfFeature);
 
-    public abstract void adjustAT(CardInfo attacker, int adjAT, Feature feature);
+    public abstract void adjustAT(CardInfo source, CardInfo target, int adjAT, Feature feature);
 
     public abstract void blockDamage(CardInfo attacker, CardInfo defender, Feature feature, int originalDamage, int actualDamage);
 
@@ -80,4 +80,8 @@ public abstract class GameUI {
     public abstract void recoverAT(CardInfo card, FeatureType cause, int recoveredAT);
 
     public abstract void healCard(CardInfo healer, CardInfo healee, Feature feature, int healHP);
+
+    public abstract void healHero(CardInfo healer, Player healee, Feature feature, int healHP);
+
+    public abstract void loseAdjustAttackEffect(CardInfo ally, FeatureEffect effect);
 }

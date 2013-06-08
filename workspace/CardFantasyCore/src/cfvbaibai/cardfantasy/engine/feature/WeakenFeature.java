@@ -2,10 +2,10 @@ package cfvbaibai.cardfantasy.engine.feature;
 
 import java.util.List;
 
-import cfvbaibai.cardfantasy.data.Feature;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.FeatureEffect;
 import cfvbaibai.cardfantasy.engine.FeatureEffectType;
+import cfvbaibai.cardfantasy.engine.FeatureInfo;
 import cfvbaibai.cardfantasy.engine.FeatureResolver;
 import cfvbaibai.cardfantasy.engine.GameUI;
 
@@ -13,11 +13,13 @@ import cfvbaibai.cardfantasy.engine.GameUI;
  * Decrease defender 10 * level AT if normal attack causes damage.
  * 
  * Can be blocked by Immue.
+ * 
  * @author °×°×
- *
+ * 
  */
 public final class WeakenFeature {
-    public static void apply(Feature feature, FeatureResolver resolver, CardInfo attacker, CardInfo defender, int normalAttackDamage) {
+    public static void apply(FeatureResolver resolver, FeatureInfo feature, CardInfo attacker, CardInfo defender,
+            int normalAttackDamage) {
         if (normalAttackDamage <= 0 || defender == null) {
             return;
         }
@@ -27,7 +29,7 @@ public final class WeakenFeature {
         if (!resolver.resolveAttackBlockingFeature(attacker, defender, feature).attackable) {
             return;
         }
-        resolver.getStage().getUI().adjustAT(defender, -attackWeakened, feature);
+        resolver.getStage().getUI().adjustAT(attacker, defender, -attackWeakened, feature);
         List<FeatureEffect> effects = defender.getEffects();
         for (FeatureEffect effect : effects) {
             if (effect.getType() == FeatureEffectType.ATTACK_CHANGE && effect.getValue() > 0) {
@@ -43,7 +45,7 @@ public final class WeakenFeature {
                 break;
             }
         }
-        
-        defender.addEffect(new FeatureEffect(FeatureEffectType.ATTACK_CHANGE, feature.getType(), -attackWeakened));
+
+        defender.addEffect(new FeatureEffect(FeatureEffectType.ATTACK_CHANGE, feature, -attackWeakened));
     }
 }

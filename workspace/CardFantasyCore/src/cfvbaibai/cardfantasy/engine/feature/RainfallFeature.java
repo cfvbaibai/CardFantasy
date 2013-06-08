@@ -31,8 +31,8 @@ public final class RainfallFeature {
                 continue;
             }
             int healHP = feature.getImpact();
-            if (healHP + healee.getHP() > healee.getCard().getMaxHP()) {
-                healHP = healee.getCard().getMaxHP() - healee.getHP();
+            if (healHP + healee.getHP() > healee.getMaxHP()) {
+                healHP = healee.getMaxHP() - healee.getHP();
             }
             if (healHP == 0) {
                 continue;

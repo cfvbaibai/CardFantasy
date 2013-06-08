@@ -54,4 +54,9 @@
         <Feature type="圣光" level="6" unlock="5" />
         <Feature type="甘霖" level="5" unlock="10" />
     </Card>
+    <Card id="13" name="圣光信仰者" race="王国" speed="2" star="2" cost="5" at="110" hp="400" incrAT="15" incrHP="34">
+        <Feature type="祈祷" level="3" unlock="0" />
+        <Feature type="圣光" level="4" unlock="5" />
+        <Feature type="王国之力" level="3" unlock="10" />
+    </Card>
 </Cards>

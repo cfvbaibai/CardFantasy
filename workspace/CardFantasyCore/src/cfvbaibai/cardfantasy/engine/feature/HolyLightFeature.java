@@ -1,23 +1,28 @@
 package cfvbaibai.cardfantasy.engine.feature;
 
-import cfvbaibai.cardfantasy.data.Feature;
+import java.util.List;
+
 import cfvbaibai.cardfantasy.data.Race;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.FeatureEffect;
 import cfvbaibai.cardfantasy.engine.FeatureEffectType;
+import cfvbaibai.cardfantasy.engine.FeatureInfo;
 import cfvbaibai.cardfantasy.engine.FeatureResolver;
 
 public final class HolyLightFeature {
-    public static void apply(Feature feature, FeatureResolver resolver, CardInfo attacker, CardInfo defender) {
+    public static void apply(FeatureResolver resolver, FeatureInfo feature, CardInfo attacker, CardInfo defender) {
         if (defender.getRace() == Race.µØÓü) {
             int adjAT = (int) (attacker.getOriginalAT() * feature.getImpact() / 100);
-            resolver.getStage().getUI().adjustAT(attacker, adjAT, feature);
-            attacker.addEffect(new FeatureEffect(FeatureEffectType.ATTACK_CHANGE, feature.getType(), adjAT));
+            resolver.getStage().getUI().adjustAT(attacker, attacker, adjAT, feature);
+            attacker.addEffect(new FeatureEffect(FeatureEffectType.ATTACK_CHANGE, feature, adjAT));
         }
     }
 
-    public static void remove(FeatureResolver resolver, FeatureEffect effect, CardInfo card) {
-        resolver.getStage().getUI().recoverAT(card, effect.getCause(), effect.getValue());
-        card.removeEffect(effect);
+    public static void remove(FeatureResolver resolver, FeatureInfo feature, CardInfo card) {
+        List<FeatureEffect> effects = card.getEffectsCausedBy(feature);
+        for (FeatureEffect effect : effects) {
+            resolver.getStage().getUI().loseAdjustAttackEffect(card, effect);
+            card.removeEffect(effect);
+        }
     }
 }

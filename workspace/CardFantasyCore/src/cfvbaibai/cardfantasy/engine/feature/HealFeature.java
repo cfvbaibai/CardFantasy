@@ -15,8 +15,8 @@ public final class HealFeature {
         if (healee == null) {
             return;
         }
-        if (healHP + healee.getHP() > healee.getCard().getMaxHP()) {
-            healHP = healee.getCard().getMaxHP() - healee.getHP();
+        if (healHP + healee.getHP() > healee.getMaxHP()) {
+            healHP = healee.getMaxHP() - healee.getHP();
         }
         if (healHP == 0) {
             return;

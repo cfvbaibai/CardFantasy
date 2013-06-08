@@ -7,8 +7,8 @@ import cfvbaibai.cardfantasy.engine.FeatureResolver;
 public final class RejuvenateFeature {
     public static void apply(Feature feature, FeatureResolver resolver, CardInfo card) {
         int healHP = feature.getImpact();
-        if (healHP + card.getHP() > card.getCard().getMaxHP()) {
-            healHP = card.getCard().getMaxHP() - card.getHP();
+        if (healHP + card.getHP() > card.getMaxHP()) {
+            healHP = card.getMaxHP() - card.getHP();
         }
         if (healHP == 0) {
             return;

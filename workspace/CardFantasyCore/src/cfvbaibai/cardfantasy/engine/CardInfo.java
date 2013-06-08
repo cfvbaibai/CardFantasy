@@ -6,6 +6,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
+import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
 import cfvbaibai.cardfantasy.data.Card;
 import cfvbaibai.cardfantasy.data.Feature;
 import cfvbaibai.cardfantasy.data.FeatureType;
@@ -18,6 +19,9 @@ public class CardInfo {
     private int summonDelay;
     private CardStatus status;
     private Player owner;
+    private List<FeatureInfo> features;
+    // Used to record the previous position after card dies.
+    private int cachedPosition;
 
     private Map<FeatureType, List<FeatureEffect>> effects;
 
@@ -29,38 +33,46 @@ public class CardInfo {
         this.status = new CardStatus();
         this.owner = owner;
         this.effects = new HashMap<FeatureType, List<FeatureEffect>>();
+        this.features = new ArrayList<FeatureInfo>();
+        for (Feature feature : card.getAllFeatures()) {
+            this.features.add(new FeatureInfo(this, feature));
+        }
+        this.cachedPosition = -1;
     }
 
     public void addEffect(FeatureEffect effect) {
-        if (!effects.containsKey(effect.getCause())) {
-            effects.put(effect.getCause(), new LinkedList<FeatureEffect>());
+        FeatureType type = effect.getCause().getType();
+        if (!effects.containsKey(type)) {
+            effects.put(type, new LinkedList<FeatureEffect>());
         }
-        this.effects.get(effect.getCause()).add(effect);
+        this.effects.get(type).add(effect);
     }
 
-    public void removeEffectsCausedBy(FeatureType cause) {
-        effects.remove(cause);
-    }
-
-    public List<FeatureEffect> getEffectsCauseBy(FeatureType cause) {
-        return effects.get(cause);
+    public List<FeatureEffect> getEffectsCausedBy(FeatureType cause) {
+        List<FeatureEffect> result = effects.get(cause);
+        if (result == null) {
+            return new ArrayList<FeatureEffect>();
+        } else {
+            return result;
+        }
     }
 
     public int getPosition() {
         Field field = owner.getField();
         for (int i = 0; i < field.size(); ++i) {
             if (field.getCard(i) == this) {
+                cachedPosition = i;
                 return i;
             }
         }
-        return -1;
+        return cachedPosition;
     }
 
     public Player getOwner() {
         return this.owner;
     }
 
-    public Card getCard() {
+    private Card getCard() {
         return this.card;
     }
 
@@ -121,13 +133,13 @@ public class CardInfo {
         this.setSummonDelay(this.card.getSummonSpeed());
     }
 
-    public List<Feature> getAllFeatures() {
-        return this.card.getAllFeatures();
+    public List<FeatureInfo> getAllFeatures() {
+        return this.features;
     }
 
-    public List<Feature> getUsableFeaturesOf(FeatureType type) {
-        List<Feature> features = new ArrayList<Feature>(4);
-        for (Feature feature : getAllFeatures()) {
+    public List<FeatureInfo> getUsableFeaturesOf(FeatureType type) {
+        List<FeatureInfo> features = new ArrayList<FeatureInfo>(4);
+        for (FeatureInfo feature : getAllFeatures()) {
             if (feature.getType() == type && feature.getUnlockLevel() <= this.getCard().getLevel()) {
                 features.add(feature);
             }
@@ -143,9 +155,9 @@ public class CardInfo {
         return this.at;
     }
 
-    public List<Feature> getUsableFeatures() {
-        List<Feature> features = new ArrayList<Feature>(4);
-        for (Feature feature : getAllFeatures()) {
+    public List<FeatureInfo> getUsableFeatures() {
+        List<FeatureInfo> features = new ArrayList<FeatureInfo>(4);
+        for (FeatureInfo feature : getAllFeatures()) {
             if (feature.getUnlockLevel() <= this.getCard().getLevel()) {
                 features.add(feature);
             }
@@ -154,7 +166,7 @@ public class CardInfo {
     }
 
     public void removeEffect(FeatureEffect effect) {
-        List<FeatureEffect> result = this.effects.get(effect.getCause());
+        List<FeatureEffect> result = this.effects.get(effect.getCause().getType());
         if (result == null) {
             return;
         }
@@ -167,5 +179,55 @@ public class CardInfo {
             result.addAll(effects);
         }
         return result;
+    }
+
+    public List<FeatureEffect> getEffectsCausedBy(FeatureInfo feature) {
+        if (feature.getOwner() == null) {
+            throw new CardFantasyRuntimeException("feature.getOwner() is null");
+        }
+        List<FeatureEffect> result = new ArrayList<FeatureEffect>();
+        for (FeatureEffect effect : this.getEffectsCausedBy(feature.getType())) {
+            if (feature.getOwner() == effect.getSource()) {
+                result.add(effect);
+            }
+        }
+        return result;
+    }
+
+    public int getMaxHP() {
+        return this.card.getMaxHP();
+    }
+
+    public String getName() {
+        return this.card.getName();
+    }
+    
+    public int getLevel() {
+        return this.card.getLevel();
+    }
+
+    public int getInitAT() {
+        return this.card.getInitAT();
+    }
+
+    public String getEffectsDesc() {
+        if (this.getEffects().isEmpty()) {
+            return "-";
+        }
+        StringBuffer sb = new StringBuffer();
+        sb.append("¡¾");
+        for (FeatureEffect effect : this.getEffects()) {
+            if (effect.getType() == FeatureEffectType.ATTACK_CHANGE) {
+                sb.append("ATC(");
+                sb.append(effect.getValue());
+                sb.append(")-");
+                sb.append(effect.getSource().getShortDesc());
+                sb.append(", ");
+            }
+        }
+        sb.deleteCharAt(sb.length() - 1);
+        sb.deleteCharAt(sb.length() - 1);
+        sb.append("¡¿");
+        return sb.toString();
     }
 }

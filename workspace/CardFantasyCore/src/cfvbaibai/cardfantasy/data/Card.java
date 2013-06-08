@@ -5,12 +5,10 @@ import java.util.List;
 
 public class Card implements Cloneable {
     private CardData sourceInfo;
-    private Adjustments adjustments;
     private int exp;
     
     public Card(CardData sourceInfo) {
         this.sourceInfo = sourceInfo;
-        this.adjustments = new Adjustments();
         this.exp = 0;
     }
     

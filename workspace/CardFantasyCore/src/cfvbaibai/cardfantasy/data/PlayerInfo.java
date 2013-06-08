@@ -22,8 +22,6 @@ public class PlayerInfo {
         }
     }
 
-    private Adjustments adjustments;
-
     public int getMaxHP() {
         // TODO: Apply adjustments
 

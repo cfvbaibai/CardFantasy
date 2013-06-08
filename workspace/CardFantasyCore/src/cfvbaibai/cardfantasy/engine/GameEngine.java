@@ -96,6 +96,7 @@ public class GameEngine {
             hand.removeCard(summonedCard);
             summonedCard.reset();
             field.addCard(summonedCard);
+            stage.getResolver().resolveSummoningFeature(field);
         }
         return Phase.Battle;
     }

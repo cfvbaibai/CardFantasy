@@ -33,7 +33,7 @@ public final class ChainLighteningFeature {
             boolean cardDead = resolver.applyDamage(victim, damage).cardDead;
             resolver.resolveCounterAttackFeature(attacker, victim, feature);
             if (cardDead){
-                resolver.resolveDyingFeature(attacker, victim, feature);
+                resolver.resolveDeathFeature(attacker, victim, feature);
             } else if (Randomizer.roll100() <= 40) {
                 ui.addCardStatus(attacker, victim, feature, CardStatusItem.paralyzed());
                 victim.addStatus(CardStatusItem.paralyzed());

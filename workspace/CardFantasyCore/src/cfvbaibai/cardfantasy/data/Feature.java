@@ -1,6 +1,6 @@
 package cfvbaibai.cardfantasy.data;
 
-public class Feature {
+public class Feature implements Cloneable {
     private FeatureType type;
     private int level;
     private int unlockLevel;
@@ -38,5 +38,10 @@ public class Feature {
     
     public int getImpact() {
         return type.getImpact(this.level);
+    }
+
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        return super.clone();
     }
 }

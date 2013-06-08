@@ -12,7 +12,7 @@ public final class GuardFeature {
         resolver.getStage().getUI().useSkill(guardian, attacker, feature);
         resolver.getStage().getUI().attackCard(attacker, guardian, feature, damage);
         if (resolver.applyDamage(guardian, damage).cardDead) {
-            resolver.resolveDyingFeature(attacker, guardian, feature);
+            resolver.resolveDeathFeature(attacker, guardian, feature);
         }
     }
 }

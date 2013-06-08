@@ -25,7 +25,7 @@ public final class IceBoltFeature {
             boolean cardDead = resolver.applyDamage(victim, damage).cardDead;
             resolver.resolveCounterAttackFeature(attacker, victim, feature);
             if (cardDead){
-                resolver.resolveDyingFeature(attacker, victim, feature);
+                resolver.resolveDeathFeature(attacker, victim, feature);
             } else if (Randomizer.roll100() <= 45) {
                 ui.addCardStatus(attacker, victim, feature, CardStatusItem.frozen());
                 victim.addStatus(CardStatusItem.frozen());

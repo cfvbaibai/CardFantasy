@@ -47,6 +47,10 @@ public class Player {
     public int getLife() {
         return this.hp;
     }
+    
+    public int getMaxLife() {
+        return this.playerInfo.getMaxHP();
+    }
 
     public String getId() {
         return this.getPlayerInfo().getId();
@@ -66,5 +70,9 @@ public class Player {
             cardInfos.add(new CardInfo(card, this));
         }
         return new Deck(cardInfos);
+    }
+
+    public String getShortDesc() {
+        return String.format("<%s>", this.playerInfo.getId());
     }
 }

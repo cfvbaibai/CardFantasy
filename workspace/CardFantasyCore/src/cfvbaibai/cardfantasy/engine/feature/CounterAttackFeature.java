@@ -24,7 +24,7 @@ public final class CounterAttackFeature {
         ui.useSkill(defender, attacker, feature);
         ui.attackCard(defender, attacker, feature, damage);
         if (resolver.applyDamage(attacker, damage).cardDead) {
-            resolver.resolveDyingFeature(attacker, defender, feature);
+            resolver.resolveDeathFeature(attacker, defender, feature);
         }
     }
 }
