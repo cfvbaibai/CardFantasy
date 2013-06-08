@@ -59,4 +59,9 @@
         <Feature type="圣光" level="4" unlock="5" />
         <Feature type="王国之力" level="3" unlock="10" />
     </Card>
+    <Card id="13" name="猎魔犬" race="王国" speed="2" star="2" cost="7" at="130" hp="280" incrAT="15" incrHP="20">
+        <Feature type="圣光" level="3" unlock="0" />
+        <Feature type="暴击" level="3" unlock="5" />
+        <Feature type="法力反射" level="4" unlock="10" />
+    </Card>
 </Cards>

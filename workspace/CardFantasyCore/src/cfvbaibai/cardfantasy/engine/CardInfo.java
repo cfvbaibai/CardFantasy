@@ -211,17 +211,23 @@ public class CardInfo {
     }
 
     public String getEffectsDesc() {
-        if (this.getEffects().isEmpty()) {
+        List<FeatureEffect> effects = this.getEffects();
+        if (effects.isEmpty()) {
             return "-";
         }
         StringBuffer sb = new StringBuffer();
         sb.append("¡¾");
-        for (FeatureEffect effect : this.getEffects()) {
+        for (FeatureEffect effect : effects) {
             if (effect.getType() == FeatureEffectType.ATTACK_CHANGE) {
                 sb.append("ATC(");
                 sb.append(effect.getValue());
-                sb.append(")-");
-                sb.append(effect.getSource().getShortDesc());
+                sb.append("):");
+                sb.append(effect.getCause().getType().name());
+                sb.append(effect.getCause().getLevel());
+                if (!effect.isEternal()) {
+                    sb.append(":");
+                    sb.append(effect.getSource().getShortDesc());
+                }
                 sb.append(", ");
             }
         }
@@ -229,5 +235,15 @@ public class CardInfo {
         sb.deleteCharAt(sb.length() - 1);
         sb.append("¡¿");
         return sb.toString();
+    }
+
+    public boolean isDead() {
+        Field field = owner.getField();
+        for (int i = 0; i < field.size(); ++i) {
+            if (field.getCard(i) == this) {
+                return false;
+            }
+        }
+        return true;
     }
 }

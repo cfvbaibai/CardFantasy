@@ -14,7 +14,7 @@ public final class CriticalAttackFeature {
         int adjAT = feature.getImpact() * attacker.getOriginalAT() / 100;
         if (Randomizer.roll100() < 50) {
             resolver.getStage().getUI().adjustAT(attacker, attacker, adjAT, feature);
-            attacker.addEffect(new FeatureEffect(FeatureEffectType.ATTACK_CHANGE, feature, adjAT));
+            attacker.addEffect(new FeatureEffect(FeatureEffectType.ATTACK_CHANGE, feature, adjAT, false));
         }
     }
 

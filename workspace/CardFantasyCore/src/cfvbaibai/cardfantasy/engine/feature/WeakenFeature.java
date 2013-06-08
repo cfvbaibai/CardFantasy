@@ -26,7 +26,7 @@ public final class WeakenFeature {
         int attackWeakened = feature.getImpact();
         GameUI ui = resolver.getStage().getUI();
         ui.useSkill(attacker, defender, feature);
-        if (!resolver.resolveAttackBlockingFeature(attacker, defender, feature).attackable) {
+        if (!resolver.resolveAttackBlockingFeature(attacker, defender, feature).isAttackable()) {
             return;
         }
         resolver.getStage().getUI().adjustAT(attacker, defender, -attackWeakened, feature);
@@ -46,6 +46,6 @@ public final class WeakenFeature {
             }
         }
 
-        defender.addEffect(new FeatureEffect(FeatureEffectType.ATTACK_CHANGE, feature, -attackWeakened));
+        defender.addEffect(new FeatureEffect(FeatureEffectType.ATTACK_CHANGE, feature, -attackWeakened, true));
     }
 }

@@ -26,7 +26,7 @@ public final class ChainLighteningFeature {
         GameUI ui = resolver.getStage().getUI();
         ui.useSkill(attacker, victims, feature);
         for (CardInfo victim : victims) {
-            if (!resolver.resolveAttackBlockingFeature(attacker, victim, feature).attackable) {
+            if (!resolver.resolveAttackBlockingFeature(attacker, victim, feature).isAttackable()) {
                 continue;
             }
             ui.attackCard(attacker, victim, feature, damage);

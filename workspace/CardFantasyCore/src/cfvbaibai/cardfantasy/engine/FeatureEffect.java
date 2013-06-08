@@ -5,6 +5,7 @@ public class FeatureEffect {
     private FeatureEffectType type;
     private FeatureInfo cause;
     private int value;
+    private boolean eternal;
     
     public FeatureEffectType getType() {
         return type;
@@ -27,9 +28,13 @@ public class FeatureEffect {
     public CardInfo getSource() {
         return this.cause.getOwner();
     }
-    public FeatureEffect(FeatureEffectType type, FeatureInfo cause, int value) {
+    public boolean isEternal() {
+        return this.eternal;
+    }
+    public FeatureEffect(FeatureEffectType type, FeatureInfo cause, int value, boolean eternal) {
         this.type = type;
         this.cause = cause;
         this.value = value;
+        this.eternal = eternal;
     }
 }

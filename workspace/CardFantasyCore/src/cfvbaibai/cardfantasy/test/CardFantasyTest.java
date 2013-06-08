@@ -118,4 +118,9 @@ public class CardFantasyTest {
     public void 牧师vs圣光信仰者() {
         game5vs5("牧师", "圣光信仰者");
     }
+    
+    @Test
+    public void 魔法小丑vs猎魔犬() {
+        game5vs5("魔法小丑", "猎魔犬");
+    }
 }

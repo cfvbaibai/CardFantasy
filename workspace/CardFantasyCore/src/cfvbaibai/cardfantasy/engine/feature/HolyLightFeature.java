@@ -14,7 +14,7 @@ public final class HolyLightFeature {
         if (defender.getRace() == Race.µØÓü) {
             int adjAT = (int) (attacker.getOriginalAT() * feature.getImpact() / 100);
             resolver.getStage().getUI().adjustAT(attacker, attacker, adjAT, feature);
-            attacker.addEffect(new FeatureEffect(FeatureEffectType.ATTACK_CHANGE, feature, adjAT));
+            attacker.addEffect(new FeatureEffect(FeatureEffectType.ATTACK_CHANGE, feature, adjAT, false));
         }
     }
 

@@ -3,10 +3,12 @@ package cfvbaibai.cardfantasy.engine;
 import java.util.List;
 
 import cfvbaibai.cardfantasy.data.Feature;
+import cfvbaibai.cardfantasy.data.FeatureTag;
 import cfvbaibai.cardfantasy.data.FeatureType;
 import cfvbaibai.cardfantasy.engine.feature.BlockFeature;
 import cfvbaibai.cardfantasy.engine.feature.ChainLighteningFeature;
 import cfvbaibai.cardfantasy.engine.feature.CounterAttackFeature;
+import cfvbaibai.cardfantasy.engine.feature.CounterMagicFeature;
 import cfvbaibai.cardfantasy.engine.feature.CriticalAttackFeature;
 import cfvbaibai.cardfantasy.engine.feature.DodgeFeature;
 import cfvbaibai.cardfantasy.engine.feature.FireballFeature;
@@ -37,6 +39,9 @@ public class FeatureResolver {
 
     public void resolvePreAttackFeature(CardInfo attacker, Player defender) throws HeroDieSignal {
         for (Feature feature : attacker.getUsableFeatures()) {
+            if (attacker.isDead()) {
+                continue;
+            }
             if (feature.getType() == FeatureType.Á¬»·ÉÁµç) {
                 ChainLighteningFeature.apply(feature, this, attacker, defender);
             } else if (feature.getType() == FeatureType.ÏİÚå) {
@@ -81,23 +86,22 @@ public class FeatureResolver {
             if (status.containsStatus(CardStatusType.±ù¶³) || status.containsStatus(CardStatusType.Âé±Ô)
                     || status.containsStatus(CardStatusType.Ëø¶¨)) {
                 stage.getUI().attackBlocked(attacker, defender, feature, null);
-                result.attackable = false;
-                result.damage = 0;
+                result.setAttackable(false);
             } else {
                 for (Feature blockFeature : defender.getUsableFeaturesOf(FeatureType.ÉÁ±Ü)) {
-                    if (!result.attackable) {
+                    if (!result.isAttackable()) {
                         continue;
                     }
                     if (blockFeature.getType() == FeatureType.ÉÁ±Ü) {
-                        result.attackable = !DodgeFeature.apply(blockFeature, this, attacker, defender, result.damage);
+                        result.setAttackable(!DodgeFeature.apply(blockFeature, this, attacker, defender, result.getDamage()));
                     }
                 }
                 for (Feature blockFeature : defender.getUsableFeatures()) {
-                    if (!result.attackable) {
+                    if (!result.isAttackable()) {
                         continue;
                     }
                     if (blockFeature.getType() == FeatureType.¸ñµ²) {
-                        result.damage = BlockFeature.apply(blockFeature, this, attacker, defender, result.damage);
+                        result.setDamage(BlockFeature.apply(blockFeature, this, attacker, defender, result.getDamage()));
                     }
                 }
             }
@@ -105,11 +109,19 @@ public class FeatureResolver {
             CardStatus status = attacker.getStatus();
             if (status.containsStatus(CardStatusType.±ù¶³) || status.containsStatus(CardStatusType.Ëø¶¨)) {
                 stage.getUI().attackBlocked(attacker, defender, feature, null);
-                result.attackable = false;
-                result.damage = 0;
+                result.setAttackable(false);
             } else {
+                for (Feature blockFeature : defender.getUsableFeaturesOf(FeatureType.·¨Á¦·´Éä)) {
+                    if (feature.getType().containsTag(FeatureTag.Ä§·¨)) {
+                        CounterMagicFeature.apply(blockFeature, this, attacker, defender);
+                        result.setAttackable(false);
+                    }
+                }
                 for (Feature blockFeature : defender.getUsableFeaturesOf(FeatureType.Ä§¼×)) {
-                    result.damage = BlockFeature.apply(blockFeature, this, attacker, defender, result.damage);
+                    if (!result.isAttackable()) {
+                        continue;
+                    }
+                    result.setDamage(BlockFeature.apply(blockFeature, this, attacker, defender, result.getDamage()));
                 }
             }
         }
@@ -245,11 +257,11 @@ public class FeatureResolver {
         this.stage.getUI().useSkill(attacker, defender, null);
         OnAttackBlockingResult blockingResult = stage.getResolver().resolveAttackBlockingFeature(attacker, defender,
                 null);
-        if (!blockingResult.attackable) {
+        if (!blockingResult.isAttackable()) {
             return -1;
         }
-        this.stage.getUI().attackCard(attacker, defender, null, blockingResult.damage);
-        OnDamagedResult damagedResult = stage.getResolver().applyDamage(defender, blockingResult.damage);
+        this.stage.getUI().attackCard(attacker, defender, null, blockingResult.getDamage());
+        OnDamagedResult damagedResult = stage.getResolver().applyDamage(defender, blockingResult.getDamage());
         if (damagedResult.cardDead) {
             stage.getResolver().resolveDeathFeature(attacker, defender, null);
         }

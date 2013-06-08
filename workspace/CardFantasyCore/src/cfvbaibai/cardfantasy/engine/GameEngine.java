@@ -179,6 +179,9 @@ public class GameEngine {
     private void tryAttackEnemy(Field myField, Field opField, int i) throws HeroDieSignal {
         FeatureResolver resolver = this.stage.getResolver();
         resolver.resolvePreAttackFeature(myField.getCard(i), getInactivePlayer());
+        if (myField.getCard(i) == null) {
+            return;
+        }
         if (opField.getCard(i) == null) {
             resolver.attackHero(myField.getCard(i), getInactivePlayer(), null, myField.getCard(i).getAT());
         } else {

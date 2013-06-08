@@ -26,7 +26,7 @@ public final class KingdomPowerFeature {
             }
             if (ally.getEffectsCausedBy(feature).isEmpty()) {
                 resolver.getStage().getUI().adjustAT(card, ally, adjAT, feature);
-                ally.addEffect(new FeatureEffect(FeatureEffectType.ATTACK_CHANGE, feature, adjAT));
+                ally.addEffect(new FeatureEffect(FeatureEffectType.ATTACK_CHANGE, feature, adjAT, false));
             }
         }
     }

@@ -13,6 +13,6 @@ public final class ZealotFeature {
         }
         int adjAT = feature.getImpact();
         resolver.getStage().getUI().adjustAT(defender, defender, adjAT, feature);
-        defender.addEffect(new FeatureEffect(FeatureEffectType.ATTACK_CHANGE, feature, adjAT));
+        defender.addEffect(new FeatureEffect(FeatureEffectType.ATTACK_CHANGE, feature, adjAT, true));
     }
 }
