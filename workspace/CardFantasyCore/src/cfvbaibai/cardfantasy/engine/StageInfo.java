@@ -3,6 +3,8 @@ package cfvbaibai.cardfantasy.engine;
 import java.util.ArrayList;
 import java.util.List;
 
+import cfvbaibai.cardfantasy.data.PlayerInfo;
+
 public class StageInfo {
     private Board board;
     private int activePlayerNumber;
@@ -11,7 +13,7 @@ public class StageInfo {
     private GameUI ui;
     private Rule rule;
     private FeatureResolver resolver;
-    
+
     public StageInfo(Board board, GameUI ui, Rule rule) {
         this.board = board;
         this.activePlayerNumber = -1;
@@ -21,11 +23,11 @@ public class StageInfo {
         this.rule = rule;
         this.resolver = new FeatureResolver(this);
     }
-    
+
     public FeatureResolver getResolver() {
         return this.resolver;
     }
-    
+
     public int getActivePlayerNumber() {
         return activePlayerNumber;
     }
@@ -33,11 +35,11 @@ public class StageInfo {
     public void setActivePlayerNumber(int activePlayerNumber) {
         this.activePlayerNumber = activePlayerNumber;
     }
-    
+
     public Player getActivePlayer() {
         return this.getBoard().getPlayer(this.getActivePlayerNumber());
     }
-    
+
     public List<Player> getInactivePlayers() {
         List<Player> inactivePlayers = new ArrayList<Player>(this.getBoard().getPlayerCount() - 1);
         for (int i = 0; i < this.getBoard().getPlayerCount(); ++i) {
@@ -86,5 +88,11 @@ public class StageInfo {
 
     public void setBoard(Board board) {
         this.board = board;
+    }
+
+    public void addPlayer(PlayerInfo playerInfo) {
+        Player player = new Player(playerInfo, this);
+        this.board.addPlayer(player);
+        this.ui.playerAdded(player);
     }
 }

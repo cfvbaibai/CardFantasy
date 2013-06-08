@@ -4,36 +4,47 @@ public class Feature implements Cloneable {
     private FeatureType type;
     private int level;
     private int unlockLevel;
+    private boolean summonFeature;
+    private boolean deathFeature;
 
-    public Feature(FeatureType type, int level, int unlockLevel) {
+    public Feature(FeatureType type, int level, int unlockLevel, boolean summonFeature, boolean deathFeature) {
         super();
         this.type = type;
         this.level = level;
         this.unlockLevel = unlockLevel;
+        this.summonFeature = summonFeature;
+        this.deathFeature = deathFeature;
+    }
+    
+    public boolean isSummonFeature() {
+        return this.summonFeature;
+    }
+    
+    public boolean isDeathFeature() {
+        return this.deathFeature;
     }
     
     public FeatureType getType() {
         return type;
     }
     
-    public void setType(FeatureType type) {
-        this.type = type;
-    }
     public int getLevel() {
         return level;
     }
-    public void setLevel(int level) {
-        this.level = level;
-    }
+    
     public int getUnlockLevel() {
         return unlockLevel;
     }
-    public void setUnlockLevel(int unlockLevel) {
-        this.unlockLevel = unlockLevel;
-    }
 
     public String getShortDesc() {
-        return String.format("°æ%s%s°ø", type.getDisplayName(), level == 0 ? "" : String.valueOf(level));
+        String prefix = "";
+        if (this.isSummonFeature()) {
+            prefix += "Ωµ¡Ÿ-";
+        }
+        if (this.isDeathFeature()) {
+            prefix += "À¿∆ı-";
+        }
+        return String.format("°æ%s%s%s°ø", prefix, type.getDisplayName(), level == 0 ? "" : String.valueOf(level));
     }
     
     public int getImpact() {

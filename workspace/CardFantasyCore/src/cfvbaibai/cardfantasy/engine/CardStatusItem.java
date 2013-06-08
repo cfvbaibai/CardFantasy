@@ -3,10 +3,16 @@ package cfvbaibai.cardfantasy.engine;
 public class CardStatusItem {
     private CardStatusType type;
     private int effect;
-    
-    CardStatusItem(CardStatusType type, int effect) {
+    private FeatureInfo cause;
+
+    private CardStatusItem(CardStatusType type, int effect, FeatureInfo cause) {
         this.type = type;
         this.effect = effect;
+        this.cause = cause;
+    }
+
+    public FeatureInfo getCause() {
+        return this.cause;
     }
 
     public CardStatusType getType() {
@@ -24,21 +30,25 @@ public class CardStatusItem {
     public void setEffect(int effect) {
         this.effect = effect;
     }
-    
-    public static CardStatusItem paralyzed() {
-        return new CardStatusItem(CardStatusType.Âé±Ô, 0);
+
+    public static CardStatusItem paralyzed(FeatureInfo cause) {
+        return new CardStatusItem(CardStatusType.Âé±Ô, 0, cause);
     }
 
-    public static CardStatusItem frozen() {
-        return new CardStatusItem(CardStatusType.±ù¶³, 0);
+    public static CardStatusItem frozen(FeatureInfo cause) {
+        return new CardStatusItem(CardStatusType.±ù¶³, 0, cause);
     }
 
-    public static CardStatusItem poisoned(int effect) {
-        return new CardStatusItem(CardStatusType.ÖÐ¶¾, effect);
+    public static CardStatusItem poisoned(int effect, FeatureInfo cause) {
+        return new CardStatusItem(CardStatusType.ÖÐ¶¾, effect, cause);
     }
 
-    public static CardStatusItem trapped() {
-        return new CardStatusItem(CardStatusType.Ëø¶¨, 0);
+    public static CardStatusItem trapped(FeatureInfo cause) {
+        return new CardStatusItem(CardStatusType.Ëø¶¨, 0, cause);
+    }
+
+    public static CardStatusItem burning(int effect, FeatureInfo cause) {
+        return new CardStatusItem(CardStatusType.È¼ÉÕ, effect, cause);
     }
 
     public String getShortDesc() {
@@ -49,6 +59,11 @@ public class CardStatusItem {
             sb.append(getEffect());
             sb.append(")");
         }
+        sb.append(":");
+        sb.append(cause.getType().name());
+        sb.append(cause.getLevel());
+        sb.append(":");
+        sb.append(cause.getOwner().getShortDesc(false));
         return sb.toString();
     }
 }

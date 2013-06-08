@@ -6,15 +6,15 @@ import java.util.List;
 
 public class CardStatus {
     private List<CardStatusItem> items;
-    
+
     public CardStatus() {
         this.items = new LinkedList<CardStatusItem>();
     }
-    
+
     public void add(CardStatusItem item) {
         this.items.add(item);
     }
-    
+
     public void remove(CardStatusType type) {
         Iterator<CardStatusItem> iterator = items.iterator();
         while (iterator.hasNext()) {
@@ -24,7 +24,7 @@ public class CardStatus {
             }
         }
     }
-    
+
     public boolean containsStatus(CardStatusType type) {
         for (CardStatusItem item : items) {
             if (item.getType() == type) {
@@ -35,7 +35,7 @@ public class CardStatus {
     }
 
     public List<CardStatusItem> getStatusOf(CardStatusType type) {
-        List <CardStatusItem> result = new LinkedList <CardStatusItem> ();
+        List<CardStatusItem> result = new LinkedList<CardStatusItem>();
         for (CardStatusItem item : items) {
             if (item.getType() == type) {
                 result.add(item);
@@ -48,7 +48,7 @@ public class CardStatus {
         if (items.size() == 0) {
             return "-";
         }
-        StringBuffer sb = new StringBuffer(); 
+        StringBuffer sb = new StringBuffer();
         sb.append("¡¾");
         for (CardStatusItem item : items) {
             sb.append(item.getShortDesc());
@@ -58,5 +58,15 @@ public class CardStatus {
         sb.deleteCharAt(sb.length() - 1);
         sb.append("¡¿");
         return sb.toString();
+    }
+
+    public boolean containsStatusCausedBy(FeatureInfo feature, CardStatusType type) {
+        List<CardStatusItem> items = this.getStatusOf(type);
+        for (CardStatusItem item : items) {
+            if (FeatureInfo.equals(item.getCause(), feature)) {
+                return true;
+            }
+        }
+        return false;
     }
 }

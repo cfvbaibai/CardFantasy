@@ -8,6 +8,7 @@ import cfvbaibai.cardfantasy.data.Feature;
 import cfvbaibai.cardfantasy.data.FeatureTag;
 import cfvbaibai.cardfantasy.data.FeatureType;
 import cfvbaibai.cardfantasy.engine.feature.BlockFeature;
+import cfvbaibai.cardfantasy.engine.feature.BurningFeature;
 import cfvbaibai.cardfantasy.engine.feature.ChainLighteningFeature;
 import cfvbaibai.cardfantasy.engine.feature.CounterAttackFeature;
 import cfvbaibai.cardfantasy.engine.feature.CounterMagicFeature;
@@ -40,7 +41,7 @@ public class FeatureResolver {
     public StageInfo getStage() {
         return this.stage;
     }
-    
+
     public List<CardInfo> getAdjacentCards(CardInfo card) {
         if (card == null) {
             throw new CardFantasyRuntimeException("card is null!");
@@ -62,7 +63,7 @@ public class FeatureResolver {
     }
 
     public void resolvePreAttackFeature(CardInfo attacker, Player defender) throws HeroDieSignal {
-        for (Feature feature : attacker.getUsableFeatures()) {
+        for (FeatureInfo feature : attacker.getUsableFeatures()) {
             if (attacker.isDead()) {
                 continue;
             }
@@ -92,11 +93,13 @@ public class FeatureResolver {
 
     public void resolveCounterAttackFeature(CardInfo attacker, CardInfo defender, Feature attackFeature) {
         if (attackFeature == null) {
-            for (Feature feature : defender.getUsableFeatures()) {
+            for (FeatureInfo feature : defender.getUsableFeatures()) {
                 if (feature.getType() == FeatureType.反击) {
                     CounterAttackFeature.apply(feature, this, attacker, defender);
                 } else if (feature.getType() == FeatureType.盾刺) {
                     SpikeFeature.apply(feature, this, attacker, defender);
+                } else if (feature.getType() == FeatureType.燃烧) {
+                    BurningFeature.apply(feature, this, attacker, defender);
                 }
             }
         }
@@ -114,12 +117,14 @@ public class FeatureResolver {
                 stage.getUI().attackBlocked(attacker, defender, feature, null);
                 result.setAttackable(false);
             } else {
-                for (Feature blockFeature : defender.getUsableFeaturesOf(FeatureType.闪避)) {
-                    if (!result.isAttackable()) {
-                        continue;
-                    }
+                for (Feature blockFeature : defender.getUsableFeatures()) {
                     if (blockFeature.getType() == FeatureType.闪避) {
-                        result.setAttackable(!DodgeFeature.apply(blockFeature, this, attacker, defender, result.getDamage()));
+                        if (!result.isAttackable()) {
+                            continue;
+                        }
+
+                        result.setAttackable(!DodgeFeature.apply(blockFeature, this, attacker, defender,
+                                result.getDamage()));
                     }
                 }
                 for (Feature blockFeature : defender.getUsableFeatures()) {
@@ -137,18 +142,19 @@ public class FeatureResolver {
                 stage.getUI().attackBlocked(attacker, defender, feature, null);
                 result.setAttackable(false);
             } else {
-                for (Feature blockFeature : defender.getUsableFeaturesOf(FeatureType.法力反射)) {
-                    if (feature.getType().containsTag(FeatureTag.魔法)) {
+                for (Feature blockFeature : defender.getUsableFeatures()) {
+                    if (blockFeature.getType() == FeatureType.法力反射 && feature.getType().containsTag(FeatureTag.魔法)) {
                         CounterMagicFeature.apply(blockFeature, this, attacker, defender);
                         result.setAttackable(false);
                     }
                 }
-                for (Feature blockFeature : defender.getUsableFeaturesOf(FeatureType.魔甲)) {
+                for (Feature blockFeature : defender.getUsableFeatures()) {
                     if (!result.isAttackable()) {
                         continue;
                     }
-                    if (feature.getType().containsTag(FeatureTag.魔法)) {
-                        result.setDamage(MagicShieldFeature.apply(this, blockFeature, attacker, defender, result.getDamage()));
+                    if (blockFeature.getType() == FeatureType.魔甲 && feature.getType().containsTag(FeatureTag.魔法)) {
+                        result.setDamage(MagicShieldFeature.apply(this, blockFeature, attacker, defender,
+                                result.getDamage()));
                     }
                 }
             }
@@ -218,7 +224,8 @@ public class FeatureResolver {
             CardInfo card = field.getCard(i);
             if (deadCard == card) {
                 field.expelCard(i);
-                owner.getGrave().addCard(card);
+                // Grave is a stack.
+                owner.getGrave().insertCard(card, 0);
                 break;
             }
         }
@@ -307,13 +314,29 @@ public class FeatureResolver {
         return healee;
     }
 
-    public void resolveSummoningFeature(Field field) {
-        for (CardInfo card : field) {
-            for (FeatureInfo feature : card.getUsableFeatures()) {
+    public void resolveSummoningFeature(CardInfo card, Field myField, Field opField) {
+        for (FeatureInfo feature : card.getUsableSummonFeatures()) {
+            if (feature.getType() == FeatureType.陷阱) {
+                TrapFeature.apply(feature, this, card, opField.getOwner());
+            }
+        }
+        for (CardInfo fieldCard : myField) {
+            for (FeatureInfo feature : fieldCard.getUsableFeatures()) {
                 if (feature.getType() == FeatureType.王国之力) {
-                    KingdomPowerFeature.apply(this, feature, card);
+                    KingdomPowerFeature.apply(this, feature, fieldCard);
                 }
             }
+        }
+    }
+
+    public void resolveDebuff(CardInfo card, CardStatusType debuffType) {
+        if (card == null) {
+            return;
+        }
+        List<CardStatusItem> items = card.getStatus().getStatusOf(debuffType);
+        for (CardStatusItem item : items) {
+            this.stage.getUI().debuffDamage(card, item, item.getEffect());
+            this.applyDamage(card, item.getEffect());
         }
     }
 }

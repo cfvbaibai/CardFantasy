@@ -47,7 +47,11 @@ public class CardDataStore {
                     FeatureType type = FeatureType.valueOf(featureNode.valueOf("@type"));
                     int level = Integer.parseInt(featureNode.valueOf("@level"));
                     int unlockLevel = Integer.parseInt(featureNode.valueOf("@unlock"));
-                    cardData.getFeatures().add(new Feature(type, level, unlockLevel));
+                    String summonText = featureNode.valueOf("@summon");
+                    boolean isSummonFeature = summonText == null ? false : Boolean.parseBoolean(summonText);
+                    String deathText = featureNode.valueOf("@death");
+                    boolean isDeathFeature = deathText == null ? false : Boolean.parseBoolean(deathText);
+                    cardData.getFeatures().add(new Feature(type, level, unlockLevel, isSummonFeature, isDeathFeature));
                 }
                 store.addCard(cardData);
             }

@@ -15,12 +15,12 @@ public class Player {
     private Field field;
     private int hp;
     
-    public Player(PlayerInfo playerInfo) {
+    public Player(PlayerInfo playerInfo, StageInfo stage) {
         this.playerInfo = playerInfo;
         this.deck = prepareDeck();
-        this.hand = new Hand();
+        this.hand = new Hand(stage.getRule());
         this.grave = new Grave();
-        this.field = new Field();
+        this.field = new Field(this);
         this.hp = playerInfo.getMaxHP();
     }
     

@@ -4,7 +4,13 @@ import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
 
 public class Field extends CardPile {
 
-    public Field() {
+    private Player owner;
+    public Field(Player owner) {
+        this.owner = owner;
+    }
+    
+    public Player getOwner() {
+        return this.owner;
     }
 
     public CardInfo getCard(int i) {

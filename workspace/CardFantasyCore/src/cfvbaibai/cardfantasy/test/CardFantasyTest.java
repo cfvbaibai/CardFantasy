@@ -138,4 +138,8 @@ public class CardFantasyTest {
     public void 魔法小丑vs重甲骑兵() {
         game5vs5("魔法小丑", "重甲骑兵");
     }
-}
+    
+    @Test
+    public void 喷火装甲车手vs重甲骑兵() {
+        game5vs5("喷火装甲车手", "重甲骑兵");
+    }}

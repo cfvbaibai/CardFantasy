@@ -3,9 +3,9 @@ package cfvbaibai.cardfantasy.engine.feature;
 import java.util.List;
 
 import cfvbaibai.cardfantasy.Randomizer;
-import cfvbaibai.cardfantasy.data.Feature;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.CardStatusItem;
+import cfvbaibai.cardfantasy.engine.FeatureInfo;
 import cfvbaibai.cardfantasy.engine.FeatureResolver;
 import cfvbaibai.cardfantasy.engine.GameUI;
 import cfvbaibai.cardfantasy.engine.Player;
@@ -18,7 +18,7 @@ import cfvbaibai.cardfantasy.engine.Player;
  *
  */
 public final class TrapFeature {
-    public static void apply(Feature feature, FeatureResolver resolver, CardInfo attacker, Player defender) {
+    public static void apply(FeatureInfo feature, FeatureResolver resolver, CardInfo attacker, Player defender) {
         int targetCount = feature.getImpact();
         List <CardInfo> victims = defender.getField().pickRandom(targetCount, true);
         GameUI ui = resolver.getStage().getUI();
@@ -28,8 +28,9 @@ public final class TrapFeature {
                 continue;
             }
             if (Randomizer.roll100() <= 65) {
-                ui.addCardStatus(attacker, victim, feature, CardStatusItem.trapped());
-                victim.addStatus(CardStatusItem.trapped());
+                CardStatusItem status = CardStatusItem.trapped(feature);
+                ui.addCardStatus(attacker, victim, feature, status);
+                victim.addStatus(status);
             }
         }
     }

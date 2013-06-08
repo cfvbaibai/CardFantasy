@@ -79,4 +79,9 @@
         <Feature type="法力反射" level="2" unlock="5" />
         <Feature type="盾刺" level="5" unlock="10" />
     </Card>
+    <Card id="18" name="喷火装甲车手" race="王国" speed="4" star="3" cost="10" at="200" hp="780" incrAT="23" incrHP="25">
+        <Feature type="陷阱" level="1" unlock="0" summon="true" />
+        <Feature type="格挡" level="5" unlock="5" />
+        <Feature type="燃烧" level="7" unlock="10" />
+    </Card>
 </Cards>

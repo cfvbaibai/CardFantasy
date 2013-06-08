@@ -21,13 +21,20 @@ public abstract class CardPile implements Iterable<CardInfo> {
     }
 
     public void addCard(CardInfo newCard) {
-        for (CardInfo card : cards) {
-            if (card == newCard) {
-                throw new CardFantasyRuntimeException("Cannot add an existing card to CardPile. "
-                        + newCard.getShortDesc());
-            }
-        }
+        checkCardExistence(newCard);
         this.cards.add(newCard);
+    }
+    
+    public void insertCard(CardInfo newCard, int index) {
+        checkCardExistence(newCard);
+        this.cards.add(index, newCard);
+    }
+
+    private void checkCardExistence(CardInfo newCard) {
+        if (cards.contains(newCard)) {
+            throw new CardFantasyRuntimeException("Cannot add an existing card to CardPile. "
+                    + newCard.getShortDesc(true));
+        }
     }
 
     public int size() {

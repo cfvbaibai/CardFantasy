@@ -116,10 +116,12 @@ public class CardInfo {
         this.status.remove(type);
     }
 
-    public String getShortDesc() {
-        int position = this.getPosition();
-        return String.format("<%s>.<%s%s>", this.getOwner().getId(), this.getCard().getName(), position < 0 ? ""
-                : String.valueOf(position));
+    public String getShortDesc(boolean includePosition) {
+        if (includePosition) {
+            return String.format("<%s>.<%s>.[%d]", this.getOwner().getId(), this.getCard().getId(), this.getPosition());
+        } else {
+            return String.format("<%s>.<%s>", this.getOwner().getId(), this.getCard().getId());
+        }
     }
 
     public void reset() {
@@ -133,18 +135,8 @@ public class CardInfo {
         this.setSummonDelay(this.card.getSummonSpeed());
     }
 
-    public List<FeatureInfo> getAllFeatures() {
+    private List<FeatureInfo> getAllFeatures() {
         return this.features;
-    }
-
-    public List<FeatureInfo> getUsableFeaturesOf(FeatureType type) {
-        List<FeatureInfo> features = new ArrayList<FeatureInfo>(4);
-        for (FeatureInfo feature : getAllFeatures()) {
-            if (feature.getType() == type && feature.getUnlockLevel() <= this.getCard().getLevel()) {
-                features.add(feature);
-            }
-        }
-        return features;
     }
 
     public Race getRace() {
@@ -154,11 +146,25 @@ public class CardInfo {
     public int getOriginalAT() {
         return this.at;
     }
+    
+    public List<FeatureInfo> getUsableSummonFeatures() {
+        return getUsableFeatures(true, false);
+    }
 
+    public List<FeatureInfo> getUsableDeathFeatures() {
+        return getUsableFeatures(false, true);
+    }
+    
     public List<FeatureInfo> getUsableFeatures() {
+        return getUsableFeatures(false, false);
+    }
+
+    private List<FeatureInfo> getUsableFeatures(boolean includeSummonFeature, boolean includeDeathFeature) {
         List<FeatureInfo> features = new ArrayList<FeatureInfo>(4);
-        for (FeatureInfo feature : getAllFeatures()) {
-            if (feature.getUnlockLevel() <= this.getCard().getLevel()) {
+        for (FeatureInfo feature : this.getAllFeatures()) {
+            if (feature.getUnlockLevel() <= this.getCard().getLevel() &&
+                    (includeSummonFeature || !feature.isSummonFeature()) &&
+                    (includeDeathFeature || !feature.isDeathFeature())) {
                 features.add(feature);
             }
         }
@@ -186,8 +192,8 @@ public class CardInfo {
             throw new CardFantasyRuntimeException("feature.getOwner() is null");
         }
         List<FeatureEffect> result = new ArrayList<FeatureEffect>();
-        for (FeatureEffect effect : this.getEffectsCausedBy(feature.getType())) {
-            if (feature.getOwner() == effect.getSource()) {
+        for (FeatureEffect effect : this.getEffects()) {
+            if (FeatureInfo.equals(effect.getCause(), feature)) {
                 result.add(effect);
             }
         }
@@ -198,8 +204,8 @@ public class CardInfo {
         return this.card.getMaxHP();
     }
 
-    public String getName() {
-        return this.card.getName();
+    public String getId() {
+        return this.card.getId();
     }
     
     public int getLevel() {
@@ -226,7 +232,7 @@ public class CardInfo {
                 sb.append(effect.getCause().getLevel());
                 if (!effect.isEternal()) {
                     sb.append(":");
-                    sb.append(effect.getSource().getShortDesc());
+                    sb.append(effect.getSource().getShortDesc(false));
                 }
                 sb.append(", ");
             }

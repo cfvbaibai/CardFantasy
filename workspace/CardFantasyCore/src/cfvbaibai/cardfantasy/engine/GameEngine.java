@@ -31,12 +31,8 @@ public class GameEngine {
     }
 
     public void RegisterPlayers(PlayerInfo player1Info, PlayerInfo player2Info) {
-        Player player1 = new Player(player1Info);
-        getBoard().addPlayer(player1);
-        stage.getUI().playerAdded(player1);
-        Player player2 = new Player(player2Info);
-        getBoard().addPlayer(player2);
-        stage.getUI().playerAdded(player2);
+        stage.addPlayer(player1Info);
+        stage.addPlayer(player2Info);
     }
 
     public GameResult playGame() {
@@ -96,7 +92,7 @@ public class GameEngine {
             hand.removeCard(summonedCard);
             summonedCard.reset();
             field.addCard(summonedCard);
-            stage.getResolver().resolveSummoningFeature(field);
+            stage.getResolver().resolveSummoningFeature(summonedCard, field, this.getInactivePlayer().getField());
         }
         return Phase.Battle;
     }
@@ -151,14 +147,9 @@ public class GameEngine {
                 tryAttackEnemy(myField, opField, i);
             }
 
-            if (myField.getCard(i) != null) {
-                // Resolve POISON damage
-                List<CardStatusItem> items = myField.getCard(i).getStatus().getStatusOf(CardStatusType.÷–∂æ);
-                for (CardStatusItem item : items) {
-                    ui.debuffDamage(myField.getCard(i), item, item.getEffect());
-                    resolver.applyDamage(myField.getCard(i), item.getEffect());
-                }
-            }
+            resolver.resolveDebuff(myField.getCard(i), CardStatusType.÷–∂æ);
+            resolver.resolveDebuff(myField.getCard(i), CardStatusType.»º…’);
+
             // ªÿ¥∫
             resolver.resolveCardRoundEndingFeature(myField.getCard(i));
         }

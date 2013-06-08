@@ -6,19 +6,20 @@ import java.util.List;
 public class Card implements Cloneable {
     private CardData sourceInfo;
     private int exp;
+    private String id;
     
     public Card(CardData sourceInfo) {
-        this.sourceInfo = sourceInfo;
-        this.exp = 0;
+        this(sourceInfo, 0, "");
     }
     
-    public Card(CardData sourceInfo, int cardLevel) {
-        this(sourceInfo);
+    public Card(CardData sourceInfo, int cardLevel, String suffix) {
+        this.sourceInfo = sourceInfo;
         this.growToLevel(cardLevel);
+        this.id = sourceInfo.getName() + suffix;
     }
 
-    public String getName() {
-        return this.sourceInfo.getName();
+    public String getId() {
+        return this.id;
     }
     
     public int getSummonSpeed() {

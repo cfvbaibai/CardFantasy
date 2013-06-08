@@ -34,7 +34,22 @@ public class PlayerBuilder {
                 throw new RuntimeException("Invalid card name: " + cardName);
             }
             for (int j = 0; j < count; ++j) {
-                cards.add(new Card(data, cardLevel));
+                char suffix = 'A';
+                while (true) {
+                    boolean suffixUsed = false;
+                    for (Card card : cards) {
+                        if (card.getId().equals(cardName + suffix)) {
+                            suffixUsed = true;
+                            break;
+                        }
+                    }
+                    if (suffixUsed) {
+                        ++suffix;
+                    } else {
+                        break;
+                    }
+                }
+                cards.add(new Card(data, cardLevel, String.valueOf(suffix)));
             }
         }
         Card[] cardArray = cards.toArray(new Card[cards.size()]);
