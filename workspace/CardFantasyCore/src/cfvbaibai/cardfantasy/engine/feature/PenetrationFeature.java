@@ -21,7 +21,6 @@ public final class PenetrationFeature {
         }
         int damage = normalAttackDamage * feature.getImpact() / 100;
         GameUI ui = resolver.getStage().getUI();
-        ui.useSkillToHero(attacker, defender, feature);
         resolver.attackHero(attacker, defender, feature, damage);
     }
 }

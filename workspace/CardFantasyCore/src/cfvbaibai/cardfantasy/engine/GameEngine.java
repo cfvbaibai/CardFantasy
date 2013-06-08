@@ -216,8 +216,8 @@ public class GameEngine {
                 if (feature.getType() == FeatureType.∫·…®) {
 
                     List<CardInfo> sweepDefenders = new ArrayList<CardInfo>();
-                    if (i > 0 && opField.getCard(i) != null) {
-                        sweepDefenders.add(opField.getCard(i));
+                    if (i > 0 && opField.getCard(i - 1) != null) {
+                        sweepDefenders.add(opField.getCard(i - 1));
                     }
                     if (opField.getCard(i + 1) != null) {
                         sweepDefenders.add(opField.getCard(i + 1));

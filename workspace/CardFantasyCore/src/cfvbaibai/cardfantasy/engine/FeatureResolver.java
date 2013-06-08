@@ -17,6 +17,7 @@ import cfvbaibai.cardfantasy.engine.feature.HealFeature;
 import cfvbaibai.cardfantasy.engine.feature.HolyLightFeature;
 import cfvbaibai.cardfantasy.engine.feature.IceBoltFeature;
 import cfvbaibai.cardfantasy.engine.feature.KingdomPowerFeature;
+import cfvbaibai.cardfantasy.engine.feature.MagicShieldFeature;
 import cfvbaibai.cardfantasy.engine.feature.PenetrationFeature;
 import cfvbaibai.cardfantasy.engine.feature.PrayFeature;
 import cfvbaibai.cardfantasy.engine.feature.RainfallFeature;
@@ -121,7 +122,9 @@ public class FeatureResolver {
                     if (!result.isAttackable()) {
                         continue;
                     }
-                    result.setDamage(BlockFeature.apply(blockFeature, this, attacker, defender, result.getDamage()));
+                    if (feature.getType().containsTag(FeatureTag.Ä§·¨)) {
+                        result.setDamage(MagicShieldFeature.apply(this, blockFeature, attacker, defender, result.getDamage()));
+                    }
                 }
             }
         }

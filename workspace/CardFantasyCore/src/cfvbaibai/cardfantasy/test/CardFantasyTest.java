@@ -123,4 +123,14 @@ public class CardFantasyTest {
     public void Ä§·¨Ğ¡³óvsÁÔÄ§È®() {
         game5vs5("Ä§·¨Ğ¡³ó", "ÁÔÄ§È®");
     }
+    
+    @Test
+    public void ³å·æÕ¶¸«±øvsåóÆï±ø() {
+        game5vs5("³å·æÕ¶¸«±ø", "åóÆï±ø");
+    }
+    
+    @Test
+    public void Ä§·¨Ğ¡³óvsÄ§½£Ê¿() {
+        game5vs5("Ä§·¨Ğ¡³ó", "Ä§½£Ê¿");
+    }
 }

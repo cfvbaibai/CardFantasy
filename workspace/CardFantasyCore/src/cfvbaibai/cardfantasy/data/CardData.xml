@@ -59,9 +59,19 @@
         <Feature type="圣光" level="4" unlock="5" />
         <Feature type="王国之力" level="3" unlock="10" />
     </Card>
-    <Card id="13" name="猎魔犬" race="王国" speed="2" star="2" cost="7" at="130" hp="280" incrAT="15" incrHP="20">
+    <Card id="14" name="猎魔犬" race="王国" speed="2" star="2" cost="7" at="130" hp="450" incrAT="15" incrHP="20">
         <Feature type="圣光" level="3" unlock="0" />
         <Feature type="暴击" level="3" unlock="5" />
         <Feature type="法力反射" level="4" unlock="10" />
+    </Card>
+    <Card id="15" name="弩骑兵" race="王国" speed="4" star="2" cost="6" at="110" hp="520" incrAT="15" incrHP="20">
+        <Feature type="穿刺" level="3" unlock="0" />
+        <Feature type="狙击" level="5" unlock="5" />
+        <Feature type="闪避" level="3" unlock="10" />
+    </Card>
+    <Card id="16" name="魔剑士" race="王国" speed="2" star="4" cost="9" at="125" hp="820" incrAT="10" incrHP="42">
+        <Feature type="守护" level="0" unlock="0" />
+        <Feature type="格挡" level="4" unlock="5" />
+        <Feature type="魔甲" level="8" unlock="10" />
     </Card>
 </Cards>
