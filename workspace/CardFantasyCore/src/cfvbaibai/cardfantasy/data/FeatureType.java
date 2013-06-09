@@ -44,6 +44,8 @@ public enum FeatureType {
     ËÍ»¹(0, FeatureTag.¼´ËÀ),
     ÈºÌåÏ÷Èõ(5),
     ±ù¼×(190, -10),
+    ×Ô±¬(40),
+    Í¸Ö§(20),
 
     // Unimplemented.
     ·âÓ¡(0, FeatureTag.ÏİÚå),

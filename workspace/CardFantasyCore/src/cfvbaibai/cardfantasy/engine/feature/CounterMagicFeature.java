@@ -19,7 +19,7 @@ public final class CounterMagicFeature {
             ui.useSkill(defender, attacker, feature);
             ui.attackCard(defender, attacker, feature, damage);
             if (resolver.applyDamage(attacker, damage).cardDead) {
-                resolver.resolveDeathFeature(attacker, defender, feature);
+                resolver.resolveDeathFeature(defender, attacker, feature);
             }
             return true;
         } else {

@@ -16,6 +16,7 @@ import cfvbaibai.cardfantasy.engine.feature.CounterMagicFeature;
 import cfvbaibai.cardfantasy.engine.feature.CriticalAttackFeature;
 import cfvbaibai.cardfantasy.engine.feature.DodgeFeature;
 import cfvbaibai.cardfantasy.engine.feature.EscapeFeature;
+import cfvbaibai.cardfantasy.engine.feature.ExplodeFeature;
 import cfvbaibai.cardfantasy.engine.feature.FireMagicFeature;
 import cfvbaibai.cardfantasy.engine.feature.GuardFeature;
 import cfvbaibai.cardfantasy.engine.feature.HealFeature;
@@ -25,6 +26,7 @@ import cfvbaibai.cardfantasy.engine.feature.IceMagicFeature;
 import cfvbaibai.cardfantasy.engine.feature.ImmobilityFeature;
 import cfvbaibai.cardfantasy.engine.feature.LighteningMagicFeature;
 import cfvbaibai.cardfantasy.engine.feature.MagicShieldFeature;
+import cfvbaibai.cardfantasy.engine.feature.OverdrawFeature;
 import cfvbaibai.cardfantasy.engine.feature.PenetrationFeature;
 import cfvbaibai.cardfantasy.engine.feature.PrayFeature;
 import cfvbaibai.cardfantasy.engine.feature.PursuitFeature;
@@ -74,6 +76,14 @@ public class FeatureResolver {
     }
 
     public void resolvePreAttackFeature(CardInfo attacker, Player defender) throws HeroDieSignal {
+        for (FeatureInfo feature : attacker.getNormalUsableFeatures()) {
+            if (attacker.isDead()) {
+                continue;
+            }
+            if (feature.getType() == FeatureType.透支) {
+                OverdrawFeature.apply(this, feature, attacker);
+            }
+        }
         for (FeatureInfo feature : attacker.getNormalUsableFeatures()) {
             if (attacker.isDead()) {
                 continue;
@@ -222,6 +232,11 @@ public class FeatureResolver {
 
     public void resolveDeathFeature(CardInfo attacker, CardInfo defender, Feature feature) {
         resolveLeaveFeature(defender, feature);
+        for (FeatureInfo deadCardFeature : defender.getAllUsableFeatures()) {
+            if (deadCardFeature.getType() == FeatureType.自爆) {
+                ExplodeFeature.apply(this, deadCardFeature, attacker, defender);
+            }
+        }
         for (FeatureInfo deadCardFeature : defender.getUsableDeathFeatures()) {
             if (deadCardFeature.getType() == FeatureType.转生) {
                 ResurrectFeature.apply(this, deadCardFeature, defender);

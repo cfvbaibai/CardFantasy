@@ -280,4 +280,8 @@ public class CardFantasyTest {
     public void 狮鹫骑士vs钻石巨石像() {
         game5vs5("狮鹫骑士", "钻石巨石像");
     }
-}
+
+    @Test
+    public void 炼金机甲vs钻石巨石像() {
+        game5vs5("炼金机甲", "钻石巨石像");
+    }}
