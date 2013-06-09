@@ -3,13 +3,13 @@ package cfvbaibai.cardfantasy.data;
 import java.util.HashSet;
 
 public enum FeatureType {
-    ¾Ñ»÷(25),
+    ¾Ñ»÷(25, FeatureTag.¿¹ÃâÒß),
     Á¬»·ÉÁµç(25, FeatureTag.Ä§·¨),
-    ´©´Ì(15),
+    ´©´Ì(15, FeatureTag.¿¹ÃâÒß),
     Ê¥¹â(15, 15),
     ¸ñµ²(20),
     ÏİÚå(1, FeatureTag.ÏİÚå),
-    ·´»÷(20),
+    ·´»÷(20, FeatureTag.¿¹ÃâÒß),
     Ï÷Èõ(10),
     »ğÇò(25, FeatureTag.Ä§·¨),
     ±ùµ¯(20, FeatureTag.Ä§·¨),
@@ -25,7 +25,7 @@ public enum FeatureType {
     Íõ¹úÖ®Á¦(25),
     ·¨Á¦·´Éä(30),
     Ä§¼×(140, -10),
-    ¶Ü´Ì(20),
+    ¶Ü´Ì(20, FeatureTag.¿¹ÃâÒß),
     È¼ÉÕ(25),
     »ğÇ½(25, FeatureTag.Ä§·¨),
     ÁÒÑæ·ç±©(25, FeatureTag.Ä§·¨),
@@ -34,7 +34,7 @@ public enum FeatureType {
     Íõ¹úÊØ»¤(50),
     Ëª¶³ĞÂĞÇ(20, FeatureTag.Ä§·¨),
     ±©·çÑ©(20, FeatureTag.Ä§·¨),
-    ÁÑÉË(0),
+    ÁÑÉË(0, FeatureTag.¿¹ÃâÒß),
     ÂäÀ×(25, FeatureTag.Ä§·¨),
     Çî×·ÃÍ´ò(15),
     ÍÑÀ§(0),
@@ -46,6 +46,7 @@ public enum FeatureType {
     ±ù¼×(190, -10),
     ×Ô±¬(40),
     Í¸Ö§(20),
+    ÃâÒß(0),
 
     // Unimplemented.
     ·âÓ¡(0, FeatureTag.ÏİÚå),

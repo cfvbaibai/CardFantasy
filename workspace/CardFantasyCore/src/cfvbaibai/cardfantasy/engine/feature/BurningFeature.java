@@ -14,6 +14,8 @@ public final class BurningFeature {
             return;
         }
         int damage = feature.getImpact();
+        GameUI ui = resolver.getStage().getUI();
+        ui.useSkill(defender, attacker, feature);
         OnAttackBlockingResult result = resolver.resolveAttackBlockingFeature(defender, attacker, feature);
         if (!result.isAttackable()) {
             return;
@@ -21,8 +23,6 @@ public final class BurningFeature {
         if (attacker.getStatus().containsStatusCausedBy(feature, CardStatusType.È¼ÉÕ)) {
             return;
         }
-        GameUI ui = resolver.getStage().getUI();
-        ui.useSkill(defender, attacker, feature);
         CardStatusItem status = CardStatusItem.burning(damage, feature);
         ui.addCardStatus(defender, attacker, feature, status);
         attacker.addStatus(status);

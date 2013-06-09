@@ -284,4 +284,50 @@ public class CardFantasyTest {
     @Test
     public void 炼金机甲vs钻石巨石像() {
         game5vs5("炼金机甲", "钻石巨石像");
-    }}
+    }
+
+    @Test
+    public void 时空旅者vs降临天使() {
+        game5vs5("时空旅者", "降临天使");
+    }
+
+    @Test
+    public void 光明之龙vs城镇弓箭兵() {
+        game5vs5("光明之龙", "城镇弓箭兵");
+    }
+
+    @Test
+    public void 光明之龙vs城镇长矛兵() {
+        game5vs5("光明之龙", "城镇长矛兵");
+    }
+
+    @Test
+    public void 光明之龙vs城镇突击兵() {
+        game5vs5("光明之龙", "城镇突击兵");
+    }
+
+    @Test
+    public void 光明之龙vs魔法小丑() {
+        game5vs5("光明之龙", "魔法小丑");
+    }
+
+    @Test
+    public void 光明之龙vs重甲骑兵() {
+        game5vs5("光明之龙", "重甲骑兵");
+    }
+
+    @Test
+    public void 光明之龙vs喷火装甲车手() {
+        game5vs5("光明之龙", "喷火装甲车手");
+    }
+
+    @Test
+    public void 光明之龙vs皇家雄狮() {
+        game5vs5("光明之龙", "皇家雄狮");
+    }
+
+    @Test
+    public void 光明之龙vs降临天使() {
+        game5vs5("光明之龙", "降临天使");
+    }
+}

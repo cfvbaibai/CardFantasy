@@ -24,6 +24,7 @@ import cfvbaibai.cardfantasy.engine.feature.HolyLightFeature;
 import cfvbaibai.cardfantasy.engine.feature.IceArmorFeature;
 import cfvbaibai.cardfantasy.engine.feature.IceMagicFeature;
 import cfvbaibai.cardfantasy.engine.feature.ImmobilityFeature;
+import cfvbaibai.cardfantasy.engine.feature.ImmueFeature;
 import cfvbaibai.cardfantasy.engine.feature.LighteningMagicFeature;
 import cfvbaibai.cardfantasy.engine.feature.MagicShieldFeature;
 import cfvbaibai.cardfantasy.engine.feature.OverdrawFeature;
@@ -204,6 +205,10 @@ public class FeatureResolver {
                 for (Feature blockFeature : defender.getNormalUsableFeatures()) {
                     if (blockFeature.getType() == FeatureType.∑®¡¶∑¥…‰) {
                         if (CounterMagicFeature.isFeatureBlocked(this, blockFeature, feature, attacker, defender)) {
+                            result.setAttackable(false);
+                        }
+                    } else if (blockFeature.getType() == FeatureType.√‚“ﬂ){
+                        if (ImmueFeature.isFeatureBlocked(this, blockFeature, feature, attacker, defender)) {
                             result.setAttackable(false);
                         }
                     } else if (blockFeature.getType() == FeatureType.Õ—¿ß) {

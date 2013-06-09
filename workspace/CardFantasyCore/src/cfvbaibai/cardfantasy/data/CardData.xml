@@ -199,4 +199,14 @@
         <Feature type="自爆" level="7" unlock="5" />
         <Feature type="透支" level="7" unlock="10" />
     </Card>
+    <Card id="41" name="降临天使" race="王国" speed="4" star="5" cost="15" at="365" hp="1800" incrAT="24" incrHP="24">
+        <Feature type="魔甲" level="8" unlock="0" />
+        <Feature type="送还" level="0" unlock="5" />
+        <Feature type="甘霖" level="8" unlock="10" />
+    </Card>
+    <Card id="42" name="光明之龙" race="王国" speed="6" star="5" cost="14" at="350" hp="1450" incrAT="28" incrHP="28">
+        <Feature type="闪避" level="5" unlock="0" />
+        <Feature type="横扫" level="0" unlock="5" />
+        <Feature type="免疫" level="0" unlock="10" />
+    </Card>
 </Cards>
