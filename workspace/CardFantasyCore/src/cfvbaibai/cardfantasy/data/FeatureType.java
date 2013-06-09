@@ -29,6 +29,8 @@ public enum FeatureType {
     燃烧(25),
     火墙(25, FeatureTag.魔法),
     烈焰风暴(25, FeatureTag.魔法),
+    雷暴(25, FeatureTag.魔法),
+    转生(30, 5),
     未知(0);
     
 

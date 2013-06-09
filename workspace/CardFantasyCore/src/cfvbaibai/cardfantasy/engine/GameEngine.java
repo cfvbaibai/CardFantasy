@@ -157,7 +157,7 @@ public class GameEngine {
         myField.compact();
         opField.compact();
 
-        for (CardInfo card : myField) {
+        for (CardInfo card : myField.getAliveCards()) {
             card.getStatus().remove(CardStatusType.±ù¶³);
             card.getStatus().remove(CardStatusType.Âé±Ô);
             card.getStatus().remove(CardStatusType.Ëø¶¨);
@@ -258,7 +258,6 @@ public class GameEngine {
             return Phase.Standby;
         }
         CardInfo newCard = deck.draw();
-        newCard.resetSummonDelay();
         hand.addCard(newCard);
         stage.getUI().cardDrawed(activePlayer, newCard);
         return Phase.Standby;

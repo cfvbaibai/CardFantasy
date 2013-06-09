@@ -37,7 +37,7 @@ public class Board {
         Collection <CardInfo> allHandCards = new LinkedList<CardInfo>();
         for (Player player : players) {
             Hand hand = player.getHand();
-            for (CardInfo card : hand) {
+            for (CardInfo card : hand.toList()) {
                 allHandCards.add(card);
             }
         }

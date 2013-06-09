@@ -84,4 +84,8 @@ public abstract class GameUI {
     public abstract void healHero(CardInfo healer, Player healee, Feature feature, int healHP);
 
     public abstract void loseAdjustAttackEffect(CardInfo ally, FeatureEffect effect);
+
+    public abstract void cardToDeck(Player player, CardInfo card);
+
+    public abstract void cardToHand(Player player, CardInfo card);
 }

@@ -26,10 +26,7 @@ public final class RainfallFeature {
         GameUI ui = resolver.getStage().getUI();
         Field field = healer.getOwner().getField();
         List<Heal> heals = new ArrayList<Heal>();
-        for (CardInfo healee : field) {
-            if (healee == null) {
-                continue;
-            }
+        for (CardInfo healee : field.getAliveCards()) {
             int healHP = feature.getImpact();
             if (healHP + healee.getHP() > healee.getMaxHP()) {
                 healHP = healee.getMaxHP() - healee.getHP();

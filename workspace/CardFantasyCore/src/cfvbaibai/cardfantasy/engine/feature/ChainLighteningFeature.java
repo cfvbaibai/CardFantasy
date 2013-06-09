@@ -12,18 +12,24 @@ import cfvbaibai.cardfantasy.engine.OnAttackBlockingResult;
 import cfvbaibai.cardfantasy.engine.Player;
 
 /**
- * Chain Lightening give 25 * level damages to 3 enemy's cards and 40% probability to cause paralyzed.
+ * Chain Lightening give 25 * level damages to 3 enemy's cards and 40%
+ * probability to cause paralyzed.
  * 
- * Can be blocked by Immue.
- * Can be reflected by Magic Reflection.
- * Can activate dying feature.
+ * Can be blocked by Immue. Can be reflected by Magic Reflection. Can activate
+ * dying feature.
+ * 
  * @author °×°×
- *
+ * 
  */
 public final class ChainLighteningFeature {
     public static void apply(FeatureInfo feature, FeatureResolver resolver, CardInfo attacker, Player defender) {
+        applyLighteningMagic(feature, resolver, attacker, defender, 3, 40);
+    }
+
+    public static void applyLighteningMagic(FeatureInfo feature, FeatureResolver resolver, CardInfo attacker,
+            Player defender, int victimCount, int paralyzeRate) {
         int damage = feature.getImpact();
-        List <CardInfo> victims = defender.getField().pickRandom(3, true);
+        List<CardInfo> victims = defender.getField().pickRandom(victimCount, true);
         GameUI ui = resolver.getStage().getUI();
         ui.useSkill(attacker, victims, feature);
         for (CardInfo victim : victims) {
@@ -31,13 +37,13 @@ public final class ChainLighteningFeature {
             if (!result.isAttackable()) {
                 continue;
             }
-            damage = result.getDamage(); 
+            damage = result.getDamage();
             ui.attackCard(attacker, victim, feature, damage);
             boolean cardDead = resolver.applyDamage(victim, damage).cardDead;
             resolver.resolveCounterAttackFeature(attacker, victim, feature);
-            if (cardDead){
+            if (cardDead) {
                 resolver.resolveDeathFeature(attacker, victim, feature);
-            } else if (Randomizer.roll100() <= 40) {
+            } else if (Randomizer.roll100() <= paralyzeRate) {
                 CardStatusItem status = CardStatusItem.paralyzed(feature);
                 ui.addCardStatus(attacker, victim, feature, status);
                 victim.addStatus(status);

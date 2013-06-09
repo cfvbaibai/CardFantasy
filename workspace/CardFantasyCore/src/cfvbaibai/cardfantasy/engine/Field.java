@@ -1,5 +1,8 @@
 package cfvbaibai.cardfantasy.engine;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
 
 public class Field extends CardPile {
@@ -13,6 +16,16 @@ public class Field extends CardPile {
         return this.owner;
     }
 
+    public List<CardInfo> getAliveCards() {
+        List<CardInfo> result = new ArrayList<CardInfo>();
+        for (CardInfo card : getCards()) {
+            if (card != null) {
+                result.add(card);
+            }
+        }
+        return result;
+    }
+    
     public CardInfo getCard(int i) {
         if (i < 0) {
             throw new CardFantasyRuntimeException("Invalid parameter i: " + i + ". i must be a positive integer.");

@@ -84,7 +84,7 @@ public class TestGameUI extends GameUI {
     public List<CardInfo> summonCards(StageInfo stage) {
         List<CardInfo> summonedCards = new LinkedList<CardInfo>();
         Player player = stage.getActivePlayer();
-        for (CardInfo card : player.getHand()) {
+        for (CardInfo card : player.getHand().toList()) {
             if (card.getSummonDelay() == 0) {
                 summonedCards.add(card);
                 sayF("<%s> summons card: <%s (LV: %d)>", player.getId(), card.getId(), card.getLevel());
@@ -189,7 +189,7 @@ public class TestGameUI extends GameUI {
     private void showGrave(Grave grave) {
         StringBuffer sb = new StringBuffer();
         sb.append("Grave: ");
-        for (CardInfo card : grave) {
+        for (CardInfo card : grave.toList()) {
             sb.append(String.format("%s (LV=%d, IAT=%d, MHP=%d), ", card.getId(), card.getLevel(), card.getInitAT(),
                     card.getMaxHP()));
         }
@@ -200,7 +200,7 @@ public class TestGameUI extends GameUI {
         StringBuffer sb = new StringBuffer();
         sb.append("Field: ");
         int i = 0;
-        for (CardInfo card : field) {
+        for (CardInfo card : field.getAliveCards()) {
             sb.append(String.format("\r\n[%d] %s (LV=%d, AT=%d/%d, HP=%d/%d, ST=%s, EF=%s)", i, card.getId(), card
                     .getLevel(), card.getAT(), card.getInitAT(), card.getHP(), card.getMaxHP(), card.getStatus()
                     .getShortDesc(), card.getEffectsDesc()));
@@ -212,7 +212,7 @@ public class TestGameUI extends GameUI {
     private void showHand(Hand hand) {
         StringBuffer sb = new StringBuffer();
         sb.append("Hand : ");
-        for (CardInfo card : hand) {
+        for (CardInfo card : hand.toList()) {
             sb.append(String.format("%s (LV=%d, IAT=%d, MHP=%d, SD=%d), ", card.getId(), card.getLevel(),
                     card.getInitAT(), card.getMaxHP(), card.getSummonDelay()));
         }
@@ -222,7 +222,7 @@ public class TestGameUI extends GameUI {
     private void showDeck(Deck deck) {
         StringBuffer sb = new StringBuffer();
         sb.append("Deck : ");
-        for (CardInfo card : deck) {
+        for (CardInfo card : deck.toList()) {
             sb.append(String.format("%s (LV=%d, IAT=%d, MHP=%d), ", card.getId(), card.getLevel(), card.getInitAT(),
                     card.getMaxHP()));
         }
@@ -305,5 +305,15 @@ public class TestGameUI extends GameUI {
     public void loseAdjustAttackEffect(CardInfo ally, FeatureEffect effect) {
         sayF("%s loses effect caused by %s from %s. AT: %d -> %d.", ally.getShortDesc(true), effect.getCause()
                 .getShortDesc(), effect.getSource().getShortDesc(true), ally.getAT(), ally.getAT() - effect.getValue());
+    }
+
+    @Override
+    public void cardToDeck(Player player, CardInfo card) {
+        sayF("%s is put into %s's deck.", card.getShortDesc(true), player.getShortDesc());
+    }
+
+    @Override
+    public void cardToHand(Player player, CardInfo card) {
+        sayF("%s is put into %s's hand.", card.getShortDesc(true), player.getShortDesc());
     }
 }

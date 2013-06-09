@@ -2,13 +2,12 @@ package cfvbaibai.cardfantasy.engine;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
 import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
 
-public abstract class CardPile implements Iterable<CardInfo> {
+public abstract class CardPile {
 
     private List<CardInfo> cards;
 
@@ -63,10 +62,4 @@ public abstract class CardPile implements Iterable<CardInfo> {
         }
         return result;
     }
-
-    @Override
-    public Iterator<CardInfo> iterator() {
-        return this.cards.iterator();
-    }
-
 }

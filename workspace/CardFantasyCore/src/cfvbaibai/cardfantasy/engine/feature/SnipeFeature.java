@@ -19,10 +19,7 @@ public final class SnipeFeature {
     public static void apply(Feature feature, FeatureResolver resolver, CardInfo attacker, Player defenderPlayer) {
         int damage = feature.getImpact();
         CardInfo victim = null;
-        for (CardInfo defender : defenderPlayer.getField()) {
-            if (defender == null) {
-                continue;
-            }
+        for (CardInfo defender : defenderPlayer.getField().getAliveCards()) {
             if (victim == null || victim.getHP() > defender.getHP()) {
                 victim = defender;
             }

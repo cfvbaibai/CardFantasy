@@ -15,4 +15,10 @@ public class Hand extends CardPile {
     public void removeCard(CardInfo card) {
         this.getCards().remove(card);
     }
+    
+    @Override
+    public void addCard(CardInfo newCard) {
+        super.addCard(newCard);
+        newCard.resetSummonDelay();
+    }
 }

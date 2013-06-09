@@ -27,8 +27,10 @@ import cfvbaibai.cardfantasy.engine.feature.PenetrationFeature;
 import cfvbaibai.cardfantasy.engine.feature.PrayFeature;
 import cfvbaibai.cardfantasy.engine.feature.RainfallFeature;
 import cfvbaibai.cardfantasy.engine.feature.RejuvenateFeature;
+import cfvbaibai.cardfantasy.engine.feature.ResurrectFeature;
 import cfvbaibai.cardfantasy.engine.feature.SnipeFeature;
 import cfvbaibai.cardfantasy.engine.feature.SpikeFeature;
+import cfvbaibai.cardfantasy.engine.feature.ThunderStormFeature;
 import cfvbaibai.cardfantasy.engine.feature.TrapFeature;
 import cfvbaibai.cardfantasy.engine.feature.WeakenFeature;
 import cfvbaibai.cardfantasy.engine.feature.ZealotFeature;
@@ -87,6 +89,10 @@ public class FeatureResolver {
                 PrayFeature.apply(feature, this, attacker);
             } else if (feature.getType() == FeatureType.火墙) {
                 FirewallFeature.apply(feature, this, attacker, defender);
+            } else if (feature.getType() == FeatureType.烈焰风暴) {
+                FireStormFeature.apply(feature, this, attacker, defender);
+            } else if (feature.getType() == FeatureType.雷暴) {
+                ThunderStormFeature.apply(feature, this, attacker, defender);
             }
         }
     }
@@ -172,7 +178,11 @@ public class FeatureResolver {
                 KingdomPowerFeature.remove(this, deadCardFeature, defender);
             }
         }
-        return;
+        for (FeatureInfo deadCardFeature : defender.getUsableDeathFeatures()) {
+            if (deadCardFeature.getType() == FeatureType.转生) {
+                ResurrectFeature.apply(this, deadCardFeature, defender);
+            }
+        }
     }
 
     public void resolveExtraAttackFeature(CardInfo attacker, CardInfo defender, Player defenderHero,
@@ -248,7 +258,7 @@ public class FeatureResolver {
 
     private boolean resolveAttackHeroBlockingFeatures(CardInfo attacker, Player defenderPlayer, Feature feature,
             int damage) {
-        for (CardInfo defender : defenderPlayer.getField()) {
+        for (CardInfo defender : defenderPlayer.getField().getAliveCards()) {
             if (defender == null) {
                 continue;
             }
@@ -310,7 +320,7 @@ public class FeatureResolver {
     public CardInfo pickHealee(CardInfo healer) {
         Field field = healer.getOwner().getField();
         CardInfo healee = null;
-        for (CardInfo card : field) {
+        for (CardInfo card : field.getAliveCards()) {
             if (healee == null || card.getHP() < healee.getHP()) {
                 healee = card;
             }
@@ -324,9 +334,11 @@ public class FeatureResolver {
                 TrapFeature.apply(feature, this, card, opField.getOwner());
             } else if (feature.getType() == FeatureType.烈焰风暴) {
                 FireStormFeature.apply(feature, this, card, opField.getOwner());
+            } else if (feature.getType() == FeatureType.雷暴) {
+                ThunderStormFeature.apply(feature, this, card, opField.getOwner());
             }
         }
-        for (CardInfo fieldCard : myField) {
+        for (CardInfo fieldCard : myField.getAliveCards()) {
             for (FeatureInfo feature : fieldCard.getUsableFeatures()) {
                 if (feature.getType() == FeatureType.王国之力) {
                     KingdomPowerFeature.apply(this, feature, fieldCard);

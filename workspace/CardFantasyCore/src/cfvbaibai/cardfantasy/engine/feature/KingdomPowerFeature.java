@@ -20,8 +20,8 @@ public final class KingdomPowerFeature {
         }
         int adjAT = feature.getImpact();
         Field field = card.getOwner().getField();
-        for (CardInfo ally : field) {
-            if (ally == null || ally == card || ally.getRace() != Race.王国) {
+        for (CardInfo ally : field.getAliveCards()) {
+            if (ally == card || ally.getRace() != Race.王国) {
                 continue;
             }
             if (ally.getEffectsCausedBy(feature).isEmpty()) {
@@ -39,8 +39,8 @@ public final class KingdomPowerFeature {
             throw new CardFantasyRuntimeException("feature cannot be null");
         }
         Field field = card.getOwner().getField();
-        for (CardInfo ally : field) {
-            if (ally == null || ally == card || ally.getRace() != Race.王国) {
+        for (CardInfo ally : field.getAliveCards()) {
+            if (ally == card || ally.getRace() != Race.王国) {
                 continue;
             }
             for (FeatureEffect effect : ally.getEffectsCausedBy(feature)) {

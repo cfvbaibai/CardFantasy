@@ -99,4 +99,9 @@
         <Feature type="烈焰风暴" level="3" unlock="5" summon="true" />
         <Feature type="连环闪电" level="6" unlock="10" />
     </Card>
+    <Card id="22" name="魔法结晶体" race="王国" speed="4" star="3" cost="11" at="195" hp="650" incrAT="19" incrHP="30">
+        <Feature type="雷暴" level="2" unlock="0" summon="true" />
+        <Feature type="转生" level="4" unlock="5" />
+        <Feature type="法力反射" level="3" unlock="10" />
+    </Card>
 </Cards>

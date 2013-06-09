@@ -17,12 +17,7 @@ public final class FireballFeature {
     
     public static void applyFireMagic(Feature feature, FeatureResolver resolver, CardInfo attacker, Player defender, int victimCount) {
         int damage = Randomizer.next(feature.getImpact(), feature.getImpact() * 2 + 1);
-        List <CardInfo> victims = null;
-        if (victimCount > 0) {
-            victims = defender.getField().pickRandom(victimCount, true);
-        } else {
-            victims = defender.getField().toList();
-        }
+        List <CardInfo> victims = defender.getField().pickRandom(victimCount, true);
         GameUI ui = resolver.getStage().getUI();
         ui.useSkill(attacker, victims, feature);
         for (CardInfo victim : victims) {

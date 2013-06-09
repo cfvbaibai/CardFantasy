@@ -158,4 +158,24 @@ public class CardFantasyTest {
     public void 火焰乌鸦vs魔导师() {
         game5vs5("火焰乌鸦", "魔导师");
     }
+    
+    @Test
+    public void 城镇弓箭兵vs魔导师() {
+        game5vs5("城镇弓箭兵", "魔导师");
+    }
+    
+    @Test
+    public void 狙击箭弩兵vs魔法结晶体() {
+        game5vs5("狙击箭弩兵", "魔法结晶体");
+    }
+    
+    @Test
+    public void 魔剑士vs魔法结晶体() {
+        game5vs5("魔剑士", "魔法结晶体");
+    }
+    
+    @Test
+    public void 重甲骑兵vs魔法结晶体() {
+        game5vs5("重甲骑兵", "魔法结晶体");
+    }
 }
