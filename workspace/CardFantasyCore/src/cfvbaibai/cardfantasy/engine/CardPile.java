@@ -48,6 +48,9 @@ public abstract class CardPile {
         if (max == 0) {
             return new ArrayList<CardInfo>();
         }
+        if (max < 0) {
+            max = cards.size();
+        }
         List<CardInfo> clone = new ArrayList<CardInfo>(cards);
         Collections.shuffle(clone);
         List<CardInfo> result = new LinkedList<CardInfo>();

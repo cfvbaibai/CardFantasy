@@ -10,18 +10,16 @@ import cfvbaibai.cardfantasy.data.FeatureType;
 import cfvbaibai.cardfantasy.data.Race;
 import cfvbaibai.cardfantasy.engine.feature.BlockFeature;
 import cfvbaibai.cardfantasy.engine.feature.BurningFeature;
-import cfvbaibai.cardfantasy.engine.feature.ChainLighteningFeature;
 import cfvbaibai.cardfantasy.engine.feature.CounterAttackFeature;
 import cfvbaibai.cardfantasy.engine.feature.CounterMagicFeature;
 import cfvbaibai.cardfantasy.engine.feature.CriticalAttackFeature;
 import cfvbaibai.cardfantasy.engine.feature.DodgeFeature;
-import cfvbaibai.cardfantasy.engine.feature.FireStormFeature;
-import cfvbaibai.cardfantasy.engine.feature.FireballFeature;
-import cfvbaibai.cardfantasy.engine.feature.FirewallFeature;
+import cfvbaibai.cardfantasy.engine.feature.FireMagicFeature;
 import cfvbaibai.cardfantasy.engine.feature.GuardFeature;
 import cfvbaibai.cardfantasy.engine.feature.HealFeature;
 import cfvbaibai.cardfantasy.engine.feature.HolyLightFeature;
-import cfvbaibai.cardfantasy.engine.feature.IceBoltFeature;
+import cfvbaibai.cardfantasy.engine.feature.IceMagicFeature;
+import cfvbaibai.cardfantasy.engine.feature.LighteningMagicFeature;
 import cfvbaibai.cardfantasy.engine.feature.MagicShieldFeature;
 import cfvbaibai.cardfantasy.engine.feature.PenetrationFeature;
 import cfvbaibai.cardfantasy.engine.feature.PrayFeature;
@@ -31,7 +29,6 @@ import cfvbaibai.cardfantasy.engine.feature.RejuvenateFeature;
 import cfvbaibai.cardfantasy.engine.feature.ResurrectFeature;
 import cfvbaibai.cardfantasy.engine.feature.SnipeFeature;
 import cfvbaibai.cardfantasy.engine.feature.SpikeFeature;
-import cfvbaibai.cardfantasy.engine.feature.ThunderStormFeature;
 import cfvbaibai.cardfantasy.engine.feature.TrapFeature;
 import cfvbaibai.cardfantasy.engine.feature.WeakenFeature;
 import cfvbaibai.cardfantasy.engine.feature.ZealotFeature;
@@ -73,15 +70,15 @@ public class FeatureResolver {
                 continue;
             }
             if (feature.getType() == FeatureType.Á¬»·ÉÁµç) {
-                ChainLighteningFeature.apply(feature, this, attacker, defender);
+                LighteningMagicFeature.apply(feature, this, attacker, defender, 1, 40);
             } else if (feature.getType() == FeatureType.ÏİÚå) {
                 TrapFeature.apply(feature, this, attacker, defender);
             } else if (feature.getType() == FeatureType.¾Ñ»÷) {
                 SnipeFeature.apply(feature, this, attacker, defender);
             } else if (feature.getType() == FeatureType.»ğÇò) {
-                FireballFeature.apply(feature, this, attacker, defender);
+                FireMagicFeature.apply(feature, this, attacker, defender, 1);
             } else if (feature.getType() == FeatureType.±ùµ¯) {
-                IceBoltFeature.apply(feature, this, attacker, defender);
+                IceMagicFeature.apply(feature, this, attacker, defender, 1, 40);
             } else if (feature.getType() == FeatureType.ÖÎÁÆ) {
                 HealFeature.apply(feature, this, attacker);
             } else if (feature.getType() == FeatureType.¸ÊÁØ) {
@@ -89,11 +86,15 @@ public class FeatureResolver {
             } else if (feature.getType() == FeatureType.Æíµ») {
                 PrayFeature.apply(feature, this, attacker);
             } else if (feature.getType() == FeatureType.»ğÇ½) {
-                FirewallFeature.apply(feature, this, attacker, defender);
+                FireMagicFeature.apply(feature, this, attacker, defender, 3);
             } else if (feature.getType() == FeatureType.ÁÒÑæ·ç±©) {
-                FireStormFeature.apply(feature, this, attacker, defender);
+                FireMagicFeature.apply(feature, this, attacker, defender, -1);
             } else if (feature.getType() == FeatureType.À×±©) {
-                ThunderStormFeature.apply(feature, this, attacker, defender);
+                LighteningMagicFeature.apply(feature, this, attacker, defender, -1, 35);
+            } else if (feature.getType() == FeatureType.Ëª¶³ĞÂĞÇ) {
+                IceMagicFeature.apply(feature, this, attacker, defender, 3, 35);
+            } else if (feature.getType() == FeatureType.±©·çÑ©) {
+                IceMagicFeature.apply(feature, this, attacker, defender, -1, 30);
             }
         }
     }
@@ -336,9 +337,11 @@ public class FeatureResolver {
             if (feature.getType() == FeatureType.ÏİÚå) {
                 TrapFeature.apply(feature, this, card, opField.getOwner());
             } else if (feature.getType() == FeatureType.ÁÒÑæ·ç±©) {
-                FireStormFeature.apply(feature, this, card, opField.getOwner());
+                FireMagicFeature.apply(feature, this, card, opField.getOwner(), -1);
             } else if (feature.getType() == FeatureType.À×±©) {
-                ThunderStormFeature.apply(feature, this, card, opField.getOwner());
+                LighteningMagicFeature.apply(feature, this, card, opField.getOwner(), -1, 35);
+            } else if (feature.getType() == FeatureType.±©·çÑ©) {
+                IceMagicFeature.apply(feature, this, card, opField.getOwner(), -1, 30);
             }
         }
         for (CardInfo fieldCard : myField.getAliveCards()) {

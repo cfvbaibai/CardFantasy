@@ -193,4 +193,9 @@ public class CardFantasyTest {
     public void ¾Ñ»÷¼ıåó±øvsÊ¥ÆïÊ¿() {
         game5vs5("¾Ñ»÷¼ıåó±ø", "Ê¥ÆïÊ¿");
     }
- }
+    
+    @Test
+    public void »ğÑæÎÚÑ»vs±©Ñ©ÕÙ»½Ê¿() {
+        game5vs5("»ğÑæÎÚÑ»", "±©Ñ©ÕÙ»½Ê¿");
+    }
+}
