@@ -19,6 +19,10 @@ public abstract class CardPile implements Iterable<CardInfo> {
     protected List<CardInfo> getCards() {
         return this.cards;
     }
+    
+    public List<CardInfo> toList() {
+        return new ArrayList<CardInfo>(this.getCards());
+    }
 
     public void addCard(CardInfo newCard) {
         checkCardExistence(newCard);

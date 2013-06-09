@@ -133,7 +133,7 @@ public class TestGameUI extends GameUI {
             for (CardInfo victim : victims) {
                 victimTexts.add(victim.getShortDesc(true));
             }
-            String victimsText = StringUtils.join(victimTexts, ",");
+            String victimsText = StringUtils.join(victimTexts, ", ");
             String featureDesc = feature == null ? "¡¾ÆÕÍ¨¹¥»÷¡¿" : feature.getShortDesc();
             sayF("%s uses %s to { %s }!", attacker.getShortDesc(true), featureDesc, victimsText);
         }

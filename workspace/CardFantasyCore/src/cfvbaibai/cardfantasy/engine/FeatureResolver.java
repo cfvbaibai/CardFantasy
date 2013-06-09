@@ -14,7 +14,9 @@ import cfvbaibai.cardfantasy.engine.feature.CounterAttackFeature;
 import cfvbaibai.cardfantasy.engine.feature.CounterMagicFeature;
 import cfvbaibai.cardfantasy.engine.feature.CriticalAttackFeature;
 import cfvbaibai.cardfantasy.engine.feature.DodgeFeature;
+import cfvbaibai.cardfantasy.engine.feature.FireStormFeature;
 import cfvbaibai.cardfantasy.engine.feature.FireballFeature;
+import cfvbaibai.cardfantasy.engine.feature.FirewallFeature;
 import cfvbaibai.cardfantasy.engine.feature.GuardFeature;
 import cfvbaibai.cardfantasy.engine.feature.HealFeature;
 import cfvbaibai.cardfantasy.engine.feature.HolyLightFeature;
@@ -83,6 +85,8 @@ public class FeatureResolver {
                 RainfallFeature.apply(feature, this, attacker);
             } else if (feature.getType() == FeatureType.Æíµ») {
                 PrayFeature.apply(feature, this, attacker);
+            } else if (feature.getType() == FeatureType.»ðÇ½) {
+                FirewallFeature.apply(feature, this, attacker, defender);
             }
         }
     }
@@ -318,6 +322,8 @@ public class FeatureResolver {
         for (FeatureInfo feature : card.getUsableSummonFeatures()) {
             if (feature.getType() == FeatureType.ÏÝÚå) {
                 TrapFeature.apply(feature, this, card, opField.getOwner());
+            } else if (feature.getType() == FeatureType.ÁÒÑæ·ç±©) {
+                FireStormFeature.apply(feature, this, card, opField.getOwner());
             }
         }
         for (CardInfo fieldCard : myField) {

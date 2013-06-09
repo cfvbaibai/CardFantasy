@@ -142,4 +142,20 @@ public class CardFantasyTest {
     @Test
     public void 喷火装甲车手vs重甲骑兵() {
         game5vs5("喷火装甲车手", "重甲骑兵");
-    }}
+    }
+    
+    @Test
+    public void 魔法小丑vs火焰乌鸦() {
+        game5vs5("魔法小丑", "火焰乌鸦");
+    }
+    
+    @Test
+    public void 城镇弓箭兵vs狮鹫() {
+        game5vs5("城镇弓箭兵", "狮鹫");
+    }
+    
+    @Test
+    public void 火焰乌鸦vs魔导师() {
+        game5vs5("火焰乌鸦", "魔导师");
+    }
+}
