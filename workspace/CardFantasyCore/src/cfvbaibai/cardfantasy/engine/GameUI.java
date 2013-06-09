@@ -101,4 +101,8 @@ public abstract class GameUI {
     public abstract void cardToDeck(Player player, CardInfo card);
 
     public abstract void cardToHand(Player player, CardInfo card);
+
+    public abstract void blockStatus(CardInfo attacker, CardInfo defender, Feature feature, CardStatusItem item);
+
+    public abstract void blockFeature(CardInfo attacker, CardInfo defender, Feature feature, Feature attackFeature);
 }

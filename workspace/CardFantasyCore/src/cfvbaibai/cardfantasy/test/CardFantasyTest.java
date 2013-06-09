@@ -219,4 +219,14 @@ public class CardFantasyTest {
         GameBuilder.play(PlayerBuilder.build("英雄光影魔术师", 50, "光影魔术师-10*2", "暴雪召唤士-10*3"),
                 PlayerBuilder.build("英雄圣骑士", 50, "圣骑士-10*5"));
     }
+
+    @Test
+    public void 喷火装甲车手vs圣堂武士() {
+        game5vs5("喷火装甲车手", "圣堂武士");
+    }
+
+    @Test
+    public void 暴雪召唤士vs圣堂武士() {
+        game5vs5("暴雪召唤士", "圣堂武士");
+    }
 }

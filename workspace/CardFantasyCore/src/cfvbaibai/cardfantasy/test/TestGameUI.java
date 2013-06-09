@@ -341,4 +341,14 @@ public class TestGameUI extends GameUI {
             throw new CardFantasyRuntimeException("blockerFeature is not null. To be implemented.");
         }
     }
+
+    @Override
+    public void blockStatus(CardInfo attacker, CardInfo defender, Feature feature, CardStatusItem item) {
+        sayF("%s blocked status ¡¾%s¡¿ by %s", defender.getShortDesc(true), item.getShortDesc(), feature.getShortDesc());
+    }
+
+    @Override
+    public void blockFeature(CardInfo attacker, CardInfo defender, Feature feature, Feature attackFeature) {
+        sayF("%s blocked %s by %s", defender.getShortDesc(true), attackFeature.getShortDesc(), feature.getShortDesc());
+    }
 }

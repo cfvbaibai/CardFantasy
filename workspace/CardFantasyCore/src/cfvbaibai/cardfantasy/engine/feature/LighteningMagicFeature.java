@@ -41,8 +41,10 @@ public final class LighteningMagicFeature {
                 resolver.resolveDeathFeature(attacker, victim, feature);
             } else if (Randomizer.roll100() <= paralyzeRate) {
                 CardStatusItem status = CardStatusItem.paralyzed(feature);
-                ui.addCardStatus(attacker, victim, feature, status);
-                victim.addStatus(status);
+                if (!resolver.resolveBlockStatusFeature(attacker, victim, feature, status).isBlocked()) {
+                    ui.addCardStatus(attacker, victim, feature, status);
+                    victim.addStatus(status);
+                }
             }
         }
     }

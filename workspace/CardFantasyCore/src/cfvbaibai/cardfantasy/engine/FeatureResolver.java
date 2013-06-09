@@ -14,6 +14,7 @@ import cfvbaibai.cardfantasy.engine.feature.CounterAttackFeature;
 import cfvbaibai.cardfantasy.engine.feature.CounterMagicFeature;
 import cfvbaibai.cardfantasy.engine.feature.CriticalAttackFeature;
 import cfvbaibai.cardfantasy.engine.feature.DodgeFeature;
+import cfvbaibai.cardfantasy.engine.feature.EscapeFeature;
 import cfvbaibai.cardfantasy.engine.feature.FireMagicFeature;
 import cfvbaibai.cardfantasy.engine.feature.GuardFeature;
 import cfvbaibai.cardfantasy.engine.feature.HealFeature;
@@ -170,9 +171,13 @@ public class FeatureResolver {
                 result.setAttackable(false);
             } else {
                 for (Feature blockFeature : defender.getUsableFeatures()) {
-                    if (blockFeature.getType() == FeatureType.法力反射 && feature.getType().containsTag(FeatureTag.魔法)) {
-                        CounterMagicFeature.apply(blockFeature, this, attacker, defender);
+                    if (blockFeature.getType() == FeatureType.法力反射) {
+                        CounterMagicFeature.apply(this, blockFeature, feature, attacker, defender);
                         result.setAttackable(false);
+                    } else if (blockFeature.getType() == FeatureType.脱困) {
+                        if (EscapeFeature.isFeatureEscaped(this, blockFeature, feature, attacker, defender)) {
+                            result.setAttackable(false);
+                        }
                     }
                 }
                 for (Feature blockFeature : defender.getUsableFeatures()) {
@@ -380,5 +385,27 @@ public class FeatureResolver {
             this.stage.getUI().debuffDamage(card, item, item.getEffect());
             this.applyDamage(card, item.getEffect());
         }
+    }
+
+    public static class BlockStatusResult {
+        private boolean blocked;
+
+        public boolean isBlocked() {
+            return blocked;
+        }
+
+        public BlockStatusResult(boolean blocked) {
+            this.blocked = blocked;
+        }
+    }
+
+    public BlockStatusResult resolveBlockStatusFeature(CardInfo attacker, CardInfo victim, FeatureInfo feature, CardStatusItem item) {
+        boolean blocked = false;
+        for (FeatureInfo blockFeature : victim.getUsableFeatures()) {
+            if (blockFeature.getType() == FeatureType.脱困) {
+                blocked = EscapeFeature.isStatusEscaped(blockFeature, this, item, victim);
+            }
+        }
+        return new BlockStatusResult(blocked);
     }
 }

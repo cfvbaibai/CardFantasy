@@ -32,8 +32,10 @@ public final class IceMagicFeature {
                 resolver.resolveDeathFeature(attacker, victim, feature);
             } else if (Randomizer.roll100() <= rate) {
                 CardStatusItem status = CardStatusItem.frozen(feature);
-                ui.addCardStatus(attacker, victim, feature, status);
-                victim.addStatus(status);
+                if (!resolver.resolveBlockStatusFeature(attacker, victim, feature, status).isBlocked()) {
+                    ui.addCardStatus(attacker, victim, feature, status);
+                    victim.addStatus(status);
+                }
             }
         }
     }
