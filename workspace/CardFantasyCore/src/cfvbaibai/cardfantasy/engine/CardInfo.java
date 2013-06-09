@@ -46,6 +46,9 @@ public class CardInfo {
             effects.put(type, new LinkedList<FeatureEffect>());
         }
         this.effects.get(type).add(effect);
+        if (effect.getType() == FeatureEffectType.MAXHP_CHANGE) {
+            this.setHP(this.getHP() + effect.getValue());
+        }
     }
 
     public List<FeatureEffect> getEffectsCausedBy(FeatureType cause) {
@@ -91,8 +94,8 @@ public class CardInfo {
     public int getHP() {
         return this.hp;
     }
-
-    public void setHP(int hp) {
+    
+    private void setHP(int hp) {
         this.hp = hp;
     }
 
@@ -146,7 +149,7 @@ public class CardInfo {
     public int getOriginalAT() {
         return this.at;
     }
-    
+
     public List<FeatureInfo> getUsableSummonFeatures() {
         return getUsableFeatures(true, false);
     }
@@ -154,7 +157,7 @@ public class CardInfo {
     public List<FeatureInfo> getUsableDeathFeatures() {
         return getUsableFeatures(false, true);
     }
-    
+
     public List<FeatureInfo> getUsableFeatures() {
         return getUsableFeatures(false, false);
     }
@@ -162,9 +165,9 @@ public class CardInfo {
     private List<FeatureInfo> getUsableFeatures(boolean includeSummonFeature, boolean includeDeathFeature) {
         List<FeatureInfo> features = new ArrayList<FeatureInfo>(4);
         for (FeatureInfo feature : this.getAllFeatures()) {
-            if (feature.getUnlockLevel() <= this.getCard().getLevel() &&
-                    (includeSummonFeature || !feature.isSummonFeature()) &&
-                    (includeDeathFeature || !feature.isDeathFeature())) {
+            if (feature.getUnlockLevel() <= this.getCard().getLevel()
+                    && (includeSummonFeature || !feature.isSummonFeature())
+                    && (includeDeathFeature || !feature.isDeathFeature())) {
                 features.add(feature);
             }
         }
@@ -177,6 +180,9 @@ public class CardInfo {
             return;
         }
         result.remove(effect);
+        if (effect.getType() == FeatureEffectType.MAXHP_CHANGE && this.getHP() > this.getMaxHP()) {
+            this.setHP(this.getMaxHP());
+        }
     }
 
     public List<FeatureEffect> getEffects() {
@@ -201,13 +207,19 @@ public class CardInfo {
     }
 
     public int getMaxHP() {
-        return this.card.getMaxHP();
+        int actualMaxHP = this.card.getMaxHP();
+        for (FeatureEffect effect : this.getEffects()) {
+            if (effect.getType() == FeatureEffectType.MAXHP_CHANGE) {
+                actualMaxHP += effect.getValue();
+            }
+        }
+        return actualMaxHP;
     }
 
     public String getId() {
         return this.card.getId();
     }
-    
+
     public int getLevel() {
         return this.card.getLevel();
     }
@@ -225,17 +237,23 @@ public class CardInfo {
         sb.append("¡¾");
         for (FeatureEffect effect : effects) {
             if (effect.getType() == FeatureEffectType.ATTACK_CHANGE) {
-                sb.append("ATC(");
-                sb.append(effect.getValue());
-                sb.append("):");
-                sb.append(effect.getCause().getType().name());
-                sb.append(effect.getCause().getLevel());
-                if (!effect.isEternal()) {
-                    sb.append(":");
-                    sb.append(effect.getSource().getShortDesc(false));
-                }
-                sb.append(", ");
+                sb.append("ATC");
             }
+            else if (effect.getType() == FeatureEffectType.MAXHP_CHANGE) {
+                sb.append("MHC");
+            } else {
+                throw new CardFantasyRuntimeException("Unknown feature effect type: " + effect.getType().name());
+            }
+            sb.append("(");
+            sb.append(effect.getValue());
+            sb.append("):");
+            sb.append(effect.getCause().getType().name());
+            sb.append(effect.getCause().getLevel());
+            if (!effect.isEternal()) {
+                sb.append(":");
+                sb.append(effect.getSource().getShortDesc(false));
+            }
+            sb.append(", ");
         }
         sb.deleteCharAt(sb.length() - 1);
         sb.deleteCharAt(sb.length() - 1);
@@ -251,5 +269,39 @@ public class CardInfo {
             }
         }
         return true;
+    }
+
+    /**
+     * Damage is less than 0 indicates a heal. It also return a negative number as actual heal. 
+     * @param damage
+     * @return actual damage.
+     */
+    public int applyDamage(int damage) {
+        if (damage > 0) {
+            int originalHP = this.getHP();
+            if (originalHP < damage) {
+                this.setHP(0);
+                return originalHP;
+            } else {
+                this.setHP(originalHP - damage);
+                return damage;
+            }
+        } else if (damage == 0) {
+            return 0;
+        } else {
+            int lostHP = this.getMaxHP() - this.getHP();
+            int healHP = -damage;
+            if (lostHP < healHP) {
+                this.setHP(this.getMaxHP());
+                return -lostHP;
+            } else {
+                this.setHP(this.getHP() + healHP);
+                return -healHP;
+            }
+        }
+    }
+
+    public int getOriginalMaxHP() {
+        return this.card.getMaxHP();
     }
 }

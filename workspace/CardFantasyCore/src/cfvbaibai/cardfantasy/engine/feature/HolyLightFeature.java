@@ -21,7 +21,7 @@ public final class HolyLightFeature {
     public static void remove(FeatureResolver resolver, FeatureInfo feature, CardInfo card) {
         List<FeatureEffect> effects = card.getEffectsCausedBy(feature);
         for (FeatureEffect effect : effects) {
-            resolver.getStage().getUI().loseAdjustAttackEffect(card, effect);
+            resolver.getStage().getUI().loseAdjustATEffect(card, effect);
             card.removeEffect(effect);
         }
     }

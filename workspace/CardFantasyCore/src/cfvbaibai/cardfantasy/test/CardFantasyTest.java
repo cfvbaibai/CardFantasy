@@ -178,4 +178,19 @@ public class CardFantasyTest {
     public void 重甲骑兵vs魔法结晶体() {
         game5vs5("重甲骑兵", "魔法结晶体");
     }
-}
+    
+    @Test
+    public void 魔剑士vs圣骑士() {
+        game5vs5("魔剑士", "圣骑士");
+    }
+    
+    @Test
+    public void 魔导师vs圣骑士() {
+        game5vs5("魔导师", "圣骑士");
+    }
+    
+    @Test
+    public void 狙击箭弩兵vs圣骑士() {
+        game5vs5("狙击箭弩兵", "圣骑士");
+    }
+ }

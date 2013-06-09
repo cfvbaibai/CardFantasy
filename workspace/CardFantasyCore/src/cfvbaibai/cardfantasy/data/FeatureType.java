@@ -31,6 +31,7 @@ public enum FeatureType {
     烈焰风暴(25, FeatureTag.魔法),
     雷暴(25, FeatureTag.魔法),
     转生(30, 5),
+    王国守护(50),
     未知(0);
     
 

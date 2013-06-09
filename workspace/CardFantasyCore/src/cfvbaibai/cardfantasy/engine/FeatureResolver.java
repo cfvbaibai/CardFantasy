@@ -7,6 +7,7 @@ import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
 import cfvbaibai.cardfantasy.data.Feature;
 import cfvbaibai.cardfantasy.data.FeatureTag;
 import cfvbaibai.cardfantasy.data.FeatureType;
+import cfvbaibai.cardfantasy.data.Race;
 import cfvbaibai.cardfantasy.engine.feature.BlockFeature;
 import cfvbaibai.cardfantasy.engine.feature.BurningFeature;
 import cfvbaibai.cardfantasy.engine.feature.ChainLighteningFeature;
@@ -21,10 +22,10 @@ import cfvbaibai.cardfantasy.engine.feature.GuardFeature;
 import cfvbaibai.cardfantasy.engine.feature.HealFeature;
 import cfvbaibai.cardfantasy.engine.feature.HolyLightFeature;
 import cfvbaibai.cardfantasy.engine.feature.IceBoltFeature;
-import cfvbaibai.cardfantasy.engine.feature.KingdomPowerFeature;
 import cfvbaibai.cardfantasy.engine.feature.MagicShieldFeature;
 import cfvbaibai.cardfantasy.engine.feature.PenetrationFeature;
 import cfvbaibai.cardfantasy.engine.feature.PrayFeature;
+import cfvbaibai.cardfantasy.engine.feature.RaceBuffFeature;
 import cfvbaibai.cardfantasy.engine.feature.RainfallFeature;
 import cfvbaibai.cardfantasy.engine.feature.RejuvenateFeature;
 import cfvbaibai.cardfantasy.engine.feature.ResurrectFeature;
@@ -175,7 +176,9 @@ public class FeatureResolver {
     public void resolveDeathFeature(CardInfo attacker, CardInfo defender, Feature feature) {
         for (FeatureInfo deadCardFeature : defender.getUsableFeatures()) {
             if (deadCardFeature.getType() == FeatureType.王国之力) {
-                KingdomPowerFeature.remove(this, deadCardFeature, defender);
+                RaceBuffFeature.remove(this, deadCardFeature, defender, Race.王国);
+            } else if (deadCardFeature.getType() == FeatureType.王国守护) {
+                RaceBuffFeature.remove(this, deadCardFeature, defender, Race.王国);
             }
         }
         for (FeatureInfo deadCardFeature : defender.getUsableDeathFeatures()) {
@@ -217,7 +220,7 @@ public class FeatureResolver {
 
     public OnDamagedResult applyDamage(CardInfo card, int damage) {
         int originalHP = card.getHP();
-        card.setHP(card.getHP() - damage);
+        card.applyDamage(damage);
         OnDamagedResult result = new OnDamagedResult();
         if (card.getHP() <= 0) {
             result.cardDead = true;
@@ -341,7 +344,9 @@ public class FeatureResolver {
         for (CardInfo fieldCard : myField.getAliveCards()) {
             for (FeatureInfo feature : fieldCard.getUsableFeatures()) {
                 if (feature.getType() == FeatureType.王国之力) {
-                    KingdomPowerFeature.apply(this, feature, fieldCard);
+                    RaceBuffFeature.apply(this, feature, fieldCard, Race.王国, FeatureEffectType.ATTACK_CHANGE);
+                } else if (feature.getType() == FeatureType.王国守护) {
+                    RaceBuffFeature.apply(this, feature, fieldCard, Race.王国, FeatureEffectType.MAXHP_CHANGE);
                 }
             }
         }

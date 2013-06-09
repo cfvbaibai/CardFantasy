@@ -201,9 +201,9 @@ public class TestGameUI extends GameUI {
         sb.append("Field: ");
         int i = 0;
         for (CardInfo card : field.getAliveCards()) {
-            sb.append(String.format("\r\n[%d] %s (LV=%d, AT=%d/%d, HP=%d/%d, ST=%s, EF=%s)", i, card.getId(), card
-                    .getLevel(), card.getAT(), card.getInitAT(), card.getHP(), card.getMaxHP(), card.getStatus()
-                    .getShortDesc(), card.getEffectsDesc()));
+            sb.append(String.format("\r\n[%d] %s (LV=%d, AT=%d/%d, HP=%d/%d/%d, ST=%s, EF=%s)", i, card.getId(),
+                    card.getLevel(), card.getAT(), card.getInitAT(), card.getHP(), card.getMaxHP(),
+                    card.getOriginalMaxHP(), card.getStatus().getShortDesc(), card.getEffectsDesc()));
             ++i;
         }
         say(sb.toString());
@@ -267,15 +267,22 @@ public class TestGameUI extends GameUI {
     }
 
     @Override
+    public void adjustHP(CardInfo source, CardInfo target, int adjHP, Feature feature) {
+        String verb = adjHP > 0 ? "increases" : "decreases";
+        sayF("%s %s %s's HP by %s ! %d -> %d.", source.getShortDesc(true), verb, target.getShortDesc(true),
+                feature.getShortDesc(), target.getHP(), target.getHP() + adjHP);
+    }
+
+    @Override
     public void blockDamage(CardInfo attacker, CardInfo defender, Feature feature, int originalDamage, int actualDamage) {
-        sayF("%s blocks the attack from %s by %s. Damage: %d -> %d", defender.getShortDesc(true), attacker.getShortDesc(true),
-                feature.getShortDesc(), originalDamage, actualDamage);
+        sayF("%s blocks the attack from %s by %s. Damage: %d -> %d", defender.getShortDesc(true),
+                attacker.getShortDesc(true), feature.getShortDesc(), originalDamage, actualDamage);
     }
 
     @Override
     public void debuffDamage(CardInfo card, CardStatusItem item, int damage) {
-        sayF("%s gets damage in status %s. Damage: %d. HP: %d -> %d", card.getShortDesc(true), item.getShortDesc(), damage,
-                card.getHP(), Math.max(0, card.getHP() - damage));
+        sayF("%s gets damage in status %s. Damage: %d. HP: %d -> %d", card.getShortDesc(true), item.getShortDesc(),
+                damage, card.getHP(), Math.max(0, card.getHP() - damage));
     }
 
     @Override
@@ -285,8 +292,8 @@ public class TestGameUI extends GameUI {
 
     @Override
     public void recoverAT(CardInfo card, FeatureType cause, int recoveredAT) {
-        sayF("%s's AT recovered from ¡¾%s¡¿. AT: %d -> %d", card.getShortDesc(true), cause.name(), card.getAT(), card.getAT()
-                - recoveredAT);
+        sayF("%s's AT recovered from ¡¾%s¡¿. AT: %d -> %d", card.getShortDesc(true), cause.name(), card.getAT(),
+                card.getAT() - recoveredAT);
     }
 
     @Override
@@ -302,9 +309,17 @@ public class TestGameUI extends GameUI {
     }
 
     @Override
-    public void loseAdjustAttackEffect(CardInfo ally, FeatureEffect effect) {
+    public void loseAdjustATEffect(CardInfo ally, FeatureEffect effect) {
         sayF("%s loses effect caused by %s from %s. AT: %d -> %d.", ally.getShortDesc(true), effect.getCause()
                 .getShortDesc(), effect.getSource().getShortDesc(true), ally.getAT(), ally.getAT() - effect.getValue());
+    }
+
+    @Override
+    public void loseAdjustHPEffect(CardInfo ally, FeatureEffect effect) {
+        int currentHP = ally.getHP() > ally.getMaxHP() - effect.getValue() ? ally.getMaxHP() - effect.getValue() : ally
+                .getHP();
+        sayF("%s loses effect caused by %s from %s. HP: %d -> %d.", ally.getShortDesc(true), effect.getCause()
+                .getShortDesc(), effect.getSource().getShortDesc(true), ally.getHP(), currentHP);
     }
 
     @Override
