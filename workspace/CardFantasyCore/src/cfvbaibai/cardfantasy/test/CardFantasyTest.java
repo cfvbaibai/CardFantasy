@@ -265,4 +265,14 @@ public class CardFantasyTest {
     public void 大剑圣vs时空旅者() {
         game5vs5("大剑圣", "时空旅者");
     }
+
+    @Test
+    public void 狮鹫骑士vs时空旅者() {
+        game5vs5("狮鹫骑士", "时空旅者");
+    }
+
+    @Test
+    public void 机械飞龙vs时空旅者() {
+        game5vs5("机械飞龙", "时空旅者");
+    }
 }

@@ -179,4 +179,14 @@
         <Feature type="送还" level="0" unlock="5" summon="true" />
         <Feature type="群体削弱" level="8" unlock="10" />
     </Card>
+    <Card id="37" name="狮鹫骑士" race="王国" speed="4" star="4" cost="13" at="240" hp="840" incrAT="22" incrHP="20">
+        <Feature type="魔甲" level="5" unlock="0" />
+        <Feature type="王国之力" level="5" unlock="5" />
+        <Feature type="火墙" level="8" unlock="10" />
+    </Card>
+    <Card id="38" name="机械飞龙" race="王国" speed="4" star="4" cost="13" at="290" hp="900" incrAT="27" incrHP="35">
+        <Feature type="暴击" level="4" unlock="0" />
+        <Feature type="不动" level="0" unlock="5" />
+        <Feature type="王国守护" level="6" unlock="10" />
+    </Card>
 </Cards>

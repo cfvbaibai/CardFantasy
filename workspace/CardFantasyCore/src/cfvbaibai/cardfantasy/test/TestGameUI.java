@@ -20,7 +20,6 @@ import cfvbaibai.cardfantasy.engine.Grave;
 import cfvbaibai.cardfantasy.engine.Hand;
 import cfvbaibai.cardfantasy.engine.Phase;
 import cfvbaibai.cardfantasy.engine.Player;
-import cfvbaibai.cardfantasy.engine.StageInfo;
 
 public class TestGameUI extends GameUI {
 
