@@ -23,6 +23,7 @@ import cfvbaibai.cardfantasy.engine.feature.LighteningMagicFeature;
 import cfvbaibai.cardfantasy.engine.feature.MagicShieldFeature;
 import cfvbaibai.cardfantasy.engine.feature.PenetrationFeature;
 import cfvbaibai.cardfantasy.engine.feature.PrayFeature;
+import cfvbaibai.cardfantasy.engine.feature.PursuitFeature;
 import cfvbaibai.cardfantasy.engine.feature.RaceBuffFeature;
 import cfvbaibai.cardfantasy.engine.feature.RainfallFeature;
 import cfvbaibai.cardfantasy.engine.feature.RejuvenateFeature;
@@ -70,32 +71,36 @@ public class FeatureResolver {
             if (attacker.isDead()) {
                 continue;
             }
-            if (feature.getType() == FeatureType.Á¬»·ÉÁµç) {
-                LighteningMagicFeature.apply(feature, this, attacker, defender, 1, 40);
+            if (feature.getType() == FeatureType.Î´Öª) {
+                // JUST A PLACEHOLDER
+            } else if (feature.getType() == FeatureType.»ğÇò) {
+                FireMagicFeature.apply(feature, this, attacker, defender, 1);
+            } else if (feature.getType() == FeatureType.»ğÇ½) {
+                FireMagicFeature.apply(feature, this, attacker, defender, 3);
+            } else if (feature.getType() == FeatureType.ÁÒÑæ·ç±©) {
+                FireMagicFeature.apply(feature, this, attacker, defender, -1);
+            } else if (feature.getType() == FeatureType.ÂäÀ×) {
+                LighteningMagicFeature.apply(feature, this, attacker, defender, 1, 50);
+            } else if (feature.getType() == FeatureType.Á¬»·ÉÁµç) {
+                LighteningMagicFeature.apply(feature, this, attacker, defender, 3, 40);
+            } else if (feature.getType() == FeatureType.À×±©) {
+                LighteningMagicFeature.apply(feature, this, attacker, defender, -1, 35);
+            } else if (feature.getType() == FeatureType.±ùµ¯) {
+                IceMagicFeature.apply(feature, this, attacker, defender, 1, 45);
+            } else if (feature.getType() == FeatureType.Ëª¶³ĞÂĞÇ) {
+                IceMagicFeature.apply(feature, this, attacker, defender, 3, 35);
+            } else if (feature.getType() == FeatureType.±©·çÑ©) {
+                IceMagicFeature.apply(feature, this, attacker, defender, -1, 30);
             } else if (feature.getType() == FeatureType.ÏİÚå) {
                 TrapFeature.apply(feature, this, attacker, defender);
             } else if (feature.getType() == FeatureType.¾Ñ»÷) {
                 SnipeFeature.apply(feature, this, attacker, defender);
-            } else if (feature.getType() == FeatureType.»ğÇò) {
-                FireMagicFeature.apply(feature, this, attacker, defender, 1);
-            } else if (feature.getType() == FeatureType.±ùµ¯) {
-                IceMagicFeature.apply(feature, this, attacker, defender, 1, 40);
             } else if (feature.getType() == FeatureType.ÖÎÁÆ) {
                 HealFeature.apply(feature, this, attacker);
             } else if (feature.getType() == FeatureType.¸ÊÁØ) {
                 RainfallFeature.apply(feature, this, attacker);
             } else if (feature.getType() == FeatureType.Æíµ») {
                 PrayFeature.apply(feature, this, attacker);
-            } else if (feature.getType() == FeatureType.»ğÇ½) {
-                FireMagicFeature.apply(feature, this, attacker, defender, 3);
-            } else if (feature.getType() == FeatureType.ÁÒÑæ·ç±©) {
-                FireMagicFeature.apply(feature, this, attacker, defender, -1);
-            } else if (feature.getType() == FeatureType.À×±©) {
-                LighteningMagicFeature.apply(feature, this, attacker, defender, -1, 35);
-            } else if (feature.getType() == FeatureType.Ëª¶³ĞÂĞÇ) {
-                IceMagicFeature.apply(feature, this, attacker, defender, 3, 35);
-            } else if (feature.getType() == FeatureType.±©·çÑ©) {
-                IceMagicFeature.apply(feature, this, attacker, defender, -1, 30);
             }
         }
     }
@@ -126,6 +131,7 @@ public class FeatureResolver {
         }
         return result;
     }
+
     public OnAttackBlockingResult resolveAttackBlockingFeature(CardInfo attacker, CardInfo defender, Feature feature) {
         OnAttackBlockingResult result = new OnAttackBlockingResult(true, feature == null ? attacker.getAT()
                 : feature.getImpact());
@@ -226,6 +232,8 @@ public class FeatureResolver {
                 HolyLightFeature.apply(this, feature, attacker, defender);
             } else if (feature.getType() == FeatureType.±©»÷) {
                 CriticalAttackFeature.apply(this, feature, attacker, defender);
+            } else if (feature.getType() == FeatureType.Çî×·ÃÍ´ò) {
+                PursuitFeature.apply(this, feature, attacker, defender);
             }
         }
     }
@@ -287,21 +295,18 @@ public class FeatureResolver {
         return false;
     }
 
-    public void removeEffects(CardInfo card, FeatureType... causes) {
+    public void removeTempEffects(CardInfo card) {
         if (card == null) {
             return;
         }
-        for (FeatureType cause : causes) {
-            List<FeatureEffect> effects = card.getEffectsCausedBy(cause);
-            if (effects == null) {
-                continue;
-            }
-            for (FeatureEffect effect : effects) {
-                if (cause == FeatureType.Ê¥¹â) {
-                    HolyLightFeature.remove(this, effect.getCause(), card);
-                } else if (cause == FeatureType.±©»÷) {
-                    CriticalAttackFeature.remove(this, effect.getCause(), card);
-                }
+        for (FeatureEffect effect : card.getEffects()) {
+            FeatureType type = effect.getCause().getType();
+            if (type == FeatureType.Ê¥¹â) {
+                HolyLightFeature.remove(this, effect.getCause(), card);
+            } else if (type == FeatureType.±©»÷) {
+                CriticalAttackFeature.remove(this, effect.getCause(), card);
+            } else if (type == FeatureType.Çî×·ÃÍ´ò) {
+                PursuitFeature.remove(this, effect.getCause(), card);
             }
         }
     }

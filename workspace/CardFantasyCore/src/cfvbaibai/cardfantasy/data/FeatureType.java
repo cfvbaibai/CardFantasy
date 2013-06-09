@@ -35,6 +35,8 @@ public enum FeatureType {
     Ëª¶³ĞÂĞÇ(20, FeatureTag.Ä§·¨),
     ±©·çÑ©(20, FeatureTag.Ä§·¨),
     ÁÑÉË(0),
+    ÂäÀ×(25),
+    Çî×·ÃÍ´ò(15),
     Î´Öª(0);
     
 

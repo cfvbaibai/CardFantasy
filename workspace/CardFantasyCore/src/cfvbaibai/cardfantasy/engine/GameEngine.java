@@ -222,7 +222,7 @@ public class GameEngine {
             }
         }
         // Remove lasting effects
-        resolver.removeEffects(myField.getCard(i), FeatureType.Ê¥¹â, FeatureType.±©»÷);
+        resolver.removeTempEffects(myField.getCard(i));
     }
 
     private int doAttackCard(FeatureResolver resolver, Field myField, int i, CardInfo defender) throws HeroDieSignal {

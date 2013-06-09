@@ -38,12 +38,12 @@ public class CardFantasyTest {
     public void 城镇弓箭兵vs城镇巡逻兵() {
         game5vs5("城镇弓箭兵", "城镇巡逻兵");
     }
-    
+
     @Test
     public void 城镇长矛兵vs城镇巡逻兵() {
         game5vs5("城镇长矛兵", "城镇巡逻兵");
     }
-    
+
     @Test
     public void 城镇弓箭兵vs城镇突击兵() {
         game5vs5("城镇弓箭兵", "城镇突击兵");
@@ -58,42 +58,42 @@ public class CardFantasyTest {
     public void 城镇巡逻兵vs城镇突击兵() {
         game5vs5("城镇巡逻兵", "城镇突击兵");
     }
-    
+
     @Test
     public void 城镇巡逻兵vs魔法小丑() {
         game5vs5("城镇巡逻兵", "魔法小丑");
     }
-    
+
     @Test
     public void 城镇弓箭兵vs攻城弩车手() {
         game5vs5("城镇弓箭兵", "攻城弩车手");
     }
-    
+
     @Test
     public void 城镇弓箭兵vs狙击箭弩兵() {
         game5vs5("城镇弓箭兵", "狙击箭弩兵");
     }
-    
+
     @Test
     public void 魔法小丑vs狙击箭弩兵() {
         game5vs5("魔法小丑", "狙击箭弩兵");
     }
-    
+
     @Test
     public void 城镇弓箭兵vs轻甲盾卫兵() {
         game5vs5("城镇弓箭兵", "轻甲盾卫兵");
     }
-    
+
     @Test
     public void 狙击箭弩兵vs轻甲盾卫兵() {
         game5vs5("狙击箭弩兵", "轻甲盾卫兵");
     }
-    
+
     @Test
     public void 狙击箭弩兵vs见习魔剑士() {
         game5vs5("狙击箭弩兵", "见习魔剑士");
     }
-    
+
     @Test
     public void 轻甲盾卫兵vs见习魔剑士() {
         game5vs5("轻甲盾卫兵", "见习魔剑士");
@@ -103,97 +103,97 @@ public class CardFantasyTest {
     public void 冲锋斩斧兵vs见习魔剑士() {
         game5vs5("冲锋斩斧兵", "见习魔剑士");
     }
-    
+
     @Test
     public void 冲锋斩斧兵vs见习圣骑() {
         game5vs5("冲锋斩斧兵", "见习圣骑");
     }
-    
+
     @Test
     public void 牧师vs见习圣骑() {
         game5vs5("牧师", "见习圣骑");
     }
-    
+
     @Test
     public void 牧师vs圣光信仰者() {
         game5vs5("牧师", "圣光信仰者");
     }
-    
+
     @Test
     public void 魔法小丑vs猎魔犬() {
         game5vs5("魔法小丑", "猎魔犬");
     }
-    
+
     @Test
     public void 冲锋斩斧兵vs弩骑兵() {
         game5vs5("冲锋斩斧兵", "弩骑兵");
     }
-    
+
     @Test
     public void 魔法小丑vs魔剑士() {
         game5vs5("魔法小丑", "魔剑士");
     }
-    
+
     @Test
     public void 魔法小丑vs重甲骑兵() {
         game5vs5("魔法小丑", "重甲骑兵");
     }
-    
+
     @Test
     public void 喷火装甲车手vs重甲骑兵() {
         game5vs5("喷火装甲车手", "重甲骑兵");
     }
-    
+
     @Test
     public void 魔法小丑vs火焰乌鸦() {
         game5vs5("魔法小丑", "火焰乌鸦");
     }
-    
+
     @Test
     public void 城镇弓箭兵vs狮鹫() {
         game5vs5("城镇弓箭兵", "狮鹫");
     }
-    
+
     @Test
     public void 火焰乌鸦vs魔导师() {
         game5vs5("火焰乌鸦", "魔导师");
     }
-    
+
     @Test
     public void 城镇弓箭兵vs魔导师() {
         game5vs5("城镇弓箭兵", "魔导师");
     }
-    
+
     @Test
     public void 狙击箭弩兵vs魔法结晶体() {
         game5vs5("狙击箭弩兵", "魔法结晶体");
     }
-    
+
     @Test
     public void 魔剑士vs魔法结晶体() {
         game5vs5("魔剑士", "魔法结晶体");
     }
-    
+
     @Test
     public void 重甲骑兵vs魔法结晶体() {
         game5vs5("重甲骑兵", "魔法结晶体");
     }
-    
+
     @Test
     public void 魔剑士vs圣骑士() {
         game5vs5("魔剑士", "圣骑士");
     }
-    
+
     @Test
     public void 魔导师vs圣骑士() {
         game5vs5("魔导师", "圣骑士");
     }
-    
+
     @Test
     public void 狙击箭弩兵vs圣骑士() {
         game5vs5("狙击箭弩兵", "圣骑士");
     }
-    
+
     @Test
     public void 火焰乌鸦vs暴雪召唤士() {
         game5vs5("火焰乌鸦", "暴雪召唤士");
@@ -207,5 +207,16 @@ public class CardFantasyTest {
     @Test
     public void 牧师vs皇家雄狮() {
         game5vs5("牧师", "皇家雄狮");
+    }
+
+    @Test
+    public void 巨型电鳗vs海盗船长() {
+        game5vs5("巨型电鳗", "海盗船长");
+    }
+
+    @Test
+    public void 光影魔术师vs圣骑士() {
+        GameBuilder.play(PlayerBuilder.build("英雄光影魔术师", 50, "光影魔术师-10*2", "暴雪召唤士-10*3"),
+                PlayerBuilder.build("英雄圣骑士", 50, "圣骑士-10*5"));
     }
 }
