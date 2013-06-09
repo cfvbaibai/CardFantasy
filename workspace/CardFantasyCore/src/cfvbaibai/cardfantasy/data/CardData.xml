@@ -169,9 +169,14 @@
         <Feature type="法力反射" level="4" unlock="5" />
         <Feature type="回春" level="7" unlock="10" />
     </Card>
-    <Card id="34" name="大剑圣" race="王国" speed="4" star="4" cost="12" at="260" hp="815" incrAT="30" incrHP="18">
+    <Card id="35" name="大剑圣" race="王国" speed="4" star="4" cost="12" at="260" hp="815" incrAT="30" incrHP="18">
         <Feature type="暴击" level="4" unlock="0" />
         <Feature type="背刺" level="5" unlock="5" />
         <Feature type="闪避" level="8" unlock="10" />
+    </Card>
+    <Card id="36" name="时空旅者" race="王国" speed="4" star="4" cost="11" at="220" hp="820" incrAT="12" incrHP="50">
+        <Feature type="闪避" level="3" unlock="0" />
+        <Feature type="送还" level="0" unlock="5" summon="true" />
+        <Feature type="群体削弱" level="8" unlock="10" />
     </Card>
 </Cards>

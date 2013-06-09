@@ -37,11 +37,13 @@ public class Field extends CardPile {
         }
     }
 
-    public void expelCard(int i) {
+    public CardInfo expelCard(int i) {
         if (i < 0 || i >= getCards().size()) {
             throw new CardFantasyRuntimeException("Invalid parameter i: " + i + ". Card count = " + size());
         }
+        CardInfo expelledCard = getCards().get(i);
         getCards().set(i, null);
+        return expelledCard;
     }
 
     public void compact() {

@@ -161,27 +161,43 @@ public class CardInfo {
     }
 
     public List<FeatureInfo> getUsableSummonFeatures() {
-        return getUsableFeatures(true, false);
+        List<FeatureInfo> features = new ArrayList<FeatureInfo>();
+        for (FeatureInfo feature : this.getAllUsableFeatures()) {
+            if (feature.isSummonFeature()) {
+                features.add(feature);
+            }
+        }
+        return features;
     }
 
     public List<FeatureInfo> getUsableDeathFeatures() {
-        return getUsableFeatures(false, true);
+        List<FeatureInfo> features = new ArrayList<FeatureInfo>();
+        for (FeatureInfo feature : this.getAllUsableFeatures()) {
+            if (feature.isDeathFeature()) {
+                features.add(feature);
+            }
+        }
+        return features;
     }
 
     public List<FeatureInfo> getNormalUsableFeatures() {
-        return getUsableFeatures(false, false);
+        List<FeatureInfo> features = new ArrayList<FeatureInfo>();
+        for (FeatureInfo feature : this.getAllUsableFeatures()) {
+            if (!feature.isDeathFeature() && !feature.isSummonFeature()) {
+                features.add(feature);
+            }
+        }
+        return features;
     }
     
     public List<FeatureInfo> getAllUsableFeatures() {
-        return getUsableFeatures(true, true);
+        return getUsableFeatures();
     }
 
-    private List<FeatureInfo> getUsableFeatures(boolean includeSummonFeature, boolean includeDeathFeature) {
+    private List<FeatureInfo> getUsableFeatures() {
         List<FeatureInfo> features = new ArrayList<FeatureInfo>(4);
         for (FeatureInfo feature : this.getAllFeatures()) {
-            if (feature.getUnlockLevel() <= this.getCard().getLevel()
-                    && (includeSummonFeature || !feature.isSummonFeature())
-                    && (includeDeathFeature || !feature.isDeathFeature())) {
+            if (feature.getUnlockLevel() <= this.getCard().getLevel()) {
                 features.add(feature);
             }
         }

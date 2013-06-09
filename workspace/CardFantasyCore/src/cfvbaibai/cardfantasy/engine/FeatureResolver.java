@@ -31,10 +31,12 @@ import cfvbaibai.cardfantasy.engine.feature.RaceBuffFeature;
 import cfvbaibai.cardfantasy.engine.feature.RainfallFeature;
 import cfvbaibai.cardfantasy.engine.feature.RejuvenateFeature;
 import cfvbaibai.cardfantasy.engine.feature.ResurrectFeature;
+import cfvbaibai.cardfantasy.engine.feature.ReturnFeature;
 import cfvbaibai.cardfantasy.engine.feature.ReviveFeature;
 import cfvbaibai.cardfantasy.engine.feature.SnipeFeature;
 import cfvbaibai.cardfantasy.engine.feature.SpikeFeature;
 import cfvbaibai.cardfantasy.engine.feature.TrapFeature;
+import cfvbaibai.cardfantasy.engine.feature.WeakenAllFeature;
 import cfvbaibai.cardfantasy.engine.feature.WeakenFeature;
 import cfvbaibai.cardfantasy.engine.feature.WoundFeature;
 import cfvbaibai.cardfantasy.engine.feature.ZealotFeature;
@@ -109,6 +111,8 @@ public class FeatureResolver {
                 ReviveFeature.apply(this, feature, attacker);
             } else if (feature.getType() == FeatureType.背刺) {
                 BackStabFeature.apply(this, feature, attacker);
+            } else if (feature.getType() == FeatureType.群体削弱) {
+                WeakenAllFeature.apply(this, feature, attacker, defender);
             }
         }
     }
@@ -180,8 +184,9 @@ public class FeatureResolver {
             } else {
                 for (Feature blockFeature : defender.getNormalUsableFeatures()) {
                     if (blockFeature.getType() == FeatureType.法力反射) {
-                        CounterMagicFeature.apply(this, blockFeature, feature, attacker, defender);
-                        result.setAttackable(false);
+                        if (CounterMagicFeature.isFeatureBlocked(this, blockFeature, feature, attacker, defender)) {
+                            result.setAttackable(false);
+                        }
                     } else if (blockFeature.getType() == FeatureType.脱困) {
                         if (EscapeFeature.isFeatureEscaped(this, blockFeature, feature, attacker, defender)) {
                             result.setAttackable(false);
@@ -207,16 +212,20 @@ public class FeatureResolver {
     }
 
     public void resolveDeathFeature(CardInfo attacker, CardInfo defender, Feature feature) {
-        for (FeatureInfo deadCardFeature : defender.getNormalUsableFeatures()) {
-            if (deadCardFeature.getType() == FeatureType.王国之力) {
-                RaceBuffFeature.remove(this, deadCardFeature, defender, Race.王国);
-            } else if (deadCardFeature.getType() == FeatureType.王国守护) {
-                RaceBuffFeature.remove(this, deadCardFeature, defender, Race.王国);
-            }
-        }
+        resolveLeaveFeature(defender, feature);
         for (FeatureInfo deadCardFeature : defender.getUsableDeathFeatures()) {
             if (deadCardFeature.getType() == FeatureType.转生) {
                 ResurrectFeature.apply(this, deadCardFeature, defender);
+            }
+        }
+    }
+
+    public void resolveLeaveFeature(CardInfo card, Feature feature) {
+        for (FeatureInfo deadCardFeature : card.getNormalUsableFeatures()) {
+            if (deadCardFeature.getType() == FeatureType.王国之力) {
+                RaceBuffFeature.remove(this, deadCardFeature, card, Race.王国);
+            } else if (deadCardFeature.getType() == FeatureType.王国守护) {
+                RaceBuffFeature.remove(this, deadCardFeature, card, Race.王国);
             }
         }
     }
@@ -251,6 +260,8 @@ public class FeatureResolver {
                 CriticalAttackFeature.apply(this, feature, attacker, defender);
             } else if (feature.getType() == FeatureType.穷追猛打) {
                 PursuitFeature.apply(this, feature, attacker, defender);
+            } else if (feature.getType() == FeatureType.送还) {
+                ReturnFeature.apply(this, feature, attacker, defender);
             }
         }
     }
@@ -377,6 +388,10 @@ public class FeatureResolver {
                 LighteningMagicFeature.apply(feature, this, card, opField.getOwner(), -1, 35);
             } else if (feature.getType() == FeatureType.暴风雪) {
                 IceMagicFeature.apply(feature, this, card, opField.getOwner(), -1, 30);
+            } else if (feature.getType() == FeatureType.送还) {
+                ReturnFeature.apply(this, feature, card, opField.getCard(card.getPosition()));
+            } else if (feature.getType() == FeatureType.群体削弱) {
+                WeakenAllFeature.apply(this, feature, card, opField.getOwner());
             }
         }
         for (CardInfo fieldCard : myField.getAliveCards()) {

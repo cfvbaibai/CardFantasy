@@ -105,4 +105,6 @@ public abstract class GameUI {
     public abstract void blockStatus(CardInfo attacker, CardInfo defender, Feature feature, CardStatusItem item);
 
     public abstract void blockFeature(CardInfo attacker, CardInfo defender, Feature feature, Feature attackFeature);
+
+    public abstract void returnCard(CardInfo attacker, CardInfo defender, Feature feature);
 }

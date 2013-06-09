@@ -8,7 +8,7 @@ import cfvbaibai.cardfantasy.engine.GameUI;
 
 public final class CounterMagicFeature {
 
-    public static boolean apply(FeatureResolver resolver, Feature feature, Feature attackFeature, CardInfo attacker,
+    public static boolean isFeatureBlocked(FeatureResolver resolver, Feature feature, Feature attackFeature, CardInfo attacker,
             CardInfo defender) {
         if (attacker == null) {
             return false;

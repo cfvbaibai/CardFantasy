@@ -41,6 +41,8 @@ public enum FeatureType {
     不动(0),
     复活(0, FeatureTag.复活),
     背刺(40),
+    送还(0, FeatureTag.即死),
+    群体削弱(5),
 
     // Unimplemented.
     封印(0, FeatureTag.陷阱),

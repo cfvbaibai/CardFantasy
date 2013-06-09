@@ -343,4 +343,10 @@ public class TestGameUI extends GameUI {
     public void blockFeature(CardInfo attacker, CardInfo defender, Feature feature, Feature attackFeature) {
         sayF("%s blocked %s by %s", defender.getShortDesc(true), attackFeature.getShortDesc(), feature.getShortDesc());
     }
+
+    @Override
+    public void returnCard(CardInfo attacker, CardInfo defender, Feature feature) {
+        sayF("%s returns %s back to deck by %s.", attacker.getShortDesc(true), defender.getShortDesc(true),
+                feature.getShortDesc());
+    }
 }
