@@ -21,10 +21,6 @@ public final class ChainAttackFeature {
         if (!attacker.getEffectsCausedBy(feature).isEmpty()) {
             return;
         }
-        int chainAT = feature.getImpact() * attacker.getAT() / 100;
-        int adjAT = chainAT - attacker.getAT();
-        GameUI ui = resolver.getStage().getUI();
-
         List<CardInfo> victims = new ArrayList<CardInfo>();
         for (CardInfo victim : defender.getOwner().getField().getAliveCards()) {
             if (victim == defender || !CardInfo.isSameType(victim, defender)) {
@@ -32,8 +28,16 @@ public final class ChainAttackFeature {
             }
             victims.add(victim);
         }
+        if (victims.isEmpty()) {
+            return;
+        }
+
+        GameUI ui = resolver.getStage().getUI();
+
         ui.useSkill(attacker, victims, feature);
 
+        int chainAT = feature.getImpact() * attacker.getAT() / 100;
+        int adjAT = chainAT - attacker.getAT();
         FeatureEffect effect = new FeatureEffect(FeatureEffectType.ATTACK_CHANGE, feature, adjAT, false);
         ui.adjustAT(attacker, attacker, adjAT, feature);
         attacker.addEffect(effect);

@@ -348,4 +348,15 @@ public class TestGameUI extends GameUI {
         sayF("%s returns %s back to deck by %s.", attacker.getShortDesc(true), defender.getShortDesc(true),
                 feature.getShortDesc());
     }
+
+    @Override
+    public void cardToGrave(Player player, CardInfo card) {
+        sayF("%s is put into %s's grave.", card.getShortDesc(false), player.getShortDesc());
+    }
+
+    @Override
+    public void disableBlock(CardInfo attacker, CardInfo defender, Feature attackFeature, Feature blockFeature) {
+        sayF("%s's %s is disabled by %s's %s.", defender.getShortDesc(true), blockFeature.getShortDesc(),
+                attacker.getShortDesc(true), attackFeature.getShortDesc());
+    }
 }

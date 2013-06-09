@@ -345,4 +345,24 @@ public class CardFantasyTest {
     public void 纯洁圣女vs降临天使() {
         game5vs5("纯洁圣女", "降临天使");
     }
+
+    @Test
+    public void 纯洁圣女vs隐世先知() {
+        game5vs5("纯洁圣女", "隐世先知");
+    }
+
+    @Test
+    public void 东方禅师vs隐世先知() {
+        game5vs5("东方禅师", "隐世先知");
+    }
+
+    @Test
+    public void 钻石巨石像vs皇家驯兽师() {
+        game5vs5("钻石巨石像", "皇家驯兽师");
+    }
+
+    @Test
+    public void 时空旅者vs皇家驯兽师() {
+        game5vs5("时空旅者", "皇家驯兽师");
+    }
 }

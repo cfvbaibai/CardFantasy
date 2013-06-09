@@ -12,6 +12,9 @@ public final class DodgeFeature {
         if (Randomizer.roll100() < dodgeRate) {
             GameUI ui = resolver.getStage().getUI();
             ui.useSkill(defender, attacker, feature);
+            if (resolver.resolveCounterBlockFeature(feature, attacker, defender)) {
+                return false;
+            }
             ui.blockDamage(attacker, defender, feature, originalDamage, 0);
             return true;
         } else {

@@ -41,7 +41,9 @@ import cfvbaibai.cardfantasy.engine.feature.ReturnFeature;
 import cfvbaibai.cardfantasy.engine.feature.ReviveFeature;
 import cfvbaibai.cardfantasy.engine.feature.SnipeFeature;
 import cfvbaibai.cardfantasy.engine.feature.SpikeFeature;
+import cfvbaibai.cardfantasy.engine.feature.TransportFeature;
 import cfvbaibai.cardfantasy.engine.feature.TrapFeature;
+import cfvbaibai.cardfantasy.engine.feature.WeakPointAttackFeature;
 import cfvbaibai.cardfantasy.engine.feature.WeakenAllFeature;
 import cfvbaibai.cardfantasy.engine.feature.WeakenFeature;
 import cfvbaibai.cardfantasy.engine.feature.WoundFeature;
@@ -328,8 +330,7 @@ public class FeatureResolver {
             CardInfo card = field.getCard(i);
             if (deadCard == card) {
                 field.expelCard(i);
-                // Grave is a stack.
-                owner.getGrave().insertCard(card, 0);
+                owner.getGrave().addCard(card);
                 break;
             }
         }
@@ -435,6 +436,8 @@ public class FeatureResolver {
                 ReturnFeature.apply(this, feature, card, opField.getCard(card.getPosition()));
             } else if (feature.getType() == FeatureType.群体削弱) {
                 WeakenAllFeature.apply(this, feature, card, opField.getOwner());
+            } else if (feature.getType() == FeatureType.传送) {
+                TransportFeature.apply(this, feature, card, opField.getOwner());
             }
         }
         for (CardInfo fieldCard : myField.getAliveCards()) {
@@ -500,5 +503,21 @@ public class FeatureResolver {
                 stage.getResolver().resolveSummoningFeature(card, player.getField(), other.getField());
             }
         }
+    }
+
+    /**
+     * 
+     * @param feature
+     * @param attacker
+     * @param defender
+     * @return Whether block is disabled
+     */
+    public boolean resolveCounterBlockFeature(Feature feature, CardInfo attacker, CardInfo defender) {
+        for (Feature attackerFeature : attacker.getAllUsableFeatures()) {
+            if (attackerFeature.getType() == FeatureType.弱点攻击) {
+                return WeakPointAttackFeature.isBlockFeatureDisabled(this, attackerFeature, feature, attacker, defender);
+            }
+        }
+        return false;
     }
 }

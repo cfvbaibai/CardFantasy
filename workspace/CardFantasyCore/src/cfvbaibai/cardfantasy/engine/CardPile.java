@@ -27,11 +27,6 @@ public abstract class CardPile {
         checkCardExistence(newCard);
         this.cards.add(newCard);
     }
-    
-    public void insertCard(CardInfo newCard, int index) {
-        checkCardExistence(newCard);
-        this.cards.add(index, newCard);
-    }
 
     private void checkCardExistence(CardInfo newCard) {
         if (cards.contains(newCard)) {

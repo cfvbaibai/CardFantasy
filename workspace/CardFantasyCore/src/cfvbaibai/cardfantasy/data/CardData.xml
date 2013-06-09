@@ -224,4 +224,19 @@
         <Feature type="连锁攻击" level="4" unlock="5" />
         <Feature type="转生" level="7" unlock="10" />
     </Card>
+    <Card id="46" name="隐世先知" race="王国" speed="4" star="5" cost="15" at="300" hp="1350" incrAT="36" incrHP="25">
+        <Feature type="魔甲" level="7" unlock="0" />
+        <Feature type="王国之力" level="7" unlock="5" />
+        <Feature type="传送" level="0" unlock="10" summon="true" />
+    </Card>
+    <Card id="47" name="东方禅师" race="王国" speed="4" star="4" cost="14" at="250" hp="920" incrAT="12" incrHP="45">
+        <Feature type="不动" level="0" unlock="0" />
+        <Feature type="法力反射" level="4" unlock="5" />
+        <Feature type="甘霖" level="5" unlock="10" />
+    </Card>
+    <Card id="48" name="皇家驯兽师" race="王国" speed="4" star="4" cost="14" at="290" hp="850" incrAT="32" incrHP="37">
+        <Feature type="背刺" level="6" unlock="0" />
+        <Feature type="狂热" level="8" unlock="5" />
+        <Feature type="弱点攻击" level="0" unlock="10" />
+    </Card>
 </Cards>

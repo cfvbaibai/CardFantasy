@@ -107,4 +107,8 @@ public abstract class GameUI {
     public abstract void blockFeature(CardInfo attacker, CardInfo defender, Feature feature, Feature attackFeature);
 
     public abstract void returnCard(CardInfo attacker, CardInfo defender, Feature feature);
+
+    public abstract void cardToGrave(Player player, CardInfo card);
+
+    public abstract void disableBlock(CardInfo attacker, CardInfo defender, Feature attackFeature, Feature blockFeature);
 }

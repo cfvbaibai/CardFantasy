@@ -130,7 +130,7 @@ public class CardInfo {
     }
 
     public String getShortDesc(boolean includePosition) {
-        if (includePosition) {
+        if (includePosition && this.getPosition() >= 0) {
             return String.format("<%s>.<%s>.[%d]", this.getOwner().getId(), this.getCard().getId(), this.getPosition());
         } else {
             return String.format("<%s>.<%s>", this.getOwner().getId(), this.getCard().getId());

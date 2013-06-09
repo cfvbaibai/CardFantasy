@@ -15,6 +15,11 @@ public class Grave extends CardPile {
             throw new CardFantasyRuntimeException("Cannot find card in grave: " + card.getShortDesc(true));
         }
     }
+    
+    @Override
+    public void addCard(CardInfo card) {
+        this.getCards().add(0, card);
+    }
 
     public CardInfo getFirst() {
         if (this.size() == 0) {

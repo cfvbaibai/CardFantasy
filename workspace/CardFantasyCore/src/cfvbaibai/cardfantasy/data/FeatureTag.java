@@ -1,5 +1,5 @@
 package cfvbaibai.cardfantasy.data;
 
 public enum FeatureTag {
-    Ä§·¨, ÏİÚå, ¼´ËÀ, ¸´»î, ¿¹ÃâÒß
+    Ä§·¨, ÏİÚå, ¼´ËÀ, ¸´»î, ¿¹ÃâÒß, ÎïÀí»¤¼×
 }

@@ -18,7 +18,7 @@ public enum FeatureType {
     回春(30),
     狂热(10),
     横扫(0),
-    闪避(20, 5),
+    闪避(20, 5, FeatureTag.物理护甲),
     治疗(25),
     甘霖(25),
     祈祷(50),
@@ -43,7 +43,7 @@ public enum FeatureType {
     背刺(40),
     送还(0, FeatureTag.即死),
     群体削弱(5),
-    冰甲(190, -10),
+    冰甲(190, -10, FeatureTag.物理护甲),
     自爆(40),
     透支(20),
     免疫(0),
@@ -51,6 +51,8 @@ public enum FeatureType {
     本源守护(40),
     本源之力(20),
     连锁攻击(25),
+    传送(0, FeatureTag.即死),
+    弱点攻击(0),
 
     // Unimplemented.
     封印(0, FeatureTag.陷阱),
