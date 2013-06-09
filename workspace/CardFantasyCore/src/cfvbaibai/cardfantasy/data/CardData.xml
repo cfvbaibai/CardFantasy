@@ -109,9 +109,19 @@
         <Feature type="圣光" level="7" unlock="5" />
         <Feature type="王国守护" level="4" unlock="10" />
     </Card>
-    <Card id="23" name="暴雪召唤士" race="王国" speed="4" star="3" cost="8" at="130" hp="550" incrAT="16" incrHP="40">
+    <Card id="24" name="暴雪召唤士" race="王国" speed="4" star="3" cost="8" at="130" hp="550" incrAT="16" incrHP="40">
         <Feature type="霜冻新星" level="2" unlock="0" />
         <Feature type="暴风雪" level="4" unlock="5" summon="true" />
         <Feature type="削弱" level="4" unlock="10" />
+    </Card>
+    <Card id="25" name="东方僧人" race="王国" speed="4" star="3" cost="9" at="170" hp="600" incrAT="30" incrHP="20">
+        <Feature type="削弱" level="3" unlock="0" />
+        <Feature type="法力反射" level="2" unlock="5" />
+        <Feature type="圣光" level="5" unlock="10" />
+    </Card>
+    <Card id="26" name="皇家雄狮" race="王国" speed="4" star="3" cost="9" at="190" hp="650" incrAT="26" incrHP="30">
+        <Feature type="暴击" level="3" unlock="0" />
+        <Feature type="反击" level="5" unlock="5" />
+        <Feature type="裂伤" level="0" unlock="10" />
     </Card>
 </Cards>

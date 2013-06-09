@@ -331,4 +331,14 @@ public class TestGameUI extends GameUI {
     public void cardToHand(Player player, CardInfo card) {
         sayF("%s is put into %s's hand.", card.getShortDesc(true), player.getShortDesc());
     }
+
+    @Override
+    public void healBlocked(CardInfo healer, CardInfo healee, Feature feature, Feature blockerFeature) {
+        if (blockerFeature == null) {
+            sayF("%s is in status %s so cannot be healed by %s from %s!", healee.getShortDesc(true), healee.getStatus()
+                    .getShortDesc(), feature.getShortDesc(), healer.getShortDesc(true));
+        } else {
+            throw new CardFantasyRuntimeException("blockerFeature is not null. To be implemented.");
+        }
+    }
 }

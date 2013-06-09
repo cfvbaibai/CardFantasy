@@ -50,7 +50,11 @@ public class CardStatusItem {
     public static CardStatusItem burning(int effect, FeatureInfo cause) {
         return new CardStatusItem(CardStatusType.»º…’, effect, cause);
     }
-
+    
+    public static CardStatusItem wound(FeatureInfo cause) {
+        return new CardStatusItem(CardStatusType.¡—…À, 0, cause);
+    }
+    
     public String getShortDesc() {
         StringBuffer sb = new StringBuffer();
         sb.append(getType().name());

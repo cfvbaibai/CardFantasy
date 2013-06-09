@@ -5,7 +5,8 @@ public enum CardStatusType {
     Âé±Ô(false),
     ±ù¶³(false),
     ÖĞ¶¾(true),
-    Ëø¶¨(false);
+    Ëø¶¨(false),
+    ÁÑÉË(false);
 
     private boolean quantitive;
     public boolean isQuantitive() {

@@ -4,6 +4,7 @@ import cfvbaibai.cardfantasy.data.Feature;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.FeatureResolver;
 import cfvbaibai.cardfantasy.engine.GameUI;
+import cfvbaibai.cardfantasy.engine.OnAttackBlockingResult;
 
 public final class HealFeature {
     public static void apply(Feature feature, FeatureResolver resolver, CardInfo healer) {
@@ -23,7 +24,10 @@ public final class HealFeature {
         }
         GameUI ui = resolver.getStage().getUI();
         ui.useSkill(healer, healee, feature);
-        // TODO: аяик
+        OnAttackBlockingResult result = resolver.resolveHealBlockingFeature(healer, healee, feature);
+        if (!result.isAttackable()) {
+            return;
+        }
         ui.healCard(healer, healee, feature, healHP);
         resolver.applyDamage(healee, -healHP);
     }

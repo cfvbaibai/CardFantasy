@@ -31,6 +31,7 @@ import cfvbaibai.cardfantasy.engine.feature.SnipeFeature;
 import cfvbaibai.cardfantasy.engine.feature.SpikeFeature;
 import cfvbaibai.cardfantasy.engine.feature.TrapFeature;
 import cfvbaibai.cardfantasy.engine.feature.WeakenFeature;
+import cfvbaibai.cardfantasy.engine.feature.WoundFeature;
 import cfvbaibai.cardfantasy.engine.feature.ZealotFeature;
 
 public class FeatureResolver {
@@ -117,6 +118,14 @@ public class FeatureResolver {
         }
     }
 
+    public OnAttackBlockingResult resolveHealBlockingFeature(CardInfo healer, CardInfo healee, Feature feature) {
+        OnAttackBlockingResult result = new OnAttackBlockingResult(true, feature.getImpact());
+        if (healee.getStatus().containsStatus(CardStatusType.¡—…À)) {
+            stage.getUI().healBlocked(healer, healee, feature, null);
+            result.setAttackable(false);
+        }
+        return result;
+    }
     public OnAttackBlockingResult resolveAttackBlockingFeature(CardInfo attacker, CardInfo defender, Feature feature) {
         OnAttackBlockingResult result = new OnAttackBlockingResult(true, feature == null ? attacker.getAT()
                 : feature.getImpact());
@@ -197,6 +206,8 @@ public class FeatureResolver {
                     PenetrationFeature.apply(feature, this, attacker, defenderHero, normalAttackDamage);
                 } else if (feature.getType() == FeatureType.œ˜»ı) {
                     WeakenFeature.apply(this, feature, attacker, defender, normalAttackDamage);
+                } else if (feature.getType() == FeatureType.¡—…À) {
+                    WoundFeature.apply(this, feature, attacker, defender, normalAttackDamage);
                 }
             }
         }

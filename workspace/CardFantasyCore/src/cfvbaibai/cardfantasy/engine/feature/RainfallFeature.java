@@ -8,6 +8,7 @@ import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.FeatureResolver;
 import cfvbaibai.cardfantasy.engine.Field;
 import cfvbaibai.cardfantasy.engine.GameUI;
+import cfvbaibai.cardfantasy.engine.OnAttackBlockingResult;
 
 public final class RainfallFeature {
     private static class Heal {
@@ -42,7 +43,10 @@ public final class RainfallFeature {
         }
         ui.useSkill(healer, healees, feature);
         for (Heal heal : heals) {
-            // TODO: аяик
+            OnAttackBlockingResult result = resolver.resolveHealBlockingFeature(healer, heal.healee, feature);
+            if (!result.isAttackable()) {
+                return;
+            }
             ui.healCard(healer, heal.healee, feature, heal.healHP);
             resolver.applyDamage(heal.healee, -heal.healHP);
         }

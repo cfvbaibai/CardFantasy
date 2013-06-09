@@ -198,4 +198,14 @@ public class CardFantasyTest {
     public void 火焰乌鸦vs暴雪召唤士() {
         game5vs5("火焰乌鸦", "暴雪召唤士");
     }
+
+    @Test
+    public void 暴雪召唤士vs东方僧人() {
+        game5vs5("暴雪召唤士", "东方僧人");
+    }
+
+    @Test
+    public void 牧师vs皇家雄狮() {
+        game5vs5("牧师", "皇家雄狮");
+    }
 }
