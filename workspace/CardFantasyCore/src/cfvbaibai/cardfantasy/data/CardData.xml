@@ -189,4 +189,9 @@
         <Feature type="不动" level="0" unlock="5" />
         <Feature type="王国守护" level="6" unlock="10" />
     </Card>
+    <Card id="39" name="钻石巨石像" race="王国" speed="6" star="4" cost="13" at="255" hp="780" incrAT="22" incrHP="27">
+        <Feature type="圣光" level="6" unlock="0" />
+        <Feature type="回春" level="7" unlock="5" />
+        <Feature type="冰甲" level="3" unlock="10" />
+    </Card>
 </Cards>

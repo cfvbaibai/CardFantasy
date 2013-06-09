@@ -20,6 +20,7 @@ import cfvbaibai.cardfantasy.engine.feature.FireMagicFeature;
 import cfvbaibai.cardfantasy.engine.feature.GuardFeature;
 import cfvbaibai.cardfantasy.engine.feature.HealFeature;
 import cfvbaibai.cardfantasy.engine.feature.HolyLightFeature;
+import cfvbaibai.cardfantasy.engine.feature.IceArmorFeature;
 import cfvbaibai.cardfantasy.engine.feature.IceMagicFeature;
 import cfvbaibai.cardfantasy.engine.feature.ImmobilityFeature;
 import cfvbaibai.cardfantasy.engine.feature.LighteningMagicFeature;
@@ -172,6 +173,14 @@ public class FeatureResolver {
                     }
                     if (blockFeature.getType() == FeatureType.¸ñµ²) {
                         result.setDamage(BlockFeature.apply(blockFeature, this, attacker, defender, result.getDamage()));
+                    }
+                }
+                for (Feature blockFeature : defender.getNormalUsableFeatures()) {
+                    if (!result.isAttackable()) {
+                        continue;
+                    }
+                    if (blockFeature.getType() == FeatureType.±ù¼×) {
+                        result.setDamage(IceArmorFeature.apply(blockFeature, this, attacker, defender, result.getDamage()));
                     }
                 }
             }
