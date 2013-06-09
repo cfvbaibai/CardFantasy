@@ -1,6 +1,7 @@
 package cfvbaibai.cardfantasy.engine;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import cfvbaibai.cardfantasy.data.PlayerInfo;
@@ -82,7 +83,7 @@ public class StageInfo {
         this.rule = rule;
     }
 
-    public Board getBoard() {
+    private Board getBoard() {
         return board;
     }
 
@@ -94,5 +95,25 @@ public class StageInfo {
         Player player = new Player(playerInfo, this);
         this.board.addPlayer(player);
         this.ui.playerAdded(player);
+    }
+
+    public int getPlayerCount() {
+        return this.board.getPlayerCount();
+    }
+
+    public List<Player> getPlayers() {
+        return this.board.getPlayers();
+    }
+
+    public void gameStarted() {
+        this.ui.gameStarted(this.getBoard(), this.getRule());
+    }
+    
+    public GameResult result(Player winner, GameEndCause cause) {
+        return new GameResult(this.getBoard(), winner, this.getRound(), cause);
+    }
+
+    public Collection<CardInfo> getAllHandCards() {
+        return this.board.getAllHandCards();
     }
 }

@@ -2,7 +2,6 @@ package cfvbaibai.cardfantasy.engine;
 
 import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
 
-
 public class Grave extends CardPile {
 
     public Grave() {
@@ -14,6 +13,14 @@ public class Grave extends CardPile {
         }
         if (!this.getCards().remove(card)) {
             throw new CardFantasyRuntimeException("Cannot find card in grave: " + card.getShortDesc(true));
+        }
+    }
+
+    public CardInfo getFirst() {
+        if (this.size() == 0) {
+            return null;
+        } else {
+            return this.getCards().get(0);
         }
     }
 

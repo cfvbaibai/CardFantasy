@@ -47,7 +47,7 @@ public abstract class GameUI {
 
     public abstract void cantDrawHandFull(Player drawer);
 
-    public abstract List<CardInfo> summonCards(StageInfo stage);
+    public abstract void summonCard(Player player, CardInfo card);
 
     public abstract void roundStarted(Player player, int round);
 

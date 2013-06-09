@@ -144,4 +144,24 @@
         <Feature type="回春" level="6" unlock="5" />
         <Feature type="脱困" level="0" unlock="10" />
     </Card>
+    <Card id="30" name="皇家卫队将领" race="王国" speed="4" star="4" cost="12" at="235" hp="880" incrAT="28" incrHP="23">
+        <Feature type="格挡" level="7" unlock="0" />
+        <Feature type="暴击" level="5" unlock="5" />
+        <Feature type="王国之力" level="5" unlock="10" />
+    </Card>
+    <Card id="31" name="大主教" race="王国" speed="4" star="4" cost="13" at="175" hp="800" incrAT="15" incrHP="66">
+        <Feature type="祈祷" level="7" unlock="0" />
+        <Feature type="甘霖" level="6" unlock="5" />
+        <Feature type="王国守护" level="5" unlock="10" />
+    </Card>
+    <Card id="32" name="秘银巨石像" race="王国" speed="6" star="4" cost="14" at="360" hp="1100" incrAT="30" incrHP="30">
+        <Feature type="不动" level="0" unlock="0" />
+        <Feature type="圣光" level="6" unlock="5" />
+        <Feature type="法力反射" level="6" unlock="10" />
+    </Card>
+    <Card id="33" name="魔法协会长" race="王国" speed="6" star="4" cost="11" at="210" hp="790" incrAT="24" incrHP="37">
+        <Feature type="圣光" level="6" unlock="0" />
+        <Feature type="火墙" level="5" unlock="5" />
+        <Feature type="复活" level="0" unlock="10" />
+    </Card>
 </Cards>

@@ -20,6 +20,7 @@ import cfvbaibai.cardfantasy.engine.feature.GuardFeature;
 import cfvbaibai.cardfantasy.engine.feature.HealFeature;
 import cfvbaibai.cardfantasy.engine.feature.HolyLightFeature;
 import cfvbaibai.cardfantasy.engine.feature.IceMagicFeature;
+import cfvbaibai.cardfantasy.engine.feature.ImmobilityFeature;
 import cfvbaibai.cardfantasy.engine.feature.LighteningMagicFeature;
 import cfvbaibai.cardfantasy.engine.feature.MagicShieldFeature;
 import cfvbaibai.cardfantasy.engine.feature.PenetrationFeature;
@@ -29,6 +30,7 @@ import cfvbaibai.cardfantasy.engine.feature.RaceBuffFeature;
 import cfvbaibai.cardfantasy.engine.feature.RainfallFeature;
 import cfvbaibai.cardfantasy.engine.feature.RejuvenateFeature;
 import cfvbaibai.cardfantasy.engine.feature.ResurrectFeature;
+import cfvbaibai.cardfantasy.engine.feature.ReviveFeature;
 import cfvbaibai.cardfantasy.engine.feature.SnipeFeature;
 import cfvbaibai.cardfantasy.engine.feature.SpikeFeature;
 import cfvbaibai.cardfantasy.engine.feature.TrapFeature;
@@ -68,7 +70,7 @@ public class FeatureResolver {
     }
 
     public void resolvePreAttackFeature(CardInfo attacker, Player defender) throws HeroDieSignal {
-        for (FeatureInfo feature : attacker.getUsableFeatures()) {
+        for (FeatureInfo feature : attacker.getNormalUsableFeatures()) {
             if (attacker.isDead()) {
                 continue;
             }
@@ -102,6 +104,8 @@ public class FeatureResolver {
                 RainfallFeature.apply(feature, this, attacker);
             } else if (feature.getType() == FeatureType.祈祷) {
                 PrayFeature.apply(feature, this, attacker);
+            } else if (feature.getType() == FeatureType.复活) {
+                ReviveFeature.apply(this, feature, attacker);
             }
         }
     }
@@ -112,7 +116,7 @@ public class FeatureResolver {
 
     public void resolveCounterAttackFeature(CardInfo attacker, CardInfo defender, Feature attackFeature) {
         if (attackFeature == null) {
-            for (FeatureInfo feature : defender.getUsableFeatures()) {
+            for (FeatureInfo feature : defender.getNormalUsableFeatures()) {
                 if (feature.getType() == FeatureType.反击) {
                     CounterAttackFeature.apply(feature, this, attacker, defender);
                 } else if (feature.getType() == FeatureType.盾刺) {
@@ -141,11 +145,11 @@ public class FeatureResolver {
             // 锁定 status.
             CardStatus status = attacker.getStatus();
             if (status.containsStatus(CardStatusType.冰冻) || status.containsStatus(CardStatusType.麻痹)
-                    || status.containsStatus(CardStatusType.锁定)) {
+                    || status.containsStatus(CardStatusType.锁定) || status.containsStatus(CardStatusType.虚弱)) {
                 stage.getUI().attackBlocked(attacker, defender, feature, null);
                 result.setAttackable(false);
             } else {
-                for (Feature blockFeature : defender.getUsableFeatures()) {
+                for (Feature blockFeature : defender.getNormalUsableFeatures()) {
                     if (blockFeature.getType() == FeatureType.闪避) {
                         if (!result.isAttackable()) {
                             continue;
@@ -155,7 +159,7 @@ public class FeatureResolver {
                                 result.getDamage()));
                     }
                 }
-                for (Feature blockFeature : defender.getUsableFeatures()) {
+                for (Feature blockFeature : defender.getNormalUsableFeatures()) {
                     if (!result.isAttackable()) {
                         continue;
                     }
@@ -166,11 +170,12 @@ public class FeatureResolver {
             }
         } else {
             CardStatus status = attacker.getStatus();
-            if (status.containsStatus(CardStatusType.冰冻) || status.containsStatus(CardStatusType.锁定)) {
+            if (status.containsStatus(CardStatusType.冰冻) || status.containsStatus(CardStatusType.锁定)
+                    || status.containsStatus(CardStatusType.虚弱)) {
                 stage.getUI().attackBlocked(attacker, defender, feature, null);
                 result.setAttackable(false);
             } else {
-                for (Feature blockFeature : defender.getUsableFeatures()) {
+                for (Feature blockFeature : defender.getNormalUsableFeatures()) {
                     if (blockFeature.getType() == FeatureType.法力反射) {
                         CounterMagicFeature.apply(this, blockFeature, feature, attacker, defender);
                         result.setAttackable(false);
@@ -178,9 +183,13 @@ public class FeatureResolver {
                         if (EscapeFeature.isFeatureEscaped(this, blockFeature, feature, attacker, defender)) {
                             result.setAttackable(false);
                         }
+                    } else if (blockFeature.getType() == FeatureType.不动) {
+                        if (ImmobilityFeature.isFeatureBlocked(this, blockFeature, feature, attacker, defender)) {
+                            result.setAttackable(false);
+                        }
                     }
                 }
-                for (Feature blockFeature : defender.getUsableFeatures()) {
+                for (Feature blockFeature : defender.getNormalUsableFeatures()) {
                     if (!result.isAttackable()) {
                         continue;
                     }
@@ -195,7 +204,7 @@ public class FeatureResolver {
     }
 
     public void resolveDeathFeature(CardInfo attacker, CardInfo defender, Feature feature) {
-        for (FeatureInfo deadCardFeature : defender.getUsableFeatures()) {
+        for (FeatureInfo deadCardFeature : defender.getNormalUsableFeatures()) {
             if (deadCardFeature.getType() == FeatureType.王国之力) {
                 RaceBuffFeature.remove(this, deadCardFeature, defender, Race.王国);
             } else if (deadCardFeature.getType() == FeatureType.王国守护) {
@@ -212,7 +221,7 @@ public class FeatureResolver {
     public void resolveExtraAttackFeature(CardInfo attacker, CardInfo defender, Player defenderHero,
             int normalAttackDamage) throws HeroDieSignal {
         if (attacker != null) {
-            for (FeatureInfo feature : attacker.getUsableFeatures()) {
+            for (FeatureInfo feature : attacker.getNormalUsableFeatures()) {
                 if (feature.getType() == FeatureType.穿刺) {
                     PenetrationFeature.apply(feature, this, attacker, defenderHero, normalAttackDamage);
                 } else if (feature.getType() == FeatureType.削弱) {
@@ -223,7 +232,7 @@ public class FeatureResolver {
             }
         }
         if (defender != null) {
-            for (FeatureInfo feature : defender.getUsableFeatures()) {
+            for (FeatureInfo feature : defender.getNormalUsableFeatures()) {
                 if (feature.getType() == FeatureType.狂热) {
                     ZealotFeature.apply(feature, this, attacker, defender, normalAttackDamage);
                 }
@@ -232,7 +241,7 @@ public class FeatureResolver {
     }
 
     public void resolvePreAttackCardFeature(CardInfo attacker, CardInfo defender) {
-        for (FeatureInfo feature : attacker.getUsableFeatures()) {
+        for (FeatureInfo feature : attacker.getNormalUsableFeatures()) {
             if (feature.getType() == FeatureType.圣光) {
                 HolyLightFeature.apply(this, feature, attacker, defender);
             } else if (feature.getType() == FeatureType.暴击) {
@@ -290,7 +299,7 @@ public class FeatureResolver {
             if (defender == null) {
                 continue;
             }
-            for (Feature defenderFeature : defender.getUsableFeatures()) {
+            for (Feature defenderFeature : defender.getNormalUsableFeatures()) {
                 if (defenderFeature.getType() == FeatureType.守护) {
                     GuardFeature.apply(defenderFeature, this, attacker, defender, damage);
                     return true;
@@ -320,7 +329,7 @@ public class FeatureResolver {
         if (card == null) {
             return;
         }
-        for (Feature feature : card.getUsableFeatures()) {
+        for (Feature feature : card.getNormalUsableFeatures()) {
             if (feature.getType() == FeatureType.回春) {
                 RejuvenateFeature.apply(feature, this, card);
             }
@@ -366,7 +375,7 @@ public class FeatureResolver {
             }
         }
         for (CardInfo fieldCard : myField.getAliveCards()) {
-            for (FeatureInfo feature : fieldCard.getUsableFeatures()) {
+            for (FeatureInfo feature : fieldCard.getNormalUsableFeatures()) {
                 if (feature.getType() == FeatureType.王国之力) {
                     RaceBuffFeature.apply(this, feature, fieldCard, Race.王国, FeatureEffectType.ATTACK_CHANGE);
                 } else if (feature.getType() == FeatureType.王国守护) {
@@ -399,13 +408,29 @@ public class FeatureResolver {
         }
     }
 
-    public BlockStatusResult resolveBlockStatusFeature(CardInfo attacker, CardInfo victim, FeatureInfo feature, CardStatusItem item) {
+    public BlockStatusResult resolveBlockStatusFeature(CardInfo attacker, CardInfo victim, FeatureInfo feature,
+            CardStatusItem item) {
         boolean blocked = false;
-        for (FeatureInfo blockFeature : victim.getUsableFeatures()) {
+        for (FeatureInfo blockFeature : victim.getNormalUsableFeatures()) {
             if (blockFeature.getType() == FeatureType.脱困) {
                 blocked = EscapeFeature.isStatusEscaped(blockFeature, this, item, victim);
             }
         }
         return new BlockStatusResult(blocked);
+    }
+
+    public void summonCard(Player player, CardInfo card) {
+        this.stage.getUI().summonCard(player, card);
+        card.reset();
+        player.getField().addCard(card);
+        if (this.stage.getPlayerCount() != 2) {
+            throw new CardFantasyRuntimeException("There are " + this.stage.getPlayerCount()
+                    + " player(s) in the stage, but expect 2");
+        }
+        for (Player other : stage.getPlayers()) {
+            if (other != player) {
+                stage.getResolver().resolveSummoningFeature(card, player.getField(), other.getField());
+            }
+        }
     }
 }

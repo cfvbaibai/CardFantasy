@@ -54,6 +54,10 @@ public class CardStatusItem {
     public static CardStatusItem wound(FeatureInfo cause) {
         return new CardStatusItem(CardStatusType.¡—…À, 0, cause);
     }
+
+    public static CardStatusItem weak(FeatureInfo cause) {
+        return new CardStatusItem(CardStatusType.–È»ı, 0, cause);
+    }
     
     public String getShortDesc() {
         StringBuffer sb = new StringBuffer();

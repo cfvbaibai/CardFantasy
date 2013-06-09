@@ -14,10 +14,6 @@ public class GameEngine {
 
     private StageInfo stage;
 
-    private Board getBoard() {
-        return this.stage.getBoard();
-    }
-
     public GameEngine(GameUI ui, Rule rule) {
         this.stage = new StageInfo(new Board(), ui, rule);
     }
@@ -36,7 +32,7 @@ public class GameEngine {
     }
 
     public GameResult playGame() {
-        this.stage.getUI().gameStarted(getBoard(), this.stage.getRule());
+        this.stage.gameStarted();
         this.stage.setActivePlayerNumber(0);
         this.stage.setRound(0);
         GameResult result = proceedGame();
@@ -69,14 +65,11 @@ public class GameEngine {
                 nextPhase = Phase.Unknown;
             }
         } catch (GameOverSignal signal) {
-            return new GameResult(this.getBoard(), this.getBoard().getPlayer(0), stage.getRound(),
-                    GameEndCause.TOO_LONG);
+            return stage.result(this.stage.getPlayers().get(0), GameEndCause.TOO_LONG);
         } catch (HeroDieSignal signal) {
-            return new GameResult(this.getBoard(), getOpponent(signal.getDeadPlayer()), this.stage.getRound(),
-                    GameEndCause.HERO_DIE);
+            return stage.result(getOpponent(signal.getDeadPlayer()), GameEndCause.HERO_DIE);
         } catch (AllCardsDieSignal signal) {
-            return new GameResult(this.getBoard(), getOpponent(signal.getDeadPlayer()), this.stage.getRound(),
-                    GameEndCause.ALL_CARDS_DIE);
+            return stage.result(getOpponent(signal.getDeadPlayer()), GameEndCause.ALL_CARDS_DIE);
         }
     }
 
@@ -85,15 +78,19 @@ public class GameEngine {
     }
 
     private Phase summonCards() {
-        List<CardInfo> summonedCards = this.stage.getUI().summonCards(stage);
-        Hand hand = this.getActivePlayer().getHand();
-        Field field = this.getActivePlayer().getField();
-        for (CardInfo summonedCard : summonedCards) {
-            hand.removeCard(summonedCard);
-            summonedCard.reset();
-            field.addCard(summonedCard);
-            stage.getResolver().resolveSummoningFeature(summonedCard, field, this.getInactivePlayer().getField());
+        Player player = this.getActivePlayer();
+        List<CardInfo> summonedCards = new ArrayList<CardInfo>();
+        for (CardInfo card : player.getHand().toList()) {
+            if (card.getSummonDelay() == 0) {
+                summonedCards.add(card);
+            }
         }
+
+        for (CardInfo summonedCard : summonedCards) {
+            player.getHand().removeCard(summonedCard);
+            this.stage.getResolver().summonCard(player, summonedCard);
+        }
+
         return Phase.Battle;
     }
 
@@ -102,7 +99,7 @@ public class GameEngine {
     }
 
     private Phase roundEnd() {
-        Collection<CardInfo> allHandCards = this.getBoard().getAllHandCards();
+        Collection<CardInfo> allHandCards = this.stage.getAllHandCards();
         for (CardInfo card : allHandCards) {
             int summonDelay = card.getSummonDelay();
             if (summonDelay > 0) {
@@ -113,7 +110,7 @@ public class GameEngine {
         Player previousPlayer = getActivePlayer();
         this.stage.getUI().roundEnded(previousPlayer, stage.getRound());
         this.stage.setRound(stage.getRound() + 1);
-        int nextPlayerNumber = (this.stage.getActivePlayerNumber() + 1) % getBoard().getPlayerCount();
+        int nextPlayerNumber = (this.stage.getActivePlayerNumber() + 1) % stage.getPlayerCount();
         this.stage.setActivePlayerNumber(nextPlayerNumber);
         Player nextPlayer = this.getActivePlayer();
         stage.getUI().playerChanged(previousPlayer, nextPlayer);
@@ -141,7 +138,8 @@ public class GameEngine {
             }
 
             CardStatus status = myField.getCard(i).getStatus();
-            if (status.containsStatus(CardStatusType.±˘∂≥) || status.containsStatus(CardStatusType.À¯∂®)) {
+            if (status.containsStatus(CardStatusType.±˘∂≥) || status.containsStatus(CardStatusType.À¯∂®)
+                    || status.containsStatus(CardStatusType.–È»ı)) {
                 ui.cannotAction(myField.getCard(i));
             } else {
                 tryAttackEnemy(myField, opField, i);
@@ -162,6 +160,7 @@ public class GameEngine {
             card.getStatus().remove(CardStatusType.¬È±‘);
             card.getStatus().remove(CardStatusType.À¯∂®);
             card.getStatus().remove(CardStatusType.÷–∂æ);
+            card.getStatus().remove(CardStatusType.–È»ı);
         }
 
         return Phase.End;
@@ -196,14 +195,14 @@ public class GameEngine {
         CardInfo defender = opField.getCard(i);
         FeatureResolver resolver = this.stage.getResolver();
         GameUI ui = this.stage.getUI();
-        for (Feature feature : myField.getCard(i).getUsableFeatures()) {
+        for (Feature feature : myField.getCard(i).getNormalUsableFeatures()) {
             if (feature.getType() == FeatureType.∫·…®) {
                 ui.useSkill(myField.getCard(i), defender, feature);
             }
         }
         int damage = doAttackCard(resolver, myField, i, defender);
         if (damage > 0 && myField.getCard(i) != null) {
-            for (Feature feature : myField.getCard(i).getUsableFeatures()) {
+            for (Feature feature : myField.getCard(i).getNormalUsableFeatures()) {
                 if (feature.getType() == FeatureType.∫·…®) {
 
                     List<CardInfo> sweepDefenders = new ArrayList<CardInfo>();

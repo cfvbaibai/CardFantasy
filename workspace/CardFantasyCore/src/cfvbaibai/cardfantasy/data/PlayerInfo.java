@@ -26,7 +26,7 @@ public class PlayerInfo {
         // TODO: Apply adjustments
 
         // TODO: Apply real life algorithm
-        return level * 100;
+        return level * 200;
     }
     
     public String getId() {

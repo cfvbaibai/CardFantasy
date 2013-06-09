@@ -81,16 +81,8 @@ public class TestGameUI extends GameUI {
     }
 
     @Override
-    public List<CardInfo> summonCards(StageInfo stage) {
-        List<CardInfo> summonedCards = new LinkedList<CardInfo>();
-        Player player = stage.getActivePlayer();
-        for (CardInfo card : player.getHand().toList()) {
-            if (card.getSummonDelay() == 0) {
-                summonedCards.add(card);
-                sayF("<%s> summons card: <%s (LV: %d)>", player.getId(), card.getId(), card.getLevel());
-            }
-        }
-        return summonedCards;
+    public void summonCard(Player player, CardInfo card) {
+        sayF("<%s> summons card: <%s (LV: %d)>", player.getId(), card.getId(), card.getLevel());
     }
 
     @Override

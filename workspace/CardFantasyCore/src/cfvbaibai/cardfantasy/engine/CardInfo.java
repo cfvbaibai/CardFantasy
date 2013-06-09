@@ -9,6 +9,7 @@ import java.util.Map;
 import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
 import cfvbaibai.cardfantasy.data.Card;
 import cfvbaibai.cardfantasy.data.Feature;
+import cfvbaibai.cardfantasy.data.FeatureTag;
 import cfvbaibai.cardfantasy.data.FeatureType;
 import cfvbaibai.cardfantasy.data.Race;
 
@@ -158,8 +159,12 @@ public class CardInfo {
         return getUsableFeatures(false, true);
     }
 
-    public List<FeatureInfo> getUsableFeatures() {
+    public List<FeatureInfo> getNormalUsableFeatures() {
         return getUsableFeatures(false, false);
+    }
+    
+    public List<FeatureInfo> getAllUsableFeatures() {
+        return getUsableFeatures(true, true);
     }
 
     private List<FeatureInfo> getUsableFeatures(boolean includeSummonFeature, boolean includeDeathFeature) {
@@ -303,5 +308,14 @@ public class CardInfo {
 
     public int getOriginalMaxHP() {
         return this.card.getMaxHP();
+    }
+
+    public boolean containsUsableFeaturesWithTag(FeatureTag tag) {
+        for (Feature feature : this.getAllUsableFeatures()) {
+            if (feature.getType().containsTag(tag)) {
+                return true;
+            }
+        }
+        return false;
     }
 }

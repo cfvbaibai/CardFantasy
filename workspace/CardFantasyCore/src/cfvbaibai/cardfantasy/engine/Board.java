@@ -43,4 +43,8 @@ public class Board {
         }
         return allHandCards;
     }
+
+    public List<Player> getPlayers() {
+        return new ArrayList<Player>(this.players);
+    }
 }
