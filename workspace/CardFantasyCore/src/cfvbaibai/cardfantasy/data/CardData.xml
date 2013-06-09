@@ -209,4 +209,9 @@
         <Feature type="横扫" level="0" unlock="5" />
         <Feature type="免疫" level="0" unlock="10" />
     </Card>
+    <Card id="43" name="战神" race="王国" speed="4" star="5" cost="16" at="350" hp="1200" incrAT="40" incrHP="30">
+        <Feature type="法力反射" level="7" unlock="0" />
+        <Feature type="闪避" level="8" unlock="5" />
+        <Feature type="嗜血" level="7" unlock="10" />
+    </Card>
 </Cards>

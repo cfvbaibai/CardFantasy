@@ -10,6 +10,7 @@ import cfvbaibai.cardfantasy.data.FeatureType;
 import cfvbaibai.cardfantasy.data.Race;
 import cfvbaibai.cardfantasy.engine.feature.BackStabFeature;
 import cfvbaibai.cardfantasy.engine.feature.BlockFeature;
+import cfvbaibai.cardfantasy.engine.feature.BloodThirstyFeature;
 import cfvbaibai.cardfantasy.engine.feature.BurningFeature;
 import cfvbaibai.cardfantasy.engine.feature.CounterAttackFeature;
 import cfvbaibai.cardfantasy.engine.feature.CounterMagicFeature;
@@ -269,6 +270,8 @@ public class FeatureResolver {
                     WeakenFeature.apply(this, feature, attacker, defender, normalAttackDamage);
                 } else if (feature.getType() == FeatureType.ÁÑÉË) {
                     WoundFeature.apply(this, feature, attacker, defender, normalAttackDamage);
+                } else if (feature.getType() == FeatureType.ÊÈÑª) {
+                    BloodThirstyFeature.apply(this, feature, attacker, normalAttackDamage);
                 }
             }
         }
