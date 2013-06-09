@@ -25,6 +25,7 @@ public class CardInfo {
     private int cachedPosition;
 
     private Map<FeatureType, List<FeatureEffect>> effects;
+    private boolean firstRound;
 
     public CardInfo(Card card, Player owner) {
         this.card = card;
@@ -39,6 +40,14 @@ public class CardInfo {
             this.features.add(new FeatureInfo(this, feature));
         }
         this.cachedPosition = -1;
+    }
+    
+    public boolean isFirstRound() {
+        return firstRound;
+    }
+    
+    public void setFirstRound(boolean firstRound) {
+        this.firstRound = firstRound;
     }
 
     public void addEffect(FeatureEffect effect) {

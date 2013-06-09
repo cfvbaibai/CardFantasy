@@ -8,6 +8,7 @@ import cfvbaibai.cardfantasy.data.Feature;
 import cfvbaibai.cardfantasy.data.FeatureTag;
 import cfvbaibai.cardfantasy.data.FeatureType;
 import cfvbaibai.cardfantasy.data.Race;
+import cfvbaibai.cardfantasy.engine.feature.BackStabFeature;
 import cfvbaibai.cardfantasy.engine.feature.BlockFeature;
 import cfvbaibai.cardfantasy.engine.feature.BurningFeature;
 import cfvbaibai.cardfantasy.engine.feature.CounterAttackFeature;
@@ -106,6 +107,8 @@ public class FeatureResolver {
                 PrayFeature.apply(feature, this, attacker);
             } else if (feature.getType() == FeatureType.¸´»î) {
                 ReviveFeature.apply(this, feature, attacker);
+            } else if (feature.getType() == FeatureType.±³´Ì) {
+                BackStabFeature.apply(this, feature, attacker);
             }
         }
     }
@@ -321,6 +324,8 @@ public class FeatureResolver {
                 CriticalAttackFeature.remove(this, effect.getCause(), card);
             } else if (type == FeatureType.Çî×·ÃÍ´ò) {
                 PursuitFeature.remove(this, effect.getCause(), card);
+            } else if (type == FeatureType.±³´Ì) {
+                BackStabFeature.remove(this, effect.getCause(), card);
             }
         }
     }
@@ -422,6 +427,7 @@ public class FeatureResolver {
     public void summonCard(Player player, CardInfo card) {
         this.stage.getUI().summonCard(player, card);
         card.reset();
+        card.setFirstRound(true);
         player.getField().addCard(card);
         if (this.stage.getPlayerCount() != 2) {
             throw new CardFantasyRuntimeException("There are " + this.stage.getPlayerCount()

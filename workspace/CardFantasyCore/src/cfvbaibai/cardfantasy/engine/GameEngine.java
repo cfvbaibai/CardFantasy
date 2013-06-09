@@ -106,6 +106,10 @@ public class GameEngine {
                 card.setSummonDelay(summonDelay - 1);
             }
         }
+        
+        for (CardInfo card : this.getActivePlayer().getField().toList()) {
+            card.setFirstRound(false);
+        }
 
         Player previousPlayer = getActivePlayer();
         this.stage.getUI().roundEnded(previousPlayer, stage.getRound());
@@ -177,6 +181,9 @@ public class GameEngine {
         } else {
             tryAttackCard(myField, opField, i);
         }
+        
+        // Remove lasting effects
+        resolver.removeTempEffects(myField.getCard(i));
         //
         resolver.resolvePostAttackFeature(myField.getCard(i), getInactivePlayer());
     }
@@ -220,8 +227,6 @@ public class GameEngine {
                 }
             }
         }
-        // Remove lasting effects
-        resolver.removeTempEffects(myField.getCard(i));
     }
 
     private int doAttackCard(FeatureResolver resolver, Field myField, int i, CardInfo defender) throws HeroDieSignal {

@@ -245,4 +245,14 @@ public class CardFantasyTest {
         GameBuilder.play(PlayerBuilder.build("英雄皇家卫队将领", 50, "皇家卫队将领-10*5"),
                 PlayerBuilder.build("英雄魔法协会长", 50, "魔法协会长-10*2", "暴雪召唤士-10*3"));
     }
+
+    @Test
+    public void 荣耀巨人vs大剑圣() {
+        game5vs5("荣耀巨人", "大剑圣");
+    }
+
+    @Test
+    public void 城镇弓箭兵vs大剑圣() {
+        game5vs5("城镇弓箭兵", "大剑圣");
+    }
 }
