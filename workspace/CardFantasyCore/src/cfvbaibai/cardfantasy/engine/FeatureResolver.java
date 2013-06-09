@@ -22,7 +22,7 @@ import cfvbaibai.cardfantasy.engine.feature.ExplodeFeature;
 import cfvbaibai.cardfantasy.engine.feature.FireMagicFeature;
 import cfvbaibai.cardfantasy.engine.feature.GuardFeature;
 import cfvbaibai.cardfantasy.engine.feature.HealFeature;
-import cfvbaibai.cardfantasy.engine.feature.HolyLightFeature;
+import cfvbaibai.cardfantasy.engine.feature.RacialAttackFeature;
 import cfvbaibai.cardfantasy.engine.feature.IceArmorFeature;
 import cfvbaibai.cardfantasy.engine.feature.IceMagicFeature;
 import cfvbaibai.cardfantasy.engine.feature.ImmobilityFeature;
@@ -259,6 +259,10 @@ public class FeatureResolver {
                 RaceBuffFeature.remove(this, deadCardFeature, card, Race.王国);
             } else if (deadCardFeature.getType() == FeatureType.王国守护) {
                 RaceBuffFeature.remove(this, deadCardFeature, card, Race.王国);
+            } else if (deadCardFeature.getType() == FeatureType.森林之力) {
+                RaceBuffFeature.remove(this, deadCardFeature, card, Race.森林);
+            } else if (deadCardFeature.getType() == FeatureType.森林守护) {
+                RaceBuffFeature.remove(this, deadCardFeature, card, Race.森林);
             } else if (deadCardFeature.getType() == FeatureType.本源之力) {
                 RaceBuffFeature.remove(this, deadCardFeature, card, null);
             } else if (deadCardFeature.getType() == FeatureType.本源守护) {
@@ -296,7 +300,9 @@ public class FeatureResolver {
     public void resolvePreAttackCardFeature(CardInfo attacker, CardInfo defender) {
         for (FeatureInfo feature : attacker.getNormalUsableFeatures()) {
             if (feature.getType() == FeatureType.圣光) {
-                HolyLightFeature.apply(this, feature, attacker, defender);
+                RacialAttackFeature.apply(this, feature, attacker, defender, Race.地狱);
+            } else if (feature.getType() == FeatureType.要害) {
+                RacialAttackFeature.apply(this, feature, attacker, defender, Race.蛮荒);
             } else if (feature.getType() == FeatureType.暴击) {
                 CriticalAttackFeature.apply(this, feature, attacker, defender);
             } else if (feature.getType() == FeatureType.穷追猛打) {
@@ -370,7 +376,7 @@ public class FeatureResolver {
         for (FeatureEffect effect : card.getEffects()) {
             FeatureType type = effect.getCause().getType();
             if (type == FeatureType.圣光) {
-                HolyLightFeature.remove(this, effect.getCause(), card);
+                RacialAttackFeature.remove(this, effect.getCause(), card);
             } else if (type == FeatureType.暴击) {
                 CriticalAttackFeature.remove(this, effect.getCause(), card);
             } else if (type == FeatureType.穷追猛打) {
@@ -438,6 +444,8 @@ public class FeatureResolver {
                 WeakenAllFeature.apply(this, feature, card, opField.getOwner());
             } else if (feature.getType() == FeatureType.传送) {
                 TransportFeature.apply(this, feature, card, opField.getOwner());
+            } else if (feature.getType() == FeatureType.甘霖) {
+                RainfallFeature.apply(feature, this, card);
             }
         }
         for (CardInfo fieldCard : myField.getAliveCards()) {
@@ -446,6 +454,10 @@ public class FeatureResolver {
                     RaceBuffFeature.apply(this, feature, fieldCard, Race.王国, FeatureEffectType.ATTACK_CHANGE);
                 } else if (feature.getType() == FeatureType.王国守护) {
                     RaceBuffFeature.apply(this, feature, fieldCard, Race.王国, FeatureEffectType.MAXHP_CHANGE);
+                } else if (feature.getType() == FeatureType.森林之力) {
+                    RaceBuffFeature.apply(this, feature, fieldCard, null, FeatureEffectType.ATTACK_CHANGE);
+                } else if (feature.getType() == FeatureType.森林守护) {
+                    RaceBuffFeature.apply(this, feature, fieldCard, null, FeatureEffectType.MAXHP_CHANGE);
                 } else if (feature.getType() == FeatureType.本源之力) {
                     RaceBuffFeature.apply(this, feature, fieldCard, null, FeatureEffectType.ATTACK_CHANGE);
                 } else if (feature.getType() == FeatureType.本源守护) {

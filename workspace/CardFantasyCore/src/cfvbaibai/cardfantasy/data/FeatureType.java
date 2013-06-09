@@ -53,6 +53,9 @@ public enum FeatureType {
     连锁攻击(25),
     传送(0, FeatureTag.即死),
     弱点攻击(0),
+    要害(15, 15),
+    森林之力(25),
+    森林守护(50),
 
     // Unimplemented.
     封印(0, FeatureTag.陷阱),

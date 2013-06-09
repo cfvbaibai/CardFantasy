@@ -9,9 +9,9 @@ import cfvbaibai.cardfantasy.engine.FeatureEffectType;
 import cfvbaibai.cardfantasy.engine.FeatureInfo;
 import cfvbaibai.cardfantasy.engine.FeatureResolver;
 
-public final class HolyLightFeature {
-    public static void apply(FeatureResolver resolver, FeatureInfo feature, CardInfo attacker, CardInfo defender) {
-        if (defender.getRace() == Race.µØÓü) {
+public final class RacialAttackFeature {
+    public static void apply(FeatureResolver resolver, FeatureInfo feature, CardInfo attacker, CardInfo defender, Race targetRace) {
+        if (defender.getRace() == targetRace) {
             int adjAT = (int) (attacker.getOriginalAT() * feature.getImpact() / 100);
             resolver.getStage().getUI().adjustAT(attacker, attacker, adjAT, feature);
             attacker.addEffect(new FeatureEffect(FeatureEffectType.ATTACK_CHANGE, feature, adjAT, false));
