@@ -49,4 +49,8 @@ public class Card implements Cloneable {
     public Race getRace() {
         return this.sourceInfo.getRace();
     }
+
+    public String getName() {
+        return this.sourceInfo.getName();
+    }
 }

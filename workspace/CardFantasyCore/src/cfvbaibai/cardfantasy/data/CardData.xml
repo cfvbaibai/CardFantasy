@@ -214,4 +214,14 @@
         <Feature type="闪避" level="8" unlock="5" />
         <Feature type="嗜血" level="7" unlock="10" />
     </Card>
+    <Card id="44" name="圣诞老人" race="王国" speed="4" star="5" cost="16" at="290" hp="1300" incrAT="32" incrHP="24">
+        <Feature type="本源守护" level="7" unlock="0" />
+        <Feature type="冰甲" level="4" unlock="5" />
+        <Feature type="本源之力" level="7" unlock="10" />
+    </Card>
+    <Card id="45" name="纯洁圣女" race="王国" speed="4" star="5" cost="15" at="270" hp="1120" incrAT="32" incrHP="25">
+        <Feature type="背刺" level="6" unlock="0" />
+        <Feature type="连锁攻击" level="4" unlock="5" />
+        <Feature type="转生" level="7" unlock="10" />
+    </Card>
 </Cards>

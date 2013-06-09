@@ -48,6 +48,9 @@ public enum FeatureType {
     透支(20),
     免疫(0),
     嗜血(10),
+    本源守护(40),
+    本源之力(20),
+    连锁攻击(25),
 
     // Unimplemented.
     封印(0, FeatureTag.陷阱),

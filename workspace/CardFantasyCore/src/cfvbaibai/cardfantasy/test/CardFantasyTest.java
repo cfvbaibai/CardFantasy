@@ -335,4 +335,14 @@ public class CardFantasyTest {
     public void 光明之龙vs战神() {
         game5vs5("光明之龙", "战神");
     }
+
+    @Test
+    public void 圣诞老人vs战神() {
+        game5vs5("圣诞老人", "战神");
+    }
+
+    @Test
+    public void 纯洁圣女vs降临天使() {
+        game5vs5("纯洁圣女", "降临天使");
+    }
 }

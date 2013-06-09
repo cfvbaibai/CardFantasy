@@ -18,7 +18,8 @@ public final class RaceBuffFeature {
         int impact = feature.getImpact();
         Field field = card.getOwner().getField();
         for (CardInfo ally : field.getAliveCards()) {
-            if (ally == card || ally.getRace() != race) {
+            // race == null => all races 本源之力/本源守护
+            if (ally == card || race != null && ally.getRace() != race) {
                 continue;
             }
             if (ally.getEffectsCausedBy(feature).isEmpty()) {
@@ -43,7 +44,8 @@ public final class RaceBuffFeature {
         }
         Field field = card.getOwner().getField();
         for (CardInfo ally : field.getAliveCards()) {
-            if (ally == card || ally.getRace() != race) {
+            // race == null => all races 本源之力/本源守护
+            if (ally == card || race != null && ally.getRace() != race) {
                 continue;
             }
             for (FeatureEffect effect : ally.getEffectsCausedBy(feature)) {

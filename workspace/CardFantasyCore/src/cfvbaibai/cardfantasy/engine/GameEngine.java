@@ -207,7 +207,7 @@ public class GameEngine {
                 ui.useSkill(myField.getCard(i), defender, feature);
             }
         }
-        int damage = doAttackCard(resolver, myField, i, defender);
+        int damage = resolver.attackCard(myField.getCard(i), defender);
         if (damage > 0 && myField.getCard(i) != null) {
             for (Feature feature : myField.getCard(i).getNormalUsableFeatures()) {
                 if (feature.getType() == FeatureType.∫·…®) {
@@ -222,18 +222,11 @@ public class GameEngine {
 
                     for (CardInfo sweepDefender : sweepDefenders) {
                         ui.useSkill(myField.getCard(i), sweepDefender, feature);
-                        doAttackCard(resolver, myField, i, sweepDefender);
+                        resolver.attackCard(myField.getCard(i), sweepDefender);
                     }
                 }
             }
         }
-    }
-
-    private int doAttackCard(FeatureResolver resolver, Field myField, int i, CardInfo defender) throws HeroDieSignal {
-        int damage = resolver.attackCard(myField.getCard(i), defender);
-        resolver.resolveExtraAttackFeature(myField.getCard(i), defender, getInactivePlayer(), damage);
-        resolver.resolveCounterAttackFeature(myField.getCard(i), defender, null);
-        return damage;
     }
 
     private Phase roundStart() throws GameOverSignal, AllCardsDieSignal {

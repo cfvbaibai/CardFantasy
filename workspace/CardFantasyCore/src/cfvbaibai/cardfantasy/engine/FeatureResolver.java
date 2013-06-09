@@ -12,6 +12,7 @@ import cfvbaibai.cardfantasy.engine.feature.BackStabFeature;
 import cfvbaibai.cardfantasy.engine.feature.BlockFeature;
 import cfvbaibai.cardfantasy.engine.feature.BloodThirstyFeature;
 import cfvbaibai.cardfantasy.engine.feature.BurningFeature;
+import cfvbaibai.cardfantasy.engine.feature.ChainAttackFeature;
 import cfvbaibai.cardfantasy.engine.feature.CounterAttackFeature;
 import cfvbaibai.cardfantasy.engine.feature.CounterMagicFeature;
 import cfvbaibai.cardfantasy.engine.feature.CriticalAttackFeature;
@@ -256,13 +257,17 @@ public class FeatureResolver {
                 RaceBuffFeature.remove(this, deadCardFeature, card, Race.王国);
             } else if (deadCardFeature.getType() == FeatureType.王国守护) {
                 RaceBuffFeature.remove(this, deadCardFeature, card, Race.王国);
-            }
+            } else if (deadCardFeature.getType() == FeatureType.本源之力) {
+                RaceBuffFeature.remove(this, deadCardFeature, card, null);
+            } else if (deadCardFeature.getType() == FeatureType.本源守护) {
+                RaceBuffFeature.remove(this, deadCardFeature, card, null);
+            } 
         }
     }
 
     public void resolveExtraAttackFeature(CardInfo attacker, CardInfo defender, Player defenderHero,
             int normalAttackDamage) throws HeroDieSignal {
-        if (attacker != null) {
+        if (!attacker.isDead()) {
             for (FeatureInfo feature : attacker.getNormalUsableFeatures()) {
                 if (feature.getType() == FeatureType.穿刺) {
                     PenetrationFeature.apply(feature, this, attacker, defenderHero, normalAttackDamage);
@@ -272,10 +277,12 @@ public class FeatureResolver {
                     WoundFeature.apply(this, feature, attacker, defender, normalAttackDamage);
                 } else if (feature.getType() == FeatureType.嗜血) {
                     BloodThirstyFeature.apply(this, feature, attacker, normalAttackDamage);
+                } else if (feature.getType() == FeatureType.连锁攻击) {
+                    ChainAttackFeature.apply(this, feature, attacker, defender);
                 }
             }
         }
-        if (defender != null) {
+        if (!defender.isDead()) {
             for (FeatureInfo feature : defender.getNormalUsableFeatures()) {
                 if (feature.getType() == FeatureType.狂热) {
                     ZealotFeature.apply(feature, this, attacker, defender, normalAttackDamage);
@@ -384,7 +391,7 @@ public class FeatureResolver {
         }
     }
 
-    public int attackCard(CardInfo attacker, CardInfo defender) {
+    public int attackCard(CardInfo attacker, CardInfo defender) throws HeroDieSignal {
         this.stage.getUI().useSkill(attacker, defender, null);
         OnAttackBlockingResult blockingResult = stage.getResolver().resolveAttackBlockingFeature(attacker, defender,
                 null);
@@ -396,6 +403,10 @@ public class FeatureResolver {
         if (damagedResult.cardDead) {
             stage.getResolver().resolveDeathFeature(attacker, defender, null);
         }
+        
+        resolveExtraAttackFeature(attacker, defender, defender.getOwner(), damagedResult.actualDamage);
+        resolveCounterAttackFeature(attacker, defender, null);
+        
         return damagedResult.actualDamage;
     }
 
@@ -432,6 +443,10 @@ public class FeatureResolver {
                     RaceBuffFeature.apply(this, feature, fieldCard, Race.王国, FeatureEffectType.ATTACK_CHANGE);
                 } else if (feature.getType() == FeatureType.王国守护) {
                     RaceBuffFeature.apply(this, feature, fieldCard, Race.王国, FeatureEffectType.MAXHP_CHANGE);
+                } else if (feature.getType() == FeatureType.本源之力) {
+                    RaceBuffFeature.apply(this, feature, fieldCard, null, FeatureEffectType.ATTACK_CHANGE);
+                } else if (feature.getType() == FeatureType.本源守护) {
+                    RaceBuffFeature.apply(this, feature, fieldCard, null, FeatureEffectType.MAXHP_CHANGE);
                 }
             }
         }

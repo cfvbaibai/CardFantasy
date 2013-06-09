@@ -343,4 +343,8 @@ public class CardInfo {
         }
         return false;
     }
+
+    public static boolean isSameType(CardInfo victim, CardInfo defender) {
+        return victim.getCard().getName().equals(defender.getCard().getName());
+    }
 }
