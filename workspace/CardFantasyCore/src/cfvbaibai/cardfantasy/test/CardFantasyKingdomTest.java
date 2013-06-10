@@ -184,6 +184,11 @@ public class CardFantasyKingdomTest {
     }
 
     @Test
+    public void 魔剑士vs弩骑兵() {
+        game5vs5("魔剑士", "弩骑兵");
+    }
+
+    @Test
     public void 魔导师vs圣骑士() {
         game5vs5("魔导师", "圣骑士");
     }

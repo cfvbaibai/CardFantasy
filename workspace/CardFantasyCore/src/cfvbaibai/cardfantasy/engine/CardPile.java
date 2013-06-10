@@ -39,7 +39,7 @@ public abstract class CardPile {
         return this.cards.size();
     }
 
-    public List<CardInfo> pickRandom(int max, boolean noEmptyPosition) {
+    public List<CardInfo> pickRandom(int max, boolean noEmptyPosition, CardInfo exclusion) {
         if (max == 0) {
             return new ArrayList<CardInfo>();
         }
@@ -53,11 +53,18 @@ public abstract class CardPile {
             if (card == null && noEmptyPosition) {
                 continue;
             }
+            if (card == exclusion) {
+                continue;
+            }
             result.add(card);
             if (result.size() == max) {
                 break;
             }
         }
         return result;
+    }
+    
+    public List<CardInfo> pickRandom(int max, boolean noEmptyPosition) {
+        return pickRandom(max, noEmptyPosition, null);
     }
 }

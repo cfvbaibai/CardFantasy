@@ -6,11 +6,12 @@ import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.FeatureInfo;
 import cfvbaibai.cardfantasy.engine.FeatureResolver;
+import cfvbaibai.cardfantasy.engine.HeroDieSignal;
 import cfvbaibai.cardfantasy.engine.Player;
 
 public final class WeakenAllFeature {
 
-    public static void apply(FeatureResolver resolver, FeatureInfo feature, CardInfo attacker, Player defenderPlayer) {
+    public static void apply(FeatureResolver resolver, FeatureInfo feature, CardInfo attacker, Player defenderPlayer) throws HeroDieSignal {
         if (defenderPlayer == null) {
             throw new CardFantasyRuntimeException("defenderPlayer is null");
         }

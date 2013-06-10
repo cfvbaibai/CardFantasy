@@ -8,21 +8,29 @@ import cfvbaibai.cardfantasy.engine.FeatureInfo;
 import cfvbaibai.cardfantasy.engine.FeatureResolver;
 import cfvbaibai.cardfantasy.engine.GameUI;
 import cfvbaibai.cardfantasy.engine.HeroDieSignal;
+import cfvbaibai.cardfantasy.engine.OnAttackBlockingResult;
 import cfvbaibai.cardfantasy.engine.Player;
 
-public final class ConfusionFeature {
+public final class PoisonMagicFeature {
     public static void apply(FeatureInfo feature, FeatureResolver resolver, CardInfo attacker, Player defender,
             int victimCount) throws HeroDieSignal {
-        int rate = feature.getImpact();
+        int damage = feature.getImpact();
         List<CardInfo> victims = defender.getField().pickRandom(victimCount, true);
         GameUI ui = resolver.getStage().getUI();
         ui.useSkill(attacker, victims, feature);
         for (CardInfo victim : victims) {
-            if (!resolver.resolveAttackBlockingFeature(attacker, victim, feature).isAttackable()) {
+            OnAttackBlockingResult result = resolver.resolveAttackBlockingFeature(attacker, victim, feature);
+            if (!result.isAttackable()) {
                 continue;
             }
-            if (resolver.getStage().getRandomizer().roll100(rate)) {
-                CardStatusItem status = CardStatusItem.confused(feature);
+            damage = result.getDamage();
+            ui.attackCard(attacker, victim, feature, damage);
+            boolean cardDead = resolver.applyDamage(victim, damage).cardDead;
+            resolver.resolveCounterAttackFeature(attacker, victim, feature);
+            if (cardDead) {
+                resolver.resolveDeathFeature(attacker, victim, feature);
+            } else {
+                CardStatusItem status = CardStatusItem.poisoned(damage, feature);
                 ui.addCardStatus(attacker, victim, feature, status);
                 victim.addStatus(status);
             }

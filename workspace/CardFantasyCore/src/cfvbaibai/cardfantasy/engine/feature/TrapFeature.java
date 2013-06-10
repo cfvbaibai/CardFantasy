@@ -7,6 +7,7 @@ import cfvbaibai.cardfantasy.engine.CardStatusItem;
 import cfvbaibai.cardfantasy.engine.FeatureInfo;
 import cfvbaibai.cardfantasy.engine.FeatureResolver;
 import cfvbaibai.cardfantasy.engine.GameUI;
+import cfvbaibai.cardfantasy.engine.HeroDieSignal;
 import cfvbaibai.cardfantasy.engine.Player;
 
 /**
@@ -17,7 +18,7 @@ import cfvbaibai.cardfantasy.engine.Player;
  *
  */
 public final class TrapFeature {
-    public static void apply(FeatureInfo feature, FeatureResolver resolver, CardInfo attacker, Player defender) {
+    public static void apply(FeatureInfo feature, FeatureResolver resolver, CardInfo attacker, Player defender) throws HeroDieSignal {
         int targetCount = feature.getImpact();
         List <CardInfo> victims = defender.getField().pickRandom(targetCount, true);
         GameUI ui = resolver.getStage().getUI();

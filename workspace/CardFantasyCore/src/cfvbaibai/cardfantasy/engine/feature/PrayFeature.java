@@ -1,14 +1,14 @@
 package cfvbaibai.cardfantasy.engine.feature;
 
+import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
 import cfvbaibai.cardfantasy.data.Feature;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.FeatureResolver;
-import cfvbaibai.cardfantasy.engine.GameUI;
 import cfvbaibai.cardfantasy.engine.HeroDieSignal;
 import cfvbaibai.cardfantasy.engine.Player;
 
 public final class PrayFeature {
-    public static void apply(Feature feature, FeatureResolver resolver, CardInfo healer) throws HeroDieSignal {
+    public static void apply(Feature feature, FeatureResolver resolver, CardInfo healer) {
         if (healer == null) {
             return;
         }
@@ -20,8 +20,10 @@ public final class PrayFeature {
         if (healHP == 0) {
             return;
         }
-        GameUI ui = resolver.getStage().getUI();
-        ui.useSkillToHero(healer, healee, feature);
-        resolver.attackHero(healer, healee, feature, -healHP);
+        try {
+            resolver.attackHero(healer, healee, feature, healHP);
+        } catch (HeroDieSignal e) {
+            throw new CardFantasyRuntimeException("Cannot kill hero by Pray!");
+        }
     }
 }

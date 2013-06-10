@@ -6,9 +6,10 @@ import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.CardStatusItem;
 import cfvbaibai.cardfantasy.engine.FeatureInfo;
 import cfvbaibai.cardfantasy.engine.FeatureResolver;
+import cfvbaibai.cardfantasy.engine.HeroDieSignal;
 
 public final class ReviveFeature {
-    public static void apply(FeatureResolver resolver, FeatureInfo feature, CardInfo reviver) {
+    public static void apply(FeatureResolver resolver, FeatureInfo feature, CardInfo reviver) throws HeroDieSignal {
         if (reviver == null) {
             throw new CardFantasyRuntimeException("reviver should not be null");
         }

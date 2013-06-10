@@ -7,6 +7,7 @@ import cfvbaibai.cardfantasy.engine.CardStatusItem;
 import cfvbaibai.cardfantasy.engine.FeatureInfo;
 import cfvbaibai.cardfantasy.engine.FeatureResolver;
 import cfvbaibai.cardfantasy.engine.GameUI;
+import cfvbaibai.cardfantasy.engine.HeroDieSignal;
 import cfvbaibai.cardfantasy.engine.OnAttackBlockingResult;
 import cfvbaibai.cardfantasy.engine.Player;
 
@@ -22,7 +23,7 @@ import cfvbaibai.cardfantasy.engine.Player;
  */
 public final class LighteningMagicFeature {
     public static void apply(FeatureInfo feature, FeatureResolver resolver, CardInfo attacker, Player defender,
-            int victimCount, int paralyzeRate) {
+            int victimCount, int paralyzeRate) throws HeroDieSignal {
         int damage = feature.getImpact();
         List<CardInfo> victims = defender.getField().pickRandom(victimCount, true);
         GameUI ui = resolver.getStage().getUI();

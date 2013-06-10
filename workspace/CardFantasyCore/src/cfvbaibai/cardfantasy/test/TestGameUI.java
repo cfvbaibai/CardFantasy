@@ -375,4 +375,10 @@ public class TestGameUI extends GameUI {
     public void useSkill(CardInfo attacker, Feature feature) {
         sayF("%s uses %s", attacker.getShortDesc(true), feature.getShortDesc());
     }
+
+    @Override
+    public void killCard(CardInfo attacker, CardInfo victim, Feature feature) {
+        sayF("%s kills %s by %s directly!", attacker.getShortDesc(true), victim.getShortDesc(true),
+                feature.getShortDesc());
+    }
 }

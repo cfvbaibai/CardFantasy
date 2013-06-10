@@ -117,4 +117,6 @@ public abstract class GameUI {
     public abstract void roll100(int dice, int rate);
 
     public abstract void useSkill(CardInfo attacker, Feature feature);
+
+    public abstract void killCard(CardInfo attacker, CardInfo victim, Feature feature);
 }

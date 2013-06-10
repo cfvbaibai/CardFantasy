@@ -492,4 +492,241 @@
         <Feature type="格挡" level="7" unlock="5" />
         <Feature type="战意" level="5" unlock="10" />
     </Card>
+    <!-- 蛮荒  -->
+    <Card name="穴居人奴隶" race="蛮荒" speed="2" star="1" cost="4" at="90" hp="390" incrAT="18" incrHP="11">
+        <Feature type="暗杀" level="4" unlock="5" />
+        <Feature type="冰弹" level="4" unlock="10" />
+    </Card>
+    <Card name="哥布林矿工" race="蛮荒" speed="4" star="1" cost="5" at="95" hp="360" incrAT="15" incrHP="20">
+        <Feature type="反击" level="3" unlock="5" />
+        <Feature type="狂热" level="5" unlock="10" />
+    </Card>
+    <Card name="白斑蜘蛛" race="蛮荒" speed="2" star="1" cost="3" at="75" hp="280" incrAT="16" incrHP="17">
+        <Feature type="毒液" level="1" unlock="0" />
+        <Feature type="陷阱" level="1" unlock="5" />
+        <Feature type="暴击" level="4" unlock="10" />
+    </Card>
+    <Card name="黑夜蝙蝠" race="蛮荒" speed="2" star="1" cost="4" at="95" hp="275" incrAT="19" incrHP="6">
+        <Feature type="吸血" level="2" unlock="0" />
+        <Feature type="暗杀" level="3" unlock="5" />
+        <Feature type="毒雾" level="3" unlock="10" />
+    </Card>
+    <Card name="哥布林战士" race="蛮荒" speed="4" star="2" cost="6" at="110" hp="430" incrAT="24" incrHP="7">
+        <Feature type="暴击" level="2" unlock="0" />
+        <Feature type="格挡" level="4" unlock="5" />
+        <Feature type="暗杀" level="7" unlock="10" />
+    </Card>
+    <Card name="瘟疫蜘蛛" race="蛮荒" speed="2" star="2" cost="7" at="200" hp="510" incrAT="20" incrHP="20">
+        <Feature type="反噬" level="2" unlock="0" />
+        <Feature type="吸血" level="7" unlock="5" />
+        <Feature type="疾病" level="4" unlock="10" />
+    </Card>
+    <Card name="山羊人盾士" race="蛮荒" speed="4" star="2" cost="6" at="160" hp="475" incrAT="24" incrHP="5">
+        <Feature type="格挡" level="4" unlock="5" />
+        <Feature type="反击" level="5" unlock="10" />
+    </Card>
+    <Card name="豺狼人刺客" race="蛮荒" speed="2" star="2" cost="6" at="135" hp="490" incrAT="23" incrHP="13">
+        <Feature type="吸血" level="4" unlock="0" />
+        <Feature type="暗杀" level="4" unlock="5" />
+        <Feature type="闪避" level="3" unlock="10" />
+    </Card>
+    <Card name="狼人战士" race="蛮荒" speed="2" star="2" cost="8" at="165" hp="550" incrAT="17" incrHP="29">
+        <Feature type="嗜血" level="4" unlock="5" />
+        <Feature type="狂热" level="5" unlock="10" />
+    </Card>
+    <Card name="哥布林药剂师" race="蛮荒" speed="4" star="2" cost="5" at="110" hp="450" incrAT="24" incrHP="18">
+        <Feature type="毒液" level="2" unlock="0" />
+        <Feature type="自爆" level="2" unlock="5" />
+        <Feature type="蛮荒之力" level="3" unlock="10" />
+    </Card>
+    <Card name="鳄鱼人卫士" race="蛮荒" speed="4" star="2" cost="7" at="135" hp="510" incrAT="24" incrHP="7">
+        <Feature type="格挡" level="1" unlock="0" />
+        <Feature type="反击" level="4" unlock="5" />
+        <Feature type="回春" level="5" unlock="10" />
+    </Card>
+    <Card name="鹰身人女妖" race="蛮荒" speed="2" star="2" cost="5" at="135" hp="440" incrAT="24" incrHP="10">
+        <Feature type="暗杀" level="4" unlock="0" />
+        <Feature type="背刺" level="2" unlock="5" />
+        <Feature type="自爆" level="6" unlock="10" />
+    </Card>
+    <Card name="鬣蜥人忍者" race="蛮荒" speed="4" star="2" cost="6" at="100" hp="470" incrAT="20" incrHP="20">
+        <Feature type="毒液" level="3" unlock="0" />
+        <Feature type="背刺" level="2" unlock="5" />
+        <Feature type="暗杀" level="6" unlock="10" />
+    </Card>
+    <Card name="毒汁怪" race="蛮荒" speed="2" star="2" cost="6" at="170" hp="420" incrAT="20" incrHP="15">
+        <Feature type="暗杀" level="3" unlock="0" />
+        <Feature type="疾病" level="2" unlock="5" />
+        <Feature type="毒液" level="5" unlock="10" />
+    </Card>
+    <Card name="蜘蛛人女王" race="蛮荒" speed="4" star="3" cost="10" at="140" hp="685" incrAT="26" incrHP="20">
+        <Feature type="毒雾" level="2" unlock="0" />
+        <Feature type="暗杀" level="7" unlock="5" />
+        <Feature type="陷阱" level="2" unlock="10" />
+    </Card>
+    <Card name="鳄鱼人酋长" race="蛮荒" speed="2" star="3" cost="8" at="175" hp="720" incrAT="25" incrHP="17">
+        <Feature type="格挡" level="2" unlock="0" />
+        <Feature type="狂热" level="7" unlock="5" />
+        <Feature type="回春" level="2" unlock="10" />
+    </Card>
+    <Card name="山羊人萨满" race="蛮荒" speed="4" star="3" cost="9" at="125" hp="650" incrAT="19" incrHP="39">
+        <Feature type="火墙" level="2" unlock="0" />
+        <Feature type="削弱" level="3" unlock="5" />
+        <Feature type="蛮荒之力" level="4" unlock="10" />
+    </Card>
+    <Card name="犀牛人武士" race="蛮荒" speed="4" star="3" cost="9" at="205" hp="730" incrAT="28" incrHP="9">
+        <Feature type="群体削弱" level="3" unlock="0" summon="true" />
+        <Feature type="嗜血" level="4" unlock="5" />
+        <Feature type="暴击" level="7" unlock="10" />
+    </Card>
+    <Card name="哥布林术士" race="蛮荒" speed="2" star="3" cost="8" at="115" hp="550" incrAT="23" incrHP="25">
+        <Feature type="火球" level="3" unlock="0" />
+        <Feature type="自爆" level="3" unlock="5" />
+        <Feature type="烈火焚神" level="6" unlock="10" />
+    </Card>
+    <Card name="食人魔术士" race="蛮荒" speed="4" star="2" cost="9" at="175" hp="580" incrAT="25" incrHP="20">
+        <Feature type="诅咒" level="6" unlock="0" summon="true" />
+        <Feature type="火球" level="5" unlock="5" />
+        <Feature type="甘霖" level="6" unlock="10" />
+    </Card>
+    <Card name="食人魔战士" race="蛮荒" speed="2" star="3" cost="10" at="185" hp="630" incrAT="27" incrHP="17">
+        <Feature type="嗜血" level="2" unlock="0" />
+        <Feature type="回春" level="3" unlock="5" />
+        <Feature type="格挡" level="7" unlock="10" />
+    </Card>
+    <Card name="牛头人卫士" race="蛮荒" speed="6" star="3" cost="8" at="190" hp="690" incrAT="18" incrHP="41">
+        <Feature type="暴击" level="2" unlock="0" />
+        <Feature type="群体削弱" level="6" unlock="5" death="true" />
+        <Feature type="蛮荒守护" level="4" unlock="10" />
+    </Card>
+    <Card name="蝎尾狮" race="蛮荒" speed="4" star="3" cost="11" at="180" hp="615" incrAT="30" incrHP="20">
+        <Feature type="暗杀" level="3" unlock="0" />
+        <Feature type="毒液" level="6" unlock="5" />
+        <Feature type="背刺" level="5" unlock="10" />
+    </Card>
+    <Card name="沙漠吞虫" race="蛮荒" speed="6" star="3" cost="9" at="200" hp="700" incrAT="20" incrHP="20">
+        <Feature type="背刺" level="3" unlock="0" />
+        <Feature type="暗杀" level="6" unlock="5" />
+        <Feature type="嗜血" level="7" unlock="10" />
+    </Card>
+    <Card name="火象人卫士" race="蛮荒" speed="4" star="3" cost="9" at="150" hp="800" incrAT="18" incrHP="40">
+        <Feature type="格挡" level="3" unlock="0" />
+        <Feature type="燃烧" level="4" unlock="5" />
+        <Feature type="蛮荒守护" level="5" unlock="10" />
+    </Card>
+    <Card name="火象人萨满" race="蛮荒" speed="4" star="3" cost="10" at="220" hp="750" incrAT="10" incrHP="40">
+        <Feature type="烈火焚神" level="3" unlock="0" death="true" />
+        <Feature type="狂热" level="4" unlock="5" />
+        <Feature type="嗜血" level="6" unlock="10" />
+    </Card>
+    <Card name="蛮鱼人" race="蛮荒" speed="4" star="3" cost="10" at="190" hp="650" incrAT="11" incrHP="40">
+        <Feature type="穿刺" level="4" unlock="0" />
+        <Feature type="嗜血" level="4" unlock="5" />
+        <Feature type="吸血" level="6" unlock="10" />
+    </Card>
+    <Card name="圣诞麋鹿" race="蛮荒" speed="2" star="3" cost="11" at="210" hp="640" incrAT="20" incrHP="27">
+        <Feature type="格挡" level="5" unlock="0" />
+        <Feature type="不动" level="0" unlock="5" />
+        <Feature type="暴击" level="8" unlock="10" />
+    </Card>
+    <Card name="荒原猎手" race="蛮荒" speed="4" star="3" cost="11" at="180" hp="790" incrAT="25" incrHP="34">
+        <Feature type="暗杀" level="6" unlock="0" />
+        <Feature type="格挡" level="7" unlock="5" />
+        <Feature type="连锁攻击" level="6" unlock="10" />
+    </Card>
+    <Card name="兽人将领" race="蛮荒" speed="6" star="4" cost="11" at="245" hp="840" incrAT="20" incrHP="52">
+        <Feature type="反击" level="7" unlock="0" />
+        <Feature type="暗杀" level="7" unlock="5" />
+        <Feature type="蛮荒之力" level="6" unlock="10" />
+    </Card>
+    <Card name="狂暴狼人酋长" race="蛮荒" speed="4" star="4" cost="13" at="250" hp="890" incrAT="22" incrHP="45">
+        <Feature type="暗杀" level="6" unlock="0" />
+        <Feature type="法力反射" level="4" unlock="5" />
+        <Feature type="嗜血" level="6" unlock="10" />
+    </Card>
+    <Card name="牛头人酋长" race="蛮荒" speed="4" star="4" cost="12" at="255" hp="850" incrAT="30" incrHP="20">
+        <Feature type="暴击" level="5" unlock="0" />
+        <Feature type="格挡" level="7" unlock="5" />
+        <Feature type="蛮荒守护" level="5" unlock="10" />
+    </Card>
+    <Card name="独眼巨人" race="蛮荒" speed="6" star="4" cost="14" at="250" hp="980" incrAT="10" incrHP="20">
+        <Feature type="群体削弱" level="5" unlock="0" summon="true" />
+        <Feature type="横扫" level="0" unlock="5" />
+        <Feature type="摧毁" level="0" unlock="10" summon="true" />
+    </Card>
+    <Card name="巨象人武士" race="蛮荒" speed="6" star="4" cost="13" at="285" hp="1230" incrAT="21" incrHP="47">
+        <Feature type="格挡" level="2" unlock="0" />
+        <Feature type="盾刺" level="6" unlock="5" />
+        <Feature type="裂伤" level="0" unlock="10" />
+    </Card>
+    <Card name="战斗猛犸象" race="蛮荒" speed="6" star="4" cost="12" at="245" hp="900" incrAT="25" incrHP="32">
+        <Feature type="穿刺" level="5" unlock="0" />
+        <Feature type="狂热" level="5" unlock="5" />
+        <Feature type="冰甲" level="7" unlock="10" />
+    </Card>
+    <Card name="暗影巨蟒" race="蛮荒" speed="6" star="4" cost="13" at="260" hp="960" incrAT="10" incrHP="40">
+        <Feature type="嗜血" level="3" unlock="0" />
+        <Feature type="蛮荒之力" level="5" unlock="5" />
+        <Feature type="反击" level="10" unlock="10" />
+    </Card>
+    <Card name="荒野狂虫" race="蛮荒" speed="6" star="4" cost="11" at="260" hp="800" incrAT="19" incrHP="25">
+        <Feature type="盾刺" level="3" unlock="0" />
+        <Feature type="回春" level="4" unlock="5" />
+        <Feature type="狂热" level="7" unlock="10" />
+    </Card>
+    <Card name="火象人领主" race="蛮荒" speed="4" star="4" cost="13" at="255" hp="900" incrAT="26" incrHP="34">
+        <Feature type="烈焰风暴" level="6" unlock="0" />
+        <Feature type="吸血" level="6" unlock="5" />
+        <Feature type="蛮荒之力" level="7" unlock="10" />
+    </Card>
+    <Card name="洪荒巨熊" race="蛮荒" speed="6" star="4" cost="13" at="280" hp="1100" incrAT="20" incrHP="33">
+        <Feature type="暴击" level="5" unlock="0" />
+        <Feature type="狂热" level="6" unlock="5" />
+        <Feature type="回春" level="7" unlock="10" />
+    </Card>
+    <Card name="震源岩蟾" race="蛮荒" speed="6" star="4" cost="14" at="350" hp="1160" incrAT="27" incrHP="30">
+        <Feature type="不动" level="0" unlock="0" />
+        <Feature type="暗杀" level="7" unlock="5" />
+        <Feature type="横扫" level="0" unlock="10" />
+    </Card>
+    <Card name="熊人武士" race="蛮荒" speed="4" star="4" cost="13" at="260" hp="900" incrAT="27" incrHP="20">
+        <Feature type="狂热" level="5" unlock="0" />
+        <Feature type="战意" level="8" unlock="5" />
+        <Feature type="吸血" level="8" unlock="10" />
+    </Card>
+    <Card name="地行龙骑士" race="蛮荒" speed="4" star="4" cost="12" at="250" hp="1200" incrAT="24" incrHP="28">
+        <Feature type="闪避" level="4" unlock="0" />
+        <Feature type="魔甲" level="8" unlock="5" />
+        <Feature type="裂伤" level="0" unlock="10" />
+    </Card>
+    <Card name="雷兽" race="蛮荒" speed="6" star="5" cost="14" at="340" hp="1100" incrAT="20" incrHP="45">
+        <Feature type="雷暴" level="7" unlock="0" />
+        <Feature type="盾刺" level="8" unlock="5" />
+        <Feature type="免疫" level="0" unlock="10" />
+    </Card>
+    <Card name="九头妖蛇" race="蛮荒" speed="4" star="5" cost="15" at="335" hp="1330" incrAT="33" incrHP="25">
+        <Feature type="献祭" level="8" unlock="0" />
+        <Feature type="毒雾" level="8" unlock="5" />
+        <Feature type="回春" level="10" unlock="10" />
+    </Card>
+    <Card name="远古蝎皇" race="蛮荒" speed="6" star="5" cost="15" at="360" hp="1150" incrAT="28" incrHP="35">
+        <Feature type="瘟疫" level="8" unlock="0" />
+        <Feature type="毒液" level="8" unlock="5" />
+        <Feature type="免疫" level="0" unlock="10" />
+    </Card>
+    <Card name="暴怒霸龙" race="蛮荒" speed="6" star="5" cost="17" at="280" hp="1600" incrAT="50" incrHP="24">
+        <Feature type="回春" level="10" unlock="0" />
+        <Feature type="透支" level="8" unlock="5" />
+        <Feature type="脱困" level="0" unlock="10" />
+    </Card>
+    <Card name="毒雾羽龙" race="蛮荒" speed="4" star="5" cost="17" at="325" hp="1370" incrAT="35" incrHP="39">
+        <Feature type="毒雾" level="8" unlock="0" />
+        <Feature type="不动" level="0" unlock="5" />
+        <Feature type="弱点攻击" level="0" unlock="10" />
+    </Card>
+    <Card name="羽翼化蛇" race="蛮荒" speed="4" star="5" cost="20" at="340" hp="1210" incrAT="50" incrHP="27">
+        <Feature type="连锁攻击" level="7" unlock="0" />
+        <Feature type="战意" level="7" unlock="5" />
+        <Feature type="转生" level="9" unlock="10" />
+    </Card>
 </Cards>

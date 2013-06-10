@@ -2,32 +2,33 @@ package cfvbaibai.cardfantasy.engine.feature;
 
 import java.util.List;
 
-import cfvbaibai.cardfantasy.data.Feature;
 import cfvbaibai.cardfantasy.engine.CardInfo;
+import cfvbaibai.cardfantasy.engine.FeatureEffect;
+import cfvbaibai.cardfantasy.engine.FeatureEffectType;
+import cfvbaibai.cardfantasy.engine.FeatureInfo;
 import cfvbaibai.cardfantasy.engine.FeatureResolver;
 import cfvbaibai.cardfantasy.engine.GameUI;
 import cfvbaibai.cardfantasy.engine.HeroDieSignal;
 import cfvbaibai.cardfantasy.engine.OnAttackBlockingResult;
 import cfvbaibai.cardfantasy.engine.Player;
 
-public final class FireMagicFeature {
-    public static void apply(Feature feature, FeatureResolver resolver, CardInfo attacker, Player defender, int victimCount) throws HeroDieSignal {
-        int damage = resolver.getStage().getRandomizer().next(feature.getImpact(), feature.getImpact() * 2 + 1);
-        List <CardInfo> victims = defender.getField().pickRandom(victimCount, true);
+public final class PlagueFeature {
+    public static void apply(FeatureInfo feature, FeatureResolver resolver, CardInfo attacker, Player defenderHero) throws HeroDieSignal {
+        int damage = feature.getImpact();
         GameUI ui = resolver.getStage().getUI();
+        List<CardInfo> victims = defenderHero.getField().getAliveCards();
         ui.useSkill(attacker, victims, feature);
+
         for (CardInfo victim : victims) {
             OnAttackBlockingResult result = resolver.resolveAttackBlockingFeature(attacker, victim, feature);
             if (!result.isAttackable()) {
-                continue;
+                return;
             }
-            damage = result.getDamage(); 
+
             ui.attackCard(attacker, victim, feature, damage);
-            boolean cardDead = resolver.applyDamage(victim, damage).cardDead;
-            resolver.resolveCounterAttackFeature(attacker, victim, feature);
-            if (cardDead) {
-                resolver.resolveDeathFeature(attacker, victim, feature);
-            }
+            resolver.applyDamage(victim, damage);
+            ui.adjustAT(attacker, victim, -damage, feature);
+            victim.addEffect(new FeatureEffect(FeatureEffectType.ATTACK_CHANGE, feature, -damage, true));
         }
     }
 }

@@ -6,9 +6,10 @@ import cfvbaibai.cardfantasy.data.Feature;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.FeatureResolver;
 import cfvbaibai.cardfantasy.engine.GameUI;
+import cfvbaibai.cardfantasy.engine.HeroDieSignal;
 
 public final class SpikeFeature {
-    public static void apply(Feature feature, FeatureResolver resolver, CardInfo attacker, CardInfo defender) {
+    public static void apply(Feature feature, FeatureResolver resolver, CardInfo attacker, CardInfo defender) throws HeroDieSignal {
         if (attacker == null) {
             return;
         }

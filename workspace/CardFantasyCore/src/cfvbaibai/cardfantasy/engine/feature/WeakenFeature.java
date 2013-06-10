@@ -8,6 +8,7 @@ import cfvbaibai.cardfantasy.engine.FeatureEffect;
 import cfvbaibai.cardfantasy.engine.FeatureEffectType;
 import cfvbaibai.cardfantasy.engine.FeatureInfo;
 import cfvbaibai.cardfantasy.engine.FeatureResolver;
+import cfvbaibai.cardfantasy.engine.HeroDieSignal;
 
 /**
  * Decrease defender 10 * level AT if normal attack causes damage.
@@ -19,7 +20,7 @@ import cfvbaibai.cardfantasy.engine.FeatureResolver;
  */
 public final class WeakenFeature {
     public static void apply(FeatureResolver resolver, FeatureInfo feature, CardInfo attacker, CardInfo defender,
-            int normalAttackDamage) {
+            int normalAttackDamage) throws HeroDieSignal {
         if (normalAttackDamage <= 0 || defender == null) {
             return;
         }
@@ -30,7 +31,7 @@ public final class WeakenFeature {
     }
 
     public static void weakenCard(FeatureResolver resolver, FeatureInfo feature, CardInfo attacker,
-            List<CardInfo> defenders) {
+            List<CardInfo> defenders) throws HeroDieSignal {
         for (CardInfo defender : defenders) {
             if (defender == null) {
                 continue;
@@ -42,7 +43,7 @@ public final class WeakenFeature {
             if (attackWeakened > defender.getAT()) {
                 attackWeakened = defender.getAT();
             }
-            resolver.getStage().getUI().useSkill(attacker, defender, feature);
+
             resolver.getStage().getUI().adjustAT(attacker, defender, -attackWeakened, feature);
             List<FeatureEffect> effects = defender.getEffects();
             for (FeatureEffect effect : effects) {

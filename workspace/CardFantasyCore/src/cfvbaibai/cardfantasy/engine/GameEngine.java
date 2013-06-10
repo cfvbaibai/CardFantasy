@@ -77,7 +77,7 @@ public class GameEngine {
         return this.getActivePlayer() == player ? this.getInactivePlayer() : this.getActivePlayer();
     }
 
-    private Phase summonCards() {
+    private Phase summonCards() throws HeroDieSignal {
         Player player = this.getActivePlayer();
         List<CardInfo> summonedCards = new ArrayList<CardInfo>();
         for (CardInfo card : player.getHand().toList()) {
