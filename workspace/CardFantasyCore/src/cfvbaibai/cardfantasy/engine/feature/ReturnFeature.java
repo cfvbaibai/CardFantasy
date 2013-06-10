@@ -25,7 +25,9 @@ public final class ReturnFeature {
         if (expelledCard != defender) {
             throw new CardFantasyRuntimeException("expelledCard != defender");
         }
+        
         ui.returnCard(attacker, defender, feature);
         defender.getOwner().getDeck().addCard(defender);
+        resolver.resolveLeaveFeature(defender, feature);
     }
 }

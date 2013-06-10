@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CardData {
-    private int id;
     private String name;
     private Race race;
     private int summonSpeed;
@@ -22,14 +21,6 @@ public class CardData {
         this.features = new ArrayList<Feature>();
         // TODO: Apply real growth
         this.growth = new Growth(100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1100);
-    }
-    
-    public int getId() {
-        return this.id;
-    }
-    
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getName() {

@@ -42,6 +42,7 @@ public final class WeakenFeature {
             if (attackWeakened > defender.getAT()) {
                 attackWeakened = defender.getAT();
             }
+            resolver.getStage().getUI().useSkill(attacker, defender, feature);
             resolver.getStage().getUI().adjustAT(attacker, defender, -attackWeakened, feature);
             List<FeatureEffect> effects = defender.getEffects();
             for (FeatureEffect effect : effects) {

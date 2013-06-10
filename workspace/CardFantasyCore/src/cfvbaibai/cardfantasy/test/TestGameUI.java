@@ -359,4 +359,20 @@ public class TestGameUI extends GameUI {
         sayF("%s's %s is disabled by %s's %s.", defender.getShortDesc(true), blockFeature.getShortDesc(),
                 attacker.getShortDesc(true), attackFeature.getShortDesc());
     }
+
+    @Override
+    public void confused(CardInfo card) {
+        sayF("%s is in status %s and attacks own hero!", card.getShortDesc(true), card.getStatus().getShortDesc());
+        this.attackHero(card, card.getOwner(), null, card.getAT());
+    }
+
+    @Override
+    public void roll100(int dice, int rate) {
+        sayF("Roll dice for %d%%: %d. %s!", rate, dice, dice < rate ? "Bingo" : "Miss");
+    }
+
+    @Override
+    public void useSkill(CardInfo attacker, Feature feature) {
+        sayF("%s uses %s", attacker.getShortDesc(true), feature.getShortDesc());
+    }
 }

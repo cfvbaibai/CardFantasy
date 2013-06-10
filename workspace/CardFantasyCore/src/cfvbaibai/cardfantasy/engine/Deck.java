@@ -8,9 +8,9 @@ import cfvbaibai.cardfantasy.Randomizer;
 
 public class Deck extends CardPile {
 
-    public Deck(Collection <CardInfo> cards) {
+    public Deck(Collection <CardInfo> cards, Randomizer random) {
         List <CardInfo> cloned = new ArrayList<CardInfo>(cards);
-        Randomizer.shuffle(cloned);
+        random.shuffle(cloned);
         this.getCards().addAll(cloned);
     }
     

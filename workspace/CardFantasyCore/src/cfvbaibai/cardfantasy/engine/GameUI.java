@@ -111,4 +111,10 @@ public abstract class GameUI {
     public abstract void cardToGrave(Player player, CardInfo card);
 
     public abstract void disableBlock(CardInfo attacker, CardInfo defender, Feature attackFeature, Feature blockFeature);
+
+    public abstract void confused(CardInfo card);
+
+    public abstract void roll100(int dice, int rate);
+
+    public abstract void useSkill(CardInfo attacker, Feature feature);
 }

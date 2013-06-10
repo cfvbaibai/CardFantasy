@@ -12,6 +12,7 @@ public final class BackStabFeature {
     public static void apply(FeatureResolver resolver, FeatureInfo feature, CardInfo attacker) {
         int adjAT = feature.getImpact();
         if (attacker.isFirstRound()) {
+            resolver.getStage().getUI().useSkill(attacker, feature);
             resolver.getStage().getUI().adjustAT(attacker, attacker, adjAT, feature);
             attacker.addEffect(new FeatureEffect(FeatureEffectType.ATTACK_CHANGE, feature, adjAT, false));
         }

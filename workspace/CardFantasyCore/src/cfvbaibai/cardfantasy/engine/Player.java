@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import cfvbaibai.cardfantasy.Randomizer;
 import cfvbaibai.cardfantasy.data.Card;
 import cfvbaibai.cardfantasy.data.PlayerInfo;
 
@@ -17,7 +18,7 @@ public class Player {
     
     public Player(PlayerInfo playerInfo, StageInfo stage) {
         this.playerInfo = playerInfo;
-        this.deck = prepareDeck();
+        this.deck = prepareDeck(stage.getRandomizer());
         this.hand = new Hand(stage.getRule());
         this.grave = new Grave();
         this.field = new Field(this);
@@ -63,13 +64,13 @@ public class Player {
         }
     }
     
-    private Deck prepareDeck() {
+    private Deck prepareDeck(Randomizer randomizer) {
         Collection <Card> cards = this.getPlayerInfo().getCards();
         List<CardInfo> cardInfos = new ArrayList<CardInfo>();
         for (Card card : cards) {
             cardInfos.add(new CardInfo(card, this));
         }
-        return new Deck(cardInfos);
+        return new Deck(cardInfos, randomizer);
     }
 
     public String getShortDesc() {

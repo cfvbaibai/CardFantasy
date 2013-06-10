@@ -13,6 +13,7 @@ public final class RacialAttackFeature {
     public static void apply(FeatureResolver resolver, FeatureInfo feature, CardInfo attacker, CardInfo defender, Race targetRace) {
         if (defender.getRace() == targetRace) {
             int adjAT = (int) (attacker.getOriginalAT() * feature.getImpact() / 100);
+            resolver.getStage().getUI().useSkill(attacker, feature);
             resolver.getStage().getUI().adjustAT(attacker, attacker, adjAT, feature);
             attacker.addEffect(new FeatureEffect(FeatureEffectType.ATTACK_CHANGE, feature, adjAT, false));
         }

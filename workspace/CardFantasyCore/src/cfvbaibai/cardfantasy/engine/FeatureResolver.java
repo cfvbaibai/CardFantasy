@@ -12,7 +12,9 @@ import cfvbaibai.cardfantasy.engine.feature.BackStabFeature;
 import cfvbaibai.cardfantasy.engine.feature.BlockFeature;
 import cfvbaibai.cardfantasy.engine.feature.BloodThirstyFeature;
 import cfvbaibai.cardfantasy.engine.feature.BurningFeature;
+import cfvbaibai.cardfantasy.engine.feature.BurningFlameFeature;
 import cfvbaibai.cardfantasy.engine.feature.ChainAttackFeature;
+import cfvbaibai.cardfantasy.engine.feature.ConfusionFeature;
 import cfvbaibai.cardfantasy.engine.feature.CounterAttackFeature;
 import cfvbaibai.cardfantasy.engine.feature.CounterMagicFeature;
 import cfvbaibai.cardfantasy.engine.feature.CriticalAttackFeature;
@@ -22,7 +24,6 @@ import cfvbaibai.cardfantasy.engine.feature.ExplodeFeature;
 import cfvbaibai.cardfantasy.engine.feature.FireMagicFeature;
 import cfvbaibai.cardfantasy.engine.feature.GuardFeature;
 import cfvbaibai.cardfantasy.engine.feature.HealFeature;
-import cfvbaibai.cardfantasy.engine.feature.RacialAttackFeature;
 import cfvbaibai.cardfantasy.engine.feature.IceArmorFeature;
 import cfvbaibai.cardfantasy.engine.feature.IceMagicFeature;
 import cfvbaibai.cardfantasy.engine.feature.ImmobilityFeature;
@@ -34,15 +35,18 @@ import cfvbaibai.cardfantasy.engine.feature.PenetrationFeature;
 import cfvbaibai.cardfantasy.engine.feature.PrayFeature;
 import cfvbaibai.cardfantasy.engine.feature.PursuitFeature;
 import cfvbaibai.cardfantasy.engine.feature.RaceBuffFeature;
+import cfvbaibai.cardfantasy.engine.feature.RacialAttackFeature;
 import cfvbaibai.cardfantasy.engine.feature.RainfallFeature;
+import cfvbaibai.cardfantasy.engine.feature.ReincarnationFeature;
 import cfvbaibai.cardfantasy.engine.feature.RejuvenateFeature;
-import cfvbaibai.cardfantasy.engine.feature.ResurrectFeature;
+import cfvbaibai.cardfantasy.engine.feature.ResurrectionFeature;
 import cfvbaibai.cardfantasy.engine.feature.ReturnFeature;
 import cfvbaibai.cardfantasy.engine.feature.ReviveFeature;
 import cfvbaibai.cardfantasy.engine.feature.SnipeFeature;
 import cfvbaibai.cardfantasy.engine.feature.SpikeFeature;
 import cfvbaibai.cardfantasy.engine.feature.TransportFeature;
 import cfvbaibai.cardfantasy.engine.feature.TrapFeature;
+import cfvbaibai.cardfantasy.engine.feature.WarthFeature;
 import cfvbaibai.cardfantasy.engine.feature.WeakPointAttackFeature;
 import cfvbaibai.cardfantasy.engine.feature.WeakenAllFeature;
 import cfvbaibai.cardfantasy.engine.feature.WeakenFeature;
@@ -116,7 +120,7 @@ public class FeatureResolver {
             } else if (feature.getType() == FeatureType.ÏİÚå) {
                 TrapFeature.apply(feature, this, attacker, defender);
             } else if (feature.getType() == FeatureType.¾Ñ»÷) {
-                SnipeFeature.apply(feature, this, attacker, defender);
+                SnipeFeature.apply(feature, this, attacker, defender, 1);
             } else if (feature.getType() == FeatureType.ÖÎÁÆ) {
                 HealFeature.apply(feature, this, attacker);
             } else if (feature.getType() == FeatureType.¸ÊÁØ) {
@@ -129,6 +133,14 @@ public class FeatureResolver {
                 BackStabFeature.apply(this, feature, attacker);
             } else if (feature.getType() == FeatureType.ÈºÌåÏ÷Èõ) {
                 WeakenAllFeature.apply(this, feature, attacker, defender);
+            } else if (feature.getType() == FeatureType.»Ø»ê) {
+                ResurrectionFeature.apply(this, feature, attacker);
+            } else if (feature.getType() == FeatureType.¶şÖØ¾Ñ»÷) {
+                SnipeFeature.apply(feature, this, attacker, defender, 2);
+            } else if (feature.getType() == FeatureType.ÃÔ»ê) {
+                ConfusionFeature.apply(feature, this, attacker, defender, 1);
+            } else if (feature.getType() == FeatureType.ÁÒ»ğ·ÙÉñ) {
+                BurningFlameFeature.apply(feature, this, attacker, defender);
             }
         }
     }
@@ -239,18 +251,29 @@ public class FeatureResolver {
         return result;
     }
 
+    /**
+     * 
+     * @param attacker
+     * @param defender
+     * @param feature
+     * @return Whether the dead card is revived.
+     */
     public void resolveDeathFeature(CardInfo attacker, CardInfo defender, Feature feature) {
+        if (defender.hasDeadOnce()) {
+            return;
+        }
         resolveLeaveFeature(defender, feature);
         for (FeatureInfo deadCardFeature : defender.getAllUsableFeatures()) {
             if (deadCardFeature.getType() == FeatureType.×Ô±¬) {
                 ExplodeFeature.apply(this, deadCardFeature, attacker, defender);
             }
         }
-        for (FeatureInfo deadCardFeature : defender.getUsableDeathFeatures()) {
+        for (FeatureInfo deadCardFeature : defender.getAllUsableFeatures()) {
             if (deadCardFeature.getType() == FeatureType.×ªÉú) {
-                ResurrectFeature.apply(this, deadCardFeature, defender);
+                 ReincarnationFeature.apply(this, deadCardFeature, defender);
             }
         }
+        defender.setDeadOnce(true);
     }
 
     public void resolveLeaveFeature(CardInfo card, Feature feature) {
@@ -309,6 +332,28 @@ public class FeatureResolver {
                 PursuitFeature.apply(this, feature, attacker, defender);
             } else if (feature.getType() == FeatureType.ËÍ»¹) {
                 ReturnFeature.apply(this, feature, attacker, defender);
+            } else if (feature.getType() == FeatureType.Õ½Òâ) {
+                WarthFeature.apply(this, feature, attacker, defender);
+            }
+        }
+    }
+
+    public void removeTempEffects(CardInfo card) {
+        if (card == null) {
+            return;
+        }
+        for (FeatureEffect effect : card.getEffects()) {
+            FeatureType type = effect.getCause().getType();
+            if (type == FeatureType.Ê¥¹â || type == FeatureType.Òªº¦) {
+                RacialAttackFeature.remove(this, effect.getCause(), card);
+            } else if (type == FeatureType.±©»÷) {
+                CriticalAttackFeature.remove(this, effect.getCause(), card);
+            } else if (type == FeatureType.Çî×·ÃÍ´ò) {
+                PursuitFeature.remove(this, effect.getCause(), card);
+            } else if (type == FeatureType.±³´Ì) {
+                BackStabFeature.remove(this, effect.getCause(), card);
+            } else if (type == FeatureType.Õ½Òâ) {
+                WarthFeature.remove(this, effect.getCause(), card);
             }
         }
     }
@@ -328,6 +373,9 @@ public class FeatureResolver {
     }
 
     public void cardDead(CardInfo deadCard) {
+        if (deadCard.hasDeadOnce()) {
+            return;
+        }
         this.stage.getUI().cardDead(deadCard);
         Player owner = deadCard.getOwner();
         Field field = owner.getField();
@@ -367,24 +415,6 @@ public class FeatureResolver {
             }
         }
         return false;
-    }
-
-    public void removeTempEffects(CardInfo card) {
-        if (card == null) {
-            return;
-        }
-        for (FeatureEffect effect : card.getEffects()) {
-            FeatureType type = effect.getCause().getType();
-            if (type == FeatureType.Ê¥¹â) {
-                RacialAttackFeature.remove(this, effect.getCause(), card);
-            } else if (type == FeatureType.±©»÷) {
-                CriticalAttackFeature.remove(this, effect.getCause(), card);
-            } else if (type == FeatureType.Çî×·ÃÍ´ò) {
-                PursuitFeature.remove(this, effect.getCause(), card);
-            } else if (type == FeatureType.±³´Ì) {
-                BackStabFeature.remove(this, effect.getCause(), card);
-            }
-        }
     }
 
     public void resolveCardRoundEndingFeature(CardInfo card) {

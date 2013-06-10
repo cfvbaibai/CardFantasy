@@ -7,30 +7,23 @@ import cfvbaibai.cardfantasy.engine.CardStatusItem;
 import cfvbaibai.cardfantasy.engine.FeatureInfo;
 import cfvbaibai.cardfantasy.engine.FeatureResolver;
 import cfvbaibai.cardfantasy.engine.GameUI;
+import cfvbaibai.cardfantasy.engine.OnAttackBlockingResult;
 import cfvbaibai.cardfantasy.engine.Player;
 
-/**
- * Trap 1*level enemy card at 65% probability.
- * 
- * Can be blocked by Immue
- * @author °×°×
- *
- */
-public final class TrapFeature {
+public final class BurningFlameFeature {
     public static void apply(FeatureInfo feature, FeatureResolver resolver, CardInfo attacker, Player defender) {
-        int targetCount = feature.getImpact();
-        List <CardInfo> victims = defender.getField().pickRandom(targetCount, true);
+        int damage = feature.getImpact();
+        List<CardInfo> victims = defender.getField().pickRandom(-1, true);
         GameUI ui = resolver.getStage().getUI();
         ui.useSkill(attacker, victims, feature);
         for (CardInfo victim : victims) {
-            if (!resolver.resolveAttackBlockingFeature(attacker, victim, feature).isAttackable()) {
+            OnAttackBlockingResult result = resolver.resolveAttackBlockingFeature(attacker, victim, feature);
+            if (!result.isAttackable()) {
                 continue;
             }
-            if (resolver.getStage().getRandomizer().roll100(65)) {
-                CardStatusItem status = CardStatusItem.trapped(feature);
-                ui.addCardStatus(attacker, victim, feature, status);
-                victim.addStatus(status);
-            }
+            CardStatusItem status = CardStatusItem.burning(damage, feature);
+            ui.addCardStatus(attacker, victim, feature, status);
+            victim.addStatus(status);
         }
     }
 }

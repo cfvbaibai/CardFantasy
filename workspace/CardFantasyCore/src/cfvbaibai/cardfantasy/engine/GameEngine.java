@@ -91,6 +91,8 @@ public class GameEngine {
             this.stage.getResolver().summonCard(player, summonedCard);
         }
 
+        player.getField().compact();
+        this.getInactivePlayer().getField().compact();
         return Phase.Battle;
     }
 
@@ -145,6 +147,8 @@ public class GameEngine {
             if (status.containsStatus(CardStatusType.±˘∂≥) || status.containsStatus(CardStatusType.À¯∂®)
                     || status.containsStatus(CardStatusType.–È»ı)) {
                 ui.cannotAction(myField.getCard(i));
+            } else if (status.containsStatus(CardStatusType.√‘ªÛ)) {
+                ui.confused(myField.getCard(i));
             } else {
                 tryAttackEnemy(myField, opField, i);
             }
@@ -165,6 +169,7 @@ public class GameEngine {
             card.getStatus().remove(CardStatusType.À¯∂®);
             card.getStatus().remove(CardStatusType.÷–∂æ);
             card.getStatus().remove(CardStatusType.–È»ı);
+            card.getStatus().remove(CardStatusType.√‘ªÛ);
         }
 
         return Phase.End;
@@ -223,6 +228,10 @@ public class GameEngine {
                     for (CardInfo sweepDefender : sweepDefenders) {
                         ui.useSkill(myField.getCard(i), sweepDefender, feature);
                         resolver.attackCard(myField.getCard(i), sweepDefender);
+                        // Physical attack cannot proceed if attacker is killed by counter attack skills.
+                        if (myField.getCard(i) == null) {
+                            break;
+                        }
                     }
                 }
             }

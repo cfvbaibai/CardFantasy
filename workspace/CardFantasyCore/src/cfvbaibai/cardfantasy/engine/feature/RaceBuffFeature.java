@@ -23,6 +23,7 @@ public final class RaceBuffFeature {
                 continue;
             }
             if (ally.getEffectsCausedBy(feature).isEmpty()) {
+                resolver.getStage().getUI().useSkill(card, feature);
                 if (effectType == FeatureEffectType.ATTACK_CHANGE) {
                     resolver.getStage().getUI().adjustAT(card, ally, impact, feature);
                 } else if (effectType == FeatureEffectType.MAXHP_CHANGE) {

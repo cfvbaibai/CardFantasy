@@ -1,5 +1,8 @@
 package cfvbaibai.cardfantasy.engine;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
 
 public class Grave extends CardPile {
@@ -28,5 +31,28 @@ public class Grave extends CardPile {
             return this.getCards().get(0);
         }
     }
+    
+    public CardInfo pop() {
+        CardInfo card = getFirst();
+        if (card != null) {
+            this.removeCard(card);
+        }
+        return card;
+    }
+    
+    public List<CardInfo> pop(int count) {
+        List<CardInfo> cards = new ArrayList<CardInfo>();
+        for (int i = 0; i < count; ++i) {
+            CardInfo card = pop();
+            if (card == null) {
+                break;
+            }
+            cards.add(card);
+        }
+        return cards;
+    }
 
+    public boolean contains(CardInfo card) {
+        return this.getCards().contains(card);
+    }
 }

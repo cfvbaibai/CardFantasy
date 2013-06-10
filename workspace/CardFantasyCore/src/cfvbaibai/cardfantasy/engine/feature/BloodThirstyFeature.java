@@ -11,7 +11,7 @@ public final class BloodThirstyFeature {
         if (attacker == null || normalAttackDamage <= 0) {
             return;
         }
-        resolver.getStage().getUI().useSkill(attacker, attacker, feature);
+        resolver.getStage().getUI().useSkill(attacker, feature);
         int adjAT = feature.getImpact();
         resolver.getStage().getUI().adjustAT(attacker, attacker, adjAT, feature);
         attacker.addEffect(new FeatureEffect(FeatureEffectType.ATTACK_CHANGE, feature, adjAT, true));

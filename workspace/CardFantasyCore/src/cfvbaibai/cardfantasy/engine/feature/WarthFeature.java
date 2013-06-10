@@ -2,22 +2,24 @@ package cfvbaibai.cardfantasy.engine.feature;
 
 import java.util.List;
 
+import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
 import cfvbaibai.cardfantasy.engine.CardInfo;
-import cfvbaibai.cardfantasy.engine.CardStatus;
-import cfvbaibai.cardfantasy.engine.CardStatusType;
 import cfvbaibai.cardfantasy.engine.FeatureEffect;
 import cfvbaibai.cardfantasy.engine.FeatureEffectType;
 import cfvbaibai.cardfantasy.engine.FeatureInfo;
 import cfvbaibai.cardfantasy.engine.FeatureResolver;
+import cfvbaibai.cardfantasy.engine.GameUI;
 
-public final class PursuitFeature {
+public final class WarthFeature {
     public static void apply(FeatureResolver resolver, FeatureInfo feature, CardInfo attacker, CardInfo defender) {
-        CardStatus status = defender.getStatus();
-        if (status.containsStatus(CardStatusType.ÖÐ¶¾) || status.containsStatus(CardStatusType.±ù¶³) ||
-                status.containsStatus(CardStatusType.È¼ÉÕ) || status.containsStatus(CardStatusType.Âé±Ô)) {
-            int adjAT = (int) (attacker.getOriginalAT() * feature.getImpact() / 100);
-            resolver.getStage().getUI().useSkill(attacker, feature);
-            resolver.getStage().getUI().adjustAT(attacker, attacker, adjAT, feature);
+        if (attacker == null || attacker.isDead()) {
+            throw new CardFantasyRuntimeException("attacker is null or dead!");
+        }
+        int adjAT = feature.getImpact() * attacker.getOriginalAT() / 100;
+        GameUI ui = resolver.getStage().getUI();
+        if (attacker.getHP() < defender.getHP()) {
+            ui.useSkill(attacker, defender, feature);
+            ui.adjustAT(attacker, attacker, adjAT, feature);
             attacker.addEffect(new FeatureEffect(FeatureEffectType.ATTACK_CHANGE, feature, adjAT, false));
         }
     }

@@ -15,8 +15,8 @@ public final class SpikeFeature {
         int damage = feature.getImpact();
         GameUI ui = resolver.getStage().getUI();
         List<CardInfo> victims = resolver.getAdjacentCards(attacker);
+        ui.useSkill(defender, victims, feature);
         for (CardInfo victim : victims) {
-            ui.useSkill(defender, victim, feature);
             ui.attackCard(defender, victim, feature, damage);
             if (resolver.applyDamage(victim, damage).cardDead) {
                 resolver.resolveDeathFeature(defender, victim, feature);

@@ -59,6 +59,10 @@ public class CardStatusItem {
         return new CardStatusItem(CardStatusType.–È»ı, 0, cause);
     }
     
+    public static CardStatusItem confused(FeatureInfo cause) {
+        return new CardStatusItem(CardStatusType.√‘ªÛ, 0, cause);
+    }
+    
     public String getShortDesc() {
         StringBuffer sb = new StringBuffer();
         sb.append(getType().name());

@@ -1,383 +1,495 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Cards>
-    <Card id="1" name="城镇弓箭兵" race="王国" speed="2" star="1" cost="3" at="110" hp="370" incrAT="18" incrHP="8">
+    <Card name="城镇弓箭兵" race="王国" speed="2" star="1" cost="3" at="110" hp="370" incrAT="18" incrHP="8">
         <Feature type="狙击" level="4" unlock="5" />
         <Feature type="连环闪电" level="2" unlock="10" />
     </Card>
-    <Card id="2" name="城镇长矛兵" race="王国" speed="2" star="1" cost="4" at="95" hp="330" incrAT="18" incrHP="8">
+    <Card name="城镇长矛兵" race="王国" speed="2" star="1" cost="4" at="95" hp="330" incrAT="18" incrHP="8">
         <Feature type="穿刺" level="1" unlock="0" />
         <Feature type="圣光" level="3" unlock="5" />
         <Feature type="格挡" level="4" unlock="10" />
     </Card>
-    <Card id="3" name="城镇巡逻兵" race="王国" speed="2" star="1" cost="3" at="85" hp="300" incrAT="10" incrHP="36">
+    <Card name="城镇巡逻兵" race="王国" speed="2" star="1" cost="3" at="85" hp="300" incrAT="10" incrHP="36">
         <Feature type="圣光" level="2" unlock="5" />
         <Feature type="陷阱" level="1" unlock="10" />
     </Card>
-    <Card id="4" name="城镇突击兵" race="王国" speed="2" star="1" cost="5" at="105" hp="360" incrAT="15" incrHP="21">
+    <Card name="城镇突击兵" race="王国" speed="2" star="1" cost="5" at="105" hp="360" incrAT="15" incrHP="21">
         <Feature type="陷阱" level="1" unlock="5" />
         <Feature type="反击" level="4" unlock="10" />
     </Card>
-    <Card id="5" name="魔法小丑" race="王国" speed="2" star="1" cost="4" at="80" hp="285" incrAT="13" incrHP="27">
+    <Card name="魔法小丑" race="王国" speed="2" star="1" cost="4" at="80" hp="285" incrAT="13" incrHP="27">
         <Feature type="削弱" level="1" unlock="0" />
         <Feature type="火球" level="2" unlock="5" />
         <Feature type="冰弹" level="4" unlock="10" />
     </Card>
-    <Card id="6" name="攻城弩车手" race="王国" speed="4" star="2" cost="7" at="150" hp="500" incrAT="21" incrHP="19">
+    <Card name="攻城弩车手" race="王国" speed="4" star="2" cost="7" at="150" hp="500" incrAT="21" incrHP="19">
         <Feature type="穿刺" level="6" unlock="5" />
         <Feature type="暴击" level="5" unlock="10" />
     </Card>
-    <Card id="7" name="狙击箭弩兵" race="王国" speed="2" star="2" cost="7" at="110" hp="450" incrAT="19" incrHP="22">
+    <Card name="狙击箭弩兵" race="王国" speed="2" star="2" cost="7" at="110" hp="450" incrAT="19" incrHP="22">
         <Feature type="狙击" level="2" unlock="0" />
         <Feature type="削弱" level="3" unlock="5" />
         <Feature type="狙击" level="6" unlock="10" />
     </Card>
-    <Card id="8" name="轻甲盾卫兵" race="王国" speed="2" star="2" cost="6" at="80" hp="610" incrAT="9" incrHP="44">
+    <Card name="轻甲盾卫兵" race="王国" speed="2" star="2" cost="6" at="80" hp="610" incrAT="9" incrHP="44">
         <Feature type="格挡" level="3" unlock="0" />
         <Feature type="守护" level="0" unlock="5" />
         <Feature type="回春" level="6" unlock="10" />
     </Card>
-    <Card id="9" name="见习魔剑士" race="王国" speed="2" star="2" cost="6" at="155" hp="500" incrAT="21" incrHP="15">
+    <Card name="见习魔剑士" race="王国" speed="2" star="2" cost="6" at="155" hp="500" incrAT="21" incrHP="15">
         <Feature type="暴击" level="3" unlock="5" />
         <Feature type="连环闪电" level="2" unlock="10" />
     </Card>
-    <Card id="10" name="冲锋斩斧兵" race="王国" speed="4" star="2" cost="6" at="160" hp="520" incrAT="22" incrHP="15">
+    <Card name="冲锋斩斧兵" race="王国" speed="4" star="2" cost="6" at="160" hp="520" incrAT="22" incrHP="15">
         <Feature type="狂热" level="3" unlock="5" />
         <Feature type="横扫" level="0" unlock="10" />
     </Card>
-    <Card id="11" name="见习圣骑" race="王国" speed="2" star="2" cost="7" at="135" hp="500" incrAT="24" incrHP="9">
+    <Card name="见习圣骑" race="王国" speed="2" star="2" cost="7" at="135" hp="500" incrAT="24" incrHP="9">
         <Feature type="格挡" level="3" unlock="0" />
         <Feature type="圣光" level="4" unlock="5" />
         <Feature type="闪避" level="3" unlock="10" />
     </Card>
-    <Card id="12" name="牧师" race="王国" speed="4" star="2" cost="8" at="125" hp="460" incrAT="15" incrHP="36">
+    <Card name="牧师" race="王国" speed="4" star="2" cost="8" at="125" hp="460" incrAT="15" incrHP="36">
         <Feature type="治疗" level="3" unlock="0" />
         <Feature type="圣光" level="6" unlock="5" />
         <Feature type="甘霖" level="5" unlock="10" />
     </Card>
-    <Card id="13" name="圣光信仰者" race="王国" speed="2" star="2" cost="5" at="110" hp="400" incrAT="15" incrHP="34">
+    <Card name="圣光信仰者" race="王国" speed="2" star="2" cost="5" at="110" hp="400" incrAT="15" incrHP="34">
         <Feature type="祈祷" level="3" unlock="0" />
         <Feature type="圣光" level="4" unlock="5" />
         <Feature type="王国之力" level="3" unlock="10" />
     </Card>
-    <Card id="14" name="猎魔犬" race="王国" speed="2" star="2" cost="7" at="130" hp="450" incrAT="15" incrHP="20">
+    <Card name="猎魔犬" race="王国" speed="2" star="2" cost="7" at="130" hp="450" incrAT="15" incrHP="20">
         <Feature type="圣光" level="3" unlock="0" />
         <Feature type="暴击" level="3" unlock="5" />
         <Feature type="法力反射" level="4" unlock="10" />
     </Card>
-    <Card id="15" name="弩骑兵" race="王国" speed="4" star="2" cost="6" at="110" hp="520" incrAT="15" incrHP="20">
+    <Card name="弩骑兵" race="王国" speed="4" star="2" cost="6" at="110" hp="520" incrAT="15" incrHP="20">
         <Feature type="穿刺" level="3" unlock="0" />
         <Feature type="狙击" level="5" unlock="5" />
         <Feature type="闪避" level="3" unlock="10" />
     </Card>
-    <Card id="16" name="魔剑士" race="王国" speed="2" star="3" cost="9" at="125" hp="820" incrAT="10" incrHP="42">
+    <Card name="魔剑士" race="王国" speed="2" star="3" cost="9" at="125" hp="820" incrAT="10" incrHP="42">
         <Feature type="守护" level="0" unlock="0" />
         <Feature type="格挡" level="4" unlock="5" />
         <Feature type="魔甲" level="8" unlock="10" />
     </Card>
-    <Card id="17" name="重甲骑兵" race="王国" speed="4" star="3" cost="9" at="180" hp="620" incrAT="20" incrHP="25">
+    <Card name="重甲骑兵" race="王国" speed="4" star="3" cost="9" at="180" hp="620" incrAT="20" incrHP="25">
         <Feature type="暴击" level="2" unlock="0" />
         <Feature type="法力反射" level="2" unlock="5" />
         <Feature type="盾刺" level="5" unlock="10" />
     </Card>
-    <Card id="18" name="喷火装甲车手" race="王国" speed="4" star="3" cost="10" at="200" hp="780" incrAT="23" incrHP="25">
+    <Card name="喷火装甲车手" race="王国" speed="4" star="3" cost="10" at="200" hp="780" incrAT="23" incrHP="25">
         <Feature type="陷阱" level="1" unlock="0" summon="true" />
         <Feature type="格挡" level="5" unlock="5" />
         <Feature type="燃烧" level="7" unlock="10" />
     </Card>
-    <Card id="19" name="火焰乌鸦" race="王国" speed="2" star="3" cost="10" at="140" hp="620" incrAT="20" incrHP="37">
+    <Card name="火焰乌鸦" race="王国" speed="2" star="3" cost="10" at="140" hp="620" incrAT="20" incrHP="37">
         <Feature type="火球" level="2" unlock="0" />
         <Feature type="魔甲" level="4" unlock="5" />
         <Feature type="火墙" level="5" unlock="10" />
     </Card>
-    <Card id="20" name="狮鹫" race="王国" speed="4" star="3" cost="8" at="185" hp="650" incrAT="21" incrHP="30">
+    <Card name="狮鹫" race="王国" speed="4" star="3" cost="8" at="185" hp="650" incrAT="21" incrHP="30">
         <Feature type="圣光" level="3" unlock="0" />
         <Feature type="连环闪电" level="4" unlock="5" />
         <Feature type="王国之力" level="4" unlock="10" />
     </Card>
-    <Card id="21" name="魔导师" race="王国" speed="4" star="3" cost="8" at="135" hp="560" incrAT="24" incrHP="21">
+    <Card name="魔导师" race="王国" speed="4" star="3" cost="8" at="135" hp="560" incrAT="24" incrHP="21">
         <Feature type="火墙" level="2" unlock="0" />
         <Feature type="烈焰风暴" level="3" unlock="5" summon="true" />
         <Feature type="连环闪电" level="6" unlock="10" />
     </Card>
-    <Card id="22" name="魔法结晶体" race="王国" speed="4" star="3" cost="11" at="195" hp="650" incrAT="19" incrHP="30">
+    <Card name="魔法结晶体" race="王国" speed="4" star="3" cost="11" at="195" hp="650" incrAT="19" incrHP="30">
         <Feature type="雷暴" level="2" unlock="0" summon="true" />
         <Feature type="转生" level="4" unlock="5" />
         <Feature type="法力反射" level="3" unlock="10" />
     </Card>
-    <Card id="23" name="圣骑士" race="王国" speed="2" star="3" cost="11" at="175" hp="750" incrAT="22" incrHP="31">
+    <Card name="圣骑士" race="王国" speed="2" star="3" cost="11" at="175" hp="750" incrAT="22" incrHP="31">
         <Feature type="祈祷" level="5" unlock="0" />
         <Feature type="圣光" level="7" unlock="5" />
         <Feature type="王国守护" level="4" unlock="10" />
     </Card>
-    <Card id="24" name="暴雪召唤士" race="王国" speed="4" star="3" cost="8" at="130" hp="550" incrAT="16" incrHP="40">
+    <Card name="暴雪召唤士" race="王国" speed="4" star="3" cost="8" at="130" hp="550" incrAT="16" incrHP="40">
         <Feature type="霜冻新星" level="2" unlock="0" />
         <Feature type="暴风雪" level="4" unlock="5" summon="true" />
         <Feature type="削弱" level="4" unlock="10" />
     </Card>
-    <Card id="25" name="东方僧人" race="王国" speed="4" star="3" cost="9" at="170" hp="600" incrAT="30" incrHP="20">
+    <Card name="东方僧人" race="王国" speed="4" star="3" cost="9" at="170" hp="600" incrAT="30" incrHP="20">
         <Feature type="削弱" level="3" unlock="0" />
         <Feature type="法力反射" level="2" unlock="5" />
         <Feature type="圣光" level="5" unlock="10" />
     </Card>
-    <Card id="26" name="皇家雄狮" race="王国" speed="4" star="3" cost="9" at="190" hp="650" incrAT="26" incrHP="30">
+    <Card name="皇家雄狮" race="王国" speed="4" star="3" cost="9" at="190" hp="650" incrAT="26" incrHP="30">
         <Feature type="暴击" level="3" unlock="0" />
         <Feature type="反击" level="5" unlock="5" />
         <Feature type="裂伤" level="0" unlock="10" />
     </Card>
-    <Card id="27" name="海盗船长" race="王国" speed="4" star="3" cost="11" at="170" hp="540" incrAT="24" incrHP="32">
+    <Card name="海盗船长" race="王国" speed="4" star="3" cost="11" at="170" hp="540" incrAT="24" incrHP="32">
         <Feature type="暴击" level="2" unlock="0" />
         <Feature type="狙击" level="5" unlock="5" />
         <Feature type="横扫" level="0" unlock="10" />
     </Card>
-    <Card id="28" name="巨型电鳗" race="王国" speed="4" star="3" cost="10" at="210" hp="610" incrAT="25" incrHP="20">
+    <Card name="巨型电鳗" race="王国" speed="4" star="3" cost="10" at="210" hp="610" incrAT="25" incrHP="20">
         <Feature type="连环闪电" level="3" unlock="0" />
         <Feature type="穿刺" level="5" unlock="5" />
         <Feature type="冰弹" level="6" unlock="10" />
     </Card>
-    <Card id="29" name="光影魔术师" race="王国" speed="4" star="3" cost="10" at="150" hp="650" incrAT="24" incrHP="27">
+    <Card name="光影魔术师" race="王国" speed="4" star="3" cost="10" at="150" hp="650" incrAT="24" incrHP="27">
         <Feature type="反击" level="4" unlock="0" />
         <Feature type="甘霖" level="4" unlock="5" />
         <Feature type="穷追猛打" level="5" unlock="10" />
     </Card>
-    <Card id="29" name="圣堂武士" race="王国" speed="4" star="4" cost="13" at="280" hp="1040" incrAT="23" incrHP="37">
+    <Card name="圣堂武士" race="王国" speed="4" star="4" cost="13" at="280" hp="1040" incrAT="23" incrHP="37">
         <Feature type="狂热" level="7" unlock="0" />
         <Feature type="回春" level="6" unlock="5" />
         <Feature type="脱困" level="0" unlock="10" />
     </Card>
-    <Card id="30" name="皇家卫队将领" race="王国" speed="4" star="4" cost="12" at="235" hp="880" incrAT="28" incrHP="23">
+    <Card name="皇家卫队将领" race="王国" speed="4" star="4" cost="12" at="235" hp="880" incrAT="28" incrHP="23">
         <Feature type="格挡" level="7" unlock="0" />
         <Feature type="暴击" level="5" unlock="5" />
         <Feature type="王国之力" level="5" unlock="10" />
     </Card>
-    <Card id="31" name="大主教" race="王国" speed="4" star="4" cost="13" at="175" hp="800" incrAT="15" incrHP="66">
+    <Card name="大主教" race="王国" speed="4" star="4" cost="13" at="175" hp="800" incrAT="15" incrHP="66">
         <Feature type="祈祷" level="7" unlock="0" />
         <Feature type="甘霖" level="6" unlock="5" />
         <Feature type="王国守护" level="5" unlock="10" />
     </Card>
-    <Card id="32" name="秘银巨石像" race="王国" speed="6" star="4" cost="14" at="360" hp="1100" incrAT="30" incrHP="30">
+    <Card name="秘银巨石像" race="王国" speed="6" star="4" cost="14" at="360" hp="1100" incrAT="30" incrHP="30">
         <Feature type="不动" level="0" unlock="0" />
         <Feature type="圣光" level="6" unlock="5" />
         <Feature type="法力反射" level="6" unlock="10" />
     </Card>
-    <Card id="33" name="魔法协会长" race="王国" speed="6" star="4" cost="11" at="210" hp="790" incrAT="24" incrHP="37">
+    <Card name="魔法协会长" race="王国" speed="6" star="4" cost="11" at="210" hp="790" incrAT="24" incrHP="37">
         <Feature type="圣光" level="6" unlock="0" />
         <Feature type="火墙" level="5" unlock="5" />
         <Feature type="复活" level="0" unlock="10" />
     </Card>
-    <Card id="34" name="荣耀巨人" race="王国" speed="6" star="4" cost="13" at="290" hp="990" incrAT="18" incrHP="58">
+    <Card name="荣耀巨人" race="王国" speed="6" star="4" cost="13" at="290" hp="990" incrAT="18" incrHP="58">
         <Feature type="狂热" level="4" unlock="0" />
         <Feature type="法力反射" level="4" unlock="5" />
         <Feature type="回春" level="7" unlock="10" />
     </Card>
-    <Card id="35" name="大剑圣" race="王国" speed="4" star="4" cost="12" at="260" hp="815" incrAT="30" incrHP="18">
+    <Card name="大剑圣" race="王国" speed="4" star="4" cost="12" at="260" hp="815" incrAT="30" incrHP="18">
         <Feature type="暴击" level="4" unlock="0" />
         <Feature type="背刺" level="5" unlock="5" />
         <Feature type="闪避" level="8" unlock="10" />
     </Card>
-    <Card id="36" name="时空旅者" race="王国" speed="4" star="4" cost="11" at="220" hp="820" incrAT="12" incrHP="50">
+    <Card name="时空旅者" race="王国" speed="4" star="4" cost="11" at="220" hp="820" incrAT="12" incrHP="50">
         <Feature type="闪避" level="3" unlock="0" />
         <Feature type="送还" level="0" unlock="5" summon="true" />
         <Feature type="群体削弱" level="8" unlock="10" />
     </Card>
-    <Card id="37" name="狮鹫骑士" race="王国" speed="4" star="4" cost="13" at="240" hp="840" incrAT="22" incrHP="20">
+    <Card name="狮鹫骑士" race="王国" speed="4" star="4" cost="13" at="240" hp="840" incrAT="22" incrHP="20">
         <Feature type="魔甲" level="5" unlock="0" />
         <Feature type="王国之力" level="5" unlock="5" />
         <Feature type="火墙" level="8" unlock="10" />
     </Card>
-    <Card id="38" name="机械飞龙" race="王国" speed="4" star="4" cost="13" at="290" hp="900" incrAT="27" incrHP="35">
+    <Card name="机械飞龙" race="王国" speed="4" star="4" cost="13" at="290" hp="900" incrAT="27" incrHP="35">
         <Feature type="暴击" level="4" unlock="0" />
         <Feature type="不动" level="0" unlock="5" />
         <Feature type="王国守护" level="6" unlock="10" />
     </Card>
-    <Card id="39" name="钻石巨石像" race="王国" speed="6" star="4" cost="13" at="255" hp="780" incrAT="22" incrHP="27">
+    <Card name="钻石巨石像" race="王国" speed="6" star="4" cost="13" at="255" hp="780" incrAT="22" incrHP="27">
         <Feature type="圣光" level="6" unlock="0" />
         <Feature type="回春" level="7" unlock="5" />
         <Feature type="冰甲" level="3" unlock="10" />
     </Card>
-    <Card id="40" name="炼金机甲" race="王国" speed="6" star="4" cost="12" at="230" hp="1260" incrAT="20" incrHP="15">
+    <Card name="炼金机甲" race="王国" speed="6" star="4" cost="12" at="230" hp="1260" incrAT="20" incrHP="15">
         <Feature type="回春" level="5" unlock="0" />
         <Feature type="自爆" level="7" unlock="5" />
         <Feature type="透支" level="7" unlock="10" />
     </Card>
-    <Card id="41" name="降临天使" race="王国" speed="4" star="5" cost="15" at="365" hp="1800" incrAT="24" incrHP="24">
+    <Card name="降临天使" race="王国" speed="4" star="5" cost="15" at="365" hp="1800" incrAT="24" incrHP="24">
         <Feature type="魔甲" level="8" unlock="0" />
         <Feature type="送还" level="0" unlock="5" />
         <Feature type="甘霖" level="8" unlock="10" />
     </Card>
-    <Card id="42" name="光明之龙" race="王国" speed="6" star="5" cost="14" at="350" hp="1450" incrAT="28" incrHP="28">
+    <Card name="光明之龙" race="王国" speed="6" star="5" cost="14" at="350" hp="1450" incrAT="28" incrHP="28">
         <Feature type="闪避" level="5" unlock="0" />
         <Feature type="横扫" level="0" unlock="5" />
         <Feature type="免疫" level="0" unlock="10" />
     </Card>
-    <Card id="43" name="战神" race="王国" speed="4" star="5" cost="16" at="350" hp="1200" incrAT="40" incrHP="30">
+    <Card name="战神" race="王国" speed="4" star="5" cost="16" at="350" hp="1200" incrAT="40" incrHP="30">
         <Feature type="法力反射" level="7" unlock="0" />
         <Feature type="闪避" level="8" unlock="5" />
         <Feature type="嗜血" level="7" unlock="10" />
     </Card>
-    <Card id="44" name="圣诞老人" race="王国" speed="4" star="5" cost="16" at="290" hp="1300" incrAT="32" incrHP="24">
+    <Card name="圣诞老人" race="王国" speed="4" star="5" cost="16" at="290" hp="1300" incrAT="32" incrHP="24">
         <Feature type="本源守护" level="7" unlock="0" />
         <Feature type="冰甲" level="4" unlock="5" />
         <Feature type="本源之力" level="7" unlock="10" />
     </Card>
-    <Card id="45" name="纯洁圣女" race="王国" speed="4" star="5" cost="15" at="270" hp="1120" incrAT="32" incrHP="25">
+    <Card name="纯洁圣女" race="王国" speed="4" star="5" cost="15" at="270" hp="1120" incrAT="32" incrHP="25">
         <Feature type="背刺" level="6" unlock="0" />
         <Feature type="连锁攻击" level="4" unlock="5" />
         <Feature type="转生" level="7" unlock="10" />
     </Card>
-    <Card id="46" name="隐世先知" race="王国" speed="4" star="5" cost="15" at="300" hp="1350" incrAT="36" incrHP="25">
+    <Card name="隐世先知" race="王国" speed="4" star="5" cost="15" at="300" hp="1350" incrAT="36" incrHP="25">
         <Feature type="魔甲" level="7" unlock="0" />
         <Feature type="王国之力" level="7" unlock="5" />
         <Feature type="传送" level="0" unlock="10" summon="true" />
     </Card>
-    <Card id="47" name="东方禅师" race="王国" speed="4" star="4" cost="14" at="250" hp="920" incrAT="12" incrHP="45">
+    <Card name="东方禅师" race="王国" speed="4" star="4" cost="14" at="250" hp="920" incrAT="12" incrHP="45">
         <Feature type="不动" level="0" unlock="0" />
         <Feature type="法力反射" level="4" unlock="5" />
         <Feature type="甘霖" level="5" unlock="10" />
     </Card>
-    <Card id="48" name="皇家驯兽师" race="王国" speed="4" star="4" cost="14" at="290" hp="850" incrAT="32" incrHP="37">
+    <Card name="皇家驯兽师" race="王国" speed="4" star="4" cost="14" at="290" hp="850" incrAT="32" incrHP="37">
         <Feature type="背刺" level="6" unlock="0" />
         <Feature type="狂热" level="8" unlock="5" />
         <Feature type="弱点攻击" level="0" unlock="10" />
     </Card>
 
-    <Card id="49" name="人马巡逻者" race="森林" speed="2" star="1" cost="3" at="95" hp="310" incrAT="17" incrHP="11">
+    <Card name="人马巡逻者" race="森林" speed="2" star="1" cost="3" at="95" hp="310" incrAT="17" incrHP="11">
         <Feature type="要害" level="3" unlock="5" />
         <Feature type="反击" level="4" unlock="10" />
     </Card>
-    <Card id="50" name="森林蜂王" race="森林" speed="4" star="1" cost="5" at="100" hp="400" incrAT="16" incrHP="16">
+    <Card name="森林蜂王" race="森林" speed="4" star="1" cost="5" at="100" hp="400" incrAT="16" incrHP="16">
         <Feature type="格挡" level="3" unlock="5" />
         <Feature type="反击" level="4" unlock="10" />
     </Card>
-    <Card id="51" name="花仙子" race="森林" speed="2" star="1" cost="3" at="90" hp="270" incrAT="14" incrHP="22">
+    <Card name="花仙子" race="森林" speed="2" star="1" cost="3" at="90" hp="270" incrAT="14" incrHP="22">
         <Feature type="治疗" level="2" unlock="0" />
         <Feature type="治疗" level="3" unlock="5" />
         <Feature type="闪避" level="2" unlock="10" />
     </Card>
-    <Card id="52" name="森林狼" race="森林" speed="2" star="1" cost="3" at="110" hp="260" incrAT="26" incrHP="20">
+    <Card name="森林狼" race="森林" speed="2" star="1" cost="3" at="110" hp="260" incrAT="26" incrHP="20">
         <Feature type="要害" level="4" unlock="5" />
         <Feature type="嗜血" level="3" unlock="10" />
     </Card>
-    <Card id="53" name="蘑菇仙子" race="森林" speed="2" star="1" cost="4" at="85" hp="280" incrAT="12" incrHP="27">
+    <Card name="蘑菇仙子" race="森林" speed="2" star="1" cost="4" at="85" hp="280" incrAT="12" incrHP="27">
         <Feature type="回春" level="1" unlock="0" />
         <Feature type="冰弹" level="2" unlock="5" />
         <Feature type="闪避" level="1" unlock="10" />
     </Card>
-    <Card id="54" name="人马狙击者" race="森林" speed="2" star="2" cost="6" at="115" hp="400" incrAT="16" incrHP="30">
+    <Card name="人马狙击者" race="森林" speed="2" star="2" cost="6" at="115" hp="400" incrAT="16" incrHP="30">
         <Feature type="狙击" level="1" unlock="0" />
         <Feature type="回春" level="3" unlock="5" />
         <Feature type="背刺" level="4" unlock="10" />
     </Card>
-    <Card id="55" name="人马冲锋者" race="森林" speed="4" star="2" cost="7" at="140" hp="510" incrAT="17" incrHP="28">
+    <Card name="人马冲锋者" race="森林" speed="4" star="2" cost="7" at="140" hp="510" incrAT="17" incrHP="28">
         <Feature type="要害" level="4" unlock="0" />
         <Feature type="穿刺" level="5" unlock="5" />
         <Feature type="狙击" level="4" unlock="10" />
     </Card>
-    <Card id="56" name="小矮人驱逐者" race="森林" speed="4" star="2" cost="8" at="160" hp="530" incrAT="15" incrHP="35">
+    <Card name="小矮人驱逐者" race="森林" speed="4" star="2" cost="8" at="160" hp="530" incrAT="15" incrHP="35">
         <Feature type="格挡" level="4" unlock="5" />
         <Feature type="要害" level="6" unlock="10" />
     </Card>
-    <Card id="57" name="精灵狙击者" race="森林" speed="2" star="2" cost="5" at="105" hp="385" incrAT="24" incrHP="20">
+    <Card name="精灵狙击者" race="森林" speed="2" star="2" cost="5" at="105" hp="385" incrAT="24" incrHP="20">
         <Feature type="狙击" level="2" unlock="0" />
         <Feature type="要害" level="5" unlock="5" />
         <Feature type="狙击" level="5" unlock="10" />
     </Card>
-    <Card id="58" name="小矮人守护者" race="森林" speed="2" star="2" cost="5" at="125" hp="395" incrAT="17" incrHP="28">
+    <Card name="小矮人守护者" race="森林" speed="2" star="2" cost="5" at="125" hp="395" incrAT="17" incrHP="28">
         <Feature type="格挡" level="3" unlock="0" />
         <Feature type="要害" level="4" unlock="5" />
         <Feature type="闪避" level="3" unlock="10" />
     </Card>
-    <Card id="59" name="火炬树人" race="森林" speed="4" star="2" cost="7" at="110" hp="450" incrAT="16" incrHP="33">
+    <Card name="火炬树人" race="森林" speed="4" star="2" cost="7" at="110" hp="450" incrAT="16" incrHP="33">
         <Feature type="火球" level="2" unlock="0" />
         <Feature type="火球" level="4" unlock="5" />
         <Feature type="森林之力" level="3" unlock="10" />
     </Card>
-    <Card id="60" name="半鹿人勇者" race="森林" speed="4" star="2" cost="6" at="150" hp="580" incrAT="19" incrHP="20">
+    <Card name="半鹿人勇者" race="森林" speed="4" star="2" cost="6" at="150" hp="580" incrAT="19" incrHP="20">
         <Feature type="陷阱" level="1" unlock="5" />
         <Feature type="格挡" level="5" unlock="10" />
     </Card>
-    <Card id="61" name="女神侍者" race="森林" speed="2" star="2" cost="6" at="100" hp="390" incrAT="12" incrHP="42">
+    <Card name="女神侍者" race="森林" speed="2" star="2" cost="6" at="100" hp="390" incrAT="12" incrHP="42">
         <Feature type="冰弹" level="3" unlock="0" />
         <Feature type="甘霖" level="5" unlock="5" summon="true" />
         <Feature type="冰弹" level="7" unlock="10" />
     </Card>
-    <Card id="62" name="小矮人锻造者" race="森林" speed="4" star="2" cost="5" at="130" hp="450" incrAT="14" incrHP="32">
+    <Card name="小矮人锻造者" race="森林" speed="4" star="2" cost="5" at="130" hp="450" incrAT="14" incrHP="32">
         <Feature type="格挡" level="2" unlock="0" />
         <Feature type="陷阱" level="1" unlock="5" summon="true" />
         <Feature type="狂热" level="3" unlock="10" />
     </Card>
-    <Card id="63" name="秘纹豹" race="森林" speed="2" star="2" cost="7" at="130" hp="500" incrAT="20" incrHP="20">
+    <Card name="密纹豹" race="森林" speed="2" star="2" cost="7" at="130" hp="500" incrAT="20" incrHP="20">
         <Feature type="要害" level="3" unlock="0" />
         <Feature type="反击" level="4" unlock="5" />
         <Feature type="回春" level="6" unlock="10" />
     </Card>
-    <Card id="64" name="小矮人狙击者" race="森林" speed="4" star="3" cost="8" at="125" hp="540" incrAT="18" incrHP="39">
+    <Card name="小矮人狙击者" race="森林" speed="4" star="3" cost="8" at="125" hp="540" incrAT="18" incrHP="39">
         <Feature type="狙击" level="3" unlock="0" />
         <Feature type="暴击" level="5" unlock="5" />
         <Feature type="狙击" level="7" unlock="10" />
     </Card>
-    <Card id="65" name="精灵法师" race="森林" speed="2" star="3" cost="8" at="115" hp="490" incrAT="19" incrHP="41">
+    <Card name="精灵法师" race="森林" speed="2" star="3" cost="8" at="115" hp="490" incrAT="19" incrHP="41">
         <Feature type="火球" level="3" unlock="0" />
         <Feature type="甘霖" level="4" unlock="5" />
         <Feature type="火墙" level="6" unlock="10" />
     </Card>
-    <Card id="66" name="精灵暗杀者" race="森林" speed="4" star="3" cost="11" at="185" hp="730" incrAT="15" incrHP="52">
+    <Card name="精灵暗杀者" race="森林" speed="4" star="3" cost="11" at="185" hp="730" incrAT="15" incrHP="52">
         <Feature type="穿刺" level="3" unlock="0" />
         <Feature type="狙击" level="5" unlock="5" />
         <Feature type="要害" level="8" unlock="10" />
     </Card>
-    <Card id="67" name="兽语驾驭者" race="森林" speed="4" star="3" cost="9" at="180" hp="680" incrAT="23" incrHP="28">
+    <Card name="兽语驾驭者" race="森林" speed="4" star="3" cost="9" at="180" hp="680" incrAT="23" incrHP="28">
         <Feature type="治疗" level="4" unlock="0" />
         <Feature type="要害" level="6" unlock="5" />
         <Feature type="连环闪电" level="6" unlock="10" />
     </Card>
-    <Card id="68" name="独角兽" race="森林" speed="4" star="3" cost="10" at="140" hp="645" incrAT="18" incrHP="41">
+    <Card name="独角兽" race="森林" speed="4" star="3" cost="10" at="140" hp="645" incrAT="18" incrHP="41">
         <Feature type="落雷" level="2" unlock="0" />
         <Feature type="雷暴" level="5" unlock="5" summon="true" />
         <Feature type="闪避" level="6" unlock="10" />
     </Card>
-    <Card id="69" name="神秘花精灵" race="森林" speed="2" star="3" cost="8" at="125" hp="555" incrAT="20" incrHP="42">
+    <Card name="神秘花精灵" race="森林" speed="2" star="3" cost="8" at="125" hp="555" incrAT="20" incrHP="42">
         <Feature type="冰弹" level="4" unlock="0" />
         <Feature type="削弱" level="3" unlock="5" />
         <Feature type="回春" level="5" unlock="10" />
     </Card>
-    <Card id="70" name="精灵长者" race="森林" speed="4" star="3" cost="9" at="135" hp="600" incrAT="26" incrHP="17">
+    <Card name="精灵长者" race="森林" speed="4" star="3" cost="9" at="135" hp="600" incrAT="26" incrHP="17">
         <Feature type="火球" level="3" unlock="0" />
         <Feature type="回春" level="4" unlock="5" />
         <Feature type="森林之力" level="4" unlock="10" />
     </Card>
-    <Card id="71" name="守卫古树" race="森林" speed="4" star="3" cost="10" at="215" hp="800" incrAT="18" incrHP="39">
+    <Card name="守卫古树" race="森林" speed="4" star="3" cost="10" at="215" hp="800" incrAT="18" incrHP="39">
         <Feature type="甘霖" level="5" unlock="0" summon="true" />
         <Feature type="格挡" level="5" unlock="5" />
         <Feature type="回春" level="6" unlock="10" />
     </Card>
-    <Card id="72" name="精灵祭司" race="森林" speed="4" star="3" cost="9" at="125" hp="620" incrAT="24" incrHP="22">
+    <Card name="精灵祭司" race="森林" speed="4" star="3" cost="9" at="125" hp="620" incrAT="24" incrHP="22">
         <Feature type="连环闪电" level="2" unlock="0" />
         <Feature type="治疗" level="5" unlock="5" />
         <Feature type="森林守护" level="4" unlock="10" />
     </Card>
-    <Card id="73" name="霜雪树人" race="森林" speed="4" star="3" cost="8" at="150" hp="600" incrAT="20" incrHP="20">
+    <Card name="霜雪树人" race="森林" speed="4" star="3" cost="8" at="150" hp="600" incrAT="20" incrHP="20">
         <Feature type="冰弹" level="5" unlock="0" />
         <Feature type="森林守护" level="5" unlock="5" />
         <Feature type="冰甲" level="3" unlock="10" />
     </Card>
-    <Card id="74" name="树人祭司" race="森林" speed="4" star="3" cost="9" at="160" hp="620" incrAT="15" incrHP="30">
+    <Card name="树人祭司" race="森林" speed="4" star="3" cost="9" at="160" hp="620" incrAT="15" incrHP="30">
         <Feature type="甘霖" level="3" unlock="0" />
         <Feature type="森林守护" level="4" unlock="5" />
         <Feature type="甘霖" level="7" unlock="10" />
     </Card>
-    <Card id="75" name="雷电树人" race="森林" speed="4" star="3" cost="11" at="170" hp="620" incrAT="18" incrHP="23">
+    <Card name="雷电树人" race="森林" speed="4" star="3" cost="11" at="170" hp="620" incrAT="18" incrHP="23">
         <Feature type="回春" level="4" unlock="0" />
         <Feature type="连环闪电" level="4" unlock="5" />
         <Feature type="盾刺" level="6" unlock="10" />
     </Card>
-    <Card id="76" name="半鹿人祭司" race="森林" speed="4" star="3" cost="11" at="145" hp="600" incrAT="16" incrHP="25">
+    <Card name="半鹿人祭司" race="森林" speed="4" star="3" cost="11" at="145" hp="600" incrAT="16" incrHP="25">
         <Feature type="森林之力" level="3" unlock="0" />
         <Feature type="甘霖" level="5" unlock="5" />
         <Feature type="森林守护" level="7" unlock="10" />
     </Card>
-    <Card id="77" name="疾奔刺猬" race="森林" speed="4" star="3" cost="11" at="125" hp="800" incrAT="15" incrHP="30">
+    <Card name="疾奔刺猬" race="森林" speed="4" star="3" cost="11" at="125" hp="800" incrAT="15" incrHP="30">
         <Feature type="反击" level="7" unlock="0" />
         <Feature type="回春" level="6" unlock="5" />
         <Feature type="盾刺" level="6" unlock="10" />
+    </Card>
+    <Card name="地岭拥有者" race="森林" speed="6" star="4" cost="12" at="215" hp="980" incrAT="24" incrHP="36">
+        <Feature type="陷阱" level="1" unlock="0" />
+        <Feature type="格挡" level="8" unlock="5" />
+        <Feature type="回春" level="7" unlock="10" />
+    </Card>
+    <Card name="水源制造者" race="森林" speed="4" star="4" cost="12" at="195" hp="800" incrAT="23" incrHP="39">
+        <Feature type="冰弹" level="4" unlock="0" />
+        <Feature type="甘霖" level="6" unlock="5" />
+        <Feature type="暴风雪" level="6" unlock="10" />
+    </Card>
+    <Card name="风暴召唤者" race="森林" speed="4" star="4" cost="13" at="200" hp="780" incrAT="20" incrHP="48">
+        <Feature type="落雷" level="4" unlock="0" />
+        <Feature type="转生" level="6" unlock="5" />
+        <Feature type="闪避" level="8" unlock="10" />
+    </Card>
+    <Card name="火灵操控者" race="森林" speed="4" star="4" cost="11" at="220" hp="810" incrAT="19" incrHP="55">
+        <Feature type="火球" level="4" unlock="0" />
+        <Feature type="要害" level="7" unlock="5" />
+        <Feature type="烈焰风暴" level="7" unlock="10" />
+    </Card>
+    <Card name="翡翠龙" race="森林" speed="6" star="4" cost="13" at="270" hp="1290" incrAT="20" incrHP="30">
+        <Feature type="要害" level="6" unlock="0" />
+        <Feature type="法力反射" level="4" unlock="5" />
+        <Feature type="森林之力" level="5" unlock="10" />
+    </Card>
+    <Card name="森林女神" race="森林" speed="6" star="4" cost="14" at="215" hp="900" incrAT="15" incrHP="30">
+        <Feature type="送还" level="0" unlock="0" summon="true" />
+        <Feature type="回魂" level="2" unlock="5" />
+        <Feature type="森林守护" level="5" unlock="10" />
+    </Card>
+    <Card name="月之神兽" race="森林" speed="4" star="4" cost="12" at="230" hp="680" incrAT="15" incrHP="21">
+        <Feature type="甘霖" level="4" unlock="0" />
+        <Feature type="闪避" level="4" unlock="5" />
+        <Feature type="免疫" level="0" unlock="10" />
+    </Card>
+    <Card name="半鹿人守护者" race="森林" speed="4" star="4" cost="11" at="225" hp="790" incrAT="25" incrHP="25">
+        <Feature type="治疗" level="4" unlock="0" />
+        <Feature type="森林守护" level="5" unlock="5" />
+        <Feature type="陷阱" level="2" unlock="10" />
+    </Card>
+    <Card name="精灵审判长" race="森林" speed="4" star="4" cost="13" at="260" hp="760" incrAT="20" incrHP="30">
+        <Feature type="暴击" level="5" unlock="0" />
+        <Feature type="要害" level="6" unlock="5" />
+        <Feature type="闪避" level="5" unlock="10" />
+    </Card>
+    <Card name="独角兽之王" race="森林" speed="4" star="4" cost="14" at="240" hp="820" incrAT="25" incrHP="40">
+        <Feature type="要害" level="6" unlock="0" />
+        <Feature type="连环闪电" level="7" unlock="5" />
+        <Feature type="回春" level="8" unlock="10" />
+    </Card>
+    <Card name="圣诞树人" race="森林" speed="4" star="4" cost="14" at="300" hp="860" incrAT="24" incrHP="20">
+        <Feature type="祈祷" level="5" unlock="0" />
+        <Feature type="转生" level="6" unlock="5" />
+        <Feature type="森林之力" level="7" unlock="10" />
+    </Card>
+    <Card name="半路人长老" race="森林" speed="4" star="4" cost="13" at="270" hp="820" incrAT="18" incrHP="24">
+        <Feature type="回春" level="6" unlock="0" />
+        <Feature type="二重狙击" level="6" unlock="5" />
+        <Feature type="甘霖" level="6" unlock="10" />
+    </Card>
+    <Card name="月神弩炮车手" race="森林" speed="4" star="4" cost="14" at="250" hp="890" incrAT="20" incrHP="25">
+        <Feature type="要害" level="7" unlock="0" />
+        <Feature type="法力反射" level="3" unlock="5" />
+        <Feature type="二重狙击" level="7" unlock="10" />
+    </Card>
+    <!-- Test -->
+    <Card name="森林丘比特" race="森林" speed="6" star="4" cost="14" at="210" hp="1230" incrAT="24" incrHP="17">
+        <Feature type="透支" level="8" unlock="0" />
+        <Feature type="迷魂" level="5" unlock="5" />
+        <Feature type="森林之力" level="5" unlock="10" />
+    </Card>
+    <Card name="金属巨龙" race="森林" speed="6" star="5" cost="15" at="355" hp="1480" incrAT="30" incrHP="23">
+        <Feature type="暴击" level="6" unlock="0" />
+        <Feature type="格挡" level="8" unlock="5" />
+        <Feature type="免疫" level="7" unlock="10" />
+    </Card>
+    <Card name="凤凰" race="森林" speed="4" star="5" cost="15" at="340" hp="1300" incrAT="32" incrHP="26">
+        <Feature type="烈焰风暴" level="8" unlock="0" />
+        <Feature type="回春" level="7" unlock="5" />
+        <Feature type="转生" level="8" unlock="10" />
+    </Card>
+    <Card name="月亮女神" race="森林" speed="4" star="5" cost="14" at="400" hp="1350" incrAT="30" incrHP="45">
+        <Feature type="魔甲" level="8" unlock="0" />
+        <Feature type="治疗" level="10" unlock="5" />
+        <Feature type="传送" level="0" unlock="10" summon="true" />
+    </Card>
+    <Card name="元素灵龙" race="森林" speed="4" star="5" cost="13" at="260" hp="1200" incrAT="42" incrHP="28">
+        <Feature type="法力反射" level="4" unlock="0" />
+        <Feature type="烈火焚神" level="6" unlock="5" />
+        <Feature type="穷追猛打" level="7" unlock="10" />
+    </Card>
+    <Card name="麒麟兽" race="森林" speed="4" star="5" cost="16" at="320" hp="1370" incrAT="29" incrHP="24">
+        <Feature type="甘霖" level="4" unlock="0" />
+        <Feature type="脱困" level="0" unlock="5" />
+        <Feature type="连锁攻击" level="7" unlock="10" />
+    </Card>
+    <!-- Test -->
+    <Card name="复活节兔女郎" race="森林" speed="4" star="5" cost="15" at="345" hp="1220" incrAT="32" incrHP="30">
+        <Feature type="霜冻新星" level="6" unlock="0" />
+        <Feature type="复活" level="0" unlock="5" death="true" />
+        <Feature type="转生" level="5" unlock="10" />
+    </Card>
+    <Card name="小矮人工匠" race="森林" speed="4" star="3" cost="9" at="160" hp="680" incrAT="24" incrHP="25">
+        <Feature type="森林之力" level="3" unlock="0" />
+        <Feature type="陷阱" level="1" unlock="5" />
+        <Feature type="森林守护" level="6" unlock="10" />
+    </Card>
+    <Card name="密纹骑士" race="森林" speed="4" star="4" cost="13" at="260" hp="850" incrAT="30" incrHP="18">
+        <Feature type="要害" level="6" unlock="0" />
+        <Feature type="格挡" level="7" unlock="5" />
+        <Feature type="战意" level="5" unlock="10" />
     </Card>
 </Cards>

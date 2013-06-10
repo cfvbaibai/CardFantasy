@@ -10,7 +10,7 @@ import cfvbaibai.cardfantasy.engine.FeatureResolver;
 public final class ReviveFeature {
     public static void apply(FeatureResolver resolver, FeatureInfo feature, CardInfo reviver) {
         if (reviver == null) {
-            throw new CardFantasyRuntimeException("attacker should not be null");
+            throw new CardFantasyRuntimeException("reviver should not be null");
         }
         if (reviver.getOwner() != resolver.getStage().getActivePlayer()) {
             throw new CardFantasyRuntimeException("Reviver is not the current active player!");

@@ -23,6 +23,7 @@ public class CardInfo {
     private List<FeatureInfo> features;
     // Used to record the previous position after card dies.
     private int cachedPosition;
+    private boolean deadOnce;
 
     private Map<FeatureType, List<FeatureEffect>> effects;
     private boolean firstRound;
@@ -40,10 +41,19 @@ public class CardInfo {
             this.features.add(new FeatureInfo(this, feature));
         }
         this.cachedPosition = -1;
+        this.deadOnce = false;
     }
     
     public boolean isFirstRound() {
         return firstRound;
+    }
+    
+    public boolean hasDeadOnce() {
+        return this.deadOnce;
+    }
+    
+    void setDeadOnce(boolean deadOnce) {
+        this.deadOnce = deadOnce;
     }
     
     public void setFirstRound(boolean firstRound) {
@@ -142,6 +152,7 @@ public class CardInfo {
         this.at = this.card.getInitAT();
         this.status = new CardStatus();
         this.effects.clear();
+        this.setDeadOnce(false);
     }
 
     public void resetSummonDelay() {

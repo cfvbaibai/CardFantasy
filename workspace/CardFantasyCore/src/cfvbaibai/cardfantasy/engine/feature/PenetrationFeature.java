@@ -19,6 +19,7 @@ public final class PenetrationFeature {
             return;
         }
         int damage = normalAttackDamage * feature.getImpact() / 100;
+        resolver.getStage().getUI().useSkillToHero(attacker, defender, feature);
         resolver.attackHero(attacker, defender, feature, damage);
     }
 }

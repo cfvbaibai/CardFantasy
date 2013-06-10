@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import cfvbaibai.cardfantasy.Randomizer;
 import cfvbaibai.cardfantasy.data.PlayerInfo;
 
 public class StageInfo {
@@ -14,6 +15,7 @@ public class StageInfo {
     private GameUI ui;
     private Rule rule;
     private FeatureResolver resolver;
+    private Randomizer randomizer;
 
     public StageInfo(Board board, GameUI ui, Rule rule) {
         this.board = board;
@@ -23,6 +25,7 @@ public class StageInfo {
         this.ui = ui;
         this.rule = rule;
         this.resolver = new FeatureResolver(this);
+        this.randomizer = new Randomizer(ui);
     }
 
     public FeatureResolver getResolver() {
@@ -115,5 +118,9 @@ public class StageInfo {
 
     public Collection<CardInfo> getAllHandCards() {
         return this.board.getAllHandCards();
+    }
+
+    public Randomizer getRandomizer() {
+        return randomizer;
     }
 }

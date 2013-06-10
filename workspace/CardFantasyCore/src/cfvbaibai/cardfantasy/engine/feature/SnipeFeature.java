@@ -1,12 +1,14 @@
 package cfvbaibai.cardfantasy.engine.feature;
 
+import java.util.List;
+
 import cfvbaibai.cardfantasy.data.Feature;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.FeatureResolver;
 import cfvbaibai.cardfantasy.engine.Player;
 
 /**
- * Snipe - ¾Ñ»÷
+ * Snipe - ¾Ñ»÷, DoubleSnipe - ¶þÖØ¾Ñ»÷
  * Activated after normal attack, apply extra unavoidable, unblockable damage
  * to opponent's cards with least HP on field. 
  * 
@@ -16,16 +18,11 @@ import cfvbaibai.cardfantasy.engine.Player;
  *
  */
 public final class SnipeFeature {
-    public static void apply(Feature feature, FeatureResolver resolver, CardInfo attacker, Player defenderPlayer) {
+    public static void apply(Feature feature, FeatureResolver resolver, CardInfo attacker, Player defenderPlayer, int targetCount) {
         int damage = feature.getImpact();
-        CardInfo victim = null;
-        for (CardInfo defender : defenderPlayer.getField().getAliveCards()) {
-            if (victim == null || victim.getHP() > defender.getHP()) {
-                victim = defender;
-            }
-        }
-        if (victim != null) {
-            resolver.getStage().getUI().useSkill(attacker, victim, feature);
+        List<CardInfo> victims = defenderPlayer.getField().getCardsWithLowestHP(targetCount);
+        resolver.getStage().getUI().useSkill(attacker, victims, feature);
+        for (CardInfo victim : victims) {
             resolver.getStage().getUI().attackCard(attacker, victim, feature, damage);
             if (resolver.applyDamage(victim, damage).cardDead) {
                 resolver.resolveDeathFeature(attacker, victim, feature);

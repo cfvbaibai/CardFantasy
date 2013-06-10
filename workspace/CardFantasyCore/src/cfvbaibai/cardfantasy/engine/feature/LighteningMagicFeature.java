@@ -2,7 +2,6 @@ package cfvbaibai.cardfantasy.engine.feature;
 
 import java.util.List;
 
-import cfvbaibai.cardfantasy.Randomizer;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.CardStatusItem;
 import cfvbaibai.cardfantasy.engine.FeatureInfo;
@@ -39,7 +38,7 @@ public final class LighteningMagicFeature {
             resolver.resolveCounterAttackFeature(attacker, victim, feature);
             if (cardDead) {
                 resolver.resolveDeathFeature(attacker, victim, feature);
-            } else if (Randomizer.roll100() <= paralyzeRate) {
+            } else if (resolver.getStage().getRandomizer().roll100(paralyzeRate)) {
                 CardStatusItem status = CardStatusItem.paralyzed(feature);
                 if (!resolver.resolveBlockStatusFeature(attacker, victim, feature, status).isBlocked()) {
                     ui.addCardStatus(attacker, victim, feature, status);

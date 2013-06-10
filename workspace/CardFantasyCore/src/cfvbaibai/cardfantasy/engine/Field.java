@@ -1,6 +1,8 @@
 package cfvbaibai.cardfantasy.engine;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
@@ -55,5 +57,23 @@ public class Field extends CardPile {
                 ++i;
             }
         }
+    }
+    
+    private static class HPCardComparator implements Comparator <CardInfo> {
+
+        @Override
+        public int compare(CardInfo card1, CardInfo card2) {
+            return card1.getHP() - card2.getHP();
+        }
+        
+    }
+
+    public List<CardInfo> getCardsWithLowestHP(int targetCount) {
+        List<CardInfo> aliveCards = this.getAliveCards();
+        if (aliveCards.size() <= targetCount) {
+            return aliveCards;
+        }
+        Collections.sort(aliveCards, new HPCardComparator());
+        return aliveCards.subList(0, targetCount);
     }
 }

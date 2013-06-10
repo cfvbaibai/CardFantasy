@@ -6,7 +6,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-public class CardFantasyTest {
+public class CardFantasyKingdomTest {
 
     @BeforeClass
     public static void setUpBeforeClass() throws Exception {
@@ -25,8 +25,7 @@ public class CardFantasyTest {
     }
 
     private void game5vs5(String card1, String card2) {
-        GameBuilder.play(PlayerBuilder.build("гЂал" + card1, 50, card1 + "-10*5"),
-                PlayerBuilder.build("гЂал" + card2, 50, card2 + "-10*5"));
+        GameBuilder.play5v5(card1, card2);
     }
 
     @Test

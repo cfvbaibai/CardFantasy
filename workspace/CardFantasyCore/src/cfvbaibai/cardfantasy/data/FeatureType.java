@@ -56,10 +56,14 @@ public enum FeatureType {
     要害(15, 15),
     森林之力(25),
     森林守护(50),
+    回魂(1),
+    二重狙击(25, FeatureTag.抗免疫),
+    迷魂(30, 5),
+    烈火焚神(20),
+    战意(15),
 
     // Unimplemented.
     封印(0, FeatureTag.陷阱),
-    迷魂(0, FeatureTag.陷阱),
     未知(0);
     
 
