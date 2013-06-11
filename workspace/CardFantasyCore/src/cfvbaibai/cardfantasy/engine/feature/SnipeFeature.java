@@ -19,14 +19,14 @@ import cfvbaibai.cardfantasy.engine.Player;
  *
  */
 public final class SnipeFeature {
-    public static void apply(Feature feature, FeatureResolver resolver, CardInfo attacker, Player defenderPlayer, int targetCount) throws HeroDieSignal {
-        int damage = feature.getImpact();
+    public static void apply(Feature cardFeature, FeatureResolver resolver, CardInfo attacker, Player defenderPlayer, int targetCount) throws HeroDieSignal {
+        int damage = cardFeature.getImpact();
         List<CardInfo> victims = defenderPlayer.getField().getCardsWithLowestHP(targetCount);
-        resolver.getStage().getUI().useSkill(attacker, victims, feature);
+        resolver.getStage().getUI().useSkill(attacker, victims, cardFeature);
         for (CardInfo victim : victims) {
-            resolver.getStage().getUI().attackCard(attacker, victim, feature, damage);
+            resolver.getStage().getUI().attackCard(attacker, victim, cardFeature, damage);
             if (resolver.applyDamage(victim, damage).cardDead) {
-                resolver.resolveDeathFeature(attacker, victim, feature);
+                resolver.resolveDeathFeature(attacker, victim, cardFeature);
             }
         }
     }

@@ -12,10 +12,12 @@ public class PlayerInfo {
     private String id;
     private int level;
     private Collection <Card> cards;
+    private Collection <Rune> runes;
     
-    public PlayerInfo(String id, int level, Card ... cards) {
+    public PlayerInfo(String id, int level, Collection <Rune> runes, Card ... cards) {
         this.id = id;
         this.level = level;
+        this.runes = new ArrayList<Rune>(runes);
         this.cards = new ArrayList<Card>();
         for (Card card : cards) {
             this.cards.add(card);
@@ -34,6 +36,10 @@ public class PlayerInfo {
     }
 
     public Collection<Card> getCards() {
-        return this.cards;
+        return new ArrayList<Card>(this.cards);
+    }
+    
+    public Collection<Rune> getRunes() {
+        return new ArrayList<Rune>(this.runes);
     }
 }

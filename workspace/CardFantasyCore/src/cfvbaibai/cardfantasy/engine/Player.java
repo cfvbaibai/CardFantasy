@@ -14,6 +14,7 @@ public class Player {
     private Hand hand;
     private Grave grave;
     private Field field;
+    private RuneBox runeBox;
     private int hp;
     
     public Player(PlayerInfo playerInfo, StageInfo stage) {
@@ -22,11 +23,16 @@ public class Player {
         this.hand = new Hand(stage.getRule());
         this.grave = new Grave();
         this.field = new Field(this);
+        this.runeBox = new RuneBox(this, playerInfo.getRunes());
         this.hp = playerInfo.getMaxHP();
     }
     
     private PlayerInfo getPlayerInfo() {
         return this.playerInfo;
+    }
+    
+    public RuneBox getRuneBox() {
+        return this.runeBox;
     }
     
     public Hand getHand() {
@@ -45,11 +51,11 @@ public class Player {
         return this.field;
     }
 
-    public int getLife() {
+    public int getHP() {
         return this.hp;
     }
     
-    public int getMaxLife() {
+    public int getMaxHP() {
         return this.playerInfo.getMaxHP();
     }
 
@@ -57,7 +63,7 @@ public class Player {
         return this.getPlayerInfo().getId();
     }
 
-    public void setLife(int hp) throws HeroDieSignal {
+    public void setHP(int hp) throws HeroDieSignal {
         this.hp = hp;
         if (this.hp <= 0) {
             throw new HeroDieSignal(this);

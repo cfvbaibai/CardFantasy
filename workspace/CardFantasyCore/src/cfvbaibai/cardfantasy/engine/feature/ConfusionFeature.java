@@ -2,17 +2,19 @@ package cfvbaibai.cardfantasy.engine.feature;
 
 import java.util.List;
 
+import cfvbaibai.cardfantasy.GameUI;
+import cfvbaibai.cardfantasy.data.Feature;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.CardStatusItem;
 import cfvbaibai.cardfantasy.engine.FeatureInfo;
 import cfvbaibai.cardfantasy.engine.FeatureResolver;
-import cfvbaibai.cardfantasy.engine.GameUI;
 import cfvbaibai.cardfantasy.engine.HeroDieSignal;
 import cfvbaibai.cardfantasy.engine.Player;
 
 public final class ConfusionFeature {
-    public static void apply(FeatureInfo feature, FeatureResolver resolver, CardInfo attacker, Player defender,
+    public static void apply(FeatureInfo featureInfo, FeatureResolver resolver, CardInfo attacker, Player defender,
             int victimCount) throws HeroDieSignal {
+        Feature feature = featureInfo.getFeature();
         int rate = feature.getImpact();
         List<CardInfo> victims = defender.getField().pickRandom(victimCount, true);
         GameUI ui = resolver.getStage().getUI();
@@ -22,7 +24,7 @@ public final class ConfusionFeature {
                 continue;
             }
             if (resolver.getStage().getRandomizer().roll100(rate)) {
-                CardStatusItem status = CardStatusItem.confused(feature);
+                CardStatusItem status = CardStatusItem.confused(featureInfo);
                 ui.addCardStatus(attacker, victim, feature, status);
                 victim.addStatus(status);
             }

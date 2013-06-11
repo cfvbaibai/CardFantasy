@@ -41,7 +41,7 @@ public class CardDataStore {
                 cardData.setIncrHP(Integer.parseInt(cardNode.valueOf("@incrHP")));
                 
                 @SuppressWarnings("unchecked")
-                List<Node> featureNodes = cardNode.selectNodes("Feature");
+                List<Node> featureNodes = cardNode.selectNodes("CardFeature");
                 for (Node featureNode : featureNodes) {
                     FeatureType type = FeatureType.valueOf(featureNode.valueOf("@type"));
                     int level = Integer.parseInt(featureNode.valueOf("@level"));
@@ -50,7 +50,7 @@ public class CardDataStore {
                     boolean isSummonFeature = summonText == null ? false : Boolean.parseBoolean(summonText);
                     String deathText = featureNode.valueOf("@death");
                     boolean isDeathFeature = deathText == null ? false : Boolean.parseBoolean(deathText);
-                    cardData.getFeatures().add(new Feature(type, level, unlockLevel, isSummonFeature, isDeathFeature));
+                    cardData.getFeatures().add(new CardFeature(type, level, unlockLevel, isSummonFeature, isDeathFeature));
                 }
                 store.addCard(cardData);
             }

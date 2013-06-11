@@ -6,7 +6,7 @@ import java.util.List;
 
 import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
 import cfvbaibai.cardfantasy.GameOverSignal;
-import cfvbaibai.cardfantasy.data.Feature;
+import cfvbaibai.cardfantasy.GameUI;
 import cfvbaibai.cardfantasy.data.FeatureType;
 import cfvbaibai.cardfantasy.data.PlayerInfo;
 
@@ -93,11 +93,13 @@ public class GameEngine {
 
         player.getField().compact();
         this.getInactivePlayer().getField().compact();
-        return Phase.Battle;
+        return Phase.Standby;
     }
 
-    private Phase standby() {
-        return Phase.Summon;
+    private Phase standby() throws HeroDieSignal {
+        this.stage.getResolver().activateRunes(this.getActivePlayer());
+        this.stage.getResolver().resolvePreAttackRune(this.getActivePlayer(), this.getInactivePlayer());
+        return Phase.Battle;
     }
 
     private Phase roundEnd() {
@@ -207,15 +209,15 @@ public class GameEngine {
         CardInfo defender = opField.getCard(i);
         FeatureResolver resolver = this.stage.getResolver();
         GameUI ui = this.stage.getUI();
-        for (Feature feature : myField.getCard(i).getNormalUsableFeatures()) {
-            if (feature.getType() == FeatureType.∫·…®) {
-                ui.useSkill(myField.getCard(i), defender, feature);
+        for (FeatureInfo featureInfo : myField.getCard(i).getNormalUsableFeatures()) {
+            if (featureInfo.getFeature().getType() == FeatureType.∫·…®) {
+                ui.useSkill(myField.getCard(i), defender, featureInfo.getFeature());
             }
         }
         int damage = resolver.attackCard(myField.getCard(i), defender);
         if (damage > 0 && myField.getCard(i) != null) {
-            for (Feature feature : myField.getCard(i).getNormalUsableFeatures()) {
-                if (feature.getType() == FeatureType.∫·…®) {
+            for (FeatureInfo featureInfo : myField.getCard(i).getNormalUsableFeatures()) {
+                if (featureInfo.getFeature().getType() == FeatureType.∫·…®) {
 
                     List<CardInfo> sweepDefenders = new ArrayList<CardInfo>();
                     if (i > 0 && opField.getCard(i - 1) != null) {
@@ -226,7 +228,7 @@ public class GameEngine {
                     }
 
                     for (CardInfo sweepDefender : sweepDefenders) {
-                        ui.useSkill(myField.getCard(i), sweepDefender, feature);
+                        ui.useSkill(myField.getCard(i), sweepDefender, featureInfo.getFeature());
                         resolver.attackCard(myField.getCard(i), sweepDefender);
                         // Physical attack cannot proceed if attacker is killed by counter attack skills.
                         if (myField.getCard(i) == null) {
@@ -242,6 +244,7 @@ public class GameEngine {
         if (this.stage.getRound() > stage.getRule().getMaxRound()) {
             throw new GameOverSignal();
         }
+        this.stage.getResolver().deactivateRunes(this.getActivePlayer());
         if (this.getActivePlayer().getDeck().size() == 0 && this.getActivePlayer().getField().size() == 0
                 && this.getActivePlayer().getHand().size() == 0) {
             throw new AllCardsDieSignal(this.getActivePlayer());
@@ -256,16 +259,16 @@ public class GameEngine {
         Hand hand = activePlayer.getHand();
         if (hand.size() >= this.stage.getRule().getMaxHandCards()) {
             stage.getUI().cantDrawHandFull(activePlayer);
-            return Phase.Standby;
+            return Phase.Summon;
         }
         Deck deck = activePlayer.getDeck();
         if (deck.isEmpty()) {
             stage.getUI().cantDrawDeckEmpty(activePlayer);
-            return Phase.Standby;
+            return Phase.Summon;
         }
         CardInfo newCard = deck.draw();
         hand.addCard(newCard);
         stage.getUI().cardDrawed(activePlayer, newCard);
-        return Phase.Standby;
+        return Phase.Summon;
     }
 }

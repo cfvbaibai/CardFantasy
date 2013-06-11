@@ -1,9 +1,9 @@
 package cfvbaibai.cardfantasy.engine.feature;
 
+import cfvbaibai.cardfantasy.GameUI;
 import cfvbaibai.cardfantasy.data.Feature;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.FeatureResolver;
-import cfvbaibai.cardfantasy.engine.GameUI;
 
 /**
  * Block 20 * level damages
@@ -14,15 +14,15 @@ import cfvbaibai.cardfantasy.engine.GameUI;
  *
  */
 public final class BlockFeature {
-    public static int apply(Feature feature, FeatureResolver resolver, CardInfo attacker, CardInfo defender, int originalDamage) {
-        int block = feature.getImpact();
+    public static int apply(Feature cardFeature, FeatureResolver resolver, CardInfo attacker, CardInfo defender, int originalDamage) {
+        int block = cardFeature.getImpact();
         int actualDamage = originalDamage - block;
         if (actualDamage < 0) {
             actualDamage = 0;
         }
         GameUI ui = resolver.getStage().getUI();
-        ui.useSkill(defender, attacker, feature);
-        ui.blockDamage(attacker, defender, feature, originalDamage, actualDamage);
+        ui.useSkill(defender, attacker, cardFeature);
+        ui.blockDamage(attacker, defender, cardFeature, originalDamage, actualDamage);
         return actualDamage;
     }
 }

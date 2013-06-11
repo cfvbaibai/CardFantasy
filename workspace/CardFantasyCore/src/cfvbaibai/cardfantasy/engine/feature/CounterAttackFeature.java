@@ -1,13 +1,13 @@
 package cfvbaibai.cardfantasy.engine.feature;
 
+import cfvbaibai.cardfantasy.GameUI;
 import cfvbaibai.cardfantasy.data.Feature;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.FeatureResolver;
-import cfvbaibai.cardfantasy.engine.GameUI;
 import cfvbaibai.cardfantasy.engine.HeroDieSignal;
 
 /**
- * Defensive Feature
+ * Defensive CardFeature
  * Give 20*level damage to attacker.
  * Unavoidable.
  * 
@@ -16,16 +16,16 @@ import cfvbaibai.cardfantasy.engine.HeroDieSignal;
  *
  */
 public final class CounterAttackFeature {
-    public static void apply(Feature feature, FeatureResolver resolver, CardInfo attacker, CardInfo defender) throws HeroDieSignal {
+    public static void apply(Feature cardFeature, FeatureResolver resolver, CardInfo attacker, CardInfo defender) throws HeroDieSignal {
         if (attacker == null) {
             return;
         }
-        int damage = feature.getImpact();
+        int damage = cardFeature.getImpact();
         GameUI ui = resolver.getStage().getUI();
-        ui.useSkill(defender, attacker, feature);
-        ui.attackCard(defender, attacker, feature, damage);
+        ui.useSkill(defender, attacker, cardFeature);
+        ui.attackCard(defender, attacker, cardFeature, damage);
         if (resolver.applyDamage(attacker, damage).cardDead) {
-            resolver.resolveDeathFeature(defender, attacker, feature);
+            resolver.resolveDeathFeature(defender, attacker, cardFeature);
         }
     }
 }

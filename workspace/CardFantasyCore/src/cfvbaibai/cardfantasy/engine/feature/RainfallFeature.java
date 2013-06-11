@@ -3,11 +3,11 @@ package cfvbaibai.cardfantasy.engine.feature;
 import java.util.ArrayList;
 import java.util.List;
 
+import cfvbaibai.cardfantasy.GameUI;
 import cfvbaibai.cardfantasy.data.Feature;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.FeatureResolver;
 import cfvbaibai.cardfantasy.engine.Field;
-import cfvbaibai.cardfantasy.engine.GameUI;
 import cfvbaibai.cardfantasy.engine.OnAttackBlockingResult;
 
 public final class RainfallFeature {
@@ -19,7 +19,7 @@ public final class RainfallFeature {
             this.healHP = healHP;
         }
     }
-    public static void apply(Feature feature, FeatureResolver resolver, CardInfo healer) {
+    public static void apply(Feature cardFeature, FeatureResolver resolver, CardInfo healer) {
         if (healer == null) {
             return;
         }
@@ -28,7 +28,7 @@ public final class RainfallFeature {
         Field field = healer.getOwner().getField();
         List<Heal> heals = new ArrayList<Heal>();
         for (CardInfo healee : field.getAliveCards()) {
-            int healHP = feature.getImpact();
+            int healHP = cardFeature.getImpact();
             if (healHP + healee.getHP() > healee.getMaxHP()) {
                 healHP = healee.getMaxHP() - healee.getHP();
             }
@@ -41,13 +41,13 @@ public final class RainfallFeature {
         for (Heal heal : heals) {
             healees.add(heal.healee);
         }
-        ui.useSkill(healer, healees, feature);
+        ui.useSkill(healer, healees, cardFeature);
         for (Heal heal : heals) {
-            OnAttackBlockingResult result = resolver.resolveHealBlockingFeature(healer, heal.healee, feature);
+            OnAttackBlockingResult result = resolver.resolveHealBlockingFeature(healer, heal.healee, cardFeature);
             if (!result.isAttackable()) {
                 return;
             }
-            ui.healCard(healer, heal.healee, feature, heal.healHP);
+            ui.healCard(healer, heal.healee, cardFeature, heal.healHP);
             resolver.applyDamage(heal.healee, -heal.healHP);
         }
     }

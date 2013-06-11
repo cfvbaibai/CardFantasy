@@ -3,24 +3,27 @@ package cfvbaibai.cardfantasy.engine.feature;
 import java.util.ArrayList;
 import java.util.List;
 
+import cfvbaibai.cardfantasy.GameUI;
+import cfvbaibai.cardfantasy.data.Feature;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.FeatureEffect;
 import cfvbaibai.cardfantasy.engine.FeatureEffectType;
 import cfvbaibai.cardfantasy.engine.FeatureInfo;
 import cfvbaibai.cardfantasy.engine.FeatureResolver;
-import cfvbaibai.cardfantasy.engine.GameUI;
 import cfvbaibai.cardfantasy.engine.HeroDieSignal;
 
 public final class ChainAttackFeature {
-    public static void apply(FeatureResolver resolver, FeatureInfo feature, CardInfo attacker, CardInfo defender)
+    public static void apply(FeatureResolver resolver, FeatureInfo featureInfo, CardInfo attacker, CardInfo defender)
             throws HeroDieSignal {
         if (attacker == null) {
             return;
         }
+        Feature feature = featureInfo.getFeature();
         // Prevent stack overflow...
-        if (!attacker.getEffectsCausedBy(feature).isEmpty()) {
+        if (!attacker.getEffectsCausedBy(featureInfo).isEmpty()) {
             return;
         }
+        
         List<CardInfo> victims = new ArrayList<CardInfo>();
         for (CardInfo victim : defender.getOwner().getField().getAliveCards()) {
             if (victim == defender || !CardInfo.isSameType(victim, defender)) {
@@ -38,7 +41,7 @@ public final class ChainAttackFeature {
 
         int chainAT = feature.getImpact() * attacker.getAT() / 100;
         int adjAT = chainAT - attacker.getAT();
-        FeatureEffect effect = new FeatureEffect(FeatureEffectType.ATTACK_CHANGE, feature, adjAT, false);
+        FeatureEffect effect = new FeatureEffect(FeatureEffectType.ATTACK_CHANGE, featureInfo, adjAT, false);
         ui.adjustAT(attacker, attacker, adjAT, feature);
         attacker.addEffect(effect);
         for (CardInfo victim : victims) {

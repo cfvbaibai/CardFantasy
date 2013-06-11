@@ -2,22 +2,23 @@ package cfvbaibai.cardfantasy.engine.feature;
 
 import java.util.List;
 
+import cfvbaibai.cardfantasy.GameUI;
+import cfvbaibai.cardfantasy.data.Feature;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.FeatureEffect;
 import cfvbaibai.cardfantasy.engine.FeatureEffectType;
 import cfvbaibai.cardfantasy.engine.FeatureInfo;
 import cfvbaibai.cardfantasy.engine.FeatureResolver;
 import cfvbaibai.cardfantasy.engine.Field;
-import cfvbaibai.cardfantasy.engine.GameUI;
 import cfvbaibai.cardfantasy.engine.HeroDieSignal;
 import cfvbaibai.cardfantasy.engine.OnAttackBlockingResult;
 
 public final class SacrificeFeature {
-    public static void apply(FeatureResolver resolver, FeatureInfo feature, CardInfo card) throws HeroDieSignal {
+    public static void apply(FeatureResolver resolver, FeatureInfo featureInfo, CardInfo card) throws HeroDieSignal {
         if (!card.isFirstRound()) {
             return;
         }
-        
+        Feature feature = featureInfo.getFeature();
         Field field = card.getOwner().getField();
         List<CardInfo> candidates = field.pickRandom(1, true, card);
         GameUI ui = resolver.getStage().getUI();
@@ -38,7 +39,7 @@ public final class SacrificeFeature {
         int adjAT = feature.getImpact() * card.getAT() / 100;
         ui.adjustHP(card, card, adjHP, feature);
         ui.adjustAT(card, card, adjAT, feature);
-        card.addEffect(new FeatureEffect(FeatureEffectType.MAXHP_CHANGE, feature, adjHP, true));
-        card.addEffect(new FeatureEffect(FeatureEffectType.ATTACK_CHANGE, feature, adjAT, true));
+        card.addEffect(new FeatureEffect(FeatureEffectType.MAXHP_CHANGE, featureInfo, adjHP, true));
+        card.addEffect(new FeatureEffect(FeatureEffectType.ATTACK_CHANGE, featureInfo, adjAT, true));
     }
 }

@@ -63,7 +63,7 @@ public class CardStatus {
     public boolean containsStatusCausedBy(FeatureInfo feature, CardStatusType type) {
         List<CardStatusItem> items = this.getStatusOf(type);
         for (CardStatusItem item : items) {
-            if (FeatureInfo.equals(item.getCause(), feature)) {
+            if (item.getCause().equals(feature)) {
                 return true;
             }
         }

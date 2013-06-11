@@ -3,6 +3,7 @@ package cfvbaibai.cardfantasy.engine.feature;
 import java.util.ArrayList;
 import java.util.List;
 
+import cfvbaibai.cardfantasy.data.Feature;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.FeatureEffect;
 import cfvbaibai.cardfantasy.engine.FeatureEffectType;
@@ -19,23 +20,25 @@ import cfvbaibai.cardfantasy.engine.HeroDieSignal;
  * 
  */
 public final class WeakenFeature {
-    public static void apply(FeatureResolver resolver, FeatureInfo feature, CardInfo attacker, CardInfo defender,
+    public static void apply(FeatureResolver resolver, FeatureInfo featureInfo, CardInfo attacker, CardInfo defender,
             int normalAttackDamage) throws HeroDieSignal {
         if (normalAttackDamage <= 0 || defender == null) {
             return;
         }
+        Feature feature = featureInfo.getFeature();
         resolver.getStage().getUI().useSkill(attacker, defender, feature);
         List<CardInfo> defenders = new ArrayList<CardInfo>();
         defenders.add(defender);
-        weakenCard(resolver, feature, attacker, defenders);
+        weakenCard(resolver, featureInfo, attacker, defenders);
     }
 
-    public static void weakenCard(FeatureResolver resolver, FeatureInfo feature, CardInfo attacker,
+    public static void weakenCard(FeatureResolver resolver, FeatureInfo featureInfo, CardInfo attacker,
             List<CardInfo> defenders) throws HeroDieSignal {
         for (CardInfo defender : defenders) {
             if (defender == null) {
                 continue;
             }
+            Feature feature = featureInfo.getFeature();
             if (!resolver.resolveAttackBlockingFeature(attacker, defender, feature).isAttackable()) {
                 continue;
             }
@@ -61,7 +64,7 @@ public final class WeakenFeature {
                 }
             }
 
-            defender.addEffect(new FeatureEffect(FeatureEffectType.ATTACK_CHANGE, feature, -attackWeakened, true));
+            defender.addEffect(new FeatureEffect(FeatureEffectType.ATTACK_CHANGE, featureInfo, -attackWeakened, true));
         }
     }
 }

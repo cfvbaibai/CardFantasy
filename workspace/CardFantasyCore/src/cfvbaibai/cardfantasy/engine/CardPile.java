@@ -31,7 +31,7 @@ public abstract class CardPile {
     private void checkCardExistence(CardInfo newCard) {
         if (cards.contains(newCard)) {
             throw new CardFantasyRuntimeException("Cannot add an existing card to CardPile. "
-                    + newCard.getShortDesc(true));
+                    + newCard.getShortDesc());
         }
     }
 

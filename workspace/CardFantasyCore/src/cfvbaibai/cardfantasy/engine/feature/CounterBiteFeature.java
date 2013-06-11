@@ -7,14 +7,14 @@ import cfvbaibai.cardfantasy.engine.FeatureResolver;
 import cfvbaibai.cardfantasy.engine.HeroDieSignal;
 
 public final class CounterBiteFeature {
-    public static void apply(Feature feature, FeatureResolver resolver, CardInfo card) throws HeroDieSignal {
+    public static void apply(Feature cardFeature, FeatureResolver resolver, CardInfo card) throws HeroDieSignal {
         if (card == null || card.isDead()) {
             throw new CardFantasyRuntimeException("card is null or dead!");
         }
         if (!card.isFirstRound()) {
             return;
         }
-        int damage = feature.getImpact();
-        resolver.attackHero(card, card.getOwner(), feature, damage);
+        int damage = cardFeature.getImpact();
+        resolver.attackHero(card, card.getOwner(), cardFeature, damage);
     }
 }

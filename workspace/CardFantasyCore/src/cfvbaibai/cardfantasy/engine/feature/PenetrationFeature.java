@@ -13,12 +13,12 @@ import cfvbaibai.cardfantasy.engine.Player;
  * Cannot be blocked by Immue.
  */
 public final class PenetrationFeature {
-    public static void apply(Feature feature, FeatureResolver resolver, CardInfo attacker, Player defender, int normalAttackDamage)
+    public static void apply(Feature cardFeature, FeatureResolver resolver, CardInfo attacker, Player defender, int normalAttackDamage)
             throws HeroDieSignal {
         if (normalAttackDamage <= 0) {
             return;
         }
-        int damage = normalAttackDamage * feature.getImpact() / 100;
-        resolver.attackHero(attacker, defender, feature, damage);
+        int damage = normalAttackDamage * cardFeature.getImpact() / 100;
+        resolver.attackHero(attacker, defender, cardFeature, damage);
     }
 }

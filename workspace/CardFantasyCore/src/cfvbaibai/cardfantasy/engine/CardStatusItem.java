@@ -72,10 +72,10 @@ public class CardStatusItem {
             sb.append(")");
         }
         sb.append(":");
-        sb.append(cause.getType().name());
-        sb.append(cause.getLevel());
+        sb.append(cause.getFeature().getType().name());
+        sb.append(cause.getFeature().getLevel());
         sb.append(":");
-        sb.append(cause.getOwner().getShortDesc(false));
+        sb.append(cause.getOwner().getShortDesc());
         return sb.toString();
     }
 }

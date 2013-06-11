@@ -6,20 +6,20 @@ import cfvbaibai.cardfantasy.engine.FeatureResolver;
 import cfvbaibai.cardfantasy.engine.OnAttackBlockingResult;
 
 public final class RejuvenateFeature {
-    public static void apply(Feature feature, FeatureResolver resolver, CardInfo card) {
-        int healHP = feature.getImpact();
+    public static void apply(Feature cardFeature, FeatureResolver resolver, CardInfo card) {
+        int healHP = cardFeature.getImpact();
         if (healHP + card.getHP() > card.getMaxHP()) {
             healHP = card.getMaxHP() - card.getHP();
         }
         if (healHP == 0) {
             return;
         }
-        OnAttackBlockingResult result = resolver.resolveHealBlockingFeature(card, card, feature);
+        OnAttackBlockingResult result = resolver.resolveHealBlockingFeature(card, card, cardFeature);
         if (!result.isAttackable()) {
             return;
         }
-        resolver.getStage().getUI().useSkill(card, feature);
-        resolver.getStage().getUI().healCard(card, card, feature, healHP);
+        resolver.getStage().getUI().useSkill(card, cardFeature);
+        resolver.getStage().getUI().healCard(card, card, cardFeature, healHP);
         resolver.applyDamage(card, -healHP);
     }
 }

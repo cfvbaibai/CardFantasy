@@ -1,33 +1,39 @@
 package cfvbaibai.cardfantasy.engine;
 
 import cfvbaibai.cardfantasy.data.Feature;
+import cfvbaibai.cardfantasy.data.FeatureType;
 
-public class FeatureInfo extends Feature {
+public class FeatureInfo {
 
-    private CardInfo owner;
+    private EntityInfo owner;
+    private Feature feature;
 
-    public CardInfo getOwner() {
+    public EntityInfo getOwner() {
         return owner;
     }
+    
+    public Feature getFeature() {
+        return feature;
+    }
+    
+    public FeatureType getType() {
+        return this.feature.getType();
+    }
 
-    public FeatureInfo(CardInfo owner, Feature feature) {
-        super(feature.getType(), feature.getLevel(), feature.getUnlockLevel(), feature.isSummonFeature(), feature
-                .isDeathFeature());
+    public FeatureInfo(EntityInfo owner, Feature feature) {
+        this.feature = feature;
         this.owner = owner;
     }
 
-    public static boolean equals(FeatureInfo a, FeatureInfo b) {
-        if (a == null && b == null) {
-            return true;
-        }
-        if (a == null || b == null) {
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
             return false;
         }
-        return a.getOwner() == b.getOwner() &&
-                a.getType() == b.getType() &&
-                a.getLevel() == b.getLevel() &&
-                a.isDeathFeature() == b.isDeathFeature() &&
-                a.isSummonFeature() == b.isSummonFeature();
+        if (obj instanceof FeatureInfo) {
+            FeatureInfo other = (FeatureInfo)obj;
+            return getOwner() == other.getOwner() && getFeature().equals(other.getFeature());
+        }
+        return false;
     }
-
 }

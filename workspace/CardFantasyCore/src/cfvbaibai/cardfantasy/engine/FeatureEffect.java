@@ -25,7 +25,7 @@ public class FeatureEffect {
     public void setValue(int value) {
         this.value = value;
     }
-    public CardInfo getSource() {
+    public EntityInfo getSource() {
         return this.cause.getOwner();
     }
     public boolean isEternal() {

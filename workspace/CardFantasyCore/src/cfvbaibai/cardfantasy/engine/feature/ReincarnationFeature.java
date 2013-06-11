@@ -1,21 +1,21 @@
 package cfvbaibai.cardfantasy.engine.feature;
 
 import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
+import cfvbaibai.cardfantasy.GameUI;
 import cfvbaibai.cardfantasy.data.Feature;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.FeatureResolver;
-import cfvbaibai.cardfantasy.engine.GameUI;
 import cfvbaibai.cardfantasy.engine.Grave;
 import cfvbaibai.cardfantasy.engine.Hand;
 
 public final class ReincarnationFeature {
-    public static void apply(FeatureResolver resolver, Feature feature, CardInfo card) {
+    public static void apply(FeatureResolver resolver, Feature cardFeature, CardInfo card) {
         if (!card.isDead()) {
-            throw new CardFantasyRuntimeException("Cannot resurrect undead card: " + card.getShortDesc(true));
+            throw new CardFantasyRuntimeException("Cannot resurrect undead card: " + card.getShortDesc());
         }
-        int rate = feature.getImpact();
+        int rate = cardFeature.getImpact();
         GameUI ui = resolver.getStage().getUI();
-        ui.useSkill(card, card, feature);
+        ui.useSkill(card, card, cardFeature);
         if (resolver.getStage().getRandomizer().roll100(rate)) {
             Grave grave = card.getOwner().getGrave();
             grave.removeCard(card);

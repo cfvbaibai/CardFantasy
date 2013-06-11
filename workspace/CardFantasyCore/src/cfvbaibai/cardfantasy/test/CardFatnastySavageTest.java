@@ -2,6 +2,8 @@ package cfvbaibai.cardfantasy.test;
 
 import org.junit.Test;
 
+import cfvbaibai.cardfantasy.data.RuneData;
+
 public class CardFatnastySavageTest {
 
     @Test
@@ -32,5 +34,10 @@ public class CardFatnastySavageTest {
     @Test
     public void ¾ÅÍ·ÑıÉßvÔ¶¹ÅĞ«»Ê() {
         GameBuilder.play5v5("¾ÅÍ·ÑıÉß", "Ô¶¹ÅĞ«»Ê");
+    }
+
+    @Test
+    public void ¾ÅÍ·ÑıÉßvÔ¶¹ÅĞ«»Ê_»ÄÎß() {
+        GameBuilder.play5v5withRunes("¾ÅÍ·ÑıÉß", RuneData.»ÄÎß, "Ô¶¹ÅĞ«»Ê", RuneData.»ÄÎß);
     }
 }

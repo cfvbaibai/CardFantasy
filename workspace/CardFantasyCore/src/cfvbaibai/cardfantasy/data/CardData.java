@@ -14,11 +14,11 @@ public class CardData {
     private int incrAT;
     private int incrHP;
     private Growth growth;
-    private List<Feature> features;
+    private List<CardFeature> cardFeatures;
 
     public CardData() {
         this.name = "";
-        this.features = new ArrayList<Feature>();
+        this.cardFeatures = new ArrayList<CardFeature>();
         // TODO: Apply real growth
         this.growth = new Growth(100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1100);
     }
@@ -99,7 +99,7 @@ public class CardData {
         return this.growth;
     }
     
-    public List <Feature> getFeatures() {
-        return this.features;
+    public List <CardFeature> getFeatures() {
+        return this.cardFeatures;
     }
 }

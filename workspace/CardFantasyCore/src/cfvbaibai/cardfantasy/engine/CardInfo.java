@@ -8,12 +8,12 @@ import java.util.Map;
 
 import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
 import cfvbaibai.cardfantasy.data.Card;
-import cfvbaibai.cardfantasy.data.Feature;
+import cfvbaibai.cardfantasy.data.CardFeature;
 import cfvbaibai.cardfantasy.data.FeatureTag;
 import cfvbaibai.cardfantasy.data.FeatureType;
 import cfvbaibai.cardfantasy.data.Race;
 
-public class CardInfo {
+public class CardInfo extends EntityInfo {
     private Card card;
     private int hp;
     private int at;
@@ -37,8 +37,8 @@ public class CardInfo {
         this.owner = owner;
         this.effects = new HashMap<FeatureType, List<FeatureEffect>>();
         this.features = new ArrayList<FeatureInfo>();
-        for (Feature feature : card.getAllFeatures()) {
-            this.features.add(new FeatureInfo(this, feature));
+        for (CardFeature cardFeature : card.getAllFeatures()) {
+            this.features.add(new FeatureInfo(this, cardFeature));
         }
         this.cachedPosition = -1;
         this.deadOnce = false;
@@ -61,7 +61,7 @@ public class CardInfo {
     }
 
     public void addEffect(FeatureEffect effect) {
-        FeatureType type = effect.getCause().getType();
+        FeatureType type = effect.getCause().getFeature().getType();
         if (!effects.containsKey(type)) {
             effects.put(type, new LinkedList<FeatureEffect>());
         }
@@ -139,8 +139,9 @@ public class CardInfo {
         this.status.remove(type);
     }
 
-    public String getShortDesc(boolean includePosition) {
-        if (includePosition && this.getPosition() >= 0) {
+    @Override
+    public String getShortDesc() {
+        if (this.getPosition() >= 0) {
             return String.format("<%s>.<%s>.[%d]", this.getOwner().getId(), this.getCard().getId(), this.getPosition());
         } else {
             return String.format("<%s>.<%s>", this.getOwner().getId(), this.getCard().getId());
@@ -174,7 +175,8 @@ public class CardInfo {
     public List<FeatureInfo> getUsableSummonFeatures() {
         List<FeatureInfo> features = new ArrayList<FeatureInfo>();
         for (FeatureInfo feature : this.getAllUsableFeatures()) {
-            if (feature.isSummonFeature()) {
+            CardFeature cardFeature = (CardFeature)feature.getFeature();
+            if (cardFeature.isSummonFeature()) {
                 features.add(feature);
             }
         }
@@ -184,7 +186,8 @@ public class CardInfo {
     public List<FeatureInfo> getUsableDeathFeatures() {
         List<FeatureInfo> features = new ArrayList<FeatureInfo>();
         for (FeatureInfo feature : this.getAllUsableFeatures()) {
-            if (feature.isDeathFeature()) {
+            CardFeature cardFeature = (CardFeature)feature.getFeature();
+            if (cardFeature.isDeathFeature()) {
                 features.add(feature);
             }
         }
@@ -194,7 +197,8 @@ public class CardInfo {
     public List<FeatureInfo> getNormalUsableFeatures() {
         List<FeatureInfo> features = new ArrayList<FeatureInfo>();
         for (FeatureInfo feature : this.getAllUsableFeatures()) {
-            if (!feature.isDeathFeature() && !feature.isSummonFeature()) {
+            CardFeature cardFeature = (CardFeature)feature.getFeature();
+            if (!cardFeature.isDeathFeature() && !cardFeature.isSummonFeature()) {
                 features.add(feature);
             }
         }
@@ -208,7 +212,8 @@ public class CardInfo {
     private List<FeatureInfo> getUsableFeatures() {
         List<FeatureInfo> features = new ArrayList<FeatureInfo>(4);
         for (FeatureInfo feature : this.getAllFeatures()) {
-            if (feature.getUnlockLevel() <= this.getCard().getLevel()) {
+            CardFeature cardFeature = (CardFeature)feature.getFeature();
+            if (cardFeature.getUnlockLevel() <= this.getCard().getLevel()) {
                 features.add(feature);
             }
         }
@@ -216,7 +221,7 @@ public class CardInfo {
     }
 
     public void removeEffect(FeatureEffect effect) {
-        List<FeatureEffect> result = this.effects.get(effect.getCause().getType());
+        List<FeatureEffect> result = this.effects.get(effect.getCause().getFeature().getType());
         if (result == null) {
             return;
         }
@@ -240,7 +245,7 @@ public class CardInfo {
         }
         List<FeatureEffect> result = new ArrayList<FeatureEffect>();
         for (FeatureEffect effect : this.getEffects()) {
-            if (FeatureInfo.equals(effect.getCause(), feature)) {
+            if (effect.getCause().equals(feature)) {
                 result.add(effect);
             }
         }
@@ -288,11 +293,11 @@ public class CardInfo {
             sb.append("(");
             sb.append(effect.getValue());
             sb.append("):");
-            sb.append(effect.getCause().getType().name());
-            sb.append(effect.getCause().getLevel());
+            sb.append(effect.getCause().getFeature().getType().name());
+            sb.append(effect.getCause().getFeature().getLevel());
             if (!effect.isEternal()) {
                 sb.append(":");
-                sb.append(effect.getSource().getShortDesc(false));
+                sb.append(effect.getSource().getShortDesc());
             }
             sb.append(", ");
         }
@@ -347,8 +352,9 @@ public class CardInfo {
     }
 
     public boolean containsUsableFeaturesWithTag(FeatureTag tag) {
-        for (Feature feature : this.getAllUsableFeatures()) {
-            if (feature.getType().containsTag(tag)) {
+        for (FeatureInfo feature : this.getAllUsableFeatures()) {
+            CardFeature cardFeature = (CardFeature) feature.getFeature();
+            if (cardFeature.getType().containsTag(tag)) {
                 return true;
             }
         }

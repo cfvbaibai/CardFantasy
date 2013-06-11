@@ -38,7 +38,7 @@ public class Card implements Cloneable {
         return this.sourceInfo.getBaseHP() + this.sourceInfo.getIncrHP() * this.getLevel();
     }
 
-    public List<Feature> getAllFeatures() {
+    public List<CardFeature> getAllFeatures() {
         return sourceInfo.getFeatures();
     }
 
