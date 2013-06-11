@@ -69,14 +69,19 @@ public enum FeatureType {
     反噬(50),
     疾病(10),
     蛮荒之力(25),
-    蛮荒守护(25),
+    蛮荒守护(50),
     诅咒(30),
     摧毁(0, FeatureTag.即死),
     献祭(20, 10),
     瘟疫(5),
+    污染(15, 15),
+    地狱之力(25),
+    地狱守护(50),
 
     // Unimplemented.
     封印(0, FeatureTag.陷阱),
+    血炼(20),
+    天谴(20),
     未知(0);
 
     private int initImpact;

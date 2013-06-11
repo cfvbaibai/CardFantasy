@@ -289,14 +289,26 @@ public class TestGameUI extends GameUI {
 
     @Override
     public void healCard(CardInfo healer, CardInfo healee, Feature feature, int healHP) {
-        sayF("%s heals %s by %s for %d points. HP: %d -> %d", healer.getShortDesc(true), healee.getShortDesc(true),
-                feature.getShortDesc(), healHP, healee.getHP(), healee.getHP() + healHP);
+        int postHealHP = healee.getHP() + healHP;
+        String healText = String.valueOf(healHP);
+        if (postHealHP > healee.getMaxHP()) {
+            healText += " (" + (postHealHP - healee.getMaxHP()) + " overflow)";
+            postHealHP = healee.getMaxHP();
+        }
+        sayF("%s heals %s by %s for %s points. HP: %d -> %d", healer.getShortDesc(true), healee.getShortDesc(true),
+                feature.getShortDesc(), healText, healee.getHP(), postHealHP);
     }
 
     @Override
     public void healHero(CardInfo healer, Player healee, Feature feature, int healHP) {
-        sayF("%s heals %s by %s for %d points. HP: %d -> %d", healer.getShortDesc(true), healee.getShortDesc(),
-                feature.getShortDesc(), healHP, healee.getLife(), healee.getLife() + healHP);
+        int postHealHP = healee.getLife() + healHP;
+        String healText = String.valueOf(healHP);
+        if (postHealHP > healee.getMaxLife()) {
+            healText += " (" + (postHealHP - healee.getMaxLife()) + " overflow)";
+            postHealHP = healee.getMaxLife();
+        }
+        sayF("%s heals %s by %s for %s points. HP: %d -> %d", healer.getShortDesc(true), healee.getShortDesc(),
+                feature.getShortDesc(), healText, healee.getLife(), postHealHP);
     }
 
     @Override

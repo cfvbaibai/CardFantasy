@@ -10,6 +10,8 @@ import cfvbaibai.cardfantasy.data.FeatureType;
 import cfvbaibai.cardfantasy.data.Race;
 import cfvbaibai.cardfantasy.engine.feature.BackStabFeature;
 import cfvbaibai.cardfantasy.engine.feature.BlockFeature;
+import cfvbaibai.cardfantasy.engine.feature.BloodDrainFeature;
+import cfvbaibai.cardfantasy.engine.feature.BloodPaintFeature;
 import cfvbaibai.cardfantasy.engine.feature.BloodThirstyFeature;
 import cfvbaibai.cardfantasy.engine.feature.BurningFeature;
 import cfvbaibai.cardfantasy.engine.feature.BurningFlameFeature;
@@ -28,6 +30,7 @@ import cfvbaibai.cardfantasy.engine.feature.ExplodeFeature;
 import cfvbaibai.cardfantasy.engine.feature.FireMagicFeature;
 import cfvbaibai.cardfantasy.engine.feature.GuardFeature;
 import cfvbaibai.cardfantasy.engine.feature.HealFeature;
+import cfvbaibai.cardfantasy.engine.feature.HeavenWrathFeature;
 import cfvbaibai.cardfantasy.engine.feature.IceArmorFeature;
 import cfvbaibai.cardfantasy.engine.feature.IceMagicFeature;
 import cfvbaibai.cardfantasy.engine.feature.ImmobilityFeature;
@@ -49,6 +52,7 @@ import cfvbaibai.cardfantasy.engine.feature.ResurrectionFeature;
 import cfvbaibai.cardfantasy.engine.feature.ReturnFeature;
 import cfvbaibai.cardfantasy.engine.feature.ReviveFeature;
 import cfvbaibai.cardfantasy.engine.feature.SacrificeFeature;
+import cfvbaibai.cardfantasy.engine.feature.SealFeature;
 import cfvbaibai.cardfantasy.engine.feature.SnipeFeature;
 import cfvbaibai.cardfantasy.engine.feature.SpikeFeature;
 import cfvbaibai.cardfantasy.engine.feature.TransportFeature;
@@ -160,6 +164,12 @@ public class FeatureResolver {
                 DestroyFeature.apply(this, feature, attacker, defender, 1);
             } else if (feature.getType() == FeatureType.ÎÁÒß) {
                 PlagueFeature.apply(feature, this, attacker, defender);
+            } else if (feature.getType() == FeatureType.ÑªÁ¶) {
+                BloodPaintFeature.apply(feature, this, attacker, defender, 1);
+            } else if (feature.getType() == FeatureType.ÌìÇ´) {
+                HeavenWrathFeature.apply(this, feature, attacker, defender);
+            } else if (feature.getType() == FeatureType.·âÓ¡) {
+                SealFeature.apply(feature, this, attacker, defender);
             }
         }
     }
@@ -286,8 +296,6 @@ public class FeatureResolver {
         for (FeatureInfo deadCardFeature : deadCard.getAllUsableFeatures()) {
             if (deadCardFeature.getType() == FeatureType.×Ô±¬) {
                 ExplodeFeature.apply(this, deadCardFeature, killerCard, deadCard);
-            } else if (deadCardFeature.getType() == FeatureType.¸´»î) {
-                ReviveFeature.apply(this, deadCardFeature, deadCard);
             }
         }
         for (FeatureInfo deadCardFeature : deadCard.getUsableDeathFeatures()) {
@@ -295,7 +303,13 @@ public class FeatureResolver {
                 WeakenAllFeature.apply(this, deadCardFeature, deadCard, killerCard.getOwner());
             } else if (deadCardFeature.getType() == FeatureType.ÁÒ»ğ·ÙÉñ) {
                 BurningFlameFeature.apply(deadCardFeature, this, deadCard, killerCard.getOwner());
-            } 
+            } else if (deadCardFeature.getType() == FeatureType.¸´»î) {
+                ReviveFeature.apply(this, deadCardFeature, deadCard);
+            } else if (deadCardFeature.getType() == FeatureType.×çÖä) {
+                CurseFeature.apply(this, deadCardFeature, deadCard, killerCard.getOwner());
+            } else if (deadCardFeature.getType() == FeatureType.ÁÒÑæ·ç±©) {
+                FireMagicFeature.apply(deadCardFeature, this, deadCard, killerCard.getOwner(), -1);
+            }
         }
         for (FeatureInfo deadCardFeature : deadCard.getAllUsableFeatures()) {
             if (deadCardFeature.getType() == FeatureType.×ªÉú) {
@@ -321,6 +335,8 @@ public class FeatureResolver {
                     ChainAttackFeature.apply(this, feature, attacker, defender);
                 } else if (feature.getType() == FeatureType.¼²²¡) {
                     DiseaseFeature.apply(feature, this, attacker, defender, normalAttackDamage);
+                } else if (feature.getType() == FeatureType.ÎüÑª) {
+                    BloodDrainFeature.apply(feature, this, attacker, defender, normalAttackDamage);
                 }
             }
         }
@@ -374,15 +390,12 @@ public class FeatureResolver {
     }
 
     public OnDamagedResult applyDamage(CardInfo card, int damage) {
-        int originalHP = card.getHP();
-        card.applyDamage(damage);
+        int actualDamage = card.applyDamage(damage);
         OnDamagedResult result = new OnDamagedResult();
+        result.actualDamage = actualDamage;
         if (card.getHP() <= 0) {
             result.cardDead = true;
-            result.actualDamage = originalHP;
             cardDead(card);
-        } else {
-            result.actualDamage = damage;
         }
         return result;
     }
@@ -499,6 +512,8 @@ public class FeatureResolver {
                 CurseFeature.apply(this, feature, card, opField.getOwner());
             } else if (feature.getType() == FeatureType.´İ»Ù) {
                 DestroyFeature.apply(this, feature, card, opField.getOwner(), 1);
+            } else if (feature.getType() == FeatureType.ÎÁÒß) {
+                PlagueFeature.apply(feature, this, card, opField.getOwner());
             }
         }
         for (CardInfo fieldCard : myField.getAliveCards()) {

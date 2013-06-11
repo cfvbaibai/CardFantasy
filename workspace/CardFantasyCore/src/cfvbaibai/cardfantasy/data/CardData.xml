@@ -729,4 +729,246 @@
         <Feature type="战意" level="7" unlock="5" />
         <Feature type="转生" level="9" unlock="10" />
     </Card>
+    
+    <!-- 地狱 -->
+    <Card name="恶魔小鬼" race="地狱" speed="2" star="1" cost="3" at="80" hp="270" incrAT="19" incrHP="6">
+        <Feature type="火球" level="2" unlock="0" />
+        <Feature type="污染" level="4" unlock="5" />
+        <Feature type="火球" level="4" unlock="10" />
+    </Card>
+    <Card name="僵尸犬" race="地狱" speed="4" star="1" cost="4" at="105" hp="310" incrAT="18" incrHP="8">
+        <Feature type="污染" level="3" unlock="5" />
+        <Feature type="嗜血" level="4" unlock="10" />
+    </Card>
+    <Card name="骷髅战士" race="地狱" speed="2" star="1" cost="5" at="85" hp="270" incrAT="19" incrHP="6">
+        <Feature type="转生" level="2" unlock="0" />
+        <Feature type="嗜血" level="2" unlock="5" />
+        <Feature type="格挡" level="4" unlock="10" />
+    </Card>
+    <Card name="僵尸" race="地狱" speed="4" star="1" cost="4" at="100" hp="400" incrAT="15" incrHP="20">
+        <Feature type="疾病" level="1" unlock="5" />
+        <Feature type="转生" level="4" unlock="10" />
+    </Card>
+    <Card name="食尸魔" race="地狱" speed="2" star="1" cost="3" at="90" hp="290" incrAT="20" incrHP="7">
+        <Feature type="狂热" level="2" unlock="5" />
+        <Feature type="吸血" level="6" unlock="10" />
+    </Card>
+    <Card name="双头地狱犬" race="地狱" speed="2" star="2" cost="7" at="105" hp="470" incrAT="23" incrHP="11">
+        <Feature type="火球" level="2" unlock="0" />
+        <Feature type="冰弹" level="4" unlock="5" />
+        <Feature type="污染" level="7" unlock="10" />
+    </Card>
+    <Card name="骷髅弓箭手" race="地狱" speed="4" star="2" cost="8" at="125" hp="390" incrAT="19" incrHP="21">
+        <Feature type="狙击" level="2" unlock="0" />
+        <Feature type="转生" level="3" unlock="5" />
+        <Feature type="穿刺" level="6" unlock="10" />
+    </Card>
+    <Card name="堕落灵魂" race="地狱" speed="2" star="2" cost="6" at="105" hp="400" incrAT="22" incrHP="15">
+        <Feature type="落雷" level="2" unlock="0" />
+        <Feature type="诅咒" level="4" unlock="5" />
+        <Feature type="转生" level="4" unlock="10" />
+    </Card>
+    <Card name="石像鬼" race="地狱" speed="2" star="2" cost="5" at="155" hp="530" incrAT="24" incrHP="7">
+        <Feature type="污染" level="4" unlock="5" />
+        <Feature type="回春" level="4" unlock="10" />
+    </Card>
+    <Card name="吸血鬼伯爵" race="地狱" speed="4" star="2" cost="7" at="135" hp="480" incrAT="20" incrHP="16">
+        <Feature type="吸血" level="5" unlock="0" />
+        <Feature type="血炼" level="5" unlock="5" />
+        <Feature type="地狱之力" level="3" unlock="10" />
+    </Card>
+    <Card name="蛇发女妖" race="地狱" speed="4" star="2" cost="6" at="160" hp="500" incrAT="15" incrHP="15">
+        <Feature type="毒雾" level="3" unlock="5" />
+        <Feature type="霜冻新星" level="5" unlock="10" />
+    </Card>
+    <Card name="暗杀人偶" race="地狱" speed="4" star="2" cost="6" at="205" hp="520" incrAT="13" incrHP="20">
+        <Feature type="反噬" level="3" unlock="0" />
+        <Feature type="背刺" level="3" unlock="5" />
+        <Feature type="暴击" level="6" unlock="10" />
+    </Card>
+    <Card name="南瓜幽灵" race="地狱" speed="2" star="2" cost="5" at="100" hp="370" incrAT="14" incrHP="36">
+        <Feature type="冰弹" level="3" unlock="0" />
+        <Feature type="瘟疫" level="2" unlock="5" />
+        <Feature type="连环闪电" level="4" unlock="10" />
+    </Card>
+    <Card name="污染怪鱼" race="地狱" speed="4" star="2" cost="5" at="120" hp="400" incrAT="23" incrHP="18">
+        <Feature type="污染" level="3" unlock="0" />
+        <Feature type="反击" level="3" unlock="5" />
+        <Feature type="转生" level="5" unlock="10" />
+    </Card>
+    <Card name="烈火僵尸" race="地狱" speed="2" star="2" cost="6" at="140" hp="390" incrAT="24" incrHP="18">
+        <Feature type="污染" level="3" unlock="0" />
+        <Feature type="燃烧" level="3" unlock="5" />
+        <Feature type="烈火焚神" level="4" unlock="10" death="true" />
+    </Card>
+    <Card name="地狱魔兽" race="地狱" speed="4" star="3" cost="10" at="150" hp="700" incrAT="27" incrHP="13">
+        <Feature type="落雷" level="2" unlock="0" />
+        <Feature type="疾病" level="3" unlock="5" />
+        <Feature type="火球" level="7" unlock="10" />
+    </Card>
+    <Card name="骷髅法师" race="地狱" speed="2" star="3" cost="8" at="115" hp="520" incrAT="24" incrHP="23">
+        <Feature type="火球" level="4" unlock="0" />
+        <Feature type="烈焰风暴" level="4" unlock="5" death="true" />
+        <Feature type="转生" level="7" unlock="10" />
+    </Card>
+    <Card name="堕落精灵" race="地狱" speed="2" star="3" cost="9" at="165" hp="590" incrAT="29" incrHP="8">
+        <Feature type="闪避" level="3" unlock="0" />
+        <Feature type="背刺" level="3" unlock="5" />
+        <Feature type="暴击" level="7" unlock="10" />
+    </Card>
+    <Card name="堕落精灵法师" race="地狱" speed="4" star="3" cost="9" at="130" hp="560" incrAT="21" incrHP="31">
+        <Feature type="霜冻新星" level="2" unlock="0" />
+        <Feature type="诅咒" level="5" unlock="5" />
+        <Feature type="群体削弱" level="4" unlock="10" />
+    </Card>
+    <Card name="黑曜石像鬼" race="地狱" speed="4" star="3" cost="11" at="180" hp="760" incrAT="25" incrHP="14">
+        <Feature type="背刺" level="2" unlock="0" />
+        <Feature type="法力反射" level="2" unlock="5" />
+        <Feature type="回春" level="5" unlock="10" />
+    </Card>
+    <Card name="血祭恶魔" race="地狱" speed="4" star="3" cost="8" at="170" hp="700" incrAT="27" incrHP="14">
+        <Feature type="反击" level="4" unlock="0" />
+        <Feature type="吸血" level="7" unlock="5" />
+        <Feature type="地狱之力" level="4" unlock="10" />
+    </Card>
+    <Card name="邪眼" race="地狱" speed="4" star="3" cost="8" at="165" hp="570" incrAT="23" incrHP="24">
+        <Feature type="瘟疫" level="3" unlock="0" summon="true" />
+        <Feature type="污染" level="6" unlock="5" />
+        <Feature type="狙击" level="7" unlock="10" />
+    </Card>
+    <Card name="梦魇" race="地狱" speed="4" star="3" cost="9" at="180" hp="650" incrAT="24" incrHP="25">
+        <Feature type="陷阱" level="2" unlock="0" summon="true" />
+        <Feature type="燃烧" level="4" unlock="5" />
+        <Feature type="法力反射" level="6" unlock="10" />
+    </Card>
+    <Card name="木乃伊法老王" race="地狱" speed="4" star="3" cost="10" at="200" hp="785" incrAT="28" incrHP="11">
+        <Feature type="污染" level="3" unlock="0" />
+        <Feature type="瘟疫" level="5" unlock="5" />
+        <Feature type="地狱守护" level="4" unlock="10" />
+    </Card>
+    <Card name="魅魔" race="地狱" speed="4" star="3" cost="9" at="180" hp="700" incrAT="23" incrHP="26">
+        <Feature type="闪避" level="2" unlock="0" />
+        <Feature type="污染" level="6" unlock="5" />
+        <Feature type="陷阱" level="1" unlock="10" />
+    </Card>
+    <Card name="鬼树人" race="地狱" speed="4" star="3" cost="10" at="180" hp="630" incrAT="18" incrHP="25">
+        <Feature type="诅咒" level="8" unlock="0" summon="true" />
+        <Feature type="地狱守护" level="5" unlock="5" />
+        <Feature type="诅咒" level="6" unlock="10" />
+    </Card>
+    <Card name="幽灵巨鲸" race="地狱" speed="4" star="3" cost="11" at="230" hp="570" incrAT="17" incrHP="23">
+        <Feature type="诅咒" level="5" unlock="0" death="true" />
+        <Feature type="暴风雪" level="4" unlock="5" summon="true" />
+        <Feature type="转生" level="5" unlock="10" />
+    </Card>
+    <Card name="黑魔导士" race="地狱" speed="2" star="3" cost="11" at="160" hp="570" incrAT="24" incrHP="18">
+        <Feature type="血炼" level="3" unlock="0" />
+        <Feature type="污染" level="5" unlock="5" />
+        <Feature type="暴风雪" level="5" unlock="10" />
+    </Card>
+    <Card name="雷电幽魂" race="地狱" speed="2" star="3" cost="11" at="160" hp="700" incrAT="24" incrHP="25">
+        <Feature type="连环闪电" level="4" unlock="0" />
+        <Feature type="转生" level="5" unlock="5" />
+        <Feature type="弱点攻击" level="0" unlock="10" />
+    </Card>
+    <Card name="新年爆竹" race="地狱" speed="6" star="3" cost="11" at="6" hp="6" incrAT="6" incrHP="6">
+        <Feature type="燃烧" level="6" unlock="0" />
+        <Feature type="自爆" level="6" unlock="5" />
+        <Feature type="烈焰风暴" level="6" unlock="10" death="true" />
+    </Card>
+    <Card name="美杜莎女王" race="地狱" speed="6" star="4" cost="12" at="230" hp="870" incrAT="28" incrHP="23">
+        <Feature type="诅咒" level="6" unlock="0" />
+        <Feature type="陷阱" level="2" unlock="5" />
+        <Feature type="传送" level="0" unlock="10" summon="true" />
+    </Card>
+    <Card name="邪灵女巫" race="地狱" speed="4" star="4" cost="12" at="195" hp="700" incrAT="29" incrHP="22">
+        <Feature type="献祭" level="3" unlock="0" />
+        <Feature type="诅咒" level="8" unlock="5" />
+        <Feature type="回魂" level="2" unlock="10" />
+    </Card>
+    <Card name="黑甲铁骑士" race="地狱" speed="4" star="4" cost="13" at="250" hp="850" incrAT="26" incrHP="15">
+        <Feature type="不动" level="0" unlock="0" />
+        <Feature type="暴击" level="5" unlock="5" />
+        <Feature type="转生" level="6" unlock="10" />
+    </Card>
+    <Card name="大恶魔" race="地狱" speed="4" star="4" cost="13" at="225" hp="900" incrAT="30" incrHP="19">
+        <Feature type="污染" level="6" unlock="0" />
+        <Feature type="吸血" level="6" unlock="5" />
+        <Feature type="地狱守护" level="5" unlock="10" />
+    </Card>
+    <Card name="骨龙" race="地狱" speed="6" star="4" cost="11" at="240" hp="850" incrAT="35" incrHP="40">
+        <Feature type="霜冻新星" level="5" unlock="0" />
+        <Feature type="污染" level="8" unlock="5" />
+        <Feature type="地狱之力" level="5" unlock="10" />
+    </Card>
+    <Card name="地狱红龙" race="地狱" speed="6" star="4" cost="14" at="290" hp="1250" incrAT="25" incrHP="26">
+        <Feature type="烈火焚神" level="3" unlock="0" />
+        <Feature type="回春" level="6" unlock="5" />
+        <Feature type="法力反射" level="5" unlock="10" />
+    </Card>
+    <Card name="痛苦之王" race="地狱" speed="4" star="4" cost="12" at="225" hp="950" incrAT="18" incrHP="50">
+        <Feature type="燃烧" level="3" unlock="0" />
+        <Feature type="裂伤" level="0" unlock="5" />
+        <Feature type="群体削弱" level="8" unlock="10" />
+    </Card>
+    <Card name="奇美拉" race="地狱" speed="6" star="4" cost="12" at="160" hp="700" incrAT="44" incrHP="18">
+        <Feature type="火球" level="5" unlock="0" />
+        <Feature type="地狱之力" level="4" unlock="5" />
+        <Feature type="摧毁" level="0" unlock="10" summon="true" />
+    </Card>
+    <Card name="冥河船夫" race="地狱" speed="6" star="4" cost="14" at="240" hp="880" incrAT="26" incrHP="30">
+        <Feature type="污染" level="6" unlock="0" />
+        <Feature type="地狱之力" level="6" unlock="5" />
+        <Feature type="回魂" level="1" unlock="10" />
+    </Card>
+    <Card name="血炼巫妖" race="地狱" speed="4" star="4" cost="13" at="220" hp="720" incrAT="24" incrHP="25">
+        <Feature type="血炼" level="6" unlock="0" />
+        <Feature type="闪避" level="6" unlock="5" />
+        <Feature type="转生" level="6" unlock="10" />
+    </Card>
+    <Card name="暗夜魔影" race="地狱" speed="4" star="4" cost="14" at="240" hp="730" incrAT="17" incrHP="23">
+        <Feature type="闪避" level="4" unlock="0" />
+        <Feature type="血炼" level="8" unlock="5" />
+        <Feature type="天谴" level="7" unlock="10" />
+    </Card>
+    <Card name="恶灵之瞳" race="地狱" speed="4" star="4" cost="14" at="250" hp="870" incrAT="25" incrHP="32">
+        <Feature type="血炼" level="6" unlock="0" />
+        <Feature type="二重狙击" level="8" unlock="5" />
+        <Feature type="迷魂" level="8" unlock="10" />
+    </Card>
+    <Card name="毁灭之龙" race="地狱" speed="6" star="5" cost="14" at="350" hp="1250" incrAT="34" incrHP="34">
+        <Feature type="暴击" level="6" unlock="0" />
+        <Feature type="裂伤" level="0" unlock="5" />
+        <Feature type="免疫" level="0" unlock="10" />
+    </Card>
+    <Card name="灵魂收割者" race="地狱" speed="4" star="5" cost="15" at="365" hp="1300" incrAT="26" incrHP="40">
+        <Feature type="横扫" level="0" unlock="0" />
+        <Feature type="封印" level="0" unlock="5" />
+        <Feature type="吸血" level="8" unlock="10" />
+    </Card>
+    <Card name="恐惧之王" race="地狱" speed="4" star="5" cost="17" at="310" hp="1100" incrAT="25" incrHP="35">
+        <Feature type="诅咒" level="6" unlock="0" />
+        <Feature type="封印" level="0" unlock="5" />
+        <Feature type="转生" level="7" unlock="10" />
+    </Card>
+    <Card name="背主之影" race="地狱" speed="2" star="5" cost="17" at="260" hp="820" incrAT="26" incrHP="32">
+        <Feature type="背刺" level="8" unlock="0" />
+        <Feature type="狙击" level="10" unlock="5" />
+        <Feature type="转生" level="8" unlock="10" />
+    </Card>
+    <Card name="幽灵巨龙" race="地狱" speed="4" star="5" cost="18" at="260" hp="1350" incrAT="35" incrHP="56">
+        <Feature type="转生" level="6" unlock="0" />
+        <Feature type="脱困" level="0" unlock="5" />
+        <Feature type="弱点攻击" level="0" unlock="10" />
+    </Card>
+    <Card name="巫妖领主" race="地狱" speed="4" star="5" cost="16" at="350" hp="1290" incrAT="32" incrHP="34">
+        <Feature type="不动" level="0" unlock="0" />
+        <Feature type="法力反射" level="8" unlock="5" />
+        <Feature type="战意" level="6" unlock="10" />
+    </Card>
+    <Card name="亡灵守护神" race="地狱" speed="6" star="5" cost="18" at="325" hp="1360" incrAT="30" incrHP="38">
+        <Feature type="二重狙击" level="8" unlock="0" />
+        <Feature type="送还" level="0" unlock="5" />
+        <Feature type="免疫" level="0" unlock="10" />
+    </Card>
 </Cards>

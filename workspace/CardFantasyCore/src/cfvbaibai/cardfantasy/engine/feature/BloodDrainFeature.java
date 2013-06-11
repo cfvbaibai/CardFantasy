@@ -11,6 +11,9 @@ public final class BloodDrainFeature {
         if (attacker == null || attacker.isDead()) {
             throw new CardFantasyRuntimeException("attacker is null or dead!");
         }
+        if (attacker.getHP() == attacker.getMaxHP()) {
+            return;
+        }
         int drainedHP = feature.getImpact() * damage / 100;
         GameUI ui = resolver.getStage().getUI();
         ui.useSkill(attacker, defender, feature);
