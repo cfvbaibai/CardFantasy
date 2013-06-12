@@ -97,7 +97,7 @@ public class GameEngine {
     }
 
     private Phase standby() throws HeroDieSignal {
-        this.stage.getResolver().activateRunes(this.getActivePlayer());
+        this.stage.getResolver().activateRunes(this.getActivePlayer(), this.getInactivePlayer());
         this.stage.getResolver().resolvePreAttackRune(this.getActivePlayer(), this.getInactivePlayer());
         return Phase.Battle;
     }
@@ -162,7 +162,9 @@ public class GameEngine {
             resolver.resolveCardRoundEndingFeature(myField.getCard(i));
         }
 
+        this.stage.getUI().compactField(myField);
         myField.compact();
+        this.stage.getUI().compactField(opField);
         opField.compact();
 
         for (CardInfo card : myField.getAliveCards()) {

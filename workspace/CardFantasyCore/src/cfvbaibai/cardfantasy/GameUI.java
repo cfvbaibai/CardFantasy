@@ -10,6 +10,7 @@ import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.CardStatusItem;
 import cfvbaibai.cardfantasy.engine.EntityInfo;
 import cfvbaibai.cardfantasy.engine.FeatureEffect;
+import cfvbaibai.cardfantasy.engine.Field;
 import cfvbaibai.cardfantasy.engine.GameResult;
 import cfvbaibai.cardfantasy.engine.Phase;
 import cfvbaibai.cardfantasy.engine.Player;
@@ -68,15 +69,18 @@ public abstract class GameUI {
 
     public abstract void attackHero(CardInfo attacker, Player hero, Feature cardFeature, int damage);
 
-    public abstract void useSkill(EntityInfo attacker, List<? extends EntityInfo> victims, Feature cardFeature);
+    public abstract void useSkill(EntityInfo caster, List<? extends EntityInfo> targets, Feature feature);
 
-    public void useSkill(EntityInfo attacker, EntityInfo victim, Feature cardFeature) {
+    public abstract void protect(EntityInfo protector, EntityInfo attacker, EntityInfo protectee,
+            Feature attackFeature, Feature protectFeature);
+
+    public void useSkill(EntityInfo caster, EntityInfo target, Feature feature) {
         List<EntityInfo> victims = new ArrayList<EntityInfo>();
-        victims.add(victim);
-        useSkill(attacker, victims, cardFeature);
+        victims.add(target);
+        useSkill(caster, victims, feature);
     }
 
-    public abstract void useSkillToHero(EntityInfo attacker, Player victimHero, Feature cardFeature);
+    public abstract void useSkillToHero(EntityInfo caster, Player targetHero, Feature feature);
 
     public abstract void addCardStatus(EntityInfo attacker, CardInfo victim, Feature cardFeature, CardStatusItem item);
 
@@ -84,12 +88,12 @@ public abstract class GameUI {
 
     public abstract void attackBlocked(EntityInfo attacker, CardInfo defender, Feature atFeature, Feature dfFeature);
 
-    public abstract void adjustAT(CardInfo source, CardInfo target, int adjAT, Feature cardFeature);
+    public abstract void adjustAT(EntityInfo source, CardInfo target, int adjAT, Feature cardFeature);
 
-    public abstract void adjustHP(CardInfo source, CardInfo target, int adjHP, Feature cardFeature);
+    public abstract void adjustHP(EntityInfo source, CardInfo target, int adjHP, Feature cardFeature);
 
-    public abstract void blockDamage(EntityInfo attacker, EntityInfo defender, Feature cardFeature, int originalDamage,
-            int actualDamage);
+    public abstract void blockDamage(EntityInfo protector, EntityInfo attacker, EntityInfo defender,
+            Feature cardFeature, int originalDamage, int actualDamage);
 
     public abstract void healBlocked(CardInfo healer, CardInfo healee, Feature cardFeature, Feature blockerFeature);
 
@@ -113,7 +117,8 @@ public abstract class GameUI {
 
     public abstract void blockStatus(EntityInfo attacker, EntityInfo defender, Feature cardFeature, CardStatusItem item);
 
-    public abstract void blockFeature(EntityInfo attacker, EntityInfo defender, Feature cardFeature, Feature attackFeature);
+    public abstract void blockFeature(EntityInfo attacker, EntityInfo defender, Feature cardFeature,
+            Feature attackFeature);
 
     public abstract void returnCard(CardInfo attacker, CardInfo defender, Feature cardFeature);
 
@@ -125,11 +130,13 @@ public abstract class GameUI {
 
     public abstract void roll100(int dice, int rate);
 
-    public abstract void useSkill(EntityInfo attacker, Feature cardFeature);
+    public abstract void useSkill(EntityInfo caster, Feature feature);
 
     public abstract void killCard(EntityInfo attacker, CardInfo victim, Feature cardFeature);
 
     public abstract void activateRune(RuneInfo rune);
-    
+
     public abstract void deactivateRune(RuneInfo rune);
+
+    public abstract void compactField(Field field);
 }

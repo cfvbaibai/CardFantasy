@@ -41,7 +41,7 @@ public class CardDataStore {
                 cardData.setIncrHP(Integer.parseInt(cardNode.valueOf("@incrHP")));
                 
                 @SuppressWarnings("unchecked")
-                List<Node> featureNodes = cardNode.selectNodes("CardFeature");
+                List<Node> featureNodes = cardNode.selectNodes("Feature");
                 for (Node featureNode : featureNodes) {
                     FeatureType type = FeatureType.valueOf(featureNode.valueOf("@type"));
                     int level = Integer.parseInt(featureNode.valueOf("@level"));

@@ -1,7 +1,12 @@
 package cfvbaibai.cardfantasy.data;
 
 public enum RuneData {
-    »ÄÎß(RuneClass.GROUND, 3, FeatureType.¶¾Òº, 3, 1, 1, Growth.RUNE, RuneActivator.heroHP(60));
+    »ÄÎß(RuneClass.GROUND, 3, FeatureType.¶¾Òº, 3, 1, 1, Growth.RUNE, RuneActivator.myHeroHP(60)),
+    ÕÓÔó(RuneClass.GROUND, 3, FeatureType.¶¾Îí, 1, 1, 1, Growth.RUNE, RuneActivator.enemyField(2, null)),
+    ÑÒ¾§(RuneClass.GROUND, 3, FeatureType.¾ÛÄÜ»¤¼×, 3, 1, 2, Growth.RUNE, RuneActivator.enemyField(1, null)),
+    ¶¾É°(RuneClass.GROUND, 3, FeatureType.¶¾Òº, 5, 1, 2, Growth.RUNE, RuneActivator.round(12)),
+    ÑÒ±Ú(RuneClass.GROUND, 4, FeatureType.¸ñµ², 5, 1, 3, Growth.RUNE, RuneActivator.myField(1, Race.Âù»Ä)),
+    ;
     
     private RuneClass runeClass;
     private int maxEnergy;

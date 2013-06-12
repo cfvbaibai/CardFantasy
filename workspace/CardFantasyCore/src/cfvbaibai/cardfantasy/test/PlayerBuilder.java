@@ -68,7 +68,8 @@ public class PlayerBuilder {
                 int runeLevel = Integer.parseInt(runeDesc.substring(iDash + 1));
 
                 RuneData runeData = RuneData.valueOf(runeName);
-                Rune rune = new Rune(runeData, runeLevel);
+                Rune rune = new Rune(runeData, 0);
+                rune.growToLevel(runeLevel);
                 runes.add(rune);
             } else {
                 throw new CardFantasyRuntimeException("Invalid description prefix! " + desc);

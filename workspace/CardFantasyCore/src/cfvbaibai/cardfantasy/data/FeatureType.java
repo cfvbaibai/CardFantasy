@@ -77,11 +77,10 @@ public enum FeatureType {
     污染(15, 15),
     地狱之力(25),
     地狱守护(50),
-
-    // Unimplemented.
     封印(0, FeatureTag.陷阱),
     血炼(20),
     天谴(20),
+    聚能护甲(50),
     未知(0);
 
     private int initImpact;

@@ -13,7 +13,7 @@ public final class MagicShieldFeature {
         int actualDamage = Math.min(maxDamage, originalDamage);
         GameUI ui = resolver.getStage().getUI();
         ui.useSkill(defender, attacker, cardFeature);
-        ui.blockDamage(attacker, defender, cardFeature, originalDamage, actualDamage);
+        ui.blockDamage(defender, attacker, defender, cardFeature, originalDamage, actualDamage);
         return actualDamage;
     }
 }

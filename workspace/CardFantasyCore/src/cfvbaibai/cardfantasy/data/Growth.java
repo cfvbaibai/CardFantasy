@@ -3,7 +3,7 @@ package cfvbaibai.cardfantasy.data;
 import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
 
 public class Growth {
-    public static final Growth RUNE = new Growth(100, 200, 300, 400);
+    public static final Growth RUNE = new Growth(0, 100, 200, 300, 400);
     
     // / From level 0. requiredExp[i] means the required exp to grow to level i.
     // / requiredExp must be incremental.

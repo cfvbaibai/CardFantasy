@@ -1,8 +1,5 @@
 package cfvbaibai.cardfantasy.data;
 
 public enum RuneActivationType {
-    HeroHP,
-    Grave,
-    Field,
-    Round,
+    HeroHP, Grave, Field, Round, Hand;
 }

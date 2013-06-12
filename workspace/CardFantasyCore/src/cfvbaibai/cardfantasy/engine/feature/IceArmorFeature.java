@@ -19,7 +19,7 @@ public final class IceArmorFeature {
             actualDamage = maxDamage;
         }
 
-        ui.blockDamage(attacker, defender, cardFeature, originalDamage, actualDamage);
+        ui.blockDamage(defender, attacker, defender, cardFeature, originalDamage, actualDamage);
         return actualDamage;
     }
 }

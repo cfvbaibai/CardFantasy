@@ -203,7 +203,7 @@ public class TestGameUI extends GameUI {
 
     private void showField(Field field) {
         StringBuffer sb = new StringBuffer();
-        //sb.append("Field: ");
+        // sb.append("Field: ");
         int i = 0;
         List<CardInfo> cards = field.getAliveCards();
         for (CardInfo card : cards) {
@@ -270,30 +270,30 @@ public class TestGameUI extends GameUI {
     }
 
     @Override
-    public void adjustAT(CardInfo source, CardInfo target, int adjAT, Feature cardFeature) {
+    public void adjustAT(EntityInfo source, CardInfo target, int adjAT, Feature cardFeature) {
         String verb = adjAT > 0 ? "increases" : "decreases";
         sayF("%s %s %s's AT by %s ! %d -> %d.", source.getShortDesc(), verb, target.getShortDesc(),
                 cardFeature.getShortDesc(), target.getAT(), target.getAT() + adjAT);
     }
 
     @Override
-    public void adjustHP(CardInfo source, CardInfo target, int adjHP, Feature cardFeature) {
+    public void adjustHP(EntityInfo source, CardInfo target, int adjHP, Feature cardFeature) {
         String verb = adjHP > 0 ? "increases" : "decreases";
         sayF("%s %s %s's HP by %s ! %d -> %d.", source.getShortDesc(), verb, target.getShortDesc(),
                 cardFeature.getShortDesc(), target.getHP(), target.getHP() + adjHP);
     }
 
     @Override
-    public void blockDamage(EntityInfo attacker, EntityInfo defender, Feature cardFeature, int originalDamage,
-            int actualDamage) {
-        sayF("%s blocks the attack from %s by %s. Damage: %d -> %d", defender.getShortDesc(),
-                attacker.getShortDesc(), cardFeature.getShortDesc(), originalDamage, actualDamage);
+    public void blockDamage(EntityInfo protector, EntityInfo attacker, EntityInfo defender, Feature cardFeature,
+            int originalDamage, int actualDamage) {
+        sayF("%s blocks the attack from %s by %s for %s. Damage: %d -> %d", protector.getShortDesc(), attacker.getShortDesc(),
+                cardFeature.getShortDesc(), defender.getShortDesc(), originalDamage, actualDamage);
     }
 
     @Override
     public void debuffDamage(CardInfo card, CardStatusItem item, int damage) {
-        sayF("%s gets damage in status %s. Damage: %d. HP: %d -> %d", card.getShortDesc(), item.getShortDesc(),
-                damage, card.getHP(), Math.max(0, card.getHP() - damage));
+        sayF("%s gets damage in status %s. Damage: %d. HP: %d -> %d", card.getShortDesc(), item.getShortDesc(), damage,
+                card.getHP(), Math.max(0, card.getHP() - damage));
     }
 
     @Override
@@ -303,8 +303,8 @@ public class TestGameUI extends GameUI {
 
     @Override
     public void recoverAT(CardInfo card, FeatureType cause, int recoveredAT) {
-        sayF("%s's AT recovered from ¡¾%s¡¿. AT: %d -> %d", card.getShortDesc(), cause.name(), card.getAT(),
-                card.getAT() - recoveredAT);
+        sayF("%s's AT recovered from ¡¾%s¡¿. AT: %d -> %d", card.getShortDesc(), cause.name(), card.getAT(), card.getAT()
+                - recoveredAT);
     }
 
     @Override
@@ -367,14 +367,12 @@ public class TestGameUI extends GameUI {
 
     @Override
     public void blockStatus(EntityInfo attacker, EntityInfo defender, Feature cardFeature, CardStatusItem item) {
-        sayF("%s blocked status ¡¾%s¡¿ by %s", defender.getShortDesc(), item.getShortDesc(),
-                cardFeature.getShortDesc());
+        sayF("%s blocked status ¡¾%s¡¿ by %s", defender.getShortDesc(), item.getShortDesc(), cardFeature.getShortDesc());
     }
 
     @Override
     public void blockFeature(EntityInfo attacker, EntityInfo defender, Feature cardFeature, Feature attackFeature) {
-        sayF("%s blocked %s by %s", defender.getShortDesc(), attackFeature.getShortDesc(),
-                cardFeature.getShortDesc());
+        sayF("%s blocked %s by %s", defender.getShortDesc(), attackFeature.getShortDesc(), cardFeature.getShortDesc());
     }
 
     @Override
@@ -412,17 +410,31 @@ public class TestGameUI extends GameUI {
 
     @Override
     public void killCard(EntityInfo attacker, CardInfo victim, Feature cardFeature) {
-        sayF("%s kills %s by %s directly!", attacker.getShortDesc(), victim.getShortDesc(),
-                cardFeature.getShortDesc());
+        sayF("%s kills %s by %s directly!", attacker.getShortDesc(), victim.getShortDesc(), cardFeature.getShortDesc());
     }
 
     @Override
     public void activateRune(RuneInfo rune) {
-        sayF("%s is activated!", rune.getShortDesc());
+        sayF("%s is activated! Energy: %d -> %d", rune.getShortDesc(), rune.getEnergy(), rune.getEnergy() - 1);
     }
 
     @Override
     public void deactivateRune(RuneInfo rune) {
         sayF("%s is deactivated!", rune.getShortDesc());
+    }
+
+    @Override
+    public void compactField(Field field) {
+        int originalSize = field.size();
+        int aliveCardCount = field.getAliveCards().size();
+        sayF("Compacting %s's field... Slot: %d -> %d", field.getOwner().getShortDesc(), originalSize, aliveCardCount);
+    }
+
+    @Override
+    public void protect(EntityInfo protector, EntityInfo attacker, EntityInfo protectee, Feature attackFeature,
+            Feature protectFeature) {
+        String attackFeatureText = attackFeature == null ? "¡¾ÆÕÍ¨¹¥»÷¡¿" : attackFeature.getShortDesc();
+        sayF("%s uses %s to protect %s from %s's %s", protector.getShortDesc(), protectFeature.getShortDesc(),
+                protectee.getShortDesc(), attacker.getShortDesc(), attackFeatureText);
     }
 }

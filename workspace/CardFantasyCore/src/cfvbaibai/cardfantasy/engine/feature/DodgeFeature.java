@@ -14,7 +14,7 @@ public final class DodgeFeature {
             if (resolver.resolveCounterBlockFeature(cardFeature, attacker, defender)) {
                 return false;
             }
-            ui.blockDamage(attacker, defender, cardFeature, originalDamage, 0);
+            ui.blockDamage(defender, attacker, defender, cardFeature, originalDamage, 0);
             return true;
         } else {
             return false;

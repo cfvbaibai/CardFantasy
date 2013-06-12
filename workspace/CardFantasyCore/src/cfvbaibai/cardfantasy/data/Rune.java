@@ -8,6 +8,10 @@ public class Rune {
         this.exp = exp;
     }
     
+    public void growToLevel(int level) {
+        this.exp = this.data.getGrowth().getRequiredExp(level);
+    }
+    
     public int getLevel() {
         return data.getGrowth().getLevel(this.exp);
     }

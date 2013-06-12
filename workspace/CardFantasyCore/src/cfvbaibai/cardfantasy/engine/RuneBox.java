@@ -5,6 +5,7 @@ import java.util.Collection;
 import java.util.List;
 
 import cfvbaibai.cardfantasy.data.Rune;
+import cfvbaibai.cardfantasy.data.RuneData;
 
 public class RuneBox {
     private List<RuneInfo> runes;
@@ -28,5 +29,14 @@ public class RuneBox {
 
     public List<RuneInfo> getRunes() {
         return new ArrayList<RuneInfo>(this.runes);
+    }
+
+    public RuneInfo getRuneOf(RuneData runeData) {
+        for (RuneInfo rune : this.runes) {
+            if (rune.is(runeData)) {
+                return rune;
+            }
+        }
+        return null;
     }
 }
