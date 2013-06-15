@@ -7,6 +7,7 @@ import java.util.List;
 import cfvbaibai.cardfantasy.Randomizer;
 import cfvbaibai.cardfantasy.data.Card;
 import cfvbaibai.cardfantasy.data.PlayerInfo;
+import cfvbaibai.cardfantasy.data.RuneData;
 
 public class Player {
     private PlayerInfo playerInfo;
@@ -81,5 +82,16 @@ public class Player {
 
     public String getShortDesc() {
         return String.format("<%s>", this.playerInfo.getId());
+    }
+
+    public RuneInfo getActiveRuneOf(RuneData runeData) {
+        RuneInfo rune = this.getRuneBox().getRuneOf(runeData);
+        if (rune == null) {
+            return null;
+        } else if (rune.isActivated()) {
+            return rune;
+        } else {
+            return null;
+        }
     }
 }

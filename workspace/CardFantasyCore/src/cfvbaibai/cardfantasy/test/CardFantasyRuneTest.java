@@ -36,10 +36,28 @@ public class CardFantasyRuneTest {
         GameBuilder.build(playerA, playerB).playGame();
     }
 
-
     @Test
     public void 牛头人酋长vs战斗猛犸象_岩壁() {
         GameBuilder.play5v5withRunes("牛头人酋长", RuneData.岩壁, "战斗猛犸象", RuneData.岩壁);
     }
 
+    @Test
+    public void 水源制造者vs牛头人酋长_石林() {
+        GameBuilder.play5v5withRunes("水源制造者", RuneData.岩壁, "牛头人酋长", RuneData.石林);
+    }
+
+    @Test
+    public void 金属巨龙vs独眼巨人_赤谷() {
+        GameBuilder.play5v5withRunes("金属巨龙", RuneData.岩壁, "独眼巨人", RuneData.赤谷);
+    }
+
+    @Test
+    public void 凤凰vs蜘蛛人女王_飞岩() {
+        GameBuilder.play5v5withRunes("凤凰", RuneData.岩壁, "蜘蛛人女王", RuneData.飞岩);
+    }
+
+    @Test
+    public void 金属巨龙vs蜘蛛人女王_秽土() {
+        GameBuilder.play5v5withRunes("金属巨龙", RuneData.岩壁, "蜘蛛人女王", RuneData.秽土);
+    }
 }

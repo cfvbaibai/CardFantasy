@@ -1,6 +1,7 @@
 package cfvbaibai.cardfantasy.engine;
 
 import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
+import cfvbaibai.cardfantasy.data.Feature;
 import cfvbaibai.cardfantasy.data.Rune;
 import cfvbaibai.cardfantasy.data.RuneActivator;
 import cfvbaibai.cardfantasy.data.RuneData;
@@ -68,5 +69,9 @@ public class RuneInfo extends EntityInfo {
     @Override
     public CardStatus getStatus() {
         return new CardStatus();
+    }
+
+    public Feature getFeature() {
+        return this.getFeatureInfo().getFeature();
     }
 }

@@ -6,6 +6,13 @@ public enum RuneData {
     ÑÒ¾§(RuneClass.GROUND, 3, FeatureType.¾ÛÄÜ»¤¼×, 3, 1, 2, Growth.RUNE, RuneActivator.enemyField(1, null)),
     ¶¾É°(RuneClass.GROUND, 3, FeatureType.¶¾Òº, 5, 1, 2, Growth.RUNE, RuneActivator.round(12)),
     ÑÒ±Ú(RuneClass.GROUND, 4, FeatureType.¸ñµ², 5, 1, 3, Growth.RUNE, RuneActivator.myField(1, Race.Âù»Ä)),
+    ÉîÔ¨(RuneClass.GROUND, 4, FeatureType.¶¾Îí, 5, 1, 3, Growth.RUNE, RuneActivator.enemyGrave(1, Race.Íõ¹ú)),
+    Ê¯ÁÖ(RuneClass.GROUND, 4, FeatureType.·¨Á¦·´Éä, 5, 1, 3, Growth.RUNE, RuneActivator.myGrave(1, Race.Âù»Ä)),
+    ³à¹È(RuneClass.GROUND, 5, FeatureType.ÎüÑª, 5, 1, 4, Growth.RUNE, RuneActivator.myField(1, Race.Âù»Ä)),
+    ÔÉĞÇ(RuneClass.GROUND, 4, FeatureType.ÎÁÒß, 5, 1, 4, Growth.RUNE, RuneActivator.enemyField(1, Race.Íõ¹ú)),
+    ·ÉÑÒ(RuneClass.GROUND, 4, FeatureType.¾Ñ»÷, 5, 1, 4, Growth.RUNE, RuneActivator.myGrave(2, Race.Âù»Ä)),
+    ËÀÓò(RuneClass.GROUND, 5, FeatureType.¶¾ÔÆ, 6, 1, 5, Growth.RUNE, RuneActivator.myGrave(1, Race.Âù»Ä)),
+    »àÍÁ(RuneClass.GROUND, 4, FeatureType.×ªÉú, 4, 1, 5, Growth.RUNE, RuneActivator.myGrave(1, Race.Âù»Ä)),
     ;
     
     private RuneClass runeClass;
