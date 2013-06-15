@@ -24,7 +24,7 @@ public final class FireMagicFeature {
             damage = result.getDamage(); 
             ui.attackCard(attacker, victim, cardFeature, damage);
             boolean cardDead = resolver.applyDamage(victim, damage).cardDead;
-            resolver.resolveCounterAttackFeature(attacker, victim, cardFeature);
+            resolver.resolveCounterAttackFeature(attacker, victim, cardFeature, result);
             if (cardDead) {
                 resolver.resolveDeathFeature(attacker, victim, cardFeature);
             }

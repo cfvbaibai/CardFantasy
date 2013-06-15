@@ -67,7 +67,7 @@ public abstract class GameUI {
 
     public abstract void cardDead(CardInfo deadCard);
 
-    public abstract void attackHero(CardInfo attacker, Player hero, Feature cardFeature, int damage);
+    public abstract void attackHero(EntityInfo attacker, Player hero, Feature cardFeature, int damage);
 
     public abstract void useSkill(EntityInfo caster, List<? extends EntityInfo> targets, Feature feature);
 
@@ -95,7 +95,7 @@ public abstract class GameUI {
     public abstract void blockDamage(EntityInfo protector, EntityInfo attacker, EntityInfo defender,
             Feature cardFeature, int originalDamage, int actualDamage);
 
-    public abstract void healBlocked(CardInfo healer, CardInfo healee, Feature cardFeature, Feature blockerFeature);
+    public abstract void healBlocked(EntityInfo healer, CardInfo healee, Feature cardFeature, Feature blockerFeature);
 
     public abstract void debuffDamage(CardInfo card, CardStatusItem item, int effect);
 
@@ -103,9 +103,9 @@ public abstract class GameUI {
 
     public abstract void recoverAT(CardInfo card, FeatureType cause, int recoveredAT);
 
-    public abstract void healCard(CardInfo healer, CardInfo healee, Feature cardFeature, int healHP);
+    public abstract void healCard(EntityInfo healer, CardInfo healee, Feature cardFeature, int healHP);
 
-    public abstract void healHero(CardInfo healer, Player healee, Feature cardFeature, int healHP);
+    public abstract void healHero(EntityInfo healer, Player healee, Feature cardFeature, int healHP);
 
     public abstract void loseAdjustATEffect(CardInfo ally, FeatureEffect effect);
 

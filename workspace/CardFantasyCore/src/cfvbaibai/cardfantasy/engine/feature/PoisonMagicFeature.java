@@ -30,7 +30,7 @@ public final class PoisonMagicFeature {
             ui.attackCard(attacker, victim, feature, damage);
             boolean cardDead = resolver.applyDamage(victim, damage).cardDead;
             if (attacker instanceof CardInfo) {
-                resolver.resolveCounterAttackFeature((CardInfo)attacker, victim, feature);
+                resolver.resolveCounterAttackFeature((CardInfo)attacker, victim, feature, result);
             }
             if (cardDead) {
                 resolver.resolveDeathFeature(attacker, victim, feature);

@@ -51,4 +51,10 @@ public class RuneActivator {
     public static RuneActivator round(int threshold) {
         return new RuneActivator(RuneActivationType.Round, threshold, null, true);
     }
+    public static RuneActivator myDeck(int threshold, Race race) {
+        return new RuneActivator(RuneActivationType.Deck, threshold, race, false);
+    }
+    public static RuneActivator enemyDeck(int threshold, Race race) {
+        return new RuneActivator(RuneActivationType.Deck, threshold, race, true);
+    }
 }

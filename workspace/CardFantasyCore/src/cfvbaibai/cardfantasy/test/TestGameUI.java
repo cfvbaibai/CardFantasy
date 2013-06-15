@@ -105,7 +105,7 @@ public class TestGameUI extends GameUI {
     }
 
     @Override
-    public void attackHero(CardInfo attacker, Player hero, Feature cardFeature, int damage) {
+    public void attackHero(EntityInfo attacker, Player hero, Feature cardFeature, int damage) {
         String featureClause = cardFeature == null ? "" : (" by " + cardFeature.getShortDesc() + "");
         int logicalRemainingHP = hero.getHP() - damage;
         if (logicalRemainingHP < 0) {
@@ -308,7 +308,7 @@ public class TestGameUI extends GameUI {
     }
 
     @Override
-    public void healCard(CardInfo healer, CardInfo healee, Feature cardFeature, int healHP) {
+    public void healCard(EntityInfo healer, CardInfo healee, Feature cardFeature, int healHP) {
         int postHealHP = healee.getHP() + healHP;
         String healText = String.valueOf(healHP);
         if (postHealHP > healee.getMaxHP()) {
@@ -320,7 +320,7 @@ public class TestGameUI extends GameUI {
     }
 
     @Override
-    public void healHero(CardInfo healer, Player healee, Feature cardFeature, int healHP) {
+    public void healHero(EntityInfo healer, Player healee, Feature cardFeature, int healHP) {
         int postHealHP = healee.getHP() + healHP;
         String healText = String.valueOf(healHP);
         if (postHealHP > healee.getMaxHP()) {
@@ -356,7 +356,7 @@ public class TestGameUI extends GameUI {
     }
 
     @Override
-    public void healBlocked(CardInfo healer, CardInfo healee, Feature cardFeature, Feature blockerFeature) {
+    public void healBlocked(EntityInfo healer, CardInfo healee, Feature cardFeature, Feature blockerFeature) {
         if (blockerFeature == null) {
             sayF("%s is in status %s so cannot be healed by %s from %s!", healee.getShortDesc(), healee.getStatus()
                     .getShortDesc(), cardFeature.getShortDesc(), healer.getShortDesc());

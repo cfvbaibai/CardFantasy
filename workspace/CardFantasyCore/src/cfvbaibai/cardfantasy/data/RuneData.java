@@ -10,9 +10,22 @@ public enum RuneData {
     石林(RuneClass.GROUND, 4, FeatureType.法力反射, 5, 1, 3, Growth.RUNE, RuneActivator.myGrave(1, Race.蛮荒)),
     赤谷(RuneClass.GROUND, 5, FeatureType.吸血, 5, 1, 4, Growth.RUNE, RuneActivator.myField(1, Race.蛮荒)),
     陨星(RuneClass.GROUND, 4, FeatureType.瘟疫, 5, 1, 4, Growth.RUNE, RuneActivator.enemyField(1, Race.王国)),
-    飞岩(RuneClass.GROUND, 4, FeatureType.狙击, 5, 1, 4, Growth.RUNE, RuneActivator.myGrave(2, Race.蛮荒)),
+    飞岩(RuneClass.GROUND, 4, FeatureType.狙击, 5, 1, 5, Growth.RUNE, RuneActivator.myGrave(2, Race.蛮荒)),
     死域(RuneClass.GROUND, 5, FeatureType.毒云, 6, 1, 5, Growth.RUNE, RuneActivator.myGrave(1, Race.蛮荒)),
     秽土(RuneClass.GROUND, 4, FeatureType.转生, 4, 1, 5, Growth.RUNE, RuneActivator.myGrave(1, Race.蛮荒)),
+    
+    霜冻(RuneClass.WATER, 3, FeatureType.冰弹, 3, 1, 1, Growth.RUNE, RuneActivator.myGrave(2, null)),
+    寒潮(RuneClass.WATER, 3, FeatureType.霜冻新星, 1, 1, 1, Growth.RUNE, RuneActivator.myDeck(2, null)),
+    冰锥(RuneClass.WATER, 3, FeatureType.冰弹, 5, 1, 2, Growth.RUNE, RuneActivator.round(14)),
+    漩涡(RuneClass.WATER, 3, FeatureType.反击, 3, 1, 2, Growth.RUNE, RuneActivator.enemyField(1, Race.地狱)),
+    暴雨(RuneClass.WATER, 4, FeatureType.群体削弱, 5, 1, 3, Growth.RUNE, RuneActivator.myGrave(1, Race.王国)),
+    清泉(RuneClass.WATER, 4, FeatureType.甘霖, 5, 1, 3, Growth.RUNE, RuneActivator.myField(1, Race.王国)),
+    怒涛(RuneClass.WATER, 4, FeatureType.狂热, 4, 1, 3, Growth.RUNE, RuneActivator.myHeroHP(40)),
+    雪崩(RuneClass.WATER, 4, FeatureType.霜冻新星, 6, 1, 4, Growth.RUNE, RuneActivator.enemyField(1, Race.地狱)),
+    冰封(RuneClass.WATER, 3, FeatureType.冰甲, 5, 1, 4, Growth.RUNE, RuneActivator.myGrave(1, Race.王国)),
+    圣泉(RuneClass.WATER, 6, FeatureType.祈祷, 5, 1, 5, Growth.RUNE, RuneActivator.enemyGrave(1, Race.地狱)),
+    永冻(RuneClass.WATER, 4, FeatureType.暴风雪, 6, 1, 5, Growth.RUNE, RuneActivator.myField(1, Race.王国)),
+    寒伤(RuneClass.WATER, 3, FeatureType.暴击, 3, 1, 5, Growth.RUNE, RuneActivator.myGrave(3, Race.王国)),
     ;
     
     private RuneClass runeClass;

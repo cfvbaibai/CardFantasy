@@ -60,4 +60,46 @@ public class CardFantasyRuneTest {
     public void 金属巨龙vs蜘蛛人女王_秽土() {
         GameBuilder.play5v5withRunes("金属巨龙", RuneData.岩壁, "蜘蛛人女王", RuneData.秽土);
     }
+
+    @Test
+    public void 城镇长矛兵vs城镇突击兵_霜冻寒潮() {
+        GameBuilder.play5v5withRunes("城镇长矛兵", RuneData.霜冻, "城镇突击兵", RuneData.寒潮);
+    }
+
+    @Test
+    public void 魔法结晶体vs魔法结晶体_冰锥() {
+        GameBuilder.play5v5withRunes("魔法结晶体", RuneData.冰锥, "魔法结晶体", RuneData.冰锥);
+    }
+
+    @Test
+    public void 魔法结晶体v堕落精灵法师_漩涡() {
+        GameBuilder.play5v5withRunes("魔法结晶体", RuneData.漩涡, "堕落精灵法师", RuneData.冰锥);
+    }
+
+    @Test
+    public void 城镇长矛兵vs城镇突击兵_暴雨清泉() {
+        GameBuilder.play5v5withRunes("城镇长矛兵", RuneData.暴雨, "城镇突击兵", RuneData.清泉);
+    }
+
+    @Test
+    public void 魔法结晶体v堕落精灵法师_雪崩怒涛() {
+        PlayerInfo playerA = PlayerBuilder.build("【A】", 50, "C魔法结晶体-10*5", "R雪崩-4");
+        PlayerInfo playerB = PlayerBuilder.build("【B】", 10, "C堕落精灵法师-10*5", "R怒涛-4");
+        GameBuilder.build(playerA, playerB).playGame();
+    }
+
+    @Test
+    public void 皇家卫队将领vs灵魂收割者_冰封() {
+        GameBuilder.play5v5withRunes("皇家卫队将领", RuneData.冰封, "灵魂收割者", RuneData.清泉);
+    }
+
+    @Test
+    public void 魔法协会长vs大恶魔_圣泉() {
+        GameBuilder.play5v5withRunes("魔法协会长", RuneData.圣泉, "大恶魔", RuneData.清泉);
+    }
+
+    @Test
+    public void 城镇长矛兵vs城镇突击兵_永冻寒伤() {
+        GameBuilder.play5v5withRunes("城镇长矛兵", RuneData.永冻, "城镇突击兵", RuneData.寒伤);
+    }
 }

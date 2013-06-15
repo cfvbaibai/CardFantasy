@@ -38,7 +38,7 @@ public final class LighteningMagicFeature {
             damage = result.getDamage();
             ui.attackCard(attacker, victim, feature, damage);
             boolean cardDead = resolver.applyDamage(victim, damage).cardDead;
-            resolver.resolveCounterAttackFeature(attacker, victim, feature);
+            resolver.resolveCounterAttackFeature(attacker, victim, feature, result);
             if (cardDead) {
                 resolver.resolveDeathFeature(attacker, victim, feature);
             } else if (resolver.getStage().getRandomizer().roll100(paralyzeRate)) {

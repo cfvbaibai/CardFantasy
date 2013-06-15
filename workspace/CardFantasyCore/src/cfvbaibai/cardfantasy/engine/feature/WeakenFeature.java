@@ -5,6 +5,7 @@ import java.util.List;
 
 import cfvbaibai.cardfantasy.data.Feature;
 import cfvbaibai.cardfantasy.engine.CardInfo;
+import cfvbaibai.cardfantasy.engine.EntityInfo;
 import cfvbaibai.cardfantasy.engine.FeatureEffect;
 import cfvbaibai.cardfantasy.engine.FeatureEffectType;
 import cfvbaibai.cardfantasy.engine.FeatureInfo;
@@ -32,7 +33,7 @@ public final class WeakenFeature {
         weakenCard(resolver, featureInfo, attacker, defenders);
     }
 
-    public static void weakenCard(FeatureResolver resolver, FeatureInfo featureInfo, CardInfo attacker,
+    public static void weakenCard(FeatureResolver resolver, FeatureInfo featureInfo, EntityInfo attacker,
             List<CardInfo> defenders) throws HeroDieSignal {
         for (CardInfo defender : defenders) {
             if (defender == null) {
