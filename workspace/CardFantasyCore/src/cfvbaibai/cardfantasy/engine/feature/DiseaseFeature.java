@@ -20,7 +20,7 @@ public final class DiseaseFeature {
         GameUI ui = resolver.getStage().getUI();
         ui.useSkill(attacker, defender, feature);
 
-        OnAttackBlockingResult result = resolver.resolveAttackBlockingFeature(attacker, defender, feature);
+        OnAttackBlockingResult result = resolver.resolveAttackBlockingFeature(attacker, defender, feature, damage);
         if (!result.isAttackable()) {
             return;
         }

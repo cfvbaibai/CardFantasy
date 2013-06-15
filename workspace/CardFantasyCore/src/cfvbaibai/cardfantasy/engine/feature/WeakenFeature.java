@@ -40,7 +40,7 @@ public final class WeakenFeature {
                 continue;
             }
             Feature feature = featureInfo.getFeature();
-            if (!resolver.resolveAttackBlockingFeature(attacker, defender, feature).isAttackable()) {
+            if (!resolver.resolveAttackBlockingFeature(attacker, defender, feature, 1).isAttackable()) {
                 continue;
             }
             int attackWeakened = feature.getImpact();

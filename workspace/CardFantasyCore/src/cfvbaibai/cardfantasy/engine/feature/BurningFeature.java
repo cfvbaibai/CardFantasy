@@ -16,15 +16,15 @@ public final class BurningFeature {
         if (attacker == null) {
             return;
         }
+        if (attacker.getStatus().containsStatusCausedBy(featureInfo, CardStatusType.»º…’)) {
+            return;
+        }
         Feature feature = featureInfo.getFeature();
         int damage = feature.getImpact();
         GameUI ui = resolver.getStage().getUI();
         ui.useSkill(defender, attacker, feature);
-        OnAttackBlockingResult result = resolver.resolveAttackBlockingFeature(defender, attacker, feature);
+        OnAttackBlockingResult result = resolver.resolveAttackBlockingFeature(defender, attacker, feature, damage);
         if (!result.isAttackable()) {
-            return;
-        }
-        if (attacker.getStatus().containsStatusCausedBy(featureInfo, CardStatusType.»º…’)) {
             return;
         }
         CardStatusItem status = CardStatusItem.burning(damage, featureInfo);

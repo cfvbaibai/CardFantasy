@@ -3,11 +3,12 @@ package cfvbaibai.cardfantasy.engine.feature;
 import cfvbaibai.cardfantasy.GameUI;
 import cfvbaibai.cardfantasy.data.Feature;
 import cfvbaibai.cardfantasy.engine.CardInfo;
+import cfvbaibai.cardfantasy.engine.EntityInfo;
 import cfvbaibai.cardfantasy.engine.FeatureResolver;
 import cfvbaibai.cardfantasy.engine.OnAttackBlockingResult;
 
 public final class HealFeature {
-    public static void apply(Feature cardFeature, FeatureResolver resolver, CardInfo healer) {
+    public static void apply(Feature cardFeature, FeatureResolver resolver, EntityInfo healer) {
         if (healer == null) {
             return;
         }

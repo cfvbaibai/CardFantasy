@@ -23,7 +23,7 @@ public final class IceMagicFeature {
         GameUI ui = resolver.getStage().getUI();
         ui.useSkill(attacker, victims, feature);
         for (CardInfo victim : victims) {
-            OnAttackBlockingResult result = resolver.resolveAttackBlockingFeature(attacker, victim, feature);
+            OnAttackBlockingResult result = resolver.resolveAttackBlockingFeature(attacker, victim, feature, damage);
             if (!result.isAttackable()) {
                 continue;
             }

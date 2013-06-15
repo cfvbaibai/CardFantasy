@@ -17,7 +17,7 @@ public final class BloodPaintFeature {
         GameUI ui = resolver.getStage().getUI();
         ui.useSkill(attacker, victims, cardFeature);
         for (CardInfo victim : victims) {
-            OnAttackBlockingResult result = resolver.resolveAttackBlockingFeature(attacker, victim, cardFeature);
+            OnAttackBlockingResult result = resolver.resolveAttackBlockingFeature(attacker, victim, cardFeature, damage);
             if (!result.isAttackable()) {
                 continue;
             }

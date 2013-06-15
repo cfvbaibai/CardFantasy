@@ -5,12 +5,12 @@ import java.util.List;
 
 import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
 import cfvbaibai.cardfantasy.data.Feature;
-import cfvbaibai.cardfantasy.data.FeatureTag;
 import cfvbaibai.cardfantasy.data.FeatureType;
 import cfvbaibai.cardfantasy.data.Race;
 import cfvbaibai.cardfantasy.data.RuneActivationType;
 import cfvbaibai.cardfantasy.data.RuneActivator;
 import cfvbaibai.cardfantasy.data.RuneData;
+import cfvbaibai.cardfantasy.engine.feature.AttackUpFeature;
 import cfvbaibai.cardfantasy.engine.feature.BackStabFeature;
 import cfvbaibai.cardfantasy.engine.feature.BlockFeature;
 import cfvbaibai.cardfantasy.engine.feature.BloodDrainFeature;
@@ -195,6 +195,12 @@ public class FeatureResolver {
                 }
             }
             {
+                RuneInfo rune = defender.getOwner().getActiveRuneOf(RuneData.À×¶Ü);
+                if (rune != null) {
+                    SpikeFeature.apply(rune.getFeature(), this, attacker, defender);
+                }
+            }
+            {
                 RuneInfo rune = defender.getOwner().getActiveRuneOf(RuneData.äöÎĞ);
                 if (rune != null) {
                     CounterAttackFeature.apply(rune.getFeature(), this, attacker, defender);
@@ -224,14 +230,14 @@ public class FeatureResolver {
     }
 
     public OnAttackBlockingResult resolveAttackBlockingFeature(EntityInfo attacker, CardInfo defender,
-            Feature cardFeature) throws HeroDieSignal {
+            Feature cardFeature, int damage) throws HeroDieSignal {
         OnAttackBlockingResult result = new OnAttackBlockingResult(true, 0);
         CardStatus status = attacker.getStatus();
         if (cardFeature == null) {
             // Normal attack could be blocked by Dodge or Âé±Ô, ±ù¶³,
             // Ëø¶¨ status.
             CardInfo cardAttacker = (CardInfo) attacker;
-            result.setDamage(cardAttacker.getAT());
+            result.setDamage(damage);
             if (status.containsStatus(CardStatusType.±ù¶³) || status.containsStatus(CardStatusType.Âé±Ô)
                     || status.containsStatus(CardStatusType.Ëø¶¨) || status.containsStatus(CardStatusType.ĞéÈõ)) {
                 stage.getUI().attackBlocked(cardAttacker, defender, cardFeature, null);
@@ -249,8 +255,8 @@ public class FeatureResolver {
                 {
                     RuneInfo rune = defender.getOwner().getActiveRuneOf(RuneData.ÇáÁé);
                     if (rune != null) {
-                        result.setAttackable(!DodgeFeature.apply(rune.getFeature(), this, cardAttacker,
-                                defender, result.getDamage()));
+                        result.setAttackable(!DodgeFeature.apply(rune.getFeature(), this, cardAttacker, defender,
+                                result.getDamage()));
                         if (!result.isAttackable()) {
                             return result;
                         }
@@ -296,7 +302,7 @@ public class FeatureResolver {
                 }
             }
         } else {
-            result.setDamage(cardFeature.getImpact());
+            result.setDamage(damage);
             if (status.containsStatus(CardStatusType.±ù¶³) || status.containsStatus(CardStatusType.Ëø¶¨)
                     || status.containsStatus(CardStatusType.ĞéÈõ)) {
                 stage.getUI().attackBlocked(attacker, defender, cardFeature, null);
@@ -311,11 +317,14 @@ public class FeatureResolver {
                         }
                     }
                 }
-                RuneInfo rune = defender.getOwner().getRuneBox().getRuneOf(RuneData.Ê¯ÁÖ);
-                if (rune != null && rune.isActivated()) {
-                    if (CounterMagicFeature.isFeatureBlocked(this, rune.getFeature(), cardFeature, attacker, defender)) {
-                        result.setAttackable(false);
-                        return result;
+                {
+                    RuneInfo rune = defender.getOwner().getRuneBox().getRuneOf(RuneData.Ê¯ÁÖ);
+                    if (rune != null && rune.isActivated()) {
+                        if (CounterMagicFeature.isFeatureBlocked(this, rune.getFeature(), cardFeature, attacker,
+                                defender)) {
+                            result.setAttackable(false);
+                            return result;
+                        }
                     }
                 }
 
@@ -341,9 +350,19 @@ public class FeatureResolver {
                     }
                 }
                 for (FeatureInfo blockFeature : defender.getNormalUsableFeatures()) {
-                    if (blockFeature.getType() == FeatureType.Ä§¼× && cardFeature.getType().containsTag(FeatureTag.Ä§·¨)) {
+                    if (blockFeature.getType() == FeatureType.Ä§¼×) {
                         result.setDamage(MagicShieldFeature.apply(this, blockFeature.getFeature(), attacker, defender,
-                                result.getDamage()));
+                                cardFeature, result.getDamage()));
+                    }
+                    if (!result.isAttackable()) {
+                        return result;
+                    }
+                }
+                {
+                    RuneInfo rune = defender.getOwner().getActiveRuneOf(RuneData.Ñ×¼×);
+                    if (rune != null) {
+                        result.setDamage(MagicShieldFeature.apply(this, rune.getFeature(), attacker, defender,
+                                cardFeature, result.getDamage()));
                     }
                     if (!result.isAttackable()) {
                         return result;
@@ -367,11 +386,6 @@ public class FeatureResolver {
             return;
         }
         resolveLeaveFeature(deadCard, cardFeature);
-        for (FeatureInfo deadCardFeature : deadCard.getAllUsableFeatures()) {
-            if (deadCardFeature.getType() == FeatureType.×Ô±¬) {
-                ExplodeFeature.apply(this, deadCardFeature.getFeature(), killerCard, deadCard);
-            }
-        }
         for (FeatureInfo deadCardFeature : deadCard.getUsableDeathFeatures()) {
             if (deadCardFeature.getType() == FeatureType.ÈºÌåÏ÷Èõ) {
                 WeakenAllFeature.apply(this, deadCardFeature, deadCard, killerCard.getOwner());
@@ -386,13 +400,26 @@ public class FeatureResolver {
             }
         }
         for (FeatureInfo deadCardFeature : deadCard.getAllUsableFeatures()) {
+            if (deadCardFeature.getType() == FeatureType.×Ô±¬) {
+                ExplodeFeature.apply(this, deadCardFeature.getFeature(), killerCard, deadCard);
+            }
+        }
+        {
+            RuneInfo rune = deadCard.getOwner().getActiveRuneOf(RuneData.±¬ÁÑ);
+            if (rune != null) {
+                ExplodeFeature.apply(this, rune.getFeature(), killerCard, deadCard);
+            }
+        }
+        for (FeatureInfo deadCardFeature : deadCard.getAllUsableFeatures()) {
             if (deadCardFeature.getType() == FeatureType.×ªÉú) {
                 ReincarnationFeature.apply(this, deadCardFeature.getFeature(), deadCard);
             }
         }
-        RuneInfo rune = deadCard.getOwner().getActiveRuneOf(RuneData.»àÍÁ);
-        if (rune != null) {
-            ReincarnationFeature.apply(this, rune.getFeature(), deadCard);
+        {
+            RuneInfo rune = deadCard.getOwner().getActiveRuneOf(RuneData.»àÍÁ);
+            if (rune != null) {
+                ReincarnationFeature.apply(this, rune.getFeature(), deadCard);
+            }
         }
         deadCard.setDeadOnce(true);
     }
@@ -448,6 +475,12 @@ public class FeatureResolver {
                 ReturnFeature.apply(this, feature.getFeature(), attacker, defender);
             } else if (feature.getType() == FeatureType.Õ½Òâ) {
                 WarthFeature.apply(this, feature, attacker, defender);
+            }
+        }
+        {
+            RuneInfo rune = attacker.getOwner().getActiveRuneOf(RuneData.¾øÉ±);
+            if (rune != null) {
+                WarthFeature.apply(this, rune.getFeatureInfo(), attacker, defender);
             }
         }
         {
@@ -565,7 +598,7 @@ public class FeatureResolver {
     public int attackCard(CardInfo attacker, CardInfo defender) throws HeroDieSignal {
         this.stage.getUI().useSkill(attacker, defender, null);
         OnAttackBlockingResult blockingResult = stage.getResolver().resolveAttackBlockingFeature(attacker, defender,
-                null);
+                null, attacker.getAT());
         if (!blockingResult.isAttackable()) {
             return -1;
         }
@@ -581,7 +614,7 @@ public class FeatureResolver {
         return damagedResult.actualDamage;
     }
 
-    public CardInfo pickHealee(CardInfo healer) {
+    public CardInfo pickHealee(EntityInfo healer) {
         Field field = healer.getOwner().getField();
         CardInfo healee = null;
         for (CardInfo card : field.getAliveCards()) {
@@ -891,6 +924,24 @@ public class FeatureResolver {
                 EnergyArmorFeature.apply(this, rune.getFeatureInfo(), rune, -1);
             } else if (rune.is(RuneData.À×Óü)) {
                 LighteningMagicFeature.apply(rune.getFeatureInfo(), this, rune, defenderHero, -1, 35);
+            } else if (rune.is(RuneData.»ğÈ­)) {
+                FireMagicFeature.apply(rune.getFeature(), this, rune, defenderHero, 1);
+            } else if (rune.is(RuneData.ÈÈÀË)) {
+                FireMagicFeature.apply(rune.getFeature(), this, rune, defenderHero, 3);
+            } else if (rune.is(RuneData.Á÷»ğ)) {
+                FireMagicFeature.apply(rune.getFeature(), this, rune, defenderHero, 1);
+            } else if (rune.is(RuneData.ºìÁ«)) {
+                HealFeature.apply(rune.getFeature(), this, rune);
+            } else if (rune.is(RuneData.Ú¤»ğ)) {
+                BurningFlameFeature.apply(rune.getFeatureInfo(), this, rune, defenderHero);
+            } else if (rune.is(RuneData.´ãÁ¶)) {
+                AttackUpFeature.apply(this, rune.getFeatureInfo(), rune, -1);
+            } else if (rune.is(RuneData.·ÙÌì)) {
+                FireMagicFeature.apply(rune.getFeature(), this, rune, defenderHero, 3);
+            } else if (rune.is(RuneData.×Æ»ê)) {
+                HeavenWrathFeature.apply(this, rune.getFeature(), rune, defenderHero);
+            } else if (rune.is(RuneData.ÃğÊÀ)) {
+                FireMagicFeature.apply(rune.getFeature(), this, rune, defenderHero, -1);
             }
         }
     }

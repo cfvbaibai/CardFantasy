@@ -18,7 +18,7 @@ public final class ReturnFeature {
         }
         GameUI ui = resolver.getStage().getUI();
         ui.useSkill(attacker, defender, cardFeature);
-        OnAttackBlockingResult result = resolver.resolveAttackBlockingFeature(attacker, defender, cardFeature);
+        OnAttackBlockingResult result = resolver.resolveAttackBlockingFeature(attacker, defender, cardFeature, 1);
         if (!result.isAttackable()) {
             return;
         }

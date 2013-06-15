@@ -135,4 +135,44 @@ public class CardFantasyRuneTest {
         PlayerInfo playerB = PlayerBuilder.build("¡¾B¡¿", 50, "CÔÂÁÁÅ®Éñ-10*10");
         GameBuilder.build(playerA, playerB).playGame();
     }
+    
+    @Test
+    public void ºÚ¼×ÌúÆïÊ¿vsÃÀ¶ÅÉ¯Å®Íõ_»ğÈ­ÈÈÀË() {
+        PlayerInfo playerA = PlayerBuilder.build("¡¾A¡¿", 50, "CºÚ¼×ÌúÆïÊ¿-10*5", "R»ğÈ­-4");
+        PlayerInfo playerB = PlayerBuilder.build("¡¾B¡¿", 30, "CÃÀ¶ÅÉ¯Å®Íõ-10*5", "RÈÈÀË-4");
+        GameBuilder.build(playerA, playerB).playGame();
+    }
+
+    @Test
+    public void ºÚ¼×ÌúÆïÊ¿vsÃÀ¶ÅÉ¯Å®Íõ_Á÷»ğºìÁ«() {
+        GameBuilder.play5v5withRunes("ºÚ¼×ÌúÆïÊ¿", RuneData.Á÷»ğ, "ÃÀ¶ÅÉ¯Å®Íõ", RuneData.ºìÁ«);
+    }
+    
+    @Test
+    public void ºÚ¼×ÌúÆïÊ¿vsÃÀ¶ÅÉ¯Å®Íõ_Ú¤»ğ´ãÁ¶() {
+        PlayerInfo playerA = PlayerBuilder.build("¡¾A¡¿", 50, "CºÚ¼×ÌúÆïÊ¿-10*5", "RÚ¤»ğ-4");
+        PlayerInfo playerB = PlayerBuilder.build("¡¾B¡¿", 20, "CÃÀ¶ÅÉ¯Å®Íõ-10*5", "R´ãÁ¶-4");
+        GameBuilder.build(playerA, playerB).playGame();
+    }
+    
+    @Test
+    public void ºÚ¼×ÌúÆïÊ¿vs½ğÊô¾ŞÁú_À×¶Ü·ÙÌìÑ×¼×() {
+        PlayerInfo playerA = PlayerBuilder.build("¡¾A¡¿", 50, "CºÚ¼×ÌúÆïÊ¿-10*5", "R·ÙÌì-4", "RÑ×¼×-4");
+        PlayerInfo playerB = PlayerBuilder.build("¡¾B¡¿", 20, "C½ğÊô¾ŞÁú-10*5", "RÀ×Óü-4", "RÀ×¶Ü-4");
+        GameBuilder.build(playerA, playerB).playGame();
+    }
+    
+    @Test
+    public void ºÚ¼×ÌúÆïÊ¿vs½ğÊô¾ŞÁú_±¬ÁÑ×Æ»ê() {
+        PlayerInfo playerA = PlayerBuilder.build("¡¾A¡¿", 50, "CºÚ¼×ÌúÆïÊ¿-10*5", "R±¬ÁÑ-4", "R×Æ»ê-4");
+        PlayerInfo playerB = PlayerBuilder.build("¡¾B¡¿", 20, "C½ğÊô¾ŞÁú-10*5");
+        GameBuilder.build(playerA, playerB).playGame();
+    }
+
+    @Test
+    public void ´ó¶ñÄ§vs½ğÊô¾ŞÁú_ÃğÊÀ¾øÉ±() {
+        PlayerInfo playerA = PlayerBuilder.build("¡¾A¡¿", 50, "C´ó¶ñÄ§-10*10", "RÃğÊÀ-4", "R¾øÉ±-4");
+        PlayerInfo playerB = PlayerBuilder.build("¡¾B¡¿", 20, "C½ğÊô¾ŞÁú-10*10");
+        GameBuilder.build(playerA, playerB).playGame();
+    }
 }

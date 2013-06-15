@@ -23,7 +23,7 @@ public enum RuneData {
     怒涛(RuneClass.WATER, 4, FeatureType.狂热, 4, 1, 3, Growth.RUNE, RuneActivator.myHeroHP(40)),
     雪崩(RuneClass.WATER, 4, FeatureType.霜冻新星, 6, 1, 4, Growth.RUNE, RuneActivator.enemyField(1, Race.地狱)),
     冰封(RuneClass.WATER, 3, FeatureType.冰甲, 5, 1, 4, Growth.RUNE, RuneActivator.myGrave(1, Race.王国)),
-    圣泉(RuneClass.WATER, 6, FeatureType.祈祷, 5, 1, 5, Growth.RUNE, RuneActivator.enemyGrave(1, Race.地狱)),
+    圣泉(RuneClass.WATER, 6, FeatureType.祈祷, 5, 1, 4, Growth.RUNE, RuneActivator.enemyGrave(1, Race.地狱)),
     永冻(RuneClass.WATER, 4, FeatureType.暴风雪, 6, 1, 5, Growth.RUNE, RuneActivator.myField(1, Race.王国)),
     寒伤(RuneClass.WATER, 3, FeatureType.暴击, 3, 1, 5, Growth.RUNE, RuneActivator.myGrave(3, Race.王国)),
     
@@ -35,9 +35,23 @@ public enum RuneData {
     飓风(RuneClass.WIND, 4, FeatureType.连环闪电, 4, 1, 3, Growth.RUNE, RuneActivator.myHeroHP(40)),
     春风(RuneClass.WIND, 4, FeatureType.群体护甲, 4, 1, 3, Growth.RUNE, RuneActivator.myHand(1, Race.森林)),
     洞察(RuneClass.WIND, 4, FeatureType.嗜血, 5, 1, 4, Growth.RUNE, RuneActivator.enemyField(1, Race.蛮荒)),
+    雷盾(RuneClass.WIND, 4, FeatureType.盾刺, 6, 1, 4, Growth.RUNE, RuneActivator.myField(1, Race.森林)),
     扬旗(RuneClass.WIND, 4, FeatureType.穷追猛打, 6, 1, 4, Growth.RUNE, RuneActivator.myGrave(1, Race.森林)),
     雷狱(RuneClass.WIND, 4, FeatureType.雷暴, 6, 1, 5, Growth.RUNE, RuneActivator.myField(1, Race.森林)),
     轻灵(RuneClass.WIND, 3, FeatureType.闪避, 5, 1, 5, Growth.RUNE, RuneActivator.myGrave(2, Race.森林)),
+    
+    火拳(RuneClass.FIRE, 3, FeatureType.火球, 3, 1, 1, Growth.RUNE, RuneActivator.enemyField(2, null)),
+    热浪(RuneClass.FIRE, 3, FeatureType.火墙, 1, 1, 1, Growth.RUNE, RuneActivator.myHeroHP(60)),
+    流火(RuneClass.FIRE, 3, FeatureType.火球, 5, 1, 2, Growth.RUNE, RuneActivator.round(12)),
+    红莲(RuneClass.FIRE, 5, FeatureType.治疗, 4, 1, 2, Growth.RUNE, RuneActivator.myHand(1, Race.地狱)),
+    冥火(RuneClass.FIRE, 4, FeatureType.烈火焚神, 3, 1, 3, Growth.RUNE, RuneActivator.myGrave(1, Race.地狱)),
+    淬炼(RuneClass.FIRE, 4, FeatureType.群攻提升, 4, 1, 3, Growth.RUNE, RuneActivator.myHeroHP(50)),
+    焚天(RuneClass.FIRE, 4, FeatureType.火墙, 5, 1, 3, Growth.RUNE, RuneActivator.enemyField(1, Race.森林)),
+    炎甲(RuneClass.FIRE, 5, FeatureType.魔甲, 4, 1, 4, Growth.RUNE, RuneActivator.myField(1, Race.地狱)),
+    爆裂(RuneClass.FIRE, 5, FeatureType.自爆, 4, 1, 4, Growth.RUNE, RuneActivator.enemyField(1, Race.森林)),
+    灼魂(RuneClass.FIRE, 6, FeatureType.天谴, 6, 1, 4, Growth.RUNE, RuneActivator.myField(1, Race.地狱)),
+    灭世(RuneClass.FIRE, 5, FeatureType.烈焰风暴, 6, 1, 5, Growth.RUNE, RuneActivator.myGrave(1, Race.地狱)),
+    绝杀(RuneClass.FIRE, 4, FeatureType.战意, 6, 1, 5, Growth.RUNE, RuneActivator.myGrave(2, Race.地狱)),
     ;
     
     private RuneClass runeClass;

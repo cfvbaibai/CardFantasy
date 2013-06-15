@@ -18,7 +18,7 @@ public final class DestroyFeature {
         GameUI ui = resolver.getStage().getUI();
         ui.useSkill(attacker, victims, cardFeature);
         for (CardInfo victim : victims) {
-            OnAttackBlockingResult result = resolver.resolveAttackBlockingFeature(attacker, victim, cardFeature);
+            OnAttackBlockingResult result = resolver.resolveAttackBlockingFeature(attacker, victim, cardFeature, 1);
             if (!result.isAttackable()) {
                 return;
             }

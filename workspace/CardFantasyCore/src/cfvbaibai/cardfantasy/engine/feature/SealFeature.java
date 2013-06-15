@@ -22,7 +22,7 @@ public final class SealFeature {
         GameUI ui = resolver.getStage().getUI();
         ui.useSkill(attacker, victims, feature);
         for (CardInfo victim : victims) {
-            if (!resolver.resolveAttackBlockingFeature(attacker, victim, feature).isAttackable()) {
+            if (!resolver.resolveAttackBlockingFeature(attacker, victim, feature, 1).isAttackable()) {
                 continue;
             }
             CardStatusItem status = CardStatusItem.trapped(featureInfo);
