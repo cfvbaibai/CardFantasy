@@ -26,6 +26,18 @@ public enum RuneData {
     圣泉(RuneClass.WATER, 6, FeatureType.祈祷, 5, 1, 5, Growth.RUNE, RuneActivator.enemyGrave(1, Race.地狱)),
     永冻(RuneClass.WATER, 4, FeatureType.暴风雪, 6, 1, 5, Growth.RUNE, RuneActivator.myField(1, Race.王国)),
     寒伤(RuneClass.WATER, 3, FeatureType.暴击, 3, 1, 5, Growth.RUNE, RuneActivator.myGrave(3, Race.王国)),
+    
+    闪电(RuneClass.WIND, 3, FeatureType.落雷, 3, 1, 1, Growth.RUNE, RuneActivator.enemyGrave(2, null)),
+    雷云(RuneClass.WIND, 3, FeatureType.连环闪电, 1, 1, 1, Growth.RUNE, RuneActivator.myHeroHP(50)),
+    霹雳(RuneClass.WIND, 3, FeatureType.落雷, 5, 1, 2, Growth.RUNE, RuneActivator.round(14)),
+    飞羽(RuneClass.WIND, 4, FeatureType.狙击, 4, 1, 2, Growth.RUNE, RuneActivator.myGrave(1, Race.森林)),
+    复苏(RuneClass.WIND, 4, FeatureType.回春, 4, 1, 3, Growth.RUNE, RuneActivator.enemyGrave(1, Race.蛮荒)),
+    飓风(RuneClass.WIND, 4, FeatureType.连环闪电, 4, 1, 3, Growth.RUNE, RuneActivator.myHeroHP(40)),
+    春风(RuneClass.WIND, 4, FeatureType.群体护甲, 4, 1, 3, Growth.RUNE, RuneActivator.myHand(1, Race.森林)),
+    洞察(RuneClass.WIND, 4, FeatureType.嗜血, 5, 1, 4, Growth.RUNE, RuneActivator.enemyField(1, Race.蛮荒)),
+    扬旗(RuneClass.WIND, 4, FeatureType.穷追猛打, 6, 1, 4, Growth.RUNE, RuneActivator.myGrave(1, Race.森林)),
+    雷狱(RuneClass.WIND, 4, FeatureType.雷暴, 6, 1, 5, Growth.RUNE, RuneActivator.myField(1, Race.森林)),
+    轻灵(RuneClass.WIND, 3, FeatureType.闪避, 5, 1, 5, Growth.RUNE, RuneActivator.myGrave(2, Race.森林)),
     ;
     
     private RuneClass runeClass;

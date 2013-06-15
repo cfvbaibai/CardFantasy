@@ -364,4 +364,8 @@ public class CardInfo extends EntityInfo {
     public static boolean isSameType(CardInfo victim, CardInfo defender) {
         return victim.getCard().getName().equals(defender.getCard().getName());
     }
+
+    public int getLostHP() {
+        return this.getMaxHP() - this.getHP();
+    }
 }

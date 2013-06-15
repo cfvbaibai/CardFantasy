@@ -102,4 +102,37 @@ public class CardFantasyRuneTest {
     public void 城镇长矛兵vs城镇突击兵_永冻寒伤() {
         GameBuilder.play5v5withRunes("城镇长矛兵", RuneData.永冻, "城镇突击兵", RuneData.寒伤);
     }
+
+    @Test
+    public void 水源制造者vs地岭拥有者_闪电雷云() {
+        PlayerInfo playerA = PlayerBuilder.build("【A】", 50, "C水源制造者-10*5", "R闪电-4");
+        PlayerInfo playerB = PlayerBuilder.build("【B】", 20, "C地岭拥有者-10*5", "R雷云-4");
+        GameBuilder.build(playerA, playerB).playGame();
+    }
+
+    @Test
+    public void 水源制造者vs地岭拥有者_霹雳飞羽() {
+        GameBuilder.play5v5withRunes("水源制造者", RuneData.霹雳, "地岭拥有者", RuneData.飞羽);
+    }
+
+    @Test
+    public void 树人祭司vs牛头人卫士_复苏飓风() {
+        PlayerInfo playerA = PlayerBuilder.build("【A】", 50, "C树人祭司-10*5", "R复苏-4");
+        PlayerInfo playerB = PlayerBuilder.build("【B】", 20, "C牛头人卫士-10*5", "R飓风-4");
+        GameBuilder.build(playerA, playerB).playGame();
+    }
+
+    @Test
+    public void 树人祭司vs牛头人卫士_春风洞察() {
+        PlayerInfo playerA = PlayerBuilder.build("【A】", 50, "C树人祭司-10*5", "R春风-4", "R洞察-4");
+        PlayerInfo playerB = PlayerBuilder.build("【B】", 50, "C牛头人卫士-10*5");
+        GameBuilder.build(playerA, playerB).playGame();
+    }
+    
+    @Test
+    public void 水源制造者vs月亮女神_扬旗雷狱轻灵() {
+        PlayerInfo playerA = PlayerBuilder.build("【A】", 50, "C水源制造者-10*10", "R扬旗-4", "R雷狱-4", "R轻灵-4");
+        PlayerInfo playerB = PlayerBuilder.build("【B】", 50, "C月亮女神-10*10");
+        GameBuilder.build(playerA, playerB).playGame();
+    }
 }

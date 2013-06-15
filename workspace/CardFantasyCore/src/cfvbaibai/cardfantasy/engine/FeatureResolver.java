@@ -246,6 +246,16 @@ public class FeatureResolver {
                         }
                     }
                 }
+                {
+                    RuneInfo rune = defender.getOwner().getActiveRuneOf(RuneData.ÇáÁé);
+                    if (rune != null) {
+                        result.setAttackable(!DodgeFeature.apply(rune.getFeature(), this, cardAttacker,
+                                defender, result.getDamage()));
+                        if (!result.isAttackable()) {
+                            return result;
+                        }
+                    }
+                }
                 for (FeatureInfo blockFeature : defender.getNormalUsableFeatures()) {
                     if (blockFeature.getType() == FeatureType.±ù¼×) {
                         result.setDamage(IceArmorFeature.apply(blockFeature.getFeature(), this, cardAttacker, defender,
@@ -407,9 +417,17 @@ public class FeatureResolver {
                     BloodDrainFeature.apply(feature.getFeature(), this, attacker, defender, normalAttackDamage);
                 }
             }
-            RuneInfo rune = attacker.getOwner().getActiveRuneOf(RuneData.³à¹È);
-            if (rune != null) {
-                BloodDrainFeature.apply(rune.getFeature(), this, attacker, defender, normalAttackDamage);
+            {
+                RuneInfo rune = attacker.getOwner().getActiveRuneOf(RuneData.³à¹È);
+                if (rune != null) {
+                    BloodDrainFeature.apply(rune.getFeature(), this, attacker, defender, normalAttackDamage);
+                }
+            }
+            {
+                RuneInfo rune = attacker.getOwner().getActiveRuneOf(RuneData.¶´²ì);
+                if (rune != null) {
+                    BloodThirstyFeature.apply(this, rune.getFeatureInfo(), attacker, normalAttackDamage);
+                }
             }
         }
     }
@@ -436,6 +454,12 @@ public class FeatureResolver {
             RuneInfo rune = attacker.getOwner().getActiveRuneOf(RuneData.º®ÉË);
             if (rune != null) {
                 CriticalAttackFeature.apply(this, rune.getFeatureInfo(), attacker, defender);
+            }
+        }
+        {
+            RuneInfo rune = attacker.getOwner().getActiveRuneOf(RuneData.ÑïÆì);
+            if (rune != null) {
+                PursuitFeature.apply(this, rune.getFeatureInfo(), attacker, defender);
             }
         }
     }
@@ -530,6 +554,12 @@ public class FeatureResolver {
                 RejuvenateFeature.apply(cardFeature.getFeature(), this, card);
             }
         }
+        {
+            RuneInfo rune = card.getOwner().getActiveRuneOf(RuneData.¸´ËÕ);
+            if (rune != null) {
+                RejuvenateFeature.apply(rune.getFeature(), this, card);
+            }
+        }
     }
 
     public int attackCard(CardInfo attacker, CardInfo defender) throws HeroDieSignal {
@@ -555,7 +585,7 @@ public class FeatureResolver {
         Field field = healer.getOwner().getField();
         CardInfo healee = null;
         for (CardInfo card : field.getAliveCards()) {
-            if (healee == null || card.getHP() < healee.getHP()) {
+            if (healee == null || card.getLostHP() > healee.getLostHP()) {
                 healee = card;
             }
         }
@@ -847,6 +877,20 @@ public class FeatureResolver {
                 PrayFeature.apply(rune.getFeature(), this, rune);
             } else if (rune.is(RuneData.ÓÀ¶³)) {
                 IceMagicFeature.apply(rune.getFeatureInfo(), this, rune, defenderHero, -1, 30);
+            } else if (rune.is(RuneData.ÉÁµç)) {
+                LighteningMagicFeature.apply(rune.getFeatureInfo(), this, rune, defenderHero, 1, 50);
+            } else if (rune.is(RuneData.À×ÔÆ)) {
+                LighteningMagicFeature.apply(rune.getFeatureInfo(), this, rune, defenderHero, 3, 40);
+            } else if (rune.is(RuneData.Åùö¨)) {
+                LighteningMagicFeature.apply(rune.getFeatureInfo(), this, rune, defenderHero, 1, 50);
+            } else if (rune.is(RuneData.·ÉÓð)) {
+                SnipeFeature.apply(rune.getFeature(), this, rune, defenderHero, 1);
+            } else if (rune.is(RuneData.ì«·ç)) {
+                LighteningMagicFeature.apply(rune.getFeatureInfo(), this, rune, defenderHero, 3, 40);
+            } else if (rune.is(RuneData.´º·ç)) {
+                EnergyArmorFeature.apply(this, rune.getFeatureInfo(), rune, -1);
+            } else if (rune.is(RuneData.À×Óü)) {
+                LighteningMagicFeature.apply(rune.getFeatureInfo(), this, rune, defenderHero, -1, 35);
             }
         }
     }

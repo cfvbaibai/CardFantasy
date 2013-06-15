@@ -81,6 +81,7 @@ public enum FeatureType {
     血炼(20),
     天谴(20),
     聚能护甲(50),
+    群体护甲(30),
     未知(0);
 
     private int initImpact;
