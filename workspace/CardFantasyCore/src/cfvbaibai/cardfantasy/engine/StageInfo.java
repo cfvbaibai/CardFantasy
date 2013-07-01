@@ -21,7 +21,7 @@ public class StageInfo {
     public StageInfo(Board board, GameUI ui, Rule rule) {
         this.board = board;
         this.activePlayerNumber = -1;
-        this.phase = Phase.Unknown;
+        this.phase = Phase.δ֪;
         this.round = -1;
         this.ui = ui;
         this.rule = rule;

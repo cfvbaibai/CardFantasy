@@ -1,6 +1,7 @@
 package cfvbaibai.cardfantasy.engine;
 
 
+
 public class GameResult {
     private Board finalBoard;
     private Player winner;

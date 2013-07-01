@@ -25,6 +25,9 @@ public final class ExplodeFeature {
         GameUI ui = resolver.getStage().getUI();
         List<CardInfo> victims = resolver.getAdjacentCards(attacker.getOwner().getField(), exploder.getPosition());
         for (CardInfo victim : victims) {
+            if (victim == null) {
+                continue;
+            }
             ui.useSkill(exploder, victim, cardFeature);
             OnAttackBlockingResult result = resolver.resolveAttackBlockingFeature(attacker, victim, cardFeature, damage);
             if (!result.isAttackable()) {

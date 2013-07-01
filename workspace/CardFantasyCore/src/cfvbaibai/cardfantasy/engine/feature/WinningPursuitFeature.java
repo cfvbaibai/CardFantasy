@@ -7,14 +7,16 @@ import cfvbaibai.cardfantasy.engine.FeatureEffectType;
 import cfvbaibai.cardfantasy.engine.FeatureInfo;
 import cfvbaibai.cardfantasy.engine.FeatureResolver;
 
-public final class CriticalAttackFeature extends PreAttackCardFeature {
+public class WinningPursuitFeature extends PreAttackCardFeature {
     public static void apply(FeatureResolver resolver, FeatureInfo featureInfo, CardInfo attacker, CardInfo defender) {
-        Feature feature = featureInfo.getFeature();
-        int adjAT = feature.getImpact() * attacker.getOriginalAT() / 100;
-        resolver.getStage().getUI().useSkill(attacker, feature);
-        if (resolver.getStage().getRandomizer().roll100(50)) {
-            resolver.getStage().getUI().adjustAT(attacker, attacker, adjAT, feature);
-            attacker.addEffect(new FeatureEffect(FeatureEffectType.ATTACK_CHANGE, featureInfo, adjAT, false));
+        int enemyDeadCount = defender.getOwner().getGrave().size();
+        if (enemyDeadCount == 0) {
+            return;
         }
+        Feature feature = featureInfo.getFeature();
+        int adjAT = feature.getImpact() * enemyDeadCount;
+        resolver.getStage().getUI().useSkill(attacker, feature);
+        resolver.getStage().getUI().adjustAT(attacker, attacker, adjAT, feature);
+        attacker.addEffect(new FeatureEffect(FeatureEffectType.ATTACK_CHANGE, featureInfo, adjAT, false));
     }
 }

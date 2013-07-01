@@ -6,6 +6,8 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import cfvbaibai.cardfantasy.game.PlayerBuilder;
+
 public class CardFantasyKingdomTest {
 
     @BeforeClass
@@ -25,7 +27,7 @@ public class CardFantasyKingdomTest {
     }
 
     private void game5vs5(String card1, String card2) {
-        GameBuilder.play5v5(card1, card2);
+        TestGameBuilder.play5v5(card1, card2);
     }
 
     @Test
@@ -220,7 +222,7 @@ public class CardFantasyKingdomTest {
 
     @Test
     public void 光影魔术师vs圣骑士() {
-        GameBuilder.play(PlayerBuilder.build("英雄光影魔术师", 50, "光影魔术师-10*2", "暴雪召唤士-10*3"),
+        TestGameBuilder.play(PlayerBuilder.build("英雄光影魔术师", 50, "光影魔术师-10*2", "暴雪召唤士-10*3"),
                 PlayerBuilder.build("英雄圣骑士", 50, "圣骑士-10*5"));
     }
 
@@ -246,7 +248,7 @@ public class CardFantasyKingdomTest {
 
     @Test
     public void 皇家卫队将领vs魔法协会长_喷火装甲车手() {
-        GameBuilder.play(PlayerBuilder.build("英雄皇家卫队将领", 50, "皇家卫队将领-10*5"),
+        TestGameBuilder.play(PlayerBuilder.build("英雄皇家卫队将领", 50, "皇家卫队将领-10*5"),
                 PlayerBuilder.build("英雄魔法协会长", 50, "魔法协会长-10*2", "暴雪召唤士-10*3"));
     }
 

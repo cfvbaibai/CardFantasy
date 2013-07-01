@@ -57,6 +57,10 @@ public class Field extends CardPile {
                 ++i;
             }
         }
+        
+        for (CardInfo card : getCards()) {
+            card.refreshPosition();
+        }
     }
     
     private static class HPCardComparator implements Comparator <CardInfo> {

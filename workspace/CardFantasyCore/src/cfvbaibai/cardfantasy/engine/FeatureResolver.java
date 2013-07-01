@@ -35,6 +35,7 @@ import cfvbaibai.cardfantasy.engine.feature.FireMagicFeature;
 import cfvbaibai.cardfantasy.engine.feature.GuardFeature;
 import cfvbaibai.cardfantasy.engine.feature.HealFeature;
 import cfvbaibai.cardfantasy.engine.feature.HeavenWrathFeature;
+import cfvbaibai.cardfantasy.engine.feature.HolyGuardFeature;
 import cfvbaibai.cardfantasy.engine.feature.IceArmorFeature;
 import cfvbaibai.cardfantasy.engine.feature.IceMagicFeature;
 import cfvbaibai.cardfantasy.engine.feature.ImmobilityFeature;
@@ -49,11 +50,13 @@ import cfvbaibai.cardfantasy.engine.feature.PrayFeature;
 import cfvbaibai.cardfantasy.engine.feature.PursuitFeature;
 import cfvbaibai.cardfantasy.engine.feature.RaceBuffFeature;
 import cfvbaibai.cardfantasy.engine.feature.RacialAttackFeature;
+import cfvbaibai.cardfantasy.engine.feature.RacialShieldFeature;
 import cfvbaibai.cardfantasy.engine.feature.RainfallFeature;
 import cfvbaibai.cardfantasy.engine.feature.ReincarnationFeature;
 import cfvbaibai.cardfantasy.engine.feature.RejuvenateFeature;
 import cfvbaibai.cardfantasy.engine.feature.ResurrectionFeature;
 import cfvbaibai.cardfantasy.engine.feature.ReturnFeature;
+import cfvbaibai.cardfantasy.engine.feature.RevengeFeature;
 import cfvbaibai.cardfantasy.engine.feature.ReviveFeature;
 import cfvbaibai.cardfantasy.engine.feature.SacrificeFeature;
 import cfvbaibai.cardfantasy.engine.feature.SealFeature;
@@ -65,6 +68,7 @@ import cfvbaibai.cardfantasy.engine.feature.WarthFeature;
 import cfvbaibai.cardfantasy.engine.feature.WeakPointAttackFeature;
 import cfvbaibai.cardfantasy.engine.feature.WeakenAllFeature;
 import cfvbaibai.cardfantasy.engine.feature.WeakenFeature;
+import cfvbaibai.cardfantasy.engine.feature.WinningPursuitFeature;
 import cfvbaibai.cardfantasy.engine.feature.WoundFeature;
 import cfvbaibai.cardfantasy.engine.feature.ZealotFeature;
 
@@ -81,7 +85,10 @@ public class FeatureResolver {
 
     public List<CardInfo> getAdjacentCards(Field field, int position) {
         List<CardInfo> cards = new ArrayList<CardInfo>();
-        cards.add(field.getCard(position));
+        CardInfo card = field.getCard(position);
+        if (card != null) {
+            cards.add(card);
+        }
         if (position > 0) {
             CardInfo leftSide = field.getCard(position - 1);
             if (leftSide != null) {
@@ -263,6 +270,24 @@ public class FeatureResolver {
                     }
                 }
                 for (FeatureInfo blockFeature : defender.getNormalUsableFeatures()) {
+                    if (blockFeature.getType() == FeatureType.王国之盾) {
+                        result.setDamage(RacialShieldFeature.apply(blockFeature.getFeature(), this, cardAttacker,
+                                defender, defender, result.getDamage(), Race.地狱));
+                    }
+                    if (blockFeature.getType() == FeatureType.森林之盾) {
+                        result.setDamage(RacialShieldFeature.apply(blockFeature.getFeature(), this, cardAttacker,
+                                defender, defender, result.getDamage(), Race.蛮荒));
+                    }
+                    if (blockFeature.getType() == FeatureType.蛮荒之盾) {
+                        result.setDamage(RacialShieldFeature.apply(blockFeature.getFeature(), this, cardAttacker,
+                                defender, defender, result.getDamage(), Race.王国));
+                    }
+                    if (blockFeature.getType() == FeatureType.地狱之盾) {
+                        result.setDamage(RacialShieldFeature.apply(blockFeature.getFeature(), this, cardAttacker,
+                                defender, defender, result.getDamage(), Race.森林));
+                    }
+                }
+                for (FeatureInfo blockFeature : defender.getNormalUsableFeatures()) {
                     if (blockFeature.getType() == FeatureType.冰甲) {
                         result.setDamage(IceArmorFeature.apply(blockFeature.getFeature(), this, cardAttacker, defender,
                                 result.getDamage()));
@@ -397,6 +422,8 @@ public class FeatureResolver {
                 CurseFeature.apply(this, deadCardFeature.getFeature(), deadCard, killerCard.getOwner());
             } else if (deadCardFeature.getType() == FeatureType.烈焰风暴) {
                 FireMagicFeature.apply(deadCardFeature.getFeature(), this, deadCard, killerCard.getOwner(), -1);
+            } else if (deadCardFeature.getType() == FeatureType.摧毁) {
+                DestroyFeature.apply(this, deadCardFeature.getFeature(), deadCard, killerCard.getOwner(), 1);
             }
         }
         for (FeatureInfo deadCardFeature : deadCard.getAllUsableFeatures()) {
@@ -426,8 +453,9 @@ public class FeatureResolver {
 
     public void resolveExtraAttackFeature(CardInfo attacker, CardInfo defender, Player defenderHero,
             int normalAttackDamage) throws HeroDieSignal {
-        if (!attacker.isDead()) {
-            for (FeatureInfo feature : attacker.getNormalUsableFeatures()) {
+
+        for (FeatureInfo feature : attacker.getNormalUsableFeatures()) {
+            if (!attacker.isDead()) {
                 if (feature.getType() == FeatureType.穿刺) {
                     PenetrationFeature.apply(feature.getFeature(), this, attacker, defenderHero, normalAttackDamage);
                 } else if (feature.getType() == FeatureType.削弱) {
@@ -444,17 +472,17 @@ public class FeatureResolver {
                     BloodDrainFeature.apply(feature.getFeature(), this, attacker, defender, normalAttackDamage);
                 }
             }
-            {
-                RuneInfo rune = attacker.getOwner().getActiveRuneOf(RuneData.赤谷);
-                if (rune != null) {
-                    BloodDrainFeature.apply(rune.getFeature(), this, attacker, defender, normalAttackDamage);
-                }
+        }
+        if (!attacker.isDead()) {
+            RuneInfo rune = attacker.getOwner().getActiveRuneOf(RuneData.赤谷);
+            if (rune != null) {
+                BloodDrainFeature.apply(rune.getFeature(), this, attacker, defender, normalAttackDamage);
             }
-            {
-                RuneInfo rune = attacker.getOwner().getActiveRuneOf(RuneData.洞察);
-                if (rune != null) {
-                    BloodThirstyFeature.apply(this, rune.getFeatureInfo(), attacker, normalAttackDamage);
-                }
+        }
+        if (!attacker.isDead()) {
+            RuneInfo rune = attacker.getOwner().getActiveRuneOf(RuneData.洞察);
+            if (rune != null) {
+                BloodThirstyFeature.apply(this, rune.getFeatureInfo(), attacker, normalAttackDamage);
             }
         }
     }
@@ -475,6 +503,10 @@ public class FeatureResolver {
                 ReturnFeature.apply(this, feature.getFeature(), attacker, defender);
             } else if (feature.getType() == FeatureType.战意) {
                 WarthFeature.apply(this, feature, attacker, defender);
+            } else if (feature.getType() == FeatureType.趁胜追击) {
+                WinningPursuitFeature.apply(this, feature, attacker, defender);
+            } else if (feature.getType() == FeatureType.复仇) {
+                RevengeFeature.apply(this, feature, attacker, defender);
             }
         }
         {
@@ -513,6 +545,10 @@ public class FeatureResolver {
                 BackStabFeature.remove(this, effect.getCause(), card);
             } else if (type == FeatureType.战意) {
                 WarthFeature.remove(this, effect.getCause(), card);
+            } else if (type == FeatureType.趁胜追击) {
+                WinningPursuitFeature.remove(this, effect.getCause(), card);
+            } else if (type == FeatureType.复仇) {
+                RevengeFeature.remove(this, effect.getCause(), card);
             }
         }
     }
@@ -658,17 +694,23 @@ public class FeatureResolver {
                 } else if (feature.getType() == FeatureType.王国守护) {
                     RaceBuffFeature.apply(this, feature, fieldCard, Race.王国, FeatureEffectType.MAXHP_CHANGE);
                 } else if (feature.getType() == FeatureType.森林之力) {
-                    RaceBuffFeature.apply(this, feature, fieldCard, null, FeatureEffectType.ATTACK_CHANGE);
+                    RaceBuffFeature.apply(this, feature, fieldCard, Race.森林, FeatureEffectType.ATTACK_CHANGE);
                 } else if (feature.getType() == FeatureType.森林守护) {
-                    RaceBuffFeature.apply(this, feature, fieldCard, null, FeatureEffectType.MAXHP_CHANGE);
+                    RaceBuffFeature.apply(this, feature, fieldCard, Race.森林, FeatureEffectType.MAXHP_CHANGE);
                 } else if (feature.getType() == FeatureType.蛮荒之力) {
-                    RaceBuffFeature.apply(this, feature, fieldCard, null, FeatureEffectType.ATTACK_CHANGE);
+                    RaceBuffFeature.apply(this, feature, fieldCard, Race.蛮荒, FeatureEffectType.ATTACK_CHANGE);
                 } else if (feature.getType() == FeatureType.蛮荒守护) {
-                    RaceBuffFeature.apply(this, feature, fieldCard, null, FeatureEffectType.MAXHP_CHANGE);
+                    RaceBuffFeature.apply(this, feature, fieldCard, Race.蛮荒, FeatureEffectType.MAXHP_CHANGE);
+                } else if (feature.getType() == FeatureType.地狱之力) {
+                    RaceBuffFeature.apply(this, feature, fieldCard, Race.地狱, FeatureEffectType.ATTACK_CHANGE);
+                } else if (feature.getType() == FeatureType.地狱守护) {
+                    RaceBuffFeature.apply(this, feature, fieldCard, Race.地狱, FeatureEffectType.MAXHP_CHANGE);
                 } else if (feature.getType() == FeatureType.本源之力) {
                     RaceBuffFeature.apply(this, feature, fieldCard, null, FeatureEffectType.ATTACK_CHANGE);
                 } else if (feature.getType() == FeatureType.本源守护) {
                     RaceBuffFeature.apply(this, feature, fieldCard, null, FeatureEffectType.MAXHP_CHANGE);
+                } else if (feature.getType() == FeatureType.神圣守护) {
+                    HolyGuardFeature.apply(this, feature, fieldCard);
                 } else if (feature.getType() == FeatureType.反噬) {
                     CounterBiteFeature.apply(feature.getFeature(), this, fieldCard);
                 } else if (feature.getType() == FeatureType.献祭) {
@@ -692,6 +734,10 @@ public class FeatureResolver {
                 RaceBuffFeature.remove(this, deadCardFeature, card, Race.蛮荒);
             } else if (deadCardFeature.getType() == FeatureType.蛮荒守护) {
                 RaceBuffFeature.remove(this, deadCardFeature, card, Race.蛮荒);
+            } else if (deadCardFeature.getType() == FeatureType.地狱之力) {
+                RaceBuffFeature.remove(this, deadCardFeature, card, Race.地狱);
+            } else if (deadCardFeature.getType() == FeatureType.地狱守护) {
+                RaceBuffFeature.remove(this, deadCardFeature, card, Race.地狱);
             } else if (deadCardFeature.getType() == FeatureType.本源之力) {
                 RaceBuffFeature.remove(this, deadCardFeature, card, null);
             } else if (deadCardFeature.getType() == FeatureType.本源守护) {
@@ -942,6 +988,16 @@ public class FeatureResolver {
                 HeavenWrathFeature.apply(this, rune.getFeature(), rune, defenderHero);
             } else if (rune.is(RuneData.灭世)) {
                 FireMagicFeature.apply(rune.getFeature(), this, rune, defenderHero, -1);
+            }
+        }
+    }
+
+    public void removeOneRoundEffects(Player activePlayer) {
+        for (CardInfo card : activePlayer.getField().toList()) {
+            for (FeatureInfo featureInfo : card.getNormalUsableFeatures()) {
+                if (featureInfo.getType() == FeatureType.神圣守护) {
+                    HolyGuardFeature.remove(this, featureInfo, card);
+                }
             }
         }
     }

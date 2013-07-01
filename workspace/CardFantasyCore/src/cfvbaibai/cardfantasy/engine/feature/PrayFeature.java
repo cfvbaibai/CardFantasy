@@ -21,7 +21,7 @@ public final class PrayFeature {
             return;
         }
         try {
-            resolver.attackHero(healer, healee, cardFeature, healHP);
+            resolver.attackHero(healer, healee, cardFeature, -healHP);
         } catch (HeroDieSignal e) {
             throw new CardFantasyRuntimeException("Cannot kill hero by Pray!");
         }

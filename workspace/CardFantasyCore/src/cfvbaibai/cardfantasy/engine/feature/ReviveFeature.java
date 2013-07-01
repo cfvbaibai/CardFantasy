@@ -14,9 +14,6 @@ public final class ReviveFeature {
         if (reviver == null) {
             throw new CardFantasyRuntimeException("reviver should not be null");
         }
-        if (reviver.getOwner() != resolver.getStage().getActivePlayer()) {
-            throw new CardFantasyRuntimeException("Reviver is not the current active player!");
-        }
         Feature feature = featureInfo.getFeature();
         // Grave is a stack, find the last-in card and revive it.
         CardInfo cardToRevive = null;

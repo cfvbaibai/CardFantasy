@@ -283,10 +283,10 @@ public class CardInfo extends EntityInfo {
         sb.append("【");
         for (FeatureEffect effect : effects) {
             if (effect.getType() == FeatureEffectType.ATTACK_CHANGE) {
-                sb.append("ATC");
+                sb.append("攻击变化");
             }
             else if (effect.getType() == FeatureEffectType.MAXHP_CHANGE) {
-                sb.append("MHC");
+                sb.append("HP变化");
             } else {
                 throw new CardFantasyRuntimeException("Unknown feature effect type: " + effect.getType().name());
             }
@@ -367,5 +367,9 @@ public class CardInfo extends EntityInfo {
 
     public int getLostHP() {
         return this.getMaxHP() - this.getHP();
+    }
+
+    public void refreshPosition() {
+        getPosition();
     }
 }

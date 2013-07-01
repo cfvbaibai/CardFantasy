@@ -1,6 +1,7 @@
 package cfvbaibai.cardfantasy.data;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -70,5 +71,15 @@ public class CardDataStore {
         } else {
             return null;
         }
+    }
+    
+    public List<CardData> getCardOfStar(int star) {
+        List<CardData> result = new ArrayList<CardData>();
+        for (CardData card : this.cardMap.values()) {
+            if (card.getStar() == star) {
+                result.add(card);
+            }
+        }
+        return result;
     }
 }

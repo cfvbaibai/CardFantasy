@@ -16,4 +16,8 @@ public class Rule {
     public int getMaxRound() {
         return this.maxRound;
     }
+
+    public static Rule getDefault() {
+        return new Rule(6, 50);
+    }
 }

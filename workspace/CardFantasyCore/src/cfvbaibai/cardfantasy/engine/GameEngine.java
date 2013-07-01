@@ -41,35 +41,35 @@ public class GameEngine {
     }
 
     private GameResult proceedGame() {
-        Phase phase = Phase.Start;
-        Phase nextPhase = Phase.Unknown;
+        Phase phase = Phase.开始;
+        Phase nextPhase = Phase.未知;
         try {
             while (true) {
-                if (phase == Phase.Start) {
+                if (phase == Phase.开始) {
                     nextPhase = roundStart();
-                } else if (phase == Phase.Draw) {
+                } else if (phase == Phase.抽卡) {
                     nextPhase = drawCard();
-                } else if (phase == Phase.Standby) {
+                } else if (phase == Phase.准备) {
                     nextPhase = standby();
-                } else if (phase == Phase.Summon) {
+                } else if (phase == Phase.召唤) {
                     nextPhase = summonCards();
-                } else if (phase == Phase.Battle) {
+                } else if (phase == Phase.战斗) {
                     nextPhase = battle();
-                } else if (phase == Phase.End) {
+                } else if (phase == Phase.结束) {
                     nextPhase = roundEnd();
                 } else {
                     throw new CardFantasyRuntimeException(String.format("Unknown phase encountered: %s", phase));
                 }
                 stage.getUI().phaseChanged(getActivePlayer(), phase, nextPhase);
                 phase = nextPhase;
-                nextPhase = Phase.Unknown;
+                nextPhase = Phase.未知;
             }
         } catch (GameOverSignal signal) {
-            return stage.result(this.stage.getPlayers().get(0), GameEndCause.TOO_LONG);
+            return stage.result(this.stage.getPlayers().get(0), GameEndCause.战斗超时);
         } catch (HeroDieSignal signal) {
-            return stage.result(getOpponent(signal.getDeadPlayer()), GameEndCause.HERO_DIE);
+            return stage.result(getOpponent(signal.getDeadPlayer()), GameEndCause.英雄死亡);
         } catch (AllCardsDieSignal signal) {
-            return stage.result(getOpponent(signal.getDeadPlayer()), GameEndCause.ALL_CARDS_DIE);
+            return stage.result(getOpponent(signal.getDeadPlayer()), GameEndCause.卡片全灭);
         }
     }
 
@@ -93,13 +93,13 @@ public class GameEngine {
 
         player.getField().compact();
         this.getInactivePlayer().getField().compact();
-        return Phase.Standby;
+        return Phase.准备;
     }
 
     private Phase standby() throws HeroDieSignal {
         this.stage.getResolver().activateRunes(this.getActivePlayer(), this.getInactivePlayer());
         this.stage.getResolver().resolvePreAttackRune(this.getActivePlayer(), this.getInactivePlayer());
-        return Phase.Battle;
+        return Phase.战斗;
     }
 
     private Phase roundEnd() {
@@ -122,7 +122,7 @@ public class GameEngine {
         this.stage.setActivePlayerNumber(nextPlayerNumber);
         Player nextPlayer = this.getActivePlayer();
         stage.getUI().playerChanged(previousPlayer, nextPlayer);
-        return Phase.Start;
+        return Phase.开始;
     }
 
     private Phase battle() throws HeroDieSignal {
@@ -176,7 +176,7 @@ public class GameEngine {
             card.getStatus().remove(CardStatusType.迷惑);
         }
 
-        return Phase.End;
+        return Phase.结束;
     }
 
     private void tryAttackEnemy(Field myField, Field opField, int i) throws HeroDieSignal {
@@ -247,13 +247,14 @@ public class GameEngine {
             throw new GameOverSignal();
         }
         this.stage.getResolver().deactivateRunes(this.getActivePlayer());
+        this.stage.getResolver().removeOneRoundEffects(this.getActivePlayer());
         if (this.getActivePlayer().getDeck().size() == 0 && this.getActivePlayer().getField().size() == 0
                 && this.getActivePlayer().getHand().size() == 0) {
             throw new AllCardsDieSignal(this.getActivePlayer());
         }
 
         this.stage.getUI().roundStarted(this.getActivePlayer(), this.stage.getRound());
-        return Phase.Draw;
+        return Phase.抽卡;
     }
 
     private Phase drawCard() {
@@ -261,16 +262,16 @@ public class GameEngine {
         Hand hand = activePlayer.getHand();
         if (hand.size() >= this.stage.getRule().getMaxHandCards()) {
             stage.getUI().cantDrawHandFull(activePlayer);
-            return Phase.Summon;
+            return Phase.召唤;
         }
         Deck deck = activePlayer.getDeck();
         if (deck.isEmpty()) {
             stage.getUI().cantDrawDeckEmpty(activePlayer);
-            return Phase.Summon;
+            return Phase.召唤;
         }
         CardInfo newCard = deck.draw();
         hand.addCard(newCard);
         stage.getUI().cardDrawed(activePlayer, newCard);
-        return Phase.Summon;
+        return Phase.召唤;
     }
 }

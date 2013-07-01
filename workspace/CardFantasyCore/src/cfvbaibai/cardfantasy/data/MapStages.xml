@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Maps>
+    <Map id="1-1-1" heroHP="1000" victory="Any">C森林狼-0*2</Map>
+    <Map id="1-1-2" heroHP="1070" victory="EnemyCardsAllDie">C森林狼-1*2</Map>
+    <Map id="1-1-3" heroHP="1140" victory="MyHeroHP:80">C森林狼-2*2</Map>
+    <Map id="1-2-1" heroHP="1000" victory="Any">C森林狼-0,C城镇巡逻兵-0,C白斑蜘蛛-0</Map>
+    <Map id="1-2-2" heroHP="1070" victory="EnemyCardsAllDie">C森林狼-1,C城镇巡逻兵-1,C白斑蜘蛛-1</Map>
+    <Map id="1-2-3" heroHP="1140" victory="MyHeroHP:90">C森林狼-2,C城镇巡逻兵-2,C白斑蜘蛛-2</Map>
+    <Map id="8-H-1" heroHP="8080" victory="Any">C魔法协会长-8,C森林女神-10,C九头妖蛇-5,C金属巨龙-8,C光明之龙-10,C灵魂收割者-10,C凤凰-8,C光明之龙-8,C风暴召唤者-8,C秘银巨石像-10,R冰封-2,R雷盾-4,R陨星-2,R爆裂-2</Map>
+    <Map id="8-H-3" heroHP="9190" victory="NoRune">C魔法协会长-10,C森林女神-10,C九头妖蛇-9,C金属巨龙-10,C光明之龙-10,C灵魂收割者-10,C凤凰-10,C光明之龙-8,C风暴召唤者-8,C秘银巨石像-10,R冰封-4,R雷盾-4,R陨星-4,R爆裂-4</Map>
+    <Map id="9-10-1" heroHP="7600" victory="Any">C守卫古树-10,C金属巨龙-8,C霜雪树人-8,C霜雪树人-10,C月亮女神-10,C光明之龙-10,C月之神兽-10,C独角兽之王-8,C树人祭司-10,C魔法协会长-10,R雷盾-2,R雷狱-2,R飓风-2,R春风-2</Map>
+    <Map id="10-10-1" heroHP="8930" victory="Any">C战神-10*2,C降临天使-10,C降临天使-6,C月亮女神-10,C森林女神-8,C光明之龙-10,C水源制造者-10*2,C黑魔导士-10,R冰封-2,R永冻-2,R清泉-2,R洞察-2</Map>
+    <Map id="10-10-2" heroHP="9190" victory="Any">C战神-10*2,C降临天使-10,C降临天使-8,C月亮女神-10,C森林女神-10,C光明之龙-10,C水源制造者-10*2,C黑魔导士-10,R冰封-3,R永冻-3,R清泉-3,R洞察-3</Map>
+</Maps>
