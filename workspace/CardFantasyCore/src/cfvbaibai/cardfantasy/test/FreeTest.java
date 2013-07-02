@@ -222,6 +222,13 @@ public class FreeTest extends PveEngineTest {
     }
 
     @Test
+    public void 不动大象vs转生天使() {
+        PlayerInfo p1 = PlayerBuilder.build("大象英雄", 90, "战斗猛犸象+不动*10", "赤谷");
+        PlayerInfo p2 = PlayerBuilder.build("转生英雄", 90, "降临天使+转生5*10", "冰封");
+        TestGameBuilder.play(p1, p2);
+    }
+
+    @Test
     public void 竞技场测试1() {
         PlayerInfo p1 = PlayerBuilder.build("我方英雄", 74, "C金属巨龙-10*4", "C恐惧之王-10*4", "C灵魂收割者-10*2", "R雷盾-4", "R雷狱-4",
                 "R灼魂-4", "R绝杀-4");

@@ -2,20 +2,37 @@ package cfvbaibai.cardfantasy.data;
 
 import java.util.List;
 
+import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
+
 
 public class Card implements Cloneable {
     private CardData sourceInfo;
     private int exp;
     private String id;
+    private CardFeature extraFeature;
     
     public Card(CardData sourceInfo) {
         this(sourceInfo, 0, "");
     }
     
     public Card(CardData sourceInfo, int cardLevel, String suffix) {
+        this(sourceInfo, cardLevel, null, null, suffix);
+    }
+    
+    public Card(CardData sourceInfo, int cardLevel, CardFeature extraFeature, String prefix, String suffix) {
+        if (sourceInfo == null) {
+            throw new CardFantasyRuntimeException("sourceInfo should not be null");
+        }
+        if (prefix == null) {
+            prefix = "";
+        }
+        if (suffix == null) {
+            suffix = "";
+        }
         this.sourceInfo = sourceInfo;
         this.growToLevel(cardLevel);
-        this.id = sourceInfo.getName() + suffix;
+        this.extraFeature = extraFeature;
+        this.id = prefix + sourceInfo.getName() + suffix;
     }
 
     public String getId() {
@@ -39,7 +56,11 @@ public class Card implements Cloneable {
     }
 
     public List<CardFeature> getAllFeatures() {
-        return sourceInfo.getFeatures();
+        List <CardFeature> features = sourceInfo.getFeatures();
+        if (this.extraFeature != null) {
+            features.add(this.extraFeature);
+        }
+        return features;
     }
 
     public void growToLevel(int level) {
@@ -52,5 +73,9 @@ public class Card implements Cloneable {
 
     public String getName() {
         return this.sourceInfo.getName();
+    }
+
+    public CardFeature getExtraFeature() {
+        return this.extraFeature;
     }
 }

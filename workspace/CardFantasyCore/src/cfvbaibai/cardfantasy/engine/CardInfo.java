@@ -37,11 +37,15 @@ public class CardInfo extends EntityInfo {
         this.owner = owner;
         this.effects = new HashMap<FeatureType, List<FeatureEffect>>();
         this.features = new ArrayList<FeatureInfo>();
-        for (CardFeature cardFeature : card.getAllFeatures()) {
-            this.features.add(new FeatureInfo(this, cardFeature));
+        for (CardFeature feature : card.getAllFeatures()) {
+            this.features.add(new FeatureInfo(this, feature));
         }
         this.cachedPosition = -1;
         this.deadOnce = false;
+    }
+    
+    public CardFeature getExtraFeature() {
+        return card.getExtraFeature();
     }
     
     public boolean isFirstRound() {

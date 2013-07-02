@@ -1,9 +1,16 @@
 package cfvbaibai.cardfantasy.game;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import org.apache.commons.lang3.StringUtils;
+
 import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
 import cfvbaibai.cardfantasy.data.Card;
 import cfvbaibai.cardfantasy.data.CardData;
 import cfvbaibai.cardfantasy.data.CardDataStore;
+import cfvbaibai.cardfantasy.data.CardFeature;
+import cfvbaibai.cardfantasy.data.FeatureType;
 import cfvbaibai.cardfantasy.data.Rune;
 import cfvbaibai.cardfantasy.data.RuneData;
 
@@ -29,47 +36,124 @@ public final class DeckBuilder {
             } else if (desc.charAt(0) == 'R') {
                 parseRuneDesc(deck, desc);
             } else {
-                throw new CardFantasyRuntimeException("Invalid description prefix! " + desc);
+                if (!parseCardDesc(deck, "C" + desc)) {
+                    if (!parseRuneDesc(deck, "R" + desc)) {
+                        throw new CardFantasyRuntimeException("Invalid description: " + desc);
+                    }
+                }
             }
         }
         return deck;
     }
 
-    private static void parseRuneDesc(DeckStartupInfo deck, String desc) {
+    private static boolean parseRuneDesc(DeckStartupInfo deck, String desc) {
         String runeDesc = desc.substring(1);
         int iDash = runeDesc.indexOf('-');
-        String runeName = runeDesc.substring(0, iDash);
-        int runeLevel = Integer.parseInt(runeDesc.substring(iDash + 1));
+        int runeLevel = 4;
+        String runeName = runeDesc;
+        if (iDash >= 0) {
+            runeLevel = Integer.parseInt(runeDesc.substring(iDash + 1));
+            runeName = runeDesc.substring(0, iDash);
+        }
+        
+        RuneData runeData = null;
+        try {
+            runeData = RuneData.valueOf(runeName);
+        } catch (IllegalArgumentException e) {
+            return false;
+        }
 
-        RuneData runeData = RuneData.valueOf(runeName);
         Rune rune = new Rune(runeData, 0);
         rune.growToLevel(runeLevel);
         deck.addRune(rune);
+        return true;
     }
 
-    private static void parseCardDesc(DeckStartupInfo deck, String desc) {
+    /**
+     * Card description text pattern:
+     * C卡片名-等级+技能名技能等级*数量
+     * @param deck
+     * @param desc
+     */
+    private static boolean parseCardDesc(DeckStartupInfo deck, String desc) {
         String cardDesc = desc.substring(1);
-        int iStar = cardDesc.indexOf("*");
-        int count = 1;
-        if (iStar > 0) {
-            String countText = cardDesc.substring(iStar + 1);
-            count = Integer.parseInt(countText);
-            cardDesc = cardDesc.substring(0, iStar);
+        String regex = "^";
+        regex += "(?<CardName>[^\\-+SD*]+)";
+        regex += "(\\-(?<CardLevel>\\d+))?";
+        regex += "(\\+(?<SummonFlag>S?)(?<DeathFlag>D?)";
+        regex += "(?<ExtraFeatureName>[^\\d*]+)(?<ExtraFeatureLevel>\\d+)?)?";
+        regex += "(\\*(?<Count>\\d+))?";
+        regex += "$";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(cardDesc);
+        if (!matcher.matches()) {
+            throw new CardFantasyRuntimeException("Invalid cardDesc: " + desc);
         }
-        int iDash = cardDesc.indexOf("-");
-        String cardName = cardDesc.substring(0, iDash);
-        int cardLevel = Integer.parseInt(cardDesc.substring(iDash + 1));
+        String cardName = matcher.group("CardName");
+        String cardLevelText = matcher.group("CardLevel");
+        int cardLevel = 10;
+        if (cardLevelText != null) {
+            try {
+                cardLevel = Integer.parseInt(cardLevelText);
+            } catch (NumberFormatException e) {
+                throw new CardFantasyRuntimeException("Invalid cardDesc: " + desc, e);
+            }
+        }
+        String extraFeatureName = matcher.group("ExtraFeatureName");
+        FeatureType extraFeatureType = null;
+        if (extraFeatureName != null) {
+            try {
+                extraFeatureType = FeatureType.valueOf(extraFeatureName);
+            } catch (IllegalArgumentException e) {
+                throw new CardFantasyRuntimeException("Invalid cardDesc: " + desc, e);
+            }
+        }
+        if (extraFeatureType != null && cardLevelText == null) {
+            cardLevel = 15;
+        }
+        String extraFeatureLevelText = matcher.group("ExtraFeatureLevel");
+        int extraFeatureLevel = 0;
+        if (extraFeatureLevelText != null) {
+            try {
+                extraFeatureLevel = Integer.parseInt(extraFeatureLevelText);
+            } catch (NumberFormatException e) {
+                throw new CardFantasyRuntimeException("Invalid cardDesc: " + desc, e);
+            }
+        }
+       
+        boolean summonFeature = !StringUtils.isBlank(matcher.group("SummonFlag"));
+        boolean deathFeature = !StringUtils.isBlank(matcher.group("DeathFlag"));
+        String countText = matcher.group("Count");
+        int count = 1;
+        if (countText != null) {
+            try {
+                count = Integer.parseInt(countText);
+            } catch (NumberFormatException e) {
+                throw new CardFantasyRuntimeException("Invalid cardDesc: " + desc, e);
+            }
+        }
 
         CardData data = store.getCardInfo(cardName);
         if (data == null) {
-            throw new RuntimeException("Invalid card name: " + cardName);
+            return false;
         }
+        
+        String prefix = "";
+        CardFeature extraFeature = null;
+        if (extraFeatureType != null) {
+            extraFeature = new CardFeature(extraFeatureType, extraFeatureLevel, 15, summonFeature, deathFeature);
+            prefix = extraFeatureName;
+            if (extraFeatureLevel != 0) {
+                prefix += extraFeatureLevel;
+            }
+        }
+        
         for (int j = 0; j < count; ++j) {
             char suffix = 'A';
             while (true) {
                 boolean suffixUsed = false;
                 for (Card card : deck.getCards()) {
-                    if (card.getId().equals(cardName + suffix)) {
+                    if (card.getId().equals(prefix + cardName + suffix)) {
                         suffixUsed = true;
                         break;
                     }
@@ -80,7 +164,10 @@ public final class DeckBuilder {
                     break;
                 }
             }
-            deck.addCard(new Card(data, cardLevel, String.valueOf(suffix)));
+
+            Card card = new Card(data, cardLevel, extraFeature, prefix, String.valueOf(suffix));
+            deck.addCard(card);
         }
+        return true;
     }
 }
