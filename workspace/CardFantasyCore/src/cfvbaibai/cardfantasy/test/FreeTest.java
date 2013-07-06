@@ -50,7 +50,7 @@ public class FreeTest extends PveEngineTest {
     private static GameResultStat play(PlayerInfo p1, PlayerInfo p2, int count) {
         GameResultStat stat = new GameResultStat(p1, p2);
         for (int i = 0; i < count; ++i) {
-            GameEngine engine = new GameEngine(new DummyGameUI(), new Rule(6, 50));
+            GameEngine engine = new GameEngine(new DummyGameUI(), Rule.getDefault());
             engine.RegisterPlayers(p1, p2);
             GameResult result = engine.playGame();
             stat.addResult(result);
@@ -223,8 +223,15 @@ public class FreeTest extends PveEngineTest {
 
     @Test
     public void 不动大象vs转生天使() {
-        PlayerInfo p1 = PlayerBuilder.build("大象英雄", 90, "战斗猛犸象+不动*10", "赤谷");
-        PlayerInfo p2 = PlayerBuilder.build("转生英雄", 90, "降临天使+转生5*10", "冰封");
+        PlayerInfo p1 = PlayerBuilder.build("大象英雄", "战斗猛犸象+不动*5,战斗猛犸象+横扫*5,赤谷", 90);
+        PlayerInfo p2 = PlayerBuilder.build("天使英雄", "降临天使+转生5*5,降临天使+陷阱2*5,冰封", 90);
+        TestGameBuilder.play(p1, p2);
+    }
+    
+    @Test
+    public void 横扫大象vs转生天使() { 
+        PlayerInfo p1 = PlayerBuilder.build("大象英雄", "战斗猛犸象+横扫*5", 90);
+        PlayerInfo p2 = PlayerBuilder.build("天使英雄", "降临天使+转生5*5", 90);
         TestGameBuilder.play(p1, p2);
     }
 

@@ -111,6 +111,7 @@ public class StageInfo {
 
     public void gameStarted() {
         this.ui.gameStarted(this.getBoard(), this.getRule());
+        this.activePlayerNumber = this.getRule().getFirstPlayer();
     }
     
     public GameResult result(Player winner, GameEndCause cause) {

@@ -446,7 +446,7 @@
         <Feature type="转生" level="6" unlock="5" />
         <Feature type="森林之力" level="7" unlock="10" />
     </Card>
-    <Card name="半路人长老" race="森林" speed="4" star="4" cost="13" at="270" hp="820" incrAT="18" incrHP="24">
+    <Card name="半鹿人长老" race="森林" speed="4" star="4" cost="13" at="270" hp="820" incrAT="18" incrHP="24">
         <Feature type="回春" level="6" unlock="0" />
         <Feature type="二重狙击" level="6" unlock="5" />
         <Feature type="甘霖" level="6" unlock="10" />
@@ -537,6 +537,10 @@
         <Feature type="吸血" level="2" unlock="0" />
         <Feature type="暗杀" level="3" unlock="5" />
         <Feature type="毒雾" level="3" unlock="10" />
+    </Card>
+    <Card name="哥布林工程兵" race="蛮荒" speed="2" star="1" cost="3" at="90" hp="310" incrAT="15" incrHP="18">
+        <Feature type="陷阱" level="1" unlock="5" />
+        <Feature type="连环闪电" level="3" unlock="10" />
     </Card>
     <Card name="哥布林战士" race="蛮荒" speed="4" star="2" cost="6" at="110" hp="430" incrAT="24" incrHP="7">
         <Feature type="暴击" level="2" unlock="0" />

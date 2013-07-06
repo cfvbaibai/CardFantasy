@@ -437,12 +437,16 @@ public class FeatureResolver {
                 ExplodeFeature.apply(this, rune.getFeature(), killerCard, deadCard);
             }
         }
+        boolean reincarnated = false;
         for (FeatureInfo deadCardFeature : deadCard.getAllUsableFeatures()) {
             if (deadCardFeature.getType() == FeatureType.×ªÉú) {
-                ReincarnationFeature.apply(this, deadCardFeature.getFeature(), deadCard);
+                if (ReincarnationFeature.apply(this, deadCardFeature.getFeature(), deadCard)) {
+                    reincarnated = true;
+                    break;
+                }
             }
         }
-        {
+        if (!reincarnated) {
             RuneInfo rune = deadCard.getOwner().getActiveRuneOf(RuneData.»àÍÁ);
             if (rune != null) {
                 ReincarnationFeature.apply(this, rune.getFeature(), deadCard);
@@ -495,6 +499,8 @@ public class FeatureResolver {
                 RacialAttackFeature.apply(this, feature, attacker, defender, Race.Âù»Ä);
             } else if (feature.getType() == FeatureType.°µÉ±) {
                 RacialAttackFeature.apply(this, feature, attacker, defender, Race.Íõ¹ú);
+            } else if (feature.getType() == FeatureType.ÎÛÈ¾) {
+                RacialAttackFeature.apply(this, feature, attacker, defender, Race.É­ÁÖ);
             } else if (feature.getType() == FeatureType.±©»÷) {
                 CriticalAttackFeature.apply(this, feature, attacker, defender);
             } else if (feature.getType() == FeatureType.Çî×·ÃÍ´ò) {
@@ -535,7 +541,7 @@ public class FeatureResolver {
         }
         for (FeatureEffect effect : card.getEffects()) {
             FeatureType type = effect.getCause().getType();
-            if (type == FeatureType.Ê¥¹â || type == FeatureType.Òªº¦ || type == FeatureType.°µÉ±) {
+            if (type == FeatureType.Ê¥¹â || type == FeatureType.Òªº¦ || type == FeatureType.°µÉ± || type == FeatureType.ÎÛÈ¾) {
                 RacialAttackFeature.remove(this, effect.getCause(), card);
             } else if (type == FeatureType.±©»÷) {
                 CriticalAttackFeature.remove(this, effect.getCause(), card);

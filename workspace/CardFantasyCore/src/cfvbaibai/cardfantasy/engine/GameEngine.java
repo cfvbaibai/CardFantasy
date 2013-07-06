@@ -33,7 +33,6 @@ public class GameEngine {
 
     public GameResult playGame() {
         this.stage.gameStarted();
-        this.stage.setActivePlayerNumber(0);
         this.stage.setRound(0);
         GameResult result = proceedGame();
         this.stage.getUI().gameEnded(result);

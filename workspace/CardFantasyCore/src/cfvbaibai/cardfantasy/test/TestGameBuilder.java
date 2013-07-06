@@ -9,7 +9,7 @@ import cfvbaibai.cardfantasy.game.PlayerBuilder;
 
 public final class TestGameBuilder {
     public static GameEngine build(PlayerInfo player0, PlayerInfo player1) {
-        GameEngine engine = new GameEngine(new TestGameUI(), new Rule(6, 50));
+        GameEngine engine = new GameEngine(new TestGameUI(), Rule.getDefault());
         engine.RegisterPlayers(player0, player1);
         return engine;
     }

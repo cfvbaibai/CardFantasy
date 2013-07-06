@@ -9,7 +9,7 @@ import cfvbaibai.cardfantasy.engine.Grave;
 import cfvbaibai.cardfantasy.engine.Hand;
 
 public final class ReincarnationFeature {
-    public static void apply(FeatureResolver resolver, Feature cardFeature, CardInfo card) {
+    public static boolean apply(FeatureResolver resolver, Feature cardFeature, CardInfo card) {
         if (!card.isDead()) {
             throw new CardFantasyRuntimeException("Cannot resurrect undead card: " + card.getShortDesc());
         }
@@ -27,6 +27,8 @@ public final class ReincarnationFeature {
                 ui.cardToHand(card.getOwner(), card);
                 hand.addCard(card);
             }
+            return true;
         }
+        return false;
     }
 }

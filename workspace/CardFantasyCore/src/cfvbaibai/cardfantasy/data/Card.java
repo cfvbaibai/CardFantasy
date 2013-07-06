@@ -1,5 +1,6 @@
 package cfvbaibai.cardfantasy.data;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
@@ -56,7 +57,7 @@ public class Card implements Cloneable {
     }
 
     public List<CardFeature> getAllFeatures() {
-        List <CardFeature> features = sourceInfo.getFeatures();
+        List <CardFeature> features = new ArrayList<CardFeature>(sourceInfo.getFeatures());
         if (this.extraFeature != null) {
             features.add(this.extraFeature);
         }

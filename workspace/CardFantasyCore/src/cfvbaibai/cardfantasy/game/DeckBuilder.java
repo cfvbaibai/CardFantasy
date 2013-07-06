@@ -17,8 +17,13 @@ import cfvbaibai.cardfantasy.data.RuneData;
 public final class DeckBuilder {
 
     private static CardDataStore store;
+    
+    public static DeckStartupInfo multiBuild(String descsText) {
+        String[] descs = descsText.split(",");
+        return build(descs);
+    }
 
-    public static DeckStartupInfo build(String... descs) {
+    public static DeckStartupInfo build(String ... descs) {
         if (store == null) {
             store = CardDataStore.loadDefault();
         }
@@ -32,13 +37,13 @@ public final class DeckBuilder {
                         + desc);
             }
             if (desc.charAt(0) == 'C') {
-                parseCardDesc(deck, desc);
+                parseCardDesc(deck, desc.substring(1));
             } else if (desc.charAt(0) == 'R') {
-                parseRuneDesc(deck, desc);
+                parseRuneDesc(deck, desc.substring(1));
             } else {
-                if (!parseCardDesc(deck, "C" + desc)) {
-                    if (!parseRuneDesc(deck, "R" + desc)) {
-                        throw new CardFantasyRuntimeException("Invalid description: " + desc);
+                if (!parseCardDesc(deck, desc)) {
+                    if (!parseRuneDesc(deck, desc)) {
+                        throw new CardFantasyRuntimeException("无效的卡牌或符文: " + desc);
                     }
                 }
             }
@@ -47,7 +52,7 @@ public final class DeckBuilder {
     }
 
     private static boolean parseRuneDesc(DeckStartupInfo deck, String desc) {
-        String runeDesc = desc.substring(1);
+        String runeDesc = desc;
         int iDash = runeDesc.indexOf('-');
         int runeLevel = 4;
         String runeName = runeDesc;
@@ -76,18 +81,18 @@ public final class DeckBuilder {
      * @param desc
      */
     private static boolean parseCardDesc(DeckStartupInfo deck, String desc) {
-        String cardDesc = desc.substring(1);
+        String cardDesc = desc;
         String regex = "^";
         regex += "(?<CardName>[^\\-+SD*]+)";
+        regex += "(\\+(?<SummonFlag>(S|降临)?)(?<DeathFlag>(D|死契)?)";
+        regex += "(?<ExtraFeatureName>[^\\d\\-*]+)(?<ExtraFeatureLevel>\\d+)?)?";
         regex += "(\\-(?<CardLevel>\\d+))?";
-        regex += "(\\+(?<SummonFlag>S?)(?<DeathFlag>D?)";
-        regex += "(?<ExtraFeatureName>[^\\d*]+)(?<ExtraFeatureLevel>\\d+)?)?";
         regex += "(\\*(?<Count>\\d+))?";
         regex += "$";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(cardDesc);
         if (!matcher.matches()) {
-            throw new CardFantasyRuntimeException("Invalid cardDesc: " + desc);
+            throw new CardFantasyRuntimeException("无效的卡牌: " + desc);
         }
         String cardName = matcher.group("CardName");
         String cardLevelText = matcher.group("CardLevel");
@@ -96,7 +101,7 @@ public final class DeckBuilder {
             try {
                 cardLevel = Integer.parseInt(cardLevelText);
             } catch (NumberFormatException e) {
-                throw new CardFantasyRuntimeException("Invalid cardDesc: " + desc, e);
+                throw new CardFantasyRuntimeException("无效的卡牌: " + desc, e);
             }
         }
         String extraFeatureName = matcher.group("ExtraFeatureName");
@@ -105,7 +110,7 @@ public final class DeckBuilder {
             try {
                 extraFeatureType = FeatureType.valueOf(extraFeatureName);
             } catch (IllegalArgumentException e) {
-                throw new CardFantasyRuntimeException("Invalid cardDesc: " + desc, e);
+                throw new CardFantasyRuntimeException("无效的卡牌: " + desc, e);
             }
         }
         if (extraFeatureType != null && cardLevelText == null) {
@@ -117,7 +122,7 @@ public final class DeckBuilder {
             try {
                 extraFeatureLevel = Integer.parseInt(extraFeatureLevelText);
             } catch (NumberFormatException e) {
-                throw new CardFantasyRuntimeException("Invalid cardDesc: " + desc, e);
+                throw new CardFantasyRuntimeException("无效的卡牌: " + desc, e);
             }
         }
        
@@ -129,7 +134,7 @@ public final class DeckBuilder {
             try {
                 count = Integer.parseInt(countText);
             } catch (NumberFormatException e) {
-                throw new CardFantasyRuntimeException("Invalid cardDesc: " + desc, e);
+                throw new CardFantasyRuntimeException("无效的卡牌: " + desc, e);
             }
         }
 

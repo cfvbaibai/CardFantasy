@@ -10,7 +10,7 @@ public class PlayerBuilder {
     }
     
     public static PlayerInfo build(String id, String descText, int level) {
-        String[] descs = descText.split(",");
-        return build(id, level, descs);
+        DeckStartupInfo deck =  DeckBuilder.multiBuild(descText);
+        return new PlayerInfo(id, level, deck.getRunes(), deck.getCards());
     }
 }

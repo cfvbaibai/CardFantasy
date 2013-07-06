@@ -2,10 +2,12 @@ package cfvbaibai.cardfantasy.game;
 
 import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
 import cfvbaibai.cardfantasy.data.PlayerInfo;
+import cfvbaibai.cardfantasy.engine.GameEndCause;
 import cfvbaibai.cardfantasy.engine.GameResult;
 
 public class GameResultStat {
 
+    private int timeoutCount;
     private int p1WinCount;
     private int p2WinCount;
     
@@ -15,13 +17,16 @@ public class GameResultStat {
     public GameResultStat(PlayerInfo p1, PlayerInfo p2) {
         p1WinCount = 0;
         p2WinCount = 0;
+        timeoutCount = 0;
         this.p1 = p1;
         this.p2 = p2;
     }
     
     public void addResult(GameResult result) {
         String winnerId = result.getWinner().getId();
-        if (winnerId.equals(p1.getId())) {
+        if (result.getCause() == GameEndCause.Õ½¶·³¬Ê±) {
+            ++this.timeoutCount;
+        } else if (winnerId.equals(p1.getId())) {
             ++this.p1WinCount;
         } else if (winnerId.equals(p2.getId())){
             ++this.p2WinCount;
@@ -56,5 +61,13 @@ public class GameResultStat {
     
     public PlayerInfo getP2() {
         return this.p2;
+    }
+    
+    public int getTimeoutCount() {
+        return this.timeoutCount;
+    }
+    
+    public int getTimeoutRate() {
+        return this.timeoutCount * 100 / this.count();
     }
 }
