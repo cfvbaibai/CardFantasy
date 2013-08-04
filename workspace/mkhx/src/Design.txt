@@ -1,0 +1,25 @@
+Design of mkhx.cc:
+User pages:
+	1. Emulator page
+		left: Card Tree
+			Race -> Star -> Card
+			Every card in tree has two buttons: add to player1, add to player2
+		right top: deck construction
+			(P1) Player Name setting
+			(P1£©Hero Level selection
+			(P2) Cost overflow detection
+			(P2) Support quick deck construction from deck-key-text
+			(P2) Display deck-key-text of the current deck
+			20 slots for both cards
+			Two execution buttons:
+			   (P1) Play auto 1-match with detail
+			   (P2) Play manual 1-match with detail
+			   (P1) Play 100/1000 matches and show stat
+			   (P2) Make massive play count customizable
+		right bottom: emulation result
+			(P1) For auto 1-match, show the text output
+			(P2) For auto 1-match, show animation output
+			(P1) For massive-match, show result stat
+			(P2) For manual 1-match, provide text UI to play
+			(P2) For manual 1-match, provide animation UI to play
+Admin pages:
