@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
+import cfvbaibai.cardfantasy.NonSerializable;
 import cfvbaibai.cardfantasy.data.Card;
 import cfvbaibai.cardfantasy.data.CardFeature;
 import cfvbaibai.cardfantasy.data.FeatureTag;
@@ -14,17 +15,22 @@ import cfvbaibai.cardfantasy.data.FeatureType;
 import cfvbaibai.cardfantasy.data.Race;
 
 public class CardInfo extends EntityInfo {
+    @NonSerializable
     private Card card;
     private int hp;
     private int at;
     private int summonDelay;
+    @NonSerializable
     private CardStatus status;
+    @NonSerializable
     private Player owner;
+    @NonSerializable
     private List<FeatureInfo> features;
     // Used to record the previous position after card dies.
     private int cachedPosition;
     private boolean deadOnce;
 
+    @NonSerializable
     private Map<FeatureType, List<FeatureEffect>> effects;
     private boolean firstRound;
 
@@ -146,9 +152,9 @@ public class CardInfo extends EntityInfo {
     @Override
     public String getShortDesc() {
         if (this.getPosition() >= 0) {
-            return String.format("<%s>.<%s>.[%d]", this.getOwner().getId(), this.getCard().getId(), this.getPosition());
+            return String.format("<%s>.<%s>.[%d]", this.getOwner().getId(), this.getCard().getUniqueName(), this.getPosition());
         } else {
-            return String.format("<%s>.<%s>", this.getOwner().getId(), this.getCard().getId());
+            return String.format("<%s>.<%s>", this.getOwner().getId(), this.getCard().getUniqueName());
         }
     }
 
@@ -265,9 +271,17 @@ public class CardInfo extends EntityInfo {
         }
         return actualMaxHP;
     }
-
+    
     public String getId() {
         return this.card.getId();
+    }
+
+    public String getUniqueName() {
+        return this.card.getUniqueName();
+    }
+    
+    public String getName() {
+        return this.card.getName();
     }
 
     public int getLevel() {
@@ -375,5 +389,9 @@ public class CardInfo extends EntityInfo {
 
     public void refreshPosition() {
         getPosition();
+    }
+
+    public boolean isWounded() {
+        return this.getHP() < this.getMaxHP();
     }
 }

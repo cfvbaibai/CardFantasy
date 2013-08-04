@@ -14,13 +14,26 @@ public final class TestGameBuilder {
         return engine;
     }
     
+    public static GameResult playBossBattle(PlayerInfo player, String bossName) {
+        PlayerInfo boss = PlayerBuilder.build("Ä§Éñ", 9999, bossName);
+        GameEngine engine = new GameEngine(new TestGameUI(), Rule.getBossBattle());
+        engine.RegisterPlayers(boss, player);
+        return engine.playGame();
+    }
+    
     public static GameResult play(PlayerInfo player0, PlayerInfo player1) {
         return build(player0, player1).playGame();
     }
     
     public static GameResult play5v5(String card1, String card2) {
-        return play(PlayerBuilder.build("Ó¢ÐÛ" + card1, 50, "C" + card1 + "-10*5"),
-                PlayerBuilder.build("Ó¢ÐÛ" + card2, 50, "C" + card2 + "-10*5"));
+        String suffixA = "";
+        String suffixB = "";
+        if (card1.equals(card2)) {
+            suffixA = "A";
+            suffixB = "B";
+        }
+        return play(PlayerBuilder.build("Ó¢ÐÛ" + card1 + suffixA, 50, "C" + card1 + "-10*5"),
+                PlayerBuilder.build("Ó¢ÐÛ" + card2 + suffixB, 50, "C" + card2 + "-10*5"));
     }
     
     public static GameResult play5v5withRunes(String card1, RuneData r11, String card2, RuneData r21) {

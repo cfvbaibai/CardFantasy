@@ -9,6 +9,7 @@ import org.junit.Test;
 import cfvbaibai.cardfantasy.Table;
 import cfvbaibai.cardfantasy.data.CardData;
 import cfvbaibai.cardfantasy.data.CardDataStore;
+import cfvbaibai.cardfantasy.data.Legion;
 import cfvbaibai.cardfantasy.data.PlayerInfo;
 import cfvbaibai.cardfantasy.engine.GameEngine;
 import cfvbaibai.cardfantasy.engine.GameResult;
@@ -142,7 +143,36 @@ public class FreeTest extends PveEngineTest {
     public void 皇家驯兽师vs五星_10vs10_1000() throws IOException {
         FiveStarChallenge("皇家驯兽师", true, false);
     }
-
+    
+    @Test
+    public void 魔神战() {
+        PlayerInfo player = PlayerBuilder.build("玩家", 75, new Legion(10, 10, 10, 10), "堕落精灵*2", "淬炼");
+        TestGameBuilder.playBossBattle(player, "复仇女神");
+    }
+    
+    @Test
+    public void 横扫Bug() {
+        TestGameBuilder.play5v5("光明之龙", "金属巨龙");
+    }
+    
+    @Test
+    public void 横扫岩壁Bug() {
+        PlayerInfo p1 = PlayerBuilder.build("王国英雄", 75, "光明之龙*5");
+        PlayerInfo p2 = PlayerBuilder.build("蛮荒英雄", 75, "牛头人酋长*5", "岩壁");
+        TestGameBuilder.play(p1, p2);
+    }
+    
+    @Test
+    public void 横扫正常() {
+        TestGameBuilder.play5v5("光明之龙", "降临天使");
+    }
+    
+    @Test
+    public void 绝杀Bug() {
+        PlayerInfo player = PlayerBuilder.build("玩家", "降临天使*4,光明之龙*1,毁灭之龙*3,灼魂,冰封,清泉,绝杀", 75);
+        TestGameBuilder.playBossBattle(player, "复仇女神");
+    }
+    
     @Test
     public void 王国最强vs森林最强_1000() {
         for (int i = 6; i < 10; ++i) {
@@ -232,6 +262,13 @@ public class FreeTest extends PveEngineTest {
     public void 横扫大象vs转生天使() { 
         PlayerInfo p1 = PlayerBuilder.build("大象英雄", "战斗猛犸象+横扫*5", 90);
         PlayerInfo p2 = PlayerBuilder.build("天使英雄", "降临天使+转生5*5", 90);
+        TestGameBuilder.play(p1, p2);
+    }
+    
+    @Test
+    public void 放心妥妥儿的() {
+        PlayerInfo p1 = PlayerBuilder.build("玩家1", "降临天使*3,金属巨龙*3,魔法协会长,秘银巨石像-15,震源岩蟾-15,复活节兔女郎,冰封,永冻,清泉,雷盾", 68);
+        PlayerInfo p2 = PlayerBuilder.build("玩家2", "降临天使*5,世界树之灵*2,金属巨龙*2,冰封,永冻,清泉,雷盾", 64);
         TestGameBuilder.play(p1, p2);
     }
 

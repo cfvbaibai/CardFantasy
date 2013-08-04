@@ -30,7 +30,7 @@ public abstract class TextGameUI extends GameUI {
     }
     
     @Override
-    public void playerAdded(Player player) {
+    public void playerAdded(Player player, int playerNumber) {
 
     }
 
@@ -63,7 +63,7 @@ public abstract class TextGameUI extends GameUI {
 
     @Override
     public void cardDrawed(Player drawer, CardInfo card) {
-        sayF("<%s> 抽了一张卡: <%s (等级: %d)>", drawer.getId(), card.getId(), card.getLevel());
+        sayF("<%s> 抽了一张卡: <%s (等级: %d)>", drawer.getId(), card.getUniqueName(), card.getLevel());
         showBoard();
     }
 
@@ -81,7 +81,7 @@ public abstract class TextGameUI extends GameUI {
 
     @Override
     public void summonCard(Player player, CardInfo card) {
-        sayF("<%s> 召唤: <%s (等级: %d)>", player.getId(), card.getId(), card.getLevel());
+        sayF("<%s> 召唤: <%s (等级: %d)>", player.getId(), card.getUniqueName(), card.getLevel());
     }
 
     @Override
@@ -144,11 +144,20 @@ public abstract class TextGameUI extends GameUI {
 
     @Override
     public void gameEnded(GameResult result) {
-        sayF("战斗结束. 胜利者: <%s>, 胜利方式: %s", result.getWinner().getId(), result.getCause().toString());
+        String s = String.format("战斗结束. 胜利者: <%s>, 胜利方式: %s", result.getWinner().getId(), result.getCause().toString());
+        if (result.getDamageToBoss() >= 0) {
+            s += ", 魔神受到伤害: " + result.getDamageToBoss();
+        }
+        say(s);
+    }
+    
+    @Override
+    public void stageCreated() {
+        
     }
 
     @Override
-    protected void gameStarted() {
+    public void gameStarted() {
         say("战斗开始!");
         sayF("规则: 最大手牌数=%d, 最大回合=%d", getRule().getMaxHandCards(), getRule().getMaxRound());
         this.showBoard();
@@ -193,7 +202,7 @@ public abstract class TextGameUI extends GameUI {
         StringBuffer sb = new StringBuffer();
         sb.append("墓地: ");
         for (CardInfo card : grave.toList()) {
-            sb.append(String.format("%s (等级=%d, 攻击=%d, HP=%d), ", card.getId(), card.getLevel(), card.getInitAT(),
+            sb.append(String.format("%s (等级=%d, 攻击=%d, HP=%d), ", card.getUniqueName(), card.getLevel(), card.getInitAT(),
                     card.getMaxHP()));
         }
         say(sb.toString());
@@ -205,7 +214,7 @@ public abstract class TextGameUI extends GameUI {
         int i = 0;
         List<CardInfo> cards = field.getAliveCards();
         for (CardInfo card : cards) {
-            sb.append(String.format("[%d] %s (等级=%d, 攻击=%d/%d, HP=%d/%d/%d, 状态=%s, 效果=%s)\r\n", i, card.getId(),
+            sb.append(String.format("[%d] %s (等级=%d, 攻击=%d/%d, HP=%d/%d/%d, 状态=%s, 效果=%s)\r\n", i, card.getUniqueName(),
                     card.getLevel(), card.getAT(), card.getInitAT(), card.getHP(), card.getMaxHP(),
                     card.getOriginalMaxHP(), card.getStatus().getShortDesc(), card.getEffectsDesc()));
             ++i;
@@ -221,7 +230,7 @@ public abstract class TextGameUI extends GameUI {
         StringBuffer sb = new StringBuffer();
         sb.append("手牌: ");
         for (CardInfo card : hand.toList()) {
-            sb.append(String.format("%s (等级=%d, 攻击=%d, HP=%d, 等待=%d), ", card.getId(), card.getLevel(),
+            sb.append(String.format("%s (等级=%d, 攻击=%d, HP=%d, 等待=%d), ", card.getUniqueName(), card.getLevel(),
                     card.getInitAT(), card.getMaxHP(), card.getSummonDelay()));
         }
         say(sb.toString());
@@ -231,7 +240,7 @@ public abstract class TextGameUI extends GameUI {
         StringBuffer sb = new StringBuffer();
         sb.append("牌堆: ");
         for (CardInfo card : deck.toList()) {
-            sb.append(String.format("%s (等级=%d, 攻击=%d, HP=%d), ", card.getId(), card.getLevel(), card.getInitAT(),
+            sb.append(String.format("%s (等级=%d, 攻击=%d, HP=%d), ", card.getUniqueName(), card.getLevel(), card.getInitAT(),
                     card.getMaxHP()));
         }
         say(sb.toString());

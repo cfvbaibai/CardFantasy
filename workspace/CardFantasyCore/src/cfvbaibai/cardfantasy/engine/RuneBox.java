@@ -4,11 +4,13 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import cfvbaibai.cardfantasy.NonSerializable;
 import cfvbaibai.cardfantasy.data.Rune;
 import cfvbaibai.cardfantasy.data.RuneData;
 
 public class RuneBox {
     private List<RuneInfo> runes;
+    @NonSerializable
     private Player owner;
 
     public RuneBox(Player owner, Collection<Rune> runes) {

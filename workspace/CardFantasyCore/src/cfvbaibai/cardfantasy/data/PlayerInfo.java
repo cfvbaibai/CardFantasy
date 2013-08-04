@@ -13,6 +13,7 @@ import java.util.List;
 public class PlayerInfo {
     private String id;
     private int level;
+    private Legion legion;
     private Collection<Card> cards;
     private Collection<Rune> runes;
     private static int[] hps = new int[] { 0000, 1000, 1070, 1140, 1210, 1280, 1350, 1420, 1490, 1560, 1630, 1800,
@@ -23,23 +24,28 @@ public class PlayerInfo {
             13150, 13300, 13450, 13600, 13750, 13900, 14050, 14200, 14350, 15400, 15560, 15720, 15880, 16040, 16200,
             16360, 16520, 16680, 16840 };
 
-    public PlayerInfo(String id, int level, Collection<Rune> runes, Card... cards) {
+    public PlayerInfo(String id, int level, Legion legion, Collection<Rune> runes, Card ... cards) {
         List<Card> cardList = new ArrayList<Card>();
         for (Card card : cards) {
             cardList.add(card);
         }
-        init(id, level, runes, cardList);
+        init(id, level, legion, runes, cardList);
     }
     
-    public PlayerInfo(String id, int level, Collection <Rune> runes, Collection <Card> cards) {
-        init(id, level, runes, cards);
+    public PlayerInfo(String id, int level, Legion legion, Collection <Rune> runes, Collection <Card> cards) {
+        init(id, level, legion, runes, cards);
     }
     
-    private final void init(String id, int level, Collection <Rune> runes, Collection <Card> cards) {
+    private final void init(String id, int level, Legion legion, Collection <Rune> runes, Collection <Card> cards) {
         this.id = id;
         this.level = level;
+        this.legion = legion;
         this.runes = new ArrayList<Rune>(runes);
         this.cards = new ArrayList<Card>(cards);
+    }
+    
+    public Legion getLegion() {
+        return this.legion;
     }
 
     public int getMaxHP() {
@@ -60,5 +66,9 @@ public class PlayerInfo {
 
     public Collection<Rune> getRunes() {
         return new ArrayList<Rune>(this.runes);
+    }
+
+    public int getLevel() {
+        return this.level;
     }
 }

@@ -38,10 +38,20 @@ public abstract class GameUI {
     protected Rule getRule() {
         return this.rule;
     }
+    
+    protected int getPlayerNumber(Player hero) {
+        for (int i = 0; i < this.board.getPlayerCount(); ++i) {
+            Player player = this.board.getPlayer(i);
+            if (player.getId().equals(hero.getId())) {
+                return i;
+            }
+        }
+        return -1;
+    }
 
-    protected abstract void gameStarted();
+    public abstract void gameStarted();
 
-    public abstract void playerAdded(Player player);
+    public abstract void playerAdded(Player player, int playerNumber);
 
     public abstract void errorHappened(CardFantasyRuntimeException e);
 
@@ -141,4 +151,6 @@ public abstract class GameUI {
     public abstract void compactField(Field field);
 
     public abstract void showMessage(String string);
+
+    public abstract void stageCreated();
 }

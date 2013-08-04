@@ -15,5 +15,6 @@
 			<attribute name="owner.project.facets" value="java"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Google Gson 2.2.4"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

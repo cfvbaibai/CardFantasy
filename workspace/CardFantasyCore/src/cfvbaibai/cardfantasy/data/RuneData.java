@@ -1,5 +1,7 @@
 package cfvbaibai.cardfantasy.data;
 
+import cfvbaibai.cardfantasy.NonSerializable;
+
 public enum RuneData {
     ªƒŒﬂ(RuneClass.GROUND, 3, FeatureType.∂æ“∫, 3, 1, 1, Growth.RUNE, RuneActivator.myHeroHP(60)),
     ’”‘Û(RuneClass.GROUND, 3, FeatureType.∂æŒÌ, 1, 1, 1, Growth.RUNE, RuneActivator.enemyField(2, null)),
@@ -53,14 +55,21 @@ public enum RuneData {
     √ ¿(RuneClass.FIRE, 5, FeatureType.¡“—Ê∑Á±©, 6, 1, 5, Growth.RUNE, RuneActivator.myGrave(1, Race.µÿ”¸)),
     æ¯…±(RuneClass.FIRE, 4, FeatureType.’Ω“‚, 6, 1, 5, Growth.RUNE, RuneActivator.myGrave(2, Race.µÿ”¸)),
     ;
-    
+
     private RuneClass runeClass;
+    @NonSerializable
     private int maxEnergy;
+    @NonSerializable
     private FeatureType featureType;
+    @NonSerializable
     private int incrFeatureLevel;
+    @NonSerializable
     private int initFeatureLevel;
+    @NonSerializable
     private Growth growth;
+    @NonSerializable
     private int star;
+    @NonSerializable
     private RuneActivator activator;
 
     RuneData(RuneClass runeClass, int maxEnergy, FeatureType featureType, int initFeatureLevel,

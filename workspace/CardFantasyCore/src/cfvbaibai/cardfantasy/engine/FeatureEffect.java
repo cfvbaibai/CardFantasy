@@ -1,8 +1,11 @@
 package cfvbaibai.cardfantasy.engine;
 
+import cfvbaibai.cardfantasy.NonSerializable;
+
 
 public class FeatureEffect {
     private FeatureEffectType type;
+    @NonSerializable
     private FeatureInfo cause;
     private int value;
     private boolean eternal;

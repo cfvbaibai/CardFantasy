@@ -2,11 +2,16 @@ package cfvbaibai.cardfantasy.engine;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import cfvbaibai.cardfantasy.Randomizer;
 import cfvbaibai.cardfantasy.data.Card;
+import cfvbaibai.cardfantasy.data.Legion;
+import cfvbaibai.cardfantasy.data.LegionFeature;
 import cfvbaibai.cardfantasy.data.PlayerInfo;
+import cfvbaibai.cardfantasy.data.Race;
 import cfvbaibai.cardfantasy.data.RuneData;
 
 public class Player {
@@ -16,6 +21,7 @@ public class Player {
     private Grave grave;
     private Field field;
     private RuneBox runeBox;
+    private Map <Race, FeatureInfo> legionBuffFeatures;
     private int hp;
     
     public Player(PlayerInfo playerInfo, StageInfo stage) {
@@ -26,6 +32,14 @@ public class Player {
         this.field = new Field(this);
         this.runeBox = new RuneBox(this, playerInfo.getRunes());
         this.hp = playerInfo.getMaxHP();
+        this.legionBuffFeatures = new HashMap <Race, FeatureInfo>();
+        if (playerInfo.getLegion() != null) {
+            Legion legion = playerInfo.getLegion();
+            LegionInfo legionInfo = new LegionInfo(legion, this);
+            for (Race race : Race.values()) {
+                legionBuffFeatures.put(race, new FeatureInfo(legionInfo, LegionFeature.create(legion, race)));
+            }
+        }
     }
     
     private PlayerInfo getPlayerInfo() {
@@ -51,7 +65,7 @@ public class Player {
     public Field getField() {
         return this.field;
     }
-
+    
     public int getHP() {
         return this.hp;
     }
@@ -93,5 +107,17 @@ public class Player {
         } else {
             return null;
         }
+    }
+    
+    public FeatureInfo getLegionBuffFeature(Race race) {
+        if (this.legionBuffFeatures.containsKey(race)) {
+            return this.legionBuffFeatures.get(race);
+        } else {
+            return null;
+        }
+    }
+
+    public int getLevel() {
+        return this.getPlayerInfo().getLevel();
     }
 }

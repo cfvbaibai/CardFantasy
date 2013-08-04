@@ -1,8 +1,11 @@
 package cfvbaibai.cardfantasy.engine;
 
+import cfvbaibai.cardfantasy.NonSerializable;
+
 public class CardStatusItem {
     private CardStatusType type;
     private int effect;
+    @NonSerializable
     private FeatureInfo cause;
 
     private CardStatusItem(CardStatusType type, int effect, FeatureInfo cause) {

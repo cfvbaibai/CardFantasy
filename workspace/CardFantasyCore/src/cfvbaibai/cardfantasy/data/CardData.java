@@ -3,7 +3,10 @@ package cfvbaibai.cardfantasy.data;
 import java.util.ArrayList;
 import java.util.List;
 
+import cfvbaibai.cardfantasy.NonSerializable;
+
 public class CardData {
+    private String id;
     private String name;
     private Race race;
     private int summonSpeed;
@@ -17,10 +20,19 @@ public class CardData {
     private List<CardFeature> cardFeatures;
 
     public CardData() {
+        this.id = "";
         this.name = "";
         this.cardFeatures = new ArrayList<CardFeature>();
         // TODO: Apply real growth
         this.growth = new Growth(100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1100, 1200, 1300, 1400, 1500, 1600);
+    }
+    
+    public String getId() {
+        return this.id;
+    }
+    
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getName() {

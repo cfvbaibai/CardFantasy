@@ -17,4 +17,9 @@ public class CardFantasyHellTest {
     public void 毁灭之龙vs灵魂收割者() {
         TestGameBuilder.play5v5("毁灭之龙", "灵魂收割者");
     }
+
+    @Test
+    public void 骷髅法师vs骷髅法师() {
+        TestGameBuilder.play5v5("骷髅法师", "骷髅法师");
+    }
 }

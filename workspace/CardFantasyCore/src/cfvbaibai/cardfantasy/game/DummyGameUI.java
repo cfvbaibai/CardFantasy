@@ -19,13 +19,18 @@ import cfvbaibai.cardfantasy.engine.RuneInfo;
 public class DummyGameUI extends GameUI {
 
     @Override
-    protected void gameStarted() {
+    public void stageCreated() {
+        
+    }
+    
+    @Override
+    public void gameStarted() {
         // TODO Auto-generated method stub
 
     }
 
     @Override
-    public void playerAdded(Player player) {
+    public void playerAdded(Player player, int playerNumber) {
         // TODO Auto-generated method stub
 
     }

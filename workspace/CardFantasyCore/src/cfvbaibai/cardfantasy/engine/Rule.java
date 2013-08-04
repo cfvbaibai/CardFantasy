@@ -4,14 +4,16 @@ public class Rule {
     private int maxHandCards;
     private int maxRound;
     private int firstPlayer;
+    private boolean bossBattle;
 
-    public Rule(int maxHandCards, int maxRound, int firstPlayer) {
+    public Rule(int maxHandCards, int maxRound, int firstPlayer, boolean bossBattle) {
         if (firstPlayer < 0) {
             throw new IllegalArgumentException("Invalid firstPlayer: " + firstPlayer);
         }
         this.maxHandCards = maxHandCards;
         this.maxRound = maxRound;
         this.firstPlayer = firstPlayer;
+        this.bossBattle = bossBattle;
     }
 
     public int getMaxHandCards() {
@@ -25,8 +27,16 @@ public class Rule {
     public int getFirstPlayer() {
         return this.firstPlayer;
     }
+    
+    public boolean isBossBattle() {
+        return this.bossBattle;
+    }
 
     public static Rule getDefault() {
-        return new Rule(5, 100, 0);
+        return new Rule(5, 100, 0, false);
+    }
+    
+    public static Rule getBossBattle() {
+        return new Rule(5, 50, 0, true);
     }
 }

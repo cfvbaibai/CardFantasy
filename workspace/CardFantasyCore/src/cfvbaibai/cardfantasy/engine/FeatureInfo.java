@@ -1,10 +1,12 @@
 package cfvbaibai.cardfantasy.engine;
 
+import cfvbaibai.cardfantasy.NonSerializable;
 import cfvbaibai.cardfantasy.data.Feature;
 import cfvbaibai.cardfantasy.data.FeatureType;
 
 public class FeatureInfo {
 
+    @NonSerializable
     private EntityInfo owner;
     private Feature feature;
 

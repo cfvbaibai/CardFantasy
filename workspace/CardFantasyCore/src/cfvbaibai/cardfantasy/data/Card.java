@@ -9,7 +9,7 @@ import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
 public class Card implements Cloneable {
     private CardData sourceInfo;
     private int exp;
-    private String id;
+    private String uniqueName;
     private CardFeature extraFeature;
     
     public Card(CardData sourceInfo) {
@@ -33,11 +33,15 @@ public class Card implements Cloneable {
         this.sourceInfo = sourceInfo;
         this.growToLevel(cardLevel);
         this.extraFeature = extraFeature;
-        this.id = prefix + sourceInfo.getName() + suffix;
+        this.uniqueName = prefix + sourceInfo.getName() + suffix;
+    }
+    
+    public String getId() {
+        return this.sourceInfo.getId();
     }
 
-    public String getId() {
-        return this.id;
+    public String getUniqueName() {
+        return this.uniqueName;
     }
     
     public int getSummonSpeed() {
@@ -78,5 +82,9 @@ public class Card implements Cloneable {
 
     public CardFeature getExtraFeature() {
         return this.extraFeature;
+    }
+
+    public int getCost() {
+        return this.sourceInfo.getDeckCost();
     }
 }

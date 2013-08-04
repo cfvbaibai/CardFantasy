@@ -27,6 +27,8 @@ public class StageInfo {
         this.rule = rule;
         this.resolver = new FeatureResolver(this);
         this.randomizer = new Randomizer(ui);
+        
+        this.ui.stageCreated();
     }
 
     public FeatureResolver getResolver() {
@@ -97,8 +99,8 @@ public class StageInfo {
 
     public void addPlayer(PlayerInfo playerInfo) {
         Player player = new Player(playerInfo, this);
-        this.board.addPlayer(player);
-        this.ui.playerAdded(player);
+        int playerNumber = this.board.addPlayer(player);
+        this.ui.playerAdded(player, playerNumber);
     }
 
     public int getPlayerCount() {
@@ -115,7 +117,13 @@ public class StageInfo {
     }
     
     public GameResult result(Player winner, GameEndCause cause) {
-        return new GameResult(this.getBoard(), winner, this.getRound(), cause);
+        int damageToBoss = -1;
+        if (this.getRule().isBossBattle()) {
+            Player boss = this.getPlayers().get(0);
+            CardInfo bossCard = boss.getField().getCard(0);
+            damageToBoss = bossCard.getOriginalMaxHP() - bossCard.getHP();
+        }
+        return new GameResult(this.getBoard(), winner, this.getRound(), cause, damageToBoss);
     }
 
     public Collection<CardInfo> getAllHandCards() {

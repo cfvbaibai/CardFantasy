@@ -17,8 +17,10 @@ public class Board {
         return players.get(number);
     }
     
-    public void addPlayer(Player player) {
+    public int addPlayer(Player player) {
+        int playerNumber = this.players.size();
         players.add(player);
+        return playerNumber;
     }
     
     public int getPlayerCount() {

@@ -1,14 +1,17 @@
 package cfvbaibai.cardfantasy.engine;
 
 import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
+import cfvbaibai.cardfantasy.NonSerializable;
 import cfvbaibai.cardfantasy.data.Feature;
 import cfvbaibai.cardfantasy.data.Rune;
 import cfvbaibai.cardfantasy.data.RuneActivator;
 import cfvbaibai.cardfantasy.data.RuneData;
 
 public class RuneInfo extends EntityInfo {
+    @NonSerializable
     private Player owner;
     private Rune rune;
+    @NonSerializable
     private FeatureInfo featureInfo;
     private int energy;
     private boolean activated;
@@ -73,5 +76,13 @@ public class RuneInfo extends EntityInfo {
 
     public Feature getFeature() {
         return this.getFeatureInfo().getFeature();
+    }
+
+    public String getName() {
+        return this.rune.getName();
+    }
+
+    public String getRuneClass() {
+        return this.rune.getRuneClass().name();
     }
 }

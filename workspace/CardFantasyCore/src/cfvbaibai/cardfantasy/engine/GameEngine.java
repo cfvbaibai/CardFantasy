@@ -13,6 +13,9 @@ import cfvbaibai.cardfantasy.data.PlayerInfo;
 public class GameEngine {
 
     private StageInfo stage;
+    public StageInfo getStage() {
+        return stage;
+    }
 
     public GameEngine(GameUI ui, Rule rule) {
         this.stage = new StageInfo(new Board(), ui, rule);
@@ -180,6 +183,7 @@ public class GameEngine {
 
     private void tryAttackEnemy(Field myField, Field opField, int i) throws HeroDieSignal {
         FeatureResolver resolver = this.stage.getResolver();
+        resolver.resolvePreAttackCardFeature(myField.getCard(i), opField.getCard(i), true);
         resolver.resolvePreAttackFeature(myField.getCard(i), getInactivePlayer());
         if (myField.getCard(i) == null) {
             return;
@@ -198,7 +202,7 @@ public class GameEngine {
 
     private void tryAttackCard(Field myField, Field opField, int i) throws HeroDieSignal {
         FeatureResolver resolver = this.stage.getResolver();
-        resolver.resolvePreAttackCardFeature(myField.getCard(i), opField.getCard(i));
+        resolver.resolvePreAttackCardFeature(myField.getCard(i), opField.getCard(i), false);
         if (opField.getCard(i) == null) {
             resolver.attackHero(myField.getCard(i), getInactivePlayer(), null, myField.getCard(i).getAT());
         } else {
@@ -215,8 +219,8 @@ public class GameEngine {
                 ui.useSkill(myField.getCard(i), defender, featureInfo.getFeature());
             }
         }
-        int damage = resolver.attackCard(myField.getCard(i), defender);
-        if (damage > 0 && myField.getCard(i) != null) {
+        OnDamagedResult damagedResult = resolver.attackCard(myField.getCard(i), defender);
+        if (damagedResult != null && myField.getCard(i) != null) {
             for (FeatureInfo featureInfo : myField.getCard(i).getNormalUsableFeatures()) {
                 if (featureInfo.getFeature().getType() == FeatureType.∫·…®) {
 
@@ -230,7 +234,7 @@ public class GameEngine {
 
                     for (CardInfo sweepDefender : sweepDefenders) {
                         ui.useSkill(myField.getCard(i), sweepDefender, featureInfo.getFeature());
-                        resolver.attackCard(myField.getCard(i), sweepDefender);
+                        resolver.attackCard(myField.getCard(i), sweepDefender, damagedResult.originalDamage);
                         // Physical attack cannot proceed if attacker is killed by counter attack skills.
                         if (myField.getCard(i) == null) {
                             break;

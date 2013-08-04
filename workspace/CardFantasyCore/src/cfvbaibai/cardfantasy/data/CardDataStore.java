@@ -31,6 +31,7 @@ public class CardDataStore {
             List<Node> cardNodes = doc.selectNodes("/Cards/Card");
             for (Node cardNode : cardNodes) {
                 CardData cardData = new CardData();
+                cardData.setId(cardNode.valueOf("@id"));
                 cardData.setName(cardNode.valueOf("@name"));
                 cardData.setRace(Race.valueOf(cardNode.valueOf("@race")));
                 cardData.setSummonSpeed(Integer.parseInt(cardNode.valueOf("@speed")));

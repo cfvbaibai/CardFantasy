@@ -158,7 +158,7 @@ public final class DeckBuilder {
             while (true) {
                 boolean suffixUsed = false;
                 for (Card card : deck.getCards()) {
-                    if (card.getId().equals(prefix + cardName + suffix)) {
+                    if (card.getUniqueName().equals(prefix + cardName + suffix)) {
                         suffixUsed = true;
                         break;
                     }
