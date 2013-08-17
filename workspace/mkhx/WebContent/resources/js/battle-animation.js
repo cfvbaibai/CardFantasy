@@ -752,6 +752,9 @@ var Animater = function() {
     this.__returnCard = function(data) {
         var playerId = data[2];
         var arena = this.arenas[playerId];
+        var cross = arena.createCross({
+            
+        });
         var card = arena.fields.removeOfName(data[3].name);
         this.addAnimation(function() {
             new Kinetic.Tween({

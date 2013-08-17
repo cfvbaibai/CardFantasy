@@ -102,7 +102,7 @@ public class AutoBattleController {
         HttpHeaders responseHeaders = new HttpHeaders();
         responseHeaders.add("Content-Type", "text/html;charset=UTF-8");
         try {
-            if (firstAttack != 0 && firstAttack != 1) {
+            if (firstAttack != 0 && firstAttack != 1 && firstAttack != -1) {
                 throw new IllegalArgumentException("无效的先攻：" + firstAttack);
             }
             deck1 = encodeStr(deck1);
@@ -132,7 +132,7 @@ public class AutoBattleController {
         HttpHeaders responseHeaders = new HttpHeaders();
         responseHeaders.add("Content-Type", "text/html;charset=UTF-8");
         try {
-            if (firstAttack != 0 && firstAttack != 1) {
+            if (firstAttack != 0 && firstAttack != 1 && firstAttack != -1) {
                 throw new IllegalArgumentException("无效的先攻：" + firstAttack);
             }
             deck1 = encodeStr(deck1);

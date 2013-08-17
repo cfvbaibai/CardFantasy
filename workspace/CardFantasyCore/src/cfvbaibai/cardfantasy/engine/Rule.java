@@ -7,7 +7,7 @@ public class Rule {
     private boolean bossBattle;
 
     public Rule(int maxHandCards, int maxRound, int firstPlayer, boolean bossBattle) {
-        if (firstPlayer < 0) {
+        if (firstPlayer < -1) {
             throw new IllegalArgumentException("Invalid firstPlayer: " + firstPlayer);
         }
         this.maxHandCards = maxHandCards;

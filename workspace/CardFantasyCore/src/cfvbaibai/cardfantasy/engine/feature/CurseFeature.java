@@ -9,8 +9,8 @@ import cfvbaibai.cardfantasy.engine.Player;
 
 public final class CurseFeature {
     public static void apply(FeatureResolver resolver, Feature cardFeature, CardInfo attacker, Player defenderHero) throws HeroDieSignal {
-        if (attacker == null || attacker.isDead()) {
-            throw new CardFantasyRuntimeException("attacker is null or dead");
+        if (attacker == null) {
+            throw new CardFantasyRuntimeException("attacker is null");
         }
         int damage = cardFeature.getImpact();
         resolver.attackHero(attacker, defenderHero, cardFeature, damage);

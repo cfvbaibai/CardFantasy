@@ -174,6 +174,13 @@ public class FreeTest extends PveEngineTest {
     }
     
     @Test
+    public void 死契诅咒Bug() {
+        PlayerInfo p1 = PlayerBuilder.build("玩家1", "金属巨龙*5,雷盾", 75);
+        PlayerInfo p2 = PlayerBuilder.build("玩家2", "战斗猛犸象+死契诅咒1,秽土", 75);
+        TestGameBuilder.play(p1, p2);
+    }
+    
+    @Test
     public void 王国最强vs森林最强_1000() {
         for (int i = 6; i < 10; ++i) {
             System.out.println("Level: " + (i * 10));

@@ -112,10 +112,42 @@ public class StageInfo {
     }
 
     public void gameStarted() {
+        int firstPlayer = determineFirstPlayer();
+        this.ui.showMessage(this.getPlayers().get(firstPlayer).getShortDesc() + "œ»π•");
         this.ui.gameStarted(this.getBoard(), this.getRule());
-        this.activePlayerNumber = this.getRule().getFirstPlayer();
+        this.activePlayerNumber = firstPlayer;
     }
     
+    private int determineFirstPlayer() {
+        int firstPlayer = this.getRule().getFirstPlayer();
+        if (firstPlayer != -1) {
+            return firstPlayer;
+        }
+        List<Player> players = this.board.getPlayers();
+        List<Integer> possibleFirstAttackers = new ArrayList<Integer>();
+        int maxScore = 0;
+        for (int i = 0; i < players.size(); ++i) {
+            Player player = players.get(i);
+            int sumCardAT = 0;
+            int sumCardHP = 0;
+            List<CardInfo> cards = player.getDeck().getCards();
+            for (CardInfo card : cards) {
+                sumCardAT += card.getOriginalAT();
+                sumCardHP += card.getOriginalMaxHP();
+            }
+            int score = player.getMaxHP() + sumCardAT + sumCardHP;
+            if (score > maxScore) {
+                possibleFirstAttackers.clear();
+                possibleFirstAttackers.add(i);
+                maxScore = score;
+            } else if (score == maxScore) {
+                possibleFirstAttackers.add(i);
+            }
+        }
+        int firstAttackerIndex = randomizer.next(0, possibleFirstAttackers.size());
+        return possibleFirstAttackers.get(firstAttackerIndex);
+    }
+
     public GameResult result(Player winner, GameEndCause cause) {
         int damageToBoss = -1;
         if (this.getRule().isBossBattle()) {

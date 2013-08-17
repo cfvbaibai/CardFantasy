@@ -930,6 +930,7 @@ public class FeatureResolver {
                 continue;
             }
             
+            
             // Special logic for 永冻 & 清泉 & 春风.
             if (rune.is(RuneData.清泉) || rune.is(RuneData.春风)) {
                 for (CardInfo card : player.getField().toList()) {
@@ -943,7 +944,7 @@ public class FeatureResolver {
                     shouldActivate = false;
                 }
             }
-            
+
             if (shouldActivate) {
                 this.stage.getUI().activateRune(rune);
                 rune.activate();
