@@ -5,37 +5,6 @@
 	var showSize = function() {
 	    $('#client-info').text('WIDTH=' + $(window).width() + ', HEIGHT=' + $(window).height());
 	};
-	
-    var portrait = function(x, y, id) {
-        var group = new Kinetic.Group({ x: x, y: y });
-        var cardAvatar = new Image();
-        cardAvatar.src = resDir + '/img/cardlogo/' + id + '.jpg';
-        cardAvatar.onload = function() {
-            var cardAvatarImage = new Kinetic.Image({
-                x : 2,
-                y : 2,
-               // width: 30,
-                //height: 50,
-                image : cardAvatar,
-            });
-            group.add(cardAvatarImage);
-            cardAvatarImage.getLayer().draw();
-        };
-        var cardFrame = new Image();
-        cardFrame.src = resDir + '/img/frame/frame.png';
-        cardFrame.onload = function() {
-            var cardFrameImage = new Kinetic.Image({
-                x : 0,
-                y : 0,
-                //width: 32,
-                //height: 52,
-                image : cardFrame,
-            });
-            group.add(cardFrameImage);
-            cardFrameImage.getLayer().draw();
-        };
-        return group;
-    };
 
     $(document).ready(function() {
         showSize();
@@ -51,6 +20,26 @@
 
         var layer = new Kinetic.Layer();
 
+        var cross = new Kinetic.Line({
+            points: [0, 33, 60, 33, 30, 33, 30, 0, 30, 100],
+            stroke: 'white',
+            strokeWidth: 5,
+            shadowColor: 'black',
+            shadowBlur: 10,
+            shadowOffset: 0,
+            shadowOpacity: 0.5,
+        });
+        layer.add(cross);
+       
+        new Kinetic.Tween({
+            node: cross,
+            y: 200,
+            easing: Kinetic.Easings.StrongEaseIn,
+            duration: 1,
+        }).play();
+
+        
+        /*
         var rect1 = new Kinetic.Rect({
             x : 10,
             y : 10,
@@ -75,19 +64,15 @@
         });
         group.add(rect1).add(rect2);
         layer.add(group);
+        */
         
+        /*
         var logo = portrait(70, 70, '1102');
         //logo.setScaleX(1.5);
         //logo.setScaleY(0.7);
         layer.add(logo);
+        */
         stage.add(layer);
-        
-        new Kinetic.Tween({
-            node: logo,
-            x: logo.getX() + 100,
-            y: logo.getY() + 20,
-            duration: 2,
-        }).play();
     };
 </script>
 </head>

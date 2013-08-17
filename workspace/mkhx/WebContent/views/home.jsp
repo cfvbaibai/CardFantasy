@@ -125,7 +125,7 @@
             </div>
             <div id="command" data-mini="true" data-role="controlgroup" data-type="horizontal" data-disabled="false">
                 <a data-role="button" data-mini="true" data-theme="c" href="javascript:playBossGame(1)">模拟一次战斗</a>
-                <!-- <a data-role="button" data-mini="true" data-theme="c" href="javascript:playBossGame(-1)">观看一次战斗</a> -->
+                <a data-role="button" data-mini="true" data-theme="c" href="javascript:playBossGame(-1)">观看一次战斗</a>
                 <a data-role="button" data-mini="true" data-theme="c" href="javascript:playBossGame(1000)">卡组强度分析</a>
                 <!--  <button data-mini="true" data-theme="c" onclick="playBossGame(1000)"></button>-->
                 <!-- <button data-theme="c" onclick="alert('按CTRL+A全选，再按CTRL+C')">拷贝</button> -->

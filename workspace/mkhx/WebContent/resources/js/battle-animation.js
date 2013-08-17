@@ -91,8 +91,10 @@ var ArenaSettings = function() {
     this.drawCardDuration = 0.5;
     
     this.summonCardDuration = 0.5;
-    
+
     this.hpChangeDuration = 0.7;
+    
+    this.returnCardCrossDuration = 1.5;
 
     this.refreshSize = function () {
         var currentWidth = $(window).width() * 0.8;
@@ -192,6 +194,15 @@ Array.prototype.removeOfName = function(name) {
         }
     }
     return null;
+};
+
+Array.prototype.indexOfName = function(name) {
+    for (var i = 0; i < this.length; ++i) {
+        if (this[i].name == name) {
+            return i;
+        }
+    }
+    return -1;
 };
 
 var Arena = function(playerId, playerNumber) {
@@ -299,6 +310,32 @@ var Arena = function(playerId, playerNumber) {
             hpRect: hpRect, atRect: atRect, hpText: hpText, atText: atText });
         return group;
     };
+};
+
+Arena.createCross = function(pos) {
+    var size = settings.getPortraitSize();
+    var group = new Kinetic.Group({ x: settings.width, y: settings.height, });
+    var paddingX = size.width * 0.2;
+    var paddingY = size.height * 0.2;
+    var verX = size.width * 0.5;
+    var hozY = (size.height - paddingY) * 0.3 + paddingY;
+    var crossLine = new Kinetic.Line({
+        points: [
+                 paddingX, hozY,
+                 size.width - paddingX, hozY,
+                 verX, hozY,
+                 verX, paddingY,
+                 verX, size.height
+                 ],
+        stroke: 'white',
+        strokeWidth: 5,
+        shadowColor: '#333333',
+        shadowBlur: 10,
+        shadowOffset: 0,
+        shadowOpacity: 0.8,
+    });
+    group.add(crossLine);
+    return group;
 };
 
 var Animater = function() {
@@ -750,12 +787,34 @@ var Animater = function() {
     };
     
     this.__returnCard = function(data) {
-        var playerId = data[2];
-        var arena = this.arenas[playerId];
-        var cross = arena.createCross({
-            
-        });
-        var card = arena.fields.removeOfName(data[3].name);
+        var defenderId = data[2];
+        var defenderArena = this.arenas[defenderId];
+        var defenderCardName = data[3].name;
+        var defenderCardIndex = defenderArena.fields.indexOfName(defenderCardName);
+        
+        var attackerId = data[0];
+        var attackerArena = this.arenas[attackerId];
+        var cross = Arena.createCross();
+        this.stage.get('#effect-layer')[0].add(cross);
+        this.addAnimation(function() {
+            var crossSartPos = settings.getPortraitPos(attackerArena.playerNumber, defenderCardIndex);
+            var crossEndPos = settings.getPortraitPos(defenderArena.playerNumber, defenderCardIndex);
+            cross.setX(crossSartPos.x);
+            cross.setY(crossSartPos.y);
+            new Kinetic.Tween({
+                node: cross,
+                x: crossEndPos.x,
+                y: crossEndPos.y,
+                easing: Kinetic.Easings.StrongEaseIn,
+                duration: settings.returnCardCrossDuration,
+            }).play();
+        }, settings.returnCardCrossDuration);
+        this.addAnimation(function() {
+            cross.destroy();
+            delete cross;
+        }, settings.minimumDuration);
+
+        var card = defenderArena.fields.removeOfName(defenderCardName);
         this.addAnimation(function() {
             new Kinetic.Tween({
                 node: card.group,
