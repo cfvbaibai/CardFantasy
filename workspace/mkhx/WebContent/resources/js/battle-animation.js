@@ -104,6 +104,17 @@ var ArenaSettings = function() {
     this.normalAttackDuration = 1;
     this.swordWidth = 14;
     this.swordHeight = 44;
+    
+    this.adjustDuration = 1;
+    this.adjustFontFamily = this.fontFamily;
+    this.adjustFontSize = 8;
+    this.adjustAdjAtColor = '#5555FF';
+    this.adjustAdjHpColor = '#FF5555';
+    this.adjRectHeight = 50;
+    this.adjRectBorderColor = 'white';
+    this.adjRectBorderWidth = 1;
+    this.adjRectFill = '#CCCCCC';
+    this.adjRectOpacity = 0.95;
 
     this.refreshSize = function () {
         var currentWidth = $(window).width() * 0.8;
@@ -815,6 +826,22 @@ var Animater = function() {
         }, settings.summonCardDuration);
         this.pauseAnimation(settings.summonCardPause);
     };
+
+    this.__adjustAT = function(data) {
+        this.adjustValue(data, 'AT', true);
+    };
+    
+    this.__lostAdjAT = function(data) {
+        this.adjustValue(data, 'AT', false);
+    };
+    
+    this.__adjustHP = function(data) {
+        this.adjustValue(data, 'HP', true);
+    };
+    
+    this.__lostAdjHP = function(data) {
+        this.adjustValue(data, 'HP', false);
+    };
     
     this.__attackHero = function(data) {
         var attacker = data[0];
@@ -924,13 +951,14 @@ var Animater = function() {
      * card.uniqueName,
      * @return { x, y }
      */
-    this.getFieldCardPos = function(card) {
-        var arena = this.arenas[card.ownerId];
-        var index = arena.fields.indexOfName(card.uniqueName);
-        return settings.getPortraitPos(arena.playerNumber, index);
+    this.getCard = function(card) {
+        return this.arenas[card.ownerId].fields.ofName(card.uniqueName);
     };
 
     this.addAnimation = function(name, func, duration) {
+        if (duration == undefined) {
+            console.error("ERROR: Undefined addAnimation duration: " + name + "!");
+        }
         window.setTimeout(function() {
             //console.log("ANIM Executing " + name + " (duration = " + duration + ")");
             //console.log("ANIM Next animation should happen at " + new Date(new Date().getTime() + duration * 1000));
@@ -941,6 +969,9 @@ var Animater = function() {
     };
     
     this.addAnimations = function(name, funcs, duration) {
+        if (duration == undefined) {
+            console.error("ERROR: Undefined addAnimations duration: " + name + "!");
+        }
         window.setTimeout(function() {
             for (var i = 0; i < funcs.length; ++i) {
                 //console.log("ANIM Executing " + name + "[" + i + "] (duration = " + duration + ")");
@@ -999,6 +1030,84 @@ var Animater = function() {
     };
     
     /**
+     * @param adjName: AT or HP
+     * @param data: the event data
+     * @param addEffect (boolean): whether is to add or lost effect
+     */
+    this.adjustValue = function(data, adjName, addEffect) {
+        var source = data[0]; // EntityRuntimeInfo
+        var target = data[1]; // EntityRuntimeInfo
+        var adjustment = data[2]; // int
+        var newValue = data[3]; // int
+        var featureName = data[4]; // String
+        var ptSize = settings.getPortraitSize();
+        var adjRect = new Kinetic.Rect({
+            x: 0, y: 0, width: ptSize.width, height: settings.adjRectHeight,
+            stroke: settings.adjRectBorderColor,
+            strokeWidth: settings.adjRectBorderWidth,
+            fill: settings.adjRectFill,
+            opacity: settings.adjRectOpacity,
+        });
+        var adjTextPrefix = addEffect ? '' : '失去\r\n';
+        var adjValueText = adjustment > 0 ? '+' + adjustment : '-' + (-adjustment);
+        var adjText = new Kinetic.Text({
+            x: 0, y: 0,
+            text: adjTextPrefix + adjName + adjValueText + '\r\n' + featureName,
+            fontFamily: settings.adjustFontFamily,
+            fontSize: settings.adjustFontSize,
+            fill: adjName == 'AT' ? settings.adjustAdjAtColor : settings.adjustAdjHpColor,
+        });
+        var adjGroup = new Kinetic.Group({
+            x: settings.width, y: settings.height,
+        });
+        adjGroup.add(adjRect).add(adjText);
+        adjText.centerMiddle(adjRect);
+        this.stage.get('#effect-layer')[0].add(adjGroup);
+
+        var targetCard = this.getCard(target);
+        if (source.type != 'Card' || source.uniqueName == target.uniqueName) {
+            this.addAnimation("showAdjust" + adjName, function() {
+                adjGroup.setX(targetCard.group.getX());
+                adjGroup.setY(-adjRect.getHeight());
+                new Kinetic.Tween({
+                    node: adjGroup,
+                    x: adjGroup.getX(),
+                    y: targetCard.group.getY() + ptSize.height / 2 - adjRect.getHeight() / 2,
+                    duration: settings.adjustDuration / 5,
+                }).play();
+            }, settings.adjustDuration);
+        } else {
+            var sourceCard = this.getCard(source);
+            this.addAnimation("showAdjust" + adjName, function() {
+                adjGroup.setX(sourceCard.group.getX());
+                adjGroup.setY(sourceCard.group.getY() + ptSize.height / 2 - adjRect.getHeight() / 2);
+                new Kinetic.Tween({
+                    node: adjGroup,
+                    x: targetCard.group.getX(),
+                    y: targetCard.group.getY() + ptSize.height / 2 - adjRect.getHeight() / 2,
+                    duration: settings.adjustDuration,
+                }).play();
+            }, settings.adjustDuration);
+        }
+
+        this.addAnimation("destroyAdjust" + adjName + "Text", function() {
+            var layer = adjGroup.getLayer();
+            adjGroup.destroy();
+            delete adjGroup;
+            layer.draw();
+        }, settings.minimumDuration);
+        
+        this.addAnimation('set' + adjName + 'Text', function() {
+            // Adjust text number
+            var textShape = adjName == 'AT' ? targetCard.atText : targetCard.hpText;
+            var rectShape = adjName == 'AT' ? targetCard.atRect : targetCard.hpRect;
+            textShape.setText(adjName + ': ' + newValue);
+            textShape.centerMiddle(rectShape);
+            textShape.getLayer().draw();
+        }, settings.minimumDuration);
+    };
+    
+    /**
      * @param attacker { ownerId, uniqueName }
      * @param defender
      * { ownerId, uniqueName } if attackingHero is false
@@ -1007,22 +1116,25 @@ var Animater = function() {
     this.normalAttack = function(attacker, defender, attackingHero) {
         var sword = Arena.createSword();
         this.stage.get('#effect-layer')[0].add(sword);
-        var attackerPos = this.getFieldCardPos(attacker);
         var ptSize = settings.getPortraitSize();
         var self = this;
+        var attackerCard = this.getCard(attacker);
+        var defenderCard = null;
+        if (!attackingHero) {
+            defenderCard = this.getCard(defender);
+        }
         this.addAnimation("normalAttack", function() {
             // Center sword inside attacker portrait
-            sword.setX(attackerPos.x + ptSize.width / 2 - settings.swordWidth / 2);
-            sword.setY(attackerPos.y + ptSize.height / 2 - settings.swordHeight / 2);
+            sword.setX(attackerCard.group.getX() + ptSize.width / 2 - settings.swordWidth / 2);
+            sword.setY(attackerCard.group.getY() + ptSize.height / 2 - settings.swordHeight / 2);
             var targetPoint = { x: 0, y: 0 };
             if (attackingHero) {
                 var hpBgRect = self.__getShape(defender, 'hpbg-rect');
                 targetPoint.x = hpBgRect.getX() + hpBgRect.getWidth() / 2 - settings.swordWidth / 2;
                 targetPoint.y = hpBgRect.getY() + hpBgRect.getHeight() / 2 - settings.swordHeight / 2;
             } else {
-                var defenderPos = self.getFieldCardPos(defender);
-                targetPoint.x = defenderPos.x + ptSize.width / 2 - settings.swordWidth / 2;
-                targetPoint.y = defenderPos.y + ptSize.height / 2 - settings.swordHeight / 2;
+                targetPoint.x = defenderCard.group.getX() + ptSize.width / 2 - settings.swordWidth / 2;
+                targetPoint.y = defenderCard.group.getY() + ptSize.height / 2 - settings.swordHeight / 2;
             }
             new Kinetic.Tween({
                 node: sword,

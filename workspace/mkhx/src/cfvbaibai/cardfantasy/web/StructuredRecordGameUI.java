@@ -162,14 +162,14 @@ public class StructuredRecordGameUI extends GameUI {
 
     @Override
     public void adjustAT(EntityInfo source, CardInfo target, int adjAT, Feature cardFeature) {
-        // TODO Auto-generated method stub
-        
+        this.record.addEvent("adjustAT", new EntityRuntimeInfo(source), new EntityRuntimeInfo(target),
+                adjAT, target.getAT() + adjAT, cardFeature.getType().name());
     }
 
     @Override
     public void adjustHP(EntityInfo source, CardInfo target, int adjHP, Feature cardFeature) {
-        // TODO Auto-generated method stub
-        
+        this.record.addEvent("adjustHP", new EntityRuntimeInfo(source), new EntityRuntimeInfo(target),
+                adjHP, target.getHP() + adjHP, cardFeature.getType().name());
     }
 
     @Override
@@ -216,15 +216,17 @@ public class StructuredRecordGameUI extends GameUI {
     }
 
     @Override
-    public void loseAdjustATEffect(CardInfo ally, FeatureEffect effect) {
-        // TODO Auto-generated method stub
-        
+    public void loseAdjustATEffect(CardInfo card, FeatureEffect effect) {
+        this.record.addEvent("lostAdjAT", new EntityRuntimeInfo(card), new EntityRuntimeInfo(card),
+                effect.getValue(), card.getAT() - effect.getValue(), effect.getCause().getType().name());
     }
 
     @Override
-    public void loseAdjustHPEffect(CardInfo ally, FeatureEffect effect) {
-        // TODO Auto-generated method stub
-        
+    public void loseAdjustHPEffect(CardInfo card, FeatureEffect effect) {
+        int currentHP = card.getHP() > card.getMaxHP() - effect.getValue() ?
+                card.getMaxHP() - effect.getValue() : card.getHP();
+        this.record.addEvent("lostAdjHP", new EntityRuntimeInfo(card), new EntityRuntimeInfo(card),
+                card.getHP() - currentHP, currentHP, effect.getCause().getType().name());
     }
 
     @Override
