@@ -5,21 +5,25 @@ import java.util.List;
 
 public class BattleEvent {
     private String name;
-    private List<Object> data;
+    private List<Object> dataList;
     
     public BattleEvent(String name, Object ... data) {
         this.name = name;
-        this.data = new ArrayList<Object>();
+        this.dataList = new ArrayList<Object>();
         for (Object datum : data) {
-            this.data.add(datum);
+            this.dataList.add(datum);
         }
+    }
+    
+    public void addData(Object data) {
+        this.dataList.add(data);
     }
 
     public String getName() {
         return this.name;
     }
     
-    public List<Object> getData() {
-        return new ArrayList<Object>(data);
+    public List<Object> getDataList() {
+        return new ArrayList<Object>(dataList);
     }
 }

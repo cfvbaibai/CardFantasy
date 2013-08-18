@@ -89,12 +89,21 @@ var ArenaSettings = function() {
     this.cardAtTextColor = this.cardHpTextColor;
     
     this.drawCardDuration = 0.5;
+    this.compactFieldDuration = 0.1;
     
     this.summonCardDuration = 0.5;
+    this.summonCardPause = 1;
 
     this.hpChangeDuration = 0.7;
     
     this.returnCardCrossDuration = 1.5;
+    
+    this.zoomAttackerDuration = 0.2;
+    this.zoomRate = 0.2;
+    
+    this.normalAttackDuration = 1;
+    this.swordWidth = 14;
+    this.swordHeight = 44;
 
     this.refreshSize = function () {
         var currentWidth = $(window).width() * 0.8;
@@ -205,6 +214,15 @@ Array.prototype.indexOfName = function(name) {
     return -1;
 };
 
+Array.prototype.ofName = function(name) {
+    for (var i = 0; i < this.length; ++i) {
+        if (this[i].name == name) {
+            return this[i];
+        }
+    }
+    return null;
+};
+
 var Arena = function(playerId, playerNumber) {
     this.playerId = playerId, playerNumber;
     this.playerNumber = playerNumber;
@@ -312,7 +330,7 @@ var Arena = function(playerId, playerNumber) {
     };
 };
 
-Arena.createCross = function(pos) {
+Arena.createCross = function() {
     var size = settings.getPortraitSize();
     var group = new Kinetic.Group({ x: settings.width, y: settings.height, });
     var paddingX = size.width * 0.2;
@@ -332,9 +350,28 @@ Arena.createCross = function(pos) {
         shadowColor: '#333333',
         shadowBlur: 10,
         shadowOffset: 0,
-        shadowOpacity: 0.8,
+        shadowOpacity: 0.4,
     });
     group.add(crossLine);
+    return group;
+};
+
+Arena.createSword = function() {
+    var group = new Kinetic.Group({
+        x: settings.width,
+        y: settings.height,
+    });
+
+    var swordSrc = new Image();
+    swordSrc.src = resDir + '/img/effect/sword.png';
+    swordSrc.onload = function() {
+        var swordImg = new Kinetic.Image({
+            x : 0,
+            y : 0,
+            image : swordSrc,
+        });
+        group.add(swordImg);
+    };
     return group;
 };
 
@@ -376,7 +413,7 @@ var Animater = function() {
         var hpBarShape = this.__getShape(player, 'hp-bar');
         var hpText = hp > 99999 ? '?????' : hp.toString();
         var maxHpText = maxHp > 99999 ? '?????' : maxHp.toString();
-        this.addAnimation(function() {
+        this.addAnimation("updateHeroHP", function() {
             hpTextShape.setText('HP:\r\n' + hpText + '/\r\n' + maxHpText);
             hpTextShape.middle(hpRectShape).center(hpRectShape);
             new Kinetic.Tween({
@@ -675,18 +712,18 @@ var Animater = function() {
                         node: card.group,
                         x: pos.x,
                         y: pos.y,
-                        duration: settings.summonCardDuration,
+                        duration: settings.compactFieldDuration,
                     }).play();
                 });
             })(i, fields[i]);
         }
-        this.addAnimations(funcs, settings.summonCardDuration);
+        this.addAnimations("compactField", funcs, settings.compactFieldDuration);
     };
     
     this.__roundEnded = function(data) {
         var stage = this.stage;
         var roundText = stage.get('#round-text')[0];
-        this.addAnimation(function() {
+        this.addAnimation("roundEnded", function() {
             roundText.setText("回合: " + data[0]);
             roundText.centerMiddle(stage.get('#round-rect')[0]);
             roundText.getLayer().draw();
@@ -705,7 +742,7 @@ var Animater = function() {
                 })(hands[i]);
             }
         }
-        this.addAnimations(funcs, 0.3);
+        this.addAnimations("delayDecrease", funcs, 0.3);
     };
     
     this.__cardDrawed = function(data) {
@@ -715,7 +752,7 @@ var Animater = function() {
         var pn = arena.playerNumber;
         var logo = arena.createLogo(data[1], data[2], data[3], settings.getLogoSize());
         this.stage.get('#card-layer')[0].add(logo);
-        this.addAnimation(function() {
+        this.addAnimation("drawCard", function() {
             logo.setX(settings.width);
             logo.setY(settings.getLogoY(pn));
             new Kinetic.Tween({
@@ -757,9 +794,9 @@ var Animater = function() {
                 });
             })(iHand, arena.hands[iHand]);
         }
-        this.addAnimations(handFuncs, settings.drawCardDuration);
+        this.addAnimations("summonCards", handFuncs, settings.drawCardDuration);
 
-        this.addAnimation(function() {
+        this.addAnimation("destroySummonedCardFromHand", function() {
             logo.group.destroy();
             delete logo;
         }, settings.minimumDuration);
@@ -767,7 +804,7 @@ var Animater = function() {
         var targetIndex = arena.fields.length;
         var portrait = arena.createPortrait(card, settings.getPortraitSize());
         this.stage.get('#card-layer')[0].add(portrait);
-        this.addAnimation(function() {
+        this.addAnimation("compactHand", function() {
             var pos = settings.getPortraitPos(arena.playerNumber, targetIndex);
             new Kinetic.Tween({
                 node: portrait,
@@ -776,14 +813,29 @@ var Animater = function() {
                 duration: settings.summonCardDuration,
             }).play();
         }, settings.summonCardDuration);
+        this.pauseAnimation(settings.summonCardPause);
     };
     
     this.__attackHero = function(data) {
-        data[0].hp -= data[1];
-        if (data[0].hp < 0) {
-            data[0].hp = 0;
+        var attacker = data[0];
+        var defenderHero = data[1];
+        this.normalAttack(attacker, defenderHero, true);
+        var damage = data[2];
+        defenderHero.hp -= damage;
+        if (defenderHero.hp < 0) {
+            defenderHero.hp = 0;
         }
-        this.__updateHeroHp(data[0]);
+        this.__updateHeroHp(defenderHero);
+    };
+    
+    this.__useSkillWithTargets = function(data) {
+        var attacker = data[0];
+        var skill = data[1];
+        var defender = data[2];
+        
+        if (skill == '普通攻击') {
+            this.normalAttack(attacker, defender, false);
+        }
     };
     
     this.__returnCard = function(data) {
@@ -796,7 +848,7 @@ var Animater = function() {
         var attackerArena = this.arenas[attackerId];
         var cross = Arena.createCross();
         this.stage.get('#effect-layer')[0].add(cross);
-        this.addAnimation(function() {
+        this.addAnimation("showCross", function() {
             var crossSartPos = settings.getPortraitPos(attackerArena.playerNumber, defenderCardIndex);
             var crossEndPos = settings.getPortraitPos(defenderArena.playerNumber, defenderCardIndex);
             cross.setX(crossSartPos.x);
@@ -809,20 +861,20 @@ var Animater = function() {
                 duration: settings.returnCardCrossDuration,
             }).play();
         }, settings.returnCardCrossDuration);
-        this.addAnimation(function() {
+        this.addAnimation("destroyCross", function() {
             cross.destroy();
             delete cross;
         }, settings.minimumDuration);
 
         var card = defenderArena.fields.removeOfName(defenderCardName);
-        this.addAnimation(function() {
+        this.addAnimation("returnCard", function() {
             new Kinetic.Tween({
                 node: card.group,
                 x: settings.width,
                 duration: settings.summonCardDuration,
             }).play();
         }, settings.summonCardDuration);
-        this.addAnimation(function() {
+        this.addAnimation("destroyReturnedCard", function() {
             card.group.destroy();
             delete card;
         }, settings.minimumDuration);
@@ -832,7 +884,7 @@ var Animater = function() {
         var playerId = data[0];
         var arena = this.arenas[playerId];
         var card = arena.fields.removeOfName(data[1].name);
-        this.addAnimation(function() {
+        this.addAnimation("removeDeadCard", function() {
             card.hpText.setText('DEAD');
             card.hpText.setFill('red');
             card.hpText.centerMiddle(card.hpRect);
@@ -842,7 +894,7 @@ var Animater = function() {
                 duration: settings.summonCardDuration,
             }).play();
         }, settings.summonCardDuration);
-        this.addAnimation(function() {
+        this.addAnimation("destroyDeadCard", function() {
             card.group.destroy();
             delete card;
         }, settings.minimumDuration);
@@ -865,23 +917,43 @@ var Animater = function() {
         this.showSplash({ text: '战斗结束!\r\n获胜者: ' + player.id + '\r\n共造成伤害: ' + data[3], });
         this.showSplash({ text: '这个功能还没完成，\r\n就做了那么点儿，\r\n白白会努力做的！^0^', exitType: 'onclick', });
     };
+    
+    /**
+     * @param
+     * card.ownerId,
+     * card.uniqueName,
+     * @return { x, y }
+     */
+    this.getFieldCardPos = function(card) {
+        var arena = this.arenas[card.ownerId];
+        var index = arena.fields.indexOfName(card.uniqueName);
+        return settings.getPortraitPos(arena.playerNumber, index);
+    };
 
-    this.addAnimation = function(func, duration) {
-        window.setTimeout(func, this.time * 1000);
+    this.addAnimation = function(name, func, duration) {
+        window.setTimeout(function() {
+            //console.log("ANIM Executing " + name + " (duration = " + duration + ")");
+            //console.log("ANIM Next animation should happen at " + new Date(new Date().getTime() + duration * 1000));
+            func();
+        }, this.time * 1000);
+        //console.log("ANIM Registering " + name + " (time = " + this.time + ", duration = " + duration + ")");
         this.time += duration;
     };
     
-    this.addAnimations = function(funcs, duration) {
+    this.addAnimations = function(name, funcs, duration) {
         window.setTimeout(function() {
             for (var i = 0; i < funcs.length; ++i) {
+                //console.log("ANIM Executing " + name + "[" + i + "] (duration = " + duration + ")");
+                //console.log("ANIM Next animation should happen at " + new Date(new Date().getTime() + duration * 1000));
                 funcs[i]();
             }
         }, this.time * 1000);
+        //console.log("ANIM Registering " + name + " (time = " + this.time + ", duration = " + duration + ")");
         this.time += duration;
     };
     
     this.pauseAnimation = function(duration) {
-        this.addAnimation(function () {}, duration);
+        this.addAnimation("pause", function () {}, duration);
     };
     
     this.showSplash = function(attrs) {
@@ -894,7 +966,7 @@ var Animater = function() {
         var width = settings.width;
         var splashText = this.stage.get('#splash-text')[0];
         var splashRect = this.stage.get('#splash-label')[0];
-        this.addAnimation(function() {
+        this.addAnimation("showSplash", function() {
             splashRect.setX(-width);
             splashText.setText(text);
             splashText.centerMiddle(splashRect);
@@ -911,7 +983,7 @@ var Animater = function() {
         }, duration);
         if (exitType == 'pause') {
             this.pauseAnimation(pause);
-            this.addAnimation(function() {
+            this.addAnimation("exitSplash", function() {
                 new Kinetic.Tween({
                     node: splashRect,
                     x: width,
@@ -926,6 +998,65 @@ var Animater = function() {
         };
     };
     
+    /**
+     * @param attacker { ownerId, uniqueName }
+     * @param defender
+     * { ownerId, uniqueName } if attackingHero is false
+     * { id } if attackingHero is true
+     */
+    this.normalAttack = function(attacker, defender, attackingHero) {
+        var sword = Arena.createSword();
+        this.stage.get('#effect-layer')[0].add(sword);
+        var attackerPos = this.getFieldCardPos(attacker);
+        var ptSize = settings.getPortraitSize();
+        var self = this;
+        this.addAnimation("normalAttack", function() {
+            // Center sword inside attacker portrait
+            sword.setX(attackerPos.x + ptSize.width / 2 - settings.swordWidth / 2);
+            sword.setY(attackerPos.y + ptSize.height / 2 - settings.swordHeight / 2);
+            var targetPoint = { x: 0, y: 0 };
+            if (attackingHero) {
+                var hpBgRect = self.__getShape(defender, 'hpbg-rect');
+                targetPoint.x = hpBgRect.getX() + hpBgRect.getWidth() / 2 - settings.swordWidth / 2;
+                targetPoint.y = hpBgRect.getY() + hpBgRect.getHeight() / 2 - settings.swordHeight / 2;
+            } else {
+                var defenderPos = self.getFieldCardPos(defender);
+                targetPoint.x = defenderPos.x + ptSize.width / 2 - settings.swordWidth / 2;
+                targetPoint.y = defenderPos.y + ptSize.height / 2 - settings.swordHeight / 2;
+            }
+            new Kinetic.Tween({
+                node: sword,
+                x: targetPoint.x,
+                y: targetPoint.y,
+                duration: settings.normalAttackDuration,
+            }).play();
+        }, settings.normalAttackDuration);
+        this.addAnimation("normalAttackDestroySword", function() {
+            sword.destroy();
+            delete sword;
+        }, settings.minimumDuration);
+    };
+    
+    /**
+     * @param attacker {
+     *    ownerId, type, uniqueName
+     * }
+     */
+    this.zoomAttacker = function(attacker, zoomOut) {
+        if (attacker.type == 'Card') {
+            var card = this.arenas[attacker.ownerId].fields.ofName(attacker.uniqueName);
+            this.addAnimation("zoomAttacker", function() {
+                var shape = card.group;
+                var deltaY = settings.getPortraitSize().height * settings.zoomRate;
+                new Kinetic.Tween({
+                    node: shape,
+                    y: zoomOut ? shape.getY() - deltaY : shape.getY() + deltaY,
+                    duration: settings.zoomAttackerDuration,
+                }).play();
+            }, settings.zoomAttackerDuration);
+        }
+    };
+
     this.start = function(animation) {
         settings.refreshSize();
         this.time = this.initTime;
@@ -952,33 +1083,10 @@ var Animater = function() {
         for (var i = 0; i < events.length; ++i) {
             var event = events[i];
             console.log(JSON.stringify(event));
-            if (false) {
-            } else if (event.name == 'stage-created') {
-                this.__stageCreated(event.data);
-            } else if (event.name == 'player-added') {
-                this.__playerAdded(event.data);
-            } else if (event.name == 'game-start') {
-                this.__gameStarted(event.data);
-            } else if (event.name == 'round-started') {
-                this.__roundStarted(event.data);
-            } else if (event.name == 'card-drawed') {
-                this.__cardDrawed(event.data);
-            } else if (event.name == 'summon-card') {
-                this.__summonCard(event.data);
-            } else if (event.name == 'attack-hero') {
-                this.__attackHero(event.data);
-            } else if (event.name == 'return-card') {
-                this.__returnCard(event.data);
-            } else if (event.name == 'card-dead') {
-                this.__cardDead(event.data);
-            } else if (event.name == 'card-to-grave') {
-                this.__cardToGrave(event.data);
-            } else if (event.name == 'compact-field') {
-                this.__compactField(event.data);
-            } else if (event.name == 'round-ended') {
-                this.__roundEnded(event.data);
-            } else if (event.name == 'game-ended') {
-                this.__gameEnded(event.data);
+            var handlerName = "__" + event.name;
+            var handler = this[handlerName];
+            if (handler) {
+                handler.apply(this, [event.dataList]);
             } else {
                 console.log("ERROR: unknown event: " + event.name);
             }

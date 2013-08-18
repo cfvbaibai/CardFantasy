@@ -29,23 +29,23 @@ public class StructuredRecordGameUI extends GameUI {
     
     @Override
     public void stageCreated() {
-        record.addEvent("stage-created");
+        record.addEvent("stageCreated");
     }
     
     @Override
     public void gameStarted() {
-        record.addEvent("game-start");
+        record.addEvent("gameStarted");
     }
 
     @Override
     public void playerAdded(Player player, int playerNumber) {
         PlayerInitInfo pii = new PlayerRuntimeInfo(player, playerNumber);
-        record.addEvent("player-added", pii);
+        record.addEvent("playerAdded", pii);
     }
 
     @Override
     public void errorHappened(CardFantasyRuntimeException e) {
-        record.addEvent("error-happened", e.getMessage());
+        record.addEvent("errorHappened", e.getMessage());
     }
 
     @Override
@@ -66,12 +66,12 @@ public class StructuredRecordGameUI extends GameUI {
                 result.getWinner(), this.getPlayerNumber(result.getWinner()));
         PlayerRuntimeInfo loser = new PlayerRuntimeInfo(
                 result.getLoser(), this.getPlayerNumber(result.getLoser()));
-        record.addEvent("game-ended", winner, loser, result.getCause(), result.getDamageToBoss());
+        record.addEvent("gameEnded", winner, loser, result.getCause(), result.getDamageToBoss());
     }
 
     @Override
     public void cardDrawed(Player drawer, CardInfo card) {
-        record.addEvent("card-drawed", drawer.getId(), card.getId(), card.getUniqueName(), card.getSummonDelay());
+        record.addEvent("cardDrawed", drawer.getId(), card.getId(), card.getUniqueName(), card.getSummonDelay());
     }
 
     @Override
@@ -88,17 +88,17 @@ public class StructuredRecordGameUI extends GameUI {
 
     @Override
     public void summonCard(Player player, CardInfo card) {
-        this.record.addEvent("summon-card", player.getId(), new CardInitInfo(card));
+        this.record.addEvent("summonCard", player.getId(), new CardInitInfo(card));
     }
 
     @Override
     public void roundStarted(Player player, int round) {
-        this.record.addEvent("round-started", round, player.getId());
+        this.record.addEvent("roundStarted", round, player.getId());
     }
 
     @Override
     public void roundEnded(Player player, int round) {
-        this.record.addEvent("round-ended", round, player.getId());
+        this.record.addEvent("roundEnded", round, player.getId());
     }
 
     @Override
@@ -109,18 +109,24 @@ public class StructuredRecordGameUI extends GameUI {
 
     @Override
     public void cardDead(CardInfo deadCard) {
-        this.record.addEvent("card-dead", deadCard.getOwner().getId(), new CardRuntimeInfo(deadCard));
+        this.record.addEvent("cardDead", deadCard.getOwner().getId(), new CardRuntimeInfo(deadCard));
     }
 
     @Override
     public void attackHero(EntityInfo attacker, Player hero, Feature cardFeature, int damage) {
-        this.record.addEvent("attack-hero", new PlayerRuntimeInfo(hero, this.getPlayerNumber(hero)), damage);
+        this.record.addEvent("attackHero", new EntityRuntimeInfo(attacker), new PlayerRuntimeInfo(hero, this.getPlayerNumber(hero)), damage);
     }
 
     @Override
     public void useSkill(EntityInfo caster, List<? extends EntityInfo> targets, Feature feature) {
-        // TODO Auto-generated method stub
-        
+        String featureName = feature == null ? "ÆÕÍ¨¹¥»÷" : feature.getType().name(); 
+        BattleEvent event = new BattleEvent("useSkillWithTargets", new EntityRuntimeInfo(caster), featureName);
+        for (EntityInfo entityInfo : targets) {
+            if (entityInfo instanceof CardInfo) {
+                event.addData(new EntityRuntimeInfo(entityInfo));
+            }
+        }
+        this.record.addEvent(event);
     }
 
     @Override
@@ -245,14 +251,14 @@ public class StructuredRecordGameUI extends GameUI {
 
     @Override
     public void returnCard(CardInfo attacker, CardInfo defender, Feature cardFeature) {
-        this.record.addEvent("return-card",
+        this.record.addEvent("returnCard",
                 attacker.getOwner().getId(), new CardRuntimeInfo(attacker),
                 defender.getOwner().getId(), new CardRuntimeInfo(defender));
     }
 
     @Override
     public void cardToGrave(Player player, CardInfo card) {
-        this.record.addEvent("card-to-grave", player.getId(), new CardRuntimeInfo(card));
+        this.record.addEvent("cardToGrave", player.getId(), new CardRuntimeInfo(card));
     }
 
     @Override
@@ -275,8 +281,7 @@ public class StructuredRecordGameUI extends GameUI {
 
     @Override
     public void useSkill(EntityInfo caster, Feature feature) {
-        // TODO Auto-generated method stub
-        
+        this.record.addEvent("useSkillNoTarget", feature.getType().name());
     }
 
     @Override
@@ -299,7 +304,7 @@ public class StructuredRecordGameUI extends GameUI {
 
     @Override
     public void compactField(Field field) {
-        this.record.addEvent("compact-field", field.getOwner().getId());
+        this.record.addEvent("compactField", field.getOwner().getId());
     }
 
     @Override

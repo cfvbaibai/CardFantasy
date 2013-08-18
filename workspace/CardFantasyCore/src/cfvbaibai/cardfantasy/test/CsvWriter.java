@@ -3,18 +3,25 @@ package cfvbaibai.cardfantasy.test;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
-import cfvbaibai.cardfantasy.C;
-
 public class CsvWriter {
+    private static <T> List<T> toList(T[] array) {
+        List <T> result = new ArrayList <T>();
+        for (int i = 0; i < array.length; ++i) {
+            result.add(array[i]);
+        }
+        return result;
+    }
+    
     private FileWriter writer; 
     public CsvWriter(File file) throws IOException {
         writer = new FileWriter(file);
     }
     
     public void writeFields(Object[] fields) throws IOException {
-        writeFields(C.toList(fields));
+        writeFields(toList(fields));
     }
     
     public void writeFields(List <? extends Object> fields) throws IOException {
