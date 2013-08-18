@@ -85,4 +85,8 @@ public class RuneInfo extends EntityInfo {
     public String getRuneClass() {
         return this.rune.getRuneClass().name();
     }
+
+    public int getMaxEnergy() {
+        return this.rune.getMaxEnergy();
+    }
 }

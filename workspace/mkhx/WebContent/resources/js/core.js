@@ -5,8 +5,12 @@ var sendRequest = function(url, outputDivId, isJson) {
     var getFunc = isJson ? function() {
         return $.getJSON(url, function(data) {
             result = JSON.stringify(data);
-            $.mobile.changePage("#arena", { transition : 'flip', role : 'dialog' });
-            showBattle(data);
+            if (data.error) {
+                result = data.message;
+            } else {
+                $.mobile.changePage("#arena", { transition : 'flip', role : 'dialog' });
+                showBattle(data);
+            }
         });
     } : function() {
         return $.get(url, function(data) {

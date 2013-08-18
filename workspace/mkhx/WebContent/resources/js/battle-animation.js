@@ -101,11 +101,11 @@ var ArenaSettings = function() {
     this.zoomAttackerDuration = 0.2;
     this.zoomRate = 0.2;
     
-    this.normalAttackDuration = 1;
+    this.normalAttackDuration = 0.3;
     this.swordWidth = 14;
     this.swordHeight = 44;
     
-    this.adjustDuration = 1;
+    this.adjustDuration = 0.7;
     this.adjustFontFamily = this.fontFamily;
     this.adjustFontSize = 8;
     this.adjustAdjAtColor = '#5555FF';
@@ -115,6 +115,18 @@ var ArenaSettings = function() {
     this.adjRectBorderWidth = 1;
     this.adjRectFill = '#CCCCCC';
     this.adjRectOpacity = 0.95;
+    
+    this.cardMsgRectHeight = 50;
+    this.cardMsgRectBorderColor = 'white';
+    this.cardMsgRectBorderWidth = 1;
+    this.cardMsgRectFill = '#CCCCCC';
+    this.cardMsgRectOpacity = 0.95;
+    this.cardMsgFontFamily = this.fontFamily;
+    this.cardMsgFontSize = 8;
+    this.cardMsgTextColor = 'black';
+    this.cardMsgDuration = 0.7;
+    
+    this.attackCardTextColor = 'red';
 
     this.refreshSize = function () {
         var currentWidth = $(window).width() * 0.8;
@@ -756,6 +768,26 @@ var Animater = function() {
         this.addAnimations("delayDecrease", funcs, 0.3);
     };
     
+    this.__activateRune = function(data) {
+        var playerId = data[0];
+        var runeName = data[1];
+        var shouldNotice = data[2];
+        if (!shouldNotice) { return; }
+        this.showSplash({
+            text: playerId + " 的 " + runeName + " 激活！",
+        });
+    };
+    
+    this.__deactivateRune = function(data) {
+        var playerId = data[0];
+        var runeName = data[1];
+        var shouldNotice = data[2];
+        if (!shouldNotice) { return; }
+        this.showSplash({
+            text: playerId + " 的 " + runeName + " 能量耗尽！",
+        });
+    };
+    
     this.__cardDrawed = function(data) {
         var playerId = data[0];
         var arena = this.arenas[playerId];
@@ -846,13 +878,61 @@ var Animater = function() {
     this.__attackHero = function(data) {
         var attacker = data[0];
         var defenderHero = data[1];
-        this.normalAttack(attacker, defenderHero, true);
         var damage = data[2];
+        var featureName = data[3];
+        this.normalAttack(attacker, defenderHero, true);
+        this.displayCardMsg({
+            name: 'attackHeroMsg',
+            cardShape: this.__getShape(defenderHero, 'hpbg-rect'),
+            textColor: settings.attackCardTextColor,
+            text: '伤害: ' + damage + '\r\n' + featureName,
+        });
         defenderHero.hp -= damage;
         if (defenderHero.hp < 0) {
             defenderHero.hp = 0;
         }
         this.__updateHeroHp(defenderHero);
+    };
+    
+    this.__attackCard = function(data) {
+        //var attacker = data[0];
+        var defender = data[1];
+        var featureName = data[2];
+        var damage = data[3];
+        var currentHP = data[4];
+        var dfCard = this.getCard(defender);
+        this.displayCardMsg({
+            name: 'attackCard',
+            cardShape: dfCard.group,
+            textColor: settings.attackCardTextColor,
+            text: '伤害: ' + damage + '\r\n' + featureName,
+        });
+        this.addAnimation('attackCardUpdateHp', function () {
+            dfCard.hpText.setText('HP: ' + currentHP);
+            dfCard.hpText.centerMiddle(dfCard.hpRect);
+            dfCard.hpText.getLayer().draw();
+        }, settings.minimumDuration);
+    };
+
+    this.__blockDamage = function(data) {
+        var protector = data[0];
+        //var attacker = data[1];
+        var defender = data[2];
+        var featureName = data[3];
+        var originalDamage = data[4];
+        var actualDamage = data[5];
+        if (protector.uniqueName != defender.uniqueName) {
+            console.error("Protector(" + protector.uniqueName + ") != Defender(" +
+                    defender.uniqueName + "). Not supported yet!");
+            return;
+        }
+        var dfCard = this.getCard(defender);
+        this.displayCardMsg({
+            name: 'blockDamage',
+            cardShape: dfCard.group,
+            textColor: settings.blockDamageTextColor,
+            text: featureName + '\r\n伤害: ' + originalDamage + '\r\n-->' + actualDamage,
+        });
     };
     
     this.__useSkillWithTargets = function(data) {
@@ -865,13 +945,13 @@ var Animater = function() {
         }
     };
     
-    this.__returnCard = function(data) {
+    this.tryReturnCard = function(data) {
+        var attackerId = data[0];
         var defenderId = data[2];
         var defenderArena = this.arenas[defenderId];
         var defenderCardName = data[3].name;
         var defenderCardIndex = defenderArena.fields.indexOfName(defenderCardName);
-        
-        var attackerId = data[0];
+
         var attackerArena = this.arenas[attackerId];
         var cross = Arena.createCross();
         this.stage.get('#effect-layer')[0].add(cross);
@@ -951,36 +1031,41 @@ var Animater = function() {
      * card.uniqueName,
      * @return { x, y }
      */
-    this.getCard = function(card) {
-        return this.arenas[card.ownerId].fields.ofName(card.uniqueName);
+    this.getCard = function(cardRtInfo) {
+        var card = this.arenas[cardRtInfo.ownerId].fields.ofName(cardRtInfo.uniqueName);
+        if (!card) {
+            console.error('ERROR: Cannot find card ' + cardRtInfo.uniqueName + ' from ' + cardRtInfo.ownerId);
+        } 
+        return card;
     };
+    
+    this.animations = [];
 
     this.addAnimation = function(name, func, duration) {
-        if (duration == undefined) {
-            console.error("ERROR: Undefined addAnimation duration: " + name + "!");
+        if ($.type(name) !== 'string') {
+            console.error("ERROR: first variable of this.addAnimation must be string! Given: " + name);
         }
-        window.setTimeout(function() {
+        if (duration == undefined || duration <= 0) {
+            console.error("ERROR: Invalid addAnimation duration of " + name + ": " + duration + "!");
+        }
+        var timeOutVar = window.setTimeout(function() {
             //console.log("ANIM Executing " + name + " (duration = " + duration + ")");
             //console.log("ANIM Next animation should happen at " + new Date(new Date().getTime() + duration * 1000));
             func();
         }, this.time * 1000);
+        this.animations.push(timeOutVar);
         //console.log("ANIM Registering " + name + " (time = " + this.time + ", duration = " + duration + ")");
         this.time += duration;
     };
     
     this.addAnimations = function(name, funcs, duration) {
-        if (duration == undefined) {
-            console.error("ERROR: Undefined addAnimations duration: " + name + "!");
-        }
-        window.setTimeout(function() {
+        this.addAnimation(name, function () {
             for (var i = 0; i < funcs.length; ++i) {
                 //console.log("ANIM Executing " + name + "[" + i + "] (duration = " + duration + ")");
                 //console.log("ANIM Next animation should happen at " + new Date(new Date().getTime() + duration * 1000));
                 funcs[i]();
             }
-        }, this.time * 1000);
-        //console.log("ANIM Registering " + name + " (time = " + this.time + ", duration = " + duration + ")");
-        this.time += duration;
+        }, duration);
     };
     
     this.pauseAnimation = function(duration) {
@@ -1108,6 +1193,58 @@ var Animater = function() {
     };
     
     /**
+     * @attribute name (required)
+     * @attribute cardShape (required)
+     * @attribute text (default to '')
+     * @attribute textColor
+     * @attribute duration
+     */
+    this.displayCardMsg = function(attrs) {
+        if (!attrs || !attrs.name || !attrs.cardShape) {
+            console.error("Invalid attrs in this.displayCardMsg: " + attrs);
+            return;
+        }
+        var self = this;
+        var opt = $.extend({
+            textColor: settings.cardMsgTextColor,
+            text: '',
+            duration: settings.cardMsgDuration,
+        }, (attrs || {}));
+        var ptSize = settings.getPortraitSize();
+        var group = null;
+        this.addAnimation(name, function () {
+            var rect = new Kinetic.Rect({
+                x: 0, y: 0, width: ptSize.width,
+                height: settings.cardMsgRectHeight,
+                stroke: settings.cardMsgRectBorderColor,
+                strokeWidth: settings.cardMsgRectBorderWidth,
+                fill: settings.cardMsgRectFill,
+                opacity: settings.cardMsgRectOpacity,
+            });
+            var text = new Kinetic.Text({
+                text: opt.text,
+                fontFamily: settings.cardMsgFontFamily,
+                fontSize: settings.cardMsgFontSize,
+                fill: opt.textColor,
+            });
+            group = new Kinetic.Group({
+                x: opt.cardShape.getX(),
+                y: opt.cardShape.getY() + ptSize.height / 2 - rect.getHeight() / 2,
+            });
+            group.add(rect).add(text);
+            self.stage.get('#effect-layer')[0].add(group);
+            text.centerMiddle(rect);
+            group.getLayer().draw();
+        }, opt.duration);
+        this.addAnimation(name + "Clearup", function() {
+            var layer = group.getLayer();
+            group.destroy();
+            delete group;
+            layer.draw();
+        }, settings.minimumDuration);
+    };
+    
+    /**
      * @param attacker { ownerId, uniqueName }
      * @param defender
      * { ownerId, uniqueName } if attackingHero is false
@@ -1171,6 +1308,9 @@ var Animater = function() {
 
     this.start = function(animation) {
         settings.refreshSize();
+        $.each(this.animations, function(i, v) {
+            clearTimeout(v);
+        });
         this.time = this.initTime;
         $('#battle-canvas').width(this.width).height(this.height);
         this.stage = new Kinetic.Stage({

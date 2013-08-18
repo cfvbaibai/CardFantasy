@@ -18,6 +18,14 @@ import cfvbaibai.cardfantasy.engine.RuneInfo;
 
 public class StructuredRecordGameUI extends GameUI {
 
+    private static String toName(Feature feature) {
+        if (feature == null) {
+            return "ÆÕÍ¨¹¥»÷";
+        } else {
+            return feature.getType().name();
+        }
+    }
+
     private BattleRecord record;
     public StructuredRecordGameUI() {
         this.record = new BattleRecord();
@@ -103,8 +111,11 @@ public class StructuredRecordGameUI extends GameUI {
 
     @Override
     public void attackCard(EntityInfo attacker, CardInfo defender, Feature cardFeature, int damage) {
-        // TODO Auto-generated method stub
-        
+        int currentHP = defender.getHP() - damage;
+        if (currentHP < 0) { currentHP = 0; }
+        String featureName = toName(cardFeature);
+        this.record.addEvent("attackCard", new EntityRuntimeInfo(attacker), new EntityRuntimeInfo(defender),
+                featureName, damage, currentHP); 
     }
 
     @Override
@@ -114,12 +125,13 @@ public class StructuredRecordGameUI extends GameUI {
 
     @Override
     public void attackHero(EntityInfo attacker, Player hero, Feature cardFeature, int damage) {
-        this.record.addEvent("attackHero", new EntityRuntimeInfo(attacker), new PlayerRuntimeInfo(hero, this.getPlayerNumber(hero)), damage);
+        this.record.addEvent("attackHero", new EntityRuntimeInfo(attacker),
+                new PlayerRuntimeInfo(hero, this.getPlayerNumber(hero)), damage, toName(cardFeature));
     }
 
     @Override
     public void useSkill(EntityInfo caster, List<? extends EntityInfo> targets, Feature feature) {
-        String featureName = feature == null ? "ÆÕÍ¨¹¥»÷" : feature.getType().name(); 
+        String featureName = toName(feature);
         BattleEvent event = new BattleEvent("useSkillWithTargets", new EntityRuntimeInfo(caster), featureName);
         for (EntityInfo entityInfo : targets) {
             if (entityInfo instanceof CardInfo) {
@@ -175,8 +187,8 @@ public class StructuredRecordGameUI extends GameUI {
     @Override
     public void blockDamage(EntityInfo protector, EntityInfo attacker, EntityInfo defender, Feature cardFeature,
             int originalDamage, int actualDamage) {
-        // TODO Auto-generated method stub
-        
+        this.record.addEvent("blockDamage", new EntityRuntimeInfo(protector), new EntityRuntimeInfo(attacker),
+                new EntityRuntimeInfo(defender), toName(cardFeature), originalDamage, actualDamage);
     }
 
     @Override
@@ -294,14 +306,14 @@ public class StructuredRecordGameUI extends GameUI {
 
     @Override
     public void activateRune(RuneInfo rune) {
-        // TODO Auto-generated method stub
-        
+        boolean isFirstActivation = rune.getEnergy() == rune.getMaxEnergy();
+        this.record.addEvent("activateRune", rune.getOwner().getId(), rune.getName(), isFirstActivation);
     }
 
     @Override
     public void deactivateRune(RuneInfo rune) {
-        // TODO Auto-generated method stub
-        
+        boolean isFinalDeactivation = rune.getEnergy() == 0;
+        this.record.addEvent("activateRune", rune.getOwner().getId(), rune.getName(), isFinalDeactivation);
     }
 
     @Override

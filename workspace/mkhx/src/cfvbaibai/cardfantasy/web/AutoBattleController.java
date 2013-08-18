@@ -74,13 +74,16 @@ public class AutoBattleController {
         e.printStackTrace();
     }
 
-    private static ResponseEntity<String> handleError(Exception e) {
+    private static ResponseEntity<String> handleError(Exception e, boolean isJson) {
         HttpHeaders responseHeaders = new HttpHeaders();
         responseHeaders.add("Content-Type", "text/html;charset=UTF-8");
         log(e.getMessage());
         logE(e);
         String message = String.format("<font color='red'>%s<br />·¢Éú´íÎó£¡<br />%s<br />", getCurrentTime(),
                 e.getMessage());
+        if (isJson) {
+            message = "{ \"error\": true, \"message\": \"" + message + "\" }";
+        }
         return new ResponseEntity<String>(message, responseHeaders, HttpStatus.CREATED);
     }
 
@@ -121,7 +124,7 @@ public class AutoBattleController {
             log("Winner: " + gameResult.getWinner().getId());
             return new ResponseEntity<String>(result, responseHeaders, HttpStatus.CREATED);
         } catch (Exception e) {
-            return handleError(e);
+            return handleError(e, false);
         }
     }
 
@@ -155,7 +158,7 @@ public class AutoBattleController {
             log("TO:P1:P2 = " + stat.getTimeoutCount() + ":" + stat.getP1Win() + ":" + stat.getP2Win());
             return new ResponseEntity<String>(result.toString(), responseHeaders, HttpStatus.CREATED);
         } catch (Exception e) {
-            return handleError(e);
+            return handleError(e, false);
         }
     }
     
@@ -182,7 +185,7 @@ public class AutoBattleController {
             log("Winner: " + gameResult.getWinner().getId() + ", Damage to boss: " + gameResult.getDamageToBoss());
             return new ResponseEntity<String>(result, responseHeaders, HttpStatus.CREATED);
         } catch (Exception e) {
-            return handleError(e);
+            return handleError(e, false);
         }
     }
     
@@ -220,8 +223,7 @@ public class AutoBattleController {
             //return new ResponseEntity<TestJsonObject>(tjo, responseHeaders, HttpStatus.CREATED);
             //return tjo;
         } catch (Exception e) {
-            return handleError(e);
-            //return null;
+            return handleError(e, true);
         }
     }
 
@@ -275,7 +277,7 @@ public class AutoBattleController {
             log("Average damage to boss: " + averageDamageToBoss);
             return new ResponseEntity<String>(result.toString(), responseHeaders, HttpStatus.CREATED);
         } catch (Exception e) {
-            return handleError(e);
+            return handleError(e, false);
         }
     }
 
