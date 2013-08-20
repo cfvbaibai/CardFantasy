@@ -133,11 +133,14 @@ public class StructuredRecordGameUI extends GameUI {
     public void useSkill(EntityInfo caster, List<? extends EntityInfo> targets, Feature feature) {
         String featureName = toName(feature);
         BattleEvent event = new BattleEvent("useSkillWithTargets", new EntityRuntimeInfo(caster), featureName);
-        for (EntityInfo entityInfo : targets) {
+        EntityRuntimeInfo[] defenders = new EntityRuntimeInfo[targets.size()]; 
+        for (int i = 0; i < targets.size(); ++i) {
+            EntityInfo entityInfo = targets.get(i);
             if (entityInfo instanceof CardInfo) {
-                event.addData(new EntityRuntimeInfo(entityInfo));
+                defenders[i] = new EntityRuntimeInfo(entityInfo);
             }
         }
+        event.addData(defenders);
         this.record.addEvent(event);
     }
 
@@ -265,9 +268,7 @@ public class StructuredRecordGameUI extends GameUI {
 
     @Override
     public void returnCard(CardInfo attacker, CardInfo defender, Feature cardFeature) {
-        this.record.addEvent("returnCard",
-                attacker.getOwner().getId(), new CardRuntimeInfo(attacker),
-                defender.getOwner().getId(), new CardRuntimeInfo(defender));
+        this.record.addEvent("returnCard", new EntityRuntimeInfo(attacker), new EntityRuntimeInfo(defender));
     }
 
     @Override
@@ -312,7 +313,7 @@ public class StructuredRecordGameUI extends GameUI {
 
     @Override
     public void deactivateRune(RuneInfo rune) {
-        boolean isFinalDeactivation = rune.getEnergy() == 0;
+        boolean isFinalDeactivation = rune.getEnergy() == 1;
         this.record.addEvent("activateRune", rune.getOwner().getId(), rune.getName(), isFinalDeactivation);
     }
 

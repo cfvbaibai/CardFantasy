@@ -936,23 +936,30 @@ var Animater = function() {
     };
     
     this.__useSkillWithTargets = function(data) {
-        var attacker = data[0];
-        var skill = data[1];
-        var defender = data[2];
-        
+        var attacker = data[0]; // EntityRuntimeInfo
+        var skill = data[1];    // String
+        var defenders = data[2]; // EntityRuntimeInfo[]
+        if (defenders.length == 0) {
+            return;
+        }
         if (skill == '普通攻击') {
-            this.normalAttack(attacker, defender, false);
+            this.normalAttack(attacker, defenders[0], false);
+        } else if (skill == '送还') {
+            this.showReturnCross(attacker, defenders[0]);
+        } else {
+            var text = attacker.ownerId + "的" + attacker.uniqueName + "\r\n";
+            text += "\r\n" + skill + "\r\n\r\n";
+            for (var i = 0; i < defenders.length; ++i) {
+                text += defenders[i].uniqueName + '\r\n';
+            }
+            this.showSplash({ text: text });
         }
     };
     
-    this.tryReturnCard = function(data) {
-        var attackerId = data[0];
-        var defenderId = data[2];
-        var defenderArena = this.arenas[defenderId];
-        var defenderCardName = data[3].name;
-        var defenderCardIndex = defenderArena.fields.indexOfName(defenderCardName);
-
-        var attackerArena = this.arenas[attackerId];
+    this.showReturnCross = function(attacker, defender) {
+        var attackerArena = this.arenas[attacker.ownerId];
+        var defenderArena = this.arenas[defender.ownerId];
+        var defenderCardIndex = defenderArena.fields.indexOfName(defender.uniqueName);
         var cross = Arena.createCross();
         this.stage.get('#effect-layer')[0].add(cross);
         this.addAnimation("showCross", function() {
@@ -972,8 +979,13 @@ var Animater = function() {
             cross.destroy();
             delete cross;
         }, settings.minimumDuration);
-
-        var card = defenderArena.fields.removeOfName(defenderCardName);
+    };
+    
+    this.__returnCard = function(data) {
+        // var attacker = data[0];
+        var defender = data[1];
+        var defenderArena = this.arenas[defender.ownerId];
+        var card = defenderArena.fields.removeOfName(defender.uniqueName);
         this.addAnimation("returnCard", function() {
             new Kinetic.Tween({
                 node: card.group,
