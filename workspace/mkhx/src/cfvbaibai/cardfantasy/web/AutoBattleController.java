@@ -128,6 +128,39 @@ public class AutoBattleController {
         }
     }
 
+    @RequestMapping(value = "/SimAuto1MatchGame", headers = "Accept=application/json")
+    public ResponseEntity<String> simulateAuto1MatchGame(HttpServletRequest request, @RequestParam("deck1") String deck1,
+            @RequestParam("deck2") String deck2, @RequestParam("hlv1") int heroLv1, @RequestParam("hlv2") int heroLv2,
+            @RequestParam("firstAttack") int firstAttack) {
+        log("!!!");
+        HttpHeaders responseHeaders = new HttpHeaders();
+        responseHeaders.add("Content-Type", "application/json;charset=UTF-8");
+        responseHeaders.add("Charset", "UTF-8");
+        try {
+            if (firstAttack != 0 && firstAttack != 1 && firstAttack != -1) {
+                throw new IllegalArgumentException("无效的先攻：" + firstAttack);
+            }
+            deck1 = encodeStr(deck1);
+            deck2 = encodeStr(deck2);
+            log("SimulateAuto1MatchGame from " + request.getRemoteAddr() + ":");
+            log("FirstAttack = " + firstAttack);
+            log("Deck1 = " + deck1);
+            log("Deck2 = " + deck2);
+            PlayerInfo player1 = PlayerBuilder.build("玩家1", deck1, heroLv1);
+            PlayerInfo player2 = PlayerBuilder.build("玩家2", deck2, heroLv2);
+            StructuredRecordGameUI ui = new StructuredRecordGameUI();
+            GameEngine engine = new GameEngine(ui, new Rule(5, 100, firstAttack, false));
+            engine.RegisterPlayers(player1, player2);
+            GameResult gameResult = engine.playGame();
+            BattleRecord record = ui.getRecord();
+            String result = gson.toJson(record);
+            log("Winner: " + gameResult.getWinner().getId());
+            return new ResponseEntity<String>(result, responseHeaders, HttpStatus.CREATED);
+        } catch (Exception e) {
+            return handleError(e, false);
+        }
+    }
+    
     @RequestMapping(value = "/PlayAutoMassiveGame")
     public ResponseEntity<String> playAutoMassiveGame(HttpServletRequest request, @RequestParam("deck1") String deck1,
             @RequestParam("deck2") String deck2, @RequestParam("hlv1") int heroLv1, @RequestParam("hlv2") int heroLv2,
@@ -190,22 +223,16 @@ public class AutoBattleController {
     }
     
     @RequestMapping(value = "/SimulateBoss1MatchGame", headers = "Accept=application/json")
-    public
-    ResponseEntity<String>
-    //ResponseEntity<TestJsonObject>
-    //@ResponseBody TestJsonObject
-    simulateBoss1MatchGame(HttpServletRequest request, @RequestParam("deck") String deck,
+    public ResponseEntity<String> simulateBoss1MatchGame(HttpServletRequest request, @RequestParam("deck") String deck,
             @RequestParam("hlv") int heroLv, @RequestParam("bn") String bossName, @RequestParam("bk") int buffKingdom,
             @RequestParam("bf") int buffForest, @RequestParam("bs") int buffSavage, @RequestParam("bh") int buffHell) {
         HttpHeaders responseHeaders = new HttpHeaders();
-        //responseHeaders.add("Content-Type", "text/html;charset=UTF-8");
         responseHeaders.add("Content-Type", "application/json;charset=UTF-8");
         responseHeaders.add("Charset", "UTF-8");
-        
         try {
             deck = encodeStr(deck);
             bossName = encodeStr(bossName);
-            log("PlayBoss1MatchGame from " + request.getRemoteAddr() + ":");
+            log("SimulateBoss1MatchGame from " + request.getRemoteAddr() + ":");
             log("Deck = " + deck);
             log("Hero LV = " + heroLv + ", Boss = " + bossName);
             PlayerInfo player1 = PlayerBuilder.build("魔神", bossName, 9999, null);
@@ -219,9 +246,6 @@ public class AutoBattleController {
             String result = gson.toJson(record);
             log("Winner: " + gameResult.getWinner().getId() + ", Damage to boss: " + gameResult.getDamageToBoss());
             return new ResponseEntity<String>(result, responseHeaders, HttpStatus.CREATED);
-            
-            //return new ResponseEntity<TestJsonObject>(tjo, responseHeaders, HttpStatus.CREATED);
-            //return tjo;
         } catch (Exception e) {
             return handleError(e, true);
         }

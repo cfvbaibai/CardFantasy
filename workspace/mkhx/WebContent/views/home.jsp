@@ -215,7 +215,8 @@
             </div>
             <div id="command" data-mini="true" data-role="controlgroup" data-type="horizontal">
                 <a data-role="button" data-mini="true" data-theme="c" href="javascript:playAutoGame(1)">打1场</a>
-                <a data-role="button" data-mini="true" data-theme="c" href="javascript:playAutoGame(100)">打100场</a>
+                <a data-role="button" data-mini="true" data-theme="c" href="javascript:playAutoGame(-1)">看1场</a>
+                <!-- <a data-role="button" data-mini="true" data-theme="c" href="javascript:playAutoGame(100)">打100场</a> -->
                 <a data-role="button" data-mini="true" data-theme="c" href="javascript:playAutoGame(1000)">打1000场</a>
                 <!-- <button data-theme="c" onclick="alert('按CTRL+A全选，再按CTRL+C')">拷贝</button> -->
             </div>

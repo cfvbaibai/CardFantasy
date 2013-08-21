@@ -127,6 +127,7 @@ var ArenaSettings = function() {
     this.cardMsgDuration = 0.7;
     
     this.attackCardTextColor = 'red';
+    this.healCardTextColor = 'green';
 
     this.refreshSize = function () {
         var currentWidth = $(window).width() * 0.8;
@@ -913,6 +914,26 @@ var Animater = function() {
             dfCard.hpText.getLayer().draw();
         }, settings.minimumDuration);
     };
+    
+    this.__healCard = function(data) {
+        //var healer = data[0];       // EntityRuntimeInfo
+        var healee = data[1];       // EntityRuntimeInfo
+        var featureName = data[2];  // String
+        var heal = data[3];         // int
+        var currentHP = data[4];    // int
+        var healeeCard = this.getCard(healee);
+        this.displayCardMsg({
+            name: 'healCard',
+            cardShape: healeeCard.group,
+            textColor: settings.healCardTextColor,
+            text: '治疗: ' + heal + '\r\n' + featureName,
+        });
+        this.addAnimation('healCardUpdateHp', function () {
+            healeeCard.hpText.setText('HP: ' + currentHP);
+            healeeCard.hpText.centerMiddle(healeeCard.hpRect);
+            healeeCard.hpText.getLayer().draw();
+        }, settings.minimumDuration);
+    };
 
     this.__blockDamage = function(data) {
         var protector = data[0];
@@ -1033,7 +1054,7 @@ var Animater = function() {
             this.__updateHeroHp(loser);
         }
         */
-        this.showSplash({ text: '战斗结束!\r\n获胜者: ' + player.id + '\r\n共造成伤害: ' + data[3], });
+        this.showSplash({ text: '战斗结束!\r\n获胜者: ' + player.id + (data[3] ? ('\r\n共造成伤害: ' + data[3]) : ''), });
         this.showSplash({ text: '这个功能还没完成，\r\n就做了那么点儿，\r\n白白会努力做的！^0^', exitType: 'onclick', });
     };
     

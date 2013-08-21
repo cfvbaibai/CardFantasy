@@ -34,19 +34,25 @@ var playAutoGame = function(count) {
     var heroLv1 = $('#hero1Lv').val();
     var heroLv2 = $('#hero2Lv').val();
     var firstAttack = $('input[name=firstAttack]').val();
+    var isJson = false;
     var url = '';
+
     url += '?deck1=' + encodeURIComponent(deck1);
     url += '&deck2=' + encodeURIComponent(deck2);
     url += '&hlv1=' + encodeURIComponent(heroLv1);
     url += '&hlv2=' + encodeURIComponent(heroLv2);
     url += '&firstAttack=' + firstAttack;
+
     if (count == 1) {
         url = 'PlayAuto1MatchGame' + url;
+    } else if (count == -1) {
+        isJson = true;
+        url = 'SimAuto1MatchGame' + url;
     } else {
         url = 'PlayAutoMassiveGame' + url;
         url += '&count=' + count;
     }
-    sendRequest(url, 'battle-output');
+    sendRequest(url, 'battle-output', isJson);
 };
 
 var playBossGame = function(count) {

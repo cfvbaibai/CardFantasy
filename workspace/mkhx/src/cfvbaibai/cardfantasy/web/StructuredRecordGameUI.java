@@ -35,6 +35,10 @@ public class StructuredRecordGameUI extends GameUI {
         return this.record;
     }
     
+    private PlayerRuntimeInfo toPlayer(Player healee) {
+        return new PlayerRuntimeInfo(healee, getPlayerNumber(healee));
+    }
+
     @Override
     public void stageCreated() {
         record.addEvent("stageCreated");
@@ -70,10 +74,8 @@ public class StructuredRecordGameUI extends GameUI {
 
     @Override
     public void gameEnded(GameResult result) {
-        PlayerRuntimeInfo winner = new PlayerRuntimeInfo(
-                result.getWinner(), this.getPlayerNumber(result.getWinner()));
-        PlayerRuntimeInfo loser = new PlayerRuntimeInfo(
-                result.getLoser(), this.getPlayerNumber(result.getLoser()));
+        PlayerRuntimeInfo winner = toPlayer(result.getWinner());
+        PlayerRuntimeInfo loser = toPlayer(result.getLoser());
         record.addEvent("gameEnded", winner, loser, result.getCause(), result.getDamageToBoss());
     }
 
@@ -126,7 +128,7 @@ public class StructuredRecordGameUI extends GameUI {
     @Override
     public void attackHero(EntityInfo attacker, Player hero, Feature cardFeature, int damage) {
         this.record.addEvent("attackHero", new EntityRuntimeInfo(attacker),
-                new PlayerRuntimeInfo(hero, this.getPlayerNumber(hero)), damage, toName(cardFeature));
+                toPlayer(hero), damage, toName(cardFeature));
     }
 
     @Override
@@ -220,14 +222,25 @@ public class StructuredRecordGameUI extends GameUI {
 
     @Override
     public void healCard(EntityInfo healer, CardInfo healee, Feature cardFeature, int healHP) {
-        // TODO Auto-generated method stub
-        
+        if (healee.getHP() == healee.getMaxHP()) {
+            return;
+        }
+        int currentHP = healee.getHP() + healHP;
+        if (currentHP > healee.getMaxHP()) {
+            currentHP = healee.getMaxHP();
+        }
+        this.record.addEvent("healCard", new EntityRuntimeInfo(healer), new EntityRuntimeInfo(healee),
+                toName(cardFeature), healHP, currentHP); 
     }
 
     @Override
     public void healHero(EntityInfo healer, Player healee, Feature cardFeature, int healHP) {
-        // TODO Auto-generated method stub
-        
+        int currentHP = healee.getHP() + healHP;
+        if (currentHP > healee.getMaxHP()) {
+            currentHP = healee.getMaxHP();
+        }
+        this.record.addEvent("healHero", new EntityRuntimeInfo(healer), toPlayer(healee),
+                toName(cardFeature), healHP, currentHP); 
     }
 
     @Override
