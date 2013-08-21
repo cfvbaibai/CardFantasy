@@ -13,7 +13,7 @@ public final class BloodThirstyFeature {
             return;
         }
         Feature feature = featureInfo.getFeature();
-        resolver.getStage().getUI().useSkill(attacker, feature);
+        resolver.getStage().getUI().useSkill(attacker, feature, true);
         int adjAT = feature.getImpact();
         resolver.getStage().getUI().adjustAT(attacker, attacker, adjAT, feature);
         attacker.addEffect(new FeatureEffect(FeatureEffectType.ATTACK_CHANGE, featureInfo, adjAT, true));

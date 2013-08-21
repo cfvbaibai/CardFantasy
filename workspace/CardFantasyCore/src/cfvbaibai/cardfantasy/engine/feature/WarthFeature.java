@@ -24,7 +24,7 @@ public final class WarthFeature {
         int adjAT = feature.getImpact() * attacker.getOriginalAT() / 100;
         GameUI ui = resolver.getStage().getUI();
         if (attacker.getHP() < defender.getHP()) {
-            ui.useSkill(attacker, defender, feature);
+            ui.useSkill(attacker, defender, feature, true);
             ui.adjustAT(attacker, attacker, adjAT, feature);
             attacker.addEffect(new FeatureEffect(FeatureEffectType.ATTACK_CHANGE, featureInfo, adjAT, false));
         }

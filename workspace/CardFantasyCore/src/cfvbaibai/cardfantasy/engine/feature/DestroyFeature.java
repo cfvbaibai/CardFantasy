@@ -16,7 +16,7 @@ public final class DestroyFeature {
             int victimCount) throws HeroDieSignal {
         List<CardInfo> victims = defenderHero.getField().pickRandom(victimCount, true);
         GameUI ui = resolver.getStage().getUI();
-        ui.useSkill(attacker, victims, cardFeature);
+        ui.useSkill(attacker, victims, cardFeature, true);
         for (CardInfo victim : victims) {
             OnAttackBlockingResult result = resolver.resolveAttackBlockingFeature(attacker, victim, cardFeature, 1);
             if (!result.isAttackable()) {

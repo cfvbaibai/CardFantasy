@@ -26,7 +26,7 @@ public final class ReviveFeature {
         if (cardToRevive == null) {
             return;
         }
-        resolver.getStage().getUI().useSkill(reviver, cardToRevive, feature);
+        resolver.getStage().getUI().useSkill(reviver, cardToRevive, feature, true);
         reviver.getOwner().getGrave().removeCard(cardToRevive);
         resolver.summonCard(reviver.getOwner(), cardToRevive);
         CardStatusItem item = CardStatusItem.weak(featureInfo);

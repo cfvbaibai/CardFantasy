@@ -16,7 +16,7 @@ public final class FireMagicFeature {
             int victimCount) throws HeroDieSignal {
         List<CardInfo> victims = defender.getField().pickRandom(victimCount, true);
         GameUI ui = resolver.getStage().getUI();
-        ui.useSkill(attacker, victims, cardFeature);
+        ui.useSkill(attacker, victims, cardFeature, true);
         for (CardInfo victim : victims) {
             int damage = resolver.getStage().getRandomizer().next(cardFeature.getImpact(), cardFeature.getImpact() * 2 + 1);
             OnAttackBlockingResult result = resolver.resolveAttackBlockingFeature(attacker, victim, cardFeature, damage);

@@ -22,7 +22,7 @@ public final class BurningFeature {
         Feature feature = featureInfo.getFeature();
         int damage = feature.getImpact();
         GameUI ui = resolver.getStage().getUI();
-        ui.useSkill(defender, attacker, feature);
+        ui.useSkill(defender, attacker, feature, true);
         OnAttackBlockingResult result = resolver.resolveAttackBlockingFeature(defender, attacker, feature, damage);
         if (!result.isAttackable()) {
             return;

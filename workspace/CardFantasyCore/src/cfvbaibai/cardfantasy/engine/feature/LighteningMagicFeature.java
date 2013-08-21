@@ -30,7 +30,7 @@ public final class LighteningMagicFeature {
         int damage = feature.getImpact();
         List<CardInfo> victims = defender.getField().pickRandom(victimCount, true);
         GameUI ui = resolver.getStage().getUI();
-        ui.useSkill(attacker, victims, feature);
+        ui.useSkill(attacker, victims, feature, true);
         for (CardInfo victim : victims) {
             OnAttackBlockingResult result = resolver.resolveAttackBlockingFeature(attacker, victim, feature, damage);
             if (!result.isAttackable()) {

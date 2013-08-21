@@ -114,7 +114,7 @@ public class DummyGameUI extends GameUI {
     }
 
     @Override
-    public void useSkill(EntityInfo caster, List<? extends EntityInfo> targets, Feature feature) {
+    public void useSkill(EntityInfo caster, List<? extends EntityInfo> targets, Feature feature, boolean bingo) {
         // TODO Auto-generated method stub
 
     }
@@ -272,7 +272,7 @@ public class DummyGameUI extends GameUI {
     }
 
     @Override
-    public void useSkill(EntityInfo caster, Feature feature) {
+    public void useSkill(EntityInfo caster, Feature feature, boolean bingo) {
         // TODO Auto-generated method stub
 
     }

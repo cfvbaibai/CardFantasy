@@ -88,15 +88,15 @@ var ArenaSettings = function() {
     this.cardAtRectHeight = this.cardHpRectHeight;
     this.cardAtTextColor = this.cardHpTextColor;
     
-    this.drawCardDuration = 0.5;
+    this.drawCardDuration = 0.2;
     this.compactFieldDuration = 0.1;
     
-    this.summonCardDuration = 0.5;
-    this.summonCardPause = 1;
+    this.summonCardDuration = 0.2;
+    this.summonCardPause = 0.5;
 
-    this.hpChangeDuration = 0.7;
+    this.hpChangeDuration = 0.3;
     
-    this.returnCardCrossDuration = 1.5;
+    this.returnCardCrossDuration = 1;
     
     this.zoomAttackerDuration = 0.2;
     this.zoomRate = 0.2;
@@ -128,6 +128,9 @@ var ArenaSettings = function() {
     
     this.attackCardTextColor = 'red';
     this.healCardTextColor = 'green';
+    
+    this.skillSplashDuration = 0.1;
+    this.skillSplashPause = 0.7;
 
     this.refreshSize = function () {
         var currentWidth = $(window).width() * 0.8;
@@ -977,12 +980,16 @@ var Animater = function() {
             text: featureName + '\r\n伤害: ' + originalDamage + '\r\n-->' + actualDamage,
         });
     };
-    
-    this.__useSkillWithTargets = function(data) {
+
+    this.msgIgnoredSkills = ['背刺', '暴击', '狂热', '嗜血'];
+    this.__useSkill = function(data) {
         var attacker = data[0]; // EntityRuntimeInfo
         var skill = data[1];    // String
         var defenders = data[2]; // EntityRuntimeInfo[]
         if (defenders.length == 0) {
+            return;
+        }
+        if (skill.indexOf('军团') == 0 || this.msgIgnoredSkills.indexOf(skill) >= 0) {
             return;
         }
         if (skill == '普通攻击') {
@@ -995,7 +1002,11 @@ var Animater = function() {
             for (var i = 0; i < defenders.length; ++i) {
                 text += defenders[i].uniqueName + '\r\n';
             }
-            this.showSplash({ text: text });
+            this.showSplash({
+                text: text,
+                duration: settings.skillSplashDuration,
+                pause: settings.skillSplashPause,
+            });
         }
     };
     
@@ -1076,7 +1087,7 @@ var Animater = function() {
             this.__updateHeroHp(loser);
         }
         */
-        this.showSplash({ text: '战斗结束!\r\n获胜者: ' + player.id + (data[3] ? ('\r\n共造成伤害: ' + data[3]) : ''), });
+        this.showSplash({ text: '战斗结束!\r\n获胜者: ' + player.id + (data[3] > 0 ? ('\r\n共造成伤害: ' + data[3]) : ''), });
         this.showSplash({ text: '这个功能还没完成，\r\n就做了那么点儿，\r\n白白会努力做的！^0^', exitType: 'onclick', });
     };
     
@@ -1088,7 +1099,7 @@ var Animater = function() {
      */
     this.getCard = function(cardRtInfo) {
         var card = this.arenas[cardRtInfo.ownerId].fields.ofName(cardRtInfo.uniqueName);
-        if (!card) {
+        if (card == null) {
             console.error('ERROR: Cannot find card ' + cardRtInfo.uniqueName + ' from ' + cardRtInfo.ownerId);
         } 
         return card;
@@ -1311,6 +1322,9 @@ var Animater = function() {
         var ptSize = settings.getPortraitSize();
         var self = this;
         var attackerCard = this.getCard(attacker);
+        if (attackerCard == null) {
+            console.error('Cannot find card ' + attacker.uniqueName);
+        }
         var defenderCard = null;
         if (!attackingHero) {
             defenderCard = this.getCard(defender);

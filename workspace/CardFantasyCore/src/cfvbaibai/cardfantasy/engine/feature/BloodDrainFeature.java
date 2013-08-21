@@ -16,7 +16,7 @@ public final class BloodDrainFeature {
         }
         int drainedHP = cardFeature.getImpact() * damage / 100;
         GameUI ui = resolver.getStage().getUI();
-        ui.useSkill(attacker, defender, cardFeature);
+        ui.useSkill(attacker, defender, cardFeature, true);
         ui.healCard(attacker, attacker, cardFeature, drainedHP);
         resolver.applyDamage(attacker, -drainedHP);
     }

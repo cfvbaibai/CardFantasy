@@ -20,12 +20,12 @@ public class LegionBuffFeature {
             return;
         }
         int adjAT = feature.getImpact() * card.getOriginalAT() / 100;
-        resolver.getStage().getUI().useSkill(card, feature);
+        resolver.getStage().getUI().useSkill(card, feature, true);
         resolver.getStage().getUI().adjustAT(featureInfo.getOwner(), card, adjAT, feature);
         card.addEffect(new FeatureEffect(FeatureEffectType.ATTACK_CHANGE, featureInfo, adjAT, false));
         
         int adjHP = feature.getImpact() * card.getOriginalMaxHP() / 100;
-        resolver.getStage().getUI().useSkill(card, feature);
+        resolver.getStage().getUI().useSkill(card, feature, true);
         resolver.getStage().getUI().adjustHP(featureInfo.getOwner(), card, adjHP, feature);
         card.addEffect(new FeatureEffect(FeatureEffectType.MAXHP_CHANGE, featureInfo, adjHP, false));
     }

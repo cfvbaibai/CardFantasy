@@ -12,7 +12,7 @@ public final class ImmobilityFeature {
             EntityInfo attacker, CardInfo defender) {
         if (attackFeature.getType().containsTag(FeatureTag.¼´ËÀ)) {
             GameUI ui = resolver.getStage().getUI();
-            ui.useSkill(defender, attacker, cardFeature);
+            ui.useSkill(defender, attacker, cardFeature, true);
             ui.blockFeature(attacker, defender, cardFeature, attackFeature);
             return true;
         } else {

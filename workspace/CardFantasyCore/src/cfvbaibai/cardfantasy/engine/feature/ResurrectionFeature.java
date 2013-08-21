@@ -24,7 +24,7 @@ public final class ResurrectionFeature {
         Player player = resurrector.getOwner();
         List<CardInfo> cardsToResurrect = player.getGrave().pop(resurrectionCount);
         GameUI ui = resolver.getStage().getUI();
-        ui.useSkill(resurrector, cardsToResurrect, feature);
+        ui.useSkill(resurrector, cardsToResurrect, feature, true);
         for (CardInfo card : cardsToResurrect) {
             ui.cardToDeck(player, card);
             player.getDeck().addCard(card);

@@ -15,7 +15,7 @@ public final class BloodPaintFeature {
         int damage = cardFeature.getImpact();
         List <CardInfo> victims = defender.getField().pickRandom(victimCount, true);
         GameUI ui = resolver.getStage().getUI();
-        ui.useSkill(attacker, victims, cardFeature);
+        ui.useSkill(attacker, victims, cardFeature, true);
         for (CardInfo victim : victims) {
             OnAttackBlockingResult result = resolver.resolveAttackBlockingFeature(attacker, victim, cardFeature, damage);
             if (!result.isAttackable()) {

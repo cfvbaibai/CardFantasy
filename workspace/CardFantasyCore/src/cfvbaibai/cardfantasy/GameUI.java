@@ -79,15 +79,15 @@ public abstract class GameUI {
 
     public abstract void attackHero(EntityInfo attacker, Player hero, Feature cardFeature, int damage);
 
-    public abstract void useSkill(EntityInfo caster, List<? extends EntityInfo> targets, Feature feature);
+    public abstract void useSkill(EntityInfo caster, List<? extends EntityInfo> targets, Feature feature, boolean bingo);
 
     public abstract void protect(EntityInfo protector, EntityInfo attacker, EntityInfo protectee,
             Feature attackFeature, Feature protectFeature);
 
-    public void useSkill(EntityInfo caster, EntityInfo target, Feature feature) {
+    public void useSkill(EntityInfo caster, EntityInfo target, Feature feature, boolean bingo) {
         List<EntityInfo> victims = new ArrayList<EntityInfo>();
         victims.add(target);
-        useSkill(caster, victims, feature);
+        useSkill(caster, victims, feature, bingo);
     }
 
     public abstract void useSkillToHero(EntityInfo caster, Player targetHero, Feature feature);
@@ -140,7 +140,7 @@ public abstract class GameUI {
 
     public abstract void roll100(int dice, int rate);
 
-    public abstract void useSkill(EntityInfo caster, Feature feature);
+    public abstract void useSkill(EntityInfo caster, Feature feature, boolean bingo);
 
     public abstract void killCard(EntityInfo attacker, CardInfo victim, Feature cardFeature);
 

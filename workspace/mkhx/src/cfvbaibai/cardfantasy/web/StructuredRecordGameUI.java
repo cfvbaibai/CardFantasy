@@ -1,5 +1,6 @@
 package cfvbaibai.cardfantasy.web;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
@@ -129,21 +130,6 @@ public class StructuredRecordGameUI extends GameUI {
     public void attackHero(EntityInfo attacker, Player hero, Feature cardFeature, int damage) {
         this.record.addEvent("attackHero", new EntityRuntimeInfo(attacker),
                 toPlayer(hero), damage, toName(cardFeature));
-    }
-
-    @Override
-    public void useSkill(EntityInfo caster, List<? extends EntityInfo> targets, Feature feature) {
-        String featureName = toName(feature);
-        BattleEvent event = new BattleEvent("useSkillWithTargets", new EntityRuntimeInfo(caster), featureName);
-        EntityRuntimeInfo[] defenders = new EntityRuntimeInfo[targets.size()]; 
-        for (int i = 0; i < targets.size(); ++i) {
-            EntityInfo entityInfo = targets.get(i);
-            if (entityInfo instanceof CardInfo) {
-                defenders[i] = new EntityRuntimeInfo(entityInfo);
-            }
-        }
-        event.addData(defenders);
-        this.record.addEvent(event);
     }
 
     @Override
@@ -308,8 +294,27 @@ public class StructuredRecordGameUI extends GameUI {
     }
 
     @Override
-    public void useSkill(EntityInfo caster, Feature feature) {
-        this.record.addEvent("useSkillNoTarget", feature.getType().name());
+    public void useSkill(EntityInfo caster, Feature feature, boolean bingo) {
+        if (!bingo) { return; }
+        List<EntityRuntimeInfo> defenders = new ArrayList<EntityRuntimeInfo>();
+        defenders.add(new EntityRuntimeInfo(caster));
+        this.record.addEvent("useSkill", new EntityRuntimeInfo(caster), toName(feature), defenders);
+    }
+
+    @Override
+    public void useSkill(EntityInfo caster, List<? extends EntityInfo> targets, Feature feature, boolean bingo) {
+        if (!bingo) { return; }
+        String featureName = toName(feature);
+        BattleEvent event = new BattleEvent("useSkill", new EntityRuntimeInfo(caster), featureName);
+        EntityRuntimeInfo[] defenders = new EntityRuntimeInfo[targets.size()]; 
+        for (int i = 0; i < targets.size(); ++i) {
+            EntityInfo entityInfo = targets.get(i);
+            if (entityInfo instanceof CardInfo) {
+                defenders[i] = new EntityRuntimeInfo(entityInfo);
+            }
+        }
+        event.addData(defenders);
+        this.record.addEvent(event);
     }
 
     @Override

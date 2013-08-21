@@ -22,7 +22,7 @@ public final class CounterAttackFeature {
         }
         int damage = cardFeature.getImpact();
         GameUI ui = resolver.getStage().getUI();
-        ui.useSkill(defender, attacker, cardFeature);
+        ui.useSkill(defender, attacker, cardFeature, true);
         ui.attackCard(defender, attacker, cardFeature, damage);
         if (resolver.applyDamage(attacker, damage).cardDead) {
             resolver.resolveDeathFeature(defender, attacker, cardFeature);

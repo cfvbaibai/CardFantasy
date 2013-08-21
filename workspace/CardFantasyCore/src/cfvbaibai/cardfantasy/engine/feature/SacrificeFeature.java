@@ -22,7 +22,7 @@ public final class SacrificeFeature {
         Field field = card.getOwner().getField();
         List<CardInfo> candidates = field.pickRandom(1, true, card);
         GameUI ui = resolver.getStage().getUI();
-        ui.useSkill(card, candidates, feature);
+        ui.useSkill(card, candidates, feature, true);
         if (candidates.isEmpty()) {
             return;
         }

@@ -15,7 +15,7 @@ public final class AttackUpFeature {
         Feature feature = featureInfo.getFeature();
         int adjAT = feature.getImpact();
         List<CardInfo> targets = caster.getOwner().getField().pickRandom(targetCount, true);
-        resolver.getStage().getUI().useSkill(caster, targets, feature);
+        resolver.getStage().getUI().useSkill(caster, targets, feature, true);
         for (CardInfo target : targets) {
             resolver.getStage().getUI().adjustAT(caster, target, adjAT, feature);
             target.addEffect(new FeatureEffect(FeatureEffectType.ATTACK_CHANGE, featureInfo, adjAT, false));

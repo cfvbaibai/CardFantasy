@@ -12,7 +12,7 @@ public final class ImmueFeature {
             EntityInfo attacker, CardInfo defender) {
         if (!attackFeature.getType().containsTag(FeatureTag.¿¹ÃâÒß)) {
             GameUI ui = resolver.getStage().getUI();
-            ui.useSkill(defender, attacker, cardFeature);
+            ui.useSkill(defender, attacker, cardFeature, true);
             ui.blockFeature(attacker, defender, cardFeature, attackFeature);
             return true;
         } else {

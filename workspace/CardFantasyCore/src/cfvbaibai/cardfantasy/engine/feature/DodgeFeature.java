@@ -9,8 +9,9 @@ public final class DodgeFeature {
     public static boolean apply(Feature cardFeature, FeatureResolver resolver, CardInfo attacker, CardInfo defender, int originalDamage) {
         int dodgeRate = cardFeature.getImpact();
         GameUI ui = resolver.getStage().getUI();
-        ui.useSkill(defender, attacker, cardFeature);
-        if (resolver.getStage().getRandomizer().roll100(dodgeRate)) {
+        boolean bingo = resolver.getStage().getRandomizer().roll100(dodgeRate);
+        ui.useSkill(defender, attacker, cardFeature, bingo);
+        if (bingo) {
             if (resolver.resolveCounterBlockFeature(cardFeature, attacker, defender)) {
                 return false;
             }

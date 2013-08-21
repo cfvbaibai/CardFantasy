@@ -37,7 +37,7 @@ public final class ChainAttackFeature {
 
         GameUI ui = resolver.getStage().getUI();
 
-        ui.useSkill(attacker, victims, feature);
+        ui.useSkill(attacker, victims, feature, true);
 
         int chainAT = feature.getImpact() * attacker.getAT() / 100;
         int adjAT = chainAT - attacker.getAT();

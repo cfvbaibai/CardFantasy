@@ -27,7 +27,7 @@ public final class WeakenFeature {
             return;
         }
         Feature feature = featureInfo.getFeature();
-        resolver.getStage().getUI().useSkill(attacker, defender, feature);
+        resolver.getStage().getUI().useSkill(attacker, defender, feature, true);
         List<CardInfo> defenders = new ArrayList<CardInfo>();
         defenders.add(defender);
         weakenCard(resolver, featureInfo, attacker, defenders);

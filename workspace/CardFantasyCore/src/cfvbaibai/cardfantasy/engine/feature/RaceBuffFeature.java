@@ -25,7 +25,7 @@ public final class RaceBuffFeature {
                 continue;
             }
             if (ally.getEffectsCausedBy(featureInfo).isEmpty()) {
-                resolver.getStage().getUI().useSkill(card, feature);
+                resolver.getStage().getUI().useSkill(card, feature, true);
                 if (effectType == FeatureEffectType.ATTACK_CHANGE) {
                     resolver.getStage().getUI().adjustAT(card, ally, impact, feature);
                 } else if (effectType == FeatureEffectType.MAXHP_CHANGE) {

@@ -21,7 +21,7 @@ public final class PlagueFeature {
         int damage = feature.getImpact();
         GameUI ui = resolver.getStage().getUI();
         List<CardInfo> victims = defenderHero.getField().getAliveCards();
-        ui.useSkill(attacker, victims, feature);
+        ui.useSkill(attacker, victims, feature, true);
 
         for (CardInfo victim : victims) {
             OnAttackBlockingResult result = resolver.resolveAttackBlockingFeature(attacker, victim, feature, damage);

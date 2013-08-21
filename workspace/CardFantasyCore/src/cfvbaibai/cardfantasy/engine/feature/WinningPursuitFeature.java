@@ -15,7 +15,7 @@ public class WinningPursuitFeature extends PreAttackCardFeature {
         }
         Feature feature = featureInfo.getFeature();
         int adjAT = feature.getImpact() * enemyDeadCount;
-        resolver.getStage().getUI().useSkill(attacker, feature);
+        resolver.getStage().getUI().useSkill(attacker, feature, true);
         resolver.getStage().getUI().adjustAT(attacker, attacker, adjAT, feature);
         attacker.addEffect(new FeatureEffect(FeatureEffectType.ATTACK_CHANGE, featureInfo, adjAT, false));
     }

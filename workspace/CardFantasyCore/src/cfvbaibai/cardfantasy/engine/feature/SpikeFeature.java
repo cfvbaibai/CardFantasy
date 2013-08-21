@@ -16,7 +16,7 @@ public final class SpikeFeature {
         int damage = cardFeature.getImpact();
         GameUI ui = resolver.getStage().getUI();
         List<CardInfo> victims = resolver.getAdjacentCards(attacker.getOwner().getField(), defender.getPosition());
-        ui.useSkill(defender, victims, cardFeature);
+        ui.useSkill(defender, victims, cardFeature, true);
         for (CardInfo victim : victims) {
             if (victim == null) {
                 continue;

@@ -28,7 +28,7 @@ public final class ExplodeFeature {
             if (victim == null) {
                 continue;
             }
-            ui.useSkill(exploder, victim, cardFeature);
+            ui.useSkill(exploder, victim, cardFeature, true);
             OnAttackBlockingResult result = resolver.resolveAttackBlockingFeature(attacker, victim, cardFeature, damage);
             if (!result.isAttackable()) {
                 continue;

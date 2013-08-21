@@ -18,7 +18,7 @@ public class HolyGuardFeature {
         }
         Feature feature = featureInfo.getFeature();
         int impact = feature.getImpact();
-        resolver.getStage().getUI().useSkill(card, feature);
+        resolver.getStage().getUI().useSkill(card, feature, true);
         Field field = card.getOwner().getField();
         List<CardInfo> allies = resolver.getAdjacentCards(field, card.getPosition());
         for (CardInfo ally : allies) {

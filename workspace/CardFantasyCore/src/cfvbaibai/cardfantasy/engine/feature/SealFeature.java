@@ -20,7 +20,7 @@ public final class SealFeature {
         Feature feature = featureInfo.getFeature();
         List<CardInfo> victims = defender.getField().getAliveCards();
         GameUI ui = resolver.getStage().getUI();
-        ui.useSkill(attacker, victims, feature);
+        ui.useSkill(attacker, victims, feature, true);
         for (CardInfo victim : victims) {
             if (!resolver.resolveAttackBlockingFeature(attacker, victim, feature, 1).isAttackable()) {
                 continue;

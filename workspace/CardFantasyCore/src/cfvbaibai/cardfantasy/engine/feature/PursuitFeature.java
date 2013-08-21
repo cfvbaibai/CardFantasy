@@ -18,7 +18,7 @@ public final class PursuitFeature {
         if (status.containsStatus(CardStatusType.ÖĞ¶¾) || status.containsStatus(CardStatusType.±ù¶³) ||
                 status.containsStatus(CardStatusType.È¼ÉÕ) || status.containsStatus(CardStatusType.Âé±Ô)) {
             int adjAT = (int) (attacker.getOriginalAT() * feature.getImpact() / 100);
-            resolver.getStage().getUI().useSkill(attacker, feature);
+            resolver.getStage().getUI().useSkill(attacker, feature, true);
             resolver.getStage().getUI().adjustAT(attacker, attacker, adjAT, feature);
             attacker.addEffect(new FeatureEffect(FeatureEffectType.ATTACK_CHANGE, featureInfo, adjAT, false));
         }

@@ -18,7 +18,7 @@ public final class ConfusionFeature {
         int rate = feature.getImpact();
         List<CardInfo> victims = defender.getField().pickRandom(victimCount, true);
         GameUI ui = resolver.getStage().getUI();
-        ui.useSkill(attacker, victims, feature);
+        ui.useSkill(attacker, victims, feature, true);
         for (CardInfo victim : victims) {
             if (!resolver.resolveAttackBlockingFeature(attacker, victim, feature, 1).isAttackable()) {
                 continue;

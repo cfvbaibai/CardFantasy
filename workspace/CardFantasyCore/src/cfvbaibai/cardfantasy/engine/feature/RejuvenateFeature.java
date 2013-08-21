@@ -18,7 +18,7 @@ public final class RejuvenateFeature {
         if (!result.isAttackable()) {
             return;
         }
-        resolver.getStage().getUI().useSkill(card, cardFeature);
+        resolver.getStage().getUI().useSkill(card, cardFeature, true);
         resolver.getStage().getUI().healCard(card, card, cardFeature, healHP);
         resolver.applyDamage(card, -healHP);
     }

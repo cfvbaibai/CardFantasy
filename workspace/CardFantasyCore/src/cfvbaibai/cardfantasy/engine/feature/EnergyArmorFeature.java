@@ -21,7 +21,7 @@ public final class EnergyArmorFeature {
         int impact = feature.getImpact();
         Field field = caster.getOwner().getField();
         List<CardInfo> targets = field.pickRandom(targetCount, true);
-        resolver.getStage().getUI().useSkill(caster, targets, feature);
+        resolver.getStage().getUI().useSkill(caster, targets, feature, true);
         for (CardInfo target : targets) {
             resolver.getStage().getUI().adjustHP(caster, target, impact, feature);
             target.addEffect(new FeatureEffect(FeatureEffectType.MAXHP_CHANGE, featureInfo, impact, false));

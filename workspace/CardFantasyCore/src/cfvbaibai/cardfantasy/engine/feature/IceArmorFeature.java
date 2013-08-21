@@ -8,7 +8,7 @@ import cfvbaibai.cardfantasy.engine.FeatureResolver;
 public final class IceArmorFeature {
     public static int apply(Feature cardFeature, FeatureResolver resolver, CardInfo attacker, CardInfo defender, int originalDamage) {
         GameUI ui = resolver.getStage().getUI();
-        ui.useSkill(defender, attacker, cardFeature);
+        ui.useSkill(defender, attacker, cardFeature, true);
         if (resolver.resolveCounterBlockFeature(cardFeature, attacker, defender)) {
             return originalDamage;
         }

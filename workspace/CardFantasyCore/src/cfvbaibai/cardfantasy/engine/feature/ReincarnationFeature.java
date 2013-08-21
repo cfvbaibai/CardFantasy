@@ -15,8 +15,9 @@ public final class ReincarnationFeature {
         }
         int rate = cardFeature.getImpact();
         GameUI ui = resolver.getStage().getUI();
-        ui.useSkill(card, card, cardFeature);
-        if (resolver.getStage().getRandomizer().roll100(rate)) {
+        boolean bingo = resolver.getStage().getRandomizer().roll100(rate);
+        ui.useSkill(card, card, cardFeature, bingo);
+        if (bingo) {
             Grave grave = card.getOwner().getGrave();
             grave.removeCard(card);
             Hand hand = card.getOwner().getHand();

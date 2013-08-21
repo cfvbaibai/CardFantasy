@@ -42,7 +42,7 @@ public final class RainfallFeature {
         for (Heal heal : heals) {
             healees.add(heal.healee);
         }
-        ui.useSkill(healer, healees, cardFeature);
+        ui.useSkill(healer, healees, cardFeature, true);
         for (Heal heal : heals) {
             OnAttackBlockingResult result = resolver.resolveHealBlockingFeature(healer, heal.healee, cardFeature);
             if (!result.isAttackable()) {

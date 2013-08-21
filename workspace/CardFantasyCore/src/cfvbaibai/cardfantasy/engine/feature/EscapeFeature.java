@@ -14,7 +14,7 @@ public final class EscapeFeature {
             EntityInfo attacker, CardInfo defender) {
         if (attackFeature.getType().containsTag(FeatureTag.ÏİÚå)) {
             GameUI ui = resolver.getStage().getUI();
-            ui.useSkill(defender, attacker, cardFeature);
+            ui.useSkill(defender, attacker, cardFeature, true);
             ui.blockFeature(attacker, defender, cardFeature, attackFeature);
             return true;
         } else {
@@ -27,7 +27,7 @@ public final class EscapeFeature {
         if (item.getType() == CardStatusType.±ù¶³ || item.getType() == CardStatusType.Âé±Ô) {
             EntityInfo attacker = item.getCause().getOwner();
             GameUI ui = resolver.getStage().getUI();
-            ui.useSkill(defender, attacker, cardFeature);
+            ui.useSkill(defender, attacker, cardFeature, true);
             ui.blockStatus(attacker, defender, cardFeature, item);
             return true;
         } else {

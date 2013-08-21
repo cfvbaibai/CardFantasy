@@ -24,7 +24,7 @@ public final class HealFeature {
             return;
         }
         GameUI ui = resolver.getStage().getUI();
-        ui.useSkill(healer, healee, cardFeature);
+        ui.useSkill(healer, healee, cardFeature, true);
         OnAttackBlockingResult result = resolver.resolveHealBlockingFeature(healer, healee, cardFeature);
         if (!result.isAttackable()) {
             return;

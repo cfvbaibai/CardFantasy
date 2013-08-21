@@ -13,7 +13,7 @@ public final class OverdrawFeature {
         Feature feature = featureInfo.getFeature();
         int adjAT = feature.getImpact();
         GameUI ui = resolver.getStage().getUI();
-        ui.useSkill(attacker, feature);
+        ui.useSkill(attacker, feature, true);
         ui.adjustAT(attacker, attacker, adjAT, feature);
         attacker.addEffect(new FeatureEffect(FeatureEffectType.ATTACK_CHANGE, featureInfo, adjAT, true));
         ui.attackCard(attacker, attacker, feature, adjAT);

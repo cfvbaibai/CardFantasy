@@ -11,8 +11,9 @@ public final class CriticalAttackFeature extends PreAttackCardFeature {
     public static void apply(FeatureResolver resolver, FeatureInfo featureInfo, CardInfo attacker, CardInfo defender) {
         Feature feature = featureInfo.getFeature();
         int adjAT = feature.getImpact() * attacker.getOriginalAT() / 100;
-        resolver.getStage().getUI().useSkill(attacker, feature);
-        if (resolver.getStage().getRandomizer().roll100(50)) {
+        boolean bingo = resolver.getStage().getRandomizer().roll100(50);
+        resolver.getStage().getUI().useSkill(attacker, feature, bingo);
+        if (bingo) {
             resolver.getStage().getUI().adjustAT(attacker, attacker, adjAT, feature);
             attacker.addEffect(new FeatureEffect(FeatureEffectType.ATTACK_CHANGE, featureInfo, adjAT, false));
         }

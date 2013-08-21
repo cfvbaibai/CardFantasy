@@ -21,7 +21,7 @@ public final class TransportFeature {
         if (cardToTransport == null) {
             return;
         }
-        resolver.getStage().getUI().useSkill(attacker, cardToTransport, cardFeature);
+        resolver.getStage().getUI().useSkill(attacker, cardToTransport, cardFeature, true);
         OnAttackBlockingResult result = resolver.resolveAttackBlockingFeature(attacker, cardToTransport, cardFeature, 1);
         if (!result.isAttackable()) {
             return;

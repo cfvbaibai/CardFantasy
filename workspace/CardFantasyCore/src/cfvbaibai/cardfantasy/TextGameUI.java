@@ -116,7 +116,7 @@ public abstract class TextGameUI extends GameUI {
     }
 
     @Override
-    public void useSkill(EntityInfo attacker, List<? extends EntityInfo> victims, Feature cardFeature) {
+    public void useSkill(EntityInfo attacker, List<? extends EntityInfo> victims, Feature cardFeature, boolean bingo) {
         if (victims.isEmpty()) {
             sayF("%s 无法找到使用 %s 的合适目标.", attacker.getShortDesc(), cardFeature.getShortDesc());
         } else {
@@ -400,7 +400,7 @@ public abstract class TextGameUI extends GameUI {
     }
 
     @Override
-    public void useSkill(EntityInfo attacker, Feature cardFeature) {
+    public void useSkill(EntityInfo attacker, Feature cardFeature, boolean bingo) {
         sayF("%s 使用 %s", attacker.getShortDesc(), cardFeature.getShortDesc());
     }
 

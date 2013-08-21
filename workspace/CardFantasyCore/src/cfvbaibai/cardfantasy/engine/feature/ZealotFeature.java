@@ -17,7 +17,7 @@ public final class ZealotFeature {
         }
         Feature feature = featureInfo.getFeature();
         int adjAT = feature.getImpact();
-        resolver.getStage().getUI().useSkill(defender, defender, feature);
+        resolver.getStage().getUI().useSkill(defender, defender, feature, true);
         resolver.getStage().getUI().adjustAT(defender, defender, adjAT, feature);
         defender.addEffect(new FeatureEffect(FeatureEffectType.ATTACK_CHANGE, featureInfo, adjAT, true));
     }

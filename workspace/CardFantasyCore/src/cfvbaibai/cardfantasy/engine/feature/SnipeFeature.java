@@ -24,7 +24,7 @@ public final class SnipeFeature {
             int targetCount) throws HeroDieSignal {
         int damage = cardFeature.getImpact();
         List<CardInfo> victims = defenderPlayer.getField().getCardsWithLowestHP(targetCount);
-        resolver.getStage().getUI().useSkill(attacker, victims, cardFeature);
+        resolver.getStage().getUI().useSkill(attacker, victims, cardFeature, true);
         for (CardInfo victim : victims) {
             resolver.getStage().getUI().attackCard(attacker, victim, cardFeature, damage);
             if (resolver.applyDamage(victim, damage).cardDead) {

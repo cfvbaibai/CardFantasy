@@ -13,7 +13,7 @@ public final class WoundFeature {
             return;
         }
         Feature feature = featureInfo.getFeature();
-        resolver.getStage().getUI().useSkill(attacker, defender, feature);
+        resolver.getStage().getUI().useSkill(attacker, defender, feature, true);
         CardStatusItem status = CardStatusItem.wound(featureInfo);
         resolver.getStage().getUI().addCardStatus(attacker, defender, feature, status);
         defender.addStatus(status);
