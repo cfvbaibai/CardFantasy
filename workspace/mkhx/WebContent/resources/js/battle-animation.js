@@ -220,10 +220,31 @@ var ArenaSettings = function() {
 };
 var settings = new ArenaSettings();
 
+Array.prototype.compact = function() {
+    for (var i = 0; i < this.length; i++) {
+        if (!this[i]) {
+            this.splice(i, 1);
+            --i;
+        }
+    }
+    return this;
+};
+
 Array.prototype.removeOfName = function(name) {
     for (var i = 0; i < this.length; ++i) {
-        if (this[i].name == name) {
+        if (this[i] && this[i].name == name) {
             return this.splice(i, 1)[0];
+        }
+    }
+    return null;
+};
+
+Array.prototype.pickByName = function(name) {
+    for (var i = 0; i < this.length; ++i) {
+        if (this[i] && this[i].name == name) {
+            var result = this[i];
+            this[i] = null;
+            return result;
         }
     }
     return null;
@@ -231,7 +252,7 @@ Array.prototype.removeOfName = function(name) {
 
 Array.prototype.indexOfName = function(name) {
     for (var i = 0; i < this.length; ++i) {
-        if (this[i].name == name) {
+        if (this[i] && this[i].name == name) {
             return i;
         }
     }
@@ -240,7 +261,7 @@ Array.prototype.indexOfName = function(name) {
 
 Array.prototype.ofName = function(name) {
     for (var i = 0; i < this.length; ++i) {
-        if (this[i].name == name) {
+        if (this[i] && this[i].name == name) {
             return this[i];
         }
     }
@@ -727,6 +748,7 @@ var Animater = function() {
     this.__compactField = function(data) {
         var arena = this.arenas[data[0]];
         var fields = arena.fields;
+        fields.compact();
         var funcs = [];
         for (var i = 0; i < fields.length; ++i) {
             (function(iCard, card) {
@@ -1006,7 +1028,7 @@ var Animater = function() {
         // var attacker = data[0];
         var defender = data[1];
         var defenderArena = this.arenas[defender.ownerId];
-        var card = defenderArena.fields.removeOfName(defender.uniqueName);
+        var card = defenderArena.fields.pickByName(defender.uniqueName);
         this.addAnimation("returnCard", function() {
             new Kinetic.Tween({
                 node: card.group,
@@ -1023,7 +1045,7 @@ var Animater = function() {
     this.__cardDead = function(data) {
         var playerId = data[0];
         var arena = this.arenas[playerId];
-        var card = arena.fields.removeOfName(data[1].name);
+        var card = arena.fields.pickByName(data[1].name);
         this.addAnimation("removeDeadCard", function() {
             card.hpText.setText('DEAD');
             card.hpText.setFill('red');
