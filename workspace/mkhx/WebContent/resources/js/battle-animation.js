@@ -353,6 +353,8 @@ var Arena = function(playerId, playerNumber) {
         };
 
         this.hands.push({ name: name, group: group, delay: delay, delayText: delayText });
+        var layer = new Kinetic.Layer({ id: 'LL' + name });
+        layer.add(group);
         return group;
     };
     
@@ -422,6 +424,8 @@ var Arena = function(playerId, playerNumber) {
             hpRect: hpRect, atRect: atRect, statusRect: statusRect,
             hpText: hpText, atText: atText, statusText: statusText,
         }));
+        var layer = new Kinetic.Layer({ id: 'LP' + card.name });
+        layer.add(group);
         return group;
     };
 };
@@ -882,7 +886,7 @@ var Animater = function() {
         var targetIndex = arena.hands.length;
         var pn = arena.playerNumber;
         var logo = arena.createLogo(data[1], data[2], data[3], settings.getLogoSize());
-        this.stage.get('#card-layer')[0].add(logo);
+        this.addSingleLayerShape(logo);
         this.addAnimation("drawCard", function() {
             logo.setX(settings.width);
             logo.setY(settings.getLogoY(pn));
@@ -926,15 +930,11 @@ var Animater = function() {
             })(iHand, arena.hands[iHand]);
         }
         this.addAnimations("summonCards", handFuncs, settings.drawCardDuration);
-
-        this.addAnimation("destroySummonedCardFromHand", function() {
-            logo.group.destroy();
-            delete logo;
-        }, settings.minimumDuration);
+        this.destroySingleLayerShape(logo);
 
         var targetIndex = arena.fields.length;
         var portrait = arena.createPortrait(card, settings.getPortraitSize());
-        this.stage.get('#card-layer')[0].add(portrait);
+        this.addSingleLayerShape(portrait);
         this.addAnimation("compactHand", function() {
             var pos = settings.getPortraitPos(arena.playerNumber, targetIndex);
             new Kinetic.Tween({
@@ -1142,10 +1142,7 @@ var Animater = function() {
                 duration: settings.summonCardDuration,
             }).play();
         }, settings.summonCardDuration);
-        this.addAnimation("destroyReturnedCard", function() {
-            card.group.destroy();
-            delete card;
-        }, settings.minimumDuration);
+        this.destroySingleLayerShape(card);
     };
     
     this.__cardDead = function(data) {
@@ -1162,10 +1159,7 @@ var Animater = function() {
                 duration: settings.summonCardDuration,
             }).play();
         }, settings.summonCardDuration);
-        this.addAnimation("destroyDeadCard", function() {
-            card.group.destroy();
-            delete card;
-        }, settings.minimumDuration);
+        this.destroySingleLayerShape(card);
     };
 
     this.__cardToHand = function(data) {
@@ -1177,7 +1171,7 @@ var Animater = function() {
         var targetIndex = arena.hands.length;
         var logoSize = settings.getLogoSize();
         var logo = arena.createLogo(cardId, cardRtInfo.uniqueName, delay, logoSize);
-        this.stage.get('#card-layer')[0].add(logo);
+        this.addSingleLayerShape(logo);
         this.addAnimation("cardToHand", function() {
             logo.setX(settings.getLogoX(player.number, targetIndex));
             logo.setY(player.number == 0 ? -logoSize.height : settings.height);
@@ -1219,6 +1213,19 @@ var Animater = function() {
             console.error('ERROR: Cannot find card ' + cardRtInfo.uniqueName + ' from ' + cardRtInfo.ownerId);
         } 
         return card;
+    };
+    
+    this.addSingleLayerShape = function(shape) {
+        this.stage.add(shape.getLayer());
+        shape.getLayer().setZIndex(this.stage.get('#card-layer')[0].getZIndex() + 1);
+    };
+
+    this.destroySingleLayerShape = function(shape) {
+        this.addAnimation("destroySingleLayerShape", function() {
+            shape.group.getLayer().destroy();
+            shape.group.destroy();
+            delete shape;
+        }, settings.minimumDuration);
     };
     
     this.animations = [];
