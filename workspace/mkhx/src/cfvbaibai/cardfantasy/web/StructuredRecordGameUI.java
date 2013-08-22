@@ -250,8 +250,8 @@ public class StructuredRecordGameUI extends GameUI {
 
     @Override
     public void cardToHand(Player player, CardInfo card) {
-        // TODO Auto-generated method stub
-        
+        this.record.addEvent("cardToHand", toPlayer(player),
+                new EntityRuntimeInfo(card), card.getId(), card.getSummonSpeed());
     }
 
     @Override

@@ -394,4 +394,8 @@ public class CardInfo extends EntityInfo {
     public boolean isWounded() {
         return this.getHP() < this.getMaxHP();
     }
+
+    public int getSummonSpeed() {
+        return this.card.getSummonSpeed();
+    }
 }

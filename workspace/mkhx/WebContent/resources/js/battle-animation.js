@@ -103,6 +103,7 @@ var ArenaSettings = function() {
     
     this.drawCardDuration = 0.2;
     this.compactFieldDuration = 0.1;
+    this.resurrectDuration = 0.5;
     
     this.summonCardDuration = 0.2;
     this.summonCardPause = 0.5;
@@ -1165,6 +1166,27 @@ var Animater = function() {
             card.group.destroy();
             delete card;
         }, settings.minimumDuration);
+    };
+
+    this.__cardToHand = function(data) {
+        var player = data[0];
+        var cardRtInfo = data[1];
+        var cardId = data[2];
+        var delay = data[3];
+        var arena = this.arenas[player.id];
+        var targetIndex = arena.hands.length;
+        var logoSize = settings.getLogoSize();
+        var logo = arena.createLogo(cardId, cardRtInfo.uniqueName, delay, logoSize);
+        this.stage.get('#card-layer')[0].add(logo);
+        this.addAnimation("cardToHand", function() {
+            logo.setX(settings.getLogoX(player.number, targetIndex));
+            logo.setY(player.number == 0 ? -logoSize.height : settings.height);
+            new Kinetic.Tween({
+                node: logo,
+                y: settings.getLogoY(player.number),
+                duration: settings.resurrectDuration,
+            }).play();
+        }, settings.resurrectDuration);
     };
     
     this.__cardToGrave = function(data) {
