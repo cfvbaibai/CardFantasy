@@ -432,6 +432,8 @@ public class FeatureResolver {
                 FireMagicFeature.apply(deadCardFeature.getFeature(), this, deadCard, killerCard.getOwner(), -1);
             } else if (deadCardFeature.getType() == FeatureType.´İ»Ù) {
                 DestroyFeature.apply(this, deadCardFeature.getFeature(), deadCard, killerCard.getOwner(), 1);
+            } else if (deadCardFeature.getType() == FeatureType.´«ËÍ) {
+                TransportFeature.apply(this, deadCardFeature.getFeature(), deadCard, killerCard.getOwner());
             }
         }
         for (FeatureInfo deadCardFeature : deadCard.getAllUsableFeatures()) {

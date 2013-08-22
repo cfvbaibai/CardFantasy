@@ -273,7 +273,7 @@ public class StructuredRecordGameUI extends GameUI {
 
     @Override
     public void cardToGrave(Player player, CardInfo card) {
-        this.record.addEvent("cardToGrave", player.getId(), new CardRuntimeInfo(card));
+        this.record.addEvent("cardToGrave", player.getId(), new EntityRuntimeInfo(card));
     }
 
     @Override

@@ -9,7 +9,7 @@ import cfvbaibai.cardfantasy.engine.Player;
 
 public final class TransportFeature {
     public static void apply(FeatureResolver resolver, Feature cardFeature, CardInfo attacker, Player defenderHero) throws HeroDieSignal {
-        if (attacker == null || attacker.isDead()) {
+        if (attacker == null) {
             return;
         }
         CardInfo cardToTransport = null;

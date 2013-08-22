@@ -103,7 +103,8 @@ var ArenaSettings = function() {
     
     this.drawCardDuration = 0.2;
     this.compactFieldDuration = 0.1;
-    this.resurrectDuration = 0.5;
+    this.reincarnateDuration = 0.5;
+    this.transportDuration = 0.5;
     
     this.summonCardDuration = 0.2;
     this.summonCardPause = 0.5;
@@ -897,14 +898,13 @@ var Animater = function() {
             }).play();
         }, settings.drawCardDuration);
     };
-    
+
     this.__summonCard = function(data) {
         var playerId = data[0];
         var card = data[1];
         var arena = this.arenas[playerId];
         
         var logo = arena.hands.removeOfName(card.name);
-
         var handFuncs = [];
         handFuncs.push(function() {
             new Kinetic.Tween({
@@ -913,29 +913,13 @@ var Animater = function() {
                 duration: settings.drawCardDuration,
             }).play();
         });
-
-        for (var iHand = 0; iHand < arena.hands.length; ++iHand) {
-            (function(i, currentCard) {
-                var card = currentCard;
-                if (card == logo) { return; }
-                var pos = settings.getLogoPos(arena.playerNumber, i);
-                handFuncs.push(function () {
-                    new Kinetic.Tween({
-                        node: card.group,
-                        x: pos.x,
-                        y: pos.y,
-                        duration: settings.drawCardDuration,
-                    }).play();
-                });
-            })(iHand, arena.hands[iHand]);
-        }
-        this.addAnimations("summonCards", handFuncs, settings.drawCardDuration);
+        this.compactHands(arena, handFuncs);
         this.destroySingleLayerShape(logo);
 
         var targetIndex = arena.fields.length;
         var portrait = arena.createPortrait(card, settings.getPortraitSize());
         this.addSingleLayerShape(portrait);
-        this.addAnimation("compactHand", function() {
+        this.addAnimation("summonCard", function() {
             var pos = settings.getPortraitPos(arena.playerNumber, targetIndex);
             new Kinetic.Tween({
                 node: portrait,
@@ -1178,25 +1162,31 @@ var Animater = function() {
             new Kinetic.Tween({
                 node: logo,
                 y: settings.getLogoY(player.number),
-                duration: settings.resurrectDuration,
+                duration: settings.reincarnateDuration,
             }).play();
-        }, settings.resurrectDuration);
+        }, settings.reincarnateDuration);
     };
     
     this.__cardToGrave = function(data) {
-        
+        var playerId = data[0];
+        var cardRtInfo = data[1];
+        var arena = this.arenas[playerId];
+        var hands = arena.hands;
+        var logo = hands.removeOfName(cardRtInfo.uniqueName);
+        this.addAnimation("cardToGrave", function() {
+            new Kinetic.Tween({
+                node: logo.group,
+                x: settings.width,
+                duration: settings.transportDuration,
+            }).play();
+        }, settings.transportDuration);
+        this.compactHands(arena);
     };
     
     this.__gameEnded = function(data) {
         var player = data[0];
-        /*
-        var loser = data[1];
-        var cause = data[2];
-        if (cause == '英雄死亡') {
-            loser.hp = 0;
-            this.__updateHeroHp(loser);
-        }
-        */
+        // var loser = data[1];
+        // var cause = data[2];
         this.showSplash({ text: '战斗结束!\r\n获胜者: ' + player.id + (data[3] > 0 ? ('\r\n共造成伤害: ' + data[3]) : ''), });
         this.showSplash({ text: '这个功能还没完成，\r\n就做了那么点儿，\r\n白白会努力做的！^0^', exitType: 'onclick', });
     };
@@ -1226,6 +1216,28 @@ var Animater = function() {
             shape.group.destroy();
             delete shape;
         }, settings.minimumDuration);
+    };
+
+    this.compactHands = function(arena, funcs) {
+        if (!funcs) {
+            funcs = [];
+        }
+        for (var iHand = 0; iHand < arena.hands.length; ++iHand) {
+            (function(i, currentCard) {
+                var card = currentCard;
+                //if (card == logo) { return; }
+                var pos = settings.getLogoPos(arena.playerNumber, i);
+                funcs.push(function () {
+                    new Kinetic.Tween({
+                        node: card.group,
+                        x: pos.x,
+                        y: pos.y,
+                        duration: settings.drawCardDuration,
+                    }).play();
+                });
+            })(iHand, arena.hands[iHand]);
+        }
+        this.addAnimations("compactHands", funcs, settings.drawCardDuration);
     };
     
     this.animations = [];
