@@ -362,7 +362,7 @@ var Arena = function(playerId, playerNumber) {
         cardAvatar.src = resDir + '/img/cardportrait/' + card.id + '.jpg';
         var hpRect = new Kinetic.Rect({
             x: 0,
-            y: size.height - settings.cardAtRectHeight - settings.cardHpRectHeight,
+            y: size.height - settings.cardAtRectHeight,
             width: size.width,
             height: settings.cardHpRectHeight,
             stroke: settings.cardHpRectBorderColor,
@@ -372,7 +372,7 @@ var Arena = function(playerId, playerNumber) {
         });
         var atRect = new Kinetic.Rect({
             x: 0,
-            y: size.height - settings.cardAtRectHeight,
+            y: size.height - settings.cardAtRectHeight - settings.cardHpRectHeight,
             width: size.width,
             height: settings.cardAtRectHeight,
             stroke: settings.cardAtRectBorderColor,
@@ -823,11 +823,14 @@ var Animater = function() {
         var roundText = stage.get('#round-text')[0];
         
         // Remove all debuffs.
+        var self = this;
         $.each(this.arenas[playerId].fields, function (i, card) {
             card.statusList = [];
-            card.statusText.setText('');
-            card.statusText.centerMiddle(card.statusRect);
-            card.group.getLayer().draw();
+            self.addAnimation("clearStatus", function() {
+                card.statusText.setText('');
+                card.statusText.centerMiddle(card.statusRect);
+                card.group.getLayer().draw();
+            }, settings.minimumDuration);
         });
         
         this.addAnimation("roundEnded", function() {
@@ -981,6 +984,21 @@ var Animater = function() {
         }, settings.minimumDuration);
     };
     
+    this.__debuffDamage = function(data) {
+        var cardRtInfo = data[0];
+        var status = data[1];
+        var damage = data[2];
+        var currentHP = data[3];
+        var card = this.getCard(cardRtInfo);
+        this.displayCardMsg({
+            name: 'debuffDamage',
+            cardShape: card.group,
+            text: status + '\r\n\r\n造成伤害\r\n\r\n' + damage,
+            textColor: 'red',
+        });
+        this.updateCardHP(card, currentHP);
+    };
+    
     this.__attackHero = function(data) {
         var attacker = data[0];
         var defenderHero = data[1];
@@ -1013,13 +1031,9 @@ var Animater = function() {
             textColor: settings.attackCardTextColor,
             text: '伤害: ' + damage + '\r\n' + featureName,
         });
-        this.addAnimation('attackCardUpdateHp', function () {
-            dfCard.hpText.setText('HP: ' + currentHP);
-            dfCard.hpText.centerMiddle(dfCard.hpRect);
-            dfCard.hpText.getLayer().draw();
-        }, settings.minimumDuration);
+        this.updateCardHP(dfCard, currentHP);
     };
-    
+
     this.__healCard = function(data) {
         //var healer = data[0];       // EntityRuntimeInfo
         var healee = data[1];       // EntityRuntimeInfo
@@ -1335,6 +1349,14 @@ var Animater = function() {
             textShape.setText(adjName + ': ' + newValue);
             textShape.centerMiddle(rectShape);
             textShape.getLayer().draw();
+        }, settings.minimumDuration);
+    };
+    
+    this.updateCardHP = function(card, hp) {
+        this.addAnimation('updateCardHp', function () {
+            card.hpText.setText('HP: ' + hp);
+            card.hpText.centerMiddle(card.hpRect);
+            card.hpText.getLayer().draw();
         }, settings.minimumDuration);
     };
     

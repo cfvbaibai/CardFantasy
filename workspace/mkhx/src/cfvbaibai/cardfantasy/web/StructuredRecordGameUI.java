@@ -190,8 +190,9 @@ public class StructuredRecordGameUI extends GameUI {
 
     @Override
     public void debuffDamage(CardInfo card, CardStatusItem item, int effect) {
-        // TODO Auto-generated method stub
-        
+        int currentHP = card.getHP() - effect;
+        if (currentHP < 0) { currentHP = 0; }
+        this.record.addEvent("debuffDamage", new EntityRuntimeInfo(card), item.getType().name(), effect, currentHP);
     }
 
     @Override

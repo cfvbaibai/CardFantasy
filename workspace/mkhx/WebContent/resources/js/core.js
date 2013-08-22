@@ -29,8 +29,8 @@ var sendRequest = function(url, outputDivId, isJson) {
 };
 
 var playAutoGame = function(count) {
-    var deck1 = $('#deck1').val();
-    var deck2 = $('#deck2').val();
+    var deck1 = $('#deck1').val().trim();
+    var deck2 = $('#deck2').val().trim();
     var heroLv1 = $('#hero1Lv').val();
     var heroLv2 = $('#hero2Lv').val();
     var firstAttack = $('input[name=firstAttack]').val();
@@ -56,7 +56,7 @@ var playAutoGame = function(count) {
 };
 
 var playBossGame = function(count) {
-    var deck = $('#deck').val();
+    var deck = $('#deck').val().trim();
     var heroLv = $('#heroLv').val();
     var bossName = $('#boss-name').val();
     var buffKingdom = $('#buff-kingdom').val();

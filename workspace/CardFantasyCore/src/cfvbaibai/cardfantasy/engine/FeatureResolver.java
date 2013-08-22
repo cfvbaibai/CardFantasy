@@ -656,7 +656,9 @@ public class FeatureResolver {
     }
 
     public OnDamagedResult attackCard(CardInfo attacker, CardInfo defender, int damage) throws HeroDieSignal {
-        this.stage.getUI().useSkill(attacker, defender, null, true);
+        boolean bingo = !attacker.getStatus().containsStatus(CardStatusType.Âé±Ô);
+        this.stage.getUI().useSkill(attacker, defender, null, bingo);
+
         OnAttackBlockingResult blockingResult = stage.getResolver().resolveAttackBlockingFeature(attacker, defender,
                 null, damage);
         if (!blockingResult.isAttackable()) {
