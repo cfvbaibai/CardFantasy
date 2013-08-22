@@ -147,8 +147,8 @@ public class StructuredRecordGameUI extends GameUI {
 
     @Override
     public void addCardStatus(EntityInfo attacker, CardInfo victim, Feature cardFeature, CardStatusItem item) {
-        // TODO Auto-generated method stub
-        
+        this.record.addEvent("addCardStatus", new EntityRuntimeInfo(attacker), new EntityRuntimeInfo(victim),
+                toName(cardFeature), item.getType().name(), item.getType().getAbbrev());
     }
 
     @Override

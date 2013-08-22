@@ -78,7 +78,9 @@ var ArenaSettings = function() {
     this.cardHpRectBorderWidth = 1;
     this.cardHpRectFill = '#222222';
     this.cardHpRectOpactiy = '0.8';
-    this.cardHpRectHeight = 15;
+    this.cardHpRectHeight = 10;
+    this.cardHpFontFamily = 'Arial';
+    this.cardHpFontSize = 8;
     this.cardHpTextColor = 'white';
     
     this.cardAtRectBorderColor = this.cardHpRectBorderColor;
@@ -86,7 +88,18 @@ var ArenaSettings = function() {
     this.cardAtRectFill = this.cardHpRectFill;
     this.cardAtRectOpacity = this.cardHpRectOpactiy;
     this.cardAtRectHeight = this.cardHpRectHeight;
+    this.cardAtFontFamily = this.cardHpFontFamily;
+    this.cardAtFontSize = this.cardHpFontSize;
     this.cardAtTextColor = this.cardHpTextColor;
+    
+    this.statusRectHeight = 10;
+    this.statusRectBorderColor = this.cardHpRectBorderColor;
+    this.statusRectBorderWidth = this.cardHpRectBorderWidth;
+    this.statusRectFill = this.cardHpRectFill;
+    this.statusRectOpacity = this.cardHpRectOpacity;
+    this.statusFontFamily = this.cardHpFontFamily;
+    this.statusFontSize = this.cardHpFontSize;
+    this.statusTextColor = this.cardHpTextColor;
     
     this.drawCardDuration = 0.2;
     this.compactFieldDuration = 0.1;
@@ -271,6 +284,18 @@ Array.prototype.ofName = function(name) {
     return null;
 };
 
+var Card = function(attr) {
+    this.name = attr.name;
+    this.group = attr.group;
+    this.hpRect = attr.hpRect;
+    this.atRect = attr.atRect;
+    this.statusRect = attr.statusRect;
+    this.hpText = attr.hpText;
+    this.atText = attr.atText;
+    this.statusText = attr.statusText;
+    this.statusList = [];
+};
+
 var Arena = function(playerId, playerNumber) {
     this.playerId = playerId, playerNumber;
     this.playerNumber = playerNumber;
@@ -356,11 +381,31 @@ var Arena = function(playerId, playerNumber) {
             opacity: settings.cardAtRectOpacity,
         });
         var hpText = new Kinetic.Text({
-            text: 'HP: ' + card.hp, fill: settings.cardHpTextColor,
+            text: 'HP: ' + card.hp,
+            fontFamily: settings.cardHpFontFamily,
+            fontSize: settings.cardHpFontSize,
+            fill: settings.cardHpTextColor,
         }).centerMiddle(hpRect);
         var atText = new Kinetic.Text({
-            text: 'AT: ' + card.at, fill: settings.cardAtTextColor,
+            text: 'AT: ' + card.at,
+            fontFamily: settings.cardAtFontFamily,
+            fontSize: settings.cardAtFontSize,
+            fill: settings.cardAtTextColor,
         }).centerMiddle(atRect);
+        
+        var statusRect = new Kinetic.Rect({
+            x: 0, y: 0, width: size.width, height: settings.statusRectHeight,
+            stroke: settings.statusRectBorderColor,
+            strokeWidth: settings.statusRectBorderWidth,
+            fill: settings.statusRectFill,
+            opacity: settings.statusRectOpacity,
+        });
+        var statusText = new Kinetic.Text({
+            text: '',
+            fontFamily: settings.statusFontFamily,
+            fontSize: settings.statusFontSize,
+            fill: settings.statusTextColor,
+        }).centerMiddle(statusRect);
         cardAvatar.onload = function() {
             var cardAvatarImage = new Kinetic.Image({
                 x : 2,
@@ -369,11 +414,13 @@ var Arena = function(playerId, playerNumber) {
                 height: size.height - 4,
                 image : cardAvatar,
             });
-            group.add(cardAvatarImage).add(hpRect).add(atRect).add(hpText).add(atText);
+            group.add(cardAvatarImage).add(hpRect).add(atRect).add(hpText).add(atText).add(statusRect).add(statusText);
         };
-        this.fields.push({
+        this.fields.push(new Card({
             name: card.name, group: group,
-            hpRect: hpRect, atRect: atRect, hpText: hpText, atText: atText });
+            hpRect: hpRect, atRect: atRect, statusRect: statusRect,
+            hpText: hpText, atText: atText, statusText: statusText,
+        }));
         return group;
     };
 };
@@ -770,10 +817,21 @@ var Animater = function() {
     };
     
     this.__roundEnded = function(data) {
+        var round = data[0];
+        var playerId = data[1];
         var stage = this.stage;
         var roundText = stage.get('#round-text')[0];
+        
+        // Remove all debuffs.
+        $.each(this.arenas[playerId].fields, function (i, card) {
+            card.statusList = [];
+            card.statusText.setText('');
+            card.statusText.centerMiddle(card.statusRect);
+            card.group.getLayer().draw();
+        });
+        
         this.addAnimation("roundEnded", function() {
-            roundText.setText("回合: " + data[0]);
+            roundText.setText("回合: " + round);
             roundText.centerMiddle(stage.get('#round-rect')[0]);
             roundText.getLayer().draw();
         }, settings.minimumDuration);
@@ -899,6 +957,28 @@ var Animater = function() {
     
     this.__lostAdjHP = function(data) {
         this.adjustValue(data, 'HP', false);
+    };
+    
+    this.__addCardStatus = function(data) {
+        //var attacker = data[0];
+        var defender = data[1];
+        var featureName = data[2];
+        var longStatus = data[3];
+        var shortStatus = data[4];
+        var defenderCard = this.getCard(defender);
+        this.displayCardMsg({
+            name: 'addCardStatus',
+            cardShape: defenderCard.group,
+            text: featureName + '\r\n\r\n导致\r\n\r\n' + longStatus, 
+        });
+
+        defenderCard.statusList.push(shortStatus);
+        var text = defenderCard.statusList.join();
+        this.addAnimation('updateCardStatus', function() {
+            defenderCard.statusText.setText(text);
+            defenderCard.statusText.centerMiddle(defenderCard.statusRect);
+            defenderCard.group.getLayer().draw();
+        }, settings.minimumDuration);
     };
     
     this.__attackHero = function(data) {
@@ -1108,7 +1188,7 @@ var Animater = function() {
     this.animations = [];
 
     this.addAnimation = function(name, func, duration) {
-        if ($.type(name) !== 'string') {
+        if ($.type(name) != 'string') {
             console.error("ERROR: first variable of this.addAnimation must be string! Given: " + name);
         }
         if (duration == undefined || duration <= 0) {
