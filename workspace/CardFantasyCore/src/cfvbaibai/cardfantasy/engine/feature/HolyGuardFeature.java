@@ -16,6 +16,9 @@ public class HolyGuardFeature {
         if (card == null || card.isDead()) {
             throw new CardFantasyRuntimeException("card should not be null or dead!");
         }
+        if (!card.isFirstRound()) {
+            return;
+        }
         Feature feature = featureInfo.getFeature();
         int impact = feature.getImpact();
         resolver.getStage().getUI().useSkill(card, feature, true);

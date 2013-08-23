@@ -41,5 +41,6 @@ public final class SacrificeFeature {
         ui.adjustAT(card, card, adjAT, feature);
         card.addEffect(new FeatureEffect(FeatureEffectType.MAXHP_CHANGE, featureInfo, adjHP, true));
         card.addEffect(new FeatureEffect(FeatureEffectType.ATTACK_CHANGE, featureInfo, adjAT, true));
+        ui.compactField(card.getOwner().getField());
     }
 }

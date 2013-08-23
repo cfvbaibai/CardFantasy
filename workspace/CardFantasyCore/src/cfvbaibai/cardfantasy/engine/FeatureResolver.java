@@ -5,6 +5,7 @@ import java.util.List;
 
 import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
 import cfvbaibai.cardfantasy.data.Feature;
+import cfvbaibai.cardfantasy.data.FeatureTag;
 import cfvbaibai.cardfantasy.data.FeatureType;
 import cfvbaibai.cardfantasy.data.Race;
 import cfvbaibai.cardfantasy.data.RuneActivationType;
@@ -182,6 +183,8 @@ public class FeatureResolver {
                 HeavenWrathFeature.apply(this, feature.getFeature(), attacker, defender);
             } else if (feature.getType() == FeatureType.∑‚”°) {
                 SealFeature.apply(feature, this, attacker, defender);
+            } else if (feature.getType() == FeatureType.…Ò • ÿª§) {
+                HolyGuardFeature.apply(this, feature, attacker);
             }
         }
         RuneInfo rune = attacker.getOwner().getActiveRuneOf(RuneData.∑…—“);
@@ -737,8 +740,6 @@ public class FeatureResolver {
                     RaceBuffFeature.apply(this, feature, fieldCard, null, FeatureEffectType.ATTACK_CHANGE);
                 } else if (feature.getType() == FeatureType.±æ‘¥ ÿª§) {
                     RaceBuffFeature.apply(this, feature, fieldCard, null, FeatureEffectType.MAXHP_CHANGE);
-                } else if (feature.getType() == FeatureType.…Ò • ÿª§) {
-                    HolyGuardFeature.apply(this, feature, fieldCard);
                 } else if (feature.getType() == FeatureType.∑¥ …) {
                     CounterBiteFeature.apply(feature.getFeature(), this, fieldCard);
                 } else if (feature.getType() == FeatureType.œ◊º¿) {
@@ -962,6 +963,9 @@ public class FeatureResolver {
             for (CardInfo card : player.getField().getAliveCards()) {
                 for (FeatureEffect effect : card.getEffects()) {
                     if (effect.getCause().equals(rune.getFeatureInfo())) {
+                        if (rune.getFeature().getType().containsTag(FeatureTag.”¿æ√)) {
+                            continue;
+                        }
                         if (effect.getType() == FeatureEffectType.ATTACK_CHANGE) {
                             stage.getUI().loseAdjustATEffect(card, effect);
                         } else if (effect.getType() == FeatureEffectType.MAXHP_CHANGE) {
@@ -1048,12 +1052,11 @@ public class FeatureResolver {
     }
 
     public void removeOneRoundEffects(Player activePlayer) {
+        /*
         for (CardInfo card : activePlayer.getField().toList()) {
             for (FeatureInfo featureInfo : card.getNormalUsableFeatures()) {
-                if (featureInfo.getType() == FeatureType.…Ò • ÿª§) {
-                    HolyGuardFeature.remove(this, featureInfo, card);
-                }
             }
         }
+        */
     }
 }

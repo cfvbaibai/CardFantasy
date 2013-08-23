@@ -1046,21 +1046,23 @@ var Animater = function() {
         var featureName = data[3];
         var originalDamage = data[4];
         var actualDamage = data[5];
+        /*
         if (protector.uniqueName != defender.uniqueName) {
             console.error("Protector(" + protector.uniqueName + ") != Defender(" +
                     defender.uniqueName + "). Not supported yet!");
             return;
         }
+        */
         var dfCard = this.getCard(defender);
         this.displayCardMsg({
             name: 'blockDamage',
             cardShape: dfCard.group,
             textColor: settings.blockDamageTextColor,
-            text: featureName + '\r\n伤害: ' + originalDamage + '\r\n-->' + actualDamage,
+            text: protector.uniqueName + '\r\n' + featureName + '\r\n伤害: ' + originalDamage + '\r\n-->' + actualDamage,
         });
     };
 
-    this.msgIgnoredSkills = ['背刺', '暴击', '狂热', '嗜血'];
+    this.msgIgnoredSkills = ['背刺', '暴击', '狂热', '嗜血', '横扫', '冰甲', '闪避', '盾刺', '反击'];
     this.__useSkill = function(data) {
         var attacker = data[0]; // EntityRuntimeInfo
         var skill = data[1];    // String
@@ -1068,7 +1070,10 @@ var Animater = function() {
         if (defenders.length == 0) {
             return;
         }
-        if (skill.indexOf('军团') == 0 || this.msgIgnoredSkills.indexOf(skill) >= 0) {
+        if (skill.indexOf('军团') == 0 ||
+            skill.indexOf('守护') > 0 ||
+            skill.indexOf('之力') > 0 ||
+            this.msgIgnoredSkills.indexOf(skill) >= 0) {
             return;
         }
         if (skill == '普通攻击') {
@@ -1093,9 +1098,11 @@ var Animater = function() {
         var attackerArena = this.arenas[attacker.ownerId];
         var defenderArena = this.arenas[defender.ownerId];
         var defenderCardIndex = defenderArena.fields.indexOfName(defender.uniqueName);
-        var cross = Arena.createCross();
-        this.stage.get('#effect-layer')[0].add(cross);
+        var cross = null;
+        var self = this;
         this.addAnimation("showCross", function() {
+            cross = Arena.createCross();
+            self.stage.get('#effect-layer')[0].add(cross);
             var crossSartPos = settings.getPortraitPos(attackerArena.playerNumber, defenderCardIndex);
             var crossEndPos = settings.getPortraitPos(defenderArena.playerNumber, defenderCardIndex);
             cross.setX(crossSartPos.x);
@@ -1327,29 +1334,34 @@ var Animater = function() {
         var newValue = data[3]; // int
         var featureName = data[4]; // String
         var ptSize = settings.getPortraitSize();
-        var adjRect = new Kinetic.Rect({
-            x: 0, y: 0, width: ptSize.width, height: settings.adjRectHeight,
-            stroke: settings.adjRectBorderColor,
-            strokeWidth: settings.adjRectBorderWidth,
-            fill: settings.adjRectFill,
-            opacity: settings.adjRectOpacity,
-        });
         var adjTextPrefix = addEffect ? '' : '失去\r\n';
         var adjValueText = adjustment > 0 ? '+' + adjustment : '-' + (-adjustment);
-        var adjText = new Kinetic.Text({
-            x: 0, y: 0,
-            text: adjTextPrefix + adjName + adjValueText + '\r\n' + featureName,
-            fontFamily: settings.adjustFontFamily,
-            fontSize: settings.adjustFontSize,
-            fill: adjName == 'AT' ? settings.adjustAdjAtColor : settings.adjustAdjHpColor,
-        });
-        var adjGroup = new Kinetic.Group({
-            x: settings.width, y: settings.height,
-        });
-        adjGroup.add(adjRect).add(adjText);
-        adjText.centerMiddle(adjRect);
-        this.stage.get('#effect-layer')[0].add(adjGroup);
-
+        var adjRect = null;
+        var adjText = null;
+        var adjGroup = null;
+        var self = this;
+        this.addAnimation("adjustValuePrepare", function() {
+            adjRect = new Kinetic.Rect({
+                x: 0, y: 0, width: ptSize.width, height: settings.adjRectHeight,
+                stroke: settings.adjRectBorderColor,
+                strokeWidth: settings.adjRectBorderWidth,
+                fill: settings.adjRectFill,
+                opacity: settings.adjRectOpacity,
+            });
+            adjText = new Kinetic.Text({
+                x: 0, y: 0,
+                text: adjTextPrefix + adjName + adjValueText + '\r\n' + featureName,
+                fontFamily: settings.adjustFontFamily,
+                fontSize: settings.adjustFontSize,
+                fill: adjName == 'AT' ? settings.adjustAdjAtColor : settings.adjustAdjHpColor,
+            });
+            adjGroup = new Kinetic.Group({
+                x: settings.width, y: settings.height,
+            });
+            adjGroup.add(adjRect).add(adjText);
+            adjText.centerMiddle(adjRect);
+            self.stage.get('#effect-layer')[0].add(adjGroup);
+        }, settings.minimumDuration);
         var targetCard = this.getCard(target);
         if (source.type != 'Card' || source.uniqueName == target.uniqueName) {
             this.addAnimation("showAdjust" + adjName, function() {
@@ -1460,8 +1472,6 @@ var Animater = function() {
      * { id } if attackingHero is true
      */
     this.normalAttack = function(attacker, defender, attackingHero) {
-        var sword = Arena.createSword();
-        this.stage.get('#effect-layer')[0].add(sword);
         var ptSize = settings.getPortraitSize();
         var self = this;
         var attackerCard = this.getCard(attacker);
@@ -1472,7 +1482,10 @@ var Animater = function() {
         if (!attackingHero) {
             defenderCard = this.getCard(defender);
         }
+        var sword = null;
         this.addAnimation("normalAttack", function() {
+            sword = Arena.createSword();
+            self.stage.get('#effect-layer')[0].add(sword);
             // Center sword inside attacker portrait
             sword.setX(attackerCard.group.getX() + ptSize.width / 2 - settings.swordWidth / 2);
             sword.setY(attackerCard.group.getY() + ptSize.height / 2 - settings.swordHeight / 2);

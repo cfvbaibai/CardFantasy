@@ -246,6 +246,7 @@ public class StructuredRecordGameUI extends GameUI {
 
     @Override
     public void cardToDeck(Player player, CardInfo card) {
+        this.record.addEvent("cardToDeck", player.getId(), new EntityRuntimeInfo(card));
     }
 
     @Override
@@ -310,9 +311,7 @@ public class StructuredRecordGameUI extends GameUI {
         EntityRuntimeInfo[] defenders = new EntityRuntimeInfo[targets.size()]; 
         for (int i = 0; i < targets.size(); ++i) {
             EntityInfo entityInfo = targets.get(i);
-            if (entityInfo instanceof CardInfo) {
-                defenders[i] = new EntityRuntimeInfo(entityInfo);
-            }
+            defenders[i] = new EntityRuntimeInfo(entityInfo);
         }
         event.addData(defenders);
         this.record.addEvent(event);
