@@ -940,8 +940,8 @@ public class FeatureResolver {
             }
             
             
-            // Special logic for 永冻 & 清泉 & 春风.
-            if (rune.is(RuneData.清泉) || rune.is(RuneData.春风)) {
+            // Special logic for 永冻 & 清泉.
+            if (rune.is(RuneData.清泉)) {
                 for (CardInfo card : player.getField().toList()) {
                     if (card.isWounded()) {
                         break;
