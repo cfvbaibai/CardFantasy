@@ -1,9 +1,9 @@
 //$.ajaxSetup({ scriptCharset: "utf-8" ,contentType: "application/x-www-form-urlencoded; charset=UTF-8" });
-var sendRequest = function(url, outputDivId, isJson) {
+var sendRequest = function(url, postData, outputDivId, isJson) {
     $.mobile.loading('show');
     var result = '';
     var getFunc = isJson ? function() {
-        return $.getJSON(url, function(data) {
+        return $.post(url, postData, function(data) {
             result = JSON.stringify(data);
             if (data.error) {
                 result = data.message;
@@ -11,9 +11,9 @@ var sendRequest = function(url, outputDivId, isJson) {
                 $.mobile.changePage("#arena", { transition : 'flip', role : 'dialog' });
                 showBattle(data);
             }
-        });
+        }, 'json');
     } : function() {
-        return $.get(url, function(data) {
+        return $.post(url, postData, function(data) {
             result = data;
         });
     };
@@ -36,23 +36,24 @@ var playAutoGame = function(count) {
     var firstAttack = $('input[name=firstAttack]').val();
     var isJson = false;
     var url = '';
-
-    url += '?deck1=' + encodeURIComponent(deck1);
-    url += '&deck2=' + encodeURIComponent(deck2);
-    url += '&hlv1=' + encodeURIComponent(heroLv1);
-    url += '&hlv2=' + encodeURIComponent(heroLv2);
-    url += '&firstAttack=' + firstAttack;
+    var postData = {
+        deck1: deck1,
+        deck2: deck2,
+        hlv1: heroLv1,
+        hlv2: heroLv2,
+        firstAttack: firstAttack,
+    };
 
     if (count == 1) {
-        url = 'PlayAuto1MatchGame' + url;
+        url = 'PlayAuto1MatchGame';
     } else if (count == -1) {
         isJson = true;
-        url = 'SimAuto1MatchGame' + url;
+        url = 'SimAuto1MatchGame';
     } else {
-        url = 'PlayAutoMassiveGame' + url;
-        url += '&count=' + count;
+        url = 'PlayAutoMassiveGame';
+        postData["count"] = count;
     }
-    sendRequest(url, 'battle-output', isJson);
+    sendRequest(url, postData, 'battle-output', isJson);
 };
 
 var playBossGame = function(count) {
@@ -64,13 +65,15 @@ var playBossGame = function(count) {
     var buffSavage = $('#buff-savage').val();
     var buffHell = $('#buff-hell').val();
     var url = '';
-    url += '?deck=' + encodeURIComponent(deck);
-    url += '&hlv=' + encodeURIComponent(heroLv);
-    url += '&bn=' + encodeURIComponent(bossName);
-    url += '&bk=' + encodeURIComponent(buffKingdom);
-    url += '&bf=' + encodeURIComponent(buffForest);
-    url += '&bs=' + encodeURIComponent(buffSavage);
-    url += '&bh=' + encodeURIComponent(buffHell);
+    var postData = {
+        deck: deck,
+        hlv: heroLv,
+        bn: bossName,
+        bk: buffKingdom,
+        bf: buffForest,
+        bs: buffSavage,
+        bh: buffHell,
+    };
     var isJson = false;
     if (count == 1) {
         url = 'PlayBoss1MatchGame' + url;
@@ -79,8 +82,8 @@ var playBossGame = function(count) {
         isJson = true;
     } else {
         url = 'PlayBossMassiveGame' + url;
-        url += '&count=' + count;
+        postData['count'] = count;
     }
-    sendRequest(url, 'boss-battle-output', isJson);
+    sendRequest(url, postData, 'boss-battle-output', isJson);
     //sendRequest(url, 'boss-battle-output');
 };

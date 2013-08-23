@@ -108,8 +108,6 @@ public class AutoBattleController {
             if (firstAttack != 0 && firstAttack != 1 && firstAttack != -1) {
                 throw new IllegalArgumentException("无效的先攻：" + firstAttack);
             }
-            deck1 = encodeStr(deck1);
-            deck2 = encodeStr(deck2);
             log("PlayAuto1MatchGame from " + request.getRemoteAddr() + ":");
             log("FirstAttack = " + firstAttack);
             log("Deck1 = " + deck1);
@@ -140,8 +138,6 @@ public class AutoBattleController {
             if (firstAttack != 0 && firstAttack != 1 && firstAttack != -1) {
                 throw new IllegalArgumentException("无效的先攻：" + firstAttack);
             }
-            deck1 = encodeStr(deck1);
-            deck2 = encodeStr(deck2);
             log("SimulateAuto1MatchGame from " + request.getRemoteAddr() + ":");
             log("FirstAttack = " + firstAttack);
             log("Deck1 = " + deck1);
@@ -171,8 +167,6 @@ public class AutoBattleController {
             if (firstAttack != 0 && firstAttack != 1 && firstAttack != -1) {
                 throw new IllegalArgumentException("无效的先攻：" + firstAttack);
             }
-            deck1 = encodeStr(deck1);
-            deck2 = encodeStr(deck2);
             log("PlayAutoMassiveGame from " + request.getRemoteAddr() + ":");
             log("Count = " + count);
             log("FirstAttack = " + firstAttack);
@@ -202,8 +196,6 @@ public class AutoBattleController {
         HttpHeaders responseHeaders = new HttpHeaders();
         responseHeaders.add("Content-Type", "text/html;charset=UTF-8");
         try {
-            deck = encodeStr(deck);
-            bossName = encodeStr(bossName);
             log("PlayBoss1MatchGame from " + request.getRemoteAddr() + ":");
             log("Deck = " + deck);
             log("Hero LV = " + heroLv + ", Boss = " + bossName);
@@ -230,8 +222,6 @@ public class AutoBattleController {
         responseHeaders.add("Content-Type", "application/json;charset=UTF-8");
         responseHeaders.add("Charset", "UTF-8");
         try {
-            deck = encodeStr(deck);
-            bossName = encodeStr(bossName);
             log("SimulateBoss1MatchGame from " + request.getRemoteAddr() + ":");
             log("Deck = " + deck);
             log("Hero LV = " + heroLv + ", Boss = " + bossName);
@@ -259,8 +249,6 @@ public class AutoBattleController {
         HttpHeaders responseHeaders = new HttpHeaders();
         responseHeaders.add("Content-Type", "text/html;charset=UTF-8");
         try {
-            deck = encodeStr(deck);
-            bossName = encodeStr(bossName);
             log("PlayBossMassiveGame from " + request.getRemoteAddr() + ":");
             log("Deck = " + deck);
             log("Count = " + count + ", Hero LV = " + heroLv + ", Boss = " + bossName);
