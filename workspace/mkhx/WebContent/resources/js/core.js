@@ -33,7 +33,7 @@ var playAutoGame = function(count) {
     var deck2 = $('#deck2').val().trim();
     var heroLv1 = $('#hero1Lv').val();
     var heroLv2 = $('#hero2Lv').val();
-    var firstAttack = $('input[name=firstAttack]').val();
+    var firstAttack = $('input[name=firstAttack]:radio:checked').val();
     var isJson = false;
     var url = '';
     var postData = {

@@ -831,9 +831,14 @@ var Animater = function() {
         // Remove all debuffs.
         var self = this;
         $.each(this.arenas[playerId].fields, function (i, card) {
-            card.statusList = [];
+            var newStatusList = [];
+            for (var i = 0; i < card.statusList.length; ++i) {
+                if (card.statusList[i] == '燃') {
+                    newStatusList.push('燃');
+                }
+            }
             self.addAnimation("clearStatus", function() {
-                card.statusText.setText('');
+                card.statusText.setText(newStatusList.join());
                 card.statusText.centerMiddle(card.statusRect);
                 card.group.getLayer().draw();
             }, settings.minimumDuration);

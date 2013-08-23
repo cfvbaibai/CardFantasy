@@ -38,23 +38,31 @@
             </div>
             <div data-role="collapsible" data-mini="true" data-collapsed="false" data-theme="c" data-content-theme="d">
                 <h3>设置双方阵容</h3>
-                <input type="hidden" id="firstAttack" name="firstAttack" value="-1" />
-                <!-- 
+                <!-- <input type="hidden" id="firstAttack" name="firstAttack" value="-1" /> -->
+                <!--  
                 <div id="attackFirst" class="ui-grid-b" data-mini="true">
                     <div class="ui-block-a">
                         <input data-mini="true" type="radio" name="firstAttack" id="autoFirst" value="-1" checked="checked" />
-                        <label for="autoFirst">自然先攻</label>
+                        <label for="autoFirst">先攻</label>
                     </div>
                     <div class="ui-block-b">
                         <input data-mini="true" type="radio" name="firstAttack" id="player1First" value="0" />
-                        <label for="player1First">玩家1先攻</label>
+                        <label for="player1First">1先攻</label>
                     </div>
                     <div class="ui-block-c">
                         <input data-mini="true" type="radio" name="firstAttack" id="player2First" value="1" />
-                        <label for="player2First">玩家2先攻</label>
+                        <label for="player2First">2先攻</label>
                     </div>
                 </div>
                 -->
+                <div id="attackFirst" data-mini="true" data-role="controlgroup" data-type="horizontal">
+                    <input data-mini="true" type="radio" name="firstAttack" id="autoFirst" value="-1" checked="checked" />
+                    <label for="autoFirst">按规则决定先攻</label>
+                    <input data-mini="true" type="radio" name="firstAttack" id="player1First" value="0" />
+                    <label for="player1First">玩家1先攻</label>
+                    <input data-mini="true" type="radio" name="firstAttack" id="player2First" value="1" />
+                    <label for="player2First">玩家2先攻</label>
+                </div>
                 <div id="player1" class="player ui-grid-b">
                     <div class="ui-block-a ui-block-label-number">
                         <span>玩家1等级: </span>
