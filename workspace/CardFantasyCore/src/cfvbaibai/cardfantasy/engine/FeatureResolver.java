@@ -643,6 +643,10 @@ public class FeatureResolver {
         if (card == null) {
             return;
         }
+        CardStatus status = card.getStatus();
+        if (status.containsStatus(CardStatusType.Ëø¶¨)) {
+            return;
+        }
         for (FeatureInfo cardFeature : card.getNormalUsableFeatures()) {
             if (cardFeature.getType() == FeatureType.»Ø´º) {
                 RejuvenateFeature.apply(cardFeature.getFeature(), this, card);
