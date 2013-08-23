@@ -1,4 +1,4 @@
-package cfvbaibai.cardfantasy.web;
+ï»¿package cfvbaibai.cardfantasy.web;
 
 import java.io.UnsupportedEncodingException;
 import java.text.DateFormat;
@@ -52,7 +52,7 @@ public class AutoBattleController {
 
     public static String encodeStr(String str) {
         try {
-            return new String(str.getBytes("ISO-8859-1"), "UTF-8").replace('£¬', ',');
+            return new String(str.getBytes("ISO-8859-1"), "UTF-8").replace('ï¼Œ', ',');
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
             return null;
@@ -79,7 +79,7 @@ public class AutoBattleController {
         responseHeaders.add("Content-Type", "text/html;charset=UTF-8");
         log(e.getMessage());
         logE(e);
-        String message = String.format("<font color='red'>%s<br />·¢Éú´íÎó£¡<br />%s<br />", getCurrentTime(),
+        String message = String.format("<font color='red'>%s<br />å‘ç”Ÿé”™è¯¯ï¼<br />%s<br />", getCurrentTime(),
                 e.getMessage());
         if (isJson) {
             message = "{ \"error\": true, \"message\": \"" + message + "\" }";
@@ -106,14 +106,14 @@ public class AutoBattleController {
         responseHeaders.add("Content-Type", "text/html;charset=UTF-8");
         try {
             if (firstAttack != 0 && firstAttack != 1 && firstAttack != -1) {
-                throw new IllegalArgumentException("ÎŞĞ§µÄÏÈ¹¥£º" + firstAttack);
+                throw new IllegalArgumentException("æ— æ•ˆçš„å…ˆæ”»ï¼š" + firstAttack);
             }
             log("PlayAuto1MatchGame from " + request.getRemoteAddr() + ":");
             log("FirstAttack = " + firstAttack);
             log("Deck1 = " + deck1);
             log("Deck2 = " + deck2);
-            PlayerInfo player1 = PlayerBuilder.build("Íæ¼Ò1", deck1, heroLv1);
-            PlayerInfo player2 = PlayerBuilder.build("Íæ¼Ò2", deck2, heroLv2);
+            PlayerInfo player1 = PlayerBuilder.build("ç©å®¶1", deck1, heroLv1);
+            PlayerInfo player2 = PlayerBuilder.build("ç©å®¶2", deck2, heroLv2);
             WebPlainTextGameUI ui = new WebPlainTextGameUI();
             GameEngine engine = new GameEngine(ui, new Rule(5, 100, firstAttack, false));
             engine.RegisterPlayers(player1, player2);
@@ -136,14 +136,14 @@ public class AutoBattleController {
         responseHeaders.add("Charset", "UTF-8");
         try {
             if (firstAttack != 0 && firstAttack != 1 && firstAttack != -1) {
-                throw new IllegalArgumentException("ÎŞĞ§µÄÏÈ¹¥£º" + firstAttack);
+                throw new IllegalArgumentException("æ— æ•ˆçš„å…ˆæ”»ï¼š" + firstAttack);
             }
             log("SimulateAuto1MatchGame from " + request.getRemoteAddr() + ":");
             log("FirstAttack = " + firstAttack);
             log("Deck1 = " + deck1);
             log("Deck2 = " + deck2);
-            PlayerInfo player1 = PlayerBuilder.build("Íæ¼Ò1", deck1, heroLv1);
-            PlayerInfo player2 = PlayerBuilder.build("Íæ¼Ò2", deck2, heroLv2);
+            PlayerInfo player1 = PlayerBuilder.build("ç©å®¶1", deck1, heroLv1);
+            PlayerInfo player2 = PlayerBuilder.build("ç©å®¶2", deck2, heroLv2);
             StructuredRecordGameUI ui = new StructuredRecordGameUI();
             GameEngine engine = new GameEngine(ui, new Rule(5, 100, firstAttack, false));
             engine.RegisterPlayers(player1, player2);
@@ -165,22 +165,22 @@ public class AutoBattleController {
         responseHeaders.add("Content-Type", "text/html;charset=UTF-8");
         try {
             if (firstAttack != 0 && firstAttack != 1 && firstAttack != -1) {
-                throw new IllegalArgumentException("ÎŞĞ§µÄÏÈ¹¥£º" + firstAttack);
+                throw new IllegalArgumentException("æ— æ•ˆçš„å…ˆæ”»ï¼š" + firstAttack);
             }
             log("PlayAutoMassiveGame from " + request.getRemoteAddr() + ":");
             log("Count = " + count);
             log("FirstAttack = " + firstAttack);
             log("Deck1 = " + deck1);
             log("Deck2 = " + deck2);
-            PlayerInfo player1 = PlayerBuilder.build("Íæ¼Ò1", deck1, heroLv1);
-            PlayerInfo player2 = PlayerBuilder.build("Íæ¼Ò2", deck2, heroLv2);
+            PlayerInfo player1 = PlayerBuilder.build("ç©å®¶1", deck1, heroLv1);
+            PlayerInfo player2 = PlayerBuilder.build("ç©å®¶2", deck2, heroLv2);
             GameResultStat stat = play(player1, player2, count, new Rule(5, 100, firstAttack, false));
             StringBuffer result = new StringBuffer();
             result.append(getCurrentTime() + "<br />");
             result.append("<table>");
-            result.append("<tr><td>³¬Ê±: </td><td>" + stat.getTimeoutCount() + "</td></tr>");
-            result.append("<tr><td>Íæ¼Ò1»ñÊ¤: </td><td>" + stat.getP1Win() + "</td></tr>");
-            result.append("<tr><td>Íæ¼Ò2»ñÊ¤: </td><td>" + stat.getP2Win() + "</td></tr>");
+            result.append("<tr><td>è¶…æ—¶: </td><td>" + stat.getTimeoutCount() + "</td></tr>");
+            result.append("<tr><td>ç©å®¶1è·èƒœ: </td><td>" + stat.getP1Win() + "</td></tr>");
+            result.append("<tr><td>ç©å®¶2è·èƒœ: </td><td>" + stat.getP2Win() + "</td></tr>");
             result.append("</table>");
             log("TO:P1:P2 = " + stat.getTimeoutCount() + ":" + stat.getP1Win() + ":" + stat.getP2Win());
             return new ResponseEntity<String>(result.toString(), responseHeaders, HttpStatus.CREATED);
@@ -199,8 +199,8 @@ public class AutoBattleController {
             log("PlayBoss1MatchGame from " + request.getRemoteAddr() + ":");
             log("Deck = " + deck);
             log("Hero LV = " + heroLv + ", Boss = " + bossName);
-            PlayerInfo player1 = PlayerBuilder.build("Ä§Éñ", bossName, 9999, null);
-            PlayerInfo player2 = PlayerBuilder.build("Íæ¼Ò", deck, heroLv, new Legion(buffKingdom, buffForest,
+            PlayerInfo player1 = PlayerBuilder.build("é­”ç¥", bossName, 9999, null);
+            PlayerInfo player2 = PlayerBuilder.build("ç©å®¶", deck, heroLv, new Legion(buffKingdom, buffForest,
                     buffSavage, buffHell));
             WebPlainTextGameUI ui = new WebPlainTextGameUI();
             GameEngine engine = new GameEngine(ui, Rule.getBossBattle());
@@ -225,8 +225,8 @@ public class AutoBattleController {
             log("SimulateBoss1MatchGame from " + request.getRemoteAddr() + ":");
             log("Deck = " + deck);
             log("Hero LV = " + heroLv + ", Boss = " + bossName);
-            PlayerInfo player1 = PlayerBuilder.build("Ä§Éñ", bossName, 9999, null);
-            PlayerInfo player2 = PlayerBuilder.build("Íæ¼Ò", deck, heroLv, new Legion(buffKingdom, buffForest,
+            PlayerInfo player1 = PlayerBuilder.build("é­”ç¥", bossName, 9999, null);
+            PlayerInfo player2 = PlayerBuilder.build("ç©å®¶", deck, heroLv, new Legion(buffKingdom, buffForest,
                     buffSavage, buffHell));
             StructuredRecordGameUI ui = new StructuredRecordGameUI();
             GameEngine engine = new GameEngine(ui, Rule.getBossBattle());
@@ -252,8 +252,8 @@ public class AutoBattleController {
             log("PlayBossMassiveGame from " + request.getRemoteAddr() + ":");
             log("Deck = " + deck);
             log("Count = " + count + ", Hero LV = " + heroLv + ", Boss = " + bossName);
-            PlayerInfo player1 = PlayerBuilder.build("Ä§Éñ", bossName, 9999, null);
-            PlayerInfo player2 = PlayerBuilder.build("Íæ¼Ò", deck, heroLv, new Legion(buffKingdom, buffForest,
+            PlayerInfo player1 = PlayerBuilder.build("é­”ç¥", bossName, 9999, null);
+            PlayerInfo player2 = PlayerBuilder.build("ç©å®¶", deck, heroLv, new Legion(buffKingdom, buffForest,
                     buffSavage, buffHell));
             int totalCost = 0;
             for (Card card : player2.getCards()) {
@@ -272,17 +272,17 @@ public class AutoBattleController {
             //int damageToBossPerMinute = averageDamageToBoss * 60 / coolDown;
             result.append(getCurrentTime() + "<br />");
             result.append("<table>");
-            //result.append("<tr><td>Õ½¶·´ÎÊı: </td><td>" + count + "</td></tr>");
-            //result.append("<tr><td>×ÜÉËº¦: </td><td>" + totalDamageToBoss + "</td></tr>");
-            //result.append("<tr><td>Æ½¾ùÉËº¦: </td><td>" + averageDamageToBoss + "</td></tr>");
-            result.append("<tr><td>¿¨×é×ÜCOST: </td><td>" + totalCost + "</td></tr>");
-            result.append("<tr><td>ÀäÈ´Ê±¼ä: </td><td>" + coolDown + "Ãë</td></tr>");
-            //result.append("<tr><td>Æ½¾ùÃ¿·ÖÖÓÉËº¦£¨ÀíÏë£©: </td><td>" + damageToBossPerMinute + "</td></tr>");
-            result.append("<tr><td colspan='2'><table style='text-align: center'><tr style='font-weight: bold'><td>Ä§Éñ´æ»î</td><td>Õ½¶·´ÎÊı</td><td>×ÜÉËº¦</td><td>Æ½¾ùÃ¿·ÖÖÓÉËº¦</td></tr>");
+            //result.append("<tr><td>æˆ˜æ–—æ¬¡æ•°: </td><td>" + count + "</td></tr>");
+            //result.append("<tr><td>æ€»ä¼¤å®³: </td><td>" + totalDamageToBoss + "</td></tr>");
+            //result.append("<tr><td>å¹³å‡ä¼¤å®³: </td><td>" + averageDamageToBoss + "</td></tr>");
+            result.append("<tr><td>å¡ç»„æ€»COST: </td><td>" + totalCost + "</td></tr>");
+            result.append("<tr><td>å†·å´æ—¶é—´: </td><td>" + coolDown + "ç§’</td></tr>");
+            //result.append("<tr><td>å¹³å‡æ¯åˆ†é’Ÿä¼¤å®³ï¼ˆç†æƒ³ï¼‰: </td><td>" + damageToBossPerMinute + "</td></tr>");
+            result.append("<tr><td colspan='2'><table style='text-align: center'><tr style='font-weight: bold'><td>é­”ç¥å­˜æ´»</td><td>æˆ˜æ–—æ¬¡æ•°</td><td>æ€»ä¼¤å®³</td><td>å¹³å‡æ¯åˆ†é’Ÿä¼¤å®³</td></tr>");
             for (int i = 1; i <= 20; ++i) {
                 int attackCount = 1 + (60 * i / coolDown);
                 int totalDamage = attackCount * averageDamageToBoss;
-                result.append("<tr><td>" + i + "·ÖÖÓ</td><td>" + attackCount + "</td><td>" + totalDamage + "</td><td>" + (totalDamage / i) + "</td></tr>");
+                result.append("<tr><td>" + i + "åˆ†é’Ÿ</td><td>" + attackCount + "</td><td>" + totalDamage + "</td><td>" + (totalDamage / i) + "</td></tr>");
             }
             result.append("</table></td></tr>");
             result.append("</table>");
@@ -294,6 +294,6 @@ public class AutoBattleController {
     }
 
     private static String getCurrentTime() {
-        return "Ê±¼ä: " + DateFormat.getTimeInstance().format(new Date());
+        return "æ—¶é—´: " + DateFormat.getTimeInstance().format(new Date());
     }
 }

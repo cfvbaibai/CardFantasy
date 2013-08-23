@@ -21,7 +21,7 @@ public class StructuredRecordGameUI extends GameUI {
 
     private static String toName(Feature feature) {
         if (feature == null) {
-            return "ÆÕÍ¨¹¥»÷";
+            return "æ™®é€šæ”»å‡»";
         } else {
             return feature.getType().name();
         }

@@ -8,7 +8,6 @@
 
 </head>
 <body>
-    
     <div data-role="page" data-mini="true" data-title="竞技场战" id="main-container">
         <div data-role="header" data-id="navbar" data-position="fixed" data-theme="c">
             <div data-role="navbar" data-theme="c">
@@ -222,7 +221,7 @@
                 <!--  <button data-mini="true" data-theme="c" onclick="playBossGame(1000)"></button>-->
                 <!-- <button data-theme="c" onclick="alert('按CTRL+A全选，再按CTRL+C')">拷贝</button> -->
             </div>
-            <div id="battle-div"data-mini="true" data-role="collapsible" data-collapsed="false" data-theme="c" data-content-theme="d">
+            <div id="battle-div" data-mini="true" data-role="collapsible" data-collapsed="false" data-theme="c" data-content-theme="d">
                 <h3>战斗记录</h3>
                 <div id="boss-battle-output" class="battle-output">没有战斗</div>
             </div>
@@ -256,6 +255,7 @@
             <a href="javascript:history.go(-1)" data-role="button">返回</a>
         </div>
     </div>
+
     <script src="http://s25.cnzz.com/stat.php?id=5496691&web_id=5496691&online=1&show=line"></script>
 </body>
 </html>

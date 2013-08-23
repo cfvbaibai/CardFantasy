@@ -22,6 +22,8 @@ if(ua.matches("(?i).*((android|bb\\d+|meego).+mobile|avantgo|bada\\/|blackberry|
 <link rel="stylesheet" href='<c:url value="/resources/css/style.css" />?version=<%= java.util.Calendar.getInstance().getTimeInMillis() %>' />
 
 <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script src='<c:url value="/resources/js/jquery.browser.js" />'></script>
+<script src='<c:url value="/resources/js/jquery.cookie.js" />'></script>
 <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 <script src="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
 <script src="http://d3lp1msu2r81bx.cloudfront.net/kjs/js/lib/kinetic-v4.5.4.min.js"></script>

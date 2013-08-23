@@ -1,4 +1,4 @@
-package cfvbaibai.cardfantasy.web.test;
+ï»¿package cfvbaibai.cardfantasy.web.test;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -33,7 +33,7 @@ public class TestSerializable {
     
     @Test
     public void TestSerializePlayerInitInfo() {
-        PlayerInfo playerInfo = PlayerBuilder.build("Íæ¼Ò", "½µÁÙÌìÊ¹*4,¹âÃ÷Ö®Áú*1,»ÙÃğÖ®Áú*3,×Æ»ê,±ù·â,ÇåÈª,¾øÉ±", 75);
+        PlayerInfo playerInfo = PlayerBuilder.build("ç©å®¶", "é™ä¸´å¤©ä½¿*4,å…‰æ˜ä¹‹é¾™*1,æ¯ç­ä¹‹é¾™*3,ç¼é­‚,å†°å°,æ¸…æ³‰,ç»æ€", 75);
         StageInfo stage = TestGameBuilder.build(playerInfo, playerInfo).getStage();
         Player player = stage.getPlayers().get(0);
         PlayerInitInfo pii = new PlayerInitInfo(player, 0);

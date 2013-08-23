@@ -20,7 +20,7 @@ public class EntityRuntimeInfo {
             this.uniqueName = ((RuneInfo)entityInfo).getName();
         } else if (entityInfo instanceof LegionInfo) {
             this.type = "Legion";
-            this.uniqueName = "¾üÍÅ";
+            this.uniqueName = "å†›å›¢";
         }
     }
     

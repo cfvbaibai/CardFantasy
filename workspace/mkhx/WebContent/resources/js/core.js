@@ -1,4 +1,4 @@
-//$.ajaxSetup({ scriptCharset: "utf-8" ,contentType: "application/x-www-form-urlencoded; charset=UTF-8" });
+﻿//$.ajaxSetup({ scriptCharset: "utf-8" ,contentType: "application/x-www-form-urlencoded; charset=UTF-8" });
 var sendRequest = function(url, postData, outputDivId, isJson) {
     $.mobile.loading('show');
     var result = '';
@@ -87,3 +87,15 @@ var playBossGame = function(count) {
     sendRequest(url, postData, 'boss-battle-output', isJson);
     //sendRequest(url, 'boss-battle-output');
 };
+
+var detectBrowser = function() {
+    var validBrowser = $.browser.webkit;
+    if (!validBrowser) {
+        if (!$.cookie('browser-detection-confirmed')) {
+            alert('您使用的浏览器可能无法很好地支持本站的高级功能（战斗动画等），\r\n建议使用最新版的Chrome或Safari浏览器。');
+            $.cookie('browser-detection-confirmed', 'true', { expires: 7 });
+        }
+    }
+};
+
+detectBrowser();
