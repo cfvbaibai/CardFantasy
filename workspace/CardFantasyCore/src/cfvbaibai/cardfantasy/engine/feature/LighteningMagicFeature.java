@@ -27,11 +27,11 @@ public final class LighteningMagicFeature {
     public static void apply(FeatureInfo featureInfo, FeatureResolver resolver, EntityInfo attacker, Player defender,
             int victimCount, int paralyzeRate) throws HeroDieSignal {
         Feature feature = featureInfo.getFeature();
-        int damage = feature.getImpact();
         List<CardInfo> victims = defender.getField().pickRandom(victimCount, true);
         GameUI ui = resolver.getStage().getUI();
         ui.useSkill(attacker, victims, feature, true);
         for (CardInfo victim : victims) {
+            int damage = feature.getImpact();
             OnAttackBlockingResult result = resolver.resolveAttackBlockingFeature(attacker, victim, feature, damage);
             if (!result.isAttackable()) {
                 continue;
