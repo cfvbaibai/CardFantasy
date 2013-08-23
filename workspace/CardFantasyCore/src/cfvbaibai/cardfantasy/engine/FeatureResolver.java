@@ -202,11 +202,11 @@ public class FeatureResolver {
         if (attackFeature == null) {
             for (FeatureInfo feature : defender.getNormalUsableFeatures()) {
                 if (feature.getType() == FeatureType.·´»÷) {
-                    CounterAttackFeature.apply(feature.getFeature(), this, attacker, defender);
+                    CounterAttackFeature.apply(feature.getFeature(), this, attacker, defender, result.getDamage());
                 } else if (feature.getType() == FeatureType.¶Ü´Ì) {
-                    SpikeFeature.apply(feature.getFeature(), this, attacker, defender);
+                    SpikeFeature.apply(feature.getFeature(), this, attacker, defender, result.getDamage());
                 } else if (feature.getType() == FeatureType.Ä§ÉñÖ®¼×) {
-                    SpikeFeature.apply(feature.getFeature(), this, attacker, defender);
+                    SpikeFeature.apply(feature.getFeature(), this, attacker, defender, result.getDamage());
                 } else if (feature.getType() == FeatureType.È¼ÉÕ) {
                     BurningFeature.apply(feature, this, attacker, defender);
                 }
@@ -214,13 +214,13 @@ public class FeatureResolver {
             {
                 RuneInfo rune = defender.getOwner().getActiveRuneOf(RuneData.À×¶Ü);
                 if (rune != null) {
-                    SpikeFeature.apply(rune.getFeature(), this, attacker, defender);
+                    SpikeFeature.apply(rune.getFeature(), this, attacker, defender, result.getDamage());
                 }
             }
             {
                 RuneInfo rune = defender.getOwner().getActiveRuneOf(RuneData.äöÎĞ);
                 if (rune != null) {
-                    CounterAttackFeature.apply(rune.getFeature(), this, attacker, defender);
+                    CounterAttackFeature.apply(rune.getFeature(), this, attacker, defender, result.getDamage());
                 }
             }
             if (!defender.isDead()) {
@@ -940,7 +940,7 @@ public class FeatureResolver {
             }
             
             
-            // Special logic for ÓÀ¶³ & ÇåÈª.
+            // Special logic for ÓÀ¶³ & ´º·ç & ÇåÈª.
             if (rune.is(RuneData.ÇåÈª)) {
                 for (CardInfo card : player.getField().toList()) {
                     if (card.isWounded()) {
@@ -950,6 +950,10 @@ public class FeatureResolver {
                 shouldActivate = false;
             } else if (rune.is(RuneData.ÓÀ¶³)) {
                 if (enemy.getField().toList().isEmpty()) {
+                    shouldActivate = false;
+                }
+            } else if (rune.is(RuneData.´º·ç)) {
+                if (player.getField().size() == 0) {
                     shouldActivate = false;
                 }
             }

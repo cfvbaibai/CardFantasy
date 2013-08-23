@@ -16,7 +16,11 @@ import cfvbaibai.cardfantasy.engine.HeroDieSignal;
  *
  */
 public final class CounterAttackFeature {
-    public static void apply(Feature cardFeature, FeatureResolver resolver, CardInfo attacker, CardInfo defender) throws HeroDieSignal {
+    public static void apply(Feature cardFeature, FeatureResolver resolver, CardInfo attacker, CardInfo defender,
+            int attackDamage) throws HeroDieSignal {
+        if (attackDamage <= 0) {
+            return;
+        }
         if (attacker == null) {
             return;
         }
