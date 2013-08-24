@@ -942,12 +942,16 @@ public class FeatureResolver {
             
             // Special logic for ÓÀ¶³ & ´º·ç & ÇåÈª.
             if (rune.is(RuneData.ÇåÈª)) {
+                boolean anyCardWounded = true;
                 for (CardInfo card : player.getField().toList()) {
                     if (card.isWounded()) {
+                        anyCardWounded = true;
                         break;
                     }
                 }
-                shouldActivate = false;
+                if (!anyCardWounded) {
+                    shouldActivate = false;
+                }
             } else if (rune.is(RuneData.ÓÀ¶³)) {
                 if (enemy.getField().toList().isEmpty()) {
                     shouldActivate = false;
