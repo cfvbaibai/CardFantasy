@@ -835,6 +835,8 @@ var Animater = function() {
             for (var i = 0; i < card.statusList.length; ++i) {
                 if (card.statusList[i] == '燃') {
                     newStatusList.push('燃');
+                } else if (card.statusList[i] == '裂') {
+                    newStatusList.push('裂');
                 }
             }
             self.addAnimation("clearStatus", function() {
@@ -958,14 +960,20 @@ var Animater = function() {
         var featureName = data[2];
         var longStatus = data[3];
         var shortStatus = data[4];
-        var defenderCard = this.getCard(defender);
+        var defenderCard = this.getCard(defender, true);
+        if (defenderCard == null) {
+            // 裂伤再死亡之后发动就有可能造成null
+            return;
+        }
         this.displayCardMsg({
             name: 'addCardStatus',
             cardShape: defenderCard.group,
             text: featureName + '\r\n\r\n导致\r\n\r\n' + longStatus, 
         });
 
-        defenderCard.statusList.push(shortStatus);
+        if (shortStatus != '裂' || defenderCard.statusList.indexOf('裂') < 0) {
+            defenderCard.statusList.push(shortStatus);
+        }
         var text = defenderCard.statusList.join();
         this.addAnimation('updateCardStatus', function() {
             defenderCard.statusText.setText(text);
@@ -1042,6 +1050,19 @@ var Animater = function() {
             healeeCard.hpText.centerMiddle(healeeCard.hpRect);
             healeeCard.hpText.getLayer().draw();
         }, settings.minimumDuration);
+    };
+    
+    this.__healBlocked = function(data) {
+        //var healer = data[0];
+        var healee = data[1];
+        var healFeature = data[2];
+        //var blockFeature = data[3];
+        var healeeCard = this.getCard(healee);
+        this.displayCardMsg({
+            name: 'healBlocked',
+            cardShape: healeeCard.group,
+            text: healFeature + '\r\n无效',
+        });
     };
 
     this.__blockDamage = function(data) {
@@ -1209,9 +1230,9 @@ var Animater = function() {
      * card.uniqueName,
      * @return { x, y }
      */
-    this.getCard = function(cardRtInfo) {
+    this.getCard = function(cardRtInfo, suppressErrorLog) {
         var card = this.arenas[cardRtInfo.ownerId].fields.ofName(cardRtInfo.uniqueName);
-        if (card == null) {
+        if (card == null && !suppressErrorLog) {
             console.error('ERROR: Cannot find card ' + cardRtInfo.uniqueName + ' from ' + cardRtInfo.ownerId);
         } 
         return card;

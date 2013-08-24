@@ -184,8 +184,8 @@ public class StructuredRecordGameUI extends GameUI {
 
     @Override
     public void healBlocked(EntityInfo healer, CardInfo healee, Feature cardFeature, Feature blockerFeature) {
-        // TODO Auto-generated method stub
-        
+        this.record.addEvent("healBlocked", new EntityRuntimeInfo(healer), new EntityRuntimeInfo(healee),
+                toName(cardFeature), toName(blockerFeature));
     }
 
     @Override

@@ -46,7 +46,7 @@ public final class RainfallFeature {
         for (Heal heal : heals) {
             OnAttackBlockingResult result = resolver.resolveHealBlockingFeature(healer, heal.healee, cardFeature);
             if (!result.isAttackable()) {
-                return;
+                continue;
             }
             ui.healCard(healer, heal.healee, cardFeature, heal.healHP);
             resolver.applyDamage(heal.healee, -heal.healHP);
