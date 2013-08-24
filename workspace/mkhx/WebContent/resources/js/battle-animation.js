@@ -9,6 +9,52 @@ Kinetic.Text.prototype.middle = function(rect) {
 Kinetic.Text.prototype.centerMiddle = function(rect) {
     return this.center(rect).middle(rect);
 };
+Array.prototype.compact = function() {
+    for (var i = 0; i < this.length; i++) {
+        if (!this[i]) {
+            this.splice(i, 1);
+            --i;
+        }
+    }
+};
+
+Array.prototype.removeOfName = function(name) {
+    for (var i = 0; i < this.length; ++i) {
+        if (this[i] && this[i].name == name) {
+            return this.splice(i, 1)[0];
+        }
+    }
+    return null;
+};
+
+Array.prototype.pickByName = function(name) {
+    for (var i = 0; i < this.length; ++i) {
+        if (this[i] && this[i].name == name) {
+            var result = this[i];
+            this[i] = null;
+            return result;
+        }
+    }
+    return null;
+};
+
+Array.prototype.indexOfName = function(name) {
+    for (var i = 0; i < this.length; ++i) {
+        if (this[i] && this[i].name == name) {
+            return i;
+        }
+    }
+    return -1;
+};
+
+Array.prototype.ofName = function(name) {
+    for (var i = 0; i < this.length; ++i) {
+        if (this[i] && this[i].name == name) {
+            return this[i];
+        }
+    }
+    return null;
+};
 
 var ArenaSettings = function() {
     this.maxWidth = 420;
@@ -238,53 +284,6 @@ var ArenaSettings = function() {
     };
 };
 var settings = new ArenaSettings();
-
-Array.prototype.compact = function() {
-    for (var i = 0; i < this.length; i++) {
-        if (!this[i]) {
-            this.splice(i, 1);
-            --i;
-        }
-    }
-};
-
-Array.prototype.removeOfName = function(name) {
-    for (var i = 0; i < this.length; ++i) {
-        if (this[i] && this[i].name == name) {
-            return this.splice(i, 1)[0];
-        }
-    }
-    return null;
-};
-
-Array.prototype.pickByName = function(name) {
-    for (var i = 0; i < this.length; ++i) {
-        if (this[i] && this[i].name == name) {
-            var result = this[i];
-            this[i] = null;
-            return result;
-        }
-    }
-    return null;
-};
-
-Array.prototype.indexOfName = function(name) {
-    for (var i = 0; i < this.length; ++i) {
-        if (this[i] && this[i].name == name) {
-            return i;
-        }
-    }
-    return -1;
-};
-
-Array.prototype.ofName = function(name) {
-    for (var i = 0; i < this.length; ++i) {
-        if (this[i] && this[i].name == name) {
-            return this[i];
-        }
-    }
-    return null;
-};
 
 var Card = function(attr) {
     this.name = attr.name;
@@ -1202,6 +1201,12 @@ var Animater = function() {
         var playerId = data[0];
         var arena = this.arenas[playerId];
         var card = arena.fields.pickByName(data[1].name);
+        this.displayCardMsg({
+            name: 'cardDeadMsg',
+            cardShape: card.group,
+            textColor: 'red',
+            text: '死亡',
+        });
         this.addAnimation("removeDeadCard", function() {
             card.hpText.setText('DEAD');
             card.hpText.setFill('red');

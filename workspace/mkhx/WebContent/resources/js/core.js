@@ -43,6 +43,9 @@ var playAutoGame = function(count) {
         hlv2: heroLv2,
         firstAttack: firstAttack,
     };
+    
+    console.log('saving cookie in arena-battle...');
+    $.cookie('arena-battle', JSON.stringify(postData));
 
     if (count == 1) {
         url = 'PlayAuto1MatchGame';
@@ -74,6 +77,8 @@ var playBossGame = function(count) {
         bs: buffSavage,
         bh: buffHell,
     };
+    
+    $.cookie('boss-battle', JSON.stringify(postData));
     var isJson = false;
     if (count == 1) {
         url = 'PlayBoss1MatchGame' + url;
@@ -99,3 +104,30 @@ var detectBrowser = function() {
 };
 
 detectBrowser();
+
+function isNumber(n) {
+    return !isNaN(parseFloat(n)) && isFinite(n);
+}
+
+$(document).ready(function () {
+    // load post data from cookie
+    var dataText = $.cookie('arena-battle');
+    if (dataText) {
+        var data = JSON.parse(dataText);
+        if (data.deck1) { $('#deck1').val(data.deck1); }
+        if (data.deck2) { $('#deck2').val(data.deck2); }
+        if (data.hlv1) { $('#hero1Lv').val(data.hlv1); }
+        if (data.hlv2) { $('#hero2Lv').val(data.hlv2); }
+    }
+    dataText = $.cookie('boss-battle');
+    if (dataText) {
+        var data = JSON.parse(dataText);
+        if (data.deck) { $('#deck').val(data.deck); }
+        if (data.hlv) { $('#heroLv').val(data.hlv); }
+        if (data.bn) { $('#boss-name').val(data.bn); }
+        if (data.bk) { $('#buff-kingdom').val(data.bk); }
+        if (data.bf) { $('#buff-forest').val(data.bf); }
+        if (data.bs) { $('#buff-savage').val(data.bs); }
+        if (data.bh) { $('#buff-hell').val(data.bh); }
+    }
+});
