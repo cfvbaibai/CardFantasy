@@ -45,7 +45,8 @@ var ArenaSettings = function() {
     this.runeCircleStroke = '#999999';
     this.runeCircleStrokeWidth = 2;
     this.runeCircleFill = '#000000';
-    this.runeFill = { FIRE: '#FF0000', WIND: '#00FF00', WATER: '#0000FF', GROUND: '#FF9900' };
+    this.runeFill = { FIRE: '#AA0000', WIND: '#22AA22', WATER: '#0000AA', GROUND: '#AA6600' };
+    this.runeTextFill = { FIRE: '#FFFFFF', WIND: '#FFFFFF', WATER: '#FFFFFF', GROUND: '#FFFFFF' };
     this.runeRectHeightRate = 0.3;
     this.runeRadiusRate = 0.7;
     
@@ -245,7 +246,6 @@ Array.prototype.compact = function() {
             --i;
         }
     }
-    return this;
 };
 
 Array.prototype.removeOfName = function(name) {
@@ -304,7 +304,7 @@ var Arena = function(playerId, playerNumber) {
     this.hands = [];
 
     this.fields = [];
-    this.runes = [];
+    this.runes = {};
     
     this.createLogo = function(id, name, delay, size) {
         var group = new Kinetic.Group({ x: settings.width, y: settings.height, });
@@ -486,13 +486,25 @@ var Animater = function() {
         for (var i = 0; i < positions.length; ++i) {
             var pos = positions[i];
             layer.add(new Kinetic.Circle({
-                id: pos.id,
+                id: pos.id + '-circle',
                 x: pos.x,
                 y: pos.y,
                 radius: settings.getRuneRadius(),
                 stroke: settings.runeCircleStroke,
                 strokeWidth: settings.runeCircleStrokeWidth,
                 fill: settings.runeCircleFill,
+            }));
+            layer.add(new Kinetic.Text({
+                id: pos.id + '-name',
+                fontFamily: settings.fontFamily,
+                fontSize: 8,
+                fill: 'white',
+            }));
+            layer.add(new Kinetic.Text({
+                id: pos.id + '-energy',
+                fontFamily: settings.fontFamily,
+                fontSize: 8,
+                fill: 'white',
             }));
         }
     };
@@ -526,12 +538,33 @@ var Animater = function() {
         }, settings.hpChangeDuration);
     };
     
-    this.__updateRunes = function(player, runeInitInfos) {
-        for (var i = 0; i < runeInitInfos.length; ++i) {
-            var runeInitInfo = runeInitInfos[i];
-            var runeShape = this.__getShape(player, 'rune' + i);
-            runeShape.setFill(settings.runeFill[runeInitInfo.type]);
-            runeShape.getLayer().draw();
+    this.__updateRune = function(player, runeInfo) {
+        var self = this;
+        this.addAnimation('updateRune', function () {
+            var arena = self.arenas[player.id];
+            var i = arena.runes[runeInfo.name];
+            var runeCircleShape = self.__getShape(player, 'rune' + i + '-circle');
+            runeCircleShape.setFill(settings.runeFill[runeInfo.type]);
+            var runeNameShape = self.__getShape(player, 'rune' + i + '-name');
+            runeNameShape.setText(runeInfo.name);
+            runeNameShape.setFill(settings.runeTextFill[runeInfo.type]);
+            runeNameShape.setX(runeCircleShape.getX() - runeNameShape.getWidth() / 2);
+            runeNameShape.setY(runeCircleShape.getY() - runeNameShape.getHeight() + 2);
+            var runeEnergyShape = self.__getShape(player, 'rune' + i + '-energy');
+            runeEnergyShape.setText(runeInfo.energy);
+            runeEnergyShape.setFill(settings.runeTextFill[runeInfo.type]);
+            runeEnergyShape.setX(runeCircleShape.getX() - runeEnergyShape.getWidth() / 2);
+            runeEnergyShape.setY(runeCircleShape.getY() + 2);
+            runeCircleShape.getLayer().draw();
+        }, settings.minimumDuration);
+    };
+    
+    this.__updateRunes = function(player, runeInfos) {
+        for (var i = 0; i < runeInfos.length; ++i) {
+            var runeInfo = runeInfos[i];
+            var arena = this.arenas[player.id];
+            arena.runes[runeInfo.name] = i;
+            this.__updateRune(player, runeInfo, i);
         }
     };
     
@@ -869,23 +902,26 @@ var Animater = function() {
     };
     
     this.__activateRune = function(data) {
-        var playerId = data[0];
-        var runeName = data[1];
+        var player = data[0];
+        var rune = data[1];
         var shouldNotice = data[2];
-        if (!shouldNotice) { return; }
-        this.showSplash({
-            text: playerId + " 的 " + runeName + " 激活！",
-        });
+        if (shouldNotice) {
+            this.showSplash({
+                text: player.id + " 的 " + rune.name + " 激活！",
+            });
+        }
+        this.__updateRune(player, rune);
     };
     
     this.__deactivateRune = function(data) {
-        var playerId = data[0];
-        var runeName = data[1];
+        var player = data[0];
+        var rune = data[1];
         var shouldNotice = data[2];
-        if (!shouldNotice) { return; }
-        this.showSplash({
-            text: playerId + " 的 " + runeName + " 能量耗尽！",
-        });
+        if (shouldNotice) {
+            this.showSplash({
+                text: player.id + " 的 " + rune.name + " 能量耗尽！",
+            });
+        }
     };
     
     this.__cardDrawed = function(data) {

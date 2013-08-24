@@ -51,7 +51,7 @@ if ( matched.browser ) {
 }
 
 if ( matched.platform) {
-	browser[ matched.platform ] = true
+	browser[ matched.platform ] = true;
 }
  
 // Chrome and Opera 15+ are Webkit, but Webkit is also Safari.

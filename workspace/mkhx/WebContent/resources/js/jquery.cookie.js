@@ -25,12 +25,10 @@
 		return value;
 	}
 
-	function fromJSON(value) {
-		return config.json ? JSON.parse(value) : value;
-	}
-
-	var config = $.cookie = function (key, value, options) {
-
+	
+	var config = null;
+	
+	$.cookie = function (key, value, options) {
 		// write
 		if (value !== undefined) {
 			options = $.extend({}, config.defaults, options);
@@ -77,6 +75,7 @@
 		return result;
 	};
 
+	var config = $.cookie;
 	config.defaults = {};
 
 	$.removeCookie = function (key, options) {
@@ -87,4 +86,7 @@
 		return false;
 	};
 
+    function fromJSON(value) {
+        return config.json ? JSON.parse(value) : value;
+    }
 })(jQuery, document);

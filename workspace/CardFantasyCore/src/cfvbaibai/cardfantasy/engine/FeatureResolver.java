@@ -973,6 +973,10 @@ public class FeatureResolver {
 
     public void deactivateRunes(Player player) {
         for (RuneInfo rune : player.getRuneBox().getRunes()) {
+            if (!rune.isActivated()) {
+                continue;
+            }
+            stage.getUI().deactivateRune(rune);
             rune.deactivate();
             for (CardInfo card : player.getField().getAliveCards()) {
                 for (FeatureEffect effect : card.getEffects()) {

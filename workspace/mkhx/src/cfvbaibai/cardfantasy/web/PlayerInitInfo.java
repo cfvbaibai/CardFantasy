@@ -11,13 +11,16 @@ public class PlayerInitInfo {
     private String id;
     private int level;
     private int maxHP;
+    private int hp;
     private int number;
     private List<CardInitInfo> deckInitInfos;
     private List<RuneInitInfo> runeInitInfos;
+    
     public PlayerInitInfo(Player player, int playerNumber) {
         this.id = player.getId();
         this.level = player.getLevel();
         this.maxHP = player.getMaxHP();
+        this.hp = player.getMaxHP();
         this.number = playerNumber;
         this.deckInitInfos = new ArrayList<CardInitInfo>();
         for (CardInfo card : player.getDeck().toList()) {
@@ -36,6 +39,9 @@ public class PlayerInitInfo {
     }
     public int getMaxHP() {
         return maxHP;
+    }
+    public int getHP() {
+        return hp;
     }
     public int getNumber() {
         return number;

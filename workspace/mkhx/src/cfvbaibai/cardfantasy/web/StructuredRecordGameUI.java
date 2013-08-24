@@ -52,7 +52,7 @@ public class StructuredRecordGameUI extends GameUI {
 
     @Override
     public void playerAdded(Player player, int playerNumber) {
-        PlayerInitInfo pii = new PlayerRuntimeInfo(player, playerNumber);
+        PlayerInitInfo pii = new PlayerInitInfo(player, playerNumber);
         record.addEvent("playerAdded", pii);
     }
 
@@ -326,13 +326,17 @@ public class StructuredRecordGameUI extends GameUI {
     @Override
     public void activateRune(RuneInfo rune) {
         boolean isFirstActivation = rune.getEnergy() == rune.getMaxEnergy();
-        this.record.addEvent("activateRune", rune.getOwner().getId(), rune.getName(), isFirstActivation);
+        RuneInitInfo rii = new RuneInitInfo(rune);
+        rii.setEnergy(rii.getEnergy() - 1);
+        this.record.addEvent("activateRune", toPlayer(rune.getOwner()), rii, isFirstActivation);
     }
 
     @Override
     public void deactivateRune(RuneInfo rune) {
-        boolean isFinalDeactivation = rune.getEnergy() == 1;
-        this.record.addEvent("activateRune", rune.getOwner().getId(), rune.getName(), isFinalDeactivation);
+        boolean isFinalDeactivation = rune.getEnergy() == 0;
+        RuneInitInfo rii = new RuneInitInfo(rune);
+        rii.setEnergy(rii.getEnergy() - 1);
+        this.record.addEvent("deactivateRune", toPlayer(rune.getOwner()), rii, isFinalDeactivation);
     }
 
     @Override

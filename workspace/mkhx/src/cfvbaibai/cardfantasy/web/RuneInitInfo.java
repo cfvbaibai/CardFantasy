@@ -5,20 +5,23 @@ import cfvbaibai.cardfantasy.engine.RuneInfo;
 public class RuneInitInfo {
     private String name;
     private String type;
+    private int energy;
+    
     public RuneInitInfo(RuneInfo rune) {
         this.name = rune.getName();
         this.type = rune.getRuneClass();
+        this.energy = rune.getEnergy();
     }
     public String getName() {
-        return name;
-    }
-    public void setName(String name) {
-        this.name = name;
+        return this.name;
     }
     public String getType() {
-        return type;
+        return this.type;
     }
-    public void setType(String type) {
-        this.type = type;
+    public int getEnergy() {
+        return this.energy;
+    }
+    public void setEnergy(int energy) {
+        this.energy = energy;
     }
 }
