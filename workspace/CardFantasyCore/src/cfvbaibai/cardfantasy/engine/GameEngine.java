@@ -147,6 +147,7 @@ public class GameEngine {
                 continue;
             }
 
+            ui.cardActionBegins(myField.getCard(i));
             CardStatus status = myField.getCard(i).getStatus();
             if (status.containsStatus(CardStatusType.±ù¶³) || status.containsStatus(CardStatusType.Ëø¶¨)
                     || status.containsStatus(CardStatusType.ĞéÈõ)) {
@@ -162,6 +163,7 @@ public class GameEngine {
 
             // »Ø´º
             resolver.resolveCardRoundEndingFeature(myField.getCard(i));
+            ui.cardActionEnds(myField.getCard(i));
         }
 
         this.stage.getUI().compactField(myField);

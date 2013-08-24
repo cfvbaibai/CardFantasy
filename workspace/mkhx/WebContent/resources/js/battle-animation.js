@@ -121,6 +121,9 @@ var ArenaSettings = function() {
     this.handDelayRectFill = 'white';
     this.handDelayRectOpacity = 0.65;
     
+    this.portraitFrameColor = 'gold';
+    this.portraitFrameWidth = 2;
+    
     this.cardHpRectBorderColor = 'white';
     this.cardHpRectBorderWidth = 1;
     this.cardHpRectFill = '#222222';
@@ -288,6 +291,7 @@ var settings = new ArenaSettings();
 var Card = function(attr) {
     this.name = attr.name;
     this.group = attr.group;
+    this.frame = attr.frame;
     this.hpRect = attr.hpRect;
     this.atRect = attr.atRect;
     this.statusRect = attr.statusRect;
@@ -361,6 +365,12 @@ var Arena = function(playerId, playerNumber) {
     this.createPortrait = function(card) {
         var size = settings.getPortraitSize();
         var group = new Kinetic.Group({ x: settings.width, y: settings.height, });
+        var frame = new Kinetic.Rect({
+            x: 0, y: 0, width: size.width, height: size.height,
+            stroke: settings.portraitFrameColor,
+            strokeWidth: settings.portraitFrameWidth,
+            opacity: 0,
+        });
         var cardAvatar = new Image();
         cardAvatar.src = resDir + '/img/cardportrait/' + card.id + '.jpg';
         var hpRect = new Kinetic.Rect({
@@ -417,10 +427,11 @@ var Arena = function(playerId, playerNumber) {
                 height: size.height - 4,
                 image : cardAvatar,
             });
-            group.add(cardAvatarImage).add(hpRect).add(atRect).add(hpText).add(atText).add(statusRect).add(statusText);
+            group.add(cardAvatarImage).add(hpRect).add(atRect);
+            group.add(hpText).add(atText).add(statusRect).add(statusText).add(frame);
         };
         this.fields.push(new Card({
-            name: card.name, group: group,
+            name: card.name, group: group, frame: frame,
             hpRect: hpRect, atRect: atRect, statusRect: statusRect,
             hpText: hpText, atText: atText, statusText: statusText,
         }));
@@ -971,6 +982,28 @@ var Animater = function() {
             }).play();
         }, settings.summonCardDuration);
         this.pauseAnimation(settings.summonCardPause);
+    };
+    
+    this.__cardActionBegins = function(data) {
+        var cardRtInfo = data[0];
+        var card = this.getCard(cardRtInfo);
+        if (card) {
+            this.addAnimation("cardActionBegins", function() {
+                card.frame.setOpacity(1);
+                card.frame.getLayer().draw();
+            }, settings.minimumDuration);
+        }
+    };
+    
+    this.__cardActionEnds = function(data) {
+        var cardRtInfo = data[0];
+        var card = this.getCard(cardRtInfo);
+        if (card) {
+            this.addAnimation("cardActionEnds", function() {
+                card.frame.setOpacity(0);
+                card.frame.getLayer().draw();
+            }, settings.minimumDuration);
+        }
     };
 
     this.__adjustAT = function(data) {

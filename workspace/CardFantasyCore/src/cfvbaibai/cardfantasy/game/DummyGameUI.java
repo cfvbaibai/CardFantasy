@@ -307,4 +307,16 @@ public class DummyGameUI extends GameUI {
 
     }
 
+    @Override
+    public void cardActionBegins(CardInfo card) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public void cardActionEnds(CardInfo card) {
+        // TODO Auto-generated method stub
+        
+    }
+
 }

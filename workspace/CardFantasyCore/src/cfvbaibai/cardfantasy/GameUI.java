@@ -153,4 +153,8 @@ public abstract class GameUI {
     public abstract void showMessage(String string);
 
     public abstract void stageCreated();
+
+    public abstract void cardActionBegins(CardInfo card);
+    
+    public abstract void cardActionEnds(CardInfo card);
 }

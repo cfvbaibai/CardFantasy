@@ -438,4 +438,14 @@ public abstract class TextGameUI extends GameUI {
     public void showMessage(String text) {
         sayF("【系统】" + text);
     }
+    
+    @Override
+    public void cardActionBegins(CardInfo card) {
+        sayF("%s 开始行动...", card.getShortDesc());
+    }
+    
+    @Override
+    public void cardActionEnds(CardInfo card) {
+        sayF("%s 结束行动.", card.getShortDesc());
+    }
 }

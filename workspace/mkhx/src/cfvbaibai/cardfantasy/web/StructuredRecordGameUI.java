@@ -349,4 +349,14 @@ public class StructuredRecordGameUI extends GameUI {
         // TODO Auto-generated method stub
         
     }
+
+    @Override
+    public void cardActionBegins(CardInfo card) {
+        this.record.addEvent("cardActionBegins", new EntityRuntimeInfo(card));
+    }
+
+    @Override
+    public void cardActionEnds(CardInfo card) {
+        this.record.addEvent("cardActionEnds", new EntityRuntimeInfo(card));
+    }
 }
