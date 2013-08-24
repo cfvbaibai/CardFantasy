@@ -21,9 +21,11 @@ public final class CounterMagicFeature {
             ui.useSkill(defender, attacker, cardFeature, true);
             if (attacker instanceof CardInfo) {
                 CardInfo cardAttacker = (CardInfo) attacker;
-                ui.attackCard(defender, cardAttacker, cardFeature, damage);
-                if (resolver.applyDamage(cardAttacker, damage).cardDead) {
-                    resolver.resolveDeathFeature(defender, cardAttacker, cardFeature);
+                if (!cardAttacker.isDead()) {
+                    ui.attackCard(defender, cardAttacker, cardFeature, damage);
+                    if (resolver.applyDamage(cardAttacker, damage).cardDead) {
+                        resolver.resolveDeathFeature(defender, cardAttacker, cardFeature);
+                    }
                 }
             }
             return true;

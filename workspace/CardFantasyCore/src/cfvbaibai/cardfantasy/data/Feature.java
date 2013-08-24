@@ -30,4 +30,11 @@ public abstract class Feature {
         return super.clone();
     }
 
+    public boolean isDeathFeature() {
+        return false;
+    }
+
+    public boolean isSummonFeature() {
+        return false;
+    }
 }

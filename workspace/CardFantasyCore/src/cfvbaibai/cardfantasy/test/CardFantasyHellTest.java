@@ -22,4 +22,9 @@ public class CardFantasyHellTest {
     public void 骷髅法师vs骷髅法师() {
         TestGameBuilder.play5v5("骷髅法师", "骷髅法师");
     }
+    
+    @Test
+    public void 骷髅法师vs梦魇() {
+        TestGameBuilder.play5v5("骷髅法师", "梦魇");
+    }
 }

@@ -27,10 +27,12 @@ public class CardFeature extends Feature implements Cloneable {
         return String.format("¡¾%s%s%s¡¿", prefix, type.getDisplayName(), level == 0 ? "" : String.valueOf(level));
     }
     
+    @Override
     public boolean isSummonFeature() {
         return this.summonFeature;
     }
 
+    @Override
     public boolean isDeathFeature() {
         return this.deathFeature;
     }
