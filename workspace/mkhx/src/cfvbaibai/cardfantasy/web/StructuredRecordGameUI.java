@@ -118,7 +118,7 @@ public class StructuredRecordGameUI extends GameUI {
         if (currentHP < 0) { currentHP = 0; }
         String featureName = toName(cardFeature);
         this.record.addEvent("attackCard", new EntityRuntimeInfo(attacker), new EntityRuntimeInfo(defender),
-                featureName, damage, currentHP); 
+                featureName, damage, currentHP, defender.getMaxHP()); 
     }
 
     @Override
@@ -186,7 +186,8 @@ public class StructuredRecordGameUI extends GameUI {
     public void debuffDamage(CardInfo card, CardStatusItem item, int effect) {
         int currentHP = card.getHP() - effect;
         if (currentHP < 0) { currentHP = 0; }
-        this.record.addEvent("debuffDamage", new EntityRuntimeInfo(card), item.getType().name(), effect, currentHP);
+        this.record.addEvent("debuffDamage", new EntityRuntimeInfo(card),
+                item.getType().name(), effect, currentHP, card.getMaxHP());
     }
 
     @Override
@@ -211,7 +212,7 @@ public class StructuredRecordGameUI extends GameUI {
             currentHP = healee.getMaxHP();
         }
         this.record.addEvent("healCard", new EntityRuntimeInfo(healer), new EntityRuntimeInfo(healee),
-                toName(cardFeature), healHP, currentHP); 
+                toName(cardFeature), healHP, currentHP, healee.getMaxHP()); 
     }
 
     @Override

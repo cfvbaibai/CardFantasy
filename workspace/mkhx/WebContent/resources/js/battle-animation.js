@@ -127,11 +127,15 @@ var ArenaSettings = function() {
     this.cardHpRectBorderColor = 'white';
     this.cardHpRectBorderWidth = 1;
     this.cardHpRectFill = '#222222';
-    this.cardHpRectOpactiy = '0.8';
+    this.cardHpRectOpactiy = 0.8;
     this.cardHpRectHeight = 10;
     this.cardHpFontFamily = 'Arial';
     this.cardHpFontSize = 8;
     this.cardHpTextColor = 'white';
+    this.cardHpBarOpacity = this.cardHpRectOpacity;
+    this.cardHpBarFill = 'red';
+    
+    this.updateHpDuration = 0.5;
     
     this.cardAtRectBorderColor = this.cardHpRectBorderColor;
     this.cardAtRectBorderWidth = this.cardHpRectBorderWidth;
@@ -296,6 +300,7 @@ var Card = function(attr) {
     this.group = attr.group;
     this.frame = attr.frame;
     this.hpRect = attr.hpRect;
+    this.hpBar = attr.hpBar;
     this.atRect = attr.atRect;
     this.statusRect = attr.statusRect;
     this.hpText = attr.hpText;
@@ -376,9 +381,10 @@ var Arena = function(playerId, playerNumber) {
         });
         var cardAvatar = new Image();
         cardAvatar.src = resDir + '/img/cardportrait/' + card.id + '.jpg';
+        var adjustY = 1;
         var hpRect = new Kinetic.Rect({
             x: 0,
-            y: size.height - settings.cardAtRectHeight,
+            y: size.height - settings.cardHpRectHeight - adjustY,
             width: size.width,
             height: settings.cardHpRectHeight,
             stroke: settings.cardHpRectBorderColor,
@@ -386,9 +392,29 @@ var Arena = function(playerId, playerNumber) {
             fill: settings.cardHpRectFill,
             opacity: settings.cardHpRectOpacity,
         });
+        var hpBar = new Kinetic.Rect({
+            x: 0,
+            y: size.height - settings.cardHpRectHeight - adjustY,
+            width: size.width,
+            height: settings.cardHpRectHeight,
+            stroke: settings.cardHpBarFill,
+            strokeWidth: 1,
+            fill: settings.cardHpBarFill,
+            opacity: settings.cardHpBarOpacity,
+        });
+        var hpBarFrame = new Kinetic.Rect({
+            x: 0,
+            y: size.height - settings.cardHpRectHeight - adjustY,
+            width: size.width,
+            height: settings.cardHpRectHeight,
+            stroke: settings.cardHpRectBorderColor,
+            strokeWidth: settings.cardHpRectBorderWidth,
+            fill: 'transparent',
+            opacity: settings.cardHpRectOpacity,
+        });
         var atRect = new Kinetic.Rect({
             x: 0,
-            y: size.height - settings.cardAtRectHeight - settings.cardHpRectHeight,
+            y: size.height - settings.cardAtRectHeight - settings.cardHpRectHeight - adjustY,
             width: size.width,
             height: settings.cardAtRectHeight,
             stroke: settings.cardAtRectBorderColor,
@@ -410,7 +436,7 @@ var Arena = function(playerId, playerNumber) {
         }).centerMiddle(atRect);
         
         var statusRect = new Kinetic.Rect({
-            x: 0, y: 0, width: size.width, height: settings.statusRectHeight,
+            x: 0, y: 0, width: size.width, height: settings.statusRectHeight + adjustY,
             stroke: settings.statusRectBorderColor,
             strokeWidth: settings.statusRectBorderWidth,
             fill: settings.statusRectFill,
@@ -430,12 +456,12 @@ var Arena = function(playerId, playerNumber) {
                 height: size.height - 4,
                 image : cardAvatar,
             });
-            group.add(cardAvatarImage).add(hpRect).add(atRect);
+            group.add(cardAvatarImage).add(hpRect).add(hpBar).add(hpBarFrame).add(atRect);
             group.add(hpText).add(atText).add(statusRect).add(statusText).add(frame);
         };
         this.fields.push(new Card({
             name: card.name, group: group, frame: frame,
-            hpRect: hpRect, atRect: atRect, statusRect: statusRect,
+            hpRect: hpRect, hpBar: hpBar, atRect: atRect, statusRect: statusRect,
             hpText: hpText, atText: atText, statusText: statusText,
         }));
         var layer = new Kinetic.Layer({ id: 'LP' + card.name });
@@ -1064,6 +1090,7 @@ var Animater = function() {
         var status = data[1];
         var damage = data[2];
         var currentHP = data[3];
+        var maxHP = data[4];
         var card = this.getCard(cardRtInfo);
         this.displayCardMsg({
             name: 'debuffDamage',
@@ -1071,7 +1098,7 @@ var Animater = function() {
             text: status + '\r\n\r\n造成伤害\r\n\r\n' + damage,
             textColor: 'red',
         });
-        this.updateCardHP(card, currentHP);
+        this.updateCardHP(card, currentHP, maxHP);
     };
     
     this.__attackHero = function(data) {
@@ -1099,6 +1126,7 @@ var Animater = function() {
         var featureName = data[2];
         var damage = data[3];
         var currentHP = data[4];
+        var maxHP = data[5];
         var dfCard = this.getCard(defender);
         this.displayCardMsg({
             name: 'attackCard',
@@ -1106,7 +1134,7 @@ var Animater = function() {
             textColor: settings.attackCardTextColor,
             text: '伤害: ' + damage + '\r\n' + featureName,
         });
-        this.updateCardHP(dfCard, currentHP);
+        this.updateCardHP(dfCard, currentHP, maxHP);
     };
     
     this.__healHero = function(data) {
@@ -1131,6 +1159,7 @@ var Animater = function() {
         var featureName = data[2];  // String
         var heal = data[3];         // int
         var currentHP = data[4];    // int
+        var maxHP = data[5];
         var healeeCard = this.getCard(healee);
         this.displayCardMsg({
             name: 'healCard',
@@ -1138,11 +1167,14 @@ var Animater = function() {
             textColor: settings.healCardTextColor,
             text: '治疗: ' + heal + '\r\n' + featureName,
         });
+        this.updateCardHP(healeeCard, currentHP, maxHP);
+        /*
         this.addAnimation('healCardUpdateHp', function () {
             healeeCard.hpText.setText('HP: ' + currentHP);
             healeeCard.hpText.centerMiddle(healeeCard.hpRect);
             healeeCard.hpText.getLayer().draw();
         }, settings.minimumDuration);
+        */
     };
     
     this.__healBlocked = function(data) {
@@ -1647,12 +1679,16 @@ var Animater = function() {
         }, settings.minimumDuration);
     };
     
-    this.updateCardHP = function(card, hp) {
+    this.updateCardHP = function(card, hp, maxHP) {
         this.addAnimation('updateCardHp', function () {
             card.hpText.setText('HP: ' + hp);
             card.hpText.centerMiddle(card.hpRect);
-            card.hpText.getLayer().draw();
-        }, settings.minimumDuration);
+            new Kinetic.Tween({
+                node: card.hpBar,
+                width: hp * card.hpRect.getWidth() / maxHP,
+                duration: settings.updateHpDuration,
+            }).play();
+        }, settings.updateHpDuration);
     };
     
     /**
