@@ -2,6 +2,7 @@ package cfvbaibai.cardfantasy.engine;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -46,7 +47,7 @@ public abstract class CardPile {
         if (max < 0) {
             max = cards.size();
         }
-        List<CardInfo> clone = new ArrayList<CardInfo>(cards);
+        final List<CardInfo> clone = new ArrayList<CardInfo>(cards);
         Collections.shuffle(clone);
         List<CardInfo> result = new LinkedList<CardInfo>();
         for (CardInfo card : clone) {
@@ -61,6 +62,12 @@ public abstract class CardPile {
                 break;
             }
         }
+        Collections.sort(result, new Comparator<CardInfo>() {
+            @Override
+            public int compare(CardInfo o1, CardInfo o2) {
+                return clone.indexOf(o1) - clone.indexOf(o2);
+            }
+        });
         return result;
     }
     
