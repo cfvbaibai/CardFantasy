@@ -65,7 +65,7 @@ public abstract class CardPile {
         Collections.sort(result, new Comparator<CardInfo>() {
             @Override
             public int compare(CardInfo o1, CardInfo o2) {
-                return clone.indexOf(o1) - clone.indexOf(o2);
+                return cards.indexOf(o1) - cards.indexOf(o2);
             }
         });
         return result;

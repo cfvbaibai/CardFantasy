@@ -1607,6 +1607,7 @@ var Animater = function() {
         var adjustment = data[2]; // int
         var newValue = data[3]; // int
         var featureName = data[4]; // String
+        var newMaxValue = data[5]; // int
         var ptSize = settings.getPortraitSize();
         var adjTextPrefix = addEffect ? '' : '失去\r\n';
         var adjValueText = adjustment > 0 ? '+' + adjustment : '-' + (-adjustment);
@@ -1614,6 +1615,7 @@ var Animater = function() {
         var adjText = null;
         var adjGroup = null;
         var self = this;
+
         this.addAnimation("adjustValuePrepare", function() {
             adjRect = new Kinetic.Rect({
                 x: 0, y: 0, width: ptSize.width, height: settings.adjRectHeight,
@@ -1677,6 +1679,10 @@ var Animater = function() {
             textShape.centerMiddle(rectShape);
             textShape.getLayer().draw();
         }, settings.minimumDuration);
+        
+        if (adjName == 'HP') {
+            this.updateCardHP(targetCard, newValue, newMaxValue);
+        }
     };
     
     this.updateCardHP = function(card, hp, maxHP) {
@@ -1755,68 +1761,6 @@ var Animater = function() {
                 attacker,
                 attackingHero ? defender : [ defender ]
         );
-        return;
-        
-        var ptSize = settings.getPortraitSize();
-        var self = this;
-        if (attacker.type != 'Card') {
-            return;
-        }
-        var attackerCard = this.getCard(attacker);
-        if (attackerCard == null) {
-            console.error('Cannot find card ' + attacker.uniqueName);
-        }
-        var defenderCard = null;
-        if (!attackingHero) {
-            defenderCard = this.getCard(defender);
-        }
-        var sword = null;
-        this.addAnimation("normalAttack", function() {
-            sword = Arena.createSword();
-            self.stage.get('#effect-layer')[0].add(sword);
-            // Center sword inside attacker portrait
-            sword.setX(attackerCard.group.getX() + ptSize.width / 2 - settings.swordWidth / 2);
-            sword.setY(attackerCard.group.getY() + ptSize.height / 2 - settings.swordHeight / 2);
-            var targetPoint = { x: 0, y: 0 };
-            if (attackingHero) {
-                var hpBgRect = self.__getShape(defender, 'hpbg-rect');
-                targetPoint.x = hpBgRect.getX() + hpBgRect.getWidth() / 2 - settings.swordWidth / 2;
-                targetPoint.y = hpBgRect.getY() + hpBgRect.getHeight() / 2 - settings.swordHeight / 2;
-            } else {
-                targetPoint.x = defenderCard.group.getX() + ptSize.width / 2 - settings.swordWidth / 2;
-                targetPoint.y = defenderCard.group.getY() + ptSize.height / 2 - settings.swordHeight / 2;
-            }
-            new Kinetic.Tween({
-                node: sword,
-                x: targetPoint.x,
-                y: targetPoint.y,
-                duration: settings.normalAttackDuration,
-            }).play();
-        }, settings.normalAttackDuration);
-        this.addAnimation("normalAttackDestroySword", function() {
-            sword.destroy();
-            delete sword;
-        }, settings.minimumDuration);
-    };
-    
-    /**
-     * @param attacker {
-     *    ownerId, type, uniqueName
-     * }
-     */
-    this.zoomAttacker = function(attacker, zoomOut) {
-        if (attacker.type == 'Card') {
-            var card = this.arenas[attacker.ownerId].fields.ofName(attacker.uniqueName);
-            this.addAnimation("zoomAttacker", function() {
-                var shape = card.group;
-                var deltaY = settings.getPortraitSize().height * settings.zoomRate;
-                new Kinetic.Tween({
-                    node: shape,
-                    y: zoomOut ? shape.getY() - deltaY : shape.getY() + deltaY,
-                    duration: settings.zoomAttackerDuration,
-                }).play();
-            }, settings.zoomAttackerDuration);
-        }
     };
 
     this.start = function(animation) {

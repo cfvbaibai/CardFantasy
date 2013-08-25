@@ -166,7 +166,7 @@ public class StructuredRecordGameUI extends GameUI {
     @Override
     public void adjustHP(EntityInfo source, CardInfo target, int adjHP, Feature cardFeature) {
         this.record.addEvent("adjustHP", new EntityRuntimeInfo(source), new EntityRuntimeInfo(target),
-                adjHP, target.getHP() + adjHP, cardFeature.getType().name());
+                adjHP, target.getHP() + adjHP, cardFeature.getType().name(), target.getMaxHP() + adjHP);
     }
 
     @Override
@@ -236,7 +236,7 @@ public class StructuredRecordGameUI extends GameUI {
         int currentHP = card.getHP() > card.getMaxHP() - effect.getValue() ?
                 card.getMaxHP() - effect.getValue() : card.getHP();
         this.record.addEvent("lostAdjHP", new EntityRuntimeInfo(card), new EntityRuntimeInfo(card),
-                card.getHP() - currentHP, currentHP, effect.getCause().getType().name());
+                card.getHP() - currentHP, currentHP, effect.getCause().getType().name(), card.getMaxHP() - effect.getValue());
     }
 
     @Override
