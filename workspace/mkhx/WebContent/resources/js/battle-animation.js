@@ -1612,6 +1612,9 @@ var Animater = function() {
     this.normalAttack = function(attacker, defender, attackingHero) {
         var ptSize = settings.getPortraitSize();
         var self = this;
+        if (attacker.type != 'Card') {
+            return;
+        }
         var attackerCard = this.getCard(attacker);
         if (attackerCard == null) {
             console.error('Cannot find card ' + attacker.uniqueName);
