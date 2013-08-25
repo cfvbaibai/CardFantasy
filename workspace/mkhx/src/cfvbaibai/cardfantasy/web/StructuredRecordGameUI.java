@@ -140,12 +140,6 @@ public class StructuredRecordGameUI extends GameUI {
     }
 
     @Override
-    public void useSkillToHero(EntityInfo caster, Player targetHero, Feature feature) {
-        // TODO Auto-generated method stub
-        
-    }
-
-    @Override
     public void addCardStatus(EntityInfo attacker, CardInfo victim, Feature cardFeature, CardStatusItem item) {
         this.record.addEvent("addCardStatus", new EntityRuntimeInfo(attacker), new EntityRuntimeInfo(victim),
                 toName(cardFeature), item.getType().name(), item.getType().getAbbrev());
@@ -315,6 +309,11 @@ public class StructuredRecordGameUI extends GameUI {
         }
         event.addData(defenders);
         this.record.addEvent(event);
+    }
+
+    @Override
+    public void useSkillToHero(EntityInfo caster, Player targetHero, Feature feature) {
+        this.record.addEvent("useSkillToHero", new EntityRuntimeInfo(caster), toName(feature), toPlayer(targetHero));
     }
 
     @Override

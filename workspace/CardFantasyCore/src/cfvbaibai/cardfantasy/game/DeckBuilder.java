@@ -19,6 +19,7 @@ public final class DeckBuilder {
     private static CardDataStore store;
     
     public static DeckStartupInfo multiBuild(String descsText) {
+        descsText = descsText.replace('£¬', ',');
         String[] descs = descsText.split(",");
         return build(descs);
     }

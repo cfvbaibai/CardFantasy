@@ -1099,6 +1099,22 @@ var Animater = function() {
         });
         this.updateCardHP(dfCard, currentHP);
     };
+    
+    this.__healHero = function(data) {
+        //var healer = data[0];
+        var healee = data[1];
+        var featureName = data[2];
+        var heal = data[3];
+        var currentHP = data[4];
+        this.displayCardMsg({
+            name: 'healHeroMsg',
+            cardShape: this.__getShape(healee, 'hpbg-rect'),
+            textColor: settings.healCardTextColor,
+            text: '治疗: ' + heal + '\r\n' + featureName,
+        });
+        healee.hp = currentHP;
+        this.__updateHeroHp(healee);
+    };
 
     this.__healCard = function(data) {
         //var healer = data[0];       // EntityRuntimeInfo
@@ -1180,6 +1196,28 @@ var Animater = function() {
             for (var i = 0; i < defenders.length; ++i) {
                 text += defenders[i].uniqueName + '\r\n';
             }
+            this.showSplash({
+                text: text,
+                duration: settings.skillSplashDuration,
+                pause: settings.skillSplashPause,
+            });
+        }
+    };
+    
+    this.__useSkillToHero = function(data) {
+        var attacker = data[0]; // EntityRuntimeInfo
+        var skill = data[1];    // String
+        var defenderHero = data[2]; // PlayerRuntimeInfo
+        if (skill.indexOf('军团') == 0 ||
+            skill.indexOf('守护') > 0 ||
+            skill.indexOf('之力') > 0 ||
+            this.msgIgnoredSkills.indexOf(skill) >= 0) {
+            return;
+        }
+        if (skill == '普通攻击') {
+        } else {
+            var text = attacker.ownerId + "的" + attacker.uniqueName + "\r\n";
+            text += "\r\n" + skill + "\r\n\r\n" + defenderHero.id;
             this.showSplash({
                 text: text,
                 duration: settings.skillSplashDuration,

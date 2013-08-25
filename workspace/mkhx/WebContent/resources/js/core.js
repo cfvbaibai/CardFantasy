@@ -118,6 +118,10 @@ $(document).ready(function () {
         if (data.deck2) { $('#deck2').val(data.deck2); }
         if (data.hlv1) { $('#hero1Lv').val(data.hlv1); }
         if (data.hlv2) { $('#hero2Lv').val(data.hlv2); }
+        //if (isNumber(data.firstAttack)) {
+            //$('input[name=firstAttack]:radio[value=' + data.firstAttack + ']').prop('checked', true);
+            //$('input[name=firstAttack]:radio').checkboxradio('refresh');
+        //}
     }
     dataText = $.cookie('boss-battle');
     if (dataText) {
