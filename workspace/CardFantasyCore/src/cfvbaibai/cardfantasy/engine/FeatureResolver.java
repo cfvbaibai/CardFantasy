@@ -615,7 +615,7 @@ public class FeatureResolver {
             return;
         }
         stage.getUI().useSkillToHero(attacker, defenderPlayer, cardFeature);
-        if (damage > 0) {
+        if (damage >= 0) {
             if (!this.resolveAttackHeroBlockingFeatures(attacker, defenderPlayer, cardFeature, damage)) {
                 stage.getUI().attackHero(attacker, defenderPlayer, cardFeature, damage);
             }
@@ -942,7 +942,7 @@ public class FeatureResolver {
             }
             
             
-            // Special logic for ÓÀ¶³ & ´º·ç & ÇåÈª.
+            // Special logic for ÓÀ¶³ & ´º·ç & ÇåÈª & ×Æ»ê.
             if (rune.is(RuneData.ÇåÈª)) {
                 boolean anyCardWounded = true;
                 for (CardInfo card : player.getField().toList()) {
@@ -954,7 +954,7 @@ public class FeatureResolver {
                 if (!anyCardWounded) {
                     shouldActivate = false;
                 }
-            } else if (rune.is(RuneData.ÓÀ¶³)) {
+            } else if (rune.is(RuneData.ÓÀ¶³) || rune.is(RuneData.×Æ»ê)) {
                 if (enemy.getField().toList().isEmpty()) {
                     shouldActivate = false;
                 }

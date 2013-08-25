@@ -167,8 +167,11 @@ var ArenaSettings = function() {
     this.zoomRate = 0.2;
     
     this.normalAttackDuration = 0.3;
+    this.skillDuration = 0.7;
     this.swordWidth = 14;
     this.swordHeight = 44;
+    this.healWidth = 24;
+    this.healHeight = 24;
     
     this.adjustDuration = 0.7;
     this.adjustFontFamily = this.fontFamily;
@@ -520,7 +523,13 @@ var Animater = function() {
     };
     
     this.__getPrefix = function(player) {
-        return player.number == 0 ? 'hero1-' : 'hero2-';
+        var playerNumber = null;
+        if ($.type(player) == 'string') {
+            playerNumber = this.arenas[player].playerNumber;
+        } else {
+            playerNumber = player.number;
+        }
+        return playerNumber == 0 ? 'hero1-' : 'hero2-';
     };
     
     this.__getShape = function(player, idSuffix) {
@@ -997,7 +1006,7 @@ var Animater = function() {
     
     this.__cardActionEnds = function(data) {
         var cardRtInfo = data[0];
-        var card = this.getCard(cardRtInfo);
+        var card = this.getCard(cardRtInfo, true);
         if (card) {
             this.addAnimation("cardActionEnds", function() {
                 card.frame.setOpacity(0);
@@ -1190,6 +1199,9 @@ var Animater = function() {
             this.normalAttack(attacker, defenders[0], false);
         } else if (skill == '送还') {
             this.showReturnCross(attacker, defenders[0]);
+        } else if (skill == '治疗' || skill == '甘霖') {
+            this.flyImage({ fileName: 'heal.png', width: settings.healWidth, height: settings.healHeight },
+                    attacker, defenders, settings.skillDuration);
         } else {
             var text = attacker.ownerId + "的" + attacker.uniqueName + "\r\n";
             text += "\r\n" + skill + "\r\n\r\n";
@@ -1215,6 +1227,7 @@ var Animater = function() {
             return;
         }
         if (skill == '普通攻击') {
+            // Already animated in __attackHero
         } else {
             var text = attacker.ownerId + "的" + attacker.uniqueName + "\r\n";
             text += "\r\n" + skill + "\r\n\r\n" + defenderHero.id;
@@ -1383,6 +1396,97 @@ var Animater = function() {
             })(iHand, arena.hands[iHand]);
         }
         this.addAnimations("compactHands", funcs, settings.drawCardDuration);
+    };
+    
+    this.getRune = function(runeRtInfo) {
+        var arena = this.arenas[runeRtInfo.ownerId];
+        var index = arena.runes[runeRtInfo.uniqueName];
+        var suffix = 'rune' + index + '-circle';
+        return this.__getShape(runeRtInfo.ownerId, suffix);
+    };
+    
+    /**
+     * @param img Object { fileName, width, height }
+     * @param source The source entity (EntityRuntimeInfo) from which image flies
+     * @param targets The target entities (EntityRuntimeInfo) or hero (PlayerRuntimeInfo) to which image flies
+     */ 
+    this.flyImage = function(imgObj, source, targetEntities, duration) {
+        var self = this;
+        if (!duration) { duration = settings.normalAttackDuration; }
+        if (source.type != 'Card' && source.type != 'Rune') {
+            console.error("Invalid source type: " + source.type);
+            return;
+        }
+        var isCardSource = source.type == 'Card';
+        var sourceShape = isCardSource ?
+            this.getCard(source).group :
+            this.getRune(source);
+        var isHeroTarget = $.type(targetEntities) != 'array';
+        var targets = [];
+        if (isHeroTarget) {
+            targets.push(self.__getShape(targetEntities, 'hpbg-rect'));
+        } else {
+            $.each(targetEntities, function(i, c) {
+                targets.push(self.getCard(c));
+            });
+        }
+        var ptSize = settings.getPortraitSize();
+        var flyingFuncs = [];
+        var destroyFuncs = [];
+        $.each(targets, function(i, target) {
+            var imgGroup = null;
+            destroyFuncs.push(function() {
+                imgGroup.destroy();
+                delete imgGroup;
+            });
+            flyingFuncs.push(function() {
+                var sourcePoint = { x: 0, y: 0 };
+                var targetPoint = { x: 0, y: 0 };
+                if (isCardSource) {
+                    sourcePoint.x = sourceShape.getX() + ptSize.width / 2 - imgObj.width / 2;
+                    sourcePoint.y = sourceShape.getY() + ptSize.height / 2 - imgObj.height / 2;
+                } else {
+                    sourcePoint.x = sourceShape.getX() - imgObj.width / 2;
+                    sourcePoint.y = sourceShape.getY() - imgObj.height / 2;
+                }
+                if (isHeroTarget) {
+                    targetPoint.x = target.getX() + target.getWidth() / 2 - imgObj.width / 2;
+                    targetPoint.y = target.getY() + target.getHeight() / 2 - imgObj.height / 2;
+                } else {
+                    targetPoint.x = target.group.getX() + ptSize.width / 2 - imgObj.width / 2;
+                    targetPoint.y = target.group.getY() + ptSize.height / 2 - imgObj.height / 2;
+                }
+    
+                imgGroup = new Kinetic.Group({
+                    x: sourcePoint.x,
+                    y: sourcePoint.y,
+                });
+    
+                var imgSrc = new Image();
+                imgSrc.src = resDir + '/img/effect/' + imgObj.fileName;
+                imgSrc.onload = function() {
+                    var img = new Kinetic.Image({
+                        x : 0,
+                        y : 0,
+                        image : imgSrc,
+                    });
+                    imgGroup.add(img);
+                };
+                self.stage.get('#effect-layer')[0].add(imgGroup);
+                
+                flyingFuncs.push(function () {
+                    new Kinetic.Tween({
+                        node: imgGroup,
+                        x: targetPoint.x,
+                        y: targetPoint.y,
+                        duration: duration,
+                    }).play();
+                });
+            });
+        });
+        
+        this.addAnimations("flyingImages", flyingFuncs, duration);
+        this.addAnimations("destroyFlyingImages", destroyFuncs, settings.minimumDuration);
     };
     
     this.animations = [];
@@ -1610,6 +1714,13 @@ var Animater = function() {
      * { id } if attackingHero is true
      */
     this.normalAttack = function(attacker, defender, attackingHero) {
+        this.flyImage(
+                { fileName: 'sword.png', width: settings.swordWidth, height: settings.swordHeight },
+                attacker,
+                attackingHero ? defender : [ defender ]
+        );
+        return;
+        
         var ptSize = settings.getPortraitSize();
         var self = this;
         if (attacker.type != 'Card') {
