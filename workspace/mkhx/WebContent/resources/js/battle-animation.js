@@ -296,16 +296,7 @@ var ArenaSettings = function() {
 var settings = new ArenaSettings();
 
 var Card = function(attr) {
-    this.name = attr.name;
-    this.group = attr.group;
-    this.frame = attr.frame;
-    this.hpRect = attr.hpRect;
-    this.hpBar = attr.hpBar;
-    this.atRect = attr.atRect;
-    this.statusRect = attr.statusRect;
-    this.hpText = attr.hpText;
-    this.atText = attr.atText;
-    this.statusText = attr.statusText;
+    $.extend(this, attr);
     this.statusList = [];
 };
 
@@ -364,7 +355,9 @@ var Arena = function(playerId, playerNumber) {
             };
         };
 
-        this.hands.push({ name: name, group: group, delay: delay, delayText: delayText });
+        var logoSize = settings.getLogoSize();
+        this.hands.push({ name: name, group: group, delay: delay, delayText: delayText,
+            width: logoSize.width, height: logoSize.height, });
         var layer = new Kinetic.Layer({ id: 'LL' + name });
         layer.add(group);
         return group;
@@ -459,10 +452,12 @@ var Arena = function(playerId, playerNumber) {
             group.add(cardAvatarImage).add(hpRect).add(hpBar).add(hpBarFrame).add(atRect);
             group.add(hpText).add(atText).add(statusRect).add(statusText).add(frame);
         };
+        var ptSize = settings.getPortraitSize();
         this.fields.push(new Card({
             name: card.name, group: group, frame: frame,
             hpRect: hpRect, hpBar: hpBar, atRect: atRect, statusRect: statusRect,
             hpText: hpText, atText: atText, statusText: statusText,
+            width: ptSize.width, height: ptSize.height,
         }));
         var layer = new Kinetic.Layer({ id: 'LP' + card.name });
         layer.add(group);
@@ -493,25 +488,6 @@ Arena.createCross = function() {
         shadowOpacity: 0.4,
     });
     group.add(crossLine);
-    return group;
-};
-
-Arena.createSword = function() {
-    var group = new Kinetic.Group({
-        x: settings.width,
-        y: settings.height,
-    });
-
-    var swordSrc = new Image();
-    swordSrc.src = resDir + '/img/effect/sword.png';
-    swordSrc.onload = function() {
-        var swordImg = new Kinetic.Image({
-            x : 0,
-            y : 0,
-            image : swordSrc,
-        });
-        group.add(swordImg);
-    };
     return group;
 };
 
@@ -1231,8 +1207,23 @@ var Animater = function() {
             this.normalAttack(attacker, defenders[0], false);
         } else if (skill == '送还') {
             this.showReturnCross(attacker, defenders[0]);
+        } else if (skill == '传送') {
+            this.flyImage({ fileName: 'hexagram.png', width: 24, height: 24 },
+                    attacker, defenders, settings.skillDuration);
+        } else if (skill == '免疫') {
+            this.flyImage({ fileName: 'greyshield.png', width: 48, height: 48 },
+                    attacker, [ attacker ], settings.skillDuration);
         } else if (skill == '治疗' || skill == '甘霖') {
-            this.flyImage({ fileName: 'heal.png', width: settings.healWidth, height: settings.healHeight },
+            this.flyImage({ fileName: 'heal.png', width: 24, height: 24 },
+                    attacker, defenders, settings.skillDuration);
+        } else if (skill == '冰弹' || skill == '霜冻新星' || skill == '暴风雪') {
+            this.flyImage({ fileName: 'ice.png', width: 24, height: 24 },
+                    attacker, defenders, settings.skillDuration);
+        } else if (skill == '火球' || skill == '火墙' || skill == '烈焰风暴') {
+            this.flyImage({ fileName: 'fire.png', width: 24, height: 24 },
+                    attacker, defenders, settings.skillDuration);
+        } else if (skill == '落雷' || skill == '连环闪电' || skill == '雷暴') {
+            this.flyImage({ fileName: 'lightening.png', width: 24, height: 24 },
                     attacker, defenders, settings.skillDuration);
         } else {
             var text = attacker.ownerId + "的" + attacker.uniqueName + "\r\n";
@@ -1389,6 +1380,9 @@ var Animater = function() {
      */
     this.getCard = function(cardRtInfo, suppressErrorLog) {
         var card = this.arenas[cardRtInfo.ownerId].fields.ofName(cardRtInfo.uniqueName);
+        if (card == null) {
+            card = this.arenas[cardRtInfo.ownerId].hands.ofName(cardRtInfo.uniqueName);
+        }
         if (card == null && !suppressErrorLog) {
             console.error('ERROR: Cannot find card ' + cardRtInfo.uniqueName + ' from ' + cardRtInfo.ownerId);
         } 
@@ -1451,7 +1445,7 @@ var Animater = function() {
         }
         var isCardSource = source.type == 'Card';
         var sourceShape = isCardSource ?
-            this.getCard(source).group :
+            this.getCard(source) :
             this.getRune(source);
         var isHeroTarget = $.type(targetEntities) != 'array';
         var targets = [];
@@ -1462,7 +1456,6 @@ var Animater = function() {
                 targets.push(self.getCard(c));
             });
         }
-        var ptSize = settings.getPortraitSize();
         var flyingFuncs = [];
         var destroyFuncs = [];
         $.each(targets, function(i, target) {
@@ -1475,25 +1468,25 @@ var Animater = function() {
                 var sourcePoint = { x: 0, y: 0 };
                 var targetPoint = { x: 0, y: 0 };
                 if (isCardSource) {
-                    sourcePoint.x = sourceShape.getX() + ptSize.width / 2 - imgObj.width / 2;
-                    sourcePoint.y = sourceShape.getY() + ptSize.height / 2 - imgObj.height / 2;
+                    sourcePoint.x = sourceShape.group.getX() + sourceShape.width / 2 - imgObj.width / 2;
+                    sourcePoint.y = sourceShape.group.getY() + sourceShape.height / 2 - imgObj.height / 2;
                 } else {
-                    sourcePoint.x = sourceShape.getX() - imgObj.width / 2;
-                    sourcePoint.y = sourceShape.getY() - imgObj.height / 2;
+                    sourcePoint.x = sourceShape.group.getX() - imgObj.width / 2;
+                    sourcePoint.y = sourceShape.group.getY() - imgObj.height / 2;
                 }
                 if (isHeroTarget) {
                     targetPoint.x = target.getX() + target.getWidth() / 2 - imgObj.width / 2;
                     targetPoint.y = target.getY() + target.getHeight() / 2 - imgObj.height / 2;
                 } else {
-                    targetPoint.x = target.group.getX() + ptSize.width / 2 - imgObj.width / 2;
-                    targetPoint.y = target.group.getY() + ptSize.height / 2 - imgObj.height / 2;
+                    targetPoint.x = target.group.getX() + target.width / 2 - imgObj.width / 2;
+                    targetPoint.y = target.group.getY() + target.height / 2 - imgObj.height / 2;
                 }
     
                 imgGroup = new Kinetic.Group({
                     x: sourcePoint.x,
                     y: sourcePoint.y,
                 });
-    
+
                 var imgSrc = new Image();
                 imgSrc.src = resDir + '/img/effect/' + imgObj.fileName;
                 imgSrc.onload = function() {
@@ -1520,7 +1513,7 @@ var Animater = function() {
         this.addAnimations("flyingImages", flyingFuncs, duration);
         this.addAnimations("destroyFlyingImages", destroyFuncs, settings.minimumDuration);
     };
-    
+
     this.animations = [];
 
     this.addAnimation = function(name, func, duration) {
