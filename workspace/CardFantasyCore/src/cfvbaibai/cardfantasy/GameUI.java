@@ -125,6 +125,10 @@ public abstract class GameUI {
 
     public abstract void cardToHand(Player player, CardInfo card);
 
+    public abstract void cardToGrave(Player player, CardInfo card);
+    
+    public abstract void cardToOutField(Player player, CardInfo card);
+    
     public abstract void blockStatus(EntityInfo attacker, EntityInfo defender, Feature cardFeature, CardStatusItem item);
 
     public abstract void blockFeature(EntityInfo attacker, EntityInfo defender, Feature cardFeature,
@@ -132,7 +136,6 @@ public abstract class GameUI {
 
     public abstract void returnCard(CardInfo attacker, CardInfo defender, Feature cardFeature);
 
-    public abstract void cardToGrave(Player player, CardInfo card);
 
     public abstract void disableBlock(CardInfo attacker, CardInfo defender, Feature attackFeature, Feature blockFeature);
 

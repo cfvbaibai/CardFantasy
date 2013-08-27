@@ -155,6 +155,7 @@ public class GameEngine {
                 ui.cannotAction(myField.getCard(i));
             } else if (status.containsStatus(CardStatusType.√‘ªÛ)) {
                 ui.confused(myField.getCard(i));
+                resolver.attackHero(myField.getCard(i), getActivePlayer(), null, myField.getCard(i).getAT());
             } else {
                 tryAttackEnemy(myField, opField, i);
             }

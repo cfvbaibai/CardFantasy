@@ -351,6 +351,11 @@ public abstract class TextGameUI extends GameUI {
     public void cardToHand(Player player, CardInfo card) {
         sayF("%s 被放回 %s 的手牌.", card.getShortDesc(), player.getShortDesc());
     }
+    
+    @Override
+    public void cardToOutField(Player player, CardInfo card) {
+        sayF("%s 从 %s 的墓地中被除外.", card.getShortDesc(), player.getShortDesc());
+    }
 
     @Override
     public void healBlocked(EntityInfo healer, CardInfo healee, Feature cardFeature, Feature blockerFeature) {

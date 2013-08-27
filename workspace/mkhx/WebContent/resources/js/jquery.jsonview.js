@@ -104,8 +104,8 @@
     }
   };
 
-  $.JSONView = function(jsonObj) {
-
+  $.JSONView = function(_jsonObj) {
+    var jsonObj = _jsonObj;
     function collapse(evt) {
       var collapser = evt.target;
 

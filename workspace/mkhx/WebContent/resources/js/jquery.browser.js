@@ -18,7 +18,8 @@
  
 var matched, browser;
  
-jQuery.uaMatch = function( ua ) {
+jQuery.uaMatch = function( _ua ) {
+  var ua = _ua;
   ua = ua.toLowerCase();
  
 	var match = /(opr)[\/]([\w.]+)/.exec( ua ) || 

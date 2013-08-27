@@ -249,6 +249,12 @@ public class StructuredRecordGameUI extends GameUI {
         this.record.addEvent("cardToHand", toPlayer(player),
                 new EntityRuntimeInfo(card), card.getId(), card.getSummonSpeed());
     }
+    
+    @Override
+    public void cardToOutField(Player player, CardInfo card) {
+        this.record.addEvent("cardToOutField", toPlayer(player),
+                new EntityRuntimeInfo(card), card.getId());
+    }
 
     @Override
     public void blockStatus(EntityInfo attacker, EntityInfo defender, Feature cardFeature, CardStatusItem item) {

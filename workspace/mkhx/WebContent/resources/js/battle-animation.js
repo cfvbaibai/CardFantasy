@@ -56,6 +56,16 @@ Array.prototype.ofName = function(name) {
     return null;
 };
 
+var CfSize = function(attr) {
+    this.width = attr.width;
+    this.height = attr.height;
+};
+
+var CfPos = function(attr) {
+    this.x = attr.x;
+    this.y = attr.y;
+};
+
 var ArenaSettings = function() {
     this.maxWidth = 420;
     this.heightRate = 1.2;
@@ -180,13 +190,17 @@ var ArenaSettings = function() {
     this.adjustDuration = 0.7;
     this.adjustFontFamily = this.fontFamily;
     this.adjustFontSize = 8;
-    this.adjustAdjAtColor = '#5555FF';
-    this.adjustAdjHpColor = '#FF5555';
+    this.addAtColor = 'blue';
+    this.reduceAtColor = 'brown';
+    this.addHpColor = 'green';
+    this.reduceHpColor = 'red';
     this.adjRectHeight = 50;
     this.adjRectBorderColor = 'white';
     this.adjRectBorderWidth = 1;
     this.adjRectFill = '#CCCCCC';
     this.adjRectOpacity = 0.95;
+    this.loseAdjAtColor = '#222222';
+    this.loseAdjHpColor = '#222222';
     
     this.cardMsgRectHeight = 50;
     this.cardMsgRectBorderColor = 'white';
@@ -276,21 +290,20 @@ var ArenaSettings = function() {
     
     this.getPortraitPos = function(playerNumber, logoIndex) {
         if (logoIndex >= 0 && logoIndex <= 4) {
-            return {
+            return new CfPos({
                 x: this.getRightPanelX() + logoIndex * this.getLogoSize().width,
                 y: playerNumber == 1 ?
                         this.getPanelHeight() :
                         this.getHandPanelHeight() + this.getPortraitSize().height,
-            };
-        } else {
-            logoIndex -= 5;
-            return {
-                x: this.getRightPanelX() + logoIndex * this.getLogoSize().width,
-                y: playerNumber == 1 ?
-                        this.getPanelHeight() + this.getPortraitSize().height :
-                        this.getHandPanelHeight(),
-            };
+            });
         }
+        var index = logoIndex - 5;
+        return new CfPos({
+            x: this.getRightPanelX() + index * this.getLogoSize().width,
+            y: playerNumber == 1 ?
+                    this.getPanelHeight() + this.getPortraitSize().height :
+                    this.getHandPanelHeight(),
+        });
     };
 };
 var settings = new ArenaSettings();
@@ -893,8 +906,10 @@ var Animater = function() {
                     newStatusList.push('裂');
                 }
             }
+            card.statusList = newStatusList;
+            var newText = newStatusList.join(); 
             self.addAnimation("clearStatus", function() {
-                card.statusText.setText(newStatusList.join());
+                card.statusText.setText(newText);
                 card.statusText.centerMiddle(card.statusRect);
                 card.group.getLayer().draw();
             }, settings.minimumDuration);
@@ -1213,6 +1228,9 @@ var Animater = function() {
         } else if (skill == '免疫') {
             this.flyImage({ fileName: 'greyshield.png', width: 48, height: 48 },
                     attacker, [ attacker ], settings.skillDuration);
+        } else if (skill == '迷魂') {
+            this.flyImage({ fileName: 'heart.png', width: 24, height: 24 },
+                    attacker, defenders, settings.skillDuration);
         } else if (skill == '治疗' || skill == '甘霖') {
             this.flyImage({ fileName: 'heal.png', width: 24, height: 24 },
                     attacker, defenders, settings.skillDuration);
@@ -1348,6 +1366,12 @@ var Animater = function() {
         }, settings.reincarnateDuration);
     };
     
+    this.__cardToOutField = function(data) {
+        //var player = data[0];
+        var cardRtInfo = data[1];
+        this.showSplash({ text: cardRtInfo.uniqueName + '\r\n\r\n从墓地中被除外' });
+    };
+    
     this.__cardToGrave = function(data) {
         var playerId = data[0];
         var cardRtInfo = data[1];
@@ -1402,7 +1426,8 @@ var Animater = function() {
         }, settings.minimumDuration);
     };
 
-    this.compactHands = function(arena, funcs) {
+    this.compactHands = function(arena, _funcs) {
+        var funcs = _funcs;
         if (!funcs) {
             funcs = [];
         }
@@ -1436,8 +1461,9 @@ var Animater = function() {
      * @param source The source entity (EntityRuntimeInfo) from which image flies
      * @param targets The target entities (EntityRuntimeInfo) or hero (PlayerRuntimeInfo) to which image flies
      */ 
-    this.flyImage = function(imgObj, source, targetEntities, duration) {
+    this.flyImage = function(imgObj, source, targetEntities, _duration) {
         var self = this;
+        var duration = _duration;
         if (!duration) { duration = settings.normalAttackDuration; }
         if (source.type != 'Card' && source.type != 'Rune') {
             console.error("Invalid source type: " + source.type);
@@ -1586,29 +1612,47 @@ var Animater = function() {
                     duration: duration,
                 }).play();
             }, duration);
-        };
+        }
     };
     
     /**
      * @param adjName: AT or HP
      * @param data: the event data
-     * @param addEffect (boolean): whether is to add or lost effect
+     * @param getEffect (boolean): whether is to add or lost effect
      */
-    this.adjustValue = function(data, adjName, addEffect) {
+    this.adjustValue = function(data, adjName, getEffect) {
         var source = data[0]; // EntityRuntimeInfo
         var target = data[1]; // EntityRuntimeInfo
         var adjustment = data[2]; // int
         var newValue = data[3]; // int
         var featureName = data[4]; // String
         var newMaxValue = data[5]; // int
+        if (adjustment == 0) {
+            return;
+        }
+        
         var ptSize = settings.getPortraitSize();
-        var adjTextPrefix = addEffect ? '' : '失去\r\n';
-        var adjValueText = adjustment > 0 ? '+' + adjustment : '-' + (-adjustment);
+        var adjTextPrefix = getEffect ? '' : '失去\r\n';
+        var adjValueText = adjustment > 0 ? '加' + adjustment : '减' + (-adjustment);
         var adjRect = null;
         var adjText = null;
         var adjGroup = null;
+        var adjTextColor = null;
+        var adjAT = adjName == 'AT';
+        if (getEffect && adjAT && adjustment > 0) {
+            adjTextColor = settings.addAtColor;
+        } else if (getEffect && adjAT && adjustment < 0) {
+            adjTextColor = settings.reduceAtColor;
+        } else if (getEffect && !adjAT && adjustment > 0) {
+            adjTextColor = settings.addHpColor;
+        } else if (getEffect && !adjAT && adjustment < 0) {
+            adjTextColor = settings.reduceHpColor;
+        } else if (!getEffect && adjAT) {
+            adjTextColor = settings.loseAdjAtColor;
+        } else if (!getEffect && !adjAT) {
+            adjTextColor = settings.loseAdjHpColor;
+        }
         var self = this;
-
         this.addAnimation("adjustValuePrepare", function() {
             adjRect = new Kinetic.Rect({
                 x: 0, y: 0, width: ptSize.width, height: settings.adjRectHeight,
@@ -1622,7 +1666,7 @@ var Animater = function() {
                 text: adjTextPrefix + adjName + adjValueText + '\r\n' + featureName,
                 fontFamily: settings.adjustFontFamily,
                 fontSize: settings.adjustFontSize,
-                fill: adjName == 'AT' ? settings.adjustAdjAtColor : settings.adjustAdjHpColor,
+                fill: adjTextColor,
             });
             adjGroup = new Kinetic.Group({
                 x: settings.width, y: settings.height,
@@ -1644,10 +1688,15 @@ var Animater = function() {
                 }).play();
             }, settings.adjustDuration);
         } else {
-            var sourceCard = this.getCard(source);
+            var sourceCard = this.getCard(source, true);
             this.addAnimation("showAdjust" + adjName, function() {
-                adjGroup.setX(sourceCard.group.getX());
-                adjGroup.setY(sourceCard.group.getY() + ptSize.height / 2 - adjRect.getHeight() / 2);
+                if (sourceCard == null) {
+                    adjGroup.setX(targetCard.group.getX());
+                    adjGroup.setY(targetCard.group.getY());
+                } else {
+                    adjGroup.setX(sourceCard.group.getX());
+                    adjGroup.setY(sourceCard.group.getY() + ptSize.height / 2 - adjRect.getHeight() / 2);
+                }
                 new Kinetic.Tween({
                     node: adjGroup,
                     x: targetCard.group.getX(),
@@ -1666,8 +1715,8 @@ var Animater = function() {
         
         this.addAnimation('set' + adjName + 'Text', function() {
             // Adjust text number
-            var textShape = adjName == 'AT' ? targetCard.atText : targetCard.hpText;
-            var rectShape = adjName == 'AT' ? targetCard.atRect : targetCard.hpRect;
+            var textShape = adjAT ? targetCard.atText : targetCard.hpText;
+            var rectShape = adjAT ? targetCard.atRect : targetCard.hpRect;
             textShape.setText(adjName + ': ' + newValue);
             textShape.centerMiddle(rectShape);
             textShape.getLayer().draw();

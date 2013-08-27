@@ -398,4 +398,14 @@ public class CardInfo extends EntityInfo {
     public int getSummonSpeed() {
         return this.card.getSummonSpeed();
     }
+    
+    public boolean containsUsableFeature(FeatureType type) {
+        List<FeatureInfo> features = this.getAllUsableFeatures();
+        for (FeatureInfo featureInfo : features) {
+            if (featureInfo.getType() == type) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

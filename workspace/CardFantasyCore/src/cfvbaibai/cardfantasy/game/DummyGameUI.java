@@ -319,4 +319,10 @@ public class DummyGameUI extends GameUI {
         
     }
 
+    @Override
+    public void cardToOutField(Player player, CardInfo card) {
+        // TODO Auto-generated method stub
+        
+    }
+
 }

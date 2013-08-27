@@ -17,7 +17,8 @@
 		return unRfc2068(decodeURIComponent(s.replace(pluses, ' ')));
 	}
 
-	function unRfc2068(value) {
+	function unRfc2068(_value) {
+	    var value = _value;
 		if (value.indexOf('"') === 0) {
 			// This is a quoted cookie as according to RFC2068, unescape
 			value = value.slice(1, -1).replace(/\\"/g, '"').replace(/\\\\/g, '\\');
@@ -28,7 +29,9 @@
 	
 	var config = null;
 	
-	$.cookie = function (key, value, options) {
+	$.cookie = function (key, _value, _options) {
+	    var value = _value;
+	    var options = _options;
 		// write
 		if (value !== undefined) {
 			options = $.extend({}, config.defaults, options);

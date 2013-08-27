@@ -20,6 +20,7 @@ public class Player {
     private Hand hand;
     private Grave grave;
     private Field field;
+    private OutField outField;
     private RuneBox runeBox;
     private Map <Race, FeatureInfo> legionBuffFeatures;
     private int hp;
@@ -30,6 +31,7 @@ public class Player {
         this.hand = new Hand(stage.getRule());
         this.grave = new Grave();
         this.field = new Field(this);
+        this.outField = new OutField();
         this.runeBox = new RuneBox(this, playerInfo.getRunes());
         this.hp = playerInfo.getMaxHP();
         this.legionBuffFeatures = new HashMap <Race, FeatureInfo>();
@@ -64,6 +66,10 @@ public class Player {
     
     public Field getField() {
         return this.field;
+    }
+    
+    public OutField getOutField() {
+        return this.outField;
     }
     
     public int getHP() {

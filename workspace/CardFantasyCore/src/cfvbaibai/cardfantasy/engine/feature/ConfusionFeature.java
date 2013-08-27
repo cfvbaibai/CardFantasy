@@ -6,6 +6,7 @@ import cfvbaibai.cardfantasy.GameUI;
 import cfvbaibai.cardfantasy.data.Feature;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.CardStatusItem;
+import cfvbaibai.cardfantasy.engine.CardStatusType;
 import cfvbaibai.cardfantasy.engine.FeatureInfo;
 import cfvbaibai.cardfantasy.engine.FeatureResolver;
 import cfvbaibai.cardfantasy.engine.HeroDieSignal;
@@ -21,6 +22,9 @@ public final class ConfusionFeature {
         ui.useSkill(attacker, victims, feature, true);
         for (CardInfo victim : victims) {
             if (!resolver.resolveAttackBlockingFeature(attacker, victim, feature, 1).isAttackable()) {
+                continue;
+            }
+            if (victim.getStatus().containsStatus(CardStatusType.√‘ªÛ)) {
                 continue;
             }
             if (resolver.getStage().getRandomizer().roll100(rate)) {

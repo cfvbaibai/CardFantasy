@@ -30,12 +30,14 @@ import cfvbaibai.cardfantasy.engine.feature.DestroyFeature;
 import cfvbaibai.cardfantasy.engine.feature.DiseaseFeature;
 import cfvbaibai.cardfantasy.engine.feature.DodgeFeature;
 import cfvbaibai.cardfantasy.engine.feature.EnergyArmorFeature;
+import cfvbaibai.cardfantasy.engine.feature.EnergyDrainFeature;
 import cfvbaibai.cardfantasy.engine.feature.EscapeFeature;
 import cfvbaibai.cardfantasy.engine.feature.ExplodeFeature;
 import cfvbaibai.cardfantasy.engine.feature.FireMagicFeature;
 import cfvbaibai.cardfantasy.engine.feature.GuardFeature;
 import cfvbaibai.cardfantasy.engine.feature.HealFeature;
 import cfvbaibai.cardfantasy.engine.feature.HeavenWrathFeature;
+import cfvbaibai.cardfantasy.engine.feature.HolyFireFeature;
 import cfvbaibai.cardfantasy.engine.feature.HolyGuardFeature;
 import cfvbaibai.cardfantasy.engine.feature.IceArmorFeature;
 import cfvbaibai.cardfantasy.engine.feature.IceMagicFeature;
@@ -44,6 +46,7 @@ import cfvbaibai.cardfantasy.engine.feature.ImmueFeature;
 import cfvbaibai.cardfantasy.engine.feature.LegionBuffFeature;
 import cfvbaibai.cardfantasy.engine.feature.LighteningMagicFeature;
 import cfvbaibai.cardfantasy.engine.feature.MagicShieldFeature;
+import cfvbaibai.cardfantasy.engine.feature.ManaErodeFeature;
 import cfvbaibai.cardfantasy.engine.feature.OverdrawFeature;
 import cfvbaibai.cardfantasy.engine.feature.PenetrationFeature;
 import cfvbaibai.cardfantasy.engine.feature.PlagueFeature;
@@ -185,6 +188,10 @@ public class FeatureResolver {
                 SealFeature.apply(feature, this, attacker, defender);
             } else if (feature.getType() == FeatureType.…Ò • ÿª§) {
                 HolyGuardFeature.apply(this, feature, attacker);
+            } else if (feature.getType() == FeatureType. •—◊) {
+                HolyFireFeature.apply(feature.getFeature(), this, attacker, defender);
+            } else if (feature.getType() == FeatureType.∑®¡¶«÷ ¥) {
+                ManaErodeFeature.apply(feature.getFeature(), this, attacker, defender, 1);
             }
         }
         RuneInfo rune = attacker.getOwner().getActiveRuneOf(RuneData.∑…—“);
@@ -209,6 +216,8 @@ public class FeatureResolver {
                     SpikeFeature.apply(feature.getFeature(), this, attacker, defender, result.getDamage());
                 } else if (feature.getType() == FeatureType.»º…’) {
                     BurningFeature.apply(feature, this, attacker, defender);
+                } else if (feature.getType() == FeatureType.–∞¡Èº≥»°) {
+                    EnergyDrainFeature.apply(feature, this, attacker, defender, result);
                 }
             }
             {
