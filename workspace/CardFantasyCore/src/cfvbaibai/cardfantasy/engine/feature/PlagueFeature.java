@@ -26,7 +26,7 @@ public final class PlagueFeature {
         for (CardInfo victim : victims) {
             OnAttackBlockingResult result = resolver.resolveAttackBlockingFeature(attacker, victim, feature, damage);
             if (!result.isAttackable()) {
-                return;
+                continue;
             }
 
             ui.attackCard(attacker, victim, feature, damage);

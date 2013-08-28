@@ -1182,7 +1182,7 @@ var Animater = function() {
     };
 
     this.__blockDamage = function(data) {
-        var protector = data[0];
+        //var protector = data[0];
         //var attacker = data[1];
         var defender = data[2];
         var featureName = data[3];
@@ -1195,16 +1195,31 @@ var Animater = function() {
             return;
         }
         */
+        if (featureName == '闪避') {
+            return;
+        }
+        if (originalDamage == 0 && actualDamage == 0) {
+            return;
+        }
         var dfCard = this.getCard(defender);
         this.displayCardMsg({
             name: 'blockDamage',
             cardShape: dfCard.group,
             textColor: settings.blockDamageTextColor,
-            text: protector.uniqueName + '\r\n' + featureName + '\r\n伤害: ' + originalDamage + '\r\n-->' + actualDamage,
+            text: '伤害: ' + originalDamage + '\r\n-->\r\n' + actualDamage,
         });
     };
 
-    this.msgIgnoredSkills = ['背刺', '暴击', '狂热', '嗜血', '横扫', '冰甲', '闪避', '盾刺', '反击'];
+    this.__protect = function(data) {
+        var protector = data[0];
+        //var attacker = data[1];
+        var protectee = data[2];
+        //var skill = data[3];
+        this.flyImage({ fileName: 'block.png', width: 48, height: 48 },
+            protector, [ protectee ], settings.skillDuration);
+    };
+    
+    this.msgIgnoredSkills = ['背刺', '暴击', '狂热', '嗜血', '横扫', '盾刺', '反击', '穿刺'];
     this.__useSkill = function(data) {
         var attacker = data[0]; // EntityRuntimeInfo
         var skill = data[1];    // String
@@ -1226,8 +1241,25 @@ var Animater = function() {
             this.flyImage({ fileName: 'hexagram.png', width: 24, height: 24 },
                     attacker, defenders, settings.skillDuration);
         } else if (skill == '免疫') {
-            this.flyImage({ fileName: 'greyshield.png', width: 48, height: 48 },
+            this.flyImage({ fileName: 'immue.png', width: 48, height: 48 },
                     attacker, [ attacker ], settings.skillDuration);
+        } else if (skill == '魔甲') {
+            this.flyImage({ fileName: 'magicshield.png', width: 48, height: 48 },
+                    attacker, [ attacker ], settings.skillDuration);
+        } else if (skill == '不动' || skill == '脱困' || skill == '法力反射' || skill == '冰甲' || skill == '闪避') {
+           this.displayCardMsg({
+                name: skill,
+                cardShape: this.getEntityShape(attacker),
+                text: skill,
+                duration: settings.skillDuration,
+            });
+        } else if (skill == '燃烧' || skill == '裂伤') {
+            this.displayCardMsg({
+                name: skill,
+                cardShape: this.getEntityShape(defenders[0]),
+                text: skill,
+                duration: settings.skillDuration,
+            });
         } else if (skill == '迷魂') {
             this.flyImage({ fileName: 'heart.png', width: 24, height: 24 },
                     attacker, defenders, settings.skillDuration);
@@ -1235,13 +1267,19 @@ var Animater = function() {
             this.flyImage({ fileName: 'heal.png', width: 24, height: 24 },
                     attacker, defenders, settings.skillDuration);
         } else if (skill == '冰弹' || skill == '霜冻新星' || skill == '暴风雪') {
-            this.flyImage({ fileName: 'ice.png', width: 24, height: 24 },
+            this.flyImage({ fileName: 'ice.png', width: 24, height: 24, rotate: Math.PI * 4 },
                     attacker, defenders, settings.skillDuration);
         } else if (skill == '火球' || skill == '火墙' || skill == '烈焰风暴') {
             this.flyImage({ fileName: 'fire.png', width: 24, height: 24 },
                     attacker, defenders, settings.skillDuration);
         } else if (skill == '落雷' || skill == '连环闪电' || skill == '雷暴') {
             this.flyImage({ fileName: 'lightening.png', width: 24, height: 24 },
+                    attacker, defenders, settings.skillDuration);
+        } else if (skill == '毒液' || skill == '毒雾' || skill == '毒云') {
+            this.flyImage({ fileName: 'poison.png', width: 24, height: 24 },
+                    attacker, defenders, settings.skillDuration);
+        } else if (skill == '陷阱' || skill == '封印') {
+            this.flyImage({ fileName: 'trap.png', width: 48, height: 48 },
                     attacker, defenders, settings.skillDuration);
         } else {
             var text = attacker.ownerId + "的" + attacker.uniqueName + "\r\n";
@@ -1456,6 +1494,13 @@ var Animater = function() {
         return this.__getShape(runeRtInfo.ownerId, suffix);
     };
     
+    this.getEntityShape = function(entityInfo) {
+        var card = this.getCard(entityInfo, true);
+        if (card) { return card.group; }
+        var rune = this.getRune(entityInfo);
+        return rune;
+    };
+    
     /**
      * @param img Object { fileName, width, height }
      * @param source The source entity (EntityRuntimeInfo) from which image flies
@@ -1497,8 +1542,8 @@ var Animater = function() {
                     sourcePoint.x = sourceShape.group.getX() + sourceShape.width / 2 - imgObj.width / 2;
                     sourcePoint.y = sourceShape.group.getY() + sourceShape.height / 2 - imgObj.height / 2;
                 } else {
-                    sourcePoint.x = sourceShape.group.getX() - imgObj.width / 2;
-                    sourcePoint.y = sourceShape.group.getY() - imgObj.height / 2;
+                    sourcePoint.x = sourceShape.getX() - imgObj.width / 2;
+                    sourcePoint.y = sourceShape.getY() - imgObj.height / 2;
                 }
                 if (isHeroTarget) {
                     targetPoint.x = target.getX() + target.getWidth() / 2 - imgObj.width / 2;
@@ -1508,18 +1553,27 @@ var Animater = function() {
                     targetPoint.y = target.group.getY() + target.height / 2 - imgObj.height / 2;
                 }
     
+                var offsetX = 0;
+                var offsetY = 0;
+                var rotate = 0;
+                if (imgObj.rotate) {
+                    offsetX = imgObj.width / 2;
+                    offsetY = imgObj.height / 2;
+                    rotate = imgObj.rotate;
+                }
                 imgGroup = new Kinetic.Group({
-                    x: sourcePoint.x,
-                    y: sourcePoint.y,
+                    x: sourcePoint.x + offsetX,
+                    y: sourcePoint.y + offsetY,
+                    offset: [offsetX, offsetY],
                 });
 
                 var imgSrc = new Image();
                 imgSrc.src = resDir + '/img/effect/' + imgObj.fileName;
                 imgSrc.onload = function() {
                     var img = new Kinetic.Image({
-                        x : 0,
-                        y : 0,
-                        image : imgSrc,
+                        x: 0,
+                        y: 0,
+                        image: imgSrc,
                     });
                     imgGroup.add(img);
                 };
@@ -1528,8 +1582,14 @@ var Animater = function() {
                 flyingFuncs.push(function () {
                     new Kinetic.Tween({
                         node: imgGroup,
-                        x: targetPoint.x,
-                        y: targetPoint.y,
+                        x: targetPoint.x + offsetX,
+                        y: targetPoint.y + offsetY,
+                        duration: duration,
+                        easing: Kinetic.Easings.StrongEaseOut, 
+                    }).play();
+                    new Kinetic.Tween({
+                        node: imgGroup,
+                        rotation: rotate,
                         duration: duration,
                     }).play();
                 });
@@ -1685,6 +1745,7 @@ var Animater = function() {
                     x: adjGroup.getX(),
                     y: targetCard.group.getY() + ptSize.height / 2 - adjRect.getHeight() / 2,
                     duration: settings.adjustDuration / 5,
+                    easing: Kinetic.Easings.StrongEaseOut,
                 }).play();
             }, settings.adjustDuration);
         } else {
@@ -1702,6 +1763,7 @@ var Animater = function() {
                     x: targetCard.group.getX(),
                     y: targetCard.group.getY() + ptSize.height / 2 - adjRect.getHeight() / 2,
                     duration: settings.adjustDuration,
+                    easing: Kinetic.Easings.StrongEaseOut,
                 }).play();
             }, settings.adjustDuration);
         }
@@ -1723,20 +1785,26 @@ var Animater = function() {
         }, settings.minimumDuration);
         
         if (adjName == 'HP') {
-            this.updateCardHP(targetCard, newValue, newMaxValue);
+            this.updateCardHP(targetCard, newValue, newMaxValue, settings.minimumDuration);
         }
     };
     
-    this.updateCardHP = function(card, hp, maxHP) {
+    this.updateCardHP = function(card, hp, maxHP, _duration) {
+        var duration = _duration;
+        if (!duration) { duration = settings.updateHpDuration; }
+        var waitDuration = duration / 3;
+        if (waitDuration < settings.minimumDuration) {
+            waitDuration = settings.minimumDuration;
+        }
         this.addAnimation('updateCardHp', function () {
             card.hpText.setText('HP: ' + hp);
             card.hpText.centerMiddle(card.hpRect);
             new Kinetic.Tween({
                 node: card.hpBar,
                 width: hp * card.hpRect.getWidth() / maxHP,
-                duration: settings.updateHpDuration,
+                duration: duration,
             }).play();
-        }, settings.updateHpDuration);
+        }, waitDuration);
     };
     
     /**

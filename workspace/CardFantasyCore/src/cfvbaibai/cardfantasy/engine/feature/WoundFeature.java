@@ -12,6 +12,9 @@ public final class WoundFeature {
         if (normalAttackDamage <= 0) {
             return;
         }
+        if (defender.isDead()) {
+            return;
+        }
         Feature feature = featureInfo.getFeature();
         resolver.getStage().getUI().useSkill(attacker, defender, feature, true);
         CardStatusItem status = CardStatusItem.wound(featureInfo);

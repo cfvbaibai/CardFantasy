@@ -153,7 +153,7 @@ public class AutoBattleController {
             log("Winner: " + gameResult.getWinner().getId());
             return new ResponseEntity<String>(result, responseHeaders, HttpStatus.CREATED);
         } catch (Exception e) {
-            return handleError(e, false);
+            return handleError(e, true);
         }
     }
     

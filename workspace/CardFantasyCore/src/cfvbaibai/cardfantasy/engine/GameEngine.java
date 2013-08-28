@@ -224,7 +224,7 @@ public class GameEngine {
             }
         }
         OnDamagedResult damagedResult = resolver.attackCard(myField.getCard(i), defender);
-        if (damagedResult != null && myField.getCard(i) != null) {
+        if (damagedResult != null && damagedResult.originalDamage > 0 && myField.getCard(i) != null) {
             for (FeatureInfo featureInfo : myField.getCard(i).getNormalUsableFeatures()) {
                 if (featureInfo.getFeature().getType() == FeatureType.∫·…®) {
 
