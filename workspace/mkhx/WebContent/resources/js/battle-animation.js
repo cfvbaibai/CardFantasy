@@ -1048,6 +1048,7 @@ var Animater = function() {
         this.adjustValue(data, 'HP', false);
     };
     
+    this.overlapStatus = ['燃', '毒'];
     this.__addCardStatus = function(data) {
         //var attacker = data[0];
         var defender = data[1];
@@ -1059,13 +1060,13 @@ var Animater = function() {
             // 裂伤再死亡之后发动就有可能造成null
             return;
         }
-        this.displayCardMsg({
-            name: 'addCardStatus',
-            cardShape: defenderCard.group,
-            text: featureName + '\r\n\r\n导致\r\n\r\n' + longStatus, 
-        });
 
-        if (shortStatus != '裂' || defenderCard.statusList.indexOf('裂') < 0) {
+        if (overlapStatus.indexOf(shortStatus) >= 0 || defenderCard.statusList.indexOf(shortStatus) < 0) {
+            this.displayCardMsg({
+                name: 'addCardStatus',
+                cardShape: defenderCard.group,
+                text: featureName + '\r\n\r\n导致\r\n\r\n' + longStatus, 
+            });
             defenderCard.statusList.push(shortStatus);
         }
         var text = defenderCard.statusList.join();
