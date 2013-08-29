@@ -29,8 +29,8 @@ public class Growth {
 
     public int getRequiredExp(int level) {
         if (level < 0 || level >= requiredExp.length) {
-            throw new CardFantasyRuntimeException("Invalid level " + level + ". Level must be between 0 and "
-                    + (requiredExp.length - 1));
+            throw new CardFantasyRuntimeException("无效的等级： " + level + ". 等级必须在 0 和 "
+                    + (requiredExp.length - 1) + "之间。");
         }
         return requiredExp[level];
     }
