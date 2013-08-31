@@ -19,5 +19,9 @@ public final class EnergyDrainFeature {
         resolver.getStage().getUI().useSkill(defender, attacker, feature, true);
         resolver.getStage().getUI().adjustAT(defender, attacker, adjAT, feature);
         attacker.addEffect(new FeatureEffect(FeatureEffectType.ATTACK_CHANGE, featureInfo, adjAT, true));
+        if (!defender.isDead()) {
+            resolver.getStage().getUI().adjustAT(defender, defender, -adjAT, feature);
+            defender.addEffect(new FeatureEffect(FeatureEffectType.ATTACK_CHANGE, featureInfo, -adjAT, true));
+        }
     }
 }

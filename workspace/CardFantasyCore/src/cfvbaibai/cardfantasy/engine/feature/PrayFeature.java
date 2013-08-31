@@ -20,6 +20,9 @@ public final class PrayFeature {
         if (healHP == 0) {
             return;
         }
+        if (healHP < 0) {
+            throw new CardFantasyRuntimeException("Invalid hero heal HP: " + healHP);
+        }
         try {
             resolver.attackHero(healer, healee, cardFeature, -healHP);
         } catch (HeroDieSignal e) {

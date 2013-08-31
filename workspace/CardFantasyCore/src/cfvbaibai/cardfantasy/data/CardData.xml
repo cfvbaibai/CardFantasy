@@ -764,7 +764,7 @@
         <Feature type="迷魂" level="7" unlock="5" />
         <Feature type="闪避" level="5" unlock="10" />
     </Card>
-    <Card id="3417" name="巨龟岛幼崽" race="蛮荒" speed="4" star="4" cost="12" at="235" hp="890" incrAT="21" incrHP="37">
+    <Card id="3417" name="巨岛龟幼崽" race="蛮荒" speed="4" star="4" cost="12" at="235" hp="890" incrAT="21" incrHP="37">
         <Feature type="盾刺" level="5" unlock="0" />
         <Feature type="邪灵汲取" level="4" unlock="5" />
         <Feature type="回春" level="6" unlock="10" />

@@ -222,7 +222,7 @@
                     </div>
                 </div>
             </div>
-            <div id="command" data-mini="true" data-role="controlgroup" data-type="horizontal" data-disabled="false">
+            <div id="boss-command" data-mini="true" data-role="controlgroup" data-type="horizontal" data-disabled="false">
                 <a data-role="button" data-mini="true" data-theme="c" href="javascript:playBossGame(1)">模拟一次战斗</a>
                 <a data-role="button" data-mini="true" data-theme="c" href="javascript:playBossGame(-1)">观看一次战斗</a>
                 <a data-role="button" data-mini="true" data-theme="c" href="javascript:playBossGame(1000)">卡组强度分析</a>
@@ -260,7 +260,14 @@
             <div id="canvas-outline" style="overflow: auto; margin-left: auto; margin-right: auto">
                 <div id="battle-canvas">&nbsp;</div>
             </div>
-            <a href="javascript:history.go(-1)" data-role="button">返回</a>
+            <div id="arena-control-panel" data-mini="true" data-role="controlgroup" data-type="horizontal">
+                <a id="playButton" data-role="button" data-mini="true" data-theme="c" href="javascript:togglePlayButton()"></a>
+                <a id="fasterButton" data-role="button" data-mini="true" data-theme="c" href="javascript:faster()">加快</a>
+                <a id="slowerButton" data-role="button" data-mini="true" data-theme="c" href="javascript:slower()">减慢</a>
+                <a id="backButton" data-role="button" data-mini="true" data-theme="c" href="javascript:history.go(-1)">返回</a>
+                <a data-role="button" data-mini="true" data-theme="c" href="http://tieba.baidu.com/p/2548422450" target="blank">提BUG</a>
+            </div>
+            <div id="playerStatus"></div>
         </div>
     </div>
 

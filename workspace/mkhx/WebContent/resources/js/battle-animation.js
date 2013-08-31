@@ -1,3 +1,27 @@
+(function($) {
+    /*
+     * Changes the displayed text for a jquery mobile button.
+     * Encapsulates the idiosyncracies of how jquery re-arranges the DOM
+     * to display a button for either an <a> link or <input type="button">
+     */
+    $.fn.changeButtonText = function(newText) {
+        return this.each(function() {
+            var $this = $(this);
+            if( $this.is('a') ) {
+                $('span.ui-btn-text', $this).text(newText);
+                return;
+            }
+            if( $this.is('input') ) {
+                $this.val(newText);
+                // go up the tree
+                var ctx = $this.closest('.ui-btn');
+                $('span.ui-btn-text', ctx).text(newText);
+                return;
+            }
+        });
+    };
+})(jQuery);
+
 Kinetic.Text.prototype.center = function(rect) {
     this.setX(rect.getX() + rect.getWidth() / 2 - this.getWidth() / 2);
     return this;
@@ -56,6 +80,25 @@ Array.prototype.ofName = function(name) {
     return null;
 };
 
+Array.prototype.remove = function(obj) {
+    var index = -1;
+    for (var i = 0; i < this.length; ++i) {
+        if (this[i] == obj) {
+            index = i;
+            break;
+        }
+    }
+    if (index >= 0) {
+        this.removeAt(index, index);
+    }
+};
+
+Array.prototype.removeAt = function(from, to) {
+    var rest = this.slice((to || from) + 1 || this.length);
+    this.length = from < 0 ? this.length + from : from;
+    return this.push.apply(this, rest);
+};
+
 var CfSize = function(attr) {
     this.width = attr.width;
     this.height = attr.height;
@@ -71,7 +114,23 @@ var ArenaSettings = function() {
     this.heightRate = 1.2;
     this.width = this.maxWidth;
     this.height = this.width * this.heightRate;
+
     this.minimumDuration = 0.01;
+    this.bannerDuration = 0.4;
+    this.updateHpDuration = 0.5;
+    this.drawCardDuration = 0.2;
+    this.compactFieldDuration = 0.1;
+    this.reincarnateDuration = 0.5;
+    this.transportDuration = 0.5;
+    this.summonCardDuration = 0.2;
+    this.summonCardPause = 0.5;
+    this.hpChangeDuration = 0.3;
+    this.flyImageDuration = 0.3;
+    this.skillDuration = 0.7;
+    this.adjustDuration = 0.7;
+    this.cardMsgDuration = 0.7;
+    this.skillSplashDuration = 0.1;
+    this.skillSplashPause = 0.7;
 
     this.bgColor = 'black';
     this.separatorColor = 'white';
@@ -119,7 +178,6 @@ var ArenaSettings = function() {
     this.bannerOpacity = 0.85;
     this.bannerBorderColor = '#EEEEEE';
     this.bannerBorderWidth = 1;
-    this.bannerDuration = 0.4;
     this.bannerPause = 1.3;
     
     this.handDelayFontSize = 10;
@@ -144,9 +202,7 @@ var ArenaSettings = function() {
     this.cardHpTextColor = 'white';
     this.cardHpBarOpacity = this.cardHpRectOpacity;
     this.cardHpBarFill = 'red';
-    
-    this.updateHpDuration = 0.5;
-    
+
     this.cardAtRectBorderColor = this.cardHpRectBorderColor;
     this.cardAtRectBorderWidth = this.cardHpRectBorderWidth;
     this.cardAtRectFill = this.cardHpRectFill;
@@ -164,30 +220,7 @@ var ArenaSettings = function() {
     this.statusFontFamily = this.cardHpFontFamily;
     this.statusFontSize = this.cardHpFontSize;
     this.statusTextColor = this.cardHpTextColor;
-    
-    this.drawCardDuration = 0.2;
-    this.compactFieldDuration = 0.1;
-    this.reincarnateDuration = 0.5;
-    this.transportDuration = 0.5;
-    
-    this.summonCardDuration = 0.2;
-    this.summonCardPause = 0.5;
 
-    this.hpChangeDuration = 0.3;
-    
-    this.returnCardCrossDuration = 1;
-    
-    this.zoomAttackerDuration = 0.2;
-    this.zoomRate = 0.2;
-    
-    this.normalAttackDuration = 0.3;
-    this.skillDuration = 0.7;
-    this.swordWidth = 14;
-    this.swordHeight = 44;
-    this.healWidth = 24;
-    this.healHeight = 24;
-    
-    this.adjustDuration = 0.7;
     this.adjustFontFamily = this.fontFamily;
     this.adjustFontSize = 8;
     this.addAtColor = 'blue';
@@ -210,13 +243,9 @@ var ArenaSettings = function() {
     this.cardMsgFontFamily = this.fontFamily;
     this.cardMsgFontSize = 8;
     this.cardMsgTextColor = 'black';
-    this.cardMsgDuration = 0.7;
-    
+
     this.attackCardTextColor = 'red';
     this.healCardTextColor = 'green';
-    
-    this.skillSplashDuration = 0.1;
-    this.skillSplashPause = 0.7;
 
     this.refreshSize = function () {
         var currentWidth = $(window).width() * 0.8;
@@ -268,14 +297,14 @@ var ArenaSettings = function() {
     };
     
     this.getLogoSize = function() {
-        return { width: this.getRightPanelWidth() / 5, height: this.getPanelHeight() * this.handHeightRate };
+        return new CfSize({ width: this.getRightPanelWidth() / 5, height: this.getPanelHeight() * this.handHeightRate });
     };
     
     this.getPortraitSize = function() {
-        return {
+        return new CfSize({
             width: this.getRightPanelWidth() / 5,
             height: this.getPanelHeight() * (1 - this.handHeightRate) / 2,
-        };
+        });
     };
     
     this.getLogoX = function(playerNumber, logoIndex) {
@@ -285,7 +314,7 @@ var ArenaSettings = function() {
         return playerNumber == 0 ? 0 : this.height - this.getHandPanelHeight();
     };
     this.getLogoPos = function(playerNumber, logoIndex) {
-        return { x: this.getLogoX(playerNumber, logoIndex), y: this.getLogoY(playerNumber), };
+        return new CfPos({ x: this.getLogoX(playerNumber, logoIndex), y: this.getLogoY(playerNumber), });
     };
     
     this.getPortraitPos = function(playerNumber, logoIndex) {
@@ -478,30 +507,38 @@ var Arena = function(playerId, playerNumber) {
     };
 };
 
-Arena.createCross = function() {
-    var size = settings.getPortraitSize();
-    var group = new Kinetic.Group({ x: settings.width, y: settings.height, });
-    var paddingX = size.width * 0.2;
-    var paddingY = size.height * 0.2;
-    var verX = size.width * 0.5;
-    var hozY = (size.height - paddingY) * 0.3 + paddingY;
-    var crossLine = new Kinetic.Line({
-        points: [
-                 paddingX, hozY,
-                 size.width - paddingX, hozY,
-                 verX, hozY,
-                 verX, paddingY,
-                 verX, size.height
-                 ],
-        stroke: 'white',
-        strokeWidth: 5,
-        shadowColor: '#333333',
-        shadowBlur: 10,
-        shadowOffset: 0,
-        shadowOpacity: 0.4,
-    });
-    group.add(crossLine);
-    return group;
+var Animation = function(name, funcs, duration) {
+    var self = this;
+    if ($.type(name) != 'string') {
+        console.error("ERROR: Invalid name: " + name);
+    }
+    self.name = name || 'UNKNOWN';
+    self.funcs = [];
+    if ($.type(funcs) == 'array') {
+        $.each(funcs, function(i, func) {
+            self.funcs.push(func);
+        });
+    } else {
+        self.funcs.push(funcs);
+    }
+    if (duration == undefined) {
+        self.duration = settings.minimumDuration;
+    } else if (isNaN(duration) || duration <= 0) {
+        console.error("ERROR: Invalid duration: " + duration);
+        self.duration = settings.minimumDuration;
+    } else {
+        self.duration = duration;
+    }
+    
+    this.play = function(speed) {
+        $.each(self.funcs, function(i, func) {
+            func(speed, duration);
+        });
+    };
+};
+
+Animation.pause = function(duration) {
+    return new Animation('pause', function() {}, duration);
 };
 
 var Animater = function() {
@@ -552,7 +589,7 @@ var Animater = function() {
         return this.stage.get('#' + prefix + idSuffix)[0];
     };
 
-    this.__updateHeroHp = function(player) {
+    this.updateHeroHp = function(player) {
         var hp = player.hp;
         var maxHp = player.maxHP;
         var hpTextShape = this.__getShape(player, 'hp');
@@ -856,7 +893,7 @@ var Animater = function() {
         var arena = new Arena(player.id, player.number);
         this.arenas[player.id] = arena;
 
-        this.__updateHeroHp(player, player.maxHP, player.maxHP);
+        this.updateHeroHp(player, player.maxHP, player.maxHP);
         this.__updateRunes(player, player.runeInitInfos);
     };
 
@@ -1007,7 +1044,7 @@ var Animater = function() {
                 duration: settings.summonCardDuration,
             }).play();
         }, settings.summonCardDuration);
-        this.pauseAnimation(settings.summonCardPause);
+        this.addPause(settings.summonCardPause);
     };
     
     this.__cardActionBegins = function(data) {
@@ -1061,7 +1098,7 @@ var Animater = function() {
             return;
         }
 
-        if (overlapStatus.indexOf(shortStatus) >= 0 || defenderCard.statusList.indexOf(shortStatus) < 0) {
+        if (this.overlapStatus.indexOf(shortStatus) >= 0 || defenderCard.statusList.indexOf(shortStatus) < 0) {
             this.displayCardMsg({
                 name: 'addCardStatus',
                 cardShape: defenderCard.group,
@@ -1109,7 +1146,7 @@ var Animater = function() {
         if (defenderHero.hp < 0) {
             defenderHero.hp = 0;
         }
-        this.__updateHeroHp(defenderHero);
+        this.updateHeroHp(defenderHero);
     };
     
     this.__attackCard = function(data) {
@@ -1142,7 +1179,7 @@ var Animater = function() {
             text: '治疗: ' + heal + '\r\n' + featureName,
         });
         healee.hp = currentHP;
-        this.__updateHeroHp(healee);
+        this.updateHeroHp(healee);
     };
 
     this.__healCard = function(data) {
@@ -1221,6 +1258,7 @@ var Animater = function() {
     };
     
     this.msgIgnoredSkills = ['背刺', '暴击', '狂热', '嗜血', '横扫', '盾刺', '反击', '穿刺'];
+    this.selfUsedSkills = ['不动', '脱困', '法力反射', '冰甲', '闪避', '回春'];
     this.__useSkill = function(data) {
         var attacker = data[0]; // EntityRuntimeInfo
         var skill = data[1];    // String
@@ -1237,7 +1275,8 @@ var Animater = function() {
         if (skill == '普通攻击') {
             this.normalAttack(attacker, defenders[0], false);
         } else if (skill == '送还') {
-            this.showReturnCross(attacker, defenders[0]);
+            this.flyImage({ fileName: 'cross.png', width: 29, height: 60, },
+                    attacker, defenders, settings.skillDuration);
         } else if (skill == '传送') {
             this.flyImage({ fileName: 'hexagram.png', width: 24, height: 24 },
                     attacker, defenders, settings.skillDuration);
@@ -1247,7 +1286,7 @@ var Animater = function() {
         } else if (skill == '魔甲') {
             this.flyImage({ fileName: 'magicshield.png', width: 48, height: 48 },
                     attacker, [ attacker ], settings.skillDuration);
-        } else if (skill == '不动' || skill == '脱困' || skill == '法力反射' || skill == '冰甲' || skill == '闪避') {
+        } else if (this.selfUsedSkills.indexOf(skill) >= 0) {
            this.displayCardMsg({
                 name: skill,
                 cardShape: this.getEntityShape(attacker),
@@ -1264,7 +1303,7 @@ var Animater = function() {
         } else if (skill == '迷魂') {
             this.flyImage({ fileName: 'heart.png', width: 24, height: 24 },
                     attacker, defenders, settings.skillDuration);
-        } else if (skill == '治疗' || skill == '甘霖') {
+        } else if (skill == '治疗' || skill == '甘霖' || skill == '回春') {
             this.flyImage({ fileName: 'heal.png', width: 24, height: 24 },
                     attacker, defenders, settings.skillDuration);
         } else if (skill == '冰弹' || skill == '霜冻新星' || skill == '暴风雪') {
@@ -1318,34 +1357,7 @@ var Animater = function() {
             });
         }
     };
-    
-    this.showReturnCross = function(attacker, defender) {
-        var attackerArena = this.arenas[attacker.ownerId];
-        var defenderArena = this.arenas[defender.ownerId];
-        var defenderCardIndex = defenderArena.fields.indexOfName(defender.uniqueName);
-        var cross = null;
-        var self = this;
-        this.addAnimation("showCross", function() {
-            cross = Arena.createCross();
-            self.stage.get('#effect-layer')[0].add(cross);
-            var crossSartPos = settings.getPortraitPos(attackerArena.playerNumber, defenderCardIndex);
-            var crossEndPos = settings.getPortraitPos(defenderArena.playerNumber, defenderCardIndex);
-            cross.setX(crossSartPos.x);
-            cross.setY(crossSartPos.y);
-            new Kinetic.Tween({
-                node: cross,
-                x: crossEndPos.x,
-                y: crossEndPos.y,
-                easing: Kinetic.Easings.StrongEaseIn,
-                duration: settings.returnCardCrossDuration,
-            }).play();
-        }, settings.returnCardCrossDuration);
-        this.addAnimation("destroyCross", function() {
-            cross.destroy();
-            delete cross;
-        }, settings.minimumDuration);
-    };
-    
+
     this.__returnCard = function(data) {
         // var attacker = data[0];
         var defender = data[1];
@@ -1510,7 +1522,7 @@ var Animater = function() {
     this.flyImage = function(imgObj, source, targetEntities, _duration) {
         var self = this;
         var duration = _duration;
-        if (!duration) { duration = settings.normalAttackDuration; }
+        if (!duration) { duration = settings.flyImageDuration; }
         if (source.type != 'Card' && source.type != 'Rune') {
             console.error("Invalid source type: " + source.type);
             return;
@@ -1532,10 +1544,6 @@ var Animater = function() {
         var destroyFuncs = [];
         $.each(targets, function(i, target) {
             var imgGroup = null;
-            destroyFuncs.push(function() {
-                imgGroup.destroy();
-                delete imgGroup;
-            });
             flyingFuncs.push(function() {
                 var sourcePoint = { x: 0, y: 0 };
                 var targetPoint = { x: 0, y: 0 };
@@ -1579,59 +1587,142 @@ var Animater = function() {
                     imgGroup.add(img);
                 };
                 self.stage.get('#effect-layer')[0].add(imgGroup);
-                
-                flyingFuncs.push(function () {
-                    new Kinetic.Tween({
-                        node: imgGroup,
-                        x: targetPoint.x + offsetX,
-                        y: targetPoint.y + offsetY,
-                        duration: duration,
-                        easing: Kinetic.Easings.StrongEaseOut, 
-                    }).play();
-                    new Kinetic.Tween({
-                        node: imgGroup,
-                        rotation: rotate,
-                        duration: duration,
-                    }).play();
-                });
+                new Kinetic.Tween({
+                    node: imgGroup,
+                    x: targetPoint.x + offsetX,
+                    y: targetPoint.y + offsetY,
+                    duration: duration,
+                    easing: imgObj.easing || Kinetic.Easings.StrongEaseOut, 
+                }).play();
+                new Kinetic.Tween({
+                    node: imgGroup,
+                    rotation: rotate,
+                    duration: duration,
+                }).play();
+            });
+            
+            destroyFuncs.push(function() {
+                imgGroup.destroy();
+                delete imgGroup;
             });
         });
-        
-        this.addAnimations("flyingImages", flyingFuncs, duration);
+
+        this.addAnimations("flyingImages(" + imgObj.fileName + ")", flyingFuncs, duration);
         this.addAnimations("destroyFlyingImages", destroyFuncs, settings.minimumDuration);
     };
 
-    this.animations = [];
+    this.pieces = [];
+    this.speeds = [ 0.25, 0.5, 1.0, 1.5, 2.0, 3.0, 4.0, 5.0 ];
+    this.speedIndex = 2;
+    this.speed = 1.0 / this.speeds[this.speedIndex];
 
+    this.enableAnimationLog = false;
+    this.getSpeedText = function() {
+        return this.speeds[this.speedIndex];
+    };
+
+    this.isSpeedIncreasible = function() {
+        return this.speedIndex < this.speeds.length - 1;
+    };
+    
+    this.isSpeedDecreasible = function() {
+        return this.speedIndex > 0;
+    };
+    
+    this.increaseSpeed = function() {
+        if (!this.isSpeedIncreasible()) { return; }
+        ++this.speedIndex;
+        this.speed = 1.0 / this.speeds[this.speedIndex];
+        this.pauseAnimations();
+        this.playAnimations();
+    };
+    
+    this.decreaseSpeed = function() {
+        if (!this.isSpeedDecreasible()) { return; }
+        --this.speedIndex;
+        this.speed = 1.0 / this.speeds[this.speedIndex];
+        this.pauseAnimations();
+        this.playAnimations();
+    };
+    
+    this.dumpAnimations = function() {
+        var self = this;
+        $.each(this.pieces, function(i, piece) {
+            if (self.enableAnimationLog) {
+                console.log("Piece[" + i + "] (" + piece.animation.duration + "): " + piece.animation.name);
+            }
+        });
+    };
+    
+    this.clearAnimations = function() {
+        this.pauseAnimations();
+        this.pieces = [];
+    };
+
+    this.playAnimations = function() {
+        var self = this;
+        this.time = this.initTime;
+        $.each(this.pieces, function(i, piece) {
+            var name = piece.animation.name;
+            var duration = piece.animation.duration;
+            if (self.enableAnimationLog) {
+                console.log("Scheduling animation '" + name + "' at " + self.time + " (Duration: " + duration + ")");
+            }
+            var timeOutVar = window.setTimeout(function() {
+                if (self.enableAnimationLog) {
+                    console.log("ANIM Executing " + name + " (duration = " + duration + ")");
+                    console.log("ANIM Next animation should happen at " + new Date(new Date().getTime() + duration * 1000));
+                }
+                self.pieces.remove(piece);
+                piece.animation.play(self.speed);
+            }, self.time * 1000);
+            piece.handle = timeOutVar;
+            var timeSpent = self.speed * piece.animation.duration;
+            if (timeSpent < settings.minimumDuration) {
+                timeSpent = settings.minimumDuration;
+            }
+            var newTime = self.time + timeSpent;
+            if (self.enableAnimationLog) {
+                console.log("Time: " + self.time + " -> " + newTime);
+            }
+            self.time = newTime;
+        });
+    };
+    
+    this.stepTime = this.initTime;
+    this.stepAnimation = function() {
+        var piece = this.pieces.splice(0, 1)[0];
+        var newTime = this.stepTime + this.speed * piece.animation.duration;
+        if (this.enableAnimationLog) {
+            console.log("Play animation '" + piece.animation.name + "'. Duration: " + piece.animation.duration +
+                ". Time: " + this.stepTime + " -> " + newTime);
+        }
+        piece.animation.play(this.speed);
+        this.stepTime = newTime;
+    };
+    
+    this.pauseAnimations = function() {
+        $.each(this.pieces, function(i, piece) {
+            clearTimeout(piece.handle);
+            delete piece.handle;
+        });
+    };
+
+    this.__addAnimation = function(animation) {
+        animation.name += '-' + this.pieces.length;
+        this.pieces.push({ animation: animation });
+    };
+    
     this.addAnimation = function(name, func, duration) {
-        if ($.type(name) != 'string') {
-            console.error("ERROR: first variable of this.addAnimation must be string! Given: " + name);
-        }
-        if (duration == undefined || duration <= 0) {
-            console.error("ERROR: Invalid addAnimation duration of " + name + ": " + duration + "!");
-        }
-        var timeOutVar = window.setTimeout(function() {
-            //console.log("ANIM Executing " + name + " (duration = " + duration + ")");
-            //console.log("ANIM Next animation should happen at " + new Date(new Date().getTime() + duration * 1000));
-            func();
-        }, this.time * 1000);
-        this.animations.push(timeOutVar);
-        //console.log("ANIM Registering " + name + " (time = " + this.time + ", duration = " + duration + ")");
-        this.time += duration;
+        this.__addAnimation(new Animation(name, func, duration));
     };
     
     this.addAnimations = function(name, funcs, duration) {
-        this.addAnimation(name, function () {
-            for (var i = 0; i < funcs.length; ++i) {
-                //console.log("ANIM Executing " + name + "[" + i + "] (duration = " + duration + ")");
-                //console.log("ANIM Next animation should happen at " + new Date(new Date().getTime() + duration * 1000));
-                funcs[i]();
-            }
-        }, duration);
+        this.__addAnimation(new Animation(name, funcs, duration));
     };
     
-    this.pauseAnimation = function(duration) {
-        this.addAnimation("pause", function () {}, duration);
+    this.addPause = function(duration) {
+        this.__addAnimation(Animation.pause(duration));
     };
     
     this.showSplash = function(attrs) {
@@ -1644,33 +1735,33 @@ var Animater = function() {
         var width = settings.width;
         var splashText = this.stage.get('#splash-text')[0];
         var splashRect = this.stage.get('#splash-label')[0];
-        this.addAnimation("showSplash", function() {
+        this.addAnimation("showSplash", function(speed) {
             splashRect.setX(-width);
             splashText.setText(text);
             splashText.centerMiddle(splashRect);
             new Kinetic.Tween({
                 node: splashRect,
                 x: 0,
-                duration: duration,
+                duration: duration * speed,
             }).play();
             new Kinetic.Tween({
                 node: splashText,
                 x: width / 2 - splashText.getWidth() / 2,
-                duration: duration,
+                duration: duration * speed,
             }).play();
         }, duration);
         if (exitType == 'pause') {
-            this.pauseAnimation(pause);
-            this.addAnimation("exitSplash", function() {
+            this.addPause(pause);
+            this.addAnimation("exitSplash", function(speed) {
                 new Kinetic.Tween({
                     node: splashRect,
                     x: width,
-                    duration: duration,
+                    duration: duration * speed,
                 }).play();
                 new Kinetic.Tween({
                     node: splashText,
                     x: width * 1.5 - splashText.getWidth() / 2,
-                    duration: duration,
+                    duration: duration * speed,
                 }).play();
             }, duration);
         }
@@ -1714,7 +1805,7 @@ var Animater = function() {
             adjTextColor = settings.loseAdjHpColor;
         }
         var self = this;
-        this.addAnimation("adjustValuePrepare", function() {
+        this.addAnimation("adjustValuePrepare", function(speed) {
             adjRect = new Kinetic.Rect({
                 x: 0, y: 0, width: ptSize.width, height: settings.adjRectHeight,
                 stroke: settings.adjRectBorderColor,
@@ -1738,20 +1829,20 @@ var Animater = function() {
         }, settings.minimumDuration);
         var targetCard = this.getCard(target);
         if (source.type != 'Card' || source.uniqueName == target.uniqueName) {
-            this.addAnimation("showAdjust" + adjName, function() {
+            this.addAnimation("showAdjust" + adjName, function(speed) {
                 adjGroup.setX(targetCard.group.getX());
                 adjGroup.setY(-adjRect.getHeight());
                 new Kinetic.Tween({
                     node: adjGroup,
                     x: adjGroup.getX(),
                     y: targetCard.group.getY() + ptSize.height / 2 - adjRect.getHeight() / 2,
-                    duration: settings.adjustDuration / 5,
+                    duration: settings.adjustDuration / 5 * speed,
                     easing: Kinetic.Easings.StrongEaseOut,
                 }).play();
             }, settings.adjustDuration);
         } else {
             var sourceCard = this.getCard(source, true);
-            this.addAnimation("showAdjust" + adjName, function() {
+            this.addAnimation("showAdjust" + adjName, function(speed) {
                 if (sourceCard == null) {
                     adjGroup.setX(targetCard.group.getX());
                     adjGroup.setY(targetCard.group.getY());
@@ -1763,7 +1854,7 @@ var Animater = function() {
                     node: adjGroup,
                     x: targetCard.group.getX(),
                     y: targetCard.group.getY() + ptSize.height / 2 - adjRect.getHeight() / 2,
-                    duration: settings.adjustDuration,
+                    duration: settings.adjustDuration * speed,
                     easing: Kinetic.Easings.StrongEaseOut,
                 }).play();
             }, settings.adjustDuration);
@@ -1797,13 +1888,13 @@ var Animater = function() {
         if (waitDuration < settings.minimumDuration) {
             waitDuration = settings.minimumDuration;
         }
-        this.addAnimation('updateCardHp', function () {
+        this.addAnimation('updateCardHp', function (speed) {
             card.hpText.setText('HP: ' + hp);
             card.hpText.centerMiddle(card.hpRect);
             new Kinetic.Tween({
                 node: card.hpBar,
                 width: hp * card.hpRect.getWidth() / maxHP,
-                duration: duration,
+                duration: duration * speed,
             }).play();
         }, waitDuration);
     };
@@ -1828,7 +1919,7 @@ var Animater = function() {
         }, (attrs || {}));
         var ptSize = settings.getPortraitSize();
         var group = null;
-        this.addAnimation(name, function () {
+        this.addAnimation(attrs.name, function () {
             var rect = new Kinetic.Rect({
                 x: 0, y: 0, width: ptSize.width,
                 height: settings.cardMsgRectHeight,
@@ -1852,7 +1943,8 @@ var Animater = function() {
             text.centerMiddle(rect);
             group.getLayer().draw();
         }, opt.duration);
-        this.addAnimation(name + "Clearup", function() {
+        this.addAnimation(attrs.name + "Clearup", function() {
+            if (group == null) { return; }
             var layer = group.getLayer();
             group.destroy();
             delete group;
@@ -1868,18 +1960,17 @@ var Animater = function() {
      */
     this.normalAttack = function(attacker, defender, attackingHero) {
         this.flyImage(
-                { fileName: 'sword.png', width: settings.swordWidth, height: settings.swordHeight },
+                { fileName: 'sword.png', width: 14, height: 44 },
                 attacker,
                 attackingHero ? defender : [ defender ]
         );
     };
 
-    this.start = function(animation) {
+    this.setup = function(data) {
         settings.refreshSize();
-        $.each(this.animations, function(i, v) {
-            clearTimeout(v);
-        });
+        this.clearAnimations();
         this.time = this.initTime;
+        this.speed = 1;
         $('#battle-canvas').width(this.width).height(this.height);
         this.stage = new Kinetic.Stage({
             container : 'battle-canvas',
@@ -1899,7 +1990,7 @@ var Animater = function() {
         bgLayer.add(bg);
         this.stage.add(bgLayer);
         
-        var events = animation.events;
+        var events = data.events;
         for (var i = 0; i < events.length; ++i) {
             var event = events[i];
             console.log(JSON.stringify(event));
@@ -1915,8 +2006,64 @@ var Animater = function() {
 };
 var animater = null;
 
-var showBattle = function(animation) {
-    animater.start(animation);
+var showBattle = function(data) {
+    animater.playing = true;
+    $('#playButton').changeButtonText('暂停');
+    refreshPlayStatus();
+    animater.setup(data);
+    animater.dumpAnimations();
+    animater.playAnimations();
+};
+
+var togglePlayButton = function() {
+    if (animater.playing) {
+        animater.playing = false;
+        animater.pauseAnimations();
+    } else {
+        animater.playing = true;
+        animater.playAnimations();
+    }
+    refreshPlayStatus();
+};
+
+var faster = function() {
+    animater.increaseSpeed();
+    refreshPlayStatus();
+};
+
+var slower = function() {
+    animater.decreaseSpeed();
+    refreshPlayStatus();
+};
+
+var refreshPlayStatus = function() {
+    var playButton = $('#playButton');
+    if (animater.playing) {
+        playButton.changeButtonText('暂停');
+        if (animater.isSpeedIncreasible()) {
+            $('#fasterButton').removeClass('ui-disabled');
+        } else {
+            $('#fasterButton').addClass('ui-disabled');
+        }
+        if (animater.isSpeedDecreasible()) {
+            $('#slowerButton').removeClass('ui-disabled');
+        } else {
+            $('#slowerButton').addClass('ui-disabled');
+        }
+    } else {
+        playButton.changeButtonText('播放');
+        $('#fasterButton').addClass('ui-disabled');
+        $('#slowerButton').addClass('ui-disabled');
+    }
+    var text = '';
+    if (animater.playing) {
+        text += '播放中';
+    } else {
+        text += '暂停中';
+    }
+    text += '          播放速度：';
+    text += animater.getSpeedText() + '速';
+    $('#playerStatus').text(text);
 };
 
 $(document).ready( function() {
