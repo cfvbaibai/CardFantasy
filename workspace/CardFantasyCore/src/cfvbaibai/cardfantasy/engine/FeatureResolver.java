@@ -623,6 +623,9 @@ public class FeatureResolver {
         if (attacker == null) {
             return;
         }
+        if (attacker.getStatus().containsStatus(CardStatusType.Âé±Ô)) {
+            return;
+        }
         stage.getUI().useSkillToHero(attacker, defenderPlayer, cardFeature);
         if (damage >= 0) {
             if (!this.resolveAttackHeroBlockingFeatures(attacker, defenderPlayer, cardFeature, damage)) {

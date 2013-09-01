@@ -1076,8 +1076,10 @@ var Animater = function() {
         var card = this.getCard(cardRtInfo, true);
         if (card) {
             this.addAnimation("cardActionEnds", function() {
-                card.frame.setOpacity(0);
-                card.frame.getLayer().draw();
+                if (card.frame) {
+                    card.frame.setOpacity(0);
+                    card.frame.getLayer().draw();
+                }
             }, settings.minimumDuration);
         }
     };
@@ -1270,7 +1272,7 @@ var Animater = function() {
             protector, [ protectee ], settings.skillDuration);
     };
     
-    this.msgIgnoredSkills = ['背刺', '暴击', '狂热', '嗜血', '横扫', '盾刺', '反击', '穿刺', '诅咒'];
+    this.msgIgnoredSkills = ['背刺', '暴击', '狂热', '嗜血', '横扫', '穿刺', '诅咒'];
     this.selfUsedSkills = ['不动', '脱困', '法力反射', '冰甲', '闪避', '回春', '吸血'];
     this.__useSkill = function(data) {
         var attacker = data[0]; // EntityRuntimeInfo
@@ -1336,6 +1338,9 @@ var Animater = function() {
                     attacker, defenders, settings.skillDuration);
         } else if (skill == '摧毁') {
             this.flyImage({ fileName: 'bomb.png', width: 48, height: 48, text: skill },
+                    attacker, defenders, settings.skillDuration);
+        } else if (skill == '盾刺' || skill == '反击') {
+            this.flyImage({ fileName: 'spike.png', width: 48, height: 48, rotate: Math.PI * 4, text: skill },
                     attacker, defenders, settings.skillDuration);
         } else {
             var text = attacker.ownerId + "的" + attacker.uniqueName + "\r\n";
@@ -1545,8 +1550,8 @@ var Animater = function() {
         }
         var isCardSource = source.type == 'Card';
         var sourceShape = isCardSource ?
-            this.getCard(source) :
-            this.getRune(source);
+            this.getCard(source, true) :
+            this.getRune(source, true);
         var isHeroTarget = $.type(targetEntities) != 'array';
         var targets = [];
         if (isHeroTarget) {
@@ -1564,19 +1569,25 @@ var Animater = function() {
             flyingFuncs.push(function() {
                 var sourcePoint = { x: 0, y: 0 };
                 var targetPoint = { x: 0, y: 0 };
-                if (isCardSource) {
-                    sourcePoint.x = sourceShape.group.getX() + sourceShape.width / 2 - imgObj.width / 2;
-                    sourcePoint.y = sourceShape.group.getY() + sourceShape.height / 2 - imgObj.height / 2;
-                } else {
-                    sourcePoint.x = sourceShape.getX() - imgObj.width / 2;
-                    sourcePoint.y = sourceShape.getY() - imgObj.height / 2;
-                }
                 if (isHeroTarget) {
                     targetPoint.x = target.getX() + target.getWidth() / 2 - imgObj.width / 2;
                     targetPoint.y = target.getY() + target.getHeight() / 2 - imgObj.height / 2;
                 } else {
                     targetPoint.x = target.group.getX() + target.width / 2 - imgObj.width / 2;
                     targetPoint.y = target.group.getY() + target.height / 2 - imgObj.height / 2;
+                }
+                
+                if (sourceShape == null) {
+                    sourcePoint.x = targetPoint.x;
+                    sourcePoint.y = targetPoint.y + 30;
+                } else {
+                    if (isCardSource) {
+                        sourcePoint.x = sourceShape.group.getX() + sourceShape.width / 2 - imgObj.width / 2;
+                        sourcePoint.y = sourceShape.group.getY() + sourceShape.height / 2 - imgObj.height / 2;
+                    } else {
+                        sourcePoint.x = sourceShape.getX() - imgObj.width / 2;
+                        sourcePoint.y = sourceShape.getY() - imgObj.height / 2;
+                    }
                 }
     
                 var offsetX = 0;
