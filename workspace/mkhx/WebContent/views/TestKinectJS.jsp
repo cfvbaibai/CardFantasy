@@ -20,25 +20,45 @@
 
         var layer = new Kinetic.Layer();
 
-        var cross = new Kinetic.Line({
-            points: [0, 33, 60, 33, 30, 33, 30, 0, 30, 100],
-            stroke: 'white',
-            strokeWidth: 5,
-            shadowColor: 'black',
-            shadowBlur: 10,
-            shadowOffset: 0,
-            shadowOpacity: 0.5,
+        // tooltip
+        var tooltip = new Kinetic.Label({
+          x: 50,
+          y: 50,
+          opacity: 0.5
         });
-        layer.add(cross);
-       
-        new Kinetic.Tween({
-            node: cross,
-            y: 200,
-            easing: Kinetic.Easings.StrongEaseIn,
-            duration: 1,
-        }).play();
+
+        tooltip.add(new Kinetic.Tag({
+          fill: '#CCCCCC',
+          pointerDirection: 'down',
+          pointerWidth: 10,
+          pointerHeight: 10,
+          lineJoin: 'round',
+          shadowColor: 'black',
+          shadowBlur: 10,
+          shadowOffset: 10,
+          shadowOpacity: 0.5
+        }));
+        
+        tooltip.add(new Kinetic.Text({
+          text: 'Tooltip pointing down',
+          fontFamily: 'Calibri',
+          fontSize: 18,
+          padding: 5,
+          fill: 'white'
+        }));
+
 
         
+        var rect = new Kinetic.Rect({
+            x: 50,
+            y: 50,
+            width: 100,
+            height: 100,
+            fill: 'red',
+        });
+        
+        layer.add(rect);
+        layer.add(tooltip);
         /*
         var rect1 = new Kinetic.Rect({
             x : 10,

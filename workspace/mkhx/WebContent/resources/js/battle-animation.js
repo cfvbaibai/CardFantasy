@@ -247,6 +247,19 @@ var ArenaSettings = function() {
     this.attackCardTextColor = 'red';
     this.healCardTextColor = 'green';
 
+    this.skillTipBgColor = '#CCCCCC';
+    this.skillTipOpacity = 0.8;
+    this.skillTipPointerWidth = 5;
+    this.skillTipPointerHeight = 10;
+    this.skillTipShadowColor = 'black';
+    this.skillTipShadowBlur = 10;
+    this.skillTipShadowOffset = 5;
+    this.skillTipShadowOpacity = 0.5;
+    this.skillTipFontFamily = this.fontFamily;
+    this.skillTipFontSize = 8;
+    this.skillTipPadding = 10;
+    this.skillTipTextColor = 'blue';
+
     this.refreshSize = function () {
         var currentWidth = $(window).width() * 0.8;
         if (currentWidth > this.maxWidth) { currentWidth = this.maxWidth; }
@@ -1258,7 +1271,7 @@ var Animater = function() {
     };
     
     this.msgIgnoredSkills = ['背刺', '暴击', '狂热', '嗜血', '横扫', '盾刺', '反击', '穿刺', '诅咒'];
-    this.selfUsedSkills = ['不动', '脱困', '法力反射', '冰甲', '闪避', '回春'];
+    this.selfUsedSkills = ['不动', '脱困', '法力反射', '冰甲', '闪避', '回春', '吸血'];
     this.__useSkill = function(data) {
         var attacker = data[0]; // EntityRuntimeInfo
         var skill = data[1];    // String
@@ -1282,10 +1295,10 @@ var Animater = function() {
                  duration: settings.skillDuration,
              });
         } else if (skill == '送还') {
-            this.flyImage({ fileName: 'cross.png', width: 29, height: 60, },
+            this.flyImage({ fileName: 'cross.png', width: 29, height: 60, text: skill },
                     attacker, defenders, settings.skillDuration);
         } else if (skill == '传送') {
-            this.flyImage({ fileName: 'hexagram.png', width: 24, height: 24 },
+            this.flyImage({ fileName: 'hexagram.png', width: 24, height: 24, text: skill },
                     attacker, defenders, settings.skillDuration);
         } else if (skill == '免疫') {
             this.flyImage({ fileName: 'immue.png', width: 48, height: 48 },
@@ -1301,28 +1314,28 @@ var Animater = function() {
                 duration: settings.skillDuration,
             });
         } else if (skill == '迷魂') {
-            this.flyImage({ fileName: 'heart.png', width: 24, height: 24 },
+            this.flyImage({ fileName: 'heart.png', width: 24, height: 24, text: skill },
                     attacker, defenders, settings.skillDuration);
         } else if (skill == '治疗' || skill == '甘霖' || skill == '回春') {
-            this.flyImage({ fileName: 'heal.png', width: 24, height: 24 },
+            this.flyImage({ fileName: 'heal.png', width: 24, height: 24, text: skill },
                     attacker, defenders, settings.skillDuration);
         } else if (skill == '冰弹' || skill == '霜冻新星' || skill == '暴风雪') {
-            this.flyImage({ fileName: 'ice.png', width: 24, height: 24, rotate: Math.PI * 4 },
+            this.flyImage({ fileName: 'ice.png', width: 24, height: 24, rotate: Math.PI * 4, text: skill },
                     attacker, defenders, settings.skillDuration);
         } else if (skill == '火球' || skill == '火墙' || skill == '烈焰风暴') {
-            this.flyImage({ fileName: 'fire.png', width: 24, height: 24 },
+            this.flyImage({ fileName: 'fire.png', width: 24, height: 24, text: skill },
                     attacker, defenders, settings.skillDuration);
         } else if (skill == '落雷' || skill == '连环闪电' || skill == '雷暴') {
-            this.flyImage({ fileName: 'lightening.png', width: 24, height: 24 },
+            this.flyImage({ fileName: 'lightening.png', width: 24, height: 24, text: skill },
                     attacker, defenders, settings.skillDuration);
         } else if (skill == '毒液' || skill == '毒雾' || skill == '毒云') {
-            this.flyImage({ fileName: 'poison.png', width: 24, height: 24 },
+            this.flyImage({ fileName: 'poison.png', width: 24, height: 24, rotate: Math.PI * 4, text: skill },
                     attacker, defenders, settings.skillDuration);
         } else if (skill == '陷阱' || skill == '封印') {
-            this.flyImage({ fileName: 'trap.png', width: 48, height: 48 },
+            this.flyImage({ fileName: 'trap.png', width: 48, height: 48, text: skill },
                     attacker, defenders, settings.skillDuration);
         } else if (skill == '摧毁') {
-            this.flyImage({ fileName: 'bomb.png', width: 48, height: 48 },
+            this.flyImage({ fileName: 'bomb.png', width: 48, height: 48, text: skill },
                     attacker, defenders, settings.skillDuration);
         } else {
             var text = attacker.ownerId + "的" + attacker.uniqueName + "\r\n";
@@ -1547,6 +1560,7 @@ var Animater = function() {
         var destroyFuncs = [];
         $.each(targets, function(i, target) {
             var imgGroup = null;
+            var tooltip = null;
             flyingFuncs.push(function() {
                 var sourcePoint = { x: 0, y: 0 };
                 var targetPoint = { x: 0, y: 0 };
@@ -1590,6 +1604,37 @@ var Animater = function() {
                     imgGroup.add(img);
                 };
                 self.stage.get('#effect-layer')[0].add(imgGroup);
+
+                if (imgObj.text) {
+                    // tooltip
+                    tooltip = new Kinetic.Label({
+                        x: sourcePoint.x,
+                        y: sourcePoint.y,
+                        opacity: settings.skillTipOpacity,
+                    });
+
+                    tooltip.add(new Kinetic.Tag({
+                        fill: settings.skillTipBgColor,
+                        pointerDirection: 'down',
+                        pointerWidth: settings.skillTipPointerWidth,
+                        pointerHeight: settings.skillTipPointerHeight,
+                        shadowColor: settings.skillTipShadowColor,
+                        shadowBlur: settings.skillTipShadowBlur,
+                        shadowOffset: settings.skillTipShadowOffset,
+                        shadowOpacity: settings.skillTipShadowOpacity,
+                    }));
+
+                    tooltip.add(new Kinetic.Text({
+                        text: imgObj.text,
+                        fontFamily: settings.skillTipFontFamily,
+                        fontSize: settings.skillTipFontSize,
+                        padding: settings.skillTipPadding,
+                        fill: settings.skillTipTextColor,
+                    }));
+
+                    self.stage.get('#effect-layer')[0].add(tooltip);
+                }
+
                 new Kinetic.Tween({
                     node: imgGroup,
                     x: targetPoint.x + offsetX,
@@ -1607,6 +1652,10 @@ var Animater = function() {
             destroyFuncs.push(function() {
                 imgGroup.destroy();
                 delete imgGroup;
+                if (tooltip != null) {
+                    tooltip.destroy();
+                    delete tooltip;
+                }
             });
         });
 
@@ -1963,7 +2012,7 @@ var Animater = function() {
      */
     this.normalAttack = function(attacker, defender, attackingHero) {
         this.flyImage(
-                { fileName: 'sword.png', width: 14, height: 44 },
+                { fileName: 'sword.png', width: 14, height: 44, },
                 attacker,
                 attackingHero ? defender : [ defender ]
         );
