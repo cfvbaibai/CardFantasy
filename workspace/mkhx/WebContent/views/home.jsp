@@ -56,40 +56,40 @@
                 </div>
                 -->
                 <div id="attackFirst" data-mini="true" data-role="controlgroup" data-type="horizontal">
-                    <input data-mini="true" type="radio" name="firstAttack" id="autoFirst" value="-1" checked="checked" />
+                    <input data-theme="c" data-mini="true" type="radio" name="firstAttack" id="autoFirst" value="-1" checked="checked" />
                     <label for="autoFirst">按规则决定先攻</label>
-                    <input data-mini="true" type="radio" name="firstAttack" id="player1First" value="0" />
+                    <input data-theme="c" data-mini="true" type="radio" name="firstAttack" id="player1First" value="0" />
                     <label for="player1First">玩家1先攻</label>
-                    <input data-mini="true" type="radio" name="firstAttack" id="player2First" value="1" />
+                    <input data-theme="c" data-mini="true" type="radio" name="firstAttack" id="player2First" value="1" />
                     <label for="player2First">玩家2先攻</label>
                 </div>
                 <div id="player1" class="player ui-grid-b">
-                    <div class="ui-block-a ui-block-label-number">
+                    <div data-theme="c" class="ui-block-a ui-block-label-number">
                         <span>玩家1等级: </span>
                     </div>
-                    <div class="ui-block-b">
-                        <input type="number" id="hero1Lv" data-mini="true" value="75" />
+                    <div data-theme="c" class="ui-block-b">
+                        <input data-theme="c" type="number" id="hero1Lv" data-mini="true" value="75" />
                     </div>
-                    <div class="ui-block-c ui-block-label-number">
+                    <div data-theme="c" class="ui-block-c ui-block-label-number">
                         <span>玩家1卡组: </span>
                     </div>
                 </div>
                 <div>
-                    <textarea id="deck1" rows="5" cols="40" data-mini="true">金属巨龙*5,降临天使*5,冰封,永冻,雷盾,春风</textarea>
+                    <textarea data-theme="c" id="deck1" rows="5" cols="40" data-mini="true">金属巨龙*5,降临天使*5,冰封,永冻,雷盾,春风</textarea>
                 </div>
                 <div id="player2" class="player ui-grid-b">
-                    <div class="ui-block-a ui-block-label-number">
+                    <div data-theme="c" class="ui-block-a ui-block-label-number">
                         <span>玩家2等级: </span>
                     </div>
-                    <div class="ui-block-b">
-                        <input type="number" id="hero2Lv" data-mini="true" value="75" />
+                    <div data-theme="c" class="ui-block-b">
+                        <input data-theme="c" type="number" id="hero2Lv" data-mini="true" value="75" />
                     </div>
                     <div class="ui-block-c ui-block-label-number">
                         <span>玩家2卡组: </span>
                     </div>
                 </div>
                 <div>
-                    <textarea id="deck2" rows="5" cols="40" data-mini="true">战斗猛犸象+降临传送*5,堕落精灵+转生5*5,岩壁,赤谷,秽土,灼魂</textarea>
+                    <textarea data-theme="c" id="deck2" rows="5" cols="40" data-mini="true">战斗猛犸象+降临传送*5,堕落精灵+转生5*5,岩壁,赤谷,秽土,灼魂</textarea>
                 </div>
             </div>
             <div id="command" data-mini="true" data-role="controlgroup" data-type="horizontal">
@@ -124,7 +124,7 @@
                 data-expanded-icon="info">
                 <h3>点击查看帮助</h3>
                 <div id="help">
-                    <ul>
+                    <ul data-theme="c">
                         <li>在下面的输入框里输入卡组符文的信息，卡牌与符文之间用半角的逗号隔开，不要留多余的空格，例如： 金属巨龙,降临天使,冰封,永冻</li>
                         <li>默认卡牌等级10级，符文等级4级，想要改变等级的话，在名称后面添加"-数字"。例如10级金属就是"金属巨龙-10"。</li>
                         <li>重复添加同一个卡牌可以使用星号，例如"凤凰*5"表示5张10级凤凰，"凤凰-15*5"表示5张15级凤凰，注意符文不能重复。</li>
@@ -139,7 +139,7 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">
                 <h3>设置阵容</h3>
                 <div>
-                    <select name="boss-name" id="boss-name" data-mini="true">
+                    <select data-theme="c" name="boss-name" id="boss-name" data-mini="true">
                         <option value="复仇女神">魔神：复仇女神</option>
                         <option value="邪龙之神">魔神：邪龙之神</option>
                         <option value="噩梦之主">魔神：噩梦之主</option>
@@ -149,8 +149,8 @@
                     </select>
 
 <!-- 军团加成：10级， -->
-                    <fieldset data-role="controlgroup" data-type="horizontal">
-                        <select name="buff-kingdom" id="buff-kingdom" data-mini="true">
+                    <fieldset data-theme="c" data-role="controlgroup" data-type="horizontal">
+                        <select data-theme="c" name="buff-kingdom" id="buff-kingdom" data-mini="true">
                             <option value="0">王国军团加成0</option>
                             <option value="1">王国军团加成1</option>
                             <option value="2">王国军团加成2</option>
@@ -163,7 +163,7 @@
                             <option value="9">王国军团加成9</option>
                             <option value="10" selected="selected">王国军团加成10</option>
                         </select>
-                        <select name="buff-savage" id="buff-savage" data-mini="true">
+                        <select data-theme="c" name="buff-savage" id="buff-savage" data-mini="true">
                             <option value="0">蛮荒军团加成0</option>
                             <option value="1">蛮荒军团加成1</option>
                             <option value="2">蛮荒军团加成2</option>
@@ -177,8 +177,8 @@
                             <option value="10" selected="selected">蛮荒军团加成10</option>
                         </select>
                     </fieldset>
-                    <fieldset data-role="controlgroup" data-type="horizontal">
-                        <select name="buff-forest" id="buff-forest" data-mini="true">
+                    <fieldset data-theme="c" data-role="controlgroup" data-type="horizontal">
+                        <select data-theme="c" name="buff-forest" id="buff-forest" data-mini="true">
                             <option value="0">森林军团加成0</option>
                             <option value="1">森林军团加成1</option>
                             <option value="2">森林军团加成2</option>
@@ -191,7 +191,7 @@
                             <option value="9">森林军团加成9</option>
                             <option value="10" selected="selected">森林军团加成10</option>
                         </select>
-                        <select name="buff-hell" id="buff-hell" data-mini="true">
+                        <select data-theme="c" name="buff-hell" id="buff-hell" data-mini="true">
                             <option value="0">地狱军团加成0</option>
                             <option value="1">地狱军团加成1</option>
                             <option value="2">地狱军团加成2</option>
@@ -211,14 +211,14 @@
                             <span>玩家等级: </span>
                         </div>
                         <div class="ui-block-b">
-                            <input type="number" id="heroLv" name="heroLv" data-mini="true" value="75" />
+                            <input data-theme="c" type="number" id="heroLv" name="heroLv" data-mini="true" value="75" />
                         </div>
                         <div class="ui-block-c ui-block-label-number">
                             <span>玩家卡组: </span>
                         </div>
                     </div>
                     <div>
-                        <textarea id="deck" name="deck" rows="5" cols="40" data-mini="true">堕落精灵*2,淬炼,绝杀</textarea>
+                        <textarea data-theme="c" id="deck" name="deck" rows="5" cols="40" data-mini="true">堕落精灵*2,淬炼,绝杀</textarea>
                     </div>
                 </div>
             </div>

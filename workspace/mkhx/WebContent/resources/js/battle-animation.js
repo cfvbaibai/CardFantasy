@@ -1257,7 +1257,7 @@ var Animater = function() {
             protector, [ protectee ], settings.skillDuration);
     };
     
-    this.msgIgnoredSkills = ['背刺', '暴击', '狂热', '嗜血', '横扫', '盾刺', '反击', '穿刺'];
+    this.msgIgnoredSkills = ['背刺', '暴击', '狂热', '嗜血', '横扫', '盾刺', '反击', '穿刺', '诅咒'];
     this.selfUsedSkills = ['不动', '脱困', '法力反射', '冰甲', '闪避', '回春'];
     this.__useSkill = function(data) {
         var attacker = data[0]; // EntityRuntimeInfo
@@ -1274,6 +1274,13 @@ var Animater = function() {
         }
         if (skill == '普通攻击') {
             this.normalAttack(attacker, defenders[0], false);
+        } else if (this.selfUsedSkills.indexOf(skill) >= 0) {
+            this.displayCardMsg({
+                 name: skill,
+                 cardShape: this.getEntityShape(attacker),
+                 text: skill,
+                 duration: settings.skillDuration,
+             });
         } else if (skill == '送还') {
             this.flyImage({ fileName: 'cross.png', width: 29, height: 60, },
                     attacker, defenders, settings.skillDuration);
@@ -1286,13 +1293,6 @@ var Animater = function() {
         } else if (skill == '魔甲') {
             this.flyImage({ fileName: 'magicshield.png', width: 48, height: 48 },
                     attacker, [ attacker ], settings.skillDuration);
-        } else if (this.selfUsedSkills.indexOf(skill) >= 0) {
-           this.displayCardMsg({
-                name: skill,
-                cardShape: this.getEntityShape(attacker),
-                text: skill,
-                duration: settings.skillDuration,
-            });
         } else if (skill == '燃烧' || skill == '裂伤') {
             this.displayCardMsg({
                 name: skill,
@@ -1320,6 +1320,9 @@ var Animater = function() {
                     attacker, defenders, settings.skillDuration);
         } else if (skill == '陷阱' || skill == '封印') {
             this.flyImage({ fileName: 'trap.png', width: 48, height: 48 },
+                    attacker, defenders, settings.skillDuration);
+        } else if (skill == '摧毁') {
+            this.flyImage({ fileName: 'bomb.png', width: 48, height: 48 },
                     attacker, defenders, settings.skillDuration);
         } else {
             var text = attacker.ownerId + "的" + attacker.uniqueName + "\r\n";
@@ -1612,7 +1615,7 @@ var Animater = function() {
     };
 
     this.pieces = [];
-    this.speeds = [ 0.25, 0.5, 1.0, 1.5, 2.0, 3.0, 4.0, 5.0 ];
+    this.speeds = [ 0.25, 0.5, 1.0, 1.2, 1.5, 2.0, 3.0, 4.0, 5.0 ];
     this.speedIndex = 2;
     this.speed = 1.0 / this.speeds[this.speedIndex];
 
@@ -1970,7 +1973,6 @@ var Animater = function() {
         settings.refreshSize();
         this.clearAnimations();
         this.time = this.initTime;
-        this.speed = 1;
         $('#battle-canvas').width(this.width).height(this.height);
         this.stage = new Kinetic.Stage({
             container : 'battle-canvas',
