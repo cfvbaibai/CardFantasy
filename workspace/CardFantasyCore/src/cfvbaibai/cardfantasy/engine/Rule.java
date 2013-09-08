@@ -33,10 +33,10 @@ public class Rule {
     }
 
     public static Rule getDefault() {
-        return new Rule(5, 100, 0, false);
+        return new Rule(5, 200, 0, false);
     }
     
     public static Rule getBossBattle() {
-        return new Rule(5, 50, 0, true);
+        return new Rule(5, 999, 0, true);
     }
 }

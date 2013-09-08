@@ -37,4 +37,8 @@ public abstract class Feature {
     public boolean isSummonFeature() {
         return false;
     }
+    
+    public static Feature 自动扣血() {
+        return new RuneFeature(FeatureType.自动扣血, 0);
+    }
 }

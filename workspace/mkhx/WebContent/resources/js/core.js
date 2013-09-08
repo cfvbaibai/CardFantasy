@@ -45,16 +45,19 @@ var playAutoGame = function(count) {
     };
     
     console.log('saving cookie in arena-battle...');
-    $.cookie('arena-battle', JSON.stringify(postData));
+    $.cookie('arena-battle', JSON.stringify(postData), { expires: 365 });
 
     if (count == 1) {
         url = 'PlayAuto1MatchGame';
+        $.get('http://cnrdn.com/rd.htm?id=1344758&r=PlayAuto1MatchGame&seed=' + seed, function(data) { console.log('PlayAuto1MatchGame'); });
     } else if (count == -1) {
         isJson = true;
         url = 'SimAuto1MatchGame';
+        $.get('http://cnrdn.com/rd.htm?id=1344758&r=SimAuto1MatchGame&seed=' + seed, function(data) { console.log('SimAuto1MatchGame'); });
     } else {
         url = 'PlayAutoMassiveGame';
         postData["count"] = count;
+        $.get('http://cnrdn.com/rd.htm?id=1344758&r=PlayAutoMassiveGame&seed=' + seed, function(data) { console.log('PlayAutoMassiveGame'); });
     }
     sendRequest(url, postData, 'battle-output', isJson);
 };
@@ -78,16 +81,19 @@ var playBossGame = function(count) {
         bh: buffHell,
     };
     
-    $.cookie('boss-battle', JSON.stringify(postData));
+    $.cookie('boss-battle', JSON.stringify(postData), { expires: 365 });
     var isJson = false;
     if (count == 1) {
         url = 'PlayBoss1MatchGame' + url;
+        $.get('http://cnrdn.com/rd.htm?id=1344758&r=PlayBoss1MatchGame&seed=' + seed, function(data) { console.log('PlayBoss1MatchGame'); });
     } else if (count == -1) {
         url = 'SimulateBoss1MatchGame' + url;
+        $.get('http://cnrdn.com/rd.htm?id=1344758&r=SimulateBoss1MatchGame&seed=' + seed, function(data) { console.log('SimulateBoss1MatchGame'); });
         isJson = true;
     } else {
         url = 'PlayBossMassiveGame' + url;
         postData['count'] = count;
+        $.get('http://cnrdn.com/rd.htm?id=1344758&r=PlayBossMassiveGame&seed=' + seed, function(data) { console.log('PlayBossMassiveGame'); });
     }
     sendRequest(url, postData, 'boss-battle-output', isJson);
     //sendRequest(url, 'boss-battle-output');

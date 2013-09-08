@@ -14,7 +14,7 @@ import cfvbaibai.cardfantasy.data.PlayerInfo;
 import cfvbaibai.cardfantasy.data.Race;
 import cfvbaibai.cardfantasy.data.RuneData;
 
-public class Player {
+public class Player extends EntityInfo {
     private PlayerInfo playerInfo;
     private Deck deck;
     private Hand hand;
@@ -125,5 +125,15 @@ public class Player {
 
     public int getLevel() {
         return this.getPlayerInfo().getLevel();
+    }
+
+    @Override
+    public CardStatus getStatus() {
+        return new CardStatus();
+    }
+
+    @Override
+    public Player getOwner() {
+        return this;
     }
 }

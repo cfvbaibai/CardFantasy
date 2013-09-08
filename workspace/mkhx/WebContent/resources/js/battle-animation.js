@@ -41,7 +41,6 @@ Array.prototype.compact = function() {
         }
     }
 };
-
 Array.prototype.removeOfName = function(name) {
     for (var i = 0; i < this.length; ++i) {
         if (this[i] && this[i].name == name) {
@@ -50,7 +49,6 @@ Array.prototype.removeOfName = function(name) {
     }
     return null;
 };
-
 Array.prototype.pickByName = function(name) {
     for (var i = 0; i < this.length; ++i) {
         if (this[i] && this[i].name == name) {
@@ -61,7 +59,6 @@ Array.prototype.pickByName = function(name) {
     }
     return null;
 };
-
 Array.prototype.indexOfName = function(name) {
     for (var i = 0; i < this.length; ++i) {
         if (this[i] && this[i].name == name) {
@@ -70,7 +67,6 @@ Array.prototype.indexOfName = function(name) {
     }
     return -1;
 };
-
 Array.prototype.ofName = function(name) {
     for (var i = 0; i < this.length; ++i) {
         if (this[i] && this[i].name == name) {
@@ -79,7 +75,6 @@ Array.prototype.ofName = function(name) {
     }
     return null;
 };
-
 Array.prototype.remove = function(obj) {
     var index = -1;
     for (var i = 0; i < this.length; ++i) {
@@ -92,7 +87,6 @@ Array.prototype.remove = function(obj) {
         this.removeAt(index, index);
     }
 };
-
 Array.prototype.removeAt = function(from, to) {
     var rest = this.slice((to || from) + 1 || this.length);
     this.length = from < 0 ? this.length + from : from;
@@ -1146,11 +1140,10 @@ var Animater = function() {
     };
     
     this.__attackHero = function(data) {
-        var attacker = data[0];
+        // var attacker = data[0];
         var defenderHero = data[1];
         var damage = data[2];
         var featureName = data[3];
-        this.normalAttack(attacker, defenderHero, true);
         this.displayCardMsg({
             name: 'attackHeroMsg',
             cardShape: this.__getShape(defenderHero, 'hpbg-rect'),
@@ -1342,6 +1335,9 @@ var Animater = function() {
         } else if (skill == '盾刺' || skill == '反击') {
             this.flyImage({ fileName: 'spike.png', width: 48, height: 48, rotate: Math.PI * 4, text: skill },
                     attacker, defenders, settings.skillDuration);
+        } else if (skill == '献祭') {
+            this.flyImage({ fileName: 'round-cross.png', width: 48, height: 48, text: skill },
+                    attacker, defenders, settings.skillDuration);
         } else {
             var text = attacker.ownerId + "的" + attacker.uniqueName + "\r\n";
             text += "\r\n" + skill + "\r\n\r\n";
@@ -1367,7 +1363,14 @@ var Animater = function() {
             return;
         }
         if (skill == '普通攻击') {
-            // Already animated in __attackHero
+            this.normalAttack(attacker, defenderHero, true);
+        } else if (skill == '自动扣血') {
+            this.displayCardMsg({
+                name: skill,
+                cardShape: this.__getShape(defenderHero.id, 'hp-bar'),
+                text: skill,
+                duration: settings.skillDuration,
+            });
         } else {
             var text = attacker.ownerId + "的" + attacker.uniqueName + "\r\n";
             text += "\r\n" + skill + "\r\n\r\n" + defenderHero.id;
@@ -1464,8 +1467,8 @@ var Animater = function() {
         var player = data[0];
         // var loser = data[1];
         // var cause = data[2];
-        this.showSplash({ text: '战斗结束!\r\n获胜者: ' + player.id + (data[3] > 0 ? ('\r\n共造成伤害: ' + data[3]) : ''), });
-        this.showSplash({ text: '这个功能还没完成，\r\n就做了那么点儿，\r\n白白会努力做的！^0^', exitType: 'onclick', });
+        var text = '战斗结束!\r\n获胜者: ' + player.id + (data[3] > 0 ? ('\r\n共造成伤害: ' + data[3]) : '');
+        this.showSplash({ text: text, exitType: 'onclick', });
     };
     
     /**

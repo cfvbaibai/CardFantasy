@@ -31,9 +31,8 @@
                         <li>可以使用加号设置卡牌的洗炼技能，例如"凤凰+转生5-15*5"表示5张15级的转生5的凤凰。</li>
                         <li>洗炼技能也可以设定成降临或者死契，例如"骷髅法师+降临火墙3"表示有了降临火墙的骷髅法师，"独眼巨人+死契摧毁"表示有了死契摧毁的独眼巨人。</li>
                         <li>设置了洗炼技能的卡牌默认15级，所以"凤凰+转生5"等同于"凤凰+转生5-15"。</li>
-                        <li>制作人：<a href="http://tieba.baidu.com/i/13567034/profile" target="_blank">白白</a></li>
-                        <li>友情支持：<a href="http://tieba.baidu.com/f?kw=%C4%A7%BF%A8%BB%C3%CF%EB" target="_blank">魔卡幻想贴吧</a></li>
-                    </ul>
+                        <li>制作人：<a href="http://cnrdn.com/rd.htm?id=1344758&r=http%3A%2F%2Ftieba.baidu.com%2Fi%2F13567034%2Fprofile%3Ffrom%3D1v1" target="_blank">白白</a></li>
+                        <li>友情支持：<a href="http://cnrdn.com/rd.htm?id=1344758&r=http%3A%2F%2Ftieba.baidu.com%2Ff%3Fkw%3D%25C4%25A7%25BF%25A8%25BB%25C3%25CF%25EB%3Ffrom%3D1v1" target="_blank">魔卡幻想贴吧</a></li>                    </ul>
                 </div>
             </div>
             <div data-role="collapsible" data-mini="true" data-collapsed="false" data-theme="c" data-content-theme="d">
@@ -97,7 +96,7 @@
                 <a data-role="button" data-mini="true" data-theme="c" href="javascript:playAutoGame(-1)">动画战斗</a>
                 <!-- <a data-role="button" data-mini="true" data-theme="c" href="javascript:playAutoGame(100)">打100场</a> -->
                 <a data-role="button" data-mini="true" data-theme="c" href="javascript:playAutoGame(1000)">连续千场</a>
-                <a data-role="button" data-mini="true" data-theme="c" href="http://tieba.baidu.com/p/2548422450" target="blank">提BUG</a>
+                <a data-role="button" data-mini="true" data-theme="c" href="http://cnrdn.com/rd.htm?id=1344758&r=http%3A%2F%2Ftieba.baidu.com%2Fp%2F2548422450%3Ffrom%3D1v1" target="blank">提BUG</a>
                 <!-- <button data-theme="c" onclick="alert('按CTRL+A全选，再按CTRL+C')">拷贝</button> -->
             </div>
             <div id="battle-div" data-mini="true" data-role="collapsible" data-collapsed="false" data-theme="c"
@@ -131,8 +130,8 @@
                         <li>可以使用加号设置卡牌的洗炼技能，例如"凤凰+转生5-15*5"表示5张15级的转生5的凤凰。</li>
                         <li>洗炼技能也可以设定成降临或者死契，例如"骷髅法师+降临火墙3"表示有了降临火墙的骷髅法师，"独眼巨人+死契摧毁"表示有了死契摧毁的独眼巨人。</li>
                         <li>设置了洗炼技能的卡牌默认15级，所以"凤凰+转生5"等同于"凤凰+转生5-15"。</li>
-                        <li>制作人：<a href="http://tieba.baidu.com/i/13567034/profile" target="_blank">白白</a></li>
-                        <li>友情支持：<a href="http://tieba.baidu.com/f?kw=%C4%A7%BF%A8%BB%C3%CF%EB" target="_blank">魔卡幻想贴吧</a></li>
+                        <li>制作人：<a href="http://cnrdn.com/rd.htm?id=1344758&r=http%3A%2F%2Ftieba.baidu.com%2Fi%2F13567034%2Fprofile%3Ffrom%3Dboss" target="_blank">白白</a></li>
+                        <li>友情支持：<a href="http://cnrdn.com/rd.htm?id=1344758&r=http%3A%2F%2Ftieba.baidu.com%2Ff%3Fkw%3D%25C4%25A7%25BF%25A8%25BB%25C3%25CF%25EB%3Ffrom%3Dboss" target="_blank">魔卡幻想贴吧</a></li>
                     </ul>
                 </div>
             </div>
@@ -223,9 +222,10 @@
                 </div>
             </div>
             <div id="boss-command" data-mini="true" data-role="controlgroup" data-type="horizontal" data-disabled="false">
-                <a data-role="button" data-mini="true" data-theme="c" href="javascript:playBossGame(1)">模拟一次战斗</a>
-                <a data-role="button" data-mini="true" data-theme="c" href="javascript:playBossGame(-1)">观看一次战斗</a>
+                <a data-role="button" data-mini="true" data-theme="c" href="javascript:playBossGame(1)">文字战斗</a>
+                <a data-role="button" data-mini="true" data-theme="c" href="javascript:playBossGame(-1)">动画战斗</a>
                 <a data-role="button" data-mini="true" data-theme="c" href="javascript:playBossGame(1000)">卡组强度分析</a>
+                <a data-role="button" data-mini="true" data-theme="c" href="http://cnrdn.com/rd.htm?id=1344758&r=http%3A%2F%2Ftieba.baidu.com%2Fp%2F2548422450%3Ffrom%3Dboss" target="blank">提BUG</a>
                 <!--  <button data-mini="true" data-theme="c" onclick="playBossGame(1000)"></button>-->
                 <!-- <button data-theme="c" onclick="alert('按CTRL+A全选，再按CTRL+C')">拷贝</button> -->
             </div>
@@ -254,18 +254,19 @@
     
     <div data-role="page" data-title="战场" data-mini="true" id="arena">
         <div data-role="header" data-theme="c" data-position="fixed">
-            <h3>战斗</h3>
+            <h3 style="text-align: center">战斗</h3>
         </div>
         <div data-role="content" data-theme="c">
             <div id="canvas-outline" style="overflow: auto; margin-left: auto; margin-right: auto">
-                <div id="battle-canvas">&nbsp;</div>
+                <span>若动画空白，请重启浏览器</span>
+                <div id="battle-canvas"></div>
             </div>
             <div id="arena-control-panel" data-mini="true" data-role="controlgroup" data-type="horizontal">
                 <a id="playButton" data-role="button" data-mini="true" data-theme="c" href="javascript:togglePlayButton()"></a>
                 <a id="fasterButton" data-role="button" data-mini="true" data-theme="c" href="javascript:faster()">加快</a>
                 <a id="slowerButton" data-role="button" data-mini="true" data-theme="c" href="javascript:slower()">减慢</a>
                 <a id="backButton" data-role="button" data-mini="true" data-theme="c" href="javascript:history.go(-1)">返回</a>
-                <a data-role="button" data-mini="true" data-theme="c" href="http://tieba.baidu.com/p/2548422450" target="blank">提BUG</a>
+                <a data-role="button" data-mini="true" data-theme="c" href="http://cnrdn.com/rd.htm?id=1344758&r=http%3A%2F%2Ftieba.baidu.com%2Fp%2F2548422450%3Ffrom%3Danimation" target="blank">提BUG</a>
             </div>
             <div id="playerStatus"></div>
         </div>

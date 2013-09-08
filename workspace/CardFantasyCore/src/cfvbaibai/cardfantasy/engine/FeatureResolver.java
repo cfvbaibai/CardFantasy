@@ -623,34 +623,40 @@ public class FeatureResolver {
         if (attacker == null) {
             return;
         }
-        if (attacker.getStatus().containsStatus(CardStatusType.Âé±Ô)) {
+        if (cardFeature == null && attacker.getStatus().containsStatus(CardStatusType.Âé±Ô)) {
             return;
         }
         stage.getUI().useSkillToHero(attacker, defenderPlayer, cardFeature);
         if (damage >= 0) {
-            if (!this.resolveAttackHeroBlockingFeatures(attacker, defenderPlayer, cardFeature, damage)) {
-                stage.getUI().attackHero(attacker, defenderPlayer, cardFeature, damage);
+            int remainingDamage = this.resolveAttackHeroBlockingFeatures(attacker, defenderPlayer, cardFeature, damage);
+            if (remainingDamage > 0) {
+                stage.getUI().attackHero(attacker, defenderPlayer, cardFeature, remainingDamage);
+                defenderPlayer.setHP(defenderPlayer.getHP() - remainingDamage);
             }
         } else {
             stage.getUI().healHero(attacker, defenderPlayer, cardFeature, -damage);
+            defenderPlayer.setHP(defenderPlayer.getHP() - damage);
         }
-        defenderPlayer.setHP(defenderPlayer.getHP() - damage);
+
     }
 
-    private boolean resolveAttackHeroBlockingFeatures(EntityInfo attacker, Player defenderPlayer, Feature cardFeature,
+    private int resolveAttackHeroBlockingFeatures(EntityInfo attacker, Player defenderPlayer, Feature cardFeature,
             int damage) throws HeroDieSignal {
+        int remainingDamage = damage;
         for (CardInfo defender : defenderPlayer.getField().getAliveCards()) {
             if (defender == null) {
                 continue;
             }
             for (FeatureInfo defenderFeature : defender.getNormalUsableFeatures()) {
                 if (defenderFeature.getType() == FeatureType.ÊØ»¤) {
-                    GuardFeature.apply(defenderFeature.getFeature(), this, attacker, defender, damage);
-                    return true;
+                    remainingDamage = GuardFeature.apply(defenderFeature.getFeature(), this, attacker, defender, remainingDamage);
+                    if (remainingDamage == 0) {
+                        return 0;
+                    }
                 }
             }
         }
-        return false;
+        return remainingDamage;
     }
 
     public void resolveCardRoundEndingFeature(CardInfo card) {
@@ -954,7 +960,7 @@ public class FeatureResolver {
             }
             
             
-            // Special logic for ÓÀ¶³ & ´º·ç & ÇåÈª & ×Æ»ê.
+            // Special logic for ÓÀ¶³ & ´º·ç & ÇåÈª & ±ù·â & ×Æ»ê.
             if (rune.is(RuneData.ÇåÈª)) {
                 boolean anyCardWounded = true;
                 for (CardInfo card : player.getField().toList()) {
@@ -970,7 +976,7 @@ public class FeatureResolver {
                 if (enemy.getField().toList().isEmpty()) {
                     shouldActivate = false;
                 }
-            } else if (rune.is(RuneData.´º·ç)) {
+            } else if (rune.is(RuneData.´º·ç) || rune.is(RuneData.±ù·â)) {
                 if (player.getField().size() == 0) {
                     shouldActivate = false;
                 }

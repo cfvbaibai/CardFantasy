@@ -181,6 +181,13 @@ public class FreeTest extends PveEngineTest {
     }
     
     @Test
+    public void 守护祈祷Bug() {
+        PlayerInfo p1 = PlayerBuilder.build("玩家1", "邪龙之神", 75);
+        PlayerInfo p2 = PlayerBuilder.build("玩家2", "魔剑士+祈祷7*2", 75);
+        TestGameBuilder.play(p1, p2);
+    }
+    
+    @Test
     public void 王国最强vs森林最强_1000() {
         for (int i = 6; i < 10; ++i) {
             System.out.println("Level: " + (i * 10));

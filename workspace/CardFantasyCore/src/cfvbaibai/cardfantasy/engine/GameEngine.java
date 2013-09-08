@@ -7,6 +7,7 @@ import java.util.List;
 import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
 import cfvbaibai.cardfantasy.GameOverSignal;
 import cfvbaibai.cardfantasy.GameUI;
+import cfvbaibai.cardfantasy.data.Feature;
 import cfvbaibai.cardfantasy.data.FeatureType;
 import cfvbaibai.cardfantasy.data.PlayerInfo;
 
@@ -19,6 +20,12 @@ public class GameEngine {
 
     public GameEngine(GameUI ui, Rule rule) {
         this.stage = new StageInfo(new Board(), ui, rule);
+    }
+    
+    public static GameResult play1v1(GameUI ui, Rule rule, PlayerInfo p1, PlayerInfo p2) {
+        GameEngine engine = new GameEngine(ui, rule);
+        engine.RegisterPlayers(p1, p2);
+        return engine.playGame();
     }
 
     private Player getActivePlayer() {
@@ -249,18 +256,27 @@ public class GameEngine {
         }
     }
 
-    private Phase roundStart() throws GameOverSignal, AllCardsDieSignal {
+    private Phase roundStart() throws GameOverSignal, AllCardsDieSignal, HeroDieSignal {
         if (this.stage.getRound() > stage.getRule().getMaxRound()) {
             throw new GameOverSignal();
         }
-        this.stage.getResolver().deactivateRunes(this.getActivePlayer());
-        this.stage.getResolver().removeOneRoundEffects(this.getActivePlayer());
-        if (this.getActivePlayer().getDeck().size() == 0 && this.getActivePlayer().getField().size() == 0
-                && this.getActivePlayer().getHand().size() == 0) {
-            throw new AllCardsDieSignal(this.getActivePlayer());
+        Player player = this.getActivePlayer();
+        this.stage.getResolver().deactivateRunes(player);
+        this.stage.getResolver().removeOneRoundEffects(player);
+        if (player.getDeck().size() == 0 && player.getField().size() == 0
+                && player.getHand().size() == 0) {
+            throw new AllCardsDieSignal(player);
         }
 
-        this.stage.getUI().roundStarted(this.getActivePlayer(), this.stage.getRound());
+        this.stage.getUI().roundStarted(player, this.stage.getRound());
+        int thresholdRound = 50;
+
+        if (this.stage.getRound() >= thresholdRound) {
+            int extraRound = this.stage.getRound() - thresholdRound;
+            int heroDamage = 50 + extraRound * 30;
+            Feature feature = Feature.×Ô¶¯¿ÛÑª();
+            this.stage.getResolver().attackHero(player, player, feature, heroDamage);
+        }
         return Phase.³é¿¨;
     }
 

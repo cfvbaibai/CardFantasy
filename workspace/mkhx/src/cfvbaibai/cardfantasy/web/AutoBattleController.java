@@ -15,11 +15,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import cfvbaibai.cardfantasy.GameUI;
 import cfvbaibai.cardfantasy.NonSerializableStrategy;
 import cfvbaibai.cardfantasy.PlayerJsonSerializer;
 import cfvbaibai.cardfantasy.data.Card;
 import cfvbaibai.cardfantasy.data.Legion;
 import cfvbaibai.cardfantasy.data.PlayerInfo;
+import cfvbaibai.cardfantasy.engine.GameEndCause;
 import cfvbaibai.cardfantasy.engine.GameEngine;
 import cfvbaibai.cardfantasy.engine.GameResult;
 import cfvbaibai.cardfantasy.engine.Player;
@@ -89,11 +91,9 @@ public class AutoBattleController {
 
     private static GameResultStat play(PlayerInfo p1, PlayerInfo p2, int count, Rule rule) {
         GameResultStat stat = new GameResultStat(p1, p2);
+        GameUI ui = new DummyGameUI();
         for (int i = 0; i < count; ++i) {
-            GameEngine engine = new GameEngine(new DummyGameUI(), rule);
-            engine.RegisterPlayers(p1, p2);
-            GameResult result = engine.playGame();
-            stat.addResult(result);
+            stat.addResult(GameEngine.play1v1(ui, rule, p1, p2));
         }
         return stat;
     }
@@ -115,7 +115,7 @@ public class AutoBattleController {
             PlayerInfo player1 = PlayerBuilder.build("玩家1", deck1, heroLv1);
             PlayerInfo player2 = PlayerBuilder.build("玩家2", deck2, heroLv2);
             WebPlainTextGameUI ui = new WebPlainTextGameUI();
-            GameEngine engine = new GameEngine(ui, new Rule(5, 100, firstAttack, false));
+            GameEngine engine = new GameEngine(ui, new Rule(5, 999, firstAttack, false));
             engine.RegisterPlayers(player1, player2);
             GameResult gameResult = engine.playGame();
             String result = getCurrentTime() + "<br />" + ui.getAllText();
@@ -145,7 +145,7 @@ public class AutoBattleController {
             PlayerInfo player1 = PlayerBuilder.build("玩家1", deck1, heroLv1);
             PlayerInfo player2 = PlayerBuilder.build("玩家2", deck2, heroLv2);
             StructuredRecordGameUI ui = new StructuredRecordGameUI();
-            GameEngine engine = new GameEngine(ui, new Rule(5, 100, firstAttack, false));
+            GameEngine engine = new GameEngine(ui, new Rule(5, 999, firstAttack, false));
             engine.RegisterPlayers(player1, player2);
             GameResult gameResult = engine.playGame();
             BattleRecord record = ui.getRecord();
@@ -174,7 +174,7 @@ public class AutoBattleController {
             log("Deck2 = " + deck2);
             PlayerInfo player1 = PlayerBuilder.build("玩家1", deck1, heroLv1);
             PlayerInfo player2 = PlayerBuilder.build("玩家2", deck2, heroLv2);
-            GameResultStat stat = play(player1, player2, count, new Rule(5, 100, firstAttack, false));
+            GameResultStat stat = play(player1, player2, count, new Rule(5, 999, firstAttack, false));
             StringBuffer result = new StringBuffer();
             result.append(getCurrentTime() + "<br />");
             result.append("<table>");
@@ -199,7 +199,7 @@ public class AutoBattleController {
             log("PlayBoss1MatchGame from " + request.getRemoteAddr() + ":");
             log("Deck = " + deck);
             log("Hero LV = " + heroLv + ", Boss = " + bossName);
-            PlayerInfo player1 = PlayerBuilder.build("魔神", bossName, 9999, null);
+            PlayerInfo player1 = PlayerBuilder.build("魔神", bossName, 99999, null);
             PlayerInfo player2 = PlayerBuilder.build("玩家", deck, heroLv, new Legion(buffKingdom, buffForest,
                     buffSavage, buffHell));
             WebPlainTextGameUI ui = new WebPlainTextGameUI();
@@ -225,7 +225,7 @@ public class AutoBattleController {
             log("SimulateBoss1MatchGame from " + request.getRemoteAddr() + ":");
             log("Deck = " + deck);
             log("Hero LV = " + heroLv + ", Boss = " + bossName);
-            PlayerInfo player1 = PlayerBuilder.build("魔神", bossName, 9999, null);
+            PlayerInfo player1 = PlayerBuilder.build("魔神", bossName, 99999, null);
             PlayerInfo player2 = PlayerBuilder.build("玩家", deck, heroLv, new Legion(buffKingdom, buffForest,
                     buffSavage, buffHell));
             StructuredRecordGameUI ui = new StructuredRecordGameUI();
@@ -252,25 +252,50 @@ public class AutoBattleController {
             log("PlayBossMassiveGame from " + request.getRemoteAddr() + ":");
             log("Deck = " + deck);
             log("Count = " + count + ", Hero LV = " + heroLv + ", Boss = " + bossName);
-            PlayerInfo player1 = PlayerBuilder.build("魔神", bossName, 9999, null);
+            PlayerInfo player1 = PlayerBuilder.build("魔神", bossName, 99999, null);
             PlayerInfo player2 = PlayerBuilder.build("玩家", deck, heroLv, new Legion(buffKingdom, buffForest,
                     buffSavage, buffHell));
+            StringBuffer result = new StringBuffer();
+            result.append(getCurrentTime() + "<br />");
+            int totalDamageToBoss = 0;
+            int timeoutCount = 0;
+            Rule rule = Rule.getBossBattle();
+            GameUI ui = new DummyGameUI();
+            GameResult trialResult = GameEngine.play1v1(ui, rule, player1, player2);
+            if (trialResult.getCause() == GameEndCause.战斗超时) {
+                ++timeoutCount;
+            }
+            totalDamageToBoss = trialResult.getDamageToBoss();
+            int gameCount = 5000 / trialResult.getRound();
+            if (gameCount <= 1) {
+                gameCount = 1;
+            }
+            result.append("模拟场次: " + gameCount + "<br />");
+            
             int totalCost = 0;
             for (Card card : player2.getCards()) {
                 totalCost += card.getCost();
             }
             int coolDown = 60 + totalCost * 2;
-            int totalDamageToBoss = 0;
-            for (int i = 0; i < count; ++i) {
-                GameEngine engine = new GameEngine(new DummyGameUI(), Rule.getBossBattle());
-                engine.RegisterPlayers(player1, player2);
-                GameResult gameResult = engine.playGame();
-                totalDamageToBoss += gameResult.getDamageToBoss();
+            
+            if (gameCount > 0) {
+                for (int i = 0; i < gameCount - 1; ++i) {
+                    GameResult gameResult = GameEngine.play1v1(ui, rule, player1, player2);
+                    if (gameResult.getCause() == GameEndCause.战斗超时) {
+                        ++timeoutCount;
+                    }
+                    totalDamageToBoss += gameResult.getDamageToBoss();
+                }
             }
-            StringBuffer result = new StringBuffer();
-            int averageDamageToBoss = totalDamageToBoss / count;
+            
+            if (timeoutCount > 0) {
+                result.append("超时次数(大于999回合): " + timeoutCount + "<br />");
+                result.append("您的卡组实在太厉害了！已经超出模拟器的承受能力，结果可能不准确，建议直接实测。<br />");
+            }
+            
+            int averageDamageToBoss = totalDamageToBoss / gameCount;
             //int damageToBossPerMinute = averageDamageToBoss * 60 / coolDown;
-            result.append(getCurrentTime() + "<br />");
+            
             result.append("<table>");
             //result.append("<tr><td>战斗次数: </td><td>" + count + "</td></tr>");
             //result.append("<tr><td>总伤害: </td><td>" + totalDamageToBoss + "</td></tr>");

@@ -40,4 +40,10 @@ public class TestSerializable {
         String json = gson.toJson(pii);
         System.out.println(json);
     }
+    
+    @Test
+    public void testOverflow() {
+        int damage = 3000000;
+        System.out.println(String.valueOf(damage * 1000));
+    }
 }
