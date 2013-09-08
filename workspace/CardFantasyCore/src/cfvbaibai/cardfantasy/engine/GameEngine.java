@@ -269,7 +269,7 @@ public class GameEngine {
         }
 
         this.stage.getUI().roundStarted(player, this.stage.getRound());
-        int thresholdRound = 50;
+        int thresholdRound = 51;
 
         if (this.stage.getRound() >= thresholdRound) {
             int extraRound = this.stage.getRound() - thresholdRound;

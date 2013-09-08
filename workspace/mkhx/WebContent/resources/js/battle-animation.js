@@ -253,6 +253,8 @@ var ArenaSettings = function() {
     this.skillTipFontSize = 8;
     this.skillTipPadding = 10;
     this.skillTipTextColor = 'blue';
+    
+    this.player1HpRectY = 0;
 
     this.refreshSize = function () {
         var currentWidth = $(window).width() * 0.8;
@@ -314,6 +316,13 @@ var ArenaSettings = function() {
         });
     };
     
+    this.getHeroHpBgRectSize = function() {
+        return new CfSize({
+            width: this.getLeftPanelClientWidth(),
+            height: this.getTopRuneRectY() - this.globalPadding - this.player1HpRectY,
+        });
+    };
+    
     this.getLogoX = function(playerNumber, logoIndex) {
         return this.getRightPanelX() + logoIndex * this.getLogoSize().width;
     };
@@ -358,7 +367,9 @@ var Arena = function(playerId, playerNumber) {
     this.runes = {};
     
     this.createLogo = function(id, name, delay, size) {
-        var group = new Kinetic.Group({ x: settings.width, y: settings.height, });
+        var logoSize = settings.getLogoSize();
+        var group = new Kinetic.Group({ x: settings.width, y: settings.height });
+        group.getSize = function() { return settings.getLogoSize(); };
         
         var delayRect = new Kinetic.Rect({
             x: size.width - settings.handDelayRectSize - 1,
@@ -404,7 +415,6 @@ var Arena = function(playerId, playerNumber) {
             };
         };
 
-        var logoSize = settings.getLogoSize();
         this.hands.push({ name: name, group: group, delay: delay, delayText: delayText,
             width: logoSize.width, height: logoSize.height, });
         var layer = new Kinetic.Layer({ id: 'LL' + name });
@@ -414,7 +424,9 @@ var Arena = function(playerId, playerNumber) {
     
     this.createPortrait = function(card) {
         var size = settings.getPortraitSize();
-        var group = new Kinetic.Group({ x: settings.width, y: settings.height, });
+        var group = new Kinetic.Group({ x: settings.width, y: settings.height,
+            width: size.width, height: size.height });
+        group.getSize = function() { return settings.getPortraitSize(); };
         var frame = new Kinetic.Rect({
             x: 0, y: 0, width: size.width, height: size.height,
             stroke: settings.portraitFrameColor,
@@ -501,12 +513,11 @@ var Arena = function(playerId, playerNumber) {
             group.add(cardAvatarImage).add(hpRect).add(hpBar).add(hpBarFrame).add(atRect);
             group.add(hpText).add(atText).add(statusRect).add(statusText).add(frame);
         };
-        var ptSize = settings.getPortraitSize();
         this.fields.push(new Card({
             name: card.name, group: group, frame: frame,
             hpRect: hpRect, hpBar: hpBar, atRect: atRect, statusRect: statusRect,
             hpText: hpText, atText: atText, statusText: statusText,
-            width: ptSize.width, height: ptSize.height,
+            width: size.width, height: size.height,
         }));
         var layer = new Kinetic.Layer({ id: 'LP' + card.name });
         layer.add(group);
@@ -681,6 +692,7 @@ var Animater = function() {
         
         // Draw hero HP rectangle for player1
         var hp1RectY = hero1Id.getHeight() + hero1Id.getY() + settings.globalPadding;
+        settings.player1HpRectY = hp1RectY; 
         var hp1Rect = new Kinetic.Rect({
             id: 'hero1-hpbg-rect',
             x: settings.globalPadding,
@@ -1028,16 +1040,19 @@ var Animater = function() {
         var arena = this.arenas[playerId];
         
         var logo = arena.hands.removeOfName(card.name);
-        var handFuncs = [];
-        handFuncs.push(function() {
-            new Kinetic.Tween({
-                node: logo.group,
-                x: -settings.getLogoSize().width,
-                duration: settings.drawCardDuration,
-            }).play();
-        });
-        this.compactHands(arena, handFuncs);
-        this.destroySingleLayerShape(logo);
+        if (logo != null) {
+            // Revived cards does not have a logo.
+            var handFuncs = [];
+            handFuncs.push(function() {
+                new Kinetic.Tween({
+                    node: logo.group,
+                    x: -settings.getLogoSize().width,
+                    duration: settings.drawCardDuration,
+                }).play();
+            });
+            this.compactHands(arena, handFuncs);
+            this.destroySingleLayerShape(logo);
+        }
 
         var targetIndex = arena.fields.length;
         var portrait = arena.createPortrait(card, settings.getPortraitSize());
@@ -1149,6 +1164,7 @@ var Animater = function() {
             cardShape: this.__getShape(defenderHero, 'hpbg-rect'),
             textColor: settings.attackCardTextColor,
             text: '伤害: ' + damage + '\r\n' + featureName,
+            size: settings.getHeroHpBgRectSize(),
         });
         defenderHero.hp -= damage;
         if (defenderHero.hp < 0) {
@@ -1265,8 +1281,8 @@ var Animater = function() {
             protector, [ protectee ], settings.skillDuration);
     };
     
-    this.msgIgnoredSkills = ['背刺', '暴击', '狂热', '嗜血', '横扫', '穿刺', '诅咒'];
-    this.selfUsedSkills = ['不动', '脱困', '法力反射', '冰甲', '闪避', '回春', '吸血'];
+    this.msgIgnoredSkills = ['背刺', '暴击', '狂热', '嗜血', '横扫', '穿刺'];
+    this.selfUsedSkills = ['不动', '脱困', '法力反射', '冰甲', '闪避', '回春', '吸血', '守护', '魔神之甲'];
     this.__useSkill = function(data) {
         var attacker = data[0]; // EntityRuntimeInfo
         var skill = data[1];    // String
@@ -1283,9 +1299,11 @@ var Animater = function() {
         if (skill == '普通攻击') {
             this.normalAttack(attacker, defenders[0], false);
         } else if (this.selfUsedSkills.indexOf(skill) >= 0) {
+            var shape = this.getEntityShape(attacker);
             this.displayCardMsg({
                  name: skill,
-                 cardShape: this.getEntityShape(attacker),
+                 cardShape: shape,
+                 size: shape.getSize(),
                  text: skill,
                  duration: settings.skillDuration,
              });
@@ -1293,7 +1311,7 @@ var Animater = function() {
             this.flyImage({ fileName: 'cross.png', width: 29, height: 60, text: skill },
                     attacker, defenders, settings.skillDuration);
         } else if (skill == '传送') {
-            this.flyImage({ fileName: 'hexagram.png', width: 24, height: 24, text: skill },
+            this.flyImage({ fileName: 'hexagram.png', width: 24, height: 24, text: skill, },
                     attacker, defenders, settings.skillDuration);
         } else if (skill == '免疫') {
             this.flyImage({ fileName: 'immue.png', width: 48, height: 48 },
@@ -1338,6 +1356,9 @@ var Animater = function() {
         } else if (skill == '献祭') {
             this.flyImage({ fileName: 'round-cross.png', width: 48, height: 48, text: skill },
                     attacker, defenders, settings.skillDuration);
+        } else if (skill == '狙击' || skill == '二重狙击' || skill == '魔神之刃') {
+            this.flyImage({ fileName: 'aim.png', width: 48, height: 48, text: skill, },
+                    attacker, defenders, settings.skillDuration);
         } else {
             var text = attacker.ownerId + "的" + attacker.uniqueName + "\r\n";
             text += "\r\n" + skill + "\r\n\r\n";
@@ -1364,10 +1385,14 @@ var Animater = function() {
         }
         if (skill == '普通攻击') {
             this.normalAttack(attacker, defenderHero, true);
+        } else if (skill == '诅咒' || skill == '魔神之咒') {
+            this.flyImage({ fileName: 'skull.png', width: 30, height: 30 },
+                    attacker, defenderHero, settings.skillDuration);
         } else if (skill == '自动扣血') {
             this.displayCardMsg({
                 name: skill,
                 cardShape: this.__getShape(defenderHero.id, 'hp-bar'),
+                size: settings.getHeroHpBgRectSize(),
                 text: skill,
                 duration: settings.skillDuration,
             });
@@ -1982,13 +2007,17 @@ var Animater = function() {
             textColor: settings.cardMsgTextColor,
             text: '',
             duration: settings.cardMsgDuration,
+            size: settings.getPortraitSize(),
         }, (attrs || {}));
-        var ptSize = settings.getPortraitSize();
         var group = null;
+        var rectHeight = settings.cardMsgRectHeight;
+        if (rectHeight > opt.size.height) {
+            rectHeight = opt.size.height;
+        }
         this.addAnimation(attrs.name, function () {
             var rect = new Kinetic.Rect({
-                x: 0, y: 0, width: ptSize.width,
-                height: settings.cardMsgRectHeight,
+                x: 0, y: 0, width: opt.size.width,
+                height: rectHeight,
                 stroke: settings.cardMsgRectBorderColor,
                 strokeWidth: settings.cardMsgRectBorderWidth,
                 fill: settings.cardMsgRectFill,
@@ -2002,7 +2031,7 @@ var Animater = function() {
             });
             group = new Kinetic.Group({
                 x: opt.cardShape.getX(),
-                y: opt.cardShape.getY() + ptSize.height / 2 - rect.getHeight() / 2,
+                y: opt.cardShape.getY() + opt.size.height / 2 - rect.getHeight() / 2,
             });
             group.add(rect).add(text);
             self.stage.get('#effect-layer')[0].add(group);

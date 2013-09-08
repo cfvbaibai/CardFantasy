@@ -627,6 +627,9 @@ public class FeatureResolver {
             return;
         }
         stage.getUI().useSkillToHero(attacker, defenderPlayer, cardFeature);
+        if (damage > defenderPlayer.getHP()) {
+            damage = defenderPlayer.getHP();
+        }
         if (damage >= 0) {
             int remainingDamage = this.resolveAttackHeroBlockingFeatures(attacker, defenderPlayer, cardFeature, damage);
             if (remainingDamage > 0) {
@@ -649,7 +652,7 @@ public class FeatureResolver {
             }
             for (FeatureInfo defenderFeature : defender.getNormalUsableFeatures()) {
                 if (defenderFeature.getType() == FeatureType.ÊØ»¤) {
-                    remainingDamage = GuardFeature.apply(defenderFeature.getFeature(), this, attacker, defender, remainingDamage);
+                    remainingDamage = GuardFeature.apply(defenderFeature.getFeature(), cardFeature, this, attacker, defender, remainingDamage);
                     if (remainingDamage == 0) {
                         return 0;
                     }

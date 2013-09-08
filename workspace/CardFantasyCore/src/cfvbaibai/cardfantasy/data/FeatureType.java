@@ -104,7 +104,7 @@ public enum FeatureType {
     魔神之甲(1500, 0, FeatureTag.抗免疫),
     魔神之咒(1000, 0, FeatureTag.抗免疫),
     
-    自动扣血(0, FeatureTag.抗守护),
+    自动扣血(0, 0, FeatureTag.抗守护),
     未知(0);
 
     private int initImpact;
