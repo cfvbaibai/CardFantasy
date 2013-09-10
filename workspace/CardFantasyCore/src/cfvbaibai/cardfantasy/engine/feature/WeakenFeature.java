@@ -44,8 +44,8 @@ public final class WeakenFeature {
                 continue;
             }
             int attackWeakened = feature.getImpact();
-            if (attackWeakened > defender.getAT()) {
-                attackWeakened = defender.getAT();
+            if (attackWeakened > defender.getCurrentAT()) {
+                attackWeakened = defender.getCurrentAT();
             }
 
             resolver.getStage().getUI().adjustAT(attacker, defender, -attackWeakened, feature);

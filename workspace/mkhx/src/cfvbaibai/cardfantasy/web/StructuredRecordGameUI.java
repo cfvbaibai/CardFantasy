@@ -160,7 +160,7 @@ public class StructuredRecordGameUI extends GameUI {
     @Override
     public void adjustAT(EntityInfo source, CardInfo target, int adjAT, Feature cardFeature) {
         this.record.addEvent("adjustAT", new EntityRuntimeInfo(source), new EntityRuntimeInfo(target),
-                adjAT, target.getAT() + adjAT, cardFeature.getType().name());
+                adjAT, target.getCurrentAT() + adjAT, cardFeature.getType().name());
     }
 
     @Override
@@ -228,7 +228,7 @@ public class StructuredRecordGameUI extends GameUI {
     @Override
     public void loseAdjustATEffect(CardInfo card, FeatureEffect effect) {
         this.record.addEvent("lostAdjAT", new EntityRuntimeInfo(card), new EntityRuntimeInfo(card),
-                effect.getValue(), card.getAT() - effect.getValue(), effect.getCause().getType().name());
+                effect.getValue(), card.getCurrentAT() - effect.getValue(), effect.getCause().getType().name());
     }
 
     @Override

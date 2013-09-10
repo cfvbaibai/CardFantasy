@@ -36,7 +36,7 @@ public final class SacrificeFeature {
         resolver.cardDead(oblation);
         
         int adjHP = feature.getImpact() * card.getMaxHP() / 100;
-        int adjAT = feature.getImpact() * card.getAT() / 100;
+        int adjAT = feature.getImpact() * card.getLevel0AT() / 100;
         ui.adjustHP(card, card, adjHP, feature);
         ui.adjustAT(card, card, adjAT, feature);
         card.addEffect(new FeatureEffect(FeatureEffectType.MAXHP_CHANGE, featureInfo, adjHP, true));

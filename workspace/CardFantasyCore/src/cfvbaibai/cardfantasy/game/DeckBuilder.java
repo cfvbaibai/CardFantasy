@@ -19,7 +19,8 @@ public final class DeckBuilder {
     private static CardDataStore store;
     
     public static DeckStartupInfo multiBuild(String descsText) {
-        descsText = descsText.replace('£¬', ',').replace("\r\n", ",").replace("\n", ",");
+        descsText = descsText.replace(' ', ',').replace('¡¡', ',').replace('£¬', ',');
+        descsText = descsText.replace("\r\n", ",").replace("\n", ",");
         String[] descs = descsText.split(",");
         return build(descs);
     }
@@ -33,6 +34,7 @@ public final class DeckBuilder {
             if (desc == null || desc.length() == 0) {
                 continue;
             }
+            desc = desc.trim();
             if (desc.length() > 1 && desc.charAt(0) == 'C') {
                 parseCardDesc(deck, desc.substring(1));
             } else if (desc.length() > 1 && desc.charAt(0) == 'R') {

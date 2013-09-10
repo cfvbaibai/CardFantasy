@@ -19,7 +19,7 @@ public class LegionBuffFeature {
         if (feature.getLevel() == 0) {
             return;
         }
-        int adjAT = feature.getImpact() * card.getOriginalAT() / 100;
+        int adjAT = feature.getImpact() * card.getLevel0AT() / 100;
         resolver.getStage().getUI().useSkill(card, feature, true);
         resolver.getStage().getUI().adjustAT(featureInfo.getOwner(), card, adjAT, feature);
         card.addEffect(new FeatureEffect(FeatureEffectType.ATTACK_CHANGE, featureInfo, adjAT, false));

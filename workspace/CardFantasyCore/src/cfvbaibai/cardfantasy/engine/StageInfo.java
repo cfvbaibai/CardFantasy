@@ -132,7 +132,7 @@ public class StageInfo {
             int sumCardHP = 0;
             List<CardInfo> cards = player.getDeck().getCards();
             for (CardInfo card : cards) {
-                sumCardAT += card.getOriginalAT();
+                sumCardAT += card.getLevel0AT();
                 sumCardHP += card.getOriginalMaxHP();
             }
             int score = player.getMaxHP() + sumCardAT + sumCardHP;

@@ -684,7 +684,7 @@ public class FeatureResolver {
     }
 
     public OnDamagedResult attackCard(CardInfo attacker, CardInfo defender) throws HeroDieSignal {
-        return attackCard(attacker, defender, attacker.getAT());
+        return attackCard(attacker, defender, attacker.getCurrentAT());
     }
 
     public OnDamagedResult attackCard(CardInfo attacker, CardInfo defender, int damage) throws HeroDieSignal {

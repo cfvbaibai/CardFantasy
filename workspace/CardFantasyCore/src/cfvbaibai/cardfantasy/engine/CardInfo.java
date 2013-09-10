@@ -18,7 +18,6 @@ public class CardInfo extends EntityInfo {
     @NonSerializable
     private Card card;
     private int hp;
-    private int at;
     private int summonDelay;
     @NonSerializable
     private CardStatus status;
@@ -37,7 +36,6 @@ public class CardInfo extends EntityInfo {
     public CardInfo(Card card, Player owner) {
         this.card = card;
         this.hp = card.getMaxHP();
-        this.at = card.getInitAT();
         this.summonDelay = card.getSummonSpeed();
         this.status = new CardStatus();
         this.owner = owner;
@@ -109,16 +107,37 @@ public class CardInfo extends EntityInfo {
         return this.card;
     }
 
-    public int getAT() {
-        int actualAT = this.getOriginalAT();
+    public int getLevel0AT() {
+        return this.card.getInitAT();
+    }
+    
+    private int getSpecificLevelEffectAT(FeatureTag tag) {
+        int at = 0;
         for (List<FeatureEffect> effects : this.effects.values()) {
             for (FeatureEffect effect : effects) {
-                if (effect.getType() == FeatureEffectType.ATTACK_CHANGE) {
-                    actualAT += effect.getValue();
+                if (effect.getType() == FeatureEffectType.ATTACK_CHANGE &&
+                    effect.getCause().getType().containsTag(tag)) {
+                    at += effect.getValue();
                 }
             }
         }
-        return actualAT;
+        return at;
+    }
+
+    public int getLevel1AT() {
+        return this.getLevel0AT() + this.getSpecificLevelEffectAT(FeatureTag.基础攻击加成);
+    }
+    
+    public int getLevel2AT() {
+        return this.getLevel1AT() + this.getSpecificLevelEffectAT(FeatureTag.额外攻击加成);
+    }
+
+    public int getLevel3AT() {
+        return this.getLevel2AT() + this.getSpecificLevelEffectAT(FeatureTag.独立攻击加成);
+    }
+    
+    public int getCurrentAT() {
+        return this.getLevel3AT();
     }
 
     public int getHP() {
@@ -160,7 +179,6 @@ public class CardInfo extends EntityInfo {
 
     public void reset() {
         this.hp = this.card.getMaxHP();
-        this.at = this.card.getInitAT();
         this.status = new CardStatus();
         this.effects.clear();
         this.setDeadOnce(false);
@@ -176,10 +194,6 @@ public class CardInfo extends EntityInfo {
 
     public Race getRace() {
         return getCard().getRace();
-    }
-
-    public int getOriginalAT() {
-        return this.at;
     }
 
     public List<FeatureInfo> getUsableSummonFeatures() {
@@ -286,10 +300,6 @@ public class CardInfo extends EntityInfo {
 
     public int getLevel() {
         return this.card.getLevel();
-    }
-
-    public int getInitAT() {
-        return this.card.getInitAT();
     }
 
     public String getEffectsDesc() {

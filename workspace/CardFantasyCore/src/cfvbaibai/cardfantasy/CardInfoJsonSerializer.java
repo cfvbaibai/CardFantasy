@@ -15,7 +15,7 @@ public class CardInfoJsonSerializer implements JsonSerializer<CardInfo>{
     public JsonElement serialize(CardInfo card, Type type, JsonSerializationContext context) {
         JsonObject obj = new JsonObject();
         obj.addProperty("name", card.getName());
-        obj.addProperty("at", card.getAT());
+        obj.addProperty("at", card.getCurrentAT());
         obj.addProperty("hp", card.getMaxHP());
         return obj;
     }

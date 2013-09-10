@@ -126,7 +126,7 @@ public abstract class TextGameUI extends GameUI {
             }
             String victimsText = StringUtils.join(victimTexts, ", ");
             String featureDesc = cardFeature == null ? "【普通攻击】" : cardFeature.getShortDesc();
-            sayF("%s 对 { %s } 使用 %s!", attacker.getShortDesc(), victimsText, featureDesc);
+            sayF("%s 对 { %s } 使用 %s%s!", attacker.getShortDesc(), victimsText, featureDesc, bingo ? "" : " 失败");
         }
     }
 
@@ -202,7 +202,7 @@ public abstract class TextGameUI extends GameUI {
         StringBuffer sb = new StringBuffer();
         sb.append("墓地: ");
         for (CardInfo card : grave.toList()) {
-            sb.append(String.format("%s (等级=%d, 攻击=%d, HP=%d), ", card.getUniqueName(), card.getLevel(), card.getInitAT(),
+            sb.append(String.format("%s (等级=%d, 攻击=%d, HP=%d), ", card.getUniqueName(), card.getLevel(), card.getLevel0AT(),
                     card.getMaxHP()));
         }
         say(sb.toString());
@@ -215,7 +215,7 @@ public abstract class TextGameUI extends GameUI {
         List<CardInfo> cards = field.getAliveCards();
         for (CardInfo card : cards) {
             sb.append(String.format("[%d] %s (等级=%d, 攻击=%d/%d, HP=%d/%d/%d, 状态=%s, 效果=%s)\r\n", i, card.getUniqueName(),
-                    card.getLevel(), card.getAT(), card.getInitAT(), card.getHP(), card.getMaxHP(),
+                    card.getLevel(), card.getCurrentAT(), card.getLevel0AT(), card.getHP(), card.getMaxHP(),
                     card.getOriginalMaxHP(), card.getStatus().getShortDesc(), card.getEffectsDesc()));
             ++i;
         }
@@ -231,7 +231,7 @@ public abstract class TextGameUI extends GameUI {
         sb.append("手牌: ");
         for (CardInfo card : hand.toList()) {
             sb.append(String.format("%s (等级=%d, 攻击=%d, HP=%d, 等待=%d), ", card.getUniqueName(), card.getLevel(),
-                    card.getInitAT(), card.getMaxHP(), card.getSummonDelay()));
+                    card.getLevel0AT(), card.getMaxHP(), card.getSummonDelay()));
         }
         say(sb.toString());
     }
@@ -240,7 +240,7 @@ public abstract class TextGameUI extends GameUI {
         StringBuffer sb = new StringBuffer();
         sb.append("牌堆: ");
         for (CardInfo card : deck.toList()) {
-            sb.append(String.format("%s (等级=%d, 攻击=%d, HP=%d), ", card.getUniqueName(), card.getLevel(), card.getInitAT(),
+            sb.append(String.format("%s (等级=%d, 攻击=%d, HP=%d), ", card.getUniqueName(), card.getLevel(), card.getLevel0AT(),
                     card.getMaxHP()));
         }
         say(sb.toString());
@@ -270,7 +270,7 @@ public abstract class TextGameUI extends GameUI {
     public void adjustAT(EntityInfo source, CardInfo target, int adjAT, Feature cardFeature) {
         String verb = adjAT > 0 ? "增加" : "降低";
         sayF("%s 使用 %s %s 了 %s 的 %d 点攻击! %d -> %d.", source.getShortDesc(), cardFeature.getShortDesc(), verb,
-                target.getShortDesc(), adjAT, target.getAT(), target.getAT() + adjAT);
+                target.getShortDesc(), adjAT, target.getCurrentAT(), target.getCurrentAT() + adjAT);
     }
 
     @Override
@@ -300,8 +300,8 @@ public abstract class TextGameUI extends GameUI {
 
     @Override
     public void recoverAT(CardInfo card, FeatureType cause, int recoveredAT) {
-        sayF("%s 的攻击从 【%s】 的效果中恢复. 攻击: %d -> %d", card.getShortDesc(), cause.name(), card.getAT(), card.getAT()
-                - recoveredAT);
+        sayF("%s 的攻击从 【%s】 的效果中恢复. 攻击: %d -> %d", card.getShortDesc(), cause.name(),
+                card.getCurrentAT(), card.getCurrentAT() - recoveredAT);
     }
 
     @Override
@@ -331,7 +331,7 @@ public abstract class TextGameUI extends GameUI {
     @Override
     public void loseAdjustATEffect(CardInfo ally, FeatureEffect effect) {
         sayF("%s 失去由 %s 的 %s 造成的效果. 攻击: %d -> %d.", ally.getShortDesc(), effect.getSource().getShortDesc(), effect
-                .getCause().getFeature().getShortDesc(), ally.getAT(), ally.getAT() - effect.getValue());
+                .getCause().getFeature().getShortDesc(), ally.getCurrentAT(), ally.getCurrentAT() - effect.getValue());
     }
 
     @Override
@@ -396,7 +396,7 @@ public abstract class TextGameUI extends GameUI {
     @Override
     public void confused(CardInfo card) {
         sayF("%s 处在状态 %s 中并且攻击了本方英雄!", card.getShortDesc(), card.getStatus().getShortDesc());
-        this.attackHero(card, card.getOwner(), null, card.getAT());
+        this.attackHero(card, card.getOwner(), null, card.getCurrentAT());
     }
 
     @Override
@@ -406,7 +406,7 @@ public abstract class TextGameUI extends GameUI {
 
     @Override
     public void useSkill(EntityInfo attacker, Feature cardFeature, boolean bingo) {
-        sayF("%s 使用 %s", attacker.getShortDesc(), cardFeature.getShortDesc());
+        sayF("%s 使用 %s%s", attacker.getShortDesc(), cardFeature.getShortDesc(), bingo ? "" : " 失败");
     }
 
     @Override

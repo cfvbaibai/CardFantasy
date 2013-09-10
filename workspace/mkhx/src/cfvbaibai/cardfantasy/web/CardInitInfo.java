@@ -12,7 +12,7 @@ public class CardInitInfo {
     public CardInitInfo(CardInfo card) {
         this.id = card.getId();
         this.name = card.getUniqueName();
-        this.at = card.getAT();
+        this.at = card.getCurrentAT();
         this.hp = card.getMaxHP();
         this.level = card.getLevel();
     }

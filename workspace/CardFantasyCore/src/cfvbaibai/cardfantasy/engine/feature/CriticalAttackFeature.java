@@ -10,7 +10,7 @@ import cfvbaibai.cardfantasy.engine.FeatureResolver;
 public final class CriticalAttackFeature extends PreAttackCardFeature {
     public static void apply(FeatureResolver resolver, FeatureInfo featureInfo, CardInfo attacker, CardInfo defender) {
         Feature feature = featureInfo.getFeature();
-        int adjAT = feature.getImpact() * attacker.getOriginalAT() / 100;
+        int adjAT = feature.getImpact() * attacker.getLevel1AT() / 100;
         boolean bingo = resolver.getStage().getRandomizer().roll100(50);
         resolver.getStage().getUI().useSkill(attacker, feature, bingo);
         if (bingo) {

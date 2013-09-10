@@ -21,7 +21,7 @@ public final class WarthFeature {
             // 横扫可能导致多次触发战意
             //return;
         }
-        int adjAT = feature.getImpact() * attacker.getOriginalAT() / 100;
+        int adjAT = feature.getImpact() * attacker.getLevel1AT() / 100;
         GameUI ui = resolver.getStage().getUI();
         if (attacker.getHP() < defender.getHP()) {
             ui.useSkill(attacker, defender, feature, true);

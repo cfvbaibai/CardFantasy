@@ -162,7 +162,7 @@ public class GameEngine {
                 ui.cannotAction(myField.getCard(i));
             } else if (status.containsStatus(CardStatusType.√‘ªÛ)) {
                 ui.confused(myField.getCard(i));
-                resolver.attackHero(myField.getCard(i), getActivePlayer(), null, myField.getCard(i).getAT());
+                resolver.attackHero(myField.getCard(i), getActivePlayer(), null, myField.getCard(i).getCurrentAT());
             } else {
                 tryAttackEnemy(myField, opField, i);
             }
@@ -200,7 +200,7 @@ public class GameEngine {
             return;
         }
         if (opField.getCard(i) == null) {
-            resolver.attackHero(myField.getCard(i), getInactivePlayer(), null, myField.getCard(i).getAT());
+            resolver.attackHero(myField.getCard(i), getInactivePlayer(), null, myField.getCard(i).getCurrentAT());
         } else {
             tryAttackCard(myField, opField, i);
         }
@@ -215,7 +215,7 @@ public class GameEngine {
         FeatureResolver resolver = this.stage.getResolver();
         resolver.resolvePreAttackCardFeature(myField.getCard(i), opField.getCard(i), false);
         if (opField.getCard(i) == null) {
-            resolver.attackHero(myField.getCard(i), getInactivePlayer(), null, myField.getCard(i).getAT());
+            resolver.attackHero(myField.getCard(i), getInactivePlayer(), null, myField.getCard(i).getCurrentAT());
         } else {
             processAttackCard(myField, opField, i);
         }

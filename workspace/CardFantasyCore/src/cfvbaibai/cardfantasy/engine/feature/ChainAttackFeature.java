@@ -39,8 +39,8 @@ public final class ChainAttackFeature {
 
         ui.useSkill(attacker, victims, feature, true);
 
-        int chainAT = feature.getImpact() * attacker.getAT() / 100;
-        int adjAT = chainAT - attacker.getAT();
+        int chainAT = feature.getImpact() * attacker.getCurrentAT() / 100;
+        int adjAT = chainAT - attacker.getCurrentAT();
         FeatureEffect effect = new FeatureEffect(FeatureEffectType.ATTACK_CHANGE, featureInfo, adjAT, false);
         ui.adjustAT(attacker, attacker, adjAT, feature);
         attacker.addEffect(effect);
