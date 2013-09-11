@@ -13,6 +13,7 @@ public enum FeatureType {
     瘟疫(5, FeatureTag.永久, FeatureTag.基础攻击加成),
     
     /* 攻击力加成技能 */
+    献祭(20, 10, FeatureTag.永久, FeatureTag.基础攻击加成),
     群攻提升(15, FeatureTag.基础攻击加成),
     狂热(10, FeatureTag.永久, FeatureTag.基础攻击加成),
     嗜血(10, FeatureTag.永久, FeatureTag.基础攻击加成),
@@ -94,10 +95,8 @@ public enum FeatureType {
     反噬(50),
     疾病(10),
 
-    
     诅咒(30),
     摧毁(0, FeatureTag.即死),
-    献祭(20, 10),
 
     封印(0, FeatureTag.陷阱),
     血炼(20),

@@ -1385,8 +1385,11 @@ var Animater = function() {
         }
         if (skill == '普通攻击') {
             this.normalAttack(attacker, defenderHero, true);
+        } else if (skill == '祈祷') {
+            this.flyImage({ fileName: 'heal.png', width: 24, height: 24, text: skill },
+                    attacker, defenderHero, settings.skillDuration);
         } else if (skill == '诅咒' || skill == '魔神之咒') {
-            this.flyImage({ fileName: 'skull.png', width: 30, height: 30 },
+            this.flyImage({ fileName: 'skull.png', width: 30, height: 30, text: skill },
                     attacker, defenderHero, settings.skillDuration);
         } else if (skill == '自动扣血') {
             this.displayCardMsg({
