@@ -21,9 +21,21 @@ public final class BurningFlameFeature {
         Feature feature = featureInfo.getFeature();
         int damage = feature.getImpact();
         List<CardInfo> candidates = defender.getField().pickRandom(-1, true);
+        CardStatusItem newBurningStatus = CardStatusItem.burning(damage, featureInfo);
         List<CardInfo> victims = new ArrayList<CardInfo>();
         for (CardInfo candidate : candidates) {
-            if (!candidate.getStatus().containsStatusCausedBy(featureInfo, CardStatusType.»º…’)) {
+            /*
+             * Burning status of the same level could not be stacked.
+             * This seems to be an bug in official version
+             */
+            boolean skipped = false;
+            for (CardStatusItem existingBurningStatus : candidate.getStatus().getStatusOf(CardStatusType.»º…’)) {
+                if (existingBurningStatus.getEffect() == newBurningStatus.getEffect()) {
+                    skipped = true;
+                    break;
+                }
+            }
+            if (!skipped) {
                 victims.add(candidate);
             }
         }
@@ -34,9 +46,8 @@ public final class BurningFlameFeature {
             if (!result.isAttackable()) {
                 continue;
             }
-            CardStatusItem status = CardStatusItem.burning(damage, featureInfo);
-            ui.addCardStatus(attacker, victim, feature, status);
-            victim.addStatus(status);
+            ui.addCardStatus(attacker, victim, feature, newBurningStatus);
+            victim.addStatus(newBurningStatus);
         }
     }
 }

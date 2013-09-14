@@ -48,6 +48,14 @@ public class Player extends EntityInfo {
         return this.playerInfo.getMaxCost();
     }
     
+    public int getCardSlot() {
+        return this.playerInfo.getCardSlot();
+    }
+    
+    public int getRuneSlot() {
+        return this.playerInfo.getRuneSlot();
+    }
+    
     private PlayerInfo getPlayerInfo() {
         return this.playerInfo;
     }

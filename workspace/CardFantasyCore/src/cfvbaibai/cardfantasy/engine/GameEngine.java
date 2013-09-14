@@ -11,6 +11,7 @@ import cfvbaibai.cardfantasy.data.Card;
 import cfvbaibai.cardfantasy.data.Feature;
 import cfvbaibai.cardfantasy.data.FeatureType;
 import cfvbaibai.cardfantasy.data.PlayerInfo;
+import cfvbaibai.cardfantasy.data.Rune;
 
 public class GameEngine {
 
@@ -37,7 +38,19 @@ public class GameEngine {
         return this.stage.getInactivePlayers().get(0);
     }
     
-    private void validateDeckCost(PlayerInfo playerInfo) {
+    private void validateDeck(PlayerInfo playerInfo) {
+        Collection <Card> cards = playerInfo.getCards();
+        Collection <Rune> runes = playerInfo.getRunes();
+        if (cards.size() > playerInfo.getCardSlot()) {
+            throw new CardFantasyRuntimeException(String.format(
+                    "%s 的卡牌槽不足！%s 卡牌槽数：%d, 卡组卡牌数：%d",
+                    playerInfo.getId(), playerInfo.getId(), playerInfo.getCardSlot(), cards.size()));
+        }
+        if (runes.size() > playerInfo.getRuneSlot()) {
+            throw new CardFantasyRuntimeException(String.format(
+                    "%s 的符文槽不足！%s 符文槽数：%d, 卡组符文数：%d",
+                    playerInfo.getId(), playerInfo.getId(), playerInfo.getRuneSlot(), runes.size()));
+        }
         int cost = 0;
         for (Card card : playerInfo.getCards()) {
             cost += card.getCost();
@@ -50,8 +63,8 @@ public class GameEngine {
     }
 
     public void RegisterPlayers(PlayerInfo player1Info, PlayerInfo player2Info) {
-        validateDeckCost(player1Info);
-        validateDeckCost(player2Info);
+        validateDeck(player1Info);
+        validateDeck(player2Info);
         stage.addPlayer(player1Info);
         stage.addPlayer(player2Info);
     }

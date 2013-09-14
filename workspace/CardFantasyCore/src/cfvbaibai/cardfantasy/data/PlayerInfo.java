@@ -43,6 +43,22 @@ public class PlayerInfo {
         161, 162, 163, 164, 165, 166, 167, 168, 169, 170,
         171, 172, 173, 174, 175, 176, 177, 178, 179, 180,
     };
+    
+    private static int[] cardSlots = new int[] {
+        0,
+        3, 3, 4, 4, 5, 5, 5, 5, 5, 6,
+        6, 6, 6, 6, 6, 6, 6, 6, 6, 7,
+        7, 7, 7, 7, 7, 7, 7, 7, 7, 8,
+        8, 8, 8, 8, 9, 9, 9, 9, 9, 10,
+    };
+    
+    private static int[] runeSlots = new int[] {
+        0,
+        0, 0, 0, 0, 0, 1, 1, 1, 1, 1,
+        1, 1, 1, 1, 1, 1, 1, 1, 1, 2,
+        2, 2, 2, 2, 2, 2, 2, 2, 2, 3,
+        3, 3, 3, 3, 3, 3, 3, 3, 3, 4,
+    };
 
     public PlayerInfo(String id, int level, Legion legion, Collection<Rune> runes, Card ... cards) {
         List<Card> cardList = new ArrayList<Card>();
@@ -86,6 +102,26 @@ public class PlayerInfo {
         return costs[costs.length - 1] + this.level - (costs.length - 1);
     }
 
+    public int getCardSlot() {
+        if (this.level < 0) {
+            return 0;
+        }
+        if (this.level < cardSlots.length) {
+            return cardSlots[this.level];
+        }
+        return 10;
+    }
+    
+    public int getRuneSlot() {
+        if (this.level < 0) {
+            return 0;
+        }
+        if (this.level < runeSlots.length) {
+            return runeSlots[this.level];
+        }
+        return 4;
+    }
+    
     public String getId() {
         return this.id;
     }
