@@ -7,6 +7,7 @@ import java.util.List;
 import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
 import cfvbaibai.cardfantasy.GameOverSignal;
 import cfvbaibai.cardfantasy.GameUI;
+import cfvbaibai.cardfantasy.data.Card;
 import cfvbaibai.cardfantasy.data.Feature;
 import cfvbaibai.cardfantasy.data.FeatureType;
 import cfvbaibai.cardfantasy.data.PlayerInfo;
@@ -35,8 +36,22 @@ public class GameEngine {
     private Player getInactivePlayer() {
         return this.stage.getInactivePlayers().get(0);
     }
+    
+    private void validateDeckCost(PlayerInfo playerInfo) {
+        int cost = 0;
+        for (Card card : playerInfo.getCards()) {
+            cost += card.getCost();
+        }
+        if (cost > playerInfo.getMaxCost()) {
+            throw new CardFantasyRuntimeException(String.format(
+                    "%s 的COST不足！%s 的最大COST：%d, 卡组COST: %d",
+                    playerInfo.getId(), playerInfo.getId(), playerInfo.getMaxCost(), cost));
+        }
+    }
 
     public void RegisterPlayers(PlayerInfo player1Info, PlayerInfo player2Info) {
+        validateDeckCost(player1Info);
+        validateDeckCost(player2Info);
         stage.addPlayer(player1Info);
         stage.addPlayer(player2Info);
     }

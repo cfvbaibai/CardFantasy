@@ -85,9 +85,9 @@ public class Card implements Cloneable {
     }
 
     public int getCost() {
-        int cost = this.sourceInfo.getDeckCost();
-        if (this.getLevel() > 10 && cost <= 15) {
-            cost += 2;
+        int cost = this.sourceInfo.getBaseCost();
+        if (this.getLevel() == 15) {
+            cost += this.sourceInfo.getIncrCost();
         }
         return cost;
     }

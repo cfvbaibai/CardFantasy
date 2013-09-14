@@ -13,12 +13,13 @@ public class RacialShieldFeature {
         if (attacker.getRace() != targetRace) {
             return originalDamage;
         }
+        GameUI ui = resolver.getStage().getUI();
+        ui.useSkill(blocker, feature, true);
         int reduction = feature.getImpact();
         int actualDamage = originalDamage - originalDamage * reduction / 100;
         if (actualDamage < 0) {
             actualDamage = 0;
         }
-        GameUI ui = resolver.getStage().getUI();
         ui.protect(blocker, attacker, victim, null, feature);
         ui.blockDamage(blocker, attacker, victim, feature, originalDamage, actualDamage);
         return actualDamage;

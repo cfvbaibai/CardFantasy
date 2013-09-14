@@ -44,6 +44,10 @@ public class Player extends EntityInfo {
         }
     }
     
+    public int getMaxCost() {
+        return this.playerInfo.getMaxCost();
+    }
+    
     private PlayerInfo getPlayerInfo() {
         return this.playerInfo;
     }

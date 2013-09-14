@@ -1277,12 +1277,18 @@ var Animater = function() {
         //var attacker = data[1];
         var protectee = data[2];
         //var skill = data[3];
-        this.flyImage({ fileName: 'block.png', width: 48, height: 48 },
-            protector, [ protectee ], settings.skillDuration);
+        var defendSkill = data[4];
+        if (defendSkill == '格挡') {
+            this.flyImage({ fileName: 'block.png', width: 48, height: 48 },
+                    protector, [ protectee ], settings.skillDuration);
+        }
     };
     
     this.msgIgnoredSkills = ['背刺', '暴击', '狂热', '嗜血', '横扫', '穿刺'];
-    this.selfUsedSkills = ['不动', '脱困', '法力反射', '冰甲', '闪避', '回春', '吸血', '守护', '魔神之甲'];
+    this.selfUsedSkills = [
+        '不动', '脱困', '法力反射', '冰甲', '闪避', '回春', '吸血', '守护', '魔神之甲',
+        '王国之盾', '森林之盾', '蛮荒之盾', '地狱之盾'
+    ];
     this.__useSkill = function(data) {
         var attacker = data[0]; // EntityRuntimeInfo
         var skill = data[1];    // String
@@ -1319,7 +1325,10 @@ var Animater = function() {
         } else if (skill == '魔甲') {
             this.flyImage({ fileName: 'magicshield.png', width: 48, height: 48 },
                     attacker, [ attacker ], settings.skillDuration);
-        } else if (skill == '燃烧' || skill == '裂伤') {
+        } else if (skill == '燃烧' || skill == '烈火焚神') {
+            this.flyImage({ fileName: 'burn.png', width: 48, height: 48 },
+                    attacker, defenders, settings.skillDuration);
+        } else if (skill == '裂伤') {
             this.displayCardMsg({
                 name: skill,
                 cardShape: this.getEntityShape(defenders[0]),

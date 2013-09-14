@@ -136,7 +136,8 @@ public class StructuredRecordGameUI extends GameUI {
     public void protect(EntityInfo protector, EntityInfo attacker, EntityInfo protectee, Feature attackFeature,
             Feature protectFeature) {
         this.record.addEvent("protect", new EntityRuntimeInfo(protector),
-                new EntityRuntimeInfo(attacker), new EntityRuntimeInfo(protectee), toName(attackFeature));
+                new EntityRuntimeInfo(attacker), new EntityRuntimeInfo(protectee),
+                toName(attackFeature), toName(protectFeature));
     }
 
     @Override

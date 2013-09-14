@@ -743,6 +743,8 @@ public class FeatureResolver {
                 DestroyFeature.apply(this, feature.getFeature(), card, opField.getOwner(), 1);
             } else if (feature.getType() == FeatureType.Œ¡“ﬂ) {
                 PlagueFeature.apply(feature, this, card, opField.getOwner());
+            } else if (feature.getType() == FeatureType.∆Ìµª) {
+                PrayFeature.apply(feature.getFeature(), this, card);
             }
         }
         for (CardInfo fieldCard : myField.getAliveCards()) {

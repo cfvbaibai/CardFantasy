@@ -36,7 +36,8 @@ public class CardDataStore {
                 cardData.setRace(Race.valueOf(cardNode.valueOf("@race")));
                 cardData.setSummonSpeed(Integer.parseInt(cardNode.valueOf("@speed")));
                 cardData.setStar(Integer.parseInt(cardNode.valueOf("@star")));
-                cardData.setDeckCost(Integer.parseInt(cardNode.valueOf("@cost")));
+                cardData.setBaseCost(Integer.parseInt(cardNode.valueOf("@cost")));
+                cardData.setIncrCost(Integer.parseInt(cardNode.valueOf("@incrCost")));
                 cardData.setBaseAT(Integer.parseInt(cardNode.valueOf("@at")));
                 cardData.setBaseHP(Integer.parseInt(cardNode.valueOf("@hp")));
                 cardData.setIncrAT(Integer.parseInt(cardNode.valueOf("@incrAT")));
@@ -80,6 +81,14 @@ public class CardDataStore {
             if (card.getStar() == star) {
                 result.add(card);
             }
+        }
+        return result;
+    }
+    
+    public List<CardData> getAllCards() {
+        List<CardData> result = new ArrayList<CardData>();
+        for (CardData card : this.cardMap.values()) {
+            result.add(card);
         }
         return result;
     }

@@ -3,19 +3,18 @@ package cfvbaibai.cardfantasy.data;
 import java.util.ArrayList;
 import java.util.List;
 
-import cfvbaibai.cardfantasy.NonSerializable;
-
 public class CardData {
     private String id;
     private String name;
     private Race race;
     private int summonSpeed;
     private int star;
-    private int deckCost;
+    private int baseCost;
     private int baseAT;
     private int baseHP;
     private int incrAT;
     private int incrHP;
+    private int incrCost;
     private Growth growth;
     private List<CardFeature> cardFeatures;
 
@@ -67,12 +66,12 @@ public class CardData {
         this.star = star;
     }
 
-    public int getDeckCost() {
-        return deckCost;
+    public int getBaseCost() {
+        return baseCost;
     }
 
-    public void setDeckCost(int deckCost) {
-        this.deckCost = deckCost;
+    public void setBaseCost(int baseCost) {
+        this.baseCost = baseCost;
     }
 
     public int getBaseAT() {
@@ -109,6 +108,14 @@ public class CardData {
 
     public Growth getGrowth() {
         return this.growth;
+    }
+    
+    public int getIncrCost() {
+        return this.incrCost;
+    }
+    
+    public void setIncrCost(int incrCost) {
+        this.incrCost = incrCost;
     }
     
     public List <CardFeature> getFeatures() {

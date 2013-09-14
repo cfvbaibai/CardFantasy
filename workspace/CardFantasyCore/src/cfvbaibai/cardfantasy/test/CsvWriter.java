@@ -20,7 +20,7 @@ public class CsvWriter {
         writer = new FileWriter(file);
     }
     
-    public void writeFields(Object[] fields) throws IOException {
+    public void writeFields(Object ... fields) throws IOException {
         writeFields(toList(fields));
     }
     

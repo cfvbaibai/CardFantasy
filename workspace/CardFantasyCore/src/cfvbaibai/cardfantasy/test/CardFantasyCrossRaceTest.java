@@ -1,7 +1,12 @@
 package cfvbaibai.cardfantasy.test;
 
+import java.io.File;
+import java.io.IOException;
+
 import org.junit.Test;
 
+import cfvbaibai.cardfantasy.data.CardData;
+import cfvbaibai.cardfantasy.data.CardDataStore;
 import cfvbaibai.cardfantasy.game.PlayerBuilder;
 
 public class CardFantasyCrossRaceTest {
@@ -29,5 +34,19 @@ public class CardFantasyCrossRaceTest {
     @Test
     public void 刀锋女王vs战斗猛犸象() {
         TestGameBuilder.play5v5("刀锋女王", "战斗猛犸象");
+    }
+    
+    @Test
+    public void IncrCostStat() throws IOException {
+        CsvWriter writer = new CsvWriter(new File("E:\\IncrCost.csv"));
+        try {
+            writer.writeFields("卡牌", "种族", "星数", "额外COST");
+            CardDataStore store = CardDataStore.loadDefault();
+            for (CardData data : store.getAllCards()) {
+                writer.writeFields(data.getName(), data.getRace().name(), data.getStar(), data.getIncrCost());
+            }
+        } finally {
+            writer.close();
+        }
     }
 }
