@@ -13,9 +13,14 @@ import cfvbaibai.cardfantasy.engine.FeatureResolver;
 import cfvbaibai.cardfantasy.engine.HeroDieSignal;
 
 public final class ChainAttackFeature {
-    public static void apply(FeatureResolver resolver, FeatureInfo featureInfo, CardInfo attacker, CardInfo defender)
+    public static void apply(FeatureResolver resolver, FeatureInfo featureInfo, CardInfo attacker, CardInfo defender, Feature attackFeature)
             throws HeroDieSignal {
         if (attacker == null) {
+            return;
+        }
+        if (attackFeature != null) {
+            // Only normal attack can trigger ChainAttack.
+            // Sweep & ChainAttack itself cannot trigger ChainAttack
             return;
         }
         Feature feature = featureInfo.getFeature();
@@ -45,7 +50,7 @@ public final class ChainAttackFeature {
         ui.adjustAT(attacker, attacker, adjAT, feature);
         attacker.addEffect(effect);
         for (CardInfo victim : victims) {
-            resolver.attackCard(attacker, victim);
+            resolver.attackCard(attacker, victim, featureInfo);
         }
         ui.loseAdjustATEffect(attacker, effect);
         attacker.removeEffect(effect);

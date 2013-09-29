@@ -258,7 +258,7 @@ public class GameEngine {
                 ui.useSkill(myField.getCard(i), defender, featureInfo.getFeature(), true);
             }
         }
-        OnDamagedResult damagedResult = resolver.attackCard(myField.getCard(i), defender);
+        OnDamagedResult damagedResult = resolver.attackCard(myField.getCard(i), defender, null);
         if (damagedResult != null && damagedResult.originalDamage > 0 && myField.getCard(i) != null) {
             for (FeatureInfo featureInfo : myField.getCard(i).getNormalUsableFeatures()) {
                 if (featureInfo.getFeature().getType() == FeatureType.∫·…®) {
@@ -273,7 +273,7 @@ public class GameEngine {
 
                     for (CardInfo sweepDefender : sweepDefenders) {
                         ui.useSkill(myField.getCard(i), sweepDefender, featureInfo.getFeature(), true);
-                        resolver.attackCard(myField.getCard(i), sweepDefender, damagedResult.originalDamage);
+                        resolver.attackCard(myField.getCard(i), sweepDefender, featureInfo, damagedResult.originalDamage);
                         // Physical attack cannot proceed if attacker is killed by counter attack skills.
                         if (myField.getCard(i) == null) {
                             break;

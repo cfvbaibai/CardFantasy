@@ -478,7 +478,7 @@ public class FeatureResolver {
         }
     }
 
-    public void resolveExtraAttackFeature(CardInfo attacker, CardInfo defender, Player defenderHero,
+    public void resolveExtraAttackFeature(CardInfo attacker, CardInfo defender, Player defenderHero, Feature attackFeature,
             int normalAttackDamage) throws HeroDieSignal {
 
         for (FeatureInfo feature : attacker.getNormalUsableFeatures()) {
@@ -492,7 +492,7 @@ public class FeatureResolver {
                 } else if (feature.getType() == FeatureType.ÊÈÑª) {
                     BloodThirstyFeature.apply(this, feature, attacker, normalAttackDamage);
                 } else if (feature.getType() == FeatureType.Á¬Ëø¹¥»÷) {
-                    ChainAttackFeature.apply(this, feature, attacker, defender);
+                    ChainAttackFeature.apply(this, feature, attacker, defender, attackFeature);
                 } else if (feature.getType() == FeatureType.¼²²¡) {
                     DiseaseFeature.apply(feature, this, attacker, defender, normalAttackDamage);
                 } else if (feature.getType() == FeatureType.ÎüÑª) {
@@ -683,27 +683,28 @@ public class FeatureResolver {
         }
     }
 
-    public OnDamagedResult attackCard(CardInfo attacker, CardInfo defender) throws HeroDieSignal {
-        return attackCard(attacker, defender, attacker.getCurrentAT());
+    public OnDamagedResult attackCard(CardInfo attacker, CardInfo defender, FeatureInfo featureInfo) throws HeroDieSignal {
+        return attackCard(attacker, defender, featureInfo, attacker.getCurrentAT());
     }
 
-    public OnDamagedResult attackCard(CardInfo attacker, CardInfo defender, int damage) throws HeroDieSignal {
+    public OnDamagedResult attackCard(CardInfo attacker, CardInfo defender, FeatureInfo featureInfo, int damage) throws HeroDieSignal {
+        Feature feature = featureInfo == null ? null : featureInfo.getFeature();
         boolean bingo = !attacker.getStatus().containsStatus(CardStatusType.Âé±Ô);
         this.stage.getUI().useSkill(attacker, defender, null, bingo);
 
-        OnAttackBlockingResult blockingResult = stage.getResolver().resolveAttackBlockingFeature(attacker, defender,
-                null, damage);
+        OnAttackBlockingResult blockingResult = stage.getResolver().resolveAttackBlockingFeature(
+                attacker, defender, feature, damage);
         if (!blockingResult.isAttackable()) {
             return null;
         }
-        this.stage.getUI().attackCard(attacker, defender, null, blockingResult.getDamage());
+        this.stage.getUI().attackCard(attacker, defender, feature, blockingResult.getDamage());
         OnDamagedResult damagedResult = stage.getResolver().applyDamage(defender, blockingResult.getDamage());
         if (damagedResult.cardDead) {
-            stage.getResolver().resolveDeathFeature(attacker, defender, null);
+            stage.getResolver().resolveDeathFeature(attacker, defender, feature);
         }
 
-        resolveExtraAttackFeature(attacker, defender, defender.getOwner(), damagedResult.actualDamage);
-        resolveCounterAttackFeature(attacker, defender, null, blockingResult);
+        resolveExtraAttackFeature(attacker, defender, defender.getOwner(), feature, damagedResult.actualDamage);
+        resolveCounterAttackFeature(attacker, defender, feature, blockingResult);
 
         return damagedResult;
     }
