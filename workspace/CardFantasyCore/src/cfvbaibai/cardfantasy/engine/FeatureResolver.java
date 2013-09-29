@@ -87,6 +87,10 @@ public class FeatureResolver {
     public StageInfo getStage() {
         return this.stage;
     }
+    
+    private boolean isPhysicalAttackFeature(Feature feature) {
+        return feature == null || feature.getType().containsTag(FeatureTag.ÎïÀí¹¥»÷);
+    }
 
     public List<CardInfo> getAdjacentCards(Field field, int position) {
         List<CardInfo> cards = new ArrayList<CardInfo>();
@@ -206,7 +210,7 @@ public class FeatureResolver {
 
     public void resolveCounterAttackFeature(CardInfo attacker, CardInfo defender, Feature attackFeature,
             OnAttackBlockingResult result) throws HeroDieSignal {
-        if (attackFeature == null) {
+        if (isPhysicalAttackFeature(attackFeature)) {
             for (FeatureInfo feature : defender.getNormalUsableFeatures()) {
                 if (feature.getType() == FeatureType.·´»÷) {
                     CounterAttackFeature.apply(feature.getFeature(), this, attacker, defender, result.getDamage());
@@ -259,7 +263,7 @@ public class FeatureResolver {
             Feature attackFeature, int damage) throws HeroDieSignal {
         OnAttackBlockingResult result = new OnAttackBlockingResult(true, 0);
         CardStatus status = attacker.getStatus();
-        if (attackFeature == null) {
+        if (isPhysicalAttackFeature(attackFeature)) {
             // Normal attack could be blocked by Dodge or Âé±Ô, ±ù¶³,
             // Ëø¶¨ status.
             CardInfo cardAttacker = (CardInfo) attacker;
@@ -623,7 +627,7 @@ public class FeatureResolver {
         if (attacker == null) {
             return;
         }
-        if (cardFeature == null && attacker.getStatus().containsStatus(CardStatusType.Âé±Ô)) {
+        if (isPhysicalAttackFeature(cardFeature) && attacker.getStatus().containsStatus(CardStatusType.Âé±Ô)) {
             return;
         }
         stage.getUI().useSkillToHero(attacker, defenderPlayer, cardFeature);
