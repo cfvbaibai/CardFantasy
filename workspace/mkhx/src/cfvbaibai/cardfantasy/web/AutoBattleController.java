@@ -1,6 +1,5 @@
 ﻿package cfvbaibai.cardfantasy.web;
 
-import java.io.UnsupportedEncodingException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -26,6 +25,7 @@ import cfvbaibai.cardfantasy.engine.GameEngine;
 import cfvbaibai.cardfantasy.engine.GameResult;
 import cfvbaibai.cardfantasy.engine.Player;
 import cfvbaibai.cardfantasy.engine.Rule;
+import cfvbaibai.cardfantasy.engine.StageInfo;
 import cfvbaibai.cardfantasy.game.DummyGameUI;
 import cfvbaibai.cardfantasy.game.GameResultStat;
 import cfvbaibai.cardfantasy.game.PlayerBuilder;
@@ -50,15 +50,6 @@ public class AutoBattleController {
         ModelAndView mv = new ModelAndView();
         mv.setViewName("home");
         return mv;
-    }
-
-    public static String encodeStr(String str) {
-        try {
-            return new String(str.getBytes("ISO-8859-1"), "UTF-8").replace('，', ',');
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-            return null;
-        }
     }
 
     private static DateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -97,6 +88,8 @@ public class AutoBattleController {
         }
         return stat;
     }
+    
+    private StageInfo activeStage;
 
     @RequestMapping(value = "/PlayAuto1MatchGame")
     public ResponseEntity<String> playAuto1MatchGame(HttpServletRequest request, @RequestParam("deck1") String deck1,
@@ -148,6 +141,7 @@ public class AutoBattleController {
             GameEngine engine = new GameEngine(ui, new Rule(5, 999, firstAttack, false));
             engine.RegisterPlayers(player1, player2);
             GameResult gameResult = engine.playGame();
+            this.activeStage = engine.getStage();
             BattleRecord record = ui.getRecord();
             String result = gson.toJson(record);
             log("Winner: " + gameResult.getWinner().getId());
@@ -315,6 +309,20 @@ public class AutoBattleController {
             return new ResponseEntity<String>(result.toString(), responseHeaders, HttpStatus.CREATED);
         } catch (Exception e) {
             return handleError(e, false);
+        }
+    }
+    
+    @RequestMapping(value = "/GetCardDetail", headers = "Accept=application/json")
+    public ResponseEntity<String> getCardDetail(HttpServletRequest request, @RequestParam("playerId") String playerId,
+            @RequestParam("uniqueName") String uniqueName, @RequestParam("type") String type) {
+        try {
+            HttpHeaders responseHeaders = new HttpHeaders();
+            responseHeaders.add("Content-Type", "application/json;charset=UTF-8");
+            responseHeaders.add("Charset", "UTF-8");
+            String result = "";
+            return new ResponseEntity<String>(result, responseHeaders, HttpStatus.CREATED);
+        } catch (Exception e) {
+            return handleError(e, true);
         }
     }
 

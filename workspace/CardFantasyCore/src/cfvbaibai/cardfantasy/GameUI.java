@@ -100,7 +100,13 @@ public abstract class GameUI {
 
     public abstract void adjustAT(EntityInfo source, CardInfo target, int adjAT, Feature cardFeature);
 
-    public abstract void adjustHP(EntityInfo source, CardInfo target, int adjHP, Feature cardFeature);
+    public void adjustHP(EntityInfo source, CardInfo target, int adjHP, Feature cardFeature) {
+        List<CardInfo> targets = new ArrayList<CardInfo>();
+        targets.add(target);
+        adjustHP(source, targets, adjHP, cardFeature);
+    }
+    
+    public abstract void adjustHP(EntityInfo source, List<? extends CardInfo> targets, int adjHP, Feature cardFeature);
 
     public abstract void blockDamage(EntityInfo protector, EntityInfo attacker, EntityInfo defender,
             Feature cardFeature, int originalDamage, int actualDamage);

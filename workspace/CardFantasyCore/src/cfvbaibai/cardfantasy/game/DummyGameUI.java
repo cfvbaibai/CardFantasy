@@ -157,7 +157,7 @@ public class DummyGameUI extends GameUI {
     }
 
     @Override
-    public void adjustHP(EntityInfo source, CardInfo target, int adjHP, Feature cardFeature) {
+    public void adjustHP(EntityInfo source, List<? extends CardInfo> targets, int adjHP, Feature cardFeature) {
         // TODO Auto-generated method stub
 
     }

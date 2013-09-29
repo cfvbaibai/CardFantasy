@@ -274,10 +274,12 @@ public abstract class TextGameUI extends GameUI {
     }
 
     @Override
-    public void adjustHP(EntityInfo source, CardInfo target, int adjHP, Feature cardFeature) {
+    public void adjustHP(EntityInfo source, List<? extends CardInfo> targets, int adjHP, Feature cardFeature) {
         String verb = adjHP > 0 ? "增加" : "降低";
-        sayF("%s 使用 %s %s 了 %s 的HP! %d -> %d.", source.getShortDesc(), cardFeature.getShortDesc(), verb,
+        for (CardInfo target : targets) {
+            sayF("%s 使用 %s %s 了 %s 的HP! %d -> %d.", source.getShortDesc(), cardFeature.getShortDesc(), verb,
                 target.getShortDesc(), target.getHP(), target.getHP() + adjHP);
+        }
     }
 
     @Override

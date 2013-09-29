@@ -163,11 +163,33 @@ public class StructuredRecordGameUI extends GameUI {
         this.record.addEvent("adjustAT", new EntityRuntimeInfo(source), new EntityRuntimeInfo(target),
                 adjAT, target.getCurrentAT() + adjAT, cardFeature.getType().name());
     }
-
+/*
     @Override
-    public void adjustHP(EntityInfo source, CardInfo target, int adjHP, Feature cardFeature) {
-        this.record.addEvent("adjustHP", new EntityRuntimeInfo(source), new EntityRuntimeInfo(target),
+    public void adjustHP(EntityInfo source, List<? extends CardInfo> targets, int adjHP, Feature cardFeature) {
+        class AdjustmentItem {
+            @SuppressWarnings("unused")
+            public EntityRuntimeInfo target;
+            @SuppressWarnings("unused")
+            public int hp;
+            @SuppressWarnings("unused")
+            public int maxHp;
+        }
+        AdjustmentItem[] items = new AdjustmentItem[targets.size()];
+        for (int i = 0; i < targets.size(); ++i) {
+            CardInfo target = targets.get(i);
+            items[i] = new AdjustmentItem();
+            items[i].target = new EntityRuntimeInfo(target);
+            items[i].hp = target.getHP() + adjHP;
+            items[i].maxHp = target.getMaxHP() + adjHP;
+        }
+        this.record.addEvent("adjustHP", new EntityRuntimeInfo(source), adjHP, cardFeature.getType().name(), items);
+    }
+*/
+    public void adjustHP(EntityInfo source, List<? extends CardInfo> targets, int adjHP, Feature cardFeature) {
+        for (CardInfo target : targets) {
+            this.record.addEvent("adjustHP", new EntityRuntimeInfo(source), new EntityRuntimeInfo(target),
                 adjHP, target.getHP() + adjHP, cardFeature.getType().name(), target.getMaxHP() + adjHP);
+        }
     }
 
     @Override

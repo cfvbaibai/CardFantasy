@@ -104,6 +104,7 @@ var CfPos = function(attr) {
 };
 
 var ArenaSettings = function() {
+    this.fontSizeFactor = $.browser.webkit ? 1 : 1.4;
     this.maxWidth = 420;
     this.heightRate = 1.2;
     this.width = this.maxWidth;
@@ -126,7 +127,7 @@ var ArenaSettings = function() {
     this.skillSplashDuration = 0.1;
     this.skillSplashPause = 0.7;
 
-    this.bgColor = 'black';
+    this.bgColor = '#222200';
     this.separatorColor = 'white';
     this.separatorWidth = 1;
 
@@ -158,7 +159,10 @@ var ArenaSettings = function() {
     this.runeTextFill = { FIRE: '#FFFFFF', WIND: '#FFFFFF', WATER: '#FFFFFF', GROUND: '#FFFFFF' };
     this.runeRectHeightRate = 0.3;
     this.runeRadiusRate = 0.7;
-    
+    this.runeFontFamily = this.fontFamily;
+    this.runeFontSize = 8 * this.fontSizeFactor;
+    this.runeTextColor = 'white';
+
     this.roundFontSize = 32;
     this.roundFontFamily = this.fontFamily;
     this.roundTextColor = 'yellow';
@@ -174,7 +178,7 @@ var ArenaSettings = function() {
     this.bannerBorderWidth = 1;
     this.bannerPause = 1.3;
     
-    this.handDelayFontSize = 10;
+    this.handDelayFontSize = 10 * this.fontSizeFactor;
     this.handDelayColor = 'black';
     this.handDelayFontFamily = 'Aria Black, Arial';
     this.handDelayRectSize = 12;
@@ -192,7 +196,7 @@ var ArenaSettings = function() {
     this.cardHpRectOpactiy = 0.8;
     this.cardHpRectHeight = 10;
     this.cardHpFontFamily = 'Arial';
-    this.cardHpFontSize = 8;
+    this.cardHpFontSize = 8 * this.fontSizeFactor;
     this.cardHpTextColor = 'white';
     this.cardHpBarOpacity = this.cardHpRectOpacity;
     this.cardHpBarFill = 'red';
@@ -216,7 +220,7 @@ var ArenaSettings = function() {
     this.statusTextColor = this.cardHpTextColor;
 
     this.adjustFontFamily = this.fontFamily;
-    this.adjustFontSize = 8;
+    this.adjustFontSize = 8 * this.fontSizeFactor;
     this.addAtColor = 'blue';
     this.reduceAtColor = 'brown';
     this.addHpColor = 'green';
@@ -235,7 +239,7 @@ var ArenaSettings = function() {
     this.cardMsgRectFill = '#CCCCCC';
     this.cardMsgRectOpacity = 0.95;
     this.cardMsgFontFamily = this.fontFamily;
-    this.cardMsgFontSize = 8;
+    this.cardMsgFontSize = 8 * this.fontSizeFactor;
     this.cardMsgTextColor = 'black';
 
     this.attackCardTextColor = 'red';
@@ -250,7 +254,7 @@ var ArenaSettings = function() {
     this.skillTipShadowOffset = 5;
     this.skillTipShadowOpacity = 0.5;
     this.skillTipFontFamily = this.fontFamily;
-    this.skillTipFontSize = 8;
+    this.skillTipFontSize = 8 * this.fontSizeFactor;
     this.skillTipPadding = 10;
     this.skillTipTextColor = 'blue';
     
@@ -380,34 +384,38 @@ var Arena = function(playerId, playerNumber) {
             strokeWidth: settings.handDelayRectBorderWidth,
             fill: settings.handDelayRectFill,
             opacity: settings.handDelayRectOpacity,
+            listening: false,
         });
         var delayText = new Kinetic.Text({
             text: delay.toString(),
             fontFamily: settings.handDelayFontFamily,
             fontSize: settings.handDelayFontSize,
             fill: settings.handDelayColor,
+            listening: false,
         }).centerMiddle(delayRect);
 
         var cardAvatar = new Image();
         cardAvatar.src = resDir + '/img/cardlogo/' + id + '.jpg';
         cardAvatar.onload = function() {
             var cardAvatarImage = new Kinetic.Image({
-                x : 2,
-                y : 2,
+                id: 'LG-' + name,
+                x: 2,
+                y: 2,
                 width: size.width - 4,
                 height: size.height - 4,
-                image : cardAvatar,
+                image: cardAvatar,
             });
             group.add(cardAvatarImage);
             var cardFrame = new Image();
             cardFrame.src = resDir + '/img/frame/frame.png';
             cardFrame.onload = function() {
                 var cardFrameImage = new Kinetic.Image({
-                    x : 0,
-                    y : 0,
+                    x: 0,
+                    y: 0,
                     width: size.width,
                     height: size.height,
-                    image : cardFrame,
+                    image: cardFrame,
+                    listening: false,
                 });
                 group.add(cardFrameImage);
                 group.add(delayRect);
@@ -418,13 +426,16 @@ var Arena = function(playerId, playerNumber) {
         this.hands.push({ name: name, group: group, delay: delay, delayText: delayText,
             width: logoSize.width, height: logoSize.height, });
         var layer = new Kinetic.Layer({ id: 'LL' + name });
+        layer.on('click', function(evt) {
+            console.log('LL' + name + ' clicked');
+        });
         layer.add(group);
         return group;
     };
     
     this.createPortrait = function(card) {
         var size = settings.getPortraitSize();
-        var group = new Kinetic.Group({ x: settings.width, y: settings.height,
+        var group = new Kinetic.Group({ id: 'PG-' + card.name, x: settings.width, y: settings.height,
             width: size.width, height: size.height });
         group.getSize = function() { return settings.getPortraitSize(); };
         var frame = new Kinetic.Rect({
@@ -432,6 +443,7 @@ var Arena = function(playerId, playerNumber) {
             stroke: settings.portraitFrameColor,
             strokeWidth: settings.portraitFrameWidth,
             opacity: 0,
+            listening: false,
         });
         var cardAvatar = new Image();
         cardAvatar.src = resDir + '/img/cardportrait/' + card.id + '.jpg';
@@ -445,6 +457,7 @@ var Arena = function(playerId, playerNumber) {
             strokeWidth: settings.cardHpRectBorderWidth,
             fill: settings.cardHpRectFill,
             opacity: settings.cardHpRectOpacity,
+            listening: false,
         });
         var hpBar = new Kinetic.Rect({
             x: 0,
@@ -455,6 +468,7 @@ var Arena = function(playerId, playerNumber) {
             strokeWidth: 1,
             fill: settings.cardHpBarFill,
             opacity: settings.cardHpBarOpacity,
+            listening: false,
         });
         var hpBarFrame = new Kinetic.Rect({
             x: 0,
@@ -465,6 +479,7 @@ var Arena = function(playerId, playerNumber) {
             strokeWidth: settings.cardHpRectBorderWidth,
             fill: 'transparent',
             opacity: settings.cardHpRectOpacity,
+            listening: false,
         });
         var atRect = new Kinetic.Rect({
             x: 0,
@@ -475,18 +490,21 @@ var Arena = function(playerId, playerNumber) {
             strokeWidth: settings.cardAtRectBorderWidth,
             fill: settings.cardAtRectFill,
             opacity: settings.cardAtRectOpacity,
+            listening: false,
         });
         var hpText = new Kinetic.Text({
             text: 'HP: ' + card.hp,
             fontFamily: settings.cardHpFontFamily,
             fontSize: settings.cardHpFontSize,
             fill: settings.cardHpTextColor,
+            listening: false,
         }).centerMiddle(hpRect);
         var atText = new Kinetic.Text({
             text: 'AT: ' + card.at,
             fontFamily: settings.cardAtFontFamily,
             fontSize: settings.cardAtFontSize,
             fill: settings.cardAtTextColor,
+            listening: false,
         }).centerMiddle(atRect);
         
         var statusRect = new Kinetic.Rect({
@@ -495,20 +513,23 @@ var Arena = function(playerId, playerNumber) {
             strokeWidth: settings.statusRectBorderWidth,
             fill: settings.statusRectFill,
             opacity: settings.statusRectOpacity,
+            listening: false,
         });
         var statusText = new Kinetic.Text({
             text: '',
             fontFamily: settings.statusFontFamily,
             fontSize: settings.statusFontSize,
             fill: settings.statusTextColor,
+            listening: false,
         }).centerMiddle(statusRect);
         cardAvatar.onload = function() {
             var cardAvatarImage = new Kinetic.Image({
-                x : 2,
-                y : 2,
+                id: 'PT-' + card.name,
+                x: 2,
+                y: 2,
                 width: size.width - 4,
                 height: size.height - 4,
-                image : cardAvatar,
+                image: cardAvatar,
             });
             group.add(cardAvatarImage).add(hpRect).add(hpBar).add(hpBarFrame).add(atRect);
             group.add(hpText).add(atText).add(statusRect).add(statusText).add(frame);
@@ -520,6 +541,9 @@ var Arena = function(playerId, playerNumber) {
             width: size.width, height: size.height,
         }));
         var layer = new Kinetic.Layer({ id: 'LP' + card.name });
+        layer.on('click', function(evt) {
+            console.log('LP' + card.name + ' clicked');
+        });
         layer.add(group);
         return group;
     };
@@ -579,15 +603,15 @@ var Animater = function() {
             }));
             layer.add(new Kinetic.Text({
                 id: pos.id + '-name',
-                fontFamily: settings.fontFamily,
-                fontSize: 8,
-                fill: 'white',
+                fontFamily: settings.runeFontFamily,
+                fontSize: settings.runeFontSize,
+                fill: settings.runeTextColor,
             }));
             layer.add(new Kinetic.Text({
                 id: pos.id + '-energy',
-                fontFamily: settings.fontFamily,
-                fontSize: 8,
-                fill: 'white',
+                fontFamily: settings.runeFontFamily,
+                fontSize: settings.runeFontSize,
+                fill: settings.runeTextColor,
             }));
         }
     };
@@ -659,6 +683,7 @@ var Animater = function() {
     
     this.__stageCreated = function(data) {
         var frameLayer = new Kinetic.Layer({ id: 'frame-layer' });
+        frameLayer.on('click', function() { console.log('frame-layer clicked'); });
         // Draw vertical separator line
         frameLayer.add(new Kinetic.Line({
             points: [
@@ -816,6 +841,7 @@ var Animater = function() {
         this.stage.add(frameLayer);
         // Append HP shapes to card layer
         var cardLayer = new Kinetic.Layer({ id: 'card-layer' });
+        cardLayer.on('click', function(evt) { console.log('card-layer ' + evt.targetNode.getId() + ' clicked'); });
         // Draw rune outlines for both players
         this.drawRunes(cardLayer, [
             { id: 'hero1-rune0', x: rune1Circle.getX() - rune1Circle.getRadius().x, y: rune1Circle.getY(), },
@@ -860,11 +886,14 @@ var Animater = function() {
         }).center(hp2Rect).middle(hp2Rect));
         this.stage.add(cardLayer);
         // Append other layers
-        this.stage.add(new Kinetic.Layer({ id: 'effect-layer' }));
-        
+        var effectLayer = new Kinetic.Layer({ id: 'effect-layer', listening: false, });
+        effectLayer.on('click', function(evt) { console.log('effect-layer ' + evt.targetNode.getId() + ' clicked'); });
+        this.stage.add(effectLayer);
+
         var roundLayer = new Kinetic.Layer({ id: 'round-layer' });
+        roundLayer.on('click', function(evt) { console.log('round-layer ' + evt.targetNode.getId() + ' clicked'); });
         var roundRect = new Kinetic.Rect({
-            id: 'round-rect', x: 0, y: 0, width: settings.width, height: settings.height, opacity: 0,
+            id: 'round-rect', x: 0, y: 0, width: settings.width, height: settings.height, opacity: 0, listening: false,
         });
         roundLayer.add(roundRect);
         var roundText = new Kinetic.Text({
@@ -874,6 +903,7 @@ var Animater = function() {
             fontFamily: settings.roundFontFamily,
             fill: settings.roundTextColor,//'yellow',
             opacity: settings.roundTextOpacity,//0.4,
+            listening: false,
         });
         roundLayer.add(roundText);
         this.stage.add(roundLayer);
@@ -881,6 +911,7 @@ var Animater = function() {
         roundLayer.draw();
         
         var splashLayer = new Kinetic.Layer({ id: 'splash-layer' });
+        splashLayer.on('click', function() { console.log('splash-layer clicked'); });
         var splashRect = new Kinetic.Rect({
             id: 'splash-label',
             x: -settings.width,
@@ -2083,7 +2114,7 @@ var Animater = function() {
             width : settings.width,
             height : settings.height
         });
-        var bgLayer = new Kinetic.Layer();
+        var bgLayer = new Kinetic.Layer({ listening: false });
         var bg = new Kinetic.Rect({
             id: 'bg-layer',
             x : 0,
@@ -2093,9 +2124,10 @@ var Animater = function() {
             fill : settings.bgColor,
             strokeWidth : 0,
         });
+        bgLayer.on('click', function(evt) { console.log('bg-layer ' + evt.targetNode.getId() + ' clicked'); });
         bgLayer.add(bg);
         this.stage.add(bgLayer);
-        
+
         var events = data.events;
         for (var i = 0; i < events.length; ++i) {
             var event = events[i];

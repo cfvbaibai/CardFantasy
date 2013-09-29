@@ -229,7 +229,11 @@
         <Feature type="二重狙击" level="7" unlock="5" />
         <Feature type="法力侵蚀" level="5" unlock="10" />
     </Card>
-    
+    <Card id="1418" name="枪炮玫瑰" race="王国" speed="4" star="4" cost="13" incrCost="2" at="295" hp="870" incrAT="22" incrHP="26">
+        <Feature type="狙击" level="4" unlock="0" />
+        <Feature type="趁胜追击" level="5" unlock="5" />
+        <Feature type="二重狙击" level="6" unlock="10" />
+    </Card>
     <Card id="1501" name="降临天使" race="王国" speed="4" star="5" cost="15" incrCost="3" at="365" hp="1800" incrAT="24" incrHP="24">
         <Feature type="魔甲" level="8" unlock="0" />
         <Feature type="送还" level="0" unlock="5" />
@@ -1066,7 +1070,7 @@
         <Feature type="封印" level="0" unlock="5" />
         <Feature type="吸血" level="8" unlock="10" />
     </Card>
-    <Card id="4503" name="恐惧之王" race="地狱" speed="4" star="5" cost="17" incrCost="1" at="310" hp="1100" incrAT="25" incrHP="35">
+    <Card id="4503" name="恐惧之王" race="地狱" speed="4" star="5" cost="17" incrCost="0" at="310" hp="1100" incrAT="25" incrHP="35">
         <Feature type="诅咒" level="6" unlock="0" />
         <Feature type="封印" level="0" unlock="5" />
         <Feature type="转生" level="7" unlock="10" />
