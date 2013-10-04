@@ -750,6 +750,10 @@ public class FeatureResolver {
                 PlagueFeature.apply(feature, this, card, opField.getOwner());
             } else if (feature.getType() == FeatureType.Æíµ») {
                 PrayFeature.apply(feature.getFeature(), this, card);
+            } else if (feature.getType() == FeatureType.Ï×¼À) {
+                SacrificeFeature.apply(this, feature, card);
+            } else if (feature.getType() == FeatureType.·´ÊÉ) {
+                CounterBiteFeature.apply(feature.getFeature(), this, card);
             }
         }
         for (CardInfo fieldCard : myField.getAliveCards()) {
@@ -774,10 +778,6 @@ public class FeatureResolver {
                     RaceBuffFeature.apply(this, feature, fieldCard, null, FeatureEffectType.ATTACK_CHANGE);
                 } else if (feature.getType() == FeatureType.±¾Ô´ÊØ»¤) {
                     RaceBuffFeature.apply(this, feature, fieldCard, null, FeatureEffectType.MAXHP_CHANGE);
-                } else if (feature.getType() == FeatureType.·´ÊÉ) {
-                    CounterBiteFeature.apply(feature.getFeature(), this, fieldCard);
-                } else if (feature.getType() == FeatureType.Ï×¼À) {
-                    SacrificeFeature.apply(this, feature, fieldCard);
                 }
             }
         }
