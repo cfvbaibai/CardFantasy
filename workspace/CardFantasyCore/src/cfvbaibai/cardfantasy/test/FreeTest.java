@@ -21,23 +21,23 @@ import cfvbaibai.cardfantasy.game.PlayerBuilder;
 public class FreeTest extends PveEngineTest {
 
     private static GameResultStat massivePlay10v10(String card1, String card2, int level) {
-        return play(PlayerBuilder.build("Ó¢ĞÛ" + card1, level, "C" + card1 + "-10*10"),
-                PlayerBuilder.build("Ó¢ĞÛ" + card2, level, "C" + card2 + "-10*10"), 1000);
+        return play(PlayerBuilder.build("è‹±é›„" + card1, level, "C" + card1 + "-10*10"),
+                PlayerBuilder.build("è‹±é›„" + card2, level, "C" + card2 + "-10*10"), 1000);
     }
 
     private static GameResultStat massivePlay1v1(String card1, String card2, int level) {
-        return play(PlayerBuilder.build("Ó¢ĞÛ" + card1, level, "C" + card1 + "-10*1"),
-                PlayerBuilder.build("Ó¢ĞÛ" + card2, level, "C" + card2 + "-10*1"), 1000);
+        return play(PlayerBuilder.build("è‹±é›„" + card1, level, "C" + card1 + "-10*1"),
+                PlayerBuilder.build("è‹±é›„" + card2, level, "C" + card2 + "-10*1"), 1000);
     }
 
     private static GameResultStat massivePlay1v1Lv15(String card1, String card2, int level) {
-        return play(PlayerBuilder.build("Ó¢ĞÛ" + card1, level, "C" + card1 + "-15"),
-                PlayerBuilder.build("Ó¢ĞÛ" + card2, level, "C" + card2 + "-10"), 1000);
+        return play(PlayerBuilder.build("è‹±é›„" + card1, level, "C" + card1 + "-15"),
+                PlayerBuilder.build("è‹±é›„" + card2, level, "C" + card2 + "-10"), 1000);
     }
 
     private static GameResultStat massivePlay10v10Lv15(String card1, String card2, int level) {
-        return play(PlayerBuilder.build("Ó¢ĞÛ" + card1, level, "C" + card1 + "-15*10"),
-                PlayerBuilder.build("Ó¢ĞÛ" + card2, level, "C" + card2 + "-10*10"), 1000);
+        return play(PlayerBuilder.build("è‹±é›„" + card1, level, "C" + card1 + "-15*10"),
+                PlayerBuilder.build("è‹±é›„" + card2, level, "C" + card2 + "-10*10"), 1000);
     }
 
     private static void showStat(GameResultStat stat) {
@@ -60,294 +60,294 @@ public class FreeTest extends PveEngineTest {
     }
 
     @Test
-    public void ¶éÂä¾«ÁévsÎåĞÇ_1000() throws IOException {
-        FiveStarChallenge("¶éÂä¾«Áé", true, false);
+    public void å •è½ç²¾çµvsäº”æ˜Ÿ_1000() throws IOException {
+        FiveStarChallenge("å •è½ç²¾çµ", true, false);
     }
 
     @Test
-    public void ±³Ö÷Ö®Ó°vsÎåĞÇ_1000() throws IOException {
-        FiveStarChallenge("±³Ö÷Ö®Ó°", true, false);
+    public void èƒŒä¸»ä¹‹å½±vsäº”æ˜Ÿ_1000() throws IOException {
+        FiveStarChallenge("èƒŒä¸»ä¹‹å½±", true, false);
     }
 
     @Test
-    public void ´ó½£Ê¥vsÎåĞÇ_1000() throws IOException {
-        FiveStarChallenge("´ó½£Ê¥", true, false);
+    public void å¤§å‰‘åœ£vsäº”æ˜Ÿ_1000() throws IOException {
+        FiveStarChallenge("å¤§å‰‘åœ£", true, false);
     }
 
     @Test
-    public void ½µÁÙÌìÊ¹vsÎåĞÇ_1000() throws IOException {
-        FiveStarChallenge("½µÁÙÌìÊ¹", true, false);
+    public void é™ä¸´å¤©ä½¿vsäº”æ˜Ÿ_1000() throws IOException {
+        FiveStarChallenge("é™ä¸´å¤©ä½¿", true, false);
     }
 
     @Test
-    public void ÓÄÁé¾ŞÁúvsÎåĞÇ_1000() throws IOException {
-        FiveStarChallenge("ÓÄÁé¾ŞÁú", true, false);
+    public void å¹½çµå·¨é¾™vsäº”æ˜Ÿ_1000() throws IOException {
+        FiveStarChallenge("å¹½çµå·¨é¾™", true, false);
     }
 
     @Test
-    public void ¿Ö¾åÖ®ÍõvsÎåĞÇ_1000() throws IOException {
-        FiveStarChallenge("¿Ö¾åÖ®Íõ", true, false);
+    public void ææƒ§ä¹‹ç‹vsäº”æ˜Ÿ_1000() throws IOException {
+        FiveStarChallenge("ææƒ§ä¹‹ç‹", true, false);
     }
 
     @Test
-    public void ´©´Ì¹íÊ÷ÈËvsÎåĞÇ_1000_10v10() throws IOException {
-        FiveStarChallenge("´©´Ì¹íÊ÷ÈË", true, true);
+    public void ç©¿åˆºé¬¼æ ‘äººvsäº”æ˜Ÿ_1000_10v10() throws IOException {
+        FiveStarChallenge("ç©¿åˆºé¬¼æ ‘äºº", true, true);
     }
 
     @Test
-    public void ±©Å­°ÔÁúvsÎåĞÇ_1000() throws IOException {
-        FiveStarChallenge("±©Å­°ÔÁú", false, false);
+    public void æš´æ€’éœ¸é¾™vsäº”æ˜Ÿ_1000() throws IOException {
+        FiveStarChallenge("æš´æ€’éœ¸é¾™", false, false);
     }
 
     @Test
-    public void ±©Å­°ÔÁúvsÎåĞÇ_10vs10_1000() throws IOException {
-        FiveStarChallenge("±©Å­°ÔÁú", true, false);
+    public void æš´æ€’éœ¸é¾™vsäº”æ˜Ÿ_10vs10_1000() throws IOException {
+        FiveStarChallenge("æš´æ€’éœ¸é¾™", true, false);
     }
 
     @Test
-    public void ´¿½àÊ¥Å®vsÎåĞÇ_1000() throws IOException {
-        FiveStarChallenge("´¿½àÊ¥Å®", false, false);
+    public void çº¯æ´åœ£å¥³vsäº”æ˜Ÿ_1000() throws IOException {
+        FiveStarChallenge("çº¯æ´åœ£å¥³", false, false);
     }
 
     @Test
-    public void ´¿½àÊ¥Å®vsÎåĞÇ_10vs10_1000() throws IOException {
-        FiveStarChallenge("´¿½àÊ¥Å®", true, false);
+    public void çº¯æ´åœ£å¥³vsäº”æ˜Ÿ_10vs10_1000() throws IOException {
+        FiveStarChallenge("çº¯æ´åœ£å¥³", true, false);
     }
 
     @Test
-    public void ¶ÀÑÛ¾ŞÈËvsÎåĞÇ_1000() throws IOException {
-        FiveStarChallenge("¶ÀÑÛ¾ŞÈË", false, false);
+    public void ç‹¬çœ¼å·¨äººvsäº”æ˜Ÿ_1000() throws IOException {
+        FiveStarChallenge("ç‹¬çœ¼å·¨äºº", false, false);
     }
 
     @Test
-    public void ¶ÀÑÛ¾ŞÈËvsÎåĞÇ_10vs10_1000() throws IOException {
-        FiveStarChallenge("¶ÀÑÛ¾ŞÈË", true, false);
+    public void ç‹¬çœ¼å·¨äººvsäº”æ˜Ÿ_10vs10_1000() throws IOException {
+        FiveStarChallenge("ç‹¬çœ¼å·¨äºº", true, false);
     }
 
     @Test
-    public void É­ÁÖÅ®ÉñvsÎåĞÇ_10vs10_1000() throws IOException {
-        FiveStarChallenge("É­ÁÖÅ®Éñ", true, false);
+    public void æ£®æ—å¥³ç¥vsäº”æ˜Ÿ_10vs10_1000() throws IOException {
+        FiveStarChallenge("æ£®æ—å¥³ç¥", true, false);
     }
 
     @Test
-    public void ²»¶¯Ö©ÖëvsÎåĞÇ_10vs10_1000() throws IOException {
-        FiveStarChallenge("²»¶¯Ö©Öë", true, true);
+    public void ä¸åŠ¨èœ˜è››vsäº”æ˜Ÿ_10vs10_1000() throws IOException {
+        FiveStarChallenge("ä¸åŠ¨èœ˜è››", true, true);
     }
 
     @Test
-    public void ¾ÅÍ·ÑıÉßvsÎåĞÇ_2vs2_1000() throws IOException {
-        FiveStarChallenge("¾ÅÍ·ÑıÉß", false, false);
+    public void ä¹å¤´å¦–è›‡vsäº”æ˜Ÿ_2vs2_1000() throws IOException {
+        FiveStarChallenge("ä¹å¤´å¦–è›‡", false, false);
     }
 
     @Test
-    public void »Ê¼ÒÑ±ÊŞÊ¦vsÎåĞÇ_10vs10_1000() throws IOException {
-        FiveStarChallenge("»Ê¼ÒÑ±ÊŞÊ¦", true, false);
+    public void çš‡å®¶é©¯å…½å¸ˆvsäº”æ˜Ÿ_10vs10_1000() throws IOException {
+        FiveStarChallenge("çš‡å®¶é©¯å…½å¸ˆ", true, false);
     }
     
     @Test
-    public void Ä§ÉñÕ½() {
-        PlayerInfo player = PlayerBuilder.build("Íæ¼Ò", 75, new Legion(10, 10, 10, 10), "¶éÂä¾«Áé*2", "´ãÁ¶");
-        TestGameBuilder.playBossBattle(player, "¸´³ğÅ®Éñ");
+    public void é­”ç¥æˆ˜() {
+        PlayerInfo player = PlayerBuilder.build("ç©å®¶", 75, new Legion(10, 10, 10, 10), "å •è½ç²¾çµ*2", "æ·¬ç‚¼");
+        TestGameBuilder.playBossBattle(player, "å¤ä»‡å¥³ç¥");
     }
     
     @Test
-    public void ºáÉ¨Bug() {
-        TestGameBuilder.play5v5("¹âÃ÷Ö®Áú", "½ğÊô¾ŞÁú");
+    public void æ¨ªæ‰«Bug() {
+        TestGameBuilder.play5v5("å…‰æ˜ä¹‹é¾™", "é‡‘å±å·¨é¾™");
     }
     
     @Test
-    public void ºáÉ¨ÑÒ±ÚBug() {
-        PlayerInfo p1 = PlayerBuilder.build("Íõ¹úÓ¢ĞÛ", 75, "¹âÃ÷Ö®Áú*5");
-        PlayerInfo p2 = PlayerBuilder.build("Âù»ÄÓ¢ĞÛ", 75, "Å£Í·ÈËÇõ³¤*5", "ÑÒ±Ú");
+    public void æ¨ªæ‰«å²©å£Bug() {
+        PlayerInfo p1 = PlayerBuilder.build("ç‹å›½è‹±é›„", 75, "å…‰æ˜ä¹‹é¾™*5");
+        PlayerInfo p2 = PlayerBuilder.build("è›®è’è‹±é›„", 75, "ç‰›å¤´äººé…‹é•¿*5", "å²©å£");
         TestGameBuilder.play(p1, p2);
     }
     
     @Test
-    public void ºáÉ¨Õı³£() {
-        TestGameBuilder.play5v5("¹âÃ÷Ö®Áú", "½µÁÙÌìÊ¹");
+    public void æ¨ªæ‰«æ­£å¸¸() {
+        TestGameBuilder.play5v5("å…‰æ˜ä¹‹é¾™", "é™ä¸´å¤©ä½¿");
     }
     
     @Test
-    public void ¾øÉ±Bug() {
-        PlayerInfo player = PlayerBuilder.build("Íæ¼Ò", "½µÁÙÌìÊ¹*4,¹âÃ÷Ö®Áú*1,»ÙÃğÖ®Áú*3,×Æ»ê,±ù·â,ÇåÈª,¾øÉ±", 75);
-        TestGameBuilder.playBossBattle(player, "¸´³ğÅ®Éñ");
+    public void ç»æ€Bug() {
+        PlayerInfo player = PlayerBuilder.build("ç©å®¶", "é™ä¸´å¤©ä½¿*4,å…‰æ˜ä¹‹é¾™*1,æ¯ç­ä¹‹é¾™*3,ç¼é­‚,å†°å°,æ¸…æ³‰,ç»æ€", 75);
+        TestGameBuilder.playBossBattle(player, "å¤ä»‡å¥³ç¥");
     }
     
     @Test
-    public void ËÀÆõ×çÖäBug() {
-        PlayerInfo p1 = PlayerBuilder.build("Íæ¼Ò1", "½ğÊô¾ŞÁú*5,À×¶Ü", 75);
-        PlayerInfo p2 = PlayerBuilder.build("Íæ¼Ò2", "Õ½¶·ÃÍáïÏó+ËÀÆõ×çÖä1,»àÍÁ", 75);
+    public void æ­»å¥‘è¯…å’’Bug() {
+        PlayerInfo p1 = PlayerBuilder.build("ç©å®¶1", "é‡‘å±å·¨é¾™*5,é›·ç›¾", 75);
+        PlayerInfo p2 = PlayerBuilder.build("ç©å®¶2", "æˆ˜æ–—çŒ›çŠ¸è±¡+æ­»å¥‘è¯…å’’1,ç§½åœŸ", 75);
         TestGameBuilder.play(p1, p2);
     }
     
     @Test
-    public void ÊØ»¤Æíµ»Bug() {
-        PlayerInfo p1 = PlayerBuilder.build("Íæ¼Ò1", "Ğ°ÁúÖ®Éñ", 75);
-        PlayerInfo p2 = PlayerBuilder.build("Íæ¼Ò2", "Ä§½£Ê¿+Æíµ»7*2", 75);
+    public void å®ˆæŠ¤ç¥ˆç¥·Bug() {
+        PlayerInfo p1 = PlayerBuilder.build("ç©å®¶1", "é‚ªé¾™ä¹‹ç¥", 75);
+        PlayerInfo p2 = PlayerBuilder.build("ç©å®¶2", "é­”å‰‘å£«+ç¥ˆç¥·7*2", 75);
         TestGameBuilder.play(p1, p2);
     }
     
     @Test
-    public void Íõ¹ú×îÇ¿vsÉ­ÁÖ×îÇ¿_1000() {
+    public void ç‹å›½æœ€å¼ºvsæ£®æ—æœ€å¼º_1000() {
         for (int i = 6; i < 10; ++i) {
             System.out.println("Level: " + (i * 10));
-            PlayerInfo p1 = PlayerBuilder.build("Íõ¹úÓ¢ĞÛ", i * 10, "C¹âÃ÷Ö®Áú-10*10", "Rº®ÉË-4", "RÇåÈª-4", "R±ù·â-4");// ,
-                                                                                                          // "RÅ­ÌÎ-4");
-            PlayerInfo p2 = PlayerBuilder.build("É­ÁÖÓ¢ĞÛ", i * 10, "C½ğÊô¾ŞÁú-10*10", "RÀ×¶Ü-4", "R´º·ç-4", "RÇáÁé-4");// ,
-                                                                                                          // "R´ãÁ¶-4");
+            PlayerInfo p1 = PlayerBuilder.build("ç‹å›½è‹±é›„", i * 10, "Cå…‰æ˜ä¹‹é¾™-10*10", "Rå¯’ä¼¤-4", "Ræ¸…æ³‰-4", "Rå†°å°-4");// ,
+                                                                                                          // "Ræ€’æ¶›-4");
+            PlayerInfo p2 = PlayerBuilder.build("æ£®æ—è‹±é›„", i * 10, "Cé‡‘å±å·¨é¾™-10*10", "Ré›·ç›¾-4", "Ræ˜¥é£-4", "Rè½»çµ-4");// ,
+                                                                                                          // "Ræ·¬ç‚¼-4");
             showStat(play(p1, p2, 1000));
         }
     }
 
     @Test
-    public void Íõ¹ú×îÇ¿vsÍõÉ­×îÇ¿_1000() {
+    public void ç‹å›½æœ€å¼ºvsç‹æ£®æœ€å¼º_1000() {
         for (int i = 6; i < 10; ++i) {
             System.out.println("Level: " + (i * 10));
-            PlayerInfo p1 = PlayerBuilder.build("Íõ¹úÓ¢ĞÛ", i * 10, "C¹âÃ÷Ö®Áú-10*10", "Rº®ÉË-4", "RÇåÈª-4", "R±ù·â-4", "RÅ­ÌÎ-4");
-            PlayerInfo p2 = PlayerBuilder.build("ÍõÉ­Ó¢ĞÛ", i * 10, "C½ğÊô¾ŞÁú-10*5", "C½µÁÙÌìÊ¹-10*5", "RÀ×¶Ü-4", "R´º·ç-4", "R±ù·â-4",
-                    "RÇåÈª-4");
+            PlayerInfo p1 = PlayerBuilder.build("ç‹å›½è‹±é›„", i * 10, "Cå…‰æ˜ä¹‹é¾™-10*10", "Rå¯’ä¼¤-4", "Ræ¸…æ³‰-4", "Rå†°å°-4", "Ræ€’æ¶›-4");
+            PlayerInfo p2 = PlayerBuilder.build("ç‹æ£®è‹±é›„", i * 10, "Cé‡‘å±å·¨é¾™-10*5", "Cé™ä¸´å¤©ä½¿-10*5", "Ré›·ç›¾-4", "Ræ˜¥é£-4", "Rå†°å°-4",
+                    "Ræ¸…æ³‰-4");
             showStat(play(p2, p1, 10000));
         }
     }
 
     @Test
-    public void Íõ¹ú×îÇ¿vsÂù»Ä×îÇ¿_1000() {
+    public void ç‹å›½æœ€å¼ºvsè›®è’æœ€å¼º_1000() {
         for (int i = 6; i < 10; ++i) {
             System.out.println("Level: " + (i * 10));
-            PlayerInfo p1 = PlayerBuilder.build("Íõ¹úÓ¢ĞÛ", i * 10, "C¹âÃ÷Ö®Áú-10*10", "Rº®ÉË-4", "RÇåÈª-4", "R±ù·â-4", "R¶´²ì-4");
-            PlayerInfo p2 = PlayerBuilder.build("Âù»ÄÓ¢ĞÛ", i * 10, "CÀ×ÊŞ-10*10", "RÑÒ±Ú-4", "R³à¹È-4", "R·ÉÑÒ-4", "R»àÍÁ-4");
+            PlayerInfo p1 = PlayerBuilder.build("ç‹å›½è‹±é›„", i * 10, "Cå…‰æ˜ä¹‹é¾™-10*10", "Rå¯’ä¼¤-4", "Ræ¸…æ³‰-4", "Rå†°å°-4", "Ræ´å¯Ÿ-4");
+            PlayerInfo p2 = PlayerBuilder.build("è›®è’è‹±é›„", i * 10, "Cé›·å…½-10*10", "Rå²©å£-4", "Rèµ¤è°·-4", "Ré£å²©-4", "Rç§½åœŸ-4");
             showStat(play(p2, p1, 1000));
         }
     }
 
     @Test
-    public void ×ªÉúÒ»µ¶vsÊ®Îå½£Ê¥_1000() {
+    public void è½¬ç”Ÿä¸€åˆ€vsåäº”å‰‘åœ£_1000() {
         for (int i = 6; i < 10; ++i) {
             System.out.println("Level: " + (i * 10));
-            PlayerInfo p1 = PlayerBuilder.build("Ò»µ¶Ó¢ĞÛ", i * 10, "C×ªÉú¶éÂä¾«Áé-15*10", "R×Æ»ê-4", "RÃğÊÀ-4", "R´ãÁ¶-4", "Rì«·ç-4");
-            PlayerInfo p2 = PlayerBuilder.build("½£Ê¥Ó¢ĞÛ", i * 10, "C´ó½£Ê¥-15*10", "RÓÀ¶³-4", "R±ù·â-4", "RÇåÈª-4", "Rº®ÉË-4");
+            PlayerInfo p1 = PlayerBuilder.build("ä¸€åˆ€è‹±é›„", i * 10, "Cè½¬ç”Ÿå •è½ç²¾çµ-15*10", "Rç¼é­‚-4", "Rç­ä¸–-4", "Ræ·¬ç‚¼-4", "Ré£“é£-4");
+            PlayerInfo p2 = PlayerBuilder.build("å‰‘åœ£è‹±é›„", i * 10, "Cå¤§å‰‘åœ£-15*10", "Ræ°¸å†»-4", "Rå†°å°-4", "Ræ¸…æ³‰-4", "Rå¯’ä¼¤-4");
             showStat(play(p1, p2, 1000));
         }
     }
 
     @Test
-    public void ¹âÁúvsÊ÷ÈË_1000() {
+    public void å…‰é¾™vsæ ‘äºº_1000() {
         for (int i = 6; i < 10; ++i) {
             System.out.println("Level: " + (i * 10));
-            PlayerInfo p1 = PlayerBuilder.build("¹âÁúÓ¢ĞÛ", i * 10, "C¹âÃ÷Ö®Áú-10*10", "R±ù·â-4", "RÇåÈª-4", "Rº®ÉË-4", "RÓÀ¶³-4");
-            PlayerInfo p2 = PlayerBuilder.build("Ê÷ÈËÓ¢ĞÛ", i * 10, "CËªÑ©Ê÷ÈË-10*6", "CÊ÷ÈË¼ÀË¾-10*4", "RÀ×¶Ü-4", "R´º·ç-4", "RÇáÁé-4");
+            PlayerInfo p1 = PlayerBuilder.build("å…‰é¾™è‹±é›„", i * 10, "Cå…‰æ˜ä¹‹é¾™-10*10", "Rå†°å°-4", "Ræ¸…æ³‰-4", "Rå¯’ä¼¤-4", "Ræ°¸å†»-4");
+            PlayerInfo p2 = PlayerBuilder.build("æ ‘äººè‹±é›„", i * 10, "Céœœé›ªæ ‘äºº-10*6", "Cæ ‘äººç¥­å¸-10*4", "Ré›·ç›¾-4", "Ræ˜¥é£-4", "Rè½»çµ-4");
             showStat(play(p1, p2, 1000));
         }
     }
 
     @Test
-    public void ¹âÁúvs´óÏó_1000() {
+    public void å…‰é¾™vså¤§è±¡_1000() {
         for (int i = 6; i < 10; ++i) {
             System.out.println("Level: " + (i * 10));
-            PlayerInfo p1 = PlayerBuilder.build("¹âÁúÓ¢ĞÛ", i * 10, "C¹âÃ÷Ö®Áú-10*10", "R±ù·â-4", "RÇåÈª-4", "Rì«·ç-4", "RÓÀ¶³-4");
-            PlayerInfo p2 = PlayerBuilder.build("´óÏóÓ¢ĞÛ", i * 10, "CÕ½¶·ÃÍáïÏó-10*10", "R³à¹È-4", "R·ÉÑÒ-4", "R»àÍÁ-4", "RÅ­ÌÎ-4");
+            PlayerInfo p1 = PlayerBuilder.build("å…‰é¾™è‹±é›„", i * 10, "Cå…‰æ˜ä¹‹é¾™-10*10", "Rå†°å°-4", "Ræ¸…æ³‰-4", "Ré£“é£-4", "Ræ°¸å†»-4");
+            PlayerInfo p2 = PlayerBuilder.build("å¤§è±¡è‹±é›„", i * 10, "Cæˆ˜æ–—çŒ›çŠ¸è±¡-10*10", "Rèµ¤è°·-4", "Ré£å²©-4", "Rç§½åœŸ-4", "Ræ€’æ¶›-4");
             showStat(play(p2, p1, 1000));
         }
     }
 
     @Test
-    public void ¹âÁúvs´óÏó() {
-        PlayerInfo p1 = PlayerBuilder.build("¹âÁúÓ¢ĞÛ", 90, "C¹âÃ÷Ö®Áú-10*10", "R±ù·â-4", "RÇåÈª-4", "Rì«·ç-4", "RÓÀ¶³-4");
-        PlayerInfo p2 = PlayerBuilder.build("´óÏóÓ¢ĞÛ", 90, "CÕ½¶·ÃÍáïÏó-10*10", "R³à¹È-4", "R·ÉÑÒ-4", "R»àÍÁ-4", "RÅ­ÌÎ-4");
+    public void å…‰é¾™vså¤§è±¡() {
+        PlayerInfo p1 = PlayerBuilder.build("å…‰é¾™è‹±é›„", 90, "Cå…‰æ˜ä¹‹é¾™-10*10", "Rå†°å°-4", "Ræ¸…æ³‰-4", "Ré£“é£-4", "Ræ°¸å†»-4");
+        PlayerInfo p2 = PlayerBuilder.build("å¤§è±¡è‹±é›„", 90, "Cæˆ˜æ–—çŒ›çŠ¸è±¡-10*10", "Rèµ¤è°·-4", "Ré£å²©-4", "Rç§½åœŸ-4", "Ræ€’æ¶›-4");
         TestGameBuilder.play(p1, p2);
     }
 
     @Test
-    public void ÌìÊ¹vsÖ©Öë() {
-        PlayerInfo p1 = PlayerBuilder.build("ÌìÊ¹Ó¢ĞÛ", 90, "C½µÁÙÌìÊ¹-10*10");
-        PlayerInfo p2 = PlayerBuilder.build("Ö©ÖëÓ¢ĞÛ", 90, "CÖ©ÖëÈËÅ®Íõ-10*10");
+    public void å¤©ä½¿vsèœ˜è››() {
+        PlayerInfo p1 = PlayerBuilder.build("å¤©ä½¿è‹±é›„", 90, "Cé™ä¸´å¤©ä½¿-10*10");
+        PlayerInfo p2 = PlayerBuilder.build("èœ˜è››è‹±é›„", 90, "Cèœ˜è››äººå¥³ç‹-10*10");
         showStat(play(p1, p2, 1000));
         showStat(play(p2, p1, 1000));
     }
 
     @Test
-    public void ²»¶¯´óÏóvs×ªÉúÌìÊ¹() {
-        PlayerInfo p1 = PlayerBuilder.build("´óÏóÓ¢ĞÛ", "Õ½¶·ÃÍáïÏó+²»¶¯*5,Õ½¶·ÃÍáïÏó+ºáÉ¨*5,³à¹È", 90);
-        PlayerInfo p2 = PlayerBuilder.build("ÌìÊ¹Ó¢ĞÛ", "½µÁÙÌìÊ¹+×ªÉú5*5,½µÁÙÌìÊ¹+ÏİÚå2*5,±ù·â", 90);
+    public void ä¸åŠ¨å¤§è±¡vsè½¬ç”Ÿå¤©ä½¿() {
+        PlayerInfo p1 = PlayerBuilder.build("å¤§è±¡è‹±é›„", "æˆ˜æ–—çŒ›çŠ¸è±¡+ä¸åŠ¨*5,æˆ˜æ–—çŒ›çŠ¸è±¡+æ¨ªæ‰«*5,èµ¤è°·", 90);
+        PlayerInfo p2 = PlayerBuilder.build("å¤©ä½¿è‹±é›„", "é™ä¸´å¤©ä½¿+è½¬ç”Ÿ5*5,é™ä¸´å¤©ä½¿+é™·é˜±2*5,å†°å°", 90);
         TestGameBuilder.play(p1, p2);
     }
     
     @Test
-    public void ºáÉ¨´óÏóvs×ªÉúÌìÊ¹() { 
-        PlayerInfo p1 = PlayerBuilder.build("´óÏóÓ¢ĞÛ", "Õ½¶·ÃÍáïÏó+ºáÉ¨*5", 90);
-        PlayerInfo p2 = PlayerBuilder.build("ÌìÊ¹Ó¢ĞÛ", "½µÁÙÌìÊ¹+×ªÉú5*5", 90);
+    public void æ¨ªæ‰«å¤§è±¡vsè½¬ç”Ÿå¤©ä½¿() { 
+        PlayerInfo p1 = PlayerBuilder.build("å¤§è±¡è‹±é›„", "æˆ˜æ–—çŒ›çŠ¸è±¡+æ¨ªæ‰«*5", 90);
+        PlayerInfo p2 = PlayerBuilder.build("å¤©ä½¿è‹±é›„", "é™ä¸´å¤©ä½¿+è½¬ç”Ÿ5*5", 90);
         TestGameBuilder.play(p1, p2);
     }
     
     @Test
-    public void ·ÅĞÄÍ×Í×¶ùµÄ() {
-        PlayerInfo p1 = PlayerBuilder.build("Íæ¼Ò1", "½µÁÙÌìÊ¹*3,½ğÊô¾ŞÁú*3,Ä§·¨Ğ­»á³¤,ÃØÒø¾ŞÊ¯Ïñ-15,ÕğÔ´ÑÒó¸-15,¸´»î½ÚÍÃÅ®ÀÉ,±ù·â,ÓÀ¶³,ÇåÈª,À×¶Ü", 68);
-        PlayerInfo p2 = PlayerBuilder.build("Íæ¼Ò2", "½µÁÙÌìÊ¹*5,ÊÀ½çÊ÷Ö®Áé*2,½ğÊô¾ŞÁú*2,±ù·â,ÓÀ¶³,ÇåÈª,À×¶Ü", 64);
+    public void æ”¾å¿ƒå¦¥å¦¥å„¿çš„() {
+        PlayerInfo p1 = PlayerBuilder.build("ç©å®¶1", "é™ä¸´å¤©ä½¿*3,é‡‘å±å·¨é¾™*3,é­”æ³•åä¼šé•¿,ç§˜é“¶å·¨çŸ³åƒ-15,éœ‡æºå²©èŸ¾-15,å¤æ´»èŠ‚å…”å¥³éƒ,å†°å°,æ°¸å†»,æ¸…æ³‰,é›·ç›¾", 68);
+        PlayerInfo p2 = PlayerBuilder.build("ç©å®¶2", "é™ä¸´å¤©ä½¿*5,ä¸–ç•Œæ ‘ä¹‹çµ*2,é‡‘å±å·¨é¾™*2,å†°å°,æ°¸å†»,æ¸…æ³‰,é›·ç›¾", 64);
         TestGameBuilder.play(p1, p2);
     }
 
     @Test
-    public void ¾º¼¼³¡²âÊÔ1() {
-        PlayerInfo p1 = PlayerBuilder.build("ÎÒ·½Ó¢ĞÛ", 74, "C½ğÊô¾ŞÁú-10*4", "C¿Ö¾åÖ®Íõ-10*4", "CÁé»êÊÕ¸îÕß-10*2", "RÀ×¶Ü-4", "RÀ×Óü-4",
-                "R×Æ»ê-4", "R¾øÉ±-4");
-        PlayerInfo p2 = PlayerBuilder.build("µĞ·½Ó¢ĞÛ", 84, "C½ğÊô¾ŞÁú-10*4", "C½µÁÙÌìÊ¹-10*6", "R±ù·â-4", "RÇåÈª-4", "RÀ×¶Ü-4", "RÓÀ¶³-4");
+    public void ç«æŠ€åœºæµ‹è¯•1() {
+        PlayerInfo p1 = PlayerBuilder.build("æˆ‘æ–¹è‹±é›„", 74, "Cé‡‘å±å·¨é¾™-10*4", "Cææƒ§ä¹‹ç‹-10*4", "Cçµé­‚æ”¶å‰²è€…-10*2", "Ré›·ç›¾-4", "Ré›·ç‹±-4",
+                "Rç¼é­‚-4", "Rç»æ€-4");
+        PlayerInfo p2 = PlayerBuilder.build("æ•Œæ–¹è‹±é›„", 84, "Cé‡‘å±å·¨é¾™-10*4", "Cé™ä¸´å¤©ä½¿-10*6", "Rå†°å°-4", "Ræ¸…æ³‰-4", "Ré›·ç›¾-4", "Ræ°¸å†»-4");
         showStat(play(p1, p2, 1000));
         showStat(play(p2, p1, 1000));
-        PlayerInfo p3 = PlayerBuilder.build("µĞ·½Ó¢ĞÛ", 84, "C½ğÊô¾ŞÁú-10*5", "C½µÁÙÌìÊ¹-10*5", "R±ù·â-4", "RÇåÈª-4", "RÀ×¶Ü-4", "RÇáÁé-4");
+        PlayerInfo p3 = PlayerBuilder.build("æ•Œæ–¹è‹±é›„", 84, "Cé‡‘å±å·¨é¾™-10*5", "Cé™ä¸´å¤©ä½¿-10*5", "Rå†°å°-4", "Ræ¸…æ³‰-4", "Ré›·ç›¾-4", "Rè½»çµ-4");
         showStat(play(p1, p3, 1000));
         showStat(play(p3, p1, 1000));
     }
 
     @Test
-    public void ¾º¼¼³¡²âÊÔ2() {
-        PlayerInfo p0 = PlayerBuilder.build("µĞ·½Ó¢ĞÛ", 75, "C½ğÊô¾ŞÁú-10*5", "C½µÁÙÌìÊ¹-10*5", "R±ù·â-4", "RÇåÈª-4", "RÀ×¶Ü-4", "RÇáÁé-4");
-        PlayerInfo p1 = PlayerBuilder.build("ÎÒ·½Ó¢ĞÛ", 75, "C¹âÃ÷Ö®Áú-10*2", "C½µÁÙÌìÊ¹-10*2", "CÄ§·¨Ğ­»á³¤-10", "CÁé»êÊÕ¸îÕß-10*2",
-                "C½ğÊô¾ŞÁú-10*3", "RÀ×¶Ü-4", "RÇåÈª-4", "RÓÀ¶³-4", "R±ù·â-4");
+    public void ç«æŠ€åœºæµ‹è¯•2() {
+        PlayerInfo p0 = PlayerBuilder.build("æ•Œæ–¹è‹±é›„", 75, "Cé‡‘å±å·¨é¾™-10*5", "Cé™ä¸´å¤©ä½¿-10*5", "Rå†°å°-4", "Ræ¸…æ³‰-4", "Ré›·ç›¾-4", "Rè½»çµ-4");
+        PlayerInfo p1 = PlayerBuilder.build("æˆ‘æ–¹è‹±é›„", 75, "Cå…‰æ˜ä¹‹é¾™-10*2", "Cé™ä¸´å¤©ä½¿-10*2", "Cé­”æ³•åä¼šé•¿-10", "Cçµé­‚æ”¶å‰²è€…-10*2",
+                "Cé‡‘å±å·¨é¾™-10*3", "Ré›·ç›¾-4", "Ræ¸…æ³‰-4", "Ræ°¸å†»-4", "Rå†°å°-4");
         showStat(play(p0, p1, 1000));
         showStat(play(p1, p0, 1000));
-        PlayerInfo p2 = PlayerBuilder.build("ÎÒ·½Ó¢ĞÛ", 75, "C¹âÃ÷Ö®Áú-10*2", "C½µÁÙÌìÊ¹-10*2", "CÄ§·¨Ğ­»á³¤-10", "CÁé»êÊÕ¸îÕß-10",
-                "C¿Ö¾åÖ®Íõ-10", "C½ğÊô¾ŞÁú-10*3", "RÀ×¶Ü-4", "RÇåÈª-4", "RÓÀ¶³-4", "R±ù·â-4");
+        PlayerInfo p2 = PlayerBuilder.build("æˆ‘æ–¹è‹±é›„", 75, "Cå…‰æ˜ä¹‹é¾™-10*2", "Cé™ä¸´å¤©ä½¿-10*2", "Cé­”æ³•åä¼šé•¿-10", "Cçµé­‚æ”¶å‰²è€…-10",
+                "Cææƒ§ä¹‹ç‹-10", "Cé‡‘å±å·¨é¾™-10*3", "Ré›·ç›¾-4", "Ræ¸…æ³‰-4", "Ræ°¸å†»-4", "Rå†°å°-4");
         showStat(play(p0, p2, 1000));
         showStat(play(p2, p0, 1000));
-        PlayerInfo p3 = PlayerBuilder.build("ÎÒ·½Ó¢ĞÛ", 75, "C¹âÃ÷Ö®Áú-10", "C½µÁÙÌìÊ¹-10*3", "CÄ§·¨Ğ­»á³¤-10", "CÁé»êÊÕ¸îÕß-10*2",
-                "C½ğÊô¾ŞÁú-10*3", "RÀ×¶Ü-4", "RÇåÈª-4", "RÓÀ¶³-4", "R±ù·â-4");
+        PlayerInfo p3 = PlayerBuilder.build("æˆ‘æ–¹è‹±é›„", 75, "Cå…‰æ˜ä¹‹é¾™-10", "Cé™ä¸´å¤©ä½¿-10*3", "Cé­”æ³•åä¼šé•¿-10", "Cçµé­‚æ”¶å‰²è€…-10*2",
+                "Cé‡‘å±å·¨é¾™-10*3", "Ré›·ç›¾-4", "Ræ¸…æ³‰-4", "Ræ°¸å†»-4", "Rå†°å°-4");
         showStat(play(p0, p3, 1000));
         showStat(play(p3, p0, 1000));
-        PlayerInfo p4 = PlayerBuilder.build("ÎÒ·½Ó¢ĞÛ", 75, "C¹âÃ÷Ö®Áú-10", "C½µÁÙÌìÊ¹-10*3", "CÄ§·¨Ğ­»á³¤-10", "CÁé»êÊÕ¸îÕß-10", "C¿Ö¾åÖ®Íõ-10",
-                "C½ğÊô¾ŞÁú-10*3", "RÀ×¶Ü-4", "RÇåÈª-4", "RÓÀ¶³-4", "R±ù·â-4");
+        PlayerInfo p4 = PlayerBuilder.build("æˆ‘æ–¹è‹±é›„", 75, "Cå…‰æ˜ä¹‹é¾™-10", "Cé™ä¸´å¤©ä½¿-10*3", "Cé­”æ³•åä¼šé•¿-10", "Cçµé­‚æ”¶å‰²è€…-10", "Cææƒ§ä¹‹ç‹-10",
+                "Cé‡‘å±å·¨é¾™-10*3", "Ré›·ç›¾-4", "Ræ¸…æ³‰-4", "Ræ°¸å†»-4", "Rå†°å°-4");
         showStat(play(p0, p4, 1000));
         showStat(play(p4, p0, 1000));
     }
 
     @Test
-    public void ¾º¼¼³¡²âÊÔ3() {
-        PlayerInfo p0 = PlayerBuilder.build("µĞ·½Ó¢ĞÛ", 75, "C½ğÊô¾ŞÁú-10*6", "C½µÁÙÌìÊ¹-10*4", "R±ù·â-4", "RÇåÈª-4", "RÀ×¶Ü-4", "RÓÀ¶³-4");
-        PlayerInfo p1 = PlayerBuilder.build("ÎÒ·½Ó¢ĞÛ", 75, "C½ğÊô¾ŞÁú-10*3", "C¸´»î½ÚÍÃÅ®ÀÉ-10*2", "CÀ×ÊŞ-10*3", "CÕğÔ´ÑÒó¸-10*1",
-                "CÓğÒí»¯Éß-10*1", "RÀ×¶Ü-4", "R´º·ç-4", "RÑÒ±Ú-4", "R³à¹È-4");
+    public void ç«æŠ€åœºæµ‹è¯•3() {
+        PlayerInfo p0 = PlayerBuilder.build("æ•Œæ–¹è‹±é›„", 75, "Cé‡‘å±å·¨é¾™-10*6", "Cé™ä¸´å¤©ä½¿-10*4", "Rå†°å°-4", "Ræ¸…æ³‰-4", "Ré›·ç›¾-4", "Ræ°¸å†»-4");
+        PlayerInfo p1 = PlayerBuilder.build("æˆ‘æ–¹è‹±é›„", 75, "Cé‡‘å±å·¨é¾™-10*3", "Cå¤æ´»èŠ‚å…”å¥³éƒ-10*2", "Cé›·å…½-10*3", "Céœ‡æºå²©èŸ¾-10*1",
+                "Cç¾½ç¿¼åŒ–è›‡-10*1", "Ré›·ç›¾-4", "Ræ˜¥é£-4", "Rå²©å£-4", "Rèµ¤è°·-4");
         showStat(play(p0, p1, 1000));
         showStat(play(p1, p0, 1000));
-        PlayerInfo p2 = PlayerBuilder.build("ÎÒ·½Ó¢ĞÛ", 75, "C½ğÊô¾ŞÁú-10*3", "C¸´»î½ÚÍÃÅ®ÀÉ-10*1", "CÀ×ÊŞ-10*4", "CÕğÔ´ÑÒó¸-10*1",
-                "CÓğÒí»¯Éß-10*1", "RÀ×¶Ü-4", "R´º·ç-4", "RÑÒ±Ú-4", "R³à¹È-4");
+        PlayerInfo p2 = PlayerBuilder.build("æˆ‘æ–¹è‹±é›„", 75, "Cé‡‘å±å·¨é¾™-10*3", "Cå¤æ´»èŠ‚å…”å¥³éƒ-10*1", "Cé›·å…½-10*4", "Céœ‡æºå²©èŸ¾-10*1",
+                "Cç¾½ç¿¼åŒ–è›‡-10*1", "Ré›·ç›¾-4", "Ræ˜¥é£-4", "Rå²©å£-4", "Rèµ¤è°·-4");
         showStat(play(p0, p2, 1000));
         showStat(play(p2, p0, 1000));
-        PlayerInfo p3 = PlayerBuilder.build("ÎÒ·½Ó¢ĞÛ", 75, "C½ğÊô¾ŞÁú-10*4", "CÀ×ÊŞ-10*4", "CÕğÔ´ÑÒó¸-10*1", "CÓğÒí»¯Éß-10*1", "RÀ×¶Ü-4",
-                "R´º·ç-4", "RÑÒ±Ú-4", "R³à¹È-4");
+        PlayerInfo p3 = PlayerBuilder.build("æˆ‘æ–¹è‹±é›„", 75, "Cé‡‘å±å·¨é¾™-10*4", "Cé›·å…½-10*4", "Céœ‡æºå²©èŸ¾-10*1", "Cç¾½ç¿¼åŒ–è›‡-10*1", "Ré›·ç›¾-4",
+                "Ræ˜¥é£-4", "Rå²©å£-4", "Rèµ¤è°·-4");
         showStat(play(p0, p3, 1000));
         showStat(play(p3, p0, 1000));
-        PlayerInfo p4 = PlayerBuilder.build("ÎÒ·½Ó¢ĞÛ", 75, "C½ğÊô¾ŞÁú-10*4", "C¸´»î½ÚÍÃÅ®ÀÉ-10*1", "CÀ×ÊŞ-10*4", "CÓğÒí»¯Éß-10*1",
-                "RÀ×¶Ü-4", "R´º·ç-4", "RÑÒ±Ú-4", "R³à¹È-4");
+        PlayerInfo p4 = PlayerBuilder.build("æˆ‘æ–¹è‹±é›„", 75, "Cé‡‘å±å·¨é¾™-10*4", "Cå¤æ´»èŠ‚å…”å¥³éƒ-10*1", "Cé›·å…½-10*4", "Cç¾½ç¿¼åŒ–è›‡-10*1",
+                "Ré›·ç›¾-4", "Ræ˜¥é£-4", "Rå²©å£-4", "Rèµ¤è°·-4");
         showStat(play(p0, p4, 1000));
         showStat(play(p4, p0, 1000));
     }
 
     @Test
-    public void ¾º¼¼³¡²âÊÔ4() {
-        PlayerInfo p0 = PlayerBuilder.build("ÕóÈİ1", 75, "C½ğÊô¾ŞÁú-10*5", "C½µÁÙÌìÊ¹-10*5", "R±ù·â-4", "RÇåÈª-4", "RÀ×¶Ü-4", "RÀ×Óü-4");
-        PlayerInfo p1 = PlayerBuilder.build("ÕóÈİ2", 75, "C²»¶¯ÃÍáï-15*10", "R»àÍÁ-4", "RÊ¯ÁÖ-4", "R´ãÁ¶-4", "R³à¹È-4");
-        PlayerInfo p2 = PlayerBuilder.build("ÕóÈİ3", 75, "C½µÁÙÌìÊ¹-10*5", "CÁé»êÊÕ¸îÕß-10*2", "CÍöÁéÊØ»¤Éñ-10", "C¿Ö¾åÖ®Íõ-10*2", "R±ù·â-4",
-                "RÇåÈª-4", "R×Æ»ê-4", "R¾øÉ±-4");
-        PlayerInfo p3 = PlayerBuilder.build("ÕóÈİ4", 75, "C²»¶¯ÃÍáï-15*4", "C´©´Ì¸òó¡-10*2", "C¿Ö¾åÖ®Íõ-10*3", "CÍöÁéÊØ»¤Éñ-10", "RÊ¯ÁÖ-4",
-                "R×Æ»ê-4", "R¾øÉ±-4", "R³à¹È-4");
+    public void ç«æŠ€åœºæµ‹è¯•4() {
+        PlayerInfo p0 = PlayerBuilder.build("é˜µå®¹1", 75, "Cé‡‘å±å·¨é¾™-10*5", "Cé™ä¸´å¤©ä½¿-10*5", "Rå†°å°-4", "Ræ¸…æ³‰-4", "Ré›·ç›¾-4", "Ré›·ç‹±-4");
+        PlayerInfo p1 = PlayerBuilder.build("é˜µå®¹2", 75, "Cä¸åŠ¨çŒ›çŠ¸-15*10", "Rç§½åœŸ-4", "RçŸ³æ—-4", "Ræ·¬ç‚¼-4", "Rèµ¤è°·-4");
+        PlayerInfo p2 = PlayerBuilder.build("é˜µå®¹3", 75, "Cé™ä¸´å¤©ä½¿-10*5", "Cçµé­‚æ”¶å‰²è€…-10*2", "Cäº¡çµå®ˆæŠ¤ç¥-10", "Cææƒ§ä¹‹ç‹-10*2", "Rå†°å°-4",
+                "Ræ¸…æ³‰-4", "Rç¼é­‚-4", "Rç»æ€-4");
+        PlayerInfo p3 = PlayerBuilder.build("é˜µå®¹4", 75, "Cä¸åŠ¨çŒ›çŠ¸-15*4", "Cç©¿åˆºè›¤èŸ†-10*2", "Cææƒ§ä¹‹ç‹-10*3", "Cäº¡çµå®ˆæŠ¤ç¥-10", "RçŸ³æ—-4",
+                "Rç¼é­‚-4", "Rç»æ€-4", "Rèµ¤è°·-4");
         showStat(play(p0, p1, 1000));
         showStat(play(p0, p2, 1000));
         showStat(play(p0, p3, 1000));
@@ -366,14 +366,14 @@ public class FreeTest extends PveEngineTest {
     }
     
     @Test
-    public void ¾º¼¼³¡²âÊÔ5() {
-        PlayerInfo p0 = PlayerBuilder.build("×îÇ¿ÍõÉ­", 75, "C½ğÊô¾ŞÁú-10*5", "C½µÁÙÌìÊ¹-10*5", "R±ù·â-4", "RÇåÈª-4", "RÀ×¶Ü-4", "RÓÀ¶³-4");
-        PlayerInfo p1 = PlayerBuilder.build("´¬·ò¶Ó", 75, "CÚ¤ºÓ´¬·ò-10","CÁé»êÊÕ¸îÕß-10*3", "CÄ§·¨Ğ­»á³¤-10", "C½µÁÙÌìÊ¹-10*5",
-                "R±ù·â-4", "RÇåÈª-4", "RÓÀ¶³-4", "R×Æ»ê-4");
-        PlayerInfo p2 = PlayerBuilder.build("ÀÏÍ·Õ½Éñ1¶Ó", 75, "CÄ§·¨Ğ­»á³¤-10", "CÕ½Éñ-10*2", "C½µÁÙÌìÊ¹-10*3", "CÁé»êÊÕ¸îÕß-10*4",
-                "R±ù·â-4", "RÇåÈª-4", "RÓÀ¶³-4", "R×Æ»ê-4");
-        PlayerInfo p3 = PlayerBuilder.build("ÀÏÍ·Õ½Éñ2¶Ó", 75, "CÄ§·¨Ğ­»á³¤-10", "CÕ½Éñ-10*2", "C½µÁÙÌìÊ¹-10*3", "CÁé»êÊÕ¸îÕß-10*3", "CÚ¤ºÓ´¬·ò-10",
-                "R±ù·â-4", "RÇåÈª-4", "RÓÀ¶³-4", "R×Æ»ê-4");
+    public void ç«æŠ€åœºæµ‹è¯•5() {
+        PlayerInfo p0 = PlayerBuilder.build("æœ€å¼ºç‹æ£®", 75, "Cé‡‘å±å·¨é¾™-10*5", "Cé™ä¸´å¤©ä½¿-10*5", "Rå†°å°-4", "Ræ¸…æ³‰-4", "Ré›·ç›¾-4", "Ræ°¸å†»-4");
+        PlayerInfo p1 = PlayerBuilder.build("èˆ¹å¤«é˜Ÿ", 75, "Cå†¥æ²³èˆ¹å¤«-10","Cçµé­‚æ”¶å‰²è€…-10*3", "Cé­”æ³•åä¼šé•¿-10", "Cé™ä¸´å¤©ä½¿-10*5",
+                "Rå†°å°-4", "Ræ¸…æ³‰-4", "Ræ°¸å†»-4", "Rç¼é­‚-4");
+        PlayerInfo p2 = PlayerBuilder.build("è€å¤´æˆ˜ç¥1é˜Ÿ", 75, "Cé­”æ³•åä¼šé•¿-10", "Cæˆ˜ç¥-10*2", "Cé™ä¸´å¤©ä½¿-10*3", "Cçµé­‚æ”¶å‰²è€…-10*4",
+                "Rå†°å°-4", "Ræ¸…æ³‰-4", "Ræ°¸å†»-4", "Rç¼é­‚-4");
+        PlayerInfo p3 = PlayerBuilder.build("è€å¤´æˆ˜ç¥2é˜Ÿ", 75, "Cé­”æ³•åä¼šé•¿-10", "Cæˆ˜ç¥-10*2", "Cé™ä¸´å¤©ä½¿-10*3", "Cçµé­‚æ”¶å‰²è€…-10*3", "Cå†¥æ²³èˆ¹å¤«-10",
+                "Rå†°å°-4", "Ræ¸…æ³‰-4", "Ræ°¸å†»-4", "Rç¼é­‚-4");
         showStat(play(p0, p1, 1000));
         showStat(play(p1, p0, 1000));
         showStat(play(p0, p2, 1000));
@@ -383,14 +383,14 @@ public class FreeTest extends PveEngineTest {
     }
     
     @Test
-    public void ¾º¼¼³¡²âÊÔ6() {
-        PlayerInfo p0 = PlayerBuilder.build("×îÇ¿ÍõÉ­", 75, "C½ğÊô¾ŞÁú-10*5", "C½µÁÙÌìÊ¹-10*5", "R±ù·â-4", "R´º·ç-4", "RÀ×¶Ü-4", "RÓÀ¶³-4");
-        //4À×ÊŞ1»¯Éß3½ğÊô2ÍÃ×Ó ³à¹ÈÑÒ±ÚÀ×¶Ü´º·ç
-        PlayerInfo p1 = PlayerBuilder.build("ÂùÉ­Ò»¶Ó", 75, "CÀ×ÊŞ-10*4", "CÓğÒí»¯Éß-10", "C½ğÊô¾ŞÁú-10*3", "C¸´»î½ÚÍÃÅ®ÀÉ-10*2",
-                "R³à¹È-4", "RÑÒ±Ú-4", "RÀ×¶Ü-4", "R´º·ç-4");
-        //2À×ÊŞ2¶¾Îí1»¯Éß3½ğÊô2ÍÃ×Ó
-        PlayerInfo p2 = PlayerBuilder.build("ÂùÉ­¶ş¶Ó", 75, "CÀ×ÊŞ-10*2", "C¶¾ÎíÓğÁú-10*2", "CÓğÒí»¯Éß-10", "C½ğÊô¾ŞÁú-10*3", "C¸´»î½ÚÍÃÅ®ÀÉ-10*2",
-                "R³à¹È-4", "RÑÒ±Ú-4", "RÀ×¶Ü-4", "R´º·ç-4");
+    public void ç«æŠ€åœºæµ‹è¯•6() {
+        PlayerInfo p0 = PlayerBuilder.build("æœ€å¼ºç‹æ£®", 75, "Cé‡‘å±å·¨é¾™-10*5", "Cé™ä¸´å¤©ä½¿-10*5", "Rå†°å°-4", "Ræ˜¥é£-4", "Ré›·ç›¾-4", "Ræ°¸å†»-4");
+        //4é›·å…½1åŒ–è›‡3é‡‘å±2å…”å­ èµ¤è°·å²©å£é›·ç›¾æ˜¥é£
+        PlayerInfo p1 = PlayerBuilder.build("è›®æ£®ä¸€é˜Ÿ", 75, "Cé›·å…½-10*4", "Cç¾½ç¿¼åŒ–è›‡-10", "Cé‡‘å±å·¨é¾™-10*3", "Cå¤æ´»èŠ‚å…”å¥³éƒ-10*2",
+                "Rèµ¤è°·-4", "Rå²©å£-4", "Ré›·ç›¾-4", "Ræ˜¥é£-4");
+        //2é›·å…½2æ¯’é›¾1åŒ–è›‡3é‡‘å±2å…”å­
+        PlayerInfo p2 = PlayerBuilder.build("è›®æ£®äºŒé˜Ÿ", 75, "Cé›·å…½-10*2", "Cæ¯’é›¾ç¾½é¾™-10*2", "Cç¾½ç¿¼åŒ–è›‡-10", "Cé‡‘å±å·¨é¾™-10*3", "Cå¤æ´»èŠ‚å…”å¥³éƒ-10*2",
+                "Rèµ¤è°·-4", "Rå²©å£-4", "Ré›·ç›¾-4", "Ræ˜¥é£-4");
         showStat(play(p0, p1, 1000));
         showStat(play(p1, p0, 1000));
         showStat(play(p0, p2, 1000));
@@ -399,17 +399,17 @@ public class FreeTest extends PveEngineTest {
     
     
     @Test
-    public void ¾º¼¼³¡²âÊÔ7() {
-        PlayerInfo p0 = PlayerBuilder.build("×îÇ¿ÍõÉ­", 75, "C½ğÊô¾ŞÁú-10*5", "C½µÁÙÌìÊ¹-10*5", "R±ù·â-4", "R´º·ç-4", "RÀ×¶Ü-4", "RÓÀ¶³-4");
-        // 3À×ÊŞ1¶¾Áú1¸òó¡3½ğÊô2ÍÃ×Ó À×¶Ü´º·ç³à¹ÈÑÒ±Ú
-        PlayerInfo p00 = PlayerBuilder.build("×îÇ¿ÂùÉ­", 75, "CÀ×ÊŞ-10*3", "C¶¾ÎíÓğÁú-10", "CÕğÔ´ÑÒó¸-10", "C½ğÊô¾ŞÁú-10*3", "C¸´»î½ÚÍÃÅ®ÀÉ-10*2",
-                "R³à¹È-4", "R´º·ç-4", "RÀ×¶Ü-4", "RÑÒ±Ú-4");
-        //4ÌìÊ¹£¬ÀÏÍ·£¬2¿Ö¾å£¬2ÂÜÀò£¬1ºÚÁú£¬·ûÎÄ×Æ»ê±ù·âÇåÈªÓÀ¶³
-        PlayerInfo p1 = PlayerBuilder.build("´òÁ³Ò»¶Ó", 75, "C½µÁÙÌìÊ¹-10*4", "CÄ§·¨Ğ­»á³¤-10", "C¿Ö¾åÖ®Íõ-10*2", "CÁé»êÊÕ¸îÕß-10*2", "C»ÙÃğÖ®Áú-10",
-                "R×Æ»ê-4", "R±ù·â-4", "RÇåÈª-4", "RÓÀ¶³-4");
-        //4ÌìÊ¹£¬ÀÏÍ·£¬4¿Ö¾å£¬1ºÚÁú
-        PlayerInfo p2 = PlayerBuilder.build("´òÁ³¶ş¶Ó", 75, "C½µÁÙÌìÊ¹-10*4", "CÄ§·¨Ğ­»á³¤-10", "C¿Ö¾åÖ®Íõ-10*4", "C»ÙÃğÖ®Áú-10",
-                "R×Æ»ê-4", "R±ù·â-4", "RÇåÈª-4", "RÓÀ¶³-4");
+    public void ç«æŠ€åœºæµ‹è¯•7() {
+        PlayerInfo p0 = PlayerBuilder.build("æœ€å¼ºç‹æ£®", 75, "Cé‡‘å±å·¨é¾™-10*5", "Cé™ä¸´å¤©ä½¿-10*5", "Rå†°å°-4", "Ræ˜¥é£-4", "Ré›·ç›¾-4", "Ræ°¸å†»-4");
+        // 3é›·å…½1æ¯’é¾™1è›¤èŸ†3é‡‘å±2å…”å­ é›·ç›¾æ˜¥é£èµ¤è°·å²©å£
+        PlayerInfo p00 = PlayerBuilder.build("æœ€å¼ºè›®æ£®", 75, "Cé›·å…½-10*3", "Cæ¯’é›¾ç¾½é¾™-10", "Céœ‡æºå²©èŸ¾-10", "Cé‡‘å±å·¨é¾™-10*3", "Cå¤æ´»èŠ‚å…”å¥³éƒ-10*2",
+                "Rèµ¤è°·-4", "Ræ˜¥é£-4", "Ré›·ç›¾-4", "Rå²©å£-4");
+        //4å¤©ä½¿ï¼Œè€å¤´ï¼Œ2ææƒ§ï¼Œ2èè‰ï¼Œ1é»‘é¾™ï¼Œç¬¦æ–‡ç¼é­‚å†°å°æ¸…æ³‰æ°¸å†»
+        PlayerInfo p1 = PlayerBuilder.build("æ‰“è„¸ä¸€é˜Ÿ", 75, "Cé™ä¸´å¤©ä½¿-10*4", "Cé­”æ³•åä¼šé•¿-10", "Cææƒ§ä¹‹ç‹-10*2", "Cçµé­‚æ”¶å‰²è€…-10*2", "Cæ¯ç­ä¹‹é¾™-10",
+                "Rç¼é­‚-4", "Rå†°å°-4", "Ræ¸…æ³‰-4", "Ræ°¸å†»-4");
+        //4å¤©ä½¿ï¼Œè€å¤´ï¼Œ4ææƒ§ï¼Œ1é»‘é¾™
+        PlayerInfo p2 = PlayerBuilder.build("æ‰“è„¸äºŒé˜Ÿ", 75, "Cé™ä¸´å¤©ä½¿-10*4", "Cé­”æ³•åä¼šé•¿-10", "Cææƒ§ä¹‹ç‹-10*4", "Cæ¯ç­ä¹‹é¾™-10",
+                "Rç¼é­‚-4", "Rå†°å°-4", "Ræ¸…æ³‰-4", "Ræ°¸å†»-4");
         showStat(play(p0, p1, 1000));
         showStat(play(p1, p0, 1000));
         showStat(play(p0, p2, 1000));
@@ -423,26 +423,26 @@ public class FreeTest extends PveEngineTest {
     
     
     @Test
-    public void ¾º¼¼³¡²âÊÔ8() {
-        PlayerInfo p0 = PlayerBuilder.build("×îÇ¿ÍõÉ­", 85, "C½ğÊô¾ŞÁú-10*5", "C½µÁÙÌìÊ¹-10*5", "R±ù·â-4", "R´º·ç-4", "RÀ×¶Ü-4", "RÓÀ¶³-4");
-        // ½ğÊô*1£¬Ë®Ô´*1£¬·ï»Ë*2£¬ÀÏÍ·*1£¬ ÃØÒø*1£¬»úĞµ·ÉÁú*1£¬½£Ê¥*1£¬ÂÜÀò*1£¬¸òó¡*1, À×¶Ü£¬´º·ç£¬±ù·â£¬´ãÁ¶
-        PlayerInfo p1 = PlayerBuilder.build("ÕóÈİ1", 85, "C½ğÊô¾ŞÁú-10", "CË®Ô´ÖÆÔìÕß-10", "C·ï»Ë-10*2", "CÄ§·¨Ğ­»á³¤-10", "CÃØÒø¾ŞÊ¯Ïñ-10", "C»úĞµ·ÉÁú-10",
-                "C´ó½£Ê¥-10", "CÁé»êÊÕ¸îÕß-10", "CÕğÔ´ÑÒó¸-10", "R±ù·â-4", "R´º·ç-4", "RÀ×¶Ü-4", "R´ãÁ¶-4");
-        // ½ğÊô*1£¬Ë®Ô´*1£¬·ï»Ë*2£¬ÀÏÍ·*1£¬ ÃØÒø*1£¬»úĞµ·ÉÁú*1£¬»Ê¼ÒÎÀ¶Ó³¤*1£¬ÂÜÀò*1£¬¸òó¡*1, À×¶Ü£¬´º·ç£¬±ù·â£¬´ãÁ¶
-        PlayerInfo p2 = PlayerBuilder.build("ÕóÈİ2", 85, "C½ğÊô¾ŞÁú-10", "CË®Ô´ÖÆÔìÕß-10", "C·ï»Ë-10*2", "CÄ§·¨Ğ­»á³¤-10", "CÃØÒø¾ŞÊ¯Ïñ-10", "C»úĞµ·ÉÁú-10",
-                "C»Ê¼ÒÎÀ¶Ó½«Áì-10", "CÁé»êÊÕ¸îÕß-10", "CÕğÔ´ÑÒó¸-10", "R±ù·â-4", "R´º·ç-4", "RÀ×¶Ü-4", "R´ãÁ¶-4");
-        // ½ğÊô*1£¬Ë®Ô´*1£¬·ï»Ë*2£¬ÀÏÍ·*1£¬ ÃØÒø*1£¬»úĞµ·ÉÁú*1£¬´óÖ÷½Ì*1£¬ÂÜÀò*1£¬¸òó¡*1, À×¶Ü£¬´º·ç£¬±ù·â£¬´ãÁ¶
-        PlayerInfo p3 = PlayerBuilder.build("ÕóÈİ3", 85, "C½ğÊô¾ŞÁú-10", "CË®Ô´ÖÆÔìÕß-10", "C·ï»Ë-10*2", "CÄ§·¨Ğ­»á³¤-10", "CÃØÒø¾ŞÊ¯Ïñ-10", "C»úĞµ·ÉÁú-10",
-                "C´óÖ÷½Ì-10", "CÁé»êÊÕ¸îÕß-10", "CÕğÔ´ÑÒó¸-10", "R±ù·â-4", "R´º·ç-4", "RÀ×¶Ü-4", "R´ãÁ¶-4");
-        // ½ğÊô*1£¬Ë®Ô´*1£¬·ï»Ë*2£¬ÀÏÍ·*1£¬ ÃØÒø*1£¬»úĞµ·ÉÁú*1£¬»Ê¼ÒÑ±ÊŞÊ¦£¬ÂÜÀò*1£¬¸òó¡*1, À×¶Ü£¬´º·ç£¬±ù·â£¬´ãÁ¶
-        PlayerInfo p4 = PlayerBuilder.build("ÕóÈİ4", 85, "C½ğÊô¾ŞÁú-10", "CË®Ô´ÖÆÔìÕß-10", "C·ï»Ë-10*2", "CÄ§·¨Ğ­»á³¤-10", "CÃØÒø¾ŞÊ¯Ïñ-10", "C»úĞµ·ÉÁú-10",
-                "C»Ê¼ÒÑ±ÊŞÊ¦-10", "CÁé»êÊÕ¸îÕß-10", "CÕğÔ´ÑÒó¸-10", "R±ù·â-4", "R´º·ç-4", "RÀ×¶Ü-4", "R´ãÁ¶-4");
-        // ½ğÊô1£¬Ë®Ô´1,·ï»Ë2£¬É­Å®1£¬ÀÏÍ·1£¬ÂÜÀò1£¬¸òó¡1£¬ĞÜÈËÎäÊ¿1£¬ÃÍáï1, ´º·çÀ×¶Ü³à¹È´ãÁ¶
-        PlayerInfo p5 = PlayerBuilder.build("ÕóÈİ5", 85, "C½ğÊô¾ŞÁú-10", "CË®Ô´ÖÆÔìÕß-10", "C·ï»Ë-10*2", "CÉ­ÁÖÅ®Éñ-10", "CÄ§·¨Ğ­»á³¤-10", 
-                "CÁé»êÊÕ¸îÕß-10", "CÕğÔ´ÑÒó¸-10", "CĞÜÈËÎäÊ¿-10", "CÕ½¶·ÃÍáïÏó-10", "R³à¹È-4", "R´º·ç-4", "RÀ×¶Ü-4", "R´ãÁ¶-4");
-        // ½ğÊô1£¬Ë®Ô´2,·ï»Ë2£¬ÀÏÍ·1£¬ÂÜÀò1£¬¸òó¡1£¬ĞÜÈËÎäÊ¿1£¬ÃÍáï1, ´º·çÀ×¶Ü³à¹È´ãÁ¶
-        PlayerInfo p6 = PlayerBuilder.build("ÕóÈİ6", 85, "C½ğÊô¾ŞÁú-10", "CË®Ô´ÖÆÔìÕß-10*2", "C·ï»Ë-10*2", "CÄ§·¨Ğ­»á³¤-10", 
-                "CÁé»êÊÕ¸îÕß-10", "CÕğÔ´ÑÒó¸-10", "CĞÜÈËÎäÊ¿-10", "CÕ½¶·ÃÍáïÏó-10", "R³à¹È-4", "R´º·ç-4", "RÀ×¶Ü-4", "R´ãÁ¶-4");
+    public void ç«æŠ€åœºæµ‹è¯•8() {
+        PlayerInfo p0 = PlayerBuilder.build("æœ€å¼ºç‹æ£®", 85, "Cé‡‘å±å·¨é¾™-10*5", "Cé™ä¸´å¤©ä½¿-10*5", "Rå†°å°-4", "Ræ˜¥é£-4", "Ré›·ç›¾-4", "Ræ°¸å†»-4");
+        // é‡‘å±*1ï¼Œæ°´æº*1ï¼Œå‡¤å‡°*2ï¼Œè€å¤´*1ï¼Œ ç§˜é“¶*1ï¼Œæœºæ¢°é£é¾™*1ï¼Œå‰‘åœ£*1ï¼Œèè‰*1ï¼Œè›¤èŸ†*1, é›·ç›¾ï¼Œæ˜¥é£ï¼Œå†°å°ï¼Œæ·¬ç‚¼
+        PlayerInfo p1 = PlayerBuilder.build("é˜µå®¹1", 85, "Cé‡‘å±å·¨é¾™-10", "Cæ°´æºåˆ¶é€ è€…-10", "Cå‡¤å‡°-10*2", "Cé­”æ³•åä¼šé•¿-10", "Cç§˜é“¶å·¨çŸ³åƒ-10", "Cæœºæ¢°é£é¾™-10",
+                "Cå¤§å‰‘åœ£-10", "Cçµé­‚æ”¶å‰²è€…-10", "Céœ‡æºå²©èŸ¾-10", "Rå†°å°-4", "Ræ˜¥é£-4", "Ré›·ç›¾-4", "Ræ·¬ç‚¼-4");
+        // é‡‘å±*1ï¼Œæ°´æº*1ï¼Œå‡¤å‡°*2ï¼Œè€å¤´*1ï¼Œ ç§˜é“¶*1ï¼Œæœºæ¢°é£é¾™*1ï¼Œçš‡å®¶å«é˜Ÿé•¿*1ï¼Œèè‰*1ï¼Œè›¤èŸ†*1, é›·ç›¾ï¼Œæ˜¥é£ï¼Œå†°å°ï¼Œæ·¬ç‚¼
+        PlayerInfo p2 = PlayerBuilder.build("é˜µå®¹2", 85, "Cé‡‘å±å·¨é¾™-10", "Cæ°´æºåˆ¶é€ è€…-10", "Cå‡¤å‡°-10*2", "Cé­”æ³•åä¼šé•¿-10", "Cç§˜é“¶å·¨çŸ³åƒ-10", "Cæœºæ¢°é£é¾™-10",
+                "Cçš‡å®¶å«é˜Ÿå°†é¢†-10", "Cçµé­‚æ”¶å‰²è€…-10", "Céœ‡æºå²©èŸ¾-10", "Rå†°å°-4", "Ræ˜¥é£-4", "Ré›·ç›¾-4", "Ræ·¬ç‚¼-4");
+        // é‡‘å±*1ï¼Œæ°´æº*1ï¼Œå‡¤å‡°*2ï¼Œè€å¤´*1ï¼Œ ç§˜é“¶*1ï¼Œæœºæ¢°é£é¾™*1ï¼Œå¤§ä¸»æ•™*1ï¼Œèè‰*1ï¼Œè›¤èŸ†*1, é›·ç›¾ï¼Œæ˜¥é£ï¼Œå†°å°ï¼Œæ·¬ç‚¼
+        PlayerInfo p3 = PlayerBuilder.build("é˜µå®¹3", 85, "Cé‡‘å±å·¨é¾™-10", "Cæ°´æºåˆ¶é€ è€…-10", "Cå‡¤å‡°-10*2", "Cé­”æ³•åä¼šé•¿-10", "Cç§˜é“¶å·¨çŸ³åƒ-10", "Cæœºæ¢°é£é¾™-10",
+                "Cå¤§ä¸»æ•™-10", "Cçµé­‚æ”¶å‰²è€…-10", "Céœ‡æºå²©èŸ¾-10", "Rå†°å°-4", "Ræ˜¥é£-4", "Ré›·ç›¾-4", "Ræ·¬ç‚¼-4");
+        // é‡‘å±*1ï¼Œæ°´æº*1ï¼Œå‡¤å‡°*2ï¼Œè€å¤´*1ï¼Œ ç§˜é“¶*1ï¼Œæœºæ¢°é£é¾™*1ï¼Œçš‡å®¶é©¯å…½å¸ˆï¼Œèè‰*1ï¼Œè›¤èŸ†*1, é›·ç›¾ï¼Œæ˜¥é£ï¼Œå†°å°ï¼Œæ·¬ç‚¼
+        PlayerInfo p4 = PlayerBuilder.build("é˜µå®¹4", 85, "Cé‡‘å±å·¨é¾™-10", "Cæ°´æºåˆ¶é€ è€…-10", "Cå‡¤å‡°-10*2", "Cé­”æ³•åä¼šé•¿-10", "Cç§˜é“¶å·¨çŸ³åƒ-10", "Cæœºæ¢°é£é¾™-10",
+                "Cçš‡å®¶é©¯å…½å¸ˆ-10", "Cçµé­‚æ”¶å‰²è€…-10", "Céœ‡æºå²©èŸ¾-10", "Rå†°å°-4", "Ræ˜¥é£-4", "Ré›·ç›¾-4", "Ræ·¬ç‚¼-4");
+        // é‡‘å±1ï¼Œæ°´æº1,å‡¤å‡°2ï¼Œæ£®å¥³1ï¼Œè€å¤´1ï¼Œèè‰1ï¼Œè›¤èŸ†1ï¼Œç†Šäººæ­¦å£«1ï¼ŒçŒ›çŠ¸1, æ˜¥é£é›·ç›¾èµ¤è°·æ·¬ç‚¼
+        PlayerInfo p5 = PlayerBuilder.build("é˜µå®¹5", 85, "Cé‡‘å±å·¨é¾™-10", "Cæ°´æºåˆ¶é€ è€…-10", "Cå‡¤å‡°-10*2", "Cæ£®æ—å¥³ç¥-10", "Cé­”æ³•åä¼šé•¿-10", 
+                "Cçµé­‚æ”¶å‰²è€…-10", "Céœ‡æºå²©èŸ¾-10", "Cç†Šäººæ­¦å£«-10", "Cæˆ˜æ–—çŒ›çŠ¸è±¡-10", "Rèµ¤è°·-4", "Ræ˜¥é£-4", "Ré›·ç›¾-4", "Ræ·¬ç‚¼-4");
+        // é‡‘å±1ï¼Œæ°´æº2,å‡¤å‡°2ï¼Œè€å¤´1ï¼Œèè‰1ï¼Œè›¤èŸ†1ï¼Œç†Šäººæ­¦å£«1ï¼ŒçŒ›çŠ¸1, æ˜¥é£é›·ç›¾èµ¤è°·æ·¬ç‚¼
+        PlayerInfo p6 = PlayerBuilder.build("é˜µå®¹6", 85, "Cé‡‘å±å·¨é¾™-10", "Cæ°´æºåˆ¶é€ è€…-10*2", "Cå‡¤å‡°-10*2", "Cé­”æ³•åä¼šé•¿-10", 
+                "Cçµé­‚æ”¶å‰²è€…-10", "Céœ‡æºå²©èŸ¾-10", "Cç†Šäººæ­¦å£«-10", "Cæˆ˜æ–—çŒ›çŠ¸è±¡-10", "Rèµ¤è°·-4", "Ræ˜¥é£-4", "Ré›·ç›¾-4", "Ræ·¬ç‚¼-4");
         
         showStat(play(p0, p1, 1000));
         showStat(play(p1, p0, 1000));
@@ -497,9 +497,9 @@ public class FreeTest extends PveEngineTest {
     }
     
     @Test
-    public void ÓÄÁéÖ®Áúvs¿Ö¾å_1000() {
-        PlayerInfo p1 = PlayerBuilder.build("Ó¢ĞÛÓÄÁéÁú", 80, "CÓÄÁé¾ŞÁú-10*1");
-        PlayerInfo p2 = PlayerBuilder.build("Ó¢ĞÛ¿Ö¾åÖ®Íõ", 80, "C¿Ö¾åÖ®Íõ-10*1");
+    public void å¹½çµä¹‹é¾™vsææƒ§_1000() {
+        PlayerInfo p1 = PlayerBuilder.build("è‹±é›„å¹½çµé¾™", 80, "Cå¹½çµå·¨é¾™-10*1");
+        PlayerInfo p2 = PlayerBuilder.build("è‹±é›„ææƒ§ä¹‹ç‹", 80, "Cææƒ§ä¹‹ç‹-10*1");
         showStat(play(p2, p1, 1000));
     }
 
@@ -507,7 +507,7 @@ public class FreeTest extends PveEngineTest {
         CardDataStore store = CardDataStore.loadDefault();
         int[] heroLevels = new int[] { 60, 70, 80, 90 };
         Table<String> table = new Table<String>();
-        table.setCell(0, 0, "Ó¢ĞÛµÈ¼¶");
+        table.setCell(0, 0, "è‹±é›„ç­‰çº§");
         for (int i = 0; i < heroLevels.length; ++i) {
             table.setCell(0, i + 1, String.valueOf(heroLevels[i]));
         }
@@ -549,53 +549,53 @@ public class FreeTest extends PveEngineTest {
     }
 
     @Test
-    public void ¶éÂä¾«Áévs´¿½àÊ¥Å®() {
-        TestGameBuilder.play10v10("¶éÂä¾«Áé", "½ğÊô¾ŞÁú");
+    public void å •è½ç²¾çµvsçº¯æ´åœ£å¥³() {
+        TestGameBuilder.play10v10("å •è½ç²¾çµ", "é‡‘å±å·¨é¾™");
     }
 
     @Test
-    public void ¶éÂä¾«Áévs¿Ö¾åÖ®Íõ() {
-        TestGameBuilder.play10v10("¶éÂä¾«Áé", "¿Ö¾åÖ®Íõ");
+    public void å •è½ç²¾çµvsææƒ§ä¹‹ç‹() {
+        TestGameBuilder.play10v10("å •è½ç²¾çµ", "ææƒ§ä¹‹ç‹");
     }
 
     @Test
-    public void ¿Ö¾åÖ®Íõvs¶éÂä¾«Áé() {
-        TestGameBuilder.play10v10("¿Ö¾åÖ®Íõ", "¶éÂä¾«Áé");
+    public void ææƒ§ä¹‹ç‹vså •è½ç²¾çµ() {
+        TestGameBuilder.play10v10("ææƒ§ä¹‹ç‹", "å •è½ç²¾çµ");
     }
 
     @Test
-    public void ´ó½£Ê¥vsÕ½Éñ() {
-        TestGameBuilder.play10v10("´ó½£Ê¥", "Õ½Éñ");
+    public void å¤§å‰‘åœ£vsæˆ˜ç¥() {
+        TestGameBuilder.play10v10("å¤§å‰‘åœ£", "æˆ˜ç¥");
     }
 
     @Test
-    public void ½µÁÙÌìÊ¹vsÔÂÁÁÅ®Éñ() {
-        TestGameBuilder.play10v10("½µÁÙÌìÊ¹", "ÔÂÁÁÅ®Éñ");
+    public void é™ä¸´å¤©ä½¿vsæœˆäº®å¥³ç¥() {
+        TestGameBuilder.play10v10("é™ä¸´å¤©ä½¿", "æœˆäº®å¥³ç¥");
     }
 
     @Test
-    public void ½µÁÙÌìÊ¹vsÒşÊÀÏÈÖª() {
-        TestGameBuilder.play10v10("½µÁÙÌìÊ¹", "ÒşÊÀÏÈÖª");
+    public void é™ä¸´å¤©ä½¿vséšä¸–å…ˆçŸ¥() {
+        TestGameBuilder.play10v10("é™ä¸´å¤©ä½¿", "éšä¸–å…ˆçŸ¥");
     }
 
     @Test
-    public void ¶éÂä¾«ÁévsÊ¥µ®ÀÏÈË() {
-        TestGameBuilder.play1v1("¶éÂä¾«Áé", "Ê¥µ®ÀÏÈË");
+    public void å •è½ç²¾çµvsåœ£è¯è€äºº() {
+        TestGameBuilder.play1v1("å •è½ç²¾çµ", "åœ£è¯è€äºº");
     }
 
     @Test
-    public void ¾ÅÍ·ÑıÉßvs·ï»Ë() {
-        TestGameBuilder.play2v2("¾ÅÍ·ÑıÉß", "·ï»Ë");
+    public void ä¹å¤´å¦–è›‡vså‡¤å‡°() {
+        TestGameBuilder.play2v2("ä¹å¤´å¦–è›‡", "å‡¤å‡°");
     }
     
 
     @Test
-    public void ¾ÅÍ·ÑıÉßvs¾ÅÍ·ÑıÉß() {
-        TestGameBuilder.play2v2("¾ÅÍ·ÑıÉß", "¾ÅÍ·ÑıÉß");
+    public void ä¹å¤´å¦–è›‡vsä¹å¤´å¦–è›‡() {
+        TestGameBuilder.play2v2("ä¹å¤´å¦–è›‡", "ä¹å¤´å¦–è›‡");
     }
     
     @Test
-    public void »Ê¼ÒÑ±ÊŞÊ¦vs¾ÅÍ·ÑıÉß() {
-        TestGameBuilder.play10v10("»Ê¼ÒÑ±ÊŞÊ¦", "¾ÅÍ·ÑıÉß", 62);
+    public void çš‡å®¶é©¯å…½å¸ˆvsä¹å¤´å¦–è›‡() {
+        TestGameBuilder.play10v10("çš‡å®¶é©¯å…½å¸ˆ", "ä¹å¤´å¦–è›‡", 62);
     }
 }

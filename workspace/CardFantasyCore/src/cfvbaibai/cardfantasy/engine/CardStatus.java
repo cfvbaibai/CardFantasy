@@ -49,14 +49,14 @@ public class CardStatus {
             return "-";
         }
         StringBuffer sb = new StringBuffer();
-        sb.append("°æ");
+        sb.append("„Äê");
         for (CardStatusItem item : items) {
             sb.append(item.getShortDesc());
             sb.append(", ");
         }
         sb.deleteCharAt(sb.length() - 1);
         sb.deleteCharAt(sb.length() - 1);
-        sb.append("°ø");
+        sb.append("„Äë");
         return sb.toString();
     }
 

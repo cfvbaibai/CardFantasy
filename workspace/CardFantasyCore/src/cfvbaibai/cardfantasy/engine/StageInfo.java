@@ -21,7 +21,7 @@ public class StageInfo {
     public StageInfo(Board board, GameUI ui, Rule rule) {
         this.board = board;
         this.activePlayerNumber = -1;
-        this.phase = Phase.δ֪;
+        this.phase = Phase.未知;
         this.round = -1;
         this.ui = ui;
         this.rule = rule;
@@ -113,7 +113,7 @@ public class StageInfo {
 
     public void gameStarted() {
         int firstPlayer = determineFirstPlayer();
-        this.ui.showMessage(this.getPlayers().get(firstPlayer).getShortDesc() + "�ȹ�");
+        this.ui.showMessage(this.getPlayers().get(firstPlayer).getShortDesc() + "先攻");
         this.ui.gameStarted(this.getBoard(), this.getRule());
         this.activePlayerNumber = firstPlayer;
     }

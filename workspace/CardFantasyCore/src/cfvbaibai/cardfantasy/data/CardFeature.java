@@ -19,12 +19,12 @@ public class CardFeature extends Feature implements Cloneable {
     public String getShortDesc() {
         String prefix = "";
         if (this.isSummonFeature()) {
-            prefix += "Ωµ¡Ÿ-";
+            prefix += "Èôç‰∏¥-";
         }
         if (this.isDeathFeature()) {
-            prefix += "À¿∆ı-";
+            prefix += "Ê≠ªÂ•ë-";
         }
-        return String.format("°æ%s%s%s°ø", prefix, type.getDisplayName(), level == 0 ? "" : String.valueOf(level));
+        return String.format("„Äê%s%s%s„Äë", prefix, type.getDisplayName(), level == 0 ? "" : String.valueOf(level));
     }
     
     @Override

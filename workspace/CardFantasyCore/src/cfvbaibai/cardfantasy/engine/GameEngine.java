@@ -43,12 +43,12 @@ public class GameEngine {
         Collection <Rune> runes = playerInfo.getRunes();
         if (cards.size() > playerInfo.getCardSlot()) {
             throw new CardFantasyRuntimeException(String.format(
-                    "%s µÄ¿¨ÅÆ²Û²»×ã£¡%s ¿¨ÅÆ²ÛÊı£º%d, ¿¨×é¿¨ÅÆÊı£º%d",
+                    "%s çš„å¡ç‰Œæ§½ä¸è¶³ï¼%s å¡ç‰Œæ§½æ•°ï¼š%d, å¡ç»„å¡ç‰Œæ•°ï¼š%d",
                     playerInfo.getId(), playerInfo.getId(), playerInfo.getCardSlot(), cards.size()));
         }
         if (runes.size() > playerInfo.getRuneSlot()) {
             throw new CardFantasyRuntimeException(String.format(
-                    "%s µÄ·ûÎÄ²Û²»×ã£¡%s ·ûÎÄ²ÛÊı£º%d, ¿¨×é·ûÎÄÊı£º%d",
+                    "%s çš„ç¬¦æ–‡æ§½ä¸è¶³ï¼%s ç¬¦æ–‡æ§½æ•°ï¼š%d, å¡ç»„ç¬¦æ–‡æ•°ï¼š%d",
                     playerInfo.getId(), playerInfo.getId(), playerInfo.getRuneSlot(), runes.size()));
         }
         int cost = 0;
@@ -57,7 +57,7 @@ public class GameEngine {
         }
         if (cost > playerInfo.getMaxCost()) {
             throw new CardFantasyRuntimeException(String.format(
-                    "%s µÄCOST²»×ã£¡%s µÄ×î´óCOST£º%d, ¿¨×éCOST: %d",
+                    "%s çš„COSTä¸è¶³ï¼%s çš„æœ€å¤§COSTï¼š%d, å¡ç»„COST: %d",
                     playerInfo.getId(), playerInfo.getId(), playerInfo.getMaxCost(), cost));
         }
     }
@@ -78,35 +78,35 @@ public class GameEngine {
     }
 
     private GameResult proceedGame() {
-        Phase phase = Phase.¿ªÊ¼;
-        Phase nextPhase = Phase.Î´Öª;
+        Phase phase = Phase.å¼€å§‹;
+        Phase nextPhase = Phase.æœªçŸ¥;
         try {
             while (true) {
-                if (phase == Phase.¿ªÊ¼) {
+                if (phase == Phase.å¼€å§‹) {
                     nextPhase = roundStart();
-                } else if (phase == Phase.³é¿¨) {
+                } else if (phase == Phase.æŠ½å¡) {
                     nextPhase = drawCard();
-                } else if (phase == Phase.×¼±¸) {
+                } else if (phase == Phase.å‡†å¤‡) {
                     nextPhase = standby();
-                } else if (phase == Phase.ÕÙ»½) {
+                } else if (phase == Phase.å¬å”¤) {
                     nextPhase = summonCards();
-                } else if (phase == Phase.Õ½¶·) {
+                } else if (phase == Phase.æˆ˜æ–—) {
                     nextPhase = battle();
-                } else if (phase == Phase.½áÊø) {
+                } else if (phase == Phase.ç»“æŸ) {
                     nextPhase = roundEnd();
                 } else {
                     throw new CardFantasyRuntimeException(String.format("Unknown phase encountered: %s", phase));
                 }
                 stage.getUI().phaseChanged(getActivePlayer(), phase, nextPhase);
                 phase = nextPhase;
-                nextPhase = Phase.Î´Öª;
+                nextPhase = Phase.æœªçŸ¥;
             }
         } catch (GameOverSignal signal) {
-            return stage.result(this.stage.getPlayers().get(0), GameEndCause.Õ½¶·³¬Ê±);
+            return stage.result(this.stage.getPlayers().get(0), GameEndCause.æˆ˜æ–—è¶…æ—¶);
         } catch (HeroDieSignal signal) {
-            return stage.result(getOpponent(signal.getDeadPlayer()), GameEndCause.Ó¢ĞÛËÀÍö);
+            return stage.result(getOpponent(signal.getDeadPlayer()), GameEndCause.è‹±é›„æ­»äº¡);
         } catch (AllCardsDieSignal signal) {
-            return stage.result(getOpponent(signal.getDeadPlayer()), GameEndCause.¿¨Æ¬È«Ãğ);
+            return stage.result(getOpponent(signal.getDeadPlayer()), GameEndCause.å¡ç‰‡å…¨ç­);
         }
     }
 
@@ -130,13 +130,13 @@ public class GameEngine {
 
         player.getField().compact();
         this.getInactivePlayer().getField().compact();
-        return Phase.×¼±¸;
+        return Phase.å‡†å¤‡;
     }
 
     private Phase standby() throws HeroDieSignal {
         this.stage.getResolver().activateRunes(this.getActivePlayer(), this.getInactivePlayer());
         this.stage.getResolver().resolvePreAttackRune(this.getActivePlayer(), this.getInactivePlayer());
-        return Phase.Õ½¶·;
+        return Phase.æˆ˜æ–—;
     }
 
     private Phase roundEnd() {
@@ -159,7 +159,7 @@ public class GameEngine {
         this.stage.setActivePlayerNumber(nextPlayerNumber);
         Player nextPlayer = this.getActivePlayer();
         stage.getUI().playerChanged(previousPlayer, nextPlayer);
-        return Phase.¿ªÊ¼;
+        return Phase.å¼€å§‹;
     }
 
     private Phase battle() throws HeroDieSignal {
@@ -185,20 +185,20 @@ public class GameEngine {
             CardInfo card = myField.getCard(i);
             ui.cardActionBegins(card);
             CardStatus status = myField.getCard(i).getStatus();
-            if (status.containsStatus(CardStatusType.±ù¶³) || status.containsStatus(CardStatusType.Ëø¶¨)
-                    || status.containsStatus(CardStatusType.ĞéÈõ)) {
+            if (status.containsStatus(CardStatusType.å†°å†») || status.containsStatus(CardStatusType.é”å®š)
+                    || status.containsStatus(CardStatusType.è™šå¼±)) {
                 ui.cannotAction(myField.getCard(i));
-            } else if (status.containsStatus(CardStatusType.ÃÔ»ó)) {
+            } else if (status.containsStatus(CardStatusType.è¿·æƒ‘)) {
                 ui.confused(myField.getCard(i));
                 resolver.attackHero(myField.getCard(i), getActivePlayer(), null, myField.getCard(i).getCurrentAT());
             } else {
                 tryAttackEnemy(myField, opField, i);
             }
 
-            resolver.resolveDebuff(myField.getCard(i), CardStatusType.ÖĞ¶¾);
-            resolver.resolveDebuff(myField.getCard(i), CardStatusType.È¼ÉÕ);
+            resolver.resolveDebuff(myField.getCard(i), CardStatusType.ä¸­æ¯’);
+            resolver.resolveDebuff(myField.getCard(i), CardStatusType.ç‡ƒçƒ§);
 
-            // »Ø´º
+            // å›æ˜¥
             resolver.resolveCardRoundEndingFeature(myField.getCard(i));
             ui.cardActionEnds(card);
         }
@@ -209,15 +209,15 @@ public class GameEngine {
         opField.compact();
 
         for (CardInfo card : myField.getAliveCards()) {
-            card.getStatus().remove(CardStatusType.±ù¶³);
-            card.getStatus().remove(CardStatusType.Âé±Ô);
-            card.getStatus().remove(CardStatusType.Ëø¶¨);
-            card.getStatus().remove(CardStatusType.ÖĞ¶¾);
-            card.getStatus().remove(CardStatusType.ĞéÈõ);
-            card.getStatus().remove(CardStatusType.ÃÔ»ó);
+            card.getStatus().remove(CardStatusType.å†°å†»);
+            card.getStatus().remove(CardStatusType.éº»ç—¹);
+            card.getStatus().remove(CardStatusType.é”å®š);
+            card.getStatus().remove(CardStatusType.ä¸­æ¯’);
+            card.getStatus().remove(CardStatusType.è™šå¼±);
+            card.getStatus().remove(CardStatusType.è¿·æƒ‘);
         }
 
-        return Phase.½áÊø;
+        return Phase.ç»“æŸ;
     }
 
     private void tryAttackEnemy(Field myField, Field opField, int i) throws HeroDieSignal {
@@ -254,14 +254,14 @@ public class GameEngine {
         FeatureResolver resolver = this.stage.getResolver();
         GameUI ui = this.stage.getUI();
         for (FeatureInfo featureInfo : myField.getCard(i).getNormalUsableFeatures()) {
-            if (featureInfo.getFeature().getType() == FeatureType.ºáÉ¨) {
+            if (featureInfo.getFeature().getType() == FeatureType.æ¨ªæ‰«) {
                 ui.useSkill(myField.getCard(i), defender, featureInfo.getFeature(), true);
             }
         }
         OnDamagedResult damagedResult = resolver.attackCard(myField.getCard(i), defender, null);
         if (damagedResult != null && damagedResult.originalDamage > 0 && myField.getCard(i) != null) {
             for (FeatureInfo featureInfo : myField.getCard(i).getNormalUsableFeatures()) {
-                if (featureInfo.getFeature().getType() == FeatureType.ºáÉ¨) {
+                if (featureInfo.getFeature().getType() == FeatureType.æ¨ªæ‰«) {
 
                     List<CardInfo> sweepDefenders = new ArrayList<CardInfo>();
                     if (i > 0 && opField.getCard(i - 1) != null) {
@@ -302,10 +302,10 @@ public class GameEngine {
         if (this.stage.getRound() >= thresholdRound) {
             int extraRound = this.stage.getRound() - thresholdRound;
             int heroDamage = 50 + extraRound * 30;
-            Feature feature = Feature.×Ô¶¯¿ÛÑª();
+            Feature feature = Feature.è‡ªåŠ¨æ‰£è¡€();
             this.stage.getResolver().attackHero(player, player, feature, heroDamage);
         }
-        return Phase.³é¿¨;
+        return Phase.æŠ½å¡;
     }
 
     private Phase drawCard() {
@@ -313,16 +313,16 @@ public class GameEngine {
         Hand hand = activePlayer.getHand();
         if (hand.size() >= this.stage.getRule().getMaxHandCards()) {
             stage.getUI().cantDrawHandFull(activePlayer);
-            return Phase.ÕÙ»½;
+            return Phase.å¬å”¤;
         }
         Deck deck = activePlayer.getDeck();
         if (deck.isEmpty()) {
             stage.getUI().cantDrawDeckEmpty(activePlayer);
-            return Phase.ÕÙ»½;
+            return Phase.å¬å”¤;
         }
         CardInfo newCard = deck.draw();
         hand.addCard(newCard);
         stage.getUI().cardDrawed(activePlayer, newCard);
-        return Phase.ÕÙ»½;
+        return Phase.å¬å”¤;
     }
 }

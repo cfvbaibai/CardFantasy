@@ -14,7 +14,7 @@ public final class GuardFeature {
         if (attacker == null) {
             throw new CardFantasyRuntimeException("Attacker cannot be null");
         }
-        if (attackFeature != null && attackFeature.getType().containsTag(FeatureTag.¿¹ÊØ»¤)) {
+        if (attackFeature != null && attackFeature.getType().containsTag(FeatureTag.æŠ—å®ˆæŠ¤)) {
             return damage;
         }
         resolver.getStage().getUI().useSkill(guardian, attacker, guardFeature, true);

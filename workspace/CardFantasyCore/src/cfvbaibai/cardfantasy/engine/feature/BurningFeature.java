@@ -16,7 +16,7 @@ public final class BurningFeature {
         if (attacker == null) {
             return;
         }
-        if (attacker.getStatus().containsStatusCausedBy(featureInfo, CardStatusType.È¼ÉÕ)) {
+        if (attacker.getStatus().containsStatusCausedBy(featureInfo, CardStatusType.ç‡ƒçƒ§)) {
             return;
         }
         Feature feature = featureInfo.getFeature();

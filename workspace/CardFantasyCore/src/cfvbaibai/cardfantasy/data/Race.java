@@ -1,9 +1,9 @@
 package cfvbaibai.cardfantasy.data;
 
 public enum Race {
-    王国,
-    森林,
-    蛮荒,
-    地狱,
-    魔神
+    鐜嬪浗,
+    妫灄,
+    铔崚,
+    鍦扮嫳,
+    榄旂,
 }

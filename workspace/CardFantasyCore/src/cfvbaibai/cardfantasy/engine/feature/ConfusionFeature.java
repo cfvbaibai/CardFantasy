@@ -24,7 +24,7 @@ public final class ConfusionFeature {
             if (!resolver.resolveAttackBlockingFeature(attacker, victim, feature, 1).isAttackable()) {
                 continue;
             }
-            if (victim.getStatus().containsStatus(CardStatusType.ÃÔ»ó)) {
+            if (victim.getStatus().containsStatus(CardStatusType.è¿·æƒ‘)) {
                 continue;
             }
             if (resolver.getStage().getRandomizer().roll100(rate)) {

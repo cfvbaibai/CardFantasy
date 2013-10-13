@@ -18,8 +18,8 @@ public final class ManaErodeFeature {
         ui.useSkill(attacker, victims, cardFeature, true);
         int damage = cardFeature.getImpact();
         for (CardInfo victim : victims) {
-            if (victim.containsUsableFeature(FeatureType.ÃâÒß) ||
-                victim.containsUsableFeature(FeatureType.·¨Á¦·´Éä)) {
+            if (victim.containsUsableFeature(FeatureType.å…ç–«) ||
+                victim.containsUsableFeature(FeatureType.æ³•åŠ›åå°„)) {
                 // TODO: ui.damageUp
                 damage *= 3;
             }

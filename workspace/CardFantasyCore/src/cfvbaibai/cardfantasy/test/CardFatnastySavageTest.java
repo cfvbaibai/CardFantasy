@@ -5,32 +5,32 @@ import org.junit.Test;
 public class CardFatnastySavageTest {
 
     @Test
-    public void °×°ßÖ©ÖëvsºÚÒ¹òùòğ() {
-        TestGameBuilder.play5v5("°×°ßÖ©Öë", "ºÚÒ¹òùòğ");
+    public void ç™½æ–‘èœ˜è››vsé»‘å¤œè™è () {
+        TestGameBuilder.play5v5("ç™½æ–‘èœ˜è››", "é»‘å¤œè™è ");
     }
 
     @Test
-    public void ÎÁÒßÖ©ÖëvsÉ½ÑòÈË¶ÜÊ¿() {
-        TestGameBuilder.play5v5("ÎÁÒßÖ©Öë", "É½ÑòÈË¶ÜÊ¿");
+    public void ç˜Ÿç–«èœ˜è››vså±±ç¾Šäººç›¾å£«() {
+        TestGameBuilder.play5v5("ç˜Ÿç–«èœ˜è››", "å±±ç¾Šäººç›¾å£«");
     }
 
     @Test
-    public void Å£Í·ÈËÎÀÊ¿vsÊ³ÈËÄ§ÊõÊ¿() {
-        TestGameBuilder.play5v5("Å£Í·ÈËÎÀÊ¿", "Ê³ÈËÄ§ÊõÊ¿");
+    public void ç‰›å¤´äººå«å£«vsé£Ÿäººé­”æœ¯å£«() {
+        TestGameBuilder.play5v5("ç‰›å¤´äººå«å£«", "é£Ÿäººé­”æœ¯å£«");
     }
 
     @Test
-    public void ¶ÀÑÛ¾ŞÈËvsÊ³ÈËÄ§ÊõÊ¿() {
-        TestGameBuilder.play5v5("¶ÀÑÛ¾ŞÈË", "Ê³ÈËÄ§ÊõÊ¿");
+    public void ç‹¬çœ¼å·¨äººvsé£Ÿäººé­”æœ¯å£«() {
+        TestGameBuilder.play5v5("ç‹¬çœ¼å·¨äºº", "é£Ÿäººé­”æœ¯å£«");
     }
 
     @Test
-    public void ¶ÀÑÛ¾ŞÈËv¸ç²¼ÁÖÊõÊ¿() {
-        TestGameBuilder.play5v5("¶ÀÑÛ¾ŞÈË", "¸ç²¼ÁÖÊõÊ¿");
+    public void ç‹¬çœ¼å·¨äººvå“¥å¸ƒæ—æœ¯å£«() {
+        TestGameBuilder.play5v5("ç‹¬çœ¼å·¨äºº", "å“¥å¸ƒæ—æœ¯å£«");
     }
 
     @Test
-    public void ¾ÅÍ·ÑıÉßvÔ¶¹ÅĞ«»Ê() {
-        TestGameBuilder.play5v5("¾ÅÍ·ÑıÉß", "Ô¶¹ÅĞ«»Ê");
+    public void ä¹å¤´å¦–è›‡vè¿œå¤èçš‡() {
+        TestGameBuilder.play5v5("ä¹å¤´å¦–è›‡", "è¿œå¤èçš‡");
     }
 }

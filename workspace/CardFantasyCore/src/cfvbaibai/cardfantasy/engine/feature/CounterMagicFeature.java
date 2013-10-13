@@ -15,7 +15,7 @@ public final class CounterMagicFeature {
         if (attacker == null) {
             return false;
         }
-        if (attackFeature.getType().containsTag(FeatureTag.Ä§·¨)) {
+        if (attackFeature.getType().containsTag(FeatureTag.é­”æ³•)) {
             int damage = cardFeature.getImpact();
             GameUI ui = resolver.getStage().getUI();
             ui.useSkill(defender, attacker, cardFeature, true);

@@ -11,36 +11,36 @@ import cfvbaibai.cardfantasy.game.PlayerBuilder;
 
 public class CardFantasyCrossRaceTest {
     @Test
-    public void ·´ÊÉandÊØ»¤() {
-        TestGameBuilder.play(PlayerBuilder.build("¡¾A¡¿", 50, "ÎÁÒßÖ©Öë-10*2", "Ä§½£Ê¿-10*3"),
-                PlayerBuilder.build("¡¾B¡¿", 50, "³ÇÕò¹­¼ı±ø-10*5"));
+    public void åå™¬andå®ˆæŠ¤() {
+        TestGameBuilder.play(PlayerBuilder.build("ã€Aã€‘", 50, "ç˜Ÿç–«èœ˜è››-10*2", "é­”å‰‘å£«-10*3"),
+                PlayerBuilder.build("ã€Bã€‘", 50, "åŸé•‡å¼“ç®­å…µ-10*5"));
     }
 
     @Test
-    public void ×çÖävsÊØ»¤() {
-        TestGameBuilder.play5v5("Ê³ÈËÄ§ÊõÊ¿", "Ä§½£Ê¿");
+    public void è¯…å’’vså®ˆæŠ¤() {
+        TestGameBuilder.play5v5("é£Ÿäººé­”æœ¯å£«", "é­”å‰‘å£«");
     }
 
     @Test
-    public void »ÊÊÒÎèÕßvsÖ©ÖëÈËÅ®Íõ() {
-        TestGameBuilder.play5v5("»ÊÊÒÎèÕß", "Ö©ÖëÈËÅ®Íõ");
+    public void çš‡å®¤èˆè€…vsèœ˜è››äººå¥³ç‹() {
+        TestGameBuilder.play5v5("çš‡å®¤èˆè€…", "èœ˜è››äººå¥³ç‹");
     }
 
     @Test
-    public void »úĞµ±øÍÅ³¤vsºÚ¼×ÌúÆïÊ¿() {
-        TestGameBuilder.play5v5("»úĞµ±øÍÅ³¤", "ºÚ¼×ÌúÆïÊ¿");
+    public void æœºæ¢°å…µå›¢é•¿vsé»‘ç”²é“éª‘å£«() {
+        TestGameBuilder.play5v5("æœºæ¢°å…µå›¢é•¿", "é»‘ç”²é“éª‘å£«");
     }
 
     @Test
-    public void µ¶·æÅ®ÍõvsÕ½¶·ÃÍáïÏó() {
-        TestGameBuilder.play5v5("µ¶·æÅ®Íõ", "Õ½¶·ÃÍáïÏó");
+    public void åˆ€é”‹å¥³ç‹vsæˆ˜æ–—çŒ›çŠ¸è±¡() {
+        TestGameBuilder.play5v5("åˆ€é”‹å¥³ç‹", "æˆ˜æ–—çŒ›çŠ¸è±¡");
     }
     
     @Test
     public void IncrCostStat() throws IOException {
         CsvWriter writer = new CsvWriter(new File("E:\\IncrCost.csv"));
         try {
-            writer.writeFields("¿¨ÅÆ", "ÖÖ×å", "ĞÇÊı", "¶îÍâCOST");
+            writer.writeFields("å¡ç‰Œ", "ç§æ—", "æ˜Ÿæ•°", "é¢å¤–COST");
             CardDataStore store = CardDataStore.loadDefault();
             for (CardData data : store.getAllCards()) {
                 writer.writeFields(data.getName(), data.getRace().name(), data.getStar(), data.getIncrCost());

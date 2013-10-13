@@ -15,7 +15,7 @@ public final class WeakPointAttackFeature {
         if (defender == null) {
             throw new CardFantasyRuntimeException("defender is null");
         }
-        if (blockFeature.getType().containsTag(FeatureTag.ÎïÀí»¤¼×)) {
+        if (blockFeature.getType().containsTag(FeatureTag.ç‰©ç†æŠ¤ç”²)) {
             resolver.getStage().getUI().useSkill(attacker, defender, attackFeature, true);
             resolver.getStage().getUI().disableBlock(attacker, defender, attackFeature, blockFeature);
             return true;

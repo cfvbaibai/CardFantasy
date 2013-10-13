@@ -89,7 +89,7 @@ public class FeatureResolver {
     }
     
     private boolean isPhysicalAttackFeature(Feature feature) {
-        return feature == null || feature.getType().containsTag(FeatureTag.ÎïÀí¹¥»÷);
+        return feature == null || feature.getType().containsTag(FeatureTag.ç‰©ç†æ”»å‡»);
     }
 
     public List<CardInfo> getAdjacentCards(Field field, int position) {
@@ -116,7 +116,7 @@ public class FeatureResolver {
             if (attacker.isDead()) {
                 continue;
             }
-            if (feature.getType() == FeatureType.Í¸Ö§) {
+            if (feature.getType() == FeatureType.é€æ”¯) {
                 OverdrawFeature.apply(this, feature, attacker);
             }
         }
@@ -124,81 +124,81 @@ public class FeatureResolver {
             if (attacker.isDead()) {
                 continue;
             }
-            if (feature.getType() == FeatureType.Î´Öª) {
+            if (feature.getType() == FeatureType.æœªçŸ¥) {
                 // JUST A PLACEHOLDER
-            } else if (feature.getType() == FeatureType.»ğÇò) {
+            } else if (feature.getType() == FeatureType.ç«çƒ) {
                 FireMagicFeature.apply(feature.getFeature(), this, attacker, defender, 1);
-            } else if (feature.getType() == FeatureType.»ğÇ½) {
+            } else if (feature.getType() == FeatureType.ç«å¢™) {
                 FireMagicFeature.apply(feature.getFeature(), this, attacker, defender, 3);
-            } else if (feature.getType() == FeatureType.ÁÒÑæ·ç±©) {
+            } else if (feature.getType() == FeatureType.çƒˆç„°é£æš´) {
                 FireMagicFeature.apply(feature.getFeature(), this, attacker, defender, -1);
-            } else if (feature.getType() == FeatureType.ÂäÀ×) {
+            } else if (feature.getType() == FeatureType.è½é›·) {
                 LighteningMagicFeature.apply(feature, this, attacker, defender, 1, 50);
-            } else if (feature.getType() == FeatureType.Á¬»·ÉÁµç) {
+            } else if (feature.getType() == FeatureType.è¿ç¯é—ªç”µ) {
                 LighteningMagicFeature.apply(feature, this, attacker, defender, 3, 40);
-            } else if (feature.getType() == FeatureType.À×±©) {
+            } else if (feature.getType() == FeatureType.é›·æš´) {
                 LighteningMagicFeature.apply(feature, this, attacker, defender, -1, 35);
-            } else if (feature.getType() == FeatureType.±ùµ¯) {
+            } else if (feature.getType() == FeatureType.å†°å¼¹) {
                 IceMagicFeature.apply(feature, this, attacker, defender, 1, 45);
-            } else if (feature.getType() == FeatureType.Ëª¶³ĞÂĞÇ) {
+            } else if (feature.getType() == FeatureType.éœœå†»æ–°æ˜Ÿ) {
                 IceMagicFeature.apply(feature, this, attacker, defender, 3, 35);
-            } else if (feature.getType() == FeatureType.±©·çÑ©) {
+            } else if (feature.getType() == FeatureType.æš´é£é›ª) {
                 IceMagicFeature.apply(feature, this, attacker, defender, -1, 30);
-            } else if (feature.getType() == FeatureType.¶¾Òº) {
+            } else if (feature.getType() == FeatureType.æ¯’æ¶²) {
                 PoisonMagicFeature.apply(feature, this, attacker, defender, 1);
-            } else if (feature.getType() == FeatureType.¶¾Îí) {
+            } else if (feature.getType() == FeatureType.æ¯’é›¾) {
                 PoisonMagicFeature.apply(feature, this, attacker, defender, 3);
-            } else if (feature.getType() == FeatureType.¶¾ÔÆ) {
+            } else if (feature.getType() == FeatureType.æ¯’äº‘) {
                 PoisonMagicFeature.apply(feature, this, attacker, defender, -1);
-            } else if (feature.getType() == FeatureType.ÏİÚå) {
+            } else if (feature.getType() == FeatureType.é™·é˜±) {
                 TrapFeature.apply(feature, this, attacker, defender);
-            } else if (feature.getType() == FeatureType.¾Ñ»÷) {
+            } else if (feature.getType() == FeatureType.ç‹™å‡») {
                 SnipeFeature.apply(feature.getFeature(), this, attacker, defender, 1);
-            } else if (feature.getType() == FeatureType.Ä§ÉñÖ®ÈĞ) {
+            } else if (feature.getType() == FeatureType.é­”ç¥ä¹‹åˆƒ) {
                 SnipeFeature.apply(feature.getFeature(), this, attacker, defender, 1);
-            } else if (feature.getType() == FeatureType.ÖÎÁÆ) {
+            } else if (feature.getType() == FeatureType.æ²»ç–—) {
                 HealFeature.apply(feature.getFeature(), this, attacker);
-            } else if (feature.getType() == FeatureType.¸ÊÁØ) {
+            } else if (feature.getType() == FeatureType.ç”˜éœ–) {
                 RainfallFeature.apply(feature.getFeature(), this, attacker);
-            } else if (feature.getType() == FeatureType.Æíµ») {
+            } else if (feature.getType() == FeatureType.ç¥ˆç¥·) {
                 PrayFeature.apply(feature.getFeature(), this, attacker);
-            } else if (feature.getType() == FeatureType.¸´»î) {
+            } else if (feature.getType() == FeatureType.å¤æ´») {
                 ReviveFeature.apply(this, feature, attacker);
-            } else if (feature.getType() == FeatureType.±³´Ì) {
+            } else if (feature.getType() == FeatureType.èƒŒåˆº) {
                 BackStabFeature.apply(this, feature, attacker);
-            } else if (feature.getType() == FeatureType.ÈºÌåÏ÷Èõ) {
+            } else if (feature.getType() == FeatureType.ç¾¤ä½“å‰Šå¼±) {
                 WeakenAllFeature.apply(this, feature, attacker, defender);
-            } else if (feature.getType() == FeatureType.»Ø»ê) {
+            } else if (feature.getType() == FeatureType.å›é­‚) {
                 ResurrectionFeature.apply(this, feature, attacker);
-            } else if (feature.getType() == FeatureType.¶şÖØ¾Ñ»÷) {
+            } else if (feature.getType() == FeatureType.äºŒé‡ç‹™å‡») {
                 SnipeFeature.apply(feature.getFeature(), this, attacker, defender, 2);
-            } else if (feature.getType() == FeatureType.ÃÔ»ê) {
+            } else if (feature.getType() == FeatureType.è¿·é­‚) {
                 ConfusionFeature.apply(feature, this, attacker, defender, 1);
-            } else if (feature.getType() == FeatureType.ÁÒ»ğ·ÙÉñ) {
+            } else if (feature.getType() == FeatureType.çƒˆç«ç„šç¥) {
                 BurningFlameFeature.apply(feature, this, attacker, defender);
-            } else if (feature.getType() == FeatureType.×çÖä) {
+            } else if (feature.getType() == FeatureType.è¯…å’’) {
                 CurseFeature.apply(this, feature.getFeature(), attacker, defender);
-            } else if (feature.getType() == FeatureType.Ä§ÉñÖ®Öä) {
+            } else if (feature.getType() == FeatureType.é­”ç¥ä¹‹å’’) {
                 CurseFeature.apply(this, feature.getFeature(), attacker, defender);
-            } else if (feature.getType() == FeatureType.´İ»Ù) {
+            } else if (feature.getType() == FeatureType.æ‘§æ¯) {
                 DestroyFeature.apply(this, feature.getFeature(), attacker, defender, 1);
-            } else if (feature.getType() == FeatureType.ÎÁÒß) {
+            } else if (feature.getType() == FeatureType.ç˜Ÿç–«) {
                 PlagueFeature.apply(feature, this, attacker, defender);
-            } else if (feature.getType() == FeatureType.ÑªÁ¶) {
+            } else if (feature.getType() == FeatureType.è¡€ç‚¼) {
                 BloodPaintFeature.apply(feature.getFeature(), this, attacker, defender, 1);
-            } else if (feature.getType() == FeatureType.ÌìÇ´) {
+            } else if (feature.getType() == FeatureType.å¤©è°´) {
                 HeavenWrathFeature.apply(this, feature.getFeature(), attacker, defender);
-            } else if (feature.getType() == FeatureType.·âÓ¡) {
+            } else if (feature.getType() == FeatureType.å°å°) {
                 SealFeature.apply(feature, this, attacker, defender);
-            } else if (feature.getType() == FeatureType.ÉñÊ¥ÊØ»¤) {
+            } else if (feature.getType() == FeatureType.ç¥åœ£å®ˆæŠ¤) {
                 HolyGuardFeature.apply(this, feature, attacker);
-            } else if (feature.getType() == FeatureType.Ê¥Ñ×) {
+            } else if (feature.getType() == FeatureType.åœ£ç‚) {
                 HolyFireFeature.apply(feature.getFeature(), this, attacker, defender);
-            } else if (feature.getType() == FeatureType.·¨Á¦ÇÖÊ´) {
+            } else if (feature.getType() == FeatureType.æ³•åŠ›ä¾µèš€) {
                 ManaErodeFeature.apply(feature.getFeature(), this, attacker, defender, 1);
             }
         }
-        RuneInfo rune = attacker.getOwner().getActiveRuneOf(RuneData.·ÉÑÒ);
+        RuneInfo rune = attacker.getOwner().getActiveRuneOf(RuneData.é£å²©);
         if (rune != null) {
             SnipeFeature.apply(rune.getFeature(), this, attacker, defender, 1);
         }
@@ -212,37 +212,37 @@ public class FeatureResolver {
             OnAttackBlockingResult result) throws HeroDieSignal {
         if (isPhysicalAttackFeature(attackFeature)) {
             for (FeatureInfo feature : defender.getNormalUsableFeatures()) {
-                if (feature.getType() == FeatureType.·´»÷) {
+                if (feature.getType() == FeatureType.åå‡») {
                     CounterAttackFeature.apply(feature.getFeature(), this, attacker, defender, result.getDamage());
-                } else if (feature.getType() == FeatureType.¶Ü´Ì) {
+                } else if (feature.getType() == FeatureType.ç›¾åˆº) {
                     SpikeFeature.apply(feature.getFeature(), this, attacker, defender, result.getDamage());
-                } else if (feature.getType() == FeatureType.Ä§ÉñÖ®¼×) {
+                } else if (feature.getType() == FeatureType.é­”ç¥ä¹‹ç”²) {
                     SpikeFeature.apply(feature.getFeature(), this, attacker, defender, result.getDamage());
-                } else if (feature.getType() == FeatureType.È¼ÉÕ) {
+                } else if (feature.getType() == FeatureType.ç‡ƒçƒ§) {
                     BurningFeature.apply(feature, this, attacker, defender);
-                } else if (feature.getType() == FeatureType.Ğ°Áé¼³È¡) {
+                } else if (feature.getType() == FeatureType.é‚ªçµæ±²å–) {
                     EnergyDrainFeature.apply(feature, this, attacker, defender, result);
                 }
             }
             {
-                RuneInfo rune = defender.getOwner().getActiveRuneOf(RuneData.À×¶Ü);
+                RuneInfo rune = defender.getOwner().getActiveRuneOf(RuneData.é›·ç›¾);
                 if (rune != null) {
                     SpikeFeature.apply(rune.getFeature(), this, attacker, defender, result.getDamage());
                 }
             }
             {
-                RuneInfo rune = defender.getOwner().getActiveRuneOf(RuneData.äöÎĞ);
+                RuneInfo rune = defender.getOwner().getActiveRuneOf(RuneData.æ¼©æ¶¡);
                 if (rune != null) {
                     CounterAttackFeature.apply(rune.getFeature(), this, attacker, defender, result.getDamage());
                 }
             }
             if (!defender.isDead()) {
                 for (FeatureInfo feature : defender.getNormalUsableFeatures()) {
-                    if (feature.getType() == FeatureType.¿ñÈÈ) {
+                    if (feature.getType() == FeatureType.ç‹‚çƒ­) {
                         ZealotFeature.apply(feature, this, attacker, defender, result);
                     }
                 }
-                RuneInfo rune = defender.getOwner().getActiveRuneOf(RuneData.Å­ÌÎ);
+                RuneInfo rune = defender.getOwner().getActiveRuneOf(RuneData.æ€’æ¶›);
                 if (rune != null) {
                     ZealotFeature.apply(rune.getFeatureInfo(), this, attacker, defender, result);
                 }
@@ -252,7 +252,7 @@ public class FeatureResolver {
 
     public OnAttackBlockingResult resolveHealBlockingFeature(EntityInfo healer, CardInfo healee, Feature cardFeature) {
         OnAttackBlockingResult result = new OnAttackBlockingResult(true, cardFeature.getImpact());
-        if (healee.getStatus().containsStatus(CardStatusType.ÁÑÉË)) {
+        if (healee.getStatus().containsStatus(CardStatusType.è£‚ä¼¤)) {
             stage.getUI().healBlocked(healer, healee, cardFeature, null);
             result.setAttackable(false);
         }
@@ -264,17 +264,17 @@ public class FeatureResolver {
         OnAttackBlockingResult result = new OnAttackBlockingResult(true, 0);
         CardStatus status = attacker.getStatus();
         if (isPhysicalAttackFeature(attackFeature)) {
-            // Normal attack could be blocked by Dodge or Âé±Ô, ±ù¶³,
-            // Ëø¶¨ status.
+            // Normal attack could be blocked by Dodge or éº»ç—¹, å†°å†»,
+            // é”å®š status.
             CardInfo cardAttacker = (CardInfo) attacker;
             result.setDamage(damage);
-            if (status.containsStatus(CardStatusType.±ù¶³) || status.containsStatus(CardStatusType.Âé±Ô)
-                    || status.containsStatus(CardStatusType.Ëø¶¨) || status.containsStatus(CardStatusType.ĞéÈõ)) {
+            if (status.containsStatus(CardStatusType.å†°å†») || status.containsStatus(CardStatusType.éº»ç—¹)
+                    || status.containsStatus(CardStatusType.é”å®š) || status.containsStatus(CardStatusType.è™šå¼±)) {
                 stage.getUI().attackBlocked(cardAttacker, defender, attackFeature, null);
                 result.setAttackable(false);
             } else {
                 for (FeatureInfo blockFeature : defender.getNormalUsableFeatures()) {
-                    if (blockFeature.getType() == FeatureType.ÉÁ±Ü) {
+                    if (blockFeature.getType() == FeatureType.é—ªé¿) {
                         result.setAttackable(!DodgeFeature.apply(blockFeature.getFeature(), this, cardAttacker,
                                 defender, result.getDamage()));
                         if (!result.isAttackable()) {
@@ -283,7 +283,7 @@ public class FeatureResolver {
                     }
                 }
                 {
-                    RuneInfo rune = defender.getOwner().getActiveRuneOf(RuneData.ÇáÁé);
+                    RuneInfo rune = defender.getOwner().getActiveRuneOf(RuneData.è½»çµ);
                     if (rune != null) {
                         result.setAttackable(!DodgeFeature.apply(rune.getFeature(), this, cardAttacker, defender,
                                 result.getDamage()));
@@ -293,25 +293,25 @@ public class FeatureResolver {
                     }
                 }
                 for (FeatureInfo blockFeature : defender.getNormalUsableFeatures()) {
-                    if (blockFeature.getType() == FeatureType.Íõ¹úÖ®¶Ü) {
+                    if (blockFeature.getType() == FeatureType.ç‹å›½ä¹‹ç›¾) {
                         result.setDamage(RacialShieldFeature.apply(blockFeature.getFeature(), this, cardAttacker,
-                                defender, defender, result.getDamage(), Race.µØÓü));
+                                defender, defender, result.getDamage(), Race.åœ°ç‹±));
                     }
-                    if (blockFeature.getType() == FeatureType.É­ÁÖÖ®¶Ü) {
+                    if (blockFeature.getType() == FeatureType.æ£®æ—ä¹‹ç›¾) {
                         result.setDamage(RacialShieldFeature.apply(blockFeature.getFeature(), this, cardAttacker,
-                                defender, defender, result.getDamage(), Race.Âù»Ä));
+                                defender, defender, result.getDamage(), Race.è›®è’));
                     }
-                    if (blockFeature.getType() == FeatureType.Âù»ÄÖ®¶Ü) {
+                    if (blockFeature.getType() == FeatureType.è›®è’ä¹‹ç›¾) {
                         result.setDamage(RacialShieldFeature.apply(blockFeature.getFeature(), this, cardAttacker,
-                                defender, defender, result.getDamage(), Race.Íõ¹ú));
+                                defender, defender, result.getDamage(), Race.ç‹å›½));
                     }
-                    if (blockFeature.getType() == FeatureType.µØÓüÖ®¶Ü) {
+                    if (blockFeature.getType() == FeatureType.åœ°ç‹±ä¹‹ç›¾) {
                         result.setDamage(RacialShieldFeature.apply(blockFeature.getFeature(), this, cardAttacker,
-                                defender, defender, result.getDamage(), Race.É­ÁÖ));
+                                defender, defender, result.getDamage(), Race.æ£®æ—));
                     }
                 }
                 for (FeatureInfo blockFeature : defender.getNormalUsableFeatures()) {
-                    if (blockFeature.getType() == FeatureType.¸ñµ²) {
+                    if (blockFeature.getType() == FeatureType.æ ¼æŒ¡) {
                         result.setDamage(BlockFeature.apply(blockFeature.getFeature(), this, cardAttacker, defender,
                                 defender, result.getDamage()));
                     }
@@ -320,7 +320,7 @@ public class FeatureResolver {
                     }
                 }
                 for (FeatureInfo blockFeature : defender.getNormalUsableFeatures()) {
-                    if (blockFeature.getType() == FeatureType.±ù¼×) {
+                    if (blockFeature.getType() == FeatureType.å†°ç”²) {
                         result.setDamage(IceArmorFeature.apply(blockFeature.getFeature(), this, cardAttacker, defender,
                                 result.getDamage()));
                     }
@@ -329,7 +329,7 @@ public class FeatureResolver {
                     }
                 }
                 {
-                    RuneInfo rune = defender.getOwner().getActiveRuneOf(RuneData.±ù·â);
+                    RuneInfo rune = defender.getOwner().getActiveRuneOf(RuneData.å†°å°);
                     if (rune != null) {
                         result.setDamage(IceArmorFeature.apply(rune.getFeature(), this, cardAttacker, defender,
                                 result.getDamage()));
@@ -339,7 +339,7 @@ public class FeatureResolver {
                     }
                 }
                 {
-                    RuneInfo rune = defender.getOwner().getActiveRuneOf(RuneData.ÑÒ±Ú);
+                    RuneInfo rune = defender.getOwner().getActiveRuneOf(RuneData.å²©å£);
                     if (rune != null) {
                         result.setDamage(BlockFeature.apply(rune.getFeature(), this, cardAttacker, defender, rune,
                                 result.getDamage()));
@@ -351,15 +351,15 @@ public class FeatureResolver {
             }
         } else {
             result.setDamage(damage);
-            boolean isAttackerDisabled = status.containsStatus(CardStatusType.±ù¶³)
-                    || status.containsStatus(CardStatusType.Ëø¶¨)
-                    || status.containsStatus(CardStatusType.ĞéÈõ);
+            boolean isAttackerDisabled = status.containsStatus(CardStatusType.å†°å†»)
+                    || status.containsStatus(CardStatusType.é”å®š)
+                    || status.containsStatus(CardStatusType.è™šå¼±);
             if (!attackFeature.isDeathFeature() && isAttackerDisabled) {
                 stage.getUI().attackBlocked(attacker, defender, attackFeature, null);
                 result.setAttackable(false);
             } else {
                 for (FeatureInfo blockFeature : defender.getNormalUsableFeatures()) {
-                    if (blockFeature.getType() == FeatureType.·¨Á¦·´Éä) {
+                    if (blockFeature.getType() == FeatureType.æ³•åŠ›åå°„) {
                         if (CounterMagicFeature.isFeatureBlocked(this, blockFeature.getFeature(), attackFeature,
                                 attacker, defender)) {
                             result.setAttackable(false);
@@ -368,7 +368,7 @@ public class FeatureResolver {
                     }
                 }
                 {
-                    RuneInfo rune = defender.getOwner().getRuneBox().getRuneOf(RuneData.Ê¯ÁÖ);
+                    RuneInfo rune = defender.getOwner().getRuneBox().getRuneOf(RuneData.çŸ³æ—);
                     if (rune != null && rune.isActivated()) {
                         if (CounterMagicFeature.isFeatureBlocked(this, rune.getFeature(), attackFeature, attacker,
                                 defender)) {
@@ -379,19 +379,19 @@ public class FeatureResolver {
                 }
 
                 for (FeatureInfo blockFeature : defender.getNormalUsableFeatures()) {
-                    if (blockFeature.getType() == FeatureType.ÃâÒß) {
+                    if (blockFeature.getType() == FeatureType.å…ç–«) {
                         if (ImmueFeature.isFeatureBlocked(this, blockFeature.getFeature(), attackFeature, attacker,
                                 defender)) {
                             result.setAttackable(false);
                             return result;
                         }
-                    } else if (blockFeature.getType() == FeatureType.ÍÑÀ§) {
+                    } else if (blockFeature.getType() == FeatureType.è„±å›°) {
                         if (EscapeFeature.isFeatureEscaped(this, blockFeature.getFeature(), attackFeature, attacker,
                                 defender)) {
                             result.setAttackable(false);
                             return result;
                         }
-                    } else if (blockFeature.getType() == FeatureType.²»¶¯) {
+                    } else if (blockFeature.getType() == FeatureType.ä¸åŠ¨) {
                         if (ImmobilityFeature.isFeatureBlocked(this, blockFeature.getFeature(), attackFeature, attacker,
                                 defender)) {
                             result.setAttackable(false);
@@ -400,7 +400,7 @@ public class FeatureResolver {
                     }
                 }
                 for (FeatureInfo blockFeature : defender.getNormalUsableFeatures()) {
-                    if (blockFeature.getType() == FeatureType.Ä§¼×) {
+                    if (blockFeature.getType() == FeatureType.é­”ç”²) {
                         result.setDamage(MagicShieldFeature.apply(this, blockFeature.getFeature(), attacker, defender,
                                 attackFeature, result.getDamage()));
                     }
@@ -409,7 +409,7 @@ public class FeatureResolver {
                     }
                 }
                 {
-                    RuneInfo rune = defender.getOwner().getActiveRuneOf(RuneData.Ñ×¼×);
+                    RuneInfo rune = defender.getOwner().getActiveRuneOf(RuneData.ç‚ç”²);
                     if (rune != null) {
                         result.setDamage(MagicShieldFeature.apply(this, rune.getFeature(), attacker, defender,
                                 attackFeature, result.getDamage()));
@@ -438,36 +438,36 @@ public class FeatureResolver {
         deadCard.setDeadOnce(true);
         resolveLeaveFeature(deadCard, cardFeature);
         for (FeatureInfo deadCardFeature : deadCard.getUsableDeathFeatures()) {
-            if (deadCardFeature.getType() == FeatureType.ÈºÌåÏ÷Èõ) {
+            if (deadCardFeature.getType() == FeatureType.ç¾¤ä½“å‰Šå¼±) {
                 WeakenAllFeature.apply(this, deadCardFeature, deadCard, killerCard.getOwner());
-            } else if (deadCardFeature.getType() == FeatureType.ÁÒ»ğ·ÙÉñ) {
+            } else if (deadCardFeature.getType() == FeatureType.çƒˆç«ç„šç¥) {
                 BurningFlameFeature.apply(deadCardFeature, this, deadCard, killerCard.getOwner());
-            } else if (deadCardFeature.getType() == FeatureType.¸´»î) {
+            } else if (deadCardFeature.getType() == FeatureType.å¤æ´») {
                 ReviveFeature.apply(this, deadCardFeature, deadCard);
-            } else if (deadCardFeature.getType() == FeatureType.×çÖä) {
+            } else if (deadCardFeature.getType() == FeatureType.è¯…å’’) {
                 CurseFeature.apply(this, deadCardFeature.getFeature(), deadCard, killerCard.getOwner());
-            } else if (deadCardFeature.getType() == FeatureType.ÁÒÑæ·ç±©) {
+            } else if (deadCardFeature.getType() == FeatureType.çƒˆç„°é£æš´) {
                 FireMagicFeature.apply(deadCardFeature.getFeature(), this, deadCard, killerCard.getOwner(), -1);
-            } else if (deadCardFeature.getType() == FeatureType.´İ»Ù) {
+            } else if (deadCardFeature.getType() == FeatureType.æ‘§æ¯) {
                 DestroyFeature.apply(this, deadCardFeature.getFeature(), deadCard, killerCard.getOwner(), 1);
-            } else if (deadCardFeature.getType() == FeatureType.´«ËÍ) {
+            } else if (deadCardFeature.getType() == FeatureType.ä¼ é€) {
                 TransportFeature.apply(this, deadCardFeature.getFeature(), deadCard, killerCard.getOwner());
             }
         }
         for (FeatureInfo deadCardFeature : deadCard.getAllUsableFeatures()) {
-            if (deadCardFeature.getType() == FeatureType.×Ô±¬) {
+            if (deadCardFeature.getType() == FeatureType.è‡ªçˆ†) {
                 ExplodeFeature.apply(this, deadCardFeature.getFeature(), killerCard, deadCard);
             }
         }
         {
-            RuneInfo rune = deadCard.getOwner().getActiveRuneOf(RuneData.±¬ÁÑ);
+            RuneInfo rune = deadCard.getOwner().getActiveRuneOf(RuneData.çˆ†è£‚);
             if (rune != null) {
                 ExplodeFeature.apply(this, rune.getFeature(), killerCard, deadCard);
             }
         }
         boolean reincarnated = false;
         for (FeatureInfo deadCardFeature : deadCard.getAllUsableFeatures()) {
-            if (deadCardFeature.getType() == FeatureType.×ªÉú) {
+            if (deadCardFeature.getType() == FeatureType.è½¬ç”Ÿ) {
                 if (ReincarnationFeature.apply(this, deadCardFeature.getFeature(), deadCard)) {
                     reincarnated = true;
                     break;
@@ -475,7 +475,7 @@ public class FeatureResolver {
             }
         }
         if (!reincarnated) {
-            RuneInfo rune = deadCard.getOwner().getActiveRuneOf(RuneData.»àÍÁ);
+            RuneInfo rune = deadCard.getOwner().getActiveRuneOf(RuneData.ç§½åœŸ);
             if (rune != null) {
                 ReincarnationFeature.apply(this, rune.getFeature(), deadCard);
             }
@@ -487,31 +487,31 @@ public class FeatureResolver {
 
         for (FeatureInfo feature : attacker.getNormalUsableFeatures()) {
             if (!attacker.isDead()) {
-                if (feature.getType() == FeatureType.´©´Ì) {
+                if (feature.getType() == FeatureType.ç©¿åˆº) {
                     PenetrationFeature.apply(feature.getFeature(), this, attacker, defenderHero, normalAttackDamage);
-                } else if (feature.getType() == FeatureType.Ï÷Èõ) {
+                } else if (feature.getType() == FeatureType.å‰Šå¼±) {
                     WeakenFeature.apply(this, feature, attacker, defender, normalAttackDamage);
-                } else if (feature.getType() == FeatureType.ÁÑÉË) {
+                } else if (feature.getType() == FeatureType.è£‚ä¼¤) {
                     WoundFeature.apply(this, feature, attacker, defender, normalAttackDamage);
-                } else if (feature.getType() == FeatureType.ÊÈÑª) {
+                } else if (feature.getType() == FeatureType.å—œè¡€) {
                     BloodThirstyFeature.apply(this, feature, attacker, normalAttackDamage);
-                } else if (feature.getType() == FeatureType.Á¬Ëø¹¥»÷) {
+                } else if (feature.getType() == FeatureType.è¿é”æ”»å‡») {
                     ChainAttackFeature.apply(this, feature, attacker, defender, attackFeature);
-                } else if (feature.getType() == FeatureType.¼²²¡) {
+                } else if (feature.getType() == FeatureType.ç–¾ç—…) {
                     DiseaseFeature.apply(feature, this, attacker, defender, normalAttackDamage);
-                } else if (feature.getType() == FeatureType.ÎüÑª) {
+                } else if (feature.getType() == FeatureType.å¸è¡€) {
                     BloodDrainFeature.apply(feature.getFeature(), this, attacker, defender, normalAttackDamage);
                 }
             }
         }
         if (!attacker.isDead()) {
-            RuneInfo rune = attacker.getOwner().getActiveRuneOf(RuneData.³à¹È);
+            RuneInfo rune = attacker.getOwner().getActiveRuneOf(RuneData.èµ¤è°·);
             if (rune != null) {
                 BloodDrainFeature.apply(rune.getFeature(), this, attacker, defender, normalAttackDamage);
             }
         }
         if (!attacker.isDead()) {
-            RuneInfo rune = attacker.getOwner().getActiveRuneOf(RuneData.¶´²ì);
+            RuneInfo rune = attacker.getOwner().getActiveRuneOf(RuneData.æ´å¯Ÿ);
             if (rune != null) {
                 BloodThirstyFeature.apply(this, rune.getFeatureInfo(), attacker, normalAttackDamage);
             }
@@ -521,46 +521,46 @@ public class FeatureResolver {
     public void resolvePreAttackCardFeature(CardInfo attacker, CardInfo defender, boolean prior) throws HeroDieSignal {
         for (FeatureInfo feature : attacker.getNormalUsableFeatures()) {
             if (prior) {
-                if (feature.getType() == FeatureType.ËÍ»¹) {
+                if (feature.getType() == FeatureType.é€è¿˜) {
                     ReturnFeature.apply(this, feature.getFeature(), attacker, defender);
                 }
             } else {
-                if (feature.getType() == FeatureType.Ê¥¹â) {
-                    RacialAttackFeature.apply(this, feature, attacker, defender, Race.µØÓü);
-                } else if (feature.getType() == FeatureType.Òªº¦) {
-                    RacialAttackFeature.apply(this, feature, attacker, defender, Race.Âù»Ä);
-                } else if (feature.getType() == FeatureType.°µÉ±) {
-                    RacialAttackFeature.apply(this, feature, attacker, defender, Race.Íõ¹ú);
-                } else if (feature.getType() == FeatureType.ÎÛÈ¾) {
-                    RacialAttackFeature.apply(this, feature, attacker, defender, Race.É­ÁÖ);
-                } else if (feature.getType() == FeatureType.±©»÷) {
+                if (feature.getType() == FeatureType.åœ£å…‰) {
+                    RacialAttackFeature.apply(this, feature, attacker, defender, Race.åœ°ç‹±);
+                } else if (feature.getType() == FeatureType.è¦å®³) {
+                    RacialAttackFeature.apply(this, feature, attacker, defender, Race.è›®è’);
+                } else if (feature.getType() == FeatureType.æš—æ€) {
+                    RacialAttackFeature.apply(this, feature, attacker, defender, Race.ç‹å›½);
+                } else if (feature.getType() == FeatureType.æ±¡æŸ“) {
+                    RacialAttackFeature.apply(this, feature, attacker, defender, Race.æ£®æ—);
+                } else if (feature.getType() == FeatureType.æš´å‡») {
                     CriticalAttackFeature.apply(this, feature, attacker, defender);
-                } else if (feature.getType() == FeatureType.Çî×·ÃÍ´ò) {
+                } else if (feature.getType() == FeatureType.ç©·è¿½çŒ›æ‰“) {
                     PursuitFeature.apply(this, feature, attacker, defender);
-                } else if (feature.getType() == FeatureType.Õ½Òâ) {
+                } else if (feature.getType() == FeatureType.æˆ˜æ„) {
                     WarthFeature.apply(this, feature, attacker, defender);
-                } else if (feature.getType() == FeatureType.³ÃÊ¤×·»÷) {
+                } else if (feature.getType() == FeatureType.è¶èƒœè¿½å‡») {
                     WinningPursuitFeature.apply(this, feature, attacker, defender);
-                } else if (feature.getType() == FeatureType.¸´³ğ) {
+                } else if (feature.getType() == FeatureType.å¤ä»‡) {
                     RevengeFeature.apply(this, feature, attacker, defender);
                 }
             }
         }
         if (!prior) {
             {
-                RuneInfo rune = attacker.getOwner().getActiveRuneOf(RuneData.¾øÉ±);
+                RuneInfo rune = attacker.getOwner().getActiveRuneOf(RuneData.ç»æ€);
                 if (rune != null) {
                     WarthFeature.apply(this, rune.getFeatureInfo(), attacker, defender);
                 }
             }
             {
-                RuneInfo rune = attacker.getOwner().getActiveRuneOf(RuneData.º®ÉË);
+                RuneInfo rune = attacker.getOwner().getActiveRuneOf(RuneData.å¯’ä¼¤);
                 if (rune != null) {
                     CriticalAttackFeature.apply(this, rune.getFeatureInfo(), attacker, defender);
                 }
             }
             {
-                RuneInfo rune = attacker.getOwner().getActiveRuneOf(RuneData.ÑïÆì);
+                RuneInfo rune = attacker.getOwner().getActiveRuneOf(RuneData.æ‰¬æ——);
                 if (rune != null) {
                     PursuitFeature.apply(this, rune.getFeatureInfo(), attacker, defender);
                 }
@@ -574,19 +574,19 @@ public class FeatureResolver {
         }
         for (FeatureEffect effect : card.getEffects()) {
             FeatureType type = effect.getCause().getType();
-            if (type == FeatureType.Ê¥¹â || type == FeatureType.Òªº¦ || type == FeatureType.°µÉ± || type == FeatureType.ÎÛÈ¾) {
+            if (type == FeatureType.åœ£å…‰ || type == FeatureType.è¦å®³ || type == FeatureType.æš—æ€ || type == FeatureType.æ±¡æŸ“) {
                 RacialAttackFeature.remove(this, effect.getCause(), card);
-            } else if (type == FeatureType.±©»÷) {
+            } else if (type == FeatureType.æš´å‡») {
                 CriticalAttackFeature.remove(this, effect.getCause(), card);
-            } else if (type == FeatureType.Çî×·ÃÍ´ò) {
+            } else if (type == FeatureType.ç©·è¿½çŒ›æ‰“) {
                 PursuitFeature.remove(this, effect.getCause(), card);
-            } else if (type == FeatureType.±³´Ì) {
+            } else if (type == FeatureType.èƒŒåˆº) {
                 BackStabFeature.remove(this, effect.getCause(), card);
-            } else if (type == FeatureType.Õ½Òâ) {
+            } else if (type == FeatureType.æˆ˜æ„) {
                 WarthFeature.remove(this, effect.getCause(), card);
-            } else if (type == FeatureType.³ÃÊ¤×·»÷) {
+            } else if (type == FeatureType.è¶èƒœè¿½å‡») {
                 WinningPursuitFeature.remove(this, effect.getCause(), card);
-            } else if (type == FeatureType.¸´³ğ) {
+            } else if (type == FeatureType.å¤ä»‡) {
                 RevengeFeature.remove(this, effect.getCause(), card);
             }
         }
@@ -627,7 +627,7 @@ public class FeatureResolver {
         if (attacker == null) {
             return;
         }
-        if (isPhysicalAttackFeature(cardFeature) && attacker.getStatus().containsStatus(CardStatusType.Âé±Ô)) {
+        if (isPhysicalAttackFeature(cardFeature) && attacker.getStatus().containsStatus(CardStatusType.éº»ç—¹)) {
             return;
         }
         stage.getUI().useSkillToHero(attacker, defenderPlayer, cardFeature);
@@ -655,7 +655,7 @@ public class FeatureResolver {
                 continue;
             }
             for (FeatureInfo defenderFeature : defender.getNormalUsableFeatures()) {
-                if (defenderFeature.getType() == FeatureType.ÊØ»¤) {
+                if (defenderFeature.getType() == FeatureType.å®ˆæŠ¤) {
                     remainingDamage = GuardFeature.apply(defenderFeature.getFeature(), cardFeature, this, attacker, defender, remainingDamage);
                     if (remainingDamage == 0) {
                         return 0;
@@ -671,16 +671,16 @@ public class FeatureResolver {
             return;
         }
         CardStatus status = card.getStatus();
-        if (status.containsStatus(CardStatusType.Ëø¶¨)) {
+        if (status.containsStatus(CardStatusType.é”å®š)) {
             return;
         }
         for (FeatureInfo cardFeature : card.getNormalUsableFeatures()) {
-            if (cardFeature.getType() == FeatureType.»Ø´º) {
+            if (cardFeature.getType() == FeatureType.å›æ˜¥) {
                 RejuvenateFeature.apply(cardFeature.getFeature(), this, card);
             }
         }
         {
-            RuneInfo rune = card.getOwner().getActiveRuneOf(RuneData.¸´ËÕ);
+            RuneInfo rune = card.getOwner().getActiveRuneOf(RuneData.å¤è‹);
             if (rune != null) {
                 RejuvenateFeature.apply(rune.getFeature(), this, card);
             }
@@ -693,7 +693,7 @@ public class FeatureResolver {
 
     public OnDamagedResult attackCard(CardInfo attacker, CardInfo defender, FeatureInfo featureInfo, int damage) throws HeroDieSignal {
         Feature feature = featureInfo == null ? null : featureInfo.getFeature();
-        boolean bingo = !attacker.getStatus().containsStatus(CardStatusType.Âé±Ô);
+        boolean bingo = !attacker.getStatus().containsStatus(CardStatusType.éº»ç—¹);
         this.stage.getUI().useSkill(attacker, defender, null, bingo);
 
         OnAttackBlockingResult blockingResult = stage.getResolver().resolveAttackBlockingFeature(
@@ -726,57 +726,57 @@ public class FeatureResolver {
 
     public void resolveSummoningFeature(CardInfo card, Field myField, Field opField) throws HeroDieSignal {
         for (FeatureInfo feature : card.getUsableSummonFeatures()) {
-            if (feature.getType() == FeatureType.ÏİÚå) {
+            if (feature.getType() == FeatureType.é™·é˜±) {
                 TrapFeature.apply(feature, this, card, opField.getOwner());
-            } else if (feature.getType() == FeatureType.ÁÒÑæ·ç±©) {
+            } else if (feature.getType() == FeatureType.çƒˆç„°é£æš´) {
                 FireMagicFeature.apply(feature.getFeature(), this, card, opField.getOwner(), -1);
-            } else if (feature.getType() == FeatureType.À×±©) {
+            } else if (feature.getType() == FeatureType.é›·æš´) {
                 LighteningMagicFeature.apply(feature, this, card, opField.getOwner(), -1, 35);
-            } else if (feature.getType() == FeatureType.±©·çÑ©) {
+            } else if (feature.getType() == FeatureType.æš´é£é›ª) {
                 IceMagicFeature.apply(feature, this, card, opField.getOwner(), -1, 30);
-            } else if (feature.getType() == FeatureType.ËÍ»¹) {
+            } else if (feature.getType() == FeatureType.é€è¿˜) {
                 ReturnFeature.apply(this, feature.getFeature(), card, opField.getCard(card.getPosition()));
-            } else if (feature.getType() == FeatureType.ÈºÌåÏ÷Èõ) {
+            } else if (feature.getType() == FeatureType.ç¾¤ä½“å‰Šå¼±) {
                 WeakenAllFeature.apply(this, feature, card, opField.getOwner());
-            } else if (feature.getType() == FeatureType.´«ËÍ) {
+            } else if (feature.getType() == FeatureType.ä¼ é€) {
                 TransportFeature.apply(this, feature.getFeature(), card, opField.getOwner());
-            } else if (feature.getType() == FeatureType.¸ÊÁØ) {
+            } else if (feature.getType() == FeatureType.ç”˜éœ–) {
                 RainfallFeature.apply(feature.getFeature(), this, card);
-            } else if (feature.getType() == FeatureType.×çÖä) {
+            } else if (feature.getType() == FeatureType.è¯…å’’) {
                 CurseFeature.apply(this, feature.getFeature(), card, opField.getOwner());
-            } else if (feature.getType() == FeatureType.´İ»Ù) {
+            } else if (feature.getType() == FeatureType.æ‘§æ¯) {
                 DestroyFeature.apply(this, feature.getFeature(), card, opField.getOwner(), 1);
-            } else if (feature.getType() == FeatureType.ÎÁÒß) {
+            } else if (feature.getType() == FeatureType.ç˜Ÿç–«) {
                 PlagueFeature.apply(feature, this, card, opField.getOwner());
-            } else if (feature.getType() == FeatureType.Æíµ») {
+            } else if (feature.getType() == FeatureType.ç¥ˆç¥·) {
                 PrayFeature.apply(feature.getFeature(), this, card);
-            } else if (feature.getType() == FeatureType.Ï×¼À) {
+            } else if (feature.getType() == FeatureType.çŒ®ç¥­) {
                 SacrificeFeature.apply(this, feature, card);
-            } else if (feature.getType() == FeatureType.·´ÊÉ) {
+            } else if (feature.getType() == FeatureType.åå™¬) {
                 CounterBiteFeature.apply(feature.getFeature(), this, card);
             }
         }
         for (CardInfo fieldCard : myField.getAliveCards()) {
             for (FeatureInfo feature : fieldCard.getNormalUsableFeatures()) {
-                if (feature.getType() == FeatureType.Íõ¹úÖ®Á¦) {
-                    RaceBuffFeature.apply(this, feature, fieldCard, Race.Íõ¹ú, FeatureEffectType.ATTACK_CHANGE);
-                } else if (feature.getType() == FeatureType.Íõ¹úÊØ»¤) {
-                    RaceBuffFeature.apply(this, feature, fieldCard, Race.Íõ¹ú, FeatureEffectType.MAXHP_CHANGE);
-                } else if (feature.getType() == FeatureType.É­ÁÖÖ®Á¦) {
-                    RaceBuffFeature.apply(this, feature, fieldCard, Race.É­ÁÖ, FeatureEffectType.ATTACK_CHANGE);
-                } else if (feature.getType() == FeatureType.É­ÁÖÊØ»¤) {
-                    RaceBuffFeature.apply(this, feature, fieldCard, Race.É­ÁÖ, FeatureEffectType.MAXHP_CHANGE);
-                } else if (feature.getType() == FeatureType.Âù»ÄÖ®Á¦) {
-                    RaceBuffFeature.apply(this, feature, fieldCard, Race.Âù»Ä, FeatureEffectType.ATTACK_CHANGE);
-                } else if (feature.getType() == FeatureType.Âù»ÄÊØ»¤) {
-                    RaceBuffFeature.apply(this, feature, fieldCard, Race.Âù»Ä, FeatureEffectType.MAXHP_CHANGE);
-                } else if (feature.getType() == FeatureType.µØÓüÖ®Á¦) {
-                    RaceBuffFeature.apply(this, feature, fieldCard, Race.µØÓü, FeatureEffectType.ATTACK_CHANGE);
-                } else if (feature.getType() == FeatureType.µØÓüÊØ»¤) {
-                    RaceBuffFeature.apply(this, feature, fieldCard, Race.µØÓü, FeatureEffectType.MAXHP_CHANGE);
-                } else if (feature.getType() == FeatureType.±¾Ô´Ö®Á¦) {
+                if (feature.getType() == FeatureType.ç‹å›½ä¹‹åŠ›) {
+                    RaceBuffFeature.apply(this, feature, fieldCard, Race.ç‹å›½, FeatureEffectType.ATTACK_CHANGE);
+                } else if (feature.getType() == FeatureType.ç‹å›½å®ˆæŠ¤) {
+                    RaceBuffFeature.apply(this, feature, fieldCard, Race.ç‹å›½, FeatureEffectType.MAXHP_CHANGE);
+                } else if (feature.getType() == FeatureType.æ£®æ—ä¹‹åŠ›) {
+                    RaceBuffFeature.apply(this, feature, fieldCard, Race.æ£®æ—, FeatureEffectType.ATTACK_CHANGE);
+                } else if (feature.getType() == FeatureType.æ£®æ—å®ˆæŠ¤) {
+                    RaceBuffFeature.apply(this, feature, fieldCard, Race.æ£®æ—, FeatureEffectType.MAXHP_CHANGE);
+                } else if (feature.getType() == FeatureType.è›®è’ä¹‹åŠ›) {
+                    RaceBuffFeature.apply(this, feature, fieldCard, Race.è›®è’, FeatureEffectType.ATTACK_CHANGE);
+                } else if (feature.getType() == FeatureType.è›®è’å®ˆæŠ¤) {
+                    RaceBuffFeature.apply(this, feature, fieldCard, Race.è›®è’, FeatureEffectType.MAXHP_CHANGE);
+                } else if (feature.getType() == FeatureType.åœ°ç‹±ä¹‹åŠ›) {
+                    RaceBuffFeature.apply(this, feature, fieldCard, Race.åœ°ç‹±, FeatureEffectType.ATTACK_CHANGE);
+                } else if (feature.getType() == FeatureType.åœ°ç‹±å®ˆæŠ¤) {
+                    RaceBuffFeature.apply(this, feature, fieldCard, Race.åœ°ç‹±, FeatureEffectType.MAXHP_CHANGE);
+                } else if (feature.getType() == FeatureType.æœ¬æºä¹‹åŠ›) {
                     RaceBuffFeature.apply(this, feature, fieldCard, null, FeatureEffectType.ATTACK_CHANGE);
-                } else if (feature.getType() == FeatureType.±¾Ô´ÊØ»¤) {
+                } else if (feature.getType() == FeatureType.æœ¬æºå®ˆæŠ¤) {
                     RaceBuffFeature.apply(this, feature, fieldCard, null, FeatureEffectType.MAXHP_CHANGE);
                 }
             }
@@ -786,32 +786,32 @@ public class FeatureResolver {
 
     public void resolveLeaveFeature(CardInfo card, Feature cardFeature) {
         for (FeatureInfo deadCardFeature : card.getNormalUsableFeatures()) {
-            if (deadCardFeature.getType() == FeatureType.Íõ¹úÖ®Á¦) {
-                RaceBuffFeature.remove(this, deadCardFeature, card, Race.Íõ¹ú);
-            } else if (deadCardFeature.getType() == FeatureType.Íõ¹úÊØ»¤) {
-                RaceBuffFeature.remove(this, deadCardFeature, card, Race.Íõ¹ú);
-            } else if (deadCardFeature.getType() == FeatureType.É­ÁÖÖ®Á¦) {
-                RaceBuffFeature.remove(this, deadCardFeature, card, Race.É­ÁÖ);
-            } else if (deadCardFeature.getType() == FeatureType.É­ÁÖÊØ»¤) {
-                RaceBuffFeature.remove(this, deadCardFeature, card, Race.É­ÁÖ);
-            } else if (deadCardFeature.getType() == FeatureType.Âù»ÄÖ®Á¦) {
-                RaceBuffFeature.remove(this, deadCardFeature, card, Race.Âù»Ä);
-            } else if (deadCardFeature.getType() == FeatureType.Âù»ÄÊØ»¤) {
-                RaceBuffFeature.remove(this, deadCardFeature, card, Race.Âù»Ä);
-            } else if (deadCardFeature.getType() == FeatureType.µØÓüÖ®Á¦) {
-                RaceBuffFeature.remove(this, deadCardFeature, card, Race.µØÓü);
-            } else if (deadCardFeature.getType() == FeatureType.µØÓüÊØ»¤) {
-                RaceBuffFeature.remove(this, deadCardFeature, card, Race.µØÓü);
-            } else if (deadCardFeature.getType() == FeatureType.±¾Ô´Ö®Á¦) {
+            if (deadCardFeature.getType() == FeatureType.ç‹å›½ä¹‹åŠ›) {
+                RaceBuffFeature.remove(this, deadCardFeature, card, Race.ç‹å›½);
+            } else if (deadCardFeature.getType() == FeatureType.ç‹å›½å®ˆæŠ¤) {
+                RaceBuffFeature.remove(this, deadCardFeature, card, Race.ç‹å›½);
+            } else if (deadCardFeature.getType() == FeatureType.æ£®æ—ä¹‹åŠ›) {
+                RaceBuffFeature.remove(this, deadCardFeature, card, Race.æ£®æ—);
+            } else if (deadCardFeature.getType() == FeatureType.æ£®æ—å®ˆæŠ¤) {
+                RaceBuffFeature.remove(this, deadCardFeature, card, Race.æ£®æ—);
+            } else if (deadCardFeature.getType() == FeatureType.è›®è’ä¹‹åŠ›) {
+                RaceBuffFeature.remove(this, deadCardFeature, card, Race.è›®è’);
+            } else if (deadCardFeature.getType() == FeatureType.è›®è’å®ˆæŠ¤) {
+                RaceBuffFeature.remove(this, deadCardFeature, card, Race.è›®è’);
+            } else if (deadCardFeature.getType() == FeatureType.åœ°ç‹±ä¹‹åŠ›) {
+                RaceBuffFeature.remove(this, deadCardFeature, card, Race.åœ°ç‹±);
+            } else if (deadCardFeature.getType() == FeatureType.åœ°ç‹±å®ˆæŠ¤) {
+                RaceBuffFeature.remove(this, deadCardFeature, card, Race.åœ°ç‹±);
+            } else if (deadCardFeature.getType() == FeatureType.æœ¬æºä¹‹åŠ›) {
                 RaceBuffFeature.remove(this, deadCardFeature, card, null);
-            } else if (deadCardFeature.getType() == FeatureType.±¾Ô´ÊØ»¤) {
+            } else if (deadCardFeature.getType() == FeatureType.æœ¬æºå®ˆæŠ¤) {
                 RaceBuffFeature.remove(this, deadCardFeature, card, null);
-            } else if (deadCardFeature.getType() == FeatureType.ÉñÊ¥ÊØ»¤) {
+            } else if (deadCardFeature.getType() == FeatureType.ç¥åœ£å®ˆæŠ¤) {
                 HolyGuardFeature.remove(this, deadCardFeature, card);
-            } else if (deadCardFeature.getType() == FeatureType.¾üÍÅÍõ¹úÖ®Á¦
-                    || deadCardFeature.getType() == FeatureType.¾üÍÅÉ­ÁÖÖ®Á¦
-                    || deadCardFeature.getType() == FeatureType.¾üÍÅÂù»ÄÖ®Á¦
-                    || deadCardFeature.getType() == FeatureType.¾üÍÅµØÓüÖ®Á¦) {
+            } else if (deadCardFeature.getType() == FeatureType.å†›å›¢ç‹å›½ä¹‹åŠ›
+                    || deadCardFeature.getType() == FeatureType.å†›å›¢æ£®æ—ä¹‹åŠ›
+                    || deadCardFeature.getType() == FeatureType.å†›å›¢è›®è’ä¹‹åŠ›
+                    || deadCardFeature.getType() == FeatureType.å†›å›¢åœ°ç‹±ä¹‹åŠ›) {
                 LegionBuffFeature.remove(this, deadCardFeature, card);
             }
         }
@@ -848,7 +848,7 @@ public class FeatureResolver {
             CardStatusItem item) {
         boolean blocked = false;
         for (FeatureInfo blockFeature : victim.getNormalUsableFeatures()) {
-            if (blockFeature.getType() == FeatureType.ÍÑÀ§) {
+            if (blockFeature.getType() == FeatureType.è„±å›°) {
                 blocked = EscapeFeature.isStatusEscaped(blockFeature.getFeature(), this, item, victim);
             }
         }
@@ -880,7 +880,7 @@ public class FeatureResolver {
      */
     public boolean resolveCounterBlockFeature(Feature cardFeature, CardInfo attacker, CardInfo defender) {
         for (FeatureInfo attackerFeature : attacker.getAllUsableFeatures()) {
-            if (attackerFeature.getType() == FeatureType.Èõµã¹¥»÷) {
+            if (attackerFeature.getType() == FeatureType.å¼±ç‚¹æ”»å‡») {
                 return WeakPointAttackFeature.isBlockFeatureDisabled(this, attackerFeature.getFeature(), cardFeature,
                         attacker, defender);
             }
@@ -970,8 +970,8 @@ public class FeatureResolver {
             }
             
             
-            // Special logic for ÓÀ¶³ & ´º·ç & ÇåÈª & ±ù·â & ×Æ»ê.
-            if (rune.is(RuneData.ÇåÈª)) {
+            // Special logic for æ°¸å†» & æ˜¥é£ & æ¸…æ³‰ & å†°å° & ç¼é­‚.
+            if (rune.is(RuneData.æ¸…æ³‰)) {
                 boolean anyCardWounded = true;
                 for (CardInfo card : player.getField().toList()) {
                     if (card.isWounded()) {
@@ -982,11 +982,11 @@ public class FeatureResolver {
                 if (!anyCardWounded) {
                     shouldActivate = false;
                 }
-            } else if (rune.is(RuneData.ÓÀ¶³) || rune.is(RuneData.×Æ»ê)) {
+            } else if (rune.is(RuneData.æ°¸å†») || rune.is(RuneData.ç¼é­‚)) {
                 if (enemy.getField().toList().isEmpty()) {
                     shouldActivate = false;
                 }
-            } else if (rune.is(RuneData.´º·ç) || rune.is(RuneData.±ù·â)) {
+            } else if (rune.is(RuneData.æ˜¥é£) || rune.is(RuneData.å†°å°)) {
                 if (player.getField().size() == 0) {
                     shouldActivate = false;
                 }
@@ -1009,7 +1009,7 @@ public class FeatureResolver {
             for (CardInfo card : player.getField().getAliveCards()) {
                 for (FeatureEffect effect : card.getEffects()) {
                     if (effect.getCause().equals(rune.getFeatureInfo())) {
-                        if (rune.getFeature().getType().containsTag(FeatureTag.ÓÀ¾Ã)) {
+                        if (rune.getFeature().getType().containsTag(FeatureTag.æ°¸ä¹…)) {
                             continue;
                         }
                         if (effect.getType() == FeatureEffectType.ATTACK_CHANGE) {
@@ -1031,67 +1031,67 @@ public class FeatureResolver {
             if (!rune.isActivated()) {
                 continue;
             }
-            if (rune.is(RuneData.»ÄÎß)) {
+            if (rune.is(RuneData.è’èŠœ)) {
                 PoisonMagicFeature.apply(rune.getFeatureInfo(), this, rune, defenderHero, 1);
-            } else if (rune.is(RuneData.ÕÓÔó)) {
+            } else if (rune.is(RuneData.æ²¼æ³½)) {
                 PoisonMagicFeature.apply(rune.getFeatureInfo(), this, rune, defenderHero, 3);
-            } else if (rune.is(RuneData.ÑÒ¾§)) {
+            } else if (rune.is(RuneData.å²©æ™¶)) {
                 EnergyArmorFeature.apply(this, rune.getFeatureInfo(), rune, 1);
-            } else if (rune.is(RuneData.¶¾É°)) {
+            } else if (rune.is(RuneData.æ¯’ç ‚)) {
                 PoisonMagicFeature.apply(rune.getFeatureInfo(), this, rune, defenderHero, 1);
-            } else if (rune.is(RuneData.ÉîÔ¨)) {
+            } else if (rune.is(RuneData.æ·±æ¸Š)) {
                 PoisonMagicFeature.apply(rune.getFeatureInfo(), this, rune, defenderHero, 3);
-            } else if (rune.is(RuneData.ÔÉĞÇ)) {
+            } else if (rune.is(RuneData.é™¨æ˜Ÿ)) {
                 PlagueFeature.apply(rune.getFeatureInfo(), this, rune, defenderHero);
-            } else if (rune.is(RuneData.ËÀÓò)) {
+            } else if (rune.is(RuneData.æ­»åŸŸ)) {
                 PoisonMagicFeature.apply(rune.getFeatureInfo(), this, rune, defenderHero, -1);
-            } else if (rune.is(RuneData.Ëª¶³)) {
+            } else if (rune.is(RuneData.éœœå†»)) {
                 IceMagicFeature.apply(rune.getFeatureInfo(), this, rune, defenderHero, 1, 45);
-            } else if (rune.is(RuneData.º®³±)) {
+            } else if (rune.is(RuneData.å¯’æ½®)) {
                 IceMagicFeature.apply(rune.getFeatureInfo(), this, rune, defenderHero, 3, 35);
-            } else if (rune.is(RuneData.±ù×¶)) {
+            } else if (rune.is(RuneData.å†°é”¥)) {
                 IceMagicFeature.apply(rune.getFeatureInfo(), this, rune, defenderHero, 1, 45);
-            } else if (rune.is(RuneData.±©Óê)) {
+            } else if (rune.is(RuneData.æš´é›¨)) {
                 WeakenAllFeature.apply(this, rune.getFeatureInfo(), rune, defenderHero);
-            } else if (rune.is(RuneData.ÇåÈª)) {
+            } else if (rune.is(RuneData.æ¸…æ³‰)) {
                 RainfallFeature.apply(rune.getFeature(), this, rune);
-            } else if (rune.is(RuneData.Ñ©±À)) {
+            } else if (rune.is(RuneData.é›ªå´©)) {
                 IceMagicFeature.apply(rune.getFeatureInfo(), this, rune, defenderHero, 3, 35);
-            } else if (rune.is(RuneData.Ê¥Èª)) {
+            } else if (rune.is(RuneData.åœ£æ³‰)) {
                 PrayFeature.apply(rune.getFeature(), this, rune);
-            } else if (rune.is(RuneData.ÓÀ¶³)) {
+            } else if (rune.is(RuneData.æ°¸å†»)) {
                 IceMagicFeature.apply(rune.getFeatureInfo(), this, rune, defenderHero, -1, 30);
-            } else if (rune.is(RuneData.ÉÁµç)) {
+            } else if (rune.is(RuneData.é—ªç”µ)) {
                 LighteningMagicFeature.apply(rune.getFeatureInfo(), this, rune, defenderHero, 1, 50);
-            } else if (rune.is(RuneData.À×ÔÆ)) {
+            } else if (rune.is(RuneData.é›·äº‘)) {
                 LighteningMagicFeature.apply(rune.getFeatureInfo(), this, rune, defenderHero, 3, 40);
-            } else if (rune.is(RuneData.Åùö¨)) {
+            } else if (rune.is(RuneData.éœ¹é›³)) {
                 LighteningMagicFeature.apply(rune.getFeatureInfo(), this, rune, defenderHero, 1, 50);
-            } else if (rune.is(RuneData.·ÉÓğ)) {
+            } else if (rune.is(RuneData.é£ç¾½)) {
                 SnipeFeature.apply(rune.getFeature(), this, rune, defenderHero, 1);
-            } else if (rune.is(RuneData.ì«·ç)) {
+            } else if (rune.is(RuneData.é£“é£)) {
                 LighteningMagicFeature.apply(rune.getFeatureInfo(), this, rune, defenderHero, 3, 40);
-            } else if (rune.is(RuneData.´º·ç)) {
+            } else if (rune.is(RuneData.æ˜¥é£)) {
                 EnergyArmorFeature.apply(this, rune.getFeatureInfo(), rune, -1);
-            } else if (rune.is(RuneData.À×Óü)) {
+            } else if (rune.is(RuneData.é›·ç‹±)) {
                 LighteningMagicFeature.apply(rune.getFeatureInfo(), this, rune, defenderHero, -1, 35);
-            } else if (rune.is(RuneData.»ğÈ­)) {
+            } else if (rune.is(RuneData.ç«æ‹³)) {
                 FireMagicFeature.apply(rune.getFeature(), this, rune, defenderHero, 1);
-            } else if (rune.is(RuneData.ÈÈÀË)) {
+            } else if (rune.is(RuneData.çƒ­æµª)) {
                 FireMagicFeature.apply(rune.getFeature(), this, rune, defenderHero, 3);
-            } else if (rune.is(RuneData.Á÷»ğ)) {
+            } else if (rune.is(RuneData.æµç«)) {
                 FireMagicFeature.apply(rune.getFeature(), this, rune, defenderHero, 1);
-            } else if (rune.is(RuneData.ºìÁ«)) {
+            } else if (rune.is(RuneData.çº¢è²)) {
                 HealFeature.apply(rune.getFeature(), this, rune);
-            } else if (rune.is(RuneData.Ú¤»ğ)) {
+            } else if (rune.is(RuneData.å†¥ç«)) {
                 BurningFlameFeature.apply(rune.getFeatureInfo(), this, rune, defenderHero);
-            } else if (rune.is(RuneData.´ãÁ¶)) {
+            } else if (rune.is(RuneData.æ·¬ç‚¼)) {
                 AttackUpFeature.apply(this, rune.getFeatureInfo(), rune, -1);
-            } else if (rune.is(RuneData.·ÙÌì)) {
+            } else if (rune.is(RuneData.ç„šå¤©)) {
                 FireMagicFeature.apply(rune.getFeature(), this, rune, defenderHero, 3);
-            } else if (rune.is(RuneData.×Æ»ê)) {
+            } else if (rune.is(RuneData.ç¼é­‚)) {
                 HeavenWrathFeature.apply(this, rune.getFeature(), rune, defenderHero);
-            } else if (rune.is(RuneData.ÃğÊÀ)) {
+            } else if (rune.is(RuneData.ç­ä¸–)) {
                 FireMagicFeature.apply(rune.getFeature(), this, rune, defenderHero, -1);
             }
         }

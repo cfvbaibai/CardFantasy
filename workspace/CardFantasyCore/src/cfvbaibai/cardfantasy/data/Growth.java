@@ -29,8 +29,8 @@ public class Growth {
 
     public int getRequiredExp(int level) {
         if (level < 0 || level >= requiredExp.length) {
-            throw new CardFantasyRuntimeException("ÎÞÐ§µÄµÈ¼¶£º " + level + ". µÈ¼¶±ØÐëÔÚ 0 ºÍ "
-                    + (requiredExp.length - 1) + "Ö®¼ä¡£");
+            throw new CardFantasyRuntimeException("æ— æ•ˆçš„ç­‰çº§ï¼š " + level + ". ç­‰çº§å¿…é¡»åœ¨ 0 å’Œ "
+                    + (requiredExp.length - 1) + "ä¹‹é—´ã€‚");
         }
         return requiredExp[level];
     }

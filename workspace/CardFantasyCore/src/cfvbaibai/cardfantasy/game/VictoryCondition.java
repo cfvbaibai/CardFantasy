@@ -43,7 +43,7 @@ class CardsAllDieVictoryCondition extends VictoryCondition {
 
     @Override
     public boolean meetCriteria(GameResult result) {
-        return result.getCause() == GameEndCause.¿¨Æ¬È«Ãğ; 
+        return result.getCause() == GameEndCause.å¡ç‰‡å…¨ç­; 
     }
     
 }

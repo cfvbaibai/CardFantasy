@@ -15,9 +15,6 @@ import cfvbaibai.cardfantasy.engine.Player;
  * Trap 1*level enemy card at 65% probability.
  * 
  * Can be blocked by Immue
- * 
- * @author °×°×
- * 
  */
 public final class TrapFeature {
     public static void apply(FeatureInfo featureInfo, FeatureResolver resolver, CardInfo attacker, Player defender)

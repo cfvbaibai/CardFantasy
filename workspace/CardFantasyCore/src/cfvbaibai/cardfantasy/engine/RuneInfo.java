@@ -61,7 +61,7 @@ public class RuneInfo extends EntityInfo {
 
     public String getShortDesc() {
         String statusText = (this.energy <= 0 && !this.activated) ? "OVER" : (this.activated ? "ON" : "OFF");
-        return String.format("¡¾%s%d-%s%d-%d-%s¡¿", this.rune.getName(), this.rune.getLevel(), this.featureInfo.getFeature()
+        return String.format("ã€%s%d-%s%d-%d-%sã€‘", this.rune.getName(), this.rune.getLevel(), this.featureInfo.getFeature()
                 .getType().name(), this.featureInfo.getFeature().getLevel(), getEnergy(), statusText);
     }
 

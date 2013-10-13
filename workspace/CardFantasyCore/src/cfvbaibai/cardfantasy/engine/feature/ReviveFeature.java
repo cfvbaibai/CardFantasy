@@ -18,7 +18,7 @@ public final class ReviveFeature {
         // Grave is a stack, find the last-in card and revive it.
         CardInfo cardToRevive = null;
         for (CardInfo deadCard : reviver.getOwner().getGrave().toList()) {
-            if (!deadCard.containsUsableFeaturesWithTag(FeatureTag.∏¥ªÓ)) {
+            if (!deadCard.containsUsableFeaturesWithTag(FeatureTag.Â§çÊ¥ª)) {
                 cardToRevive = deadCard;
                 break;
             }

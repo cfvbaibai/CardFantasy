@@ -10,14 +10,11 @@ import cfvbaibai.cardfantasy.engine.HeroDieSignal;
 import cfvbaibai.cardfantasy.engine.Player;
 
 /**
- * Snipe - ¾Ñ»÷, DoubleSnipe - ¶þÖØ¾Ñ»÷ Activated after normal attack, apply extra
+ * Snipe - ï¿½Ñ»ï¿½, DoubleSnipe - ï¿½ï¿½ï¿½Ø¾Ñ»ï¿½ Activated after normal attack, apply extra
  * unavoidable, unblockable damage to opponent's cards with least HP on field.
  * 
  * Snipe cannot be blocked by any defense features like Immue or Dodge. Dying
  * features could be activated by death caused by Snipe.
- * 
- * @author °×°×
- * 
  */
 public final class SnipeFeature {
     public static void apply(Feature cardFeature, FeatureResolver resolver, EntityInfo attacker, Player defenderPlayer,

@@ -12,7 +12,7 @@ import cfvbaibai.cardfantasy.engine.FeatureResolver;
 public final class EscapeFeature {
     public static boolean isFeatureEscaped(FeatureResolver resolver, Feature cardFeature, Feature attackFeature,
             EntityInfo attacker, CardInfo defender) {
-        if (attackFeature.getType().containsTag(FeatureTag.ÏÝÚå)) {
+        if (attackFeature.getType().containsTag(FeatureTag.é™·é˜±)) {
             GameUI ui = resolver.getStage().getUI();
             ui.useSkill(defender, attacker, cardFeature, true);
             ui.blockFeature(attacker, defender, cardFeature, attackFeature);
@@ -24,7 +24,7 @@ public final class EscapeFeature {
 
     public static boolean isStatusEscaped(Feature cardFeature, FeatureResolver resolver, CardStatusItem item,
             CardInfo defender) {
-        if (item.getType() == CardStatusType.±ù¶³ || item.getType() == CardStatusType.Âé±Ô) {
+        if (item.getType() == CardStatusType.å†°å†» || item.getType() == CardStatusType.éº»ç—¹) {
             EntityInfo attacker = item.getCause().getOwner();
             GameUI ui = resolver.getStage().getUI();
             ui.useSkill(defender, attacker, cardFeature, true);

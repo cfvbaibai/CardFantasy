@@ -19,7 +19,7 @@ public final class DeckBuilder {
     private static CardDataStore store;
     
     public static DeckStartupInfo multiBuild(String descsText) {
-        descsText = descsText.replace(' ', ',').replace('¡¡', ',').replace('£¬', ',');
+        descsText = descsText.replace(' ', ',').replace('ã€€', ',').replace('ï¼Œ', ',');
         descsText = descsText.replace("\r\n", ",").replace("\n", ",");
         String[] descs = descsText.split(",");
         return build(descs);
@@ -42,7 +42,7 @@ public final class DeckBuilder {
             } else {
                 if (!parseCardDesc(deck, desc)) {
                     if (!parseRuneDesc(deck, desc)) {
-                        throw new DeckBuildRuntimeException("ÎŞĞ§µÄ¿¨ÅÆ»ò·ûÎÄ: " + desc);
+                        throw new DeckBuildRuntimeException("æ— æ•ˆçš„å¡ç‰Œæˆ–ç¬¦æ–‡: " + desc);
                     }
                 }
             }
@@ -59,7 +59,7 @@ public final class DeckBuilder {
             try {
                 runeLevel = Integer.parseInt(runeDesc.substring(iDash + 1));
             } catch (NumberFormatException e) {
-                throw new DeckBuildRuntimeException("ÎŞĞ§µÄ·ûÎÄ: " + runeDesc, e);
+                throw new DeckBuildRuntimeException("æ— æ•ˆçš„ç¬¦æ–‡: " + runeDesc, e);
             }
             runeName = runeDesc.substring(0, iDash);
         }
@@ -79,7 +79,7 @@ public final class DeckBuilder {
 
     /**
      * Card description text pattern:
-     * C¿¨Æ¬Ãû-µÈ¼¶+¼¼ÄÜÃû¼¼ÄÜµÈ¼¶*ÊıÁ¿
+     * Cå¡ç‰‡å-ç­‰çº§+æŠ€èƒ½åæŠ€èƒ½ç­‰çº§*æ•°é‡
      * @param deck
      * @param desc
      */
@@ -87,7 +87,7 @@ public final class DeckBuilder {
         String cardDesc = desc;
         String regex = "^";
         regex += "(?<CardName>[^\\-+SD*]+)";
-        regex += "(\\+(?<SummonFlag>(S|½µÁÙ)?)(?<DeathFlag>(D|ËÀÆõ)?)";
+        regex += "(\\+(?<SummonFlag>(S|é™ä¸´)?)(?<DeathFlag>(D|æ­»å¥‘)?)";
         regex += "(?<ExtraFeatureName>[^\\d\\-*]+)(?<ExtraFeatureLevel>\\d+)?)?";
         regex += "(\\-(?<CardLevel>\\d+))?";
         regex += "(\\*(?<Count>\\d+))?";
@@ -95,7 +95,7 @@ public final class DeckBuilder {
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(cardDesc);
         if (!matcher.matches()) {
-            throw new DeckBuildRuntimeException("ÎŞĞ§µÄ¿¨ÅÆ: " + desc);
+            throw new DeckBuildRuntimeException("æ— æ•ˆçš„å¡ç‰Œ: " + desc);
         }
         String cardName = matcher.group("CardName");
         String cardLevelText = matcher.group("CardLevel");
@@ -104,7 +104,7 @@ public final class DeckBuilder {
             try {
                 cardLevel = Integer.parseInt(cardLevelText);
             } catch (NumberFormatException e) {
-                throw new DeckBuildRuntimeException("ÎŞĞ§µÄ¿¨ÅÆ: " + desc, e);
+                throw new DeckBuildRuntimeException("æ— æ•ˆçš„å¡ç‰Œ: " + desc, e);
             }
         }
         String extraFeatureName = matcher.group("ExtraFeatureName");
@@ -113,7 +113,7 @@ public final class DeckBuilder {
             try {
                 extraFeatureType = FeatureType.valueOf(extraFeatureName);
             } catch (IllegalArgumentException e) {
-                throw new DeckBuildRuntimeException("ÎŞĞ§µÄ¿¨ÅÆ: " + desc, e);
+                throw new DeckBuildRuntimeException("æ— æ•ˆçš„å¡ç‰Œ: " + desc, e);
             }
         }
         if (extraFeatureType != null && cardLevelText == null) {
@@ -125,7 +125,7 @@ public final class DeckBuilder {
             try {
                 extraFeatureLevel = Integer.parseInt(extraFeatureLevelText);
             } catch (NumberFormatException e) {
-                throw new DeckBuildRuntimeException("ÎŞĞ§µÄ¿¨ÅÆ: " + desc, e);
+                throw new DeckBuildRuntimeException("æ— æ•ˆçš„å¡ç‰Œ: " + desc, e);
             }
         }
        
@@ -137,7 +137,7 @@ public final class DeckBuilder {
             try {
                 count = Integer.parseInt(countText);
             } catch (NumberFormatException e) {
-                throw new DeckBuildRuntimeException("ÎŞĞ§µÄ¿¨ÅÆ: " + desc, e);
+                throw new DeckBuildRuntimeException("æ— æ•ˆçš„å¡ç‰Œ: " + desc, e);
             }
         }
 

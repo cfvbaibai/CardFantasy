@@ -10,7 +10,7 @@ import cfvbaibai.cardfantasy.engine.FeatureResolver;
 public final class ImmueFeature {
     public static boolean isFeatureBlocked(FeatureResolver resolver, Feature cardFeature, Feature attackFeature,
             EntityInfo attacker, CardInfo defender) {
-        if (!attackFeature.getType().containsTag(FeatureTag.¿¹ÃâÒß)) {
+        if (!attackFeature.getType().containsTag(FeatureTag.æŠ—å…ç–«)) {
             GameUI ui = resolver.getStage().getUI();
             ui.useSkill(defender, attacker, cardFeature, true);
             ui.blockFeature(attacker, defender, cardFeature, attackFeature);

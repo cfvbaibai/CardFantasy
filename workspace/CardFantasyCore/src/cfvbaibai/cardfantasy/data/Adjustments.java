@@ -6,8 +6,6 @@ import java.util.List;
 
 /**
  * Note: this class is immutable.
- * @author °×°×
- *
  */
 public class Adjustments {
 

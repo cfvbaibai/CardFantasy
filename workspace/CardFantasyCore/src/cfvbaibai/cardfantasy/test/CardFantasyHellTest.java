@@ -4,31 +4,31 @@ import org.junit.Test;
 
 public class CardFantasyHellTest {
     @Test
-    public void ÑªÁ¶Î×Ñıvs°µÒ¹Ä§Ó°() {
-        TestGameBuilder.play5v5("ÑªÁ¶Î×Ñı", "°µÒ¹Ä§Ó°");
+    public void è¡€ç‚¼å·«å¦–vsæš—å¤œé­”å½±() {
+        TestGameBuilder.play5v5("è¡€ç‚¼å·«å¦–", "æš—å¤œé­”å½±");
     }
 
     @Test
-    public void »ÙÃğÖ®Áúvs°µÒ¹Ä§Ó°() {
-        TestGameBuilder.play5v5("»ÙÃğÖ®Áú", "°µÒ¹Ä§Ó°");
+    public void æ¯ç­ä¹‹é¾™vsæš—å¤œé­”å½±() {
+        TestGameBuilder.play5v5("æ¯ç­ä¹‹é¾™", "æš—å¤œé­”å½±");
     }
 
     @Test
-    public void »ÙÃğÖ®ÁúvsÁé»êÊÕ¸îÕß() {
-        TestGameBuilder.play5v5("»ÙÃğÖ®Áú", "Áé»êÊÕ¸îÕß");
+    public void æ¯ç­ä¹‹é¾™vsçµé­‚æ”¶å‰²è€…() {
+        TestGameBuilder.play5v5("æ¯ç­ä¹‹é¾™", "çµé­‚æ”¶å‰²è€…");
     }
 
     @Test
-    public void ÷¼÷Ã·¨Ê¦vs÷¼÷Ã·¨Ê¦() {
-        TestGameBuilder.play5v5("÷¼÷Ã·¨Ê¦", "÷¼÷Ã·¨Ê¦");
+    public void éª·é«…æ³•å¸ˆvséª·é«…æ³•å¸ˆ() {
+        TestGameBuilder.play5v5("éª·é«…æ³•å¸ˆ", "éª·é«…æ³•å¸ˆ");
     }
     
     @Test
-    public void ÷¼÷Ã·¨Ê¦vsÃÎ÷Ê() {
-        TestGameBuilder.play5v5("÷¼÷Ã·¨Ê¦", "ÃÎ÷Ê");
+    public void éª·é«…æ³•å¸ˆvsæ¢¦é­‡() {
+        TestGameBuilder.play5v5("éª·é«…æ³•å¸ˆ", "æ¢¦é­‡");
     }
     
     @Test
-    public void »ÙÃğÖ®Áúvs¶éÂäÌìÊ¹() {
-        TestGameBuilder.play5v5("»ÙÃğÖ®Áú", "¶éÂäÌìÊ¹");
+    public void æ¯ç­ä¹‹é¾™vså •è½å¤©ä½¿() {
+        TestGameBuilder.play5v5("æ¯ç­ä¹‹é¾™", "å •è½å¤©ä½¿");
     }}

@@ -17,10 +17,6 @@ public final class WarthFeature {
             throw new CardFantasyRuntimeException("attacker is null or dead!");
         }
         Feature feature = featureInfo.getFeature();
-        if (!attacker.getEffectsCausedBy(featureInfo).isEmpty()) {
-            // 横扫可能导致多次触发战意
-            //return;
-        }
         int adjAT = feature.getImpact() * attacker.getLevel1AT() / 100;
         GameUI ui = resolver.getStage().getUI();
         if (attacker.getHP() < defender.getHP()) {

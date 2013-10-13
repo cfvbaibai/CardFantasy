@@ -29,7 +29,7 @@ public final class BurningFlameFeature {
              * This seems to be an bug in official version
              */
             boolean skipped = false;
-            for (CardStatusItem existingBurningStatus : candidate.getStatus().getStatusOf(CardStatusType.È¼ÉÕ)) {
+            for (CardStatusItem existingBurningStatus : candidate.getStatus().getStatusOf(CardStatusType.ç‡ƒçƒ§)) {
                 if (existingBurningStatus.getEffect() == newBurningStatus.getEffect()) {
                     skipped = true;
                     break;

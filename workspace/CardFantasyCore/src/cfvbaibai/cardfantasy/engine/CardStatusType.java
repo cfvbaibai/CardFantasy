@@ -1,14 +1,14 @@
 package cfvbaibai.cardfantasy.engine;
 
 public enum CardStatusType {
-    È¼ÉÕ(true, "È¼"),
-    Âé±Ô(false, "Âé"),
-    ±ù¶³(false, "¶³"),
-    ÖĞ¶¾(true, "¶¾"),
-    Ëø¶¨(false, "Ëø"),
-    ÁÑÉË(false, "ÁÑ"),
-    ĞéÈõ(false, "Ğé"),
-    ÃÔ»ó(false, "»ó");
+    ç‡ƒçƒ§(true, "ç‡ƒ"),
+    éº»ç—¹(false, "éº»"),
+    å†°å†»(false, "å†»"),
+    ä¸­æ¯’(true, "æ¯’"),
+    é”å®š(false, "é”"),
+    è£‚ä¼¤(false, "è£‚"),
+    è™šå¼±(false, "è™š"),
+    è¿·æƒ‘(false, "æƒ‘");
 
     private boolean quantitive;
     public boolean isQuantitive() {

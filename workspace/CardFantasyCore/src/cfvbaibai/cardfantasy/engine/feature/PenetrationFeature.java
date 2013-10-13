@@ -8,8 +8,6 @@ import cfvbaibai.cardfantasy.engine.Player;
 
 /**
  * Penetration give enemy hero 15% of the normal attack damage.
- * @author °×°×
- *
  * Cannot be blocked by Immue.
  */
 public final class PenetrationFeature {

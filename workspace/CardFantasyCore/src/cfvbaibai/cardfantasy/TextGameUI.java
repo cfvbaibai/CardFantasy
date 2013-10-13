@@ -37,13 +37,13 @@ public abstract class TextGameUI extends GameUI {
     @Override
     public void roundStarted(Player player, int round) {
         say("======================================================");
-        sayF("»ØºÏ %d ¿ªÊ¼£¡<%s> ĞĞ¶¯", round, player.getId());
+        sayF("å›åˆ %d å¼€å§‹ï¼<%s> è¡ŒåŠ¨", round, player.getId());
         say("======================================================");
     }
 
     @Override
     public void roundEnded(Player player, int round) {
-        sayF("<%s> µÄ»ØºÏ %d ½áÊø", player.getId(), round);
+        sayF("<%s> çš„å›åˆ %d ç»“æŸ", player.getId(), round);
     }
 
     @Override
@@ -53,35 +53,35 @@ public abstract class TextGameUI extends GameUI {
 
     @Override
     public void phaseChanged(Player player, Phase previous, Phase current) {
-        sayF("½×¶Î×ª»»: %s => %s", previous.name().toUpperCase(), current.name().toUpperCase());
+        sayF("é˜¶æ®µè½¬æ¢: %s => %s", previous.name().toUpperCase(), current.name().toUpperCase());
     }
 
     @Override
     public void playerChanged(Player previousPlayer, Player nextPlayer) {
-        sayF("ĞĞ¶¯Íæ¼Ò½»»»: <%s> => <%s>", previousPlayer.getId(), nextPlayer.getId());
+        sayF("è¡ŒåŠ¨ç©å®¶äº¤æ¢: <%s> => <%s>", previousPlayer.getId(), nextPlayer.getId());
     }
 
     @Override
     public void cardDrawed(Player drawer, CardInfo card) {
-        sayF("<%s> ³éÁËÒ»ÕÅ¿¨: <%s (µÈ¼¶: %d)>", drawer.getId(), card.getUniqueName(), card.getLevel());
+        sayF("<%s> æŠ½äº†ä¸€å¼ å¡: <%s (ç­‰çº§: %d)>", drawer.getId(), card.getUniqueName(), card.getLevel());
         showBoard();
     }
 
     @Override
     public void cantDrawDeckEmpty(Player drawer) {
-        sayF("Íæ¼Ò <%s> ÅÆ¶ÑÒÑ¿Õ£¬ÎŞ·¨³é¿¨.", drawer.getId());
+        sayF("ç©å®¶ <%s> ç‰Œå †å·²ç©ºï¼Œæ— æ³•æŠ½å¡.", drawer.getId());
         this.showBoard();
     }
 
     @Override
     public void cantDrawHandFull(Player drawer) {
-        sayF("Íæ¼Ò <%s> ÊÖÅÆÒÑÂú£¬ÎŞ·¨³é¿¨.", drawer.getId());
+        sayF("ç©å®¶ <%s> æ‰‹ç‰Œå·²æ»¡ï¼Œæ— æ³•æŠ½å¡.", drawer.getId());
         this.showBoard();
     }
 
     @Override
     public void summonCard(Player player, CardInfo card) {
-        sayF("<%s> ÕÙ»½: <%s (µÈ¼¶: %d)>", player.getId(), card.getUniqueName(), card.getLevel());
+        sayF("<%s> å¬å”¤: <%s (ç­‰çº§: %d)>", player.getId(), card.getUniqueName(), card.getLevel());
     }
 
     @Override
@@ -89,28 +89,28 @@ public abstract class TextGameUI extends GameUI {
         String featureClause = cardFeature == null ? "" : (" by " + cardFeature.getShortDesc() + "");
         int logicalRemainingHP = defender.getHP() - damage;
         if (logicalRemainingHP < 0) {
-            sayF("%s ¹¥»÷ %s%s. ÉËº¦: %d (%d Òç³ö). HP: %d -> 0.", attacker.getShortDesc(), defender.getShortDesc(),
+            sayF("%s æ”»å‡» %s%s. ä¼¤å®³: %d (%d æº¢å‡º). HP: %d -> 0.", attacker.getShortDesc(), defender.getShortDesc(),
                     featureClause, damage, -logicalRemainingHP, defender.getHP());
         } else {
-            sayF("%s ¹¥»÷ %s%s. ÉËº¦: %d. HP: %d -> %d", attacker.getShortDesc(), defender.getShortDesc(), featureClause,
+            sayF("%s æ”»å‡» %s%s. ä¼¤å®³: %d. HP: %d -> %d", attacker.getShortDesc(), defender.getShortDesc(), featureClause,
                     damage, defender.getHP(), logicalRemainingHP);
         }
     }
 
     @Override
     public void cardDead(CardInfo deadCard) {
-        sayF("%s ËÀÍö!", deadCard.getShortDesc());
+        sayF("%s æ­»äº¡!", deadCard.getShortDesc());
     }
 
     @Override
     public void attackHero(EntityInfo attacker, Player hero, Feature cardFeature, int damage) {
-        String featureClause = cardFeature == null ? "" : (" Ê¹ÓÃ " + cardFeature.getShortDesc() + "");
+        String featureClause = cardFeature == null ? "" : (" ä½¿ç”¨ " + cardFeature.getShortDesc() + "");
         int logicalRemainingHP = hero.getHP() - damage;
         if (logicalRemainingHP < 0) {
-            sayF("%s%s Ö±½Ó¹¥»÷ <%s>! ÉËº¦: %d (%d Òç³ö). HP: %d -> %d", attacker.getShortDesc(), featureClause, hero.getId(),
+            sayF("%s%s ç›´æ¥æ”»å‡» <%s>! ä¼¤å®³: %d (%d æº¢å‡º). HP: %d -> %d", attacker.getShortDesc(), featureClause, hero.getId(),
                     damage, -logicalRemainingHP, hero.getHP(), 0);
         } else {
-            sayF("%s%s Ö±½Ó¹¥»÷ <%s>! ÉËº¦: %d. HP: %d -> %d", attacker.getShortDesc(), featureClause, hero.getId(), damage,
+            sayF("%s%s ç›´æ¥æ”»å‡» <%s>! ä¼¤å®³: %d. HP: %d -> %d", attacker.getShortDesc(), featureClause, hero.getId(), damage,
                     hero.getHP(), hero.getHP() - damage);
         }
     }
@@ -118,35 +118,35 @@ public abstract class TextGameUI extends GameUI {
     @Override
     public void useSkill(EntityInfo attacker, List<? extends EntityInfo> victims, Feature cardFeature, boolean bingo) {
         if (victims.isEmpty()) {
-            sayF("%s ÎŞ·¨ÕÒµ½Ê¹ÓÃ %s µÄºÏÊÊÄ¿±ê.", attacker.getShortDesc(), cardFeature.getShortDesc());
+            sayF("%s æ— æ³•æ‰¾åˆ°ä½¿ç”¨ %s çš„åˆé€‚ç›®æ ‡.", attacker.getShortDesc(), cardFeature.getShortDesc());
         } else {
             List<String> victimTexts = new LinkedList<String>();
             for (EntityInfo victim : victims) {
                 victimTexts.add(victim.getShortDesc());
             }
             String victimsText = StringUtils.join(victimTexts, ", ");
-            String featureDesc = cardFeature == null ? "¡¾ÆÕÍ¨¹¥»÷¡¿" : cardFeature.getShortDesc();
-            sayF("%s ¶Ô { %s } Ê¹ÓÃ %s%s!", attacker.getShortDesc(), victimsText, featureDesc, bingo ? "" : " Ê§°Ü");
+            String featureDesc = cardFeature == null ? "ã€æ™®é€šæ”»å‡»ã€‘" : cardFeature.getShortDesc();
+            sayF("%s å¯¹ { %s } ä½¿ç”¨ %s%s!", attacker.getShortDesc(), victimsText, featureDesc, bingo ? "" : " å¤±è´¥");
         }
     }
 
     @Override
     public void useSkillToHero(EntityInfo attacker, Player victimHero, Feature cardFeature) {
-        String featureDesc = cardFeature == null ? "¡¾ÆÕÍ¨¹¥»÷¡¿" : cardFeature.getShortDesc();
-        sayF("%s ¶ÔÓ¢ĞÛ <%s> Ê¹ÓÃ %s!", attacker.getShortDesc(), victimHero.getId(), featureDesc);
+        String featureDesc = cardFeature == null ? "ã€æ™®é€šæ”»å‡»ã€‘" : cardFeature.getShortDesc();
+        sayF("%s å¯¹è‹±é›„ <%s> ä½¿ç”¨ %s!", attacker.getShortDesc(), victimHero.getId(), featureDesc);
     }
 
     @Override
     public void addCardStatus(EntityInfo attacker, CardInfo victim, Feature cardFeature, CardStatusItem item) {
-        sayF("%s.%s Ê¹ %s µÃµ½×´Ì¬: ¡¾%s¡¿", attacker.getShortDesc(), cardFeature.getShortDesc(), victim.getShortDesc(),
+        sayF("%s.%s ä½¿ %s å¾—åˆ°çŠ¶æ€: ã€%sã€‘", attacker.getShortDesc(), cardFeature.getShortDesc(), victim.getShortDesc(),
                 item.getShortDesc());
     }
 
     @Override
     public void gameEnded(GameResult result) {
-        String s = String.format("Õ½¶·½áÊø. Ê¤ÀûÕß: <%s>, Ê¤Àû·½Ê½: %s", result.getWinner().getId(), result.getCause().toString());
+        String s = String.format("æˆ˜æ–—ç»“æŸ. èƒœåˆ©è€…: <%s>, èƒœåˆ©æ–¹å¼: %s", result.getWinner().getId(), result.getCause().toString());
         if (result.getDamageToBoss() >= 0) {
-            s += ", Ä§ÉñÊÜµ½ÉËº¦: " + result.getDamageToBoss();
+            s += ", é­”ç¥å—åˆ°ä¼¤å®³: " + result.getDamageToBoss();
         }
         say(s);
     }
@@ -158,8 +158,8 @@ public abstract class TextGameUI extends GameUI {
 
     @Override
     public void gameStarted() {
-        say("Õ½¶·¿ªÊ¼!");
-        sayF("¹æÔò: ×î´óÊÖÅÆÊı=%d, ×î´ó»ØºÏ=%d", getRule().getMaxHandCards(), getRule().getMaxRound());
+        say("æˆ˜æ–—å¼€å§‹!");
+        sayF("è§„åˆ™: æœ€å¤§æ‰‹ç‰Œæ•°=%d, æœ€å¤§å›åˆ=%d", getRule().getMaxHandCards(), getRule().getMaxRound());
         this.showBoard();
     }
 
@@ -167,7 +167,7 @@ public abstract class TextGameUI extends GameUI {
         Board board = this.getBoard();
         say("-----------------------------------------------------------------------------");
         Player player = board.getPlayer(0);
-        sayF("Íæ¼Ò: %s - HP: %d", player.getId(), player.getHP());
+        sayF("ç©å®¶: %s - HP: %d", player.getId(), player.getHP());
         showGrave(player.getGrave());
         showDeck(player.getDeck());
         showHand(player.getHand());
@@ -184,13 +184,13 @@ public abstract class TextGameUI extends GameUI {
         showHand(player.getHand());
         showDeck(player.getDeck());
         showGrave(player.getGrave());
-        sayF("Íæ¼Ò: %s - HP: %d", player.getId(), player.getHP());
+        sayF("ç©å®¶: %s - HP: %d", player.getId(), player.getHP());
         say("-----------------------------------------------------------------------------");
     }
 
     private void showRune(RuneBox runeBox) {
         StringBuffer sb = new StringBuffer();
-        sb.append("·ûÎÄ : ");
+        sb.append("ç¬¦æ–‡ : ");
         for (RuneInfo rune : runeBox.getRunes()) {
             sb.append(rune.getShortDesc());
             sb.append(", ");
@@ -200,9 +200,9 @@ public abstract class TextGameUI extends GameUI {
 
     private void showGrave(Grave grave) {
         StringBuffer sb = new StringBuffer();
-        sb.append("Ä¹µØ: ");
+        sb.append("å¢“åœ°: ");
         for (CardInfo card : grave.toList()) {
-            sb.append(String.format("%s (µÈ¼¶=%d, ¹¥»÷=%d, HP=%d), ", card.getUniqueName(), card.getLevel(), card.getLevel0AT(),
+            sb.append(String.format("%s (ç­‰çº§=%d, æ”»å‡»=%d, HP=%d), ", card.getUniqueName(), card.getLevel(), card.getLevel0AT(),
                     card.getMaxHP()));
         }
         say(sb.toString());
@@ -214,7 +214,7 @@ public abstract class TextGameUI extends GameUI {
         int i = 0;
         List<CardInfo> cards = field.getAliveCards();
         for (CardInfo card : cards) {
-            sb.append(String.format("[%d] %s (µÈ¼¶=%d, ¹¥»÷=%d/%d, HP=%d/%d/%d, ×´Ì¬=%s, Ğ§¹û=%s)\r\n", i, card.getUniqueName(),
+            sb.append(String.format("[%d] %s (ç­‰çº§=%d, æ”»å‡»=%d/%d, HP=%d/%d/%d, çŠ¶æ€=%s, æ•ˆæœ=%s)\r\n", i, card.getUniqueName(),
                     card.getLevel(), card.getCurrentAT(), card.getLevel0AT(), card.getHP(), card.getMaxHP(),
                     card.getOriginalMaxHP(), card.getStatus().getShortDesc(), card.getEffectsDesc()));
             ++i;
@@ -228,9 +228,9 @@ public abstract class TextGameUI extends GameUI {
 
     private void showHand(Hand hand) {
         StringBuffer sb = new StringBuffer();
-        sb.append("ÊÖÅÆ: ");
+        sb.append("æ‰‹ç‰Œ: ");
         for (CardInfo card : hand.toList()) {
-            sb.append(String.format("%s (µÈ¼¶=%d, ¹¥»÷=%d, HP=%d, µÈ´ı=%d), ", card.getUniqueName(), card.getLevel(),
+            sb.append(String.format("%s (ç­‰çº§=%d, æ”»å‡»=%d, HP=%d, ç­‰å¾…=%d), ", card.getUniqueName(), card.getLevel(),
                     card.getLevel0AT(), card.getMaxHP(), card.getSummonDelay()));
         }
         say(sb.toString());
@@ -238,9 +238,9 @@ public abstract class TextGameUI extends GameUI {
 
     private void showDeck(Deck deck) {
         StringBuffer sb = new StringBuffer();
-        sb.append("ÅÆ¶Ñ: ");
+        sb.append("ç‰Œå †: ");
         for (CardInfo card : deck.toList()) {
-            sb.append(String.format("%s (µÈ¼¶=%d, ¹¥»÷=%d, HP=%d), ", card.getUniqueName(), card.getLevel(), card.getLevel0AT(),
+            sb.append(String.format("%s (ç­‰çº§=%d, æ”»å‡»=%d, HP=%d), ", card.getUniqueName(), card.getLevel(), card.getLevel0AT(),
                     card.getMaxHP()));
         }
         say(sb.toString());
@@ -255,29 +255,29 @@ public abstract class TextGameUI extends GameUI {
     public void attackBlocked(EntityInfo attacker, CardInfo defender, Feature atFeature, Feature dfFeature) {
         String attackerDesc = attacker.getShortDesc();
         if (atFeature == null && dfFeature == null) {
-            sayF("%s ´¦ÓÚ×´Ì¬ %s ÖĞ£¬ÎŞ·¨¹¥»÷!", attackerDesc, attacker.getStatus().getShortDesc());
+            sayF("%s å¤„äºçŠ¶æ€ %s ä¸­ï¼Œæ— æ³•æ”»å‡»!", attackerDesc, attacker.getStatus().getShortDesc());
         } else if (atFeature == null && dfFeature != null) {
-            sayF("%s µÄ¹¥»÷±» %s Ê¹ÓÃ %s »¯½âÁË!", attackerDesc, defender.getShortDesc(), dfFeature.getShortDesc());
+            sayF("%s çš„æ”»å‡»è¢« %s ä½¿ç”¨ %s åŒ–è§£äº†!", attackerDesc, defender.getShortDesc(), dfFeature.getShortDesc());
         } else if (atFeature != null && dfFeature == null) {
-            sayF("%s ´¦ÓÚ×´Ì¬ %s ÖĞ£¬ÎŞ·¨Ê¹ÓÃ %s!", attackerDesc, attacker.getStatus().getShortDesc(), atFeature.getShortDesc());
+            sayF("%s å¤„äºçŠ¶æ€ %s ä¸­ï¼Œæ— æ³•ä½¿ç”¨ %s!", attackerDesc, attacker.getStatus().getShortDesc(), atFeature.getShortDesc());
         } else if (atFeature != null && dfFeature != null) {
-            sayF("%s µÄ %s ±» %s µÄ %s »¯½âÁË!", attackerDesc, atFeature.getShortDesc(), defender.getShortDesc(),
+            sayF("%s çš„ %s è¢« %s çš„ %s åŒ–è§£äº†!", attackerDesc, atFeature.getShortDesc(), defender.getShortDesc(),
                     dfFeature.getShortDesc());
         }
     }
 
     @Override
     public void adjustAT(EntityInfo source, CardInfo target, int adjAT, Feature cardFeature) {
-        String verb = adjAT > 0 ? "Ôö¼Ó" : "½µµÍ";
-        sayF("%s Ê¹ÓÃ %s %s ÁË %s µÄ %d µã¹¥»÷! %d -> %d.", source.getShortDesc(), cardFeature.getShortDesc(), verb,
+        String verb = adjAT > 0 ? "å¢åŠ " : "é™ä½";
+        sayF("%s ä½¿ç”¨ %s %s äº† %s çš„ %d ç‚¹æ”»å‡»! %d -> %d.", source.getShortDesc(), cardFeature.getShortDesc(), verb,
                 target.getShortDesc(), adjAT, target.getCurrentAT(), target.getCurrentAT() + adjAT);
     }
 
     @Override
     public void adjustHP(EntityInfo source, List<? extends CardInfo> targets, int adjHP, Feature cardFeature) {
-        String verb = adjHP > 0 ? "Ôö¼Ó" : "½µµÍ";
+        String verb = adjHP > 0 ? "å¢åŠ " : "é™ä½";
         for (CardInfo target : targets) {
-            sayF("%s Ê¹ÓÃ %s %s ÁË %s µÄHP! %d -> %d.", source.getShortDesc(), cardFeature.getShortDesc(), verb,
+            sayF("%s ä½¿ç”¨ %s %s äº† %s çš„HP! %d -> %d.", source.getShortDesc(), cardFeature.getShortDesc(), verb,
                 target.getShortDesc(), target.getHP(), target.getHP() + adjHP);
         }
     }
@@ -285,24 +285,24 @@ public abstract class TextGameUI extends GameUI {
     @Override
     public void blockDamage(EntityInfo protector, EntityInfo attacker, EntityInfo defender, Feature cardFeature,
             int originalDamage, int actualDamage) {
-        sayF("%s Ê¹ÓÃ %s Îª %s ¸ñµ²ÁËÀ´×Ô %s µÄ¹¥»÷. ÉËº¦: %d -> %d", protector.getShortDesc(), cardFeature.getShortDesc(),
+        sayF("%s ä½¿ç”¨ %s ä¸º %s æ ¼æŒ¡äº†æ¥è‡ª %s çš„æ”»å‡». ä¼¤å®³: %d -> %d", protector.getShortDesc(), cardFeature.getShortDesc(),
                 defender.getShortDesc(), attacker.getShortDesc(), originalDamage, actualDamage);
     }
 
     @Override
     public void debuffDamage(CardInfo card, CardStatusItem item, int damage) {
-        sayF("%s ´¦ÔÚ×´Ì¬ %s ÖĞÊÜµ½ÉËº¦. ÉËº¦: %d. HP: %d -> %d", card.getShortDesc(), item.getShortDesc(), damage, card.getHP(),
+        sayF("%s å¤„åœ¨çŠ¶æ€ %s ä¸­å—åˆ°ä¼¤å®³. ä¼¤å®³: %d. HP: %d -> %d", card.getShortDesc(), item.getShortDesc(), damage, card.getHP(),
                 Math.max(0, card.getHP() - damage));
     }
 
     @Override
     public void cannotAction(CardInfo card) {
-        sayF("%s ´¦ÔÚ×´Ì¬ %s ÖĞ£¬ÎŞ·¨ĞĞ¶¯!", card.getShortDesc(), card.getStatus().getShortDesc());
+        sayF("%s å¤„åœ¨çŠ¶æ€ %s ä¸­ï¼Œæ— æ³•è¡ŒåŠ¨!", card.getShortDesc(), card.getStatus().getShortDesc());
     }
 
     @Override
     public void recoverAT(CardInfo card, FeatureType cause, int recoveredAT) {
-        sayF("%s µÄ¹¥»÷´Ó ¡¾%s¡¿ µÄĞ§¹ûÖĞ»Ö¸´. ¹¥»÷: %d -> %d", card.getShortDesc(), cause.name(),
+        sayF("%s çš„æ”»å‡»ä» ã€%sã€‘ çš„æ•ˆæœä¸­æ¢å¤. æ”»å‡»: %d -> %d", card.getShortDesc(), cause.name(),
                 card.getCurrentAT(), card.getCurrentAT() - recoveredAT);
     }
 
@@ -314,7 +314,7 @@ public abstract class TextGameUI extends GameUI {
             healText += " (" + (postHealHP - healee.getMaxHP()) + " overflow)";
             postHealHP = healee.getMaxHP();
         }
-        sayF("%s Ê¹ÓÃ %s ÖÎÁÆÁË %s %s µãHP. HP: %d -> %d", healer.getShortDesc(), cardFeature.getShortDesc(),
+        sayF("%s ä½¿ç”¨ %s æ²»ç–—äº† %s %s ç‚¹HP. HP: %d -> %d", healer.getShortDesc(), cardFeature.getShortDesc(),
                 healee.getShortDesc(), healText, healee.getHP(), postHealHP);
     }
 
@@ -326,13 +326,13 @@ public abstract class TextGameUI extends GameUI {
             healText += " (" + (postHealHP - healee.getMaxHP()) + " overflow)";
             postHealHP = healee.getMaxHP();
         }
-        sayF("%s Ê¹ÓÃ %s ÖÎÁÆÁË %s %s µãHP. HP: %d -> %d", healer.getShortDesc(), cardFeature.getShortDesc(),
+        sayF("%s ä½¿ç”¨ %s æ²»ç–—äº† %s %s ç‚¹HP. HP: %d -> %d", healer.getShortDesc(), cardFeature.getShortDesc(),
                 healee.getShortDesc(), healText, healee.getHP(), postHealHP);
     }
 
     @Override
     public void loseAdjustATEffect(CardInfo ally, FeatureEffect effect) {
-        sayF("%s Ê§È¥ÓÉ %s µÄ %s Ôì³ÉµÄĞ§¹û. ¹¥»÷: %d -> %d.", ally.getShortDesc(), effect.getSource().getShortDesc(), effect
+        sayF("%s å¤±å»ç”± %s çš„ %s é€ æˆçš„æ•ˆæœ. æ”»å‡»: %d -> %d.", ally.getShortDesc(), effect.getSource().getShortDesc(), effect
                 .getCause().getFeature().getShortDesc(), ally.getCurrentAT(), ally.getCurrentAT() - effect.getValue());
     }
 
@@ -340,29 +340,29 @@ public abstract class TextGameUI extends GameUI {
     public void loseAdjustHPEffect(CardInfo ally, FeatureEffect effect) {
         int currentHP = ally.getHP() > ally.getMaxHP() - effect.getValue() ? ally.getMaxHP() - effect.getValue() : ally
                 .getHP();
-        sayF("%s Ê§È¥ÓÉ %s µÄ %s Ôì³ÉµÄĞ§¹û. HP: %d -> %d.", ally.getShortDesc(), effect.getSource().getShortDesc(), effect
+        sayF("%s å¤±å»ç”± %s çš„ %s é€ æˆçš„æ•ˆæœ. HP: %d -> %d.", ally.getShortDesc(), effect.getSource().getShortDesc(), effect
                 .getCause().getFeature().getShortDesc(), ally.getHP(), currentHP);
     }
 
     @Override
     public void cardToDeck(Player player, CardInfo card) {
-        sayF("%s ±»·Å»Ø %s µÄÅÆ¶Ñ.", card.getShortDesc(), player.getShortDesc());
+        sayF("%s è¢«æ”¾å› %s çš„ç‰Œå †.", card.getShortDesc(), player.getShortDesc());
     }
 
     @Override
     public void cardToHand(Player player, CardInfo card) {
-        sayF("%s ±»·Å»Ø %s µÄÊÖÅÆ.", card.getShortDesc(), player.getShortDesc());
+        sayF("%s è¢«æ”¾å› %s çš„æ‰‹ç‰Œ.", card.getShortDesc(), player.getShortDesc());
     }
     
     @Override
     public void cardToOutField(Player player, CardInfo card) {
-        sayF("%s ´Ó %s µÄÄ¹µØÖĞ±»³ıÍâ.", card.getShortDesc(), player.getShortDesc());
+        sayF("%s ä» %s çš„å¢“åœ°ä¸­è¢«é™¤å¤–.", card.getShortDesc(), player.getShortDesc());
     }
 
     @Override
     public void healBlocked(EntityInfo healer, CardInfo healee, Feature cardFeature, Feature blockerFeature) {
         if (blockerFeature == null) {
-            sayF("%s ´¦ÔÚ×´Ì¬ %s ÖĞ£¬ÎŞ·¨±» %s µÄ %s ÖÎÁÆ!", healee.getShortDesc(), healee.getStatus().getShortDesc(),
+            sayF("%s å¤„åœ¨çŠ¶æ€ %s ä¸­ï¼Œæ— æ³•è¢« %s çš„ %s æ²»ç–—!", healee.getShortDesc(), healee.getStatus().getShortDesc(),
                     healer.getShortDesc(), cardFeature.getShortDesc());
         } else {
             throw new CardFantasyRuntimeException("blockerFeature is not null. To be implemented.");
@@ -371,88 +371,88 @@ public abstract class TextGameUI extends GameUI {
 
     @Override
     public void blockStatus(EntityInfo attacker, EntityInfo defender, Feature cardFeature, CardStatusItem item) {
-        sayF("%s ÃâÒß %s Ôì³É µÄ×´Ì¬ ¡¾%s¡¿", defender.getShortDesc(), cardFeature.getShortDesc(), item.getShortDesc());
+        sayF("%s å…ç–« %s é€ æˆ çš„çŠ¶æ€ ã€%sã€‘", defender.getShortDesc(), cardFeature.getShortDesc(), item.getShortDesc());
     }
 
     @Override
     public void blockFeature(EntityInfo attacker, EntityInfo defender, Feature cardFeature, Feature attackFeature) {
-        sayF("%s Ê¹ÓÃ %s ¸ñµ²ÁË %s", defender.getShortDesc(), cardFeature.getShortDesc(), attackFeature.getShortDesc());
+        sayF("%s ä½¿ç”¨ %s æ ¼æŒ¡äº† %s", defender.getShortDesc(), cardFeature.getShortDesc(), attackFeature.getShortDesc());
     }
 
     @Override
     public void returnCard(CardInfo attacker, CardInfo defender, Feature cardFeature) {
-        sayF("%s Ê¹ÓÃ %s ½« %s ËÍ»¹ÖÁÅÆ¶Ñ.", attacker.getShortDesc(), cardFeature.getShortDesc(), defender.getShortDesc());
+        sayF("%s ä½¿ç”¨ %s å°† %s é€è¿˜è‡³ç‰Œå †.", attacker.getShortDesc(), cardFeature.getShortDesc(), defender.getShortDesc());
     }
 
     @Override
     public void cardToGrave(Player player, CardInfo card) {
-        sayF("%s ±»ËÍÖÁ %s µÄÄ¹µØ", card.getShortDesc(), player.getShortDesc());
+        sayF("%s è¢«é€è‡³ %s çš„å¢“åœ°", card.getShortDesc(), player.getShortDesc());
     }
 
     @Override
     public void disableBlock(CardInfo attacker, CardInfo defender, Feature attackFeature, Feature blockFeature) {
-        sayF("%s µÄ %s ±» %s µÄ %s ÆÆ½âÁË.", defender.getShortDesc(), blockFeature.getShortDesc(), attacker.getShortDesc(),
+        sayF("%s çš„ %s è¢« %s çš„ %s ç ´è§£äº†.", defender.getShortDesc(), blockFeature.getShortDesc(), attacker.getShortDesc(),
                 attackFeature.getShortDesc());
     }
 
     @Override
     public void confused(CardInfo card) {
-        sayF("%s ´¦ÔÚ×´Ì¬ %s ÖĞ²¢ÇÒ¹¥»÷ÁË±¾·½Ó¢ĞÛ!", card.getShortDesc(), card.getStatus().getShortDesc());
+        sayF("%s å¤„åœ¨çŠ¶æ€ %s ä¸­å¹¶ä¸”æ”»å‡»äº†æœ¬æ–¹è‹±é›„!", card.getShortDesc(), card.getStatus().getShortDesc());
         this.attackHero(card, card.getOwner(), null, card.getCurrentAT());
     }
 
     @Override
     public void roll100(int dice, int rate) {
-        sayF("ÖÀ÷»×Ó£¬ÃüÖĞÂÊ %d%%¡£µãÊı£º%d. %s!", rate, dice, dice < rate ? "ÖĞ" : "²»ÖĞ");
+        sayF("æ·éª°å­ï¼Œå‘½ä¸­ç‡ %d%%ã€‚ç‚¹æ•°ï¼š%d. %s!", rate, dice, dice < rate ? "ä¸­" : "ä¸ä¸­");
     }
 
     @Override
     public void useSkill(EntityInfo attacker, Feature cardFeature, boolean bingo) {
-        sayF("%s Ê¹ÓÃ %s%s", attacker.getShortDesc(), cardFeature.getShortDesc(), bingo ? "" : " Ê§°Ü");
+        sayF("%s ä½¿ç”¨ %s%s", attacker.getShortDesc(), cardFeature.getShortDesc(), bingo ? "" : " å¤±è´¥");
     }
 
     @Override
     public void killCard(EntityInfo attacker, CardInfo victim, Feature cardFeature) {
-        sayF("%s Ê¹ÓÃ %s Ö±½ÓÉ±ËÀ %s!", attacker.getShortDesc(), cardFeature.getShortDesc(), victim.getShortDesc());
+        sayF("%s ä½¿ç”¨ %s ç›´æ¥æ€æ­» %s!", attacker.getShortDesc(), cardFeature.getShortDesc(), victim.getShortDesc());
     }
 
     @Override
     public void activateRune(RuneInfo rune) {
-        sayF("%s ±»¼¤»î! Ê£Óà·¢¶¯´ÎÊı: %d -> %d", rune.getShortDesc(), rune.getEnergy(), rune.getEnergy() - 1);
+        sayF("%s è¢«æ¿€æ´»! å‰©ä½™å‘åŠ¨æ¬¡æ•°: %d -> %d", rune.getShortDesc(), rune.getEnergy(), rune.getEnergy() - 1);
     }
 
     @Override
     public void deactivateRune(RuneInfo rune) {
-        sayF("%s ±»Ï¨Ãğ!", rune.getShortDesc());
+        sayF("%s è¢«ç†„ç­!", rune.getShortDesc());
     }
 
     @Override
     public void compactField(Field field) {
         int originalSize = field.size();
         int aliveCardCount = field.getAliveCards().size();
-        sayF("ÕûÀí %s µÄ³¡ÉÏ¿¨Æ¬... ¿Ó: %d -> %d", field.getOwner().getShortDesc(), originalSize, aliveCardCount);
+        sayF("æ•´ç† %s çš„åœºä¸Šå¡ç‰‡... å‘: %d -> %d", field.getOwner().getShortDesc(), originalSize, aliveCardCount);
     }
 
     @Override
     public void protect(EntityInfo protector, EntityInfo attacker, EntityInfo protectee, Feature attackFeature,
             Feature protectFeature) {
-        String attackFeatureText = attackFeature == null ? "¡¾ÆÕÍ¨¹¥»÷¡¿" : attackFeature.getShortDesc();
-        sayF("%s Ê¹ÓÃ %s ±£»¤ %s ²»ÊÜÀ´×Ô %s µÄ %s µÄÇÖº¦", protector.getShortDesc(), protectFeature.getShortDesc(),
+        String attackFeatureText = attackFeature == null ? "ã€æ™®é€šæ”»å‡»ã€‘" : attackFeature.getShortDesc();
+        sayF("%s ä½¿ç”¨ %s ä¿æŠ¤ %s ä¸å—æ¥è‡ª %s çš„ %s çš„ä¾µå®³", protector.getShortDesc(), protectFeature.getShortDesc(),
                 protectee.getShortDesc(), attacker.getShortDesc(), attackFeatureText);
     }
 
     @Override
     public void showMessage(String text) {
-        sayF("¡¾ÏµÍ³¡¿" + text);
+        sayF("ã€ç³»ç»Ÿã€‘" + text);
     }
     
     @Override
     public void cardActionBegins(CardInfo card) {
-        sayF("%s ¿ªÊ¼ĞĞ¶¯...", card.getShortDesc());
+        sayF("%s å¼€å§‹è¡ŒåŠ¨...", card.getShortDesc());
     }
     
     @Override
     public void cardActionEnds(CardInfo card) {
-        sayF("%s ½áÊøĞĞ¶¯.", card.getShortDesc());
+        sayF("%s ç»“æŸè¡ŒåŠ¨.", card.getShortDesc());
     }
 }

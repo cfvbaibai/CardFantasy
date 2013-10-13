@@ -125,15 +125,15 @@ public class CardInfo extends EntityInfo {
     }
 
     public int getLevel1AT() {
-        return this.getLevel0AT() + this.getSpecificLevelEffectAT(FeatureTag.»ù´¡¹¥»÷¼Ó³É);
+        return this.getLevel0AT() + this.getSpecificLevelEffectAT(FeatureTag.åŸºç¡€æ”»å‡»åŠ æˆ);
     }
     
     public int getLevel2AT() {
-        return this.getLevel1AT() + this.getSpecificLevelEffectAT(FeatureTag.¶îÍâ¹¥»÷¼Ó³É);
+        return this.getLevel1AT() + this.getSpecificLevelEffectAT(FeatureTag.é¢å¤–æ”»å‡»åŠ æˆ);
     }
 
     public int getLevel3AT() {
-        return this.getLevel2AT() + this.getSpecificLevelEffectAT(FeatureTag.¶ÀÁ¢¹¥»÷¼Ó³É);
+        return this.getLevel2AT() + this.getSpecificLevelEffectAT(FeatureTag.ç‹¬ç«‹æ”»å‡»åŠ æˆ);
     }
     
     public int getCurrentAT() {
@@ -308,13 +308,13 @@ public class CardInfo extends EntityInfo {
             return "-";
         }
         StringBuffer sb = new StringBuffer();
-        sb.append("¡¾");
+        sb.append("ã€");
         for (FeatureEffect effect : effects) {
             if (effect.getType() == FeatureEffectType.ATTACK_CHANGE) {
-                sb.append("¹¥»÷±ä»¯");
+                sb.append("æ”»å‡»å˜åŒ–");
             }
             else if (effect.getType() == FeatureEffectType.MAXHP_CHANGE) {
-                sb.append("HP±ä»¯");
+                sb.append("HPå˜åŒ–");
             } else {
                 throw new CardFantasyRuntimeException("Unknown feature effect type: " + effect.getType().name());
             }
@@ -331,7 +331,7 @@ public class CardInfo extends EntityInfo {
         }
         sb.deleteCharAt(sb.length() - 1);
         sb.deleteCharAt(sb.length() - 1);
-        sb.append("¡¿");
+        sb.append("ã€‘");
         return sb.toString();
     }
 

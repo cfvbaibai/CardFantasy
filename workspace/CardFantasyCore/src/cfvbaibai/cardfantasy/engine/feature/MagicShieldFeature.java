@@ -10,7 +10,7 @@ import cfvbaibai.cardfantasy.engine.FeatureResolver;
 public final class MagicShieldFeature {
     public static int apply(FeatureResolver resolver, Feature feature, EntityInfo attacker, CardInfo defender,
             Feature attackFeature, int originalDamage) {
-        if (!attackFeature.getType().containsTag(FeatureTag.Ä§·¨)) {
+        if (!attackFeature.getType().containsTag(FeatureTag.é­”æ³•)) {
             return originalDamage;
         }
         int maxDamage = feature.getImpact();

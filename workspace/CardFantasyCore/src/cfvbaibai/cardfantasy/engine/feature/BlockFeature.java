@@ -9,9 +9,6 @@ import cfvbaibai.cardfantasy.engine.FeatureResolver;
  * Block 20 * level damages Overlappable.
  * 
  * Only effective to normal attack.
- * 
- * @author °×°×
- * 
  */
 public final class BlockFeature {
     public static int apply(Feature feature, FeatureResolver resolver, EntityInfo attacker, EntityInfo victim,

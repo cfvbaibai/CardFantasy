@@ -9,171 +9,171 @@ import cfvbaibai.cardfantasy.game.PlayerBuilder;
 public class CardFantasyRuneTest {
 
     @Test
-    public void ¾ÅÍ·ÑıÉßvÔ¶¹ÅĞ«»Ê_»ÄÎß() {
-        TestGameBuilder.play5v5withRunes("¾ÅÍ·ÑıÉß", RuneData.»ÄÎß, "Ô¶¹ÅĞ«»Ê", RuneData.»ÄÎß);
+    public void ä¹å¤´å¦–è›‡vè¿œå¤èçš‡_è’èŠœ() {
+        TestGameBuilder.play5v5withRunes("ä¹å¤´å¦–è›‡", RuneData.è’èŠœ, "è¿œå¤èçš‡", RuneData.è’èŠœ);
     }
 
     @Test
-    public void ½ğÊô¾ŞÁúvÔ¶¹ÅĞ«»Ê_ÕÓÔó() {
-        TestGameBuilder.play5v5withRunes("½ğÊô¾ŞÁú", RuneData.»ÄÎß, "Ô¶¹ÅĞ«»Ê", RuneData.ÕÓÔó);
+    public void é‡‘å±å·¨é¾™vè¿œå¤èçš‡_æ²¼æ³½() {
+        TestGameBuilder.play5v5withRunes("é‡‘å±å·¨é¾™", RuneData.è’èŠœ, "è¿œå¤èçš‡", RuneData.æ²¼æ³½);
     }
 
     @Test
-    public void ·ï»ËvÔ¶¹ÅĞ«»Ê_ÕÓÔó_»ÄÎß() {
-        PlayerInfo playerA = PlayerBuilder.build("¡¾A¡¿", 50, "C·ï»Ë-10*5", "RÕÓÔó-4", "R»ÄÎß-4");
-        PlayerInfo playerB = PlayerBuilder.build("¡¾B¡¿", 50, "CÔ¶¹ÅĞ«»Ê-10*5", "RÕÓÔó-4", "R»ÄÎß-4");
+    public void å‡¤å‡°vè¿œå¤èçš‡_æ²¼æ³½_è’èŠœ() {
+        PlayerInfo playerA = PlayerBuilder.build("ã€Aã€‘", 50, "Cå‡¤å‡°-10*5", "Ræ²¼æ³½-4", "Rè’èŠœ-4");
+        PlayerInfo playerB = PlayerBuilder.build("ã€Bã€‘", 50, "Cè¿œå¤èçš‡-10*5", "Ræ²¼æ³½-4", "Rè’èŠœ-4");
         TestGameBuilder.build(playerA, playerB).playGame();
     }
 
     @Test
-    public void ½ğÊô¾ŞÁúvÔ¶¹ÅĞ«»Ê_ÑÒ¾§() {
-        TestGameBuilder.play5v5withRunes("½ğÊô¾ŞÁú", RuneData.ÑÒ¾§, "Ô¶¹ÅĞ«»Ê", RuneData.ÑÒ¾§);
+    public void é‡‘å±å·¨é¾™vè¿œå¤èçš‡_å²©æ™¶() {
+        TestGameBuilder.play5v5withRunes("é‡‘å±å·¨é¾™", RuneData.å²©æ™¶, "è¿œå¤èçš‡", RuneData.å²©æ™¶);
     }
 
     @Test
-    public void ³ÇÕò¹­¼ı±øv¾«Áé¾Ñ»÷Õß_¶¾É°() {
-        PlayerInfo playerA = PlayerBuilder.build("¡¾A¡¿", 100, "C³ÇÕò¹­¼ı±ø-10*15", "R¶¾É°-4");
-        PlayerInfo playerB = PlayerBuilder.build("¡¾B¡¿", 100, "C¾«Áé¾Ñ»÷Õß-10*15", "R¶¾É°-4");
+    public void åŸé•‡å¼“ç®­å…µvç²¾çµç‹™å‡»è€…_æ¯’ç ‚() {
+        PlayerInfo playerA = PlayerBuilder.build("ã€Aã€‘", 100, "CåŸé•‡å¼“ç®­å…µ-10*15", "Ræ¯’ç ‚-4");
+        PlayerInfo playerB = PlayerBuilder.build("ã€Bã€‘", 100, "Cç²¾çµç‹™å‡»è€…-10*15", "Ræ¯’ç ‚-4");
         TestGameBuilder.build(playerA, playerB).playGame();
     }
 
     @Test
-    public void Å£Í·ÈËÇõ³¤vsÕ½¶·ÃÍáïÏó_ÑÒ±Ú() {
-        TestGameBuilder.play5v5withRunes("Å£Í·ÈËÇõ³¤", RuneData.ÑÒ±Ú, "Õ½¶·ÃÍáïÏó", RuneData.ÑÒ±Ú);
+    public void ç‰›å¤´äººé…‹é•¿vsæˆ˜æ–—çŒ›çŠ¸è±¡_å²©å£() {
+        TestGameBuilder.play5v5withRunes("ç‰›å¤´äººé…‹é•¿", RuneData.å²©å£, "æˆ˜æ–—çŒ›çŠ¸è±¡", RuneData.å²©å£);
     }
 
     @Test
-    public void Ë®Ô´ÖÆÔìÕßvsÅ£Í·ÈËÇõ³¤_Ê¯ÁÖ() {
-        TestGameBuilder.play5v5withRunes("Ë®Ô´ÖÆÔìÕß", RuneData.ÑÒ±Ú, "Å£Í·ÈËÇõ³¤", RuneData.Ê¯ÁÖ);
+    public void æ°´æºåˆ¶é€ è€…vsç‰›å¤´äººé…‹é•¿_çŸ³æ—() {
+        TestGameBuilder.play5v5withRunes("æ°´æºåˆ¶é€ è€…", RuneData.å²©å£, "ç‰›å¤´äººé…‹é•¿", RuneData.çŸ³æ—);
     }
 
     @Test
-    public void ½ğÊô¾ŞÁúvs¶ÀÑÛ¾ŞÈË_³à¹È() {
-        TestGameBuilder.play5v5withRunes("½ğÊô¾ŞÁú", RuneData.ÑÒ±Ú, "¶ÀÑÛ¾ŞÈË", RuneData.³à¹È);
+    public void é‡‘å±å·¨é¾™vsç‹¬çœ¼å·¨äºº_èµ¤è°·() {
+        TestGameBuilder.play5v5withRunes("é‡‘å±å·¨é¾™", RuneData.å²©å£, "ç‹¬çœ¼å·¨äºº", RuneData.èµ¤è°·);
     }
 
     @Test
-    public void ·ï»ËvsÖ©ÖëÈËÅ®Íõ_·ÉÑÒ() {
-        TestGameBuilder.play5v5withRunes("·ï»Ë", RuneData.ÑÒ±Ú, "Ö©ÖëÈËÅ®Íõ", RuneData.·ÉÑÒ);
+    public void å‡¤å‡°vsèœ˜è››äººå¥³ç‹_é£å²©() {
+        TestGameBuilder.play5v5withRunes("å‡¤å‡°", RuneData.å²©å£, "èœ˜è››äººå¥³ç‹", RuneData.é£å²©);
     }
 
     @Test
-    public void ½ğÊô¾ŞÁúvsÖ©ÖëÈËÅ®Íõ_»àÍÁ() {
-        TestGameBuilder.play5v5withRunes("½ğÊô¾ŞÁú", RuneData.ÑÒ±Ú, "Ö©ÖëÈËÅ®Íõ", RuneData.»àÍÁ);
+    public void é‡‘å±å·¨é¾™vsèœ˜è››äººå¥³ç‹_ç§½åœŸ() {
+        TestGameBuilder.play5v5withRunes("é‡‘å±å·¨é¾™", RuneData.å²©å£, "èœ˜è››äººå¥³ç‹", RuneData.ç§½åœŸ);
     }
 
     @Test
-    public void ³ÇÕò³¤Ã¬±øvs³ÇÕòÍ»»÷±ø_Ëª¶³º®³±() {
-        TestGameBuilder.play5v5withRunes("³ÇÕò³¤Ã¬±ø", RuneData.Ëª¶³, "³ÇÕòÍ»»÷±ø", RuneData.º®³±);
+    public void åŸé•‡é•¿çŸ›å…µvsåŸé•‡çªå‡»å…µ_éœœå†»å¯’æ½®() {
+        TestGameBuilder.play5v5withRunes("åŸé•‡é•¿çŸ›å…µ", RuneData.éœœå†», "åŸé•‡çªå‡»å…µ", RuneData.å¯’æ½®);
     }
 
     @Test
-    public void Ä§·¨½á¾§ÌåvsÄ§·¨½á¾§Ìå_±ù×¶() {
-        TestGameBuilder.play5v5withRunes("Ä§·¨½á¾§Ìå", RuneData.±ù×¶, "Ä§·¨½á¾§Ìå", RuneData.±ù×¶);
+    public void é­”æ³•ç»“æ™¶ä½“vsé­”æ³•ç»“æ™¶ä½“_å†°é”¥() {
+        TestGameBuilder.play5v5withRunes("é­”æ³•ç»“æ™¶ä½“", RuneData.å†°é”¥, "é­”æ³•ç»“æ™¶ä½“", RuneData.å†°é”¥);
     }
 
     @Test
-    public void Ä§·¨½á¾§Ìåv¶éÂä¾«Áé·¨Ê¦_äöÎĞ() {
-        TestGameBuilder.play5v5withRunes("Ä§·¨½á¾§Ìå", RuneData.äöÎĞ, "¶éÂä¾«Áé·¨Ê¦", RuneData.±ù×¶);
+    public void é­”æ³•ç»“æ™¶ä½“vå •è½ç²¾çµæ³•å¸ˆ_æ¼©æ¶¡() {
+        TestGameBuilder.play5v5withRunes("é­”æ³•ç»“æ™¶ä½“", RuneData.æ¼©æ¶¡, "å •è½ç²¾çµæ³•å¸ˆ", RuneData.å†°é”¥);
     }
 
     @Test
-    public void ³ÇÕò³¤Ã¬±øvs³ÇÕòÍ»»÷±ø_±©ÓêÇåÈª() {
-        TestGameBuilder.play5v5withRunes("³ÇÕò³¤Ã¬±ø", RuneData.±©Óê, "³ÇÕòÍ»»÷±ø", RuneData.ÇåÈª);
+    public void åŸé•‡é•¿çŸ›å…µvsåŸé•‡çªå‡»å…µ_æš´é›¨æ¸…æ³‰() {
+        TestGameBuilder.play5v5withRunes("åŸé•‡é•¿çŸ›å…µ", RuneData.æš´é›¨, "åŸé•‡çªå‡»å…µ", RuneData.æ¸…æ³‰);
     }
 
     @Test
-    public void Ä§·¨½á¾§Ìåv¶éÂä¾«Áé·¨Ê¦_Ñ©±ÀÅ­ÌÎ() {
-        PlayerInfo playerA = PlayerBuilder.build("¡¾A¡¿", 50, "CÄ§·¨½á¾§Ìå-10*5", "RÑ©±À-4");
-        PlayerInfo playerB = PlayerBuilder.build("¡¾B¡¿", 10, "C¶éÂä¾«Áé·¨Ê¦-10*5", "RÅ­ÌÎ-4");
+    public void é­”æ³•ç»“æ™¶ä½“vå •è½ç²¾çµæ³•å¸ˆ_é›ªå´©æ€’æ¶›() {
+        PlayerInfo playerA = PlayerBuilder.build("ã€Aã€‘", 50, "Cé­”æ³•ç»“æ™¶ä½“-10*5", "Ré›ªå´©-4");
+        PlayerInfo playerB = PlayerBuilder.build("ã€Bã€‘", 10, "Cå •è½ç²¾çµæ³•å¸ˆ-10*5", "Ræ€’æ¶›-4");
         TestGameBuilder.build(playerA, playerB).playGame();
     }
 
     @Test
-    public void »Ê¼ÒÎÀ¶Ó½«ÁìvsÁé»êÊÕ¸îÕß_±ù·â() {
-        TestGameBuilder.play5v5withRunes("»Ê¼ÒÎÀ¶Ó½«Áì", RuneData.±ù·â, "Áé»êÊÕ¸îÕß", RuneData.ÇåÈª);
+    public void çš‡å®¶å«é˜Ÿå°†é¢†vsçµé­‚æ”¶å‰²è€…_å†°å°() {
+        TestGameBuilder.play5v5withRunes("çš‡å®¶å«é˜Ÿå°†é¢†", RuneData.å†°å°, "çµé­‚æ”¶å‰²è€…", RuneData.æ¸…æ³‰);
     }
 
     @Test
-    public void Ä§·¨Ğ­»á³¤vs´ó¶ñÄ§_Ê¥Èª() {
-        TestGameBuilder.play5v5withRunes("Ä§·¨Ğ­»á³¤", RuneData.Ê¥Èª, "´ó¶ñÄ§", RuneData.ÇåÈª);
+    public void é­”æ³•åä¼šé•¿vså¤§æ¶é­”_åœ£æ³‰() {
+        TestGameBuilder.play5v5withRunes("é­”æ³•åä¼šé•¿", RuneData.åœ£æ³‰, "å¤§æ¶é­”", RuneData.æ¸…æ³‰);
     }
 
     @Test
-    public void ³ÇÕò³¤Ã¬±øvs³ÇÕòÍ»»÷±ø_ÓÀ¶³º®ÉË() {
-        TestGameBuilder.play5v5withRunes("³ÇÕò³¤Ã¬±ø", RuneData.ÓÀ¶³, "³ÇÕòÍ»»÷±ø", RuneData.º®ÉË);
+    public void åŸé•‡é•¿çŸ›å…µvsåŸé•‡çªå‡»å…µ_æ°¸å†»å¯’ä¼¤() {
+        TestGameBuilder.play5v5withRunes("åŸé•‡é•¿çŸ›å…µ", RuneData.æ°¸å†», "åŸé•‡çªå‡»å…µ", RuneData.å¯’ä¼¤);
     }
 
     @Test
-    public void Ë®Ô´ÖÆÔìÕßvsµØÁëÓµÓĞÕß_ÉÁµçÀ×ÔÆ() {
-        PlayerInfo playerA = PlayerBuilder.build("¡¾A¡¿", 50, "CË®Ô´ÖÆÔìÕß-10*5", "RÉÁµç-4");
-        PlayerInfo playerB = PlayerBuilder.build("¡¾B¡¿", 20, "CµØÁëÓµÓĞÕß-10*5", "RÀ×ÔÆ-4");
+    public void æ°´æºåˆ¶é€ è€…vsåœ°å²­æ‹¥æœ‰è€…_é—ªç”µé›·äº‘() {
+        PlayerInfo playerA = PlayerBuilder.build("ã€Aã€‘", 50, "Cæ°´æºåˆ¶é€ è€…-10*5", "Ré—ªç”µ-4");
+        PlayerInfo playerB = PlayerBuilder.build("ã€Bã€‘", 20, "Cåœ°å²­æ‹¥æœ‰è€…-10*5", "Ré›·äº‘-4");
         TestGameBuilder.build(playerA, playerB).playGame();
     }
 
     @Test
-    public void Ë®Ô´ÖÆÔìÕßvsµØÁëÓµÓĞÕß_Åùö¨·ÉÓğ() {
-        TestGameBuilder.play5v5withRunes("Ë®Ô´ÖÆÔìÕß", RuneData.Åùö¨, "µØÁëÓµÓĞÕß", RuneData.·ÉÓğ);
+    public void æ°´æºåˆ¶é€ è€…vsåœ°å²­æ‹¥æœ‰è€…_éœ¹é›³é£ç¾½() {
+        TestGameBuilder.play5v5withRunes("æ°´æºåˆ¶é€ è€…", RuneData.éœ¹é›³, "åœ°å²­æ‹¥æœ‰è€…", RuneData.é£ç¾½);
     }
 
     @Test
-    public void Ê÷ÈË¼ÀË¾vsÅ£Í·ÈËÎÀÊ¿_¸´ËÕì«·ç() {
-        PlayerInfo playerA = PlayerBuilder.build("¡¾A¡¿", 50, "CÊ÷ÈË¼ÀË¾-10*5", "R¸´ËÕ-4");
-        PlayerInfo playerB = PlayerBuilder.build("¡¾B¡¿", 20, "CÅ£Í·ÈËÎÀÊ¿-10*5", "Rì«·ç-4");
+    public void æ ‘äººç¥­å¸vsç‰›å¤´äººå«å£«_å¤è‹é£“é£() {
+        PlayerInfo playerA = PlayerBuilder.build("ã€Aã€‘", 50, "Cæ ‘äººç¥­å¸-10*5", "Rå¤è‹-4");
+        PlayerInfo playerB = PlayerBuilder.build("ã€Bã€‘", 20, "Cç‰›å¤´äººå«å£«-10*5", "Ré£“é£-4");
         TestGameBuilder.build(playerA, playerB).playGame();
     }
 
     @Test
-    public void Ê÷ÈË¼ÀË¾vsÅ£Í·ÈËÎÀÊ¿_´º·ç¶´²ì() {
-        PlayerInfo playerA = PlayerBuilder.build("¡¾A¡¿", 50, "CÊ÷ÈË¼ÀË¾-10*5", "R´º·ç-4", "R¶´²ì-4");
-        PlayerInfo playerB = PlayerBuilder.build("¡¾B¡¿", 50, "CÅ£Í·ÈËÎÀÊ¿-10*5");
-        TestGameBuilder.build(playerA, playerB).playGame();
-    }
-    
-    @Test
-    public void Ë®Ô´ÖÆÔìÕßvsÔÂÁÁÅ®Éñ_ÑïÆìÀ×ÓüÇáÁé() {
-        PlayerInfo playerA = PlayerBuilder.build("¡¾A¡¿", 50, "CË®Ô´ÖÆÔìÕß-10*10", "RÑïÆì-4", "RÀ×Óü-4", "RÇáÁé-4");
-        PlayerInfo playerB = PlayerBuilder.build("¡¾B¡¿", 50, "CÔÂÁÁÅ®Éñ-10*10");
+    public void æ ‘äººç¥­å¸vsç‰›å¤´äººå«å£«_æ˜¥é£æ´å¯Ÿ() {
+        PlayerInfo playerA = PlayerBuilder.build("ã€Aã€‘", 50, "Cæ ‘äººç¥­å¸-10*5", "Ræ˜¥é£-4", "Ræ´å¯Ÿ-4");
+        PlayerInfo playerB = PlayerBuilder.build("ã€Bã€‘", 50, "Cç‰›å¤´äººå«å£«-10*5");
         TestGameBuilder.build(playerA, playerB).playGame();
     }
     
     @Test
-    public void ºÚ¼×ÌúÆïÊ¿vsÃÀ¶ÅÉ¯Å®Íõ_»ğÈ­ÈÈÀË() {
-        PlayerInfo playerA = PlayerBuilder.build("¡¾A¡¿", 50, "CºÚ¼×ÌúÆïÊ¿-10*5", "R»ğÈ­-4");
-        PlayerInfo playerB = PlayerBuilder.build("¡¾B¡¿", 30, "CÃÀ¶ÅÉ¯Å®Íõ-10*5", "RÈÈÀË-4");
+    public void æ°´æºåˆ¶é€ è€…vsæœˆäº®å¥³ç¥_æ‰¬æ——é›·ç‹±è½»çµ() {
+        PlayerInfo playerA = PlayerBuilder.build("ã€Aã€‘", 50, "Cæ°´æºåˆ¶é€ è€…-10*10", "Ræ‰¬æ——-4", "Ré›·ç‹±-4", "Rè½»çµ-4");
+        PlayerInfo playerB = PlayerBuilder.build("ã€Bã€‘", 50, "Cæœˆäº®å¥³ç¥-10*10");
+        TestGameBuilder.build(playerA, playerB).playGame();
+    }
+    
+    @Test
+    public void é»‘ç”²é“éª‘å£«vsç¾æœèå¥³ç‹_ç«æ‹³çƒ­æµª() {
+        PlayerInfo playerA = PlayerBuilder.build("ã€Aã€‘", 50, "Cé»‘ç”²é“éª‘å£«-10*5", "Rç«æ‹³-4");
+        PlayerInfo playerB = PlayerBuilder.build("ã€Bã€‘", 30, "Cç¾æœèå¥³ç‹-10*5", "Rçƒ­æµª-4");
         TestGameBuilder.build(playerA, playerB).playGame();
     }
 
     @Test
-    public void ºÚ¼×ÌúÆïÊ¿vsÃÀ¶ÅÉ¯Å®Íõ_Á÷»ğºìÁ«() {
-        TestGameBuilder.play5v5withRunes("ºÚ¼×ÌúÆïÊ¿", RuneData.Á÷»ğ, "ÃÀ¶ÅÉ¯Å®Íõ", RuneData.ºìÁ«);
+    public void é»‘ç”²é“éª‘å£«vsç¾æœèå¥³ç‹_æµç«çº¢è²() {
+        TestGameBuilder.play5v5withRunes("é»‘ç”²é“éª‘å£«", RuneData.æµç«, "ç¾æœèå¥³ç‹", RuneData.çº¢è²);
     }
     
     @Test
-    public void ºÚ¼×ÌúÆïÊ¿vsÃÀ¶ÅÉ¯Å®Íõ_Ú¤»ğ´ãÁ¶() {
-        PlayerInfo playerA = PlayerBuilder.build("¡¾A¡¿", 50, "CºÚ¼×ÌúÆïÊ¿-10*5", "RÚ¤»ğ-4");
-        PlayerInfo playerB = PlayerBuilder.build("¡¾B¡¿", 20, "CÃÀ¶ÅÉ¯Å®Íõ-10*5", "R´ãÁ¶-4");
+    public void é»‘ç”²é“éª‘å£«vsç¾æœèå¥³ç‹_å†¥ç«æ·¬ç‚¼() {
+        PlayerInfo playerA = PlayerBuilder.build("ã€Aã€‘", 50, "Cé»‘ç”²é“éª‘å£«-10*5", "Rå†¥ç«-4");
+        PlayerInfo playerB = PlayerBuilder.build("ã€Bã€‘", 20, "Cç¾æœèå¥³ç‹-10*5", "Ræ·¬ç‚¼-4");
         TestGameBuilder.build(playerA, playerB).playGame();
     }
     
     @Test
-    public void ºÚ¼×ÌúÆïÊ¿vs½ğÊô¾ŞÁú_À×¶Ü·ÙÌìÑ×¼×() {
-        PlayerInfo playerA = PlayerBuilder.build("¡¾A¡¿", 50, "CºÚ¼×ÌúÆïÊ¿-10*5", "R·ÙÌì-4", "RÑ×¼×-4");
-        PlayerInfo playerB = PlayerBuilder.build("¡¾B¡¿", 20, "C½ğÊô¾ŞÁú-10*5", "RÀ×Óü-4", "RÀ×¶Ü-4");
+    public void é»‘ç”²é“éª‘å£«vsé‡‘å±å·¨é¾™_é›·ç›¾ç„šå¤©ç‚ç”²() {
+        PlayerInfo playerA = PlayerBuilder.build("ã€Aã€‘", 50, "Cé»‘ç”²é“éª‘å£«-10*5", "Rç„šå¤©-4", "Rç‚ç”²-4");
+        PlayerInfo playerB = PlayerBuilder.build("ã€Bã€‘", 20, "Cé‡‘å±å·¨é¾™-10*5", "Ré›·ç‹±-4", "Ré›·ç›¾-4");
         TestGameBuilder.build(playerA, playerB).playGame();
     }
     
     @Test
-    public void ºÚ¼×ÌúÆïÊ¿vs½ğÊô¾ŞÁú_±¬ÁÑ×Æ»ê() {
-        PlayerInfo playerA = PlayerBuilder.build("¡¾A¡¿", 50, "CºÚ¼×ÌúÆïÊ¿-10*5", "R±¬ÁÑ-4", "R×Æ»ê-4");
-        PlayerInfo playerB = PlayerBuilder.build("¡¾B¡¿", 20, "C½ğÊô¾ŞÁú-10*5");
+    public void é»‘ç”²é“éª‘å£«vsé‡‘å±å·¨é¾™_çˆ†è£‚ç¼é­‚() {
+        PlayerInfo playerA = PlayerBuilder.build("ã€Aã€‘", 50, "Cé»‘ç”²é“éª‘å£«-10*5", "Rçˆ†è£‚-4", "Rç¼é­‚-4");
+        PlayerInfo playerB = PlayerBuilder.build("ã€Bã€‘", 20, "Cé‡‘å±å·¨é¾™-10*5");
         TestGameBuilder.build(playerA, playerB).playGame();
     }
 
     @Test
-    public void ´ó¶ñÄ§vs½ğÊô¾ŞÁú_ÃğÊÀ¾øÉ±() {
-        PlayerInfo playerA = PlayerBuilder.build("¡¾A¡¿", 50, "C´ó¶ñÄ§-10*10", "RÃğÊÀ-4", "R¾øÉ±-4");
-        PlayerInfo playerB = PlayerBuilder.build("¡¾B¡¿", 20, "C½ğÊô¾ŞÁú-10*10");
+    public void å¤§æ¶é­”vsé‡‘å±å·¨é¾™_ç­ä¸–ç»æ€() {
+        PlayerInfo playerA = PlayerBuilder.build("ã€Aã€‘", 50, "Cå¤§æ¶é­”-10*10", "Rç­ä¸–-4", "Rç»æ€-4");
+        PlayerInfo playerB = PlayerBuilder.build("ã€Bã€‘", 20, "Cé‡‘å±å·¨é¾™-10*10");
         TestGameBuilder.build(playerA, playerB).playGame();
     }
 }

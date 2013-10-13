@@ -1,7 +1,7 @@
 package cfvbaibai.cardfantasy.engine;
 
 public enum GameEndCause {
-    Õ½¶·³¬Ê±,
-    Ó¢ĞÛËÀÍö,
-    ¿¨Æ¬È«Ãğ,
+    æˆ˜æ–—è¶…æ—¶,
+    è‹±é›„æ­»äº¡,
+    å¡ç‰‡å…¨ç­,
 }

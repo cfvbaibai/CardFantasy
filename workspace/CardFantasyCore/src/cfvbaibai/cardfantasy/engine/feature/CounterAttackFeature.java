@@ -12,8 +12,6 @@ import cfvbaibai.cardfantasy.engine.HeroDieSignal;
  * Unavoidable.
  * 
  * Cannot be blocked by Immue or Dodge.
- * @author °×°×
- *
  */
 public final class CounterAttackFeature {
     public static void apply(Feature cardFeature, FeatureResolver resolver, CardInfo attacker, CardInfo defender,

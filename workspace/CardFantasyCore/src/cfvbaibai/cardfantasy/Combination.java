@@ -21,7 +21,7 @@ public class Combination {
         List <List <T>> result = new ArrayList <List <T>>(); 
         int m = elements.size(); 
         if (m < n) {
-            throw new IllegalArgumentException("Error： element size (" + m + ") < n (" + n + ")");
+            throw new IllegalArgumentException("Error锟斤拷 element size (" + m + ") < n (" + n + ")");
         }
         BitSet bs = new BitSet(m); 
         for (int i = 0; i < n; i++) { 
@@ -42,17 +42,7 @@ public class Combination {
         }
         return entry;
     }
-    
-    /**说明 这个方法不太容易理解，也是组合的核心算法,下面进行简单的讲解. 
-     * 1、start是从第一个true片段作为起始位，end作为截止位 
-     * 2、第一个true片段都设置成false 
-     * 3、数组从0下标起始到以第一个true片段元素数量减一为下标的位置都置true 
-     * 4、把第一个true片段end截止位置true 
-     * 
-     * @param bs 数组是否显示的标志位 
-     * @param m 数组长度 
-     * @return boolean 是否还有其他组合 
-     */
+
     private static boolean moveNext(BitSet bs, int m) { 
         int start = -1; 
         while (start < m) 

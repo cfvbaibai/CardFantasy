@@ -21,7 +21,7 @@ public class LegionInfo extends EntityInfo {
 
     @Override
     public String getShortDesc() {
-        return player.getId() + "µÄ¾üÍÅ";
+        return player.getId() + "çš„å†›å›¢";
     }
 
     @Override

@@ -12,10 +12,10 @@ public class Legion {
     
     public Legion(int kingdomBuffLevel, int forestBuffLevel, int savageBuffLevel, int hellBuffLevel) {
         buffLevels = new HashMap <Race, Integer>();
-        buffLevels.put(Race.王国, kingdomBuffLevel);
-        buffLevels.put(Race.森林, forestBuffLevel);
-        buffLevels.put(Race.蛮荒, savageBuffLevel);
-        buffLevels.put(Race.地狱, hellBuffLevel);
+        buffLevels.put(Race.鐜嬪浗, kingdomBuffLevel);
+        buffLevels.put(Race.妫灄, forestBuffLevel);
+        buffLevels.put(Race.铔崚, savageBuffLevel);
+        buffLevels.put(Race.鍦扮嫳, hellBuffLevel);
     }
     
     public Map <Race, Integer> getBuffLevels() {

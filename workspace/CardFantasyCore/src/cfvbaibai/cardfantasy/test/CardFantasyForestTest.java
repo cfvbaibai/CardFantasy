@@ -20,57 +20,57 @@ public class CardFantasyForestTest {
     }
 
     @Test
-    public void ôä´äÁúvsÉ­ÁÖÅ®Éñ() {
-        TestGameBuilder.play5v5("ôä´äÁú", "É­ÁÖÅ®Éñ");
+    public void ç¿¡ç¿ é¾™vsæ£®æ—å¥³ç¥() {
+        TestGameBuilder.play5v5("ç¿¡ç¿ é¾™", "æ£®æ—å¥³ç¥");
     }
 
     @Test
-    public void ½ğÊô¾ŞÁúvsÔÂÉñåóÅÚ³µÊÖ() {
-        TestGameBuilder.play5v5("½ğÊô¾ŞÁú", "ÔÂÉñåóÅÚ³µÊÖ");
+    public void é‡‘å±å·¨é¾™vsæœˆç¥å¼©ç‚®è½¦æ‰‹() {
+        TestGameBuilder.play5v5("é‡‘å±å·¨é¾™", "æœˆç¥å¼©ç‚®è½¦æ‰‹");
     }
 
     @Test
-    public void ôä´äÁúvsÔÂÉñåóÅÚ³µÊÖ() {
-        TestGameBuilder.play5v5("ôä´äÁú", "ÔÂÉñåóÅÚ³µÊÖ");
+    public void ç¿¡ç¿ é¾™vsæœˆç¥å¼©ç‚®è½¦æ‰‹() {
+        TestGameBuilder.play5v5("ç¿¡ç¿ é¾™", "æœˆç¥å¼©ç‚®è½¦æ‰‹");
     }
 
     @Test
-    public void É­ÁÖÇğ±ÈÌØvsÔÂÉñåóÅÚ³µÊÖ() {
-        TestGameBuilder.play5v5("É­ÁÖÇğ±ÈÌØ", "ÔÂÉñåóÅÚ³µÊÖ");
+    public void æ£®æ—ä¸˜æ¯”ç‰¹vsæœˆç¥å¼©ç‚®è½¦æ‰‹() {
+        TestGameBuilder.play5v5("æ£®æ—ä¸˜æ¯”ç‰¹", "æœˆç¥å¼©ç‚®è½¦æ‰‹");
     }
 
     @Test
-    public void É­ÁÖÇğ±ÈÌØvs½ğÊô¾ŞÁú() {
-        TestGameBuilder.play5v5("É­ÁÖÇğ±ÈÌØ", "½ğÊô¾ŞÁú");
+    public void æ£®æ—ä¸˜æ¯”ç‰¹vsé‡‘å±å·¨é¾™() {
+        TestGameBuilder.play5v5("æ£®æ—ä¸˜æ¯”ç‰¹", "é‡‘å±å·¨é¾™");
     }
 
     @Test
-    public void ·ï»Ëvs½ğÊô¾ŞÁú() {
-        TestGameBuilder.play5v5("·ï»Ë", "½ğÊô¾ŞÁú");
+    public void å‡¤å‡°vsé‡‘å±å·¨é¾™() {
+        TestGameBuilder.play5v5("å‡¤å‡°", "é‡‘å±å·¨é¾™");
     }
 
     @Test
-    public void ÔªËØÁéÁúvs½ğÊô¾ŞÁú() {
-        TestGameBuilder.play5v5("ÔªËØÁéÁú", "½ğÊô¾ŞÁú");
+    public void å…ƒç´ çµé¾™vsé‡‘å±å·¨é¾™() {
+        TestGameBuilder.play5v5("å…ƒç´ çµé¾™", "é‡‘å±å·¨é¾™");
     }
 
     @Test
-    public void ÔªËØÁéÁúvs·ï»Ë() {
-        TestGameBuilder.play5v5("ÔªËØÁéÁú", "·ï»Ë");
+    public void å…ƒç´ çµé¾™vså‡¤å‡°() {
+        TestGameBuilder.play5v5("å…ƒç´ çµé¾™", "å‡¤å‡°");
     }
 
     @Test
-    public void Ğ¡°«ÈË¹¤½³vsÃÜÎÆÆïÊ¿() {
-        TestGameBuilder.play5v5("Ğ¡°«ÈË¹¤½³", "ÃÜÎÆÆïÊ¿");
+    public void å°çŸ®äººå·¥åŒ vså¯†çº¹éª‘å£«() {
+        TestGameBuilder.play5v5("å°çŸ®äººå·¥åŒ ", "å¯†çº¹éª‘å£«");
     }
 
     @Test
-    public void Ğ¡°«ÈË¹¤½³vsÉ­ÁÖÅ®Éñ() {
-        TestGameBuilder.play5v5("Ğ¡°«ÈË¹¤½³", "É­ÁÖÅ®Éñ");
+    public void å°çŸ®äººå·¥åŒ vsæ£®æ—å¥³ç¥() {
+        TestGameBuilder.play5v5("å°çŸ®äººå·¥åŒ ", "æ£®æ—å¥³ç¥");
     }
     
     @Test
-    public void ÊÀ½çÊ÷Ö®Áévs·ï»Ë() {
-        TestGameBuilder.play5v5("ÊÀ½çÊ÷Ö®Áé", "·ï»Ë");
+    public void ä¸–ç•Œæ ‘ä¹‹çµvså‡¤å‡°() {
+        TestGameBuilder.play5v5("ä¸–ç•Œæ ‘ä¹‹çµ", "å‡¤å‡°");
     }
 }

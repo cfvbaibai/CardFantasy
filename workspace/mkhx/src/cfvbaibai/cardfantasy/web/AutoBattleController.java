@@ -25,7 +25,6 @@ import cfvbaibai.cardfantasy.engine.GameEngine;
 import cfvbaibai.cardfantasy.engine.GameResult;
 import cfvbaibai.cardfantasy.engine.Player;
 import cfvbaibai.cardfantasy.engine.Rule;
-import cfvbaibai.cardfantasy.engine.StageInfo;
 import cfvbaibai.cardfantasy.game.DummyGameUI;
 import cfvbaibai.cardfantasy.game.GameResultStat;
 import cfvbaibai.cardfantasy.game.PlayerBuilder;
@@ -88,8 +87,6 @@ public class AutoBattleController {
         }
         return stat;
     }
-    
-    private StageInfo activeStage;
 
     @RequestMapping(value = "/PlayAuto1MatchGame")
     public ResponseEntity<String> playAuto1MatchGame(HttpServletRequest request, @RequestParam("deck1") String deck1,
@@ -98,6 +95,7 @@ public class AutoBattleController {
         HttpHeaders responseHeaders = new HttpHeaders();
         responseHeaders.add("Content-Type", "text/html;charset=UTF-8");
         try {
+            checkWebsiteStatus();
             if (firstAttack != 0 && firstAttack != 1 && firstAttack != -1) {
                 throw new IllegalArgumentException("无效的先攻：" + firstAttack);
             }
@@ -128,6 +126,7 @@ public class AutoBattleController {
         responseHeaders.add("Content-Type", "application/json;charset=UTF-8");
         responseHeaders.add("Charset", "UTF-8");
         try {
+            checkWebsiteStatus();
             if (firstAttack != 0 && firstAttack != 1 && firstAttack != -1) {
                 throw new IllegalArgumentException("无效的先攻：" + firstAttack);
             }
@@ -141,7 +140,6 @@ public class AutoBattleController {
             GameEngine engine = new GameEngine(ui, new Rule(5, 999, firstAttack, false));
             engine.RegisterPlayers(player1, player2);
             GameResult gameResult = engine.playGame();
-            this.activeStage = engine.getStage();
             BattleRecord record = ui.getRecord();
             String result = gson.toJson(record);
             log("Winner: " + gameResult.getWinner().getId());
@@ -158,6 +156,7 @@ public class AutoBattleController {
         HttpHeaders responseHeaders = new HttpHeaders();
         responseHeaders.add("Content-Type", "text/html;charset=UTF-8");
         try {
+            checkWebsiteStatus();
             if (firstAttack != 0 && firstAttack != 1 && firstAttack != -1) {
                 throw new IllegalArgumentException("无效的先攻：" + firstAttack);
             }
@@ -190,6 +189,7 @@ public class AutoBattleController {
         HttpHeaders responseHeaders = new HttpHeaders();
         responseHeaders.add("Content-Type", "text/html;charset=UTF-8");
         try {
+            checkWebsiteStatus();
             log("PlayBoss1MatchGame from " + request.getRemoteAddr() + ":");
             log("Deck = " + deck);
             log("Hero LV = " + heroLv + ", Boss = " + bossName);
@@ -216,6 +216,7 @@ public class AutoBattleController {
         responseHeaders.add("Content-Type", "application/json;charset=UTF-8");
         responseHeaders.add("Charset", "UTF-8");
         try {
+            checkWebsiteStatus();
             log("SimulateBoss1MatchGame from " + request.getRemoteAddr() + ":");
             log("Deck = " + deck);
             log("Hero LV = " + heroLv + ", Boss = " + bossName);
@@ -243,6 +244,7 @@ public class AutoBattleController {
         HttpHeaders responseHeaders = new HttpHeaders();
         responseHeaders.add("Content-Type", "text/html;charset=UTF-8");
         try {
+            checkWebsiteStatus();
             log("PlayBossMassiveGame from " + request.getRemoteAddr() + ":");
             log("Deck = " + deck);
             log("Count = " + count + ", Hero LV = " + heroLv + ", Boss = " + bossName);
@@ -316,6 +318,7 @@ public class AutoBattleController {
     public ResponseEntity<String> getCardDetail(HttpServletRequest request, @RequestParam("playerId") String playerId,
             @RequestParam("uniqueName") String uniqueName, @RequestParam("type") String type) {
         try {
+            checkWebsiteStatus();
             HttpHeaders responseHeaders = new HttpHeaders();
             responseHeaders.add("Content-Type", "application/json;charset=UTF-8");
             responseHeaders.add("Charset", "UTF-8");
@@ -328,5 +331,9 @@ public class AutoBattleController {
 
     private static String getCurrentTime() {
         return "时间: " + DateFormat.getTimeInstance().format(new Date());
+    }
+    
+    private static void checkWebsiteStatus() {
+        
     }
 }

@@ -35,35 +35,35 @@ public class CardStatusItem {
     }
 
     public static CardStatusItem paralyzed(FeatureInfo cause) {
-        return new CardStatusItem(CardStatusType.Âé±Ô, 0, cause);
+        return new CardStatusItem(CardStatusType.éº»ç—¹, 0, cause);
     }
 
     public static CardStatusItem frozen(FeatureInfo cause) {
-        return new CardStatusItem(CardStatusType.±ù¶³, 0, cause);
+        return new CardStatusItem(CardStatusType.å†°å†», 0, cause);
     }
 
     public static CardStatusItem poisoned(int effect, FeatureInfo cause) {
-        return new CardStatusItem(CardStatusType.ÖĞ¶¾, effect, cause);
+        return new CardStatusItem(CardStatusType.ä¸­æ¯’, effect, cause);
     }
 
     public static CardStatusItem trapped(FeatureInfo cause) {
-        return new CardStatusItem(CardStatusType.Ëø¶¨, 0, cause);
+        return new CardStatusItem(CardStatusType.é”å®š, 0, cause);
     }
 
     public static CardStatusItem burning(int effect, FeatureInfo cause) {
-        return new CardStatusItem(CardStatusType.È¼ÉÕ, effect, cause);
+        return new CardStatusItem(CardStatusType.ç‡ƒçƒ§, effect, cause);
     }
     
     public static CardStatusItem wound(FeatureInfo cause) {
-        return new CardStatusItem(CardStatusType.ÁÑÉË, 0, cause);
+        return new CardStatusItem(CardStatusType.è£‚ä¼¤, 0, cause);
     }
 
     public static CardStatusItem weak(FeatureInfo cause) {
-        return new CardStatusItem(CardStatusType.ĞéÈõ, 0, cause);
+        return new CardStatusItem(CardStatusType.è™šå¼±, 0, cause);
     }
     
     public static CardStatusItem confused(FeatureInfo cause) {
-        return new CardStatusItem(CardStatusType.ÃÔ»ó, 0, cause);
+        return new CardStatusItem(CardStatusType.è¿·æƒ‘, 0, cause);
     }
     
     public String getShortDesc() {

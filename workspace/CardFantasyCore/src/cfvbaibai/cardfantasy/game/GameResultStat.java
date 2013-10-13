@@ -24,7 +24,7 @@ public class GameResultStat {
     
     public void addResult(GameResult result) {
         String winnerId = result.getWinner().getId();
-        if (result.getCause() == GameEndCause.Õ½¶·³¬Ê±) {
+        if (result.getCause() == GameEndCause.æˆ˜æ–—è¶…æ—¶) {
             ++this.timeoutCount;
         } else if (winnerId.equals(p1.getId())) {
             ++this.p1WinCount;

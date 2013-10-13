@@ -16,9 +16,6 @@ import cfvbaibai.cardfantasy.engine.HeroDieSignal;
  * Decrease defender 10 * level AT if normal attack causes damage.
  * 
  * Can be blocked by Immue.
- * 
- * @author °×°×
- * 
  */
 public final class WeakenFeature {
     public static void apply(FeatureResolver resolver, FeatureInfo featureInfo, CardInfo attacker, CardInfo defender,

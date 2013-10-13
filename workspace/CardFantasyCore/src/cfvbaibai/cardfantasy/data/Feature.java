@@ -22,7 +22,7 @@ public abstract class Feature {
     }
 
     public String getShortDesc() {
-        return String.format("¡¾%s%s¡¿", type.getDisplayName(), level == 0 ? "" : String.valueOf(level));
+        return String.format("ã€%s%sã€‘", type.getDisplayName(), level == 0 ? "" : String.valueOf(level));
     }
     
     @Override
@@ -38,7 +38,7 @@ public abstract class Feature {
         return false;
     }
     
-    public static Feature ×Ô¶¯¿ÛÑª() {
-        return new RuneFeature(FeatureType.×Ô¶¯¿ÛÑª, 0);
+    public static Feature è‡ªåŠ¨æ‰£è¡€() {
+        return new RuneFeature(FeatureType.è‡ªåŠ¨æ‰£è¡€, 0);
     }
 }

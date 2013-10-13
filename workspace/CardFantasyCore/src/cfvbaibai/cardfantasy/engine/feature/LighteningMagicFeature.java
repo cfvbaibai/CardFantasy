@@ -19,9 +19,6 @@ import cfvbaibai.cardfantasy.engine.Player;
  * 
  * Can be blocked by Immue. Can be reflected by Magic Reflection. Can activate
  * dying feature.
- * 
- * @author °×°×
- * 
  */
 public final class LighteningMagicFeature {
     public static void apply(FeatureInfo featureInfo, FeatureResolver resolver, EntityInfo attacker, Player defender,

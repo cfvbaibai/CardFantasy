@@ -6,9 +6,6 @@ import java.util.List;
 
 /**
  * Immutable
- * 
- * @author °×°×
- * 
  */
 public class PlayerInfo {
     private String id;
