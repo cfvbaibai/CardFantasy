@@ -62,7 +62,7 @@
                     <input data-theme="c" data-mini="true" type="radio" name="firstAttack" id="player2First" value="1" />
                     <label for="player2First">玩家2先攻</label>
                 </div>
-                <div id="player1" class="player ui-grid-b">
+                <div id="player1" class="player ui-grid-c">
                     <div data-theme="c" class="ui-block-a ui-block-label-number">
                         <span>玩家1等级: </span>
                     </div>
@@ -71,6 +71,9 @@
                     </div>
                     <div data-theme="c" class="ui-block-c ui-block-label-number">
                         <span>玩家1卡组: </span>
+                    </div>
+                    <div data-theme="c" class="ui-block-d">
+                        <a data-role="button" data-rel="dialog" href="#deck-builder" data-mini="true" data-inline="">组卡</a>
                     </div>
                 </div>
                 <div>
@@ -269,6 +272,102 @@
                 <a data-role="button" data-mini="true" data-theme="c" href="http://cnrdn.com/rd.htm?id=1344758&r=http%3A%2F%2Ftieba.baidu.com%2Fp%2F2548422450%3Ffrom%3Danimation" target="blank">提BUG</a>
             </div>
             <div id="playerStatus"></div>
+        </div>
+    </div>
+    
+    <div data-role="page" data-title="组卡" data-mini="true" id="deck-builder">
+        <div data-role="header" data-theme="c" data-position="fixed">
+            <h3 style="text-align: center">组卡</h3>
+        </div>
+        <div data-role="content" data-theme="c">
+            <div id="deck-chooser">
+                <div data-role="collapsible-set" data-theme="c" data-content-theme="d">
+                    <div data-role="collapsible" data-mini="true" data-collapsed="false">
+                        <h3>卡牌</h3>
+                        <div>
+                            <div id="card-filter">
+                                <table style="width: 100%">
+                                    <tr>
+                                        <td>筛选</td>
+                                        <td style="width: 40%">
+                                            <select data-mini="true">
+                                                <option>全部种族</option>
+                                                <option>王国</option>
+                                                <option>森林</option>
+                                                <option>蛮荒</option>
+                                                <option>地狱</option>
+                                            </select>
+                                        </td>
+                                        <td style="width: 40%">
+                                            <select data-mini="true">
+                                                <option>全部星数</option>
+                                                <option>一星</option>
+                                                <option>二星</option>
+                                                <option>三星</option>
+                                                <option>四星</option>
+                                                <option>五星</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div id="card-candidate" style="WIDTH:100%; HEIGHT: 100px; OVERFLOW: auto">
+                                <% for (int i = 0; i < 20; ++i) { %>
+                                    <a href="#ppp1" data-rel="popup" data-mini="true" data-role="button" data-inline="true" data-icon="plus" data-iconpos="right">城镇弓箭手</a>
+                                <% } %>
+                            </div>
+                        </div>
+                    </div>
+                    <div data-role="collapsible" data-mini="true">
+                        <h3>符文</h3>
+                        <div>
+                            <div id="rune-filter">
+                                <table style="width: 100%">
+                                    <tr>
+                                        <td>筛选</td>
+                                        <td style="width: 40%">
+                                            <select data-mini="true">
+                                                <option>全部属性</option>
+                                                <option>冰</option>
+                                                <option>风</option>
+                                                <option>地</option>
+                                                <option>火</option>
+                                            </select>
+                                        </td>
+                                        <td style="width: 40%">
+                                            <select data-mini="true">
+                                                <option>全部星数</option>
+                                                <option>一星</option>
+                                                <option>二星</option>
+                                                <option>三星</option>
+                                                <option>四星</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div id="card-candidate" style="WIDTH:100%; HEIGHT: 100px; OVERFLOW: auto">
+                                <% for (int i = 0; i < 20; ++i) { %>
+                                    <a href="#ppp1" data-rel="popup" data-mini="true" data-role="button" data-inline="true" data-icon="plus" data-iconpos="right">冰封</a>
+                                <% } %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div data-role="collapsible" data-mini="true" data-content-theme="d" data-collapsed="false">
+                <h3>牌组</h3>
+                <div id="deck-output" style="OVERFLOW: auto; height: 100px">
+                    <a href="#a" data-role="button" data-mini="true" data-inline="true" data-icon="delete" data-iconpos="right">金属巨龙+吸血-15</a>
+                    <a href="#a" data-role="button" data-mini="true" data-inline="true" data-icon="delete" data-iconpos="right">降临天使+不动-15</a>
+                    <a href="#a" data-role="button" data-mini="true" data-inline="true" data-icon="delete" data-iconpos="right">降临天使+降临趁胜追击-15*10</a>
+                    <a href="#a" data-role="button" data-mini="true" data-inline="true" data-icon="delete" data-iconpos="right">降临天使+不动-15</a>
+                </div>
+            </div>
+            <div id="deck-builder-control-panel" data-mini="true" data-role="controlgroup" data-type="horizontal">
+                <a id="cancelButton" data-role="button" data-mini="true" data-theme="c" href="javascript:history.go(-1)">确定</a>
+                <a id="cancelButton" data-role="button" data-mini="true" data-theme="c" href="javascript:history.go(-1)">取消</a>
+            </div>
         </div>
     </div>
 
