@@ -14,6 +14,11 @@ var initDeckBuilder = function(store, outputDivId) {
     DeckBuilder.outputDivId = outputDivId;
     console.log(JSON.stringify(store));
     $('#deck-output').html('');
+    var currentDeck = $('#' + outputDivId).val();
+    var parts = currentDeck.replace('，',',').split(',');
+    $.each(parts, function(i, part) {
+        addEntity(part.trim());
+    });
     initExtraFeatureNames();
     filterCard();
     filterRune();
@@ -114,6 +119,7 @@ var addCard = function() {
         cardDesc += '*' + cardCount;
     }
     addEntity(cardDesc);
+    history.back(-1);
 };
 
 var filterRune = function() {
@@ -159,6 +165,7 @@ var addRune = function() {
         runeDesc += '-' + runeLevel;
     }
     addEntity(runeDesc);
+    history.back(-1);
 };
 
 var addEntity = function(desc) {
@@ -170,7 +177,6 @@ var addEntity = function(desc) {
         .click(function() { $(this).remove(); })
         .data('desc', desc);
     $('#deck-output').append(entityButton).trigger('create');
-    history.back(-1);
 };
 
 var enableExtraFeature = function() {

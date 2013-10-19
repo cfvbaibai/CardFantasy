@@ -114,3 +114,10 @@ div#playerStatus {
 	font-weight: bold;
 	text-shadow: 0 -1px #BBBBBB, 0 2px #FFFFFF;
 }
+
+#deck-chooser div.candidate {
+	WIDTH: 100%;
+	HEIGHT: 100px;
+	OVERFLOW: auto;
+	BORDER: solid 1px #CCCCCC;
+}

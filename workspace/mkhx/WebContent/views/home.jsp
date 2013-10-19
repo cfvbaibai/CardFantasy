@@ -315,7 +315,7 @@
                                     </tr>
                                 </table>
                             </div>
-                            <div id="card-candidate" style="WIDTH:100%; HEIGHT: 100px; OVERFLOW: auto"></div>
+                            <div id="card-candidate" class="candidate"></div>
                         </div>
                     </div>
                     <div data-role="collapsible" data-mini="true">
@@ -345,7 +345,7 @@
                                     </tr>
                                 </table>
                             </div>
-                            <div id="rune-candidate" style="WIDTH:100%; HEIGHT: 100px; OVERFLOW: auto"></div>
+                            <div id="rune-candidate" class="candidate"></div>
                         </div>
                     </div>
                 </div>
