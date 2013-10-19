@@ -1,4 +1,13 @@
 var DeckBuilder = {};
+DeckBuilder.isFeatureGrowable = function(featureName) {
+    for (var i = 0; i < DeckBuilder.store.features.length; ++i) {
+        var feature = DeckBuilder.store.features[i];
+        if (feature.name == featureName) {
+            return feature.growable; 
+        }
+    }
+    return false;
+};
 
 var initDeckBuilder = function(store, outputDivId) {
     DeckBuilder.store = store;
@@ -30,10 +39,20 @@ var updateDeck = function() {
 
 var initExtraFeatureNames = function() {
     $('#extra-feature-name').html('');
-    var featureNames = DeckBuilder.store.features;
-    $.each(featureNames, function(i, feature) {
-        $('#extra-feature-name').append('<option value="' + feature + '">' + feature + '</option>');
+    var features = DeckBuilder.store.features;
+    $.each(features, function(i, feature) {
+        $('#extra-feature-name').append('<option value="' + feature.name + '">' + feature.name + '</option>');
     });
+};
+
+var extraFeatureNameChanged = function() {
+    var featureName = $('#extra-feature-name').val();
+    var growable = DeckBuilder.isFeatureGrowable(featureName);
+    if (growable) {
+        $('#extra-feature-level').selectmenu('enable');
+    } else {
+        $('#extra-feature-level').selectmenu('disable');
+    }
 };
 
 var filterCard = function() {
@@ -81,8 +100,9 @@ var addCard = function() {
     if (extraFeatureEnabled) {
         cardDesc += '+';
         cardDesc += $('input[name=card-extra-feature-flag]:radio:checked').val();
-        cardDesc += $('#extra-feature-name').val();
-        if (extraFeatureLevel > 0) {
+        var extraFeatureName = $('#extra-feature-name').val();
+        cardDesc += extraFeatureName;
+        if (DeckBuilder.isFeatureGrowable(extraFeatureName)) {
             cardDesc += extraFeatureLevel;
         }
     }
@@ -155,6 +175,7 @@ var addEntity = function(desc) {
 
 var enableExtraFeature = function() {
     if ($('#enable-extra-feature').prop('checked')) {
+        $('#new-card-props select.level').val('15').selectmenu('refresh', false);
         $('#extra-feature-props').show('fast');
     } else {
         $('#extra-feature-props').hide('fast');

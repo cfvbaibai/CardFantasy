@@ -105,7 +105,7 @@ var showDeckBuilder = function(outputDivId) {
 };
 
 var buildDeck = function(outputDivId) {
-    $.get('http://cnrdn.com/rd.htm?id=1344758&r=BuildDeck&seed=' + seed, function(data) { console.log('BuildDeck'); });
+    $.get('http://cnrdn.com/rd.htm?id=1344758&r=BuildDeck' + outputDivId + '&seed=' + seed, function(data) { console.log('BuildDeck'); });
     if (store == null) {
         loadStore(outputDivId);
     } else {

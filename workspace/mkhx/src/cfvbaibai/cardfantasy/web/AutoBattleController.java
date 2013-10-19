@@ -362,17 +362,13 @@ public class AutoBattleController {
             }
             result.put("entities", entities);
 
-            List<String> featureList = new ArrayList<String>(); 
+            List<FeatureTypeRuntimeInfo> featureList = new ArrayList<FeatureTypeRuntimeInfo>(); 
             for (FeatureType featureType : FeatureType.values()) {
                 if (!featureType.containsTag(FeatureTag.不可洗炼)) {
-                    featureList.add(featureType.name());
+                    featureList.add(new FeatureTypeRuntimeInfo(featureType));
                 }
             }
-            String[] featureNames = new String[featureList.size()];
-            featureList.toArray(featureNames);
-            Comparator<Object> comparator = Collator.getInstance(java.util.Locale.CHINA);
-            Arrays.sort(featureNames, comparator);
-            result.put("features", featureNames);
+            result.put("features", featureList);
             String jsonResult = gson.toJson(result);
             return new ResponseEntity<String>(jsonResult, responseHeaders, HttpStatus.CREATED);
         } catch (Exception e) {

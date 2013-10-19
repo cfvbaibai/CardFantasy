@@ -211,7 +211,7 @@
                         </select>
                     </fieldset>
                     
-                    <div id="player" class="player ui-grid-b">
+                    <div id="player" class="player ui-grid-c">
                         <div class="ui-block-a ui-block-label-number">
                             <span>玩家等级: </span>
                         </div>
@@ -220,6 +220,9 @@
                         </div>
                         <div class="ui-block-c ui-block-label-number">
                             <span>玩家卡组: </span>
+                        </div>
+                        <div data-theme="c" class="ui-block-d">
+                            <a data-role="button" data-rel="dialog" href="javascript:buildDeck('deck')" data-mini="true">组卡</a>
                         </div>
                     </div>
                     <div>
@@ -293,7 +296,7 @@
                                     <tr>
                                         <td>筛选</td>
                                         <td style="width: 40%">
-                                            <select id="card-race-filter" data-mini="true" onchange="filterCard()">
+                                            <select id="card-race-filter" data-mini="true" data-native-menu="false" onchange="filterCard()">
                                                 <option value="KINGDOM">王国</option>
                                                 <option value="FOREST">森林</option>
                                                 <option value="SAVAGE">蛮荒</option>
@@ -301,12 +304,12 @@
                                             </select>
                                         </td>
                                         <td style="width: 40%">
-                                            <select id="card-star-filter" data-mini="true" onchange="filterCard()">
+                                            <select id="card-star-filter" data-mini="true" data-native-menu="false" onchange="filterCard()">
                                                 <option value="1">一星</option>
                                                 <option value="2">二星</option>
                                                 <option value="3">三星</option>
                                                 <option value="4">四星</option>
-                                                <option value="5">五星</option>
+                                                <option value="5" selected="selected">五星</option>
                                             </select>
                                         </td>
                                     </tr>
@@ -323,7 +326,7 @@
                                     <tr>
                                         <td>筛选</td>
                                         <td style="width: 40%">
-                                            <select id="rune-class-filter" data-mini="true" onchange="filterRune()">
+                                            <select id="rune-class-filter" data-mini="true" data-native-menu="false" onchange="filterRune()">
                                                 <option value="WATER">冰</option>
                                                 <option value="WIND">风</option>
                                                 <option value="GROUND">地</option>
@@ -331,11 +334,12 @@
                                             </select>
                                         </td>
                                         <td style="width: 40%">
-                                            <select id="rune-star-filter" data-mini="true" onchange="filterRune()">
+                                            <select id="rune-star-filter" data-mini="true" data-native-menu="false" onchange="filterRune()">
                                                 <option value="1">一星</option>
                                                 <option value="2">二星</option>
                                                 <option value="3">三星</option>
                                                 <option value="4">四星</option>
+                                                <option value="5" selected="selected">五星</option>
                                             </select>
                                         </td>
                                     </tr>
@@ -372,7 +376,7 @@
                 <tr>
                     <td>等级</td>
                     <td>
-                        <select class="level" data-mini="true">
+                        <select class="level" data-mini="true" data-native-menu="false">
                             <option value="0">0</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
@@ -399,7 +403,7 @@
                 <tr>
                     <td>等级</td>
                     <td>
-                        <select class='level' data-mini="true">
+                        <select class='level' data-mini="true" data-native-menu="false">
                             <option value="0">0</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
@@ -422,7 +426,7 @@
                 <tr>
                     <td>数量</td>
                     <td>
-                        <select class='count' data-mini="true">
+                        <select class='count' data-mini="true" data-native-menu="false">
                             <option value="1" selected="selected">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -443,14 +447,14 @@
                     <tr>
                         <td>技能</td>
                         <td>
-                            <select id="extra-feature-name" data-mini="true">
+                            <select id="extra-feature-name" data-mini="true" data-native-menu="false" onchange="extraFeatureNameChanged()">
                             </select>
                         </td>
                     </tr>
                     <tr>
                         <td>等级</td>
                         <td>
-                            <select id="extra-feature-level" data-mini="true">
+                            <select id="extra-feature-level" data-mini="true" data-native-menu="false">
                                 <option value="1" selected="selected">1</option>
                                 <option value="2">2</option>
                                 <option value="3">3</option>

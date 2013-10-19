@@ -147,10 +147,14 @@ public enum FeatureType {
     }
 
     public int getImpact(int level) {
-        return initImpact + level * incrImpact;
+        return this.initImpact + level * this.incrImpact;
     }
     
     public boolean containsTag(FeatureTag tag) {
         return this.tags.contains(tag);
+    }
+
+    public boolean isGrowable() {
+        return this.incrImpact > 0;
     }
 }
