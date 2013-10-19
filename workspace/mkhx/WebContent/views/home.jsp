@@ -8,7 +8,7 @@
 
 </head>
 <body>
-    <div data-role="page" data-mini="true" data-title="竞技场战" id="main-container">
+    <div data-role="page" data-title="竞技场战" data-mini="true" id="main-container">
         <div data-role="header" data-id="navbar" data-position="fixed" data-theme="c">
             <div data-role="navbar" data-theme="c">
                 <ul>
@@ -261,7 +261,7 @@
         </div>
     </div>
     
-    <div data-role="page" data-title="战场" data-mini="true" id="arena">
+    <div data-role="page" data-title="战场" data-mini="true" id="arena" class="fixed-width">
         <div data-role="header" data-theme="c" data-position="fixed">
             <h3 style="text-align: center">战斗</h3>
         </div>

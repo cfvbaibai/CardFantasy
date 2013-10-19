@@ -83,11 +83,15 @@ fieldset div.ui-controlgroup-controls .ui-select {
 }
 
 .ui-dialog-contain {
-  width: 92.5%;
-  max-width: 450px;
-  margin: 1% auto 0 auto;
-  padding: 0;
-  position: relative;
+	width: 90%;
+	max-width: 800px;
+	margin: 1% auto 0 auto;
+	padding: 0;
+	position: relative;
+}
+
+.fixed-width .ui-dialog-contain {
+	max-width: 450px;
 }
 
 #battle-canvas {
