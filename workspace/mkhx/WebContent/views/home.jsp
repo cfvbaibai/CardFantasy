@@ -73,13 +73,13 @@
                         <span>玩家1卡组: </span>
                     </div>
                     <div data-theme="c" class="ui-block-d">
-                        <a data-role="button" data-rel="dialog" href="#deck-builder" data-mini="true" data-inline="">组卡</a>
+                        <a data-role="button" data-rel="dialog" href="javascript:buildDeck('deck1')" data-mini="true">组卡</a>
                     </div>
                 </div>
                 <div>
                     <textarea data-theme="c" id="deck1" rows="5" cols="40" data-mini="true">金属巨龙*5,降临天使*5,冰封,永冻,雷盾,春风</textarea>
                 </div>
-                <div id="player2" class="player ui-grid-b">
+                <div id="player2" class="player ui-grid-c">
                     <div data-theme="c" class="ui-block-a ui-block-label-number">
                         <span>玩家2等级: </span>
                     </div>
@@ -88,6 +88,9 @@
                     </div>
                     <div class="ui-block-c ui-block-label-number">
                         <span>玩家2卡组: </span>
+                    </div>
+                    <div data-theme="c" class="ui-block-d">
+                        <a data-role="button" data-rel="dialog" href="javascript:buildDeck('deck2')" data-mini="true">组卡</a>
                     </div>
                 </div>
                 <div>
@@ -290,32 +293,26 @@
                                     <tr>
                                         <td>筛选</td>
                                         <td style="width: 40%">
-                                            <select data-mini="true">
-                                                <option>全部种族</option>
-                                                <option>王国</option>
-                                                <option>森林</option>
-                                                <option>蛮荒</option>
-                                                <option>地狱</option>
+                                            <select id="card-race-filter" data-mini="true" onchange="filterCard()">
+                                                <option value="KINGDOM">王国</option>
+                                                <option value="FOREST">森林</option>
+                                                <option value="SAVAGE">蛮荒</option>
+                                                <option value="HELL">地狱</option>
                                             </select>
                                         </td>
                                         <td style="width: 40%">
-                                            <select data-mini="true">
-                                                <option>全部星数</option>
-                                                <option>一星</option>
-                                                <option>二星</option>
-                                                <option>三星</option>
-                                                <option>四星</option>
-                                                <option>五星</option>
+                                            <select id="card-star-filter" data-mini="true" onchange="filterCard()">
+                                                <option value="1">一星</option>
+                                                <option value="2">二星</option>
+                                                <option value="3">三星</option>
+                                                <option value="4">四星</option>
+                                                <option value="5">五星</option>
                                             </select>
                                         </td>
                                     </tr>
                                 </table>
                             </div>
-                            <div id="card-candidate" style="WIDTH:100%; HEIGHT: 100px; OVERFLOW: auto">
-                                <% for (int i = 0; i < 20; ++i) { %>
-                                    <a href="#ppp1" data-rel="popup" data-mini="true" data-role="button" data-inline="true" data-icon="plus" data-iconpos="right">城镇弓箭手</a>
-                                <% } %>
-                            </div>
+                            <div id="card-candidate" style="WIDTH:100%; HEIGHT: 100px; OVERFLOW: auto"></div>
                         </div>
                     </div>
                     <div data-role="collapsible" data-mini="true">
@@ -326,31 +323,25 @@
                                     <tr>
                                         <td>筛选</td>
                                         <td style="width: 40%">
-                                            <select data-mini="true">
-                                                <option>全部属性</option>
-                                                <option>冰</option>
-                                                <option>风</option>
-                                                <option>地</option>
-                                                <option>火</option>
+                                            <select id="rune-class-filter" data-mini="true" onchange="filterRune()">
+                                                <option value="WATER">冰</option>
+                                                <option value="WIND">风</option>
+                                                <option value="GROUND">地</option>
+                                                <option value="FIRE">火</option>
                                             </select>
                                         </td>
                                         <td style="width: 40%">
-                                            <select data-mini="true">
-                                                <option>全部星数</option>
-                                                <option>一星</option>
-                                                <option>二星</option>
-                                                <option>三星</option>
-                                                <option>四星</option>
+                                            <select id="rune-star-filter" data-mini="true" onchange="filterRune()">
+                                                <option value="1">一星</option>
+                                                <option value="2">二星</option>
+                                                <option value="3">三星</option>
+                                                <option value="4">四星</option>
                                             </select>
                                         </td>
                                     </tr>
                                 </table>
                             </div>
-                            <div id="card-candidate" style="WIDTH:100%; HEIGHT: 100px; OVERFLOW: auto">
-                                <% for (int i = 0; i < 20; ++i) { %>
-                                    <a href="#ppp1" data-rel="popup" data-mini="true" data-role="button" data-inline="true" data-icon="plus" data-iconpos="right">冰封</a>
-                                <% } %>
-                            </div>
+                            <div id="rune-candidate" style="WIDTH:100%; HEIGHT: 100px; OVERFLOW: auto"></div>
                         </div>
                     </div>
                 </div>
@@ -365,8 +356,134 @@
                 </div>
             </div>
             <div id="deck-builder-control-panel" data-mini="true" data-role="controlgroup" data-type="horizontal">
-                <a id="cancelButton" data-role="button" data-mini="true" data-theme="c" href="javascript:history.go(-1)">确定</a>
-                <a id="cancelButton" data-role="button" data-mini="true" data-theme="c" href="javascript:history.go(-1)">取消</a>
+                <a data-role="button" data-mini="true" data-theme="c" href="javascript:updateDeck()">确定</a>
+                <a data-role="button" data-mini="true" data-theme="c" href="javascript:history.go(-1)">取消</a>
+            </div>
+        </div>
+    </div>
+
+    <div data-role="page" data-title="设定符文属性" data-mini="true" id="new-rune-props">
+        <div data-role="header" data-theme="c" data-position="fixed">
+            <h3 style="text-align: center">设定符文属性</h3>
+        </div>
+        <div data-role="content" data-theme="c">
+            <div class="entity-title"></div>
+            <table style="WIDTH: 100%">
+                <tr>
+                    <td>等级</td>
+                    <td>
+                        <select class="level" data-mini="true">
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4" selected="selected">4</option>
+                        </select>
+                    </td>
+                </tr>
+            </table>
+            <div>
+                <a href="javascript:addRune()" data-role="button" data-mini="true">确定</a>
+                <a href="javascript:history.go(-1)" data-role="button" data-mini="true">取消</a>
+            </div>
+        </div>
+    </div>
+    
+    <div data-role="page" data-title="设定卡牌属性" data-mini="true" id="new-card-props">
+        <div data-role="header" data-theme="c" data-position="fixed">
+            <h3 style="text-align: center">设定卡牌属性</h3>
+        </div>
+        <div data-role="content" data-theme="c">
+            <div class="entity-title"></div>
+            <table style="WIDTH: 100%">
+                <tr>
+                    <td>等级</td>
+                    <td>
+                        <select class='level' data-mini="true">
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10" selected="selected">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                            <option value="13">13</option>
+                            <option value="14">14</option>
+                            <option value="15">15</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>数量</td>
+                    <td>
+                        <select class='count' data-mini="true">
+                            <option value="1" selected="selected">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                        </select>
+                    </td>
+            </table>
+            <input type="checkbox" id="enable-extra-feature" onclick="enableExtraFeature()" data-mini="true" />
+            <label for="enable-extra-feature">添加洗炼技能</label>
+            <div id="extra-feature-props" style="DISPLAY: none">
+                <table style="WIDTH: 100%">
+                    <tr>
+                        <td>技能</td>
+                        <td>
+                            <select id="extra-feature-name" data-mini="true">
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>等级</td>
+                        <td>
+                            <select id="extra-feature-level" data-mini="true">
+                                <option value="1" selected="selected">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>特殊</td>
+                        <td>
+                            <div data-role="controlgroup" data-type="horizontal">
+                                <input type="radio" data-mini="true" name="card-extra-feature-flag" id="card-extra-feature-none" value="" checked="checked" />
+                                <label for="card-extra-feature-none">普通</label>
+            
+                                <input type="radio" data-mini="true" name="card-extra-feature-flag" id="card-extra-feature-summon" value="降临" />
+                                <label for="card-extra-feature-summon">降临</label>
+            
+                                <input type="radio" data-mini="true" name="card-extra-feature-flag" id="card-extra-feature-death" value="死契" />
+                                <label for="card-extra-feature-death">死契</label>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div>
+                <a href="javascript:addCard()" data-role="button" data-mini="true">确定</a>
+                <a href="javascript:history.go(-1)" data-role="button" data-mini="true">取消</a>
             </div>
         </div>
     </div>

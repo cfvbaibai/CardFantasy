@@ -102,3 +102,15 @@ div#playerStatus {
 	border-radius: 3px;
 	text-align: center;
 }
+
+#new-card-props table tr td:nth-of-type(1),
+#new-rune-props table tr td:nth-of-type(1) {
+	width: 100px;
+}
+
+.entity-title {
+	text-align: center;
+	font-size: 150%;
+	font-weight: bold;
+	text-shadow: 0 -1px #BBBBBB, 0 2px #FFFFFF;
+}

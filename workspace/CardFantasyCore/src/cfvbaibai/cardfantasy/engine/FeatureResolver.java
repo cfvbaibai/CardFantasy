@@ -295,19 +295,19 @@ public class FeatureResolver {
                 for (FeatureInfo blockFeature : defender.getNormalUsableFeatures()) {
                     if (blockFeature.getType() == FeatureType.王国之盾) {
                         result.setDamage(RacialShieldFeature.apply(blockFeature.getFeature(), this, cardAttacker,
-                                defender, defender, result.getDamage(), Race.地狱));
+                                defender, defender, result.getDamage(), Race.HELL));
                     }
                     if (blockFeature.getType() == FeatureType.森林之盾) {
                         result.setDamage(RacialShieldFeature.apply(blockFeature.getFeature(), this, cardAttacker,
-                                defender, defender, result.getDamage(), Race.蛮荒));
+                                defender, defender, result.getDamage(), Race.SAVAGE));
                     }
                     if (blockFeature.getType() == FeatureType.蛮荒之盾) {
                         result.setDamage(RacialShieldFeature.apply(blockFeature.getFeature(), this, cardAttacker,
-                                defender, defender, result.getDamage(), Race.王国));
+                                defender, defender, result.getDamage(), Race.KINGDOM));
                     }
                     if (blockFeature.getType() == FeatureType.地狱之盾) {
                         result.setDamage(RacialShieldFeature.apply(blockFeature.getFeature(), this, cardAttacker,
-                                defender, defender, result.getDamage(), Race.森林));
+                                defender, defender, result.getDamage(), Race.FOREST));
                     }
                 }
                 for (FeatureInfo blockFeature : defender.getNormalUsableFeatures()) {
@@ -526,13 +526,13 @@ public class FeatureResolver {
                 }
             } else {
                 if (feature.getType() == FeatureType.圣光) {
-                    RacialAttackFeature.apply(this, feature, attacker, defender, Race.地狱);
+                    RacialAttackFeature.apply(this, feature, attacker, defender, Race.HELL);
                 } else if (feature.getType() == FeatureType.要害) {
-                    RacialAttackFeature.apply(this, feature, attacker, defender, Race.蛮荒);
+                    RacialAttackFeature.apply(this, feature, attacker, defender, Race.SAVAGE);
                 } else if (feature.getType() == FeatureType.暗杀) {
-                    RacialAttackFeature.apply(this, feature, attacker, defender, Race.王国);
+                    RacialAttackFeature.apply(this, feature, attacker, defender, Race.KINGDOM);
                 } else if (feature.getType() == FeatureType.污染) {
-                    RacialAttackFeature.apply(this, feature, attacker, defender, Race.森林);
+                    RacialAttackFeature.apply(this, feature, attacker, defender, Race.FOREST);
                 } else if (feature.getType() == FeatureType.暴击) {
                     CriticalAttackFeature.apply(this, feature, attacker, defender);
                 } else if (feature.getType() == FeatureType.穷追猛打) {
@@ -762,21 +762,21 @@ public class FeatureResolver {
         for (CardInfo fieldCard : myField.getAliveCards()) {
             for (FeatureInfo feature : fieldCard.getNormalUsableFeatures()) {
                 if (feature.getType() == FeatureType.王国之力) {
-                    RaceBuffFeature.apply(this, feature, fieldCard, Race.王国, FeatureEffectType.ATTACK_CHANGE);
+                    RaceBuffFeature.apply(this, feature, fieldCard, Race.KINGDOM, FeatureEffectType.ATTACK_CHANGE);
                 } else if (feature.getType() == FeatureType.王国守护) {
-                    RaceBuffFeature.apply(this, feature, fieldCard, Race.王国, FeatureEffectType.MAXHP_CHANGE);
+                    RaceBuffFeature.apply(this, feature, fieldCard, Race.KINGDOM, FeatureEffectType.MAXHP_CHANGE);
                 } else if (feature.getType() == FeatureType.森林之力) {
-                    RaceBuffFeature.apply(this, feature, fieldCard, Race.森林, FeatureEffectType.ATTACK_CHANGE);
+                    RaceBuffFeature.apply(this, feature, fieldCard, Race.FOREST, FeatureEffectType.ATTACK_CHANGE);
                 } else if (feature.getType() == FeatureType.森林守护) {
-                    RaceBuffFeature.apply(this, feature, fieldCard, Race.森林, FeatureEffectType.MAXHP_CHANGE);
+                    RaceBuffFeature.apply(this, feature, fieldCard, Race.FOREST, FeatureEffectType.MAXHP_CHANGE);
                 } else if (feature.getType() == FeatureType.蛮荒之力) {
-                    RaceBuffFeature.apply(this, feature, fieldCard, Race.蛮荒, FeatureEffectType.ATTACK_CHANGE);
+                    RaceBuffFeature.apply(this, feature, fieldCard, Race.SAVAGE, FeatureEffectType.ATTACK_CHANGE);
                 } else if (feature.getType() == FeatureType.蛮荒守护) {
-                    RaceBuffFeature.apply(this, feature, fieldCard, Race.蛮荒, FeatureEffectType.MAXHP_CHANGE);
+                    RaceBuffFeature.apply(this, feature, fieldCard, Race.SAVAGE, FeatureEffectType.MAXHP_CHANGE);
                 } else if (feature.getType() == FeatureType.地狱之力) {
-                    RaceBuffFeature.apply(this, feature, fieldCard, Race.地狱, FeatureEffectType.ATTACK_CHANGE);
+                    RaceBuffFeature.apply(this, feature, fieldCard, Race.HELL, FeatureEffectType.ATTACK_CHANGE);
                 } else if (feature.getType() == FeatureType.地狱守护) {
-                    RaceBuffFeature.apply(this, feature, fieldCard, Race.地狱, FeatureEffectType.MAXHP_CHANGE);
+                    RaceBuffFeature.apply(this, feature, fieldCard, Race.HELL, FeatureEffectType.MAXHP_CHANGE);
                 } else if (feature.getType() == FeatureType.本源之力) {
                     RaceBuffFeature.apply(this, feature, fieldCard, null, FeatureEffectType.ATTACK_CHANGE);
                 } else if (feature.getType() == FeatureType.本源守护) {
@@ -790,21 +790,21 @@ public class FeatureResolver {
     public void resolveLeaveFeature(CardInfo card, Feature cardFeature) {
         for (FeatureInfo deadCardFeature : card.getNormalUsableFeatures()) {
             if (deadCardFeature.getType() == FeatureType.王国之力) {
-                RaceBuffFeature.remove(this, deadCardFeature, card, Race.王国);
+                RaceBuffFeature.remove(this, deadCardFeature, card, Race.KINGDOM);
             } else if (deadCardFeature.getType() == FeatureType.王国守护) {
-                RaceBuffFeature.remove(this, deadCardFeature, card, Race.王国);
+                RaceBuffFeature.remove(this, deadCardFeature, card, Race.KINGDOM);
             } else if (deadCardFeature.getType() == FeatureType.森林之力) {
-                RaceBuffFeature.remove(this, deadCardFeature, card, Race.森林);
+                RaceBuffFeature.remove(this, deadCardFeature, card, Race.FOREST);
             } else if (deadCardFeature.getType() == FeatureType.森林守护) {
-                RaceBuffFeature.remove(this, deadCardFeature, card, Race.森林);
+                RaceBuffFeature.remove(this, deadCardFeature, card, Race.FOREST);
             } else if (deadCardFeature.getType() == FeatureType.蛮荒之力) {
-                RaceBuffFeature.remove(this, deadCardFeature, card, Race.蛮荒);
+                RaceBuffFeature.remove(this, deadCardFeature, card, Race.SAVAGE);
             } else if (deadCardFeature.getType() == FeatureType.蛮荒守护) {
-                RaceBuffFeature.remove(this, deadCardFeature, card, Race.蛮荒);
+                RaceBuffFeature.remove(this, deadCardFeature, card, Race.SAVAGE);
             } else if (deadCardFeature.getType() == FeatureType.地狱之力) {
-                RaceBuffFeature.remove(this, deadCardFeature, card, Race.地狱);
+                RaceBuffFeature.remove(this, deadCardFeature, card, Race.HELL);
             } else if (deadCardFeature.getType() == FeatureType.地狱守护) {
-                RaceBuffFeature.remove(this, deadCardFeature, card, Race.地狱);
+                RaceBuffFeature.remove(this, deadCardFeature, card, Race.HELL);
             } else if (deadCardFeature.getType() == FeatureType.本源之力) {
                 RaceBuffFeature.remove(this, deadCardFeature, card, null);
             } else if (deadCardFeature.getType() == FeatureType.本源守护) {

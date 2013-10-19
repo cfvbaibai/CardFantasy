@@ -15,7 +15,7 @@ public final class TestGameBuilder {
     }
     
     public static GameResult playBossBattle(PlayerInfo player, String bossName) {
-        PlayerInfo boss = PlayerBuilder.build("魔神", 9999, bossName);
+        PlayerInfo boss = PlayerBuilder.build("BOSS", 9999, bossName);
         GameEngine engine = new GameEngine(new TestGameUI(), Rule.getBossBattle());
         engine.RegisterPlayers(boss, player);
         return engine.playGame();

@@ -43,7 +43,7 @@ var playAutoGame = function(count) {
         hlv2: heroLv2,
         firstAttack: firstAttack,
     };
-    
+
     console.log('saving cookie in arena-battle...');
     $.cookie('arena-battle', JSON.stringify(postData), { expires: 365 });
 
@@ -80,7 +80,7 @@ var playBossGame = function(count) {
         bs: buffSavage,
         bh: buffHell,
     };
-    
+
     $.cookie('boss-battle', JSON.stringify(postData), { expires: 365 });
     var isJson = false;
     if (count == 1) {
@@ -96,7 +96,37 @@ var playBossGame = function(count) {
         $.get('http://cnrdn.com/rd.htm?id=1344758&r=PlayBossMassiveGame&seed=' + seed, function(data) { console.log('PlayBossMassiveGame'); });
     }
     sendRequest(url, postData, 'boss-battle-output', isJson);
-    //sendRequest(url, 'boss-battle-output');
+};
+
+var store = null;
+var showDeckBuilder = function(outputDivId) {
+    $.mobile.changePage("#deck-builder", { transition : 'flip', role : 'dialog' });
+    initDeckBuilder(store, outputDivId);
+};
+
+var buildDeck = function(outputDivId) {
+    $.get('http://cnrdn.com/rd.htm?id=1344758&r=BuildDeck&seed=' + seed, function(data) { console.log('BuildDeck'); });
+    if (store == null) {
+        loadStore(outputDivId);
+    } else {
+        showDeckBuilder(outputDivId);
+    }
+};
+
+var loadStore = function(outputDivId) {
+    $.mobile.loading('show');
+    $.get('http://cnrdn.com/rd.htm?id=1344758&r=LoadDeck&seed=' + seed, function(data) { console.log('LoadDeck'); });
+    $.get('GetDataStore', function(data) { store = data; }, 'json')
+    .fail(function(xhr, status, error) {
+        var result = "<span style='COLOR: red'>Error! Status=" + status + ", Detail=" + error + "</span>";
+        $("#battle-output").parent().removeClass('ui-collapsible-content-collapsed');
+        $("#battle-output").html(result);
+        alert('无法启用卡组构建器！');
+    })
+    .complete(function () {
+        $.mobile.loading('hide');
+        showDeckBuilder(outputDivId);
+    });
 };
 
 var detectBrowser = function() {

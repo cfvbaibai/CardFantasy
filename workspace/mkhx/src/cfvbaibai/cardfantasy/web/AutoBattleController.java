@@ -1,8 +1,15 @@
 ﻿package cfvbaibai.cardfantasy.web;
 
+import java.text.Collator;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -18,8 +25,13 @@ import cfvbaibai.cardfantasy.GameUI;
 import cfvbaibai.cardfantasy.NonSerializableStrategy;
 import cfvbaibai.cardfantasy.PlayerJsonSerializer;
 import cfvbaibai.cardfantasy.data.Card;
+import cfvbaibai.cardfantasy.data.CardData;
+import cfvbaibai.cardfantasy.data.CardDataStore;
+import cfvbaibai.cardfantasy.data.FeatureTag;
+import cfvbaibai.cardfantasy.data.FeatureType;
 import cfvbaibai.cardfantasy.data.Legion;
 import cfvbaibai.cardfantasy.data.PlayerInfo;
+import cfvbaibai.cardfantasy.data.RuneData;
 import cfvbaibai.cardfantasy.engine.GameEndCause;
 import cfvbaibai.cardfantasy.engine.GameEngine;
 import cfvbaibai.cardfantasy.engine.GameResult;
@@ -193,7 +205,7 @@ public class AutoBattleController {
             log("PlayBoss1MatchGame from " + request.getRemoteAddr() + ":");
             log("Deck = " + deck);
             log("Hero LV = " + heroLv + ", Boss = " + bossName);
-            PlayerInfo player1 = PlayerBuilder.build("魔神", bossName, 99999, null);
+            PlayerInfo player1 = PlayerBuilder.build("BOSS", bossName, 99999, null);
             PlayerInfo player2 = PlayerBuilder.build("玩家", deck, heroLv, new Legion(buffKingdom, buffForest,
                     buffSavage, buffHell));
             WebPlainTextGameUI ui = new WebPlainTextGameUI();
@@ -220,7 +232,7 @@ public class AutoBattleController {
             log("SimulateBoss1MatchGame from " + request.getRemoteAddr() + ":");
             log("Deck = " + deck);
             log("Hero LV = " + heroLv + ", Boss = " + bossName);
-            PlayerInfo player1 = PlayerBuilder.build("魔神", bossName, 99999, null);
+            PlayerInfo player1 = PlayerBuilder.build("BOSS", bossName, 99999, null);
             PlayerInfo player2 = PlayerBuilder.build("玩家", deck, heroLv, new Legion(buffKingdom, buffForest,
                     buffSavage, buffHell));
             StructuredRecordGameUI ui = new StructuredRecordGameUI();
@@ -248,7 +260,7 @@ public class AutoBattleController {
             log("PlayBossMassiveGame from " + request.getRemoteAddr() + ":");
             log("Deck = " + deck);
             log("Count = " + count + ", Hero LV = " + heroLv + ", Boss = " + bossName);
-            PlayerInfo player1 = PlayerBuilder.build("魔神", bossName, 99999, null);
+            PlayerInfo player1 = PlayerBuilder.build("BOSS", bossName, 99999, null);
             PlayerInfo player2 = PlayerBuilder.build("玩家", deck, heroLv, new Legion(buffKingdom, buffForest,
                     buffSavage, buffHell));
             StringBuffer result = new StringBuffer();
@@ -324,6 +336,45 @@ public class AutoBattleController {
             responseHeaders.add("Charset", "UTF-8");
             String result = "";
             return new ResponseEntity<String>(result, responseHeaders, HttpStatus.CREATED);
+        } catch (Exception e) {
+            return handleError(e, true);
+        }
+    }
+    
+    @RequestMapping(value = "/GetDataStore", headers = "Accept=application/json")
+    public ResponseEntity<String> getDataStore(HttpServletRequest request) {
+        try {
+            checkWebsiteStatus();
+            HttpHeaders responseHeaders = new HttpHeaders();
+            responseHeaders.add("Content-Type", "application/json;charset=UTF-8");
+            responseHeaders.add("Charset", "UTF-8");
+            log("Getting card data store...");
+            CardDataStore store = CardDataStore.loadDefault();
+            Map <String, Object> result = new HashMap <String, Object>();
+            List<EntityDataRuntimeInfo> entities = new ArrayList<EntityDataRuntimeInfo>();
+            List<CardData> cards = store.getAllCards();
+            for (CardData card : cards) {
+                entities.add(new EntityDataRuntimeInfo(card));
+            }
+            RuneData[] runes = RuneData.values();
+            for (RuneData rune : runes) {
+                entities.add(new EntityDataRuntimeInfo(rune));
+            }
+            result.put("entities", entities);
+
+            List<String> featureList = new ArrayList<String>(); 
+            for (FeatureType featureType : FeatureType.values()) {
+                if (!featureType.containsTag(FeatureTag.不可洗炼)) {
+                    featureList.add(featureType.name());
+                }
+            }
+            String[] featureNames = new String[featureList.size()];
+            featureList.toArray(featureNames);
+            Comparator<Object> comparator = Collator.getInstance(java.util.Locale.CHINA);
+            Arrays.sort(featureNames, comparator);
+            result.put("features", featureNames);
+            String jsonResult = gson.toJson(result);
+            return new ResponseEntity<String>(jsonResult, responseHeaders, HttpStatus.CREATED);
         } catch (Exception e) {
             return handleError(e, true);
         }

@@ -33,7 +33,7 @@ public class CardDataStore {
                 CardData cardData = new CardData();
                 cardData.setId(cardNode.valueOf("@id"));
                 cardData.setName(cardNode.valueOf("@name"));
-                cardData.setRace(Race.valueOf(cardNode.valueOf("@race")));
+                cardData.setRace(Race.parse(cardNode.valueOf("@race")));
                 cardData.setSummonSpeed(Integer.parseInt(cardNode.valueOf("@speed")));
                 cardData.setStar(Integer.parseInt(cardNode.valueOf("@star")));
                 cardData.setBaseCost(Integer.parseInt(cardNode.valueOf("@cost")));

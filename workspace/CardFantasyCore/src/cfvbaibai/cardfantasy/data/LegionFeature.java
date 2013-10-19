@@ -8,11 +8,11 @@ public class LegionFeature extends Feature {
         }
         int level = legion.getBuffLevel(race);
         switch (race) {
-        case 王国: return new LegionFeature(FeatureType.军团王国之力, level);
-        case 森林: return new LegionFeature(FeatureType.军团森林之力, level);
-        case 蛮荒: return new LegionFeature(FeatureType.军团蛮荒之力, level);
-        case 地狱: return new LegionFeature(FeatureType.军团地狱之力, level);
-        case 魔神: return new LegionFeature(FeatureType.军团魔神之力, 0);
+        case KINGDOM: return new LegionFeature(FeatureType.军团王国之力, level);
+        case FOREST: return new LegionFeature(FeatureType.军团森林之力, level);
+        case SAVAGE: return new LegionFeature(FeatureType.军团蛮荒之力, level);
+        case HELL: return new LegionFeature(FeatureType.军团地狱之力, level);
+        case BOSS: return new LegionFeature(FeatureType.军团魔神之力, 0);
         default: throw new IllegalArgumentException("Unknown race: " + race); 
         }
     }

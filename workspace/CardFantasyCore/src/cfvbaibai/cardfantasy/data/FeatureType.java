@@ -112,18 +112,18 @@ public enum FeatureType {
     圣炎(0),
     法力侵蚀(20),
 
-    军团王国之力(0, 3, FeatureTag.永久, FeatureTag.基础攻击加成),
-    军团森林之力(0, 3, FeatureTag.永久, FeatureTag.基础攻击加成),
-    军团蛮荒之力(0, 3, FeatureTag.永久, FeatureTag.基础攻击加成),
-    军团地狱之力(0, 3, FeatureTag.永久, FeatureTag.基础攻击加成),
-    军团魔神之力(0),
+    军团王国之力(0, 3, FeatureTag.永久, FeatureTag.基础攻击加成, FeatureTag.不可洗炼),
+    军团森林之力(0, 3, FeatureTag.永久, FeatureTag.基础攻击加成, FeatureTag.不可洗炼),
+    军团蛮荒之力(0, 3, FeatureTag.永久, FeatureTag.基础攻击加成, FeatureTag.不可洗炼),
+    军团地狱之力(0, 3, FeatureTag.永久, FeatureTag.基础攻击加成, FeatureTag.不可洗炼),
+    军团魔神之力(0, FeatureTag.不可洗炼),
     
-    魔神之刃(2000, 0, FeatureTag.抗免疫),
-    魔神之甲(1500, 0, FeatureTag.抗免疫),
-    魔神之咒(1000, 0, FeatureTag.抗免疫),
+    魔神之刃(2000, 0, FeatureTag.抗免疫, FeatureTag.不可洗炼),
+    魔神之甲(1500, 0, FeatureTag.抗免疫, FeatureTag.不可洗炼),
+    魔神之咒(1000, 0, FeatureTag.抗免疫, FeatureTag.不可洗炼),
     
-    自动扣血(0, 0, FeatureTag.抗守护),
-    未知(0);
+    自动扣血(0, 0, FeatureTag.抗守护, FeatureTag.不可洗炼),
+    未知(0, FeatureTag.不可洗炼);
 
     private int initImpact;
     private int incrImpact;
