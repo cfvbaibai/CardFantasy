@@ -750,7 +750,10 @@ public class FeatureResolver {
                 PlagueFeature.apply(feature, this, card, opField.getOwner());
             } else if (feature.getType() == FeatureType.祈祷) {
                 PrayFeature.apply(feature.getFeature(), this, card);
-            } else if (feature.getType() == FeatureType.献祭) {
+            }
+        }
+        for (FeatureInfo feature : card.getNormalUsableFeatures()) {
+            if (feature.getType() == FeatureType.献祭) {
                 SacrificeFeature.apply(this, feature, card);
             } else if (feature.getType() == FeatureType.反噬) {
                 CounterBiteFeature.apply(feature.getFeature(), this, card);
