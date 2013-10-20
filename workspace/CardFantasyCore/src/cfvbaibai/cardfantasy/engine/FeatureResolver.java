@@ -438,21 +438,37 @@ public class FeatureResolver {
         deadCard.setDeadOnce(true);
         resolveLeaveFeature(deadCard, cardFeature);
         for (FeatureInfo deadCardFeature : deadCard.getUsableDeathFeatures()) {
-            if (deadCardFeature.getType() == FeatureType.群体削弱) {
+            if (deadCardFeature.getType() == FeatureType.烈焰风暴) {
+                FireMagicFeature.apply(deadCardFeature.getFeature(), this, deadCard, killerCard.getOwner(), -1);
+            } else if (deadCardFeature.getType() == FeatureType.雷暴) {
+                LighteningMagicFeature.apply(deadCardFeature, this, deadCard, killerCard.getOwner(), -1, 35);
+            } else if (deadCardFeature.getType() == FeatureType.暴风雪) {
+                IceMagicFeature.apply(deadCardFeature, this, deadCard, killerCard.getOwner(), -1, 30);
+            } else if (deadCardFeature.getType() == FeatureType.毒云) {
+                PoisonMagicFeature.apply(deadCardFeature, this, deadCard, killerCard.getOwner(), -1);
+            } else if (deadCardFeature.getType() == FeatureType.瘟疫) {
+                PlagueFeature.apply(deadCardFeature, this, deadCard, killerCard.getOwner());
+            } else if (deadCardFeature.getType() == FeatureType.治疗) {
+                HealFeature.apply(deadCardFeature.getFeature(), this, deadCard.getOwner());
+            } else if (deadCardFeature.getType() == FeatureType.甘霖) {
+                RainfallFeature.apply(deadCardFeature.getFeature(), this, deadCard.getOwner());
+            } else if (deadCardFeature.getType() == FeatureType.祈祷) {
+                PrayFeature.apply(deadCardFeature.getFeature(), this, deadCard);
+            } else if (deadCardFeature.getType() == FeatureType.诅咒) {
+                CurseFeature.apply(this, deadCardFeature.getFeature(), deadCard, killerCard.getOwner());
+            } else if (deadCardFeature.getType() == FeatureType.群体削弱) {
                 WeakenAllFeature.apply(this, deadCardFeature, deadCard, killerCard.getOwner());
             } else if (deadCardFeature.getType() == FeatureType.烈火焚神) {
                 BurningFlameFeature.apply(deadCardFeature, this, deadCard, killerCard.getOwner());
+            } else if (deadCardFeature.getType() == FeatureType.陷阱) {
+                TrapFeature.apply(deadCardFeature, this, deadCard, killerCard.getOwner());
             } else if (deadCardFeature.getType() == FeatureType.复活) {
                 ReviveFeature.apply(this, deadCardFeature, deadCard);
-            } else if (deadCardFeature.getType() == FeatureType.诅咒) {
-                CurseFeature.apply(this, deadCardFeature.getFeature(), deadCard, killerCard.getOwner());
-            } else if (deadCardFeature.getType() == FeatureType.烈焰风暴) {
-                FireMagicFeature.apply(deadCardFeature.getFeature(), this, deadCard, killerCard.getOwner(), -1);
             } else if (deadCardFeature.getType() == FeatureType.摧毁) {
                 DestroyFeature.apply(this, deadCardFeature.getFeature(), deadCard, killerCard.getOwner(), 1);
             } else if (deadCardFeature.getType() == FeatureType.传送) {
                 TransportFeature.apply(this, deadCardFeature.getFeature(), deadCard, killerCard.getOwner());
-            }
+            } 
         }
         for (FeatureInfo deadCardFeature : deadCard.getAllUsableFeatures()) {
             if (deadCardFeature.getType() == FeatureType.自爆) {
@@ -726,30 +742,36 @@ public class FeatureResolver {
 
     public void resolveSummoningFeature(CardInfo card, Field myField, Field opField) throws HeroDieSignal {
         for (FeatureInfo feature : card.getUsableSummonFeatures()) {
-            if (feature.getType() == FeatureType.陷阱) {
-                TrapFeature.apply(feature, this, card, opField.getOwner());
-            } else if (feature.getType() == FeatureType.烈焰风暴) {
+            if (feature.getType() == FeatureType.烈焰风暴) {
                 FireMagicFeature.apply(feature.getFeature(), this, card, opField.getOwner(), -1);
             } else if (feature.getType() == FeatureType.雷暴) {
                 LighteningMagicFeature.apply(feature, this, card, opField.getOwner(), -1, 35);
             } else if (feature.getType() == FeatureType.暴风雪) {
                 IceMagicFeature.apply(feature, this, card, opField.getOwner(), -1, 30);
-            } else if (feature.getType() == FeatureType.送还) {
-                ReturnFeature.apply(this, feature.getFeature(), card, opField.getCard(card.getPosition()));
-            } else if (feature.getType() == FeatureType.群体削弱) {
-                WeakenAllFeature.apply(this, feature, card, opField.getOwner());
-            } else if (feature.getType() == FeatureType.传送) {
-                TransportFeature.apply(this, feature.getFeature(), card, opField.getOwner());
-            } else if (feature.getType() == FeatureType.甘霖) {
-                RainfallFeature.apply(feature.getFeature(), this, card);
-            } else if (feature.getType() == FeatureType.诅咒) {
-                CurseFeature.apply(this, feature.getFeature(), card, opField.getOwner());
-            } else if (feature.getType() == FeatureType.摧毁) {
-                DestroyFeature.apply(this, feature.getFeature(), card, opField.getOwner(), 1);
+            } else if (feature.getType() == FeatureType.毒云) {
+                PoisonMagicFeature.apply(feature, this, card, opField.getOwner(), -1);
             } else if (feature.getType() == FeatureType.瘟疫) {
                 PlagueFeature.apply(feature, this, card, opField.getOwner());
+            } else if (feature.getType() == FeatureType.治疗) {
+                HealFeature.apply(feature.getFeature(), this, card);
+            } else if (feature.getType() == FeatureType.甘霖) {
+                RainfallFeature.apply(feature.getFeature(), this, card);
             } else if (feature.getType() == FeatureType.祈祷) {
                 PrayFeature.apply(feature.getFeature(), this, card);
+            } else if (feature.getType() == FeatureType.诅咒) {
+                CurseFeature.apply(this, feature.getFeature(), card, opField.getOwner());
+            } else if (feature.getType() == FeatureType.群体削弱) {
+                WeakenAllFeature.apply(this, feature, card, opField.getOwner());
+            } else if (feature.getType() == FeatureType.烈火焚神) {
+                BurningFlameFeature.apply(feature, this, card, opField.getOwner());
+            } else if (feature.getType() == FeatureType.陷阱) {
+                TrapFeature.apply(feature, this, card, opField.getOwner());
+            } else if (feature.getType() == FeatureType.送还) {
+                ReturnFeature.apply(this, feature.getFeature(), card, opField.getCard(card.getPosition()));
+            } else if (feature.getType() == FeatureType.摧毁) {
+                DestroyFeature.apply(this, feature.getFeature(), card, opField.getOwner(), 1);
+            } else if (feature.getType() == FeatureType.传送) {
+                TransportFeature.apply(this, feature.getFeature(), card, opField.getOwner());
             }
         }
         for (FeatureInfo feature : card.getNormalUsableFeatures()) {

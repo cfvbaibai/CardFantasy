@@ -1315,10 +1315,13 @@ var Animater = function() {
         }
     };
     
-    this.msgIgnoredSkills = ['背刺', '暴击', '狂热', '嗜血', '横扫', '穿刺'];
+    this.msgIgnoredSkills = [
+        '背刺', '暴击', '狂热', '嗜血', '横扫', '穿刺', '回春', '吸血',
+        '透支', '战意', '穷追猛打', '趁胜追击', '复仇',
+    ];
     this.selfUsedSkills = [
-        '不动', '脱困', '法力反射', '冰甲', '闪避', '回春', '吸血', '守护', '魔神之甲',
-        '王国之盾', '森林之盾', '蛮荒之盾', '地狱之盾'
+        '不动', '脱困', '法力反射', '冰甲', '闪避', '守护', '魔神之甲',
+        '王国之盾', '森林之盾', '蛮荒之盾', '地狱之盾',
     ];
     this.__useSkill = function(data) {
         var attacker = data[0]; // EntityRuntimeInfo
