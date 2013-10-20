@@ -366,7 +366,7 @@
         </div>
     </div>
 
-    <div data-role="page" data-title="设定符文属性" data-mini="true" id="new-rune-props">
+    <div data-role="page" data-title="设定符文属性" data-mini="true" id="new-rune-props" class="fixed-width">
         <div data-role="header" data-theme="c" data-position="fixed">
             <h3 style="text-align: center">设定符文属性</h3>
         </div>
@@ -393,7 +393,7 @@
         </div>
     </div>
     
-    <div data-role="page" data-title="设定卡牌属性" data-mini="true" id="new-card-props">
+    <div data-role="page" data-title="设定卡牌属性" data-mini="true" id="new-card-props" class="fixed-width">
         <div data-role="header" data-theme="c" data-position="fixed">
             <h3 style="text-align: center">设定卡牌属性</h3>
         </div>
