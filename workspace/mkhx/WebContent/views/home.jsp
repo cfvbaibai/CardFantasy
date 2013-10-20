@@ -102,7 +102,7 @@
                 <a data-role="button" data-mini="true" data-theme="c" href="javascript:playAutoGame(-1)">动画战斗</a>
                 <!-- <a data-role="button" data-mini="true" data-theme="c" href="javascript:playAutoGame(100)">打100场</a> -->
                 <a data-role="button" data-mini="true" data-theme="c" href="javascript:playAutoGame(1000)">连续千场</a>
-                <a data-role="button" data-mini="true" data-theme="c" href="http://cnrdn.com/rd.htm?id=1344758&r=http%3A%2F%2Ftieba.baidu.com%2Fp%2F2548422450%3Ffrom%3D1v1" target="blank">提BUG</a>
+                <a data-role="button" data-mini="true" data-theme="c" href="http://cnrdn.com/rd.htm?id=1344758&r=http%3A%2F%2Ftieba.baidu.com%2Fp%2F2660663919%3Ffrom%3D1v1" target="blank">提BUG</a>
                 <!-- <button data-theme="c" onclick="alert('按CTRL+A全选，再按CTRL+C')">拷贝</button> -->
             </div>
             <div id="battle-div" data-mini="true" data-role="collapsible" data-collapsed="false" data-theme="c"
@@ -234,7 +234,7 @@
                 <a data-role="button" data-mini="true" data-theme="c" href="javascript:playBossGame(1)">文字战斗</a>
                 <a data-role="button" data-mini="true" data-theme="c" href="javascript:playBossGame(-1)">动画战斗</a>
                 <a data-role="button" data-mini="true" data-theme="c" href="javascript:playBossGame(1000)">卡组强度分析</a>
-                <a data-role="button" data-mini="true" data-theme="c" href="http://cnrdn.com/rd.htm?id=1344758&r=http%3A%2F%2Ftieba.baidu.com%2Fp%2F2548422450%3Ffrom%3Dboss" target="blank">提BUG</a>
+                <a data-role="button" data-mini="true" data-theme="c" href="http://cnrdn.com/rd.htm?id=1344758&r=http%3A%2F%2Ftieba.baidu.com%2Fp%2F2660663919%3Ffrom%3Dboss" target="blank">提BUG</a>
                 <!--  <button data-mini="true" data-theme="c" onclick="playBossGame(1000)"></button>-->
                 <!-- <button data-theme="c" onclick="alert('按CTRL+A全选，再按CTRL+C')">拷贝</button> -->
             </div>
@@ -275,7 +275,7 @@
                 <a id="fasterButton" data-role="button" data-mini="true" data-theme="c" href="javascript:faster()">加快</a>
                 <a id="slowerButton" data-role="button" data-mini="true" data-theme="c" href="javascript:slower()">减慢</a>
                 <a id="backButton" data-role="button" data-mini="true" data-theme="c" href="javascript:history.go(-1)">返回</a>
-                <a data-role="button" data-mini="true" data-theme="c" href="http://cnrdn.com/rd.htm?id=1344758&r=http%3A%2F%2Ftieba.baidu.com%2Fp%2F2548422450%3Ffrom%3Danimation" target="blank">提BUG</a>
+                <a data-role="button" data-mini="true" data-theme="c" href="http://cnrdn.com/rd.htm?id=1344758&r=http%3A%2F%2Ftieba.baidu.com%2Fp%2F2660663919%3Ffrom%3Danimation" target="blank">提BUG</a>
             </div>
             <div id="playerStatus"></div>
         </div>
