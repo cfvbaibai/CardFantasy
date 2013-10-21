@@ -153,7 +153,17 @@ public class StageInfo {
         if (this.getRule().isBossBattle()) {
             Player boss = this.getPlayers().get(0);
             CardInfo bossCard = boss.getField().getCard(0);
-            damageToBoss = bossCard.getOriginalMaxHP() - bossCard.getHP();
+            if (bossCard == null) {
+                // boss is killed!
+                bossCard = boss.getGrave().getFirst();
+                if (bossCard == null) {
+                    damageToBoss = 99999999;
+                } else {
+                    damageToBoss = bossCard.getOriginalMaxHP();
+                }
+            } else {
+                damageToBoss = bossCard.getOriginalMaxHP() - bossCard.getHP();
+            }
         }
         return new GameResult(this.getBoard(), winner, this.getRound(), cause, damageToBoss);
     }
