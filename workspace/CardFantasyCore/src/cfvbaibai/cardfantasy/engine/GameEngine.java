@@ -177,6 +177,12 @@ public class GameEngine {
         ui.battleBegins();
         Field myField = getActivePlayer().getField();
         Field opField = getInactivePlayer().getField();
+
+        this.stage.getUI().compactField(myField);
+        myField.compact();
+        this.stage.getUI().compactField(opField);
+        opField.compact();
+
         for (int i = 0; i < myField.size(); ++i) {
             if (myField.getCard(i) == null) {
                 continue;

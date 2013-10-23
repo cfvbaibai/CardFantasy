@@ -21,6 +21,7 @@ public final class DeckBuilder {
     public static DeckStartupInfo multiBuild(String descsText) {
         descsText = descsText.replace(' ', ',').replace('　', ',').replace('，', ',');
         descsText = descsText.replace("\r\n", ",").replace("\n", ",");
+        descsText = descsText.replace('＋', '+').replace('＊', '*').replace('－', '-');
         String[] descs = descsText.split(",");
         return build(descs);
     }
