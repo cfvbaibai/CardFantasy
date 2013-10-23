@@ -16,17 +16,16 @@ public class HolyGuardFeature {
         if (card == null || card.isDead()) {
             throw new CardFantasyRuntimeException("card should not be null or dead!");
         }
-        if (!card.isFirstRound()) {
-            return;
-        }
         Feature feature = featureInfo.getFeature();
         int impact = feature.getImpact();
         resolver.getStage().getUI().useSkill(card, feature, true);
         Field field = card.getOwner().getField();
         List<CardInfo> allies = resolver.getAdjacentCards(field, card.getPosition());
         for (CardInfo ally : allies) {
-            resolver.getStage().getUI().adjustHP(card, ally, impact, feature);
-            ally.addEffect(new FeatureEffect(FeatureEffectType.MAXHP_CHANGE, featureInfo, impact, false));
+            if (ally.getEffectsCausedBy(featureInfo).isEmpty()) {
+                resolver.getStage().getUI().adjustHP(card, ally, impact, feature);
+                ally.addEffect(new FeatureEffect(FeatureEffectType.MAXHP_CHANGE, featureInfo, impact, false));
+            }
         }
     }
     

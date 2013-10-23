@@ -190,8 +190,6 @@ public class FeatureResolver {
                 HeavenWrathFeature.apply(this, feature.getFeature(), attacker, defender);
             } else if (feature.getType() == FeatureType.封印) {
                 SealFeature.apply(feature, this, attacker, defender);
-            } else if (feature.getType() == FeatureType.神圣守护) {
-                HolyGuardFeature.apply(this, feature, attacker);
             } else if (feature.getType() == FeatureType.圣炎) {
                 HolyFireFeature.apply(feature.getFeature(), this, attacker, defender);
             } else if (feature.getType() == FeatureType.法力侵蚀) {
@@ -803,7 +801,9 @@ public class FeatureResolver {
                     RaceBuffFeature.apply(this, feature, fieldCard, null, FeatureEffectType.ATTACK_CHANGE);
                 } else if (feature.getType() == FeatureType.本源守护) {
                     RaceBuffFeature.apply(this, feature, fieldCard, null, FeatureEffectType.MAXHP_CHANGE);
-                }
+                } else if (feature.getType() == FeatureType.神圣守护) {
+                    HolyGuardFeature.apply(this, feature, fieldCard);
+                } 
             }
         }
         LegionBuffFeature.apply(this, card);
