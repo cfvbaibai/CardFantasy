@@ -551,7 +551,12 @@
         <Feature type="迷魂" level="8" unlock="5" />
         <Feature type="甘霖" level="7" unlock="10" />
     </Card>
-
+    <Card id="2509" name="时光女神" race="森林" speed="6" star="5" cost="17" incrCost="2" at="275" hp="1260" incrAT="34" incrHP="39">
+        <Feature type="法力侵蚀" level="7" unlock="0" />
+        <Feature type="冰甲" level="2" unlock="5" />
+        <Feature type="不动" level="0" unlock="10" />
+    </Card>
+    
     <!-- 蛮荒  -->
     <Card id="3101" name="穴居人奴隶" race="蛮荒" speed="2" star="1" cost="4" incrCost="2" at="90" hp="390" incrAT="18" incrHP="11">
         <Feature type="暗杀" level="4" unlock="5" />
@@ -793,7 +798,7 @@
         <Feature type="法力侵蚀" level="4" unlock="5" />
         <Feature type="甘霖" level="6" unlock="10" />
     </Card>
-    <Card id="3419" name="黯灭制裁者" race="蛮荒" speed="4" star="4" cost="14" incrCost="2" at="265" hp="950" incrAT="18" incrHP="46">
+    <Card id="3419" name="黯灭制裁者" race="蛮荒" speed="4" star="4" cost="14" incrCost="2" at="265" hp="850" incrAT="18" incrHP="36">
         <Feature type="魔甲" level="7" unlock="0" />
         <Feature type="冰甲" level="4" unlock="5" />
         <Feature type="不动" level="0" unlock="10" />
