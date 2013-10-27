@@ -130,7 +130,6 @@ public class AutoBattleController {
     public ResponseEntity<String> simulateAuto1MatchGame(HttpServletRequest request, @RequestParam("deck1") String deck1,
             @RequestParam("deck2") String deck2, @RequestParam("hlv1") int heroLv1, @RequestParam("hlv2") int heroLv2,
             @RequestParam("firstAttack") int firstAttack) {
-        log("!!!");
         HttpHeaders responseHeaders = new HttpHeaders();
         responseHeaders.add("Content-Type", "application/json;charset=UTF-8");
         responseHeaders.add("Charset", "UTF-8");

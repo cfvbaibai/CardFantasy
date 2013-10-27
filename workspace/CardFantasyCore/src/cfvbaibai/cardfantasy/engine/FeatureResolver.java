@@ -739,6 +739,41 @@ public class FeatureResolver {
     }
 
     public void resolveSummoningFeature(CardInfo card, Field myField, Field opField) throws HeroDieSignal {
+        LegionBuffFeature.apply(this, card);
+        for (CardInfo fieldCard : myField.getAliveCards()) {
+            for (FeatureInfo feature : fieldCard.getNormalUsableFeatures()) {
+                if (feature.getType() == FeatureType.王国之力) {
+                    RaceBuffFeature.apply(this, feature, fieldCard, Race.KINGDOM, FeatureEffectType.ATTACK_CHANGE);
+                } else if (feature.getType() == FeatureType.王国守护) {
+                    RaceBuffFeature.apply(this, feature, fieldCard, Race.KINGDOM, FeatureEffectType.MAXHP_CHANGE);
+                } else if (feature.getType() == FeatureType.森林之力) {
+                    RaceBuffFeature.apply(this, feature, fieldCard, Race.FOREST, FeatureEffectType.ATTACK_CHANGE);
+                } else if (feature.getType() == FeatureType.森林守护) {
+                    RaceBuffFeature.apply(this, feature, fieldCard, Race.FOREST, FeatureEffectType.MAXHP_CHANGE);
+                } else if (feature.getType() == FeatureType.蛮荒之力) {
+                    RaceBuffFeature.apply(this, feature, fieldCard, Race.SAVAGE, FeatureEffectType.ATTACK_CHANGE);
+                } else if (feature.getType() == FeatureType.蛮荒守护) {
+                    RaceBuffFeature.apply(this, feature, fieldCard, Race.SAVAGE, FeatureEffectType.MAXHP_CHANGE);
+                } else if (feature.getType() == FeatureType.地狱之力) {
+                    RaceBuffFeature.apply(this, feature, fieldCard, Race.HELL, FeatureEffectType.ATTACK_CHANGE);
+                } else if (feature.getType() == FeatureType.地狱守护) {
+                    RaceBuffFeature.apply(this, feature, fieldCard, Race.HELL, FeatureEffectType.MAXHP_CHANGE);
+                } else if (feature.getType() == FeatureType.本源之力) {
+                    RaceBuffFeature.apply(this, feature, fieldCard, null, FeatureEffectType.ATTACK_CHANGE);
+                } else if (feature.getType() == FeatureType.本源守护) {
+                    RaceBuffFeature.apply(this, feature, fieldCard, null, FeatureEffectType.MAXHP_CHANGE);
+                } else if (feature.getType() == FeatureType.神圣守护) {
+                    HolyGuardFeature.apply(this, feature, fieldCard);
+                } 
+            }
+        }
+        for (FeatureInfo feature : card.getNormalUsableFeatures()) {
+            if (feature.getType() == FeatureType.献祭) {
+                SacrificeFeature.apply(this, feature, card);
+            } else if (feature.getType() == FeatureType.反噬) {
+                CounterBiteFeature.apply(feature.getFeature(), this, card);
+            }
+        }
         for (FeatureInfo feature : card.getUsableSummonFeatures()) {
             if (feature.getType() == FeatureType.烈焰风暴) {
                 FireMagicFeature.apply(feature.getFeature(), this, card, opField.getOwner(), -1);
@@ -772,41 +807,6 @@ public class FeatureResolver {
                 TransportFeature.apply(this, feature.getFeature(), card, opField.getOwner());
             }
         }
-        for (FeatureInfo feature : card.getNormalUsableFeatures()) {
-            if (feature.getType() == FeatureType.献祭) {
-                SacrificeFeature.apply(this, feature, card);
-            } else if (feature.getType() == FeatureType.反噬) {
-                CounterBiteFeature.apply(feature.getFeature(), this, card);
-            }
-        }
-        for (CardInfo fieldCard : myField.getAliveCards()) {
-            for (FeatureInfo feature : fieldCard.getNormalUsableFeatures()) {
-                if (feature.getType() == FeatureType.王国之力) {
-                    RaceBuffFeature.apply(this, feature, fieldCard, Race.KINGDOM, FeatureEffectType.ATTACK_CHANGE);
-                } else if (feature.getType() == FeatureType.王国守护) {
-                    RaceBuffFeature.apply(this, feature, fieldCard, Race.KINGDOM, FeatureEffectType.MAXHP_CHANGE);
-                } else if (feature.getType() == FeatureType.森林之力) {
-                    RaceBuffFeature.apply(this, feature, fieldCard, Race.FOREST, FeatureEffectType.ATTACK_CHANGE);
-                } else if (feature.getType() == FeatureType.森林守护) {
-                    RaceBuffFeature.apply(this, feature, fieldCard, Race.FOREST, FeatureEffectType.MAXHP_CHANGE);
-                } else if (feature.getType() == FeatureType.蛮荒之力) {
-                    RaceBuffFeature.apply(this, feature, fieldCard, Race.SAVAGE, FeatureEffectType.ATTACK_CHANGE);
-                } else if (feature.getType() == FeatureType.蛮荒守护) {
-                    RaceBuffFeature.apply(this, feature, fieldCard, Race.SAVAGE, FeatureEffectType.MAXHP_CHANGE);
-                } else if (feature.getType() == FeatureType.地狱之力) {
-                    RaceBuffFeature.apply(this, feature, fieldCard, Race.HELL, FeatureEffectType.ATTACK_CHANGE);
-                } else if (feature.getType() == FeatureType.地狱守护) {
-                    RaceBuffFeature.apply(this, feature, fieldCard, Race.HELL, FeatureEffectType.MAXHP_CHANGE);
-                } else if (feature.getType() == FeatureType.本源之力) {
-                    RaceBuffFeature.apply(this, feature, fieldCard, null, FeatureEffectType.ATTACK_CHANGE);
-                } else if (feature.getType() == FeatureType.本源守护) {
-                    RaceBuffFeature.apply(this, feature, fieldCard, null, FeatureEffectType.MAXHP_CHANGE);
-                } else if (feature.getType() == FeatureType.神圣守护) {
-                    HolyGuardFeature.apply(this, feature, fieldCard);
-                } 
-            }
-        }
-        LegionBuffFeature.apply(this, card);
     }
 
     public void resolveLeaveFeature(CardInfo card, Feature cardFeature) {

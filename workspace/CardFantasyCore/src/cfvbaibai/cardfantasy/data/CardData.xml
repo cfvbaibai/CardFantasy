@@ -551,7 +551,7 @@
         <Feature type="迷魂" level="8" unlock="5" />
         <Feature type="甘霖" level="7" unlock="10" />
     </Card>
-    <Card id="2509" name="时光女神" race="森林" speed="6" star="5" cost="17" incrCost="2" at="275" hp="1260" incrAT="34" incrHP="39">
+    <Card id="2509" name="时光女神" race="森林" speed="4" star="5" cost="17" incrCost="2" at="275" hp="1260" incrAT="34" incrHP="39">
         <Feature type="法力侵蚀" level="7" unlock="0" />
         <Feature type="冰甲" level="2" unlock="5" />
         <Feature type="不动" level="0" unlock="10" />

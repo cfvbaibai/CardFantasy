@@ -4,7 +4,7 @@ public class DeckBuildRuntimeException extends CardFantasyRuntimeException {
 
     private static final long serialVersionUID = 193208372894017945L;
     private static final String HELP_MSG =
-            ". 请仔细阅读帮助信息。实在无法发现错误的话，请使用<b>组卡</b>按钮" +
+            "<br />请仔细阅读帮助信息。<br />实在无法发现错误的话，<br />请清空当前卡组，<br />并使用<b>组卡</b>按钮组建卡组" +
             "<table border='0' cellspacing='1' cellpadding='5' bgcolor='#FFCCCC'>" +
             "<tr bgcolor='#FF9999'><th>常见错误</th><th>错误例子</th><th>改正</th></tr>" +
             "<tr bgcolor='white'><td>卡牌之间没有用逗号隔开</td><td>大剑圣*1机械飞龙*2</td><td>大剑圣*1,机械飞龙*2</td></tr>" +
