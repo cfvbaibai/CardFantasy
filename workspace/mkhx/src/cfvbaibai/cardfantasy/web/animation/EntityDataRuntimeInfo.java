@@ -1,4 +1,4 @@
-package cfvbaibai.cardfantasy.web;
+package cfvbaibai.cardfantasy.web.animation;
 
 import cfvbaibai.cardfantasy.data.CardData;
 import cfvbaibai.cardfantasy.data.RuneData;

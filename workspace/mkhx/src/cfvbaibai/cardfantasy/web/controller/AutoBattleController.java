@@ -1,4 +1,4 @@
-﻿package cfvbaibai.cardfantasy.web;
+﻿package cfvbaibai.cardfantasy.web.controller;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -10,6 +10,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -37,13 +38,20 @@ import cfvbaibai.cardfantasy.engine.Rule;
 import cfvbaibai.cardfantasy.game.DummyGameUI;
 import cfvbaibai.cardfantasy.game.GameResultStat;
 import cfvbaibai.cardfantasy.game.PlayerBuilder;
+import cfvbaibai.cardfantasy.web.Utils;
+import cfvbaibai.cardfantasy.web.animation.BattleRecord;
+import cfvbaibai.cardfantasy.web.animation.EntityDataRuntimeInfo;
+import cfvbaibai.cardfantasy.web.animation.FeatureTypeRuntimeInfo;
+import cfvbaibai.cardfantasy.web.animation.StructuredRecordGameUI;
+import cfvbaibai.cardfantasy.web.animation.WebPlainTextGameUI;
+import cfvbaibai.cardfantasy.web.beans.UserAction;
+import cfvbaibai.cardfantasy.web.beans.UserActionRecorder;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 @Controller
 public class AutoBattleController {
-
     private Gson gson;
     public AutoBattleController() {
         gson = new GsonBuilder()
@@ -53,26 +61,28 @@ public class AutoBattleController {
         .create();
     }
     
+    @Autowired
+    private UserActionRecorder userActionRecorder;
+    
     @RequestMapping(value = "/")
-    public ModelAndView home() {
+    public ModelAndView home(HttpServletRequest request) {
         ModelAndView mv = new ModelAndView();
         mv.setViewName("home");
+        this.userActionRecorder.addAction(new UserAction(new Date(), request.getRemoteAddr(), "VisitHome", ""));
         return mv;
     }
 
-    private static DateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-
-    private static String getCurrentDateTime() {
-        return DATE_FORMAT.format(new Date());
-    }
-
     private static void log(String message) {
-        System.out.println("[" + getCurrentDateTime() + "] " + message);
+        String tid = String.valueOf(Thread.currentThread().getId());
+        String trace = "[" + Utils.getCurrentDateTime() + "][" + tid + "] " + message;
+        System.out.println(trace);
     }
 
     private static void logE(Exception e) {
-        System.err.print("[" + getCurrentDateTime() + "] ");
+        String tid = String.valueOf(Thread.currentThread().getId());
+        System.err.print("[" + Utils.getCurrentDateTime() + "][" + tid + "]");
         e.printStackTrace();
+        System.err.flush();
     }
 
     private static ResponseEntity<String> handleError(Exception e, boolean isJson) {
@@ -110,8 +120,13 @@ public class AutoBattleController {
             }
             log("PlayAuto1MatchGame from " + request.getRemoteAddr() + ":");
             log("FirstAttack = " + firstAttack);
-            log("Deck1 = " + deck1);
-            log("Deck2 = " + deck2);
+            log("Lv1 = " + heroLv1 + ", Deck1 = " + deck1);
+            log("Lv2 = " + heroLv2 + ", Deck2 = " + deck2);
+            
+            this.userActionRecorder.addAction(new UserAction(new Date(), request.getRemoteAddr(), "PlayAuto1MatchGame",
+                    String.format("Deck1=%s<br />Deck2=%s<br />Lv1=%d, Lv2=%d, FirstAttack=%d",
+                            deck1, deck2, heroLv1, heroLv2, firstAttack)));
+            
             PlayerInfo player1 = PlayerBuilder.build("玩家1", deck1, heroLv1);
             PlayerInfo player2 = PlayerBuilder.build("玩家2", deck2, heroLv2);
             WebPlainTextGameUI ui = new WebPlainTextGameUI();
@@ -140,8 +155,13 @@ public class AutoBattleController {
             }
             log("SimulateAuto1MatchGame from " + request.getRemoteAddr() + ":");
             log("FirstAttack = " + firstAttack);
-            log("Deck1 = " + deck1);
-            log("Deck2 = " + deck2);
+            log("Lv1 = " + heroLv1 + ", Deck1 = " + deck1);
+            log("Lv2 = " + heroLv2 + ", Deck2 = " + deck2);
+            
+            this.userActionRecorder.addAction(new UserAction(new Date(), request.getRemoteAddr(), "SimulateAuto1MatchGame",
+                    String.format("Deck1=%s<br />Deck2=%s<br />Lv1=%d, Lv2=%d, FirstAttack=%d",
+                            deck1, deck2, heroLv1, heroLv2, firstAttack)));
+            
             PlayerInfo player1 = PlayerBuilder.build("玩家1", deck1, heroLv1);
             PlayerInfo player2 = PlayerBuilder.build("玩家2", deck2, heroLv2);
             StructuredRecordGameUI ui = new StructuredRecordGameUI();
@@ -171,8 +191,12 @@ public class AutoBattleController {
             log("PlayAutoMassiveGame from " + request.getRemoteAddr() + ":");
             log("Count = " + count);
             log("FirstAttack = " + firstAttack);
-            log("Deck1 = " + deck1);
-            log("Deck2 = " + deck2);
+            log("Lv1 = " + heroLv1 + ", Deck1 = " + deck1);
+            log("Lv2 = " + heroLv2 + ", Deck2 = " + deck2);
+            
+            this.userActionRecorder.addAction(new UserAction(new Date(), request.getRemoteAddr(), "PlayAutoMassiveGame",
+                    String.format("Deck1=%s<br />Deck2=%s<br />Lv1=%d, Lv2=%d, FirstAttack=%d, Count=%d",
+                            deck1, deck2, heroLv1, heroLv2, firstAttack, count)));
             PlayerInfo player1 = PlayerBuilder.build("玩家1", deck1, heroLv1);
             PlayerInfo player2 = PlayerBuilder.build("玩家2", deck2, heroLv2);
             GameResultStat stat = play(player1, player2, count, new Rule(5, 999, firstAttack, false));
@@ -201,6 +225,8 @@ public class AutoBattleController {
             log("PlayBoss1MatchGame from " + request.getRemoteAddr() + ":");
             log("Deck = " + deck);
             log("Hero LV = " + heroLv + ", Boss = " + bossName);
+            this.userActionRecorder.addAction(new UserAction(new Date(), request.getRemoteAddr(), "PlayBoss1MatchGame",
+                    String.format("Deck=%s<br />HeroLV=%d, Boss=%s", deck, heroLv, bossName)));
             PlayerInfo player1 = PlayerBuilder.build("BOSS", bossName, 99999, null);
             PlayerInfo player2 = PlayerBuilder.build("玩家", deck, heroLv, new Legion(buffKingdom, buffForest,
                     buffSavage, buffHell));
@@ -228,6 +254,8 @@ public class AutoBattleController {
             log("SimulateBoss1MatchGame from " + request.getRemoteAddr() + ":");
             log("Deck = " + deck);
             log("Hero LV = " + heroLv + ", Boss = " + bossName);
+            this.userActionRecorder.addAction(new UserAction(new Date(), request.getRemoteAddr(), "SimulateBoss1MatchGame",
+                    String.format("Deck=%s<br />HeroLV=%d, Boss=%s", deck, heroLv, bossName)));
             PlayerInfo player1 = PlayerBuilder.build("BOSS", bossName, 99999, null);
             PlayerInfo player2 = PlayerBuilder.build("玩家", deck, heroLv, new Legion(buffKingdom, buffForest,
                     buffSavage, buffHell));
@@ -256,6 +284,8 @@ public class AutoBattleController {
             log("PlayBossMassiveGame from " + request.getRemoteAddr() + ":");
             log("Deck = " + deck);
             log("Count = " + count + ", Hero LV = " + heroLv + ", Boss = " + bossName);
+            this.userActionRecorder.addAction(new UserAction(new Date(), request.getRemoteAddr(), "PlayBossMassiveGame",
+                    String.format("Deck=%s<br />HeroLV=%d, Boss=%s, Count=%d", deck, heroLv, bossName, count)));
             PlayerInfo player1 = PlayerBuilder.build("BOSS", bossName, 99999, null);
             PlayerInfo player2 = PlayerBuilder.build("玩家", deck, heroLv, new Legion(buffKingdom, buffForest,
                     buffSavage, buffHell));

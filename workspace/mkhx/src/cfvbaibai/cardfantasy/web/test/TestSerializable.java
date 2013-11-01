@@ -12,7 +12,7 @@ import cfvbaibai.cardfantasy.engine.Player;
 import cfvbaibai.cardfantasy.engine.StageInfo;
 import cfvbaibai.cardfantasy.game.PlayerBuilder;
 import cfvbaibai.cardfantasy.test.TestGameBuilder;
-import cfvbaibai.cardfantasy.web.PlayerInitInfo;
+import cfvbaibai.cardfantasy.web.animation.PlayerInitInfo;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;

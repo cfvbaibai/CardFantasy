@@ -1,4 +1,4 @@
-package cfvbaibai.cardfantasy.web;
+package cfvbaibai.cardfantasy.web.animation;
 
 import java.util.ArrayList;
 import java.util.List;

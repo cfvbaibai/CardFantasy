@@ -1,4 +1,4 @@
-package cfvbaibai.cardfantasy.web;
+package cfvbaibai.cardfantasy.web.animation;
 
 import org.apache.commons.lang3.StringEscapeUtils;
 
