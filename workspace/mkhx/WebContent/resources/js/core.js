@@ -1,5 +1,7 @@
 ﻿//$.ajaxSetup({ scriptCharset: "utf-8" ,contentType: "application/x-www-form-urlencoded; charset=UTF-8" });
 var sendRequest = function(url, postData, outputDivId, isJson) {
+    var buttons = $('a.battle-button');
+    buttons.addClass("ui-disabled");
     $.mobile.loading('show');
     var result = '';
     var getFunc = isJson ? function() {
@@ -23,6 +25,7 @@ var sendRequest = function(url, postData, outputDivId, isJson) {
     })
     .complete(function () {
         $.mobile.loading('hide');
+        buttons.removeClass("ui-disabled");
         $("#" + outputDivId).parent().removeClass('ui-collapsible-content-collapsed');
         $("#" + outputDivId).html(result);
     });

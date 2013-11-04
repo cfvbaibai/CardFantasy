@@ -10,7 +10,7 @@ public class RuneInitInfo {
     
     public RuneInitInfo(RuneInfo rune) {
         this.name = rune.getName();
-        this.type = rune.getRuneClass();
+        this.type = rune.getRuneClass().name();
         this.energy = rune.getEnergy();
         this.ownerId = rune.getOwner().getId();
     }

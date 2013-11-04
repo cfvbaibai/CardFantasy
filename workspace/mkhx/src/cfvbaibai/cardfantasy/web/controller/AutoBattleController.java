@@ -1,11 +1,14 @@
 ﻿package cfvbaibai.cardfantasy.web.controller;
 
+import java.text.Collator;
 import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -394,6 +397,13 @@ public class AutoBattleController {
                     featureList.add(new FeatureTypeRuntimeInfo(featureType));
                 }
             }
+            Collections.sort(featureList, new Comparator<FeatureTypeRuntimeInfo>() {
+                private Comparator<Object> comparer = Collator.getInstance(Locale.CHINA);
+                @Override
+                public int compare(FeatureTypeRuntimeInfo arg0, FeatureTypeRuntimeInfo arg1) {
+                    return comparer.compare(arg0.getName(), arg1.getName());
+                }
+            });
             result.put("features", featureList);
             String jsonResult = gson.toJson(result);
             return new ResponseEntity<String>(jsonResult, responseHeaders, HttpStatus.CREATED);

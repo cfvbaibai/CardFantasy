@@ -32,7 +32,8 @@
                         <li>洗炼技能也可以设定成降临或者死契，例如"骷髅法师+降临火墙3"表示有了降临火墙的骷髅法师，"独眼巨人+死契摧毁"表示有了死契摧毁的独眼巨人。</li>
                         <li>设置了洗炼技能的卡牌默认15级，所以"凤凰+转生5"等同于"凤凰+转生5-15"。</li>
                         <li>制作人：<a href="http://cnrdn.com/rd.htm?id=1344758&r=http%3A%2F%2Ftieba.baidu.com%2Fi%2F13567034%2Fprofile%3Ffrom%3D1v1" target="_blank">白白</a></li>
-                        <li>友情支持：<a href="http://cnrdn.com/rd.htm?id=1344758&r=http%3A%2F%2Ftieba.baidu.com%2Ff%3Fkw%3D%25C4%25A7%25BF%25A8%25BB%25C3%25CF%25EB%3Ffrom%3D1v1" target="_blank">魔卡幻想贴吧</a></li>                    </ul>
+                        <li>友情支持：<a href="http://cnrdn.com/rd.htm?id=1344758&r=http%3A%2F%2Ftieba.baidu.com%2Ff%3Fkw%3D%25C4%25A7%25BF%25A8%25BB%25C3%25CF%25EB%3Ffrom%3D1v1" target="_blank">魔卡幻想贴吧</a></li>
+                    </ul>
                 </div>
             </div>
             <div data-role="collapsible" data-mini="true" data-collapsed="false" data-theme="c" data-content-theme="d">
@@ -81,12 +82,14 @@
                 </div>
             </div>
             <div id="command" data-mini="true" data-role="controlgroup" data-type="horizontal">
-                <a data-role="button" data-mini="true" data-theme="c" href="javascript:playAutoGame(1)">文字战斗</a>
-                <a data-role="button" data-mini="true" data-theme="c" href="javascript:playAutoGame(-1)">动画战斗</a>
-                <!-- <a data-role="button" data-mini="true" data-theme="c" href="javascript:playAutoGame(100)">打100场</a> -->
-                <a data-role="button" data-mini="true" data-theme="c" href="javascript:playAutoGame(1000)">连续千场</a>
-                <a data-role="button" data-mini="true" data-theme="c" href="http://cnrdn.com/rd.htm?id=1344758&r=http%3A%2F%2Ftieba.baidu.com%2Fp%2F2660663919%3Ffrom%3D1v1" target="blank">提BUG</a>
-                <!-- <button data-theme="c" onclick="alert('按CTRL+A全选，再按CTRL+C')">拷贝</button> -->
+                <a class="battle-button" data-role="button" data-mini="true" data-theme="c"
+                    href="javascript:playAutoGame(1)">文字战斗</a>
+                <a class="battle-button" data-role="button" data-mini="true" data-theme="c"
+                    href="javascript:playAutoGame(-1)">动画战斗</a>
+                <a class="battle-button" data-role="button" data-mini="true" data-theme="c"
+                    href="javascript:playAutoGame(1000)">连续千场</a>
+                <a data-role="button" data-mini="true" data-theme="c" target="blank"
+                    href="http://cnrdn.com/rd.htm?id=1344758&r=http%3A%2F%2Ftieba.baidu.com%2Fp%2F2660663919%3Ffrom%3D1v1">提BUG</a>
             </div>
             <div id="battle-div" data-mini="true" data-role="collapsible" data-collapsed="false" data-theme="c"
                 data-content-theme="<%=dataContentTheme%>">
@@ -214,10 +217,14 @@
                 </div>
             </div>
             <div id="boss-command" data-mini="true" data-role="controlgroup" data-type="horizontal" data-disabled="false">
-                <a data-role="button" data-mini="true" data-theme="c" href="javascript:playBossGame(1)">文字战斗</a>
-                <a data-role="button" data-mini="true" data-theme="c" href="javascript:playBossGame(-1)">动画战斗</a>
-                <a data-role="button" data-mini="true" data-theme="c" href="javascript:playBossGame(1000)">卡组强度分析</a>
-                <a data-role="button" data-mini="true" data-theme="c" href="http://cnrdn.com/rd.htm?id=1344758&r=http%3A%2F%2Ftieba.baidu.com%2Fp%2F2660663919%3Ffrom%3Dboss" target="blank">提BUG</a>
+                <a class="battle-button" data-role="button" data-mini="true" data-theme="c"
+                    href="javascript:playBossGame(1)">文字战斗</a>
+                <a class="battle-button" data-role="button" data-mini="true" data-theme="c"
+                    href="javascript:playBossGame(-1)">动画战斗</a>
+                <a class="battle-button" data-role="button" data-mini="true" data-theme="c"
+                    href="javascript:playBossGame(1000)">卡组强度分析</a>
+                <a data-role="button" data-mini="true" data-theme="c" target="blank"
+                    href="http://cnrdn.com/rd.htm?id=1344758&r=http%3A%2F%2Ftieba.baidu.com%2Fp%2F2660663919%3Ffrom%3Dboss">提BUG</a>
                 <!--  <button data-mini="true" data-theme="c" onclick="playBossGame(1000)"></button>-->
                 <!-- <button data-theme="c" onclick="alert('按CTRL+A全选，再按CTRL+C')">拷贝</button> -->
             </div>
@@ -227,7 +234,7 @@
             </div>
         </div>
     </div>
-
+    
     <div data-role="page" data-title="地图战" data-mini="true" id="map-battle">
         <div data-role="header" data-id="navbar" data-position="fixed" data-theme="c">
             <div data-role="navbar" data-theme="c">
@@ -239,11 +246,130 @@
             </div>
         </div>
         <div data-role="content">
-            <p>功能尚未开放</p>
-            <a href="#arena" data-role="button" data-rel="dialog" data-transition="flip">Open</a>
+            <div style="text-align: center">该功能尚未开放</div>
         </div>
     </div>
-    
+
+<%--
+    <div data-role="page" data-title="地图战" data-mini="true" id="map-battle">
+        <div data-role="header" data-id="navbar" data-position="fixed" data-theme="c">
+            <div data-role="navbar" data-theme="c">
+                <ul>
+                    <li><a href="#boss-battle">魔神战</a></li>
+                    <li><a href="#map-battle" class="ui-btn-active ui-state-persist">地图战</a></li>
+                    <li><a href="#main-container">竞技场战</a></li>
+                </ul>
+            </div>
+        </div>
+        <div data-role="content">
+            <div data-role="collapsible" data-mini="true" data-content-theme="<%=dataContentTheme%>" data-collapsed-icon="info" data-theme="c"
+                data-expanded-icon="info">
+                <h3>点击查看帮助</h3>
+                <div id="help">
+                    <ul data-theme="c">
+                        <li>在下面的输入框里输入卡组符文的信息，卡牌与符文之间用逗号隔开，不要留多余的空格，例如： 金属巨龙,降临天使,冰封,永冻</li>
+                        <li>默认卡牌等级10级，符文等级4级，想要改变等级的话，在名称后面添加"-数字"。例如10级金属就是"金属巨龙-10"。</li>
+                        <li>重复添加同一个卡牌可以使用星号，例如"凤凰*5"表示5张10级凤凰，"凤凰-15*5"表示5张15级凤凰，注意符文不能重复。</li>
+                        <li>可以使用加号设置卡牌的洗炼技能，例如"凤凰+转生5-15*5"表示5张15级的转生5的凤凰。</li>
+                        <li>洗炼技能也可以设定成降临或者死契，例如"骷髅法师+降临火墙3"表示有了降临火墙的骷髅法师，"独眼巨人+死契摧毁"表示有了死契摧毁的独眼巨人。</li>
+                        <li>设置了洗炼技能的卡牌默认15级，所以"凤凰+转生5"等同于"凤凰+转生5-15"。</li>
+                        <li>制作人：<a href="http://cnrdn.com/rd.htm?id=1344758&r=http%3A%2F%2Ftieba.baidu.com%2Fi%2F13567034%2Fprofile%3Ffrom%3Dmap" target="_blank">白白</a></li>
+                        <li>友情支持：<a href="http://cnrdn.com/rd.htm?id=1344758&r=http%3A%2F%2Ftieba.baidu.com%2Ff%3Fkw%3D%25C4%25A7%25BF%25A8%25BB%25C3%25CF%25EB%3Ffrom%3Dmap" target="_blank">魔卡幻想贴吧</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">
+                <h3>设置阵容</h3>
+                <div>
+                    <table style="WIDTH: 100%">
+                        <tr>
+                            <td>地图</td>
+                            <td>
+                                <select data-theme="c" name="map-id" id="map-id" data-mini="true" data-native-menu="false">
+                                    <optgroup label="1-试炼森林">
+                                        <option value="1-1">1-1 森林入口</option>
+                                        <option value="1-2">1-2 森林小径</option>
+                                        <option value="1-3">1-3 守林人小屋</option>
+                                        <option value="1-4">1-4 小镜湖</option>
+                                        <option value="1-5">1-5 密林深处</option>
+                                        <option value="1-6">1-6 废弃兽穴</option>
+                                    </optgroup>
+                                    <optgroup label="2-落日荒原">
+                                        <option value="2-1">2-1 泰坦山道</option>
+                                        <option value="2-2">2-2 荒蛮古道</option>
+                                        <option value="2-3">2-3 部落遗迹</option>
+                                        <option value="2-4">2-4 余晖渡口</option>
+                                        <option value="2-5">2-5 黄昏镇</option>
+                                        <option value="2-6">2-6 银月港</option>
+                                    </optgroup>
+                                    <optgroup label="3-西风岛">
+                                        <option value="3-1">3-1 风暴岛</option>
+                                        <option value="3-2">3-2 南港</option>
+                                        <option value="3-3">3-3 星辰学院</option>
+                                        <option value="3-4">3-4 竞技场</option>
+                                        <option value="3-5">3-5 星象塔</option>
+                                        <option value="3-6">3-6 龙牙山</option>
+                                        <option value="3-7">3-7 神秘山洞</option>
+                                        <option value="3-H">3-H (隐藏)地下图书馆</option>
+                                    </optgroup>
+                                    <optgroup label="4-翡翠森林">
+                                        <option value="4-1">4-1 微风湾</option>
+                                        <option value="4-2">4-2 巨木村</option>
+                                        <option value="4-3">4-3 坠星湖</option>
+                                        <option value="4-4">4-4 蓝鹰瀑布</option>
+                                        <option value="4-5">4-5 月神祭坛</option>
+                                        <option value="4-6">4-6 月影之井</option>
+                                        <option value="4-7">4-7 耳语渡口</option>
+                                        <option value="4-H">4-H (隐藏)迷雾之谷</option>
+                                    </optgroup>
+                                    <optgroup label="5-燃烧平原"></optgroup>
+                                    <optgroup label="6-乌木地下城"></optgroup>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>难度</td>
+                            <td>
+                                <select data-theme="c" name="map-difficulty" id="map-difficulty" data-mini="true" data-native-menu="false">
+                                    <option value="1">简单</option>
+                                    <option value="2">普通</option>
+                                    <option value="3">困难</option>
+                                </select>
+                            </td>
+                        </tr>
+                    </table>
+                    <div id="player" class="player ui-grid-c">
+                        <div class="ui-block-a ui-block-label-number">
+                            <span>玩家等级: </span>
+                        </div>
+                        <div class="ui-block-b">
+                            <input data-theme="c" type="number" id="mapHeroLv" name="mapHeroLv" data-mini="true" value="75" />
+                        </div>
+                        <div class="ui-block-c ui-block-label-number">
+                            <span>玩家卡组: </span>
+                        </div>
+                        <div data-theme="c" class="ui-block-d">
+                            <a data-role="button" data-rel="dialog" href="javascript:buildDeck('map-deck')" data-mini="true">组卡</a>
+                        </div>
+                    </div>
+                    <div>
+                        <textarea data-theme="c" id="map-deck" name="map-deck" rows="5" cols="40" data-mini="true">堕落精灵*2,淬炼,绝杀</textarea>
+                    </div>
+                </div>
+            </div>
+            <div id="map-command" data-mini="true" data-role="controlgroup" data-type="horizontal" data-disabled="false">
+                <a data-role="button" data-mini="true" data-theme="c" href="javascript:playMapGame(1)">文字战斗</a>
+                <a data-role="button" data-mini="true" data-theme="c" href="javascript:playMapGame(-1)">动画战斗</a>
+                <a data-role="button" data-mini="true" data-theme="c" href="javascript:playMapGame(1000)">连续千场</a>
+                <a data-role="button" data-mini="true" data-theme="c" href="http://cnrdn.com/rd.htm?id=1344758&r=http%3A%2F%2Ftieba.baidu.com%2Fp%2F2660663919%3Ffrom%3Dmap" target="blank">提BUG</a>
+            </div>
+            <div id="map-battle-div" data-mini="true" data-role="collapsible" data-collapsed="false" data-theme="c" data-content-theme="d">
+                <h3>战斗记录</h3>
+                <div id="map-battle-output" class="battle-output">没有战斗</div>
+            </div>
+        </div>
+    </div>
+--%>
     <div data-role="page" data-title="战场" data-mini="true" id="arena" class="fixed-width">
         <div data-role="header" data-theme="c" data-position="fixed">
             <h3 style="text-align: center">战斗</h3>

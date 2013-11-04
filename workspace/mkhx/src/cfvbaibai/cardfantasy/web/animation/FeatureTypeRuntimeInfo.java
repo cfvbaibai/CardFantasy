@@ -15,6 +15,7 @@ public class FeatureTypeRuntimeInfo {
     public String getName() {
         return name;
     }
+
     public boolean isGrowable() {
         return growable;
     }
