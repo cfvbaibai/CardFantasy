@@ -15,7 +15,7 @@ var initDeckBuilder = function(store, outputDivId) {
     console.log(JSON.stringify(store));
     $('#deck-output').html('');
     var currentDeck = $('#' + outputDivId).val();
-    var parts = currentDeck.replace('，',',').split(',');
+    var parts = currentDeck.replace(/[，　 \r\n]/g, ',').replace(/[＊×]/g, '*').replace(/＋/g, '+').split(',');
     $.each(parts, function(i, part) {
         addEntity(part.trim());
     });
