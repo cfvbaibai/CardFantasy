@@ -130,7 +130,7 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">
                 <h3>设置阵容</h3>
                 <div>
-                    <select data-theme="c" name="boss-name" id="boss-name" data-mini="true">
+                    <select data-theme="c" name="boss-name" id="boss-name" data-mini="true" data-native-menu="false">
                         <option value="复仇女神">魔神：复仇女神</option>
                         <option value="邪龙之神">魔神：邪龙之神</option>
                         <option value="噩梦之主">魔神：噩梦之主</option>
@@ -141,7 +141,7 @@
 
 <!-- 军团加成：10级， -->
                     <fieldset data-theme="c" data-role="controlgroup" data-type="horizontal">
-                        <select data-theme="c" name="buff-kingdom" id="buff-kingdom" data-mini="true">
+                        <select data-theme="c" name="buff-kingdom" id="buff-kingdom" data-mini="true" data-native-menu="false">
                             <option value="0">王国军团加成0</option>
                             <option value="1">王国军团加成1</option>
                             <option value="2">王国军团加成2</option>
@@ -154,7 +154,7 @@
                             <option value="9">王国军团加成9</option>
                             <option value="10" selected="selected">王国军团加成10</option>
                         </select>
-                        <select data-theme="c" name="buff-savage" id="buff-savage" data-mini="true">
+                        <select data-theme="c" name="buff-savage" id="buff-savage" data-mini="true" data-native-menu="false">
                             <option value="0">蛮荒军团加成0</option>
                             <option value="1">蛮荒军团加成1</option>
                             <option value="2">蛮荒军团加成2</option>
@@ -169,7 +169,7 @@
                         </select>
                     </fieldset>
                     <fieldset data-theme="c" data-role="controlgroup" data-type="horizontal">
-                        <select data-theme="c" name="buff-forest" id="buff-forest" data-mini="true">
+                        <select data-theme="c" name="buff-forest" id="buff-forest" data-mini="true" data-native-menu="false">
                             <option value="0">森林军团加成0</option>
                             <option value="1">森林军团加成1</option>
                             <option value="2">森林军团加成2</option>
@@ -182,7 +182,7 @@
                             <option value="9">森林军团加成9</option>
                             <option value="10" selected="selected">森林军团加成10</option>
                         </select>
-                        <select data-theme="c" name="buff-hell" id="buff-hell" data-mini="true">
+                        <select data-theme="c" name="buff-hell" id="buff-hell" data-mini="true" data-native-menu="false">
                             <option value="0">地狱军团加成0</option>
                             <option value="1">地狱军团加成1</option>
                             <option value="2">地狱军团加成2</option>
