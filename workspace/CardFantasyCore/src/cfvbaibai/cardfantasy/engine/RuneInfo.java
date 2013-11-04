@@ -5,6 +5,7 @@ import cfvbaibai.cardfantasy.NonSerializable;
 import cfvbaibai.cardfantasy.data.Feature;
 import cfvbaibai.cardfantasy.data.Rune;
 import cfvbaibai.cardfantasy.data.RuneActivator;
+import cfvbaibai.cardfantasy.data.RuneClass;
 import cfvbaibai.cardfantasy.data.RuneData;
 
 public class RuneInfo extends EntityInfo {
@@ -82,8 +83,8 @@ public class RuneInfo extends EntityInfo {
         return this.rune.getName();
     }
 
-    public String getRuneClass() {
-        return this.rune.getRuneClass().name();
+    public RuneClass getRuneClass() {
+        return this.rune.getRuneClass();
     }
 
     public int getMaxEnergy() {

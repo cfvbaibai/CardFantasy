@@ -1,9 +1,13 @@
 package cfvbaibai.cardfantasy.game;
 
 import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
+import cfvbaibai.cardfantasy.data.Race;
+import cfvbaibai.cardfantasy.data.RuneClass;
+import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.GameEndCause;
 import cfvbaibai.cardfantasy.engine.GameResult;
 import cfvbaibai.cardfantasy.engine.Player;
+import cfvbaibai.cardfantasy.engine.RuneInfo;
 
 public abstract class VictoryCondition {
     public abstract boolean meetCriteria(GameResult result);
@@ -19,8 +23,52 @@ public abstract class VictoryCondition {
         } else if (desc.startsWith("MyHeroHP:")) {
             int hpThreshold = Integer.parseInt(desc.substring(9));
             return new HeroHPVictoryCondition(hpThreshold);
-        } else if (desc.equalsIgnoreCase("NoRune")) {
-            return new NoRuneVictoryCondition();
+        } else if (desc.startsWith("Round:")) {
+            int maxRound = Integer.parseInt(desc.substring(6));
+            return new RoundVictoryCondition(maxRound);
+        } else if (desc.equals("EnemyHeroDie")) {
+            return new EnemyHeroDieVictoryCondition();
+        } else if (desc.startsWith("maxDeadCard:")) {
+            int maxDeadCard = Integer.parseInt(desc.substring(11));
+            return new MaxDeadCardVictoryCondition(maxDeadCard);
+        } else if (desc.startsWith("CardOfStar:")) {
+            String rest = desc.substring(11);
+            String[] parts = rest.split(":");
+            int star = Integer.parseInt(parts[0]);
+            int minCount = Integer.parseInt(parts[1]);
+            return new CardOfStarVictoryCondition(star, minCount);
+        } else if (desc.startsWith("CardOfRace:")) {
+            String rest = desc.substring(11);
+            String[] parts = rest.split(":");
+            Race race = Race.BOSS;
+            if (parts[0].equals("K")) {
+                race = Race.KINGDOM;
+            } else if (parts[0].equals("F")) {
+                race = Race.FOREST;
+            } else if (parts[0].equals("S")) {
+                race = Race.SAVAGE;
+            } else if (parts[0].equals("H")) {
+                race = Race.HELL;
+            } else {
+                throw new CardFantasyRuntimeException("Invalid race definition in CardOfRace victory condition: " + parts[0]);
+            }
+            int minCount = Integer.parseInt(parts[1]);
+            return new CardOfRaceVictoryCondition(race, minCount);
+        } else if (desc.startsWith("NoRune:")) {
+            String rest = desc.substring(7);
+            RuneClass runeClass = null;
+            if (rest == "A") {
+                runeClass = null;
+            } else if (rest == "G") {
+                runeClass = RuneClass.GROUND;
+            } else if (rest == "F") {
+                runeClass = RuneClass.FIRE;
+            } else if (rest == "I") {
+                runeClass = RuneClass.WATER;
+            } else if (rest == "W") {
+                runeClass = RuneClass.WIND;
+            }
+            return new NoRuneVictoryCondition(runeClass);
         } else {
             throw new CardFantasyRuntimeException("Invalid victory condition desc: " + desc);
         }
@@ -43,9 +91,9 @@ class CardsAllDieVictoryCondition extends VictoryCondition {
 
     @Override
     public boolean meetCriteria(GameResult result) {
-        return result.getCause() == GameEndCause.卡片全灭; 
+        Player loser = result.getLoser();
+        return loser.getDeck().size() == 0 && loser.getHand().size() == 0 && loser.getField().getAliveCards().size() == 0; 
     }
-    
 }
 
 class HeroHPVictoryCondition extends VictoryCondition {
@@ -61,14 +109,85 @@ class HeroHPVictoryCondition extends VictoryCondition {
         Player winner = result.getWinner();
         return winner.getHP() * 100 / winner.getMaxHP() > threshold;
     }
+}
+
+class RoundVictoryCondition extends VictoryCondition {
+    private int maxRound;
     
+    public RoundVictoryCondition(int maxRound) {
+        this.maxRound = maxRound;
+    }
+    
+    @Override
+    public boolean meetCriteria(GameResult result) {
+        return result.getRound() < this.maxRound;
+    }
+}
+
+class EnemyHeroDieVictoryCondition extends VictoryCondition {
+    @Override
+    public boolean meetCriteria(GameResult result) {
+        return result.getCause() == GameEndCause.英雄死亡;
+    }
+}
+
+class MaxDeadCardVictoryCondition extends VictoryCondition {
+    private int maxDeadCard;
+    public MaxDeadCardVictoryCondition(int maxDeadCard) {
+        this.maxDeadCard = maxDeadCard;
+    }
+    public boolean meetCriteria(GameResult result) {
+        return result.getWinner().getGrave().size() < this.maxDeadCard;
+    }
+}
+
+class CardOfStarVictoryCondition extends VictoryCondition {
+    private int star;
+    private int minCount;
+    public CardOfStarVictoryCondition(int star, int minCount) {
+        this.star = star;
+        this.minCount = minCount;
+    }
+    public boolean meetCriteria(GameResult result) {
+        int count = 0;
+        for (CardInfo card : result.getWinner().getAllCards()) {
+            if (card.getStar() == this.star) {
+                ++count;
+            }
+        }
+        return count >= minCount;
+    }
+}
+
+class CardOfRaceVictoryCondition extends VictoryCondition {
+    private Race race;
+    private int minCount;
+    public CardOfRaceVictoryCondition(Race race, int minCount) {
+        this.race = race;
+        this.minCount = minCount;
+    }
+    public boolean meetCriteria(GameResult result) {
+        int count = 0;
+        for (CardInfo card : result.getWinner().getAllCards()) {
+            if (card.getRace() == this.race) {
+                ++count;
+            }
+        }
+        return count >= minCount;
+    }
 }
 
 class NoRuneVictoryCondition extends VictoryCondition {
-
-    @Override
-    public boolean meetCriteria(GameResult result) {
-        return result.getWinner().getRuneBox().getRunes().isEmpty();
+    private RuneClass runeClass;
+    public NoRuneVictoryCondition(RuneClass runeClass) {
+        this.runeClass = runeClass;
     }
-    
+    public boolean meetCriteria(GameResult result) {
+        for (RuneInfo rune : result.getWinner().getRuneBox().getRunes()) {
+            if (rune.getRuneClass() == runeClass) {
+                return false;
+            }
+        }
+        return true;
+    }
 }

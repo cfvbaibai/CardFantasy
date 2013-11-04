@@ -12,7 +12,7 @@ public enum RuneData {
     石林(RuneClass.GROUND, 4, FeatureType.法力反射, 5, 1, 3, Growth.RUNE, RuneActivator.myGrave(1, Race.SAVAGE)),
     赤谷(RuneClass.GROUND, 5, FeatureType.吸血, 5, 1, 4, Growth.RUNE, RuneActivator.myField(1, Race.SAVAGE)),
     陨星(RuneClass.GROUND, 4, FeatureType.瘟疫, 5, 1, 4, Growth.RUNE, RuneActivator.enemyField(1, Race.KINGDOM)),
-    飞岩(RuneClass.GROUND, 4, FeatureType.狙击, 5, 1, 5, Growth.RUNE, RuneActivator.myGrave(2, Race.SAVAGE)),
+    飞岩(RuneClass.GROUND, 4, FeatureType.狙击, 5, 1, 4, Growth.RUNE, RuneActivator.myGrave(2, Race.SAVAGE)),
     死域(RuneClass.GROUND, 5, FeatureType.毒云, 6, 1, 5, Growth.RUNE, RuneActivator.myGrave(1, Race.SAVAGE)),
     秽土(RuneClass.GROUND, 4, FeatureType.转生, 4, 1, 5, Growth.RUNE, RuneActivator.myGrave(1, Race.SAVAGE)),
     

@@ -418,4 +418,8 @@ public class CardInfo extends EntityInfo {
         }
         return false;
     }
+
+    public int getStar() {
+        return this.card.getStar();
+    }
 }

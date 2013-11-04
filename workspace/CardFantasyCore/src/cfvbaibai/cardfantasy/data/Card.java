@@ -91,4 +91,8 @@ public class Card implements Cloneable {
         }
         return cost;
     }
+
+    public int getStar() {
+        return this.sourceInfo.getStar();
+    }
 }

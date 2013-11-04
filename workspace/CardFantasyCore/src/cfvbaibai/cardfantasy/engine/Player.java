@@ -44,6 +44,22 @@ public class Player extends EntityInfo {
         }
     }
     
+    public List<CardInfo> getAllCards() {
+        List<CardInfo> cards = new ArrayList<CardInfo>();
+        cards.addAll(this.deck.getCards());
+        cards.addAll(this.hand.getCards());
+        cards.addAll(this.grave.getCards());
+        cards.addAll(this.field.getCards());
+        cards.addAll(this.outField.getCards());
+        List<CardInfo> result = new ArrayList<CardInfo>();
+        for (CardInfo card : cards) {
+            if (card != null) {
+                result.add(card);
+            }
+        }
+        return result;
+    }
+    
     public int getMaxCost() {
         return this.playerInfo.getMaxCost();
     }

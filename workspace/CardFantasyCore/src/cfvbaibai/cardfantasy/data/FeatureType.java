@@ -161,6 +161,6 @@ public enum FeatureType {
     }
 
     public boolean isGrowable() {
-        return this.incrImpact > 0;
+        return this.incrImpact != 0 && this.initImpact != 0;
     }
 }
