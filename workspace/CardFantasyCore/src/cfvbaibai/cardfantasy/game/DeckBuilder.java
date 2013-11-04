@@ -13,6 +13,7 @@ import cfvbaibai.cardfantasy.data.CardFeature;
 import cfvbaibai.cardfantasy.data.FeatureType;
 import cfvbaibai.cardfantasy.data.Rune;
 import cfvbaibai.cardfantasy.data.RuneData;
+import cfvbaibai.cardfantasy.data.Zht2Zhs;
 
 public final class DeckBuilder {
 
@@ -22,6 +23,7 @@ public final class DeckBuilder {
         descsText = descsText.replace(' ', ',').replace('　', ',').replace('，', ',');
         descsText = descsText.replace("\r\n", ",").replace("\n", ",");
         descsText = descsText.replace('＋', '+').replace('＊', '*').replace('－', '-');
+        descsText = Zht2Zhs.getInstance().convert(descsText);
         String[] descs = descsText.split(",");
         return build(descs);
     }

@@ -8,7 +8,7 @@ public class DeckBuildRuntimeException extends CardFantasyRuntimeException {
             "<table border='0' cellspacing='1' cellpadding='5' bgcolor='#FFCCCC'>" +
             "<tr bgcolor='#FF9999'><th>常见错误</th><th>错误例子</th><th>改正</th></tr>" +
             "<tr bgcolor='white'><td>卡牌之间没有用逗号隔开</td><td>大剑圣*1机械飞龙*2</td><td>大剑圣*1,机械飞龙*2</td></tr>" +
-            "<tr bgcolor='white'><td>使用了繁体字</td><td>战斗猛犸象+不動</td><td>战斗猛犸象+不动</td></tr>" +
+            "<tr bgcolor='white'><td>使用了系统无法识别的文字</td><td>白白暂时举不出例子</td><td>这时候就使用组卡功能吧</td></tr>" +
             "<tr bgcolor='white'><td>有错别字</td><td>降临天使+国王之力5,雷域</td><td>降临天使+王国之力5,雷狱</td></tr>" +
             "<tr bgcolor='white'><td>卡牌符文名字不准确</td><td>剑圣</td><td>大剑圣</td></tr>" +
             "<tr bgcolor='white'><td>洗炼符号用成了减号</td><td>大剑圣-不动</td><td>大剑圣+不动</td></tr>" +
