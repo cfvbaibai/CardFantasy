@@ -56,22 +56,29 @@ public abstract class VictoryCondition {
             return new CardOfRaceVictoryCondition(race, minCount);
         } else if (desc.startsWith("NoRune:")) {
             String rest = desc.substring(7);
-            RuneClass runeClass = null;
-            if (rest == "A") {
-                runeClass = null;
-            } else if (rest == "G") {
-                runeClass = RuneClass.GROUND;
-            } else if (rest == "F") {
-                runeClass = RuneClass.FIRE;
-            } else if (rest == "I") {
-                runeClass = RuneClass.WATER;
-            } else if (rest == "W") {
-                runeClass = RuneClass.WIND;
-            }
-            return new NoRuneVictoryCondition(runeClass);
+            return new NoRuneVictoryCondition(toRuneClass(rest));
+        } else if (desc.startsWith("HasRune:")) {
+            String rest = desc.substring(8);
+            return new HasRuneVictoryCondition(toRuneClass(rest));
         } else {
             throw new CardFantasyRuntimeException("Invalid victory condition desc: " + desc);
         }
+    }
+    
+    private static RuneClass toRuneClass(String shorthand) {
+        RuneClass runeClass = null;
+        if (shorthand == "A") {
+            runeClass = null;
+        } else if (shorthand == "G") {
+            runeClass = RuneClass.GROUND;
+        } else if (shorthand == "F") {
+            runeClass = RuneClass.FIRE;
+        } else if (shorthand == "I") {
+            runeClass = RuneClass.WATER;
+        } else if (shorthand == "W") {
+            runeClass = RuneClass.WIND;
+        }
+        return runeClass;
     }
 }
 
@@ -189,5 +196,23 @@ class NoRuneVictoryCondition extends VictoryCondition {
             }
         }
         return true;
+    }
+}
+
+class HasRuneVictoryCondition extends VictoryCondition {
+    private RuneClass runeClass;
+    public HasRuneVictoryCondition(RuneClass runeClass) {
+        if (runeClass == null) {
+            throw new IllegalArgumentException("runeClass should not be null");
+        }
+        this.runeClass = runeClass;
+    }
+    public boolean meetCriteria(GameResult result) {
+        for (RuneInfo rune : result.getWinner().getRuneBox().getRunes()) {
+            if (rune.getRuneClass() == runeClass) {
+                return true;
+            }
+        }
+        return false;
     }
 }
