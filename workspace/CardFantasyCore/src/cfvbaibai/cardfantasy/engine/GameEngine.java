@@ -149,7 +149,23 @@ public class GameEngine {
         }
         
         for (CardInfo card : this.getActivePlayer().getField().toList()) {
-            card.setFirstRound(false);
+            if (!card.getStatus().containsStatus(CardStatusType.虚弱)) {
+                card.setFirstRound(false);
+            }
+        }
+
+        for (CardInfo card : this.getActivePlayer().getField().getAliveCards()) {
+            card.getStatus().remove(CardStatusType.冰冻);
+            card.getStatus().remove(CardStatusType.麻痹);
+            card.getStatus().remove(CardStatusType.锁定);
+            card.getStatus().remove(CardStatusType.中毒);
+            card.getStatus().remove(CardStatusType.虚弱);
+            card.getStatus().remove(CardStatusType.迷惑);
+        }
+        
+        // Card revived by death revive skill could attack right away
+        for (CardInfo card : this.getInactivePlayer().getField().getAliveCards()) {
+            card.getStatus().remove(CardStatusType.虚弱);
         }
 
         Player previousPlayer = getActivePlayer();
@@ -213,20 +229,6 @@ public class GameEngine {
         myField.compact();
         this.stage.getUI().compactField(opField);
         opField.compact();
-
-        for (CardInfo card : myField.getAliveCards()) {
-            card.getStatus().remove(CardStatusType.冰冻);
-            card.getStatus().remove(CardStatusType.麻痹);
-            card.getStatus().remove(CardStatusType.锁定);
-            card.getStatus().remove(CardStatusType.中毒);
-            card.getStatus().remove(CardStatusType.虚弱);
-            card.getStatus().remove(CardStatusType.迷惑);
-        }
-        
-        // Card revived by death revive skill could attack right away
-        for (CardInfo card : opField.getAliveCards()) {
-            card.getStatus().remove(CardStatusType.虚弱);
-        }
 
         return Phase.结束;
     }
