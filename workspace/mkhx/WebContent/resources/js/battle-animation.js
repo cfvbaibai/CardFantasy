@@ -975,22 +975,15 @@ var Animater = function() {
         }
         this.addAnimations("compactField", funcs, settings.compactFieldDuration);
     };
-    
-    this.__roundEnded = function(data) {
-        var round = data[0];
-        var playerId = data[1];
-        var stage = this.stage;
-        var roundText = stage.get('#round-text')[0];
-        
-        // Remove all debuffs.
+
+    this.clearStatus = function(arena, statusToRemove) {
         var self = this;
-        $.each(this.arenas[playerId].fields, function (i, card) {
+        $.each(arena.fields, function (i, card) {
             var newStatusList = [];
             for (var i = 0; i < card.statusList.length; ++i) {
-                if (card.statusList[i] == '燃') {
-                    newStatusList.push('燃');
-                } else if (card.statusList[i] == '裂') {
-                    newStatusList.push('裂');
+                var status = card.statusList[i];
+                if (statusToRemove.indexOf(status) < 0) {
+                    newStatusList.push(status);
                 }
             }
             card.statusList = newStatusList;
@@ -1001,7 +994,21 @@ var Animater = function() {
                 card.group.getLayer().draw();
             }, settings.minimumDuration);
         });
+    };
+    
+    this.__roundEnded = function(data) {
+        var round = data[0];
+        var playerId = data[1];
+        var stage = this.stage;
+        var roundText = stage.get('#round-text')[0];
         
+        // Remove all debuffs.
+        var self = this;
+        $.each(this.arenas, function(i, arena) {
+            self.clearStatus(arena, ['虚']);
+        });
+        this.clearStatus(this.arenas[playerId], ['冻', '麻', '锁', '毒', '惑']);
+
         this.addAnimation("roundEnded", function() {
             roundText.setText("回合: " + round);
             roundText.centerMiddle(stage.get('#round-rect')[0]);

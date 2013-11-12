@@ -222,6 +222,11 @@ public class GameEngine {
             card.getStatus().remove(CardStatusType.虚弱);
             card.getStatus().remove(CardStatusType.迷惑);
         }
+        
+        // Card revived by death revive skill could attack right away
+        for (CardInfo card : opField.getAliveCards()) {
+            card.getStatus().remove(CardStatusType.虚弱);
+        }
 
         return Phase.结束;
     }
