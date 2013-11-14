@@ -42,9 +42,9 @@
                         <tr>
                             <td>地图</td>
                             <td>
-                                <select data-theme="c" name="map-id" id="map-id" data-mini="true" data-native-menu="false">
+                                <select data-theme="c" name="map-id" id="map-id" class="map-select" data-mini="true" data-native-menu="false">
                                     <optgroup label="12-后燃烧平原">
-                                        <option value="12-1">12-1 火腹石</option>
+                                        <option value="12-1" selected="selected">12-1 火腹石</option>
                                         <option value="12-2">12-2 绝望壁</option>
                                         <option value="12-3">12-3 焦炭岭</option>
                                         <option value="12-4">12-4 乌鼻熔炉</option>
@@ -186,13 +186,14 @@
                         <tr>
                             <td>难度</td>
                             <td>
-                                <select data-theme="c" name="map-difficulty" id="map-difficulty" data-mini="true" data-native-menu="false">
-                                    <option value="1">简单</option>
+                                <select data-theme="c" name="map-difficulty" id="map-difficulty" class="map-select" data-mini="true" data-native-menu="false">
+                                    <option value="1" selected="selected">简单</option>
                                     <option value="2">普通</option>
                                     <option value="3">困难</option>
                                 </select>
                             </td>
                         </tr>
+                        <tr><td>过关条件</td><td><span id="map-victory-condition">未知</span></td></tr>
                     </table>
                     <div id="player" class="player ui-grid-c">
                         <div class="ui-block-a ui-block-label-number">

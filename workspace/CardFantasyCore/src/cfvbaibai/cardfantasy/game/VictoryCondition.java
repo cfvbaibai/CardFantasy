@@ -83,31 +83,36 @@ public abstract class VictoryCondition {
         }
         return runeClass;
     }
+
+    public abstract String getDescription();
 }
 
 class DummyVictoryCondition extends VictoryCondition {
-
     @Override
     public boolean meetCriteria(GameResult result) {
         return true;
     }
-    
+
+    @Override
+    public String getDescription() {
+        return "战斗胜利";
+    }
 }
 
 class CardsAllDieVictoryCondition extends VictoryCondition {
-
-    public CardsAllDieVictoryCondition() {
-    }
-
     @Override
     public boolean meetCriteria(GameResult result) {
         Player loser = result.getLoser();
         return loser.getDeck().size() == 0 && loser.getHand().size() == 0 && loser.getField().getAliveCards().size() == 0; 
     }
+
+    @Override
+    public String getDescription() {
+        return "对方卡牌全灭";
+    }
 }
 
 class HeroHPVictoryCondition extends VictoryCondition {
-
     private int threshold;
     
     public HeroHPVictoryCondition(int threshold) {
@@ -117,7 +122,12 @@ class HeroHPVictoryCondition extends VictoryCondition {
     @Override
     public boolean meetCriteria(GameResult result) {
         Player winner = result.getWinner();
-        return winner.getHP() * 100 / winner.getMaxHP() > threshold;
+        return winner.getHP() * 100 / winner.getMaxHP() >= threshold;
+    }
+
+    @Override
+    public String getDescription() {
+        return "胜利时，己方英雄生命值不低于" + threshold + "%";
     }
 }
 
@@ -132,12 +142,22 @@ class RoundVictoryCondition extends VictoryCondition {
     public boolean meetCriteria(GameResult result) {
         return result.getRound() < this.maxRound;
     }
+
+    @Override
+    public String getDescription() {
+        return maxRound + "回合数内取得胜利";
+    }
 }
 
 class EnemyHeroDieVictoryCondition extends VictoryCondition {
     @Override
     public boolean meetCriteria(GameResult result) {
         return result.getCause() == GameEndCause.英雄死亡;
+    }
+
+    @Override
+    public String getDescription() {
+        return "对方英雄阵亡";
     }
 }
 
@@ -148,6 +168,10 @@ class MaxDeadCardVictoryCondition extends VictoryCondition {
     }
     public boolean meetCriteria(GameResult result) {
         return result.getWinner().getGrave().size() < this.maxDeadCard;
+    }
+    @Override
+    public String getDescription() {
+        return "己方阵亡卡牌小于" + maxDeadCard + "张";
     }
 }
 
@@ -167,6 +191,10 @@ class CardOfStarVictoryCondition extends VictoryCondition {
         }
         return count >= minCount;
     }
+    @Override
+    public String getDescription() {
+        return "卡组中" + star + "星卡牌不小于" + minCount + "张";
+    }
 }
 
 class CardOfRaceVictoryCondition extends VictoryCondition {
@@ -185,6 +213,10 @@ class CardOfRaceVictoryCondition extends VictoryCondition {
         }
         return count >= minCount;
     }
+    @Override
+    public String getDescription() {
+        return "卡组中" + race.getDisplayName() + "种族卡牌不小于" + minCount + "张";
+    }
 }
 
 class NoRuneVictoryCondition extends VictoryCondition {
@@ -199,6 +231,10 @@ class NoRuneVictoryCondition extends VictoryCondition {
             }
         }
         return true;
+    }
+    @Override
+    public String getDescription() {
+        return "卡组中无符文";
     }
 }
 
@@ -217,5 +253,9 @@ class HasRuneVictoryCondition extends VictoryCondition {
             }
         }
         return false;
+    }
+    @Override
+    public String getDescription() {
+        return "卡组中包含" + runeClass.getDisplayName() + "属性符文";
     }
 }

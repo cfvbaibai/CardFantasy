@@ -12,6 +12,7 @@ import cfvbaibai.cardfantasy.engine.Rule;
 import cfvbaibai.cardfantasy.game.DeckEvaluation;
 import cfvbaibai.cardfantasy.game.DeckStartupInfo;
 import cfvbaibai.cardfantasy.game.DummyGameUI;
+import cfvbaibai.cardfantasy.game.MapStages;
 import cfvbaibai.cardfantasy.game.PlayerBuilder;
 import cfvbaibai.cardfantasy.game.PveEngine;
 import cfvbaibai.cardfantasy.game.PveGameResultStat;
@@ -22,8 +23,9 @@ public class PveEngineTest {
     protected PveEngine massiveEngine;
 
     public PveEngineTest() {
-        engine = new PveEngine(new TestGameUI(), Rule.getDefault());
-        massiveEngine = new PveEngine(new DummyGameUI(), Rule.getDefault());
+        MapStages maps = new MapStages();
+        engine = new PveEngine(new TestGameUI(), Rule.getDefault(), maps);
+        massiveEngine = new PveEngine(new DummyGameUI(), Rule.getDefault(), maps);
     }
 
     @Test

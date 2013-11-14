@@ -40,6 +40,8 @@ import cfvbaibai.cardfantasy.engine.Player;
 import cfvbaibai.cardfantasy.engine.Rule;
 import cfvbaibai.cardfantasy.game.DummyGameUI;
 import cfvbaibai.cardfantasy.game.GameResultStat;
+import cfvbaibai.cardfantasy.game.MapInfo;
+import cfvbaibai.cardfantasy.game.MapStages;
 import cfvbaibai.cardfantasy.game.PlayerBuilder;
 import cfvbaibai.cardfantasy.game.PveEngine;
 import cfvbaibai.cardfantasy.game.PveGameResult;
@@ -69,6 +71,9 @@ public class AutoBattleController {
     
     @Autowired
     private UserActionRecorder userActionRecorder;
+    
+    @Autowired
+    private MapStages maps;
     
     @RequestMapping(value = "/")
     public ModelAndView home(HttpServletRequest request) {
@@ -373,7 +378,7 @@ public class AutoBattleController {
                     String.format("Deck=%s<br />HeroLV=%d, Map=%s", deck, heroLv, map)));
             PlayerInfo player = PlayerBuilder.build("玩家", deck, heroLv);
             WebPlainTextGameUI ui = new WebPlainTextGameUI();
-            PveEngine engine = new PveEngine(ui, Rule.getDefault());
+            PveEngine engine = new PveEngine(ui, Rule.getDefault(), this.maps);
             PveGameResult gameResult = engine.play(player, map);
             String result = getCurrentTime() + "<br />" + ui.getAllText();
             log("Result: " + gameResult.name());
@@ -399,7 +404,7 @@ public class AutoBattleController {
                     String.format("Deck=%s<br />HeroLV=%d, Map=%s", deck, heroLv, map)));
             PlayerInfo player = PlayerBuilder.build("玩家", deck, heroLv);
             StructuredRecordGameUI ui = new StructuredRecordGameUI();
-            PveEngine engine = new PveEngine(ui, Rule.getDefault());
+            PveEngine engine = new PveEngine(ui, Rule.getDefault(), this.maps);
             PveGameResult gameResult = engine.play(player, map);
             BattleRecord record = ui.getRecord();
             String result = gson.toJson(record);
@@ -424,7 +429,7 @@ public class AutoBattleController {
             this.userActionRecorder.addAction(new UserAction(new Date(), request.getRemoteAddr(), "PlayMapMassiveGame",
                     String.format("Deck=%s<br />Lv=%d, Count=%d, Map=%s",
                             deck, heroLv, count, map)));
-            PveEngine engine = new PveEngine(new DummyGameUI(), Rule.getDefault());
+            PveEngine engine = new PveEngine(new DummyGameUI(), Rule.getDefault(), this.maps);
             PlayerInfo player = PlayerBuilder.build("玩家", deck, heroLv);
             PveGameResultStat stat = engine.massivePlay(player, map, count);
             StringBuffer result = new StringBuffer();
@@ -499,6 +504,27 @@ public class AutoBattleController {
             result.put("features", featureList);
             String jsonResult = gson.toJson(result);
             return new ResponseEntity<String>(jsonResult, responseHeaders, HttpStatus.CREATED);
+        } catch (Exception e) {
+            return handleError(e, true);
+        }
+    }
+    
+    @RequestMapping(value = "/GetMapVictoryCondition", headers = "Accept=application/json")
+    public ResponseEntity<String> getMapVictoryCondition(HttpServletRequest request, @RequestParam("map") String map) {
+        try {
+            log("Getting map victory condition: " + map);
+            HttpHeaders responseHeaders = new HttpHeaders();
+            responseHeaders.add("Content-Type", "application/json;charset=UTF-8");
+            responseHeaders.add("Charset", "UTF-8");
+            String condition = "";
+            MapInfo mapInfo = this.maps.getMap(map);
+            if (mapInfo == null) {
+                condition = "无效的地图：" + map;
+            } else {
+                condition = mapInfo.getCondition().getDescription();
+            }
+            String result = gson.toJson(condition);
+            return new ResponseEntity<String>(result, responseHeaders, HttpStatus.CREATED);
         } catch (Exception e) {
             return handleError(e, true);
         }

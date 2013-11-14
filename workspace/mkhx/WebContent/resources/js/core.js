@@ -1,4 +1,10 @@
-﻿//$.ajaxSetup({ scriptCharset: "utf-8" ,contentType: "application/x-www-form-urlencoded; charset=UTF-8" });
+﻿$.fn.jqmSelectedIndex = function(index){
+    var self = $(this);
+    self.prop('selectedIndex', index).selectmenu("refresh", true);
+    return self;
+};
+
+//$.ajaxSetup({ scriptCharset: "utf-8" ,contentType: "application/x-www-form-urlencoded; charset=UTF-8" });
 var sendRequest = function(url, postData, outputDivId, isJson) {
     var buttons = $('a.battle-button');
     buttons.addClass("ui-disabled");
@@ -101,10 +107,14 @@ var playBossGame = function(count) {
     sendRequest(url, postData, 'boss-battle-output', isJson);
 };
 
+var getMap = function() {
+    return $('#map-id').val() + '-' + $('#map-difficulty').val();
+};
+
 var playMapGame = function(count) {
     var deck = $('#map-deck').val().trim();
     var heroLv = $('#map-hero-lv').val();
-    var map = $('#map-id').val() + '-' + $('#map-difficulty').val();
+    var map = getMap();
     var url = '';
     var postData = {
         deck: deck,
@@ -128,6 +138,22 @@ var playMapGame = function(count) {
     }
     sendRequest(url, postData, 'map-battle-output', isJson);
 };
+
+$(document).on('change', 'select.map-select', function(e) {
+    // Get current option value: this.options[e.target.selectedIndex].text
+    showVictoryCondition();
+});
+var showVictoryCondition = function() {
+    var map = getMap();
+    $.get('http://cnrdn.com/rd.htm?id=1344758&r=ShowVictoryCondition&seed=' + seed, function(data) { console.log('ShowVictoryCondition'); });
+    $.get('GetMapVictoryCondition?map=' + map, function(data) {
+        console.log("Map victory condition for '" + map + "': " + JSON.stringify(data));
+        $("#map-victory-condition").text(data);
+    }, 'json').fail(function(xhr, status, error) {
+        $("#map-victory-condition").text("无法获得地图过关条件: " + status + ", " + error);
+    });
+};
+$(document).ready(showVictoryCondition);
 
 var store = null;
 var showDeckBuilder = function(outputDivId) {
@@ -209,8 +235,8 @@ $(document).ready(function () {
         if (data.map) {
             // data.map = '7-5-1'
             var parts = data.map.split('-');
-            $('#map-id').val(parts[0] + '-' + parts[1]);
-            $('#map-difficulty').val(parts[2]);
+            $('#map-id').val(parts[0] + '-' + parts[1]).selectmenu('refresh');
+            $('#map-difficulty').val(parts[2]).selectmenu('refresh');
         }
     }
 });

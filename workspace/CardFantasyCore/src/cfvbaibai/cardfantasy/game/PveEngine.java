@@ -13,19 +13,17 @@ import cfvbaibai.cardfantasy.engine.GameResult;
 import cfvbaibai.cardfantasy.engine.Rule;
 
 public class PveEngine {
-    private static MapStages maps;
+    private MapStages maps;
     private GameUI ui;
     private Rule rule;
 
-    public PveEngine(GameUI ui, Rule rule) {
+    public PveEngine(GameUI ui, Rule rule, MapStages maps) {
         this.ui = ui;
         this.rule = rule;
+        this.maps = maps;
     }
 
     public PveGameResult play(PlayerInfo player, String mapId) {
-        if (maps == null) {
-            maps = new MapStages();
-        }
         ui.showMessage("加载地图" + mapId + "...");
         MapInfo map = maps.getMap(mapId);
         if (map == null) {

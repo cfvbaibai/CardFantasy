@@ -980,6 +980,7 @@ var Animater = function() {
         var self = this;
         $.each(arena.fields, function (i, card) {
             var newStatusList = [];
+            if (!card) { return; }
             for (var i = 0; i < card.statusList.length; ++i) {
                 var status = card.statusList[i];
                 if (statusToRemove.indexOf(status) < 0) {
