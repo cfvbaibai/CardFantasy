@@ -20,11 +20,13 @@ public class MapStages {
         this.mapStages = new HashMap<String, MapInfo>();
         URL url = CardDataStore.class.getClassLoader().getResource("cfvbaibai/cardfantasy/data/MapStages.xml");
         SAXReader reader = new SAXReader();
+        String currentId = "";
         try {
             Document doc = reader.read(url);
             List<Node> mapNodes = doc.selectNodes("/Maps/Map");
             for (Node mapNode : mapNodes) {
                 String id = mapNode.valueOf("@id");
+                currentId = id;
                 int heroHP = Integer.parseInt(mapNode.valueOf("@heroHP"));
                 String descText = mapNode.getText();
                 String[] descs = descText.split(",");
@@ -36,7 +38,7 @@ public class MapStages {
                 this.mapStages.put(id, mapInfo);
             }
         } catch (Exception e) {
-            throw new CardFantasyRuntimeException("Cannot load card map info XML.", e);
+            throw new CardFantasyRuntimeException("Cannot load card map info XML due to error at " + currentId, e);
         }
     }
     

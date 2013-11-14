@@ -21,6 +21,7 @@ import cfvbaibai.cardfantasy.engine.Phase;
 import cfvbaibai.cardfantasy.engine.Player;
 import cfvbaibai.cardfantasy.engine.RuneBox;
 import cfvbaibai.cardfantasy.engine.RuneInfo;
+import cfvbaibai.cardfantasy.game.PveGameResult;
 
 public abstract class TextGameUI extends GameUI {
     protected abstract void say(String obj);
@@ -454,5 +455,10 @@ public abstract class TextGameUI extends GameUI {
     @Override
     public void cardActionEnds(CardInfo card) {
         sayF("%s 结束行动.", card.getShortDesc());
+    }
+    
+    @Override
+    public void mapStageResult(PveGameResult result) {
+        sayF("战斗结果：%s", result.getDescription());
     }
 }

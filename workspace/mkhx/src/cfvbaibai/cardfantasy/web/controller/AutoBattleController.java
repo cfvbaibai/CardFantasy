@@ -41,6 +41,9 @@ import cfvbaibai.cardfantasy.engine.Rule;
 import cfvbaibai.cardfantasy.game.DummyGameUI;
 import cfvbaibai.cardfantasy.game.GameResultStat;
 import cfvbaibai.cardfantasy.game.PlayerBuilder;
+import cfvbaibai.cardfantasy.game.PveEngine;
+import cfvbaibai.cardfantasy.game.PveGameResult;
+import cfvbaibai.cardfantasy.game.PveGameResultStat;
 import cfvbaibai.cardfantasy.web.Utils;
 import cfvbaibai.cardfantasy.web.animation.BattleRecord;
 import cfvbaibai.cardfantasy.web.animation.EntityDataRuntimeInfo;
@@ -91,10 +94,11 @@ public class AutoBattleController {
     private static ResponseEntity<String> handleError(Exception e, boolean isJson) {
         HttpHeaders responseHeaders = new HttpHeaders();
         responseHeaders.add("Content-Type", "text/html;charset=UTF-8");
-        log(e.getMessage());
+        String errorMessage = Utils.getAllMessage(e);
+        log(errorMessage);
         logE(e);
-        String message = String.format("<font color='red'>%s<br />发生错误！<br />%s<br />", getCurrentTime(),
-                e.getMessage());
+        String message = String.format("<font color='red'>%s<br />发生错误！<br />%s<br />",
+                getCurrentTime(), errorMessage);
         if (isJson) {
             message = "{ \"error\": true, \"message\": \"" + message + "\" }";
         }
@@ -349,6 +353,94 @@ public class AutoBattleController {
             result.append("</table></td></tr>");
             result.append("</table>");
             log("Average damage to boss: " + averageDamageToBoss);
+            return new ResponseEntity<String>(result.toString(), responseHeaders, HttpStatus.CREATED);
+        } catch (Exception e) {
+            return handleError(e, false);
+        }
+    }
+    
+    @RequestMapping(value = "/PlayMap1MatchGame")
+    public ResponseEntity<String> playMap1MatchGame(HttpServletRequest request, @RequestParam("deck") String deck,
+            @RequestParam("hlv") int heroLv, @RequestParam("map") String map) {
+        HttpHeaders responseHeaders = new HttpHeaders();
+        responseHeaders.add("Content-Type", "text/html;charset=UTF-8");
+        try {
+            checkWebsiteStatus();
+            log("PlayMap1MatchGame from " + request.getRemoteAddr() + ":");
+            log("Deck = " + deck);
+            log("Hero LV = " + heroLv + ", Map = " + map);
+            this.userActionRecorder.addAction(new UserAction(new Date(), request.getRemoteAddr(), "PlayMap1MatchGame",
+                    String.format("Deck=%s<br />HeroLV=%d, Map=%s", deck, heroLv, map)));
+            PlayerInfo player = PlayerBuilder.build("玩家", deck, heroLv);
+            WebPlainTextGameUI ui = new WebPlainTextGameUI();
+            PveEngine engine = new PveEngine(ui, Rule.getDefault());
+            PveGameResult gameResult = engine.play(player, map);
+            String result = getCurrentTime() + "<br />" + ui.getAllText();
+            log("Result: " + gameResult.name());
+            return new ResponseEntity<String>(result, responseHeaders, HttpStatus.CREATED);
+        } catch (Exception e) {
+            return handleError(e, false);
+        }
+    }
+    
+    
+    @RequestMapping(value = "/SimulateMap1MatchGame", headers = "Accept=application/json")
+    public ResponseEntity<String> simulateMap1MatchGame(HttpServletRequest request, @RequestParam("deck") String deck,
+            @RequestParam("hlv") int heroLv, @RequestParam("map") String map) {
+        HttpHeaders responseHeaders = new HttpHeaders();
+        responseHeaders.add("Content-Type", "application/json;charset=UTF-8");
+        responseHeaders.add("Charset", "UTF-8");
+        try {
+            checkWebsiteStatus();
+            log("SimulateMap1MatchGame from " + request.getRemoteAddr() + ":");
+            log("Deck = " + deck);
+            log("Hero LV = " + heroLv + ", Map = " + map);
+            this.userActionRecorder.addAction(new UserAction(new Date(), request.getRemoteAddr(), "SimulateMap1MatchGame",
+                    String.format("Deck=%s<br />HeroLV=%d, Map=%s", deck, heroLv, map)));
+            PlayerInfo player = PlayerBuilder.build("玩家", deck, heroLv);
+            StructuredRecordGameUI ui = new StructuredRecordGameUI();
+            PveEngine engine = new PveEngine(ui, Rule.getDefault());
+            PveGameResult gameResult = engine.play(player, map);
+            BattleRecord record = ui.getRecord();
+            String result = gson.toJson(record);
+            log("Result: " + gameResult.name());
+            return new ResponseEntity<String>(result, responseHeaders, HttpStatus.CREATED);
+        } catch (Exception e) {
+            return handleError(e, true);
+        }
+    }
+    
+    @RequestMapping(value = "/PlayMapMassiveGame")
+    public ResponseEntity<String> playMapMassiveGame(HttpServletRequest request, @RequestParam("deck") String deck,
+            @RequestParam("hlv") int heroLv, @RequestParam("map") String map, @RequestParam("count") int count) {
+        HttpHeaders responseHeaders = new HttpHeaders();
+        responseHeaders.add("Content-Type", "text/html;charset=UTF-8");
+        try {
+            checkWebsiteStatus();
+            log("PlayMapMassiveGame from " + request.getRemoteAddr() + ":");
+            log(String.format("Lv = %d, Map = %s, Count = %d", heroLv, map, count));
+            log("Deck = " + deck);
+            
+            this.userActionRecorder.addAction(new UserAction(new Date(), request.getRemoteAddr(), "PlayMapMassiveGame",
+                    String.format("Deck=%s<br />Lv=%d, Count=%d, Map=%s",
+                            deck, heroLv, count, map)));
+            PveEngine engine = new PveEngine(new DummyGameUI(), Rule.getDefault());
+            PlayerInfo player = PlayerBuilder.build("玩家", deck, heroLv);
+            PveGameResultStat stat = engine.massivePlay(player, map, count);
+            StringBuffer result = new StringBuffer();
+            result.append(getCurrentTime() + "<br />");
+            result.append("<table>");
+            for (PveGameResult gameResult : PveGameResult.values()) {
+                result.append(String.format("<tr><td>%s: </td><td>%d</td></tr>",
+                        gameResult.getDescription(), stat.getStat(gameResult)));
+            }
+            result.append("</table>");
+            log(String.format("TO:LO:BW:AW:UN = %d:%d:%d:%d:%d",
+                    stat.getStat(PveGameResult.TIMEOUT),
+                    stat.getStat(PveGameResult.LOSE),
+                    stat.getStat(PveGameResult.BASIC_WIN),
+                    stat.getStat(PveGameResult.ADVANCED_WIN),
+                    stat.getStat(PveGameResult.UNKNOWN)));
             return new ResponseEntity<String>(result.toString(), responseHeaders, HttpStatus.CREATED);
         } catch (Exception e) {
             return handleError(e, false);

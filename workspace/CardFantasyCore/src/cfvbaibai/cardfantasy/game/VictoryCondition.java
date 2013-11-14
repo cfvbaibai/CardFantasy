@@ -18,7 +18,7 @@ public abstract class VictoryCondition {
         }
         if (desc.equalsIgnoreCase("Any")) {
             return new DummyVictoryCondition();
-        } else if (desc.equalsIgnoreCase("EnemyCardsAllDie")) {
+        } else if (desc.equalsIgnoreCase("EnemyAllCardsDie")) {
             return new CardsAllDieVictoryCondition();
         } else if (desc.startsWith("MyHeroHP:")) {
             int hpThreshold = Integer.parseInt(desc.substring(9));
@@ -28,7 +28,7 @@ public abstract class VictoryCondition {
             return new RoundVictoryCondition(maxRound);
         } else if (desc.equals("EnemyHeroDie")) {
             return new EnemyHeroDieVictoryCondition();
-        } else if (desc.startsWith("maxDeadCard:")) {
+        } else if (desc.startsWith("MyDeadCard:")) {
             int maxDeadCard = Integer.parseInt(desc.substring(11));
             return new MaxDeadCardVictoryCondition(maxDeadCard);
         } else if (desc.startsWith("CardOfStar:")) {
@@ -66,16 +66,19 @@ public abstract class VictoryCondition {
     }
     
     private static RuneClass toRuneClass(String shorthand) {
+        if (shorthand == null) {
+            return null;
+        }
         RuneClass runeClass = null;
-        if (shorthand == "A") {
+        if (shorthand.equals("A")) {
             runeClass = null;
-        } else if (shorthand == "G") {
+        } else if (shorthand.equals("G")) {
             runeClass = RuneClass.GROUND;
-        } else if (shorthand == "F") {
+        } else if (shorthand.equals("F")) {
             runeClass = RuneClass.FIRE;
-        } else if (shorthand == "I") {
+        } else if (shorthand.equals("I")) {
             runeClass = RuneClass.WATER;
-        } else if (shorthand == "W") {
+        } else if (shorthand.equals("W")) {
             runeClass = RuneClass.WIND;
         }
         return runeClass;

@@ -19,4 +19,20 @@ public final class Utils {
     public static String toString(Date date) {
         return DATE_FORMAT.format(date);
     }
+
+    public static String getAllMessage(Throwable e) {
+        if (e == null) {
+            return "";
+        }
+        Throwable current = e;
+        String message = "";
+        while (true) {
+            message += current.getMessage() + ";";
+            if (current.getCause() == null) {
+                break;
+            }
+            current = current.getCause();
+        }
+        return message;
+    }
 }

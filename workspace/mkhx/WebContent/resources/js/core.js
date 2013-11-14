@@ -101,6 +101,34 @@ var playBossGame = function(count) {
     sendRequest(url, postData, 'boss-battle-output', isJson);
 };
 
+var playMapGame = function(count) {
+    var deck = $('#map-deck').val().trim();
+    var heroLv = $('#map-hero-lv').val();
+    var map = $('#map-id').val() + '-' + $('#map-difficulty').val();
+    var url = '';
+    var postData = {
+        deck: deck,
+        hlv: heroLv,
+        map: map,
+    };
+
+    $.cookie('map-battle', JSON.stringify(postData), { expires: 365 });
+    var isJson = false;
+    if (count == 1) {
+        url = 'PlayMap1MatchGame' + url;
+        $.get('http://cnrdn.com/rd.htm?id=1344758&r=PlayMap1MatchGame&seed=' + seed, function(data) { console.log('PlayMap1MatchGame'); });
+    } else if (count == -1) {
+        url = 'SimulateMap1MatchGame' + url;
+        $.get('http://cnrdn.com/rd.htm?id=1344758&r=SimulateMap1MatchGame&seed=' + seed, function(data) { console.log('SimulateMap1MatchGame'); });
+        isJson = true;
+    } else {
+        url = 'PlayMapMassiveGame' + url;
+        postData['count'] = count;
+        $.get('http://cnrdn.com/rd.htm?id=1344758&r=PlayMapMassiveGame&seed=' + seed, function(data) { console.log('PlayMapMassiveGame'); });
+    }
+    sendRequest(url, postData, 'map-battle-output', isJson);
+};
+
 var store = null;
 var showDeckBuilder = function(outputDivId) {
     $.mobile.changePage("#deck-builder", { transition : 'flip', role : 'dialog' });
@@ -172,5 +200,17 @@ $(document).ready(function () {
         if (data.bf) { $('#buff-forest').val(data.bf); }
         if (data.bs) { $('#buff-savage').val(data.bs); }
         if (data.bh) { $('#buff-hell').val(data.bh); }
+    }
+    dataText = $.cookie('map-battle');
+    if (dataText) {
+        var data = JSON.parse(dataText);
+        if (data.deck) { $('#map-deck').val(data.deck); }
+        if (data.hlv) { $('#map-hero-lv').val(data.hlv); }
+        if (data.map) {
+            // data.map = '7-5-1'
+            var parts = data.map.split('-');
+            $('#map-id').val(parts[0] + '-' + parts[1]);
+            $('#map-difficulty').val(parts[2]);
+        }
     }
 });

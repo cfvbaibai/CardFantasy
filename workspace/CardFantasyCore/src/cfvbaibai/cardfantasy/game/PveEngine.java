@@ -7,6 +7,7 @@ import java.util.List;
 import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
 import cfvbaibai.cardfantasy.GameUI;
 import cfvbaibai.cardfantasy.data.PlayerInfo;
+import cfvbaibai.cardfantasy.engine.GameEndCause;
 import cfvbaibai.cardfantasy.engine.GameEngine;
 import cfvbaibai.cardfantasy.engine.GameResult;
 import cfvbaibai.cardfantasy.engine.Rule;
@@ -25,19 +26,21 @@ public class PveEngine {
         if (maps == null) {
             maps = new MapStages();
         }
-        ui.showMessage("Loading map " + mapId + "...");
+        ui.showMessage("加载地图" + mapId + "...");
         MapInfo map = maps.getMap(mapId);
         if (map == null) {
-            throw new CardFantasyRuntimeException("Cannot find map: " + mapId);
+            throw new CardFantasyRuntimeException("无法找到地图: " + mapId);
         }
-        ui.showMessage("Setting up game...");
+        ui.showMessage("启动战斗引擎...");
         GameEngine engine = new GameEngine(ui, rule);
-        engine.RegisterPlayers(player, map.getEnemyHero());
-        ui.showMessage("Playing game...");
+        engine.RegisterPlayers(map.getEnemyHero(), player);
+        ui.showMessage("战斗开始...");
         GameResult result = engine.playGame();
         PveGameResult gameResult = null;
         try {
-            if (result.getWinner().getId().equals(player.getId())) {
+            if (result.getCause() == GameEndCause.战斗超时) {
+                gameResult = PveGameResult.TIMEOUT;
+            } else if (result.getWinner().getId().equals(player.getId())) {
                 if (map.getCondition().meetCriteria(result)) {
                     gameResult = PveGameResult.ADVANCED_WIN;
                 } else {
@@ -48,7 +51,7 @@ public class PveEngine {
             }
             return gameResult;
         } finally {
-            ui.showMessage("Game result: " + gameResult);
+            ui.mapStageResult(gameResult);
         }
     }
 

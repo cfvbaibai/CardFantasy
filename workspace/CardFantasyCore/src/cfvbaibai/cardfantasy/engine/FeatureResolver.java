@@ -37,6 +37,7 @@ import cfvbaibai.cardfantasy.engine.feature.FireMagicFeature;
 import cfvbaibai.cardfantasy.engine.feature.GuardFeature;
 import cfvbaibai.cardfantasy.engine.feature.HealFeature;
 import cfvbaibai.cardfantasy.engine.feature.HeavenWrathFeature;
+import cfvbaibai.cardfantasy.engine.feature.HeroKillerFeature;
 import cfvbaibai.cardfantasy.engine.feature.HolyFireFeature;
 import cfvbaibai.cardfantasy.engine.feature.HolyGuardFeature;
 import cfvbaibai.cardfantasy.engine.feature.IceArmorFeature;
@@ -532,6 +533,22 @@ public class FeatureResolver {
         }
     }
 
+    public void resolvePreAttackHeroFeature(CardInfo attacker, Player defenderPlayer) {
+        for (FeatureInfo feature : attacker.getNormalUsableFeatures()) {
+           if (feature.getType() == FeatureType.英雄杀手) {
+               HeroKillerFeature.apply(this, feature, attacker, defenderPlayer);
+           }
+        }
+    }
+    
+    /**
+     * 
+     * @param attacker
+     * @param defender
+     * @param prior if TRUE, this is resolved before pre-attack features are resolved.
+     *              Currently, only RETURN falls in this case.
+     * @throws HeroDieSignal
+     */
     public void resolvePreAttackCardFeature(CardInfo attacker, CardInfo defender, boolean prior) throws HeroDieSignal {
         for (FeatureInfo feature : attacker.getNormalUsableFeatures()) {
             if (prior) {
@@ -602,6 +619,8 @@ public class FeatureResolver {
                 WinningPursuitFeature.remove(this, effect.getCause(), card);
             } else if (type == FeatureType.复仇) {
                 RevengeFeature.remove(this, effect.getCause(), card);
+            } else if (type == FeatureType.英雄杀手) {
+                HeroKillerFeature.remove(this, effect.getCause(), card);
             }
         }
     }

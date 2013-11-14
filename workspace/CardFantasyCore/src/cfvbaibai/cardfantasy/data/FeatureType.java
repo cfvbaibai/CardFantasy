@@ -117,6 +117,8 @@ public enum FeatureType {
     
     圣炎(0),
     法力侵蚀(20),
+    
+    英雄杀手(0, 15, FeatureTag.额外攻击加成),
 
     军团王国之力(0, 3, FeatureTag.永久, FeatureTag.基础攻击加成, FeatureTag.不可洗炼),
     军团森林之力(0, 3, FeatureTag.永久, FeatureTag.基础攻击加成, FeatureTag.不可洗炼),
@@ -161,6 +163,6 @@ public enum FeatureType {
     }
 
     public boolean isGrowable() {
-        return this.incrImpact != 0 && this.initImpact != 0;
+        return this.incrImpact != 0 || this.initImpact != 0;
     }
 }

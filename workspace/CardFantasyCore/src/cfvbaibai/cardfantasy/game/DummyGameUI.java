@@ -325,4 +325,10 @@ public class DummyGameUI extends GameUI {
         
     }
 
+    @Override
+    public void mapStageResult(PveGameResult result) {
+        // TODO Auto-generated method stub
+        
+    }
+
 }

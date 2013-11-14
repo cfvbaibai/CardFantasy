@@ -16,6 +16,7 @@ import cfvbaibai.cardfantasy.engine.Phase;
 import cfvbaibai.cardfantasy.engine.Player;
 import cfvbaibai.cardfantasy.engine.Rule;
 import cfvbaibai.cardfantasy.engine.RuneInfo;
+import cfvbaibai.cardfantasy.game.PveGameResult;
 
 public abstract class GameUI {
 
@@ -166,4 +167,6 @@ public abstract class GameUI {
     public abstract void cardActionBegins(CardInfo card);
     
     public abstract void cardActionEnds(CardInfo card);
+    
+    public abstract void mapStageResult(PveGameResult result);
 }

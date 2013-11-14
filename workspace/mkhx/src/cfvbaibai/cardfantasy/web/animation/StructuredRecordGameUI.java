@@ -16,6 +16,7 @@ import cfvbaibai.cardfantasy.engine.GameResult;
 import cfvbaibai.cardfantasy.engine.Phase;
 import cfvbaibai.cardfantasy.engine.Player;
 import cfvbaibai.cardfantasy.engine.RuneInfo;
+import cfvbaibai.cardfantasy.game.PveGameResult;
 
 public class StructuredRecordGameUI extends GameUI {
 
@@ -387,5 +388,10 @@ public class StructuredRecordGameUI extends GameUI {
     @Override
     public void cardActionEnds(CardInfo card) {
         this.record.addEvent("cardActionEnds", new EntityRuntimeInfo(card));
+    }
+
+    @Override
+    public void mapStageResult(PveGameResult result) {
+        this.record.addEvent("mapBattleResult", result.getDescription());
     }
 }

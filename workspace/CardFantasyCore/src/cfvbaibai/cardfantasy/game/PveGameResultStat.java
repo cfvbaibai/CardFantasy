@@ -57,4 +57,12 @@ public class PveGameResultStat {
     public int countAllWin() {
         return countWin() + countAdvWin();
     }
+    
+    public int countTimeout() {
+        return getStat(PveGameResult.TIMEOUT);
+    }
+    
+    public int countUnknown() {
+        return getStat(PveGameResult.UNKNOWN);
+    }
 }

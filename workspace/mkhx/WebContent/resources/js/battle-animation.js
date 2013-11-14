@@ -1549,6 +1549,11 @@ var Animater = function() {
         this.showSplash({ text: text, exitType: 'onclick', });
     };
     
+    this.__mapBattleResult = function(data) {
+        this.addPause(2);
+        this.showSplash({ text: data[0], exitType: 'onclick', });
+    };
+    
     /**
      * @param
      * card.ownerId,
