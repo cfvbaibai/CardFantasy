@@ -1,11 +1,10 @@
-﻿$.fn.jqmSelectedIndex = function(index){
-    var self = $(this);
-    self.prop('selectedIndex', index).selectmenu("refresh", true);
-    return self;
-};
+﻿//$.ajaxSetup({ scriptCharset: "utf-8" ,contentType: "application/x-www-form-urlencoded; charset=UTF-8" });
+var CardFantasy = {};
+CardFantasy.Core = {};
 
-//$.ajaxSetup({ scriptCharset: "utf-8" ,contentType: "application/x-www-form-urlencoded; charset=UTF-8" });
-var sendRequest = function(url, postData, outputDivId, isJson) {
+(function(Core) {
+
+Core.sendRequest = function(url, postData, outputDivId, isJson) {
     var buttons = $('a.battle-button');
     buttons.addClass("ui-disabled");
     $.mobile.loading('show');
@@ -37,7 +36,7 @@ var sendRequest = function(url, postData, outputDivId, isJson) {
     });
 };
 
-var playAutoGame = function(count) {
+Core.playAutoGame = function(count) {
     var deck1 = $('#deck1').val().trim();
     var deck2 = $('#deck2').val().trim();
     var heroLv1 = $('#hero1Lv').val();
@@ -68,10 +67,10 @@ var playAutoGame = function(count) {
         postData["count"] = count;
         $.get('http://cnrdn.com/rd.htm?id=1344758&r=PlayAutoMassiveGame&seed=' + seed, function(data) { console.log('PlayAutoMassiveGame'); });
     }
-    sendRequest(url, postData, 'battle-output', isJson);
+    Core.sendRequest(url, postData, 'battle-output', isJson);
 };
 
-var playBossGame = function(count) {
+Core.playBossGame = function(count) {
     var deck = $('#deck').val().trim();
     var heroLv = $('#heroLv').val();
     var bossName = $('#boss-name').val();
@@ -104,17 +103,13 @@ var playBossGame = function(count) {
         postData['count'] = count;
         $.get('http://cnrdn.com/rd.htm?id=1344758&r=PlayBossMassiveGame&seed=' + seed, function(data) { console.log('PlayBossMassiveGame'); });
     }
-    sendRequest(url, postData, 'boss-battle-output', isJson);
+    Core.sendRequest(url, postData, 'boss-battle-output', isJson);
 };
 
-var getMap = function() {
-    return $('#map-id').val() + '-' + $('#map-difficulty').val();
-};
-
-var playMapGame = function(count) {
+Core.playMapGame = function(count) {
     var deck = $('#map-deck').val().trim();
     var heroLv = $('#map-hero-lv').val();
-    var map = getMap();
+    var map = Core.getMap();
     var url = '';
     var postData = {
         deck: deck,
@@ -136,57 +131,14 @@ var playMapGame = function(count) {
         postData['count'] = count;
         $.get('http://cnrdn.com/rd.htm?id=1344758&r=PlayMapMassiveGame&seed=' + seed, function(data) { console.log('PlayMapMassiveGame'); });
     }
-    sendRequest(url, postData, 'map-battle-output', isJson);
+    Core.sendRequest(url, postData, 'map-battle-output', isJson);
 };
 
-$(document).on('change', 'select.map-select', function(e) {
-    // Get current option value: this.options[e.target.selectedIndex].text
-    showVictoryCondition();
-});
-var showVictoryCondition = function() {
-    var map = getMap();
-    $.get('http://cnrdn.com/rd.htm?id=1344758&r=ShowVictoryCondition&seed=' + seed, function(data) { console.log('ShowVictoryCondition'); });
-    $.get('GetMapVictoryCondition?map=' + map, function(data) {
-        console.log("Map victory condition for '" + map + "': " + JSON.stringify(data));
-        $("#map-victory-condition").text(data);
-    }, 'json').fail(function(xhr, status, error) {
-        $("#map-victory-condition").text("无法获得地图过关条件: " + status + ", " + error);
-    });
-};
-$(document).ready(showVictoryCondition);
-
-var store = null;
-var showDeckBuilder = function(outputDivId) {
-    $.mobile.changePage("#deck-builder", { transition : 'flip', role : 'dialog' });
-    initDeckBuilder(store, outputDivId);
+Core.getMap = function() {
+    return $('#map-id').val() + '-' + $('#map-difficulty').val();
 };
 
-var buildDeck = function(outputDivId) {
-    $.get('http://cnrdn.com/rd.htm?id=1344758&r=BuildDeck' + outputDivId + '&seed=' + seed, function(data) { console.log('BuildDeck'); });
-    if (store == null) {
-        loadStore(outputDivId);
-    } else {
-        showDeckBuilder(outputDivId);
-    }
-};
-
-var loadStore = function(outputDivId) {
-    $.mobile.loading('show');
-    $.get('http://cnrdn.com/rd.htm?id=1344758&r=LoadDeck&seed=' + seed, function(data) { console.log('LoadDeck'); });
-    $.get('GetDataStore', function(data) { store = data; }, 'json')
-    .fail(function(xhr, status, error) {
-        var result = "<span style='COLOR: red'>Error! Status=" + status + ", Detail=" + error + "</span>";
-        $("#battle-output").parent().removeClass('ui-collapsible-content-collapsed');
-        $("#battle-output").html(result);
-        alert('无法启用卡组构建器！');
-    })
-    .complete(function () {
-        $.mobile.loading('hide');
-        showDeckBuilder(outputDivId);
-    });
-};
-
-var detectBrowser = function() {
+(function() {
     var validBrowser = $.browser.webkit;
     if (!validBrowser) {
         if (!$.cookie('browser-detection-confirmed')) {
@@ -194,29 +146,48 @@ var detectBrowser = function() {
             $.cookie('browser-detection-confirmed', 'true', { expires: 7 });
         }
     }
-};
+})();
 
-detectBrowser();
-
-function isNumber(n) {
-    return !isNaN(parseFloat(n)) && isFinite(n);
-}
-
-$(document).ready(function () {
-    // load post data from cookie
-    var dataText = $.cookie('arena-battle');
+// Must do JQM page initialization in 'pageinit' event rather than 'ready' event
+$(document)
+.on("pageinit", "#map-battle", function(event) {
+    var dataText = $.cookie('map-battle');
     if (dataText) {
-        var data = JSON.parse(dataText);
-        if (data.deck1) { $('#deck1').val(data.deck1); }
-        if (data.deck2) { $('#deck2').val(data.deck2); }
-        if (data.hlv1) { $('#hero1Lv').val(data.hlv1); }
-        if (data.hlv2) { $('#hero2Lv').val(data.hlv2); }
-        //if (isNumber(data.firstAttack)) {
-            //$('input[name=firstAttack]:radio[value=' + data.firstAttack + ']').prop('checked', true);
-            //$('input[name=firstAttack]:radio').checkboxradio('refresh');
-        //}
+        (function() {
+            var data = JSON.parse(dataText);
+            if (data.deck) { $('#map-deck').val(data.deck); }
+            if (data.hlv) { $('#map-hero-lv').val(data.hlv); }
+            if (data.map) {
+                // data.map = '7-5-1'
+                var parts = data.map.split('-');
+                $('#map-id').val(parts[0] + '-' + parts[1]).selectmenu('refresh');
+                $('#map-difficulty').val(parts[2]).selectmenu('refresh');
+            }
+        })();
     }
-    dataText = $.cookie('boss-battle');
+    $('#play-map-1-game-button').click(function (e, ui) { Core.playMapGame(1); });
+    $('#simulate-map-1-game-button').click(function (e, ui) { Core.playMapGame(-1); });
+    $('#play-map-massive-game-button').click(function (e, ui) { Core.playMapGame(1000); });
+    
+    var showVictoryCondition = function() {
+        var map = Core.getMap();
+        $.get('http://cnrdn.com/rd.htm?id=1344758&r=ShowVictoryCondition&seed=' + seed, function(data) { console.log('ShowVictoryCondition'); });
+        $.get('GetMapVictoryCondition?map=' + map, function(data) {
+            console.log("Map victory condition for '" + map + "': " + JSON.stringify(data));
+            $("#map-victory-condition").text(data);
+        }, 'json').fail(function(xhr, status, error) {
+            $("#map-victory-condition").text("无法获得地图过关条件: " + status + ", " + error);
+        });
+    };
+    
+    $(document).on('change', 'select.map-select', function(e) {
+        // Get current option value: this.options[e.target.selectedIndex].text
+        showVictoryCondition();
+    });
+    showVictoryCondition();
+})
+.on("pageinit", "#boss-battle", function(event) {
+    var dataText = $.cookie('boss-battle');
     if (dataText) {
         var data = JSON.parse(dataText);
         if (data.deck) { $('#deck').val(data.deck); }
@@ -227,16 +198,22 @@ $(document).ready(function () {
         if (data.bs) { $('#buff-savage').val(data.bs); }
         if (data.bh) { $('#buff-hell').val(data.bh); }
     }
-    dataText = $.cookie('map-battle');
+    $('#play-boss-1-game-button').click(function (e, ui) { Core.playBossGame(1); });
+    $('#simulate-boss-1-game-button').click(function (e, ui) { Core.playBossGame(-1); });
+    $('#play-boss-massive-game-button').click(function (e, ui) { Core.playBossGame(1000); });
+})
+.on("pageinit", "#arena-battle", function(event) {
+    var dataText = $.cookie('arena-battle');
     if (dataText) {
         var data = JSON.parse(dataText);
-        if (data.deck) { $('#map-deck').val(data.deck); }
-        if (data.hlv) { $('#map-hero-lv').val(data.hlv); }
-        if (data.map) {
-            // data.map = '7-5-1'
-            var parts = data.map.split('-');
-            $('#map-id').val(parts[0] + '-' + parts[1]).selectmenu('refresh');
-            $('#map-difficulty').val(parts[2]).selectmenu('refresh');
-        }
+        if (data.deck1) { $('#deck1').val(data.deck1); }
+        if (data.deck2) { $('#deck2').val(data.deck2); }
+        if (data.hlv1) { $('#hero1Lv').val(data.hlv1); }
+        if (data.hlv2) { $('#hero2Lv').val(data.hlv2); }
     }
+    $('#play-auto-1-game-button').click(function (e, ui) { Core.playAutoGame(1); });
+    $('#simulate-auto-1-game-button').click(function (e, ui) { Core.playAutoGame(-1); });
+    $('#play-auto-massive-game-button').click(function (e, ui) { Core.playAutoGame(1000); });
 });
+
+})(CardFantasy.Core);

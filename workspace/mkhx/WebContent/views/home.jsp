@@ -14,7 +14,7 @@
                 <ul>
                     <li><a href="#boss-battle">魔神战</a></li>
                     <li><a href="#map-battle" class="ui-btn-active ui-state-persist">地图战</a></li>
-                    <li><a href="#main-container">竞技场战</a></li>
+                    <li><a href="#arena-battle">竞技场战</a></li>
                 </ul>
             </div>
         </div>
@@ -206,7 +206,7 @@
                             <span>玩家卡组: </span>
                         </div>
                         <div data-theme="c" class="ui-block-d">
-                            <a data-role="button" data-rel="dialog" href="javascript:buildDeck('map-deck')" data-mini="true">组卡</a>
+                            <a id="build-map-deck-button" data-role="button" data-rel="dialog" data-mini="true">组卡</a>
                         </div>
                     </div>
                     <div>
@@ -215,9 +215,9 @@
                 </div>
             </div>
             <div data-mini="true" data-role="controlgroup" data-type="horizontal" data-disabled="false">
-                <a class="battle-button" data-role="button" data-mini="true" data-theme="c" href="javascript:playMapGame(1)">文字战斗</a>
-                <a class="battle-button" data-role="button" data-mini="true" data-theme="c" href="javascript:playMapGame(-1)">动画战斗</a>
-                <a class="battle-button" data-role="button" data-mini="true" data-theme="c" href="javascript:playMapGame(1000)">连续千场</a>
+                <a id="play-map-1-game-button" class="battle-button" data-role="button" data-mini="true" data-theme="c">文字战斗</a>
+                <a id="simulate-map-1-game-button" class="battle-button" data-role="button" data-mini="true" data-theme="c">动画战斗</a>
+                <a id="play-map-massive-game-button" class="battle-button" data-role="button" data-mini="true" data-theme="c">连续千场</a>
                 <a data-role="button" data-mini="true" data-theme="c" href="http://cnrdn.com/rd.htm?id=1344758&r=http%3A%2F%2Ftieba.baidu.com%2Fp%2F2660663919%3Ffrom%3Dmap" target="blank">提BUG</a>
             </div>
             <div id="map-battle-div" data-mini="true" data-role="collapsible" data-collapsed="false" data-theme="c" data-content-theme="d">
@@ -227,13 +227,13 @@
         </div>
     </div>
 
-    <div data-role="page" data-title="竞技场战" data-mini="true" id="main-container">
+    <div data-role="page" data-title="竞技场战" data-mini="true" id="arena-battle">
         <div data-role="header" data-id="navbar" data-position="fixed" data-theme="c">
             <div data-role="navbar" data-theme="c">
                 <ul>
                     <li><a href="#boss-battle">魔神战</a></li>
                     <li><a href="#map-battle">地图战</a></li>
-                    <li><a href="#main-container" class="ui-btn-active ui-state-persist">竞技场战</a></li>
+                    <li><a href="#arena-battle" class="ui-btn-active ui-state-persist">竞技场战</a></li>
                 </ul>
             </div>
         </div>
@@ -276,7 +276,7 @@
                         <span>玩家1卡组: </span>
                     </div>
                     <div data-theme="c" class="ui-block-d">
-                        <a data-role="button" data-rel="dialog" href="javascript:buildDeck('deck1')" data-mini="true">组卡</a>
+                        <a id="build-deck1-button" data-role="button" data-rel="dialog" data-mini="true">组卡</a>
                     </div>
                 </div>
                 <div>
@@ -293,7 +293,7 @@
                         <span>玩家2卡组: </span>
                     </div>
                     <div data-theme="c" class="ui-block-d">
-                        <a data-role="button" data-rel="dialog" href="javascript:buildDeck('deck2')" data-mini="true">组卡</a>
+                        <a id="build-deck2-button" data-role="button" data-rel="dialog" data-mini="true">组卡</a>
                     </div>
                 </div>
                 <div>
@@ -301,12 +301,9 @@
                 </div>
             </div>
             <div id="command" data-mini="true" data-role="controlgroup" data-type="horizontal">
-                <a class="battle-button" data-role="button" data-mini="true" data-theme="c"
-                    href="javascript:playAutoGame(1)">文字战斗</a>
-                <a class="battle-button" data-role="button" data-mini="true" data-theme="c"
-                    href="javascript:playAutoGame(-1)">动画战斗</a>
-                <a class="battle-button" data-role="button" data-mini="true" data-theme="c"
-                    href="javascript:playAutoGame(1000)">连续千场</a>
+                <a id="play-auto-1-game-button" class="battle-button" data-role="button" data-mini="true" data-theme="c">文字战斗</a>
+                <a id="simulate-auto-1-game-button" class="battle-button" data-role="button" data-mini="true" data-theme="c">动画战斗</a>
+                <a id="play-auto-massive-game-button" class="battle-button" data-role="button" data-mini="true" data-theme="c">连续千场</a>
                 <a data-role="button" data-mini="true" data-theme="c" target="blank"
                     href="http://cnrdn.com/rd.htm?id=1344758&r=http%3A%2F%2Ftieba.baidu.com%2Fp%2F2660663919%3Ffrom%3D1v1">提BUG</a>
             </div>
@@ -324,7 +321,7 @@
                 <ul>
                     <li><a href="#boss-battle" class="ui-btn-active ui-state-persist">魔神战</a></li>
                     <li><a href="#map-battle">地图战</a></li>
-                    <li><a href="#main-container">竞技场战</a></li>
+                    <li><a href="#arena-battle">竞技场战</a></li>
                 </ul>
             </div>
         </div>
@@ -427,7 +424,7 @@
                             <span>玩家卡组: </span>
                         </div>
                         <div data-theme="c" class="ui-block-d">
-                            <a data-role="button" data-rel="dialog" href="javascript:buildDeck('deck')" data-mini="true">组卡</a>
+                            <a id="build-boss-deck-button" data-role="button" data-rel="dialog" data-mini="true">组卡</a>
                         </div>
                     </div>
                     <div>
@@ -436,16 +433,11 @@
                 </div>
             </div>
             <div id="boss-command" data-mini="true" data-role="controlgroup" data-type="horizontal" data-disabled="false">
-                <a class="battle-button" data-role="button" data-mini="true" data-theme="c"
-                    href="javascript:playBossGame(1)">文字战斗</a>
-                <a class="battle-button" data-role="button" data-mini="true" data-theme="c"
-                    href="javascript:playBossGame(-1)">动画战斗</a>
-                <a class="battle-button" data-role="button" data-mini="true" data-theme="c"
-                    href="javascript:playBossGame(1000)">卡组强度分析</a>
+                <a id="play-boss-1-game-button" class="battle-button" data-role="button" data-mini="true" data-theme="c">文字战斗</a>
+                <a id="simulate-boss-1-game-button" class="battle-button" data-role="button" data-mini="true" data-theme="c">动画战斗</a>
+                <a id="play-boss-massive-game-button" class="battle-button" data-role="button" data-mini="true" data-theme="c">卡组强度分析</a>
                 <a data-role="button" data-mini="true" data-theme="c" target="blank"
                     href="http://cnrdn.com/rd.htm?id=1344758&r=http%3A%2F%2Ftieba.baidu.com%2Fp%2F2660663919%3Ffrom%3Dboss">提BUG</a>
-                <!--  <button data-mini="true" data-theme="c" onclick="playBossGame(1000)"></button>-->
-                <!-- <button data-theme="c" onclick="alert('按CTRL+A全选，再按CTRL+C')">拷贝</button> -->
             </div>
             <div id="battle-div" data-mini="true" data-role="collapsible" data-collapsed="false" data-theme="c" data-content-theme="d">
                 <h3>战斗记录</h3>
@@ -490,7 +482,7 @@
                                     <tr>
                                         <td>筛选</td>
                                         <td style="width: 40%">
-                                            <select id="card-race-filter" data-mini="true" data-native-menu="false" onchange="filterCard()">
+                                            <select id="card-race-filter" data-mini="true" data-native-menu="false">
                                                 <option value="KINGDOM">王国</option>
                                                 <option value="FOREST">森林</option>
                                                 <option value="SAVAGE">蛮荒</option>
@@ -498,7 +490,7 @@
                                             </select>
                                         </td>
                                         <td style="width: 40%">
-                                            <select id="card-star-filter" data-mini="true" data-native-menu="false" onchange="filterCard()">
+                                            <select id="card-star-filter" data-mini="true" data-native-menu="false">
                                                 <option value="1">一星</option>
                                                 <option value="2">二星</option>
                                                 <option value="3">三星</option>
@@ -520,7 +512,7 @@
                                     <tr>
                                         <td>筛选</td>
                                         <td style="width: 40%">
-                                            <select id="rune-class-filter" data-mini="true" data-native-menu="false" onchange="filterRune()">
+                                            <select id="rune-class-filter" data-mini="true" data-native-menu="false">
                                                 <option value="WATER">冰</option>
                                                 <option value="WIND">风</option>
                                                 <option value="GROUND">地</option>
@@ -528,7 +520,7 @@
                                             </select>
                                         </td>
                                         <td style="width: 40%">
-                                            <select id="rune-star-filter" data-mini="true" data-native-menu="false" onchange="filterRune()">
+                                            <select id="rune-star-filter" data-mini="true" data-native-menu="false">
                                                 <option value="1">一星</option>
                                                 <option value="2">二星</option>
                                                 <option value="3">三星</option>
@@ -554,7 +546,7 @@
                 </div>
             </div>
             <div id="deck-builder-control-panel" data-mini="true" data-role="controlgroup" data-type="horizontal">
-                <a data-role="button" data-mini="true" data-theme="c" href="javascript:updateDeck()">确定</a>
+                <a id="update-deck-button" data-role="button" data-mini="true" data-theme="c">确定</a>
                 <a data-role="button" data-mini="true" data-theme="c" href="javascript:history.go(-1)">取消</a>
             </div>
         </div>
@@ -581,7 +573,7 @@
                 </tr>
             </table>
             <div>
-                <a href="javascript:addRune()" data-role="button" data-mini="true">确定</a>
+                <a id="add-rune-button" data-role="button" data-mini="true">确定</a>
                 <a href="javascript:history.go(-1)" data-role="button" data-mini="true">取消</a>
             </div>
         </div>
@@ -634,14 +626,14 @@
                         </select>
                     </td>
             </table>
-            <input type="checkbox" id="enable-extra-feature" onclick="enableExtraFeature()" data-mini="true" />
+            <input type="checkbox" id="enable-extra-feature" data-mini="true" />
             <label for="enable-extra-feature">添加洗炼技能</label>
             <div id="extra-feature-props" style="DISPLAY: none">
                 <table style="WIDTH: 100%">
                     <tr>
                         <td>技能</td>
                         <td>
-                            <select id="extra-feature-name" data-mini="true" data-native-menu="false" onchange="extraFeatureNameChanged()">
+                            <select id="extra-feature-name" data-mini="true" data-native-menu="false">
                             </select>
                         </td>
                     </tr>
@@ -680,7 +672,7 @@
                 </table>
             </div>
             <div>
-                <a href="javascript:addCard()" data-role="button" data-mini="true">确定</a>
+                <a id="add-card-button" data-role="button" data-mini="true">确定</a>
                 <a href="javascript:history.go(-1)" data-role="button" data-mini="true">取消</a>
             </div>
         </div>

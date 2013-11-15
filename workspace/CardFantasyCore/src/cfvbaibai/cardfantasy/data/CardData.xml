@@ -1095,7 +1095,8 @@
         <Feature type="二重狙击" level="8" unlock="5" />
         <Feature type="迷魂" level="8" unlock="10" />
     </Card>
-    <Card id="4413" name="刀锋女王" race="地狱" speed="6" star="4" cost="17" incrCost="1" at="355" hp="1410" incrAT="28" incrHP="30">
+    <!--  BUGBUG: Need to move 刀锋女王 to 45xx -->
+    <Card id="4413" name="刀锋女王" race="地狱" speed="6" star="5" cost="17" incrCost="1" at="355" hp="1410" incrAT="28" incrHP="30">
         <Feature type="吸血" level="6" unlock="0" />
         <Feature type="复仇" level="7" unlock="5" />
         <Feature type="不动" level="0" unlock="10" />
