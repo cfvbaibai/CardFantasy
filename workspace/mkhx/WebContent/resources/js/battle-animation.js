@@ -1,5 +1,6 @@
 CardFantasy.BattleAnimation = {};
 
+// OUTERMOST IIFE
 (function (BattleAnimation) {
 
 (function($) {
@@ -2239,4 +2240,5 @@ $(document)
     $('#slower-button').click(function (e, ui) { slower(); });
 });
 
+// END OF OUTERMOST IIFE
 })(CardFantasy.BattleAnimation);

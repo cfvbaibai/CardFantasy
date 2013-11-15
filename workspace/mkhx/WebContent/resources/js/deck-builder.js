@@ -1,3 +1,4 @@
+// OUTERMOST IIFE
 (function() {
 
 var store = null;
@@ -118,10 +119,10 @@ var filterCard = function() {
                   '   data-icon="plus" data-iconpos="right">' + entity.name + '</a>');
         a.data('entity', entity);
         a.click(function () {
-            var name = $(this).data('entity').name;
-            console.log('this= ' + name);
+            var entityName = $(this).data('entity').name;
+            console.log('this= ' + entityName);
             $.mobile.changePage("#new-card-props", { transition : 'slidedown', role : 'dialog' });
-            $('#new-card-props .entity-title').text(name);
+            $('#new-card-props .entity-title').text(entityName);
         });
         candidateDiv.append(a);
     }
@@ -177,9 +178,9 @@ var filterRune = function() {
                 '   data-icon="plus" data-iconpos="right">' + entity.name + '</a>');
         a.data('entity', entity);
         a.click(function () {
-            var name = $(this).data('entity').name;
-            console.log('this= ' + name);
-            $('#new-rune-props .entity-title').text(name);
+            var entityName = $(this).data('entity').name;
+            console.log('this= ' + entityName);
+            $('#new-rune-props .entity-title').text(entityName);
             $.mobile.changePage("#new-rune-props", { transition : 'slidedown', role : 'dialog' });
         });
         candidateDiv.append(a);
@@ -241,5 +242,5 @@ $(document)
     $('#add-rune-button').click(function (e, ui) { addRune(); }); 
 });
 
-
+// END OF OUTERMOST IIFE
 })();

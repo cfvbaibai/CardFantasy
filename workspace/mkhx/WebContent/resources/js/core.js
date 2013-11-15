@@ -1,6 +1,19 @@
-﻿//$.ajaxSetup({ scriptCharset: "utf-8" ,contentType: "application/x-www-form-urlencoded; charset=UTF-8" });
+﻿/**
+ * To code readers (including interviewers):
+ * 
+ * These scripts are not compacted because this is not for production use,
+ * but to demonstrate my coding ability.
+ * You may find some Chinese characters in the code.
+ * That is pretty bad, I know,
+ * but currently I do not have time to do localization.
+ * Forgive me if you do not understand Chinese.
+ * 
+ * Author: CFvBaiBai
+ */
+
 CardFantasy = {};
 
+// OUTERMOST IIFE
 (function() {
 
 var sendRequest = function(url, postData, outputDivId, isJson) {
@@ -215,4 +228,5 @@ $(document)
     $('#play-auto-massive-game-button').click(function (e, ui) { playAutoGame(1000); });
 });
 
+// END OF OUTERMOST IIFE
 })();
