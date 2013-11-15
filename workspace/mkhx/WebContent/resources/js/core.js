@@ -1,10 +1,9 @@
 ﻿//$.ajaxSetup({ scriptCharset: "utf-8" ,contentType: "application/x-www-form-urlencoded; charset=UTF-8" });
-var CardFantasy = {};
-CardFantasy.Core = {};
+CardFantasy = {};
 
-(function(Core) {
+(function() {
 
-Core.sendRequest = function(url, postData, outputDivId, isJson) {
+var sendRequest = function(url, postData, outputDivId, isJson) {
     var buttons = $('a.battle-button');
     buttons.addClass("ui-disabled");
     $.mobile.loading('show');
@@ -16,7 +15,7 @@ Core.sendRequest = function(url, postData, outputDivId, isJson) {
                 result = data.message;
             } else {
                 $.mobile.changePage("#arena", { transition : 'flip', role : 'dialog' });
-                showBattle(data);
+                CardFantasy.BattleAnimation.showBattle(data);
             }
         }, 'json');
     } : function() {
@@ -36,7 +35,7 @@ Core.sendRequest = function(url, postData, outputDivId, isJson) {
     });
 };
 
-Core.playAutoGame = function(count) {
+var playAutoGame = function(count) {
     var deck1 = $('#deck1').val().trim();
     var deck2 = $('#deck2').val().trim();
     var heroLv1 = $('#hero1Lv').val();
@@ -67,10 +66,10 @@ Core.playAutoGame = function(count) {
         postData["count"] = count;
         $.get('http://cnrdn.com/rd.htm?id=1344758&r=PlayAutoMassiveGame&seed=' + seed, function(data) { console.log('PlayAutoMassiveGame'); });
     }
-    Core.sendRequest(url, postData, 'battle-output', isJson);
+    sendRequest(url, postData, 'battle-output', isJson);
 };
 
-Core.playBossGame = function(count) {
+var playBossGame = function(count) {
     var deck = $('#deck').val().trim();
     var heroLv = $('#heroLv').val();
     var bossName = $('#boss-name').val();
@@ -103,13 +102,13 @@ Core.playBossGame = function(count) {
         postData['count'] = count;
         $.get('http://cnrdn.com/rd.htm?id=1344758&r=PlayBossMassiveGame&seed=' + seed, function(data) { console.log('PlayBossMassiveGame'); });
     }
-    Core.sendRequest(url, postData, 'boss-battle-output', isJson);
+    sendRequest(url, postData, 'boss-battle-output', isJson);
 };
 
-Core.playMapGame = function(count) {
+var playMapGame = function(count) {
     var deck = $('#map-deck').val().trim();
     var heroLv = $('#map-hero-lv').val();
-    var map = Core.getMap();
+    var map = getMap();
     var url = '';
     var postData = {
         deck: deck,
@@ -131,10 +130,10 @@ Core.playMapGame = function(count) {
         postData['count'] = count;
         $.get('http://cnrdn.com/rd.htm?id=1344758&r=PlayMapMassiveGame&seed=' + seed, function(data) { console.log('PlayMapMassiveGame'); });
     }
-    Core.sendRequest(url, postData, 'map-battle-output', isJson);
+    sendRequest(url, postData, 'map-battle-output', isJson);
 };
 
-Core.getMap = function() {
+var getMap = function() {
     return $('#map-id').val() + '-' + $('#map-difficulty').val();
 };
 
@@ -165,12 +164,12 @@ $(document)
             }
         })();
     }
-    $('#play-map-1-game-button').click(function (e, ui) { Core.playMapGame(1); });
-    $('#simulate-map-1-game-button').click(function (e, ui) { Core.playMapGame(-1); });
-    $('#play-map-massive-game-button').click(function (e, ui) { Core.playMapGame(1000); });
+    $('#play-map-1-game-button').click(function (e, ui) { playMapGame(1); });
+    $('#simulate-map-1-game-button').click(function (e, ui) { playMapGame(-1); });
+    $('#play-map-massive-game-button').click(function (e, ui) { playMapGame(1000); });
     
     var showVictoryCondition = function() {
-        var map = Core.getMap();
+        var map = getMap();
         $.get('http://cnrdn.com/rd.htm?id=1344758&r=ShowVictoryCondition&seed=' + seed, function(data) { console.log('ShowVictoryCondition'); });
         $.get('GetMapVictoryCondition?map=' + map, function(data) {
             console.log("Map victory condition for '" + map + "': " + JSON.stringify(data));
@@ -198,9 +197,9 @@ $(document)
         if (data.bs) { $('#buff-savage').val(data.bs); }
         if (data.bh) { $('#buff-hell').val(data.bh); }
     }
-    $('#play-boss-1-game-button').click(function (e, ui) { Core.playBossGame(1); });
-    $('#simulate-boss-1-game-button').click(function (e, ui) { Core.playBossGame(-1); });
-    $('#play-boss-massive-game-button').click(function (e, ui) { Core.playBossGame(1000); });
+    $('#play-boss-1-game-button').click(function (e, ui) { playBossGame(1); });
+    $('#simulate-boss-1-game-button').click(function (e, ui) { playBossGame(-1); });
+    $('#play-boss-massive-game-button').click(function (e, ui) { playBossGame(1000); });
 })
 .on("pageinit", "#arena-battle", function(event) {
     var dataText = $.cookie('arena-battle');
@@ -211,9 +210,9 @@ $(document)
         if (data.hlv1) { $('#hero1Lv').val(data.hlv1); }
         if (data.hlv2) { $('#hero2Lv').val(data.hlv2); }
     }
-    $('#play-auto-1-game-button').click(function (e, ui) { Core.playAutoGame(1); });
-    $('#simulate-auto-1-game-button').click(function (e, ui) { Core.playAutoGame(-1); });
-    $('#play-auto-massive-game-button').click(function (e, ui) { Core.playAutoGame(1000); });
+    $('#play-auto-1-game-button').click(function (e, ui) { playAutoGame(1); });
+    $('#simulate-auto-1-game-button').click(function (e, ui) { playAutoGame(-1); });
+    $('#play-auto-massive-game-button').click(function (e, ui) { playAutoGame(1000); });
 });
 
-})(CardFantasy.Core);
+})();

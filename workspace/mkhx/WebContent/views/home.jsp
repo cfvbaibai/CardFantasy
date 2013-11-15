@@ -457,13 +457,13 @@
                 <div id="battle-canvas"></div>
             </div>
             <div id="arena-control-panel" data-mini="true" data-role="controlgroup" data-type="horizontal">
-                <a id="playButton" data-role="button" data-mini="true" data-theme="c" href="javascript:togglePlayButton()"></a>
-                <a id="fasterButton" data-role="button" data-mini="true" data-theme="c" href="javascript:faster()">加快</a>
-                <a id="slowerButton" data-role="button" data-mini="true" data-theme="c" href="javascript:slower()">减慢</a>
-                <a id="backButton" data-role="button" data-mini="true" data-theme="c" href="javascript:history.go(-1)">返回</a>
+                <a id="play-button" data-role="button" data-mini="true" data-theme="c"></a>
+                <a id="faster-button" data-role="button" data-mini="true" data-theme="c">加快</a>
+                <a id="slower-button" data-role="button" data-mini="true" data-theme="c">减慢</a>
+                <a id="back-button" data-role="button" data-mini="true" data-theme="c" href="javascript:history.go(-1)">返回</a>
                 <a data-role="button" data-mini="true" data-theme="c" href="http://cnrdn.com/rd.htm?id=1344758&r=http%3A%2F%2Ftieba.baidu.com%2Fp%2F2660663919%3Ffrom%3Danimation" target="blank">提BUG</a>
             </div>
-            <div id="playerStatus"></div>
+            <div id="player-status"></div>
         </div>
     </div>
     

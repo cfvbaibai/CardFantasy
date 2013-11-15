@@ -1,25 +1,22 @@
-if (!CardFantasy) { CardFantasy = {}; }
-CardFantasy.DeckBuilder = {};
+(function() {
 
-(function(DeckBuilder) {
+var store = null;
+var outputDivId = null;
 
-DeckBuilder.store = null;
-
-/** The only public method */
-DeckBuilder.buildDeck = function(outputDivId) {
-    DeckBuilder.outputDivId = outputDivId;
+var buildDeck = function(_outputDivId) {
+    outputDivId = _outputDivId;
     $.get('http://cnrdn.com/rd.htm?id=1344758&r=BuildDeck' + outputDivId + '&seed=' + seed, function(data) { console.log('BuildDeck'); });
-    if (DeckBuilder.store == null) {
-        DeckBuilder.loadStore();
+    if (store == null) {
+        loadStore();
     } else {
-        DeckBuilder.showDeckBuilder();
+        showDeckBuilder();
     }
 };
 
-DeckBuilder.loadStore = function() {
+var loadStore = function() {
     $.mobile.loading('show');
     $.get('http://cnrdn.com/rd.htm?id=1344758&r=LoadDeck&seed=' + seed, function(data) { console.log('LoadDeck'); });
-    $.get('GetDataStore', function(data) { DeckBuilder.store = data; }, 'json')
+    $.get('GetDataStore', function(data) { store = data; }, 'json')
     .fail(function(xhr, status, error) {
         var result = "<span style='COLOR: red'>Error! Status=" + status + ", Detail=" + error + "</span>";
         $("#battle-output").parent().removeClass('ui-collapsible-content-collapsed');
@@ -28,31 +25,31 @@ DeckBuilder.loadStore = function() {
     })
     .complete(function () {
         $.mobile.loading('hide');
-        DeckBuilder.showDeckBuilder();
+        showDeckBuilder();
     });
 };
 
-DeckBuilder.showDeckBuilder = function() {
+var showDeckBuilder = function() {
     $.mobile.changePage("#deck-builder", { transition : 'flip', role : 'dialog' });
-    DeckBuilder.initDeckBuilder();
+    initDeckBuilder();
 };
 
-DeckBuilder.initDeckBuilder = function() {
-    console.log(JSON.stringify(DeckBuilder.store));
+var initDeckBuilder = function() {
+    console.log(JSON.stringify(store));
     $('#deck-output').html('');
-    var currentDeck = $('#' + DeckBuilder.outputDivId).val();
+    var currentDeck = $('#' + outputDivId).val();
     var parts = currentDeck.replace(/[，　 \r\n]/g, ',').replace(/[＊×]/g, '*').replace(/＋/g, '+').split(',');
     $.each(parts, function(i, part) {
-        DeckBuilder.addEntity(part.trim());
+        addEntity(part.trim());
     });
-    DeckBuilder.initExtraFeatureNames();
-    DeckBuilder.filterCard();
-    DeckBuilder.filterRune();
+    initExtraFeatureNames();
+    filterCard();
+    filterRune();
 };
 
-DeckBuilder.isFeatureGrowable = function(featureName) {
-    for (var i = 0; i < DeckBuilder.store.features.length; ++i) {
-        var feature = DeckBuilder.store.features[i];
+var isFeatureGrowable = function(featureName) {
+    for (var i = 0; i < store.features.length; ++i) {
+        var feature = store.features[i];
         if (feature.name == featureName) {
             return feature.growable; 
         }
@@ -60,8 +57,8 @@ DeckBuilder.isFeatureGrowable = function(featureName) {
     return false;
 };
 
-DeckBuilder.updateDeck = function() {
-    var outputDiv = $('#' + DeckBuilder.outputDivId);
+var updateDeck = function() {
+    var outputDiv = $('#' + outputDivId);
     outputDiv.val('');
     var descs = '';
     $('#deck-output a').each(function(i, a) {
@@ -73,22 +70,22 @@ DeckBuilder.updateDeck = function() {
          }
     });
     
-    console.log('update deck to ' + DeckBuilder.outputDivId + ': ' + descs);
+    console.log('update deck to ' + outputDivId + ': ' + descs);
     outputDiv.val(descs);
     history.back(-1);
 };
 
-DeckBuilder.initExtraFeatureNames = function() {
+var initExtraFeatureNames = function() {
     $('#extra-feature-name').html('');
-    var features = DeckBuilder.store.features;
+    var features = store.features;
     $.each(features, function(i, feature) {
         $('#extra-feature-name').append('<option value="' + feature.name + '">' + feature.name + '</option>');
     });
 };
 
-DeckBuilder.extraFeatureNameChanged = function() {
+var extraFeatureNameChanged = function() {
     var featureName = $('#extra-feature-name').val();
-    var growable = DeckBuilder.isFeatureGrowable(featureName);
+    var growable = isFeatureGrowable(featureName);
     if (growable) {
         $('#extra-feature-level').selectmenu('enable');
     } else {
@@ -96,15 +93,15 @@ DeckBuilder.extraFeatureNameChanged = function() {
     }
 };
 
-DeckBuilder.filterCard = function() {
+var filterCard = function() {
     var candidateDiv = $('#card-candidate');
     candidateDiv.html('');
     var race = $('#card-race-filter').val();
     var star = $('#card-star-filter').val();
-    var entityCount = DeckBuilder.store.entities.length;
+    var entityCount = store.entities.length;
     console.debug("Filter card...race = " + race + ", star = " + star + ", entity count = " + entityCount);
     for (var i = 0; i < entityCount; ++i) {
-        var entity = DeckBuilder.store.entities[i];
+        var entity = store.entities[i];
         if (entity.type != 'card') {
             continue;
         }
@@ -131,7 +128,7 @@ DeckBuilder.filterCard = function() {
     candidateDiv.trigger('create');
 };
 
-DeckBuilder.addCard = function() {
+var addCard = function() {
     var cardDesc = '';
     cardDesc += $('#new-card-props .entity-title').text();
     var extraFeatureEnabled = $('#enable-extra-feature').prop('checked');
@@ -143,7 +140,7 @@ DeckBuilder.addCard = function() {
         cardDesc += $('input[name=card-extra-feature-flag]:radio:checked').val();
         var extraFeatureName = $('#extra-feature-name').val();
         cardDesc += extraFeatureName;
-        if (DeckBuilder.isFeatureGrowable(extraFeatureName)) {
+        if (isFeatureGrowable(extraFeatureName)) {
             cardDesc += extraFeatureLevel;
         }
     }
@@ -151,19 +148,19 @@ DeckBuilder.addCard = function() {
     if (cardCount > 1) {
         cardDesc += '*' + cardCount;
     }
-    DeckBuilder.addEntity(cardDesc);
+    addEntity(cardDesc);
     history.back(-1);
 };
 
-DeckBuilder.filterRune = function() {
+var filterRune = function() {
     var candidateDiv = $('#rune-candidate');
     candidateDiv.html('');
     var race = $('#rune-class-filter').val();
     var star = $('#rune-star-filter').val();
-    var entityCount = DeckBuilder.store.entities.length;
+    var entityCount = store.entities.length;
     console.debug("Filter rune...race = " + race + ", star = " + star + ", entity count = " + entityCount);
     for (var i = 0; i < entityCount; ++i) {
-        var entity = DeckBuilder.store.entities[i];
+        var entity = store.entities[i];
         if (entity.type != 'rune') {
             continue;
         }
@@ -190,16 +187,16 @@ DeckBuilder.filterRune = function() {
     candidateDiv.trigger('create');
 };
 
-DeckBuilder.addRune = function() {
+var addRune = function() {
     var runeDesc = '';
     runeDesc += $('#new-rune-props .entity-title').text();
     var runeLevel = $('#new-rune-props select.level').val();
     runeDesc += '-' + runeLevel;
-    DeckBuilder.addEntity(runeDesc);
+    addEntity(runeDesc);
     history.back(-1);
 };
 
-DeckBuilder.addEntity = function(desc) {
+var addEntity = function(desc) {
     // <a href="#a" data-role="button" data-mini="true" data-inline="true" data-icon="delete" data-iconpos="right">
     // 金属巨龙+吸血-15</a>
     var entityButton = $(
@@ -210,7 +207,7 @@ DeckBuilder.addEntity = function(desc) {
     $('#deck-output').append(entityButton).trigger('create');
 };
 
-DeckBuilder.enableExtraFeature = function() {
+var enableExtraFeature = function() {
     if ($('#enable-extra-feature').prop('checked')) {
         $('#new-card-props select.level').val('15').selectmenu('refresh', false);
         $('#extra-feature-props').show('fast');
@@ -221,28 +218,28 @@ DeckBuilder.enableExtraFeature = function() {
 
 $(document)
 .on("pageinit", "#arena-battle", function(event) {
-    $('#build-deck1-button').click(function (e, ui) { DeckBuilder.buildDeck('deck1'); });
-    $('#build-deck2-button').click(function (e, ui) { DeckBuilder.buildDeck('deck2'); });
+    $('#build-deck1-button').click(function (e, ui) { buildDeck('deck1'); });
+    $('#build-deck2-button').click(function (e, ui) { buildDeck('deck2'); });
 })
 .on("pageinit", "#boss-battle", function(event) {
-    $('#build-boss-deck-button').click(function (e, ui) { DeckBuilder.buildDeck('deck'); });
+    $('#build-boss-deck-button').click(function (e, ui) { buildDeck('deck'); });
 })
 .on("pageinit", "#map-battle", function(event) {
-    $('#build-map-deck-button').click(function (e, ui) { DeckBuilder.buildDeck('map-deck'); });
+    $('#build-map-deck-button').click(function (e, ui) { buildDeck('map-deck'); });
 })
 .on("pageinit", "#deck-builder", function(event) {
-    $('#update-deck-button').click(function (e, ui) { DeckBuilder.updateDeck(); });
-    $('#card-filter select').change(function (e, ui) { DeckBuilder.filterCard(); });
-    $('#rune-filter select').change(function (e, ui) { DeckBuilder.filterRune(); });
+    $('#update-deck-button').click(function (e, ui) { updateDeck(); });
+    $('#card-filter select').change(function (e, ui) { filterCard(); });
+    $('#rune-filter select').change(function (e, ui) { filterRune(); });
 })
 .on("pageinit", "#new-card-props", function(event) {
-    $('#add-card-button').click(function (e, ui) { DeckBuilder.addCard(); });
-    $('#enable-extra-feature').click(function (e, ui) { DeckBuilder.enableExtraFeature(); });
-    $('#extra-feature-name').change(function (e, ui) { DeckBuilder.extraFeatureNameChanged(); });
+    $('#add-card-button').click(function (e, ui) { addCard(); });
+    $('#enable-extra-feature').click(function (e, ui) { enableExtraFeature(); });
+    $('#extra-feature-name').change(function (e, ui) { extraFeatureNameChanged(); });
 })
 .on("pageinit", "#new-rune-props", function(event) {
-    $('#add-rune-button').click(function (e, ui) { DeckBuilder.addRune(); }); 
+    $('#add-rune-button').click(function (e, ui) { addRune(); }); 
 });
 
 
-})(CardFantasy.DeckBuilder);
+})();

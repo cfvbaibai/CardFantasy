@@ -1,3 +1,7 @@
+CardFantasy.BattleAnimation = {};
+
+(function (BattleAnimation) {
+
 (function($) {
     /*
      * Changes the displayed text for a jquery mobile button.
@@ -33,6 +37,7 @@ Kinetic.Text.prototype.middle = function(rect) {
 Kinetic.Text.prototype.centerMiddle = function(rect) {
     return this.center(rect).middle(rect);
 };
+
 Array.prototype.compact = function() {
     for (var i = 0; i < this.length; i++) {
         if (!this[i]) {
@@ -41,6 +46,7 @@ Array.prototype.compact = function() {
         }
     }
 };
+
 Array.prototype.removeOfName = function(name) {
     for (var i = 0; i < this.length; ++i) {
         if (this[i] && this[i].name == name) {
@@ -49,6 +55,7 @@ Array.prototype.removeOfName = function(name) {
     }
     return null;
 };
+
 Array.prototype.pickByName = function(name) {
     for (var i = 0; i < this.length; ++i) {
         if (this[i] && this[i].name == name) {
@@ -59,6 +66,7 @@ Array.prototype.pickByName = function(name) {
     }
     return null;
 };
+
 Array.prototype.indexOfName = function(name) {
     for (var i = 0; i < this.length; ++i) {
         if (this[i] && this[i].name == name) {
@@ -75,6 +83,7 @@ Array.prototype.ofName = function(name) {
     }
     return null;
 };
+
 Array.prototype.remove = function(obj) {
     var index = -1;
     for (var i = 0; i < this.length; ++i) {
@@ -87,6 +96,7 @@ Array.prototype.remove = function(obj) {
         this.removeAt(index, index);
     }
 };
+
 Array.prototype.removeAt = function(from, to) {
     var rest = this.slice((to || from) + 1 || this.length);
     this.length = from < 0 ? this.length + from : from;
@@ -550,30 +560,30 @@ var Arena = function(playerId, playerNumber) {
 };
 
 var Animation = function(name, funcs, duration) {
-    var self = this;
+    var me = this;
     if ($.type(name) != 'string') {
         console.error("ERROR: Invalid name: " + name);
     }
-    self.name = name || 'UNKNOWN';
-    self.funcs = [];
+    me.name = name || 'UNKNOWN';
+    me.funcs = [];
     if ($.type(funcs) == 'array') {
         $.each(funcs, function(i, func) {
-            self.funcs.push(func);
+            me.funcs.push(func);
         });
     } else {
-        self.funcs.push(funcs);
+        me.funcs.push(funcs);
     }
     if (duration == undefined) {
-        self.duration = settings.minimumDuration;
+        me.duration = settings.minimumDuration;
     } else if (isNaN(duration) || duration <= 0) {
         console.error("ERROR: Invalid duration: " + duration);
-        self.duration = settings.minimumDuration;
+        me.duration = settings.minimumDuration;
     } else {
-        self.duration = duration;
+        me.duration = duration;
     }
     
     this.play = function(speed) {
-        $.each(self.funcs, function(i, func) {
+        $.each(me.funcs, function(i, func) {
             func(speed, duration);
         });
     };
@@ -652,18 +662,18 @@ var Animater = function() {
     };
     
     this.__updateRune = function(player, runeInfo) {
-        var self = this;
+        var me = this;
         this.addAnimation('updateRune', function () {
-            var arena = self.arenas[player.id];
+            var arena = me.arenas[player.id];
             var i = arena.runes[runeInfo.name];
-            var runeCircleShape = self.__getShape(player, 'rune' + i + '-circle');
+            var runeCircleShape = me.__getShape(player, 'rune' + i + '-circle');
             runeCircleShape.setFill(settings.runeFill[runeInfo.type]);
-            var runeNameShape = self.__getShape(player, 'rune' + i + '-name');
+            var runeNameShape = me.__getShape(player, 'rune' + i + '-name');
             runeNameShape.setText(runeInfo.name);
             runeNameShape.setFill(settings.runeTextFill[runeInfo.type]);
             runeNameShape.setX(runeCircleShape.getX() - runeNameShape.getWidth() / 2);
             runeNameShape.setY(runeCircleShape.getY() - runeNameShape.getHeight() + 2);
-            var runeEnergyShape = self.__getShape(player, 'rune' + i + '-energy');
+            var runeEnergyShape = me.__getShape(player, 'rune' + i + '-energy');
             runeEnergyShape.setText(runeInfo.energy);
             runeEnergyShape.setFill(settings.runeTextFill[runeInfo.type]);
             runeEnergyShape.setX(runeCircleShape.getX() - runeEnergyShape.getWidth() / 2);
@@ -977,19 +987,19 @@ var Animater = function() {
     };
 
     this.clearStatus = function(arena, statusToRemove) {
-        var self = this;
+        var me = this;
         $.each(arena.fields, function (i, card) {
             var newStatusList = [];
             if (!card) { return; }
             for (var i = 0; i < card.statusList.length; ++i) {
-                var status = card.statusList[i];
-                if (statusToRemove.indexOf(status) < 0) {
-                    newStatusList.push(status);
+                var cardStatus = card.statusList[i];
+                if (statusToRemove.indexOf(cardStatus) < 0) {
+                    newStatusList.push(cardStatus);
                 }
             }
             card.statusList = newStatusList;
             var newText = newStatusList.join(); 
-            self.addAnimation("clearStatus", function() {
+            me.addAnimation("clearStatus", function() {
                 card.statusText.setText(newText);
                 card.statusText.centerMiddle(card.statusRect);
                 card.group.getLayer().draw();
@@ -1004,9 +1014,9 @@ var Animater = function() {
         var roundText = stage.get('#round-text')[0];
         
         // Remove all debuffs.
-        var self = this;
+        var me = this;
         $.each(this.arenas, function(i, arena) {
-            self.clearStatus(arena, ['虚']);
+            me.clearStatus(arena, ['虚']);
         });
         this.clearStatus(this.arenas[playerId], ['冻', '麻', '锁', '毒', '惑']);
 
@@ -1179,7 +1189,7 @@ var Animater = function() {
     
     this.__debuffDamage = function(data) {
         var cardRtInfo = data[0];
-        var status = data[1];
+        var cardStatus = data[1];
         var damage = data[2];
         var currentHP = data[3];
         var maxHP = data[4];
@@ -1187,7 +1197,7 @@ var Animater = function() {
         this.displayCardMsg({
             name: 'debuffDamage',
             cardShape: card.group,
-            text: status + '\r\n\r\n造成伤害\r\n\r\n' + damage,
+            text: cardStatus + '\r\n\r\n造成伤害\r\n\r\n' + damage,
             textColor: 'red',
         });
         this.updateCardHP(card, currentHP, maxHP);
@@ -1628,7 +1638,7 @@ var Animater = function() {
      * @param targets The target entities (EntityRuntimeInfo) or hero (PlayerRuntimeInfo) to which image flies
      */ 
     this.flyImage = function(imgObj, source, targetEntities, _duration) {
-        var self = this;
+        var me = this;
         var duration = _duration;
         if (!duration) { duration = settings.flyImageDuration; }
         if (source.type != 'Card' && source.type != 'Rune') {
@@ -1642,10 +1652,10 @@ var Animater = function() {
         var isHeroTarget = $.type(targetEntities) != 'array';
         var targets = [];
         if (isHeroTarget) {
-            targets.push(self.__getShape(targetEntities, 'hpbg-rect'));
+            targets.push(me.__getShape(targetEntities, 'hpbg-rect'));
         } else {
             $.each(targetEntities, function(i, c) {
-                targets.push(self.getCard(c));
+                targets.push(me.getCard(c));
             });
         }
         var flyingFuncs = [];
@@ -1701,7 +1711,7 @@ var Animater = function() {
                     });
                     imgGroup.add(img);
                 };
-                self.stage.get('#effect-layer')[0].add(imgGroup);
+                me.stage.get('#effect-layer')[0].add(imgGroup);
 
                 if (imgObj.text) {
                     // tooltip
@@ -1730,7 +1740,7 @@ var Animater = function() {
                         fill: settings.skillTipTextColor,
                     }));
 
-                    self.stage.get('#effect-layer')[0].add(tooltip);
+                    me.stage.get('#effect-layer')[0].add(tooltip);
                 }
 
                 new Kinetic.Tween({
@@ -1796,9 +1806,9 @@ var Animater = function() {
     };
     
     this.dumpAnimations = function() {
-        var self = this;
+        var me = this;
         $.each(this.pieces, function(i, piece) {
-            if (self.enableAnimationLog) {
+            if (me.enableAnimationLog) {
                 console.log("Piece[" + i + "] (" + piece.animation.duration + "): " + piece.animation.name);
             }
         });
@@ -1810,32 +1820,32 @@ var Animater = function() {
     };
 
     this.playAnimations = function() {
-        var self = this;
+        var me = this;
         this.time = this.initTime;
         $.each(this.pieces, function(i, piece) {
-            var name = piece.animation.name;
+            var animationName = piece.animation.name;
             var duration = piece.animation.duration;
-            if (self.enableAnimationLog) {
-                console.log("Scheduling animation '" + name + "' at " + self.time + " (Duration: " + duration + ")");
+            if (me.enableAnimationLog) {
+                console.log("Scheduling animation '" + animationName + "' at " + me.time + " (Duration: " + duration + ")");
             }
             var timeOutVar = window.setTimeout(function() {
-                if (self.enableAnimationLog) {
-                    console.log("ANIM Executing " + name + " (duration = " + duration + ")");
+                if (me.enableAnimationLog) {
+                    console.log("ANIM Executing " + animationName + " (duration = " + duration + ")");
                     console.log("ANIM Next animation should happen at " + new Date(new Date().getTime() + duration * 1000));
                 }
-                self.pieces.remove(piece);
-                piece.animation.play(self.speed);
-            }, self.time * 1000);
+                me.pieces.remove(piece);
+                piece.animation.play(me.speed);
+            }, me.time * 1000);
             piece.handle = timeOutVar;
-            var timeSpent = self.speed * piece.animation.duration;
+            var timeSpent = me.speed * piece.animation.duration;
             if (timeSpent < settings.minimumDuration) {
                 timeSpent = settings.minimumDuration;
             }
-            var newTime = self.time + timeSpent;
-            if (self.enableAnimationLog) {
-                console.log("Time: " + self.time + " -> " + newTime);
+            var newTime = me.time + timeSpent;
+            if (me.enableAnimationLog) {
+                console.log("Time: " + me.time + " -> " + newTime);
             }
-            self.time = newTime;
+            me.time = newTime;
         });
     };
     
@@ -1954,7 +1964,7 @@ var Animater = function() {
         } else if (!getEffect && !adjAT) {
             adjTextColor = settings.loseAdjHpColor;
         }
-        var self = this;
+        var me = this;
         this.addAnimation("adjustValuePrepare", function(speed) {
             adjRect = new Kinetic.Rect({
                 x: 0, y: 0, width: ptSize.width, height: settings.adjRectHeight,
@@ -1975,7 +1985,7 @@ var Animater = function() {
             });
             adjGroup.add(adjRect).add(adjText);
             adjText.centerMiddle(adjRect);
-            self.stage.get('#effect-layer')[0].add(adjGroup);
+            me.stage.get('#effect-layer')[0].add(adjGroup);
         }, settings.minimumDuration);
         var targetCard = this.getCard(target);
         if (source.type != 'Card' || source.uniqueName == target.uniqueName) {
@@ -2061,7 +2071,7 @@ var Animater = function() {
             console.error("Invalid attrs in this.displayCardMsg: " + attrs);
             return;
         }
-        var self = this;
+        var me = this;
         var opt = $.extend({
             textColor: settings.cardMsgTextColor,
             text: '',
@@ -2093,7 +2103,7 @@ var Animater = function() {
                 y: opt.cardShape.getY() + opt.size.height / 2 - rect.getHeight() / 2,
             });
             group.add(rect).add(text);
-            self.stage.get('#effect-layer')[0].add(group);
+            me.stage.get('#effect-layer')[0].add(group);
             text.centerMiddle(rect);
             group.getLayer().draw();
         }, opt.duration);
@@ -2158,15 +2168,37 @@ var Animater = function() {
         }
     };
 };
+
 var animater = null;
 
-var showBattle = function(data) {
-    animater.playing = true;
-    $('#playButton').changeButtonText('暂停');
-    refreshPlayStatus();
-    animater.setup(data);
-    animater.dumpAnimations();
-    animater.playAnimations();
+var refreshPlayStatus = function() {
+    var playButton = $('#play-button');
+    if (animater.playing) {
+        playButton.changeButtonText('暂停');
+        if (animater.isSpeedIncreasible()) {
+            $('#faster-button').removeClass('ui-disabled');
+        } else {
+            $('#faster-button').addClass('ui-disabled');
+        }
+        if (animater.isSpeedDecreasible()) {
+            $('#slower-button').removeClass('ui-disabled');
+        } else {
+            $('#slower-button').addClass('ui-disabled');
+        }
+    } else {
+        playButton.changeButtonText('播放');
+        $('#faster-button').addClass('ui-disabled');
+        $('#slower-button').addClass('ui-disabled');
+    }
+    var text = '';
+    if (animater.playing) {
+        text += '播放中';
+    } else {
+        text += '暂停中';
+    }
+    text += '          播放速度：';
+    text += animater.getSpeedText() + '速';
+    $('#player-status').text(text);
 };
 
 var togglePlayButton = function() {
@@ -2190,36 +2222,21 @@ var slower = function() {
     refreshPlayStatus();
 };
 
-var refreshPlayStatus = function() {
-    var playButton = $('#playButton');
-    if (animater.playing) {
-        playButton.changeButtonText('暂停');
-        if (animater.isSpeedIncreasible()) {
-            $('#fasterButton').removeClass('ui-disabled');
-        } else {
-            $('#fasterButton').addClass('ui-disabled');
-        }
-        if (animater.isSpeedDecreasible()) {
-            $('#slowerButton').removeClass('ui-disabled');
-        } else {
-            $('#slowerButton').addClass('ui-disabled');
-        }
-    } else {
-        playButton.changeButtonText('播放');
-        $('#fasterButton').addClass('ui-disabled');
-        $('#slowerButton').addClass('ui-disabled');
-    }
-    var text = '';
-    if (animater.playing) {
-        text += '播放中';
-    } else {
-        text += '暂停中';
-    }
-    text += '          播放速度：';
-    text += animater.getSpeedText() + '速';
-    $('#playerStatus').text(text);
+BattleAnimation.showBattle = function(data) {
+    animater.playing = true;
+    $('#play-button').changeButtonText('暂停');
+    refreshPlayStatus();
+    animater.setup(data);
+    animater.dumpAnimations();
+    animater.playAnimations();
 };
 
-$(document).ready( function() {
+$(document)
+.on("pageinit", "#arena", function(event) {
     animater = new Animater();
+    $('#play-button').click(function (e, ui) { togglePlayButton(); });
+    $('#faster-button').click(function (e, ui) { faster(); });
+    $('#slower-button').click(function (e, ui) { slower(); });
 });
+
+})(CardFantasy.BattleAnimation);
