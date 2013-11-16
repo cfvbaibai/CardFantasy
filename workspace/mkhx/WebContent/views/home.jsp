@@ -38,7 +38,7 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">
                 <h3>设置阵容</h3>
                 <div>
-                    <table style="WIDTH: 100%">
+                    <table class="form">
                         <tr>
                             <td>地图</td>
                             <td>
@@ -557,8 +557,11 @@
             <h3 style="text-align: center">设定符文属性</h3>
         </div>
         <div data-role="content" data-theme="c">
-            <div class="entity-title"></div>
-            <table style="WIDTH: 100%">
+            <div class="entity-title">
+                <span class="entity-title-text"></span>
+                <span><a class="entity-detail-button" target="_blank" data-role="button" data-mini="true" data-inline="true">详情</a></span>
+            </div>
+            <table class="form">
                 <tr>
                     <td>等级</td>
                     <td>
@@ -584,8 +587,11 @@
             <h3 style="text-align: center">设定卡牌属性</h3>
         </div>
         <div data-role="content" data-theme="c">
-            <div class="entity-title"></div>
-            <table style="WIDTH: 100%">
+            <div class="entity-title">
+                <span class="entity-title-text"></span>
+                <span><a class="entity-detail-button" target="_blank" data-role="button" data-mini="true" data-inline="true">详情</a></span>
+            </div>
+            <table class="form">
                 <tr>
                     <td>等级</td>
                     <td>
@@ -629,12 +635,21 @@
             <input type="checkbox" id="enable-extra-feature" data-mini="true" />
             <label for="enable-extra-feature">添加洗炼技能</label>
             <div id="extra-feature-props" style="DISPLAY: none">
-                <table style="WIDTH: 100%">
+                <table class="form">
                     <tr>
                         <td>技能</td>
                         <td>
-                            <select id="extra-feature-name" data-mini="true" data-native-menu="false">
-                            </select>
+                            <table>
+                                <tr>
+                                    <td style="WIDTH: 100%">
+                                        <select id="extra-feature-name" data-mini="true" data-native-menu="false">
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <a class="feature-detail-button" target="_blank" data-role="button" data-mini="true" data-inline="true">详情</a>
+                                    </td>
+                                </tr>
+                            </table>
                         </td>
                     </tr>
                     <tr>

@@ -7,8 +7,9 @@ public class EntityDataRuntimeInfo {
 
     private static final String RUNE_TYPE = "rune";
     private static final String CARD_TYPE = "card";
-    
+
     private String id;
+    private String wikiId;
     private String name;
     private String race;
     private int star;
@@ -17,6 +18,7 @@ public class EntityDataRuntimeInfo {
 
     public EntityDataRuntimeInfo(CardData data) {
         this.id = data.getId();
+        this.wikiId = data.getWikiId();
         this.name = data.getName();
         this.race = data.getRace().name();
         this.star = data.getStar();
@@ -25,6 +27,7 @@ public class EntityDataRuntimeInfo {
 
     public EntityDataRuntimeInfo(RuneData data) {
         this.id = null;
+        this.wikiId = data.getWikiId();
         this.name = data.name();
         this.race = data.getRuneClass().name();
         this.star = data.getStar();
@@ -33,6 +36,10 @@ public class EntityDataRuntimeInfo {
 
     public String getId() {
         return id;
+    }
+    
+    public String getWikiId() {
+        return wikiId;
     }
 
     public String getName() {

@@ -5,21 +5,20 @@ import java.util.List;
 
 import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
 
-
 public class Card implements Cloneable {
     private CardData sourceInfo;
     private int exp;
     private String uniqueName;
     private CardFeature extraFeature;
-    
+
     public Card(CardData sourceInfo) {
         this(sourceInfo, 0, "");
     }
-    
+
     public Card(CardData sourceInfo, int cardLevel, String suffix) {
         this(sourceInfo, cardLevel, null, null, suffix);
     }
-    
+
     public Card(CardData sourceInfo, int cardLevel, CardFeature extraFeature, String prefix, String suffix) {
         if (sourceInfo == null) {
             throw new CardFantasyRuntimeException("sourceInfo should not be null");
@@ -38,6 +37,10 @@ public class Card implements Cloneable {
     
     public String getId() {
         return this.sourceInfo.getId();
+    }
+    
+    public String getWikiId() {
+        return this.sourceInfo.getWikiId();
     }
 
     public String getUniqueName() {

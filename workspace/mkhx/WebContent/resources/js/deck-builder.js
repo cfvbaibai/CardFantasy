@@ -4,6 +4,10 @@
 var store = null;
 var outputDivId = null;
 
+var getWikiUrl = function(wikiId) {
+    return 'http://www.joyme.com/wiki/mkhx/' + wikiId + '.shtml';
+};
+
 var buildDeck = function(_outputDivId) {
     outputDivId = _outputDivId;
     $.get('http://cnrdn.com/rd.htm?id=1344758&r=BuildDeck' + outputDivId + '&seed=' + seed, function(data) { console.log('BuildDeck'); });
@@ -76,12 +80,32 @@ var updateDeck = function() {
     history.back(-1);
 };
 
+var updateFeatureDetailButtonHref = function() {
+    var button = $('#extra-feature-props a.feature-detail-button');
+    var featureName = $('#extra-feature-name').val();
+    var feature = null;
+    for (var i = 0; i < store.features.length; ++i) {
+        if (store.features[i].name == featureName) {
+            feature = store.features[i];
+            break;
+        }
+    }
+    if (feature && feature.wikiId) {
+        //button.show();
+        button.attr('href', getWikiUrl(feature.wikiId));
+    } else {
+        //button.hide();
+        button.attr('href', '#');
+    }
+};
+
 var initExtraFeatureNames = function() {
     $('#extra-feature-name').html('');
     var features = store.features;
     $.each(features, function(i, feature) {
         $('#extra-feature-name').append('<option value="' + feature.name + '">' + feature.name + '</option>');
     });
+    updateFeatureDetailButtonHref();
 };
 
 var extraFeatureNameChanged = function() {
@@ -92,6 +116,7 @@ var extraFeatureNameChanged = function() {
     } else {
         $('#extra-feature-level').selectmenu('disable');
     }
+    updateFeatureDetailButtonHref();
 };
 
 var filterCard = function() {
@@ -118,11 +143,12 @@ var filterCard = function() {
         var a = $('<a data-mini="true" data-role="button" data-inline="true" ' +
                   '   data-icon="plus" data-iconpos="right">' + entity.name + '</a>');
         a.data('entity', entity);
+        a.attr('href', '#');
         a.click(function () {
-            var entityName = $(this).data('entity').name;
-            console.log('this= ' + entityName);
+            var entity = $(this).data('entity');
             $.mobile.changePage("#new-card-props", { transition : 'slidedown', role : 'dialog' });
-            $('#new-card-props .entity-title').text(entityName);
+            $('#new-card-props div.entity-title span.entity-title-text').text(entity.name);
+            $('#new-card-props a.entity-detail-button').attr('href', getWikiUrl(entity.wikiId));
         });
         candidateDiv.append(a);
     }
@@ -131,7 +157,7 @@ var filterCard = function() {
 
 var addCard = function() {
     var cardDesc = '';
-    cardDesc += $('#new-card-props .entity-title').text();
+    cardDesc += $('#new-card-props div.entity-title span.entity-title-text').text();
     var extraFeatureEnabled = $('#enable-extra-feature').prop('checked');
     var extraFeatureLevel = $('#extra-feature-level').val();
     var cardLevel = $('#new-card-props select.level').val();
@@ -178,10 +204,10 @@ var filterRune = function() {
                 '   data-icon="plus" data-iconpos="right">' + entity.name + '</a>');
         a.data('entity', entity);
         a.click(function () {
-            var entityName = $(this).data('entity').name;
-            console.log('this= ' + entityName);
-            $('#new-rune-props .entity-title').text(entityName);
+            var entity = $(this).data('entity');
             $.mobile.changePage("#new-rune-props", { transition : 'slidedown', role : 'dialog' });
+            $('#new-rune-props div.entity-title span.entity-title-text').text(entity.name);
+            $('#new-rune-props a.entity-detail-button').attr('href', getWikiUrl(entity.wikiId));
         });
         candidateDiv.append(a);
     }
@@ -190,7 +216,7 @@ var filterRune = function() {
 
 var addRune = function() {
     var runeDesc = '';
-    runeDesc += $('#new-rune-props .entity-title').text();
+    runeDesc += $('#new-rune-props div.entity-title span.entity-title-text').text();
     var runeLevel = $('#new-rune-props select.level').val();
     runeDesc += '-' + runeLevel;
     addEntity(runeDesc);
@@ -216,7 +242,6 @@ var enableExtraFeature = function() {
         $('#extra-feature-props').hide('fast');
     }
 };
-
 $(document)
 .on("pageinit", "#arena-battle", function(event) {
     $('#build-deck1-button').click(function (e, ui) { buildDeck('deck1'); });

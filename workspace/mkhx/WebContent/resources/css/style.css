@@ -107,21 +107,42 @@ div#player-status {
 	text-align: center;
 }
 
-#new-card-props table tr td:nth-of-type(1),
-#new-rune-props table tr td:nth-of-type(1) {
-	width: 100px;
+table.form tr td:nth-of-type(1)  {
+	padding-right: 20px;
+	white-space: nowrap;
+	font-weight: bold;
 }
 
-.entity-title {
+table.form tr td:nth-of-type(2),
+table.form tr td:nth-of-type(3),
+table.form tr td:nth-of-type(4) {
+	width: 100%;
+}
+
+table.form {
+	width: 100%;
+}
+
+div.entity-title {
 	text-align: center;
 	font-size: 150%;
 	font-weight: bold;
 	text-shadow: 0 -1px #BBBBBB, 0 2px #FFFFFF;
 }
 
-#deck-chooser div.candidate {
+div#deck-chooser div.candidate {
 	WIDTH: 100%;
 	HEIGHT: 100px;
 	OVERFLOW: auto;
 	BORDER: solid 1px #CCCCCC;
+}
+
+div#card-details div.entity-basic-info {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+div#card-details div.entity-basic-info div {
+	float: left;
+	padding-right: 5px;
 }

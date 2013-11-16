@@ -32,6 +32,7 @@ public class CardDataStore {
             for (Node cardNode : cardNodes) {
                 CardData cardData = new CardData();
                 cardData.setId(cardNode.valueOf("@id"));
+                cardData.setWikiId(cardNode.valueOf("@wikiId"));
                 cardData.setName(cardNode.valueOf("@name"));
                 cardData.setRace(Race.parse(cardNode.valueOf("@race")));
                 cardData.setSummonSpeed(Integer.parseInt(cardNode.valueOf("@speed")));

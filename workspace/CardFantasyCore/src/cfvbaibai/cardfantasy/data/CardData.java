@@ -16,10 +16,12 @@ public class CardData {
     private int incrHP;
     private int incrCost;
     private Growth growth;
+    private String wikiId;
     private List<CardFeature> cardFeatures;
 
     public CardData() {
         this.id = "";
+        this.wikiId = "";
         this.name = "";
         this.cardFeatures = new ArrayList<CardFeature>();
         // TODO: Apply real growth
@@ -32,6 +34,14 @@ public class CardData {
     
     public void setId(String id) {
         this.id = id;
+    }
+    
+    public String getWikiId() {
+        return this.wikiId;
+    }
+    
+    public void setWikiId(String wikiId) {
+        this.wikiId = wikiId;
     }
 
     public String getName() {
