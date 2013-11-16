@@ -91,10 +91,8 @@ var updateFeatureDetailButtonHref = function() {
         }
     }
     if (feature && feature.wikiId) {
-        //button.show();
         button.attr('href', getWikiUrl(feature.wikiId));
     } else {
-        //button.hide();
         button.attr('href', '#');
     }
 };
@@ -137,13 +135,10 @@ var filterCard = function() {
         if (star != 0 && entity.star != star) {
             continue;
         }
-        console.log("Find card: " + entity.name);
-        // <a data-rel="popup" data-mini="true" data-role="button" data-inline="true" 
-        //    data-icon="plus" data-iconpos="right">城镇弓箭手</a>
+        console.debug("Find card: " + entity.name);
         var a = $('<a data-mini="true" data-role="button" data-inline="true" ' +
                   '   data-icon="plus" data-iconpos="right">' + entity.name + '</a>');
         a.data('entity', entity);
-        a.attr('href', '#');
         a.click(function () {
             var entity = $(this).data('entity');
             $.mobile.changePage("#new-card-props", { transition : 'slidedown', role : 'dialog' });
