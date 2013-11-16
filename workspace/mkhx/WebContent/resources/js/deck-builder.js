@@ -1,14 +1,16 @@
+CardFantasy.DeckBuilder = {};
+
 // OUTERMOST IIFE
-(function() {
+(function(DeckBuilder) {
 
 var store = null;
 var outputDivId = null;
 
 var getWikiUrl = function(wikiId) {
-    return 'http://www.joyme.com/wiki/mkhx/' + wikiId + '.shtml';
+    return 'http://cnrdn.com/rd.htm?id=1344758&r=' + encodeURIComponent('http://www.joyme.com/wiki/mkhx/' + wikiId + '.shtml');
 };
 
-var buildDeck = function(_outputDivId) {
+DeckBuilder.buildDeck = function(_outputDivId) {
     outputDivId = _outputDivId;
     $.get('http://cnrdn.com/rd.htm?id=1344758&r=BuildDeck' + outputDivId + '&seed=' + seed, function(data) { console.log('BuildDeck'); });
     if (store == null) {
@@ -62,7 +64,7 @@ var isFeatureGrowable = function(featureName) {
     return false;
 };
 
-var updateDeck = function() {
+DeckBuilder.updateDeck = function() {
     var outputDiv = $('#' + outputDivId);
     outputDiv.val('');
     var descs = '';
@@ -117,6 +119,20 @@ var extraFeatureNameChanged = function() {
     updateFeatureDetailButtonHref();
 };
 
+DeckBuilder.onAddCardButtonClick = function(id) {
+    var entity = $('#' + id).data('entity');
+    $.mobile.changePage("#new-card-props", { transition : 'slidedown', role : 'dialog' });
+    $('#new-card-props div.entity-title span.entity-title-text').text(entity.name);
+    $('#new-card-props a.entity-detail-button').attr('href', getWikiUrl(entity.wikiId));
+};
+
+DeckBuilder.onAddRuneButtonClick = function(id) {
+    var entity = $('#' + id).data('entity');
+    $.mobile.changePage("#new-rune-props", { transition : 'slidedown', role : 'dialog' });
+    $('#new-rune-props div.entity-title span.entity-title-text').text(entity.name);
+    $('#new-rune-props a.entity-detail-button').attr('href', getWikiUrl(entity.wikiId));
+};
+
 var filterCard = function() {
     var candidateDiv = $('#card-candidate');
     candidateDiv.html('');
@@ -136,21 +152,18 @@ var filterCard = function() {
             continue;
         }
         console.debug("Find card: " + entity.name);
+        var id = 'add-card-' + entity.name;
         var a = $('<a data-mini="true" data-role="button" data-inline="true" ' +
                   '   data-icon="plus" data-iconpos="right">' + entity.name + '</a>');
+        a.attr('id', id);
+        a.attr('href', 'javascript:CardFantasy.DeckBuilder.onAddCardButtonClick("' + id + '")');
         a.data('entity', entity);
-        a.click(function () {
-            var entity = $(this).data('entity');
-            $.mobile.changePage("#new-card-props", { transition : 'slidedown', role : 'dialog' });
-            $('#new-card-props div.entity-title span.entity-title-text').text(entity.name);
-            $('#new-card-props a.entity-detail-button').attr('href', getWikiUrl(entity.wikiId));
-        });
         candidateDiv.append(a);
     }
     candidateDiv.trigger('create');
 };
 
-var addCard = function() {
+DeckBuilder.addCard = function() {
     var cardDesc = '';
     cardDesc += $('#new-card-props div.entity-title span.entity-title-text').text();
     var extraFeatureEnabled = $('#enable-extra-feature').prop('checked');
@@ -198,18 +211,15 @@ var filterRune = function() {
         var a = $('<a data-mini="true" data-role="button" data-inline="true" ' +
                 '   data-icon="plus" data-iconpos="right">' + entity.name + '</a>');
         a.data('entity', entity);
-        a.click(function () {
-            var entity = $(this).data('entity');
-            $.mobile.changePage("#new-rune-props", { transition : 'slidedown', role : 'dialog' });
-            $('#new-rune-props div.entity-title span.entity-title-text').text(entity.name);
-            $('#new-rune-props a.entity-detail-button').attr('href', getWikiUrl(entity.wikiId));
-        });
+        var id = 'add-rune-' + entity.name;
+        a.attr('id', id);
+        a.attr('href', 'javascript:CardFantasy.DeckBuilder.onAddRuneButtonClick("' + id + '")');
         candidateDiv.append(a);
     }
     candidateDiv.trigger('create');
 };
 
-var addRune = function() {
+DeckBuilder.addRune = function() {
     var runeDesc = '';
     runeDesc += $('#new-rune-props div.entity-title span.entity-title-text').text();
     var runeLevel = $('#new-rune-props select.level').val();
@@ -237,30 +247,31 @@ var enableExtraFeature = function() {
         $('#extra-feature-props').hide('fast');
     }
 };
+
 $(document)
 .on("pageinit", "#arena-battle", function(event) {
-    $('#build-deck1-button').click(function (e, ui) { buildDeck('deck1'); });
-    $('#build-deck2-button').click(function (e, ui) { buildDeck('deck2'); });
+    $('#build-deck1-button').attr('href', "javascript:CardFantasy.DeckBuilder.buildDeck('deck1');");
+    $('#build-deck2-button').attr('href', "javascript:CardFantasy.DeckBuilder.buildDeck('deck2');");
 })
 .on("pageinit", "#boss-battle", function(event) {
-    $('#build-boss-deck-button').click(function (e, ui) { buildDeck('deck'); });
+    $('#build-boss-deck-button').attr('href', "javascript:CardFantasy.DeckBuilder.buildDeck('deck');");
 })
 .on("pageinit", "#map-battle", function(event) {
-    $('#build-map-deck-button').click(function (e, ui) { buildDeck('map-deck'); });
+    $('#build-map-deck-button').attr('href', "javascript:CardFantasy.DeckBuilder.buildDeck('map-deck');");
 })
 .on("pageinit", "#deck-builder", function(event) {
-    $('#update-deck-button').click(function (e, ui) { updateDeck(); });
-    $('#card-filter select').change(function (e, ui) { filterCard(); });
-    $('#rune-filter select').change(function (e, ui) { filterRune(); });
+    $('#update-deck-button').attr('href', 'javascript:CardFantasy.DeckBuilder.updateDeck();');
+    $('#card-filter select').change(function(e, ui) { filterCard(); });
+    $('#rune-filter select').change(function(e, ui) { filterRune(); });
 })
 .on("pageinit", "#new-card-props", function(event) {
-    $('#add-card-button').click(function (e, ui) { addCard(); });
-    $('#enable-extra-feature').click(function (e, ui) { enableExtraFeature(); });
-    $('#extra-feature-name').change(function (e, ui) { extraFeatureNameChanged(); });
+    $('#add-card-button').attr('href', 'javascript:CardFantasy.DeckBuilder.addCard();');
+    $('#enable-extra-feature').click(function(e, ui) { enableExtraFeature(); });
+    $('#extra-feature-name').change(function(e, ui) { extraFeatureNameChanged(); });
 })
 .on("pageinit", "#new-rune-props", function(event) {
-    $('#add-rune-button').click(function (e, ui) { addRune(); }); 
+    $('#add-rune-button').attr('href', 'javascript:CardFantasy.DeckBuilder.addRune();');
 });
 
 // END OF OUTERMOST IIFE
-})();
+})(CardFantasy.DeckBuilder);

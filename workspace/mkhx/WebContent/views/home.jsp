@@ -14,27 +14,13 @@
                 <ul>
                     <li><a href="#boss-battle">魔神战</a></li>
                     <li><a href="#map-battle" class="ui-btn-active ui-state-persist">地图战</a></li>
-                    <li><a href="#arena-battle">竞技场战</a></li>
+                    <li><a href="#arena-battle">竞技场</a></li>
+                    <li><a href="#communication">交流区</a></li>
+                    <li><a href="#help">帮助</a></li>
                 </ul>
             </div>
         </div>
         <div data-role="content">
-            <div data-role="collapsible" data-mini="true" data-content-theme="<%=dataContentTheme%>" data-collapsed-icon="info" data-theme="c"
-                data-expanded-icon="info">
-                <h3>点击查看帮助</h3>
-                <div id="help">
-                    <ul data-theme="c">
-                        <li>在下面的输入框里输入卡组符文的信息，卡牌与符文之间用逗号隔开，不要留多余的空格，例如： 金属巨龙,降临天使,冰封,永冻</li>
-                        <li>默认卡牌等级10级，符文等级4级，想要改变等级的话，在名称后面添加"-数字"。例如10级金属就是"金属巨龙-10"。</li>
-                        <li>重复添加同一个卡牌可以使用星号，例如"凤凰*5"表示5张10级凤凰，"凤凰-15*5"表示5张15级凤凰，注意符文不能重复。</li>
-                        <li>可以使用加号设置卡牌的洗炼技能，例如"凤凰+转生5-15*5"表示5张15级的转生5的凤凰。</li>
-                        <li>洗炼技能也可以设定成降临或者死契，例如"骷髅法师+降临火墙3"表示有了降临火墙的骷髅法师，"独眼巨人+死契摧毁"表示有了死契摧毁的独眼巨人。</li>
-                        <li>设置了洗炼技能的卡牌默认15级，所以"凤凰+转生5"等同于"凤凰+转生5-15"。</li>
-                        <li>制作人：<a href="http://cnrdn.com/rd.htm?id=1344758&r=http%3A%2F%2Ftieba.baidu.com%2Fi%2F13567034%2Fprofile%3Ffrom%3Dmap" target="_blank">白白</a></li>
-                        <li>友情支持：<a href="http://cnrdn.com/rd.htm?id=1344758&r=http%3A%2F%2Ftieba.baidu.com%2Ff%3Fkw%3D%25C4%25A7%25BF%25A8%25BB%25C3%25CF%25EB%3Ffrom%3Dmap" target="_blank">魔卡幻想贴吧</a></li>
-                    </ul>
-                </div>
-            </div>
             <div data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">
                 <h3>设置阵容</h3>
                 <div>
@@ -233,28 +219,14 @@
                 <ul>
                     <li><a href="#boss-battle">魔神战</a></li>
                     <li><a href="#map-battle">地图战</a></li>
-                    <li><a href="#arena-battle" class="ui-btn-active ui-state-persist">竞技场战</a></li>
+                    <li><a href="#arena-battle" class="ui-btn-active ui-state-persist">竞技场</a></li>
+                    <li><a href="#communication">交流区</a></li>
+                    <li><a href="#help">帮助</a></li>
                 </ul>
             </div>
         </div>
 
         <div data-role="content">
-            <div data-role="collapsible" data-mini="true" data-content-theme="<%=dataContentTheme%>" data-collapsed-icon="info" data-theme="c"
-                data-expanded-icon="info">
-                <h3>点击查看帮助</h3>
-                <div id="help">
-                    <ul>
-                        <li>在下面的输入框里输入卡组符文的信息，卡牌与符文、卡牌与卡牌、符文与符文之间都用逗号隔开，例如： 金属巨龙,降临天使,冰封,永冻</li>
-                        <li>默认卡牌等级10级，符文等级4级，想要改变等级的话，在名称后面添加"-数字"。例如10级金属就是"金属巨龙-10"。</li>
-                        <li>重复添加同一个卡牌可以使用星号，例如"凤凰*5"表示5张10级凤凰，"凤凰-15*5"表示5张15级凤凰，注意符文不能重复。</li>
-                        <li>可以使用加号设置卡牌的洗炼技能，例如"凤凰+转生5-15*5"表示5张15级的转生5的凤凰。</li>
-                        <li>洗炼技能也可以设定成降临或者死契，例如"骷髅法师+降临火墙3"表示有了降临火墙的骷髅法师，"独眼巨人+死契摧毁"表示有了死契摧毁的独眼巨人。</li>
-                        <li>设置了洗炼技能的卡牌默认15级，所以"凤凰+转生5"等同于"凤凰+转生5-15"。</li>
-                        <li>制作人：<a href="http://cnrdn.com/rd.htm?id=1344758&r=http%3A%2F%2Ftieba.baidu.com%2Fi%2F13567034%2Fprofile%3Ffrom%3D1v1" target="_blank">白白</a></li>
-                        <li>友情支持：<a href="http://cnrdn.com/rd.htm?id=1344758&r=http%3A%2F%2Ftieba.baidu.com%2Ff%3Fkw%3D%25C4%25A7%25BF%25A8%25BB%25C3%25CF%25EB%3Ffrom%3D1v1" target="_blank">魔卡幻想贴吧</a></li>
-                    </ul>
-                </div>
-            </div>
             <div data-role="collapsible" data-mini="true" data-collapsed="false" data-theme="c" data-content-theme="d">
                 <h3>设置双方阵容</h3>
                 <div id="attackFirst" data-mini="true" data-role="controlgroup" data-type="horizontal">
@@ -321,28 +293,14 @@
                 <ul>
                     <li><a href="#boss-battle" class="ui-btn-active ui-state-persist">魔神战</a></li>
                     <li><a href="#map-battle">地图战</a></li>
-                    <li><a href="#arena-battle">竞技场战</a></li>
+                    <li><a href="#arena-battle">竞技场</a></li>
+                    <li><a href="#communication">交流区</a></li>
+                    <li><a href="#help">帮助</a></li>
                 </ul>
             </div>
         </div>
 
         <div id="boss-battle-content" data-role="content">
-            <div data-role="collapsible" data-mini="true" data-content-theme="<%=dataContentTheme%>" data-collapsed-icon="info" data-theme="c"
-                data-expanded-icon="info">
-                <h3>点击查看帮助</h3>
-                <div id="help">
-                    <ul data-theme="c">
-                        <li>在下面的输入框里输入卡组符文的信息，卡牌与符文之间用逗号隔开，不要留多余的空格，例如： 金属巨龙,降临天使,冰封,永冻</li>
-                        <li>默认卡牌等级10级，符文等级4级，想要改变等级的话，在名称后面添加"-数字"。例如10级金属就是"金属巨龙-10"。</li>
-                        <li>重复添加同一个卡牌可以使用星号，例如"凤凰*5"表示5张10级凤凰，"凤凰-15*5"表示5张15级凤凰，注意符文不能重复。</li>
-                        <li>可以使用加号设置卡牌的洗炼技能，例如"凤凰+转生5-15*5"表示5张15级的转生5的凤凰。</li>
-                        <li>洗炼技能也可以设定成降临或者死契，例如"骷髅法师+降临火墙3"表示有了降临火墙的骷髅法师，"独眼巨人+死契摧毁"表示有了死契摧毁的独眼巨人。</li>
-                        <li>设置了洗炼技能的卡牌默认15级，所以"凤凰+转生5"等同于"凤凰+转生5-15"。</li>
-                        <li>制作人：<a href="http://cnrdn.com/rd.htm?id=1344758&r=http%3A%2F%2Ftieba.baidu.com%2Fi%2F13567034%2Fprofile%3Ffrom%3Dboss" target="_blank">白白</a></li>
-                        <li>友情支持：<a href="http://cnrdn.com/rd.htm?id=1344758&r=http%3A%2F%2Ftieba.baidu.com%2Ff%3Fkw%3D%25C4%25A7%25BF%25A8%25BB%25C3%25CF%25EB%3Ffrom%3Dboss" target="_blank">魔卡幻想贴吧</a></li>
-                    </ul>
-                </div>
-            </div>
             <div data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">
                 <h3>设置阵容</h3>
                 <div>
@@ -446,6 +404,71 @@
         </div>
     </div>
 
+    <div data-role="page" data-title="交流区" data-mini="true" id="communication">
+        <div data-role="header" data-id="navbar" data-position="fixed" data-theme="c">
+            <div data-role="navbar" data-theme="c">
+                <ul>
+                    <li><a href="#boss-battle">魔神战</a></li>
+                    <li><a href="#map-battle">地图战</a></li>
+                    <li><a href="#arena-battle">竞技场</a></li>
+                    <li><a href="#communication" class="ui-btn-active ui-state-persist">交流区</a></li>
+                    <li><a href="#help">帮助</a></li>
+                </ul>
+            </div>
+        </div>
+        <div data-role="content">
+            <div data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">
+                <h3>意见和建议</h3>
+                <div>
+                    <table class="form"><tr>
+                        <td>发送人:</td>
+                        <td><input type="text" name="feedback-sender" id="feedback-sender" maxlength="50" value="魔卡爱好者"/></td>
+                    </tr></table>
+                    <textarea id="feedback" name="feedback" placeholder="请在这里输入" maxlength="400"></textarea>
+                    <a id="feedback-button" class="battle-button" data-role="button" data-mini="true">提交</a>
+                    <div id="feedback-message"></div>
+                </div>
+             </div>
+        </div>
+    </div>
+    
+    <div data-role="page" data-title="帮助" data-mini="true" id="help">
+        <div data-role="header" data-id="navbar" data-position="fixed" data-theme="c">
+            <div data-role="navbar" data-theme="c">
+                <ul>
+                    <li><a href="#boss-battle">魔神战</a></li>
+                    <li><a href="#map-battle">地图战</a></li>
+                    <li><a href="#arena-battle">竞技场</a></li>
+                    <li><a href="#communication">交流区</a></li>
+                    <li><a href="#help" class="ui-btn-active ui-state-persist">帮助</a></li>
+                </ul>
+            </div>
+        </div>
+        <div data-role="content">
+            <div data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">
+                <h3>友情支持</h3>
+                <div id="help">
+                    <ul data-theme="c">
+                        <li><a href="http://cnrdn.com/rd.htm?id=1344758&r=http%3a%2f%2fwww.joyme.com%2fwiki%2fmkhx%2findex.shtml" target="_blank">魔卡幻想WIKI</a>
+                        <li><a href="http://cnrdn.com/rd.htm?id=1344758&r=http%3A%2F%2Ftieba.baidu.com%2Ff%3Fkw%3D%25C4%25A7%25BF%25A8%25BB%25C3%25CF%25EB" target="_blank">魔卡幻想贴吧</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">
+                <h3>手动输入卡组的方法</h3>
+                <div id="help">
+                    <ul data-theme="c">
+                        <li>在输入框里输入卡组符文的信息，卡牌与符文之间用逗号隔开，不要留多余的空格，例如： 金属巨龙,降临天使,冰封,永冻</li>
+                        <li>默认卡牌等级10级，符文等级4级，想要改变等级的话，在名称后面添加"-数字"。例如10级金属就是"金属巨龙-10"。</li>
+                        <li>重复添加同一个卡牌可以使用星号，例如"凤凰*5"表示5张10级凤凰，"凤凰-15*5"表示5张15级凤凰，注意符文不能重复。</li>
+                        <li>可以使用加号设置卡牌的洗炼技能，例如"凤凰+转生5-15*5"表示5张15级的转生5的凤凰。</li>
+                        <li>洗炼技能也可以设定成降临或者死契，例如"骷髅法师+降临火墙3"表示有了降临火墙的骷髅法师，"独眼巨人+死契摧毁"表示有了死契摧毁的独眼巨人。</li>
+                        <li>设置了洗炼技能的卡牌默认15级，所以"凤凰+转生5"等同于"凤凰+转生5-15"。</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div data-role="page" data-title="战场" data-mini="true" id="arena" class="fixed-width">
         <div data-role="header" data-theme="c" data-position="fixed">

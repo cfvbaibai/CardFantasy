@@ -23,8 +23,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import cfvbaibai.cardfantasy.GameUI;
-import cfvbaibai.cardfantasy.NonSerializableStrategy;
-import cfvbaibai.cardfantasy.PlayerJsonSerializer;
 import cfvbaibai.cardfantasy.data.Card;
 import cfvbaibai.cardfantasy.data.CardData;
 import cfvbaibai.cardfantasy.data.CardDataStore;
@@ -36,7 +34,6 @@ import cfvbaibai.cardfantasy.data.RuneData;
 import cfvbaibai.cardfantasy.engine.GameEndCause;
 import cfvbaibai.cardfantasy.engine.GameEngine;
 import cfvbaibai.cardfantasy.engine.GameResult;
-import cfvbaibai.cardfantasy.engine.Player;
 import cfvbaibai.cardfantasy.engine.Rule;
 import cfvbaibai.cardfantasy.game.DummyGameUI;
 import cfvbaibai.cardfantasy.game.GameResultStat;
@@ -52,22 +49,16 @@ import cfvbaibai.cardfantasy.web.animation.EntityDataRuntimeInfo;
 import cfvbaibai.cardfantasy.web.animation.FeatureTypeRuntimeInfo;
 import cfvbaibai.cardfantasy.web.animation.StructuredRecordGameUI;
 import cfvbaibai.cardfantasy.web.animation.WebPlainTextGameUI;
+import cfvbaibai.cardfantasy.web.beans.JsonHandler;
+import cfvbaibai.cardfantasy.web.beans.Logger;
 import cfvbaibai.cardfantasy.web.beans.UserAction;
 import cfvbaibai.cardfantasy.web.beans.UserActionRecorder;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-
 @Controller
 public class AutoBattleController {
-    private Gson gson;
-    public AutoBattleController() {
-        gson = new GsonBuilder()
-        .setExclusionStrategies(new NonSerializableStrategy())
-        .registerTypeAdapter(Player.class, new PlayerJsonSerializer())
-        .setPrettyPrinting()
-        .create();
-    }
+    
+    @Autowired
+    private JsonHandler jsonHandler;
     
     @Autowired
     private UserActionRecorder userActionRecorder;
@@ -75,33 +66,23 @@ public class AutoBattleController {
     @Autowired
     private MapStages maps;
     
+    @Autowired
+    private Logger logger;
+    
     @RequestMapping(value = "/")
     public ModelAndView home(HttpServletRequest request) {
         ModelAndView mv = new ModelAndView();
         mv.setViewName("home");
-        this.userActionRecorder.addAction(new UserAction(new Date(), request.getRemoteAddr(), "VisitHome", ""));
+        this.userActionRecorder.addAction(new UserAction(new Date(), request.getRemoteAddr(), "Visit Home", ""));
         return mv;
     }
 
-    private static void log(String message) {
-        String tid = String.valueOf(Thread.currentThread().getId());
-        String trace = "[" + Utils.getCurrentDateTime() + "][" + tid + "] " + message;
-        System.out.println(trace);
-    }
-
-    private static void logE(Exception e) {
-        String tid = String.valueOf(Thread.currentThread().getId());
-        System.err.print("[" + Utils.getCurrentDateTime() + "][" + tid + "]");
-        e.printStackTrace();
-        System.err.flush();
-    }
-
-    private static ResponseEntity<String> handleError(Exception e, boolean isJson) {
+    private ResponseEntity<String> handleError(Exception e, boolean isJson) {
         HttpHeaders responseHeaders = new HttpHeaders();
         responseHeaders.add("Content-Type", "text/html;charset=UTF-8");
         String errorMessage = Utils.getAllMessage(e);
-        log(errorMessage);
-        logE(e);
+        logger.info(errorMessage);
+        logger.error(e);
         String message = String.format("<font color='red'>%s<br />发生错误！<br />%s<br />",
                 getCurrentTime(), errorMessage);
         if (isJson) {
@@ -130,12 +111,12 @@ public class AutoBattleController {
             if (firstAttack != 0 && firstAttack != 1 && firstAttack != -1) {
                 throw new IllegalArgumentException("无效的先攻：" + firstAttack);
             }
-            log("PlayAuto1MatchGame from " + request.getRemoteAddr() + ":");
-            log("FirstAttack = " + firstAttack);
-            log("Lv1 = " + heroLv1 + ", Deck1 = " + deck1);
-            log("Lv2 = " + heroLv2 + ", Deck2 = " + deck2);
+            logger.info("PlayAuto1MatchGame from " + request.getRemoteAddr() + ":");
+            logger.info("FirstAttack = " + firstAttack);
+            logger.info("Lv1 = " + heroLv1 + ", Deck1 = " + deck1);
+            logger.info("Lv2 = " + heroLv2 + ", Deck2 = " + deck2);
             
-            this.userActionRecorder.addAction(new UserAction(new Date(), request.getRemoteAddr(), "PlayAuto1MatchGame",
+            this.userActionRecorder.addAction(new UserAction(new Date(), request.getRemoteAddr(), "Play Auto 1Match Game",
                     String.format("Deck1=%s<br />Deck2=%s<br />Lv1=%d, Lv2=%d, FirstAttack=%d",
                             deck1, deck2, heroLv1, heroLv2, firstAttack)));
             
@@ -146,7 +127,7 @@ public class AutoBattleController {
             engine.RegisterPlayers(player1, player2);
             GameResult gameResult = engine.playGame();
             String result = getCurrentTime() + "<br />" + ui.getAllText();
-            log("Winner: " + gameResult.getWinner().getId());
+            logger.info("Winner: " + gameResult.getWinner().getId());
             return new ResponseEntity<String>(result, responseHeaders, HttpStatus.CREATED);
         } catch (Exception e) {
             return handleError(e, false);
@@ -165,12 +146,12 @@ public class AutoBattleController {
             if (firstAttack != 0 && firstAttack != 1 && firstAttack != -1) {
                 throw new IllegalArgumentException("无效的先攻：" + firstAttack);
             }
-            log("SimulateAuto1MatchGame from " + request.getRemoteAddr() + ":");
-            log("FirstAttack = " + firstAttack);
-            log("Lv1 = " + heroLv1 + ", Deck1 = " + deck1);
-            log("Lv2 = " + heroLv2 + ", Deck2 = " + deck2);
+            logger.info("SimulateAuto1MatchGame from " + request.getRemoteAddr() + ":");
+            logger.info("FirstAttack = " + firstAttack);
+            logger.info("Lv1 = " + heroLv1 + ", Deck1 = " + deck1);
+            logger.info("Lv2 = " + heroLv2 + ", Deck2 = " + deck2);
             
-            this.userActionRecorder.addAction(new UserAction(new Date(), request.getRemoteAddr(), "SimulateAuto1MatchGame",
+            this.userActionRecorder.addAction(new UserAction(new Date(), request.getRemoteAddr(), "Simulate Auto 1Match Game",
                     String.format("Deck1=%s<br />Deck2=%s<br />Lv1=%d, Lv2=%d, FirstAttack=%d",
                             deck1, deck2, heroLv1, heroLv2, firstAttack)));
             
@@ -181,8 +162,8 @@ public class AutoBattleController {
             engine.RegisterPlayers(player1, player2);
             GameResult gameResult = engine.playGame();
             BattleRecord record = ui.getRecord();
-            String result = gson.toJson(record);
-            log("Winner: " + gameResult.getWinner().getId());
+            String result = jsonHandler.toJson(record);
+            logger.info("Winner: " + gameResult.getWinner().getId());
             return new ResponseEntity<String>(result, responseHeaders, HttpStatus.CREATED);
         } catch (Exception e) {
             return handleError(e, true);
@@ -200,13 +181,13 @@ public class AutoBattleController {
             if (firstAttack != 0 && firstAttack != 1 && firstAttack != -1) {
                 throw new IllegalArgumentException("无效的先攻：" + firstAttack);
             }
-            log("PlayAutoMassiveGame from " + request.getRemoteAddr() + ":");
-            log("Count = " + count);
-            log("FirstAttack = " + firstAttack);
-            log("Lv1 = " + heroLv1 + ", Deck1 = " + deck1);
-            log("Lv2 = " + heroLv2 + ", Deck2 = " + deck2);
+            logger.info("PlayAutoMassiveGame from " + request.getRemoteAddr() + ":");
+            logger.info("Count = " + count);
+            logger.info("FirstAttack = " + firstAttack);
+            logger.info("Lv1 = " + heroLv1 + ", Deck1 = " + deck1);
+            logger.info("Lv2 = " + heroLv2 + ", Deck2 = " + deck2);
             
-            this.userActionRecorder.addAction(new UserAction(new Date(), request.getRemoteAddr(), "PlayAutoMassiveGame",
+            this.userActionRecorder.addAction(new UserAction(new Date(), request.getRemoteAddr(), "Play Auto Massive Game",
                     String.format("Deck1=%s<br />Deck2=%s<br />Lv1=%d, Lv2=%d, FirstAttack=%d, Count=%d",
                             deck1, deck2, heroLv1, heroLv2, firstAttack, count)));
             PlayerInfo player1 = PlayerBuilder.build("玩家1", deck1, heroLv1);
@@ -219,7 +200,7 @@ public class AutoBattleController {
             result.append("<tr><td>玩家1获胜: </td><td>" + stat.getP1Win() + "</td></tr>");
             result.append("<tr><td>玩家2获胜: </td><td>" + stat.getP2Win() + "</td></tr>");
             result.append("</table>");
-            log("TO:P1:P2 = " + stat.getTimeoutCount() + ":" + stat.getP1Win() + ":" + stat.getP2Win());
+            logger.info("TO:P1:P2 = " + stat.getTimeoutCount() + ":" + stat.getP1Win() + ":" + stat.getP2Win());
             return new ResponseEntity<String>(result.toString(), responseHeaders, HttpStatus.CREATED);
         } catch (Exception e) {
             return handleError(e, false);
@@ -234,10 +215,10 @@ public class AutoBattleController {
         responseHeaders.add("Content-Type", "text/html;charset=UTF-8");
         try {
             checkWebsiteStatus();
-            log("PlayBoss1MatchGame from " + request.getRemoteAddr() + ":");
-            log("Deck = " + deck);
-            log("Hero LV = " + heroLv + ", Boss = " + bossName);
-            this.userActionRecorder.addAction(new UserAction(new Date(), request.getRemoteAddr(), "PlayBoss1MatchGame",
+            logger.info("PlayBoss1MatchGame from " + request.getRemoteAddr() + ":");
+            logger.info("Deck = " + deck);
+            logger.info("Hero LV = " + heroLv + ", Boss = " + bossName);
+            this.userActionRecorder.addAction(new UserAction(new Date(), request.getRemoteAddr(), "Play Boss 1Match Game",
                     String.format("Deck=%s<br />HeroLV=%d, Boss=%s", deck, heroLv, bossName)));
             PlayerInfo player1 = PlayerBuilder.build("BOSS", bossName, 99999, null);
             PlayerInfo player2 = PlayerBuilder.build("玩家", deck, heroLv, new Legion(buffKingdom, buffForest,
@@ -247,7 +228,7 @@ public class AutoBattleController {
             engine.RegisterPlayers(player1, player2);
             GameResult gameResult = engine.playGame();
             String result = getCurrentTime() + "<br />" + ui.getAllText();
-            log("Winner: " + gameResult.getWinner().getId() + ", Damage to boss: " + gameResult.getDamageToBoss());
+            logger.info("Winner: " + gameResult.getWinner().getId() + ", Damage to boss: " + gameResult.getDamageToBoss());
             return new ResponseEntity<String>(result, responseHeaders, HttpStatus.CREATED);
         } catch (Exception e) {
             return handleError(e, false);
@@ -263,10 +244,10 @@ public class AutoBattleController {
         responseHeaders.add("Charset", "UTF-8");
         try {
             checkWebsiteStatus();
-            log("SimulateBoss1MatchGame from " + request.getRemoteAddr() + ":");
-            log("Deck = " + deck);
-            log("Hero LV = " + heroLv + ", Boss = " + bossName);
-            this.userActionRecorder.addAction(new UserAction(new Date(), request.getRemoteAddr(), "SimulateBoss1MatchGame",
+            logger.info("SimulateBoss1MatchGame from " + request.getRemoteAddr() + ":");
+            logger.info("Deck = " + deck);
+            logger.info("Hero LV = " + heroLv + ", Boss = " + bossName);
+            this.userActionRecorder.addAction(new UserAction(new Date(), request.getRemoteAddr(), "Simulate Boss 1Match Game",
                     String.format("Deck=%s<br />HeroLV=%d, Boss=%s", deck, heroLv, bossName)));
             PlayerInfo player1 = PlayerBuilder.build("BOSS", bossName, 99999, null);
             PlayerInfo player2 = PlayerBuilder.build("玩家", deck, heroLv, new Legion(buffKingdom, buffForest,
@@ -276,8 +257,8 @@ public class AutoBattleController {
             engine.RegisterPlayers(player1, player2);
             GameResult gameResult = engine.playGame();
             BattleRecord record = ui.getRecord();
-            String result = gson.toJson(record);
-            log("Winner: " + gameResult.getWinner().getId() + ", Damage to boss: " + gameResult.getDamageToBoss());
+            String result = jsonHandler.toJson(record);
+            logger.info("Winner: " + gameResult.getWinner().getId() + ", Damage to boss: " + gameResult.getDamageToBoss());
             return new ResponseEntity<String>(result, responseHeaders, HttpStatus.CREATED);
         } catch (Exception e) {
             return handleError(e, true);
@@ -293,10 +274,10 @@ public class AutoBattleController {
         responseHeaders.add("Content-Type", "text/html;charset=UTF-8");
         try {
             checkWebsiteStatus();
-            log("PlayBossMassiveGame from " + request.getRemoteAddr() + ":");
-            log("Deck = " + deck);
-            log("Count = " + count + ", Hero LV = " + heroLv + ", Boss = " + bossName);
-            this.userActionRecorder.addAction(new UserAction(new Date(), request.getRemoteAddr(), "PlayBossMassiveGame",
+            logger.info("PlayBossMassiveGame from " + request.getRemoteAddr() + ":");
+            logger.info("Deck = " + deck);
+            logger.info("Count = " + count + ", Hero LV = " + heroLv + ", Boss = " + bossName);
+            this.userActionRecorder.addAction(new UserAction(new Date(), request.getRemoteAddr(), "Play Boss Massive Game",
                     String.format("Deck=%s<br />HeroLV=%d, Boss=%s, Count=%d", deck, heroLv, bossName, count)));
             PlayerInfo player1 = PlayerBuilder.build("BOSS", bossName, 99999, null);
             PlayerInfo player2 = PlayerBuilder.build("玩家", deck, heroLv, new Legion(buffKingdom, buffForest,
@@ -357,7 +338,7 @@ public class AutoBattleController {
             }
             result.append("</table></td></tr>");
             result.append("</table>");
-            log("Average damage to boss: " + averageDamageToBoss);
+            logger.info("Average damage to boss: " + averageDamageToBoss);
             return new ResponseEntity<String>(result.toString(), responseHeaders, HttpStatus.CREATED);
         } catch (Exception e) {
             return handleError(e, false);
@@ -371,17 +352,17 @@ public class AutoBattleController {
         responseHeaders.add("Content-Type", "text/html;charset=UTF-8");
         try {
             checkWebsiteStatus();
-            log("PlayMap1MatchGame from " + request.getRemoteAddr() + ":");
-            log("Deck = " + deck);
-            log("Hero LV = " + heroLv + ", Map = " + map);
-            this.userActionRecorder.addAction(new UserAction(new Date(), request.getRemoteAddr(), "PlayMap1MatchGame",
+            logger.info("PlayMap1MatchGame from " + request.getRemoteAddr() + ":");
+            logger.info("Deck = " + deck);
+            logger.info("Hero LV = " + heroLv + ", Map = " + map);
+            this.userActionRecorder.addAction(new UserAction(new Date(), request.getRemoteAddr(), "Play Map 1Match Game",
                     String.format("Deck=%s<br />HeroLV=%d, Map=%s", deck, heroLv, map)));
             PlayerInfo player = PlayerBuilder.build("玩家", deck, heroLv);
             WebPlainTextGameUI ui = new WebPlainTextGameUI();
             PveEngine engine = new PveEngine(ui, Rule.getDefault(), this.maps);
             PveGameResult gameResult = engine.play(player, map);
             String result = getCurrentTime() + "<br />" + ui.getAllText();
-            log("Result: " + gameResult.name());
+            logger.info("Result: " + gameResult.name());
             return new ResponseEntity<String>(result, responseHeaders, HttpStatus.CREATED);
         } catch (Exception e) {
             return handleError(e, false);
@@ -397,18 +378,18 @@ public class AutoBattleController {
         responseHeaders.add("Charset", "UTF-8");
         try {
             checkWebsiteStatus();
-            log("SimulateMap1MatchGame from " + request.getRemoteAddr() + ":");
-            log("Deck = " + deck);
-            log("Hero LV = " + heroLv + ", Map = " + map);
-            this.userActionRecorder.addAction(new UserAction(new Date(), request.getRemoteAddr(), "SimulateMap1MatchGame",
+            logger.info("SimulateMap1MatchGame from " + request.getRemoteAddr() + ":");
+            logger.info("Deck = " + deck);
+            logger.info("Hero LV = " + heroLv + ", Map = " + map);
+            this.userActionRecorder.addAction(new UserAction(new Date(), request.getRemoteAddr(), "Simulate Map 1Match Game",
                     String.format("Deck=%s<br />HeroLV=%d, Map=%s", deck, heroLv, map)));
             PlayerInfo player = PlayerBuilder.build("玩家", deck, heroLv);
             StructuredRecordGameUI ui = new StructuredRecordGameUI();
             PveEngine engine = new PveEngine(ui, Rule.getDefault(), this.maps);
             PveGameResult gameResult = engine.play(player, map);
             BattleRecord record = ui.getRecord();
-            String result = gson.toJson(record);
-            log("Result: " + gameResult.name());
+            String result = jsonHandler.toJson(record);
+            logger.info("Result: " + gameResult.name());
             return new ResponseEntity<String>(result, responseHeaders, HttpStatus.CREATED);
         } catch (Exception e) {
             return handleError(e, true);
@@ -422,11 +403,11 @@ public class AutoBattleController {
         responseHeaders.add("Content-Type", "text/html;charset=UTF-8");
         try {
             checkWebsiteStatus();
-            log("PlayMapMassiveGame from " + request.getRemoteAddr() + ":");
-            log(String.format("Lv = %d, Map = %s, Count = %d", heroLv, map, count));
-            log("Deck = " + deck);
+            logger.info("PlayMapMassiveGame from " + request.getRemoteAddr() + ":");
+            logger.info(String.format("Lv = %d, Map = %s, Count = %d", heroLv, map, count));
+            logger.info("Deck = " + deck);
             
-            this.userActionRecorder.addAction(new UserAction(new Date(), request.getRemoteAddr(), "PlayMapMassiveGame",
+            this.userActionRecorder.addAction(new UserAction(new Date(), request.getRemoteAddr(), "Play Map Massive Game",
                     String.format("Deck=%s<br />Lv=%d, Count=%d, Map=%s",
                             deck, heroLv, count, map)));
             PveEngine engine = new PveEngine(new DummyGameUI(), Rule.getDefault(), this.maps);
@@ -440,7 +421,7 @@ public class AutoBattleController {
                         gameResult.getDescription(), stat.getStat(gameResult)));
             }
             result.append("</table>");
-            log(String.format("TO:LO:BW:AW:UN = %d:%d:%d:%d:%d",
+            logger.info(String.format("TO:LO:BW:AW:UN = %d:%d:%d:%d:%d",
                     stat.getStat(PveGameResult.TIMEOUT),
                     stat.getStat(PveGameResult.LOSE),
                     stat.getStat(PveGameResult.BASIC_WIN),
@@ -474,7 +455,7 @@ public class AutoBattleController {
             HttpHeaders responseHeaders = new HttpHeaders();
             responseHeaders.add("Content-Type", "application/json;charset=UTF-8");
             responseHeaders.add("Charset", "UTF-8");
-            log("Getting card data store...");
+            logger.info("Getting card data store...");
             CardDataStore store = CardDataStore.loadDefault();
             Map <String, Object> result = new HashMap <String, Object>();
             List<EntityDataRuntimeInfo> entities = new ArrayList<EntityDataRuntimeInfo>();
@@ -502,7 +483,7 @@ public class AutoBattleController {
                 }
             });
             result.put("features", featureList);
-            String jsonResult = gson.toJson(result);
+            String jsonResult = jsonHandler.toJson(result);
             return new ResponseEntity<String>(jsonResult, responseHeaders, HttpStatus.CREATED);
         } catch (Exception e) {
             return handleError(e, true);
@@ -512,7 +493,7 @@ public class AutoBattleController {
     @RequestMapping(value = "/GetMapVictoryCondition", headers = "Accept=application/json")
     public ResponseEntity<String> getMapVictoryCondition(HttpServletRequest request, @RequestParam("map") String map) {
         try {
-            log("Getting map victory condition: " + map);
+            logger.info("Getting map victory condition: " + map);
             HttpHeaders responseHeaders = new HttpHeaders();
             responseHeaders.add("Content-Type", "application/json;charset=UTF-8");
             responseHeaders.add("Charset", "UTF-8");
@@ -523,7 +504,7 @@ public class AutoBattleController {
             } else {
                 condition = mapInfo.getCondition().getDescription();
             }
-            String result = gson.toJson(condition);
+            String result = jsonHandler.toJson(condition);
             return new ResponseEntity<String>(result, responseHeaders, HttpStatus.CREATED);
         } catch (Exception e) {
             return handleError(e, true);

@@ -13,8 +13,10 @@
 
 CardFantasy = {};
 
+CardFantasy.Core = {};
+
 // OUTERMOST IIFE
-(function() {
+(function(Core) {
 
 var sendRequest = function(url, postData, outputDivId, isJson) {
     var buttons = $('a.battle-button');
@@ -48,7 +50,7 @@ var sendRequest = function(url, postData, outputDivId, isJson) {
     });
 };
 
-var playAutoGame = function(count) {
+Core.playAutoGame = function(count) {
     var deck1 = $('#deck1').val().trim();
     var deck2 = $('#deck2').val().trim();
     var heroLv1 = $('#hero1Lv').val();
@@ -82,7 +84,7 @@ var playAutoGame = function(count) {
     sendRequest(url, postData, 'battle-output', isJson);
 };
 
-var playBossGame = function(count) {
+Core.playBossGame = function(count) {
     var deck = $('#deck').val().trim();
     var heroLv = $('#heroLv').val();
     var bossName = $('#boss-name').val();
@@ -118,7 +120,7 @@ var playBossGame = function(count) {
     sendRequest(url, postData, 'boss-battle-output', isJson);
 };
 
-var playMapGame = function(count) {
+Core.playMapGame = function(count) {
     var deck = $('#map-deck').val().trim();
     var heroLv = $('#map-hero-lv').val();
     var map = getMap();
@@ -144,6 +146,14 @@ var playMapGame = function(count) {
         $.get('http://cnrdn.com/rd.htm?id=1344758&r=PlayMapMassiveGame&seed=' + seed, function(data) { console.log('PlayMapMassiveGame'); });
     }
     sendRequest(url, postData, 'map-battle-output', isJson);
+};
+
+Core.sendFeedback = function() {
+    var sender = $('#feedback-sender').val().trim();
+    var feedback = $('#feedback').val().trim();
+    var postData = { feedback: feedback, sender: sender };
+    $.get('http://cnrdn.com/rd.htm?id=1344758&r=SendFeedback&seed=' + seed, function(data) { console.log('SendFeedback'); });
+    sendRequest('SendFeedback', postData, 'feedback-message', false);
 };
 
 var getMap = function() {
@@ -177,9 +187,9 @@ $(document)
             }
         })();
     }
-    $('#play-map-1-game-button').click(function (e, ui) { playMapGame(1); });
-    $('#simulate-map-1-game-button').click(function (e, ui) { playMapGame(-1); });
-    $('#play-map-massive-game-button').click(function (e, ui) { playMapGame(1000); });
+    $('#play-map-1-game-button').attr('href', 'javascript:CardFantasy.Core.playMapGame(1);');
+    $('#simulate-map-1-game-button').attr('href', 'javascript:CardFantasy.Core.playMapGame(-1);');
+    $('#play-map-massive-game-button').attr('href', 'javascript:CardFantasy.Core.playMapGame(1000);');
     
     var showVictoryCondition = function() {
         var map = getMap();
@@ -210,9 +220,9 @@ $(document)
         if (data.bs) { $('#buff-savage').val(data.bs); }
         if (data.bh) { $('#buff-hell').val(data.bh); }
     }
-    $('#play-boss-1-game-button').click(function (e, ui) { playBossGame(1); });
-    $('#simulate-boss-1-game-button').click(function (e, ui) { playBossGame(-1); });
-    $('#play-boss-massive-game-button').click(function (e, ui) { playBossGame(1000); });
+    $('#play-boss-1-game-button').attr('href', 'javascript:CardFantasy.Core.playBossGame(1);');
+    $('#simulate-boss-1-game-button').attr('href', 'javascript:CardFantasy.Core.playBossGame(-1);');
+    $('#play-boss-massive-game-button').attr('href', 'javascript:CardFantasy.Core.playBossGame(1000);');
 })
 .on("pageinit", "#arena-battle", function(event) {
     var dataText = $.cookie('arena-battle');
@@ -223,10 +233,13 @@ $(document)
         if (data.hlv1) { $('#hero1Lv').val(data.hlv1); }
         if (data.hlv2) { $('#hero2Lv').val(data.hlv2); }
     }
-    $('#play-auto-1-game-button').click(function (e, ui) { playAutoGame(1); });
-    $('#simulate-auto-1-game-button').click(function (e, ui) { playAutoGame(-1); });
-    $('#play-auto-massive-game-button').click(function (e, ui) { playAutoGame(1000); });
+    $('#play-auto-1-game-button').attr('href', 'javascript:CardFantasy.Core.playAutoGame(1);');
+    $('#simulate-auto-1-game-button').attr('href', 'javascript:CardFantasy.Core.playAutoGame(-1);');
+    $('#play-auto-massive-game-button').attr('href', 'javascript:CardFantasy.Core.playAutoGame(1000);');
+})
+.on("pageinit", "#communication", function(event) {
+    $('#feedback-button').attr('href', 'javascript:CardFantasy.Core.sendFeedback();');
 });
 
 // END OF OUTERMOST IIFE
-})();
+})(CardFantasy.Core);

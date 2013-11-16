@@ -31,11 +31,17 @@ public class SiteMonitorController {
         try {
             PrintWriter writer = response.getWriter();
             writer.println("<html>");
-            writer.println("<head><style>td { font-size: 7pt; font-family: 微软雅黑, Calibri, Consolas, Tahoma, Arial; }</style></head>");
+            writer.println("<head>");
+            writer.println("<style>td { font-size: 7pt; font-family: 微软雅黑, Calibri, Consolas, Tahoma, Arial; }</style>");
+            writer.println("<meta name='viewport' content='width=device-width, initial-scale=1'>");
+            writer.println("</head>");
             writer.println("<body>");
-            writer.println("<table width='100%' border='1'><tr><td>TimeStamp</td><td>User</td><td>Action</td><td>Content</td></tr>");
+            writer.println("<table width='100%' border='0' cellspacing='1' bgcolor='#AAAAFF'>");
+            writer.println("<tr bgcolor='blue' style='color: white; font-weight: bold; text-align: center'>");
+            writer.println("<td>TimeStamp</td><td>User</td><td>Action</td><td>Content</td></tr>");
+            
             for (UserAction action : userActionRecorder.getAllActions()) {
-                String line = String.format("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>",
+                String line = String.format("<tr bgcolor='white'><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>",
                         Utils.toString(action.getTimeStamp()), action.getUserId(), action.getActionType(), action.getActionContent());
                 writer.print(line);
             }
@@ -45,6 +51,5 @@ public class SiteMonitorController {
             System.err.println("Cannot get writer...");
             e.printStackTrace();
         }
-        
     }
 }

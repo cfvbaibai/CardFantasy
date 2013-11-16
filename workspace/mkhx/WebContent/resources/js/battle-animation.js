@@ -116,7 +116,7 @@ var CfPos = function(attr) {
 
 var ArenaSettings = function() {
     this.fontSizeFactor = $.browser.webkit ? 1 : 1.4;
-    this.maxWidth = 420;
+    this.maxWidth = 447;
     this.heightRate = 1.2;
     this.width = this.maxWidth;
     this.height = this.width * this.heightRate;
@@ -272,7 +272,7 @@ var ArenaSettings = function() {
     this.player1HpRectY = 0;
 
     this.refreshSize = function () {
-        var currentWidth = $(window).width() * 0.8;
+        var currentWidth = $(window).width() * 0.9;
         if (currentWidth > this.maxWidth) { currentWidth = this.maxWidth; }
         var currentHeight = currentWidth * this.heightRate;
         this.width = currentWidth;
@@ -2135,7 +2135,7 @@ var Animater = function() {
         settings.refreshSize();
         this.clearAnimations();
         this.time = this.initTime;
-        $('#battle-canvas').width(this.width).height(this.height);
+        $('#battle-canvas').width(settings.width).height(settings.height);
         this.stage = new Kinetic.Stage({
             container : 'battle-canvas',
             width : settings.width,
@@ -2202,7 +2202,7 @@ var refreshPlayStatus = function() {
     $('#player-status').text(text);
 };
 
-var togglePlayButton = function() {
+BattleAnimation.togglePlayButton = function() {
     if (animater.playing) {
         animater.playing = false;
         animater.pauseAnimations();
@@ -2213,12 +2213,12 @@ var togglePlayButton = function() {
     refreshPlayStatus();
 };
 
-var faster = function() {
+BattleAnimation.faster = function() {
     animater.increaseSpeed();
     refreshPlayStatus();
 };
 
-var slower = function() {
+BattleAnimation.slower = function() {
     animater.decreaseSpeed();
     refreshPlayStatus();
 };
@@ -2235,9 +2235,9 @@ BattleAnimation.showBattle = function(data) {
 $(document)
 .on("pageinit", "#arena", function(event) {
     animater = new Animater();
-    $('#play-button').click(function (e, ui) { togglePlayButton(); });
-    $('#faster-button').click(function (e, ui) { faster(); });
-    $('#slower-button').click(function (e, ui) { slower(); });
+    $('#play-button').attr('href', 'javascript:CardFantasy.BattleAnimation.togglePlayButton();');
+    $('#faster-button').attr('href', 'javascript:CardFantasy.BattleAnimation.faster();');
+    $('#slower-button').attr('href', 'javascript:CardFantasy.BattleAnimation.slower();');
 });
 
 // END OF OUTERMOST IIFE

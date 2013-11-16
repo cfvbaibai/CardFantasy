@@ -90,11 +90,15 @@ fieldset div.ui-controlgroup-controls .ui-select {
 	position: relative;
 }
 
+.ui-dialog-contain > .ui-content {
+	padding: 1px;
+}
+
 .fixed-width .ui-dialog-contain {
 	max-width: 450px;
 }
 
-#battle-canvas {
+div#battle-canvas canvas{
 	margin-left: auto;
 	margin-right: auto;
 }
@@ -135,6 +139,10 @@ div#deck-chooser div.candidate {
 	HEIGHT: 100px;
 	OVERFLOW: auto;
 	BORDER: solid 1px #CCCCCC;
+}
+
+div#communication textarea {
+	height: 200px;
 }
 
 div#card-details div.entity-basic-info {

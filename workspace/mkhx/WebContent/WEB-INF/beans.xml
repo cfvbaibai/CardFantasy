@@ -15,6 +15,8 @@
         <property name="suffix" value=".jsp" />
     </bean>
     <bean class="cfvbaibai.cardfantasy.web.beans.UserActionRecorder" />
+    <bean class="cfvbaibai.cardfantasy.web.beans.JsonHandler" />
+    <bean class="cfvbaibai.cardfantasy.web.beans.Logger" />
     <bean class="cfvbaibai.cardfantasy.game.MapStages" />
     <!-- also add the following beans to get rid of some exceptions -->
     <!-- Need a way to get rid of the deprecated warnings -->
