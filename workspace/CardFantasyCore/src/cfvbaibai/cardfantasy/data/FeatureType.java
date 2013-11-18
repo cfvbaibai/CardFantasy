@@ -105,7 +105,7 @@ public enum FeatureType {
     摧毁("31332", 0, FeatureTag.即死),
 
     封印("31157", 0, FeatureTag.陷阱),
-    血炼("31136", 20),
+    血炼("31136", 20, FeatureTag.魔法),
     天谴("31137", 20),
     聚能护甲("31738", 50, FeatureTag.不可洗炼),
     群体护甲("31607", 30, FeatureTag.不可洗炼),
