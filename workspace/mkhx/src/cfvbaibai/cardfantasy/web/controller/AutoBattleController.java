@@ -1,5 +1,7 @@
 ﻿package cfvbaibai.cardfantasy.web.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.text.Collator;
 import java.text.DateFormat;
 import java.util.ArrayList;
@@ -12,11 +14,9 @@ import java.util.Locale;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -77,9 +77,7 @@ public class AutoBattleController {
         return mv;
     }
 
-    private ResponseEntity<String> handleError(Exception e, boolean isJson) {
-        HttpHeaders responseHeaders = new HttpHeaders();
-        responseHeaders.add("Content-Type", "text/html;charset=UTF-8");
+    private String handleError(Exception e, boolean isJson) {
         String errorMessage = Utils.getAllMessage(e);
         logger.info(errorMessage);
         logger.error(e);
@@ -88,7 +86,7 @@ public class AutoBattleController {
         if (isJson) {
             message = "{ \"error\": true, \"message\": \"" + message + "\" }";
         }
-        return new ResponseEntity<String>(message, responseHeaders, HttpStatus.CREATED);
+        return message;
     }
 
     private static GameResultStat play(PlayerInfo p1, PlayerInfo p2, int count, Rule rule) {
@@ -101,13 +99,12 @@ public class AutoBattleController {
     }
 
     @RequestMapping(value = "/PlayAuto1MatchGame")
-    public ResponseEntity<String> playAuto1MatchGame(HttpServletRequest request, @RequestParam("deck1") String deck1,
+    public void playAuto1MatchGame(HttpServletRequest request, HttpServletResponse response,
+            @RequestParam("deck1") String deck1,
             @RequestParam("deck2") String deck2, @RequestParam("hlv1") int heroLv1, @RequestParam("hlv2") int heroLv2,
-            @RequestParam("firstAttack") int firstAttack) {
-        HttpHeaders responseHeaders = new HttpHeaders();
-        responseHeaders.add("Content-Type", "text/html;charset=UTF-8");
+            @RequestParam("firstAttack") int firstAttack) throws IOException {
+        PrintWriter writer = response.getWriter();
         try {
-            checkWebsiteStatus();
             if (firstAttack != 0 && firstAttack != 1 && firstAttack != -1) {
                 throw new IllegalArgumentException("无效的先攻：" + firstAttack);
             }
@@ -126,23 +123,21 @@ public class AutoBattleController {
             GameEngine engine = new GameEngine(ui, new Rule(5, 999, firstAttack, false));
             engine.RegisterPlayers(player1, player2);
             GameResult gameResult = engine.playGame();
-            String result = getCurrentTime() + "<br />" + ui.getAllText();
+            writer.print(getCurrentTime() + "<br />" + ui.getAllText());
             logger.info("Winner: " + gameResult.getWinner().getId());
-            return new ResponseEntity<String>(result, responseHeaders, HttpStatus.CREATED);
         } catch (Exception e) {
-            return handleError(e, false);
+            writer.print(handleError(e, false));
         }
     }
 
     @RequestMapping(value = "/SimAuto1MatchGame", headers = "Accept=application/json")
-    public ResponseEntity<String> simulateAuto1MatchGame(HttpServletRequest request, @RequestParam("deck1") String deck1,
+    public void simulateAuto1MatchGame(HttpServletRequest request, HttpServletResponse response,
+            @RequestParam("deck1") String deck1,
             @RequestParam("deck2") String deck2, @RequestParam("hlv1") int heroLv1, @RequestParam("hlv2") int heroLv2,
-            @RequestParam("firstAttack") int firstAttack) {
-        HttpHeaders responseHeaders = new HttpHeaders();
-        responseHeaders.add("Content-Type", "application/json;charset=UTF-8");
-        responseHeaders.add("Charset", "UTF-8");
+            @RequestParam("firstAttack") int firstAttack) throws IOException {
+        PrintWriter writer = response.getWriter();
+        response.setContentType("application/json");
         try {
-            checkWebsiteStatus();
             if (firstAttack != 0 && firstAttack != 1 && firstAttack != -1) {
                 throw new IllegalArgumentException("无效的先攻：" + firstAttack);
             }
@@ -162,22 +157,20 @@ public class AutoBattleController {
             engine.RegisterPlayers(player1, player2);
             GameResult gameResult = engine.playGame();
             BattleRecord record = ui.getRecord();
-            String result = jsonHandler.toJson(record);
+            writer.print(jsonHandler.toJson(record));
             logger.info("Winner: " + gameResult.getWinner().getId());
-            return new ResponseEntity<String>(result, responseHeaders, HttpStatus.CREATED);
         } catch (Exception e) {
-            return handleError(e, true);
+            writer.print(handleError(e, true));
         }
     }
     
     @RequestMapping(value = "/PlayAutoMassiveGame")
-    public ResponseEntity<String> playAutoMassiveGame(HttpServletRequest request, @RequestParam("deck1") String deck1,
+    public void playAutoMassiveGame(HttpServletRequest request, HttpServletResponse response,
+            @RequestParam("deck1") String deck1,
             @RequestParam("deck2") String deck2, @RequestParam("hlv1") int heroLv1, @RequestParam("hlv2") int heroLv2,
-            @RequestParam("firstAttack") int firstAttack, @RequestParam("count") int count) {
-        HttpHeaders responseHeaders = new HttpHeaders();
-        responseHeaders.add("Content-Type", "text/html;charset=UTF-8");
+            @RequestParam("firstAttack") int firstAttack, @RequestParam("count") int count) throws IOException {
+        PrintWriter writer = response.getWriter();
         try {
-            checkWebsiteStatus();
             if (firstAttack != 0 && firstAttack != 1 && firstAttack != -1) {
                 throw new IllegalArgumentException("无效的先攻：" + firstAttack);
             }
@@ -193,28 +186,25 @@ public class AutoBattleController {
             PlayerInfo player1 = PlayerBuilder.build("玩家1", deck1, heroLv1);
             PlayerInfo player2 = PlayerBuilder.build("玩家2", deck2, heroLv2);
             GameResultStat stat = play(player1, player2, count, new Rule(5, 999, firstAttack, false));
-            StringBuffer result = new StringBuffer();
-            result.append(getCurrentTime() + "<br />");
-            result.append("<table>");
-            result.append("<tr><td>超时: </td><td>" + stat.getTimeoutCount() + "</td></tr>");
-            result.append("<tr><td>玩家1获胜: </td><td>" + stat.getP1Win() + "</td></tr>");
-            result.append("<tr><td>玩家2获胜: </td><td>" + stat.getP2Win() + "</td></tr>");
-            result.append("</table>");
+            writer.append(getCurrentTime() + "<br />");
+            writer.append("<table>");
+            writer.append("<tr><td>超时: </td><td>" + stat.getTimeoutCount() + "</td></tr>");
+            writer.append("<tr><td>玩家1获胜: </td><td>" + stat.getP1Win() + "</td></tr>");
+            writer.append("<tr><td>玩家2获胜: </td><td>" + stat.getP2Win() + "</td></tr>");
+            writer.append("</table>");
             logger.info("TO:P1:P2 = " + stat.getTimeoutCount() + ":" + stat.getP1Win() + ":" + stat.getP2Win());
-            return new ResponseEntity<String>(result.toString(), responseHeaders, HttpStatus.CREATED);
         } catch (Exception e) {
-            return handleError(e, false);
+            writer.print(handleError(e, false));
         }
     }
     
     @RequestMapping(value = "/PlayBoss1MatchGame")
-    public ResponseEntity<String> playBoss1MatchGame(HttpServletRequest request, @RequestParam("deck") String deck,
+    public void playBoss1MatchGame(HttpServletRequest request, HttpServletResponse response,
+            @RequestParam("deck") String deck,
             @RequestParam("hlv") int heroLv, @RequestParam("bn") String bossName, @RequestParam("bk") int buffKingdom,
-            @RequestParam("bf") int buffForest, @RequestParam("bs") int buffSavage, @RequestParam("bh") int buffHell) {
-        HttpHeaders responseHeaders = new HttpHeaders();
-        responseHeaders.add("Content-Type", "text/html;charset=UTF-8");
+            @RequestParam("bf") int buffForest, @RequestParam("bs") int buffSavage, @RequestParam("bh") int buffHell) throws IOException {
+        PrintWriter writer = response.getWriter();
         try {
-            checkWebsiteStatus();
             logger.info("PlayBoss1MatchGame from " + request.getRemoteAddr() + ":");
             logger.info("Deck = " + deck);
             logger.info("Hero LV = " + heroLv + ", Boss = " + bossName);
@@ -227,23 +217,21 @@ public class AutoBattleController {
             GameEngine engine = new GameEngine(ui, Rule.getBossBattle());
             engine.RegisterPlayers(player1, player2);
             GameResult gameResult = engine.playGame();
-            String result = getCurrentTime() + "<br />" + ui.getAllText();
+            writer.print(getCurrentTime() + "<br />" + ui.getAllText());
             logger.info("Winner: " + gameResult.getWinner().getId() + ", Damage to boss: " + gameResult.getDamageToBoss());
-            return new ResponseEntity<String>(result, responseHeaders, HttpStatus.CREATED);
         } catch (Exception e) {
-            return handleError(e, false);
+            writer.print(handleError(e, false));
         }
     }
     
     @RequestMapping(value = "/SimulateBoss1MatchGame", headers = "Accept=application/json")
-    public ResponseEntity<String> simulateBoss1MatchGame(HttpServletRequest request, @RequestParam("deck") String deck,
+    public void simulateBoss1MatchGame(HttpServletRequest request, HttpServletResponse response,
+            @RequestParam("deck") String deck,
             @RequestParam("hlv") int heroLv, @RequestParam("bn") String bossName, @RequestParam("bk") int buffKingdom,
-            @RequestParam("bf") int buffForest, @RequestParam("bs") int buffSavage, @RequestParam("bh") int buffHell) {
-        HttpHeaders responseHeaders = new HttpHeaders();
-        responseHeaders.add("Content-Type", "application/json;charset=UTF-8");
-        responseHeaders.add("Charset", "UTF-8");
+            @RequestParam("bf") int buffForest, @RequestParam("bs") int buffSavage, @RequestParam("bh") int buffHell) throws IOException {
+        PrintWriter writer = response.getWriter();
+        response.setContentType("application/json");
         try {
-            checkWebsiteStatus();
             logger.info("SimulateBoss1MatchGame from " + request.getRemoteAddr() + ":");
             logger.info("Deck = " + deck);
             logger.info("Hero LV = " + heroLv + ", Boss = " + bossName);
@@ -257,23 +245,21 @@ public class AutoBattleController {
             engine.RegisterPlayers(player1, player2);
             GameResult gameResult = engine.playGame();
             BattleRecord record = ui.getRecord();
-            String result = jsonHandler.toJson(record);
+            writer.print(jsonHandler.toJson(record));
             logger.info("Winner: " + gameResult.getWinner().getId() + ", Damage to boss: " + gameResult.getDamageToBoss());
-            return new ResponseEntity<String>(result, responseHeaders, HttpStatus.CREATED);
         } catch (Exception e) {
-            return handleError(e, true);
+            writer.print(handleError(e, true));
         }
     }
 
     @RequestMapping(value = "/PlayBossMassiveGame")
-    public ResponseEntity<String> playBossMassiveGame(HttpServletRequest request, @RequestParam("deck") String deck,
+    public void playBossMassiveGame(HttpServletRequest request, HttpServletResponse response,
+            @RequestParam("deck") String deck,
             @RequestParam("hlv") int heroLv, @RequestParam("bn") String bossName, @RequestParam("bk") int buffKingdom,
             @RequestParam("bf") int buffForest, @RequestParam("bs") int buffSavage, @RequestParam("bh") int buffHell,
-            @RequestParam("count") int count) {
-        HttpHeaders responseHeaders = new HttpHeaders();
-        responseHeaders.add("Content-Type", "text/html;charset=UTF-8");
+            @RequestParam("count") int count) throws IOException {
+        PrintWriter writer = response.getWriter();
         try {
-            checkWebsiteStatus();
             logger.info("PlayBossMassiveGame from " + request.getRemoteAddr() + ":");
             logger.info("Deck = " + deck);
             logger.info("Count = " + count + ", Hero LV = " + heroLv + ", Boss = " + bossName);
@@ -282,8 +268,7 @@ public class AutoBattleController {
             PlayerInfo player1 = PlayerBuilder.build("BOSS", bossName, 99999, null);
             PlayerInfo player2 = PlayerBuilder.build("玩家", deck, heroLv, new Legion(buffKingdom, buffForest,
                     buffSavage, buffHell));
-            StringBuffer result = new StringBuffer();
-            result.append(getCurrentTime() + "<br />");
+            writer.append(getCurrentTime() + "<br />");
             int totalDamageToBoss = 0;
             int timeoutCount = 0;
             Rule rule = Rule.getBossBattle();
@@ -297,7 +282,7 @@ public class AutoBattleController {
             if (gameCount <= 1) {
                 gameCount = 1;
             }
-            result.append("模拟场次: " + gameCount + "<br />");
+            writer.append("模拟场次: " + gameCount + "<br />");
             
             int totalCost = 0;
             for (Card card : player2.getCards()) {
@@ -316,42 +301,40 @@ public class AutoBattleController {
             }
             
             if (timeoutCount > 0) {
-                result.append("超时次数(大于999回合): " + timeoutCount + "<br />");
-                result.append("您的卡组实在太厉害了！已经超出模拟器的承受能力，结果可能不准确，建议直接实测。<br />");
+                writer.append("超时次数(大于999回合): " + timeoutCount + "<br />");
+                writer.append("您的卡组实在太厉害了！已经超出模拟器的承受能力，结果可能不准确，建议直接实测。<br />");
             }
             
             int averageDamageToBoss = totalDamageToBoss / gameCount;
             //int damageToBossPerMinute = averageDamageToBoss * 60 / coolDown;
             
-            result.append("<table>");
+            writer.append("<table>");
             //result.append("<tr><td>战斗次数: </td><td>" + count + "</td></tr>");
             //result.append("<tr><td>总伤害: </td><td>" + totalDamageToBoss + "</td></tr>");
             //result.append("<tr><td>平均伤害: </td><td>" + averageDamageToBoss + "</td></tr>");
-            result.append("<tr><td>卡组总COST: </td><td>" + totalCost + "</td></tr>");
-            result.append("<tr><td>冷却时间: </td><td>" + coolDown + "秒</td></tr>");
+            writer.append("<tr><td>卡组总COST: </td><td>" + totalCost + "</td></tr>");
+            writer.append("<tr><td>冷却时间: </td><td>" + coolDown + "秒</td></tr>");
             //result.append("<tr><td>平均每分钟伤害（理想）: </td><td>" + damageToBossPerMinute + "</td></tr>");
-            result.append("<tr><td colspan='2'><table style='text-align: center'><tr style='font-weight: bold'><td>魔神存活</td><td>战斗次数</td><td>总伤害</td><td>平均每分钟伤害</td></tr>");
+            writer.append("<tr><td colspan='2'><table style='text-align: center'><tr style='font-weight: bold'><td>魔神存活</td><td>战斗次数</td><td>总伤害</td><td>平均每分钟伤害</td></tr>");
             for (int i = 1; i <= 20; ++i) {
                 int attackCount = 1 + (60 * i / coolDown);
                 int totalDamage = attackCount * averageDamageToBoss;
-                result.append("<tr><td>" + i + "分钟</td><td>" + attackCount + "</td><td>" + totalDamage + "</td><td>" + (totalDamage / i) + "</td></tr>");
+                writer.append("<tr><td>" + i + "分钟</td><td>" + attackCount + "</td><td>" + totalDamage + "</td><td>" + (totalDamage / i) + "</td></tr>");
             }
-            result.append("</table></td></tr>");
-            result.append("</table>");
+            writer.append("</table></td></tr>");
+            writer.append("</table>");
             logger.info("Average damage to boss: " + averageDamageToBoss);
-            return new ResponseEntity<String>(result.toString(), responseHeaders, HttpStatus.CREATED);
         } catch (Exception e) {
-            return handleError(e, false);
+            writer.print(handleError(e, false));
         }
     }
     
     @RequestMapping(value = "/PlayMap1MatchGame")
-    public ResponseEntity<String> playMap1MatchGame(HttpServletRequest request, @RequestParam("deck") String deck,
-            @RequestParam("hlv") int heroLv, @RequestParam("map") String map) {
-        HttpHeaders responseHeaders = new HttpHeaders();
-        responseHeaders.add("Content-Type", "text/html;charset=UTF-8");
+    public void playMap1MatchGame(HttpServletRequest request, HttpServletResponse response,
+            @RequestParam("deck") String deck,
+            @RequestParam("hlv") int heroLv, @RequestParam("map") String map) throws IOException {
+        PrintWriter writer = response.getWriter();
         try {
-            checkWebsiteStatus();
             logger.info("PlayMap1MatchGame from " + request.getRemoteAddr() + ":");
             logger.info("Deck = " + deck);
             logger.info("Hero LV = " + heroLv + ", Map = " + map);
@@ -361,23 +344,20 @@ public class AutoBattleController {
             WebPlainTextGameUI ui = new WebPlainTextGameUI();
             PveEngine engine = new PveEngine(ui, Rule.getDefault(), this.maps);
             PveGameResult gameResult = engine.play(player, map);
-            String result = getCurrentTime() + "<br />" + ui.getAllText();
+            writer.print(getCurrentTime() + "<br />" + ui.getAllText());
             logger.info("Result: " + gameResult.name());
-            return new ResponseEntity<String>(result, responseHeaders, HttpStatus.CREATED);
         } catch (Exception e) {
-            return handleError(e, false);
+            writer.print(handleError(e, false));
         }
     }
     
-    
     @RequestMapping(value = "/SimulateMap1MatchGame", headers = "Accept=application/json")
-    public ResponseEntity<String> simulateMap1MatchGame(HttpServletRequest request, @RequestParam("deck") String deck,
-            @RequestParam("hlv") int heroLv, @RequestParam("map") String map) {
-        HttpHeaders responseHeaders = new HttpHeaders();
-        responseHeaders.add("Content-Type", "application/json;charset=UTF-8");
-        responseHeaders.add("Charset", "UTF-8");
+    public void simulateMap1MatchGame(HttpServletRequest request, HttpServletResponse response,
+            @RequestParam("deck") String deck,
+            @RequestParam("hlv") int heroLv, @RequestParam("map") String map) throws IOException {
+        response.setContentType("application/json");
+        PrintWriter writer = response.getWriter();
         try {
-            checkWebsiteStatus();
             logger.info("SimulateMap1MatchGame from " + request.getRemoteAddr() + ":");
             logger.info("Deck = " + deck);
             logger.info("Hero LV = " + heroLv + ", Map = " + map);
@@ -388,21 +368,19 @@ public class AutoBattleController {
             PveEngine engine = new PveEngine(ui, Rule.getDefault(), this.maps);
             PveGameResult gameResult = engine.play(player, map);
             BattleRecord record = ui.getRecord();
-            String result = jsonHandler.toJson(record);
+            writer.println(jsonHandler.toJson(record));
             logger.info("Result: " + gameResult.name());
-            return new ResponseEntity<String>(result, responseHeaders, HttpStatus.CREATED);
         } catch (Exception e) {
-            return handleError(e, true);
+            writer.println(handleError(e, true));
         }
     }
     
     @RequestMapping(value = "/PlayMapMassiveGame")
-    public ResponseEntity<String> playMapMassiveGame(HttpServletRequest request, @RequestParam("deck") String deck,
-            @RequestParam("hlv") int heroLv, @RequestParam("map") String map, @RequestParam("count") int count) {
-        HttpHeaders responseHeaders = new HttpHeaders();
-        responseHeaders.add("Content-Type", "text/html;charset=UTF-8");
+    public void playMapMassiveGame(HttpServletRequest request, HttpServletResponse response,
+            @RequestParam("deck") String deck, @RequestParam("hlv") int heroLv, @RequestParam("map") String map,
+            @RequestParam("count") int count) throws IOException {
+        PrintWriter writer = response.getWriter();
         try {
-            checkWebsiteStatus();
             logger.info("PlayMapMassiveGame from " + request.getRemoteAddr() + ":");
             logger.info(String.format("Lv = %d, Map = %s, Count = %d", heroLv, map, count));
             logger.info("Deck = " + deck);
@@ -413,48 +391,36 @@ public class AutoBattleController {
             PveEngine engine = new PveEngine(new DummyGameUI(), Rule.getDefault(), this.maps);
             PlayerInfo player = PlayerBuilder.build("玩家", deck, heroLv);
             PveGameResultStat stat = engine.massivePlay(player, map, count);
-            StringBuffer result = new StringBuffer();
-            result.append(getCurrentTime() + "<br />");
-            result.append("<table>");
+            writer.append(getCurrentTime() + "<br />");
+            writer.append("<table>");
             for (PveGameResult gameResult : PveGameResult.values()) {
-                result.append(String.format("<tr><td>%s: </td><td>%d</td></tr>",
+                writer.append(String.format("<tr><td>%s: </td><td>%d</td></tr>",
                         gameResult.getDescription(), stat.getStat(gameResult)));
             }
-            result.append("</table>");
+            writer.append("</table>");
             logger.info(String.format("TO:LO:BW:AW:UN = %d:%d:%d:%d:%d",
                     stat.getStat(PveGameResult.TIMEOUT),
                     stat.getStat(PveGameResult.LOSE),
                     stat.getStat(PveGameResult.BASIC_WIN),
                     stat.getStat(PveGameResult.ADVANCED_WIN),
                     stat.getStat(PveGameResult.UNKNOWN)));
-            return new ResponseEntity<String>(result.toString(), responseHeaders, HttpStatus.CREATED);
         } catch (Exception e) {
-            return handleError(e, false);
+            writer.print(handleError(e, false));
         }
     }
     
     @RequestMapping(value = "/GetCardDetail", headers = "Accept=application/json")
-    public ResponseEntity<String> getCardDetail(HttpServletRequest request, @RequestParam("playerId") String playerId,
-            @RequestParam("uniqueName") String uniqueName, @RequestParam("type") String type) {
-        try {
-            checkWebsiteStatus();
-            HttpHeaders responseHeaders = new HttpHeaders();
-            responseHeaders.add("Content-Type", "application/json;charset=UTF-8");
-            responseHeaders.add("Charset", "UTF-8");
-            String result = "";
-            return new ResponseEntity<String>(result, responseHeaders, HttpStatus.CREATED);
-        } catch (Exception e) {
-            return handleError(e, true);
-        }
+    public void getCardDetail(HttpServletRequest request, HttpServletResponse response,
+            @RequestParam("playerId") String playerId, @RequestParam("uniqueName") String uniqueName,
+            @RequestParam("type") String type) throws IOException {
     }
     
     @RequestMapping(value = "/GetDataStore", headers = "Accept=application/json")
-    public ResponseEntity<String> getDataStore(HttpServletRequest request) {
+    public void getDataStore(HttpServletRequest request, HttpServletResponse response)
+            throws IOException {
+        PrintWriter writer = response.getWriter();
+        response.setContentType("application/json");
         try {
-            checkWebsiteStatus();
-            HttpHeaders responseHeaders = new HttpHeaders();
-            responseHeaders.add("Content-Type", "application/json;charset=UTF-8");
-            responseHeaders.add("Charset", "UTF-8");
             logger.info("Getting card data store...");
             CardDataStore store = CardDataStore.loadDefault();
             Map <String, Object> result = new HashMap <String, Object>();
@@ -483,20 +449,19 @@ public class AutoBattleController {
                 }
             });
             result.put("features", featureList);
-            String jsonResult = jsonHandler.toJson(result);
-            return new ResponseEntity<String>(jsonResult, responseHeaders, HttpStatus.CREATED);
+            writer.print(jsonHandler.toJson(result));
         } catch (Exception e) {
-            return handleError(e, true);
+            writer.print(handleError(e, true));
         }
     }
     
     @RequestMapping(value = "/GetMapVictoryCondition", headers = "Accept=application/json")
-    public ResponseEntity<String> getMapVictoryCondition(HttpServletRequest request, @RequestParam("map") String map) {
+    public void getMapVictoryCondition(HttpServletRequest request, HttpServletResponse response,
+            @RequestParam("map") String map) throws IOException {
+        PrintWriter writer = response.getWriter();
+        response.setContentType("application/json");
         try {
             logger.info("Getting map victory condition: " + map);
-            HttpHeaders responseHeaders = new HttpHeaders();
-            responseHeaders.add("Content-Type", "application/json;charset=UTF-8");
-            responseHeaders.add("Charset", "UTF-8");
             String condition = "";
             MapInfo mapInfo = this.maps.getMap(map);
             if (mapInfo == null) {
@@ -504,18 +469,13 @@ public class AutoBattleController {
             } else {
                 condition = mapInfo.getCondition().getDescription();
             }
-            String result = jsonHandler.toJson(condition);
-            return new ResponseEntity<String>(result, responseHeaders, HttpStatus.CREATED);
+            writer.print(jsonHandler.toJson(condition));
         } catch (Exception e) {
-            return handleError(e, true);
+            writer.print(handleError(e, true));
         }
     }
 
     private static String getCurrentTime() {
         return "时间: " + DateFormat.getTimeInstance().format(new Date());
-    }
-    
-    private static void checkWebsiteStatus() {
-        
     }
 }

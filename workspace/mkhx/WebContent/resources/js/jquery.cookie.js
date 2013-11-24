@@ -62,16 +62,16 @@
 		var result = key ? null : {};
 		for (var i = 0, l = cookies.length; i < l; i++) {
 			var parts = cookies[i].split('=');
-			var name = decode(parts.shift());
+			var cookieName = decode(parts.shift());
 			var cookie = decode(parts.join('='));
 
-			if (key && key === name) {
+			if (key && key === cookieName) {
 				result = fromJSON(cookie);
 				break;
 			}
 
 			if (!key) {
-				result[name] = fromJSON(cookie);
+				result[cookieName] = fromJSON(cookie);
 			}
 		}
 

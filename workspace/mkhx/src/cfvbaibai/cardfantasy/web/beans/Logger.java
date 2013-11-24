@@ -4,10 +4,7 @@ import cfvbaibai.cardfantasy.web.Utils;
 
 public class Logger {
 
-    private java.util.logging.Logger communicationLogger;
-    
     public Logger() {
-        this.communicationLogger = java.util.logging.Logger.getLogger("cardfantasy-communication");
     }
 
     public void info(String message) {

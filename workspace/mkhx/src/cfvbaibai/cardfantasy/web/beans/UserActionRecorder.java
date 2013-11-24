@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class UserActionRecorder {
 
     private LinkedList<UserAction> actions;
@@ -15,7 +18,7 @@ public class UserActionRecorder {
     }
 
     public synchronized void addAction(UserAction action) {
-        if (actions.size() > this.getMaxRecordCount()) {
+        while (actions.size() > this.getMaxRecordCount()) {
             actions.removeLast();
         }
         this.actions.addFirst(action);

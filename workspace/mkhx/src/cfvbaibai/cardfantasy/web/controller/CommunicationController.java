@@ -31,7 +31,7 @@ public class CommunicationController {
     private Logger logger;
     
     @Autowired
-    @Qualifier("communication-logger")
+    @Qualifier("communication")
     private java.util.logging.Logger julLogger;
 
     @RequestMapping(value = "/SendFeedback")
