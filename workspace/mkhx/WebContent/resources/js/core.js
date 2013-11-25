@@ -241,5 +241,9 @@ $(document)
     $('#feedback-button').attr('href', 'javascript:CardFantasy.Core.sendFeedback();');
 });
 
+$(document).ready(function () {
+    $.mobile.changePage("#news", { transition : 'flip', role : 'dialog' });
+});
+
 // END OF OUTERMOST IIFE
 })(CardFantasy.Core);

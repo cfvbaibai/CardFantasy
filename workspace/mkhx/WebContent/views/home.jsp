@@ -8,6 +8,26 @@
 
 </head>
 <body>
+    <div data-role="page" data-title="公告" data-mini="true" id="news" class="fixed-width">
+        <div data-role="header" data-theme="c" data-position="fixed">
+            <h3 style="text-align: center">公告</h3>
+        </div>
+        <div data-role="content" data-theme="c">
+            <div data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">
+                <h3>2013-11-25: 添加17张新卡</h3>
+                <ul>
+                    <li>王国：血瞳魔剑师 王城巡逻犬 魔能巨石像 科学怪人 驯鹰射手</li>
+                    <li>森林：复仇血精灵 裁决巨石像 高等暗精灵 梦境女神 精灵女王</li>
+                    <li>蛮荒：仙狐巫女 尖牙捕食者 冰雪巨人 龙角将军</li>
+                    <li>地狱：赤红地狱战马 骸骨大将 末日预言师</li>
+                </ul>
+            </div>
+            <div>
+                <a href="#map-battle" data-role="button" data-mini="true">开始使用模拟器</a>
+            </div>
+        </div>
+    </div>
+    
     <div data-role="page" data-title="地图战" data-mini="true" id="map-battle">
         <div data-role="header" data-id="navbar" data-position="fixed" data-theme="c">
             <div data-role="navbar" data-theme="c">

@@ -127,6 +127,14 @@ table.form {
 	width: 100%;
 }
 
+table.2d {
+	background-color: #222222;
+}
+
+table.2d td {
+	background-color: #FFFFFF;
+}
+
 div.entity-title {
 	text-align: center;
 	font-size: 150%;
