@@ -95,12 +95,18 @@ fieldset div.ui-controlgroup-controls .ui-select {
 }
 
 .fixed-width .ui-dialog-contain {
-	max-width: 450px;
+	width: 98%;
+	max-width: 500px;
+	top: -50px;
 }
 
 div#battle-canvas canvas{
 	margin-left: auto;
 	margin-right: auto;
+}
+
+div#canvas-outline {
+	padding: 2px;
 }
 
 div#player-status {

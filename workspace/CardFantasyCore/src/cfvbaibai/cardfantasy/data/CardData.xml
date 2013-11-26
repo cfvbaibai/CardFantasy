@@ -609,7 +609,7 @@
         <Feature type="法力侵蚀" level="8" unlock="5" />
         <Feature type="闪避" level="9" unlock="10" />
     </Card>
-    <Card id="2511" name="精灵女王" wikiId="52640" race="森林" speed="4" star="5" cost="19" incrCost="0" at="305" hp="1320" incrAT="30" incrHP="29">
+    <Card id="2511" name="精灵女王" wikiId="52640" race="森林" speed="4" star="5" cost="17" incrCost="2" at="305" hp="1320" incrAT="30" incrHP="29">
         <Feature type="森林守护" level="7" unlock="0" />
         <Feature type="甘霖" level="6" unlock="5" />
         <Feature type="免疫" level="0" unlock="10" />

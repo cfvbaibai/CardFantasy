@@ -116,8 +116,8 @@ var CfPos = function(attr) {
 
 var ArenaSettings = function() {
     this.fontSizeFactor = $.browser.webkit ? 1 : 1.4;
-    this.maxWidth = 447;
-    this.heightRate = 1.2;
+    this.maxWidth = 495;
+    this.heightRate = 1.0;
     this.width = this.maxWidth;
     this.height = this.width * this.heightRate;
 

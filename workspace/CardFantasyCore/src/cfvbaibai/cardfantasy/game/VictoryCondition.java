@@ -1,5 +1,7 @@
 package cfvbaibai.cardfantasy.game;
 
+import java.util.List;
+
 import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
 import cfvbaibai.cardfantasy.data.Race;
 import cfvbaibai.cardfantasy.data.RuneClass;
@@ -225,6 +227,10 @@ class NoRuneVictoryCondition extends VictoryCondition {
         this.runeClass = runeClass;
     }
     public boolean meetCriteria(GameResult result) {
+        List<RuneInfo> runes = result.getWinner().getRuneBox().getRunes();
+        if (runeClass == null) {
+            return runes.size() == 0;
+        }
         for (RuneInfo rune : result.getWinner().getRuneBox().getRunes()) {
             if (rune.getRuneClass() == runeClass) {
                 return false;

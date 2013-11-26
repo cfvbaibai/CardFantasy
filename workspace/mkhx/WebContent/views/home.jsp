@@ -10,10 +10,19 @@
 <body>
     <div data-role="page" data-title="公告" data-mini="true" id="news" class="fixed-width">
         <div data-role="header" data-theme="c" data-position="fixed">
-            <h3 style="text-align: center">公告</h3>
+            <h3 style="text-align: center">魔卡幻想战斗模拟器 公告</h3>
         </div>
         <div data-role="content" data-theme="c">
             <div data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">
+                <h3>2013-11-27: 修复几个BUG</h3>
+                <ul>
+                    <li>精灵女王的COST从19改为17，15级COST改为19（感谢吧友<b>uiiysss1</b>提供情报）</li>
+                    <li>修复地图战中<b>无符文</b>的条件判断错误（感谢吧友<b>勿忘干将</b>和<b>ycphoenix</b>提供情报）</li>
+                    <li>修复<b>魔法协会长</b>总是复活最后死亡的卡的BUG（感谢吧友<b>PandaGM</b>提供情报）</li>
+                    <li>新加的一些卡片的数据都来源于魔卡WIKI，但是这次WIKI上的COST数值都很诡异，多数卡10级和15级的COST没有区别，可能有错，希望大家一起帮忙排查</li>
+                </ul>
+            </div>
+            <div data-role="collapsible" data-collapsed="true" data-mini="true" data-content-theme="d" data-theme="c">
                 <h3>2013-11-25: 添加17张新卡</h3>
                 <ul>
                     <li>王国：血瞳魔剑师 王城巡逻犬 魔能巨石像 科学怪人 驯鹰射手</li>
@@ -495,8 +504,8 @@
             <h3 style="text-align: center">战斗</h3>
         </div>
         <div data-role="content" data-theme="c">
-            <div id="canvas-outline" style="overflow: auto; margin-left: auto; margin-right: auto">
-                <span>若动画空白，请重启浏览器</span>
+            <div id="canvas-outline">
+                <div>若动画空白，请重启浏览器</div>
                 <div id="battle-canvas"></div>
             </div>
             <div id="arena-control-panel" data-mini="true" data-role="controlgroup" data-type="horizontal">

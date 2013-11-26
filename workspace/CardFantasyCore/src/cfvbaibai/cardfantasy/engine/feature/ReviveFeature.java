@@ -7,6 +7,7 @@ import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.CardStatusItem;
 import cfvbaibai.cardfantasy.engine.FeatureInfo;
 import cfvbaibai.cardfantasy.engine.FeatureResolver;
+import cfvbaibai.cardfantasy.engine.Grave;
 import cfvbaibai.cardfantasy.engine.HeroDieSignal;
 
 public final class ReviveFeature {
@@ -14,15 +15,28 @@ public final class ReviveFeature {
         if (reviver == null) {
             throw new CardFantasyRuntimeException("reviver should not be null");
         }
+        Grave grave = reviver.getOwner().getGrave();
+        boolean hasRevivableCard = false;
+        for (CardInfo deadCard : grave.toList()) {
+            if (deadCard != null && !deadCard.containsUsableFeaturesWithTag(FeatureTag.复活)) {
+                hasRevivableCard = true;
+                break;
+            }
+        }
+        if (!hasRevivableCard) {
+            return;
+        }
         Feature feature = featureInfo.getFeature();
         // Grave is a stack, find the last-in card and revive it.
         CardInfo cardToRevive = null;
-        for (CardInfo deadCard : reviver.getOwner().getGrave().toList()) {
+        while (true) {
+            CardInfo deadCard = grave.pickRandom(1, true).get(0);
             if (!deadCard.containsUsableFeaturesWithTag(FeatureTag.复活)) {
                 cardToRevive = deadCard;
                 break;
             }
         }
+
         if (cardToRevive == null) {
             return;
         }
