@@ -8,12 +8,16 @@
 
 </head>
 <body>
-    <div data-role="page" data-title="公告" data-mini="true" id="news" class="fixed-width">
+    <div data-role="page" data-title="魔卡幻想战斗模拟器 公告" data-mini="true" id="news" class="fixed-width">
         <div data-role="header" data-theme="c" data-position="fixed">
-            <h3 style="text-align: center">魔卡幻想战斗模拟器 公告</h3>
+            <h3 style="text-align: center">公告</h3>
         </div>
         <div data-role="content" data-theme="c">
-            <div data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">
+            <div data-role="collapsible" data-collapsed="true" data-mini="true" data-content-theme="d" data-theme="c">
+                <h3>2013-11-28: 全面修复17张新卡的COST</h3>
+                <ul><li>感谢魔卡WIKI的及时更新和各位朋友的提醒</li></ul>
+            </div>
+            <div data-role="collapsible" data-collapsed="true" data-mini="true" data-content-theme="d" data-theme="c">
                 <h3>2013-11-27: 修复几个BUG</h3>
                 <ul>
                     <li>精灵女王的COST从19改为17，15级COST改为19（感谢吧友<b>uiiysss1</b>提供情报）</li>

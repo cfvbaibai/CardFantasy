@@ -152,7 +152,7 @@ public final class DeckBuilder {
         String prefix = "";
         CardFeature extraFeature = null;
         if (extraFeatureType != null) {
-            extraFeature = new CardFeature(extraFeatureType, extraFeatureLevel, 10, summonFeature, deathFeature);
+            extraFeature = new CardFeature(extraFeatureType, extraFeatureLevel, 15, summonFeature, deathFeature);
             prefix = extraFeatureName;
             if (extraFeatureLevel != 0) {
                 prefix += extraFeatureLevel;

@@ -144,12 +144,12 @@
         <Feature type="趁胜追击" level="4" unlock="5" />
         <Feature type="治疗" level="8" unlock="10" />
     </Card>
-    <Card id="1316" name="血瞳魔剑师" wikiId="52642" race="王国" speed="4" star="3" cost="12" incrCost="0" at="230" hp="750" incrAT="27" incrHP="18">
+    <Card id="1316" name="血瞳魔剑师" wikiId="52642" race="王国" speed="4" star="3" cost="10" incrCost="2" at="230" hp="750" incrAT="27" incrHP="18">
         <Feature type="嗜血" level="4" unlock="0" />
         <Feature type="王国之力" level="5" unlock="5" />
         <Feature type="闪避" level="5" unlock="10" />
     </Card>
-    <Card id="1317" name="王城巡逻犬" wikiId="52646" race="王国" speed="4" star="3" cost="13" incrCost="0" at="210" hp="650" incrAT="23" incrHP="26">
+    <Card id="1317" name="王城巡逻犬" wikiId="52646" race="王国" speed="4" star="3" cost="11" incrCost="2" at="210" hp="650" incrAT="23" incrHP="26">
         <Feature type="王国之盾" level="4" unlock="0" />
         <Feature type="趁胜追击" level="5" unlock="5" />
         <Feature type="神圣守护" level="5" unlock="10" />
@@ -245,17 +245,17 @@
         <Feature type="趁胜追击" level="5" unlock="5" />
         <Feature type="二重狙击" level="6" unlock="10" />
     </Card>
-    <Card id="1419" name="魔能巨石像" wikiId="52630" race="王国" speed="4" star="4" cost="16" incrCost="0" at="310" hp="1020" incrAT="28" incrHP="39">
+    <Card id="1419" name="魔能巨石像" wikiId="52630" race="王国" speed="4" star="4" cost="14" incrCost="2" at="310" hp="1020" incrAT="28" incrHP="39">
         <Feature type="格挡" level="7" unlock="0" />
         <Feature type="脱困" level="0" unlock="5" />
         <Feature type="弱点攻击" level="0" unlock="10" />
     </Card>
-    <Card id="1420" name="科学怪人" wikiId="52638" race="王国" speed="4" star="4" cost="15" incrCost="0" at="210" hp="780" incrAT="36" incrHP="21">
+    <Card id="1420" name="科学怪人" wikiId="52638" race="王国" speed="4" star="4" cost="13" incrCost="2" at="210" hp="780" incrAT="36" incrHP="21">
         <Feature type="烈火焚神" level="6" unlock="0" />
         <Feature type="自爆" level="7" unlock="5" />
         <Feature type="群体削弱" level="8" unlock="10" />
     </Card>
-    <Card id="1421" name="驯鹰射手" wikiId="52639" race="王国" speed="4" star="4" cost="16" incrCost="0" at="235" hp="970" incrAT="23" incrHP="38">
+    <Card id="1421" name="驯鹰射手" wikiId="52639" race="王国" speed="4" star="4" cost="14" incrCost="2" at="235" hp="970" incrAT="23" incrHP="38">
         <Feature type="脱困" level="0" unlock="0" />
         <Feature type="二重狙击" level="6" unlock="5" />
         <Feature type="陷阱" level="2" unlock="10" />
@@ -548,7 +548,7 @@
         <Feature type="复仇" level="6" unlock="5" />
         <Feature type="吸血" level="6" unlock="10" />
     </Card>
-    <Card id="2418" name="裁决巨石像" wikiId="52637" race="森林" speed="4" star="4" cost="15" incrCost="0" at="255" hp="1090" incrAT="29" incrHP="34">
+    <Card id="2418" name="裁决巨石像" wikiId="52637" race="森林" speed="4" star="4" cost="13" incrCost="2" at="255" hp="1090" incrAT="29" incrHP="34">
         <Feature type="邪灵汲取" level="5" unlock="0" />
         <Feature type="战意" level="6" unlock="5" />
         <Feature type="不动" level="0" unlock="10" />
@@ -604,7 +604,7 @@
         <Feature type="冰甲" level="2" unlock="5" />
         <Feature type="不动" level="0" unlock="10" />
     </Card>
-    <Card id="2510" name="梦境女神" wikiId="52635" race="森林" speed="4" star="5" cost="18" incrCost="0" at="355" hp="1360" incrAT="38" incrHP="36">
+    <Card id="2510" name="梦境女神" wikiId="52635" race="森林" speed="4" star="5" cost="16" incrCost="2" at="355" hp="1360" incrAT="38" incrHP="36">
         <Feature type="脱困" level="0" unlock="0" />
         <Feature type="法力侵蚀" level="8" unlock="5" />
         <Feature type="闪避" level="9" unlock="10" />
@@ -871,17 +871,17 @@
         <Feature type="弱点攻击" level="0" unlock="5" />
         <Feature type="暴击" level="5" unlock="10" />
     </Card>
-    <Card id="3422" name="仙狐巫女" wikiId="52633" race="蛮荒" speed="4" star="4" cost="15" incrCost="0" at="225" hp="950" incrAT="19" incrHP="47">
+    <Card id="3422" name="仙狐巫女" wikiId="52633" race="蛮荒" speed="4" star="4" cost="13" incrCost="2" at="225" hp="950" incrAT="19" incrHP="47">
         <Feature type="治疗" level="6" unlock="0" />
         <Feature type="暴风雪" level="6" unlock="5" />
         <Feature type="甘霖" level="6" unlock="10" />
     </Card>
-    <Card id="3423" name="尖牙捕食者" wikiId="52643" race="蛮荒" speed="4" star="4" cost="14" incrCost="0" at="235" hp="980" incrAT="36" incrHP="35">
+    <Card id="3423" name="尖牙捕食者" wikiId="52643" race="蛮荒" speed="4" star="4" cost="12" incrCost="2" at="235" hp="980" incrAT="36" incrHP="35">
         <Feature type="背刺" level="5" unlock="0" />
         <Feature type="暗杀" level="6" unlock="5" />
         <Feature type="盾刺" level="7" unlock="10" />
     </Card>
-    <Card id="3424" name="冰雪巨人" wikiId="52644" race="蛮荒" speed="4" star="4" cost="14" incrCost="0" at="260" hp="1120" incrAT="25" incrHP="36">
+    <Card id="3424" name="冰雪巨人" wikiId="52644" race="蛮荒" speed="4" star="4" cost="12" incrCost="2" at="260" hp="1120" incrAT="25" incrHP="36">
         <Feature type="狂热" level="7" unlock="0" />
         <Feature type="暴风雪" level="7" unlock="5" />
         <Feature type="回春" level="8" unlock="10" />
@@ -927,7 +927,7 @@
         <Feature type="邪灵汲取" level="5" unlock="5" />
         <Feature type="封印" level="0" unlock="10" />
     </Card>
-    <Card id="3509" name="龙角将军" wikiId="52634" race="蛮荒" speed="4" star="5" cost="18" incrCost="0" at="365" hp="1340" incrAT="36" incrHP="37">
+    <Card id="3509" name="龙角将军" wikiId="52634" race="蛮荒" speed="4" star="5" cost="16" incrCost="2" at="365" hp="1340" incrAT="36" incrHP="37">
         <Feature type="格挡" level="8" unlock="0" />
         <Feature type="穷追猛打" level="7" unlock="5" />
         <Feature type="弱点攻击" level="0" unlock="10" />
@@ -1109,7 +1109,7 @@
         <Feature type="横扫" level="0" unlock="5" />
         <Feature type="转生" level="5" unlock="10" />
     </Card>
-    <Card id="4322" name="赤红地狱战马" wikiId="52645" race="地狱" speed="4" star="3" cost="12" incrCost="0" at="245" hp="720" incrAT="22" incrHP="24">
+    <Card id="4322" name="赤红地狱战马" wikiId="52645" race="地狱" speed="4" star="3" cost="10" incrCost="2" at="245" hp="720" incrAT="22" incrHP="24">
         <Feature type="烈火焚神" level="5" unlock="0" />
         <Feature type="地狱之力" level="6" unlock="5" />
         <Feature type="自爆" level="6" unlock="10" />
@@ -1211,7 +1211,7 @@
         <Feature type="战意" level="6" unlock="5" />
         <Feature type="法力反射" level="7" unlock="10" />
     </Card>
-    <Card id="4420" name="骸骨大将" wikiId="52632" race="地狱" speed="1" star="4" cost="14" incrCost="0" at="255" hp="670" incrAT="34" incrHP="26">
+    <Card id="4420" name="骸骨大将" wikiId="52632" race="地狱" speed="1" star="4" cost="12" incrCost="2" at="255" hp="670" incrAT="34" incrHP="26">
         <Feature type="暴击" level="5" unlock="0" />
         <Feature type="不动" level="0" unlock="5" />
         <Feature type="转生" level="5" unlock="10" />
@@ -1267,7 +1267,7 @@
         <Feature type="弱点攻击" level="0" unlock="5" />
         <Feature type="不动" level="0" unlock="10" />
     </Card>
-    <Card id="4511" name="末日预言师" wikiId="52631" race="地狱" speed="3" star="5" cost="19" incrCost="0" at="315" hp="1290" incrAT="32" incrHP="48">
+    <Card id="4511" name="末日预言师" wikiId="52631" race="地狱" speed="3" star="5" cost="17" incrCost="2" at="315" hp="1290" incrAT="32" incrHP="48">
         <Feature type="地狱守护" level="6" unlock="0" />
         <Feature type="冰甲" level="5" unlock="5" />
         <Feature type="邪灵汲取" level="6" unlock="10" />
