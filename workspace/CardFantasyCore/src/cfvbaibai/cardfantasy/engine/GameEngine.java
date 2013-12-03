@@ -148,11 +148,11 @@ public class GameEngine {
             }
         }
         
-        for (CardInfo card : this.getActivePlayer().getField().toList()) {
-            if (!card.getStatus().containsStatus(CardStatusType.虚弱)) {
-                card.setFirstRound(false);
-            }
-        }
+        //for (CardInfo card : this.getActivePlayer().getField().toList()) {
+            //if (!card.getStatus().containsStatus(CardStatusType.虚弱)) {
+                //card.setFirstRound(false);
+            //}
+        //}
 
         for (CardInfo card : this.getActivePlayer().getField().getAliveCards()) {
             card.getStatus().remove(CardStatusType.冰冻);

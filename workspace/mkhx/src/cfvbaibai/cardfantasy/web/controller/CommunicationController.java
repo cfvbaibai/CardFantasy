@@ -35,11 +35,9 @@ public class CommunicationController {
     private java.util.logging.Logger julLogger;
 
     @RequestMapping(value = "/SendFeedback")
-    public void monitor(HttpServletRequest request, HttpServletResponse response,
+    public void sendFeedBack(HttpServletRequest request, HttpServletResponse response,
             @RequestParam("sender") String sender,
             @RequestParam("feedback") String feedback) {
-        response.setCharacterEncoding("UTF-8");
-        response.setHeader("Content-Type", "text/html;charset=UTF-8");
         String remoteAddress = request.getRemoteAddr();
         String trace = "[FEEDBACK] IP: " + remoteAddress + ", SENDER: " + sender + ", CONTENT: " + feedback;
         julLogger.info(trace);

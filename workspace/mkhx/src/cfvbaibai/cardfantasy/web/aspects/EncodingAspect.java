@@ -16,7 +16,7 @@ public class EncodingAspect {
     @Autowired
     private Logger logger;
     
-    @Pointcut("execution(public * cfvbaibai.cardfantasy.web.controller.AutoBattleController.*(" +
+    @Pointcut("execution(public * cfvbaibai.cardfantasy.web.controller.*.*(" +
             "*, javax.servlet.http.HttpServletResponse, ..))")
     public void outputWebResponse() {}
     

@@ -214,11 +214,11 @@ $(document)
         var data = JSON.parse(dataText);
         if (data.deck) { $('#deck').val(data.deck); }
         if (data.hlv) { $('#heroLv').val(data.hlv); }
-        if (data.bn) { $('#boss-name').val(data.bn); }
-        if (data.bk) { $('#buff-kingdom').val(data.bk); }
-        if (data.bf) { $('#buff-forest').val(data.bf); }
-        if (data.bs) { $('#buff-savage').val(data.bs); }
-        if (data.bh) { $('#buff-hell').val(data.bh); }
+        if (data.bn) { $('#boss-name').val(data.bn).selectmenu('refresh'); }
+        if (data.bk) { $('#buff-kingdom').val(data.bk).selectmenu('refresh'); }
+        if (data.bf) { $('#buff-forest').val(data.bf).selectmenu('refresh'); }
+        if (data.bs) { $('#buff-savage').val(data.bs).selectmenu('refresh'); }
+        if (data.bh) { $('#buff-hell').val(data.bh).selectmenu('refresh'); }
     }
     $('#play-boss-1-game-button').attr('href', 'javascript:CardFantasy.Core.playBossGame(1);');
     $('#simulate-boss-1-game-button').attr('href', 'javascript:CardFantasy.Core.playBossGame(-1);');

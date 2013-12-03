@@ -10,33 +10,58 @@
 <body>
     <div data-role="page" data-title="魔卡幻想战斗模拟器 公告" data-mini="true" id="news" class="fixed-width">
         <div data-role="header" data-theme="c" data-position="fixed">
-            <h3 style="text-align: center">公告</h3>
+            <h3 style="text-align: center">欢迎</h3>
         </div>
-        <div data-role="content" data-theme="c">
-            <div data-role="collapsible" data-collapsed="true" data-mini="true" data-content-theme="d" data-theme="c">
-                <h3>2013-11-28: 全面修复17张新卡的COST</h3>
-                <ul><li>感谢魔卡WIKI的及时更新和各位朋友的提醒</li></ul>
-            </div>
-            <div data-role="collapsible" data-collapsed="true" data-mini="true" data-content-theme="d" data-theme="c">
-                <h3>2013-11-27: 修复几个BUG</h3>
-                <ul>
-                    <li>精灵女王的COST从19改为17，15级COST改为19（感谢吧友<b>uiiysss1</b>提供情报）</li>
-                    <li>修复地图战中<b>无符文</b>的条件判断错误（感谢吧友<b>勿忘干将</b>和<b>ycphoenix</b>提供情报）</li>
-                    <li>修复<b>魔法协会长</b>总是复活最后死亡的卡的BUG（感谢吧友<b>PandaGM</b>提供情报）</li>
-                    <li>新加的一些卡片的数据都来源于魔卡WIKI，但是这次WIKI上的COST数值都很诡异，多数卡10级和15级的COST没有区别，可能有错，希望大家一起帮忙排查</li>
-                </ul>
-            </div>
-            <div data-role="collapsible" data-collapsed="true" data-mini="true" data-content-theme="d" data-theme="c">
-                <h3>2013-11-25: 添加17张新卡</h3>
-                <ul>
-                    <li>王国：血瞳魔剑师 王城巡逻犬 魔能巨石像 科学怪人 驯鹰射手</li>
-                    <li>森林：复仇血精灵 裁决巨石像 高等暗精灵 梦境女神 精灵女王</li>
-                    <li>蛮荒：仙狐巫女 尖牙捕食者 冰雪巨人 龙角将军</li>
-                    <li>地狱：赤红地狱战马 骸骨大将 末日预言师</li>
-                </ul>
-            </div>
+        <div class="dashboard" data-role="content" data-theme="c">
             <div>
-                <a href="#map-battle" data-role="button" data-mini="true">开始使用模拟器</a>
+                <a href="#map-battle" data-role="button" data-mini="true" data-theme="b">点击开始使用模拟器</a>
+            </div>
+            <div data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">
+                <h3>公告</h3>
+                <ul>
+                    <li>2013年12月3日晚上11点将停机维护一小时左右</li>
+                </ul>
+            </div>
+            <div data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">
+                <h3>更新日志</h3>
+                <ul>
+                    <li>2013-12-03: 魔神更新以及BUG修复
+                        <ul>
+                            <li>六大魔神技能全面升级，感谢<b>cwal18</b>提供情报</li>
+                            <li>修复虚空假面的攻击力BUG，感谢<b>slbtsbc</b>和<b>守望月磐</b>提供情报</li>
+                            <li>修复魔法协会长复活带封印或背刺卡牌时候的BUG，感谢<b>a0026881</b>提供情报</li>
+                        </ul>
+                    </li>
+                    <li>2013-11-30: BUG修复
+                        <ul>
+                            <li>修复横扫触发额外裂伤的BUG，感谢<b>沸腾的冰红茶</b>提供情报</li>
+                            <li>修复世界树之灵神圣守护的BUG，感谢<b>hejiangting8</b>提供情报</li>
+                            <li>修复世界树之灵COST的BUG，感谢<b>IP为221.*.*.158的朋友</b>提供情报</li>
+                            <li>更新骸骨大将的第二技能为[死契]暴风雪6，感谢<b>IP为112.*.*.134的朋友</b>提供情报</li>
+                        </ul>
+                    </li>
+                    <li>2013-11-28: 全面修复17张新卡的COST
+                        <ul>
+                            <li>感谢魔卡WIKI的及时更新和各位朋友的提醒</li>
+                        </ul>
+                    </li>
+                    <li>2013-11-27: 修复几个BUG
+                        <ul>
+                            <li>精灵女王的COST从19改为17，15级COST改为19（感谢吧友<b>uiiysss1</b>提供情报）</li>
+                            <li>修复地图战中<b>无符文</b>的条件判断错误（感谢吧友<b>勿忘干将</b>和<b>ycphoenix</b>提供情报）</li>
+                            <li>修复<b>魔法协会长</b>总是复活最后死亡的卡的BUG（感谢吧友<b>PandaGM</b>提供情报）</li>
+                            <li>新加的一些卡片的数据都来源于魔卡WIKI，但是这次WIKI上的COST数值都很诡异，多数卡10级和15级的COST没有区别，可能有错，希望大家一起帮忙排查</li>
+                        </ul>
+                    </li>
+                    <li>2013-11-25: 添加17张新卡
+                        <ul>
+                            <li>王国：血瞳魔剑师 王城巡逻犬 魔能巨石像 科学怪人 驯鹰射手</li>
+                            <li>森林：复仇血精灵 裁决巨石像 高等暗精灵 梦境女神 精灵女王</li>
+                            <li>蛮荒：仙狐巫女 尖牙捕食者 冰雪巨人 龙角将军</li>
+                            <li>地狱：赤红地狱战马 骸骨大将 末日预言师</li>
+                        </ul>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>
@@ -237,7 +262,7 @@
                 <a id="play-map-1-game-button" class="battle-button" data-role="button" data-mini="true" data-theme="c">文字战斗</a>
                 <a id="simulate-map-1-game-button" class="battle-button" data-role="button" data-mini="true" data-theme="c">动画战斗</a>
                 <a id="play-map-massive-game-button" class="battle-button" data-role="button" data-mini="true" data-theme="c">连续千场</a>
-                <a data-role="button" data-mini="true" data-theme="c" href="http://cnrdn.com/rd.htm?id=1344758&r=http%3A%2F%2Ftieba.baidu.com%2Fp%2F2660663919%3Ffrom%3Dmap" target="blank">提BUG</a>
+                <a data-role="button" data-mini="true" data-theme="c" href="#communication">提BUG</a>
             </div>
             <div id="map-battle-div" data-mini="true" data-role="collapsible" data-collapsed="false" data-theme="c" data-content-theme="d">
                 <h3>战斗记录</h3>
@@ -309,8 +334,7 @@
                 <a id="play-auto-1-game-button" class="battle-button" data-role="button" data-mini="true" data-theme="c">文字战斗</a>
                 <a id="simulate-auto-1-game-button" class="battle-button" data-role="button" data-mini="true" data-theme="c">动画战斗</a>
                 <a id="play-auto-massive-game-button" class="battle-button" data-role="button" data-mini="true" data-theme="c">连续千场</a>
-                <a data-role="button" data-mini="true" data-theme="c" target="blank"
-                    href="http://cnrdn.com/rd.htm?id=1344758&r=http%3A%2F%2Ftieba.baidu.com%2Fp%2F2660663919%3Ffrom%3D1v1">提BUG</a>
+                <a data-role="button" data-mini="true" data-theme="c" href="#communication">提BUG</a>
             </div>
             <div id="battle-div" data-mini="true" data-role="collapsible" data-collapsed="false" data-theme="c"
                 data-content-theme="<%=dataContentTheme%>">
@@ -427,8 +451,7 @@
                 <a id="play-boss-1-game-button" class="battle-button" data-role="button" data-mini="true" data-theme="c">文字战斗</a>
                 <a id="simulate-boss-1-game-button" class="battle-button" data-role="button" data-mini="true" data-theme="c">动画战斗</a>
                 <a id="play-boss-massive-game-button" class="battle-button" data-role="button" data-mini="true" data-theme="c">卡组强度分析</a>
-                <a data-role="button" data-mini="true" data-theme="c" target="blank"
-                    href="http://cnrdn.com/rd.htm?id=1344758&r=http%3A%2F%2Ftieba.baidu.com%2Fp%2F2660663919%3Ffrom%3Dboss">提BUG</a>
+                <a data-role="button" data-mini="true" data-theme="c" href="#communication">提BUG</a>
             </div>
             <div id="battle-div" data-mini="true" data-role="collapsible" data-collapsed="false" data-theme="c" data-content-theme="d">
                 <h3>战斗记录</h3>
@@ -517,7 +540,7 @@
                 <a id="faster-button" data-role="button" data-mini="true" data-theme="c">加快</a>
                 <a id="slower-button" data-role="button" data-mini="true" data-theme="c">减慢</a>
                 <a id="back-button" data-role="button" data-mini="true" data-theme="c" href="javascript:history.go(-1)">返回</a>
-                <a data-role="button" data-mini="true" data-theme="c" href="http://cnrdn.com/rd.htm?id=1344758&r=http%3A%2F%2Ftieba.baidu.com%2Fp%2F2660663919%3Ffrom%3Danimation" target="blank">提BUG</a>
+                <a data-role="button" data-mini="true" data-theme="c" href="#communication" target="blank">提BUG</a>
             </div>
             <div id="player-status"></div>
         </div>

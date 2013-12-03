@@ -30,10 +30,13 @@ public class HolyGuardFeature {
     }
     
     public static void remove(FeatureResolver resolver, FeatureInfo feature, CardInfo card) {
-        List<FeatureEffect> effects = card.getEffectsCausedBy(feature);
-        for (FeatureEffect effect : effects) {
-            resolver.getStage().getUI().loseAdjustHPEffect(card, effect);
-            card.removeEffect(effect);
+        for (CardInfo ally : card.getOwner().getField().toList()) {
+            if (ally == null) { continue; }
+            List<FeatureEffect> effects = ally.getEffectsCausedBy(feature);
+            for (FeatureEffect effect : effects) {
+                resolver.getStage().getUI().loseAdjustHPEffect(ally, effect);
+                ally.removeEffect(effect);
+            }
         }
     }
 }

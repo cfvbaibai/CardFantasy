@@ -14,7 +14,7 @@ import cfvbaibai.cardfantasy.engine.Player;
 public final class SealFeature {
     public static void apply(FeatureInfo featureInfo, FeatureResolver resolver, CardInfo attacker, Player defender)
             throws HeroDieSignal {
-        if (!attacker.isFirstRound()) {
+        if (attacker.hasUsed(featureInfo)) {
             return;
         }
         Feature feature = featureInfo.getFeature();
@@ -29,5 +29,6 @@ public final class SealFeature {
             ui.addCardStatus(attacker, victim, feature, status);
             victim.addStatus(status);
         }
+        attacker.setUsed(featureInfo);
     }
 }

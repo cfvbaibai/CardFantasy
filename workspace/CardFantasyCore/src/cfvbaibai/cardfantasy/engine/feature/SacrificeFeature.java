@@ -15,7 +15,7 @@ import cfvbaibai.cardfantasy.engine.OnAttackBlockingResult;
 
 public final class SacrificeFeature {
     public static void apply(FeatureResolver resolver, FeatureInfo featureInfo, CardInfo card) throws HeroDieSignal {
-        if (!card.isFirstRound()) {
+        if (card.hasUsed(featureInfo)) {
             return;
         }
         Feature feature = featureInfo.getFeature();
@@ -41,6 +41,7 @@ public final class SacrificeFeature {
         ui.adjustAT(card, card, adjAT, feature);
         card.addEffect(new FeatureEffect(FeatureEffectType.MAXHP_CHANGE, featureInfo, adjHP, true));
         card.addEffect(new FeatureEffect(FeatureEffectType.ATTACK_CHANGE, featureInfo, adjAT, true));
+        card.setUsed(featureInfo);
         ui.compactField(card.getOwner().getField());
     }
 }

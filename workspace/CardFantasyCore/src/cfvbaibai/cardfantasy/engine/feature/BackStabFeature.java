@@ -13,11 +13,14 @@ public final class BackStabFeature {
     public static void apply(FeatureResolver resolver, FeatureInfo featureInfo, CardInfo attacker) {
         Feature feature = featureInfo.getFeature();
         int adjAT = feature.getImpact();
-        if (attacker.isFirstRound()) {
-            resolver.getStage().getUI().useSkill(attacker, feature, true);
-            resolver.getStage().getUI().adjustAT(attacker, attacker, adjAT, feature);
-            attacker.addEffect(new FeatureEffect(FeatureEffectType.ATTACK_CHANGE, featureInfo, adjAT, false));
+        if (attacker.hasUsed(featureInfo)) {
+            return;
         }
+
+        resolver.getStage().getUI().useSkill(attacker, feature, true);
+        resolver.getStage().getUI().adjustAT(attacker, attacker, adjAT, feature);
+        attacker.addEffect(new FeatureEffect(FeatureEffectType.ATTACK_CHANGE, featureInfo, adjAT, false));
+        attacker.setUsed(featureInfo);
     }
 
     public static void remove(FeatureResolver resolver, FeatureInfo feature, CardInfo card) {

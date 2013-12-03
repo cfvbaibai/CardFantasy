@@ -31,7 +31,7 @@ public class CardInfo extends EntityInfo {
 
     @NonSerializable
     private Map<FeatureType, List<FeatureEffect>> effects;
-    private boolean firstRound;
+    //private boolean firstRound;
 
     public CardInfo(Card card, Player owner) {
         this.card = card;
@@ -52,9 +52,9 @@ public class CardInfo extends EntityInfo {
         return card.getExtraFeature();
     }
     
-    public boolean isFirstRound() {
+/*    private boolean isFirstRound() {
         return firstRound;
-    }
+    }*/
     
     public boolean hasDeadOnce() {
         return this.deadOnce;
@@ -64,9 +64,9 @@ public class CardInfo extends EntityInfo {
         this.deadOnce = deadOnce;
     }
     
-    public void setFirstRound(boolean firstRound) {
-        this.firstRound = firstRound;
-    }
+    //public void setFirstRound(boolean firstRound) {
+    //    this.firstRound = firstRound;
+    //}
 
     public void addEffect(FeatureEffect effect) {
         FeatureType type = effect.getCause().getFeature().getType();
@@ -421,5 +421,18 @@ public class CardInfo extends EntityInfo {
 
     public int getStar() {
         return this.card.getStar();
+    }
+
+    public boolean hasUsed(FeatureInfo featureInfo) {
+        for (FeatureEffect effect : this.getEffects()) {
+            if (effect.getCause() == featureInfo && effect.getType() == FeatureEffectType.SKILL_USED) {
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    public void setUsed(FeatureInfo featureInfo) {
+        this.addEffect(new FeatureEffect(FeatureEffectType.SKILL_USED, featureInfo, 0, true));
     }
 }

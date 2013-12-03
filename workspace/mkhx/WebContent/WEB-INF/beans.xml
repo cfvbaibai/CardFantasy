@@ -4,11 +4,11 @@
     xmlns:mvc="http://www.springframework.org/schema/mvc"
     xmlns:jdbc="http://www.springframework.org/schema/jdbc"
     xmlns:aop="http://www.springframework.org/schema/aop"
-    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-        http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd
-        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
-        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
-        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+        http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.2.xsd
+        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd">
     <context:component-scan base-package="cfvbaibai.cardfantasy.web" />
     <!-- Enable annotations like @Autowired and @Qualifier -->
     <context:annotation-config />
@@ -18,16 +18,18 @@
     <aop:aspectj-autoproxy />
     
     <mvc:resources mapping="/resources/**" location="/resources/" />
+    
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/views/" />
         <property name="suffix" value=".jsp" />
     </bean>
+    
     <bean class="cfvbaibai.cardfantasy.web.beans.UserActionRecorder" />
     <bean class="cfvbaibai.cardfantasy.web.beans.JsonHandler" />
     <bean class="cfvbaibai.cardfantasy.web.beans.Logger" />
     <bean class="cfvbaibai.cardfantasy.game.MapStages" />
     <bean class="cfvbaibai.cardfantasy.web.aspects.EncodingAspect" />
-    <bean id="communication-logger" class="java.util.logging.Logger" factory-method="getLogger">
+    <bean class="java.util.logging.Logger" factory-method="getLogger">
         <qualifier value="communication" />
         <constructor-arg>
             <value>cardfantasy-communication</value>

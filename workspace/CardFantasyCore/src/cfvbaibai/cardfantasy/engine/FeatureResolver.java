@@ -507,7 +507,7 @@ public class FeatureResolver {
                 } else if (feature.getType() == FeatureType.削弱) {
                     WeakenFeature.apply(this, feature, attacker, defender, normalAttackDamage);
                 } else if (feature.getType() == FeatureType.裂伤) {
-                    WoundFeature.apply(this, feature, attacker, defender, normalAttackDamage);
+                    WoundFeature.apply(this, feature, attackFeature, attacker, defender, normalAttackDamage);
                 } else if (feature.getType() == FeatureType.嗜血) {
                     BloodThirstyFeature.apply(this, feature, attacker, normalAttackDamage);
                 } else if (feature.getType() == FeatureType.连锁攻击) {
@@ -790,7 +790,7 @@ public class FeatureResolver {
             if (feature.getType() == FeatureType.献祭) {
                 SacrificeFeature.apply(this, feature, card);
             } else if (feature.getType() == FeatureType.反噬) {
-                CounterBiteFeature.apply(feature.getFeature(), this, card);
+                CounterBiteFeature.apply(feature, this, card);
             }
         }
         for (FeatureInfo feature : card.getUsableSummonFeatures()) {
@@ -901,7 +901,7 @@ public class FeatureResolver {
 
     public void summonCard(Player player, CardInfo card) throws HeroDieSignal {
         card.reset();
-        card.setFirstRound(true);
+        //card.setFirstRound(true);
         this.stage.getUI().summonCard(player, card);
         player.getField().addCard(card);
         if (this.stage.getPlayerCount() != 2) {
