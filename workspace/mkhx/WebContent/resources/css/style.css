@@ -1,4 +1,10 @@
 @CHARSET "UTF-8";
+
+html {
+   overflow-y: scroll;
+   height: 101%
+}
+
 div#main-container {
 	padding: 0;
 	margin-left: auto;
@@ -97,7 +103,7 @@ fieldset div.ui-controlgroup-controls .ui-select {
 .fixed-width .ui-dialog-contain {
 	width: 98%;
 	max-width: 500px;
-	top: -50px;
+	top: -40px;
 }
 
 div#battle-canvas canvas{
@@ -149,10 +155,10 @@ div.entity-title {
 }
 
 div#deck-chooser div.candidate {
-	WIDTH: 100%;
-	HEIGHT: 100px;
-	OVERFLOW: auto;
-	BORDER: solid 1px #CCCCCC;
+	width: 100%;
+	height: 100px;
+	overflow: auto;
+	border: solid 1px #CCCCCC;
 }
 
 div#communication textarea {
@@ -177,4 +183,8 @@ div.dashboard ul {
 	margin-top: 5px;
 	margin-bottom: 5px;
 	padding-left: 20px;
+}
+
+div#news ul li.new {
+	color: red;
 }

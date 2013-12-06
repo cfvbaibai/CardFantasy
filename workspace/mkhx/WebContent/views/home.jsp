@@ -7,16 +7,18 @@
 %>
 
 </head>
-<body>
-    <div id="left-panel-template" data-role="panel" data-position="left" data-display="reveal">
-        <ul data-role="listview"></ul>
+<body class="ui-mobile-viewport">
+    <div style="display: none">
+        <div id="left-panel-template" data-role="panel" data-position="left" data-display="overlay">
+            <ul data-role="listview"></ul>
+        </div>
+        
+        <div id="header-template" data-role="header" data-theme="c" data-position="fixed">
+            <a class="nav-button" href="#" data-icon="bars" data-iconpos="left">导航</a>
+            <h3 class="header-title"></h3>
+        </div>
     </div>
     
-    <div id="header-template" data-role="header" data-theme="c" data-position="fixed">
-        <a class="nav-button" href="#" data-icon="bars" data-iconpos="left">导航</a>
-        <h3 class="header-title"></h3>
-    </div>
-
     <div id="news" class="main-page" data-role="page" data-category="main-page" data-title="公告" data-mini="true">
         <div class="dashboard" data-role="content" data-theme="c">
             <div>
@@ -31,6 +33,7 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">
                 <h3>更新日志</h3>
                 <ul>
+                    <li class="new">2013-12-06: 更新导航界面</li>
                     <li>2013-12-04: 添加旧魔神的模拟
                         <ul>
                             <li>应广大WP玩家的强烈要求，在魔神战中复了添加了旧魔神的模拟。</li>
@@ -586,9 +589,13 @@
                     <a href="#a" data-role="button" data-mini="true" data-inline="true" data-icon="delete" data-iconpos="right">降临天使+不动-15</a>
                 </div>
             </div>
-            <div id="deck-builder-control-panel" data-mini="true" data-role="controlgroup" data-type="horizontal">
-                <a id="update-deck-button" data-role="button" data-mini="true" data-theme="c">确定</a>
-                <a data-role="button" data-mini="true" data-theme="c" href="javascript:history.go(-1)">取消</a>
+            <div class="ui-grid-a" id="deck-builder-control-panel" data-mini="true">
+                <div class="ui-block-a">
+                    <a id="update-deck-button" data-role="button" data-mini="true" data-theme="c">确定</a>
+                </div>
+                <div class="ui-block-b">
+                    <a data-role="button" data-mini="true" data-theme="c" href="javascript:history.go(-1)">取消</a>
+                </div>
             </div>
         </div>
     </div>
@@ -616,9 +623,13 @@
                     </td>
                 </tr>
             </table>
-            <div>
-                <a id="add-rune-button" data-role="button" data-mini="true">确定</a>
-                <a href="javascript:history.go(-1)" data-role="button" data-mini="true">取消</a>
+            <div class="ui-grid-a">
+                <div class="ui-block-a">
+                    <a id="add-rune-button" data-role="button" data-mini="true">确定</a>
+                </div>
+                <div class="ui-block-b">
+                    <a href="javascript:history.go(-1)" data-role="button" data-mini="true">取消</a>
+                </div>
             </div>
         </div>
     </div>
@@ -727,9 +738,13 @@
                     </tr>
                 </table>
             </div>
-            <div>
-                <a id="add-card-button" data-role="button" data-mini="true">确定</a>
-                <a href="javascript:history.go(-1)" data-role="button" data-mini="true">取消</a>
+            <div class="ui-grid-a">
+                <div class="ui-block-a">
+                    <a id="add-card-button" data-role="button" data-mini="true">确定</a>
+                </div>
+                <div class="ui-block-b">
+                    <a href="javascript:history.go(-1)" data-role="button" data-mini="true">取消</a>
+                </div>
             </div>
         </div>
     </div>

@@ -272,7 +272,7 @@ var ArenaSettings = function() {
     this.player1HpRectY = 0;
 
     this.refreshSize = function () {
-        var currentWidth = $(window).width() * 0.9;
+        var currentWidth = $(window).width() * 0.95;
         if (currentWidth > this.maxWidth) { currentWidth = this.maxWidth; }
         var currentHeight = currentWidth * this.heightRate;
         this.width = currentWidth;
