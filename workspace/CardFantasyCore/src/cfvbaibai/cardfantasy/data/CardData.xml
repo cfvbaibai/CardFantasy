@@ -589,7 +589,7 @@
         <Feature type="复活" level="0" unlock="5" death="true" />
         <Feature type="转生" level="5" unlock="10" />
     </Card>
-    <Card id="2507" name="世界树之灵" wikiId="30773" race="森林" speed="4" star="5" cost="15" incrCost="2" at="315" hp="1260" incrAT="33" incrHP="36">
+    <Card id="2507" name="世界树之灵" wikiId="30773" race="森林" speed="4" star="5" cost="16" incrCost="2" at="315" hp="1260" incrAT="33" incrHP="36">
         <Feature type="神圣守护" level="7" unlock="0" />
         <Feature type="闪避" level="6" unlock="5" />
         <Feature type="陷阱" level="2" unlock="10" />
@@ -1305,6 +1305,44 @@
         <Feature type="免疫" level="0" unlock="10" />
     </Card>
     <Card id="5506" name="万蛛之后" wikiId="30871" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="1500" hp="14400000" incrAT="0" incrHP="0">
+        <Feature type="毒云" level="10" unlock="0" />
+        <Feature type="魔神之刃" level="0" unlock="5" />
+        <Feature type="陷阱" level="5" unlock="10" />
+        <Feature type="免疫" level="0" unlock="10" />
+    </Card>
+    
+    <!-- Old Bosses -->
+    <Card id="6501" name="旧复仇女神" wikiId="30871" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="1200" hp="6500000" incrAT="0" incrHP="0">
+        <Feature type="送还" level="0" unlock="0" />
+        <Feature type="魔神之刃" level="0" unlock="5" />
+        <Feature type="反击" level="10" unlock="10" />
+        <Feature type="免疫" level="0" unlock="10" />
+    </Card>
+    <Card id="6502" name="旧邪龙之神" wikiId="30871" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="1800" hp="7500000" incrAT="0" incrHP="0">
+        <Feature type="盾刺" level="10" unlock="0" />
+        <Feature type="魔神之咒" level="0" unlock="5" />
+        <Feature type="裂伤" level="0" unlock="10" />
+        <Feature type="免疫" level="0" unlock="10" />
+    </Card>
+    <Card id="6503" name="旧噩梦之主" wikiId="30871" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="900" hp="5500000" incrAT="0" incrHP="0">
+        <Feature type="格挡" level="10" unlock="0" />
+        <Feature type="魔神之甲" level="0" unlock="5" />
+        <Feature type="送还" level="0" unlock="10" />
+        <Feature type="免疫" level="0" unlock="10" />
+    </Card>
+    <Card id="6504" name="旧毁灭之神" wikiId="30871" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="1200" hp="7000000" incrAT="0" incrHP="0">
+        <Feature type="烈火焚神" level="10" unlock="0" />
+        <Feature type="魔神之咒" level="0" unlock="5" />
+        <Feature type="摧毁" level="0" unlock="10" />
+        <Feature type="免疫" level="0" unlock="10" />
+    </Card>
+    <Card id="6505" name="旧深渊影魔" wikiId="30871" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="1500" hp="6000000" incrAT="0" incrHP="0">
+        <Feature type="诅咒" level="10" unlock="0" />
+        <Feature type="魔神之甲" level="0" unlock="5" />
+        <Feature type="毒云" level="10" unlock="10" />
+        <Feature type="免疫" level="0" unlock="10" />
+    </Card>
+    <Card id="6506" name="旧万蛛之后" wikiId="30871" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="1500" hp="6000000" incrAT="0" incrHP="0">
         <Feature type="毒云" level="10" unlock="0" />
         <Feature type="魔神之刃" level="0" unlock="5" />
         <Feature type="陷阱" level="5" unlock="10" />

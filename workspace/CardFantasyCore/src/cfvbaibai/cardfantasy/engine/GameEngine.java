@@ -5,6 +5,7 @@ import java.util.Collection;
 import java.util.List;
 
 import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
+import cfvbaibai.cardfantasy.CardFantasyUserRuntimeException;
 import cfvbaibai.cardfantasy.GameOverSignal;
 import cfvbaibai.cardfantasy.GameUI;
 import cfvbaibai.cardfantasy.data.Card;
@@ -42,12 +43,12 @@ public class GameEngine {
         Collection <Card> cards = playerInfo.getCards();
         Collection <Rune> runes = playerInfo.getRunes();
         if (cards.size() > playerInfo.getCardSlot()) {
-            throw new CardFantasyRuntimeException(String.format(
+            throw new CardFantasyUserRuntimeException(String.format(
                     "%s 的卡牌槽不足！%s 卡牌槽数：%d, 卡组卡牌数：%d",
                     playerInfo.getId(), playerInfo.getId(), playerInfo.getCardSlot(), cards.size()));
         }
         if (runes.size() > playerInfo.getRuneSlot()) {
-            throw new CardFantasyRuntimeException(String.format(
+            throw new CardFantasyUserRuntimeException(String.format(
                     "%s 的符文槽不足！%s 符文槽数：%d, 卡组符文数：%d",
                     playerInfo.getId(), playerInfo.getId(), playerInfo.getRuneSlot(), runes.size()));
         }
@@ -56,7 +57,7 @@ public class GameEngine {
             cost += card.getCost();
         }
         if (cost > playerInfo.getMaxCost()) {
-            throw new CardFantasyRuntimeException(String.format(
+            throw new CardFantasyUserRuntimeException(String.format(
                     "%s 的COST不足！%s 的最大COST：%d, 卡组COST: %d",
                     playerInfo.getId(), playerInfo.getId(), playerInfo.getMaxCost(), cost));
         }

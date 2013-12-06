@@ -17,11 +17,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import cfvbaibai.cardfantasy.CardFantasyUserRuntimeException;
 import cfvbaibai.cardfantasy.GameUI;
 import cfvbaibai.cardfantasy.data.Card;
 import cfvbaibai.cardfantasy.data.CardData;
@@ -69,6 +71,10 @@ public class AutoBattleController {
     @Autowired
     private Logger logger;
     
+    @Autowired
+    @Qualifier("user-error")
+    private java.util.logging.Logger userErrorLogger;
+    
     @RequestMapping(value = "/")
     public ModelAndView home(HttpServletRequest request) {
         ModelAndView mv = new ModelAndView();
@@ -78,9 +84,17 @@ public class AutoBattleController {
     }
 
     private String handleError(Exception e, boolean isJson) {
-        String errorMessage = Utils.getAllMessage(e);
+        String errorMessage = "";
         logger.info(errorMessage);
-        logger.error(e);
+        if (e instanceof CardFantasyUserRuntimeException) {
+            CardFantasyUserRuntimeException cfure = (CardFantasyUserRuntimeException)e;
+            userErrorLogger.severe(cfure.getMessage());
+            errorMessage = cfure.getMessage() + cfure.getHelpMessage();
+        } else {
+            logger.error(e);
+            errorMessage = Utils.getAllMessage(e);
+        }
+        
         String message = String.format("<font color='red'>%s<br />发生错误！<br />%s<br />",
                 getCurrentTime(), errorMessage);
         if (isJson) {

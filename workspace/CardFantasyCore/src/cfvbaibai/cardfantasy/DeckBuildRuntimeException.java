@@ -1,6 +1,6 @@
 package cfvbaibai.cardfantasy;
 
-public class DeckBuildRuntimeException extends CardFantasyRuntimeException {
+public class DeckBuildRuntimeException extends CardFantasyUserRuntimeException {
 
     private static final long serialVersionUID = 193208372894017945L;
     private static final String HELP_MSG =
@@ -15,11 +15,11 @@ public class DeckBuildRuntimeException extends CardFantasyRuntimeException {
             "<tr bgcolor='white'><td>洗炼、等级和数量符号顺序错误</td><td>凤凰-15+转生5*5,震源岩蟾*1+不动</td><td>凤凰+转生5-15*5,震源岩蟾+不动*1</td></tr>" +
             "</table>";
     public DeckBuildRuntimeException(String message) {
-        super(message + HELP_MSG);
+        super(message, HELP_MSG);
     }
 
     public DeckBuildRuntimeException(String message, Exception inner) {
-        super(message + HELP_MSG, inner);
+        super(message, HELP_MSG, inner);
     }
 
 }

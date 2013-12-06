@@ -35,34 +35,16 @@
             <value>cardfantasy-communication</value>
         </constructor-arg>
     </bean>
+    <bean class="java.util.logging.Logger" factory-method="getLogger">
+        <qualifier value="user-error" />
+        <constructor-arg>
+            <value>cardfantasy-user-error</value>
+        </constructor-arg>
+    </bean>
     
     <!-- also add the following beans to get rid of some exceptions -->
     <!-- Need a way to get rid of the deprecated warnings -->
     <!-- http://stackoverflow.com/questions/1483063/spring-mvc-3-and-handling-static-content-am-i-missing-something -->
     <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter" />
     <bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping" />
-    <!-- 
-    <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
-        <property name="messageConverters">
-            <list>
-                <bean class="org.springframework.http.converter.StringHttpMessageConverter">
-                    <property name="supportedMediaTypes">
-                        <list>
-                            <bean class="org.springframework.http.MediaType">
-                                <constructor-arg index="0" value="text" />
-                                <constructor-arg index="1" value="plain" />
-                                <constructor-arg index="2" value="UTF-8" />
-                            </bean>
-                            <bean class="org.springframework.http.MediaType">
-                                <constructor-arg index="0" value="*" />
-                                <constructor-arg index="1" value="*" />
-                                <constructor-arg index="2" value="UTF-8" />
-                            </bean>
-                        </list>
-                    </property>
-                </bean>
-            </list>
-        </property>
-    </bean>
-     -->
 </beans>

@@ -19,12 +19,19 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">
                 <h3>公告</h3>
                 <ul>
-                    <li>2013年12月3日晚上11点将停机维护一小时左右</li>
+                    <li>毁灭之龙的二维有了微调，请求大家<a href="#communication">点击这里</a>提供最新数据，多谢啦。</li>
                 </ul>
             </div>
             <div data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">
                 <h3>更新日志</h3>
                 <ul>
+                    <li>2013-12-04: 添加旧魔神的模拟
+                        <ul>
+                            <li>应广大WP玩家的强烈要求，在魔神战中复了添加了旧魔神的模拟。</li>
+                            <li>修复一个封印技能某些时候会导致错误的BUG。</li>
+                            <li>感谢<b>东方僧人区 福哥马林</b>积极提出各种建议，希望大家以后回复时候也能把名字留下，这样白白就能明确地表示感谢了</li>
+                        </ul>
+                    </li>
                     <li>2013-12-03: 魔神更新以及BUG修复
                         <ul>
                             <li>六大魔神技能全面升级，感谢<b>cwal18</b>提供情报</li>
@@ -362,12 +369,18 @@
                 <h3>设置阵容</h3>
                 <div>
                     <select data-theme="c" name="boss-name" id="boss-name" data-mini="true" data-native-menu="false">
-                        <option value="复仇女神">魔神：复仇女神</option>
-                        <option value="邪龙之神">魔神：邪龙之神</option>
-                        <option value="噩梦之主">魔神：噩梦之主</option>
-                        <option value="毁灭之神">魔神：毁灭之神</option>
-                        <option value="深渊影魔">魔神：深渊影魔</option>
-                        <option value="万蛛之后">魔神：万蛛之后</option>
+                        <option value="复仇女神">新魔神：复仇女神</option>
+                        <option value="邪龙之神">新魔神：邪龙之神</option>
+                        <option value="噩梦之主">新魔神：噩梦之主</option>
+                        <option value="毁灭之神">新魔神：毁灭之神</option>
+                        <option value="深渊影魔">新魔神：深渊影魔</option>
+                        <option value="万蛛之后">新魔神：万蛛之后</option>
+                        <option value="旧复仇女神">旧魔神：复仇女神</option>
+                        <option value="旧邪龙之神">旧魔神：邪龙之神</option>
+                        <option value="旧噩梦之主">旧魔神：噩梦之主</option>
+                        <option value="旧毁灭之神">旧魔神：毁灭之神</option>
+                        <option value="旧深渊影魔">旧魔神：深渊影魔</option>
+                        <option value="旧万蛛之后">旧魔神：万蛛之后</option>
                     </select>
 
 <!-- 军团加成：10级， -->

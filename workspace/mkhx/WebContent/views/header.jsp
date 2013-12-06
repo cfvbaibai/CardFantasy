@@ -10,7 +10,6 @@
 <link href='<c:url value="/resources/img/logo.png" />' rel="shortcut icon" type="image/x-icon" /> 
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
 <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.css" />
-
 <link rel="stylesheet" href='<c:url value="/resources/css/style.css" />?version=<%= java.util.Calendar.getInstance().getTimeInMillis() %>' />
 
 <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>

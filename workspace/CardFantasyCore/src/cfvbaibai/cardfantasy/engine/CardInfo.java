@@ -315,6 +315,8 @@ public class CardInfo extends EntityInfo {
             }
             else if (effect.getType() == FeatureEffectType.MAXHP_CHANGE) {
                 sb.append("HP变化");
+            } else if (effect.getType() == FeatureEffectType.SKILL_USED) {
+                sb.append("技能已使用");
             } else {
                 throw new CardFantasyRuntimeException("Unknown feature effect type: " + effect.getType().name());
             }

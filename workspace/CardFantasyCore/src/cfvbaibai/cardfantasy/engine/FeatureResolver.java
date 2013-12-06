@@ -1060,6 +1060,8 @@ public class FeatureResolver {
                             stage.getUI().loseAdjustATEffect(card, effect);
                         } else if (effect.getType() == FeatureEffectType.MAXHP_CHANGE) {
                             stage.getUI().loseAdjustHPEffect(card, effect);
+                        } else if (effect.getType() == FeatureEffectType.SKILL_USED) {
+                            // DO NOTHING..
                         } else {
                             throw new CardFantasyRuntimeException("Invalid feature effect type " + effect.getType());
                         }
