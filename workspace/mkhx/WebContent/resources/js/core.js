@@ -241,5 +241,32 @@ $(document)
     $('#feedback-button').attr('href', 'javascript:CardFantasy.Core.sendFeedback();');
 });
 
+(function () {
+var leftPanelInited = false;
+$(document).on('pageinit', 'div.main-page', function (event) {
+    var currentPage = event.target;
+    var currentPanelId = currentPage.id + '-left-panel';
+
+    if (!leftPanelInited) {
+        $('div.main-page').each(function(i, page) {
+            $('#left-panel-template ul').append(
+                    "<li><a href='#" + page.id + "'>" + $(page).attr('data-title') + "</a></li>");
+        });
+        leftPanelInited = true;
+    }
+
+    var header = $('#header-template').clone();
+    header.find("a.nav-button").attr('href', '#' + currentPanelId);
+    header.find("h3.header-title").text($(currentPage).attr('data-title'));
+    $(currentPage).prepend(header);
+    
+    var panel = $('#left-panel-template').clone().attr('id', currentPanelId);
+    panel.find("a[href='#" + currentPage.id + "']").addClass('ui-disabled');
+    $(currentPage).prepend(panel);
+
+    $(this).trigger('pagecreate');
+});
+})();
+
 // END OF OUTERMOST IIFE
 })(CardFantasy.Core);

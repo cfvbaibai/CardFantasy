@@ -8,13 +8,19 @@
 
 </head>
 <body>
-    <div data-role="page" data-title="魔卡幻想战斗模拟器 公告" data-mini="true" id="news" class="fixed-width">
-        <div data-role="header" data-theme="c" data-position="fixed">
-            <h3 style="text-align: center">欢迎</h3>
-        </div>
+    <div id="left-panel-template" data-role="panel" data-position="left" data-display="reveal">
+        <ul data-role="listview"></ul>
+    </div>
+    
+    <div id="header-template" data-role="header" data-theme="c" data-position="fixed">
+        <a class="nav-button" href="#" data-icon="bars" data-iconpos="left">导航</a>
+        <h3 class="header-title"></h3>
+    </div>
+
+    <div id="news" class="main-page" data-role="page" data-category="main-page" data-title="公告" data-mini="true">
         <div class="dashboard" data-role="content" data-theme="c">
             <div>
-                <a href="#map-battle" data-role="button" data-mini="true" data-theme="b">点击开始使用模拟器</a>
+                <a href="#news-left-panel" data-role="button" data-mini="true" data-theme="b">点击左上角导航按钮开始使用模拟器</a>
             </div>
             <div data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">
                 <h3>公告</h3>
@@ -73,18 +79,7 @@
         </div>
     </div>
     
-    <div data-role="page" data-title="地图战" data-mini="true" id="map-battle">
-        <div data-role="header" data-id="navbar" data-position="fixed" data-theme="c">
-            <div data-role="navbar" data-theme="c">
-                <ul>
-                    <li><a href="#boss-battle">魔神战</a></li>
-                    <li><a href="#map-battle" class="ui-btn-active ui-state-persist">地图战</a></li>
-                    <li><a href="#arena-battle">竞技场</a></li>
-                    <li><a href="#communication">交流区</a></li>
-                    <li><a href="#help">帮助</a></li>
-                </ul>
-            </div>
-        </div>
+    <div id="map-battle" class="main-page" data-role="page" data-title="地图战" data-mini="true">
         <div data-role="content">
             <div data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">
                 <h3>设置阵容</h3>
@@ -278,19 +273,7 @@
         </div>
     </div>
 
-    <div data-role="page" data-title="竞技场战" data-mini="true" id="arena-battle">
-        <div data-role="header" data-id="navbar" data-position="fixed" data-theme="c">
-            <div data-role="navbar" data-theme="c">
-                <ul>
-                    <li><a href="#boss-battle">魔神战</a></li>
-                    <li><a href="#map-battle">地图战</a></li>
-                    <li><a href="#arena-battle" class="ui-btn-active ui-state-persist">竞技场</a></li>
-                    <li><a href="#communication">交流区</a></li>
-                    <li><a href="#help">帮助</a></li>
-                </ul>
-            </div>
-        </div>
-
+    <div id="arena-battle" class="main-page" data-role="page" data-title="竞技场战" data-mini="true">
         <div data-role="content">
             <div data-role="collapsible" data-mini="true" data-collapsed="false" data-theme="c" data-content-theme="d">
                 <h3>设置双方阵容</h3>
@@ -351,19 +334,7 @@
         </div>
     </div>
     
-    <div data-role="page" data-title="魔神战" data-mini="true" id="boss-battle">
-        <div data-role="header" data-id="navbar" data-position="fixed" data-theme="c">
-            <div data-role="navbar" data-theme="c">
-                <ul>
-                    <li><a href="#boss-battle" class="ui-btn-active ui-state-persist">魔神战</a></li>
-                    <li><a href="#map-battle">地图战</a></li>
-                    <li><a href="#arena-battle">竞技场</a></li>
-                    <li><a href="#communication">交流区</a></li>
-                    <li><a href="#help">帮助</a></li>
-                </ul>
-            </div>
-        </div>
-
+    <div id="boss-battle" class="main-page" data-role="page" data-title="魔神战" data-mini="true">
         <div id="boss-battle-content" data-role="content">
             <div data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">
                 <h3>设置阵容</h3>
@@ -473,18 +444,7 @@
         </div>
     </div>
 
-    <div data-role="page" data-title="交流区" data-mini="true" id="communication">
-        <div data-role="header" data-id="navbar" data-position="fixed" data-theme="c">
-            <div data-role="navbar" data-theme="c">
-                <ul>
-                    <li><a href="#boss-battle">魔神战</a></li>
-                    <li><a href="#map-battle">地图战</a></li>
-                    <li><a href="#arena-battle">竞技场</a></li>
-                    <li><a href="#communication" class="ui-btn-active ui-state-persist">交流区</a></li>
-                    <li><a href="#help">帮助</a></li>
-                </ul>
-            </div>
-        </div>
+    <div id="communication" class="main-page" data-role="page" data-title="交流区" data-mini="true">
         <div data-role="content">
             <div data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">
                 <h3>意见和建议</h3>
@@ -501,18 +461,7 @@
         </div>
     </div>
     
-    <div data-role="page" data-title="帮助" data-mini="true" id="help">
-        <div data-role="header" data-id="navbar" data-position="fixed" data-theme="c">
-            <div data-role="navbar" data-theme="c">
-                <ul>
-                    <li><a href="#boss-battle">魔神战</a></li>
-                    <li><a href="#map-battle">地图战</a></li>
-                    <li><a href="#arena-battle">竞技场</a></li>
-                    <li><a href="#communication">交流区</a></li>
-                    <li><a href="#help" class="ui-btn-active ui-state-persist">帮助</a></li>
-                </ul>
-            </div>
-        </div>
+    <div id="help" class="main-page" data-role="page" data-title="帮助" data-mini="true">
         <div data-role="content">
             <div data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">
                 <h3>友情支持</h3>
