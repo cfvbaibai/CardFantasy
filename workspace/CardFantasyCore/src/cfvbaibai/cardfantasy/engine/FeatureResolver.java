@@ -197,6 +197,8 @@ public class FeatureResolver {
                 ManaErodeFeature.apply(feature.getFeature(), this, attacker, defender, 1);
             } else if (feature.getType() == FeatureType.趁胜追击) {
                 WinningPursuitFeature.apply(this, feature, attacker, defender);
+            } else if (feature.getType() == FeatureType.复仇) {
+                RevengeFeature.apply(this, feature, attacker);
             }
         }
         RuneInfo rune = attacker.getOwner().getActiveRuneOf(RuneData.飞岩);
@@ -572,8 +574,6 @@ public class FeatureResolver {
                     PursuitFeature.apply(this, feature, attacker, defender);
                 } else if (feature.getType() == FeatureType.战意) {
                     WarthFeature.apply(this, feature, attacker, defender);
-                } else if (feature.getType() == FeatureType.复仇) {
-                    RevengeFeature.apply(this, feature, attacker, defender);
                 }
             }
         }

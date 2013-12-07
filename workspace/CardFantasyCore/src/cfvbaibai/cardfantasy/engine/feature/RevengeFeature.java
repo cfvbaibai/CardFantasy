@@ -8,7 +8,7 @@ import cfvbaibai.cardfantasy.engine.FeatureInfo;
 import cfvbaibai.cardfantasy.engine.FeatureResolver;
 
 public class RevengeFeature extends PreAttackCardFeature {
-    public static void apply(FeatureResolver resolver, FeatureInfo featureInfo, CardInfo attacker, CardInfo defender) {
+    public static void apply(FeatureResolver resolver, FeatureInfo featureInfo, CardInfo attacker) {
         int myDeadCount = attacker.getOwner().getGrave().size();
         if (myDeadCount == 0) {
             return;
