@@ -1217,7 +1217,7 @@
         <Feature type="转生" level="5" unlock="10" />
     </Card>
     
-    <Card id="4501" name="毁灭之龙" wikiId="31064" race="地狱" speed="6" star="5" cost="14" incrCost="2" at="350" hp="1250" incrAT="34" incrHP="34">
+    <Card id="4501" name="毁灭之龙" wikiId="31064" race="地狱" speed="6" star="5" cost="14" incrCost="2" at="350" hp="1270" incrAT="34" incrHP="34">
         <Feature type="暴击" level="6" unlock="0" />
         <Feature type="裂伤" level="0" unlock="5" />
         <Feature type="免疫" level="0" unlock="10" />

@@ -6,10 +6,11 @@ import cfvbaibai.cardfantasy.engine.FeatureEffect;
 import cfvbaibai.cardfantasy.engine.FeatureEffectType;
 import cfvbaibai.cardfantasy.engine.FeatureInfo;
 import cfvbaibai.cardfantasy.engine.FeatureResolver;
+import cfvbaibai.cardfantasy.engine.Player;
 
 public class WinningPursuitFeature extends PreAttackCardFeature {
-    public static void apply(FeatureResolver resolver, FeatureInfo featureInfo, CardInfo attacker, CardInfo defender) {
-        int enemyDeadCount = defender.getOwner().getGrave().size();
+    public static void apply(FeatureResolver resolver, FeatureInfo featureInfo, CardInfo attacker, Player defender) {
+        int enemyDeadCount = defender.getGrave().size();
         if (enemyDeadCount == 0) {
             return;
         }

@@ -26,8 +26,10 @@ public final class BackStabFeature {
     public static void remove(FeatureResolver resolver, FeatureInfo feature, CardInfo card) {
         List<FeatureEffect> effects = card.getEffectsCausedBy(feature);
         for (FeatureEffect effect : effects) {
-            resolver.getStage().getUI().loseAdjustATEffect(card, effect);
-            card.removeEffect(effect);
+            if (effect.getType() == FeatureEffectType.ATTACK_CHANGE) {
+                resolver.getStage().getUI().loseAdjustATEffect(card, effect);
+                card.removeEffect(effect);
+            }
         }
     }
 }

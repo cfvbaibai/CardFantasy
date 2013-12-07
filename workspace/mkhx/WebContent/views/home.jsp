@@ -27,13 +27,20 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">
                 <h3>公告</h3>
                 <ul>
-                    <li>毁灭之龙的二维有了微调，请求大家<a href="#communication">点击这里</a>提供最新数据，多谢啦。</li>
+                    <li>感谢大家一贯的支持</li>
                 </ul>
             </div>
             <div data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">
                 <h3>更新日志</h3>
                 <ul>
-                    <li class="new">2013-12-06: 更新导航界面</li>
+                    <li class="new">2013-12-07: BUG修复
+                        <ul>
+                            <li>修复背主之影背刺技能的一个BUG，感谢<b>IP为222.*.*.174</b>的朋友提供情报</li>
+                            <li>感谢大家的回复，毁灭之龙的HP已修正</li>
+                            <li>修复一个趁胜追击攻击英雄时候的BUG，感谢<b>DdiTp</b>提供情报</li>
+                        </ul>
+                    </li>
+                    <li>2013-12-06: 更新导航界面</li>
                     <li>2013-12-04: 添加旧魔神的模拟
                         <ul>
                             <li>应广大WP玩家的强烈要求，在魔神战中复了添加了旧魔神的模拟。</li>
