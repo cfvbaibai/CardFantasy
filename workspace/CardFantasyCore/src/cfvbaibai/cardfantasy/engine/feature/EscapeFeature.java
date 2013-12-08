@@ -12,7 +12,7 @@ import cfvbaibai.cardfantasy.engine.FeatureResolver;
 public final class EscapeFeature {
     public static boolean isFeatureEscaped(FeatureResolver resolver, Feature cardFeature, Feature attackFeature,
             EntityInfo attacker, CardInfo defender) {
-        if (attackFeature.getType().containsTag(FeatureTag.陷阱)) {
+        if (attackFeature.getType().containsTag(FeatureTag.控制)) {
             GameUI ui = resolver.getStage().getUI();
             ui.useSkill(defender, attacker, cardFeature, true);
             ui.blockFeature(attacker, defender, cardFeature, attackFeature);

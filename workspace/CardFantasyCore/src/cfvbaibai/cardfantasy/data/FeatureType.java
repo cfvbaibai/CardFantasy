@@ -54,7 +54,7 @@ public enum FeatureType {
     连环闪电("30959", 25, FeatureTag.魔法),
     穿刺("30960", 15, FeatureTag.抗免疫),
     格挡("30955", 20),
-    陷阱("30975", 1, FeatureTag.陷阱),
+    陷阱("30975", 1, FeatureTag.控制),
     反击("30957", 20, FeatureTag.抗免疫),
     火球("30969", 25, FeatureTag.魔法),
     冰弹("30961", 20, FeatureTag.魔法),
@@ -91,7 +91,7 @@ public enum FeatureType {
     
     回魂("31131", 1),
     二重狙击("31130", 25, FeatureTag.抗免疫),
-    迷魂("31129", 30, 5),
+    迷魂("31129", 30, 5, FeatureTag.控制),
     烈火焚神("31127", 20),
 
     毒液("31150", 20),
@@ -104,7 +104,7 @@ public enum FeatureType {
     诅咒("31145", 30),
     摧毁("31332", 0, FeatureTag.即死),
 
-    封印("31157", 0, FeatureTag.陷阱),
+    封印("31157", 0, FeatureTag.控制),
     血炼("31136", 20, FeatureTag.魔法),
     天谴("31137", 20),
     聚能护甲("31738", 50, FeatureTag.不可洗炼),
