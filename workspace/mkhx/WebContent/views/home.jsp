@@ -33,11 +33,8 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">
                 <h3>更新日志</h3>
                 <ul>
-                    <li class="new">2013-12-07: BUG修复
-                        <ul>
-                            <li>修复【脱困】无法防止【迷魂】的BUG，感谢<b>a0026881</b>提供情报</li>
-                        </ul>
-                    </li>
+                    <li class="new">2013-12-09: 应大家的需求，魔神战添加更多统计值（最大、最小、平均伤害，不稳定度）</li>
+                    <li>2013-12-08: 修复【脱困】无法防止【迷魂】的BUG，感谢<b>a0026881</b>提供情报</li>
                     <li>2013-12-07: BUG修复
                         <ul>
                             <li>修复【背刺】技能的一个BUG，感谢<b>IP为222.*.*.174</b>的朋友提供情报</li>

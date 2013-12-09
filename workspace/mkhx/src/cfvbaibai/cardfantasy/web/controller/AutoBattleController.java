@@ -45,6 +45,7 @@ import cfvbaibai.cardfantasy.game.PlayerBuilder;
 import cfvbaibai.cardfantasy.game.PveEngine;
 import cfvbaibai.cardfantasy.game.PveGameResult;
 import cfvbaibai.cardfantasy.game.PveGameResultStat;
+import cfvbaibai.cardfantasy.web.OneDimensionDataStat;
 import cfvbaibai.cardfantasy.web.Utils;
 import cfvbaibai.cardfantasy.web.animation.BattleRecord;
 import cfvbaibai.cardfantasy.web.animation.EntityDataRuntimeInfo;
@@ -283,7 +284,7 @@ public class AutoBattleController {
             PlayerInfo player2 = PlayerBuilder.build("玩家", deck, heroLv, new Legion(buffKingdom, buffForest,
                     buffSavage, buffHell));
             writer.append(getCurrentTime() + "<br />");
-            int totalDamageToBoss = 0;
+            OneDimensionDataStat stat = new OneDimensionDataStat();
             int timeoutCount = 0;
             Rule rule = Rule.getBossBattle();
             GameUI ui = new DummyGameUI();
@@ -291,7 +292,7 @@ public class AutoBattleController {
             if (trialResult.getCause() == GameEndCause.战斗超时) {
                 ++timeoutCount;
             }
-            totalDamageToBoss = trialResult.getDamageToBoss();
+            stat.addData(trialResult.getDamageToBoss());
             int gameCount = 5000 / trialResult.getRound();
             if (gameCount <= 1) {
                 gameCount = 1;
@@ -310,7 +311,7 @@ public class AutoBattleController {
                     if (gameResult.getCause() == GameEndCause.战斗超时) {
                         ++timeoutCount;
                     }
-                    totalDamageToBoss += gameResult.getDamageToBoss();
+                    stat.addData(gameResult.getDamageToBoss());
                 }
             }
             
@@ -319,7 +320,8 @@ public class AutoBattleController {
                 writer.append("您的卡组实在太厉害了！已经超出模拟器的承受能力，结果可能不准确，建议直接实测。<br />");
             }
             
-            int averageDamageToBoss = totalDamageToBoss / gameCount;
+            long averageDamageToBoss = Math.round(stat.getAverage());
+            long cvPercentage = Math.round(stat.getCoefficientOfVariation() * 100);
             //int damageToBossPerMinute = averageDamageToBoss * 60 / coolDown;
             
             writer.append("<table>");
@@ -327,12 +329,16 @@ public class AutoBattleController {
             //result.append("<tr><td>总伤害: </td><td>" + totalDamageToBoss + "</td></tr>");
             //result.append("<tr><td>平均伤害: </td><td>" + averageDamageToBoss + "</td></tr>");
             writer.append("<tr><td>卡组总COST: </td><td>" + totalCost + "</td></tr>");
-            writer.append("<tr><td>冷却时间: </td><td>" + coolDown + "秒</td></tr>");
+            writer.append("<tr><td>冷却时间: </td><td>" + coolDown + "</td></tr>");
+            writer.append("<tr><td>最小伤害: </td><td>" + Math.round(stat.getMin()) + "</td></tr>");
+            writer.append("<tr><td>平均伤害: </td><td>" + averageDamageToBoss + "</td></tr>");
+            writer.append("<tr><td>最大伤害: </td><td>" + Math.round(stat.getMax()) + "</td></tr>");
+            writer.append("<tr><td>不稳定度: </td><td>" + cvPercentage + "%</td></tr>");
             //result.append("<tr><td>平均每分钟伤害（理想）: </td><td>" + damageToBossPerMinute + "</td></tr>");
             writer.append("<tr><td colspan='2'><table style='text-align: center'><tr style='font-weight: bold'><td>魔神存活</td><td>战斗次数</td><td>总伤害</td><td>平均每分钟伤害</td></tr>");
             for (int i = 1; i <= 20; ++i) {
                 int attackCount = 1 + (60 * i / coolDown);
-                int totalDamage = attackCount * averageDamageToBoss;
+                long totalDamage = attackCount * averageDamageToBoss;
                 writer.append("<tr><td>" + i + "分钟</td><td>" + attackCount + "</td><td>" + totalDamage + "</td><td>" + (totalDamage / i) + "</td></tr>");
             }
             writer.append("</table></td></tr>");
