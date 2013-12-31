@@ -22,11 +22,15 @@ public class EncodingAspect {
     
     @Around("cfvbaibai.cardfantasy.web.aspects.EncodingAspect.outputWebResponse()")
     public void setEncoding(ProceedingJoinPoint pjp) throws Throwable {
-        logger.info("setEncoding advice activated on: " + pjp.getSignature().toShortString());
-        Object[] args = pjp.getArgs();
-        HttpServletResponse response = (HttpServletResponse)args[1];
-        response.setCharacterEncoding("UTF-8");
-        
-        pjp.proceed();
+        try {
+            logger.info("setEncoding advice activated on: " + pjp.getSignature().toShortString());
+            Object[] args = pjp.getArgs();
+            HttpServletResponse response = (HttpServletResponse)args[1];
+            response.setCharacterEncoding("UTF-8");
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            pjp.proceed();
+        }
     }
 }

@@ -7,9 +7,10 @@ import cfvbaibai.cardfantasy.engine.FeatureEffect;
 import cfvbaibai.cardfantasy.engine.FeatureEffectType;
 import cfvbaibai.cardfantasy.engine.FeatureInfo;
 import cfvbaibai.cardfantasy.engine.FeatureResolver;
+import cfvbaibai.cardfantasy.engine.HeroDieSignal;
 
 public final class OverdrawFeature {
-    public static void apply(FeatureResolver resolver, FeatureInfo featureInfo, CardInfo attacker) {
+    public static void apply(FeatureResolver resolver, FeatureInfo featureInfo, CardInfo attacker) throws HeroDieSignal {
         Feature feature = featureInfo.getFeature();
         int adjAT = feature.getImpact();
         GameUI ui = resolver.getStage().getUI();
@@ -17,6 +18,8 @@ public final class OverdrawFeature {
         ui.adjustAT(attacker, attacker, adjAT, feature);
         attacker.addEffect(new FeatureEffect(FeatureEffectType.ATTACK_CHANGE, featureInfo, adjAT, true));
         ui.attackCard(attacker, attacker, feature, adjAT);
-        attacker.applyDamage(adjAT);
+        if (resolver.applyDamage(attacker, adjAT).cardDead) {
+            resolver.resolveDeathFeature(attacker, attacker, feature);
+        }
     }
 }

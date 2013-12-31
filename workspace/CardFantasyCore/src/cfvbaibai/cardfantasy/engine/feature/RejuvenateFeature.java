@@ -7,6 +7,10 @@ import cfvbaibai.cardfantasy.engine.OnAttackBlockingResult;
 
 public final class RejuvenateFeature {
     public static void apply(Feature cardFeature, FeatureResolver resolver, CardInfo card) {
+        if (card.getHP() <= 0) {
+            // Card has already dead due to CounterAttacker, MagicReflection or Overdraw.
+            return;
+        }
         int healHP = cardFeature.getImpact();
         if (healHP + card.getHP() > card.getMaxHP()) {
             healHP = card.getMaxHP() - card.getHP();

@@ -21,7 +21,6 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
 
 import cfvbaibai.cardfantasy.CardFantasyUserRuntimeException;
 import cfvbaibai.cardfantasy.GameUI;
@@ -75,14 +74,6 @@ public class AutoBattleController {
     @Autowired
     @Qualifier("user-error")
     private java.util.logging.Logger userErrorLogger;
-    
-    @RequestMapping(value = "/")
-    public ModelAndView home(HttpServletRequest request) {
-        ModelAndView mv = new ModelAndView();
-        mv.setViewName("home");
-        this.userActionRecorder.addAction(new UserAction(new Date(), request.getRemoteAddr(), "Visit Home", ""));
-        return mv;
-    }
 
     private String handleError(Exception e, boolean isJson) {
         String errorMessage = "";

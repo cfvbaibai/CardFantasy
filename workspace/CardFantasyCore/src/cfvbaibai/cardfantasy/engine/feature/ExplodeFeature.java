@@ -9,6 +9,7 @@ import cfvbaibai.cardfantasy.engine.EntityInfo;
 import cfvbaibai.cardfantasy.engine.FeatureResolver;
 import cfvbaibai.cardfantasy.engine.HeroDieSignal;
 import cfvbaibai.cardfantasy.engine.OnAttackBlockingResult;
+import cfvbaibai.cardfantasy.engine.Player;
 
 public final class ExplodeFeature {
     /**
@@ -23,7 +24,8 @@ public final class ExplodeFeature {
 
         int damage = cardFeature.getImpact();
         GameUI ui = resolver.getStage().getUI();
-        List<CardInfo> victims = resolver.getAdjacentCards(attacker.getOwner().getField(), exploder.getPosition());
+        Player attackerOwner = resolver.getStage().getOpponent(exploder.getOwner());
+        List<CardInfo> victims = resolver.getAdjacentCards(attackerOwner.getField(), exploder.getPosition());
         for (CardInfo victim : victims) {
             if (victim == null) {
                 continue;

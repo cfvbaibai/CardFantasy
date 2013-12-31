@@ -14,6 +14,7 @@ public class JsonHandler {
         .setExclusionStrategies(new NonSerializableStrategy())
         .registerTypeAdapter(Player.class, new PlayerJsonSerializer())
         .setPrettyPrinting()
+        .setDateFormat("yyyy-MM-dd HH:mm:ss")
         .create();
     }
 

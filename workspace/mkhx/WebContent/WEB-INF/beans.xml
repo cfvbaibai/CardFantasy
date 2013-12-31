@@ -9,26 +9,36 @@
         http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
         http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd">
-    <context:component-scan base-package="cfvbaibai.cardfantasy.web" />
+    <context:component-scan base-package="cfvbaibai.cardfantasy.web.listener,cfvbaibai.cardfantasy.web.dao" />
     <!-- Enable annotations like @Autowired and @Qualifier -->
     <context:annotation-config />
-    <!--  Enable annotations like @Controller and @RequestParam -->
-    <mvc:annotation-driven />
-    <!--  Enable annotations like @Aspect -->
-    <aop:aspectj-autoproxy />
-    
-    <mvc:resources mapping="/resources/**" location="/resources/" />
-    
-    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="prefix" value="/views/" />
-        <property name="suffix" value=".jsp" />
+
+    <import resource="env.xml" />
+
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource" />
+        <property name="mapperLocations" value="/WEB-INF/*-mapper.xml" />
     </bean>
-    
+
+    <bean id="postMapperFactory" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="mapperInterface" value="cfvbaibai.cardfantasy.web.dao.PostMapper" />
+        <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+    </bean>
+
+    <bean class="cfvbaibai.cardfantasy.web.dao.DaoServiceImpl" />
+
+    <bean class="java.util.concurrent.atomic.AtomicInteger">
+        <qualifier value="active-session-count" />
+        <constructor-arg>
+            <value>1</value>
+        </constructor-arg>
+    </bean>
+
     <bean class="cfvbaibai.cardfantasy.web.beans.UserActionRecorder" />
     <bean class="cfvbaibai.cardfantasy.web.beans.JsonHandler" />
     <bean class="cfvbaibai.cardfantasy.web.beans.Logger" />
     <bean class="cfvbaibai.cardfantasy.game.MapStages" />
-    <bean class="cfvbaibai.cardfantasy.web.aspects.EncodingAspect" />
+    
     <bean class="java.util.logging.Logger" factory-method="getLogger">
         <qualifier value="communication" />
         <constructor-arg>
@@ -41,10 +51,4 @@
             <value>cardfantasy-user-error</value>
         </constructor-arg>
     </bean>
-    
-    <!-- also add the following beans to get rid of some exceptions -->
-    <!-- Need a way to get rid of the deprecated warnings -->
-    <!-- http://stackoverflow.com/questions/1483063/spring-mvc-3-and-handling-static-content-am-i-missing-something -->
-    <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter" />
-    <bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping" />
 </beans>

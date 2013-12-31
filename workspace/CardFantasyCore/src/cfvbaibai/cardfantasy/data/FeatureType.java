@@ -106,6 +106,7 @@ public enum FeatureType {
 
     封印("31157", 0, FeatureTag.控制),
     血炼("31136", 20, FeatureTag.魔法),
+    鲜血盛宴("54209", 0, 20, FeatureTag.魔法),
     天谴("31137", 20),
     聚能护甲("31738", 50, FeatureTag.不可洗炼),
     群体护甲("31607", 30, FeatureTag.不可洗炼),

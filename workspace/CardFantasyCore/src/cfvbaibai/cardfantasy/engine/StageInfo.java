@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
 import cfvbaibai.cardfantasy.GameUI;
 import cfvbaibai.cardfantasy.Randomizer;
 import cfvbaibai.cardfantasy.data.PlayerInfo;
@@ -174,5 +175,17 @@ public class StageInfo {
 
     public Randomizer getRandomizer() {
         return randomizer;
+    }
+
+    public Player getOpponent(Player currentPlayer) {
+        if (this.getPlayerCount() != 2) {
+            throw new CardFantasyRuntimeException("Invalid operation. Player count is " + this.getPlayerCount());
+        }
+        for (Player player : this.getPlayers()) {
+            if (!player.getId().equals(currentPlayer.getId())) {
+                return player;
+            }
+        }
+        throw new CardFantasyRuntimeException("Should not reach here!");
     }
 }

@@ -17,7 +17,6 @@ CardFantasy.Core = {};
 
 // OUTERMOST IIFE
 (function(Core) {
-
 var sendRequest = function(url, postData, outputDivId, isJson) {
     var buttons = $('a.battle-button');
     buttons.addClass("ui-disabled");
@@ -45,12 +44,15 @@ var sendRequest = function(url, postData, outputDivId, isJson) {
     .complete(function () {
         $.mobile.loading('hide');
         buttons.removeClass("ui-disabled");
-        $("#" + outputDivId).parent().removeClass('ui-collapsible-content-collapsed');
-        $("#" + outputDivId).html(result);
+        if (outputDivId) {
+            $("#" + outputDivId).parent().removeClass('ui-collapsible-content-collapsed');
+            $("#" + outputDivId).html(result);
+        }
     });
 };
+Core.sendRequest = sendRequest;
 
-Core.playAutoGame = function(count) {
+var playAutoGame = function(count) {
     var deck1 = $('#deck1').val().trim();
     var deck2 = $('#deck2').val().trim();
     var heroLv1 = $('#hero1Lv').val();
@@ -83,8 +85,9 @@ Core.playAutoGame = function(count) {
     }
     sendRequest(url, postData, 'battle-output', isJson);
 };
+Core.playAutoGame = playAutoGame;
 
-Core.playBossGame = function(count) {
+var playBossGame = function(count) {
     var deck = $('#deck').val().trim();
     var heroLv = $('#heroLv').val();
     var bossName = $('#boss-name').val();
@@ -119,8 +122,9 @@ Core.playBossGame = function(count) {
     }
     sendRequest(url, postData, 'boss-battle-output', isJson);
 };
+Core.playBossGame = playBossGame;
 
-Core.playMapGame = function(count) {
+var playMapGame = function(count) {
     var deck = $('#map-deck').val().trim();
     var heroLv = $('#map-hero-lv').val();
     var map = getMap();
@@ -147,14 +151,7 @@ Core.playMapGame = function(count) {
     }
     sendRequest(url, postData, 'map-battle-output', isJson);
 };
-
-Core.sendFeedback = function() {
-    var sender = $('#feedback-sender').val().trim();
-    var feedback = $('#feedback').val().trim();
-    var postData = { feedback: feedback, sender: sender };
-    $.get('http://cnrdn.com/rd.htm?id=1344758&r=SendFeedback&seed=' + seed, function(data) { console.log('SendFeedback'); });
-    sendRequest('SendFeedback', postData, 'feedback-message', false);
-};
+Core.playMapGame = playMapGame;
 
 var getMap = function() {
     return $('#map-id').val() + '-' + $('#map-difficulty').val();
@@ -236,9 +233,6 @@ $(document)
     $('#play-auto-1-game-button').attr('href', 'javascript:CardFantasy.Core.playAutoGame(1);');
     $('#simulate-auto-1-game-button').attr('href', 'javascript:CardFantasy.Core.playAutoGame(-1);');
     $('#play-auto-massive-game-button').attr('href', 'javascript:CardFantasy.Core.playAutoGame(1000);');
-})
-.on("pageinit", "#communication", function(event) {
-    $('#feedback-button').attr('href', 'javascript:CardFantasy.Core.sendFeedback();');
 });
 
 (function () {
@@ -246,6 +240,7 @@ var leftPanelInited = false;
 $(document).on('pageinit', 'div.main-page', function (event) {
     var currentPage = event.target;
     var currentPanelId = currentPage.id + '-left-panel';
+    console.log('div.main-page -> #' + currentPanelId + '.pageinit begins');
 
     if (!leftPanelInited) {
         $('div.main-page').each(function(i, page) {
@@ -265,6 +260,7 @@ $(document).on('pageinit', 'div.main-page', function (event) {
     $(currentPage).prepend(panel);
 
     $(this).trigger('pagecreate');
+    console.log('div.main-page -> #' + currentPanelId + '.pageinit ends');
 });
 })();
 

@@ -26,13 +26,13 @@ public class SiteMonitorController {
     
     @RequestMapping(value = "/monitor")
     public void monitor(HttpServletRequest request, HttpServletResponse response) {
-        response.setCharacterEncoding("UTF-8");
-        response.setHeader("Content-Type", "text/html;charset=UTF-8");
         try {
             PrintWriter writer = response.getWriter();
+            writer.println("<!DOCTYPE html>");
             writer.println("<html>");
             writer.println("<head>");
             writer.println("<style>td { font-size: 7pt; font-family: 微软雅黑, Calibri, Consolas, Tahoma, Arial; }</style>");
+            writer.println("<meta http-equiv='Content-Type' content='text/html; charset=utf-8'>");
             writer.println("<meta name='viewport' content='width=device-width, initial-scale=1'>");
             writer.println("</head>");
             writer.println("<body>");

@@ -187,6 +187,8 @@ public class FeatureResolver {
                 PlagueFeature.apply(feature, this, attacker, defender);
             } else if (feature.getType() == FeatureType.血炼) {
                 BloodPaintFeature.apply(feature.getFeature(), this, attacker, defender, 1);
+            } else if (feature.getType() == FeatureType.鲜血盛宴) {
+                BloodPaintFeature.apply(feature.getFeature(), this, attacker, defender, -1);
             } else if (feature.getType() == FeatureType.天谴) {
                 HeavenWrathFeature.apply(this, feature.getFeature(), attacker, defender);
             } else if (feature.getType() == FeatureType.封印) {
