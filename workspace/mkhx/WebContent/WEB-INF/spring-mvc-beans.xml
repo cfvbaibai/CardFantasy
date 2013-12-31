@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:mvc="http://www.springframework.org/schema/mvc"
+    xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+        http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.2.xsd
+        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd"
+>
+    <context:component-scan base-package="cfvbaibai.cardfantasy.web.controller, cfvbaibai.cardfantasy.web.aspects" />
+    <!-- Enable annotations like @Autowired and @Qualifier -->
+    <context:annotation-config />
+    <!--  Enable annotations like @Controller and @RequestParam -->
+    <mvc:annotation-driven />
+    <!--  Enable annotations like @Aspect -->
+    <aop:aspectj-autoproxy />
+    <bean class="cfvbaibai.cardfantasy.web.aspects.EncodingAspect" />
+    
+    <mvc:resources mapping="/resources/**" location="/resources/" />
+    
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/views/" />
+        <property name="suffix" value=".jsp" />
+    </bean>
+    
+    <!-- also add the following beans to get rid of some exceptions -->
+    <!-- Need a way to get rid of the deprecated warnings -->
+    <!-- http://stackoverflow.com/questions/1483063/spring-mvc-3-and-handling-static-content-am-i-missing-something -->
+    <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter" />
+    <bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping" />
+</beans>
