@@ -36,6 +36,7 @@ import cfvbaibai.cardfantasy.engine.GameEndCause;
 import cfvbaibai.cardfantasy.engine.GameEngine;
 import cfvbaibai.cardfantasy.engine.GameResult;
 import cfvbaibai.cardfantasy.engine.Rule;
+import cfvbaibai.cardfantasy.game.DeckBuilder;
 import cfvbaibai.cardfantasy.game.DummyGameUI;
 import cfvbaibai.cardfantasy.game.GameResultStat;
 import cfvbaibai.cardfantasy.game.MapInfo;
@@ -55,6 +56,8 @@ import cfvbaibai.cardfantasy.web.beans.JsonHandler;
 import cfvbaibai.cardfantasy.web.beans.Logger;
 import cfvbaibai.cardfantasy.web.beans.UserAction;
 import cfvbaibai.cardfantasy.web.beans.UserActionRecorder;
+import cfvbaibai.cardfantasy.web.dao.BossBattleStatEntry;
+import cfvbaibai.cardfantasy.web.dao.CommunicationService;
 
 @Controller
 public class AutoBattleController {
@@ -74,6 +77,9 @@ public class AutoBattleController {
     @Autowired
     @Qualifier("user-error")
     private java.util.logging.Logger userErrorLogger;
+    
+    @Autowired
+    private CommunicationService service;
 
     private String handleError(Exception e, boolean isJson) {
         String errorMessage = "";
@@ -123,8 +129,8 @@ public class AutoBattleController {
                     String.format("Deck1=%s<br />Deck2=%s<br />Lv1=%d, Lv2=%d, FirstAttack=%d",
                             deck1, deck2, heroLv1, heroLv2, firstAttack)));
             
-            PlayerInfo player1 = PlayerBuilder.build("玩家1", deck1, heroLv1);
-            PlayerInfo player2 = PlayerBuilder.build("玩家2", deck2, heroLv2);
+            PlayerInfo player1 = PlayerBuilder.build(true, "玩家1", deck1, heroLv1);
+            PlayerInfo player2 = PlayerBuilder.build(true, "玩家2", deck2, heroLv2);
             WebPlainTextGameUI ui = new WebPlainTextGameUI();
             GameEngine engine = new GameEngine(ui, new Rule(5, 999, firstAttack, false));
             engine.RegisterPlayers(player1, player2);
@@ -156,8 +162,8 @@ public class AutoBattleController {
                     String.format("Deck1=%s<br />Deck2=%s<br />Lv1=%d, Lv2=%d, FirstAttack=%d",
                             deck1, deck2, heroLv1, heroLv2, firstAttack)));
             
-            PlayerInfo player1 = PlayerBuilder.build("玩家1", deck1, heroLv1);
-            PlayerInfo player2 = PlayerBuilder.build("玩家2", deck2, heroLv2);
+            PlayerInfo player1 = PlayerBuilder.build(true, "玩家1", deck1, heroLv1);
+            PlayerInfo player2 = PlayerBuilder.build(true, "玩家2", deck2, heroLv2);
             StructuredRecordGameUI ui = new StructuredRecordGameUI();
             GameEngine engine = new GameEngine(ui, new Rule(5, 999, firstAttack, false));
             engine.RegisterPlayers(player1, player2);
@@ -189,8 +195,8 @@ public class AutoBattleController {
             this.userActionRecorder.addAction(new UserAction(new Date(), request.getRemoteAddr(), "Play Auto Massive Game",
                     String.format("Deck1=%s<br />Deck2=%s<br />Lv1=%d, Lv2=%d, FirstAttack=%d, Count=%d",
                             deck1, deck2, heroLv1, heroLv2, firstAttack, count)));
-            PlayerInfo player1 = PlayerBuilder.build("玩家1", deck1, heroLv1);
-            PlayerInfo player2 = PlayerBuilder.build("玩家2", deck2, heroLv2);
+            PlayerInfo player1 = PlayerBuilder.build(true, "玩家1", deck1, heroLv1);
+            PlayerInfo player2 = PlayerBuilder.build(true, "玩家2", deck2, heroLv2);
             GameResultStat stat = play(player1, player2, count, new Rule(5, 999, firstAttack, false));
             writer.append(getCurrentTime() + "<br />");
             writer.append("<table>");
@@ -216,8 +222,8 @@ public class AutoBattleController {
             logger.info("Hero LV = " + heroLv + ", Boss = " + bossName);
             this.userActionRecorder.addAction(new UserAction(new Date(), request.getRemoteAddr(), "Play Boss 1Match Game",
                     String.format("Deck=%s<br />HeroLV=%d, Boss=%s", deck, heroLv, bossName)));
-            PlayerInfo player1 = PlayerBuilder.build("BOSS", bossName, 99999, null);
-            PlayerInfo player2 = PlayerBuilder.build("玩家", deck, heroLv, new Legion(buffKingdom, buffForest,
+            PlayerInfo player1 = PlayerBuilder.build(false, "BOSS", bossName, 99999, null);
+            PlayerInfo player2 = PlayerBuilder.build(true, "玩家", deck, heroLv, new Legion(buffKingdom, buffForest,
                     buffSavage, buffHell));
             WebPlainTextGameUI ui = new WebPlainTextGameUI();
             GameEngine engine = new GameEngine(ui, Rule.getBossBattle());
@@ -243,8 +249,8 @@ public class AutoBattleController {
             logger.info("Hero LV = " + heroLv + ", Boss = " + bossName);
             this.userActionRecorder.addAction(new UserAction(new Date(), request.getRemoteAddr(), "Simulate Boss 1Match Game",
                     String.format("Deck=%s<br />HeroLV=%d, Boss=%s", deck, heroLv, bossName)));
-            PlayerInfo player1 = PlayerBuilder.build("BOSS", bossName, 99999, null);
-            PlayerInfo player2 = PlayerBuilder.build("玩家", deck, heroLv, new Legion(buffKingdom, buffForest,
+            PlayerInfo player1 = PlayerBuilder.build(false, "BOSS", bossName, 99999, null);
+            PlayerInfo player2 = PlayerBuilder.build(true, "玩家", deck, heroLv, new Legion(buffKingdom, buffForest,
                     buffSavage, buffHell));
             StructuredRecordGameUI ui = new StructuredRecordGameUI();
             GameEngine engine = new GameEngine(ui, Rule.getBossBattle());
@@ -271,8 +277,8 @@ public class AutoBattleController {
             logger.info("Count = " + count + ", Hero LV = " + heroLv + ", Boss = " + bossName);
             this.userActionRecorder.addAction(new UserAction(new Date(), request.getRemoteAddr(), "Play Boss Massive Game",
                     String.format("Deck=%s<br />HeroLV=%d, Boss=%s, Count=%d", deck, heroLv, bossName, count)));
-            PlayerInfo player1 = PlayerBuilder.build("BOSS", bossName, 99999, null);
-            PlayerInfo player2 = PlayerBuilder.build("玩家", deck, heroLv, new Legion(buffKingdom, buffForest,
+            PlayerInfo player1 = PlayerBuilder.build(false, "BOSS", bossName, 99999, null);
+            PlayerInfo player2 = PlayerBuilder.build(true, "玩家", deck, heroLv, new Legion(buffKingdom, buffForest,
                     buffSavage, buffHell));
             writer.append(getCurrentTime() + "<br />");
             OneDimensionDataStat stat = new OneDimensionDataStat();
@@ -314,6 +320,19 @@ public class AutoBattleController {
             long averageDamageToBoss = Math.round(stat.getAverage());
             long cvPercentage = Math.round(stat.getCoefficientOfVariation() * 100);
             //int damageToBossPerMinute = averageDamageToBoss * 60 / coolDown;
+            long minDamage = Math.round(stat.getMin());
+            long maxDamage = Math.round(stat.getMax());
+            
+            BossBattleStatEntry entry = new BossBattleStatEntry();
+            entry.setBossName(bossName);
+            entry.setHeroLv(heroLv);
+            entry.setBattleCount(gameCount);
+            entry.setMinDamage(minDamage);
+            entry.setAvgDamage(averageDamageToBoss);
+            entry.setMaxDamage(maxDamage);
+            String sortedDeck = DeckBuilder.getSortedDeckDesc(player2);
+            entry.setSortedDeck(sortedDeck);
+            service.newBossBattleStatEntry(entry);
             
             writer.append("<table>");
             //result.append("<tr><td>战斗次数: </td><td>" + count + "</td></tr>");
@@ -321,9 +340,9 @@ public class AutoBattleController {
             //result.append("<tr><td>平均伤害: </td><td>" + averageDamageToBoss + "</td></tr>");
             writer.append("<tr><td>卡组总COST: </td><td>" + totalCost + "</td></tr>");
             writer.append("<tr><td>冷却时间: </td><td>" + coolDown + "</td></tr>");
-            writer.append("<tr><td>最小伤害: </td><td>" + Math.round(stat.getMin()) + "</td></tr>");
+            writer.append("<tr><td>最小伤害: </td><td>" + minDamage + "</td></tr>");
             writer.append("<tr><td>平均伤害: </td><td>" + averageDamageToBoss + "</td></tr>");
-            writer.append("<tr><td>最大伤害: </td><td>" + Math.round(stat.getMax()) + "</td></tr>");
+            writer.append("<tr><td>最大伤害: </td><td>" + maxDamage + "</td></tr>");
             writer.append("<tr><td>不稳定度: </td><td>" + cvPercentage + "%</td></tr>");
             //result.append("<tr><td>平均每分钟伤害（理想）: </td><td>" + damageToBossPerMinute + "</td></tr>");
             writer.append("<tr><td colspan='2'><table style='text-align: center'><tr style='font-weight: bold'><td>魔神存活</td><td>战斗次数</td><td>总伤害</td><td>平均每分钟伤害</td></tr>");
@@ -351,7 +370,7 @@ public class AutoBattleController {
             logger.info("Hero LV = " + heroLv + ", Map = " + map);
             this.userActionRecorder.addAction(new UserAction(new Date(), request.getRemoteAddr(), "Play Map 1Match Game",
                     String.format("Deck=%s<br />HeroLV=%d, Map=%s", deck, heroLv, map)));
-            PlayerInfo player = PlayerBuilder.build("玩家", deck, heroLv);
+            PlayerInfo player = PlayerBuilder.build(true, "玩家", deck, heroLv);
             WebPlainTextGameUI ui = new WebPlainTextGameUI();
             PveEngine engine = new PveEngine(ui, Rule.getDefault(), this.maps);
             PveGameResult gameResult = engine.play(player, map);
@@ -374,7 +393,7 @@ public class AutoBattleController {
             logger.info("Hero LV = " + heroLv + ", Map = " + map);
             this.userActionRecorder.addAction(new UserAction(new Date(), request.getRemoteAddr(), "Simulate Map 1Match Game",
                     String.format("Deck=%s<br />HeroLV=%d, Map=%s", deck, heroLv, map)));
-            PlayerInfo player = PlayerBuilder.build("玩家", deck, heroLv);
+            PlayerInfo player = PlayerBuilder.build(true, "玩家", deck, heroLv);
             StructuredRecordGameUI ui = new StructuredRecordGameUI();
             PveEngine engine = new PveEngine(ui, Rule.getDefault(), this.maps);
             PveGameResult gameResult = engine.play(player, map);
@@ -400,7 +419,7 @@ public class AutoBattleController {
                     String.format("Deck=%s<br />Lv=%d, Count=%d, Map=%s",
                             deck, heroLv, count, map)));
             PveEngine engine = new PveEngine(new DummyGameUI(), Rule.getDefault(), this.maps);
-            PlayerInfo player = PlayerBuilder.build("玩家", deck, heroLv);
+            PlayerInfo player = PlayerBuilder.build(true, "玩家", deck, heroLv);
             PveGameResultStat stat = engine.massivePlay(player, map, count);
             writer.append(getCurrentTime() + "<br />");
             writer.append("<table>");

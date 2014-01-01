@@ -9,8 +9,8 @@ import cfvbaibai.cardfantasy.data.Rune;
 public final class MapEnemyHero extends PlayerInfo {
 
     private int maxHP;
-    public MapEnemyHero(String id, int maxHP, Collection<Rune> runes, Card[] cards) {
-        super(id, 999, null, runes, cards);
+    public MapEnemyHero(String id, int maxHP, Collection<Rune> runes, Collection<Card> cards) {
+        super(false, id, 999, null, runes, cards);
         this.maxHP = maxHP;
     }
     

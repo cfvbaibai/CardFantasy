@@ -20,8 +20,8 @@ public class CardFantasyRuneTest {
 
     @Test
     public void 凤凰v远古蝎皇_沼泽_荒芜() {
-        PlayerInfo playerA = PlayerBuilder.build("【A】", 50, "C凤凰-10*5", "R沼泽-4", "R荒芜-4");
-        PlayerInfo playerB = PlayerBuilder.build("【B】", 50, "C远古蝎皇-10*5", "R沼泽-4", "R荒芜-4");
+        PlayerInfo playerA = PlayerBuilder.build(true, "【A】", 50, "C凤凰-10*5", "R沼泽-4", "R荒芜-4");
+        PlayerInfo playerB = PlayerBuilder.build(true, "【B】", 50, "C远古蝎皇-10*5", "R沼泽-4", "R荒芜-4");
         TestGameBuilder.build(playerA, playerB).playGame();
     }
 
@@ -32,8 +32,8 @@ public class CardFantasyRuneTest {
 
     @Test
     public void 城镇弓箭兵v精灵狙击者_毒砂() {
-        PlayerInfo playerA = PlayerBuilder.build("【A】", 100, "C城镇弓箭兵-10*15", "R毒砂-4");
-        PlayerInfo playerB = PlayerBuilder.build("【B】", 100, "C精灵狙击者-10*15", "R毒砂-4");
+        PlayerInfo playerA = PlayerBuilder.build(true, "【A】", 100, "C城镇弓箭兵-10*15", "R毒砂-4");
+        PlayerInfo playerB = PlayerBuilder.build(true, "【B】", 100, "C精灵狙击者-10*15", "R毒砂-4");
         TestGameBuilder.build(playerA, playerB).playGame();
     }
 
@@ -84,8 +84,8 @@ public class CardFantasyRuneTest {
 
     @Test
     public void 魔法结晶体v堕落精灵法师_雪崩怒涛() {
-        PlayerInfo playerA = PlayerBuilder.build("【A】", 50, "C魔法结晶体-10*5", "R雪崩-4");
-        PlayerInfo playerB = PlayerBuilder.build("【B】", 10, "C堕落精灵法师-10*5", "R怒涛-4");
+        PlayerInfo playerA = PlayerBuilder.build(true, "【A】", 50, "C魔法结晶体-10*5", "R雪崩-4");
+        PlayerInfo playerB = PlayerBuilder.build(true, "【B】", 10, "C堕落精灵法师-10*5", "R怒涛-4");
         TestGameBuilder.build(playerA, playerB).playGame();
     }
 
@@ -106,8 +106,8 @@ public class CardFantasyRuneTest {
 
     @Test
     public void 水源制造者vs地岭拥有者_闪电雷云() {
-        PlayerInfo playerA = PlayerBuilder.build("【A】", 50, "C水源制造者-10*5", "R闪电-4");
-        PlayerInfo playerB = PlayerBuilder.build("【B】", 20, "C地岭拥有者-10*5", "R雷云-4");
+        PlayerInfo playerA = PlayerBuilder.build(true, "【A】", 50, "C水源制造者-10*5", "R闪电-4");
+        PlayerInfo playerB = PlayerBuilder.build(true, "【B】", 20, "C地岭拥有者-10*5", "R雷云-4");
         TestGameBuilder.build(playerA, playerB).playGame();
     }
 
@@ -118,29 +118,29 @@ public class CardFantasyRuneTest {
 
     @Test
     public void 树人祭司vs牛头人卫士_复苏飓风() {
-        PlayerInfo playerA = PlayerBuilder.build("【A】", 50, "C树人祭司-10*5", "R复苏-4");
-        PlayerInfo playerB = PlayerBuilder.build("【B】", 20, "C牛头人卫士-10*5", "R飓风-4");
+        PlayerInfo playerA = PlayerBuilder.build(true, "【A】", 50, "C树人祭司-10*5", "R复苏-4");
+        PlayerInfo playerB = PlayerBuilder.build(true, "【B】", 20, "C牛头人卫士-10*5", "R飓风-4");
         TestGameBuilder.build(playerA, playerB).playGame();
     }
 
     @Test
     public void 树人祭司vs牛头人卫士_春风洞察() {
-        PlayerInfo playerA = PlayerBuilder.build("【A】", 50, "C树人祭司-10*5", "R春风-4", "R洞察-4");
-        PlayerInfo playerB = PlayerBuilder.build("【B】", 50, "C牛头人卫士-10*5");
+        PlayerInfo playerA = PlayerBuilder.build(true, "【A】", 50, "C树人祭司-10*5", "R春风-4", "R洞察-4");
+        PlayerInfo playerB = PlayerBuilder.build(true, "【B】", 50, "C牛头人卫士-10*5");
         TestGameBuilder.build(playerA, playerB).playGame();
     }
     
     @Test
     public void 水源制造者vs月亮女神_扬旗雷狱轻灵() {
-        PlayerInfo playerA = PlayerBuilder.build("【A】", 50, "C水源制造者-10*10", "R扬旗-4", "R雷狱-4", "R轻灵-4");
-        PlayerInfo playerB = PlayerBuilder.build("【B】", 50, "C月亮女神-10*10");
+        PlayerInfo playerA = PlayerBuilder.build(true, "【A】", 50, "C水源制造者-10*10", "R扬旗-4", "R雷狱-4", "R轻灵-4");
+        PlayerInfo playerB = PlayerBuilder.build(true, "【B】", 50, "C月亮女神-10*10");
         TestGameBuilder.build(playerA, playerB).playGame();
     }
     
     @Test
     public void 黑甲铁骑士vs美杜莎女王_火拳热浪() {
-        PlayerInfo playerA = PlayerBuilder.build("【A】", 50, "C黑甲铁骑士-10*5", "R火拳-4");
-        PlayerInfo playerB = PlayerBuilder.build("【B】", 30, "C美杜莎女王-10*5", "R热浪-4");
+        PlayerInfo playerA = PlayerBuilder.build(true, "【A】", 50, "C黑甲铁骑士-10*5", "R火拳-4");
+        PlayerInfo playerB = PlayerBuilder.build(true, "【B】", 30, "C美杜莎女王-10*5", "R热浪-4");
         TestGameBuilder.build(playerA, playerB).playGame();
     }
 
@@ -151,29 +151,29 @@ public class CardFantasyRuneTest {
     
     @Test
     public void 黑甲铁骑士vs美杜莎女王_冥火淬炼() {
-        PlayerInfo playerA = PlayerBuilder.build("【A】", 50, "C黑甲铁骑士-10*5", "R冥火-4");
-        PlayerInfo playerB = PlayerBuilder.build("【B】", 20, "C美杜莎女王-10*5", "R淬炼-4");
+        PlayerInfo playerA = PlayerBuilder.build(true, "【A】", 50, "C黑甲铁骑士-10*5", "R冥火-4");
+        PlayerInfo playerB = PlayerBuilder.build(true, "【B】", 20, "C美杜莎女王-10*5", "R淬炼-4");
         TestGameBuilder.build(playerA, playerB).playGame();
     }
     
     @Test
     public void 黑甲铁骑士vs金属巨龙_雷盾焚天炎甲() {
-        PlayerInfo playerA = PlayerBuilder.build("【A】", 50, "C黑甲铁骑士-10*5", "R焚天-4", "R炎甲-4");
-        PlayerInfo playerB = PlayerBuilder.build("【B】", 20, "C金属巨龙-10*5", "R雷狱-4", "R雷盾-4");
+        PlayerInfo playerA = PlayerBuilder.build(true, "【A】", 50, "C黑甲铁骑士-10*5", "R焚天-4", "R炎甲-4");
+        PlayerInfo playerB = PlayerBuilder.build(true, "【B】", 20, "C金属巨龙-10*5", "R雷狱-4", "R雷盾-4");
         TestGameBuilder.build(playerA, playerB).playGame();
     }
     
     @Test
     public void 黑甲铁骑士vs金属巨龙_爆裂灼魂() {
-        PlayerInfo playerA = PlayerBuilder.build("【A】", 50, "C黑甲铁骑士-10*5", "R爆裂-4", "R灼魂-4");
-        PlayerInfo playerB = PlayerBuilder.build("【B】", 20, "C金属巨龙-10*5");
+        PlayerInfo playerA = PlayerBuilder.build(true, "【A】", 50, "C黑甲铁骑士-10*5", "R爆裂-4", "R灼魂-4");
+        PlayerInfo playerB = PlayerBuilder.build(true, "【B】", 20, "C金属巨龙-10*5");
         TestGameBuilder.build(playerA, playerB).playGame();
     }
 
     @Test
     public void 大恶魔vs金属巨龙_灭世绝杀() {
-        PlayerInfo playerA = PlayerBuilder.build("【A】", 50, "C大恶魔-10*10", "R灭世-4", "R绝杀-4");
-        PlayerInfo playerB = PlayerBuilder.build("【B】", 20, "C金属巨龙-10*10");
+        PlayerInfo playerA = PlayerBuilder.build(true, "【A】", 50, "C大恶魔-10*10", "R灭世-4", "R绝杀-4");
+        PlayerInfo playerB = PlayerBuilder.build(true, "【B】", 20, "C金属巨龙-10*10");
         TestGameBuilder.build(playerA, playerB).playGame();
     }
 }

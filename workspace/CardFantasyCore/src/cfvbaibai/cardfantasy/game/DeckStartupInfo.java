@@ -1,7 +1,6 @@
 package cfvbaibai.cardfantasy.game;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 import cfvbaibai.cardfantasy.Combination;
@@ -19,17 +18,11 @@ public class DeckStartupInfo {
         this.runes = new ArrayList<Rune>(runes);
         this.cards = new ArrayList<Card>(cards);
     }
-    public Collection <Rune> getRunes() {
+    public List <Rune> getRunes() {
         return new ArrayList<Rune>(this.runes);
     }
-    public Card[] getCards() {
-        Card[] result = new Card[cards.size()];
-        int i = 0;
-        for (Card card : cards) {
-            result[i] = card;
-            ++i;
-        }
-        return result;
+    public List <Card> getCards() {
+        return new ArrayList<Card>(this.cards);
     }
     public void addCard(Card card) {
         this.cards.add(card);
@@ -52,7 +45,7 @@ public class DeckStartupInfo {
         }
         List<List<Card>> cardCombs = Combination.calculate(cardCount, cards);
         System.out.println("cardCombs.size() = " + cardCombs.size());
-        List<DeckStartupInfo> decks = new ArrayList <DeckStartupInfo>(runeCombs.size() * cardCombs.size());
+        List<DeckStartupInfo> decks = new ArrayList<DeckStartupInfo>(runeCombs.size() * cardCombs.size());
         for (int r = 0; r < runeCombs.size(); ++r) {
             for (int c = 0; c < cardCombs.size(); ++c) {
                 decks.add(new DeckStartupInfo(runeCombs.get(r), cardCombs.get(c)));

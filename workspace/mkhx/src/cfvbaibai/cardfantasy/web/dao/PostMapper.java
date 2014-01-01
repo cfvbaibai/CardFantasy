@@ -11,6 +11,10 @@ public interface PostMapper {
      * @param parameters "count": OUTPUT the thread count.
      */
     void getThreadCount(Map<String, Object> parameters);
+    
     int newPost(Post post);
+    
     void newReply(Reply reply);
+    
+    void newBossBattleStatEntry(BossBattleStatEntry entry);
 }

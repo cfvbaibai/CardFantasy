@@ -40,12 +40,21 @@ public class GameEngine {
     }
     
     private void validateDeck(PlayerInfo playerInfo) {
+        if (playerInfo.isNormalPlayer() && playerInfo.getLevel() > 150) {
+            throw new CardFantasyUserRuntimeException(String.format(
+                    "%s 的等级过高：%d！玩家等级不得超过150级。",
+                    playerInfo.getId(), playerInfo.getLevel()));
+        }
         Collection <Card> cards = playerInfo.getCards();
         Collection <Rune> runes = playerInfo.getRunes();
         if (cards.size() > playerInfo.getCardSlot()) {
             throw new CardFantasyUserRuntimeException(String.format(
                     "%s 的卡牌槽不足！%s 卡牌槽数：%d, 卡组卡牌数：%d",
                     playerInfo.getId(), playerInfo.getId(), playerInfo.getCardSlot(), cards.size()));
+        }
+        if (cards.size() == 0) {
+            throw new CardFantasyUserRuntimeException(String.format(
+                    "没有为 %s 配置任何卡牌！", playerInfo.getId()));
         }
         if (runes.size() > playerInfo.getRuneSlot()) {
             throw new CardFantasyUserRuntimeException(String.format(

@@ -5,7 +5,7 @@ import java.util.List;
 
 import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
 
-public class Card implements Cloneable {
+public class Card implements Cloneable, Comparable <Card> {
     private CardData sourceInfo;
     private int exp;
     private String uniqueName;
@@ -97,5 +97,27 @@ public class Card implements Cloneable {
 
     public int getStar() {
         return this.sourceInfo.getStar();
+    }
+
+    @Override
+    public int compareTo(Card another) {
+        int result = this.getName().compareToIgnoreCase(another.getName());
+        if (result != 0) {
+            return result;
+        }
+        result = this.getLevel() - another.getLevel();
+        if (result != 0) {
+            return result;
+        }
+        if (this.getExtraFeature() == null && another.getExtraFeature() == null) {
+            return 0;
+        }
+        if (this.getExtraFeature() == null) {
+            return -1;
+        }
+        if (another.getExtraFeature() == null) {
+            return 1;
+        }
+        return this.getExtraFeature().compareTo(another.getExtraFeature());
     }
 }

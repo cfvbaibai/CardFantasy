@@ -1,6 +1,6 @@
 package cfvbaibai.cardfantasy.data;
 
-public class Rune {
+public class Rune implements Comparable<Rune> {
     private RuneData data;
     private int exp;
     public Rune(RuneData data, int exp) {
@@ -39,5 +39,17 @@ public class Rune {
 
     public boolean is(RuneData data) {
         return this.data == data;
+    }
+
+    @Override
+    public int compareTo(Rune another) {
+        if (another == null) {
+            throw new IllegalArgumentException("another should not be null");
+        }
+        int result = this.getName().compareToIgnoreCase(another.getName());
+        if (result != 0) {
+            return result;
+        }
+        return this.getLevel() - another.getLevel();
     }
 }

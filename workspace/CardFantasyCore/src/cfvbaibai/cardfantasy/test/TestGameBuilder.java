@@ -15,7 +15,7 @@ public final class TestGameBuilder {
     }
     
     public static GameResult playBossBattle(PlayerInfo player, String bossName) {
-        PlayerInfo boss = PlayerBuilder.build("BOSS", 9999, bossName);
+        PlayerInfo boss = PlayerBuilder.build(false, "BOSS", 9999, bossName);
         GameEngine engine = new GameEngine(new TestGameUI(), Rule.getBossBattle());
         engine.RegisterPlayers(boss, player);
         return engine.playGame();
@@ -32,13 +32,13 @@ public final class TestGameBuilder {
             suffixA = "A";
             suffixB = "B";
         }
-        return play(PlayerBuilder.build("英雄" + card1 + suffixA, 50, "C" + card1 + "-10*5"),
-                PlayerBuilder.build("英雄" + card2 + suffixB, 50, "C" + card2 + "-10*5"));
+        return play(PlayerBuilder.build(true, "英雄" + card1 + suffixA, 50, "C" + card1 + "-10*5"),
+                PlayerBuilder.build(true, "英雄" + card2 + suffixB, 50, "C" + card2 + "-10*5"));
     }
     
     public static GameResult play5v5withRunes(String card1, RuneData r11, String card2, RuneData r21) {
-        return play(PlayerBuilder.build("英雄" + card1, 50, "C" + card1 + "-10*5", "R" + r11.name() + "-4"),
-                PlayerBuilder.build("英雄" + card2, 50, "C" + card2 + "-10*5", "R" + r21.name() + "-4"));
+        return play(PlayerBuilder.build(true, "英雄" + card1, 50, "C" + card1 + "-10*5", "R" + r11.name() + "-4"),
+                PlayerBuilder.build(true, "英雄" + card2, 50, "C" + card2 + "-10*5", "R" + r21.name() + "-4"));
     }
     
     public static GameResult play10v10(String card1, String card2) {
@@ -46,17 +46,17 @@ public final class TestGameBuilder {
     }
     
     public static GameResult play10v10(String card1, String card2, int level) {
-        return play(PlayerBuilder.build("英雄" + card1, level, "C" + card1 + "-10*10"),
-                PlayerBuilder.build("英雄" + card2, level, "C" + card2 + "-10*10"));
+        return play(PlayerBuilder.build(true, "英雄" + card1, level, "C" + card1 + "-10*10"),
+                PlayerBuilder.build(true, "英雄" + card2, level, "C" + card2 + "-10*10"));
     }
 
     public static GameResult play1v1(String card1, String card2) {
-        return play(PlayerBuilder.build("英雄" + card1, 80, "C" + card1 + "-10"),
-                PlayerBuilder.build("英雄" + card2, 80, "C" + card2 + "-10"));
+        return play(PlayerBuilder.build(true, "英雄" + card1, 80, "C" + card1 + "-10"),
+                PlayerBuilder.build(true, "英雄" + card2, 80, "C" + card2 + "-10"));
     }
     
     public static GameResult play2v2(String card1, String card2) {
-        return play(PlayerBuilder.build("A英雄" + card1, 80, "C" + card1 + "-10*2"),
-                PlayerBuilder.build("B英雄" + card2, 80, "C" + card2 + "-10*2"));
+        return play(PlayerBuilder.build(true, "A英雄" + card1, 80, "C" + card1 + "-10*2"),
+                PlayerBuilder.build(true, "B英雄" + card2, 80, "C" + card2 + "-10*2"));
     }
 }

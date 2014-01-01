@@ -8,6 +8,7 @@ import java.util.List;
  * Immutable
  */
 public class PlayerInfo {
+    private boolean isNormalPlayer;
     private String id;
     private int level;
     private Legion legion;
@@ -57,19 +58,20 @@ public class PlayerInfo {
         3, 3, 3, 3, 3, 3, 3, 3, 3, 4,
     };
 
-    public PlayerInfo(String id, int level, Legion legion, Collection<Rune> runes, Card ... cards) {
+    public PlayerInfo(boolean isNormalPlayer, String id, int level, Legion legion, Collection<Rune> runes, Card ... cards) {
         List<Card> cardList = new ArrayList<Card>();
         for (Card card : cards) {
             cardList.add(card);
         }
-        init(id, level, legion, runes, cardList);
+        init(isNormalPlayer, id, level, legion, runes, cardList);
     }
     
-    public PlayerInfo(String id, int level, Legion legion, Collection <Rune> runes, Collection <Card> cards) {
-        init(id, level, legion, runes, cards);
+    public PlayerInfo(boolean isNormalPlayer, String id, int level, Legion legion, Collection <Rune> runes, Collection <Card> cards) {
+        init(isNormalPlayer, id, level, legion, runes, cards);
     }
     
-    private final void init(String id, int level, Legion legion, Collection <Rune> runes, Collection <Card> cards) {
+    private final void init(boolean isNormalPlayer, String id, int level, Legion legion, Collection <Rune> runes, Collection <Card> cards) {
+        this.isNormalPlayer = isNormalPlayer;
         this.id = id;
         this.level = level;
         this.legion = legion;
@@ -133,5 +135,9 @@ public class PlayerInfo {
 
     public int getLevel() {
         return this.level;
+    }
+    
+    public boolean isNormalPlayer() {
+        return this.isNormalPlayer;
     }
 }

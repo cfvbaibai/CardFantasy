@@ -1,5 +1,9 @@
 package cfvbaibai.cardfantasy.game;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -10,7 +14,9 @@ import cfvbaibai.cardfantasy.data.Card;
 import cfvbaibai.cardfantasy.data.CardData;
 import cfvbaibai.cardfantasy.data.CardDataStore;
 import cfvbaibai.cardfantasy.data.CardFeature;
+import cfvbaibai.cardfantasy.data.Feature;
 import cfvbaibai.cardfantasy.data.FeatureType;
+import cfvbaibai.cardfantasy.data.PlayerInfo;
 import cfvbaibai.cardfantasy.data.Rune;
 import cfvbaibai.cardfantasy.data.RuneData;
 import cfvbaibai.cardfantasy.data.Zht2Zhs;
@@ -131,6 +137,9 @@ public final class DeckBuilder {
                 throw new DeckBuildRuntimeException("无效的卡牌: " + desc, e);
             }
         }
+        if (extraFeatureLevel < 0 || extraFeatureLevel > 10) {
+            throw new DeckBuildRuntimeException("无效的卡牌：" + desc + "，洗炼技能等级不得大于10");
+        }
        
         boolean summonFeature = !StringUtils.isBlank(matcher.group("SummonFlag"));
         boolean deathFeature = !StringUtils.isBlank(matcher.group("DeathFlag"));
@@ -180,5 +189,62 @@ public final class DeckBuilder {
             deck.addCard(card);
         }
         return true;
+    }
+
+    public static String getDeckDesc(Card card) {
+        StringBuffer sb = new StringBuffer();
+        sb.append(card.getName());
+        Feature extraFeature = card.getExtraFeature();
+        if (extraFeature != null) {
+            sb.append('+');
+            sb.append(getDeckDesc(extraFeature));
+        }
+        sb.append('-');
+        sb.append(card.getLevel());
+        return sb.toString();
+    }
+    
+    public static String getDeckDesc(Rune rune) {
+        return rune.getName() + rune.getLevel();
+    }
+    
+    public static String getDeckDesc(Feature feature) {
+        String desc = feature.getType().name();
+        if (feature.getLevel() != 0) {
+            desc += feature.getLevel();
+        }
+        if (feature.isDeathFeature()) {
+            return "死契" + desc;
+        }
+        if (feature.isSummonFeature()) {
+            return "降临" + desc;
+        }
+        return desc;
+    }
+
+    public static String getSortedDeckDesc(PlayerInfo player) {
+        return getSortedDeckDesc(player.getCards(), player.getRunes());
+    }
+
+    public static String getSortedDeckDesc(String descsText) {
+        DeckStartupInfo dsi = DeckBuilder.multiBuild(descsText);
+        return getSortedDeckDesc(dsi.getCards(), dsi.getRunes());
+    }
+    
+    private static String getSortedDeckDesc(Collection <Card> cards, Collection <Rune> runes) {
+        List<Card> cardList = new ArrayList<Card>(cards);
+        Collections.sort(cardList);
+        List<Rune> runeList = new ArrayList<Rune>(runes);
+        Collections.sort(runeList);
+        StringBuffer sb = new StringBuffer();
+        for (Card card : cardList) {
+            sb.append(DeckBuilder.getDeckDesc(card));
+            sb.append(',');
+        }
+        for (Rune rune : runeList) {
+            sb.append(DeckBuilder.getDeckDesc(rune));
+            sb.append(',');
+        }
+        return sb.toString();
     }
 }

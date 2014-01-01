@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cfvbaibai.cardfantasy.test.CardFantasyMapper">
+    <select id="newBossBattleStatEntry" parameterType="cfvbaibai.cardfantasy.test.BossBattleStatEntry" statementType="CALLABLE">
+        {CALL sp_stat_new_boss_battle_entry(
+                #{bossName,jdbcType=VARCHAR,mode=IN},
+                #{battleCount,jdbcType=INTEGER,mode=IN},
+                #{heroLv,jdbcType=INTEGER,mode=IN},
+                #{avgDamage,jdbcType=INTEGER,mode=IN},
+                #{sortedDeck,jdbcType=VARCHAR,mode=IN}
+        )}
+    </select>
+</mapper>

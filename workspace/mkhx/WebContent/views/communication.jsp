@@ -9,10 +9,10 @@
                     <div style="clear: both"></div>
                 </div>
                 <div style="padding-top: 5px">
-                    <div class="thread-command" style="float: left; padding-right: 10px; font-size: 70%">
+                    <div class="thread-command" style="float: left; padding-right: 10px; font-size: 90%">
                         <a class="thread-reply-button" href="#" onclick="CardFantasy.Communication.openReply(this);">回复</a>
                     </div>
-                    <div class="thread-created" style="float: right; font-size: 70%"></div>
+                    <div class="thread-created" style="float: right; font-size: 90%"></div>
                     <div style="clear: both"></div>
                 </div>
                 <div class="thread-reply" style="display: none">
@@ -30,7 +30,7 @@
         </div>
         <div class="replies-template" style="display: none">
             <div class="reply-template">
-                <div style="border-top: solid 1px #CCCCFF; padding: 5px; font-size: 70%">
+                <div style="border-top: solid 1px #CCCCFF; padding: 5px; font-size: 90%">
                     <div class="reply-sender-id" style="float: left; padding-right: 10px; font-weight: bold;"></div>
                     <div class="reply-content" style="float: left"></div>
                     <div class="reply-created" style="float: right"></div>

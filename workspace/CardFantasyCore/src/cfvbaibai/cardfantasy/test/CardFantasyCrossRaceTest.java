@@ -12,8 +12,9 @@ import cfvbaibai.cardfantasy.game.PlayerBuilder;
 public class CardFantasyCrossRaceTest {
     @Test
     public void 反噬and守护() {
-        TestGameBuilder.play(PlayerBuilder.build("【A】", 50, "瘟疫蜘蛛-10*2", "魔剑士-10*3"),
-                PlayerBuilder.build("【B】", 50, "城镇弓箭兵-10*5"));
+        TestGameBuilder.play(
+                PlayerBuilder.build(true, "【A】", 50, "瘟疫蜘蛛-10*2", "魔剑士-10*3"),
+                PlayerBuilder.build(true, "【B】", 50, "城镇弓箭兵-10*5"));
     }
 
     @Test

@@ -30,34 +30,34 @@ public class PveEngineTest {
 
     @Test
     public void TestMap1_1_1() {
-        PlayerInfo player = PlayerBuilder.build("ME", 50, "C森林狼-1*3");
+        PlayerInfo player = PlayerBuilder.build(true, "ME", 50, "C森林狼-1*3");
         engine.play(player, "1-1-3");
     }
 
     @Test
     public void TestMap10_10_1() {
-        PlayerInfo player = PlayerBuilder.build("ME", 46, "R飓风-2", "R淬炼-3", "R清泉-4", "R岩壁-3", "C熊人武士-10", "C雷兽-10",
+        PlayerInfo player = PlayerBuilder.build(true, "ME", 46, "R飓风-2", "R淬炼-3", "R清泉-4", "R岩壁-3", "C熊人武士-10", "C雷兽-10",
                 "C战斗猛犸象-10*2", "C蜘蛛人女王-10*2", "C皇家卫队将领-10*2", "C大主教-10", "C秘银巨石像-10");
         engine.play(player, "10-10-1");
     }
 
     @Test
     public void TestMap9_10_1() {
-        PlayerInfo p1 = PlayerBuilder.build("ME", 47, "R淬炼-4", "R石林-4", "R赤谷-4", "R岩壁-4", "C凤凰-10", "C光明之龙-10",
+        PlayerInfo p1 = PlayerBuilder.build(true, "ME", 47, "R淬炼-4", "R石林-4", "R赤谷-4", "R岩壁-4", "C凤凰-10", "C光明之龙-10",
                 "C美杜莎女王-10", "C水源制造者-10", "C战斗猛犸象-10*2", "C秘银巨石像-10", "C蜘蛛人女王-10*3");
         engine.play(p1, "9-10-1");
     }
 
     @Test
     public void TestMassivePlayMap1_1_1() {
-        PlayerInfo player = PlayerBuilder.build("ME", 50, "C城镇弓箭兵-1*1");
+        PlayerInfo player = PlayerBuilder.build(true, "ME", 50, "C城镇弓箭兵-1*1");
         PveGameResultStat stat = massiveEngine.massivePlay(player, "1-1-3", 1000);
         showStat(stat);
     }
 
     @Test
     public void TestMassivePlayMap8_H_3() {
-        PlayerInfo player = PlayerBuilder.build("ME", 50, "C金属巨龙-10*3", "C月之神兽-10", "C光明之龙-10", "C魔法协会长-10",
+        PlayerInfo player = PlayerBuilder.build(true, "ME", 50, "C金属巨龙-10*3", "C月之神兽-10", "C光明之龙-10", "C魔法协会长-10",
                 "C美杜莎女王-10", "C水源制造者-10*2", "C半鹿人守护者-10", "C森林女神-10");// ,
                                                                       // "R冰封-4",
                                                                       // "R雷狱-4",
@@ -69,7 +69,7 @@ public class PveEngineTest {
 
     @Test
     public void TestMassivePlayMap10_10_1() {
-        PlayerInfo player = PlayerBuilder.build("ME", 50, "C金属巨龙-10*3", "C月之神兽-10", "C光明之龙-10", "C魔法协会长-10",
+        PlayerInfo player = PlayerBuilder.build(true, "ME", 50, "C金属巨龙-10*3", "C月之神兽-10", "C光明之龙-10", "C魔法协会长-10",
                 "C美杜莎女王-10", "C水源制造者-10*2", "C半鹿人守护者-10", "C森林女神-10");// ,
                                                                       // "R冰封-4",
                                                                       // "R雷狱-4",
@@ -81,7 +81,7 @@ public class PveEngineTest {
     
     @Test
     public void TestMassivePlayMap10_10_2() {
-        PlayerInfo player = PlayerBuilder.build("ME", 46,
+        PlayerInfo player = PlayerBuilder.build(true, "ME", 46,
                 "C毁灭之龙-10", "C降临天使-10", "C雷兽-10", "C大剑圣-10", "C秘银巨石像-10",
                 "C美杜莎女王-10", "C水源制造者-10", "C降临天使-10", "C蜘蛛人女王-10", "C战斗猛犸象-10",
                 "R清泉-4", "R淬炼-4", "R冰封-4", "R寒伤-4");// ,

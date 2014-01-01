@@ -52,4 +52,9 @@ public class DaoServiceImpl implements CommunicationService {
     public void newReply(Reply reply) {
         postMapper.newReply(reply);
     }
+
+    @Override
+    public void newBossBattleStatEntry(BossBattleStatEntry entry) {
+        postMapper.newBossBattleStatEntry(entry);
+    }
 }

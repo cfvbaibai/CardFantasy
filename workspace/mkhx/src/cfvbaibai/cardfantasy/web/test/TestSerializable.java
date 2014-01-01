@@ -33,7 +33,7 @@ public class TestSerializable {
     
     @Test
     public void TestSerializePlayerInitInfo() {
-        PlayerInfo playerInfo = PlayerBuilder.build("玩家", "降临天使*4,光明之龙*1,毁灭之龙*3,灼魂,冰封,清泉,绝杀", 75);
+        PlayerInfo playerInfo = PlayerBuilder.build(true, "玩家", "降临天使*4,光明之龙*1,毁灭之龙*3,灼魂,冰封,清泉,绝杀", 75);
         StageInfo stage = TestGameBuilder.build(playerInfo, playerInfo).getStage();
         Player player = stage.getPlayers().get(0);
         PlayerInitInfo pii = new PlayerInitInfo(player, 0);

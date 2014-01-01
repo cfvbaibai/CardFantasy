@@ -7,4 +7,5 @@ public interface CommunicationService {
     int getThreadCount();
     int newPost(Post post);
     void newReply(Reply reply);
+    void newBossBattleStatEntry(BossBattleStatEntry entry);
 }

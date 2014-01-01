@@ -47,6 +47,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
                 #{content,jdbcType=VARCHAR,mode=IN}
         )}
     </update>
+    
+    <update id="newBossBattleStatEntry" statementType="CALLABLE"
+        parameterType="cfvbaibai.cardfantasy.web.dao.BossBattleStatEntry">
+        {CALL sp_stat_new_boss_battle_entry(
+                #{bossName,jdbcType=VARCHAR,mode=IN},
+                #{battleCount,jdbcType=BIGINT,mode=IN},
+                #{heroLv,jdbcType=INTEGER,mode=IN},
+                #{minDamage,jdbcType=BIGINT,mode=IN},
+                #{avgDamage,jdbcType=BIGINT,mode=IN},
+                #{maxDamage,jdbcType=BIGINT,mode=IN},
+                #{sortedDeck,jdbcType=VARCHAR,mode=IN}
+        )}
+    </update>
     <!-- 
     <select id="findStudentById" parameterType="int" resultType="Student">
         SELECT STUD_ID AS STUDID, NAME, EMAIL, DOB FROM STUDENTS WHERE STUD_ID=#{Id} 
