@@ -258,6 +258,9 @@ $(document).on('pageinit', 'div.main-page', function (event) {
     var panel = $('#left-panel-template').clone().attr('id', currentPanelId);
     panel.find("a[href='#" + currentPage.id + "']").addClass('ui-disabled');
     $(currentPage).prepend(panel);
+    
+    // Hide right-nav-button by default. Sub page could show it in its own pageinit event handler.
+    header.find('a.right-nav-button').hide();
 
     $(this).trigger('pagecreate');
     console.log('div.main-page -> #' + currentPanelId + '.pageinit ends');

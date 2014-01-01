@@ -5,10 +5,10 @@ CardFantasy.Communication = {};
 $(document).on("pageinit", "#communication", function(event) {
     console.log('#communication.pageinit');
     $('a.right-nav-button .ui-btn-text').text('发帖');
-    $('a.right-nav-button').click(function() {
+    $('a.right-nav-button').show().click(function() {
         $("#new-thread-table")[0].scrollIntoView();
         $("#feedback").focus();
-    }).attr('href', null);
+    }).attr('href', null).trigger('create');
     $('#feedback-button').attr('href', 'javascript:CardFantasy.Communication.sendFeedback();');
     $('#feedback-sender').val(loadUserId());
     loadThreads(1);

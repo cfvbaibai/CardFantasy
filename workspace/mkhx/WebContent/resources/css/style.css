@@ -161,6 +161,17 @@ table.line-separated td {
     border-top: solid 1px black;
 }
 
+div.header-template {
+	max-width: 800px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+div.header-template.ui-panel-content-fixed-toolbar-open {
+	left: 0;
+	right: 0;
+}
+
 div.entity-title {
 	text-align: center;
 	font-size: 150%;
