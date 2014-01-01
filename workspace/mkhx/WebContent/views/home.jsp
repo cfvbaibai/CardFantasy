@@ -12,7 +12,7 @@
         <div id="header-template" class="header-template" data-role="header" data-theme="c" data-position="fixed">
             <a class="nav-button left-nav-button" href="#" data-icon="bars" data-iconpos="left">导航</a>
             <h3 class="header-title"></h3>
-            <a class="nav-button right-nav-button" href="#" data-icon="bars" data-iconpos="right">导航</a>
+            <a class="nav-button right-nav-button" href="#" data-iconpos="right">导航</a>
         </div>
     </div>
     

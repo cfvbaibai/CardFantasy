@@ -4,14 +4,21 @@ CardFantasy.Communication = {};
 
 $(document).on("pageinit", "#communication", function(event) {
     console.log('#communication.pageinit');
-    $('a.right-nav-button .ui-btn-text').text('发帖');
-    $('a.right-nav-button').show().click(function() {
-        $("#new-thread-table")[0].scrollIntoView();
-        $("#feedback").focus();
-    }).attr('href', null).trigger('create');
-    $('#feedback-button').attr('href', 'javascript:CardFantasy.Communication.sendFeedback();');
-    $('#feedback-sender').val(loadUserId());
+    var page = $(event.target);
+    page.find('a.right-nav-button .ui-btn-text').text('发帖');
+    page.find('a.right-nav-button')
+        .attr('href', null)
+        .attr('data-icon', 'edit')
+        .click(function() {
+                page.find("#new-thread-table")[0].scrollIntoView();
+                page.find("#feedback").focus();
+            })
+        .show()
+        .buttonMarkup('refresh');
+    page.find('#feedback-button').attr('href', 'javascript:CardFantasy.Communication.sendFeedback();');
+    page.find('#feedback-sender').val(loadUserId());
     loadThreads(1);
+    page.trigger('create');
 });
 
 var saveUserId = function(userId) {
