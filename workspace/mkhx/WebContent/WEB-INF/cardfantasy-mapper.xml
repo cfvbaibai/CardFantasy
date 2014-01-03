@@ -15,6 +15,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <result property="content" column="nvc_content" />
         <result property="created" column="dt_created" />
     </resultMap>
+    <resultMap type="cfvbaibai.cardfantasy.web.dao.BossBattleStatEntry" id="boss-battle-entry-map">
+        <result property="battleCount" column="i_battle_count" />
+        <result property="bossName" column="nvc_boss_name" />
+        <result property="heroLv" column="i_hero_lv" />
+        <result property="minDamage" column="bi_min_damage" />
+        <result property="avgDamage" column="bi_avg_damage" />
+        <result property="maxDamage" column="bi_max_damage" />
+        <result property="sortedDeck" column="nvc_deck" />
+    </resultMap>
 
     <select id="getThreads" resultMap="post-map,reply-map" statementType="CALLABLE"
         parameterType="cfvbaibai.cardfantasy.web.dao.PostRange">
@@ -27,6 +36,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     <select id="getThreadCount" parameterType="java.util.Map" statementType="CALLABLE">
         {CALL sp_com_get_thread_count(
                 #{count,jdbcType=INTEGER,mode=OUT}
+        )}
+    </select>
+    
+    <select id="recommendBossBattleDeck" resultMap="boss-battle-entry-map,boss-battle-entry-map" statementType="CALLABLE"
+        parameterType="cfvbaibai.cardfantasy.web.dao.BossBattleDeckFilter">
+        {CALL sp_stat_recommend_boss_battle_deck(
+                #{bossName,jdbcType=VARCHAR,mode=IN},
+                #{maxHeroLv,jdbcType=INTEGER,mode=IN}
         )}
     </select>
     

@@ -14,9 +14,10 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">
                 <h3>更新日志</h3>
                 <ul>
-                    <li class="new">2013-12-31：添加新卡【天界守护者】王国五星，感谢<b>轩</b>和<b>UII</b>提供情报</li>
-                    <li>2013-12-28：<a href="#communication">交流区</a>改版成类似贴吧的样式，现在可以看到自己的发言和回复了。</li>
-                    <li>2013-12-25: 更新5张新卡，感谢<b>a272295516</b>等朋友热情提供情报。
+                    <li class="new">2014-01-03：添加<a href="#recommend-boss-battle-deck">魔神推荐卡组</a>功能。</li>
+                    <li>2013-12-31: 添加新卡【天界守护者】王国五星，感谢<b>轩</b>和<b>UII</b>提供情报。</li>
+                    <li>2013-12-28: <a href="#communication">交流区</a>改版成类似贴吧的样式，现在可以看到自己的发言和回复了。</li>
+                    <li>2013-12-25:  更新5张新卡，感谢<b>a272295516</b>等朋友热情提供情报。
                         <ul><li>森林：蒲公英仙子</li><li>蛮荒：荒漠仙人掌 熊人巫医 半狮人武士 齐天美猴王</li></ul>
                     </li>
                     <li>2013-12-10: 修复【透支】之后没有立即死亡被【回春】救活的BUG，感谢<b>IP为118.*.*.129</b>的朋友提供情报</li>

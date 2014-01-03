@@ -19,7 +19,7 @@
                         <option value="旧万蛛之后">旧魔神：万蛛之后</option>
                     </select>
 
-<!-- 军团加成：10级， -->
+                    <!-- 军团加成：10级， -->
                     <fieldset data-theme="c" data-role="controlgroup" data-type="horizontal">
                         <select data-theme="c" name="buff-kingdom" id="buff-kingdom" data-mini="true" data-native-menu="false">
                             <option value="0">王国军团加成0</option>

@@ -17,6 +17,76 @@ CardFantasy.Core = {};
 
 // OUTERMOST IIFE
 (function(Core) {
+
+var uploadToCnzzUrl = function(url) {
+    $.get(
+            'http://cnrdn.com/rd.htm?id=1344758&r=' + url + '&seed=' + seed,
+            function(data) { console.log('ShowVictoryCondition'); }
+    );
+};
+
+var sendJsonRequest = function(attrs) {
+    var url = attrs.url;
+    var postData = attrs.postData;
+    var dataHandler = attrs.dataHandler || function() {};
+    var errorHandler = attrs.errorHandler || function(context, xhr, status, error) { alert('Error: ' + status + '! ' + error); };
+    var completeHandler = attrs.completeHandler || function() {};
+
+    uploadToCnzzUrl(url);
+    var buttons = $('a.battle-button');
+    buttons.addClass('ui-disbaled');
+    $.mobile.loading('show');
+    var context = {};
+    $.post(url, postData, function(data) {
+        dataHandler(context, data);
+    }, 'json').fail(function(xhr, status, error) {
+        errorHandler(context, xhr, status, error);
+    }).complete(function () {
+        $.mobile.loading('hide');
+        buttons.removeClass("ui-disabled");
+        completeHandler(context);
+    });
+};
+Core.sendJsonRequest = sendJsonRequest;
+
+/**
+ * json should be a list of hashes.
+ * headers should a list of strings.
+ */
+var createTable = function(rows, colNames, colLabels) {
+    var table = $('<table />');
+    var thead = $('<thead />').appendTo(table);
+    var headerTr = $('<tr />').appendTo(thead);
+    $.each(colLabels, function(i, colLabel) { $('<th>' + colLabel + '</th>').appendTo(headerTr); });
+    var tbody = $('<tbody />').appendTo(table);
+    $.each(rows, function(iRow, row) {
+        var rowTr = $('<tr />').appendTo(tbody);
+        $.each(colNames, function(i, colName) {
+            $('<td>' + row[colName] + '</td>').appendTo(rowTr);
+        });
+    });
+    return table;
+};
+Core.createTable = createTable;
+
+var createDivTable = function(rows, colNames, colLabels) {
+    var baseDiv = $('<div />');
+    var headerDiv = $('<div />').appendTo(baseDiv);
+    $.each(colLabels, function(i, colLabel) {
+        $('<div style="float: left">' + colLabel + '</div>').appendTo(headerDiv);
+    });
+    $('<div style="clear: both" />').appendTo(baseDiv);
+    $.each(rows, function(iRow, row) {
+        var rowDiv = $('<div />').appendTo(baseDiv);
+        $.each(colNames, function(i, colName) {
+            $('<div style="float: left">' + row[colName] + '</div>').appendTo(rowDiv);
+        });
+        $('<div style="clear: both" />').appendTo(rowDiv);
+    });
+    return baseDiv;
+};
+Core.createDivTable = createDivTable;
+
 var sendRequest = function(url, postData, outputDivId, isJson) {
     var buttons = $('a.battle-button');
     buttons.addClass("ui-disabled");
@@ -167,6 +237,38 @@ var getMap = function() {
     }
 })();
 
+(function () {
+    var leftPanelInited = false;
+    $(document).on('pageinit', 'div.main-page', function (event) {
+        var currentPage = event.target;
+        var currentPanelId = currentPage.id + '-left-panel';
+        console.log('div.main-page -> #' + currentPanelId + '.pageinit begins');
+
+        if (!leftPanelInited) {
+            $('div.main-page').each(function(i, page) {
+                $('#left-panel-template ul').append(
+                        "<li><a href='#" + page.id + "'>" + $(page).attr('data-title') + "</a></li>");
+            });
+            leftPanelInited = true;
+        }
+
+        var header = $('#header-template').clone();
+        header.find("a.nav-button").attr('href', '#' + currentPanelId);
+        header.find("h3.header-title").text($(currentPage).attr('data-title'));
+        $(currentPage).prepend(header);
+        
+        var panel = $('#left-panel-template').clone().attr('id', currentPanelId);
+        panel.find("a[href='#" + currentPage.id + "']").addClass('ui-disabled');
+        $(currentPage).prepend(panel);
+        
+        // Hide right-nav-button by default. Sub page could show it in its own pageinit event handler.
+        header.find('a.right-nav-button').hide();
+
+        $(this).trigger('pagecreate');
+        console.log('div.main-page -> #' + currentPanelId + '.pageinit ends');
+    });
+})();
+
 // Must do JQM page initialization in 'pageinit' event rather than 'ready' event
 $(document)
 .on("pageinit", "#map-battle", function(event) {
@@ -220,6 +322,12 @@ $(document)
     $('#play-boss-1-game-button').attr('href', 'javascript:CardFantasy.Core.playBossGame(1);');
     $('#simulate-boss-1-game-button').attr('href', 'javascript:CardFantasy.Core.playBossGame(-1);');
     $('#play-boss-massive-game-button').attr('href', 'javascript:CardFantasy.Core.playBossGame(1000);');
+    var page = $(event.target);
+    page.find('a.right-nav-button .ui-btn-text').text('推荐卡组');
+    page.find('a.right-nav-button')
+        .attr('href', '#recommend-boss-battle-deck')
+        .attr('data-icon', 'info')
+        .show().buttonMarkup('refresh');
 })
 .on("pageinit", "#arena-battle", function(event) {
     var dataText = $.cookie('arena-battle');
@@ -234,38 +342,6 @@ $(document)
     $('#simulate-auto-1-game-button').attr('href', 'javascript:CardFantasy.Core.playAutoGame(-1);');
     $('#play-auto-massive-game-button').attr('href', 'javascript:CardFantasy.Core.playAutoGame(1000);');
 });
-
-(function () {
-var leftPanelInited = false;
-$(document).on('pageinit', 'div.main-page', function (event) {
-    var currentPage = event.target;
-    var currentPanelId = currentPage.id + '-left-panel';
-    console.log('div.main-page -> #' + currentPanelId + '.pageinit begins');
-
-    if (!leftPanelInited) {
-        $('div.main-page').each(function(i, page) {
-            $('#left-panel-template ul').append(
-                    "<li><a href='#" + page.id + "'>" + $(page).attr('data-title') + "</a></li>");
-        });
-        leftPanelInited = true;
-    }
-
-    var header = $('#header-template').clone();
-    header.find("a.nav-button").attr('href', '#' + currentPanelId);
-    header.find("h3.header-title").text($(currentPage).attr('data-title'));
-    $(currentPage).prepend(header);
-    
-    var panel = $('#left-panel-template').clone().attr('id', currentPanelId);
-    panel.find("a[href='#" + currentPage.id + "']").addClass('ui-disabled');
-    $(currentPage).prepend(panel);
-    
-    // Hide right-nav-button by default. Sub page could show it in its own pageinit event handler.
-    header.find('a.right-nav-button').hide();
-
-    $(this).trigger('pagecreate');
-    console.log('div.main-page -> #' + currentPanelId + '.pageinit ends');
-});
-})();
 
 // END OF OUTERMOST IIFE
 })(CardFantasy.Core);

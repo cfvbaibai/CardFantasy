@@ -17,4 +17,6 @@ public interface PostMapper {
     void newReply(Reply reply);
     
     void newBossBattleStatEntry(BossBattleStatEntry entry);
+    
+    List<List<BossBattleStatEntry>> recommendBossBattleDeck(BossBattleDeckFilter filter);
 }

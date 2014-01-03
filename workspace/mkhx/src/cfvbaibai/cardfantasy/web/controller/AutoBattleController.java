@@ -58,6 +58,7 @@ import cfvbaibai.cardfantasy.web.beans.UserAction;
 import cfvbaibai.cardfantasy.web.beans.UserActionRecorder;
 import cfvbaibai.cardfantasy.web.dao.BossBattleStatEntry;
 import cfvbaibai.cardfantasy.web.dao.CommunicationService;
+import cfvbaibai.cardfantasy.web.dao.RecommendedBossBattleDecks;
 
 @Controller
 public class AutoBattleController {
@@ -500,6 +501,21 @@ public class AutoBattleController {
                 condition = mapInfo.getCondition().getDescription();
             }
             writer.print(jsonHandler.toJson(condition));
+        } catch (Exception e) {
+            writer.print(handleError(e, true));
+        }
+    }
+    
+    @RequestMapping(value = "/RecommendBossBattleDeck", headers = "Accept=application/json")
+    public void recommendBossBattleDeck(
+            HttpServletRequest request, HttpServletResponse response,
+            @RequestParam("bossName") String bossName,
+            @RequestParam("maxHeroLv") int maxHeroLv) throws IOException {
+        PrintWriter writer = response.getWriter();
+        response.setContentType("application/json");
+        try {
+            RecommendedBossBattleDecks decks = service.recommendBossBattleDeck(bossName, maxHeroLv);
+            writer.print(jsonHandler.toJson(decks));
         } catch (Exception e) {
             writer.print(handleError(e, true));
         }

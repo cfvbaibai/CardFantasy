@@ -236,3 +236,31 @@ div.dashboard ul {
 div#news ul li.new {
 	color: red;
 }
+
+#recommend-boss-battle-deck div.result-frame div.result-inner-frame {
+	min-height: 200px;
+}
+
+#recommend-boss-battle-deck input.ui-input-text {
+	text-align: center;
+}
+
+div.recommend-boss-battle-result > div > div:nth-child(1),
+div.recommend-boss-battle-result > div > div:nth-child(2),
+div.recommend-boss-battle-result > div > div:nth-child(3),
+div.recommend-boss-battle-result > div > div:nth-child(4) {
+	width: 20%;
+}
+
+div.recommend-boss-battle-result > div > div:last-child {
+	width: 100%;
+	border-bottom: solid 1px #CCCCFF;
+}
+
+div.recommend-boss-battle-result > div > div {
+	padding: 5px;
+}
+
+div.recommend-boss-battle-result > div:first-child > div:last-child {
+	padding: 0;
+}

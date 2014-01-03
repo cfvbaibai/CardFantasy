@@ -56,6 +56,7 @@ CALL :CallSql "%SCRIPT_DIR%\sp\sp_com_new_reply.sql"
 CALL :CallSql "%SCRIPT_DIR%\sp\sp_com_get_threads.sql"
 CALL :CallSql "%SCRIPT_DIR%\sp\sp_com_get_thread_count.sql"
 CALL :CallSql "%SCRIPT_DIR%\sp\sp_stat_new_boss_battle_entry.sql"
+CALL :CallSql "%SCRIPT_DIR%\sp\sp_stat_recommend_boss_battle_deck.sql"
 
 IF "%INIT_DB%" == "1" CALL :CallSql "%SCRIPT_DIR%\init_data.sql"
 

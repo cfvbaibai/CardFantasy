@@ -8,4 +8,5 @@ public interface CommunicationService {
     int newPost(Post post);
     void newReply(Reply reply);
     void newBossBattleStatEntry(BossBattleStatEntry entry);
+    RecommendedBossBattleDecks recommendBossBattleDeck(String bossName, int maxHeroLv);
 }

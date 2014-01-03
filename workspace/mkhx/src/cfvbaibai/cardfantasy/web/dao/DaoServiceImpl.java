@@ -57,4 +57,16 @@ public class DaoServiceImpl implements CommunicationService {
     public void newBossBattleStatEntry(BossBattleStatEntry entry) {
         postMapper.newBossBattleStatEntry(entry);
     }
+
+    @Override
+    public RecommendedBossBattleDecks recommendBossBattleDeck(String bossName, int maxHeroLv) {
+        BossBattleDeckFilter filter = new BossBattleDeckFilter();
+        filter.setBossName(bossName);
+        filter.setMaxHeroLv(maxHeroLv);
+        List<List<BossBattleStatEntry>> result = postMapper.recommendBossBattleDeck(filter);
+        RecommendedBossBattleDecks decks = new RecommendedBossBattleDecks();
+        decks.setDecksWithBestAvgDamage(result.get(0));
+        decks.setDecksWithBestMaxDamage(result.get(1));
+        return decks;
+    }
 }
