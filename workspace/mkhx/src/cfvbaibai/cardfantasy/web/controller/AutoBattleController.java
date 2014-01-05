@@ -113,7 +113,7 @@ public class AutoBattleController {
 
     @RequestMapping(value = "/PlayAuto1MatchGame")
     public void playAuto1MatchGame(HttpServletRequest request, HttpServletResponse response,
-            @RequestParam("deck1") String deck1,
+            @RequestParam("deck1") String deck1, @RequestParam("count") int count,
             @RequestParam("deck2") String deck2, @RequestParam("hlv1") int heroLv1, @RequestParam("hlv2") int heroLv2,
             @RequestParam("firstAttack") int firstAttack) throws IOException {
         PrintWriter writer = response.getWriter();
@@ -145,7 +145,7 @@ public class AutoBattleController {
 
     @RequestMapping(value = "/SimAuto1MatchGame", headers = "Accept=application/json")
     public void simulateAuto1MatchGame(HttpServletRequest request, HttpServletResponse response,
-            @RequestParam("deck1") String deck1,
+            @RequestParam("deck1") String deck1, @RequestParam("count") int count,
             @RequestParam("deck2") String deck2, @RequestParam("hlv1") int heroLv1, @RequestParam("hlv2") int heroLv2,
             @RequestParam("firstAttack") int firstAttack) throws IOException {
         PrintWriter writer = response.getWriter();
@@ -213,7 +213,7 @@ public class AutoBattleController {
     
     @RequestMapping(value = "/PlayBoss1MatchGame")
     public void playBoss1MatchGame(HttpServletRequest request, HttpServletResponse response,
-            @RequestParam("deck") String deck,
+            @RequestParam("deck") String deck, @RequestParam("count") int count,
             @RequestParam("hlv") int heroLv, @RequestParam("bn") String bossName, @RequestParam("bk") int buffKingdom,
             @RequestParam("bf") int buffForest, @RequestParam("bs") int buffSavage, @RequestParam("bh") int buffHell) throws IOException {
         PrintWriter writer = response.getWriter();
@@ -230,7 +230,10 @@ public class AutoBattleController {
             GameEngine engine = new GameEngine(ui, Rule.getBossBattle());
             engine.RegisterPlayers(player1, player2);
             GameResult gameResult = engine.playGame();
-            writer.print(getCurrentTime() + "<br />" + ui.getAllText());
+            writer.print(getCurrentTime() + "<br />");
+            writer.print("造成伤害：" + gameResult.getDamageToBoss() + "<br />");
+            writer.print("------------------ 战斗过程 ------------------<br />");
+            writer.print(ui.getAllText());
             logger.info("Winner: " + gameResult.getWinner().getId() + ", Damage to boss: " + gameResult.getDamageToBoss());
         } catch (Exception e) {
             writer.print(handleError(e, false));
@@ -239,7 +242,7 @@ public class AutoBattleController {
     
     @RequestMapping(value = "/SimulateBoss1MatchGame", headers = "Accept=application/json")
     public void simulateBoss1MatchGame(HttpServletRequest request, HttpServletResponse response,
-            @RequestParam("deck") String deck,
+            @RequestParam("deck") String deck, @RequestParam("count") int count,
             @RequestParam("hlv") int heroLv, @RequestParam("bn") String bossName, @RequestParam("bk") int buffKingdom,
             @RequestParam("bf") int buffForest, @RequestParam("bs") int buffSavage, @RequestParam("bh") int buffHell) throws IOException {
         PrintWriter writer = response.getWriter();
@@ -362,7 +365,7 @@ public class AutoBattleController {
     
     @RequestMapping(value = "/PlayMap1MatchGame")
     public void playMap1MatchGame(HttpServletRequest request, HttpServletResponse response,
-            @RequestParam("deck") String deck,
+            @RequestParam("deck") String deck, @RequestParam("count") int count,
             @RequestParam("hlv") int heroLv, @RequestParam("map") String map) throws IOException {
         PrintWriter writer = response.getWriter();
         try {
@@ -384,7 +387,7 @@ public class AutoBattleController {
     
     @RequestMapping(value = "/SimulateMap1MatchGame", headers = "Accept=application/json")
     public void simulateMap1MatchGame(HttpServletRequest request, HttpServletResponse response,
-            @RequestParam("deck") String deck,
+            @RequestParam("deck") String deck, @RequestParam("count") int count,
             @RequestParam("hlv") int heroLv, @RequestParam("map") String map) throws IOException {
         response.setContentType("application/json");
         PrintWriter writer = response.getWriter();

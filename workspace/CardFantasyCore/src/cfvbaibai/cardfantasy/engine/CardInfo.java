@@ -347,6 +347,10 @@ public class CardInfo extends EntityInfo {
         return true;
     }
 
+    public boolean isWeak() {
+        return this.getStatus().containsStatus(CardStatusType.虚弱);
+    }
+
     /**
      * Damage is less than 0 indicates a heal. It also return a negative number as actual heal. 
      * @param damage

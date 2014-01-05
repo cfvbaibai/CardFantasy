@@ -21,25 +21,33 @@ CardFantasy.Core = {};
 var uploadToCnzzUrl = function(url) {
     $.get(
             'http://cnrdn.com/rd.htm?id=1344758&r=' + url + '&seed=' + seed,
-            function(data) { console.log('ShowVictoryCondition'); }
+            function(data) { console.log('Visit to ' + url + ' uploaded to CNZZ.'); }
     );
 };
 
 var sendJsonRequest = function(attrs) {
-    var url = attrs.url;
-    var postData = attrs.postData;
-    var dataHandler = attrs.dataHandler || function() {};
-    var errorHandler = attrs.errorHandler || function(context, xhr, status, error) { alert('Error: ' + status + '! ' + error); };
-    var completeHandler = attrs.completeHandler || function() {};
+    attrs.requestType = 'json';
+    sendAjaxRequest(attrs);
+};
+Core.sendJsonRequest = sendJsonRequest;
 
-    uploadToCnzzUrl(url);
+var sendAjaxRequest = function(attrs) {
+    var url = attrs.url;
+    var cnzzUrl = attrs.cnzzUrl || url;
+    var postData = attrs.postData;
+    var requestType = attrs.requestType; // json for JSON request or undefined for plain text request
+    var dataHandler = attrs.dataHandler || function(context, data) {};
+    var errorHandler = attrs.errorHandler || function(context, xhr, status, error) { alert('Error: ' + status + '! ' + error); };
+    var completeHandler = attrs.completeHandler || function(context) {};
+
+    uploadToCnzzUrl(cnzzUrl);
     var buttons = $('a.battle-button');
     buttons.addClass('ui-disbaled');
     $.mobile.loading('show');
     var context = {};
     $.post(url, postData, function(data) {
         dataHandler(context, data);
-    }, 'json').fail(function(xhr, status, error) {
+    }, requestType).fail(function(xhr, status, error) {
         errorHandler(context, xhr, status, error);
     }).complete(function () {
         $.mobile.loading('hide');
@@ -47,7 +55,7 @@ var sendJsonRequest = function(attrs) {
         completeHandler(context);
     });
 };
-Core.sendJsonRequest = sendJsonRequest;
+Core.sendAjaxRequest = sendAjaxRequest;
 
 /**
  * json should be a list of hashes.
@@ -87,38 +95,44 @@ var createDivTable = function(rows, colNames, colLabels) {
 };
 Core.createDivTable = createDivTable;
 
-var sendRequest = function(url, postData, outputDivId, isJson) {
+var sendRequest = function(url, postData, outputDivId, isAnimation) {
     var buttons = $('a.battle-button');
     buttons.addClass("ui-disabled");
-    $.mobile.loading('show');
-    var result = '';
-    var getFunc = isJson ? function() {
-        return $.post(url, postData, function(data) {
-            result = JSON.stringify(data);
-            if (data.error) {
-                result = data.message;
-            } else {
-                $.mobile.changePage("#arena", { transition : 'flip', role : 'dialog' });
-                CardFantasy.BattleAnimation.showBattle(data);
-            }
-        }, 'json');
-    } : function() {
-        return $.post(url, postData, function(data) {
-            result = data;
-        });
+    var errorHandler = function(context, xhr, status, error) {
+        context.result = "<span style='COLOR: red'>Error! Status=" + status + ", Detail=" + error + "</span>";
     };
-    getFunc()
-    .fail(function(xhr, status, error) {
-        result = "<span style='COLOR: red'>Error! Status=" + status + ", Detail=" + error + "</span>";
-    })
-    .complete(function () {
-        $.mobile.loading('hide');
+    var completeHandler = function(context) {
         buttons.removeClass("ui-disabled");
         if (outputDivId) {
-            $("#" + outputDivId).parent().removeClass('ui-collapsible-content-collapsed');
-            $("#" + outputDivId).html(result);
+            var outputDiv = $("#" + outputDivId);
+            outputDiv.parent().removeClass('ui-collapsible-content-collapsed');
+            outputDiv.html(context.result);
         }
-    });
+    };
+    if (isAnimation) {
+        sendJsonRequest({
+            url: url,
+            postData: postData,
+            requestType: 'json',
+            dataHandler: function(context, data) {
+                context.result = result = JSON.stringify(data);
+                $.mobile.changePage("#arena", { transition : 'flip', role : 'dialog' });
+                CardFantasy.BattleAnimation.showBattle(data);
+            },
+            errorHandler: errorHandler,
+            completeHandler: completeHandler
+        });
+    } else {
+        sendAjaxRequest({
+            url: url,
+            postData: postData,
+            dataHandler: function(context, data) {
+                context.result = data;
+            },
+            errorHandler: errorHandler,
+            completeHandler: completeHandler
+        });
+    }
 };
 Core.sendRequest = sendRequest;
 
@@ -128,7 +142,7 @@ var playAutoGame = function(count) {
     var heroLv1 = $('#hero1Lv').val();
     var heroLv2 = $('#hero2Lv').val();
     var firstAttack = $('input[name=firstAttack]:radio:checked').val();
-    var isJson = false;
+    var isAnimation = false;
     var url = '';
     var postData = {
         deck1: deck1,
@@ -136,6 +150,7 @@ var playAutoGame = function(count) {
         hlv1: heroLv1,
         hlv2: heroLv2,
         firstAttack: firstAttack,
+        count: count
     };
 
     console.log('saving cookie in arena-battle...');
@@ -143,17 +158,13 @@ var playAutoGame = function(count) {
 
     if (count == 1) {
         url = 'PlayAuto1MatchGame';
-        $.get('http://cnrdn.com/rd.htm?id=1344758&r=PlayAuto1MatchGame&seed=' + seed, function(data) { console.log('PlayAuto1MatchGame'); });
     } else if (count == -1) {
-        isJson = true;
+        isAnimation = true;
         url = 'SimAuto1MatchGame';
-        $.get('http://cnrdn.com/rd.htm?id=1344758&r=SimAuto1MatchGame&seed=' + seed, function(data) { console.log('SimAuto1MatchGame'); });
     } else {
         url = 'PlayAutoMassiveGame';
-        postData["count"] = count;
-        $.get('http://cnrdn.com/rd.htm?id=1344758&r=PlayAutoMassiveGame&seed=' + seed, function(data) { console.log('PlayAutoMassiveGame'); });
     }
-    sendRequest(url, postData, 'battle-output', isJson);
+    sendRequest(url, postData, 'battle-output', isAnimation);
 };
 Core.playAutoGame = playAutoGame;
 
@@ -165,7 +176,6 @@ var playBossGame = function(count) {
     var buffForest = $('#buff-forest').val();
     var buffSavage = $('#buff-savage').val();
     var buffHell = $('#buff-hell').val();
-    var url = '';
     var postData = {
         deck: deck,
         hlv: heroLv,
@@ -174,23 +184,21 @@ var playBossGame = function(count) {
         bf: buffForest,
         bs: buffSavage,
         bh: buffHell,
+        count: count
     };
 
     $.cookie('boss-battle', JSON.stringify(postData), { expires: 365 });
-    var isJson = false;
+    var isAnimation = false;
+    var url;
     if (count == 1) {
-        url = 'PlayBoss1MatchGame' + url;
-        $.get('http://cnrdn.com/rd.htm?id=1344758&r=PlayBoss1MatchGame&seed=' + seed, function(data) { console.log('PlayBoss1MatchGame'); });
+        url = 'PlayBoss1MatchGame';
     } else if (count == -1) {
-        url = 'SimulateBoss1MatchGame' + url;
-        $.get('http://cnrdn.com/rd.htm?id=1344758&r=SimulateBoss1MatchGame&seed=' + seed, function(data) { console.log('SimulateBoss1MatchGame'); });
-        isJson = true;
+        url = 'SimulateBoss1MatchGame';
+        isAnimation = true;
     } else {
-        url = 'PlayBossMassiveGame' + url;
-        postData['count'] = count;
-        $.get('http://cnrdn.com/rd.htm?id=1344758&r=PlayBossMassiveGame&seed=' + seed, function(data) { console.log('PlayBossMassiveGame'); });
+        url = 'PlayBossMassiveGame';
     }
-    sendRequest(url, postData, 'boss-battle-output', isJson);
+    sendRequest(url, postData, 'boss-battle-output', isAnimation);
 };
 Core.playBossGame = playBossGame;
 
@@ -198,28 +206,25 @@ var playMapGame = function(count) {
     var deck = $('#map-deck').val().trim();
     var heroLv = $('#map-hero-lv').val();
     var map = getMap();
-    var url = '';
     var postData = {
         deck: deck,
         hlv: heroLv,
         map: map,
+        count: count
     };
 
     $.cookie('map-battle', JSON.stringify(postData), { expires: 365 });
-    var isJson = false;
+    var isAnimation = false;
+    var url;
     if (count == 1) {
-        url = 'PlayMap1MatchGame' + url;
-        $.get('http://cnrdn.com/rd.htm?id=1344758&r=PlayMap1MatchGame&seed=' + seed, function(data) { console.log('PlayMap1MatchGame'); });
+        url = 'PlayMap1MatchGame';
     } else if (count == -1) {
-        url = 'SimulateMap1MatchGame' + url;
-        $.get('http://cnrdn.com/rd.htm?id=1344758&r=SimulateMap1MatchGame&seed=' + seed, function(data) { console.log('SimulateMap1MatchGame'); });
-        isJson = true;
+        url = 'SimulateMap1MatchGame';
+        isAnimation = true;
     } else {
-        url = 'PlayMapMassiveGame' + url;
-        postData['count'] = count;
-        $.get('http://cnrdn.com/rd.htm?id=1344758&r=PlayMapMassiveGame&seed=' + seed, function(data) { console.log('PlayMapMassiveGame'); });
+        url = 'PlayMapMassiveGame';
     }
-    sendRequest(url, postData, 'map-battle-output', isJson);
+    sendRequest(url, postData, 'map-battle-output', isAnimation);
 };
 Core.playMapGame = playMapGame;
 
@@ -322,12 +327,14 @@ $(document)
     $('#play-boss-1-game-button').attr('href', 'javascript:CardFantasy.Core.playBossGame(1);');
     $('#simulate-boss-1-game-button').attr('href', 'javascript:CardFantasy.Core.playBossGame(-1);');
     $('#play-boss-massive-game-button').attr('href', 'javascript:CardFantasy.Core.playBossGame(1000);');
+    /*
     var page = $(event.target);
     page.find('a.right-nav-button .ui-btn-text').text('推荐卡组');
     page.find('a.right-nav-button')
         .attr('href', '#recommend-boss-battle-deck')
         .attr('data-icon', 'info')
         .show().buttonMarkup('refresh');
+    */
 })
 .on("pageinit", "#arena-battle", function(event) {
     var dataText = $.cookie('arena-battle');

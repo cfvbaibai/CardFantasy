@@ -306,12 +306,11 @@
         <Feature type="弱点攻击" level="0" unlock="5" />
         <Feature type="免疫" level="0" unlock="10" />
     </Card>
-    <Card id="1510" name="海军司令" wikiId="" race="王国" speed="4" star="5" cost="17" incrCost="2" at="315" hp="1460" incrAT="32" incrHP="46">
-        <Feature type="暴击" level="6" unlock="0" />
-        <Feature type="弱点攻击" level="0" unlock="5" />
-        <Feature type="免疫" level="0" unlock="10" />
+    <Card id="1510" name="海军司令" wikiId="" race="王国" speed="4" star="5" cost="16" incrCost="2" at="365" hp="1430" incrAT="36" incrHP="50">
+        <Feature type="脱困" level="0" unlock="0" />
+        <Feature type="不动" level="0" unlock="5" />
+        <Feature type="暴风雪" level="8" unlock="10" />
     </Card>
-    
     <!-- 森林 -->
     <Card id="2101" name="人马巡逻者" wikiId="30976" race="森林" speed="2" star="1" cost="3" incrCost="2" at="95" hp="310" incrAT="17" incrHP="11">
         <Feature type="要害" level="3" unlock="5" />

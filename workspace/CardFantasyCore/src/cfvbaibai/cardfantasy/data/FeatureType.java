@@ -20,7 +20,7 @@ public enum FeatureType {
      * 总体伤害值=基础攻击力+提升伤害+额外伤害后，小数点向上取整。
      */
     献祭("31144", 20, 10, FeatureTag.永久, FeatureTag.基础攻击加成),
-    群攻提升("31754", 15, FeatureTag.基础攻击加成),
+    群攻提升("31754", 15, FeatureTag.额外攻击加成),
     狂热("30880", 10, FeatureTag.永久, FeatureTag.基础攻击加成),
     嗜血("30940", 10, FeatureTag.永久, FeatureTag.基础攻击加成),
     透支("30946", 20, FeatureTag.永久, FeatureTag.基础攻击加成),

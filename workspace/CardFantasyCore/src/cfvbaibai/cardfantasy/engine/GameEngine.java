@@ -135,7 +135,7 @@ public class GameEngine {
 
         for (CardInfo summonedCard : summonedCards) {
             player.getHand().removeCard(summonedCard);
-            this.stage.getResolver().summonCard(player, summonedCard);
+            this.stage.getResolver().summonCard(player, summonedCard, null);
         }
 
         player.getField().compact();
@@ -217,13 +217,14 @@ public class GameEngine {
             CardInfo card = myField.getCard(i);
             ui.cardActionBegins(card);
             CardStatus status = myField.getCard(i).getStatus();
-            if (status.containsStatus(CardStatusType.冰冻) || status.containsStatus(CardStatusType.锁定)
-                    || status.containsStatus(CardStatusType.虚弱)) {
-                ui.cannotAction(myField.getCard(i));
-            } else if (status.containsStatus(CardStatusType.迷惑)) {
+            if (status.containsStatus(CardStatusType.迷惑)) {
                 ui.confused(myField.getCard(i));
                 resolver.resolvePreAttackHeroFeature(myField.getCard(i), getActivePlayer());
                 resolver.attackHero(myField.getCard(i), getActivePlayer(), null, myField.getCard(i).getCurrentAT());
+            } else if (status.containsStatus(CardStatusType.冰冻) ||
+                status.containsStatus(CardStatusType.锁定) ||
+                status.containsStatus(CardStatusType.虚弱)) {
+                ui.cannotAction(myField.getCard(i));
             } else {
                 tryAttackEnemy(myField, opField, i);
             }

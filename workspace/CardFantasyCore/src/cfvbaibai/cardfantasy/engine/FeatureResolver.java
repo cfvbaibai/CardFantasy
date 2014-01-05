@@ -204,7 +204,7 @@ public class FeatureResolver {
             }
         }
         RuneInfo rune = attacker.getOwner().getActiveRuneOf(RuneData.飞岩);
-        if (rune != null) {
+        if (rune != null && !attacker.isWeak()) {
             SnipeFeature.apply(rune.getFeature(), this, attacker, defender, 1);
         }
     }
@@ -231,13 +231,13 @@ public class FeatureResolver {
             }
             {
                 RuneInfo rune = defender.getOwner().getActiveRuneOf(RuneData.雷盾);
-                if (rune != null) {
+                if (rune != null && !defender.isWeak()) {
                     SpikeFeature.apply(rune.getFeature(), this, attacker, defender, result.getDamage());
                 }
             }
             {
                 RuneInfo rune = defender.getOwner().getActiveRuneOf(RuneData.漩涡);
-                if (rune != null) {
+                if (rune != null && !defender.isWeak()) {
                     CounterAttackFeature.apply(rune.getFeature(), this, attacker, defender, result.getDamage());
                 }
             }
@@ -248,7 +248,7 @@ public class FeatureResolver {
                     }
                 }
                 RuneInfo rune = defender.getOwner().getActiveRuneOf(RuneData.怒涛);
-                if (rune != null) {
+                if (rune != null && !defender.isWeak()) {
                     ZealotFeature.apply(rune.getFeatureInfo(), this, attacker, defender, result);
                 }
             }
@@ -289,7 +289,7 @@ public class FeatureResolver {
                 }
                 {
                     RuneInfo rune = defender.getOwner().getActiveRuneOf(RuneData.轻灵);
-                    if (rune != null) {
+                    if (rune != null && !defender.isWeak()) {
                         result.setAttackable(!DodgeFeature.apply(rune.getFeature(), this, cardAttacker, defender,
                                 result.getDamage()));
                         if (!result.isAttackable()) {
@@ -335,7 +335,7 @@ public class FeatureResolver {
                 }
                 {
                     RuneInfo rune = defender.getOwner().getActiveRuneOf(RuneData.冰封);
-                    if (rune != null) {
+                    if (rune != null && !defender.isWeak()) {
                         result.setDamage(IceArmorFeature.apply(rune.getFeature(), this, cardAttacker, defender,
                                 result.getDamage()));
                     }
@@ -345,7 +345,7 @@ public class FeatureResolver {
                 }
                 {
                     RuneInfo rune = defender.getOwner().getActiveRuneOf(RuneData.岩壁);
-                    if (rune != null) {
+                    if (rune != null && !defender.isWeak()) {
                         result.setDamage(BlockFeature.apply(rune.getFeature(), this, cardAttacker, defender, rune,
                                 result.getDamage()));
                     }
@@ -374,7 +374,7 @@ public class FeatureResolver {
                 }
                 {
                     RuneInfo rune = defender.getOwner().getRuneBox().getRuneOf(RuneData.石林);
-                    if (rune != null && rune.isActivated()) {
+                    if (rune != null && rune.isActivated() && !defender.isWeak()) {
                         if (CounterMagicFeature.isFeatureBlocked(this, rune.getFeature(), attackFeature, attacker,
                                 defender)) {
                             result.setAttackable(false);
@@ -415,7 +415,7 @@ public class FeatureResolver {
                 }
                 {
                     RuneInfo rune = defender.getOwner().getActiveRuneOf(RuneData.炎甲);
-                    if (rune != null) {
+                    if (rune != null && !defender.isWeak()) {
                         result.setDamage(MagicShieldFeature.apply(this, rune.getFeature(), attacker, defender,
                                 attackFeature, result.getDamage()));
                     }
@@ -482,7 +482,7 @@ public class FeatureResolver {
         }
         {
             RuneInfo rune = deadCard.getOwner().getActiveRuneOf(RuneData.爆裂);
-            if (rune != null) {
+            if (rune != null && !deadCard.isWeak()) {
                 ExplodeFeature.apply(this, rune.getFeature(), killerCard, deadCard);
             }
         }
@@ -497,7 +497,7 @@ public class FeatureResolver {
         }
         if (!reincarnated) {
             RuneInfo rune = deadCard.getOwner().getActiveRuneOf(RuneData.秽土);
-            if (rune != null) {
+            if (rune != null && !deadCard.isWeak()) {
                 ReincarnationFeature.apply(this, rune.getFeature(), deadCard);
             }
         }
@@ -527,13 +527,13 @@ public class FeatureResolver {
         }
         if (!attacker.isDead()) {
             RuneInfo rune = attacker.getOwner().getActiveRuneOf(RuneData.赤谷);
-            if (rune != null) {
+            if (rune != null && !attacker.isWeak()) {
                 BloodDrainFeature.apply(rune.getFeature(), this, attacker, defender, normalAttackDamage);
             }
         }
         if (!attacker.isDead()) {
             RuneInfo rune = attacker.getOwner().getActiveRuneOf(RuneData.洞察);
-            if (rune != null) {
+            if (rune != null && !attacker.isWeak()) {
                 BloodThirstyFeature.apply(this, rune.getFeatureInfo(), attacker, normalAttackDamage);
             }
         }
@@ -582,19 +582,19 @@ public class FeatureResolver {
         if (!prior) {
             {
                 RuneInfo rune = attacker.getOwner().getActiveRuneOf(RuneData.绝杀);
-                if (rune != null) {
+                if (rune != null && !attacker.isWeak()) {
                     WarthFeature.apply(this, rune.getFeatureInfo(), attacker, defender);
                 }
             }
             {
                 RuneInfo rune = attacker.getOwner().getActiveRuneOf(RuneData.寒伤);
-                if (rune != null) {
+                if (rune != null && !attacker.isWeak()) {
                     CriticalAttackFeature.apply(this, rune.getFeatureInfo(), attacker, defender);
                 }
             }
             {
                 RuneInfo rune = attacker.getOwner().getActiveRuneOf(RuneData.扬旗);
-                if (rune != null) {
+                if (rune != null && !attacker.isWeak()) {
                     PursuitFeature.apply(this, rune.getFeatureInfo(), attacker, defender);
                 }
             }
@@ -716,7 +716,7 @@ public class FeatureResolver {
         }
         {
             RuneInfo rune = card.getOwner().getActiveRuneOf(RuneData.复苏);
-            if (rune != null) {
+            if (rune != null && !card.isWeak()) {
                 RejuvenateFeature.apply(rune.getFeature(), this, card);
             }
         }
@@ -759,7 +759,9 @@ public class FeatureResolver {
         return healee;
     }
 
-    public void resolveSummoningFeature(CardInfo card, Field myField, Field opField) throws HeroDieSignal {
+    // revivier: for most of the cases, it should be null.
+    // It is only set when the summoning feature performer is revived by another card.
+    public void resolveSummoningFeature(CardInfo card, Field myField, Field opField, CardInfo reviver) throws HeroDieSignal {
         LegionBuffFeature.apply(this, card);
         for (CardInfo fieldCard : myField.getAliveCards()) {
             for (FeatureInfo feature : fieldCard.getNormalUsableFeatures()) {
@@ -790,7 +792,7 @@ public class FeatureResolver {
         }
         for (FeatureInfo feature : card.getNormalUsableFeatures()) {
             if (feature.getType() == FeatureType.献祭) {
-                SacrificeFeature.apply(this, feature, card);
+                SacrificeFeature.apply(this, feature, card, reviver);
             } else if (feature.getType() == FeatureType.反噬) {
                 CounterBiteFeature.apply(feature, this, card);
             }
@@ -901,7 +903,7 @@ public class FeatureResolver {
         return new BlockStatusResult(blocked);
     }
 
-    public void summonCard(Player player, CardInfo card) throws HeroDieSignal {
+    public void summonCard(Player player, CardInfo card, CardInfo reviver) throws HeroDieSignal {
         card.reset();
         //card.setFirstRound(true);
         this.stage.getUI().summonCard(player, card);
@@ -912,7 +914,7 @@ public class FeatureResolver {
         }
         for (Player other : stage.getPlayers()) {
             if (other != player) {
-                stage.getResolver().resolveSummoningFeature(card, player.getField(), other.getField());
+                stage.getResolver().resolveSummoningFeature(card, player.getField(), other.getField(), reviver);
             }
         }
     }
