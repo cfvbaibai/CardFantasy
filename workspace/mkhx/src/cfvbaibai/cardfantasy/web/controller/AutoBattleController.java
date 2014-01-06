@@ -58,7 +58,6 @@ import cfvbaibai.cardfantasy.web.beans.UserAction;
 import cfvbaibai.cardfantasy.web.beans.UserActionRecorder;
 import cfvbaibai.cardfantasy.web.dao.BossBattleStatEntry;
 import cfvbaibai.cardfantasy.web.dao.CommunicationService;
-import cfvbaibai.cardfantasy.web.dao.RecommendedBossBattleDecks;
 
 @Controller
 public class AutoBattleController {
@@ -338,14 +337,20 @@ public class AutoBattleController {
             entry.setSortedDeck(sortedDeck);
             service.newBossBattleStatEntry(entry);
             
+            long testMinute = 99999;
+            long testBattleCount = 1 + (60 * testMinute / coolDown);
+            long testTotalDamage = testBattleCount * averageDamageToBoss;
+            long averageDamagePerMinute = testTotalDamage / testMinute;
+            
             writer.append("<table>");
             //result.append("<tr><td>战斗次数: </td><td>" + count + "</td></tr>");
             //result.append("<tr><td>总伤害: </td><td>" + totalDamageToBoss + "</td></tr>");
             //result.append("<tr><td>平均伤害: </td><td>" + averageDamageToBoss + "</td></tr>");
             writer.append("<tr><td>卡组总COST: </td><td>" + totalCost + "</td></tr>");
             writer.append("<tr><td>冷却时间: </td><td>" + coolDown + "</td></tr>");
+            writer.append("<tr><td>总体平均每分钟伤害: </td><td>" + averageDamagePerMinute + "</td></tr>");
             writer.append("<tr><td>最小伤害: </td><td>" + minDamage + "</td></tr>");
-            writer.append("<tr><td>平均伤害: </td><td>" + averageDamageToBoss + "</td></tr>");
+            writer.append("<tr><td>平均每次伤害: </td><td>" + averageDamageToBoss + "</td></tr>");
             writer.append("<tr><td>最大伤害: </td><td>" + maxDamage + "</td></tr>");
             writer.append("<tr><td>不稳定度: </td><td>" + cvPercentage + "%</td></tr>");
             //result.append("<tr><td>平均每分钟伤害（理想）: </td><td>" + damageToBossPerMinute + "</td></tr>");
@@ -509,6 +514,7 @@ public class AutoBattleController {
         }
     }
     
+    /*
     @RequestMapping(value = "/RecommendBossBattleDeck", headers = "Accept=application/json")
     public void recommendBossBattleDeck(
             HttpServletRequest request, HttpServletResponse response,
@@ -523,6 +529,7 @@ public class AutoBattleController {
             writer.print(handleError(e, true));
         }
     }
+    */
 
     private static String getCurrentTime() {
         return "时间: " + DateFormat.getTimeInstance().format(new Date());
