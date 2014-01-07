@@ -23,7 +23,7 @@ public class StageInfo {
         this.board = board;
         this.activePlayerNumber = -1;
         this.phase = Phase.未知;
-        this.round = -1;
+        this.round = 1;
         this.ui = ui;
         this.rule = rule;
         this.resolver = new FeatureResolver(this);

@@ -909,7 +909,7 @@ var Animater = function() {
         roundLayer.add(roundRect);
         var roundText = new Kinetic.Text({
             id: 'round-text',
-            text: '回合: 0',
+            text: '回合: 1',
             fontSize: settings.roundFontSize,
             fontFamily: settings.roundFontFamily,
             fill: settings.roundTextColor,//'yellow',
@@ -990,42 +990,50 @@ var Animater = function() {
     this.clearStatus = function(arena, statusToRemove) {
         var me = this;
         $.each(arena.fields, function (i, card) {
-            var newStatusList = [];
-            if (!card) { return; }
-            for (var i = 0; i < card.statusList.length; ++i) {
-                var cardStatus = card.statusList[i];
-                if (statusToRemove.indexOf(cardStatus) < 0) {
-                    newStatusList.push(cardStatus);
-                }
-            }
-            card.statusList = newStatusList;
-            var newText = newStatusList.join(); 
-            me.addAnimation("clearStatus", function() {
-                card.statusText.setText(newText);
-                card.statusText.centerMiddle(card.statusRect);
-                card.group.getLayer().draw();
-            }, settings.minimumDuration);
+            me.removeStatusFromCard(card, statusToRemove);
         });
+    };
+    
+    this.removeStatusFromCard = function(card, statusToRemove) {
+        var me = this;
+        var newStatusList = [];
+        if (!card) { return; }
+        for (var i = 0; i < card.statusList.length; ++i) {
+            var cardStatus = card.statusList[i];
+            if (statusToRemove.indexOf(cardStatus) < 0) {
+                newStatusList.push(cardStatus);
+            }
+        }
+        card.statusList = newStatusList;
+        var newText = newStatusList.join(); 
+        me.addAnimation("clearStatus", function() {
+            card.statusText.setText(newText);
+            card.statusText.centerMiddle(card.statusRect);
+            card.group.getLayer().draw();
+        }, settings.minimumDuration);
     };
     
     this.__roundEnded = function(data) {
         var round = data[0];
-        var playerId = data[1];
+        //var playerId = data[1];
         var stage = this.stage;
         var roundText = stage.get('#round-text')[0];
         
-        // Remove all debuffs.
+        // DELETED: Remove all debuffs.
+        // Now status is removed by __removeStatus event handler.
+        /*
         var me = this;
         $.each(this.arenas, function(i, arena) {
             me.clearStatus(arena, ['虚']);
         });
         this.clearStatus(this.arenas[playerId], ['冻', '麻', '锁', '毒', '惑']);
-
+        */
         this.addAnimation("roundEnded", function() {
             roundText.setText("回合: " + round);
             roundText.centerMiddle(stage.get('#round-rect')[0]);
             roundText.getLayer().draw();
         }, settings.minimumDuration);
+
         var funcs = [];
         for (var arena in this.arenas) {
             var hands = this.arenas[arena].hands;
@@ -1186,6 +1194,16 @@ var Animater = function() {
             defenderCard.statusText.centerMiddle(defenderCard.statusRect);
             defenderCard.group.getLayer().draw();
         }, settings.minimumDuration);
+    };
+    
+    this.__removeCardStatus = function(data) {
+        var cardData = data[0];
+        var shortStatus = data[1];
+        var card = this.getCard(cardData, true);
+        if (card == null) {
+            return;
+        }
+        this.removeStatusFromCard(card, shortStatus);
     };
     
     this.__debuffDamage = function(data) {

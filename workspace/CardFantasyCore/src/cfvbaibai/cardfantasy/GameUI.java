@@ -8,6 +8,7 @@ import cfvbaibai.cardfantasy.data.FeatureType;
 import cfvbaibai.cardfantasy.engine.Board;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.CardStatusItem;
+import cfvbaibai.cardfantasy.engine.CardStatusType;
 import cfvbaibai.cardfantasy.engine.EntityInfo;
 import cfvbaibai.cardfantasy.engine.FeatureEffect;
 import cfvbaibai.cardfantasy.engine.Field;
@@ -94,6 +95,8 @@ public abstract class GameUI {
     public abstract void useSkillToHero(EntityInfo caster, Player targetHero, Feature feature);
 
     public abstract void addCardStatus(EntityInfo attacker, CardInfo victim, Feature cardFeature, CardStatusItem item);
+
+    public abstract void removeCardStatus(CardInfo card, CardStatusType type);
 
     public abstract void battleBegins();
 

@@ -269,8 +269,7 @@ public class FeatureResolver {
         OnAttackBlockingResult result = new OnAttackBlockingResult(true, 0);
         CardStatus status = attacker.getStatus();
         if (isPhysicalAttackFeature(attackFeature)) {
-            // Normal attack could be blocked by Dodge or 麻痹, 冰冻,
-            // 锁定 status.
+            // Physical attack could be blocked by Dodge or 麻痹, 冰冻, 锁定, 迷惑, 虚弱 status.
             CardInfo cardAttacker = (CardInfo) attacker;
             result.setDamage(damage);
             if (status.containsStatus(CardStatusType.冰冻) || status.containsStatus(CardStatusType.麻痹)
@@ -503,6 +502,23 @@ public class FeatureResolver {
         }
     }
 
+    public void resolvePostAttackFeature(CardInfo attacker, CardInfo defender, Player defenderHero, Feature attackFeature,
+            int normalAttackDamage) throws HeroDieSignal {
+        for (FeatureInfo feature : attacker.getNormalUsableFeatures()) {
+            if (!attacker.isDead()) {
+                if (feature.getType() == FeatureType.吸血) {
+                    BloodDrainFeature.apply(feature.getFeature(), this, attacker, defender, normalAttackDamage);
+                }
+            }
+        }
+        if (!attacker.isDead()) {
+            RuneInfo rune = attacker.getOwner().getActiveRuneOf(RuneData.赤谷);
+            if (rune != null && !attacker.isWeak()) {
+                BloodDrainFeature.apply(rune.getFeature(), this, attacker, defender, normalAttackDamage);
+            }
+        }
+    }
+    
     public void resolveExtraAttackFeature(CardInfo attacker, CardInfo defender, Player defenderHero, Feature attackFeature,
             int normalAttackDamage) throws HeroDieSignal {
 
@@ -520,15 +536,7 @@ public class FeatureResolver {
                     ChainAttackFeature.apply(this, feature, attacker, defender, attackFeature);
                 } else if (feature.getType() == FeatureType.疾病) {
                     DiseaseFeature.apply(feature, this, attacker, defender, normalAttackDamage);
-                } else if (feature.getType() == FeatureType.吸血) {
-                    BloodDrainFeature.apply(feature.getFeature(), this, attacker, defender, normalAttackDamage);
                 }
-            }
-        }
-        if (!attacker.isDead()) {
-            RuneInfo rune = attacker.getOwner().getActiveRuneOf(RuneData.赤谷);
-            if (rune != null && !attacker.isWeak()) {
-                BloodDrainFeature.apply(rune.getFeature(), this, attacker, defender, normalAttackDamage);
             }
         }
         if (!attacker.isDead()) {
@@ -662,24 +670,31 @@ public class FeatureResolver {
         if (attacker == null) {
             return;
         }
-        if (isPhysicalAttackFeature(cardFeature) && attacker.getStatus().containsStatus(CardStatusType.麻痹)) {
-            return;
-        }
-        stage.getUI().useSkillToHero(attacker, defenderPlayer, cardFeature);
-        if (damage > defenderPlayer.getHP()) {
-            damage = defenderPlayer.getHP();
-        }
-        if (damage >= 0) {
-            int remainingDamage = this.resolveAttackHeroBlockingFeatures(attacker, defenderPlayer, cardFeature, damage);
-            if (remainingDamage > 0) {
-                stage.getUI().attackHero(attacker, defenderPlayer, cardFeature, remainingDamage);
-                defenderPlayer.setHP(defenderPlayer.getHP() - remainingDamage);
+        try {
+            if (isPhysicalAttackFeature(cardFeature) && attacker.getStatus().containsStatus(CardStatusType.麻痹)) {
+                return;
             }
-        } else {
-            stage.getUI().healHero(attacker, defenderPlayer, cardFeature, -damage);
-            defenderPlayer.setHP(defenderPlayer.getHP() - damage);
+            stage.getUI().useSkillToHero(attacker, defenderPlayer, cardFeature);
+            if (damage > defenderPlayer.getHP()) {
+                damage = defenderPlayer.getHP();
+            }
+            if (damage >= 0) {
+                int remainingDamage = this.resolveAttackHeroBlockingFeatures(attacker, defenderPlayer, cardFeature, damage);
+                if (remainingDamage > 0) {
+                    stage.getUI().attackHero(attacker, defenderPlayer, cardFeature, remainingDamage);
+                    defenderPlayer.setHP(defenderPlayer.getHP() - remainingDamage);
+                }
+            } else {
+                stage.getUI().healHero(attacker, defenderPlayer, cardFeature, -damage);
+                defenderPlayer.setHP(defenderPlayer.getHP() - damage);
+            }
+        } finally {
+            if (attacker instanceof CardInfo) {
+                CardInfo attackerCard = (CardInfo)attacker;
+                attackerCard.removeStatus(CardStatusType.麻痹);
+                this.stage.getUI().removeCardStatus(attackerCard, CardStatusType.麻痹);
+            }
         }
-
     }
 
     private int resolveAttackHeroBlockingFeatures(EntityInfo attacker, Player defenderPlayer, Feature cardFeature,
@@ -738,10 +753,11 @@ public class FeatureResolver {
         }
         this.stage.getUI().attackCard(attacker, defender, feature, blockingResult.getDamage());
         OnDamagedResult damagedResult = stage.getResolver().applyDamage(defender, blockingResult.getDamage());
+
+        resolvePostAttackFeature(attacker, defender, defender.getOwner(), feature, damagedResult.actualDamage);
         if (damagedResult.cardDead) {
             stage.getResolver().resolveDeathFeature(attacker, defender, feature);
         }
-
         resolveExtraAttackFeature(attacker, defender, defender.getOwner(), feature, damagedResult.actualDamage);
         resolveCounterAttackFeature(attacker, defender, feature, blockingResult);
 
@@ -828,6 +844,8 @@ public class FeatureResolver {
                 DestroyFeature.apply(this, feature.getFeature(), card, opField.getOwner(), 1);
             } else if (feature.getType() == FeatureType.传送) {
                 TransportFeature.apply(this, feature.getFeature(), card, opField.getOwner());
+            } else if (feature.getType() == FeatureType.复活) {
+                ReviveFeature.apply(this, feature, card);
             }
         }
     }

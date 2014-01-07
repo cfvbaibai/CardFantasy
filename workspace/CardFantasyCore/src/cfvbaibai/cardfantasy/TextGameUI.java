@@ -10,6 +10,7 @@ import cfvbaibai.cardfantasy.data.FeatureType;
 import cfvbaibai.cardfantasy.engine.Board;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.CardStatusItem;
+import cfvbaibai.cardfantasy.engine.CardStatusType;
 import cfvbaibai.cardfantasy.engine.Deck;
 import cfvbaibai.cardfantasy.engine.EntityInfo;
 import cfvbaibai.cardfantasy.engine.FeatureEffect;
@@ -143,6 +144,11 @@ public abstract class TextGameUI extends GameUI {
                 item.getShortDesc());
     }
 
+    @Override
+    public void removeCardStatus(CardInfo card, CardStatusType type) {
+        sayF("%s 解除状态 【%s】", card.getShortDesc(), type.name());
+    }
+    
     @Override
     public void gameEnded(GameResult result) {
         String s = String.format("战斗结束. 胜利者: <%s>, 胜利方式: %s", result.getWinner().getId(), result.getCause().toString());

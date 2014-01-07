@@ -9,6 +9,7 @@ import cfvbaibai.cardfantasy.data.Feature;
 import cfvbaibai.cardfantasy.data.FeatureType;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.CardStatusItem;
+import cfvbaibai.cardfantasy.engine.CardStatusType;
 import cfvbaibai.cardfantasy.engine.EntityInfo;
 import cfvbaibai.cardfantasy.engine.FeatureEffect;
 import cfvbaibai.cardfantasy.engine.Field;
@@ -145,6 +146,11 @@ public class StructuredRecordGameUI extends GameUI {
     public void addCardStatus(EntityInfo attacker, CardInfo victim, Feature cardFeature, CardStatusItem item) {
         this.record.addEvent("addCardStatus", new EntityRuntimeInfo(attacker), new EntityRuntimeInfo(victim),
                 toName(cardFeature), item.getType().name(), item.getType().getAbbrev());
+    }
+    
+    @Override
+    public void removeCardStatus(CardInfo card, CardStatusType type) {
+        this.record.addEvent("removeCardStatus", new EntityRuntimeInfo(card), type.getAbbrev());
     }
 
     @Override

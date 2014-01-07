@@ -81,7 +81,7 @@ public class GameEngine {
 
     public GameResult playGame() {
         this.stage.gameStarted();
-        this.stage.setRound(0);
+        this.stage.setRound(1);
         GameResult result = proceedGame();
         this.stage.getUI().gameEnded(result);
         return result;
@@ -140,6 +140,11 @@ public class GameEngine {
 
         player.getField().compact();
         this.getInactivePlayer().getField().compact();
+        
+        for (CardInfo card : this.getActivePlayer().getField().getAliveCards()) {
+            removeStatus(card, CardStatusType.虚弱);
+        }
+
         return Phase.准备;
     }
 
@@ -157,30 +162,10 @@ public class GameEngine {
                 card.setSummonDelay(summonDelay - 1);
             }
         }
-        
-        //for (CardInfo card : this.getActivePlayer().getField().toList()) {
-            //if (!card.getStatus().containsStatus(CardStatusType.虚弱)) {
-                //card.setFirstRound(false);
-            //}
-        //}
-
-        for (CardInfo card : this.getActivePlayer().getField().getAliveCards()) {
-            card.getStatus().remove(CardStatusType.冰冻);
-            card.getStatus().remove(CardStatusType.麻痹);
-            card.getStatus().remove(CardStatusType.锁定);
-            card.getStatus().remove(CardStatusType.中毒);
-            card.getStatus().remove(CardStatusType.虚弱);
-            card.getStatus().remove(CardStatusType.迷惑);
-        }
-        
-        // Card revived by death revive skill could attack right away
-        for (CardInfo card : this.getInactivePlayer().getField().getAliveCards()) {
-            card.getStatus().remove(CardStatusType.虚弱);
-        }
 
         Player previousPlayer = getActivePlayer();
-        this.stage.getUI().roundEnded(previousPlayer, stage.getRound());
         this.stage.setRound(stage.getRound() + 1);
+        this.stage.getUI().roundEnded(previousPlayer, stage.getRound());
         int nextPlayerNumber = (this.stage.getActivePlayerNumber() + 1) % stage.getPlayerCount();
         this.stage.setActivePlayerNumber(nextPlayerNumber);
         Player nextPlayer = this.getActivePlayer();
@@ -217,14 +202,25 @@ public class GameEngine {
             CardInfo card = myField.getCard(i);
             ui.cardActionBegins(card);
             CardStatus status = myField.getCard(i).getStatus();
+            boolean underControl = false;
             if (status.containsStatus(CardStatusType.迷惑)) {
+                underControl = true;
                 ui.confused(myField.getCard(i));
                 resolver.resolvePreAttackHeroFeature(myField.getCard(i), getActivePlayer());
                 resolver.attackHero(myField.getCard(i), getActivePlayer(), null, myField.getCard(i).getCurrentAT());
-            } else if (status.containsStatus(CardStatusType.冰冻) ||
+                removeStatus(myField.getCard(i), CardStatusType.迷惑);
+                removeStatus(myField.getCard(i), CardStatusType.冰冻);
+                removeStatus(myField.getCard(i), CardStatusType.锁定);
+                removeStatus(myField.getCard(i), CardStatusType.麻痹);
+            }
+            else if (
+                status.containsStatus(CardStatusType.冰冻) ||
                 status.containsStatus(CardStatusType.锁定) ||
                 status.containsStatus(CardStatusType.虚弱)) {
+                underControl = true;
                 ui.cannotAction(myField.getCard(i));
+                removeStatus(myField.getCard(i), CardStatusType.冰冻);
+                removeStatus(myField.getCard(i), CardStatusType.锁定);
             } else {
                 tryAttackEnemy(myField, opField, i);
             }
@@ -232,8 +228,13 @@ public class GameEngine {
             resolver.resolveDebuff(myField.getCard(i), CardStatusType.中毒);
             resolver.resolveDebuff(myField.getCard(i), CardStatusType.燃烧);
 
-            // 回春
-            resolver.resolveCardRoundEndingFeature(myField.getCard(i));
+            if (!underControl) {
+                // 回春
+                resolver.resolveCardRoundEndingFeature(myField.getCard(i));
+            }
+            
+            // 解除状态
+            removeStatus(myField.getCard(i), CardStatusType.中毒);
             ui.cardActionEnds(card);
         }
 
@@ -243,6 +244,14 @@ public class GameEngine {
         opField.compact();
 
         return Phase.结束;
+    }
+    
+    private void removeStatus(CardInfo card, CardStatusType statusType) {
+        if (card == null) {
+            return;
+        }
+        this.stage.getUI().removeCardStatus(card, statusType);
+        card.removeStatus(statusType);
     }
 
     private void tryAttackEnemy(Field myField, Field opField, int i) throws HeroDieSignal {
@@ -280,6 +289,10 @@ public class GameEngine {
         CardInfo defender = opField.getCard(i);
         FeatureResolver resolver = this.stage.getResolver();
         GameUI ui = this.stage.getUI();
+        if (myField.getCard(i).getStatus().containsStatus(CardStatusType.麻痹)) {
+            removeStatus(myField.getCard(i), CardStatusType.麻痹);
+            return;
+        }
         for (FeatureInfo featureInfo : myField.getCard(i).getNormalUsableFeatures()) {
             if (featureInfo.getFeature().getType() == FeatureType.横扫) {
                 ui.useSkill(myField.getCard(i), defender, featureInfo.getFeature(), true);

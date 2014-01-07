@@ -32,6 +32,8 @@ var sendJsonRequest = function(attrs) {
 Core.sendJsonRequest = sendJsonRequest;
 
 var sendAjaxRequest = function(attrs) {
+    //alert('服务器今晚出现极度不稳定现象，暂时关闭维护，明天开放。抱歉各位');
+    //return;
     var url = attrs.url;
     var cnzzUrl = attrs.cnzzUrl || url;
     var postData = attrs.postData;
@@ -115,9 +117,13 @@ var sendRequest = function(url, postData, outputDivId, isAnimation) {
             postData: postData,
             requestType: 'json',
             dataHandler: function(context, data) {
-                context.result = result = JSON.stringify(data);
-                $.mobile.changePage("#arena", { transition : 'flip', role : 'dialog' });
-                CardFantasy.BattleAnimation.showBattle(data);
+                if (data.error) {
+                    context.result = data.message;
+                } else {
+                    context.result = JSON.stringify(data);
+                    $.mobile.changePage("#arena", { transition : 'flip', role : 'dialog' });
+                    CardFantasy.BattleAnimation.showBattle(data);
+                }
             },
             errorHandler: errorHandler,
             completeHandler: completeHandler

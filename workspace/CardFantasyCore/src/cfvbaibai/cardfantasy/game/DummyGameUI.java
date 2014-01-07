@@ -8,6 +8,7 @@ import cfvbaibai.cardfantasy.data.Feature;
 import cfvbaibai.cardfantasy.data.FeatureType;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.CardStatusItem;
+import cfvbaibai.cardfantasy.engine.CardStatusType;
 import cfvbaibai.cardfantasy.engine.EntityInfo;
 import cfvbaibai.cardfantasy.engine.FeatureEffect;
 import cfvbaibai.cardfantasy.engine.Field;
@@ -327,6 +328,12 @@ public class DummyGameUI extends GameUI {
 
     @Override
     public void mapStageResult(PveGameResult result) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public void removeCardStatus(CardInfo card, CardStatusType type) {
         // TODO Auto-generated method stub
         
     }
