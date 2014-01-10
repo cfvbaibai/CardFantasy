@@ -7,10 +7,11 @@ import cfvbaibai.cardfantasy.engine.FeatureEffectType;
 import cfvbaibai.cardfantasy.engine.FeatureInfo;
 import cfvbaibai.cardfantasy.engine.FeatureResolver;
 import cfvbaibai.cardfantasy.engine.OnAttackBlockingResult;
+import cfvbaibai.cardfantasy.engine.OnDamagedResult;
 
 public final class EnergyDrainFeature {
     public static void apply(FeatureInfo featureInfo, FeatureResolver resolver, CardInfo attacker, CardInfo defender,
-            OnAttackBlockingResult result) {
+            OnAttackBlockingResult result, OnDamagedResult damagedResult) {
         if (result.getDamage() == 0 || defender == null) {
             return;
         }
@@ -22,6 +23,10 @@ public final class EnergyDrainFeature {
         if (!defender.isDead()) {
             resolver.getStage().getUI().adjustAT(defender, defender, -adjAT, feature);
             defender.addEffect(new FeatureEffect(FeatureEffectType.ATTACK_CHANGE, featureInfo, -adjAT, true));
+        }
+        if (damagedResult != null) {
+            // Null on magical attack. Only sweep is affected by damaged result.
+            damagedResult.originalDamage += adjAT;
         }
     }
 }

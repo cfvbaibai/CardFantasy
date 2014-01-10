@@ -20,7 +20,8 @@ BEGIN
 		ORDER BY dt_created DESC
 		OFFSET (@i_begin) ROWS FETCH NEXT (@i_end - @i_begin) ROWS ONLY
 	)
-	SELECT * FROM tbl_reply INNER JOIN post ON tbl_reply.i_reply_to = post.i_id;
+	SELECT * FROM tbl_reply INNER JOIN post ON tbl_reply.i_reply_to = post.i_id
+	ORDER BY dt_created ASC;
 END
 GO
 

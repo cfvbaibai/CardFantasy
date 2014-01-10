@@ -7,18 +7,22 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">
                 <h3>公告</h3>
                 <ul>
-                    <li>模拟器服务器怀疑受到恶意攻击，不过现在已恢复正常。白白这几天真的是累坏了，天天12点过后睡觉，准备给自己放几天假，暂停更新。不过模拟器会照常开放^_^</li>
-                    <li>数据库调整完毕，<a href="#communication">交流区</a>功能已经恢复。
-                    <li>【莉莉丝】和【盗贼】由于卡组变数太大，暂时没有数据很难模拟。如果有朋友对此有研究，请点击<a href="#communication">这里</a>提供情报。</li>
+                    <li>有朋友报告说【世界树之灵】和【恐惧之王】的COST有误，请知情朋友点击<a href="#communication">这里</a>提供10级和15级的COST，多谢。</li>
+                    <li>【盗贼】由于卡组变数太大，暂时没有数据很难模拟。如果有朋友对此有研究，请点击<a href="#communication">这里</a>提供情报。</li>
                 </ul>
             </div>
             <div data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">
                 <h3>更新日志</h3>
-                <ul>
-                    <li class="new">2014-01-07:<ul>
+                <ul class="news-content">
+                    <li>2014-01-10:<ul>
+                        <li>BUG修复 - 修正交流区的留言时间的时区问题，统一改到北京时间。</li>
+                        <li>BUG修复 - 现在【横扫】遇上【邪灵汲取】后，后续的攻击按照削弱后的攻击力算。感谢<b>乌鸦</b>提供情报。</li>
+                        </ul>
+                    </li>
+                    <li>2014-01-07:<ul>
                         <li>BUG修复 - 现在回合数正确地从1开始，而不是之前的0，感谢<b>jjkkt</b>提供情报。</li>
                         <li>BUG修复 - 现在被死契技能控制（冰冻、麻痹、锁定、迷惑）的卡牌会在正确的时机解除控制，感谢<b>jjkkt</b>提供情报。</li>
-                        <li>BUG修复 - 现在【吸血】能正确地在死契技能发动前发动，感谢<b>a0026881</b>提供情报</li>
+                        <li>BUG修复 - 现在【吸血】能正确地在死契技能发动前发动，感谢<b>a0026881</b>提供情报。</li>
                         </ul>
                     </li>
                     <li>2014-01-06: 魔神战【卡组强度分析】添加【总体平均每分钟伤害】指标，方便大家计算卡组的平均强度。</li>

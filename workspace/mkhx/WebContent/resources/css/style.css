@@ -233,7 +233,7 @@ div.dashboard ul {
 	padding-left: 20px;
 }
 
-div#news ul li.new {
+#news ul.news-content > li:first-child {
 	color: red;
 }
 

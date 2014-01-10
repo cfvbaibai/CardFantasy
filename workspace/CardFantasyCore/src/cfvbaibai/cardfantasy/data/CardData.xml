@@ -1260,7 +1260,7 @@
         <Feature type="封印" level="0" unlock="5" />
         <Feature type="吸血" level="8" unlock="10" />
     </Card>
-    <Card id="4503" name="恐惧之王" wikiId="31080" race="地狱" speed="4" star="5" cost="17" incrCost="0" at="310" hp="1100" incrAT="25" incrHP="35">
+    <Card id="4503" name="恐惧之王" wikiId="31080" race="地狱" speed="4" star="5" cost="17" incrCost="1" at="310" hp="1100" incrAT="25" incrHP="35">
         <Feature type="诅咒" level="6" unlock="0" />
         <Feature type="封印" level="0" unlock="5" />
         <Feature type="转生" level="7" unlock="10" />

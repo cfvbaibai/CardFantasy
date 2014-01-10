@@ -32,7 +32,7 @@ public final class IceMagicFeature {
             ui.attackCard(attacker, victim, feature, damage);
             boolean cardDead = resolver.applyDamage(victim, damage).cardDead;
             if (attacker instanceof CardInfo) {
-                resolver.resolveCounterAttackFeature((CardInfo)attacker, victim, feature, result);
+                resolver.resolveCounterAttackFeature((CardInfo)attacker, victim, feature, result, null);
             }
             if (cardDead) {
                 resolver.resolveDeathFeature(attacker, victim, feature);

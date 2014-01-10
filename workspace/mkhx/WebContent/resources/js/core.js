@@ -101,7 +101,10 @@ var sendRequest = function(url, postData, outputDivId, isAnimation) {
     var buttons = $('a.battle-button');
     buttons.addClass("ui-disabled");
     var errorHandler = function(context, xhr, status, error) {
-        context.result = "<span style='COLOR: red'>Error! Status=" + status + ", Detail=" + error + "</span>";
+        context.result = "<span style='COLOR: red'>发生错误! 状态=" + status + ", 细节=" + error + "</span>";
+        if (status == 'error' && error == 'Not Found') {
+            context.result += "<div>服务器可能正在更新，请稍等1分钟左右再试试看</div>";
+        }
     };
     var completeHandler = function(context) {
         buttons.removeClass("ui-disabled");

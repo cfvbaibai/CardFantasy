@@ -214,7 +214,7 @@ public class FeatureResolver {
     }
 
     public void resolveCounterAttackFeature(CardInfo attacker, CardInfo defender, Feature attackFeature,
-            OnAttackBlockingResult result) throws HeroDieSignal {
+            OnAttackBlockingResult result, OnDamagedResult damagedResult) throws HeroDieSignal {
         if (isPhysicalAttackFeature(attackFeature)) {
             for (FeatureInfo feature : defender.getNormalUsableFeatures()) {
                 if (feature.getType() == FeatureType.反击) {
@@ -226,7 +226,7 @@ public class FeatureResolver {
                 } else if (feature.getType() == FeatureType.燃烧) {
                     BurningFeature.apply(feature, this, attacker, defender);
                 } else if (feature.getType() == FeatureType.邪灵汲取) {
-                    EnergyDrainFeature.apply(feature, this, attacker, defender, result);
+                    EnergyDrainFeature.apply(feature, this, attacker, defender, result, damagedResult);
                 }
             }
             {
@@ -759,7 +759,7 @@ public class FeatureResolver {
             stage.getResolver().resolveDeathFeature(attacker, defender, feature);
         }
         resolveExtraAttackFeature(attacker, defender, defender.getOwner(), feature, damagedResult.actualDamage);
-        resolveCounterAttackFeature(attacker, defender, feature, blockingResult);
+        resolveCounterAttackFeature(attacker, defender, feature, blockingResult, damagedResult);
 
         return damagedResult;
     }

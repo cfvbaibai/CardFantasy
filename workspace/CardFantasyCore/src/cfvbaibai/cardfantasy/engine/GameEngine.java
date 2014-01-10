@@ -250,6 +250,9 @@ public class GameEngine {
         if (card == null) {
             return;
         }
+        if (!card.getStatus().containsStatus(statusType)) {
+            return;
+        }
         this.stage.getUI().removeCardStatus(card, statusType);
         card.removeStatus(statusType);
     }
