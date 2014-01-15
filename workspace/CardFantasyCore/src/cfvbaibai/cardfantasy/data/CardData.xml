@@ -154,7 +154,12 @@
         <Feature type="趁胜追击" level="5" unlock="5" />
         <Feature type="神圣守护" level="5" unlock="10" />
     </Card>
-    
+    <Card id="1318" name="海军水手" wikiId="56297" race="王国" speed="4" star="3" cost="11" incrCost="2" at="235" hp="620" incrAT="23" incrHP="19">
+        <Feature type="格挡" level="6" unlock="0" />
+        <Feature type="狂热" level="5" unlock="5" />
+        <Feature type="战意" level="5" unlock="10" />
+    </Card>
+
     <Card id="1401" name="圣堂武士" wikiId="30780" race="王国" speed="4" star="4" cost="13" incrCost="1" at="280" hp="1040" incrAT="23" incrHP="37">
         <Feature type="狂热" level="7" unlock="0" />
         <Feature type="回春" level="6" unlock="5" />
@@ -603,7 +608,7 @@
         <Feature type="复活" level="0" unlock="5" death="true" />
         <Feature type="转生" level="5" unlock="10" />
     </Card>
-    <Card id="2507" name="世界树之灵" wikiId="30773" race="森林" speed="4" star="5" cost="15" incrCost="2" at="315" hp="1260" incrAT="33" incrHP="36">
+    <Card id="2507" name="世界树之灵" wikiId="30773" race="森林" speed="4" star="5" cost="16" incrCost="1" at="315" hp="1260" incrAT="33" incrHP="36">
         <Feature type="神圣守护" level="7" unlock="0" />
         <Feature type="闪避" level="6" unlock="5" />
         <Feature type="陷阱" level="2" unlock="10" />
@@ -1260,7 +1265,7 @@
         <Feature type="封印" level="0" unlock="5" />
         <Feature type="吸血" level="8" unlock="10" />
     </Card>
-    <Card id="4503" name="恐惧之王" wikiId="31080" race="地狱" speed="4" star="5" cost="17" incrCost="1" at="310" hp="1100" incrAT="25" incrHP="35">
+    <Card id="4503" name="恐惧之王" wikiId="31080" race="地狱" speed="4" star="5" cost="17" incrCost="0" at="310" hp="1100" incrAT="25" incrHP="35">
         <Feature type="诅咒" level="6" unlock="0" />
         <Feature type="封印" level="0" unlock="5" />
         <Feature type="转生" level="7" unlock="10" />
