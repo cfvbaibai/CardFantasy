@@ -10,14 +10,17 @@ public final class Utils {
         // TODO Auto-generated constructor stub
     }
 
-    private static DateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    private static DateFormat DATE_TIME_FORMAT = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    private static DateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd");
 
     public static String getCurrentDateTime() {
+        return DATE_TIME_FORMAT.format(new Date());
+    }
+    public static String getCurrentDate() {
         return DATE_FORMAT.format(new Date());
     }
-    
     public static String toString(Date date) {
-        return DATE_FORMAT.format(date);
+        return DATE_TIME_FORMAT.format(date);
     }
 
     public static String getAllMessage(Throwable e) {

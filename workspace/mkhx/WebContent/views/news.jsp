@@ -7,13 +7,15 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">
                 <h3>公告</h3>
                 <ul>
-                    <li>有朋友报告说【世界树之灵】和【恐惧之王】的COST有误，请知情朋友点击<a href="#communication">这里</a>提供10级和15级的COST，多谢。</li>
+                    <li>有朋友报告说【恐惧之王】的COST有误，请知情朋友点击<a href="#communication">这里</a>提供10级和15级的COST，多谢。</li>
                     <li>【盗贼】由于卡组变数太大，暂时没有数据很难模拟。如果有朋友对此有研究，请点击<a href="#communication">这里</a>提供情报。</li>
                 </ul>
             </div>
             <div data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2014-01-12: 新功能 - 增加<a href="#test-rp">人品测试房</a>。
+                    <li>2014-01-11: 数据修复 - 【世界树之灵】15级COST修正为17。多谢<b>里根</b>和<b>乌鸦</b>提供情报。</li>
                     <li>2014-01-10:<ul>
                         <li>BUG修复 - 修正交流区的留言时间的时区问题，统一改到北京时间。</li>
                         <li>BUG修复 - 现在【横扫】遇上【邪灵汲取】后，后续的攻击按照削弱后的攻击力算。感谢<b>乌鸦</b>提供情报。</li>

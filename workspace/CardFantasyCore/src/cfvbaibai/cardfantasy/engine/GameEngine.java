@@ -250,11 +250,9 @@ public class GameEngine {
         if (card == null) {
             return;
         }
-        if (!card.getStatus().containsStatus(statusType)) {
-            return;
+        if (card.removeStatus(statusType)) {
+            this.stage.getUI().removeCardStatus(card, statusType);
         }
-        this.stage.getUI().removeCardStatus(card, statusType);
-        card.removeStatus(statusType);
     }
 
     private void tryAttackEnemy(Field myField, Field opField, int i) throws HeroDieSignal {

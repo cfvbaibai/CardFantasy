@@ -24,6 +24,12 @@
         <property name="mapperInterface" value="cfvbaibai.cardfantasy.web.dao.PostMapper" />
         <property name="sqlSessionFactory" ref="sqlSessionFactory" />
     </bean>
+    
+    <bean id="dummyGameUI" class="cfvbaibai.cardfantasy.game.DummyGameUI" />
+    <bean class="cfvbaibai.cardfantasy.Randomizer">
+        <constructor-arg ref="dummyGameUI" />
+    </bean>
+    <bean class="cfvbaibai.cardfantasy.data.CardDataStore" factory-method="loadDefault" />
 
     <bean class="cfvbaibai.cardfantasy.web.dao.DaoServiceImpl" />
 
@@ -36,7 +42,7 @@
 
     <bean class="cfvbaibai.cardfantasy.web.beans.UserActionRecorder" />
     <bean class="cfvbaibai.cardfantasy.web.beans.JsonHandler" />
-    <bean class="cfvbaibai.cardfantasy.web.beans.Logger" />
+    <bean id="general-logger" class="cfvbaibai.cardfantasy.web.beans.Logger" />
     <bean class="cfvbaibai.cardfantasy.game.MapStages" />
     
     <bean class="java.util.logging.Logger" factory-method="getLogger">
@@ -45,10 +51,14 @@
             <value>cardfantasy-communication</value>
         </constructor-arg>
     </bean>
-    <bean class="java.util.logging.Logger" factory-method="getLogger">
+    <bean id="user-error-logger" class="java.util.logging.Logger" factory-method="getLogger">
         <qualifier value="user-error" />
         <constructor-arg>
             <value>cardfantasy-user-error</value>
         </constructor-arg>
+    </bean>
+    <bean class="cfvbaibai.cardfantasy.web.ErrorHelper">
+        <constructor-arg index="0" ref="general-logger" />
+        <constructor-arg index="1" ref="user-error-logger" />
     </bean>
 </beans>

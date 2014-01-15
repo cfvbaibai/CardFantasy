@@ -13,6 +13,7 @@ public class LegionFeature extends Feature {
         case SAVAGE: return new LegionFeature(FeatureType.军团蛮荒之力, level);
         case HELL: return new LegionFeature(FeatureType.军团地狱之力, level);
         case BOSS: return new LegionFeature(FeatureType.军团魔神之力, 0);
+        case MOE: return new LegionFeature(FeatureType.军团萌货之力, 0);
         default: throw new IllegalArgumentException("Unknown race: " + race); 
         }
     }

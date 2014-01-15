@@ -691,8 +691,9 @@ public class FeatureResolver {
         } finally {
             if (attacker instanceof CardInfo) {
                 CardInfo attackerCard = (CardInfo)attacker;
-                attackerCard.removeStatus(CardStatusType.麻痹);
-                this.stage.getUI().removeCardStatus(attackerCard, CardStatusType.麻痹);
+                if (attackerCard.removeStatus(CardStatusType.麻痹)) {
+                    this.stage.getUI().removeCardStatus(attackerCard, CardStatusType.麻痹);
+                }
             }
         }
     }

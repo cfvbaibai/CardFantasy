@@ -93,4 +93,14 @@ public class CardDataStore {
         }
         return result;
     }
+
+    public List<CardData> getCardOfRace(Race race) {
+        List<CardData> result = new ArrayList<CardData>();
+        for (CardData card : this.cardMap.values()) {
+            if (card.getRace() == race) {
+                result.add(card);
+            }
+        }
+        return result;
+    }
 }

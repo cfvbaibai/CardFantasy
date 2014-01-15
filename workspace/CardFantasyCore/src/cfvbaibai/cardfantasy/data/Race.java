@@ -6,7 +6,8 @@ public enum Race {
     FOREST("森林"),
     SAVAGE("蛮荒"),
     HELL("地狱"),
-    BOSS("魔神");
+    BOSS("魔神"),
+    MOE("萌货");
     
     private String displayName;
     Race(String displayName) {
@@ -28,6 +29,9 @@ public enum Race {
         }
         if ("魔神".equals(displayName)) {
             return BOSS;
+        }
+        if ("萌货".equals(displayName)) {
+            return MOE;
         }
         throw new IllegalArgumentException("Invalid Race: " + displayName);
     }

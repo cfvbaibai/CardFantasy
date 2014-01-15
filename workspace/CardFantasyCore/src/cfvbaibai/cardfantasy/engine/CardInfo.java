@@ -164,8 +164,8 @@ public class CardInfo extends EntityInfo {
         this.status.add(statusItem);
     }
 
-    public void removeStatus(CardStatusType type) {
-        this.status.remove(type);
+    public boolean removeStatus(CardStatusType type) {
+        return this.status.remove(type);
     }
 
     @Override

@@ -126,6 +126,7 @@ public enum FeatureType {
     军团蛮荒之力("", 0, 3, FeatureTag.永久, FeatureTag.基础攻击加成, FeatureTag.不可洗炼),
     军团地狱之力("", 0, 3, FeatureTag.永久, FeatureTag.基础攻击加成, FeatureTag.不可洗炼),
     军团魔神之力("", 0, FeatureTag.不可洗炼),
+    军团萌货之力("", 0, FeatureTag.不可洗炼),
     
     魔神之刃("", 2000, 0, FeatureTag.抗免疫, FeatureTag.不可洗炼),
     魔神之甲("", 1500, 0, FeatureTag.抗免疫, FeatureTag.不可洗炼),

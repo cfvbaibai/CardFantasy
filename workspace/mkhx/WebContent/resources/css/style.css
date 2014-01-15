@@ -264,3 +264,25 @@ div.recommend-boss-battle-result > div > div {
 div.recommend-boss-battle-result > div:first-child > div:last-child {
 	padding: 0;
 }
+
+#test-rp div {
+
+}
+
+#test-rp div.to-test-rp-text {
+	text-align: center;
+	padding: 10px;
+	font-size: 150%;
+}
+
+#test-rp div.test-rp-result-text {
+	padding: 10px;
+	width: 100%;
+	max-width: 400px;
+	margin-left: auto;
+	margin-right: auto;
+}
+#test-rp div.test-rp-result-text div.portrait {
+}
+#test-rp div.test-rp-result-text div.portrait img {
+	padding-top: 10px;

@@ -3,7 +3,6 @@
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.Collator;
-import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -22,7 +21,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import cfvbaibai.cardfantasy.CardFantasyUserRuntimeException;
 import cfvbaibai.cardfantasy.GameUI;
 import cfvbaibai.cardfantasy.data.Card;
 import cfvbaibai.cardfantasy.data.CardData;
@@ -45,6 +43,7 @@ import cfvbaibai.cardfantasy.game.PlayerBuilder;
 import cfvbaibai.cardfantasy.game.PveEngine;
 import cfvbaibai.cardfantasy.game.PveGameResult;
 import cfvbaibai.cardfantasy.game.PveGameResultStat;
+import cfvbaibai.cardfantasy.web.ErrorHelper;
 import cfvbaibai.cardfantasy.web.OneDimensionDataStat;
 import cfvbaibai.cardfantasy.web.Utils;
 import cfvbaibai.cardfantasy.web.animation.BattleRecord;
@@ -75,31 +74,14 @@ public class AutoBattleController {
     private Logger logger;
     
     @Autowired
+    private ErrorHelper errorHelper;
+    
+    @Autowired
     @Qualifier("user-error")
     private java.util.logging.Logger userErrorLogger;
     
     @Autowired
     private CommunicationService service;
-
-    private String handleError(Exception e, boolean isJson) {
-        String errorMessage = "";
-        logger.info(errorMessage);
-        if (e instanceof CardFantasyUserRuntimeException) {
-            CardFantasyUserRuntimeException cfure = (CardFantasyUserRuntimeException)e;
-            userErrorLogger.severe(cfure.getMessage());
-            errorMessage = cfure.getMessage() + cfure.getHelpMessage();
-        } else {
-            logger.error(e);
-            errorMessage = Utils.getAllMessage(e);
-        }
-        
-        String message = String.format("<font color='red'>%s<br />发生错误！<br />%s<br />",
-                getCurrentTime(), errorMessage);
-        if (isJson) {
-            message = "{ \"error\": true, \"message\": \"" + message + "\" }";
-        }
-        return message;
-    }
 
     private static GameResultStat play(PlayerInfo p1, PlayerInfo p2, int count, Rule rule) {
         GameResultStat stat = new GameResultStat(p1, p2);
@@ -135,10 +117,10 @@ public class AutoBattleController {
             GameEngine engine = new GameEngine(ui, new Rule(5, 999, firstAttack, false));
             engine.RegisterPlayers(player1, player2);
             GameResult gameResult = engine.playGame();
-            writer.print(getCurrentTime() + "<br />" + ui.getAllText());
+            writer.print(Utils.getCurrentDateTime() + "<br />" + ui.getAllText());
             logger.info("Winner: " + gameResult.getWinner().getId());
         } catch (Exception e) {
-            writer.print(handleError(e, false));
+            writer.print(errorHelper.handleError(e, false));
         }
     }
 
@@ -172,7 +154,7 @@ public class AutoBattleController {
             writer.print(jsonHandler.toJson(record));
             logger.info("Winner: " + gameResult.getWinner().getId());
         } catch (Exception e) {
-            writer.print(handleError(e, true));
+            writer.print(errorHelper.handleError(e, true));
         }
     }
     
@@ -198,7 +180,7 @@ public class AutoBattleController {
             PlayerInfo player1 = PlayerBuilder.build(true, "玩家1", deck1, heroLv1);
             PlayerInfo player2 = PlayerBuilder.build(true, "玩家2", deck2, heroLv2);
             GameResultStat stat = play(player1, player2, count, new Rule(5, 999, firstAttack, false));
-            writer.append(getCurrentTime() + "<br />");
+            writer.append(Utils.getCurrentDateTime() + "<br />");
             writer.append("<table>");
             writer.append("<tr><td>超时: </td><td>" + stat.getTimeoutCount() + "</td></tr>");
             writer.append("<tr><td>玩家1获胜: </td><td>" + stat.getP1Win() + "</td></tr>");
@@ -206,7 +188,7 @@ public class AutoBattleController {
             writer.append("</table>");
             logger.info("TO:P1:P2 = " + stat.getTimeoutCount() + ":" + stat.getP1Win() + ":" + stat.getP2Win());
         } catch (Exception e) {
-            writer.print(handleError(e, false));
+            writer.print(errorHelper.handleError(e, false));
         }
     }
     
@@ -229,13 +211,13 @@ public class AutoBattleController {
             GameEngine engine = new GameEngine(ui, Rule.getBossBattle());
             engine.RegisterPlayers(player1, player2);
             GameResult gameResult = engine.playGame();
-            writer.print(getCurrentTime() + "<br />");
+            writer.print(Utils.getCurrentDateTime() + "<br />");
             writer.print("造成伤害：" + gameResult.getDamageToBoss() + "<br />");
             writer.print("------------------ 战斗过程 ------------------<br />");
             writer.print(ui.getAllText());
             logger.info("Winner: " + gameResult.getWinner().getId() + ", Damage to boss: " + gameResult.getDamageToBoss());
         } catch (Exception e) {
-            writer.print(handleError(e, false));
+            writer.print(errorHelper.handleError(e, false));
         }
     }
     
@@ -263,7 +245,7 @@ public class AutoBattleController {
             writer.print(jsonHandler.toJson(record));
             logger.info("Winner: " + gameResult.getWinner().getId() + ", Damage to boss: " + gameResult.getDamageToBoss());
         } catch (Exception e) {
-            writer.print(handleError(e, true));
+            writer.print(errorHelper.handleError(e, true));
         }
     }
 
@@ -283,7 +265,7 @@ public class AutoBattleController {
             PlayerInfo player1 = PlayerBuilder.build(false, "BOSS", bossName, 99999, null);
             PlayerInfo player2 = PlayerBuilder.build(true, "玩家", deck, heroLv, new Legion(buffKingdom, buffForest,
                     buffSavage, buffHell));
-            writer.append(getCurrentTime() + "<br />");
+            writer.append(Utils.getCurrentDateTime() + "<br />");
             OneDimensionDataStat stat = new OneDimensionDataStat();
             int timeoutCount = 0;
             Rule rule = Rule.getBossBattle();
@@ -364,7 +346,7 @@ public class AutoBattleController {
             writer.append("</table>");
             logger.info("Average damage to boss: " + averageDamageToBoss);
         } catch (Exception e) {
-            writer.print(handleError(e, false));
+            writer.print(errorHelper.handleError(e, false));
         }
     }
     
@@ -383,10 +365,10 @@ public class AutoBattleController {
             WebPlainTextGameUI ui = new WebPlainTextGameUI();
             PveEngine engine = new PveEngine(ui, Rule.getDefault(), this.maps);
             PveGameResult gameResult = engine.play(player, map);
-            writer.print(getCurrentTime() + "<br />" + ui.getAllText());
+            writer.print(Utils.getCurrentDateTime() + "<br />" + ui.getAllText());
             logger.info("Result: " + gameResult.name());
         } catch (Exception e) {
-            writer.print(handleError(e, false));
+            writer.print(errorHelper.handleError(e, false));
         }
     }
     
@@ -410,7 +392,7 @@ public class AutoBattleController {
             writer.println(jsonHandler.toJson(record));
             logger.info("Result: " + gameResult.name());
         } catch (Exception e) {
-            writer.println(handleError(e, true));
+            writer.println(errorHelper.handleError(e, true));
         }
     }
     
@@ -430,7 +412,7 @@ public class AutoBattleController {
             PveEngine engine = new PveEngine(new DummyGameUI(), Rule.getDefault(), this.maps);
             PlayerInfo player = PlayerBuilder.build(true, "玩家", deck, heroLv);
             PveGameResultStat stat = engine.massivePlay(player, map, count);
-            writer.append(getCurrentTime() + "<br />");
+            writer.append(Utils.getCurrentDateTime() + "<br />");
             writer.append("<table>");
             for (PveGameResult gameResult : PveGameResult.values()) {
                 writer.append(String.format("<tr><td>%s: </td><td>%d</td></tr>",
@@ -444,7 +426,7 @@ public class AutoBattleController {
                     stat.getStat(PveGameResult.ADVANCED_WIN),
                     stat.getStat(PveGameResult.UNKNOWN)));
         } catch (Exception e) {
-            writer.print(handleError(e, false));
+            writer.print(errorHelper.handleError(e, false));
         }
     }
     
@@ -454,6 +436,9 @@ public class AutoBattleController {
             @RequestParam("type") String type) throws IOException {
     }
     
+    @Autowired
+    private CardDataStore store;
+    
     @RequestMapping(value = "/GetDataStore", headers = "Accept=application/json")
     public void getDataStore(HttpServletRequest request, HttpServletResponse response)
             throws IOException {
@@ -461,7 +446,6 @@ public class AutoBattleController {
         response.setContentType("application/json");
         try {
             logger.info("Getting card data store...");
-            CardDataStore store = CardDataStore.loadDefault();
             Map <String, Object> result = new HashMap <String, Object>();
             List<EntityDataRuntimeInfo> entities = new ArrayList<EntityDataRuntimeInfo>();
             List<CardData> cards = store.getAllCards();
@@ -490,7 +474,7 @@ public class AutoBattleController {
             result.put("features", featureList);
             writer.print(jsonHandler.toJson(result));
         } catch (Exception e) {
-            writer.print(handleError(e, true));
+            writer.print(errorHelper.handleError(e, true));
         }
     }
     
@@ -510,7 +494,7 @@ public class AutoBattleController {
             }
             writer.print(jsonHandler.toJson(condition));
         } catch (Exception e) {
-            writer.print(handleError(e, true));
+            writer.print(errorHelper.handleError(e, true));
         }
     }
     
@@ -530,8 +514,4 @@ public class AutoBattleController {
         }
     }
     */
-
-    private static String getCurrentTime() {
-        return "时间: " + DateFormat.getTimeInstance().format(new Date());
-    }
 }
