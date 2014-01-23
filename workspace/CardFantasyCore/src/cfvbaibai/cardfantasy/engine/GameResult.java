@@ -1,5 +1,7 @@
 package cfvbaibai.cardfantasy.engine;
 
+import cfvbaibai.cardfantasy.battlestat.BattleStat;
+
 
 
 public class GameResult {
@@ -9,13 +11,15 @@ public class GameResult {
     private GameEndCause gameEndCause;
     // Only applicable to boss battle
     private int damageToBoss;
+    private BattleStat battleStat;
 
-    public GameResult(Board finalBoard, Player winner, int round, GameEndCause gameEndCause, int damageToBoss) {
+    public GameResult(Board finalBoard, Player winner, int round, GameEndCause gameEndCause, int damageToBoss, BattleStat battleStat) {
         this.finalBoard = finalBoard;
         this.winner = winner;
         this.round = round;
         this.gameEndCause = gameEndCause;
         this.damageToBoss = damageToBoss;
+        this.battleStat = battleStat;
     }
     
     public int getRound() {
@@ -45,5 +49,9 @@ public class GameResult {
     
     public int getDamageToBoss() {
         return this.damageToBoss;
+    }
+    
+    public BattleStat getBattleStat() {
+        return this.battleStat;
     }
 }

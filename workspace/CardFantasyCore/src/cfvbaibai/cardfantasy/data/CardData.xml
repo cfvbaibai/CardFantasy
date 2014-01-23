@@ -1387,6 +1387,9 @@
         <Feature type="免疫" level="0" unlock="10" />
     </Card>
     
-    <Card id="7501" name="白白" wikiId="" race="萌货" speed="4" star="5" cost="99" incrCost="0" at="20" hp="500" incrAT="0" incrHP="0">
+    <Card id="7501" name="熊老师" wikiId="" race="萌货" speed="4" star="5" cost="0" incrCost="0" at="400" hp="1500" incrAT="40" incrHP="50">
+        <Feature type="关小黑屋" level="1" unlock="0" summon="true" />
+        <Feature type="吐槽" level="2" unlock="5" />
+        <Feature type="被插出五星" level="1" unlock="10" />
     </Card>
 </Cards>

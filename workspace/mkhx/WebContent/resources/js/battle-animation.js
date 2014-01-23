@@ -1357,8 +1357,8 @@ var Animater = function() {
         '透支', '战意', '穷追猛打', '趁胜追击', '复仇',
     ];
     this.selfUsedSkills = [
-        '不动', '脱困', '法力反射', '冰甲', '闪避', '守护', '魔神之甲',
-        '王国之盾', '森林之盾', '蛮荒之盾', '地狱之盾', '弱点攻击'
+        '不动', '脱困', '群体脱困', '法力反射', '冰甲', '闪避', '守护', '魔神之甲',
+        '王国之盾', '森林之盾', '蛮荒之盾', '地狱之盾', '弱点攻击',
     ];
     this.__useSkill = function(data) {
         var attacker = data[0]; // EntityRuntimeInfo
@@ -1384,6 +1384,9 @@ var Animater = function() {
                  text: skill,
                  duration: settings.skillDuration,
              });
+        } else if (skill == '吐槽') {
+            this.flyImage({ fileName: 'tsukomi.png', width: 48, height: 48, text: skill },
+                    attacker, defenders, settings.skillDuration);
         } else if (skill == '送还') {
             this.flyImage({ fileName: 'cross.png', width: 29, height: 60, text: skill },
                     attacker, defenders, settings.skillDuration);
@@ -1424,7 +1427,7 @@ var Animater = function() {
         } else if (skill == '毒液' || skill == '毒雾' || skill == '毒云') {
             this.flyImage({ fileName: 'poison.png', width: 24, height: 24, rotate: Math.PI * 4, text: skill },
                     attacker, defenders, settings.skillDuration);
-        } else if (skill == '陷阱' || skill == '封印') {
+        } else if (skill == '陷阱' || skill == '封印' || skill == '关小黑屋') {
             this.flyImage({ fileName: 'trap.png', width: 48, height: 48, text: skill },
                     attacker, defenders, settings.skillDuration);
         } else if (skill == '摧毁') {

@@ -7,13 +7,14 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">
                 <h3>公告</h3>
                 <ul>
-                    <li>欢迎大家提供关于新地狱符文【鬼步】的信息（星数、激活条件、持续回合等），请点击<a href="#communication">这里</a>提供情报。</li>
+                    <li>新符文【鬼步】的数据只是测试阶段的，尚未定稿，将来可能更新，请注意！</li>
                     <li>【盗贼】由于卡组变数太大，暂时没有数据很难模拟。如果有朋友对此有研究，请点击<a href="#communication">这里</a>提供情报。</li>
                 </ul>
             </div>
             <div data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2014-01-18: 添加符文 - 【鬼步】（群体脱困），场上地狱大于2张发动，感谢<b>高端大气上档次</b>提供情报。</li>
                     <li>2014-01-15:<ul>
                         <li>新卡加入 - 【海军水手】王国三星</li>
                         <li>数据修复 - 【世界树之灵】10级COST修正为16。多谢<b>长天渔歌</b>提供情报。</li>

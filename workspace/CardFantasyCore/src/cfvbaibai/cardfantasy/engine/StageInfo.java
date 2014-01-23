@@ -166,7 +166,7 @@ public class StageInfo {
                 damageToBoss = bossCard.getOriginalMaxHP() - bossCard.getHP();
             }
         }
-        return new GameResult(this.getBoard(), winner, this.getRound(), cause, damageToBoss);
+        return new GameResult(this.getBoard(), winner, this.getRound(), cause, damageToBoss, null);
     }
 
     public Collection<CardInfo> getAllHandCards() {

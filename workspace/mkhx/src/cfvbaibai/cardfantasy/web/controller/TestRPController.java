@@ -49,15 +49,15 @@ public class TestRPController {
         starPicker.addRange(50, 2);
         starPicker.addRange(50, 3);
         starPicker.addRange(50, 4);
-        starPicker.addRange(10, 5);
+        starPicker.addRange(500, 5);
         
         racePicker = new WeightedRandomizer<Race>(randomizer);
         racePicker.addRange(100, Race.KINGDOM);
         racePicker.addRange(100, Race.FOREST);
         racePicker.addRange(100, Race.SAVAGE);
         racePicker.addRange(100, Race.HELL);
-        //racePicker.addRange(10, Race.BOSS);
-        //racePicker.addRange(10, Race.MOE);
+        racePicker.addRange(1000, Race.BOSS);
+        racePicker.addRange(1000, Race.MOE);
         /*
         String oneStar = "嗯，虽然明天会是平凡的一天，但努力每一天，就会有惊喜哦。";
         remarks = new String[][] {
@@ -86,7 +86,7 @@ public class TestRPController {
             int rpIndex = 0;
             List<CardData> raceFiltered = store.getCardOfRace(race);
             List<CardData> starRaceFiltered = null;
-            if (race == Race.BOSS && race == Race.MOE) {
+            if (race == Race.BOSS || race == Race.MOE) {
                 starRaceFiltered = raceFiltered;
                 rpIndex = 100;
             } else {

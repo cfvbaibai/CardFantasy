@@ -24,6 +24,7 @@ import cfvbaibai.cardfantasy.engine.feature.ConfusionFeature;
 import cfvbaibai.cardfantasy.engine.feature.CounterAttackFeature;
 import cfvbaibai.cardfantasy.engine.feature.CounterBiteFeature;
 import cfvbaibai.cardfantasy.engine.feature.CounterMagicFeature;
+import cfvbaibai.cardfantasy.engine.feature.CounterSummonFeature;
 import cfvbaibai.cardfantasy.engine.feature.CriticalAttackFeature;
 import cfvbaibai.cardfantasy.engine.feature.CurseFeature;
 import cfvbaibai.cardfantasy.engine.feature.DestroyFeature;
@@ -31,6 +32,7 @@ import cfvbaibai.cardfantasy.engine.feature.DiseaseFeature;
 import cfvbaibai.cardfantasy.engine.feature.DodgeFeature;
 import cfvbaibai.cardfantasy.engine.feature.EnergyArmorFeature;
 import cfvbaibai.cardfantasy.engine.feature.EnergyDrainFeature;
+import cfvbaibai.cardfantasy.engine.feature.EnprisonFeature;
 import cfvbaibai.cardfantasy.engine.feature.EscapeFeature;
 import cfvbaibai.cardfantasy.engine.feature.ExplodeFeature;
 import cfvbaibai.cardfantasy.engine.feature.FireMagicFeature;
@@ -70,6 +72,7 @@ import cfvbaibai.cardfantasy.engine.feature.SnipeFeature;
 import cfvbaibai.cardfantasy.engine.feature.SpikeFeature;
 import cfvbaibai.cardfantasy.engine.feature.TransportFeature;
 import cfvbaibai.cardfantasy.engine.feature.TrapFeature;
+import cfvbaibai.cardfantasy.engine.feature.TsukomiFeature;
 import cfvbaibai.cardfantasy.engine.feature.WarthFeature;
 import cfvbaibai.cardfantasy.engine.feature.WeakPointAttackFeature;
 import cfvbaibai.cardfantasy.engine.feature.WeakenAllFeature;
@@ -127,6 +130,10 @@ public class FeatureResolver {
             }
             if (feature.getType() == FeatureType.未知) {
                 // JUST A PLACEHOLDER
+            } else if (feature.getType() == FeatureType.关小黑屋) {
+                EnprisonFeature.apply(this, feature.getFeature(), attacker, defender);
+            } else if (feature.getType() == FeatureType.吐槽) {
+                TsukomiFeature.apply(this, feature.getFeature(), attacker, defender);
             } else if (feature.getType() == FeatureType.火球) {
                 FireMagicFeature.apply(feature.getFeature(), this, attacker, defender, 1);
             } else if (feature.getType() == FeatureType.火墙) {
@@ -227,6 +234,8 @@ public class FeatureResolver {
                     BurningFeature.apply(feature, this, attacker, defender);
                 } else if (feature.getType() == FeatureType.邪灵汲取) {
                     EnergyDrainFeature.apply(feature, this, attacker, defender, result, damagedResult);
+                } else if (feature.getType() == FeatureType.被插出五星) {
+                    CounterSummonFeature.apply(this, defender, feature.getFeature(), 5);
                 }
             }
             {
@@ -398,6 +407,15 @@ public class FeatureResolver {
                     } else if (blockFeature.getType() == FeatureType.不动) {
                         if (ImmobilityFeature.isFeatureBlocked(this, blockFeature.getFeature(), attackFeature, attacker,
                                 defender)) {
+                            result.setAttackable(false);
+                            return result;
+                        }
+                    }
+                }
+                {
+                    RuneInfo rune = defender.getOwner().getActiveRuneOf(RuneData.鬼步);
+                    if (rune != null && !defender.isWeak()) {
+                        if (EscapeFeature.isFeatureEscaped(this, rune.getFeature(), attackFeature, attacker, defender)) {
                             result.setAttackable(false);
                             return result;
                         }
@@ -847,6 +865,8 @@ public class FeatureResolver {
                 TransportFeature.apply(this, feature.getFeature(), card, opField.getOwner());
             } else if (feature.getType() == FeatureType.复活) {
                 ReviveFeature.apply(this, feature, card);
+            } else if (feature.getType() == FeatureType.关小黑屋) {
+                EnprisonFeature.apply(this, feature.getFeature(), card, opField.getOwner());
             }
         }
     }

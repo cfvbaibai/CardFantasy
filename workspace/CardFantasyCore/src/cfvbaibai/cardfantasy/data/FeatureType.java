@@ -79,6 +79,7 @@ public enum FeatureType {
     裂伤("30963", 0, FeatureTag.抗免疫),
     落雷("31132", 25, FeatureTag.魔法),
     脱困("30956", 0),
+    群体脱困("", 0),
     不动("30928", 0),
     复活("30953", 0, FeatureTag.复活),
     送还("30943", 0, FeatureTag.即死),
@@ -118,7 +119,7 @@ public enum FeatureType {
     
     圣炎("43446", 0),
     法力侵蚀("43447", 20),
-    
+
     英雄杀手("36260", 0, 15, FeatureTag.额外攻击加成, FeatureTag.不可洗炼),
 
     军团王国之力("", 0, 3, FeatureTag.永久, FeatureTag.基础攻击加成, FeatureTag.不可洗炼),
@@ -131,7 +132,11 @@ public enum FeatureType {
     魔神之刃("", 2000, 0, FeatureTag.抗免疫, FeatureTag.不可洗炼),
     魔神之甲("", 1500, 0, FeatureTag.抗免疫, FeatureTag.不可洗炼),
     魔神之咒("", 1000, 0, FeatureTag.抗免疫, FeatureTag.不可洗炼),
-    
+
+    关小黑屋("", 0, 1, FeatureTag.即死),
+    吐槽("", 0, 1, FeatureTag.控制),
+    被插出五星("", 0, 1),
+
     自动扣血("", 0, 0, FeatureTag.抗守护, FeatureTag.不可洗炼),
     未知("", 0, FeatureTag.不可洗炼);
 

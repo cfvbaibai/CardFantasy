@@ -8,11 +8,11 @@ import java.util.List;
 
 import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
 
-public abstract class CardPile {
+public class CardPile {
 
     private List<CardInfo> cards;
 
-    protected CardPile() {
+    public CardPile() {
         this.cards = new LinkedList<CardInfo>();
     }
 
