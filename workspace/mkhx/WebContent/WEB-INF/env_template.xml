@@ -14,7 +14,7 @@
         <property name="driverClassName" value="com.microsoft.sqlserver.jdbc.SQLServerDriver" />
         <property name="url" value="jdbc:sqlserver://LOCALHOST;databaseName=card_fantasy" />
         <property name="username" value="ss_cfsvc" />
-        <property name="password" value="xtxtxtxt" />
+        <property name="password" value="YOUR_PASSWORD" />
     </bean>
 
     <bean class="cfvbaibai.cardfantasy.web.beans.GlobalConfig">
