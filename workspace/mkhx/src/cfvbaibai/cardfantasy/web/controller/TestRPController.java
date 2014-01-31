@@ -49,15 +49,15 @@ public class TestRPController {
         starPicker.addRange(50, 2);
         starPicker.addRange(50, 3);
         starPicker.addRange(50, 4);
-        starPicker.addRange(500, 5);
+        starPicker.addRange(10, 5);
         
         racePicker = new WeightedRandomizer<Race>(randomizer);
         racePicker.addRange(100, Race.KINGDOM);
         racePicker.addRange(100, Race.FOREST);
         racePicker.addRange(100, Race.SAVAGE);
         racePicker.addRange(100, Race.HELL);
-        racePicker.addRange(1000, Race.BOSS);
-        racePicker.addRange(1000, Race.MOE);
+        racePicker.addRange(20, Race.BOSS);
+        racePicker.addRange(20, Race.MOE);
         /*
         String oneStar = "嗯，虽然明天会是平凡的一天，但努力每一天，就会有惊喜哦。";
         remarks = new String[][] {
@@ -110,14 +110,26 @@ public class TestRPController {
                 result.setRemark("我大圣女显灵，还不赶快烧香拜佛，不然让你一个月不出货。");
             } else {
                 result.setRPIndex(rpIndex);
-                if (rpIndex < 20) {
+                if (rpIndex == 0) {
+                    result.setRemark("这也算是另外一种强力人品吧！");
+                } else if (rpIndex < 10) {
+                    result.setRemark("最近是不是做过坏事啦？人品那么差！");
+                } else if (rpIndex < 20) {
                     result.setRemark("赶紧洗洗睡吧，今天诸事不宜。");
+                } else if (rpIndex < 30) {
+                    result.setRemark("善哉善哉，湿主今日运势欠佳，还是捐点香火钱消消灾吧……");
                 } else if (rpIndex < 40) {
                     result.setRemark("好像运势不是很好的样子，想抽包的今天还是罢手吧。");
+                } else if (rpIndex < 50) {
+                    result.setRemark("今天似乎宅在家里比较好呢。");
                 } else if (rpIndex < 60) {
                     result.setRemark("看来是平凡的一天呐，和往常一样过吧。");
+                } else if (rpIndex < 70) {
+                    result.setRemark("今天的运势看起来不错哦，如果刚好是考试日的话就恭喜啦！");
                 } else if (rpIndex < 80) {
                     result.setRemark("似乎有好事要发生呢，是不是抽几包败家包或者开几张吊丝券？");
+                } else if (rpIndex < 90) {
+                    result.setRemark("还在等什么呢？那么好的人品，要不，去跟女（男）神表白？");
                 } else if (rpIndex < 100) {
                     result.setRemark("大吉大利的一天，塔里要出货的赶脚！");
                 } else {

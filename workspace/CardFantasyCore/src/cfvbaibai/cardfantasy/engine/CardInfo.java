@@ -107,7 +107,7 @@ public class CardInfo extends EntityInfo {
         return this.card;
     }
 
-    public int getLevel0AT() {
+    public int getInitAT() {
         return this.card.getInitAT();
     }
     
@@ -122,6 +122,10 @@ public class CardInfo extends EntityInfo {
             }
         }
         return at;
+    }
+    
+    public int getLevel0AT() {
+        return this.getInitAT() + this.getSpecificLevelEffectAT(FeatureTag.原始攻击加成);
     }
 
     public int getLevel1AT() {

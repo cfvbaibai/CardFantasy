@@ -209,7 +209,7 @@ public abstract class TextGameUI extends GameUI {
         StringBuffer sb = new StringBuffer();
         sb.append("墓地: ");
         for (CardInfo card : grave.toList()) {
-            sb.append(String.format("%s (等级=%d, 攻击=%d, HP=%d), ", card.getUniqueName(), card.getLevel(), card.getLevel0AT(),
+            sb.append(String.format("%s (等级=%d, 攻击=%d, HP=%d), ", card.getUniqueName(), card.getLevel(), card.getInitAT(),
                     card.getMaxHP()));
         }
         say(sb.toString());
@@ -222,7 +222,7 @@ public abstract class TextGameUI extends GameUI {
         List<CardInfo> cards = field.getAliveCards();
         for (CardInfo card : cards) {
             sb.append(String.format("[%d] %s (等级=%d, 攻击=%d/%d, HP=%d/%d/%d, 状态=%s, 效果=%s)\r\n", i, card.getUniqueName(),
-                    card.getLevel(), card.getCurrentAT(), card.getLevel0AT(), card.getHP(), card.getMaxHP(),
+                    card.getLevel(), card.getCurrentAT(), card.getInitAT(), card.getHP(), card.getMaxHP(),
                     card.getOriginalMaxHP(), card.getStatus().getShortDesc(), card.getEffectsDesc()));
             ++i;
         }
@@ -238,7 +238,7 @@ public abstract class TextGameUI extends GameUI {
         sb.append("手牌: ");
         for (CardInfo card : hand.toList()) {
             sb.append(String.format("%s (等级=%d, 攻击=%d, HP=%d, 等待=%d), ", card.getUniqueName(), card.getLevel(),
-                    card.getLevel0AT(), card.getMaxHP(), card.getSummonDelay()));
+                    card.getInitAT(), card.getMaxHP(), card.getSummonDelay()));
         }
         say(sb.toString());
     }
@@ -247,7 +247,7 @@ public abstract class TextGameUI extends GameUI {
         StringBuffer sb = new StringBuffer();
         sb.append("牌堆: ");
         for (CardInfo card : deck.toList()) {
-            sb.append(String.format("%s (等级=%d, 攻击=%d, HP=%d), ", card.getUniqueName(), card.getLevel(), card.getLevel0AT(),
+            sb.append(String.format("%s (等级=%d, 攻击=%d, HP=%d), ", card.getUniqueName(), card.getLevel(), card.getInitAT(),
                     card.getMaxHP()));
         }
         say(sb.toString());

@@ -122,10 +122,10 @@ public enum FeatureType {
 
     英雄杀手("36260", 0, 15, FeatureTag.额外攻击加成, FeatureTag.不可洗炼),
 
-    军团王国之力("", 0, 3, FeatureTag.永久, FeatureTag.基础攻击加成, FeatureTag.不可洗炼),
-    军团森林之力("", 0, 3, FeatureTag.永久, FeatureTag.基础攻击加成, FeatureTag.不可洗炼),
-    军团蛮荒之力("", 0, 3, FeatureTag.永久, FeatureTag.基础攻击加成, FeatureTag.不可洗炼),
-    军团地狱之力("", 0, 3, FeatureTag.永久, FeatureTag.基础攻击加成, FeatureTag.不可洗炼),
+    军团王国之力("", 0, 3, FeatureTag.永久, FeatureTag.原始攻击加成, FeatureTag.不可洗炼),
+    军团森林之力("", 0, 3, FeatureTag.永久, FeatureTag.原始攻击加成, FeatureTag.不可洗炼),
+    军团蛮荒之力("", 0, 3, FeatureTag.永久, FeatureTag.原始攻击加成, FeatureTag.不可洗炼),
+    军团地狱之力("", 0, 3, FeatureTag.永久, FeatureTag.原始攻击加成, FeatureTag.不可洗炼),
     军团魔神之力("", 0, FeatureTag.不可洗炼),
     军团萌货之力("", 0, FeatureTag.不可洗炼),
     

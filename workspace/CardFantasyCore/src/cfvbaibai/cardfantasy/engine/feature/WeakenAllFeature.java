@@ -23,6 +23,6 @@ public final class WeakenAllFeature {
         Feature feature = featureInfo.getFeature();
         List<CardInfo> defenders = defenderPlayer.getField().getAliveCards();
         resolver.getStage().getUI().useSkill(attacker, defenders, feature, true);
-        WeakenFeature.weakenCard(resolver, featureInfo, attacker, defenders);
+        WeakenFeature.weakenCard(resolver, featureInfo, featureInfo.getFeature().getImpact(), attacker, defenders);
     }
 }

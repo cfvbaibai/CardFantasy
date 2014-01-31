@@ -7,6 +7,8 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">
                 <h3>公告</h3>
                 <ul>
+                    <li>迎新春，插熊老师出五星，模拟器增加新卡【熊老师】，祝福大家春节里五星多多，开心多多，至于【熊老师】是谁？嗯，
+                        <a href="http://cnrdn.com/rd.htm?id=1344758&r=http%3A%2F%2Ftieba.baidu.com%2Ff%3Fkw%3D%25C4%25A7%25BF%25A8%25BB%25C3%25CF%25EB" target="_blank">魔卡幻想贴吧</a>的白富美大吧你都不认识？</li>
                     <li>新符文【鬼步】的数据只是测试阶段的，尚未定稿，将来可能更新，请注意！</li>
                     <li>【盗贼】由于卡组变数太大，暂时没有数据很难模拟。如果有朋友对此有研究，请点击<a href="#communication">这里</a>提供情报。</li>
                 </ul>
@@ -14,6 +16,16 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2014-01-24: 添加新卡 - 【熊老师】（同时也会加入到人品测试）<ul>
+                        <li>种族：萌货，星数：五星，速度：4，10级COST：0，15级COST：0</li>
+                        <li>10级二维：AT=800, HP=2000</li>
+                        <li>15级二维：AT=1000, HP=2250</li>
+                        <li>技能1：[降临]关小黑屋1 - 随机送还对手场上一张卡片，关入小黑屋，可被免疫、不动抵抗。</li>
+                        <li>技能2: 吐槽2 - 随机吐槽对手场上两张卡片，导致其精神崩溃，对自己造成当前攻击力的伤害，可被免疫、脱困抵抗。</li>
+                        <li>技能3: 被插出五星1 - 被物理攻击命中并承受伤害时，30%几率随机召唤卡堆中的一张五星卡片上场，可发动降临技。</li>
+                        </ul>
+                    </li>
+                    <li>2014-01-23: 在动画中给魔神加上了卡图，魔神现在终于有脸了。</li>
                     <li>2014-01-18: 添加符文 - 【鬼步】（群体脱困），场上地狱大于2张发动，感谢<b>高端大气上档次</b>提供情报。</li>
                     <li>2014-01-15:<ul>
                         <li>新卡加入 - 【海军水手】王国三星</li>
