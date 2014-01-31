@@ -23,6 +23,7 @@
     <%@ include file="communication.jsp" %>
     <%@ include file="test-rp.jsp" %>
     <%@ include file="help.jsp" %>
+    <%@ include file="open-source.jsp" %>
     <%@ include file="arena.jsp" %>
     <%@ include file="deck-builder.jsp" %>
 
