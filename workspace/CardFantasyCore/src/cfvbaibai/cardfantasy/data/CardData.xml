@@ -633,6 +633,11 @@
         <Feature type="甘霖" level="6" unlock="5" />
         <Feature type="免疫" level="0" unlock="10" />
     </Card>
+        <Card id="2511" name="蔷薇骑士" wikiId="57012" race="森林" speed="4" star="4" cost="13" incrCost="1" at="280" hp="960" incrAT="23" incrHP="25">
+        <Feature type="格挡" level="6" unlock="0" />
+        <Feature type="邪灵汲取" level="4" unlock="5" />
+        <Feature type="暴击" level="6" unlock="10" />
+    </Card>
     
     <!-- 蛮荒  -->
     <Card id="3101" name="穴居人奴隶" wikiId="31006" race="蛮荒" speed="2" star="1" cost="4" incrCost="2" at="90" hp="390" incrAT="18" incrHP="11">
