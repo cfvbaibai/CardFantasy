@@ -18,13 +18,12 @@ License
 
 Working Environment
 ===================
-IDE:
-      Eclipse
+    
+    IDE: Eclipse
       
-Workspace folder:
-      /workspace
+    Workspace folder: /workspace
       
-Dependency:
-    - JRE7
-    - Server with Tomcat 7.0
-    - JUnit 4
+    Dependency:
+        - JRE7
+        - Server with Tomcat 7.0
+        - JUnit 4
