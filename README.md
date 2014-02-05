@@ -16,10 +16,14 @@ License
     Licensed under the GNU GPL, Version 3.0 (the "License");
     you may not use this file except in compliance with the License.
 
-IDE
-=======
-Eclipse.
-Workspace folder: workspace
+Working Environment
+===================
+IDE:
+      Eclipse
+      
+Workspace folder:
+      /workspace
+      
 Dependency:
     - JRE7
     - Server with Tomcat 7.0
