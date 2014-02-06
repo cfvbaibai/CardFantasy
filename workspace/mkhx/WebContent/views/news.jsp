@@ -11,7 +11,7 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">
                 <h3>公告</h3>
                 <ul>
-                	<li>添加新卡【浴火龙女】，感谢<b>wei123chen</b>朋友的贡献。这是在模拟器代码开源之后，来自开源社区的第一次更新。</li>
+                	<li>添加新卡【浴火龙女】，感谢<b>wei123chen</b>朋友提交的代码。这是在模拟器代码开源之后，来自开源社区的第一次更新。</li>
                     <li>新符文【鬼步】的数据只是测试阶段的，尚未定稿，将来可能更新，请注意！</li>
                     <li>【盗贼】由于卡组变数太大，暂时没有数据很难模拟。如果有朋友对此有研究，请点击<a href="#communication">这里</a>提供情报。</li>
                 </ul>
