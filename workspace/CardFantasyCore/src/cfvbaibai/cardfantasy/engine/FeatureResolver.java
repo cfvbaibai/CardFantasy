@@ -80,6 +80,8 @@ import cfvbaibai.cardfantasy.engine.feature.WeakenFeature;
 import cfvbaibai.cardfantasy.engine.feature.WinningPursuitFeature;
 import cfvbaibai.cardfantasy.engine.feature.WoundFeature;
 import cfvbaibai.cardfantasy.engine.feature.ZealotFeature;
+import cfvbaibai.cardfantasy.engine.feature.AllDelayFeature;
+
 
 public class FeatureResolver {
     private StageInfo stage;
@@ -208,6 +210,8 @@ public class FeatureResolver {
                 WinningPursuitFeature.apply(this, feature, attacker, defender);
             } else if (feature.getType() == FeatureType.复仇) {
                 RevengeFeature.apply(this, feature, attacker);
+            } else if (feature.getType() == FeatureType.全体阻碍){
+            	AllDelayFeature.apply(feature, this, attacker, defender);
             }
         }
         RuneInfo rune = attacker.getOwner().getActiveRuneOf(RuneData.飞岩);
