@@ -15,6 +15,7 @@ public final class AllDelayFeature {
             return;
         }
         List<CardInfo> allHandCards = defender.getHand().toList();
+        resolver.getStage().getUI().useSkill(attacker, allHandCards, featureInfo.getFeature(), true);
         for (CardInfo card : allHandCards) {
             int summonDelay = card.getSummonDelay();
             if (summonDelay > 0) {
