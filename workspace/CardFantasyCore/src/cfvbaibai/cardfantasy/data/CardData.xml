@@ -316,11 +316,16 @@
         <Feature type="不动" level="0" unlock="5" />
         <Feature type="暴风雪" level="8" unlock="10" />
     </Card>
-     <Card id="1511" name="浴火龙女" wikiId="57008" race="王国" speed="4" star="5" cost="16" incrCost="2" at="370" hp="1320" incrAT="41" incrHP="36">
+    <Card id="1511" name="浴火龙女" wikiId="57008" race="王国" speed="4" star="5" cost="16" incrCost="2" at="370" hp="1320" incrAT="41" incrHP="36">
         <Feature type="不动" level="0" unlock="0" />
         <Feature type="法力反射" level="6" unlock="5" />
         <Feature type="王国守护" level="7" unlock="10" />
     </Card>   
+    <Card id="1512" name="最终兵器" wikiId="56748" race="王国" speed="3" star="5" cost="16" incrCost="2" at="325" hp="1420" incrAT="37" incrHP="48">
+        <Feature type="格挡" level="8" unlock="0" />
+        <Feature type="神圣守护" level="7" unlock="5" />
+        <Feature type="净化" level="0" unlock="10" summon="true" />
+    </Card>
     
     <!-- 森林 -->
     <Card id="2101" name="人马巡逻者" wikiId="30976" race="森林" speed="2" star="1" cost="3" incrCost="2" at="95" hp="310" incrAT="17" incrHP="11">

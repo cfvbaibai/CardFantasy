@@ -55,6 +55,7 @@ import cfvbaibai.cardfantasy.engine.feature.PenetrationFeature;
 import cfvbaibai.cardfantasy.engine.feature.PlagueFeature;
 import cfvbaibai.cardfantasy.engine.feature.PoisonMagicFeature;
 import cfvbaibai.cardfantasy.engine.feature.PrayFeature;
+import cfvbaibai.cardfantasy.engine.feature.PurifyFeature;
 import cfvbaibai.cardfantasy.engine.feature.PursuitFeature;
 import cfvbaibai.cardfantasy.engine.feature.RaceBuffFeature;
 import cfvbaibai.cardfantasy.engine.feature.RacialAttackFeature;
@@ -81,6 +82,7 @@ import cfvbaibai.cardfantasy.engine.feature.WinningPursuitFeature;
 import cfvbaibai.cardfantasy.engine.feature.WoundFeature;
 import cfvbaibai.cardfantasy.engine.feature.ZealotFeature;
 import cfvbaibai.cardfantasy.engine.feature.AllDelayFeature;
+import cfvbaibai.cardfantasy.engine.feature.OneDelayFeature;
 
 
 public class FeatureResolver {
@@ -212,6 +214,10 @@ public class FeatureResolver {
                 RevengeFeature.apply(this, feature, attacker);
             } else if (feature.getType() == FeatureType.全体阻碍){
             	AllDelayFeature.apply(feature, this, attacker, defender);
+            }else if (feature.getType() == FeatureType.阻碍){
+            	OneDelayFeature.apply(feature, this, attacker, defender);
+            }else if (feature.getType() == FeatureType.净化){
+            	PurifyFeature.apply(feature, this, attacker, defender);
             }
         }
         RuneInfo rune = attacker.getOwner().getActiveRuneOf(RuneData.飞岩);
