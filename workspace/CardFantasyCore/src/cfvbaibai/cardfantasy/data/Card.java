@@ -89,7 +89,7 @@ public class Card implements Cloneable, Comparable <Card> {
 
     public int getCost() {
         int cost = this.sourceInfo.getBaseCost();
-        if (this.getLevel() == 15) {
+        if (this.getLevel() > 10 || this.extraFeature != null) {
             cost += this.sourceInfo.getIncrCost();
         }
         return cost;
