@@ -99,6 +99,15 @@ public class FeatureResolver {
     private boolean isPhysicalAttackFeature(Feature feature) {
         return feature == null || feature.getType().containsTag(FeatureTag.物理攻击);
     }
+    
+    public void removeStatus(CardInfo card, CardStatusType statusType) {
+        if (card == null) {
+            return;
+        }
+        if (card.removeStatus(statusType)) {
+            this.stage.getUI().removeCardStatus(card, statusType);
+        }
+    }
 
     public List<CardInfo> getAdjacentCards(Field field, int position) {
         List<CardInfo> cards = new ArrayList<CardInfo>();
@@ -217,7 +226,7 @@ public class FeatureResolver {
             }else if (feature.getType() == FeatureType.阻碍){
             	OneDelayFeature.apply(feature, this, attacker, defender);
             }else if (feature.getType() == FeatureType.净化){
-            	PurifyFeature.apply(feature, this, attacker, defender);
+            	PurifyFeature.apply(feature, this, attacker);
             }
         }
         RuneInfo rune = attacker.getOwner().getActiveRuneOf(RuneData.飞岩);

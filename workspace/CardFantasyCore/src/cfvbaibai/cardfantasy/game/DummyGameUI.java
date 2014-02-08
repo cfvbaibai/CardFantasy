@@ -338,4 +338,10 @@ public class DummyGameUI extends GameUI {
         
     }
 
+	@Override
+	public void increaseSummonDelay(CardInfo card, int offset) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

@@ -142,7 +142,7 @@ public class GameEngine {
         this.getInactivePlayer().getField().compact();
         
         for (CardInfo card : this.getActivePlayer().getField().getAliveCards()) {
-            removeStatus(card, CardStatusType.虚弱);
+            this.stage.getResolver().removeStatus(card, CardStatusType.虚弱);
         }
 
         return Phase.准备;
@@ -208,10 +208,10 @@ public class GameEngine {
                 ui.confused(myField.getCard(i));
                 resolver.resolvePreAttackHeroFeature(myField.getCard(i), getActivePlayer());
                 resolver.attackHero(myField.getCard(i), getActivePlayer(), null, myField.getCard(i).getCurrentAT());
-                removeStatus(myField.getCard(i), CardStatusType.迷惑);
-                removeStatus(myField.getCard(i), CardStatusType.冰冻);
-                removeStatus(myField.getCard(i), CardStatusType.锁定);
-                removeStatus(myField.getCard(i), CardStatusType.麻痹);
+                resolver.removeStatus(myField.getCard(i), CardStatusType.迷惑);
+                resolver.removeStatus(myField.getCard(i), CardStatusType.冰冻);
+                resolver.removeStatus(myField.getCard(i), CardStatusType.锁定);
+                resolver.removeStatus(myField.getCard(i), CardStatusType.麻痹);
             }
             else if (
                 status.containsStatus(CardStatusType.冰冻) ||
@@ -219,8 +219,8 @@ public class GameEngine {
                 status.containsStatus(CardStatusType.虚弱)) {
                 underControl = true;
                 ui.cannotAction(myField.getCard(i));
-                removeStatus(myField.getCard(i), CardStatusType.冰冻);
-                removeStatus(myField.getCard(i), CardStatusType.锁定);
+                resolver.removeStatus(myField.getCard(i), CardStatusType.冰冻);
+                resolver.removeStatus(myField.getCard(i), CardStatusType.锁定);
             } else {
                 tryAttackEnemy(myField, opField, i);
             }
@@ -234,7 +234,7 @@ public class GameEngine {
             }
             
             // 解除状态
-            removeStatus(myField.getCard(i), CardStatusType.中毒);
+            resolver.removeStatus(myField.getCard(i), CardStatusType.中毒);
             ui.cardActionEnds(card);
         }
 
@@ -244,15 +244,6 @@ public class GameEngine {
         opField.compact();
 
         return Phase.结束;
-    }
-    
-    private void removeStatus(CardInfo card, CardStatusType statusType) {
-        if (card == null) {
-            return;
-        }
-        if (card.removeStatus(statusType)) {
-            this.stage.getUI().removeCardStatus(card, statusType);
-        }
     }
 
     private void tryAttackEnemy(Field myField, Field opField, int i) throws HeroDieSignal {
@@ -291,7 +282,7 @@ public class GameEngine {
         FeatureResolver resolver = this.stage.getResolver();
         GameUI ui = this.stage.getUI();
         if (myField.getCard(i).getStatus().containsStatus(CardStatusType.麻痹)) {
-            removeStatus(myField.getCard(i), CardStatusType.麻痹);
+        	resolver.removeStatus(myField.getCard(i), CardStatusType.麻痹);
             return;
         }
         for (FeatureInfo featureInfo : myField.getCard(i).getNormalUsableFeatures()) {

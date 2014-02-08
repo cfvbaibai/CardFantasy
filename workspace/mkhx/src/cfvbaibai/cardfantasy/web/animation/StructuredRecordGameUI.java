@@ -400,4 +400,9 @@ public class StructuredRecordGameUI extends GameUI {
     public void mapStageResult(PveGameResult result) {
         this.record.addEvent("mapBattleResult", result.getDescription());
     }
+
+	@Override
+	public void increaseSummonDelay(CardInfo card, int offset) {
+		// TODO Implement animation for summon delay change.
+	}
 }

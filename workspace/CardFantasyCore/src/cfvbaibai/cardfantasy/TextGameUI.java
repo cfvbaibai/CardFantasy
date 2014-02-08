@@ -467,4 +467,9 @@ public abstract class TextGameUI extends GameUI {
     public void mapStageResult(PveGameResult result) {
         sayF("战斗结果：%s", result.getDescription());
     }
+    
+    @Override
+    public void increaseSummonDelay(CardInfo card, int offset) {
+         sayF("%s 的等待时间增加 %d", card.getShortDesc(), offset);
+    }
 }

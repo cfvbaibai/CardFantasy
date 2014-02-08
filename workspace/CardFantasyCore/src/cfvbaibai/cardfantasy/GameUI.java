@@ -172,4 +172,6 @@ public abstract class GameUI {
     public abstract void cardActionEnds(CardInfo card);
     
     public abstract void mapStageResult(PveGameResult result);
+    
+    public abstract void increaseSummonDelay(CardInfo card, int offset);
 }
