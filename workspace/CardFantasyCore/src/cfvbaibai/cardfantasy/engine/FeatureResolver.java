@@ -223,9 +223,9 @@ public class FeatureResolver {
                 RevengeFeature.apply(this, feature, attacker);
             } else if (feature.getType() == FeatureType.全体阻碍){
             	AllDelayFeature.apply(feature, this, attacker, defender);
-            }else if (feature.getType() == FeatureType.阻碍){
+            } else if (feature.getType() == FeatureType.阻碍){
             	OneDelayFeature.apply(feature, this, attacker, defender);
-            }else if (feature.getType() == FeatureType.净化){
+            } else if (feature.getType() == FeatureType.净化){
             	PurifyFeature.apply(feature, this, attacker);
             }
         }
@@ -886,6 +886,8 @@ public class FeatureResolver {
                 ReviveFeature.apply(this, feature, card);
             } else if (feature.getType() == FeatureType.关小黑屋) {
                 EnprisonFeature.apply(this, feature.getFeature(), card, opField.getOwner());
+            } else if (feature.getType() == FeatureType.净化){
+            	PurifyFeature.apply(feature, this, card);
             }
         }
     }
