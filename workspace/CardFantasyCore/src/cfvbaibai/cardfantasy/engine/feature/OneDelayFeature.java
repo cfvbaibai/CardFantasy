@@ -20,6 +20,7 @@ public final class OneDelayFeature {
             return;
         }
         List<CardInfo> allHandCards = defender.getHand().toList();
+        resolver.getStage().getUI().useSkill(attacker, allHandCards, featureInfo.getFeature(), true);
         int a= 6;
         for (CardInfo card : allHandCards) {
             int summonDelay = card.getSummonDelay();
@@ -31,6 +32,7 @@ public final class OneDelayFeature {
             }
         CardInfo delaycard = allHandCards.get(a);
         delaycard.setSummonDelay(a + 1);
+        attacker.setUsed(featureInfo);
         }
  
 }

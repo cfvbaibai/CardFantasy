@@ -1,6 +1,6 @@
 package cfvbaibai.cardfantasy.engine.feature;
 
-//import java.util.List;
+import java.util.List;
 
 //import cfvbaibai.cardfantasy.GameUI;
 //import cfvbaibai.cardfantasy.data.Feature;
@@ -15,12 +15,14 @@ import cfvbaibai.cardfantasy.engine.HeroDieSignal;
 import cfvbaibai.cardfantasy.engine.Player;
 
 public final class PurifyFeature {
-    public static void apply(FeatureInfo featureInfo, FeatureResolver resolver, CardInfo attacker, Player defender)
+    public static void apply(FeatureInfo featureInfo, FeatureResolver resolver, CardInfo attacker, Player attacker1)
             throws HeroDieSignal {
         if (attacker.hasUsed(featureInfo)) {
             return;
         }
-        Field myField = defender.getField();
+        Field myField = attacker1.getField();
+        List<CardInfo> allHandCards = attacker1.getHand().toList();
+        resolver.getStage().getUI().useSkill(attacker, allHandCards, featureInfo.getFeature(), true);
         for (int i = 0; i < myField.size(); ++i) {
             if (myField.getCard(i) == null) {
                 continue;
@@ -32,6 +34,7 @@ public final class PurifyFeature {
             card.removeStatus(CardStatusType.麻痹);
             card.removeStatus(CardStatusType.中毒);
             card.removeStatus(CardStatusType.燃烧);
-        }       
+        }
+        attacker.setUsed(featureInfo);
     }
 }
