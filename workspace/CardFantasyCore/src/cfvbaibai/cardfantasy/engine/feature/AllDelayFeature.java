@@ -1,12 +1,8 @@
 package cfvbaibai.cardfantasy.engine.feature;
 
-//import java.util.Collection;
 import java.util.List;
 
-//import cfvbaibai.cardfantasy.GameUI;
-//import cfvbaibai.cardfantasy.data.Feature;
 import cfvbaibai.cardfantasy.engine.CardInfo;
-//import cfvbaibai.cardfantasy.engine.CardStatusItem;
 import cfvbaibai.cardfantasy.engine.FeatureInfo;
 import cfvbaibai.cardfantasy.engine.FeatureResolver;
 import cfvbaibai.cardfantasy.engine.HeroDieSignal;
@@ -19,12 +15,13 @@ public final class AllDelayFeature {
             return;
         }
         List<CardInfo> allHandCards = defender.getHand().toList();
+        resolver.getStage().getUI().useSkill(attacker, allHandCards, featureInfo.getFeature(), true);
         for (CardInfo card : allHandCards) {
             int summonDelay = card.getSummonDelay();
             if (summonDelay >= 0) {
                 card.setSummonDelay(summonDelay + 1);
             }
         }
-
+        attacker.setUsed(featureInfo);
     }
 }
