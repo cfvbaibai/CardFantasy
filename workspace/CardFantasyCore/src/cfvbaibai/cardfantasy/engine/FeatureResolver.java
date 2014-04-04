@@ -813,7 +813,7 @@ public class FeatureResolver {
         return healee;
     }
 
-    // revivier: for most of the cases, it should be null.
+    // reviver: for most of the cases, it should be null.
     // It is only set when the summoning feature performer is revived by another card.
     public void resolveSummoningFeature(CardInfo card, Field myField, Field opField, CardInfo reviver) throws HeroDieSignal {
         LegionBuffFeature.apply(this, card);
