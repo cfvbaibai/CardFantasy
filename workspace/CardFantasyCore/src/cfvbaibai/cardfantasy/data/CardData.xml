@@ -1291,7 +1291,7 @@
         <Feature type="狙击" level="10" unlock="5" />
         <Feature type="转生" level="8" unlock="10" />
     </Card>
-    <Card id="4505" name="幽灵巨龙" wikiId="31111" race="地狱" speed="4" star="5" cost="18" incrCost="－1" at="260" hp="1350" incrAT="35" incrHP="56">
+    <Card id="4505" name="幽灵巨龙" wikiId="31111" race="地狱" speed="4" star="5" cost="18" incrCost="-1" at="260" hp="1350" incrAT="35" incrHP="56">
         <Feature type="转生" level="6" unlock="0" />
         <Feature type="脱困" level="0" unlock="5" />
         <Feature type="弱点攻击" level="0" unlock="10" />
