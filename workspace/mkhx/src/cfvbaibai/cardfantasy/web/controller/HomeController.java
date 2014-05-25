@@ -1,7 +1,6 @@
 package cfvbaibai.cardfantasy.web.controller;
 
 import java.util.Date;
-import java.util.concurrent.atomic.AtomicInteger;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -19,8 +18,8 @@ public class HomeController {
     @Autowired
     private UserActionRecorder userActionRecorder;
     
-    @Autowired
-    private AtomicInteger activeSessionCount;
+    //@Autowired
+    //private AtomicInteger activeSessionCount;
     
     @Autowired
     private Logger logger;
@@ -32,9 +31,9 @@ public class HomeController {
         ModelAndView mv = new ModelAndView();
         mv.setViewName("home");
         mv.addObject("isNewSession", request.getSession().isNew());
-        int activeSessionCountValue = activeSessionCount.intValue();
-        mv.addObject("activeSessionCount", activeSessionCountValue);
-        logger.info("Active Session Count: " + activeSessionCountValue);
+        //int activeSessionCountValue = activeSessionCount.intValue();
+        //mv.addObject("activeSessionCount", activeSessionCountValue);
+        //logger.info("Active Session Count: " + activeSessionCountValue);
         this.userActionRecorder.addAction(new UserAction(new Date(), request.getRemoteAddr(), "Visit Home", ""));
         return mv;
     }

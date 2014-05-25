@@ -16,7 +16,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -76,9 +75,9 @@ public class AutoBattleController {
     @Autowired
     private ErrorHelper errorHelper;
     
-    @Autowired
-    @Qualifier("user-error")
-    private java.util.logging.Logger userErrorLogger;
+    //@Autowired
+    //@Qualifier("user-error")
+    //private java.util.logging.Logger userErrorLogger;
     
     @Autowired
     private CommunicationService service;

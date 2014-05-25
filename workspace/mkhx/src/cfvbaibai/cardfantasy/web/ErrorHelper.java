@@ -5,19 +5,25 @@ import cfvbaibai.cardfantasy.web.beans.Logger;
 
 public class ErrorHelper {
     private Logger logger;
-    private java.util.logging.Logger userErrorLogger;
+    //private java.util.logging.Logger userErrorLogger;
     
+    public ErrorHelper(Logger logger) {
+    	this.logger = logger;
+    }
+
+    /*
     public ErrorHelper(Logger logger, java.util.logging.Logger userErrorLogger) {
         this.logger = logger;
         this.userErrorLogger = userErrorLogger;
     }
+    */
     
     public String handleError(Exception e, boolean isJson) {
         String errorMessage = "";
         logger.info(errorMessage);
         if (e instanceof CardFantasyUserRuntimeException) {
             CardFantasyUserRuntimeException cfure = (CardFantasyUserRuntimeException)e;
-            userErrorLogger.severe(cfure.getMessage());
+            //userErrorLogger.severe(cfure.getMessage());
             errorMessage = cfure.getMessage() + cfure.getHelpMessage();
         } else {
             logger.error(e);

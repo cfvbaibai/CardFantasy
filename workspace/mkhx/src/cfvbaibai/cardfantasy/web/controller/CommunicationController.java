@@ -10,8 +10,6 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -30,23 +28,23 @@ import cfvbaibai.cardfantasy.web.dao.Thread;
 @Controller
 public class CommunicationController {
 
-    @Autowired
+    //@Autowired
     private GlobalConfig config;
     
-    @Autowired
+    //@Autowired
     private JsonHandler jsonHandler;
     
-    @Autowired
+    //@Autowired
     private UserActionRecorder userActionRecorder;
     
-    @Autowired
+    //@Autowired
     private Logger logger;
     
-    @Autowired
-    @Qualifier("communication")
-    private java.util.logging.Logger julLogger;
+    //@Autowired
+    //@Qualifier("communication")
+    //private java.util.logging.Logger julLogger;
     
-    @Autowired
+    //@Autowired
     private CommunicationService service;
 
     @RequestMapping(value = "/SendFeedback")
@@ -55,7 +53,7 @@ public class CommunicationController {
             @RequestParam("feedback") String feedback) {
         String remoteAddress = request.getRemoteAddr();
         String trace = "[FEEDBACK] IP: " + remoteAddress + ", SENDER: " + sender + ", CONTENT: " + feedback;
-        julLogger.info(trace);
+        //julLogger.info(trace);
         logger.info(trace);
         userActionRecorder.addAction(new UserAction(new Date(), remoteAddress, "Send Feedback", sender + ": " + feedback));
         service.newPost(Post.createNew(sender, feedback));
