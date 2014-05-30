@@ -13,7 +13,7 @@ License
 
     Copyright 2014 CfvBaibai
 
-    Licensed under the GNU GPL, Version 3.0 (the "License");
+    Licensed under the FreeBSD License;
     you may not use this file except in compliance with the License.
 
 Working Environment
