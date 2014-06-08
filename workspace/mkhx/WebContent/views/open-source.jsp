@@ -6,7 +6,7 @@
             <p>以下是加入模拟器开发的具体要点：</p>
             <ul>
                 <li>模拟器代码目前托管在GitHub，地址：<a href="https://github.com/cfvbaibai/CardFantasy" target="_blank">https://github.com/cfvbaibai/CardFantasy</a></li>
-                <li>模拟器代码受GPL-3.0开源协议约束，请勿用作任何商业用途（包括植入广告），不然可能面临法律追究。</li>
+                <li>模拟器代码受BSD开源协议约束。</li>
                 <li>模拟器代码下载后是无法直接运行的，因为是服务器端代码，需要部署，具体细节请参阅README.txt。</li>
             </ul>
             <p>您有如下几种形式伸出您的援助之手：</p>
