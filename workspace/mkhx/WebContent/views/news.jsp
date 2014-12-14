@@ -11,13 +11,13 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">
                 <h3>公告</h3>
                 <ul>
-                    <li>暂无</li>
+                    <li>这是一个非常老旧的版本，没有新卡，没有新技能，服务器一个月200元也自己出的，凑合吧……</li>
                 </ul>
             </div>
             <div data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">
                 <h3>更新日志</h3>
                 <ul class="news-content">
-                	<li>2014-02-06: 添加新卡 - 【浴火龙女】王国五星</li>
+                    <li>2014-02-06: 添加新卡 - 【浴火龙女】王国五星</li>
                     <li>2014-01-24: 添加新卡 - 【熊老师】（同时也会加入到人品测试）<ul>
                         <li>种族：萌货，星数：五星，速度：4，10级COST：0，15级COST：0</li>
                         <li>10级二维：AT=800, HP=2000</li>
