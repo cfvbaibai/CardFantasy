@@ -79,8 +79,8 @@ public class AutoBattleController {
     //@Qualifier("user-error")
     //private java.util.logging.Logger userErrorLogger;
     
-    @Autowired
-    private CommunicationService service;
+    //@Autowired
+    //private CommunicationService service;
 
     private static GameResultStat play(PlayerInfo p1, PlayerInfo p2, int count, Rule rule) {
         GameResultStat stat = new GameResultStat(p1, p2);
@@ -316,7 +316,7 @@ public class AutoBattleController {
             entry.setMaxDamage(maxDamage);
             String sortedDeck = DeckBuilder.getSortedDeckDesc(player2);
             entry.setSortedDeck(sortedDeck);
-            service.newBossBattleStatEntry(entry);
+            //service.newBossBattleStatEntry(entry);
             
             long testMinute = 99999;
             long testBattleCount = 1 + (60 * testMinute / coolDown);

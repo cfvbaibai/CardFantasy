@@ -15,17 +15,21 @@
     <!-- Enable annotations like @Autowired and @Qualifier -->
     <context:annotation-config />
 
-    <import resource="env.xml" />
+    <!--  <import resource="env.xml" /> -->
 
+	<!--
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource" />
         <property name="mapperLocations" value="/WEB-INF/*-mapper.xml" />
     </bean>
+	-->
 
+	<!--
     <bean id="postMapperFactory" class="org.mybatis.spring.mapper.MapperFactoryBean">
         <property name="mapperInterface" value="cfvbaibai.cardfantasy.web.dao.PostMapper" />
         <property name="sqlSessionFactory" ref="sqlSessionFactory" />
     </bean>
+	-->
 
     <bean id="dummyGameUI" class="cfvbaibai.cardfantasy.game.DummyGameUI" />
     
@@ -34,9 +38,9 @@
     </bean>
     
     <bean class="cfvbaibai.cardfantasy.data.CardDataStore" factory-method="loadDefault" />
-
-    <bean class="cfvbaibai.cardfantasy.web.dao.DaoServiceImpl" />
 <!--
+    <bean class="cfvbaibai.cardfantasy.web.dao.DaoServiceImpl" />
+
     <bean class="java.util.concurrent.atomic.AtomicInteger">
         <qualifier value="active-session-count" />
         <constructor-arg>

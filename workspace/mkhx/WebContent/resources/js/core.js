@@ -27,10 +27,12 @@ var getParam = function(originalName) {
 Core.getParam = getParam;
 
 var uploadToCnzzUrl = function(url) {
+    /*
     $.get(
             'http://cnrdn.com/rd.htm?id=1344758&r=' + url + '&seed=' + seed,
             function(data) { console.log('Visit to ' + url + ' uploaded to CNZZ.'); }
     );
+    */
 };
 Core.uploadToCnzzUrl = uploadToCnzzUrl;
 
@@ -315,7 +317,11 @@ $(document)
     
     var showVictoryCondition = function() {
         var map = getMap();
-        $.get('http://cnrdn.com/rd.htm?id=1344758&r=ShowVictoryCondition&seed=' + seed, function(data) { console.log('ShowVictoryCondition'); });
+        /*
+        $.get(
+                'http://cnrdn.com/rd.htm?id=1344758&r=ShowVictoryCondition&seed=' + seed,
+                function(data) { console.log('ShowVictoryCondition'); });
+        */
         $.get('GetMapVictoryCondition?map=' + map, function(data) {
             console.log("Map victory condition for '" + map + "': " + JSON.stringify(data));
             $("#map-victory-condition").text(data);

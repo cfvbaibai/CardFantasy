@@ -7,12 +7,13 @@ var store = null;
 var outputDivId = null;
 
 var getWikiUrl = function(name) {
-    return 'http://cnrdn.com/rd.htm?id=1344758&r=' + encodeURIComponent('http://mkhx.joyme.com/wiki/' + name);
+    //return 'http://cnrdn.com/rd.htm?id=1344758&r=' + encodeURIComponent('http://mkhx.joyme.com/wiki/' + name);
+    return 'http://mkhx.joyme.com/wiki/' + name;
 };
 
 DeckBuilder.buildDeck = function(_outputDivId) {
     outputDivId = _outputDivId;
-    $.get('http://cnrdn.com/rd.htm?id=1344758&r=BuildDeck' + outputDivId + '&seed=' + seed, function(data) { console.log('BuildDeck'); });
+    //$.get('http://cnrdn.com/rd.htm?id=1344758&r=BuildDeck' + outputDivId + '&seed=' + seed, function(data) { console.log('BuildDeck'); });
     if (store == null) {
         loadStore();
     } else {
@@ -22,7 +23,7 @@ DeckBuilder.buildDeck = function(_outputDivId) {
 
 var loadStore = function() {
     $.mobile.loading('show');
-    $.get('http://cnrdn.com/rd.htm?id=1344758&r=LoadDeck&seed=' + seed, function(data) { console.log('LoadDeck'); });
+    //$.get('http://cnrdn.com/rd.htm?id=1344758&r=LoadDeck&seed=' + seed, function(data) { console.log('LoadDeck'); });
     $.get('GetDataStore', function(data) { store = data; }, 'json')
     .fail(function(xhr, status, error) {
         var result = "<span style='COLOR: red'>Error! Status=" + status + ", Detail=" + error + "</span>";

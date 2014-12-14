@@ -5,8 +5,8 @@
                 <h3>友情支持</h3>
                 <div id="help">
                     <ul data-theme="c">
-                        <li><a href="http://cnrdn.com/rd.htm?id=1344758&r=http%3a%2f%2fwww.joyme.com%2fwiki%2fmkhx%2findex.shtml" target="_blank">魔卡幻想WIKI</a>
-                        <li><a href="http://cnrdn.com/rd.htm?id=1344758&r=http%3A%2F%2Ftieba.baidu.com%2Ff%3Fkw%3D%25C4%25A7%25BF%25A8%25BB%25C3%25CF%25EB" target="_blank">魔卡幻想贴吧</a></li>
+                        <li><a href="http://www.joyme.com/wiki/mkhx/index.shtml" target="_blank">魔卡幻想WIKI</a>
+                        <li><a href="http://tieba.baidu.com/f?kw=%C4%A7%BF%A8%BB%C3%CF%EB" target="_blank">魔卡幻想贴吧</a></li>
                     </ul>
                 </div>
             </div>

@@ -6,12 +6,12 @@
             </div>
             <div data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">
                 <h3>模拟器代码开源声明</h3>
-                <p>由于工作越来越忙，白白几乎没有时间更新模拟器了，所以白白决定将模拟器的代码开源，希望能有能力和爱心兼备的程序员玩家们一起来努力。详情点击<a href="#open-source">这里</a>。</p>
+                <p>模拟器的代码已开源，希望能有能力和爱心兼备的程序员玩家们一起来努力。详情点击<a href="#open-source">这里</a>。</p>
             </div>
             <div data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">
                 <h3>公告</h3>
                 <ul>
-                    <li>这个版本的模拟器已经很老了，很多新卡没有。最新版本的模拟器由<b>千江工作室</b>开发和维护并免费开放，网址<a href="http://cnrdn.com/rd.htm?id=1344758&r=http%3a%2f%2fwww.qianjianghome.com">http://www.qianjianghome.com</a>。感谢千江的朋友们辛勤的劳动，让我们一起支持千江！</li>
+                    <li>暂无</li>
                 </ul>
             </div>
             <div data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">

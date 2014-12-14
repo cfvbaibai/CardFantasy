@@ -26,26 +26,26 @@ import cfvbaibai.cardfantasy.web.dao.Post;
 import cfvbaibai.cardfantasy.web.dao.Reply;
 import cfvbaibai.cardfantasy.web.dao.Thread;
 
-@Controller
+//@Controller
 public class CommunicationController {
 
-    @Autowired
+    //@Autowired
     private GlobalConfig config;
     
-    @Autowired
+    //@Autowired
     private JsonHandler jsonHandler;
     
-    @Autowired
+    //@Autowired
     private UserActionRecorder userActionRecorder;
     
-    @Autowired
+    //@Autowired
     private Logger logger;
     
     //@Autowired
     //@Qualifier("communication")
     //private java.util.logging.Logger julLogger;
     
-    @Autowired
+    //@Autowired
     private CommunicationService service;
 
     @RequestMapping(value = "/SendFeedback")
