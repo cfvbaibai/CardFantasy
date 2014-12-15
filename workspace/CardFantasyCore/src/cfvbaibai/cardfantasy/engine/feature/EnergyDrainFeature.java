@@ -20,7 +20,7 @@ public final class EnergyDrainFeature {
             return;
         }
         Feature feature = featureInfo.getFeature();
-        int adjAT = attacker.getLevel0AT() * feature.getImpact() / 100;
+        int adjAT = attacker.getLevel1AT() * feature.getImpact() / 100;
 
         List<CardInfo> victims = new ArrayList<CardInfo>();
         victims.add(attacker);
