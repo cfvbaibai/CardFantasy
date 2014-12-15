@@ -114,7 +114,7 @@ public class AutoBattleController {
             PlayerInfo player2 = PlayerBuilder.build(true, "玩家2", deck2, heroLv2);
             WebPlainTextGameUI ui = new WebPlainTextGameUI();
             GameEngine engine = new GameEngine(ui, new Rule(5, 999, firstAttack, false));
-            engine.RegisterPlayers(player1, player2);
+            engine.registerPlayers(player1, player2);
             GameResult gameResult = engine.playGame();
             writer.print(Utils.getCurrentDateTime() + "<br />" + ui.getAllText());
             logger.info("Winner: " + gameResult.getWinner().getId());
@@ -147,7 +147,7 @@ public class AutoBattleController {
             PlayerInfo player2 = PlayerBuilder.build(true, "玩家2", deck2, heroLv2);
             StructuredRecordGameUI ui = new StructuredRecordGameUI();
             GameEngine engine = new GameEngine(ui, new Rule(5, 999, firstAttack, false));
-            engine.RegisterPlayers(player1, player2);
+            engine.registerPlayers(player1, player2);
             GameResult gameResult = engine.playGame();
             BattleRecord record = ui.getRecord();
             writer.print(jsonHandler.toJson(record));
@@ -208,7 +208,7 @@ public class AutoBattleController {
                     buffSavage, buffHell));
             WebPlainTextGameUI ui = new WebPlainTextGameUI();
             GameEngine engine = new GameEngine(ui, Rule.getBossBattle());
-            engine.RegisterPlayers(player1, player2);
+            engine.registerPlayers(player1, player2);
             GameResult gameResult = engine.playGame();
             writer.print(Utils.getCurrentDateTime() + "<br />");
             writer.print("造成伤害：" + gameResult.getDamageToBoss() + "<br />");
@@ -238,7 +238,7 @@ public class AutoBattleController {
                     buffSavage, buffHell));
             StructuredRecordGameUI ui = new StructuredRecordGameUI();
             GameEngine engine = new GameEngine(ui, Rule.getBossBattle());
-            engine.RegisterPlayers(player1, player2);
+            engine.registerPlayers(player1, player2);
             GameResult gameResult = engine.playGame();
             BattleRecord record = ui.getRecord();
             writer.print(jsonHandler.toJson(record));

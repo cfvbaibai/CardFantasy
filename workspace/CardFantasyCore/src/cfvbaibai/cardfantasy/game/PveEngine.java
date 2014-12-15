@@ -31,7 +31,7 @@ public class PveEngine {
         }
         ui.showMessage("启动战斗引擎...");
         GameEngine engine = new GameEngine(ui, rule);
-        engine.RegisterPlayers(map.getEnemyHero(), player);
+        engine.registerPlayers(map.getEnemyHero(), player);
         ui.showMessage("战斗开始...");
         GameResult result = engine.playGame();
         PveGameResult gameResult = null;

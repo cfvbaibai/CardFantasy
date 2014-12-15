@@ -7,6 +7,7 @@ import java.util.List;
 import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
 import cfvbaibai.cardfantasy.GameUI;
 import cfvbaibai.cardfantasy.Randomizer;
+import cfvbaibai.cardfantasy.RandomizerFactory;
 import cfvbaibai.cardfantasy.data.PlayerInfo;
 
 public class StageInfo {
@@ -27,7 +28,7 @@ public class StageInfo {
         this.ui = ui;
         this.rule = rule;
         this.resolver = new FeatureResolver(this);
-        this.randomizer = new Randomizer(ui);
+        this.randomizer = RandomizerFactory.getRandomizer(ui);
         
         this.ui.stageCreated();
     }

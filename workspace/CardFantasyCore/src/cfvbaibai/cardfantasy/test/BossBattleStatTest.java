@@ -11,12 +11,11 @@ import java.text.ParseException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import junit.framework.Assert;
-
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 

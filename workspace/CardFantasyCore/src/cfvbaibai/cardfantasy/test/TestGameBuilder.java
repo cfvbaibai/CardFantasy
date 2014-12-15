@@ -10,14 +10,14 @@ import cfvbaibai.cardfantasy.game.PlayerBuilder;
 public final class TestGameBuilder {
     public static GameEngine build(PlayerInfo player0, PlayerInfo player1) {
         GameEngine engine = new GameEngine(new TestGameUI(), Rule.getDefault());
-        engine.RegisterPlayers(player0, player1);
+        engine.registerPlayers(player0, player1);
         return engine;
     }
     
     public static GameResult playBossBattle(PlayerInfo player, String bossName) {
         PlayerInfo boss = PlayerBuilder.build(false, "BOSS", 9999, bossName);
         GameEngine engine = new GameEngine(new TestGameUI(), Rule.getBossBattle());
-        engine.RegisterPlayers(boss, player);
+        engine.registerPlayers(boss, player);
         return engine.playGame();
     }
     

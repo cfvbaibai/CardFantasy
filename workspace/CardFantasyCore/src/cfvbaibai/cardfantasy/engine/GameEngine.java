@@ -8,6 +8,7 @@ import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
 import cfvbaibai.cardfantasy.CardFantasyUserRuntimeException;
 import cfvbaibai.cardfantasy.GameOverSignal;
 import cfvbaibai.cardfantasy.GameUI;
+import cfvbaibai.cardfantasy.Randomizer;
 import cfvbaibai.cardfantasy.data.Card;
 import cfvbaibai.cardfantasy.data.Feature;
 import cfvbaibai.cardfantasy.data.FeatureType;
@@ -27,7 +28,7 @@ public class GameEngine {
     
     public static GameResult play1v1(GameUI ui, Rule rule, PlayerInfo p1, PlayerInfo p2) {
         GameEngine engine = new GameEngine(ui, rule);
-        engine.RegisterPlayers(p1, p2);
+        engine.registerPlayers(p1, p2);
         return engine.playGame();
     }
 
@@ -52,10 +53,12 @@ public class GameEngine {
                     "%s 的卡牌槽不足！%s 卡牌槽数：%d, 卡组卡牌数：%d",
                     playerInfo.getId(), playerInfo.getId(), playerInfo.getCardSlot(), cards.size()));
         }
+        /*
         if (cards.size() == 0) {
             throw new CardFantasyUserRuntimeException(String.format(
                     "没有为 %s 配置任何卡牌！", playerInfo.getId()));
         }
+        */
         if (runes.size() > playerInfo.getRuneSlot()) {
             throw new CardFantasyUserRuntimeException(String.format(
                     "%s 的符文槽不足！%s 符文槽数：%d, 卡组符文数：%d",
@@ -72,7 +75,7 @@ public class GameEngine {
         }
     }
 
-    public void RegisterPlayers(PlayerInfo player1Info, PlayerInfo player2Info) {
+    public void registerPlayers(PlayerInfo player1Info, PlayerInfo player2Info) {
         validateDeck(player1Info);
         validateDeck(player2Info);
         stage.addPlayer(player1Info);
@@ -82,12 +85,16 @@ public class GameEngine {
     public GameResult playGame() {
         this.stage.gameStarted();
         this.stage.setRound(1);
-        GameResult result = proceedGame();
+        GameResult result = proceedGame(GameMode.Normal);
         this.stage.getUI().gameEnded(result);
         return result;
     }
 
-    private GameResult proceedGame() {
+    public void proceedOneRound() {
+        proceedGame(GameMode.OneRound);
+    }
+
+    private GameResult proceedGame(GameMode gameMode) {
         Phase phase = Phase.开始;
         Phase nextPhase = Phase.未知;
         try {
@@ -104,6 +111,9 @@ public class GameEngine {
                     nextPhase = battle();
                 } else if (phase == Phase.结束) {
                     nextPhase = roundEnd();
+                    if (gameMode == GameMode.OneRound) {
+                        return stage.result(this.stage.getPlayers().get(0), GameEndCause.一时中断);
+                    }
                 } else {
                     throw new CardFantasyRuntimeException(String.format("Unknown phase encountered: %s", phase));
                 }
@@ -164,8 +174,9 @@ public class GameEngine {
         }
 
         Player previousPlayer = getActivePlayer();
-        this.stage.setRound(stage.getRound() + 1);
-        this.stage.getUI().roundEnded(previousPlayer, stage.getRound());
+        int thisRound = stage.getRound();
+        this.stage.setRound(thisRound + 1);
+        this.stage.getUI().roundEnded(previousPlayer, thisRound);
         int nextPlayerNumber = (this.stage.getActivePlayerNumber() + 1) % stage.getPlayerCount();
         this.stage.setActivePlayerNumber(nextPlayerNumber);
         Player nextPlayer = this.getActivePlayer();
