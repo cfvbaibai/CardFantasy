@@ -10,7 +10,7 @@
                 <property name="driver" value="com.microsoft.sqlserver.jdbc.SQLServerDriver" />
                 <property name="url" value="jdbc:sqlserver://LOCALHOST;databaseName=card_fantasy" />
                 <property name="username" value="ss_cfstat" />
-                <property name="password" value="xtxtxtxt" />
+                <property name="password" value="" />
             </dataSource>
         </environment>
     </environments>
