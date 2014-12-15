@@ -21,7 +21,7 @@ public class Combination {
         List <List <T>> result = new ArrayList <List <T>>(); 
         int m = elements.size(); 
         if (m < n) {
-            throw new IllegalArgumentException("Error�� element size (" + m + ") < n (" + n + ")");
+            throw new IllegalArgumentException("Error! element size (" + m + ") < n (" + n + ")");
         }
         BitSet bs = new BitSet(m); 
         for (int i = 0; i < n; i++) { 
