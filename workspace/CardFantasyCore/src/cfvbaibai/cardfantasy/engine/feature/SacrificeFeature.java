@@ -3,6 +3,7 @@ package cfvbaibai.cardfantasy.engine.feature;
 import java.util.List;
 
 import cfvbaibai.cardfantasy.GameUI;
+import cfvbaibai.cardfantasy.Randomizer;
 import cfvbaibai.cardfantasy.data.Feature;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.FeatureEffect;
@@ -19,14 +20,17 @@ public final class SacrificeFeature {
             return;
         }
         Feature feature = featureInfo.getFeature();
+        GameUI ui = resolver.getStage().getUI();
+        Randomizer random = resolver.getStage().getRandomizer();
+
         Field field = card.getOwner().getField();
-        List<CardInfo> candidates = field.pickRandom(1, true, card);
+        List<CardInfo> candidates = random.pickRandom(field.toList(), 1, true, card);
         if (reviver != null) {
             // 兔子由于已经死亡无法被复活上来的九头献祭，但实际是先复活再死亡
             // 暂时先不动死亡逻辑，特殊处理一下
             candidates.add(reviver);
         }
-        GameUI ui = resolver.getStage().getUI();
+        
         ui.useSkill(card, candidates, feature, true);
         if (candidates.isEmpty()) {
             return;

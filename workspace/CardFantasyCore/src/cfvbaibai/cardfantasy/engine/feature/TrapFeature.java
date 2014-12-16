@@ -21,7 +21,8 @@ public final class TrapFeature {
             throws HeroDieSignal {
         Feature feature = featureInfo.getFeature();
         int targetCount = feature.getImpact();
-        List<CardInfo> victims = defender.getField().pickRandom(targetCount, true);
+        List<CardInfo> victims = resolver.getStage().getRandomizer().pickRandom(
+            defender.getField().toList(), targetCount, true, null);
         GameUI ui = resolver.getStage().getUI();
         ui.useSkill(attacker, victims, feature, true);
         for (CardInfo victim : victims) {

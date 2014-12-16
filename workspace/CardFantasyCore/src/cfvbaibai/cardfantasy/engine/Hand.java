@@ -17,8 +17,9 @@ public class Hand extends CardPile {
     }
     
     @Override
-    public void addCard(CardInfo newCard) {
+    public CardInfo addCard(CardInfo newCard) {
         super.addCard(newCard);
         newCard.resetSummonDelay();
+        return newCard;
     }
 }

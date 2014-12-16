@@ -30,7 +30,8 @@ public final class ReviveFeature {
         // Grave is a stack, find the last-in card and revive it.
         CardInfo cardToRevive = null;
         while (true) {
-            CardInfo deadCard = grave.pickRandom(1, true).get(0);
+            CardInfo deadCard = resolver.getStage().getRandomizer().pickRandom(
+                grave.toList(), 1, true, null).get(0);
             if (!deadCard.containsUsableFeaturesWithTag(FeatureTag.复活)) {
                 cardToRevive = deadCard;
                 break;

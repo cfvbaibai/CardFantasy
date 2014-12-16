@@ -14,6 +14,12 @@ public final class TestGameBuilder {
         return engine;
     }
     
+    public static GameEngine buildEmptyGameForTest(int levelA, int levelB) {
+        return TestGameBuilder.build(
+            PlayerBuilder.build(true, "PlayerA", levelA, ""),
+            PlayerBuilder.build(true, "PlayerB", levelB, ""));
+    }
+    
     public static GameResult playBossBattle(PlayerInfo player, String bossName) {
         PlayerInfo boss = PlayerBuilder.build(false, "BOSS", 9999, bossName);
         GameEngine engine = new GameEngine(new TestGameUI(), Rule.getBossBattle());

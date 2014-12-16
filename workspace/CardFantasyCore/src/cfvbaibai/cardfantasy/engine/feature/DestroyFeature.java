@@ -14,7 +14,8 @@ import cfvbaibai.cardfantasy.engine.Player;
 public final class DestroyFeature {
     public static void apply(FeatureResolver resolver, Feature cardFeature, CardInfo attacker, Player defenderHero,
             int victimCount) throws HeroDieSignal {
-        List<CardInfo> victims = defenderHero.getField().pickRandom(victimCount, true);
+        List<CardInfo> victims = resolver.getStage().getRandomizer().pickRandom(
+            defenderHero.getField().toList(), victimCount, true, null);
         GameUI ui = resolver.getStage().getUI();
         ui.useSkill(attacker, victims, cardFeature, true);
         for (CardInfo victim : victims) {

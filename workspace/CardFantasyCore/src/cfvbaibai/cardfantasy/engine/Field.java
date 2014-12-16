@@ -13,7 +13,7 @@ public class Field extends CardPile {
     public Field(Player owner) {
         this.owner = owner;
     }
-    
+
     public Player getOwner() {
         return this.owner;
     }

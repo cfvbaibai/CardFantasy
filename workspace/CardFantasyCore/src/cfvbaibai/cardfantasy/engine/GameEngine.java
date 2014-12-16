@@ -24,7 +24,7 @@ public class GameEngine {
     public GameEngine(GameUI ui, Rule rule) {
         this.stage = new StageInfo(new Board(), ui, rule);
     }
-    
+
     public static GameResult play1v1(GameUI ui, Rule rule, PlayerInfo p1, PlayerInfo p2) {
         GameEngine engine = new GameEngine(ui, rule);
         engine.registerPlayers(p1, p2);
@@ -89,8 +89,9 @@ public class GameEngine {
         return result;
     }
 
-    public void proceedOneRound() {
+    public GameEngine proceedOneRound() {
         proceedGame(GameMode.OneRound);
+        return this;
     }
 
     private GameResult proceedGame(GameMode gameMode) {

@@ -156,8 +156,9 @@ public class CardInfo extends EntityInfo {
         return this.summonDelay;
     }
 
-    public void setSummonDelay(int summonDelay) {
+    public CardInfo setSummonDelay(int summonDelay) {
         this.summonDelay = summonDelay;
+        return this;
     }
 
     public CardStatus getStatus() {

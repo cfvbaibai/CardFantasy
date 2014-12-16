@@ -6,6 +6,8 @@ import java.util.List;
 import cfvbaibai.cardfantasy.Combination;
 import cfvbaibai.cardfantasy.data.Card;
 import cfvbaibai.cardfantasy.data.Rune;
+import cfvbaibai.cardfantasy.engine.CardInfo;
+import cfvbaibai.cardfantasy.engine.Player;
 
 public class DeckStartupInfo {
     private List<Rune> runes;
@@ -52,5 +54,9 @@ public class DeckStartupInfo {
             }
         }
         return decks;
+    }
+
+    public CardInfo getCardInfo(int index, Player owner) {
+        return new CardInfo(this.cards.get(index), owner);
     }
 }

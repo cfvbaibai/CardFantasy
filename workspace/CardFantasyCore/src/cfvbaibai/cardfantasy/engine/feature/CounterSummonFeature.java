@@ -26,7 +26,8 @@ public class CounterSummonFeature {
             }
         }
         GameUI ui = resolver.getStage().getUI();
-        List<CardInfo> summonCards = candidates.pickRandom(summonCount, true);
+        List<CardInfo> summonCards = resolver.getStage().getRandomizer().pickRandom(
+            candidates.toList(), summonCount, true, null);
         ui.useSkill(defender, summonCards, feature, true);
         for (CardInfo summonCard : summonCards) {
             summonCard.getOwner().getDeck().removeCard(summonCard);

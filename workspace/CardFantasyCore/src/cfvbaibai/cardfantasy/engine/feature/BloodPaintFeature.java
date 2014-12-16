@@ -13,7 +13,8 @@ import cfvbaibai.cardfantasy.engine.Player;
 public final class BloodPaintFeature {
     public static void apply(Feature cardFeature, FeatureResolver resolver, CardInfo attacker, Player defender, int victimCount) throws HeroDieSignal {
         int damage = cardFeature.getImpact();
-        List <CardInfo> victims = defender.getField().pickRandom(victimCount, true);
+        List <CardInfo> victims = resolver.getStage().getRandomizer().pickRandom(
+            defender.getField().toList(), victimCount, true, null);
         GameUI ui = resolver.getStage().getUI();
         ui.useSkill(attacker, victims, cardFeature, true);
         for (CardInfo victim : victims) {

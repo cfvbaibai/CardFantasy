@@ -17,7 +17,8 @@ public final class PoisonMagicFeature {
     public static void apply(FeatureInfo featureInfo, FeatureResolver resolver, EntityInfo attacker, Player defender,
             int victimCount) throws HeroDieSignal {
         Feature feature = featureInfo.getFeature();
-        List<CardInfo> victims = defender.getField().pickRandom(victimCount, true);
+        List<CardInfo> victims = resolver.getStage().getRandomizer().pickRandom(
+            defender.getField().toList(), victimCount, true, null);
         GameUI ui = resolver.getStage().getUI();
         ui.useSkill(attacker, victims, feature, true);
         for (CardInfo victim : victims) {

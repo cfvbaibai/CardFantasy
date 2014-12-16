@@ -12,7 +12,8 @@ public final class HolyFireFeature {
             return;
         }
         GameUI ui = resolver.getStage().getUI();
-        CardInfo victim = defender.getGrave().pickRandom(1, true).get(0);
+        CardInfo victim = resolver.getStage().getRandomizer().pickRandom(
+            defender.getGrave().toList(), 1, true, null).get(0);
         ui.useSkill(attacker, victim, cardFeature, true);
         ui.cardToOutField(defender, victim);
         defender.getGrave().removeCard(victim);

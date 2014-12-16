@@ -1,8 +1,6 @@
 package cfvbaibai.cardfantasy.engine;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -24,9 +22,10 @@ public class CardPile {
         return new ArrayList<CardInfo>(this.getCards());
     }
 
-    public void addCard(CardInfo newCard) {
+    public CardInfo addCard(CardInfo newCard) {
         checkCardExistence(newCard);
         this.cards.add(newCard);
+        return newCard;
     }
 
     private void checkCardExistence(CardInfo newCard) {
@@ -38,40 +37,5 @@ public class CardPile {
 
     public int size() {
         return this.cards.size();
-    }
-
-    public List<CardInfo> pickRandom(int max, boolean noEmptyPosition, CardInfo exclusion) {
-        if (max == 0) {
-            return new ArrayList<CardInfo>();
-        }
-        if (max < 0) {
-            max = cards.size();
-        }
-        final List<CardInfo> clone = new ArrayList<CardInfo>(cards);
-        Collections.shuffle(clone);
-        List<CardInfo> result = new LinkedList<CardInfo>();
-        for (CardInfo card : clone) {
-            if (card == null && noEmptyPosition) {
-                continue;
-            }
-            if (card == exclusion) {
-                continue;
-            }
-            result.add(card);
-            if (result.size() == max) {
-                break;
-            }
-        }
-        Collections.sort(result, new Comparator<CardInfo>() {
-            @Override
-            public int compare(CardInfo o1, CardInfo o2) {
-                return cards.indexOf(o1) - cards.indexOf(o2);
-            }
-        });
-        return result;
-    }
-    
-    public List<CardInfo> pickRandom(int max, boolean noEmptyPosition) {
-        return pickRandom(max, noEmptyPosition, null);
     }
 }

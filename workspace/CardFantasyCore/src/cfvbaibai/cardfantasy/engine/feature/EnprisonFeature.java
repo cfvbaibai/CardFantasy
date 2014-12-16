@@ -22,7 +22,8 @@ public class EnprisonFeature {
         GameUI ui = resolver.getStage().getUI();
         int victimCount = cardFeature.getImpact();
 
-        List<CardInfo> victims = defender.getField().pickRandom(victimCount, true);
+        List<CardInfo> victims = resolver.getStage().getRandomizer().pickRandom(
+            defender.getField().toList(), victimCount, true, null);
         if (victims.isEmpty()) {
             return;
         }

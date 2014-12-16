@@ -20,7 +20,8 @@ public final class BurningFlameFeature {
             throws HeroDieSignal {
         Feature feature = featureInfo.getFeature();
         int damage = feature.getImpact();
-        List<CardInfo> candidates = defender.getField().pickRandom(-1, true);
+        List<CardInfo> candidates = resolver.getStage().getRandomizer().pickRandom(
+            defender.getField().toList(), -1, true, null);
         CardStatusItem newBurningStatus = CardStatusItem.burning(damage, featureInfo);
         List<CardInfo> victims = new ArrayList<CardInfo>();
         for (CardInfo candidate : candidates) {

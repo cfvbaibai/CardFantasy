@@ -20,8 +20,9 @@ public class Grave extends CardPile {
     }
     
     @Override
-    public void addCard(CardInfo card) {
+    public CardInfo addCard(CardInfo card) {
         this.getCards().add(0, card);
+        return card;
     }
 
     public CardInfo getFirst() {

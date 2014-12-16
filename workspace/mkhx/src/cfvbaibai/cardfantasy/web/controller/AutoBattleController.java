@@ -55,7 +55,6 @@ import cfvbaibai.cardfantasy.web.beans.Logger;
 import cfvbaibai.cardfantasy.web.beans.UserAction;
 import cfvbaibai.cardfantasy.web.beans.UserActionRecorder;
 import cfvbaibai.cardfantasy.web.dao.BossBattleStatEntry;
-import cfvbaibai.cardfantasy.web.dao.CommunicationService;
 
 @Controller
 public class AutoBattleController {
