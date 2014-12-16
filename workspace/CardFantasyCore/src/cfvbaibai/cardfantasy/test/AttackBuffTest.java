@@ -4,11 +4,11 @@ import org.junit.After;
 import org.junit.Assert;
 import org.junit.Test;
 
-import cfvbaibai.cardfantasy.Randomizer;
+import cfvbaibai.cardfantasy.StaticRandomizer;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 
 public class AttackBuffTest {
-    private static Randomizer.StaticRandomizer random = FeatureValidationTests.getRandom();
+    private static StaticRandomizer random = FeatureValidationTests.getRandom();
 
     @After
     public void afterTest() {

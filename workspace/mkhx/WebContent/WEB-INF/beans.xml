@@ -33,7 +33,7 @@
 
     <bean id="dummyGameUI" class="cfvbaibai.cardfantasy.game.DummyGameUI" />
     
-    <bean class="cfvbaibai.cardfantasy.Randomizer.RealRandomizer">
+    <bean class="cfvbaibai.cardfantasy.RealRandomizer">
         <constructor-arg ref="dummyGameUI" />
     </bean>
     
