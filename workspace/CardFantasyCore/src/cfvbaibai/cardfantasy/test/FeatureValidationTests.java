@@ -11,7 +11,10 @@ import cfvbaibai.cardfantasy.game.DeckBuilder;
 import cfvbaibai.cardfantasy.game.DeckStartupInfo;
 
 @RunWith(Suite.class)
-@SuiteClasses({ RacialBufferTest.class, AttackBuffTest.class, SpecialStatusTest.class })
+@SuiteClasses({
+    RacialBufferTest.class, AttackBuffTest.class, SpecialStatusTest.class,
+    DelayTest.class
+})
 public class FeatureValidationTests {
     public static FeatureTestContext prepare(int playerALevel, int playerBLevel, String ... cards) {
         GameEngine engine = TestGameBuilder.buildEmptyGameForTest(50, 50);

@@ -1270,7 +1270,12 @@
         <Feature type="暴风雪" level="6" unlock="5" death="true" />
         <Feature type="转生" level="5" unlock="10" />
     </Card>
-    
+    <Card id="4421" name="死兆星" wikiId="57014" race="地狱" speed="4" star="4" cost="14" incrCost="2" at="195" hp="920" incrAT="23" incrHP="46">
+        <Feature type="脱困" level="0" unlock="0" />
+        <Feature type="闪避" level="6" unlock="5" />
+        <Feature type="阻碍" level="1" unlock="10" />
+    </Card>
+
     <Card id="4501" name="毁灭之龙" wikiId="31064" race="地狱" speed="6" star="5" cost="14" incrCost="2" at="350" hp="1270" incrAT="34" incrHP="34">
         <Feature type="暴击" level="6" unlock="0" />
         <Feature type="裂伤" level="0" unlock="5" />

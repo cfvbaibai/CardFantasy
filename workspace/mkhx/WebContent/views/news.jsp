@@ -17,6 +17,7 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2014-12-17：添加新卡 - 【死兆星】</li>
                     <li>2014-02-06: 添加新卡 - 【浴火龙女】王国五星</li>
                     <li>2014-01-24: 添加新卡 - 【熊老师】（同时也会加入到人品测试）<ul>
                         <li>种族：萌货，星数：五星，速度：4，10级COST：0，15级COST：0</li>

@@ -1051,6 +1051,19 @@ var Animater = function() {
         this.addAnimations("delayDecrease", funcs, 0.3);
     };
     
+    this.__increaseSummonDelay = function(data) {
+        var cardRtInfo = data[0];
+        var offset = data[1];
+        var card = this.getCard(cardRtInfo);
+        if (card) {
+            this.addAnimation("increaseSummonDelay", function() {
+                card.delay += offset;
+                card.delayText.setText(card.delay.toString());
+                card.delayText.getLayer().draw();
+            }, settings.minimumDuration);
+        }
+    }
+    
     this.__activateRune = function(data) {
         var player = data[0];
         var rune = data[1];

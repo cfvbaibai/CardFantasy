@@ -401,8 +401,8 @@ public class StructuredRecordGameUI extends GameUI {
         this.record.addEvent("mapBattleResult", result.getDescription());
     }
 
-	@Override
-	public void increaseSummonDelay(CardInfo card, int offset) {
-		// TODO Implement animation for summon delay change.
-	}
+    @Override
+    public void increaseSummonDelay(CardInfo card, int offset) {
+        this.record.addEvent("increaseSummonDelay", new EntityRuntimeInfo(card), offset);
+    }
 }

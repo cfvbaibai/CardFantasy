@@ -470,6 +470,6 @@ public abstract class TextGameUI extends GameUI {
     
     @Override
     public void increaseSummonDelay(CardInfo card, int offset) {
-         sayF("%s 的等待时间增加 %d", card.getShortDesc(), offset);
+         sayF("%s 的等待时间增加 %d: %d -> %d", card.getShortDesc(), offset, card.getSummonDelay(), card.getSummonDelay() + offset);
     }
 }

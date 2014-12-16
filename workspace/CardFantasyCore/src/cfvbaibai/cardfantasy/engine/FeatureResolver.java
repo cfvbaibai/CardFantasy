@@ -222,11 +222,11 @@ public class FeatureResolver {
             } else if (feature.getType() == FeatureType.复仇) {
                 RevengeFeature.apply(this, feature, attacker);
             } else if (feature.getType() == FeatureType.全体阻碍){
-            	AllDelayFeature.apply(feature, this, attacker, defender);
+                AllDelayFeature.apply(feature, this, attacker, defender);
             } else if (feature.getType() == FeatureType.阻碍){
-            	OneDelayFeature.apply(feature, this, attacker, defender);
+                OneDelayFeature.apply(feature, this, attacker, defender);
             } else if (feature.getType() == FeatureType.净化){
-            	PurifyFeature.apply(feature, this, attacker);
+                PurifyFeature.apply(feature, this, attacker);
             }
         }
         RuneInfo rune = attacker.getOwner().getActiveRuneOf(RuneData.飞岩);

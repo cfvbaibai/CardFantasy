@@ -11,9 +11,7 @@ import cfvbaibai.cardfantasy.engine.Player;
 public final class OneDelayFeature {
     public static void apply(FeatureInfo featureInfo, FeatureResolver resolver, CardInfo attacker, Player defender)
             throws HeroDieSignal {
-    	// TODO Make clear whether we should pick only one card with minimal summon delay
-    	// TODO or all cards with the same minimal summon delay
-    	int summonDelayOffset = featureInfo.getFeature().getImpact();
+        int summonDelayOffset = featureInfo.getFeature().getImpact();
         List<CardInfo> allHandCards = defender.getHand().toList();
         CardInfo victim = null;
         for (CardInfo card : allHandCards) {

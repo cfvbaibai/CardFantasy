@@ -61,8 +61,17 @@ public class StaticRandomizer extends Randomizer {
         if (max < 0) {
             max = list.size();
         }
+        int pickableCount = 0;
+        for (int i = 0; i < list.size(); ++i) {
+            if ((!excludeNull || list.get(i) != null) && list.get(i) != extraExclusion) {
+                ++pickableCount;
+            }
+        }
+        if (max > pickableCount) {
+            max = pickableCount;
+        }
         List<T> result = new ArrayList<T>();
-        Integer nextPick = null; 
+        Integer nextPick = null;
         while (max > 0) {
             nextPick = nextPicks.poll();
             if (nextPick == null) {
