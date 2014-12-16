@@ -38,6 +38,10 @@ public abstract class Randomizer {
         return this;
     }
     
+    protected GameUI getUI() {
+        return this.ui;
+    }
+    
     /**
      * Return a random number N for [0, 100).
      * 
@@ -123,7 +127,7 @@ public abstract class Randomizer {
             return this;
         }
         
-        public StaticRandomizer addNextPick(int ... picks) {
+        public StaticRandomizer addNextPicks(int ... picks) {
             for (int i = 0; i < picks.length; ++i) {
                 nextPicks.add(picks[i]);
             }
@@ -132,6 +136,7 @@ public abstract class Randomizer {
 
         @Override
         public int next(int min, int max) {
+            getUI().showMessage("nextNumber");
             Integer nextNumber = nextNumbers.poll();
             if (nextNumber == null) {
                 throw new CardFantasyRuntimeException("Not enough next numbers!");
@@ -148,6 +153,7 @@ public abstract class Randomizer {
 
         @Override
         public <T> List<T> pickRandom(List<T> list, int max, boolean excludeNull, T extraExclusion) {
+            getUI().showMessage("pickRandom");
             if (list == null) {
                 throw new IllegalArgumentException("list cannot be null.");
             }

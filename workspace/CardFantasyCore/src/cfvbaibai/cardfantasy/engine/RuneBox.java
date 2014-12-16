@@ -25,8 +25,9 @@ public class RuneBox {
         return this.owner;
     }
 
-    public void addRune(RuneInfo rune) {
+    public RuneInfo addRune(RuneInfo rune) {
         this.runes.add(rune);
+        return rune;
     }
 
     public List<RuneInfo> getRunes() {
