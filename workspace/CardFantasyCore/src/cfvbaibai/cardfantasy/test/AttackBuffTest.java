@@ -2,21 +2,13 @@ package cfvbaibai.cardfantasy.test;
 
 import org.junit.After;
 import org.junit.Assert;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
 import cfvbaibai.cardfantasy.Randomizer;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 
 public class AttackBuffTest {
-
-    private static Randomizer.StaticRandomizer random;
-    
-    @BeforeClass
-    public static void initialize() {
-        random = new Randomizer.StaticRandomizer();
-        Randomizer.registerRandomizer(random);
-    }
+    private static Randomizer.StaticRandomizer random = FeatureValidationTests.getRandom();
 
     @After
     public void afterTest() {

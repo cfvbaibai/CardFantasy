@@ -2,20 +2,13 @@ package cfvbaibai.cardfantasy.test;
 
 import org.junit.After;
 import org.junit.Assert;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
 import cfvbaibai.cardfantasy.Randomizer;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 
 public class RacialBufferTest {
-    private static Randomizer.StaticRandomizer random;
-    
-    @BeforeClass
-    public static void initialize() {
-        random = new Randomizer.StaticRandomizer();
-        Randomizer.registerRandomizer(random);
-    }
+    private static Randomizer.StaticRandomizer random = FeatureValidationTests.getRandom();
 
     @After
     public void afterTest() {
@@ -24,19 +17,16 @@ public class RacialBufferTest {
 
     @Test
     public void test种族之力_暴击_背刺() {
-        random.addNextNumbers(0); // 保证大剑圣的暴击
-
-        FeatureTestContext context = FeatureValidationTests.prepare(50, 50, "隐世先知", "大剑圣", "凤凰*2");
+        FeatureTestContext context = FeatureValidationTests.prepare(50, 50, "大剑圣", "隐世先知", "凤凰");
         context.addToHand(0, 0).setSummonDelay(0);
         context.addToHand(1, 0).setSummonDelay(0);
-        context.addToHand(2, 1).setSummonDelay(0);
-        CardInfo c凤凰2 = context.addToHand(3, 1).setSummonDelay(0);
+        CardInfo c凤凰 = context.addToField(2, 1);
 
         context.getStage().gameStarted();
-        int c凤凰2OriginalHP = c凤凰2.getHP();
-        int expectedDamage = ((int)((560 /* Lv10 大剑圣 */ + 175 /* 王国之力 */) * 1.8 /* 暴击 */)) + 200 /* 背刺 */;
+        random.addNextNumbers(0); // 保证大剑圣的暴击
         context.getEngine().proceedOneRound();
-        int actualDamage = c凤凰2OriginalHP - c凤凰2.getHP();
+        int expectedDamage = ((560 /* Lv10 大剑圣 */ + 175 /* 王国之力 */) * 180 / 100 /* 暴击 */) + 200 /* 背刺 */;
+        int actualDamage = 1560 - c凤凰.getHP();
         Assert.assertEquals(expectedDamage, actualDamage);
     }
     
