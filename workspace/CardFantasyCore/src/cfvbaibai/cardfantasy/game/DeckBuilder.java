@@ -24,7 +24,21 @@ import cfvbaibai.cardfantasy.data.Zht2Zhs;
 public final class DeckBuilder {
 
     private static CardDataStore store;
-    
+
+    /**
+     * C卡片名-等级+技能名技能等级*数量
+     */
+    private final static String CARD_REGEX = 
+        "^" +
+        "(?<CardName>[^\\-+SD*]+)" +
+        "(\\+(?<SummonFlag>(S|降临)?)(?<DeathFlag>(D|死契)?)" +
+        "(?<ExtraFeatureName>[^\\d\\-*]+)(?<ExtraFeatureLevel>\\d+)?)?" +
+        "(\\-(?<CardLevel>\\d+))?" +
+        "(\\*(?<Count>\\d+))?" +
+        "$";
+
+    private final static Pattern CARD_PATTERN = Pattern.compile(CARD_REGEX);
+
     public static DeckStartupInfo multiBuild(String descsText) {
         descsText = descsText.replace(' ', ',').replace('　', ',').replace('，', ',');
         descsText = descsText.replace("\r\n", ",").replace("\n", ",");
@@ -89,20 +103,13 @@ public final class DeckBuilder {
     /**
      * Card description text pattern:
      * C卡片名-等级+技能名技能等级*数量
+     * Example: C金属巨龙-10+暴风雪1*5
      * @param deck
      * @param desc
      */
     private static boolean parseCardDesc(DeckStartupInfo deck, String desc) {
         String cardDesc = desc;
-        String regex = "^";
-        regex += "(?<CardName>[^\\-+SD*]+)";
-        regex += "(\\+(?<SummonFlag>(S|降临)?)(?<DeathFlag>(D|死契)?)";
-        regex += "(?<ExtraFeatureName>[^\\d\\-*]+)(?<ExtraFeatureLevel>\\d+)?)?";
-        regex += "(\\-(?<CardLevel>\\d+))?";
-        regex += "(\\*(?<Count>\\d+))?";
-        regex += "$";
-        Pattern pattern = Pattern.compile(regex);
-        Matcher matcher = pattern.matcher(cardDesc);
+        Matcher matcher = CARD_PATTERN.matcher(cardDesc);
         if (!matcher.matches()) {
             throw new DeckBuildRuntimeException("无效的卡牌: " + desc);
         }
