@@ -5,6 +5,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import cfvbaibai.cardfantasy.StaticRandomizer;
+import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.RuneInfo;
 
 public class SummonSkillTest {
@@ -33,5 +34,22 @@ public class SummonSkillTest {
         // 降临技能先结算，杀死一只凤凰，对方场上只剩一张森林卡，无法激活焚天
         Assert.assertFalse("焚天应该未激活", r焚天.isActivated());
         Assert.assertEquals(1, context.getPlayer(1).getField().size());
+    }
+    
+    /**
+     * 有多张卡牌等待时间相同的情况下，降临传送会杀死其中最靠前的那张
+     */
+    @Test
+    public void test降临传送_相同等待时间() {
+        FeatureTestContext context = FeatureValidationTests.prepare(50, 50, "隐世先知", "金属巨龙-5", "凤凰-5");
+        context.addToHand(0, 0).setSummonDelay(0);
+        CardInfo c金属巨龙 = context.addToField(1, 1).setSummonDelay(3);
+        CardInfo c凤凰 = context.addToField(2, 1).setSummonDelay(3);
+        context.startGame();
+
+        context.proceedOneRound();
+
+        Assert.assertFalse("凤凰应该还活着", c凤凰.isDead());
+        Assert.assertTrue("金属巨龙应该死了", c金属巨龙.isDead());
     }
 }
