@@ -254,6 +254,11 @@ public class GameEngine {
                     myCard.removeEffect(effect);
                 }
             }
+
+            // TODO: This is an ugly hack. We should revisit the logic of revival.
+            if (!status.containsStatus(CardStatusType.虚弱)) {
+                resolver.removeStatus(myField.getCard(i), CardStatusType.麻痹);
+            }
             resolver.removeStatus(myField.getCard(i), CardStatusType.弱化);
             resolver.resolveDebuff(myField.getCard(i), CardStatusType.中毒);
             resolver.resolveDebuff(myField.getCard(i), CardStatusType.燃烧);
