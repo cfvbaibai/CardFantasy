@@ -1,3 +1,5 @@
 .metadata
 .recommenders
 Servers
+CardFantasyCore/test_gen/**
+**/.DS_Store
