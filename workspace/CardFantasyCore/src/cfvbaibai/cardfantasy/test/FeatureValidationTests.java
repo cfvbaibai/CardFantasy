@@ -12,8 +12,13 @@ import cfvbaibai.cardfantasy.game.DeckStartupInfo;
 
 @RunWith(Suite.class)
 @SuiteClasses({
-    RacialBufferTest.class, AttackBuffTest.class, SpecialStatusTest.class,
-    DelayTest.class, CounterAttackTest.class, DefenseTest.class
+    RacialBufferTest.class,
+    AttackBuffTest.class,
+    SpecialStatusTest.class,
+    DelayTest.class,
+    CounterAttackTest.class,
+    DefenseTest.class,
+    MultiAttackTest.class
 })
 public class FeatureValidationTests {
     public static FeatureTestContext prepare(int playerALevel, int playerBLevel, String ... cards) {
