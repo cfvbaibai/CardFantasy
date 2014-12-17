@@ -71,13 +71,13 @@ public final class DeckBuilder {
     }
     
     private static boolean parseAndAddRune(DeckStartupInfo deck, String desc) {
-    	Rune rune = parseRuneDesc(desc);
-    	
-    	if (rune == null)
-    		return false;
-    	
-    	deck.addRune(rune);
-    	return true;
+        Rune rune = parseRuneDesc(desc);
+
+        if (rune == null)
+            return false;
+
+        deck.addRune(rune);
+        return true;
     }
 
     public static Rune parseRuneDesc(String desc) {
@@ -109,15 +109,15 @@ public final class DeckBuilder {
     private static long cardSuffixId = 0;
     
     private static boolean parseAndAddCard(DeckStartupInfo deck, String desc) {
-    	List<Card> cards = parseCardDesc(desc);
-    	
-    	if (cards == null || cards.isEmpty())
-    		return false;
-    	
-    	for (Card c : cards)
-    		deck.addCard(c);
-    		
-    	return true;
+        List<Card> cards = parseCardDesc(desc);
+
+        if (cards == null || cards.isEmpty())
+            return false;
+
+        for (Card c : cards)
+            deck.addCard(c);
+
+        return true;
     }
 
     /**
@@ -128,8 +128,8 @@ public final class DeckBuilder {
      * @param desc
      */
     public static List<Card> parseCardDesc(String desc) {
-    	List<Card> ret = new ArrayList<Card>();
-    	
+        List<Card> ret = new ArrayList<Card>();
+
         String cardDesc = desc;
         Matcher matcher = CARD_PATTERN.matcher(cardDesc);
         if (!matcher.matches()) {
