@@ -75,7 +75,7 @@ public class CardInfo extends EntityInfo {
         }
         this.effects.get(type).add(effect);
         if (effect.getType() == FeatureEffectType.MAXHP_CHANGE) {
-            this.setHP(this.getHP() + effect.getValue());
+            this.setBasicHP(this.getHP() + effect.getValue());
         }
     }
 
@@ -148,8 +148,9 @@ public class CardInfo extends EntityInfo {
         return this.hp;
     }
     
-    private void setHP(int hp) {
+    public CardInfo setBasicHP(int hp) {
         this.hp = hp;
+        return this;
     }
 
     public int getSummonDelay() {
@@ -256,7 +257,7 @@ public class CardInfo extends EntityInfo {
         }
         result.remove(effect);
         if (effect.getType() == FeatureEffectType.MAXHP_CHANGE && this.getHP() > this.getMaxHP()) {
-            this.setHP(this.getMaxHP());
+            this.setBasicHP(this.getMaxHP());
         }
     }
 
@@ -365,10 +366,10 @@ public class CardInfo extends EntityInfo {
         if (damage > 0) {
             int originalHP = this.getHP();
             if (originalHP < damage) {
-                this.setHP(0);
+                this.setBasicHP(0);
                 return originalHP;
             } else {
-                this.setHP(originalHP - damage);
+                this.setBasicHP(originalHP - damage);
                 return damage;
             }
         } else if (damage == 0) {
@@ -377,10 +378,10 @@ public class CardInfo extends EntityInfo {
             int lostHP = this.getMaxHP() - this.getHP();
             int healHP = -damage;
             if (lostHP < healHP) {
-                this.setHP(this.getMaxHP());
+                this.setBasicHP(this.getMaxHP());
                 return -lostHP;
             } else {
-                this.setHP(this.getHP() + healHP);
+                this.setBasicHP(this.getHP() + healHP);
                 return -healHP;
             }
         }

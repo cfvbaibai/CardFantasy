@@ -15,6 +15,9 @@ public class RacialBufferTest {
         random.reset();
     }
 
+    /**
+     * 暴击受种族之力影响，但不受背刺影响
+     */
     @Test
     public void test种族之力_暴击_背刺() {
         FeatureTestContext context = FeatureValidationTests.prepare(50, 50, "大剑圣", "隐世先知", "凤凰");
@@ -30,6 +33,9 @@ public class RacialBufferTest {
         Assert.assertEquals(expectedDamage, actualDamage);
     }
     
+    /**
+     * 种族之力的BUFF能抵消削弱的影响
+     */
     @Test
     public void test种族之力_削弱() {
         FeatureTestContext context = FeatureValidationTests.prepare(50, 50, "隐世先知-5", "大剑圣", "独眼巨人");
@@ -46,6 +52,9 @@ public class RacialBufferTest {
         Assert.assertEquals(560 /* Lv10 大剑圣 */, c大剑圣.getCurrentAT());
     }
 
+    /**
+     * 种族之力的BUFF不能抵消瘟疫/疾病的影响
+     */
     @Test
     public void test种族之力_瘟疫() {
         FeatureTestContext context = FeatureValidationTests.prepare(50, 50, "隐世先知-5", "大剑圣", "木乃伊法老王", "奇美拉");
@@ -72,6 +81,9 @@ public class RacialBufferTest {
         Assert.assertEquals(560 - 25 * 2 /* Lv10 大剑圣受到两次瘟疫，每次25点 */, c大剑圣.getCurrentAT());
     }
 
+    /**
+     * 种族克制增幅受种族之力影响
+     */
     @Test
     public void test种族之力_种族克制() {
         FeatureTestContext context = FeatureValidationTests.prepare(50, 50, "猎魔犬", "隐世先知", "骨龙");
@@ -85,7 +97,10 @@ public class RacialBufferTest {
 
         Assert.assertEquals((int)((280 + 175 /* 王国之力 */) * 1.6 /* 圣光 */), 1250 - c骨龙.getHP());
     }
-    
+
+    /**
+     * 种族克制和暴击的增幅独立计算，互不影响
+     */
     @Test
     public void test种族克制_暴击() {
         FeatureTestContext context = FeatureValidationTests.prepare(50, 50, "猎魔犬", "骨龙");
@@ -98,7 +113,10 @@ public class RacialBufferTest {
 
         Assert.assertEquals((280 * 100 + 280 * 60 /* 暴击 */ + 280 * 60 /* 圣光 */) / 100, 1250 - c骨龙.getHP());
     }
-    
+
+    /**
+     * 种族克制的增幅受削弱影响
+     */
     @Test
     public void test种族克制_削弱() {
         FeatureTestContext context = FeatureValidationTests.prepare(50, 50, "东方僧人-1", "穴居人奴隶-5");
