@@ -20,7 +20,8 @@ import cfvbaibai.cardfantasy.game.DeckStartupInfo;
     DefenseTest.class,
     MultiAttackTest.class,
     DeathSkillTest.class,
-    SummonSkillTest.class
+    SummonSkillTest.class,
+    SkillSequenceTest.class
 })
 public class FeatureValidationTests {
     public static FeatureTestContext prepare(int playerALevel, int playerBLevel, String ... cards) {
