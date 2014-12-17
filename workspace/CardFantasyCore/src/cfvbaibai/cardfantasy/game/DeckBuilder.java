@@ -106,7 +106,12 @@ public final class DeckBuilder {
         return rune;
     }
     
-    private static long cardSuffixId = 0;
+    private static int cardNameSuffix = 0;
+    private static int getCardNameSuffix() {
+        ++cardNameSuffix;
+        cardNameSuffix %= 100;
+        return cardNameSuffix;
+    }
     
     private static boolean parseAndAddCard(DeckStartupInfo deck, String desc) {
         List<Card> cards = parseCardDesc(desc);
@@ -198,9 +203,7 @@ public final class DeckBuilder {
         }
         
         for (int j = 0; j < count; ++j) {
-            Card card = new Card(data, cardLevel, extraFeature, prefix, String.valueOf(cardSuffixId));
-            cardSuffixId++;
-            
+            Card card = new Card(data, cardLevel, extraFeature, prefix, String.valueOf(getCardNameSuffix()));
             ret.add(card);
         }
         

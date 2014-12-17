@@ -6,7 +6,6 @@ import org.junit.Test;
 
 import cfvbaibai.cardfantasy.StaticRandomizer;
 import cfvbaibai.cardfantasy.engine.CardInfo;
-import cfvbaibai.cardfantasy.engine.RuneInfo;
 
 public class HealingTest {
     private static StaticRandomizer random = FeatureValidationTests.getRandom();
