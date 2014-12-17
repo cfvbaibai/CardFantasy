@@ -34,6 +34,9 @@ public class DefenseTest {
         Assert.assertEquals(100 /* 猛犸象的冰甲7被冰封的冰甲9覆盖 */, 1220 - c战斗猛犸象.getHP());
     }
     
+    /**
+     * 格挡先于冰封结算
+     */
     @Test
     public void test格挡_冰封() {
         FeatureTestContext context = FeatureValidationTests.prepare(50, 50, "秘银巨石像", "金属巨龙", "冰封");
@@ -48,6 +51,9 @@ public class DefenseTest {
         Assert.assertEquals(100 /* 金属巨龙的格挡8先结算，再结算冰封的冰甲9 */, 1710 - c金属巨龙.getHP());
     }
 
+    /**
+     * 岩壁后于冰甲结算
+     */
     @Test
     public void test岩壁_冰甲() {
         FeatureTestContext context = FeatureValidationTests.prepare(50, 50, "秘银巨石像", "凤凰+冰甲1", "岩壁-1");
@@ -55,10 +61,10 @@ public class DefenseTest {
         CardInfo c冰甲凤凰 = context.addToField(1, 1);
         RuneInfo r岩壁 = context.addToRune(0, 1);
         context.startGame();
-        
+
         r岩壁.activate();
         context.proceedOneRound();
-        
+
         Assert.assertEquals(180 - 120 /* 猛犸的冰甲先结算，然后结算岩壁 */, 1690 - c冰甲凤凰.getHP());
     }
 }
