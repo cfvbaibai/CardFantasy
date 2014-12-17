@@ -319,6 +319,11 @@ public class StructuredRecordGameUI extends GameUI {
         // TODO Auto-generated method stub
         
     }
+    
+    @Override
+    public void softened(CardInfo card) {
+        // TODO
+    }
 
     @Override
     public void roll100(int dice, int rate) {

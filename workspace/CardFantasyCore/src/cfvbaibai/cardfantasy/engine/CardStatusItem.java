@@ -66,6 +66,10 @@ public class CardStatusItem {
         return new CardStatusItem(CardStatusType.迷惑, 0, cause);
     }
     
+    public static CardStatusItem softened(FeatureInfo cause) {
+        return new CardStatusItem(CardStatusType.弱化, 0, cause);
+    }
+    
     public String getShortDesc() {
         StringBuffer sb = new StringBuffer();
         sb.append(getType().name());

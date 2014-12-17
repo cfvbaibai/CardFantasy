@@ -214,6 +214,16 @@ public class GameEngine {
             ui.cardActionBegins(card);
             CardStatus status = myField.getCard(i).getStatus();
             boolean underControl = false;
+            List<CardStatusItem> statusItems = status.getStatusOf(CardStatusType.弱化);
+            if (!statusItems.isEmpty()) {
+                CardInfo myCard = myField.getCard(i);
+                FeatureInfo featureInfo = statusItems.get(0).getCause();
+                ui.softened(myCard);
+                int adjAT = -myCard.getLevel1AT() / 2;
+                ui.adjustAT(featureInfo.getOwner(), myCard, adjAT, featureInfo.getFeature());
+                myField.getCard(i).addEffect(
+                    new FeatureEffect(FeatureEffectType.ATTACK_CHANGE, featureInfo, adjAT, false));
+            }
             if (status.containsStatus(CardStatusType.迷惑)) {
                 underControl = true;
                 ui.confused(myField.getCard(i));
@@ -236,6 +246,15 @@ public class GameEngine {
                 tryAttackEnemy(myField, opField, i);
             }
 
+            if (myField.getCard(i) != null) {
+                CardInfo myCard = myField.getCard(i);
+                List<FeatureEffect> effects = myCard.getEffectsCausedBy(FeatureType.虚弱);
+                for (FeatureEffect effect : effects) {
+                    resolver.getStage().getUI().loseAdjustATEffect(myCard, effect);
+                    myCard.removeEffect(effect);
+                }
+            }
+            resolver.removeStatus(myField.getCard(i), CardStatusType.弱化);
             resolver.resolveDebuff(myField.getCard(i), CardStatusType.中毒);
             resolver.resolveDebuff(myField.getCard(i), CardStatusType.燃烧);
 
@@ -293,7 +312,7 @@ public class GameEngine {
         FeatureResolver resolver = this.stage.getResolver();
         GameUI ui = this.stage.getUI();
         if (myField.getCard(i).getStatus().containsStatus(CardStatusType.麻痹)) {
-        	resolver.removeStatus(myField.getCard(i), CardStatusType.麻痹);
+            resolver.removeStatus(myField.getCard(i), CardStatusType.麻痹);
             return;
         }
         for (FeatureInfo featureInfo : myField.getCard(i).getNormalUsableFeatures()) {

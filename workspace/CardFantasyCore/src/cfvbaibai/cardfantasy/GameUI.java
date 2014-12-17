@@ -151,6 +151,8 @@ public abstract class GameUI {
 
     public abstract void confused(CardInfo card);
 
+    public abstract void softened(CardInfo card);
+
     public abstract void roll100(int dice, int rate);
 
     public abstract void useSkill(EntityInfo caster, Feature feature, boolean bingo);

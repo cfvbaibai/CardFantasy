@@ -8,7 +8,8 @@ public enum CardStatusType {
     锁定(false, "锁"),
     裂伤(false, "裂"),
     虚弱(false, "虚"),
-    迷惑(false, "惑");
+    迷惑(false, "惑"),
+    弱化(false, "弱");
 
     private boolean quantitive;
     public boolean isQuantitive() {

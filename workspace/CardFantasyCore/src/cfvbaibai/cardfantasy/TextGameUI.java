@@ -277,7 +277,7 @@ public abstract class TextGameUI extends GameUI {
     public void adjustAT(EntityInfo source, CardInfo target, int adjAT, Feature cardFeature) {
         String verb = adjAT > 0 ? "增加" : "降低";
         sayF("%s 使用 %s %s 了 %s 的 %d 点攻击! %d -> %d.", source.getShortDesc(), cardFeature.getShortDesc(), verb,
-                target.getShortDesc(), adjAT, target.getCurrentAT(), target.getCurrentAT() + adjAT);
+                target.getShortDesc(), Math.abs(adjAT), target.getCurrentAT(), target.getCurrentAT() + adjAT);
     }
 
     @Override
@@ -404,8 +404,15 @@ public abstract class TextGameUI extends GameUI {
 
     @Override
     public void confused(CardInfo card) {
-        sayF("%s 处在状态 %s 中并且攻击了本方英雄!", card.getShortDesc(), card.getStatus().getShortDesc());
+        sayF("%s 处在状态 %s 中并且攻击了本方英雄!", card.getShortDesc(),
+            card.getStatus().getShortDescOfType(CardStatusType.迷惑));
         this.attackHero(card, card.getOwner(), null, card.getCurrentAT());
+    }
+    
+    @Override
+    public void softened(CardInfo card) {
+        sayF("%s 处在状态 %s 中，攻击力被弱化了一半!", card.getShortDesc(),
+            card.getStatus().getShortDescOfType(CardStatusType.弱化));
     }
 
     @Override

@@ -47,6 +47,14 @@ public class CardStatus {
     }
 
     public String getShortDesc() {
+        return getShortDescOfItems(this.items);
+    }
+    
+    public String getShortDescOfType(CardStatusType type) {
+        return getShortDescOfItems(this.getStatusOf(type));
+    }
+    
+    private String getShortDescOfItems(List<CardStatusItem> items) {
         if (items.size() == 0) {
             return "-";
         }

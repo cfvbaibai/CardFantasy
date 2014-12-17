@@ -344,4 +344,10 @@ public class DummyGameUI extends GameUI {
 		
 	}
 
+    @Override
+    public void softened(CardInfo card) {
+        // TODO Auto-generated method stub
+        
+    }
+
 }

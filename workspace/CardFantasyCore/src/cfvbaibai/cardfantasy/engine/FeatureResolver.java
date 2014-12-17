@@ -11,6 +11,7 @@ import cfvbaibai.cardfantasy.data.Race;
 import cfvbaibai.cardfantasy.data.RuneActivationType;
 import cfvbaibai.cardfantasy.data.RuneActivator;
 import cfvbaibai.cardfantasy.data.RuneData;
+import cfvbaibai.cardfantasy.engine.feature.AllDelayFeature;
 import cfvbaibai.cardfantasy.engine.feature.AttackUpFeature;
 import cfvbaibai.cardfantasy.engine.feature.BackStabFeature;
 import cfvbaibai.cardfantasy.engine.feature.BlockFeature;
@@ -25,6 +26,7 @@ import cfvbaibai.cardfantasy.engine.feature.CounterAttackFeature;
 import cfvbaibai.cardfantasy.engine.feature.CounterBiteFeature;
 import cfvbaibai.cardfantasy.engine.feature.CounterMagicFeature;
 import cfvbaibai.cardfantasy.engine.feature.CounterSummonFeature;
+import cfvbaibai.cardfantasy.engine.feature.SoftenFeature;
 import cfvbaibai.cardfantasy.engine.feature.CriticalAttackFeature;
 import cfvbaibai.cardfantasy.engine.feature.CurseFeature;
 import cfvbaibai.cardfantasy.engine.feature.DestroyFeature;
@@ -50,6 +52,7 @@ import cfvbaibai.cardfantasy.engine.feature.LegionBuffFeature;
 import cfvbaibai.cardfantasy.engine.feature.LighteningMagicFeature;
 import cfvbaibai.cardfantasy.engine.feature.MagicShieldFeature;
 import cfvbaibai.cardfantasy.engine.feature.ManaErodeFeature;
+import cfvbaibai.cardfantasy.engine.feature.OneDelayFeature;
 import cfvbaibai.cardfantasy.engine.feature.OverdrawFeature;
 import cfvbaibai.cardfantasy.engine.feature.PenetrationFeature;
 import cfvbaibai.cardfantasy.engine.feature.PlagueFeature;
@@ -81,8 +84,6 @@ import cfvbaibai.cardfantasy.engine.feature.WeakenFeature;
 import cfvbaibai.cardfantasy.engine.feature.WinningPursuitFeature;
 import cfvbaibai.cardfantasy.engine.feature.WoundFeature;
 import cfvbaibai.cardfantasy.engine.feature.ZealotFeature;
-import cfvbaibai.cardfantasy.engine.feature.AllDelayFeature;
-import cfvbaibai.cardfantasy.engine.feature.OneDelayFeature;
 
 
 public class FeatureResolver {
@@ -223,10 +224,12 @@ public class FeatureResolver {
                 RevengeFeature.apply(this, feature, attacker);
             } else if (feature.getType() == FeatureType.全体阻碍){
                 AllDelayFeature.apply(feature, this, attacker, defender);
-            } else if (feature.getType() == FeatureType.阻碍){
+            } else if (feature.getType() == FeatureType.阻碍) {
                 OneDelayFeature.apply(feature, this, attacker, defender);
-            } else if (feature.getType() == FeatureType.净化){
+            } else if (feature.getType() == FeatureType.净化) {
                 PurifyFeature.apply(feature, this, attacker);
+            } else if (feature.getType() == FeatureType.虚弱) {
+                SoftenFeature.apply(feature, this, attacker, defender);
             }
         }
         RuneInfo rune = attacker.getOwner().getActiveRuneOf(RuneData.飞岩);

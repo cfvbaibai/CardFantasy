@@ -7,6 +7,7 @@ public enum FeatureType {
     /* 攻击力削弱技能 */
     削弱("30964", 10, FeatureTag.永久, FeatureTag.基础攻击加成),
     群体削弱("30952", 5, FeatureTag.永久, FeatureTag.基础攻击加成),
+
     /*
      * 削弱可以被淬炼、种族之力抵消，但瘟疫不能
      */
@@ -41,6 +42,8 @@ public enum FeatureType {
     趁胜追击("40090", 40, 10, FeatureTag.独立攻击加成),
     背刺("30879", 40, FeatureTag.独立攻击加成),
     复仇("40086", 40, 10, FeatureTag.独立攻击加成),
+
+    虚弱("57000", 0, FeatureTag.额外攻击加成),
 
     /* HP 上限调整技能 */
     王国守护("30949", 50),
