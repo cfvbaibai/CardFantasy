@@ -243,7 +243,7 @@ public class GameEngine {
                 // 回春
                 resolver.resolveCardRoundEndingFeature(myField.getCard(i));
             }
-            
+
             // 解除状态
             resolver.removeStatus(myField.getCard(i), CardStatusType.中毒);
             ui.cardActionEnds(card);
