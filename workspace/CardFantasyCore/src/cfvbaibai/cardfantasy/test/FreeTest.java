@@ -540,12 +540,12 @@ public class FreeTest extends PveEngineTest {
                 table.setCell(j + 1, i + 1, String.valueOf(stat.getP1Win()));
             }
         }
-        table.outputToCsv(new File("E:\\My\\Documents\\FallenElfvsStar5s.csv"));
+        table.outputToCsv(new File("test_gen/FallenElfvsStar5s.csv"));
     }
 
     @Test
     public void TestCsvWriter() throws IOException {
-        CsvWriter writer = new CsvWriter(new File("E:\\My\\Documents\\Test.csv"));
+        CsvWriter writer = new CsvWriter(new File("test_gen/Test.csv"));
         writer.writeFields(new Object[] { "A", "b", "C" });
         writer.writeFields(new Object[] { "A", "b", "C" });
         writer.writeFields(new Object[] { "A", "b", "C" });
