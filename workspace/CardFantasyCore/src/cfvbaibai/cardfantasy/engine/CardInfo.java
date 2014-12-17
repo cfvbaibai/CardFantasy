@@ -240,7 +240,7 @@ public class CardInfo extends EntityInfo {
     }
 
     private List<FeatureInfo> getUsableFeatures() {
-        List<FeatureInfo> features = new ArrayList<FeatureInfo>(4);
+        List<FeatureInfo> features = new ArrayList<FeatureInfo>(6);
         for (FeatureInfo feature : this.getAllFeatures()) {
             CardFeature cardFeature = (CardFeature)feature.getFeature();
             if (cardFeature.getUnlockLevel() <= this.getCard().getLevel()) {
