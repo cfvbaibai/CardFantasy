@@ -48,4 +48,12 @@ public class FeatureTestContext {
         Player player = getPlayer(playerIndex);
         return player.getRuneBox().addRune(new RuneInfo(dsi.getRunes().get(runeIndex), player));
     }
+    public FeatureTestContext startGame() {
+        this.getStage().gameStarted();
+        return this;
+    }
+    public FeatureTestContext proceedOneRound() {
+        this.getEngine().proceedOneRound();
+        return this;
+    }
 }
