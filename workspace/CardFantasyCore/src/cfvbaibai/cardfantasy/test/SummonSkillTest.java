@@ -1,5 +1,7 @@
 package cfvbaibai.cardfantasy.test;
 
+import java.util.List;
+
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Test;
@@ -43,13 +45,14 @@ public class SummonSkillTest {
     public void test降临传送_相同等待时间() {
         FeatureTestContext context = FeatureValidationTests.prepare(50, 50, "隐世先知", "金属巨龙-5", "凤凰-5");
         context.addToHand(0, 0).setSummonDelay(0);
-        CardInfo c金属巨龙 = context.addToField(1, 1).setSummonDelay(3);
-        CardInfo c凤凰 = context.addToField(2, 1).setSummonDelay(3);
+        CardInfo c金属巨龙 = context.addToHand(1, 1).setSummonDelay(3);
+        CardInfo c凤凰 = context.addToHand(2, 1).setSummonDelay(3);
         context.startGame();
 
         context.proceedOneRound();
 
-        Assert.assertFalse("凤凰应该还活着", c凤凰.isDead());
-        Assert.assertTrue("金属巨龙应该死了", c金属巨龙.isDead());
+        List<CardInfo> handListB = context.getPlayer(1).getHand().toList();
+        Assert.assertTrue("凤凰应该还活着", handListB.contains(c凤凰));
+        Assert.assertFalse("金属巨龙应该死了", handListB.contains(c金属巨龙));
     }
 }
