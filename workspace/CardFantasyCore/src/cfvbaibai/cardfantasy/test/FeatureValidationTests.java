@@ -24,13 +24,13 @@ public class FeatureValidationTests {
         context.setDsi(dsi);
         return context;
     }
-    
+
     private static StaticRandomizer random;
     public static StaticRandomizer getRandom() {
+        if (random == null) {
+            random = new StaticRandomizer();
+            Randomizer.registerRandomizer(random);
+        }
         return random;
-    }
-    static {
-        random = new StaticRandomizer();
-        Randomizer.registerRandomizer(random);
     }
 }
