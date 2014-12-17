@@ -23,7 +23,7 @@ import cfvbaibai.cardfantasy.data.Zht2Zhs;
 
 public final class DeckBuilder {
 
-    private static CardDataStore store;
+    private static CardDataStore store = CardDataStore.loadDefault();
 
     /**
      * C卡片名-等级+技能名技能等级*数量
@@ -49,9 +49,6 @@ public final class DeckBuilder {
     }
 
     public static DeckStartupInfo build(String ... descs) {
-        if (store == null) {
-            store = CardDataStore.loadDefault();
-        }
         DeckStartupInfo deck = new DeckStartupInfo();
         for (String desc : descs) {
             if (desc == null || desc.length() == 0) {
@@ -59,12 +56,12 @@ public final class DeckBuilder {
             }
             desc = desc.trim();
             if (desc.length() > 1 && desc.charAt(0) == 'C') {
-                parseCardDesc(deck, desc.substring(1));
+            	parseAndAddCard(deck, desc.substring(1));
             } else if (desc.length() > 1 && desc.charAt(0) == 'R') {
-                parseRuneDesc(deck, desc.substring(1));
+            	parseAndAddRune(deck, desc.substring(1));
             } else {
-                if (!parseCardDesc(deck, desc)) {
-                    if (!parseRuneDesc(deck, desc)) {
+                if (!parseAndAddCard(deck, desc)) {
+                    if (!parseAndAddRune(deck, desc)) {
                         throw new DeckBuildRuntimeException("无效的卡牌或符文: " + desc);
                     }
                 }
@@ -72,8 +69,18 @@ public final class DeckBuilder {
         }
         return deck;
     }
+    
+    private static boolean parseAndAddRune(DeckStartupInfo deck, String desc) {
+    	Rune rune = parseRuneDesc(desc);
+    	
+    	if (rune == null)
+    		return false;
+    	
+    	deck.addRune(rune);
+    	return true;
+    }
 
-    private static boolean parseRuneDesc(DeckStartupInfo deck, String desc) {
+    public static Rune parseRuneDesc(String desc) {
         String runeDesc = desc;
         int iDash = runeDesc.indexOf('-');
         int runeLevel = 4;
@@ -91,13 +98,26 @@ public final class DeckBuilder {
         try {
             runeData = RuneData.valueOf(runeName);
         } catch (IllegalArgumentException e) {
-            return false;
+            return null;
         }
 
         Rune rune = new Rune(runeData, 0);
         rune.growToLevel(runeLevel);
-        deck.addRune(rune);
-        return true;
+        return rune;
+    }
+    
+    private static long cardSuffixId = 0;
+    
+    private static boolean parseAndAddCard(DeckStartupInfo deck, String desc) {
+    	List<Card> cards = parseCardDesc(desc);
+    	
+    	if (cards == null || cards.isEmpty())
+    		return false;
+    	
+    	for (Card c : cards)
+    		deck.addCard(c);
+    		
+    	return true;
     }
 
     /**
@@ -107,7 +127,9 @@ public final class DeckBuilder {
      * @param deck
      * @param desc
      */
-    private static boolean parseCardDesc(DeckStartupInfo deck, String desc) {
+    public static List<Card> parseCardDesc(String desc) {
+    	List<Card> ret = new ArrayList<Card>();
+    	
         String cardDesc = desc;
         Matcher matcher = CARD_PATTERN.matcher(cardDesc);
         if (!matcher.matches()) {
@@ -162,7 +184,7 @@ public final class DeckBuilder {
 
         CardData data = store.getCardInfo(cardName);
         if (data == null) {
-            return false;
+            return null;
         }
         
         String prefix = "";
@@ -176,26 +198,13 @@ public final class DeckBuilder {
         }
         
         for (int j = 0; j < count; ++j) {
-            char suffix = 'A';
-            while (true) {
-                boolean suffixUsed = false;
-                for (Card card : deck.getCards()) {
-                    if (card.getUniqueName().equals(prefix + cardName + suffix)) {
-                        suffixUsed = true;
-                        break;
-                    }
-                }
-                if (suffixUsed) {
-                    ++suffix;
-                } else {
-                    break;
-                }
-            }
-
-            Card card = new Card(data, cardLevel, extraFeature, prefix, String.valueOf(suffix));
-            deck.addCard(card);
+            Card card = new Card(data, cardLevel, extraFeature, prefix, String.valueOf(cardSuffixId));
+            cardSuffixId++;
+            
+            ret.add(card);
         }
-        return true;
+        
+        return ret;
     }
 
     public static String getDeckDesc(Card card) {

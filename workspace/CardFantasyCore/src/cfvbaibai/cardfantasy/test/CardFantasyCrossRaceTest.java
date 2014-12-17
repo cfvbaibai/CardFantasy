@@ -39,7 +39,7 @@ public class CardFantasyCrossRaceTest {
     
     @Test
     public void IncrCostStat() throws IOException {
-        CsvWriter writer = new CsvWriter(new File("E:\\IncrCost.csv"));
+        CsvWriter writer = new CsvWriter(new File("test_gen/IncrCost.csv"));
         try {
             writer.writeFields("卡牌", "种族", "星数", "额外COST");
             CardDataStore store = CardDataStore.loadDefault();
