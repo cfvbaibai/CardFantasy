@@ -49,4 +49,27 @@ public class CounterAttackTest {
         Assert.assertEquals(0, 1400 - c秘银巨石像.getHP());
         Assert.assertEquals(0, 995 - c大剑圣.getHP());
     }
+    
+    /**
+     * 伤害为零时不触发雷盾
+     */
+    @Test
+    public void test冰甲岩壁_雷盾() {
+        FeatureTestContext context = FeatureValidationTests.prepare(
+            50, 50, "光明之龙", "秘银巨石像", "战斗猛犸象", "岩壁", "雷盾");
+        CardInfo c光明之龙 = context.addToField(0, 0);
+        CardInfo c秘银巨石像 = context.addToField(1, 0);
+        CardInfo c战斗猛犸象 = context.addToField(2, 1);
+        RuneInfo r岩壁 = context.addToRune(0, 1);
+        RuneInfo r雷盾 = context.addToRune(1, 1);
+        context.startGame();
+        
+        r岩壁.activate();
+        r雷盾.activate();
+        context.proceedOneRound();
+        
+        Assert.assertEquals(0, 1220 - c战斗猛犸象.getHP());
+        Assert.assertEquals(0, 1730 - c光明之龙.getHP());
+        Assert.assertEquals(0, 1400 - c秘银巨石像.getHP());
+    }
 }

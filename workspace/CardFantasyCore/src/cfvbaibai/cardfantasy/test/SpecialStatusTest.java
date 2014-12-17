@@ -111,6 +111,9 @@ public class SpecialStatusTest {
         Assert.assertEquals(0, context.getPlayer(1).getField().size());
     }
     
+    /**
+     * 中毒比回春先结算
+     */
     @Test
     public void test中毒_回春() {
         FeatureTestContext context = FeatureValidationTests.prepare(50, 50, "蝎尾狮", "凤凰-5");
