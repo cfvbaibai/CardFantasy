@@ -268,7 +268,7 @@
     <Card id="1422" name="东方幻术师" wikiId="57009" race="王国" speed="4" star="4" cost="13" incrCost="1" at="210" hp="1030" incrAT="17" incrHP="26">
         <Feature type="虚弱" level="0" unlock="0" />
         <Feature type="迷魂" level="7" unlock="5" />
-        <!--  <Feature type="治疗之雾" level="6" unlock="10" />-->
+        <Feature type="治疗之雾" level="6" unlock="10" />
     </Card>
 
     <Card id="1501" name="降临天使" wikiId="30922" race="王国" speed="4" star="5" cost="15" incrCost="3" at="365" hp="1800" incrAT="24" incrHP="24">

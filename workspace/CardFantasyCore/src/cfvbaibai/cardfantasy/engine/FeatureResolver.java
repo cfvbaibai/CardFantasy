@@ -26,7 +26,6 @@ import cfvbaibai.cardfantasy.engine.feature.CounterAttackFeature;
 import cfvbaibai.cardfantasy.engine.feature.CounterBiteFeature;
 import cfvbaibai.cardfantasy.engine.feature.CounterMagicFeature;
 import cfvbaibai.cardfantasy.engine.feature.CounterSummonFeature;
-import cfvbaibai.cardfantasy.engine.feature.SoftenFeature;
 import cfvbaibai.cardfantasy.engine.feature.CriticalAttackFeature;
 import cfvbaibai.cardfantasy.engine.feature.CurseFeature;
 import cfvbaibai.cardfantasy.engine.feature.DestroyFeature;
@@ -40,6 +39,7 @@ import cfvbaibai.cardfantasy.engine.feature.ExplodeFeature;
 import cfvbaibai.cardfantasy.engine.feature.FireMagicFeature;
 import cfvbaibai.cardfantasy.engine.feature.GuardFeature;
 import cfvbaibai.cardfantasy.engine.feature.HealFeature;
+import cfvbaibai.cardfantasy.engine.feature.HealingMistFeature;
 import cfvbaibai.cardfantasy.engine.feature.HeavenWrathFeature;
 import cfvbaibai.cardfantasy.engine.feature.HeroKillerFeature;
 import cfvbaibai.cardfantasy.engine.feature.HolyFireFeature;
@@ -73,6 +73,7 @@ import cfvbaibai.cardfantasy.engine.feature.ReviveFeature;
 import cfvbaibai.cardfantasy.engine.feature.SacrificeFeature;
 import cfvbaibai.cardfantasy.engine.feature.SealFeature;
 import cfvbaibai.cardfantasy.engine.feature.SnipeFeature;
+import cfvbaibai.cardfantasy.engine.feature.SoftenFeature;
 import cfvbaibai.cardfantasy.engine.feature.SpikeFeature;
 import cfvbaibai.cardfantasy.engine.feature.TransportFeature;
 import cfvbaibai.cardfantasy.engine.feature.TrapFeature;
@@ -182,6 +183,8 @@ public class FeatureResolver {
                 HealFeature.apply(feature.getFeature(), this, attacker);
             } else if (feature.getType() == FeatureType.甘霖) {
                 RainfallFeature.apply(feature.getFeature(), this, attacker);
+            } else if (feature.getType() == FeatureType.治疗之雾) {
+                HealingMistFeature.apply(feature.getFeature(), this, attacker);
             } else if (feature.getType() == FeatureType.祈祷) {
                 PrayFeature.apply(feature.getFeature(), this, attacker);
             } else if (feature.getType() == FeatureType.复活) {

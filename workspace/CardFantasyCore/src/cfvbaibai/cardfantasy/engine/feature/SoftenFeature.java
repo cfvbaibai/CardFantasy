@@ -6,6 +6,7 @@ import cfvbaibai.cardfantasy.GameUI;
 import cfvbaibai.cardfantasy.data.Feature;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.CardStatusItem;
+import cfvbaibai.cardfantasy.engine.CardStatusType;
 import cfvbaibai.cardfantasy.engine.EntityInfo;
 import cfvbaibai.cardfantasy.engine.FeatureInfo;
 import cfvbaibai.cardfantasy.engine.FeatureResolver;
@@ -19,13 +20,17 @@ public class SoftenFeature {
 
         List<CardInfo> victims = resolver.getStage().getRandomizer().pickRandom(
             defender.getField().toList(), 1, true, null);
+        GameUI ui = resolver.getStage().getUI();
+        ui.useSkill(attacker, victims, feature, true);
+
         if (victims.isEmpty()) {
             return;
         }
 
         CardInfo victim = victims.get(0);
-        GameUI ui = resolver.getStage().getUI();
-        ui.useSkill(attacker, victims, feature, true);
+        if (victim.getStatus().containsStatus(CardStatusType.弱化)) {
+            return;
+        }
 
         if (!resolver.resolveAttackBlockingFeature(attacker, victim, feature, 1).isAttackable()) {
             return;

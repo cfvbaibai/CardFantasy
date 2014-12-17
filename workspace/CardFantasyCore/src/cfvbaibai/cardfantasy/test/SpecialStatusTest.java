@@ -199,7 +199,7 @@ public class SpecialStatusTest {
         context.addToField(1, 1);
         context.startGame();
 
-        random.addNextPicks(0); // 东方幻术师对秘银巨石像使用虚弱
+        random.addNextPicks(0); // 东方幻术师对金属巨龙使用虚弱
         context.proceedOneRound();
 
         random.addNextNumbers(0); // 金属巨龙暴击
@@ -217,11 +217,27 @@ public class SpecialStatusTest {
         context.addToField(1, 1);
         context.startGame();
 
-        random.addNextPicks(0); // 东方幻术师对秘银巨石像使用虚弱
+        random.addNextPicks(0); // 东方幻术师对金属巨龙使用虚弱
         context.proceedOneRound();
 
         random.addNextNumbers(1000); // 金属巨龙未暴击
         context.proceedOneRound();
         Assert.assertEquals(655, 1056 - c东方幻术师.getHP());
+    }
+
+    @Test
+    public void test虚弱_多重() {
+        FeatureTestContext context = FeatureValidationTests.prepare(50, 50, "东方幻术师-1*2", "秘银巨石像");
+        CardInfo c东方幻术师1 = context.addToField(0, 0);
+        context.addToField(1, 0);
+        context.addToField(2, 1);
+        context.startGame();
+
+        random.addNextPicks(0); // 东方幻术师1对秘银巨石像使用虚弱
+        random.addNextPicks(0); // 东方幻术师2对秘银巨石像使用虚弱
+        context.proceedOneRound();
+
+        context.proceedOneRound();
+        Assert.assertEquals(330, 1056 - c东方幻术师1.getHP());
     }
 }

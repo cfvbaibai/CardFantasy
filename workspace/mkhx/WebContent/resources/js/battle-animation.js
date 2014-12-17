@@ -1425,7 +1425,10 @@ var Animater = function() {
         } else if (skill == '迷魂') {
             this.flyImage({ fileName: 'heart.png', width: 24, height: 24, text: skill },
                     attacker, defenders, settings.skillDuration);
-        } else if (skill == '治疗' || skill == '甘霖' || skill == '回春') {
+        } else if (skill == '虚弱') {
+            this.flyImage({ fileName: 'soften.png', width: 48, height: 48, text: skill },
+                    attacker, defenders, settings.skillDuration);
+        } else if (skill == '治疗' || skill == '甘霖' || skill == '回春' || skill == '治疗之雾') {
             this.flyImage({ fileName: 'heal.png', width: 24, height: 24, text: skill },
                     attacker, defenders, settings.skillDuration);
         } else if (skill == '冰弹' || skill == '霜冻新星' || skill == '暴风雪') {
