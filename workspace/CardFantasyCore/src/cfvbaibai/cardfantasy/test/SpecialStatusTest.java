@@ -77,4 +77,25 @@ public class SpecialStatusTest {
             6390 - context.getPlayer(1).getHP());
         Assert.assertEquals(80 /* 水源冰弹 */ + 218 /* 水源攻击 */ - 0 /* 无法回春 */, 1560 - c凤凰.getHP());
     }
+    
+    @Test
+    public void test燃烧_回春() {
+        FeatureTestContext context = FeatureValidationTests.prepare(50, 50, "地狱红龙", "凤凰");
+        context.addToField(0, 0);
+        CardInfo c凤凰 = context.addToField(1, 1).setBasicHP(691);
+        context.startGame();
+        
+        random.addNextPicks(0);
+        context.proceedOneRound();
+
+        random.addNextPicks(0).addNextNumbers(0);
+        context.proceedOneRound();
+
+        // 燃烧和回春结算前，凤凰HP还剩下: 691 - 540 - 150 = 1
+        // 由于回春先结算，所以凤凰的HP先恢复到211，然后结算燃烧，所以凤凰死不了。
+        Assert.assertEquals(1, context.getPlayer(1).getField().size());
+        Assert.assertEquals(
+            540 /* 地狱红龙攻击 */ + 150 /* 法力反射 */ + 60 /* 燃烧 */ - 210 /* 回春 */,
+            1560 - c凤凰.getHP());
+    }
 }
