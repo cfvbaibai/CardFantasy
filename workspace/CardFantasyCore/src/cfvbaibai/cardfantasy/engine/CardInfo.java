@@ -354,7 +354,7 @@ public class CardInfo extends EntityInfo {
     }
 
     public boolean isWeak() {
-        return this.getStatus().containsStatus(CardStatusType.虚弱);
+        return this.getStatus().containsStatus(CardStatusType.复活);
     }
 
     /**

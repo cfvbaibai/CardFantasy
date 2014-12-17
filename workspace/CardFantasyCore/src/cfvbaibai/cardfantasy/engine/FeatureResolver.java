@@ -300,11 +300,11 @@ public class FeatureResolver {
         OnAttackBlockingResult result = new OnAttackBlockingResult(true, 0);
         CardStatus status = attacker.getStatus();
         if (isPhysicalAttackFeature(attackFeature)) {
-            // Physical attack could be blocked by Dodge or 麻痹, 冰冻, 锁定, 迷惑, 虚弱 status.
+            // Physical attack could be blocked by Dodge or 麻痹, 冰冻, 锁定, 迷惑, 复活 status.
             CardInfo cardAttacker = (CardInfo) attacker;
             result.setDamage(damage);
             if (status.containsStatus(CardStatusType.冰冻) || status.containsStatus(CardStatusType.麻痹)
-                    || status.containsStatus(CardStatusType.锁定) || status.containsStatus(CardStatusType.虚弱)) {
+                    || status.containsStatus(CardStatusType.锁定) || status.containsStatus(CardStatusType.复活)) {
                 stage.getUI().attackBlocked(cardAttacker, defender, attackFeature, null);
                 result.setAttackable(false);
             } else {
@@ -388,7 +388,7 @@ public class FeatureResolver {
             result.setDamage(damage);
             boolean isAttackerDisabled = status.containsStatus(CardStatusType.冰冻)
                     || status.containsStatus(CardStatusType.锁定)
-                    || status.containsStatus(CardStatusType.虚弱);
+                    || status.containsStatus(CardStatusType.复活);
             if (!attackFeature.isDeathFeature() && isAttackerDisabled) {
                 stage.getUI().attackBlocked(attacker, defender, attackFeature, null);
                 result.setAttackable(false);

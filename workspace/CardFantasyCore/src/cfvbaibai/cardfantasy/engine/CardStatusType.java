@@ -7,7 +7,7 @@ public enum CardStatusType {
     中毒(true, "毒"),
     锁定(false, "锁"),
     裂伤(false, "裂"),
-    虚弱(false, "虚"),
+    复活(false, "复"),
     迷惑(false, "惑"),
     弱化(false, "弱");
 

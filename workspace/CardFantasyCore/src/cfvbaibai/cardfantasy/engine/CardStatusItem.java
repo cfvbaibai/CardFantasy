@@ -59,7 +59,7 @@ public class CardStatusItem {
     }
 
     public static CardStatusItem weak(FeatureInfo cause) {
-        return new CardStatusItem(CardStatusType.虚弱, 0, cause);
+        return new CardStatusItem(CardStatusType.复活, 0, cause);
     }
     
     public static CardStatusItem confused(FeatureInfo cause) {

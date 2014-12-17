@@ -152,7 +152,7 @@ public class GameEngine {
         this.getInactivePlayer().getField().compact();
         
         for (CardInfo card : this.getActivePlayer().getField().getAliveCards()) {
-            this.stage.getResolver().removeStatus(card, CardStatusType.虚弱);
+            this.stage.getResolver().removeStatus(card, CardStatusType.复活);
         }
 
         return Phase.准备;
@@ -237,7 +237,7 @@ public class GameEngine {
             else if (
                 status.containsStatus(CardStatusType.冰冻) ||
                 status.containsStatus(CardStatusType.锁定) ||
-                status.containsStatus(CardStatusType.虚弱)) {
+                status.containsStatus(CardStatusType.复活)) {
                 underControl = true;
                 ui.cannotAction(myField.getCard(i));
                 resolver.removeStatus(myField.getCard(i), CardStatusType.冰冻);
@@ -256,7 +256,7 @@ public class GameEngine {
             }
 
             // TODO: This is an ugly hack. We should revisit the logic of revival.
-            if (!status.containsStatus(CardStatusType.虚弱)) {
+            if (!status.containsStatus(CardStatusType.复活)) {
                 resolver.removeStatus(myField.getCard(i), CardStatusType.麻痹);
             }
             resolver.removeStatus(myField.getCard(i), CardStatusType.弱化);
