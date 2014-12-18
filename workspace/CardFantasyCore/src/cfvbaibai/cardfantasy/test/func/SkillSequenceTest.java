@@ -7,14 +7,7 @@ import org.junit.Test;
 import cfvbaibai.cardfantasy.StaticRandomizer;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 
-public class SkillSequenceTest {
-    private static StaticRandomizer random = FeatureValidationTests.getRandom();
-
-    @After
-    public void afterTest() {
-        random.reset();
-    }
-
+public class SkillSequenceTest extends FeatureValidationTest {
     /**
      * 卡牌有多个技能在同一时机下都可发动的话，按照牌面顺序依次发动
      */

@@ -1,21 +1,12 @@
 package cfvbaibai.cardfantasy.test.func;
 
-import org.junit.After;
 import org.junit.Assert;
 import org.junit.Test;
 
-import cfvbaibai.cardfantasy.StaticRandomizer;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.Field;
 
-public class DelayTest {
-    private static StaticRandomizer random = FeatureValidationTests.getRandom();
-
-    @After
-    public void afterTest() {
-        random.reset();
-    }
-    
+public class DelayTest extends FeatureValidationTest {
     @Test
     public void test阻碍_奇数() {
         FeatureTestContext context = FeatureValidationTests.prepare(50, 50, "死兆星", "淘气灯灵");
@@ -40,7 +31,7 @@ public class DelayTest {
         context.proceedOneRound();
         Assert.assertEquals(1, fieldB.size());
     }
-    
+
     @Test
     public void test阻碍_偶数() {
         FeatureTestContext context = FeatureValidationTests.prepare(50, 50, "死兆星", "堕落精灵");

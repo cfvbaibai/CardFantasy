@@ -1,21 +1,12 @@
 package cfvbaibai.cardfantasy.test.func;
 
-import org.junit.After;
 import org.junit.Assert;
 import org.junit.Test;
 
-import cfvbaibai.cardfantasy.StaticRandomizer;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.RuneInfo;
 
-public class CounterAttackTest {
-    private static StaticRandomizer random = FeatureValidationTests.getRandom();
-
-    @After
-    public void afterTest() {
-        random.reset();
-    }
-
+public class CounterAttackTest extends FeatureValidationTest {
     /**
      * 反击在吸血之后
      */

@@ -23,7 +23,8 @@ import cfvbaibai.cardfantasy.test.TestGameBuilder;
     DeathSkillTest.class,
     SummonSkillTest.class,
     SkillSequenceTest.class,
-    HealingTest.class
+    HealingTest.class,
+    RuneActivationTest.class
 })
 public class FeatureValidationTests {
     public static FeatureTestContext prepare(int playerALevel, int playerBLevel, String ... cards) {

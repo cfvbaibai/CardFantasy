@@ -1,19 +1,11 @@
 package cfvbaibai.cardfantasy.test.func;
 
-import org.junit.After;
 import org.junit.Assert;
 import org.junit.Test;
 
-import cfvbaibai.cardfantasy.StaticRandomizer;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 
-public class DeathSkillTest {
-    private static StaticRandomizer random = FeatureValidationTests.getRandom();
-
-    @After
-    public void afterTest() {
-        random.reset();
-    }
+public class DeathSkillTest extends FeatureValidationTest {
     
     /**
      * 法力反射无法防御自爆

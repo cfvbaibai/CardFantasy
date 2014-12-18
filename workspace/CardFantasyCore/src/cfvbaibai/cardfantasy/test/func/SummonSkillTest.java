@@ -2,22 +2,13 @@ package cfvbaibai.cardfantasy.test.func;
 
 import java.util.List;
 
-import org.junit.After;
 import org.junit.Assert;
 import org.junit.Test;
 
-import cfvbaibai.cardfantasy.StaticRandomizer;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.RuneInfo;
 
-public class SummonSkillTest {
-    private static StaticRandomizer random = FeatureValidationTests.getRandom();
-
-    @After
-    public void afterTest() {
-        random.reset();
-    }
-
+public class SummonSkillTest extends FeatureValidationTest {
     /**
      * 降临技能在符文发动和结算之前发动
      */

@@ -1,20 +1,11 @@
 package cfvbaibai.cardfantasy.test.func;
 
-import org.junit.After;
 import org.junit.Assert;
 import org.junit.Test;
 
-import cfvbaibai.cardfantasy.StaticRandomizer;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 
-public class HealingTest {
-    private static StaticRandomizer random = FeatureValidationTests.getRandom();
-
-    @After
-    public void afterTest() {
-        random.reset();
-    }
-
+public class HealingTest extends FeatureValidationTest {
     @Test
     public void test治疗之雾_三卡治疗() {
         FeatureTestContext context = FeatureValidationTests.prepare(

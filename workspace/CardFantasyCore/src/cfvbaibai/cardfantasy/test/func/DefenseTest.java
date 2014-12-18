@@ -1,21 +1,12 @@
 package cfvbaibai.cardfantasy.test.func;
 
-import org.junit.After;
 import org.junit.Assert;
 import org.junit.Test;
 
-import cfvbaibai.cardfantasy.StaticRandomizer;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.RuneInfo;
 
-public class DefenseTest {
-    private static StaticRandomizer random = FeatureValidationTests.getRandom();
-
-    @After
-    public void afterTest() {
-        random.reset();
-    }
-
+public class DefenseTest extends FeatureValidationTest {
     /**
      * 多重冰甲效果只取最强力的那个
      */

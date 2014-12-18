@@ -1,20 +1,11 @@
 package cfvbaibai.cardfantasy.test.func;
 
-import org.junit.After;
 import org.junit.Assert;
 import org.junit.Test;
 
-import cfvbaibai.cardfantasy.StaticRandomizer;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 
-public class AttackBuffTest {
-    private static StaticRandomizer random = FeatureValidationTests.getRandom();
-
-    @After
-    public void afterTest() {
-        random.reset();
-    }
-
+public class AttackBuffTest extends FeatureValidationTest {
     @Test
     public void test嗜血_暴击() {
         FeatureTestContext context = FeatureValidationTests.prepare(50, 50, "犀牛人武士", "凤凰+格挡10");
