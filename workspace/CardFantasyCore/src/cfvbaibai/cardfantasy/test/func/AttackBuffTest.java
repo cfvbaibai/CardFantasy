@@ -5,7 +5,6 @@ import org.junit.Test;
 
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.HeroDieSignal;
-import cfvbaibai.cardfantasy.engine.RuneInfo;
 
 public class AttackBuffTest extends FeatureValidationTest {
     @Test
