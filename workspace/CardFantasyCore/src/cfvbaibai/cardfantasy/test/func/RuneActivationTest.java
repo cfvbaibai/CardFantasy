@@ -72,4 +72,26 @@ public class RuneActivationTest extends FeatureValidationTest {
 
         Assert.assertEquals(1, r清泉.getMaxEnergy() - r清泉.getEnergy());
     }
+    
+    /**
+     * 对方场上没有卡时也会激活雷盾和岩壁
+     */
+    @Test
+    public void test雷盾岩壁_激活条件() {
+        FeatureTestContext context = FeatureValidationTests.prepare(
+            50, 50, "战斗猛犸象*2", "金属巨龙*2", "雷盾", "岩壁");
+        context.addToField(0, 0);
+        context.addToField(1, 0);
+        context.addToField(2, 0);
+        context.addToField(3, 0);
+        RuneInfo r雷盾 = context.addToRune(0, 0);
+        RuneInfo r岩壁 = context.addToRune(1, 0);
+        context.startGame();
+        
+        context.proceedOneRound();
+        Assert.assertTrue("雷盾应该已激活", r雷盾.isActivated());
+        Assert.assertEquals(1, r雷盾.getMaxEnergy() - r雷盾.getEnergy());
+        Assert.assertTrue("岩壁应该已激活", r岩壁.isActivated());
+        Assert.assertEquals(1, r岩壁.getMaxEnergy() - r岩壁.getEnergy());
+    }
 }
