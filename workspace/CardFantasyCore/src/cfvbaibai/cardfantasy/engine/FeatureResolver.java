@@ -74,6 +74,7 @@ import cfvbaibai.cardfantasy.engine.feature.SacrificeFeature;
 import cfvbaibai.cardfantasy.engine.feature.SealFeature;
 import cfvbaibai.cardfantasy.engine.feature.SnipeFeature;
 import cfvbaibai.cardfantasy.engine.feature.SoftenFeature;
+import cfvbaibai.cardfantasy.engine.feature.SpeedUpFeature;
 import cfvbaibai.cardfantasy.engine.feature.SpikeFeature;
 import cfvbaibai.cardfantasy.engine.feature.TransportFeature;
 import cfvbaibai.cardfantasy.engine.feature.TrapFeature;
@@ -229,6 +230,8 @@ public class FeatureResolver {
                 AllDelayFeature.apply(feature, this, attacker, defender);
             } else if (feature.getType() == FeatureType.阻碍) {
                 OneDelayFeature.apply(feature, this, attacker, defender);
+            } else if (feature.getType() == FeatureType.加速) {
+                SpeedUpFeature.apply(feature, this, attacker);
             } else if (feature.getType() == FeatureType.净化) {
                 PurifyFeature.apply(feature, this, attacker);
             } else if (feature.getType() == FeatureType.虚弱) {

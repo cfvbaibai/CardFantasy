@@ -5,20 +5,22 @@ import java.util.List;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.FeatureInfo;
 import cfvbaibai.cardfantasy.engine.FeatureResolver;
-import cfvbaibai.cardfantasy.engine.Player;
 
-public final class OneDelayFeature {
-    public static void apply(FeatureInfo featureInfo, FeatureResolver resolver, CardInfo attacker, Player defender) {
-        int summonDelayOffset = featureInfo.getFeature().getImpact();
-        List<CardInfo> allHandCards = defender.getHand().toList();
+public class SpeedUpFeature {
+    public static void apply(FeatureInfo featureInfo, FeatureResolver resolver, CardInfo attacker) {
+        int summonDelayOffset = -featureInfo.getFeature().getImpact();
+        List<CardInfo> allHandCards = attacker.getOwner().getHand().toList();
         CardInfo victim = null;
         for (CardInfo card : allHandCards) {
-            if (victim == null || card.getSummonDelay() < victim.getSummonDelay()) {
+            if (victim == null || card.getSummonDelay() > victim.getSummonDelay()) {
                 victim = card;
             }
         }
         if (victim == null) {
             // No card at hand.
+            return;
+        }
+        if (victim.getSummonDelay() == 0) {
             return;
         }
         resolver.getStage().getUI().useSkill(attacker, victim, featureInfo.getFeature(), true);

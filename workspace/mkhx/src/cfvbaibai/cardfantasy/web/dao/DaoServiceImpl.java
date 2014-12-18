@@ -41,7 +41,7 @@ public class DaoServiceImpl implements CommunicationService {
     public int getThreadCount() {
         Map<String, Object> parameters = new HashMap<String, Object>();
         this.postMapper.getThreadCount(parameters);
-        return (int)parameters.get("count");
+        return (Integer)parameters.get("count");
     }
     
     public int newPost(Post post) {
