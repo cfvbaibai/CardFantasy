@@ -1,4 +1,4 @@
-package cfvbaibai.cardfantasy.test;
+package cfvbaibai.cardfantasy.test.func;
 
 import org.junit.After;
 import org.junit.Assert;

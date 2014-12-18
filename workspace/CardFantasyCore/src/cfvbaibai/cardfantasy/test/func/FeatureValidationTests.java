@@ -1,4 +1,4 @@
-package cfvbaibai.cardfantasy.test;
+package cfvbaibai.cardfantasy.test.func;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
@@ -9,6 +9,7 @@ import cfvbaibai.cardfantasy.StaticRandomizer;
 import cfvbaibai.cardfantasy.engine.GameEngine;
 import cfvbaibai.cardfantasy.game.DeckBuilder;
 import cfvbaibai.cardfantasy.game.DeckStartupInfo;
+import cfvbaibai.cardfantasy.test.TestGameBuilder;
 
 @RunWith(Suite.class)
 @SuiteClasses({
