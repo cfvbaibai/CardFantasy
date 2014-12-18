@@ -68,7 +68,7 @@ public class RuneActivationTest extends FeatureValidationTest {
 
         context.proceedOneRound();
         Assert.assertTrue("清泉应该已激活", r清泉.isActivated());
-        Assert.assertEquals(660 - 200 /* 清泉 */, 1400 - c秘银巨石像1.getHP());
+        Assert.assertEquals(660 - 225 /* 清泉 */, 1400 - c秘银巨石像1.getHP());
 
         Assert.assertEquals(1, r清泉.getMaxEnergy() - r清泉.getEnergy());
     }

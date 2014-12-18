@@ -1082,19 +1082,22 @@ public class FeatureResolver {
             if (!shouldActivate) {
                 continue;
             }
-            
-            
+
             // Special logic for 永冻 & 春风 & 清泉 & 冰封 & 灼魂.
             if (rune.is(RuneData.清泉)) {
-                boolean anyCardWounded = true;
-                for (CardInfo card : player.getField().toList()) {
-                    if (card.isWounded()) {
-                        anyCardWounded = true;
-                        break;
-                    }
-                }
-                if (!anyCardWounded) {
+                if (player.getField().size() == 0) {
                     shouldActivate = false;
+                } else {
+                    boolean anyCardWounded = false;
+                    for (CardInfo card : player.getField().toList()) {
+                        if (card.isWounded()) {
+                            anyCardWounded = true;
+                            break;
+                        }
+                    }
+                    if (!anyCardWounded) {
+                        shouldActivate = false;
+                    }
                 }
             } else if (rune.is(RuneData.永冻) || rune.is(RuneData.灼魂)) {
                 if (enemy.getField().toList().isEmpty()) {
