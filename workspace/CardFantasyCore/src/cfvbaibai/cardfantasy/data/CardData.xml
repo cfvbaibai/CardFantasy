@@ -159,6 +159,11 @@
         <Feature type="狂热" level="5" unlock="5" />
         <Feature type="战意" level="5" unlock="10" />
     </Card>
+    <Card id="1319" name="红月女仆" wikiId="95805" race="王国" speed="4" star="3" cost="11" incrCost="2" at="180" hp="670" incrAT="24" incrHP="18">
+        <Feature type="脱困" level="0" unlock="0" />
+        <Feature type="背刺" level="5" unlock="5" />
+        <Feature type="战意" level="5" unlock="10" />
+    </Card>
 
     <Card id="1401" name="圣堂武士" wikiId="30780" race="王国" speed="4" star="4" cost="13" incrCost="1" at="280" hp="1040" incrAT="23" incrHP="37">
         <Feature type="狂热" level="7" unlock="0" />
@@ -290,6 +295,36 @@
         <Feature type="迷魂" level="8" unlock="5" />
         <Feature type="祈祷" level="5" unlock="10" />
     </Card>
+    <Card id="1427" name="铁血剑豪" wikiId="62831" race="王国" speed="4" star="4" cost="14" incrCost="2" at="300" hp="1210" incrAT="28" incrHP="35">
+        <Feature type="暴击" level="6" unlock="0" />
+        <Feature type="横扫" level="0" unlock="5" />
+        <!--  TODO: <Feature type="不屈" level="0" unlock="10" /> -->
+    </Card>
+    <Card id="1428" name="铸造大师" wikiId="80171" race="王国" speed="4" star="4" cost="14" incrCost="2" at="260" hp="970" incrAT="20" incrHP="25">
+        <Feature type="格挡" level="7" unlock="0" />
+        <Feature type="王国之力" level="6" unlock="5" />
+        <!--  TODO: <Feature type="不屈" level="0" unlock="10" /> -->
+    </Card>
+    <Card id="1429" name="鬼斩破" wikiId="80174" race="王国" speed="3" star="4" cost="14" incrCost="2" at="310" hp="945" incrAT="22" incrHP="26">
+        <Feature type="弱点攻击" level="7" unlock="0" />
+        <Feature type="净化" level="6" unlock="5" summon="true" />
+        <Feature type="转生" level="6" unlock="10" />
+    </Card>
+    <Card id="1430" name="飞行器机师" wikiId="95806" race="王国" speed="4" star="4" cost="13" incrCost="2" at="190" hp="1235" incrAT="18" incrHP="34">
+        <Feature type="不动" level="0" unlock="0" />
+        <Feature type="烈焰风暴" level="6" unlock="5" />
+        <Feature type="二重狙击" level="6" unlock="10" />
+    </Card>
+    <Card id="1431" name="巨龙剑士" wikiId="95807" race="王国" speed="3" star="4" cost="12" incrCost="2" at="320" hp="890" incrAT="26" incrHP="27">
+        <Feature type="脱困" level="0" unlock="0" />
+        <Feature type="圣光" level="7" unlock="5" />
+        <!-- TODO: <Feature type="不屈" level="6" unlock="10" /> -->
+    </Card>
+    <Card id="1432" name="混元大师" wikiId="95809" race="王国" speed="2" star="4" cost="14" incrCost="2" at="280" hp="1050" incrAT="21" incrHP="34">
+        <Feature type="神圣守护" level="6" unlock="0" />
+        <Feature type="王国之盾" level="8" unlock="5" />
+        <!-- TODO: <Feature type="圣盾" level="0" unlock="10" /> -->
+    </Card>
 
     <Card id="1501" name="降临天使" wikiId="30922" race="王国" speed="4" star="5" cost="15" incrCost="3" at="365" hp="1800" incrAT="24" incrHP="24">
         <Feature type="魔甲" level="8" unlock="0" />
@@ -360,6 +395,30 @@
         <Feature type="连环闪电" level="7" unlock="0" />
         <Feature type="脱困" level="0" unlock="5" />
         <!-- TODO: <Feature type="沉默" level="0" unlock="10" /> -->
+    </Card>
+    <Card id="1515" name="制裁之雷神" wikiId="80141" race="王国" speed="4" star="5" cost="17" incrCost="2" at="410" hp="1345" incrAT="38" incrHP="36">
+        <!--  TODO: <Feature type="圣盾" level="0" unlock="0" /> -->
+        <Feature type="法力反射" level="6" unlock="5" />
+        <Feature type="神圣守护" level="7" unlock="10" />
+    </Card>
+    <Card id="1516" name="均衡女神" wikiId="80172" race="王国" speed="4" star="5" cost="20" incrCost="2" at="270" hp="1520" incrAT="30" incrHP="56">
+        <Feature type="祈祷" level="6" unlock="0" />
+        <Feature type="加速" level="2" unlock="5" />
+        <!-- TODO: <Feature type="时光倒流" level="0" unlock="10" /> -->
+    </Card>
+    <Card id="1517" name="星辰主宰" wikiId="80175" race="王国" speed="6" star="5" cost="20" incrCost="2" at="275" hp="1250" incrAT="34" incrHP="32">
+        <Feature type="脱困" level="0" unlock="0" />
+        <Feature type="闪避" level="6" unlock="5" />
+        <Feature type="复活" level="0" unlock="10" />
+    </Card>
+    <Card id="1518" name="圣炎魔导师" wikiId="80176" race="王国" speed="6" star="5" cost="19" incrCost="0" at="290" hp="1280" incrAT="36" incrHP="29">
+        <Feature type="烈焰风暴" level="8" unlock="0" />
+        <Feature type="冰甲" level="3" unlock="5" />
+        <Feature type="回魂" level="2" unlock="10" />
+    </Card>
+    <Card id="1519" name="陨星魔法使" wikiId="95808" race="王国" speed="3" star="5" cost="17" incrCost="2" at="335" hp="1460" incrAT="41" incrHP="39">
+        <Feature type="不动" level="0" unlock="5" />
+        <!-- TODO: <Feature type="召唤王国战士" level="0" unlock="10" /> -->
     </Card>
 
     <!-- 森林 -->

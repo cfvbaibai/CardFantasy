@@ -20,6 +20,7 @@ public final class PurifyFeature {
             resolver.removeStatus(card, CardStatusType.麻痹);
             resolver.removeStatus(card, CardStatusType.中毒);
             resolver.removeStatus(card, CardStatusType.燃烧);
+            resolver.removeStatus(card, CardStatusType.弱化);
         }
     }
 }

@@ -38,7 +38,7 @@ public enum FeatureType {
     暴击("30948", 20, FeatureTag.额外攻击加成),
     穷追猛打("30958", 15, FeatureTag.额外攻击加成),
     战意("31125", 15, FeatureTag.额外攻击加成),
-    连锁攻击("30934", 25, FeatureTag.额外攻击加成, FeatureTag.抗免疫, FeatureTag.物理攻击),
+    连锁攻击("30934", 0, 25, FeatureTag.额外攻击加成, FeatureTag.抗免疫, FeatureTag.物理攻击),
     趁胜追击("40090", 40, 10, FeatureTag.独立攻击加成),
     背刺("30879", 40, FeatureTag.独立攻击加成),
     复仇("40086", 40, 10, FeatureTag.独立攻击加成),
