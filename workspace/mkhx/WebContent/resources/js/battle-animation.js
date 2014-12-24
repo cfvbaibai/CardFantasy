@@ -1367,11 +1367,11 @@ var Animater = function() {
     
     this.msgIgnoredSkills = [
         '背刺', '暴击', '狂热', '嗜血', '横扫', '穿刺', '回春', '吸血',
-        '透支', '战意', '穷追猛打', '趁胜追击', '复仇',
+        '透支', '战意', '穷追猛打', '趁胜追击', '复仇', '英雄杀手', '反噬'
     ];
     this.selfUsedSkills = [
         '不动', '脱困', '群体脱困', '法力反射', '冰甲', '闪避', '守护', '魔神之甲',
-        '王国之盾', '森林之盾', '蛮荒之盾', '地狱之盾', '弱点攻击',
+        '王国之盾', '森林之盾', '蛮荒之盾', '地狱之盾', '弱点攻击'
     ];
     this.__useSkill = function(data) {
         var attacker = data[0]; // EntityRuntimeInfo
@@ -1428,8 +1428,23 @@ var Animater = function() {
         } else if (skill == '虚弱') {
             this.flyImage({ fileName: 'soften.png', width: 48, height: 48, text: skill },
                     attacker, defenders, settings.skillDuration);
+        } else if (skill == '疾病' || skill == '瘟疫') {
+            this.flyImage({ fileName: 'disease.png', width: 48, height: 48, text: skill },
+                    attacker, defenders, settings.skillDuration);
+        } else if (skill == '削弱' || skill == '群体削弱') {
+            this.flyImage({ fileName: 'weaken.png', width: 48, height: 48, text: skill },
+                    attacker, defenders, settings.skillDuration);
         } else if (skill == '阻碍' || skill == '加速' || skill == '全体阻碍' || skill == '全体加速') {
             this.flyImage({ fileName: 'delay.png', width: 48, height: 48, text: skill },
+                    attacker, defenders, settings.skillDuration);
+        } else if (skill == '法力侵蚀') {
+            this.flyImage({ fileName: 'mana-drain.png', width: 48, height: 48, text: skill },
+                    attacker, defenders, settings.skillDuration);
+        } else if (skill == '净化') {
+            this.flyImage({ fileName: 'purify.png', width: 48, height: 48, text: skill },
+                    attacker, defenders, settings.skillDuration);
+        } else if (skill == '血炼' || skill == '鲜血盛宴') {
+            this.flyImage({ fileName: 'blood.png', width: 48, height: 48, text: skill },
                     attacker, defenders, settings.skillDuration);
         } else if (skill == '治疗' || skill == '甘霖' || skill == '回春' || skill == '治疗之雾') {
             this.flyImage({ fileName: 'heal.png', width: 24, height: 24, text: skill },
