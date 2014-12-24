@@ -13,7 +13,10 @@ public class AllSpeedUpFeature {
         resolver.getStage().getUI().useSkill(attacker, allHandCards, featureInfo.getFeature(), true);
         for (CardInfo card : allHandCards) {
             int summonDelay = card.getSummonDelay();
-            if (summonDelay == 0) {
+            if (summonDelay < summonDelayOffset) {
+                summonDelayOffset = summonDelay;
+            }
+            if (summonDelayOffset == 0) {
                 continue;
             }
             resolver.getStage().getUI().increaseSummonDelay(card, -summonDelayOffset);

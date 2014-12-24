@@ -1521,6 +1521,51 @@
         <Feature type="闪避" level="6" unlock="5" />
         <Feature type="阻碍" level="1" unlock="10" />
     </Card>
+    <Card id="4422" name="灵俑暗杀者" wikiId="56753" race="地狱" speed="4" star="4" cost="12" incrCost="1" at="310" hp="780" incrAT="24" incrHP="24">
+        <Feature type="背刺" level="6" unlock="0" />
+        <Feature type="鲜血盛宴" level="7" unlock="5" />
+        <!-- TODO: <Feature type="死亡印记" level="4" unlock="10" /> -->
+    </Card>
+    <Card id="4423" name="暗影牧师" wikiId="62840" race="地狱" speed="4" star="4" cost="14" incrCost="2" at="230" hp="890" incrAT="21" incrHP="32">
+        <Feature type="不动" level="0" unlock="0" />
+        <Feature type="甘霖" level="7" unlock="5" />
+        <Feature type="转生" level="6" unlock="10" />
+    </Card>
+    <Card id="4424" name="地狱炎车手" wikiId="62841" race="地狱" speed="4" star="4" cost="13" incrCost="2" at="315" hp="820" incrAT="26" incrHP="30">
+        <Feature type="烈火焚神" level="6" unlock="0" />
+        <Feature type="鲜血盛宴" level="7" unlock="5" />
+        <Feature type="穷追猛打" level="7" unlock="10" />
+    </Card>
+    <Card id="4425" name="炼狱玩具熊" wikiId="62842" race="地狱" speed="4" star="4" cost="13" incrCost="2" at="325" hp="940" incrAT="28" incrHP="40">
+        <Feature type="吸血" level="6" unlock="0" />
+        <Feature type="战意" level="6" unlock="5" />
+        <Feature type="不动" level="0" unlock="10" />
+    </Card>
+    <Card id="4426" name="血妖舞女" wikiId="62843" race="地狱" speed="2" star="4" cost="14" incrCost="2" at="260" hp="680" incrAT="26" incrHP="23">
+        <Feature type="英雄杀手" level="5" unlock="0" />
+        <Feature type="天谴" level="5" unlock="5" />
+        <Feature type="诅咒" level="6" unlock="10" />
+    </Card>
+    <Card id="4427" name="魅灵吞噬者" wikiId="62846" race="地狱" speed="3" star="4" cost="14" incrCost="2" at="260" hp="970" incrAT="21" incrHP="23">
+        <Feature type="迷魂" level="7" unlock="0" />
+        <Feature type="毒雾" level="6" unlock="5" />
+        <Feature type="回春" level="8" unlock="10" />
+    </Card>
+    <Card id="4428" name="贪婪之心" wikiId="80187" race="地狱" speed="4" star="4" cost="13" incrCost="2" at="295" hp="810" incrAT="30" incrHP="20">
+        <!-- TODO:<Feature type="死亡印记" level="7" unlock="0" /> -->
+        <Feature type="脱困" level="0" unlock="5" />
+        <Feature type="暴击" level="6" unlock="10" />
+    </Card>
+    <Card id="4429" name="镜魔" wikiId="80188" race="地狱" speed="2" star="4" cost="14" incrCost="2" at="270" hp="920" incrAT="26" incrHP="27">
+        <Feature type="送还" level="7" unlock="0" summon="true" />
+        <Feature type="英雄杀手" level="7" unlock="5" />
+        <Feature type="诅咒" level="8" unlock="10" />
+    </Card>
+    <Card id="4430" name="蝠王恶灵" wikiId="80188" race="地狱" speed="4" star="4" cost="12" incrCost="2" at="285" hp="1060" incrAT="22" incrHP="27">
+        <Feature type="血炼" level="8" unlock="0" />
+        <Feature type="吸血" level="6" unlock="5" />
+        <Feature type="瘟疫" level="8" unlock="10" />
+    </Card>
 
     <Card id="4501" name="毁灭之龙" wikiId="31064" race="地狱" speed="6" star="5" cost="14" incrCost="2" at="350" hp="1270" incrAT="34" incrHP="34">
         <Feature type="暴击" level="6" unlock="0" />
@@ -1577,7 +1622,57 @@
         <Feature type="冰甲" level="5" unlock="5" />
         <Feature type="邪灵汲取" level="6" unlock="10" />
     </Card>
-    
+    <Card id="4512" name="无尽噩梦" wikiId="57015" race="地狱" speed="3" star="5" cost="16" incrCost="2" at="350" hp="1310" incrAT="46" incrHP="32">
+        <Feature type="法力侵蚀" level="6" unlock="0" />
+        <!-- TODO: <Feature type="战争怒吼" level="0" unlock="5" summon="true" /> -->
+        <Feature type="转生" level="6" unlock="10" />
+    </Card>
+    <Card id="4513" name="死域军神" wikiId="62844" race="地狱" speed="3" star="5" cost="16" incrCost="2" at="380" hp="1210" incrAT="32" incrHP="35">
+        <Feature type="战意" level="6" unlock="0" />
+        <Feature type="弱点攻击" level="0" unlock="5" />
+        <Feature type="转生" level="7" unlock="10" />
+    </Card>
+    <Card id="4514" name="圆月魔女" wikiId="62845" race="地狱" speed="4" star="5" cost="16" incrCost="2" at="310" hp="1390" incrAT="33" incrHP="40">
+        <Feature type="法力侵蚀" level="8" unlock="0" />
+        <Feature type="不动" level="0" unlock="5" />
+        <Feature type="净化" level="0" unlock="10" />
+    </Card>
+    <Card id="4515" name="峦龙" wikiId="62824" race="地狱" speed="4" star="5" cost="17" incrCost="2" at="365" hp="1310" incrAT="31" incrHP="45">
+        <Feature type="盾刺" level="5" unlock="0" />
+        <Feature type="冰甲" level="7" unlock="5" />
+        <Feature type="脱困" level="0" unlock="10" />
+    </Card>
+    <Card id="4516" name="逐月饿狼" wikiId="80144" race="地狱" speed="4" star="5" cost="16" incrCost="2" at="345" hp="1290" incrAT="42" incrHP="38">
+        <Feature type="吸血" level="6" unlock="0" />
+        <Feature type="不动" level="0" unlock="5" />
+        <Feature type="加速" level="2" unlock="10" />
+    </Card>
+    <Card id="4517" name="谎言之神" wikiId="80140" race="地狱" speed="6" star="5" cost="20" incrCost="2" at="365" hp="1450" incrAT="42" incrHP="48">
+        <Feature type="封印" level="0" unlock="0" />
+        <Feature type="免疫" level="0" unlock="5" />
+        <!-- TODO: <Feature type="召唤人马巡逻者" level="0" unlock="10" /> -->
+    </Card>
+    <Card id="4518" name="蝗虫公爵" wikiId="80186" race="地狱" speed="3" star="5" cost="15" incrCost="2" at="325" hp="1350" incrAT="38" incrHP="45">
+        <Feature type="鲜血盛宴" level="9" unlock="0" />
+        <Feature type="嗜血" level="7" unlock="5" />
+        <Feature type="吸血" level="8" unlock="10" />
+    </Card>
+    <Card id="4519" name="骨灵巫女" wikiId="80190" race="地狱" speed="3" star="5" cost="16" incrCost="2" at="290" hp="1285" incrAT="28" incrHP="29">
+        <Feature type="穿刺" level="6" unlock="0" />
+        <Feature type="转生" level="7" unlock="5" />
+        <Feature type="横扫" level="0" unlock="10" />
+    </Card>
+    <Card id="4520" name="月蚀兽" wikiId="57007" race="地狱" speed="3" star="5" cost="16" incrCost="2" at="315" hp="1280" incrAT="34" incrHP="37">
+        <Feature type="全体阻碍" level="1" unlock="0" summon="true" />
+        <Feature type="复活" level="0" unlock="5" summon="true" />
+        <Feature type="转生" level="5" unlock="10" />
+    </Card>
+    <Card id="4521" name="赤面天狗" wikiId="95812" race="地狱" speed="4" star="5" cost="18" incrCost="2" at="385" hp="1425" incrAT="36" incrHP="37">
+        <Feature type="地狱之盾" level="7" unlock="0" />
+        <Feature type="污染" level="7" unlock="5" />
+        <!-- TODO: <Feature type="森林沐浴" level="0" unlock="10" summon="true" /> -->
+    </Card>
+
     <!-- 魔神 -->
     <!-- 未更新  -->
     <Card id="5501" name="复仇女神" wikiId="30871" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="1200" hp="15600000" incrAT="0" incrHP="0">

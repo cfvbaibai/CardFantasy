@@ -283,6 +283,161 @@ public class DelayTest extends FeatureValidationTest {
         Assert.assertEquals(1, fieldA.size());
     }
 
+    @Test
+    public void test加速2_0() {
+        FeatureTestContext context = FeatureValidationTests.prepare(50, 50, "逐月饿狼", "秘银巨石像", "金属巨龙");
+        context.addToField(0, 0);
+        context.addToHand(1, 0).setSummonDelay(0);
+        context.addToHand(2, 1).setSummonDelay(100); // 为了防止对手没卡直接胜利
+        Field fieldA = context.getPlayer(0).getField();
+        context.startGame();
+
+        context.proceedOneRound();
+        Assert.assertEquals(2, fieldA.size());
+    }
+
+    @Test
+    public void test加速2_1() {
+        FeatureTestContext context = FeatureValidationTests.prepare(50, 50, "逐月饿狼", "秘银巨石像", "金属巨龙");
+        context.addToField(0, 0);
+        CardInfo c秘银巨石像 = context.addToHand(1, 0).setSummonDelay(1);
+        context.addToHand(2, 1).setSummonDelay(100); // 为了防止对手没卡直接胜利
+        Field fieldA = context.getPlayer(0).getField();
+        context.startGame();
+
+        context.proceedOneRound();
+        Assert.assertEquals(1, fieldA.size());
+        Assert.assertEquals(0, c秘银巨石像.getSummonDelay());
+
+        context.proceedOneRound();
+        Assert.assertEquals(1, fieldA.size());
+        Assert.assertEquals(0, c秘银巨石像.getSummonDelay());
+
+        context.proceedOneRound();
+        Assert.assertEquals(2, fieldA.size());
+    }
+
+    @Test
+    public void test加速2_2() {
+        FeatureTestContext context = FeatureValidationTests.prepare(50, 50, "逐月饿狼", "秘银巨石像", "金属巨龙");
+        context.addToField(0, 0);
+        CardInfo c秘银巨石像 = context.addToHand(1, 0).setSummonDelay(2);
+        context.addToHand(2, 1).setSummonDelay(100); // 为了防止对手没卡直接胜利
+        Field fieldA = context.getPlayer(0).getField();
+        context.startGame();
+
+        context.proceedOneRound();
+        Assert.assertEquals(1, fieldA.size());
+        Assert.assertEquals(0, c秘银巨石像.getSummonDelay());
+
+        context.proceedOneRound();
+        Assert.assertEquals(1, fieldA.size());
+        Assert.assertEquals(0, c秘银巨石像.getSummonDelay());
+
+        context.proceedOneRound();
+        Assert.assertEquals(2, fieldA.size());
+    }
+
+    @Test
+    public void test加速2_3() {
+        FeatureTestContext context = FeatureValidationTests.prepare(50, 50, "逐月饿狼", "秘银巨石像", "金属巨龙");
+        context.addToField(0, 0);
+        CardInfo c秘银巨石像 = context.addToHand(1, 0).setSummonDelay(3);
+        context.addToHand(2, 1).setSummonDelay(100); // 为了防止对手没卡直接胜利
+        Field fieldA = context.getPlayer(0).getField();
+        context.startGame();
+
+        context.proceedOneRound();
+        Assert.assertEquals(1, fieldA.size());
+        Assert.assertEquals(0, c秘银巨石像.getSummonDelay());
+
+        context.proceedOneRound();
+        Assert.assertEquals(1, fieldA.size());
+        Assert.assertEquals(0, c秘银巨石像.getSummonDelay());
+
+        context.proceedOneRound();
+        Assert.assertEquals(2, fieldA.size());
+    }
+    
+    @Test
+    public void test加速2_4() {
+        FeatureTestContext context = FeatureValidationTests.prepare(50, 50, "逐月饿狼", "秘银巨石像", "金属巨龙");
+        context.addToField(0, 0);
+        CardInfo c秘银巨石像 = context.addToHand(1, 0).setSummonDelay(4);
+        context.addToHand(2, 1).setSummonDelay(100); // 为了防止对手没卡直接胜利
+        Field fieldA = context.getPlayer(0).getField();
+        context.startGame();
+
+        context.proceedOneRound();
+        Assert.assertEquals(1, fieldA.size());
+        Assert.assertEquals(1, c秘银巨石像.getSummonDelay());
+
+        context.proceedOneRound();
+        Assert.assertEquals(1, fieldA.size());
+        Assert.assertEquals(0, c秘银巨石像.getSummonDelay());
+
+        context.proceedOneRound();
+        Assert.assertEquals(2, fieldA.size());
+    }
+    
+    @Test
+    public void test加速2_5() {
+        FeatureTestContext context = FeatureValidationTests.prepare(50, 50, "逐月饿狼", "秘银巨石像", "金属巨龙");
+        context.addToField(0, 0);
+        CardInfo c秘银巨石像 = context.addToHand(1, 0).setSummonDelay(5);
+        context.addToHand(2, 1).setSummonDelay(100); // 为了防止对手没卡直接胜利
+        Field fieldA = context.getPlayer(0).getField();
+        context.startGame();
+
+        context.proceedOneRound();
+        Assert.assertEquals(1, fieldA.size());
+        Assert.assertEquals(2, c秘银巨石像.getSummonDelay());
+
+        context.proceedOneRound();
+        Assert.assertEquals(1, fieldA.size());
+        Assert.assertEquals(1, c秘银巨石像.getSummonDelay());
+
+        context.proceedOneRound();
+        Assert.assertEquals(1, fieldA.size());
+        Assert.assertEquals(0, c秘银巨石像.getSummonDelay());
+
+        context.proceedOneRound();
+        Assert.assertEquals(1, fieldA.size());
+        Assert.assertEquals(0, c秘银巨石像.getSummonDelay());
+        
+        context.proceedOneRound();
+        Assert.assertEquals(2, fieldA.size());
+    }
+    
+    @Test
+    public void test加速2_6() {
+        FeatureTestContext context = FeatureValidationTests.prepare(50, 50, "逐月饿狼", "秘银巨石像", "金属巨龙");
+        context.addToField(0, 0);
+        CardInfo c秘银巨石像 = context.addToHand(1, 0).setSummonDelay(6);
+        context.addToHand(2, 1).setSummonDelay(100); // 为了防止对手没卡直接胜利
+        Field fieldA = context.getPlayer(0).getField();
+        context.startGame();
+
+        context.proceedOneRound();
+        Assert.assertEquals(1, fieldA.size());
+        Assert.assertEquals(3, c秘银巨石像.getSummonDelay());
+
+        context.proceedOneRound();
+        Assert.assertEquals(1, fieldA.size());
+        Assert.assertEquals(2, c秘银巨石像.getSummonDelay());
+
+        context.proceedOneRound();
+        Assert.assertEquals(1, fieldA.size());
+        Assert.assertEquals(0, c秘银巨石像.getSummonDelay());
+
+        context.proceedOneRound();
+        Assert.assertEquals(1, fieldA.size());
+        Assert.assertEquals(0, c秘银巨石像.getSummonDelay());
+        
+        context.proceedOneRound();
+        Assert.assertEquals(2, fieldA.size());
+    }
+
     /**
      * 加速靠前的卡
      */

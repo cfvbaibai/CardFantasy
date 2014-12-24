@@ -8,7 +8,7 @@ import cfvbaibai.cardfantasy.engine.FeatureResolver;
 
 public class SpeedUpFeature {
     public static void apply(FeatureInfo featureInfo, FeatureResolver resolver, CardInfo attacker) {
-        int summonDelayOffset = -featureInfo.getFeature().getImpact();
+        int summonDelayOffset = featureInfo.getFeature().getImpact();
         List<CardInfo> allHandCards = attacker.getOwner().getHand().toList();
         CardInfo victim = null;
         for (CardInfo card : allHandCards) {
@@ -20,11 +20,15 @@ public class SpeedUpFeature {
             // No card at hand.
             return;
         }
-        if (victim.getSummonDelay() == 0) {
+        int summonDelay = victim.getSummonDelay();
+        if (summonDelay < summonDelayOffset) {
+            summonDelayOffset = summonDelay;
+        }
+        if (summonDelayOffset == 0) {
             return;
         }
         resolver.getStage().getUI().useSkill(attacker, victim, featureInfo.getFeature(), true);
-        resolver.getStage().getUI().increaseSummonDelay(victim, summonDelayOffset);
-        victim.setSummonDelay(victim.getSummonDelay() + summonDelayOffset);
+        resolver.getStage().getUI().increaseSummonDelay(victim, -summonDelayOffset);
+        victim.setSummonDelay(summonDelay - summonDelayOffset);
     }
 }
