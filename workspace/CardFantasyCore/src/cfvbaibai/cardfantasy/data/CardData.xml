@@ -692,10 +692,40 @@
         <!--  TODO: <Feature type="不屈" level="0" unlock="5" /> -->
         <Feature type="不动" level="0" unlock="10" />
     </Card>
-    <Card id="2422" name="尖啸曼陀罗" wikiId="62832" race="森林" speed="3" star="4" cost="12" incrCost="14" at="240" hp="1060" incrAT="23" incrHP="25">
+    <Card id="2422" name="尖啸曼陀罗" wikiId="62832" race="森林" speed="3" star="4" cost="12" incrCost="2" at="240" hp="1060" incrAT="23" incrHP="25">
         <Feature type="虚弱" level="0" unlock="0" />
         <Feature type="治疗之雾" level="5" unlock="5" />
         <Feature type="神圣守护" level="5" unlock="10" />
+    </Card>
+    <Card id="2423" name="星辰之蝶" wikiId="62833" race="森林" speed="4" star="4" cost="14" incrCost="2" at="215" hp="890" incrAT="20" incrHP="26">
+        <Feature type="闪避" level="6" unlock="0" />
+        <Feature type="加速" level="2" unlock="5" />
+        <Feature type="治疗" level="7" unlock="10" />
+    </Card>
+    <Card id="2424" name="幸运星贤者" wikiId="62834" race="森林" speed="3" star="4" cost="13" incrCost="2" at="225" hp="790" incrAT="31" incrHP="20">
+        <Feature type="送还" level="0" unlock="0" summon="true" />
+        <Feature type="森林守护" level="5" unlock="5" />
+        <Feature type="转生" level="8" unlock="10" />
+    </Card>
+    <Card id="2425" name="洞察之鹰" wikiId="80177" race="森林" speed="4" star="4" cost="14" incrCost="2" at="290" hp="1020" incrAT="24" incrHP="23">
+        <Feature type="背刺" level="6" unlock="0" />
+        <Feature type="要害" level="7" unlock="5" />
+        <Feature type="闪避" level="6" unlock="10" />
+    </Card>
+    <Card id="2426" name="人马大贤者" wikiId="80178" race="森林" speed="4" star="4" cost="14" incrCost="2" at="230" hp="870" incrAT="16" incrHP="30">
+        <Feature type="治疗之雾" level="6" unlock="0" />
+        <Feature type="法力侵蚀" level="8" unlock="5" />
+        <Feature type="甘霖" level="7" unlock="10" />
+    </Card>
+    <Card id="2427" name="琴舞之风" wikiId="80179" race="森林" speed="4" star="4" cost="13" incrCost="2" at="245" hp="1180" incrAT="17" incrHP="25">
+        <Feature type="甘霖" level="6" unlock="0" />
+        <Feature type="迷魂" level="8" unlock="5" />
+        <Feature type="不动" level="0" unlock="10" />
+    </Card>
+    <Card id="2428" name="梦境耳语者" wikiId="95815" race="森林" speed="4" star="4" cost="13" incrCost="2" at="210" hp="1035" incrAT="25" incrHP="30">
+        <Feature type="连环闪电" level="6" unlock="0" />
+        <Feature type="魔甲" level="6" unlock="5" />
+        <!--  TODO: <Feature type="召唤花仙子" level="0" unlock="10" /> -->
     </Card>
 
     <Card id="2501" name="金属巨龙" wikiId="31004" race="森林" speed="6" star="5" cost="14" incrCost="3" at="355" hp="1480" incrAT="30" incrHP="23">
@@ -757,6 +787,31 @@
         <Feature type="祈祷" level="8" unlock="0" />
         <Feature type="全体加速" level="1" unlock="5" />
         <Feature type="免疫" level="0" unlock="10" />
+    </Card>
+    <Card id="2513" name="雷雕之魂" wikiId="62826" race="森林" speed="4" star="5" cost="17" incrCost="2" at="320" hp="1380" incrAT="34" incrHP="42">
+        <Feature type="横扫" level="0" unlock="0" />
+        <Feature type="邪灵汲取" level="7" unlock="5" />
+        <Feature type="弱点攻击" level="0" unlock="10" />
+    </Card>
+    <Card id="2514" name="破晓守卫" wikiId="80142" race="森林" speed="4" star="5" cost="16" incrCost="2" at="310" hp="1420" incrAT="35" incrHP="40">
+        <Feature type="森林之力" level="7" unlock="0" />
+        <Feature type="回春" level="8" unlock="5" />
+        <Feature type="闪避" level="7" unlock="10" />
+    </Card>
+    <Card id="2515" name="幻翼神丽雅" wikiId="80180" race="森林" speed="4" star="5" cost="17" incrCost="1" at="320" hp="1410" incrAT="37" incrHP="40">
+        <!--  TODO: <Feature type="圣盾" level="0" unlock="0" /> -->
+        <Feature type="脱困" level="0" unlock="5" />
+        <Feature type="加速" level="2" unlock="10" />
+    </Card>
+    <Card id="2516" name="星夜女神" wikiId="80181" race="森林" speed="4" star="5" cost="18" incrCost="2" at="325" hp="1350" incrAT="32" incrHP="38">
+        <!--  TODO: <Feature type="召唤女神侍者" level="0" unlock="0" /> -->
+        <!--  TODO: <Feature type="振奋" level="6" unlock="5" /> -->
+        <Feature type="免疫" level="0" unlock="10" />
+    </Card>
+    <Card id="2517" name="梦境守护者" wikiId="95817" race="森林" speed="2" star="5" cost="16" incrCost="2" at="235" hp="1460" incrAT="22" incrHP="75">
+        <!--  TODO: <Feature type="圣盾" level="0" unlock="0" /> -->
+        <Feature type="守护" level="0" unlock="5" />
+        <Feature type="转生" level="8" unlock="10" />
     </Card>
 
     <!-- 蛮荒  -->
