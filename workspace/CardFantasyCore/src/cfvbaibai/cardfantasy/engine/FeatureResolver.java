@@ -12,6 +12,7 @@ import cfvbaibai.cardfantasy.data.RuneActivationType;
 import cfvbaibai.cardfantasy.data.RuneActivator;
 import cfvbaibai.cardfantasy.data.RuneData;
 import cfvbaibai.cardfantasy.engine.feature.AllDelayFeature;
+import cfvbaibai.cardfantasy.engine.feature.AllSpeedUpFeature;
 import cfvbaibai.cardfantasy.engine.feature.AttackUpFeature;
 import cfvbaibai.cardfantasy.engine.feature.BackStabFeature;
 import cfvbaibai.cardfantasy.engine.feature.BlockFeature;
@@ -228,6 +229,8 @@ public class FeatureResolver {
                 RevengeFeature.apply(this, feature, attacker);
             } else if (feature.getType() == FeatureType.全体阻碍){
                 AllDelayFeature.apply(feature, this, attacker, defender);
+            } else if (feature.getType() == FeatureType.全体加速){
+                AllSpeedUpFeature.apply(feature, this, attacker);
             } else if (feature.getType() == FeatureType.阻碍) {
                 OneDelayFeature.apply(feature, this, attacker, defender);
             } else if (feature.getType() == FeatureType.加速) {

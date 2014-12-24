@@ -17,6 +17,7 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2014-12-25: 添加新卡 - 【浮云青鸟】森林五星、【尖啸曼陀罗】森林四星</li>
                     <li>2014-12-24: 添加新卡 - 【圣炎魔导师】王国五星、【红月女仆】王国三星、【飞行器机师】王国四星</li>
                     <li>2014-12-23: 添加新卡 - 【星辰主宰】王国五星</li>
                     <li>2014-12-22: 添加新卡 - 【鬼斩破】王国四星</li>
