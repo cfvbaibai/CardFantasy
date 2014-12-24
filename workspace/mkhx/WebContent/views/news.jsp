@@ -17,6 +17,9 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2014-12-21: 添加新卡 - 【钢铁巨神兵】王国五星</li>
+                    <li>2014-12-20: 添加新卡 - 【幻术舞姬】王国四星</li>
+                    <li>2014-12-19: 添加新卡 - 【重甲冲锋兵】王国四星</li> 
                     <li>2014-12-18: 添加新卡 - 【大图书馆长】王国四星</li>
                     <li>2014-12-18: 添加新卡 - 【东方幻术师】王国四星</li>
                     <li>2014-12-17: 添加新卡 - 【死兆星】地狱五星</li>
