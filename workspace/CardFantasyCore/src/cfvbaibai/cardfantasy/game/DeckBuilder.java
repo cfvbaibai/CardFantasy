@@ -40,7 +40,7 @@ public final class DeckBuilder {
     private final static Pattern CARD_PATTERN = Pattern.compile(CARD_REGEX);
 
     public static DeckStartupInfo multiBuild(String descsText) {
-        descsText = descsText.replace(' ', ',').replace('　', ',').replace('，', ',');
+        descsText = descsText.replace(' ', ',').replace('　', ',').replace('，', ',').replace('、', ',');
         descsText = descsText.replace("\r\n", ",").replace("\n", ",");
         descsText = descsText.replace('＋', '+').replace('＊', '*').replace('－', '-');
         descsText = descsText.replace(":", "").replace("：", "");
