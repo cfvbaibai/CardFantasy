@@ -14,6 +14,7 @@
                     <li>本人百度贴吧ID技术壕，刚从白白那边接过了模拟器的维护任务，域名保持不变，服务器换了阿里云，备案已完毕。</li>
                     <li>更新了一批新卡，不过限于本人diao丝很多卡没有没法实测，新技能不知道结算方法，一些五星卡没有更新，先凑合吧。</li>
                     <li>魔神还是远古时代的数据，正在搜集最新的魔神数据中，希望有朋友可以提供数据。</li>
+                    <li><a href="#" data-link-type="bug">魔卡幻想模拟器贴吧</a>已成立，欢迎大家来提BUG、提需求、提供技能结算细节。</li>
                 </ul>
             </div>
             <div data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">

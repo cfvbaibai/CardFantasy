@@ -27,7 +27,7 @@
                     <a id="recommend-boss-battle-deck-button" class="battle-button" data-role="button" data-mini="true" data-theme="c">帮我推荐</a>
                 </div>
                 <div class="ui-block-b">
-                    <a data-role="button" data-mini="true" data-theme="c" href="#communication">提BUG</a>
+                    <a data-role="button" data-mini="true" data-theme="c" data-link-type="bug" href="#">提BUG</a>
                 </div>
             </div>
             <div class="result-frame" data-role="collapsible-set" data-theme="c" data-content-theme="d">

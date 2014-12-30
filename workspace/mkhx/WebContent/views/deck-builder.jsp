@@ -215,10 +215,8 @@
                             <div data-role="controlgroup" data-type="horizontal">
                                 <input type="radio" data-mini="true" name="card-extra-feature-flag" id="card-extra-feature-none" value="" checked="checked" />
                                 <label for="card-extra-feature-none">普通</label>
-            
                                 <input type="radio" data-mini="true" name="card-extra-feature-flag" id="card-extra-feature-summon" value="降临" />
                                 <label for="card-extra-feature-summon">降临</label>
-            
                                 <input type="radio" data-mini="true" name="card-extra-feature-flag" id="card-extra-feature-death" value="死契" />
                                 <label for="card-extra-feature-death">死契</label>
                             </div>
