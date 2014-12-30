@@ -136,6 +136,8 @@ public enum FeatureType {
     英雄杀手("36260", 0, 15, FeatureTag.额外攻击加成, FeatureTag.不可洗炼),
     
     召唤王国战士("", 0, 0, FeatureTag.不可洗炼),
+    召唤恶魔护卫("", 0, 0, FeatureTag.不可洗炼),
+    召唤邪龙护卫("", 0, 0, FeatureTag.不可洗炼),
 
     军团王国之力("", 0, 3, FeatureTag.永久, FeatureTag.原始攻击加成, FeatureTag.不可洗炼),
     军团森林之力("", 0, 3, FeatureTag.永久, FeatureTag.原始攻击加成, FeatureTag.不可洗炼),
