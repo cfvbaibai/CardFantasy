@@ -53,6 +53,7 @@ import cfvbaibai.cardfantasy.engine.feature.LegionBuffFeature;
 import cfvbaibai.cardfantasy.engine.feature.LighteningMagicFeature;
 import cfvbaibai.cardfantasy.engine.feature.MagicShieldFeature;
 import cfvbaibai.cardfantasy.engine.feature.ManaErodeFeature;
+import cfvbaibai.cardfantasy.engine.feature.NoEffectFeature;
 import cfvbaibai.cardfantasy.engine.feature.OneDelayFeature;
 import cfvbaibai.cardfantasy.engine.feature.OverdrawFeature;
 import cfvbaibai.cardfantasy.engine.feature.PenetrationFeature;
@@ -427,20 +428,22 @@ public class FeatureResolver {
 
                 for (FeatureInfo blockFeature : defender.getNormalUsableFeatures()) {
                     if (blockFeature.getType() == FeatureType.免疫) {
-                        if (ImmueFeature.isFeatureBlocked(this, blockFeature.getFeature(), attackFeature, attacker,
-                                defender)) {
+                        if (ImmueFeature.isFeatureBlocked(this, blockFeature.getFeature(), attackFeature, attacker, defender)) {
+                            result.setAttackable(false);
+                            return result;
+                        }
+                    } else if (blockFeature.getType() == FeatureType.无效) {
+                        if (NoEffectFeature.isFeatureBlocked(this, blockFeature.getFeature(), attackFeature, attacker, defender)) {
                             result.setAttackable(false);
                             return result;
                         }
                     } else if (blockFeature.getType() == FeatureType.脱困) {
-                        if (EscapeFeature.isFeatureEscaped(this, blockFeature.getFeature(), attackFeature, attacker,
-                                defender)) {
+                        if (EscapeFeature.isFeatureEscaped(this, blockFeature.getFeature(), attackFeature, attacker, defender)) {
                             result.setAttackable(false);
                             return result;
                         }
                     } else if (blockFeature.getType() == FeatureType.不动) {
-                        if (ImmobilityFeature.isFeatureBlocked(this, blockFeature.getFeature(), attackFeature, attacker,
-                                defender)) {
+                        if (ImmobilityFeature.isFeatureBlocked(this, blockFeature.getFeature(), attackFeature, attacker, defender)) {
                             result.setAttackable(false);
                             return result;
                         }

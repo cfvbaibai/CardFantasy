@@ -43,7 +43,7 @@ public enum FeatureType {
     背刺("30879", 40, FeatureTag.独立攻击加成),
     复仇("40086", 40, 10, FeatureTag.独立攻击加成),
 
-    虚弱("57000", 0, FeatureTag.额外攻击加成),
+    虚弱("57000", 0, FeatureTag.额外攻击加成, FeatureTag.抗免疫),
 
     /* HP 上限调整技能 */
     王国守护("30949", 50),
@@ -147,6 +147,8 @@ public enum FeatureType {
     魔神之刃("", 2000, 0, FeatureTag.抗免疫, FeatureTag.不可洗炼),
     魔神之甲("", 1500, 0, FeatureTag.抗免疫, FeatureTag.不可洗炼),
     魔神之咒("", 1000, 0, FeatureTag.抗免疫, FeatureTag.不可洗炼),
+    // 用于处理各技能中"对魔神无效"的描述
+    无效("", 0, 0, FeatureTag.不可洗炼),
 
     关小黑屋("", 0, 1, FeatureTag.即死),
     吐槽("", 0, 1, FeatureTag.控制),
