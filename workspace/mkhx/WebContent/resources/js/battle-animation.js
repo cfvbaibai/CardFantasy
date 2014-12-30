@@ -1366,7 +1366,7 @@ var Animater = function() {
     };
     
     this.msgIgnoredSkills = [
-        '背刺', '暴击', '狂热', '嗜血', '横扫', '穿刺', '回春', '吸血',
+        '背刺', '暴击', '狂热', '嗜血', '横扫', '穿刺', '回春', '吸血', '振奋',
         '透支', '战意', '穷追猛打', '趁胜追击', '复仇', '英雄杀手', '反噬'
     ];
     this.selfUsedSkills = [
@@ -1381,20 +1381,24 @@ var Animater = function() {
             return;
         }
         if (skill.indexOf('军团') == 0 ||
-            skill.indexOf('守护') > 0 ||
-            skill.indexOf('之力') > 0 ||
+            skill.indexOf('守护') == skill.length - 2 ||
+            skill.indexOf('之力') == skill.length - 2 ||
             this.msgIgnoredSkills.indexOf(skill) >= 0) {
             return;
         }
         if (skill == '普通攻击') {
             this.normalAttack(attacker, defenders[0], false);
         } else if (this.selfUsedSkills.indexOf(skill) >= 0 || skill.indexOf('召唤') >= 0) {
+            var skillText = skill;
+            if (skill.indexOf('召唤') >= 0) {
+                skillText = '召唤\r\n' + skill.substring(2);
+            }
             var shape = this.getEntityShape(attacker);
             this.displayCardMsg({
                  name: skill,
                  cardShape: shape,
                  size: shape.getSize(),
-                 text: skill,
+                 text: skillText,
                  duration: settings.skillDuration,
              });
         } else if (skill == '吐槽') {
