@@ -726,7 +726,7 @@
     <Card id="2428" name="梦境耳语者" wikiId="95815" race="森林" speed="4" star="4" cost="13" incrCost="2" at="210" hp="1035" incrAT="25" incrHP="30">
         <Feature type="连环闪电" level="6" unlock="0" />
         <Feature type="魔甲" level="6" unlock="5" />
-        <!--  TODO: <Feature type="召唤花仙子" level="0" unlock="10" /> -->
+        <Feature type="召唤花仙子" level="0" unlock="10" />
     </Card>
 
     <Card id="2501" name="金属巨龙" wikiId="31004" race="森林" speed="6" star="5" cost="14" incrCost="3" at="355" hp="1480" incrAT="30" incrHP="23">
@@ -1160,7 +1160,7 @@
     <Card id="3437" name="乌鸦人长老" wikiId="95811" race="蛮荒" speed="3" star="4" cost="14" incrCost="2" at="190" hp="810" incrAT="23" incrHP="20">
         <Feature type="连环闪电" level="7" unlock="0" />
         <Feature type="转生" level="6" unlock="5" />
-        <!-- TODO: <Feature type="召唤火焰乌鸦" level="0" unlock="10" /> -->
+        <Feature type="召唤火焰乌鸦" level="0" unlock="10" />
     </Card>
 
     <Card id="3501" name="雷兽" wikiId="31034" race="蛮荒" speed="6" star="5" cost="14" incrCost="2" at="340" hp="1100" incrAT="20" incrHP="45">
@@ -1651,7 +1651,7 @@
     <Card id="4517" name="谎言之神" wikiId="80140" race="地狱" speed="6" star="5" cost="20" incrCost="2" at="365" hp="1450" incrAT="42" incrHP="48">
         <Feature type="封印" level="0" unlock="0" />
         <Feature type="免疫" level="0" unlock="5" />
-        <!-- TODO: <Feature type="召唤人马巡逻者" level="0" unlock="10" /> -->
+        <Feature type="召唤人马巡逻者" level="0" unlock="10" />
     </Card>
     <Card id="4518" name="蝗虫公爵" wikiId="80186" race="地狱" speed="3" star="5" cost="15" incrCost="2" at="325" hp="1350" incrAT="38" incrHP="45">
         <Feature type="鲜血盛宴" level="9" unlock="0" />

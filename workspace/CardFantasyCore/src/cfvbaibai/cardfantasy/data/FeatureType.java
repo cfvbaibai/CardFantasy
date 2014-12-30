@@ -139,6 +139,9 @@ public enum FeatureType {
     召唤王国战士("", 0, 0, FeatureTag.不可洗炼),
     召唤邪龙护卫("", 0, 0, FeatureTag.不可洗炼),
     召唤噩梦护卫("", 0, 0, FeatureTag.不可洗炼),
+    召唤花仙子("", 0, 0, FeatureTag.不可洗炼),
+    召唤火焰乌鸦("", 0, 0, FeatureTag.不可洗炼),
+    召唤人马巡逻者("", 0, 0, FeatureTag.不可洗炼),
 
     军团王国之力("", 0, 3, FeatureTag.永久, FeatureTag.原始攻击加成, FeatureTag.不可洗炼),
     军团森林之力("", 0, 3, FeatureTag.永久, FeatureTag.原始攻击加成, FeatureTag.不可洗炼),

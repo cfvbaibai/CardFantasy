@@ -1388,7 +1388,7 @@ var Animater = function() {
         }
         if (skill == '普通攻击') {
             this.normalAttack(attacker, defenders[0], false);
-        } else if (this.selfUsedSkills.indexOf(skill) >= 0) {
+        } else if (this.selfUsedSkills.indexOf(skill) >= 0 || skill.indexOf('召唤') >= 0) {
             var shape = this.getEntityShape(attacker);
             this.displayCardMsg({
                  name: skill,
@@ -1828,7 +1828,7 @@ var Animater = function() {
     };
 
     this.pieces = [];
-    this.speeds = [ 0.25, 0.5, 1.0, 1.2, 1.5, 2.0, 3.0, 4.0, 5.0 ];
+    this.speeds = [ 0.25, 0.5, 1.0, 1.2, 1.5, 2.0, 3.0, 4.0, 5.0, 7.5, 10.0 ];
     this.speedIndex = 2;
     this.speed = 1.0 / this.speeds[this.speedIndex];
 

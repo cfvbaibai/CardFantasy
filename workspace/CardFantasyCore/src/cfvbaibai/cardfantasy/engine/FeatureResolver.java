@@ -249,6 +249,12 @@ public class FeatureResolver {
                 SummonFeature.apply(this, feature, attacker, "时光女神", "金属巨龙");
             } else if (feature.getType() == FeatureType.召唤邪龙护卫) {
                 SummonFeature.apply(this, feature, attacker, "亡灵守护神", "光明之龙");
+            } else if (feature.getType() == FeatureType.召唤花仙子) {
+                SummonFeature.apply(this, feature, attacker, "花仙子", "花仙子");
+            } else if (feature.getType() == FeatureType.召唤火焰乌鸦) {
+                SummonFeature.apply(this, feature, attacker, "火焰乌鸦");
+            } else if (feature.getType() == FeatureType.召唤人马巡逻者) {
+                SummonFeature.apply(this, feature, attacker, "人马巡逻者", "人马巡逻者");
             }
         }
         RuneInfo rune = attacker.getOwner().getActiveRuneOf(RuneData.飞岩);
