@@ -90,21 +90,62 @@ public class DefenseTest extends FeatureValidationTest {
         Assert.assertEquals(120 /* 冰甲 */, 1220 - c战斗猛犸象.getHP());
         Assert.assertEquals(120 /* 溅射 */, 1400 - c秘银巨石像.getHP());
     }
+
+    /**
+     * 正面被闪避的话就无法溅射
+     */
+    @Test
+    public void test横扫_正面闪避() {
+        FeatureTestContext context = FeatureValidationTests.prepare(50, 50, "光明之龙", "大剑圣", "秘银巨石像");
+        context.addToField(0, 0);
+        CardInfo c大剑圣 = context.addToField(1, 1);
+        CardInfo c秘银巨石像 = context.addToField(2, 1);
+        context.startGame();
+
+        random.addNextNumbers(0); // 大剑圣闪避成功
+        context.proceedOneRound();
+
+        Assert.assertEquals(0, 995 - c大剑圣.getHP());
+        Assert.assertEquals(0, 1400 - c秘银巨石像.getHP());
+    }
     
+    /**
+     * 侧翼被闪避的话，仍能继续溅射另一侧
+     */
+    @Test
+    public void test横扫_侧翼闪避() {
+        FeatureTestContext context = FeatureValidationTests.prepare(50, 50, "占位符", "光明之龙", "大剑圣", "秘银巨石像*2");
+        context.addToField(0, 0);
+        context.addToField(1, 0);
+        CardInfo c大剑圣 = context.addToField(2, 1);
+        context.addToField(3, 1);
+        CardInfo c秘银巨石像2 = context.addToField(4, 1);
+        context.startGame();
+
+        random.addNextNumbers(0); // 大剑圣闪避占位符攻击成功
+        random.addNextNumbers(0); // 大剑圣闪避光明之龙攻击成功
+        context.proceedOneRound();
+
+        Assert.assertEquals(0, 995 - c大剑圣.getHP());
+        Assert.assertEquals(630, 1400 - c秘银巨石像2.getHP());
+    }
+
     /**
      * 连锁攻击能够被格挡
      */
     @Test
     public void test连锁攻击_格挡() {
-        FeatureTestContext context = FeatureValidationTests.prepare(50, 50, "麒麟兽", "牛头人酋长*2");
+        FeatureTestContext context = FeatureValidationTests.prepare(50, 50, "麒麟兽", "牛头人酋长*3");
         context.addToField(0, 0);
         CardInfo c牛头人酋长1 = context.addToField(1, 1);
         CardInfo c牛头人酋长2 = context.addToField(2, 1);
+        CardInfo c牛头人酋长3 = context.addToField(3, 1);
         context.startGame();
 
         context.proceedOneRound();
         Assert.assertEquals(610 - 140 /* 格挡 */, 1050 - c牛头人酋长1.getHP());
         Assert.assertEquals(610 * 175 / 100 - 140 /* 格挡 */, 1050 - c牛头人酋长2.getHP());
+        Assert.assertEquals(610 * 175 / 100 - 140 /* 格挡 */, 1050 - c牛头人酋长3.getHP());
     }
     
     /**
@@ -121,5 +162,47 @@ public class DefenseTest extends FeatureValidationTest {
         context.proceedOneRound();
         Assert.assertEquals(120 /* 冰甲 */, 1220 - c战斗猛犸象1.getHP());
         Assert.assertEquals(120 /* 冰甲 */, 1220 - c战斗猛犸象2.getHP());
+    }
+    
+    /**
+     * 连锁攻击被正面闪避的话就无法触发
+     */
+    @Test
+    public void test连锁攻击_正面闪避() {
+        FeatureTestContext context = FeatureValidationTests.prepare(50, 50, "麒麟兽", "大剑圣*2");
+        context.addToField(0, 0);
+        CardInfo c大剑圣1 = context.addToField(1, 1);
+        CardInfo c大剑圣2 = context.addToField(2, 1);
+        context.startGame();
+
+        random.addNextNumbers(0); // 大剑圣1闪避麒麟兽攻击成功
+        random.addNextNumbers(1000); // 假设大剑圣2闪避麒麟兽攻击失败
+        context.proceedOneRound();
+        Assert.assertEquals(0, 995 - c大剑圣1.getHP());
+        Assert.assertEquals(0, 995 - c大剑圣2.getHP());
+    }
+    
+    /**
+     * 连锁攻击被正面闪避的话就无法触发
+     */
+    @Test
+    public void test连锁攻击_连锁闪避() {
+        FeatureTestContext context = FeatureValidationTests.prepare(50, 50, "麒麟兽", "大剑圣*4");
+        context.addToField(0, 0);
+        CardInfo c大剑圣1 = context.addToField(1, 1);
+        CardInfo c大剑圣2 = context.addToField(2, 1);
+        CardInfo c大剑圣3 = context.addToField(3, 1);
+        CardInfo c大剑圣4 = context.addToField(4, 1);
+        context.startGame();
+
+        random.addNextNumbers(1000); // 大剑圣1闪避麒麟兽攻击失败
+        random.addNextNumbers(1000); // 大剑圣2闪避麒麟兽攻击失败
+        random.addNextNumbers(0); // 大剑圣3闪避麒麟兽攻击成功
+        random.addNextNumbers(1000); // 假设大剑圣4闪避麒麟兽攻击失败
+        context.proceedOneRound();
+        Assert.assertEquals(610, 995 - c大剑圣1.getHP());
+        Assert.assertEquals(995, 995 - c大剑圣2.getHP());
+        Assert.assertEquals(0, 995 - c大剑圣3.getHP());
+        Assert.assertEquals(0, 995 - c大剑圣4.getHP());
     }
 }

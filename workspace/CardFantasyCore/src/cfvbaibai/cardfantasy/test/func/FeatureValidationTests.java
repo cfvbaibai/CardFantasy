@@ -19,7 +19,7 @@ import cfvbaibai.cardfantasy.test.TestGameBuilder;
     DelayTest.class,
     CounterAttackTest.class,
     DefenseTest.class,
-    MultiAttackTest.class,
+    // MultiAttackTest.class,
     DeathSkillTest.class,
     SummonSkillTest.class,
     SkillSequenceTest.class,

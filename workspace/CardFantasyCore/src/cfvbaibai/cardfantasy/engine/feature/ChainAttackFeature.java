@@ -11,6 +11,7 @@ import cfvbaibai.cardfantasy.engine.FeatureEffectType;
 import cfvbaibai.cardfantasy.engine.FeatureInfo;
 import cfvbaibai.cardfantasy.engine.FeatureResolver;
 import cfvbaibai.cardfantasy.engine.HeroDieSignal;
+import cfvbaibai.cardfantasy.engine.OnDamagedResult;
 
 public final class ChainAttackFeature {
     public static void apply(FeatureResolver resolver, FeatureInfo featureInfo, CardInfo attacker, CardInfo defender, Feature attackFeature)
@@ -50,7 +51,11 @@ public final class ChainAttackFeature {
         ui.adjustAT(attacker, attacker, adjAT, feature);
         attacker.addEffect(effect);
         for (CardInfo victim : victims) {
-            resolver.attackCard(attacker, victim, featureInfo);
+            OnDamagedResult damagedResult = resolver.attackCard(attacker, victim, featureInfo);
+            if (damagedResult == null) {
+                // 闪避导致连锁中断
+                break;
+            }
         }
         ui.loseAdjustATEffect(attacker, effect);
         attacker.removeEffect(effect);

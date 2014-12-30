@@ -1760,4 +1760,6 @@
         <Feature type="吐槽" level="2" unlock="5" />
         <Feature type="被插出五星" level="1" unlock="10" />
     </Card>
+    <Card id="7502" name="占位符" wikiId="" race="萌货" speed="4" star="5" cost="0" incrCost="0" at="0" hp="5000" incrAT="0" incrHP="0">
+    </Card>
 </Cards>
