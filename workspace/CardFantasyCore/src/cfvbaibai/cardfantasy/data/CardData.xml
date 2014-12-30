@@ -1761,6 +1761,32 @@
         <Feature type="无效" level="0" unlock="10" />
     </Card>
     
+    <Card id="5510" name="简单莉莉丝" wikiId="" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="1000" hp="10000" incrAT="0" incrHP="0">
+        <Feature type="不动" level="0" unlock="0" />
+        <Feature type="二重狙击" level="10" unlock="5" />
+        <Feature type="嗜血" level="8" unlock="10" />
+    </Card>
+    <Card id="5511" name="普通莉莉丝" wikiId="" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="1000" hp="20000" incrAT="0" incrHP="0">
+        <Feature type="不动" level="0" unlock="0" />
+        <Feature type="圣炎" level="0" unlock="5" />
+        <Feature type="嗜血" level="8" unlock="10" />
+    </Card>
+    <Card id="5512" name="困难莉莉丝" wikiId="" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="1000" hp="30000" incrAT="0" incrHP="0">
+        <Feature type="免疫" level="10" unlock="0" />
+        <Feature type="二重狙击" level="10" unlock="5" />
+        <Feature type="嗜血" level="8" unlock="10" />
+    </Card>
+    <Card id="5513" name="噩梦莉莉丝" wikiId="" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="1000" hp="40000" incrAT="0" incrHP="0">
+        <Feature type="免疫" level="0" unlock="0" />
+        <Feature type="圣炎" level="0" unlock="5" />
+        <Feature type="弱点攻击" level="0" unlock="10" />
+    </Card> 
+    <Card id="5514" name="炼狱莉莉丝" wikiId="" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="1000" hp="50000" incrAT="0" incrHP="0">
+        <Feature type="免疫" level="0" unlock="0" />
+        <Feature type="圣炎" level="0" unlock="5" />
+        <Feature type="弱点攻击" level="0" unlock="10" />
+    </Card> 
+    
     <!-- Old Bosses -->
     <Card id="6501" name="旧复仇女神" wikiId="30871" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="1200" hp="6500000" incrAT="0" incrHP="0">
         <Feature type="送还" level="0" unlock="0" />
