@@ -42,6 +42,7 @@ public enum FeatureType {
     趁胜追击("40090", 40, 10, FeatureTag.独立攻击加成),
     背刺("30879", 40, FeatureTag.独立攻击加成),
     复仇("40086", 40, 10, FeatureTag.独立攻击加成),
+    振奋("80192", 40, 10, FeatureTag.独立攻击加成),
 
     虚弱("57000", 0, FeatureTag.额外攻击加成, FeatureTag.抗免疫),
 
@@ -142,6 +143,8 @@ public enum FeatureType {
     召唤花仙子("", 0, 0, FeatureTag.不可洗炼),
     召唤火焰乌鸦("", 0, 0, FeatureTag.不可洗炼),
     召唤人马巡逻者("", 0, 0, FeatureTag.不可洗炼),
+    召唤女神侍者("80191", 0, 0, FeatureTag.不可洗炼),
+    召唤树人守护者("", 0, 0, FeatureTag.不可洗炼),
 
     军团王国之力("", 0, 3, FeatureTag.永久, FeatureTag.原始攻击加成, FeatureTag.不可洗炼),
     军团森林之力("", 0, 3, FeatureTag.永久, FeatureTag.原始攻击加成, FeatureTag.不可洗炼),

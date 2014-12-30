@@ -13,6 +13,7 @@ import cfvbaibai.cardfantasy.data.RuneActivator;
 import cfvbaibai.cardfantasy.data.RuneData;
 import cfvbaibai.cardfantasy.engine.feature.AllDelayFeature;
 import cfvbaibai.cardfantasy.engine.feature.AllSpeedUpFeature;
+import cfvbaibai.cardfantasy.engine.feature.ArouseFeature;
 import cfvbaibai.cardfantasy.engine.feature.AttackUpFeature;
 import cfvbaibai.cardfantasy.engine.feature.BackStabFeature;
 import cfvbaibai.cardfantasy.engine.feature.BlockFeature;
@@ -231,6 +232,8 @@ public class FeatureResolver {
                 WinningPursuitFeature.apply(this, feature, attacker, defender);
             } else if (feature.getType() == FeatureType.复仇) {
                 RevengeFeature.apply(this, feature, attacker);
+            } else if (feature.getType() == FeatureType.振奋) {
+                ArouseFeature.apply(this, feature, attacker);
             } else if (feature.getType() == FeatureType.全体阻碍){
                 AllDelayFeature.apply(feature, this, attacker, defender);
             } else if (feature.getType() == FeatureType.全体加速){
@@ -255,6 +258,10 @@ public class FeatureResolver {
                 SummonFeature.apply(this, feature, attacker, "火焰乌鸦");
             } else if (feature.getType() == FeatureType.召唤人马巡逻者) {
                 SummonFeature.apply(this, feature, attacker, "人马巡逻者", "人马巡逻者");
+            } else if (feature.getType() == FeatureType.召唤女神侍者) {
+                SummonFeature.apply(this, feature, attacker, "女神侍者", "女神侍者");
+            } else if (feature.getType() == FeatureType.召唤树人守护者) {
+                SummonFeature.apply(this, feature, attacker, "霜雪树人", "树人祭司");
             }
         }
         RuneInfo rune = attacker.getOwner().getActiveRuneOf(RuneData.飞岩);
@@ -696,6 +703,8 @@ public class FeatureResolver {
                 WinningPursuitFeature.remove(this, effect.getCause(), card);
             } else if (type == FeatureType.复仇) {
                 RevengeFeature.remove(this, effect.getCause(), card);
+            } else if (type == FeatureType.振奋) {
+                ArouseFeature.remove(this, effect.getCause(), card);
             } else if (type == FeatureType.英雄杀手) {
                 HeroKillerFeature.remove(this, effect.getCause(), card);
             }
