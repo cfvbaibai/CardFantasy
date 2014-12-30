@@ -82,6 +82,7 @@ public enum FeatureType {
 
     霜冻新星("30965", 20, FeatureTag.魔法),
     暴风雪("31133", 20, FeatureTag.魔法),
+    寒霜冲击("", 40, 10, FeatureTag.魔法),
     裂伤("30963", 0, FeatureTag.抗免疫),
     落雷("31132", 25, FeatureTag.魔法),
     脱困("30956", 0),

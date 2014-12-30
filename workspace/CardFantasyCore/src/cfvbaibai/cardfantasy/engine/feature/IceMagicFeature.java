@@ -14,9 +14,8 @@ import cfvbaibai.cardfantasy.engine.OnAttackBlockingResult;
 import cfvbaibai.cardfantasy.engine.Player;
 
 public final class IceMagicFeature {
-
     public static void apply(FeatureInfo featureInfo, FeatureResolver resolver, EntityInfo attacker, Player defender,
-            int victimCount, int rate) throws HeroDieSignal {
+            int victimCount, int rate, int extraDamage) throws HeroDieSignal {
         Feature feature = featureInfo.getFeature();
         
         List<CardInfo> victims = resolver.getStage().getRandomizer().pickRandom(
@@ -24,7 +23,7 @@ public final class IceMagicFeature {
         GameUI ui = resolver.getStage().getUI();
         ui.useSkill(attacker, victims, feature, true);
         for (CardInfo victim : victims) {
-            int damage = feature.getImpact();
+            int damage = feature.getImpact() + extraDamage;
             OnAttackBlockingResult result = resolver.resolveAttackBlockingFeature(attacker, victim, feature, damage);
             if (!result.isAttackable()) {
                 continue;
@@ -46,5 +45,4 @@ public final class IceMagicFeature {
             }
         }
     }
-
 }

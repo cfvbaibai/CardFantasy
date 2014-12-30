@@ -166,11 +166,13 @@ public class FeatureResolver {
             } else if (feature.getType() == FeatureType.雷暴) {
                 LighteningMagicFeature.apply(feature, this, attacker, defender, -1, 35);
             } else if (feature.getType() == FeatureType.冰弹) {
-                IceMagicFeature.apply(feature, this, attacker, defender, 1, 45);
+                IceMagicFeature.apply(feature, this, attacker, defender, 1, 45, 0);
             } else if (feature.getType() == FeatureType.霜冻新星) {
-                IceMagicFeature.apply(feature, this, attacker, defender, 3, 35);
+                IceMagicFeature.apply(feature, this, attacker, defender, 3, 35, 0);
             } else if (feature.getType() == FeatureType.暴风雪) {
-                IceMagicFeature.apply(feature, this, attacker, defender, -1, 30);
+                IceMagicFeature.apply(feature, this, attacker, defender, -1, 30, 0);
+            } else if (feature.getType() == FeatureType.寒霜冲击) {
+                IceMagicFeature.apply(feature, this, attacker, defender, -1, 50, 45 * defender.getField().getAliveCards().size());
             } else if (feature.getType() == FeatureType.毒液) {
                 PoisonMagicFeature.apply(feature, this, attacker, defender, 1);
             } else if (feature.getType() == FeatureType.毒雾) {
@@ -506,7 +508,7 @@ public class FeatureResolver {
             } else if (deadCardFeature.getType() == FeatureType.雷暴) {
                 LighteningMagicFeature.apply(deadCardFeature, this, deadCard, killerCard.getOwner(), -1, 35);
             } else if (deadCardFeature.getType() == FeatureType.暴风雪) {
-                IceMagicFeature.apply(deadCardFeature, this, deadCard, killerCard.getOwner(), -1, 30);
+                IceMagicFeature.apply(deadCardFeature, this, deadCard, killerCard.getOwner(), -1, 30, 0);
             } else if (deadCardFeature.getType() == FeatureType.毒云) {
                 PoisonMagicFeature.apply(deadCardFeature, this, deadCard, killerCard.getOwner(), -1);
             } else if (deadCardFeature.getType() == FeatureType.瘟疫) {
@@ -883,7 +885,7 @@ public class FeatureResolver {
             } else if (feature.getType() == FeatureType.雷暴) {
                 LighteningMagicFeature.apply(feature, this, card, opField.getOwner(), -1, 35);
             } else if (feature.getType() == FeatureType.暴风雪) {
-                IceMagicFeature.apply(feature, this, card, opField.getOwner(), -1, 30);
+                IceMagicFeature.apply(feature, this, card, opField.getOwner(), -1, 30, 0);
             } else if (feature.getType() == FeatureType.毒云) {
                 PoisonMagicFeature.apply(feature, this, card, opField.getOwner(), -1);
             } else if (feature.getType() == FeatureType.瘟疫) {
@@ -1185,21 +1187,21 @@ public class FeatureResolver {
             } else if (rune.is(RuneData.死域)) {
                 PoisonMagicFeature.apply(rune.getFeatureInfo(), this, rune, defenderHero, -1);
             } else if (rune.is(RuneData.霜冻)) {
-                IceMagicFeature.apply(rune.getFeatureInfo(), this, rune, defenderHero, 1, 45);
+                IceMagicFeature.apply(rune.getFeatureInfo(), this, rune, defenderHero, 1, 45, 0);
             } else if (rune.is(RuneData.寒潮)) {
-                IceMagicFeature.apply(rune.getFeatureInfo(), this, rune, defenderHero, 3, 35);
+                IceMagicFeature.apply(rune.getFeatureInfo(), this, rune, defenderHero, 3, 35, 0);
             } else if (rune.is(RuneData.冰锥)) {
-                IceMagicFeature.apply(rune.getFeatureInfo(), this, rune, defenderHero, 1, 45);
+                IceMagicFeature.apply(rune.getFeatureInfo(), this, rune, defenderHero, 1, 45, 0);
             } else if (rune.is(RuneData.暴雨)) {
                 WeakenAllFeature.apply(this, rune.getFeatureInfo(), rune, defenderHero);
             } else if (rune.is(RuneData.清泉)) {
                 RainfallFeature.apply(rune.getFeature(), this, rune);
             } else if (rune.is(RuneData.雪崩)) {
-                IceMagicFeature.apply(rune.getFeatureInfo(), this, rune, defenderHero, 3, 35);
+                IceMagicFeature.apply(rune.getFeatureInfo(), this, rune, defenderHero, 3, 35, 0);
             } else if (rune.is(RuneData.圣泉)) {
                 PrayFeature.apply(rune.getFeature(), this, rune);
             } else if (rune.is(RuneData.永冻)) {
-                IceMagicFeature.apply(rune.getFeatureInfo(), this, rune, defenderHero, -1, 30);
+                IceMagicFeature.apply(rune.getFeatureInfo(), this, rune, defenderHero, -1, 30, 0);
             } else if (rune.is(RuneData.闪电)) {
                 LighteningMagicFeature.apply(rune.getFeatureInfo(), this, rune, defenderHero, 1, 50);
             } else if (rune.is(RuneData.雷云)) {

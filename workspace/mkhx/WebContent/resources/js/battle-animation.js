@@ -1449,7 +1449,7 @@ var Animater = function() {
         } else if (skill == '治疗' || skill == '甘霖' || skill == '回春' || skill == '治疗之雾') {
             this.flyImage({ fileName: 'heal.png', width: 24, height: 24, text: skill },
                     attacker, defenders, settings.skillDuration);
-        } else if (skill == '冰弹' || skill == '霜冻新星' || skill == '暴风雪') {
+        } else if (skill == '冰弹' || skill == '霜冻新星' || skill == '暴风雪' || skill == '寒霜冲击') {
             this.flyImage({ fileName: 'ice.png', width: 24, height: 24, rotate: Math.PI * 4, text: skill },
                     attacker, defenders, settings.skillDuration);
         } else if (skill == '火球' || skill == '火墙' || skill == '烈焰风暴') {
