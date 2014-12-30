@@ -5,18 +5,20 @@
                 <h3>设置阵容</h3>
                 <div>
                     <select data-theme="c" name="boss-name" id="boss-name" data-mini="true" data-native-menu="false">
-                        <option value="复仇女神">新魔神：复仇女神</option>
+                        <option value="复仇女神">新魔神：复仇女神（未完成）</option>
                         <option value="邪龙之神">新魔神：邪龙之神</option>
-                        <option value="噩梦之主">新魔神：噩梦之主</option>
+                        <option value="噩梦之主">新魔神：噩梦之主（未完成）</option>
                         <option value="毁灭之神">新魔神：毁灭之神</option>
                         <option value="深渊影魔">新魔神：深渊影魔</option>
-                        <option value="万蛛之后">新魔神：万蛛之后</option>
+                        <option value="万蛛之后">新魔神：万蛛之后（未完成）</option>
+                        <!-- 
                         <option value="旧复仇女神">旧魔神：复仇女神</option>
                         <option value="旧邪龙之神">旧魔神：邪龙之神</option>
                         <option value="旧噩梦之主">旧魔神：噩梦之主</option>
                         <option value="旧毁灭之神">旧魔神：毁灭之神</option>
                         <option value="旧深渊影魔">旧魔神：深渊影魔</option>
                         <option value="旧万蛛之后">旧魔神：万蛛之后</option>
+                         -->
                     </select>
 
                     <!-- 军团加成：10级， -->

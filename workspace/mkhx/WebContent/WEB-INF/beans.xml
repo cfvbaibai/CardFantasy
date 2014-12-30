@@ -56,6 +56,9 @@
 
     <bean class="cfvbaibai.cardfantasy.game.MapStages" />
 
+    <bean class="cfvbaibai.cardfantasy.data.QuestionStore">
+        <constructor-arg><value>5</value></constructor-arg>
+    </bean>
     <!-- 
     <bean class="java.util.logging.Logger" factory-method="getLogger">
         <qualifier value="communication" />

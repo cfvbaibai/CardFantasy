@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import cfvbaibai.cardfantasy.data.QuestionStore;
 import cfvbaibai.cardfantasy.web.beans.Logger;
 import cfvbaibai.cardfantasy.web.beans.UserAction;
 import cfvbaibai.cardfantasy.web.beans.UserActionRecorder;
@@ -17,13 +18,16 @@ import cfvbaibai.cardfantasy.web.beans.UserActionRecorder;
 public class HomeController {
     @Autowired
     private UserActionRecorder userActionRecorder;
-    
+
     //@Autowired
     //private AtomicInteger activeSessionCount;
-    
-    @Autowired
+
+    @Autowired(required = true)
     private Logger logger;
-    
+
+    @Autowired(required = true)
+    private QuestionStore questionStore;
+
     @RequestMapping(value = "/")
     public ModelAndView home(HttpServletRequest request
             //, HttpServletResponse response // Spring MVC conflicts with AOP?
@@ -31,6 +35,7 @@ public class HomeController {
         ModelAndView mv = new ModelAndView();
         mv.setViewName("home");
         mv.addObject("isNewSession", request.getSession().isNew());
+        mv.addObject("questions", questionStore.pickRandom());
         //int activeSessionCountValue = activeSessionCount.intValue();
         //mv.addObject("activeSessionCount", activeSessionCountValue);
         //logger.info("Active Session Count: " + activeSessionCountValue);

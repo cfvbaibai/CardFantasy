@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     <div id="news" class="main-page" data-role="page" data-category="main-page" data-title="公告" data-mini="true">
         <div class="dashboard" data-role="content" data-theme="c">
             <div>
@@ -18,9 +19,21 @@
                 </ul>
             </div>
             <div data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">
+                <h3>技能细节问答，欢迎大家来补完技能细节，使模拟器更准确</h3>
+                <ul>
+                    <c:forEach items="${questions}" var="question">
+                    <li>
+                        <a href="http://tieba.baidu.com/p/<c:out value="${question.tiebaId}" />" target="_blank">【我去回答】</a>
+                        <c:out value="${question.title}" />
+                    </li>
+                    </c:forEach>
+                    <li><a href="#" data-link-type="bug">更多问题...</a></li>
+                </ul>
+            </div>
+            <div data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">
                 <h3>更新日志</h3>
                 <ul class="news-content">
-                    <li>2014-12-30: 添加【陨星魔法师】王国五星、【梦境耳语者】森林四星、【乌鸦人长老】蛮荒四星、【谎言之神】地狱五星</li>
+                    <li>2014-12-30: 添加【陨星魔法师】王国五星、【梦境耳语者】森林四星、【乌鸦人长老】蛮荒四星、【谎言之神】地狱五星、【瓦尔基里英灵】王国四星</li>
                     <li>2014-12-28: 添加【骨灵巫女】地狱五星、【月蚀兽】地狱五星</li>
                     <li>2014-12-27: 添加【逐月饿狼】地狱五星、【蝗虫公爵】地狱五星、【镜魔】地狱四星、【蝠王恶灵】地狱四星</li>
                     <li>2014-12-26: 添加【死域军神】地狱五星、【圆月魔女】地狱五星、【魅灵吞噬者】地狱四星、【峦龙】地狱五星</li>
