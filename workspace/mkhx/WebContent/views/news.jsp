@@ -11,7 +11,8 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">
                 <h3>公告</h3>
                 <ul>
-                    <li>这是一个非常老旧的版本，没有新卡，没有新技能，服务器一个月200元也自己出的，凑合吧……</li>
+                    <li>本人百度贴吧ID技术壕，刚从白白那边接过了模拟器的维护任务，域名保持不变，服务器换了阿里云，备案已完毕。</li>
+                    <li>更新了一批新卡，不过限于本人diao丝很多卡没有没法实测，新技能不知道结算方法，一些五星卡没有更新，先凑合吧。</li>
                 </ul>
             </div>
             <div data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">
