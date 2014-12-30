@@ -5,6 +5,7 @@ import org.junit.Test;
 
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.Field;
+import cfvbaibai.cardfantasy.engine.RuneInfo;
 
 public class SummonTest extends FeatureValidationTest {
     /**
@@ -19,18 +20,21 @@ public class SummonTest extends FeatureValidationTest {
         CardInfo c3 = context.addToField(3, 1);
         context.startGame();
 
+        random.addNextPicks(0, 1, 2).addNextNumbers(1000, 1000, 1000);  // 陨星魔法使寒霜冲击
         context.proceedOneRound();
         Assert.assertEquals(3, context.getPlayer(0).getField().size());
-        Assert.assertEquals(745, 5000 - c1.getHP());
-        Assert.assertEquals(0, 5000 - c2.getHP()); // 被召唤的卡在被召唤的那一轮不能攻击
-        Assert.assertEquals(0, 5000 - c3.getHP());
+        // 255 来自寒霜冲击
+        Assert.assertEquals(745 + 255, 5000 - c1.getHP());
+        Assert.assertEquals(255, 5000 - c2.getHP()); // 被召唤的卡在被召唤的那一轮不能攻击
+        Assert.assertEquals(255, 5000 - c3.getHP());
 
         context.proceedOneRound();
 
+        random.addNextPicks(0, 1, 2).addNextNumbers(1000, 1000, 1000);  // 陨星魔法使寒霜冲击
         context.proceedOneRound();
-        Assert.assertEquals(745 + 745, 5000 - c1.getHP());
-        Assert.assertEquals(395, 5000 - c2.getHP());
-        Assert.assertEquals(225, 5000 - c3.getHP());
+        Assert.assertEquals(745 + 745 + 255 + 255, 5000 - c1.getHP());
+        Assert.assertEquals(395 + 255 + 255, 5000 - c2.getHP());
+        Assert.assertEquals(225 + 255 + 255, 5000 - c3.getHP());
     }
     
     /**
@@ -44,6 +48,7 @@ public class SummonTest extends FeatureValidationTest {
         context.addToField(2, 1);
         context.startGame();
 
+        random.addNextPicks(0, 1).addNextNumbers(1000);  // 陨星魔法使寒霜冲击
         context.proceedOneRound();
         Assert.assertEquals(3, context.getPlayer(0).getField().size());
         Assert.assertEquals(1850 + 200 /* 召唤圣骑士的王国守护 */, c陨星魔法师.getHP());
@@ -52,6 +57,7 @@ public class SummonTest extends FeatureValidationTest {
         context.proceedOneRound();
         Assert.assertEquals(1850, c陨星魔法师.getHP()); // 圣骑士离场，失去BUFF
 
+        random.addNextPicks(0, 1).addNextNumbers(1000);  // 陨星魔法使寒霜冲击
         context.proceedOneRound();
         Assert.assertEquals(2, context.getPlayer(0).getField().size()); // 召唤的两张卡死了一张，此时仍不能召唤新卡
         Assert.assertEquals(0, context.getPlayer(0).getGrave().size()); // 被召唤的卡死亡后不进入墓地
@@ -65,6 +71,7 @@ public class SummonTest extends FeatureValidationTest {
         context.addToField(2, 1);
         context.startGame();
 
+        random.addNextPicks(0, 1).addNextNumbers(1000, 1000);  // 陨星魔法使寒霜冲击
         context.proceedOneRound();
 
         context.proceedOneRound();
@@ -84,6 +91,8 @@ public class SummonTest extends FeatureValidationTest {
         CardInfo c金属巨龙2 = context.addToField(6, 1);
         context.startGame();
 
+        random.addNextPicks(0, 1, 2, 3, 4).addNextNumbers(1000, 1000, 1000);  // 陨星魔法使1寒霜冲击
+        random.addNextPicks(0, 1, 2, 3, 4).addNextNumbers(1000, 1000, 1000);  // 陨星魔法使2寒霜冲击
         Field fieldA = context.getPlayer(0).getField();
         context.proceedOneRound();
         Assert.assertEquals(6, fieldA.size()); // 两个陨星魔法使各召唤2张卡
@@ -94,6 +103,8 @@ public class SummonTest extends FeatureValidationTest {
 
         c金属巨龙1.reset(); // 回血免得被打死
         c金属巨龙2.reset(); // 回血免得被打死
+        random.addNextPicks(0, 1, 2, 3, 4).addNextNumbers(1000, 1000, 1000);  // 陨星魔法使1寒霜冲击
+        random.addNextPicks(0, 1, 2, 3, 4).addNextNumbers(1000, 1000, 1000);  // 陨星魔法使2寒霜冲击
         context.proceedOneRound();
         Assert.assertEquals(4, fieldA.size()); // 此时任何一张陨星魔法使都不能再召唤
 
@@ -103,6 +114,8 @@ public class SummonTest extends FeatureValidationTest {
 
         c金属巨龙1.reset(); // 回血免得被打死
         c金属巨龙2.reset(); // 回血免得被打死
+        random.addNextPicks(0, 1, 2, 3, 4).addNextNumbers(1000, 1000, 1000);  // 陨星魔法使1寒霜冲击
+        random.addNextPicks(0, 1, 2, 3, 4).addNextNumbers(1000, 1000, 1000);  // 陨星魔法使2寒霜冲击
         context.proceedOneRound();
         Assert.assertEquals(3, fieldA.size()); // 陨星魔法使1的仆从全灭，仍然不能再次召唤
     }
@@ -120,7 +133,7 @@ public class SummonTest extends FeatureValidationTest {
         context.proceedOneRound();
         Assert.assertEquals(3, fieldA.size()); // 召唤两个仆从
 
-        context.addToField(2, 1);
+        context.addToField(2, 1);   // 金属巨龙上场
         random.addNextNumbers(0, 0); // 金属巨龙暴击+暴击，杀死陨星魔法使
         context.proceedOneRound();
         Assert.assertEquals(2, fieldA.size());
@@ -134,6 +147,7 @@ public class SummonTest extends FeatureValidationTest {
         context.proceedOneRound();
         Assert.assertEquals(3, fieldA.size());
         
+        random.addNextPicks(0);  // 陨星魔法使寒霜冲击
         context.proceedOneRound();
         Assert.assertEquals(3, fieldA.size()); // 复活者无法复活仆从，陨星魔法使也暂时无法重新召唤
 
@@ -142,7 +156,7 @@ public class SummonTest extends FeatureValidationTest {
         random.addNextPicks(2).addNextNumbers(0); // 女神侍者冰冻陨星魔法使
         context.proceedOneRound();
         Assert.assertEquals(2, fieldA.size());
-        
+
         context.proceedOneRound();
         Assert.assertEquals(2, fieldA.size()); // 此时陨星魔法使被冰冻，还是不能召唤
 
@@ -151,7 +165,31 @@ public class SummonTest extends FeatureValidationTest {
         context.proceedOneRound();
         Assert.assertEquals(2, fieldA.size());
         
+        random.addNextPicks(0, 1).addNextNumbers(1000);  // 陨星魔法使寒霜冲击
         context.proceedOneRound();
         Assert.assertEquals(4, fieldA.size()); // 陨星魔法使可以行动了，召唤
+    }
+    
+    /**
+     * 召唤不插空位，总是召唤在后面
+     */
+    @Test
+    public void test召唤王国战士_前有空位() {
+        FeatureTestContext context = FeatureValidationTests.prepare(50, 50, "占位符", "陨星魔法使", "占位符*2", "雷盾");
+        context.addToField(0, 0).setBasicHP(1);
+        context.addToField(1, 0);
+        context.addToField(2, 1);
+        context.addToField(3, 1);
+        RuneInfo r雷盾 = context.addToRune(0, 1);
+        context.startGame();
+
+        r雷盾.activate();
+        random.addNextPicks(0, 1).addNextNumbers(0, 0); // 陨星魔法使的寒霜冲击
+        context.proceedOneRound();
+        Field fieldA = context.getPlayer(0).getField();
+        Assert.assertEquals(3, fieldA.size());
+        // 首先占位者被雷盾弹死，然后陨星魔法使召唤2卡分别在3号位和4号位
+        // 所以陨星魔法使触发的雷盾不会攻击到4号位的魔剑士
+        Assert.assertEquals(-200 /* 圣骑士的王国守护 */, 1240 - fieldA.getCard(2).getHP());
     }
 }
