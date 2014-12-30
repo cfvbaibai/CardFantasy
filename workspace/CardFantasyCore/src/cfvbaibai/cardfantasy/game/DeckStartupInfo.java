@@ -59,4 +59,12 @@ public class DeckStartupInfo {
     public CardInfo getCardInfo(int index, Player owner) {
         return new CardInfo(this.cards.get(index), owner);
     }
+
+    public List<CardInfo> getCardInfos(Player owner) {
+        List<CardInfo> result = new ArrayList<CardInfo>(this.cards.size());
+        for (int i = 0; i < this.cards.size(); ++i) {
+            result.add(this.getCardInfo(i, owner));
+        }
+        return result;
+    }
 }

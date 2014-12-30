@@ -77,6 +77,7 @@ import cfvbaibai.cardfantasy.engine.feature.SnipeFeature;
 import cfvbaibai.cardfantasy.engine.feature.SoftenFeature;
 import cfvbaibai.cardfantasy.engine.feature.SpeedUpFeature;
 import cfvbaibai.cardfantasy.engine.feature.SpikeFeature;
+import cfvbaibai.cardfantasy.engine.feature.SummonFeature;
 import cfvbaibai.cardfantasy.engine.feature.TransportFeature;
 import cfvbaibai.cardfantasy.engine.feature.TrapFeature;
 import cfvbaibai.cardfantasy.engine.feature.TsukomiFeature;
@@ -239,6 +240,8 @@ public class FeatureResolver {
                 PurifyFeature.apply(feature, this, attacker);
             } else if (feature.getType() == FeatureType.虚弱) {
                 SoftenFeature.apply(feature, this, attacker, defender);
+            } else if (feature.getType() == FeatureType.召唤王国战士) {
+                SummonFeature.apply(this, feature, attacker, "圣骑士", "魔剑士");
             }
         }
         RuneInfo rune = attacker.getOwner().getActiveRuneOf(RuneData.飞岩);
@@ -698,6 +701,7 @@ public class FeatureResolver {
 
     public void cardDead(CardInfo deadCard) {
         if (deadCard.hasDeadOnce()) {
+            // 由于技能多重触发可能造成cardDead被多次调用
             return;
         }
         this.stage.getUI().cardDead(deadCard);
@@ -708,7 +712,10 @@ public class FeatureResolver {
             CardInfo card = field.getCard(i);
             if (deadCard == card) {
                 field.expelCard(i);
-                owner.getGrave().addCard(card);
+                if (!card.getStatus().containsStatus(CardStatusType.召唤)) {
+                    // 被召唤的卡牌不进入墓地，而是直接死亡
+                    owner.getGrave().addCard(card);
+                }
                 break;
             }
         }

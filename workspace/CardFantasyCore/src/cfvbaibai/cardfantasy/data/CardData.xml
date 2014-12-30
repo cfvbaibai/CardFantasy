@@ -418,7 +418,7 @@
     </Card>
     <Card id="1519" name="陨星魔法使" wikiId="95808" race="王国" speed="3" star="5" cost="17" incrCost="2" at="335" hp="1460" incrAT="41" incrHP="39">
         <Feature type="不动" level="0" unlock="5" />
-        <!-- TODO: <Feature type="召唤王国战士" level="0" unlock="10" /> -->
+        <Feature type="召唤王国战士" level="0" unlock="10" />
     </Card>
 
     <!-- 森林 -->
