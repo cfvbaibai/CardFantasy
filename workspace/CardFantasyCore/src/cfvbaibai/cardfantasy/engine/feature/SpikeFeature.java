@@ -4,12 +4,13 @@ import java.util.List;
 
 import cfvbaibai.cardfantasy.GameUI;
 import cfvbaibai.cardfantasy.data.Feature;
+import cfvbaibai.cardfantasy.data.FeatureType;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.FeatureResolver;
 import cfvbaibai.cardfantasy.engine.HeroDieSignal;
 
 public final class SpikeFeature {
-    public static void apply(Feature cardFeature, FeatureResolver resolver, CardInfo attacker, CardInfo defender, int attackDamage)
+    public static void apply(Feature cardFeature, FeatureResolver resolver, CardInfo attacker, CardInfo defender, Feature attackFeature, int attackDamage)
             throws HeroDieSignal {
         if (attackDamage <= 0) {
             return;
@@ -17,9 +18,17 @@ public final class SpikeFeature {
         if (attacker == null) {
             return;
         }
+        CardInfo centerVictim = attacker;
+        if (attackFeature != null && attackFeature.getType() == FeatureType.连锁攻击) {
+            // 连锁攻击触发雷盾的方式比较特殊，是以被连锁卡的正对面为中心的
+            centerVictim = attacker.getOwner().getField().getCard(defender.getPosition());
+        }
+        if (centerVictim == null) {
+            return;
+        }
         int damage = cardFeature.getImpact();
         GameUI ui = resolver.getStage().getUI();
-        List<CardInfo> victims = resolver.getAdjacentCards(attacker.getOwner().getField(), attacker.getPosition());
+        List<CardInfo> victims = resolver.getAdjacentCards(centerVictim.getOwner().getField(), centerVictim.getPosition());
         ui.useSkill(defender, victims, cardFeature, true);
         for (CardInfo victim : victims) {
             if (victim == null) {

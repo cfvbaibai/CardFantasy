@@ -104,4 +104,26 @@ public class CounterAttackTest extends FeatureValidationTest {
 
         Assert.assertEquals(100, 1730 - c光明之龙.getHP());
     }
+    
+    /**
+     * 连锁攻击的额外攻击部分触发的盾刺以被连锁卡的正对面卡为中心
+     */
+    @Test
+    public void test连锁攻击_雷盾() {
+        FeatureTestContext context = FeatureValidationTests.prepare(50, 50, "麒麟兽", "秘银巨石像*2", "金属巨龙-15*3", "雷盾");
+        CardInfo c麒麟兽 = context.addToField(0, 0);
+        CardInfo c秘银巨石像1 = context.addToField(1, 0);
+        CardInfo c秘银巨石像2 = context.addToField(2, 0);
+        context.addToField(3, 1);
+        context.addToField(4, 1);
+        context.addToField(5, 1);
+        RuneInfo r雷盾 = context.addToRune(0, 1);
+        context.startGame();
+
+        r雷盾.activate();
+        context.proceedOneRound();
+        Assert.assertEquals(400 + 200, 1610 - c麒麟兽.getHP());
+        Assert.assertEquals(600 + 200 + 200, 1400 - c秘银巨石像1.getHP());
+        Assert.assertEquals(400 + 200 + 200, 1400 - c秘银巨石像2.getHP());
+    }
 }

@@ -258,9 +258,9 @@ public class FeatureResolver {
                 if (feature.getType() == FeatureType.反击) {
                     CounterAttackFeature.apply(feature.getFeature(), this, attacker, defender, result.getDamage());
                 } else if (feature.getType() == FeatureType.盾刺) {
-                    SpikeFeature.apply(feature.getFeature(), this, attacker, defender, result.getDamage());
+                    SpikeFeature.apply(feature.getFeature(), this, attacker, defender, attackFeature, result.getDamage());
                 } else if (feature.getType() == FeatureType.魔神之甲) {
-                    SpikeFeature.apply(feature.getFeature(), this, attacker, defender, result.getDamage());
+                    SpikeFeature.apply(feature.getFeature(), this, attacker, defender, attackFeature, result.getDamage());
                 } else if (feature.getType() == FeatureType.燃烧) {
                     BurningFeature.apply(feature, this, attacker, defender);
                 } else if (feature.getType() == FeatureType.邪灵汲取) {
@@ -272,7 +272,7 @@ public class FeatureResolver {
             {
                 RuneInfo rune = defender.getOwner().getActiveRuneOf(RuneData.雷盾);
                 if (rune != null && !defender.isWeak()) {
-                    SpikeFeature.apply(rune.getFeature(), this, attacker, defender, result.getDamage());
+                    SpikeFeature.apply(rune.getFeature(), this, attacker, defender, attackFeature, result.getDamage());
                 }
             }
             {
@@ -898,8 +898,8 @@ public class FeatureResolver {
                 ReviveFeature.apply(this, feature, card);
             } else if (feature.getType() == FeatureType.关小黑屋) {
                 EnprisonFeature.apply(this, feature.getFeature(), card, opField.getOwner());
-            } else if (feature.getType() == FeatureType.净化){
-            	PurifyFeature.apply(feature, this, card);
+            } else if (feature.getType() == FeatureType.净化 || feature.getType() == FeatureType.神性祈求){
+                PurifyFeature.apply(feature, this, card);
             }
         }
     }

@@ -58,4 +58,68 @@ public class DefenseTest extends FeatureValidationTest {
 
         Assert.assertEquals(180 - 120 /* 猛犸的冰甲先结算，然后结算岩壁 */, 1690 - c冰甲凤凰.getHP());
     }
+    
+    /**
+     * 横扫为溅射
+     */
+    @Test
+    public void test横扫_格挡() {
+        FeatureTestContext context = FeatureValidationTests.prepare(50, 50, "光明之龙", "牛头人酋长*2");
+        context.addToField(0, 0);
+        CardInfo c牛头人酋长1 = context.addToField(1, 1);
+        CardInfo c牛头人酋长2 = context.addToField(2, 1);
+        context.startGame();
+
+        context.proceedOneRound();
+        Assert.assertEquals(630 - 140 /* 格挡 */, 1050 - c牛头人酋长1.getHP());
+        Assert.assertEquals((630 - 140) /* 先算溅射伤害 */ - 140 /* 2号位酋长的格挡 */, 1050 - c牛头人酋长2.getHP());
+    }
+    
+    /**
+     * 横扫为溅射
+     */
+    @Test
+    public void test横扫_冰甲() {
+        FeatureTestContext context = FeatureValidationTests.prepare(50, 50, "光明之龙", "战斗猛犸象", "秘银巨石像");
+        context.addToField(0, 0);
+        CardInfo c战斗猛犸象 = context.addToField(1, 1);
+        CardInfo c秘银巨石像 = context.addToField(2, 1);
+        context.startGame();
+
+        context.proceedOneRound();
+        Assert.assertEquals(120 /* 冰甲 */, 1220 - c战斗猛犸象.getHP());
+        Assert.assertEquals(120 /* 溅射 */, 1400 - c秘银巨石像.getHP());
+    }
+    
+    /**
+     * 连锁攻击能够被格挡
+     */
+    @Test
+    public void test连锁攻击_格挡() {
+        FeatureTestContext context = FeatureValidationTests.prepare(50, 50, "麒麟兽", "牛头人酋长*2");
+        context.addToField(0, 0);
+        CardInfo c牛头人酋长1 = context.addToField(1, 1);
+        CardInfo c牛头人酋长2 = context.addToField(2, 1);
+        context.startGame();
+
+        context.proceedOneRound();
+        Assert.assertEquals(610 - 140 /* 格挡 */, 1050 - c牛头人酋长1.getHP());
+        Assert.assertEquals(610 * 175 / 100 - 140 /* 格挡 */, 1050 - c牛头人酋长2.getHP());
+    }
+    
+    /**
+     * 连锁攻击能够被冰甲阻挡
+     */
+    @Test
+    public void test连锁攻击_冰甲() {
+        FeatureTestContext context = FeatureValidationTests.prepare(50, 50, "麒麟兽", "战斗猛犸象*2");
+        context.addToField(0, 0);
+        CardInfo c战斗猛犸象1 = context.addToField(1, 1);
+        CardInfo c战斗猛犸象2 = context.addToField(2, 1);
+        context.startGame();
+
+        context.proceedOneRound();
+        Assert.assertEquals(120 /* 冰甲 */, 1220 - c战斗猛犸象1.getHP());
+        Assert.assertEquals(120 /* 冰甲 */, 1220 - c战斗猛犸象2.getHP());
+    }
 }

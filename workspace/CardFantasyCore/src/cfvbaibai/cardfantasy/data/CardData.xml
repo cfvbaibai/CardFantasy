@@ -1688,9 +1688,9 @@
         <Feature type="天谴" level="10" unlock="10" />
         <Feature type="免疫" level="0" unlock="10" />
     </Card>
-    <!-- 未更新  -->
-    <Card id="5503" name="噩梦之主" wikiId="30871" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="900" hp="13200000" incrAT="0" incrHP="0">
-        <Feature type="格挡" level="10" unlock="0" />
+    <Card id="5503" name="噩梦之主" wikiId="30871" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="900" hp="8800000" incrAT="0" incrHP="0">
+        <!-- <Feature type="召唤噩梦护卫" level="0" unlock=0" /> -->
+        <!-- <Feature type="振奋" level="8" unlock="0" /> -->
         <Feature type="魔神之甲" level="0" unlock="5" />
         <Feature type="法力侵蚀" level="10" unlock="10" />
         <Feature type="免疫" level="0" unlock="10" />
@@ -1702,10 +1702,10 @@
         <Feature type="送还" level="0" unlock="10" />
         <Feature type="免疫" level="0" unlock="10" />
     </Card>
-    <!-- 未更新  -->
-    <Card id="5505" name="深渊影魔" wikiId="30871" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="1500" hp="14400000" incrAT="0" incrHP="0">
+    <Card id="5505" name="深渊影魔" wikiId="30871" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="1500" hp="9600000" incrAT="0" incrHP="0">
         <Feature type="弱点攻击" level="0" unlock="0" />
-        <Feature type="魔神之甲" level="0" unlock="5" />
+        <Feature type="神性祈求" level="0" unlock="5" />
+        <Feature type="魔神之甲" level="0" unlock="10" />
         <Feature type="毒云" level="10" unlock="10" />
         <Feature type="免疫" level="0" unlock="10" />
     </Card>
