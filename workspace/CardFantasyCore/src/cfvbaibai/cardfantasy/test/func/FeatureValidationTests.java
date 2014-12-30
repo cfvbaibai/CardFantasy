@@ -19,12 +19,13 @@ import cfvbaibai.cardfantasy.test.TestGameBuilder;
     DelayTest.class,
     CounterAttackTest.class,
     DefenseTest.class,
-    // MultiAttackTest.class,
+    MultiAttackTest.class,
     DeathSkillTest.class,
     SummonSkillTest.class,
     SkillSequenceTest.class,
     HealingTest.class,
-    RuneActivationTest.class
+    RuneActivationTest.class,
+    SummonTest.class
 })
 public class FeatureValidationTests {
     public static FeatureTestContext prepare(int playerALevel, int playerBLevel, String ... cards) {

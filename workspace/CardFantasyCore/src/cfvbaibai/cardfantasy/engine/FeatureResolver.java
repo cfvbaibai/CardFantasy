@@ -243,7 +243,7 @@ public class FeatureResolver {
                 SoftenFeature.apply(feature, this, attacker, defender);
             } else if (feature.getType() == FeatureType.召唤王国战士) {
                 SummonFeature.apply(this, feature, attacker, "圣骑士", "魔剑士");
-            } else if (feature.getType() == FeatureType.召唤恶魔护卫) {
+            } else if (feature.getType() == FeatureType.召唤噩梦护卫) {
                 SummonFeature.apply(this, feature, attacker, "时光女神", "金属巨龙");
             } else if (feature.getType() == FeatureType.召唤邪龙护卫) {
                 SummonFeature.apply(this, feature, attacker, "亡灵守护神", "光明之龙");

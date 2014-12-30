@@ -73,7 +73,7 @@ public class SummonTest extends FeatureValidationTest {
     }
 
     @Test
-    public void test召唤王国战士_再召唤() {
+    public void test召唤王国战士_多张陨星() {
         FeatureTestContext context = FeatureValidationTests.prepare(50, 50, "陨星魔法使*2", "占位符*2", "金属巨龙", "占位符", "金属巨龙");
         context.addToField(0, 0);
         context.addToField(1, 0);
@@ -104,6 +104,54 @@ public class SummonTest extends FeatureValidationTest {
         c金属巨龙1.reset(); // 回血免得被打死
         c金属巨龙2.reset(); // 回血免得被打死
         context.proceedOneRound();
-        Assert.assertEquals(5, fieldA.size()); // 陨星魔法使1的仆从全灭，可以再次召唤
+        Assert.assertEquals(3, fieldA.size()); // 陨星魔法使1的仆从全灭，仍然不能再次召唤
+    }
+
+    /**
+     * 召唤技能类似背刺、封印，属于一次性技能
+     */
+    @Test
+    public void test召唤王国战士_复活再召唤() {
+        FeatureTestContext context = FeatureValidationTests.prepare(50, 50, "陨星魔法使", "复活者", "金属巨龙+暴击6-15", "女神侍者-0");
+        context.addToField(0, 0);
+        context.startGame();
+
+        Field fieldA = context.getPlayer(0).getField();
+        context.proceedOneRound();
+        Assert.assertEquals(3, fieldA.size()); // 召唤两个仆从
+
+        context.addToField(2, 1);
+        random.addNextNumbers(0, 0); // 金属巨龙暴击+暴击，杀死陨星魔法使
+        context.proceedOneRound();
+        Assert.assertEquals(2, fieldA.size());
+
+        context.addToField(1, 0); // 复活者上场
+        random.addNextPicks(0); // 复活陨星魔法使
+        context.proceedOneRound();
+        Assert.assertEquals(4, fieldA.size()); // 现在无法重新召唤
+        
+        random.addNextNumbers(0, 0); // 金属巨龙暴击杀死圣骑士
+        context.proceedOneRound();
+        Assert.assertEquals(3, fieldA.size());
+        
+        context.proceedOneRound();
+        Assert.assertEquals(3, fieldA.size()); // 复活者无法复活仆从，陨星魔法使也暂时无法重新召唤
+
+        context.addToField(3, 1); // 女神侍者上场
+        random.addNextNumbers(0, 0); // 金属巨龙暴击杀死魔剑士
+        random.addNextPicks(2).addNextNumbers(0); // 女神侍者冰冻陨星魔法使
+        context.proceedOneRound();
+        Assert.assertEquals(2, fieldA.size());
+        
+        context.proceedOneRound();
+        Assert.assertEquals(2, fieldA.size()); // 此时陨星魔法使被冰冻，还是不能召唤
+
+        random.addNextNumbers(1000, 1000); // 金属巨龙不暴击
+        random.addNextPicks(0).addNextNumbers(1000); // 女神侍者不冰冻
+        context.proceedOneRound();
+        Assert.assertEquals(2, fieldA.size());
+        
+        context.proceedOneRound();
+        Assert.assertEquals(4, fieldA.size()); // 陨星魔法使可以行动了，召唤
     }
 }

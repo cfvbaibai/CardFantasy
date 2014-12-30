@@ -199,7 +199,7 @@ public class SpecialStatusTest extends FeatureValidationTest {
     }
     
     /**
-     * 虚弱可被免疫
+     * 虚弱不可被免疫
      */
     @Test
     public void test虚弱_免疫() {
@@ -213,7 +213,7 @@ public class SpecialStatusTest extends FeatureValidationTest {
 
         random.addNextNumbers(1000); // 金属巨龙未暴击
         context.proceedOneRound();
-        Assert.assertEquals(655, 1056 - c东方幻术师.getHP());
+        Assert.assertEquals(655 / 2 + 1 /* 虚弱无效 */, 1056 - c东方幻术师.getHP());
     }
 
     @Test

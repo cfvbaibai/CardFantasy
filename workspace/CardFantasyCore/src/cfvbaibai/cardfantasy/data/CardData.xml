@@ -417,6 +417,7 @@
         <Feature type="回魂" level="2" unlock="10" />
     </Card>
     <Card id="1519" name="陨星魔法使" wikiId="95808" race="王国" speed="3" star="5" cost="17" incrCost="2" at="335" hp="1460" incrAT="41" incrHP="39">
+        <!-- <Feature type="寒霜冲击" level="8" unlock="0" /> -->
         <Feature type="不动" level="0" unlock="5" />
         <Feature type="召唤王国战士" level="0" unlock="10" />
     </Card>
@@ -1767,5 +1768,8 @@
         <Feature type="被插出五星" level="1" unlock="10" />
     </Card>
     <Card id="7502" name="占位符" wikiId="" race="萌货" speed="4" star="5" cost="0" incrCost="0" at="0" hp="5000" incrAT="0" incrHP="0">
+    </Card>
+    <Card id="7503" name="复活者" wikiId="" race="萌货" speed="4" star="5" cost="0" incrCost="0" at="0" hp="5000" incrAT="0" incrHP="0">
+        <Feature type="复活" level="0" unlock="0" />
     </Card>
 </Cards>

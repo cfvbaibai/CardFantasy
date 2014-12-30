@@ -18,13 +18,16 @@ public class SummonFeature {
         if (summoner == null) {
             throw new CardFantasyRuntimeException("summoner should not be null");
         }
+        Feature feature = featureInfo.getFeature();
+        if (summoner.hasUsed(featureInfo)) {
+            return;
+        }
         Field field = summoner.getOwner().getField();
         for (CardInfo fieldCard : field.toList()) {
             if (fieldCard.getStatus().containsStatusCausedBy(featureInfo, CardStatusType.召唤)) {
                 return;
             }
         }
-        Feature feature = featureInfo.getFeature();
         resolver.getStage().getUI().useSkill(summoner, feature, true);
         List<CardInfo> summonedCards = DeckBuilder.build(summonedCardsDescs).getCardInfos(summoner.getOwner());
         for (int i = 0; i < summonedCards.size(); ++i) {
@@ -37,5 +40,6 @@ public class SummonFeature {
             resolver.getStage().getUI().addCardStatus(summoner, summonedCard, feature, summonedStatusItem);
             summonedCard.addStatus(summonedStatusItem);
         }
+        summoner.setUsed(featureInfo);
     }
 }
