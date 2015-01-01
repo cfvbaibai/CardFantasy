@@ -13,10 +13,10 @@ public class AttackBuffTest extends SkillValidationTest {
         context.addToField(0, 0);
         CardInfo c凤凰 = context.addToField(1, 1);
         context.startGame();
-        
+
         random.addNextNumbers(1000); // 犀牛人武士不暴击
         context.proceedOneRound();
-        
+
         context.getStage().setActivePlayerNumber(0);
         random.addNextNumbers(0); // 犀牛人武士暴击
         context.proceedOneRound();
@@ -50,25 +50,123 @@ public class AttackBuffTest extends SkillValidationTest {
      */
     @Test
     public void test邪灵汲取_淬炼_暴击_虚弱() throws HeroDieSignal {
-        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "东方幻术师", "远古海妖", "淬炼");
+        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "东方幻术师", "远古海妖-5", "淬炼");
         CardInfo c东方幻术师 = context.addToField(0, 0);
-        context.addToField(1, 1);
+        CardInfo c远古海妖 = context.addToField(1, 1);
         context.addToRune(0, 1);
         context.startGame();
 
         random.addNextPicks(0); // 东方幻术师虚弱远古海妖
         random.addNextPicks(0).addNextNumbers(1000);  // 东方幻术师迷魂远古海妖失败
         context.proceedOneRound();
+        int impact邪灵汲取 = 380 * 15 / 100;
+        Assert.assertEquals(475 + impact邪灵汲取, c远古海妖.getCurrentAT());
 
         context.getPlayer(1).setHP(1); // 强行启动淬炼
         random.addNextPicks(0); // 淬炼
         random.addNextNumbers(0); // 远古海妖暴击
         context.proceedOneRound();
-        int baseAT = 625 /* 基础攻击力 */ + 380 * 15 / 100 /* 邪灵汲取 */ + 120 /* 淬炼 */;
+        int baseAT = 475 /* 基础攻击力 */ + impact邪灵汲取 + 120 /* 淬炼 */;
         Assert.assertEquals(baseAT * 2 /* 暴击 */ - baseAT / 2 /* 虚弱 */, 1290 - c东方幻术师.getHP());
+        Assert.assertEquals(baseAT, c远古海妖.getCurrentAT());
     }
-    
-    
+
+    /**
+     * 被虚弱的同时被邪灵汲取的话，邪灵汲取的量按照未虚弱时计算
+     */
+    @Test
+    public void test邪灵汲取_种族克制_虚弱() {
+        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "东方幻术师", "末日预言师", "占位符", "秘银巨石像");
+        context.addToField(0, 0);
+        context.addToField(1, 0);
+        context.addToField(2, 1);
+        CardInfo c秘银巨石像 = context.addToField(3, 1);
+        context.startGame();
+
+        random.addNextPicks(0, 0).addNextNumbers(1000); // 东方幻术师先虚弱和迷魂占位符，并且迷魂失败
+        context.proceedOneRound();
+
+        context.proceedOneRound(); // 此轮秘银巨石像攻击了末日预言师被邪灵汲取了
+        int c秘银巨石像AT = 660 - 660 * 18 / 100 /* 邪灵汲取18% */;
+        Assert.assertEquals(c秘银巨石像AT, c秘银巨石像.getCurrentAT());
+
+        random.addNextPicks(1, 1).addNextNumbers(0); // 东方幻术师虚弱并迷魂秘银巨石像成功
+        context.proceedOneRound();
+
+        int heroHpB = context.getPlayer(1).getHP(); // 先记录英雄血量
+        context.proceedOneRound();  // 秘银巨石像以一半攻击力攻击自己英雄
+        Assert.assertEquals(c秘银巨石像AT / 2, heroHpB - context.getPlayer(1).getHP());
+    }
+
+    /**
+     * 淬炼增加的攻击力可以抵消邪灵汲取降低的攻击力
+     */
+    @Test
+    public void test邪灵汲取_淬炼_完全抵消() throws HeroDieSignal {
+        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "秘银巨石像", "远古海妖-5", "淬炼");
+        CardInfo c秘银巨石像 = context.addToField(0, 0);
+        CardInfo c远古海妖 = context.addToField(1, 1);
+        context.addToRune(0, 0);
+        context.startGame();
+
+        context.getPlayer(0).setHP(1);      // 强行启动淬炼
+        random.addNextPicks(0);             // 淬炼取对象
+        context.proceedOneRound();
+        int atDecreased = (660 + 120) * 15 / 100;   // 邪灵汲取15%, 117
+        Assert.assertEquals(117, atDecreased);
+        Assert.assertEquals(660 + 120, 1550 - c远古海妖.getHP());
+        Assert.assertEquals(475 + atDecreased, c远古海妖.getCurrentAT());
+
+        context.getPlayer(0).setHP(10000);  // 强行结束淬炼
+        random.addNextNumbers(1000);        // 远古海妖暴击失败
+        context.proceedOneRound();
+
+        // 又过一轮，淬炼结束
+        int at远古海妖roundStart = 475 + atDecreased;
+        // 降低的攻击力中可以被淬炼增加的攻击力部分, 但如果已经完全抵消，溢出部分无法留存
+        // 邪灵汲取量117，淬炼增加120，所以秘银巨石像攻击力不变
+        int at秘银巨石像roundStart = 660 - Math.max(0, atDecreased - 120);
+        Assert.assertEquals(660, at秘银巨石像roundStart); // 应该完全抵消
+        context.proceedOneRound();
+        atDecreased = at秘银巨石像roundStart * 15 / 100;
+        Assert.assertEquals(at秘银巨石像roundStart - atDecreased, c秘银巨石像.getCurrentAT());
+        Assert.assertEquals(at远古海妖roundStart + atDecreased, c远古海妖.getCurrentAT());
+    }
+
+    /**
+     * 淬炼增加的攻击力可以抵消邪灵汲取降低的攻击力
+     */
+    @Test
+    public void test邪灵汲取_淬炼_部分抵消() throws HeroDieSignal {
+        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "隐世先知+弱点攻击", "末日预言师", "淬炼");
+        CardInfo c隐世先知 = context.addToField(0, 0);
+        CardInfo c末日预言师 = context.addToField(1, 1);
+        context.addToRune(0, 0);
+        context.startGame();
+
+        context.getPlayer(0).setHP(1);      // 强行启动淬炼
+        random.addNextPicks(0);             // 淬炼取对象
+        context.proceedOneRound();
+        int atDecreased = (840 + 120) * 18 / 100;   // 邪灵汲取18%
+        Assert.assertEquals(840 + 120, 1770 - c末日预言师.getHP());
+        Assert.assertEquals(635 + atDecreased, c末日预言师.getCurrentAT());
+
+        context.getPlayer(0).setHP(10000);  // 强行结束淬炼
+        random.addNextNumbers(1000);        // 末日预言师暴击失败
+        context.proceedOneRound();
+        Assert.assertEquals(635 + atDecreased, 1725 - c隐世先知.getHP());
+
+        // 又过一轮，淬炼结束
+        int at末日预言师roundStart = 635 + atDecreased;
+        int hp末日预言师roundStart = 1770 - (840 + 120);
+        int at隐世先知roundStart = 840 - (atDecreased - 120); /* 降低的攻击力中可以被淬炼增加的攻击力部分 */
+        context.proceedOneRound();
+        atDecreased = at隐世先知roundStart * 18 / 100;
+        Assert.assertEquals(at隐世先知roundStart - atDecreased, c隐世先知.getCurrentAT());
+        Assert.assertEquals(at末日预言师roundStart + atDecreased, c末日预言师.getCurrentAT());
+        Assert.assertEquals(at隐世先知roundStart, hp末日预言师roundStart - c末日预言师.getHP());
+    }
+
     /**
      * 打正对面的卡时还不增加攻击力，攻击力BUFF仅其它被连锁的对象起效
      */

@@ -24,14 +24,11 @@ public final class EnergyDrain {
 
         List<CardInfo> victims = new ArrayList<CardInfo>();
         victims.add(attacker);
-        //resolver.getStage().getUI().useSkill(defender, attacker, feature, true);
         int totalAttackWeakened = Weaken.weakenCard(resolver, skillUseInfo, adjAT, defender, victims);
-        //resolver.getStage().getUI().adjustAT(defender, attacker, adjAT, feature);
-        //attacker.addEffect(new FeatureEffect(FeatureEffectType.ATTACK_CHANGE, featureInfo, totalAttackWeakened, true));
-        
+
         if (!defender.isDead()) {
-            resolver.getStage().getUI().adjustAT(defender, defender, totalAttackWeakened, skill);
-            defender.addEffect(new SkillEffect(SkillEffectType.ATTACK_CHANGE, skillUseInfo, totalAttackWeakened, true));
+            resolver.getStage().getUI().adjustAT(defender, defender, adjAT, skill);
+            defender.addEffect(new SkillEffect(SkillEffectType.ATTACK_CHANGE, skillUseInfo, adjAT, true));
         }
         
         if (damagedResult != null) {
