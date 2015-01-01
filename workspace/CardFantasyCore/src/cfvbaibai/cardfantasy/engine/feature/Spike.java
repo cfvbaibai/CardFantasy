@@ -9,7 +9,7 @@ import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.SkillResolver;
 import cfvbaibai.cardfantasy.engine.HeroDieSignal;
 
-public final class SpikeFeature {
+public final class Spike {
     public static void apply(Skill cardFeature, SkillResolver resolver, CardInfo attacker, CardInfo defender, Skill attackFeature, int attackDamage)
             throws HeroDieSignal {
         if (attackDamage <= 0) {

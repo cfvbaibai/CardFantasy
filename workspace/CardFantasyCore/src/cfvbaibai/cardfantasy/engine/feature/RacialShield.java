@@ -7,7 +7,7 @@ import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.EntityInfo;
 import cfvbaibai.cardfantasy.engine.SkillResolver;
 
-public class RacialShieldFeature {
+public class RacialShield {
     public static int apply(Skill skill, SkillResolver resolver, CardInfo attacker, EntityInfo victim,
             EntityInfo blocker, int originalDamage, Race targetRace) {
         if (attacker.getRace() != targetRace) {

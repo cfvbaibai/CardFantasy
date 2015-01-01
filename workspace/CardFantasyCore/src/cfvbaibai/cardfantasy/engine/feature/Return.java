@@ -9,7 +9,7 @@ import cfvbaibai.cardfantasy.engine.SkillResolver;
 import cfvbaibai.cardfantasy.engine.HeroDieSignal;
 import cfvbaibai.cardfantasy.engine.OnAttackBlockingResult;
 
-public final class ReturnFeature {
+public final class Return {
     public static void apply(SkillResolver resolver, Skill cardFeature, CardInfo attacker, CardInfo defender) throws HeroDieSignal {
         if (attacker == null) {
             return;

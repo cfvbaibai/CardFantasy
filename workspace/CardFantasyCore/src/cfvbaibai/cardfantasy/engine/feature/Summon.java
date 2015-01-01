@@ -13,7 +13,7 @@ import cfvbaibai.cardfantasy.engine.Field;
 import cfvbaibai.cardfantasy.engine.HeroDieSignal;
 import cfvbaibai.cardfantasy.game.DeckBuilder;
 
-public class SummonFeature {
+public class Summon {
     public static void apply(SkillResolver resolver, SkillUseInfo skillUseInfo, CardInfo summoner, String ... summonedCardsDescs) throws HeroDieSignal {
         if (summoner == null) {
             throw new CardFantasyRuntimeException("summoner should not be null");

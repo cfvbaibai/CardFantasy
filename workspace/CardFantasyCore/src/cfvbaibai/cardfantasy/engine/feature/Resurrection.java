@@ -10,7 +10,7 @@ import cfvbaibai.cardfantasy.engine.SkillUseInfo;
 import cfvbaibai.cardfantasy.engine.SkillResolver;
 import cfvbaibai.cardfantasy.engine.Player;
 
-public final class ResurrectionFeature {
+public final class Resurrection {
     public static void apply(SkillResolver resolver, SkillUseInfo skillUseInfo, CardInfo resurrector) {
         if (resurrector == null) {
             throw new CardFantasyRuntimeException("resurrector should not be null");

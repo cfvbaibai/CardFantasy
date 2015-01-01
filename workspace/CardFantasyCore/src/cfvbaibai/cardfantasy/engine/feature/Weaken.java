@@ -18,7 +18,7 @@ import cfvbaibai.cardfantasy.engine.HeroDieSignal;
  * 
  * Can be blocked by Immue.
  */
-public final class WeakenFeature {
+public final class Weaken {
     public static void apply(SkillResolver resolver, SkillUseInfo skillUseInfo, CardInfo attacker, CardInfo defender,
             int normalAttackDamage) throws HeroDieSignal {
         if (normalAttackDamage <= 0 || defender == null) {

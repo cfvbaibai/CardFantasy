@@ -6,7 +6,7 @@ import cfvbaibai.cardfantasy.data.SkillTag;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.SkillResolver;
 
-public final class WeakPointAttackFeature {
+public final class WeakPointAttack {
     public static boolean isBlockFeatureDisabled(SkillResolver resolver, Skill attackFeature,
             Skill blockFeature, CardInfo attacker, CardInfo defender) {
         if (attacker == null) {

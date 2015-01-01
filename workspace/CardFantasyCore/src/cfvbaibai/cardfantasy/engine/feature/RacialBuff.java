@@ -10,7 +10,7 @@ import cfvbaibai.cardfantasy.engine.SkillUseInfo;
 import cfvbaibai.cardfantasy.engine.SkillResolver;
 import cfvbaibai.cardfantasy.engine.Field;
 
-public final class RaceBuffFeature {
+public final class RacialBuff {
     public static void apply(SkillResolver resolver, SkillUseInfo skillUseInfo, CardInfo card, Race race,
             SkillEffectType effectType) {
         if (card == null) {

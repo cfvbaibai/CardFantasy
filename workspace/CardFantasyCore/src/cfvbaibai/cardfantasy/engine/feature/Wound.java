@@ -7,7 +7,7 @@ import cfvbaibai.cardfantasy.engine.CardStatusItem;
 import cfvbaibai.cardfantasy.engine.SkillUseInfo;
 import cfvbaibai.cardfantasy.engine.SkillResolver;
 
-public final class WoundFeature {
+public final class Wound {
     public static void apply(SkillResolver resolver, SkillUseInfo skillUseInfo, Skill attackFeature, CardInfo attacker, CardInfo defender,
             int normalAttackDamage) {
         if (normalAttackDamage <= 0) {

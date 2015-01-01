@@ -11,7 +11,7 @@ import cfvbaibai.cardfantasy.engine.SkillResolver;
 import cfvbaibai.cardfantasy.engine.HeroDieSignal;
 import cfvbaibai.cardfantasy.engine.Player;
 
-public final class WeakenAllFeature {
+public final class WeakenAll {
 
     public static void apply(SkillResolver resolver, SkillUseInfo skillUseInfo, EntityInfo attacker, Player defenderPlayer) throws HeroDieSignal {
         if (defenderPlayer == null) {
@@ -23,6 +23,6 @@ public final class WeakenAllFeature {
         Skill skill = skillUseInfo.getFeature();
         List<CardInfo> defenders = defenderPlayer.getField().getAliveCards();
         resolver.getStage().getUI().useSkill(attacker, defenders, skill, true);
-        WeakenFeature.weakenCard(resolver, skillUseInfo, skillUseInfo.getFeature().getImpact(), attacker, defenders);
+        Weaken.weakenCard(resolver, skillUseInfo, skillUseInfo.getFeature().getImpact(), attacker, defenders);
     }
 }

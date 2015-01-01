@@ -14,7 +14,7 @@ import cfvbaibai.cardfantasy.engine.Field;
 import cfvbaibai.cardfantasy.engine.HeroDieSignal;
 import cfvbaibai.cardfantasy.engine.OnAttackBlockingResult;
 
-public final class SacrificeFeature {
+public final class Sacrifice {
     public static void apply(SkillResolver resolver, SkillUseInfo skillUseInfo, CardInfo card, CardInfo reviver) throws HeroDieSignal {
         if (card.hasUsed(skillUseInfo)) {
             return;

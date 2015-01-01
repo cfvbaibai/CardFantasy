@@ -11,7 +11,7 @@ import cfvbaibai.cardfantasy.engine.SkillEffectType;
 import cfvbaibai.cardfantasy.engine.SkillUseInfo;
 import cfvbaibai.cardfantasy.engine.SkillResolver;
 
-public final class WarthFeature {
+public final class Wrath {
     public static void apply(SkillResolver resolver, SkillUseInfo skillUseInfo, CardInfo attacker, CardInfo defender) {
         if (attacker == null || attacker.isDead()) {
             throw new CardFantasyRuntimeException("attacker is null or dead!");

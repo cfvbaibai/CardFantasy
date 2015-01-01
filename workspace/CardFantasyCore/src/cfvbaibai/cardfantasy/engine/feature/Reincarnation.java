@@ -8,7 +8,7 @@ import cfvbaibai.cardfantasy.engine.SkillResolver;
 import cfvbaibai.cardfantasy.engine.Grave;
 import cfvbaibai.cardfantasy.engine.Hand;
 
-public final class ReincarnationFeature {
+public final class Reincarnation {
     public static boolean apply(SkillResolver resolver, Skill cardFeature, CardInfo card) {
         if (!card.isDead()) {
             throw new CardFantasyRuntimeException("Cannot resurrect undead card: " + card.getShortDesc());

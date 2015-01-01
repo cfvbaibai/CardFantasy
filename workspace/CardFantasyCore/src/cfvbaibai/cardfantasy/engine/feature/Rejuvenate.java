@@ -5,7 +5,7 @@ import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.SkillResolver;
 import cfvbaibai.cardfantasy.engine.OnAttackBlockingResult;
 
-public final class RejuvenateFeature {
+public final class Rejuvenate {
     public static void apply(Skill cardFeature, SkillResolver resolver, CardInfo card) {
         if (card.isDead()) {
             // Card has already dead due to CounterAttacker, MagicReflection or Overdraw.

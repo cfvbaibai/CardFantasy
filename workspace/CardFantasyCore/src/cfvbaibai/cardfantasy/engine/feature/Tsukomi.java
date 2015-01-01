@@ -10,7 +10,7 @@ import cfvbaibai.cardfantasy.engine.HeroDieSignal;
 import cfvbaibai.cardfantasy.engine.OnAttackBlockingResult;
 import cfvbaibai.cardfantasy.engine.Player;
 
-public class TsukomiFeature {
+public class Tsukomi {
     public static void apply(SkillResolver resolver, Skill cardFeature, CardInfo attacker, Player defender) throws HeroDieSignal {
         if (attacker == null || defender == null) {
             return;

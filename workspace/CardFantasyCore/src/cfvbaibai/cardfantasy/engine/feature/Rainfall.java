@@ -10,7 +10,7 @@ import cfvbaibai.cardfantasy.engine.SkillResolver;
 import cfvbaibai.cardfantasy.engine.Field;
 import cfvbaibai.cardfantasy.engine.OnAttackBlockingResult;
 
-public final class RainfallFeature {
+public final class Rainfall {
     private static class Heal {
         public CardInfo healee;
         public int healHP;

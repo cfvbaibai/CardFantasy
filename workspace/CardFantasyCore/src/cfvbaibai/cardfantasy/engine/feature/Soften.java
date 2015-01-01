@@ -13,7 +13,7 @@ import cfvbaibai.cardfantasy.engine.SkillResolver;
 import cfvbaibai.cardfantasy.engine.HeroDieSignal;
 import cfvbaibai.cardfantasy.engine.Player;
 
-public class SoftenFeature {
+public class Soften {
     public static void apply(SkillUseInfo skillUseInfo, SkillResolver resolver, EntityInfo attacker, Player defender)
         throws HeroDieSignal {
         Skill skill = skillUseInfo.getFeature();

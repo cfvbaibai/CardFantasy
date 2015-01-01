@@ -7,7 +7,7 @@ import cfvbaibai.cardfantasy.engine.HeroDieSignal;
 import cfvbaibai.cardfantasy.engine.OnAttackBlockingResult;
 import cfvbaibai.cardfantasy.engine.Player;
 
-public final class TransportFeature {
+public final class Transport {
     public static void apply(SkillResolver resolver, Skill cardFeature, CardInfo attacker, Player defenderHero) throws HeroDieSignal {
         if (attacker == null) {
             return;

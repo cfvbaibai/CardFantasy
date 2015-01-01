@@ -10,7 +10,7 @@ import cfvbaibai.cardfantasy.engine.SkillResolver;
 import cfvbaibai.cardfantasy.engine.Grave;
 import cfvbaibai.cardfantasy.engine.HeroDieSignal;
 
-public final class ReviveFeature {
+public final class Revive {
     public static void apply(SkillResolver resolver, SkillUseInfo skillUseInfo, CardInfo reviver) throws HeroDieSignal {
         if (reviver == null) {
             throw new CardFantasyRuntimeException("reviver should not be null");
