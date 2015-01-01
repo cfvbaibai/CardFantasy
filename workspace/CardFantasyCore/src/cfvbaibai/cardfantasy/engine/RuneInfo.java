@@ -13,14 +13,14 @@ public class RuneInfo extends EntityInfo {
     private Player owner;
     private Rune rune;
     @NonSerializable
-    private FeatureInfo featureInfo;
+    private SkillUseInfo skillUseInfo;
     private int energy;
     private boolean activated;
 
     public RuneInfo(Rune rune, Player owner) {
         this.rune = rune;
         this.owner = owner;
-        this.featureInfo = new FeatureInfo(this, rune.getFeature());
+        this.skillUseInfo = new SkillUseInfo(this, rune.getFeature());
         this.energy = rune.getMaxEnergy();
         this.activated = false;
     }
@@ -48,8 +48,8 @@ public class RuneInfo extends EntityInfo {
         return this.activated;
     }
 
-    public FeatureInfo getFeatureInfo() {
-        return this.featureInfo;
+    public SkillUseInfo getFeatureInfo() {
+        return this.skillUseInfo;
     }
     
     public RuneActivator getActivator() {
@@ -62,8 +62,8 @@ public class RuneInfo extends EntityInfo {
 
     public String getShortDesc() {
         String statusText = (this.energy <= 0 && !this.activated) ? "OVER" : (this.activated ? "ON" : "OFF");
-        return String.format("【%s%d-%s%d-%d-%s】", this.rune.getName(), this.rune.getLevel(), this.featureInfo.getFeature()
-                .getType().name(), this.featureInfo.getFeature().getLevel(), getEnergy(), statusText);
+        return String.format("【%s%d-%s%d-%d-%s】", this.rune.getName(), this.rune.getLevel(), this.skillUseInfo.getFeature()
+                .getType().name(), this.skillUseInfo.getFeature().getLevel(), getEnergy(), statusText);
     }
 
     public boolean is(RuneData data) {

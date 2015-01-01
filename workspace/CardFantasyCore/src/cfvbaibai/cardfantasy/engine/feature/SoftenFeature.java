@@ -8,15 +8,15 @@ import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.CardStatusItem;
 import cfvbaibai.cardfantasy.engine.CardStatusType;
 import cfvbaibai.cardfantasy.engine.EntityInfo;
-import cfvbaibai.cardfantasy.engine.FeatureInfo;
+import cfvbaibai.cardfantasy.engine.SkillUseInfo;
 import cfvbaibai.cardfantasy.engine.FeatureResolver;
 import cfvbaibai.cardfantasy.engine.HeroDieSignal;
 import cfvbaibai.cardfantasy.engine.Player;
 
 public class SoftenFeature {
-    public static void apply(FeatureInfo featureInfo, FeatureResolver resolver, EntityInfo attacker, Player defender)
+    public static void apply(SkillUseInfo skillUseInfo, FeatureResolver resolver, EntityInfo attacker, Player defender)
         throws HeroDieSignal {
-        Skill skill = featureInfo.getFeature();
+        Skill skill = skillUseInfo.getFeature();
 
         List<CardInfo> victims = resolver.getStage().getRandomizer().pickRandom(
             defender.getField().toList(), 1, true, null);
@@ -36,7 +36,7 @@ public class SoftenFeature {
             return;
         }
 
-        CardStatusItem status = CardStatusItem.softened(featureInfo);
+        CardStatusItem status = CardStatusItem.softened(skillUseInfo);
         ui.addCardStatus(attacker, victim, skill, status);
         victim.addStatus(status);
     }

@@ -136,7 +136,7 @@ public class FeatureResolver {
     }
 
     public void resolvePreAttackFeature(CardInfo attacker, Player defender) throws HeroDieSignal {
-        for (FeatureInfo feature : attacker.getNormalUsableFeatures()) {
+        for (SkillUseInfo feature : attacker.getNormalUsableFeatures()) {
             if (attacker.isDead()) {
                 continue;
             }
@@ -144,7 +144,7 @@ public class FeatureResolver {
                 OverdrawFeature.apply(this, feature, attacker);
             }
         }
-        for (FeatureInfo feature : attacker.getNormalUsableFeatures()) {
+        for (SkillUseInfo feature : attacker.getNormalUsableFeatures()) {
             if (attacker.isDead()) {
                 continue;
             }
@@ -277,7 +277,7 @@ public class FeatureResolver {
     public void resolveCounterAttackFeature(CardInfo attacker, CardInfo defender, Skill attackFeature,
             OnAttackBlockingResult result, OnDamagedResult damagedResult) throws HeroDieSignal {
         if (isPhysicalAttackFeature(attackFeature)) {
-            for (FeatureInfo feature : defender.getNormalUsableFeatures()) {
+            for (SkillUseInfo feature : defender.getNormalUsableFeatures()) {
                 if (feature.getType() == SkillType.反击) {
                     CounterAttackFeature.apply(feature.getFeature(), this, attacker, defender, result.getDamage());
                 } else if (feature.getType() == SkillType.盾刺) {
@@ -305,7 +305,7 @@ public class FeatureResolver {
                 }
             }
             if (!defender.isDead()) {
-                for (FeatureInfo feature : defender.getNormalUsableFeatures()) {
+                for (SkillUseInfo feature : defender.getNormalUsableFeatures()) {
                     if (feature.getType() == SkillType.狂热) {
                         ZealotFeature.apply(feature, this, attacker, defender, result);
                     }
@@ -340,7 +340,7 @@ public class FeatureResolver {
                 stage.getUI().attackBlocked(cardAttacker, defender, attackFeature, null);
                 result.setAttackable(false);
             } else {
-                for (FeatureInfo blockFeature : defender.getNormalUsableFeatures()) {
+                for (SkillUseInfo blockFeature : defender.getNormalUsableFeatures()) {
                     if (blockFeature.getType() == SkillType.闪避) {
                         result.setAttackable(!DodgeFeature.apply(blockFeature.getFeature(), this, cardAttacker,
                                 defender, result.getDamage()));
@@ -359,7 +359,7 @@ public class FeatureResolver {
                         }
                     }
                 }
-                for (FeatureInfo blockFeature : defender.getNormalUsableFeatures()) {
+                for (SkillUseInfo blockFeature : defender.getNormalUsableFeatures()) {
                     if (blockFeature.getType() == SkillType.王国之盾) {
                         result.setDamage(RacialShieldFeature.apply(blockFeature.getFeature(), this, cardAttacker,
                                 defender, defender, result.getDamage(), Race.HELL));
@@ -377,7 +377,7 @@ public class FeatureResolver {
                                 defender, defender, result.getDamage(), Race.FOREST));
                     }
                 }
-                for (FeatureInfo blockFeature : defender.getNormalUsableFeatures()) {
+                for (SkillUseInfo blockFeature : defender.getNormalUsableFeatures()) {
                     if (blockFeature.getType() == SkillType.格挡) {
                         result.setDamage(BlockFeature.apply(blockFeature.getFeature(), this, cardAttacker, defender,
                                 defender, result.getDamage()));
@@ -386,7 +386,7 @@ public class FeatureResolver {
                         return result;
                     }
                 }
-                for (FeatureInfo blockFeature : defender.getNormalUsableFeatures()) {
+                for (SkillUseInfo blockFeature : defender.getNormalUsableFeatures()) {
                     if (blockFeature.getType() == SkillType.冰甲) {
                         result.setDamage(IceArmorFeature.apply(blockFeature.getFeature(), this, cardAttacker, defender,
                                 result.getDamage()));
@@ -425,7 +425,7 @@ public class FeatureResolver {
                 stage.getUI().attackBlocked(attacker, defender, attackFeature, null);
                 result.setAttackable(false);
             } else {
-                for (FeatureInfo blockFeature : defender.getNormalUsableFeatures()) {
+                for (SkillUseInfo blockFeature : defender.getNormalUsableFeatures()) {
                     if (blockFeature.getType() == SkillType.法力反射) {
                         if (CounterMagicFeature.isFeatureBlocked(this, blockFeature.getFeature(), attackFeature,
                                 attacker, defender)) {
@@ -445,7 +445,7 @@ public class FeatureResolver {
                     }
                 }
 
-                for (FeatureInfo blockFeature : defender.getNormalUsableFeatures()) {
+                for (SkillUseInfo blockFeature : defender.getNormalUsableFeatures()) {
                     if (blockFeature.getType() == SkillType.免疫) {
                         if (ImmueFeature.isFeatureBlocked(this, blockFeature.getFeature(), attackFeature, attacker, defender)) {
                             result.setAttackable(false);
@@ -477,7 +477,7 @@ public class FeatureResolver {
                         }
                     }
                 }
-                for (FeatureInfo blockFeature : defender.getNormalUsableFeatures()) {
+                for (SkillUseInfo blockFeature : defender.getNormalUsableFeatures()) {
                     if (blockFeature.getType() == SkillType.魔甲) {
                         result.setDamage(MagicShieldFeature.apply(this, blockFeature.getFeature(), attacker, defender,
                                 attackFeature, result.getDamage()));
@@ -515,7 +515,7 @@ public class FeatureResolver {
         }
         deadCard.setDeadOnce(true);
         resolveLeaveFeature(deadCard, cardFeature);
-        for (FeatureInfo deadCardFeature : deadCard.getUsableDeathFeatures()) {
+        for (SkillUseInfo deadCardFeature : deadCard.getUsableDeathFeatures()) {
             if (deadCardFeature.getType() == SkillType.烈焰风暴) {
                 FireMagicFeature.apply(deadCardFeature.getFeature(), this, deadCard, killerCard.getOwner(), -1);
             } else if (deadCardFeature.getType() == SkillType.雷暴) {
@@ -548,7 +548,7 @@ public class FeatureResolver {
                 TransportFeature.apply(this, deadCardFeature.getFeature(), deadCard, killerCard.getOwner());
             } 
         }
-        for (FeatureInfo deadCardFeature : deadCard.getAllUsableFeatures()) {
+        for (SkillUseInfo deadCardFeature : deadCard.getAllUsableFeatures()) {
             if (deadCardFeature.getType() == SkillType.自爆) {
                 ExplodeFeature.apply(this, deadCardFeature.getFeature(), killerCard, deadCard);
             }
@@ -560,7 +560,7 @@ public class FeatureResolver {
             }
         }
         boolean reincarnated = false;
-        for (FeatureInfo deadCardFeature : deadCard.getAllUsableFeatures()) {
+        for (SkillUseInfo deadCardFeature : deadCard.getAllUsableFeatures()) {
             if (deadCardFeature.getType() == SkillType.转生) {
                 if (ReincarnationFeature.apply(this, deadCardFeature.getFeature(), deadCard)) {
                     reincarnated = true;
@@ -578,7 +578,7 @@ public class FeatureResolver {
 
     public void resolvePostAttackFeature(CardInfo attacker, CardInfo defender, Player defenderHero, Skill attackFeature,
             int normalAttackDamage) throws HeroDieSignal {
-        for (FeatureInfo feature : attacker.getNormalUsableFeatures()) {
+        for (SkillUseInfo feature : attacker.getNormalUsableFeatures()) {
             if (!attacker.isDead()) {
                 if (feature.getType() == SkillType.吸血) {
                     BloodDrainFeature.apply(feature.getFeature(), this, attacker, defender, normalAttackDamage);
@@ -596,7 +596,7 @@ public class FeatureResolver {
     public void resolveExtraAttackFeature(CardInfo attacker, CardInfo defender, Player defenderHero, Skill attackFeature,
             int normalAttackDamage) throws HeroDieSignal {
 
-        for (FeatureInfo feature : attacker.getNormalUsableFeatures()) {
+        for (SkillUseInfo feature : attacker.getNormalUsableFeatures()) {
             if (!attacker.isDead()) {
                 if (feature.getType() == SkillType.穿刺) {
                     PenetrationFeature.apply(feature.getFeature(), this, attacker, defenderHero, normalAttackDamage);
@@ -622,7 +622,7 @@ public class FeatureResolver {
     }
 
     public void resolvePreAttackHeroFeature(CardInfo attacker, Player defenderPlayer) {
-        for (FeatureInfo feature : attacker.getNormalUsableFeatures()) {
+        for (SkillUseInfo feature : attacker.getNormalUsableFeatures()) {
            if (feature.getType() == SkillType.英雄杀手) {
                HeroKillerFeature.apply(this, feature, attacker, defenderPlayer);
            }
@@ -638,7 +638,7 @@ public class FeatureResolver {
      * @throws HeroDieSignal
      */
     public void resolvePreAttackCardFeature(CardInfo attacker, CardInfo defender, boolean prior) throws HeroDieSignal {
-        for (FeatureInfo feature : attacker.getNormalUsableFeatures()) {
+        for (SkillUseInfo feature : attacker.getNormalUsableFeatures()) {
             if (prior) {
                 if (feature.getType() == SkillType.送还) {
                     ReturnFeature.apply(this, feature.getFeature(), attacker, defender);
@@ -785,7 +785,7 @@ public class FeatureResolver {
             if (defender == null) {
                 continue;
             }
-            for (FeatureInfo defenderFeature : defender.getNormalUsableFeatures()) {
+            for (SkillUseInfo defenderFeature : defender.getNormalUsableFeatures()) {
                 if (defenderFeature.getType() == SkillType.守护) {
                     remainingDamage = GuardFeature.apply(defenderFeature.getFeature(), cardFeature, this, attacker, defender, remainingDamage);
                     if (remainingDamage == 0) {
@@ -805,7 +805,7 @@ public class FeatureResolver {
         if (status.containsStatus(CardStatusType.锁定)) {
             return;
         }
-        for (FeatureInfo cardFeature : card.getNormalUsableFeatures()) {
+        for (SkillUseInfo cardFeature : card.getNormalUsableFeatures()) {
             if (cardFeature.getType() == SkillType.回春) {
                 RejuvenateFeature.apply(cardFeature.getFeature(), this, card);
             }
@@ -818,12 +818,12 @@ public class FeatureResolver {
         }
     }
 
-    public OnDamagedResult attackCard(CardInfo attacker, CardInfo defender, FeatureInfo featureInfo) throws HeroDieSignal {
-        return attackCard(attacker, defender, featureInfo, attacker.getCurrentAT());
+    public OnDamagedResult attackCard(CardInfo attacker, CardInfo defender, SkillUseInfo skillUseInfo) throws HeroDieSignal {
+        return attackCard(attacker, defender, skillUseInfo, attacker.getCurrentAT());
     }
 
-    public OnDamagedResult attackCard(CardInfo attacker, CardInfo defender, FeatureInfo featureInfo, int damage) throws HeroDieSignal {
-        Skill skill = featureInfo == null ? null : featureInfo.getFeature();
+    public OnDamagedResult attackCard(CardInfo attacker, CardInfo defender, SkillUseInfo skillUseInfo, int damage) throws HeroDieSignal {
+        Skill skill = skillUseInfo == null ? null : skillUseInfo.getFeature();
         boolean bingo = !attacker.getStatus().containsStatus(CardStatusType.麻痹);
         this.stage.getUI().useSkill(attacker, defender, null, bingo);
 
@@ -861,7 +861,7 @@ public class FeatureResolver {
     public void resolveSummoningFeature(CardInfo card, Field myField, Field opField, CardInfo reviver) throws HeroDieSignal {
         LegionBuffFeature.apply(this, card);
         for (CardInfo fieldCard : myField.getAliveCards()) {
-            for (FeatureInfo feature : fieldCard.getNormalUsableFeatures()) {
+            for (SkillUseInfo feature : fieldCard.getNormalUsableFeatures()) {
                 if (feature.getType() == SkillType.王国之力) {
                     RaceBuffFeature.apply(this, feature, fieldCard, Race.KINGDOM, SkillEffectType.ATTACK_CHANGE);
                 } else if (feature.getType() == SkillType.王国守护) {
@@ -887,14 +887,14 @@ public class FeatureResolver {
                 } 
             }
         }
-        for (FeatureInfo feature : card.getNormalUsableFeatures()) {
+        for (SkillUseInfo feature : card.getNormalUsableFeatures()) {
             if (feature.getType() == SkillType.献祭) {
                 SacrificeFeature.apply(this, feature, card, reviver);
             } else if (feature.getType() == SkillType.反噬) {
                 CounterBiteFeature.apply(feature, this, card);
             }
         }
-        for (FeatureInfo feature : card.getUsableSummonFeatures()) {
+        for (SkillUseInfo feature : card.getUsableSummonFeatures()) {
             if (feature.getType() == SkillType.烈焰风暴) {
                 FireMagicFeature.apply(feature.getFeature(), this, card, opField.getOwner(), -1);
             } else if (feature.getType() == SkillType.雷暴) {
@@ -936,7 +936,7 @@ public class FeatureResolver {
     }
 
     public void resolveLeaveFeature(CardInfo card, Skill cardFeature) {
-        for (FeatureInfo deadCardFeature : card.getNormalUsableFeatures()) {
+        for (SkillUseInfo deadCardFeature : card.getNormalUsableFeatures()) {
             if (deadCardFeature.getType() == SkillType.王国之力) {
                 RaceBuffFeature.remove(this, deadCardFeature, card, Race.KINGDOM);
             } else if (deadCardFeature.getType() == SkillType.王国守护) {
@@ -995,10 +995,10 @@ public class FeatureResolver {
         }
     }
 
-    public BlockStatusResult resolveBlockStatusFeature(EntityInfo attacker, CardInfo victim, FeatureInfo feature,
+    public BlockStatusResult resolveBlockStatusFeature(EntityInfo attacker, CardInfo victim, SkillUseInfo feature,
             CardStatusItem item) {
         boolean blocked = false;
-        for (FeatureInfo blockFeature : victim.getNormalUsableFeatures()) {
+        for (SkillUseInfo blockFeature : victim.getNormalUsableFeatures()) {
             if (blockFeature.getType() == SkillType.脱困) {
                 blocked = EscapeFeature.isStatusEscaped(blockFeature.getFeature(), this, item, victim);
             }
@@ -1030,7 +1030,7 @@ public class FeatureResolver {
      * @return Whether block is disabled
      */
     public boolean resolveCounterBlockFeature(Skill cardFeature, CardInfo attacker, CardInfo defender) {
-        for (FeatureInfo attackerFeature : attacker.getAllUsableFeatures()) {
+        for (SkillUseInfo attackerFeature : attacker.getAllUsableFeatures()) {
             if (attackerFeature.getType() == SkillType.弱点攻击) {
                 return WeakPointAttackFeature.isBlockFeatureDisabled(this, attackerFeature.getFeature(), cardFeature,
                         attacker, defender);

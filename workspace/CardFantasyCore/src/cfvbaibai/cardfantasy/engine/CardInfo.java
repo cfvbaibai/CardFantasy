@@ -24,7 +24,7 @@ public class CardInfo extends EntityInfo {
     @NonSerializable
     private Player owner;
     @NonSerializable
-    private List<FeatureInfo> features;
+    private List<SkillUseInfo> features;
     // Used to record the previous position after card dies.
     private int cachedPosition;
     private boolean deadOnce;
@@ -40,9 +40,9 @@ public class CardInfo extends EntityInfo {
         this.status = new CardStatus();
         this.owner = owner;
         this.effects = new HashMap<SkillType, List<SkillEffect>>();
-        this.features = new ArrayList<FeatureInfo>();
+        this.features = new ArrayList<SkillUseInfo>();
         for (CardSkill feature : card.getAllFeatures()) {
-            this.features.add(new FeatureInfo(this, feature));
+            this.features.add(new SkillUseInfo(this, feature));
         }
         this.cachedPosition = -1;
         this.deadOnce = false;
@@ -194,7 +194,7 @@ public class CardInfo extends EntityInfo {
         this.setSummonDelay(this.card.getSummonSpeed());
     }
 
-    private List<FeatureInfo> getAllFeatures() {
+    private List<SkillUseInfo> getAllFeatures() {
         return this.features;
     }
 
@@ -202,9 +202,9 @@ public class CardInfo extends EntityInfo {
         return getCard().getRace();
     }
 
-    public List<FeatureInfo> getUsableSummonFeatures() {
-        List<FeatureInfo> features = new ArrayList<FeatureInfo>();
-        for (FeatureInfo feature : this.getAllUsableFeatures()) {
+    public List<SkillUseInfo> getUsableSummonFeatures() {
+        List<SkillUseInfo> features = new ArrayList<SkillUseInfo>();
+        for (SkillUseInfo feature : this.getAllUsableFeatures()) {
             CardSkill cardSkill = (CardSkill)feature.getFeature();
             if (cardSkill.isSummonFeature()) {
                 features.add(feature);
@@ -213,9 +213,9 @@ public class CardInfo extends EntityInfo {
         return features;
     }
 
-    public List<FeatureInfo> getUsableDeathFeatures() {
-        List<FeatureInfo> features = new ArrayList<FeatureInfo>();
-        for (FeatureInfo feature : this.getAllUsableFeatures()) {
+    public List<SkillUseInfo> getUsableDeathFeatures() {
+        List<SkillUseInfo> features = new ArrayList<SkillUseInfo>();
+        for (SkillUseInfo feature : this.getAllUsableFeatures()) {
             CardSkill cardSkill = (CardSkill)feature.getFeature();
             if (cardSkill.isDeathFeature()) {
                 features.add(feature);
@@ -224,9 +224,9 @@ public class CardInfo extends EntityInfo {
         return features;
     }
 
-    public List<FeatureInfo> getNormalUsableFeatures() {
-        List<FeatureInfo> features = new ArrayList<FeatureInfo>();
-        for (FeatureInfo feature : this.getAllUsableFeatures()) {
+    public List<SkillUseInfo> getNormalUsableFeatures() {
+        List<SkillUseInfo> features = new ArrayList<SkillUseInfo>();
+        for (SkillUseInfo feature : this.getAllUsableFeatures()) {
             CardSkill cardSkill = (CardSkill)feature.getFeature();
             if (!cardSkill.isDeathFeature() && !cardSkill.isSummonFeature()) {
                 features.add(feature);
@@ -235,13 +235,13 @@ public class CardInfo extends EntityInfo {
         return features;
     }
     
-    public List<FeatureInfo> getAllUsableFeatures() {
+    public List<SkillUseInfo> getAllUsableFeatures() {
         return getUsableFeatures();
     }
 
-    private List<FeatureInfo> getUsableFeatures() {
-        List<FeatureInfo> features = new ArrayList<FeatureInfo>(6);
-        for (FeatureInfo feature : this.getAllFeatures()) {
+    private List<SkillUseInfo> getUsableFeatures() {
+        List<SkillUseInfo> features = new ArrayList<SkillUseInfo>(6);
+        for (SkillUseInfo feature : this.getAllFeatures()) {
             CardSkill cardSkill = (CardSkill)feature.getFeature();
             if (cardSkill.getUnlockLevel() <= this.getCard().getLevel()) {
                 features.add(feature);
@@ -269,7 +269,7 @@ public class CardInfo extends EntityInfo {
         return result;
     }
 
-    public List<SkillEffect> getEffectsCausedBy(FeatureInfo feature) {
+    public List<SkillEffect> getEffectsCausedBy(SkillUseInfo feature) {
         if (feature.getOwner() == null) {
             throw new CardFantasyRuntimeException("feature.getOwner() is null");
         }
@@ -392,7 +392,7 @@ public class CardInfo extends EntityInfo {
     }
 
     public boolean containsUsableFeaturesWithTag(SkillTag tag) {
-        for (FeatureInfo feature : this.getAllUsableFeatures()) {
+        for (SkillUseInfo feature : this.getAllUsableFeatures()) {
             CardSkill cardSkill = (CardSkill) feature.getFeature();
             if (cardSkill.getType().containsTag(tag)) {
                 return true;
@@ -422,9 +422,9 @@ public class CardInfo extends EntityInfo {
     }
     
     public boolean containsUsableFeature(SkillType type) {
-        List<FeatureInfo> features = this.getAllUsableFeatures();
-        for (FeatureInfo featureInfo : features) {
-            if (featureInfo.getType() == type) {
+        List<SkillUseInfo> features = this.getAllUsableFeatures();
+        for (SkillUseInfo skillUseInfo : features) {
+            if (skillUseInfo.getType() == type) {
                 return true;
             }
         }
@@ -435,16 +435,16 @@ public class CardInfo extends EntityInfo {
         return this.card.getStar();
     }
 
-    public boolean hasUsed(FeatureInfo featureInfo) {
+    public boolean hasUsed(SkillUseInfo skillUseInfo) {
         for (SkillEffect effect : this.getEffects()) {
-            if (effect.getCause() == featureInfo && effect.getType() == SkillEffectType.SKILL_USED) {
+            if (effect.getCause() == skillUseInfo && effect.getType() == SkillEffectType.SKILL_USED) {
                 return true;
             }
         }
         return false;
     }
     
-    public void setUsed(FeatureInfo featureInfo) {
-        this.addEffect(new SkillEffect(SkillEffectType.SKILL_USED, featureInfo, 0, true));
+    public void setUsed(SkillUseInfo skillUseInfo) {
+        this.addEffect(new SkillEffect(SkillEffectType.SKILL_USED, skillUseInfo, 0, true));
     }
 }

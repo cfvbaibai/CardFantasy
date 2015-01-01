@@ -8,16 +8,16 @@ import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.EntityInfo;
 import cfvbaibai.cardfantasy.engine.SkillEffect;
 import cfvbaibai.cardfantasy.engine.SkillEffectType;
-import cfvbaibai.cardfantasy.engine.FeatureInfo;
+import cfvbaibai.cardfantasy.engine.SkillUseInfo;
 import cfvbaibai.cardfantasy.engine.FeatureResolver;
 import cfvbaibai.cardfantasy.engine.Field;
 
 public final class EnergyArmorFeature {
-    public static void apply(FeatureResolver resolver, FeatureInfo featureInfo, EntityInfo caster, int targetCount) {
+    public static void apply(FeatureResolver resolver, SkillUseInfo skillUseInfo, EntityInfo caster, int targetCount) {
         if (caster == null) {
             throw new CardFantasyRuntimeException("caster cannot be null");
         }
-        Skill skill = featureInfo.getFeature();
+        Skill skill = skillUseInfo.getFeature();
         int impact = skill.getImpact();
         Field field = caster.getOwner().getField();
         List<CardInfo> targets = resolver.getStage().getRandomizer().pickRandom(
@@ -25,11 +25,11 @@ public final class EnergyArmorFeature {
         resolver.getStage().getUI().useSkill(caster, targets, skill, true);
         for (CardInfo target : targets) {
             resolver.getStage().getUI().adjustHP(caster, target, impact, skill);
-            target.addEffect(new SkillEffect(SkillEffectType.MAXHP_CHANGE, featureInfo, impact, false));
+            target.addEffect(new SkillEffect(SkillEffectType.MAXHP_CHANGE, skillUseInfo, impact, false));
         }
     }
 
-    public static void remove(FeatureResolver resolver, FeatureInfo feature, EntityInfo caster) {
+    public static void remove(FeatureResolver resolver, SkillUseInfo feature, EntityInfo caster) {
         if (caster == null) {
             throw new CardFantasyRuntimeException("card cannot be null");
         }

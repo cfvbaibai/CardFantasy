@@ -6,7 +6,7 @@ import cfvbaibai.cardfantasy.GameUI;
 import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.CardStatusItem;
-import cfvbaibai.cardfantasy.engine.FeatureInfo;
+import cfvbaibai.cardfantasy.engine.SkillUseInfo;
 import cfvbaibai.cardfantasy.engine.FeatureResolver;
 import cfvbaibai.cardfantasy.engine.HeroDieSignal;
 import cfvbaibai.cardfantasy.engine.Player;
@@ -17,9 +17,9 @@ import cfvbaibai.cardfantasy.engine.Player;
  * Can be blocked by Immue
  */
 public final class TrapFeature {
-    public static void apply(FeatureInfo featureInfo, FeatureResolver resolver, CardInfo attacker, Player defender)
+    public static void apply(SkillUseInfo skillUseInfo, FeatureResolver resolver, CardInfo attacker, Player defender)
             throws HeroDieSignal {
-        Skill skill = featureInfo.getFeature();
+        Skill skill = skillUseInfo.getFeature();
         int targetCount = skill.getImpact();
         List<CardInfo> victims = resolver.getStage().getRandomizer().pickRandom(
             defender.getField().toList(), targetCount, true, null);
@@ -30,7 +30,7 @@ public final class TrapFeature {
                 continue;
             }
             if (resolver.getStage().getRandomizer().roll100(65)) {
-                CardStatusItem status = CardStatusItem.trapped(featureInfo);
+                CardStatusItem status = CardStatusItem.trapped(skillUseInfo);
                 ui.addCardStatus(attacker, victim, skill, status);
                 victim.addStatus(status);
             }

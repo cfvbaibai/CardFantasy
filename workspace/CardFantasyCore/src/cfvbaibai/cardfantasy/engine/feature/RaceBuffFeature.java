@@ -6,24 +6,24 @@ import cfvbaibai.cardfantasy.data.Race;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.SkillEffect;
 import cfvbaibai.cardfantasy.engine.SkillEffectType;
-import cfvbaibai.cardfantasy.engine.FeatureInfo;
+import cfvbaibai.cardfantasy.engine.SkillUseInfo;
 import cfvbaibai.cardfantasy.engine.FeatureResolver;
 import cfvbaibai.cardfantasy.engine.Field;
 
 public final class RaceBuffFeature {
-    public static void apply(FeatureResolver resolver, FeatureInfo featureInfo, CardInfo card, Race race,
+    public static void apply(FeatureResolver resolver, SkillUseInfo skillUseInfo, CardInfo card, Race race,
             SkillEffectType effectType) {
         if (card == null) {
             throw new CardFantasyRuntimeException("card cannot be null");
         }
-        Skill skill = featureInfo.getFeature();
+        Skill skill = skillUseInfo.getFeature();
         int impact = skill.getImpact();
         Field field = card.getOwner().getField();
         for (CardInfo ally : field.getAliveCards()) {
             if (ally == card || race != null && ally.getRace() != race) {
                 continue;
             }
-            if (ally.getEffectsCausedBy(featureInfo).isEmpty()) {
+            if (ally.getEffectsCausedBy(skillUseInfo).isEmpty()) {
                 resolver.getStage().getUI().useSkill(card, skill, true);
                 if (effectType == SkillEffectType.ATTACK_CHANGE) {
                     resolver.getStage().getUI().adjustAT(card, ally, impact, skill);
@@ -32,12 +32,12 @@ public final class RaceBuffFeature {
                 } else {
                     throw new CardFantasyRuntimeException("Invalid effect type: " + effectType.name());
                 }
-                ally.addEffect(new SkillEffect(effectType, featureInfo, impact, false));
+                ally.addEffect(new SkillEffect(effectType, skillUseInfo, impact, false));
             }
         }
     }
 
-    public static void remove(FeatureResolver resolver, FeatureInfo feature, CardInfo card, Race race) {
+    public static void remove(FeatureResolver resolver, SkillUseInfo feature, CardInfo card, Race race) {
         if (card == null) {
             throw new CardFantasyRuntimeException("card cannot be null");
         }

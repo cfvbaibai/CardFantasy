@@ -9,7 +9,7 @@ import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.EntityInfo;
 import cfvbaibai.cardfantasy.engine.SkillEffect;
 import cfvbaibai.cardfantasy.engine.SkillEffectType;
-import cfvbaibai.cardfantasy.engine.FeatureInfo;
+import cfvbaibai.cardfantasy.engine.SkillUseInfo;
 import cfvbaibai.cardfantasy.engine.FeatureResolver;
 import cfvbaibai.cardfantasy.engine.HeroDieSignal;
 
@@ -19,26 +19,26 @@ import cfvbaibai.cardfantasy.engine.HeroDieSignal;
  * Can be blocked by Immue.
  */
 public final class WeakenFeature {
-    public static void apply(FeatureResolver resolver, FeatureInfo featureInfo, CardInfo attacker, CardInfo defender,
+    public static void apply(FeatureResolver resolver, SkillUseInfo skillUseInfo, CardInfo attacker, CardInfo defender,
             int normalAttackDamage) throws HeroDieSignal {
         if (normalAttackDamage <= 0 || defender == null) {
             return;
         }
-        Skill skill = featureInfo.getFeature();
+        Skill skill = skillUseInfo.getFeature();
         resolver.getStage().getUI().useSkill(attacker, defender, skill, true);
         List<CardInfo> defenders = new ArrayList<CardInfo>();
         defenders.add(defender);
-        weakenCard(resolver, featureInfo, skill.getImpact(), attacker, defenders);
+        weakenCard(resolver, skillUseInfo, skill.getImpact(), attacker, defenders);
     }
 
-    public static int weakenCard(FeatureResolver resolver, FeatureInfo featureInfo, int attackToWeaken, EntityInfo attacker,
+    public static int weakenCard(FeatureResolver resolver, SkillUseInfo skillUseInfo, int attackToWeaken, EntityInfo attacker,
             List<CardInfo> defenders) throws HeroDieSignal {
         int totalAttackWeakened = 0;
         for (CardInfo defender : defenders) {
             if (defender == null) {
                 continue;
             }
-            Skill skill = featureInfo.getFeature();
+            Skill skill = skillUseInfo.getFeature();
             if (!resolver.resolveAttackBlockingFeature(attacker, defender, skill, 1).isAttackable()) {
                 continue;
             }
@@ -66,7 +66,7 @@ public final class WeakenFeature {
                 }
             }
 
-            defender.addEffect(new SkillEffect(SkillEffectType.ATTACK_CHANGE, featureInfo, -attackWeakened, true));
+            defender.addEffect(new SkillEffect(SkillEffectType.ATTACK_CHANGE, skillUseInfo, -attackWeakened, true));
             totalAttackWeakened += attackWeakened;
         }
         return totalAttackWeakened;

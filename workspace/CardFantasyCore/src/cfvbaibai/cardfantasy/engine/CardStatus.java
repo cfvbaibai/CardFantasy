@@ -70,7 +70,7 @@ public class CardStatus {
         return sb.toString();
     }
 
-    public boolean containsStatusCausedBy(FeatureInfo feature, CardStatusType type) {
+    public boolean containsStatusCausedBy(SkillUseInfo feature, CardStatusType type) {
         List<CardStatusItem> items = this.getStatusOf(type);
         for (CardStatusItem item : items) {
             if (item.getCause().equals(feature)) {

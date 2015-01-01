@@ -4,7 +4,7 @@ import cfvbaibai.cardfantasy.NonSerializable;
 import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.data.SkillType;
 
-public class FeatureInfo {
+public class SkillUseInfo {
 
     @NonSerializable
     private EntityInfo owner;
@@ -22,7 +22,7 @@ public class FeatureInfo {
         return this.skill.getType();
     }
 
-    public FeatureInfo(EntityInfo owner, Skill skill) {
+    public SkillUseInfo(EntityInfo owner, Skill skill) {
         this.skill = skill;
         this.owner = owner;
     }
@@ -32,8 +32,8 @@ public class FeatureInfo {
         if (obj == null) {
             return false;
         }
-        if (obj instanceof FeatureInfo) {
-            FeatureInfo other = (FeatureInfo)obj;
+        if (obj instanceof SkillUseInfo) {
+            SkillUseInfo other = (SkillUseInfo)obj;
             return getOwner() == other.getOwner() && getFeature().equals(other.getFeature());
         }
         return false;

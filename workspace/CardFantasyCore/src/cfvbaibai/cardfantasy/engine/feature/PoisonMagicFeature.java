@@ -7,16 +7,16 @@ import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.CardStatusItem;
 import cfvbaibai.cardfantasy.engine.EntityInfo;
-import cfvbaibai.cardfantasy.engine.FeatureInfo;
+import cfvbaibai.cardfantasy.engine.SkillUseInfo;
 import cfvbaibai.cardfantasy.engine.FeatureResolver;
 import cfvbaibai.cardfantasy.engine.HeroDieSignal;
 import cfvbaibai.cardfantasy.engine.OnAttackBlockingResult;
 import cfvbaibai.cardfantasy.engine.Player;
 
 public final class PoisonMagicFeature {
-    public static void apply(FeatureInfo featureInfo, FeatureResolver resolver, EntityInfo attacker, Player defender,
+    public static void apply(SkillUseInfo skillUseInfo, FeatureResolver resolver, EntityInfo attacker, Player defender,
             int victimCount) throws HeroDieSignal {
-        Skill skill = featureInfo.getFeature();
+        Skill skill = skillUseInfo.getFeature();
         List<CardInfo> victims = resolver.getStage().getRandomizer().pickRandom(
             defender.getField().toList(), victimCount, true, null);
         GameUI ui = resolver.getStage().getUI();
@@ -36,7 +36,7 @@ public final class PoisonMagicFeature {
             if (cardDead) {
                 resolver.resolveDeathFeature(attacker, victim, skill);
             } else {
-                CardStatusItem status = CardStatusItem.poisoned(damage, featureInfo);
+                CardStatusItem status = CardStatusItem.poisoned(damage, skillUseInfo);
                 ui.addCardStatus(attacker, victim, skill, status);
                 victim.addStatus(status);
             }

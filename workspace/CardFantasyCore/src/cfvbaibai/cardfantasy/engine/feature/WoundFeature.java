@@ -4,11 +4,11 @@ import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.data.SkillType;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.CardStatusItem;
-import cfvbaibai.cardfantasy.engine.FeatureInfo;
+import cfvbaibai.cardfantasy.engine.SkillUseInfo;
 import cfvbaibai.cardfantasy.engine.FeatureResolver;
 
 public final class WoundFeature {
-    public static void apply(FeatureResolver resolver, FeatureInfo featureInfo, Skill attackFeature, CardInfo attacker, CardInfo defender,
+    public static void apply(FeatureResolver resolver, SkillUseInfo skillUseInfo, Skill attackFeature, CardInfo attacker, CardInfo defender,
             int normalAttackDamage) {
         if (normalAttackDamage <= 0) {
             return;
@@ -19,9 +19,9 @@ public final class WoundFeature {
         if (attackFeature != null && attackFeature.getType() == SkillType.横扫) {
             return;
         }
-        Skill skill = featureInfo.getFeature();
+        Skill skill = skillUseInfo.getFeature();
         resolver.getStage().getUI().useSkill(attacker, defender, skill, true);
-        CardStatusItem status = CardStatusItem.wound(featureInfo);
+        CardStatusItem status = CardStatusItem.wound(skillUseInfo);
         resolver.getStage().getUI().addCardStatus(attacker, defender, skill, status);
         defender.addStatus(status);
     }

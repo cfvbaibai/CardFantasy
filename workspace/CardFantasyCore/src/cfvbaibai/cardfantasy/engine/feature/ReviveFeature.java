@@ -5,13 +5,13 @@ import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.data.SkillTag;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.CardStatusItem;
-import cfvbaibai.cardfantasy.engine.FeatureInfo;
+import cfvbaibai.cardfantasy.engine.SkillUseInfo;
 import cfvbaibai.cardfantasy.engine.FeatureResolver;
 import cfvbaibai.cardfantasy.engine.Grave;
 import cfvbaibai.cardfantasy.engine.HeroDieSignal;
 
 public final class ReviveFeature {
-    public static void apply(FeatureResolver resolver, FeatureInfo featureInfo, CardInfo reviver) throws HeroDieSignal {
+    public static void apply(FeatureResolver resolver, SkillUseInfo skillUseInfo, CardInfo reviver) throws HeroDieSignal {
         if (reviver == null) {
             throw new CardFantasyRuntimeException("reviver should not be null");
         }
@@ -26,7 +26,7 @@ public final class ReviveFeature {
         if (!hasRevivableCard) {
             return;
         }
-        Skill skill = featureInfo.getFeature();
+        Skill skill = skillUseInfo.getFeature();
         // Grave is a stack, find the last-in card and revive it.
         CardInfo cardToRevive = null;
         while (true) {
@@ -44,7 +44,7 @@ public final class ReviveFeature {
         resolver.getStage().getUI().useSkill(reviver, cardToRevive, skill, true);
         reviver.getOwner().getGrave().removeCard(cardToRevive);
         resolver.summonCard(reviver.getOwner(), cardToRevive, reviver);
-        CardStatusItem item = CardStatusItem.weak(featureInfo);
+        CardStatusItem item = CardStatusItem.weak(skillUseInfo);
         resolver.getStage().getUI().addCardStatus(reviver, cardToRevive, skill, item);
         cardToRevive.addStatus(item);
     }

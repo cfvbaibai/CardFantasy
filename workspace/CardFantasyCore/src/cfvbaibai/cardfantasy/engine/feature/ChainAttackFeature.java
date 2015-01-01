@@ -8,13 +8,13 @@ import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.SkillEffect;
 import cfvbaibai.cardfantasy.engine.SkillEffectType;
-import cfvbaibai.cardfantasy.engine.FeatureInfo;
+import cfvbaibai.cardfantasy.engine.SkillUseInfo;
 import cfvbaibai.cardfantasy.engine.FeatureResolver;
 import cfvbaibai.cardfantasy.engine.HeroDieSignal;
 import cfvbaibai.cardfantasy.engine.OnDamagedResult;
 
 public final class ChainAttackFeature {
-    public static void apply(FeatureResolver resolver, FeatureInfo featureInfo, CardInfo attacker, CardInfo defender, Skill attackFeature)
+    public static void apply(FeatureResolver resolver, SkillUseInfo skillUseInfo, CardInfo attacker, CardInfo defender, Skill attackFeature)
             throws HeroDieSignal {
         if (attacker == null) {
             return;
@@ -24,9 +24,9 @@ public final class ChainAttackFeature {
             // Sweep & ChainAttack itself cannot trigger ChainAttack
             return;
         }
-        Skill skill = featureInfo.getFeature();
+        Skill skill = skillUseInfo.getFeature();
         // Prevent stack overflow...
-        if (!attacker.getEffectsCausedBy(featureInfo).isEmpty()) {
+        if (!attacker.getEffectsCausedBy(skillUseInfo).isEmpty()) {
             return;
         }
         
@@ -47,11 +47,11 @@ public final class ChainAttackFeature {
 
         int chainAT = skill.getImpact() * attacker.getLevel1AT() / 100;
         int adjAT = chainAT - attacker.getCurrentAT();
-        SkillEffect effect = new SkillEffect(SkillEffectType.ATTACK_CHANGE, featureInfo, adjAT, false);
+        SkillEffect effect = new SkillEffect(SkillEffectType.ATTACK_CHANGE, skillUseInfo, adjAT, false);
         ui.adjustAT(attacker, attacker, adjAT, skill);
         attacker.addEffect(effect);
         for (CardInfo victim : victims) {
-            OnDamagedResult damagedResult = resolver.attackCard(attacker, victim, featureInfo);
+            OnDamagedResult damagedResult = resolver.attackCard(attacker, victim, skillUseInfo);
             if (damagedResult == null) {
                 // 闪避导致连锁中断
                 break;

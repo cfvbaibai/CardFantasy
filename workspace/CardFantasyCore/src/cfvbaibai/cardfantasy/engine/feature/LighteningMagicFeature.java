@@ -7,7 +7,7 @@ import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.CardStatusItem;
 import cfvbaibai.cardfantasy.engine.EntityInfo;
-import cfvbaibai.cardfantasy.engine.FeatureInfo;
+import cfvbaibai.cardfantasy.engine.SkillUseInfo;
 import cfvbaibai.cardfantasy.engine.FeatureResolver;
 import cfvbaibai.cardfantasy.engine.HeroDieSignal;
 import cfvbaibai.cardfantasy.engine.OnAttackBlockingResult;
@@ -21,9 +21,9 @@ import cfvbaibai.cardfantasy.engine.Player;
  * dying feature.
  */
 public final class LighteningMagicFeature {
-    public static void apply(FeatureInfo featureInfo, FeatureResolver resolver, EntityInfo attacker, Player defender,
+    public static void apply(SkillUseInfo skillUseInfo, FeatureResolver resolver, EntityInfo attacker, Player defender,
             int victimCount, int paralyzeRate) throws HeroDieSignal {
-        Skill skill = featureInfo.getFeature();
+        Skill skill = skillUseInfo.getFeature();
         List<CardInfo> victims = resolver.getStage().getRandomizer().pickRandom(
             defender.getField().toList(), victimCount, true, null);
         GameUI ui = resolver.getStage().getUI();
@@ -43,8 +43,8 @@ public final class LighteningMagicFeature {
             if (cardDead) {
                 resolver.resolveDeathFeature(attacker, victim, skill);
             } else if (resolver.getStage().getRandomizer().roll100(paralyzeRate)) {
-                CardStatusItem status = CardStatusItem.paralyzed(featureInfo);
-                if (!resolver.resolveBlockStatusFeature(attacker, victim, featureInfo, status).isBlocked()) {
+                CardStatusItem status = CardStatusItem.paralyzed(skillUseInfo);
+                if (!resolver.resolveBlockStatusFeature(attacker, victim, skillUseInfo, status).isBlocked()) {
                     ui.addCardStatus(attacker, victim, skill, status);
                     victim.addStatus(status);
                 }

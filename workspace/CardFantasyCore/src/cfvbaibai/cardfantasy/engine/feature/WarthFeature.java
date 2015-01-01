@@ -8,25 +8,25 @@ import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.SkillEffect;
 import cfvbaibai.cardfantasy.engine.SkillEffectType;
-import cfvbaibai.cardfantasy.engine.FeatureInfo;
+import cfvbaibai.cardfantasy.engine.SkillUseInfo;
 import cfvbaibai.cardfantasy.engine.FeatureResolver;
 
 public final class WarthFeature {
-    public static void apply(FeatureResolver resolver, FeatureInfo featureInfo, CardInfo attacker, CardInfo defender) {
+    public static void apply(FeatureResolver resolver, SkillUseInfo skillUseInfo, CardInfo attacker, CardInfo defender) {
         if (attacker == null || attacker.isDead()) {
             throw new CardFantasyRuntimeException("attacker is null or dead!");
         }
-        Skill skill = featureInfo.getFeature();
+        Skill skill = skillUseInfo.getFeature();
         int adjAT = skill.getImpact() * attacker.getLevel1AT() / 100;
         GameUI ui = resolver.getStage().getUI();
         if (attacker.getHP() < defender.getHP()) {
             ui.useSkill(attacker, defender, skill, true);
             ui.adjustAT(attacker, attacker, adjAT, skill);
-            attacker.addEffect(new SkillEffect(SkillEffectType.ATTACK_CHANGE, featureInfo, adjAT, false));
+            attacker.addEffect(new SkillEffect(SkillEffectType.ATTACK_CHANGE, skillUseInfo, adjAT, false));
         }
     }
 
-    public static void remove(FeatureResolver resolver, FeatureInfo feature, CardInfo card) {
+    public static void remove(FeatureResolver resolver, SkillUseInfo feature, CardInfo card) {
         List<SkillEffect> effects = card.getEffectsCausedBy(feature);
         for (SkillEffect effect : effects) {
             resolver.getStage().getUI().loseAdjustATEffect(card, effect);

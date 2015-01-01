@@ -5,17 +5,17 @@ import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.SkillEffect;
 import cfvbaibai.cardfantasy.engine.SkillEffectType;
-import cfvbaibai.cardfantasy.engine.FeatureInfo;
+import cfvbaibai.cardfantasy.engine.SkillUseInfo;
 import cfvbaibai.cardfantasy.engine.FeatureResolver;
 import cfvbaibai.cardfantasy.engine.HeroDieSignal;
 import cfvbaibai.cardfantasy.engine.OnAttackBlockingResult;
 
 public final class DiseaseFeature {
-    public static void apply(FeatureInfo featureInfo, FeatureResolver resolver, CardInfo attacker, CardInfo defender, int normalAttackDamage) throws HeroDieSignal {
+    public static void apply(SkillUseInfo skillUseInfo, FeatureResolver resolver, CardInfo attacker, CardInfo defender, int normalAttackDamage) throws HeroDieSignal {
         if (normalAttackDamage <= 0 || defender == null || defender.isDead()) {
             return;
         }
-        Skill skill = featureInfo.getFeature();
+        Skill skill = skillUseInfo.getFeature();
         int damage = skill.getImpact();
         GameUI ui = resolver.getStage().getUI();
         ui.useSkill(attacker, defender, skill, true);
@@ -28,6 +28,6 @@ public final class DiseaseFeature {
         ui.attackCard(attacker, defender, skill, damage);
         resolver.applyDamage(defender, damage);
         ui.adjustAT(attacker, defender, -damage, skill);
-        defender.addEffect(new SkillEffect(SkillEffectType.ATTACK_CHANGE, featureInfo, -damage, true));
+        defender.addEffect(new SkillEffect(SkillEffectType.ATTACK_CHANGE, skillUseInfo, -damage, true));
     }
 }

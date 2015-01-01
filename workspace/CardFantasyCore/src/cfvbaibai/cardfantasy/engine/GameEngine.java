@@ -217,12 +217,12 @@ public class GameEngine {
             List<CardStatusItem> statusItems = status.getStatusOf(CardStatusType.弱化);
             if (!statusItems.isEmpty()) {
                 CardInfo myCard = myField.getCard(i);
-                FeatureInfo featureInfo = statusItems.get(0).getCause();
+                SkillUseInfo skillUseInfo = statusItems.get(0).getCause();
                 ui.softened(myCard);
                 int adjAT = -myCard.getLevel1AT() / 2;
-                ui.adjustAT(featureInfo.getOwner(), myCard, adjAT, featureInfo.getFeature());
+                ui.adjustAT(skillUseInfo.getOwner(), myCard, adjAT, skillUseInfo.getFeature());
                 myField.getCard(i).addEffect(
-                    new SkillEffect(SkillEffectType.ATTACK_CHANGE, featureInfo, adjAT, false));
+                    new SkillEffect(SkillEffectType.ATTACK_CHANGE, skillUseInfo, adjAT, false));
             }
             if (status.containsStatus(CardStatusType.迷惑)) {
                 underControl = true;
@@ -320,15 +320,15 @@ public class GameEngine {
             resolver.removeStatus(myField.getCard(i), CardStatusType.麻痹);
             return;
         }
-        for (FeatureInfo featureInfo : myField.getCard(i).getNormalUsableFeatures()) {
-            if (featureInfo.getFeature().getType() == SkillType.横扫) {
-                ui.useSkill(myField.getCard(i), defender, featureInfo.getFeature(), true);
+        for (SkillUseInfo skillUseInfo : myField.getCard(i).getNormalUsableFeatures()) {
+            if (skillUseInfo.getFeature().getType() == SkillType.横扫) {
+                ui.useSkill(myField.getCard(i), defender, skillUseInfo.getFeature(), true);
             }
         }
         OnDamagedResult damagedResult = resolver.attackCard(myField.getCard(i), defender, null);
         if (damagedResult != null && damagedResult.originalDamage > 0 && myField.getCard(i) != null) {
-            for (FeatureInfo featureInfo : myField.getCard(i).getNormalUsableFeatures()) {
-                if (featureInfo.getFeature().getType() == SkillType.横扫) {
+            for (SkillUseInfo skillUseInfo : myField.getCard(i).getNormalUsableFeatures()) {
+                if (skillUseInfo.getFeature().getType() == SkillType.横扫) {
 
                     List<CardInfo> sweepDefenders = new ArrayList<CardInfo>();
                     if (i > 0 && opField.getCard(i - 1) != null) {
@@ -339,8 +339,8 @@ public class GameEngine {
                     }
 
                     for (CardInfo sweepDefender : sweepDefenders) {
-                        ui.useSkill(myField.getCard(i), sweepDefender, featureInfo.getFeature(), true);
-                        resolver.attackCard(myField.getCard(i), sweepDefender, featureInfo, damagedResult.originalDamage);
+                        ui.useSkill(myField.getCard(i), sweepDefender, skillUseInfo.getFeature(), true);
+                        resolver.attackCard(myField.getCard(i), sweepDefender, skillUseInfo, damagedResult.originalDamage);
                         // Physical attack cannot proceed if attacker is killed by counter attack skills.
                         if (myField.getCard(i) == null) {
                             break;

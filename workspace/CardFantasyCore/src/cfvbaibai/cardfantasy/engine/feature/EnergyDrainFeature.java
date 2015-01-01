@@ -7,31 +7,31 @@ import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.SkillEffect;
 import cfvbaibai.cardfantasy.engine.SkillEffectType;
-import cfvbaibai.cardfantasy.engine.FeatureInfo;
+import cfvbaibai.cardfantasy.engine.SkillUseInfo;
 import cfvbaibai.cardfantasy.engine.FeatureResolver;
 import cfvbaibai.cardfantasy.engine.HeroDieSignal;
 import cfvbaibai.cardfantasy.engine.OnAttackBlockingResult;
 import cfvbaibai.cardfantasy.engine.OnDamagedResult;
 
 public final class EnergyDrainFeature {
-    public static void apply(FeatureInfo featureInfo, FeatureResolver resolver, CardInfo attacker, CardInfo defender,
+    public static void apply(SkillUseInfo skillUseInfo, FeatureResolver resolver, CardInfo attacker, CardInfo defender,
             OnAttackBlockingResult result, OnDamagedResult damagedResult) throws HeroDieSignal {
         if (result.getDamage() == 0 || defender == null) {
             return;
         }
-        Skill skill = featureInfo.getFeature();
+        Skill skill = skillUseInfo.getFeature();
         int adjAT = attacker.getLevel1AT() * skill.getImpact() / 100;
 
         List<CardInfo> victims = new ArrayList<CardInfo>();
         victims.add(attacker);
         //resolver.getStage().getUI().useSkill(defender, attacker, feature, true);
-        int totalAttackWeakened = WeakenFeature.weakenCard(resolver, featureInfo, adjAT, defender, victims);
+        int totalAttackWeakened = WeakenFeature.weakenCard(resolver, skillUseInfo, adjAT, defender, victims);
         //resolver.getStage().getUI().adjustAT(defender, attacker, adjAT, feature);
         //attacker.addEffect(new FeatureEffect(FeatureEffectType.ATTACK_CHANGE, featureInfo, totalAttackWeakened, true));
         
         if (!defender.isDead()) {
             resolver.getStage().getUI().adjustAT(defender, defender, totalAttackWeakened, skill);
-            defender.addEffect(new SkillEffect(SkillEffectType.ATTACK_CHANGE, featureInfo, totalAttackWeakened, true));
+            defender.addEffect(new SkillEffect(SkillEffectType.ATTACK_CHANGE, skillUseInfo, totalAttackWeakened, true));
         }
         
         if (damagedResult != null) {

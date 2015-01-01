@@ -22,7 +22,7 @@ public class Player extends EntityInfo {
     private Field field;
     private OutField outField;
     private RuneBox runeBox;
-    private Map <Race, FeatureInfo> legionBuffFeatures;
+    private Map <Race, SkillUseInfo> legionBuffFeatures;
     private int hp;
     
     public Player(PlayerInfo playerInfo, StageInfo stage) {
@@ -34,12 +34,12 @@ public class Player extends EntityInfo {
         this.outField = new OutField();
         this.runeBox = new RuneBox(this, playerInfo.getRunes());
         this.hp = playerInfo.getMaxHP();
-        this.legionBuffFeatures = new HashMap <Race, FeatureInfo>();
+        this.legionBuffFeatures = new HashMap <Race, SkillUseInfo>();
         if (playerInfo.getLegion() != null) {
             Legion legion = playerInfo.getLegion();
             LegionInfo legionInfo = new LegionInfo(legion, this);
             for (Race race : Race.values()) {
-                legionBuffFeatures.put(race, new FeatureInfo(legionInfo, LegionSkill.create(legion, race)));
+                legionBuffFeatures.put(race, new SkillUseInfo(legionInfo, LegionSkill.create(legion, race)));
             }
         }
     }
@@ -143,7 +143,7 @@ public class Player extends EntityInfo {
         }
     }
     
-    public FeatureInfo getLegionBuffFeature(Race race) {
+    public SkillUseInfo getLegionBuffFeature(Race race) {
         if (this.legionBuffFeatures.containsKey(race)) {
             return this.legionBuffFeatures.get(race);
         } else {

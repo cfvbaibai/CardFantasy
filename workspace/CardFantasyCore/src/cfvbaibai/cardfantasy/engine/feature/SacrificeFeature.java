@@ -8,18 +8,18 @@ import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.SkillEffect;
 import cfvbaibai.cardfantasy.engine.SkillEffectType;
-import cfvbaibai.cardfantasy.engine.FeatureInfo;
+import cfvbaibai.cardfantasy.engine.SkillUseInfo;
 import cfvbaibai.cardfantasy.engine.FeatureResolver;
 import cfvbaibai.cardfantasy.engine.Field;
 import cfvbaibai.cardfantasy.engine.HeroDieSignal;
 import cfvbaibai.cardfantasy.engine.OnAttackBlockingResult;
 
 public final class SacrificeFeature {
-    public static void apply(FeatureResolver resolver, FeatureInfo featureInfo, CardInfo card, CardInfo reviver) throws HeroDieSignal {
-        if (card.hasUsed(featureInfo)) {
+    public static void apply(FeatureResolver resolver, SkillUseInfo skillUseInfo, CardInfo card, CardInfo reviver) throws HeroDieSignal {
+        if (card.hasUsed(skillUseInfo)) {
             return;
         }
-        Skill skill = featureInfo.getFeature();
+        Skill skill = skillUseInfo.getFeature();
         GameUI ui = resolver.getStage().getUI();
         Randomizer random = resolver.getStage().getRandomizer();
 
@@ -48,9 +48,9 @@ public final class SacrificeFeature {
         int adjAT = skill.getImpact() * card.getInitAT() / 100;
         ui.adjustHP(card, card, adjHP, skill);
         ui.adjustAT(card, card, adjAT, skill);
-        card.addEffect(new SkillEffect(SkillEffectType.MAXHP_CHANGE, featureInfo, adjHP, true));
-        card.addEffect(new SkillEffect(SkillEffectType.ATTACK_CHANGE, featureInfo, adjAT, true));
-        card.setUsed(featureInfo);
+        card.addEffect(new SkillEffect(SkillEffectType.MAXHP_CHANGE, skillUseInfo, adjHP, true));
+        card.addEffect(new SkillEffect(SkillEffectType.ATTACK_CHANGE, skillUseInfo, adjAT, true));
+        card.setUsed(skillUseInfo);
         ui.compactField(card.getOwner().getField());
     }
 }

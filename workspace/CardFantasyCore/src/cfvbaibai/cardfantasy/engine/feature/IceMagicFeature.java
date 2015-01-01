@@ -7,16 +7,16 @@ import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.CardStatusItem;
 import cfvbaibai.cardfantasy.engine.EntityInfo;
-import cfvbaibai.cardfantasy.engine.FeatureInfo;
+import cfvbaibai.cardfantasy.engine.SkillUseInfo;
 import cfvbaibai.cardfantasy.engine.FeatureResolver;
 import cfvbaibai.cardfantasy.engine.HeroDieSignal;
 import cfvbaibai.cardfantasy.engine.OnAttackBlockingResult;
 import cfvbaibai.cardfantasy.engine.Player;
 
 public final class IceMagicFeature {
-    public static void apply(FeatureInfo featureInfo, FeatureResolver resolver, EntityInfo attacker, Player defender,
+    public static void apply(SkillUseInfo skillUseInfo, FeatureResolver resolver, EntityInfo attacker, Player defender,
             int victimCount, int rate, int extraDamage) throws HeroDieSignal {
-        Skill skill = featureInfo.getFeature();
+        Skill skill = skillUseInfo.getFeature();
         
         List<CardInfo> victims = resolver.getStage().getRandomizer().pickRandom(
             defender.getField().toList(), victimCount, true, null);
@@ -37,8 +37,8 @@ public final class IceMagicFeature {
             if (cardDead) {
                 resolver.resolveDeathFeature(attacker, victim, skill);
             } else if (resolver.getStage().getRandomizer().roll100(rate)) {
-                CardStatusItem status = CardStatusItem.frozen(featureInfo);
-                if (!resolver.resolveBlockStatusFeature(attacker, victim, featureInfo, status).isBlocked()) {
+                CardStatusItem status = CardStatusItem.frozen(skillUseInfo);
+                if (!resolver.resolveBlockStatusFeature(attacker, victim, skillUseInfo, status).isBlocked()) {
                     ui.addCardStatus(attacker, victim, skill, status);
                     victim.addStatus(status);
                 }

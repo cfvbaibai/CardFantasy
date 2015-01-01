@@ -6,7 +6,7 @@ import cfvbaibai.cardfantasy.NonSerializable;
 public class SkillEffect {
     private SkillEffectType type;
     @NonSerializable
-    private FeatureInfo cause;
+    private SkillUseInfo cause;
     private int value;
     private boolean eternal;
     
@@ -16,10 +16,10 @@ public class SkillEffect {
     public void setType(SkillEffectType type) {
         this.type = type;
     }
-    public FeatureInfo getCause() {
+    public SkillUseInfo getCause() {
         return cause;
     }
-    public void setCause(FeatureInfo cause) {
+    public void setCause(SkillUseInfo cause) {
         this.cause = cause;
     }
     public int getValue() {
@@ -34,7 +34,7 @@ public class SkillEffect {
     public boolean isEternal() {
         return this.eternal;
     }
-    public SkillEffect(SkillEffectType type, FeatureInfo cause, int value, boolean eternal) {
+    public SkillEffect(SkillEffectType type, SkillUseInfo cause, int value, boolean eternal) {
         this.type = type;
         this.cause = cause;
         this.value = value;
