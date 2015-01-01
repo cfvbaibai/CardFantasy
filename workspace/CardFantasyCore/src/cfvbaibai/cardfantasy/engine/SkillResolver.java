@@ -136,7 +136,7 @@ public class SkillResolver {
     }
 
     public void resolvePreAttackFeature(CardInfo attacker, Player defender) throws HeroDieSignal {
-        for (SkillUseInfo feature : attacker.getNormalUsableFeatures()) {
+        for (SkillUseInfo feature : attacker.getNormalUsableSkills()) {
             if (attacker.isDead()) {
                 continue;
             }
@@ -144,7 +144,7 @@ public class SkillResolver {
                 Overdraw.apply(this, feature, attacker);
             }
         }
-        for (SkillUseInfo feature : attacker.getNormalUsableFeatures()) {
+        for (SkillUseInfo feature : attacker.getNormalUsableSkills()) {
             if (attacker.isDead()) {
                 continue;
             }
@@ -245,7 +245,9 @@ public class SkillResolver {
             } else if (feature.getType() == SkillType.净化) {
                 Purify.apply(feature, this, attacker);
             } else if (feature.getType() == SkillType.虚弱) {
-                Soften.apply(feature, this, attacker, defender);
+                Soften.apply(feature, this, attacker, defender, 1);
+            } else if (feature.getType() == SkillType.战争怒吼) {
+                Soften.apply(feature, this, attacker, defender, -1);
             } else if (feature.getType() == SkillType.召唤王国战士) {
                 Summon.apply(this, feature, attacker, "圣骑士", "魔剑士");
             } else if (feature.getType() == SkillType.召唤噩梦护卫) {
@@ -279,7 +281,7 @@ public class SkillResolver {
     public void resolveCounterAttackFeature(CardInfo attacker, CardInfo defender, Skill attackFeature,
             OnAttackBlockingResult result, OnDamagedResult damagedResult) throws HeroDieSignal {
         if (isPhysicalAttackFeature(attackFeature)) {
-            for (SkillUseInfo feature : defender.getNormalUsableFeatures()) {
+            for (SkillUseInfo feature : defender.getNormalUsableSkills()) {
                 if (feature.getType() == SkillType.反击) {
                     CounterAttack.apply(feature.getSkill(), this, attacker, defender, result.getDamage());
                 } else if (feature.getType() == SkillType.盾刺) {
@@ -307,7 +309,7 @@ public class SkillResolver {
                 }
             }
             if (!defender.isDead()) {
-                for (SkillUseInfo feature : defender.getNormalUsableFeatures()) {
+                for (SkillUseInfo feature : defender.getNormalUsableSkills()) {
                     if (feature.getType() == SkillType.狂热) {
                         Zealot.apply(feature, this, attacker, defender, result);
                     }
@@ -342,7 +344,7 @@ public class SkillResolver {
                 stage.getUI().attackBlocked(cardAttacker, defender, attackFeature, null);
                 result.setAttackable(false);
             } else {
-                for (SkillUseInfo blockFeature : defender.getNormalUsableFeatures()) {
+                for (SkillUseInfo blockFeature : defender.getNormalUsableSkills()) {
                     if (blockFeature.getType() == SkillType.闪避) {
                         result.setAttackable(!Dodge.apply(blockFeature.getSkill(), this, cardAttacker,
                                 defender, result.getDamage()));
@@ -361,7 +363,7 @@ public class SkillResolver {
                         }
                     }
                 }
-                for (SkillUseInfo blockFeature : defender.getNormalUsableFeatures()) {
+                for (SkillUseInfo blockFeature : defender.getNormalUsableSkills()) {
                     if (blockFeature.getType() == SkillType.王国之盾) {
                         result.setDamage(RacialShield.apply(blockFeature.getSkill(), this, cardAttacker,
                                 defender, defender, result.getDamage(), Race.HELL));
@@ -379,7 +381,7 @@ public class SkillResolver {
                                 defender, defender, result.getDamage(), Race.FOREST));
                     }
                 }
-                for (SkillUseInfo blockFeature : defender.getNormalUsableFeatures()) {
+                for (SkillUseInfo blockFeature : defender.getNormalUsableSkills()) {
                     if (blockFeature.getType() == SkillType.格挡) {
                         result.setDamage(Block.apply(blockFeature.getSkill(), this, cardAttacker, defender,
                                 defender, result.getDamage()));
@@ -388,7 +390,7 @@ public class SkillResolver {
                         return result;
                     }
                 }
-                for (SkillUseInfo blockFeature : defender.getNormalUsableFeatures()) {
+                for (SkillUseInfo blockFeature : defender.getNormalUsableSkills()) {
                     if (blockFeature.getType() == SkillType.冰甲) {
                         result.setDamage(IceArmor.apply(blockFeature.getSkill(), this, cardAttacker, defender,
                                 result.getDamage()));
@@ -423,11 +425,11 @@ public class SkillResolver {
             boolean isAttackerDisabled = status.containsStatus(CardStatusType.冰冻)
                     || status.containsStatus(CardStatusType.锁定)
                     || status.containsStatus(CardStatusType.复活);
-            if (!attackFeature.isDeathFeature() && isAttackerDisabled) {
+            if (!attackFeature.isDeathSkill() && isAttackerDisabled) {
                 stage.getUI().attackBlocked(attacker, defender, attackFeature, null);
                 result.setAttackable(false);
             } else {
-                for (SkillUseInfo blockFeature : defender.getNormalUsableFeatures()) {
+                for (SkillUseInfo blockFeature : defender.getNormalUsableSkills()) {
                     if (blockFeature.getType() == SkillType.法力反射) {
                         if (CounterMagic.isFeatureBlocked(this, blockFeature.getSkill(), attackFeature,
                                 attacker, defender)) {
@@ -447,7 +449,7 @@ public class SkillResolver {
                     }
                 }
 
-                for (SkillUseInfo blockFeature : defender.getNormalUsableFeatures()) {
+                for (SkillUseInfo blockFeature : defender.getNormalUsableSkills()) {
                     if (blockFeature.getType() == SkillType.免疫) {
                         if (Immue.isFeatureBlocked(this, blockFeature.getSkill(), attackFeature, attacker, defender)) {
                             result.setAttackable(false);
@@ -479,7 +481,7 @@ public class SkillResolver {
                         }
                     }
                 }
-                for (SkillUseInfo blockFeature : defender.getNormalUsableFeatures()) {
+                for (SkillUseInfo blockFeature : defender.getNormalUsableSkills()) {
                     if (blockFeature.getType() == SkillType.魔甲) {
                         result.setDamage(MagicShield.apply(this, blockFeature.getSkill(), attacker, defender,
                                 attackFeature, result.getDamage()));
@@ -517,7 +519,7 @@ public class SkillResolver {
         }
         deadCard.setDeadOnce(true);
         resolveLeaveFeature(deadCard, cardFeature);
-        for (SkillUseInfo deadCardFeature : deadCard.getUsableDeathFeatures()) {
+        for (SkillUseInfo deadCardFeature : deadCard.getUsableDeathSkills()) {
             if (deadCardFeature.getType() == SkillType.烈焰风暴) {
                 FireMagic.apply(deadCardFeature.getSkill(), this, deadCard, killerCard.getOwner(), -1);
             } else if (deadCardFeature.getType() == SkillType.雷暴) {
@@ -550,7 +552,7 @@ public class SkillResolver {
                 Transport.apply(this, deadCardFeature.getSkill(), deadCard, killerCard.getOwner());
             } 
         }
-        for (SkillUseInfo deadCardFeature : deadCard.getAllUsableFeatures()) {
+        for (SkillUseInfo deadCardFeature : deadCard.getAllUsableSkills()) {
             if (deadCardFeature.getType() == SkillType.自爆) {
                 Explode.apply(this, deadCardFeature.getSkill(), killerCard, deadCard);
             }
@@ -562,7 +564,7 @@ public class SkillResolver {
             }
         }
         boolean reincarnated = false;
-        for (SkillUseInfo deadCardFeature : deadCard.getAllUsableFeatures()) {
+        for (SkillUseInfo deadCardFeature : deadCard.getAllUsableSkills()) {
             if (deadCardFeature.getType() == SkillType.转生) {
                 if (Reincarnation.apply(this, deadCardFeature.getSkill(), deadCard)) {
                     reincarnated = true;
@@ -580,7 +582,7 @@ public class SkillResolver {
 
     public void resolvePostAttackFeature(CardInfo attacker, CardInfo defender, Player defenderHero, Skill attackFeature,
             int normalAttackDamage) throws HeroDieSignal {
-        for (SkillUseInfo feature : attacker.getNormalUsableFeatures()) {
+        for (SkillUseInfo feature : attacker.getNormalUsableSkills()) {
             if (!attacker.isDead()) {
                 if (feature.getType() == SkillType.吸血) {
                     BloodDrain.apply(feature.getSkill(), this, attacker, defender, normalAttackDamage);
@@ -598,7 +600,7 @@ public class SkillResolver {
     public void resolveExtraAttackFeature(CardInfo attacker, CardInfo defender, Player defenderHero, Skill attackFeature,
             int normalAttackDamage) throws HeroDieSignal {
 
-        for (SkillUseInfo feature : attacker.getNormalUsableFeatures()) {
+        for (SkillUseInfo feature : attacker.getNormalUsableSkills()) {
             if (!attacker.isDead()) {
                 if (feature.getType() == SkillType.穿刺) {
                     Penetration.apply(feature.getSkill(), this, attacker, defenderHero, normalAttackDamage);
@@ -624,7 +626,7 @@ public class SkillResolver {
     }
 
     public void resolvePreAttackHeroFeature(CardInfo attacker, Player defenderPlayer) {
-        for (SkillUseInfo feature : attacker.getNormalUsableFeatures()) {
+        for (SkillUseInfo feature : attacker.getNormalUsableSkills()) {
            if (feature.getType() == SkillType.英雄杀手) {
                HeroKiller.apply(this, feature, attacker, defenderPlayer);
            }
@@ -640,7 +642,7 @@ public class SkillResolver {
      * @throws HeroDieSignal
      */
     public void resolvePreAttackCardFeature(CardInfo attacker, CardInfo defender, boolean prior) throws HeroDieSignal {
-        for (SkillUseInfo feature : attacker.getNormalUsableFeatures()) {
+        for (SkillUseInfo feature : attacker.getNormalUsableSkills()) {
             if (prior) {
                 if (feature.getType() == SkillType.送还) {
                     Return.apply(this, feature.getSkill(), attacker, defender);
@@ -787,7 +789,7 @@ public class SkillResolver {
             if (defender == null) {
                 continue;
             }
-            for (SkillUseInfo defenderFeature : defender.getNormalUsableFeatures()) {
+            for (SkillUseInfo defenderFeature : defender.getNormalUsableSkills()) {
                 if (defenderFeature.getType() == SkillType.守护) {
                     remainingDamage = Guard.apply(defenderFeature.getSkill(), cardFeature, this, attacker, defender, remainingDamage);
                     if (remainingDamage == 0) {
@@ -807,7 +809,7 @@ public class SkillResolver {
         if (status.containsStatus(CardStatusType.锁定)) {
             return;
         }
-        for (SkillUseInfo cardFeature : card.getNormalUsableFeatures()) {
+        for (SkillUseInfo cardFeature : card.getNormalUsableSkills()) {
             if (cardFeature.getType() == SkillType.回春) {
                 Rejuvenate.apply(cardFeature.getSkill(), this, card);
             }
@@ -859,113 +861,115 @@ public class SkillResolver {
     }
 
     // reviver: for most of the cases, it should be null.
-    // It is only set when the summoning feature performer is revived by another card.
+    // It is only set when the summoning skill performer is revived by another card.
     public void resolveSummoningFeature(CardInfo card, Field myField, Field opField, CardInfo reviver) throws HeroDieSignal {
         LegionBuff.apply(this, card);
         for (CardInfo fieldCard : myField.getAliveCards()) {
-            for (SkillUseInfo feature : fieldCard.getNormalUsableFeatures()) {
-                if (feature.getType() == SkillType.王国之力) {
-                    RacialBuff.apply(this, feature, fieldCard, Race.KINGDOM, SkillEffectType.ATTACK_CHANGE);
-                } else if (feature.getType() == SkillType.王国守护) {
-                    RacialBuff.apply(this, feature, fieldCard, Race.KINGDOM, SkillEffectType.MAXHP_CHANGE);
-                } else if (feature.getType() == SkillType.森林之力) {
-                    RacialBuff.apply(this, feature, fieldCard, Race.FOREST, SkillEffectType.ATTACK_CHANGE);
-                } else if (feature.getType() == SkillType.森林守护) {
-                    RacialBuff.apply(this, feature, fieldCard, Race.FOREST, SkillEffectType.MAXHP_CHANGE);
-                } else if (feature.getType() == SkillType.蛮荒之力) {
-                    RacialBuff.apply(this, feature, fieldCard, Race.SAVAGE, SkillEffectType.ATTACK_CHANGE);
-                } else if (feature.getType() == SkillType.蛮荒守护) {
-                    RacialBuff.apply(this, feature, fieldCard, Race.SAVAGE, SkillEffectType.MAXHP_CHANGE);
-                } else if (feature.getType() == SkillType.地狱之力) {
-                    RacialBuff.apply(this, feature, fieldCard, Race.HELL, SkillEffectType.ATTACK_CHANGE);
-                } else if (feature.getType() == SkillType.地狱守护) {
-                    RacialBuff.apply(this, feature, fieldCard, Race.HELL, SkillEffectType.MAXHP_CHANGE);
-                } else if (feature.getType() == SkillType.本源之力) {
-                    RacialBuff.apply(this, feature, fieldCard, null, SkillEffectType.ATTACK_CHANGE);
-                } else if (feature.getType() == SkillType.本源守护) {
-                    RacialBuff.apply(this, feature, fieldCard, null, SkillEffectType.MAXHP_CHANGE);
-                } else if (feature.getType() == SkillType.神圣守护) {
-                    HolyGuard.apply(this, feature, fieldCard);
+            for (SkillUseInfo skillUseInfo : fieldCard.getNormalUsableSkills()) {
+                if (skillUseInfo.getType() == SkillType.王国之力) {
+                    RacialBuff.apply(this, skillUseInfo, fieldCard, Race.KINGDOM, SkillEffectType.ATTACK_CHANGE);
+                } else if (skillUseInfo.getType() == SkillType.王国守护) {
+                    RacialBuff.apply(this, skillUseInfo, fieldCard, Race.KINGDOM, SkillEffectType.MAXHP_CHANGE);
+                } else if (skillUseInfo.getType() == SkillType.森林之力) {
+                    RacialBuff.apply(this, skillUseInfo, fieldCard, Race.FOREST, SkillEffectType.ATTACK_CHANGE);
+                } else if (skillUseInfo.getType() == SkillType.森林守护) {
+                    RacialBuff.apply(this, skillUseInfo, fieldCard, Race.FOREST, SkillEffectType.MAXHP_CHANGE);
+                } else if (skillUseInfo.getType() == SkillType.蛮荒之力) {
+                    RacialBuff.apply(this, skillUseInfo, fieldCard, Race.SAVAGE, SkillEffectType.ATTACK_CHANGE);
+                } else if (skillUseInfo.getType() == SkillType.蛮荒守护) {
+                    RacialBuff.apply(this, skillUseInfo, fieldCard, Race.SAVAGE, SkillEffectType.MAXHP_CHANGE);
+                } else if (skillUseInfo.getType() == SkillType.地狱之力) {
+                    RacialBuff.apply(this, skillUseInfo, fieldCard, Race.HELL, SkillEffectType.ATTACK_CHANGE);
+                } else if (skillUseInfo.getType() == SkillType.地狱守护) {
+                    RacialBuff.apply(this, skillUseInfo, fieldCard, Race.HELL, SkillEffectType.MAXHP_CHANGE);
+                } else if (skillUseInfo.getType() == SkillType.本源之力) {
+                    RacialBuff.apply(this, skillUseInfo, fieldCard, null, SkillEffectType.ATTACK_CHANGE);
+                } else if (skillUseInfo.getType() == SkillType.本源守护) {
+                    RacialBuff.apply(this, skillUseInfo, fieldCard, null, SkillEffectType.MAXHP_CHANGE);
+                } else if (skillUseInfo.getType() == SkillType.神圣守护) {
+                    HolyGuard.apply(this, skillUseInfo, fieldCard);
                 } 
             }
         }
-        for (SkillUseInfo feature : card.getNormalUsableFeatures()) {
-            if (feature.getType() == SkillType.献祭) {
-                Sacrifice.apply(this, feature, card, reviver);
-            } else if (feature.getType() == SkillType.反噬) {
-                CounterBite.apply(feature, this, card);
+        for (SkillUseInfo skillUseInfo : card.getNormalUsableSkills()) {
+            if (skillUseInfo.getType() == SkillType.献祭) {
+                Sacrifice.apply(this, skillUseInfo, card, reviver);
+            } else if (skillUseInfo.getType() == SkillType.反噬) {
+                CounterBite.apply(skillUseInfo, this, card);
             }
         }
-        for (SkillUseInfo feature : card.getUsableSummonFeatures()) {
-            if (feature.getType() == SkillType.烈焰风暴) {
-                FireMagic.apply(feature.getSkill(), this, card, opField.getOwner(), -1);
-            } else if (feature.getType() == SkillType.雷暴) {
-                LighteningMagic.apply(feature, this, card, opField.getOwner(), -1, 35);
-            } else if (feature.getType() == SkillType.暴风雪) {
-                IceMagic.apply(feature, this, card, opField.getOwner(), -1, 30, 0);
-            } else if (feature.getType() == SkillType.毒云) {
-                PoisonMagic.apply(feature, this, card, opField.getOwner(), -1);
-            } else if (feature.getType() == SkillType.瘟疫) {
-                Plague.apply(feature, this, card, opField.getOwner());
-            } else if (feature.getType() == SkillType.治疗) {
-                Heal.apply(feature.getSkill(), this, card);
-            } else if (feature.getType() == SkillType.甘霖) {
-                Rainfall.apply(feature.getSkill(), this, card);
-            } else if (feature.getType() == SkillType.祈祷) {
-                Pray.apply(feature.getSkill(), this, card);
-            } else if (feature.getType() == SkillType.诅咒) {
-                Curse.apply(this, feature.getSkill(), card, opField.getOwner());
-            } else if (feature.getType() == SkillType.群体削弱) {
-                WeakenAll.apply(this, feature, card, opField.getOwner());
-            } else if (feature.getType() == SkillType.烈火焚神) {
-                BurningFlame.apply(feature, this, card, opField.getOwner());
-            } else if (feature.getType() == SkillType.陷阱) {
-                Trap.apply(feature, this, card, opField.getOwner());
-            } else if (feature.getType() == SkillType.送还) {
-                Return.apply(this, feature.getSkill(), card, opField.getCard(card.getPosition()));
-            } else if (feature.getType() == SkillType.摧毁) {
-                Destroy.apply(this, feature.getSkill(), card, opField.getOwner(), 1);
-            } else if (feature.getType() == SkillType.传送) {
-                Transport.apply(this, feature.getSkill(), card, opField.getOwner());
-            } else if (feature.getType() == SkillType.复活) {
-                Revive.apply(this, feature, card);
-            } else if (feature.getType() == SkillType.关小黑屋) {
-                Enprison.apply(this, feature.getSkill(), card, opField.getOwner());
-            } else if (feature.getType() == SkillType.净化 || feature.getType() == SkillType.神性祈求){
-                Purify.apply(feature, this, card);
+        for (SkillUseInfo skillUseInfo : card.getUsableSummonSkills()) {
+            if (skillUseInfo.getType() == SkillType.烈焰风暴) {
+                FireMagic.apply(skillUseInfo.getSkill(), this, card, opField.getOwner(), -1);
+            } else if (skillUseInfo.getType() == SkillType.雷暴) {
+                LighteningMagic.apply(skillUseInfo, this, card, opField.getOwner(), -1, 35);
+            } else if (skillUseInfo.getType() == SkillType.暴风雪) {
+                IceMagic.apply(skillUseInfo, this, card, opField.getOwner(), -1, 30, 0);
+            } else if (skillUseInfo.getType() == SkillType.毒云) {
+                PoisonMagic.apply(skillUseInfo, this, card, opField.getOwner(), -1);
+            } else if (skillUseInfo.getType() == SkillType.瘟疫) {
+                Plague.apply(skillUseInfo, this, card, opField.getOwner());
+            } else if (skillUseInfo.getType() == SkillType.治疗) {
+                Heal.apply(skillUseInfo.getSkill(), this, card);
+            } else if (skillUseInfo.getType() == SkillType.甘霖) {
+                Rainfall.apply(skillUseInfo.getSkill(), this, card);
+            } else if (skillUseInfo.getType() == SkillType.祈祷) {
+                Pray.apply(skillUseInfo.getSkill(), this, card);
+            } else if (skillUseInfo.getType() == SkillType.诅咒) {
+                Curse.apply(this, skillUseInfo.getSkill(), card, opField.getOwner());
+            } else if (skillUseInfo.getType() == SkillType.群体削弱) {
+                WeakenAll.apply(this, skillUseInfo, card, opField.getOwner());
+            } else if (skillUseInfo.getType() == SkillType.烈火焚神) {
+                BurningFlame.apply(skillUseInfo, this, card, opField.getOwner());
+            } else if (skillUseInfo.getType() == SkillType.陷阱) {
+                Trap.apply(skillUseInfo, this, card, opField.getOwner());
+            } else if (skillUseInfo.getType() == SkillType.送还) {
+                Return.apply(this, skillUseInfo.getSkill(), card, opField.getCard(card.getPosition()));
+            } else if (skillUseInfo.getType() == SkillType.摧毁) {
+                Destroy.apply(this, skillUseInfo.getSkill(), card, opField.getOwner(), 1);
+            } else if (skillUseInfo.getType() == SkillType.传送) {
+                Transport.apply(this, skillUseInfo.getSkill(), card, opField.getOwner());
+            } else if (skillUseInfo.getType() == SkillType.复活) {
+                Revive.apply(this, skillUseInfo, card);
+            } else if (skillUseInfo.getType() == SkillType.关小黑屋) {
+                Enprison.apply(this, skillUseInfo.getSkill(), card, opField.getOwner());
+            } else if (skillUseInfo.getType() == SkillType.净化 || skillUseInfo.getType() == SkillType.神性祈求){
+                Purify.apply(skillUseInfo, this, card);
+            } else if (skillUseInfo.getType() == SkillType.战争怒吼) {
+                Soften.apply(skillUseInfo, this, card, opField.getOwner(), -1);
             }
         }
     }
 
-    public void resolveLeaveFeature(CardInfo card, Skill cardFeature) {
-        for (SkillUseInfo deadCardFeature : card.getNormalUsableFeatures()) {
-            if (deadCardFeature.getType() == SkillType.王国之力) {
-                RacialBuff.remove(this, deadCardFeature, card, Race.KINGDOM);
-            } else if (deadCardFeature.getType() == SkillType.王国守护) {
-                RacialBuff.remove(this, deadCardFeature, card, Race.KINGDOM);
-            } else if (deadCardFeature.getType() == SkillType.森林之力) {
-                RacialBuff.remove(this, deadCardFeature, card, Race.FOREST);
-            } else if (deadCardFeature.getType() == SkillType.森林守护) {
-                RacialBuff.remove(this, deadCardFeature, card, Race.FOREST);
-            } else if (deadCardFeature.getType() == SkillType.蛮荒之力) {
-                RacialBuff.remove(this, deadCardFeature, card, Race.SAVAGE);
-            } else if (deadCardFeature.getType() == SkillType.蛮荒守护) {
-                RacialBuff.remove(this, deadCardFeature, card, Race.SAVAGE);
-            } else if (deadCardFeature.getType() == SkillType.地狱之力) {
-                RacialBuff.remove(this, deadCardFeature, card, Race.HELL);
-            } else if (deadCardFeature.getType() == SkillType.地狱守护) {
-                RacialBuff.remove(this, deadCardFeature, card, Race.HELL);
-            } else if (deadCardFeature.getType() == SkillType.本源之力) {
-                RacialBuff.remove(this, deadCardFeature, card, null);
-            } else if (deadCardFeature.getType() == SkillType.本源守护) {
-                RacialBuff.remove(this, deadCardFeature, card, null);
-            } else if (deadCardFeature.getType() == SkillType.神圣守护) {
-                HolyGuard.remove(this, deadCardFeature, card);
-            } else if (deadCardFeature.getType() == SkillType.军团王国之力
-                    || deadCardFeature.getType() == SkillType.军团森林之力
-                    || deadCardFeature.getType() == SkillType.军团蛮荒之力
-                    || deadCardFeature.getType() == SkillType.军团地狱之力) {
-                LegionBuff.remove(this, deadCardFeature, card);
+    public void resolveLeaveFeature(CardInfo card, Skill cardSkill) {
+        for (SkillUseInfo deadCardSkillUseInfo : card.getNormalUsableSkills()) {
+            if (deadCardSkillUseInfo.getType() == SkillType.王国之力) {
+                RacialBuff.remove(this, deadCardSkillUseInfo, card, Race.KINGDOM);
+            } else if (deadCardSkillUseInfo.getType() == SkillType.王国守护) {
+                RacialBuff.remove(this, deadCardSkillUseInfo, card, Race.KINGDOM);
+            } else if (deadCardSkillUseInfo.getType() == SkillType.森林之力) {
+                RacialBuff.remove(this, deadCardSkillUseInfo, card, Race.FOREST);
+            } else if (deadCardSkillUseInfo.getType() == SkillType.森林守护) {
+                RacialBuff.remove(this, deadCardSkillUseInfo, card, Race.FOREST);
+            } else if (deadCardSkillUseInfo.getType() == SkillType.蛮荒之力) {
+                RacialBuff.remove(this, deadCardSkillUseInfo, card, Race.SAVAGE);
+            } else if (deadCardSkillUseInfo.getType() == SkillType.蛮荒守护) {
+                RacialBuff.remove(this, deadCardSkillUseInfo, card, Race.SAVAGE);
+            } else if (deadCardSkillUseInfo.getType() == SkillType.地狱之力) {
+                RacialBuff.remove(this, deadCardSkillUseInfo, card, Race.HELL);
+            } else if (deadCardSkillUseInfo.getType() == SkillType.地狱守护) {
+                RacialBuff.remove(this, deadCardSkillUseInfo, card, Race.HELL);
+            } else if (deadCardSkillUseInfo.getType() == SkillType.本源之力) {
+                RacialBuff.remove(this, deadCardSkillUseInfo, card, null);
+            } else if (deadCardSkillUseInfo.getType() == SkillType.本源守护) {
+                RacialBuff.remove(this, deadCardSkillUseInfo, card, null);
+            } else if (deadCardSkillUseInfo.getType() == SkillType.神圣守护) {
+                HolyGuard.remove(this, deadCardSkillUseInfo, card);
+            } else if (deadCardSkillUseInfo.getType() == SkillType.军团王国之力
+                    || deadCardSkillUseInfo.getType() == SkillType.军团森林之力
+                    || deadCardSkillUseInfo.getType() == SkillType.军团蛮荒之力
+                    || deadCardSkillUseInfo.getType() == SkillType.军团地狱之力) {
+                LegionBuff.remove(this, deadCardSkillUseInfo, card);
             }
         }
     }
@@ -1000,7 +1004,7 @@ public class SkillResolver {
     public BlockStatusResult resolveBlockStatusFeature(EntityInfo attacker, CardInfo victim, SkillUseInfo feature,
             CardStatusItem item) {
         boolean blocked = false;
-        for (SkillUseInfo blockFeature : victim.getNormalUsableFeatures()) {
+        for (SkillUseInfo blockFeature : victim.getNormalUsableSkills()) {
             if (blockFeature.getType() == SkillType.脱困) {
                 blocked = Escape.isStatusEscaped(blockFeature.getSkill(), this, item, victim);
             }
@@ -1032,7 +1036,7 @@ public class SkillResolver {
      * @return Whether block is disabled
      */
     public boolean resolveCounterBlockFeature(Skill cardFeature, CardInfo attacker, CardInfo defender) {
-        for (SkillUseInfo attackerFeature : attacker.getAllUsableFeatures()) {
+        for (SkillUseInfo attackerFeature : attacker.getAllUsableSkills()) {
             if (attackerFeature.getType() == SkillType.弱点攻击) {
                 return WeakPointAttack.isBlockFeatureDisabled(this, attackerFeature.getSkill(), cardFeature,
                         attacker, defender);

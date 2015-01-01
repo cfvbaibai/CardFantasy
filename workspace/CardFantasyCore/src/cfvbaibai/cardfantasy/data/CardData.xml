@@ -285,13 +285,11 @@
         <Feature type="趁胜追击" level="6" unlock="5" />
         <Feature type="不动" level="0" unlock="10" />
     </Card>
-    <!--
     <Card id="1425" name="血色骑士" wikiId="62830" race="王国" speed="4" star="4" cost="14" incrCost="2" at="310" hp="950" incrAT="22" incrHP="26">
         <Feature type="暴击" level="6" unlock="0" />
-          TODO: <Feature type="战争怒吼" level="0" unlock="5" summon="true" /> 
+        <Feature type="战争怒吼" level="0" unlock="5" summon="true" />
         <Feature type="吸血" level="7" unlock="10" />
     </Card>
-    -->
     <Card id="1426" name="幻术舞姬" wikiId="62825" race="王国" speed="3" star="4" cost="13" incrCost="2" at="290" hp="1010" incrAT="26" incrHP="31">
         <Feature type="闪避" level="4" unlock="0" />
         <Feature type="迷魂" level="8" unlock="5" />
@@ -1260,6 +1258,11 @@
         <Feature type="蛮荒之力" level="6" unlock="5" />
         <Feature type="加速" level="2" unlock="10" />
     </Card>
+    <Card id="3515" name="怒雪咆哮" wikiId="" race="蛮荒" speed="4" star="5" cost="18" incrCost="2" at="390" hp="1650" incrAT="26" incrHP="53">
+        <!-- <Feature type="大地之盾" level="0" unlock="0" /> -->
+        <Feature type="寒霜冲击" level="8" unlock="5" />
+        <Feature type="战争怒吼" level="0" unlock="10" />
+    </Card>
 
     <!-- 地狱 -->
     <Card id="4101" name="恶魔小鬼" wikiId="31036" race="地狱" speed="2" star="1" cost="3" incrCost="2" at="80" hp="270" incrAT="19" incrHP="6">
@@ -1654,13 +1657,11 @@
         <Feature type="冰甲" level="5" unlock="5" />
         <Feature type="邪灵汲取" level="6" unlock="10" />
     </Card>
-    <!--
     <Card id="4512" name="无尽噩梦" wikiId="57015" race="地狱" speed="3" star="5" cost="16" incrCost="2" at="350" hp="1310" incrAT="46" incrHP="32">
         <Feature type="法力侵蚀" level="6" unlock="0" />
-         TODO: <Feature type="战争怒吼" level="0" unlock="5" summon="true" /> 
+        <Feature type="战争怒吼" level="0" unlock="5" summon="true" /> 
         <Feature type="转生" level="6" unlock="10" />
     </Card>
-    -->
     <Card id="4513" name="死域军神" wikiId="62844" race="地狱" speed="3" star="5" cost="16" incrCost="2" at="380" hp="1210" incrAT="32" incrHP="35">
         <Feature type="战意" level="6" unlock="0" />
         <Feature type="弱点攻击" level="0" unlock="5" />

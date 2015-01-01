@@ -233,10 +233,10 @@ public final class DeckBuilder {
         if (skill.getLevel() != 0) {
             desc += skill.getLevel();
         }
-        if (skill.isDeathFeature()) {
+        if (skill.isDeathSkill()) {
             return "死契" + desc;
         }
-        if (skill.isSummonFeature()) {
+        if (skill.isSummonSkill()) {
             return "降临" + desc;
         }
         return desc;

@@ -45,6 +45,7 @@ public enum SkillType {
     振奋("80192", 40, 10, SkillTag.独立攻击加成),
 
     虚弱("57000", 0, SkillTag.额外攻击加成, SkillTag.抗免疫),
+    战争怒吼("57022", 0, SkillTag.额外攻击加成, SkillTag.抗免疫),
 
     /* HP 上限调整技能 */
     王国守护("30949", 50),

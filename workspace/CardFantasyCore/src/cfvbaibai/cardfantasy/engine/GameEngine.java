@@ -251,9 +251,11 @@ public class GameEngine {
                 tryAttackEnemy(myField, opField, i);
             }
 
+            // Remove AdjustAT effects caused by 虚弱 or 战争怒吼
             if (myField.getCard(i) != null) {
                 CardInfo myCard = myField.getCard(i);
                 List<SkillEffect> effects = myCard.getEffectsCausedBy(SkillType.虚弱);
+                effects.addAll(myCard.getEffectsCausedBy(SkillType.战争怒吼));
                 for (SkillEffect effect : effects) {
                     resolver.getStage().getUI().loseAdjustATEffect(myCard, effect);
                     myCard.removeEffect(effect);
@@ -325,14 +327,14 @@ public class GameEngine {
             resolver.removeStatus(myField.getCard(i), CardStatusType.麻痹);
             return;
         }
-        for (SkillUseInfo skillUseInfo : myField.getCard(i).getNormalUsableFeatures()) {
+        for (SkillUseInfo skillUseInfo : myField.getCard(i).getNormalUsableSkills()) {
             if (skillUseInfo.getSkill().getType() == SkillType.横扫) {
                 ui.useSkill(myField.getCard(i), defender, skillUseInfo.getSkill(), true);
             }
         }
         OnDamagedResult damagedResult = resolver.attackCard(myField.getCard(i), defender, null);
         if (damagedResult != null && damagedResult.originalDamage > 0 && myField.getCard(i) != null) {
-            for (SkillUseInfo skillUseInfo : myField.getCard(i).getNormalUsableFeatures()) {
+            for (SkillUseInfo skillUseInfo : myField.getCard(i).getNormalUsableSkills()) {
                 if (skillUseInfo.getSkill().getType() == SkillType.横扫) {
 
                     List<CardInfo> sweepDefenders = new ArrayList<CardInfo>();

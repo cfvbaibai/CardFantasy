@@ -14,12 +14,12 @@ import cfvbaibai.cardfantasy.engine.SkillResolver;
 import cfvbaibai.cardfantasy.engine.SkillUseInfo;
 
 public class Soften {
-    public static void apply(SkillUseInfo skillUseInfo, SkillResolver resolver, EntityInfo attacker, Player defender)
+    public static void apply(SkillUseInfo skillUseInfo, SkillResolver resolver, EntityInfo attacker, Player defender, int victimCount)
         throws HeroDieSignal {
         Skill skill = skillUseInfo.getSkill();
 
         List<CardInfo> victims = resolver.getStage().getRandomizer().pickRandom(
-            defender.getField().toList(), 1, true, null);
+            defender.getField().toList(), victimCount, true, null);
         GameUI ui = resolver.getStage().getUI();
         ui.useSkill(attacker, victims, skill, true);
 
@@ -27,20 +27,21 @@ public class Soften {
             return;
         }
 
-        CardInfo victim = victims.get(0);
+        for (CardInfo victim : victims) {
         List<CardStatusItem> items = victim.getStatus().getStatusOf(CardStatusType.弱化);
-        for (int i = 0; i < items.size(); ++i) {
-            if (items.get(i).getCause() == skillUseInfo) {
-                return;
+            for (int i = 0; i < items.size(); ++i) {
+                if (items.get(i).getCause() == skillUseInfo) {
+                    continue;
+                }
             }
-        }
 
-        if (!resolver.resolveAttackBlockingFeature(attacker, victim, skill, 1).isAttackable()) {
-            return;
+            if (!resolver.resolveAttackBlockingFeature(attacker, victim, skill, 1).isAttackable()) {
+                continue;
+            }
+    
+            CardStatusItem status = CardStatusItem.softened(skillUseInfo);
+            ui.addCardStatus(attacker, victim, skill, status);
+            victim.addStatus(status);
         }
-
-        CardStatusItem status = CardStatusItem.softened(skillUseInfo);
-        ui.addCardStatus(attacker, victim, skill, status);
-        victim.addStatus(status);
     }
 }

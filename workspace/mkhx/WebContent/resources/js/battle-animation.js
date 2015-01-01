@@ -1429,7 +1429,7 @@ var Animater = function() {
         } else if (skill == '迷魂') {
             this.flyImage({ fileName: 'heart.png', width: 24, height: 24, text: skill },
                     attacker, defenders, settings.skillDuration);
-        } else if (skill == '虚弱') {
+        } else if (skill == '虚弱' || skill == '战争怒吼') {
             this.flyImage({ fileName: 'soften.png', width: 48, height: 48, text: skill },
                     attacker, defenders, settings.skillDuration);
         } else if (skill == '疾病' || skill == '瘟疫') {

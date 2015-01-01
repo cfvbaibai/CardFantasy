@@ -194,7 +194,7 @@ public class CardInfo extends EntityInfo {
         this.setSummonDelay(this.card.getSummonSpeed());
     }
 
-    private List<SkillUseInfo> getAllFeatures() {
+    private List<SkillUseInfo> getAllSkills() {
         return this.features;
     }
 
@@ -202,46 +202,46 @@ public class CardInfo extends EntityInfo {
         return getCard().getRace();
     }
 
-    public List<SkillUseInfo> getUsableSummonFeatures() {
+    public List<SkillUseInfo> getUsableSummonSkills() {
         List<SkillUseInfo> features = new ArrayList<SkillUseInfo>();
-        for (SkillUseInfo feature : this.getAllUsableFeatures()) {
+        for (SkillUseInfo feature : this.getAllUsableSkills()) {
             CardSkill cardSkill = (CardSkill)feature.getSkill();
-            if (cardSkill.isSummonFeature()) {
+            if (cardSkill.isSummonSkill()) {
                 features.add(feature);
             }
         }
         return features;
     }
 
-    public List<SkillUseInfo> getUsableDeathFeatures() {
+    public List<SkillUseInfo> getUsableDeathSkills() {
         List<SkillUseInfo> features = new ArrayList<SkillUseInfo>();
-        for (SkillUseInfo feature : this.getAllUsableFeatures()) {
+        for (SkillUseInfo feature : this.getAllUsableSkills()) {
             CardSkill cardSkill = (CardSkill)feature.getSkill();
-            if (cardSkill.isDeathFeature()) {
+            if (cardSkill.isDeathSkill()) {
                 features.add(feature);
             }
         }
         return features;
     }
 
-    public List<SkillUseInfo> getNormalUsableFeatures() {
+    public List<SkillUseInfo> getNormalUsableSkills() {
         List<SkillUseInfo> features = new ArrayList<SkillUseInfo>();
-        for (SkillUseInfo feature : this.getAllUsableFeatures()) {
+        for (SkillUseInfo feature : this.getAllUsableSkills()) {
             CardSkill cardSkill = (CardSkill)feature.getSkill();
-            if (!cardSkill.isDeathFeature() && !cardSkill.isSummonFeature()) {
+            if (!cardSkill.isDeathSkill() && !cardSkill.isSummonSkill()) {
                 features.add(feature);
             }
         }
         return features;
     }
     
-    public List<SkillUseInfo> getAllUsableFeatures() {
-        return getUsableFeatures();
+    public List<SkillUseInfo> getAllUsableSkills() {
+        return getUsableSkills();
     }
 
-    private List<SkillUseInfo> getUsableFeatures() {
+    private List<SkillUseInfo> getUsableSkills() {
         List<SkillUseInfo> features = new ArrayList<SkillUseInfo>(6);
-        for (SkillUseInfo feature : this.getAllFeatures()) {
+        for (SkillUseInfo feature : this.getAllSkills()) {
             CardSkill cardSkill = (CardSkill)feature.getSkill();
             if (cardSkill.getUnlockLevel() <= this.getCard().getLevel()) {
                 features.add(feature);
@@ -392,7 +392,7 @@ public class CardInfo extends EntityInfo {
     }
 
     public boolean containsUsableFeaturesWithTag(SkillTag tag) {
-        for (SkillUseInfo feature : this.getAllUsableFeatures()) {
+        for (SkillUseInfo feature : this.getAllUsableSkills()) {
             CardSkill cardSkill = (CardSkill) feature.getSkill();
             if (cardSkill.getType().containsTag(tag)) {
                 return true;
@@ -422,7 +422,7 @@ public class CardInfo extends EntityInfo {
     }
     
     public boolean containsUsableFeature(SkillType type) {
-        List<SkillUseInfo> features = this.getAllUsableFeatures();
+        List<SkillUseInfo> features = this.getAllUsableSkills();
         for (SkillUseInfo skillUseInfo : features) {
             if (skillUseInfo.getType() == type) {
                 return true;

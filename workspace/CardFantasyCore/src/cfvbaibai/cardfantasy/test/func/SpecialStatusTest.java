@@ -232,4 +232,26 @@ public class SpecialStatusTest extends SkillValidationTest {
         Assert.assertEquals(165, 1056 - c东方幻术师1.getHP());
         Assert.assertEquals(660, c秘银巨石像.getCurrentAT());
     }
+    
+    @Test
+    public void test战争怒吼_虚弱() {
+        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "东方幻术师", "血色骑士", "秘银巨石像*2");
+        CardInfo c东方幻术师 = context.addToField(0, 0);
+        CardInfo c血色骑士 = context.addToHand(1, 0).setSummonDelay(0);
+        CardInfo c秘银巨石像1 = context.addToField(2, 1);
+        CardInfo c秘银巨石像2 = context.addToField(3, 1);
+        context.startGame();
+        
+        random.addNextPicks(0, 1); // 血色骑士的降临战争怒吼
+        random.addNextPicks(0); // 东方幻术师虚弱秘银巨石像1
+        random.addNextPicks(0).addNextNumbers(1000); // 东方幻术师迷魂失败
+        random.addNextNumbers(1000); // 血色骑士暴击失败
+        context.proceedOneRound();
+        
+        context.proceedOneRound();
+        Assert.assertEquals(660 / 2 /* 虚弱 */ / 2 /* 战争怒吼 */, 1290 - c东方幻术师.getHP());
+        Assert.assertEquals(660 / 2 /* 战争怒吼 */, 1210 - c血色骑士.getHP());
+        Assert.assertEquals(660, c秘银巨石像1.getCurrentAT());
+        Assert.assertEquals(660, c秘银巨石像2.getCurrentAT());
+    }
 }

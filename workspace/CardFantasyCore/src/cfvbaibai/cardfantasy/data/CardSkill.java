@@ -2,13 +2,13 @@ package cfvbaibai.cardfantasy.data;
 
 public class CardSkill extends Skill implements Cloneable {
     private int unlockLevel;
-    protected boolean summonFeature;
-    protected boolean deathFeature;
-    public CardSkill(SkillType type, int level, int unlockLevel, boolean summonFeature, boolean deathFeature) {
+    protected boolean summonSkill;
+    protected boolean deathSkill;
+    public CardSkill(SkillType type, int level, int unlockLevel, boolean summonSkill, boolean deathSkill) {
         super(type, level);
         this.unlockLevel = unlockLevel;
-        this.summonFeature = summonFeature;
-        this.deathFeature = deathFeature;
+        this.summonSkill = summonSkill;
+        this.deathSkill = deathSkill;
     }
     
     public int getUnlockLevel() {
@@ -18,22 +18,22 @@ public class CardSkill extends Skill implements Cloneable {
     @Override
     public String getShortDesc() {
         String prefix = "";
-        if (this.isSummonFeature()) {
+        if (this.isSummonSkill()) {
             prefix += "降临-";
         }
-        if (this.isDeathFeature()) {
+        if (this.isDeathSkill()) {
             prefix += "死契-";
         }
         return String.format("【%s%s%s】", prefix, type.getDisplayName(), level == 0 ? "" : String.valueOf(level));
     }
     
     @Override
-    public boolean isSummonFeature() {
-        return this.summonFeature;
+    public boolean isSummonSkill() {
+        return this.summonSkill;
     }
 
     @Override
-    public boolean isDeathFeature() {
-        return this.deathFeature;
+    public boolean isDeathSkill() {
+        return this.deathSkill;
     }
 }

@@ -59,20 +59,20 @@ public abstract class Skill implements Comparable<Skill> {
     }
     
     private int getSpecialTypeOrder() {
-        if (this.isDeathFeature()) {
+        if (this.isDeathSkill()) {
             return 2;
         }
-        if (this.isSummonFeature()) {
+        if (this.isSummonSkill()) {
             return 1;
         }
         return 0;
     }
 
-    public boolean isDeathFeature() {
+    public boolean isDeathSkill() {
         return false;
     }
 
-    public boolean isSummonFeature() {
+    public boolean isSummonSkill() {
         return false;
     }
     
