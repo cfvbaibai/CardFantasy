@@ -9,7 +9,7 @@ import java.util.Map;
 import cfvbaibai.cardfantasy.Randomizer;
 import cfvbaibai.cardfantasy.data.Card;
 import cfvbaibai.cardfantasy.data.Legion;
-import cfvbaibai.cardfantasy.data.LegionFeature;
+import cfvbaibai.cardfantasy.data.LegionSkill;
 import cfvbaibai.cardfantasy.data.PlayerInfo;
 import cfvbaibai.cardfantasy.data.Race;
 import cfvbaibai.cardfantasy.data.RuneData;
@@ -39,7 +39,7 @@ public class Player extends EntityInfo {
             Legion legion = playerInfo.getLegion();
             LegionInfo legionInfo = new LegionInfo(legion, this);
             for (Race race : Race.values()) {
-                legionBuffFeatures.put(race, new FeatureInfo(legionInfo, LegionFeature.create(legion, race)));
+                legionBuffFeatures.put(race, new FeatureInfo(legionInfo, LegionSkill.create(legion, race)));
             }
         }
     }
