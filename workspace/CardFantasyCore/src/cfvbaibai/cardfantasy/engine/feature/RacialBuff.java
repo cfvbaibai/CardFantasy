@@ -16,7 +16,7 @@ public final class RacialBuff {
         if (card == null) {
             throw new CardFantasyRuntimeException("card cannot be null");
         }
-        Skill skill = skillUseInfo.getFeature();
+        Skill skill = skillUseInfo.getSkill();
         int impact = skill.getImpact();
         Field field = card.getOwner().getField();
         for (CardInfo ally : field.getAliveCards()) {

@@ -15,7 +15,7 @@ public class LegionBuff {
         if (skillUseInfo == null) {
             return;
         }
-        Skill skill = skillUseInfo.getFeature();
+        Skill skill = skillUseInfo.getSkill();
         if (skill.getLevel() == 0) {
             return;
         }

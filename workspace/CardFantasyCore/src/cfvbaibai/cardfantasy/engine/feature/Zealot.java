@@ -15,7 +15,7 @@ public final class Zealot {
         if (result.getDamage() == 0 || defender == null) {
             return;
         }
-        Skill skill = skillUseInfo.getFeature();
+        Skill skill = skillUseInfo.getSkill();
         int adjAT = skill.getImpact();
         resolver.getStage().getUI().useSkill(defender, defender, skill, true);
         resolver.getStage().getUI().adjustAT(defender, defender, adjAT, skill);

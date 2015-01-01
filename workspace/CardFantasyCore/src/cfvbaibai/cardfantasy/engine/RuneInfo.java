@@ -62,8 +62,8 @@ public class RuneInfo extends EntityInfo {
 
     public String getShortDesc() {
         String statusText = (this.energy <= 0 && !this.activated) ? "OVER" : (this.activated ? "ON" : "OFF");
-        return String.format("【%s%d-%s%d-%d-%s】", this.rune.getName(), this.rune.getLevel(), this.skillUseInfo.getFeature()
-                .getType().name(), this.skillUseInfo.getFeature().getLevel(), getEnergy(), statusText);
+        return String.format("【%s%d-%s%d-%d-%s】", this.rune.getName(), this.rune.getLevel(), this.skillUseInfo.getSkill()
+                .getType().name(), this.skillUseInfo.getSkill().getLevel(), getEnergy(), statusText);
     }
 
     public boolean is(RuneData data) {
@@ -76,7 +76,7 @@ public class RuneInfo extends EntityInfo {
     }
 
     public Skill getFeature() {
-        return this.getFeatureInfo().getFeature();
+        return this.getFeatureInfo().getSkill();
     }
 
     public String getName() {

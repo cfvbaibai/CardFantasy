@@ -24,7 +24,7 @@ public final class ChainAttack {
             // Sweep & ChainAttack itself cannot trigger ChainAttack
             return;
         }
-        Skill skill = skillUseInfo.getFeature();
+        Skill skill = skillUseInfo.getSkill();
         // Prevent stack overflow...
         if (!attacker.getEffectsCausedBy(skillUseInfo).isEmpty()) {
             return;

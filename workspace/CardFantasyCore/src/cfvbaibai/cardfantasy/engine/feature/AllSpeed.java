@@ -8,9 +8,9 @@ import cfvbaibai.cardfantasy.engine.SkillResolver;
 
 public class AllSpeed {
     public static void apply(SkillUseInfo skillUseInfo, SkillResolver resolver, CardInfo attacker) {
-        int summonDelayOffset = skillUseInfo.getFeature().getImpact(); 
+        int summonDelayOffset = skillUseInfo.getSkill().getImpact(); 
         List<CardInfo> allHandCards = attacker.getOwner().getHand().toList();
-        resolver.getStage().getUI().useSkill(attacker, allHandCards, skillUseInfo.getFeature(), true);
+        resolver.getStage().getUI().useSkill(attacker, allHandCards, skillUseInfo.getSkill(), true);
         for (CardInfo card : allHandCards) {
             int summonDelay = card.getSummonDelay();
             if (summonDelay < summonDelayOffset) {

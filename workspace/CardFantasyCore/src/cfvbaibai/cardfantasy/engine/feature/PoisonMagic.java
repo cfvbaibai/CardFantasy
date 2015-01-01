@@ -16,7 +16,7 @@ import cfvbaibai.cardfantasy.engine.Player;
 public final class PoisonMagic {
     public static void apply(SkillUseInfo skillUseInfo, SkillResolver resolver, EntityInfo attacker, Player defender,
             int victimCount) throws HeroDieSignal {
-        Skill skill = skillUseInfo.getFeature();
+        Skill skill = skillUseInfo.getSkill();
         List<CardInfo> victims = resolver.getStage().getRandomizer().pickRandom(
             defender.getField().toList(), victimCount, true, null);
         GameUI ui = resolver.getStage().getUI();

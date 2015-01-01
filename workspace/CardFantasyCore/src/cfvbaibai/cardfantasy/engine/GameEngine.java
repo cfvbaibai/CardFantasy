@@ -220,7 +220,7 @@ public class GameEngine {
                 SkillUseInfo skillUseInfo = statusItems.get(0).getCause();
                 ui.softened(myCard);
                 int adjAT = -myCard.getLevel1AT() / 2;
-                ui.adjustAT(skillUseInfo.getOwner(), myCard, adjAT, skillUseInfo.getFeature());
+                ui.adjustAT(skillUseInfo.getOwner(), myCard, adjAT, skillUseInfo.getSkill());
                 myField.getCard(i).addEffect(
                     new SkillEffect(SkillEffectType.ATTACK_CHANGE, skillUseInfo, adjAT, false));
             }
@@ -321,14 +321,14 @@ public class GameEngine {
             return;
         }
         for (SkillUseInfo skillUseInfo : myField.getCard(i).getNormalUsableFeatures()) {
-            if (skillUseInfo.getFeature().getType() == SkillType.横扫) {
-                ui.useSkill(myField.getCard(i), defender, skillUseInfo.getFeature(), true);
+            if (skillUseInfo.getSkill().getType() == SkillType.横扫) {
+                ui.useSkill(myField.getCard(i), defender, skillUseInfo.getSkill(), true);
             }
         }
         OnDamagedResult damagedResult = resolver.attackCard(myField.getCard(i), defender, null);
         if (damagedResult != null && damagedResult.originalDamage > 0 && myField.getCard(i) != null) {
             for (SkillUseInfo skillUseInfo : myField.getCard(i).getNormalUsableFeatures()) {
-                if (skillUseInfo.getFeature().getType() == SkillType.横扫) {
+                if (skillUseInfo.getSkill().getType() == SkillType.横扫) {
 
                     List<CardInfo> sweepDefenders = new ArrayList<CardInfo>();
                     if (i > 0 && opField.getCard(i - 1) != null) {
@@ -339,7 +339,7 @@ public class GameEngine {
                     }
 
                     for (CardInfo sweepDefender : sweepDefenders) {
-                        ui.useSkill(myField.getCard(i), sweepDefender, skillUseInfo.getFeature(), true);
+                        ui.useSkill(myField.getCard(i), sweepDefender, skillUseInfo.getSkill(), true);
                         resolver.attackCard(myField.getCard(i), sweepDefender, skillUseInfo, damagedResult.originalDamage);
                         // Physical attack cannot proceed if attacker is killed by counter attack skills.
                         if (myField.getCard(i) == null) {

@@ -19,7 +19,7 @@ public final class Sacrifice {
         if (card.hasUsed(skillUseInfo)) {
             return;
         }
-        Skill skill = skillUseInfo.getFeature();
+        Skill skill = skillUseInfo.getSkill();
         GameUI ui = resolver.getStage().getUI();
         Randomizer random = resolver.getStage().getRandomizer();
 

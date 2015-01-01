@@ -16,7 +16,7 @@ public class HolyGuard {
         if (card == null || card.isDead()) {
             throw new CardFantasyRuntimeException("card should not be null or dead!");
         }
-        Skill skill = skillUseInfo.getFeature();
+        Skill skill = skillUseInfo.getSkill();
         int impact = skill.getImpact();
         resolver.getStage().getUI().useSkill(card, skill, true);
         Field field = card.getOwner().getField();

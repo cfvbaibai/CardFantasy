@@ -14,7 +14,7 @@ public class SkillUseInfo {
         return owner;
     }
     
-    public Skill getFeature() {
+    public Skill getSkill() {
         return skill;
     }
     
@@ -34,7 +34,7 @@ public class SkillUseInfo {
         }
         if (obj instanceof SkillUseInfo) {
             SkillUseInfo other = (SkillUseInfo)obj;
-            return getOwner() == other.getOwner() && getFeature().equals(other.getFeature());
+            return getOwner() == other.getOwner() && getSkill().equals(other.getSkill());
         }
         return false;
     }

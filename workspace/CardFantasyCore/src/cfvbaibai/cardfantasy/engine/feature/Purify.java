@@ -12,7 +12,7 @@ public final class Purify {
     public static void apply(SkillUseInfo skillUseInfo, SkillResolver resolver, CardInfo attacker)
             throws HeroDieSignal {
         List<CardInfo> cards = attacker.getOwner().getField().getAliveCards();
-        resolver.getStage().getUI().useSkill(attacker, cards, skillUseInfo.getFeature(), true);
+        resolver.getStage().getUI().useSkill(attacker, cards, skillUseInfo.getSkill(), true);
         for (CardInfo card : cards) {
             resolver.removeStatus(card, CardStatusType.迷惑);
             resolver.removeStatus(card, CardStatusType.冰冻);

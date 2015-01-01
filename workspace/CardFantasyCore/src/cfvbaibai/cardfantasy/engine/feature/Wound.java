@@ -19,7 +19,7 @@ public final class Wound {
         if (attackFeature != null && attackFeature.getType() == SkillType.横扫) {
             return;
         }
-        Skill skill = skillUseInfo.getFeature();
+        Skill skill = skillUseInfo.getSkill();
         resolver.getStage().getUI().useSkill(attacker, defender, skill, true);
         CardStatusItem status = CardStatusItem.wound(skillUseInfo);
         resolver.getStage().getUI().addCardStatus(attacker, defender, skill, status);

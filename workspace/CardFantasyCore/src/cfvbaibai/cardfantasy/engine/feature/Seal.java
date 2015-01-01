@@ -17,7 +17,7 @@ public final class Seal {
         if (attacker.hasUsed(skillUseInfo)) {
             return;
         }
-        Skill skill = skillUseInfo.getFeature();
+        Skill skill = skillUseInfo.getSkill();
         List<CardInfo> victims = defender.getField().getAliveCards();
         GameUI ui = resolver.getStage().getUI();
         ui.useSkill(attacker, victims, skill, true);

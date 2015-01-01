@@ -14,7 +14,7 @@ import cfvbaibai.cardfantasy.engine.SkillResolver;
 public final class Pursuit {
     public static void apply(SkillResolver resolver, SkillUseInfo skillUseInfo, CardInfo attacker, CardInfo defender) {
         CardStatus status = defender.getStatus();
-        Skill skill = skillUseInfo.getFeature();
+        Skill skill = skillUseInfo.getSkill();
         if (status.containsStatus(CardStatusType.中毒) || status.containsStatus(CardStatusType.冰冻) ||
                 status.containsStatus(CardStatusType.燃烧) || status.containsStatus(CardStatusType.麻痹)) {
             int adjAT = (int) (attacker.getLevel1AT() * skill.getImpact() / 100);

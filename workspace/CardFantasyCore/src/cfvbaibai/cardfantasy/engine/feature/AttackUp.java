@@ -12,7 +12,7 @@ import cfvbaibai.cardfantasy.engine.SkillResolver;
 
 public final class AttackUp {
     public static void apply(SkillResolver resolver, SkillUseInfo skillUseInfo, EntityInfo caster, int targetCount) {
-        Skill skill = skillUseInfo.getFeature();
+        Skill skill = skillUseInfo.getSkill();
         int adjAT = skill.getImpact();
         List<CardInfo> targets = resolver.getStage().getRandomizer().pickRandom(
             caster.getOwner().getField().toList(), targetCount, true, null);

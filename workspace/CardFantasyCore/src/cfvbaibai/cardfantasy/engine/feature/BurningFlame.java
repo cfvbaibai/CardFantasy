@@ -18,7 +18,7 @@ import cfvbaibai.cardfantasy.engine.Player;
 public final class BurningFlame {
     public static void apply(SkillUseInfo skillUseInfo, SkillResolver resolver, EntityInfo attacker, Player defender)
             throws HeroDieSignal {
-        Skill skill = skillUseInfo.getFeature();
+        Skill skill = skillUseInfo.getSkill();
         int damage = skill.getImpact();
         List<CardInfo> candidates = resolver.getStage().getRandomizer().pickRandom(
             defender.getField().toList(), -1, true, null);

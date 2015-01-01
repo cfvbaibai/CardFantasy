@@ -17,7 +17,7 @@ import cfvbaibai.cardfantasy.engine.StageInfo;
 public final class Confusion {
     public static void apply(SkillUseInfo skillUseInfo, SkillResolver resolver, CardInfo attacker, Player defender,
             int victimCount) throws HeroDieSignal {
-        Skill skill = skillUseInfo.getFeature();
+        Skill skill = skillUseInfo.getSkill();
         StageInfo stage = resolver.getStage();
         Randomizer random = stage.getRandomizer();
         GameUI ui = stage.getUI();

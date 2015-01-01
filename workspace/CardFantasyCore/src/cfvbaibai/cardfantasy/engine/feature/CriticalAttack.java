@@ -9,7 +9,7 @@ import cfvbaibai.cardfantasy.engine.SkillResolver;
 
 public final class CriticalAttack extends PreAttackCardSkill {
     public static void apply(SkillResolver resolver, SkillUseInfo skillUseInfo, CardInfo attacker, CardInfo defender) {
-        Skill skill = skillUseInfo.getFeature();
+        Skill skill = skillUseInfo.getSkill();
         int adjAT = skill.getImpact() * attacker.getLevel1AT() / 100;
         boolean bingo = resolver.getStage().getRandomizer().roll100(50);
         resolver.getStage().getUI().useSkill(attacker, skill, bingo);

@@ -11,9 +11,9 @@ import cfvbaibai.cardfantasy.engine.Player;
 public final class AllDelay {
     public static void apply(SkillUseInfo skillUseInfo, SkillResolver resolver, CardInfo attacker, Player defender)
             throws HeroDieSignal {
-        int summonDelayOffset = skillUseInfo.getFeature().getImpact(); 
+        int summonDelayOffset = skillUseInfo.getSkill().getImpact(); 
         List<CardInfo> allHandCards = defender.getHand().toList();
-        resolver.getStage().getUI().useSkill(attacker, allHandCards, skillUseInfo.getFeature(), true);
+        resolver.getStage().getUI().useSkill(attacker, allHandCards, skillUseInfo.getSkill(), true);
         for (CardInfo card : allHandCards) {
             int summonDelay = card.getSummonDelay();
             resolver.getStage().getUI().increaseSummonDelay(card, summonDelayOffset);

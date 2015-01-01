@@ -19,7 +19,7 @@ import cfvbaibai.cardfantasy.engine.Player;
 public final class Trap {
     public static void apply(SkillUseInfo skillUseInfo, SkillResolver resolver, CardInfo attacker, Player defender)
             throws HeroDieSignal {
-        Skill skill = skillUseInfo.getFeature();
+        Skill skill = skillUseInfo.getSkill();
         int targetCount = skill.getImpact();
         List<CardInfo> victims = resolver.getStage().getRandomizer().pickRandom(
             defender.getField().toList(), targetCount, true, null);

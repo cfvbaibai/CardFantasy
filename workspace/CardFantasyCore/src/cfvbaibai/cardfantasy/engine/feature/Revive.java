@@ -26,7 +26,7 @@ public final class Revive {
         if (!hasRevivableCard) {
             return;
         }
-        Skill skill = skillUseInfo.getFeature();
+        Skill skill = skillUseInfo.getSkill();
         // Grave is a stack, find the last-in card and revive it.
         CardInfo cardToRevive = null;
         while (true) {

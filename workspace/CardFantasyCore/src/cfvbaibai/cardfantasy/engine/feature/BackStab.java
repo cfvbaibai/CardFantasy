@@ -11,7 +11,7 @@ import cfvbaibai.cardfantasy.engine.SkillResolver;
 
 public final class BackStab {
     public static void apply(SkillResolver resolver, SkillUseInfo skillUseInfo, CardInfo attacker) {
-        Skill skill = skillUseInfo.getFeature();
+        Skill skill = skillUseInfo.getSkill();
         int adjAT = skill.getImpact();
         if (attacker.hasUsed(skillUseInfo)) {
             return;

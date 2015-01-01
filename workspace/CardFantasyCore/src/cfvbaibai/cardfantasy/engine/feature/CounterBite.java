@@ -15,7 +15,7 @@ public final class CounterBite {
         if (card.hasUsed(skillUseInfo)) {
             return;
         }
-        Skill cardFeature = skillUseInfo.getFeature();
+        Skill cardFeature = skillUseInfo.getSkill();
         int damage = cardFeature.getImpact();
         resolver.attackHero(card, card.getOwner(), cardFeature, damage);
         card.setUsed(skillUseInfo);

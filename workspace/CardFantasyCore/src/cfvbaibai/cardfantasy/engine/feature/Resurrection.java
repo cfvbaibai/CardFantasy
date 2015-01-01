@@ -18,7 +18,7 @@ public final class Resurrection {
         if (resurrector.getOwner() != resolver.getStage().getActivePlayer()) {
             throw new CardFantasyRuntimeException("resurrector is not the current active player!");
         }
-        Skill skill = skillUseInfo.getFeature();
+        Skill skill = skillUseInfo.getSkill();
         // Grave is a stack, find the last-in card and revive it.
         int resurrectionCount = skill.getImpact();
         Player player = resurrector.getOwner();

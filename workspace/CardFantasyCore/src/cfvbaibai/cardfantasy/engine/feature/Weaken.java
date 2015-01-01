@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cfvbaibai.cardfantasy.data.Skill;
+import cfvbaibai.cardfantasy.data.SkillTag;
 import cfvbaibai.cardfantasy.data.SkillType;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.EntityInfo;
@@ -24,7 +25,7 @@ public final class Weaken {
         if (normalAttackDamage <= 0 || defender == null) {
             return;
         }
-        Skill skill = skillUseInfo.getFeature();
+        Skill skill = skillUseInfo.getSkill();
         resolver.getStage().getUI().useSkill(attacker, defender, skill, true);
         List<CardInfo> defenders = new ArrayList<CardInfo>();
         defenders.add(defender);
@@ -38,7 +39,7 @@ public final class Weaken {
             if (defender == null) {
                 continue;
             }
-            Skill skill = skillUseInfo.getFeature();
+            Skill skill = skillUseInfo.getSkill();
             if (!resolver.resolveAttackBlockingFeature(attacker, defender, skill, 1).isAttackable()) {
                 continue;
             }
@@ -51,7 +52,7 @@ public final class Weaken {
             List<SkillEffect> effects = defender.getEffects();
             for (SkillEffect effect : effects) {
                 if (effect.getType() == SkillEffectType.ATTACK_CHANGE && effect.getValue() > 0 &&
-                        effect.getCause().getType() == SkillType.群攻提升) {
+                        effect.getCause().getSkill().getType().containsTag(SkillTag.抗削弱)) {
                     // TODO: 现在只有群攻提升，不过以后会有其它的
                     if (attackWeakened > effect.getValue()) {
                         attackWeakened -= effect.getValue();

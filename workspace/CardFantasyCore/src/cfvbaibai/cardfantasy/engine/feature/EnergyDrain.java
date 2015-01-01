@@ -19,7 +19,7 @@ public final class EnergyDrain {
         if (result.getDamage() == 0 || defender == null) {
             return;
         }
-        Skill skill = skillUseInfo.getFeature();
+        Skill skill = skillUseInfo.getSkill();
         int adjAT = attacker.getLevel1AT() * skill.getImpact() / 100;
 
         List<CardInfo> victims = new ArrayList<CardInfo>();

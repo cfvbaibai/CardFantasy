@@ -16,7 +16,7 @@ import cfvbaibai.cardfantasy.engine.Player;
 public class Soften {
     public static void apply(SkillUseInfo skillUseInfo, SkillResolver resolver, EntityInfo attacker, Player defender)
         throws HeroDieSignal {
-        Skill skill = skillUseInfo.getFeature();
+        Skill skill = skillUseInfo.getSkill();
 
         List<CardInfo> victims = resolver.getStage().getRandomizer().pickRandom(
             defender.getField().toList(), 1, true, null);

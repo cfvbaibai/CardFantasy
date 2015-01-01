@@ -9,7 +9,7 @@ import cfvbaibai.cardfantasy.engine.Player;
 
 public final class OneDelay {
     public static void apply(SkillUseInfo skillUseInfo, SkillResolver resolver, CardInfo attacker, Player defender) {
-        int summonDelayOffset = skillUseInfo.getFeature().getImpact();
+        int summonDelayOffset = skillUseInfo.getSkill().getImpact();
         List<CardInfo> allHandCards = defender.getHand().toList();
         CardInfo victim = null;
         for (CardInfo card : allHandCards) {
@@ -21,7 +21,7 @@ public final class OneDelay {
             // No card at hand.
             return;
         }
-        resolver.getStage().getUI().useSkill(attacker, victim, skillUseInfo.getFeature(), true);
+        resolver.getStage().getUI().useSkill(attacker, victim, skillUseInfo.getSkill(), true);
         resolver.getStage().getUI().increaseSummonDelay(victim, summonDelayOffset);
         victim.setSummonDelay(victim.getSummonDelay() + summonDelayOffset);
     }

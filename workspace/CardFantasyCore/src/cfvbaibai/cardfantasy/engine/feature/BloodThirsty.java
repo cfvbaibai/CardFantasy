@@ -12,7 +12,7 @@ public final class BloodThirsty {
         if (attacker == null || normalAttackDamage <= 0) {
             return;
         }
-        Skill skill = skillUseInfo.getFeature();
+        Skill skill = skillUseInfo.getSkill();
         resolver.getStage().getUI().useSkill(attacker, skill, true);
         int adjAT = skill.getImpact();
         resolver.getStage().getUI().adjustAT(attacker, attacker, adjAT, skill);

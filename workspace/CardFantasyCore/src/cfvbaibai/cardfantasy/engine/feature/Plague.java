@@ -17,7 +17,7 @@ import cfvbaibai.cardfantasy.engine.Player;
 public final class Plague {
     public static void apply(SkillUseInfo skillUseInfo, SkillResolver resolver, EntityInfo attacker, Player defenderHero)
             throws HeroDieSignal {
-        Skill skill = skillUseInfo.getFeature();
+        Skill skill = skillUseInfo.getSkill();
         int damage = skill.getImpact();
         GameUI ui = resolver.getStage().getUI();
         List<CardInfo> victims = defenderHero.getField().getAliveCards();

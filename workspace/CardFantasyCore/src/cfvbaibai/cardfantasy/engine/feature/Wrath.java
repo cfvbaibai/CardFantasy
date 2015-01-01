@@ -16,7 +16,7 @@ public final class Wrath {
         if (attacker == null || attacker.isDead()) {
             throw new CardFantasyRuntimeException("attacker is null or dead!");
         }
-        Skill skill = skillUseInfo.getFeature();
+        Skill skill = skillUseInfo.getSkill();
         int adjAT = skill.getImpact() * attacker.getLevel1AT() / 100;
         GameUI ui = resolver.getStage().getUI();
         if (attacker.getHP() < defender.getHP()) {

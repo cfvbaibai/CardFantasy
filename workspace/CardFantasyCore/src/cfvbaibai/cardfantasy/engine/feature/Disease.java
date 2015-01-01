@@ -15,7 +15,7 @@ public final class Disease {
         if (normalAttackDamage <= 0 || defender == null || defender.isDead()) {
             return;
         }
-        Skill skill = skillUseInfo.getFeature();
+        Skill skill = skillUseInfo.getSkill();
         int damage = skill.getImpact();
         GameUI ui = resolver.getStage().getUI();
         ui.useSkill(attacker, defender, skill, true);

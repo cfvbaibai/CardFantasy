@@ -19,7 +19,7 @@ public final class Burning {
         if (attacker.getStatus().containsStatusCausedBy(skillUseInfo, CardStatusType.燃烧)) {
             return;
         }
-        Skill skill = skillUseInfo.getFeature();
+        Skill skill = skillUseInfo.getSkill();
         int damage = skill.getImpact();
         GameUI ui = resolver.getStage().getUI();
         ui.useSkill(defender, attacker, skill, true);

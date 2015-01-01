@@ -17,7 +17,7 @@ public final class EnergyArmor {
         if (caster == null) {
             throw new CardFantasyRuntimeException("caster cannot be null");
         }
-        Skill skill = skillUseInfo.getFeature();
+        Skill skill = skillUseInfo.getSkill();
         int impact = skill.getImpact();
         Field field = caster.getOwner().getField();
         List<CardInfo> targets = resolver.getStage().getRandomizer().pickRandom(

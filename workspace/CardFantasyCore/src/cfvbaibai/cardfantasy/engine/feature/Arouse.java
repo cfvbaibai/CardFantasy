@@ -13,7 +13,7 @@ public class Arouse extends PreAttackCardSkill {
         if (myDeadCount == 0) {
             return;
         }
-        Skill skill = skillUseInfo.getFeature();
+        Skill skill = skillUseInfo.getSkill();
         int adjAT = skill.getImpact() * myDeadCount;
         resolver.getStage().getUI().useSkill(attacker, skill, true);
         resolver.getStage().getUI().adjustAT(attacker, attacker, adjAT, skill);

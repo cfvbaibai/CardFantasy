@@ -7,6 +7,9 @@ import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.HeroDieSignal;
 
 public class AttackBuffTest extends SkillValidationTest {
+    /**
+     * 暴击量按照嗜血后的攻击力算
+     */
     @Test
     public void test嗜血_暴击() {
         SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "犀牛人武士", "凤凰+格挡10");
@@ -26,6 +29,9 @@ public class AttackBuffTest extends SkillValidationTest {
         Assert.assertEquals(expectedDamage, actualDamage);
     }
 
+    /**
+     * 暴击量按照狂热后的攻击力算
+     */
     @Test
     public void test狂热_暴击() {
         SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "洪荒巨熊", "秘银巨石像");
@@ -44,6 +50,9 @@ public class AttackBuffTest extends SkillValidationTest {
         Assert.assertEquals(expectedDamage, actualDamage);
     }
 
+    /**
+     * 邪灵汲取的量按照被削弱后的计算
+     */
     @Test
     public void test邪灵汲取_削弱() {
         SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "隐世先知+弱点攻击", "末日预言师", "时空旅者");

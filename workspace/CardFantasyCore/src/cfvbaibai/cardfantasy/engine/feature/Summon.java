@@ -18,7 +18,7 @@ public class Summon {
         if (summoner == null) {
             throw new CardFantasyRuntimeException("summoner should not be null");
         }
-        Skill skill = skillUseInfo.getFeature();
+        Skill skill = skillUseInfo.getSkill();
         if (summoner.hasUsed(skillUseInfo)) {
             return;
         }

@@ -20,9 +20,9 @@ public final class WeakenAll {
         if (attacker == null) {
             return;
         }
-        Skill skill = skillUseInfo.getFeature();
+        Skill skill = skillUseInfo.getSkill();
         List<CardInfo> defenders = defenderPlayer.getField().getAliveCards();
         resolver.getStage().getUI().useSkill(attacker, defenders, skill, true);
-        Weaken.weakenCard(resolver, skillUseInfo, skillUseInfo.getFeature().getImpact(), attacker, defenders);
+        Weaken.weakenCard(resolver, skillUseInfo, skillUseInfo.getSkill().getImpact(), attacker, defenders);
     }
 }

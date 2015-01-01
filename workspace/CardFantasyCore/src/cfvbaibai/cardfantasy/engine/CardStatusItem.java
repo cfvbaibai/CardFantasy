@@ -83,8 +83,8 @@ public class CardStatusItem {
             sb.append(")");
         }
         sb.append(":");
-        sb.append(cause.getFeature().getType().name());
-        sb.append(cause.getFeature().getLevel());
+        sb.append(cause.getSkill().getType().name());
+        sb.append(cause.getSkill().getLevel());
         sb.append(":");
         sb.append(cause.getOwner().getShortDesc());
         return sb.toString();

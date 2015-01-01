@@ -16,7 +16,7 @@ public final class HeroKiller {
     }
 
     public static void apply(SkillResolver resolver, SkillUseInfo skillUseInfo, CardInfo attacker, Player victim) {
-        Skill skill = skillUseInfo.getFeature();
+        Skill skill = skillUseInfo.getSkill();
         int adj = attacker.getLevel1AT() * skill.getImpact() / 100;
         resolver.getStage().getUI().useSkill(attacker, skill, true);
         resolver.getStage().getUI().adjustAT(attacker, attacker, adj, skill);

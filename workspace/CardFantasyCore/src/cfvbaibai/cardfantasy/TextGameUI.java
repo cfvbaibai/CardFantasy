@@ -346,7 +346,7 @@ public abstract class TextGameUI extends GameUI {
     @Override
     public void loseAdjustATEffect(CardInfo ally, SkillEffect effect) {
         sayF("%s 失去由 %s 的 %s 造成的效果. 攻击: %d -> %d.", ally.getShortDesc(), effect.getSource().getShortDesc(), effect
-                .getCause().getFeature().getShortDesc(), ally.getCurrentAT(), ally.getCurrentAT() - effect.getValue());
+                .getCause().getSkill().getShortDesc(), ally.getCurrentAT(), ally.getCurrentAT() - effect.getValue());
     }
 
     @Override
@@ -354,7 +354,7 @@ public abstract class TextGameUI extends GameUI {
         int currentHP = ally.getHP() > ally.getMaxHP() - effect.getValue() ? ally.getMaxHP() - effect.getValue() : ally
                 .getHP();
         sayF("%s 失去由 %s 的 %s 造成的效果. HP: %d -> %d.", ally.getShortDesc(), effect.getSource().getShortDesc(), effect
-                .getCause().getFeature().getShortDesc(), ally.getHP(), currentHP);
+                .getCause().getSkill().getShortDesc(), ally.getHP(), currentHP);
     }
 
     @Override
