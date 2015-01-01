@@ -13,7 +13,7 @@
                 <a id="faster-button" data-role="button" data-mini="true" data-theme="c">加快</a>
                 <a id="slower-button" data-role="button" data-mini="true" data-theme="c">减慢</a>
                 <a id="back-button" data-role="button" data-mini="true" data-theme="c" href="javascript:history.go(-1)">返回</a>
-                <a data-role="button" data-mini="true" data-theme="c" data-link-type="bug" href="#">提BUG</a>
+                <a data-role="button" data-mini="true" data-theme="c" data-type="bug" href="#">提BUG</a>
             </div>
             <div id="player-status"></div>
         </div>

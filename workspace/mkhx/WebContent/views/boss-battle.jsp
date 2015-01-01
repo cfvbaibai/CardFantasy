@@ -102,7 +102,7 @@
                 <a id="play-boss-1-game-button" class="battle-button" data-role="button" data-mini="true" data-theme="c">文字战斗</a>
                 <a id="simulate-boss-1-game-button" class="battle-button" data-role="button" data-mini="true" data-theme="c">动画战斗</a>
                 <a id="play-boss-massive-game-button" class="battle-button" data-role="button" data-mini="true" data-theme="c">卡组强度分析</a>
-                <a data-role="button" data-mini="true" data-theme="c" data-link-type="bug" href="#">提BUG</a>
+                <a data-role="button" data-mini="true" data-theme="c" data-type="bug" href="#">提BUG</a>
             </div>
             <div id="battle-div" data-mini="true" data-role="collapsible" data-collapsed="false" data-theme="c" data-content-theme="d">
                 <h3>战斗记录</h3>

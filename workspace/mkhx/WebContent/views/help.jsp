@@ -7,6 +7,7 @@
                     <ul data-theme="c">
                         <li><a href="http://www.joyme.com/wiki/mkhx/index.shtml" target="_blank">魔卡幻想WIKI</a>
                         <li><a href="http://tieba.baidu.com/f?kw=%C4%A7%BF%A8%BB%C3%CF%EB" target="_blank">魔卡幻想贴吧</a></li>
+                        <li><a data-type="bug">魔卡幻想模拟器贴吧</a></li>
                     </ul>
                 </div>
             </div>

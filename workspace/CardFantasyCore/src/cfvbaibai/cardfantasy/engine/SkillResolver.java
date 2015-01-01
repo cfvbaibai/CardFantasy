@@ -252,6 +252,8 @@ public class SkillResolver {
                 Summon.apply(this, feature, attacker, "时光女神", "金属巨龙");
             } else if (feature.getType() == SkillType.召唤邪龙护卫) {
                 Summon.apply(this, feature, attacker, "亡灵守护神", "光明之龙");
+            } else if (feature.getType() == SkillType.召唤复仇护卫) {
+                Summon.apply(this, feature, attacker, "雷兽", "末日预言师");
             } else if (feature.getType() == SkillType.召唤花仙子) {
                 Summon.apply(this, feature, attacker, "花仙子", "花仙子");
             } else if (feature.getType() == SkillType.召唤火焰乌鸦) {

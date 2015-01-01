@@ -184,7 +184,7 @@
                 <a id="play-map-1-game-button" class="battle-button" data-role="button" data-mini="true" data-theme="c">文字战斗</a>
                 <a id="simulate-map-1-game-button" class="battle-button" data-role="button" data-mini="true" data-theme="c">动画战斗</a>
                 <a id="play-map-massive-game-button" class="battle-button" data-role="button" data-mini="true" data-theme="c">连续千场</a>
-                <a data-role="button" data-mini="true" data-theme="c" data-link-type="bug" href="#">提BUG</a>
+                <a data-role="button" data-mini="true" data-theme="c" data-type="bug" href="#">提BUG</a>
             </div>
             <div id="map-battle-div" data-mini="true" data-role="collapsible" data-collapsed="false" data-theme="c" data-content-theme="d">
                 <h3>战斗记录</h3>
