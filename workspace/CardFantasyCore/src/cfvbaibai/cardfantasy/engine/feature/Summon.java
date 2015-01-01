@@ -7,10 +7,9 @@ import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.CardStatusItem;
 import cfvbaibai.cardfantasy.engine.CardStatusType;
-import cfvbaibai.cardfantasy.engine.SkillUseInfo;
-import cfvbaibai.cardfantasy.engine.SkillResolver;
-import cfvbaibai.cardfantasy.engine.Field;
 import cfvbaibai.cardfantasy.engine.HeroDieSignal;
+import cfvbaibai.cardfantasy.engine.SkillResolver;
+import cfvbaibai.cardfantasy.engine.SkillUseInfo;
 import cfvbaibai.cardfantasy.game.DeckBuilder;
 
 public class Summon {
@@ -22,8 +21,8 @@ public class Summon {
         if (summoner.hasUsed(skillUseInfo)) {
             return;
         }
-        Field field = summoner.getOwner().getField();
-        for (CardInfo fieldCard : field.toList()) {
+        List<CardInfo> livingCards = summoner.getOwner().getField().getAliveCards();
+        for (CardInfo fieldCard : livingCards) {
             if (fieldCard.getStatus().containsStatusCausedBy(skillUseInfo, CardStatusType.召唤)) {
                 return;
             }

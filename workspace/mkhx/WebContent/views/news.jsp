@@ -34,6 +34,7 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2015-01-02: 修复【陨星魔法使】召唤时候会null错误的BUG，感谢<a data-type="user">为何打后</a>报告BUG</li>
                     <li>2015-01-01: <ul>
                         <li>完成【复仇女神】魔神、【万蛛之后】魔神，感谢<a data-type="user">麋鹿吉特</a>提供数据。</li>
                         <li>添加新卡【血色骑士】王国四星、【无尽噩梦】地狱五星</li>

@@ -4,8 +4,6 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
-import cfvbaibai.cardfantasy.Randomizer;
-import cfvbaibai.cardfantasy.StaticRandomizer;
 import cfvbaibai.cardfantasy.engine.GameEngine;
 import cfvbaibai.cardfantasy.game.DeckBuilder;
 import cfvbaibai.cardfantasy.game.DeckStartupInfo;
@@ -25,7 +23,8 @@ import cfvbaibai.cardfantasy.test.TestGameBuilder;
     SkillSequenceTest.class,
     HealingTest.class,
     RuneActivationTest.class,
-    SummonTest.class
+    SummonTest.class,
+    SpecificCardTest.class
 })
 public class SkillValidationTestSuite {
     public static SkillTestContext prepare(int playerALevel, int playerBLevel, String ... cards) {
@@ -35,14 +34,5 @@ public class SkillValidationTestSuite {
         context.setEngine(engine);
         context.setDsi(dsi);
         return context;
-    }
-
-    private static StaticRandomizer random;
-    public static StaticRandomizer getRandom() {
-        if (random == null) {
-            random = new StaticRandomizer();
-            Randomizer.registerRandomizer(random);
-        }
-        return random;
     }
 }
