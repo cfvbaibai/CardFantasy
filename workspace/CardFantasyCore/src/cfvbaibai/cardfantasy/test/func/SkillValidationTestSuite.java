@@ -27,11 +27,11 @@ import cfvbaibai.cardfantasy.test.TestGameBuilder;
     RuneActivationTest.class,
     SummonTest.class
 })
-public class FeatureValidationTests {
-    public static FeatureTestContext prepare(int playerALevel, int playerBLevel, String ... cards) {
+public class SkillValidationTestSuite {
+    public static SkillTestContext prepare(int playerALevel, int playerBLevel, String ... cards) {
         GameEngine engine = TestGameBuilder.buildEmptyGameForTest(50, 50);
         DeckStartupInfo dsi = DeckBuilder.build(cards);
-        FeatureTestContext context = new FeatureTestContext();
+        SkillTestContext context = new SkillTestContext();
         context.setEngine(engine);
         context.setDsi(dsi);
         return context;

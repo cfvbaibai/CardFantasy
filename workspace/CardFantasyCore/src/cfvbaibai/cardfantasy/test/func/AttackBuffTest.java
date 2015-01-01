@@ -6,10 +6,10 @@ import org.junit.Test;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.HeroDieSignal;
 
-public class AttackBuffTest extends FeatureValidationTest {
+public class AttackBuffTest extends SkillValidationTest {
     @Test
     public void test嗜血_暴击() {
-        FeatureTestContext context = FeatureValidationTests.prepare(50, 50, "犀牛人武士", "凤凰+格挡10");
+        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "犀牛人武士", "凤凰+格挡10");
         context.addToField(0, 0);
         CardInfo c凤凰 = context.addToField(1, 1);
         context.startGame();
@@ -28,7 +28,7 @@ public class AttackBuffTest extends FeatureValidationTest {
 
     @Test
     public void test狂热_暴击() {
-        FeatureTestContext context = FeatureValidationTests.prepare(50, 50, "洪荒巨熊", "秘银巨石像");
+        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "洪荒巨熊", "秘银巨石像");
         context.addToField(0, 0);
         CardInfo c秘银 = context.addToField(1, 1);
         context.startGame();
@@ -50,7 +50,7 @@ public class AttackBuffTest extends FeatureValidationTest {
      */
     @Test
     public void test邪灵汲取_淬炼_暴击_虚弱() throws HeroDieSignal {
-        FeatureTestContext context = FeatureValidationTests.prepare(50, 50, "东方幻术师", "远古海妖", "淬炼");
+        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "东方幻术师", "远古海妖", "淬炼");
         CardInfo c东方幻术师 = context.addToField(0, 0);
         context.addToField(1, 1);
         context.addToRune(0, 1);
@@ -74,7 +74,7 @@ public class AttackBuffTest extends FeatureValidationTest {
      */
     @Test
     public void test连锁攻击() {
-        FeatureTestContext context = FeatureValidationTests.prepare(50, 50, "纯洁圣女", "降临天使*2");
+        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "纯洁圣女", "降临天使*2");
         context.addToField(0, 0);
         CardInfo c降临天使1 = context.addToField(1, 1);
         CardInfo c降临天使2 = context.addToField(2, 1);

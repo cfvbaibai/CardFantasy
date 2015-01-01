@@ -6,10 +6,10 @@ import org.junit.Test;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.Field;
 
-public class DelayTest extends FeatureValidationTest {
+public class DelayTest extends SkillValidationTest {
     @Test
     public void test阻碍_奇数() {
-        FeatureTestContext context = FeatureValidationTests.prepare(50, 50, "死兆星", "淘气灯灵");
+        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "死兆星", "淘气灯灵");
         context.addToField(0, 0);
         CardInfo c淘气灯灵 = context.addToHand(1, 1);
         Field fieldB = context.getPlayer(1).getField();
@@ -34,7 +34,7 @@ public class DelayTest extends FeatureValidationTest {
 
     @Test
     public void test阻碍_偶数() {
-        FeatureTestContext context = FeatureValidationTests.prepare(50, 50, "死兆星", "堕落精灵");
+        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "死兆星", "堕落精灵");
         context.addToField(0, 0);
         CardInfo c堕落精灵 = context.addToHand(1, 1);
         Field fieldB = context.getPlayer(1).getField();
@@ -70,7 +70,7 @@ public class DelayTest extends FeatureValidationTest {
      */
     @Test
     public void test阻碍_相同等待时间() {
-        FeatureTestContext context = FeatureValidationTests.prepare(50, 50, "死兆星", "堕落精灵*2");
+        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "死兆星", "堕落精灵*2");
         context.addToField(0, 0);
         CardInfo c堕落精灵1 = context.addToHand(1, 1);
         CardInfo c堕落精灵2 = context.addToHand(2, 1);
@@ -86,7 +86,7 @@ public class DelayTest extends FeatureValidationTest {
      */
     @Test
     public void test阻碍_不同等待时间() {
-        FeatureTestContext context = FeatureValidationTests.prepare(50, 50, "死兆星", "堕落精灵*2");
+        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "死兆星", "堕落精灵*2");
         context.addToField(0, 0);
         CardInfo c堕落精灵1 = context.addToHand(1, 1).setSummonDelay(4);
         CardInfo c堕落精灵2 = context.addToHand(2, 1);
@@ -102,7 +102,7 @@ public class DelayTest extends FeatureValidationTest {
      */
     @Test
     public void test阻碍_无手牌() {
-        FeatureTestContext context = FeatureValidationTests.prepare(50, 50, "死兆星");
+        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "死兆星");
         context.addToField(0, 0);
         context.startGame();
 
@@ -111,7 +111,7 @@ public class DelayTest extends FeatureValidationTest {
 
     @Test
     public void test加速_6() {
-        FeatureTestContext context = FeatureValidationTests.prepare(50, 50, "大图书馆长", "金属巨龙", "秘银巨石像");
+        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "大图书馆长", "金属巨龙", "秘银巨石像");
         context.addToField(0, 0);
         CardInfo c金属巨龙 = context.addToHand(1, 0).setSummonDelay(6);
         context.addToHand(2, 1).setSummonDelay(100); // 为了防止对手没卡直接胜利
@@ -140,7 +140,7 @@ public class DelayTest extends FeatureValidationTest {
 
     @Test
     public void test加速_5() {
-        FeatureTestContext context = FeatureValidationTests.prepare(50, 50, "大图书馆长", "凤凰", "秘银巨石像");
+        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "大图书馆长", "凤凰", "秘银巨石像");
         context.addToField(0, 0);
         CardInfo c凤凰 = context.addToHand(1, 0).setSummonDelay(5);
         context.addToHand(2, 1).setSummonDelay(100); // 为了防止对手没卡直接胜利
@@ -169,7 +169,7 @@ public class DelayTest extends FeatureValidationTest {
 
     @Test
     public void test加速_4() {
-        FeatureTestContext context = FeatureValidationTests.prepare(50, 50, "大图书馆长", "凤凰", "秘银巨石像");
+        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "大图书馆长", "凤凰", "秘银巨石像");
         context.addToField(0, 0);
         CardInfo c凤凰 = context.addToHand(1, 0).setSummonDelay(4);
         context.addToHand(2, 1).setSummonDelay(100); // 为了防止对手没卡直接胜利
@@ -198,7 +198,7 @@ public class DelayTest extends FeatureValidationTest {
 
     @Test
     public void test加速_3() {
-        FeatureTestContext context = FeatureValidationTests.prepare(50, 50, "大图书馆长", "黑甲铁骑士", "秘银巨石像");
+        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "大图书馆长", "黑甲铁骑士", "秘银巨石像");
         context.addToField(0, 0);
         CardInfo c黑甲铁骑士 = context.addToHand(1, 0).setSummonDelay(3);
         context.addToHand(2, 1).setSummonDelay(100); // 为了防止对手没卡直接胜利
@@ -219,7 +219,7 @@ public class DelayTest extends FeatureValidationTest {
 
     @Test
     public void test加速_2() {
-        FeatureTestContext context = FeatureValidationTests.prepare(50, 50, "大图书馆长", "堕落精灵", "秘银巨石像");
+        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "大图书馆长", "堕落精灵", "秘银巨石像");
         context.addToField(0, 0);
         CardInfo c堕落精灵 = context.addToHand(1, 0).setSummonDelay(2);
         context.addToHand(2, 1).setSummonDelay(100); // 为了防止对手没卡直接胜利
@@ -240,7 +240,7 @@ public class DelayTest extends FeatureValidationTest {
 
     @Test
     public void test加速_1() {
-        FeatureTestContext context = FeatureValidationTests.prepare(50, 50, "大图书馆长", "堕落精灵", "秘银巨石像");
+        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "大图书馆长", "堕落精灵", "秘银巨石像");
         context.addToField(0, 0);
         CardInfo c堕落精灵 = context.addToHand(1, 0).setSummonDelay(1);
         context.addToHand(2, 1).setSummonDelay(100); // 为了防止对手没卡直接胜利
@@ -261,7 +261,7 @@ public class DelayTest extends FeatureValidationTest {
 
     @Test
     public void test加速_0() {
-        FeatureTestContext context = FeatureValidationTests.prepare(50, 50, "大图书馆长", "淘气灯灵", "秘银巨石像");
+        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "大图书馆长", "淘气灯灵", "秘银巨石像");
         context.addToField(0, 0);
         context.addToHand(1, 0).setSummonDelay(0);
         context.addToHand(2, 1).setSummonDelay(100); // 为了防止对手没卡直接胜利
@@ -274,7 +274,7 @@ public class DelayTest extends FeatureValidationTest {
 
     @Test
     public void test加速_无手牌() {
-        FeatureTestContext context = FeatureValidationTests.prepare(50, 50, "大图书馆长");
+        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "大图书馆长");
         context.addToField(0, 0);
         Field fieldA = context.getPlayer(0).getField();
         context.startGame();
@@ -285,7 +285,7 @@ public class DelayTest extends FeatureValidationTest {
 
     @Test
     public void test加速2_0() {
-        FeatureTestContext context = FeatureValidationTests.prepare(50, 50, "逐月饿狼", "秘银巨石像", "金属巨龙");
+        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "逐月饿狼", "秘银巨石像", "金属巨龙");
         context.addToField(0, 0);
         context.addToHand(1, 0).setSummonDelay(0);
         context.addToHand(2, 1).setSummonDelay(100); // 为了防止对手没卡直接胜利
@@ -298,7 +298,7 @@ public class DelayTest extends FeatureValidationTest {
 
     @Test
     public void test加速2_1() {
-        FeatureTestContext context = FeatureValidationTests.prepare(50, 50, "逐月饿狼", "秘银巨石像", "金属巨龙");
+        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "逐月饿狼", "秘银巨石像", "金属巨龙");
         context.addToField(0, 0);
         CardInfo c秘银巨石像 = context.addToHand(1, 0).setSummonDelay(1);
         context.addToHand(2, 1).setSummonDelay(100); // 为了防止对手没卡直接胜利
@@ -319,7 +319,7 @@ public class DelayTest extends FeatureValidationTest {
 
     @Test
     public void test加速2_2() {
-        FeatureTestContext context = FeatureValidationTests.prepare(50, 50, "逐月饿狼", "秘银巨石像", "金属巨龙");
+        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "逐月饿狼", "秘银巨石像", "金属巨龙");
         context.addToField(0, 0);
         CardInfo c秘银巨石像 = context.addToHand(1, 0).setSummonDelay(2);
         context.addToHand(2, 1).setSummonDelay(100); // 为了防止对手没卡直接胜利
@@ -340,7 +340,7 @@ public class DelayTest extends FeatureValidationTest {
 
     @Test
     public void test加速2_3() {
-        FeatureTestContext context = FeatureValidationTests.prepare(50, 50, "逐月饿狼", "秘银巨石像", "金属巨龙");
+        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "逐月饿狼", "秘银巨石像", "金属巨龙");
         context.addToField(0, 0);
         CardInfo c秘银巨石像 = context.addToHand(1, 0).setSummonDelay(3);
         context.addToHand(2, 1).setSummonDelay(100); // 为了防止对手没卡直接胜利
@@ -361,7 +361,7 @@ public class DelayTest extends FeatureValidationTest {
     
     @Test
     public void test加速2_4() {
-        FeatureTestContext context = FeatureValidationTests.prepare(50, 50, "逐月饿狼", "秘银巨石像", "金属巨龙");
+        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "逐月饿狼", "秘银巨石像", "金属巨龙");
         context.addToField(0, 0);
         CardInfo c秘银巨石像 = context.addToHand(1, 0).setSummonDelay(4);
         context.addToHand(2, 1).setSummonDelay(100); // 为了防止对手没卡直接胜利
@@ -382,7 +382,7 @@ public class DelayTest extends FeatureValidationTest {
     
     @Test
     public void test加速2_5() {
-        FeatureTestContext context = FeatureValidationTests.prepare(50, 50, "逐月饿狼", "秘银巨石像", "金属巨龙");
+        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "逐月饿狼", "秘银巨石像", "金属巨龙");
         context.addToField(0, 0);
         CardInfo c秘银巨石像 = context.addToHand(1, 0).setSummonDelay(5);
         context.addToHand(2, 1).setSummonDelay(100); // 为了防止对手没卡直接胜利
@@ -411,7 +411,7 @@ public class DelayTest extends FeatureValidationTest {
     
     @Test
     public void test加速2_6() {
-        FeatureTestContext context = FeatureValidationTests.prepare(50, 50, "逐月饿狼", "秘银巨石像", "金属巨龙");
+        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "逐月饿狼", "秘银巨石像", "金属巨龙");
         context.addToField(0, 0);
         CardInfo c秘银巨石像 = context.addToHand(1, 0).setSummonDelay(6);
         context.addToHand(2, 1).setSummonDelay(100); // 为了防止对手没卡直接胜利
@@ -443,7 +443,7 @@ public class DelayTest extends FeatureValidationTest {
      */
     @Test
     public void test加速_相同等待时间() {
-        FeatureTestContext context = FeatureValidationTests.prepare(50, 50, "大图书馆长", "堕落精灵*2");
+        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "大图书馆长", "堕落精灵*2");
         context.addToField(0, 0);
         CardInfo c堕落精灵1 = context.addToHand(1, 0);
         CardInfo c堕落精灵2 = context.addToHand(2, 0);
@@ -459,7 +459,7 @@ public class DelayTest extends FeatureValidationTest {
      */
     @Test
     public void test加速_不同等待时间() {
-        FeatureTestContext context = FeatureValidationTests.prepare(50, 50, "大图书馆长", "堕落精灵*2");
+        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "大图书馆长", "堕落精灵*2");
         context.addToField(0, 0);
         CardInfo c堕落精灵1 = context.addToHand(1, 0);
         CardInfo c堕落精灵2 = context.addToHand(2, 0).setSummonDelay(4);

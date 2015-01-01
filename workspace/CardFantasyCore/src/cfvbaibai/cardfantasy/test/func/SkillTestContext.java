@@ -7,7 +7,7 @@ import cfvbaibai.cardfantasy.engine.RuneInfo;
 import cfvbaibai.cardfantasy.engine.StageInfo;
 import cfvbaibai.cardfantasy.game.DeckStartupInfo;
 
-public class FeatureTestContext {
+public class SkillTestContext {
     private GameEngine engine;
     private DeckStartupInfo dsi;
 
@@ -48,11 +48,11 @@ public class FeatureTestContext {
         Player player = getPlayer(playerIndex);
         return player.getRuneBox().addRune(new RuneInfo(dsi.getRunes().get(runeIndex), player));
     }
-    public FeatureTestContext startGame() {
+    public SkillTestContext startGame() {
         this.getStage().gameStarted();
         return this;
     }
-    public FeatureTestContext proceedOneRound() {
+    public SkillTestContext proceedOneRound() {
         this.getEngine().proceedOneRound();
         return this;
     }

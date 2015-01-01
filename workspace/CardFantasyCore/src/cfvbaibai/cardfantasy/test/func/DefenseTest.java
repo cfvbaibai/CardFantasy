@@ -6,13 +6,13 @@ import org.junit.Test;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.RuneInfo;
 
-public class DefenseTest extends FeatureValidationTest {
+public class DefenseTest extends SkillValidationTest {
     /**
      * 多重冰甲效果只取最强力的那个
      */
     @Test
     public void test冰封_冰甲() {
-        FeatureTestContext context = FeatureValidationTests.prepare(50, 50, "金属巨龙-1", "战斗猛犸象", "冰封");
+        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "金属巨龙-1", "战斗猛犸象", "冰封");
         context.addToField(0, 0);
         CardInfo c战斗猛犸象 = context.addToField(1, 1);
         RuneInfo r冰封 = context.addToRune(0, 1);
@@ -30,7 +30,7 @@ public class DefenseTest extends FeatureValidationTest {
      */
     @Test
     public void test格挡_冰封() {
-        FeatureTestContext context = FeatureValidationTests.prepare(50, 50, "秘银巨石像", "金属巨龙", "冰封");
+        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "秘银巨石像", "金属巨龙", "冰封");
         context.addToField(0, 0);
         CardInfo c金属巨龙 = context.addToField(1, 1);
         RuneInfo r冰封 = context.addToRune(0, 1);
@@ -47,7 +47,7 @@ public class DefenseTest extends FeatureValidationTest {
      */
     @Test
     public void test岩壁_冰甲() {
-        FeatureTestContext context = FeatureValidationTests.prepare(50, 50, "秘银巨石像", "凤凰+冰甲1", "岩壁-1");
+        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "秘银巨石像", "凤凰+冰甲1", "岩壁-1");
         context.addToField(0, 0);
         CardInfo c冰甲凤凰 = context.addToField(1, 1);
         RuneInfo r岩壁 = context.addToRune(0, 1);
@@ -64,7 +64,7 @@ public class DefenseTest extends FeatureValidationTest {
      */
     @Test
     public void test横扫_格挡() {
-        FeatureTestContext context = FeatureValidationTests.prepare(50, 50, "光明之龙", "牛头人酋长*2");
+        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "光明之龙", "牛头人酋长*2");
         context.addToField(0, 0);
         CardInfo c牛头人酋长1 = context.addToField(1, 1);
         CardInfo c牛头人酋长2 = context.addToField(2, 1);
@@ -80,7 +80,7 @@ public class DefenseTest extends FeatureValidationTest {
      */
     @Test
     public void test横扫_冰甲() {
-        FeatureTestContext context = FeatureValidationTests.prepare(50, 50, "光明之龙", "战斗猛犸象", "秘银巨石像");
+        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "光明之龙", "战斗猛犸象", "秘银巨石像");
         context.addToField(0, 0);
         CardInfo c战斗猛犸象 = context.addToField(1, 1);
         CardInfo c秘银巨石像 = context.addToField(2, 1);
@@ -96,7 +96,7 @@ public class DefenseTest extends FeatureValidationTest {
      */
     @Test
     public void test横扫_正面闪避() {
-        FeatureTestContext context = FeatureValidationTests.prepare(50, 50, "光明之龙", "大剑圣", "秘银巨石像");
+        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "光明之龙", "大剑圣", "秘银巨石像");
         context.addToField(0, 0);
         CardInfo c大剑圣 = context.addToField(1, 1);
         CardInfo c秘银巨石像 = context.addToField(2, 1);
@@ -114,7 +114,7 @@ public class DefenseTest extends FeatureValidationTest {
      */
     @Test
     public void test横扫_侧翼闪避() {
-        FeatureTestContext context = FeatureValidationTests.prepare(50, 50, "占位符", "光明之龙", "大剑圣", "秘银巨石像*2");
+        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "占位符", "光明之龙", "大剑圣", "秘银巨石像*2");
         context.addToField(0, 0);
         context.addToField(1, 0);
         CardInfo c大剑圣 = context.addToField(2, 1);
@@ -135,7 +135,7 @@ public class DefenseTest extends FeatureValidationTest {
      */
     @Test
     public void test连锁攻击_格挡() {
-        FeatureTestContext context = FeatureValidationTests.prepare(50, 50, "麒麟兽", "牛头人酋长*3");
+        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "麒麟兽", "牛头人酋长*3");
         context.addToField(0, 0);
         CardInfo c牛头人酋长1 = context.addToField(1, 1);
         CardInfo c牛头人酋长2 = context.addToField(2, 1);
@@ -153,7 +153,7 @@ public class DefenseTest extends FeatureValidationTest {
      */
     @Test
     public void test连锁攻击_冰甲() {
-        FeatureTestContext context = FeatureValidationTests.prepare(50, 50, "麒麟兽", "战斗猛犸象*2");
+        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "麒麟兽", "战斗猛犸象*2");
         context.addToField(0, 0);
         CardInfo c战斗猛犸象1 = context.addToField(1, 1);
         CardInfo c战斗猛犸象2 = context.addToField(2, 1);
@@ -169,7 +169,7 @@ public class DefenseTest extends FeatureValidationTest {
      */
     @Test
     public void test连锁攻击_正面闪避() {
-        FeatureTestContext context = FeatureValidationTests.prepare(50, 50, "麒麟兽", "大剑圣*2");
+        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "麒麟兽", "大剑圣*2");
         context.addToField(0, 0);
         CardInfo c大剑圣1 = context.addToField(1, 1);
         CardInfo c大剑圣2 = context.addToField(2, 1);
@@ -187,7 +187,7 @@ public class DefenseTest extends FeatureValidationTest {
      */
     @Test
     public void test连锁攻击_连锁闪避() {
-        FeatureTestContext context = FeatureValidationTests.prepare(50, 50, "麒麟兽", "大剑圣*4");
+        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "麒麟兽", "大剑圣*4");
         context.addToField(0, 0);
         CardInfo c大剑圣1 = context.addToField(1, 1);
         CardInfo c大剑圣2 = context.addToField(2, 1);

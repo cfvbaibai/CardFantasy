@@ -8,13 +8,13 @@ import org.junit.Test;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.RuneInfo;
 
-public class SummonSkillTest extends FeatureValidationTest {
+public class SummonSkillTest extends SkillValidationTest {
     /**
      * 降临技能在符文发动和结算之前发动
      */
     @Test
     public void test降临摧毁_焚天() {
-        FeatureTestContext context = FeatureValidationTests.prepare(50, 50, "独眼巨人", "焚天", "凤凰-5*2");
+        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "独眼巨人", "焚天", "凤凰-5*2");
         context.addToHand(0, 0).setSummonDelay(0);
         RuneInfo r焚天 = context.addToRune(0, 0);
         context.addToField(1, 1);
@@ -34,7 +34,7 @@ public class SummonSkillTest extends FeatureValidationTest {
      */
     @Test
     public void test降临传送_相同等待时间() {
-        FeatureTestContext context = FeatureValidationTests.prepare(50, 50, "隐世先知", "金属巨龙-5", "凤凰-5");
+        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "隐世先知", "金属巨龙-5", "凤凰-5");
         context.addToHand(0, 0).setSummonDelay(0);
         CardInfo c金属巨龙 = context.addToHand(1, 1).setSummonDelay(3);
         CardInfo c凤凰 = context.addToHand(2, 1).setSummonDelay(3);

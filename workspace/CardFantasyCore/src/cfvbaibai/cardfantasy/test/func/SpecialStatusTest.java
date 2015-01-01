@@ -6,13 +6,13 @@ import org.junit.Test;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.CardStatusType;
 
-public class SpecialStatusTest extends FeatureValidationTest {
+public class SpecialStatusTest extends SkillValidationTest {
     /**
      * 被冰冻时无法回春
      */
     @Test
     public void test冰冻_回春() {
-        FeatureTestContext context = FeatureValidationTests.prepare(50, 50, "水源制造者-5", "凤凰");
+        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "水源制造者-5", "凤凰");
         context.addToField(0, 0);
         CardInfo c凤凰 = context.addToField(1, 1);
         context.startGame();
@@ -29,7 +29,7 @@ public class SpecialStatusTest extends FeatureValidationTest {
      */
     @Test
     public void test锁定_回春() {
-        FeatureTestContext context = FeatureValidationTests.prepare(50, 50, "地岭拥有者-5", "凤凰");
+        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "地岭拥有者-5", "凤凰");
         context.addToField(0, 0);
         CardInfo c凤凰 = context.addToField(1, 1);
         context.startGame();
@@ -46,7 +46,7 @@ public class SpecialStatusTest extends FeatureValidationTest {
      */
     @Test
     public void test麻痹_回春() {
-        FeatureTestContext context = FeatureValidationTests.prepare(50, 50, "风暴召唤者-5", "凤凰");
+        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "风暴召唤者-5", "凤凰");
         context.addToField(0, 0);
         CardInfo c凤凰 = context.addToField(1, 1);
         context.startGame();
@@ -64,7 +64,7 @@ public class SpecialStatusTest extends FeatureValidationTest {
      */
     @Test
     public void test冰冻_迷魂_回春() {
-        FeatureTestContext context = FeatureValidationTests.prepare(50, 50, "水源制造者-1", "彩翼公主", "凤凰");
+        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "水源制造者-1", "彩翼公主", "凤凰");
         context.addToField(0, 0);
         context.addToField(1, 0);
         CardInfo c凤凰 = context.addToField(2, 1);
@@ -87,7 +87,7 @@ public class SpecialStatusTest extends FeatureValidationTest {
      */
     @Test
     public void test燃烧_回春() {
-        FeatureTestContext context = FeatureValidationTests.prepare(50, 50, "地狱红龙", "凤凰-5");
+        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "地狱红龙", "凤凰-5");
         context.addToField(0, 0);
         context.addToField(1, 1).setBasicHP(691);
         context.startGame();
@@ -108,7 +108,7 @@ public class SpecialStatusTest extends FeatureValidationTest {
      */
     @Test
     public void test中毒_回春() {
-        FeatureTestContext context = FeatureValidationTests.prepare(50, 50, "蝎尾狮", "凤凰-5");
+        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "蝎尾狮", "凤凰-5");
         context.addToField(0, 0);
         context.addToField(1, 1).setBasicHP(801);
         context.startGame();
@@ -129,7 +129,7 @@ public class SpecialStatusTest extends FeatureValidationTest {
      */
     @Test
     public void test冰冻_麻痹() {
-        FeatureTestContext context = FeatureValidationTests.prepare(50, 50, "水源制造者-1", "狮鹫-5", "凤凰");
+        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "水源制造者-1", "狮鹫-5", "凤凰");
         context.addToField(0, 0);
         context.addToField(1, 0);
         CardInfo c凤凰 = context.addToField(2, 1);
@@ -149,7 +149,7 @@ public class SpecialStatusTest extends FeatureValidationTest {
      */
     @Test
     public void test虚弱() {
-        FeatureTestContext context = FeatureValidationTests.prepare(50, 50, "东方幻术师-1", "秘银巨石像");
+        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "东方幻术师-1", "秘银巨石像");
         CardInfo c东方幻术师 = context.addToField(0, 0);
         context.addToField(1, 1);
         context.startGame();
@@ -166,7 +166,7 @@ public class SpecialStatusTest extends FeatureValidationTest {
      */
     @Test
     public void test虚弱_迷魂() {
-        FeatureTestContext context = FeatureValidationTests.prepare(50, 50, "东方幻术师-5", "秘银巨石像");
+        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "东方幻术师-5", "秘银巨石像");
         CardInfo c东方幻术师 = context.addToField(0, 0);
         context.addToField(1, 1);
         context.startGame();
@@ -185,7 +185,7 @@ public class SpecialStatusTest extends FeatureValidationTest {
      */
     @Test
     public void test虚弱_暴击() {
-        FeatureTestContext context = FeatureValidationTests.prepare(50, 50, "东方幻术师-1", "金属巨龙-5");
+        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "东方幻术师-1", "金属巨龙-5");
         CardInfo c东方幻术师 = context.addToField(0, 0);
         context.addToField(1, 1);
         context.startGame();
@@ -203,7 +203,7 @@ public class SpecialStatusTest extends FeatureValidationTest {
      */
     @Test
     public void test虚弱_免疫() {
-        FeatureTestContext context = FeatureValidationTests.prepare(50, 50, "东方幻术师-1", "金属巨龙");
+        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "东方幻术师-1", "金属巨龙");
         CardInfo c东方幻术师 = context.addToField(0, 0);
         context.addToField(1, 1);
         context.startGame();
@@ -218,7 +218,7 @@ public class SpecialStatusTest extends FeatureValidationTest {
 
     @Test
     public void test虚弱_多重() {
-        FeatureTestContext context = FeatureValidationTests.prepare(50, 50, "东方幻术师-1*2", "秘银巨石像");
+        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "东方幻术师-1*2", "秘银巨石像");
         CardInfo c东方幻术师1 = context.addToField(0, 0);
         context.addToField(1, 0);
         context.addToField(2, 1);

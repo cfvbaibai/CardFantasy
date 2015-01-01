@@ -5,14 +5,14 @@ import org.junit.Test;
 
 import cfvbaibai.cardfantasy.engine.CardInfo;
 
-public class DeathSkillTest extends FeatureValidationTest {
+public class DeathSkillTest extends SkillValidationTest {
     
     /**
      * 法力反射无法防御自爆
      */
     @Test
     public void test法力反射_自爆() {
-        FeatureTestContext context = FeatureValidationTests.prepare(50, 50, "元素灵龙", "哥布林术士");
+        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "元素灵龙", "哥布林术士");
         CardInfo c元素灵龙 = context.addToField(0, 0);
         context.addToField(1, 1);
         context.startGame();

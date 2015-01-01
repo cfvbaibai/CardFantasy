@@ -5,10 +5,10 @@ import org.junit.Test;
 
 import cfvbaibai.cardfantasy.engine.CardInfo;
 
-public class HealingTest extends FeatureValidationTest {
+public class HealingTest extends SkillValidationTest {
     @Test
     public void test治疗之雾_三卡治疗() {
-        FeatureTestContext context = FeatureValidationTests.prepare(
+        SkillTestContext context = SkillValidationTestSuite.prepare(
             50, 50, "秘银巨石像*4", "东方幻术师");
         CardInfo c秘银巨石像1 = context.addToField(0, 0).setBasicHP(100);
         CardInfo c秘银巨石像2 = context.addToField(1, 0).setBasicHP(100);
@@ -28,7 +28,7 @@ public class HealingTest extends FeatureValidationTest {
 
     @Test
     public void test治疗之雾_两卡治疗_左面() {
-        FeatureTestContext context = FeatureValidationTests.prepare(
+        SkillTestContext context = SkillValidationTestSuite.prepare(
             50, 50, "秘银巨石像*2", "东方幻术师");
         CardInfo c秘银巨石像1 = context.addToField(0, 0).setBasicHP(100);
         CardInfo c秘银巨石像2 = context.addToField(1, 0).setBasicHP(100);
@@ -44,7 +44,7 @@ public class HealingTest extends FeatureValidationTest {
     
     @Test
     public void test治疗之雾_两卡治疗_右面() {
-        FeatureTestContext context = FeatureValidationTests.prepare(
+        SkillTestContext context = SkillValidationTestSuite.prepare(
             50, 50, "东方幻术师", "秘银巨石像*2");
         CardInfo c东方幻术师 = context.addToField(0, 0).setBasicHP(100);
         CardInfo c秘银巨石像1 = context.addToField(1, 0).setBasicHP(100);
@@ -60,7 +60,7 @@ public class HealingTest extends FeatureValidationTest {
     
     @Test
     public void test治疗之雾_单卡治疗() {
-        FeatureTestContext context = FeatureValidationTests.prepare(
+        SkillTestContext context = SkillValidationTestSuite.prepare(
             50, 50, "东方幻术师");
         CardInfo c东方幻术师 = context.addToField(0, 0).setBasicHP(100);
         context.startGame();
@@ -72,7 +72,7 @@ public class HealingTest extends FeatureValidationTest {
 
     @Test
     public void test治疗之雾_部分治疗() {
-        FeatureTestContext context = FeatureValidationTests.prepare(
+        SkillTestContext context = SkillValidationTestSuite.prepare(
             50, 50, "秘银巨石像", "东方幻术师", "秘银巨石像");
         CardInfo c秘银巨石像1 = context.addToField(0, 0).setBasicHP(1400);
         CardInfo c东方幻术师 = context.addToField(1, 0).setBasicHP(100);

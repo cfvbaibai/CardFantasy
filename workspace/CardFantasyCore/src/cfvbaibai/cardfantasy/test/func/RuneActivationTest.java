@@ -6,14 +6,14 @@ import org.junit.Test;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.RuneInfo;
 
-public class RuneActivationTest extends FeatureValidationTest {
+public class RuneActivationTest extends SkillValidationTest {
 
     /**
      * 石林激活后，如果被回魂拉走墓地蛮荒卡导致蛮荒不够2张，则会失去激活状态
      */
     @Test
     public void test回魂_石林() {
-        FeatureTestContext context = FeatureValidationTests.prepare(
+        SkillTestContext context = SkillValidationTestSuite.prepare(
             50, 50, "冥河船夫", "战斗猛犸象*2", "石林", "凤凰");
         CardInfo c冥河船夫 = context.addToField(0, 0);
         context.addToGrave(1, 0);
@@ -52,7 +52,7 @@ public class RuneActivationTest extends FeatureValidationTest {
      */
     @Test
     public void test清泉_激活条件() {
-        FeatureTestContext context = FeatureValidationTests.prepare(
+        SkillTestContext context = SkillValidationTestSuite.prepare(
             50, 50, "秘银巨石像*2", "清泉", "秘银巨石像");
         CardInfo c秘银巨石像1 = context.addToField(0, 0);
         context.addToField(1, 0);
@@ -78,7 +78,7 @@ public class RuneActivationTest extends FeatureValidationTest {
      */
     @Test
     public void test雷盾岩壁赤谷_激活条件() {
-        FeatureTestContext context = FeatureValidationTests.prepare(
+        SkillTestContext context = SkillValidationTestSuite.prepare(
             50, 50, "战斗猛犸象*2", "金属巨龙*2", "雷盾", "岩壁", "赤谷");
         context.addToField(0, 0);
         context.addToField(1, 0);

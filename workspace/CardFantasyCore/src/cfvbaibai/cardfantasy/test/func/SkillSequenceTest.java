@@ -5,13 +5,13 @@ import org.junit.Test;
 
 import cfvbaibai.cardfantasy.engine.CardInfo;
 
-public class SkillSequenceTest extends FeatureValidationTest {
+public class SkillSequenceTest extends SkillValidationTest {
     /**
      * 卡牌有多个技能在同一时机下都可发动的话，按照牌面顺序依次发动
      */
     @Test
     public void test水源制造者_冰弹先于甘霖() {
-        FeatureTestContext context = FeatureValidationTests.prepare(50, 50, "水源制造者", "元素灵龙");
+        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "水源制造者", "元素灵龙");
         context.addToField(0, 0).setBasicHP(100);
         context.addToField(1, 1);
         context.startGame();
@@ -29,7 +29,7 @@ public class SkillSequenceTest extends FeatureValidationTest {
      */
     @Test
     public void test水源制造者_甘霖先于暴风雪() {
-        FeatureTestContext context = FeatureValidationTests.prepare(50, 50, "水源制造者", "元素灵龙");
+        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "水源制造者", "元素灵龙");
         CardInfo c水源制造者 = context.addToField(0, 0).setBasicHP(130);
         context.addToField(1, 1);
         context.startGame();
