@@ -12,7 +12,7 @@ import cfvbaibai.cardfantasy.engine.SkillUseInfo;
 import cfvbaibai.cardfantasy.engine.SkillResolver;
 import cfvbaibai.cardfantasy.engine.Field;
 
-public final class EnergyArmorFeature {
+public final class EnergyArmor {
     public static void apply(SkillResolver resolver, SkillUseInfo skillUseInfo, EntityInfo caster, int targetCount) {
         if (caster == null) {
             throw new CardFantasyRuntimeException("caster cannot be null");

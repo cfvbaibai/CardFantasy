@@ -6,7 +6,7 @@ import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.SkillUseInfo;
 import cfvbaibai.cardfantasy.engine.SkillResolver;
 
-public class AllSpeedUpFeature {
+public class AllSpeed {
     public static void apply(SkillUseInfo skillUseInfo, SkillResolver resolver, CardInfo attacker) {
         int summonDelayOffset = skillUseInfo.getFeature().getImpact(); 
         List<CardInfo> allHandCards = attacker.getOwner().getHand().toList();

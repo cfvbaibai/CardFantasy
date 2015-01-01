@@ -9,7 +9,7 @@ import cfvbaibai.cardfantasy.engine.CardPile;
 import cfvbaibai.cardfantasy.engine.SkillResolver;
 import cfvbaibai.cardfantasy.engine.HeroDieSignal;
 
-public class CounterSummonFeature {
+public class CounterSummon {
     public static void apply(SkillResolver resolver, CardInfo defender, Skill skill, int star) throws HeroDieSignal {
         if (defender == null) {
             return;

@@ -14,7 +14,7 @@ import cfvbaibai.cardfantasy.engine.HeroDieSignal;
 import cfvbaibai.cardfantasy.engine.Player;
 import cfvbaibai.cardfantasy.engine.StageInfo;
 
-public final class ConfusionFeature {
+public final class Confusion {
     public static void apply(SkillUseInfo skillUseInfo, SkillResolver resolver, CardInfo attacker, Player defender,
             int victimCount) throws HeroDieSignal {
         Skill skill = skillUseInfo.getFeature();

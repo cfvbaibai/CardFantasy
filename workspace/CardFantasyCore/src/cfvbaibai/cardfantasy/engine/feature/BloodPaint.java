@@ -10,7 +10,7 @@ import cfvbaibai.cardfantasy.engine.HeroDieSignal;
 import cfvbaibai.cardfantasy.engine.OnAttackBlockingResult;
 import cfvbaibai.cardfantasy.engine.Player;
 
-public final class BloodPaintFeature {
+public final class BloodPaint {
     public static void apply(Skill cardFeature, SkillResolver resolver, CardInfo attacker, Player defender, int victimCount) throws HeroDieSignal {
         int damage = cardFeature.getImpact();
         List <CardInfo> victims = resolver.getStage().getRandomizer().pickRandom(

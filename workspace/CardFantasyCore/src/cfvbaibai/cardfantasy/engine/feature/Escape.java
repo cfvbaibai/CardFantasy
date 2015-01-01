@@ -9,7 +9,7 @@ import cfvbaibai.cardfantasy.engine.CardStatusType;
 import cfvbaibai.cardfantasy.engine.EntityInfo;
 import cfvbaibai.cardfantasy.engine.SkillResolver;
 
-public final class EscapeFeature {
+public final class Escape {
     public static boolean isFeatureEscaped(SkillResolver resolver, Skill cardFeature, Skill attackFeature,
             EntityInfo attacker, CardInfo defender) {
         if (attackFeature.getType().containsTag(SkillTag.控制)) {

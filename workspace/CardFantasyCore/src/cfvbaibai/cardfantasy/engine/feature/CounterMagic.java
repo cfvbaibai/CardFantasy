@@ -8,7 +8,7 @@ import cfvbaibai.cardfantasy.engine.EntityInfo;
 import cfvbaibai.cardfantasy.engine.SkillResolver;
 import cfvbaibai.cardfantasy.engine.HeroDieSignal;
 
-public final class CounterMagicFeature {
+public final class CounterMagic {
 
     public static boolean isFeatureBlocked(SkillResolver resolver, Skill cardFeature, Skill attackFeature,
             EntityInfo attacker, CardInfo defender) throws HeroDieSignal {

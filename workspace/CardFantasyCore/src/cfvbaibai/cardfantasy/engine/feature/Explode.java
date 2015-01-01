@@ -11,7 +11,7 @@ import cfvbaibai.cardfantasy.engine.HeroDieSignal;
 import cfvbaibai.cardfantasy.engine.OnAttackBlockingResult;
 import cfvbaibai.cardfantasy.engine.Player;
 
-public final class ExplodeFeature {
+public final class Explode {
     /**
      * 
      * @param resolver

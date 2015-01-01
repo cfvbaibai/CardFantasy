@@ -13,7 +13,7 @@ import cfvbaibai.cardfantasy.engine.HeroDieSignal;
  * 
  * Cannot be blocked by Immue or Dodge.
  */
-public final class CounterAttackFeature {
+public final class CounterAttack {
     public static void apply(Skill cardFeature, SkillResolver resolver, CardInfo attacker, CardInfo defender,
             int attackDamage) throws HeroDieSignal {
         if (attackDamage <= 0) {

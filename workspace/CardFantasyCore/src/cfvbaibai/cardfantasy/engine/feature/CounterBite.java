@@ -7,7 +7,7 @@ import cfvbaibai.cardfantasy.engine.SkillUseInfo;
 import cfvbaibai.cardfantasy.engine.SkillResolver;
 import cfvbaibai.cardfantasy.engine.HeroDieSignal;
 
-public final class CounterBiteFeature {
+public final class CounterBite {
     public static void apply(SkillUseInfo skillUseInfo, SkillResolver resolver, CardInfo card) throws HeroDieSignal {
         if (card == null || card.isDead()) {
             throw new CardFantasyRuntimeException("card is null or dead!");

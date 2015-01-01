@@ -6,7 +6,7 @@ import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.SkillResolver;
 
-public final class BloodDrainFeature {
+public final class BloodDrain {
     public static void apply(Skill cardFeature, SkillResolver resolver, CardInfo attacker, CardInfo defender, int damage) {
         if (attacker == null || attacker.isDead()) {
             throw new CardFantasyRuntimeException("attacker is null or dead!");

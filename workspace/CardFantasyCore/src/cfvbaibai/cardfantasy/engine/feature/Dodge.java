@@ -5,7 +5,7 @@ import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.SkillResolver;
 
-public final class DodgeFeature {
+public final class Dodge {
     public static boolean apply(Skill cardFeature, SkillResolver resolver, CardInfo attacker, CardInfo defender, int originalDamage) {
         int dodgeRate = cardFeature.getImpact();
         GameUI ui = resolver.getStage().getUI();

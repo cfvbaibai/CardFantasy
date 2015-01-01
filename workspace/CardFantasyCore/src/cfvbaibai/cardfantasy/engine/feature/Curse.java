@@ -7,7 +7,7 @@ import cfvbaibai.cardfantasy.engine.SkillResolver;
 import cfvbaibai.cardfantasy.engine.HeroDieSignal;
 import cfvbaibai.cardfantasy.engine.Player;
 
-public final class CurseFeature {
+public final class Curse {
     public static void apply(SkillResolver resolver, Skill cardFeature, CardInfo attacker, Player defenderHero) throws HeroDieSignal {
         if (attacker == null) {
             throw new CardFantasyRuntimeException("attacker is null");

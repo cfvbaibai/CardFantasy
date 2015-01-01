@@ -10,7 +10,7 @@ import cfvbaibai.cardfantasy.engine.SkillResolver;
 import cfvbaibai.cardfantasy.engine.HeroDieSignal;
 import cfvbaibai.cardfantasy.engine.OnAttackBlockingResult;
 
-public final class DiseaseFeature {
+public final class Disease {
     public static void apply(SkillUseInfo skillUseInfo, SkillResolver resolver, CardInfo attacker, CardInfo defender, int normalAttackDamage) throws HeroDieSignal {
         if (normalAttackDamage <= 0 || defender == null || defender.isDead()) {
             return;

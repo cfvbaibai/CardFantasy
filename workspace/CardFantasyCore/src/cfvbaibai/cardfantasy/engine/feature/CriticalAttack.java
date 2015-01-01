@@ -7,7 +7,7 @@ import cfvbaibai.cardfantasy.engine.SkillEffectType;
 import cfvbaibai.cardfantasy.engine.SkillUseInfo;
 import cfvbaibai.cardfantasy.engine.SkillResolver;
 
-public final class CriticalAttackFeature extends PreAttackCardFeature {
+public final class CriticalAttack extends PreAttackCardFeature {
     public static void apply(SkillResolver resolver, SkillUseInfo skillUseInfo, CardInfo attacker, CardInfo defender) {
         Skill skill = skillUseInfo.getFeature();
         int adjAT = skill.getImpact() * attacker.getLevel1AT() / 100;

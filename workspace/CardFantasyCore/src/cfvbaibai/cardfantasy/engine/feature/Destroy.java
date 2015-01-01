@@ -11,7 +11,7 @@ import cfvbaibai.cardfantasy.engine.HeroDieSignal;
 import cfvbaibai.cardfantasy.engine.OnAttackBlockingResult;
 import cfvbaibai.cardfantasy.engine.Player;
 
-public final class DestroyFeature {
+public final class Destroy {
     public static void apply(SkillResolver resolver, Skill cardFeature, CardInfo attacker, Player defenderHero,
             int victimCount) throws HeroDieSignal {
         List<CardInfo> victims = resolver.getStage().getRandomizer().pickRandom(

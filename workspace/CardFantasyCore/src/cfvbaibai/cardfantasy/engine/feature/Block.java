@@ -10,7 +10,7 @@ import cfvbaibai.cardfantasy.engine.SkillResolver;
  * 
  * Only effective to normal attack.
  */
-public final class BlockFeature {
+public final class Block {
     public static int apply(Skill skill, SkillResolver resolver, EntityInfo attacker, EntityInfo victim,
             EntityInfo blocker, int originalDamage) {
         int block = skill.getImpact();

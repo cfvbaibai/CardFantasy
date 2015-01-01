@@ -7,7 +7,7 @@ import cfvbaibai.cardfantasy.engine.SkillEffectType;
 import cfvbaibai.cardfantasy.engine.SkillUseInfo;
 import cfvbaibai.cardfantasy.engine.SkillResolver;
 
-public final class BloodThirstyFeature {
+public final class BloodThirsty {
     public static void apply(SkillResolver resolver, SkillUseInfo skillUseInfo, CardInfo attacker, int normalAttackDamage) {
         if (attacker == null || normalAttackDamage <= 0) {
             return;

@@ -13,7 +13,7 @@ import cfvbaibai.cardfantasy.engine.SkillResolver;
 import cfvbaibai.cardfantasy.engine.HeroDieSignal;
 import cfvbaibai.cardfantasy.engine.OnDamagedResult;
 
-public final class ChainAttackFeature {
+public final class ChainAttack {
     public static void apply(SkillResolver resolver, SkillUseInfo skillUseInfo, CardInfo attacker, CardInfo defender, Skill attackFeature)
             throws HeroDieSignal {
         if (attacker == null) {

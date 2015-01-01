@@ -11,7 +11,7 @@ import cfvbaibai.cardfantasy.engine.HeroDieSignal;
 import cfvbaibai.cardfantasy.engine.OnAttackBlockingResult;
 import cfvbaibai.cardfantasy.engine.Player;
 
-public class EnprisonFeature {
+public class Enprison {
     public static void apply(SkillResolver resolver, Skill cardFeature, CardInfo attacker, Player defender) throws HeroDieSignal {
         if (attacker == null) {
             return;
