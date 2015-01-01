@@ -326,13 +326,11 @@
         TODO: <Feature type="不屈" level="6" unlock="10" />
     </Card>
      -->
-    <!--
     <Card id="1432" name="混元大师" wikiId="95809" race="王国" speed="2" star="4" cost="14" incrCost="2" at="280" hp="1050" incrAT="21" incrHP="34">
         <Feature type="神圣守护" level="6" unlock="0" />
         <Feature type="王国之盾" level="8" unlock="5" />
-        TODO: <Feature type="圣盾" level="0" unlock="10" />
+        <Feature type="圣盾" level="0" unlock="10" />
     </Card>
-    -->
     <Card id="1433" name="瓦尔基里英灵" wikiId="80173" race="王国" speed="4" star="4" cost="14" incrCost="2" at="295" hp="850" incrAT="21" incrHP="32">
         <Feature type="祈祷" level="6" unlock="0" />
         <Feature type="冰甲" level="3" unlock="5" />
@@ -411,13 +409,11 @@
          TODO: <Feature type="沉默" level="0" unlock="10" /> 
     </Card>
     -->
-    <!--
     <Card id="1515" name="制裁之雷神" wikiId="80141" race="王国" speed="4" star="5" cost="17" incrCost="2" at="410" hp="1345" incrAT="38" incrHP="36">
-          TODO: <Feature type="圣盾" level="0" unlock="0" /> 
+        <Feature type="圣盾" level="0" unlock="0" /> 
         <Feature type="法力反射" level="6" unlock="5" />
         <Feature type="神圣守护" level="7" unlock="10" />
     </Card>
-    -->
     <!--
     <Card id="1516" name="均衡女神" wikiId="80172" race="王国" speed="4" star="5" cost="20" incrCost="2" at="270" hp="1520" incrAT="30" incrHP="56">
         <Feature type="祈祷" level="6" unlock="0" />
@@ -818,25 +814,21 @@
         <Feature type="回春" level="8" unlock="5" />
         <Feature type="闪避" level="7" unlock="10" />
     </Card>
-    <!--
     <Card id="2515" name="幻翼神丽雅" wikiId="80180" race="森林" speed="4" star="5" cost="17" incrCost="1" at="320" hp="1410" incrAT="37" incrHP="40">
-          TODO: <Feature type="圣盾" level="0" unlock="0" /> 
+        <Feature type="圣盾" level="0" unlock="0" /> 
         <Feature type="脱困" level="0" unlock="5" />
         <Feature type="加速" level="2" unlock="10" />
     </Card>
-    -->
     <Card id="2516" name="星夜女神" wikiId="80181" race="森林" speed="4" star="5" cost="18" incrCost="2" at="325" hp="1350" incrAT="32" incrHP="38">
         <Feature type="召唤树人守护者" level="0" unlock="0" /> 
         <Feature type="振奋" level="6" unlock="5" />
         <Feature type="免疫" level="0" unlock="10" />
     </Card>
-    <!--
     <Card id="2517" name="梦境守护者" wikiId="95817" race="森林" speed="2" star="5" cost="16" incrCost="2" at="235" hp="1460" incrAT="22" incrHP="75">
-          TODO: <Feature type="圣盾" level="0" unlock="0" /> 
+        <Feature type="圣盾" level="0" unlock="0" /> 
         <Feature type="守护" level="0" unlock="5" />
         <Feature type="转生" level="8" unlock="10" />
     </Card>
-    -->
 
     <!-- 蛮荒  -->
     <Card id="3101" name="穴居人奴隶" wikiId="31006" race="蛮荒" speed="2" star="1" cost="4" incrCost="2" at="90" hp="390" incrAT="18" incrHP="11">
