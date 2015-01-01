@@ -47,7 +47,7 @@ import cfvbaibai.cardfantasy.web.OneDimensionDataStat;
 import cfvbaibai.cardfantasy.web.Utils;
 import cfvbaibai.cardfantasy.web.animation.BattleRecord;
 import cfvbaibai.cardfantasy.web.animation.EntityDataRuntimeInfo;
-import cfvbaibai.cardfantasy.web.animation.FeatureTypeRuntimeInfo;
+import cfvbaibai.cardfantasy.web.animation.SkillTypeRuntimeInfo;
 import cfvbaibai.cardfantasy.web.animation.StructuredRecordGameUI;
 import cfvbaibai.cardfantasy.web.animation.WebPlainTextGameUI;
 import cfvbaibai.cardfantasy.web.beans.JsonHandler;
@@ -456,16 +456,16 @@ public class AutoBattleController {
             }
             result.put("entities", entities);
 
-            List<FeatureTypeRuntimeInfo> featureList = new ArrayList<FeatureTypeRuntimeInfo>(); 
+            List<SkillTypeRuntimeInfo> featureList = new ArrayList<SkillTypeRuntimeInfo>(); 
             for (SkillType skillType : SkillType.values()) {
                 if (!skillType.containsTag(SkillTag.不可洗炼)) {
-                    featureList.add(new FeatureTypeRuntimeInfo(skillType));
+                    featureList.add(new SkillTypeRuntimeInfo(skillType));
                 }
             }
-            Collections.sort(featureList, new Comparator<FeatureTypeRuntimeInfo>() {
+            Collections.sort(featureList, new Comparator<SkillTypeRuntimeInfo>() {
                 private Comparator<Object> comparer = Collator.getInstance(Locale.CHINA);
                 @Override
-                public int compare(FeatureTypeRuntimeInfo arg0, FeatureTypeRuntimeInfo arg1) {
+                public int compare(SkillTypeRuntimeInfo arg0, SkillTypeRuntimeInfo arg1) {
                     return comparer.compare(arg0.getName(), arg1.getName());
                 }
             });

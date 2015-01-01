@@ -2,9 +2,9 @@ package cfvbaibai.cardfantasy.web.animation;
 
 import cfvbaibai.cardfantasy.data.SkillType;
 
-public class FeatureTypeRuntimeInfo {
+public class SkillTypeRuntimeInfo {
 
-    public FeatureTypeRuntimeInfo(SkillType skillType) {
+    public SkillTypeRuntimeInfo(SkillType skillType) {
         this.name = skillType.name();
         this.growable = skillType.isGrowable();
         this.wikiId = skillType.getWikiId();
