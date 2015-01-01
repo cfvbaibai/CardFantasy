@@ -10,7 +10,7 @@ import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
 import cfvbaibai.cardfantasy.NonSerializable;
 import cfvbaibai.cardfantasy.data.Card;
 import cfvbaibai.cardfantasy.data.CardFeature;
-import cfvbaibai.cardfantasy.data.FeatureTag;
+import cfvbaibai.cardfantasy.data.SkillTag;
 import cfvbaibai.cardfantasy.data.FeatureType;
 import cfvbaibai.cardfantasy.data.Race;
 
@@ -111,7 +111,7 @@ public class CardInfo extends EntityInfo {
         return this.card.getInitAT();
     }
     
-    private int getSpecificLevelEffectAT(FeatureTag tag) {
+    private int getSpecificLevelEffectAT(SkillTag tag) {
         int at = 0;
         for (List<FeatureEffect> effects : this.effects.values()) {
             for (FeatureEffect effect : effects) {
@@ -125,19 +125,19 @@ public class CardInfo extends EntityInfo {
     }
     
     public int getLevel0AT() {
-        return this.getInitAT() + this.getSpecificLevelEffectAT(FeatureTag.原始攻击加成);
+        return this.getInitAT() + this.getSpecificLevelEffectAT(SkillTag.原始攻击加成);
     }
 
     public int getLevel1AT() {
-        return this.getLevel0AT() + this.getSpecificLevelEffectAT(FeatureTag.基础攻击加成);
+        return this.getLevel0AT() + this.getSpecificLevelEffectAT(SkillTag.基础攻击加成);
     }
     
     public int getLevel2AT() {
-        return this.getLevel1AT() + this.getSpecificLevelEffectAT(FeatureTag.额外攻击加成);
+        return this.getLevel1AT() + this.getSpecificLevelEffectAT(SkillTag.额外攻击加成);
     }
 
     public int getLevel3AT() {
-        return this.getLevel2AT() + this.getSpecificLevelEffectAT(FeatureTag.独立攻击加成);
+        return this.getLevel2AT() + this.getSpecificLevelEffectAT(SkillTag.独立攻击加成);
     }
     
     public int getCurrentAT() {
@@ -391,7 +391,7 @@ public class CardInfo extends EntityInfo {
         return this.card.getMaxHP();
     }
 
-    public boolean containsUsableFeaturesWithTag(FeatureTag tag) {
+    public boolean containsUsableFeaturesWithTag(SkillTag tag) {
         for (FeatureInfo feature : this.getAllUsableFeatures()) {
             CardFeature cardFeature = (CardFeature) feature.getFeature();
             if (cardFeature.getType().containsTag(tag)) {

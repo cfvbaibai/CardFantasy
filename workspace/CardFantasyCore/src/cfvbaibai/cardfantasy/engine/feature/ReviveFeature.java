@@ -2,7 +2,7 @@ package cfvbaibai.cardfantasy.engine.feature;
 
 import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
 import cfvbaibai.cardfantasy.data.Feature;
-import cfvbaibai.cardfantasy.data.FeatureTag;
+import cfvbaibai.cardfantasy.data.SkillTag;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.CardStatusItem;
 import cfvbaibai.cardfantasy.engine.FeatureInfo;
@@ -18,7 +18,7 @@ public final class ReviveFeature {
         Grave grave = reviver.getOwner().getGrave();
         boolean hasRevivableCard = false;
         for (CardInfo deadCard : grave.toList()) {
-            if (deadCard != null && !deadCard.containsUsableFeaturesWithTag(FeatureTag.复活)) {
+            if (deadCard != null && !deadCard.containsUsableFeaturesWithTag(SkillTag.复活)) {
                 hasRevivableCard = true;
                 break;
             }
@@ -32,7 +32,7 @@ public final class ReviveFeature {
         while (true) {
             CardInfo deadCard = resolver.getStage().getRandomizer().pickRandom(
                 grave.toList(), 1, true, null).get(0);
-            if (!deadCard.containsUsableFeaturesWithTag(FeatureTag.复活)) {
+            if (!deadCard.containsUsableFeaturesWithTag(SkillTag.复活)) {
                 cardToRevive = deadCard;
                 break;
             }

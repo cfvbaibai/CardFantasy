@@ -2,7 +2,7 @@ package cfvbaibai.cardfantasy.engine.feature;
 
 import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
 import cfvbaibai.cardfantasy.data.Feature;
-import cfvbaibai.cardfantasy.data.FeatureTag;
+import cfvbaibai.cardfantasy.data.SkillTag;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.EntityInfo;
 import cfvbaibai.cardfantasy.engine.FeatureResolver;
@@ -14,7 +14,7 @@ public final class GuardFeature {
         if (attacker == null) {
             throw new CardFantasyRuntimeException("Attacker cannot be null");
         }
-        if (attackFeature != null && attackFeature.getType().containsTag(FeatureTag.抗守护)) {
+        if (attackFeature != null && attackFeature.getType().containsTag(SkillTag.抗守护)) {
             return damage;
         }
         resolver.getStage().getUI().useSkill(guardian, attacker, guardFeature, true);

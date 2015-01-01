@@ -5,7 +5,7 @@ import java.util.List;
 
 import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
 import cfvbaibai.cardfantasy.data.Feature;
-import cfvbaibai.cardfantasy.data.FeatureTag;
+import cfvbaibai.cardfantasy.data.SkillTag;
 import cfvbaibai.cardfantasy.data.FeatureType;
 import cfvbaibai.cardfantasy.data.Race;
 import cfvbaibai.cardfantasy.data.RuneActivationType;
@@ -104,7 +104,7 @@ public class FeatureResolver {
     }
     
     private boolean isPhysicalAttackFeature(Feature feature) {
-        return feature == null || feature.getType().containsTag(FeatureTag.物理攻击);
+        return feature == null || feature.getType().containsTag(SkillTag.物理攻击);
     }
     
     public void removeStatus(CardInfo card, CardStatusType statusType) {
@@ -1163,7 +1163,7 @@ public class FeatureResolver {
             for (CardInfo card : player.getField().getAliveCards()) {
                 for (FeatureEffect effect : card.getEffects()) {
                     if (effect.getCause().equals(rune.getFeatureInfo())) {
-                        if (rune.getFeature().getType().containsTag(FeatureTag.永久)) {
+                        if (rune.getFeature().getType().containsTag(SkillTag.永久)) {
                             continue;
                         }
                         if (effect.getType() == FeatureEffectType.ATTACK_CHANGE) {
