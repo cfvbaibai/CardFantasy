@@ -3,7 +3,7 @@ package cfvbaibai.cardfantasy.engine.feature;
 import java.util.ArrayList;
 import java.util.List;
 
-import cfvbaibai.cardfantasy.data.Feature;
+import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.EntityInfo;
 import cfvbaibai.cardfantasy.engine.FeatureResolver;
@@ -20,10 +20,10 @@ public final class RainfallFeature {
         }
     }
     
-    public static void healCards(FeatureResolver resolver, EntityInfo healer, Feature feature, List<CardInfo> healeeCandidates) {
+    public static void healCards(FeatureResolver resolver, EntityInfo healer, Skill skill, List<CardInfo> healeeCandidates) {
         List<Heal> heals = new ArrayList<Heal>();
         for (CardInfo healee : healeeCandidates) {
-            int healHP = feature.getImpact();
+            int healHP = skill.getImpact();
             if (healHP + healee.getHP() > healee.getMaxHP()) {
                 healHP = healee.getMaxHP() - healee.getHP();
             }
@@ -36,18 +36,18 @@ public final class RainfallFeature {
         for (Heal heal : heals) {
             healees.add(heal.healee);
         }
-        resolver.getStage().getUI().useSkill(healer, healees, feature, true);
+        resolver.getStage().getUI().useSkill(healer, healees, skill, true);
         for (Heal heal : heals) {
-            OnAttackBlockingResult result = resolver.resolveHealBlockingFeature(healer, heal.healee, feature);
+            OnAttackBlockingResult result = resolver.resolveHealBlockingFeature(healer, heal.healee, skill);
             if (!result.isAttackable()) {
                 continue;
             }
-            resolver.getStage().getUI().healCard(healer, heal.healee, feature, heal.healHP);
+            resolver.getStage().getUI().healCard(healer, heal.healee, skill, heal.healHP);
             resolver.applyDamage(heal.healee, -heal.healHP);
         }        
     }
 
-    public static void apply(Feature cardFeature, FeatureResolver resolver, EntityInfo healer) {
+    public static void apply(Skill cardFeature, FeatureResolver resolver, EntityInfo healer) {
         if (healer == null) {
             return;
         }

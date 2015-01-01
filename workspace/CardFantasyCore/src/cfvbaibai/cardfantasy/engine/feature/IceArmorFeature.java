@@ -1,12 +1,12 @@
 package cfvbaibai.cardfantasy.engine.feature;
 
 import cfvbaibai.cardfantasy.GameUI;
-import cfvbaibai.cardfantasy.data.Feature;
+import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.FeatureResolver;
 
 public final class IceArmorFeature {
-    public static int apply(Feature cardFeature, FeatureResolver resolver, CardInfo attacker, CardInfo defender, int originalDamage) {
+    public static int apply(Skill cardFeature, FeatureResolver resolver, CardInfo attacker, CardInfo defender, int originalDamage) {
         GameUI ui = resolver.getStage().getUI();
         ui.useSkill(defender, attacker, cardFeature, true);
         if (resolver.resolveCounterBlockFeature(cardFeature, attacker, defender)) {

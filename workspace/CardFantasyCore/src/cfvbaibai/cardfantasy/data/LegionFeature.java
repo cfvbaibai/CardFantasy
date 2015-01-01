@@ -1,6 +1,6 @@
 package cfvbaibai.cardfantasy.data;
 
-public class LegionFeature extends Feature {
+public class LegionFeature extends Skill {
 
     public static LegionFeature create(Legion legion, Race race) {
         if (legion == null) {

@@ -1,14 +1,14 @@
 package cfvbaibai.cardfantasy.engine.feature;
 
 import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
-import cfvbaibai.cardfantasy.data.Feature;
+import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.engine.EntityInfo;
 import cfvbaibai.cardfantasy.engine.FeatureResolver;
 import cfvbaibai.cardfantasy.engine.HeroDieSignal;
 import cfvbaibai.cardfantasy.engine.Player;
 
 public final class PrayFeature {
-    public static void apply(Feature cardFeature, FeatureResolver resolver, EntityInfo healer) {
+    public static void apply(Skill cardFeature, FeatureResolver resolver, EntityInfo healer) {
         if (healer == null) {
             return;
         }

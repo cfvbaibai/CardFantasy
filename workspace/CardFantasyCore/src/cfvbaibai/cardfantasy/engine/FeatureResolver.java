@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
-import cfvbaibai.cardfantasy.data.Feature;
+import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.data.SkillTag;
 import cfvbaibai.cardfantasy.data.FeatureType;
 import cfvbaibai.cardfantasy.data.Race;
@@ -103,8 +103,8 @@ public class FeatureResolver {
         return this.stage;
     }
     
-    private boolean isPhysicalAttackFeature(Feature feature) {
-        return feature == null || feature.getType().containsTag(SkillTag.物理攻击);
+    private boolean isPhysicalAttackFeature(Skill skill) {
+        return skill == null || skill.getType().containsTag(SkillTag.物理攻击);
     }
     
     public void removeStatus(CardInfo card, CardStatusType statusType) {
@@ -274,7 +274,7 @@ public class FeatureResolver {
 
     }
 
-    public void resolveCounterAttackFeature(CardInfo attacker, CardInfo defender, Feature attackFeature,
+    public void resolveCounterAttackFeature(CardInfo attacker, CardInfo defender, Skill attackFeature,
             OnAttackBlockingResult result, OnDamagedResult damagedResult) throws HeroDieSignal {
         if (isPhysicalAttackFeature(attackFeature)) {
             for (FeatureInfo feature : defender.getNormalUsableFeatures()) {
@@ -318,7 +318,7 @@ public class FeatureResolver {
         }
     }
 
-    public OnAttackBlockingResult resolveHealBlockingFeature(EntityInfo healer, CardInfo healee, Feature cardFeature) {
+    public OnAttackBlockingResult resolveHealBlockingFeature(EntityInfo healer, CardInfo healee, Skill cardFeature) {
         OnAttackBlockingResult result = new OnAttackBlockingResult(true, cardFeature.getImpact());
         if (healee.getStatus().containsStatus(CardStatusType.裂伤)) {
             stage.getUI().healBlocked(healer, healee, cardFeature, null);
@@ -328,7 +328,7 @@ public class FeatureResolver {
     }
 
     public OnAttackBlockingResult resolveAttackBlockingFeature(EntityInfo attacker, CardInfo defender,
-            Feature attackFeature, int damage) throws HeroDieSignal {
+            Skill attackFeature, int damage) throws HeroDieSignal {
         OnAttackBlockingResult result = new OnAttackBlockingResult(true, 0);
         CardStatus status = attacker.getStatus();
         if (isPhysicalAttackFeature(attackFeature)) {
@@ -509,7 +509,7 @@ public class FeatureResolver {
      * @return Whether the dead card is revived.
      * @throws HeroDieSignal
      */
-    public void resolveDeathFeature(EntityInfo killerCard, CardInfo deadCard, Feature cardFeature) throws HeroDieSignal {
+    public void resolveDeathFeature(EntityInfo killerCard, CardInfo deadCard, Skill cardFeature) throws HeroDieSignal {
         if (deadCard.hasDeadOnce()) {
             return;
         }
@@ -576,7 +576,7 @@ public class FeatureResolver {
         }
     }
 
-    public void resolvePostAttackFeature(CardInfo attacker, CardInfo defender, Player defenderHero, Feature attackFeature,
+    public void resolvePostAttackFeature(CardInfo attacker, CardInfo defender, Player defenderHero, Skill attackFeature,
             int normalAttackDamage) throws HeroDieSignal {
         for (FeatureInfo feature : attacker.getNormalUsableFeatures()) {
             if (!attacker.isDead()) {
@@ -593,7 +593,7 @@ public class FeatureResolver {
         }
     }
     
-    public void resolveExtraAttackFeature(CardInfo attacker, CardInfo defender, Player defenderHero, Feature attackFeature,
+    public void resolveExtraAttackFeature(CardInfo attacker, CardInfo defender, Player defenderHero, Skill attackFeature,
             int normalAttackDamage) throws HeroDieSignal {
 
         for (FeatureInfo feature : attacker.getNormalUsableFeatures()) {
@@ -745,7 +745,7 @@ public class FeatureResolver {
         }
     }
 
-    public void attackHero(EntityInfo attacker, Player defenderPlayer, Feature cardFeature, int damage)
+    public void attackHero(EntityInfo attacker, Player defenderPlayer, Skill cardFeature, int damage)
             throws HeroDieSignal {
         if (attacker == null) {
             return;
@@ -778,7 +778,7 @@ public class FeatureResolver {
         }
     }
 
-    private int resolveAttackHeroBlockingFeatures(EntityInfo attacker, Player defenderPlayer, Feature cardFeature,
+    private int resolveAttackHeroBlockingFeatures(EntityInfo attacker, Player defenderPlayer, Skill cardFeature,
             int damage) throws HeroDieSignal {
         int remainingDamage = damage;
         for (CardInfo defender : defenderPlayer.getField().getAliveCards()) {
@@ -823,24 +823,24 @@ public class FeatureResolver {
     }
 
     public OnDamagedResult attackCard(CardInfo attacker, CardInfo defender, FeatureInfo featureInfo, int damage) throws HeroDieSignal {
-        Feature feature = featureInfo == null ? null : featureInfo.getFeature();
+        Skill skill = featureInfo == null ? null : featureInfo.getFeature();
         boolean bingo = !attacker.getStatus().containsStatus(CardStatusType.麻痹);
         this.stage.getUI().useSkill(attacker, defender, null, bingo);
 
         OnAttackBlockingResult blockingResult = stage.getResolver().resolveAttackBlockingFeature(
-                attacker, defender, feature, damage);
+                attacker, defender, skill, damage);
         if (!blockingResult.isAttackable()) {
             return null;
         }
-        this.stage.getUI().attackCard(attacker, defender, feature, blockingResult.getDamage());
+        this.stage.getUI().attackCard(attacker, defender, skill, blockingResult.getDamage());
         OnDamagedResult damagedResult = stage.getResolver().applyDamage(defender, blockingResult.getDamage());
 
-        resolvePostAttackFeature(attacker, defender, defender.getOwner(), feature, damagedResult.actualDamage);
+        resolvePostAttackFeature(attacker, defender, defender.getOwner(), skill, damagedResult.actualDamage);
         if (damagedResult.cardDead) {
-            stage.getResolver().resolveDeathFeature(attacker, defender, feature);
+            stage.getResolver().resolveDeathFeature(attacker, defender, skill);
         }
-        resolveExtraAttackFeature(attacker, defender, defender.getOwner(), feature, damagedResult.actualDamage);
-        resolveCounterAttackFeature(attacker, defender, feature, blockingResult, damagedResult);
+        resolveExtraAttackFeature(attacker, defender, defender.getOwner(), skill, damagedResult.actualDamage);
+        resolveCounterAttackFeature(attacker, defender, skill, blockingResult, damagedResult);
 
         return damagedResult;
     }
@@ -935,7 +935,7 @@ public class FeatureResolver {
         }
     }
 
-    public void resolveLeaveFeature(CardInfo card, Feature cardFeature) {
+    public void resolveLeaveFeature(CardInfo card, Skill cardFeature) {
         for (FeatureInfo deadCardFeature : card.getNormalUsableFeatures()) {
             if (deadCardFeature.getType() == FeatureType.王国之力) {
                 RaceBuffFeature.remove(this, deadCardFeature, card, Race.KINGDOM);
@@ -1029,7 +1029,7 @@ public class FeatureResolver {
      * @param defender
      * @return Whether block is disabled
      */
-    public boolean resolveCounterBlockFeature(Feature cardFeature, CardInfo attacker, CardInfo defender) {
+    public boolean resolveCounterBlockFeature(Skill cardFeature, CardInfo attacker, CardInfo defender) {
         for (FeatureInfo attackerFeature : attacker.getAllUsableFeatures()) {
             if (attackerFeature.getType() == FeatureType.弱点攻击) {
                 return WeakPointAttackFeature.isBlockFeatureDisabled(this, attackerFeature.getFeature(), cardFeature,

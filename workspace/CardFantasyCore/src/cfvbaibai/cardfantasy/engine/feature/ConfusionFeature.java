@@ -4,7 +4,7 @@ import java.util.List;
 
 import cfvbaibai.cardfantasy.GameUI;
 import cfvbaibai.cardfantasy.Randomizer;
-import cfvbaibai.cardfantasy.data.Feature;
+import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.CardStatusItem;
 import cfvbaibai.cardfantasy.engine.CardStatusType;
@@ -17,16 +17,16 @@ import cfvbaibai.cardfantasy.engine.StageInfo;
 public final class ConfusionFeature {
     public static void apply(FeatureInfo featureInfo, FeatureResolver resolver, CardInfo attacker, Player defender,
             int victimCount) throws HeroDieSignal {
-        Feature feature = featureInfo.getFeature();
+        Skill skill = featureInfo.getFeature();
         StageInfo stage = resolver.getStage();
         Randomizer random = stage.getRandomizer();
         GameUI ui = stage.getUI();
 
-        int rate = feature.getImpact();
+        int rate = skill.getImpact();
         List<CardInfo> victims = random.pickRandom(defender.getField().toList(), victimCount, true, null);
-        ui.useSkill(attacker, victims, feature, true);
+        ui.useSkill(attacker, victims, skill, true);
         for (CardInfo victim : victims) {
-            if (!resolver.resolveAttackBlockingFeature(attacker, victim, feature, 1).isAttackable()) {
+            if (!resolver.resolveAttackBlockingFeature(attacker, victim, skill, 1).isAttackable()) {
                 continue;
             }
             if (victim.getStatus().containsStatus(CardStatusType.迷惑)) {
@@ -34,7 +34,7 @@ public final class ConfusionFeature {
             }
             if (random.roll100(rate)) {
                 CardStatusItem status = CardStatusItem.confused(featureInfo);
-                ui.addCardStatus(attacker, victim, feature, status);
+                ui.addCardStatus(attacker, victim, skill, status);
                 victim.addStatus(status);
             }
         }

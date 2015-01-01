@@ -9,7 +9,7 @@ import cfvbaibai.cardfantasy.CardFantasyUserRuntimeException;
 import cfvbaibai.cardfantasy.GameOverSignal;
 import cfvbaibai.cardfantasy.GameUI;
 import cfvbaibai.cardfantasy.data.Card;
-import cfvbaibai.cardfantasy.data.Feature;
+import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.data.FeatureType;
 import cfvbaibai.cardfantasy.data.PlayerInfo;
 import cfvbaibai.cardfantasy.data.Rune;
@@ -369,8 +369,8 @@ public class GameEngine {
         if (this.stage.getRound() >= thresholdRound) {
             int extraRound = this.stage.getRound() - thresholdRound;
             int heroDamage = 50 + extraRound * 30;
-            Feature feature = Feature.自动扣血();
-            this.stage.getResolver().attackHero(player, player, feature, heroDamage);
+            Skill skill = Skill.自动扣血();
+            this.stage.getResolver().attackHero(player, player, skill, heroDamage);
         }
         return Phase.抽卡;
     }

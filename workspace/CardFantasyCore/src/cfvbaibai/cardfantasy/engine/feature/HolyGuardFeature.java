@@ -3,7 +3,7 @@ package cfvbaibai.cardfantasy.engine.feature;
 import java.util.List;
 
 import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
-import cfvbaibai.cardfantasy.data.Feature;
+import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.FeatureEffect;
 import cfvbaibai.cardfantasy.engine.FeatureEffectType;
@@ -16,14 +16,14 @@ public class HolyGuardFeature {
         if (card == null || card.isDead()) {
             throw new CardFantasyRuntimeException("card should not be null or dead!");
         }
-        Feature feature = featureInfo.getFeature();
-        int impact = feature.getImpact();
-        resolver.getStage().getUI().useSkill(card, feature, true);
+        Skill skill = featureInfo.getFeature();
+        int impact = skill.getImpact();
+        resolver.getStage().getUI().useSkill(card, skill, true);
         Field field = card.getOwner().getField();
         List<CardInfo> allies = resolver.getAdjacentCards(field, card.getPosition());
         for (CardInfo ally : allies) {
             if (ally.getEffectsCausedBy(featureInfo).isEmpty()) {
-                resolver.getStage().getUI().adjustHP(card, ally, impact, feature);
+                resolver.getStage().getUI().adjustHP(card, ally, impact, skill);
                 ally.addEffect(new FeatureEffect(FeatureEffectType.MAXHP_CHANGE, featureInfo, impact, false));
             }
         }

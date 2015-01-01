@@ -3,7 +3,7 @@ package cfvbaibai.cardfantasy.engine.feature;
 import java.util.List;
 
 import cfvbaibai.cardfantasy.GameUI;
-import cfvbaibai.cardfantasy.data.Feature;
+import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.CardStatusItem;
 import cfvbaibai.cardfantasy.engine.FeatureInfo;
@@ -17,16 +17,16 @@ public final class SealFeature {
         if (attacker.hasUsed(featureInfo)) {
             return;
         }
-        Feature feature = featureInfo.getFeature();
+        Skill skill = featureInfo.getFeature();
         List<CardInfo> victims = defender.getField().getAliveCards();
         GameUI ui = resolver.getStage().getUI();
-        ui.useSkill(attacker, victims, feature, true);
+        ui.useSkill(attacker, victims, skill, true);
         for (CardInfo victim : victims) {
-            if (!resolver.resolveAttackBlockingFeature(attacker, victim, feature, 1).isAttackable()) {
+            if (!resolver.resolveAttackBlockingFeature(attacker, victim, skill, 1).isAttackable()) {
                 continue;
             }
             CardStatusItem status = CardStatusItem.trapped(featureInfo);
-            ui.addCardStatus(attacker, victim, feature, status);
+            ui.addCardStatus(attacker, victim, skill, status);
             victim.addStatus(status);
         }
         attacker.setUsed(featureInfo);

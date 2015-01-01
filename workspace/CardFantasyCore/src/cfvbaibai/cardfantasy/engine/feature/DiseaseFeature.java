@@ -1,7 +1,7 @@
 package cfvbaibai.cardfantasy.engine.feature;
 
 import cfvbaibai.cardfantasy.GameUI;
-import cfvbaibai.cardfantasy.data.Feature;
+import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.FeatureEffect;
 import cfvbaibai.cardfantasy.engine.FeatureEffectType;
@@ -15,19 +15,19 @@ public final class DiseaseFeature {
         if (normalAttackDamage <= 0 || defender == null || defender.isDead()) {
             return;
         }
-        Feature feature = featureInfo.getFeature();
-        int damage = feature.getImpact();
+        Skill skill = featureInfo.getFeature();
+        int damage = skill.getImpact();
         GameUI ui = resolver.getStage().getUI();
-        ui.useSkill(attacker, defender, feature, true);
+        ui.useSkill(attacker, defender, skill, true);
 
-        OnAttackBlockingResult result = resolver.resolveAttackBlockingFeature(attacker, defender, feature, damage);
+        OnAttackBlockingResult result = resolver.resolveAttackBlockingFeature(attacker, defender, skill, damage);
         if (!result.isAttackable()) {
             return;
         }
         
-        ui.attackCard(attacker, defender, feature, damage);
+        ui.attackCard(attacker, defender, skill, damage);
         resolver.applyDamage(defender, damage);
-        ui.adjustAT(attacker, defender, -damage, feature);
+        ui.adjustAT(attacker, defender, -damage, skill);
         defender.addEffect(new FeatureEffect(FeatureEffectType.ATTACK_CHANGE, featureInfo, -damage, true));
     }
 }

@@ -2,14 +2,14 @@ package cfvbaibai.cardfantasy.engine.feature;
 
 import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
 import cfvbaibai.cardfantasy.GameUI;
-import cfvbaibai.cardfantasy.data.Feature;
+import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.FeatureResolver;
 import cfvbaibai.cardfantasy.engine.Grave;
 import cfvbaibai.cardfantasy.engine.Hand;
 
 public final class ReincarnationFeature {
-    public static boolean apply(FeatureResolver resolver, Feature cardFeature, CardInfo card) {
+    public static boolean apply(FeatureResolver resolver, Skill cardFeature, CardInfo card) {
         if (!card.isDead()) {
             throw new CardFantasyRuntimeException("Cannot resurrect undead card: " + card.getShortDesc());
         }

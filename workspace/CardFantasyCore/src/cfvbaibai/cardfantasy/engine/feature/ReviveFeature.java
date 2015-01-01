@@ -1,7 +1,7 @@
 package cfvbaibai.cardfantasy.engine.feature;
 
 import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
-import cfvbaibai.cardfantasy.data.Feature;
+import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.data.SkillTag;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.CardStatusItem;
@@ -26,7 +26,7 @@ public final class ReviveFeature {
         if (!hasRevivableCard) {
             return;
         }
-        Feature feature = featureInfo.getFeature();
+        Skill skill = featureInfo.getFeature();
         // Grave is a stack, find the last-in card and revive it.
         CardInfo cardToRevive = null;
         while (true) {
@@ -41,11 +41,11 @@ public final class ReviveFeature {
         if (cardToRevive == null) {
             return;
         }
-        resolver.getStage().getUI().useSkill(reviver, cardToRevive, feature, true);
+        resolver.getStage().getUI().useSkill(reviver, cardToRevive, skill, true);
         reviver.getOwner().getGrave().removeCard(cardToRevive);
         resolver.summonCard(reviver.getOwner(), cardToRevive, reviver);
         CardStatusItem item = CardStatusItem.weak(featureInfo);
-        resolver.getStage().getUI().addCardStatus(reviver, cardToRevive, feature, item);
+        resolver.getStage().getUI().addCardStatus(reviver, cardToRevive, skill, item);
         cardToRevive.addStatus(item);
     }
 }

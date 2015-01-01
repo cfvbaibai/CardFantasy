@@ -1,7 +1,7 @@
 package cfvbaibai.cardfantasy.engine.feature;
 
 import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
-import cfvbaibai.cardfantasy.data.Feature;
+import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.data.Race;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.FeatureEffect;
@@ -16,19 +16,19 @@ public final class RaceBuffFeature {
         if (card == null) {
             throw new CardFantasyRuntimeException("card cannot be null");
         }
-        Feature feature = featureInfo.getFeature();
-        int impact = feature.getImpact();
+        Skill skill = featureInfo.getFeature();
+        int impact = skill.getImpact();
         Field field = card.getOwner().getField();
         for (CardInfo ally : field.getAliveCards()) {
             if (ally == card || race != null && ally.getRace() != race) {
                 continue;
             }
             if (ally.getEffectsCausedBy(featureInfo).isEmpty()) {
-                resolver.getStage().getUI().useSkill(card, feature, true);
+                resolver.getStage().getUI().useSkill(card, skill, true);
                 if (effectType == FeatureEffectType.ATTACK_CHANGE) {
-                    resolver.getStage().getUI().adjustAT(card, ally, impact, feature);
+                    resolver.getStage().getUI().adjustAT(card, ally, impact, skill);
                 } else if (effectType == FeatureEffectType.MAXHP_CHANGE) {
-                    resolver.getStage().getUI().adjustHP(card, ally, impact, feature);
+                    resolver.getStage().getUI().adjustHP(card, ally, impact, skill);
                 } else {
                     throw new CardFantasyRuntimeException("Invalid effect type: " + effectType.name());
                 }

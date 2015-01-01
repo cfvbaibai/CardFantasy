@@ -2,7 +2,7 @@ package cfvbaibai.cardfantasy.engine.feature;
 
 import java.util.List;
 
-import cfvbaibai.cardfantasy.data.Feature;
+import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.FeatureEffect;
 import cfvbaibai.cardfantasy.engine.FeatureEffectType;
@@ -15,18 +15,18 @@ public class LegionBuffFeature {
         if (featureInfo == null) {
             return;
         }
-        Feature feature = featureInfo.getFeature();
-        if (feature.getLevel() == 0) {
+        Skill skill = featureInfo.getFeature();
+        if (skill.getLevel() == 0) {
             return;
         }
-        int adjAT = feature.getImpact() * card.getInitAT() / 100;
-        resolver.getStage().getUI().useSkill(card, feature, true);
-        resolver.getStage().getUI().adjustAT(featureInfo.getOwner(), card, adjAT, feature);
+        int adjAT = skill.getImpact() * card.getInitAT() / 100;
+        resolver.getStage().getUI().useSkill(card, skill, true);
+        resolver.getStage().getUI().adjustAT(featureInfo.getOwner(), card, adjAT, skill);
         card.addEffect(new FeatureEffect(FeatureEffectType.ATTACK_CHANGE, featureInfo, adjAT, false));
         
-        int adjHP = feature.getImpact() * card.getOriginalMaxHP() / 100;
-        resolver.getStage().getUI().useSkill(card, feature, true);
-        resolver.getStage().getUI().adjustHP(featureInfo.getOwner(), card, adjHP, feature);
+        int adjHP = skill.getImpact() * card.getOriginalMaxHP() / 100;
+        resolver.getStage().getUI().useSkill(card, skill, true);
+        resolver.getStage().getUI().adjustHP(featureInfo.getOwner(), card, adjHP, skill);
         card.addEffect(new FeatureEffect(FeatureEffectType.MAXHP_CHANGE, featureInfo, adjHP, false));
     }
 

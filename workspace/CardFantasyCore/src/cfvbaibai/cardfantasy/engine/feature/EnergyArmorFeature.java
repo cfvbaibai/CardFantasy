@@ -3,7 +3,7 @@ package cfvbaibai.cardfantasy.engine.feature;
 import java.util.List;
 
 import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
-import cfvbaibai.cardfantasy.data.Feature;
+import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.EntityInfo;
 import cfvbaibai.cardfantasy.engine.FeatureEffect;
@@ -17,14 +17,14 @@ public final class EnergyArmorFeature {
         if (caster == null) {
             throw new CardFantasyRuntimeException("caster cannot be null");
         }
-        Feature feature = featureInfo.getFeature();
-        int impact = feature.getImpact();
+        Skill skill = featureInfo.getFeature();
+        int impact = skill.getImpact();
         Field field = caster.getOwner().getField();
         List<CardInfo> targets = resolver.getStage().getRandomizer().pickRandom(
             field.toList(), targetCount, true, null);
-        resolver.getStage().getUI().useSkill(caster, targets, feature, true);
+        resolver.getStage().getUI().useSkill(caster, targets, skill, true);
         for (CardInfo target : targets) {
-            resolver.getStage().getUI().adjustHP(caster, target, impact, feature);
+            resolver.getStage().getUI().adjustHP(caster, target, impact, skill);
             target.addEffect(new FeatureEffect(FeatureEffectType.MAXHP_CHANGE, featureInfo, impact, false));
         }
     }

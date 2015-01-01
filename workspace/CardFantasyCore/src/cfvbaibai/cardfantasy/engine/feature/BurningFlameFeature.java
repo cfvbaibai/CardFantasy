@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cfvbaibai.cardfantasy.GameUI;
-import cfvbaibai.cardfantasy.data.Feature;
+import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.CardStatusItem;
 import cfvbaibai.cardfantasy.engine.CardStatusType;
@@ -18,8 +18,8 @@ import cfvbaibai.cardfantasy.engine.Player;
 public final class BurningFlameFeature {
     public static void apply(FeatureInfo featureInfo, FeatureResolver resolver, EntityInfo attacker, Player defender)
             throws HeroDieSignal {
-        Feature feature = featureInfo.getFeature();
-        int damage = feature.getImpact();
+        Skill skill = featureInfo.getFeature();
+        int damage = skill.getImpact();
         List<CardInfo> candidates = resolver.getStage().getRandomizer().pickRandom(
             defender.getField().toList(), -1, true, null);
         CardStatusItem newBurningStatus = CardStatusItem.burning(damage, featureInfo);
@@ -41,13 +41,13 @@ public final class BurningFlameFeature {
             }
         }
         GameUI ui = resolver.getStage().getUI();
-        ui.useSkill(attacker, victims, feature, true);
+        ui.useSkill(attacker, victims, skill, true);
         for (CardInfo victim : victims) {
-            OnAttackBlockingResult result = resolver.resolveAttackBlockingFeature(attacker, victim, feature, damage);
+            OnAttackBlockingResult result = resolver.resolveAttackBlockingFeature(attacker, victim, skill, damage);
             if (!result.isAttackable()) {
                 continue;
             }
-            ui.addCardStatus(attacker, victim, feature, newBurningStatus);
+            ui.addCardStatus(attacker, victim, skill, newBurningStatus);
             victim.addStatus(newBurningStatus);
         }
     }

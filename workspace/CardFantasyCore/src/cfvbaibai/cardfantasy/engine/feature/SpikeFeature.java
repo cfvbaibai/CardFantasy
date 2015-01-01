@@ -3,14 +3,14 @@ package cfvbaibai.cardfantasy.engine.feature;
 import java.util.List;
 
 import cfvbaibai.cardfantasy.GameUI;
-import cfvbaibai.cardfantasy.data.Feature;
+import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.data.FeatureType;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.FeatureResolver;
 import cfvbaibai.cardfantasy.engine.HeroDieSignal;
 
 public final class SpikeFeature {
-    public static void apply(Feature cardFeature, FeatureResolver resolver, CardInfo attacker, CardInfo defender, Feature attackFeature, int attackDamage)
+    public static void apply(Skill cardFeature, FeatureResolver resolver, CardInfo attacker, CardInfo defender, Skill attackFeature, int attackDamage)
             throws HeroDieSignal {
         if (attackDamage <= 0) {
             return;

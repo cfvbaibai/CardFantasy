@@ -2,7 +2,7 @@ package cfvbaibai.cardfantasy.engine;
 
 import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
 import cfvbaibai.cardfantasy.NonSerializable;
-import cfvbaibai.cardfantasy.data.Feature;
+import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.data.Rune;
 import cfvbaibai.cardfantasy.data.RuneActivator;
 import cfvbaibai.cardfantasy.data.RuneClass;
@@ -75,7 +75,7 @@ public class RuneInfo extends EntityInfo {
         return new CardStatus();
     }
 
-    public Feature getFeature() {
+    public Skill getFeature() {
         return this.getFeatureInfo().getFeature();
     }
 

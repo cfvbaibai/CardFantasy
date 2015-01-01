@@ -1,7 +1,7 @@
 package cfvbaibai.cardfantasy.engine.feature;
 
 import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
-import cfvbaibai.cardfantasy.data.Feature;
+import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.FeatureInfo;
 import cfvbaibai.cardfantasy.engine.FeatureResolver;
@@ -15,7 +15,7 @@ public final class CounterBiteFeature {
         if (card.hasUsed(featureInfo)) {
             return;
         }
-        Feature cardFeature = featureInfo.getFeature();
+        Skill cardFeature = featureInfo.getFeature();
         int damage = cardFeature.getImpact();
         resolver.attackHero(card, card.getOwner(), cardFeature, damage);
         card.setUsed(featureInfo);

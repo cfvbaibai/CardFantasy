@@ -4,7 +4,7 @@ import java.util.List;
 
 import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
 import cfvbaibai.cardfantasy.GameUI;
-import cfvbaibai.cardfantasy.data.Feature;
+import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.FeatureInfo;
 import cfvbaibai.cardfantasy.engine.FeatureResolver;
@@ -18,13 +18,13 @@ public final class ResurrectionFeature {
         if (resurrector.getOwner() != resolver.getStage().getActivePlayer()) {
             throw new CardFantasyRuntimeException("resurrector is not the current active player!");
         }
-        Feature feature = featureInfo.getFeature();
+        Skill skill = featureInfo.getFeature();
         // Grave is a stack, find the last-in card and revive it.
-        int resurrectionCount = feature.getImpact();
+        int resurrectionCount = skill.getImpact();
         Player player = resurrector.getOwner();
         List<CardInfo> cardsToResurrect = player.getGrave().pop(resurrectionCount);
         GameUI ui = resolver.getStage().getUI();
-        ui.useSkill(resurrector, cardsToResurrect, feature, true);
+        ui.useSkill(resurrector, cardsToResurrect, skill, true);
         for (CardInfo card : cardsToResurrect) {
             ui.cardToDeck(player, card);
             player.getDeck().addCard(card);

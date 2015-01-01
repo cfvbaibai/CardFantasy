@@ -2,7 +2,7 @@ package cfvbaibai.cardfantasy.engine.feature;
 
 import java.util.List;
 
-import cfvbaibai.cardfantasy.data.Feature;
+import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.FeatureEffect;
 import cfvbaibai.cardfantasy.engine.FeatureEffectType;
@@ -16,10 +16,10 @@ public final class HeroKillerFeature {
     }
 
     public static void apply(FeatureResolver resolver, FeatureInfo featureInfo, CardInfo attacker, Player victim) {
-        Feature feature = featureInfo.getFeature();
-        int adj = attacker.getLevel1AT() * feature.getImpact() / 100;
-        resolver.getStage().getUI().useSkill(attacker, feature, true);
-        resolver.getStage().getUI().adjustAT(attacker, attacker, adj, feature);
+        Skill skill = featureInfo.getFeature();
+        int adj = attacker.getLevel1AT() * skill.getImpact() / 100;
+        resolver.getStage().getUI().useSkill(attacker, skill, true);
+        resolver.getStage().getUI().adjustAT(attacker, attacker, adj, skill);
         attacker.addEffect(new FeatureEffect(FeatureEffectType.ATTACK_CHANGE, featureInfo, adj, false));
     }
     

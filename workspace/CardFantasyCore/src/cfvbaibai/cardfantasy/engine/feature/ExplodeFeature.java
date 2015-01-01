@@ -3,7 +3,7 @@ package cfvbaibai.cardfantasy.engine.feature;
 import java.util.List;
 
 import cfvbaibai.cardfantasy.GameUI;
-import cfvbaibai.cardfantasy.data.Feature;
+import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.EntityInfo;
 import cfvbaibai.cardfantasy.engine.FeatureResolver;
@@ -20,7 +20,7 @@ public final class ExplodeFeature {
      * @param exploder The card which is attacked and tries to activate Explode feature.
      * @throws HeroDieSignal 
      */
-    public static void apply(FeatureResolver resolver, Feature cardFeature, EntityInfo attacker, CardInfo exploder) throws HeroDieSignal {
+    public static void apply(FeatureResolver resolver, Skill cardFeature, EntityInfo attacker, CardInfo exploder) throws HeroDieSignal {
 
         int damage = cardFeature.getImpact();
         GameUI ui = resolver.getStage().getUI();

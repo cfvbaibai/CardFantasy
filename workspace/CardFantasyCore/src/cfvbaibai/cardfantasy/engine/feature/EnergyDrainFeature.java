@@ -3,7 +3,7 @@ package cfvbaibai.cardfantasy.engine.feature;
 import java.util.ArrayList;
 import java.util.List;
 
-import cfvbaibai.cardfantasy.data.Feature;
+import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.FeatureEffect;
 import cfvbaibai.cardfantasy.engine.FeatureEffectType;
@@ -19,8 +19,8 @@ public final class EnergyDrainFeature {
         if (result.getDamage() == 0 || defender == null) {
             return;
         }
-        Feature feature = featureInfo.getFeature();
-        int adjAT = attacker.getLevel1AT() * feature.getImpact() / 100;
+        Skill skill = featureInfo.getFeature();
+        int adjAT = attacker.getLevel1AT() * skill.getImpact() / 100;
 
         List<CardInfo> victims = new ArrayList<CardInfo>();
         victims.add(attacker);
@@ -30,7 +30,7 @@ public final class EnergyDrainFeature {
         //attacker.addEffect(new FeatureEffect(FeatureEffectType.ATTACK_CHANGE, featureInfo, totalAttackWeakened, true));
         
         if (!defender.isDead()) {
-            resolver.getStage().getUI().adjustAT(defender, defender, totalAttackWeakened, feature);
+            resolver.getStage().getUI().adjustAT(defender, defender, totalAttackWeakened, skill);
             defender.addEffect(new FeatureEffect(FeatureEffectType.ATTACK_CHANGE, featureInfo, totalAttackWeakened, true));
         }
         

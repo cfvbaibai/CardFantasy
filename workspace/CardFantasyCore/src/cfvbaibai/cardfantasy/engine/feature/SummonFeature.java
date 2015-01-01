@@ -3,7 +3,7 @@ package cfvbaibai.cardfantasy.engine.feature;
 import java.util.List;
 
 import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
-import cfvbaibai.cardfantasy.data.Feature;
+import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.CardStatusItem;
 import cfvbaibai.cardfantasy.engine.CardStatusType;
@@ -18,7 +18,7 @@ public class SummonFeature {
         if (summoner == null) {
             throw new CardFantasyRuntimeException("summoner should not be null");
         }
-        Feature feature = featureInfo.getFeature();
+        Skill skill = featureInfo.getFeature();
         if (summoner.hasUsed(featureInfo)) {
             return;
         }
@@ -28,16 +28,16 @@ public class SummonFeature {
                 return;
             }
         }
-        resolver.getStage().getUI().useSkill(summoner, feature, true);
+        resolver.getStage().getUI().useSkill(summoner, skill, true);
         List<CardInfo> summonedCards = DeckBuilder.build(summonedCardsDescs).getCardInfos(summoner.getOwner());
         for (int i = 0; i < summonedCards.size(); ++i) {
             CardInfo summonedCard = summonedCards.get(i);
             resolver.summonCard(summoner.getOwner(), summonedCard, summoner);
             CardStatusItem weakStatusItem = CardStatusItem.weak(featureInfo);
-            resolver.getStage().getUI().addCardStatus(summoner, summonedCard, feature, weakStatusItem);
+            resolver.getStage().getUI().addCardStatus(summoner, summonedCard, skill, weakStatusItem);
             summonedCard.addStatus(weakStatusItem);
             CardStatusItem summonedStatusItem = CardStatusItem.summoned(featureInfo);
-            resolver.getStage().getUI().addCardStatus(summoner, summonedCard, feature, summonedStatusItem);
+            resolver.getStage().getUI().addCardStatus(summoner, summonedCard, skill, summonedStatusItem);
             summonedCard.addStatus(summonedStatusItem);
         }
         summoner.setUsed(featureInfo);

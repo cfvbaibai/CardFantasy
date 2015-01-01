@@ -4,7 +4,7 @@ import java.util.List;
 
 import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
 import cfvbaibai.cardfantasy.GameUI;
-import cfvbaibai.cardfantasy.data.Feature;
+import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.FeatureResolver;
 import cfvbaibai.cardfantasy.engine.HeroDieSignal;
@@ -12,7 +12,7 @@ import cfvbaibai.cardfantasy.engine.OnAttackBlockingResult;
 import cfvbaibai.cardfantasy.engine.Player;
 
 public final class DestroyFeature {
-    public static void apply(FeatureResolver resolver, Feature cardFeature, CardInfo attacker, Player defenderHero,
+    public static void apply(FeatureResolver resolver, Skill cardFeature, CardInfo attacker, Player defenderHero,
             int victimCount) throws HeroDieSignal {
         List<CardInfo> victims = resolver.getStage().getRandomizer().pickRandom(
             defenderHero.getField().toList(), victimCount, true, null);

@@ -1,6 +1,6 @@
 package cfvbaibai.cardfantasy.data;
 
-public class CardFeature extends Feature implements Cloneable {
+public class CardFeature extends Skill implements Cloneable {
     private int unlockLevel;
     protected boolean summonFeature;
     protected boolean deathFeature;

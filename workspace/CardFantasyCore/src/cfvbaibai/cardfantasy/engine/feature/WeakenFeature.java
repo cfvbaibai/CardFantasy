@@ -3,7 +3,7 @@ package cfvbaibai.cardfantasy.engine.feature;
 import java.util.ArrayList;
 import java.util.List;
 
-import cfvbaibai.cardfantasy.data.Feature;
+import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.data.FeatureType;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.EntityInfo;
@@ -24,11 +24,11 @@ public final class WeakenFeature {
         if (normalAttackDamage <= 0 || defender == null) {
             return;
         }
-        Feature feature = featureInfo.getFeature();
-        resolver.getStage().getUI().useSkill(attacker, defender, feature, true);
+        Skill skill = featureInfo.getFeature();
+        resolver.getStage().getUI().useSkill(attacker, defender, skill, true);
         List<CardInfo> defenders = new ArrayList<CardInfo>();
         defenders.add(defender);
-        weakenCard(resolver, featureInfo, feature.getImpact(), attacker, defenders);
+        weakenCard(resolver, featureInfo, skill.getImpact(), attacker, defenders);
     }
 
     public static int weakenCard(FeatureResolver resolver, FeatureInfo featureInfo, int attackToWeaken, EntityInfo attacker,
@@ -38,8 +38,8 @@ public final class WeakenFeature {
             if (defender == null) {
                 continue;
             }
-            Feature feature = featureInfo.getFeature();
-            if (!resolver.resolveAttackBlockingFeature(attacker, defender, feature, 1).isAttackable()) {
+            Skill skill = featureInfo.getFeature();
+            if (!resolver.resolveAttackBlockingFeature(attacker, defender, skill, 1).isAttackable()) {
                 continue;
             }
             int attackWeakened = attackToWeaken;
@@ -47,7 +47,7 @@ public final class WeakenFeature {
                 attackWeakened = defender.getCurrentAT();
             }
 
-            resolver.getStage().getUI().adjustAT(attacker, defender, -attackWeakened, feature);
+            resolver.getStage().getUI().adjustAT(attacker, defender, -attackWeakened, skill);
             List<FeatureEffect> effects = defender.getEffects();
             for (FeatureEffect effect : effects) {
                 if (effect.getType() == FeatureEffectType.ATTACK_CHANGE && effect.getValue() > 0 &&

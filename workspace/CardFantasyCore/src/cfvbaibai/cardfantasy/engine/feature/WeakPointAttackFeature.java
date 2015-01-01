@@ -1,14 +1,14 @@
 package cfvbaibai.cardfantasy.engine.feature;
 
 import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
-import cfvbaibai.cardfantasy.data.Feature;
+import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.data.SkillTag;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.FeatureResolver;
 
 public final class WeakPointAttackFeature {
-    public static boolean isBlockFeatureDisabled(FeatureResolver resolver, Feature attackFeature,
-            Feature blockFeature, CardInfo attacker, CardInfo defender) {
+    public static boolean isBlockFeatureDisabled(FeatureResolver resolver, Skill attackFeature,
+            Skill blockFeature, CardInfo attacker, CardInfo defender) {
         if (attacker == null) {
             throw new CardFantasyRuntimeException("attacker is null");
         }

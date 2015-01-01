@@ -1,29 +1,29 @@
 package cfvbaibai.cardfantasy.engine;
 
 import cfvbaibai.cardfantasy.NonSerializable;
-import cfvbaibai.cardfantasy.data.Feature;
+import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.data.FeatureType;
 
 public class FeatureInfo {
 
     @NonSerializable
     private EntityInfo owner;
-    private Feature feature;
+    private Skill skill;
 
     public EntityInfo getOwner() {
         return owner;
     }
     
-    public Feature getFeature() {
-        return feature;
+    public Skill getFeature() {
+        return skill;
     }
     
     public FeatureType getType() {
-        return this.feature.getType();
+        return this.skill.getType();
     }
 
-    public FeatureInfo(EntityInfo owner, Feature feature) {
-        this.feature = feature;
+    public FeatureInfo(EntityInfo owner, Skill skill) {
+        this.skill = skill;
         this.owner = owner;
     }
 

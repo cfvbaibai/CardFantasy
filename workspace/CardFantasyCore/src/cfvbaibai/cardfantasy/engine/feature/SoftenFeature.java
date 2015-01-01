@@ -3,7 +3,7 @@ package cfvbaibai.cardfantasy.engine.feature;
 import java.util.List;
 
 import cfvbaibai.cardfantasy.GameUI;
-import cfvbaibai.cardfantasy.data.Feature;
+import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.CardStatusItem;
 import cfvbaibai.cardfantasy.engine.CardStatusType;
@@ -16,12 +16,12 @@ import cfvbaibai.cardfantasy.engine.Player;
 public class SoftenFeature {
     public static void apply(FeatureInfo featureInfo, FeatureResolver resolver, EntityInfo attacker, Player defender)
         throws HeroDieSignal {
-        Feature feature = featureInfo.getFeature();
+        Skill skill = featureInfo.getFeature();
 
         List<CardInfo> victims = resolver.getStage().getRandomizer().pickRandom(
             defender.getField().toList(), 1, true, null);
         GameUI ui = resolver.getStage().getUI();
-        ui.useSkill(attacker, victims, feature, true);
+        ui.useSkill(attacker, victims, skill, true);
 
         if (victims.isEmpty()) {
             return;
@@ -32,12 +32,12 @@ public class SoftenFeature {
             return;
         }
 
-        if (!resolver.resolveAttackBlockingFeature(attacker, victim, feature, 1).isAttackable()) {
+        if (!resolver.resolveAttackBlockingFeature(attacker, victim, skill, 1).isAttackable()) {
             return;
         }
 
         CardStatusItem status = CardStatusItem.softened(featureInfo);
-        ui.addCardStatus(attacker, victim, feature, status);
+        ui.addCardStatus(attacker, victim, skill, status);
         victim.addStatus(status);
     }
 }

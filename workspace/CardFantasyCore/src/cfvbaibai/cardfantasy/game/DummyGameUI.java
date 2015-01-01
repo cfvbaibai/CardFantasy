@@ -4,7 +4,7 @@ import java.util.List;
 
 import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
 import cfvbaibai.cardfantasy.GameUI;
-import cfvbaibai.cardfantasy.data.Feature;
+import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.data.FeatureType;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.CardStatusItem;
@@ -97,7 +97,7 @@ public class DummyGameUI extends GameUI {
     }
 
     @Override
-    public void attackCard(EntityInfo attacker, CardInfo defender, Feature cardFeature, int damage) {
+    public void attackCard(EntityInfo attacker, CardInfo defender, Skill cardFeature, int damage) {
         // TODO Auto-generated method stub
 
     }
@@ -109,32 +109,32 @@ public class DummyGameUI extends GameUI {
     }
 
     @Override
-    public void attackHero(EntityInfo attacker, Player hero, Feature cardFeature, int damage) {
+    public void attackHero(EntityInfo attacker, Player hero, Skill cardFeature, int damage) {
         // TODO Auto-generated method stub
 
     }
 
     @Override
-    public void useSkill(EntityInfo caster, List<? extends EntityInfo> targets, Feature feature, boolean bingo) {
+    public void useSkill(EntityInfo caster, List<? extends EntityInfo> targets, Skill skill, boolean bingo) {
         // TODO Auto-generated method stub
 
     }
 
     @Override
-    public void protect(EntityInfo protector, EntityInfo attacker, EntityInfo protectee, Feature attackFeature,
-            Feature protectFeature) {
+    public void protect(EntityInfo protector, EntityInfo attacker, EntityInfo protectee, Skill attackFeature,
+            Skill protectFeature) {
         // TODO Auto-generated method stub
 
     }
 
     @Override
-    public void useSkillToHero(EntityInfo caster, Player targetHero, Feature feature) {
+    public void useSkillToHero(EntityInfo caster, Player targetHero, Skill skill) {
         // TODO Auto-generated method stub
 
     }
 
     @Override
-    public void addCardStatus(EntityInfo attacker, CardInfo victim, Feature cardFeature, CardStatusItem item) {
+    public void addCardStatus(EntityInfo attacker, CardInfo victim, Skill cardFeature, CardStatusItem item) {
         // TODO Auto-generated method stub
 
     }
@@ -146,32 +146,32 @@ public class DummyGameUI extends GameUI {
     }
 
     @Override
-    public void attackBlocked(EntityInfo attacker, CardInfo defender, Feature atFeature, Feature dfFeature) {
+    public void attackBlocked(EntityInfo attacker, CardInfo defender, Skill atFeature, Skill dfFeature) {
         // TODO Auto-generated method stub
 
     }
 
     @Override
-    public void adjustAT(EntityInfo source, CardInfo target, int adjAT, Feature cardFeature) {
+    public void adjustAT(EntityInfo source, CardInfo target, int adjAT, Skill cardFeature) {
         // TODO Auto-generated method stub
 
     }
 
     @Override
-    public void adjustHP(EntityInfo source, List<? extends CardInfo> targets, int adjHP, Feature cardFeature) {
+    public void adjustHP(EntityInfo source, List<? extends CardInfo> targets, int adjHP, Skill cardFeature) {
         // TODO Auto-generated method stub
 
     }
 
     @Override
-    public void blockDamage(EntityInfo protector, EntityInfo attacker, EntityInfo defender, Feature cardFeature,
+    public void blockDamage(EntityInfo protector, EntityInfo attacker, EntityInfo defender, Skill cardFeature,
             int originalDamage, int actualDamage) {
         // TODO Auto-generated method stub
 
     }
 
     @Override
-    public void healBlocked(EntityInfo healer, CardInfo healee, Feature cardFeature, Feature blockerFeature) {
+    public void healBlocked(EntityInfo healer, CardInfo healee, Skill cardFeature, Skill blockerFeature) {
         // TODO Auto-generated method stub
 
     }
@@ -195,13 +195,13 @@ public class DummyGameUI extends GameUI {
     }
 
     @Override
-    public void healCard(EntityInfo healer, CardInfo healee, Feature cardFeature, int healHP) {
+    public void healCard(EntityInfo healer, CardInfo healee, Skill cardFeature, int healHP) {
         // TODO Auto-generated method stub
 
     }
 
     @Override
-    public void healHero(EntityInfo healer, Player healee, Feature cardFeature, int healHP) {
+    public void healHero(EntityInfo healer, Player healee, Skill cardFeature, int healHP) {
         // TODO Auto-generated method stub
 
     }
@@ -231,19 +231,19 @@ public class DummyGameUI extends GameUI {
     }
 
     @Override
-    public void blockStatus(EntityInfo attacker, EntityInfo defender, Feature cardFeature, CardStatusItem item) {
+    public void blockStatus(EntityInfo attacker, EntityInfo defender, Skill cardFeature, CardStatusItem item) {
         // TODO Auto-generated method stub
 
     }
 
     @Override
-    public void blockFeature(EntityInfo attacker, EntityInfo defender, Feature cardFeature, Feature attackFeature) {
+    public void blockFeature(EntityInfo attacker, EntityInfo defender, Skill cardFeature, Skill attackFeature) {
         // TODO Auto-generated method stub
 
     }
 
     @Override
-    public void returnCard(CardInfo attacker, CardInfo defender, Feature cardFeature) {
+    public void returnCard(CardInfo attacker, CardInfo defender, Skill cardFeature) {
         // TODO Auto-generated method stub
 
     }
@@ -255,7 +255,7 @@ public class DummyGameUI extends GameUI {
     }
 
     @Override
-    public void disableBlock(CardInfo attacker, CardInfo defender, Feature attackFeature, Feature blockFeature) {
+    public void disableBlock(CardInfo attacker, CardInfo defender, Skill attackFeature, Skill blockFeature) {
         // TODO Auto-generated method stub
 
     }
@@ -273,13 +273,13 @@ public class DummyGameUI extends GameUI {
     }
 
     @Override
-    public void useSkill(EntityInfo caster, Feature feature, boolean bingo) {
+    public void useSkill(EntityInfo caster, Skill skill, boolean bingo) {
         // TODO Auto-generated method stub
 
     }
 
     @Override
-    public void killCard(EntityInfo attacker, CardInfo victim, Feature cardFeature) {
+    public void killCard(EntityInfo attacker, CardInfo victim, Skill cardFeature) {
         // TODO Auto-generated method stub
 
     }

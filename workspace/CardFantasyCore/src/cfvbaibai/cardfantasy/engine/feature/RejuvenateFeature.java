@@ -1,12 +1,12 @@
 package cfvbaibai.cardfantasy.engine.feature;
 
-import cfvbaibai.cardfantasy.data.Feature;
+import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.FeatureResolver;
 import cfvbaibai.cardfantasy.engine.OnAttackBlockingResult;
 
 public final class RejuvenateFeature {
-    public static void apply(Feature cardFeature, FeatureResolver resolver, CardInfo card) {
+    public static void apply(Skill cardFeature, FeatureResolver resolver, CardInfo card) {
         if (card.isDead()) {
             // Card has already dead due to CounterAttacker, MagicReflection or Overdraw.
             return;

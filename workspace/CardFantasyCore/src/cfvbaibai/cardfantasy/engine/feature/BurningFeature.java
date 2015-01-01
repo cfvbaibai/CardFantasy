@@ -1,7 +1,7 @@
 package cfvbaibai.cardfantasy.engine.feature;
 
 import cfvbaibai.cardfantasy.GameUI;
-import cfvbaibai.cardfantasy.data.Feature;
+import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.CardStatusItem;
 import cfvbaibai.cardfantasy.engine.CardStatusType;
@@ -19,16 +19,16 @@ public final class BurningFeature {
         if (attacker.getStatus().containsStatusCausedBy(featureInfo, CardStatusType.燃烧)) {
             return;
         }
-        Feature feature = featureInfo.getFeature();
-        int damage = feature.getImpact();
+        Skill skill = featureInfo.getFeature();
+        int damage = skill.getImpact();
         GameUI ui = resolver.getStage().getUI();
-        ui.useSkill(defender, attacker, feature, true);
-        OnAttackBlockingResult result = resolver.resolveAttackBlockingFeature(defender, attacker, feature, damage);
+        ui.useSkill(defender, attacker, skill, true);
+        OnAttackBlockingResult result = resolver.resolveAttackBlockingFeature(defender, attacker, skill, damage);
         if (!result.isAttackable()) {
             return;
         }
         CardStatusItem status = CardStatusItem.burning(damage, featureInfo);
-        ui.addCardStatus(defender, attacker, feature, status);
+        ui.addCardStatus(defender, attacker, skill, status);
         attacker.addStatus(status);
     }
 }

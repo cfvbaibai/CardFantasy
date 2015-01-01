@@ -5,7 +5,7 @@ import java.util.List;
 
 import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
 import cfvbaibai.cardfantasy.GameUI;
-import cfvbaibai.cardfantasy.data.Feature;
+import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.data.FeatureType;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.CardStatusItem;
@@ -21,11 +21,11 @@ import cfvbaibai.cardfantasy.game.PveGameResult;
 
 public class StructuredRecordGameUI extends GameUI {
 
-    private static String toName(Feature feature) {
-        if (feature == null) {
+    private static String toName(Skill skill) {
+        if (skill == null) {
             return "普通攻击";
         } else {
-            return feature.getType().name();
+            return skill.getType().name();
         }
     }
 
@@ -115,7 +115,7 @@ public class StructuredRecordGameUI extends GameUI {
     }
 
     @Override
-    public void attackCard(EntityInfo attacker, CardInfo defender, Feature cardFeature, int damage) {
+    public void attackCard(EntityInfo attacker, CardInfo defender, Skill cardFeature, int damage) {
         int currentHP = defender.getHP() - damage;
         if (currentHP < 0) { currentHP = 0; }
         String featureName = toName(cardFeature);
@@ -129,21 +129,21 @@ public class StructuredRecordGameUI extends GameUI {
     }
 
     @Override
-    public void attackHero(EntityInfo attacker, Player hero, Feature cardFeature, int damage) {
+    public void attackHero(EntityInfo attacker, Player hero, Skill cardFeature, int damage) {
         this.record.addEvent("attackHero", new EntityRuntimeInfo(attacker),
                 toPlayer(hero), damage, toName(cardFeature));
     }
 
     @Override
-    public void protect(EntityInfo protector, EntityInfo attacker, EntityInfo protectee, Feature attackFeature,
-            Feature protectFeature) {
+    public void protect(EntityInfo protector, EntityInfo attacker, EntityInfo protectee, Skill attackFeature,
+            Skill protectFeature) {
         this.record.addEvent("protect", new EntityRuntimeInfo(protector),
                 new EntityRuntimeInfo(attacker), new EntityRuntimeInfo(protectee),
                 toName(attackFeature), toName(protectFeature));
     }
 
     @Override
-    public void addCardStatus(EntityInfo attacker, CardInfo victim, Feature cardFeature, CardStatusItem item) {
+    public void addCardStatus(EntityInfo attacker, CardInfo victim, Skill cardFeature, CardStatusItem item) {
         this.record.addEvent("addCardStatus", new EntityRuntimeInfo(attacker), new EntityRuntimeInfo(victim),
                 toName(cardFeature), item.getType().name(), item.getType().getAbbrev());
     }
@@ -160,13 +160,13 @@ public class StructuredRecordGameUI extends GameUI {
     }
 
     @Override
-    public void attackBlocked(EntityInfo attacker, CardInfo defender, Feature atFeature, Feature dfFeature) {
+    public void attackBlocked(EntityInfo attacker, CardInfo defender, Skill atFeature, Skill dfFeature) {
         // TODO Auto-generated method stub
         
     }
 
     @Override
-    public void adjustAT(EntityInfo source, CardInfo target, int adjAT, Feature cardFeature) {
+    public void adjustAT(EntityInfo source, CardInfo target, int adjAT, Skill cardFeature) {
         this.record.addEvent("adjustAT", new EntityRuntimeInfo(source), new EntityRuntimeInfo(target),
                 adjAT, target.getCurrentAT() + adjAT, cardFeature.getType().name());
     }
@@ -192,7 +192,7 @@ public class StructuredRecordGameUI extends GameUI {
         this.record.addEvent("adjustHP", new EntityRuntimeInfo(source), adjHP, cardFeature.getType().name(), items);
     }
 */
-    public void adjustHP(EntityInfo source, List<? extends CardInfo> targets, int adjHP, Feature cardFeature) {
+    public void adjustHP(EntityInfo source, List<? extends CardInfo> targets, int adjHP, Skill cardFeature) {
         for (CardInfo target : targets) {
             this.record.addEvent("adjustHP", new EntityRuntimeInfo(source), new EntityRuntimeInfo(target),
                 adjHP, target.getHP() + adjHP, cardFeature.getType().name(), target.getMaxHP() + adjHP);
@@ -200,14 +200,14 @@ public class StructuredRecordGameUI extends GameUI {
     }
 
     @Override
-    public void blockDamage(EntityInfo protector, EntityInfo attacker, EntityInfo defender, Feature cardFeature,
+    public void blockDamage(EntityInfo protector, EntityInfo attacker, EntityInfo defender, Skill cardFeature,
             int originalDamage, int actualDamage) {
         this.record.addEvent("blockDamage", new EntityRuntimeInfo(protector), new EntityRuntimeInfo(attacker),
                 new EntityRuntimeInfo(defender), toName(cardFeature), originalDamage, actualDamage);
     }
 
     @Override
-    public void healBlocked(EntityInfo healer, CardInfo healee, Feature cardFeature, Feature blockerFeature) {
+    public void healBlocked(EntityInfo healer, CardInfo healee, Skill cardFeature, Skill blockerFeature) {
         this.record.addEvent("healBlocked", new EntityRuntimeInfo(healer), new EntityRuntimeInfo(healee),
                 toName(cardFeature), toName(blockerFeature));
     }
@@ -233,7 +233,7 @@ public class StructuredRecordGameUI extends GameUI {
     }
 
     @Override
-    public void healCard(EntityInfo healer, CardInfo healee, Feature cardFeature, int healHP) {
+    public void healCard(EntityInfo healer, CardInfo healee, Skill cardFeature, int healHP) {
         if (healee.getHP() == healee.getMaxHP()) {
             return;
         }
@@ -246,7 +246,7 @@ public class StructuredRecordGameUI extends GameUI {
     }
 
     @Override
-    public void healHero(EntityInfo healer, Player healee, Feature cardFeature, int healHP) {
+    public void healHero(EntityInfo healer, Player healee, Skill cardFeature, int healHP) {
         int currentHP = healee.getHP() + healHP;
         if (currentHP > healee.getMaxHP()) {
             currentHP = healee.getMaxHP();
@@ -287,19 +287,19 @@ public class StructuredRecordGameUI extends GameUI {
     }
 
     @Override
-    public void blockStatus(EntityInfo attacker, EntityInfo defender, Feature cardFeature, CardStatusItem item) {
+    public void blockStatus(EntityInfo attacker, EntityInfo defender, Skill cardFeature, CardStatusItem item) {
         // TODO Auto-generated method stub
         
     }
 
     @Override
-    public void blockFeature(EntityInfo attacker, EntityInfo defender, Feature cardFeature, Feature attackFeature) {
+    public void blockFeature(EntityInfo attacker, EntityInfo defender, Skill cardFeature, Skill attackFeature) {
         // TODO Auto-generated method stub
         
     }
 
     @Override
-    public void returnCard(CardInfo attacker, CardInfo defender, Feature cardFeature) {
+    public void returnCard(CardInfo attacker, CardInfo defender, Skill cardFeature) {
         this.record.addEvent("returnCard", new EntityRuntimeInfo(attacker), new EntityRuntimeInfo(defender));
     }
 
@@ -309,7 +309,7 @@ public class StructuredRecordGameUI extends GameUI {
     }
 
     @Override
-    public void disableBlock(CardInfo attacker, CardInfo defender, Feature attackFeature, Feature blockFeature) {
+    public void disableBlock(CardInfo attacker, CardInfo defender, Skill attackFeature, Skill blockFeature) {
         // TODO Auto-generated method stub
         
     }
@@ -332,17 +332,17 @@ public class StructuredRecordGameUI extends GameUI {
     }
 
     @Override
-    public void useSkill(EntityInfo caster, Feature feature, boolean bingo) {
+    public void useSkill(EntityInfo caster, Skill skill, boolean bingo) {
         if (!bingo) { return; }
         List<EntityRuntimeInfo> defenders = new ArrayList<EntityRuntimeInfo>();
         defenders.add(new EntityRuntimeInfo(caster));
-        this.record.addEvent("useSkill", new EntityRuntimeInfo(caster), toName(feature), defenders);
+        this.record.addEvent("useSkill", new EntityRuntimeInfo(caster), toName(skill), defenders);
     }
 
     @Override
-    public void useSkill(EntityInfo caster, List<? extends EntityInfo> targets, Feature feature, boolean bingo) {
+    public void useSkill(EntityInfo caster, List<? extends EntityInfo> targets, Skill skill, boolean bingo) {
         if (!bingo) { return; }
-        String featureName = toName(feature);
+        String featureName = toName(skill);
         BattleEvent event = new BattleEvent("useSkill", new EntityRuntimeInfo(caster), featureName);
         EntityRuntimeInfo[] defenders = new EntityRuntimeInfo[targets.size()]; 
         for (int i = 0; i < targets.size(); ++i) {
@@ -354,12 +354,12 @@ public class StructuredRecordGameUI extends GameUI {
     }
 
     @Override
-    public void useSkillToHero(EntityInfo caster, Player targetHero, Feature feature) {
-        this.record.addEvent("useSkillToHero", new EntityRuntimeInfo(caster), toName(feature), toPlayer(targetHero));
+    public void useSkillToHero(EntityInfo caster, Player targetHero, Skill skill) {
+        this.record.addEvent("useSkillToHero", new EntityRuntimeInfo(caster), toName(skill), toPlayer(targetHero));
     }
 
     @Override
-    public void killCard(EntityInfo attacker, CardInfo victim, Feature cardFeature) {
+    public void killCard(EntityInfo attacker, CardInfo victim, Skill cardFeature) {
         // TODO Auto-generated method stub
         
     }

@@ -14,7 +14,7 @@ import cfvbaibai.cardfantasy.data.Card;
 import cfvbaibai.cardfantasy.data.CardData;
 import cfvbaibai.cardfantasy.data.CardDataStore;
 import cfvbaibai.cardfantasy.data.CardFeature;
-import cfvbaibai.cardfantasy.data.Feature;
+import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.data.FeatureType;
 import cfvbaibai.cardfantasy.data.PlayerInfo;
 import cfvbaibai.cardfantasy.data.Rune;
@@ -214,7 +214,7 @@ public final class DeckBuilder {
     public static String getDeckDesc(Card card) {
         StringBuffer sb = new StringBuffer();
         sb.append(card.getName());
-        Feature extraFeature = card.getExtraFeature();
+        Skill extraFeature = card.getExtraFeature();
         if (extraFeature != null) {
             sb.append('+');
             sb.append(getDeckDesc(extraFeature));
@@ -228,15 +228,15 @@ public final class DeckBuilder {
         return rune.getName() + rune.getLevel();
     }
     
-    public static String getDeckDesc(Feature feature) {
-        String desc = feature.getType().name();
-        if (feature.getLevel() != 0) {
-            desc += feature.getLevel();
+    public static String getDeckDesc(Skill skill) {
+        String desc = skill.getType().name();
+        if (skill.getLevel() != 0) {
+            desc += skill.getLevel();
         }
-        if (feature.isDeathFeature()) {
+        if (skill.isDeathFeature()) {
             return "死契" + desc;
         }
-        if (feature.isSummonFeature()) {
+        if (skill.isSummonFeature()) {
             return "降临" + desc;
         }
         return desc;
