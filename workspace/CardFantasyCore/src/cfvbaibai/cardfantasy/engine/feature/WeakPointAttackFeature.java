@@ -4,10 +4,10 @@ import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
 import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.data.SkillTag;
 import cfvbaibai.cardfantasy.engine.CardInfo;
-import cfvbaibai.cardfantasy.engine.FeatureResolver;
+import cfvbaibai.cardfantasy.engine.SkillResolver;
 
 public final class WeakPointAttackFeature {
-    public static boolean isBlockFeatureDisabled(FeatureResolver resolver, Skill attackFeature,
+    public static boolean isBlockFeatureDisabled(SkillResolver resolver, Skill attackFeature,
             Skill blockFeature, CardInfo attacker, CardInfo defender) {
         if (attacker == null) {
             throw new CardFantasyRuntimeException("attacker is null");

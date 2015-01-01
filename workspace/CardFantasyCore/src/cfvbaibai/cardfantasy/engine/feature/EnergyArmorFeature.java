@@ -9,11 +9,11 @@ import cfvbaibai.cardfantasy.engine.EntityInfo;
 import cfvbaibai.cardfantasy.engine.SkillEffect;
 import cfvbaibai.cardfantasy.engine.SkillEffectType;
 import cfvbaibai.cardfantasy.engine.SkillUseInfo;
-import cfvbaibai.cardfantasy.engine.FeatureResolver;
+import cfvbaibai.cardfantasy.engine.SkillResolver;
 import cfvbaibai.cardfantasy.engine.Field;
 
 public final class EnergyArmorFeature {
-    public static void apply(FeatureResolver resolver, SkillUseInfo skillUseInfo, EntityInfo caster, int targetCount) {
+    public static void apply(SkillResolver resolver, SkillUseInfo skillUseInfo, EntityInfo caster, int targetCount) {
         if (caster == null) {
             throw new CardFantasyRuntimeException("caster cannot be null");
         }
@@ -29,7 +29,7 @@ public final class EnergyArmorFeature {
         }
     }
 
-    public static void remove(FeatureResolver resolver, SkillUseInfo feature, EntityInfo caster) {
+    public static void remove(SkillResolver resolver, SkillUseInfo feature, EntityInfo caster) {
         if (caster == null) {
             throw new CardFantasyRuntimeException("card cannot be null");
         }

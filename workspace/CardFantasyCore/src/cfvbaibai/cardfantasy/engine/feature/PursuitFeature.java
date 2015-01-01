@@ -9,10 +9,10 @@ import cfvbaibai.cardfantasy.engine.CardStatusType;
 import cfvbaibai.cardfantasy.engine.SkillEffect;
 import cfvbaibai.cardfantasy.engine.SkillEffectType;
 import cfvbaibai.cardfantasy.engine.SkillUseInfo;
-import cfvbaibai.cardfantasy.engine.FeatureResolver;
+import cfvbaibai.cardfantasy.engine.SkillResolver;
 
 public final class PursuitFeature {
-    public static void apply(FeatureResolver resolver, SkillUseInfo skillUseInfo, CardInfo attacker, CardInfo defender) {
+    public static void apply(SkillResolver resolver, SkillUseInfo skillUseInfo, CardInfo attacker, CardInfo defender) {
         CardStatus status = defender.getStatus();
         Skill skill = skillUseInfo.getFeature();
         if (status.containsStatus(CardStatusType.中毒) || status.containsStatus(CardStatusType.冰冻) ||
@@ -24,7 +24,7 @@ public final class PursuitFeature {
         }
     }
 
-    public static void remove(FeatureResolver resolver, SkillUseInfo feature, CardInfo card) {
+    public static void remove(SkillResolver resolver, SkillUseInfo feature, CardInfo card) {
         List<SkillEffect> effects = card.getEffectsCausedBy(feature);
         for (SkillEffect effect : effects) {
             resolver.getStage().getUI().loseAdjustATEffect(card, effect);

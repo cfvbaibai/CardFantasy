@@ -8,13 +8,13 @@ import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.SkillEffect;
 import cfvbaibai.cardfantasy.engine.SkillEffectType;
 import cfvbaibai.cardfantasy.engine.SkillUseInfo;
-import cfvbaibai.cardfantasy.engine.FeatureResolver;
+import cfvbaibai.cardfantasy.engine.SkillResolver;
 import cfvbaibai.cardfantasy.engine.HeroDieSignal;
 import cfvbaibai.cardfantasy.engine.OnAttackBlockingResult;
 import cfvbaibai.cardfantasy.engine.OnDamagedResult;
 
 public final class EnergyDrainFeature {
-    public static void apply(SkillUseInfo skillUseInfo, FeatureResolver resolver, CardInfo attacker, CardInfo defender,
+    public static void apply(SkillUseInfo skillUseInfo, SkillResolver resolver, CardInfo attacker, CardInfo defender,
             OnAttackBlockingResult result, OnDamagedResult damagedResult) throws HeroDieSignal {
         if (result.getDamage() == 0 || defender == null) {
             return;

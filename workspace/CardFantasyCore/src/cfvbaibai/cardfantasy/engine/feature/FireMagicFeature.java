@@ -7,14 +7,14 @@ import cfvbaibai.cardfantasy.Randomizer;
 import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.EntityInfo;
-import cfvbaibai.cardfantasy.engine.FeatureResolver;
+import cfvbaibai.cardfantasy.engine.SkillResolver;
 import cfvbaibai.cardfantasy.engine.HeroDieSignal;
 import cfvbaibai.cardfantasy.engine.OnAttackBlockingResult;
 import cfvbaibai.cardfantasy.engine.Player;
 import cfvbaibai.cardfantasy.engine.StageInfo;
 
 public final class FireMagicFeature {
-    public static void apply(Skill cardFeature, FeatureResolver resolver, EntityInfo attacker, Player defender,
+    public static void apply(Skill cardFeature, SkillResolver resolver, EntityInfo attacker, Player defender,
             int victimCount) throws HeroDieSignal {
         StageInfo stage = resolver.getStage();
         Randomizer random = stage.getRandomizer();

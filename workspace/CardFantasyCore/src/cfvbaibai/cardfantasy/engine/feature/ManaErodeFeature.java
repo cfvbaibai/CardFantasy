@@ -6,12 +6,12 @@ import cfvbaibai.cardfantasy.GameUI;
 import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.data.SkillType;
 import cfvbaibai.cardfantasy.engine.CardInfo;
-import cfvbaibai.cardfantasy.engine.FeatureResolver;
+import cfvbaibai.cardfantasy.engine.SkillResolver;
 import cfvbaibai.cardfantasy.engine.HeroDieSignal;
 import cfvbaibai.cardfantasy.engine.Player;
 
 public final class ManaErodeFeature {
-    public static void apply(Skill cardFeature, FeatureResolver resolver, CardInfo attacker, Player defender,
+    public static void apply(Skill cardFeature, SkillResolver resolver, CardInfo attacker, Player defender,
             int victimCount) throws HeroDieSignal {
         List<CardInfo> victims = resolver.getStage().getRandomizer().pickRandom(
             defender.getField().toList(), victimCount, true, null);

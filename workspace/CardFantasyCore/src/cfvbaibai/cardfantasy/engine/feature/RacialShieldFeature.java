@@ -5,10 +5,10 @@ import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.data.Race;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.EntityInfo;
-import cfvbaibai.cardfantasy.engine.FeatureResolver;
+import cfvbaibai.cardfantasy.engine.SkillResolver;
 
 public class RacialShieldFeature {
-    public static int apply(Skill skill, FeatureResolver resolver, CardInfo attacker, EntityInfo victim,
+    public static int apply(Skill skill, SkillResolver resolver, CardInfo attacker, EntityInfo victim,
             EntityInfo blocker, int originalDamage, Race targetRace) {
         if (attacker.getRace() != targetRace) {
             return originalDamage;

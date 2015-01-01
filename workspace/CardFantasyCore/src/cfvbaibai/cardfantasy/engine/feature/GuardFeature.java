@@ -5,11 +5,11 @@ import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.data.SkillTag;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.EntityInfo;
-import cfvbaibai.cardfantasy.engine.FeatureResolver;
+import cfvbaibai.cardfantasy.engine.SkillResolver;
 import cfvbaibai.cardfantasy.engine.HeroDieSignal;
 
 public final class GuardFeature {
-    public static int apply(Skill guardFeature, Skill attackFeature, FeatureResolver resolver, EntityInfo attacker, CardInfo guardian,
+    public static int apply(Skill guardFeature, Skill attackFeature, SkillResolver resolver, EntityInfo attacker, CardInfo guardian,
             int damage) throws HeroDieSignal {
         if (attacker == null) {
             throw new CardFantasyRuntimeException("Attacker cannot be null");

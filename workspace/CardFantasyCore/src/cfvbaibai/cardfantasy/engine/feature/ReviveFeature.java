@@ -6,12 +6,12 @@ import cfvbaibai.cardfantasy.data.SkillTag;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.CardStatusItem;
 import cfvbaibai.cardfantasy.engine.SkillUseInfo;
-import cfvbaibai.cardfantasy.engine.FeatureResolver;
+import cfvbaibai.cardfantasy.engine.SkillResolver;
 import cfvbaibai.cardfantasy.engine.Grave;
 import cfvbaibai.cardfantasy.engine.HeroDieSignal;
 
 public final class ReviveFeature {
-    public static void apply(FeatureResolver resolver, SkillUseInfo skillUseInfo, CardInfo reviver) throws HeroDieSignal {
+    public static void apply(SkillResolver resolver, SkillUseInfo skillUseInfo, CardInfo reviver) throws HeroDieSignal {
         if (reviver == null) {
             throw new CardFantasyRuntimeException("reviver should not be null");
         }

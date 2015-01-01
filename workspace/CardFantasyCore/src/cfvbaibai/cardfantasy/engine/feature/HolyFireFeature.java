@@ -3,11 +3,11 @@ package cfvbaibai.cardfantasy.engine.feature;
 import cfvbaibai.cardfantasy.GameUI;
 import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.engine.CardInfo;
-import cfvbaibai.cardfantasy.engine.FeatureResolver;
+import cfvbaibai.cardfantasy.engine.SkillResolver;
 import cfvbaibai.cardfantasy.engine.Player;
 
 public final class HolyFireFeature {
-    public static void apply(Skill cardFeature, FeatureResolver resolver, CardInfo attacker, Player defender) {
+    public static void apply(Skill cardFeature, SkillResolver resolver, CardInfo attacker, Player defender) {
         if (defender.getGrave().size() == 0) {
             return;
         }

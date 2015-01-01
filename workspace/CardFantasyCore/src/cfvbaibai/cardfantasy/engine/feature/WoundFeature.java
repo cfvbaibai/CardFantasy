@@ -5,10 +5,10 @@ import cfvbaibai.cardfantasy.data.SkillType;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.CardStatusItem;
 import cfvbaibai.cardfantasy.engine.SkillUseInfo;
-import cfvbaibai.cardfantasy.engine.FeatureResolver;
+import cfvbaibai.cardfantasy.engine.SkillResolver;
 
 public final class WoundFeature {
-    public static void apply(FeatureResolver resolver, SkillUseInfo skillUseInfo, Skill attackFeature, CardInfo attacker, CardInfo defender,
+    public static void apply(SkillResolver resolver, SkillUseInfo skillUseInfo, Skill attackFeature, CardInfo attacker, CardInfo defender,
             int normalAttackDamage) {
         if (normalAttackDamage <= 0) {
             return;

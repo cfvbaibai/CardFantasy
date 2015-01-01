@@ -3,7 +3,7 @@ package cfvbaibai.cardfantasy.engine.feature;
 import cfvbaibai.cardfantasy.GameUI;
 import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.engine.EntityInfo;
-import cfvbaibai.cardfantasy.engine.FeatureResolver;
+import cfvbaibai.cardfantasy.engine.SkillResolver;
 
 /**
  * Block 20 * level damages Overlappable.
@@ -11,7 +11,7 @@ import cfvbaibai.cardfantasy.engine.FeatureResolver;
  * Only effective to normal attack.
  */
 public final class BlockFeature {
-    public static int apply(Skill skill, FeatureResolver resolver, EntityInfo attacker, EntityInfo victim,
+    public static int apply(Skill skill, SkillResolver resolver, EntityInfo attacker, EntityInfo victim,
             EntityInfo blocker, int originalDamage) {
         int block = skill.getImpact();
         int actualDamage = originalDamage - block;

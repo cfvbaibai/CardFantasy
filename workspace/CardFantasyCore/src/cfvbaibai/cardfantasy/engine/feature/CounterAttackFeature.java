@@ -3,7 +3,7 @@ package cfvbaibai.cardfantasy.engine.feature;
 import cfvbaibai.cardfantasy.GameUI;
 import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.engine.CardInfo;
-import cfvbaibai.cardfantasy.engine.FeatureResolver;
+import cfvbaibai.cardfantasy.engine.SkillResolver;
 import cfvbaibai.cardfantasy.engine.HeroDieSignal;
 
 /**
@@ -14,7 +14,7 @@ import cfvbaibai.cardfantasy.engine.HeroDieSignal;
  * Cannot be blocked by Immue or Dodge.
  */
 public final class CounterAttackFeature {
-    public static void apply(Skill cardFeature, FeatureResolver resolver, CardInfo attacker, CardInfo defender,
+    public static void apply(Skill cardFeature, SkillResolver resolver, CardInfo attacker, CardInfo defender,
             int attackDamage) throws HeroDieSignal {
         if (attackDamage <= 0) {
             return;

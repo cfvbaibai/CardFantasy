@@ -5,12 +5,12 @@ import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.data.SkillTag;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.EntityInfo;
-import cfvbaibai.cardfantasy.engine.FeatureResolver;
+import cfvbaibai.cardfantasy.engine.SkillResolver;
 import cfvbaibai.cardfantasy.engine.HeroDieSignal;
 
 public final class CounterMagicFeature {
 
-    public static boolean isFeatureBlocked(FeatureResolver resolver, Skill cardFeature, Skill attackFeature,
+    public static boolean isFeatureBlocked(SkillResolver resolver, Skill cardFeature, Skill attackFeature,
             EntityInfo attacker, CardInfo defender) throws HeroDieSignal {
         if (attacker == null) {
             return false;

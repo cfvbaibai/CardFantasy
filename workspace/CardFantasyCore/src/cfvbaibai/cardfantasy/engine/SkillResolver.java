@@ -92,10 +92,10 @@ import cfvbaibai.cardfantasy.engine.feature.WoundFeature;
 import cfvbaibai.cardfantasy.engine.feature.ZealotFeature;
 
 
-public class FeatureResolver {
+public class SkillResolver {
     private StageInfo stage;
 
-    public FeatureResolver(StageInfo stage) {
+    public SkillResolver(StageInfo stage) {
         this.stage = stage;
     }
 

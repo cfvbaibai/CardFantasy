@@ -3,10 +3,10 @@ package cfvbaibai.cardfantasy.engine.feature;
 import cfvbaibai.cardfantasy.GameUI;
 import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.engine.CardInfo;
-import cfvbaibai.cardfantasy.engine.FeatureResolver;
+import cfvbaibai.cardfantasy.engine.SkillResolver;
 
 public final class DodgeFeature {
-    public static boolean apply(Skill cardFeature, FeatureResolver resolver, CardInfo attacker, CardInfo defender, int originalDamage) {
+    public static boolean apply(Skill cardFeature, SkillResolver resolver, CardInfo attacker, CardInfo defender, int originalDamage) {
         int dodgeRate = cardFeature.getImpact();
         GameUI ui = resolver.getStage().getUI();
         boolean bingo = resolver.getStage().getRandomizer().roll100(dodgeRate);

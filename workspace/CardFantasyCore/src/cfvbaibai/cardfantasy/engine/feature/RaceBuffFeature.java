@@ -7,11 +7,11 @@ import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.SkillEffect;
 import cfvbaibai.cardfantasy.engine.SkillEffectType;
 import cfvbaibai.cardfantasy.engine.SkillUseInfo;
-import cfvbaibai.cardfantasy.engine.FeatureResolver;
+import cfvbaibai.cardfantasy.engine.SkillResolver;
 import cfvbaibai.cardfantasy.engine.Field;
 
 public final class RaceBuffFeature {
-    public static void apply(FeatureResolver resolver, SkillUseInfo skillUseInfo, CardInfo card, Race race,
+    public static void apply(SkillResolver resolver, SkillUseInfo skillUseInfo, CardInfo card, Race race,
             SkillEffectType effectType) {
         if (card == null) {
             throw new CardFantasyRuntimeException("card cannot be null");
@@ -37,7 +37,7 @@ public final class RaceBuffFeature {
         }
     }
 
-    public static void remove(FeatureResolver resolver, SkillUseInfo feature, CardInfo card, Race race) {
+    public static void remove(SkillResolver resolver, SkillUseInfo feature, CardInfo card, Race race) {
         if (card == null) {
             throw new CardFantasyRuntimeException("card cannot be null");
         }

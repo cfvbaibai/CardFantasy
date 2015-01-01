@@ -8,13 +8,13 @@ import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.CardStatusItem;
 import cfvbaibai.cardfantasy.engine.CardStatusType;
 import cfvbaibai.cardfantasy.engine.SkillUseInfo;
-import cfvbaibai.cardfantasy.engine.FeatureResolver;
+import cfvbaibai.cardfantasy.engine.SkillResolver;
 import cfvbaibai.cardfantasy.engine.Field;
 import cfvbaibai.cardfantasy.engine.HeroDieSignal;
 import cfvbaibai.cardfantasy.game.DeckBuilder;
 
 public class SummonFeature {
-    public static void apply(FeatureResolver resolver, SkillUseInfo skillUseInfo, CardInfo summoner, String ... summonedCardsDescs) throws HeroDieSignal {
+    public static void apply(SkillResolver resolver, SkillUseInfo skillUseInfo, CardInfo summoner, String ... summonedCardsDescs) throws HeroDieSignal {
         if (summoner == null) {
             throw new CardFantasyRuntimeException("summoner should not be null");
         }

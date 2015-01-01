@@ -6,11 +6,11 @@ import cfvbaibai.cardfantasy.engine.EntityInfo;
 import cfvbaibai.cardfantasy.engine.SkillEffect;
 import cfvbaibai.cardfantasy.engine.SkillEffectType;
 import cfvbaibai.cardfantasy.engine.SkillUseInfo;
-import cfvbaibai.cardfantasy.engine.FeatureResolver;
+import cfvbaibai.cardfantasy.engine.SkillResolver;
 import cfvbaibai.cardfantasy.engine.OnAttackBlockingResult;
 
 public final class ZealotFeature {
-    public static void apply(SkillUseInfo skillUseInfo, FeatureResolver resolver, EntityInfo attacker, CardInfo defender,
+    public static void apply(SkillUseInfo skillUseInfo, SkillResolver resolver, EntityInfo attacker, CardInfo defender,
             OnAttackBlockingResult result) {
         if (result.getDamage() == 0 || defender == null) {
             return;

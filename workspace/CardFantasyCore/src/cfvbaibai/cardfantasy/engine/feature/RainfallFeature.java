@@ -6,7 +6,7 @@ import java.util.List;
 import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.EntityInfo;
-import cfvbaibai.cardfantasy.engine.FeatureResolver;
+import cfvbaibai.cardfantasy.engine.SkillResolver;
 import cfvbaibai.cardfantasy.engine.Field;
 import cfvbaibai.cardfantasy.engine.OnAttackBlockingResult;
 
@@ -20,7 +20,7 @@ public final class RainfallFeature {
         }
     }
     
-    public static void healCards(FeatureResolver resolver, EntityInfo healer, Skill skill, List<CardInfo> healeeCandidates) {
+    public static void healCards(SkillResolver resolver, EntityInfo healer, Skill skill, List<CardInfo> healeeCandidates) {
         List<Heal> heals = new ArrayList<Heal>();
         for (CardInfo healee : healeeCandidates) {
             int healHP = skill.getImpact();
@@ -47,7 +47,7 @@ public final class RainfallFeature {
         }        
     }
 
-    public static void apply(Skill cardFeature, FeatureResolver resolver, EntityInfo healer) {
+    public static void apply(Skill cardFeature, SkillResolver resolver, EntityInfo healer) {
         if (healer == null) {
             return;
         }

@@ -7,10 +7,10 @@ import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.SkillEffect;
 import cfvbaibai.cardfantasy.engine.SkillEffectType;
 import cfvbaibai.cardfantasy.engine.SkillUseInfo;
-import cfvbaibai.cardfantasy.engine.FeatureResolver;
+import cfvbaibai.cardfantasy.engine.SkillResolver;
 
 public class LegionBuffFeature {
-    public static void apply(FeatureResolver resolver, CardInfo card) {
+    public static void apply(SkillResolver resolver, CardInfo card) {
         SkillUseInfo skillUseInfo = card.getOwner().getLegionBuffFeature(card.getRace());
         if (skillUseInfo == null) {
             return;
@@ -30,7 +30,7 @@ public class LegionBuffFeature {
         card.addEffect(new SkillEffect(SkillEffectType.MAXHP_CHANGE, skillUseInfo, adjHP, false));
     }
 
-    public static void remove(FeatureResolver resolver, SkillUseInfo feature, CardInfo card) {
+    public static void remove(SkillResolver resolver, SkillUseInfo feature, CardInfo card) {
         List<SkillEffect> effects = card.getEffectsCausedBy(feature);
         for (SkillEffect effect : effects) {
             resolver.getStage().getUI().loseAdjustATEffect(card, effect);

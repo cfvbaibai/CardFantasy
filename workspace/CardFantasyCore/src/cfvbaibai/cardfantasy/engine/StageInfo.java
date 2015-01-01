@@ -16,7 +16,7 @@ public class StageInfo {
     private int round;
     private GameUI ui;
     private Rule rule;
-    private FeatureResolver resolver;
+    private SkillResolver resolver;
     private Randomizer randomizer;
 
     public StageInfo(Board board, GameUI ui, Rule rule) {
@@ -26,13 +26,13 @@ public class StageInfo {
         this.round = 1;
         this.ui = ui;
         this.rule = rule;
-        this.resolver = new FeatureResolver(this);
+        this.resolver = new SkillResolver(this);
         this.randomizer = Randomizer.getRandomizer().setUI(ui);;
 
         this.ui.stageCreated();
     }
 
-    public FeatureResolver getResolver() {
+    public SkillResolver getResolver() {
         return this.resolver;
     }
 

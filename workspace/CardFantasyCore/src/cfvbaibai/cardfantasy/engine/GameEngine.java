@@ -193,7 +193,7 @@ public class GameEngine {
          * position in fields.
          */
 
-        FeatureResolver resolver = stage.getResolver();
+        SkillResolver resolver = stage.getResolver();
         GameUI ui = stage.getUI();
 
         ui.battleBegins();
@@ -282,7 +282,7 @@ public class GameEngine {
     }
 
     private void tryAttackEnemy(Field myField, Field opField, int i) throws HeroDieSignal {
-        FeatureResolver resolver = this.stage.getResolver();
+        SkillResolver resolver = this.stage.getResolver();
         resolver.resolvePreAttackCardFeature(myField.getCard(i), opField.getCard(i), true);
         resolver.resolvePreAttackFeature(myField.getCard(i), getInactivePlayer());
         if (myField.getCard(i) == null) {
@@ -302,7 +302,7 @@ public class GameEngine {
     }
 
     private void tryAttackCard(Field myField, Field opField, int i) throws HeroDieSignal {
-        FeatureResolver resolver = this.stage.getResolver();
+        SkillResolver resolver = this.stage.getResolver();
         resolver.resolvePreAttackCardFeature(myField.getCard(i), opField.getCard(i), false);
         if (opField.getCard(i) == null) {
             resolver.resolvePreAttackHeroFeature(myField.getCard(i), getInactivePlayer());
@@ -314,7 +314,7 @@ public class GameEngine {
 
     private void processAttackCard(Field myField, Field opField, int i) throws HeroDieSignal {
         CardInfo defender = opField.getCard(i);
-        FeatureResolver resolver = this.stage.getResolver();
+        SkillResolver resolver = this.stage.getResolver();
         GameUI ui = this.stage.getUI();
         if (myField.getCard(i).getStatus().containsStatus(CardStatusType.麻痹)) {
             resolver.removeStatus(myField.getCard(i), CardStatusType.麻痹);

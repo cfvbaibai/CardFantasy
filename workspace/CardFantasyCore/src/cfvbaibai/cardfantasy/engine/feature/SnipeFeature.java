@@ -5,7 +5,7 @@ import java.util.List;
 import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.EntityInfo;
-import cfvbaibai.cardfantasy.engine.FeatureResolver;
+import cfvbaibai.cardfantasy.engine.SkillResolver;
 import cfvbaibai.cardfantasy.engine.HeroDieSignal;
 import cfvbaibai.cardfantasy.engine.Player;
 
@@ -17,7 +17,7 @@ import cfvbaibai.cardfantasy.engine.Player;
  * features could be activated by death caused by Snipe.
  */
 public final class SnipeFeature {
-    public static void apply(Skill cardFeature, FeatureResolver resolver, EntityInfo attacker, Player defenderPlayer,
+    public static void apply(Skill cardFeature, SkillResolver resolver, EntityInfo attacker, Player defenderPlayer,
             int targetCount) throws HeroDieSignal {
         int damage = cardFeature.getImpact();
         List<CardInfo> victims = defenderPlayer.getField().getCardsWithLowestHP(targetCount);

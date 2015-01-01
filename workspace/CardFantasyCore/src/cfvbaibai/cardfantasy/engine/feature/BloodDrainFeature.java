@@ -4,10 +4,10 @@ import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
 import cfvbaibai.cardfantasy.GameUI;
 import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.engine.CardInfo;
-import cfvbaibai.cardfantasy.engine.FeatureResolver;
+import cfvbaibai.cardfantasy.engine.SkillResolver;
 
 public final class BloodDrainFeature {
-    public static void apply(Skill cardFeature, FeatureResolver resolver, CardInfo attacker, CardInfo defender, int damage) {
+    public static void apply(Skill cardFeature, SkillResolver resolver, CardInfo attacker, CardInfo defender, int damage) {
         if (attacker == null || attacker.isDead()) {
             throw new CardFantasyRuntimeException("attacker is null or dead!");
         }

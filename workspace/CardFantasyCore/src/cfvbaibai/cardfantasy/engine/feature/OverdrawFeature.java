@@ -6,11 +6,11 @@ import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.SkillEffect;
 import cfvbaibai.cardfantasy.engine.SkillEffectType;
 import cfvbaibai.cardfantasy.engine.SkillUseInfo;
-import cfvbaibai.cardfantasy.engine.FeatureResolver;
+import cfvbaibai.cardfantasy.engine.SkillResolver;
 import cfvbaibai.cardfantasy.engine.HeroDieSignal;
 
 public final class OverdrawFeature {
-    public static void apply(FeatureResolver resolver, SkillUseInfo skillUseInfo, CardInfo attacker) throws HeroDieSignal {
+    public static void apply(SkillResolver resolver, SkillUseInfo skillUseInfo, CardInfo attacker) throws HeroDieSignal {
         Skill skill = skillUseInfo.getFeature();
         int adjAT = skill.getImpact();
         GameUI ui = resolver.getStage().getUI();

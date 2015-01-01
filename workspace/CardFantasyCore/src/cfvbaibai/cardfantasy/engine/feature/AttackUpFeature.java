@@ -8,10 +8,10 @@ import cfvbaibai.cardfantasy.engine.EntityInfo;
 import cfvbaibai.cardfantasy.engine.SkillEffect;
 import cfvbaibai.cardfantasy.engine.SkillEffectType;
 import cfvbaibai.cardfantasy.engine.SkillUseInfo;
-import cfvbaibai.cardfantasy.engine.FeatureResolver;
+import cfvbaibai.cardfantasy.engine.SkillResolver;
 
 public final class AttackUpFeature {
-    public static void apply(FeatureResolver resolver, SkillUseInfo skillUseInfo, EntityInfo caster, int targetCount) {
+    public static void apply(SkillResolver resolver, SkillUseInfo skillUseInfo, EntityInfo caster, int targetCount) {
         Skill skill = skillUseInfo.getFeature();
         int adjAT = skill.getImpact();
         List<CardInfo> targets = resolver.getStage().getRandomizer().pickRandom(
@@ -23,7 +23,7 @@ public final class AttackUpFeature {
         }
     }
 
-    public static void remove(FeatureResolver resolver, SkillUseInfo feature, CardInfo card) {
+    public static void remove(SkillResolver resolver, SkillUseInfo feature, CardInfo card) {
         List<SkillEffect> effects = card.getEffectsCausedBy(feature);
         for (SkillEffect effect : effects) {
             resolver.getStage().getUI().loseAdjustATEffect(card, effect);

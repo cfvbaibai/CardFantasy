@@ -6,11 +6,11 @@ import cfvbaibai.cardfantasy.GameUI;
 import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.CardPile;
-import cfvbaibai.cardfantasy.engine.FeatureResolver;
+import cfvbaibai.cardfantasy.engine.SkillResolver;
 import cfvbaibai.cardfantasy.engine.HeroDieSignal;
 
 public class CounterSummonFeature {
-    public static void apply(FeatureResolver resolver, CardInfo defender, Skill skill, int star) throws HeroDieSignal {
+    public static void apply(SkillResolver resolver, CardInfo defender, Skill skill, int star) throws HeroDieSignal {
         if (defender == null) {
             return;
         }

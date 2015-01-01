@@ -2,7 +2,7 @@ package cfvbaibai.cardfantasy.engine.feature;
 
 import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.engine.CardInfo;
-import cfvbaibai.cardfantasy.engine.FeatureResolver;
+import cfvbaibai.cardfantasy.engine.SkillResolver;
 import cfvbaibai.cardfantasy.engine.HeroDieSignal;
 import cfvbaibai.cardfantasy.engine.Player;
 
@@ -11,7 +11,7 @@ import cfvbaibai.cardfantasy.engine.Player;
  * Cannot be blocked by Immue.
  */
 public final class PenetrationFeature {
-    public static void apply(Skill cardFeature, FeatureResolver resolver, CardInfo attacker, Player defender, int normalAttackDamage)
+    public static void apply(Skill cardFeature, SkillResolver resolver, CardInfo attacker, Player defender, int normalAttackDamage)
             throws HeroDieSignal {
         if (normalAttackDamage <= 0) {
             return;
