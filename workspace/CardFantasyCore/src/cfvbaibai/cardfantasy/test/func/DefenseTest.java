@@ -221,6 +221,9 @@ public class DefenseTest extends SkillValidationTest {
         Assert.assertEquals(660, 1390 - c混元大师.getHP()); // 圣盾只能用一次
     }
 
+    /**
+     * 圣盾转生后又可用
+     */
     @Test
     public void test圣盾_转生() {
         SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "秘银巨石像-15", "混元大师+转生10");
@@ -252,5 +255,30 @@ public class DefenseTest extends SkillValidationTest {
 
         context.proceedOneRound();
         Assert.assertEquals(810, 1560 + 300 - c混元大师.getHP()); // 转生后圣盾也只能用一次
+    }
+    
+    @Test
+    public void test圣盾_横扫_溅射破盾() {
+        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "光明之龙", "秘银巨石像", "占位符", "混元大师-15");
+        context.addToField(0, 0);
+        context.addToField(1, 0);
+        context.addToField(2, 1);
+        CardInfo c混元大师 = context.addToField(3, 1);
+        context.startGame();
+
+        context.proceedOneRound();
+        Assert.assertEquals(660, 1560 - c混元大师.getHP()); /* 光明之龙的横扫被圣盾抵挡破盾，秘银巨石像的攻击有效 */
+    }
+    
+    @Test
+    public void test圣盾_横扫_完全抵挡() {
+        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "光明之龙", "混元大师-15", "占位符");
+        context.addToField(0, 0);
+        context.addToField(1, 1);
+        CardInfo c占位符 = context.addToField(2, 1);
+        context.startGame();
+
+        context.proceedOneRound();
+        Assert.assertEquals(0, 5000 - c占位符.getHP()); /* 光明之龙的横扫被正面圣盾抵挡，无法溅射 */
     }
 }
