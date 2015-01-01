@@ -16,15 +16,16 @@ public class CardStatus {
     }
 
     public boolean remove(CardStatusType type) {
+        boolean removedAny = false;
         Iterator<CardStatusItem> iterator = items.iterator();
         while (iterator.hasNext()) {
             CardStatusItem next = iterator.next();
             if (next.getType() == type) {
                 iterator.remove();
-                return true;
+                removedAny = true;
             }
         }
-        return false;
+        return removedAny;
     }
 
     public boolean containsStatus(CardStatusType type) {

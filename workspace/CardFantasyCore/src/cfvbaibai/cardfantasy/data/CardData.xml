@@ -1164,7 +1164,7 @@
     </Card>
     <Card id="3435" name="湿地黏龙" wikiId="80184" race="蛮荒" speed="4" star="4" cost="13" incrCost="2" at="230" hp="1230" incrAT="18" incrHP="41">
         <Feature type="阻碍" level="1" unlock="0" />
-        <!-- TODO: <Feature type="大地之盾" level="0" unlock="5" /> -->
+        <Feature type="大地之盾" level="0" unlock="5" />
         <Feature type="加速" level="1" unlock="10" />
     </Card>
     <Card id="3436" name="荒野巫医" wikiId="80185" race="蛮荒" speed="4" star="4" cost="13" incrCost="2" at="315" hp="990" incrAT="24" incrHP="27">
@@ -1251,7 +1251,7 @@
         <Feature type="加速" level="2" unlock="10" />
     </Card>
     <Card id="3515" name="怒雪咆哮" wikiId="" race="蛮荒" speed="4" star="5" cost="18" incrCost="2" at="390" hp="1650" incrAT="26" incrHP="53">
-        <!-- <Feature type="大地之盾" level="0" unlock="0" /> -->
+        <Feature type="大地之盾" level="0" unlock="0" />
         <Feature type="寒霜冲击" level="8" unlock="5" />
         <Feature type="战争怒吼" level="0" unlock="10" />
     </Card>
@@ -1751,7 +1751,7 @@
         <Feature type="免疫" level="0" unlock="10" />
         <Feature type="无效" level="0" unlock="10" />
     </Card>
-    
+
     <Card id="5510" name="简单莉莉丝" wikiId="" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="1000" hp="10000" incrAT="0" incrHP="0">
         <Feature type="不动" level="0" unlock="0" />
         <Feature type="二重狙击" level="10" unlock="5" />

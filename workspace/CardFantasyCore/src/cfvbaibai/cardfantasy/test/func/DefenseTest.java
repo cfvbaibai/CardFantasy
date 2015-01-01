@@ -4,6 +4,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import cfvbaibai.cardfantasy.engine.CardInfo;
+import cfvbaibai.cardfantasy.engine.CardStatusType;
 import cfvbaibai.cardfantasy.engine.RuneInfo;
 
 public class DefenseTest extends SkillValidationTest {
@@ -280,5 +281,71 @@ public class DefenseTest extends SkillValidationTest {
 
         context.proceedOneRound();
         Assert.assertEquals(0, 5000 - c占位符.getHP()); /* 光明之龙的横扫被正面圣盾抵挡，无法溅射 */
+    }
+    
+    /**
+     * 大地之盾不能被免疫脱困
+     */
+    @Test
+    public void test大地之盾_免疫_脱困() {
+        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "金属巨龙+脱困", "怒雪咆哮-1");
+        CardInfo c金属巨龙 = context.addToField(0, 0);
+        CardInfo c怒雪咆哮 = context.addToField(1, 1);
+        context.startGame();
+        
+        random.addNextNumbers(1000);    // 金属巨龙不暴击
+        context.proceedOneRound();
+        Assert.assertTrue(c金属巨龙.getStatus().containsStatus(CardStatusType.晕眩));
+        Assert.assertEquals(805, 1703 - c怒雪咆哮.getHP());
+
+        context.proceedOneRound();
+
+        context.proceedOneRound(); // 金属巨龙因为晕眩无法行动
+        Assert.assertFalse(c金属巨龙.getStatus().containsStatus(CardStatusType.晕眩));
+        Assert.assertEquals(805, 1703 - c怒雪咆哮.getHP());
+    }
+
+    /**
+     * 溅射也会造成晕眩
+     */
+    @Test
+    public void test大地之盾_横扫() {
+        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "光明之龙", "占位符", "怒雪咆哮-1");
+        CardInfo c光明之龙 = context.addToField(0, 0);
+        context.addToField(1, 1);
+        CardInfo c怒雪咆哮 = context.addToField(2, 1);
+        context.startGame();
+
+        context.proceedOneRound();
+        Assert.assertTrue(c光明之龙.getStatus().containsStatus(CardStatusType.晕眩));
+        Assert.assertEquals(630, 1703 - c怒雪咆哮.getHP());
+
+        random.addNextNumbers(0);       // 光明之龙闪避成功
+        context.proceedOneRound();
+
+        context.proceedOneRound(); // 光明之龙因为晕眩无法行动
+        Assert.assertFalse(c光明之龙.getStatus().containsStatus(CardStatusType.晕眩));
+        Assert.assertEquals(630, 1703 - c怒雪咆哮.getHP());
+    }
+    
+    /**
+     * 多重大地之盾也是一起解除
+     */
+    @Test
+    public void test大地之盾_多重() {
+        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "光明之龙", "怒雪咆哮-1*2");
+        CardInfo c光明之龙 = context.addToField(0, 0);
+        context.addToField(1, 1);
+        context.addToField(2, 1);
+        context.startGame();
+
+        context.proceedOneRound();
+        Assert.assertTrue(c光明之龙.getStatus().containsStatus(CardStatusType.晕眩));
+
+        random.addNextNumbers(0);       // 光明之龙闪避成功
+        context.proceedOneRound();
+
+        context.proceedOneRound(); // 光明之龙因为晕眩无法行动
+        Assert.assertFalse(c光明之龙.getStatus().containsStatus(CardStatusType.晕眩));
     }
 }

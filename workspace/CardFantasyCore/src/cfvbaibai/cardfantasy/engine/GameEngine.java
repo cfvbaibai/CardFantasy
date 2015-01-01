@@ -143,10 +143,7 @@ public class GameEngine {
             }
         }
 
-        for (CardInfo summonedCard : summonedCards) {
-            player.getHand().removeCard(summonedCard);
-            this.stage.getResolver().summonCard(player, summonedCard, null);
-        }
+        this.stage.getResolver().summonCards(player, summonedCards, null);
 
         player.getField().compact();
         this.getInactivePlayer().getField().compact();
@@ -161,6 +158,7 @@ public class GameEngine {
     private Phase standby() throws HeroDieSignal {
         this.stage.getResolver().activateRunes(this.getActivePlayer(), this.getInactivePlayer());
         this.stage.getResolver().resolvePreAttackRune(this.getActivePlayer(), this.getInactivePlayer());
+        this.stage.getResolver().resolvePreAttackSkills(this.getActivePlayer(), this.getInactivePlayer());
         return Phase.战斗;
     }
 

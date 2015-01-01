@@ -36,6 +36,9 @@
                 <ul class="news-content">
                     <li>2015-01-02: 修复【陨星魔法使】召唤时候会null错误的BUG，感谢<a data-type="user">为何打后</a>报告BUG</li>
                     <li>2015-01-01: <ul>
+                        <li>添加新卡【湿地黏龙】蛮荒四星</li>
+                        <li>添加新卡【怒雪咆哮】蛮荒五星，感谢<a data-type="user">麋鹿吉特</a>提供数据。</li>
+                        <li>添加新技能【大地之盾】，感谢<a data-type="user">雪拾玖</a>, <a data-type="user">zx16792007</a>, <a data-type="user">快到碗里来mys</a>, <a data-type="user">为何打后</a>提供信息</li>
                         <li>完成【复仇女神】魔神、【万蛛之后】魔神，感谢<a data-type="user">麋鹿吉特</a>提供数据。</li>
                         <li>添加新卡【血色骑士】王国四星、【无尽噩梦】地狱五星</li>
                     </ul></li>

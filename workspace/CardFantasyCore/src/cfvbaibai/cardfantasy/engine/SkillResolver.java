@@ -137,6 +137,18 @@ public class SkillResolver {
         return cards;
     }
 
+    public void resolvePreAttackSkills(Player attacker, Player defender) throws HeroDieSignal {
+        List<CardInfo> cards = attacker.getField().toList();
+        for (CardInfo card : cards) {
+            if (card.isFullyControlled()) { continue; }
+            for (SkillUseInfo skillUseInfo : card.getNormalUsableSkills()) {
+                if (skillUseInfo.getType() == SkillType.神性祈求) {
+                    Purify.apply(skillUseInfo, this, card);
+                }
+            }
+        }
+    }
+
     public void resolvePreAttackFeature(CardInfo attacker, Player defender) throws HeroDieSignal {
         for (SkillUseInfo feature : attacker.getNormalUsableSkills()) {
             if (attacker.isDead()) {
@@ -945,7 +957,7 @@ public class SkillResolver {
                 Revive.apply(this, skillUseInfo, card);
             } else if (skillUseInfo.getType() == SkillType.关小黑屋) {
                 Enprison.apply(this, skillUseInfo.getSkill(), card, opField.getOwner());
-            } else if (skillUseInfo.getType() == SkillType.净化 || skillUseInfo.getType() == SkillType.神性祈求){
+            } else if (skillUseInfo.getType() == SkillType.净化){
                 Purify.apply(skillUseInfo, this, card);
             } else if (skillUseInfo.getType() == SkillType.战争怒吼) {
                 Soften.apply(skillUseInfo, this, card, opField.getOwner(), -1);
@@ -1025,17 +1037,27 @@ public class SkillResolver {
     }
 
     public void summonCard(Player player, CardInfo card, CardInfo reviver) throws HeroDieSignal {
-        card.reset();
-        //card.setFirstRound(true);
-        this.stage.getUI().summonCard(player, card);
-        player.getField().addCard(card);
-        if (this.stage.getPlayerCount() != 2) {
-            throw new CardFantasyRuntimeException("There are " + this.stage.getPlayerCount()
-                    + " player(s) in the stage, but expect 2");
+        List<CardInfo> cards = new ArrayList<CardInfo>();
+        cards.add(card);
+        summonCards(player, cards, reviver);
+    }
+
+    public void summonCards(Player player, List<CardInfo> cards, CardInfo reviver) throws HeroDieSignal {
+        for (CardInfo card : cards) {
+            card.reset();
+            this.stage.getUI().summonCard(player, card);
+            player.getField().addCard(card);
+            player.getHand().removeCard(card);
         }
-        for (Player other : stage.getPlayers()) {
-            if (other != player) {
-                stage.getResolver().resolveSummoningFeature(card, player.getField(), other.getField(), reviver);
+        for (CardInfo card : cards) {
+            if (this.stage.getPlayerCount() != 2) {
+                throw new CardFantasyRuntimeException("There are " + this.stage.getPlayerCount()
+                        + " player(s) in the stage, but expect 2");
+            }
+            for (Player other : stage.getPlayers()) {
+                if (other != player) {
+                    stage.getResolver().resolveSummoningFeature(card, player.getField(), other.getField(), reviver);
+                }
             }
         }
     }
@@ -1272,11 +1294,5 @@ public class SkillResolver {
     }
 
     public void removeOneRoundEffects(Player activePlayer) {
-        /*
-        for (CardInfo card : activePlayer.getField().toList()) {
-            for (FeatureInfo featureInfo : card.getNormalUsableFeatures()) {
-            }
-        }
-        */
     }
 }

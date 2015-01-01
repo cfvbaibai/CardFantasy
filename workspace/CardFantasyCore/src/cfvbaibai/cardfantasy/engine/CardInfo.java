@@ -447,4 +447,13 @@ public class CardInfo extends EntityInfo {
     public void setUsed(SkillUseInfo skillUseInfo) {
         this.addEffect(new SkillEffect(SkillEffectType.SKILL_USED, skillUseInfo, 0, true));
     }
+
+    public boolean isFullyControlled() {
+        CardStatus status = this.getStatus();
+        return
+            status.containsStatus(CardStatusType.冰冻) ||
+            status.containsStatus(CardStatusType.晕眩) ||
+            status.containsStatus(CardStatusType.迷惑) ||
+            status.containsStatus(CardStatusType.锁定);
+    }
 }
