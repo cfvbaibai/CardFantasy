@@ -4,7 +4,7 @@ public class CardSkill extends Skill implements Cloneable {
     private int unlockLevel;
     protected boolean summonFeature;
     protected boolean deathFeature;
-    public CardSkill(FeatureType type, int level, int unlockLevel, boolean summonFeature, boolean deathFeature) {
+    public CardSkill(SkillType type, int level, int unlockLevel, boolean summonFeature, boolean deathFeature) {
         super(type, level);
         this.unlockLevel = unlockLevel;
         this.summonFeature = summonFeature;

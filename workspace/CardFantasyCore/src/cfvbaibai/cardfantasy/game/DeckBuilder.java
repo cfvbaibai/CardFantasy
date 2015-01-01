@@ -15,7 +15,7 @@ import cfvbaibai.cardfantasy.data.CardData;
 import cfvbaibai.cardfantasy.data.CardDataStore;
 import cfvbaibai.cardfantasy.data.CardSkill;
 import cfvbaibai.cardfantasy.data.Skill;
-import cfvbaibai.cardfantasy.data.FeatureType;
+import cfvbaibai.cardfantasy.data.SkillType;
 import cfvbaibai.cardfantasy.data.PlayerInfo;
 import cfvbaibai.cardfantasy.data.Rune;
 import cfvbaibai.cardfantasy.data.RuneData;
@@ -152,10 +152,10 @@ public final class DeckBuilder {
             }
         }
         String extraFeatureName = matcher.group("ExtraFeatureName");
-        FeatureType extraFeatureType = null;
+        SkillType extraFeatureType = null;
         if (extraFeatureName != null) {
             try {
-                extraFeatureType = FeatureType.valueOf(extraFeatureName);
+                extraFeatureType = SkillType.valueOf(extraFeatureName);
             } catch (IllegalArgumentException e) {
                 throw new DeckBuildRuntimeException("无效的卡牌: " + desc, e);
             }

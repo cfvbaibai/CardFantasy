@@ -1,13 +1,13 @@
 package cfvbaibai.cardfantasy.web.animation;
 
-import cfvbaibai.cardfantasy.data.FeatureType;
+import cfvbaibai.cardfantasy.data.SkillType;
 
 public class FeatureTypeRuntimeInfo {
 
-    public FeatureTypeRuntimeInfo(FeatureType featureType) {
-        this.name = featureType.name();
-        this.growable = featureType.isGrowable();
-        this.wikiId = featureType.getWikiId();
+    public FeatureTypeRuntimeInfo(SkillType skillType) {
+        this.name = skillType.name();
+        this.growable = skillType.isGrowable();
+        this.wikiId = skillType.getWikiId();
     }
 
     private String name;

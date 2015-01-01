@@ -2,7 +2,7 @@ package cfvbaibai.cardfantasy.data;
 
 import java.util.HashSet;
 
-public enum FeatureType {
+public enum SkillType {
 
     /* 攻击力削弱技能 */
     削弱("30964", 10, SkillTag.永久, SkillTag.基础攻击加成),
@@ -171,11 +171,11 @@ public enum FeatureType {
     private int incrImpact;
     private HashSet <SkillTag> tags;
     
-    FeatureType(String wikiId, int incrImpact, SkillTag ... tags) {
+    SkillType(String wikiId, int incrImpact, SkillTag ... tags) {
         this(wikiId, 0, incrImpact, tags);
     }
     
-    FeatureType(String wikiId, int initImpact, int incrImpact, SkillTag ... tags) {
+    SkillType(String wikiId, int initImpact, int incrImpact, SkillTag ... tags) {
         this.wikiId = wikiId;
         this.initImpact = initImpact;
         this.incrImpact = incrImpact;

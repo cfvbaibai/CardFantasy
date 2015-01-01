@@ -10,7 +10,7 @@ import cfvbaibai.cardfantasy.GameOverSignal;
 import cfvbaibai.cardfantasy.GameUI;
 import cfvbaibai.cardfantasy.data.Card;
 import cfvbaibai.cardfantasy.data.Skill;
-import cfvbaibai.cardfantasy.data.FeatureType;
+import cfvbaibai.cardfantasy.data.SkillType;
 import cfvbaibai.cardfantasy.data.PlayerInfo;
 import cfvbaibai.cardfantasy.data.Rune;
 
@@ -248,7 +248,7 @@ public class GameEngine {
 
             if (myField.getCard(i) != null) {
                 CardInfo myCard = myField.getCard(i);
-                List<FeatureEffect> effects = myCard.getEffectsCausedBy(FeatureType.虚弱);
+                List<FeatureEffect> effects = myCard.getEffectsCausedBy(SkillType.虚弱);
                 for (FeatureEffect effect : effects) {
                     resolver.getStage().getUI().loseAdjustATEffect(myCard, effect);
                     myCard.removeEffect(effect);
@@ -321,14 +321,14 @@ public class GameEngine {
             return;
         }
         for (FeatureInfo featureInfo : myField.getCard(i).getNormalUsableFeatures()) {
-            if (featureInfo.getFeature().getType() == FeatureType.横扫) {
+            if (featureInfo.getFeature().getType() == SkillType.横扫) {
                 ui.useSkill(myField.getCard(i), defender, featureInfo.getFeature(), true);
             }
         }
         OnDamagedResult damagedResult = resolver.attackCard(myField.getCard(i), defender, null);
         if (damagedResult != null && damagedResult.originalDamage > 0 && myField.getCard(i) != null) {
             for (FeatureInfo featureInfo : myField.getCard(i).getNormalUsableFeatures()) {
-                if (featureInfo.getFeature().getType() == FeatureType.横扫) {
+                if (featureInfo.getFeature().getType() == SkillType.横扫) {
 
                     List<CardInfo> sweepDefenders = new ArrayList<CardInfo>();
                     if (i > 0 && opField.getCard(i - 1) != null) {

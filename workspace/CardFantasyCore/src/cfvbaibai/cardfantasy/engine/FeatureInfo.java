@@ -2,7 +2,7 @@ package cfvbaibai.cardfantasy.engine;
 
 import cfvbaibai.cardfantasy.NonSerializable;
 import cfvbaibai.cardfantasy.data.Skill;
-import cfvbaibai.cardfantasy.data.FeatureType;
+import cfvbaibai.cardfantasy.data.SkillType;
 
 public class FeatureInfo {
 
@@ -18,7 +18,7 @@ public class FeatureInfo {
         return skill;
     }
     
-    public FeatureType getType() {
+    public SkillType getType() {
         return this.skill.getType();
     }
 

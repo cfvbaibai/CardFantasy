@@ -25,7 +25,7 @@ import cfvbaibai.cardfantasy.data.Card;
 import cfvbaibai.cardfantasy.data.CardData;
 import cfvbaibai.cardfantasy.data.CardDataStore;
 import cfvbaibai.cardfantasy.data.SkillTag;
-import cfvbaibai.cardfantasy.data.FeatureType;
+import cfvbaibai.cardfantasy.data.SkillType;
 import cfvbaibai.cardfantasy.data.Legion;
 import cfvbaibai.cardfantasy.data.PlayerInfo;
 import cfvbaibai.cardfantasy.data.RuneData;
@@ -457,9 +457,9 @@ public class AutoBattleController {
             result.put("entities", entities);
 
             List<FeatureTypeRuntimeInfo> featureList = new ArrayList<FeatureTypeRuntimeInfo>(); 
-            for (FeatureType featureType : FeatureType.values()) {
-                if (!featureType.containsTag(SkillTag.不可洗炼)) {
-                    featureList.add(new FeatureTypeRuntimeInfo(featureType));
+            for (SkillType skillType : SkillType.values()) {
+                if (!skillType.containsTag(SkillTag.不可洗炼)) {
+                    featureList.add(new FeatureTypeRuntimeInfo(skillType));
                 }
             }
             Collections.sort(featureList, new Comparator<FeatureTypeRuntimeInfo>() {

@@ -1,7 +1,7 @@
 package cfvbaibai.cardfantasy.engine.feature;
 
 import cfvbaibai.cardfantasy.data.Skill;
-import cfvbaibai.cardfantasy.data.FeatureType;
+import cfvbaibai.cardfantasy.data.SkillType;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.CardStatusItem;
 import cfvbaibai.cardfantasy.engine.FeatureInfo;
@@ -16,7 +16,7 @@ public final class WoundFeature {
         if (defender.isDead()) {
             return;
         }
-        if (attackFeature != null && attackFeature.getType() == FeatureType.横扫) {
+        if (attackFeature != null && attackFeature.getType() == SkillType.横扫) {
             return;
         }
         Skill skill = featureInfo.getFeature();

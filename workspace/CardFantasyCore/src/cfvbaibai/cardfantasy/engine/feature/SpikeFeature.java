@@ -4,7 +4,7 @@ import java.util.List;
 
 import cfvbaibai.cardfantasy.GameUI;
 import cfvbaibai.cardfantasy.data.Skill;
-import cfvbaibai.cardfantasy.data.FeatureType;
+import cfvbaibai.cardfantasy.data.SkillType;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.FeatureResolver;
 import cfvbaibai.cardfantasy.engine.HeroDieSignal;
@@ -19,7 +19,7 @@ public final class SpikeFeature {
             return;
         }
         CardInfo centerVictim = attacker;
-        if (attackFeature != null && attackFeature.getType() == FeatureType.连锁攻击) {
+        if (attackFeature != null && attackFeature.getType() == SkillType.连锁攻击) {
             // 连锁攻击触发雷盾的方式比较特殊，是以被连锁卡的正对面为中心的
             centerVictim = attacker.getOwner().getField().getCard(defender.getPosition());
         }

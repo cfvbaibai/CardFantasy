@@ -2,14 +2,14 @@ package cfvbaibai.cardfantasy.data;
 
 public abstract class Skill implements Comparable<Skill> {
 
-    protected FeatureType type;
+    protected SkillType type;
     protected int level;
-    public Skill(FeatureType type, int level) {
+    public Skill(SkillType type, int level) {
         this.type = type;
         this.level = level;
     }
 
-    public FeatureType getType() {
+    public SkillType getType() {
         return type;
     }
     
@@ -77,6 +77,6 @@ public abstract class Skill implements Comparable<Skill> {
     }
     
     public static Skill 自动扣血() {
-        return new RuneSkill(FeatureType.自动扣血, 0);
+        return new RuneSkill(SkillType.自动扣血, 0);
     }
 }

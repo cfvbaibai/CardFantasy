@@ -11,7 +11,7 @@ import cfvbaibai.cardfantasy.NonSerializable;
 import cfvbaibai.cardfantasy.data.Card;
 import cfvbaibai.cardfantasy.data.CardSkill;
 import cfvbaibai.cardfantasy.data.SkillTag;
-import cfvbaibai.cardfantasy.data.FeatureType;
+import cfvbaibai.cardfantasy.data.SkillType;
 import cfvbaibai.cardfantasy.data.Race;
 
 public class CardInfo extends EntityInfo {
@@ -30,7 +30,7 @@ public class CardInfo extends EntityInfo {
     private boolean deadOnce;
 
     @NonSerializable
-    private Map<FeatureType, List<FeatureEffect>> effects;
+    private Map<SkillType, List<FeatureEffect>> effects;
     //private boolean firstRound;
 
     public CardInfo(Card card, Player owner) {
@@ -39,7 +39,7 @@ public class CardInfo extends EntityInfo {
         this.summonDelay = card.getSummonSpeed();
         this.status = new CardStatus();
         this.owner = owner;
-        this.effects = new HashMap<FeatureType, List<FeatureEffect>>();
+        this.effects = new HashMap<SkillType, List<FeatureEffect>>();
         this.features = new ArrayList<FeatureInfo>();
         for (CardSkill feature : card.getAllFeatures()) {
             this.features.add(new FeatureInfo(this, feature));
@@ -69,7 +69,7 @@ public class CardInfo extends EntityInfo {
     //}
 
     public void addEffect(FeatureEffect effect) {
-        FeatureType type = effect.getCause().getFeature().getType();
+        SkillType type = effect.getCause().getFeature().getType();
         if (!effects.containsKey(type)) {
             effects.put(type, new LinkedList<FeatureEffect>());
         }
@@ -79,7 +79,7 @@ public class CardInfo extends EntityInfo {
         }
     }
 
-    public List<FeatureEffect> getEffectsCausedBy(FeatureType cause) {
+    public List<FeatureEffect> getEffectsCausedBy(SkillType cause) {
         List<FeatureEffect> result = effects.get(cause);
         if (result == null) {
             return new ArrayList<FeatureEffect>();
@@ -421,7 +421,7 @@ public class CardInfo extends EntityInfo {
         return this.card.getSummonSpeed();
     }
     
-    public boolean containsUsableFeature(FeatureType type) {
+    public boolean containsUsableFeature(SkillType type) {
         List<FeatureInfo> features = this.getAllUsableFeatures();
         for (FeatureInfo featureInfo : features) {
             if (featureInfo.getType() == type) {

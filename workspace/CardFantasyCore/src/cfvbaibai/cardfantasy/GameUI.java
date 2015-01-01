@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cfvbaibai.cardfantasy.data.Skill;
-import cfvbaibai.cardfantasy.data.FeatureType;
+import cfvbaibai.cardfantasy.data.SkillType;
 import cfvbaibai.cardfantasy.engine.Board;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.CardStatusItem;
@@ -121,7 +121,7 @@ public abstract class GameUI {
 
     public abstract void cannotAction(CardInfo card);
 
-    public abstract void recoverAT(CardInfo card, FeatureType cause, int recoveredAT);
+    public abstract void recoverAT(CardInfo card, SkillType cause, int recoveredAT);
 
     public abstract void healCard(EntityInfo healer, CardInfo healee, Skill cardFeature, int healHP);
 

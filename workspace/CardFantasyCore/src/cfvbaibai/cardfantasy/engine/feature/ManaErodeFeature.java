@@ -4,7 +4,7 @@ import java.util.List;
 
 import cfvbaibai.cardfantasy.GameUI;
 import cfvbaibai.cardfantasy.data.Skill;
-import cfvbaibai.cardfantasy.data.FeatureType;
+import cfvbaibai.cardfantasy.data.SkillType;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.FeatureResolver;
 import cfvbaibai.cardfantasy.engine.HeroDieSignal;
@@ -19,8 +19,8 @@ public final class ManaErodeFeature {
         ui.useSkill(attacker, victims, cardFeature, true);
         int damage = cardFeature.getImpact();
         for (CardInfo victim : victims) {
-            if (victim.containsUsableFeature(FeatureType.免疫) ||
-                victim.containsUsableFeature(FeatureType.法力反射)) {
+            if (victim.containsUsableFeature(SkillType.免疫) ||
+                victim.containsUsableFeature(SkillType.法力反射)) {
                 // TODO: ui.damageUp
                 damage *= 3;
             }

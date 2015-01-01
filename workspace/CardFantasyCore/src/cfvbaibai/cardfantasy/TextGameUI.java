@@ -6,7 +6,7 @@ import java.util.List;
 import org.apache.commons.lang3.StringUtils;
 
 import cfvbaibai.cardfantasy.data.Skill;
-import cfvbaibai.cardfantasy.data.FeatureType;
+import cfvbaibai.cardfantasy.data.SkillType;
 import cfvbaibai.cardfantasy.engine.Board;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.CardStatusItem;
@@ -314,7 +314,7 @@ public abstract class TextGameUI extends GameUI {
     }
 
     @Override
-    public void recoverAT(CardInfo card, FeatureType cause, int recoveredAT) {
+    public void recoverAT(CardInfo card, SkillType cause, int recoveredAT) {
         sayF("%s 的攻击从 【%s】 的效果中恢复. 攻击: %d -> %d", card.getShortDesc(), cause.name(),
                 card.getCurrentAT(), card.getCurrentAT() - recoveredAT);
     }

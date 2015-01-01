@@ -5,7 +5,7 @@ import java.util.List;
 import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
 import cfvbaibai.cardfantasy.GameUI;
 import cfvbaibai.cardfantasy.data.Skill;
-import cfvbaibai.cardfantasy.data.FeatureType;
+import cfvbaibai.cardfantasy.data.SkillType;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.CardStatusItem;
 import cfvbaibai.cardfantasy.engine.CardStatusType;
@@ -189,7 +189,7 @@ public class DummyGameUI extends GameUI {
     }
 
     @Override
-    public void recoverAT(CardInfo card, FeatureType cause, int recoveredAT) {
+    public void recoverAT(CardInfo card, SkillType cause, int recoveredAT) {
         // TODO Auto-generated method stub
 
     }

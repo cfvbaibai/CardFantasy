@@ -2,7 +2,7 @@ package cfvbaibai.cardfantasy.data;
 
 public class RuneSkill extends Skill {
 
-    public RuneSkill(FeatureType type, int level) {
+    public RuneSkill(SkillType type, int level) {
         super(type, level);
     }
 
