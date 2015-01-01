@@ -205,19 +205,52 @@ public class DefenseTest extends SkillValidationTest {
         Assert.assertEquals(0, 995 - c大剑圣3.getHP());
         Assert.assertEquals(0, 995 - c大剑圣4.getHP());
     }
-    
+
     @Test
     public void test圣盾_基本() {
         SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "秘银巨石像", "混元大师");
         context.addToField(0, 0);
         CardInfo c混元大师 = context.addToField(1, 1);
         context.startGame();
-        
+
         context.proceedOneRound();
         Assert.assertEquals(0, 1390 - c混元大师.getHP());  // 被圣盾完全防御
-        
+
         context.proceedOneRound();
         context.proceedOneRound();
         Assert.assertEquals(660, 1390 - c混元大师.getHP()); // 圣盾只能用一次
+    }
+
+    @Test
+    public void test圣盾_转生() {
+        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "秘银巨石像-15", "混元大师+转生10");
+        context.addToField(0, 0);
+        CardInfo c混元大师 = context.addToField(1, 1);
+        context.startGame();
+
+        context.proceedOneRound();
+        Assert.assertEquals(0, 1560 - c混元大师.getHP());  // 被圣盾完全防御
+
+        context.getStage().setActivePlayerNumber(0);    // 强制混元大师继续挨打
+
+        context.proceedOneRound();
+        Assert.assertEquals(810, 1560 - c混元大师.getHP()); // 圣盾只能用一次
+        
+        context.getStage().setActivePlayerNumber(0);    // 强制混元大师继续挨打
+        random.addNextNumbers(0);   // 混元大师转生成功
+        context.proceedOneRound();
+        Assert.assertEquals(0, context.getPlayer(1).getField().size()); // 混元大师应该被打死了
+
+        c混元大师.setSummonDelay(0);
+        context.proceedOneRound();
+        Assert.assertEquals(1560 + 300 /* 神圣守护 */, c混元大师.getHP()); 
+        
+        context.proceedOneRound();
+        Assert.assertEquals(0, 1560 + 300 - c混元大师.getHP());  // 被圣盾再次完全防御
+        
+        context.getStage().setActivePlayerNumber(0);    // 强制混元大师继续挨打
+
+        context.proceedOneRound();
+        Assert.assertEquals(810, 1560 + 300 - c混元大师.getHP()); // 转生后圣盾也只能用一次
     }
 }
