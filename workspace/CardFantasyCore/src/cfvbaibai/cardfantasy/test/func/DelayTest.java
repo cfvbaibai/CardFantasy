@@ -7,6 +7,20 @@ import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.Field;
 
 public class DelayTest extends SkillValidationTest {
+    /**
+     * 阻碍无法被免疫
+     */
+    @Test
+    public void test阻碍_免疫() {
+        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "死兆星", "金属巨龙");
+        context.addToField(0, 0);
+        CardInfo c金属巨龙 = context.addToHand(1, 1);
+        context.startGame();
+        
+        context.proceedOneRound();
+        Assert.assertEquals(6, c金属巨龙.getSummonDelay());
+    }
+
     @Test
     public void test阻碍_奇数() {
         SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "死兆星", "淘气灯灵");
