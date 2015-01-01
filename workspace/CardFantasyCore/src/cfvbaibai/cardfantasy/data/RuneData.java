@@ -15,7 +15,7 @@ public enum RuneData {
     飞岩("30802", RuneClass.GROUND, 4, SkillType.狙击, 5, 1, 4, Growth.RUNE, RuneActivator.myGrave(2, Race.SAVAGE)),
     死域("31162", RuneClass.GROUND, 5, SkillType.毒云, 6, 1, 5, Growth.RUNE, RuneActivator.myGrave(1, Race.SAVAGE)),
     秽土("30803", RuneClass.GROUND, 4, SkillType.转生, 4, 1, 5, Growth.RUNE, RuneActivator.myGrave(1, Race.SAVAGE)),
-    
+
     霜冻("31466", RuneClass.WATER, 3, SkillType.冰弹, 3, 1, 1, Growth.RUNE, RuneActivator.myGrave(2, null)),
     寒潮("31400", RuneClass.WATER, 3, SkillType.霜冻新星, 1, 1, 1, Growth.RUNE, RuneActivator.myDeck(2, null)),
     冰锥("31467", RuneClass.WATER, 3, SkillType.冰弹, 5, 1, 2, Growth.RUNE, RuneActivator.round(14)),
