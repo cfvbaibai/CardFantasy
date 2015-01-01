@@ -84,7 +84,7 @@ public class CardInfo extends EntityInfo {
         if (result == null) {
             return new ArrayList<SkillEffect>();
         } else {
-            return result;
+            return new ArrayList<SkillEffect>(result);
         }
     }
 

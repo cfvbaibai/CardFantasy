@@ -221,7 +221,7 @@ public class SpecialStatusTest extends SkillValidationTest {
         SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "东方幻术师-1*2", "秘银巨石像");
         CardInfo c东方幻术师1 = context.addToField(0, 0);
         context.addToField(1, 0);
-        context.addToField(2, 1);
+        CardInfo c秘银巨石像 = context.addToField(2, 1);
         context.startGame();
 
         random.addNextPicks(0); // 东方幻术师1对秘银巨石像使用虚弱
@@ -229,6 +229,7 @@ public class SpecialStatusTest extends SkillValidationTest {
         context.proceedOneRound();
 
         context.proceedOneRound();
-        Assert.assertEquals(330, 1056 - c东方幻术师1.getHP());
+        Assert.assertEquals(165, 1056 - c东方幻术师1.getHP());
+        Assert.assertEquals(660, c秘银巨石像.getCurrentAT());
     }
 }

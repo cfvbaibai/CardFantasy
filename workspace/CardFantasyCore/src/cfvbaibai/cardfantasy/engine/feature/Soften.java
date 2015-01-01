@@ -8,10 +8,10 @@ import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.CardStatusItem;
 import cfvbaibai.cardfantasy.engine.CardStatusType;
 import cfvbaibai.cardfantasy.engine.EntityInfo;
-import cfvbaibai.cardfantasy.engine.SkillUseInfo;
-import cfvbaibai.cardfantasy.engine.SkillResolver;
 import cfvbaibai.cardfantasy.engine.HeroDieSignal;
 import cfvbaibai.cardfantasy.engine.Player;
+import cfvbaibai.cardfantasy.engine.SkillResolver;
+import cfvbaibai.cardfantasy.engine.SkillUseInfo;
 
 public class Soften {
     public static void apply(SkillUseInfo skillUseInfo, SkillResolver resolver, EntityInfo attacker, Player defender)
@@ -28,8 +28,11 @@ public class Soften {
         }
 
         CardInfo victim = victims.get(0);
-        if (victim.getStatus().containsStatus(CardStatusType.弱化)) {
-            return;
+        List<CardStatusItem> items = victim.getStatus().getStatusOf(CardStatusType.弱化);
+        for (int i = 0; i < items.size(); ++i) {
+            if (items.get(i).getCause() == skillUseInfo) {
+                return;
+            }
         }
 
         if (!resolver.resolveAttackBlockingFeature(attacker, victim, skill, 1).isAttackable()) {

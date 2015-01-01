@@ -5,14 +5,13 @@ import java.util.List;
 
 import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.data.SkillTag;
-import cfvbaibai.cardfantasy.data.SkillType;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.EntityInfo;
+import cfvbaibai.cardfantasy.engine.HeroDieSignal;
 import cfvbaibai.cardfantasy.engine.SkillEffect;
 import cfvbaibai.cardfantasy.engine.SkillEffectType;
-import cfvbaibai.cardfantasy.engine.SkillUseInfo;
 import cfvbaibai.cardfantasy.engine.SkillResolver;
-import cfvbaibai.cardfantasy.engine.HeroDieSignal;
+import cfvbaibai.cardfantasy.engine.SkillUseInfo;
 
 /**
  * Decrease defender 10 * level AT if normal attack causes damage.

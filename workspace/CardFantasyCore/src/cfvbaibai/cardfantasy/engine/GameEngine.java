@@ -214,15 +214,20 @@ public class GameEngine {
             ui.cardActionBegins(card);
             CardStatus status = myField.getCard(i).getStatus();
             boolean underControl = false;
-            List<CardStatusItem> statusItems = status.getStatusOf(CardStatusType.弱化);
-            if (!statusItems.isEmpty()) {
+            List<CardStatusItem> softenedStatusItems = status.getStatusOf(CardStatusType.弱化);
+            if (!softenedStatusItems.isEmpty()) {
                 CardInfo myCard = myField.getCard(i);
-                SkillUseInfo skillUseInfo = statusItems.get(0).getCause();
-                ui.softened(myCard);
-                int adjAT = -myCard.getLevel1AT() / 2;
-                ui.adjustAT(skillUseInfo.getOwner(), myCard, adjAT, skillUseInfo.getSkill());
-                myField.getCard(i).addEffect(
-                    new SkillEffect(SkillEffectType.ATTACK_CHANGE, skillUseInfo, adjAT, false));
+                int currentBaseAT = myCard.getLevel1AT();
+                // 允许多重弱化
+                for (int j = 0; j < softenedStatusItems.size(); ++j) {
+                    SkillUseInfo skillUseInfo = softenedStatusItems.get(j).getCause();
+                    ui.softened(myCard);
+                    int adjAT = -currentBaseAT / 2;
+                    ui.adjustAT(skillUseInfo.getOwner(), myCard, adjAT, skillUseInfo.getSkill());
+                    myField.getCard(i).addEffect(
+                        new SkillEffect(SkillEffectType.ATTACK_CHANGE, skillUseInfo, adjAT, false));
+                    currentBaseAT /= 2;
+                }
             }
             if (status.containsStatus(CardStatusType.迷惑)) {
                 underControl = true;
