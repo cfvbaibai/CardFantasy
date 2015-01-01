@@ -6,8 +6,8 @@ import cfvbaibai.cardfantasy.GameUI;
 import cfvbaibai.cardfantasy.Randomizer;
 import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.engine.CardInfo;
-import cfvbaibai.cardfantasy.engine.FeatureEffect;
-import cfvbaibai.cardfantasy.engine.FeatureEffectType;
+import cfvbaibai.cardfantasy.engine.SkillEffect;
+import cfvbaibai.cardfantasy.engine.SkillEffectType;
 import cfvbaibai.cardfantasy.engine.FeatureInfo;
 import cfvbaibai.cardfantasy.engine.FeatureResolver;
 import cfvbaibai.cardfantasy.engine.Field;
@@ -48,8 +48,8 @@ public final class SacrificeFeature {
         int adjAT = skill.getImpact() * card.getInitAT() / 100;
         ui.adjustHP(card, card, adjHP, skill);
         ui.adjustAT(card, card, adjAT, skill);
-        card.addEffect(new FeatureEffect(FeatureEffectType.MAXHP_CHANGE, featureInfo, adjHP, true));
-        card.addEffect(new FeatureEffect(FeatureEffectType.ATTACK_CHANGE, featureInfo, adjAT, true));
+        card.addEffect(new SkillEffect(SkillEffectType.MAXHP_CHANGE, featureInfo, adjHP, true));
+        card.addEffect(new SkillEffect(SkillEffectType.ATTACK_CHANGE, featureInfo, adjAT, true));
         card.setUsed(featureInfo);
         ui.compactField(card.getOwner().getField());
     }

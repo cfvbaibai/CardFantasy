@@ -6,8 +6,8 @@ import java.util.List;
 import cfvbaibai.cardfantasy.GameUI;
 import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.engine.CardInfo;
-import cfvbaibai.cardfantasy.engine.FeatureEffect;
-import cfvbaibai.cardfantasy.engine.FeatureEffectType;
+import cfvbaibai.cardfantasy.engine.SkillEffect;
+import cfvbaibai.cardfantasy.engine.SkillEffectType;
 import cfvbaibai.cardfantasy.engine.FeatureInfo;
 import cfvbaibai.cardfantasy.engine.FeatureResolver;
 import cfvbaibai.cardfantasy.engine.HeroDieSignal;
@@ -47,7 +47,7 @@ public final class ChainAttackFeature {
 
         int chainAT = skill.getImpact() * attacker.getLevel1AT() / 100;
         int adjAT = chainAT - attacker.getCurrentAT();
-        FeatureEffect effect = new FeatureEffect(FeatureEffectType.ATTACK_CHANGE, featureInfo, adjAT, false);
+        SkillEffect effect = new SkillEffect(SkillEffectType.ATTACK_CHANGE, featureInfo, adjAT, false);
         ui.adjustAT(attacker, attacker, adjAT, skill);
         attacker.addEffect(effect);
         for (CardInfo victim : victims) {

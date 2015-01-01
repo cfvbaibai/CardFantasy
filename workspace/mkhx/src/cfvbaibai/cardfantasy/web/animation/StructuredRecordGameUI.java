@@ -11,7 +11,7 @@ import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.CardStatusItem;
 import cfvbaibai.cardfantasy.engine.CardStatusType;
 import cfvbaibai.cardfantasy.engine.EntityInfo;
-import cfvbaibai.cardfantasy.engine.FeatureEffect;
+import cfvbaibai.cardfantasy.engine.SkillEffect;
 import cfvbaibai.cardfantasy.engine.Field;
 import cfvbaibai.cardfantasy.engine.GameResult;
 import cfvbaibai.cardfantasy.engine.Phase;
@@ -256,13 +256,13 @@ public class StructuredRecordGameUI extends GameUI {
     }
 
     @Override
-    public void loseAdjustATEffect(CardInfo card, FeatureEffect effect) {
+    public void loseAdjustATEffect(CardInfo card, SkillEffect effect) {
         this.record.addEvent("lostAdjAT", new EntityRuntimeInfo(card), new EntityRuntimeInfo(card),
                 effect.getValue(), card.getCurrentAT() - effect.getValue(), effect.getCause().getType().name());
     }
 
     @Override
-    public void loseAdjustHPEffect(CardInfo card, FeatureEffect effect) {
+    public void loseAdjustHPEffect(CardInfo card, SkillEffect effect) {
         int currentHP = card.getHP() > card.getMaxHP() - effect.getValue() ?
                 card.getMaxHP() - effect.getValue() : card.getHP();
         this.record.addEvent("lostAdjHP", new EntityRuntimeInfo(card), new EntityRuntimeInfo(card),

@@ -5,8 +5,8 @@ import java.util.List;
 import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
 import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.engine.CardInfo;
-import cfvbaibai.cardfantasy.engine.FeatureEffect;
-import cfvbaibai.cardfantasy.engine.FeatureEffectType;
+import cfvbaibai.cardfantasy.engine.SkillEffect;
+import cfvbaibai.cardfantasy.engine.SkillEffectType;
 import cfvbaibai.cardfantasy.engine.FeatureInfo;
 import cfvbaibai.cardfantasy.engine.FeatureResolver;
 import cfvbaibai.cardfantasy.engine.Field;
@@ -24,7 +24,7 @@ public class HolyGuardFeature {
         for (CardInfo ally : allies) {
             if (ally.getEffectsCausedBy(featureInfo).isEmpty()) {
                 resolver.getStage().getUI().adjustHP(card, ally, impact, skill);
-                ally.addEffect(new FeatureEffect(FeatureEffectType.MAXHP_CHANGE, featureInfo, impact, false));
+                ally.addEffect(new SkillEffect(SkillEffectType.MAXHP_CHANGE, featureInfo, impact, false));
             }
         }
     }
@@ -32,8 +32,8 @@ public class HolyGuardFeature {
     public static void remove(FeatureResolver resolver, FeatureInfo feature, CardInfo card) {
         for (CardInfo ally : card.getOwner().getField().toList()) {
             if (ally == null) { continue; }
-            List<FeatureEffect> effects = ally.getEffectsCausedBy(feature);
-            for (FeatureEffect effect : effects) {
+            List<SkillEffect> effects = ally.getEffectsCausedBy(feature);
+            for (SkillEffect effect : effects) {
                 resolver.getStage().getUI().loseAdjustHPEffect(ally, effect);
                 ally.removeEffect(effect);
             }

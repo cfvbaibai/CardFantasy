@@ -687,7 +687,7 @@ public class FeatureResolver {
         if (card == null) {
             return;
         }
-        for (FeatureEffect effect : card.getEffects()) {
+        for (SkillEffect effect : card.getEffects()) {
             SkillType type = effect.getCause().getType();
             if (type == SkillType.圣光 || type == SkillType.要害 || type == SkillType.暗杀 || type == SkillType.污染) {
                 RacialAttackFeature.remove(this, effect.getCause(), card);
@@ -863,25 +863,25 @@ public class FeatureResolver {
         for (CardInfo fieldCard : myField.getAliveCards()) {
             for (FeatureInfo feature : fieldCard.getNormalUsableFeatures()) {
                 if (feature.getType() == SkillType.王国之力) {
-                    RaceBuffFeature.apply(this, feature, fieldCard, Race.KINGDOM, FeatureEffectType.ATTACK_CHANGE);
+                    RaceBuffFeature.apply(this, feature, fieldCard, Race.KINGDOM, SkillEffectType.ATTACK_CHANGE);
                 } else if (feature.getType() == SkillType.王国守护) {
-                    RaceBuffFeature.apply(this, feature, fieldCard, Race.KINGDOM, FeatureEffectType.MAXHP_CHANGE);
+                    RaceBuffFeature.apply(this, feature, fieldCard, Race.KINGDOM, SkillEffectType.MAXHP_CHANGE);
                 } else if (feature.getType() == SkillType.森林之力) {
-                    RaceBuffFeature.apply(this, feature, fieldCard, Race.FOREST, FeatureEffectType.ATTACK_CHANGE);
+                    RaceBuffFeature.apply(this, feature, fieldCard, Race.FOREST, SkillEffectType.ATTACK_CHANGE);
                 } else if (feature.getType() == SkillType.森林守护) {
-                    RaceBuffFeature.apply(this, feature, fieldCard, Race.FOREST, FeatureEffectType.MAXHP_CHANGE);
+                    RaceBuffFeature.apply(this, feature, fieldCard, Race.FOREST, SkillEffectType.MAXHP_CHANGE);
                 } else if (feature.getType() == SkillType.蛮荒之力) {
-                    RaceBuffFeature.apply(this, feature, fieldCard, Race.SAVAGE, FeatureEffectType.ATTACK_CHANGE);
+                    RaceBuffFeature.apply(this, feature, fieldCard, Race.SAVAGE, SkillEffectType.ATTACK_CHANGE);
                 } else if (feature.getType() == SkillType.蛮荒守护) {
-                    RaceBuffFeature.apply(this, feature, fieldCard, Race.SAVAGE, FeatureEffectType.MAXHP_CHANGE);
+                    RaceBuffFeature.apply(this, feature, fieldCard, Race.SAVAGE, SkillEffectType.MAXHP_CHANGE);
                 } else if (feature.getType() == SkillType.地狱之力) {
-                    RaceBuffFeature.apply(this, feature, fieldCard, Race.HELL, FeatureEffectType.ATTACK_CHANGE);
+                    RaceBuffFeature.apply(this, feature, fieldCard, Race.HELL, SkillEffectType.ATTACK_CHANGE);
                 } else if (feature.getType() == SkillType.地狱守护) {
-                    RaceBuffFeature.apply(this, feature, fieldCard, Race.HELL, FeatureEffectType.MAXHP_CHANGE);
+                    RaceBuffFeature.apply(this, feature, fieldCard, Race.HELL, SkillEffectType.MAXHP_CHANGE);
                 } else if (feature.getType() == SkillType.本源之力) {
-                    RaceBuffFeature.apply(this, feature, fieldCard, null, FeatureEffectType.ATTACK_CHANGE);
+                    RaceBuffFeature.apply(this, feature, fieldCard, null, SkillEffectType.ATTACK_CHANGE);
                 } else if (feature.getType() == SkillType.本源守护) {
-                    RaceBuffFeature.apply(this, feature, fieldCard, null, FeatureEffectType.MAXHP_CHANGE);
+                    RaceBuffFeature.apply(this, feature, fieldCard, null, SkillEffectType.MAXHP_CHANGE);
                 } else if (feature.getType() == SkillType.神圣守护) {
                     HolyGuardFeature.apply(this, feature, fieldCard);
                 } 
@@ -1161,16 +1161,16 @@ public class FeatureResolver {
             stage.getUI().deactivateRune(rune);
             rune.deactivate();
             for (CardInfo card : player.getField().getAliveCards()) {
-                for (FeatureEffect effect : card.getEffects()) {
+                for (SkillEffect effect : card.getEffects()) {
                     if (effect.getCause().equals(rune.getFeatureInfo())) {
                         if (rune.getFeature().getType().containsTag(SkillTag.永久)) {
                             continue;
                         }
-                        if (effect.getType() == FeatureEffectType.ATTACK_CHANGE) {
+                        if (effect.getType() == SkillEffectType.ATTACK_CHANGE) {
                             stage.getUI().loseAdjustATEffect(card, effect);
-                        } else if (effect.getType() == FeatureEffectType.MAXHP_CHANGE) {
+                        } else if (effect.getType() == SkillEffectType.MAXHP_CHANGE) {
                             stage.getUI().loseAdjustHPEffect(card, effect);
-                        } else if (effect.getType() == FeatureEffectType.SKILL_USED) {
+                        } else if (effect.getType() == SkillEffectType.SKILL_USED) {
                             // DO NOTHING..
                         } else {
                             throw new CardFantasyRuntimeException("Invalid feature effect type " + effect.getType());

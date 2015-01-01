@@ -6,8 +6,8 @@ import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
 import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.EntityInfo;
-import cfvbaibai.cardfantasy.engine.FeatureEffect;
-import cfvbaibai.cardfantasy.engine.FeatureEffectType;
+import cfvbaibai.cardfantasy.engine.SkillEffect;
+import cfvbaibai.cardfantasy.engine.SkillEffectType;
 import cfvbaibai.cardfantasy.engine.FeatureInfo;
 import cfvbaibai.cardfantasy.engine.FeatureResolver;
 import cfvbaibai.cardfantasy.engine.Field;
@@ -25,7 +25,7 @@ public final class EnergyArmorFeature {
         resolver.getStage().getUI().useSkill(caster, targets, skill, true);
         for (CardInfo target : targets) {
             resolver.getStage().getUI().adjustHP(caster, target, impact, skill);
-            target.addEffect(new FeatureEffect(FeatureEffectType.MAXHP_CHANGE, featureInfo, impact, false));
+            target.addEffect(new SkillEffect(SkillEffectType.MAXHP_CHANGE, featureInfo, impact, false));
         }
     }
 
@@ -38,7 +38,7 @@ public final class EnergyArmorFeature {
         }
         Field field = caster.getOwner().getField();
         for (CardInfo target : field.getAliveCards()) {
-            for (FeatureEffect effect : target.getEffectsCausedBy(feature)) {
+            for (SkillEffect effect : target.getEffectsCausedBy(feature)) {
                 resolver.getStage().getUI().loseAdjustHPEffect(target, effect);
                 target.removeEffect(effect);
             }

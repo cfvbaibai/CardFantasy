@@ -6,8 +6,8 @@ import cfvbaibai.cardfantasy.GameUI;
 import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.EntityInfo;
-import cfvbaibai.cardfantasy.engine.FeatureEffect;
-import cfvbaibai.cardfantasy.engine.FeatureEffectType;
+import cfvbaibai.cardfantasy.engine.SkillEffect;
+import cfvbaibai.cardfantasy.engine.SkillEffectType;
 import cfvbaibai.cardfantasy.engine.FeatureInfo;
 import cfvbaibai.cardfantasy.engine.FeatureResolver;
 import cfvbaibai.cardfantasy.engine.HeroDieSignal;
@@ -32,7 +32,7 @@ public final class PlagueFeature {
             ui.attackCard(attacker, victim, skill, damage);
             resolver.applyDamage(victim, damage);
             ui.adjustAT(attacker, victim, -damage, skill);
-            victim.addEffect(new FeatureEffect(FeatureEffectType.ATTACK_CHANGE, featureInfo, -damage, true));
+            victim.addEffect(new SkillEffect(SkillEffectType.ATTACK_CHANGE, featureInfo, -damage, true));
         }
     }
 }

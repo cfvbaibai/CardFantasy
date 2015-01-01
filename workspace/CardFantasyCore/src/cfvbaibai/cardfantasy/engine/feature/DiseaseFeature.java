@@ -3,8 +3,8 @@ package cfvbaibai.cardfantasy.engine.feature;
 import cfvbaibai.cardfantasy.GameUI;
 import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.engine.CardInfo;
-import cfvbaibai.cardfantasy.engine.FeatureEffect;
-import cfvbaibai.cardfantasy.engine.FeatureEffectType;
+import cfvbaibai.cardfantasy.engine.SkillEffect;
+import cfvbaibai.cardfantasy.engine.SkillEffectType;
 import cfvbaibai.cardfantasy.engine.FeatureInfo;
 import cfvbaibai.cardfantasy.engine.FeatureResolver;
 import cfvbaibai.cardfantasy.engine.HeroDieSignal;
@@ -28,6 +28,6 @@ public final class DiseaseFeature {
         ui.attackCard(attacker, defender, skill, damage);
         resolver.applyDamage(defender, damage);
         ui.adjustAT(attacker, defender, -damage, skill);
-        defender.addEffect(new FeatureEffect(FeatureEffectType.ATTACK_CHANGE, featureInfo, -damage, true));
+        defender.addEffect(new SkillEffect(SkillEffectType.ATTACK_CHANGE, featureInfo, -damage, true));
     }
 }

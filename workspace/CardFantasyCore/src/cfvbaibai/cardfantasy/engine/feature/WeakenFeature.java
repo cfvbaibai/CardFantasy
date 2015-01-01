@@ -7,8 +7,8 @@ import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.data.SkillType;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.EntityInfo;
-import cfvbaibai.cardfantasy.engine.FeatureEffect;
-import cfvbaibai.cardfantasy.engine.FeatureEffectType;
+import cfvbaibai.cardfantasy.engine.SkillEffect;
+import cfvbaibai.cardfantasy.engine.SkillEffectType;
 import cfvbaibai.cardfantasy.engine.FeatureInfo;
 import cfvbaibai.cardfantasy.engine.FeatureResolver;
 import cfvbaibai.cardfantasy.engine.HeroDieSignal;
@@ -48,9 +48,9 @@ public final class WeakenFeature {
             }
 
             resolver.getStage().getUI().adjustAT(attacker, defender, -attackWeakened, skill);
-            List<FeatureEffect> effects = defender.getEffects();
-            for (FeatureEffect effect : effects) {
-                if (effect.getType() == FeatureEffectType.ATTACK_CHANGE && effect.getValue() > 0 &&
+            List<SkillEffect> effects = defender.getEffects();
+            for (SkillEffect effect : effects) {
+                if (effect.getType() == SkillEffectType.ATTACK_CHANGE && effect.getValue() > 0 &&
                         effect.getCause().getType() == SkillType.群攻提升) {
                     // TODO: 现在只有群攻提升，不过以后会有其它的
                     if (attackWeakened > effect.getValue()) {
@@ -66,7 +66,7 @@ public final class WeakenFeature {
                 }
             }
 
-            defender.addEffect(new FeatureEffect(FeatureEffectType.ATTACK_CHANGE, featureInfo, -attackWeakened, true));
+            defender.addEffect(new SkillEffect(SkillEffectType.ATTACK_CHANGE, featureInfo, -attackWeakened, true));
             totalAttackWeakened += attackWeakened;
         }
         return totalAttackWeakened;

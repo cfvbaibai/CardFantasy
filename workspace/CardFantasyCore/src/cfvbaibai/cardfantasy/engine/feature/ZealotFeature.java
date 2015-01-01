@@ -3,8 +3,8 @@ package cfvbaibai.cardfantasy.engine.feature;
 import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.EntityInfo;
-import cfvbaibai.cardfantasy.engine.FeatureEffect;
-import cfvbaibai.cardfantasy.engine.FeatureEffectType;
+import cfvbaibai.cardfantasy.engine.SkillEffect;
+import cfvbaibai.cardfantasy.engine.SkillEffectType;
 import cfvbaibai.cardfantasy.engine.FeatureInfo;
 import cfvbaibai.cardfantasy.engine.FeatureResolver;
 import cfvbaibai.cardfantasy.engine.OnAttackBlockingResult;
@@ -19,6 +19,6 @@ public final class ZealotFeature {
         int adjAT = skill.getImpact();
         resolver.getStage().getUI().useSkill(defender, defender, skill, true);
         resolver.getStage().getUI().adjustAT(defender, defender, adjAT, skill);
-        defender.addEffect(new FeatureEffect(FeatureEffectType.ATTACK_CHANGE, featureInfo, adjAT, true));
+        defender.addEffect(new SkillEffect(SkillEffectType.ATTACK_CHANGE, featureInfo, adjAT, true));
     }
 }

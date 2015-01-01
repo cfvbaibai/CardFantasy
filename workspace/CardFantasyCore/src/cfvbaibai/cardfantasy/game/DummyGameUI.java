@@ -10,7 +10,7 @@ import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.CardStatusItem;
 import cfvbaibai.cardfantasy.engine.CardStatusType;
 import cfvbaibai.cardfantasy.engine.EntityInfo;
-import cfvbaibai.cardfantasy.engine.FeatureEffect;
+import cfvbaibai.cardfantasy.engine.SkillEffect;
 import cfvbaibai.cardfantasy.engine.Field;
 import cfvbaibai.cardfantasy.engine.GameResult;
 import cfvbaibai.cardfantasy.engine.Phase;
@@ -207,13 +207,13 @@ public class DummyGameUI extends GameUI {
     }
 
     @Override
-    public void loseAdjustATEffect(CardInfo ally, FeatureEffect effect) {
+    public void loseAdjustATEffect(CardInfo ally, SkillEffect effect) {
         // TODO Auto-generated method stub
 
     }
 
     @Override
-    public void loseAdjustHPEffect(CardInfo ally, FeatureEffect effect) {
+    public void loseAdjustHPEffect(CardInfo ally, SkillEffect effect) {
         // TODO Auto-generated method stub
 
     }

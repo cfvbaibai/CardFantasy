@@ -10,7 +10,7 @@ import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.CardStatusItem;
 import cfvbaibai.cardfantasy.engine.CardStatusType;
 import cfvbaibai.cardfantasy.engine.EntityInfo;
-import cfvbaibai.cardfantasy.engine.FeatureEffect;
+import cfvbaibai.cardfantasy.engine.SkillEffect;
 import cfvbaibai.cardfantasy.engine.Field;
 import cfvbaibai.cardfantasy.engine.GameResult;
 import cfvbaibai.cardfantasy.engine.Phase;
@@ -127,9 +127,9 @@ public abstract class GameUI {
 
     public abstract void healHero(EntityInfo healer, Player healee, Skill cardFeature, int healHP);
 
-    public abstract void loseAdjustATEffect(CardInfo ally, FeatureEffect effect);
+    public abstract void loseAdjustATEffect(CardInfo ally, SkillEffect effect);
 
-    public abstract void loseAdjustHPEffect(CardInfo ally, FeatureEffect effect);
+    public abstract void loseAdjustHPEffect(CardInfo ally, SkillEffect effect);
 
     public abstract void cardToDeck(Player player, CardInfo card);
 

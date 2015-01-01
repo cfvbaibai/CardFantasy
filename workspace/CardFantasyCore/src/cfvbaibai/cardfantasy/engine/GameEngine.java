@@ -222,7 +222,7 @@ public class GameEngine {
                 int adjAT = -myCard.getLevel1AT() / 2;
                 ui.adjustAT(featureInfo.getOwner(), myCard, adjAT, featureInfo.getFeature());
                 myField.getCard(i).addEffect(
-                    new FeatureEffect(FeatureEffectType.ATTACK_CHANGE, featureInfo, adjAT, false));
+                    new SkillEffect(SkillEffectType.ATTACK_CHANGE, featureInfo, adjAT, false));
             }
             if (status.containsStatus(CardStatusType.迷惑)) {
                 underControl = true;
@@ -248,8 +248,8 @@ public class GameEngine {
 
             if (myField.getCard(i) != null) {
                 CardInfo myCard = myField.getCard(i);
-                List<FeatureEffect> effects = myCard.getEffectsCausedBy(SkillType.虚弱);
-                for (FeatureEffect effect : effects) {
+                List<SkillEffect> effects = myCard.getEffectsCausedBy(SkillType.虚弱);
+                for (SkillEffect effect : effects) {
                     resolver.getStage().getUI().loseAdjustATEffect(myCard, effect);
                     myCard.removeEffect(effect);
                 }

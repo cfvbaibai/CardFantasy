@@ -30,7 +30,7 @@ public class CardInfo extends EntityInfo {
     private boolean deadOnce;
 
     @NonSerializable
-    private Map<SkillType, List<FeatureEffect>> effects;
+    private Map<SkillType, List<SkillEffect>> effects;
     //private boolean firstRound;
 
     public CardInfo(Card card, Player owner) {
@@ -39,7 +39,7 @@ public class CardInfo extends EntityInfo {
         this.summonDelay = card.getSummonSpeed();
         this.status = new CardStatus();
         this.owner = owner;
-        this.effects = new HashMap<SkillType, List<FeatureEffect>>();
+        this.effects = new HashMap<SkillType, List<SkillEffect>>();
         this.features = new ArrayList<FeatureInfo>();
         for (CardSkill feature : card.getAllFeatures()) {
             this.features.add(new FeatureInfo(this, feature));
@@ -68,21 +68,21 @@ public class CardInfo extends EntityInfo {
     //    this.firstRound = firstRound;
     //}
 
-    public void addEffect(FeatureEffect effect) {
+    public void addEffect(SkillEffect effect) {
         SkillType type = effect.getCause().getFeature().getType();
         if (!effects.containsKey(type)) {
-            effects.put(type, new LinkedList<FeatureEffect>());
+            effects.put(type, new LinkedList<SkillEffect>());
         }
         this.effects.get(type).add(effect);
-        if (effect.getType() == FeatureEffectType.MAXHP_CHANGE) {
+        if (effect.getType() == SkillEffectType.MAXHP_CHANGE) {
             this.setBasicHP(this.getHP() + effect.getValue());
         }
     }
 
-    public List<FeatureEffect> getEffectsCausedBy(SkillType cause) {
-        List<FeatureEffect> result = effects.get(cause);
+    public List<SkillEffect> getEffectsCausedBy(SkillType cause) {
+        List<SkillEffect> result = effects.get(cause);
         if (result == null) {
-            return new ArrayList<FeatureEffect>();
+            return new ArrayList<SkillEffect>();
         } else {
             return result;
         }
@@ -113,9 +113,9 @@ public class CardInfo extends EntityInfo {
     
     private int getSpecificLevelEffectAT(SkillTag tag) {
         int at = 0;
-        for (List<FeatureEffect> effects : this.effects.values()) {
-            for (FeatureEffect effect : effects) {
-                if (effect.getType() == FeatureEffectType.ATTACK_CHANGE &&
+        for (List<SkillEffect> effects : this.effects.values()) {
+            for (SkillEffect effect : effects) {
+                if (effect.getType() == SkillEffectType.ATTACK_CHANGE &&
                     effect.getCause().getType().containsTag(tag)) {
                     at += effect.getValue();
                 }
@@ -250,31 +250,31 @@ public class CardInfo extends EntityInfo {
         return features;
     }
 
-    public void removeEffect(FeatureEffect effect) {
-        List<FeatureEffect> result = this.effects.get(effect.getCause().getFeature().getType());
+    public void removeEffect(SkillEffect effect) {
+        List<SkillEffect> result = this.effects.get(effect.getCause().getFeature().getType());
         if (result == null) {
             return;
         }
         result.remove(effect);
-        if (effect.getType() == FeatureEffectType.MAXHP_CHANGE && this.getHP() > this.getMaxHP()) {
+        if (effect.getType() == SkillEffectType.MAXHP_CHANGE && this.getHP() > this.getMaxHP()) {
             this.setBasicHP(this.getMaxHP());
         }
     }
 
-    public List<FeatureEffect> getEffects() {
-        List<FeatureEffect> result = new ArrayList<FeatureEffect>();
-        for (List<FeatureEffect> effects : this.effects.values()) {
+    public List<SkillEffect> getEffects() {
+        List<SkillEffect> result = new ArrayList<SkillEffect>();
+        for (List<SkillEffect> effects : this.effects.values()) {
             result.addAll(effects);
         }
         return result;
     }
 
-    public List<FeatureEffect> getEffectsCausedBy(FeatureInfo feature) {
+    public List<SkillEffect> getEffectsCausedBy(FeatureInfo feature) {
         if (feature.getOwner() == null) {
             throw new CardFantasyRuntimeException("feature.getOwner() is null");
         }
-        List<FeatureEffect> result = new ArrayList<FeatureEffect>();
-        for (FeatureEffect effect : this.getEffects()) {
+        List<SkillEffect> result = new ArrayList<SkillEffect>();
+        for (SkillEffect effect : this.getEffects()) {
             if (effect.getCause().equals(feature)) {
                 result.add(effect);
             }
@@ -284,8 +284,8 @@ public class CardInfo extends EntityInfo {
 
     public int getMaxHP() {
         int actualMaxHP = this.card.getMaxHP();
-        for (FeatureEffect effect : this.getEffects()) {
-            if (effect.getType() == FeatureEffectType.MAXHP_CHANGE) {
+        for (SkillEffect effect : this.getEffects()) {
+            if (effect.getType() == SkillEffectType.MAXHP_CHANGE) {
                 actualMaxHP += effect.getValue();
             }
         }
@@ -309,19 +309,19 @@ public class CardInfo extends EntityInfo {
     }
 
     public String getEffectsDesc() {
-        List<FeatureEffect> effects = this.getEffects();
+        List<SkillEffect> effects = this.getEffects();
         if (effects.isEmpty()) {
             return "-";
         }
         StringBuffer sb = new StringBuffer();
         sb.append("【");
-        for (FeatureEffect effect : effects) {
-            if (effect.getType() == FeatureEffectType.ATTACK_CHANGE) {
+        for (SkillEffect effect : effects) {
+            if (effect.getType() == SkillEffectType.ATTACK_CHANGE) {
                 sb.append("攻击变化");
             }
-            else if (effect.getType() == FeatureEffectType.MAXHP_CHANGE) {
+            else if (effect.getType() == SkillEffectType.MAXHP_CHANGE) {
                 sb.append("HP变化");
-            } else if (effect.getType() == FeatureEffectType.SKILL_USED) {
+            } else if (effect.getType() == SkillEffectType.SKILL_USED) {
                 sb.append("技能已使用");
             } else {
                 throw new CardFantasyRuntimeException("Unknown feature effect type: " + effect.getType().name());
@@ -436,8 +436,8 @@ public class CardInfo extends EntityInfo {
     }
 
     public boolean hasUsed(FeatureInfo featureInfo) {
-        for (FeatureEffect effect : this.getEffects()) {
-            if (effect.getCause() == featureInfo && effect.getType() == FeatureEffectType.SKILL_USED) {
+        for (SkillEffect effect : this.getEffects()) {
+            if (effect.getCause() == featureInfo && effect.getType() == SkillEffectType.SKILL_USED) {
                 return true;
             }
         }
@@ -445,6 +445,6 @@ public class CardInfo extends EntityInfo {
     }
     
     public void setUsed(FeatureInfo featureInfo) {
-        this.addEffect(new FeatureEffect(FeatureEffectType.SKILL_USED, featureInfo, 0, true));
+        this.addEffect(new SkillEffect(SkillEffectType.SKILL_USED, featureInfo, 0, true));
     }
 }

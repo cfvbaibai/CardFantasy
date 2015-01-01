@@ -4,15 +4,15 @@ import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
 import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.data.Race;
 import cfvbaibai.cardfantasy.engine.CardInfo;
-import cfvbaibai.cardfantasy.engine.FeatureEffect;
-import cfvbaibai.cardfantasy.engine.FeatureEffectType;
+import cfvbaibai.cardfantasy.engine.SkillEffect;
+import cfvbaibai.cardfantasy.engine.SkillEffectType;
 import cfvbaibai.cardfantasy.engine.FeatureInfo;
 import cfvbaibai.cardfantasy.engine.FeatureResolver;
 import cfvbaibai.cardfantasy.engine.Field;
 
 public final class RaceBuffFeature {
     public static void apply(FeatureResolver resolver, FeatureInfo featureInfo, CardInfo card, Race race,
-            FeatureEffectType effectType) {
+            SkillEffectType effectType) {
         if (card == null) {
             throw new CardFantasyRuntimeException("card cannot be null");
         }
@@ -25,14 +25,14 @@ public final class RaceBuffFeature {
             }
             if (ally.getEffectsCausedBy(featureInfo).isEmpty()) {
                 resolver.getStage().getUI().useSkill(card, skill, true);
-                if (effectType == FeatureEffectType.ATTACK_CHANGE) {
+                if (effectType == SkillEffectType.ATTACK_CHANGE) {
                     resolver.getStage().getUI().adjustAT(card, ally, impact, skill);
-                } else if (effectType == FeatureEffectType.MAXHP_CHANGE) {
+                } else if (effectType == SkillEffectType.MAXHP_CHANGE) {
                     resolver.getStage().getUI().adjustHP(card, ally, impact, skill);
                 } else {
                     throw new CardFantasyRuntimeException("Invalid effect type: " + effectType.name());
                 }
-                ally.addEffect(new FeatureEffect(effectType, featureInfo, impact, false));
+                ally.addEffect(new SkillEffect(effectType, featureInfo, impact, false));
             }
         }
     }
@@ -49,10 +49,10 @@ public final class RaceBuffFeature {
             if (ally == card || race != null && ally.getRace() != race) {
                 continue;
             }
-            for (FeatureEffect effect : ally.getEffectsCausedBy(feature)) {
-                if (effect.getType() == FeatureEffectType.ATTACK_CHANGE) {
+            for (SkillEffect effect : ally.getEffectsCausedBy(feature)) {
+                if (effect.getType() == SkillEffectType.ATTACK_CHANGE) {
                     resolver.getStage().getUI().loseAdjustATEffect(ally, effect);
-                } else if (effect.getType() == FeatureEffectType.MAXHP_CHANGE) {
+                } else if (effect.getType() == SkillEffectType.MAXHP_CHANGE) {
                     resolver.getStage().getUI().loseAdjustHPEffect(ally, effect);
                 } else {
                     throw new CardFantasyRuntimeException("Invalid effect type: " + effect.getType().name());
