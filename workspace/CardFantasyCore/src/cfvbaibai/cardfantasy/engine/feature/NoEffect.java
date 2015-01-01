@@ -10,10 +10,10 @@ import cfvbaibai.cardfantasy.engine.SkillResolver;
 public class NoEffect {
     public static boolean isFeatureBlocked(SkillResolver resolver, Skill cardFeature, Skill attackFeature, EntityInfo attacker, CardInfo defender) {
         if (attackFeature.getType() == SkillType.虚弱 ||
-            // attackFeature.getType() == FeatureType.战斗怒吼 ||
+            attackFeature.getType() == SkillType.战争怒吼 ||
             // attackFeature.getType() == FeatureTYpe.死亡印记 ||
             // attackFeature.getType() == FeatureType.沉默 ||
-            // attackFeature.getType() == FeatureType.大地之盾 ||
+            attackFeature.getType() == SkillType.大地之盾 ||
             attackFeature.getType() == SkillType.裂伤) {
             GameUI ui = resolver.getStage().getUI();
             ui.useSkill(defender, attacker, cardFeature, true);

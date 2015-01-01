@@ -64,9 +64,9 @@ public enum RuneData {
     @NonSerializable
     private SkillType skillType;
     @NonSerializable
-    private int incrFeatureLevel;
+    private int incrSkillLevel;
     @NonSerializable
-    private int initFeatureLevel;
+    private int initSkillLevel;
     @NonSerializable
     private Growth growth;
     @NonSerializable
@@ -74,14 +74,14 @@ public enum RuneData {
     @NonSerializable
     private RuneActivator activator;
 
-    RuneData(String wikiId, RuneClass runeClass, int maxEnergy, SkillType skillType, int initFeatureLevel,
-            int incrFeatureLevel, int star, Growth growth, RuneActivator activator) {
+    RuneData(String wikiId, RuneClass runeClass, int maxEnergy, SkillType skillType, int initSkillLevel,
+            int incrSkillLevel, int star, Growth growth, RuneActivator activator) {
         this.wikiId = wikiId;
         this.runeClass = runeClass;
         this.maxEnergy = maxEnergy;
         this.skillType = skillType;
-        this.initFeatureLevel = initFeatureLevel;
-        this.incrFeatureLevel = incrFeatureLevel;
+        this.initSkillLevel = initSkillLevel;
+        this.incrSkillLevel = incrSkillLevel;
         this.growth = growth;
         this.star = star;
         this.activator = activator;
@@ -99,16 +99,16 @@ public enum RuneData {
         return maxEnergy;
     }
 
-    public SkillType getFeatureType() {
+    public SkillType getSkillType() {
         return skillType;
     }
 
-    public int getIncrFeatureLevel() {
-        return incrFeatureLevel;
+    public int getIncrSkillLevel() {
+        return incrSkillLevel;
     }
 
-    public int getInitFeatureLevel() {
-        return initFeatureLevel;
+    public int getInitSkillLevel() {
+        return initSkillLevel;
     }
 
     public Growth getGrowth() {

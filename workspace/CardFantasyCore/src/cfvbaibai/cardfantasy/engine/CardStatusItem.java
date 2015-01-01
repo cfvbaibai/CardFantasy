@@ -74,6 +74,10 @@ public class CardStatusItem {
         return new CardStatusItem(CardStatusType.召唤, 0, cause);
     }
     
+    public static CardStatusItem faint(SkillUseInfo cause) {
+        return new CardStatusItem(CardStatusType.晕眩, 0, cause);
+    }
+    
     public String getShortDesc() {
         StringBuffer sb = new StringBuffer();
         sb.append(getType().name());

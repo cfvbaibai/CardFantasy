@@ -4,13 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
-import cfvbaibai.cardfantasy.data.Skill;
-import cfvbaibai.cardfantasy.data.SkillTag;
-import cfvbaibai.cardfantasy.data.SkillType;
 import cfvbaibai.cardfantasy.data.Race;
 import cfvbaibai.cardfantasy.data.RuneActivationType;
 import cfvbaibai.cardfantasy.data.RuneActivator;
 import cfvbaibai.cardfantasy.data.RuneData;
+import cfvbaibai.cardfantasy.data.Skill;
+import cfvbaibai.cardfantasy.data.SkillTag;
+import cfvbaibai.cardfantasy.data.SkillType;
 import cfvbaibai.cardfantasy.engine.feature.AllDelay;
 import cfvbaibai.cardfantasy.engine.feature.AllSpeed;
 import cfvbaibai.cardfantasy.engine.feature.Arouse;
@@ -33,6 +33,7 @@ import cfvbaibai.cardfantasy.engine.feature.Curse;
 import cfvbaibai.cardfantasy.engine.feature.Destroy;
 import cfvbaibai.cardfantasy.engine.feature.Disease;
 import cfvbaibai.cardfantasy.engine.feature.Dodge;
+import cfvbaibai.cardfantasy.engine.feature.EarthShield;
 import cfvbaibai.cardfantasy.engine.feature.EnergyArmor;
 import cfvbaibai.cardfantasy.engine.feature.EnergyDrain;
 import cfvbaibai.cardfantasy.engine.feature.Enprison;
@@ -63,8 +64,8 @@ import cfvbaibai.cardfantasy.engine.feature.PoisonMagic;
 import cfvbaibai.cardfantasy.engine.feature.Pray;
 import cfvbaibai.cardfantasy.engine.feature.Purify;
 import cfvbaibai.cardfantasy.engine.feature.Pursuit;
-import cfvbaibai.cardfantasy.engine.feature.RacialBuff;
 import cfvbaibai.cardfantasy.engine.feature.RacialAttackFeature;
+import cfvbaibai.cardfantasy.engine.feature.RacialBuff;
 import cfvbaibai.cardfantasy.engine.feature.RacialShield;
 import cfvbaibai.cardfantasy.engine.feature.Rainfall;
 import cfvbaibai.cardfantasy.engine.feature.Reincarnation;
@@ -83,12 +84,12 @@ import cfvbaibai.cardfantasy.engine.feature.Summon;
 import cfvbaibai.cardfantasy.engine.feature.Transport;
 import cfvbaibai.cardfantasy.engine.feature.Trap;
 import cfvbaibai.cardfantasy.engine.feature.Tsukomi;
-import cfvbaibai.cardfantasy.engine.feature.Wrath;
 import cfvbaibai.cardfantasy.engine.feature.WeakPointAttack;
-import cfvbaibai.cardfantasy.engine.feature.WeakenAll;
 import cfvbaibai.cardfantasy.engine.feature.Weaken;
+import cfvbaibai.cardfantasy.engine.feature.WeakenAll;
 import cfvbaibai.cardfantasy.engine.feature.WinningPursuit;
 import cfvbaibai.cardfantasy.engine.feature.Wound;
+import cfvbaibai.cardfantasy.engine.feature.Wrath;
 import cfvbaibai.cardfantasy.engine.feature.Zealot;
 
 
@@ -270,7 +271,7 @@ public class SkillResolver {
         }
         RuneInfo rune = attacker.getOwner().getActiveRuneOf(RuneData.飞岩);
         if (rune != null && !attacker.isWeak()) {
-            Snipe.apply(rune.getFeature(), this, attacker, defender, 1);
+            Snipe.apply(rune.getSkill(), this, attacker, defender, 1);
         }
     }
 
@@ -278,34 +279,36 @@ public class SkillResolver {
 
     }
 
-    public void resolveCounterAttackFeature(CardInfo attacker, CardInfo defender, Skill attackFeature,
+    public void resolveCounterAttackFeature(CardInfo attacker, CardInfo defender, Skill attackSkill,
             OnAttackBlockingResult result, OnDamagedResult damagedResult) throws HeroDieSignal {
-        if (isPhysicalAttackFeature(attackFeature)) {
-            for (SkillUseInfo feature : defender.getNormalUsableSkills()) {
-                if (feature.getType() == SkillType.反击) {
-                    CounterAttack.apply(feature.getSkill(), this, attacker, defender, result.getDamage());
-                } else if (feature.getType() == SkillType.盾刺) {
-                    Spike.apply(feature.getSkill(), this, attacker, defender, attackFeature, result.getDamage());
-                } else if (feature.getType() == SkillType.魔神之甲) {
-                    Spike.apply(feature.getSkill(), this, attacker, defender, attackFeature, result.getDamage());
-                } else if (feature.getType() == SkillType.燃烧) {
-                    Burning.apply(feature, this, attacker, defender);
-                } else if (feature.getType() == SkillType.邪灵汲取) {
-                    EnergyDrain.apply(feature, this, attacker, defender, result, damagedResult);
-                } else if (feature.getType() == SkillType.被插出五星) {
-                    CounterSummon.apply(this, defender, feature.getSkill(), 5);
+        if (isPhysicalAttackFeature(attackSkill)) {
+            for (SkillUseInfo skillUseInfo : defender.getNormalUsableSkills()) {
+                if (skillUseInfo.getType() == SkillType.反击) {
+                    CounterAttack.apply(skillUseInfo.getSkill(), this, attacker, defender, result.getDamage());
+                } else if (skillUseInfo.getType() == SkillType.盾刺) {
+                    Spike.apply(skillUseInfo.getSkill(), this, attacker, defender, attackSkill, result.getDamage());
+                } else if (skillUseInfo.getType() == SkillType.魔神之甲) {
+                    Spike.apply(skillUseInfo.getSkill(), this, attacker, defender, attackSkill, result.getDamage());
+                } else if (skillUseInfo.getType() == SkillType.燃烧) {
+                    Burning.apply(skillUseInfo, this, attacker, defender);
+                } else if (skillUseInfo.getType() == SkillType.邪灵汲取) {
+                    EnergyDrain.apply(skillUseInfo, this, attacker, defender, result, damagedResult);
+                } else if (skillUseInfo.getType() == SkillType.被插出五星) {
+                    CounterSummon.apply(this, defender, skillUseInfo.getSkill(), 5);
+                } else if (skillUseInfo.getType() == SkillType.大地之盾) {
+                    EarthShield.apply(skillUseInfo, this, attacker, defender);
                 }
             }
             {
                 RuneInfo rune = defender.getOwner().getActiveRuneOf(RuneData.雷盾);
                 if (rune != null && !defender.isWeak()) {
-                    Spike.apply(rune.getFeature(), this, attacker, defender, attackFeature, result.getDamage());
+                    Spike.apply(rune.getSkill(), this, attacker, defender, attackSkill, result.getDamage());
                 }
             }
             {
                 RuneInfo rune = defender.getOwner().getActiveRuneOf(RuneData.漩涡);
                 if (rune != null && !defender.isWeak()) {
-                    CounterAttack.apply(rune.getFeature(), this, attacker, defender, result.getDamage());
+                    CounterAttack.apply(rune.getSkill(), this, attacker, defender, result.getDamage());
                 }
             }
             if (!defender.isDead()) {
@@ -316,38 +319,37 @@ public class SkillResolver {
                 }
                 RuneInfo rune = defender.getOwner().getActiveRuneOf(RuneData.怒涛);
                 if (rune != null && !defender.isWeak()) {
-                    Zealot.apply(rune.getFeatureInfo(), this, attacker, defender, result);
+                    Zealot.apply(rune.getSkillUseInfo(), this, attacker, defender, result);
                 }
             }
         }
     }
 
-    public OnAttackBlockingResult resolveHealBlockingFeature(EntityInfo healer, CardInfo healee, Skill cardFeature) {
-        OnAttackBlockingResult result = new OnAttackBlockingResult(true, cardFeature.getImpact());
+    public OnAttackBlockingResult resolveHealBlockingFeature(EntityInfo healer, CardInfo healee, Skill cardSkill) {
+        OnAttackBlockingResult result = new OnAttackBlockingResult(true, cardSkill.getImpact());
         if (healee.getStatus().containsStatus(CardStatusType.裂伤)) {
-            stage.getUI().healBlocked(healer, healee, cardFeature, null);
+            stage.getUI().healBlocked(healer, healee, cardSkill, null);
             result.setAttackable(false);
         }
         return result;
     }
 
     public OnAttackBlockingResult resolveAttackBlockingFeature(EntityInfo attacker, CardInfo defender,
-            Skill attackFeature, int damage) throws HeroDieSignal {
+            Skill attackSkill, int damage) throws HeroDieSignal {
         OnAttackBlockingResult result = new OnAttackBlockingResult(true, 0);
         CardStatus status = attacker.getStatus();
-        if (isPhysicalAttackFeature(attackFeature)) {
+        if (isPhysicalAttackFeature(attackSkill)) {
             // Physical attack could be blocked by Dodge or 麻痹, 冰冻, 锁定, 迷惑, 复活 status.
             CardInfo cardAttacker = (CardInfo) attacker;
             result.setDamage(damage);
             if (status.containsStatus(CardStatusType.冰冻) || status.containsStatus(CardStatusType.麻痹)
                     || status.containsStatus(CardStatusType.锁定) || status.containsStatus(CardStatusType.复活)) {
-                stage.getUI().attackBlocked(cardAttacker, defender, attackFeature, null);
+                stage.getUI().attackBlocked(cardAttacker, defender, attackSkill, null);
                 result.setAttackable(false);
             } else {
-                for (SkillUseInfo blockFeature : defender.getNormalUsableSkills()) {
-                    if (blockFeature.getType() == SkillType.闪避) {
-                        result.setAttackable(!Dodge.apply(blockFeature.getSkill(), this, cardAttacker,
-                                defender, result.getDamage()));
+                for (SkillUseInfo blockSkill : defender.getNormalUsableSkills()) {
+                    if (blockSkill.getType() == SkillType.闪避) {
+                        result.setAttackable(!Dodge.apply(blockSkill.getSkill(), this, cardAttacker, defender, result.getDamage()));
                         if (!result.isAttackable()) {
                             return result;
                         }
@@ -356,7 +358,7 @@ public class SkillResolver {
                 {
                     RuneInfo rune = defender.getOwner().getActiveRuneOf(RuneData.轻灵);
                     if (rune != null && !defender.isWeak()) {
-                        result.setAttackable(!Dodge.apply(rune.getFeature(), this, cardAttacker, defender,
+                        result.setAttackable(!Dodge.apply(rune.getSkill(), this, cardAttacker, defender,
                                 result.getDamage()));
                         if (!result.isAttackable()) {
                             return result;
@@ -402,7 +404,7 @@ public class SkillResolver {
                 {
                     RuneInfo rune = defender.getOwner().getActiveRuneOf(RuneData.冰封);
                     if (rune != null && !defender.isWeak()) {
-                        result.setDamage(IceArmor.apply(rune.getFeature(), this, cardAttacker, defender,
+                        result.setDamage(IceArmor.apply(rune.getSkill(), this, cardAttacker, defender,
                                 result.getDamage()));
                     }
                     if (!result.isAttackable()) {
@@ -412,7 +414,7 @@ public class SkillResolver {
                 {
                     RuneInfo rune = defender.getOwner().getActiveRuneOf(RuneData.岩壁);
                     if (rune != null && !defender.isWeak()) {
-                        result.setDamage(Block.apply(rune.getFeature(), this, cardAttacker, defender, rune,
+                        result.setDamage(Block.apply(rune.getSkill(), this, cardAttacker, defender, rune,
                                 result.getDamage()));
                     }
                     if (!result.isAttackable()) {
@@ -425,13 +427,13 @@ public class SkillResolver {
             boolean isAttackerDisabled = status.containsStatus(CardStatusType.冰冻)
                     || status.containsStatus(CardStatusType.锁定)
                     || status.containsStatus(CardStatusType.复活);
-            if (!attackFeature.isDeathSkill() && isAttackerDisabled) {
-                stage.getUI().attackBlocked(attacker, defender, attackFeature, null);
+            if (!attackSkill.isDeathSkill() && isAttackerDisabled) {
+                stage.getUI().attackBlocked(attacker, defender, attackSkill, null);
                 result.setAttackable(false);
             } else {
                 for (SkillUseInfo blockFeature : defender.getNormalUsableSkills()) {
                     if (blockFeature.getType() == SkillType.法力反射) {
-                        if (CounterMagic.isFeatureBlocked(this, blockFeature.getSkill(), attackFeature,
+                        if (CounterMagic.isFeatureBlocked(this, blockFeature.getSkill(), attackSkill,
                                 attacker, defender)) {
                             result.setAttackable(false);
                             return result;
@@ -441,7 +443,7 @@ public class SkillResolver {
                 {
                     RuneInfo rune = defender.getOwner().getRuneBox().getRuneOf(RuneData.石林);
                     if (rune != null && rune.isActivated() && !defender.isWeak()) {
-                        if (CounterMagic.isFeatureBlocked(this, rune.getFeature(), attackFeature, attacker,
+                        if (CounterMagic.isFeatureBlocked(this, rune.getSkill(), attackSkill, attacker,
                                 defender)) {
                             result.setAttackable(false);
                             return result;
@@ -451,22 +453,22 @@ public class SkillResolver {
 
                 for (SkillUseInfo blockFeature : defender.getNormalUsableSkills()) {
                     if (blockFeature.getType() == SkillType.免疫) {
-                        if (Immue.isFeatureBlocked(this, blockFeature.getSkill(), attackFeature, attacker, defender)) {
+                        if (Immue.isFeatureBlocked(this, blockFeature.getSkill(), attackSkill, attacker, defender)) {
                             result.setAttackable(false);
                             return result;
                         }
                     } else if (blockFeature.getType() == SkillType.无效) {
-                        if (NoEffect.isFeatureBlocked(this, blockFeature.getSkill(), attackFeature, attacker, defender)) {
+                        if (NoEffect.isFeatureBlocked(this, blockFeature.getSkill(), attackSkill, attacker, defender)) {
                             result.setAttackable(false);
                             return result;
                         }
                     } else if (blockFeature.getType() == SkillType.脱困) {
-                        if (Escape.isFeatureEscaped(this, blockFeature.getSkill(), attackFeature, attacker, defender)) {
+                        if (Escape.isFeatureEscaped(this, blockFeature.getSkill(), attackSkill, attacker, defender)) {
                             result.setAttackable(false);
                             return result;
                         }
                     } else if (blockFeature.getType() == SkillType.不动) {
-                        if (Immobility.isFeatureBlocked(this, blockFeature.getSkill(), attackFeature, attacker, defender)) {
+                        if (Immobility.isFeatureBlocked(this, blockFeature.getSkill(), attackSkill, attacker, defender)) {
                             result.setAttackable(false);
                             return result;
                         }
@@ -475,7 +477,7 @@ public class SkillResolver {
                 {
                     RuneInfo rune = defender.getOwner().getActiveRuneOf(RuneData.鬼步);
                     if (rune != null && !defender.isWeak()) {
-                        if (Escape.isFeatureEscaped(this, rune.getFeature(), attackFeature, attacker, defender)) {
+                        if (Escape.isFeatureEscaped(this, rune.getSkill(), attackSkill, attacker, defender)) {
                             result.setAttackable(false);
                             return result;
                         }
@@ -484,7 +486,7 @@ public class SkillResolver {
                 for (SkillUseInfo blockFeature : defender.getNormalUsableSkills()) {
                     if (blockFeature.getType() == SkillType.魔甲) {
                         result.setDamage(MagicShield.apply(this, blockFeature.getSkill(), attacker, defender,
-                                attackFeature, result.getDamage()));
+                                attackSkill, result.getDamage()));
                     }
                     if (!result.isAttackable()) {
                         return result;
@@ -493,8 +495,8 @@ public class SkillResolver {
                 {
                     RuneInfo rune = defender.getOwner().getActiveRuneOf(RuneData.炎甲);
                     if (rune != null && !defender.isWeak()) {
-                        result.setDamage(MagicShield.apply(this, rune.getFeature(), attacker, defender,
-                                attackFeature, result.getDamage()));
+                        result.setDamage(MagicShield.apply(this, rune.getSkill(), attacker, defender,
+                                attackSkill, result.getDamage()));
                     }
                     if (!result.isAttackable()) {
                         return result;
@@ -560,7 +562,7 @@ public class SkillResolver {
         {
             RuneInfo rune = deadCard.getOwner().getActiveRuneOf(RuneData.爆裂);
             if (rune != null && !deadCard.isWeak()) {
-                Explode.apply(this, rune.getFeature(), killerCard, deadCard);
+                Explode.apply(this, rune.getSkill(), killerCard, deadCard);
             }
         }
         boolean reincarnated = false;
@@ -575,7 +577,7 @@ public class SkillResolver {
         if (!reincarnated) {
             RuneInfo rune = deadCard.getOwner().getActiveRuneOf(RuneData.秽土);
             if (rune != null && !deadCard.isWeak()) {
-                Reincarnation.apply(this, rune.getFeature(), deadCard);
+                Reincarnation.apply(this, rune.getSkill(), deadCard);
             }
         }
     }
@@ -592,7 +594,7 @@ public class SkillResolver {
         if (!attacker.isDead()) {
             RuneInfo rune = attacker.getOwner().getActiveRuneOf(RuneData.赤谷);
             if (rune != null && !attacker.isWeak()) {
-                BloodDrain.apply(rune.getFeature(), this, attacker, defender, normalAttackDamage);
+                BloodDrain.apply(rune.getSkill(), this, attacker, defender, normalAttackDamage);
             }
         }
     }
@@ -620,7 +622,7 @@ public class SkillResolver {
         if (!attacker.isDead()) {
             RuneInfo rune = attacker.getOwner().getActiveRuneOf(RuneData.洞察);
             if (rune != null && !attacker.isWeak()) {
-                BloodThirsty.apply(this, rune.getFeatureInfo(), attacker, normalAttackDamage);
+                BloodThirsty.apply(this, rune.getSkillUseInfo(), attacker, normalAttackDamage);
             }
         }
     }
@@ -669,19 +671,19 @@ public class SkillResolver {
             {
                 RuneInfo rune = attacker.getOwner().getActiveRuneOf(RuneData.绝杀);
                 if (rune != null && !attacker.isWeak()) {
-                    Wrath.apply(this, rune.getFeatureInfo(), attacker, defender);
+                    Wrath.apply(this, rune.getSkillUseInfo(), attacker, defender);
                 }
             }
             {
                 RuneInfo rune = attacker.getOwner().getActiveRuneOf(RuneData.寒伤);
                 if (rune != null && !attacker.isWeak()) {
-                    CriticalAttack.apply(this, rune.getFeatureInfo(), attacker, defender);
+                    CriticalAttack.apply(this, rune.getSkillUseInfo(), attacker, defender);
                 }
             }
             {
                 RuneInfo rune = attacker.getOwner().getActiveRuneOf(RuneData.扬旗);
                 if (rune != null && !attacker.isWeak()) {
-                    Pursuit.apply(this, rune.getFeatureInfo(), attacker, defender);
+                    Pursuit.apply(this, rune.getSkillUseInfo(), attacker, defender);
                 }
             }
         }
@@ -817,7 +819,7 @@ public class SkillResolver {
         {
             RuneInfo rune = card.getOwner().getActiveRuneOf(RuneData.复苏);
             if (rune != null && !card.isWeak()) {
-                Rejuvenate.apply(rune.getFeature(), this, card);
+                Rejuvenate.apply(rune.getSkill(), this, card);
             }
         }
     }
@@ -1168,8 +1170,8 @@ public class SkillResolver {
             rune.deactivate();
             for (CardInfo card : player.getField().getAliveCards()) {
                 for (SkillEffect effect : card.getEffects()) {
-                    if (effect.getCause().equals(rune.getFeatureInfo())) {
-                        if (rune.getFeature().getType().containsTag(SkillTag.永久)) {
+                    if (effect.getCause().equals(rune.getSkillUseInfo())) {
+                        if (rune.getSkill().getType().containsTag(SkillTag.永久)) {
                             continue;
                         }
                         if (effect.getType() == SkillEffectType.ATTACK_CHANGE) {
@@ -1194,67 +1196,67 @@ public class SkillResolver {
                 continue;
             }
             if (rune.is(RuneData.荒芜)) {
-                PoisonMagic.apply(rune.getFeatureInfo(), this, rune, defenderHero, 1);
+                PoisonMagic.apply(rune.getSkillUseInfo(), this, rune, defenderHero, 1);
             } else if (rune.is(RuneData.沼泽)) {
-                PoisonMagic.apply(rune.getFeatureInfo(), this, rune, defenderHero, 3);
+                PoisonMagic.apply(rune.getSkillUseInfo(), this, rune, defenderHero, 3);
             } else if (rune.is(RuneData.岩晶)) {
-                EnergyArmor.apply(this, rune.getFeatureInfo(), rune, 1);
+                EnergyArmor.apply(this, rune.getSkillUseInfo(), rune, 1);
             } else if (rune.is(RuneData.毒砂)) {
-                PoisonMagic.apply(rune.getFeatureInfo(), this, rune, defenderHero, 1);
+                PoisonMagic.apply(rune.getSkillUseInfo(), this, rune, defenderHero, 1);
             } else if (rune.is(RuneData.深渊)) {
-                PoisonMagic.apply(rune.getFeatureInfo(), this, rune, defenderHero, 3);
+                PoisonMagic.apply(rune.getSkillUseInfo(), this, rune, defenderHero, 3);
             } else if (rune.is(RuneData.陨星)) {
-                Plague.apply(rune.getFeatureInfo(), this, rune, defenderHero);
+                Plague.apply(rune.getSkillUseInfo(), this, rune, defenderHero);
             } else if (rune.is(RuneData.死域)) {
-                PoisonMagic.apply(rune.getFeatureInfo(), this, rune, defenderHero, -1);
+                PoisonMagic.apply(rune.getSkillUseInfo(), this, rune, defenderHero, -1);
             } else if (rune.is(RuneData.霜冻)) {
-                IceMagic.apply(rune.getFeatureInfo(), this, rune, defenderHero, 1, 45, 0);
+                IceMagic.apply(rune.getSkillUseInfo(), this, rune, defenderHero, 1, 45, 0);
             } else if (rune.is(RuneData.寒潮)) {
-                IceMagic.apply(rune.getFeatureInfo(), this, rune, defenderHero, 3, 35, 0);
+                IceMagic.apply(rune.getSkillUseInfo(), this, rune, defenderHero, 3, 35, 0);
             } else if (rune.is(RuneData.冰锥)) {
-                IceMagic.apply(rune.getFeatureInfo(), this, rune, defenderHero, 1, 45, 0);
+                IceMagic.apply(rune.getSkillUseInfo(), this, rune, defenderHero, 1, 45, 0);
             } else if (rune.is(RuneData.暴雨)) {
-                WeakenAll.apply(this, rune.getFeatureInfo(), rune, defenderHero);
+                WeakenAll.apply(this, rune.getSkillUseInfo(), rune, defenderHero);
             } else if (rune.is(RuneData.清泉)) {
-                Rainfall.apply(rune.getFeature(), this, rune);
+                Rainfall.apply(rune.getSkill(), this, rune);
             } else if (rune.is(RuneData.雪崩)) {
-                IceMagic.apply(rune.getFeatureInfo(), this, rune, defenderHero, 3, 35, 0);
+                IceMagic.apply(rune.getSkillUseInfo(), this, rune, defenderHero, 3, 35, 0);
             } else if (rune.is(RuneData.圣泉)) {
-                Pray.apply(rune.getFeature(), this, rune);
+                Pray.apply(rune.getSkill(), this, rune);
             } else if (rune.is(RuneData.永冻)) {
-                IceMagic.apply(rune.getFeatureInfo(), this, rune, defenderHero, -1, 30, 0);
+                IceMagic.apply(rune.getSkillUseInfo(), this, rune, defenderHero, -1, 30, 0);
             } else if (rune.is(RuneData.闪电)) {
-                LighteningMagic.apply(rune.getFeatureInfo(), this, rune, defenderHero, 1, 50);
+                LighteningMagic.apply(rune.getSkillUseInfo(), this, rune, defenderHero, 1, 50);
             } else if (rune.is(RuneData.雷云)) {
-                LighteningMagic.apply(rune.getFeatureInfo(), this, rune, defenderHero, 3, 40);
+                LighteningMagic.apply(rune.getSkillUseInfo(), this, rune, defenderHero, 3, 40);
             } else if (rune.is(RuneData.霹雳)) {
-                LighteningMagic.apply(rune.getFeatureInfo(), this, rune, defenderHero, 1, 50);
+                LighteningMagic.apply(rune.getSkillUseInfo(), this, rune, defenderHero, 1, 50);
             } else if (rune.is(RuneData.飞羽)) {
-                Snipe.apply(rune.getFeature(), this, rune, defenderHero, 1);
+                Snipe.apply(rune.getSkill(), this, rune, defenderHero, 1);
             } else if (rune.is(RuneData.飓风)) {
-                LighteningMagic.apply(rune.getFeatureInfo(), this, rune, defenderHero, 3, 40);
+                LighteningMagic.apply(rune.getSkillUseInfo(), this, rune, defenderHero, 3, 40);
             } else if (rune.is(RuneData.春风)) {
-                EnergyArmor.apply(this, rune.getFeatureInfo(), rune, -1);
+                EnergyArmor.apply(this, rune.getSkillUseInfo(), rune, -1);
             } else if (rune.is(RuneData.雷狱)) {
-                LighteningMagic.apply(rune.getFeatureInfo(), this, rune, defenderHero, -1, 35);
+                LighteningMagic.apply(rune.getSkillUseInfo(), this, rune, defenderHero, -1, 35);
             } else if (rune.is(RuneData.火拳)) {
-                FireMagic.apply(rune.getFeature(), this, rune, defenderHero, 1);
+                FireMagic.apply(rune.getSkill(), this, rune, defenderHero, 1);
             } else if (rune.is(RuneData.热浪)) {
-                FireMagic.apply(rune.getFeature(), this, rune, defenderHero, 3);
+                FireMagic.apply(rune.getSkill(), this, rune, defenderHero, 3);
             } else if (rune.is(RuneData.流火)) {
-                FireMagic.apply(rune.getFeature(), this, rune, defenderHero, 1);
+                FireMagic.apply(rune.getSkill(), this, rune, defenderHero, 1);
             } else if (rune.is(RuneData.红莲)) {
-                Heal.apply(rune.getFeature(), this, rune);
+                Heal.apply(rune.getSkill(), this, rune);
             } else if (rune.is(RuneData.冥火)) {
-                BurningFlame.apply(rune.getFeatureInfo(), this, rune, defenderHero);
+                BurningFlame.apply(rune.getSkillUseInfo(), this, rune, defenderHero);
             } else if (rune.is(RuneData.淬炼)) {
-                AttackUp.apply(this, rune.getFeatureInfo(), rune, -1);
+                AttackUp.apply(this, rune.getSkillUseInfo(), rune, -1);
             } else if (rune.is(RuneData.焚天)) {
-                FireMagic.apply(rune.getFeature(), this, rune, defenderHero, 3);
+                FireMagic.apply(rune.getSkill(), this, rune, defenderHero, 3);
             } else if (rune.is(RuneData.灼魂)) {
-                HeavenWrath.apply(this, rune.getFeature(), rune, defenderHero);
+                HeavenWrath.apply(this, rune.getSkill(), rune, defenderHero);
             } else if (rune.is(RuneData.灭世)) {
-                FireMagic.apply(rune.getFeature(), this, rune, defenderHero, -1);
+                FireMagic.apply(rune.getSkill(), this, rune, defenderHero, -1);
             }
         }
     }

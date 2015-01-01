@@ -20,7 +20,7 @@ public class RuneInfo extends EntityInfo {
     public RuneInfo(Rune rune, Player owner) {
         this.rune = rune;
         this.owner = owner;
-        this.skillUseInfo = new SkillUseInfo(this, rune.getFeature());
+        this.skillUseInfo = new SkillUseInfo(this, rune.getSkill());
         this.energy = rune.getMaxEnergy();
         this.activated = false;
     }
@@ -48,7 +48,7 @@ public class RuneInfo extends EntityInfo {
         return this.activated;
     }
 
-    public SkillUseInfo getFeatureInfo() {
+    public SkillUseInfo getSkillUseInfo() {
         return this.skillUseInfo;
     }
     
@@ -75,8 +75,8 @@ public class RuneInfo extends EntityInfo {
         return new CardStatus();
     }
 
-    public Skill getFeature() {
-        return this.getFeatureInfo().getSkill();
+    public Skill getSkill() {
+        return this.getSkillUseInfo().getSkill();
     }
 
     public String getName() {

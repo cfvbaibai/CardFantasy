@@ -242,11 +242,13 @@ public class GameEngine {
             else if (
                 status.containsStatus(CardStatusType.冰冻) ||
                 status.containsStatus(CardStatusType.锁定) ||
-                status.containsStatus(CardStatusType.复活)) {
+                status.containsStatus(CardStatusType.复活) ||
+                status.containsStatus(CardStatusType.晕眩)) {
                 underControl = true;
                 ui.cannotAction(myField.getCard(i));
                 resolver.removeStatus(myField.getCard(i), CardStatusType.冰冻);
                 resolver.removeStatus(myField.getCard(i), CardStatusType.锁定);
+                resolver.removeStatus(myField.getCard(i), CardStatusType.晕眩);
             } else {
                 tryAttackEnemy(myField, opField, i);
             }
