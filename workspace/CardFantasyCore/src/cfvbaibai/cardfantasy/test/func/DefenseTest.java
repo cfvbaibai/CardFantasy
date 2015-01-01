@@ -205,4 +205,19 @@ public class DefenseTest extends SkillValidationTest {
         Assert.assertEquals(0, 995 - c大剑圣3.getHP());
         Assert.assertEquals(0, 995 - c大剑圣4.getHP());
     }
+    
+    @Test
+    public void test圣盾_基本() {
+        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "秘银巨石像", "混元大师");
+        context.addToField(0, 0);
+        CardInfo c混元大师 = context.addToField(1, 1);
+        context.startGame();
+        
+        context.proceedOneRound();
+        Assert.assertEquals(0, 1390 - c混元大师.getHP());  // 被圣盾完全防御
+        
+        context.proceedOneRound();
+        context.proceedOneRound();
+        Assert.assertEquals(660, 1390 - c混元大师.getHP()); // 圣盾只能用一次
+    }
 }
