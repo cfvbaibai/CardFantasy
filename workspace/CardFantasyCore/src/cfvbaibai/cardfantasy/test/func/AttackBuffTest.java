@@ -44,6 +44,38 @@ public class AttackBuffTest extends SkillValidationTest {
         Assert.assertEquals(expectedDamage, actualDamage);
     }
 
+    @Test
+    public void test邪灵汲取_削弱() {
+        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "隐世先知+弱点攻击", "末日预言师", "时空旅者");
+        CardInfo c隐世先知 = context.addToField(0, 0);
+        CardInfo c末日预言师 = context.addToField(1, 1);
+        context.addToField(2, 1);
+        context.startGame();
+
+        context.proceedOneRound();
+        int atDecreased = 840 * 18 / 100;
+        Assert.assertEquals(840 - atDecreased, c隐世先知.getCurrentAT());
+        Assert.assertEquals(635 + atDecreased, c末日预言师.getCurrentAT());
+        Assert.assertEquals(840, 1770 - c末日预言师.getHP());
+
+        int at隐世先知RoundStart = c隐世先知.getCurrentAT();
+        int at末日预言师RoundStart = c末日预言师.getCurrentAT();
+        int hp隐世先知RoundStart = c隐世先知.getHP();
+        random.addNextPicks(0); // 时空旅者群体削弱
+        context.proceedOneRound();
+        Assert.assertEquals(at隐世先知RoundStart - 40, c隐世先知.getCurrentAT());
+        Assert.assertEquals(at末日预言师RoundStart, hp隐世先知RoundStart - c隐世先知.getHP());
+
+        at隐世先知RoundStart = c隐世先知.getCurrentAT();
+        at末日预言师RoundStart = c末日预言师.getCurrentAT();
+        int hp末日预言师RoundStart = c末日预言师.getHP();
+        atDecreased = at隐世先知RoundStart * 18 / 100;
+        context.proceedOneRound();
+        Assert.assertEquals(at隐世先知RoundStart - atDecreased, c隐世先知.getCurrentAT());
+        Assert.assertEquals(at末日预言师RoundStart + atDecreased, c末日预言师.getCurrentAT());
+        Assert.assertEquals(at隐世先知RoundStart, hp末日预言师RoundStart - c末日预言师.getHP());
+    }
+
     /**
      * 攻击力计算方式：(基础 + 邪灵汲取 + 淬炼) * 暴击 - (基础 + 邪灵汲取 + 淬炼) * 虚弱
      * @throws HeroDieSignal 
