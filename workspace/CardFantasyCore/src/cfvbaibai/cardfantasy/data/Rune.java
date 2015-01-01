@@ -16,9 +16,9 @@ public class Rune implements Comparable<Rune> {
         return data.getGrowth().getLevel(this.exp);
     }
     
-    public RuneFeature getFeature() {
+    public RuneSkill getFeature() {
         int featureLevel = data.getInitFeatureLevel() + getLevel() * data.getIncrFeatureLevel();
-        return new RuneFeature(data.getFeatureType(), featureLevel);
+        return new RuneSkill(data.getFeatureType(), featureLevel);
     }
     
     public int getMaxEnergy() {

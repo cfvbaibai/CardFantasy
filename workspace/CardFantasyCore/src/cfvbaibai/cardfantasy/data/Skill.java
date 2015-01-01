@@ -77,6 +77,6 @@ public abstract class Skill implements Comparable<Skill> {
     }
     
     public static Skill 自动扣血() {
-        return new RuneFeature(FeatureType.自动扣血, 0);
+        return new RuneSkill(FeatureType.自动扣血, 0);
     }
 }

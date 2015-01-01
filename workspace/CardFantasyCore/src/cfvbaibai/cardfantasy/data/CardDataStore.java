@@ -54,7 +54,7 @@ public class CardDataStore {
                     boolean isSummonFeature = summonText == null ? false : Boolean.parseBoolean(summonText);
                     String deathText = featureNode.valueOf("@death");
                     boolean isDeathFeature = deathText == null ? false : Boolean.parseBoolean(deathText);
-                    cardData.getFeatures().add(new CardFeature(type, level, unlockLevel, isSummonFeature, isDeathFeature));
+                    cardData.getFeatures().add(new CardSkill(type, level, unlockLevel, isSummonFeature, isDeathFeature));
                 }
                 store.addCard(cardData);
             }

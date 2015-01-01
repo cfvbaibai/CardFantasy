@@ -9,7 +9,7 @@ public class Card implements Cloneable, Comparable <Card> {
     private CardData sourceInfo;
     private int exp;
     private String uniqueName;
-    private CardFeature extraFeature;
+    private CardSkill extraFeature;
 
     public Card(CardData sourceInfo) {
         this(sourceInfo, 0, "");
@@ -19,7 +19,7 @@ public class Card implements Cloneable, Comparable <Card> {
         this(sourceInfo, cardLevel, null, null, suffix);
     }
 
-    public Card(CardData sourceInfo, int cardLevel, CardFeature extraFeature, String prefix, String suffix) {
+    public Card(CardData sourceInfo, int cardLevel, CardSkill extraFeature, String prefix, String suffix) {
         if (sourceInfo == null) {
             throw new CardFantasyRuntimeException("sourceInfo should not be null");
         }
@@ -63,8 +63,8 @@ public class Card implements Cloneable, Comparable <Card> {
         return this.sourceInfo.getBaseHP() + this.sourceInfo.getIncrHP() * this.getLevel();
     }
 
-    public List<CardFeature> getAllFeatures() {
-        List <CardFeature> features = new ArrayList<CardFeature>(sourceInfo.getFeatures());
+    public List<CardSkill> getAllFeatures() {
+        List <CardSkill> features = new ArrayList<CardSkill>(sourceInfo.getFeatures());
         if (this.extraFeature != null) {
             features.add(this.extraFeature);
         }
@@ -83,7 +83,7 @@ public class Card implements Cloneable, Comparable <Card> {
         return this.sourceInfo.getName();
     }
 
-    public CardFeature getExtraFeature() {
+    public CardSkill getExtraFeature() {
         return this.extraFeature;
     }
 

@@ -17,13 +17,13 @@ public class CardData {
     private int incrCost;
     private Growth growth;
     private String wikiId;
-    private List<CardFeature> cardFeatures;
+    private List<CardSkill> cardSkills;
 
     public CardData() {
         this.id = "";
         this.wikiId = "";
         this.name = "";
-        this.cardFeatures = new ArrayList<CardFeature>();
+        this.cardSkills = new ArrayList<CardSkill>();
         // TODO: Apply real growth
         this.growth = new Growth(100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1100, 1200, 1300, 1400, 1500, 1600);
     }
@@ -128,7 +128,7 @@ public class CardData {
         this.incrCost = incrCost;
     }
     
-    public List <CardFeature> getFeatures() {
-        return this.cardFeatures;
+    public List <CardSkill> getFeatures() {
+        return this.cardSkills;
     }
 }

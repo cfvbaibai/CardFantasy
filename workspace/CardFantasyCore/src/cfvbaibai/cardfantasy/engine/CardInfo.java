@@ -9,7 +9,7 @@ import java.util.Map;
 import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
 import cfvbaibai.cardfantasy.NonSerializable;
 import cfvbaibai.cardfantasy.data.Card;
-import cfvbaibai.cardfantasy.data.CardFeature;
+import cfvbaibai.cardfantasy.data.CardSkill;
 import cfvbaibai.cardfantasy.data.SkillTag;
 import cfvbaibai.cardfantasy.data.FeatureType;
 import cfvbaibai.cardfantasy.data.Race;
@@ -41,14 +41,14 @@ public class CardInfo extends EntityInfo {
         this.owner = owner;
         this.effects = new HashMap<FeatureType, List<FeatureEffect>>();
         this.features = new ArrayList<FeatureInfo>();
-        for (CardFeature feature : card.getAllFeatures()) {
+        for (CardSkill feature : card.getAllFeatures()) {
             this.features.add(new FeatureInfo(this, feature));
         }
         this.cachedPosition = -1;
         this.deadOnce = false;
     }
     
-    public CardFeature getExtraFeature() {
+    public CardSkill getExtraFeature() {
         return card.getExtraFeature();
     }
     
@@ -205,8 +205,8 @@ public class CardInfo extends EntityInfo {
     public List<FeatureInfo> getUsableSummonFeatures() {
         List<FeatureInfo> features = new ArrayList<FeatureInfo>();
         for (FeatureInfo feature : this.getAllUsableFeatures()) {
-            CardFeature cardFeature = (CardFeature)feature.getFeature();
-            if (cardFeature.isSummonFeature()) {
+            CardSkill cardSkill = (CardSkill)feature.getFeature();
+            if (cardSkill.isSummonFeature()) {
                 features.add(feature);
             }
         }
@@ -216,8 +216,8 @@ public class CardInfo extends EntityInfo {
     public List<FeatureInfo> getUsableDeathFeatures() {
         List<FeatureInfo> features = new ArrayList<FeatureInfo>();
         for (FeatureInfo feature : this.getAllUsableFeatures()) {
-            CardFeature cardFeature = (CardFeature)feature.getFeature();
-            if (cardFeature.isDeathFeature()) {
+            CardSkill cardSkill = (CardSkill)feature.getFeature();
+            if (cardSkill.isDeathFeature()) {
                 features.add(feature);
             }
         }
@@ -227,8 +227,8 @@ public class CardInfo extends EntityInfo {
     public List<FeatureInfo> getNormalUsableFeatures() {
         List<FeatureInfo> features = new ArrayList<FeatureInfo>();
         for (FeatureInfo feature : this.getAllUsableFeatures()) {
-            CardFeature cardFeature = (CardFeature)feature.getFeature();
-            if (!cardFeature.isDeathFeature() && !cardFeature.isSummonFeature()) {
+            CardSkill cardSkill = (CardSkill)feature.getFeature();
+            if (!cardSkill.isDeathFeature() && !cardSkill.isSummonFeature()) {
                 features.add(feature);
             }
         }
@@ -242,8 +242,8 @@ public class CardInfo extends EntityInfo {
     private List<FeatureInfo> getUsableFeatures() {
         List<FeatureInfo> features = new ArrayList<FeatureInfo>(6);
         for (FeatureInfo feature : this.getAllFeatures()) {
-            CardFeature cardFeature = (CardFeature)feature.getFeature();
-            if (cardFeature.getUnlockLevel() <= this.getCard().getLevel()) {
+            CardSkill cardSkill = (CardSkill)feature.getFeature();
+            if (cardSkill.getUnlockLevel() <= this.getCard().getLevel()) {
                 features.add(feature);
             }
         }
@@ -393,8 +393,8 @@ public class CardInfo extends EntityInfo {
 
     public boolean containsUsableFeaturesWithTag(SkillTag tag) {
         for (FeatureInfo feature : this.getAllUsableFeatures()) {
-            CardFeature cardFeature = (CardFeature) feature.getFeature();
-            if (cardFeature.getType().containsTag(tag)) {
+            CardSkill cardSkill = (CardSkill) feature.getFeature();
+            if (cardSkill.getType().containsTag(tag)) {
                 return true;
             }
         }

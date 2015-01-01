@@ -13,7 +13,7 @@ import cfvbaibai.cardfantasy.DeckBuildRuntimeException;
 import cfvbaibai.cardfantasy.data.Card;
 import cfvbaibai.cardfantasy.data.CardData;
 import cfvbaibai.cardfantasy.data.CardDataStore;
-import cfvbaibai.cardfantasy.data.CardFeature;
+import cfvbaibai.cardfantasy.data.CardSkill;
 import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.data.FeatureType;
 import cfvbaibai.cardfantasy.data.PlayerInfo;
@@ -194,9 +194,9 @@ public final class DeckBuilder {
         }
         
         String prefix = "";
-        CardFeature extraFeature = null;
+        CardSkill extraFeature = null;
         if (extraFeatureType != null) {
-            extraFeature = new CardFeature(extraFeatureType, extraFeatureLevel, 15, summonFeature, deathFeature);
+            extraFeature = new CardSkill(extraFeatureType, extraFeatureLevel, 15, summonFeature, deathFeature);
             prefix = extraFeatureName;
             if (extraFeatureLevel != 0) {
                 prefix += extraFeatureLevel;
