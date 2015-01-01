@@ -14,7 +14,7 @@ import cfvbaibai.cardfantasy.engine.HeroDieSignal;
 import cfvbaibai.cardfantasy.engine.OnAttackBlockingResult;
 import cfvbaibai.cardfantasy.engine.Player;
 
-public final class PlagueFeature {
+public final class Plague {
     public static void apply(SkillUseInfo skillUseInfo, SkillResolver resolver, EntityInfo attacker, Player defenderHero)
             throws HeroDieSignal {
         Skill skill = skillUseInfo.getFeature();

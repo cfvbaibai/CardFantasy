@@ -9,7 +9,7 @@ import cfvbaibai.cardfantasy.engine.SkillUseInfo;
 import cfvbaibai.cardfantasy.engine.SkillResolver;
 import cfvbaibai.cardfantasy.engine.HeroDieSignal;
 
-public final class OverdrawFeature {
+public final class Overdraw {
     public static void apply(SkillResolver resolver, SkillUseInfo skillUseInfo, CardInfo attacker) throws HeroDieSignal {
         Skill skill = skillUseInfo.getFeature();
         int adjAT = skill.getImpact();

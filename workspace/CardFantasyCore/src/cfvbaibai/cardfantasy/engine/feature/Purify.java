@@ -8,7 +8,7 @@ import cfvbaibai.cardfantasy.engine.SkillUseInfo;
 import cfvbaibai.cardfantasy.engine.SkillResolver;
 import cfvbaibai.cardfantasy.engine.HeroDieSignal;
 
-public final class PurifyFeature {
+public final class Purify {
     public static void apply(SkillUseInfo skillUseInfo, SkillResolver resolver, CardInfo attacker)
             throws HeroDieSignal {
         List<CardInfo> cards = attacker.getOwner().getField().getAliveCards();

@@ -7,7 +7,7 @@ import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.SkillResolver;
 import cfvbaibai.cardfantasy.engine.Field;
 
-public class HealingMistFeature {
+public class HealingMist {
     public static void apply(Skill cardFeature, SkillResolver resolver, CardInfo healer) {
         if (healer == null) {
             return;

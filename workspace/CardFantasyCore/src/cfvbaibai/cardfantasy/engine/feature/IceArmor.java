@@ -5,7 +5,7 @@ import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.SkillResolver;
 
-public final class IceArmorFeature {
+public final class IceArmor {
     public static int apply(Skill cardFeature, SkillResolver resolver, CardInfo attacker, CardInfo defender, int originalDamage) {
         GameUI ui = resolver.getStage().getUI();
         ui.useSkill(defender, attacker, cardFeature, true);

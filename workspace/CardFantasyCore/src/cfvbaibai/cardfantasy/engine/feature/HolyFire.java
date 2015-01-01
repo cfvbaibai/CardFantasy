@@ -6,7 +6,7 @@ import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.SkillResolver;
 import cfvbaibai.cardfantasy.engine.Player;
 
-public final class HolyFireFeature {
+public final class HolyFire {
     public static void apply(Skill cardFeature, SkillResolver resolver, CardInfo attacker, Player defender) {
         if (defender.getGrave().size() == 0) {
             return;

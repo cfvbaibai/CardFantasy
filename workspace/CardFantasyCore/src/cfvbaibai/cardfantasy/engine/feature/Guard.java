@@ -8,7 +8,7 @@ import cfvbaibai.cardfantasy.engine.EntityInfo;
 import cfvbaibai.cardfantasy.engine.SkillResolver;
 import cfvbaibai.cardfantasy.engine.HeroDieSignal;
 
-public final class GuardFeature {
+public final class Guard {
     public static int apply(Skill guardFeature, Skill attackFeature, SkillResolver resolver, EntityInfo attacker, CardInfo guardian,
             int damage) throws HeroDieSignal {
         if (attacker == null) {

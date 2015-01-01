@@ -10,7 +10,7 @@ import cfvbaibai.cardfantasy.engine.SkillResolver;
 import cfvbaibai.cardfantasy.engine.HeroDieSignal;
 import cfvbaibai.cardfantasy.engine.Player;
 
-public final class ManaErodeFeature {
+public final class ManaErode {
     public static void apply(Skill cardFeature, SkillResolver resolver, CardInfo attacker, Player defender,
             int victimCount) throws HeroDieSignal {
         List<CardInfo> victims = resolver.getStage().getRandomizer().pickRandom(

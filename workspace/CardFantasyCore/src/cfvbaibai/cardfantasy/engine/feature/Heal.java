@@ -7,7 +7,7 @@ import cfvbaibai.cardfantasy.engine.EntityInfo;
 import cfvbaibai.cardfantasy.engine.SkillResolver;
 import cfvbaibai.cardfantasy.engine.OnAttackBlockingResult;
 
-public final class HealFeature {
+public final class Heal {
     public static void apply(Skill cardFeature, SkillResolver resolver, EntityInfo healer) {
         if (healer == null) {
             return;

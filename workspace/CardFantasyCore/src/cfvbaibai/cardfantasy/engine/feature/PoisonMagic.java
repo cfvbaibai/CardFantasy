@@ -13,16 +13,9 @@ import cfvbaibai.cardfantasy.engine.HeroDieSignal;
 import cfvbaibai.cardfantasy.engine.OnAttackBlockingResult;
 import cfvbaibai.cardfantasy.engine.Player;
 
-/**
- * Chain Lightening give 25 * level damages to 3 enemy's cards and 40%
- * probability to cause paralyzed.
- * 
- * Can be blocked by Immue. Can be reflected by Magic Reflection. Can activate
- * dying feature.
- */
-public final class LighteningMagicFeature {
+public final class PoisonMagic {
     public static void apply(SkillUseInfo skillUseInfo, SkillResolver resolver, EntityInfo attacker, Player defender,
-            int victimCount, int paralyzeRate) throws HeroDieSignal {
+            int victimCount) throws HeroDieSignal {
         Skill skill = skillUseInfo.getFeature();
         List<CardInfo> victims = resolver.getStage().getRandomizer().pickRandom(
             defender.getField().toList(), victimCount, true, null);
@@ -42,12 +35,10 @@ public final class LighteningMagicFeature {
             }
             if (cardDead) {
                 resolver.resolveDeathFeature(attacker, victim, skill);
-            } else if (resolver.getStage().getRandomizer().roll100(paralyzeRate)) {
-                CardStatusItem status = CardStatusItem.paralyzed(skillUseInfo);
-                if (!resolver.resolveBlockStatusFeature(attacker, victim, skillUseInfo, status).isBlocked()) {
-                    ui.addCardStatus(attacker, victim, skill, status);
-                    victim.addStatus(status);
-                }
+            } else {
+                CardStatusItem status = CardStatusItem.poisoned(damage, skillUseInfo);
+                ui.addCardStatus(attacker, victim, skill, status);
+                victim.addStatus(status);
             }
         }
     }

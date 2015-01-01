@@ -8,7 +8,7 @@ import cfvbaibai.cardfantasy.engine.SkillUseInfo;
 import cfvbaibai.cardfantasy.engine.SkillResolver;
 import cfvbaibai.cardfantasy.engine.Player;
 
-public class WinningPursuitFeature extends PreAttackCardFeature {
+public class WinningPursuitFeature extends PreAttackCardSkill {
     public static void apply(SkillResolver resolver, SkillUseInfo skillUseInfo, CardInfo attacker, Player defender) {
         int enemyDeadCount = defender.getGrave().size();
         if (enemyDeadCount == 0) {

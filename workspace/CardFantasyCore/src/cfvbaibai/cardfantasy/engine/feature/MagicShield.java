@@ -7,7 +7,7 @@ import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.EntityInfo;
 import cfvbaibai.cardfantasy.engine.SkillResolver;
 
-public final class MagicShieldFeature {
+public final class MagicShield {
     public static int apply(SkillResolver resolver, Skill skill, EntityInfo attacker, CardInfo defender,
             Skill attackFeature, int originalDamage) {
         if (!attackFeature.getType().containsTag(SkillTag.魔法)) {

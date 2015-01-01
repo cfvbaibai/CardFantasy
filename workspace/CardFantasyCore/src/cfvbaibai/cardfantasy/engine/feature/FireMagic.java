@@ -13,7 +13,7 @@ import cfvbaibai.cardfantasy.engine.OnAttackBlockingResult;
 import cfvbaibai.cardfantasy.engine.Player;
 import cfvbaibai.cardfantasy.engine.StageInfo;
 
-public final class FireMagicFeature {
+public final class FireMagic {
     public static void apply(Skill cardFeature, SkillResolver resolver, EntityInfo attacker, Player defender,
             int victimCount) throws HeroDieSignal {
         StageInfo stage = resolver.getStage();

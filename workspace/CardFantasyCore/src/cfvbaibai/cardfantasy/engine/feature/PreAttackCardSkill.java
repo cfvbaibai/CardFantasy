@@ -7,7 +7,7 @@ import cfvbaibai.cardfantasy.engine.SkillEffect;
 import cfvbaibai.cardfantasy.engine.SkillUseInfo;
 import cfvbaibai.cardfantasy.engine.SkillResolver;
 
-public class PreAttackCardFeature {
+public class PreAttackCardSkill {
     public static void remove(SkillResolver resolver, SkillUseInfo feature, CardInfo card) {
         List<SkillEffect> effects = card.getEffectsCausedBy(feature);
         for (SkillEffect effect : effects) {

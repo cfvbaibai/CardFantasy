@@ -38,31 +38,31 @@ import cfvbaibai.cardfantasy.engine.feature.EnergyDrain;
 import cfvbaibai.cardfantasy.engine.feature.Enprison;
 import cfvbaibai.cardfantasy.engine.feature.Escape;
 import cfvbaibai.cardfantasy.engine.feature.Explode;
-import cfvbaibai.cardfantasy.engine.feature.FireMagicFeature;
-import cfvbaibai.cardfantasy.engine.feature.GuardFeature;
-import cfvbaibai.cardfantasy.engine.feature.HealFeature;
-import cfvbaibai.cardfantasy.engine.feature.HealingMistFeature;
-import cfvbaibai.cardfantasy.engine.feature.HeavenWrathFeature;
-import cfvbaibai.cardfantasy.engine.feature.HeroKillerFeature;
-import cfvbaibai.cardfantasy.engine.feature.HolyFireFeature;
-import cfvbaibai.cardfantasy.engine.feature.HolyGuardFeature;
-import cfvbaibai.cardfantasy.engine.feature.IceArmorFeature;
-import cfvbaibai.cardfantasy.engine.feature.IceMagicFeature;
-import cfvbaibai.cardfantasy.engine.feature.ImmobilityFeature;
-import cfvbaibai.cardfantasy.engine.feature.ImmueFeature;
-import cfvbaibai.cardfantasy.engine.feature.LegionBuffFeature;
-import cfvbaibai.cardfantasy.engine.feature.LighteningMagicFeature;
-import cfvbaibai.cardfantasy.engine.feature.MagicShieldFeature;
-import cfvbaibai.cardfantasy.engine.feature.ManaErodeFeature;
-import cfvbaibai.cardfantasy.engine.feature.NoEffectFeature;
-import cfvbaibai.cardfantasy.engine.feature.OneDelayFeature;
-import cfvbaibai.cardfantasy.engine.feature.OverdrawFeature;
-import cfvbaibai.cardfantasy.engine.feature.PenetrationFeature;
-import cfvbaibai.cardfantasy.engine.feature.PlagueFeature;
-import cfvbaibai.cardfantasy.engine.feature.PoisonMagicFeature;
-import cfvbaibai.cardfantasy.engine.feature.PrayFeature;
-import cfvbaibai.cardfantasy.engine.feature.PurifyFeature;
-import cfvbaibai.cardfantasy.engine.feature.PursuitFeature;
+import cfvbaibai.cardfantasy.engine.feature.FireMagic;
+import cfvbaibai.cardfantasy.engine.feature.Guard;
+import cfvbaibai.cardfantasy.engine.feature.Heal;
+import cfvbaibai.cardfantasy.engine.feature.HealingMist;
+import cfvbaibai.cardfantasy.engine.feature.HeavenWrath;
+import cfvbaibai.cardfantasy.engine.feature.HeroKiller;
+import cfvbaibai.cardfantasy.engine.feature.HolyFire;
+import cfvbaibai.cardfantasy.engine.feature.HolyGuard;
+import cfvbaibai.cardfantasy.engine.feature.IceArmor;
+import cfvbaibai.cardfantasy.engine.feature.IceMagic;
+import cfvbaibai.cardfantasy.engine.feature.Immobility;
+import cfvbaibai.cardfantasy.engine.feature.Immue;
+import cfvbaibai.cardfantasy.engine.feature.LegionBuff;
+import cfvbaibai.cardfantasy.engine.feature.LighteningMagic;
+import cfvbaibai.cardfantasy.engine.feature.MagicShield;
+import cfvbaibai.cardfantasy.engine.feature.ManaErode;
+import cfvbaibai.cardfantasy.engine.feature.NoEffect;
+import cfvbaibai.cardfantasy.engine.feature.OneDelay;
+import cfvbaibai.cardfantasy.engine.feature.Overdraw;
+import cfvbaibai.cardfantasy.engine.feature.Penetration;
+import cfvbaibai.cardfantasy.engine.feature.Plague;
+import cfvbaibai.cardfantasy.engine.feature.PoisonMagic;
+import cfvbaibai.cardfantasy.engine.feature.Pray;
+import cfvbaibai.cardfantasy.engine.feature.Purify;
+import cfvbaibai.cardfantasy.engine.feature.Pursuit;
 import cfvbaibai.cardfantasy.engine.feature.RaceBuffFeature;
 import cfvbaibai.cardfantasy.engine.feature.RacialAttackFeature;
 import cfvbaibai.cardfantasy.engine.feature.RacialShieldFeature;
@@ -141,7 +141,7 @@ public class SkillResolver {
                 continue;
             }
             if (feature.getType() == SkillType.透支) {
-                OverdrawFeature.apply(this, feature, attacker);
+                Overdraw.apply(this, feature, attacker);
             }
         }
         for (SkillUseInfo feature : attacker.getNormalUsableFeatures()) {
@@ -155,31 +155,31 @@ public class SkillResolver {
             } else if (feature.getType() == SkillType.吐槽) {
                 TsukomiFeature.apply(this, feature.getFeature(), attacker, defender);
             } else if (feature.getType() == SkillType.火球) {
-                FireMagicFeature.apply(feature.getFeature(), this, attacker, defender, 1);
+                FireMagic.apply(feature.getFeature(), this, attacker, defender, 1);
             } else if (feature.getType() == SkillType.火墙) {
-                FireMagicFeature.apply(feature.getFeature(), this, attacker, defender, 3);
+                FireMagic.apply(feature.getFeature(), this, attacker, defender, 3);
             } else if (feature.getType() == SkillType.烈焰风暴) {
-                FireMagicFeature.apply(feature.getFeature(), this, attacker, defender, -1);
+                FireMagic.apply(feature.getFeature(), this, attacker, defender, -1);
             } else if (feature.getType() == SkillType.落雷) {
-                LighteningMagicFeature.apply(feature, this, attacker, defender, 1, 50);
+                LighteningMagic.apply(feature, this, attacker, defender, 1, 50);
             } else if (feature.getType() == SkillType.连环闪电) {
-                LighteningMagicFeature.apply(feature, this, attacker, defender, 3, 40);
+                LighteningMagic.apply(feature, this, attacker, defender, 3, 40);
             } else if (feature.getType() == SkillType.雷暴) {
-                LighteningMagicFeature.apply(feature, this, attacker, defender, -1, 35);
+                LighteningMagic.apply(feature, this, attacker, defender, -1, 35);
             } else if (feature.getType() == SkillType.冰弹) {
-                IceMagicFeature.apply(feature, this, attacker, defender, 1, 45, 0);
+                IceMagic.apply(feature, this, attacker, defender, 1, 45, 0);
             } else if (feature.getType() == SkillType.霜冻新星) {
-                IceMagicFeature.apply(feature, this, attacker, defender, 3, 35, 0);
+                IceMagic.apply(feature, this, attacker, defender, 3, 35, 0);
             } else if (feature.getType() == SkillType.暴风雪) {
-                IceMagicFeature.apply(feature, this, attacker, defender, -1, 30, 0);
+                IceMagic.apply(feature, this, attacker, defender, -1, 30, 0);
             } else if (feature.getType() == SkillType.寒霜冲击) {
-                IceMagicFeature.apply(feature, this, attacker, defender, -1, 50, 45 * defender.getField().getAliveCards().size());
+                IceMagic.apply(feature, this, attacker, defender, -1, 50, 45 * defender.getField().getAliveCards().size());
             } else if (feature.getType() == SkillType.毒液) {
-                PoisonMagicFeature.apply(feature, this, attacker, defender, 1);
+                PoisonMagic.apply(feature, this, attacker, defender, 1);
             } else if (feature.getType() == SkillType.毒雾) {
-                PoisonMagicFeature.apply(feature, this, attacker, defender, 3);
+                PoisonMagic.apply(feature, this, attacker, defender, 3);
             } else if (feature.getType() == SkillType.毒云) {
-                PoisonMagicFeature.apply(feature, this, attacker, defender, -1);
+                PoisonMagic.apply(feature, this, attacker, defender, -1);
             } else if (feature.getType() == SkillType.陷阱) {
                 TrapFeature.apply(feature, this, attacker, defender);
             } else if (feature.getType() == SkillType.狙击) {
@@ -187,13 +187,13 @@ public class SkillResolver {
             } else if (feature.getType() == SkillType.魔神之刃) {
                 SnipeFeature.apply(feature.getFeature(), this, attacker, defender, 1);
             } else if (feature.getType() == SkillType.治疗) {
-                HealFeature.apply(feature.getFeature(), this, attacker);
+                Heal.apply(feature.getFeature(), this, attacker);
             } else if (feature.getType() == SkillType.甘霖) {
                 RainfallFeature.apply(feature.getFeature(), this, attacker);
             } else if (feature.getType() == SkillType.治疗之雾) {
-                HealingMistFeature.apply(feature.getFeature(), this, attacker);
+                HealingMist.apply(feature.getFeature(), this, attacker);
             } else if (feature.getType() == SkillType.祈祷) {
-                PrayFeature.apply(feature.getFeature(), this, attacker);
+                Pray.apply(feature.getFeature(), this, attacker);
             } else if (feature.getType() == SkillType.复活) {
                 ReviveFeature.apply(this, feature, attacker);
             } else if (feature.getType() == SkillType.背刺) {
@@ -215,19 +215,19 @@ public class SkillResolver {
             } else if (feature.getType() == SkillType.摧毁) {
                 Destroy.apply(this, feature.getFeature(), attacker, defender, 1);
             } else if (feature.getType() == SkillType.瘟疫) {
-                PlagueFeature.apply(feature, this, attacker, defender);
+                Plague.apply(feature, this, attacker, defender);
             } else if (feature.getType() == SkillType.血炼) {
                 BloodPaint.apply(feature.getFeature(), this, attacker, defender, 1);
             } else if (feature.getType() == SkillType.鲜血盛宴) {
                 BloodPaint.apply(feature.getFeature(), this, attacker, defender, -1);
             } else if (feature.getType() == SkillType.天谴) {
-                HeavenWrathFeature.apply(this, feature.getFeature(), attacker, defender);
+                HeavenWrath.apply(this, feature.getFeature(), attacker, defender);
             } else if (feature.getType() == SkillType.封印) {
                 SealFeature.apply(feature, this, attacker, defender);
             } else if (feature.getType() == SkillType.圣炎) {
-                HolyFireFeature.apply(feature.getFeature(), this, attacker, defender);
+                HolyFire.apply(feature.getFeature(), this, attacker, defender);
             } else if (feature.getType() == SkillType.法力侵蚀) {
-                ManaErodeFeature.apply(feature.getFeature(), this, attacker, defender, 1);
+                ManaErode.apply(feature.getFeature(), this, attacker, defender, 1);
             } else if (feature.getType() == SkillType.趁胜追击) {
                 WinningPursuitFeature.apply(this, feature, attacker, defender);
             } else if (feature.getType() == SkillType.复仇) {
@@ -239,11 +239,11 @@ public class SkillResolver {
             } else if (feature.getType() == SkillType.全体加速){
                 AllSpeed.apply(feature, this, attacker);
             } else if (feature.getType() == SkillType.阻碍) {
-                OneDelayFeature.apply(feature, this, attacker, defender);
+                OneDelay.apply(feature, this, attacker, defender);
             } else if (feature.getType() == SkillType.加速) {
                 SpeedUpFeature.apply(feature, this, attacker);
             } else if (feature.getType() == SkillType.净化) {
-                PurifyFeature.apply(feature, this, attacker);
+                Purify.apply(feature, this, attacker);
             } else if (feature.getType() == SkillType.虚弱) {
                 SoftenFeature.apply(feature, this, attacker, defender);
             } else if (feature.getType() == SkillType.召唤王国战士) {
@@ -388,7 +388,7 @@ public class SkillResolver {
                 }
                 for (SkillUseInfo blockFeature : defender.getNormalUsableFeatures()) {
                     if (blockFeature.getType() == SkillType.冰甲) {
-                        result.setDamage(IceArmorFeature.apply(blockFeature.getFeature(), this, cardAttacker, defender,
+                        result.setDamage(IceArmor.apply(blockFeature.getFeature(), this, cardAttacker, defender,
                                 result.getDamage()));
                     }
                     if (!result.isAttackable()) {
@@ -398,7 +398,7 @@ public class SkillResolver {
                 {
                     RuneInfo rune = defender.getOwner().getActiveRuneOf(RuneData.冰封);
                     if (rune != null && !defender.isWeak()) {
-                        result.setDamage(IceArmorFeature.apply(rune.getFeature(), this, cardAttacker, defender,
+                        result.setDamage(IceArmor.apply(rune.getFeature(), this, cardAttacker, defender,
                                 result.getDamage()));
                     }
                     if (!result.isAttackable()) {
@@ -447,12 +447,12 @@ public class SkillResolver {
 
                 for (SkillUseInfo blockFeature : defender.getNormalUsableFeatures()) {
                     if (blockFeature.getType() == SkillType.免疫) {
-                        if (ImmueFeature.isFeatureBlocked(this, blockFeature.getFeature(), attackFeature, attacker, defender)) {
+                        if (Immue.isFeatureBlocked(this, blockFeature.getFeature(), attackFeature, attacker, defender)) {
                             result.setAttackable(false);
                             return result;
                         }
                     } else if (blockFeature.getType() == SkillType.无效) {
-                        if (NoEffectFeature.isFeatureBlocked(this, blockFeature.getFeature(), attackFeature, attacker, defender)) {
+                        if (NoEffect.isFeatureBlocked(this, blockFeature.getFeature(), attackFeature, attacker, defender)) {
                             result.setAttackable(false);
                             return result;
                         }
@@ -462,7 +462,7 @@ public class SkillResolver {
                             return result;
                         }
                     } else if (blockFeature.getType() == SkillType.不动) {
-                        if (ImmobilityFeature.isFeatureBlocked(this, blockFeature.getFeature(), attackFeature, attacker, defender)) {
+                        if (Immobility.isFeatureBlocked(this, blockFeature.getFeature(), attackFeature, attacker, defender)) {
                             result.setAttackable(false);
                             return result;
                         }
@@ -479,7 +479,7 @@ public class SkillResolver {
                 }
                 for (SkillUseInfo blockFeature : defender.getNormalUsableFeatures()) {
                     if (blockFeature.getType() == SkillType.魔甲) {
-                        result.setDamage(MagicShieldFeature.apply(this, blockFeature.getFeature(), attacker, defender,
+                        result.setDamage(MagicShield.apply(this, blockFeature.getFeature(), attacker, defender,
                                 attackFeature, result.getDamage()));
                     }
                     if (!result.isAttackable()) {
@@ -489,7 +489,7 @@ public class SkillResolver {
                 {
                     RuneInfo rune = defender.getOwner().getActiveRuneOf(RuneData.炎甲);
                     if (rune != null && !defender.isWeak()) {
-                        result.setDamage(MagicShieldFeature.apply(this, rune.getFeature(), attacker, defender,
+                        result.setDamage(MagicShield.apply(this, rune.getFeature(), attacker, defender,
                                 attackFeature, result.getDamage()));
                     }
                     if (!result.isAttackable()) {
@@ -517,21 +517,21 @@ public class SkillResolver {
         resolveLeaveFeature(deadCard, cardFeature);
         for (SkillUseInfo deadCardFeature : deadCard.getUsableDeathFeatures()) {
             if (deadCardFeature.getType() == SkillType.烈焰风暴) {
-                FireMagicFeature.apply(deadCardFeature.getFeature(), this, deadCard, killerCard.getOwner(), -1);
+                FireMagic.apply(deadCardFeature.getFeature(), this, deadCard, killerCard.getOwner(), -1);
             } else if (deadCardFeature.getType() == SkillType.雷暴) {
-                LighteningMagicFeature.apply(deadCardFeature, this, deadCard, killerCard.getOwner(), -1, 35);
+                LighteningMagic.apply(deadCardFeature, this, deadCard, killerCard.getOwner(), -1, 35);
             } else if (deadCardFeature.getType() == SkillType.暴风雪) {
-                IceMagicFeature.apply(deadCardFeature, this, deadCard, killerCard.getOwner(), -1, 30, 0);
+                IceMagic.apply(deadCardFeature, this, deadCard, killerCard.getOwner(), -1, 30, 0);
             } else if (deadCardFeature.getType() == SkillType.毒云) {
-                PoisonMagicFeature.apply(deadCardFeature, this, deadCard, killerCard.getOwner(), -1);
+                PoisonMagic.apply(deadCardFeature, this, deadCard, killerCard.getOwner(), -1);
             } else if (deadCardFeature.getType() == SkillType.瘟疫) {
-                PlagueFeature.apply(deadCardFeature, this, deadCard, killerCard.getOwner());
+                Plague.apply(deadCardFeature, this, deadCard, killerCard.getOwner());
             } else if (deadCardFeature.getType() == SkillType.治疗) {
-                HealFeature.apply(deadCardFeature.getFeature(), this, deadCard.getOwner());
+                Heal.apply(deadCardFeature.getFeature(), this, deadCard.getOwner());
             } else if (deadCardFeature.getType() == SkillType.甘霖) {
                 RainfallFeature.apply(deadCardFeature.getFeature(), this, deadCard.getOwner());
             } else if (deadCardFeature.getType() == SkillType.祈祷) {
-                PrayFeature.apply(deadCardFeature.getFeature(), this, deadCard);
+                Pray.apply(deadCardFeature.getFeature(), this, deadCard);
             } else if (deadCardFeature.getType() == SkillType.诅咒) {
                 Curse.apply(this, deadCardFeature.getFeature(), deadCard, killerCard.getOwner());
             } else if (deadCardFeature.getType() == SkillType.群体削弱) {
@@ -599,7 +599,7 @@ public class SkillResolver {
         for (SkillUseInfo feature : attacker.getNormalUsableFeatures()) {
             if (!attacker.isDead()) {
                 if (feature.getType() == SkillType.穿刺) {
-                    PenetrationFeature.apply(feature.getFeature(), this, attacker, defenderHero, normalAttackDamage);
+                    Penetration.apply(feature.getFeature(), this, attacker, defenderHero, normalAttackDamage);
                 } else if (feature.getType() == SkillType.削弱) {
                     WeakenFeature.apply(this, feature, attacker, defender, normalAttackDamage);
                 } else if (feature.getType() == SkillType.裂伤) {
@@ -624,7 +624,7 @@ public class SkillResolver {
     public void resolvePreAttackHeroFeature(CardInfo attacker, Player defenderPlayer) {
         for (SkillUseInfo feature : attacker.getNormalUsableFeatures()) {
            if (feature.getType() == SkillType.英雄杀手) {
-               HeroKillerFeature.apply(this, feature, attacker, defenderPlayer);
+               HeroKiller.apply(this, feature, attacker, defenderPlayer);
            }
         }
     }
@@ -655,7 +655,7 @@ public class SkillResolver {
                 } else if (feature.getType() == SkillType.暴击) {
                     CriticalAttack.apply(this, feature, attacker, defender);
                 } else if (feature.getType() == SkillType.穷追猛打) {
-                    PursuitFeature.apply(this, feature, attacker, defender);
+                    Pursuit.apply(this, feature, attacker, defender);
                 } else if (feature.getType() == SkillType.战意) {
                     WarthFeature.apply(this, feature, attacker, defender);
                 }
@@ -677,7 +677,7 @@ public class SkillResolver {
             {
                 RuneInfo rune = attacker.getOwner().getActiveRuneOf(RuneData.扬旗);
                 if (rune != null && !attacker.isWeak()) {
-                    PursuitFeature.apply(this, rune.getFeatureInfo(), attacker, defender);
+                    Pursuit.apply(this, rune.getFeatureInfo(), attacker, defender);
                 }
             }
         }
@@ -694,7 +694,7 @@ public class SkillResolver {
             } else if (type == SkillType.暴击) {
                 CriticalAttack.remove(this, effect.getCause(), card);
             } else if (type == SkillType.穷追猛打) {
-                PursuitFeature.remove(this, effect.getCause(), card);
+                Pursuit.remove(this, effect.getCause(), card);
             } else if (type == SkillType.背刺) {
                 BackStab.remove(this, effect.getCause(), card);
             } else if (type == SkillType.战意) {
@@ -706,7 +706,7 @@ public class SkillResolver {
             } else if (type == SkillType.振奋) {
                 Arouse.remove(this, effect.getCause(), card);
             } else if (type == SkillType.英雄杀手) {
-                HeroKillerFeature.remove(this, effect.getCause(), card);
+                HeroKiller.remove(this, effect.getCause(), card);
             }
         }
     }
@@ -787,7 +787,7 @@ public class SkillResolver {
             }
             for (SkillUseInfo defenderFeature : defender.getNormalUsableFeatures()) {
                 if (defenderFeature.getType() == SkillType.守护) {
-                    remainingDamage = GuardFeature.apply(defenderFeature.getFeature(), cardFeature, this, attacker, defender, remainingDamage);
+                    remainingDamage = Guard.apply(defenderFeature.getFeature(), cardFeature, this, attacker, defender, remainingDamage);
                     if (remainingDamage == 0) {
                         return 0;
                     }
@@ -859,7 +859,7 @@ public class SkillResolver {
     // reviver: for most of the cases, it should be null.
     // It is only set when the summoning feature performer is revived by another card.
     public void resolveSummoningFeature(CardInfo card, Field myField, Field opField, CardInfo reviver) throws HeroDieSignal {
-        LegionBuffFeature.apply(this, card);
+        LegionBuff.apply(this, card);
         for (CardInfo fieldCard : myField.getAliveCards()) {
             for (SkillUseInfo feature : fieldCard.getNormalUsableFeatures()) {
                 if (feature.getType() == SkillType.王国之力) {
@@ -883,7 +883,7 @@ public class SkillResolver {
                 } else if (feature.getType() == SkillType.本源守护) {
                     RaceBuffFeature.apply(this, feature, fieldCard, null, SkillEffectType.MAXHP_CHANGE);
                 } else if (feature.getType() == SkillType.神圣守护) {
-                    HolyGuardFeature.apply(this, feature, fieldCard);
+                    HolyGuard.apply(this, feature, fieldCard);
                 } 
             }
         }
@@ -896,21 +896,21 @@ public class SkillResolver {
         }
         for (SkillUseInfo feature : card.getUsableSummonFeatures()) {
             if (feature.getType() == SkillType.烈焰风暴) {
-                FireMagicFeature.apply(feature.getFeature(), this, card, opField.getOwner(), -1);
+                FireMagic.apply(feature.getFeature(), this, card, opField.getOwner(), -1);
             } else if (feature.getType() == SkillType.雷暴) {
-                LighteningMagicFeature.apply(feature, this, card, opField.getOwner(), -1, 35);
+                LighteningMagic.apply(feature, this, card, opField.getOwner(), -1, 35);
             } else if (feature.getType() == SkillType.暴风雪) {
-                IceMagicFeature.apply(feature, this, card, opField.getOwner(), -1, 30, 0);
+                IceMagic.apply(feature, this, card, opField.getOwner(), -1, 30, 0);
             } else if (feature.getType() == SkillType.毒云) {
-                PoisonMagicFeature.apply(feature, this, card, opField.getOwner(), -1);
+                PoisonMagic.apply(feature, this, card, opField.getOwner(), -1);
             } else if (feature.getType() == SkillType.瘟疫) {
-                PlagueFeature.apply(feature, this, card, opField.getOwner());
+                Plague.apply(feature, this, card, opField.getOwner());
             } else if (feature.getType() == SkillType.治疗) {
-                HealFeature.apply(feature.getFeature(), this, card);
+                Heal.apply(feature.getFeature(), this, card);
             } else if (feature.getType() == SkillType.甘霖) {
                 RainfallFeature.apply(feature.getFeature(), this, card);
             } else if (feature.getType() == SkillType.祈祷) {
-                PrayFeature.apply(feature.getFeature(), this, card);
+                Pray.apply(feature.getFeature(), this, card);
             } else if (feature.getType() == SkillType.诅咒) {
                 Curse.apply(this, feature.getFeature(), card, opField.getOwner());
             } else if (feature.getType() == SkillType.群体削弱) {
@@ -930,7 +930,7 @@ public class SkillResolver {
             } else if (feature.getType() == SkillType.关小黑屋) {
                 Enprison.apply(this, feature.getFeature(), card, opField.getOwner());
             } else if (feature.getType() == SkillType.净化 || feature.getType() == SkillType.神性祈求){
-                PurifyFeature.apply(feature, this, card);
+                Purify.apply(feature, this, card);
             }
         }
     }
@@ -958,12 +958,12 @@ public class SkillResolver {
             } else if (deadCardFeature.getType() == SkillType.本源守护) {
                 RaceBuffFeature.remove(this, deadCardFeature, card, null);
             } else if (deadCardFeature.getType() == SkillType.神圣守护) {
-                HolyGuardFeature.remove(this, deadCardFeature, card);
+                HolyGuard.remove(this, deadCardFeature, card);
             } else if (deadCardFeature.getType() == SkillType.军团王国之力
                     || deadCardFeature.getType() == SkillType.军团森林之力
                     || deadCardFeature.getType() == SkillType.军团蛮荒之力
                     || deadCardFeature.getType() == SkillType.军团地狱之力) {
-                LegionBuffFeature.remove(this, deadCardFeature, card);
+                LegionBuff.remove(this, deadCardFeature, card);
             }
         }
     }
@@ -1188,67 +1188,67 @@ public class SkillResolver {
                 continue;
             }
             if (rune.is(RuneData.荒芜)) {
-                PoisonMagicFeature.apply(rune.getFeatureInfo(), this, rune, defenderHero, 1);
+                PoisonMagic.apply(rune.getFeatureInfo(), this, rune, defenderHero, 1);
             } else if (rune.is(RuneData.沼泽)) {
-                PoisonMagicFeature.apply(rune.getFeatureInfo(), this, rune, defenderHero, 3);
+                PoisonMagic.apply(rune.getFeatureInfo(), this, rune, defenderHero, 3);
             } else if (rune.is(RuneData.岩晶)) {
                 EnergyArmor.apply(this, rune.getFeatureInfo(), rune, 1);
             } else if (rune.is(RuneData.毒砂)) {
-                PoisonMagicFeature.apply(rune.getFeatureInfo(), this, rune, defenderHero, 1);
+                PoisonMagic.apply(rune.getFeatureInfo(), this, rune, defenderHero, 1);
             } else if (rune.is(RuneData.深渊)) {
-                PoisonMagicFeature.apply(rune.getFeatureInfo(), this, rune, defenderHero, 3);
+                PoisonMagic.apply(rune.getFeatureInfo(), this, rune, defenderHero, 3);
             } else if (rune.is(RuneData.陨星)) {
-                PlagueFeature.apply(rune.getFeatureInfo(), this, rune, defenderHero);
+                Plague.apply(rune.getFeatureInfo(), this, rune, defenderHero);
             } else if (rune.is(RuneData.死域)) {
-                PoisonMagicFeature.apply(rune.getFeatureInfo(), this, rune, defenderHero, -1);
+                PoisonMagic.apply(rune.getFeatureInfo(), this, rune, defenderHero, -1);
             } else if (rune.is(RuneData.霜冻)) {
-                IceMagicFeature.apply(rune.getFeatureInfo(), this, rune, defenderHero, 1, 45, 0);
+                IceMagic.apply(rune.getFeatureInfo(), this, rune, defenderHero, 1, 45, 0);
             } else if (rune.is(RuneData.寒潮)) {
-                IceMagicFeature.apply(rune.getFeatureInfo(), this, rune, defenderHero, 3, 35, 0);
+                IceMagic.apply(rune.getFeatureInfo(), this, rune, defenderHero, 3, 35, 0);
             } else if (rune.is(RuneData.冰锥)) {
-                IceMagicFeature.apply(rune.getFeatureInfo(), this, rune, defenderHero, 1, 45, 0);
+                IceMagic.apply(rune.getFeatureInfo(), this, rune, defenderHero, 1, 45, 0);
             } else if (rune.is(RuneData.暴雨)) {
                 WeakenAllFeature.apply(this, rune.getFeatureInfo(), rune, defenderHero);
             } else if (rune.is(RuneData.清泉)) {
                 RainfallFeature.apply(rune.getFeature(), this, rune);
             } else if (rune.is(RuneData.雪崩)) {
-                IceMagicFeature.apply(rune.getFeatureInfo(), this, rune, defenderHero, 3, 35, 0);
+                IceMagic.apply(rune.getFeatureInfo(), this, rune, defenderHero, 3, 35, 0);
             } else if (rune.is(RuneData.圣泉)) {
-                PrayFeature.apply(rune.getFeature(), this, rune);
+                Pray.apply(rune.getFeature(), this, rune);
             } else if (rune.is(RuneData.永冻)) {
-                IceMagicFeature.apply(rune.getFeatureInfo(), this, rune, defenderHero, -1, 30, 0);
+                IceMagic.apply(rune.getFeatureInfo(), this, rune, defenderHero, -1, 30, 0);
             } else if (rune.is(RuneData.闪电)) {
-                LighteningMagicFeature.apply(rune.getFeatureInfo(), this, rune, defenderHero, 1, 50);
+                LighteningMagic.apply(rune.getFeatureInfo(), this, rune, defenderHero, 1, 50);
             } else if (rune.is(RuneData.雷云)) {
-                LighteningMagicFeature.apply(rune.getFeatureInfo(), this, rune, defenderHero, 3, 40);
+                LighteningMagic.apply(rune.getFeatureInfo(), this, rune, defenderHero, 3, 40);
             } else if (rune.is(RuneData.霹雳)) {
-                LighteningMagicFeature.apply(rune.getFeatureInfo(), this, rune, defenderHero, 1, 50);
+                LighteningMagic.apply(rune.getFeatureInfo(), this, rune, defenderHero, 1, 50);
             } else if (rune.is(RuneData.飞羽)) {
                 SnipeFeature.apply(rune.getFeature(), this, rune, defenderHero, 1);
             } else if (rune.is(RuneData.飓风)) {
-                LighteningMagicFeature.apply(rune.getFeatureInfo(), this, rune, defenderHero, 3, 40);
+                LighteningMagic.apply(rune.getFeatureInfo(), this, rune, defenderHero, 3, 40);
             } else if (rune.is(RuneData.春风)) {
                 EnergyArmor.apply(this, rune.getFeatureInfo(), rune, -1);
             } else if (rune.is(RuneData.雷狱)) {
-                LighteningMagicFeature.apply(rune.getFeatureInfo(), this, rune, defenderHero, -1, 35);
+                LighteningMagic.apply(rune.getFeatureInfo(), this, rune, defenderHero, -1, 35);
             } else if (rune.is(RuneData.火拳)) {
-                FireMagicFeature.apply(rune.getFeature(), this, rune, defenderHero, 1);
+                FireMagic.apply(rune.getFeature(), this, rune, defenderHero, 1);
             } else if (rune.is(RuneData.热浪)) {
-                FireMagicFeature.apply(rune.getFeature(), this, rune, defenderHero, 3);
+                FireMagic.apply(rune.getFeature(), this, rune, defenderHero, 3);
             } else if (rune.is(RuneData.流火)) {
-                FireMagicFeature.apply(rune.getFeature(), this, rune, defenderHero, 1);
+                FireMagic.apply(rune.getFeature(), this, rune, defenderHero, 1);
             } else if (rune.is(RuneData.红莲)) {
-                HealFeature.apply(rune.getFeature(), this, rune);
+                Heal.apply(rune.getFeature(), this, rune);
             } else if (rune.is(RuneData.冥火)) {
                 BurningFlame.apply(rune.getFeatureInfo(), this, rune, defenderHero);
             } else if (rune.is(RuneData.淬炼)) {
                 AttackUp.apply(this, rune.getFeatureInfo(), rune, -1);
             } else if (rune.is(RuneData.焚天)) {
-                FireMagicFeature.apply(rune.getFeature(), this, rune, defenderHero, 3);
+                FireMagic.apply(rune.getFeature(), this, rune, defenderHero, 3);
             } else if (rune.is(RuneData.灼魂)) {
-                HeavenWrathFeature.apply(this, rune.getFeature(), rune, defenderHero);
+                HeavenWrath.apply(this, rune.getFeature(), rune, defenderHero);
             } else if (rune.is(RuneData.灭世)) {
-                FireMagicFeature.apply(rune.getFeature(), this, rune, defenderHero, -1);
+                FireMagic.apply(rune.getFeature(), this, rune, defenderHero, -1);
             }
         }
     }

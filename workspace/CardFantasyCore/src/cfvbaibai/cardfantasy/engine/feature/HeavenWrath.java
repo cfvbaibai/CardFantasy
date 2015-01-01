@@ -6,7 +6,7 @@ import cfvbaibai.cardfantasy.engine.SkillResolver;
 import cfvbaibai.cardfantasy.engine.HeroDieSignal;
 import cfvbaibai.cardfantasy.engine.Player;
 
-public final class HeavenWrathFeature {
+public final class HeavenWrath {
     public static void apply(SkillResolver resolver, Skill cardFeature, EntityInfo attacker, Player defenderHero)
             throws HeroDieSignal {
         int aliveEnemyCardCount = defenderHero.getField().getAliveCards().size();

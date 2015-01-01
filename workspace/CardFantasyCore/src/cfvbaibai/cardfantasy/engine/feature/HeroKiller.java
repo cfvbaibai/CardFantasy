@@ -10,9 +10,9 @@ import cfvbaibai.cardfantasy.engine.SkillUseInfo;
 import cfvbaibai.cardfantasy.engine.SkillResolver;
 import cfvbaibai.cardfantasy.engine.Player;
 
-public final class HeroKillerFeature {
+public final class HeroKiller {
 
-    private HeroKillerFeature() {
+    private HeroKiller() {
     }
 
     public static void apply(SkillResolver resolver, SkillUseInfo skillUseInfo, CardInfo attacker, Player victim) {

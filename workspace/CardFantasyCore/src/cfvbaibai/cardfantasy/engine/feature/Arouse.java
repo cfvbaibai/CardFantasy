@@ -7,7 +7,7 @@ import cfvbaibai.cardfantasy.engine.SkillEffectType;
 import cfvbaibai.cardfantasy.engine.SkillUseInfo;
 import cfvbaibai.cardfantasy.engine.SkillResolver;
 
-public class Arouse extends PreAttackCardFeature {
+public class Arouse extends PreAttackCardSkill {
     public static void apply(SkillResolver resolver, SkillUseInfo skillUseInfo, CardInfo attacker) {
         int myDeadCount = attacker.getOwner().getField().size();
         if (myDeadCount == 0) {

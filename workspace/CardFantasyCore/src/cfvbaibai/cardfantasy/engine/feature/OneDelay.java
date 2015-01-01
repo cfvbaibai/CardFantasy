@@ -7,7 +7,7 @@ import cfvbaibai.cardfantasy.engine.SkillUseInfo;
 import cfvbaibai.cardfantasy.engine.SkillResolver;
 import cfvbaibai.cardfantasy.engine.Player;
 
-public final class OneDelayFeature {
+public final class OneDelay {
     public static void apply(SkillUseInfo skillUseInfo, SkillResolver resolver, CardInfo attacker, Player defender) {
         int summonDelayOffset = skillUseInfo.getFeature().getImpact();
         List<CardInfo> allHandCards = defender.getHand().toList();

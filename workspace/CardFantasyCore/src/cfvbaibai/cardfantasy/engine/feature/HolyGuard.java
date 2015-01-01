@@ -11,7 +11,7 @@ import cfvbaibai.cardfantasy.engine.SkillUseInfo;
 import cfvbaibai.cardfantasy.engine.SkillResolver;
 import cfvbaibai.cardfantasy.engine.Field;
 
-public class HolyGuardFeature {
+public class HolyGuard {
     public static void apply(SkillResolver resolver, SkillUseInfo skillUseInfo, CardInfo card) {
         if (card == null || card.isDead()) {
             throw new CardFantasyRuntimeException("card should not be null or dead!");

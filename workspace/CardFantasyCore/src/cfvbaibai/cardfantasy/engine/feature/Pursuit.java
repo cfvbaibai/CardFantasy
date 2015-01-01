@@ -11,7 +11,7 @@ import cfvbaibai.cardfantasy.engine.SkillEffectType;
 import cfvbaibai.cardfantasy.engine.SkillUseInfo;
 import cfvbaibai.cardfantasy.engine.SkillResolver;
 
-public final class PursuitFeature {
+public final class Pursuit {
     public static void apply(SkillResolver resolver, SkillUseInfo skillUseInfo, CardInfo attacker, CardInfo defender) {
         CardStatus status = defender.getStatus();
         Skill skill = skillUseInfo.getFeature();

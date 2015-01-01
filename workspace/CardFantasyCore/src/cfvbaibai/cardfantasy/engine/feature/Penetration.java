@@ -10,7 +10,7 @@ import cfvbaibai.cardfantasy.engine.Player;
  * Penetration give enemy hero 15% of the normal attack damage.
  * Cannot be blocked by Immue.
  */
-public final class PenetrationFeature {
+public final class Penetration {
     public static void apply(Skill cardFeature, SkillResolver resolver, CardInfo attacker, Player defender, int normalAttackDamage)
             throws HeroDieSignal {
         if (normalAttackDamage <= 0) {

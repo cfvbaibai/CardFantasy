@@ -7,7 +7,7 @@ import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.EntityInfo;
 import cfvbaibai.cardfantasy.engine.SkillResolver;
 
-public class NoEffectFeature {
+public class NoEffect {
     public static boolean isFeatureBlocked(SkillResolver resolver, Skill cardFeature, Skill attackFeature, EntityInfo attacker, CardInfo defender) {
         if (attackFeature.getType() == SkillType.虚弱 ||
             // attackFeature.getType() == FeatureType.战斗怒吼 ||

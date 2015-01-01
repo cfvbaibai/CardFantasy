@@ -9,7 +9,7 @@ import cfvbaibai.cardfantasy.engine.SkillEffectType;
 import cfvbaibai.cardfantasy.engine.SkillUseInfo;
 import cfvbaibai.cardfantasy.engine.SkillResolver;
 
-public class LegionBuffFeature {
+public class LegionBuff {
     public static void apply(SkillResolver resolver, CardInfo card) {
         SkillUseInfo skillUseInfo = card.getOwner().getLegionBuffFeature(card.getRace());
         if (skillUseInfo == null) {

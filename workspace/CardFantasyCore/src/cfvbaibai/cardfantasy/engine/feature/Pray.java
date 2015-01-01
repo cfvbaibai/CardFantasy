@@ -7,7 +7,7 @@ import cfvbaibai.cardfantasy.engine.SkillResolver;
 import cfvbaibai.cardfantasy.engine.HeroDieSignal;
 import cfvbaibai.cardfantasy.engine.Player;
 
-public final class PrayFeature {
+public final class Pray {
     public static void apply(Skill cardFeature, SkillResolver resolver, EntityInfo healer) {
         if (healer == null) {
             return;
