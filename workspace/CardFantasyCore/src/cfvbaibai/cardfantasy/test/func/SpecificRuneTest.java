@@ -4,6 +4,8 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import cfvbaibai.cardfantasy.engine.CardInfo;
+import cfvbaibai.cardfantasy.engine.HeroDieSignal;
+import cfvbaibai.cardfantasy.engine.Player;
 import cfvbaibai.cardfantasy.engine.RuneInfo;
 
 public class SpecificRuneTest extends SkillValidationTest {
@@ -41,7 +43,7 @@ public class SpecificRuneTest extends SkillValidationTest {
         // ROUND 6: 1 - 3
         context.addToHand(3, 1).setSummonDelay(0);
         context.proceedOneRound();
-        Assert.assertTrue(r玄石.isActivated());
+        Assert.assertFalse(r玄石.isActivated());
 
         // ROUND 7: 1 - 3
         context.proceedOneRound();
@@ -49,6 +51,10 @@ public class SpecificRuneTest extends SkillValidationTest {
 
         // ROUND 8: 2 - 3
         context.addToHand(4, 0).setSummonDelay(0);
+        context.proceedOneRound();
+        Assert.assertTrue(r玄石.isActivated());
+        
+        // ROUND 9: 2 - 3
         context.proceedOneRound();
         Assert.assertFalse(r玄石.isActivated());
     }
@@ -87,5 +93,40 @@ public class SpecificRuneTest extends SkillValidationTest {
         Assert.assertEquals(0, context.getPlayer(0).getField().size());
         Assert.assertEquals(1, context.getPlayer(0).getHand().size());
         Assert.assertEquals(0, placeholder1.getSummonDelay());
+    }
+    
+    @Test
+    public void test龙吟_基本() throws HeroDieSignal {
+        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "占位符", "秘银巨石像*2", "龙吟");
+        Player p0 = context.getPlayer(0);
+        context.addToField(0, 0);
+        context.addToField(1, 1);
+        context.addToField(2, 1);
+        RuneInfo r龙吟 = context.addToRune(0, 0);
+        context.startGame();
+
+        // ROUND 1
+        context.proceedOneRound();
+        Assert.assertFalse(r龙吟.isActivated());
+
+        // ROUND 2
+        context.proceedOneRound();
+        Assert.assertFalse(r龙吟.isActivated());
+
+        // ROUND 3
+        context.proceedOneRound();
+        Assert.assertFalse(r龙吟.isActivated());
+        
+        // ROUND 4
+        context.proceedOneRound();
+        Assert.assertFalse(r龙吟.isActivated());
+        int hpNow = p0.getMaxHP() * 60 / 100 - 1;
+        p0.setHP(hpNow);
+
+        // ROUND 5
+        context.proceedOneRound();
+        Assert.assertTrue(r龙吟.isActivated());
+        Assert.assertEquals(4, r龙吟.getEnergy());
+        Assert.assertEquals(p0.getMaxHP() * 18 / 100, p0.getHP() - hpNow);
     }
 }

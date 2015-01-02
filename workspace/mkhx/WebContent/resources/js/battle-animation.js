@@ -1506,7 +1506,7 @@ var Animater = function() {
         }
         if (skill == '普通攻击') {
             this.normalAttack(attacker, defenderHero, true);
-        } else if (skill == '祈祷') {
+        } else if (skill == '祈祷' || skill == '祈福') {
             this.flyImage({ fileName: 'heal.png', width: 24, height: 24, text: skill },
                     attacker, defenderHero, settings.skillDuration);
         } else if (skill == '诅咒' || skill == '魔神之咒') {

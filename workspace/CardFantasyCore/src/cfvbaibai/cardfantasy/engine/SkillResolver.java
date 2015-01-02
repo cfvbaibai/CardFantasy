@@ -16,6 +16,7 @@ import cfvbaibai.cardfantasy.engine.feature.AllSpeedUp;
 import cfvbaibai.cardfantasy.engine.feature.Arouse;
 import cfvbaibai.cardfantasy.engine.feature.AttackUp;
 import cfvbaibai.cardfantasy.engine.feature.BackStab;
+import cfvbaibai.cardfantasy.engine.feature.Bless;
 import cfvbaibai.cardfantasy.engine.feature.Block;
 import cfvbaibai.cardfantasy.engine.feature.BloodDrain;
 import cfvbaibai.cardfantasy.engine.feature.BloodPaint;
@@ -1317,7 +1318,9 @@ public class SkillResolver {
             } else if (rune.is(RuneData.灭世)) {
                 FireMagic.apply(rune.getSkill(), this, rune, defenderHero, -1);
             } else if (rune.is(RuneData.玄石)) {
-                AllSpeedUp.apply(rune.getSkillUseInfo(), this, attackerHero);
+                AllSpeedUp.apply(rune.getSkillUseInfo(), this, rune);
+            } else if (rune.is(RuneData.龙吟)) {
+                Bless.apply(rune.getSkillUseInfo().getSkill(), this, rune);
             }
         }
     }
