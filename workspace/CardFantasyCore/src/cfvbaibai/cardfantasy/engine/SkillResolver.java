@@ -347,6 +347,15 @@ public class SkillResolver {
         return result;
     }
 
+    /**
+     * Resolve attack blocking skills.
+     * @param attacker The one that uses the skill to be blocked.
+     * @param defender The one that uses the skill to block the attacker.
+     * @param attackSkill The skill that uses to attack the defender.
+     * @param damage
+     * @return
+     * @throws HeroDieSignal
+     */
     public OnAttackBlockingResult resolveAttackBlockingFeature(EntityInfo attacker, CardInfo defender,
             Skill attackSkill, int damage) throws HeroDieSignal {
         OnAttackBlockingResult result = new OnAttackBlockingResult(true, 0);

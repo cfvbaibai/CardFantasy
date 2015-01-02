@@ -284,11 +284,11 @@ public class DefenseTest extends SkillValidationTest {
     }
     
     /**
-     * 大地之盾不能被免疫脱困
+     * 大地之盾不能被免疫
      */
     @Test
-    public void test大地之盾_免疫_脱困() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "金属巨龙+脱困", "怒雪咆哮-1");
+    public void test大地之盾_免疫() {
+        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "金属巨龙", "怒雪咆哮-1");
         CardInfo c金属巨龙 = context.addToField(0, 0);
         CardInfo c怒雪咆哮 = context.addToField(1, 1);
         context.startGame();
@@ -296,13 +296,29 @@ public class DefenseTest extends SkillValidationTest {
         random.addNextNumbers(1000);    // 金属巨龙不暴击
         context.proceedOneRound();
         Assert.assertTrue(c金属巨龙.getStatus().containsStatus(CardStatusType.晕眩));
-        Assert.assertEquals(805, 1703 - c怒雪咆哮.getHP());
+        Assert.assertEquals(655, 1703 - c怒雪咆哮.getHP());
 
         context.proceedOneRound();
 
         context.proceedOneRound(); // 金属巨龙因为晕眩无法行动
         Assert.assertFalse(c金属巨龙.getStatus().containsStatus(CardStatusType.晕眩));
-        Assert.assertEquals(805, 1703 - c怒雪咆哮.getHP());
+        Assert.assertEquals(655, 1703 - c怒雪咆哮.getHP());
+    }
+
+    /**
+     * 大地之盾能被脱困
+     */
+    @Test
+    public void test大地之盾_脱困() {
+        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "皇室舞者-1", "怒雪咆哮-1");
+        CardInfo c皇室舞者 = context.addToField(0, 0);
+        CardInfo c怒雪咆哮 = context.addToField(1, 1);
+        context.startGame();
+        
+        random.addNextNumbers(1000);    // 金属巨龙不暴击
+        context.proceedOneRound();
+        Assert.assertFalse(c皇室舞者.getStatus().containsStatus(CardStatusType.晕眩));
+        Assert.assertEquals(234, 1703 - c怒雪咆哮.getHP());
     }
 
     /**

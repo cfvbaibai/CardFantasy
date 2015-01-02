@@ -28,7 +28,7 @@ public class Deck extends CardPile {
     
     public void removeCard(CardInfo card) {
         if (!this.getCards().remove(card)) {
-            throw new CardFantasyRuntimeException("Cannot find card in grave: " + card.getShortDesc());
+            throw new CardFantasyRuntimeException("Cannot find card in deck: " + card.getShortDesc());
         }
     }
 }

@@ -24,7 +24,8 @@ public final class Escape {
 
     public static boolean isStatusEscaped(Skill cardFeature, SkillResolver resolver, CardStatusItem item,
             CardInfo defender) {
-        if (item.getType() == CardStatusType.冰冻 || item.getType() == CardStatusType.麻痹) {
+        if (item.getType() == CardStatusType.冰冻 ||
+            item.getType() == CardStatusType.麻痹) {
             EntityInfo attacker = item.getCause().getOwner();
             GameUI ui = resolver.getStage().getUI();
             ui.useSkill(defender, attacker, cardFeature, true);

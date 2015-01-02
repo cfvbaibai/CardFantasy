@@ -192,4 +192,29 @@ public class SummonTest extends SkillValidationTest {
         // 所以陨星魔法使触发的雷盾不会攻击到4号位的魔剑士
         Assert.assertEquals(-200 /* 圣骑士的王国守护 */, 1240 - fieldA.getCard(2).getHP());
     }
+    
+    /**
+     * 召唤物不能被秽土转生
+     */
+    @Test
+    public void test召唤王国战士_秽土() {
+        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "陨星魔法使", "秽土", "占位符", "金属巨龙+暴击10");
+        context.addToField(0, 0);
+        context.addToField(1, 1);
+        context.addToField(2, 1);
+        RuneInfo r秽土 = context.addToRune(0, 0);
+        context.startGame();
+        
+        r秽土.activate();
+        random.addNextPicks(0, 1).addNextNumbers(1000, 1000);      // 陨星魔法使的寒霜冲击无法冻结
+        context.proceedOneRound();
+        
+        random.addNextNumbers(0, 0);    // 金属巨龙双暴击
+        random.addNextNumbers(0);       // 假设秽土可以转生
+        context.proceedOneRound();
+        // 秽土即使能发动，也不能对召唤物发动。手牌仍为0
+        Assert.assertEquals(0, context.getPlayer(0).getHand().size());
+        Assert.assertEquals(0, context.getPlayer(0).getGrave().size());
+        Assert.assertEquals(2, context.getPlayer(0).getField().size());
+    }
 }
