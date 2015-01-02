@@ -12,7 +12,7 @@ import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.data.SkillTag;
 import cfvbaibai.cardfantasy.data.SkillType;
 import cfvbaibai.cardfantasy.engine.feature.AllDelay;
-import cfvbaibai.cardfantasy.engine.feature.AllSpeed;
+import cfvbaibai.cardfantasy.engine.feature.AllSpeedUp;
 import cfvbaibai.cardfantasy.engine.feature.Arouse;
 import cfvbaibai.cardfantasy.engine.feature.AttackUp;
 import cfvbaibai.cardfantasy.engine.feature.BackStab;
@@ -251,7 +251,7 @@ public class SkillResolver {
             } else if (feature.getType() == SkillType.全体阻碍){
                 AllDelay.apply(feature, this, attacker, defender);
             } else if (feature.getType() == SkillType.全体加速){
-                AllSpeed.apply(feature, this, attacker);
+                AllSpeedUp.apply(feature, this, attacker);
             } else if (feature.getType() == SkillType.阻碍) {
                 OneDelay.apply(feature, this, attacker, defender);
             } else if (feature.getType() == SkillType.加速) {
@@ -893,9 +893,7 @@ public class SkillResolver {
         return healee;
     }
 
-    // reviver: for most of the cases, it should be null.
-    // It is only set when the summoning skill performer is revived by another card.
-    public void resolveSummoningFeature(CardInfo card, Field myField, Field opField, CardInfo reviver) throws HeroDieSignal {
+    public void resolveRacialBuffSkills(CardInfo card, Field myField) {
         LegionBuff.apply(this, card);
         for (CardInfo fieldCard : myField.getAliveCards()) {
             for (SkillUseInfo skillUseInfo : fieldCard.getNormalUsableSkills()) {
@@ -924,6 +922,11 @@ public class SkillResolver {
                 } 
             }
         }
+    }
+
+    // reviver: for most of the cases, it should be null.
+    // It is only set when the summoning skill performer is revived by another card.
+    public void resolveSummoningFeature(CardInfo card, Field myField, Field opField, CardInfo reviver) throws HeroDieSignal {
         for (SkillUseInfo skillUseInfo : card.getNormalUsableSkills()) {
             if (skillUseInfo.getType() == SkillType.献祭) {
                 Sacrifice.apply(this, skillUseInfo, card, reviver);
@@ -1051,6 +1054,14 @@ public class SkillResolver {
         summonCards(player, cards, reviver);
     }
 
+    /**
+     * 1. Process racial buff skills
+     * 2. Process summoning skills
+     * @param player
+     * @param cards
+     * @param reviver
+     * @throws HeroDieSignal
+     */
     public void summonCards(Player player, List<CardInfo> cards, CardInfo reviver) throws HeroDieSignal {
         for (CardInfo card : cards) {
             card.reset();
@@ -1058,16 +1069,21 @@ public class SkillResolver {
             player.getField().addCard(card);
             player.getHand().removeCard(card);
         }
+        if (this.stage.getPlayerCount() != 2) {
+            throw new CardFantasyRuntimeException("There are " + this.stage.getPlayerCount()
+                    + " player(s) in the stage, but expect 2");
+        }
+        Player enemy = null;
+        for (Player other : stage.getPlayers()) {
+            if (other != player) {
+                enemy = other;
+            }
+        }
         for (CardInfo card : cards) {
-            if (this.stage.getPlayerCount() != 2) {
-                throw new CardFantasyRuntimeException("There are " + this.stage.getPlayerCount()
-                        + " player(s) in the stage, but expect 2");
-            }
-            for (Player other : stage.getPlayers()) {
-                if (other != player) {
-                    stage.getResolver().resolveSummoningFeature(card, player.getField(), other.getField(), reviver);
-                }
-            }
+            this.resolveRacialBuffSkills(card, player.getField());
+        }
+        for (CardInfo card : cards) {
+            this.resolveSummoningFeature(card, player.getField(), enemy.getField(), reviver);
         }
     }
 
@@ -1163,6 +1179,8 @@ public class SkillResolver {
                 if (stage.getRound() > activator.getThreshold()) {
                     shouldActivate = true;
                 }
+            } else if (activator.getType() == RuneActivationType.FieldDiff) {
+                shouldActivate = enemy.getField().size() - player.getField().size() > activator.getThreshold();
             }
             
             if (!shouldActivate) {
@@ -1298,6 +1316,8 @@ public class SkillResolver {
                 HeavenWrath.apply(this, rune.getSkill(), rune, defenderHero);
             } else if (rune.is(RuneData.灭世)) {
                 FireMagic.apply(rune.getSkill(), this, rune, defenderHero, -1);
+            } else if (rune.is(RuneData.玄石)) {
+                AllSpeedUp.apply(rune.getSkillUseInfo(), this, attackerHero);
             }
         }
     }

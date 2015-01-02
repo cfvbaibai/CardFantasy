@@ -3,11 +3,12 @@ package cfvbaibai.cardfantasy.engine.feature;
 import java.util.List;
 
 import cfvbaibai.cardfantasy.engine.CardInfo;
-import cfvbaibai.cardfantasy.engine.SkillUseInfo;
+import cfvbaibai.cardfantasy.engine.EntityInfo;
 import cfvbaibai.cardfantasy.engine.SkillResolver;
+import cfvbaibai.cardfantasy.engine.SkillUseInfo;
 
 public class SpeedUp {
-    public static void apply(SkillUseInfo skillUseInfo, SkillResolver resolver, CardInfo attacker) {
+    public static void apply(SkillUseInfo skillUseInfo, SkillResolver resolver, EntityInfo attacker) {
         int summonDelayOffset = skillUseInfo.getSkill().getImpact();
         List<CardInfo> allHandCards = attacker.getOwner().getHand().toList();
         CardInfo victim = null;

@@ -1831,4 +1831,6 @@
     <Card id="7503" name="复活者" wikiId="" race="萌货" speed="4" star="5" cost="0" incrCost="0" at="0" hp="5000" incrAT="0" incrHP="0">
         <Feature type="复活" level="0" unlock="0" />
     </Card>
+    <Card id="7504" name="残血王国小兵" wikiId="" race="王国" speed="4" star="1" cost="0" incrCost="0" at="0" hp="1" incrAT="0" incrHP="0">
+    </Card>
 </Cards>

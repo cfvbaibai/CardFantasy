@@ -34,7 +34,10 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">
                 <h3>更新日志</h3>
                 <ul class="news-content">
-                    <li>2015-01-02: 修复【陨星魔法使】召唤时候会null错误的BUG，感谢<a data-type="user">为何打后</a>报告BUG</li>
+                    <li>2015-01-02: <ul>
+                        <li>修复【陨星魔法使】召唤时候会null错误的BUG，感谢<a data-type="user">为何打后</a>报告BUG</li>
+                        <li>修复召唤物死亡时秽土会尝试转生的BUG，感谢<a data-type="user">susss222</a>报告BUG</li>
+                    </ul></li>
                     <li>2015-01-01: <ul>
                         <li>添加新卡【湿地黏龙】蛮荒四星</li>
                         <li>添加新卡【怒雪咆哮】蛮荒五星，感谢<a data-type="user">麋鹿吉特</a>提供数据。</li>

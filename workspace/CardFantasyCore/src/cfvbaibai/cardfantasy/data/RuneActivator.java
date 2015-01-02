@@ -6,7 +6,6 @@ public class RuneActivator {
     private Race race;
     private boolean checkEnemy;
     public RuneActivator(RuneActivationType type, int threshold, Race race, boolean checkEnemy) {
-        super();
         this.type = type;
         this.threshold = threshold;
         this.race = race;
@@ -56,5 +55,8 @@ public class RuneActivator {
     }
     public static RuneActivator enemyDeck(int threshold, Race race) {
         return new RuneActivator(RuneActivationType.Deck, threshold, race, true);
+    }
+    public static RuneActivator fieldDiff(int threshold) {
+        return new RuneActivator(RuneActivationType.FieldDiff, threshold, null, true /* checkEnemy is actually ignored */);
     }
 }

@@ -32,8 +32,8 @@ public class CardFantasyRuneTest {
 
     @Test
     public void 城镇弓箭兵v精灵狙击者_毒砂() {
-        PlayerInfo playerA = PlayerBuilder.build(true, "【A】", 100, "C城镇弓箭兵-10*15", "R毒砂-4");
-        PlayerInfo playerB = PlayerBuilder.build(true, "【B】", 100, "C精灵狙击者-10*15", "R毒砂-4");
+        PlayerInfo playerA = PlayerBuilder.build(true, "【A】", 100, "C城镇弓箭兵-10*10", "R毒砂-4");
+        PlayerInfo playerB = PlayerBuilder.build(true, "【B】", 100, "C精灵狙击者-10*10", "R毒砂-4");
         TestGameBuilder.build(playerA, playerB).playGame();
     }
 
@@ -84,8 +84,8 @@ public class CardFantasyRuneTest {
 
     @Test
     public void 魔法结晶体v堕落精灵法师_雪崩怒涛() {
-        PlayerInfo playerA = PlayerBuilder.build(true, "【A】", 50, "C魔法结晶体-10*5", "R雪崩-4");
-        PlayerInfo playerB = PlayerBuilder.build(true, "【B】", 10, "C堕落精灵法师-10*5", "R怒涛-4");
+        PlayerInfo playerA = PlayerBuilder.build(true, "【A】", 100, "C魔法结晶体-10*5", "R雪崩-4");
+        PlayerInfo playerB = PlayerBuilder.build(true, "【B】", 100, "C堕落精灵法师-10*5", "R怒涛-4");
         TestGameBuilder.build(playerA, playerB).playGame();
     }
 
@@ -132,8 +132,8 @@ public class CardFantasyRuneTest {
     
     @Test
     public void 水源制造者vs月亮女神_扬旗雷狱轻灵() {
-        PlayerInfo playerA = PlayerBuilder.build(true, "【A】", 50, "C水源制造者-10*10", "R扬旗-4", "R雷狱-4", "R轻灵-4");
-        PlayerInfo playerB = PlayerBuilder.build(true, "【B】", 50, "C月亮女神-10*10");
+        PlayerInfo playerA = PlayerBuilder.build(true, "【A】", 100, "C水源制造者-10*10", "R扬旗-4", "R雷狱-4", "R轻灵-4");
+        PlayerInfo playerB = PlayerBuilder.build(true, "【B】", 100, "C月亮女神-10*10");
         TestGameBuilder.build(playerA, playerB).playGame();
     }
     
@@ -172,8 +172,8 @@ public class CardFantasyRuneTest {
 
     @Test
     public void 大恶魔vs金属巨龙_灭世绝杀() {
-        PlayerInfo playerA = PlayerBuilder.build(true, "【A】", 50, "C大恶魔-10*10", "R灭世-4", "R绝杀-4");
-        PlayerInfo playerB = PlayerBuilder.build(true, "【B】", 20, "C金属巨龙-10*10");
+        PlayerInfo playerA = PlayerBuilder.build(true, "【A】", 100, "C大恶魔-10*10", "R灭世-4", "R绝杀-4");
+        PlayerInfo playerB = PlayerBuilder.build(true, "【B】", 100, "C金属巨龙-10*10");
         TestGameBuilder.build(playerA, playerB).playGame();
     }
 }

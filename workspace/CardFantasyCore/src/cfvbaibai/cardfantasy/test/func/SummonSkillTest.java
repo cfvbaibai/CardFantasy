@@ -46,4 +46,22 @@ public class SummonSkillTest extends SkillValidationTest {
         Assert.assertTrue("凤凰应该还活着", handListB.contains(c凤凰));
         Assert.assertFalse("金属巨龙应该死了", handListB.contains(c金属巨龙));
     }
+
+    /**
+     * 降临技能在种族守护之后触发
+     */
+    @Test
+    public void test降临暴风雪_种族守护() {
+        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50,
+            "残血王国小兵+降临暴风雪", "占位符+王国守护10", "元素灵龙");
+        CardInfo c残血王国小兵 = context.addToHand(0, 0).setSummonDelay(0);
+        context.addToHand(1, 0).setSummonDelay(0);
+        context.addToField(2, 1);
+        context.startGame();
+        
+        random.addNextPicks(0).addNextNumbers(1000); // 降临暴风雪
+        context.proceedOneRound();
+        Assert.assertEquals(2, context.getPlayer(0).getField().size());
+        Assert.assertEquals(1 + 500 /* 王国守护10 */ - 120 /* 法力反射 */, c残血王国小兵.getHP());
+    }
 }

@@ -147,7 +147,7 @@ public class GameEngine {
 
         player.getField().compact();
         this.getInactivePlayer().getField().compact();
-        
+
         for (CardInfo card : this.getActivePlayer().getField().getAliveCards()) {
             this.stage.getResolver().removeStatus(card, CardStatusType.复活);
         }
