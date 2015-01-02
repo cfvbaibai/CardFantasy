@@ -56,7 +56,7 @@
 
     <bean class="cfvbaibai.cardfantasy.game.MapStages" />
 
-    <bean class="cfvbaibai.cardfantasy.data.QuestionStore">
+    <bean class="cfvbaibai.cardfantasy.web.QuestionStore">
         <constructor-arg><value>5</value></constructor-arg>
     </bean>
     <!-- 

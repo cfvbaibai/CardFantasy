@@ -1,4 +1,4 @@
-package cfvbaibai.cardfantasy.data;
+package cfvbaibai.cardfantasy.web;
 
 public class Question
 {

@@ -1,4 +1,4 @@
-package cfvbaibai.cardfantasy.data;
+package cfvbaibai.cardfantasy.web;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -22,7 +22,7 @@ public class QuestionStore {
         this.questions = new ArrayList<Question>();
         this.maxQuestions = maxQuestions;
 
-        URL url = CardDataStore.class.getClassLoader().getResource("cfvbaibai/cardfantasy/data/SkillQuestions.xml");
+        URL url = QuestionStore.class.getClassLoader().getResource("cfvbaibai/cardfantasy/web/SkillQuestions.xml");
         SAXReader reader = new SAXReader();
         try {
             Document doc = reader.read(url);

@@ -9,7 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import cfvbaibai.cardfantasy.data.QuestionStore;
+import cfvbaibai.cardfantasy.web.QuestionStore;
 import cfvbaibai.cardfantasy.web.beans.Logger;
 import cfvbaibai.cardfantasy.web.beans.UserAction;
 import cfvbaibai.cardfantasy.web.beans.UserActionRecorder;
