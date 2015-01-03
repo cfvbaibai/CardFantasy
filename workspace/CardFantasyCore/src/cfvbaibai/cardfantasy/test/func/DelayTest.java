@@ -124,6 +124,19 @@ public class DelayTest extends SkillValidationTest {
     }
 
     @Test
+    public void test全体阻碍_月蚀兽() {
+        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "月蚀兽", "占位符*2");
+        context.addToHand(0, 0).setSummonDelay(0);
+        CardInfo c占位符1 = context.addToHand(1, 1).setSummonDelay(1);
+        CardInfo c占位符2 = context.addToHand(2, 1).setSummonDelay(3);
+        context.startGame();
+
+        context.proceedOneRound();
+        Assert.assertEquals(1, c占位符1.getSummonDelay());
+        Assert.assertEquals(3, c占位符2.getSummonDelay());
+    }
+
+    @Test
     public void test加速_6() {
         SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "大图书馆长", "金属巨龙", "秘银巨石像");
         context.addToField(0, 0);

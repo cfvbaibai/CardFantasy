@@ -974,6 +974,10 @@ public class SkillResolver {
                 Purify.apply(skillUseInfo, this, card);
             } else if (skillUseInfo.getType() == SkillType.战争怒吼) {
                 Soften.apply(skillUseInfo, this, card, opField.getOwner(), -1);
+            } else if (skillUseInfo.getType() == SkillType.阻碍) {
+                OneDelay.apply(skillUseInfo, this, card, opField.getOwner());
+            } else if (skillUseInfo.getType() == SkillType.全体阻碍) {
+                AllDelay.apply(skillUseInfo, this, card, opField.getOwner());
             }
         }
     }
@@ -1038,15 +1042,25 @@ public class SkillResolver {
         }
     }
 
-    public BlockStatusResult resolveBlockStatusFeature(EntityInfo attacker, CardInfo victim, SkillUseInfo feature,
-            CardStatusItem item) {
-        boolean blocked = false;
-        for (SkillUseInfo blockFeature : victim.getNormalUsableSkills()) {
-            if (blockFeature.getType() == SkillType.脱困) {
-                blocked = Escape.isStatusEscaped(blockFeature.getSkill(), this, item, victim);
+    public BlockStatusResult resolveBlockStatusFeature(EntityInfo attacker, CardInfo victim, SkillUseInfo feature, CardStatusItem item) {
+        for (RuneInfo rune : victim.getOwner().getRuneBox().getRunes()) {
+            if (!rune.isActivated()) {
+                continue;
+            }
+            if (rune.is(RuneData.鬼步)) {
+                if (Escape.isStatusEscaped(rune.getSkill(), this, item, victim)) {
+                    return new BlockStatusResult(true);
+                }
             }
         }
-        return new BlockStatusResult(blocked);
+        for (SkillUseInfo blockFeature : victim.getNormalUsableSkills()) {
+            if (blockFeature.getType() == SkillType.脱困) {
+                if (Escape.isStatusEscaped(blockFeature.getSkill(), this, item, victim)) {
+                    return new BlockStatusResult(true);
+                }
+            }
+        }
+        return new BlockStatusResult(false);
     }
 
     public void summonCard(Player player, CardInfo card, CardInfo reviver) throws HeroDieSignal {
