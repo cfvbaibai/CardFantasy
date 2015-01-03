@@ -34,6 +34,7 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2015-01-03: 修复【龙吟】会造成null错误的BUG，感谢<x>cxqlyt</x>报告BUG</li>
                     <li>2015-01-02: <ul>
                         <li>修复【陨星魔法使】召唤时候会null错误的BUG，感谢<x>为何打后</x>报告BUG</li>
                         <li>修复召唤物死亡时秽土会尝试转生的BUG，感谢<x>susss222</x>报告BUG</li>

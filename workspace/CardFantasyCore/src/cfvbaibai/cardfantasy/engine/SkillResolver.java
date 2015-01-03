@@ -139,7 +139,7 @@ public class SkillResolver {
     }
 
     public void resolvePreAttackSkills(Player attacker, Player defender) throws HeroDieSignal {
-        List<CardInfo> cards = attacker.getField().toList();
+        List<CardInfo> cards = attacker.getField().getAliveCards();
         for (CardInfo card : cards) {
             if (card.isFullyControlled()) { continue; }
             for (SkillUseInfo skillUseInfo : card.getNormalUsableSkills()) {
@@ -1181,7 +1181,7 @@ public class SkillResolver {
                     shouldActivate = true;
                 }
             } else if (activator.getType() == RuneActivationType.FieldDiff) {
-                shouldActivate = enemy.getField().size() - player.getField().size() > activator.getThreshold();
+                shouldActivate = enemy.getField().getAliveCards().size() - player.getField().getAliveCards().size() > activator.getThreshold();
             }
             
             if (!shouldActivate) {
@@ -1190,11 +1190,11 @@ public class SkillResolver {
 
             // Special logic for 永冻 & 春风 & 清泉 & 冰封 & 灼魂.
             if (rune.is(RuneData.清泉)) {
-                if (player.getField().size() == 0) {
+                if (player.getField().getAliveCards().isEmpty()) {
                     shouldActivate = false;
                 } else {
                     boolean anyCardWounded = false;
-                    for (CardInfo card : player.getField().toList()) {
+                    for (CardInfo card : player.getField().getAliveCards()) {
                         if (card.isWounded()) {
                             anyCardWounded = true;
                             break;
@@ -1205,11 +1205,11 @@ public class SkillResolver {
                     }
                 }
             } else if (rune.is(RuneData.永冻) || rune.is(RuneData.灼魂)) {
-                if (enemy.getField().toList().isEmpty()) {
+                if (enemy.getField().getAliveCards().isEmpty()) {
                     shouldActivate = false;
                 }
             } else if (rune.is(RuneData.春风) || rune.is(RuneData.冰封)) {
-                if (player.getField().size() == 0) {
+                if (player.getField().getAliveCards().isEmpty()) {
                     shouldActivate = false;
                 }
             }
