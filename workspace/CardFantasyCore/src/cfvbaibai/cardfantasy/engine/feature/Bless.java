@@ -6,12 +6,12 @@ import cfvbaibai.cardfantasy.engine.Player;
 import cfvbaibai.cardfantasy.engine.SkillResolver;
 
 public class Bless {
-    public static void apply(Skill cardFeature, SkillResolver resolver, EntityInfo healer) {
+    public static void apply(Skill cardSkill, SkillResolver resolver, EntityInfo healer) {
         if (healer == null) {
             return;
         }
         Player healee = healer.getOwner();
-        int healHP = healee.getMaxHP() * cardFeature.getImpact() / 100;
-        Pray.healHero(cardFeature, resolver, healer, healHP);
+        int healHP = healee.getMaxHP() * cardSkill.getImpact() / 100;
+        Pray.healHero(cardSkill, resolver, healer, healHP);
     }
 }

@@ -41,7 +41,7 @@ public class CardInfo extends EntityInfo {
         this.owner = owner;
         this.effects = new HashMap<SkillType, List<SkillEffect>>();
         this.features = new ArrayList<SkillUseInfo>();
-        for (CardSkill feature : card.getAllFeatures()) {
+        for (CardSkill feature : card.getAllSkills()) {
             this.features.add(new SkillUseInfo(this, feature));
         }
         this.cachedPosition = -1;
@@ -49,7 +49,7 @@ public class CardInfo extends EntityInfo {
     }
     
     public CardSkill getExtraFeature() {
-        return card.getExtraFeature();
+        return card.getExtraSkill();
     }
     
 /*    private boolean isFirstRound() {

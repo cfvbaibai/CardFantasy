@@ -214,7 +214,7 @@ public final class DeckBuilder {
     public static String getDeckDesc(Card card) {
         StringBuffer sb = new StringBuffer();
         sb.append(card.getName());
-        Skill extraFeature = card.getExtraFeature();
+        Skill extraFeature = card.getExtraSkill();
         if (extraFeature != null) {
             sb.append('+');
             sb.append(getDeckDesc(extraFeature));

@@ -11,24 +11,24 @@ import cfvbaibai.cardfantasy.engine.OnAttackBlockingResult;
 import cfvbaibai.cardfantasy.engine.Player;
 
 public final class BloodPaint {
-    public static void apply(Skill cardFeature, SkillResolver resolver, CardInfo attacker, Player defender, int victimCount) throws HeroDieSignal {
-        int damage = cardFeature.getImpact();
+    public static void apply(Skill cardSkill, SkillResolver resolver, CardInfo attacker, Player defender, int victimCount) throws HeroDieSignal {
+        int damage = cardSkill.getImpact();
         List <CardInfo> victims = resolver.getStage().getRandomizer().pickRandom(
             defender.getField().toList(), victimCount, true, null);
         GameUI ui = resolver.getStage().getUI();
-        ui.useSkill(attacker, victims, cardFeature, true);
+        ui.useSkill(attacker, victims, cardSkill, true);
         for (CardInfo victim : victims) {
-            OnAttackBlockingResult result = resolver.resolveAttackBlockingSkills(attacker, victim, cardFeature, damage);
+            OnAttackBlockingResult result = resolver.resolveAttackBlockingSkills(attacker, victim, cardSkill, damage);
             if (!result.isAttackable()) {
                 continue;
             }
             damage = result.getDamage(); 
-            ui.attackCard(attacker, victim, cardFeature, damage);
+            ui.attackCard(attacker, victim, cardSkill, damage);
             boolean cardDead = resolver.applyDamage(victim, damage).cardDead;
-            ui.healCard(attacker, attacker, cardFeature, damage);
+            ui.healCard(attacker, attacker, cardSkill, damage);
             resolver.applyDamage(attacker, -damage);
             if (cardDead) {
-                resolver.resolveDeathSkills(attacker, victim, cardFeature);
+                resolver.resolveDeathSkills(attacker, victim, cardSkill);
             }
         }
     }

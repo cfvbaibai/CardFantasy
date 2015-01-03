@@ -128,7 +128,7 @@ public class CardData {
         this.incrCost = incrCost;
     }
     
-    public List <CardSkill> getFeatures() {
+    public List <CardSkill> getSkills() {
         return this.cardSkills;
     }
 }

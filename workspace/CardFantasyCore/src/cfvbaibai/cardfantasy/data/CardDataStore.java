@@ -45,16 +45,16 @@ public class CardDataStore {
                 cardData.setIncrHP(Integer.parseInt(cardNode.valueOf("@incrHP")));
                 
                 @SuppressWarnings("unchecked")
-                List<Node> featureNodes = cardNode.selectNodes("Feature");
-                for (Node featureNode : featureNodes) {
-                    SkillType type = SkillType.valueOf(featureNode.valueOf("@type"));
-                    int level = Integer.parseInt(featureNode.valueOf("@level"));
-                    int unlockLevel = Integer.parseInt(featureNode.valueOf("@unlock"));
-                    String summonText = featureNode.valueOf("@summon");
-                    boolean isSummonFeature = summonText == null ? false : Boolean.parseBoolean(summonText);
-                    String deathText = featureNode.valueOf("@death");
-                    boolean isDeathFeature = deathText == null ? false : Boolean.parseBoolean(deathText);
-                    cardData.getFeatures().add(new CardSkill(type, level, unlockLevel, isSummonFeature, isDeathFeature));
+                List<Node> skillNodes = cardNode.selectNodes("Skill");
+                for (Node skillNode : skillNodes) {
+                    SkillType type = SkillType.valueOf(skillNode.valueOf("@type"));
+                    int level = Integer.parseInt(skillNode.valueOf("@level"));
+                    int unlockLevel = Integer.parseInt(skillNode.valueOf("@unlock"));
+                    String summonText = skillNode.valueOf("@summon");
+                    boolean isSummonSkill = summonText == null ? false : Boolean.parseBoolean(summonText);
+                    String deathText = skillNode.valueOf("@death");
+                    boolean isDeathSkill = deathText == null ? false : Boolean.parseBoolean(deathText);
+                    cardData.getSkills().add(new CardSkill(type, level, unlockLevel, isSummonSkill, isDeathSkill));
                 }
                 store.addCard(cardData);
             }

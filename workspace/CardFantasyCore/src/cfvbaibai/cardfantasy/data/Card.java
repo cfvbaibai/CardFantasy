@@ -9,7 +9,7 @@ public class Card implements Cloneable, Comparable <Card> {
     private CardData sourceInfo;
     private int exp;
     private String uniqueName;
-    private CardSkill extraFeature;
+    private CardSkill extraSkill;
 
     public Card(CardData sourceInfo) {
         this(sourceInfo, 0, "");
@@ -19,7 +19,7 @@ public class Card implements Cloneable, Comparable <Card> {
         this(sourceInfo, cardLevel, null, null, suffix);
     }
 
-    public Card(CardData sourceInfo, int cardLevel, CardSkill extraFeature, String prefix, String suffix) {
+    public Card(CardData sourceInfo, int cardLevel, CardSkill extraSkill, String prefix, String suffix) {
         if (sourceInfo == null) {
             throw new CardFantasyRuntimeException("sourceInfo should not be null");
         }
@@ -31,7 +31,7 @@ public class Card implements Cloneable, Comparable <Card> {
         }
         this.sourceInfo = sourceInfo;
         this.growToLevel(cardLevel);
-        this.extraFeature = extraFeature;
+        this.extraSkill = extraSkill;
         this.uniqueName = prefix + sourceInfo.getName() + suffix;
     }
     
@@ -63,12 +63,12 @@ public class Card implements Cloneable, Comparable <Card> {
         return this.sourceInfo.getBaseHP() + this.sourceInfo.getIncrHP() * this.getLevel();
     }
 
-    public List<CardSkill> getAllFeatures() {
-        List <CardSkill> features = new ArrayList<CardSkill>(sourceInfo.getFeatures());
-        if (this.extraFeature != null) {
-            features.add(this.extraFeature);
+    public List<CardSkill> getAllSkills() {
+        List <CardSkill> skills = new ArrayList<CardSkill>(sourceInfo.getSkills());
+        if (this.extraSkill != null) {
+            skills.add(this.extraSkill);
         }
-        return features;
+        return skills;
     }
 
     public void growToLevel(int level) {
@@ -83,13 +83,13 @@ public class Card implements Cloneable, Comparable <Card> {
         return this.sourceInfo.getName();
     }
 
-    public CardSkill getExtraFeature() {
-        return this.extraFeature;
+    public CardSkill getExtraSkill() {
+        return this.extraSkill;
     }
 
     public int getCost() {
         int cost = this.sourceInfo.getBaseCost();
-        if (this.getLevel() > 10 || this.extraFeature != null) {
+        if (this.getLevel() > 10 || this.extraSkill != null) {
             cost += this.sourceInfo.getIncrCost();
         }
         return cost;
@@ -109,15 +109,15 @@ public class Card implements Cloneable, Comparable <Card> {
         if (result != 0) {
             return result;
         }
-        if (this.getExtraFeature() == null && another.getExtraFeature() == null) {
+        if (this.getExtraSkill() == null && another.getExtraSkill() == null) {
             return 0;
         }
-        if (this.getExtraFeature() == null) {
+        if (this.getExtraSkill() == null) {
             return -1;
         }
-        if (another.getExtraFeature() == null) {
+        if (another.getExtraSkill() == null) {
             return 1;
         }
-        return this.getExtraFeature().compareTo(another.getExtraFeature());
+        return this.getExtraSkill().compareTo(another.getExtraSkill());
     }
 }

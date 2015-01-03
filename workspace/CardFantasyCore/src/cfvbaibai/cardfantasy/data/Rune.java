@@ -17,8 +17,8 @@ public class Rune implements Comparable<Rune> {
     }
     
     public RuneSkill getSkill() {
-        int featureLevel = data.getInitSkillLevel() + getLevel() * data.getIncrSkillLevel();
-        return new RuneSkill(data.getSkillType(), featureLevel);
+        int skillLevel = data.getInitSkillLevel() + getLevel() * data.getIncrSkillLevel();
+        return new RuneSkill(data.getSkillType(), skillLevel);
     }
     
     public int getMaxEnergy() {
