@@ -25,10 +25,7 @@ public final class ManaErode {
                 damage *= 3;
             }
             ui.attackCard(attacker, victim, cardSkill, damage);
-            boolean cardDead = resolver.applyDamage(victim, damage).cardDead;
-            if (cardDead) {
-                resolver.resolveDeathSkills(attacker, victim, cardSkill);
-            }
+            resolver.resolveDeathSkills(attacker, victim, cardSkill, resolver.applyDamage(victim, damage));
         }
     }
 }

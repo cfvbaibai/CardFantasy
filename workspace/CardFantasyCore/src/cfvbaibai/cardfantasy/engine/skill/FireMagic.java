@@ -30,13 +30,10 @@ public final class FireMagic {
             }
             damage = result.getDamage();
             ui.attackCard(attacker, victim, cardSkill, damage);
-            boolean cardDead = resolver.applyDamage(victim, damage).cardDead;
             if (attacker instanceof CardInfo) {
                 resolver.resolveCounterAttackSkills((CardInfo)attacker, victim, cardSkill, result, null);
             }
-            if (cardDead) {
-                resolver.resolveDeathSkills(attacker, victim, cardSkill);
-            }
+            resolver.resolveDeathSkills(attacker, victim, cardSkill, resolver.applyDamage(victim, damage));
         }
     }
 }

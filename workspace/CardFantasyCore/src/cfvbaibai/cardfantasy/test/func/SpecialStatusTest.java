@@ -381,6 +381,7 @@ public class SpecialStatusTest extends SkillValidationTest {
         Assert.assertEquals(1, c见习圣骑.getHP());
 
         // 本回合不屈依然有效
+        random.addNextNumbers(1000); // 见习圣骑闪避失败
         context.proceedOneRound();
         Assert.assertEquals(1, context.getPlayer(0).getField().size());
         Assert.assertTrue(c见习圣骑.getStatus().containsStatus(CardStatusType.不屈));
@@ -413,6 +414,7 @@ public class SpecialStatusTest extends SkillValidationTest {
         Assert.assertEquals(1, c见习圣骑.getHP());
 
         // 本回合不屈依然有效
+        random.addNextNumbers(1000);   // 见习圣骑闪避失败
         context.proceedOneRound();
         Assert.assertEquals(2, context.getPlayer(0).getField().size());
         Assert.assertTrue(c见习圣骑.getStatus().containsStatus(CardStatusType.不屈));
@@ -429,7 +431,7 @@ public class SpecialStatusTest extends SkillValidationTest {
      * 不屈能免疫瘟疫和群体削弱
      */
     @Test
-    public void test不屈_瘟疫() {
+    public void test不屈_瘟疫_群体削弱() {
         SkillTestContext context = SkillValidationTestSuite.prepare(
             50, 50, "见习圣骑+不屈", "秘银巨石像", "占位符+瘟疫10", "占位符+群体削弱10");
         CardInfo c见习圣骑 = context.addToField(0, 0).setBasicHP(2);
@@ -439,13 +441,13 @@ public class SpecialStatusTest extends SkillValidationTest {
         context.startGame();
 
         context.getStage().setActivePlayerNumber(1);
-        random.addNextNumbers(1000);    // 见习圣骑闪避失败
+        random.addNextNumbers(1000);   // 见习圣骑闪避失败
         random.addNextPicks(0, 0);     // 瘟疫和群体削弱
         context.proceedOneRound();
         Assert.assertEquals(1, context.getPlayer(0).getField().size());
         Assert.assertTrue(c见习圣骑.getStatus().containsStatus(CardStatusType.不屈));
         Assert.assertEquals(1, c见习圣骑.getHP());
-        Assert.assertEquals(495, c见习圣骑.getCurrentAT());
+        Assert.assertEquals(495 - 50 /* 瘟疫 */ - 50 /* 群体削弱 */, c见习圣骑.getCurrentAT());
     }
 
     /**
@@ -474,5 +476,61 @@ public class SpecialStatusTest extends SkillValidationTest {
         context.proceedOneRound();
         // 见习圣骑并未受控制
         Assert.assertEquals(495, 1400 - c秘银巨石像.getHP());
+    }
+
+    /**
+     * 发动不屈时不应该丢失种族之力
+     */
+    @Test
+    public void test不屈_种族之力() {
+        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "铸造大师*2", "秘银巨石像");
+        CardInfo c铸造大师1 = context.addToHand(0, 0).setSummonDelay(0);
+        CardInfo c铸造大师2 = context.addToHand(1, 0).setSummonDelay(0);
+        context.addToField(2, 1);
+        context.startGame();
+
+        context.proceedOneRound();
+        Assert.assertEquals(460 + 150, c铸造大师1.getCurrentAT());
+        Assert.assertEquals(460 + 150, c铸造大师2.getCurrentAT());
+
+        c铸造大师1.setBasicHP(2);
+        c铸造大师2.setBasicHP(2);
+        context.proceedOneRound();
+        Assert.assertTrue(c铸造大师1.getStatus().containsStatus(CardStatusType.不屈));
+        Assert.assertFalse(c铸造大师2.getStatus().containsStatus(CardStatusType.不屈));
+        Assert.assertEquals(1, c铸造大师1.getHP());
+        Assert.assertEquals(2, c铸造大师2.getHP());
+        Assert.assertEquals(460 + 150, c铸造大师1.getCurrentAT());
+        Assert.assertEquals(460 + 150, c铸造大师2.getCurrentAT());
+
+        context.proceedOneRound();
+
+        context.proceedOneRound();
+        Assert.assertEquals(1, context.getPlayer(0).getField().size());
+        Assert.assertEquals(460, c铸造大师2.getCurrentAT());
+    }
+
+    /**
+     * 不屈无法抵挡摧毁
+     */
+    @Test
+    public void test不屈_摧毁() {
+        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "见习圣骑+不屈", "占位符+盾刺10", "独眼巨人");
+        CardInfo c见习圣骑 = context.addToField(0, 0);
+        context.addToField(1, 1);
+        context.startGame();
+
+        c见习圣骑.setBasicHP(2);
+        context.proceedOneRound();
+        // 王国小兵被雷兽盾刺弹死，发动不屈
+        Assert.assertTrue(c见习圣骑.getStatus().containsStatus(CardStatusType.不屈));
+        Assert.assertEquals(1, c见习圣骑.getHP());
+
+        context.addToHand(2, 1).setSummonDelay(0);
+        random.addNextPicks(0);   // 独眼巨人的降临群体削弱
+        random.addNextPicks(0);   // 独眼巨人的降临摧毁
+        context.proceedOneRound();
+        // 王国小兵被摧毁，不屈无法抵挡摧毁
+        Assert.assertEquals(0, context.getPlayer(0).getField().size());
     }
 }

@@ -389,4 +389,9 @@ public class StructuredRecordGameUI extends GameUI {
     public void increaseSummonDelay(CardInfo card, int offset) {
         this.record.addEvent("increaseSummonDelay", new EntityRuntimeInfo(card), offset);
     }
+
+    @Override
+    public void unbend(CardInfo card, CardStatusItem statusItem) {
+        this.useSkill(card, statusItem.getCause().getSkill(), true);
+    }
 }

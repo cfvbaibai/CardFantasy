@@ -4,11 +4,11 @@ import java.util.List;
 
 import cfvbaibai.cardfantasy.GameUI;
 import cfvbaibai.cardfantasy.data.Skill;
-import cfvbaibai.cardfantasy.data.SkillTag;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.CardStatusItem;
 import cfvbaibai.cardfantasy.engine.CardStatusType;
 import cfvbaibai.cardfantasy.engine.EntityInfo;
+import cfvbaibai.cardfantasy.engine.OnAttackBlockingResult;
 import cfvbaibai.cardfantasy.engine.SkillResolver;
 import cfvbaibai.cardfantasy.engine.SkillUseInfo;
 
@@ -27,21 +27,25 @@ public class Unbending {
         return true;
     }
 
-    public static boolean isEscaped(SkillResolver resolver, EntityInfo attacker, Skill attackSkill, CardInfo victim, int originalDamage) {
+    public static void isSkillEscaped(SkillResolver resolver, EntityInfo attacker, Skill attackSkill, CardInfo victim, OnAttackBlockingResult result) {
+        List<CardStatusItem> items = victim.getStatus().getStatusOf(CardStatusType.不屈);
+        if (items.isEmpty()) {
+            return;
+        }
+        Skill skill = items.get(0).getCause().getSkill();
+        if (attackSkill != null) {
+            if (Escape.isSkillEscaped(resolver, skill, attackSkill, attacker, victim)) {
+                result.setAttackable(false);
+            }
+        }
+    }
+    
+    public static boolean isStatusEscaped(SkillResolver resolver, CardStatusItem item, CardInfo victim) {
         List<CardStatusItem> items = victim.getStatus().getStatusOf(CardStatusType.不屈);
         if (items.isEmpty()) {
             return false;
         }
         Skill skill = items.get(0).getCause().getSkill();
-        GameUI ui = resolver.getStage().getUI();
-        ui.useSkill(victim, attacker, skill, true);
-        if (attackSkill == null || attackSkill.getType().containsTag(SkillTag.物理攻击)) {
-            ui.blockDamage(victim, attacker, victim, skill, originalDamage, 0);
-        } else {
-            if (!skill.getType().containsTag(SkillTag.抗不屈)) {
-                ui.blockSkill(attacker, victim, skill, attackSkill);
-            }
-        }
-        return true;
+        return Escape.isStatusEscaped(skill, resolver, item, victim);
     }
 }

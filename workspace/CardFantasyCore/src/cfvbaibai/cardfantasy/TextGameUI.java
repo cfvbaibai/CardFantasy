@@ -13,7 +13,6 @@ import cfvbaibai.cardfantasy.engine.CardStatusItem;
 import cfvbaibai.cardfantasy.engine.CardStatusType;
 import cfvbaibai.cardfantasy.engine.Deck;
 import cfvbaibai.cardfantasy.engine.EntityInfo;
-import cfvbaibai.cardfantasy.engine.SkillEffect;
 import cfvbaibai.cardfantasy.engine.Field;
 import cfvbaibai.cardfantasy.engine.GameResult;
 import cfvbaibai.cardfantasy.engine.Grave;
@@ -22,6 +21,7 @@ import cfvbaibai.cardfantasy.engine.Phase;
 import cfvbaibai.cardfantasy.engine.Player;
 import cfvbaibai.cardfantasy.engine.RuneBox;
 import cfvbaibai.cardfantasy.engine.RuneInfo;
+import cfvbaibai.cardfantasy.engine.SkillEffect;
 import cfvbaibai.cardfantasy.game.PveGameResult;
 
 public abstract class TextGameUI extends GameUI {
@@ -485,5 +485,10 @@ public abstract class TextGameUI extends GameUI {
     public void increaseSummonDelay(CardInfo card, int offset) {
         String verb = offset > 0 ? "增加" : "减少";
         sayF("%s 的等待时间%s %d: %d -> %d", card.getShortDesc(), verb, Math.abs(offset), card.getSummonDelay(), card.getSummonDelay() + offset);
+    }
+    
+    @Override
+    public void unbend(CardInfo card, CardStatusItem statusItem) {
+        sayF("%s 处在 %s 中，免疫所有伤害！", card.getShortDesc(), statusItem.getShortDesc());
     }
 }

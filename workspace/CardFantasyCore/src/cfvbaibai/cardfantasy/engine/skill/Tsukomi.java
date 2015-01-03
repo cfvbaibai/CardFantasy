@@ -31,9 +31,7 @@ public class Tsukomi {
             }
             int damage = victim.getCurrentAT() / 2;
             ui.attackCard(attacker, victim, cardSkill, damage);
-            if (resolver.applyDamage(victim, damage).cardDead) {
-                resolver.resolveDeathSkills(defender, victim, cardSkill);
-            }
+            resolver.resolveDeathSkills(defender, victim, cardSkill, resolver.applyDamage(victim, damage));
         }
     }
 }

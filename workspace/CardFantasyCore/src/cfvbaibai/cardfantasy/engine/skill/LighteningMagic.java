@@ -7,11 +7,12 @@ import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.CardStatusItem;
 import cfvbaibai.cardfantasy.engine.EntityInfo;
-import cfvbaibai.cardfantasy.engine.SkillUseInfo;
-import cfvbaibai.cardfantasy.engine.SkillResolver;
 import cfvbaibai.cardfantasy.engine.HeroDieSignal;
 import cfvbaibai.cardfantasy.engine.OnAttackBlockingResult;
+import cfvbaibai.cardfantasy.engine.OnDamagedResult;
 import cfvbaibai.cardfantasy.engine.Player;
+import cfvbaibai.cardfantasy.engine.SkillResolver;
+import cfvbaibai.cardfantasy.engine.SkillUseInfo;
 
 /**
  * Chain Lightening give 25 * level damages to 3 enemy's cards and 40%
@@ -34,21 +35,20 @@ public final class LighteningMagic {
             if (!result.isAttackable()) {
                 continue;
             }
-            damage = result.getDamage();
-            ui.attackCard(attacker, victim, skill, damage);
-            boolean cardDead = resolver.applyDamage(victim, damage).cardDead;
-            if (attacker instanceof CardInfo) {
-                resolver.resolveCounterAttackSkills((CardInfo)attacker, victim, skill, result, null);
-            }
-            if (cardDead) {
-                resolver.resolveDeathSkills(attacker, victim, skill);
-            } else if (resolver.getStage().getRandomizer().roll100(paralyzeRate)) {
+            if (resolver.getStage().getRandomizer().roll100(paralyzeRate)) {
                 CardStatusItem status = CardStatusItem.paralyzed(skillUseInfo);
                 if (!resolver.resolveBlockStatusSkills(attacker, victim, skillUseInfo, status).isBlocked()) {
                     ui.addCardStatus(attacker, victim, skill, status);
                     victim.addStatus(status);
                 }
             }
+            damage = result.getDamage();
+            ui.attackCard(attacker, victim, skill, damage);
+            OnDamagedResult onDamagedResult = resolver.applyDamage(victim, damage);
+            if (attacker instanceof CardInfo) {
+                resolver.resolveCounterAttackSkills((CardInfo)attacker, victim, skill, result, null);
+            }
+            resolver.resolveDeathSkills(attacker, victim, skill, onDamagedResult);
         }
     }
 }

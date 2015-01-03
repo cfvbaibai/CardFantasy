@@ -10,8 +10,7 @@ import cfvbaibai.cardfantasy.engine.EntityInfo;
 import cfvbaibai.cardfantasy.engine.SkillResolver;
 
 public final class Escape {
-    public static boolean isSkillEscaped(SkillResolver resolver, Skill cardSkill, Skill attackSkill,
-            EntityInfo attacker, CardInfo defender) {
+    public static boolean isSkillEscaped(SkillResolver resolver, Skill cardSkill, Skill attackSkill, EntityInfo attacker, CardInfo defender) {
         if (attackSkill.getType().containsTag(SkillTag.控制)) {
             GameUI ui = resolver.getStage().getUI();
             ui.useSkill(defender, attacker, cardSkill, true);
@@ -22,8 +21,7 @@ public final class Escape {
         }
     }
 
-    public static boolean isStatusEscaped(Skill cardSkill, SkillResolver resolver, CardStatusItem item,
-            CardInfo defender) {
+    public static boolean isStatusEscaped(Skill cardSkill, SkillResolver resolver, CardStatusItem item, CardInfo defender) {
         if (item.getType() == CardStatusType.冰冻 ||
             item.getType() == CardStatusType.麻痹) {
             EntityInfo attacker = item.getCause().getOwner();

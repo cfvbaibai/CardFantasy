@@ -37,9 +37,7 @@ public final class Explode {
             }
             damage = result.getDamage();
             ui.attackCard(exploder, victim, cardSkill, damage);
-            if (resolver.applyDamage(victim, damage).cardDead) {
-                resolver.resolveDeathSkills(exploder, victim, cardSkill);
-            }            
+            resolver.resolveDeathSkills(exploder, victim, cardSkill, resolver.applyDamage(victim, damage));
         }
     }
 }

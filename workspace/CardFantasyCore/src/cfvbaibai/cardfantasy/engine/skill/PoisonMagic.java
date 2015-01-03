@@ -34,10 +34,8 @@ public final class PoisonMagic {
             if (attacker instanceof CardInfo) {
                 resolver.resolveCounterAttackSkills((CardInfo)attacker, victim, skill, onAttackBlockingResult, null);
             }
-            if (onDamagedResult.cardDead) {
-                resolver.resolveDeathSkills(attacker, victim, skill);
-            }
-            if (!onDamagedResult.cardDead || onDamagedResult.unbending) {
+            resolver.resolveDeathSkills(attacker, victim, skill, onDamagedResult);
+            if (!onDamagedResult.cardDead) {
                 CardStatusItem status = CardStatusItem.poisoned(damage, skillUseInfo);
                 ui.addCardStatus(attacker, victim, skill, status);
                 victim.addStatus(status);

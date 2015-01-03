@@ -26,8 +26,6 @@ public final class CounterAttack {
         GameUI ui = resolver.getStage().getUI();
         ui.useSkill(defender, attacker, cardSkill, true);
         ui.attackCard(defender, attacker, cardSkill, damage);
-        if (resolver.applyDamage(attacker, damage).cardDead) {
-            resolver.resolveDeathSkills(defender, attacker, cardSkill);
-        }
+        resolver.resolveDeathSkills(defender, attacker, cardSkill, resolver.applyDamage(attacker, damage));
     }
 }

@@ -5,8 +5,9 @@ import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.data.SkillTag;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.EntityInfo;
-import cfvbaibai.cardfantasy.engine.SkillResolver;
 import cfvbaibai.cardfantasy.engine.HeroDieSignal;
+import cfvbaibai.cardfantasy.engine.OnDamagedResult;
+import cfvbaibai.cardfantasy.engine.SkillResolver;
 
 public final class Guard {
     public static int apply(Skill guardSkill, Skill attackSkill, SkillResolver resolver, EntityInfo attacker, CardInfo guardian,
@@ -24,9 +25,8 @@ public final class Guard {
             damage = guardian.getHP();
         }
         resolver.getStage().getUI().attackCard(attacker, guardian, guardSkill, damage);
-        if (resolver.applyDamage(guardian, damage).cardDead) {
-            resolver.resolveDeathSkills(attacker, guardian, guardSkill);
-        }
+        OnDamagedResult result = resolver.applyDamage(guardian, damage);
+        resolver.resolveDeathSkills(attacker, guardian, guardSkill, result);
         return remainingDamage;
     }
 }

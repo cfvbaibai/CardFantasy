@@ -363,8 +363,8 @@ public class SkillResolver {
             Skill attackSkill, int damage) throws HeroDieSignal {
         OnAttackBlockingResult result = new OnAttackBlockingResult(true, 0);
         CardStatus status = attacker.getStatus();
-        if (Unbending.isEscaped(this, attacker, attackSkill, defender, damage)) {
-            result.setAttackable(false);
+        Unbending.isSkillEscaped(this, attacker, attackSkill, defender, result);
+        if (!result.isAttackable()) {
             return result;
         }
         if (isPhysicalAttackSkill(attackSkill)) {
@@ -552,12 +552,23 @@ public class SkillResolver {
      * @return Whether the dead card is revived.
      * @throws HeroDieSignal
      */
-    public void resolveDeathSkills(EntityInfo killerCard, CardInfo deadCard, Skill cardSkill) throws HeroDieSignal {
+    public void resolveDeathSkills(EntityInfo killerCard, CardInfo deadCard, Skill cardSkill, OnDamagedResult result) throws HeroDieSignal {
         if (deadCard.hasDeadOnce()) {
             return;
         }
-        deadCard.setDeadOnce(true);
-        resolveLeaveSkills(deadCard, cardSkill);
+        // Two scenarios where death skill should be resolved:
+        // 1. cardDead
+        // 2. unbending triggered
+        if (!result.cardDead && !result.unbending) {
+            return;
+        }
+        if (result.cardDead && !result.unbending) {
+            deadCard.setDeadOnce(true);
+        }
+        // HACKHACK: Cannot find better way to handle 不屈
+        if (!deadCard.getStatus().containsStatus(CardStatusType.不屈)) {
+            resolveLeaveSkills(deadCard, cardSkill);
+        }
         for (SkillUseInfo deadCardSkillUseInfo : deadCard.getUsableDeathSkills()) {
             if (deadCardSkillUseInfo.getType() == SkillType.烈焰风暴) {
                 FireMagic.apply(deadCardSkillUseInfo.getSkill(), this, deadCard, killerCard.getOwner(), -1);
@@ -755,6 +766,11 @@ public class SkillResolver {
     }
 
     public OnDamagedResult applyDamage(CardInfo card, int damage) {
+        List<CardStatusItem> unbendingStatusItems = card.getStatus().getStatusOf(CardStatusType.不屈);
+        if (!unbendingStatusItems.isEmpty()) {
+            this.getStage().getUI().unbend(card, unbendingStatusItems.get(0));
+            damage = 0;
+        }
         int actualDamage = card.applyDamage(damage);
         OnDamagedResult result = new OnDamagedResult();
         result.originalDamage = damage;
@@ -766,10 +782,12 @@ public class SkillResolver {
                     // BUGBUG: The original game does not set cardDead to false
                     // result.cardDead = false
                     result.unbending = Unbending.apply(skillUseInfo, this, card);
-                }
+                 }
             }
             if (!result.unbending) {
                 cardDead(card);
+            } else {
+                result.cardDead = false;
             }
         }
         return result;
@@ -888,9 +906,8 @@ public class SkillResolver {
         OnDamagedResult damagedResult = stage.getResolver().applyDamage(defender, blockingResult.getDamage());
 
         resolvePostAttackSkills(attacker, defender, defender.getOwner(), skill, damagedResult.actualDamage);
-        if (damagedResult.cardDead) {
-            stage.getResolver().resolveDeathSkills(attacker, defender, skill);
-        }
+        stage.getResolver().resolveDeathSkills(attacker, defender, skill, damagedResult);
+
         resolveExtraAttackSkills(attacker, defender, defender.getOwner(), skill, damagedResult.actualDamage);
         resolveCounterAttackSkills(attacker, defender, skill, blockingResult, damagedResult);
 
@@ -1062,8 +1079,9 @@ public class SkillResolver {
         for (CardStatusItem item : items) {
             this.stage.getUI().debuffDamage(card, item, item.getEffect());
 
-            if (this.applyDamage(card, item.getEffect()).cardDead) {
-                this.resolveDeathSkills(item.getCause().getOwner(), card, item.getCause().getSkill());
+            OnDamagedResult result = this.applyDamage(card, item.getEffect());
+            this.resolveDeathSkills(item.getCause().getOwner(), card, item.getCause().getSkill(), result);
+            if (result.cardDead) {
                 break;
             }
         }
@@ -1082,6 +1100,9 @@ public class SkillResolver {
     }
 
     public BlockStatusResult resolveBlockStatusSkills(EntityInfo attacker, CardInfo victim, SkillUseInfo skillUseInfo, CardStatusItem item) {
+        if (Unbending.isStatusEscaped(this, item, victim)) {
+            return new BlockStatusResult(true);
+        }
         for (RuneInfo rune : victim.getOwner().getRuneBox().getRunes()) {
             if (!rune.isActivated()) {
                 continue;
@@ -1379,7 +1400,6 @@ public class SkillResolver {
     public void removeOneRoundEffects(Player activePlayer) {
         for (CardInfo card : activePlayer.getField().getAliveCards()) {
             this.removeStatus(card, CardStatusType.不屈);
-            card.setDeadOnce(false);
         }
     }
 }

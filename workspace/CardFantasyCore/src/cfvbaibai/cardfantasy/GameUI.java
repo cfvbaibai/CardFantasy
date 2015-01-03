@@ -10,13 +10,13 @@ import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.CardStatusItem;
 import cfvbaibai.cardfantasy.engine.CardStatusType;
 import cfvbaibai.cardfantasy.engine.EntityInfo;
-import cfvbaibai.cardfantasy.engine.SkillEffect;
 import cfvbaibai.cardfantasy.engine.Field;
 import cfvbaibai.cardfantasy.engine.GameResult;
 import cfvbaibai.cardfantasy.engine.Phase;
 import cfvbaibai.cardfantasy.engine.Player;
 import cfvbaibai.cardfantasy.engine.Rule;
 import cfvbaibai.cardfantasy.engine.RuneInfo;
+import cfvbaibai.cardfantasy.engine.SkillEffect;
 import cfvbaibai.cardfantasy.game.PveGameResult;
 
 public abstract class GameUI {
@@ -176,4 +176,6 @@ public abstract class GameUI {
     public abstract void mapStageResult(PveGameResult result);
     
     public abstract void increaseSummonDelay(CardInfo card, int offset);
+
+    public abstract void unbend(CardInfo card, CardStatusItem statusItem);
 }

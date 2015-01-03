@@ -10,12 +10,12 @@ import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.CardStatusItem;
 import cfvbaibai.cardfantasy.engine.CardStatusType;
 import cfvbaibai.cardfantasy.engine.EntityInfo;
-import cfvbaibai.cardfantasy.engine.SkillEffect;
 import cfvbaibai.cardfantasy.engine.Field;
 import cfvbaibai.cardfantasy.engine.GameResult;
 import cfvbaibai.cardfantasy.engine.Phase;
 import cfvbaibai.cardfantasy.engine.Player;
 import cfvbaibai.cardfantasy.engine.RuneInfo;
+import cfvbaibai.cardfantasy.engine.SkillEffect;
 
 public class DummyGameUI extends GameUI {
 
@@ -346,6 +346,12 @@ public class DummyGameUI extends GameUI {
 
     @Override
     public void softened(CardInfo card) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public void unbend(CardInfo cardInfo, CardStatusItem statusItem) {
         // TODO Auto-generated method stub
         
     }
