@@ -237,7 +237,7 @@ public class DummyGameUI extends GameUI {
     }
 
     @Override
-    public void blockFeature(EntityInfo attacker, EntityInfo defender, Skill cardFeature, Skill attackFeature) {
+    public void blockSkill(EntityInfo attacker, EntityInfo defender, Skill cardFeature, Skill attackFeature) {
         // TODO Auto-generated method stub
 
     }

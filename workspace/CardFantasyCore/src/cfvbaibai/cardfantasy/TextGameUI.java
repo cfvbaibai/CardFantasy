@@ -388,7 +388,7 @@ public abstract class TextGameUI extends GameUI {
     }
 
     @Override
-    public void blockFeature(EntityInfo attacker, EntityInfo defender, Skill cardFeature, Skill attackFeature) {
+    public void blockSkill(EntityInfo attacker, EntityInfo defender, Skill cardFeature, Skill attackFeature) {
         sayF("%s 使用 %s 格挡了 %s", defender.getShortDesc(), cardFeature.getShortDesc(), attackFeature.getShortDesc());
     }
 

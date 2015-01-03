@@ -11,88 +11,88 @@ import cfvbaibai.cardfantasy.data.RuneData;
 import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.data.SkillTag;
 import cfvbaibai.cardfantasy.data.SkillType;
-import cfvbaibai.cardfantasy.engine.feature.AllDelay;
-import cfvbaibai.cardfantasy.engine.feature.AllSpeedUp;
-import cfvbaibai.cardfantasy.engine.feature.Arouse;
-import cfvbaibai.cardfantasy.engine.feature.AttackUp;
-import cfvbaibai.cardfantasy.engine.feature.BackStab;
-import cfvbaibai.cardfantasy.engine.feature.Bless;
-import cfvbaibai.cardfantasy.engine.feature.Block;
-import cfvbaibai.cardfantasy.engine.feature.BloodDrain;
-import cfvbaibai.cardfantasy.engine.feature.BloodPaint;
-import cfvbaibai.cardfantasy.engine.feature.BloodThirsty;
-import cfvbaibai.cardfantasy.engine.feature.Burning;
-import cfvbaibai.cardfantasy.engine.feature.BurningFlame;
-import cfvbaibai.cardfantasy.engine.feature.ChainAttack;
-import cfvbaibai.cardfantasy.engine.feature.Confusion;
-import cfvbaibai.cardfantasy.engine.feature.CounterAttack;
-import cfvbaibai.cardfantasy.engine.feature.CounterBite;
-import cfvbaibai.cardfantasy.engine.feature.CounterMagic;
-import cfvbaibai.cardfantasy.engine.feature.CounterSummon;
-import cfvbaibai.cardfantasy.engine.feature.CriticalAttack;
-import cfvbaibai.cardfantasy.engine.feature.Curse;
-import cfvbaibai.cardfantasy.engine.feature.Destroy;
-import cfvbaibai.cardfantasy.engine.feature.Disease;
-import cfvbaibai.cardfantasy.engine.feature.Dodge;
-import cfvbaibai.cardfantasy.engine.feature.EarthShield;
-import cfvbaibai.cardfantasy.engine.feature.EnergyArmor;
-import cfvbaibai.cardfantasy.engine.feature.EnergyDrain;
-import cfvbaibai.cardfantasy.engine.feature.Enprison;
-import cfvbaibai.cardfantasy.engine.feature.Escape;
-import cfvbaibai.cardfantasy.engine.feature.Explode;
-import cfvbaibai.cardfantasy.engine.feature.FireMagic;
-import cfvbaibai.cardfantasy.engine.feature.Guard;
-import cfvbaibai.cardfantasy.engine.feature.Heal;
-import cfvbaibai.cardfantasy.engine.feature.HealingMist;
-import cfvbaibai.cardfantasy.engine.feature.HeavenWrath;
-import cfvbaibai.cardfantasy.engine.feature.HeroKiller;
-import cfvbaibai.cardfantasy.engine.feature.HolyFire;
-import cfvbaibai.cardfantasy.engine.feature.HolyGuard;
-import cfvbaibai.cardfantasy.engine.feature.HolyShield;
-import cfvbaibai.cardfantasy.engine.feature.IceArmor;
-import cfvbaibai.cardfantasy.engine.feature.IceMagic;
-import cfvbaibai.cardfantasy.engine.feature.Immobility;
-import cfvbaibai.cardfantasy.engine.feature.Immue;
-import cfvbaibai.cardfantasy.engine.feature.LegionBuff;
-import cfvbaibai.cardfantasy.engine.feature.LighteningMagic;
-import cfvbaibai.cardfantasy.engine.feature.MagicShield;
-import cfvbaibai.cardfantasy.engine.feature.ManaErode;
-import cfvbaibai.cardfantasy.engine.feature.NoEffect;
-import cfvbaibai.cardfantasy.engine.feature.OneDelay;
-import cfvbaibai.cardfantasy.engine.feature.Overdraw;
-import cfvbaibai.cardfantasy.engine.feature.Penetration;
-import cfvbaibai.cardfantasy.engine.feature.Plague;
-import cfvbaibai.cardfantasy.engine.feature.PoisonMagic;
-import cfvbaibai.cardfantasy.engine.feature.Pray;
-import cfvbaibai.cardfantasy.engine.feature.Purify;
-import cfvbaibai.cardfantasy.engine.feature.Pursuit;
-import cfvbaibai.cardfantasy.engine.feature.RacialAttackFeature;
-import cfvbaibai.cardfantasy.engine.feature.RacialBuff;
-import cfvbaibai.cardfantasy.engine.feature.RacialShield;
-import cfvbaibai.cardfantasy.engine.feature.Rainfall;
-import cfvbaibai.cardfantasy.engine.feature.Reincarnation;
-import cfvbaibai.cardfantasy.engine.feature.Rejuvenate;
-import cfvbaibai.cardfantasy.engine.feature.Resurrection;
-import cfvbaibai.cardfantasy.engine.feature.Return;
-import cfvbaibai.cardfantasy.engine.feature.Revenge;
-import cfvbaibai.cardfantasy.engine.feature.Revive;
-import cfvbaibai.cardfantasy.engine.feature.Sacrifice;
-import cfvbaibai.cardfantasy.engine.feature.Seal;
-import cfvbaibai.cardfantasy.engine.feature.Snipe;
-import cfvbaibai.cardfantasy.engine.feature.Soften;
-import cfvbaibai.cardfantasy.engine.feature.SpeedUp;
-import cfvbaibai.cardfantasy.engine.feature.Spike;
-import cfvbaibai.cardfantasy.engine.feature.Summon;
-import cfvbaibai.cardfantasy.engine.feature.Transport;
-import cfvbaibai.cardfantasy.engine.feature.Trap;
-import cfvbaibai.cardfantasy.engine.feature.Tsukomi;
-import cfvbaibai.cardfantasy.engine.feature.WeakPointAttack;
-import cfvbaibai.cardfantasy.engine.feature.Weaken;
-import cfvbaibai.cardfantasy.engine.feature.WeakenAll;
-import cfvbaibai.cardfantasy.engine.feature.WinningPursuit;
-import cfvbaibai.cardfantasy.engine.feature.Wound;
-import cfvbaibai.cardfantasy.engine.feature.Wrath;
-import cfvbaibai.cardfantasy.engine.feature.Zealot;
+import cfvbaibai.cardfantasy.engine.skill.AllDelay;
+import cfvbaibai.cardfantasy.engine.skill.AllSpeedUp;
+import cfvbaibai.cardfantasy.engine.skill.Arouse;
+import cfvbaibai.cardfantasy.engine.skill.AttackUp;
+import cfvbaibai.cardfantasy.engine.skill.BackStab;
+import cfvbaibai.cardfantasy.engine.skill.Bless;
+import cfvbaibai.cardfantasy.engine.skill.Block;
+import cfvbaibai.cardfantasy.engine.skill.BloodDrain;
+import cfvbaibai.cardfantasy.engine.skill.BloodPaint;
+import cfvbaibai.cardfantasy.engine.skill.BloodThirsty;
+import cfvbaibai.cardfantasy.engine.skill.Burning;
+import cfvbaibai.cardfantasy.engine.skill.BurningFlame;
+import cfvbaibai.cardfantasy.engine.skill.ChainAttack;
+import cfvbaibai.cardfantasy.engine.skill.Confusion;
+import cfvbaibai.cardfantasy.engine.skill.CounterAttack;
+import cfvbaibai.cardfantasy.engine.skill.CounterBite;
+import cfvbaibai.cardfantasy.engine.skill.CounterMagic;
+import cfvbaibai.cardfantasy.engine.skill.CounterSummon;
+import cfvbaibai.cardfantasy.engine.skill.CriticalAttack;
+import cfvbaibai.cardfantasy.engine.skill.Curse;
+import cfvbaibai.cardfantasy.engine.skill.Destroy;
+import cfvbaibai.cardfantasy.engine.skill.Disease;
+import cfvbaibai.cardfantasy.engine.skill.Dodge;
+import cfvbaibai.cardfantasy.engine.skill.EarthShield;
+import cfvbaibai.cardfantasy.engine.skill.EnergyArmor;
+import cfvbaibai.cardfantasy.engine.skill.EnergyDrain;
+import cfvbaibai.cardfantasy.engine.skill.Enprison;
+import cfvbaibai.cardfantasy.engine.skill.Escape;
+import cfvbaibai.cardfantasy.engine.skill.Explode;
+import cfvbaibai.cardfantasy.engine.skill.FireMagic;
+import cfvbaibai.cardfantasy.engine.skill.Guard;
+import cfvbaibai.cardfantasy.engine.skill.Heal;
+import cfvbaibai.cardfantasy.engine.skill.HealingMist;
+import cfvbaibai.cardfantasy.engine.skill.HeavenWrath;
+import cfvbaibai.cardfantasy.engine.skill.HeroKiller;
+import cfvbaibai.cardfantasy.engine.skill.HolyFire;
+import cfvbaibai.cardfantasy.engine.skill.HolyGuard;
+import cfvbaibai.cardfantasy.engine.skill.HolyShield;
+import cfvbaibai.cardfantasy.engine.skill.IceArmor;
+import cfvbaibai.cardfantasy.engine.skill.IceMagic;
+import cfvbaibai.cardfantasy.engine.skill.Immobility;
+import cfvbaibai.cardfantasy.engine.skill.Immue;
+import cfvbaibai.cardfantasy.engine.skill.LegionBuff;
+import cfvbaibai.cardfantasy.engine.skill.LighteningMagic;
+import cfvbaibai.cardfantasy.engine.skill.MagicShield;
+import cfvbaibai.cardfantasy.engine.skill.ManaErode;
+import cfvbaibai.cardfantasy.engine.skill.NoEffect;
+import cfvbaibai.cardfantasy.engine.skill.OneDelay;
+import cfvbaibai.cardfantasy.engine.skill.Overdraw;
+import cfvbaibai.cardfantasy.engine.skill.Penetration;
+import cfvbaibai.cardfantasy.engine.skill.Plague;
+import cfvbaibai.cardfantasy.engine.skill.PoisonMagic;
+import cfvbaibai.cardfantasy.engine.skill.Pray;
+import cfvbaibai.cardfantasy.engine.skill.Purify;
+import cfvbaibai.cardfantasy.engine.skill.Pursuit;
+import cfvbaibai.cardfantasy.engine.skill.RacialAttackFeature;
+import cfvbaibai.cardfantasy.engine.skill.RacialBuff;
+import cfvbaibai.cardfantasy.engine.skill.RacialShield;
+import cfvbaibai.cardfantasy.engine.skill.Rainfall;
+import cfvbaibai.cardfantasy.engine.skill.Reincarnation;
+import cfvbaibai.cardfantasy.engine.skill.Rejuvenate;
+import cfvbaibai.cardfantasy.engine.skill.Resurrection;
+import cfvbaibai.cardfantasy.engine.skill.Return;
+import cfvbaibai.cardfantasy.engine.skill.Revenge;
+import cfvbaibai.cardfantasy.engine.skill.Revive;
+import cfvbaibai.cardfantasy.engine.skill.Sacrifice;
+import cfvbaibai.cardfantasy.engine.skill.Seal;
+import cfvbaibai.cardfantasy.engine.skill.Snipe;
+import cfvbaibai.cardfantasy.engine.skill.Soften;
+import cfvbaibai.cardfantasy.engine.skill.SpeedUp;
+import cfvbaibai.cardfantasy.engine.skill.Spike;
+import cfvbaibai.cardfantasy.engine.skill.Summon;
+import cfvbaibai.cardfantasy.engine.skill.Transport;
+import cfvbaibai.cardfantasy.engine.skill.Trap;
+import cfvbaibai.cardfantasy.engine.skill.Tsukomi;
+import cfvbaibai.cardfantasy.engine.skill.WeakPointAttack;
+import cfvbaibai.cardfantasy.engine.skill.Weaken;
+import cfvbaibai.cardfantasy.engine.skill.WeakenAll;
+import cfvbaibai.cardfantasy.engine.skill.WinningPursuit;
+import cfvbaibai.cardfantasy.engine.skill.Wound;
+import cfvbaibai.cardfantasy.engine.skill.Wrath;
+import cfvbaibai.cardfantasy.engine.skill.Zealot;
 
 
 public class SkillResolver {
@@ -465,7 +465,7 @@ public class SkillResolver {
             } else {
                 for (SkillUseInfo blockSkillUseInfo : defender.getNormalUsableSkills()) {
                     if (blockSkillUseInfo.getType() == SkillType.法力反射) {
-                        if (CounterMagic.isFeatureBlocked(this, blockSkillUseInfo.getSkill(), attackSkill,
+                        if (CounterMagic.isSkillBlocked(this, blockSkillUseInfo.getSkill(), attackSkill,
                                 attacker, defender)) {
                             result.setAttackable(false);
                             return result;
@@ -475,7 +475,7 @@ public class SkillResolver {
                 {
                     RuneInfo rune = defender.getOwner().getRuneBox().getRuneOf(RuneData.石林);
                     if (rune != null && rune.isActivated() && !defender.isWeak()) {
-                        if (CounterMagic.isFeatureBlocked(this, rune.getSkill(), attackSkill, attacker,
+                        if (CounterMagic.isSkillBlocked(this, rune.getSkill(), attackSkill, attacker,
                                 defender)) {
                             result.setAttackable(false);
                             return result;
@@ -495,7 +495,7 @@ public class SkillResolver {
                             return result;
                         }
                     } else if (blockSkillUseInfo.getType() == SkillType.脱困) {
-                        if (Escape.isFeatureEscaped(this, blockSkillUseInfo.getSkill(), attackSkill, attacker, defender)) {
+                        if (Escape.isSkillEscaped(this, blockSkillUseInfo.getSkill(), attackSkill, attacker, defender)) {
                             result.setAttackable(false);
                             return result;
                         }
@@ -509,7 +509,7 @@ public class SkillResolver {
                 {
                     RuneInfo rune = defender.getOwner().getActiveRuneOf(RuneData.鬼步);
                     if (rune != null && !defender.isWeak()) {
-                        if (Escape.isFeatureEscaped(this, rune.getSkill(), attackSkill, attacker, defender)) {
+                        if (Escape.isSkillEscaped(this, rune.getSkill(), attackSkill, attacker, defender)) {
                             result.setAttackable(false);
                             return result;
                         }
@@ -1109,10 +1109,10 @@ public class SkillResolver {
      * @param defender
      * @return Whether block is disabled
      */
-    public boolean resolveCounterBlockFeature(Skill cardSkill, CardInfo attacker, CardInfo defender) {
+    public boolean resolveCounterBlockSkill(Skill cardSkill, CardInfo attacker, CardInfo defender) {
         for (SkillUseInfo attackerSkillUseInfo : attacker.getAllUsableSkills()) {
             if (attackerSkillUseInfo.getType() == SkillType.弱点攻击) {
-                return WeakPointAttack.isBlockFeatureDisabled(this, attackerSkillUseInfo.getSkill(), cardSkill,
+                return WeakPointAttack.isBlockSkillDisabled(this, attackerSkillUseInfo.getSkill(), cardSkill,
                         attacker, defender);
             }
         }

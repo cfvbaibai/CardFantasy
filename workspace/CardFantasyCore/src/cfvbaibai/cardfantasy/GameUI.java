@@ -141,7 +141,7 @@ public abstract class GameUI {
     
     public abstract void blockStatus(EntityInfo attacker, EntityInfo defender, Skill cardFeature, CardStatusItem item);
 
-    public abstract void blockFeature(EntityInfo attacker, EntityInfo defender, Skill cardFeature,
+    public abstract void blockSkill(EntityInfo attacker, EntityInfo defender, Skill cardFeature,
             Skill attackFeature);
 
     public abstract void returnCard(CardInfo attacker, CardInfo defender, Skill cardFeature);
