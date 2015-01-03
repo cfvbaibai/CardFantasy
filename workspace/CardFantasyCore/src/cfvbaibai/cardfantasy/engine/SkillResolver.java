@@ -86,6 +86,7 @@ import cfvbaibai.cardfantasy.engine.skill.Summon;
 import cfvbaibai.cardfantasy.engine.skill.Transport;
 import cfvbaibai.cardfantasy.engine.skill.Trap;
 import cfvbaibai.cardfantasy.engine.skill.Tsukomi;
+import cfvbaibai.cardfantasy.engine.skill.Unbending;
 import cfvbaibai.cardfantasy.engine.skill.WeakPointAttack;
 import cfvbaibai.cardfantasy.engine.skill.Weaken;
 import cfvbaibai.cardfantasy.engine.skill.WeakenAll;
@@ -361,6 +362,10 @@ public class SkillResolver {
             Skill attackSkill, int damage) throws HeroDieSignal {
         OnAttackBlockingResult result = new OnAttackBlockingResult(true, 0);
         CardStatus status = attacker.getStatus();
+        if (Unbending.isEscaped(this, attacker, attackSkill, defender, damage)) {
+            result.setAttackable(false);
+            return result;
+        }
         if (isPhysicalAttackSkill(attackSkill)) {
             // Physical attack could be blocked by Dodge or 麻痹, 冰冻, 锁定, 迷惑, 复活 status.
             CardInfo cardAttacker = (CardInfo) attacker;
@@ -756,7 +761,16 @@ public class SkillResolver {
         result.actualDamage = actualDamage;
         if (card.getHP() <= 0) {
             result.cardDead = true;
-            cardDead(card);
+            for (SkillUseInfo skillUseInfo : card.getNormalUsableSkills()) {
+                if (skillUseInfo.getType() == SkillType.不屈) {
+                    // BUGBUG: The original game does not set cardDead to false
+                    // result.cardDead = false
+                    result.unbending = Unbending.apply(skillUseInfo, this, card);
+                }
+            }
+            if (!result.unbending) {
+                cardDead(card);
+            }
         }
         return result;
     }
@@ -1342,5 +1356,9 @@ public class SkillResolver {
     }
 
     public void removeOneRoundEffects(Player activePlayer) {
+        for (CardInfo card : activePlayer.getField().getAliveCards()) {
+            this.removeStatus(card, CardStatusType.不屈);
+            card.setDeadOnce(false);
+        }
     }
 }

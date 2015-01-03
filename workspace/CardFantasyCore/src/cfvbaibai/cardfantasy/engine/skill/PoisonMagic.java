@@ -7,6 +7,7 @@ import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.CardStatusItem;
 import cfvbaibai.cardfantasy.engine.EntityInfo;
+import cfvbaibai.cardfantasy.engine.OnDamagedResult;
 import cfvbaibai.cardfantasy.engine.SkillUseInfo;
 import cfvbaibai.cardfantasy.engine.SkillResolver;
 import cfvbaibai.cardfantasy.engine.HeroDieSignal;
@@ -23,19 +24,20 @@ public final class PoisonMagic {
         ui.useSkill(attacker, victims, skill, true);
         for (CardInfo victim : victims) {
             int damage = skill.getImpact();
-            OnAttackBlockingResult result = resolver.resolveAttackBlockingSkills(attacker, victim, skill, damage);
-            if (!result.isAttackable()) {
+            OnAttackBlockingResult onAttackBlockingResult = resolver.resolveAttackBlockingSkills(attacker, victim, skill, damage);
+            if (!onAttackBlockingResult.isAttackable()) {
                 continue;
             }
-            damage = result.getDamage();
+            damage = onAttackBlockingResult.getDamage();
             ui.attackCard(attacker, victim, skill, damage);
-            boolean cardDead = resolver.applyDamage(victim, damage).cardDead;
+            OnDamagedResult onDamagedResult = resolver.applyDamage(victim, damage);
             if (attacker instanceof CardInfo) {
-                resolver.resolveCounterAttackSkills((CardInfo)attacker, victim, skill, result, null);
+                resolver.resolveCounterAttackSkills((CardInfo)attacker, victim, skill, onAttackBlockingResult, null);
             }
-            if (cardDead) {
+            if (onDamagedResult.cardDead) {
                 resolver.resolveDeathSkills(attacker, victim, skill);
-            } else {
+            }
+            if (!onDamagedResult.cardDead || onDamagedResult.unbending) {
                 CardStatusItem status = CardStatusItem.poisoned(damage, skillUseInfo);
                 ui.addCardStatus(attacker, victim, skill, status);
                 victim.addStatus(status);

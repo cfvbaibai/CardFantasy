@@ -286,4 +286,142 @@ public class SpecialStatusTest extends SkillValidationTest {
         Assert.assertEquals(660, c秘银巨石像1.getCurrentAT());
         Assert.assertEquals(660, c秘银巨石像2.getCurrentAT());
     }
+
+    /**
+     * 不屈状态下，连狙击都可以防住
+     */
+    @Test
+    public void test不屈_狙击() {
+        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "残血王国小兵+不屈", "占位符", "秘银巨石像+狙击1");
+        CardInfo c王国小兵 = context.addToField(0, 0);
+        context.addToField(1, 0);
+        context.addToField(2, 1);
+        context.startGame();
+
+        context.getStage().setActivePlayerNumber(1);
+        context.proceedOneRound();
+        Assert.assertEquals(2, context.getPlayer(0).getField().size());
+        Assert.assertTrue(c王国小兵.getStatus().containsStatus(CardStatusType.不屈));
+        Assert.assertEquals(1, c王国小兵.getHP());
+        
+        context.proceedOneRound();
+        Assert.assertFalse(c王国小兵.getStatus().containsStatus(CardStatusType.不屈));
+
+        context.proceedOneRound();
+        Assert.assertEquals(1, context.getPlayer(0).getField().size());
+        Assert.assertFalse(c王国小兵.getStatus().containsStatus(CardStatusType.不屈));
+        Assert.assertTrue(c王国小兵.isDead());
+    }
+
+    /**
+     * 不屈无法消除DEBUFF
+     */
+    @Test
+    public void test不屈_中毒() {
+        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "残血王国小兵+不屈", "占位符+毒云10");
+        CardInfo c王国小兵 = context.addToField(0, 0);
+        context.addToField(1, 1);
+        context.startGame();
+
+        context.getStage().setActivePlayerNumber(1);
+        random.addNextPicks(0);     // 占位符的毒云
+        context.proceedOneRound();
+        Assert.assertEquals(1, context.getPlayer(0).getField().size());
+        Assert.assertTrue(c王国小兵.getStatus().containsStatus(CardStatusType.不屈));
+        Assert.assertTrue(c王国小兵.getStatus().containsStatus(CardStatusType.中毒));
+        Assert.assertEquals(1, c王国小兵.getHP());
+        
+        context.proceedOneRound();
+        Assert.assertEquals(0, context.getPlayer(0).getField().size());
+        Assert.assertFalse(c王国小兵.getStatus().containsStatus(CardStatusType.不屈));
+        Assert.assertTrue(c王国小兵.isDead());
+    }
+
+    /**
+     * 根据官方BUG，不屈能触发死契技能，真正死的时候还能再触发一次
+     */
+    @Test
+    public void test不屈_死契技能() {
+        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "铸造大师+死契暴风雪1", "占位符+狙击1");
+        CardInfo c铸造大师 = context.addToField(0, 0).setBasicHP(2);
+        CardInfo c占位符 = context.addToField(1, 1);
+        context.startGame();
+
+        context.getStage().setActivePlayerNumber(1);
+        random.addNextPicks(0).addNextNumbers(1000);    // 铸造大师发动死契暴风雪
+        context.proceedOneRound();
+        Assert.assertEquals(1, context.getPlayer(0).getField().size());
+        Assert.assertTrue(c铸造大师.getStatus().containsStatus(CardStatusType.不屈));
+        Assert.assertEquals(1, c铸造大师.getHP());
+        Assert.assertEquals(20, 5000 - c占位符.getHP());
+
+        context.proceedOneRound();
+
+        random.addNextPicks(0).addNextNumbers(1000);    // 铸造大师真正死亡并再次发动死契暴风雪
+        context.proceedOneRound();
+        Assert.assertEquals(0, context.getPlayer(0).getField().size());
+        Assert.assertFalse(c铸造大师.getStatus().containsStatus(CardStatusType.不屈));
+        Assert.assertTrue(c铸造大师.isDead());
+        Assert.assertEquals(560 /* 普通攻击 */ + 20 + 20 /* 两次死契暴风雪 */, 5000 - c占位符.getHP());
+    }
+    
+    /**
+     * 在己方回合发动的不屈，在下个敌方回合仍然有效
+     */
+    @Test
+    public void test不屈_盾刺() {
+        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "见习圣骑+不屈", "秘银巨石像+盾刺10");
+        CardInfo c见习圣骑 = context.addToField(0, 0).setBasicHP(2);
+        context.addToField(1, 1);
+        context.startGame();
+
+        context.proceedOneRound();
+        Assert.assertEquals(1, context.getPlayer(0).getField().size());
+        Assert.assertTrue(c见习圣骑.getStatus().containsStatus(CardStatusType.不屈));
+        Assert.assertEquals(1, c见习圣骑.getHP());
+
+        // 本回合不屈依然有效
+        context.proceedOneRound();
+        Assert.assertEquals(1, context.getPlayer(0).getField().size());
+        Assert.assertTrue(c见习圣骑.getStatus().containsStatus(CardStatusType.不屈));
+        Assert.assertEquals(1, c见习圣骑.getHP());
+
+        // 本回合不屈失效，被盾刺弹死
+        context.proceedOneRound();
+        Assert.assertEquals(0, context.getPlayer(0).getField().size());
+        Assert.assertFalse(c见习圣骑.getStatus().containsStatus(CardStatusType.不屈));
+        Assert.assertTrue(c见习圣骑.isDead());
+    }
+
+    
+    /**
+     * 在己方回合发动的不屈，在下个敌方回合仍然有效
+     */
+    @Test
+    public void test不屈_连续盾刺() {
+        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "见习圣骑+不屈", "占位符", "秘银巨石像+盾刺10*2");
+        CardInfo c见习圣骑 = context.addToField(0, 0).setBasicHP(2);
+        context.addToField(1, 0);
+        context.addToField(2, 1);
+        context.addToField(3, 1);
+        context.startGame();
+
+        // 本回合盾刺被发动两次，第一次触发不屈，第二次被不屈挡下
+        context.proceedOneRound();
+        Assert.assertEquals(2, context.getPlayer(0).getField().size());
+        Assert.assertTrue(c见习圣骑.getStatus().containsStatus(CardStatusType.不屈));
+        Assert.assertEquals(1, c见习圣骑.getHP());
+
+        // 本回合不屈依然有效
+        context.proceedOneRound();
+        Assert.assertEquals(2, context.getPlayer(0).getField().size());
+        Assert.assertTrue(c见习圣骑.getStatus().containsStatus(CardStatusType.不屈));
+        Assert.assertEquals(1, c见习圣骑.getHP());
+
+        // 本回合不屈失效，被盾刺弹死
+        context.proceedOneRound();
+        Assert.assertEquals(1, context.getPlayer(0).getField().size());
+        Assert.assertFalse(c见习圣骑.getStatus().containsStatus(CardStatusType.不屈));
+        Assert.assertTrue(c见习圣骑.isDead());
+    }
 }

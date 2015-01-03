@@ -78,6 +78,10 @@ public class CardStatusItem {
         return new CardStatusItem(CardStatusType.晕眩, 0, cause);
     }
     
+    public static CardStatusItem unbending(SkillUseInfo cause) {
+        return new CardStatusItem(CardStatusType.不屈, 0, cause);
+    }
+    
     public String getShortDesc() {
         StringBuffer sb = new StringBuffer();
         sb.append(getType().name());
