@@ -1184,7 +1184,7 @@ var Animater = function() {
     this.__addCardStatus = function(data) {
         //var attacker = data[0];
         var defender = data[1];
-        var featureName = data[2];
+        var skillName = data[2];
         var longStatus = data[3];
         var shortStatus = data[4];
         var defenderCard = this.getCard(defender, true);
@@ -1197,7 +1197,7 @@ var Animater = function() {
             this.displayCardMsg({
                 name: 'addCardStatus',
                 cardShape: defenderCard.group,
-                text: featureName + '\r\n\r\n导致\r\n\r\n' + longStatus, 
+                text: skillName + '\r\n\r\n导致\r\n\r\n' + longStatus, 
             });
             defenderCard.statusList.push(shortStatus);
         }
@@ -1239,12 +1239,12 @@ var Animater = function() {
         // var attacker = data[0];
         var defenderHero = data[1];
         var damage = data[2];
-        var featureName = data[3];
+        var skillName = data[3];
         this.displayCardMsg({
             name: 'attackHeroMsg',
             cardShape: this.__getShape(defenderHero, 'hpbg-rect'),
             textColor: settings.attackCardTextColor,
-            text: '伤害: ' + damage + '\r\n' + featureName,
+            text: '伤害: ' + damage + '\r\n' + skillName,
             size: settings.getHeroHpBgRectSize(),
         });
         defenderHero.hp -= damage;
@@ -1257,7 +1257,7 @@ var Animater = function() {
     this.__attackCard = function(data) {
         //var attacker = data[0];
         var defender = data[1];
-        var featureName = data[2];
+        var skillName = data[2];
         var damage = data[3];
         var currentHP = data[4];
         var maxHP = data[5];
@@ -1266,7 +1266,7 @@ var Animater = function() {
             name: 'attackCard',
             cardShape: dfCard.group,
             textColor: settings.attackCardTextColor,
-            text: '伤害: ' + damage + '\r\n' + featureName,
+            text: '伤害: ' + damage + '\r\n' + skillName,
         });
         this.updateCardHP(dfCard, currentHP, maxHP);
     };
@@ -1274,14 +1274,14 @@ var Animater = function() {
     this.__healHero = function(data) {
         //var healer = data[0];
         var healee = data[1];
-        var featureName = data[2];
+        var skillName = data[2];
         var heal = data[3];
         var currentHP = data[4];
         this.displayCardMsg({
             name: 'healHeroMsg',
             cardShape: this.__getShape(healee, 'hpbg-rect'),
             textColor: settings.healCardTextColor,
-            text: '治疗: ' + heal + '\r\n' + featureName,
+            text: '治疗: ' + heal + '\r\n' + skillName,
         });
         healee.hp = currentHP;
         this.updateHeroHp(healee);
@@ -1290,7 +1290,7 @@ var Animater = function() {
     this.__healCard = function(data) {
         //var healer = data[0];       // EntityRuntimeInfo
         var healee = data[1];       // EntityRuntimeInfo
-        var featureName = data[2];  // String
+        var skillName = data[2];  // String
         var heal = data[3];         // int
         var currentHP = data[4];    // int
         var maxHP = data[5];
@@ -1299,7 +1299,7 @@ var Animater = function() {
             name: 'healCard',
             cardShape: healeeCard.group,
             textColor: settings.healCardTextColor,
-            text: '治疗: ' + heal + '\r\n' + featureName,
+            text: '治疗: ' + heal + '\r\n' + skillName,
         });
         this.updateCardHP(healeeCard, currentHP, maxHP);
         /*
@@ -1314,13 +1314,13 @@ var Animater = function() {
     this.__healBlocked = function(data) {
         //var healer = data[0];
         var healee = data[1];
-        var healFeature = data[2];
-        //var blockFeature = data[3];
+        var healSkill = data[2];
+        //var blockSkill = data[3];
         var healeeCard = this.getCard(healee);
         this.displayCardMsg({
             name: 'healBlocked',
             cardShape: healeeCard.group,
-            text: healFeature + '\r\n无效',
+            text: healSkill + '\r\n无效',
         });
     };
 
@@ -1328,7 +1328,7 @@ var Animater = function() {
         //var protector = data[0];
         //var attacker = data[1];
         var defender = data[2];
-        var featureName = data[3];
+        var skillName = data[3];
         var originalDamage = data[4];
         var actualDamage = data[5];
         /*
@@ -1338,7 +1338,7 @@ var Animater = function() {
             return;
         }
         */
-        if (featureName == '闪避') {
+        if (skillName == '闪避') {
             return;
         }
         if (originalDamage == 0 && actualDamage == 0) {
@@ -1997,7 +1997,7 @@ var Animater = function() {
         var target = data[1]; // EntityRuntimeInfo
         var adjustment = data[2]; // int
         var newValue = data[3]; // int
-        var featureName = data[4]; // String
+        var skillName = data[4]; // String
         var newMaxValue = data[5]; // int
         if (adjustment == 0) {
             return;
@@ -2035,7 +2035,7 @@ var Animater = function() {
             });
             adjText = new Kinetic.Text({
                 x: 0, y: 0,
-                text: adjTextPrefix + adjName + adjValueText + '\r\n' + featureName,
+                text: adjTextPrefix + adjName + adjValueText + '\r\n' + skillName,
                 fontFamily: settings.adjustFontFamily,
                 fontSize: settings.adjustFontSize,
                 fill: adjTextColor,

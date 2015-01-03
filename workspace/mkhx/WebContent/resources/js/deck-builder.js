@@ -50,16 +50,16 @@ var initDeckBuilder = function() {
     $.each(parts, function(i, part) {
         addEntity(part.trim());
     });
-    initExtraFeatureNames();
+    initExtraSkillNames();
     filterCard();
     filterRune();
 };
 
-var isFeatureGrowable = function(featureName) {
-    for (var i = 0; i < store.features.length; ++i) {
-        var feature = store.features[i];
-        if (feature.name == featureName) {
-            return feature.growable; 
+var isSkillGrowable = function(skillName) {
+    for (var i = 0; i < store.skills.length; ++i) {
+        var skill = store.skills[i];
+        if (skill.name == skillName) {
+            return skill.growable; 
         }
     }
     return false;
@@ -83,41 +83,41 @@ DeckBuilder.updateDeck = function() {
     history.back(-1);
 };
 
-var updateFeatureDetailButtonHref = function() {
-    var button = $('#extra-feature-props a.feature-detail-button');
-    var featureName = $('#extra-feature-name').val();
-    var feature = null;
-    for (var i = 0; i < store.features.length; ++i) {
-        if (store.features[i].name == featureName) {
-            feature = store.features[i];
+var updateSkillDetailButtonHref = function() {
+    var button = $('#extra-skill-props a.skill-detail-button');
+    var skillName = $('#extra-skill-name').val();
+    var skill = null;
+    for (var i = 0; i < store.skills.length; ++i) {
+        if (store.skills[i].name == skillName) {
+            skill = store.skills[i];
             break;
         }
     }
-    if (feature && feature.wikiId) {
-        button.attr('href', getWikiUrl(feature.name));
+    if (skill && skill.wikiId) {
+        button.attr('href', getWikiUrl(skill.name));
     } else {
         button.attr('href', '#');
     }
 };
 
-var initExtraFeatureNames = function() {
-    $('#extra-feature-name').html('');
-    var features = store.features;
-    $.each(features, function(i, feature) {
-        $('#extra-feature-name').append('<option value="' + feature.name + '">' + feature.name + '</option>');
+var initExtraSkillNames = function() {
+    $('#extra-skill-name').html('');
+    var skills = store.skills;
+    $.each(skills, function(i, skill) {
+        $('#extra-skill-name').append('<option value="' + skill.name + '">' + skill.name + '</option>');
     });
-    updateFeatureDetailButtonHref();
+    updateSkillDetailButtonHref();
 };
 
-var extraFeatureNameChanged = function() {
-    var featureName = $('#extra-feature-name').val();
-    var growable = isFeatureGrowable(featureName);
+var extraSkillNameChanged = function() {
+    var skillName = $('#extra-skill-name').val();
+    var growable = isSkillGrowable(skillName);
     if (growable) {
-        $('#extra-feature-level').selectmenu('enable');
+        $('#extra-skill-level').selectmenu('enable');
     } else {
-        $('#extra-feature-level').selectmenu('disable');
+        $('#extra-skill-level').selectmenu('disable');
     }
-    updateFeatureDetailButtonHref();
+    updateSkillDetailButtonHref();
 };
 
 DeckBuilder.onAddCardButtonClick = function(id) {
@@ -167,17 +167,17 @@ var filterCard = function() {
 DeckBuilder.addCard = function() {
     var cardDesc = '';
     cardDesc += $('#new-card-props div.entity-title span.entity-title-text').text();
-    var extraFeatureEnabled = $('#enable-extra-feature').prop('checked');
-    var extraFeatureLevel = $('#extra-feature-level').val();
+    var extraSkillEnabled = $('#enable-extra-skill').prop('checked');
+    var extraSkillLevel = $('#extra-skill-level').val();
     var cardLevel = $('#new-card-props select.level').val();
     var cardCount = $('#new-card-props select.count').val();
-    if (extraFeatureEnabled) {
+    if (extraSkillEnabled) {
         cardDesc += '+';
-        cardDesc += $('input[name=card-extra-feature-flag]:radio:checked').val();
-        var extraFeatureName = $('#extra-feature-name').val();
-        cardDesc += extraFeatureName;
-        if (isFeatureGrowable(extraFeatureName)) {
-            cardDesc += extraFeatureLevel;
+        cardDesc += $('input[name=card-extra-skill-flag]:radio:checked').val();
+        var extraSkillName = $('#extra-skill-name').val();
+        cardDesc += extraSkillName;
+        if (isSkillGrowable(extraSkillName)) {
+            cardDesc += extraSkillLevel;
         }
     }
     cardDesc += '-' + cardLevel;
@@ -240,12 +240,12 @@ var addEntity = function(desc) {
     $('#deck-output').append(entityButton).trigger('create');
 };
 
-var enableExtraFeature = function() {
-    if ($('#enable-extra-feature').prop('checked')) {
+var enableExtraSkill = function() {
+    if ($('#enable-extra-skill').prop('checked')) {
         $('#new-card-props select.level').val('15').selectmenu('refresh', false);
-        $('#extra-feature-props').show('fast');
+        $('#extra-skill-props').show('fast');
     } else {
-        $('#extra-feature-props').hide('fast');
+        $('#extra-skill-props').hide('fast');
     }
 };
 
@@ -267,8 +267,8 @@ $(document)
 })
 .on("pageinit", "#new-card-props", function(event) {
     $('#add-card-button').attr('href', 'javascript:CardFantasy.DeckBuilder.addCard();');
-    $('#enable-extra-feature').click(function(e, ui) { enableExtraFeature(); });
-    $('#extra-feature-name').change(function(e, ui) { extraFeatureNameChanged(); });
+    $('#enable-extra-skill').click(function(e, ui) { enableExtraSkill(); });
+    $('#extra-skill-name').change(function(e, ui) { extraSkillNameChanged(); });
 })
 .on("pageinit", "#new-rune-props", function(event) {
     $('#add-rune-button').attr('href', 'javascript:CardFantasy.DeckBuilder.addRune();');

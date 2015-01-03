@@ -172,9 +172,9 @@
                         </select>
                     </td>
             </table>
-            <input type="checkbox" id="enable-extra-feature" data-mini="true" />
-            <label for="enable-extra-feature">添加洗炼技能</label>
-            <div id="extra-feature-props" style="DISPLAY: none">
+            <input type="checkbox" id="enable-extra-skill" data-mini="true" />
+            <label for="enable-extra-skill">添加洗炼技能</label>
+            <div id="extra-skill-props" style="DISPLAY: none">
                 <table class="form">
                     <tr>
                         <td>技能</td>
@@ -182,11 +182,11 @@
                             <table>
                                 <tr>
                                     <td style="WIDTH: 100%">
-                                        <select id="extra-feature-name" data-mini="true" data-native-menu="false">
+                                        <select id="extra-skill-name" data-mini="true" data-native-menu="false">
                                         </select>
                                     </td>
                                     <td>
-                                        <a class="feature-detail-button" target="_blank" data-role="button" data-mini="true" data-inline="true">详情</a>
+                                        <a class="skill-detail-button" target="_blank" data-role="button" data-mini="true" data-inline="true">详情</a>
                                     </td>
                                 </tr>
                             </table>
@@ -195,7 +195,7 @@
                     <tr>
                         <td>等级</td>
                         <td>
-                            <select id="extra-feature-level" data-mini="true" data-native-menu="false">
+                            <select id="extra-skill-level" data-mini="true" data-native-menu="false">
                                 <option value="1" selected="selected">1</option>
                                 <option value="2">2</option>
                                 <option value="3">3</option>
@@ -213,12 +213,12 @@
                         <td>特殊</td>
                         <td>
                             <div data-role="controlgroup" data-type="horizontal">
-                                <input type="radio" data-mini="true" name="card-extra-feature-flag" id="card-extra-feature-none" value="" checked="checked" />
-                                <label for="card-extra-feature-none">普通</label>
-                                <input type="radio" data-mini="true" name="card-extra-feature-flag" id="card-extra-feature-summon" value="降临" />
-                                <label for="card-extra-feature-summon">降临</label>
-                                <input type="radio" data-mini="true" name="card-extra-feature-flag" id="card-extra-feature-death" value="死契" />
-                                <label for="card-extra-feature-death">死契</label>
+                                <input type="radio" data-mini="true" name="card-extra-skill-flag" id="card-extra-skill-none" value="" checked="checked" />
+                                <label for="card-extra-skill-none">普通</label>
+                                <input type="radio" data-mini="true" name="card-extra-skill-flag" id="card-extra-skill-summon" value="降临" />
+                                <label for="card-extra-skill-summon">降临</label>
+                                <input type="radio" data-mini="true" name="card-extra-skill-flag" id="card-extra-skill-death" value="死契" />
+                                <label for="card-extra-skill-death">死契</label>
                             </div>
                         </td>
                     </tr>

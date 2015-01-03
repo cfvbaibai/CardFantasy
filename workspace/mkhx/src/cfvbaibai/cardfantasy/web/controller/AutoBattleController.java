@@ -469,7 +469,7 @@ public class AutoBattleController {
                     return comparer.compare(arg0.getName(), arg1.getName());
                 }
             });
-            result.put("features", skillList);
+            result.put("skills", skillList);
             writer.print(jsonHandler.toJson(result));
         } catch (Exception e) {
             writer.print(errorHelper.handleError(e, true));
