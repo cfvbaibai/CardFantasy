@@ -6,7 +6,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import cfvbaibai.cardfantasy.Randomizer;
 import cfvbaibai.cardfantasy.data.Card;
 import cfvbaibai.cardfantasy.data.Legion;
 import cfvbaibai.cardfantasy.data.LegionSkill;
@@ -27,7 +26,7 @@ public class Player extends EntityInfo {
     
     public Player(PlayerInfo playerInfo, StageInfo stage) {
         this.playerInfo = playerInfo;
-        this.deck = prepareDeck(stage.getRandomizer());
+        this.deck = prepareDeck();
         this.hand = new Hand(stage.getRule());
         this.grave = new Grave();
         this.field = new Field(this);
@@ -119,13 +118,13 @@ public class Player extends EntityInfo {
         }
     }
     
-    private Deck prepareDeck(Randomizer randomizer) {
+    private Deck prepareDeck() {
         Collection <Card> cards = this.getPlayerInfo().getCards();
         List<CardInfo> cardInfos = new ArrayList<CardInfo>();
         for (Card card : cards) {
             cardInfos.add(new CardInfo(card, this));
         }
-        return new Deck(cardInfos, randomizer);
+        return new Deck(cardInfos);
     }
 
     public String getShortDesc() {

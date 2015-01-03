@@ -408,13 +408,11 @@
         <Skill type="法力反射" level="6" unlock="5" />
         <Skill type="神圣守护" level="7" unlock="10" />
     </Card>
-    <!--
     <Card id="1516" name="均衡女神" wikiId="80172" race="王国" speed="4" star="5" cost="20" incrCost="2" at="270" hp="1520" incrAT="30" incrHP="56">
         <Skill type="祈祷" level="6" unlock="0" />
         <Skill type="加速" level="2" unlock="5" />
          TODO: <Skill type="时光倒流" level="0" unlock="10" /> 
     </Card>
-    -->
     <Card id="1517" name="星辰主宰" wikiId="80175" race="王国" speed="6" star="5" cost="20" incrCost="2" at="275" hp="1250" incrAT="34" incrHP="32">
         <Skill type="脱困" level="0" unlock="0" />
         <Skill type="闪避" level="6" unlock="5" />

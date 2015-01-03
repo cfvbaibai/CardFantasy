@@ -2,7 +2,9 @@ package cfvbaibai.cardfantasy.engine;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
 import cfvbaibai.cardfantasy.GameUI;
@@ -18,6 +20,7 @@ public class StageInfo {
     private Rule rule;
     private SkillResolver resolver;
     private Randomizer randomizer;
+    private Map<SkillUseInfo, Boolean> globalSkillMap;
 
     public StageInfo(Board board, GameUI ui, Rule rule) {
         this.board = board;
@@ -27,9 +30,18 @@ public class StageInfo {
         this.ui = ui;
         this.rule = rule;
         this.resolver = new SkillResolver(this);
-        this.randomizer = Randomizer.getRandomizer().setUI(ui);;
+        this.randomizer = Randomizer.getRandomizer().setUI(ui);
+        this.globalSkillMap = new HashMap<SkillUseInfo, Boolean>();
 
         this.ui.stageCreated();
+    }
+    
+    public void setUsed(SkillUseInfo skillUseInfo, boolean used) {
+        this.globalSkillMap.put(skillUseInfo, used);
+    }
+    
+    public boolean hasUsed(SkillUseInfo skillUseInfo) {
+        return this.globalSkillMap.containsKey(skillUseInfo) && this.globalSkillMap.get(skillUseInfo);
     }
 
     public SkillResolver getResolver() {

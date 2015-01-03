@@ -1367,7 +1367,8 @@ var Animater = function() {
     
     this.msgIgnoredSkills = [
         '背刺', '暴击', '狂热', '嗜血', '横扫', '穿刺', '回春', '吸血', '振奋',
-        '透支', '战意', '穷追猛打', '趁胜追击', '复仇', '英雄杀手', '反噬'
+        '透支', '战意', '穷追猛打', '趁胜追击', '复仇', '英雄杀手', '反噬',
+        '圣光', '要害', '暗杀', '污染'
     ];
     this.selfUsedSkills = [
         '不动', '脱困', '群体脱困', '法力反射', '冰甲', '闪避', '守护', '魔神之甲',
@@ -1429,6 +1430,12 @@ var Animater = function() {
         } else if (skill == '迷魂') {
             this.flyImage({ fileName: 'heart.png', width: 24, height: 24, text: skill },
                     attacker, defenders, settings.skillDuration);
+        } else if (skill == '圣炎') {
+            this.flyImage({ fileName: 'holyfire.png', width: 48, height: 48, text: skill },
+                    attacker, defenders, settings.skillDuration);
+        } else if (skill == '自爆') {
+            this.flyImage({ fileName: 'explode.png', width: 48, height: 48, text: skill },
+                    attacker, defenders, settings.skillDuration);
         } else if (skill == '虚弱' || skill == '战争怒吼') {
             this.flyImage({ fileName: 'soften.png', width: 48, height: 48, text: skill },
                     attacker, defenders, settings.skillDuration);
@@ -1438,7 +1445,7 @@ var Animater = function() {
         } else if (skill == '削弱' || skill == '群体削弱') {
             this.flyImage({ fileName: 'weaken.png', width: 48, height: 48, text: skill },
                     attacker, defenders, settings.skillDuration);
-        } else if (skill == '阻碍' || skill == '加速' || skill == '全体阻碍' || skill == '全体加速') {
+        } else if (skill == '阻碍' || skill == '加速' || skill == '全体阻碍' || skill == '全体加速' || skill == '时光倒流') {
             this.flyImage({ fileName: 'delay.png', width: 48, height: 48, text: skill },
                     attacker, defenders, settings.skillDuration);
         } else if (skill == '法力侵蚀') {

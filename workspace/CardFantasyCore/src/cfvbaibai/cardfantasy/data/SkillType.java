@@ -143,6 +143,7 @@ public enum SkillType {
     英雄杀手("36260", 0, 15, SkillTag.额外攻击加成, SkillTag.不可洗炼),
     
     不屈("56962", 0, 0),
+    时光倒流("80196", 0, 0, SkillTag.抗免疫),
 
     召唤王国战士("", 0, 0, SkillTag.不可洗炼),
     召唤邪龙护卫("", 0, 0, SkillTag.不可洗炼),

@@ -38,4 +38,9 @@ public class SkillUseInfo {
         }
         return false;
     }
+    
+    @Override
+    public int hashCode() {
+        return this.owner.hashCode() ^ this.skill.hashCode();
+    }
 }

@@ -34,6 +34,14 @@ public class CardPile {
                     + newCard.getShortDesc());
         }
     }
+    
+    public void clear() {
+        this.cards.clear();
+    }
+
+    public void removeCard(CardInfo card) {
+        this.cards.remove(card);
+    }
 
     public int size() {
         return this.cards.size();

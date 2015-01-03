@@ -447,7 +447,7 @@ public class SpecialStatusTest extends SkillValidationTest {
         Assert.assertEquals(1, c见习圣骑.getHP());
         Assert.assertEquals(495, c见习圣骑.getCurrentAT());
     }
-    
+
     /**
      * 不屈能抵御控制技能
      */
