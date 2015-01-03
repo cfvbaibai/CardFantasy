@@ -419,8 +419,6 @@ public class SkillResolver {
                         result.setDamage(RacialShield.apply(blockSkillUseInfo.getSkill(), this, cardAttacker,
                                 defender, defender, result.getDamage(), Race.FOREST));
                     }
-                }
-                for (SkillUseInfo blockSkillUseInfo : defender.getNormalUsableSkills()) {
                     if (blockSkillUseInfo.getType() == SkillType.格挡) {
                         result.setDamage(Block.apply(blockSkillUseInfo.getSkill(), this, cardAttacker, defender,
                                 defender, result.getDamage()));
@@ -429,6 +427,7 @@ public class SkillResolver {
                         return result;
                     }
                 }
+
                 for (SkillUseInfo blockSkillUseInfo : defender.getNormalUsableSkills()) {
                     if (blockSkillUseInfo.getType() == SkillType.冰甲) {
                         result.setDamage(IceArmor.apply(blockSkillUseInfo.getSkill(), this, cardAttacker, defender,

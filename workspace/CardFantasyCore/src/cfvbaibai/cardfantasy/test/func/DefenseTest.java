@@ -364,4 +364,57 @@ public class DefenseTest extends SkillValidationTest {
         context.proceedOneRound(); // 光明之龙因为晕眩无法行动
         Assert.assertFalse(c光明之龙.getStatus().containsStatus(CardStatusType.晕眩));
     }
+
+    /**
+     * 种族之盾总是按照伤害，而不是对方的攻击力算
+     */
+    @Test
+    public void test种族之盾_嗜血() {
+        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "战斗猛犸象", "半鹿人号角手");
+        CardInfo c战斗猛犸象 = context.addToField(0, 0);
+        CardInfo c半鹿人号角手 = context.addToField(1, 1);
+        context.startGame();
+        
+        context.proceedOneRound();
+        Assert.assertEquals(495 * 60 / 100, 1270 - c半鹿人号角手.getHP());
+        
+        context.proceedOneRound();
+        Assert.assertEquals(545, c战斗猛犸象.getCurrentAT());
+        
+        context.proceedOneRound();
+        Assert.assertEquals(495 * 60 / 100 + 545 * 60 / 100, 1270 - c半鹿人号角手.getHP());
+    }
+
+    /**
+     * 种族之盾和格挡是按照卡面技能顺序发动的
+     */
+    @Test
+    public void test种族之盾_格挡() {
+        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "战斗猛犸象*2", "半鹿人号角手+格挡10", "金属巨龙+森林之盾5");
+        context.addToField(0, 0);
+        context.addToField(1, 0);
+        CardInfo c半鹿人号角手 = context.addToField(2, 1);
+        CardInfo c金属巨龙 = context.addToField(3, 1);
+        context.startGame();
+        
+        context.proceedOneRound();
+        Assert.assertEquals(495 * 60 / 100 /* 森林之盾5 */ - 200 /* 格挡10 */, 1415 - c半鹿人号角手.getHP());
+        Assert.assertEquals((495 - 160 /* 格挡8 */) * 60 / 100 /* 森林之盾5 */, 1825 - c金属巨龙.getHP());
+    }
+
+    /**
+     * 横扫的溅射伤害按照被格挡后的伤害算
+     */
+    @Test
+    public void test种族之盾_横扫() {
+        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "震源岩蟾", "半鹿人号角手", "占位符");
+        context.addToField(0, 0);
+        CardInfo c半鹿人号角手 = context.addToField(1, 1);
+        CardInfo c占位符 = context.addToField(2, 1);
+        context.startGame();
+        
+        context.proceedOneRound();
+        Assert.assertEquals(620 * 60 / 100, 1270 - c半鹿人号角手.getHP());
+        Assert.assertEquals(620 * 60 / 100, 5000 - c占位符.getHP());
+    }
 }
