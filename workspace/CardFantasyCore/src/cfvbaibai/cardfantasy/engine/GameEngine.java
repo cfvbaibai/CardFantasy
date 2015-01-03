@@ -236,6 +236,7 @@ public class GameEngine {
                 resolver.removeStatus(myField.getCard(i), CardStatusType.冰冻);
                 resolver.removeStatus(myField.getCard(i), CardStatusType.锁定);
                 resolver.removeStatus(myField.getCard(i), CardStatusType.麻痹);
+                resolver.removeStatus(myField.getCard(i), CardStatusType.晕眩);
             }
             else if (
                 status.containsStatus(CardStatusType.冰冻) ||

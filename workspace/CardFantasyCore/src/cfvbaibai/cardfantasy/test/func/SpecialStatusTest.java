@@ -160,6 +160,38 @@ public class SpecialStatusTest extends SkillValidationTest {
         context.proceedOneRound();
         Assert.assertEquals(330, 1056 - c东方幻术师.getHP());
     }
+    
+    /**
+     * 晕眩状态下被迷魂，仍然会攻击自己英雄
+     */
+    @Test
+    public void test虚弱_晕眩_迷魂() {
+        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "东方幻术师-5", "怒雪咆哮-1", "占位符", "秘银巨石像");
+        context.addToField(0, 0);
+        CardInfo c怒雪咆哮 = context.addToField(1, 0);
+        context.addToField(2, 1);
+        CardInfo c秘银巨石像 = context.addToField(3, 1);
+        context.startGame();
+
+        // Enemy Round
+        context.getStage().setActivePlayerNumber(1);
+        context.proceedOneRound();
+        Assert.assertTrue(c秘银巨石像.getStatus().containsStatus(CardStatusType.晕眩));
+        Assert.assertEquals(660, 1703 - c怒雪咆哮.getHP());
+
+        // Player Round
+        random.addNextPicks(1); // 东方幻术师对秘银巨石像使用虚弱
+        random.addNextPicks(1).addNextNumbers(0); // 东方幻术师对秘银巨石像使用迷魂成功
+        context.proceedOneRound();
+
+        // Enemy Round
+        int hp怒雪咆哮ThisRound = c怒雪咆哮.getHP();
+        int hpP1ThisRound = context.getPlayer(1).getHP();
+        context.proceedOneRound();
+        Assert.assertEquals(hp怒雪咆哮ThisRound, c怒雪咆哮.getHP());    // 秘银巨石像被晕眩，无法攻击怒雪咆哮
+        Assert.assertFalse(c秘银巨石像.getStatus().containsStatus(CardStatusType.晕眩));
+        Assert.assertEquals(330 /* 虚弱 */, hpP1ThisRound - context.getPlayer(1).getHP());
+    }
 
     /**
      * 被迷魂且虚弱中的卡会以一半攻击力攻击自己英雄
