@@ -456,20 +456,20 @@ public class AutoBattleController {
             }
             result.put("entities", entities);
 
-            List<SkillTypeRuntimeInfo> featureList = new ArrayList<SkillTypeRuntimeInfo>(); 
+            List<SkillTypeRuntimeInfo> skillList = new ArrayList<SkillTypeRuntimeInfo>(); 
             for (SkillType skillType : SkillType.values()) {
                 if (!skillType.containsTag(SkillTag.不可洗炼)) {
-                    featureList.add(new SkillTypeRuntimeInfo(skillType));
+                    skillList.add(new SkillTypeRuntimeInfo(skillType));
                 }
             }
-            Collections.sort(featureList, new Comparator<SkillTypeRuntimeInfo>() {
+            Collections.sort(skillList, new Comparator<SkillTypeRuntimeInfo>() {
                 private Comparator<Object> comparer = Collator.getInstance(Locale.CHINA);
                 @Override
                 public int compare(SkillTypeRuntimeInfo arg0, SkillTypeRuntimeInfo arg1) {
                     return comparer.compare(arg0.getName(), arg1.getName());
                 }
             });
-            result.put("features", featureList);
+            result.put("features", skillList);
             writer.print(jsonHandler.toJson(result));
         } catch (Exception e) {
             writer.print(errorHelper.handleError(e, true));

@@ -75,16 +75,16 @@ public abstract class GameUI {
 
     public abstract void roundEnded(Player player, int round);
 
-    public abstract void attackCard(EntityInfo attacker, CardInfo defender, Skill cardFeature, int damage);
+    public abstract void attackCard(EntityInfo attacker, CardInfo defender, Skill cardSkill, int damage);
 
     public abstract void cardDead(CardInfo deadCard);
 
-    public abstract void attackHero(EntityInfo attacker, Player hero, Skill cardFeature, int damage);
+    public abstract void attackHero(EntityInfo attacker, Player hero, Skill cardSkill, int damage);
 
     public abstract void useSkill(EntityInfo caster, List<? extends EntityInfo> targets, Skill skill, boolean bingo);
 
     public abstract void protect(EntityInfo protector, EntityInfo attacker, EntityInfo protectee,
-            Skill attackFeature, Skill protectFeature);
+            Skill attackSkill, Skill protectSkill);
 
     public void useSkill(EntityInfo caster, EntityInfo target, Skill skill, boolean bingo) {
         List<EntityInfo> victims = new ArrayList<EntityInfo>();
@@ -94,28 +94,28 @@ public abstract class GameUI {
 
     public abstract void useSkillToHero(EntityInfo caster, Player targetHero, Skill skill);
 
-    public abstract void addCardStatus(EntityInfo attacker, CardInfo victim, Skill cardFeature, CardStatusItem item);
+    public abstract void addCardStatus(EntityInfo attacker, CardInfo victim, Skill cardSkill, CardStatusItem item);
 
     public abstract void removeCardStatus(CardInfo card, CardStatusType type);
 
     public abstract void battleBegins();
 
-    public abstract void attackBlocked(EntityInfo attacker, CardInfo defender, Skill atFeature, Skill dfFeature);
+    public abstract void attackBlocked(EntityInfo attacker, CardInfo defender, Skill atSkill, Skill dfSkill);
 
-    public abstract void adjustAT(EntityInfo source, CardInfo target, int adjAT, Skill cardFeature);
+    public abstract void adjustAT(EntityInfo source, CardInfo target, int adjAT, Skill cardSkill);
 
-    public void adjustHP(EntityInfo source, CardInfo target, int adjHP, Skill cardFeature) {
+    public void adjustHP(EntityInfo source, CardInfo target, int adjHP, Skill cardSkill) {
         List<CardInfo> targets = new ArrayList<CardInfo>();
         targets.add(target);
-        adjustHP(source, targets, adjHP, cardFeature);
+        adjustHP(source, targets, adjHP, cardSkill);
     }
     
-    public abstract void adjustHP(EntityInfo source, List<? extends CardInfo> targets, int adjHP, Skill cardFeature);
+    public abstract void adjustHP(EntityInfo source, List<? extends CardInfo> targets, int adjHP, Skill cardSkill);
 
     public abstract void blockDamage(EntityInfo protector, EntityInfo attacker, EntityInfo defender,
-            Skill cardFeature, int originalDamage, int actualDamage);
+            Skill cardSkill, int originalDamage, int actualDamage);
 
-    public abstract void healBlocked(EntityInfo healer, CardInfo healee, Skill cardFeature, Skill blockerFeature);
+    public abstract void healBlocked(EntityInfo healer, CardInfo healee, Skill cardSkill, Skill blockerSkill);
 
     public abstract void debuffDamage(CardInfo card, CardStatusItem item, int effect);
 
@@ -123,9 +123,9 @@ public abstract class GameUI {
 
     public abstract void recoverAT(CardInfo card, SkillType cause, int recoveredAT);
 
-    public abstract void healCard(EntityInfo healer, CardInfo healee, Skill cardFeature, int healHP);
+    public abstract void healCard(EntityInfo healer, CardInfo healee, Skill cardSkill, int healHP);
 
-    public abstract void healHero(EntityInfo healer, Player healee, Skill cardFeature, int healHP);
+    public abstract void healHero(EntityInfo healer, Player healee, Skill cardSkill, int healHP);
 
     public abstract void loseAdjustATEffect(CardInfo ally, SkillEffect effect);
 
@@ -139,15 +139,15 @@ public abstract class GameUI {
     
     public abstract void cardToOutField(Player player, CardInfo card);
     
-    public abstract void blockStatus(EntityInfo attacker, EntityInfo defender, Skill cardFeature, CardStatusItem item);
+    public abstract void blockStatus(EntityInfo attacker, EntityInfo defender, Skill cardSkill, CardStatusItem item);
 
-    public abstract void blockSkill(EntityInfo attacker, EntityInfo defender, Skill cardFeature,
-            Skill attackFeature);
+    public abstract void blockSkill(EntityInfo attacker, EntityInfo defender, Skill cardSkill,
+            Skill attackSkill);
 
-    public abstract void returnCard(CardInfo attacker, CardInfo defender, Skill cardFeature);
+    public abstract void returnCard(CardInfo attacker, CardInfo defender, Skill cardSkill);
 
 
-    public abstract void disableBlock(CardInfo attacker, CardInfo defender, Skill attackFeature, Skill blockFeature);
+    public abstract void disableBlock(CardInfo attacker, CardInfo defender, Skill attackSkill, Skill blockSkill);
 
     public abstract void confused(CardInfo card);
 
@@ -157,7 +157,7 @@ public abstract class GameUI {
 
     public abstract void useSkill(EntityInfo caster, Skill skill, boolean bingo);
 
-    public abstract void killCard(EntityInfo attacker, CardInfo victim, Skill cardFeature);
+    public abstract void killCard(EntityInfo attacker, CardInfo victim, Skill cardSkill);
 
     public abstract void activateRune(RuneInfo rune);
 

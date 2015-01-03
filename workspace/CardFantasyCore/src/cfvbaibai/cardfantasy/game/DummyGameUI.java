@@ -97,7 +97,7 @@ public class DummyGameUI extends GameUI {
     }
 
     @Override
-    public void attackCard(EntityInfo attacker, CardInfo defender, Skill cardFeature, int damage) {
+    public void attackCard(EntityInfo attacker, CardInfo defender, Skill cardSkill, int damage) {
         // TODO Auto-generated method stub
 
     }
@@ -109,7 +109,7 @@ public class DummyGameUI extends GameUI {
     }
 
     @Override
-    public void attackHero(EntityInfo attacker, Player hero, Skill cardFeature, int damage) {
+    public void attackHero(EntityInfo attacker, Player hero, Skill cardSkill, int damage) {
         // TODO Auto-generated method stub
 
     }
@@ -121,8 +121,8 @@ public class DummyGameUI extends GameUI {
     }
 
     @Override
-    public void protect(EntityInfo protector, EntityInfo attacker, EntityInfo protectee, Skill attackFeature,
-            Skill protectFeature) {
+    public void protect(EntityInfo protector, EntityInfo attacker, EntityInfo protectee, Skill attackSkill,
+            Skill protectSkill) {
         // TODO Auto-generated method stub
 
     }
@@ -134,7 +134,7 @@ public class DummyGameUI extends GameUI {
     }
 
     @Override
-    public void addCardStatus(EntityInfo attacker, CardInfo victim, Skill cardFeature, CardStatusItem item) {
+    public void addCardStatus(EntityInfo attacker, CardInfo victim, Skill cardSkill, CardStatusItem item) {
         // TODO Auto-generated method stub
 
     }
@@ -146,32 +146,32 @@ public class DummyGameUI extends GameUI {
     }
 
     @Override
-    public void attackBlocked(EntityInfo attacker, CardInfo defender, Skill atFeature, Skill dfFeature) {
+    public void attackBlocked(EntityInfo attacker, CardInfo defender, Skill atSkill, Skill dfSkill) {
         // TODO Auto-generated method stub
 
     }
 
     @Override
-    public void adjustAT(EntityInfo source, CardInfo target, int adjAT, Skill cardFeature) {
+    public void adjustAT(EntityInfo source, CardInfo target, int adjAT, Skill cardSkill) {
         // TODO Auto-generated method stub
 
     }
 
     @Override
-    public void adjustHP(EntityInfo source, List<? extends CardInfo> targets, int adjHP, Skill cardFeature) {
+    public void adjustHP(EntityInfo source, List<? extends CardInfo> targets, int adjHP, Skill cardSkill) {
         // TODO Auto-generated method stub
 
     }
 
     @Override
-    public void blockDamage(EntityInfo protector, EntityInfo attacker, EntityInfo defender, Skill cardFeature,
+    public void blockDamage(EntityInfo protector, EntityInfo attacker, EntityInfo defender, Skill cardSkill,
             int originalDamage, int actualDamage) {
         // TODO Auto-generated method stub
 
     }
 
     @Override
-    public void healBlocked(EntityInfo healer, CardInfo healee, Skill cardFeature, Skill blockerFeature) {
+    public void healBlocked(EntityInfo healer, CardInfo healee, Skill cardSkill, Skill blockerSkill) {
         // TODO Auto-generated method stub
 
     }
@@ -195,13 +195,13 @@ public class DummyGameUI extends GameUI {
     }
 
     @Override
-    public void healCard(EntityInfo healer, CardInfo healee, Skill cardFeature, int healHP) {
+    public void healCard(EntityInfo healer, CardInfo healee, Skill cardSkill, int healHP) {
         // TODO Auto-generated method stub
 
     }
 
     @Override
-    public void healHero(EntityInfo healer, Player healee, Skill cardFeature, int healHP) {
+    public void healHero(EntityInfo healer, Player healee, Skill cardSkill, int healHP) {
         // TODO Auto-generated method stub
 
     }
@@ -231,19 +231,19 @@ public class DummyGameUI extends GameUI {
     }
 
     @Override
-    public void blockStatus(EntityInfo attacker, EntityInfo defender, Skill cardFeature, CardStatusItem item) {
+    public void blockStatus(EntityInfo attacker, EntityInfo defender, Skill cardSkill, CardStatusItem item) {
         // TODO Auto-generated method stub
 
     }
 
     @Override
-    public void blockSkill(EntityInfo attacker, EntityInfo defender, Skill cardFeature, Skill attackFeature) {
+    public void blockSkill(EntityInfo attacker, EntityInfo defender, Skill cardSkill, Skill attackSkill) {
         // TODO Auto-generated method stub
 
     }
 
     @Override
-    public void returnCard(CardInfo attacker, CardInfo defender, Skill cardFeature) {
+    public void returnCard(CardInfo attacker, CardInfo defender, Skill cardSkill) {
         // TODO Auto-generated method stub
 
     }
@@ -255,7 +255,7 @@ public class DummyGameUI extends GameUI {
     }
 
     @Override
-    public void disableBlock(CardInfo attacker, CardInfo defender, Skill attackFeature, Skill blockFeature) {
+    public void disableBlock(CardInfo attacker, CardInfo defender, Skill attackSkill, Skill blockSkill) {
         // TODO Auto-generated method stub
 
     }
@@ -279,7 +279,7 @@ public class DummyGameUI extends GameUI {
     }
 
     @Override
-    public void killCard(EntityInfo attacker, CardInfo victim, Skill cardFeature) {
+    public void killCard(EntityInfo attacker, CardInfo victim, Skill cardSkill) {
         // TODO Auto-generated method stub
 
     }

@@ -273,7 +273,7 @@ public class GameEngine {
 
             if (!underControl) {
                 // 回春
-                resolver.resolveCardRoundEndingFeature(myField.getCard(i));
+                resolver.resolveCardRoundEndingSkills(myField.getCard(i));
             }
 
             // 解除状态

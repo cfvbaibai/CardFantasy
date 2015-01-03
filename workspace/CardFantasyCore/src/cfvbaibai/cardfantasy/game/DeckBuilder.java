@@ -32,7 +32,7 @@ public final class DeckBuilder {
         "^" +
         "(?<CardName>[^\\-+SD*]+)" +
         "(\\+(?<SummonFlag>(S|降临)?)(?<DeathFlag>(D|死契)?)" +
-        "(?<ExtraFeatureName>[^\\d\\-*]+)(?<ExtraFeatureLevel>\\d+)?)?" +
+        "(?<ExtraSkillName>[^\\d\\-*]+)(?<ExtraSkillLevel>\\d+)?)?" +
         "(\\-(?<CardLevel>\\d+))?" +
         "(\\*(?<Count>\\d+))?" +
         "$";
@@ -151,33 +151,33 @@ public final class DeckBuilder {
                 throw new DeckBuildRuntimeException("无效的卡牌: " + desc, e);
             }
         }
-        String extraFeatureName = matcher.group("ExtraFeatureName");
-        SkillType extraFeatureType = null;
-        if (extraFeatureName != null) {
+        String extraSkillName = matcher.group("ExtraSkillName");
+        SkillType extraSkillType = null;
+        if (extraSkillName != null) {
             try {
-                extraFeatureType = SkillType.valueOf(extraFeatureName);
+                extraSkillType = SkillType.valueOf(extraSkillName);
             } catch (IllegalArgumentException e) {
                 throw new DeckBuildRuntimeException("无效的卡牌: " + desc, e);
             }
         }
-        if (extraFeatureType != null && cardLevelText == null) {
+        if (extraSkillType != null && cardLevelText == null) {
             cardLevel = 15;
         }
-        String extraFeatureLevelText = matcher.group("ExtraFeatureLevel");
-        int extraFeatureLevel = 0;
-        if (extraFeatureLevelText != null) {
+        String extraSkillLevelText = matcher.group("ExtraSkillLevel");
+        int extraSkillLevel = 0;
+        if (extraSkillLevelText != null) {
             try {
-                extraFeatureLevel = Integer.parseInt(extraFeatureLevelText);
+                extraSkillLevel = Integer.parseInt(extraSkillLevelText);
             } catch (NumberFormatException e) {
                 throw new DeckBuildRuntimeException("无效的卡牌: " + desc, e);
             }
         }
-        if (extraFeatureLevel < 0 || extraFeatureLevel > 10) {
+        if (extraSkillLevel < 0 || extraSkillLevel > 10) {
             throw new DeckBuildRuntimeException("无效的卡牌：" + desc + "，洗炼技能等级不得大于10");
         }
        
-        boolean summonFeature = !StringUtils.isBlank(matcher.group("SummonFlag"));
-        boolean deathFeature = !StringUtils.isBlank(matcher.group("DeathFlag"));
+        boolean summonSkill = !StringUtils.isBlank(matcher.group("SummonFlag"));
+        boolean deathSkill = !StringUtils.isBlank(matcher.group("DeathFlag"));
         String countText = matcher.group("Count");
         int count = 1;
         if (countText != null) {
@@ -194,17 +194,17 @@ public final class DeckBuilder {
         }
         
         String prefix = "";
-        CardSkill extraFeature = null;
-        if (extraFeatureType != null) {
-            extraFeature = new CardSkill(extraFeatureType, extraFeatureLevel, 15, summonFeature, deathFeature);
-            prefix = extraFeatureName;
-            if (extraFeatureLevel != 0) {
-                prefix += extraFeatureLevel;
+        CardSkill extraSkill = null;
+        if (extraSkillType != null) {
+            extraSkill = new CardSkill(extraSkillType, extraSkillLevel, 15, summonSkill, deathSkill);
+            prefix = extraSkillName;
+            if (extraSkillLevel != 0) {
+                prefix += extraSkillLevel;
             }
         }
         
         for (int j = 0; j < count; ++j) {
-            Card card = new Card(data, cardLevel, extraFeature, prefix, String.valueOf(getCardNameSuffix()));
+            Card card = new Card(data, cardLevel, extraSkill, prefix, String.valueOf(getCardNameSuffix()));
             ret.add(card);
         }
         
@@ -214,10 +214,10 @@ public final class DeckBuilder {
     public static String getDeckDesc(Card card) {
         StringBuffer sb = new StringBuffer();
         sb.append(card.getName());
-        Skill extraFeature = card.getExtraSkill();
-        if (extraFeature != null) {
+        Skill extraSkill = card.getExtraSkill();
+        if (extraSkill != null) {
             sb.append('+');
-            sb.append(getDeckDesc(extraFeature));
+            sb.append(getDeckDesc(extraSkill));
         }
         sb.append('-');
         sb.append(card.getLevel());

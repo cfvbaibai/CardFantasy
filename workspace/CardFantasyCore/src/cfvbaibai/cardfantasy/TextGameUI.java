@@ -87,14 +87,14 @@ public abstract class TextGameUI extends GameUI {
     }
 
     @Override
-    public void attackCard(EntityInfo attacker, CardInfo defender, Skill cardFeature, int damage) {
-        String featureClause = cardFeature == null ? "" : (" by " + cardFeature.getShortDesc() + "");
+    public void attackCard(EntityInfo attacker, CardInfo defender, Skill cardSkill, int damage) {
+        String skillClause = cardSkill == null ? "" : (" by " + cardSkill.getShortDesc() + "");
         int logicalRemainingHP = defender.getHP() - damage;
         if (logicalRemainingHP < 0) {
             sayF("%s 攻击 %s%s. 伤害: %d (%d 溢出). HP: %d -> 0.", attacker.getShortDesc(), defender.getShortDesc(),
-                    featureClause, damage, -logicalRemainingHP, defender.getHP());
+                    skillClause, damage, -logicalRemainingHP, defender.getHP());
         } else {
-            sayF("%s 攻击 %s%s. 伤害: %d. HP: %d -> %d", attacker.getShortDesc(), defender.getShortDesc(), featureClause,
+            sayF("%s 攻击 %s%s. 伤害: %d. HP: %d -> %d", attacker.getShortDesc(), defender.getShortDesc(), skillClause,
                     damage, defender.getHP(), logicalRemainingHP);
         }
     }
@@ -105,42 +105,42 @@ public abstract class TextGameUI extends GameUI {
     }
 
     @Override
-    public void attackHero(EntityInfo attacker, Player hero, Skill cardFeature, int damage) {
-        String featureClause = cardFeature == null ? "" : (" 使用 " + cardFeature.getShortDesc() + "");
+    public void attackHero(EntityInfo attacker, Player hero, Skill cardSkill, int damage) {
+        String skillClause = cardSkill == null ? "" : (" 使用 " + cardSkill.getShortDesc() + "");
         int logicalRemainingHP = hero.getHP() - damage;
         if (logicalRemainingHP < 0) {
-            sayF("%s%s 直接攻击 <%s>! 伤害: %d (%d 溢出). HP: %d -> %d", attacker.getShortDesc(), featureClause, hero.getId(),
+            sayF("%s%s 直接攻击 <%s>! 伤害: %d (%d 溢出). HP: %d -> %d", attacker.getShortDesc(), skillClause, hero.getId(),
                     damage, -logicalRemainingHP, hero.getHP(), 0);
         } else {
-            sayF("%s%s 直接攻击 <%s>! 伤害: %d. HP: %d -> %d", attacker.getShortDesc(), featureClause, hero.getId(), damage,
+            sayF("%s%s 直接攻击 <%s>! 伤害: %d. HP: %d -> %d", attacker.getShortDesc(), skillClause, hero.getId(), damage,
                     hero.getHP(), hero.getHP() - damage);
         }
     }
 
     @Override
-    public void useSkill(EntityInfo attacker, List<? extends EntityInfo> victims, Skill cardFeature, boolean bingo) {
+    public void useSkill(EntityInfo attacker, List<? extends EntityInfo> victims, Skill cardSkill, boolean bingo) {
         if (victims.isEmpty()) {
-            sayF("%s 无法找到使用 %s 的合适目标.", attacker.getShortDesc(), cardFeature.getShortDesc());
+            sayF("%s 无法找到使用 %s 的合适目标.", attacker.getShortDesc(), cardSkill.getShortDesc());
         } else {
             List<String> victimTexts = new LinkedList<String>();
             for (EntityInfo victim : victims) {
                 victimTexts.add(victim.getShortDesc());
             }
             String victimsText = StringUtils.join(victimTexts, ", ");
-            String featureDesc = cardFeature == null ? "【普通攻击】" : cardFeature.getShortDesc();
-            sayF("%s 对 { %s } 使用 %s%s!", attacker.getShortDesc(), victimsText, featureDesc, bingo ? "" : " 失败");
+            String skillDesc = cardSkill == null ? "【普通攻击】" : cardSkill.getShortDesc();
+            sayF("%s 对 { %s } 使用 %s%s!", attacker.getShortDesc(), victimsText, skillDesc, bingo ? "" : " 失败");
         }
     }
 
     @Override
-    public void useSkillToHero(EntityInfo attacker, Player victimHero, Skill cardFeature) {
-        String featureDesc = cardFeature == null ? "【普通攻击】" : cardFeature.getShortDesc();
-        sayF("%s 对英雄 <%s> 使用 %s!", attacker.getShortDesc(), victimHero.getId(), featureDesc);
+    public void useSkillToHero(EntityInfo attacker, Player victimHero, Skill cardSkill) {
+        String skillDesc = cardSkill == null ? "【普通攻击】" : cardSkill.getShortDesc();
+        sayF("%s 对英雄 <%s> 使用 %s!", attacker.getShortDesc(), victimHero.getId(), skillDesc);
     }
 
     @Override
-    public void addCardStatus(EntityInfo attacker, CardInfo victim, Skill cardFeature, CardStatusItem item) {
-        sayF("%s.%s 使 %s 得到状态: 【%s】", attacker.getShortDesc(), cardFeature.getShortDesc(), victim.getShortDesc(),
+    public void addCardStatus(EntityInfo attacker, CardInfo victim, Skill cardSkill, CardStatusItem item) {
+        sayF("%s.%s 使 %s 得到状态: 【%s】", attacker.getShortDesc(), cardSkill.getShortDesc(), victim.getShortDesc(),
                 item.getShortDesc());
     }
 
@@ -259,46 +259,46 @@ public abstract class TextGameUI extends GameUI {
     }
 
     @Override
-    public void attackBlocked(EntityInfo attacker, CardInfo defender, Skill atFeature, Skill dfFeature) {
+    public void attackBlocked(EntityInfo attacker, CardInfo defender, Skill atSkill, Skill dfSkill) {
         String attackerDesc = attacker.getShortDesc();
-        if (atFeature == null && dfFeature == null) {
+        if (atSkill == null && dfSkill == null) {
             sayF("%s 处于状态 %s 中，无法攻击!", attackerDesc, attacker.getStatus().getShortDesc());
-        } else if (atFeature == null && dfFeature != null) {
-            sayF("%s 的攻击被 %s 使用 %s 化解了!", attackerDesc, defender.getShortDesc(), dfFeature.getShortDesc());
-        } else if (atFeature != null && dfFeature == null) {
-            sayF("%s 处于状态 %s 中，无法使用 %s!", attackerDesc, attacker.getStatus().getShortDesc(), atFeature.getShortDesc());
-        } else if (atFeature != null && dfFeature != null) {
-            sayF("%s 的 %s 被 %s 的 %s 化解了!", attackerDesc, atFeature.getShortDesc(), defender.getShortDesc(),
-                    dfFeature.getShortDesc());
+        } else if (atSkill == null && dfSkill != null) {
+            sayF("%s 的攻击被 %s 使用 %s 化解了!", attackerDesc, defender.getShortDesc(), dfSkill.getShortDesc());
+        } else if (atSkill != null && dfSkill == null) {
+            sayF("%s 处于状态 %s 中，无法使用 %s!", attackerDesc, attacker.getStatus().getShortDesc(), atSkill.getShortDesc());
+        } else if (atSkill != null && dfSkill != null) {
+            sayF("%s 的 %s 被 %s 的 %s 化解了!", attackerDesc, atSkill.getShortDesc(), defender.getShortDesc(),
+                    dfSkill.getShortDesc());
         }
     }
 
     @Override
-    public void adjustAT(EntityInfo source, CardInfo target, int adjAT, Skill cardFeature) {
+    public void adjustAT(EntityInfo source, CardInfo target, int adjAT, Skill cardSkill) {
         if (adjAT == 0) {
             return;
         }
         String verb = adjAT > 0 ? "增加" : "降低";
-        sayF("%s 使用 %s %s 了 %s 的 %d 点攻击! %d -> %d.", source.getShortDesc(), cardFeature.getShortDesc(), verb,
+        sayF("%s 使用 %s %s 了 %s 的 %d 点攻击! %d -> %d.", source.getShortDesc(), cardSkill.getShortDesc(), verb,
                 target.getShortDesc(), Math.abs(adjAT), target.getCurrentAT(), target.getCurrentAT() + adjAT);
     }
 
     @Override
-    public void adjustHP(EntityInfo source, List<? extends CardInfo> targets, int adjHP, Skill cardFeature) {
+    public void adjustHP(EntityInfo source, List<? extends CardInfo> targets, int adjHP, Skill cardSkill) {
         if (adjHP == 0) {
             return;
         }
         String verb = adjHP > 0 ? "增加" : "降低";
         for (CardInfo target : targets) {
-            sayF("%s 使用 %s %s 了 %s 的HP! %d -> %d.", source.getShortDesc(), cardFeature.getShortDesc(), verb,
+            sayF("%s 使用 %s %s 了 %s 的HP! %d -> %d.", source.getShortDesc(), cardSkill.getShortDesc(), verb,
                 target.getShortDesc(), target.getHP(), target.getHP() + adjHP);
         }
     }
 
     @Override
-    public void blockDamage(EntityInfo protector, EntityInfo attacker, EntityInfo defender, Skill cardFeature,
+    public void blockDamage(EntityInfo protector, EntityInfo attacker, EntityInfo defender, Skill cardSkill,
             int originalDamage, int actualDamage) {
-        sayF("%s 使用 %s 为 %s 格挡了来自 %s 的攻击. 伤害: %d -> %d", protector.getShortDesc(), cardFeature.getShortDesc(),
+        sayF("%s 使用 %s 为 %s 格挡了来自 %s 的攻击. 伤害: %d -> %d", protector.getShortDesc(), cardSkill.getShortDesc(),
                 defender.getShortDesc(), attacker.getShortDesc(), originalDamage, actualDamage);
     }
 
@@ -320,26 +320,26 @@ public abstract class TextGameUI extends GameUI {
     }
 
     @Override
-    public void healCard(EntityInfo healer, CardInfo healee, Skill cardFeature, int healHP) {
+    public void healCard(EntityInfo healer, CardInfo healee, Skill cardSkill, int healHP) {
         int postHealHP = healee.getHP() + healHP;
         String healText = String.valueOf(healHP);
         if (postHealHP > healee.getMaxHP()) {
             healText += " (" + (postHealHP - healee.getMaxHP()) + " overflow)";
             postHealHP = healee.getMaxHP();
         }
-        sayF("%s 使用 %s 治疗了 %s %s 点HP. HP: %d -> %d", healer.getShortDesc(), cardFeature.getShortDesc(),
+        sayF("%s 使用 %s 治疗了 %s %s 点HP. HP: %d -> %d", healer.getShortDesc(), cardSkill.getShortDesc(),
                 healee.getShortDesc(), healText, healee.getHP(), postHealHP);
     }
 
     @Override
-    public void healHero(EntityInfo healer, Player healee, Skill cardFeature, int healHP) {
+    public void healHero(EntityInfo healer, Player healee, Skill cardSkill, int healHP) {
         int postHealHP = healee.getHP() + healHP;
         String healText = String.valueOf(healHP);
         if (postHealHP > healee.getMaxHP()) {
             healText += " (" + (postHealHP - healee.getMaxHP()) + " overflow)";
             postHealHP = healee.getMaxHP();
         }
-        sayF("%s 使用 %s 治疗了 %s %s 点HP. HP: %d -> %d", healer.getShortDesc(), cardFeature.getShortDesc(),
+        sayF("%s 使用 %s 治疗了 %s %s 点HP. HP: %d -> %d", healer.getShortDesc(), cardSkill.getShortDesc(),
                 healee.getShortDesc(), healText, healee.getHP(), postHealHP);
     }
 
@@ -373,28 +373,28 @@ public abstract class TextGameUI extends GameUI {
     }
 
     @Override
-    public void healBlocked(EntityInfo healer, CardInfo healee, Skill cardFeature, Skill blockerFeature) {
-        if (blockerFeature == null) {
+    public void healBlocked(EntityInfo healer, CardInfo healee, Skill cardSkill, Skill blockerSkill) {
+        if (blockerSkill == null) {
             sayF("%s 处在状态 %s 中，无法被 %s 的 %s 治疗!", healee.getShortDesc(), healee.getStatus().getShortDesc(),
-                    healer.getShortDesc(), cardFeature.getShortDesc());
+                    healer.getShortDesc(), cardSkill.getShortDesc());
         } else {
-            throw new CardFantasyRuntimeException("blockerFeature is not null. To be implemented.");
+            throw new CardFantasyRuntimeException("blockerSkill is not null. To be implemented.");
         }
     }
 
     @Override
-    public void blockStatus(EntityInfo attacker, EntityInfo defender, Skill cardFeature, CardStatusItem item) {
-        sayF("%s 免疫 %s 造成 的状态 【%s】", defender.getShortDesc(), cardFeature.getShortDesc(), item.getShortDesc());
+    public void blockStatus(EntityInfo attacker, EntityInfo defender, Skill cardSkill, CardStatusItem item) {
+        sayF("%s 免疫 %s 造成 的状态 【%s】", defender.getShortDesc(), cardSkill.getShortDesc(), item.getShortDesc());
     }
 
     @Override
-    public void blockSkill(EntityInfo attacker, EntityInfo defender, Skill cardFeature, Skill attackFeature) {
-        sayF("%s 使用 %s 格挡了 %s", defender.getShortDesc(), cardFeature.getShortDesc(), attackFeature.getShortDesc());
+    public void blockSkill(EntityInfo attacker, EntityInfo defender, Skill cardSkill, Skill attackSkill) {
+        sayF("%s 使用 %s 格挡了 %s", defender.getShortDesc(), cardSkill.getShortDesc(), attackSkill.getShortDesc());
     }
 
     @Override
-    public void returnCard(CardInfo attacker, CardInfo defender, Skill cardFeature) {
-        sayF("%s 使用 %s 将 %s 送还至牌堆.", attacker.getShortDesc(), cardFeature.getShortDesc(), defender.getShortDesc());
+    public void returnCard(CardInfo attacker, CardInfo defender, Skill cardSkill) {
+        sayF("%s 使用 %s 将 %s 送还至牌堆.", attacker.getShortDesc(), cardSkill.getShortDesc(), defender.getShortDesc());
     }
 
     @Override
@@ -403,9 +403,9 @@ public abstract class TextGameUI extends GameUI {
     }
 
     @Override
-    public void disableBlock(CardInfo attacker, CardInfo defender, Skill attackFeature, Skill blockFeature) {
-        sayF("%s 的 %s 被 %s 的 %s 破解了.", defender.getShortDesc(), blockFeature.getShortDesc(), attacker.getShortDesc(),
-                attackFeature.getShortDesc());
+    public void disableBlock(CardInfo attacker, CardInfo defender, Skill attackSkill, Skill blockSkill) {
+        sayF("%s 的 %s 被 %s 的 %s 破解了.", defender.getShortDesc(), blockSkill.getShortDesc(), attacker.getShortDesc(),
+                attackSkill.getShortDesc());
     }
 
     @Override
@@ -427,13 +427,13 @@ public abstract class TextGameUI extends GameUI {
     }
 
     @Override
-    public void useSkill(EntityInfo attacker, Skill cardFeature, boolean bingo) {
-        sayF("%s 使用 %s%s", attacker.getShortDesc(), cardFeature.getShortDesc(), bingo ? "" : " 失败");
+    public void useSkill(EntityInfo attacker, Skill cardSkill, boolean bingo) {
+        sayF("%s 使用 %s%s", attacker.getShortDesc(), cardSkill.getShortDesc(), bingo ? "" : " 失败");
     }
 
     @Override
-    public void killCard(EntityInfo attacker, CardInfo victim, Skill cardFeature) {
-        sayF("%s 使用 %s 直接杀死 %s!", attacker.getShortDesc(), cardFeature.getShortDesc(), victim.getShortDesc());
+    public void killCard(EntityInfo attacker, CardInfo victim, Skill cardSkill) {
+        sayF("%s 使用 %s 直接杀死 %s!", attacker.getShortDesc(), cardSkill.getShortDesc(), victim.getShortDesc());
     }
 
     @Override
@@ -454,11 +454,11 @@ public abstract class TextGameUI extends GameUI {
     }
 
     @Override
-    public void protect(EntityInfo protector, EntityInfo attacker, EntityInfo protectee, Skill attackFeature,
-            Skill protectFeature) {
-        String attackFeatureText = attackFeature == null ? "【普通攻击】" : attackFeature.getShortDesc();
-        sayF("%s 使用 %s 保护 %s 不受来自 %s 的 %s 的侵害", protector.getShortDesc(), protectFeature.getShortDesc(),
-                protectee.getShortDesc(), attacker.getShortDesc(), attackFeatureText);
+    public void protect(EntityInfo protector, EntityInfo attacker, EntityInfo protectee, Skill attackSkill,
+            Skill protectSkill) {
+        String attackSkillText = attackSkill == null ? "【普通攻击】" : attackSkill.getShortDesc();
+        sayF("%s 使用 %s 保护 %s 不受来自 %s 的 %s 的侵害", protector.getShortDesc(), protectSkill.getShortDesc(),
+                protectee.getShortDesc(), attacker.getShortDesc(), attackSkillText);
     }
 
     @Override

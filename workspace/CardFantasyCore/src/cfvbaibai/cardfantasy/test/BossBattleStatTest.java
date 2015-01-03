@@ -50,7 +50,7 @@ public class BossBattleStatTest {
     }
     
     @Test
-    public void testDeckSort_SameCard_SameLevel_DifferentExtraFeature() {
+    public void testDeckSort_SameCard_SameLevel_DifferentExtraSkill() {
         String desc = DeckBuilder.getSortedDeckDesc("凤凰-15，凤凰+暗杀5-15，凤凰+暗杀10-15，凤凰+不动-15，凤凰+暗杀8-10");
         System.out.println(desc);
         Assert.assertEquals("凤凰+暗杀8-10,凤凰-15,凤凰+不动-15,凤凰+暗杀5-15,凤凰+暗杀10-15,", desc);

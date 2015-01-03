@@ -614,7 +614,7 @@ public class SkillResolver {
         }
     }
 
-    public void resolvePostAttackFeature(CardInfo attacker, CardInfo defender, Player defenderHero, Skill attackSkill,
+    public void resolvePostAttackSkills(CardInfo attacker, CardInfo defender, Player defenderHero, Skill attackSkill,
             int normalAttackDamage) throws HeroDieSignal {
         for (SkillUseInfo skillUseInfo : attacker.getNormalUsableSkills()) {
             if (!attacker.isDead()) {
@@ -631,7 +631,7 @@ public class SkillResolver {
         }
     }
     
-    public void resolveExtraAttackFeature(CardInfo attacker, CardInfo defender, Player defenderHero, Skill attackSkill,
+    public void resolveExtraAttackSkills(CardInfo attacker, CardInfo defender, Player defenderHero, Skill attackSkill,
             int normalAttackDamage) throws HeroDieSignal {
 
         for (SkillUseInfo skillUseInfo : attacker.getNormalUsableSkills()) {
@@ -783,27 +783,27 @@ public class SkillResolver {
         }
     }
 
-    public void attackHero(EntityInfo attacker, Player defenderPlayer, Skill cardFeature, int damage)
+    public void attackHero(EntityInfo attacker, Player defenderPlayer, Skill cardSkill, int damage)
             throws HeroDieSignal {
         if (attacker == null) {
             return;
         }
         try {
-            if (isPhysicalAttackSkill(cardFeature) && attacker.getStatus().containsStatus(CardStatusType.麻痹)) {
+            if (isPhysicalAttackSkill(cardSkill) && attacker.getStatus().containsStatus(CardStatusType.麻痹)) {
                 return;
             }
-            stage.getUI().useSkillToHero(attacker, defenderPlayer, cardFeature);
+            stage.getUI().useSkillToHero(attacker, defenderPlayer, cardSkill);
             if (damage > defenderPlayer.getHP()) {
                 damage = defenderPlayer.getHP();
             }
             if (damage >= 0) {
-                int remainingDamage = this.resolveAttackHeroBlockingFeatures(attacker, defenderPlayer, cardFeature, damage);
+                int remainingDamage = this.resolveAttackHeroBlockingSkills(attacker, defenderPlayer, cardSkill, damage);
                 if (remainingDamage > 0) {
-                    stage.getUI().attackHero(attacker, defenderPlayer, cardFeature, remainingDamage);
+                    stage.getUI().attackHero(attacker, defenderPlayer, cardSkill, remainingDamage);
                     defenderPlayer.setHP(defenderPlayer.getHP() - remainingDamage);
                 }
             } else {
-                stage.getUI().healHero(attacker, defenderPlayer, cardFeature, -damage);
+                stage.getUI().healHero(attacker, defenderPlayer, cardSkill, -damage);
                 defenderPlayer.setHP(defenderPlayer.getHP() - damage);
             }
         } finally {
@@ -816,16 +816,16 @@ public class SkillResolver {
         }
     }
 
-    private int resolveAttackHeroBlockingFeatures(EntityInfo attacker, Player defenderPlayer, Skill cardFeature,
+    private int resolveAttackHeroBlockingSkills(EntityInfo attacker, Player defenderPlayer, Skill cardSkill,
             int damage) throws HeroDieSignal {
         int remainingDamage = damage;
         for (CardInfo defender : defenderPlayer.getField().getAliveCards()) {
             if (defender == null) {
                 continue;
             }
-            for (SkillUseInfo defenderFeature : defender.getNormalUsableSkills()) {
-                if (defenderFeature.getType() == SkillType.守护) {
-                    remainingDamage = Guard.apply(defenderFeature.getSkill(), cardFeature, this, attacker, defender, remainingDamage);
+            for (SkillUseInfo defenderSkill : defender.getNormalUsableSkills()) {
+                if (defenderSkill.getType() == SkillType.守护) {
+                    remainingDamage = Guard.apply(defenderSkill.getSkill(), cardSkill, this, attacker, defender, remainingDamage);
                     if (remainingDamage == 0) {
                         return 0;
                     }
@@ -835,7 +835,7 @@ public class SkillResolver {
         return remainingDamage;
     }
 
-    public void resolveCardRoundEndingFeature(CardInfo card) {
+    public void resolveCardRoundEndingSkills(CardInfo card) {
         if (card == null) {
             return;
         }
@@ -843,9 +843,9 @@ public class SkillResolver {
         if (status.containsStatus(CardStatusType.锁定)) {
             return;
         }
-        for (SkillUseInfo cardFeature : card.getNormalUsableSkills()) {
-            if (cardFeature.getType() == SkillType.回春) {
-                Rejuvenate.apply(cardFeature.getSkill(), this, card);
+        for (SkillUseInfo cardSkillUseInfo : card.getNormalUsableSkills()) {
+            if (cardSkillUseInfo.getType() == SkillType.回春) {
+                Rejuvenate.apply(cardSkillUseInfo.getSkill(), this, card);
             }
         }
         {
@@ -873,11 +873,11 @@ public class SkillResolver {
         this.stage.getUI().attackCard(attacker, defender, skill, blockingResult.getDamage());
         OnDamagedResult damagedResult = stage.getResolver().applyDamage(defender, blockingResult.getDamage());
 
-        resolvePostAttackFeature(attacker, defender, defender.getOwner(), skill, damagedResult.actualDamage);
+        resolvePostAttackSkills(attacker, defender, defender.getOwner(), skill, damagedResult.actualDamage);
         if (damagedResult.cardDead) {
             stage.getResolver().resolveDeathSkills(attacker, defender, skill);
         }
-        resolveExtraAttackFeature(attacker, defender, defender.getOwner(), skill, damagedResult.actualDamage);
+        resolveExtraAttackSkills(attacker, defender, defender.getOwner(), skill, damagedResult.actualDamage);
         resolveCounterAttackSkills(attacker, defender, skill, blockingResult, damagedResult);
 
         return damagedResult;
