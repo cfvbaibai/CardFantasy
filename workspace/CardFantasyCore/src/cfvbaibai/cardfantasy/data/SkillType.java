@@ -5,8 +5,8 @@ import java.util.HashSet;
 public enum SkillType {
 
     /* 攻击力削弱技能 */
-    削弱("30964", 10, SkillTag.永久, SkillTag.基础攻击加成),
-    群体削弱("30952", 5, SkillTag.永久, SkillTag.基础攻击加成),
+    削弱("30964", 10, SkillTag.永久, SkillTag.基础攻击加成, SkillTag.抗不屈),
+    群体削弱("30952", 5, SkillTag.永久, SkillTag.基础攻击加成, SkillTag.抗不屈),
 
     /*
      * 削弱可以被淬炼、种族之力抵消，但瘟疫不能
@@ -25,7 +25,7 @@ public enum SkillType {
     狂热("30880", 10, SkillTag.永久, SkillTag.基础攻击加成),
     嗜血("30940", 10, SkillTag.永久, SkillTag.基础攻击加成),
     透支("30946", 20, SkillTag.永久, SkillTag.基础攻击加成),
-    邪灵汲取("43445", 0, 3, SkillTag.抗免疫, SkillTag.永久, SkillTag.基础攻击加成),
+    邪灵汲取("43445", 0, 3, SkillTag.抗免疫, SkillTag.永久, SkillTag.基础攻击加成, SkillTag.抗不屈),
     森林之力("31121", 25, SkillTag.基础攻击加成, SkillTag.抗削弱),
     地狱之力("31140", 25, SkillTag.基础攻击加成, SkillTag.抗削弱),
     蛮荒之力("31141", 25, SkillTag.基础攻击加成, SkillTag.抗削弱),
@@ -44,8 +44,8 @@ public enum SkillType {
     复仇("40086", 40, 10, SkillTag.独立攻击加成),
     振奋("80192", 40, 10, SkillTag.独立攻击加成),
 
-    虚弱("57000", 0, SkillTag.额外攻击加成, SkillTag.抗免疫),
-    战争怒吼("57022", 0, SkillTag.额外攻击加成, SkillTag.抗免疫),
+    虚弱("57000", 0, SkillTag.额外攻击加成, SkillTag.抗免疫, SkillTag.抗不屈),
+    战争怒吼("57022", 0, SkillTag.额外攻击加成, SkillTag.抗免疫, SkillTag.抗不屈),
 
     /* HP 上限调整技能 */
     王国守护("30949", 50),
@@ -86,7 +86,7 @@ public enum SkillType {
     霜冻新星("30965", 20, SkillTag.魔法),
     暴风雪("31133", 20, SkillTag.魔法),
     寒霜冲击("", 40, 10, SkillTag.魔法),
-    裂伤("30963", 0, SkillTag.抗免疫),
+    裂伤("30963", 0, SkillTag.抗免疫, SkillTag.抗不屈),
     落雷("31132", 25, SkillTag.魔法),
     脱困("30956", 0),
     群体脱困("", 0),
@@ -113,7 +113,7 @@ public enum SkillType {
     疾病("31155", 10),
 
     诅咒("31145", 30),
-    摧毁("31332", 0, SkillTag.即死),
+    摧毁("31332", 0, SkillTag.即死, SkillTag.抗不屈),
 
     封印("31157", 0, SkillTag.控制),
     血炼("31136", 20, SkillTag.魔法),

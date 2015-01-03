@@ -70,10 +70,10 @@ public class CounterAttackTest extends SkillValidationTest {
     @Test
     public void test横扫_雷盾() {
         SkillTestContext context = SkillValidationTestSuite.prepare(
-            50, 50, "秘银巨石像", "光明之龙", "圣骑士", "凤凰*3", "雷盾");
-        CardInfo c秘银巨石像 = context.addToField(0, 0);
+            50, 50, "秘银巨石像", "光明之龙", "秘银巨石像", "凤凰*3", "雷盾");
+        CardInfo c秘银巨石像1 = context.addToField(0, 0);
         CardInfo c光明之龙 = context.addToField(1, 0);
-        CardInfo c圣骑士 = context.addToField(2, 0);
+        CardInfo c秘银巨石像2 = context.addToField(2, 0);
         context.addToField(3, 1);
         context.addToField(4, 1);
         context.addToField(5, 1);
@@ -84,9 +84,9 @@ public class CounterAttackTest extends SkillValidationTest {
         r雷盾.activate();
         context.proceedOneRound();
 
-        Assert.assertEquals(800, 1400 - c秘银巨石像.getHP());
+        Assert.assertEquals(800, 1400 - c秘银巨石像1.getHP());
         Assert.assertEquals(1000, 1730 - c光明之龙.getHP());
-        Assert.assertEquals(800, 1060 - c圣骑士.getHP());
+        Assert.assertEquals(800, 1400 - c秘银巨石像2.getHP());
     }
     
     /**

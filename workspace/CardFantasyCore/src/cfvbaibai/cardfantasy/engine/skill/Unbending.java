@@ -4,6 +4,7 @@ import java.util.List;
 
 import cfvbaibai.cardfantasy.GameUI;
 import cfvbaibai.cardfantasy.data.Skill;
+import cfvbaibai.cardfantasy.data.SkillTag;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.CardStatusItem;
 import cfvbaibai.cardfantasy.engine.CardStatusType;
@@ -34,10 +35,12 @@ public class Unbending {
         Skill skill = items.get(0).getCause().getSkill();
         GameUI ui = resolver.getStage().getUI();
         ui.useSkill(victim, attacker, skill, true);
-        if (attackSkill == null) {
+        if (attackSkill == null || attackSkill.getType().containsTag(SkillTag.物理攻击)) {
             ui.blockDamage(victim, attacker, victim, skill, originalDamage, 0);
         } else {
-            ui.blockSkill(attacker, victim, skill, attackSkill);
+            if (!skill.getType().containsTag(SkillTag.抗不屈)) {
+                ui.blockSkill(attacker, victim, skill, attackSkill);
+            }
         }
         return true;
     }
