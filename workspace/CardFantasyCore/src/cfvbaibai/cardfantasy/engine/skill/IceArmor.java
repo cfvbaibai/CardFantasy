@@ -6,20 +6,20 @@ import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.SkillResolver;
 
 public final class IceArmor {
-    public static int apply(Skill cardFeature, SkillResolver resolver, CardInfo attacker, CardInfo defender, int originalDamage) {
+    public static int apply(Skill cardSkill, SkillResolver resolver, CardInfo attacker, CardInfo defender, int originalDamage) {
         GameUI ui = resolver.getStage().getUI();
-        ui.useSkill(defender, attacker, cardFeature, true);
-        if (resolver.resolveCounterBlockSkill(cardFeature, attacker, defender)) {
+        ui.useSkill(defender, attacker, cardSkill, true);
+        if (resolver.resolveCounterBlockSkill(cardSkill, attacker, defender)) {
             return originalDamage;
         }
         
-        int maxDamage = cardFeature.getImpact();
+        int maxDamage = cardSkill.getImpact();
         int actualDamage = originalDamage;
         if (actualDamage > maxDamage) {
             actualDamage = maxDamage;
         }
 
-        ui.blockDamage(defender, attacker, defender, cardFeature, originalDamage, actualDamage);
+        ui.blockDamage(defender, attacker, defender, cardSkill, originalDamage, actualDamage);
         return actualDamage;
     }
 }

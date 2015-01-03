@@ -10,7 +10,7 @@ import cfvbaibai.cardfantasy.engine.SkillEffectType;
 import cfvbaibai.cardfantasy.engine.SkillUseInfo;
 import cfvbaibai.cardfantasy.engine.SkillResolver;
 
-public final class RacialAttackFeature {
+public final class RacialAttackSkill {
     public static void apply(SkillResolver resolver, SkillUseInfo skillUseInfo, CardInfo attacker, CardInfo defender, Race targetRace) {
         Skill skill = skillUseInfo.getSkill();
         if (defender.getRace() == targetRace) {
@@ -21,8 +21,8 @@ public final class RacialAttackFeature {
         }
     }
 
-    public static void remove(SkillResolver resolver, SkillUseInfo feature, CardInfo card) {
-        List<SkillEffect> effects = card.getEffectsCausedBy(feature);
+    public static void remove(SkillResolver resolver, SkillUseInfo skillUseInfo, CardInfo card) {
+        List<SkillEffect> effects = card.getEffectsCausedBy(skillUseInfo);
         for (SkillEffect effect : effects) {
             resolver.getStage().getUI().loseAdjustATEffect(card, effect);
             card.removeEffect(effect);

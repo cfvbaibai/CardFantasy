@@ -18,7 +18,7 @@ public final class Revive {
         Grave grave = reviver.getOwner().getGrave();
         boolean hasRevivableCard = false;
         for (CardInfo deadCard : grave.toList()) {
-            if (deadCard != null && !deadCard.containsUsableFeaturesWithTag(SkillTag.复活)) {
+            if (deadCard != null && !deadCard.containsUsableSkillsWithTag(SkillTag.复活)) {
                 hasRevivableCard = true;
                 break;
             }
@@ -32,7 +32,7 @@ public final class Revive {
         while (true) {
             CardInfo deadCard = resolver.getStage().getRandomizer().pickRandom(
                 grave.toList(), 1, true, null).get(0);
-            if (!deadCard.containsUsableFeaturesWithTag(SkillTag.复活)) {
+            if (!deadCard.containsUsableSkillsWithTag(SkillTag.复活)) {
                 cardToRevive = deadCard;
                 break;
             }

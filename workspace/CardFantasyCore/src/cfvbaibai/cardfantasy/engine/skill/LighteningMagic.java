@@ -18,7 +18,7 @@ import cfvbaibai.cardfantasy.engine.Player;
  * probability to cause paralyzed.
  * 
  * Can be blocked by Immue. Can be reflected by Magic Reflection. Can activate
- * dying feature.
+ * dying skill.
  */
 public final class LighteningMagic {
     public static void apply(SkillUseInfo skillUseInfo, SkillResolver resolver, EntityInfo attacker, Player defender,

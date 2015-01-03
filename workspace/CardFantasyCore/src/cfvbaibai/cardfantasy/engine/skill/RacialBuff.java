@@ -37,19 +37,19 @@ public final class RacialBuff {
         }
     }
 
-    public static void remove(SkillResolver resolver, SkillUseInfo feature, CardInfo card, Race race) {
+    public static void remove(SkillResolver resolver, SkillUseInfo skillUseInfo, CardInfo card, Race race) {
         if (card == null) {
             throw new CardFantasyRuntimeException("card cannot be null");
         }
-        if (feature == null) {
-            throw new CardFantasyRuntimeException("feature cannot be null");
+        if (skillUseInfo == null) {
+            throw new CardFantasyRuntimeException("skillUseInfo cannot be null");
         }
         Field field = card.getOwner().getField();
         for (CardInfo ally : field.getAliveCards()) {
             if (ally == card || race != null && ally.getRace() != race) {
                 continue;
             }
-            for (SkillEffect effect : ally.getEffectsCausedBy(feature)) {
+            for (SkillEffect effect : ally.getEffectsCausedBy(skillUseInfo)) {
                 if (effect.getType() == SkillEffectType.ATTACK_CHANGE) {
                     resolver.getStage().getUI().loseAdjustATEffect(ally, effect);
                 } else if (effect.getType() == SkillEffectType.MAXHP_CHANGE) {

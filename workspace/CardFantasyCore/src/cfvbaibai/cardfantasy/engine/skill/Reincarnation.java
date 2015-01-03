@@ -10,7 +10,7 @@ import cfvbaibai.cardfantasy.engine.Grave;
 import cfvbaibai.cardfantasy.engine.Hand;
 
 public final class Reincarnation {
-    public static boolean apply(SkillResolver resolver, Skill cardFeature, CardInfo card) {
+    public static boolean apply(SkillResolver resolver, Skill cardSkill, CardInfo card) {
         if (!card.isDead()) {
             throw new CardFantasyRuntimeException("Cannot resurrect undead card: " + card.getShortDesc());
         }
@@ -18,10 +18,10 @@ public final class Reincarnation {
             // Summoned card cannot be reincarnated.
             return false;
         }
-        int rate = cardFeature.getImpact();
+        int rate = cardSkill.getImpact();
         GameUI ui = resolver.getStage().getUI();
         boolean bingo = resolver.getStage().getRandomizer().roll100(rate);
-        ui.useSkill(card, card, cardFeature, bingo);
+        ui.useSkill(card, card, cardSkill, bingo);
         if (bingo) {
             Grave grave = card.getOwner().getGrave();
             grave.removeCard(card);

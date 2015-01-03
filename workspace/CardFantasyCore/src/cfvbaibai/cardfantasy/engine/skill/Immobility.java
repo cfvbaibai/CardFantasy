@@ -8,12 +8,12 @@ import cfvbaibai.cardfantasy.engine.EntityInfo;
 import cfvbaibai.cardfantasy.engine.SkillResolver;
 
 public final class Immobility {
-    public static boolean isFeatureBlocked(SkillResolver resolver, Skill cardFeature, Skill attackFeature,
+    public static boolean isSkillBlocked(SkillResolver resolver, Skill cardSkill, Skill attackSkill,
             EntityInfo attacker, CardInfo defender) {
-        if (attackFeature.getType().containsTag(SkillTag.即死)) {
+        if (attackSkill.getType().containsTag(SkillTag.即死)) {
             GameUI ui = resolver.getStage().getUI();
-            ui.useSkill(defender, attacker, cardFeature, true);
-            ui.blockSkill(attacker, defender, cardFeature, attackFeature);
+            ui.useSkill(defender, attacker, cardSkill, true);
+            ui.blockSkill(attacker, defender, cardSkill, attackSkill);
             return true;
         } else {
             return false;

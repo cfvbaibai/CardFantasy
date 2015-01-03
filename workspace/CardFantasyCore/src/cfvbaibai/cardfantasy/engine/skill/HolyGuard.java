@@ -29,10 +29,10 @@ public class HolyGuard {
         }
     }
     
-    public static void remove(SkillResolver resolver, SkillUseInfo feature, CardInfo card) {
+    public static void remove(SkillResolver resolver, SkillUseInfo skillUseInfo, CardInfo card) {
         for (CardInfo ally : card.getOwner().getField().toList()) {
             if (ally == null) { continue; }
-            List<SkillEffect> effects = ally.getEffectsCausedBy(feature);
+            List<SkillEffect> effects = ally.getEffectsCausedBy(skillUseInfo);
             for (SkillEffect effect : effects) {
                 resolver.getStage().getUI().loseAdjustHPEffect(ally, effect);
                 ally.removeEffect(effect);

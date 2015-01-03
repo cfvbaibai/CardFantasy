@@ -47,12 +47,12 @@ public final class Rainfall {
         }        
     }
 
-    public static void apply(Skill cardFeature, SkillResolver resolver, EntityInfo healer) {
+    public static void apply(Skill cardSkill, SkillResolver resolver, EntityInfo healer) {
         if (healer == null) {
             return;
         }
 
         Field field = healer.getOwner().getField();
-        healCards(resolver, healer, cardFeature, field.getAliveCards());
+        healCards(resolver, healer, cardSkill, field.getAliveCards());
     }
 }

@@ -6,24 +6,24 @@ import cfvbaibai.cardfantasy.engine.SkillResolver;
 import cfvbaibai.cardfantasy.engine.OnAttackBlockingResult;
 
 public final class Rejuvenate {
-    public static void apply(Skill cardFeature, SkillResolver resolver, CardInfo card) {
+    public static void apply(Skill cardSkill, SkillResolver resolver, CardInfo card) {
         if (card.isDead()) {
             // Card has already dead due to CounterAttacker, MagicReflection or Overdraw.
             return;
         }
-        int healHP = cardFeature.getImpact();
+        int healHP = cardSkill.getImpact();
         if (healHP + card.getHP() > card.getMaxHP()) {
             healHP = card.getMaxHP() - card.getHP();
         }
         if (healHP == 0) {
             return;
         }
-        OnAttackBlockingResult result = resolver.resolveHealBlockingSkills(card, card, cardFeature);
+        OnAttackBlockingResult result = resolver.resolveHealBlockingSkills(card, card, cardSkill);
         if (!result.isAttackable()) {
             return;
         }
-        resolver.getStage().getUI().useSkill(card, cardFeature, true);
-        resolver.getStage().getUI().healCard(card, card, cardFeature, healHP);
+        resolver.getStage().getUI().useSkill(card, cardSkill, true);
+        resolver.getStage().getUI().healCard(card, card, cardSkill, healHP);
         resolver.applyDamage(card, -healHP);
     }
 }

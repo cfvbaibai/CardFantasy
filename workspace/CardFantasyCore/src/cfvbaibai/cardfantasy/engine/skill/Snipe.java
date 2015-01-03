@@ -10,15 +10,15 @@ import cfvbaibai.cardfantasy.engine.HeroDieSignal;
 import cfvbaibai.cardfantasy.engine.Player;
 
 public final class Snipe {
-    public static void apply(Skill cardFeature, SkillResolver resolver, EntityInfo attacker, Player defenderPlayer,
+    public static void apply(Skill cardSkill, SkillResolver resolver, EntityInfo attacker, Player defenderPlayer,
             int targetCount) throws HeroDieSignal {
-        int damage = cardFeature.getImpact();
+        int damage = cardSkill.getImpact();
         List<CardInfo> victims = defenderPlayer.getField().getCardsWithLowestHP(targetCount);
-        resolver.getStage().getUI().useSkill(attacker, victims, cardFeature, true);
+        resolver.getStage().getUI().useSkill(attacker, victims, cardSkill, true);
         for (CardInfo victim : victims) {
-            resolver.getStage().getUI().attackCard(attacker, victim, cardFeature, damage);
+            resolver.getStage().getUI().attackCard(attacker, victim, cardSkill, damage);
             if (resolver.applyDamage(victim, damage).cardDead) {
-                resolver.resolveDeathSkills(attacker, victim, cardFeature);
+                resolver.resolveDeathSkills(attacker, victim, cardSkill);
             }
         }
     }

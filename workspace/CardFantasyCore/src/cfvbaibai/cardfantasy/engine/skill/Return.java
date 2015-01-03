@@ -10,7 +10,7 @@ import cfvbaibai.cardfantasy.engine.HeroDieSignal;
 import cfvbaibai.cardfantasy.engine.OnAttackBlockingResult;
 
 public final class Return {
-    public static void apply(SkillResolver resolver, Skill cardFeature, CardInfo attacker, CardInfo defender) throws HeroDieSignal {
+    public static void apply(SkillResolver resolver, Skill cardSkill, CardInfo attacker, CardInfo defender) throws HeroDieSignal {
         if (attacker == null) {
             return;
         }
@@ -18,8 +18,8 @@ public final class Return {
             return;
         }
         GameUI ui = resolver.getStage().getUI();
-        ui.useSkill(attacker, defender, cardFeature, true);
-        OnAttackBlockingResult result = resolver.resolveAttackBlockingSkills(attacker, defender, cardFeature, 1);
+        ui.useSkill(attacker, defender, cardSkill, true);
+        OnAttackBlockingResult result = resolver.resolveAttackBlockingSkills(attacker, defender, cardSkill, 1);
         if (!result.isAttackable()) {
             return;
         }
@@ -28,11 +28,11 @@ public final class Return {
             throw new CardFantasyRuntimeException("expelledCard != defender");
         }
         
-        ui.returnCard(attacker, defender, cardFeature);
+        ui.returnCard(attacker, defender, cardSkill);
         if (!defender.getStatus().containsStatus(CardStatusType.召唤)) {
             // 被召唤的卡牌不回到卡组，而是直接消失
             defender.getOwner().getDeck().addCard(defender);
         }
-        resolver.resolveLeaveSkills(defender, cardFeature);
+        resolver.resolveLeaveSkills(defender, cardSkill);
     }
 }

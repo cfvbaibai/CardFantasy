@@ -66,7 +66,7 @@ import cfvbaibai.cardfantasy.engine.skill.PoisonMagic;
 import cfvbaibai.cardfantasy.engine.skill.Pray;
 import cfvbaibai.cardfantasy.engine.skill.Purify;
 import cfvbaibai.cardfantasy.engine.skill.Pursuit;
-import cfvbaibai.cardfantasy.engine.skill.RacialAttackFeature;
+import cfvbaibai.cardfantasy.engine.skill.RacialAttackSkill;
 import cfvbaibai.cardfantasy.engine.skill.RacialBuff;
 import cfvbaibai.cardfantasy.engine.skill.RacialShield;
 import cfvbaibai.cardfantasy.engine.skill.Rainfall;
@@ -485,12 +485,12 @@ public class SkillResolver {
 
                 for (SkillUseInfo blockSkillUseInfo : defender.getNormalUsableSkills()) {
                     if (blockSkillUseInfo.getType() == SkillType.免疫) {
-                        if (Immue.isFeatureBlocked(this, blockSkillUseInfo.getSkill(), attackSkill, attacker, defender)) {
+                        if (Immue.isSkillBlocked(this, blockSkillUseInfo.getSkill(), attackSkill, attacker, defender)) {
                             result.setAttackable(false);
                             return result;
                         }
                     } else if (blockSkillUseInfo.getType() == SkillType.无效) {
-                        if (NoEffect.isFeatureBlocked(this, blockSkillUseInfo.getSkill(), attackSkill, attacker, defender)) {
+                        if (NoEffect.isSkillBlocked(this, blockSkillUseInfo.getSkill(), attackSkill, attacker, defender)) {
                             result.setAttackable(false);
                             return result;
                         }
@@ -500,7 +500,7 @@ public class SkillResolver {
                             return result;
                         }
                     } else if (blockSkillUseInfo.getType() == SkillType.不动) {
-                        if (Immobility.isFeatureBlocked(this, blockSkillUseInfo.getSkill(), attackSkill, attacker, defender)) {
+                        if (Immobility.isSkillBlocked(this, blockSkillUseInfo.getSkill(), attackSkill, attacker, defender)) {
                             result.setAttackable(false);
                             return result;
                         }
@@ -659,10 +659,10 @@ public class SkillResolver {
         }
     }
 
-    public void resolvePreAttackHeroFeature(CardInfo attacker, Player defenderPlayer) {
-        for (SkillUseInfo feature : attacker.getNormalUsableSkills()) {
-           if (feature.getType() == SkillType.英雄杀手) {
-               HeroKiller.apply(this, feature, attacker, defenderPlayer);
+    public void resolvePreAttackHeroSkills(CardInfo attacker, Player defenderPlayer) {
+        for (SkillUseInfo skillUseInfo : attacker.getNormalUsableSkills()) {
+           if (skillUseInfo.getType() == SkillType.英雄杀手) {
+               HeroKiller.apply(this, skillUseInfo, attacker, defenderPlayer);
            }
         }
     }
@@ -671,31 +671,31 @@ public class SkillResolver {
      * 
      * @param attacker
      * @param defender
-     * @param prior if TRUE, this is resolved before pre-attack features are resolved.
+     * @param prior if TRUE, this is resolved before pre-attack skills are resolved.
      *              Currently, only RETURN falls in this case.
      * @throws HeroDieSignal
      */
-    public void resolvePreAttackCardFeature(CardInfo attacker, CardInfo defender, boolean prior) throws HeroDieSignal {
-        for (SkillUseInfo feature : attacker.getNormalUsableSkills()) {
+    public void resolvePreAttackCardSkills(CardInfo attacker, CardInfo defender, boolean prior) throws HeroDieSignal {
+        for (SkillUseInfo skillUseInfo : attacker.getNormalUsableSkills()) {
             if (prior) {
-                if (feature.getType() == SkillType.送还) {
-                    Return.apply(this, feature.getSkill(), attacker, defender);
+                if (skillUseInfo.getType() == SkillType.送还) {
+                    Return.apply(this, skillUseInfo.getSkill(), attacker, defender);
                 }
             } else {
-                if (feature.getType() == SkillType.圣光) {
-                    RacialAttackFeature.apply(this, feature, attacker, defender, Race.HELL);
-                } else if (feature.getType() == SkillType.要害) {
-                    RacialAttackFeature.apply(this, feature, attacker, defender, Race.SAVAGE);
-                } else if (feature.getType() == SkillType.暗杀) {
-                    RacialAttackFeature.apply(this, feature, attacker, defender, Race.KINGDOM);
-                } else if (feature.getType() == SkillType.污染) {
-                    RacialAttackFeature.apply(this, feature, attacker, defender, Race.FOREST);
-                } else if (feature.getType() == SkillType.暴击) {
-                    CriticalAttack.apply(this, feature, attacker, defender);
-                } else if (feature.getType() == SkillType.穷追猛打) {
-                    Pursuit.apply(this, feature, attacker, defender);
-                } else if (feature.getType() == SkillType.战意) {
-                    Wrath.apply(this, feature, attacker, defender);
+                if (skillUseInfo.getType() == SkillType.圣光) {
+                    RacialAttackSkill.apply(this, skillUseInfo, attacker, defender, Race.HELL);
+                } else if (skillUseInfo.getType() == SkillType.要害) {
+                    RacialAttackSkill.apply(this, skillUseInfo, attacker, defender, Race.SAVAGE);
+                } else if (skillUseInfo.getType() == SkillType.暗杀) {
+                    RacialAttackSkill.apply(this, skillUseInfo, attacker, defender, Race.KINGDOM);
+                } else if (skillUseInfo.getType() == SkillType.污染) {
+                    RacialAttackSkill.apply(this, skillUseInfo, attacker, defender, Race.FOREST);
+                } else if (skillUseInfo.getType() == SkillType.暴击) {
+                    CriticalAttack.apply(this, skillUseInfo, attacker, defender);
+                } else if (skillUseInfo.getType() == SkillType.穷追猛打) {
+                    Pursuit.apply(this, skillUseInfo, attacker, defender);
+                } else if (skillUseInfo.getType() == SkillType.战意) {
+                    Wrath.apply(this, skillUseInfo, attacker, defender);
                 }
             }
         }
@@ -728,7 +728,7 @@ public class SkillResolver {
         for (SkillEffect effect : card.getEffects()) {
             SkillType type = effect.getCause().getType();
             if (type == SkillType.圣光 || type == SkillType.要害 || type == SkillType.暗杀 || type == SkillType.污染) {
-                RacialAttackFeature.remove(this, effect.getCause(), card);
+                RacialAttackSkill.remove(this, effect.getCause(), card);
             } else if (type == SkillType.暴击) {
                 CriticalAttack.remove(this, effect.getCause(), card);
             } else if (type == SkillType.穷追猛打) {

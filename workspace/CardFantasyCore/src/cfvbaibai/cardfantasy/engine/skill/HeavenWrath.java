@@ -7,13 +7,13 @@ import cfvbaibai.cardfantasy.engine.HeroDieSignal;
 import cfvbaibai.cardfantasy.engine.Player;
 
 public final class HeavenWrath {
-    public static void apply(SkillResolver resolver, Skill cardFeature, EntityInfo attacker, Player defenderHero)
+    public static void apply(SkillResolver resolver, Skill cardSkill, EntityInfo attacker, Player defenderHero)
             throws HeroDieSignal {
         int aliveEnemyCardCount = defenderHero.getField().getAliveCards().size();
         if (aliveEnemyCardCount == 0) {
             return;
         }
-        int damage = cardFeature.getImpact() * aliveEnemyCardCount;
-        resolver.attackHero(attacker, defenderHero, cardFeature, damage);
+        int damage = cardSkill.getImpact() * aliveEnemyCardCount;
+        resolver.attackHero(attacker, defenderHero, cardSkill, damage);
     }
 }

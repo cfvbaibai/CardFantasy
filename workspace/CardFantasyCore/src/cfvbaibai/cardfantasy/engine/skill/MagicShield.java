@@ -9,8 +9,8 @@ import cfvbaibai.cardfantasy.engine.SkillResolver;
 
 public final class MagicShield {
     public static int apply(SkillResolver resolver, Skill skill, EntityInfo attacker, CardInfo defender,
-            Skill attackFeature, int originalDamage) {
-        if (!attackFeature.getType().containsTag(SkillTag.魔法)) {
+            Skill attackSkill, int originalDamage) {
+        if (!attackSkill.getType().containsTag(SkillTag.魔法)) {
             return originalDamage;
         }
         int maxDamage = skill.getImpact();

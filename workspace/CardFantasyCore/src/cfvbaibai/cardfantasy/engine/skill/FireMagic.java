@@ -14,28 +14,28 @@ import cfvbaibai.cardfantasy.engine.Player;
 import cfvbaibai.cardfantasy.engine.StageInfo;
 
 public final class FireMagic {
-    public static void apply(Skill cardFeature, SkillResolver resolver, EntityInfo attacker, Player defender,
+    public static void apply(Skill cardSkill, SkillResolver resolver, EntityInfo attacker, Player defender,
             int victimCount) throws HeroDieSignal {
         StageInfo stage = resolver.getStage();
         Randomizer random = stage.getRandomizer();
         GameUI ui = stage.getUI();
 
         List<CardInfo> victims = random.pickRandom(defender.getField().toList(), victimCount, true, null);
-        ui.useSkill(attacker, victims, cardFeature, true);
+        ui.useSkill(attacker, victims, cardSkill, true);
         for (CardInfo victim : victims) {
-            int damage = random.next(cardFeature.getImpact(), cardFeature.getImpact() * 2 + 1);
-            OnAttackBlockingResult result = resolver.resolveAttackBlockingSkills(attacker, victim, cardFeature, damage);
+            int damage = random.next(cardSkill.getImpact(), cardSkill.getImpact() * 2 + 1);
+            OnAttackBlockingResult result = resolver.resolveAttackBlockingSkills(attacker, victim, cardSkill, damage);
             if (!result.isAttackable()) {
                 continue;
             }
             damage = result.getDamage();
-            ui.attackCard(attacker, victim, cardFeature, damage);
+            ui.attackCard(attacker, victim, cardSkill, damage);
             boolean cardDead = resolver.applyDamage(victim, damage).cardDead;
             if (attacker instanceof CardInfo) {
-                resolver.resolveCounterAttackSkills((CardInfo)attacker, victim, cardFeature, result, null);
+                resolver.resolveCounterAttackSkills((CardInfo)attacker, victim, cardSkill, result, null);
             }
             if (cardDead) {
-                resolver.resolveDeathSkills(attacker, victim, cardFeature);
+                resolver.resolveDeathSkills(attacker, victim, cardSkill);
             }
         }
     }

@@ -8,11 +8,11 @@ import cfvbaibai.cardfantasy.engine.SkillResolver;
 import cfvbaibai.cardfantasy.engine.OnAttackBlockingResult;
 
 public final class Heal {
-    public static void apply(Skill cardFeature, SkillResolver resolver, EntityInfo healer) {
+    public static void apply(Skill cardSkill, SkillResolver resolver, EntityInfo healer) {
         if (healer == null) {
             return;
         }
-        int healHP = cardFeature.getImpact();
+        int healHP = cardSkill.getImpact();
         CardInfo healee = resolver.pickHealee(healer);
         if (healee == null) {
             return;
@@ -24,12 +24,12 @@ public final class Heal {
             return;
         }
         GameUI ui = resolver.getStage().getUI();
-        ui.useSkill(healer, healee, cardFeature, true);
-        OnAttackBlockingResult result = resolver.resolveHealBlockingSkills(healer, healee, cardFeature);
+        ui.useSkill(healer, healee, cardSkill, true);
+        OnAttackBlockingResult result = resolver.resolveHealBlockingSkills(healer, healee, cardSkill);
         if (!result.isAttackable()) {
             return;
         }
-        ui.healCard(healer, healee, cardFeature, healHP);
+        ui.healCard(healer, healee, cardSkill, healHP);
         resolver.applyDamage(healee, -healHP);
     }
 }

@@ -8,7 +8,7 @@ import cfvbaibai.cardfantasy.engine.SkillUseInfo;
 import cfvbaibai.cardfantasy.engine.SkillResolver;
 
 public final class Wound {
-    public static void apply(SkillResolver resolver, SkillUseInfo skillUseInfo, Skill attackFeature, CardInfo attacker, CardInfo defender,
+    public static void apply(SkillResolver resolver, SkillUseInfo skillUseInfo, Skill attackSkill, CardInfo attacker, CardInfo defender,
             int normalAttackDamage) {
         if (normalAttackDamage <= 0) {
             return;
@@ -16,7 +16,7 @@ public final class Wound {
         if (defender.isDead()) {
             return;
         }
-        if (attackFeature != null && attackFeature.getType() == SkillType.横扫) {
+        if (attackSkill != null && attackSkill.getType() == SkillType.横扫) {
             return;
         }
         Skill skill = skillUseInfo.getSkill();

@@ -8,13 +8,13 @@ import cfvbaibai.cardfantasy.engine.SkillResolver;
 import cfvbaibai.cardfantasy.engine.Field;
 
 public class HealingMist {
-    public static void apply(Skill cardFeature, SkillResolver resolver, CardInfo healer) {
+    public static void apply(Skill cardSkill, SkillResolver resolver, CardInfo healer) {
         if (healer == null) {
             return;
         }
 
         Field field = healer.getOwner().getField();
         List<CardInfo> healeeCandidates = resolver.getAdjacentCards(field, healer.getPosition());
-        Rainfall.healCards(resolver, healer, cardFeature, healeeCandidates);
+        Rainfall.healCards(resolver, healer, cardSkill, healeeCandidates);
     }
 }

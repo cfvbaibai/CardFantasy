@@ -8,7 +8,7 @@ import cfvbaibai.cardfantasy.engine.OnAttackBlockingResult;
 import cfvbaibai.cardfantasy.engine.Player;
 
 public final class Transport {
-    public static void apply(SkillResolver resolver, Skill cardFeature, CardInfo attacker, Player defenderHero) throws HeroDieSignal {
+    public static void apply(SkillResolver resolver, Skill cardSkill, CardInfo attacker, Player defenderHero) throws HeroDieSignal {
         if (attacker == null) {
             return;
         }
@@ -21,8 +21,8 @@ public final class Transport {
         if (cardToTransport == null) {
             return;
         }
-        resolver.getStage().getUI().useSkill(attacker, cardToTransport, cardFeature, true);
-        OnAttackBlockingResult result = resolver.resolveAttackBlockingSkills(attacker, cardToTransport, cardFeature, 1);
+        resolver.getStage().getUI().useSkill(attacker, cardToTransport, cardSkill, true);
+        OnAttackBlockingResult result = resolver.resolveAttackBlockingSkills(attacker, cardToTransport, cardSkill, 1);
         if (!result.isAttackable()) {
             return;
         }

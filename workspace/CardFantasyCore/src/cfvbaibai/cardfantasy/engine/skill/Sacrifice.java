@@ -41,7 +41,7 @@ public final class Sacrifice {
             return;
         }
         ui.killCard(card, oblation, skill);
-        // Sacrifice does not trigger death features.
+        // Sacrifice does not trigger death skills.
         resolver.cardDead(oblation);
         
         int adjHP = skill.getImpact() * card.getMaxHP() / 100;

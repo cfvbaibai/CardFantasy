@@ -230,7 +230,7 @@ public class GameEngine {
             if (status.containsStatus(CardStatusType.迷惑)) {
                 underControl = true;
                 ui.confused(myField.getCard(i));
-                resolver.resolvePreAttackHeroFeature(myField.getCard(i), getActivePlayer());
+                resolver.resolvePreAttackHeroSkills(myField.getCard(i), getActivePlayer());
                 resolver.attackHero(myField.getCard(i), getActivePlayer(), null, myField.getCard(i).getCurrentAT());
                 resolver.removeStatus(myField.getCard(i), CardStatusType.迷惑);
                 resolver.removeStatus(myField.getCard(i), CardStatusType.冰冻);
@@ -291,13 +291,13 @@ public class GameEngine {
 
     private void tryAttackEnemy(Field myField, Field opField, int i) throws HeroDieSignal {
         SkillResolver resolver = this.stage.getResolver();
-        resolver.resolvePreAttackCardFeature(myField.getCard(i), opField.getCard(i), true);
+        resolver.resolvePreAttackCardSkills(myField.getCard(i), opField.getCard(i), true);
         resolver.resolvePreAttackSkills(myField.getCard(i), getInactivePlayer());
         if (myField.getCard(i) == null) {
             return;
         }
         if (opField.getCard(i) == null) {
-            resolver.resolvePreAttackHeroFeature(myField.getCard(i), getInactivePlayer());
+            resolver.resolvePreAttackHeroSkills(myField.getCard(i), getInactivePlayer());
             resolver.attackHero(myField.getCard(i), getInactivePlayer(), null, myField.getCard(i).getCurrentAT());
         } else {
             tryAttackCard(myField, opField, i);
@@ -311,9 +311,9 @@ public class GameEngine {
 
     private void tryAttackCard(Field myField, Field opField, int i) throws HeroDieSignal {
         SkillResolver resolver = this.stage.getResolver();
-        resolver.resolvePreAttackCardFeature(myField.getCard(i), opField.getCard(i), false);
+        resolver.resolvePreAttackCardSkills(myField.getCard(i), opField.getCard(i), false);
         if (opField.getCard(i) == null) {
-            resolver.resolvePreAttackHeroFeature(myField.getCard(i), getInactivePlayer());
+            resolver.resolvePreAttackHeroSkills(myField.getCard(i), getInactivePlayer());
             resolver.attackHero(myField.getCard(i), getInactivePlayer(), null, myField.getCard(i).getCurrentAT());
         } else {
             processAttackCard(myField, opField, i);
