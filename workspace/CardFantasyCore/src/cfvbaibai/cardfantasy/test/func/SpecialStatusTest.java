@@ -424,4 +424,55 @@ public class SpecialStatusTest extends SkillValidationTest {
         Assert.assertFalse(c见习圣骑.getStatus().containsStatus(CardStatusType.不屈));
         Assert.assertTrue(c见习圣骑.isDead());
     }
+
+    /**
+     * 不屈能免疫瘟疫和群体削弱
+     */
+    @Test
+    public void test不屈_瘟疫() {
+        SkillTestContext context = SkillValidationTestSuite.prepare(
+            50, 50, "见习圣骑+不屈", "秘银巨石像", "占位符+瘟疫10", "占位符+群体削弱10");
+        CardInfo c见习圣骑 = context.addToField(0, 0).setBasicHP(2);
+        context.addToField(1, 1);
+        context.addToField(2, 1);
+        context.addToField(3, 1);
+        context.startGame();
+
+        context.getStage().setActivePlayerNumber(1);
+        random.addNextNumbers(1000);    // 见习圣骑闪避失败
+        random.addNextPicks(0, 0);     // 瘟疫和群体削弱
+        context.proceedOneRound();
+        Assert.assertEquals(1, context.getPlayer(0).getField().size());
+        Assert.assertTrue(c见习圣骑.getStatus().containsStatus(CardStatusType.不屈));
+        Assert.assertEquals(1, c见习圣骑.getHP());
+        Assert.assertEquals(495, c见习圣骑.getCurrentAT());
+    }
+    
+    /**
+     * 不屈能抵御控制技能
+     */
+    @Test
+    public void test不屈_迷惑_冰冻_麻痹_锁定() {
+        SkillTestContext context = SkillValidationTestSuite.prepare(
+            50, 50, "见习圣骑+不屈", "秘银巨石像", "占位符+迷魂10", "占位符+冰弹10", "占位符+落雷10", "占位符+陷阱1");
+        CardInfo c见习圣骑 = context.addToField(0, 0).setBasicHP(2);
+        CardInfo c秘银巨石像 = context.addToField(1, 1);
+        context.addToField(2, 1);
+        context.addToField(3, 1);
+        context.addToField(4, 1);
+        context.addToField(5, 1);
+        context.startGame();
+
+        context.getStage().setActivePlayerNumber(1);
+        random.addNextNumbers(1000);    // 见习圣骑闪避失败
+        random.addNextPicks(0, 0, 0, 0).addNextNumbers(0, 0, 0, 0);     // 迷魂冰弹落雷陷阱全中
+        context.proceedOneRound();
+        Assert.assertEquals(1, context.getPlayer(0).getField().size());
+        Assert.assertTrue(c见习圣骑.getStatus().containsStatus(CardStatusType.不屈));
+        Assert.assertEquals(1, c见习圣骑.getHP());
+
+        context.proceedOneRound();
+        // 见习圣骑并未受控制
+        Assert.assertEquals(495, 1400 - c秘银巨石像.getHP());
+    }
 }
