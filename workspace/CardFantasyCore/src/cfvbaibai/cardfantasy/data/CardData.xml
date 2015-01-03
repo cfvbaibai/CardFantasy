@@ -1833,4 +1833,8 @@
     </Card>
     <Card id="7504" name="残血王国小兵" wikiId="" race="王国" speed="4" star="1" cost="0" incrCost="0" at="0" hp="1" incrAT="0" incrHP="0">
     </Card>
+    <Card id="7505" name="残血森林小兵" wikiId="" race="森林" speed="4" star="1" cost="0" incrCost="0" at="0" hp="1" incrAT="0" incrHP="0">
+    </Card>
+    <Card id="7506" name="森林木桩" wikiId="" race="森林" speed="4" star="5" cost="0" incrCost="0" at="0" hp="5000" incrAT="0" incrHP="0">
+    </Card>
 </Cards>

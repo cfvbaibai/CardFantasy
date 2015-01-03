@@ -198,14 +198,17 @@ public class SummonTest extends SkillValidationTest {
      */
     @Test
     public void test召唤王国战士_秽土() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "陨星魔法使", "秽土", "占位符", "金属巨龙+暴击10");
+        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "陨星魔法使", "秽土", "占位符", "金属巨龙+暴击10", "蜘蛛人女王*3");
         context.addToField(0, 0);
         context.addToField(1, 1);
         context.addToField(2, 1);
-        RuneInfo r秽土 = context.addToRune(0, 0);
+        context.addToRune(0, 0);
         context.startGame();
         
-        r秽土.activate();
+        // 加3张蛮荒去墓地发动秽土
+        context.addToGrave(3, 0);
+        context.addToGrave(4, 0);
+        context.addToGrave(5, 0);
         random.addNextPicks(0, 1).addNextNumbers(1000, 1000);      // 陨星魔法使的寒霜冲击无法冻结
         context.proceedOneRound();
         
@@ -214,7 +217,7 @@ public class SummonTest extends SkillValidationTest {
         context.proceedOneRound();
         // 秽土即使能发动，也不能对召唤物发动。手牌仍为0
         Assert.assertEquals(0, context.getPlayer(0).getHand().size());
-        Assert.assertEquals(0, context.getPlayer(0).getGrave().size());
+        Assert.assertEquals(3, context.getPlayer(0).getGrave().size());
         Assert.assertEquals(2, context.getPlayer(0).getField().size());
     }
 }

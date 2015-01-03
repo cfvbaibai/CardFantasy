@@ -1321,6 +1321,8 @@ public class SkillResolver {
                 AllSpeedUp.apply(rune.getSkillUseInfo(), this, rune);
             } else if (rune.is(RuneData.龙吟)) {
                 Bless.apply(rune.getSkillUseInfo().getSkill(), this, rune);
+            } else if (rune.is(RuneData.神祈)) {
+                Purify.apply(rune.getSkillUseInfo(), this, rune);
             }
         }
     }
