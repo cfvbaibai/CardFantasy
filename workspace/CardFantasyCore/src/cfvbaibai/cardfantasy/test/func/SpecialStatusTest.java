@@ -522,7 +522,7 @@ public class SpecialStatusTest extends SkillValidationTest {
 
         c见习圣骑.setBasicHP(2);
         context.proceedOneRound();
-        // 王国小兵被雷兽盾刺弹死，发动不屈
+        // 见习圣骑被雷兽盾刺弹死，发动不屈
         Assert.assertTrue(c见习圣骑.getStatus().containsStatus(CardStatusType.不屈));
         Assert.assertEquals(1, c见习圣骑.getHP());
 
@@ -530,7 +530,31 @@ public class SpecialStatusTest extends SkillValidationTest {
         random.addNextPicks(0);   // 独眼巨人的降临群体削弱
         random.addNextPicks(0);   // 独眼巨人的降临摧毁
         context.proceedOneRound();
-        // 王国小兵被摧毁，不屈无法抵挡摧毁
+        // 见习圣骑被摧毁，不屈无法抵挡摧毁
         Assert.assertEquals(0, context.getPlayer(0).getField().size());
+    }
+
+    /**
+     * 不屈无法抵挡送还
+     */
+    @Test
+    public void test不屈_送还() {
+        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "秘银巨石像", "残血王国小兵+不屈", "占位符+盾刺10", "占位符+送还");
+        context.addToField(0, 0);
+        CardInfo c王国小兵 = context.addToField(1, 0);
+        context.addToField(2, 1);
+        context.addToField(3, 1);
+        context.startGame();
+
+        c王国小兵.setBasicHP(2);
+        context.proceedOneRound();
+        // 王国小兵被雷兽盾刺弹死，发动不屈
+        Assert.assertTrue(c王国小兵.getStatus().containsStatus(CardStatusType.不屈));
+        Assert.assertEquals(1, c王国小兵.getHP());
+
+        context.proceedOneRound();
+        // 王国小兵被送还，不屈无法抵挡送还
+        Assert.assertEquals(1, context.getPlayer(0).getField().size());
+        Assert.assertEquals(1, context.getPlayer(0).getDeck().size());
     }
 }
