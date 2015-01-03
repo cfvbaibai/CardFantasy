@@ -292,7 +292,7 @@ public class GameEngine {
     private void tryAttackEnemy(Field myField, Field opField, int i) throws HeroDieSignal {
         SkillResolver resolver = this.stage.getResolver();
         resolver.resolvePreAttackCardFeature(myField.getCard(i), opField.getCard(i), true);
-        resolver.resolvePreAttackFeature(myField.getCard(i), getInactivePlayer());
+        resolver.resolvePreAttackSkills(myField.getCard(i), getInactivePlayer());
         if (myField.getCard(i) == null) {
             return;
         }
@@ -306,7 +306,7 @@ public class GameEngine {
         // Remove lasting effects
         resolver.removeTempEffects(myField.getCard(i));
         //
-        resolver.resolvePostAttackFeature(myField.getCard(i), getInactivePlayer());
+        resolver.resolvePostAttackSkills(myField.getCard(i), getInactivePlayer());
     }
 
     private void tryAttackCard(Field myField, Field opField, int i) throws HeroDieSignal {

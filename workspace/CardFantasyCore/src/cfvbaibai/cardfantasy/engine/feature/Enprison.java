@@ -30,7 +30,7 @@ public class Enprison {
         
         ui.useSkill(attacker, victims, cardFeature, true);
         for (CardInfo victim : victims) {
-            OnAttackBlockingResult result = resolver.resolveAttackBlockingFeature(attacker, victim, cardFeature, 1);
+            OnAttackBlockingResult result = resolver.resolveAttackBlockingSkills(attacker, victim, cardFeature, 1);
             if (!result.isAttackable()) {
                 continue;
             }
@@ -41,7 +41,7 @@ public class Enprison {
 
             ui.returnCard(attacker, victim, cardFeature);
             victim.getOwner().getDeck().addCard(victim);
-            resolver.resolveLeaveFeature(victim, cardFeature);
+            resolver.resolveLeaveSkills(victim, cardFeature);
         }
     }
 }

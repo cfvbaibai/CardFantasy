@@ -18,7 +18,7 @@ public final class Rejuvenate {
         if (healHP == 0) {
             return;
         }
-        OnAttackBlockingResult result = resolver.resolveHealBlockingFeature(card, card, cardFeature);
+        OnAttackBlockingResult result = resolver.resolveHealBlockingSkills(card, card, cardFeature);
         if (!result.isAttackable()) {
             return;
         }

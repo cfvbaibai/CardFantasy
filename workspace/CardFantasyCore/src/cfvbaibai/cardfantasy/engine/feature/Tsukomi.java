@@ -25,14 +25,14 @@ public class Tsukomi {
         
         ui.useSkill(attacker, victims, cardFeature, true);
         for (CardInfo victim : victims) {
-            OnAttackBlockingResult result = resolver.resolveAttackBlockingFeature(attacker, victim, cardFeature, 1);
+            OnAttackBlockingResult result = resolver.resolveAttackBlockingSkills(attacker, victim, cardFeature, 1);
             if (!result.isAttackable()) {
                 continue;
             }
             int damage = victim.getCurrentAT() / 2;
             ui.attackCard(attacker, victim, cardFeature, damage);
             if (resolver.applyDamage(victim, damage).cardDead) {
-                resolver.resolveDeathFeature(defender, victim, cardFeature);
+                resolver.resolveDeathSkills(defender, victim, cardFeature);
             }
         }
     }

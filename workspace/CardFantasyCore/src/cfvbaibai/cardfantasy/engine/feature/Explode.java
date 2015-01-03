@@ -31,14 +31,14 @@ public final class Explode {
                 continue;
             }
             ui.useSkill(exploder, victim, cardFeature, true);
-            OnAttackBlockingResult result = resolver.resolveAttackBlockingFeature(attacker, victim, cardFeature, damage);
+            OnAttackBlockingResult result = resolver.resolveAttackBlockingSkills(attacker, victim, cardFeature, damage);
             if (!result.isAttackable()) {
                 continue;
             }
             damage = result.getDamage();
             ui.attackCard(exploder, victim, cardFeature, damage);
             if (resolver.applyDamage(victim, damage).cardDead) {
-                resolver.resolveDeathFeature(exploder, victim, cardFeature);
+                resolver.resolveDeathSkills(exploder, victim, cardFeature);
             }            
         }
     }

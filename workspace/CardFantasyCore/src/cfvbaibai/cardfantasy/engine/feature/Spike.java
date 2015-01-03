@@ -36,7 +36,7 @@ public final class Spike {
             }
             ui.attackCard(defender, victim, cardFeature, damage);
             if (resolver.applyDamage(victim, damage).cardDead) {
-                resolver.resolveDeathFeature(defender, victim, cardFeature);
+                resolver.resolveDeathSkills(defender, victim, cardFeature);
             }            
         }
     }

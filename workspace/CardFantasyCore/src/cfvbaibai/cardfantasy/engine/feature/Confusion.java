@@ -26,7 +26,7 @@ public final class Confusion {
         List<CardInfo> victims = random.pickRandom(defender.getField().toList(), victimCount, true, null);
         ui.useSkill(attacker, victims, skill, true);
         for (CardInfo victim : victims) {
-            if (!resolver.resolveAttackBlockingFeature(attacker, victim, skill, 1).isAttackable()) {
+            if (!resolver.resolveAttackBlockingSkills(attacker, victim, skill, 1).isAttackable()) {
                 continue;
             }
             if (victim.getStatus().containsStatus(CardStatusType.迷惑)) {

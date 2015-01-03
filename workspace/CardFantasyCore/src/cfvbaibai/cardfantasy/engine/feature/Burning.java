@@ -23,7 +23,7 @@ public final class Burning {
         int damage = skill.getImpact();
         GameUI ui = resolver.getStage().getUI();
         ui.useSkill(defender, attacker, skill, true);
-        OnAttackBlockingResult result = resolver.resolveAttackBlockingFeature(defender, attacker, skill, damage);
+        OnAttackBlockingResult result = resolver.resolveAttackBlockingSkills(defender, attacker, skill, damage);
         if (!result.isAttackable()) {
             return;
         }

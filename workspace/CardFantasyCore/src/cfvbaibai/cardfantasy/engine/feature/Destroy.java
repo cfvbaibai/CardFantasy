@@ -19,13 +19,13 @@ public final class Destroy {
         GameUI ui = resolver.getStage().getUI();
         ui.useSkill(attacker, victims, cardFeature, true);
         for (CardInfo victim : victims) {
-            OnAttackBlockingResult result = resolver.resolveAttackBlockingFeature(attacker, victim, cardFeature, 1);
+            OnAttackBlockingResult result = resolver.resolveAttackBlockingSkills(attacker, victim, cardFeature, 1);
             if (!result.isAttackable()) {
                 return;
             }
             ui.killCard(attacker, victim, cardFeature);
             if (resolver.applyDamage(victim, victim.getHP()).cardDead) {
-                resolver.resolveDeathFeature(attacker, victim, cardFeature);
+                resolver.resolveDeathSkills(attacker, victim, cardFeature);
             } else {
                 throw new CardFantasyRuntimeException(String.format("%s Cannot kill card %s by %s",
                         attacker.getShortDesc(), victim.getShortDesc(), cardFeature.getShortDesc()));

@@ -19,7 +19,7 @@ public final class Return {
         }
         GameUI ui = resolver.getStage().getUI();
         ui.useSkill(attacker, defender, cardFeature, true);
-        OnAttackBlockingResult result = resolver.resolveAttackBlockingFeature(attacker, defender, cardFeature, 1);
+        OnAttackBlockingResult result = resolver.resolveAttackBlockingSkills(attacker, defender, cardFeature, 1);
         if (!result.isAttackable()) {
             return;
         }
@@ -33,6 +33,6 @@ public final class Return {
             // 被召唤的卡牌不回到卡组，而是直接消失
             defender.getOwner().getDeck().addCard(defender);
         }
-        resolver.resolveLeaveFeature(defender, cardFeature);
+        resolver.resolveLeaveSkills(defender, cardFeature);
     }
 }

@@ -22,7 +22,7 @@ public final class Transport {
             return;
         }
         resolver.getStage().getUI().useSkill(attacker, cardToTransport, cardFeature, true);
-        OnAttackBlockingResult result = resolver.resolveAttackBlockingFeature(attacker, cardToTransport, cardFeature, 1);
+        OnAttackBlockingResult result = resolver.resolveAttackBlockingSkills(attacker, cardToTransport, cardFeature, 1);
         if (!result.isAttackable()) {
             return;
         }

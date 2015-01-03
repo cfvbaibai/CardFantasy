@@ -30,7 +30,7 @@ public final class LighteningMagic {
         ui.useSkill(attacker, victims, skill, true);
         for (CardInfo victim : victims) {
             int damage = skill.getImpact();
-            OnAttackBlockingResult result = resolver.resolveAttackBlockingFeature(attacker, victim, skill, damage);
+            OnAttackBlockingResult result = resolver.resolveAttackBlockingSkills(attacker, victim, skill, damage);
             if (!result.isAttackable()) {
                 continue;
             }
@@ -38,13 +38,13 @@ public final class LighteningMagic {
             ui.attackCard(attacker, victim, skill, damage);
             boolean cardDead = resolver.applyDamage(victim, damage).cardDead;
             if (attacker instanceof CardInfo) {
-                resolver.resolveCounterAttackFeature((CardInfo)attacker, victim, skill, result, null);
+                resolver.resolveCounterAttackSkills((CardInfo)attacker, victim, skill, result, null);
             }
             if (cardDead) {
-                resolver.resolveDeathFeature(attacker, victim, skill);
+                resolver.resolveDeathSkills(attacker, victim, skill);
             } else if (resolver.getStage().getRandomizer().roll100(paralyzeRate)) {
                 CardStatusItem status = CardStatusItem.paralyzed(skillUseInfo);
-                if (!resolver.resolveBlockStatusFeature(attacker, victim, skillUseInfo, status).isBlocked()) {
+                if (!resolver.resolveBlockStatusSkills(attacker, victim, skillUseInfo, status).isBlocked()) {
                     ui.addCardStatus(attacker, victim, skill, status);
                     victim.addStatus(status);
                 }

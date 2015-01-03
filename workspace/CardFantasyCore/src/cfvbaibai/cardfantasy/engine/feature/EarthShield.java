@@ -21,7 +21,7 @@ public class EarthShield {
         Skill skill = skillUseInfo.getSkill();
         GameUI ui = resolver.getStage().getUI();
         ui.useSkill(victim, attacker, skill, true);
-        if (!resolver.resolveAttackBlockingFeature(victim, attacker, skill, 1).isAttackable()) {
+        if (!resolver.resolveAttackBlockingSkills(victim, attacker, skill, 1).isAttackable()) {
             return;
         }
 

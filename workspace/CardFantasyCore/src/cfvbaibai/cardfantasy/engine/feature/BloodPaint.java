@@ -18,7 +18,7 @@ public final class BloodPaint {
         GameUI ui = resolver.getStage().getUI();
         ui.useSkill(attacker, victims, cardFeature, true);
         for (CardInfo victim : victims) {
-            OnAttackBlockingResult result = resolver.resolveAttackBlockingFeature(attacker, victim, cardFeature, damage);
+            OnAttackBlockingResult result = resolver.resolveAttackBlockingSkills(attacker, victim, cardFeature, damage);
             if (!result.isAttackable()) {
                 continue;
             }
@@ -28,7 +28,7 @@ public final class BloodPaint {
             ui.healCard(attacker, attacker, cardFeature, damage);
             resolver.applyDamage(attacker, -damage);
             if (cardDead) {
-                resolver.resolveDeathFeature(attacker, victim, cardFeature);
+                resolver.resolveDeathSkills(attacker, victim, cardFeature);
             }
         }
     }

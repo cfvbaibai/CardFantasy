@@ -24,7 +24,8 @@ import cfvbaibai.cardfantasy.test.TestGameBuilder;
     HealingTest.class,
     RuneActivationTest.class,
     SummonTest.class,
-    SpecificCardTest.class
+    SpecificCardTest.class,
+    SpecificRuneTest.class
 })
 public class SkillValidationTestSuite {
     public static SkillTestContext prepare(int playerALevel, int playerBLevel, String ... cards) {

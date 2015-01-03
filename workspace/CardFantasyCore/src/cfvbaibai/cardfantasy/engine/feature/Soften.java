@@ -35,7 +35,7 @@ public class Soften {
                 }
             }
 
-            if (!resolver.resolveAttackBlockingFeature(attacker, victim, skill, 1).isAttackable()) {
+            if (!resolver.resolveAttackBlockingSkills(attacker, victim, skill, 1).isAttackable()) {
                 continue;
             }
     

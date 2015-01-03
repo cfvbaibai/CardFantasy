@@ -25,7 +25,7 @@ public final class Guard {
         }
         resolver.getStage().getUI().attackCard(attacker, guardian, guardFeature, damage);
         if (resolver.applyDamage(guardian, damage).cardDead) {
-            resolver.resolveDeathFeature(attacker, guardian, guardFeature);
+            resolver.resolveDeathSkills(attacker, guardian, guardFeature);
         }
         return remainingDamage;
     }

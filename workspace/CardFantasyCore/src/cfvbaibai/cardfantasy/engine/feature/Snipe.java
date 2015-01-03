@@ -18,7 +18,7 @@ public final class Snipe {
         for (CardInfo victim : victims) {
             resolver.getStage().getUI().attackCard(attacker, victim, cardFeature, damage);
             if (resolver.applyDamage(victim, damage).cardDead) {
-                resolver.resolveDeathFeature(attacker, victim, cardFeature);
+                resolver.resolveDeathSkills(attacker, victim, cardFeature);
             }
         }
     }

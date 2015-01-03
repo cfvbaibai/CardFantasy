@@ -24,7 +24,7 @@ public final class FireMagic {
         ui.useSkill(attacker, victims, cardFeature, true);
         for (CardInfo victim : victims) {
             int damage = random.next(cardFeature.getImpact(), cardFeature.getImpact() * 2 + 1);
-            OnAttackBlockingResult result = resolver.resolveAttackBlockingFeature(attacker, victim, cardFeature, damage);
+            OnAttackBlockingResult result = resolver.resolveAttackBlockingSkills(attacker, victim, cardFeature, damage);
             if (!result.isAttackable()) {
                 continue;
             }
@@ -32,10 +32,10 @@ public final class FireMagic {
             ui.attackCard(attacker, victim, cardFeature, damage);
             boolean cardDead = resolver.applyDamage(victim, damage).cardDead;
             if (attacker instanceof CardInfo) {
-                resolver.resolveCounterAttackFeature((CardInfo)attacker, victim, cardFeature, result, null);
+                resolver.resolveCounterAttackSkills((CardInfo)attacker, victim, cardFeature, result, null);
             }
             if (cardDead) {
-                resolver.resolveDeathFeature(attacker, victim, cardFeature);
+                resolver.resolveDeathSkills(attacker, victim, cardFeature);
             }
         }
     }

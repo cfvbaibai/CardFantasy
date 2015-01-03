@@ -36,7 +36,7 @@ public final class Sacrifice {
             return;
         }
         CardInfo oblation = candidates.get(0);
-        OnAttackBlockingResult result = resolver.resolveAttackBlockingFeature(card, oblation, skill, 1);
+        OnAttackBlockingResult result = resolver.resolveAttackBlockingSkills(card, oblation, skill, 1);
         if (!result.isAttackable()) {
             return;
         }

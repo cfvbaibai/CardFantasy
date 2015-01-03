@@ -24,7 +24,7 @@ public final class CounterMagic {
                 if (!cardAttacker.isDead()) {
                     ui.attackCard(defender, cardAttacker, cardFeature, damage);
                     if (resolver.applyDamage(cardAttacker, damage).cardDead) {
-                        resolver.resolveDeathFeature(defender, cardAttacker, cardFeature);
+                        resolver.resolveDeathSkills(defender, cardAttacker, cardFeature);
                     }
                 }
             }

@@ -26,7 +26,7 @@ public final class Trap {
         GameUI ui = resolver.getStage().getUI();
         ui.useSkill(attacker, victims, skill, true);
         for (CardInfo victim : victims) {
-            if (!resolver.resolveAttackBlockingFeature(attacker, victim, skill, 1).isAttackable()) {
+            if (!resolver.resolveAttackBlockingSkills(attacker, victim, skill, 1).isAttackable()) {
                 continue;
             }
             if (resolver.getStage().getRandomizer().roll100(65)) {

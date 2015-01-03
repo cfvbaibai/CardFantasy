@@ -23,7 +23,7 @@ public final class PoisonMagic {
         ui.useSkill(attacker, victims, skill, true);
         for (CardInfo victim : victims) {
             int damage = skill.getImpact();
-            OnAttackBlockingResult result = resolver.resolveAttackBlockingFeature(attacker, victim, skill, damage);
+            OnAttackBlockingResult result = resolver.resolveAttackBlockingSkills(attacker, victim, skill, damage);
             if (!result.isAttackable()) {
                 continue;
             }
@@ -31,10 +31,10 @@ public final class PoisonMagic {
             ui.attackCard(attacker, victim, skill, damage);
             boolean cardDead = resolver.applyDamage(victim, damage).cardDead;
             if (attacker instanceof CardInfo) {
-                resolver.resolveCounterAttackFeature((CardInfo)attacker, victim, skill, result, null);
+                resolver.resolveCounterAttackSkills((CardInfo)attacker, victim, skill, result, null);
             }
             if (cardDead) {
-                resolver.resolveDeathFeature(attacker, victim, skill);
+                resolver.resolveDeathSkills(attacker, victim, skill);
             } else {
                 CardStatusItem status = CardStatusItem.poisoned(damage, skillUseInfo);
                 ui.addCardStatus(attacker, victim, skill, status);

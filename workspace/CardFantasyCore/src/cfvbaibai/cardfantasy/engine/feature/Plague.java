@@ -24,7 +24,7 @@ public final class Plague {
         ui.useSkill(attacker, victims, skill, true);
 
         for (CardInfo victim : victims) {
-            OnAttackBlockingResult result = resolver.resolveAttackBlockingFeature(attacker, victim, skill, damage);
+            OnAttackBlockingResult result = resolver.resolveAttackBlockingSkills(attacker, victim, skill, damage);
             if (!result.isAttackable()) {
                 continue;
             }

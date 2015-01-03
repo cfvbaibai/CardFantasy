@@ -38,7 +38,7 @@ public final class Rainfall {
         }
         resolver.getStage().getUI().useSkill(healer, healees, skill, true);
         for (Heal heal : heals) {
-            OnAttackBlockingResult result = resolver.resolveHealBlockingFeature(healer, heal.healee, skill);
+            OnAttackBlockingResult result = resolver.resolveHealBlockingSkills(healer, heal.healee, skill);
             if (!result.isAttackable()) {
                 continue;
             }

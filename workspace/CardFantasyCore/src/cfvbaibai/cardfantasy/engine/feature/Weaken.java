@@ -39,7 +39,7 @@ public final class Weaken {
                 continue;
             }
             Skill skill = skillUseInfo.getSkill();
-            if (!resolver.resolveAttackBlockingFeature(attacker, defender, skill, 1).isAttackable()) {
+            if (!resolver.resolveAttackBlockingSkills(attacker, defender, skill, 1).isAttackable()) {
                 continue;
             }
             int attackWeakened = attackToWeaken;
