@@ -24,6 +24,7 @@ public final class Purify {
             resolver.removeStatus(card, CardStatusType.弱化);
             resolver.removeStatus(card, CardStatusType.晕眩);
             resolver.removeStatus(card, CardStatusType.裂伤);
+            resolver.removeStatus(card, CardStatusType.死印);
         }
     }
 }

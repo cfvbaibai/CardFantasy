@@ -15,7 +15,7 @@ import cfvbaibai.cardfantasy.engine.SkillResolver;
 import cfvbaibai.cardfantasy.engine.SkillUseInfo;
 
 public class DeathMark {
-    public static void apply(SkillResolver resolver, SkillUseInfo skillUseInfo, CardInfo caster, CardInfo victim) {
+    public static void apply(SkillResolver resolver, SkillUseInfo skillUseInfo, CardInfo caster, CardInfo victim) throws HeroDieSignal {
         if (victim == null) {
             return;
         }
@@ -23,6 +23,9 @@ public class DeathMark {
         Skill skill = skillUseInfo.getSkill();
         ui.useSkill(caster, victim, skill, true);
         CardStatusItem statusItem = CardStatusItem.deathMark(skillUseInfo);
+        if (!resolver.resolveAttackBlockingSkills(caster, victim, skill, 1).isAttackable()) {
+            return;
+        }
         ui.addCardStatus(caster, victim, skill, statusItem);
         victim.addStatus(statusItem);
     }

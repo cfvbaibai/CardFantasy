@@ -11,7 +11,7 @@ public class NoEffect {
     public static boolean isSkillBlocked(SkillResolver resolver, Skill cardSkill, Skill attackSkill, EntityInfo attacker, CardInfo defender) {
         if (attackSkill.getType() == SkillType.虚弱 ||
             attackSkill.getType() == SkillType.战争怒吼 ||
-            // attackSkill.getType() == SkillType.死亡印记 ||
+            attackSkill.getType() == SkillType.死亡印记 ||
             // attackSkill.getType() == SkillType.沉默 ||
             attackSkill.getType() == SkillType.大地之盾 ||
             attackSkill.getType() == SkillType.裂伤 ||

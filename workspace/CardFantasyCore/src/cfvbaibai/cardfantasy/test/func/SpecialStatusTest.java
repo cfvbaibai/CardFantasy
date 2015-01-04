@@ -665,4 +665,32 @@ public class SpecialStatusTest extends SkillValidationTest {
         Assert.assertEquals(200 /* 雷盾 */ + 50 /* 死亡印记 */, 1400 - c秘银巨石像.getHP());
         Assert.assertEquals(50 /* 死亡印记 */, 5000 - c占位符2.getHP());
     }
+
+    @Test
+    public void test死亡印记_免疫爆炸() {
+        SkillTestContext context = SkillValidationTestSuite.prepare(
+            50, 50, "秘银巨石像+死亡印记1", "残血王国小兵", "占位符+免疫");
+        context.addToField(0, 0);
+        context.addToField(1, 1);
+        CardInfo c占位符 = context.addToField(2, 1);
+        context.startGame();
+
+        context.proceedOneRound();
+        Assert.assertEquals(1, context.getPlayer(1).getField().size());
+        Assert.assertEquals(0 /* 死亡印记的爆炸被免疫 */, 5000 - c占位符.getHP());
+    }
+
+    @Test
+    public void test死亡印记_免疫被印() {
+        SkillTestContext context = SkillValidationTestSuite.prepare(
+            50, 50, "秘银巨石像+死亡印记1", "残血王国小兵+免疫", "占位符");
+        context.addToField(0, 0);
+        context.addToField(1, 1);
+        CardInfo c占位符 = context.addToField(2, 1);
+        context.startGame();
+
+        context.proceedOneRound();
+        Assert.assertEquals(1, context.getPlayer(1).getField().size());
+        Assert.assertEquals(0 /* 死亡印记被免疫无法造成爆炸 */, 5000 - c占位符.getHP());
+    }
 }
