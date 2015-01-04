@@ -53,7 +53,7 @@ public class CardStatusItem {
     public static CardStatusItem burning(int effect, SkillUseInfo cause) {
         return new CardStatusItem(CardStatusType.燃烧, effect, cause);
     }
-    
+
     public static CardStatusItem wound(SkillUseInfo cause) {
         return new CardStatusItem(CardStatusType.裂伤, 0, cause);
     }
@@ -61,27 +61,31 @@ public class CardStatusItem {
     public static CardStatusItem weak(SkillUseInfo cause) {
         return new CardStatusItem(CardStatusType.复活, 0, cause);
     }
-    
+
     public static CardStatusItem confused(SkillUseInfo cause) {
         return new CardStatusItem(CardStatusType.迷惑, 0, cause);
     }
-    
+
     public static CardStatusItem softened(SkillUseInfo cause) {
         return new CardStatusItem(CardStatusType.弱化, 0, cause);
     }
-    
+
     public static CardStatusItem summoned(SkillUseInfo cause) {
         return new CardStatusItem(CardStatusType.召唤, 0, cause);
     }
-    
+
     public static CardStatusItem faint(SkillUseInfo cause) {
         return new CardStatusItem(CardStatusType.晕眩, 0, cause);
     }
-    
+
     public static CardStatusItem unbending(SkillUseInfo cause) {
         return new CardStatusItem(CardStatusType.不屈, 0, cause);
     }
-    
+
+    public static CardStatusItem deathMark(SkillUseInfo cause) {
+        return new CardStatusItem(CardStatusType.死印, 0, cause);
+    }
+
     public String getShortDesc() {
         StringBuffer sb = new StringBuffer();
         sb.append(getType().name());

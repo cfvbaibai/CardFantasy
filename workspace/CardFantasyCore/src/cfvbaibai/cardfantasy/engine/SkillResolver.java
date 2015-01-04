@@ -31,6 +31,7 @@ import cfvbaibai.cardfantasy.engine.skill.CounterMagic;
 import cfvbaibai.cardfantasy.engine.skill.CounterSummon;
 import cfvbaibai.cardfantasy.engine.skill.CriticalAttack;
 import cfvbaibai.cardfantasy.engine.skill.Curse;
+import cfvbaibai.cardfantasy.engine.skill.DeathMark;
 import cfvbaibai.cardfantasy.engine.skill.Destroy;
 import cfvbaibai.cardfantasy.engine.skill.Disease;
 import cfvbaibai.cardfantasy.engine.skill.Dodge;
@@ -600,7 +601,7 @@ public class SkillResolver {
                 Destroy.apply(this, deadCardSkillUseInfo.getSkill(), deadCard, killerCard.getOwner(), 1);
             } else if (deadCardSkillUseInfo.getType() == SkillType.传送) {
                 Transport.apply(this, deadCardSkillUseInfo.getSkill(), deadCard, killerCard.getOwner());
-            } 
+            }
         }
         for (SkillUseInfo deadCardSkillUseInfo : deadCard.getAllUsableSkills()) {
             if (deadCardSkillUseInfo.getType() == SkillType.自爆) {
@@ -612,6 +613,9 @@ public class SkillResolver {
             if (rune != null && !deadCard.isWeak()) {
                 Explode.apply(this, rune.getSkill(), killerCard, deadCard);
             }
+        }
+        if (deadCard.getStatus().containsStatus(CardStatusType.死印)) {
+            DeathMark.explode(this, deadCard);
         }
         boolean reincarnated = false;
         for (SkillUseInfo deadCardSkillUseInfo : deadCard.getAllUsableSkills()) {
@@ -712,6 +716,8 @@ public class SkillResolver {
                     Pursuit.apply(this, skillUseInfo, attacker, defender);
                 } else if (skillUseInfo.getType() == SkillType.战意) {
                     Wrath.apply(this, skillUseInfo, attacker, defender);
+                } else if (skillUseInfo.getType() == SkillType.死亡印记) {
+                    DeathMark.apply(this, skillUseInfo, attacker, defender);
                 }
             }
         }

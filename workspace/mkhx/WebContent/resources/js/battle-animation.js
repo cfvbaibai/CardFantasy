@@ -1457,6 +1457,9 @@ var Animater = function() {
         } else if (skill == '血炼' || skill == '鲜血盛宴') {
             this.flyImage({ fileName: 'blood.png', width: 48, height: 48, text: skill },
                     attacker, defenders, settings.skillDuration);
+        } else if (skill == '死亡印记') {
+            this.flyImage({ fileName: 'death.png', width: 48, height: 48, text: skill },
+                    attacker, defenders, settings.skillDuration);
         } else if (skill == '治疗' || skill == '甘霖' || skill == '回春' || skill == '治疗之雾') {
             this.flyImage({ fileName: 'heal.png', width: 24, height: 24, text: skill },
                     attacker, defenders, settings.skillDuration);

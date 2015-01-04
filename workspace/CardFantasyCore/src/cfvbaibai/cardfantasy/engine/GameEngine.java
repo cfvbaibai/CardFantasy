@@ -209,6 +209,7 @@ public class GameEngine {
             }
 
             CardInfo card = myField.getCard(i);
+            resolver.removeStatus(card, CardStatusType.死印);
             ui.cardActionBegins(card);
             CardStatus status = myField.getCard(i).getStatus();
             boolean underControl = false;

@@ -18,10 +18,14 @@ public class Unbending {
             return false;
         }
         GameUI ui = resolver.getStage().getUI();
-        ui.useSkill(card, skillUseInfo.getSkill(), true);
-        card.setBasicHP(1);
+        Skill skill = skillUseInfo.getSkill();
+        ui.useSkill(card, skill, true);
+        if (card.getHP() == 0) {
+            ui.adjustHP(card, card, 1, skill);
+            card.setBasicHP(1);
+        }
         CardStatusItem statusItem = CardStatusItem.unbending(skillUseInfo);
-        ui.addCardStatus(card, card, skillUseInfo.getSkill(), statusItem);
+        ui.addCardStatus(card, card, skill, statusItem);
         card.addStatus(statusItem);
         card.setUsed(skillUseInfo);
         return true;
