@@ -21,6 +21,7 @@ import cfvbaibai.cardfantasy.engine.skill.Block;
 import cfvbaibai.cardfantasy.engine.skill.BloodDrain;
 import cfvbaibai.cardfantasy.engine.skill.BloodPaint;
 import cfvbaibai.cardfantasy.engine.skill.BloodThirsty;
+import cfvbaibai.cardfantasy.engine.skill.BraveFight;
 import cfvbaibai.cardfantasy.engine.skill.Burning;
 import cfvbaibai.cardfantasy.engine.skill.BurningFlame;
 import cfvbaibai.cardfantasy.engine.skill.ChainAttack;
@@ -250,6 +251,8 @@ public class SkillResolver {
                 WinningPursuit.apply(this, skillUseInfo, attacker, defender);
             } else if (skillUseInfo.getType() == SkillType.复仇) {
                 Revenge.apply(this, skillUseInfo, attacker);
+            } else if (skillUseInfo.getType() == SkillType.奋战) {
+                BraveFight.apply(this, skillUseInfo, attacker);
             } else if (skillUseInfo.getType() == SkillType.振奋) {
                 Arouse.apply(this, skillUseInfo, attacker);
             } else if (skillUseInfo.getType() == SkillType.全体阻碍){
@@ -763,6 +766,8 @@ public class SkillResolver {
                 WinningPursuit.remove(this, effect.getCause(), card);
             } else if (type == SkillType.复仇) {
                 Revenge.remove(this, effect.getCause(), card);
+            } else if (type == SkillType.奋战) {
+                BraveFight.remove(this, effect.getCause(), card);
             } else if (type == SkillType.振奋) {
                 Arouse.remove(this, effect.getCause(), card);
             } else if (type == SkillType.英雄杀手) {

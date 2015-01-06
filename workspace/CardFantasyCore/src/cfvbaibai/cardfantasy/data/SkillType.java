@@ -43,6 +43,7 @@ public enum SkillType {
     背刺("30879", 40, SkillTag.独立攻击加成),
     复仇("40086", 40, 10, SkillTag.独立攻击加成),
     振奋("80192", 40, 10, SkillTag.独立攻击加成),
+    奋战("", 40, 10, SkillTag.独立攻击加成),
 
     虚弱("57000", 0, SkillTag.额外攻击加成, SkillTag.抗免疫, SkillTag.抗不屈),
     战争怒吼("57022", 0, SkillTag.额外攻击加成, SkillTag.抗免疫, SkillTag.抗不屈),

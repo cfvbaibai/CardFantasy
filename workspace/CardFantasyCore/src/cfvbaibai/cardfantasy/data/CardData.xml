@@ -821,6 +821,11 @@
         <Skill type="守护" level="0" unlock="5" />
         <Skill type="转生" level="8" unlock="10" />
     </Card>
+    <Card id="2518" name="黄金金属巨龙" wikiId="" race="森林" speed="4" star="5" cost="17" incrCost="2" at="355" hp="1420" incrAT="30" incrHP="38">
+        <Skill type="弱点攻击" level="0" unlock="0" /> 
+        <Skill type="奋战" level="6" unlock="5" />
+        <Skill type="免疫" level="0" unlock="10" />
+    </Card>
 
     <!-- 蛮荒  -->
     <Card id="3101" name="穴居人奴隶" wikiId="31006" race="蛮荒" speed="2" star="1" cost="4" incrCost="2" at="90" hp="390" incrAT="18" incrHP="11">
