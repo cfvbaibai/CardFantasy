@@ -12,12 +12,15 @@ import org.dom4j.Node;
 import org.dom4j.io.SAXReader;
 
 import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
+import cfvbaibai.cardfantasy.Randomizer;
 
 public class CardDataStore {
-    private Map <String, CardData> cardMap;
+    private Map<String, CardData> cardMap;
+    private List<String> allKeys;
 
     private CardDataStore() {
-        cardMap = new HashMap <String, CardData>();
+        this.cardMap = new HashMap<String, CardData>();
+        this.allKeys = new ArrayList<String>();
     }
 
     public static CardDataStore loadDefault() {
@@ -66,6 +69,7 @@ public class CardDataStore {
 
     private void addCard(CardData cardData) {
         this.cardMap.put(cardData.getName(), cardData);
+        this.allKeys.add(cardData.getName());
     }
     
     public CardData getCardInfo(String name) {
@@ -102,5 +106,10 @@ public class CardDataStore {
             }
         }
         return result;
+    }
+
+    public CardData getRandomCard() {
+        String key = this.allKeys.get(Randomizer.getRandomizer().next(0, this.allKeys.size()));
+        return this.cardMap.get(key);
     }
 }

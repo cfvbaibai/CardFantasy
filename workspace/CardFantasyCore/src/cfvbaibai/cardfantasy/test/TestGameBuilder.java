@@ -1,5 +1,6 @@
 package cfvbaibai.cardfantasy.test;
 
+import cfvbaibai.cardfantasy.GameUI;
 import cfvbaibai.cardfantasy.data.PlayerInfo;
 import cfvbaibai.cardfantasy.data.RuneData;
 import cfvbaibai.cardfantasy.engine.GameEngine;
@@ -9,7 +10,10 @@ import cfvbaibai.cardfantasy.game.PlayerBuilder;
 
 public final class TestGameBuilder {
     public static GameEngine build(PlayerInfo player0, PlayerInfo player1) {
-        GameEngine engine = new GameEngine(new TestGameUI(), Rule.getDefault());
+        return build(player0, player1, new TestGameUI());
+    }
+    public static GameEngine build(PlayerInfo player0, PlayerInfo player1, GameUI ui) {
+        GameEngine engine = new GameEngine(ui, Rule.getDefault());
         engine.registerPlayers(player0, player1);
         return engine;
     }
@@ -30,7 +34,11 @@ public final class TestGameBuilder {
     public static GameResult play(PlayerInfo player0, PlayerInfo player1) {
         return build(player0, player1).playGame();
     }
-    
+
+    public static GameResult play(PlayerInfo player0, PlayerInfo player1, GameUI ui) {
+        return build(player0, player1, ui).playGame();
+    }
+
     public static GameResult play5v5(String card1, String card2) {
         String suffixA = "";
         String suffixB = "";

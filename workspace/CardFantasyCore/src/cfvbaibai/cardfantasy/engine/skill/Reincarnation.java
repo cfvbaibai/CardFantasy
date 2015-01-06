@@ -1,18 +1,17 @@
 package cfvbaibai.cardfantasy.engine.skill;
 
-import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
 import cfvbaibai.cardfantasy.GameUI;
 import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.CardStatusType;
-import cfvbaibai.cardfantasy.engine.SkillResolver;
 import cfvbaibai.cardfantasy.engine.Grave;
 import cfvbaibai.cardfantasy.engine.Hand;
+import cfvbaibai.cardfantasy.engine.SkillResolver;
 
 public final class Reincarnation {
     public static boolean apply(SkillResolver resolver, Skill cardSkill, CardInfo card) {
         if (!card.isDead()) {
-            throw new CardFantasyRuntimeException("Cannot resurrect undead card: " + card.getShortDesc());
+            return false; // The card is unbending!
         }
         if (card.getStatus().containsStatus(CardStatusType.召唤)) {
             // Summoned card cannot be reincarnated.

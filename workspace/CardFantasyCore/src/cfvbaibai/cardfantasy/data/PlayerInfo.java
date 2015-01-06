@@ -92,13 +92,7 @@ public class PlayerInfo {
     }
 
     public int getMaxCost() {
-        if (this.level < 0) {
-            return 0;
-        }
-        if (this.level < costs.length) {
-            return costs[this.level];
-        }
-        return costs[costs.length - 1] + this.level - (costs.length - 1);
+        return getMaxCost(this.level);
     }
 
     public int getCardSlot() {
@@ -139,5 +133,15 @@ public class PlayerInfo {
     
     public boolean isNormalPlayer() {
         return this.isNormalPlayer;
+    }
+    
+    public static int getMaxCost(int level) {
+        if (level < 0) {
+            return 0;
+        }
+        if (level < costs.length) {
+            return costs[level];
+        }
+        return costs[costs.length - 1] + level - (costs.length - 1);
     }
 }

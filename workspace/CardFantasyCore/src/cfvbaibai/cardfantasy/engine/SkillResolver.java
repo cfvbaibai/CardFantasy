@@ -806,6 +806,7 @@ public class SkillResolver {
         }
         this.stage.getUI().cardDead(deadCard);
         Player owner = deadCard.getOwner();
+        deadCard.getPosition(); // Save cached position
         Field field = owner.getField();
         // Set field position to null
         for (int i = 0; i < field.size(); ++i) {
@@ -841,8 +842,14 @@ public class SkillResolver {
                     defenderPlayer.setHP(defenderPlayer.getHP() - remainingDamage);
                 }
             } else {
+                if (defenderPlayer.getHP() - damage > defenderPlayer.getMaxHP()) {
+                    damage = defenderPlayer.getHP() - defenderPlayer.getMaxHP();
+                }
                 stage.getUI().healHero(attacker, defenderPlayer, cardSkill, -damage);
                 defenderPlayer.setHP(defenderPlayer.getHP() - damage);
+            }
+            if (defenderPlayer.getHP() > defenderPlayer.getMaxHP()) {
+                throw new CardFantasyRuntimeException("Hero MaxHP < HP");
             }
         } finally {
             if (attacker instanceof CardInfo) {

@@ -1,6 +1,7 @@
 package cfvbaibai.cardfantasy.data;
 
 import cfvbaibai.cardfantasy.NonSerializable;
+import cfvbaibai.cardfantasy.Randomizer;
 
 public enum RuneData {
     荒芜("31395", RuneClass.GROUND, 3, SkillType.毒液, 3, 1, 1, Growth.RUNE, RuneActivator.myHeroHP(60)),
@@ -124,5 +125,11 @@ public enum RuneData {
     
     public RuneActivator getActivator() {
         return this.activator;
+    }
+    
+    public static RuneData getRandomRune() {
+        RuneData[] values = RuneData.values();
+        int index = Randomizer.getRandomizer().next(0, values.length);
+        return values[index];
     }
 }
