@@ -1,5 +1,6 @@
 package cfvbaibai.cardfantasy.engine;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -69,6 +70,10 @@ public class CardStatus {
         sb.deleteCharAt(sb.length() - 1);
         sb.append("】");
         return sb.toString();
+    }
+    
+    public List<CardStatusItem> getAllItems() {
+        return new ArrayList<CardStatusItem>(this.items);
     }
 
     public boolean containsStatusCausedBy(SkillUseInfo skillUseInfo, CardStatusType type) {

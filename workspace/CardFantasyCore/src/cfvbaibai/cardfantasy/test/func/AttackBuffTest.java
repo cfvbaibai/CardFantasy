@@ -230,4 +230,32 @@ public class AttackBuffTest extends SkillValidationTest {
         Assert.assertEquals(590, 2040 - c降临天使1.getHP());
         Assert.assertEquals(590, 2040 - c降临天使2.getHP());
     }
+    
+    /**
+     * 寒霜冲击的冻结不触发穷追猛打
+     */
+    @Test
+    public void test穷追猛打_寒霜冲击() {
+        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "怒雪咆哮+穷追猛打1", "占位符");
+        context.addToField(0, 0);
+        CardInfo c占位符 = context.addToField(1, 1);
+        context.startGame();
+
+        random.addNextPicks(0).addNextNumbers(0); // 怒雪咆哮寒霜冲击冻结成功
+        random.addNextPicks(0); // 怒雪咆哮战争怒吼
+        context.proceedOneRound();
+        Assert.assertEquals(780 + 165 /* 寒霜冲击8 */, 5000 - c占位符.getHP());
+    }
+
+    @Test
+    public void test穷追猛打_冰弹冻结() {
+        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "堕落精灵法师+穷追猛打1", "占位符");
+        context.addToField(0, 0);
+        CardInfo c占位符 = context.addToField(1, 1);
+        context.startGame();
+
+        random.addNextPicks(0).addNextNumbers(0); // 堕落精灵法师霜冻新星冻结成功
+        context.proceedOneRound();
+        Assert.assertEquals(40 /* 霜冻新型2 */ + 445 * 115 / 100 /* 穷追猛打 */, 5000 - c占位符.getHP());
+    }
 }
