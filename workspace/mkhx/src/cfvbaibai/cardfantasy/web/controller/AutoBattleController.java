@@ -236,7 +236,7 @@ public class AutoBattleController {
             logger.info("Deck = " + deck);
             logger.info(String.format("Hero LV = %d, Boss = %s, Guard Type = %d", heroLv, bossName, guardType));
             this.userActionRecorder.addAction(new UserAction(new Date(), request.getRemoteAddr(), "Play Boss 1Match Game",
-                    String.format("Deck=%s<br />HeroLV=%d, Boss=%s", deck, heroLv, bossName)));
+                    String.format("Deck=%s<br />HeroLV=%d, Boss=%s, GuardType=%d", deck, heroLv, bossName, guardType)));
             PlayerInfo player1 = PlayerBuilder.build(false, "BOSS", bossName, 999999, null);
             if (guardType == 1) {
                 addBossGuards(player1);
@@ -269,7 +269,7 @@ public class AutoBattleController {
             logger.info("Deck = " + deck);
             logger.info("Hero LV = " + heroLv + ", Boss = " + bossName);
             this.userActionRecorder.addAction(new UserAction(new Date(), request.getRemoteAddr(), "Simulate Boss 1Match Game",
-                    String.format("Deck=%s<br />HeroLV=%d, Boss=%s", deck, heroLv, bossName)));
+                    String.format("Deck=%s<br />HeroLV=%d, Boss=%s, GuardType=%d", deck, heroLv, bossName, guardType)));
             PlayerInfo player1 = PlayerBuilder.build(false, "BOSS", bossName, 99999, null);
             if (guardType == 1) {
                 addBossGuards(player1);
@@ -300,7 +300,7 @@ public class AutoBattleController {
             logger.info("Deck = " + deck);
             logger.info("Count = " + count + ", Hero LV = " + heroLv + ", Boss = " + bossName);
             this.userActionRecorder.addAction(new UserAction(new Date(), request.getRemoteAddr(), "Play Boss Massive Game",
-                    String.format("Deck=%s<br />HeroLV=%d, Boss=%s, Count=%d", deck, heroLv, bossName, count)));
+                    String.format("Deck=%s<br />HeroLV=%d, Boss=%s, Count=%d, GuardType=%d", deck, heroLv, bossName, count, guardType)));
             PlayerInfo player1 = PlayerBuilder.build(false, "BOSS", bossName, 99999, null);
             if (guardType == 1) {
                 addBossGuards(player1);
