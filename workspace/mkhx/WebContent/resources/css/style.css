@@ -84,8 +84,12 @@ fieldset div.ui-controlgroup-controls {
 	width: 100%;
 }
 
-fieldset div.ui-controlgroup-controls .ui-select {
-	width: 50%;
+fieldset.select-4 div.ui-controlgroup-controls .ui-select {
+	width: 25%;
+}
+
+fieldset.select-2 div.ui-controlgroup-controls .ui-select {
+    width: 50%;
 }
 
 .ui-dialog-contain {

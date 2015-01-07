@@ -57,9 +57,9 @@ public final class DeckBuilder {
             }
             desc = desc.trim();
             if (desc.length() > 1 && desc.charAt(0) == 'C') {
-            	parseAndAddCard(deck, desc.substring(1));
+                parseAndAddCard(deck, desc.substring(1));
             } else if (desc.length() > 1 && desc.charAt(0) == 'R') {
-            	parseAndAddRune(deck, desc.substring(1));
+                parseAndAddRune(deck, desc.substring(1));
             } else {
                 if (!parseAndAddCard(deck, desc)) {
                     if (!parseAndAddRune(deck, desc)) {

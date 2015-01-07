@@ -17,14 +17,18 @@ public class CardSkill extends Skill implements Cloneable {
 
     @Override
     public String getShortDesc() {
+        return String.format("【%s】", this.getParsableDesc());
+    }
+    
+    public String getParsableDesc() {
         String prefix = "";
         if (this.isSummonSkill()) {
-            prefix += "降临-";
+            prefix += "降临";
         }
         if (this.isDeathSkill()) {
-            prefix += "死契-";
+            prefix += "死契";
         }
-        return String.format("【%s%s%s】", prefix, type.getDisplayName(), level == 0 ? "" : String.valueOf(level));
+        return String.format("%s%s%s", prefix, type.getDisplayName(), level == 0 ? "" : String.valueOf(level));
     }
     
     @Override

@@ -120,4 +120,16 @@ public class Card implements Cloneable, Comparable <Card> {
         }
         return this.getExtraSkill().compareTo(another.getExtraSkill());
     }
+    
+    public String getParsableDesc() {
+        StringBuffer sb = new StringBuffer();
+        sb.append(this.getName());
+        if (this.getExtraSkill() != null) {
+            sb.append("+");
+            sb.append(this.getExtraSkill().getParsableDesc());
+        }
+        sb.append("-");
+        sb.append(this.getLevel());
+        return sb.toString();
+    }
 }

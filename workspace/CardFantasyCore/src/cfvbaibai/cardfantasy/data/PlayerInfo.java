@@ -122,6 +122,10 @@ public class PlayerInfo {
     public Collection<Card> getCards() {
         return new ArrayList<Card>(this.cards);
     }
+    
+    public void addCard(Card card) {
+        this.cards.add(card);
+    }
 
     public Collection<Rune> getRunes() {
         return new ArrayList<Rune>(this.runes);

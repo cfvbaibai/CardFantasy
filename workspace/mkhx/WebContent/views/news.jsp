@@ -14,8 +14,8 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">
                 <h3>公告</h3>
                 <ul>
-                    <li>本人百度贴吧ID技术壕，刚从白白那边接过了模拟器的维护任务，域名保持不变，服务器换了阿里云，备案已完毕。</li>
-                    <li>更新了一批新卡，不过限于本人diao丝很多卡没有没法实测，新技能不知道结算方法，一些五星卡没有更新，先凑合吧。</li>
+                    <li>最新添加了魔神战随机杂兵功能，欢迎报告BUG，戳<a href="http://tieba.baidu.com/p/3514710278" target="_blank">这里</a>参与魔神战模拟讨论</li>
+                    <li>模拟器的下个功能为莉莉丝战的模拟，欢迎大家戳<a href="http://tieba.baidu.com/p/3514714595" target="_blank">这里</a>提供莉莉丝战的数据和信息</li>
                     <li><a href="#" data-type="bug">魔卡幻想模拟器贴吧</a>已成立，欢迎大家来提BUG、提需求、提供技能结算细节。</li>
                 </ul>
             </div>
@@ -34,6 +34,8 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2015-01-08: 为【魔神战】添加【随机杂兵】模式，感谢<x>徽飞湮咩</x>, <x>zx16792007</x>提供信息</li>
+                    <li>2015-01-06: 添加新卡【黄金金属巨龙】，感谢<x>雪拾玖</x>提供数据</li>
                     <li>2015-01-04: <ul>
                         <li>添加新卡【均衡女神】，感谢<x>1243712047</x>, <x>快到碗里来mys</x>提供信息</li>
                         <li>添加新技能【死亡印记】，感谢<x>susss222</x>提供信息</li>

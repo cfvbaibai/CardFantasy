@@ -24,11 +24,13 @@ import cfvbaibai.cardfantasy.GameUI;
 import cfvbaibai.cardfantasy.data.Card;
 import cfvbaibai.cardfantasy.data.CardData;
 import cfvbaibai.cardfantasy.data.CardDataStore;
-import cfvbaibai.cardfantasy.data.SkillTag;
-import cfvbaibai.cardfantasy.data.SkillType;
 import cfvbaibai.cardfantasy.data.Legion;
 import cfvbaibai.cardfantasy.data.PlayerInfo;
+import cfvbaibai.cardfantasy.data.Race;
 import cfvbaibai.cardfantasy.data.RuneData;
+import cfvbaibai.cardfantasy.data.Skill;
+import cfvbaibai.cardfantasy.data.SkillTag;
+import cfvbaibai.cardfantasy.data.SkillType;
 import cfvbaibai.cardfantasy.engine.GameEndCause;
 import cfvbaibai.cardfantasy.engine.GameEngine;
 import cfvbaibai.cardfantasy.engine.GameResult;
@@ -190,19 +192,55 @@ public class AutoBattleController {
         }
     }
     
+    private CardData getBossGuard() {
+        while (true) {
+            CardData guard = this.store.getRandomCard();
+            if (guard.getStar() < 3) {
+                continue;
+            }
+            if (guard.getRace() != Race.KINGDOM &&
+                guard.getRace() != Race.FOREST &&
+                guard.getRace() != Race.SAVAGE &&
+                guard.getRace() != Race.HELL) {
+                continue;
+            }
+            for (Skill skill : guard.getSkills()) {
+                if (skill.getType() == SkillType.回魂 || skill.getType() == SkillType.复活) {
+                    continue;
+                }
+            }
+            return guard;
+        }
+    }
+    
+    private void addBossGuards(PlayerInfo player) {
+        for (int i = 0; i < 9; ++i) {
+            CardData bossGuard = getBossGuard();
+            player.addCard(new Card(bossGuard, 10, "BOSS" + i));
+        }
+        StringBuffer sb = new StringBuffer();
+        for (Card card : player.getCards()) {
+            sb.append(card.getParsableDesc() + ", ");
+        }
+        logger.info("Boss deck: " + sb.toString());
+    }
+    
     @RequestMapping(value = "/PlayBoss1MatchGame")
     public void playBoss1MatchGame(HttpServletRequest request, HttpServletResponse response,
-            @RequestParam("deck") String deck, @RequestParam("count") int count,
+            @RequestParam("deck") String deck, @RequestParam("count") int count, @RequestParam("gt") int guardType,
             @RequestParam("hlv") int heroLv, @RequestParam("bn") String bossName, @RequestParam("bk") int buffKingdom,
             @RequestParam("bf") int buffForest, @RequestParam("bs") int buffSavage, @RequestParam("bh") int buffHell) throws IOException {
         PrintWriter writer = response.getWriter();
         try {
             logger.info("PlayBoss1MatchGame from " + request.getRemoteAddr() + ":");
             logger.info("Deck = " + deck);
-            logger.info("Hero LV = " + heroLv + ", Boss = " + bossName);
+            logger.info(String.format("Hero LV = %d, Boss = %s, Guard Type = %d", heroLv, bossName, guardType));
             this.userActionRecorder.addAction(new UserAction(new Date(), request.getRemoteAddr(), "Play Boss 1Match Game",
                     String.format("Deck=%s<br />HeroLV=%d, Boss=%s", deck, heroLv, bossName)));
-            PlayerInfo player1 = PlayerBuilder.build(false, "BOSS", bossName, 99999, null);
+            PlayerInfo player1 = PlayerBuilder.build(false, "BOSS", bossName, 999999, null);
+            if (guardType == 1) {
+                addBossGuards(player1);
+            }
             PlayerInfo player2 = PlayerBuilder.build(true, "玩家", deck, heroLv, new Legion(buffKingdom, buffForest,
                     buffSavage, buffHell));
             WebPlainTextGameUI ui = new WebPlainTextGameUI();
@@ -221,7 +259,7 @@ public class AutoBattleController {
     
     @RequestMapping(value = "/SimulateBoss1MatchGame", headers = "Accept=application/json")
     public void simulateBoss1MatchGame(HttpServletRequest request, HttpServletResponse response,
-            @RequestParam("deck") String deck, @RequestParam("count") int count,
+            @RequestParam("deck") String deck, @RequestParam("count") int count, @RequestParam("gt") int guardType,
             @RequestParam("hlv") int heroLv, @RequestParam("bn") String bossName, @RequestParam("bk") int buffKingdom,
             @RequestParam("bf") int buffForest, @RequestParam("bs") int buffSavage, @RequestParam("bh") int buffHell) throws IOException {
         PrintWriter writer = response.getWriter();
@@ -233,6 +271,9 @@ public class AutoBattleController {
             this.userActionRecorder.addAction(new UserAction(new Date(), request.getRemoteAddr(), "Simulate Boss 1Match Game",
                     String.format("Deck=%s<br />HeroLV=%d, Boss=%s", deck, heroLv, bossName)));
             PlayerInfo player1 = PlayerBuilder.build(false, "BOSS", bossName, 99999, null);
+            if (guardType == 1) {
+                addBossGuards(player1);
+            }
             PlayerInfo player2 = PlayerBuilder.build(true, "玩家", deck, heroLv, new Legion(buffKingdom, buffForest,
                     buffSavage, buffHell));
             StructuredRecordGameUI ui = new StructuredRecordGameUI();
@@ -249,10 +290,10 @@ public class AutoBattleController {
 
     @RequestMapping(value = "/PlayBossMassiveGame")
     public void playBossMassiveGame(HttpServletRequest request, HttpServletResponse response,
-            @RequestParam("deck") String deck,
+            @RequestParam("deck") String deck, @RequestParam("count") int count, @RequestParam("gt") int guardType,
             @RequestParam("hlv") int heroLv, @RequestParam("bn") String bossName, @RequestParam("bk") int buffKingdom,
-            @RequestParam("bf") int buffForest, @RequestParam("bs") int buffSavage, @RequestParam("bh") int buffHell,
-            @RequestParam("count") int count) throws IOException {
+            @RequestParam("bf") int buffForest, @RequestParam("bs") int buffSavage, @RequestParam("bh") int buffHell
+            ) throws IOException {
         PrintWriter writer = response.getWriter();
         try {
             logger.info("PlayBossMassiveGame from " + request.getRemoteAddr() + ":");
@@ -261,6 +302,9 @@ public class AutoBattleController {
             this.userActionRecorder.addAction(new UserAction(new Date(), request.getRemoteAddr(), "Play Boss Massive Game",
                     String.format("Deck=%s<br />HeroLV=%d, Boss=%s, Count=%d", deck, heroLv, bossName, count)));
             PlayerInfo player1 = PlayerBuilder.build(false, "BOSS", bossName, 99999, null);
+            if (guardType == 1) {
+                addBossGuards(player1);
+            }
             PlayerInfo player2 = PlayerBuilder.build(true, "玩家", deck, heroLv, new Legion(buffKingdom, buffForest,
                     buffSavage, buffHell));
             writer.append(Utils.getCurrentDateTime() + "<br />");

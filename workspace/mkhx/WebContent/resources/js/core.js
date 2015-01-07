@@ -192,6 +192,7 @@ var playBossGame = function(count) {
     var deck = $('#deck').val().trim();
     var heroLv = $('#heroLv').val();
     var bossName = $('#boss-name').val();
+    var guardType = $('#guard-type').val();
     var buffKingdom = $('#buff-kingdom').val();
     var buffForest = $('#buff-forest').val();
     var buffSavage = $('#buff-savage').val();
@@ -204,7 +205,8 @@ var playBossGame = function(count) {
         bf: buffForest,
         bs: buffSavage,
         bh: buffHell,
-        count: count
+        count: count,
+        gt: guardType
     };
 
     $.cookie('boss-battle', JSON.stringify(postData), { expires: 365 });
