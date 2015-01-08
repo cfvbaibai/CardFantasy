@@ -72,7 +72,7 @@ public class CardDataStore {
         this.allKeys.add(cardData.getName());
     }
     
-    public CardData getCardInfo(String name) {
+    public CardData getCard(String name) {
         if (this.cardMap.containsKey(name)) {
             return this.cardMap.get(name);
         } else {

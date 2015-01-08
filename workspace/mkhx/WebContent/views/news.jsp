@@ -34,7 +34,8 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">
                 <h3>更新日志</h3>
                 <ul class="news-content">
-                    <li>2015-01-08: 为【魔神战】添加【随机杂兵】模式，感谢<x>徽飞湮咩</x>, <x>zx16792007</x>提供信息</li>
+                    <li>2015-01-08: 添加新卡【圣泉元神】</li>
+                    <li>2015-01-07: 为【魔神战】添加【随机杂兵】模式，感谢<x>徽飞湮咩</x>, <x>zx16792007</x>提供信息</li>
                     <li>2015-01-06: 添加新卡【黄金金属巨龙】，感谢<x>雪拾玖</x>提供数据</li>
                     <li>2015-01-04: <ul>
                         <li>添加新卡【均衡女神】，感谢<x>1243712047</x>, <x>快到碗里来mys</x>提供信息</li>

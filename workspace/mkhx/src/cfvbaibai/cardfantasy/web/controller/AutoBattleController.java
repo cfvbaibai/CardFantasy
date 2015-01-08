@@ -21,14 +21,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import cfvbaibai.cardfantasy.GameUI;
+import cfvbaibai.cardfantasy.Randomizer;
 import cfvbaibai.cardfantasy.data.Card;
 import cfvbaibai.cardfantasy.data.CardData;
 import cfvbaibai.cardfantasy.data.CardDataStore;
 import cfvbaibai.cardfantasy.data.Legion;
 import cfvbaibai.cardfantasy.data.PlayerInfo;
-import cfvbaibai.cardfantasy.data.Race;
 import cfvbaibai.cardfantasy.data.RuneData;
-import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.data.SkillTag;
 import cfvbaibai.cardfantasy.data.SkillType;
 import cfvbaibai.cardfantasy.engine.GameEndCause;
@@ -191,8 +190,22 @@ public class AutoBattleController {
             writer.print(errorHelper.handleError(e, false));
         }
     }
-    
+
+    private static String[] bossGuardCandidates = new String[] {
+        "凤凰", "皇家卫队将领", "战神", "哥布林术士", "精灵祭司", "冰雪巨人", "大主教",
+        "火灵操控者", "巨象人武士", "牛头人酋长", "冰雪巨人", "地狱红龙", "虚空假面", "海盗船长",
+        "金属巨龙", "山羊人萨满", "恶灵之剑", "骷髅法师", "风暴召唤者", "钻石巨石像",
+        "魔能射手", "炼金机甲", "蜘蛛人女王", "机械飞龙", "迷魅灵狐", "精灵暗杀者",
+        "圣诞树人", "梦境治愈师", "小矮人工匠", "荒野狂虫",
+        "尸腐守卫", "巫妖领主", "东方禅师", "精灵法师", "守卫古树",
+        "雷兽", "机械兵团长", "魔能巨石像", "世界树之灵", "堕落精灵", "纯洁圣女", "龙角将军",
+    };
     private CardData getBossGuard() {
+        Randomizer random = Randomizer.getRandomizer();
+        int guardNameIndex = random.next(0, bossGuardCandidates.length);
+        String guardName = bossGuardCandidates[guardNameIndex];
+        CardData guard = this.store.getCard(guardName);
+        /*
         while (true) {
             CardData guard = this.store.getRandomCard();
             if (guard.getStar() < 3) {
@@ -204,18 +217,54 @@ public class AutoBattleController {
                 guard.getRace() != Race.HELL) {
                 continue;
             }
-            for (Skill skill : guard.getSkills()) {
-                if (skill.getType() == SkillType.回魂 || skill.getType() == SkillType.复活) {
+            for (CardSkill skill : guard.getSkills()) {
+                if (skill.getType().containsTag(SkillTag.召唤)) {
                     continue;
                 }
             }
-            return guard;
+            int cardId = Integer.parseInt(guard.getId());
+            if (cardId > 4999) {
+                continue;
+            }
+            if (
+                cardId == 1514 || // 预言之神
+                cardId == 1515 || // 制裁之雷神
+                cardId == 1516 || // 均衡女神
+                cardId == 1517 || // 星辰主宰
+                cardId == 1518 || // 圣炎魔导师
+                cardId == 1519 || // 陨星魔法使
+                cardId == 2515 || // 幻翼神丽雅
+                cardId == 2518 || // 黄金金属巨龙
+                cardId == 2517 || // 梦境守护者
+                cardId == 2516 || // 星夜女神
+                cardId == 3515 || // 怒雪咆哮
+                cardId == 4517 || // 谎言之神
+                cardId == 4519 || // 骨灵巫女
+                cardId == 4520 || // 月蚀兽
+                false
+            ) {
+                continue;
+            }
         }
+        */
+        return guard;
     }
     
     private void addBossGuards(PlayerInfo player) {
+        List<CardData> bossGuards = new ArrayList<CardData>();
+        while (true) {
+            int totalCost = 0;
+            for (int i = 0; i < 9; ++i) {
+                CardData bossGuard = getBossGuard();
+                bossGuards.add(bossGuard);
+                totalCost += bossGuard.getBaseCost();
+            }
+            if (totalCost <= 80) {
+                break;
+            }
+        }
         for (int i = 0; i < 9; ++i) {
-            CardData bossGuard = getBossGuard();
+            CardData bossGuard = bossGuards.get(i);
             player.addCard(new Card(bossGuard, 10, "BOSS" + i));
         }
         StringBuffer sb = new StringBuffer();

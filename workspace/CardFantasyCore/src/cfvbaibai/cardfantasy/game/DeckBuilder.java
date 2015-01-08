@@ -188,7 +188,7 @@ public final class DeckBuilder {
             }
         }
 
-        CardData data = store.getCardInfo(cardName);
+        CardData data = store.getCard(cardName);
         if (data == null) {
             return null;
         }

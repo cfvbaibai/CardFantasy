@@ -826,6 +826,11 @@
         <Skill type="奋战" level="6" unlock="5" />
         <Skill type="免疫" level="0" unlock="10" />
     </Card>
+    <Card id="2519" name="圣泉元神" wikiId="57011" race="森林" speed="4" star="5" cost="16" incrCost="2" at="310" hp="1420" incrAT="37" incrHP="48">
+        <Skill type="脱困" level="0" unlock="0" /> 
+        <Skill type="横扫" level="0" unlock="5" />
+        <Skill type="灵巧" level="0" unlock="10" />
+    </Card>
 
     <!-- 蛮荒  -->
     <Card id="3101" name="穴居人奴隶" wikiId="31006" race="蛮荒" speed="2" star="1" cost="4" incrCost="2" at="90" hp="390" incrAT="18" incrHP="11">

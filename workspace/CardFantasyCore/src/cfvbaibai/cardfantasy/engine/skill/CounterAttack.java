@@ -25,7 +25,9 @@ public final class CounterAttack {
         int damage = cardSkill.getImpact();
         GameUI ui = resolver.getStage().getUI();
         ui.useSkill(defender, attacker, cardSkill, true);
-        ui.attackCard(defender, attacker, cardSkill, damage);
-        resolver.resolveDeathSkills(defender, attacker, cardSkill, resolver.applyDamage(attacker, damage));
+        if (!resolver.resolverCounterAttackBlockSkill(cardSkill, attacker, defender)) {
+            ui.attackCard(defender, attacker, cardSkill, damage);
+            resolver.resolveDeathSkills(defender, attacker, cardSkill, resolver.applyDamage(attacker, damage));
+        }
     }
 }

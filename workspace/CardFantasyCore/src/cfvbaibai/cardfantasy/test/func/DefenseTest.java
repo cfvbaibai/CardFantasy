@@ -421,4 +421,29 @@ public class DefenseTest extends SkillValidationTest {
         Assert.assertEquals(620 * 60 / 100, 1270 - c半鹿人号角手.getHP());
         Assert.assertEquals(620 * 60 / 100, 5000 - c占位符.getHP());
     }
+    
+    @Test
+    public void test反击_灵巧() {
+        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "圣泉元神", "占位符+反击10");
+        CardInfo c圣泉元神 = context.addToField(0, 0);
+        context.addToField(1, 1);
+        context.startGame();
+        
+        context.proceedOneRound();
+        Assert.assertEquals(0, 1900 - c圣泉元神.getHP());
+    }
+    
+    @Test
+    public void test盾刺_灵巧() {
+        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "圣泉元神", "秘银巨石像", "占位符+盾刺10", "占位符+盾刺10");
+        CardInfo c圣泉元神 = context.addToField(0, 0);
+        CardInfo c秘银巨石像 = context.addToField(1, 0);
+        context.addToField(2, 1);
+        context.addToField(3, 1);
+        context.startGame();
+        
+        context.proceedOneRound();
+        Assert.assertEquals(0, 1900 - c圣泉元神.getHP());
+        Assert.assertEquals(400 /* 圣泉横扫被盾刺 */ + 200 /* 秘银自己攻击被盾刺 */, 1400 - c秘银巨石像.getHP());
+    }
 }

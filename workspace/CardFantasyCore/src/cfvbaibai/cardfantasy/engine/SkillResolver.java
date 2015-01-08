@@ -11,6 +11,7 @@ import cfvbaibai.cardfantasy.data.RuneData;
 import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.data.SkillTag;
 import cfvbaibai.cardfantasy.data.SkillType;
+import cfvbaibai.cardfantasy.engine.skill.Agile;
 import cfvbaibai.cardfantasy.engine.skill.AllDelay;
 import cfvbaibai.cardfantasy.engine.skill.AllSpeedUp;
 import cfvbaibai.cardfantasy.engine.skill.Arouse;
@@ -1184,10 +1185,19 @@ public class SkillResolver {
      * @return Whether block is disabled
      */
     public boolean resolveCounterBlockSkill(Skill cardSkill, CardInfo attacker, CardInfo defender) {
-        for (SkillUseInfo attackerSkillUseInfo : attacker.getAllUsableSkills()) {
+        for (SkillUseInfo attackerSkillUseInfo : attacker.getNormalUsableSkills()) {
             if (attackerSkillUseInfo.getType() == SkillType.弱点攻击) {
                 return WeakPointAttack.isBlockSkillDisabled(this, attackerSkillUseInfo.getSkill(), cardSkill,
                         attacker, defender);
+            }
+        }
+        return false;
+    }
+    
+    public boolean resolverCounterAttackBlockSkill(Skill counterAttackSkill, CardInfo attacker, CardInfo counterAttacker) {
+        for (SkillUseInfo skillUseInfo : attacker.getNormalUsableSkills()) {
+            if (skillUseInfo.getType() == SkillType.灵巧) {
+                return Agile.isCounterAttackSkillDisabled(this, skillUseInfo.getSkill(), counterAttackSkill, attacker, counterAttacker);
             }
         }
         return false;
