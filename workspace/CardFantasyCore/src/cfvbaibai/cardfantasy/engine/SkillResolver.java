@@ -127,14 +127,14 @@ public class SkillResolver {
     public List<CardInfo> getAdjacentCards(Field field, int position) {
         List<CardInfo> cards = new ArrayList<CardInfo>();
         CardInfo card = field.getCard(position);
-        if (card != null) {
-            cards.add(card);
-        }
         if (position > 0) {
             CardInfo leftSide = field.getCard(position - 1);
             if (leftSide != null) {
                 cards.add(leftSide);
             }
+        }
+        if (card != null) {
+            cards.add(card);
         }
         CardInfo rightSide = field.getCard(position + 1);
         if (rightSide != null) {
