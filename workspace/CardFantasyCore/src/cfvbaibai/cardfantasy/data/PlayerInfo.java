@@ -148,4 +148,17 @@ public class PlayerInfo {
         }
         return costs[costs.length - 1] + level - (costs.length - 1);
     }
+    
+    public String getDeckParsableDesc() {
+        StringBuffer sb = new StringBuffer();
+        for (Card card : this.cards) {
+            sb.append(card.getParsableDesc());
+            sb.append(",");
+        }
+        for (Rune rune : this.runes) {
+            sb.append(rune.getParsableDesc());
+            sb.append(",");
+        }
+        return sb.toString();
+    }
 }

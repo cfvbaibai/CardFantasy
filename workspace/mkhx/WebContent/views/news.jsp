@@ -34,7 +34,10 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">
                 <h3>更新日志</h3>
                 <ul class="news-content">
-                    <li>2015-01-08: 添加新卡【圣泉元神】</li>
+                    <li>2015-01-08: <ul>
+                        <li>添加新卡【圣泉元神】</li>
+                        <li>对魔神战杂兵进行修正，感谢<x>程love翔</x>, <x>AIYIfancy</x>, <x>哈哈哈雷宇桑</x>, <x>三头龙巫妖</x>, <x>wennington</x>, <x>原追忆</x>提供信息</li>
+                    </ul></li>
                     <li>2015-01-07: 为【魔神战】添加【随机杂兵】模式，感谢<x>徽飞湮咩</x>, <x>zx16792007</x>提供信息</li>
                     <li>2015-01-06: 添加新卡【黄金金属巨龙】，感谢<x>雪拾玖</x>提供数据</li>
                     <li>2015-01-04: <ul>

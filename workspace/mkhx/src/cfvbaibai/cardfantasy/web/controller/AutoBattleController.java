@@ -20,6 +20,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
 import cfvbaibai.cardfantasy.GameUI;
 import cfvbaibai.cardfantasy.Randomizer;
 import cfvbaibai.cardfantasy.data.Card;
@@ -192,19 +193,81 @@ public class AutoBattleController {
     }
 
     private static String[] bossGuardCandidates = new String[] {
-        "凤凰", "皇家卫队将领", "战神", "哥布林术士", "精灵祭司", "冰雪巨人", "大主教",
-        "火灵操控者", "巨象人武士", "牛头人酋长", "冰雪巨人", "地狱红龙", "虚空假面", "海盗船长",
-        "金属巨龙", "山羊人萨满", "恶灵之剑", "骷髅法师", "风暴召唤者", "钻石巨石像",
-        "魔能射手", "炼金机甲", "蜘蛛人女王", "机械飞龙", "迷魅灵狐", "精灵暗杀者",
-        "圣诞树人", "梦境治愈师", "小矮人工匠", "荒野狂虫",
-        "尸腐守卫", "巫妖领主", "东方禅师", "精灵法师", "守卫古树",
-        "雷兽", "机械兵团长", "魔能巨石像", "世界树之灵", "堕落精灵", "纯洁圣女", "龙角将军",
+        "尖牙捕食者",
+        "大剑圣",
+        "金属巨龙",
+        "精灵暗杀者",
+        "精灵法师",
+        "精灵祭司",
+        "精灵审判长",
+        "九头妖蛇",
+        "巨岛龟幼崽",
+        "巨象人武士",
+        "恐惧之王",
+        "骷髅法师",
+        "狂暴狼人酋长",
+        "雷兽",
+        "炼金机甲",
+        "灵魂收割者",
+        "龙角将军",
+        "蛮鱼人",
+        "美杜莎女王",
+        "梦境女神",
+        "梦境治愈师",
+        "迷魅灵狐",
+        "秘银巨石像",
+        "密纹骑士",
+        "魔法结晶体",
+        "魔能巨石像",
+        "魔能射手",
+        "魔鹰族萨满",
+        "木乃伊法老王",
+        "牛头人酋长",
+        "喷火装甲车手",
+        "奇美拉",
+        "森林丘比特",
+        "山羊人萨满",
+        "圣诞树人",
+        "圣堂武士",
+        "尸腐守卫",
+        "狮鹫骑士",
+        "时光女神",
+        "时空旅者",
+        "食人魔战士",
+        "世界树之灵",
+        "守卫古树",
+        "兽语驾驭者",
+        "树人祭司",
+        "水源制造者",
+        "淘气灯灵",
+        "亡灵守护神",
+        "王城巡逻犬",
+        "巫妖领主",
+        "小矮人工匠",
+        "小矮人狙击者",
+        "新年爆竹",
+        "熊人武士",
+        "虚空假面",
+        "血祭恶魔",
+        "血炼巫妖",
+        "血瞳魔剑师",
+        "炎刃暗骑士",
+        "隐世先知",
+        "幽境裁决官",
+        "元素灵龙",
+        "战神",
+        "蜘蛛人女王",
+        "钻石巨石像",
     };
+
     private CardData getBossGuard() {
         Randomizer random = Randomizer.getRandomizer();
         int guardNameIndex = random.next(0, bossGuardCandidates.length);
         String guardName = bossGuardCandidates[guardNameIndex];
         CardData guard = this.store.getCard(guardName);
+        if (guard == null) {
+            throw new CardFantasyRuntimeException("Invalid guard name " + guardName);
+        }
         /*
         while (true) {
             CardData guard = this.store.getRandomCard();
@@ -253,13 +316,14 @@ public class AutoBattleController {
     private void addBossGuards(PlayerInfo player) {
         List<CardData> bossGuards = new ArrayList<CardData>();
         while (true) {
+            bossGuards.clear();
             int totalCost = 0;
             for (int i = 0; i < 9; ++i) {
                 CardData bossGuard = getBossGuard();
                 bossGuards.add(bossGuard);
                 totalCost += bossGuard.getBaseCost();
             }
-            if (totalCost <= 80) {
+            if (totalCost <= 101) {
                 break;
             }
         }
@@ -271,9 +335,8 @@ public class AutoBattleController {
         for (Card card : player.getCards()) {
             sb.append(card.getParsableDesc() + ", ");
         }
-        logger.info("Boss deck: " + sb.toString());
     }
-    
+
     @RequestMapping(value = "/PlayBoss1MatchGame")
     public void playBoss1MatchGame(HttpServletRequest request, HttpServletResponse response,
             @RequestParam("deck") String deck, @RequestParam("count") int count, @RequestParam("gt") int guardType,
@@ -350,10 +413,6 @@ public class AutoBattleController {
             logger.info("Count = " + count + ", Hero LV = " + heroLv + ", Boss = " + bossName);
             this.userActionRecorder.addAction(new UserAction(new Date(), request.getRemoteAddr(), "Play Boss Massive Game",
                     String.format("Deck=%s<br />HeroLV=%d, Boss=%s, Count=%d, GuardType=%d", deck, heroLv, bossName, count, guardType)));
-            PlayerInfo player1 = PlayerBuilder.build(false, "BOSS", bossName, 99999, null);
-            if (guardType == 1) {
-                addBossGuards(player1);
-            }
             PlayerInfo player2 = PlayerBuilder.build(true, "玩家", deck, heroLv, new Legion(buffKingdom, buffForest,
                     buffSavage, buffHell));
             writer.append(Utils.getCurrentDateTime() + "<br />");
@@ -361,6 +420,10 @@ public class AutoBattleController {
             int timeoutCount = 0;
             Rule rule = Rule.getBossBattle();
             GameUI ui = new DummyGameUI();
+            PlayerInfo player1 = PlayerBuilder.build(false, "BOSS", bossName, 99999, null);
+            if (guardType == 1) {
+                addBossGuards(player1);
+            }
             GameResult trialResult = GameEngine.play1v1(ui, rule, player1, player2);
             if (trialResult.getCause() == GameEndCause.战斗超时) {
                 ++timeoutCount;
@@ -380,11 +443,24 @@ public class AutoBattleController {
             
             if (gameCount > 0) {
                 for (int i = 0; i < gameCount - 1; ++i) {
+                    if (guardType == 1) {
+                        player1 = PlayerBuilder.build(false, "BOSS", bossName, 99999, null);
+                        addBossGuards(player1);
+                    }
                     GameResult gameResult = GameEngine.play1v1(ui, rule, player1, player2);
                     if (gameResult.getCause() == GameEndCause.战斗超时) {
                         ++timeoutCount;
                     }
-                    stat.addData(gameResult.getDamageToBoss());
+                    int damageToBoss = gameResult.getDamageToBoss();
+                    if (damageToBoss < 0) {
+                        damageToBoss = 0;
+                    }
+                    if (damageToBoss > 200000) {
+                        logger.info("DamageToBoss=" + damageToBoss);
+                        logger.info("Boss Deck: " + player1.getDeckParsableDesc());
+                        logger.info("Player Deck: " + player2.getDeckParsableDesc());
+                    }
+                    stat.addData(damageToBoss);
                 }
             }
             

@@ -52,4 +52,8 @@ public class Rune implements Comparable<Rune> {
         }
         return this.getLevel() - another.getLevel();
     }
+
+    public Object getParsableDesc() {
+        return String.format("%s-%d", this.getName(), this.getLevel());
+    }
 }
