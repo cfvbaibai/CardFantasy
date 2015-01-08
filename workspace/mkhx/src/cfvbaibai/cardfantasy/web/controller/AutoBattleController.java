@@ -194,11 +194,11 @@ public class AutoBattleController {
 
     private static String[] bossGuardCandidates = new String[] {
         "黯灭制裁者",
-        "半路人守护者",
+        "半鹿人守护者",
         "半鱼人士卒",
         "暴怒霸龙",
         "背主之影",
-        "冰封女猎",
+        "冰峰女猎",
         "冰雪巨人",
         "彩翼公主",
         "纯洁圣女",
