@@ -619,7 +619,7 @@ public class SkillResolver {
             }
         }
         if (deadCard.getStatus().containsStatus(CardStatusType.死印)) {
-            DeathMark.explode(this, deadCard);
+            DeathMark.explode(this, deadCard, result);
         }
         boolean reincarnated = false;
         for (SkillUseInfo deadCardSkillUseInfo : deadCard.getAllUsableSkills()) {

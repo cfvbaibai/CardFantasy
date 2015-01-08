@@ -11,6 +11,7 @@ import cfvbaibai.cardfantasy.engine.CardStatusType;
 import cfvbaibai.cardfantasy.engine.EntityInfo;
 import cfvbaibai.cardfantasy.engine.HeroDieSignal;
 import cfvbaibai.cardfantasy.engine.OnAttackBlockingResult;
+import cfvbaibai.cardfantasy.engine.OnDamagedResult;
 import cfvbaibai.cardfantasy.engine.SkillResolver;
 import cfvbaibai.cardfantasy.engine.SkillUseInfo;
 
@@ -30,7 +31,11 @@ public class DeathMark {
         victim.addStatus(statusItem);
     }
 
-    public static void explode(SkillResolver resolver, CardInfo deadCard) throws HeroDieSignal {
+    public static void explode(SkillResolver resolver, CardInfo deadCard, OnDamagedResult onDamagedResult) throws HeroDieSignal {
+        if (!onDamagedResult.cardDead) {
+            // Card could be unbending and not dead. In that case, death mark does not explode.
+            return;
+        }
         int position = deadCard.getPosition();
         List<CardInfo> adjacentCards = resolver.getAdjacentCards(deadCard.getOwner().getField(), position);
         List<CardInfo> victims = new ArrayList<CardInfo>();
