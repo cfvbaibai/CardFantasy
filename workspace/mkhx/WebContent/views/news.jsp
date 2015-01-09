@@ -34,6 +34,7 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2015-01-09: 添加新卡【驭灵法师】，感谢<x>均卡</x>提供数据</li>
                     <li>2015-01-08: <ul>
                         <li>添加新卡【圣泉元神】</li>
                         <li>对魔神战杂兵进行修正，感谢<x>程love翔</x>, <x>AIYIfancy</x>, <x>哈哈哈雷宇桑</x>, <x>三头龙巫妖</x>, <x>wennington</x>, <x>原追忆</x>提供信息</li>
