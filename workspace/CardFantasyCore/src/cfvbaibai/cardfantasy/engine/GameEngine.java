@@ -47,7 +47,7 @@ public class GameEngine {
         }
         Collection <Card> cards = playerInfo.getCards();
         Collection <Rune> runes = playerInfo.getRunes();
-        if (cards.size() > playerInfo.getCardSlot()) {
+        if (playerInfo.isNormalPlayer() && cards.size() > playerInfo.getCardSlot()) {
             throw new CardFantasyUserRuntimeException(String.format(
                     "%s 的卡牌槽不足！%s 卡牌槽数：%d, 卡组卡牌数：%d",
                     playerInfo.getId(), playerInfo.getId(), playerInfo.getCardSlot(), cards.size()));
@@ -58,7 +58,7 @@ public class GameEngine {
                     "没有为 %s 配置任何卡牌！", playerInfo.getId()));
         }
         */
-        if (runes.size() > playerInfo.getRuneSlot()) {
+        if (playerInfo.isNormalPlayer() && runes.size() > playerInfo.getRuneSlot()) {
             throw new CardFantasyUserRuntimeException(String.format(
                     "%s 的符文槽不足！%s 符文槽数：%d, 卡组符文数：%d",
                     playerInfo.getId(), playerInfo.getId(), playerInfo.getRuneSlot(), runes.size()));
@@ -67,7 +67,7 @@ public class GameEngine {
         for (Card card : playerInfo.getCards()) {
             cost += card.getCost();
         }
-        if (cost > playerInfo.getMaxCost()) {
+        if (playerInfo.isNormalPlayer() && cost > playerInfo.getMaxCost()) {
             throw new CardFantasyUserRuntimeException(String.format(
                     "%s 的COST不足！%s 的最大COST：%d, 卡组COST: %d",
                     playerInfo.getId(), playerInfo.getId(), playerInfo.getMaxCost(), cost));

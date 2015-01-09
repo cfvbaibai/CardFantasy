@@ -111,8 +111,8 @@ public class AutoBattleController {
                     String.format("Deck1=%s<br />Deck2=%s<br />Lv1=%d, Lv2=%d, FirstAttack=%d",
                             deck1, deck2, heroLv1, heroLv2, firstAttack)));
             
-            PlayerInfo player1 = PlayerBuilder.build(true, "玩家1", deck1, heroLv1);
-            PlayerInfo player2 = PlayerBuilder.build(true, "玩家2", deck2, heroLv2);
+            PlayerInfo player1 = PlayerBuilder.build(heroLv1 != 0, "玩家1", deck1, heroLv1);
+            PlayerInfo player2 = PlayerBuilder.build(heroLv2 != 0, "玩家2", deck2, heroLv2);
             WebPlainTextGameUI ui = new WebPlainTextGameUI();
             GameEngine engine = new GameEngine(ui, new Rule(5, 999, firstAttack, false));
             engine.registerPlayers(player1, player2);
@@ -144,8 +144,8 @@ public class AutoBattleController {
                     String.format("Deck1=%s<br />Deck2=%s<br />Lv1=%d, Lv2=%d, FirstAttack=%d",
                             deck1, deck2, heroLv1, heroLv2, firstAttack)));
             
-            PlayerInfo player1 = PlayerBuilder.build(true, "玩家1", deck1, heroLv1);
-            PlayerInfo player2 = PlayerBuilder.build(true, "玩家2", deck2, heroLv2);
+            PlayerInfo player1 = PlayerBuilder.build(heroLv1 != 0, "玩家1", deck1, heroLv1);
+            PlayerInfo player2 = PlayerBuilder.build(heroLv2 != 0, "玩家2", deck2, heroLv2);
             StructuredRecordGameUI ui = new StructuredRecordGameUI();
             GameEngine engine = new GameEngine(ui, new Rule(5, 999, firstAttack, false));
             engine.registerPlayers(player1, player2);
@@ -177,8 +177,8 @@ public class AutoBattleController {
             this.userActionRecorder.addAction(new UserAction(new Date(), request.getRemoteAddr(), "Play Auto Massive Game",
                     String.format("Deck1=%s<br />Deck2=%s<br />Lv1=%d, Lv2=%d, FirstAttack=%d, Count=%d",
                             deck1, deck2, heroLv1, heroLv2, firstAttack, count)));
-            PlayerInfo player1 = PlayerBuilder.build(true, "玩家1", deck1, heroLv1);
-            PlayerInfo player2 = PlayerBuilder.build(true, "玩家2", deck2, heroLv2);
+            PlayerInfo player1 = PlayerBuilder.build(heroLv1 != 0, "玩家1", deck1, heroLv1);
+            PlayerInfo player2 = PlayerBuilder.build(heroLv2 != 0, "玩家2", deck2, heroLv2);
             GameResultStat stat = play(player1, player2, count, new Rule(5, 999, firstAttack, false));
             writer.append(Utils.getCurrentDateTime() + "<br />");
             writer.append("<table>");
@@ -497,12 +497,13 @@ public class AutoBattleController {
                     if (damageToBoss < 0) {
                         damageToBoss = 0;
                     }
-                    if (damageToBoss > 200000) {
+                    if (damageToBoss > 10000000) {
                         logger.info("DamageToBoss=" + damageToBoss);
                         logger.info("Boss Deck: " + player1.getDeckParsableDesc());
                         logger.info("Player Deck: " + player2.getDeckParsableDesc());
+                    } else {
+                        stat.addData(damageToBoss);
                     }
-                    stat.addData(damageToBoss);
                 }
             }
             
