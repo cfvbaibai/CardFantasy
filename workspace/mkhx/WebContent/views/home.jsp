@@ -20,6 +20,7 @@
     <%@ include file="map-battle.jsp" %>
     <%@ include file="arena-battle.jsp" %>
     <%@ include file="boss-battle.jsp" %>
+    <%@ include file="dungeon-battle.jsp" %>
     <%--<%@ include file="communication.jsp" %> --%>
     <%@ include file="test-rp.jsp" %>
     <%@ include file="help.jsp" %>
