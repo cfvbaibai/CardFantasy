@@ -7,6 +7,7 @@ Developed By
 ============
 
 * cfvbaibai
+* 技术壕
 
 License
 =======
@@ -24,6 +25,6 @@ Working Environment
     Workspace folder: /workspace
       
     Dependency:
-        - JRE7
-        - Server with Tomcat 7.0
+        - JRE8
+        - Server with Tomcat 8.0
         - JUnit 4

@@ -4,22 +4,13 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">
                 <h3>设置阵容</h3>
                 <div>
-                    <fieldset class="select-2" data-theme="c" data-role="controlgroup" data-type="horizontal">
+                    <fieldset class="select-3" data-theme="c" data-role="controlgroup" data-type="horizontal">
+                        <select data-theme="c" name="lilith-difficulty" id="lilith-difficulty" data-mini="true" data-native-menu="false">
+                        </select>
                         <select data-theme="c" name="boss-name" id="boss-name" data-mini="true" data-native-menu="false">
-                            <option value="复仇女神">复仇女神</option>
-                            <option value="邪龙之神">邪龙之神</option>
-                            <option value="噩梦之主">噩梦之主</option>
-                            <option value="毁灭之神">毁灭之神</option>
-                            <option value="深渊影魔">深渊影魔</option>
-                            <option value="万蛛之后">万蛛之后</option>
-                            <!-- 
-                            <option value="旧复仇女神">旧魔神：复仇女神</option>
-                            <option value="旧邪龙之神">旧魔神：邪龙之神</option>
-                            <option value="旧噩梦之主">旧魔神：噩梦之主</option>
-                            <option value="旧毁灭之神">旧魔神：毁灭之神</option>
-                            <option value="旧深渊影魔">旧魔神：深渊影魔</option>
-                            <option value="旧万蛛之后">旧魔神：万蛛之后</option>
-                             -->
+                            <option value="0">困难莉莉丝</option>
+                            <option value="1">地狱莉莉丝</option>
+                            <option value="2">炼狱莉莉丝</option>
                         </select>
                         <select data-theme="c" name="guard-type" id="guard-type" data-mini="true" data-native-menu="false">
                             <option value="0">无杂兵</option>
