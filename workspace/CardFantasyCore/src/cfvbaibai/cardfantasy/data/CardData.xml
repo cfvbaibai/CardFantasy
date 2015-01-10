@@ -1771,18 +1771,18 @@
         <Skill type="嗜血" level="8" unlock="10" />
         <Skill type="无效" level="0" unlock="10" />
     </Card>
-    <Card id="5513" name="噩梦莉莉丝" wikiId="" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="1000" hp="0" incrAT="0" incrHP="0">
+    <Card id="5513" name="噩梦莉莉丝" wikiId="" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="1500" hp="0" incrAT="0" incrHP="0">
         <Skill type="免疫" level="0" unlock="0" />
         <Skill type="圣炎" level="0" unlock="5" />
         <Skill type="弱点攻击" level="0" unlock="10" />
         <Skill type="无效" level="0" unlock="10" />
     </Card> 
-    <Card id="5514" name="炼狱莉莉丝" wikiId="" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="1000" hp="0" incrAT="0" incrHP="0">
+    <Card id="5514" name="炼狱莉莉丝" wikiId="" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="2000" hp="0" incrAT="0" incrHP="0">
         <Skill type="免疫" level="0" unlock="0" />
         <Skill type="圣炎" level="0" unlock="5" />
         <Skill type="弱点攻击" level="0" unlock="10" />
         <Skill type="无效" level="0" unlock="10" />
-    </Card> 
+    </Card>
 
     <Card id="7501" name="熊老师" wikiId="" race="萌货" speed="4" star="5" cost="0" incrCost="0" at="400" hp="1500" incrAT="40" incrHP="50">
         <Skill type="关小黑屋" level="1" unlock="0" summon="true" />
