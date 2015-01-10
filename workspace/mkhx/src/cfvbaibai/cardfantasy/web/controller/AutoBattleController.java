@@ -521,7 +521,7 @@ public class AutoBattleController {
             String logMessage = String.format("Deck=%s<br />HeroLV=%d, Lilith=%s, GameType=%d", deck, heroLv, lilithName, gameType);
             logger.info("PlayLilith1MatchGame: " + logMessage);
             this.userActionRecorder.addAction(new UserAction(new Date(), request.getRemoteAddr(), "Play Lilith 1Match Game", logMessage));
-            PlayerInfo player1 = PlayerBuilder.buildLilith(lilithDataStore, lilithName, remainingHP, gameType == 0);
+            PlayerInfo player1 = PlayerBuilder.buildLilith(lilithDataStore, lilithName, gameType == 0);
             PlayerInfo player2 = PlayerBuilder.build(true, "玩家", deck, heroLv, null);
             WebPlainTextGameUI ui = new WebPlainTextGameUI();
             PvlEngine engine = new PvlEngine(ui, Rule.getDefault());
@@ -586,7 +586,7 @@ public class AutoBattleController {
             String logMessage = String.format("Deck=%s<br />HeroLV=%d, Lilith=%s, GameType=%d", deck, heroLv, lilithName, gameType);
             logger.info("SimulateLilith1MatchGame: " + logMessage);
             this.userActionRecorder.addAction(new UserAction(new Date(), request.getRemoteAddr(), "Simulate Lilith 1Match Game", logMessage));
-            PlayerInfo player1 = PlayerBuilder.buildLilith(lilithDataStore, lilithName, remainingHP, gameType == 0);
+            PlayerInfo player1 = PlayerBuilder.buildLilith(lilithDataStore, lilithName, gameType == 0);
             PlayerInfo player2 = PlayerBuilder.build(true, "玩家", deck, heroLv, null);
             StructuredRecordGameUI ui = new StructuredRecordGameUI();
             BattleEngine engine = new BattleEngine(ui, Rule.getDefault());
@@ -643,7 +643,7 @@ public class AutoBattleController {
             for (Card card : player2.getCards()) {
                 totalCost += card.getCost();
             }
-            int coolDown = 60 + totalCost * 2;
+            int coolDown = 30 + totalCost * 2;
             
             if (gameCount > 0) {
                 for (int i = 0; i < gameCount - 1; ++i) {
@@ -728,11 +728,11 @@ public class AutoBattleController {
             logger.info("PlayLilithMassiveGame: " + logMessage);
             this.userActionRecorder.addAction(new UserAction(new Date(), request.getRemoteAddr(), "Play Lilith Massive Game", logMessage));
 
-            PlayerInfo player1 = PlayerBuilder.buildLilith(lilithDataStore, lilithName, remainingHP, gameType == 0);
+            PlayerInfo player1 = PlayerBuilder.buildLilith(lilithDataStore, lilithName, gameType == 0);
             PlayerInfo player2 = PlayerBuilder.build(true, "玩家", deck, heroLv, null);
             OneDimensionDataStat statBattleCount = new OneDimensionDataStat();
             OneDimensionDataStat statAvgDamageToLilith = new OneDimensionDataStat();
-            int gameCount = 50;
+            int gameCount = 100;
             writer.append(Utils.getCurrentDateTime() + "<br />");
             writer.append("模拟场次: " + gameCount + "<br />");
             try {

@@ -1765,19 +1765,19 @@
         <Skill type="嗜血" level="8" unlock="10" />
         <Skill type="无效" level="0" unlock="10" />
     </Card>
-    <Card id="5512" name="困难莉莉丝" wikiId="" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="1000" hp="0" incrAT="0" incrHP="0">
+    <Card id="5512" name="困难莉莉丝" wikiId="" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="1000" hp="90000" incrAT="0" incrHP="0">
         <Skill type="免疫" level="10" unlock="0" />
         <Skill type="二重狙击" level="10" unlock="5" />
         <Skill type="嗜血" level="8" unlock="10" />
         <Skill type="无效" level="0" unlock="10" />
     </Card>
-    <Card id="5513" name="噩梦莉莉丝" wikiId="" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="1500" hp="0" incrAT="0" incrHP="0">
+    <Card id="5513" name="噩梦莉莉丝" wikiId="" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="1500" hp="160000" incrAT="0" incrHP="0">
         <Skill type="免疫" level="0" unlock="0" />
         <Skill type="圣炎" level="0" unlock="5" />
         <Skill type="弱点攻击" level="0" unlock="10" />
         <Skill type="无效" level="0" unlock="10" />
     </Card> 
-    <Card id="5514" name="炼狱莉莉丝" wikiId="" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="2000" hp="0" incrAT="0" incrHP="0">
+    <Card id="5514" name="炼狱莉莉丝" wikiId="" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="2000" hp="250000" incrAT="0" incrHP="0">
         <Skill type="免疫" level="0" unlock="0" />
         <Skill type="圣炎" level="0" unlock="5" />
         <Skill type="弱点攻击" level="0" unlock="10" />

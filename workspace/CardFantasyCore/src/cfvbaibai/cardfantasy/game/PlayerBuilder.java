@@ -26,20 +26,13 @@ public class PlayerBuilder {
         DeckStartupInfo deck = DeckBuilder.multiBuild(descText);
         return new PlayerInfo(isNormalPlayer, id, level, cardBuffs, deck.getRunes(), deck.getCards());
     }
-    public static PlayerInfo buildLilith(LilithDataStore lds, String bossId, int overrideBossHP, boolean withGuards) {
+    public static PlayerInfo buildLilith(LilithDataStore lds, String bossId, boolean withGuards) {
         LilithStartupInfo lsi = lds.getStartupInfo(bossId);
         if (lsi == null) {
             throw new CardFantasyRuntimeException("Invalid Lilith ID: " + bossId);
         }
         DeckStartupInfo dsi = lsi.getDeckStartupInfo();
         PlayerInfo playerInfo = new PlayerInfo(false, bossId, 999999, lsi.getCardBuffs(), dsi.getRunes(), dsi.getCards());
-        if (overrideBossHP > 0) {
-            for (Card card : playerInfo.getCards()) {
-                if (card.getId().equals(bossId)) {
-                    card.setOverrideHP(overrideBossHP);
-                }
-            }
-        }
         if (!withGuards) {
             for (Card card : playerInfo.getCards()) {
                 if (card.getRace() != Race.BOSS) {

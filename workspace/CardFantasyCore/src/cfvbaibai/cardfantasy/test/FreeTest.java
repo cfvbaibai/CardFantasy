@@ -609,7 +609,7 @@ public class FreeTest extends PveEngineTest {
     @Test
     public void testRushBoss() {
         LilithDataStore lds = LilithDataStore.loadDefault();
-        PlayerInfo lilith = PlayerBuilder.buildLilith(lds, "困难莉莉丝+法力反射8", 320000, false);
+        PlayerInfo lilith = PlayerBuilder.buildLilith(lds, "困难莉莉丝+法力反射8", false);
         PlayerInfo player = PlayerBuilder.build(true, "玩家", 100, "金属巨龙*10");
         PvlEngine engine = new PvlEngine(new DummyGameUI(), Rule.getDefault());
         int battleCount = engine.rushBoss(lilith, 40000, player).getBattleCount();
@@ -619,7 +619,7 @@ public class FreeTest extends PveEngineTest {
     @Test
     public void testClearGuards() {
         LilithDataStore lds = LilithDataStore.loadDefault();
-        PlayerInfo lilith = PlayerBuilder.buildLilith(lds, "困难莉莉丝+法力反射8", 320000, true);
+        PlayerInfo lilith = PlayerBuilder.buildLilith(lds, "困难莉莉丝+法力反射8", true);
         PlayerInfo player = PlayerBuilder.build(true, "玩家", 100, "秘银巨石像+横扫*2");
         PvlEngine engine = new PvlEngine(new TestGameUI(), Rule.getDefault());
         PvlGameResult result = engine.clearGuards(lilith, player, 1);

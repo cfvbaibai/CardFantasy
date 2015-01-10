@@ -42,8 +42,7 @@ public class LilithDataStore {
                 cardBuffs.add(new TrivialSkill(SkillType.原始体力调整, adjHP));
                 String id = lilithNode.valueOf("@id");
                 String deckDescs = lilithNode.getText();
-                int bossHP = Integer.parseInt(lilithNode.valueOf("@bossHP"));
-                LilithStartupInfo lsi = new LilithStartupInfo(id, bossHP, deckDescs, cardBuffs);
+                LilithStartupInfo lsi = new LilithStartupInfo(id, deckDescs, cardBuffs);
                 store.add(lsi);
             }
             return store;
