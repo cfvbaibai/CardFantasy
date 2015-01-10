@@ -2,7 +2,6 @@ package cfvbaibai.cardfantasy.game;
 
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -62,7 +61,7 @@ public class LilithDataStore {
         return this.lilithStartupInfos.get(bossId);
     }
     
-    public Collection<LilithStartupInfo> getAll() {
-        return this.lilithStartupInfos.values();
+    public List<LilithStartupInfo> getAll() {
+        return new ArrayList<LilithStartupInfo>(this.lilithStartupInfos.values());
     }
 }

@@ -1,6 +1,9 @@
 package cfvbaibai.cardfantasy.web.controller;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -10,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import cfvbaibai.cardfantasy.game.LilithDataStore;
+import cfvbaibai.cardfantasy.game.LilithStartupInfo;
 import cfvbaibai.cardfantasy.web.QuestionStore;
 import cfvbaibai.cardfantasy.web.beans.Logger;
 import cfvbaibai.cardfantasy.web.beans.UserAction;
@@ -40,11 +44,22 @@ public class HomeController {
         mv.setViewName("home");
         mv.addObject("isNewSession", request.getSession().isNew());
         mv.addObject("questions", questionStore.pickRandom());
-        mv.addObject("lilithDatas", lilithDataStore.getAll());
+        List<LilithStartupInfo> allLilithData = lilithDataStore.getAll();
+        Collections.sort(allLilithData, new LilithDataComparator());
+        mv.addObject("lilithDatas", allLilithData);
         //int activeSessionCountValue = activeSessionCount.intValue();
         //mv.addObject("activeSessionCount", activeSessionCountValue);
         //logger.info("Active Session Count: " + activeSessionCountValue);
         this.userActionRecorder.addAction(new UserAction(new Date(), request.getRemoteAddr(), "Visit Home", ""));
         return mv;
+    }
+    
+    private class LilithDataComparator implements Comparator<LilithStartupInfo> {
+
+        @Override
+        public int compare(LilithStartupInfo a, LilithStartupInfo b) {
+            return a.getBossId().compareTo(b.getBossId());
+        }
+        
     }
 }
