@@ -10,6 +10,7 @@ import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
 import cfvbaibai.cardfantasy.GameUI;
 import cfvbaibai.cardfantasy.Randomizer;
 import cfvbaibai.cardfantasy.data.PlayerInfo;
+import cfvbaibai.cardfantasy.data.Race;
 
 public class StageInfo {
     private Board board;
@@ -149,7 +150,7 @@ public class StageInfo {
             List<CardInfo> cards = player.getDeck().getCards();
             for (CardInfo card : cards) {
                 sumCardAT += card.getInitAT();
-                sumCardHP += card.getOriginalMaxHP();
+                sumCardHP += card.getRawMaxHP();
             }
             int score = player.getMaxHP() + sumCardAT + sumCardHP;
             if (score > maxScore) {
@@ -166,22 +167,43 @@ public class StageInfo {
 
     public GameResult result(Player winner, GameEndCause cause) {
         int damageToBoss = -1;
+        int killedGuardCount = 0;
         if (this.getRule().isBossBattle()) {
             Player boss = this.getPlayers().get(0);
-            CardInfo bossCard = boss.getField().getCard(0);
-            if (bossCard == null) {
-                // boss is killed!
-                bossCard = boss.getGrave().getFirst();
-                if (bossCard == null) {
-                    damageToBoss = 99999999;
-                } else {
-                    damageToBoss = bossCard.getOriginalMaxHP();
+            CardInfo bossCard = null;
+            for (CardInfo card : boss.getField().toList()) {
+                if (card.getRace() == Race.BOSS) {
+                    bossCard = card;
                 }
-            } else {
-                damageToBoss = bossCard.getOriginalMaxHP() - bossCard.getHP();
+            }
+            if (bossCard == null) {
+                // boss is killed or in hand/deck
+                for (CardInfo card : boss.getGrave().toList()) {
+                    if (card.getRace() == Race.BOSS) {
+                        bossCard = card;
+                        damageToBoss = card.getRawMaxHP();
+                        break;
+                    }
+                }
+                if (bossCard == null) {
+                    // boss is in deck or in hand.
+                    damageToBoss = 0;
+                }
+            }
+            else {
+                damageToBoss = bossCard.getRawMaxHP() - bossCard.getHP();
+                if (damageToBoss < 0) {
+                    // Could be buffed by 本源守护
+                    damageToBoss = 0;
+                }
+            }
+            for (CardInfo card : boss.getGrave().toList()) {
+                if (card.getRace() != Race.BOSS) {
+                    ++killedGuardCount;
+                }
             }
         }
-        return new GameResult(this.getBoard(), winner, this.getRound(), cause, damageToBoss, null);
+        return new GameResult(this.getBoard(), winner, this.getRound(), cause, damageToBoss, killedGuardCount, null);
     }
 
     public Collection<CardInfo> getAllHandCards() {

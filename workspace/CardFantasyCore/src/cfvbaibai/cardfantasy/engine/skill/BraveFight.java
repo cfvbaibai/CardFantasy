@@ -9,7 +9,7 @@ import cfvbaibai.cardfantasy.engine.SkillUseInfo;
 
 public class BraveFight extends PreAttackCardSkill {
     public static void apply(SkillResolver resolver, SkillUseInfo skillUseInfo, CardInfo attacker) {
-        int wound = attacker.getOriginalMaxHP() - attacker.getHP();
+        int wound = attacker.getRawMaxHP() - attacker.getHP();
         if (wound <= 0) {
             return;
         }

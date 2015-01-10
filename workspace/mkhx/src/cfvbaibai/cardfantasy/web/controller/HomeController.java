@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import cfvbaibai.cardfantasy.game.LilithDataStore;
 import cfvbaibai.cardfantasy.web.QuestionStore;
 import cfvbaibai.cardfantasy.web.beans.Logger;
 import cfvbaibai.cardfantasy.web.beans.UserAction;
@@ -27,6 +28,9 @@ public class HomeController {
 
     @Autowired(required = true)
     private QuestionStore questionStore;
+    
+    @Autowired
+    private LilithDataStore lilithDataStore;
 
     @RequestMapping(value = "/")
     public ModelAndView home(HttpServletRequest request
@@ -36,6 +40,7 @@ public class HomeController {
         mv.setViewName("home");
         mv.addObject("isNewSession", request.getSession().isNew());
         mv.addObject("questions", questionStore.pickRandom());
+        mv.addObject("lilithDatas", lilithDataStore.getAll());
         //int activeSessionCountValue = activeSessionCount.intValue();
         //mv.addObject("activeSessionCount", activeSessionCountValue);
         //logger.info("Active Session Count: " + activeSessionCountValue);

@@ -2,6 +2,7 @@ package cfvbaibai.cardfantasy.game;
 
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -12,8 +13,6 @@ import org.dom4j.Node;
 import org.dom4j.io.SAXReader;
 
 import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
-import cfvbaibai.cardfantasy.data.Card;
-import cfvbaibai.cardfantasy.data.Race;
 import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.data.SkillType;
 import cfvbaibai.cardfantasy.data.TrivialSkill;
@@ -62,35 +61,8 @@ public class LilithDataStore {
     public LilithStartupInfo getStartupInfo(String bossId) {
         return this.lilithStartupInfos.get(bossId);
     }
-}
-
-class LilithStartupInfo {
-    private DeckStartupInfo dsi;
-    private String bossId;
-    private List<Skill> cardBuffs;
-    public LilithStartupInfo(String bossId, int bossHP, String deckDescs, List<Skill> cardBuffs) {
-        this.bossId = bossId;
-        this.dsi = DeckBuilder.multiBuild(deckDescs);
-        if (bossHP > 0) {
-            for (Card card : dsi.getCards()) {
-                if (card.getRace() == Race.BOSS) {
-                    card.setOverrideHP(bossHP);
-                }
-            }
-        }
-        if (cardBuffs == null) {
-            this.cardBuffs = new ArrayList<Skill>();
-        } else {
-            this.cardBuffs = new ArrayList<Skill>(cardBuffs);
-        }
-    }
-    public List<Skill> getCardBuffs() {
-        return new ArrayList<Skill>(this.cardBuffs);
-    }
-    public DeckStartupInfo getDeckStartupInfo() {
-        return this.dsi;
-    }
-    public String getBossId() {
-        return this.bossId;
+    
+    public Collection<LilithStartupInfo> getAll() {
+        return this.lilithStartupInfos.values();
     }
 }

@@ -17,6 +17,8 @@ import cfvbaibai.cardfantasy.engine.skill.AllSpeedUp;
 import cfvbaibai.cardfantasy.engine.skill.Arouse;
 import cfvbaibai.cardfantasy.engine.skill.AttackUp;
 import cfvbaibai.cardfantasy.engine.skill.BackStab;
+import cfvbaibai.cardfantasy.engine.skill.BasicAtBuff;
+import cfvbaibai.cardfantasy.engine.skill.BasicHpBuff;
 import cfvbaibai.cardfantasy.engine.skill.Bless;
 import cfvbaibai.cardfantasy.engine.skill.Block;
 import cfvbaibai.cardfantasy.engine.skill.BloodDrain;
@@ -964,6 +966,10 @@ public class SkillResolver {
                     LegionBuff.apply(this, card, skillUseInfo, Race.SAVAGE);
                 } else if (skillUseInfo.getType() == SkillType.军团地狱之力) {
                     LegionBuff.apply(this, card, skillUseInfo, Race.HELL);
+                } else if (skillUseInfo.getType() == SkillType.原始体力调整) {
+                    BasicHpBuff.apply(this, skillUseInfo, card);
+                } else if (skillUseInfo.getType() == SkillType.原始攻击调整) {
+                    BasicAtBuff.apply(this, skillUseInfo, card);
                 }
             }
         }

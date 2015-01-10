@@ -387,7 +387,7 @@ public class CardInfo extends EntityInfo {
         }
     }
 
-    public int getOriginalMaxHP() {
+    public int getRawMaxHP() {
         return this.card.getMaxHP();
     }
 

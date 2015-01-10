@@ -158,7 +158,7 @@ public class FreeTest extends PveEngineTest {
     @Test
     public void 莉莉丝战() {
         LilithDataStore store = LilithDataStore.loadDefault();
-        PlayerInfo lilith = PlayerBuilder.buildLilith(store, "困难莉莉丝+法力反射8", 0);
+        PlayerInfo lilith = PlayerBuilder.buildLilith(store, "困难莉莉丝+法力反射8", 0, false);
         PlayerInfo player = PlayerBuilder.build(true, "玩家", 100, "金属巨龙*10");
         TestGameBuilder.play(lilith, player);
     }

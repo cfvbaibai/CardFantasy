@@ -10,7 +10,7 @@ public class CardRuntimeInfo extends CardInitInfo {
     public CardRuntimeInfo(CardInfo card) {
         super(card);
         this.originalAT = card.getInitAT();
-        this.originalMaxHP = card.getOriginalMaxHP();
+        this.originalMaxHP = card.getRawMaxHP();
     }
 
     public int getOriginalMaxHP() {

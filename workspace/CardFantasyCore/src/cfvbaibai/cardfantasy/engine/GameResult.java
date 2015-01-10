@@ -11,14 +11,19 @@ public class GameResult {
     private GameEndCause gameEndCause;
     // Only applicable to boss battle
     private int damageToBoss;
+    private int killedGuardCount;
     private BattleStat battleStat;
 
-    public GameResult(Board finalBoard, Player winner, int round, GameEndCause gameEndCause, int damageToBoss, BattleStat battleStat) {
+    public GameResult(
+        Board finalBoard, Player winner, int round,
+        GameEndCause gameEndCause, int damageToBoss, int killedGuardCount, 
+        BattleStat battleStat) {
         this.finalBoard = finalBoard;
         this.winner = winner;
         this.round = round;
         this.gameEndCause = gameEndCause;
         this.damageToBoss = damageToBoss;
+        this.killedGuardCount = killedGuardCount;
         this.battleStat = battleStat;
     }
     
@@ -53,5 +58,9 @@ public class GameResult {
     
     public BattleStat getBattleStat() {
         return this.battleStat;
+    }
+
+    public int getKilledGuardCount() {
+        return this.killedGuardCount;
     }
 }

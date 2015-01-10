@@ -92,6 +92,13 @@ fieldset.select-2 div.ui-controlgroup-controls .ui-select {
     width: 50%;
 }
 
+fieldset.select-6-4 div.ui-controlgroup-controls > .ui-select:nth-child(1) {
+    width: 60%;
+}
+fieldset.select-6-4 div.ui-controlgroup-controls > .ui-select:nth-child(2) {
+    width: 40%;
+}
+
 .ui-dialog-contain {
 	width: 90%;
 	max-width: 800px;

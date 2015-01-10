@@ -1382,6 +1382,7 @@ var Animater = function() {
             return;
         }
         if (skill.indexOf('军团') == 0 ||
+            skill.indexOf('原始') == 0 ||
             skill.indexOf('守护') == skill.length - 2 ||
             skill.indexOf('之力') == skill.length - 2 ||
             this.msgIgnoredSkills.indexOf(skill) >= 0) {

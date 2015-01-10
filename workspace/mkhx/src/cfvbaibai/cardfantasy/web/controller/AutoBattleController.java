@@ -509,31 +509,32 @@ public class AutoBattleController {
 
     @RequestMapping(value = "/PlayLilith1MatchGame")
     public void playLilith1MatchGame(HttpServletRequest request, HttpServletResponse response,
-            @RequestParam("deck") String deck, @RequestParam("count") int count, @RequestParam("gt") int gameType,
-            @RequestParam("hlv") int heroLv, @RequestParam("bn") String bossName) throws IOException {
+            @RequestParam("deck") String deck, @RequestParam("count") int count, @RequestParam("gt") int guardType,
+            @RequestParam("hlv") int heroLv, @RequestParam("ln") String lilithName) throws IOException {
         PrintWriter writer = response.getWriter();
         try {
-            logger.info("PlayBoss1MatchGame from " + request.getRemoteAddr() + ":");
+            logger.info("PlayLilith1MatchGame from " + request.getRemoteAddr() + ":");
             logger.info("Deck = " + deck);
-            logger.info(String.format("Hero LV = %d, Boss = %s, Game Type = %d", heroLv, bossName, gameType));
+            logger.info(String.format("Hero LV = %d, Lilith = %s, Guard Type = %d", heroLv, lilithName, guardType));
             this.userActionRecorder.addAction(new UserAction(new Date(), request.getRemoteAddr(), "Play Lilith 1Match Game",
-                    String.format("Deck=%s<br />HeroLV=%d, Boss=%s, GameType=%d", deck, heroLv, bossName, gameType)));
-            PlayerInfo player1 = PlayerBuilder.buildLilith(lilithDataStore, bossName, 0);
+                    String.format("Deck=%s<br />HeroLV=%d, Lilith=%s, GuardType=%d", deck, heroLv, lilithName, guardType)));
+            PlayerInfo player1 = PlayerBuilder.buildLilith(lilithDataStore, lilithName, 0, guardType == 1);
             PlayerInfo player2 = PlayerBuilder.build(true, "玩家", deck, heroLv, null);
             WebPlainTextGameUI ui = new WebPlainTextGameUI();
             GameEngine engine = new GameEngine(ui, Rule.getBossBattle());
             engine.registerPlayers(player1, player2);
             GameResult gameResult = engine.playGame();
             writer.print(Utils.getCurrentDateTime() + "<br />");
-            writer.print("造成伤害：" + gameResult.getDamageToBoss() + "<br />");
+            writer.print(String.format("造成BOSS伤害：%d, 杀死杂兵 %d 个<br />",
+                gameResult.getDamageToBoss(), gameResult.getKilledGuardCount()));
             writer.print("------------------ 战斗过程 ------------------<br />");
             writer.print(ui.getAllText());
-            logger.info("Winner: " + gameResult.getWinner().getId() + ", Damage to boss: " + gameResult.getDamageToBoss());
+            logger.info("Winner: " + gameResult.getWinner().getId() + ", Damage to Lilith: " + gameResult.getDamageToBoss());
         } catch (Exception e) {
             writer.print(errorHelper.handleError(e, false));
         }
     }
-    
+
     @RequestMapping(value = "/SimulateBoss1MatchGame", headers = "Accept=application/json")
     public void simulateBoss1MatchGame(HttpServletRequest request, HttpServletResponse response,
             @RequestParam("deck") String deck, @RequestParam("count") int count, @RequestParam("gt") int guardType,
@@ -553,6 +554,32 @@ public class AutoBattleController {
             }
             List<Skill> legionBuffs = SkillBuilder.buildLegionBuffs(buffKingdom, buffForest, buffSavage, buffHell);
             PlayerInfo player2 = PlayerBuilder.build(true, "玩家", deck, heroLv, legionBuffs);
+            StructuredRecordGameUI ui = new StructuredRecordGameUI();
+            GameEngine engine = new GameEngine(ui, Rule.getBossBattle());
+            engine.registerPlayers(player1, player2);
+            GameResult gameResult = engine.playGame();
+            BattleRecord record = ui.getRecord();
+            writer.print(jsonHandler.toJson(record));
+            logger.info("Winner: " + gameResult.getWinner().getId() + ", Damage to boss: " + gameResult.getDamageToBoss());
+        } catch (Exception e) {
+            writer.print(errorHelper.handleError(e, true));
+        }
+    }
+
+    @RequestMapping(value = "/SimulateLilith1MatchGame", headers = "Accept=application/json")
+    public void simulateLilith1MatchGame(HttpServletRequest request, HttpServletResponse response,
+            @RequestParam("deck") String deck, @RequestParam("count") int count, @RequestParam("gt") int guardType,
+            @RequestParam("hlv") int heroLv, @RequestParam("ln") String lilithName) throws IOException {
+        PrintWriter writer = response.getWriter();
+        response.setContentType("application/json");
+        try {
+            logger.info("SimulateBoss1MatchGame from " + request.getRemoteAddr() + ":");
+            logger.info("Deck = " + deck);
+            logger.info("Hero LV = " + heroLv + ", Lilith = " + lilithName);
+            this.userActionRecorder.addAction(new UserAction(new Date(), request.getRemoteAddr(), "Simulate Lilith 1Match Game",
+                    String.format("Deck=%s<br />HeroLV=%d, Lilith=%s, GuardType=%d", deck, heroLv, lilithName, guardType)));
+            PlayerInfo player1 = PlayerBuilder.buildLilith(lilithDataStore, lilithName, 0, guardType == 1);
+            PlayerInfo player2 = PlayerBuilder.build(true, "玩家", deck, heroLv, null);
             StructuredRecordGameUI ui = new StructuredRecordGameUI();
             GameEngine engine = new GameEngine(ui, Rule.getBossBattle());
             engine.registerPlayers(player1, player2);
@@ -620,13 +647,7 @@ public class AutoBattleController {
                     if (damageToBoss < 0) {
                         damageToBoss = 0;
                     }
-                    if (damageToBoss > 10000000) {
-                        logger.info("DamageToBoss=" + damageToBoss);
-                        logger.info("Boss Deck: " + player1.getDeckParsableDesc());
-                        logger.info("Player Deck: " + player2.getDeckParsableDesc());
-                    } else {
-                        stat.addData(damageToBoss);
-                    }
+                    stat.addData(damageToBoss);
                 }
             }
             
@@ -682,7 +703,74 @@ public class AutoBattleController {
             writer.print(errorHelper.handleError(e, false));
         }
     }
-    
+
+    @RequestMapping(value = "/PlayLilithMassiveGame")
+    public void playLilithMassiveGame(HttpServletRequest request, HttpServletResponse response,
+            @RequestParam("deck") String deck, @RequestParam("count") int count, @RequestParam("gt") int guardType,
+            @RequestParam("hlv") int heroLv, @RequestParam("ln") String lilithName) throws IOException {
+        PrintWriter writer = response.getWriter();
+        try {
+            logger.info("PlayLilithMassiveGame from " + request.getRemoteAddr() + ":");
+            logger.info("Deck = " + deck);
+            logger.info("Count = " + count + ", Hero LV = " + heroLv + ", Lilith = " + lilithName);
+            this.userActionRecorder.addAction(new UserAction(new Date(), request.getRemoteAddr(), "Play Boss Massive Game",
+                    String.format("Deck=%s<br />HeroLV=%d, Lilith=%s, Count=%d, GuardType=%d", deck, heroLv, lilithName, count, guardType)));
+            GameUI ui = new DummyGameUI();
+            Rule rule = Rule.getBossBattle();
+            PlayerInfo player1 = PlayerBuilder.buildLilith(lilithDataStore, lilithName, 0, guardType == 1);
+            PlayerInfo player2 = PlayerBuilder.build(true, "玩家", deck, heroLv, null);
+            OneDimensionDataStat statDamage = new OneDimensionDataStat();
+            OneDimensionDataStat statKills = new OneDimensionDataStat();
+            int timeoutCount = 0;
+            GameResult trialResult = GameEngine.play1v1(ui, rule, player1, player2);
+            if (trialResult.getCause() == GameEndCause.战斗超时) {
+                ++timeoutCount;
+            }
+
+            int gameCount = 5000 / trialResult.getRound();
+            if (gameCount <= 1) {
+                gameCount = 1;
+            }
+            writer.append(Utils.getCurrentDateTime() + "<br />");
+            writer.append("模拟场次: " + gameCount + "<br />");
+
+            if (gameCount > 0) {
+                for (int i = 0; i < gameCount; ++i) {
+                    GameResult gameResult = GameEngine.play1v1(ui, rule, player1, player2);
+                    if (gameResult.getCause() == GameEndCause.战斗超时) {
+                        ++timeoutCount;
+                    }
+                    int damageToBoss = gameResult.getDamageToBoss();
+                    statDamage.addData(damageToBoss);
+                    statKills.addData(gameResult.getKilledGuardCount());
+                }
+            }
+
+            if (timeoutCount > 0) {
+                writer.append("超时次数(大于999回合): " + timeoutCount + "<br />");
+                writer.append("您的卡组实在太厉害了！已经超出模拟器的承受能力，结果可能不准确，建议直接实测。<br />");
+            }
+
+            writer.append("<table>");
+            writer.append("<tr><td>最小伤害: </td><td>" + Math.round(statDamage.getMin()) + "</td></tr>");
+            writer.append("<tr><td>平均每次伤害: </td><td>" + Math.round(statDamage.getAverage()) + "</td></tr>");
+            writer.append("<tr><td>最大伤害: </td><td>" + Math.round(statDamage.getMax()) + "</td></tr>");
+            writer.append("<tr><td>不稳定度: </td><td>" + Math.round(statDamage.getCoefficientOfVariation() * 100) + "%</td></tr>");
+            writer.append("</td></tr></table>");
+
+            if (guardType == 1) {
+                writer.append("<table>");
+                writer.append("<tr><td>最少击杀杂兵: </td><td>" + Math.round(statKills.getMin()) + "</td></tr>");
+                writer.append("<tr><td>平均击杀杂兵: </td><td>" + Math.round(statKills.getAverage()) + "</td></tr>");
+                writer.append("<tr><td>最多击杀杂兵: </td><td>" + Math.round(statKills.getMax()) + "</td></tr>");
+                writer.append("<tr><td>不稳定度: </td><td>" + Math.round(statKills.getCoefficientOfVariation() * 100) + "%</td></tr>");
+                writer.append("</td></tr></table>");
+            }
+        } catch (Exception e) {
+            writer.print(errorHelper.handleError(e, false));
+        }
+    }
+
     @RequestMapping(value = "/PlayMap1MatchGame")
     public void playMap1MatchGame(HttpServletRequest request, HttpServletResponse response,
             @RequestParam("deck") String deck, @RequestParam("count") int count,

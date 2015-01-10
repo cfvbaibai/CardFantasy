@@ -223,7 +223,7 @@ public abstract class TextGameUI extends GameUI {
         for (CardInfo card : cards) {
             sb.append(String.format("[%d] %s (等级=%d, 攻击=%d/%d, HP=%d/%d/%d, 状态=%s, 效果=%s)\r\n", i, card.getUniqueName(),
                     card.getLevel(), card.getCurrentAT(), card.getInitAT(), card.getHP(), card.getMaxHP(),
-                    card.getOriginalMaxHP(), card.getStatus().getShortDesc(), card.getEffectsDesc()));
+                    card.getRawMaxHP(), card.getStatus().getShortDesc(), card.getEffectsDesc()));
             ++i;
         }
         if (cards.size() > 0) {

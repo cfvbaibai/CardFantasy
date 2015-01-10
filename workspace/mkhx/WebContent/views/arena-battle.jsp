@@ -52,7 +52,7 @@
                 <a id="play-auto-massive-game-button" class="battle-button" data-role="button" data-mini="true" data-theme="c">连续千场</a>
                 <a data-role="button" data-mini="true" data-theme="c" data-type="bug" href="#">提BUG</a>
             </div>
-            <div id="battle-div" data-mini="true" data-role="collapsible" data-collapsed="false" data-theme="c" data-content-theme="d">
+            <div id="arena-battle-div" data-mini="true" data-role="collapsible" data-collapsed="false" data-theme="c" data-content-theme="d">
                 <h3>战斗记录</h3>
                 <div id="battle-output" class="battle-output">没有战斗</div>
             </div>
