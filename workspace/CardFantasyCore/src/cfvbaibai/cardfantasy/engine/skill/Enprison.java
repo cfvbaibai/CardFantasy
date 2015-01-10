@@ -41,7 +41,7 @@ public class Enprison {
 
             ui.returnCard(attacker, victim, cardSkill);
             victim.getOwner().getDeck().addCard(victim);
-            resolver.resolveLeaveSkills(victim, cardSkill);
+            resolver.resolveLeaveSkills(victim);
         }
     }
 }

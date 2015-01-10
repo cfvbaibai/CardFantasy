@@ -33,6 +33,6 @@ public final class Return {
             // 被召唤的卡牌不回到卡组，而是直接消失
             defender.getOwner().getDeck().addCard(defender);
         }
-        resolver.resolveLeaveSkills(defender, cardSkill);
+        resolver.resolveLeaveSkills(defender);
     }
 }

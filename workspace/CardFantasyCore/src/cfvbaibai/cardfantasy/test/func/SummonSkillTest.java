@@ -81,6 +81,76 @@ public class SummonSkillTest extends SkillValidationTest {
         Assert.assertEquals(2, context.getPlayer(0).getField().size());
     }
     
+    
+    /**
+     * 献祭和时光倒流是同一个优先级的技能，谁在先就谁先发动
+     */
+    @Test
+    public void test献祭_时光倒流() {
+        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "占位符+献祭", "占位符+时光倒流");
+        CardInfo c占位符1 = context.addToHand(0, 0).setSummonDelay(0);
+        context.addToHand(1, 0).setSummonDelay(0);
+        context.startGame();
+
+        random.addNextPicks(1); // 献祭
+        context.proceedOneRound();
+        Assert.assertEquals(1, context.getPlayer(0).getField().size());
+        Assert.assertEquals(c占位符1, context.getPlayer(0).getField().getCard(0));
+    }
+
+    /**
+     * 献祭和时光倒流是同一个优先级的技能，谁在先就谁先发动
+     */
+    @Test
+    public void test时光倒流_献祭() {
+        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "占位符+时光倒流", "占位符+献祭");
+        CardInfo c占位符1 = context.addToHand(0, 0).setSummonDelay(0);
+        context.addToHand(1, 0).setSummonDelay(0);
+        context.startGame();
+
+        random.addNextPicks(0); // 献祭
+        context.proceedOneRound();
+        Assert.assertEquals(1, context.getPlayer(0).getField().size());
+        Assert.assertEquals(c占位符1, context.getPlayer(0).getField().getCard(0));
+    }
+
+    /**
+     * 种族之力比献祭优先级高，而且献祭的攻击力增幅包含种族之力
+     */
+    @Test
+    public void test种族之力_献祭() {
+        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "秘银巨石像+献祭8", "占位符", "隐世先知");
+        CardInfo c秘银巨石像 = context.addToHand(0, 0).setSummonDelay(0);
+        context.addToHand(1, 0).setSummonDelay(0);
+        CardInfo c隐世先知 = context.addToHand(2, 0).setSummonDelay(0);
+        context.startGame();
+
+        random.addNextPicks(1); // 献祭
+        context.proceedOneRound();
+        Assert.assertEquals(2, context.getPlayer(0).getField().size());
+        Assert.assertEquals(c秘银巨石像.getUniqueName(), context.getPlayer(0).getField().getCard(0).getUniqueName());
+        Assert.assertEquals(1970, c秘银巨石像.getCurrentAT());
+        Assert.assertEquals(c隐世先知.getUniqueName(), context.getPlayer(0).getField().getCard(1).getUniqueName());
+    }
+
+
+    /**
+     * 种族之力比献祭优先级高，而且献祭的攻击力增幅包含种族之力
+     */
+    @Test
+    public void test种族之力_献祭_离场() {
+        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "秘银巨石像+献祭8", "隐世先知");
+        CardInfo c秘银巨石像 = context.addToHand(0, 0).setSummonDelay(0);
+        context.addToHand(1, 0).setSummonDelay(0);
+        context.startGame();
+
+        random.addNextPicks(1); // 献祭
+        context.proceedOneRound();
+        Assert.assertEquals(1, context.getPlayer(0).getField().size());
+        Assert.assertEquals(c秘银巨石像.getUniqueName(), context.getPlayer(0).getField().getCard(0).getUniqueName());
+        Assert.assertEquals(1795, c秘银巨石像.getCurrentAT());
+    }
+
     /**
      * 即使在受控的状况下，依然可以使用神性祈求
      */

@@ -12,7 +12,13 @@ import cfvbaibai.cardfantasy.engine.SkillUseInfo;
 
 public class LegionBuff {
     public static void apply(SkillResolver resolver, CardInfo card, SkillUseInfo skillUseInfo, Race race) {
+        if (card == null) {
+            return;
+        }
         if (card.getRace() != race) {
+            return;
+        }
+        if (card.isDead()) {
             return;
         }
         Skill skill = skillUseInfo.getSkill();

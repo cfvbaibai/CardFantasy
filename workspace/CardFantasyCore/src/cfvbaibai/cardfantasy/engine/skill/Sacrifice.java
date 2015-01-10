@@ -40,17 +40,19 @@ public final class Sacrifice {
         if (!result.isAttackable()) {
             return;
         }
-        ui.killCard(card, oblation, skill);
-        // Sacrifice does not trigger death skills.
-        resolver.cardDead(oblation);
-        
+
         int adjHP = skill.getImpact() * card.getMaxHP() / 100;
-        int adjAT = skill.getImpact() * card.getInitAT() / 100;
+        int adjAT = skill.getImpact() * card.getLevel1AT() / 100;
         ui.adjustHP(card, card, adjHP, skill);
         ui.adjustAT(card, card, adjAT, skill);
         card.addEffect(new SkillEffect(SkillEffectType.MAXHP_CHANGE, skillUseInfo, adjHP, true));
         card.addEffect(new SkillEffect(SkillEffectType.ATTACK_CHANGE, skillUseInfo, adjAT, true));
         card.setUsed(skillUseInfo);
-        ui.compactField(card.getOwner().getField());
+
+        ui.killCard(card, oblation, skill);
+        // Sacrifice does not trigger death skills.
+        resolver.cardDead(oblation);
+        resolver.resolveLeaveSkills(oblation);
+        //ui.compactField(card.getOwner().getField());
     }
 }
