@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<div id="dungeon-battle" class="main-page" data-role="page" data-title="地下城战" data-mini="true">
+<div id="lilith-battle" class="main-page" data-role="page" data-title="莉莉丝战" data-mini="true">
     <div data-role="content">
         <div data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">
             <h3>莉莉丝战的方法</h3>
