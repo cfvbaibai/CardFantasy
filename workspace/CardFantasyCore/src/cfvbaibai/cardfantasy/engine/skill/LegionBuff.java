@@ -1,7 +1,5 @@
 package cfvbaibai.cardfantasy.engine.skill;
 
-import java.util.List;
-
 import cfvbaibai.cardfantasy.data.Race;
 import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.engine.CardInfo;
@@ -10,7 +8,7 @@ import cfvbaibai.cardfantasy.engine.SkillEffectType;
 import cfvbaibai.cardfantasy.engine.SkillResolver;
 import cfvbaibai.cardfantasy.engine.SkillUseInfo;
 
-public class LegionBuff {
+public class LegionBuff extends RemovableBuff {
     public static void apply(SkillResolver resolver, CardInfo card, SkillUseInfo skillUseInfo, Race race) {
         if (card.getRace() != race) {
             return;
@@ -28,13 +26,5 @@ public class LegionBuff {
         resolver.getStage().getUI().useSkill(card, skill, true);
         resolver.getStage().getUI().adjustHP(skillUseInfo.getOwner(), card, adjHP, skill);
         card.addEffect(new SkillEffect(SkillEffectType.MAXHP_CHANGE, skillUseInfo, adjHP, false));
-    }
-
-    public static void remove(SkillResolver resolver, SkillUseInfo skillUseInfo, CardInfo card) {
-        List<SkillEffect> effects = card.getEffectsCausedBy(skillUseInfo);
-        for (SkillEffect effect : effects) {
-            resolver.getStage().getUI().loseAdjustATEffect(card, effect);
-            card.removeEffect(effect);
-        }
     }
 }
