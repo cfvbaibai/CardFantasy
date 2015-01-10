@@ -171,7 +171,7 @@ public class StageInfo {
         if (this.getRule().isBossBattle()) {
             Player boss = this.getPlayers().get(0);
             CardInfo bossCard = null;
-            for (CardInfo card : boss.getField().toList()) {
+            for (CardInfo card : boss.getField().getAliveCards()) {
                 if (card.getRace() == Race.BOSS) {
                     bossCard = card;
                 }
@@ -179,6 +179,9 @@ public class StageInfo {
             if (bossCard == null) {
                 // boss is killed or in hand/deck
                 for (CardInfo card : boss.getGrave().toList()) {
+                    if (card == null) {
+                        continue;
+                    }
                     if (card.getRace() == Race.BOSS) {
                         bossCard = card;
                         damageToBoss = card.getRawMaxHP();
@@ -198,6 +201,9 @@ public class StageInfo {
                 }
             }
             for (CardInfo card : boss.getGrave().toList()) {
+                if (card == null) {
+                    continue;
+                }
                 if (card.getRace() != Race.BOSS) {
                     ++killedGuardCount;
                 }

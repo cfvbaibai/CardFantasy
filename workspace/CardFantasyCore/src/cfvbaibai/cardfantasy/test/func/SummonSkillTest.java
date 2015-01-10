@@ -64,4 +64,20 @@ public class SummonSkillTest extends SkillValidationTest {
         Assert.assertEquals(2, context.getPlayer(0).getField().size());
         Assert.assertEquals(1 + 500 /* 王国守护10 */ - 120 /* 法力反射 */, c残血王国小兵.getHP());
     }
+    
+    /**
+     * 献祭能被免疫
+     */
+    @Test
+    public void test献祭_免疫() {
+        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "占位符+献祭", "占位符+免疫");
+        context.addToHand(0, 0).setSummonDelay(0);
+        context.addToHand(1, 0).setSummonDelay(0);
+        context.startGame();
+
+        random.addNextPicks(1); // 献祭
+        context.proceedOneRound();
+        // 被免疫
+        Assert.assertEquals(2, context.getPlayer(0).getField().size());
+    }
 }
