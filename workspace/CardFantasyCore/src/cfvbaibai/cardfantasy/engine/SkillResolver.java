@@ -148,7 +148,6 @@ public class SkillResolver {
     public void resolvePreAttackSkills(Player attacker, Player defender) throws HeroDieSignal {
         List<CardInfo> cards = attacker.getField().getAliveCards();
         for (CardInfo card : cards) {
-            if (card.isFullyControlled()) { continue; }
             for (SkillUseInfo skillUseInfo : card.getNormalUsableSkills()) {
                 if (skillUseInfo.getType() == SkillType.神性祈求) {
                     Purify.apply(skillUseInfo, this, card);
@@ -1061,13 +1060,7 @@ public class SkillResolver {
             for (SkillUseInfo skillUseInfo : card.getNormalUsableSkills()) {
                 if (skillUseInfo.getType() == SkillType.时光倒流) {
                     TimeBack.apply(skillUseInfo, this, myField.getOwner(), opField.getOwner());
-                }
-            }
-        }
-
-        for (CardInfo card : summonedCards) {
-            for (SkillUseInfo skillUseInfo : card.getNormalUsableSkills()) {
-                if (skillUseInfo.getType() == SkillType.献祭) {
+                } else if (skillUseInfo.getType() == SkillType.献祭) {
                     Sacrifice.apply(this, skillUseInfo, card, reviver);
                 } else if (skillUseInfo.getType() == SkillType.反噬) {
                     CounterBite.apply(skillUseInfo, this, card);

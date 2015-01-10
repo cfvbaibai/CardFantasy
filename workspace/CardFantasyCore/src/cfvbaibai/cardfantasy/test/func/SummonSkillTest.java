@@ -80,4 +80,26 @@ public class SummonSkillTest extends SkillValidationTest {
         // 被免疫
         Assert.assertEquals(2, context.getPlayer(0).getField().size());
     }
+    
+    /**
+     * 即使在受控的状况下，依然可以使用神性祈求
+     */
+    @Test
+    public void test神性祈求_封印() {
+        SkillTestContext context = SkillValidationTestSuite.prepare(
+            50, 50, "占位符", "占位符+封印", "秘银巨石像+神性祈求", "秘银巨石像");
+        CardInfo c占位符1 = context.addToField(0, 0);
+        CardInfo c占位符2 = context.addToHand(1, 0).setSummonDelay(0);
+        context.addToField(2, 1);
+        context.addToField(3, 1);
+        context.startGame();
+
+        // 两个秘银都被封印
+        context.proceedOneRound();
+
+        context.proceedOneRound();
+        // 两个秘银的封印都被神性祈求解除
+        Assert.assertEquals(810, 5000 - c占位符1.getHP());
+        Assert.assertEquals(660, 5000 - c占位符2.getHP());
+    }
 }

@@ -1452,7 +1452,7 @@ var Animater = function() {
         } else if (skill == '法力侵蚀') {
             this.flyImage({ fileName: 'mana-drain.png', width: 48, height: 48, text: skill },
                     attacker, defenders, settings.skillDuration);
-        } else if (skill == '净化') {
+        } else if (skill == '净化' || skill == '神性祈求') {
             this.flyImage({ fileName: 'purify.png', width: 48, height: 48, text: skill },
                     attacker, defenders, settings.skillDuration);
         } else if (skill == '血炼' || skill == '鲜血盛宴') {
