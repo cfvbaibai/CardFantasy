@@ -404,17 +404,16 @@ $(document)
     */
 })
 .on("pageinit", "#lilith-battle", function(event) {
-    var dataText = $.cookie('lilith-battle');
-    if (dataText) {
-        var data = JSON.parse(dataText);
-        if (data.deck) { $('#lilith-player-deck').val(data.deck); }
-        if (data.hlv) { $('#lilith-player-heroLv').val(data.hlv); }
-        if (data.bn) { $('#lilith-name').val(data.bn).selectmenu('refresh'); }
-    }
-    $('#play-lilith-1-game-button').attr('href', 'javascript:CardFantasy.Core.playLilithGame(1);');
-    $('#simulate-lilith-1-game-button').attr('href', 'javascript:CardFantasy.Core.playLilithGame(-1);');
-    $('#play-lilith-massive-game-button').attr('href', 'javascript:CardFantasy.Core.playLilithGame(1000);');
-    $('#lilith-config-1').hide();
+    var updateRemainingHp = function() {
+        var lilithName = $('#lilith-name').val();
+        if (lilithName.indexOf('困难') >= 0) {
+            $('#lilith-remaining-hp').val(90000);
+        } else if (lilithName.indexOf('噩梦') >= 0) {
+            $('#lilith-remaining-hp').val(160000);
+        } else if (lilithName.indexOf('炼狱') >= 0) {
+            $('#lilith-remaining-hp').val(250000);
+        }
+    };
     $('#lilith-game-type').change(function() { 
         var gameType = $(this).children('option:selected').val(); 
         if (gameType == 0) {
@@ -425,6 +424,19 @@ $(document)
             $('#lilith-config-0').hide();
         }
     });
+    $('#lilith-name').change(updateRemainingHp);
+    var dataText = $.cookie('lilith-battle');
+    if (dataText) {
+        var data = JSON.parse(dataText);
+        if (data.deck) { $('#lilith-player-deck').val(data.deck); }
+        if (data.hlv) { $('#lilith-player-heroLv').val(data.hlv); }
+        if (data.bn) { $('#lilith-name').val(data.bn).selectmenu('refresh'); }
+        updateRemainingHp();
+    }
+    $('#play-lilith-1-game-button').attr('href', 'javascript:CardFantasy.Core.playLilithGame(1);');
+    $('#simulate-lilith-1-game-button').attr('href', 'javascript:CardFantasy.Core.playLilithGame(-1);');
+    $('#play-lilith-massive-game-button').attr('href', 'javascript:CardFantasy.Core.playLilithGame(1000);');
+    $('#lilith-config-1').hide();
 })
 .on("pageinit", "#arena-battle", function(event) {
     var dataText = $.cookie('arena-battle');
