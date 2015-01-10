@@ -38,6 +38,7 @@
     </bean>
     
     <bean class="cfvbaibai.cardfantasy.data.CardDataStore" factory-method="loadDefault" />
+    <bean class="cfvbaibai.cardfantasy.game.LilithDataStore" factory-method="loadDefault" />
 <!--
     <bean class="cfvbaibai.cardfantasy.web.dao.DaoServiceImpl" />
 

@@ -10,6 +10,7 @@ public class Card implements Cloneable, Comparable <Card> {
     private int exp;
     private String uniqueName;
     private CardSkill extraSkill;
+    private int overrideHP;
 
     public Card(CardData sourceInfo) {
         this(sourceInfo, 0, "");
@@ -58,9 +59,17 @@ public class Card implements Cloneable, Comparable <Card> {
     public int getInitAT() {
         return this.sourceInfo.getBaseAT() + this.sourceInfo.getIncrAT() * this.getLevel();
     }
-    
+
     public int getMaxHP() {
-        return this.sourceInfo.getBaseHP() + this.sourceInfo.getIncrHP() * this.getLevel();
+        if (this.overrideHP <= 0) {
+            return this.sourceInfo.getBaseHP() + this.sourceInfo.getIncrHP() * this.getLevel();
+        } else {
+            return this.overrideHP;
+        }
+    }
+    
+    public void setOverrideHP(int overrideHP) {
+        this.overrideHP = overrideHP;
     }
 
     public List<CardSkill> getAllSkills() {

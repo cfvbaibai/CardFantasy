@@ -2,6 +2,8 @@ package cfvbaibai.cardfantasy.game;
 
 import java.util.List;
 
+import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
+import cfvbaibai.cardfantasy.data.Card;
 import cfvbaibai.cardfantasy.data.PlayerInfo;
 import cfvbaibai.cardfantasy.data.Skill;
 
@@ -14,13 +16,29 @@ public class PlayerBuilder {
         DeckStartupInfo deck = DeckBuilder.build(descs);
         return new PlayerInfo(isNormalPlayer, id, level, cardBuffs, deck.getRunes(), deck.getCards());
     }
-    
+
     public static PlayerInfo build(boolean isNormalPlayer, String id, String descText, int level) {
         return build(isNormalPlayer, id, descText, level, null);
     }
-    
+
     public static PlayerInfo build(boolean isNormalPlayer, String id, String descText, int level, List<Skill> cardBuffs) {
-        DeckStartupInfo deck =  DeckBuilder.multiBuild(descText);
+        DeckStartupInfo deck = DeckBuilder.multiBuild(descText);
         return new PlayerInfo(isNormalPlayer, id, level, cardBuffs, deck.getRunes(), deck.getCards());
+    }
+    public static PlayerInfo buildLilith(LilithDataStore lds, String bossId, int overrideBossHP) {
+        LilithStartupInfo lsi = lds.getStartupInfo(bossId);
+        if (lsi == null) {
+            throw new CardFantasyRuntimeException("Invalid Lilith ID: " + bossId);
+        }
+        DeckStartupInfo dsi = lsi.getDeckStartupInfo();
+        PlayerInfo playerInfo = new PlayerInfo(false, bossId, 100, lsi.getCardBuffs(), dsi.getRunes(), dsi.getCards());
+        if (overrideBossHP > 0) {
+            for (Card card : playerInfo.getCards()) {
+                if (card.getId().equals(bossId)) {
+                    card.setOverrideHP(overrideBossHP);
+                }
+            }
+        }
+        return playerInfo;
     }
 }

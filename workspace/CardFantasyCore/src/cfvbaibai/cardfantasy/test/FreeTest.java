@@ -15,6 +15,7 @@ import cfvbaibai.cardfantasy.engine.GameResult;
 import cfvbaibai.cardfantasy.engine.Rule;
 import cfvbaibai.cardfantasy.game.DummyGameUI;
 import cfvbaibai.cardfantasy.game.GameResultStat;
+import cfvbaibai.cardfantasy.game.LilithDataStore;
 import cfvbaibai.cardfantasy.game.PlayerBuilder;
 import cfvbaibai.cardfantasy.game.SkillBuilder;
 
@@ -152,6 +153,14 @@ public class FreeTest extends PveEngineTest {
     public void 魔神战() {
         PlayerInfo player = PlayerBuilder.build(true, "玩家", 75, SkillBuilder.buildLegionBuffs(10, 10, 10, 10), "堕落精灵*2", "淬炼");
         TestGameBuilder.playBossBattle(player, "复仇女神");
+    }
+    
+    @Test
+    public void 莉莉丝战() {
+        LilithDataStore store = LilithDataStore.loadDefault();
+        PlayerInfo lilith = PlayerBuilder.buildLilith(store, "困难莉莉丝+法力反射8", 0);
+        PlayerInfo player = PlayerBuilder.build(true, "玩家", 100, "金属巨龙*10");
+        TestGameBuilder.play(lilith, player);
     }
     
     @Test

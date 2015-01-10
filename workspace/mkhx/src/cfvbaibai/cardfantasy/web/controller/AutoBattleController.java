@@ -38,6 +38,7 @@ import cfvbaibai.cardfantasy.engine.Rule;
 import cfvbaibai.cardfantasy.game.DeckBuilder;
 import cfvbaibai.cardfantasy.game.DummyGameUI;
 import cfvbaibai.cardfantasy.game.GameResultStat;
+import cfvbaibai.cardfantasy.game.LilithDataStore;
 import cfvbaibai.cardfantasy.game.MapInfo;
 import cfvbaibai.cardfantasy.game.MapStages;
 import cfvbaibai.cardfantasy.game.PlayerBuilder;
@@ -70,6 +71,9 @@ public class AutoBattleController {
     
     @Autowired
     private MapStages maps;
+    
+    @Autowired
+    private LilithDataStore lilithDataStore;
     
     @Autowired
     private Logger logger;
@@ -489,6 +493,33 @@ public class AutoBattleController {
             }
             List<Skill> legionBuffs = SkillBuilder.buildLegionBuffs(buffKingdom, buffForest, buffSavage, buffHell);
             PlayerInfo player2 = PlayerBuilder.build(true, "玩家", deck, heroLv, legionBuffs);
+            WebPlainTextGameUI ui = new WebPlainTextGameUI();
+            GameEngine engine = new GameEngine(ui, Rule.getBossBattle());
+            engine.registerPlayers(player1, player2);
+            GameResult gameResult = engine.playGame();
+            writer.print(Utils.getCurrentDateTime() + "<br />");
+            writer.print("造成伤害：" + gameResult.getDamageToBoss() + "<br />");
+            writer.print("------------------ 战斗过程 ------------------<br />");
+            writer.print(ui.getAllText());
+            logger.info("Winner: " + gameResult.getWinner().getId() + ", Damage to boss: " + gameResult.getDamageToBoss());
+        } catch (Exception e) {
+            writer.print(errorHelper.handleError(e, false));
+        }
+    }
+
+    @RequestMapping(value = "/PlayLilith1MatchGame")
+    public void playLilith1MatchGame(HttpServletRequest request, HttpServletResponse response,
+            @RequestParam("deck") String deck, @RequestParam("count") int count, @RequestParam("gt") int gameType,
+            @RequestParam("hlv") int heroLv, @RequestParam("bn") String bossName) throws IOException {
+        PrintWriter writer = response.getWriter();
+        try {
+            logger.info("PlayBoss1MatchGame from " + request.getRemoteAddr() + ":");
+            logger.info("Deck = " + deck);
+            logger.info(String.format("Hero LV = %d, Boss = %s, Game Type = %d", heroLv, bossName, gameType));
+            this.userActionRecorder.addAction(new UserAction(new Date(), request.getRemoteAddr(), "Play Lilith 1Match Game",
+                    String.format("Deck=%s<br />HeroLV=%d, Boss=%s, GameType=%d", deck, heroLv, bossName, gameType)));
+            PlayerInfo player1 = PlayerBuilder.buildLilith(lilithDataStore, bossName, 0);
+            PlayerInfo player2 = PlayerBuilder.build(true, "玩家", deck, heroLv, null);
             WebPlainTextGameUI ui = new WebPlainTextGameUI();
             GameEngine engine = new GameEngine(ui, Rule.getBossBattle());
             engine.registerPlayers(player1, player2);
