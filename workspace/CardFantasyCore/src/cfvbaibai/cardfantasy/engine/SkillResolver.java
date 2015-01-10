@@ -952,13 +952,26 @@ public class SkillResolver {
 
     }
 
+    public void resolveCardBuffs(List<CardInfo> summonedCards, Field myField) {
+        Player player = myField.getOwner();
+        for (SkillUseInfo skillUseInfo : player.getCardBuffs()) {
+            for (CardInfo card : summonedCards) {
+                if (skillUseInfo.getType() == SkillType.军团王国之力) {
+                    LegionBuff.apply(this, card, skillUseInfo, Race.KINGDOM);
+                } else if (skillUseInfo.getType() == SkillType.军团森林之力) {
+                    LegionBuff.apply(this, card, skillUseInfo, Race.FOREST);
+                } else if (skillUseInfo.getType() == SkillType.军团蛮荒之力) {
+                    LegionBuff.apply(this, card, skillUseInfo, Race.SAVAGE);
+                } else if (skillUseInfo.getType() == SkillType.军团地狱之力) {
+                    LegionBuff.apply(this, card, skillUseInfo, Race.HELL);
+                }
+            }
+        }
+    }
     // reviver: for most of the cases, it should be null.
     // It is only set when the summoning skill performer is revived by another card.
     public void resolveSummoningSkills(List<CardInfo> summonedCards, Field myField, Field opField, CardInfo reviver) throws HeroDieSignal {
-        // Legion buff
-        for (CardInfo card : summonedCards) {
-            LegionBuff.apply(this, card);
-        }
+        resolveCardBuffs(summonedCards, myField);
 
         // Racial buff
         for (CardInfo fieldCard : myField.getAliveCards()) {

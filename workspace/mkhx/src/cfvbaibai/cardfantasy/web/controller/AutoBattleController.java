@@ -26,9 +26,9 @@ import cfvbaibai.cardfantasy.Randomizer;
 import cfvbaibai.cardfantasy.data.Card;
 import cfvbaibai.cardfantasy.data.CardData;
 import cfvbaibai.cardfantasy.data.CardDataStore;
-import cfvbaibai.cardfantasy.data.Legion;
 import cfvbaibai.cardfantasy.data.PlayerInfo;
 import cfvbaibai.cardfantasy.data.RuneData;
+import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.data.SkillTag;
 import cfvbaibai.cardfantasy.data.SkillType;
 import cfvbaibai.cardfantasy.engine.GameEndCause;
@@ -44,6 +44,7 @@ import cfvbaibai.cardfantasy.game.PlayerBuilder;
 import cfvbaibai.cardfantasy.game.PveEngine;
 import cfvbaibai.cardfantasy.game.PveGameResult;
 import cfvbaibai.cardfantasy.game.PveGameResultStat;
+import cfvbaibai.cardfantasy.game.SkillBuilder;
 import cfvbaibai.cardfantasy.web.ErrorHelper;
 import cfvbaibai.cardfantasy.web.OneDimensionDataStat;
 import cfvbaibai.cardfantasy.web.Utils;
@@ -486,8 +487,8 @@ public class AutoBattleController {
             if (guardType == 1) {
                 addBossGuards(player1);
             }
-            PlayerInfo player2 = PlayerBuilder.build(true, "玩家", deck, heroLv, new Legion(buffKingdom, buffForest,
-                    buffSavage, buffHell));
+            List<Skill> legionBuffs = SkillBuilder.buildLegionBuffs(buffKingdom, buffForest, buffSavage, buffHell);
+            PlayerInfo player2 = PlayerBuilder.build(true, "玩家", deck, heroLv, legionBuffs);
             WebPlainTextGameUI ui = new WebPlainTextGameUI();
             GameEngine engine = new GameEngine(ui, Rule.getBossBattle());
             engine.registerPlayers(player1, player2);
@@ -519,8 +520,8 @@ public class AutoBattleController {
             if (guardType == 1) {
                 addBossGuards(player1);
             }
-            PlayerInfo player2 = PlayerBuilder.build(true, "玩家", deck, heroLv, new Legion(buffKingdom, buffForest,
-                    buffSavage, buffHell));
+            List<Skill> legionBuffs = SkillBuilder.buildLegionBuffs(buffKingdom, buffForest, buffSavage, buffHell);
+            PlayerInfo player2 = PlayerBuilder.build(true, "玩家", deck, heroLv, legionBuffs);
             StructuredRecordGameUI ui = new StructuredRecordGameUI();
             GameEngine engine = new GameEngine(ui, Rule.getBossBattle());
             engine.registerPlayers(player1, player2);
@@ -546,8 +547,8 @@ public class AutoBattleController {
             logger.info("Count = " + count + ", Hero LV = " + heroLv + ", Boss = " + bossName);
             this.userActionRecorder.addAction(new UserAction(new Date(), request.getRemoteAddr(), "Play Boss Massive Game",
                     String.format("Deck=%s<br />HeroLV=%d, Boss=%s, Count=%d, GuardType=%d", deck, heroLv, bossName, count, guardType)));
-            PlayerInfo player2 = PlayerBuilder.build(true, "玩家", deck, heroLv, new Legion(buffKingdom, buffForest,
-                    buffSavage, buffHell));
+            List<Skill> legionBuffs = SkillBuilder.buildLegionBuffs(buffKingdom, buffForest, buffSavage, buffHell);
+            PlayerInfo player2 = PlayerBuilder.build(true, "玩家", deck, heroLv, legionBuffs);
             writer.append(Utils.getCurrentDateTime() + "<br />");
             OneDimensionDataStat stat = new OneDimensionDataStat();
             int timeoutCount = 0;

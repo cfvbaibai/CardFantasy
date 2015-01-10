@@ -2,7 +2,6 @@ package cfvbaibai.cardfantasy.web.animation;
 
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.EntityInfo;
-import cfvbaibai.cardfantasy.engine.LegionInfo;
 import cfvbaibai.cardfantasy.engine.RuneInfo;
 
 public class EntityRuntimeInfo {
@@ -18,9 +17,6 @@ public class EntityRuntimeInfo {
         } else if (entityInfo instanceof RuneInfo) {
             this.type = "Rune";
             this.uniqueName = ((RuneInfo)entityInfo).getName();
-        } else if (entityInfo instanceof LegionInfo) {
-            this.type = "Legion";
-            this.uniqueName = "军团";
         }
     }
     

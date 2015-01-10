@@ -9,7 +9,6 @@ import org.junit.Test;
 import cfvbaibai.cardfantasy.Table;
 import cfvbaibai.cardfantasy.data.CardData;
 import cfvbaibai.cardfantasy.data.CardDataStore;
-import cfvbaibai.cardfantasy.data.Legion;
 import cfvbaibai.cardfantasy.data.PlayerInfo;
 import cfvbaibai.cardfantasy.engine.GameEngine;
 import cfvbaibai.cardfantasy.engine.GameResult;
@@ -17,6 +16,7 @@ import cfvbaibai.cardfantasy.engine.Rule;
 import cfvbaibai.cardfantasy.game.DummyGameUI;
 import cfvbaibai.cardfantasy.game.GameResultStat;
 import cfvbaibai.cardfantasy.game.PlayerBuilder;
+import cfvbaibai.cardfantasy.game.SkillBuilder;
 
 public class FreeTest extends PveEngineTest {
 
@@ -150,7 +150,7 @@ public class FreeTest extends PveEngineTest {
     
     @Test
     public void 魔神战() {
-        PlayerInfo player = PlayerBuilder.build(true, "玩家", 75, new Legion(10, 10, 10, 10), "堕落精灵*2", "淬炼");
+        PlayerInfo player = PlayerBuilder.build(true, "玩家", 75, SkillBuilder.buildLegionBuffs(10, 10, 10, 10), "堕落精灵*2", "淬炼");
         TestGameBuilder.playBossBattle(player, "复仇女神");
     }
     

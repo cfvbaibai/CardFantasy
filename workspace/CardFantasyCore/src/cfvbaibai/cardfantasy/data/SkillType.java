@@ -164,7 +164,9 @@ public enum SkillType {
     军团地狱之力("", 0, 3, SkillTag.永久, SkillTag.原始攻击加成, SkillTag.不可洗炼),
     军团魔神之力("", 0, SkillTag.不可洗炼),
     军团萌货之力("", 0, SkillTag.不可洗炼),
-    
+    原始攻击调整("", 0, 1, SkillTag.永久, SkillTag.原始攻击加成, SkillTag.不可洗炼),
+    原始体力调整("", 0, 1, SkillTag.永久, SkillTag.不可洗炼),
+
     魔神之刃("", 2000, 0, SkillTag.抗免疫, SkillTag.不可洗炼),
     魔神之甲("", 1500, 0, SkillTag.抗免疫, SkillTag.不可洗炼),
     魔神之咒("", 1000, 0, SkillTag.抗免疫, SkillTag.不可洗炼),

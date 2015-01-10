@@ -279,7 +279,7 @@ public abstract class TextGameUI extends GameUI {
             return;
         }
         String verb = adjAT > 0 ? "增加" : "降低";
-        sayF("%s 使用 %s %s 了 %s 的 %d 点攻击! %d -> %d.", source.getShortDesc(), cardSkill.getShortDesc(), verb,
+        sayF("%s 使用 %s %s 了 %s 的 AT %d 点! %d -> %d.", source.getShortDesc(), cardSkill.getShortDesc(), verb,
                 target.getShortDesc(), Math.abs(adjAT), target.getCurrentAT(), target.getCurrentAT() + adjAT);
     }
 
@@ -290,8 +290,9 @@ public abstract class TextGameUI extends GameUI {
         }
         String verb = adjHP > 0 ? "增加" : "降低";
         for (CardInfo target : targets) {
-            sayF("%s 使用 %s %s 了 %s 的HP! %d -> %d.", source.getShortDesc(), cardSkill.getShortDesc(), verb,
-                target.getShortDesc(), target.getHP(), target.getHP() + adjHP);
+            sayF("%s 使用 %s %s 了 %s 的 HP %d 点! %d -> %d.",
+                source.getShortDesc(), cardSkill.getShortDesc(), verb, target.getShortDesc(),
+                Math.abs(adjHP), target.getHP(), target.getHP() + adjHP);
         }
     }
 

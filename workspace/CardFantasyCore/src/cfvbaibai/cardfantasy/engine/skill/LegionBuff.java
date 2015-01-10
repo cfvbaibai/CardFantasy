@@ -2,17 +2,17 @@ package cfvbaibai.cardfantasy.engine.skill;
 
 import java.util.List;
 
+import cfvbaibai.cardfantasy.data.Race;
 import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.SkillEffect;
 import cfvbaibai.cardfantasy.engine.SkillEffectType;
-import cfvbaibai.cardfantasy.engine.SkillUseInfo;
 import cfvbaibai.cardfantasy.engine.SkillResolver;
+import cfvbaibai.cardfantasy.engine.SkillUseInfo;
 
 public class LegionBuff {
-    public static void apply(SkillResolver resolver, CardInfo card) {
-        SkillUseInfo skillUseInfo = card.getOwner().getLegionBuffSkill(card.getRace());
-        if (skillUseInfo == null) {
+    public static void apply(SkillResolver resolver, CardInfo card, SkillUseInfo skillUseInfo, Race race) {
+        if (card.getRace() != race) {
             return;
         }
         Skill skill = skillUseInfo.getSkill();

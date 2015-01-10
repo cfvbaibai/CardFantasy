@@ -11,7 +11,7 @@ public class PlayerInfo {
     private boolean isNormalPlayer;
     private String id;
     private int level;
-    private Legion legion;
+    private List<Skill> cardBuffs;
     private Collection<Card> cards;
     private Collection<Rune> runes;
     private static int[] hps = new int[] {
@@ -27,7 +27,7 @@ public class PlayerInfo {
         13000, 13150, 13300, 13450, 13600, 13750, 13900, 14050, 14200, 14350,
         15400, 15560, 15720, 15880, 16040, 16200, 16360, 16520, 16680, 16840,
     };
-    
+
     private static int[] costs = new int[] {
         0,
         13,  16,  19,  22,  25,  28,  31,  34,  37,  40,
@@ -58,29 +58,33 @@ public class PlayerInfo {
         3, 3, 3, 3, 3, 3, 3, 3, 3, 4,
     };
 
-    public PlayerInfo(boolean isNormalPlayer, String id, int level, Legion legion, Collection<Rune> runes, Card ... cards) {
+    public PlayerInfo(boolean isNormalPlayer, String id, int level, List<Skill> cardBuffs, Collection<Rune> runes, Card ... cards) {
         List<Card> cardList = new ArrayList<Card>();
         for (Card card : cards) {
             cardList.add(card);
         }
-        init(isNormalPlayer, id, level, legion, runes, cardList);
+        init(isNormalPlayer, id, level, cardBuffs, runes, cardList);
     }
     
-    public PlayerInfo(boolean isNormalPlayer, String id, int level, Legion legion, Collection <Rune> runes, Collection <Card> cards) {
-        init(isNormalPlayer, id, level, legion, runes, cards);
+    public PlayerInfo(boolean isNormalPlayer, String id, int level, List<Skill> cardBuffs, Collection <Rune> runes, Collection <Card> cards) {
+        init(isNormalPlayer, id, level, cardBuffs, runes, cards);
     }
     
-    private final void init(boolean isNormalPlayer, String id, int level, Legion legion, Collection <Rune> runes, Collection <Card> cards) {
+    private final void init(boolean isNormalPlayer, String id, int level, List<Skill> cardBuffs, Collection <Rune> runes, Collection <Card> cards) {
         this.isNormalPlayer = isNormalPlayer;
         this.id = id;
         this.level = level;
-        this.legion = legion;
+        if (cardBuffs == null) {
+            this.cardBuffs = new ArrayList<Skill>();
+        } else {
+            this.cardBuffs = new ArrayList<Skill>(cardBuffs);
+        }
         this.runes = new ArrayList<Rune>(runes);
         this.cards = new ArrayList<Card>(cards);
     }
     
-    public Legion getLegion() {
-        return this.legion;
+    public List<Skill> getCardBuffs() {
+        return new ArrayList<Skill>(this.cardBuffs);
     }
 
     public int getMaxHP() {

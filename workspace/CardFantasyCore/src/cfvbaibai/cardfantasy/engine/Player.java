@@ -2,16 +2,12 @@ package cfvbaibai.cardfantasy.engine;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import cfvbaibai.cardfantasy.data.Card;
-import cfvbaibai.cardfantasy.data.Legion;
-import cfvbaibai.cardfantasy.data.LegionSkill;
 import cfvbaibai.cardfantasy.data.PlayerInfo;
-import cfvbaibai.cardfantasy.data.Race;
 import cfvbaibai.cardfantasy.data.RuneData;
+import cfvbaibai.cardfantasy.data.Skill;
 
 public class Player extends EntityInfo {
     private PlayerInfo playerInfo;
@@ -21,7 +17,7 @@ public class Player extends EntityInfo {
     private Field field;
     private OutField outField;
     private RuneBox runeBox;
-    private Map <Race, SkillUseInfo> legionBuffSkills;
+    private List<SkillUseInfo> cardBuffs;
     private int hp;
     
     public Player(PlayerInfo playerInfo, StageInfo stage) {
@@ -33,13 +29,9 @@ public class Player extends EntityInfo {
         this.outField = new OutField();
         this.runeBox = new RuneBox(this, playerInfo.getRunes());
         this.hp = playerInfo.getMaxHP();
-        this.legionBuffSkills = new HashMap <Race, SkillUseInfo>();
-        if (playerInfo.getLegion() != null) {
-            Legion legion = playerInfo.getLegion();
-            LegionInfo legionInfo = new LegionInfo(legion, this);
-            for (Race race : Race.values()) {
-                legionBuffSkills.put(race, new SkillUseInfo(legionInfo, LegionSkill.create(legion, race)));
-            }
+        this.cardBuffs = new ArrayList<SkillUseInfo>();
+        for (Skill cardBuff : playerInfo.getCardBuffs()) {
+            this.cardBuffs.add(new SkillUseInfo(this, cardBuff));
         }
     }
     
@@ -141,14 +133,6 @@ public class Player extends EntityInfo {
             return null;
         }
     }
-    
-    public SkillUseInfo getLegionBuffSkill(Race race) {
-        if (this.legionBuffSkills.containsKey(race)) {
-            return this.legionBuffSkills.get(race);
-        } else {
-            return null;
-        }
-    }
 
     public int getLevel() {
         return this.getPlayerInfo().getLevel();
@@ -162,5 +146,9 @@ public class Player extends EntityInfo {
     @Override
     public Player getOwner() {
         return this;
+    }
+
+    public List<SkillUseInfo> getCardBuffs() {
+         return new ArrayList<SkillUseInfo>(this.cardBuffs);
     }
 }
