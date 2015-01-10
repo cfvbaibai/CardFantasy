@@ -9,8 +9,7 @@
                 <h3>公告</h3>
                 <ul>
                     <li>最新添加了魔神战随机杂兵功能，欢迎报告BUG，戳<a href="http://tieba.baidu.com/p/3514710278" target="_blank">这里</a>参与魔神战模拟讨论</li>
-                    <li>莉莉丝战需要调整，暂时回炉一下</li>
-                    <!-- <li>感谢<x>yezhihuib</x>大大无私提供的丰富资料，还有各位朋友的热心帮助，莉莉丝战已完成，如若发现BUG，请戳<a href="http://tieba.baidu.com/p/3514714595" target="_blank">这里</a>报告</li> -->
+                    <li>感谢<x>yezhihuib</x>大大无私提供的丰富资料，还有各位朋友的热心帮助，莉莉丝战已完成，如若发现BUG，请戳<a href="http://tieba.baidu.com/p/3514714595" target="_blank">这里</a>报告</li>
                     <li><a href="#" data-type="bug">魔卡幻想模拟器贴吧</a>已成立，欢迎大家来提BUG、提需求、提供技能结算细节。</li>
                 </ul>
             </div>
@@ -29,7 +28,7 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">
                 <h3>更新日志</h3>
                 <ul class="news-content">
-                    <!-- <li>2015-01-10: 添加新模式【莉莉丝战】，感谢<x>yezhihuib</x>大神的资料和无私奉献，感谢<x>小猫崽k</x>, <x>快到碗里来mys</x>, <x>阿呆Frank</x>, <x>阿里兰朵</x>, <x>adssgd</x>的热心帮助。 -->
+                    <li>2015-01-10: 添加新模式【莉莉丝战】，感谢<x>yezhihuib</x>大神的资料和无私奉献，感谢<x>小猫崽k</x>, <x>快到碗里来mys</x>, <x>阿呆Frank</x>, <x>阿里兰朵</x>, <x>adssgd</x>的热心帮助。
                     <li>2015-01-09: 添加新卡【驭灵法师】，感谢<x>均卡</x>提供数据</li>
                     <li>2015-01-08: <ul>
                         <li>添加新卡【圣泉元神】</li>

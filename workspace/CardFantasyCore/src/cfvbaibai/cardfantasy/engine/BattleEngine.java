@@ -9,26 +9,61 @@ import cfvbaibai.cardfantasy.CardFantasyUserRuntimeException;
 import cfvbaibai.cardfantasy.GameOverSignal;
 import cfvbaibai.cardfantasy.GameUI;
 import cfvbaibai.cardfantasy.data.Card;
-import cfvbaibai.cardfantasy.data.Skill;
-import cfvbaibai.cardfantasy.data.SkillType;
 import cfvbaibai.cardfantasy.data.PlayerInfo;
 import cfvbaibai.cardfantasy.data.Rune;
+import cfvbaibai.cardfantasy.data.Skill;
+import cfvbaibai.cardfantasy.data.SkillType;
 
-public class GameEngine {
+public class BattleEngine {
 
     private StageInfo stage;
     public StageInfo getStage() {
         return stage;
     }
 
-    public GameEngine(GameUI ui, Rule rule) {
+    public BattleEngine(GameUI ui, Rule rule) {
         this.stage = new StageInfo(new Board(), ui, rule);
     }
 
     public static GameResult play1v1(GameUI ui, Rule rule, PlayerInfo p1, PlayerInfo p2) {
-        GameEngine engine = new GameEngine(ui, rule);
+        BattleEngine engine = new BattleEngine(ui, rule);
         engine.registerPlayers(p1, p2);
         return engine.playGame();
+    }
+    
+    public List<CardInfo> exportSurvivers(int playerIndex) {
+        Player player = this.getStage().getPlayers().get(playerIndex);
+        List<CardInfo> result = new ArrayList<CardInfo>();
+        for (CardInfo card : player.getField().getAliveCards()) {
+            result.add(card);
+        }
+        for (CardInfo card : player.getDeck().toList()) {
+            result.add(card);
+        }
+        for (CardInfo card : player.getHand().toList()) {
+            result.add(card);
+        }
+        return result;
+    }
+
+    /**
+     * This method should be called after the user is registered.
+     * This method will tag survivors with remaining HP in deck.
+     * @param playerIndex
+     * @param survivers
+     */
+    public void importSurvivers(int playerIndex, List<CardInfo> survivors) {
+        Player player = this.getStage().getPlayers().get(playerIndex);
+        if (player == null) {
+            throw new CardFantasyRuntimeException("Cannot find user with index " + playerIndex);
+        }
+        Deck deck = player.getDeck();
+        deck.clear();
+        for (CardInfo survivor : survivors) {
+            survivor.survive(survivor.getHP());
+            deck.addCard(survivor);
+            survivor.setOwner(player);
+        }
     }
 
     private Player getActivePlayer() {
@@ -89,7 +124,7 @@ public class GameEngine {
         return result;
     }
 
-    public GameEngine proceedOneRound() {
+    public BattleEngine proceedOneRound() {
         proceedGame(GameMode.OneRound);
         return this;
     }

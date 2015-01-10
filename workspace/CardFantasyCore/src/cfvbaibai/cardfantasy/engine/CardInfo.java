@@ -28,6 +28,8 @@ public class CardInfo extends EntityInfo {
     // Used to record the previous position after card dies.
     private int cachedPosition;
     private boolean deadOnce;
+    
+    private int survivalRemainingHP = -1;
 
     @NonSerializable
     private Map<SkillType, List<SkillEffect>> effects;
@@ -101,6 +103,10 @@ public class CardInfo extends EntityInfo {
 
     public Player getOwner() {
         return this.owner;
+    }
+
+    public void setOwner(Player owner) {
+        this.owner = owner;
     }
 
     private Card getCard() {
@@ -455,5 +461,20 @@ public class CardInfo extends EntityInfo {
             status.containsStatus(CardStatusType.晕眩) ||
             status.containsStatus(CardStatusType.迷惑) ||
             status.containsStatus(CardStatusType.锁定);
+    }
+
+    public void survive(int survivalRemainingHP) {
+        this.survivalRemainingHP = survivalRemainingHP;
+    }
+
+    public void applySurvivalStatus() {
+        if (this.survivalRemainingHP > 0) {
+            this.hp = this.survivalRemainingHP;
+            this.survivalRemainingHP = -1;
+        }
+    }
+
+    public int getSurvivalRemainingHP() {
+        return this.survivalRemainingHP;
     }
 }

@@ -14,7 +14,7 @@ public class BasicAtBuff {
             return;
         }
         Skill skill = skillUseInfo.getSkill();
-        int adjAT = skill.getImpact() * card.getInitAT() / 1000;
+        int adjAT = skill.getImpact() * card.getInitAT() / 100;
         resolver.getStage().getUI().useSkill(card, skill, true);
         resolver.getStage().getUI().adjustAT(skillUseInfo.getOwner(), card, adjAT, skill);
         card.addEffect(new SkillEffect(SkillEffectType.ATTACK_CHANGE, skillUseInfo, adjAT, false));

@@ -10,7 +10,7 @@ public class Card implements Cloneable, Comparable <Card> {
     private int exp;
     private String uniqueName;
     private CardSkill extraSkill;
-    private int overrideHP;
+    private int overrideHP = -1;
 
     public Card(CardData sourceInfo) {
         this(sourceInfo, 0, "");

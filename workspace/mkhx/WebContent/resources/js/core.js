@@ -228,13 +228,17 @@ var playLilithGame = function(count) {
     var deck = $('#lilith-player-deck').val().trim();
     var heroLv = $('#lilith-player-heroLv').val();
     var lilithName = $('#lilith-name').val();
-    var guardType = $('#lilith-guard-type').val();
+    var gameType = $('#lilith-game-type').val();
+    var targetRemainingGuardCount = $('#lilith-target-remaining-guard-count').val();
+    var remainingHP = $('#lilith-remaining-hp').val();
     var postData = {
         deck: deck,
         hlv: heroLv,
         ln: lilithName,
         count: count,
-        gt: guardType
+        gt: gameType,
+        tc: targetRemainingGuardCount,
+        rhp: remainingHP
     };
 
     $.cookie('lilith-battle', JSON.stringify(postData), { expires: 365 });
@@ -410,6 +414,17 @@ $(document)
     $('#play-lilith-1-game-button').attr('href', 'javascript:CardFantasy.Core.playLilithGame(1);');
     $('#simulate-lilith-1-game-button').attr('href', 'javascript:CardFantasy.Core.playLilithGame(-1);');
     $('#play-lilith-massive-game-button').attr('href', 'javascript:CardFantasy.Core.playLilithGame(1000);');
+    $('#lilith-config-1').hide();
+    $('#lilith-game-type').change(function() { 
+        var gameType = $(this).children('option:selected').val(); 
+        if (gameType == 0) {
+            $('#lilith-config-0').show();
+            $('#lilith-config-1').hide();
+        } else {
+            $('#lilith-config-1').show();
+            $('#lilith-config-0').hide();
+        }
+    });
 })
 .on("pageinit", "#arena-battle", function(event) {
     var dataText = $.cookie('arena-battle');

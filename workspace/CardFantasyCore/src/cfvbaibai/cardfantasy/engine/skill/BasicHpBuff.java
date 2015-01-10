@@ -14,7 +14,7 @@ public class BasicHpBuff {
             return;
         }
         Skill skill = skillUseInfo.getSkill();
-        int adjHP = skill.getImpact() * card.getRawMaxHP() / 1000;
+        int adjHP = skill.getImpact() * card.getRawMaxHP() / 100;
         resolver.getStage().getUI().useSkill(card, skill, true);
         resolver.getStage().getUI().adjustHP(skillUseInfo.getOwner(), card, adjHP, skill);
         card.addEffect(new SkillEffect(SkillEffectType.MAXHP_CHANGE, skillUseInfo, adjHP, false));

@@ -10,13 +10,15 @@ import cfvbaibai.cardfantasy.Table;
 import cfvbaibai.cardfantasy.data.CardData;
 import cfvbaibai.cardfantasy.data.CardDataStore;
 import cfvbaibai.cardfantasy.data.PlayerInfo;
-import cfvbaibai.cardfantasy.engine.GameEngine;
+import cfvbaibai.cardfantasy.engine.BattleEngine;
 import cfvbaibai.cardfantasy.engine.GameResult;
 import cfvbaibai.cardfantasy.engine.Rule;
+import cfvbaibai.cardfantasy.game.PvlGameResult;
 import cfvbaibai.cardfantasy.game.DummyGameUI;
 import cfvbaibai.cardfantasy.game.GameResultStat;
 import cfvbaibai.cardfantasy.game.LilithDataStore;
 import cfvbaibai.cardfantasy.game.PlayerBuilder;
+import cfvbaibai.cardfantasy.game.PvlEngine;
 import cfvbaibai.cardfantasy.game.SkillBuilder;
 
 public class FreeTest extends PveEngineTest {
@@ -56,7 +58,7 @@ public class FreeTest extends PveEngineTest {
     private static GameResultStat play(PlayerInfo p1, PlayerInfo p2, int count) {
         GameResultStat stat = new GameResultStat(p1, p2);
         for (int i = 0; i < count; ++i) {
-            GameEngine engine = new GameEngine(new DummyGameUI(), Rule.getDefault());
+            BattleEngine engine = new BattleEngine(new DummyGameUI(), Rule.getDefault());
             engine.registerPlayers(p1, p2);
             GameResult result = engine.playGame();
             stat.addResult(result);
@@ -154,15 +156,7 @@ public class FreeTest extends PveEngineTest {
         PlayerInfo player = PlayerBuilder.build(true, "玩家", 75, SkillBuilder.buildLegionBuffs(10, 10, 10, 10), "堕落精灵*2", "淬炼");
         TestGameBuilder.playBossBattle(player, "复仇女神");
     }
-    
-    @Test
-    public void 莉莉丝战() {
-        LilithDataStore store = LilithDataStore.loadDefault();
-        PlayerInfo lilith = PlayerBuilder.buildLilith(store, "困难莉莉丝+法力反射8", 0, false);
-        PlayerInfo player = PlayerBuilder.build(true, "玩家", 100, "金属巨龙*10");
-        TestGameBuilder.play(lilith, player);
-    }
-    
+
     @Test
     public void 横扫Bug() {
         TestGameBuilder.play5v5("光明之龙", "金属巨龙");
@@ -610,5 +604,25 @@ public class FreeTest extends PveEngineTest {
     @Test
     public void 皇家驯兽师vs九头妖蛇() {
         TestGameBuilder.play10v10("皇家驯兽师", "九头妖蛇", 62);
+    }
+    
+    @Test
+    public void testRushBoss() {
+        LilithDataStore lds = LilithDataStore.loadDefault();
+        PlayerInfo lilith = PlayerBuilder.buildLilith(lds, "困难莉莉丝+法力反射8", 320000, false);
+        PlayerInfo player = PlayerBuilder.build(true, "玩家", 100, "金属巨龙*10");
+        PvlEngine engine = new PvlEngine(new DummyGameUI(), Rule.getDefault());
+        int battleCount = engine.rushBoss(lilith, 40000, player).getBattleCount();
+        System.out.println("Battle Count = " + battleCount);
+    }
+    
+    @Test
+    public void testClearGuards() {
+        LilithDataStore lds = LilithDataStore.loadDefault();
+        PlayerInfo lilith = PlayerBuilder.buildLilith(lds, "困难莉莉丝+法力反射8", 320000, true);
+        PlayerInfo player = PlayerBuilder.build(true, "玩家", 100, "秘银巨石像+横扫*2");
+        PvlEngine engine = new PvlEngine(new TestGameUI(), Rule.getDefault());
+        PvlGameResult result = engine.clearGuards(lilith, player, 1);
+        System.out.println("Battle Count = " + result.getBattleCount() + ", Damage to Lilith = " + result.getDamageToLilith());
     }
 }

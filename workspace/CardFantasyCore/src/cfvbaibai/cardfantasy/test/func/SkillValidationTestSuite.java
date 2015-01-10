@@ -4,7 +4,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
-import cfvbaibai.cardfantasy.engine.GameEngine;
+import cfvbaibai.cardfantasy.engine.BattleEngine;
 import cfvbaibai.cardfantasy.game.DeckBuilder;
 import cfvbaibai.cardfantasy.game.DeckStartupInfo;
 import cfvbaibai.cardfantasy.test.TestGameBuilder;
@@ -30,7 +30,7 @@ import cfvbaibai.cardfantasy.test.TestGameBuilder;
 })
 public class SkillValidationTestSuite {
     public static SkillTestContext prepare(int playerALevel, int playerBLevel, String ... cards) {
-        GameEngine engine = TestGameBuilder.buildEmptyGameForTest(50, 50);
+        BattleEngine engine = TestGameBuilder.buildEmptyGameForTest(50, 50);
         DeckStartupInfo dsi = DeckBuilder.build(cards);
         SkillTestContext context = new SkillTestContext();
         context.setEngine(engine);

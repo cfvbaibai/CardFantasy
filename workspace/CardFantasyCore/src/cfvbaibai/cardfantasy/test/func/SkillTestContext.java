@@ -1,14 +1,14 @@
 package cfvbaibai.cardfantasy.test.func;
 
 import cfvbaibai.cardfantasy.engine.CardInfo;
-import cfvbaibai.cardfantasy.engine.GameEngine;
+import cfvbaibai.cardfantasy.engine.BattleEngine;
 import cfvbaibai.cardfantasy.engine.Player;
 import cfvbaibai.cardfantasy.engine.RuneInfo;
 import cfvbaibai.cardfantasy.engine.StageInfo;
 import cfvbaibai.cardfantasy.game.DeckStartupInfo;
 
 public class SkillTestContext {
-    private GameEngine engine;
+    private BattleEngine engine;
     private DeckStartupInfo dsi;
 
     public Player getPlayer(int index) {
@@ -17,10 +17,10 @@ public class SkillTestContext {
     public StageInfo getStage() {
         return getEngine().getStage();
     }
-    public GameEngine getEngine() {
+    public BattleEngine getEngine() {
         return engine;
     }
-    public void setEngine(GameEngine engine) {
+    public void setEngine(BattleEngine engine) {
         this.engine = engine;
     }
     public DeckStartupInfo getDsi() {

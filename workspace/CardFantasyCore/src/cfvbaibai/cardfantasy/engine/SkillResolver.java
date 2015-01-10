@@ -953,7 +953,9 @@ public class SkillResolver {
 
     }
 
-    public void resolveCardBuffs(List<CardInfo> summonedCards, Field myField) {
+    // reviver: for most of the cases, it should be null.
+    // It is only set when the summoning skill performer is revived by another card.
+    public void resolveSummoningSkills(List<CardInfo> summonedCards, Field myField, Field opField, CardInfo reviver) throws HeroDieSignal {
         Player player = myField.getOwner();
         for (SkillUseInfo skillUseInfo : player.getCardBuffs()) {
             for (CardInfo card : summonedCards) {
@@ -972,11 +974,10 @@ public class SkillResolver {
                 }
             }
         }
-    }
-    // reviver: for most of the cases, it should be null.
-    // It is only set when the summoning skill performer is revived by another card.
-    public void resolveSummoningSkills(List<CardInfo> summonedCards, Field myField, Field opField, CardInfo reviver) throws HeroDieSignal {
-        resolveCardBuffs(summonedCards, myField);
+
+        for (CardInfo summonedCard : summonedCards) {
+            summonedCard.applySurvivalStatus();
+        }
 
         // Racial buff
         for (CardInfo fieldCard : myField.getAliveCards()) {

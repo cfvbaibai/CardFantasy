@@ -3,22 +3,22 @@ package cfvbaibai.cardfantasy.test;
 import cfvbaibai.cardfantasy.GameUI;
 import cfvbaibai.cardfantasy.data.PlayerInfo;
 import cfvbaibai.cardfantasy.data.RuneData;
-import cfvbaibai.cardfantasy.engine.GameEngine;
+import cfvbaibai.cardfantasy.engine.BattleEngine;
 import cfvbaibai.cardfantasy.engine.GameResult;
 import cfvbaibai.cardfantasy.engine.Rule;
 import cfvbaibai.cardfantasy.game.PlayerBuilder;
 
 public final class TestGameBuilder {
-    public static GameEngine build(PlayerInfo player0, PlayerInfo player1) {
+    public static BattleEngine build(PlayerInfo player0, PlayerInfo player1) {
         return build(player0, player1, new TestGameUI());
     }
-    public static GameEngine build(PlayerInfo player0, PlayerInfo player1, GameUI ui) {
-        GameEngine engine = new GameEngine(ui, Rule.getDefault());
+    public static BattleEngine build(PlayerInfo player0, PlayerInfo player1, GameUI ui) {
+        BattleEngine engine = new BattleEngine(ui, Rule.getDefault());
         engine.registerPlayers(player0, player1);
         return engine;
     }
     
-    public static GameEngine buildEmptyGameForTest(int levelA, int levelB) {
+    public static BattleEngine buildEmptyGameForTest(int levelA, int levelB) {
         return TestGameBuilder.build(
             PlayerBuilder.build(true, "PlayerA", levelA, ""),
             PlayerBuilder.build(true, "PlayerB", levelB, ""));
@@ -26,7 +26,7 @@ public final class TestGameBuilder {
     
     public static GameResult playBossBattle(PlayerInfo player, String bossName) {
         PlayerInfo boss = PlayerBuilder.build(false, "BOSS", 9999, bossName);
-        GameEngine engine = new GameEngine(new TestGameUI(), Rule.getBossBattle());
+        BattleEngine engine = new BattleEngine(new TestGameUI(), Rule.getBossBattle());
         engine.registerPlayers(boss, player);
         return engine.playGame();
     }

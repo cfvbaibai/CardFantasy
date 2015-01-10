@@ -128,7 +128,7 @@ public class PlayerInfo {
         return this.id;
     }
 
-    public Collection<Card> getCards() {
+    public List<Card> getCards() {
         return new ArrayList<Card>(this.cards);
     }
     

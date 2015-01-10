@@ -5,16 +5,28 @@
             <h3>设置阵容</h3>
             <div>
                 <fieldset class="select-6-4" data-theme="c" data-role="controlgroup" data-type="horizontal">
-                    <select data-theme="c" name="lilith-name" id="lilith-name" data-mini="true" data-native-menu="false">
+                    <select data-theme="c" id="lilith-name" data-mini="true" data-native-menu="false">
                     <c:forEach items="${lilithDatas}" var="data">
                         <option value="<c:out value="${data.bossId}" />"> <c:out value="${data.bossId}" /></option>
                     </c:forEach>
                     </select>
-                    <select data-theme="c" name="lilith-guard-type" id="lilith-guard-type" data-mini="true" data-native-menu="false">
-                        <option value="0">无杂兵</option>
-                        <option value="1" selected="selected">带杂兵</option>
+                    <select data-theme="c" id="lilith-game-type" data-mini="true" data-native-menu="false">
+                        <option value="0">清怪模式</option>
+                        <option value="1">尾刀模式</option>
                     </select>
                 </fieldset>
+                <div id="lilith-config-0" class="ui-grid-a">
+                    <div class="ui-block-a ui-block-label-number">清怪至剩余怪数(包括莉莉丝)：</div>
+                    <div class="ui-block-b">
+                        <input data-theme="c" type="number" id="lilith-target-remaining-guard-count" data-mini="true" value="2" />
+                    </div>
+                </div>
+                <div id="lilith-config-1" class="ui-grid-a">
+                    <div class="ui-block-a ui-block-label-number">莉莉丝剩余HP：</div>
+                    <div class="ui-block-b">
+                        <input data-theme="c" type="number" id="lilith-remaining-hp" data-mini="true" value="300000" />
+                    </div>
+                </div>
                 <div id="lilith-player" class="player ui-grid-c">
                     <div class="ui-block-a ui-block-label-number">
                         <span>玩家等级: </span>
