@@ -1,4 +1,4 @@
-var data = {
+{
     "data": {
         "Cards": [{
             "FragmentCanUse": null,
@@ -18753,4 +18753,4 @@ var data = {
         "appurl": "ios://xxx"
     },
     "status": 1
-};
+}

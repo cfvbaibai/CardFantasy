@@ -5,12 +5,6 @@
             <div>
                 <a href="#news-left-panel" data-role="button" data-mini="true" data-theme="b">点击左上角导航按钮开始使用模拟器</a>
             </div>
-            <!--
-            <div data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">
-                <h3>模拟器代码开源声明</h3>
-                <p>模拟器的代码已开源，希望能有能力和爱心兼备的程序员玩家们一起来努力。详情点击<a href="#open-source">这里</a>。</p>
-            </div>
-             -->
             <div data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">
                 <h3>公告</h3>
                 <ul>
