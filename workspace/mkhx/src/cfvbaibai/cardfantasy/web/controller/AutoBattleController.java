@@ -517,13 +517,13 @@ public class AutoBattleController {
             @RequestParam("tc") int targetRemainingGuardCount, @RequestParam("rhp") int remainingHP
             ) throws IOException {
         PrintWriter writer = response.getWriter();
+        WebPlainTextGameUI ui = new WebPlainTextGameUI();
         try {
             String logMessage = String.format("Deck=%s<br />HeroLV=%d, Lilith=%s, GameType=%d", deck, heroLv, lilithName, gameType);
             logger.info("PlayLilith1MatchGame: " + logMessage);
             this.userActionRecorder.addAction(new UserAction(new Date(), request.getRemoteAddr(), "Play Lilith 1Match Game", logMessage));
             PlayerInfo player1 = PlayerBuilder.buildLilith(lilithDataStore, lilithName, gameType == 0);
             PlayerInfo player2 = PlayerBuilder.build(true, "玩家", deck, heroLv, null);
-            WebPlainTextGameUI ui = new WebPlainTextGameUI();
             PvlEngine engine = new PvlEngine(ui, Rule.getDefault());
             PvlGameResult result = null;
             if (gameType == 0) {
@@ -538,6 +538,10 @@ public class AutoBattleController {
             writer.print("------------------ 战斗过程 ------------------<br />");
             writer.print(ui.getAllText());
             logger.info(resultMessage);
+        } catch (PvlGameTimeoutException e) {
+            writer.print("进攻超过最大次数，你的卡组太弱了<br />");
+            writer.print("------------------ 战斗过程 ------------------<br />");
+            writer.print(ui.getAllText());
         } catch (Exception e) {
             writer.print(errorHelper.handleError(e, false));
         }
