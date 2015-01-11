@@ -598,7 +598,7 @@ public class AutoBattleController {
             if (gameType == 1) {
                 Player lilithPlayer = engine.getStage().getPlayers().get(0);
                 CardInfo lilithCard = lilithPlayer.getDeck().toList().get(0);
-                lilithCard.survive(remainingHP);
+                lilithCard.setRemainingHP(remainingHP);
             }
             engine.playGame();
             BattleRecord record = ui.getRecord();

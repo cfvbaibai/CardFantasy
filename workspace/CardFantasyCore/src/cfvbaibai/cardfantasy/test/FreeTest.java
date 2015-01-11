@@ -620,7 +620,7 @@ public class FreeTest extends PveEngineTest {
     public void testClearGuards() {
         LilithDataStore lds = LilithDataStore.loadDefault();
         PlayerInfo lilith = PlayerBuilder.buildLilith(lds, "困难莉莉丝+法力反射8", true);
-        PlayerInfo player = PlayerBuilder.build(true, "玩家", 100, "秘银巨石像+横扫*2");
+        PlayerInfo player = PlayerBuilder.build(true, "玩家", 100, "秘银巨石像+弱点攻击*10");
         PvlEngine engine = new PvlEngine(new TestGameUI(), Rule.getDefault());
         PvlGameResult result = engine.clearGuards(lilith, player, 1);
         System.out.println("Battle Count = " + result.getBattleCount() + ", Damage to Lilith = " + result.getDamageToLilith());

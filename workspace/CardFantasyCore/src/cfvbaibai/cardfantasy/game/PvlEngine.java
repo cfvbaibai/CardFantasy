@@ -36,7 +36,7 @@ public class PvlEngine extends GameEngine {
             if (battleCount == 0) {
                 Player lilithPlayer = engine.getStage().getPlayers().get(0);
                 CardInfo lilithCard = lilithPlayer.getDeck().toList().get(0);
-                lilithCard.survive(initialHP);
+                lilithCard.setRemainingHP(initialHP);
             }
             GameResult result = engine.playGame();
             ++battleCount;
@@ -62,7 +62,7 @@ public class PvlEngine extends GameEngine {
             GameResult result = engine.playGame();
             ++battleCount;
             if (battleCount > this.timeout) {
-                throw new PvlGameTimeoutException();
+                //throw new PvlGameTimeoutException();
             }
             if (result.getWinner().getId().equals(player.getId())) {
                 return getClearGuardsResult(battleCount, result.getLoser());
@@ -100,13 +100,13 @@ public class PvlEngine extends GameEngine {
         }
         for (CardInfo card : lilith.getDeck().toList()) {
             if (card.getRace() == Race.BOSS) {
-                int survivalRemainingHP = card.getSurvivalRemainingHP();
+                int survivalRemainingHP = 0;//card.getSurvivalRemainingHP();
                 return new PvlGameResult(battleCount, survivalRemainingHP < 0 ? 0 : card.getRawMaxHP() - survivalRemainingHP);
             }
         }
         for (CardInfo card : lilith.getHand().toList()) {
             if (card.getRace() == Race.BOSS) {
-                int survivalRemainingHP = card.getSurvivalRemainingHP();
+                int survivalRemainingHP = 0;//card.getSurvivalRemainingHP();
                 return new PvlGameResult(battleCount, survivalRemainingHP < 0 ? 0 : card.getRawMaxHP() - survivalRemainingHP);
             }
         }

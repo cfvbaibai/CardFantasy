@@ -10,9 +10,11 @@ import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
 import cfvbaibai.cardfantasy.NonSerializable;
 import cfvbaibai.cardfantasy.data.Card;
 import cfvbaibai.cardfantasy.data.CardSkill;
+import cfvbaibai.cardfantasy.data.Race;
+import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.data.SkillTag;
 import cfvbaibai.cardfantasy.data.SkillType;
-import cfvbaibai.cardfantasy.data.Race;
+import cfvbaibai.cardfantasy.data.TrivialSkill;
 
 public class CardInfo extends EntityInfo {
     @NonSerializable
@@ -29,7 +31,7 @@ public class CardInfo extends EntityInfo {
     private int cachedPosition;
     private boolean deadOnce;
     
-    private int survivalRemainingHP = -1;
+    private int eternalWound = 0;
 
     @NonSerializable
     private Map<SkillType, List<SkillEffect>> effects;
@@ -463,18 +465,18 @@ public class CardInfo extends EntityInfo {
             status.containsStatus(CardStatusType.锁定);
     }
 
-    public void survive(int survivalRemainingHP) {
-        this.survivalRemainingHP = survivalRemainingHP;
-    }
-
     public void applySurvivalStatus() {
-        if (this.survivalRemainingHP > 0) {
-            this.hp = this.survivalRemainingHP;
-            this.survivalRemainingHP = -1;
-        }
+        Skill skill = new TrivialSkill(SkillType.原始体力调整, -eternalWound);
+        SkillUseInfo skillUseInfo = new SkillUseInfo(this.getOwner(), skill);
+        SkillEffect effect = new SkillEffect(SkillEffectType.MAXHP_CHANGE, skillUseInfo, -eternalWound, true);
+        this.addEffect(effect);
     }
 
-    public int getSurvivalRemainingHP() {
-        return this.survivalRemainingHP;
+    public void carveEternalWound() {
+        this.eternalWound += this.getMaxHP() - this.getHP();
+    }
+
+    public void setRemainingHP(int remainingHP) {
+        this.eternalWound += this.getMaxHP() - remainingHP;
     }
 }
