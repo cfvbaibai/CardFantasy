@@ -40,6 +40,36 @@ public class SpecialStatusTest extends SkillValidationTest {
         context.proceedOneRound();
         Assert.assertEquals(335, 1560 - c凤凰.getHP());
     }
+    
+    /**
+     * 被锁定时仍能发动盾刺
+     */
+    @Test
+    public void test锁定_盾刺() {
+        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "秘银巨石像+陷阱1", "占位符+盾刺10");
+        CardInfo c秘银巨石像 = context.addToField(0, 0);
+        context.addToField(1, 1);
+        context.startGame();
+
+        random.addNextNumbers(0).addNextPicks(0); // 锁定
+        context.proceedOneRound();
+        Assert.assertEquals(200 /* 盾刺 */, 1550 - c秘银巨石像.getHP());
+    }
+
+    /**
+     * 被锁定时仍能发动邪灵汲取
+     */
+    @Test
+    public void test锁定_邪灵汲取() {
+        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "秘银巨石像+陷阱1", "占位符+邪灵汲取10");
+        CardInfo c秘银巨石像 = context.addToField(0, 0);
+        context.addToField(1, 1);
+        context.startGame();
+
+        random.addNextNumbers(0).addNextPicks(0); // 锁定
+        context.proceedOneRound();
+        Assert.assertEquals(243 /* 邪灵汲取 */, 810 - c秘银巨石像.getCurrentAT());
+    }
 
     /**
      * 被麻痹时仍能回春

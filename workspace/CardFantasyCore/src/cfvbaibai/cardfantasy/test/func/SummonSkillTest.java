@@ -135,7 +135,8 @@ public class SummonSkillTest extends SkillValidationTest {
 
 
     /**
-     * 种族之力比献祭优先级高，而且献祭的攻击力增幅包含种族之力
+     * 种族之力比献祭优先级高，而且献祭的攻击力增幅计算包含种族之力,
+     * 计算方法为：(基础+BUFF)*献祭系数-BUFF
      */
     @Test
     public void test种族之力_献祭_离场() {
@@ -149,6 +150,44 @@ public class SummonSkillTest extends SkillValidationTest {
         Assert.assertEquals(1, context.getPlayer(0).getField().size());
         Assert.assertEquals(c秘银巨石像.getUniqueName(), context.getPlayer(0).getField().getCard(0).getUniqueName());
         Assert.assertEquals(1795, c秘银巨石像.getCurrentAT());
+    }
+
+
+    /**
+     * 种族守护比献祭优先级高，而且献祭的体力增幅计算不包含种族守护,
+     * 计算方法为：基础*献祭系数
+     */
+    @Test
+    public void test种族守护_献祭_离场() {
+        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "邪灵女巫-0", "堕落精灵+地狱守护5");
+        CardInfo c邪灵女巫 = context.addToHand(0, 0).setSummonDelay(0);
+        context.addToHand(1, 0).setSummonDelay(0);
+        context.startGame();
+
+        random.addNextPicks(1); // 献祭
+        context.proceedOneRound();
+        Assert.assertEquals(1, context.getPlayer(0).getField().size());
+        Assert.assertEquals(c邪灵女巫.getUniqueName(), context.getPlayer(0).getField().getCard(0).getUniqueName());
+        Assert.assertEquals(1050, c邪灵女巫.getMaxHP());
+    }
+    
+    /**
+     * 降临技能优先于献祭
+     */
+    @Test
+    public void test降临烈焰风暴_献祭() {
+        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "秘银巨石像+献祭8", "占位符+降临烈焰风暴1", "占位符");
+        CardInfo c秘银巨石像 = context.addToHand(0, 0).setSummonDelay(0);
+        context.addToHand(1, 0).setSummonDelay(0);
+        CardInfo c占位符2 = context.addToField(2, 1);
+        context.startGame();
+
+        random.addNextPicks(0).addNextNumbers(0); // 降临烈焰风暴
+        random.addNextPicks(1); // 献祭
+        context.proceedOneRound();
+        Assert.assertEquals(1, context.getPlayer(0).getField().size());
+        Assert.assertEquals(c秘银巨石像.getUniqueName(), context.getPlayer(0).getField().getCard(0).getUniqueName());
+        Assert.assertEquals(810 * 2 /* 秘银普攻 */ + 25 /* 降临烈焰风暴 */, 5000 - c占位符2.getHP());
     }
 
     /**

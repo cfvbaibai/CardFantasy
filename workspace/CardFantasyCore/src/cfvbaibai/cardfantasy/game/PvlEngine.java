@@ -36,9 +36,7 @@ public class PvlEngine extends GameEngine {
             if (battleCount == 0) {
                 Player lilithPlayer = engine.getStage().getPlayers().get(0);
                 CardInfo lilithCard = lilithPlayer.getDeck().toList().get(0);
-                if (initialHP < lilithCard.getMaxHP()) {
-                    lilithCard.survive(initialHP);
-                }
+                lilithCard.survive(initialHP);
             }
             GameResult result = engine.playGame();
             ++battleCount;
