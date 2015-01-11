@@ -85,7 +85,7 @@ public class PvlEngine extends GameEngine {
     private PvlGameResult getClearGuardsResult(int battleCount, Player lilith) {
         for (CardInfo card : lilith.getField().getAliveCards()) {
             if (card.getRace() == Race.BOSS) {
-                return new PvlGameResult(battleCount, card.getRawMaxHP() - card.getHP());
+                return new PvlGameResult(battleCount, card.getMaxHP() - card.getHP());
             }
         }
         for (CardInfo card : lilith.getGrave().toList()) {
@@ -100,14 +100,12 @@ public class PvlEngine extends GameEngine {
         }
         for (CardInfo card : lilith.getDeck().toList()) {
             if (card.getRace() == Race.BOSS) {
-                int survivalRemainingHP = 0;//card.getSurvivalRemainingHP();
-                return new PvlGameResult(battleCount, survivalRemainingHP < 0 ? 0 : card.getRawMaxHP() - survivalRemainingHP);
+                return new PvlGameResult(battleCount, 0);
             }
         }
         for (CardInfo card : lilith.getHand().toList()) {
             if (card.getRace() == Race.BOSS) {
-                int survivalRemainingHP = 0;//card.getSurvivalRemainingHP();
-                return new PvlGameResult(battleCount, survivalRemainingHP < 0 ? 0 : card.getRawMaxHP() - survivalRemainingHP);
+                return new PvlGameResult(battleCount, 0);
             }
         }
         throw new CardFantasyRuntimeException("Should not reach here.");

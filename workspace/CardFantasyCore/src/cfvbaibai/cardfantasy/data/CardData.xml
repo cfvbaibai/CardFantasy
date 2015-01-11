@@ -1574,7 +1574,7 @@
         <Skill type="战意" level="6" unlock="5" />
         <Skill type="不动" level="0" unlock="10" />
     </Card>
-    <Card id="4426" name="血妖舞女" wikiId="62843" race="地狱" speed="2" star="4" cost="14" incrCost="2" at="260" hp="680" incrAT="26" incrHP="23">
+    <Card id="4426" name="雪妖舞女" wikiId="62843" race="地狱" speed="2" star="4" cost="14" incrCost="2" at="260" hp="680" incrAT="26" incrHP="23">
         <Skill type="英雄杀手" level="5" unlock="0" />
         <Skill type="天谴" level="5" unlock="5" />
         <Skill type="诅咒" level="6" unlock="10" />

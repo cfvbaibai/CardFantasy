@@ -9,47 +9,89 @@
                             <td>地图</td>
                             <td>
                                 <select data-theme="c" name="map-id" id="map-id" class="map-select" data-mini="true" data-native-menu="false">
-                                    <optgroup label="12-后燃烧平原">
-                                        <option value="12-1" selected="selected">12-1 火腹石</option>
-                                        <option value="12-2">12-2 绝望壁</option>
-                                        <option value="12-3">12-3 焦炭岭</option>
-                                        <option value="12-4">12-4 乌鼻熔炉</option>
-                                        <option value="12-5">12-5 火晶炼场</option>
-                                        <option value="12-6">12-6 残渣废墟</option>
-                                        <option value="12-7">12-7 熔火之心</option>
-                                        <option value="12-8">12-8 毁灭之锤</option>
-                                        <option value="12-9">12-9 流桨河</option>
-                                        <option value="12-10">12-10 烙铁牢笼</option>
-                                        <option value="12-11">12-11 红龙巢穴</option>
-                                        <option value="12-H">12-H (隐藏)熔岩口</option>
+                                    <optgroup label="15-后翡翠森林">
+                                        <option value="15-1" selected="selected">15-1 巨门关口</option>
+                                        <option value="15-2">15-2 幽影森林</option>
+                                        <option value="15-3">15-3 鬼影山谷</option>
+                                        <option value="15-4">15-4 军团先锋阵地</option>
+                                        <option value="15-5">15-5 巨神山</option>
+                                        <option value="15-6">15-6 巨神塔</option>
+                                        <option value="15-7">15-7 刀锋谷</option>
+                                        <option value="15-8">15-8 传送器</option>
+                                        <option value="15-9">15-9 领主大门</option>
+                                        <option value="15-10">15-10 魔神王座</option>
+                                        <option value="15-11">15-11 混沌界</option>
+                                        <option value="15-H">15-H (隐藏)巨神试炼场</option>
                                     </optgroup>
-                                    <optgroup label="11-蛮荒火山">
-                                        <option value="11-1">11-1 石浪岸</option>
-                                        <option value="11-2">11-2 火龙遗骸</option>
-                                        <option value="11-3">11-3 火象人村</option>
-                                        <option value="11-4">11-4 石像堡</option>
-                                        <option value="11-5">11-5 荒芜之地</option>
-                                        <option value="11-6">11-6 火海之森</option>
-                                        <option value="11-7">11-7 古湖遗迹</option>
-                                        <option value="11-8">11-8 炙热荆林</option>
-                                        <option value="11-9">11-9 赤红裂谷</option>
-                                        <option value="11-10">11-10 断石桥</option>
-                                        <option value="11-11">11-11 火山口</option>
-                                        <option value="11-H">11-H (隐藏)巨树之根</option>
-                                    </optgroup>
-                                    <optgroup label="10-海底界">
-                                        <option value="10-1">10-1 迷雾礁石</option>
-                                        <option value="10-2">10-2 失落神像</option>
-                                        <option value="10-3">10-3 深渊海沟</option>
-                                        <option value="10-4">10-4 鲸鱼坟场</option>
-                                        <option value="10-5">10-5 远古沉船</option>
-                                        <option value="10-6">10-6 海神之叉</option>
-                                        <option value="10-7">10-7 海底古城</option>
-                                        <option value="10-8">10-8 幽冥古洞</option>
-                                        <option value="10-9">10-9 恐怖漏斗</option>
-                                        <option value="10-10">10-10 海底山</option>
-                                        <option value="10-H">10-H (隐藏)鱼人村</option>
-                                    </optgroup>
+                                    <optgroup label="14-后翡翠森林">
+                                         <option value="14-1" selected="selected">14-1 汇海口</option>
+                                         <option value="14-2">14-2 蘑菇岭</option>
+                                         <option value="14-3">14-3 坠星湖底</option>
+                                         <option value="14-4">14-4 湍流口</option>
+                                         <option value="14-5">14-5 刺海滩</option>
+                                         <option value="14-6">14-6 兽神林</option>
+                                         <option value="14-7">14-7 镰刀湾</option>
+                                         <option value="14-8">14-8 精灵石碑</option>
+                                         <option value="14-9">14-9 月井瀑布</option>
+                                         <option value="14-10">14-10 月神高台</option>
+                                         <option value="14-11">14-11 祭坛深处</option>
+                                         <option value="14-H">14-H (隐藏)雷云之地</option>
+                                     </optgroup>
+                                     <optgroup label="13-后燃烧平原">
+                                          <option value="13-1" selected="selected">13-1 漆黑岭 </option>
+                                          <option value="13-2">13-2 黑石山梯</option>
+                                          <option value="13-3">13-3 泥泞小道</option>
+                                          <option value="13-4">13-4 干涸小湖</option>
+                                          <option value="13-5">13-5 伐木林</option>
+                                          <option value="13-6">13-6 横尸坑</option>
+                                          <option value="13-7">13-7 剧毒之池心</option>
+                                          <option value="13-8">13-8 召唤门</option>
+                                          <option value="13-9">13-9 小屋废墟</option>
+                                          <option value="13-10">13-10 恶魔海湾</option>
+                                          <option value="13-11">13-11 地岭神庙</option>
+                                          <option value="13-H">13-H (隐藏)古船遗迹</option>
+                                      </optgroup>
+                                      <optgroup label="12-后燃烧平原">
+                                          <option value="12-1" selected="selected">12-1 火腹石</option>
+                                          <option value="12-2">12-2 绝望壁</option>
+                                          <option value="12-3">12-3 焦炭岭</option>
+                                          <option value="12-4">12-4 乌鼻熔炉</option>
+                                          <option value="12-5">12-5 火晶炼场</option>
+                                          <option value="12-6">12-6 残渣废墟</option>
+                                          <option value="12-7">12-7 熔火之心</option>
+                                          <option value="12-8">12-8 毁灭之锤</option>
+                                          <option value="12-9">12-9 流桨河</option>
+                                          <option value="12-10">12-10 烙铁牢笼</option>
+                                          <option value="12-11">12-11 红龙巢穴</option>
+                                          <option value="12-H">12-H (隐藏)熔岩口</option>
+                                      </optgroup>
+                                      <optgroup label="11-蛮荒火山">
+                                          <option value="11-1">11-1 石浪岸</option>
+                                          <option value="11-2">11-2 火龙遗骸</option>
+                                          <option value="11-3">11-3 火象人村</option>
+                                          <option value="11-4">11-4 石像堡</option>
+                                          <option value="11-5">11-5 荒芜之地</option>
+                                          <option value="11-6">11-6 火海之森</option>
+                                          <option value="11-7">11-7 古湖遗迹</option>
+                                          <option value="11-8">11-8 炙热荆林</option>
+                                          <option value="11-9">11-9 赤红裂谷</option>
+                                          <option value="11-10">11-10 断石桥</option>
+                                          <option value="11-11">11-11 火山口</option>
+                                          <option value="11-H">11-H (隐藏)巨树之根</option>
+                                      </optgroup>
+                                      <optgroup label="10-海底界">
+                                          <option value="10-1">10-1 迷雾礁石</option>
+                                          <option value="10-2">10-2 失落神像</option>
+                                          <option value="10-3">10-3 深渊海沟</option>
+                                          <option value="10-4">10-4 鲸鱼坟场</option>
+                                          <option value="10-5">10-5 远古沉船</option>
+                                          <option value="10-6">10-6 海神之叉</option>
+                                          <option value="10-7">10-7 海底古城</option>
+                                          <option value="10-8">10-8 幽冥古洞</option>
+                                          <option value="10-9">10-9 恐怖漏斗</option>
+                                          <option value="10-10">10-10 海底山</option>
+                                          <option value="10-H">10-H (隐藏)鱼人村</option>
+                                      </optgroup>
                                     <optgroup label="9-海龟岛">
                                         <option value="9-1">9-1 巨大石块</option>
                                         <option value="9-2">9-2 长脊山</option>
