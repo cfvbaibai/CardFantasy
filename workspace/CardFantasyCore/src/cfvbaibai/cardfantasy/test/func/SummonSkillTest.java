@@ -48,24 +48,6 @@ public class SummonSkillTest extends SkillValidationTest {
     }
 
     /**
-     * 降临技能在种族守护之后触发
-     */
-    @Test
-    public void test降临暴风雪_种族守护() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50,
-            "残血王国小兵+降临暴风雪", "占位符+王国守护10", "元素灵龙");
-        CardInfo c残血王国小兵 = context.addToHand(0, 0).setSummonDelay(0);
-        context.addToHand(1, 0).setSummonDelay(0);
-        context.addToField(2, 1);
-        context.startGame();
-        
-        random.addNextPicks(0).addNextNumbers(1000); // 降临暴风雪
-        context.proceedOneRound();
-        Assert.assertEquals(2, context.getPlayer(0).getField().size());
-        Assert.assertEquals(1 + 500 /* 王国守护10 */ - 120 /* 法力反射 */, c残血王国小兵.getHP());
-    }
-    
-    /**
      * 献祭能被免疫
      */
     @Test
@@ -152,6 +134,42 @@ public class SummonSkillTest extends SkillValidationTest {
         Assert.assertEquals(1795, c秘银巨石像.getCurrentAT());
     }
 
+    /**
+     * 被动种族守护发动在前，降临技能发动在后，保证不被法力反射弹死 
+     */
+    @Test
+    public void test被动种族守护_降临暴风雪_法力反射_分别上场() {
+        SkillTestContext context = SkillValidationTestSuite.prepare(
+            50, 50, "圣骑士", "残血王国小兵+降临暴风雪1", "元素灵龙");
+        context.addToField(0, 0);
+        CardInfo c王国小兵 = context.addToHand(1, 0).setSummonDelay(0);
+        context.addToField(2, 1);
+        context.startGame();
+
+        random.addNextPicks(0); // 降临暴风雪
+        context.proceedOneRound();
+        Assert.assertEquals(2, context.getPlayer(0).getField().size());
+        Assert.assertEquals(c王国小兵.getUniqueName(), context.getPlayer(0).getField().getCard(1).getUniqueName());
+        Assert.assertEquals(81, c王国小兵.getHP());
+    }
+
+    /**
+     * 降临技能在种族守护之后触发
+     */
+    @Test
+    public void test被动种族守护_降临暴风雪_法力反射_同时上场() {
+        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50,
+            "残血王国小兵+降临暴风雪1", "占位符+王国守护10", "元素灵龙");
+        CardInfo c残血王国小兵 = context.addToHand(0, 0).setSummonDelay(0);
+        context.addToHand(1, 0).setSummonDelay(0);
+        context.addToField(2, 1);
+        context.startGame();
+        
+        random.addNextPicks(0).addNextNumbers(1000); // 降临暴风雪
+        context.proceedOneRound();
+        Assert.assertEquals(2, context.getPlayer(0).getField().size());
+        Assert.assertEquals(1 + 500 /* 王国守护10 */ - 120 /* 法力反射 */, c残血王国小兵.getHP());
+    }
 
     /**
      * 种族守护比献祭优先级高，而且献祭的体力增幅计算不包含种族守护,

@@ -984,6 +984,7 @@ public class SkillResolver {
 
         // Racial buff
         for (CardInfo fieldCard : myField.getAliveCards()) {
+            // 主动种族BUFF
             for (SkillUseInfo skillUseInfo : fieldCard.getNormalUsableSkills()) {
                 if (skillUseInfo.getType() == SkillType.王国之力) {
                     RacialBuff.apply(this, skillUseInfo, fieldCard, Race.KINGDOM, SkillEffectType.ATTACK_CHANGE);
@@ -1063,21 +1064,6 @@ public class SkillResolver {
                 }
             }
         }
-        for (CardInfo card : summonedCards) {
-            if (myField.getCard(card.getPosition()) == null) {
-                // Killed or returned by other summoning skills 
-                continue;
-            }
-            for (SkillUseInfo skillUseInfo : card.getNormalUsableSkills()) {
-                if (skillUseInfo.getType() == SkillType.时光倒流) {
-                    TimeBack.apply(skillUseInfo, this, myField.getOwner(), opField.getOwner());
-                } else if (skillUseInfo.getType() == SkillType.献祭) {
-                    Sacrifice.apply(this, skillUseInfo, card, reviver);
-                } else if (skillUseInfo.getType() == SkillType.反噬) {
-                    CounterBite.apply(skillUseInfo, this, card);
-                }
-            }
-        }
 
         for (CardInfo card : summonedCards) {
             if (myField.getCard(card.getPosition()) == null) {
@@ -1085,7 +1071,13 @@ public class SkillResolver {
                 continue;
             }
             for (SkillUseInfo skillUseInfo : card.getAllUsableSkills()) {
-                if (skillUseInfo.getType() == SkillType.复活 && skillUseInfo.getSkill().isSummonSkill()) {
+                if (skillUseInfo.getType() == SkillType.时光倒流) {
+                    TimeBack.apply(skillUseInfo, this, myField.getOwner(), opField.getOwner());
+                } else if (skillUseInfo.getType() == SkillType.献祭) {
+                    Sacrifice.apply(this, skillUseInfo, card, reviver);
+                } else if (skillUseInfo.getType() == SkillType.反噬) {
+                    CounterBite.apply(skillUseInfo, this, card);
+                } else if (skillUseInfo.getType() == SkillType.复活 && skillUseInfo.getSkill().isSummonSkill()) {
                     Revive.apply(this, skillUseInfo, card);
                 }
             }
