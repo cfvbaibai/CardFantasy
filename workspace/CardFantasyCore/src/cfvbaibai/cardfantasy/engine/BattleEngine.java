@@ -61,14 +61,6 @@ public class BattleEngine {
         Deck deck = player.getDeck();
         deck.clear();
         for (CardInfo survivor : survivors) {
-            /*
-            for (SkillEffect effect : survivor.getEffects()) {
-                if (effect.getType() == SkillEffectType.MAXHP_CHANGE &&
-                    !effect.getCause().getType().containsTag(SkillTag.原始体力加成)) {
-                    survivor.removeEffect(effect);
-                }
-            }
-            */
             deck.addCard(survivor);
             // Switch to new player.
             survivor.setOwner(player);

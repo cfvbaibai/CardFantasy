@@ -126,8 +126,10 @@ public class StageInfo {
     }
 
     public void gameStarted() {
-        for (Player player : this.getPlayers()) {
-            player.getDeck().shuffle();
+        if (this.getRule().getDeckOrder() == 0) {
+            for (Player player : this.getPlayers()) {
+                player.getDeck().shuffle();
+            }
         }
         int firstPlayer = determineFirstPlayer();
         this.ui.showMessage(this.getPlayers().get(firstPlayer).getShortDesc() + "先攻");

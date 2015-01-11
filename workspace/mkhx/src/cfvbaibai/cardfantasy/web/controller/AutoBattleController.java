@@ -106,25 +106,20 @@ public class AutoBattleController {
     public void playAuto1MatchGame(HttpServletRequest request, HttpServletResponse response,
             @RequestParam("deck1") String deck1, @RequestParam("count") int count,
             @RequestParam("deck2") String deck2, @RequestParam("hlv1") int heroLv1, @RequestParam("hlv2") int heroLv2,
-            @RequestParam("firstAttack") int firstAttack) throws IOException {
+            @RequestParam("fa") int firstAttack, @RequestParam("do") int deckOrder) throws IOException {
         PrintWriter writer = response.getWriter();
         try {
-            if (firstAttack != 0 && firstAttack != 1 && firstAttack != -1) {
-                throw new IllegalArgumentException("无效的先攻：" + firstAttack);
-            }
             logger.info("PlayAuto1MatchGame from " + request.getRemoteAddr() + ":");
-            logger.info("FirstAttack = " + firstAttack);
-            logger.info("Lv1 = " + heroLv1 + ", Deck1 = " + deck1);
-            logger.info("Lv2 = " + heroLv2 + ", Deck2 = " + deck2);
-            
-            this.userActionRecorder.addAction(new UserAction(new Date(), request.getRemoteAddr(), "Play Auto 1Match Game",
-                    String.format("Deck1=%s<br />Deck2=%s<br />Lv1=%d, Lv2=%d, FirstAttack=%d",
-                            deck1, deck2, heroLv1, heroLv2, firstAttack)));
+            String logMessage = String.format(
+                "Deck1=%s<br />Deck2=%s<br />Lv1=%d, Lv2=%d, FirstAttack=%d, DeckOrder=%d",
+                deck1, deck2, heroLv1, heroLv2, firstAttack, deckOrder);
+            logger.info(logMessage);
+            this.userActionRecorder.addAction(new UserAction(new Date(), request.getRemoteAddr(), "Play Auto 1Match Game", logMessage));
             
             PlayerInfo player1 = PlayerBuilder.build(heroLv1 != 0, "玩家1", deck1, heroLv1);
             PlayerInfo player2 = PlayerBuilder.build(heroLv2 != 0, "玩家2", deck2, heroLv2);
             WebPlainTextGameUI ui = new WebPlainTextGameUI();
-            BattleEngine engine = new BattleEngine(ui, new Rule(5, 999, firstAttack, false));
+            BattleEngine engine = new BattleEngine(ui, new Rule(5, 999, firstAttack, deckOrder, false));
             engine.registerPlayers(player1, player2);
             GameResult gameResult = engine.playGame();
             writer.print(Utils.getCurrentDateTime() + "<br />" + ui.getAllText());
@@ -138,26 +133,21 @@ public class AutoBattleController {
     public void simulateAuto1MatchGame(HttpServletRequest request, HttpServletResponse response,
             @RequestParam("deck1") String deck1, @RequestParam("count") int count,
             @RequestParam("deck2") String deck2, @RequestParam("hlv1") int heroLv1, @RequestParam("hlv2") int heroLv2,
-            @RequestParam("firstAttack") int firstAttack) throws IOException {
+            @RequestParam("fa") int firstAttack, @RequestParam("do") int deckOrder) throws IOException {
         PrintWriter writer = response.getWriter();
         response.setContentType("application/json");
         try {
-            if (firstAttack != 0 && firstAttack != 1 && firstAttack != -1) {
-                throw new IllegalArgumentException("无效的先攻：" + firstAttack);
-            }
             logger.info("SimulateAuto1MatchGame from " + request.getRemoteAddr() + ":");
-            logger.info("FirstAttack = " + firstAttack);
-            logger.info("Lv1 = " + heroLv1 + ", Deck1 = " + deck1);
-            logger.info("Lv2 = " + heroLv2 + ", Deck2 = " + deck2);
-            
-            this.userActionRecorder.addAction(new UserAction(new Date(), request.getRemoteAddr(), "Simulate Auto 1Match Game",
-                    String.format("Deck1=%s<br />Deck2=%s<br />Lv1=%d, Lv2=%d, FirstAttack=%d",
-                            deck1, deck2, heroLv1, heroLv2, firstAttack)));
-            
+            String logMessage = String.format(
+                "Deck1=%s<br />Deck2=%s<br />Lv1=%d, Lv2=%d, FirstAttack=%d, DeckOrder=%d",
+                deck1, deck2, heroLv1, heroLv2, firstAttack, deckOrder);
+            logger.info(logMessage);
+            this.userActionRecorder.addAction(new UserAction(new Date(), request.getRemoteAddr(), "Simulate Auto 1Match Game", logMessage));
+
             PlayerInfo player1 = PlayerBuilder.build(heroLv1 != 0, "玩家1", deck1, heroLv1);
             PlayerInfo player2 = PlayerBuilder.build(heroLv2 != 0, "玩家2", deck2, heroLv2);
             StructuredRecordGameUI ui = new StructuredRecordGameUI();
-            BattleEngine engine = new BattleEngine(ui, new Rule(5, 999, firstAttack, false));
+            BattleEngine engine = new BattleEngine(ui, new Rule(5, 999, firstAttack, deckOrder, false));
             engine.registerPlayers(player1, player2);
             GameResult gameResult = engine.playGame();
             BattleRecord record = ui.getRecord();
@@ -170,26 +160,20 @@ public class AutoBattleController {
     
     @RequestMapping(value = "/PlayAutoMassiveGame")
     public void playAutoMassiveGame(HttpServletRequest request, HttpServletResponse response,
-            @RequestParam("deck1") String deck1,
-            @RequestParam("deck2") String deck2, @RequestParam("hlv1") int heroLv1, @RequestParam("hlv2") int heroLv2,
-            @RequestParam("firstAttack") int firstAttack, @RequestParam("count") int count) throws IOException {
+            @RequestParam("deck1") String deck1, @RequestParam("deck2") String deck2,
+            @RequestParam("hlv1") int heroLv1, @RequestParam("hlv2") int heroLv2, @RequestParam("count") int count,
+            @RequestParam("fa") int firstAttack, @RequestParam("do") int deckOrder) throws IOException {
         PrintWriter writer = response.getWriter();
         try {
-            if (firstAttack != 0 && firstAttack != 1 && firstAttack != -1) {
-                throw new IllegalArgumentException("无效的先攻：" + firstAttack);
-            }
             logger.info("PlayAutoMassiveGame from " + request.getRemoteAddr() + ":");
-            logger.info("Count = " + count);
-            logger.info("FirstAttack = " + firstAttack);
-            logger.info("Lv1 = " + heroLv1 + ", Deck1 = " + deck1);
-            logger.info("Lv2 = " + heroLv2 + ", Deck2 = " + deck2);
-            
-            this.userActionRecorder.addAction(new UserAction(new Date(), request.getRemoteAddr(), "Play Auto Massive Game",
-                    String.format("Deck1=%s<br />Deck2=%s<br />Lv1=%d, Lv2=%d, FirstAttack=%d, Count=%d",
-                            deck1, deck2, heroLv1, heroLv2, firstAttack, count)));
+            String logMessage = String.format("Deck1=%s<br />Deck2=%s<br />Lv1=%d, Lv2=%d, FirstAttack=%d, DeckOrder=%d, Count=%d",
+                deck1, deck2, heroLv1, heroLv2, firstAttack, deckOrder, count);
+            logger.info(logMessage);
+            this.userActionRecorder.addAction(new UserAction(new Date(), request.getRemoteAddr(), "Play Auto Massive Game", logMessage));
+
             PlayerInfo player1 = PlayerBuilder.build(heroLv1 != 0, "玩家1", deck1, heroLv1);
             PlayerInfo player2 = PlayerBuilder.build(heroLv2 != 0, "玩家2", deck2, heroLv2);
-            GameResultStat stat = play(player1, player2, count, new Rule(5, 999, firstAttack, false));
+            GameResultStat stat = play(player1, player2, count, new Rule(5, 999, firstAttack, deckOrder, false));
             writer.append(Utils.getCurrentDateTime() + "<br />");
             writer.append("<table>");
             writer.append("<tr><td>超时: </td><td>" + stat.getTimeoutCount() + "</td></tr>");

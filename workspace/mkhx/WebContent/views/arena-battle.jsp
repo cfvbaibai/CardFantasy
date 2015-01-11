@@ -3,47 +3,52 @@
         <div data-role="content">
             <div data-role="collapsible" data-mini="true" data-collapsed="false" data-theme="c" data-content-theme="d">
                 <h3>设置双方阵容</h3>
-                <div id="attackFirst" data-mini="true" data-role="controlgroup" data-type="horizontal">
-                    <input data-theme="c" data-mini="true" type="radio" name="firstAttack" id="autoFirst" value="-1" checked="checked" />
-                    <label for="autoFirst">按规则决定先攻</label>
-                    <input data-theme="c" data-mini="true" type="radio" name="firstAttack" id="player1First" value="0" />
-                    <label for="player1First">玩家1先攻</label>
-                    <input data-theme="c" data-mini="true" type="radio" name="firstAttack" id="player2First" value="1" />
-                    <label for="player2First">玩家2先攻</label>
-                </div>
-                <div id="player1" class="player ui-grid-c">
-                    <div data-theme="c" class="ui-block-a ui-block-label-number">
-                        <span>玩家1等级: </span>
-                    </div>
-                    <div data-theme="c" class="ui-block-b">
-                        <input data-theme="c" type="number" id="hero1Lv" data-mini="true" value="75" />
-                    </div>
-                    <div data-theme="c" class="ui-block-c ui-block-label-number">
-                        <span>玩家1卡组: </span>
-                    </div>
-                    <div data-theme="c" class="ui-block-d">
-                        <a id="build-deck1-button" data-role="button" data-rel="dialog" data-mini="true">组卡</a>
-                    </div>
-                </div>
                 <div>
-                    <textarea data-theme="c" id="deck1" rows="5" cols="40" data-mini="true">金属巨龙*5,降临天使*5,冰封,永冻,雷盾,春风</textarea>
-                </div>
-                <div id="player2" class="player ui-grid-c">
-                    <div data-theme="c" class="ui-block-a ui-block-label-number">
-                        <span>玩家2等级: </span>
+                    <fieldset class="select-2" data-theme="c" data-role="controlgroup" data-type="horizontal">
+                        <select data-theme="c" id="arena-first-attack" data-mini="true" data-native-menu="false">
+                            <option value="-1">先攻：按规则</option>
+                            <option value="0">先攻：玩家1</option>
+                            <option value="1">先攻：玩家2</option>
+                        </select>
+                        <select data-theme="c" id="arena-deck-order" data-mini="true" data-native-menu="false">
+                            <option value="0">出牌顺序：随机</option>
+                            <option value="1">出牌顺序：指定</option>
+                        </select>
+                    </fieldset>
+                    <div id="player1" class="player ui-grid-c">
+                        <div data-theme="c" class="ui-block-a ui-block-label-number">
+                            <span>玩家1等级: </span>
+                        </div>
+                        <div data-theme="c" class="ui-block-b">
+                            <input data-theme="c" type="number" id="hero1Lv" data-mini="true" value="75" />
+                        </div>
+                        <div data-theme="c" class="ui-block-c ui-block-label-number">
+                            <span>玩家1卡组: </span>
+                        </div>
+                        <div data-theme="c" class="ui-block-d">
+                            <a id="build-deck1-button" data-role="button" data-rel="dialog" data-mini="true">组卡</a>
+                        </div>
                     </div>
-                    <div data-theme="c" class="ui-block-b">
-                        <input data-theme="c" type="number" id="hero2Lv" data-mini="true" value="75" />
+                    <div>
+                        <textarea data-theme="c" id="deck1" rows="5" cols="40" data-mini="true">金属巨龙*5,降临天使*5,冰封,永冻,雷盾,春风</textarea>
                     </div>
-                    <div class="ui-block-c ui-block-label-number">
-                        <span>玩家2卡组: </span>
+                    <div id="player2" class="player ui-grid-c">
+                        <div data-theme="c" class="ui-block-a ui-block-label-number">
+                            <span>玩家2等级: </span>
+                        </div>
+                        <div data-theme="c" class="ui-block-b">
+                            <input data-theme="c" type="number" id="hero2Lv" data-mini="true" value="75" />
+                        </div>
+                        <div class="ui-block-c ui-block-label-number">
+                            <span>玩家2卡组: </span>
+                        </div>
+                        <div data-theme="c" class="ui-block-d">
+                            <a id="build-deck2-button" data-role="button" data-rel="dialog" data-mini="true">组卡</a>
+                        </div>
                     </div>
-                    <div data-theme="c" class="ui-block-d">
-                        <a id="build-deck2-button" data-role="button" data-rel="dialog" data-mini="true">组卡</a>
+                    <div>
+                        <textarea data-theme="c" id="deck2" rows="5" cols="40" data-mini="true">战斗猛犸象+降临传送*5,堕落精灵+转生5*5,岩壁,赤谷,秽土,灼魂</textarea>
                     </div>
-                </div>
-                <div>
-                    <textarea data-theme="c" id="deck2" rows="5" cols="40" data-mini="true">战斗猛犸象+降临传送*5,堕落精灵+转生5*5,岩壁,赤谷,秽土,灼魂</textarea>
                 </div>
             </div>
             <div id="command" data-mini="true" data-role="controlgroup" data-type="horizontal">

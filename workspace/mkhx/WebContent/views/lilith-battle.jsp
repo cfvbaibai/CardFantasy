@@ -45,16 +45,16 @@
                     <textarea data-theme="c" id="lilith-player-deck" name="lilith-player-deck" rows="5" cols="40" data-mini="true">堕落精灵*2,淬炼,绝杀</textarea>
                 </div>
             </div>
-            <div id="lilith-command" data-mini="true" data-role="controlgroup" data-type="horizontal" data-disabled="false">
-                <a id="play-lilith-1-game-button" class="battle-button" data-role="button" data-mini="true" data-theme="c">文字战斗</a>
-                <a id="simulate-lilith-1-game-button" class="battle-button" data-role="button" data-mini="true" data-theme="c">动画战斗</a>
-                <a id="play-lilith-massive-game-button" class="battle-button" data-role="button" data-mini="true" data-theme="c">卡组强度分析</a>
-                <a data-role="button" data-mini="true" data-theme="c" data-type="bug" href="#">提BUG</a>
-            </div>
-            <div id="lilith-battle-div" data-mini="true" data-role="collapsible" data-collapsed="false" data-theme="c" data-content-theme="d">
-                <h3>战斗记录</h3>
-                <div id="lilith-battle-output" class="battle-output">没有战斗</div>
-            </div>
+        </div>
+        <div id="lilith-command" data-mini="true" data-role="controlgroup" data-type="horizontal" data-disabled="false">
+            <a id="play-lilith-1-game-button" class="battle-button" data-role="button" data-mini="true" data-theme="c">文字战斗</a>
+            <a id="simulate-lilith-1-game-button" class="battle-button" data-role="button" data-mini="true" data-theme="c">动画战斗</a>
+            <a id="play-lilith-massive-game-button" class="battle-button" data-role="button" data-mini="true" data-theme="c">卡组强度分析</a>
+            <a data-role="button" data-mini="true" data-theme="c" data-type="bug" href="#">提BUG</a>
+        </div>
+        <div id="lilith-battle-div" data-mini="true" data-role="collapsible" data-collapsed="false" data-theme="c" data-content-theme="d">
+            <h3>战斗记录</h3>
+            <div id="lilith-battle-output" class="battle-output">没有战斗</div>
         </div>
     </div>
 </div>

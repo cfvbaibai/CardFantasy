@@ -161,16 +161,18 @@ var playAutoGame = function(count) {
     var deck2 = $('#deck2').val().trim();
     var heroLv1 = $('#hero1Lv').val();
     var heroLv2 = $('#hero2Lv').val();
-    var firstAttack = $('input[name=firstAttack]:radio:checked').val();
+    var firstAttack = $('#arena-first-attack').val();
+    var deckOrder = $('#arena-deck-order').val();
     var isAnimation = false;
     var url = '';
     var postData = {
-        deck1: deck1,
-        deck2: deck2,
-        hlv1: heroLv1,
-        hlv2: heroLv2,
-        firstAttack: firstAttack,
-        count: count
+        'deck1': deck1,
+        'deck2': deck2,
+        'hlv1': heroLv1,
+        'hlv2': heroLv2,
+        'fa': firstAttack,
+        'do': deckOrder,
+        'count': count
     };
 
     console.log('saving cookie in arena-battle...');
