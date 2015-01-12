@@ -257,6 +257,9 @@ $(document)
 .on("pageinit", "#boss-battle", function(event) {
     $('#build-boss-deck-button').attr('href', "javascript:CardFantasy.DeckBuilder.buildDeck('deck');");
 })
+.on("pageinit", "#lilith-battle", function(event) {
+    $('#build-lilith-deck-button').attr('href', "javascript:CardFantasy.DeckBuilder.buildDeck('lilith-player-deck');");
+})
 .on("pageinit", "#map-battle", function(event) {
     $('#build-map-deck-button').attr('href', "javascript:CardFantasy.DeckBuilder.buildDeck('map-deck');");
 })

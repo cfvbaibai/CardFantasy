@@ -62,7 +62,7 @@ public class PvlEngine extends GameEngine {
             GameResult result = engine.playGame();
             ++battleCount;
             if (battleCount > this.timeout) {
-                //throw new PvlGameTimeoutException();
+                throw new PvlGameTimeoutException();
             }
             if (result.getWinner().getId().equals(player.getId())) {
                 return getClearGuardsResult(battleCount, result.getLoser());
