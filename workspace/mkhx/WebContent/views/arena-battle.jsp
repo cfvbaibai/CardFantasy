@@ -4,17 +4,8 @@
             <div data-role="collapsible" data-mini="true" data-collapsed="false" data-theme="c" data-content-theme="d">
                 <h3>设置双方阵容</h3>
                 <div>
-                    <fieldset class="select-2" data-theme="c" data-role="controlgroup" data-type="horizontal">
-                        <select data-theme="c" id="arena-first-attack" data-mini="true" data-native-menu="false">
-                            <option value="-1">先攻：按规则</option>
-                            <option value="0">先攻：玩家1</option>
-                            <option value="1">先攻：玩家2</option>
-                        </select>
-                        <select data-theme="c" id="arena-deck-order" data-mini="true" data-native-menu="false">
-                            <option value="0">出牌顺序：随机</option>
-                            <option value="1">出牌顺序：指定</option>
-                        </select>
-                    </fieldset>
+                    <a id="show-arena-battle-options-button" data-role="button" data-rel="dialog" data-mini="true">环境设置</a>
+                    <div id="arena-battle-options-text"></div>
                     <div id="player1" class="player ui-grid-c">
                         <div data-theme="c" class="ui-block-a ui-block-label-number">
                             <span>玩家1等级: </span>

@@ -31,6 +31,7 @@ import cfvbaibai.cardfantasy.data.RuneData;
 import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.data.SkillTag;
 import cfvbaibai.cardfantasy.data.SkillType;
+import cfvbaibai.cardfantasy.data.TrivialSkill;
 import cfvbaibai.cardfantasy.engine.BattleEngine;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.GameEndCause;
@@ -106,7 +107,10 @@ public class AutoBattleController {
     public void playAuto1MatchGame(HttpServletRequest request, HttpServletResponse response,
             @RequestParam("deck1") String deck1, @RequestParam("count") int count,
             @RequestParam("deck2") String deck2, @RequestParam("hlv1") int heroLv1, @RequestParam("hlv2") int heroLv2,
-            @RequestParam("fa") int firstAttack, @RequestParam("do") int deckOrder) throws IOException {
+            @RequestParam("fa") int firstAttack, @RequestParam("do") int deckOrder,
+            @RequestParam("p1hhpb") int p1HeroHpBuff, @RequestParam("p1catb") int p1CardAtBuff, @RequestParam("p1chpb") int p1CardHpBuff,
+            @RequestParam("p2hhpb") int p2HeroHpBuff, @RequestParam("p2catb") int p2CardAtBuff, @RequestParam("p2chpb") int p2CardHpBuff
+            ) throws IOException {
         PrintWriter writer = response.getWriter();
         try {
             logger.info("PlayAuto1MatchGame from " + request.getRemoteAddr() + ":");
@@ -115,9 +119,22 @@ public class AutoBattleController {
                 deck1, deck2, heroLv1, heroLv2, firstAttack, deckOrder);
             logger.info(logMessage);
             this.userActionRecorder.addAction(new UserAction(new Date(), request.getRemoteAddr(), "Play Auto 1Match Game", logMessage));
-            
-            PlayerInfo player1 = PlayerBuilder.build(heroLv1 != 0, "玩家1", deck1, heroLv1);
-            PlayerInfo player2 = PlayerBuilder.build(heroLv2 != 0, "玩家2", deck2, heroLv2);
+            List<Skill> p1CardBuffs = new ArrayList<Skill>();
+            if (p1CardAtBuff != 100) {
+                p1CardBuffs.add(new TrivialSkill(SkillType.原始攻击调整, p1CardAtBuff - 100));
+            }
+            if (p1CardHpBuff != 100) {
+                p1CardBuffs.add(new TrivialSkill(SkillType.原始体力调整, p1CardHpBuff - 100));
+            }
+            PlayerInfo player1 = PlayerBuilder.build(heroLv1 != 0, "玩家1", deck1, heroLv1, p1CardBuffs);
+            List<Skill> p2CardBuffs = new ArrayList<Skill>();
+            if (p2CardAtBuff != 100) {
+                p2CardBuffs.add(new TrivialSkill(SkillType.原始攻击调整, p2CardAtBuff - 100));
+            }
+            if (p2CardHpBuff != 100) {
+                p2CardBuffs.add(new TrivialSkill(SkillType.原始体力调整, p2CardHpBuff - 100));
+            }
+            PlayerInfo player2 = PlayerBuilder.build(heroLv2 != 0, "玩家2", deck2, heroLv2, p2CardBuffs);
             WebPlainTextGameUI ui = new WebPlainTextGameUI();
             BattleEngine engine = new BattleEngine(ui, new Rule(5, 999, firstAttack, deckOrder, false));
             engine.registerPlayers(player1, player2);
@@ -133,7 +150,10 @@ public class AutoBattleController {
     public void simulateAuto1MatchGame(HttpServletRequest request, HttpServletResponse response,
             @RequestParam("deck1") String deck1, @RequestParam("count") int count,
             @RequestParam("deck2") String deck2, @RequestParam("hlv1") int heroLv1, @RequestParam("hlv2") int heroLv2,
-            @RequestParam("fa") int firstAttack, @RequestParam("do") int deckOrder) throws IOException {
+            @RequestParam("fa") int firstAttack, @RequestParam("do") int deckOrder,
+            @RequestParam("p1hhpb") int p1HeroHpBuff, @RequestParam("p1catb") int p1CardAtBuff, @RequestParam("p1chpb") int p1CardHpBuff,
+            @RequestParam("p2hhpb") int p2HeroHpBuff, @RequestParam("p2catb") int p2CardAtBuff, @RequestParam("p2chpb") int p2CardHpBuff
+    ) throws IOException {
         PrintWriter writer = response.getWriter();
         response.setContentType("application/json");
         try {
@@ -144,8 +164,22 @@ public class AutoBattleController {
             logger.info(logMessage);
             this.userActionRecorder.addAction(new UserAction(new Date(), request.getRemoteAddr(), "Simulate Auto 1Match Game", logMessage));
 
-            PlayerInfo player1 = PlayerBuilder.build(heroLv1 != 0, "玩家1", deck1, heroLv1);
-            PlayerInfo player2 = PlayerBuilder.build(heroLv2 != 0, "玩家2", deck2, heroLv2);
+            List<Skill> p1CardBuffs = new ArrayList<Skill>();
+            if (p1CardAtBuff != 100) {
+                p1CardBuffs.add(new TrivialSkill(SkillType.原始攻击调整, p1CardAtBuff - 100));
+            }
+            if (p1CardHpBuff != 100) {
+                p1CardBuffs.add(new TrivialSkill(SkillType.原始体力调整, p1CardHpBuff - 100));
+            }
+            PlayerInfo player1 = PlayerBuilder.build(heroLv1 != 0, "玩家1", deck1, heroLv1, p1CardBuffs);
+            List<Skill> p2CardBuffs = new ArrayList<Skill>();
+            if (p2CardAtBuff != 100) {
+                p2CardBuffs.add(new TrivialSkill(SkillType.原始攻击调整, p2CardAtBuff - 100));
+            }
+            if (p2CardHpBuff != 100) {
+                p2CardBuffs.add(new TrivialSkill(SkillType.原始体力调整, p2CardHpBuff - 100));
+            }
+            PlayerInfo player2 = PlayerBuilder.build(heroLv2 != 0, "玩家2", deck2, heroLv2, p2CardBuffs);
             StructuredRecordGameUI ui = new StructuredRecordGameUI();
             BattleEngine engine = new BattleEngine(ui, new Rule(5, 999, firstAttack, deckOrder, false));
             engine.registerPlayers(player1, player2);
@@ -162,7 +196,10 @@ public class AutoBattleController {
     public void playAutoMassiveGame(HttpServletRequest request, HttpServletResponse response,
             @RequestParam("deck1") String deck1, @RequestParam("deck2") String deck2,
             @RequestParam("hlv1") int heroLv1, @RequestParam("hlv2") int heroLv2, @RequestParam("count") int count,
-            @RequestParam("fa") int firstAttack, @RequestParam("do") int deckOrder) throws IOException {
+            @RequestParam("fa") int firstAttack, @RequestParam("do") int deckOrder,
+            @RequestParam("p1hhpb") int p1HeroHpBuff, @RequestParam("p1catb") int p1CardAtBuff, @RequestParam("p1chpb") int p1CardHpBuff,
+            @RequestParam("p2hhpb") int p2HeroHpBuff, @RequestParam("p2catb") int p2CardAtBuff, @RequestParam("p2chpb") int p2CardHpBuff
+    ) throws IOException {
         PrintWriter writer = response.getWriter();
         try {
             logger.info("PlayAutoMassiveGame from " + request.getRemoteAddr() + ":");
@@ -171,8 +208,22 @@ public class AutoBattleController {
             logger.info(logMessage);
             this.userActionRecorder.addAction(new UserAction(new Date(), request.getRemoteAddr(), "Play Auto Massive Game", logMessage));
 
-            PlayerInfo player1 = PlayerBuilder.build(heroLv1 != 0, "玩家1", deck1, heroLv1);
-            PlayerInfo player2 = PlayerBuilder.build(heroLv2 != 0, "玩家2", deck2, heroLv2);
+            List<Skill> p1CardBuffs = new ArrayList<Skill>();
+            if (p1CardAtBuff != 100) {
+                p1CardBuffs.add(new TrivialSkill(SkillType.原始攻击调整, p1CardAtBuff - 100));
+            }
+            if (p1CardHpBuff != 100) {
+                p1CardBuffs.add(new TrivialSkill(SkillType.原始体力调整, p1CardHpBuff - 100));
+            }
+            PlayerInfo player1 = PlayerBuilder.build(heroLv1 != 0, "玩家1", deck1, heroLv1, p1CardBuffs);
+            List<Skill> p2CardBuffs = new ArrayList<Skill>();
+            if (p2CardAtBuff != 100) {
+                p2CardBuffs.add(new TrivialSkill(SkillType.原始攻击调整, p2CardAtBuff - 100));
+            }
+            if (p2CardHpBuff != 100) {
+                p2CardBuffs.add(new TrivialSkill(SkillType.原始体力调整, p2CardHpBuff - 100));
+            }
+            PlayerInfo player2 = PlayerBuilder.build(heroLv2 != 0, "玩家2", deck2, heroLv2, p2CardBuffs);
             GameResultStat stat = play(player1, player2, count, new Rule(5, 999, firstAttack, deckOrder, false));
             writer.append(Utils.getCurrentDateTime() + "<br />");
             writer.append("<table>");
@@ -738,8 +789,8 @@ public class AutoBattleController {
                 writer.append("<table>");
                 writer.append("<tr><td>平均需要进攻次数: </td><td>" + statBattleCount.getAverage() + "</td></tr>");
                 writer.append("<tr><td>不稳定度: </td><td>" + Math.round(statBattleCount.getCoefficientOfVariation() * 100) + "%</td></tr>");
-                writer.append("<tr><td>平均每轮进攻对莉莉丝伤害: </td><td>" + Math.round(statAvgDamageToLilith.getAverage()) + "</td></tr>");
-                writer.append("<tr><td>不稳定度: </td><td>" + Math.round(statAvgDamageToLilith.getCoefficientOfVariation() * 100) + "%</td></tr>");
+                //writer.append("<tr><td>平均每轮进攻对莉莉丝伤害: </td><td>" + Math.round(statAvgDamageToLilith.getAverage()) + "</td></tr>");
+                //writer.append("<tr><td>不稳定度: </td><td>" + Math.round(statAvgDamageToLilith.getCoefficientOfVariation() * 100) + "%</td></tr>");
                 writer.append("</td></tr></table>");
             } catch (PvlGameTimeoutException e) {
                 writer.append("进攻次数超过最大次数，你的卡组太弱了");

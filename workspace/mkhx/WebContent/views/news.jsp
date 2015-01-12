@@ -28,6 +28,7 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2015-01-12: 修复莉莉丝战无法使用组卡器的BUG，感谢<x>欺一世时光_</x>, <x>哈哈哈雷宇桑</x>报告BUG</li>
                     <li>2015-01-11: <ul>
                         <li>添加13-15地图，感谢<x>一喵</x>提供大量模拟器直接可用的信息</li>
                         <li>修复一个关于锁定状态下邪灵汲取的BUG，感谢<x>壹滴海洋</x>发现BUG</li>

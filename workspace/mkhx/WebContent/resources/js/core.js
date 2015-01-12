@@ -161,8 +161,6 @@ var playAutoGame = function(count) {
     var deck2 = $('#deck2').val().trim();
     var heroLv1 = $('#hero1Lv').val();
     var heroLv2 = $('#hero2Lv').val();
-    var firstAttack = $('#arena-first-attack').val();
-    var deckOrder = $('#arena-deck-order').val();
     var isAnimation = false;
     var url = '';
     var postData = {
@@ -170,8 +168,14 @@ var playAutoGame = function(count) {
         'deck2': deck2,
         'hlv1': heroLv1,
         'hlv2': heroLv2,
-        'fa': firstAttack,
-        'do': deckOrder,
+        'fa': arenaBattleOptions.firstAttack,
+        'do': arenaBattleOptions.deckOrder,
+        'p1hhpb': 0,//arenaBattleOptions.p1HeroHpBuff,
+        'p1catb': arenaBattleOptions.p1CardAtBuff,
+        'p1chpb': arenaBattleOptions.p1CardHpBuff,
+        'p2hhpb': 0,//arenaBattleOptions.p2HeroHpBuff,
+        'p2catb': arenaBattleOptions.p2CardAtBuff,
+        'p2chpb': arenaBattleOptions.p2CardHpBuff,
         'count': count
     };
 
@@ -283,6 +287,79 @@ var playMapGame = function(count) {
     sendRequest(url, postData, 'map-battle-output', isAnimation);
 };
 Core.playMapGame = playMapGame;
+
+var BattleOptions = function() {
+    this.firstAttack = -1;
+    this.deckOrder = 0;
+    this.p1HeroHpBuff = 100;
+    this.p1CardAtBuff = 100;
+    this.p1CardHpBuff = 100;
+    this.p2HeroHpBuff = 100;
+    this.p2CardAtBuff = 100;
+    this.p2CardHpBuff = 100;
+
+    this.toString = function() {
+        var result = '';
+        if (this.firstAttack == -1) {
+            result += '按规则决定先攻';
+        } else if (this.firstAttack == 0) {
+            result += '玩家1先攻';
+        } else {
+            result += '玩家2先攻';
+        }
+        result += '; ';
+        if (this.deckOrder == 0) {
+            result += '随机出卡';
+        } else {
+            result += '按指定顺序出卡';
+        }
+        //result += '; 玩家1英雄体力调整: ' + this.p1HeroHpBuff + '%';
+        result += '; 玩家1攻击调整: ' + this.p1CardAtBuff + '%';
+        result += '; 玩家1体力调整: ' + this.p1CardHpBuff + '%';
+        //result += '; 玩家2英雄体力调整: ' + this.p2HeroHpBuff + '%';
+        result += '; 玩家2攻击调整: ' + this.p2CardAtBuff + '%';
+        result += '; 玩家2体力调整: ' + this.p2CardHpBuff + '%';
+        return result;
+    }
+};
+
+var arenaBattleOptions = new BattleOptions();
+Core.arenaBattleOptions = arenaBattleOptions;
+
+var setBattleOptions = function(options, optionsDivId) {
+    $.mobile.changePage("#battle-options", { transition : 'flip', role : 'dialog' });
+    updateBattleOptions.currentOptions = options;
+    updateBattleOptions.currentOptionsDivId = optionsDivId;
+    $('#first-attack').val(options.firstAttack).selectmenu('refresh');
+    $('#deck-order').val(options.deckOrder).selectmenu('refresh');
+    $('#p1-hero-hp-buff').val(options.p1HeroHpBuff);
+    $('#p1-card-at-buff').val(options.p1CardAtBuff);
+    $('#p1-card-hp-buff').val(options.p1CardHpBuff);
+    $('#p2-hero-hp-buff').val(options.p2HeroHpBuff);
+    $('#p2-card-at-buff').val(options.p2CardAtBuff);
+    $('#p2-card-hp-buff').val(options.p2CardHpBuff);
+};
+Core.setBattleOptions = setBattleOptions;
+
+var updateBattleOptions = function() {
+    var options = updateBattleOptions.currentOptions;
+    options.firstAttack = $('#first-attack').val();
+    options.deckOrder = $('#deck-order').val();
+    options.p1HeroHpBuff = $('#p1-hero-hp-buff').val();
+    options.p1CardAtBuff = $('#p1-card-at-buff').val();
+    options.p1CardHpBuff = $('#p1-card-hp-buff').val();
+    options.p2HeroHpBuff = $('#p2-hero-hp-buff').val();
+    options.p2CardAtBuff = $('#p2-card-at-buff').val();
+    options.p2CardHpBuff = $('#p2-card-hp-buff').val();
+    setBattleOptionsText(options, updateBattleOptions.currentOptionsDivId);
+    history.go(-1);
+};
+Core.updateBattleOptions = updateBattleOptions;
+
+var setBattleOptionsText = function(options, divId) {
+    $('#' + divId).text(options.toString());
+};
+Core.setBattleOptionsText = setBattleOptionsText;
 
 var getMap = function() {
     return $('#map-id').val() + '-' + $('#map-difficulty').val();
@@ -452,6 +529,9 @@ $(document)
     $('#play-auto-1-game-button').attr('href', 'javascript:CardFantasy.Core.playAutoGame(1);');
     $('#simulate-auto-1-game-button').attr('href', 'javascript:CardFantasy.Core.playAutoGame(-1);');
     $('#play-auto-massive-game-button').attr('href', 'javascript:CardFantasy.Core.playAutoGame(1000);');
+    $('#show-arena-battle-options-button').attr('href', 'javascript:CardFantasy.Core.setBattleOptions(CardFantasy.Core.arenaBattleOptions, "arena-battle-options-text");');
+    $('#update-battle-options-button').attr('href', 'javascript:CardFantasy.Core.updateBattleOptions();');
+    setBattleOptionsText(arenaBattleOptions, 'arena-battle-options-text');
 });
 
 // END OF OUTERMOST IIFE

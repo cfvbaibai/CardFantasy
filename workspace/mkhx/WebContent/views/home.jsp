@@ -28,6 +28,7 @@
     <%@ include file="open-source.jsp" %>
     <%@ include file="arena.jsp" %>
     <%@ include file="deck-builder.jsp" %>
+    <%@ include file="arena-battle-options.jsp" %>
 
     <!-- CNZZ Begins -->
     <script src="http://s25.cnzz.com/stat.php?id=5496691&web_id=5496691&online=1&show=line"></script>
