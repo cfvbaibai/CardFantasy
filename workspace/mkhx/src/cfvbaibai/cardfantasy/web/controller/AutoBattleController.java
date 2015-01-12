@@ -103,6 +103,41 @@ public class AutoBattleController {
         return stat;
     }
 
+    private void outputBattleOptions(PrintWriter writer, int firstAttack, int deckOrder, int p1hhpb, int p1catb, int p1chpb, int p2hhpb, int p2catb, int p2chpb) {
+        if (firstAttack == -1) {
+            writer.write("按规则决定先攻");
+        } else if (firstAttack == 0) {
+            writer.write("玩家1先攻");
+        } else {
+            writer.write("玩家2先攻");
+        }
+        writer.write("; ");
+        if (deckOrder == 0) {
+            writer.write("随机出牌");
+        } else {
+            writer.write("按指定顺序出牌");
+        }
+        writer.write("<br />");
+        if (p1hhpb != 100) {
+            writer.write("玩家1英雄体力调整: " + p1hhpb + "%<br />");
+        }
+        if (p1catb != 100) {
+            writer.write("玩家1卡牌攻击调整: " + p1catb + "%<br />");
+        }
+        if (p1chpb != 100) {
+            writer.write("玩家1卡牌体力调整: " + p1chpb + "%<br />");
+        }
+        if (p2hhpb != 100) {
+            writer.write("玩家2英雄体力调整: " + p2hhpb + "%<br />");
+        }
+        if (p2catb != 100) {
+            writer.write("玩家2卡牌攻击调整: " + p2catb + "%<br />");
+        }
+        if (p2chpb != 100) {
+            writer.write("玩家2卡牌体力调整: " + p2chpb + "%<br />");
+        }
+    }
+
     @RequestMapping(value = "/PlayAuto1MatchGame")
     public void playAuto1MatchGame(HttpServletRequest request, HttpServletResponse response,
             @RequestParam("deck1") String deck1, @RequestParam("count") int count,
@@ -119,6 +154,7 @@ public class AutoBattleController {
                 deck1, deck2, heroLv1, heroLv2, firstAttack, deckOrder);
             logger.info(logMessage);
             this.userActionRecorder.addAction(new UserAction(new Date(), request.getRemoteAddr(), "Play Auto 1Match Game", logMessage));
+            outputBattleOptions(writer, firstAttack, deckOrder, p1HeroHpBuff, p1CardAtBuff, p1CardHpBuff, p2HeroHpBuff, p2CardAtBuff, p2CardHpBuff);
             List<Skill> p1CardBuffs = new ArrayList<Skill>();
             if (p1CardAtBuff != 100) {
                 p1CardBuffs.add(new TrivialSkill(SkillType.原始攻击调整, p1CardAtBuff - 100));
@@ -126,7 +162,7 @@ public class AutoBattleController {
             if (p1CardHpBuff != 100) {
                 p1CardBuffs.add(new TrivialSkill(SkillType.原始体力调整, p1CardHpBuff - 100));
             }
-            PlayerInfo player1 = PlayerBuilder.build(heroLv1 != 0, "玩家1", deck1, heroLv1, p1CardBuffs);
+            PlayerInfo player1 = PlayerBuilder.build(heroLv1 != 0, "玩家1", deck1, heroLv1, p1CardBuffs, p1HeroHpBuff);
             List<Skill> p2CardBuffs = new ArrayList<Skill>();
             if (p2CardAtBuff != 100) {
                 p2CardBuffs.add(new TrivialSkill(SkillType.原始攻击调整, p2CardAtBuff - 100));
@@ -134,7 +170,7 @@ public class AutoBattleController {
             if (p2CardHpBuff != 100) {
                 p2CardBuffs.add(new TrivialSkill(SkillType.原始体力调整, p2CardHpBuff - 100));
             }
-            PlayerInfo player2 = PlayerBuilder.build(heroLv2 != 0, "玩家2", deck2, heroLv2, p2CardBuffs);
+            PlayerInfo player2 = PlayerBuilder.build(heroLv2 != 0, "玩家2", deck2, heroLv2, p2CardBuffs, p2HeroHpBuff);
             WebPlainTextGameUI ui = new WebPlainTextGameUI();
             BattleEngine engine = new BattleEngine(ui, new Rule(5, 999, firstAttack, deckOrder, false));
             engine.registerPlayers(player1, player2);
@@ -171,7 +207,7 @@ public class AutoBattleController {
             if (p1CardHpBuff != 100) {
                 p1CardBuffs.add(new TrivialSkill(SkillType.原始体力调整, p1CardHpBuff - 100));
             }
-            PlayerInfo player1 = PlayerBuilder.build(heroLv1 != 0, "玩家1", deck1, heroLv1, p1CardBuffs);
+            PlayerInfo player1 = PlayerBuilder.build(heroLv1 != 0, "玩家1", deck1, heroLv1, p1CardBuffs, p1HeroHpBuff);
             List<Skill> p2CardBuffs = new ArrayList<Skill>();
             if (p2CardAtBuff != 100) {
                 p2CardBuffs.add(new TrivialSkill(SkillType.原始攻击调整, p2CardAtBuff - 100));
@@ -179,7 +215,7 @@ public class AutoBattleController {
             if (p2CardHpBuff != 100) {
                 p2CardBuffs.add(new TrivialSkill(SkillType.原始体力调整, p2CardHpBuff - 100));
             }
-            PlayerInfo player2 = PlayerBuilder.build(heroLv2 != 0, "玩家2", deck2, heroLv2, p2CardBuffs);
+            PlayerInfo player2 = PlayerBuilder.build(heroLv2 != 0, "玩家2", deck2, heroLv2, p2CardBuffs, p2HeroHpBuff);
             StructuredRecordGameUI ui = new StructuredRecordGameUI();
             BattleEngine engine = new BattleEngine(ui, new Rule(5, 999, firstAttack, deckOrder, false));
             engine.registerPlayers(player1, player2);
@@ -207,7 +243,7 @@ public class AutoBattleController {
                 deck1, deck2, heroLv1, heroLv2, firstAttack, deckOrder, count);
             logger.info(logMessage);
             this.userActionRecorder.addAction(new UserAction(new Date(), request.getRemoteAddr(), "Play Auto Massive Game", logMessage));
-
+            outputBattleOptions(writer, firstAttack, deckOrder, p1HeroHpBuff, p1CardAtBuff, p1CardHpBuff, p2HeroHpBuff, p2CardAtBuff, p2CardHpBuff);
             List<Skill> p1CardBuffs = new ArrayList<Skill>();
             if (p1CardAtBuff != 100) {
                 p1CardBuffs.add(new TrivialSkill(SkillType.原始攻击调整, p1CardAtBuff - 100));
@@ -215,7 +251,7 @@ public class AutoBattleController {
             if (p1CardHpBuff != 100) {
                 p1CardBuffs.add(new TrivialSkill(SkillType.原始体力调整, p1CardHpBuff - 100));
             }
-            PlayerInfo player1 = PlayerBuilder.build(heroLv1 != 0, "玩家1", deck1, heroLv1, p1CardBuffs);
+            PlayerInfo player1 = PlayerBuilder.build(heroLv1 != 0, "玩家1", deck1, heroLv1, p1CardBuffs, p1HeroHpBuff);
             List<Skill> p2CardBuffs = new ArrayList<Skill>();
             if (p2CardAtBuff != 100) {
                 p2CardBuffs.add(new TrivialSkill(SkillType.原始攻击调整, p2CardAtBuff - 100));
@@ -223,7 +259,7 @@ public class AutoBattleController {
             if (p2CardHpBuff != 100) {
                 p2CardBuffs.add(new TrivialSkill(SkillType.原始体力调整, p2CardHpBuff - 100));
             }
-            PlayerInfo player2 = PlayerBuilder.build(heroLv2 != 0, "玩家2", deck2, heroLv2, p2CardBuffs);
+            PlayerInfo player2 = PlayerBuilder.build(heroLv2 != 0, "玩家2", deck2, heroLv2, p2CardBuffs, p2HeroHpBuff);
             GameResultStat stat = play(player1, player2, count, new Rule(5, 999, firstAttack, deckOrder, false));
             writer.append(Utils.getCurrentDateTime() + "<br />");
             writer.append("<table>");
@@ -525,12 +561,12 @@ public class AutoBattleController {
             String logMessage = String.format("Deck=%s<br />HeroLV=%d, Boss=%s, GuardType=%d", deck, heroLv, bossName, guardType);
             logger.info("PlayBoss1MatchGame: " + logMessage);
             this.userActionRecorder.addAction(new UserAction(new Date(), request.getRemoteAddr(), "Play Boss 1Match Game", logMessage));
-            PlayerInfo player1 = PlayerBuilder.build(false, "BOSS", bossName, 999999, null);
+            PlayerInfo player1 = PlayerBuilder.build(false, "BOSS", bossName, 999999, null, 100);
             if (guardType == 1) {
                 addBossGuards(player1);
             }
             List<Skill> legionBuffs = SkillBuilder.buildLegionBuffs(buffKingdom, buffForest, buffSavage, buffHell);
-            PlayerInfo player2 = PlayerBuilder.build(true, "玩家", deck, heroLv, legionBuffs);
+            PlayerInfo player2 = PlayerBuilder.build(true, "玩家", deck, heroLv, legionBuffs, 100);
             WebPlainTextGameUI ui = new WebPlainTextGameUI();
             BattleEngine engine = new BattleEngine(ui, Rule.getBossBattle());
             engine.registerPlayers(player1, player2);
@@ -558,7 +594,7 @@ public class AutoBattleController {
             logger.info("PlayLilith1MatchGame: " + logMessage);
             this.userActionRecorder.addAction(new UserAction(new Date(), request.getRemoteAddr(), "Play Lilith 1Match Game", logMessage));
             PlayerInfo player1 = PlayerBuilder.buildLilith(lilithDataStore, lilithName, gameType == 0);
-            PlayerInfo player2 = PlayerBuilder.build(true, "玩家", deck, heroLv, null);
+            PlayerInfo player2 = PlayerBuilder.build(true, "玩家", deck, heroLv, null, 100);
             PvlEngine engine = new PvlEngine(ui, Rule.getDefault());
             PvlGameResult result = null;
             if (gameType == 0) {
@@ -595,12 +631,12 @@ public class AutoBattleController {
             logger.info("Hero LV = " + heroLv + ", Boss = " + bossName);
             this.userActionRecorder.addAction(new UserAction(new Date(), request.getRemoteAddr(), "Simulate Boss 1Match Game",
                     String.format("Deck=%s<br />HeroLV=%d, Boss=%s, GuardType=%d", deck, heroLv, bossName, guardType)));
-            PlayerInfo player1 = PlayerBuilder.build(false, "BOSS", bossName, 99999, null);
+            PlayerInfo player1 = PlayerBuilder.build(false, "BOSS", bossName, 99999, null, 100);
             if (guardType == 1) {
                 addBossGuards(player1);
             }
             List<Skill> legionBuffs = SkillBuilder.buildLegionBuffs(buffKingdom, buffForest, buffSavage, buffHell);
-            PlayerInfo player2 = PlayerBuilder.build(true, "玩家", deck, heroLv, legionBuffs);
+            PlayerInfo player2 = PlayerBuilder.build(true, "玩家", deck, heroLv, legionBuffs, 100);
             StructuredRecordGameUI ui = new StructuredRecordGameUI();
             BattleEngine engine = new BattleEngine(ui, Rule.getBossBattle());
             engine.registerPlayers(player1, player2);
@@ -626,7 +662,7 @@ public class AutoBattleController {
             logger.info("SimulateLilith1MatchGame: " + logMessage);
             this.userActionRecorder.addAction(new UserAction(new Date(), request.getRemoteAddr(), "Simulate Lilith 1Match Game", logMessage));
             PlayerInfo player1 = PlayerBuilder.buildLilith(lilithDataStore, lilithName, gameType == 0);
-            PlayerInfo player2 = PlayerBuilder.build(true, "玩家", deck, heroLv, null);
+            PlayerInfo player2 = PlayerBuilder.build(true, "玩家", deck, heroLv, null, 100);
             StructuredRecordGameUI ui = new StructuredRecordGameUI();
             BattleEngine engine = new BattleEngine(ui, Rule.getDefault());
             engine.registerPlayers(player1, player2);
@@ -657,13 +693,13 @@ public class AutoBattleController {
             this.userActionRecorder.addAction(new UserAction(new Date(), request.getRemoteAddr(), "Play Boss Massive Game",
                     String.format("Deck=%s<br />HeroLV=%d, Boss=%s, Count=%d, GuardType=%d", deck, heroLv, bossName, count, guardType)));
             List<Skill> legionBuffs = SkillBuilder.buildLegionBuffs(buffKingdom, buffForest, buffSavage, buffHell);
-            PlayerInfo player2 = PlayerBuilder.build(true, "玩家", deck, heroLv, legionBuffs);
+            PlayerInfo player2 = PlayerBuilder.build(true, "玩家", deck, heroLv, legionBuffs, 100);
             writer.append(Utils.getCurrentDateTime() + "<br />");
             OneDimensionDataStat stat = new OneDimensionDataStat();
             int timeoutCount = 0;
             Rule rule = Rule.getBossBattle();
             GameUI ui = new DummyGameUI();
-            PlayerInfo player1 = PlayerBuilder.build(false, "BOSS", bossName, 99999, null);
+            PlayerInfo player1 = PlayerBuilder.build(false, "BOSS", bossName, 99999, null, 100);
             if (guardType == 1) {
                 addBossGuards(player1);
             }
@@ -687,7 +723,7 @@ public class AutoBattleController {
             if (gameCount > 0) {
                 for (int i = 0; i < gameCount - 1; ++i) {
                     if (guardType == 1) {
-                        player1 = PlayerBuilder.build(false, "BOSS", bossName, 99999, null);
+                        player1 = PlayerBuilder.build(false, "BOSS", bossName, 99999, null, 100);
                         addBossGuards(player1);
                     }
                     GameResult gameResult = BattleEngine.play1v1(ui, rule, player1, player2);
@@ -768,7 +804,7 @@ public class AutoBattleController {
             this.userActionRecorder.addAction(new UserAction(new Date(), request.getRemoteAddr(), "Play Lilith Massive Game", logMessage));
 
             PlayerInfo player1 = PlayerBuilder.buildLilith(lilithDataStore, lilithName, gameType == 0);
-            PlayerInfo player2 = PlayerBuilder.build(true, "玩家", deck, heroLv, null);
+            PlayerInfo player2 = PlayerBuilder.build(true, "玩家", deck, heroLv, null, 100);
             OneDimensionDataStat statBattleCount = new OneDimensionDataStat();
             OneDimensionDataStat statAvgDamageToLilith = new OneDimensionDataStat();
             int gameCount = 100;

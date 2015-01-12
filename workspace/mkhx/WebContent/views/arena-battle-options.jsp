@@ -18,13 +18,11 @@
                         </select>
                     </fieldset>
                     <table class="form">
-                    <!-- 
                         <tr>
                             <td>玩家1英雄体力调整</td>
                             <td><input data-theme="c" type="number" id="p1-hero-hp-buff" data-mini="true" value="100" /></td>
                             <td>%</td>
                         </tr>
-                     -->
                         <tr>
                             <td>玩家1卡牌攻击调整</td>
                             <td><input data-theme="c" type="number" id="p1-card-at-buff" data-mini="true" value="100" /></td>
@@ -35,13 +33,11 @@
                             <td><input data-theme="c" type="number" id="p1-card-hp-buff" data-mini="true" value="100" /></td>
                             <td>%</td>
                         </tr>
-                        <!-- 
                         <tr>
                             <td>玩家2英雄体力调整</td>
                             <td><input data-theme="c" type="number" id="p2-hero-hp-buff" data-mini="true" value="100" /></td>
                             <td>%</td>
                         </tr>
-                         -->
                         <tr>
                             <td>玩家2卡牌攻击调整</td>
                             <td><input data-theme="c" type="number" id="p2-card-at-buff" data-mini="true" value="100" /></td>

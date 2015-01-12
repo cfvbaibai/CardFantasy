@@ -170,10 +170,10 @@ var playAutoGame = function(count) {
         'hlv2': heroLv2,
         'fa': arenaBattleOptions.firstAttack,
         'do': arenaBattleOptions.deckOrder,
-        'p1hhpb': 0,//arenaBattleOptions.p1HeroHpBuff,
+        'p1hhpb': arenaBattleOptions.p1HeroHpBuff,
         'p1catb': arenaBattleOptions.p1CardAtBuff,
         'p1chpb': arenaBattleOptions.p1CardHpBuff,
-        'p2hhpb': 0,//arenaBattleOptions.p2HeroHpBuff,
+        'p2hhpb': arenaBattleOptions.p2HeroHpBuff,
         'p2catb': arenaBattleOptions.p2CardAtBuff,
         'p2chpb': arenaBattleOptions.p2CardHpBuff,
         'count': count
@@ -313,12 +313,12 @@ var BattleOptions = function() {
         } else {
             result += '按指定顺序出卡';
         }
-        //result += '; 玩家1英雄体力调整: ' + this.p1HeroHpBuff + '%';
-        result += '; 玩家1攻击调整: ' + this.p1CardAtBuff + '%';
-        result += '; 玩家1体力调整: ' + this.p1CardHpBuff + '%';
-        //result += '; 玩家2英雄体力调整: ' + this.p2HeroHpBuff + '%';
-        result += '; 玩家2攻击调整: ' + this.p2CardAtBuff + '%';
-        result += '; 玩家2体力调整: ' + this.p2CardHpBuff + '%';
+        result += '; HHP1: ' + this.p1HeroHpBuff + '%';
+        result += '; CAT1: ' + this.p1CardAtBuff + '%';
+        result += '; CHP1: ' + this.p1CardHpBuff + '%';
+        result += '; HHP2: ' + this.p2HeroHpBuff + '%';
+        result += '; CAT2: ' + this.p2CardAtBuff + '%';
+        result += '; CHP2: ' + this.p2CardHpBuff + '%';
         return result;
     }
 };

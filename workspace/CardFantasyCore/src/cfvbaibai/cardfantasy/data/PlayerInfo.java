@@ -12,6 +12,7 @@ public class PlayerInfo {
     private String id;
     private int level;
     private List<Skill> cardBuffs;
+    private int heroHpAdj;
     private Collection<Card> cards;
     private Collection<Rune> runes;
     private static int[] hps = new int[] {
@@ -63,19 +64,19 @@ public class PlayerInfo {
         3, 3, 3, 3, 3, 3, 3, 3, 3, 4,
     };
 
-    public PlayerInfo(boolean isNormalPlayer, String id, int level, List<Skill> cardBuffs, Collection<Rune> runes, Card ... cards) {
+    public PlayerInfo(boolean isNormalPlayer, String id, int level, List<Skill> cardBuffs, int heroHpAdj, Collection<Rune> runes, Card ... cards) {
         List<Card> cardList = new ArrayList<Card>();
         for (Card card : cards) {
             cardList.add(card);
         }
-        init(isNormalPlayer, id, level, cardBuffs, runes, cardList);
+        init(isNormalPlayer, id, level, cardBuffs, heroHpAdj, runes, cardList);
     }
     
-    public PlayerInfo(boolean isNormalPlayer, String id, int level, List<Skill> cardBuffs, Collection <Rune> runes, Collection <Card> cards) {
-        init(isNormalPlayer, id, level, cardBuffs, runes, cards);
+    public PlayerInfo(boolean isNormalPlayer, String id, int level, List<Skill> cardBuffs, int heroHpAdj, Collection <Rune> runes, Collection <Card> cards) {
+        init(isNormalPlayer, id, level, cardBuffs, heroHpAdj, runes, cards);
     }
     
-    private final void init(boolean isNormalPlayer, String id, int level, List<Skill> cardBuffs, Collection <Rune> runes, Collection <Card> cards) {
+    private final void init(boolean isNormalPlayer, String id, int level, List<Skill> cardBuffs, int heroHpAdj, Collection <Rune> runes, Collection <Card> cards) {
         this.isNormalPlayer = isNormalPlayer;
         this.id = id;
         this.level = level;
@@ -84,6 +85,7 @@ public class PlayerInfo {
         } else {
             this.cardBuffs = new ArrayList<Skill>(cardBuffs);
         }
+        this.heroHpAdj = heroHpAdj;
         this.runes = new ArrayList<Rune>(runes);
         this.cards = new ArrayList<Card>(cards);
     }
@@ -94,9 +96,9 @@ public class PlayerInfo {
 
     public int getMaxHP() {
         if (this.level >= 0 && this.level < hps.length) {
-            return hps[this.level];
+            return hps[this.level] * this.heroHpAdj / 100;
         } else {
-            return this.level * 200;
+            return this.level * 200 * this.heroHpAdj / 100;
         }
     }
 

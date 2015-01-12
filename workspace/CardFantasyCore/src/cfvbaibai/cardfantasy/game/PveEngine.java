@@ -69,7 +69,7 @@ public class PveEngine extends GameEngine {
         for (int i = 0; i < decks.size(); ++i) {
             System.out.println(String.format("Processing deck: %d / %d", i, decks.size()));
             DeckStartupInfo currentDeck = decks.get(i);
-            PlayerInfo player = new PlayerInfo(true, "ME", heroLevel, null, currentDeck.getRunes(), currentDeck.getCards());
+            PlayerInfo player = new PlayerInfo(true, "ME", heroLevel, null, 100, currentDeck.getRunes(), currentDeck.getCards());
             PveGameResultStat stat = massivePlay(player, mapId, 100);
             evals.add(new DeckEvaluation(stat, currentDeck));
         }

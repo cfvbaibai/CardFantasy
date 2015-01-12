@@ -74,8 +74,8 @@ public class Room {
             }
             Team teamA = teams.get(indexA);
             Team teamB = teams.get(indexB);
-            PlayerInfo pA = new PlayerInfo(true, "A", this.heroLv, null, teamA.getRunes(), teamA.getCards());
-            PlayerInfo pB = new PlayerInfo(true, "B", this.heroLv, null, teamB.getRunes(), teamB.getCards());
+            PlayerInfo pA = new PlayerInfo(true, "A", this.heroLv, null, 100, teamA.getRunes(), teamA.getCards());
+            PlayerInfo pB = new PlayerInfo(true, "B", this.heroLv, null, 100, teamB.getRunes(), teamB.getCards());
             int winsA = 0;
             int winsB = 0;
             for (int m = 0; m < this.oneMatchRounds; ++m) {

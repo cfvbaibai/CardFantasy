@@ -153,7 +153,7 @@ public class FreeTest extends PveEngineTest {
     
     @Test
     public void 魔神战() {
-        PlayerInfo player = PlayerBuilder.build(true, "玩家", 75, SkillBuilder.buildLegionBuffs(10, 10, 10, 10), "堕落精灵*2", "淬炼");
+        PlayerInfo player = PlayerBuilder.build(true, "玩家", 75, SkillBuilder.buildLegionBuffs(10, 10, 10, 10), 100, "堕落精灵*2", "淬炼");
         TestGameBuilder.playBossBattle(player, "复仇女神");
     }
 

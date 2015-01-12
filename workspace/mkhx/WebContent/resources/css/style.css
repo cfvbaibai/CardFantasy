@@ -295,4 +295,5 @@ div.recommend-boss-battle-result > div:first-child > div:last-child {
 	padding-top: 10px;
 }
 #arena-battle-options-text {
+	display: none;
 }
