@@ -28,6 +28,7 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2015-01-13: 修复莉莉丝英雄血量的BUG，感谢<x>office12345</x>, <x>wufan0908</x>, <x>shit水水更健康</x>, <x>enjoy小小康</x>报告BUG</li>
                     <li>2015-01-12: <ul>
                         <li>现在<a href="#arena-battle">竞技场战</a>可以调整全局卡牌和英雄强度了</li>
                         <li>修复<a href="#lilith-battle">莉莉丝战</a>无法使用组卡器的BUG，感谢<x>欺一世时光_</x>, <x>哈哈哈雷宇桑</x>报告BUG</li>

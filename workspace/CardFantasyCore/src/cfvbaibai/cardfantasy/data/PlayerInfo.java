@@ -96,8 +96,10 @@ public class PlayerInfo {
     public int getMaxHP() {
         if (this.level >= 0 && this.level < hps.length) {
             return hps[this.level] * this.heroHpAdj / 100;
-        } else {
+        } else if (this.heroHpAdj != 100) {
             return this.level * 200 * this.heroHpAdj / 100;
+        } else {
+            return this.level * 200;
         }
     }
 
