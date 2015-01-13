@@ -32,7 +32,7 @@ public class PlayerBuilder {
             throw new CardFantasyRuntimeException("Invalid Lilith ID: " + bossId);
         }
         DeckStartupInfo dsi = lsi.getDeckStartupInfo();
-        PlayerInfo playerInfo = new PlayerInfo(false, bossId, 999999, lsi.getCardBuffs(), 100, dsi.getRunes(), dsi.getCards());
+        PlayerInfo playerInfo = new PlayerInfo(false, bossId, 999, lsi.getCardBuffs(), 100, dsi.getRunes(), dsi.getCards());
         if (!withGuards) {
             for (Card card : playerInfo.getCards()) {
                 if (card.getRace() != Race.BOSS) {
