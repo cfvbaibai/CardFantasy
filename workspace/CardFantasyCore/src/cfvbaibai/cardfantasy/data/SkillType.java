@@ -168,7 +168,7 @@ public enum SkillType {
     原始体力调整("", 0, 1, SkillTag.永久, SkillTag.原始体力加成, SkillTag.不可洗炼),
 
     魔神之刃("", 2000, 0, SkillTag.抗免疫, SkillTag.不可洗炼),
-    魔神之甲("", 1500, 0, SkillTag.抗免疫, SkillTag.不可洗炼),
+    魔神之甲("", 1500, 0, SkillTag.抗免疫, SkillTag.不可洗炼, SkillTag.反击),
     魔神之咒("", 1000, 0, SkillTag.抗免疫, SkillTag.不可洗炼),
     // 用于处理各技能中"对魔神无效"的描述
     无效("", 0, 0, SkillTag.不可洗炼),
