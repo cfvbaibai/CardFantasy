@@ -4,6 +4,7 @@ import java.util.List;
 
 import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
 import cfvbaibai.cardfantasy.GameUI;
+import cfvbaibai.cardfantasy.Randomizer;
 import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.SkillUseInfo;
@@ -22,11 +23,14 @@ public final class Resurrection {
         // Grave is a stack, find the last-in card and revive it.
         int resurrectionCount = skill.getImpact();
         Player player = resurrector.getOwner();
-        List<CardInfo> cardsToResurrect = player.getGrave().pop(resurrectionCount);
+        CardInfo exclusion = skill.isDeathSkill() ? resurrector : null;
+        List<CardInfo> cardsToResurrect = Randomizer.getRandomizer().pickRandom(
+            player.getGrave().toList(), resurrectionCount, true, exclusion);
         GameUI ui = resolver.getStage().getUI();
         ui.useSkill(resurrector, cardsToResurrect, skill, true);
         for (CardInfo card : cardsToResurrect) {
             ui.cardToDeck(player, card);
+            player.getGrave().removeCard(card);
             player.getDeck().addCard(card);
         }
     }

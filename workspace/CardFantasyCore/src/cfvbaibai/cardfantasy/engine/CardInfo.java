@@ -207,6 +207,9 @@ public class CardInfo extends EntityInfo {
     }
 
     public Race getRace() {
+        if (this.getStatus().containsStatus(CardStatusType.改族)) {
+            
+        }
         return getCard().getRace();
     }
 
@@ -474,6 +477,10 @@ public class CardInfo extends EntityInfo {
 
     public void carveEternalWound() {
         this.eternalWound += this.getMaxHP() - this.getHP();
+    }
+    
+    public int getEternalWound() {
+        return this.eternalWound;
     }
 
     public void setRemainingHP(int remainingHP) {

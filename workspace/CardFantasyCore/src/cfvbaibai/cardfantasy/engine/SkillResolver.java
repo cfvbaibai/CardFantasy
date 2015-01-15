@@ -657,9 +657,8 @@ public class SkillResolver {
         }
     }
     
-    public void resolveExtraAttackSkills(CardInfo attacker, CardInfo defender, Player defenderHero, Skill attackSkill,
-            int normalAttackDamage) throws HeroDieSignal {
-
+    public void resolveExtraAttackSkills(CardInfo attacker, CardInfo defender, Player defenderHero, Skill attackSkill, OnDamagedResult damageResult) throws HeroDieSignal {
+        int normalAttackDamage = damageResult.actualDamage;
         for (SkillUseInfo skillUseInfo : attacker.getNormalUsableSkills()) {
             if (!attacker.isDead()) {
                 if (skillUseInfo.getType() == SkillType.穿刺) {
@@ -671,7 +670,7 @@ public class SkillResolver {
                 } else if (skillUseInfo.getType() == SkillType.嗜血) {
                     BloodThirsty.apply(this, skillUseInfo, attacker, normalAttackDamage);
                 } else if (skillUseInfo.getType() == SkillType.连锁攻击) {
-                    ChainAttack.apply(this, skillUseInfo, attacker, defender, attackSkill);
+                    ChainAttack.apply(this, skillUseInfo, attacker, defender, attackSkill, damageResult.originalDamage);
                 } else if (skillUseInfo.getType() == SkillType.疾病) {
                     Disease.apply(skillUseInfo, this, attacker, defender, normalAttackDamage);
                 }
@@ -929,7 +928,7 @@ public class SkillResolver {
         resolvePostAttackSkills(attacker, defender, defender.getOwner(), skill, damagedResult.actualDamage);
         stage.getResolver().resolveDeathSkills(attacker, defender, skill, damagedResult);
 
-        resolveExtraAttackSkills(attacker, defender, defender.getOwner(), skill, damagedResult.actualDamage);
+        resolveExtraAttackSkills(attacker, defender, defender.getOwner(), skill, damagedResult);
         resolveCounterAttackSkills(attacker, defender, skill, blockingResult, damagedResult);
 
         return damagedResult;

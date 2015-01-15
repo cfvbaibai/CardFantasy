@@ -28,7 +28,10 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">
                 <h3>更新日志</h3>
                 <ul class="news-content">
-                    <li>2015-01-15: 修复一个【送还】的BUG</li>
+                    <li>2015-01-15: <ul>
+                        <li>修复一个【送还】的BUG</li>
+                        <li>修复莉莉丝平均攻击伤害的计算BUG，感谢<x>仙桃大神</x>报告BUG</li>
+                    </ul></li>
                     <li>2015-01-14: <ul>
                         <li>修复【轻灵】的BUG，感谢<x>魔之座</x>报告BUG</li>
                         <li>修复【亡灵守护神】数据BUG，感谢<x>悪丿娘殿下</x>报告BUG</li>

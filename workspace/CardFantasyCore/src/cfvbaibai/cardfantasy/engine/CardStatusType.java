@@ -13,7 +13,8 @@ public enum CardStatusType {
     召唤(false, "召"),
     晕眩(false, "晕"),
     不屈(false, "倔"),
-    死印(false, "死");
+    死印(false, "死"),
+    改族(false, "改");
 
     private boolean quantitive;
     public boolean isQuantitive() {

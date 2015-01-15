@@ -64,6 +64,7 @@ public class PvlEngine extends GameEngine {
             if (battleCount > this.timeout) {
                 throw new PvlGameTimeoutException();
             }
+            survivors = engine.exportSurvivers(0);
             if (result.getWinner().getId().equals(player.getId())) {
                 return getClearGuardsResult(battleCount, result.getLoser());
             }
@@ -78,34 +79,33 @@ public class PvlEngine extends GameEngine {
             if (lilithAliveCardCount <= targetLilithAliveCardCount) {
                 return getClearGuardsResult(battleCount, lilithPlayer);
             }
-            survivors = engine.exportSurvivers(0);
         }
     }
 
     private PvlGameResult getClearGuardsResult(int battleCount, Player lilith) {
         for (CardInfo card : lilith.getField().getAliveCards()) {
             if (card.getRace() == Race.BOSS) {
-                return new PvlGameResult(battleCount, card.getMaxHP() - card.getHP());
+                return new PvlGameResult(battleCount, card.getEternalWound());
             }
         }
         for (CardInfo card : lilith.getGrave().toList()) {
             if (card.getRace() == Race.BOSS) {
-                return new PvlGameResult(battleCount, card.getMaxHP());
+                return new PvlGameResult(battleCount, card.getRawMaxHP());
             }
         }
         for (CardInfo card : lilith.getOutField().toList()) {
             if (card.getRace() == Race.BOSS) {
-                return new PvlGameResult(battleCount, card.getMaxHP());
+                return new PvlGameResult(battleCount, card.getRawMaxHP());
             }
         }
         for (CardInfo card : lilith.getDeck().toList()) {
             if (card.getRace() == Race.BOSS) {
-                return new PvlGameResult(battleCount, 0);
+                return new PvlGameResult(battleCount, card.getEternalWound());
             }
         }
         for (CardInfo card : lilith.getHand().toList()) {
             if (card.getRace() == Race.BOSS) {
-                return new PvlGameResult(battleCount, 0);
+                return new PvlGameResult(battleCount, card.getEternalWound());
             }
         }
         throw new CardFantasyRuntimeException("Should not reach here.");

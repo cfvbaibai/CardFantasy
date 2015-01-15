@@ -14,7 +14,7 @@ import cfvbaibai.cardfantasy.engine.HeroDieSignal;
 import cfvbaibai.cardfantasy.engine.OnDamagedResult;
 
 public final class ChainAttack {
-    public static void apply(SkillResolver resolver, SkillUseInfo skillUseInfo, CardInfo attacker, CardInfo defender, Skill attackSkill)
+    public static void apply(SkillResolver resolver, SkillUseInfo skillUseInfo, CardInfo attacker, CardInfo defender, Skill attackSkill, int attackDamage)
             throws HeroDieSignal {
         if (attacker == null) {
             return;
@@ -45,13 +45,13 @@ public final class ChainAttack {
 
         ui.useSkill(attacker, victims, skill, true);
 
-        int chainAT = skill.getImpact() * attacker.getLevel1AT() / 100;
+        int chainAT = skill.getImpact() * attackDamage / 100;
         int adjAT = chainAT - attacker.getCurrentAT();
         SkillEffect effect = new SkillEffect(SkillEffectType.ATTACK_CHANGE, skillUseInfo, adjAT, false);
         ui.adjustAT(attacker, attacker, adjAT, skill);
         attacker.addEffect(effect);
         for (CardInfo victim : victims) {
-            OnDamagedResult damagedResult = resolver.attackCard(attacker, victim, skillUseInfo);
+            OnDamagedResult damagedResult = resolver.attackCard(attacker, victim, skillUseInfo, chainAT);
             if (damagedResult == null) {
                 // 闪避导致连锁中断
                 break;
