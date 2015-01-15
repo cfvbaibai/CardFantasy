@@ -90,12 +90,12 @@ public class PvlEngine extends GameEngine {
         }
         for (CardInfo card : lilith.getGrave().toList()) {
             if (card.getRace() == Race.BOSS) {
-                return new PvlGameResult(battleCount, card.getRawMaxHP());
+                return new PvlGameResult(battleCount, card.getMaxHP());
             }
         }
         for (CardInfo card : lilith.getOutField().toList()) {
             if (card.getRace() == Race.BOSS) {
-                return new PvlGameResult(battleCount, card.getRawMaxHP());
+                return new PvlGameResult(battleCount, card.getMaxHP());
             }
         }
         for (CardInfo card : lilith.getDeck().toList()) {

@@ -2,6 +2,7 @@ package cfvbaibai.cardfantasy.engine.skill;
 
 import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
 import cfvbaibai.cardfantasy.GameUI;
+import cfvbaibai.cardfantasy.Randomizer;
 import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.CardStatusType;
@@ -31,7 +32,14 @@ public final class Return {
         ui.returnCard(attacker, defender, cardSkill);
         if (!defender.getStatus().containsStatus(CardStatusType.召唤)) {
             // 被召唤的卡牌不回到卡组，而是直接消失
-            defender.getOwner().getDeck().addCard(defender);
+            // 送还的卡是随机插入卡组而非加在末尾
+            int deckSize = defender.getOwner().getDeck().size();
+            int index = 0;
+            if (deckSize > 0)
+            {
+                index = Randomizer.getRandomizer().next(0, deckSize);   
+            }     
+            defender.getOwner().getDeck().insertCardToPosition(defender, index);
         }
         resolver.resolveLeaveSkills(defender);
     }

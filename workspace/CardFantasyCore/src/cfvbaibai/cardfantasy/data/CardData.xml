@@ -1630,8 +1630,8 @@
         <Skill type="法力反射" level="8" unlock="5" />
         <Skill type="战意" level="6" unlock="10" />
     </Card>
-    <Card id="4507" name="亡灵守护神" wikiId="30774" race="地狱" speed="6" star="5" cost="18" incrCost="3" at="325" hp="1360" incrAT="30" incrHP="38">
-        <Skill type="二重狙击" level="8" unlock="0" />
+    <Card id="4507" name="亡灵守护神" wikiId="30774" race="地狱" speed="4" star="5" cost="18" incrCost="2" at="325" hp="1360" incrAT="30" incrHP="38">
+        <Skill type="英雄杀手" level="8" unlock="0" />
         <Skill type="送还" level="0" unlock="5" />
         <Skill type="免疫" level="0" unlock="10" />
     </Card>

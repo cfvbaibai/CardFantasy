@@ -28,6 +28,18 @@ public class CardPile {
         return newCard;
     }
 
+    public void insertCardToPosition(CardInfo newCard, int position) {
+        checkCardExistence(newCard);
+        if (position >= this.size())
+        {
+            this.cards.add(newCard);
+        }
+        else
+        {
+            this.cards.add(position, newCard);
+        }
+    }
+
     private void checkCardExistence(CardInfo newCard) {
         if (cards.contains(newCard)) {
             throw new CardFantasyRuntimeException("Cannot add an existing card to CardPile. "

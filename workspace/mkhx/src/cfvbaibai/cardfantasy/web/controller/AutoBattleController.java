@@ -825,8 +825,8 @@ public class AutoBattleController {
                 writer.append("<table>");
                 writer.append("<tr><td>平均需要进攻次数: </td><td>" + statBattleCount.getAverage() + "</td></tr>");
                 writer.append("<tr><td>不稳定度: </td><td>" + Math.round(statBattleCount.getCoefficientOfVariation() * 100) + "%</td></tr>");
-                //writer.append("<tr><td>平均每轮进攻对莉莉丝伤害: </td><td>" + Math.round(statAvgDamageToLilith.getAverage()) + "</td></tr>");
-                //writer.append("<tr><td>不稳定度: </td><td>" + Math.round(statAvgDamageToLilith.getCoefficientOfVariation() * 100) + "%</td></tr>");
+                writer.append("<tr><td>平均每轮进攻对莉莉丝伤害: </td><td>" + Math.round(statAvgDamageToLilith.getAverage()) + "</td></tr>");
+                writer.append("<tr><td>不稳定度: </td><td>" + Math.round(statAvgDamageToLilith.getCoefficientOfVariation() * 100) + "%</td></tr>");
                 writer.append("</td></tr></table>");
             } catch (PvlGameTimeoutException e) {
                 writer.append("进攻次数超过最大次数，你的卡组太弱了");

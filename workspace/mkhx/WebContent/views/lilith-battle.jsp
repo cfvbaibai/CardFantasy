@@ -18,7 +18,7 @@
                 <div id="lilith-config-0" class="ui-grid-a">
                     <div class="ui-block-a ui-block-label-number">清怪至剩余怪数(包括莉莉丝)：</div>
                     <div class="ui-block-b">
-                        <input data-theme="c" type="number" id="lilith-target-remaining-guard-count" data-mini="true" value="2" />
+                        <input data-theme="c" type="number" id="lilith-target-remaining-guard-count" data-mini="true" value="1" />
                     </div>
                 </div>
                 <div id="lilith-config-1" class="ui-grid-a">
