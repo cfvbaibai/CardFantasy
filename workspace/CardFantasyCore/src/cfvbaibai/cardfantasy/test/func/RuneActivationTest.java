@@ -22,7 +22,7 @@ public class RuneActivationTest extends SkillValidationTest {
         CardInfo c凤凰 = context.addToField(3, 1);
         context.startGame();
 
-        random.addNextPicks(0); // 冥河船夫回魂战斗猛犸象1
+        random.addNextPicks(0).addNextNumbers(0); // 冥河船夫回魂战斗猛犸象1
         context.proceedOneRound();
         Assert.assertTrue("石林应该已激活", r石林.isActivated());
 
@@ -35,7 +35,7 @@ public class RuneActivationTest extends SkillValidationTest {
         c凤凰.setBasicHP(1560); 
         c冥河船夫.setBasicHP(1180);
 
-        random.addNextPicks(0); // 冥河船夫回魂战斗猛犸象2
+        random.addNextPicks(0).addNextNumbers(0); // 冥河船夫回魂战斗猛犸象2
         context.proceedOneRound();
         Assert.assertFalse("石林应该未激活", r石林.isActivated());
 

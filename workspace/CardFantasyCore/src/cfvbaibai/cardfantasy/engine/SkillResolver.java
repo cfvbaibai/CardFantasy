@@ -607,6 +607,8 @@ public class SkillResolver {
                 Destroy.apply(this, deadCardSkillUseInfo.getSkill(), deadCard, killerCard.getOwner(), 1);
             } else if (deadCardSkillUseInfo.getType() == SkillType.传送) {
                 Transport.apply(this, deadCardSkillUseInfo.getSkill(), deadCard, killerCard.getOwner());
+            } else if (deadCardSkillUseInfo.getType() == SkillType.回魂) {
+                Resurrection.apply(this, deadCardSkillUseInfo, deadCard);
             }
         }
         for (SkillUseInfo deadCardSkillUseInfo : deadCard.getAllUsableSkills()) {

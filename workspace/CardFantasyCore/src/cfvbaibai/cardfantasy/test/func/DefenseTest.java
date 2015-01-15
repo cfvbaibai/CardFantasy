@@ -132,7 +132,7 @@ public class DefenseTest extends SkillValidationTest {
     }
 
     /**
-     * 连锁攻击能够被格挡
+     * 连锁攻击能够被格挡, 且攻击力按照被格挡之后的算
      */
     @Test
     public void test连锁攻击_格挡() {
@@ -145,8 +145,8 @@ public class DefenseTest extends SkillValidationTest {
 
         context.proceedOneRound();
         Assert.assertEquals(610 - 140 /* 格挡 */, 1050 - c牛头人酋长1.getHP());
-        Assert.assertEquals(610 * 175 / 100 - 140 /* 格挡 */, 1050 - c牛头人酋长2.getHP());
-        Assert.assertEquals(610 * 175 / 100 - 140 /* 格挡 */, 1050 - c牛头人酋长3.getHP());
+        Assert.assertEquals((610 - 140) * 175 / 100 - 140 /* 格挡 */, 1050 - c牛头人酋长2.getHP());
+        Assert.assertEquals((610 - 140) * 175 / 100 - 140 /* 格挡 */, 1050 - c牛头人酋长3.getHP());
     }
     
     /**

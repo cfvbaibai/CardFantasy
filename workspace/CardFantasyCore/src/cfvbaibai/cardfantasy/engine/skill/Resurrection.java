@@ -24,14 +24,15 @@ public final class Resurrection {
         int resurrectionCount = skill.getImpact();
         Player player = resurrector.getOwner();
         CardInfo exclusion = skill.isDeathSkill() ? resurrector : null;
-        List<CardInfo> cardsToResurrect = Randomizer.getRandomizer().pickRandom(
-            player.getGrave().toList(), resurrectionCount, true, exclusion);
+        List<CardInfo> deadCards = player.getGrave().toList();
+        List<CardInfo> cardsToResurrect = Randomizer.getRandomizer().pickRandom(deadCards, resurrectionCount, true, exclusion);
         GameUI ui = resolver.getStage().getUI();
         ui.useSkill(resurrector, cardsToResurrect, skill, true);
         for (CardInfo card : cardsToResurrect) {
             ui.cardToDeck(player, card);
             player.getGrave().removeCard(card);
-            player.getDeck().addCard(card);
+            int position = Randomizer.getRandomizer().next(0, player.getDeck().size());
+            player.getDeck().insertCardToPosition(card, position);
         }
     }
 }
