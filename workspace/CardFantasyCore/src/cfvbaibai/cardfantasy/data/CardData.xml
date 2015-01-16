@@ -433,6 +433,11 @@
         <Skill type="冰甲" level="3" unlock="5" />
         <Skill type="回魂" level="2" unlock="10" />
     </Card>
+    <Card id="1521" name="圣城卫士" wikiId="" race="王国" speed="4" star="5" cost="15" incrCost="2" at="230" hp="1360" incrAT="28" incrHP="36">
+        <Skill type="背刺" level="4" unlock="0" />
+        <Skill type="暴击" level="7" unlock="5" />
+        <Skill type="邪灵汲取" level="7" unlock="10" />
+    </Card>
 
     <!-- 森林 -->
     <Card id="2101" name="人马巡逻者" wikiId="30976" race="森林" speed="2" star="1" cost="3" incrCost="2" at="95" hp="310" incrAT="17" incrHP="11">
@@ -835,6 +840,11 @@
         <Skill type="脱困" level="0" unlock="0" /> 
         <Skill type="横扫" level="0" unlock="5" />
         <Skill type="灵巧" level="0" unlock="10" />
+    </Card>
+    <Card id="2520" name="圣灵大祭司" wikiId="" race="森林" speed="3" star="5" cost="17" incrCost="2" at="340" hp="1320" incrAT="36" incrHP="30">
+        <Skill type="转生" level="6" unlock="0" />
+        <Skill type="回魂" level="3" unlock="5" death="true" />
+        <Skill type="不屈" level="0" unlock="10" />
     </Card>
 
     <!-- 蛮荒  -->
@@ -1598,6 +1608,11 @@
         <Skill type="血炼" level="8" unlock="0" />
         <Skill type="吸血" level="6" unlock="5" />
         <Skill type="瘟疫" level="8" unlock="10" />
+    </Card>
+    <Card id="4431" name="半人鱼恶魔" wikiId="" race="地狱" speed="4" star="4" cost="13" incrCost="2" at="235" hp="1050" incrAT="21" incrHP="23">
+        <Skill type="邪灵汲取" level="5" unlock="0" />
+        <Skill type="振奋" level="5" unlock="5" />
+        <Skill type="不动" level="0" unlock="10" />
     </Card>
 
     <Card id="4501" name="毁灭之龙" wikiId="31064" race="地狱" speed="6" star="5" cost="14" incrCost="2" at="350" hp="1270" incrAT="34" incrHP="34">

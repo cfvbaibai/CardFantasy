@@ -28,6 +28,8 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2015-01-17: 新增莉莉丝活动卡【半人鱼恶魔】、【圣灵大祭司】、【圣城卫士】</li>
+                    <li>2015-01-16: 修复【回魂】的BUG，感谢<x>誓死支持双剑</x>, <x>欲印弥彰</x>, <x>唔滴哟</x>, <x>逆骨魔方</x>, <x>文文ww0327</x>, <x>下一片海enjoy</x>报告BUG</li>
                     <li>2015-01-15: <ul>
                         <li>修复一个【送还】的BUG</li>
                         <li>修复莉莉丝平均攻击伤害的计算BUG，感谢<x>仙桃大神</x>报告BUG</li>

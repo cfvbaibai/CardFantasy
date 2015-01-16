@@ -16,9 +16,6 @@ public final class Resurrection {
         if (resurrector == null) {
             throw new CardFantasyRuntimeException("resurrector should not be null");
         }
-        if (resurrector.getOwner() != resolver.getStage().getActivePlayer()) {
-            throw new CardFantasyRuntimeException("resurrector is not the current active player!");
-        }
         Skill skill = skillUseInfo.getSkill();
         // Grave is a stack, find the last-in card and revive it.
         int resurrectionCount = skill.getImpact();
@@ -31,8 +28,12 @@ public final class Resurrection {
         for (CardInfo card : cardsToResurrect) {
             ui.cardToDeck(player, card);
             player.getGrave().removeCard(card);
+            if (player.getDeck().size() > 0) {
             int position = Randomizer.getRandomizer().next(0, player.getDeck().size());
-            player.getDeck().insertCardToPosition(card, position);
+                player.getDeck().insertCardToPosition(card, position);
+            } else {
+                player.getDeck().addCard(card);
+            }
         }
     }
 }
