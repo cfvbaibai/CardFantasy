@@ -3,6 +3,8 @@ package cfvbaibai.cardfantasy.test.func;
 import org.junit.Assert;
 import org.junit.Test;
 
+import cfvbaibai.cardfantasy.Randomizer;
+import cfvbaibai.cardfantasy.RealRandomizer;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 
 public class ReviveTest extends SkillValidationTest {
@@ -44,5 +46,27 @@ public class ReviveTest extends SkillValidationTest {
         Assert.assertEquals(c秘银巨石像.getUniqueName(), context.getPlayer(0).getDeck().toList().get(0).getUniqueName());
         Assert.assertEquals(1, context.getPlayer(0).getDeck().size());
         Assert.assertEquals(2, context.getPlayer(0).getGrave().size());
+    }
+    
+    @Test
+    public void test死契回魂_真随机() {
+        Randomizer original = Randomizer.getRandomizer();
+        Randomizer.registerRandomizer(new RealRandomizer());
+        try {
+            SkillTestContext context = SkillValidationTestSuite.prepare(
+                50, 50, "战斗猛犸象+死契回魂2", "占位符*3", "占位符+盾刺10");
+            Randomizer.getRandomizer().setUI(context.getStage().getUI());
+            context.addToField(0, 0).setBasicHP(2);
+            context.addToGrave(1, 0);
+            context.addToGrave(2, 0);
+            context.addToGrave(3, 0);
+            context.addToField(4, 1);
+            context.startGame();
+            context.proceedOneRound();
+            Assert.assertEquals(2, context.getPlayer(0).getGrave().size());
+            Assert.assertEquals(2, context.getPlayer(0).getDeck().size());
+        } finally {
+            Randomizer.registerRandomizer(original);
+        }
     }
 }

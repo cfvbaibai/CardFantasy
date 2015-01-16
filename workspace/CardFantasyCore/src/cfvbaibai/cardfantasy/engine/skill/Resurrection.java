@@ -23,6 +23,9 @@ public final class Resurrection {
         CardInfo exclusion = skill.isDeathSkill() ? resurrector : null;
         List<CardInfo> deadCards = player.getGrave().toList();
         List<CardInfo> cardsToResurrect = Randomizer.getRandomizer().pickRandom(deadCards, resurrectionCount, true, exclusion);
+        if (cardsToResurrect.size() > resurrectionCount) {
+            throw new CardFantasyRuntimeException("cardsToResurrect.size() = " + cardsToResurrect.size() + ", resurrectionCount = " + resurrectionCount);
+        }
         GameUI ui = resolver.getStage().getUI();
         ui.useSkill(resurrector, cardsToResurrect, skill, true);
         for (CardInfo card : cardsToResurrect) {

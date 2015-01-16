@@ -843,7 +843,7 @@
     </Card>
     <Card id="2520" name="圣灵大祭司" wikiId="" race="森林" speed="3" star="5" cost="17" incrCost="2" at="340" hp="1320" incrAT="36" incrHP="30">
         <Skill type="转生" level="6" unlock="0" />
-        <Skill type="回魂" level="3" unlock="5" death="true" />
+        <Skill type="回魂" level="2" unlock="5" death="true" />
         <Skill type="不屈" level="0" unlock="10" />
     </Card>
 
