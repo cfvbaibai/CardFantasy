@@ -675,4 +675,26 @@ public class SpecialStatusTest extends SkillValidationTest {
         // 二重狙击打在两个后方占位符上
         Assert.assertEquals(200 /* 盾刺 */, 1400 - c秘银巨石像.getHP());
     }
+
+    /**
+     * 不屈状态的卡会被虚弱
+     */
+    @Test
+    public void test不屈_虚弱() {
+        SkillTestContext context = SkillValidationTestSuite.prepare(
+            50, 50, "秘银巨石像", "占位符+虚弱", "秘银巨石像+不屈");
+        CardInfo c秘银巨石像1 = context.addToField(0, 0);
+        context.addToField(1, 0);
+        CardInfo c秘银巨石像2 = context.addToField(2, 1).setBasicHP(2);
+        context.startGame();
+
+        random.addNextPicks(0); // 占位符虚弱对方秘银巨石像
+        context.proceedOneRound();
+        Assert.assertTrue(c秘银巨石像2.getStatus().containsStatus(CardStatusType.不屈));
+        // 不屈的卡仍然会被弱化
+        Assert.assertTrue(c秘银巨石像2.getStatus().containsStatus(CardStatusType.弱化));
+
+        context.proceedOneRound();
+        Assert.assertEquals(810 / 2, 1400 - c秘银巨石像1.getHP());
+    }
 }
