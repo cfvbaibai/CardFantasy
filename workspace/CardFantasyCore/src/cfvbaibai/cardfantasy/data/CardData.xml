@@ -330,6 +330,16 @@
         <Skill type="冰甲" level="3" unlock="5" />
         <Skill type="回魂" level="1" unlock="10" />
     </Card>
+    <Card id="1434" name="世界杯美国" wikiId="" race="王国" speed="4" star="4" cost="15" incrCost="2" at="300" hp="1000" incrAT="17" incrHP="37">
+        <Skill type="王国守护" level="5" unlock="0" />
+        <Skill type="王国之力" level="5" unlock="5" />
+        <Skill type="脱困" level="0" unlock="10" />
+    </Card>
+    <Card id="1435" name="世界杯德国" wikiId="" race="王国" speed="4" star="4" cost="15" incrCost="2" at="300" hp="1000" incrAT="17" incrHP="37">
+        <Skill type="格挡" level="6" unlock="0" />
+        <Skill type="二重狙击" level="6" unlock="5" />
+        <Skill type="不动" level="0" unlock="10" />
+    </Card>
 
     <Card id="1501" name="降临天使" wikiId="30922" race="王国" speed="4" star="5" cost="15" incrCost="3" at="365" hp="1800" incrAT="24" incrHP="24">
         <Skill type="魔甲" level="8" unlock="0" />
@@ -744,6 +754,16 @@
         <Skill type="连环闪电" level="6" unlock="0" />
         <Skill type="魔甲" level="6" unlock="5" />
         <Skill type="召唤花仙子" level="0" unlock="10" />
+    </Card>
+    <Card id="2429" name="世界杯法国" wikiId="" race="森林" speed="4" star="4" cost="15" incrCost="2" at="300" hp="1000" incrAT="17" incrHP="37">
+        <Skill type="森林守护" level="5" unlock="0" />
+        <Skill type="森林之力" level="5" unlock="5" />
+        <Skill type="法力反射" level="5" unlock="10" />
+    </Card>
+    <Card id="2430" name="世界杯巴西" wikiId="" race="森林" speed="4" star="4" cost="15" incrCost="2" at="300" hp="1000" incrAT="17" incrHP="37">
+        <Skill type="本源守护" level="5" unlock="0" />
+        <Skill type="本源之力" level="5" unlock="5" />
+        <Skill type="闪避" level="5" unlock="10" />
     </Card>
 
     <Card id="2501" name="金属巨龙" wikiId="31004" race="森林" speed="6" star="5" cost="14" incrCost="3" at="355" hp="1480" incrAT="30" incrHP="23">
@@ -1194,6 +1214,11 @@
         <Skill type="转生" level="6" unlock="5" />
         <Skill type="召唤火焰乌鸦" level="0" unlock="10" />
     </Card>
+    <Card id="3438" name="世界杯南非" wikiId="" race="蛮荒" speed="4" star="4" cost="15" incrCost="2" at="300" hp="1000" incrAT="17" incrHP="37">
+        <Skill type="蛮荒守护" level="5" unlock="0" />
+        <Skill type="蛮荒之力" level="5" unlock="5" />
+        <Skill type="暴击" level="5" unlock="10" />
+    </Card>
 
     <Card id="3501" name="雷兽" wikiId="31034" race="蛮荒" speed="6" star="5" cost="14" incrCost="2" at="340" hp="1100" incrAT="20" incrHP="45">
         <Skill type="雷暴" level="7" unlock="0" />
@@ -1623,6 +1648,11 @@
         <Skill type="瘟疫" level="6" unlock="0" />
         <Skill type="鲜血盛宴" level="5" unlock="5" />
         <Skill type="嗜血" level="6" unlock="10" />
+    </Card>
+    <Card id="4433" name="世界杯韩日" wikiId="" race="地狱" speed="4" star="4" cost="15" incrCost="2" at="300" hp="1000" incrAT="17" incrHP="37">
+        <Skill type="地狱守护" level="5" unlock="0" />
+        <Skill type="地狱之力" level="5" unlock="5" />
+        <Skill type="转生" level="5" unlock="10" />
     </Card>
 
     <Card id="4501" name="毁灭之龙" wikiId="31064" race="地狱" speed="6" star="5" cost="14" incrCost="2" at="350" hp="1270" incrAT="34" incrHP="34">
