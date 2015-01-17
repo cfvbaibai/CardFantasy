@@ -780,11 +780,15 @@ public class SkillResolver {
         }
     }
 
-    public OnDamagedResult applyDamage(CardInfo card, int damage) {
+    public OnDamagedResult applyDamage(CardInfo card, Skill skill, int damage) {
         List<CardStatusItem> unbendingStatusItems = card.getStatus().getStatusOf(CardStatusType.不屈);
         if (!unbendingStatusItems.isEmpty()) {
-            this.getStage().getUI().unbend(card, unbendingStatusItems.get(0));
-            damage = 0;
+            if (skill != null && skill.getType() == SkillType.吸血) {
+                // 不屈状态下可以吸血
+            } else {
+                this.getStage().getUI().unbend(card, unbendingStatusItems.get(0));
+                damage = 0;
+            }
         }
         int actualDamage = card.applyDamage(damage);
         OnDamagedResult result = new OnDamagedResult();
@@ -925,7 +929,7 @@ public class SkillResolver {
             return null;
         }
         this.stage.getUI().attackCard(attacker, defender, skill, blockingResult.getDamage());
-        OnDamagedResult damagedResult = stage.getResolver().applyDamage(defender, blockingResult.getDamage());
+        OnDamagedResult damagedResult = stage.getResolver().applyDamage(defender, skill, blockingResult.getDamage());
 
         resolvePostAttackSkills(attacker, defender, defender.getOwner(), skill, damagedResult.actualDamage);
         stage.getResolver().resolveDeathSkills(attacker, defender, skill, damagedResult);
@@ -940,6 +944,9 @@ public class SkillResolver {
         Field field = healer.getOwner().getField();
         CardInfo healee = null;
         for (CardInfo card : field.getAliveCards()) {
+            if (card.getStatus().containsStatus(CardStatusType.不屈)) {
+                continue;
+            }
             if (healee == null || card.getLostHP() > healee.getLostHP()) {
                 healee = card;
             }
@@ -1126,7 +1133,7 @@ public class SkillResolver {
         for (CardStatusItem item : items) {
             this.stage.getUI().debuffDamage(card, item, item.getEffect());
 
-            OnDamagedResult result = this.applyDamage(card, item.getEffect());
+            OnDamagedResult result = this.applyDamage(card, item.getCause().getSkill(), item.getEffect());
             this.resolveDeathSkills(item.getCause().getOwner(), card, item.getCause().getSkill(), result);
             if (result.cardDead) {
                 break;

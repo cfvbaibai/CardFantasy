@@ -18,6 +18,6 @@ public final class BloodDrain {
         GameUI ui = resolver.getStage().getUI();
         ui.useSkill(attacker, defender, cardSkill, true);
         ui.healCard(attacker, attacker, cardSkill, drainedHP);
-        resolver.applyDamage(attacker, -drainedHP);
+        resolver.applyDamage(attacker, cardSkill, -drainedHP);
     }
 }

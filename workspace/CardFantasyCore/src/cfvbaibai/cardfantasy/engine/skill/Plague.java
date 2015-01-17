@@ -30,7 +30,7 @@ public final class Plague {
             }
 
             ui.attackCard(attacker, victim, skill, damage);
-            resolver.applyDamage(victim, damage);
+            resolver.applyDamage(victim, skill, damage);
             ui.adjustAT(attacker, victim, -damage, skill);
             victim.addEffect(new SkillEffect(SkillEffectType.ATTACK_CHANGE, skillUseInfo, -damage, true));
         }

@@ -36,7 +36,7 @@ public final class Spike {
             }
             if (!resolver.resolverCounterAttackBlockSkill(cardSkill, victim, defender)) {
                 ui.attackCard(defender, victim, cardSkill, damage);
-                resolver.resolveDeathSkills(defender, victim, cardSkill, resolver.applyDamage(victim, damage));
+                resolver.resolveDeathSkills(defender, victim, cardSkill, resolver.applyDamage(victim, cardSkill, damage));
             }
         }
     }

@@ -588,4 +588,91 @@ public class SpecialStatusTest extends SkillValidationTest {
         Assert.assertEquals(1, context.getPlayer(0).getField().size());
         Assert.assertEquals(1, context.getPlayer(0).getDeck().size());
     }
+
+    /**
+     * 不屈状态的卡不会被狙击
+     */
+    @Test
+    public void test不屈_二重狙击() {
+        SkillTestContext context = SkillValidationTestSuite.prepare(
+            50, 50, "秘银巨石像", "占位符+二重狙击10", "残血王国小兵+不屈", "占位符+盾刺10", "占位符+送还");
+        context.addToField(0, 0);
+        context.addToField(1, 0);
+        CardInfo c王国小兵 = context.addToField(2, 1);
+        CardInfo c占位符2 = context.addToField(3, 1);
+        CardInfo c占位符3 = context.addToField(4, 1);
+        context.startGame();
+
+        context.proceedOneRound();
+        Assert.assertEquals(3, context.getPlayer(1).getField().size());
+        Assert.assertEquals(1, c王国小兵.getHP());
+        // 二重狙击打在两个后方占位符上
+        Assert.assertEquals(250, 5000 - c占位符2.getHP());
+        Assert.assertEquals(250, 5000 - c占位符3.getHP());
+    }
+
+    /**
+     * 不屈状态的卡不会被治疗
+     */
+    @Test
+    public void test不屈_治疗() {
+        SkillTestContext context = SkillValidationTestSuite.prepare(
+            50, 50, "秘银巨石像", "金属巨龙+不屈", "占位符+治疗1", "占位符+盾刺10");
+        CardInfo c秘银巨石像 = context.addToField(0, 0);
+        CardInfo c金属巨龙 = context.addToField(1, 0).setBasicHP(2);
+        CardInfo c占位符1 = context.addToField(2, 0);
+        context.addToField(3, 1);
+        context.startGame();
+
+        context.proceedOneRound();
+        Assert.assertEquals(3, context.getPlayer(0).getField().size());
+        // 不屈的卡无法被治疗
+        Assert.assertEquals(1, c金属巨龙.getHP());
+        // 二重狙击打在两个后方占位符上
+        Assert.assertEquals(200 /* 盾刺 */ - 25 /* 治疗1 */, 1400 - c秘银巨石像.getHP());
+        Assert.assertEquals(0, 5000 - c占位符1.getHP());
+    }
+
+    /**
+     * 不屈状态的卡不会被甘霖
+     */
+    @Test
+    public void test不屈_甘霖() {
+        SkillTestContext context = SkillValidationTestSuite.prepare(
+            50, 50, "秘银巨石像", "金属巨龙+不屈", "占位符+甘霖1", "占位符+盾刺10");
+        CardInfo c秘银巨石像 = context.addToField(0, 0);
+        CardInfo c金属巨龙 = context.addToField(1, 0).setBasicHP(2);
+        CardInfo c占位符1 = context.addToField(2, 0);
+        context.addToField(3, 1);
+        context.startGame();
+
+        context.proceedOneRound();
+        Assert.assertEquals(3, context.getPlayer(0).getField().size());
+        // 不屈的卡无法被甘霖
+        Assert.assertEquals(1, c金属巨龙.getHP());
+        // 二重狙击打在两个后方占位符上
+        Assert.assertEquals(200 /* 盾刺 */ - 25 /* 治疗1 */, 1400 - c秘银巨石像.getHP());
+        Assert.assertEquals(0, 5000 - c占位符1.getHP());
+    }
+
+    /**
+     * 不屈状态的卡可以吸血
+     */
+    @Test
+    public void test不屈_吸血() {
+        SkillTestContext context = SkillValidationTestSuite.prepare(
+            50, 50, "秘银巨石像", "熊人武士+不屈", "占位符+盾刺10", "占位符");
+        CardInfo c秘银巨石像 = context.addToField(0, 0);
+        CardInfo c熊人武士 = context.addToField(1, 0).setBasicHP(2);
+        context.addToField(2, 1);
+        context.addToField(3, 1);
+        context.startGame();
+
+        context.proceedOneRound();
+        Assert.assertEquals(2, context.getPlayer(0).getField().size());
+        // 不屈的卡可以吸血
+        Assert.assertEquals(1 + 1170 /* 吸血 */, c熊人武士.getHP());
+        // 二重狙击打在两个后方占位符上
+        Assert.assertEquals(200 /* 盾刺 */, 1400 - c秘银巨石像.getHP());
+    }
 }

@@ -24,6 +24,6 @@ public final class Rejuvenate {
         }
         resolver.getStage().getUI().useSkill(card, cardSkill, true);
         resolver.getStage().getUI().healCard(card, card, cardSkill, healHP);
-        resolver.applyDamage(card, -healHP);
+        resolver.applyDamage(card, cardSkill, -healHP);
     }
 }

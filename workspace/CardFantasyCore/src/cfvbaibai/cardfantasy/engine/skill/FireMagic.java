@@ -33,7 +33,7 @@ public final class FireMagic {
             if (attacker instanceof CardInfo) {
                 resolver.resolveCounterAttackSkills((CardInfo)attacker, victim, cardSkill, result, null);
             }
-            resolver.resolveDeathSkills(attacker, victim, cardSkill, resolver.applyDamage(victim, damage));
+            resolver.resolveDeathSkills(attacker, victim, cardSkill, resolver.applyDamage(victim, cardSkill, damage));
         }
     }
 }

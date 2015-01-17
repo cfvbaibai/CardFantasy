@@ -43,7 +43,7 @@ public final class Rainfall {
                 continue;
             }
             resolver.getStage().getUI().healCard(healer, heal.healee, skill, heal.healHP);
-            resolver.applyDamage(heal.healee, -heal.healHP);
+            resolver.applyDamage(heal.healee, skill, -heal.healHP);
         }        
     }
 

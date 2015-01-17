@@ -18,6 +18,6 @@ public final class Overdraw {
         ui.adjustAT(attacker, attacker, adjAT, skill);
         attacker.addEffect(new SkillEffect(SkillEffectType.ATTACK_CHANGE, skillUseInfo, adjAT, true));
         ui.attackCard(attacker, attacker, skill, adjAT);
-        resolver.resolveDeathSkills(attacker, attacker, skill, resolver.applyDamage(attacker, adjAT));
+        resolver.resolveDeathSkills(attacker, attacker, skill, resolver.applyDamage(attacker, skill, adjAT));
     }
 }

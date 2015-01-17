@@ -44,7 +44,7 @@ public final class LighteningMagic {
             }
             damage = result.getDamage();
             ui.attackCard(attacker, victim, skill, damage);
-            OnDamagedResult onDamagedResult = resolver.applyDamage(victim, damage);
+            OnDamagedResult onDamagedResult = resolver.applyDamage(victim, skill, damage);
             if (attacker instanceof CardInfo) {
                 resolver.resolveCounterAttackSkills((CardInfo)attacker, victim, skill, result, null);
             }
