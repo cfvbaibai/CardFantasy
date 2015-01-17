@@ -12,14 +12,14 @@
                             <option value="毁灭之神">毁灭之神</option>
                             <option value="深渊影魔">深渊影魔</option>
                             <option value="万蛛之后">万蛛之后</option>
-                            <!-- 
-                            <option value="旧复仇女神">旧魔神：复仇女神</option>
-                            <option value="旧邪龙之神">旧魔神：邪龙之神</option>
-                            <option value="旧噩梦之主">旧魔神：噩梦之主</option>
-                            <option value="旧毁灭之神">旧魔神：毁灭之神</option>
-                            <option value="旧深渊影魔">旧魔神：深渊影魔</option>
-                            <option value="旧万蛛之后">旧魔神：万蛛之后</option>
-                             -->
+
+                            <option value="旧复仇女神">旧复仇女神</option>
+                            <option value="旧邪龙之神">旧邪龙之神</option>
+                            <option value="旧噩梦之主">旧噩梦之主</option>
+                            <option value="旧毁灭之神">旧毁灭之神</option>
+                            <option value="旧深渊影魔">旧深渊影魔</option>
+                            <option value="旧万蛛之后">旧万蛛之后</option>
+
                         </select>
                         <select data-theme="c" name="guard-type" id="guard-type" data-mini="true" data-native-menu="false">
                             <option value="0">无杂兵</option>
