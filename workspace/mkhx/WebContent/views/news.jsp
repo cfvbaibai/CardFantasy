@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-    <div id="news" class="main-page" data-role="page" data-category="main-page" data-title="公告" data-mini="true">
+    <div id="news" class="main-page" data-role="page" data-category="main-page" data-title="魔卡幻想模拟器" data-mini="true">
         <div class="dashboard" data-role="content" data-theme="c">
             <div>
                 <a href="#news-left-panel" data-role="button" data-mini="true" data-theme="b">点击左上角导航按钮开始使用模拟器</a>
@@ -8,7 +8,7 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">
                 <h3>公告</h3>
                 <ul>
-                    <li>最新添加了<a href="#boss-battle">魔神战</a>随机杂兵功能，欢迎报告BUG，戳<a href="http://tieba.baidu.com/p/3514710278" target="_blank">这里</a>参与魔神战模拟讨论</li>
+                    <li>最近准备做个英语版模拟器，恳请美服的玩家戳这里参加讨论</li>
                     <li>感谢<x>yezhihuib</x>, <x>冰封</x>大大无私提供的丰富资料，还有各位朋友的热心帮助，<a href="#lilith-battle">莉莉丝战</a>已完成，如若发现BUG，请戳<a href="http://tieba.baidu.com/p/3514714595" target="_blank">这里</a>报告</li>
                     <li><a href="#" data-type="bug">魔卡幻想模拟器贴吧</a>已成立，欢迎大家来提BUG、提需求、提供技能结算细节。</li>
                 </ul>
@@ -29,9 +29,9 @@
                 <h3>更新日志</h3>
                 <ul class="news-content">
                     <li>2015-01-17: <ul>
-                        <li>新增莉莉丝活动卡【半人鱼恶魔】、【圣灵大祭司】、【圣城卫士】、【咒怨稻草人】、【邪魔屠夫】、【巨石投石车手】，感谢<x>绯弹亚丝娜</x>, <x>yezhihuib</x>, <x>程love翔</x>, <x>susss222</x>提供数据。</li>
+                        <li>新增莉莉丝活动卡【半人鱼恶魔】、【圣灵大祭司】、【圣城卫士】、【咒怨稻草人】、【邪魔屠夫】、【巨石投石车手】，感谢<x>绯弹亚丝娜</x>, <x>yezhihuib</x>, <x>程love翔</x>, <x>susss222</x>提供数据</li>
                         <li>恢复了旧魔神的模拟，方便马服美服用户</li>
-                        <li>添加新卡：【世界杯美国】、【世界杯法国】、【世界杯德国】、【世界杯韩日】、【世界杯南非】、【世界杯巴西】</li>
+                        <li>添加新卡：【世界杯美国】、【世界杯法国】、【世界杯德国】、【世界杯韩日】、【世界杯南非】、【世界杯巴西】，感谢<x>程love翔</x>提供数据</li>
                         <li>修复【不屈】和【狙击】【治疗】【吸血】作用时的BUG，感谢<x>King_Goldencat</x>, <x>piaoyizhiying</x>, <x>壹滴海洋</x>, <x>流光映梦</x>提供信息</li>
                     </ul></li>
                     <li>2015-01-16: 修复【回魂】的BUG，感谢<x>誓死支持双剑</x>, <x>欲印弥彰</x>, <x>唔滴哟</x>, <x>逆骨魔方</x>, <x>文文ww0327</x>, <x>下一片海enjoy</x>, <x>悠零幽灵</x>报告BUG</li>
