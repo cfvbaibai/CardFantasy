@@ -70,7 +70,7 @@ function generateSkill(skillId, unlockLevel) {
     }
     var result = '&lt;Skill type="' + name + '" level="' + level + '" unlock="' + unlockLevel + '" ';
     if (special == '[降临]') {
-        result += 'summoning="true" ';
+        result += 'summon="true" ';
     } else if (special == '[死契]') {
         result += 'death="true" ';
     }

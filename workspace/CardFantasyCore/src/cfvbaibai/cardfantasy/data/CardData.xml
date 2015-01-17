@@ -164,6 +164,11 @@
         <Skill type="背刺" level="5" unlock="5" />
         <Skill type="战意" level="5" unlock="10" />
     </Card>
+    <Card id="1320" name="巨石投石车手" wikiId="" race="王国" speed="4" star="3" cost="11" incrCost="2" at="225" hp="780" incrAT="23" incrHP="24">
+        <Skill type="烈焰风暴" level="6" unlock="0" />
+        <Skill type="趁胜追击" level="5" unlock="5" />
+        <Skill type="穷追猛打" level="5" unlock="10" />
+    </Card>
 
     <Card id="1401" name="圣堂武士" wikiId="30780" race="王国" speed="4" star="4" cost="13" incrCost="1" at="280" hp="1040" incrAT="23" incrHP="37">
         <Skill type="狂热" level="7" unlock="0" />
