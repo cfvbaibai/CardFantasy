@@ -1,18 +1,17 @@
-CardFantasy
+Lies of Astaroth
 =======
 
-Card Fantasy Battle Simulator
+Lies of Astaroth Battle Simulator
 
 Developed By
 ============
 
 * cfvbaibai
-* 技术壕
 
 License
 =======
 
-    Copyright 2014 CfvBaibai
+    Copyright 2015 CfvBaibai
 
     Licensed under the BSD License;
     you may not use this file except in compliance with the License.

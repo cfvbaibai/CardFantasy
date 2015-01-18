@@ -8,7 +8,7 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">
                 <h3>公告</h3>
                 <ul>
-                    <li>最近准备做个英语版模拟器，恳请美服的玩家戳这里参加讨论</li>
+                    <li>最近准备做个英语版模拟器，恳请美服的玩家戳<a href="http://tieba.baidu.com/p/3534958968" target="_blank">这里</a>参加讨论</li>
                     <li>感谢<x>yezhihuib</x>, <x>冰封</x>大大无私提供的丰富资料，还有各位朋友的热心帮助，<a href="#lilith-battle">莉莉丝战</a>已完成，如若发现BUG，请戳<a href="http://tieba.baidu.com/p/3514714595" target="_blank">这里</a>报告</li>
                     <li><a href="#" data-type="bug">魔卡幻想模拟器贴吧</a>已成立，欢迎大家来提BUG、提需求、提供技能结算细节。</li>
                 </ul>
