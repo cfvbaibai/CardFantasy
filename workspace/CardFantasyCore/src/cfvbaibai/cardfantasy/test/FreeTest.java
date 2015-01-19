@@ -13,12 +13,12 @@ import cfvbaibai.cardfantasy.data.PlayerInfo;
 import cfvbaibai.cardfantasy.engine.BattleEngine;
 import cfvbaibai.cardfantasy.engine.GameResult;
 import cfvbaibai.cardfantasy.engine.Rule;
-import cfvbaibai.cardfantasy.game.PvlGameResult;
 import cfvbaibai.cardfantasy.game.DummyGameUI;
 import cfvbaibai.cardfantasy.game.GameResultStat;
 import cfvbaibai.cardfantasy.game.LilithDataStore;
 import cfvbaibai.cardfantasy.game.PlayerBuilder;
 import cfvbaibai.cardfantasy.game.PvlEngine;
+import cfvbaibai.cardfantasy.game.PvlGameResult;
 import cfvbaibai.cardfantasy.game.SkillBuilder;
 
 public class FreeTest extends PveEngineTest {
@@ -604,6 +604,21 @@ public class FreeTest extends PveEngineTest {
     @Test
     public void 皇家驯兽师vs九头妖蛇() {
         TestGameBuilder.play10v10("皇家驯兽师", "九头妖蛇", 62);
+    }
+    
+    @Test
+    public void testBug1() {
+        String deck1 = "绝杀，石林，秽土，赤谷，毁灭之龙+转生7，末日预言师+本源守护4，雷兽-15，混沌之龙+横扫，" +
+            "亡灵守护神+本源之力5，雷兽+冰甲5，雷兽+反击10，堕落天使+免疫，羽翼化蛇+不动，羽翼化蛇+封印";
+        String deck2 = "圣灵大祭司+降临暴风雪2，圣堂执政官+降临送还，齐天美猴王+降临送还，复活节兔女郎-15*2，" +
+            "复活节兔女郎+连环闪电1，隐世先知+降临送还，羽翼化蛇-15，雷兽+冰甲4，时光女神-15，龙吟，赤谷，玄石，雷盾";
+        PlayerInfo p1 = PlayerBuilder.build(true, "P1", deck1, 100, null, 0);
+        PlayerInfo p2 = PlayerBuilder.build(true, "P2", deck2, 100, null, 0);
+        while (true) {
+            BattleEngine engine = new BattleEngine(new TestGameUI(), Rule.getDefault());
+            engine.registerPlayers(p1, p2);
+            engine.playGame();
+        }
     }
     
     @Test

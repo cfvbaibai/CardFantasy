@@ -28,6 +28,10 @@ public class CardPile {
         return newCard;
     }
 
+    public boolean contains(CardInfo card) {
+        return this.cards.contains(card);
+    }
+
     public void insertCardToPosition(CardInfo newCard, int position) {
         checkCardExistence(newCard);
         if (position >= this.size())

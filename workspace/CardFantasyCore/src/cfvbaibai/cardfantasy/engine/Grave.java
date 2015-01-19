@@ -52,8 +52,4 @@ public class Grave extends CardPile {
         }
         return cards;
     }
-
-    public boolean contains(CardInfo card) {
-        return this.getCards().contains(card);
-    }
 }
