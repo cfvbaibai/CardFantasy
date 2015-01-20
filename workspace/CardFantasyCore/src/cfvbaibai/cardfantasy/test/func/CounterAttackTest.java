@@ -126,4 +126,20 @@ public class CounterAttackTest extends SkillValidationTest {
         Assert.assertEquals(600 + 200 + 200, 1400 - c秘银巨石像1.getHP());
         Assert.assertEquals(400 + 200 + 200, 1400 - c秘银巨石像2.getHP());
     }
+
+    /**
+     * 零伤害不会触发盾刺
+     */
+    @Test
+    public void test无伤害_盾刺() {
+        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "占位符*2", "占位符+盾刺10");
+        CardInfo c占位符1 = context.addToField(0, 0);
+        CardInfo c占位符2 = context.addToField(1, 0);
+        context.addToField(2, 1);
+        context.startGame();
+        
+        context.proceedOneRound();
+        Assert.assertEquals(5000, c占位符1.getHP());
+        Assert.assertEquals(5000, c占位符2.getHP());
+    }
 }

@@ -25,6 +25,10 @@ public final class Purify {
             resolver.removeStatus(card, CardStatusType.晕眩);
             resolver.removeStatus(card, CardStatusType.裂伤);
             resolver.removeStatus(card, CardStatusType.死印);
+            resolver.removeStatus(card, CardStatusType.王国);
+            resolver.removeStatus(card, CardStatusType.森林);
+            resolver.removeStatus(card, CardStatusType.蛮荒);
+            resolver.removeStatus(card, CardStatusType.地狱);
         }
     }
 }

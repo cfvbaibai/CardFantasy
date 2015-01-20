@@ -39,4 +39,12 @@ public enum Race {
     public String getDisplayName() {
         return this.displayName;
     }
+
+    public static Race parse(int raceIndex) {
+        Race[] races = Race.values();
+        if (raceIndex < 0 || raceIndex > races.length) {
+            throw new IllegalArgumentException("Invalid race index: " + raceIndex);
+        }
+        return races[raceIndex];
+    }
 }

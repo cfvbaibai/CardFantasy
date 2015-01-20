@@ -1368,11 +1368,11 @@ var Animater = function() {
     this.msgIgnoredSkills = [
         '背刺', '暴击', '狂热', '嗜血', '横扫', '穿刺', '回春', '吸血', '振奋',
         '透支', '战意', '穷追猛打', '趁胜追击', '复仇', '奋战', '英雄杀手', '反噬',
-        '圣光', '要害', '暗杀', '污染'
+        '圣光', '要害', '暗杀', '污染', '连锁攻击'
     ];
     this.selfUsedSkills = [
         '不动', '脱困', '群体脱困', '法力反射', '冰甲', '闪避', '守护', '魔神之甲', '灵巧',
-        '王国之盾', '森林之盾', '蛮荒之盾', '地狱之盾', '弱点攻击', '无效', '圣盾', '不屈'
+        '王国之盾', '森林之盾', '蛮荒之盾', '地狱之盾', '弱点攻击', '无效', '圣盾', '不屈', '圣炎'
     ];
     this.__useSkill = function(data) {
         var attacker = data[0]; // EntityRuntimeInfo
@@ -1431,9 +1431,6 @@ var Animater = function() {
         } else if (skill == '迷魂') {
             this.flyImage({ fileName: 'heart.png', width: 24, height: 24, text: skill },
                     attacker, defenders, settings.skillDuration);
-        } else if (skill == '圣炎') {
-            this.flyImage({ fileName: 'holyfire.png', width: 48, height: 48, text: skill },
-                    attacker, defenders, settings.skillDuration);
         } else if (skill == '自爆') {
             this.flyImage({ fileName: 'explode.png', width: 48, height: 48, text: skill },
                     attacker, defenders, settings.skillDuration);
@@ -1460,6 +1457,9 @@ var Animater = function() {
                     attacker, defenders, settings.skillDuration);
         } else if (skill == '死亡印记') {
             this.flyImage({ fileName: 'death.png', width: 48, height: 48, text: skill },
+                    attacker, defenders, settings.skillDuration);
+        } else if (skill == '圣光洗礼' || skill == '森林沐浴' || skill == '蛮荒威压' || skill == '地狱同化') {
+            this.flyImage({ fileName: 'change.png', width: 48, height: 48, text: skill },
                     attacker, defenders, settings.skillDuration);
         } else if (skill == '治疗' || skill == '甘霖' || skill == '回春' || skill == '治疗之雾') {
             this.flyImage({ fileName: 'heal.png', width: 24, height: 24, text: skill },

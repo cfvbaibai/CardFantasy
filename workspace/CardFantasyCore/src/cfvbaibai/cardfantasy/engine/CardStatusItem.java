@@ -85,6 +85,17 @@ public class CardStatusItem {
     public static CardStatusItem deathMark(SkillUseInfo cause) {
         return new CardStatusItem(CardStatusType.死印, 0, cause);
     }
+    
+    public static CardStatusItem raceChange(SkillUseInfo cause) {
+        CardStatusType type = null;
+        switch (cause.getType().getImpact(0)) {
+            case 0: type = CardStatusType.王国; break;
+            case 1: type = CardStatusType.森林; break;
+            case 2: type = CardStatusType.蛮荒; break;
+            case 3: type = CardStatusType.地狱; break;
+        }
+        return new CardStatusItem(type, 0, cause);
+    }
 
     public String getShortDesc() {
         StringBuffer sb = new StringBuffer();

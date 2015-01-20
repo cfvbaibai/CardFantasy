@@ -370,6 +370,37 @@ public class DefenseTest extends SkillValidationTest {
     }
 
     /**
+     * 零伤害不会触发大地之盾
+     */
+    @Test
+    public void test大地之盾_零伤害() {
+        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "占位符", "占位符+大地之盾");
+        CardInfo c占位符1 = context.addToField(0, 0);
+        context.addToField(1, 1);
+        context.startGame();
+        
+        context.proceedOneRound();
+        Assert.assertEquals(5000, c占位符1.getHP());
+        Assert.assertFalse(c占位符1.getStatus().containsStatus(CardStatusType.晕眩));
+    }
+
+    /**
+     * 闪避不会触发大地之盾
+     */
+    @Test
+    public void test大地之盾_闪避() {
+        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "占位符", "堕落精灵+大地之盾");
+        CardInfo c占位符1 = context.addToField(0, 0);
+        context.addToField(1, 1);
+        context.startGame();
+        
+        random.addNextNumbers(0);   // 堕落精灵闪避成功
+        context.proceedOneRound();
+        Assert.assertEquals(5000, c占位符1.getHP());
+        Assert.assertFalse(c占位符1.getStatus().containsStatus(CardStatusType.晕眩));
+    }
+
+    /**
      * 种族之盾总是按照伤害，而不是对方的攻击力算
      */
     @Test

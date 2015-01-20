@@ -15,7 +15,11 @@ public class NoEffect {
             // attackSkill.getType() == SkillType.沉默 ||
             attackSkill.getType() == SkillType.大地之盾 ||
             attackSkill.getType() == SkillType.裂伤 ||
-            attackSkill.getType() == SkillType.时光倒流) {
+            attackSkill.getType() == SkillType.时光倒流 ||
+            attackSkill.getType() == SkillType.圣光洗礼 ||
+            attackSkill.getType() == SkillType.森林沐浴 ||
+            attackSkill.getType() == SkillType.蛮荒威压 ||
+            attackSkill.getType() == SkillType.地狱同化) {
             GameUI ui = resolver.getStage().getUI();
             ui.useSkill(defender, attacker, cardSkill, true);
             ui.blockSkill(attacker, defender, cardSkill, attackSkill);

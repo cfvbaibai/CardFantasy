@@ -18,6 +18,9 @@ public class EarthShield {
             // 例如：横扫两个带大地之盾的卡
             return;
         }
+        if (victim.isDead()) {
+            return;
+        }
         Skill skill = skillUseInfo.getSkill();
         GameUI ui = resolver.getStage().getUI();
         ui.useSkill(victim, attacker, skill, true);

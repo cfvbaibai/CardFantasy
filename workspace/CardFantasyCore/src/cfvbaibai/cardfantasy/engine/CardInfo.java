@@ -207,10 +207,20 @@ public class CardInfo extends EntityInfo {
     }
 
     public Race getRace() {
-        if (this.getStatus().containsStatus(CardStatusType.改族)) {
-            
+        Race race = getCard().getRace();
+        List<CardStatusItem> items = this.getStatus().getAllItems();
+        for (CardStatusItem item : items) {
+            if (item.getType() == CardStatusType.王国) {
+                race = Race.KINGDOM;
+            } else if (item.getType() == CardStatusType.森林) {
+                race = Race.FOREST;
+            } else if (item.getType() == CardStatusType.蛮荒) {
+                race = Race.SAVAGE;
+            } else if (item.getType() == CardStatusType.地狱) {
+                race = Race.HELL;
+            }
         }
-        return getCard().getRace();
+        return race;
     }
 
     public List<SkillUseInfo> getUsableSummonSkills() {
@@ -364,7 +374,7 @@ public class CardInfo extends EntityInfo {
         return true;
     }
 
-    public boolean isWeak() {
+    public boolean justRevived() {
         return this.getStatus().containsStatus(CardStatusType.复活);
     }
 

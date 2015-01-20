@@ -22,6 +22,9 @@ public final class CounterAttack {
         if (attacker == null) {
             return;
         }
+        if (defender.isDead()) {
+            return;
+        }
         int damage = cardSkill.getImpact();
         GameUI ui = resolver.getStage().getUI();
         ui.useSkill(defender, attacker, cardSkill, true);

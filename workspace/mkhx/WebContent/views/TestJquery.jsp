@@ -77,10 +77,36 @@ function generateSkill(skillId, unlockLevel) {
     result += '/&gt;';
     return result;
 }
+
+function showSkillLaunchTypes() {
+   var skillLaunchTypes = {};
+   var i;
+   for (i = 0; i < allSkills.Skills.length; ++i) {
+       var skill = allSkills.Skills[i];
+       var launchTypeKey = 'LT' + skill.LanchType;
+       var skillName = skill.Name.replace(/\d/g, '');
+       if (!skillLaunchTypes[launchTypeKey]) {
+           skillLaunchTypes[launchTypeKey] = [ skillName ];
+       } else if (skillLaunchTypes[launchTypeKey].indexOf(skillName) < 0) {
+           skillLaunchTypes[launchTypeKey].push(skillName);
+       }
+   }
+   var result = '';
+   for (var launchTypeKey in skillLaunchTypes) {
+       result += launchTypeKey + ': ';
+       for (i = 0; i < skillLaunchTypes[launchTypeKey].length; ++i) {
+           result += skillLaunchTypes[launchTypeKey][i] + ', ';
+       }
+       result += '<br />';
+   }
+   $('#skill-launch-types').html(result);
+}
 </script>
 </head>
 <body>
     <div>Card Name: <input type="text" id="card-name" value="森林女神" /><button onclick="generate();">生成</button></div>
     <div id="card-xml"></div>
+    <div><button onclick="showSkillLaunchTypes();">显示技能发动类型</button></div>
+    <div id="skill-launch-types"></div>
 </body>
 </html>

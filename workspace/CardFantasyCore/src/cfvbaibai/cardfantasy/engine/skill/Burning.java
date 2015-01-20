@@ -16,6 +16,9 @@ public final class Burning {
         if (attacker == null) {
             return;
         }
+        if (defender.isDead()) {
+            return;
+        }
         if (attacker.getStatus().containsStatusCausedBy(skillUseInfo, CardStatusType.燃烧)) {
             return;
         }

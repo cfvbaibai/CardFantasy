@@ -28,6 +28,11 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2015-01-20: <ul>
+                        <li>修复【大地之盾】的BUG，感谢<x>catree1988</x>, <x>qazqwe240</x>报告BUG</li>
+                        <li>添加【咒怨稻草人】的卡图，感谢<x>qazqwe240</x>提供图片</li>
+                        <li>添加新卡【赤面天狗】</li>
+                    </ul></li>
                     <li>2015-01-17: <ul>
                         <li>新增莉莉丝活动卡【半人鱼恶魔】、【圣灵大祭司】、【圣城卫士】、【咒怨稻草人】、【邪魔屠夫】、【巨石投石车手】，感谢<x>绯弹亚丝娜</x>, <x>yezhihuib</x>, <x>程love翔</x>, <x>susss222</x>提供数据</li>
                         <li>恢复了旧魔神的模拟，方便马服美服用户</li>

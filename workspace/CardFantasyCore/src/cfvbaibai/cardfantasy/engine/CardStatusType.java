@@ -14,7 +14,10 @@ public enum CardStatusType {
     晕眩(false, "晕"),
     不屈(false, "倔"),
     死印(false, "死"),
-    改族(false, "改");
+    王国(false, "王"),
+    森林(false, "森"),
+    蛮荒(false, "蛮"),
+    地狱(false, "地");
 
     private boolean quantitive;
     public boolean isQuantitive() {
@@ -24,6 +27,9 @@ public enum CardStatusType {
     private String abbrev;
     public String getAbbrev() {
         return this.abbrev;
+    }
+    public void setAbbrev(String abbrev) {
+        this.abbrev = abbrev;
     }
     
     CardStatusType(boolean quantitive, String abbrev) {
