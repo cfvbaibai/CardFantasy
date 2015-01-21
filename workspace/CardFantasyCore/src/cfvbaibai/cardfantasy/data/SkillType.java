@@ -158,10 +158,10 @@ public enum SkillType {
     召唤女神侍者("80191", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
     召唤树人守护者("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
 
-    圣光洗礼("", 0, 0, SkillTag.抗免疫, SkillTag.不可洗炼),
-    森林沐浴("", 1, 0, SkillTag.抗免疫, SkillTag.不可洗炼),
-    蛮荒威压("", 2, 0, SkillTag.抗免疫, SkillTag.不可洗炼),
-    地狱同化("", 3, 0, SkillTag.抗免疫, SkillTag.不可洗炼),
+    圣光洗礼("", 0, 0, SkillTag.不可洗炼),
+    森林沐浴("", 1, 0, SkillTag.不可洗炼),
+    蛮荒威压("", 2, 0, SkillTag.不可洗炼),
+    地狱同化("", 3, 0, SkillTag.不可洗炼),
     
     军团王国之力("", 0, 3, SkillTag.永久, SkillTag.原始攻击加成, SkillTag.原始体力加成, SkillTag.不可洗炼),
     军团森林之力("", 0, 3, SkillTag.永久, SkillTag.原始攻击加成, SkillTag.原始体力加成, SkillTag.不可洗炼),

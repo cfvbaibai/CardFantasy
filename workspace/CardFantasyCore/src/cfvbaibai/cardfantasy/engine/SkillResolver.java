@@ -1348,10 +1348,6 @@ public class SkillResolver {
                         shouldActivate = false;
                     }
                 }
-            } else if (rune.is(RuneData.永冻) || rune.is(RuneData.灼魂)) {
-                if (enemy.getField().getAliveCards().isEmpty()) {
-                    shouldActivate = false;
-                }
             } else if (rune.is(RuneData.春风) || rune.is(RuneData.冰封)) {
                 if (player.getField().getAliveCards().isEmpty()) {
                     shouldActivate = false;

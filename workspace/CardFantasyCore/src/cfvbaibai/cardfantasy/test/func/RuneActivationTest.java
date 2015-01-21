@@ -72,6 +72,38 @@ public class RuneActivationTest extends SkillValidationTest {
 
         Assert.assertEquals(1, r清泉.getMaxEnergy() - r清泉.getEnergy());
     }
+
+    /**
+     * 即使对方空场，主动攻击型符文照样消耗发动次数
+     */
+    @Test
+    public void test雷狱永冻灭世死域_激活条件() {
+        SkillTestContext context = SkillValidationTestSuite.prepare(
+            50, 50, "秘银巨石像*2", "凤凰*2", "雷兽*2", "恐惧之王*2", "雷狱", "永冻", "灭世", "死域", "占位符");
+        for (int i = 0; i < 4; ++i) {
+            context.addToHand(i, 0).setSummonDelay(0);
+        }
+        context.addToGrave(4, 0);
+        context.addToGrave(5, 0);
+        context.addToGrave(6, 0);
+        context.addToGrave(7, 0);
+        RuneInfo r雷狱 = context.addToRune(0, 0);
+        RuneInfo r永冻 = context.addToRune(1, 0);
+        RuneInfo r灭世 = context.addToRune(2, 0);
+        RuneInfo r死域 = context.addToRune(3, 0);
+        context.addToHand(8, 1);
+        context.startGame();
+
+        context.proceedOneRound();
+        Assert.assertTrue("雷狱应该已激活", r雷狱.isActivated());
+        Assert.assertTrue("永冻应该已激活", r永冻.isActivated());
+        Assert.assertTrue("灭世应该已激活", r灭世.isActivated());
+        Assert.assertTrue("死域应该已激活", r死域.isActivated());
+        Assert.assertEquals(1, r雷狱.getMaxEnergy() - r雷狱.getEnergy());
+        Assert.assertEquals(1, r永冻.getMaxEnergy() - r永冻.getEnergy());
+        Assert.assertEquals(1, r灭世.getMaxEnergy() - r灭世.getEnergy());
+        Assert.assertEquals(1, r死域.getMaxEnergy() - r死域.getEnergy());
+    }
     
     /**
      * 对方场上没有卡时也会激活雷盾、岩壁和赤谷

@@ -1728,7 +1728,7 @@
     <Card id="4514" name="圆月魔女" wikiId="62845" race="地狱" speed="4" star="5" cost="16" incrCost="2" at="310" hp="1390" incrAT="33" incrHP="40">
         <Skill type="法力侵蚀" level="8" unlock="0" />
         <Skill type="不动" level="0" unlock="5" />
-        <Skill type="净化" level="0" unlock="10" />
+        <Skill type="神性祈求" level="0" unlock="10" />
     </Card>
     <Card id="4516" name="逐月饿狼" wikiId="80144" race="地狱" speed="4" star="5" cost="16" incrCost="2" at="345" hp="1290" incrAT="42" incrHP="38">
         <Skill type="吸血" level="6" unlock="0" />
