@@ -6,13 +6,13 @@ import cfvbaibai.cardfantasy.GameUI;
 import cfvbaibai.cardfantasy.Randomizer;
 import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.engine.CardInfo;
-import cfvbaibai.cardfantasy.engine.SkillEffect;
-import cfvbaibai.cardfantasy.engine.SkillEffectType;
-import cfvbaibai.cardfantasy.engine.SkillUseInfo;
-import cfvbaibai.cardfantasy.engine.SkillResolver;
 import cfvbaibai.cardfantasy.engine.Field;
 import cfvbaibai.cardfantasy.engine.HeroDieSignal;
 import cfvbaibai.cardfantasy.engine.OnAttackBlockingResult;
+import cfvbaibai.cardfantasy.engine.SkillEffect;
+import cfvbaibai.cardfantasy.engine.SkillEffectType;
+import cfvbaibai.cardfantasy.engine.SkillResolver;
+import cfvbaibai.cardfantasy.engine.SkillUseInfo;
 
 public final class Sacrifice {
     public static void apply(SkillResolver resolver, SkillUseInfo skillUseInfo, CardInfo card, CardInfo reviver) throws HeroDieSignal {
@@ -50,9 +50,6 @@ public final class Sacrifice {
         card.setUsed(skillUseInfo);
 
         ui.killCard(card, oblation, skill);
-        // Sacrifice does not trigger death skills.
-        resolver.cardDead(oblation);
-        resolver.resolveLeaveSkills(oblation);
-        //ui.compactField(card.getOwner().getField());
+        resolver.killCard(card, oblation, skill);
     }
 }

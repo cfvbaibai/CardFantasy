@@ -28,7 +28,11 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">
                 <h3>更新日志</h3>
                 <ul class="news-content">
-                    <li>2015-01-21: 修复数据BUG - 【圆月魔女】3技能由【净化】改成【神性祈求】，感谢<x>susss222</x>报告BUG</li>
+                    <li>2015-01-21: <ui>
+                        <li>修复数据BUG - 【圆月魔女】3技能由【净化】改成【神性祈求】，感谢<x>susss222</x>报告BUG</li>
+                        <li>添加【巨石投石车手】的卡图</li>
+                        <li>修复【献祭】不发动死契技能的BUG</li>
+                    </ui></li>
                     <li>2015-01-20: <ul>
                         <li>修复【大地之盾】的BUG，感谢<x>catree1988</x>, <x>qazqwe240</x>报告BUG</li>
                         <li>添加【咒怨稻草人】的卡图，感谢<x>qazqwe240</x>提供图片</li>

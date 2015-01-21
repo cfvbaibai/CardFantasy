@@ -1472,4 +1472,16 @@ public class SkillResolver {
             this.removeStatus(card, CardStatusType.不屈);
         }
     }
+
+    public void killCard(CardInfo attacker, CardInfo victim, Skill cardSkill) throws HeroDieSignal {
+        int originalDamage = victim.getHP();
+        int actualDamage = victim.applyDamage(victim.getHP());
+        this.cardDead(victim);
+        OnDamagedResult onDamagedResult = new OnDamagedResult();
+        onDamagedResult.actualDamage = actualDamage;
+        onDamagedResult.originalDamage = originalDamage;
+        onDamagedResult.cardDead = true;
+        onDamagedResult.unbending = false;
+        this.resolveDeathSkills(attacker, victim, cardSkill, onDamagedResult);
+    }
 }
