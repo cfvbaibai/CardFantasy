@@ -207,7 +207,7 @@ public class CardInfo extends EntityInfo {
     }
 
     public Race getRace() {
-        Race race = getCard().getRace();
+        Race race = this.getOriginalRace();
         List<CardStatusItem> items = this.getStatus().getAllItems();
         for (CardStatusItem item : items) {
             if (item.getType() == CardStatusType.王国) {
@@ -221,6 +221,10 @@ public class CardInfo extends EntityInfo {
             }
         }
         return race;
+    }
+    
+    public Race getOriginalRace() {
+        return this.getCard().getRace();
     }
 
     public List<SkillUseInfo> getUsableSummonSkills() {

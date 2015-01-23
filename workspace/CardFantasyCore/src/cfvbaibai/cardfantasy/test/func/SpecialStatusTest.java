@@ -3,6 +3,7 @@ package cfvbaibai.cardfantasy.test.func;
 import org.junit.Assert;
 import org.junit.Test;
 
+import cfvbaibai.cardfantasy.data.Race;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.CardStatusType;
 
@@ -696,5 +697,94 @@ public class SpecialStatusTest extends SkillValidationTest {
 
         context.proceedOneRound();
         Assert.assertEquals(810 / 2, 1400 - c秘银巨石像1.getHP());
+    }
+    
+    @Test
+    public void test森林沐浴_基本() {
+        SkillTestContext context = SkillValidationTestSuite.prepare(
+            50, 50, "赤面天狗", "占位符");
+        context.addToHand(0, 0).setSummonDelay(0);
+        CardInfo c占位符 = context.addToField(1, 1);
+        context.startGame();
+        context.proceedOneRound();
+        Assert.assertEquals(745 * 220 / 100 /* 污染7 */, 5000 - c占位符.getHP());
+    }
+
+    /**
+     * 免疫脱困无法抵挡森林沐浴
+     */
+    @Test
+    public void test森林沐浴_免疫_脱困() {
+        SkillTestContext context = SkillValidationTestSuite.prepare(
+            50, 50, "占位符+降临森林沐浴", "占位符+免疫", "占位符+脱困");
+        context.addToHand(0, 0).setSummonDelay(0);
+        CardInfo c占位符2 = context.addToField(1, 1);
+        CardInfo c占位符3 = context.addToField(2, 1);
+        context.startGame();
+        
+        context.proceedOneRound();
+        Assert.assertEquals(Race.FOREST, c占位符2.getRace());
+        Assert.assertEquals(Race.FOREST, c占位符3.getRace());
+    }
+
+    /**
+     * 森林沐浴的效果是在卡牌结束行动时解除的
+     */
+    @Test
+    public void test森林沐浴_死契复活() {
+        SkillTestContext context = SkillValidationTestSuite.prepare(
+            50, 50, "占位符+降临森林沐浴", "占位符", "占位符+死契复活", "秘银巨石像*3");
+        context.addToGrave(0, 0);
+        context.addToField(1, 0);
+        context.addToField(2, 0).setBasicHP(2);
+        CardInfo c秘银巨石像1 = context.addToField(3, 1);
+        CardInfo c秘银巨石像2 = context.addToField(4, 1);
+        CardInfo c秘银巨石像3 = context.addToField(5, 1);
+        context.startGame();
+        context.getStage().setActivePlayerNumber(1);
+        
+        random.addNextPicks(1); // 死契复活占位符+降临森林沐浴
+        context.proceedOneRound();
+        Assert.assertEquals(Race.FOREST, c秘银巨石像1.getRace());
+        // 秘银巨石像2和3结束行动的同时解除沐浴状态
+        Assert.assertEquals(Race.KINGDOM, c秘银巨石像2.getRace());
+        Assert.assertEquals(Race.KINGDOM, c秘银巨石像3.getRace());
+        
+        context.proceedOneRound();
+        context.proceedOneRound();
+        Assert.assertEquals(Race.KINGDOM, c秘银巨石像1.getRace());
+        Assert.assertEquals(Race.KINGDOM, c秘银巨石像2.getRace());
+        Assert.assertEquals(Race.KINGDOM, c秘银巨石像3.getRace());
+    }
+    
+    /**
+     * 被森林沐浴改变成森林的卡无法享受森林之力的BUFF
+     */
+    @Test
+    public void test森林沐浴_森林之力_主动() {
+        SkillTestContext context = SkillValidationTestSuite.prepare(
+            50, 50, "占位符+降临森林沐浴", "占位符+降临摧毁", "秘银巨石像", "金属巨龙", "森林女神+森林之力1");
+        context.addToHand(0, 0).setSummonDelay(0);
+        context.addToHand(1, 0).setSummonDelay(2);
+        CardInfo c秘银巨石像 = context.addToField(2, 1);
+        CardInfo c金属巨龙 = context.addToField(3, 1);
+        context.addToHand(4, 1).setSummonDelay(0);
+        context.startGame();
+        
+        context.proceedOneRound();
+
+        context.proceedOneRound();
+        // 秘银巨石像不能因为森林沐浴享受森林守护和森林之力
+        Assert.assertEquals(660, c秘银巨石像.getCurrentAT());
+        Assert.assertEquals(1400, c秘银巨石像.getHP());
+        Assert.assertEquals(655 + 25 /* 森林之力1 */, c金属巨龙.getCurrentAT());
+        Assert.assertEquals(1710 + 250 /* 森林之力1 */, c金属巨龙.getHP());
+        
+        random.addNextPicks(2); /* 摧毁森林女神 */
+        context.proceedOneRound();
+        Assert.assertEquals(660, c秘银巨石像.getCurrentAT());
+        Assert.assertEquals(1400, c秘银巨石像.getHP());
+        Assert.assertEquals(655, c金属巨龙.getCurrentAT());
+        Assert.assertEquals(1710, c金属巨龙.getHP());
     }
 }

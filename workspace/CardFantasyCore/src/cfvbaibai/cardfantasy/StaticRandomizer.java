@@ -51,9 +51,13 @@ public class StaticRandomizer extends Randomizer {
 
     @Override
     public <T> List<T> pickRandom(List<T> list, int max, boolean excludeNull, T extraExclusion) {
-        getUI().showMessage("pickRandom");
+        getUI().showMessage("pickRandom(Max=" + max + ", excludeNull=" + excludeNull + ")");
         if (list == null) {
             throw new IllegalArgumentException("list cannot be null.");
+        }
+        if (list.size() == 0) {
+            getUI().showMessage("list size is zero");
+            return new ArrayList<T>();
         }
         if (max == 0) {
             return new ArrayList<T>();
@@ -80,7 +84,9 @@ public class StaticRandomizer extends Randomizer {
             if (nextPick >= list.size()) {
                 throw new CardFantasyRuntimeException("Invalid next pick " + nextPick + ". List size: " + list.size());
             }
-            result.add(list.get(nextPick));
+            this.getUI().showMessage("Pick: " + nextPick);
+            T pick = list.get(nextPick);
+            result.add(pick);
             --max;
         }
         return result;

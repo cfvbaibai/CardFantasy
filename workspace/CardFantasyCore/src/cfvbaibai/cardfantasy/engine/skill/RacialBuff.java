@@ -20,7 +20,8 @@ public final class RacialBuff {
         int impact = skill.getImpact();
         Field field = card.getOwner().getField();
         for (CardInfo ally : field.getAliveCards()) {
-            if (ally == card || race != null && ally.getRace() != race) {
+            // IMPORTANT: 种族BUFF无视种族改变技能的影响
+            if (ally == card || race != null && ally.getOriginalRace() != race) {
                 continue;
             }
             if (ally.getEffectsCausedBy(skillUseInfo).isEmpty()) {

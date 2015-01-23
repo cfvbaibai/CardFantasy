@@ -381,7 +381,7 @@
         <Skill type="邪灵汲取" level="7" unlock="5" />
         <Skill type="连锁攻击" level="7" unlock="10" />
     </Card>
-    <Card id="1508" name="圣堂执政官" wikiId="51536" race="王国" speed="4" star="5" cost="16" incrCost="2" at="365" hp="1420" incrAT="33" incrHP="40">
+    <Card id="1508" name="圣堂执政官" wikiId="51536" race="王国" speed="4" star="5" cost="16" incrCost="2" at="355" hp="1420" incrAT="33" incrHP="40">
         <Skill type="陷阱" level="2" unlock="0" />
         <Skill type="脱困" level="0" unlock="5" />
         <Skill type="战意" level="7" unlock="10" />
