@@ -244,6 +244,11 @@ div.dashboard ul {
 	color: red;
 }
 
+#news li.emphasize {
+	font-size: 100%;
+	font-weight: bold;
+	color: blue;
+}
 #recommend-boss-battle-deck div.result-frame div.result-inner-frame {
 	min-height: 200px;
 }

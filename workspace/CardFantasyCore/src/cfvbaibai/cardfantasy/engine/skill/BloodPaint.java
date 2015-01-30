@@ -21,6 +21,9 @@ public final class BloodPaint {
         for (CardInfo victim : victims) {
             OnAttackBlockingResult onAttackBlockingResult = resolver.resolveAttackBlockingSkills(attacker, victim, cardSkill, damage);
             if (!onAttackBlockingResult.isAttackable()) {
+                if (attacker.isDead()) {
+                    break;
+                }
                 continue;
             }
             damage = onAttackBlockingResult.getDamage(); 

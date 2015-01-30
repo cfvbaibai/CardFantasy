@@ -477,4 +477,42 @@ public class DefenseTest extends SkillValidationTest {
         Assert.assertEquals(0, 1900 - c圣泉元神.getHP());
         Assert.assertEquals(400 /* 圣泉横扫被盾刺 */ + 200 /* 秘银自己攻击被盾刺 */, 1400 - c秘银巨石像.getHP());
     }
+    
+    /**
+     * 如果鲜血盛宴被反弹怎无法加血，被弹死的话就死了
+     */
+    @Test
+    public void test鲜血盛宴_法力反射() {
+        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "占位符+鲜血盛宴1", "秘银巨石像");
+        CardInfo c占位符 = context.addToField(0, 0).setBasicHP(500);
+        CardInfo c秘银巨石像 = context.addToField(1, 1);
+        context.startGame();
+        
+        random.addNextPicks(0);
+        context.proceedOneRound();
+        Assert.assertEquals(1400, c秘银巨石像.getHP());
+        Assert.assertEquals(500 - 180 /* 法力反射6 */, c占位符.getHP());
+    }
+    
+    /**
+     * 鲜血盛宴可能发动到一半被弹死，这时候剩余的对象不发动
+     */
+    @Test
+    public void test鲜血盛宴_法力反射_多对象() {
+        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "占位符+鲜血盛宴1", "秘银巨石像*2", "占位符");
+        CardInfo c占位符1 = context.addToField(0, 0).setBasicHP(200);
+        CardInfo c秘银巨石像1 = context.addToField(1, 1);
+        CardInfo c秘银巨石像2 = context.addToField(2, 1);
+        CardInfo c占位符2 = context.addToField(3, 1);
+        context.startGame();
+        
+        random.addNextPicks(0, 1, 2);
+        context.proceedOneRound();
+        Assert.assertEquals(1400, c秘银巨石像1.getHP());
+        Assert.assertEquals(1400, c秘银巨石像2.getHP());
+        // 占位符1已经被第二个秘银巨石像弹死，无法继续发动鲜血盛宴到占位符2
+        Assert.assertEquals(5000, c占位符2.getHP());
+        Assert.assertEquals(0, context.getPlayer(0).getField().size());
+        Assert.assertTrue(c占位符1.isDead());
+    }
 }

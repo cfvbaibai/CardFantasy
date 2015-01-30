@@ -8,8 +8,7 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">
                 <h3>公告</h3>
                 <ul>
-                    <li>最近准备做个英语版模拟器，恳请美服的玩家戳<a href="http://tieba.baidu.com/p/3534958968" target="_blank">这里</a>参加讨论</li>
-                    <li>感谢<x>yezhihuib</x>, <x>冰封</x>大大无私提供的丰富资料，还有各位朋友的热心帮助，<a href="#lilith-battle">莉莉丝战</a>已完成，如若发现BUG，请戳<a href="http://tieba.baidu.com/p/3514714595" target="_blank">这里</a>报告</li>
+                    <li class="emphasize">【<a target="_blank" href="http://tieba.baidu.com/p/3545838119">我来投票</a>】下一个新功能是什么？你来决定。</li>
                     <li><a href="#" data-type="bug">魔卡幻想模拟器贴吧</a>已成立，欢迎大家来提BUG、提需求、提供技能结算细节。</li>
                 </ul>
             </div>
@@ -31,7 +30,7 @@
                     <li>2015-01-23: <ul>
                         <li>修复【圣堂执政官】的数据BUG，感谢<x>血色☆星辰</x>报告BUG</li>
                         <li>添加【邪魔屠夫】卡图，感谢<x>susss222</x>提供数据</li>
-                        <li></li>
+                        <li>修正【森林沐浴】技能结算方法，感谢<x>小歆时代</x>提供的大量实测数据</li>
                     </ul></li>
                     <li>2015-01-21: <ul>
                         <li>修复数据BUG - 【圆月魔女】3技能由【净化】改成【神性祈求】，感谢<x>susss222</x>报告BUG</li>
