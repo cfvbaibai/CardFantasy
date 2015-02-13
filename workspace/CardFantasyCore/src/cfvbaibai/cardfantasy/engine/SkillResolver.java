@@ -972,6 +972,10 @@ public class SkillResolver {
         Player player = myField.getOwner();
         for (SkillUseInfo skillUseInfo : player.getCardBuffs()) {
             for (CardInfo card : summonedCards) {
+                // 召唤物不享受加成
+                if (card.getStatus().containsStatus(CardStatusType.召唤)) {
+                    continue;
+                }
                 if (skillUseInfo.getType() == SkillType.军团王国之力) {
                     LegionBuff.apply(this, card, skillUseInfo, Race.KINGDOM);
                 } else if (skillUseInfo.getType() == SkillType.军团森林之力) {
@@ -1482,6 +1486,7 @@ public class SkillResolver {
         onDamagedResult.originalDamage = originalDamage;
         onDamagedResult.cardDead = true;
         onDamagedResult.unbending = false;
+        victim.removeStatus(CardStatusType.不屈);
         this.resolveDeathSkills(attacker, victim, cardSkill, onDamagedResult);
     }
 }

@@ -707,21 +707,19 @@ public class SpecialStatusTest extends SkillValidationTest {
         SkillTestContext context = SkillValidationTestSuite.prepare(
             50, 50, "秘银巨石像*2", "铸造大师+死契复活", "秘银巨石像+献祭1");
         CardInfo c秘银巨石像1 = context.addToField(0, 0);
-        CardInfo c王国小兵 = context.addToField(1, 1).setBasicHP(2);
-        context.addToField(2, 1).setBasicHP(2);
+        context.addToField(1, 0).setBasicHP(2);
+        CardInfo c铸造大师 = context.addToField(2, 1).setBasicHP(2);
         context.addToGrave(3, 1);
         context.startGame();
 
         random.addNextPicks(0); // 复活秘银巨石像
-        random.addNextPicks(0); // 复活
+        random.addNextPicks(0); // 献祭铸造大师
         context.proceedOneRound();
-        Assert.assertTrue(c王国小兵.getStatus().containsStatus(CardStatusType.不屈));
+        Assert.assertTrue(c铸造大师.isDead());
 
-        random.addNextPicks(0); // 献祭王国小兵
         context.proceedOneRound();
         Assert.assertEquals(1, context.getPlayer(1).getField().size());
-        Assert.assertTrue(c王国小兵.isDead());
-        Assert.assertEquals(810 / 2, 1400 - c秘银巨石像1.getHP());
+        Assert.assertEquals(810 * 130 / 100, 1400 - c秘银巨石像1.getHP());
     }
 
     @Test

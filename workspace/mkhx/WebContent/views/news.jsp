@@ -27,6 +27,12 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2015-02-13: <ul>
+                        <li>修复旧魔神吃各种技能的BUG，感谢<x>孤光斩月</x>报告BUG</li>
+                        <li>修复召唤物会享受基础加成的BUG，感谢<x>悪丿娘殿下</x>报告BUG</li>
+                    </ul></li>
+                    <li>2015-01-31: 旧魔神改成第一版的魔神，以便和美服马服对应</li>
+                    <li>2015-01-30: 修复一个【鲜血盛宴】极端情况下的BUG</li>
                     <li>2015-01-23: <ul>
                         <li>修复【圣堂执政官】的数据BUG，感谢<x>血色☆星辰</x>报告BUG</li>
                         <li>添加【邪魔屠夫】卡图，感谢<x>susss222</x>提供数据</li>

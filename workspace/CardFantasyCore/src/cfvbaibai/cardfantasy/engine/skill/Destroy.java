@@ -5,6 +5,7 @@ import java.util.List;
 import cfvbaibai.cardfantasy.GameUI;
 import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.engine.CardInfo;
+import cfvbaibai.cardfantasy.engine.CardStatusType;
 import cfvbaibai.cardfantasy.engine.HeroDieSignal;
 import cfvbaibai.cardfantasy.engine.OnAttackBlockingResult;
 import cfvbaibai.cardfantasy.engine.Player;
@@ -23,6 +24,7 @@ public final class Destroy {
                 return;
             }
             ui.killCard(attacker, victim, cardSkill);
+            victim.removeStatus(CardStatusType.不屈);
             resolver.killCard(attacker, victim, cardSkill);
         }
     }
