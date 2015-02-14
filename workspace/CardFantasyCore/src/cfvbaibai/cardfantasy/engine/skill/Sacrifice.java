@@ -19,18 +19,17 @@ public final class Sacrifice {
         if (card.hasUsed(skillUseInfo)) {
             return;
         }
+        // 魔卡新改动，被复活的回合无法发动献祭
+        if (reviver != null) {
+            return;
+        }
         Skill skill = skillUseInfo.getSkill();
         GameUI ui = resolver.getStage().getUI();
         Randomizer random = resolver.getStage().getRandomizer();
 
         Field field = card.getOwner().getField();
         List<CardInfo> candidates = random.pickRandom(field.toList(), 1, true, card);
-        if (reviver != null) {
-            // 兔子由于已经死亡无法被复活上来的九头献祭，但实际是先复活再死亡
-            // 暂时先不动死亡逻辑，特殊处理一下
-            candidates.add(reviver);
-        }
-        
+
         ui.useSkill(card, candidates, skill, true);
         if (candidates.isEmpty()) {
             return;

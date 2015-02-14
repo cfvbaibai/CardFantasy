@@ -714,6 +714,8 @@ public class SkillResolver {
             if (prior) {
                 if (skillUseInfo.getType() == SkillType.送还) {
                     Return.apply(this, skillUseInfo.getSkill(), attacker, defender);
+                } else if (skillUseInfo.getType() == SkillType.献祭) {
+                    Sacrifice.apply(this, skillUseInfo, attacker, null);
                 }
             } else {
                 if (skillUseInfo.getType() == SkillType.圣光) {

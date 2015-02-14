@@ -62,6 +62,31 @@ public class SummonSkillTest extends SkillValidationTest {
         // 被免疫
         Assert.assertEquals(2, context.getPlayer(0).getField().size());
     }
+
+    /**
+     * 被复活的回合无法献祭
+     */
+    @Test
+    public void test献祭_复活() {
+        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "占位符+复活", "占位符+献祭1", "占位符");
+        CardInfo c占位符1 = context.addToField(0, 0);
+        context.addToGrave(1, 0);
+        context.addToField(2, 1);
+        context.startGame();
+
+        random.addNextPicks(0); // 复活
+        context.proceedOneRound();
+        // 本回合刚被复活，无法献祭
+        Assert.assertEquals(2, context.getPlayer(0).getField().size());
+        
+        context.proceedOneRound();
+
+        random.addNextPicks(0); // 献祭
+        context.proceedOneRound();
+        // 占位符1被献祭
+        Assert.assertEquals(1, context.getPlayer(0).getField().size());
+        Assert.assertTrue(c占位符1.isDead());
+    }
     
     /**
      * 被献祭的卡能发动死契技能，也能转生
