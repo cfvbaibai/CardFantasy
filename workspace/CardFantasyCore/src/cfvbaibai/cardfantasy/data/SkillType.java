@@ -148,6 +148,8 @@ public enum SkillType {
     时光倒流("80196", 0, 0, SkillTag.抗免疫),
     死亡印记("56754", 0, 50),
 
+    燕返("", 200, 0),
+    
     召唤王国战士("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
     召唤邪龙护卫("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
     召唤噩梦护卫("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),

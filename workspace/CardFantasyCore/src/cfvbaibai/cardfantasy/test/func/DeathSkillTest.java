@@ -185,4 +185,20 @@ public class DeathSkillTest extends SkillValidationTest {
         Assert.assertEquals(1, context.getPlayer(1).getField().size());
         Assert.assertEquals(50, 5000 - c占位符.getHP());
     }
+    
+    @Test
+    public void test燕返_普通() {
+        SkillTestContext context = SkillValidationTestSuite.prepare(
+            50, 50, "占位符", "占位符+冰弹10", "月镰杀手");
+        CardInfo c占位符1 = context.addToField(0, 0);
+        context.addToField(1, 0);
+        context.addToField(2, 1).setBasicHP(2);
+        context.startGame();
+
+        random.addNextNumbers(0); // 月镰杀手闪避
+        random.addNextPicks(0).addNextNumbers(1000); // 冰弹10
+        context.proceedOneRound();
+        
+        Assert.assertEquals(565 * 2, 5000 - c占位符1.getHP());
+    }
 }

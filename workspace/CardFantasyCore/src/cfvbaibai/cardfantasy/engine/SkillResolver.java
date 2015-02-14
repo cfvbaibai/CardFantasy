@@ -92,6 +92,7 @@ import cfvbaibai.cardfantasy.engine.skill.Summon;
 import cfvbaibai.cardfantasy.engine.skill.TimeBack;
 import cfvbaibai.cardfantasy.engine.skill.Transport;
 import cfvbaibai.cardfantasy.engine.skill.Trap;
+import cfvbaibai.cardfantasy.engine.skill.TsubameGaeshi;
 import cfvbaibai.cardfantasy.engine.skill.Tsukomi;
 import cfvbaibai.cardfantasy.engine.skill.Unbending;
 import cfvbaibai.cardfantasy.engine.skill.WeakPointAttack;
@@ -618,6 +619,8 @@ public class SkillResolver {
         for (SkillUseInfo deadCardSkillUseInfo : deadCard.getAllUsableSkills()) {
             if (deadCardSkillUseInfo.getType() == SkillType.自爆) {
                 Explode.apply(this, deadCardSkillUseInfo.getSkill(), killerCard, deadCard);
+            } else if (deadCardSkillUseInfo.getType() == SkillType.燕返) {
+                TsubameGaeshi.apply(deadCardSkillUseInfo, this, killerCard.getOwner(), deadCard);
             }
         }
         {

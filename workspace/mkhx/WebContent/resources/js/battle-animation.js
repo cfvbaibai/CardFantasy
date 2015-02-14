@@ -1406,6 +1406,9 @@ var Animater = function() {
         } else if (skill == '吐槽') {
             this.flyImage({ fileName: 'tsukomi.png', width: 48, height: 48, text: skill },
                     attacker, defenders, settings.skillDuration);
+        } else if (skill == '燕返') {
+            this.flyImage({ fileName: 'tsubame.png', width: 48, height: 48, text: skill },
+                    attacker, defenders, settings.skillDuration);
         } else if (skill == '送还') {
             this.flyImage({ fileName: 'cross.png', width: 29, height: 60, text: skill },
                     attacker, defenders, settings.skillDuration);

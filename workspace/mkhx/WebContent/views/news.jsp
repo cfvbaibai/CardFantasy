@@ -8,7 +8,7 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">
                 <h3>公告</h3>
                 <ul>
-                    <li class="emphasize">【<a target="_blank" href="http://tieba.baidu.com/p/3545838119">我来投票</a>】下一个新功能是什么？你来决定。</li>
+                    <li>一大波新卡来临，但是技能描述越发坑爹地模糊，新卡能不能快速做出来就靠大家帮忙补充技能细节啦</li>
                     <li><a href="#" data-type="bug">魔卡幻想模拟器贴吧</a>已成立，欢迎大家来提BUG、提需求、提供技能结算细节。</li>
                 </ul>
             </div>
@@ -27,9 +27,15 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2015-02-14: <ul>
+                        <li>添加新卡：【爱神】、【圣泉之灵】、【月镰杀手】</li>
+                        <li>修复召唤物会享受基础加成的BUG，感谢<x>悪丿娘殿下</x>报告BUG</li>
+                        <li>添加新卡：【战场扫荡者】、【魔幻人偶师】</li>
+                    </ul></li>
                     <li>2015-02-13: <ul>
                         <li>修复旧魔神吃各种技能的BUG，感谢<x>孤光斩月</x>报告BUG</li>
                         <li>修复召唤物会享受基础加成的BUG，感谢<x>悪丿娘殿下</x>报告BUG</li>
+                        <li>添加新卡：【战场扫荡者】、【魔幻人偶师】</li>
                     </ul></li>
                     <li>2015-01-31: 旧魔神改成第一版的魔神，以便和美服马服对应</li>
                     <li>2015-01-30: 修复一个【鲜血盛宴】极端情况下的BUG</li>
