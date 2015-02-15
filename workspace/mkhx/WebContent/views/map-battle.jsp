@@ -21,7 +21,7 @@
                                         <option value="16-9">16-9 祈祷之塔</option>
                                         <option value="16-10">16-10 炎狱山巅</option>
                                         <option value="16-11" selected="selected">16-11 火焰矩阵</option>
-                                        <!-- <option value="16-H">16-H (隐藏)四魔阵</option> -->
+                                        <option value="16-H">16-H (隐藏)四魔阵</option>
                                     </optgroup>
                                     <optgroup label="15-后翡翠森林">
                                         <option value="15-1">15-1 巨门关口</option>
