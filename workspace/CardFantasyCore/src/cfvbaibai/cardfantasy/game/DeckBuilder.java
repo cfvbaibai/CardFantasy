@@ -117,11 +117,13 @@ public final class DeckBuilder {
     private static boolean parseAndAddCard(DeckStartupInfo deck, String desc) {
         List<Card> cards = parseCardDesc(desc);
 
-        if (cards == null || cards.isEmpty())
+        if (cards == null) {
             return false;
+        }
 
-        for (Card c : cards)
+        for (Card c : cards) {
             deck.addCard(c);
+        }
 
         return true;
     }
