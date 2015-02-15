@@ -8,6 +8,7 @@ import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
 import cfvbaibai.cardfantasy.CardFantasyUserRuntimeException;
 import cfvbaibai.cardfantasy.GameOverSignal;
 import cfvbaibai.cardfantasy.GameUI;
+import cfvbaibai.cardfantasy.Global;
 import cfvbaibai.cardfantasy.data.Card;
 import cfvbaibai.cardfantasy.data.PlayerInfo;
 import cfvbaibai.cardfantasy.data.Rune;
@@ -76,7 +77,7 @@ public class BattleEngine {
     }
     
     private void validateDeck(PlayerInfo playerInfo) {
-        if (System.getenv("MKHX_UNLIMITED") != null) {
+        if (Global.isValidationDisabled()) {
             return;
         }
         if (playerInfo.isNormalPlayer() && playerInfo.getLevel() > 150) {
