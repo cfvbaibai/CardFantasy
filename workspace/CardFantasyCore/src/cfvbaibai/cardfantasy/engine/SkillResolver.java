@@ -295,6 +295,8 @@ public class SkillResolver {
                 Summon.apply(this, skillUseInfo, attacker, "女神侍者", "女神侍者");
             } else if (skillUseInfo.getType() == SkillType.召唤树人守护者) {
                 Summon.apply(this, skillUseInfo, attacker, "霜雪树人", "树人祭司");
+            } else if (skillUseInfo.getType() == SkillType.召唤炎魔) {
+                Summon.apply(this, skillUseInfo, attacker, "炎魔");
             }
         }
         RuneInfo rune = attacker.getOwner().getActiveRuneOf(RuneData.飞岩);
@@ -616,6 +618,8 @@ public class SkillResolver {
                 Transport.apply(this, deadCardSkillUseInfo.getSkill(), deadCard, killerCard.getOwner());
             } else if (deadCardSkillUseInfo.getType() == SkillType.回魂) {
                 Resurrection.apply(this, deadCardSkillUseInfo, deadCard);
+            } else if (deadCardSkillUseInfo.getType() == SkillType.召唤炎魔) {
+                Summon.apply(this, deadCardSkillUseInfo, deadCard, "炎魔");
             }
         }
         for (SkillUseInfo deadCardSkillUseInfo : deadCard.getAllUsableSkills()) {

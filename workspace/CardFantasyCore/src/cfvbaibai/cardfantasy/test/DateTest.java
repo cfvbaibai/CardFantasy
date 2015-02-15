@@ -22,4 +22,9 @@ public class DateTest {
         calendar.setTimeZone(TimeZone.getTimeZone("UTC"));
         System.out.println("UTC now = " + formatter.format(calendar.getTime()));
     }
+    
+    @Test
+    public void testSystemEnv() {
+        System.out.println(System.getenv("MKHX_UNLIMITED"));
+    }
 }

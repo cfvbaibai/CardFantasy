@@ -76,6 +76,9 @@ public class BattleEngine {
     }
     
     private void validateDeck(PlayerInfo playerInfo) {
+        if (System.getenv("MKHX_UNLIMITED") != null) {
+            return;
+        }
         if (playerInfo.isNormalPlayer() && playerInfo.getLevel() > 150) {
             throw new CardFantasyUserRuntimeException(String.format(
                     "%s 的等级过高：%d！玩家等级不得超过150级。",

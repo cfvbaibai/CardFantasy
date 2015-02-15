@@ -1396,13 +1396,21 @@ var Animater = function() {
                 skillText = '召唤\r\n' + skill.substring(2);
             }
             var shape = this.getEntityShape(attacker);
-            this.displayCardMsg({
-                 name: skill,
-                 cardShape: shape,
-                 size: shape.getSize(),
-                 text: skillText,
-                 duration: settings.skillDuration,
-             });
+            if (shape) {
+                this.displayCardMsg({
+                    name: skill,
+                    cardShape: shape,
+                    size: shape.getSize(),
+                    text: skillText,
+                    duration: settings.skillDuration,
+                });
+            } else {
+                this.showSplash({
+                    text: attacker.uniqueName + skillText,
+                    duration: settings.skillSplashDuration,
+                    pause: settings.skillSplashPause,
+                });
+            }
         } else if (skill == '吐槽') {
             this.flyImage({ fileName: 'tsukomi.png', width: 48, height: 48, text: skill },
                     attacker, defenders, settings.skillDuration);
