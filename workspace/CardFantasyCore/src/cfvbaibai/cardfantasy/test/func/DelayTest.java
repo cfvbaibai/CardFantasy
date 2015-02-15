@@ -312,7 +312,7 @@ public class DelayTest extends SkillValidationTest {
 
     @Test
     public void test加速2_0() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "逐月饿狼", "秘银巨石像", "金属巨龙");
+        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "逐月恶狼", "秘银巨石像", "金属巨龙");
         context.addToField(0, 0);
         context.addToHand(1, 0).setSummonDelay(0);
         context.addToHand(2, 1).setSummonDelay(100); // 为了防止对手没卡直接胜利
@@ -325,7 +325,7 @@ public class DelayTest extends SkillValidationTest {
 
     @Test
     public void test加速2_1() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "逐月饿狼", "秘银巨石像", "金属巨龙");
+        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "逐月恶狼", "秘银巨石像", "金属巨龙");
         context.addToField(0, 0);
         CardInfo c秘银巨石像 = context.addToHand(1, 0).setSummonDelay(1);
         context.addToHand(2, 1).setSummonDelay(100); // 为了防止对手没卡直接胜利
@@ -346,7 +346,7 @@ public class DelayTest extends SkillValidationTest {
 
     @Test
     public void test加速2_2() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "逐月饿狼", "秘银巨石像", "金属巨龙");
+        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "逐月恶狼", "秘银巨石像", "金属巨龙");
         context.addToField(0, 0);
         CardInfo c秘银巨石像 = context.addToHand(1, 0).setSummonDelay(2);
         context.addToHand(2, 1).setSummonDelay(100); // 为了防止对手没卡直接胜利
@@ -367,7 +367,7 @@ public class DelayTest extends SkillValidationTest {
 
     @Test
     public void test加速2_3() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "逐月饿狼", "秘银巨石像", "金属巨龙");
+        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "逐月恶狼", "秘银巨石像", "金属巨龙");
         context.addToField(0, 0);
         CardInfo c秘银巨石像 = context.addToHand(1, 0).setSummonDelay(3);
         context.addToHand(2, 1).setSummonDelay(100); // 为了防止对手没卡直接胜利
@@ -388,7 +388,7 @@ public class DelayTest extends SkillValidationTest {
     
     @Test
     public void test加速2_4() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "逐月饿狼", "秘银巨石像", "金属巨龙");
+        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "逐月恶狼", "秘银巨石像", "金属巨龙");
         context.addToField(0, 0);
         CardInfo c秘银巨石像 = context.addToHand(1, 0).setSummonDelay(4);
         context.addToHand(2, 1).setSummonDelay(100); // 为了防止对手没卡直接胜利
@@ -409,7 +409,7 @@ public class DelayTest extends SkillValidationTest {
     
     @Test
     public void test加速2_5() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "逐月饿狼", "秘银巨石像", "金属巨龙");
+        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "逐月恶狼", "秘银巨石像", "金属巨龙");
         context.addToField(0, 0);
         CardInfo c秘银巨石像 = context.addToHand(1, 0).setSummonDelay(5);
         context.addToHand(2, 1).setSummonDelay(100); // 为了防止对手没卡直接胜利
@@ -438,7 +438,7 @@ public class DelayTest extends SkillValidationTest {
     
     @Test
     public void test加速2_6() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "逐月饿狼", "秘银巨石像", "金属巨龙");
+        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "逐月恶狼", "秘银巨石像", "金属巨龙");
         context.addToField(0, 0);
         CardInfo c秘银巨石像 = context.addToHand(1, 0).setSummonDelay(6);
         context.addToHand(2, 1).setSummonDelay(100); // 为了防止对手没卡直接胜利

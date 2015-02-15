@@ -27,6 +27,7 @@ import cfvbaibai.cardfantasy.engine.skill.BloodThirsty;
 import cfvbaibai.cardfantasy.engine.skill.BraveFight;
 import cfvbaibai.cardfantasy.engine.skill.Burning;
 import cfvbaibai.cardfantasy.engine.skill.BurningFlame;
+import cfvbaibai.cardfantasy.engine.skill.CaeserAttack;
 import cfvbaibai.cardfantasy.engine.skill.ChainAttack;
 import cfvbaibai.cardfantasy.engine.skill.Confusion;
 import cfvbaibai.cardfantasy.engine.skill.CounterAttack;
@@ -354,7 +355,8 @@ public class SkillResolver {
 
     public OnAttackBlockingResult resolveHealBlockingSkills(EntityInfo healer, CardInfo healee, Skill cardSkill) {
         OnAttackBlockingResult result = new OnAttackBlockingResult(true, cardSkill.getImpact());
-        if (healee.getStatus().containsStatus(CardStatusType.裂伤)) {
+        if (healee.getStatus().containsStatus(CardStatusType.裂伤) ||
+            healee.getStatus().containsStatus(CardStatusType.不屈)) {
             stage.getUI().healBlocked(healer, healee, cardSkill, null);
             result.setAttackable(false);
         }
@@ -734,6 +736,8 @@ public class SkillResolver {
                     Wrath.apply(this, skillUseInfo, attacker, defender);
                 } else if (skillUseInfo.getType() == SkillType.死亡印记) {
                     DeathMark.apply(this, skillUseInfo, attacker, defender);
+                } else if (skillUseInfo.getType() == SkillType.凯撒之击) {
+                    CaeserAttack.apply(this, skillUseInfo, attacker, defender);
                 }
             }
         }
@@ -785,6 +789,8 @@ public class SkillResolver {
                 Arouse.remove(this, effect.getCause(), card);
             } else if (type == SkillType.英雄杀手) {
                 HeroKiller.remove(this, effect.getCause(), card);
+            } else if (type == SkillType.凯撒之击) {
+                CaeserAttack.remove(this, effect.getCause(), card);
             }
         }
     }

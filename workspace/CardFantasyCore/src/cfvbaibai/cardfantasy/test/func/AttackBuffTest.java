@@ -230,7 +230,7 @@ public class AttackBuffTest extends SkillValidationTest {
         Assert.assertEquals(590, 2040 - c降临天使1.getHP());
         Assert.assertEquals(590, 2040 - c降临天使2.getHP());
     }
-    
+
     /**
      * 寒霜冲击的冻结不触发穷追猛打
      */
@@ -257,5 +257,21 @@ public class AttackBuffTest extends SkillValidationTest {
         random.addNextPicks(0).addNextNumbers(0); // 堕落精灵法师霜冻新星冻结成功
         context.proceedOneRound();
         Assert.assertEquals(40 /* 霜冻新型2 */ + 445 * 115 / 100 /* 穷追猛打 */, 5000 - c占位符.getHP());
+    }
+
+    /**
+     * 凯撒之击享受种族之力加成
+     */
+    @Test
+    public void test种族之力_凯撒之击() {
+        SkillTestContext context = SkillValidationTestSuite.prepare(
+            50, 50, "秘银巨石像+凯撒之击1", "秘银巨石像+王国之力10", "占位符");
+        context.addToField(0, 0);
+        context.addToHand(1, 0).setSummonDelay(0);
+        CardInfo c占位符2 = context.addToField(2, 1);
+        context.startGame();
+
+        context.proceedOneRound();
+        Assert.assertEquals((810 + 250 /* 王国之力10 */) + (810 * 15 / 100 /* 凯撒之击1 */), 5000 - c占位符2.getHP());
     }
 }

@@ -36,6 +36,7 @@ public enum SkillType {
     暗杀("31138", 15, 15, SkillTag.额外攻击加成),
     污染("31139", 15, 15, SkillTag.额外攻击加成),
     暴击("30948", 20, SkillTag.额外攻击加成),
+    凯撒之击("", 10, 5, SkillTag.额外攻击加成),
     穷追猛打("30958", 15, SkillTag.额外攻击加成),
     战意("31125", 15, SkillTag.额外攻击加成),
     连锁攻击("30934", 0, 25, SkillTag.额外攻击加成, SkillTag.抗免疫, SkillTag.物理攻击),
@@ -149,7 +150,7 @@ public enum SkillType {
     死亡印记("56754", 0, 50),
 
     燕返("", 200, 0),
-    
+
     召唤王国战士("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
     召唤邪龙护卫("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
     召唤噩梦护卫("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),

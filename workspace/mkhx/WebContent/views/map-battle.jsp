@@ -9,8 +9,22 @@
                             <td>地图</td>
                             <td>
                                 <select data-theme="c" name="map-id" id="map-id" class="map-select" data-mini="true" data-native-menu="false">
+                                    <optgroup label="16图">
+                                        <option value="16-1">16-1 烈焰谷</option>
+                                        <option value="16-2">16-2 火魔阵</option>
+                                        <option value="16-3">16-3 冰魔阵</option>
+                                        <option value="16-4">16-4 风魔阵</option>
+                                        <option value="16-5">16-5 雷魔阵</option>
+                                        <option value="16-6">16-6 暗影长廊</option>
+                                        <option value="16-7">16-7 烈焰之核</option>
+                                        <option value="16-8">16-8 智慧之厅</option>
+                                        <option value="16-9">16-9 祈祷之塔</option>
+                                        <option value="16-10">16-10 炎狱山巅</option>
+                                        <option value="16-11" selected="selected">16-11 火焰矩阵</option>
+                                        <!-- <option value="16-H">16-H (隐藏)四魔阵</option> -->
+                                    </optgroup>
                                     <optgroup label="15-后翡翠森林">
-                                        <option value="15-1" selected="selected">15-1 巨门关口</option>
+                                        <option value="15-1">15-1 巨门关口</option>
                                         <option value="15-2">15-2 幽影森林</option>
                                         <option value="15-3">15-3 鬼影山谷</option>
                                         <option value="15-4">15-4 军团先锋阵地</option>

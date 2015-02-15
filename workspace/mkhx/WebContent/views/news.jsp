@@ -27,11 +27,13 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2015-02-15: <ul>
+                        <li>添加新卡：【炎魔】、【战意斗神】</li>
+                        <li>添加16-1到16-11的地图战模拟</li>
+                    </ul></li>
                     <li>2015-02-14: <ul>
                         <li>添加新卡：【爱神】、【圣泉之灵】、【月镰杀手】</li>
                         <li>修复【献祭】和【复活】作用是的一个BUG，感谢<x>My_陌艾</x>报告BUG</li>
-                        <li>修复召唤物会享受基础加成的BUG，感谢<x>悪丿娘殿下</x>报告BUG</li>
-                        <li>添加新卡：【战场扫荡者】、【魔幻人偶师】</li>
                     </ul></li>
                     <li>2015-02-13: <ul>
                         <li>修复旧魔神吃各种技能的BUG，感谢<x>孤光斩月</x>报告BUG</li>

@@ -23,6 +23,7 @@ public final class Sacrifice {
         if (reviver != null) {
             return;
         }
+        card.setUsed(skillUseInfo);
         Skill skill = skillUseInfo.getSkill();
         GameUI ui = resolver.getStage().getUI();
         Randomizer random = resolver.getStage().getRandomizer();
@@ -46,7 +47,6 @@ public final class Sacrifice {
         ui.adjustAT(card, card, adjAT, skill);
         card.addEffect(new SkillEffect(SkillEffectType.MAXHP_CHANGE, skillUseInfo, adjHP, true));
         card.addEffect(new SkillEffect(SkillEffectType.ATTACK_CHANGE, skillUseInfo, adjAT, true));
-        card.setUsed(skillUseInfo);
 
         ui.killCard(card, oblation, skill);
         resolver.killCard(card, oblation, skill);
