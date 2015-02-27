@@ -821,7 +821,7 @@
         <Skill type="脱困" level="0" unlock="5" />
         <Skill type="连锁攻击" level="7" unlock="10" />
     </Card>
-    <Card id="2506" name="复活节兔女郎" wikiId="31120" race="森林" speed="4" star="5" cost="15" incrCost="3" at="345" hp="1220" incrAT="32" incrHP="30">
+    <Card id="2506" name="复活节兔女郎" wikiId="31120" race="森林" speed="4" star="5" cost="15" incrCost="3" at="345" hp="1220" incrAT="31" incrHP="30">
         <Skill type="霜冻新星" level="6" unlock="0" />
         <Skill type="复活" level="0" unlock="5" death="true" />
         <Skill type="转生" level="5" unlock="10" />

@@ -27,7 +27,10 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">
                 <h3>更新日志</h3>
                 <ul class="news-content">
-                    <li>2015-02-27：添加新卡【战场舞姬】</li>
+                    <li>2015-02-27：<ul>
+                        <li>添加新卡【战场舞姬】</li>
+                        <li>修复一个【复活节兔女郎】的BUG, 感谢<x>傲娇王孙</x>报告BUG</li>
+                    </ul></li>
                     <li>2015-02-15: <ul>
                         <li>添加新卡：【炎魔】、【战意斗神】、【大毒汁怪】</li>
                         <li>添加16图的地图战模拟</li>
