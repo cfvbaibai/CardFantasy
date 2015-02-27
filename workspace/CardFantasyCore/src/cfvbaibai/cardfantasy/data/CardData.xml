@@ -169,6 +169,11 @@
         <Skill type="趁胜追击" level="5" unlock="5" />
         <Skill type="穷追猛打" level="5" unlock="10" />
     </Card>
+    <Card id="1321" name="战场舞姬" wikiId="" race="王国" speed="3" star="3" cost="10" incrCost="2" at="215" hp="680" incrAT="19" incrHP="21">
+        <Skill type="连环闪电" level="5" unlock="0" />
+        <Skill type="迷魂" level="6" unlock="5" />
+        <Skill type="王国之力" level="5" unlock="10" />
+    </Card>
 
     <Card id="1401" name="圣堂武士" wikiId="30780" race="王国" speed="4" star="4" cost="13" incrCost="1" at="280" hp="1040" incrAT="23" incrHP="37">
         <Skill type="狂热" level="7" unlock="0" />
