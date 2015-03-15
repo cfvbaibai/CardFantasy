@@ -716,9 +716,9 @@ public class AutoBattleController {
             
             int totalCost = 0;
             for (Card card : player2.getCards()) {
-                totalCost += card.getCost();
+                totalCost += card.getBaseCost();
             }
-            int coolDown = 30 + totalCost * 2;
+            int coolDown = 60 + totalCost * 2;
 
             if (gameCount > 0) {
                 for (int i = 0; i < gameCount - 1; ++i) {

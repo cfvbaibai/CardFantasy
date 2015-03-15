@@ -103,6 +103,10 @@ public class Card implements Cloneable, Comparable <Card> {
         }
         return cost;
     }
+    
+    public int getBaseCost() {
+        return this.sourceInfo.getBaseCost();
+    }
 
     public int getStar() {
         return this.sourceInfo.getStar();
