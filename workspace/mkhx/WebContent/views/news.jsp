@@ -8,7 +8,7 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">
                 <h3>公告</h3>
                 <ul>
-                    <li>一大波新卡来临，但是技能描述越发坑爹地模糊，新卡能不能快速做出来就靠大家帮忙补充技能细节啦</li>
+                    <li>技术壕站长最近沉迷于WOW，所以更新速度越来越慢了……</li>
                     <li><a href="#" data-type="bug">魔卡幻想模拟器贴吧</a>已成立，欢迎大家来提BUG、提需求、提供技能结算细节。</li>
                 </ul>
             </div>
@@ -28,7 +28,8 @@
                 <h3>更新日志</h3>
                 <ul class="news-content">
                     <li>2015-03-15: <ul>
-                        <li>修复COST计算上的一些问题，感谢<x>sincever123</x>, <x>习题盖浇饭</x>, <x>za7183</x>, <x>NobodyHere_</x></li>
+                        <li>修复COST计算上的一些问题，感谢<x>十二下弦月</x>, <x>sincever123</x>, <x>习题盖浇饭</x>, <x>za7183</x>, <x>NobodyHere_</x></li>
+                        <li>修复【旧噩梦之主】的攻击力问题，感谢<x>dzx276941963</x></li>
                     </ul></li>
                     <li>2015-02-27：<ul>
                         <li>添加新卡【战场舞姬】</li>

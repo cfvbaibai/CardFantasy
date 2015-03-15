@@ -1905,7 +1905,7 @@
         <Skill type="免疫" level="0" unlock="10" />
         <Skill type="无效" level="0" unlock="10" />
     </Card>
-    <Card id="5523" name="旧噩梦之主" wikiId="" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="900" hp="5500000" incrAT="0" incrHP="0">
+    <Card id="5523" name="旧噩梦之主" wikiId="" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="1000" hp="5500000" incrAT="0" incrHP="0">
         <Skill type="格挡" level="10" unlock="0" />
         <Skill type="魔神之甲" level="0" unlock="5" />
         <Skill type="送还" level="0" unlock="10" />
