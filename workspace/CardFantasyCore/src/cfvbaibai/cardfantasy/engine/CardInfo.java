@@ -226,6 +226,10 @@ public class CardInfo extends EntityInfo {
     public Race getOriginalRace() {
         return this.getCard().getRace();
     }
+    
+    public boolean isSummonedMinion() {
+        return this.getStatus().containsStatus(CardStatusType.召唤);
+    }
 
     public List<SkillUseInfo> getUsableSummonSkills() {
         List<SkillUseInfo> skillUseInfos = new ArrayList<SkillUseInfo>();

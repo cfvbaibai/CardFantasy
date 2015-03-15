@@ -186,7 +186,7 @@ class CardOfStarVictoryCondition extends VictoryCondition {
     }
     public boolean meetCriteria(GameResult result) {
         int count = 0;
-        for (CardInfo card : result.getWinner().getAllCards()) {
+        for (CardInfo card : result.getWinner().getAllPrimaryCards()) {
             if (card.getStar() == this.star) {
                 ++count;
             }
@@ -208,7 +208,7 @@ class CardOfRaceVictoryCondition extends VictoryCondition {
     }
     public boolean meetCriteria(GameResult result) {
         int count = 0;
-        for (CardInfo card : result.getWinner().getAllCards()) {
+        for (CardInfo card : result.getWinner().getAllPrimaryCards()) {
             if (card.getRace() == this.race) {
                 ++count;
             }

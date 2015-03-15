@@ -51,6 +51,21 @@ public class Player extends EntityInfo {
         return result;
     }
     
+    /**
+     * This method does not return summoned minion cards.
+     * @return
+     */
+    public List<CardInfo> getAllPrimaryCards() {
+        List<CardInfo> allCards = this.getAllCards();
+        List<CardInfo> result = new ArrayList<CardInfo>();
+        for (CardInfo card : allCards) {
+            if (!card.isSummonedMinion()) {
+                result.add(card);
+            }
+        }
+        return result;
+    }
+
     public int getMaxCost() {
         return this.playerInfo.getMaxCost();
     }
