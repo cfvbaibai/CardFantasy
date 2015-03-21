@@ -41,7 +41,7 @@ $(document).on("pageinit", "#wiki", function(event) {
             if (entity.type != 'card') { return; }
             if (starFilter != 0 && entity.star != starFilter) { return; }
             if (raceFilter != 'All' && entity.race != raceFilter) { return; }
-            result += "<tr><td><a href='" + rootDir + "Cards/" + entity.name + "' target='_blank'>" + entity.name + "</a></td><td>" + toStarText(entity.star) + "</td>";
+            result += "<tr><td><a href='Cards/" + entity.name + "' target='_blank'>" + entity.name + "</a></td><td>" + toStarText(entity.star) + "</td>";
             result += "<td>" + toRaceText(entity.race) + "</td></tr>";
         });
         result += "</table>";

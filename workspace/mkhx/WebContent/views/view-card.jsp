@@ -2,8 +2,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="header.jsp"%>
 <title>魔卡幻想卡牌信息</title>
-<script src='<c:url value="/resources/js/all-card.js" />?version=<%= java.util.Calendar.getInstance().getTimeInMillis() %>'></script>
-<script src='<c:url value="/resources/js/all-skill.js" />?version=<%= java.util.Calendar.getInstance().getTimeInMillis() %>'></script>
+<script src='<c:url value="/resources/js/all-card.js" />'></script>
+<script src='<c:url value="/resources/js/all-skill.js" />'></script>
 <script>
 var races = [];
 races[1] = '王国';
