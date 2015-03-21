@@ -24,8 +24,10 @@
     <%@ include file="lilith-battle.jsp" %>
     <%--<%@ include file="communication.jsp" %> --%>
     <%@ include file="test-rp.jsp" %>
+    <%@ include file="wiki.jsp" %>
     <%@ include file="help.jsp" %>
     <%@ include file="open-source.jsp" %>
+
     <%@ include file="arena.jsp" %>
     <%@ include file="deck-builder.jsp" %>
     <%@ include file="arena-battle-options.jsp" %>

@@ -17,8 +17,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
 import cfvbaibai.cardfantasy.GameUI;
@@ -1000,4 +1002,21 @@ public class AutoBattleController {
         }
     }
     */
+    
+    @RequestMapping(value = "/Cards/{keyword}")
+    public ModelAndView getCardById(HttpServletRequest request, @PathVariable String keyword) {
+        CardData card = this.store.getCard(keyword);
+        String internalId = null;
+        if (card != null) {
+            internalId = card.getId();
+        }
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("view-card");
+        mv.addObject("keyword", keyword);
+        if (internalId != null) {
+            mv.addObject("internalId", internalId);
+        }
+        this.userActionRecorder.addAction(new UserAction(new Date(), request.getRemoteAddr(), "View Card", keyword));
+        return mv;
+    }
 }

@@ -168,6 +168,9 @@ table.line-separated td {
     border-top: solid 1px black;
 }
 
+table.data td {
+	padding: 5px;
+}
 div.header-template {
 	max-width: 800px;
 	margin-left: auto;
@@ -301,4 +304,54 @@ div.recommend-boss-battle-result > div:first-child > div:last-child {
 }
 #arena-battle-options-text {
 	display: none;
+}
+
+table.view-card-table {
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	width: 100%;
+	max-width: 600px;
+	border-collapse: collapse;
+	border: 1px #AAAAAA solid;
+	background-color: white;
+}
+
+table.view-card-table td {
+	border: 1px #AAAAAA solid;
+	vertical-align: middle;
+}
+
+table.view-card-table td.logo {
+	min-width: 100px;
+	height: 100px;
+	padding: 0;
+}
+
+table.view-card-table td.logo img {
+    border-width: 0;
+    width: 100px;
+    height: 100px;
+}
+
+table.view-card-table td.label {
+	height: 55px;
+	width: 20%;
+}
+
+table.view-card-table td.value {
+    width: 20%;
+}
+
+table.view-card-table td.title {
+	height: 55px;
+}
+
+table.view-card-table td.skill {
+	text-align: left;
+}
+
+table.view-card-table td.skill div {
+	margin-left: 10px;
+	margin-right: 10px;
 }
