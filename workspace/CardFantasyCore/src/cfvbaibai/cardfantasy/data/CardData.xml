@@ -795,6 +795,13 @@
         <Skill type="暴风雪" level="4" unlock="5" />
         <Skill type="回春" level="6" unlock="10" />
     </Card>
+    <!-- 
+    <Card id="2432" name="元素之灵" wikiId="" race="森林" speed="4" star="4" cost="12" incrCost="2" at="250" hp="930" incrAT="23" incrHP="26">
+        <Skill type="森林同调" level="6" unlock="0" />
+        <Skill type="法力反射" level="5" unlock="5" />
+        <Skill type="闪避" level="6" unlock="10" />
+    </Card>
+    -->
 
     <Card id="2501" name="金属巨龙" wikiId="31004" race="森林" speed="6" star="5" cost="14" incrCost="3" at="355" hp="1480" incrAT="30" incrHP="23">
         <Skill type="暴击" level="6" unlock="0" />
@@ -1799,6 +1806,11 @@
         <Skill type="神圣守护" level="8" unlock="0" />
         <Skill type="迷魂" level="8" unlock="5" />
         <Skill type="冰甲" level="6" unlock="10" />
+    </Card>
+    <Card id="4523" name="精灵王亡灵" wikiId="" race="地狱" speed="4" star="5" cost="17" incrCost="2" at="330" hp="1530" incrAT="28" incrHP="30">
+        <Skill type="迷魂" level="7" unlock="0" />
+        <Skill type="法力侵蚀" level="6" unlock="5" />
+        <Skill type="地狱之力" level="6" unlock="10" />
     </Card>
 
     <!-- 魔神 -->

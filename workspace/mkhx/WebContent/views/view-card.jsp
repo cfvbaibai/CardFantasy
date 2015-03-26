@@ -2,6 +2,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="header.jsp"%>
 <title>魔卡幻想卡牌信息</title>
+<meta name="description" content="${keyword}" />
+<meta name="keywords" content="${keyword}" />
 <script src='<c:url value="/resources/js/all-card.js" />'></script>
 <script src='<c:url value="/resources/js/all-skill.js" />'></script>
 <script>
@@ -49,6 +51,7 @@ function generate() {
         }
     }
     if (card == null) {
+        $('#view-card-name').text('暂时没有【' + keyword + '】的资料');
         return;
     }
     
@@ -76,29 +79,7 @@ function generate() {
     $('#view-card-skill2').html(getSkillText(card.LockSkill1));
     $('#view-card-skill3').html(getSkillText(card.LockSkill2));
     $('#view-card-skill4').html(getSkillText(card.LockSkill3));
-    
-    /*
-
-    var race = races[card.Race - 1];
-    var speed = card.Wait;
-    var star = card.Color;
-    var cost = card.Cost;
-    var incrCost = card.EvoCost - cost;
-    var at = card.AttackArray[0];
-    var hp = card.HpArray[0];
-    var incrAT = card.AttackArray[1] - card.AttackArray[0];
-    var incrHP = card.HpArray[1] - card.HpArray[0];
-    result += '&lt;Card id="" name="' + cardName + '" wikiId="" race="' + race + '" speed="' + speed + '" star="' + star + '" ';
-    result += 'cost="' + cost + '" incrCost="' + incrCost + '" at="' + at + '" hp="' + hp + '" incrAT="' + incrAT + '" incrHP="' + incrHP + '"&gt;';
-    result += '<br />';
-    result += '&nbsp;&nbsp;&nbsp;&nbsp;' + generateSkill(card.Skill, 0) + '<br />';
-    result += '&nbsp;&nbsp;&nbsp;&nbsp;' + generateSkill(card.LockSkill1, 5) + '<br />';
-    result += '&nbsp;&nbsp;&nbsp;&nbsp;' + generateSkill(card.LockSkill2, 10) + '<br />';
-    result += '&lt;/Card&gt;'
-    $('#card-xml').html(result);
-     */
 }
-
 </script>
 </head>
 <body>
@@ -123,7 +104,7 @@ function generate() {
                 <td id="view-card-evo-cost" class="value"></td>
             </tr>
             <tr>
-                <td class="title" colspan="5">属性成长</td>
+                <td class="title" colspan="5">属性成长 <a href="#" data-type="bug">报告BUG</a></td>
             </tr>
             <tr>
                 <td class="label"></td>
@@ -174,7 +155,6 @@ function generate() {
             </tr>
         </tbody>
     </table>
-    
     <!-- CNZZ Begins -->
     <script src="http://s25.cnzz.com/stat.php?id=5496691&web_id=5496691&online=1"></script>
     <!-- CNZZ Ends -->
