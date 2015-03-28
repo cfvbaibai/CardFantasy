@@ -274,4 +274,88 @@ public class AttackBuffTest extends SkillValidationTest {
         context.proceedOneRound();
         Assert.assertEquals((810 + 250 /* 王国之力10 */) + (810 * 15 / 100 /* 凯撒之击1 */), 5000 - c占位符2.getHP());
     }
+    
+    @Test
+    public void test同调_普通() {
+        SkillTestContext context = SkillValidationTestSuite.prepare(
+            50, 50, "秘银巨石像+王国同调1", "秘银巨石像*2", "占位符");
+        context.addToField(0, 0);
+        context.addToHand(1, 0).setSummonDelay(0);
+        context.addToHand(2, 0).setSummonDelay(0);
+        CardInfo c占位符 = context.addToField(3, 1);
+        context.startGame();
+        
+        context.proceedOneRound();
+        Assert.assertEquals(810 * 102 / 100, 5000 - c占位符.getHP());
+    }
+    
+    /**
+     * 同调不可以自我反馈
+     */
+    @Test
+    public void test同调_自我反馈() {
+        SkillTestContext context = SkillValidationTestSuite.prepare(
+            50, 50, "秘银巨石像+王国同调1", "占位符");
+        context.addToHand(0, 0).setSummonDelay(0);
+        CardInfo c占位符 = context.addToField(1, 1);
+        context.startGame();
+        
+        context.proceedOneRound();
+        Assert.assertEquals(810, 5000 - c占位符.getHP());
+    }
+    
+    /**
+     * 激发同调的卡下场后并不会使同调效果消失
+     */
+    @Test
+    public void test同调_下场() {
+        SkillTestContext context = SkillValidationTestSuite.prepare(
+            50, 50, "秘银巨石像+王国同调1", "秘银巨石像*2", "占位符", "金属巨龙-15");
+        context.addToField(0, 0);
+        context.addToHand(1, 0).setSummonDelay(0);
+        context.addToHand(2, 0).setSummonDelay(0);
+        CardInfo c占位符 = context.addToField(3, 1);
+        context.addToField(4, 1);
+        context.startGame();
+
+        context.proceedOneRound();
+        random.addNextNumbers(0); // 金属巨龙暴击杀死秘银巨石像
+        context.proceedOneRound();
+
+        context.proceedOneRound();
+        Assert.assertEquals(810 * 102 / 100 * 2, 5000 - c占位符.getHP());
+    }
+    
+    /**
+     * 召唤物无法激发同调
+     */
+    @Test
+    public void test同调_召唤物() {
+        SkillTestContext context = SkillValidationTestSuite.prepare(
+            50, 50, "秘银巨石像+森林同调1", "星夜女神", "占位符");
+        context.addToField(0, 0);
+        context.addToHand(1, 0).setSummonDelay(0);
+        CardInfo c占位符 = context.addToField(2, 1);
+        context.startGame();
+
+        context.proceedOneRound();
+        Assert.assertEquals(810 * 101 / 100, 5000 - c占位符.getHP());
+    }
+    
+    /**
+     * 同调只能在同调卡上场后触发
+     */
+    @Test
+    public void test同调_上场前() {
+        SkillTestContext context = SkillValidationTestSuite.prepare(
+            50, 50, "秘银巨石像", "秘银巨石像+王国同调1", "占位符*2");
+        context.addToField(0, 0);
+        context.addToHand(1, 0).setSummonDelay(0);
+        context.addToField(2, 1);
+        CardInfo c占位符2 = context.addToField(3, 1);
+        context.startGame();
+
+        context.proceedOneRound();
+        Assert.assertEquals(810, 5000 - c占位符2.getHP());
+    }
 }

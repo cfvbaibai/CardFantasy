@@ -167,6 +167,11 @@ public enum SkillType {
     蛮荒威压("", 2, 0, SkillTag.抗免疫, SkillTag.不可洗炼),
     地狱同化("", 3, 0, SkillTag.抗免疫, SkillTag.不可洗炼),
     
+    王国同调("", 0, 1, SkillTag.基础攻击加成),
+    森林同调("", 0, 1, SkillTag.基础攻击加成),
+    蛮荒同调("", 0, 1, SkillTag.基础攻击加成),
+    地狱同调("", 0, 1, SkillTag.基础攻击加成),
+    
     军团王国之力("", 0, 3, SkillTag.永久, SkillTag.原始攻击加成, SkillTag.原始体力加成, SkillTag.不可洗炼),
     军团森林之力("", 0, 3, SkillTag.永久, SkillTag.原始攻击加成, SkillTag.原始体力加成, SkillTag.不可洗炼),
     军团蛮荒之力("", 0, 3, SkillTag.永久, SkillTag.原始攻击加成, SkillTag.原始体力加成, SkillTag.不可洗炼),

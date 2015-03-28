@@ -27,6 +27,7 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2015-03-28: 添加新卡【元素之灵】，关于同调技能尚不完善，欢迎大家踊跃回答问题补充技能细节。感谢<x>不渝小溪</x>, <x>老子衿</x>, <x>brunoweiyang</x>, <x>裘可拉kiss</x>的帮助</li>
                     <li>2015-03-26: 添加新卡【精灵王亡灵】</li>
                     <li>2015-03-21: 添加【<a href="#wiki">卡牌WIKI</a>】页面，现在可以直接在站内查询卡牌数据资料了</li>
                     <li>2015-03-15: <ul>

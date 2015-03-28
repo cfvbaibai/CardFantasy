@@ -90,6 +90,7 @@ import cfvbaibai.cardfantasy.engine.skill.Soften;
 import cfvbaibai.cardfantasy.engine.skill.SpeedUp;
 import cfvbaibai.cardfantasy.engine.skill.Spike;
 import cfvbaibai.cardfantasy.engine.skill.Summon;
+import cfvbaibai.cardfantasy.engine.skill.Synchrome;
 import cfvbaibai.cardfantasy.engine.skill.TimeBack;
 import cfvbaibai.cardfantasy.engine.skill.Transport;
 import cfvbaibai.cardfantasy.engine.skill.Trap;
@@ -1039,6 +1040,14 @@ public class SkillResolver {
                     RacialBuff.apply(this, skillUseInfo, fieldCard, null, SkillEffectType.MAXHP_CHANGE);
                 } else if (skillUseInfo.getType() == SkillType.神圣守护) {
                     HolyGuard.apply(this, skillUseInfo, fieldCard);
+                } else if (skillUseInfo.getType() == SkillType.王国同调) {
+                    Synchrome.apply(this, skillUseInfo, fieldCard, summonedCards, Race.KINGDOM);
+                } else if (skillUseInfo.getType() == SkillType.森林同调) {
+                    Synchrome.apply(this, skillUseInfo, fieldCard, summonedCards, Race.FOREST);
+                } else if (skillUseInfo.getType() == SkillType.蛮荒同调) {
+                    Synchrome.apply(this, skillUseInfo, fieldCard, summonedCards, Race.SAVAGE);
+                } else if (skillUseInfo.getType() == SkillType.地狱同调) {
+                    Synchrome.apply(this, skillUseInfo, fieldCard, summonedCards, Race.HELL);
                 }
             }
         }
