@@ -61,6 +61,7 @@ import cfvbaibai.cardfantasy.engine.skill.Immobility;
 import cfvbaibai.cardfantasy.engine.skill.Immue;
 import cfvbaibai.cardfantasy.engine.skill.LegionBuff;
 import cfvbaibai.cardfantasy.engine.skill.LighteningMagic;
+import cfvbaibai.cardfantasy.engine.skill.MagicMark;
 import cfvbaibai.cardfantasy.engine.skill.MagicShield;
 import cfvbaibai.cardfantasy.engine.skill.ManaErode;
 import cfvbaibai.cardfantasy.engine.skill.NoEffect;
@@ -298,6 +299,8 @@ public class SkillResolver {
                 Summon.apply(this, skillUseInfo, attacker, "霜雪树人", "树人祭司");
             } else if (skillUseInfo.getType() == SkillType.召唤炎魔) {
                 Summon.apply(this, skillUseInfo, attacker, "炎魔");
+            } else if (skillUseInfo.getType() == SkillType.魔力法阵) {
+                MagicMark.apply(this, skillUseInfo, attacker, defender, -1);
             }
         }
         RuneInfo rune = attacker.getOwner().getActiveRuneOf(RuneData.飞岩);
@@ -810,6 +813,18 @@ public class SkillResolver {
                 damage = 0;
             }
         }
+
+        if (skill != null && skill.getType().containsTag(SkillTag.魔法)) {
+            List<CardStatusItem> magicMarkStatusItems = card.getStatus().getStatusOf(CardStatusType.魔印);
+            for (CardStatusItem item : magicMarkStatusItems) {
+                Skill magicMarkSkill = item.getCause().getSkill();
+                this.getStage().getUI().useSkill(card, magicMarkSkill, true);
+                int extraDamage = damage * magicMarkSkill.getImpact() / 100;
+                this.getStage().getUI().attackCard(item.getCause().getOwner(), card, magicMarkSkill, extraDamage);
+                damage += extraDamage;
+            }
+        }
+
         int actualDamage = card.applyDamage(damage);
         OnDamagedResult result = new OnDamagedResult();
         result.originalDamage = damage;

@@ -29,10 +29,10 @@ public final class FireMagic {
                 continue;
             }
             damage = result.getDamage();
-            ui.attackCard(attacker, victim, cardSkill, damage);
             if (attacker instanceof CardInfo) {
                 resolver.resolveCounterAttackSkills((CardInfo)attacker, victim, cardSkill, result, null);
             }
+            ui.attackCard(attacker, victim, cardSkill, damage);
             resolver.resolveDeathSkills(attacker, victim, cardSkill, resolver.applyDamage(victim, cardSkill, damage));
         }
     }

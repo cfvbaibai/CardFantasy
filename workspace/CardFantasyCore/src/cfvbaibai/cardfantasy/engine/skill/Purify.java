@@ -25,11 +25,12 @@ public final class Purify {
             resolver.removeStatus(card, CardStatusType.晕眩);
             resolver.removeStatus(card, CardStatusType.裂伤);
             resolver.removeStatus(card, CardStatusType.死印);
-            // 实测表明净化不能解除种族改变状态
+            // 以下为实测表明净化不能解除的状态
             // resolver.removeStatus(card, CardStatusType.王国);
             // resolver.removeStatus(card, CardStatusType.森林);
             // resolver.removeStatus(card, CardStatusType.蛮荒);
             // resolver.removeStatus(card, CardStatusType.地狱);
+            // resolver.removeStatus(card, CardStatusType.魔印);
         }
     }
 }

@@ -810,4 +810,38 @@ public class SpecialStatusTest extends SkillValidationTest {
         Assert.assertEquals(655, c金属巨龙.getCurrentAT());
         Assert.assertEquals(1710, c金属巨龙.getHP());
     }
+    
+    @Test
+    public void test魔力印记_基本() {
+        SkillTestContext context = SkillValidationTestSuite.prepare(
+            50, 50, "占位符+火球8", "占位符+魔力法阵1", "占位符+火球4", "占位符");
+        context.addToField(0, 0);
+        context.addToField(1, 0);
+        context.addToField(2, 0);
+        CardInfo c占位符4 = context.addToField(3, 1);
+        context.startGame();
+        
+        random.addNextPicks(0).addNextNumbers(0); /* 火球8 */
+        random.addNextPicks(0); /* 魔力法阵 */
+        random.addNextPicks(0).addNextNumbers(0); /* 火球4 */
+        context.proceedOneRound();
+        Assert.assertEquals(200 + 100 + 30 /* 只有第二个火球享受加成 */, 5000 - c占位符4.getHP());
+        Assert.assertTrue(c占位符4.getStatus().containsStatus(CardStatusType.魔印));
+    }
+    
+    @Test
+    public void test魔力印记_免疫() {
+        SkillTestContext context = SkillValidationTestSuite.prepare(
+            50, 50, "占位符+魔力法阵1", "占位符+火球4", "占位符+免疫");
+        context.addToField(0, 0);
+        context.addToField(1, 0);
+        CardInfo c占位符3 = context.addToField(2, 1);
+        context.startGame();
+        
+        random.addNextPicks(0); /* 魔力法阵 */
+        random.addNextPicks(0).addNextNumbers(0); /* 火球4 */
+        context.proceedOneRound();
+        Assert.assertEquals(0, 5000 - c占位符3.getHP());
+        Assert.assertFalse(c占位符3.getStatus().containsStatus(CardStatusType.魔印));
+    }
 }

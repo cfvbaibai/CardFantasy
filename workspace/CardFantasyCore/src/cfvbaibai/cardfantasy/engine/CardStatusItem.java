@@ -85,7 +85,11 @@ public class CardStatusItem {
     public static CardStatusItem deathMark(SkillUseInfo cause) {
         return new CardStatusItem(CardStatusType.死印, 0, cause);
     }
-    
+
+    public static CardStatusItem magicMark(SkillUseInfo cause) {
+        return new CardStatusItem(CardStatusType.魔印, 0, cause);
+    }
+
     public static CardStatusItem raceChange(SkillUseInfo cause) {
         CardStatusType type = null;
         switch (cause.getType().getImpact(0)) {

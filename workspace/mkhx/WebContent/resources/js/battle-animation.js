@@ -1180,7 +1180,7 @@ var Animater = function() {
         this.adjustValue(data, 'HP', false);
     };
     
-    this.overlapStatus = ['燃', '毒'];
+    this.overlapStatus = ['燃', '毒', '魔'];
     this.__addCardStatus = function(data) {
         //var attacker = data[0];
         var defender = data[1];
@@ -1421,6 +1421,9 @@ var Animater = function() {
             this.flyImage({ fileName: 'cross.png', width: 29, height: 60, text: skill },
                     attacker, defenders, settings.skillDuration);
         } else if (skill == '传送') {
+            this.flyImage({ fileName: 'redcross.png', width: 24, height: 24, text: skill, },
+                    attacker, defenders, settings.skillDuration);
+        } else if (skill == '魔力法阵') {
             this.flyImage({ fileName: 'hexagram.png', width: 24, height: 24, text: skill, },
                     attacker, defenders, settings.skillDuration);
         } else if (skill == '免疫') {

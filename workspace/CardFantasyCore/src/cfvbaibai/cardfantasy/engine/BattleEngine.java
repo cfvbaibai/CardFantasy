@@ -243,6 +243,11 @@ public class BattleEngine {
         this.stage.getUI().compactField(opField);
         opField.compact();
 
+        for (int i = 0; i < opField.size(); ++i) {
+            if (opField.getCard(i) != null) {
+                resolver.removeStatus(opField.getCard(i), CardStatusType.魔印);
+            }
+        }
         for (int i = 0; i < myField.size(); ++i) {
             if (myField.getCard(i) == null) {
                 continue;
