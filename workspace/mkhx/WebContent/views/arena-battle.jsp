@@ -4,7 +4,7 @@
             <div data-role="collapsible" data-mini="true" data-collapsed="false" data-theme="c" data-content-theme="d">
                 <h3>设置双方阵容</h3>
                 <div>
-                    <a id="show-arena-battle-options-button" data-role="button" data-rel="dialog" data-mini="true">点击设置先攻、出卡顺序、卡组强度</a>
+                    <a id="show-arena-battle-options-button" data-role="button" data-rel="dialog" data-mini="true">点击设置战斗规则</a>
                     <div id="arena-battle-options-text"></div>
                     <div id="player1" class="player ui-grid-c">
                         <div data-theme="c" class="ui-block-a ui-block-label-number">
