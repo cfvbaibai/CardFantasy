@@ -48,6 +48,17 @@
                             <td><input data-theme="c" type="number" id="p2-card-hp-buff" data-mini="true" value="100" /></td>
                             <td>%</td>
                         </tr>
+                        <tr>
+                            <td>玩家1胜利条件</td>
+                            <td>
+                                <select data-theme="c" id="condition" data-mini="true" data-native-menu="false">
+                                    <option value="Any" selected="selected">任意</option>
+                                    <option value="EnemyAllCardsDie">敌方卡牌全灭</option>
+                                    <option value="Round:48">48回合获胜</option>
+                                </select>
+                            </td>
+                            <td></td>
+                        </tr>
                     </table>
                 </div>
             </div>

@@ -42,6 +42,7 @@ import cfvbaibai.cardfantasy.engine.Player;
 import cfvbaibai.cardfantasy.engine.Rule;
 import cfvbaibai.cardfantasy.game.DeckBuilder;
 import cfvbaibai.cardfantasy.game.DummyGameUI;
+import cfvbaibai.cardfantasy.game.DummyVictoryCondition;
 import cfvbaibai.cardfantasy.game.GameResultStat;
 import cfvbaibai.cardfantasy.game.LilithDataStore;
 import cfvbaibai.cardfantasy.game.MapInfo;
@@ -54,6 +55,7 @@ import cfvbaibai.cardfantasy.game.PvlEngine;
 import cfvbaibai.cardfantasy.game.PvlGameResult;
 import cfvbaibai.cardfantasy.game.PvlGameTimeoutException;
 import cfvbaibai.cardfantasy.game.SkillBuilder;
+import cfvbaibai.cardfantasy.game.VictoryCondition;
 import cfvbaibai.cardfantasy.web.ErrorHelper;
 import cfvbaibai.cardfantasy.web.OneDimensionDataStat;
 import cfvbaibai.cardfantasy.web.Utils;
@@ -97,7 +99,7 @@ public class AutoBattleController {
     //private CommunicationService service;
 
     private static GameResultStat play(PlayerInfo p1, PlayerInfo p2, int count, Rule rule) {
-        GameResultStat stat = new GameResultStat(p1, p2);
+        GameResultStat stat = new GameResultStat(p1, p2, rule);
         GameUI ui = new DummyGameUI();
         for (int i = 0; i < count; ++i) {
             stat.addResult(BattleEngine.play1v1(ui, rule, p1, p2));
@@ -105,7 +107,7 @@ public class AutoBattleController {
         return stat;
     }
 
-    private void outputBattleOptions(PrintWriter writer, int firstAttack, int deckOrder, int p1hhpb, int p1catb, int p1chpb, int p2hhpb, int p2catb, int p2chpb) {
+    private void outputBattleOptions(PrintWriter writer, int firstAttack, int deckOrder, int p1hhpb, int p1catb, int p1chpb, int p2hhpb, int p2catb, int p2chpb, VictoryCondition condition) {
         if (firstAttack == -1) {
             writer.write("按规则决定先攻");
         } else if (firstAttack == 0) {
@@ -138,6 +140,9 @@ public class AutoBattleController {
         if (p2chpb != 100) {
             writer.write("玩家2卡牌体力调整: " + p2chpb + "%<br />");
         }
+        if (condition != null && !(condition instanceof DummyVictoryCondition)) {
+            writer.write("玩家1胜利条件: " + condition.getDescription() + "<br />");
+        }
     }
 
     @RequestMapping(value = "/PlayAuto1MatchGame")
@@ -146,7 +151,8 @@ public class AutoBattleController {
             @RequestParam("deck2") String deck2, @RequestParam("hlv1") int heroLv1, @RequestParam("hlv2") int heroLv2,
             @RequestParam("fa") int firstAttack, @RequestParam("do") int deckOrder,
             @RequestParam("p1hhpb") int p1HeroHpBuff, @RequestParam("p1catb") int p1CardAtBuff, @RequestParam("p1chpb") int p1CardHpBuff,
-            @RequestParam("p2hhpb") int p2HeroHpBuff, @RequestParam("p2catb") int p2CardAtBuff, @RequestParam("p2chpb") int p2CardHpBuff
+            @RequestParam("p2hhpb") int p2HeroHpBuff, @RequestParam("p2catb") int p2CardAtBuff, @RequestParam("p2chpb") int p2CardHpBuff,
+            @RequestParam("condition") String condition
             ) throws IOException {
         PrintWriter writer = response.getWriter();
         try {
@@ -155,8 +161,9 @@ public class AutoBattleController {
                 "Deck1=%s<br />Deck2=%s<br />Lv1=%d, Lv2=%d, FirstAttack=%d, DeckOrder=%d",
                 deck1, deck2, heroLv1, heroLv2, firstAttack, deckOrder);
             logger.info(logMessage);
+            VictoryCondition vc = VictoryCondition.parse(condition);
             this.userActionRecorder.addAction(new UserAction(new Date(), request.getRemoteAddr(), "Play Auto 1Match Game", logMessage));
-            outputBattleOptions(writer, firstAttack, deckOrder, p1HeroHpBuff, p1CardAtBuff, p1CardHpBuff, p2HeroHpBuff, p2CardAtBuff, p2CardHpBuff);
+            outputBattleOptions(writer, firstAttack, deckOrder, p1HeroHpBuff, p1CardAtBuff, p1CardHpBuff, p2HeroHpBuff, p2CardAtBuff, p2CardHpBuff, vc);
             List<Skill> p1CardBuffs = new ArrayList<Skill>();
             if (p1CardAtBuff != 100) {
                 p1CardBuffs.add(new TrivialSkill(SkillType.原始攻击调整, p1CardAtBuff - 100));
@@ -174,7 +181,7 @@ public class AutoBattleController {
             }
             PlayerInfo player2 = PlayerBuilder.build(heroLv2 != 0, "玩家2", deck2, heroLv2, p2CardBuffs, p2HeroHpBuff);
             WebPlainTextGameUI ui = new WebPlainTextGameUI();
-            BattleEngine engine = new BattleEngine(ui, new Rule(5, 999, firstAttack, deckOrder, false));
+            BattleEngine engine = new BattleEngine(ui, new Rule(5, 999, firstAttack, deckOrder, false, vc));
             engine.registerPlayers(player1, player2);
             GameResult gameResult = engine.playGame();
             writer.print(Utils.getCurrentDateTime() + "<br />" + ui.getAllText());
@@ -190,7 +197,8 @@ public class AutoBattleController {
             @RequestParam("deck2") String deck2, @RequestParam("hlv1") int heroLv1, @RequestParam("hlv2") int heroLv2,
             @RequestParam("fa") int firstAttack, @RequestParam("do") int deckOrder,
             @RequestParam("p1hhpb") int p1HeroHpBuff, @RequestParam("p1catb") int p1CardAtBuff, @RequestParam("p1chpb") int p1CardHpBuff,
-            @RequestParam("p2hhpb") int p2HeroHpBuff, @RequestParam("p2catb") int p2CardAtBuff, @RequestParam("p2chpb") int p2CardHpBuff
+            @RequestParam("p2hhpb") int p2HeroHpBuff, @RequestParam("p2catb") int p2CardAtBuff, @RequestParam("p2chpb") int p2CardHpBuff,
+            @RequestParam("condition") String condition
     ) throws IOException {
         PrintWriter writer = response.getWriter();
         response.setContentType("application/json");
@@ -219,7 +227,7 @@ public class AutoBattleController {
             }
             PlayerInfo player2 = PlayerBuilder.build(heroLv2 != 0, "玩家2", deck2, heroLv2, p2CardBuffs, p2HeroHpBuff);
             StructuredRecordGameUI ui = new StructuredRecordGameUI();
-            BattleEngine engine = new BattleEngine(ui, new Rule(5, 999, firstAttack, deckOrder, false));
+            BattleEngine engine = new BattleEngine(ui, new Rule(5, 999, firstAttack, deckOrder, false, VictoryCondition.parse(condition)));
             engine.registerPlayers(player1, player2);
             GameResult gameResult = engine.playGame();
             BattleRecord record = ui.getRecord();
@@ -236,7 +244,8 @@ public class AutoBattleController {
             @RequestParam("hlv1") int heroLv1, @RequestParam("hlv2") int heroLv2, @RequestParam("count") int count,
             @RequestParam("fa") int firstAttack, @RequestParam("do") int deckOrder,
             @RequestParam("p1hhpb") int p1HeroHpBuff, @RequestParam("p1catb") int p1CardAtBuff, @RequestParam("p1chpb") int p1CardHpBuff,
-            @RequestParam("p2hhpb") int p2HeroHpBuff, @RequestParam("p2catb") int p2CardAtBuff, @RequestParam("p2chpb") int p2CardHpBuff
+            @RequestParam("p2hhpb") int p2HeroHpBuff, @RequestParam("p2catb") int p2CardAtBuff, @RequestParam("p2chpb") int p2CardHpBuff,
+            @RequestParam("condition") String condition
     ) throws IOException {
         PrintWriter writer = response.getWriter();
         try {
@@ -245,7 +254,8 @@ public class AutoBattleController {
                 deck1, deck2, heroLv1, heroLv2, firstAttack, deckOrder, count);
             logger.info(logMessage);
             this.userActionRecorder.addAction(new UserAction(new Date(), request.getRemoteAddr(), "Play Auto Massive Game", logMessage));
-            outputBattleOptions(writer, firstAttack, deckOrder, p1HeroHpBuff, p1CardAtBuff, p1CardHpBuff, p2HeroHpBuff, p2CardAtBuff, p2CardHpBuff);
+            VictoryCondition vc = VictoryCondition.parse(condition);
+            outputBattleOptions(writer, firstAttack, deckOrder, p1HeroHpBuff, p1CardAtBuff, p1CardHpBuff, p2HeroHpBuff, p2CardAtBuff, p2CardHpBuff, vc);
             List<Skill> p1CardBuffs = new ArrayList<Skill>();
             if (p1CardAtBuff != 100) {
                 p1CardBuffs.add(new TrivialSkill(SkillType.原始攻击调整, p1CardAtBuff - 100));
@@ -262,12 +272,15 @@ public class AutoBattleController {
                 p2CardBuffs.add(new TrivialSkill(SkillType.原始体力调整, p2CardHpBuff - 100));
             }
             PlayerInfo player2 = PlayerBuilder.build(heroLv2 != 0, "玩家2", deck2, heroLv2, p2CardBuffs, p2HeroHpBuff);
-            GameResultStat stat = play(player1, player2, count, new Rule(5, 999, firstAttack, deckOrder, false));
+            GameResultStat stat = play(player1, player2, count, new Rule(5, 999, firstAttack, deckOrder, false, vc));
             writer.append(Utils.getCurrentDateTime() + "<br />");
             writer.append("<table>");
             writer.append("<tr><td>超时: </td><td>" + stat.getTimeoutCount() + "</td></tr>");
             writer.append("<tr><td>玩家1获胜: </td><td>" + stat.getP1Win() + "</td></tr>");
             writer.append("<tr><td>玩家2获胜: </td><td>" + stat.getP2Win() + "</td></tr>");
+            if (!(vc instanceof DummyVictoryCondition)) {
+                writer.append("<tr><td>条件符合: </td><td>" + stat.getConditionMet() + "</td></tr>");
+            }
             writer.append("</table>");
             logger.info("TO:P1:P2 = " + stat.getTimeoutCount() + ":" + stat.getP1Win() + ":" + stat.getP2Win());
         } catch (Exception e) {

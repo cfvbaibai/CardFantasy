@@ -4,22 +4,26 @@ import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
 import cfvbaibai.cardfantasy.data.PlayerInfo;
 import cfvbaibai.cardfantasy.engine.GameEndCause;
 import cfvbaibai.cardfantasy.engine.GameResult;
+import cfvbaibai.cardfantasy.engine.Rule;
 
 public class GameResultStat {
 
     private int timeoutCount;
     private int p1WinCount;
     private int p2WinCount;
+    private int conditionMetCount;
     
     private PlayerInfo p1;
     private PlayerInfo p2;
+    private Rule rule;
     
-    public GameResultStat(PlayerInfo p1, PlayerInfo p2) {
+    public GameResultStat(PlayerInfo p1, PlayerInfo p2, Rule rule) {
         p1WinCount = 0;
         p2WinCount = 0;
         timeoutCount = 0;
         this.p1 = p1;
         this.p2 = p2;
+        this.rule = rule;
     }
     
     public void addResult(GameResult result) {
@@ -32,6 +36,9 @@ public class GameResultStat {
             ++this.p2WinCount;
         } else {
             throw new CardFantasyRuntimeException("Invalid result! Unknown winner: " + winnerId);
+        }
+        if (rule.getCondition() != null && rule.getCondition().meetCriteria(result) && winnerId.equals(p1.getId())) {
+            ++this.conditionMetCount;
         }
     }
     
@@ -69,5 +76,9 @@ public class GameResultStat {
     
     public int getTimeoutRate() {
         return this.timeoutCount * 100 / this.count();
+    }
+
+    public int getConditionMet() {
+        return this.conditionMetCount;
     }
 }

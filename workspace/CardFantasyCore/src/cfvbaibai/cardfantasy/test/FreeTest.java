@@ -56,7 +56,7 @@ public class FreeTest extends PveEngineTest {
     }
 
     private static GameResultStat play(PlayerInfo p1, PlayerInfo p2, int count) {
-        GameResultStat stat = new GameResultStat(p1, p2);
+        GameResultStat stat = new GameResultStat(p1, p2, Rule.getDefault());
         for (int i = 0; i < count; ++i) {
             BattleEngine engine = new BattleEngine(new DummyGameUI(), Rule.getDefault());
             engine.registerPlayers(p1, p2);

@@ -18,6 +18,9 @@ public abstract class VictoryCondition {
         if (desc == null) {
             throw new CardFantasyRuntimeException("desc should not be null");
         }
+        if (desc.length() == 0) {
+            return null;
+        }
         if (desc.equalsIgnoreCase("Any")) {
             return new DummyVictoryCondition();
         } else if (desc.equalsIgnoreCase("EnemyAllCardsDie")) {
@@ -87,31 +90,6 @@ public abstract class VictoryCondition {
     }
 
     public abstract String getDescription();
-}
-
-class DummyVictoryCondition extends VictoryCondition {
-    @Override
-    public boolean meetCriteria(GameResult result) {
-        return true;
-    }
-
-    @Override
-    public String getDescription() {
-        return "战斗胜利";
-    }
-}
-
-class CardsAllDieVictoryCondition extends VictoryCondition {
-    @Override
-    public boolean meetCriteria(GameResult result) {
-        Player loser = result.getLoser();
-        return loser.getDeck().size() == 0 && loser.getHand().size() == 0 && loser.getField().getAliveCards().size() == 0; 
-    }
-
-    @Override
-    public String getDescription() {
-        return "对方卡牌全灭";
-    }
 }
 
 class HeroHPVictoryCondition extends VictoryCondition {

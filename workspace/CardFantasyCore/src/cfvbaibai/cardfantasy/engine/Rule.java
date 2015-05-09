@@ -1,5 +1,7 @@
 package cfvbaibai.cardfantasy.engine;
 
+import cfvbaibai.cardfantasy.game.VictoryCondition;
+
 public class Rule {
     private int maxHandCards;
     private int maxRound;
@@ -7,9 +9,11 @@ public class Rule {
     private int firstPlayer;
     // 0: Random, 1: Ordered
     private int deckOrder;
+    private VictoryCondition condition;
+
     private boolean bossBattle;
 
-    public Rule(int maxHandCards, int maxRound, int firstPlayer, int deckOrder, boolean bossBattle) {
+    public Rule(int maxHandCards, int maxRound, int firstPlayer, int deckOrder, boolean bossBattle, VictoryCondition condition) {
         if (firstPlayer < -1 || firstPlayer > 1) {
             throw new IllegalArgumentException("Invalid firstPlayer: " + firstPlayer);
         }
@@ -21,6 +25,7 @@ public class Rule {
         this.firstPlayer = firstPlayer;
         this.deckOrder = deckOrder;
         this.bossBattle = bossBattle;
+        this.condition = condition;
     }
 
     public int getMaxHandCards() {
@@ -43,11 +48,19 @@ public class Rule {
         return this.bossBattle;
     }
 
+    public VictoryCondition getCondition() {
+        return condition;
+    }
+
+    public void setCondition(VictoryCondition condition) {
+        this.condition = condition;
+    }
+    
     public static Rule getDefault() {
-        return new Rule(5, 999, 0, 0, false);
+        return new Rule(5, 999, 0, 0, false, null);
     }
     
     public static Rule getBossBattle() {
-        return new Rule(5, 999, 0, 0, true);
+        return new Rule(5, 999, 0, 0, true, null);
     }
 }

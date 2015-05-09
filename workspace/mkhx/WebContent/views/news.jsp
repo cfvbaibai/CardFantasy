@@ -27,6 +27,7 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2015-05-09: 取消COST和卡槽数量限制，方便地下城的模拟</li>
                     <li>2015-04-25: <ul>
                         <li>添加新卡【投掷巨人】，感谢<x>晶蓝矢秩</x>提醒</li>
                         <li>添加新卡【白羊座】，感谢<x>不小心到了这里</x>, <x>联邦兽王</x>, <x>lg5zh</x>, <x>hatachaing</x>, <x>毓飞扬</x>, <x>li87684765</x>, <x>real11inter</x>的帮助</li>
