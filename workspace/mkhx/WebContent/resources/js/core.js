@@ -176,7 +176,7 @@ var playAutoGame = function(count) {
         'p2hhpb': arenaBattleOptions.p2HeroHpBuff,
         'p2catb': arenaBattleOptions.p2CardAtBuff,
         'p2chpb': arenaBattleOptions.p2CardHpBuff,
-        'condition': arenaBattleOptions.condition,
+        'vc1': arenaBattleOptions.victoryCondition1,
         'count': count
     };
 
@@ -298,7 +298,7 @@ var BattleOptions = function() {
     this.p2HeroHpBuff = 100;
     this.p2CardAtBuff = 100;
     this.p2CardHpBuff = 100;
-    this.condition = 'Any';
+    this.victoryCondition1 = 'Any';
 
     this.toString = function() {
         var result = '';
@@ -321,7 +321,7 @@ var BattleOptions = function() {
         result += '; HHP2: ' + this.p2HeroHpBuff + '%';
         result += '; CAT2: ' + this.p2CardAtBuff + '%';
         result += '; CHP2: ' + this.p2CardHpBuff + '%';
-        result += '; 玩家1胜利条件: ' + this.condition;
+        result += '; 玩家1胜利条件: ' + this.victoryCondition1;
         return result;
     }
 };
@@ -341,7 +341,7 @@ var setBattleOptions = function(options, optionsDivId) {
     $('#p2-hero-hp-buff').val(options.p2HeroHpBuff);
     $('#p2-card-at-buff').val(options.p2CardAtBuff);
     $('#p2-card-hp-buff').val(options.p2CardHpBuff);
-    $('#condition').val(options.condition);
+    $('#victory-condition-1').val(options.victoryCondition1);
 };
 Core.setBattleOptions = setBattleOptions;
 
@@ -355,7 +355,7 @@ var updateBattleOptions = function() {
     options.p2HeroHpBuff = $('#p2-hero-hp-buff').val();
     options.p2CardAtBuff = $('#p2-card-at-buff').val();
     options.p2CardHpBuff = $('#p2-card-hp-buff').val();
-    options.condition = $('#condition').val();
+    options.victoryCondition1 = $('#victory-condition-1').val();
     setBattleOptionsText(options, updateBattleOptions.currentOptionsDivId);
     history.go(-1);
 };

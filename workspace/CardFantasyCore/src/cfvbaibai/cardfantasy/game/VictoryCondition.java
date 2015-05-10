@@ -55,7 +55,7 @@ public abstract class VictoryCondition {
             } else if (parts[0].equals("H")) {
                 race = Race.HELL;
             } else {
-                throw new CardFantasyRuntimeException("Invalid race definition in CardOfRace victory condition: " + parts[0]);
+                throw new CardFantasyRuntimeException("胜利条件中发现非法的种族: " + parts[0]);
             }
             int minCount = Integer.parseInt(parts[1]);
             return new CardOfRaceVictoryCondition(race, minCount);
@@ -66,7 +66,7 @@ public abstract class VictoryCondition {
             String rest = desc.substring(8);
             return new HasRuneVictoryCondition(toRuneClass(rest));
         } else {
-            throw new CardFantasyRuntimeException("Invalid victory condition desc: " + desc);
+            throw new CardFantasyRuntimeException("无效的胜利条件: " + desc);
         }
     }
     
@@ -218,7 +218,11 @@ class NoRuneVictoryCondition extends VictoryCondition {
     }
     @Override
     public String getDescription() {
-        return "卡组中无符文";
+        if (runeClass == null) {
+            return "卡组中无符文";
+        } else {
+            return "卡组中不包含" + runeClass.getDisplayName() + "属性符文";
+        }
     }
 }
 
@@ -226,7 +230,7 @@ class HasRuneVictoryCondition extends VictoryCondition {
     private RuneClass runeClass;
     public HasRuneVictoryCondition(RuneClass runeClass) {
         if (runeClass == null) {
-            throw new IllegalArgumentException("runeClass should not be null");
+            throw new IllegalArgumentException("胜利条件中缺少符文属性");
         }
         this.runeClass = runeClass;
     }

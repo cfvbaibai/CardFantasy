@@ -72,10 +72,14 @@ public final class DeckBuilder {
     }
     
     private static boolean parseAndAddRune(DeckStartupInfo deck, String desc) {
+        if (desc.contains("*0")) {
+            return true;
+        }
         Rune rune = parseRuneDesc(desc);
 
-        if (rune == null)
+        if (rune == null) {
             return false;
+        }
 
         deck.addRune(rune);
         return true;

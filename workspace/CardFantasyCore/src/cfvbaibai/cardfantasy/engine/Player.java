@@ -78,7 +78,7 @@ public class Player extends EntityInfo {
         return this.playerInfo.getRuneSlot();
     }
     
-    private PlayerInfo getPlayerInfo() {
+    public PlayerInfo getPlayerInfo() {
         return this.playerInfo;
     }
     

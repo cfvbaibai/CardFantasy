@@ -8,7 +8,6 @@ import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
 import cfvbaibai.cardfantasy.CardFantasyUserRuntimeException;
 import cfvbaibai.cardfantasy.GameOverSignal;
 import cfvbaibai.cardfantasy.GameUI;
-import cfvbaibai.cardfantasy.Global;
 import cfvbaibai.cardfantasy.data.Card;
 import cfvbaibai.cardfantasy.data.PlayerInfo;
 import cfvbaibai.cardfantasy.data.Rune;
@@ -76,10 +75,7 @@ public class BattleEngine {
         return this.stage.getInactivePlayers().get(0);
     }
     
-    private void validateDeck(PlayerInfo playerInfo) {
-        if (Global.isValidationDisabled()) {
-            return;
-        }
+    public static void validateDeck(PlayerInfo playerInfo) {
         if (playerInfo.isNormalPlayer() && playerInfo.getLevel() > 150) {
             throw new CardFantasyUserRuntimeException(String.format(
                     "%s 的等级过高：%d！玩家等级不得超过150级。",
@@ -115,8 +111,6 @@ public class BattleEngine {
     }
 
     public void registerPlayers(PlayerInfo player1Info, PlayerInfo player2Info) {
-        validateDeck(player1Info);
-        validateDeck(player2Info);
         stage.addPlayer(player1Info);
         stage.addPlayer(player2Info);
     }

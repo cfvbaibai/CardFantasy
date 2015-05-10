@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
     <div id="battle-options" data-role="page" data-title="战斗选项设置" data-mini="true">
         <div data-role="header" data-theme="c" data-position="fixed">
-            <h3 style="text-align: center">战斗选项设置</h3>
+            <h3 style="text-align: center">战斗规则设置</h3>
         </div>
         <div data-role="content" data-theme="c">
             <div id="battle-options-setter">
@@ -49,13 +49,9 @@
                             <td>%</td>
                         </tr>
                         <tr>
-                            <td>玩家1胜利条件</td>
+                            <td>玩家1胜利条件[<a href="#help" target="_blank">帮助</a>]</td>
                             <td>
-                                <select data-theme="c" id="condition" data-mini="true" data-native-menu="false">
-                                    <option value="Any" selected="selected">任意</option>
-                                    <option value="EnemyAllCardsDie">敌方卡牌全灭</option>
-                                    <option value="Round:48">48回合获胜</option>
-                                </select>
+                                <input data-theme="c" type="text" id="victory-condition-1" data-mini="true" value="Any" />
                             </td>
                             <td></td>
                         </tr>

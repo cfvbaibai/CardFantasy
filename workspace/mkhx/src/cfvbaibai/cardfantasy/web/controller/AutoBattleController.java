@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
+import cfvbaibai.cardfantasy.CardFantasyUserRuntimeException;
 import cfvbaibai.cardfantasy.GameUI;
 import cfvbaibai.cardfantasy.Randomizer;
 import cfvbaibai.cardfantasy.data.Card;
@@ -107,7 +108,7 @@ public class AutoBattleController {
         return stat;
     }
 
-    private void outputBattleOptions(PrintWriter writer, int firstAttack, int deckOrder, int p1hhpb, int p1catb, int p1chpb, int p2hhpb, int p2catb, int p2chpb, VictoryCondition condition) {
+    private void outputBattleOptions(PrintWriter writer, int firstAttack, int deckOrder, int p1hhpb, int p1catb, int p1chpb, int p2hhpb, int p2catb, int p2chpb, VictoryCondition vc1) {
         if (firstAttack == -1) {
             writer.write("按规则决定先攻");
         } else if (firstAttack == 0) {
@@ -140,8 +141,8 @@ public class AutoBattleController {
         if (p2chpb != 100) {
             writer.write("玩家2卡牌体力调整: " + p2chpb + "%<br />");
         }
-        if (condition != null && !(condition instanceof DummyVictoryCondition)) {
-            writer.write("玩家1胜利条件: " + condition.getDescription() + "<br />");
+        if (vc1 != null && !(vc1 instanceof DummyVictoryCondition)) {
+            writer.write("玩家1胜利条件: " + vc1.getDescription() + "<br />");
         }
     }
 
@@ -152,18 +153,18 @@ public class AutoBattleController {
             @RequestParam("fa") int firstAttack, @RequestParam("do") int deckOrder,
             @RequestParam("p1hhpb") int p1HeroHpBuff, @RequestParam("p1catb") int p1CardAtBuff, @RequestParam("p1chpb") int p1CardHpBuff,
             @RequestParam("p2hhpb") int p2HeroHpBuff, @RequestParam("p2catb") int p2CardAtBuff, @RequestParam("p2chpb") int p2CardHpBuff,
-            @RequestParam("condition") String condition
+            @RequestParam("vc1") String victoryConditionText1
             ) throws IOException {
         PrintWriter writer = response.getWriter();
         try {
             logger.info("PlayAuto1MatchGame from " + request.getRemoteAddr() + ":");
             String logMessage = String.format(
-                "Deck1=%s<br />Deck2=%s<br />Lv1=%d, Lv2=%d, FirstAttack=%d, DeckOrder=%d",
-                deck1, deck2, heroLv1, heroLv2, firstAttack, deckOrder);
+                "Deck1=%s<br />Deck2=%s<br />Lv1=%d, Lv2=%d, FirstAttack=%d, DeckOrder=%d, VictoryCondition1=%s",
+                deck1, deck2, heroLv1, heroLv2, firstAttack, deckOrder, victoryConditionText1);
             logger.info(logMessage);
-            VictoryCondition vc = VictoryCondition.parse(condition);
+            VictoryCondition vc1 = VictoryCondition.parse(victoryConditionText1);
             this.userActionRecorder.addAction(new UserAction(new Date(), request.getRemoteAddr(), "Play Auto 1Match Game", logMessage));
-            outputBattleOptions(writer, firstAttack, deckOrder, p1HeroHpBuff, p1CardAtBuff, p1CardHpBuff, p2HeroHpBuff, p2CardAtBuff, p2CardHpBuff, vc);
+            outputBattleOptions(writer, firstAttack, deckOrder, p1HeroHpBuff, p1CardAtBuff, p1CardHpBuff, p2HeroHpBuff, p2CardAtBuff, p2CardHpBuff, vc1);
             List<Skill> p1CardBuffs = new ArrayList<Skill>();
             if (p1CardAtBuff != 100) {
                 p1CardBuffs.add(new TrivialSkill(SkillType.原始攻击调整, p1CardAtBuff - 100));
@@ -181,14 +182,33 @@ public class AutoBattleController {
             }
             PlayerInfo player2 = PlayerBuilder.build(heroLv2 != 0, "玩家2", deck2, heroLv2, p2CardBuffs, p2HeroHpBuff);
             WebPlainTextGameUI ui = new WebPlainTextGameUI();
-            BattleEngine engine = new BattleEngine(ui, new Rule(5, 999, firstAttack, deckOrder, false, vc));
+            BattleEngine engine = new BattleEngine(ui, new Rule(5, 999, firstAttack, deckOrder, false, vc1));
             engine.registerPlayers(player1, player2);
             GameResult gameResult = engine.playGame();
-            writer.print(Utils.getCurrentDateTime() + "<br />" + ui.getAllText());
+            writer.print(Utils.getCurrentDateTime() + "<br />" + getDeckValidationResult(player1, player2) + ui.getAllText());
             logger.info("Winner: " + gameResult.getWinner().getId());
         } catch (Exception e) {
             writer.print(errorHelper.handleError(e, false));
         }
+    }
+
+    private String getDeckValidationResult(PlayerInfo player1, PlayerInfo player2) {
+        String result = "";
+        if (player1 != null) {
+            try {
+                BattleEngine.validateDeck(player1);
+            } catch (CardFantasyUserRuntimeException e) {
+                result += "<div style='color: red'>" + e.getMessage() + "</div>";
+            }
+        }
+        if (player2 != null) {
+            try {
+                BattleEngine.validateDeck(player2);
+            } catch (CardFantasyUserRuntimeException e) {
+                result += "<div style='color: red'>" + e.getMessage() + "</div>";
+            }
+        }
+        return result;
     }
 
     @RequestMapping(value = "/SimAuto1MatchGame", headers = "Accept=application/json")
@@ -198,15 +218,15 @@ public class AutoBattleController {
             @RequestParam("fa") int firstAttack, @RequestParam("do") int deckOrder,
             @RequestParam("p1hhpb") int p1HeroHpBuff, @RequestParam("p1catb") int p1CardAtBuff, @RequestParam("p1chpb") int p1CardHpBuff,
             @RequestParam("p2hhpb") int p2HeroHpBuff, @RequestParam("p2catb") int p2CardAtBuff, @RequestParam("p2chpb") int p2CardHpBuff,
-            @RequestParam("condition") String condition
+            @RequestParam("vc1") String victoryConditionText1
     ) throws IOException {
         PrintWriter writer = response.getWriter();
         response.setContentType("application/json");
         try {
             logger.info("SimulateAuto1MatchGame from " + request.getRemoteAddr() + ":");
             String logMessage = String.format(
-                "Deck1=%s<br />Deck2=%s<br />Lv1=%d, Lv2=%d, FirstAttack=%d, DeckOrder=%d",
-                deck1, deck2, heroLv1, heroLv2, firstAttack, deckOrder);
+                "Deck1=%s<br />Deck2=%s<br />Lv1=%d, Lv2=%d, FirstAttack=%d, DeckOrder=%d, VictoryCondition1=%s",
+                deck1, deck2, heroLv1, heroLv2, firstAttack, deckOrder, victoryConditionText1);
             logger.info(logMessage);
             this.userActionRecorder.addAction(new UserAction(new Date(), request.getRemoteAddr(), "Simulate Auto 1Match Game", logMessage));
 
@@ -227,7 +247,7 @@ public class AutoBattleController {
             }
             PlayerInfo player2 = PlayerBuilder.build(heroLv2 != 0, "玩家2", deck2, heroLv2, p2CardBuffs, p2HeroHpBuff);
             StructuredRecordGameUI ui = new StructuredRecordGameUI();
-            BattleEngine engine = new BattleEngine(ui, new Rule(5, 999, firstAttack, deckOrder, false, VictoryCondition.parse(condition)));
+            BattleEngine engine = new BattleEngine(ui, new Rule(5, 999, firstAttack, deckOrder, false, VictoryCondition.parse(victoryConditionText1)));
             engine.registerPlayers(player1, player2);
             GameResult gameResult = engine.playGame();
             BattleRecord record = ui.getRecord();
@@ -245,17 +265,17 @@ public class AutoBattleController {
             @RequestParam("fa") int firstAttack, @RequestParam("do") int deckOrder,
             @RequestParam("p1hhpb") int p1HeroHpBuff, @RequestParam("p1catb") int p1CardAtBuff, @RequestParam("p1chpb") int p1CardHpBuff,
             @RequestParam("p2hhpb") int p2HeroHpBuff, @RequestParam("p2catb") int p2CardAtBuff, @RequestParam("p2chpb") int p2CardHpBuff,
-            @RequestParam("condition") String condition
+            @RequestParam("vc1") String victoryConditionText1
     ) throws IOException {
         PrintWriter writer = response.getWriter();
         try {
             logger.info("PlayAutoMassiveGame from " + request.getRemoteAddr() + ":");
-            String logMessage = String.format("Deck1=%s<br />Deck2=%s<br />Lv1=%d, Lv2=%d, FirstAttack=%d, DeckOrder=%d, Count=%d",
-                deck1, deck2, heroLv1, heroLv2, firstAttack, deckOrder, count);
+            String logMessage = String.format("Deck1=%s<br />Deck2=%s<br />Lv1=%d, Lv2=%d, FirstAttack=%d, DeckOrder=%d, Count=%d, VictoryCondition1=%s",
+                deck1, deck2, heroLv1, heroLv2, firstAttack, deckOrder, count, victoryConditionText1);
             logger.info(logMessage);
             this.userActionRecorder.addAction(new UserAction(new Date(), request.getRemoteAddr(), "Play Auto Massive Game", logMessage));
-            VictoryCondition vc = VictoryCondition.parse(condition);
-            outputBattleOptions(writer, firstAttack, deckOrder, p1HeroHpBuff, p1CardAtBuff, p1CardHpBuff, p2HeroHpBuff, p2CardAtBuff, p2CardHpBuff, vc);
+            VictoryCondition vc1 = VictoryCondition.parse(victoryConditionText1);
+            outputBattleOptions(writer, firstAttack, deckOrder, p1HeroHpBuff, p1CardAtBuff, p1CardHpBuff, p2HeroHpBuff, p2CardAtBuff, p2CardHpBuff, vc1);
             List<Skill> p1CardBuffs = new ArrayList<Skill>();
             if (p1CardAtBuff != 100) {
                 p1CardBuffs.add(new TrivialSkill(SkillType.原始攻击调整, p1CardAtBuff - 100));
@@ -272,13 +292,14 @@ public class AutoBattleController {
                 p2CardBuffs.add(new TrivialSkill(SkillType.原始体力调整, p2CardHpBuff - 100));
             }
             PlayerInfo player2 = PlayerBuilder.build(heroLv2 != 0, "玩家2", deck2, heroLv2, p2CardBuffs, p2HeroHpBuff);
-            GameResultStat stat = play(player1, player2, count, new Rule(5, 999, firstAttack, deckOrder, false, vc));
+            GameResultStat stat = play(player1, player2, count, new Rule(5, 999, firstAttack, deckOrder, false, vc1));
             writer.append(Utils.getCurrentDateTime() + "<br />");
+            writer.append(this.getDeckValidationResult(player1, player2));
             writer.append("<table>");
             writer.append("<tr><td>超时: </td><td>" + stat.getTimeoutCount() + "</td></tr>");
             writer.append("<tr><td>玩家1获胜: </td><td>" + stat.getP1Win() + "</td></tr>");
             writer.append("<tr><td>玩家2获胜: </td><td>" + stat.getP2Win() + "</td></tr>");
-            if (!(vc instanceof DummyVictoryCondition)) {
+            if (!(vc1 instanceof DummyVictoryCondition)) {
                 writer.append("<tr><td>条件符合: </td><td>" + stat.getConditionMet() + "</td></tr>");
             }
             writer.append("</table>");
@@ -587,6 +608,7 @@ public class AutoBattleController {
             engine.registerPlayers(player1, player2);
             GameResult gameResult = engine.playGame();
             writer.print(Utils.getCurrentDateTime() + "<br />");
+            writer.print(this.getDeckValidationResult(null, player2));
             writer.print("造成伤害：" + gameResult.getDamageToBoss() + "<br />");
             writer.print("------------------ 战斗过程 ------------------<br />");
             writer.print(ui.getAllText());
@@ -710,6 +732,7 @@ public class AutoBattleController {
             List<Skill> legionBuffs = SkillBuilder.buildLegionBuffs(buffKingdom, buffForest, buffSavage, buffHell);
             PlayerInfo player2 = PlayerBuilder.build(true, "玩家", deck, heroLv, legionBuffs, 100);
             writer.append(Utils.getCurrentDateTime() + "<br />");
+            writer.print(this.getDeckValidationResult(null, player2));
             OneDimensionDataStat stat = new OneDimensionDataStat();
             int timeoutCount = 0;
             Rule rule = Rule.getBossBattle();
@@ -866,7 +889,7 @@ public class AutoBattleController {
             WebPlainTextGameUI ui = new WebPlainTextGameUI();
             PveEngine engine = new PveEngine(ui, Rule.getDefault(), this.maps);
             PveGameResult gameResult = engine.play(player, map);
-            writer.print(Utils.getCurrentDateTime() + "<br />" + ui.getAllText());
+            writer.print(Utils.getCurrentDateTime() + "<br />" + this.getDeckValidationResult(null, player) + ui.getAllText());
             logger.info("Result: " + gameResult.name());
         } catch (Exception e) {
             writer.print(errorHelper.handleError(e, false));
@@ -914,6 +937,7 @@ public class AutoBattleController {
             PlayerInfo player = PlayerBuilder.build(true, "玩家", deck, heroLv);
             PveGameResultStat stat = engine.massivePlay(player, map, count);
             writer.append(Utils.getCurrentDateTime() + "<br />");
+            writer.append(this.getDeckValidationResult(null, player));
             writer.append("<table>");
             for (PveGameResult gameResult : PveGameResult.values()) {
                 writer.append(String.format("<tr><td>%s: </td><td>%d</td></tr>",
