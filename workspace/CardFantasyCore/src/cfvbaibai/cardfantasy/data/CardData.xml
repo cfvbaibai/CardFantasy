@@ -360,6 +360,11 @@
         <Skill type="盾刺" level="6" unlock="5" />
         <Skill type="不动" level="0" unlock="10" />
     </Card>
+    <Card id="1438" name="屠龙勇士" wikiId="" race="王国" speed="2" star="4" cost="14" incrCost="2" at="350" hp="990" incrAT="30" incrHP="29">
+        <Skill type="王国之力" level="5" unlock="0" />
+        <Skill type="暴击" level="5" unlock="5" />
+        <Skill type="裂伤" level="0" unlock="10" />
+    </Card>
 
     <Card id="1501" name="降临天使" wikiId="30922" race="王国" speed="4" star="5" cost="15" incrCost="3" at="365" hp="1800" incrAT="24" incrHP="24">
         <Skill type="魔甲" level="8" unlock="0" />
