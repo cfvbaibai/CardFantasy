@@ -27,6 +27,7 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2015-05-17: 添加新技能【燕返】，添加新卡【欲望惩罚者】、【月镰杀手】，感谢<x>real11inter</x>, <x>bendlueng99</x>, <x>千下</x>, <x>jiye30</x>的帮助</li>
                     <li>2015-05-10: <ul>
                         <li>添加新卡【羽蛇神】、【屠龙勇士】</li>
                         <li>现在竞技场战的胜利条件可以用文字自由设定了，点击[<a href="#help" target="_blank">查看胜利条件的写法</a>]</li>
@@ -63,7 +64,7 @@
                         <li>为了方便优化卡组，现在可以使用<b>凤凰*0</b>这样的表示法了</li>
                     </ul></li>
                     <li>2015-02-14: <ul>
-                        <li>添加新卡：【爱神】、【圣泉之灵】、【月镰杀手】</li>
+                        <li>添加新卡：【爱神】、【圣泉之灵】</li>
                         <li>修复【献祭】和【复活】作用是的一个BUG，感谢<x>My_陌艾</x>报告BUG</li>
                     </ul></li>
                     <li>2015-02-13: <ul>

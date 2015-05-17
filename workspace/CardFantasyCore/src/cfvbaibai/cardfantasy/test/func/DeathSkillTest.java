@@ -201,4 +201,48 @@ public class DeathSkillTest extends SkillValidationTest {
         
         Assert.assertEquals(565 * 2, 5000 - c占位符1.getHP());
     }
+    
+    /**
+     * 不屈可以造成燕返触发两次
+     * 免疫无法阻挡燕返
+     * 格挡无法削弱燕返伤害
+     */
+    @Test
+    public void test燕返_不屈_免疫_格挡() {
+        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "金属巨龙-15*2", "占位符", "欲望惩罚者");
+        CardInfo c金属巨龙1 = context.addToField(0, 0);
+        CardInfo c金属巨龙2 = context.addToField(1, 0);
+        context.addToField(2, 0);
+        CardInfo c欲望惩罚者 = context.addToField(3, 1).setBasicHP(2);
+        context.startGame();
+        
+        random.addNextNumbers(0);    // 金属巨龙1暴击
+        context.proceedOneRound();
+        Assert.assertEquals(815 * 2, 1825 - c金属巨龙1.getHP());
+        Assert.assertTrue(c欲望惩罚者.getStatus().containsStatus(CardStatusType.不屈));
+        Assert.assertTrue(!c欲望惩罚者.isDead());
+        
+        context.proceedOneRound();
+        Assert.assertTrue(c金属巨龙1.isDead());
+
+        random.addNextNumbers(0);   // 金属巨龙2暴击
+        context.proceedOneRound();
+        Assert.assertEquals(815 * 2, 1825 - c金属巨龙2.getHP());
+        Assert.assertTrue(c欲望惩罚者.isDead());
+    }
+    
+    @Test
+    public void test燕返_摧毁() {
+        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "占位符", "独眼巨人", "欲望惩罚者");
+        CardInfo c占位符 = context.addToField(0, 0);
+        CardInfo c独眼巨人 = context.addToHand(1, 0).setSummonDelay(0);
+        CardInfo c欲望惩罚者 = context.addToField(2, 1);
+        context.startGame();
+        
+        random.addNextPicks(0); // 摧毁
+        context.proceedOneRound();
+        Assert.assertTrue(c欲望惩罚者.isDead());
+        Assert.assertEquals(815 * 2, 5000 - c占位符.getHP());
+        Assert.assertEquals(0, 1180 - c独眼巨人.getHP());
+    }
 }

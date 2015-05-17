@@ -1830,6 +1830,11 @@
         <Skill type="法力侵蚀" level="6" unlock="5" />
         <Skill type="地狱之力" level="6" unlock="10" />
     </Card>
+    <Card id="4524" name="欲望惩罚者" wikiId="" race="地狱" speed="4" star="5" cost="18" incrCost="2" at="365" hp="1350" incrAT="45" incrHP="33">
+        <Skill type="燕返" level="0" unlock="0" />
+        <Skill type="弱点攻击" level="0" unlock="5" />
+        <Skill type="不屈" level="0" unlock="10" />
+    </Card>
 
     <!-- 魔神 -->
     <Card id="5501" name="复仇女神" wikiId="30871" race="魔神" speed="4" star="5" cost="79" incrCost="0" at="1200" hp="10400000" incrAT="0" incrHP="0">
