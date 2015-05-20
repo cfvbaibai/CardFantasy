@@ -1719,6 +1719,11 @@
         <Skill type="地狱之力" level="5" unlock="5" />
         <Skill type="转生" level="5" unlock="10" />
     </Card>
+    <Card id="4434" name="恐怖失血者" wikiId="" race="地狱" speed="4" star="4" cost="13" incrCost="1" at="220" hp="1010" incrAT="22" incrHP="31">
+        <Skill type="法力侵蚀" level="7" unlock="0" />
+        <Skill type="鲜血盛宴" level="5" unlock="5" />
+        <Skill type="格挡" level="7" unlock="10" />
+    </Card>
 
     <Card id="4501" name="毁灭之龙" wikiId="31064" race="地狱" speed="6" star="5" cost="14" incrCost="2" at="350" hp="1270" incrAT="34" incrHP="34">
         <Skill type="暴击" level="6" unlock="0" />
