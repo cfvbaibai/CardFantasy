@@ -916,6 +916,11 @@
         <Skill type="寒霜冲击" level="7" unlock="5" />
         <Skill type="脱困" level="0" unlock="10" />
     </Card>
+    <Card id="2522" name="百花女神" wikiId="" race="森林" speed="4" star="5" cost="16" incrCost="2" at="375" hp="1670" incrAT="34" incrHP="25">
+        <Skill type="治疗之雾" level="8" unlock="0" />
+        <Skill type="神圣守护" level="7" unlock="5" />
+        <Skill type="回魂" level="1" unlock="10" />
+    </Card>
 
     <!-- 蛮荒  -->
     <Card id="3101" name="穴居人奴隶" wikiId="31006" race="蛮荒" speed="2" star="1" cost="4" incrCost="2" at="90" hp="390" incrAT="18" incrHP="11">
@@ -1077,6 +1082,11 @@
         <Skill type="死亡印记" level="5" unlock="0" />
         <Skill type="暗杀" level="6" unlock="5" />
         <Skill type="吸血" level="5" unlock="10" />
+    </Card>
+    <Card id="3319" name="野猪人卫士" wikiId="" race="蛮荒" speed="4" star="3" cost="11" incrCost="2" at="310" hp="930" incrAT="23" incrHP="25">
+        <Skill type="奋战" level="6" unlock="0" />
+        <Skill type="狂热" level="5" unlock="5" />
+        <Skill type="盾刺" level="5" unlock="10" />
     </Card>
 
     <Card id="3401" name="兽人将领" wikiId="31028" race="蛮荒" speed="6" star="4" cost="11" incrCost="0" at="245" hp="840" incrAT="20" incrHP="52">
@@ -1723,6 +1733,11 @@
         <Skill type="法力侵蚀" level="7" unlock="0" />
         <Skill type="鲜血盛宴" level="5" unlock="5" />
         <Skill type="格挡" level="7" unlock="10" />
+    </Card>
+    <Card id="4435" name="深渊吞噬者" wikiId="" race="地狱" speed="2" star="4" cost="12" incrCost="2" at="290" hp="1030" incrAT="29" incrHP="39">
+        <Skill type="连锁攻击" level="6" unlock="0" />
+        <Skill type="虚弱" level="0" unlock="5" />
+        <Skill type="穷追猛打" level="7" unlock="10" />
     </Card>
 
     <Card id="4501" name="毁灭之龙" wikiId="31064" race="地狱" speed="6" star="5" cost="14" incrCost="2" at="350" hp="1270" incrAT="34" incrHP="34">
