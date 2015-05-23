@@ -1418,13 +1418,16 @@ var Animater = function() {
             this.flyImage({ fileName: 'tsubame.png', width: 48, height: 48, text: skill },
                     attacker, defenders, settings.skillDuration);
         } else if (skill == '送还') {
-            this.flyImage({ fileName: 'cross.png', width: 29, height: 60, text: skill },
+            this.flyImage({ fileName: 'cross.png', width: 48, height: 48, text: skill },
                     attacker, defenders, settings.skillDuration);
         } else if (skill == '传送') {
             this.flyImage({ fileName: 'redcross.png', width: 24, height: 24, text: skill, },
                     attacker, defenders, settings.skillDuration);
-        } else if (skill == '魔力法阵') {
+        } else if (skill == '魔力法阵' || skill == '魔力印记') {
             this.flyImage({ fileName: 'hexagram.png', width: 24, height: 24, text: skill, },
+                    attacker, defenders, settings.skillDuration);
+        } else if (skill == '闪光弹' || skill == '致盲') {
+            this.flyImage({ fileName: 'blind.png', width: 48, height: 48, text: skill, },
                     attacker, defenders, settings.skillDuration);
         } else if (skill == '免疫') {
             this.flyImage({ fileName: 'immue.png', width: 48, height: 48 },

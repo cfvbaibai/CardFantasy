@@ -27,6 +27,10 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2015-05-23: <ul>
+                        <li>添加新技能【闪光弹】、【致盲】，感谢<x>947053627</x>, <x>曾经的雪寂</x>, <x>裘可拉kiss</x>, <x>raffinat</x>, <x>灼眼阿卡林</x>, <x>司徒不想</x>, <x>唯一心3</x>, <x>为何打后</x>的帮助
+                        <li>添加新卡【堕落修女】、【金牛座】</li>
+                    </ul></li>
                     <li>2015-05-21: 添加新卡【百花女神】、【深渊吞噬者】、【野猪人卫士】</li>
                     <li>2015-05-20: 添加新卡【恐怖失血者】，感謝<x>lrxlrx207</x></li>
                     <li>2015-05-17: 添加新技能【燕返】，添加新卡【欲望惩罚者】、【月镰杀手】，感谢<x>real11inter</x>, <x>bendlueng99</x>, <x>千下</x>, <x>jiye30</x>的帮助</li>

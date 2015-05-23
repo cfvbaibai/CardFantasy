@@ -89,6 +89,10 @@ public class CardStatusItem {
     public static CardStatusItem magicMark(SkillUseInfo cause) {
         return new CardStatusItem(CardStatusType.魔印, 0, cause);
     }
+    
+    public static CardStatusItem blind(SkillUseInfo cause) {
+        return new CardStatusItem(CardStatusType.致盲, 0, cause);
+    }
 
     public static CardStatusItem raceChange(SkillUseInfo cause) {
         CardStatusType type = null;

@@ -844,4 +844,104 @@ public class SpecialStatusTest extends SkillValidationTest {
         Assert.assertEquals(0, 5000 - c占位符3.getHP());
         Assert.assertFalse(c占位符3.getStatus().containsStatus(CardStatusType.魔印));
     }
+    
+    @Test
+    public void test致盲_基本() {
+        SkillTestContext context = SkillValidationTestSuite.prepare(
+            50, 50, "占位符+致盲1", "秘银巨石像");
+        CardInfo c占位符 = context.addToField(0, 0);
+        CardInfo c秘银巨石像 = context.addToField(1, 1);
+        context.startGame();
+
+        random.addNextPicks(0); /* 致盲 */
+        context.proceedOneRound();
+        Assert.assertTrue(c秘银巨石像.getStatus().containsStatus(CardStatusType.致盲));
+
+        random.addNextNumbers(0); /* 被致盲的秘银巨石像被闪避 */
+        context.proceedOneRound();
+        Assert.assertEquals(0, 5000 - c占位符.getHP());
+        Assert.assertFalse(c秘银巨石像.getStatus().containsStatus(CardStatusType.致盲));
+        
+        random.addNextPicks(0); /*致盲 */
+        context.proceedOneRound();
+        Assert.assertTrue(c秘银巨石像.getStatus().containsStatus(CardStatusType.致盲));
+        
+        random.addNextNumbers(1000); /* 被致盲的秘银巨石像破解闪避 */
+        context.proceedOneRound();
+        Assert.assertEquals(660, 5000 - c占位符.getHP());
+        Assert.assertFalse(c秘银巨石像.getStatus().containsStatus(CardStatusType.致盲));
+    }
+    
+    @Test
+    public void test致盲_闪避() {
+        SkillTestContext context = SkillValidationTestSuite.prepare(
+            50, 50, "星辰主宰+致盲1", "秘银巨石像");
+        CardInfo c星辰主宰 = context.addToField(0, 0);
+        CardInfo c秘银巨石像 = context.addToField(1, 1);
+        context.startGame();
+
+        random.addNextPicks(0); /* 致盲 */
+        context.proceedOneRound();
+        Assert.assertTrue(c秘银巨石像.getStatus().containsStatus(CardStatusType.致盲));
+
+        //random.addNextNumbers(0); /* 因为星辰主宰有闪避技能，必定闪避，所以不再需要随机数决定是否闪避成功 */
+        context.proceedOneRound();
+        Assert.assertEquals(0, 1730 - c星辰主宰.getHP());
+        Assert.assertFalse(c秘银巨石像.getStatus().containsStatus(CardStatusType.致盲));
+    }
+    
+    @Test
+    public void test致盲_免疫() {
+        SkillTestContext context = SkillValidationTestSuite.prepare(
+            50, 50, "占位符+致盲1", "秘银巨石像+免疫");
+        CardInfo c占位符 = context.addToField(0, 0);
+        CardInfo c秘银巨石像 = context.addToField(1, 1);
+        context.startGame();
+
+        random.addNextPicks(0); /* 致盲 */
+        context.proceedOneRound();
+        // 致盲被免疫
+        Assert.assertFalse(c秘银巨石像.getStatus().containsStatus(CardStatusType.致盲));
+
+        context.proceedOneRound();
+        Assert.assertEquals(810, 5000 - c占位符.getHP());
+        Assert.assertFalse(c秘银巨石像.getStatus().containsStatus(CardStatusType.致盲));
+    }
+    
+    @Test
+    public void test致盲_脱困() {
+        SkillTestContext context = SkillValidationTestSuite.prepare(
+            50, 50, "占位符+致盲1", "秘银巨石像+脱困");
+        CardInfo c占位符 = context.addToField(0, 0);
+        CardInfo c秘银巨石像 = context.addToField(1, 1);
+        context.startGame();
+
+        random.addNextPicks(0); /* 致盲 */
+        context.proceedOneRound();
+        // 脱困无法阻挡致盲
+        Assert.assertTrue(c秘银巨石像.getStatus().containsStatus(CardStatusType.致盲));
+
+        random.addNextNumbers(0); /* 被致盲的秘银巨石像被闪避 */
+        context.proceedOneRound();
+        Assert.assertEquals(0, 5000 - c占位符.getHP());
+        Assert.assertFalse(c秘银巨石像.getStatus().containsStatus(CardStatusType.致盲));
+    }
+    
+    @Test
+    public void test致盲_弱点攻击() {
+        SkillTestContext context = SkillValidationTestSuite.prepare(
+            50, 50, "占位符+致盲10", "秘银巨石像+弱点攻击");
+        CardInfo c占位符 = context.addToField(0, 0);
+        CardInfo c秘银巨石像 = context.addToField(1, 1);
+        context.startGame();
+
+        random.addNextPicks(0); /* 致盲 */
+        context.proceedOneRound();
+        Assert.assertTrue(c秘银巨石像.getStatus().containsStatus(CardStatusType.致盲));
+
+        random.addNextNumbers(0); /* 被致盲的秘银巨石像被闪避，但又会被弱点攻击破解 */
+        context.proceedOneRound();
+        Assert.assertEquals(810, 5000 - c占位符.getHP());
+        Assert.assertFalse(c秘银巨石像.getStatus().containsStatus(CardStatusType.致盲));
+    }
 }

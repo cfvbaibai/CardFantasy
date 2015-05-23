@@ -20,6 +20,7 @@ import cfvbaibai.cardfantasy.engine.skill.BackStab;
 import cfvbaibai.cardfantasy.engine.skill.BasicAtBuff;
 import cfvbaibai.cardfantasy.engine.skill.BasicHpBuff;
 import cfvbaibai.cardfantasy.engine.skill.Bless;
+import cfvbaibai.cardfantasy.engine.skill.Blind;
 import cfvbaibai.cardfantasy.engine.skill.Block;
 import cfvbaibai.cardfantasy.engine.skill.BloodDrain;
 import cfvbaibai.cardfantasy.engine.skill.BloodPaint;
@@ -301,6 +302,12 @@ public class SkillResolver {
                 Summon.apply(this, skillUseInfo, attacker, "炎魔");
             } else if (skillUseInfo.getType() == SkillType.魔力法阵) {
                 MagicMark.apply(this, skillUseInfo, attacker, defender, -1);
+            } else if (skillUseInfo.getType() == SkillType.魔力印记) {
+                MagicMark.apply(this, skillUseInfo, attacker, defender, 1);
+            } else if (skillUseInfo.getType() == SkillType.致盲) {
+                Blind.apply(this, skillUseInfo, attacker, defender, 1);
+            } else if (skillUseInfo.getType() == SkillType.闪光弹) {
+                Blind.apply(this, skillUseInfo, attacker, defender, -1);
             }
         }
         RuneInfo rune = attacker.getOwner().getActiveRuneOf(RuneData.飞岩);
@@ -410,6 +417,14 @@ public class SkillResolver {
                         if (!result.isAttackable()) {
                             return result;
                         }
+                    }
+                }
+                List<CardStatusItem> blindItems = attacker.getStatus().getStatusOf(CardStatusType.致盲);
+                if (!blindItems.isEmpty()) {
+                    Skill skill = Blind.getDodgeSkill(blindItems);
+                    result.setAttackable(!Dodge.apply(skill, this, cardAttacker, defender, result.getDamage()));
+                    if (!result.isAttackable()) {
+                        return result;
                     }
                 }
                 {
@@ -624,6 +639,8 @@ public class SkillResolver {
                 Resurrection.apply(this, deadCardSkillUseInfo, deadCard);
             } else if (deadCardSkillUseInfo.getType() == SkillType.召唤炎魔) {
                 Summon.apply(this, deadCardSkillUseInfo, deadCard, "炎魔");
+            } else if (deadCardSkillUseInfo.getType() == SkillType.全体阻碍) {
+                AllDelay.apply(deadCardSkillUseInfo, this, deadCard, killerCard.getOwner());
             }
         }
         for (SkillUseInfo deadCardSkillUseInfo : deadCard.getAllUsableSkills()) {

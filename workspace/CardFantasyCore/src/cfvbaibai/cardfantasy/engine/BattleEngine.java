@@ -277,6 +277,7 @@ public class BattleEngine {
                 resolver.removeStatus(myField.getCard(i), CardStatusType.锁定);
                 resolver.removeStatus(myField.getCard(i), CardStatusType.麻痹);
                 resolver.removeStatus(myField.getCard(i), CardStatusType.晕眩);
+                resolver.removeStatus(myField.getCard(i), CardStatusType.致盲);
             }
             else if (
                 status.containsStatus(CardStatusType.冰冻) ||
@@ -288,6 +289,7 @@ public class BattleEngine {
                 resolver.removeStatus(myField.getCard(i), CardStatusType.冰冻);
                 resolver.removeStatus(myField.getCard(i), CardStatusType.锁定);
                 resolver.removeStatus(myField.getCard(i), CardStatusType.晕眩);
+                resolver.removeStatus(myField.getCard(i), CardStatusType.致盲);
             } else {
                 tryAttackEnemy(myField, opField, i);
             }
@@ -312,6 +314,7 @@ public class BattleEngine {
             resolver.removeStatus(myField.getCard(i), CardStatusType.森林);
             resolver.removeStatus(myField.getCard(i), CardStatusType.蛮荒);
             resolver.removeStatus(myField.getCard(i), CardStatusType.地狱);
+            resolver.removeStatus(myField.getCard(i), CardStatusType.致盲);
             resolver.resolveDebuff(myField.getCard(i), CardStatusType.中毒);
             resolver.resolveDebuff(myField.getCard(i), CardStatusType.燃烧);
 

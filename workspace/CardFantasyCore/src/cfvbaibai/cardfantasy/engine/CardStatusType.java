@@ -15,6 +15,7 @@ public enum CardStatusType {
     不屈(false, "倔"),
     死印(false, "死"),
     魔印(false, "魔"),
+    致盲(false, "盲"),
     王国(false, "王"),
     森林(false, "森"),
     蛮荒(false, "蛮"),

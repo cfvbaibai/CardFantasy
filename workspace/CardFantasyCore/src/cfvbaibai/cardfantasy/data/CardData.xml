@@ -1088,7 +1088,6 @@
         <Skill type="狂热" level="5" unlock="5" />
         <Skill type="盾刺" level="5" unlock="10" />
     </Card>
-
     <Card id="3401" name="兽人将领" wikiId="31028" race="蛮荒" speed="6" star="4" cost="11" incrCost="0" at="245" hp="840" incrAT="20" incrHP="52">
         <Skill type="反击" level="7" unlock="0" />
         <Skill type="暗杀" level="7" unlock="5" />
@@ -1374,6 +1373,11 @@
         <Skill type="法力侵蚀" level="9" unlock="0" />
         <Skill type="闪避" level="8" unlock="5" />
         <Skill type="免疫" level="0" unlock="10" />
+    </Card>
+    <Card id="3520" name="金牛座" wikiId="" race="蛮荒" speed="4" star="5" cost="17" incrCost="2" at="420" hp="1500" incrAT="40" incrHP="30">
+        <Skill type="闪光弹" level="3" unlock="0" />
+        <Skill type="全体阻碍" level="1" unlock="5" death="true" />
+        <Skill type="不屈" level="0" unlock="10" />
     </Card>
 
     <!-- 地狱 -->
@@ -1738,6 +1742,11 @@
         <Skill type="连锁攻击" level="6" unlock="0" />
         <Skill type="虚弱" level="0" unlock="5" />
         <Skill type="穷追猛打" level="7" unlock="10" />
+    </Card>
+    <Card id="4436" name="堕落修女" wikiId="" race="地狱" speed="2" star="4" cost="13" incrCost="2" at="260" hp="880" incrAT="29" incrHP="35">
+        <Skill type="致盲" level="7" unlock="0" />
+        <Skill type="魔力印记" level="7" unlock="5" />
+        <Skill type="二重狙击" level="5" unlock="10" />
     </Card>
 
     <Card id="4501" name="毁灭之龙" wikiId="31064" race="地狱" speed="6" star="5" cost="14" incrCost="2" at="350" hp="1270" incrAT="34" incrHP="34">
