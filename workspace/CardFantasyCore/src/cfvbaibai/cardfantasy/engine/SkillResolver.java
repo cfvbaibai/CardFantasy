@@ -300,6 +300,8 @@ public class SkillResolver {
                 Summon.apply(this, skillUseInfo, attacker, "霜雪树人", "树人祭司");
             } else if (skillUseInfo.getType() == SkillType.召唤炎魔) {
                 Summon.apply(this, skillUseInfo, attacker, "炎魔");
+            } else if (skillUseInfo.getType() == SkillType.双子之身) {
+                Summon.apply(this, skillUseInfo, attacker, "双子分身");
             } else if (skillUseInfo.getType() == SkillType.魔力法阵) {
                 MagicMark.apply(this, skillUseInfo, attacker, defender, -1);
             } else if (skillUseInfo.getType() == SkillType.魔力印记) {

@@ -165,6 +165,7 @@ public enum SkillType {
     召唤女神侍者("80191", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
     召唤树人守护者("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
     召唤炎魔("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
+    双子之身("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
 
     圣光洗礼("", 0, 0, SkillTag.抗免疫, SkillTag.不可洗炼),
     森林沐浴("", 1, 0, SkillTag.抗免疫, SkillTag.不可洗炼),

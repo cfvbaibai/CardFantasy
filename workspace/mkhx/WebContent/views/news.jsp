@@ -27,6 +27,10 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2015-06-05: <ul>
+                        <li>添加新卡【双子座】</li>
+                        <li>添加新卡【机械魔偶】，感谢<x>青的魔法使</x></li>
+                    </ul></li>
                     <li>2015-05-23: <ul>
                         <li>添加新技能【闪光弹】、【致盲】，感谢<x>947053627</x>, <x>曾经的雪寂</x>, <x>裘可拉kiss</x>, <x>raffinat</x>, <x>灼眼阿卡林</x>, <x>司徒不想</x>, <x>唯一心3</x>, <x>为何打后</x>的帮助
                         <li>添加新卡【堕落修女】、【金牛座】</li>
