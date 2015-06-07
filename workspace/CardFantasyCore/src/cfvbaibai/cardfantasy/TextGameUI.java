@@ -448,6 +448,11 @@ public abstract class TextGameUI extends GameUI {
     }
 
     @Override
+    public void updateRuneEnergy(RuneInfo rune) {
+        sayF("%s 的能量增加了! 剩余能量: %d", rune.getShortDesc(), rune.getEnergy());
+    }
+
+    @Override
     public void compactField(Field field) {
         int originalSize = field.size();
         int aliveCardCount = field.getAliveCards().size();

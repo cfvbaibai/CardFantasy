@@ -27,6 +27,9 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2015-06-07: <ul>
+                        <li>添加新卡【彼岸使者】，感谢<x>real11inter</x>, <x>傲娇王孙</x>, <x>957065547</x>的提供情报</li>
+                    </ul></li>
                     <li>2015-06-05: <ul>
                         <li>添加新卡【双子座】</li>
                         <li>添加新卡【机械魔偶】，感谢<x>青的魔法使</x></li>

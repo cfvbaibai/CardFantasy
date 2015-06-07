@@ -1876,6 +1876,11 @@
     </Card>
     <Card id="4526" name="双子分身" wikiId="" race="地狱" speed="1" star="5" cost="18" incrCost="2" at="390" hp="1600" incrAT="40" incrHP="35">
     </Card>
+    <Card id="4527" name="彼岸使者" wikiId="" race="地狱" speed="4" star="5" cost="18" incrCost="2" at="380" hp="1870" incrAT="37" incrHP="33">
+        <Skill type="动能追加" level="0" unlock="0" />
+        <Skill type="闪避" level="7" unlock="5" />
+        <Skill type="迷魂" level="8" unlock="10" />
+    </Card>
 
     <!-- 魔神 -->
     <Card id="5501" name="复仇女神" wikiId="30871" race="魔神" speed="4" star="5" cost="79" incrCost="0" at="1200" hp="10400000" incrAT="0" incrHP="0">

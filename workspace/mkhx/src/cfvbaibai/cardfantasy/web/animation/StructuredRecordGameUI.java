@@ -358,6 +358,12 @@ public class StructuredRecordGameUI extends GameUI {
         rii.setEnergy(rii.getEnergy() - 1);
         this.record.addEvent("deactivateRune", toPlayer(rune.getOwner()), rii, isFinalDeactivation);
     }
+    
+    @Override
+    public void updateRuneEnergy(RuneInfo rune) {
+        RuneInitInfo rii = new RuneInitInfo(rune);
+        this.record.addEvent("updateRuneEnergy", toPlayer(rune.getOwner()), rii);
+    }
 
     @Override
     public void compactField(Field field) {

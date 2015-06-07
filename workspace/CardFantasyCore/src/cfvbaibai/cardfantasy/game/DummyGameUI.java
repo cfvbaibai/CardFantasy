@@ -356,4 +356,10 @@ public class DummyGameUI extends GameUI {
         
     }
 
+    @Override
+    public void updateRuneEnergy(RuneInfo rune) {
+        // TODO Auto-generated method stub
+        
+    }
+
 }

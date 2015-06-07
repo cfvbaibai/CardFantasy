@@ -90,4 +90,8 @@ public class RuneInfo extends EntityInfo {
     public int getMaxEnergy() {
         return this.rune.getMaxEnergy();
     }
+
+    public void setEnergy(int energy) {
+        this.energy = energy;
+    }
 }

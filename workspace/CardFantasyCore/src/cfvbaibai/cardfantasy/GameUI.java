@@ -163,6 +163,8 @@ public abstract class GameUI {
 
     public abstract void deactivateRune(RuneInfo rune);
 
+    public abstract void updateRuneEnergy(RuneInfo rune);
+
     public abstract void compactField(Field field);
 
     public abstract void showMessage(String string);

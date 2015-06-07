@@ -1087,6 +1087,12 @@ var Animater = function() {
         }
     };
     
+    this.__updateRuneEnergy = function(data) {
+        var player = data[0];
+        var rune = data[1];
+        this.__updateRune(player, rune);
+    }
+
     this.__cardDrawed = function(data) {
         var playerId = data[0];
         var arena = this.arenas[playerId];

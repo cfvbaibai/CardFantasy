@@ -44,6 +44,7 @@ import cfvbaibai.cardfantasy.engine.skill.Dodge;
 import cfvbaibai.cardfantasy.engine.skill.EarthShield;
 import cfvbaibai.cardfantasy.engine.skill.EnergyArmor;
 import cfvbaibai.cardfantasy.engine.skill.EnergyDrain;
+import cfvbaibai.cardfantasy.engine.skill.EnergyIncrement;
 import cfvbaibai.cardfantasy.engine.skill.Enprison;
 import cfvbaibai.cardfantasy.engine.skill.Escape;
 import cfvbaibai.cardfantasy.engine.skill.Explode;
@@ -310,6 +311,8 @@ public class SkillResolver {
                 Blind.apply(this, skillUseInfo, attacker, defender, 1);
             } else if (skillUseInfo.getType() == SkillType.闪光弹) {
                 Blind.apply(this, skillUseInfo, attacker, defender, -1);
+            } else if (skillUseInfo.getType() == SkillType.动能追加) {
+                EnergyIncrement.apply(skillUseInfo, this, attacker);
             }
         }
         RuneInfo rune = attacker.getOwner().getActiveRuneOf(RuneData.飞岩);
