@@ -6,19 +6,19 @@
                 <div>
                     <fieldset class="select-2" data-theme="c" data-role="controlgroup" data-type="horizontal">
                         <select data-theme="c" name="boss-name" id="boss-name" data-mini="true" data-native-menu="false">
-                            <option value="复仇女神">复仇女神</option>
-                            <option value="邪龙之神">邪龙之神</option>
-                            <option value="噩梦之主">噩梦之主</option>
-                            <option value="毁灭之神">毁灭之神</option>
-                            <option value="深渊影魔">深渊影魔</option>
-                            <option value="万蛛之后">万蛛之后</option>
-
-                            <option value="旧复仇女神">旧复仇女神</option>
-                            <option value="旧邪龙之神">旧邪龙之神</option>
-                            <option value="旧噩梦之主">旧噩梦之主</option>
-                            <option value="旧毁灭之神">旧毁灭之神</option>
-                            <option value="旧深渊影魔">旧深渊影魔</option>
-                            <option value="旧万蛛之后">旧万蛛之后</option>
+                            <option value="狙击复仇女神">狙击复仇女神</option>
+                            <option value="送还复仇女神">送还复仇女神</option>
+                            <option value="连锁复仇女神">连锁复仇女神</option>
+                            <option value="迷魂邪龙之神">迷魂邪龙之神</option>
+                            <option value="盾刺邪龙之神">盾刺邪龙之神</option>
+                            <option value="振奋噩梦之主">振奋噩梦之主</option>
+                            <option value="格挡噩梦之主">格挡噩梦之主</option>
+                            <option value="邪吸毁灭之神">邪吸毁灭之神</option>
+                            <option value="焚神毁灭之神">焚神毁灭之神</option>
+                            <option value="弱点深渊影魔">弱点深渊影魔</option>
+                            <option value="诅咒深渊影魔">诅咒深渊影魔</option>
+                            <option value="回魂万蛛之后">回魂万蛛之后</option>
+                            <option value="无回魂万蛛之后">无回魂万蛛之后</option>
                         </select>
                         <select data-theme="c" name="guard-type" id="guard-type" data-mini="true" data-native-menu="false">
                             <option value="0">无杂兵</option>
