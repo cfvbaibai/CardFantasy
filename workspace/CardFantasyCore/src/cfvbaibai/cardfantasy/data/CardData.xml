@@ -1881,6 +1881,11 @@
         <Skill type="闪避" level="7" unlock="5" />
         <Skill type="迷魂" level="8" unlock="10" />
     </Card>
+    <Card id="4528" name="狡诈邪神" wikiId="" race="地狱" speed="4" star="5" cost="17" incrCost="2" at="330" hp="1820" incrAT="30" incrHP="26">
+        <Skill type="回魂" level="2" unlock="0" />
+        <Skill type="地狱之力" level="8" unlock="5" />
+        <Skill type="不动" level="0" unlock="10" />
+    </Card>
 
     <!-- 魔神 -->
     <Card id="5501" name="复仇女神" wikiId="30871" race="魔神" speed="4" star="5" cost="79" incrCost="0" at="1200" hp="10400000" incrAT="0" incrHP="0">
