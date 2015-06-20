@@ -101,6 +101,18 @@ function showSkillLaunchTypes() {
    }
    $('#skill-launch-types').html(result);
 }
+
+function showBossHelpers() {
+    var i = 0;
+    var card;
+    var result = "";
+    for (i = 0; i < allCards.Cards.length; ++i) {
+        card = allCards.Cards[i];
+        if (card.Color == 5 && card.BossHelper == 1)
+            result += '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"' + card.CardName + '",<br />';
+    }
+    $('#boss-helpers').html(result);
+}
 </script>
 </head>
 <body>
@@ -108,5 +120,7 @@ function showSkillLaunchTypes() {
     <div id="card-xml"></div>
     <div><button onclick="showSkillLaunchTypes();">显示技能发动类型</button></div>
     <div id="skill-launch-types"></div>
+    <div><button onclick="showBossHelpers();">显示魔神小兵</button></div>
+    <div id="boss-helpers"></div>
 </body>
 </html>

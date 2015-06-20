@@ -22,7 +22,8 @@
                         </select>
                         <select data-theme="c" name="guard-type" id="guard-type" data-mini="true" data-native-menu="false">
                             <option value="0">无杂兵</option>
-                            <option value="1" selected="selected">随机杂兵</option>
+                            <option value="1">随机杂兵</option>
+                            <option value="2" selected="selected">随机强杂兵</option>
                         </select>
                     </fieldset>
                     <!-- +：10级， -->
