@@ -27,6 +27,11 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2015-07-11: <ul>
+                        <li>添加新卡【七彩之影】、【巨蟹座】，感謝<x>竞彩小菜鸟</x>, <x>華麗麗摔倒</x>, <x>0蝶舞九天0</x>的提醒</li>
+                        <li>修复【破魔手】技能的伤害BUG，感谢<x>裂空座2012</x>发现</li>
+                        <li>【血祭恶魔】、【血炼巫妖】、【血瞳魔剑师】、【血色骑士】四张卡的旧卡名称现在也可以使用了，感谢<x>akb48zwy</x>的建议</li>
+                    </ul></li>
                     <li>2015-06-20: <ul>
                         <li>添加新卡【命运占卜师】</li>
                         <li>为魔神战添加了【随机强杂兵】模式，此模式中魔神的杂兵实力将明显增强，用来配合最近的魔神更新。</li>

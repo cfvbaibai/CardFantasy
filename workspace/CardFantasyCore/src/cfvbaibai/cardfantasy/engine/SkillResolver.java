@@ -315,6 +315,8 @@ public class SkillResolver {
                 Blind.apply(this, skillUseInfo, attacker, defender, -1);
             } else if (skillUseInfo.getType() == SkillType.动能追加) {
                 EnergyIncrement.apply(skillUseInfo, this, attacker);
+            } else if (skillUseInfo.getType() == SkillType.祈福) {
+                Bless.apply(skillUseInfo.getSkill(), this, attacker);
             }
         }
         RuneInfo rune = attacker.getOwner().getActiveRuneOf(RuneData.飞岩);
