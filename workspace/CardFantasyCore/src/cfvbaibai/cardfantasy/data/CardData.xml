@@ -1409,6 +1409,13 @@
         <Skill type="蛮荒守护" level="6" unlock="5" />
         <Skill type="法力反射" level="5" unlock="10" />
     </Card>
+    <Card id="3522" name="九命猫神" wikiId="" race="蛮荒" speed="3" star="5" cost="17" incrCost="2" at="415" hp="1550" incrAT="42" incrHP="31">
+        <Skill type="九转秘术" level="0" unlock="0" />
+        <Skill type="燕返" level="0" unlock="5" />
+        <Skill type="转生" level="7" unlock="10" />
+    </Card>
+    <Card id="3523" name="九命猫神·幻影" wikiId="" race="蛮荒" speed="4" star="5" cost="17" incrCost="2" at="415" hp="1550" incrAT="60" incrHP="49">
+    </Card>
 
     <!-- 地狱 -->
     <Card id="4101" name="恶魔小鬼" wikiId="31036" race="地狱" speed="2" star="1" cost="3" incrCost="2" at="80" hp="270" incrAT="19" incrHP="6">
@@ -1909,8 +1916,9 @@
         <Skill type="封印" level="0" unlock="5" />
         <Skill type="转生" level="8" unlock="10" />
     </Card>
-    <Card id="4526" name="双子分身" wikiId="" race="地狱" speed="1" star="5" cost="18" incrCost="2" at="390" hp="1600" incrAT="40" incrHP="35">
+    <Card id="4526" name="双子座·幻影" wikiId="" race="地狱" speed="1" star="5" cost="18" incrCost="2" at="390" hp="1600" incrAT="41" incrHP="36">
     </Card>
+
     <Card id="4527" name="彼岸使者" wikiId="" race="地狱" speed="4" star="5" cost="18" incrCost="2" at="380" hp="1870" incrAT="37" incrHP="33">
         <Skill type="动能追加" level="0" unlock="0" />
         <Skill type="闪避" level="7" unlock="5" />

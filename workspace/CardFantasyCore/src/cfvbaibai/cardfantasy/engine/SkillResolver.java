@@ -304,7 +304,7 @@ public class SkillResolver {
             } else if (skillUseInfo.getType() == SkillType.召唤炎魔) {
                 Summon.apply(this, skillUseInfo, attacker, "炎魔");
             } else if (skillUseInfo.getType() == SkillType.双子之身) {
-                Summon.apply(this, skillUseInfo, attacker, "双子分身");
+                Summon.apply(this, skillUseInfo, attacker, "双子座·幻影");
             } else if (skillUseInfo.getType() == SkillType.魔力法阵) {
                 MagicMark.apply(this, skillUseInfo, attacker, defender, -1);
             } else if (skillUseInfo.getType() == SkillType.魔力印记) {
@@ -657,6 +657,8 @@ public class SkillResolver {
                 Explode.apply(this, deadCardSkillUseInfo.getSkill(), killerCard, deadCard);
             } else if (deadCardSkillUseInfo.getType() == SkillType.燕返) {
                 TsubameGaeshi.apply(deadCardSkillUseInfo, this, killerCard.getOwner(), deadCard);
+            } else if (deadCardSkillUseInfo.getType() == SkillType.九转秘术) {
+                Summon.apply(this, deadCardSkillUseInfo, deadCard, "九命猫神·幻影");
             }
         }
         {
