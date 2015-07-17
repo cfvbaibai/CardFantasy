@@ -19,7 +19,7 @@
 <script src='<c:url value="/resources/js/jquery.pager.js" />'></script>
 <script src="http://libs.useso.com/js/jqueryui/1.10.3/jquery-ui.js"></script>
 <script src="http://libs.useso.com/js/jquery-mobile/1.3.1/jquery.mobile.min.js"></script>
-<script src="http://d3lp1msu2r81bx.cloudfront.net/kjs/js/lib/kinetic-v4.5.4.min.js"></script>
+<script src='<c:url value="/resources/js/kinetic-v4.5.4.min.js" />'></script>
 
 <script src='<c:url value="/resources/js/core.js" />?version=<%= version %>'></script>
 <script src='<c:url value="/resources/js/battle-animation.js" />?version=<%= version %>'></script>
