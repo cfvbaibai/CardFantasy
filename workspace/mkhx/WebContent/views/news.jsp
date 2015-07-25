@@ -27,7 +27,10 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">
                 <h3>更新日志</h3>
                 <ul class="news-content">
-                    <li>2015-07-25: 添加新卡【魔装机神】，感谢<x>仰落灬</x>提供资料</li>
+                    <li>2015-07-25: <ul>
+                        <li>添加新卡【魔装机神】，感谢<x>仰落灬</x>提供资料</li>
+                        <li>添加新卡【希望之壳】，感谢<x>We_Yukirin</x>提供资料</li>
+                    </ul></li>
                     <li>2015-07-17: 添加新卡【九命猫神】，感谢<x>艾弗森张伯伦</x>提供资料</li>
                     <li>2015-07-11: <ul>
                         <li>添加新卡【七彩之影】、【巨蟹座】，感謝<x>竞彩小菜鸟</x>, <x>華麗麗摔倒</x>, <x>0蝶舞九天0</x>的提醒</li>
