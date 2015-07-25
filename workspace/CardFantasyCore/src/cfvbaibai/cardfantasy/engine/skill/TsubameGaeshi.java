@@ -17,7 +17,11 @@ public class TsubameGaeshi {
     public static void apply(SkillUseInfo skillUseInfo, SkillResolver resolver, Player attackerHero, CardInfo defender) throws HeroDieSignal {
         Skill cardSkill = skillUseInfo.getSkill();
         int damage = cardSkill.getImpact() * defender.getLevel0AT() / 100;
-        CardInfo victim = attackerHero.getField().getCard(defender.getPosition());
+        int position = defender.getPosition();
+        if (position == -1) {
+            throw new IllegalArgumentException("Invalid defender position! Defender: " + defender.getUniqueName());
+        }
+        CardInfo victim = attackerHero.getField().getCard(position);
         if (victim == null) {
             return;
         }

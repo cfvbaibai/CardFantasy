@@ -10,7 +10,7 @@ public abstract class Skill implements Comparable<Skill> {
     }
 
     public SkillType getType() {
-        return type;
+        return this.type;
     }
     
     public String getName() {
@@ -18,11 +18,15 @@ public abstract class Skill implements Comparable<Skill> {
     }
 
     public int getLevel() {
-        return level;
+        return this.level;
     }
 
     public int getImpact() {
-        return type.getImpact(this.level);
+        return this.type.getImpact(this.level);
+    }
+    
+    public int getImpact2() {
+        return this.type.getImpact2(this.level);
     }
 
     public String getShortDesc() {

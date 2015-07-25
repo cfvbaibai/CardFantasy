@@ -93,6 +93,7 @@ import cfvbaibai.cardfantasy.engine.skill.Soften;
 import cfvbaibai.cardfantasy.engine.skill.SpeedUp;
 import cfvbaibai.cardfantasy.engine.skill.Spike;
 import cfvbaibai.cardfantasy.engine.skill.Summon;
+import cfvbaibai.cardfantasy.engine.skill.SuraFire;
 import cfvbaibai.cardfantasy.engine.skill.Synchrome;
 import cfvbaibai.cardfantasy.engine.skill.TimeBack;
 import cfvbaibai.cardfantasy.engine.skill.Transport;
@@ -317,6 +318,8 @@ public class SkillResolver {
                 EnergyIncrement.apply(skillUseInfo, this, attacker);
             } else if (skillUseInfo.getType() == SkillType.祈福) {
                 Bless.apply(skillUseInfo.getSkill(), this, attacker);
+            } else if (skillUseInfo.getType() == SkillType.修罗地火攻) {
+                SuraFire.apply(this, skillUseInfo, attacker, defender);
             }
         }
         RuneInfo rune = attacker.getOwner().getActiveRuneOf(RuneData.飞岩);

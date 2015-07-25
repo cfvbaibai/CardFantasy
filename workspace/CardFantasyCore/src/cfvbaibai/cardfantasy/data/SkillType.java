@@ -158,6 +158,8 @@ public enum SkillType {
 
     燕返("", 200, 0),
 
+    修罗地火攻("", 100, 10, 10, 10, SkillTag.魔法),
+
     召唤王国战士("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
     召唤邪龙护卫("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
     召唤噩梦护卫("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
@@ -205,6 +207,8 @@ public enum SkillType {
     private String wikiId;
     private int initImpact;
     private int incrImpact;
+    private int initImpact2;
+    private int incrImpact2;
     private HashSet <SkillTag> tags;
     
     SkillType(String wikiId, int incrImpact, SkillTag ... tags) {
@@ -212,9 +216,15 @@ public enum SkillType {
     }
     
     SkillType(String wikiId, int initImpact, int incrImpact, SkillTag ... tags) {
+        this(wikiId, initImpact, incrImpact, 0, 0, tags);
+    }
+    
+    SkillType(String wikiId, int initImpact, int incrImpact, int initImpact2, int incrImpact2, SkillTag ... tags) {
         this.wikiId = wikiId;
         this.initImpact = initImpact;
         this.incrImpact = incrImpact;
+        this.initImpact2 = initImpact2;
+        this.incrImpact2 = incrImpact2;
         this.tags = new HashSet <SkillTag> ();
         for (SkillTag tag : tags) {
             this.tags.add(tag);
@@ -231,6 +241,10 @@ public enum SkillType {
 
     public int getImpact(int level) {
         return this.initImpact + level * this.incrImpact;
+    }
+    
+    public int getImpact2(int level) {
+        return this.initImpact2 + level * this.incrImpact2;
     }
     
     public boolean containsTag(SkillTag tag) {
