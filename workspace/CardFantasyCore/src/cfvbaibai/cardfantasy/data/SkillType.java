@@ -73,6 +73,7 @@ public enum SkillType {
     甘霖("30930", 25),
     治疗之雾("57018", 80, 20),
     回春("30944", 30),
+    月神的护佑("", new int[] { 8, 10, 13, 15, 18, 20, 23, 25, 28, 30, 35 }),
 
     祈祷("30954", 50),
     祈福("", 0, 2),
@@ -209,6 +210,7 @@ public enum SkillType {
     private int incrImpact;
     private int initImpact2;
     private int incrImpact2;
+    private int[] impactList;
     private HashSet <SkillTag> tags;
     
     SkillType(String wikiId, int incrImpact, SkillTag ... tags) {
@@ -231,6 +233,14 @@ public enum SkillType {
         }
     }
     
+    SkillType(String wikiId, int[] impactList, SkillTag ... tags) {
+        this.impactList = impactList;
+        this.tags = new HashSet <SkillTag> ();
+        for (SkillTag tag : tags) {
+            this.tags.add(tag);
+        }
+    }
+    
     public String getWikiId() {
         return this.wikiId;
     }
@@ -240,6 +250,9 @@ public enum SkillType {
     }
 
     public int getImpact(int level) {
+        if (this.impactList != null && this.impactList.length > level) {
+            return this.impactList[level];
+        }
         return this.initImpact + level * this.incrImpact;
     }
     
@@ -252,6 +265,6 @@ public enum SkillType {
     }
 
     public boolean isGrowable() {
-        return this.incrImpact != 0 || this.initImpact != 0;
+        return this.impactList == null && (this.incrImpact != 0 || this.initImpact != 0);
     }
 }

@@ -9,6 +9,9 @@
                             <td>地图</td>
                             <td>
                                 <select data-theme="c" name="map-id" id="map-id" class="map-select" data-mini="true" data-native-menu="false">
+                                    <optgroup label="17图">
+                                        <option value="17-1" selected="selected">17-1 异界之门</option>
+                                    </optgroup>
                                     <optgroup label="16图">
                                         <option value="16-1">16-1 烈焰谷</option>
                                         <option value="16-2">16-2 火魔阵</option>
@@ -20,7 +23,7 @@
                                         <option value="16-8">16-8 智慧之厅</option>
                                         <option value="16-9">16-9 祈祷之塔</option>
                                         <option value="16-10">16-10 炎狱山巅</option>
-                                        <option value="16-11" selected="selected">16-11 火焰矩阵</option>
+                                        <option value="16-11">16-11 火焰矩阵</option>
                                         <option value="16-H">16-H (隐藏)四魔阵</option>
                                     </optgroup>
                                     <optgroup label="15-后翡翠森林">
@@ -38,7 +41,7 @@
                                         <option value="15-H">15-H (隐藏)巨神试炼场</option>
                                     </optgroup>
                                     <optgroup label="14-后翡翠森林">
-                                         <option value="14-1" selected="selected">14-1 汇海口</option>
+                                         <option value="14-1">14-1 汇海口</option>
                                          <option value="14-2">14-2 蘑菇岭</option>
                                          <option value="14-3">14-3 坠星湖底</option>
                                          <option value="14-4">14-4 湍流口</option>
@@ -52,7 +55,7 @@
                                          <option value="14-H">14-H (隐藏)雷云之地</option>
                                      </optgroup>
                                      <optgroup label="13-后燃烧平原">
-                                          <option value="13-1" selected="selected">13-1 漆黑岭 </option>
+                                          <option value="13-1">13-1 漆黑岭 </option>
                                           <option value="13-2">13-2 黑石山梯</option>
                                           <option value="13-3">13-3 泥泞小道</option>
                                           <option value="13-4">13-4 干涸小湖</option>
@@ -66,7 +69,7 @@
                                           <option value="13-H">13-H (隐藏)古船遗迹</option>
                                       </optgroup>
                                       <optgroup label="12-后燃烧平原">
-                                          <option value="12-1" selected="selected">12-1 火腹石</option>
+                                          <option value="12-1">12-1 火腹石</option>
                                           <option value="12-2">12-2 绝望壁</option>
                                           <option value="12-3">12-3 焦炭岭</option>
                                           <option value="12-4">12-4 乌鼻熔炉</option>

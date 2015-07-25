@@ -63,6 +63,7 @@ import cfvbaibai.cardfantasy.engine.skill.Immobility;
 import cfvbaibai.cardfantasy.engine.skill.Immue;
 import cfvbaibai.cardfantasy.engine.skill.LegionBuff;
 import cfvbaibai.cardfantasy.engine.skill.LighteningMagic;
+import cfvbaibai.cardfantasy.engine.skill.LunaBless;
 import cfvbaibai.cardfantasy.engine.skill.MagicMark;
 import cfvbaibai.cardfantasy.engine.skill.MagicShield;
 import cfvbaibai.cardfantasy.engine.skill.ManaErode;
@@ -219,6 +220,8 @@ public class SkillResolver {
                 Heal.apply(skillUseInfo.getSkill(), this, attacker);
             } else if (skillUseInfo.getType() == SkillType.甘霖) {
                 Rainfall.apply(skillUseInfo.getSkill(), this, attacker);
+            } else if (skillUseInfo.getType() == SkillType.月神的护佑) {
+                LunaBless.apply(skillUseInfo.getSkill(), this, attacker);
             } else if (skillUseInfo.getType() == SkillType.治疗之雾) {
                 HealingMist.apply(skillUseInfo.getSkill(), this, attacker);
             } else if (skillUseInfo.getType() == SkillType.祈祷) {
@@ -1120,6 +1123,8 @@ public class SkillResolver {
                         Heal.apply(skillUseInfo.getSkill(), this, card);
                     } else if (skillUseInfo.getType() == SkillType.甘霖) {
                         Rainfall.apply(skillUseInfo.getSkill(), this, card);
+                    } else if (skillUseInfo.getType() == SkillType.月神的护佑) {
+                        LunaBless.apply(skillUseInfo.getSkill(), this, card);
                     } else if (skillUseInfo.getType() == SkillType.祈祷) {
                         Pray.apply(skillUseInfo.getSkill(), this, card);
                     } else if (skillUseInfo.getType() == SkillType.诅咒) {

@@ -15,6 +15,6 @@ public class HealingMist {
 
         Field field = healer.getOwner().getField();
         List<CardInfo> healeeCandidates = resolver.getAdjacentCards(field, healer.getPosition());
-        Rainfall.healCards(resolver, healer, cardSkill, healeeCandidates);
+        Rainfall.healCards(resolver, healer, cardSkill, HealType.Exact, healeeCandidates);
     }
 }

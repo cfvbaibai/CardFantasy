@@ -20,10 +20,15 @@ public final class Rainfall {
         }
     }
     
-    public static void healCards(SkillResolver resolver, EntityInfo healer, Skill skill, List<CardInfo> healeeCandidates) {
+    public static void healCards(SkillResolver resolver, EntityInfo healer, Skill skill, HealType type, List<CardInfo> healeeCandidates) {
         List<Heal> heals = new ArrayList<Heal>();
         for (CardInfo healee : healeeCandidates) {
-            int healHP = skill.getImpact();
+            int healHP = 0;
+            if (type == HealType.Percentage) {
+                healHP = healee.getMaxHP() * skill.getImpact() / 100;
+            } else {
+                healHP = skill.getImpact();
+            }
             if (healHP + healee.getHP() > healee.getMaxHP()) {
                 healHP = healee.getMaxHP() - healee.getHP();
             }
@@ -53,6 +58,11 @@ public final class Rainfall {
         }
 
         Field field = healer.getOwner().getField();
-        healCards(resolver, healer, cardSkill, field.getAliveCards());
+        healCards(resolver, healer, cardSkill, HealType.Exact, field.getAliveCards());
     }
+}
+
+enum HealType {
+    Percentage,
+    Exact,
 }

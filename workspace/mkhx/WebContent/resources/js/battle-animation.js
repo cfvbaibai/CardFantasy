@@ -1484,7 +1484,7 @@ var Animater = function() {
         } else if (skill == '圣光洗礼' || skill == '森林沐浴' || skill == '蛮荒威压' || skill == '地狱同化') {
             this.flyImage({ fileName: 'change.png', width: 48, height: 48, text: skill },
                     attacker, defenders, settings.skillDuration);
-        } else if (skill == '治疗' || skill == '甘霖' || skill == '回春' || skill == '治疗之雾') {
+        } else if (skill == '治疗' || skill == '甘霖' || skill == '回春' || skill == '治疗之雾' || skill == '月神的护佑') {
             this.flyImage({ fileName: 'heal.png', width: 24, height: 24, text: skill },
                     attacker, defenders, settings.skillDuration);
         } else if (skill == '冰弹' || skill == '霜冻新星' || skill == '暴风雪' || skill == '寒霜冲击') {

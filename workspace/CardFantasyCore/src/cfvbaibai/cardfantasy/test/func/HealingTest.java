@@ -85,4 +85,22 @@ public class HealingTest extends SkillValidationTest {
         Assert.assertEquals(300, c东方幻术师.getHP());
         Assert.assertEquals(1400, c秘银巨石像2.getHP());
     }
+    
+    @Test
+    public void test月神的护佑_普通() {
+        SkillTestContext context = SkillValidationTestSuite.prepare(
+            50, 50, "占位符*3", "占位符+月神的护佑5");
+        CardInfo c占位符1 = context.addToField(0, 0).setBasicHP(100);
+        CardInfo c占位符2 = context.addToField(1, 0).setBasicHP(1300);
+        CardInfo c占位符3 = context.addToField(2, 0).setBasicHP(4500);
+        CardInfo c占位符4 = context.addToField(3, 0);
+        context.startGame();
+
+        context.proceedOneRound();
+
+        Assert.assertEquals(1100, c占位符1.getHP());
+        Assert.assertEquals(2300, c占位符2.getHP());
+        Assert.assertEquals(5000, c占位符3.getHP());
+        Assert.assertEquals(5000, c占位符4.getHP());
+    }
 }
