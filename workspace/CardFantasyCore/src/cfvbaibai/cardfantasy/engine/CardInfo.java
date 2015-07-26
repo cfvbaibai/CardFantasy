@@ -420,6 +420,17 @@ public class CardInfo extends EntityInfo {
         return this.card.getMaxHP();
     }
 
+    public int getBasicMaxHP() {
+        int actualMaxHP = this.card.getMaxHP();
+        for (SkillEffect effect : this.getEffects()) {
+            if (effect.getType() == SkillEffectType.MAXHP_CHANGE &&
+                effect.getCause().getType().containsTag(SkillTag.原始体力加成)) {
+                actualMaxHP += effect.getValue();
+            }
+        }
+        return actualMaxHP;
+    }
+    
     public boolean containsUsableSkillsWithTag(SkillTag tag) {
         for (SkillUseInfo skillUseInfo : this.getAllUsableSkills()) {
             CardSkill cardSkill = (CardSkill) skillUseInfo.getSkill();
