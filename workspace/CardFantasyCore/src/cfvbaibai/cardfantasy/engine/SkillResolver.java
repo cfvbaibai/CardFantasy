@@ -39,16 +39,21 @@ public class SkillResolver {
     }
 
     public List<CardInfo> getAdjacentCards(Field field, int position) {
-        List<CardInfo> cards = new ArrayList<CardInfo>();
+        List<CardInfo> cards = this.getCardsOnSides(field, position);
         CardInfo card = field.getCard(position);
+        if (card != null) {
+            cards.add(card);
+        }
+        return cards;
+    }
+    
+    public List<CardInfo> getCardsOnSides(Field field, int position) {
+        List<CardInfo> cards = new ArrayList<CardInfo>();
         if (position > 0) {
             CardInfo leftSide = field.getCard(position - 1);
             if (leftSide != null) {
                 cards.add(leftSide);
             }
-        }
-        if (card != null) {
-            cards.add(card);
         }
         CardInfo rightSide = field.getCard(position + 1);
         if (rightSide != null) {
@@ -228,6 +233,8 @@ public class SkillResolver {
                 Bless.apply(skillUseInfo.getSkill(), this, attacker);
             } else if (skillUseInfo.getType() == SkillType.修罗地火攻) {
                 SuraFire.apply(this, skillUseInfo, attacker, defender);
+            } else if (skillUseInfo.getType() == SkillType.精神狂乱) {
+                Insane.apply(skillUseInfo, this, attacker, defender, 1);
             }
         }
         RuneInfo rune = attacker.getOwner().getActiveRuneOf(RuneData.飞岩);

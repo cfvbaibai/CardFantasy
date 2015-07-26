@@ -267,27 +267,25 @@ public class BattleEngine {
                     currentBaseAT /= 2;
                 }
             }
-            if (status.containsStatus(CardStatusType.迷惑)) {
-                underControl = true;
-                ui.confused(myField.getCard(i));
-                resolver.resolvePreAttackHeroSkills(myField.getCard(i), getActivePlayer());
-                resolver.attackHero(myField.getCard(i), getActivePlayer(), null, myField.getCard(i).getCurrentAT());
-                resolver.removeStatus(myField.getCard(i), CardStatusType.迷惑);
-                resolver.removeStatus(myField.getCard(i), CardStatusType.冰冻);
-                resolver.removeStatus(myField.getCard(i), CardStatusType.锁定);
-                resolver.removeStatus(myField.getCard(i), CardStatusType.麻痹);
-                resolver.removeStatus(myField.getCard(i), CardStatusType.晕眩);
-                resolver.removeStatus(myField.getCard(i), CardStatusType.致盲);
-            }
-            else if (
+            if (status.containsStatus(CardStatusType.迷惑) ||
                 status.containsStatus(CardStatusType.冰冻) ||
                 status.containsStatus(CardStatusType.锁定) ||
                 status.containsStatus(CardStatusType.复活) ||
                 status.containsStatus(CardStatusType.晕眩)) {
                 underControl = true;
-                ui.cannotAction(myField.getCard(i));
+
+                if (status.containsStatus(CardStatusType.迷惑)) {
+                    ui.confused(myField.getCard(i));
+                    resolver.resolvePreAttackHeroSkills(myField.getCard(i), getActivePlayer());
+                    resolver.attackHero(myField.getCard(i), getActivePlayer(), null, myField.getCard(i).getCurrentAT());
+                } else {
+                    ui.cannotAction(myField.getCard(i));
+                }
+
+                resolver.removeStatus(myField.getCard(i), CardStatusType.迷惑);
                 resolver.removeStatus(myField.getCard(i), CardStatusType.冰冻);
                 resolver.removeStatus(myField.getCard(i), CardStatusType.锁定);
+                resolver.removeStatus(myField.getCard(i), CardStatusType.麻痹);
                 resolver.removeStatus(myField.getCard(i), CardStatusType.晕眩);
                 resolver.removeStatus(myField.getCard(i), CardStatusType.致盲);
             } else {

@@ -944,4 +944,96 @@ public class SpecialStatusTest extends SkillValidationTest {
         Assert.assertEquals(810, 5000 - c占位符.getHP());
         Assert.assertFalse(c秘银巨石像.getStatus().containsStatus(CardStatusType.致盲));
     }
+    
+    @Test
+    public void test精神狂乱_普通() {
+        SkillTestContext context = SkillValidationTestSuite.prepare(
+            50, 50, "占位符", "占位符+精神狂乱", "秘银巨石像*3");
+        context.addToField(0, 0);
+        context.addToField(1, 0);
+        CardInfo c秘银巨石像1 = context.addToField(2, 1);
+        CardInfo c秘银巨石像2 = context.addToField(3, 1);
+        CardInfo c秘银巨石像3 = context.addToField(4, 1);
+        context.startGame();
+
+        random.addNextPicks(1); /* 精神狂乱 */
+        context.proceedOneRound();
+        Assert.assertEquals(660, 1400 - c秘银巨石像1.getHP());
+        Assert.assertEquals(0, 1400 - c秘银巨石像2.getHP());
+        Assert.assertEquals(660, 1400 - c秘银巨石像3.getHP());
+    }
+    
+    @Test
+    public void test精神狂乱_一边没卡() {
+        SkillTestContext context = SkillValidationTestSuite.prepare(
+            50, 50, "占位符", "占位符+精神狂乱", "秘银巨石像*3");
+        context.addToField(0, 0);
+        context.addToField(1, 0);
+        CardInfo c秘银巨石像1 = context.addToField(2, 1);
+        CardInfo c秘银巨石像2 = context.addToField(3, 1);
+        CardInfo c秘银巨石像3 = context.addToField(4, 1);
+        context.startGame();
+
+        random.addNextPicks(0); /* 精神狂乱 */
+        context.proceedOneRound();
+        Assert.assertEquals(0, 1400 - c秘银巨石像1.getHP());
+        Assert.assertEquals(660, 1400 - c秘银巨石像2.getHP());
+        Assert.assertEquals(0, 1400 - c秘银巨石像3.getHP());
+    }
+
+    @Test
+    public void test精神狂乱_两边没卡() {
+        SkillTestContext context = SkillValidationTestSuite.prepare(
+            50, 50, "占位符", "占位符+精神狂乱", "秘银巨石像");
+        context.addToField(0, 0);
+        context.addToField(1, 0);
+        CardInfo c秘银巨石像 = context.addToField(2, 1);
+        context.startGame();
+
+        random.addNextPicks(0); /* 精神狂乱 */
+        context.proceedOneRound();
+        Assert.assertEquals(0, 1400 - c秘银巨石像.getHP());
+    }
+
+    /**
+     * 精神狂乱可以被免疫
+     */
+    @Test
+    public void test精神狂乱_免疫() {
+        SkillTestContext context = SkillValidationTestSuite.prepare(
+            50, 50, "占位符", "占位符+精神狂乱", "秘银巨石像", "金属巨龙", "秘银巨石像");
+        context.addToField(0, 0);
+        context.addToField(1, 0);
+        CardInfo c秘银巨石像1 = context.addToField(2, 1);
+        CardInfo c金属巨龙 = context.addToField(3, 1);
+        CardInfo c秘银巨石像2 = context.addToField(4, 1);
+        context.startGame();
+
+        random.addNextPicks(1); /* 精神狂乱 */
+        context.proceedOneRound();
+        Assert.assertEquals(0, 1400 - c秘银巨石像1.getHP());
+        Assert.assertEquals(0, 1710 - c金属巨龙.getHP());
+        Assert.assertEquals(0, 1400 - c秘银巨石像2.getHP());
+    }
+    
+    /**
+     * 精神狂乱无法被脱困
+     */
+    @Test
+    public void test精神狂乱_脱困() {
+        SkillTestContext context = SkillValidationTestSuite.prepare(
+            50, 50, "占位符", "占位符+精神狂乱", "秘银巨石像", "秘银巨石像+脱困", "秘银巨石像");
+        context.addToField(0, 0);
+        context.addToField(1, 0);
+        CardInfo c秘银巨石像1 = context.addToField(2, 1);
+        CardInfo c秘银巨石像2 = context.addToField(3, 1);
+        CardInfo c秘银巨石像3 = context.addToField(4, 1);
+        context.startGame();
+
+        random.addNextPicks(1); /* 精神狂乱 */
+        context.proceedOneRound();
+        Assert.assertEquals(810, 1400 - c秘银巨石像1.getHP());
+        Assert.assertEquals(0, 1550 - c秘银巨石像2.getHP());
+        Assert.assertEquals(810, 1400 - c秘银巨石像3.getHP());
+    }
 }

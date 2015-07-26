@@ -1514,6 +1514,9 @@ var Animater = function() {
         } else if (skill == '狙击' || skill == '二重狙击' || skill == '魔神之刃') {
             this.flyImage({ fileName: 'aim.png', width: 48, height: 48, text: skill, },
                     attacker, defenders, settings.skillDuration);
+        } else if (skill == '精神狂乱') {
+            this.flyImage({ fileName: 'insane.png', width: 48, height: 48, text: skill, },
+                    attacker, defenders, settings.skillDuration);
         } else {
             var text = attacker.ownerId + "的" + attacker.uniqueName + "\r\n";
             text += "\r\n" + skill + "\r\n\r\n";
