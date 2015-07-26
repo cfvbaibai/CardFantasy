@@ -12,6 +12,7 @@
                     <li><a href="#" data-type="bug">魔卡幻想模拟器贴吧</a>已成立，欢迎大家来提BUG、提需求、提供技能结算细节。</li>
                 </ul>
             </div>
+            <%-- 
             <div data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">
                 <h3>技能细节问答，欢迎大家来补完技能细节，使模拟器更准确</h3>
                 <ul>
@@ -24,6 +25,7 @@
                     <li><a href="#" data-type="bug">更多问题...</a></li>
                 </ul>
             </div>
+            --%>
             <div data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">
                 <h3>更新日志</h3>
                 <ul class="news-content">
