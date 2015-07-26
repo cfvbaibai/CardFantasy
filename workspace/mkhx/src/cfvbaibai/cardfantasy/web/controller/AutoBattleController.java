@@ -621,6 +621,7 @@ public class AutoBattleController {
             int gameCount = 100;
             writer.append(Utils.getCurrentDateTime() + "<br />");
             writer.append("模拟场次: " + gameCount + "<br />");
+            writer.print(this.getDeckValidationResult(null, player2));
             try {
                 for (int i = 0; i < gameCount; ++i) {
                     PvlEngine engine = new PvlEngine(new DummyGameUI(), Rule.getDefault());
