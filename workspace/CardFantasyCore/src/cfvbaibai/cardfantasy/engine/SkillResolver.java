@@ -125,6 +125,8 @@ public class SkillResolver {
                 Rainfall.apply(skillUseInfo.getSkill(), this, attacker);
             } else if (skillUseInfo.getType() == SkillType.月神的护佑) {
                 LunaBless.apply(skillUseInfo.getSkill(), this, attacker);
+            } else if (skillUseInfo.getType() == SkillType.月神的触碰) {
+                LunaTouch.apply(skillUseInfo.getSkill(), this, attacker);
             } else if (skillUseInfo.getType() == SkillType.治疗之雾) {
                 HealingMist.apply(skillUseInfo.getSkill(), this, attacker);
             } else if (skillUseInfo.getType() == SkillType.祈祷) {
@@ -1028,6 +1030,8 @@ public class SkillResolver {
                         Rainfall.apply(skillUseInfo.getSkill(), this, card);
                     } else if (skillUseInfo.getType() == SkillType.月神的护佑) {
                         LunaBless.apply(skillUseInfo.getSkill(), this, card);
+                    } else if (skillUseInfo.getType() == SkillType.月神的触碰) {
+                        LunaTouch.apply(skillUseInfo.getSkill(), this, card);
                     } else if (skillUseInfo.getType() == SkillType.祈祷) {
                         Pray.apply(skillUseInfo.getSkill(), this, card);
                     } else if (skillUseInfo.getType() == SkillType.诅咒) {
