@@ -328,6 +328,7 @@ public class SkillResolver {
                     || status.containsStatus(CardStatusType.锁定) || status.containsStatus(CardStatusType.复活)) {
                 stage.getUI().attackBlocked(cardAttacker, defender, attackSkill, null);
                 result.setAttackable(false);
+                return result;
             } else {
                 for (SkillUseInfo blockSkillUseInfo : defender.getNormalUsableSkills()) {
                     if (blockSkillUseInfo.getType() == SkillType.闪避) {
@@ -420,6 +421,29 @@ public class SkillResolver {
                     }
                 }
             }
+
+            for (SkillUseInfo skillUseInfo : defender.getAllUsableSkills()) {
+                if (skillUseInfo.getType() == SkillType.生命链接) {
+                    List<CardInfo> victims = this.getAdjacentCards(defender.getOwner().getField(), defender.getPosition());
+                    if (victims.size() <= 1) {
+                        break;
+                    }
+                    this.getStage().getUI().useSkill(defender, victims, skillUseInfo.getSkill(), true);
+                    result.setDamage(result.getDamage() / victims.size());
+                    for (CardInfo victim : victims) {
+                        this.getStage().getUI().attackCard(defender, victim, skillUseInfo.getSkill(), result.getDamage());
+                        OnDamagedResult lifeChainResult = this.applyDamage(victim, skillUseInfo.getSkill(), result.getDamage());
+                        if (lifeChainResult.cardDead) {
+                            this.resolveDeathSkills(attacker, victim, attackSkill, lifeChainResult);
+                        }
+                        if (attacker instanceof CardInfo) {
+                            this.resolvePostAttackSkills((CardInfo)attacker, victim, victim.getOwner(), attackSkill, lifeChainResult.actualDamage);
+                        }
+                    }
+                    result.setAttackable(false);
+                    return result;
+                }
+            }
         } else {
             result.setDamage(damage);
             boolean isAttackerDisabled = status.containsStatus(CardStatusType.冰冻)
@@ -504,28 +528,6 @@ public class SkillResolver {
             }
         }
 
-        for (SkillUseInfo skillUseInfo : defender.getAllUsableSkills()) {
-            if (skillUseInfo.getType() == SkillType.生命链接) {
-                List<CardInfo> victims = this.getAdjacentCards(defender.getOwner().getField(), defender.getPosition());
-                if (victims.size() <= 1) {
-                    break;
-                }
-                this.getStage().getUI().useSkill(defender, victims, skillUseInfo.getSkill(), true);
-                result.setDamage(result.getDamage() / victims.size());
-                for (CardInfo victim : victims) {
-                    this.getStage().getUI().attackCard(defender, victim, skillUseInfo.getSkill(), result.getDamage());
-                    OnDamagedResult lifeChainResult = this.applyDamage(victim, skillUseInfo.getSkill(), result.getDamage());
-                    if (lifeChainResult.cardDead) {
-                        this.resolveDeathSkills(attacker, victim, attackSkill, lifeChainResult);
-                    }
-                    if (attacker instanceof CardInfo) {
-                        this.resolvePostAttackSkills((CardInfo)attacker, victim, victim.getOwner(), attackSkill, lifeChainResult.actualDamage);
-                    }
-                }
-                result.setAttackable(false);
-                return result;
-            }
-        }
         return result;
     }
 
