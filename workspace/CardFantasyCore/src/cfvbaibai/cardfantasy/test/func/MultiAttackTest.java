@@ -72,4 +72,66 @@ public class MultiAttackTest extends SkillValidationTest {
         Assert.assertEquals(0, 5000 - c占位符2.getHP());
         Assert.assertEquals(180 + 90 * 3, 5000 - c占位符3.getHP());
     }
+    
+    @Test
+    public void test生命链接_普通() {
+        SkillTestContext context = SkillValidationTestSuite.prepare(
+            50, 50, "占位符", "秘银巨石像", "占位符", "占位符+生命链接", "占位符");
+        context.addToField(0, 0);
+        context.addToField(1, 0);
+        CardInfo c占位符2 = context.addToField(2, 1);
+        CardInfo c占位符3 = context.addToField(3, 1);
+        CardInfo c占位符4 = context.addToField(4, 1);
+        context.startGame();
+        
+        context.proceedOneRound();
+        Assert.assertEquals(220, 5000 - c占位符2.getHP());
+        Assert.assertEquals(220, 5000 - c占位符3.getHP());
+        Assert.assertEquals(220, 5000 - c占位符4.getHP());
+    }
+    
+    @Test
+    public void test生命链接_两卡分担() {
+        SkillTestContext context = SkillValidationTestSuite.prepare(
+            50, 50, "秘银巨石像*2", "占位符+生命链接", "占位符");
+        context.addToField(0, 0);
+        context.addToField(1, 0);
+        CardInfo c占位符1 = context.addToField(2, 1);
+        CardInfo c占位符2 = context.addToField(3, 1);
+        context.startGame();
+        
+        context.proceedOneRound();
+        Assert.assertEquals(330, 5000 - c占位符1.getHP());
+        Assert.assertEquals(990, 5000 - c占位符2.getHP());
+    }
+    
+    @Test
+    public void test生命链接_无卡分担() {
+        SkillTestContext context = SkillValidationTestSuite.prepare(
+            50, 50, "秘银巨石像", "占位符+生命链接");
+        context.addToField(0, 0);
+        CardInfo c占位符 = context.addToField(1, 1);
+        context.startGame();
+        
+        context.proceedOneRound();
+        Assert.assertEquals(660, 5000 - c占位符.getHP());
+    }
+    
+    @Test
+    public void test生命链接_吸血() {
+        SkillTestContext context = SkillValidationTestSuite.prepare(
+            50, 50, "占位符", "秘银巨石像+吸血10", "占位符", "占位符+生命链接", "占位符");
+        context.addToField(0, 0);
+        CardInfo c秘银巨石像 = context.addToField(1, 0).setBasicHP(1);
+        CardInfo c占位符2 = context.addToField(2, 1);
+        CardInfo c占位符3 = context.addToField(3, 1);
+        CardInfo c占位符4 = context.addToField(4, 1);
+        context.startGame();
+        
+        context.proceedOneRound();
+        Assert.assertEquals(270, 5000 - c占位符2.getHP());
+        Assert.assertEquals(270, 5000 - c占位符3.getHP());
+        Assert.assertEquals(270, 5000 - c占位符4.getHP());
+        Assert.assertEquals(811, c秘银巨石像.getHP());
+    }
 }

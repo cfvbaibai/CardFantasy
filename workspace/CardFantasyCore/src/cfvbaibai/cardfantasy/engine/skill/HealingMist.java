@@ -4,11 +4,12 @@ import java.util.List;
 
 import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.engine.CardInfo;
+import cfvbaibai.cardfantasy.engine.HeroDieSignal;
 import cfvbaibai.cardfantasy.engine.SkillResolver;
 import cfvbaibai.cardfantasy.engine.Field;
 
 public class HealingMist {
-    public static void apply(Skill cardSkill, SkillResolver resolver, CardInfo healer) {
+    public static void apply(Skill cardSkill, SkillResolver resolver, CardInfo healer) throws HeroDieSignal {
         if (healer == null) {
             return;
         }

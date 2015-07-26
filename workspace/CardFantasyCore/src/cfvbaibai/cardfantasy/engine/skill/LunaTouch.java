@@ -6,10 +6,11 @@ import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.EntityInfo;
 import cfvbaibai.cardfantasy.engine.Field;
+import cfvbaibai.cardfantasy.engine.HeroDieSignal;
 import cfvbaibai.cardfantasy.engine.SkillResolver;
 
 public final class LunaTouch {
-    public static void apply(Skill cardSkill, SkillResolver resolver, EntityInfo healer) {
+    public static void apply(Skill cardSkill, SkillResolver resolver, EntityInfo healer) throws HeroDieSignal {
         if (healer == null) {
             return;
         }

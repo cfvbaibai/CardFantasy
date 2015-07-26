@@ -503,6 +503,29 @@ public class SkillResolver {
                 }
             }
         }
+
+        for (SkillUseInfo skillUseInfo : defender.getAllUsableSkills()) {
+            if (skillUseInfo.getType() == SkillType.生命链接) {
+                List<CardInfo> victims = this.getAdjacentCards(defender.getOwner().getField(), defender.getPosition());
+                if (victims.size() <= 1) {
+                    break;
+                }
+                this.getStage().getUI().useSkill(defender, victims, skillUseInfo.getSkill(), true);
+                result.setDamage(result.getDamage() / victims.size());
+                for (CardInfo victim : victims) {
+                    this.getStage().getUI().attackCard(defender, victim, skillUseInfo.getSkill(), result.getDamage());
+                    OnDamagedResult lifeChainResult = this.applyDamage(victim, skillUseInfo.getSkill(), result.getDamage());
+                    if (lifeChainResult.cardDead) {
+                        this.resolveDeathSkills(attacker, victim, attackSkill, lifeChainResult);
+                    }
+                    if (attacker instanceof CardInfo) {
+                        this.resolvePostAttackSkills((CardInfo)attacker, victim, victim.getOwner(), attackSkill, lifeChainResult.actualDamage);
+                    }
+                }
+                result.setAttackable(false);
+                return result;
+            }
+        }
         return result;
     }
 
@@ -751,7 +774,8 @@ public class SkillResolver {
         }
     }
 
-    public OnDamagedResult applyDamage(CardInfo card, Skill skill, int damage) {
+    public OnDamagedResult applyDamage(CardInfo card, Skill skill, int damage) throws HeroDieSignal {
+        OnDamagedResult result = new OnDamagedResult();
         List<CardStatusItem> unbendingStatusItems = card.getStatus().getStatusOf(CardStatusType.不屈);
         if (!unbendingStatusItems.isEmpty()) {
             if (skill != null && skill.getType() == SkillType.吸血) {
@@ -774,7 +798,6 @@ public class SkillResolver {
         }
 
         int actualDamage = card.applyDamage(damage);
-        OnDamagedResult result = new OnDamagedResult();
         result.originalDamage = damage;
         result.actualDamage = actualDamage;
         if (card.getHP() <= 0) {
@@ -876,7 +899,7 @@ public class SkillResolver {
         return remainingDamage;
     }
 
-    public void resolveCardRoundEndingSkills(CardInfo card) {
+    public void resolveCardRoundEndingSkills(CardInfo card) throws HeroDieSignal {
         if (card == null) {
             return;
         }
