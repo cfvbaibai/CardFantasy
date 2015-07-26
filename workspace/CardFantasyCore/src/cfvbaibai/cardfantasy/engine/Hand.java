@@ -11,11 +11,7 @@ public class Hand extends CardPile {
     public boolean isFull() {
         return this.getCards().size() >= rule.getMaxHandCards();
     }
-    
-    public void removeCard(CardInfo card) {
-        this.getCards().remove(card);
-    }
-    
+
     @Override
     public CardInfo addCard(CardInfo newCard) {
         super.addCard(newCard);

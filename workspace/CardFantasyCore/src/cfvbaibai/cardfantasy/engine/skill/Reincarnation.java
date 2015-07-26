@@ -1,5 +1,6 @@
 package cfvbaibai.cardfantasy.engine.skill;
 
+import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
 import cfvbaibai.cardfantasy.GameUI;
 import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.engine.CardInfo;
@@ -26,7 +27,10 @@ public final class Reincarnation {
         if (bingo) {
             if (!player.getGrave().contains(card) && player.getDeck().contains(card)) {
                 // 特殊情况：兔子死亡复活上来的卡把兔子降临回魂了，导致无法转生，暂时先hack一下
-                player.getDeck().removeCard(card);
+                if (player.getDeck().removeCard(card)) {
+                    throw new CardFantasyRuntimeException(
+                        "Cannot find card " + card.getShortDesc() + " in deck of " + player.getId());
+                }
                 player.getGrave().addCard(card);
             }
             Grave grave = card.getOwner().getGrave();

@@ -273,4 +273,42 @@ public class SummonSkillTest extends SkillValidationTest {
         Assert.assertEquals(810, 5000 - c占位符1.getHP());
         Assert.assertEquals(660, 5000 - c占位符2.getHP());
     }
+    
+    @Test
+    public void test星云锁链_普通() {
+        SkillTestContext context = SkillValidationTestSuite.prepare(
+            50, 50, "占位符+星云锁链", "占位符", "城镇弓箭兵", "攻城弩车手", "秘银巨石像");
+        context.addToHand(0, 0).setSummonDelay(0);
+        context.addToDeck(1, 0);
+        context.addToDeck(2, 0);
+        context.addToDeck(3, 0);
+        CardInfo c秘银巨石像 = context.addToDeck(4, 0);
+        context.getEngine().getStage().getRule().setDeckOrder(1);
+        context.startGame();
+
+        // 秘银巨石像被星云锁链召唤
+        context.proceedOneRound();
+        Assert.assertEquals(2, context.getPlayer(0).getField().size());
+        Assert.assertEquals(c秘银巨石像.getUniqueName(), context.getPlayer(0).getField().getCard(1).getUniqueName());
+    }
+    
+    @Test
+    public void test星云锁链_多次() {
+        SkillTestContext context = SkillValidationTestSuite.prepare(
+            50, 50, "占位符+星云锁链*2", "占位符", "城镇弓箭兵", "攻城弩车手", "秘银巨石像");
+        context.addToHand(0, 0).setSummonDelay(0);
+        context.addToHand(1, 0).setSummonDelay(0);
+        context.addToDeck(2, 0);
+        context.addToDeck(3, 0);
+        CardInfo c攻城弩车手 = context.addToDeck(4, 0);
+        CardInfo c秘银巨石像 = context.addToDeck(5, 0);
+        context.getEngine().getStage().getRule().setDeckOrder(1);
+        context.startGame();
+
+        // 秘银巨石像被星云锁链召唤
+        context.proceedOneRound();
+        Assert.assertEquals(4, context.getPlayer(0).getField().size());
+        Assert.assertEquals(c秘银巨石像.getUniqueName(), context.getPlayer(0).getField().getCard(2).getUniqueName());
+        Assert.assertEquals(c攻城弩车手.getUniqueName(), context.getPlayer(0).getField().getCard(3).getUniqueName());
+    }
 }

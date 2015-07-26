@@ -55,8 +55,8 @@ public class CardPile {
         this.cards.clear();
     }
 
-    public void removeCard(CardInfo card) {
-        this.cards.remove(card);
+    public boolean removeCard(CardInfo card) {
+        return this.cards.remove(card);
     }
 
     public int size() {

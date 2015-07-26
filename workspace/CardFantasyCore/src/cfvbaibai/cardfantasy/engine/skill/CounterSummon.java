@@ -2,6 +2,7 @@ package cfvbaibai.cardfantasy.engine.skill;
 
 import java.util.List;
 
+import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
 import cfvbaibai.cardfantasy.GameUI;
 import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.engine.CardInfo;
@@ -30,7 +31,10 @@ public class CounterSummon {
             candidates.toList(), summonCount, true, null);
         ui.useSkill(defender, summonCards, skill, true);
         for (CardInfo summonCard : summonCards) {
-            summonCard.getOwner().getDeck().removeCard(summonCard);
+            if (!summonCard.getOwner().getDeck().removeCard(summonCard)) {
+                throw new CardFantasyRuntimeException(
+                    "[CounterSummon] Cannot find card " + summonCard.getShortDesc() + " in deck of " + defender.getId());
+            }
             resolver.summonCard(summonCard.getOwner(), summonCard, defender);
         }
     }

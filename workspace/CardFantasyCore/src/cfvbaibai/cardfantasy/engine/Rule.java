@@ -17,15 +17,13 @@ public class Rule {
         if (firstPlayer < -1 || firstPlayer > 1) {
             throw new IllegalArgumentException("Invalid firstPlayer: " + firstPlayer);
         }
-        if (deckOrder != 0 && deckOrder != 1) {
-            throw new IllegalArgumentException("Invalid deckOrder: " + deckOrder);
-        }
+
         this.maxHandCards = maxHandCards;
         this.maxRound = maxRound;
         this.firstPlayer = firstPlayer;
-        this.deckOrder = deckOrder;
+        this.setDeckOrder(deckOrder);
         this.bossBattle = bossBattle;
-        this.condition = condition;
+        this.setCondition(condition);
     }
 
     public int getMaxHandCards() {
@@ -62,5 +60,12 @@ public class Rule {
     
     public static Rule getBossBattle() {
         return new Rule(5, 999, 0, 0, true, null);
+    }
+
+    public void setDeckOrder(int deckOrder) {
+        if (deckOrder != 0 && deckOrder != 1) {
+            throw new IllegalArgumentException("Invalid deckOrder: " + deckOrder);
+        }
+        this.deckOrder = deckOrder;
     }
 }

@@ -161,6 +161,8 @@ public enum SkillType {
 
     修罗地火攻("", 100, 10, 10, 10, SkillTag.魔法),
 
+    星云锁链("", 0, 0),
+
     召唤王国战士("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
     召唤邪龙护卫("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
     召唤噩梦护卫("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),

@@ -11,104 +11,7 @@ import cfvbaibai.cardfantasy.data.RuneData;
 import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.data.SkillTag;
 import cfvbaibai.cardfantasy.data.SkillType;
-import cfvbaibai.cardfantasy.engine.skill.Agile;
-import cfvbaibai.cardfantasy.engine.skill.AllDelay;
-import cfvbaibai.cardfantasy.engine.skill.AllSpeedUp;
-import cfvbaibai.cardfantasy.engine.skill.Arouse;
-import cfvbaibai.cardfantasy.engine.skill.AttackUp;
-import cfvbaibai.cardfantasy.engine.skill.BackStab;
-import cfvbaibai.cardfantasy.engine.skill.BasicAtBuff;
-import cfvbaibai.cardfantasy.engine.skill.BasicHpBuff;
-import cfvbaibai.cardfantasy.engine.skill.Bless;
-import cfvbaibai.cardfantasy.engine.skill.Blind;
-import cfvbaibai.cardfantasy.engine.skill.Block;
-import cfvbaibai.cardfantasy.engine.skill.BloodDrain;
-import cfvbaibai.cardfantasy.engine.skill.BloodPaint;
-import cfvbaibai.cardfantasy.engine.skill.BloodThirsty;
-import cfvbaibai.cardfantasy.engine.skill.BraveFight;
-import cfvbaibai.cardfantasy.engine.skill.Burning;
-import cfvbaibai.cardfantasy.engine.skill.BurningFlame;
-import cfvbaibai.cardfantasy.engine.skill.CaeserAttack;
-import cfvbaibai.cardfantasy.engine.skill.ChainAttack;
-import cfvbaibai.cardfantasy.engine.skill.Confusion;
-import cfvbaibai.cardfantasy.engine.skill.CounterAttack;
-import cfvbaibai.cardfantasy.engine.skill.CounterBite;
-import cfvbaibai.cardfantasy.engine.skill.CounterMagic;
-import cfvbaibai.cardfantasy.engine.skill.CounterSummon;
-import cfvbaibai.cardfantasy.engine.skill.CriticalAttack;
-import cfvbaibai.cardfantasy.engine.skill.Curse;
-import cfvbaibai.cardfantasy.engine.skill.DeathMark;
-import cfvbaibai.cardfantasy.engine.skill.Destroy;
-import cfvbaibai.cardfantasy.engine.skill.Disease;
-import cfvbaibai.cardfantasy.engine.skill.Dodge;
-import cfvbaibai.cardfantasy.engine.skill.EarthShield;
-import cfvbaibai.cardfantasy.engine.skill.EnergyArmor;
-import cfvbaibai.cardfantasy.engine.skill.EnergyDrain;
-import cfvbaibai.cardfantasy.engine.skill.EnergyIncrement;
-import cfvbaibai.cardfantasy.engine.skill.Enprison;
-import cfvbaibai.cardfantasy.engine.skill.Escape;
-import cfvbaibai.cardfantasy.engine.skill.Explode;
-import cfvbaibai.cardfantasy.engine.skill.FireMagic;
-import cfvbaibai.cardfantasy.engine.skill.Guard;
-import cfvbaibai.cardfantasy.engine.skill.Heal;
-import cfvbaibai.cardfantasy.engine.skill.HealingMist;
-import cfvbaibai.cardfantasy.engine.skill.HeavenWrath;
-import cfvbaibai.cardfantasy.engine.skill.HeroKiller;
-import cfvbaibai.cardfantasy.engine.skill.HolyFire;
-import cfvbaibai.cardfantasy.engine.skill.HolyGuard;
-import cfvbaibai.cardfantasy.engine.skill.HolyShield;
-import cfvbaibai.cardfantasy.engine.skill.IceArmor;
-import cfvbaibai.cardfantasy.engine.skill.IceMagic;
-import cfvbaibai.cardfantasy.engine.skill.Immobility;
-import cfvbaibai.cardfantasy.engine.skill.Immue;
-import cfvbaibai.cardfantasy.engine.skill.LegionBuff;
-import cfvbaibai.cardfantasy.engine.skill.LighteningMagic;
-import cfvbaibai.cardfantasy.engine.skill.LunaBless;
-import cfvbaibai.cardfantasy.engine.skill.MagicMark;
-import cfvbaibai.cardfantasy.engine.skill.MagicShield;
-import cfvbaibai.cardfantasy.engine.skill.ManaErode;
-import cfvbaibai.cardfantasy.engine.skill.NoEffect;
-import cfvbaibai.cardfantasy.engine.skill.OneDelay;
-import cfvbaibai.cardfantasy.engine.skill.Overdraw;
-import cfvbaibai.cardfantasy.engine.skill.Penetration;
-import cfvbaibai.cardfantasy.engine.skill.Plague;
-import cfvbaibai.cardfantasy.engine.skill.PoisonMagic;
-import cfvbaibai.cardfantasy.engine.skill.Pray;
-import cfvbaibai.cardfantasy.engine.skill.Purify;
-import cfvbaibai.cardfantasy.engine.skill.Pursuit;
-import cfvbaibai.cardfantasy.engine.skill.RaceChange;
-import cfvbaibai.cardfantasy.engine.skill.RacialAttackSkill;
-import cfvbaibai.cardfantasy.engine.skill.RacialBuff;
-import cfvbaibai.cardfantasy.engine.skill.RacialShield;
-import cfvbaibai.cardfantasy.engine.skill.Rainfall;
-import cfvbaibai.cardfantasy.engine.skill.Reincarnation;
-import cfvbaibai.cardfantasy.engine.skill.Rejuvenate;
-import cfvbaibai.cardfantasy.engine.skill.Resurrection;
-import cfvbaibai.cardfantasy.engine.skill.Return;
-import cfvbaibai.cardfantasy.engine.skill.Revenge;
-import cfvbaibai.cardfantasy.engine.skill.Revive;
-import cfvbaibai.cardfantasy.engine.skill.Sacrifice;
-import cfvbaibai.cardfantasy.engine.skill.Seal;
-import cfvbaibai.cardfantasy.engine.skill.Snipe;
-import cfvbaibai.cardfantasy.engine.skill.Soften;
-import cfvbaibai.cardfantasy.engine.skill.SpeedUp;
-import cfvbaibai.cardfantasy.engine.skill.Spike;
-import cfvbaibai.cardfantasy.engine.skill.Summon;
-import cfvbaibai.cardfantasy.engine.skill.SuraFire;
-import cfvbaibai.cardfantasy.engine.skill.Synchrome;
-import cfvbaibai.cardfantasy.engine.skill.TimeBack;
-import cfvbaibai.cardfantasy.engine.skill.Transport;
-import cfvbaibai.cardfantasy.engine.skill.Trap;
-import cfvbaibai.cardfantasy.engine.skill.TsubameGaeshi;
-import cfvbaibai.cardfantasy.engine.skill.Tsukomi;
-import cfvbaibai.cardfantasy.engine.skill.Unbending;
-import cfvbaibai.cardfantasy.engine.skill.WeakPointAttack;
-import cfvbaibai.cardfantasy.engine.skill.Weaken;
-import cfvbaibai.cardfantasy.engine.skill.WeakenAll;
-import cfvbaibai.cardfantasy.engine.skill.WinningPursuit;
-import cfvbaibai.cardfantasy.engine.skill.Wound;
-import cfvbaibai.cardfantasy.engine.skill.Wrath;
-import cfvbaibai.cardfantasy.engine.skill.Zealot;
+import cfvbaibai.cardfantasy.engine.skill.*;
 
 
 public class SkillResolver {
@@ -1159,8 +1062,12 @@ public class SkillResolver {
                         RaceChange.apply(this, skillUseInfo, card, opField.getOwner());
                     } 
                 }
-                else if (!skillUseInfo.getSkill().isDeathSkill() && skillUseInfo.getType() == SkillType.反噬) {
-                    CounterBite.apply(skillUseInfo, this, card);
+                else if (!skillUseInfo.getSkill().isDeathSkill()) {
+                    if (skillUseInfo.getType() == SkillType.反噬) {
+                        CounterBite.apply(skillUseInfo, this, card);
+                    } else if (skillUseInfo.getType() == SkillType.星云锁链) {
+                        NebulaChain.apply(skillUseInfo, this, card);
+                    }
                 }
             }
         }
@@ -1287,6 +1194,8 @@ public class SkillResolver {
             this.stage.getUI().summonCard(player, card);
             player.getField().addCard(card);
             player.getHand().removeCard(card);
+            // 星云锁链之类可以从卡组直接召唤的情况
+            player.getDeck().removeCard(card);
         }
         if (this.stage.getPlayerCount() != 2) {
             throw new CardFantasyRuntimeException("There are " + this.stage.getPlayerCount()
