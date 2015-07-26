@@ -14,6 +14,14 @@
                                         <option value="17-2">17-2 挽歌丘陵</option>
                                         <option value="17-3">17-3 星树池塘</option>
                                         <option value="17-4">17-4 刹那树海</option>
+                                        <option value="17-5">17-5 神启遗迹</option>
+                                        <option value="17-6">17-6 荆棘古堡</option>
+                                        <option value="17-7">17-7 伤痕裂谷</option>
+                                        <option value="17-8">17-8 魔晶盆地</option>
+                                        <option value="17-9">17-9 魔眼灯塔</option>
+                                        <option value="17-10">17-10 流萤瀑布</option>
+                                        <option value="17-11">17-11 星灵沼</option>
+                                        <option value="17-H">17-H (隐藏)风言迹地</option>
                                     </optgroup>
                                     <optgroup label="16图">
                                         <option value="16-1">16-1 烈焰谷</option>

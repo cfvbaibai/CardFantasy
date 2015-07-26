@@ -1426,6 +1426,12 @@
     </Card>
     <Card id="3523" name="九命猫神·幻影" wikiId="" race="蛮荒" speed="4" star="5" cost="17" incrCost="2" at="415" hp="1550" incrAT="60" incrHP="49">
     </Card>
+    <Card id="3524" name="大毒汁之王" wikiId="" race="蛮荒" speed="2" star="5" cost="99" incrCost="0" at="1200" hp="2400" incrAT="0" incrHP="0">
+        <Skill type="我还会回来的" level="0" unlock="0" />
+        <Skill type="弱点攻击" level="0" unlock="5" />
+        <Skill type="免疫" level="0" unlock="10" />
+        <Skill type="穿刺" level="10" unlock="10" />
+    </Card>
 
     <!-- 地狱 -->
     <Card id="4101" name="恶魔小鬼" wikiId="31036" race="地狱" speed="2" star="1" cost="3" incrCost="2" at="80" hp="270" incrAT="19" incrHP="6">

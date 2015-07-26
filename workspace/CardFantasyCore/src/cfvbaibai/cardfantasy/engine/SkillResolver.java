@@ -577,6 +577,8 @@ public class SkillResolver {
                 TsubameGaeshi.apply(deadCardSkillUseInfo, this, killerCard.getOwner(), deadCard);
             } else if (deadCardSkillUseInfo.getType() == SkillType.九转秘术) {
                 Summon.apply(this, deadCardSkillUseInfo, deadCard, "九命猫神·幻影");
+            } else if (deadCardSkillUseInfo.getType() == SkillType.我还会回来的) {
+                Summon.apply(this, deadCardSkillUseInfo, deadCard, "大毒汁之王");
             }
         }
         {
