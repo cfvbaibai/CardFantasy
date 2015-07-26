@@ -27,6 +27,10 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2015-07-26: <ul>
+                        <li>添加新技能【精神错乱】，感谢<x>l793366568</x>, <x>Mr懵</x>的帮助</li>
+                        <li>添加新图【17-2 挽歌丘陵】、【17-3 星树池塘】、【17-4 刹那树海】</li>
+                    </ul></li>
                     <li>2015-07-25: <ul>
                         <li>添加新卡【魔装机神】，感谢<x>仰落灬</x>提供资料</li>
                         <li>添加新卡【希望之壳】，感谢<x>We_Yukirin</x>提供资料</li>

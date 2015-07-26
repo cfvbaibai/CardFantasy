@@ -11,6 +11,9 @@
                                 <select data-theme="c" name="map-id" id="map-id" class="map-select" data-mini="true" data-native-menu="false">
                                     <optgroup label="17图">
                                         <option value="17-1" selected="selected">17-1 异界之门</option>
+                                        <option value="17-2">17-2 挽歌丘陵</option>
+                                        <option value="17-3">17-3 星树池塘</option>
+                                        <option value="17-4">17-4 刹那树海</option>
                                     </optgroup>
                                     <optgroup label="16图">
                                         <option value="16-1">16-1 烈焰谷</option>
