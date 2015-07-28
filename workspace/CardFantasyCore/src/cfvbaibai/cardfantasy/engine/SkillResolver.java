@@ -788,20 +788,23 @@ public class SkillResolver {
             }
         }
 
-        if (skill != null && skill.getType().containsTag(SkillTag.魔法)) {
+        int actualDamage = card.applyDamage(damage);
+        result.originalDamage += damage;
+        result.actualDamage += actualDamage;
+
+        if (skill != null && skill.getType().containsTag(SkillTag.魔法) && damage > 0) {
+            // 治疗法术不受魔法印记影响
             List<CardStatusItem> magicMarkStatusItems = card.getStatus().getStatusOf(CardStatusType.魔印);
             for (CardStatusItem item : magicMarkStatusItems) {
                 Skill magicMarkSkill = item.getCause().getSkill();
                 this.getStage().getUI().useSkill(card, magicMarkSkill, true);
                 int extraDamage = damage * magicMarkSkill.getImpact() / 100;
                 this.getStage().getUI().attackCard(item.getCause().getOwner(), card, magicMarkSkill, extraDamage);
-                damage += extraDamage;
+                result.actualDamage += card.applyDamage(extraDamage);
+                result.originalDamage += extraDamage;
             }
         }
 
-        int actualDamage = card.applyDamage(damage);
-        result.originalDamage = damage;
-        result.actualDamage = actualDamage;
         if (card.getHP() <= 0) {
             result.cardDead = true;
             for (SkillUseInfo skillUseInfo : card.getNormalUsableSkills()) {

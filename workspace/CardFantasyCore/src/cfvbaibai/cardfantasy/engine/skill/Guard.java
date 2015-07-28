@@ -19,6 +19,9 @@ public final class Guard {
             return damage;
         }
         resolver.getStage().getUI().useSkill(guardian, attacker, guardSkill, true);
+        if (damage > guardian.getOwner().getHP()) {
+            damage = guardian.getOwner().getHP();
+        }
         int remainingDamage = 0;
         if (damage > guardian.getHP()) {
             remainingDamage = damage - guardian.getHP();

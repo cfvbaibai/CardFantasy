@@ -5,6 +5,7 @@ import org.junit.Test;
 
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.CardStatusType;
+import cfvbaibai.cardfantasy.engine.HeroDieSignal;
 import cfvbaibai.cardfantasy.engine.RuneInfo;
 
 public class DefenseTest extends SkillValidationTest {
@@ -514,5 +515,18 @@ public class DefenseTest extends SkillValidationTest {
         Assert.assertEquals(5000, c占位符2.getHP());
         Assert.assertEquals(0, context.getPlayer(0).getField().size());
         Assert.assertTrue(c占位符1.isDead());
+    }
+    
+    @Test
+    public void test守护_残血() throws HeroDieSignal {
+        SkillTestContext context = SkillValidationTestSuite.prepare(
+            50, 50, "占位符", "秘银巨石像", "占位符+守护");
+        context.addToField(0, 0);
+        context.addToField(1, 0);
+        CardInfo c守护占位符 = context.addToField(2, 1);
+        context.getPlayer(1).setHP(10);
+        context.startGame();
+        context.proceedOneRound();
+        Assert.assertEquals(10, 5000 - c守护占位符.getHP());
     }
 }

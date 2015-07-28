@@ -830,6 +830,23 @@ public class SpecialStatusTest extends SkillValidationTest {
     }
     
     @Test
+    public void test魔力印记_多重() {
+        SkillTestContext context = SkillValidationTestSuite.prepare(
+            50, 50, "白羊座*2", "占位符*2");
+        context.addToField(0, 0);
+        context.addToField(1, 0);
+        CardInfo c占位符1 = context.addToField(2, 1);
+        CardInfo c占位符2 = context.addToField(3, 1);
+        context.startGame();
+        random.addNextPicks(0, 1, 0, 1, 0, 1, 0, 1);
+        random.addNextNumbers(0, 0, 0, 0);
+        context.proceedOneRound();
+
+        Assert.assertEquals(200 + 210 + 570 + 200 + 210 + 210, 5000 - c占位符1.getHP());
+        Assert.assertEquals(200 + 210 + 200 + 210 + 210 + 570, 5000 - c占位符2.getHP());
+    }
+    
+    @Test
     public void test魔力印记_免疫() {
         SkillTestContext context = SkillValidationTestSuite.prepare(
             50, 50, "占位符+魔力法阵1", "占位符+火球4", "占位符+免疫");
