@@ -1442,7 +1442,12 @@
     <Card id="3523" name="九命猫神·幻影" wikiId="" race="蛮荒" speed="4" star="5" cost="17" incrCost="2" at="415" hp="1550" incrAT="60" incrHP="49">
     </Card>
     <Card id="3524" name="大毒汁之王" wikiId="" race="蛮荒" speed="2" star="5" cost="99" incrCost="0" at="1200" hp="2400" incrAT="0" incrHP="0">
-        <Skill type="我还会回来的" level="0" unlock="0" />
+        <Skill type="我还会回来的" level="0" unlock="10" />
+        <Skill type="弱点攻击" level="0" unlock="5" />
+        <Skill type="免疫" level="0" unlock="5" />
+        <Skill type="穿刺" level="10" unlock="5" />
+    </Card>
+    <Card id="3525" name="大毒汁之王本体" wikiId="" race="蛮荒" speed="2" star="5" cost="99" incrCost="0" at="1200" hp="2400" incrAT="0" incrHP="0">
         <Skill type="弱点攻击" level="0" unlock="5" />
         <Skill type="免疫" level="0" unlock="10" />
         <Skill type="穿刺" level="10" unlock="10" />
@@ -1912,11 +1917,6 @@
         <Skill type="不动" level="0" unlock="5" />
         <Skill type="加速" level="2" unlock="10" />
     </Card>
-    <Card id="4517" name="谎言之神" wikiId="80140" race="地狱" speed="6" star="5" cost="20" incrCost="2" at="365" hp="1450" incrAT="42" incrHP="48">
-        <Skill type="封印" level="0" unlock="0" />
-        <Skill type="免疫" level="0" unlock="5" />
-        <Skill type="召唤人马巡逻者" level="0" unlock="10" />
-    </Card>
     <Card id="4518" name="蝗虫公爵" wikiId="80186" race="地狱" speed="3" star="5" cost="15" incrCost="2" at="325" hp="1350" incrAT="38" incrHP="45">
         <Skill type="鲜血盛宴" level="9" unlock="0" />
         <Skill type="嗜血" level="7" unlock="5" />
@@ -2113,7 +2113,13 @@
         <Skill type="大地之盾" level="0" unlock="10" />
         <Skill type="无效" level="0" unlock="0" />
     </Card>
-
+    <Card id="5516" name="谎言之神" wikiId="" race="魔神" speed="6" star="5" cost="99" incrCost="-77" at="100" hp="10000" incrAT="0" incrHP="0">
+        <Skill type="复活" level="0" unlock="0" />
+        <Skill type="免疫" level="0" unlock="5" />
+        <Skill type="冰甲" level="10" unlock="10" />
+        <Skill type="回魂" level="5" unlock="10" />
+        <Skill type="无效" level="0" unlock="10" />
+    </Card>
     <!-- 魔神 -->
 <!-- 
     <Card id="5522" name="旧邪龙之神" wikiId="30871" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="1800" hp="12000000" incrAT="0" incrHP="0">

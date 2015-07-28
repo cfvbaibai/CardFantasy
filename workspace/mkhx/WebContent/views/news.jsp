@@ -31,6 +31,9 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2015-07-28: <ul>
+                        <li>修复【大毒汁之王】和【谎言之神】的技能BUG，感谢<x>saxitong</x>, <x>l793366568</x>, <x>仰落灬</x>, <x>裂空座2012</x>报告BUG</li>
+                    </ul>
                     <li>2015-07-26: <ul>
                         <li>添加新技能【精神狂乱】，感谢<x>l793366568</x>, <x>Mr懵</x>, <x>qazqwe240</x>, <x>凉宫春日de倔强</x>, <x>黯影羽</x>的帮助</li>
                         <li>添加17图所有关卡，感谢<x>qhd252623</x>, <x>l793366568</x>提供的丰富资料</li>
