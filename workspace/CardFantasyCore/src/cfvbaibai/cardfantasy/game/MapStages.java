@@ -34,7 +34,8 @@ public class MapStages {
                 MapEnemyHero hero = new MapEnemyHero(id, heroHP, deck.getRunes(), deck.getCards());
                 String victoryText = mapNode.valueOf("@victory");
                 VictoryCondition victory = VictoryCondition.parse(victoryText);
-                MapInfo mapInfo = new MapInfo(hero, victory);
+                String deckInfo = mapNode.getText();
+                MapInfo mapInfo = new MapInfo(hero, victory, deckInfo);
                 this.mapStages.put(id, mapInfo);
             }
         } catch (Exception e) {

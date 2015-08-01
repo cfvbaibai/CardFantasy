@@ -31,6 +31,10 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2015-08-01: <ul>
+                        <li>修复一个【不屈】和治疗技能的BUG，感谢<x>薛定谔只喵</x>, <x>real11inter</x>报告BUG</li>
+                        <li>现在【地图战】界面内可以看到该图的敌方阵容了，感谢<x>dl8o8lb</x>的提议</li>
+                    </ul></li>
                     <li>2015-07-28: <ul>
                         <li>修复【大毒汁之王】和【谎言之神】的技能BUG，感谢<x>saxitong</x>, <x>l793366568</x>, <x>平平一指</x>, <x>仰落灬</x>, <x>裂空座2012</x>报告BUG</li>
                         <li>修复【魔力印记】相关的技能BUG，感谢<x>裂空座2012</x>报告BUG</li>

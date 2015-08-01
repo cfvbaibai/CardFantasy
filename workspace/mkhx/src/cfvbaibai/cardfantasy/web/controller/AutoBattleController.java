@@ -797,6 +797,26 @@ public class AutoBattleController {
         }
     }
     
+    @RequestMapping(value = "/GetMapDeckInfo", headers = "Accept=application/json")
+    public void getMapDeckInfo(HttpServletRequest request, HttpServletResponse response,
+        @RequestParam("map") String map) throws IOException {
+        PrintWriter writer = response.getWriter();
+        response.setContentType("application/json");
+        try {
+            logger.info("Getting map stage: " + map);
+            String deckInfo = "";
+            MapInfo mapInfo = this.maps.getMap(map);
+            if (mapInfo == null) {
+                deckInfo = "无效的地图：" + map;
+            } else {
+                deckInfo = mapInfo.getDeckInfo();
+            }
+            writer.print(jsonHandler.toJson(deckInfo));
+        } catch (Exception e) {
+            writer.print(errorHelper.handleError(e, true));
+        }
+    }
+    
     /*
     @RequestMapping(value = "/RecommendBossBattleDeck", headers = "Accept=application/json")
     public void recommendBossBattleDeck(

@@ -412,6 +412,18 @@ var getMap = function() {
     });
 })();
 
+Core.showMapDeck = function() {
+    var map = getMap();
+    $.get('GetMapDeckInfo?map=' + map, function(data) {
+        console.log("Map deck info for '" + map + "': " + JSON.stringify(data));
+        $("#map-deck-info").text(data);
+        $.mobile.changePage("#view-map-deck-page", { transition : 'flip', role : 'dialog' });
+    }, 'json').fail(function(xhr, status, error) {
+        $("#map-deck-info").text("无法获得地图关卡阵容: " + status + ", " + error);
+        $.mobile.changePage("#view-map-deck-page", { transition : 'flip', role : 'dialog' });
+    });
+};
+
 $(document).ready(function() {
     var tiebaUrl = 'http://tieba.baidu.com/f?kw=%E9%AD%94%E5%8D%A1%E5%B9%BB%E6%83%B3%E6%A8%A1%E6%8B%9F%E5%99%A8';
     $('a[data-type="bug"]').attr('href', tiebaUrl).attr('target', '_blank');
@@ -456,7 +468,9 @@ $(document)
             $("#map-victory-condition").text("无法获得地图过关条件: " + status + ", " + error);
         });
     };
-    
+
+    $('#view-map-deck-link').attr('href', "javascript:CardFantasy.Core.showMapDeck();");
+
     $(document).on('change', 'select.map-select', function(e) {
         // Get current option value: this.options[e.target.selectedIndex].text
         showVictoryCondition();

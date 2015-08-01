@@ -229,7 +229,13 @@
                                 </select>
                             </td>
                         </tr>
-                        <tr><td>过关条件</td><td><span id="map-victory-condition">未知</span></td></tr>
+                        <tr>
+                            <td>过关条件</td>
+                            <td>
+                                <span id="map-victory-condition">未知</span>
+                                <a id="view-map-deck-link" data-rel="dialog" data-mini="true">查看阵容</a>
+                            </td>
+                        </tr>
                     </table>
                     <div id="player" class="player ui-grid-c">
                         <div class="ui-block-a ui-block-label-number">
@@ -259,6 +265,17 @@
             <div id="map-battle-div" data-mini="true" data-role="collapsible" data-collapsed="false" data-theme="c" data-content-theme="d">
                 <h3>战斗记录</h3>
                 <div id="map-battle-output" class="battle-output">没有战斗</div>
+            </div>
+        </div>
+    </div>
+    <div data-role="page" data-title="查看关卡阵容" data-mini="true" id="view-map-deck-page" class="fixed-width">
+        <div data-role="header" data-theme="c" data-position="fixed">
+            <h3 style="text-align: center">查看关卡阵容</h3>
+        </div>
+        <div data-role="content" data-theme="c">
+            <div id="map-deck-info" style="height: 200px; padding: 10px"></div>
+            <div style="width: 100%">
+                <a data-role="button" data-mini="true" data-theme="c" href="javascript:history.go(-1)">返回</a>
             </div>
         </div>
     </div>
