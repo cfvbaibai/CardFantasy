@@ -711,6 +711,8 @@ public class SkillResolver {
                     RacialAttackSkill.apply(this, skillUseInfo, attacker, defender, Race.FOREST);
                 } else if (skillUseInfo.getType() == SkillType.暴击) {
                     CriticalAttack.apply(this, skillUseInfo, attacker, defender);
+                } else if (skillUseInfo.getType() == SkillType.神兵召唤) {
+                    WeaponSummon.apply(this, skillUseInfo, attacker, defender);
                 } else if (skillUseInfo.getType() == SkillType.穷追猛打) {
                     Pursuit.apply(this, skillUseInfo, attacker, defender);
                 } else if (skillUseInfo.getType() == SkillType.战意) {
@@ -772,6 +774,8 @@ public class SkillResolver {
                 HeroKiller.remove(this, effect.getCause(), card);
             } else if (type == SkillType.凯撒之击) {
                 CaeserAttack.remove(this, effect.getCause(), card);
+            } else if (type == SkillType.神兵召唤) {
+                WeaponSummon.remove(this, effect.getCause(), card);
             }
         }
     }
