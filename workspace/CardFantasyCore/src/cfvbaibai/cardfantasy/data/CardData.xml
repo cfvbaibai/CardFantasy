@@ -690,6 +690,17 @@
         <Skill type="回春" level="5" unlock="5" />
         <Skill type="霜冻新星" level="5" unlock="10" />
     </Card>
+    <Card id="2320" name="精灵投掷者" wikiId="" race="森林" speed="4" star="3" cost="10" incrCost="2" at="220" hp="640" incrAT="20" incrHP="24">
+        <Skill type="嗜血" level="5" unlock="0" />
+        <Skill type="要害" level="5" unlock="5" />
+        <Skill type="穿刺" level="6" unlock="10" />
+    </Card>
+    <Card id="2321" name="精灵重甲弓手" wikiId="" race="森林" speed="3" star="3" cost="11" incrCost="2" at="185" hp="730" incrAT="16" incrHP="30">
+        <Skill type="森林之盾" level="5" unlock="0" />
+        <Skill type="二重狙击" level="4" unlock="5" />
+        <Skill type="闪避" level="5" unlock="10" />
+    </Card>
+
     <Card id="2401" name="地岭拥有者" wikiId="30998" race="森林" speed="6" star="4" cost="12" incrCost="1" at="215" hp="980" incrAT="24" incrHP="36">
         <Skill type="陷阱" level="1" unlock="0" />
         <Skill type="格挡" level="8" unlock="5" />
@@ -1658,6 +1669,11 @@
         <Skill type="盾刺" level="6" unlock="0" />
         <Skill type="免疫" level="0" unlock="5" />
         <Skill type="转生" level="5" unlock="10" />
+    </Card>
+    <Card id="4325" name="失魂哥布林" wikiId="" race="地狱" speed="4" star="3" cost="11" incrCost="2" at="245" hp="660" incrAT="18" incrHP="20">
+        <Skill type="脱困" level="0" unlock="0" />
+        <Skill type="污染" level="6" unlock="5" />
+        <Skill type="鲜血盛宴" level="5" unlock="10" />
     </Card>
 
     <Card id="4401" name="美杜莎女王" wikiId="31058" race="地狱" speed="6" star="4" cost="12" incrCost="2" at="230" hp="870" incrAT="28" incrHP="23">

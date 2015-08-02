@@ -31,7 +31,10 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">
                 <h3>更新日志</h3>
                 <ul class="news-content">
-                    <li>2015-08-02: 修复一个【转生】的BUG，感谢<x>中国移动坑爹6</x>, <x>WS零度冰点 </x>报告BUG</li>
+                    <li>2015-08-02: <ul>
+                        <li>修复一个【转生】的BUG，感谢<x>中国移动坑爹6</x>, <x>WS零度冰点 </x>报告BUG</li>
+                        <li>添加新卡【精灵投掷者】、【精灵重甲弓手】、【失魂哥布林】，感谢<x>虚梦杀</x>提供资料</li>
+                    </ul></li>
                     <li>2015-08-01: <ul>
                         <li>修复一个【不屈】和治疗技能的BUG，感谢<x>薛定谔只喵</x>, <x>real11inter</x>报告BUG</li>
                         <li>现在【地图战】界面内可以看到该图的敌方阵容了，感谢<x>dl8o8lb</x>的提议</li>
