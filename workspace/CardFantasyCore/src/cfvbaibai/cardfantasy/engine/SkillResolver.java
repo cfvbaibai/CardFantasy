@@ -618,7 +618,7 @@ public class SkillResolver {
         boolean reincarnated = false;
         for (SkillUseInfo deadCardSkillUseInfo : deadCard.getAllUsableSkills()) {
             if (deadCardSkillUseInfo.getType() == SkillType.转生) {
-                if (Reincarnation.apply(this, deadCardSkillUseInfo.getSkill(), deadCard)) {
+                if (Reincarnation.apply(this, deadCardSkillUseInfo.getSkill(), deadCard, result.unbending)) {
                     reincarnated = true;
                     break;
                 }
@@ -627,7 +627,7 @@ public class SkillResolver {
         if (!reincarnated) {
             RuneInfo rune = deadCard.getOwner().getActiveRuneOf(RuneData.秽土);
             if (rune != null && !deadCard.justRevived()) {
-                Reincarnation.apply(this, rune.getSkill(), deadCard);
+                Reincarnation.apply(this, rune.getSkill(), deadCard, result.unbending);
             }
         }
     }
