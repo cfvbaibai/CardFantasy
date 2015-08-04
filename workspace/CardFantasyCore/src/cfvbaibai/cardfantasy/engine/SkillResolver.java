@@ -196,7 +196,7 @@ public class SkillResolver {
                        skillUseInfo.getType() == SkillType.蛮荒威压 || skillUseInfo.getType() == SkillType.地狱同化) {
                 RaceChange.apply(this, skillUseInfo, attacker, defender);
             } else if (skillUseInfo.getType() == SkillType.战争怒吼) {
-                Soften.apply(skillUseInfo, this, attacker, defender, -1);
+                Soften.apply(skillUseInfo, this, attacker, defender, 10);
             } else if (skillUseInfo.getType() == SkillType.召唤王国战士) {
                 Summon.apply(this, skillUseInfo, attacker, "圣骑士", "魔剑士");
             } else if (skillUseInfo.getType() == SkillType.召唤噩梦护卫) {
