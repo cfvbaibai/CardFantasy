@@ -6,17 +6,23 @@
                 <div>
                     <fieldset class="select-2" data-theme="c" data-role="controlgroup" data-type="horizontal">
                         <select data-theme="c" name="boss-name" id="boss-name" data-mini="true" data-native-menu="false">
+                            <option value="强魔刃复仇女神">强魔刃复仇女神</option>
                             <option value="狙击复仇女神">狙击复仇女神</option>
                             <option value="送还复仇女神">送还复仇女神</option>
                             <option value="连锁复仇女神">连锁复仇女神</option>
+                            <option value="强魔咒邪龙之神">强魔咒邪龙之神</option>
                             <option value="迷魂邪龙之神">迷魂邪龙之神</option>
                             <option value="盾刺邪龙之神">盾刺邪龙之神</option>
+                            <option value="强魔甲噩梦之主">强魔甲噩梦之主</option>
                             <option value="振奋噩梦之主">振奋噩梦之主</option>
                             <option value="格挡噩梦之主">格挡噩梦之主</option>
+                            <option value="强魔咒毁灭之神">强魔咒毁灭之神</option>
                             <option value="邪吸毁灭之神">邪吸毁灭之神</option>
                             <option value="焚神毁灭之神">焚神毁灭之神</option>
+                            <option value="强魔甲深渊影魔">强魔甲深渊影魔</option>
                             <option value="弱点深渊影魔">弱点深渊影魔</option>
                             <option value="诅咒深渊影魔">诅咒深渊影魔</option>
+                            <option value="强魔刃万蛛之后">强魔刃万蛛之后</option>
                             <option value="回魂万蛛之后">回魂万蛛之后</option>
                             <option value="无回魂万蛛之后">无回魂万蛛之后</option>
                         </select>
