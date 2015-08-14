@@ -31,6 +31,9 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2015-08-14: <ul>
+                        <li>添加新卡【残翼羽神】、【无限之神】、【银河观测者】，感谢<x>咬起来喀嚓喀嚓</x>和<x>heixuanfeng54</x>的提醒</li>
+                    </ul></li>
                     <li>2015-08-04: <ul>
                         <li>更新魔神，增加【强魔刃复仇女神】、【强魔咒邪龙之神】、【强魔甲噩梦之主】、【强魔咒毁灭之神】、【强魔甲深渊影魔】、【强魔刃万蛛之后】来对应最新强化过的魔神，感谢<x>We_Yukirin</x>, <x>鲁鲁修司</x>提供情报</li>
                         <li>更新【战争怒吼】在对方场上有10张卡以上时的行为，和游戏一致，感谢<x>mrmrrain</x>提供情报</li>
