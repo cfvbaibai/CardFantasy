@@ -35,8 +35,9 @@
                         <li>添加【保存录像】和【<a href="#view-video-page">播放录像</a>】供能<br />
                         <img class='help-img' src='<c:url value="/resources/img/help/showSaveVideoDataPanel.jpg" />' />
                         <img class='help-img' src='<c:url value="/resources/img/help/copyVideoData.jpg" />' /><br />
-                        <li>然后将录像数据保存到随便什么地方，或者分享到贴吧</li>
-                        <li>要观看录像的小伙伴可以把录像数据直接复制进【<a href="#view-video-page">播放录像</a>】的界面里观看</li>
+                        <span>然后将录像数据保存到随便什么地方，或者分享到贴吧</span><br />
+                        <span>要观看录像的小伙伴可以把录像数据直接复制进【<a href="#view-video-page">播放录像</a>】的界面里观看</span><br />
+                        <li>修复一个魔神战COST显示的BUG，感谢<x>wanghwx2014</x>报告BUG</li>
                     </ul></li>
                     <li>2015-08-14: 添加新卡【残翼羽神】、【无限之神】、【银河观测者】，感谢<x>咬起来喀嚓喀嚓</x>和<x>heixuanfeng54</x>的提醒</li>
                     <li>2015-08-04: <ul>

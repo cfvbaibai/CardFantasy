@@ -530,12 +530,16 @@ public class AutoBattleController {
             }
             writer.append("模拟场次: " + gameCount + "<br />");
             
+            int totalCostForCoolDown = 0;
+            for (Card card : player2.getCards()) {
+                totalCostForCoolDown += card.getBaseCost();
+            }
+            int coolDown = 60 + totalCostForCoolDown * 2;
+
             int totalCost = 0;
             for (Card card : player2.getCards()) {
-                totalCost += card.getBaseCost();
+                totalCost += card.getCost();
             }
-            int coolDown = 60 + totalCost * 2;
-
             if (gameCount > 0) {
                 for (int i = 0; i < gameCount - 1; ++i) {
                     player1 = PlayerBuilder.build(false, "BOSS", bossName, 99999, null, 100);
