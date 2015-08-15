@@ -860,8 +860,6 @@ public class AutoBattleController {
         response.setContentType("plain/text");
         PrintWriter writer = response.getWriter();
         logger.info("Converting video: " + mode);
-        logger.info("Body: " + videoData);
-
         if (videoData == null || videoData.length() == 0) {
             throw new CardFantasyRuntimeException("无效的录像数据");
         }
