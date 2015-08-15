@@ -2272,7 +2272,8 @@ var Animater = function() {
         videoText += ']}';
         $.ajax({
             url: "Video/Compact",
-            data: videoText,
+            data: { 'videoData': videoText },
+            requestType: 'JSON',
             type: "POST",
             success: function(data) {
                 $('#video-content').text(data);
@@ -2345,6 +2346,7 @@ BattleAnimation.showBattle = function(data) {
     animater.setup(data);
     animater.dumpAnimations();
     animater.playAnimations();
+    BattleAnimation.showSaveVideoPanel(false);
 };
 
 BattleAnimation.showSaveVideoPanel = function(show) {
@@ -2362,6 +2364,24 @@ BattleAnimation.showSaveVideoPanel = function(show) {
     } 
 };
 
+BattleAnimation.viewVideo = function() {
+    var videoText = $('#video-content-to-view').val();
+    $.ajax({
+        url: "Video/Decompact",
+        data: { 'videoData': videoText },
+        requestType: 'JSON',
+        type: "POST",
+        success: function(data) {
+            eval('var videoData = ' + data);
+            $.mobile.changePage("#arena", { transition : 'flip', role : 'dialog' });
+            CardFantasy.BattleAnimation.showBattle(videoData);
+        },
+        error: function(error) {
+            alert('无效的录像数据');
+        }
+    });
+};
+
 $(document)
 .ready(function(){
     var clip = new ZeroClipboard($("#copy-video-button")[0]);
@@ -2370,11 +2390,19 @@ $(document)
     })
 })
 .on("pageinit", "#arena", function(event) {
-    animater = new Animater();
+    if (animater == null) {
+        animater = new Animater();
+    }
     $('#play-button').attr('href', 'javascript:CardFantasy.BattleAnimation.togglePlayButton();');
     $('#faster-button').attr('href', 'javascript:CardFantasy.BattleAnimation.faster();');
     $('#slower-button').attr('href', 'javascript:CardFantasy.BattleAnimation.slower();');
     $('#save-video-button').attr('href', 'javascript:CardFantasy.BattleAnimation.showSaveVideoPanel(true)');
+})
+.on("pageinit", "#view-video-page", function(event) {
+    if (animater == null) {
+        animater = new Animater();
+    }
+    $('#view-video-button').attr('href', 'javascript:CardFantasy.BattleAnimation.viewVideo()');
 });
 
 // END OF OUTERMOST IIFE

@@ -15,6 +15,11 @@ div#main-container {
 	font-size: small;
 }
 
+img.help-img {
+	width: 275px;
+	margin-left: -20px;
+}
+
 .battle-output {
 	height: 400px;
 	overflow: auto;

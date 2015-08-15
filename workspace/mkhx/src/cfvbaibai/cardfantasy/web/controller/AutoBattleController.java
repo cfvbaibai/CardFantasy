@@ -18,7 +18,6 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -855,25 +854,25 @@ public class AutoBattleController {
         return mv;
     }
 
-    @RequestMapping(value = "/Video/{mode}", method = RequestMethod.POST)
+    @RequestMapping(value = "/Video/{mode}", method = RequestMethod.POST, headers = "Accept=application/json")
     public void convertVideo(HttpServletRequest request, HttpServletResponse response,
-        @PathVariable String mode, @RequestBody String body) throws IOException {
+        @PathVariable String mode, @RequestParam("videoData") String videoData) throws IOException {
         response.setContentType("plain/text");
         PrintWriter writer = response.getWriter();
-        try {
-            logger.info("Converting video: " + mode);
-            logger.info("Body: " + body);
-            if (mode.equalsIgnoreCase("compact")) {
-                String compacted = Base64Encoder.encode(Compressor.compress(body));
-                logger.info("Compacted: " + compacted);
-                writer.print(compacted);
-            } else if (mode.equalsIgnoreCase("decompact")) {
-                String decompacted = Compressor.decompress(Base64Encoder.decode(body));
-                logger.info("Decompacted: " + decompacted);
-                writer.print(decompacted);
-            }
-        } catch (Exception e) {
-            writer.print(errorHelper.handleError(e, true));
+        logger.info("Converting video: " + mode);
+        logger.info("Body: " + videoData);
+
+        if (videoData == null || videoData.length() == 0) {
+            throw new CardFantasyRuntimeException("无效的录像数据");
+        }
+        if (mode.equalsIgnoreCase("compact")) {
+            String compacted = Base64Encoder.encode(Compressor.compress(videoData));
+            logger.info("Compacted: " + compacted);
+            writer.print(compacted);
+        } else if (mode.equalsIgnoreCase("decompact")) {
+            String decompacted = Compressor.decompress(Base64Encoder.decode(videoData));
+            logger.info("Decompacted: " + decompacted);
+            writer.print(decompacted);
         }
     }
 }

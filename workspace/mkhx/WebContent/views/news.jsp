@@ -10,8 +10,8 @@
                 <ul>
                     <li>技术壕站长最近沉迷于WOW，所以更新速度越来越慢了……</li>
                     <li><a href="#" data-type="bug">魔卡幻想模拟器贴吧</a>已成立，欢迎大家来提BUG、提需求、提供技能结算细节。</li>
-                    <li>小提示：如果想保存卡组，只要把卡组的文字表述记下来存在文本文件或者手机备忘录里，下次要用的时候复制回来就行。</li>
-                    <li>小提示：可以灵活使用*0的表达法来方便配卡哦。</li>
+                    <!-- <li>小提示：如果想保存卡组，只要把卡组的文字表述记下来存在文本文件或者手机备忘录里，下次要用的时候复制回来就行。</li> -->
+                    <!-- <li>小提示：可以灵活使用*0的表达法来方便配卡哦。</li> -->
                 </ul>
             </div>
             <%-- 
@@ -31,9 +31,14 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">
                 <h3>更新日志</h3>
                 <ul class="news-content">
-                    <li>2015-08-14: <ul>
-                        <li>添加新卡【残翼羽神】、【无限之神】、【银河观测者】，感谢<x>咬起来喀嚓喀嚓</x>和<x>heixuanfeng54</x>的提醒</li>
+                    <li>2015-08-15: <ul>
+                        <li>添加【保存录像】和【<a href="#view-video-page">播放录像</a>】供能<br />
+                        <img class='help-img' src='<c:url value="/resources/img/help/showSaveVideoDataPanel.jpg" />' />
+                        <img class='help-img' src='<c:url value="/resources/img/help/copyVideoData.jpg" />' /><br />
+                        <li>然后将录像数据保存到随便什么地方，或者分享到贴吧</li>
+                        <li>要观看录像的小伙伴可以把录像数据直接复制进【<a href="#view-video-page">播放录像</a>】的界面里观看</li>
                     </ul></li>
+                    <li>2015-08-14: 添加新卡【残翼羽神】、【无限之神】、【银河观测者】，感谢<x>咬起来喀嚓喀嚓</x>和<x>heixuanfeng54</x>的提醒</li>
                     <li>2015-08-04: <ul>
                         <li>更新魔神，增加【强魔刃复仇女神】、【强魔咒邪龙之神】、【强魔甲噩梦之主】、【强魔咒毁灭之神】、【强魔甲深渊影魔】、【强魔刃万蛛之后】来对应最新强化过的魔神，感谢<x>We_Yukirin</x>, <x>鲁鲁修司</x>提供情报</li>
                         <li>更新【战争怒吼】在对方场上有10张卡以上时的行为，和游戏一致，感谢<x>mrmrrain</x>提供情报</li>
@@ -110,8 +115,8 @@
                     <li>2015-05-09: <ul>
                         <li>取消COST和卡槽数量限制，方便地下城的模拟</li>
                         <li>现在可以在竞技场战里设置胜利条件了: <br />
-                            <img src='<c:url value="/resources/img/help/VictoryCondition1.png" />' style="width: 275px" />
-                            <img src='<c:url value="/resources/img/help/VictoryCondition2.png" />' style="width: 275px" />
+                            <img class='help-img' src='<c:url value="/resources/img/help/VictoryCondition1.png" />' />
+                            <img class='help-img' src='<c:url value="/resources/img/help/VictoryCondition2.png" />' />
                         </li>
                     </ul></li>
                     <li>2015-04-25: <ul>
