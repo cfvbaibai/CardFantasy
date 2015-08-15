@@ -37,17 +37,21 @@ public class VideoRecordTest {
         BufferedReader reader = new BufferedReader(
             new InputStreamReader(
                 VideoRecordTest.class.getResourceAsStream("/cfvbaibai/cardfantasy/test/sample-video.txt")));
-        StringBuffer sb = new StringBuffer();
-        String line = null;
-        while ((line = reader.readLine()) != null) {
-            sb.append(line);
+        try {
+            StringBuffer sb = new StringBuffer();
+            String line = null;
+            while ((line = reader.readLine()) != null) {
+                sb.append(line);
+            }
+            String videoText = sb.toString();
+            String encodedText = Base64Encoder.encode(Compressor.compress(videoText));
+            System.out.println("Original length: " + videoText.length());
+            System.out.println("Encoded length: " + encodedText.length());
+            System.out.println("Encoded: " + encodedText);
+            String decodedVideoText = Compressor.decompress(Base64Encoder.decode(encodedText));
+            Assert.assertEquals(videoText, decodedVideoText);
+        } finally {
+            reader.close();
         }
-        String videoText = sb.toString();
-        String encodedText = Base64Encoder.encode(Compressor.compress(videoText));
-        System.out.println("Original length: " + videoText.length());
-        System.out.println("Encoded length: " + encodedText.length());
-        System.out.println("Encoded: " + encodedText);
-        String decodedVideoText = Compressor.decompress(Base64Encoder.decode(encodedText));
-        Assert.assertEquals(videoText, decodedVideoText);
     }
 }

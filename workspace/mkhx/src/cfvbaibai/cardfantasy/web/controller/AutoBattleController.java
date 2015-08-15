@@ -18,12 +18,16 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import cfvbaibai.cardfantasy.Base64Encoder;
 import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
 import cfvbaibai.cardfantasy.CardFantasyUserRuntimeException;
+import cfvbaibai.cardfantasy.Compressor;
 import cfvbaibai.cardfantasy.GameUI;
 import cfvbaibai.cardfantasy.Randomizer;
 import cfvbaibai.cardfantasy.data.Card;
@@ -833,7 +837,7 @@ public class AutoBattleController {
         }
     }
     */
-    
+
     @RequestMapping(value = "/Cards/{keyword}")
     public ModelAndView getCardById(HttpServletRequest request, @PathVariable String keyword) {
         CardData card = this.store.getCard(keyword);
@@ -849,5 +853,27 @@ public class AutoBattleController {
         }
         this.userActionRecorder.addAction(new UserAction(new Date(), request.getRemoteAddr(), "View Card", keyword));
         return mv;
+    }
+
+    @RequestMapping(value = "/Video/{mode}", method = RequestMethod.POST)
+    public void convertVideo(HttpServletRequest request, HttpServletResponse response,
+        @PathVariable String mode, @RequestBody String body) throws IOException {
+        response.setContentType("plain/text");
+        PrintWriter writer = response.getWriter();
+        try {
+            logger.info("Converting video: " + mode);
+            logger.info("Body: " + body);
+            if (mode.equalsIgnoreCase("compact")) {
+                String compacted = Base64Encoder.encode(Compressor.compress(body));
+                logger.info("Compacted: " + compacted);
+                writer.print(compacted);
+            } else if (mode.equalsIgnoreCase("decompact")) {
+                String decompacted = Compressor.decompress(Base64Encoder.decode(body));
+                logger.info("Decompacted: " + decompacted);
+                writer.print(decompacted);
+            }
+        } catch (Exception e) {
+            writer.print(errorHelper.handleError(e, true));
+        }
     }
 }

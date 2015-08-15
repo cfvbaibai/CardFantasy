@@ -2255,9 +2255,12 @@ var Animater = function() {
         this.stage.add(bgLayer);
 
         var events = data.events;
+        var videoText = '{ events: [\r\n';
         for (var i = 0; i < events.length; ++i) {
             var event = events[i];
-            console.log(JSON.stringify(event));
+            var eventText = JSON.stringify(event);
+            console.log(eventText);
+            videoText += eventText + ',\r\n';
             var handlerName = "__" + event.name;
             var handler = this[handlerName];
             if (handler) {
@@ -2266,6 +2269,19 @@ var Animater = function() {
                 console.log("ERROR: unknown event: " + event.name);
             }
         }
+        videoText += ']}';
+        $.ajax({
+            url: "Video/Compact",
+            data: videoText,
+            type: "POST",
+            success: function(data) {
+                $('#video-content').text(data);
+            },
+            error: function(error) {
+                $('#video-content').text('无法转码录像！' + JSON.stringify(error));
+            }
+        });
+        $('#video-content').text('录像转码中...');
     };
 };
 
@@ -2331,12 +2347,34 @@ BattleAnimation.showBattle = function(data) {
     animater.playAnimations();
 };
 
+BattleAnimation.showSaveVideoPanel = function(show) {
+    if (show) {
+        $('#video-content').select();
+        $('#canvas-outline').hide('fast');
+        $('#video-content-panel').show('fast');
+        $('#save-video-button').changeButtonText('动画');
+        $('#save-video-button').attr('href', 'javascript:CardFantasy.BattleAnimation.showSaveVideoPanel(false)');
+    } else {
+        $('#video-content-panel').hide('fast');
+        $('#canvas-outline').show('fast');
+        $('#save-video-button').changeButtonText('保存');
+        $('#save-video-button').attr('href', 'javascript:CardFantasy.BattleAnimation.showSaveVideoPanel(true)');
+    } 
+};
+
 $(document)
+.ready(function(){
+    var clip = new ZeroClipboard($("#copy-video-button")[0]);
+    clip.on('aftercopy', function(e) {
+        alert('复制成功');
+    })
+})
 .on("pageinit", "#arena", function(event) {
     animater = new Animater();
     $('#play-button').attr('href', 'javascript:CardFantasy.BattleAnimation.togglePlayButton();');
     $('#faster-button').attr('href', 'javascript:CardFantasy.BattleAnimation.faster();');
     $('#slower-button').attr('href', 'javascript:CardFantasy.BattleAnimation.slower();');
+    $('#save-video-button').attr('href', 'javascript:CardFantasy.BattleAnimation.showSaveVideoPanel(true)');
 });
 
 // END OF OUTERMOST IIFE

@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<% String version = "20150321001"; %>
+<% String version = "20150815001"; %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,6 +17,7 @@
 <script src='<c:url value="/resources/js/jquery.browser.js" />'></script>
 <script src='<c:url value="/resources/js/jquery.cookie.js" />'></script>
 <script src='<c:url value="/resources/js/jquery.pager.js" />'></script>
+<script src='http://cdnjs.cloudflare.com/ajax/libs/zeroclipboard/2.1.6/ZeroClipboard.min.js'></script>
 <script src="http://libs.useso.com/js/jqueryui/1.10.3/jquery-ui.js"></script>
 <script src="http://libs.useso.com/js/jquery-mobile/1.3.1/jquery.mobile.min.js"></script>
 <script src='<c:url value="/resources/js/kinetic-v4.5.4.min.js" />'></script>
