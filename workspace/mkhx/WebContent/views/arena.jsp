@@ -10,7 +10,7 @@
             </div>
             <div id="video-content-panel" style="display: none">
                 <div style="width: 100%; text-align: center">录像数据</div>
-                <textarea id="video-content" style="max-height: 200px; resize: none; height: 200px; width: 98%; overflow-y: auto; word-wrap: break-word; margin-left: auto; margin-right: auto; font-size: 9px">
+                <textarea id="video-content" style="max-height: 200px; resize: none; height: 200px; width: 98%; overflow-y: auto; word-wrap: break-word; margin-left: auto; margin-right: auto">
                 </textarea>
                 <div style="padding: 5px; width: 100%; font-size: smaller">
                     <a id="copy-video-button" data-role="button" data-mini="true" href="#" data-clipboard-target="video-content">点击复制录像数据（手机请自行复制）</a>
