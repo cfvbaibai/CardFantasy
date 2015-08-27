@@ -2011,6 +2011,11 @@
         <Skill type="地狱之力" level="8" unlock="5" />
         <Skill type="不动" level="0" unlock="10" />
     </Card>
+    <Card id="4529" name="雪月花" wikiId="" race="地狱" speed="3" star="5" cost="17" incrCost="2" at="310" hp="1520" incrAT="33" incrHP="19">
+        <Skill type="净化" level="0" unlock="0" summon="true" />
+        <Skill type="脱困" level="0" unlock="5" />
+        <Skill type="转生" level="8" unlock="10" />
+    </Card>
 
     <!-- 魔神 -->
     <Card id="5501" name="狙击复仇女神" wikiId="30871" race="魔神" speed="4" star="5" cost="79" incrCost="0" at="1200" hp="10400000" incrAT="0" incrHP="0">
