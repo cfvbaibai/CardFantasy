@@ -13,7 +13,7 @@ public class DeathSkillTest extends SkillValidationTest {
      */
     @Test
     public void test法力反射_自爆() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "元素灵龙", "哥布林术士");
+        SkillTestContext context = prepare(50, 50, "元素灵龙", "哥布林术士");
         CardInfo c元素灵龙 = context.addToField(0, 0);
         context.addToField(1, 1);
         context.startGame();
@@ -28,7 +28,7 @@ public class DeathSkillTest extends SkillValidationTest {
 
     @Test
     public void test死亡印记_基本() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(
+        SkillTestContext context = prepare(
             50, 50, "占位符", "秘银巨石像+死亡印记1", "占位符", "残血王国小兵", "占位符");
         context.addToField(0, 0);
         context.addToField(1, 0);
@@ -49,7 +49,7 @@ public class DeathSkillTest extends SkillValidationTest {
      */
     @Test
     public void test死亡印记_一回合消失() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(
+        SkillTestContext context = prepare(
             50, 50, "残血王国小兵", "秘银巨石像+死亡印记1", "秘银巨石像", "占位符", "占位符");
         context.addToField(0, 0);
         context.addToField(1, 0);
@@ -77,7 +77,7 @@ public class DeathSkillTest extends SkillValidationTest {
      */
     @Test
     public void test死亡印记_死契技能() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(
+        SkillTestContext context = prepare(
             50, 50, "秘银巨石像+死亡印记1", "残血王国小兵+死契群体削弱10*2");
         CardInfo c秘银巨石像 = context.addToField(0, 0);
         context.addToField(1, 1);
@@ -92,7 +92,7 @@ public class DeathSkillTest extends SkillValidationTest {
 
     @Test
     public void test死亡印记_对方回合() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(
+        SkillTestContext context = prepare(
             50, 50, "占位符+死亡印记1", "森林木桩*2", "秘银巨石像", "占位符", "雷盾");
         context.addToField(0, 0);
         context.addToField(1, 0);
@@ -113,7 +113,7 @@ public class DeathSkillTest extends SkillValidationTest {
 
     @Test
     public void test死亡印记_对方回合_前方队友弹死自己() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(
+        SkillTestContext context = prepare(
             50, 50, "森林木桩", "占位符+死亡印记1", "森林木桩", "秘银巨石像", "残血王国小兵", "占位符", "雷盾");
         context.addToField(0, 0);
         context.addToField(1, 0);
@@ -135,7 +135,7 @@ public class DeathSkillTest extends SkillValidationTest {
 
     @Test
     public void test死亡印记_免疫爆炸() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(
+        SkillTestContext context = prepare(
             50, 50, "秘银巨石像+死亡印记1", "残血王国小兵", "占位符+免疫");
         context.addToField(0, 0);
         context.addToField(1, 1);
@@ -149,7 +149,7 @@ public class DeathSkillTest extends SkillValidationTest {
 
     @Test
     public void test死亡印记_免疫被印() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(
+        SkillTestContext context = prepare(
             50, 50, "秘银巨石像+死亡印记1", "残血王国小兵+免疫", "占位符");
         context.addToField(0, 0);
         context.addToField(1, 1);
@@ -166,7 +166,7 @@ public class DeathSkillTest extends SkillValidationTest {
      */
     @Test
     public void test死亡印记_不屈_不爆炸() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(
+        SkillTestContext context = prepare(
             50, 50, "秘银巨石像+死亡印记1", "残血王国小兵+不屈", "占位符");
         context.addToField(0, 0);
         CardInfo c王国小兵 = context.addToField(1, 1);
@@ -188,7 +188,7 @@ public class DeathSkillTest extends SkillValidationTest {
     
     @Test
     public void test燕返_普通() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(
+        SkillTestContext context = prepare(
             50, 50, "占位符", "占位符+冰弹10", "月镰杀手");
         CardInfo c占位符1 = context.addToField(0, 0);
         context.addToField(1, 0);
@@ -209,7 +209,7 @@ public class DeathSkillTest extends SkillValidationTest {
      */
     @Test
     public void test燕返_不屈_免疫_格挡() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "金属巨龙-15*2", "占位符", "欲望惩罚者");
+        SkillTestContext context = prepare(50, 50, "金属巨龙-15*2", "占位符", "欲望惩罚者");
         CardInfo c金属巨龙1 = context.addToField(0, 0);
         CardInfo c金属巨龙2 = context.addToField(1, 0);
         context.addToField(2, 0);
@@ -233,7 +233,7 @@ public class DeathSkillTest extends SkillValidationTest {
     
     @Test
     public void test燕返_摧毁() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "占位符", "独眼巨人", "欲望惩罚者");
+        SkillTestContext context = prepare(50, 50, "占位符", "独眼巨人", "欲望惩罚者");
         CardInfo c占位符 = context.addToField(0, 0);
         CardInfo c独眼巨人 = context.addToHand(1, 0).setSummonDelay(0);
         CardInfo c欲望惩罚者 = context.addToField(2, 1);

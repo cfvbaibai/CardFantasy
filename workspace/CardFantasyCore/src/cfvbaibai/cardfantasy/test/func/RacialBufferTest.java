@@ -11,7 +11,7 @@ public class RacialBufferTest extends SkillValidationTest {
      */
     @Test
     public void test种族之力_暴击_背刺() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "大剑圣", "隐世先知", "凤凰");
+        SkillTestContext context = prepare(50, 50, "大剑圣", "隐世先知", "凤凰");
         context.addToHand(0, 0).setSummonDelay(0);
         context.addToHand(1, 0).setSummonDelay(0);
         CardInfo c凤凰 = context.addToField(2, 1);
@@ -29,7 +29,7 @@ public class RacialBufferTest extends SkillValidationTest {
      */
     @Test
     public void test种族之力_削弱() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "隐世先知-5", "大剑圣", "独眼巨人");
+        SkillTestContext context = prepare(50, 50, "隐世先知-5", "大剑圣", "独眼巨人");
         context.addToHand(0, 0).setSummonDelay(0);
         CardInfo c大剑圣 = context.getPlayer(0).getHand().addCard(context.getCardInfo(1, 0)).setSummonDelay(0);
         context.addToHand(2, 1).setSummonDelay(0);
@@ -48,7 +48,7 @@ public class RacialBufferTest extends SkillValidationTest {
      */
     @Test
     public void test种族之力_瘟疫() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "隐世先知-5", "大剑圣", "木乃伊法老王", "奇美拉");
+        SkillTestContext context = prepare(50, 50, "隐世先知-5", "大剑圣", "木乃伊法老王", "奇美拉");
 
         context.addToHand(0, 0).setSummonDelay(0);
         CardInfo c大剑圣 = context.addToHand(1, 0).setSummonDelay(0);
@@ -77,7 +77,7 @@ public class RacialBufferTest extends SkillValidationTest {
      */
     @Test
     public void test种族之力_种族克制() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "猎魔犬", "隐世先知", "骨龙");
+        SkillTestContext context = prepare(50, 50, "猎魔犬", "隐世先知", "骨龙");
         context.addToField(0, 0);
         context.addToHand(1, 0).setSummonDelay(0);
         CardInfo c骨龙 = context.addToField(2, 1);
@@ -94,7 +94,7 @@ public class RacialBufferTest extends SkillValidationTest {
      */
     @Test
     public void test种族克制_暴击() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "猎魔犬", "骨龙");
+        SkillTestContext context = prepare(50, 50, "猎魔犬", "骨龙");
         context.addToField(0, 0);
         CardInfo c骨龙 = context.addToField(1, 1);
 
@@ -110,7 +110,7 @@ public class RacialBufferTest extends SkillValidationTest {
      */
     @Test
     public void test种族克制_削弱() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "东方僧人-1", "穴居人奴隶-5");
+        SkillTestContext context = prepare(50, 50, "东方僧人-1", "穴居人奴隶-5");
         CardInfo c东方僧人 = context.addToField(0, 0);
         context.addToField(1, 1);
         context.getStage().gameStarted();

@@ -11,7 +11,7 @@ public class SkillSequenceTest extends SkillValidationTest {
      */
     @Test
     public void test水源制造者_冰弹先于甘霖() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "水源制造者", "元素灵龙");
+        SkillTestContext context = prepare(50, 50, "水源制造者", "元素灵龙");
         context.addToField(0, 0).setBasicHP(100);
         context.addToField(1, 1);
         context.startGame();
@@ -29,7 +29,7 @@ public class SkillSequenceTest extends SkillValidationTest {
      */
     @Test
     public void test水源制造者_甘霖先于暴风雪() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "水源制造者", "元素灵龙");
+        SkillTestContext context = prepare(50, 50, "水源制造者", "元素灵龙");
         CardInfo c水源制造者 = context.addToField(0, 0).setBasicHP(130);
         context.addToField(1, 1);
         context.startGame();

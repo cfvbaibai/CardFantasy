@@ -13,7 +13,7 @@ public class SpecialStatusTest extends SkillValidationTest {
      */
     @Test
     public void test冰冻_回春() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "水源制造者-5", "凤凰");
+        SkillTestContext context = prepare(50, 50, "水源制造者-5", "凤凰");
         context.addToField(0, 0);
         CardInfo c凤凰 = context.addToField(1, 1);
         context.startGame();
@@ -30,7 +30,7 @@ public class SpecialStatusTest extends SkillValidationTest {
      */
     @Test
     public void test锁定_回春() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "地岭拥有者-5", "凤凰");
+        SkillTestContext context = prepare(50, 50, "地岭拥有者-5", "凤凰");
         context.addToField(0, 0);
         CardInfo c凤凰 = context.addToField(1, 1);
         context.startGame();
@@ -47,7 +47,7 @@ public class SpecialStatusTest extends SkillValidationTest {
      */
     @Test
     public void test锁定_盾刺() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "秘银巨石像+陷阱1", "占位符+盾刺10");
+        SkillTestContext context = prepare(50, 50, "秘银巨石像+陷阱1", "占位符+盾刺10");
         CardInfo c秘银巨石像 = context.addToField(0, 0);
         context.addToField(1, 1);
         context.startGame();
@@ -62,7 +62,7 @@ public class SpecialStatusTest extends SkillValidationTest {
      */
     @Test
     public void test锁定_邪灵汲取() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "秘银巨石像+陷阱1", "占位符+邪灵汲取10");
+        SkillTestContext context = prepare(50, 50, "秘银巨石像+陷阱1", "占位符+邪灵汲取10");
         CardInfo c秘银巨石像 = context.addToField(0, 0);
         context.addToField(1, 1);
         context.startGame();
@@ -77,7 +77,7 @@ public class SpecialStatusTest extends SkillValidationTest {
      */
     @Test
     public void test麻痹_回春() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "风暴召唤者-5", "凤凰");
+        SkillTestContext context = prepare(50, 50, "风暴召唤者-5", "凤凰");
         context.addToField(0, 0);
         CardInfo c凤凰 = context.addToField(1, 1);
         context.startGame();
@@ -95,7 +95,7 @@ public class SpecialStatusTest extends SkillValidationTest {
      */
     @Test
     public void test冰冻_迷魂_回春() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "水源制造者-1", "彩翼公主", "凤凰");
+        SkillTestContext context = prepare(50, 50, "水源制造者-1", "彩翼公主", "凤凰");
         context.addToField(0, 0);
         context.addToField(1, 0);
         CardInfo c凤凰 = context.addToField(2, 1);
@@ -118,7 +118,7 @@ public class SpecialStatusTest extends SkillValidationTest {
      */
     @Test
     public void test燃烧_回春() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "地狱红龙", "凤凰-5");
+        SkillTestContext context = prepare(50, 50, "地狱红龙", "凤凰-5");
         context.addToField(0, 0);
         context.addToField(1, 1).setBasicHP(691);
         context.startGame();
@@ -139,7 +139,7 @@ public class SpecialStatusTest extends SkillValidationTest {
      */
     @Test
     public void test中毒_回春() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "蝎尾狮", "凤凰-5");
+        SkillTestContext context = prepare(50, 50, "蝎尾狮", "凤凰-5");
         context.addToField(0, 0);
         context.addToField(1, 1).setBasicHP(801);
         context.startGame();
@@ -160,7 +160,7 @@ public class SpecialStatusTest extends SkillValidationTest {
      */
     @Test
     public void test冰冻_麻痹() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "水源制造者-1", "狮鹫-5", "凤凰");
+        SkillTestContext context = prepare(50, 50, "水源制造者-1", "狮鹫-5", "凤凰");
         context.addToField(0, 0);
         context.addToField(1, 0);
         CardInfo c凤凰 = context.addToField(2, 1);
@@ -180,7 +180,7 @@ public class SpecialStatusTest extends SkillValidationTest {
      */
     @Test
     public void test虚弱() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "东方幻术师-1", "秘银巨石像");
+        SkillTestContext context = prepare(50, 50, "东方幻术师-1", "秘银巨石像");
         CardInfo c东方幻术师 = context.addToField(0, 0);
         context.addToField(1, 1);
         context.startGame();
@@ -197,7 +197,7 @@ public class SpecialStatusTest extends SkillValidationTest {
      */
     @Test
     public void test虚弱_晕眩_迷魂() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "东方幻术师-5", "怒雪咆哮-1", "占位符", "秘银巨石像");
+        SkillTestContext context = prepare(50, 50, "东方幻术师-5", "怒雪咆哮-1", "占位符", "秘银巨石像");
         context.addToField(0, 0);
         CardInfo c怒雪咆哮 = context.addToField(1, 0);
         context.addToField(2, 1);
@@ -229,7 +229,7 @@ public class SpecialStatusTest extends SkillValidationTest {
      */
     @Test
     public void test虚弱_迷魂() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "东方幻术师-5", "秘银巨石像");
+        SkillTestContext context = prepare(50, 50, "东方幻术师-5", "秘银巨石像");
         CardInfo c东方幻术师 = context.addToField(0, 0);
         context.addToField(1, 1);
         context.startGame();
@@ -248,7 +248,7 @@ public class SpecialStatusTest extends SkillValidationTest {
      */
     @Test
     public void test虚弱_暴击() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "东方幻术师-1", "金属巨龙-5");
+        SkillTestContext context = prepare(50, 50, "东方幻术师-1", "金属巨龙-5");
         CardInfo c东方幻术师 = context.addToField(0, 0);
         context.addToField(1, 1);
         context.startGame();
@@ -266,7 +266,7 @@ public class SpecialStatusTest extends SkillValidationTest {
      */
     @Test
     public void test虚弱_免疫() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "东方幻术师-1", "金属巨龙");
+        SkillTestContext context = prepare(50, 50, "东方幻术师-1", "金属巨龙");
         CardInfo c东方幻术师 = context.addToField(0, 0);
         context.addToField(1, 1);
         context.startGame();
@@ -281,7 +281,7 @@ public class SpecialStatusTest extends SkillValidationTest {
 
     @Test
     public void test虚弱_多重() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "东方幻术师-1*2", "秘银巨石像");
+        SkillTestContext context = prepare(50, 50, "东方幻术师-1*2", "秘银巨石像");
         CardInfo c东方幻术师1 = context.addToField(0, 0);
         context.addToField(1, 0);
         CardInfo c秘银巨石像 = context.addToField(2, 1);
@@ -298,7 +298,7 @@ public class SpecialStatusTest extends SkillValidationTest {
     
     @Test
     public void test战争怒吼_虚弱() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "东方幻术师", "血色骑士", "秘银巨石像*2");
+        SkillTestContext context = prepare(50, 50, "东方幻术师", "血色骑士", "秘银巨石像*2");
         CardInfo c东方幻术师 = context.addToField(0, 0);
         CardInfo c血色骑士 = context.addToHand(1, 0).setSummonDelay(0);
         CardInfo c秘银巨石像1 = context.addToField(2, 1);
@@ -323,7 +323,7 @@ public class SpecialStatusTest extends SkillValidationTest {
      */
     @Test
     public void test不屈_狙击() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "残血王国小兵+不屈", "占位符", "秘银巨石像+狙击1");
+        SkillTestContext context = prepare(50, 50, "残血王国小兵+不屈", "占位符", "秘银巨石像+狙击1");
         CardInfo c王国小兵 = context.addToField(0, 0);
         context.addToField(1, 0);
         context.addToField(2, 1);
@@ -349,7 +349,7 @@ public class SpecialStatusTest extends SkillValidationTest {
      */
     @Test
     public void test不屈_中毒() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "残血王国小兵+不屈", "占位符+毒云10");
+        SkillTestContext context = prepare(50, 50, "残血王国小兵+不屈", "占位符+毒云10");
         CardInfo c王国小兵 = context.addToField(0, 0);
         context.addToField(1, 1);
         context.startGame();
@@ -373,7 +373,7 @@ public class SpecialStatusTest extends SkillValidationTest {
      */
     @Test
     public void test不屈_死契技能() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "铸造大师+死契暴风雪1", "占位符+狙击1");
+        SkillTestContext context = prepare(50, 50, "铸造大师+死契暴风雪1", "占位符+狙击1");
         CardInfo c铸造大师 = context.addToField(0, 0).setBasicHP(2);
         CardInfo c占位符 = context.addToField(1, 1);
         context.startGame();
@@ -401,7 +401,7 @@ public class SpecialStatusTest extends SkillValidationTest {
      */
     @Test
     public void test不屈_盾刺() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "见习圣骑+不屈", "秘银巨石像+盾刺10");
+        SkillTestContext context = prepare(50, 50, "见习圣骑+不屈", "秘银巨石像+盾刺10");
         CardInfo c见习圣骑 = context.addToField(0, 0).setBasicHP(2);
         context.addToField(1, 1);
         context.startGame();
@@ -431,7 +431,7 @@ public class SpecialStatusTest extends SkillValidationTest {
      */
     @Test
     public void test不屈_连续盾刺() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "见习圣骑+不屈", "占位符", "秘银巨石像+盾刺10*2");
+        SkillTestContext context = prepare(50, 50, "见习圣骑+不屈", "占位符", "秘银巨石像+盾刺10*2");
         CardInfo c见习圣骑 = context.addToField(0, 0).setBasicHP(2);
         context.addToField(1, 0);
         context.addToField(2, 1);
@@ -463,7 +463,7 @@ public class SpecialStatusTest extends SkillValidationTest {
      */
     @Test
     public void test不屈_瘟疫_群体削弱() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(
+        SkillTestContext context = prepare(
             50, 50, "见习圣骑+不屈", "秘银巨石像", "占位符+瘟疫10", "占位符+群体削弱10");
         CardInfo c见习圣骑 = context.addToField(0, 0).setBasicHP(2);
         context.addToField(1, 1);
@@ -486,7 +486,7 @@ public class SpecialStatusTest extends SkillValidationTest {
      */
     @Test
     public void test不屈_迷惑_冰冻_麻痹_锁定() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(
+        SkillTestContext context = prepare(
             50, 50, "见习圣骑+不屈", "秘银巨石像", "占位符+迷魂10", "占位符+冰弹10", "占位符+落雷10", "占位符+陷阱1");
         CardInfo c见习圣骑 = context.addToField(0, 0).setBasicHP(2);
         CardInfo c秘银巨石像 = context.addToField(1, 1);
@@ -514,7 +514,7 @@ public class SpecialStatusTest extends SkillValidationTest {
      */
     @Test
     public void test不屈_种族之力() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "铸造大师*2", "秘银巨石像");
+        SkillTestContext context = prepare(50, 50, "铸造大师*2", "秘银巨石像");
         CardInfo c铸造大师1 = context.addToHand(0, 0).setSummonDelay(0);
         CardInfo c铸造大师2 = context.addToHand(1, 0).setSummonDelay(0);
         context.addToField(2, 1);
@@ -546,7 +546,7 @@ public class SpecialStatusTest extends SkillValidationTest {
      */
     @Test
     public void test不屈_摧毁() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "见习圣骑+不屈", "占位符+盾刺10", "独眼巨人");
+        SkillTestContext context = prepare(50, 50, "见习圣骑+不屈", "占位符+盾刺10", "独眼巨人");
         CardInfo c见习圣骑 = context.addToField(0, 0);
         context.addToField(1, 1);
         context.startGame();
@@ -570,7 +570,7 @@ public class SpecialStatusTest extends SkillValidationTest {
      */
     @Test
     public void test不屈_送还() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(
+        SkillTestContext context = prepare(
             50, 50, "秘银巨石像", "残血王国小兵+不屈", "占位符+盾刺10", "占位符+送还");
         context.addToField(0, 0);
         CardInfo c王国小兵 = context.addToField(1, 0);
@@ -595,7 +595,7 @@ public class SpecialStatusTest extends SkillValidationTest {
      */
     @Test
     public void test不屈_二重狙击() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(
+        SkillTestContext context = prepare(
             50, 50, "秘银巨石像", "占位符+二重狙击10", "残血王国小兵+不屈", "占位符+盾刺10", "占位符+送还");
         context.addToField(0, 0);
         context.addToField(1, 0);
@@ -617,7 +617,7 @@ public class SpecialStatusTest extends SkillValidationTest {
      */
     @Test
     public void test不屈_治疗() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(
+        SkillTestContext context = prepare(
             50, 50, "秘银巨石像", "金属巨龙+不屈", "占位符+治疗1", "占位符+盾刺10");
         CardInfo c秘银巨石像 = context.addToField(0, 0);
         CardInfo c金属巨龙 = context.addToField(1, 0).setBasicHP(2);
@@ -639,7 +639,7 @@ public class SpecialStatusTest extends SkillValidationTest {
      */
     @Test
     public void test不屈_甘霖() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(
+        SkillTestContext context = prepare(
             50, 50, "秘银巨石像", "金属巨龙+不屈", "占位符+甘霖1", "占位符+盾刺10");
         CardInfo c秘银巨石像 = context.addToField(0, 0);
         CardInfo c金属巨龙 = context.addToField(1, 0).setBasicHP(2);
@@ -661,7 +661,7 @@ public class SpecialStatusTest extends SkillValidationTest {
      */
     @Test
     public void test不屈_吸血() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(
+        SkillTestContext context = prepare(
             50, 50, "秘银巨石像", "熊人武士+不屈", "占位符+盾刺10", "占位符");
         CardInfo c秘银巨石像 = context.addToField(0, 0);
         CardInfo c熊人武士 = context.addToField(1, 0).setBasicHP(2);
@@ -682,7 +682,7 @@ public class SpecialStatusTest extends SkillValidationTest {
      */
     @Test
     public void test不屈_虚弱() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(
+        SkillTestContext context = prepare(
             50, 50, "秘银巨石像", "占位符+虚弱", "秘银巨石像+不屈");
         CardInfo c秘银巨石像1 = context.addToField(0, 0);
         context.addToField(1, 0);
@@ -704,7 +704,7 @@ public class SpecialStatusTest extends SkillValidationTest {
      */
     @Test
     public void test不屈_献祭() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(
+        SkillTestContext context = prepare(
             50, 50, "秘银巨石像*2", "铸造大师+死契复活", "秘银巨石像+献祭1");
         CardInfo c秘银巨石像1 = context.addToField(0, 0);
         context.addToField(1, 0).setBasicHP(2);
@@ -724,7 +724,7 @@ public class SpecialStatusTest extends SkillValidationTest {
 
     @Test
     public void test森林沐浴_基本() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(
+        SkillTestContext context = prepare(
             50, 50, "赤面天狗", "占位符");
         context.addToHand(0, 0).setSummonDelay(0);
         CardInfo c占位符 = context.addToField(1, 1);
@@ -738,7 +738,7 @@ public class SpecialStatusTest extends SkillValidationTest {
      */
     @Test
     public void test森林沐浴_免疫_脱困() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(
+        SkillTestContext context = prepare(
             50, 50, "占位符+降临森林沐浴", "占位符+免疫", "占位符+脱困");
         context.addToHand(0, 0).setSummonDelay(0);
         CardInfo c占位符2 = context.addToField(1, 1);
@@ -755,7 +755,7 @@ public class SpecialStatusTest extends SkillValidationTest {
      */
     @Test
     public void test森林沐浴_死契复活() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(
+        SkillTestContext context = prepare(
             50, 50, "占位符+降临森林沐浴", "占位符", "占位符+死契复活", "秘银巨石像*3");
         context.addToGrave(0, 0);
         context.addToField(1, 0);
@@ -785,7 +785,7 @@ public class SpecialStatusTest extends SkillValidationTest {
      */
     @Test
     public void test森林沐浴_森林之力_主动() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(
+        SkillTestContext context = prepare(
             50, 50, "占位符+降临森林沐浴", "占位符+降临摧毁", "秘银巨石像", "金属巨龙", "森林女神+森林之力1");
         context.addToHand(0, 0).setSummonDelay(0);
         context.addToHand(1, 0).setSummonDelay(2);
@@ -813,7 +813,7 @@ public class SpecialStatusTest extends SkillValidationTest {
     
     @Test
     public void test魔力印记_基本() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(
+        SkillTestContext context = prepare(
             50, 50, "占位符+火球8", "占位符+魔力法阵1", "占位符+火球4", "占位符");
         context.addToField(0, 0);
         context.addToField(1, 0);
@@ -831,7 +831,7 @@ public class SpecialStatusTest extends SkillValidationTest {
     
     @Test
     public void test魔力印记_多重() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(
+        SkillTestContext context = prepare(
             50, 50, "白羊座*2", "占位符*2");
         context.addToField(0, 0);
         context.addToField(1, 0);
@@ -848,7 +848,7 @@ public class SpecialStatusTest extends SkillValidationTest {
     
     @Test
     public void test魔力印记_免疫() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(
+        SkillTestContext context = prepare(
             50, 50, "占位符+魔力法阵1", "占位符+火球4", "占位符+免疫");
         context.addToField(0, 0);
         context.addToField(1, 0);
@@ -864,7 +864,7 @@ public class SpecialStatusTest extends SkillValidationTest {
     
     @Test
     public void test致盲_基本() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(
+        SkillTestContext context = prepare(
             50, 50, "占位符+致盲1", "秘银巨石像");
         CardInfo c占位符 = context.addToField(0, 0);
         CardInfo c秘银巨石像 = context.addToField(1, 1);
@@ -891,7 +891,7 @@ public class SpecialStatusTest extends SkillValidationTest {
     
     @Test
     public void test致盲_闪避() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(
+        SkillTestContext context = prepare(
             50, 50, "星辰主宰+致盲1", "秘银巨石像");
         CardInfo c星辰主宰 = context.addToField(0, 0);
         CardInfo c秘银巨石像 = context.addToField(1, 1);
@@ -909,7 +909,7 @@ public class SpecialStatusTest extends SkillValidationTest {
     
     @Test
     public void test致盲_免疫() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(
+        SkillTestContext context = prepare(
             50, 50, "占位符+致盲1", "秘银巨石像+免疫");
         CardInfo c占位符 = context.addToField(0, 0);
         CardInfo c秘银巨石像 = context.addToField(1, 1);
@@ -927,7 +927,7 @@ public class SpecialStatusTest extends SkillValidationTest {
     
     @Test
     public void test致盲_脱困() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(
+        SkillTestContext context = prepare(
             50, 50, "占位符+致盲1", "秘银巨石像+脱困");
         CardInfo c占位符 = context.addToField(0, 0);
         CardInfo c秘银巨石像 = context.addToField(1, 1);
@@ -946,7 +946,7 @@ public class SpecialStatusTest extends SkillValidationTest {
     
     @Test
     public void test致盲_弱点攻击() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(
+        SkillTestContext context = prepare(
             50, 50, "占位符+致盲10", "秘银巨石像+弱点攻击");
         CardInfo c占位符 = context.addToField(0, 0);
         CardInfo c秘银巨石像 = context.addToField(1, 1);
@@ -964,7 +964,7 @@ public class SpecialStatusTest extends SkillValidationTest {
     
     @Test
     public void test精神狂乱_普通() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(
+        SkillTestContext context = prepare(
             50, 50, "占位符", "占位符+精神狂乱", "秘银巨石像*3");
         context.addToField(0, 0);
         context.addToField(1, 0);
@@ -982,7 +982,7 @@ public class SpecialStatusTest extends SkillValidationTest {
     
     @Test
     public void test精神狂乱_一边没卡() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(
+        SkillTestContext context = prepare(
             50, 50, "占位符", "占位符+精神狂乱", "秘银巨石像*3");
         context.addToField(0, 0);
         context.addToField(1, 0);
@@ -1000,7 +1000,7 @@ public class SpecialStatusTest extends SkillValidationTest {
 
     @Test
     public void test精神狂乱_两边没卡() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(
+        SkillTestContext context = prepare(
             50, 50, "占位符", "占位符+精神狂乱", "秘银巨石像");
         context.addToField(0, 0);
         context.addToField(1, 0);
@@ -1017,7 +1017,7 @@ public class SpecialStatusTest extends SkillValidationTest {
      */
     @Test
     public void test精神狂乱_免疫() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(
+        SkillTestContext context = prepare(
             50, 50, "占位符", "占位符+精神狂乱", "秘银巨石像", "金属巨龙", "秘银巨石像");
         context.addToField(0, 0);
         context.addToField(1, 0);
@@ -1038,7 +1038,7 @@ public class SpecialStatusTest extends SkillValidationTest {
      */
     @Test
     public void test精神狂乱_脱困() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(
+        SkillTestContext context = prepare(
             50, 50, "占位符", "占位符+精神狂乱", "秘银巨石像", "秘银巨石像+脱困", "秘银巨石像");
         context.addToField(0, 0);
         context.addToField(1, 0);

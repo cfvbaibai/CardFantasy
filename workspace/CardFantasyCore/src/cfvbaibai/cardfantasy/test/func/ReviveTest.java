@@ -10,7 +10,7 @@ import cfvbaibai.cardfantasy.engine.CardInfo;
 public class ReviveTest extends SkillValidationTest {
     @Test
     public void test回魂_随机性() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(
+        SkillTestContext context = prepare(
             50, 50, "森林女神", "秘银巨石像", "圣骑士", "魔剑士", "占位符");
         context.addToField(0, 0);
         CardInfo c秘银巨石像 = context.addToGrave(1, 0);
@@ -32,7 +32,7 @@ public class ReviveTest extends SkillValidationTest {
      */
     @Test
     public void test死契回魂() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(
+        SkillTestContext context = prepare(
             50, 50, "战斗猛犸象+死契回魂1", "秘银巨石像", "圣骑士", "占位符+盾刺10");
         context.addToField(0, 0).setBasicHP(2);
         CardInfo c秘银巨石像 = context.addToGrave(1, 0);
@@ -53,7 +53,7 @@ public class ReviveTest extends SkillValidationTest {
         Randomizer original = Randomizer.getRandomizer();
         Randomizer.registerRandomizer(new RealRandomizer());
         try {
-            SkillTestContext context = SkillValidationTestSuite.prepare(
+            SkillTestContext context = prepare(
                 50, 50, "战斗猛犸象+死契回魂2", "占位符*3", "占位符+盾刺10");
             Randomizer.getRandomizer().setUI(context.getStage().getUI());
             context.addToField(0, 0).setBasicHP(2);

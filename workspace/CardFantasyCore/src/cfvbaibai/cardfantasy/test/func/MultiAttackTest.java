@@ -12,7 +12,7 @@ public class MultiAttackTest extends SkillValidationTest {
      */
     @Test
     public void test连锁攻击_横扫() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "战场女武神", "占位符*4");
+        SkillTestContext context = prepare(50, 50, "战场女武神", "占位符*4");
         context.addToField(0, 0);
         CardInfo c占位符1 = context.addToField(1, 1);
         CardInfo c占位符2 = context.addToField(2, 1);
@@ -29,7 +29,7 @@ public class MultiAttackTest extends SkillValidationTest {
     
     @Test
     public void test修罗地火攻_普通() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "魔装机神-0", "占位符*3");
+        SkillTestContext context = prepare(50, 50, "魔装机神-0", "占位符*3");
         context.addToField(0, 0);
         CardInfo c占位符1 = context.addToField(1, 1);
         CardInfo c占位符2 = context.addToField(2, 1);
@@ -44,7 +44,7 @@ public class MultiAttackTest extends SkillValidationTest {
     
     @Test
     public void test修罗地火攻_免疫() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "魔装机神-0", "占位符+免疫*2", "占位符");
+        SkillTestContext context = prepare(50, 50, "魔装机神-0", "占位符+免疫*2", "占位符");
         context.addToField(0, 0);
         CardInfo c占位符1 = context.addToField(1, 1);
         CardInfo c占位符2 = context.addToField(2, 1);
@@ -59,7 +59,7 @@ public class MultiAttackTest extends SkillValidationTest {
 
     @Test
     public void test修罗地火攻_法力反射() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "魔装机神-0", "占位符+法力反射1*2", "占位符");
+        SkillTestContext context = prepare(50, 50, "魔装机神-0", "占位符+法力反射1*2", "占位符");
         CardInfo c魔装机神 = context.addToField(0, 0);
         CardInfo c占位符1 = context.addToField(1, 1);
         CardInfo c占位符2 = context.addToField(2, 1);
@@ -75,7 +75,7 @@ public class MultiAttackTest extends SkillValidationTest {
     
     @Test
     public void test生命链接_普通() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(
+        SkillTestContext context = prepare(
             50, 50, "占位符", "秘银巨石像", "占位符", "占位符+生命链接", "占位符");
         context.addToField(0, 0);
         context.addToField(1, 0);
@@ -92,7 +92,7 @@ public class MultiAttackTest extends SkillValidationTest {
     
     @Test
     public void test生命链接_两卡分担() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(
+        SkillTestContext context = prepare(
             50, 50, "秘银巨石像*2", "占位符+生命链接", "占位符");
         context.addToField(0, 0);
         context.addToField(1, 0);
@@ -107,7 +107,7 @@ public class MultiAttackTest extends SkillValidationTest {
     
     @Test
     public void test生命链接_无卡分担() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(
+        SkillTestContext context = prepare(
             50, 50, "秘银巨石像", "占位符+生命链接");
         context.addToField(0, 0);
         CardInfo c占位符 = context.addToField(1, 1);
@@ -119,7 +119,7 @@ public class MultiAttackTest extends SkillValidationTest {
     
     @Test
     public void test生命链接_吸血() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(
+        SkillTestContext context = prepare(
             50, 50, "占位符", "秘银巨石像+吸血10", "占位符", "占位符+生命链接", "占位符");
         context.addToField(0, 0);
         CardInfo c秘银巨石像 = context.addToField(1, 0).setBasicHP(1);

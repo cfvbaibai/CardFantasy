@@ -44,7 +44,6 @@ import cfvbaibai.cardfantasy.engine.GameEndCause;
 import cfvbaibai.cardfantasy.engine.GameResult;
 import cfvbaibai.cardfantasy.engine.Player;
 import cfvbaibai.cardfantasy.engine.Rule;
-import cfvbaibai.cardfantasy.game.DeckBuilder;
 import cfvbaibai.cardfantasy.game.DummyGameUI;
 import cfvbaibai.cardfantasy.game.DummyVictoryCondition;
 import cfvbaibai.cardfantasy.game.GameResultStat;
@@ -72,7 +71,6 @@ import cfvbaibai.cardfantasy.web.beans.JsonHandler;
 import cfvbaibai.cardfantasy.web.beans.Logger;
 import cfvbaibai.cardfantasy.web.beans.UserAction;
 import cfvbaibai.cardfantasy.web.beans.UserActionRecorder;
-import cfvbaibai.cardfantasy.web.dao.BossBattleStatEntry;
 
 @Controller
 public class AutoBattleController {
@@ -94,13 +92,6 @@ public class AutoBattleController {
     
     @Autowired
     private ErrorHelper errorHelper;
-    
-    //@Autowired
-    //@Qualifier("user-error")
-    //private java.util.logging.Logger userErrorLogger;
-    
-    //@Autowired
-    //private CommunicationService service;
 
     private static GameResultStat play(PlayerInfo p1, PlayerInfo p2, int count, Rule rule) {
         GameResultStat stat = new GameResultStat(p1, p2, rule);
@@ -555,38 +546,23 @@ public class AutoBattleController {
                     stat.addData(damageToBoss);
                 }
             }
-            
+
             if (timeoutCount > 0) {
                 writer.append("超时次数(大于999回合): " + timeoutCount + "<br />");
                 writer.append("您的卡组实在太厉害了！已经超出模拟器的承受能力，结果可能不准确，建议直接实测。<br />");
             }
-            
+
             long averageDamageToBoss = Math.round(stat.getAverage());
             long cvPercentage = Math.round(stat.getCoefficientOfVariation() * 100);
-            //int damageToBossPerMinute = averageDamageToBoss * 60 / coolDown;
             long minDamage = Math.round(stat.getMin());
             long maxDamage = Math.round(stat.getMax());
-            
-            BossBattleStatEntry entry = new BossBattleStatEntry();
-            entry.setBossName(bossName);
-            entry.setHeroLv(heroLv);
-            entry.setBattleCount(gameCount);
-            entry.setMinDamage(minDamage);
-            entry.setAvgDamage(averageDamageToBoss);
-            entry.setMaxDamage(maxDamage);
-            String sortedDeck = DeckBuilder.getSortedDeckDesc(player2);
-            entry.setSortedDeck(sortedDeck);
-            //service.newBossBattleStatEntry(entry);
-            
+
             long testMinute = 99999;
             long testBattleCount = 1 + (60 * testMinute / coolDown);
             long testTotalDamage = testBattleCount * averageDamageToBoss;
             long averageDamagePerMinute = testTotalDamage / testMinute;
-            
+
             writer.append("<table>");
-            //result.append("<tr><td>战斗次数: </td><td>" + count + "</td></tr>");
-            //result.append("<tr><td>总伤害: </td><td>" + totalDamageToBoss + "</td></tr>");
-            //result.append("<tr><td>平均伤害: </td><td>" + averageDamageToBoss + "</td></tr>");
             writer.append("<tr><td>卡组总COST: </td><td>" + totalCost + "</td></tr>");
             writer.append("<tr><td>冷却时间: </td><td>" + coolDown + "</td></tr>");
             writer.append("<tr><td>总体平均每分钟伤害: </td><td>" + averageDamagePerMinute + "</td></tr>");
@@ -594,7 +570,6 @@ public class AutoBattleController {
             writer.append("<tr><td>平均每次伤害: </td><td>" + averageDamageToBoss + "</td></tr>");
             writer.append("<tr><td>最大伤害: </td><td>" + maxDamage + "</td></tr>");
             writer.append("<tr><td>不稳定度: </td><td>" + cvPercentage + "%</td></tr>");
-            //result.append("<tr><td>平均每分钟伤害（理想）: </td><td>" + damageToBossPerMinute + "</td></tr>");
             writer.append("<tr><td colspan='2'><table style='text-align: center'><tr style='font-weight: bold'><td>魔神存活</td><td>战斗次数</td><td>总伤害</td><td>平均每分钟伤害</td></tr>");
             for (int i = 1; i <= 20; ++i) {
                 int attackCount = 1 + (60 * i / coolDown);
@@ -770,6 +745,7 @@ public class AutoBattleController {
                     skillList.add(new SkillTypeRuntimeInfo(skillType));
                 }
             }
+
             Collections.sort(skillList, new Comparator<SkillTypeRuntimeInfo>() {
                 private Comparator<Object> comparer = Collator.getInstance(Locale.CHINA);
                 @Override
@@ -777,6 +753,7 @@ public class AutoBattleController {
                     return comparer.compare(arg0.getName(), arg1.getName());
                 }
             });
+
             result.put("skills", skillList);
             writer.print(jsonHandler.toJson(result));
         } catch (Exception e) {

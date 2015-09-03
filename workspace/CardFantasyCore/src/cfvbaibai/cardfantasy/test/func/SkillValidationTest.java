@@ -9,12 +9,25 @@ import org.junit.rules.TestName;
 
 import cfvbaibai.cardfantasy.Randomizer;
 import cfvbaibai.cardfantasy.StaticRandomizer;
+import cfvbaibai.cardfantasy.engine.BattleEngine;
+import cfvbaibai.cardfantasy.game.DeckBuilder;
+import cfvbaibai.cardfantasy.game.DeckStartupInfo;
+import cfvbaibai.cardfantasy.test.TestGameBuilder;
 
 public class SkillValidationTest {
     protected static StaticRandomizer random;
     protected static Randomizer originalRandomizer;
     @Rule
     public TestName testName = new TestName();
+
+    public static SkillTestContext prepare(int playerALevel, int playerBLevel, String ... cards) {
+        BattleEngine engine = TestGameBuilder.buildEmptyGameForTest(50, 50);
+        DeckStartupInfo dsi = DeckBuilder.build(cards);
+        SkillTestContext context = new SkillTestContext();
+        context.setEngine(engine);
+        context.setDsi(dsi);
+        return context;
+    }
 
     @BeforeClass
     public static void beforeClass() {

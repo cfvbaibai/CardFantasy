@@ -8,17 +8,6 @@
     >
     <display-name>mkhx</display-name>
 
-    <!-- IMPORTANT: Enable WebApplicationContext in different listeners -->
-<!--
-    <listener>
-        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-    </listener>
- 
-    <listener>
-        <listener-class>cfvbaibai.cardfantasy.web.listener.ActiveSessionListener</listener-class>
-    </listener>
- -->
- 
     <servlet>
         <servlet-name>Dispatcher</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>

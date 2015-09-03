@@ -8,7 +8,7 @@ import cfvbaibai.cardfantasy.engine.CardInfo;
 public class SnipeTest extends SkillValidationTest {
     @Test
     public void test狙击_基本() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "残血王国小兵", "占位符", "占位符+狙击1");
+        SkillTestContext context = prepare(50, 50, "残血王国小兵", "占位符", "占位符+狙击1");
         CardInfo c王国小兵 = context.addToField(0, 0);
         context.addToField(1, 1);
         context.addToField(2, 1);

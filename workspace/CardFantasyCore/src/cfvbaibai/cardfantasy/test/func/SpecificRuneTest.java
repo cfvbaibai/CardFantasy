@@ -15,7 +15,7 @@ public class SpecificRuneTest extends SkillValidationTest {
      */
     @Test
     public void test玄石_激活() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "占位符*5", "玄石");
+        SkillTestContext context = prepare(50, 50, "占位符*5", "玄石");
         context.addToField(0, 0);
         RuneInfo r玄石 = context.addToRune(0, 0);
         context.startGame();
@@ -62,7 +62,7 @@ public class SpecificRuneTest extends SkillValidationTest {
 
     @Test
     public void test玄石_基本() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "占位符*4", "玄石");
+        SkillTestContext context = prepare(50, 50, "占位符*4", "玄石");
         CardInfo placeholder1 = context.addToHand(0, 0).setSummonDelay(6);
         CardInfo placeholder2 = context.addToHand(1, 0).setSummonDelay(6);
         context.addToField(2, 1);
@@ -82,7 +82,7 @@ public class SpecificRuneTest extends SkillValidationTest {
      */
     @Test
     public void test玄石_激活顺序() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "占位符*3", "玄石");
+        SkillTestContext context = prepare(50, 50, "占位符*3", "玄石");
         CardInfo placeholder1 = context.addToHand(0, 0).setSummonDelay(2);
         context.addToField(1, 1);
         context.addToField(2, 1);
@@ -98,7 +98,7 @@ public class SpecificRuneTest extends SkillValidationTest {
     
     @Test
     public void test龙吟_基本() throws HeroDieSignal {
-        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "占位符", "秘银巨石像*2", "龙吟");
+        SkillTestContext context = prepare(50, 50, "占位符", "秘银巨石像*2", "龙吟");
         Player p0 = context.getPlayer(0);
         context.addToField(0, 0);
         context.addToField(1, 1);
@@ -133,7 +133,7 @@ public class SpecificRuneTest extends SkillValidationTest {
     
     @Test
     public void test神祈_激活() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "残血森林小兵*2", "占位符", "神祈");
+        SkillTestContext context = prepare(50, 50, "残血森林小兵*2", "占位符", "神祈");
         context.addToField(0, 0);
         context.addToField(2, 1);
         RuneInfo r神祈 = context.addToRune(0, 0);
@@ -154,7 +154,7 @@ public class SpecificRuneTest extends SkillValidationTest {
     
     @Test
     public void test神祈_麻痹() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "见习圣骑", "森林木桩*2", "独角兽", "神祈");
+        SkillTestContext context = prepare(50, 50, "见习圣骑", "森林木桩*2", "独角兽", "神祈");
         CardInfo c见习圣骑 = context.addToField(0, 0);
         context.addToField(1, 0);
         context.addToField(2, 0);
@@ -176,7 +176,7 @@ public class SpecificRuneTest extends SkillValidationTest {
     
     @Test
     public void test神祈_冰冻() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "见习圣骑", "森林木桩*2", "蘑菇仙子", "神祈");
+        SkillTestContext context = prepare(50, 50, "见习圣骑", "森林木桩*2", "蘑菇仙子", "神祈");
         CardInfo c见习圣骑 = context.addToField(0, 0);
         context.addToField(1, 0);
         context.addToField(2, 0);
@@ -198,7 +198,7 @@ public class SpecificRuneTest extends SkillValidationTest {
 
     @Test
     public void test神祈_燃烧() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "见习圣骑", "森林木桩*2", "火象人卫士+闪避", "神祈");
+        SkillTestContext context = prepare(50, 50, "见习圣骑", "森林木桩*2", "火象人卫士+闪避", "神祈");
         CardInfo c见习圣骑 = context.addToField(0, 0);
         context.addToField(1, 0);
         context.addToField(2, 0);
@@ -235,7 +235,7 @@ public class SpecificRuneTest extends SkillValidationTest {
     
     @Test
     public void test神祈_烈火焚神() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "占位符", "森林木桩*2", "占位符+烈火焚神1", "神祈");
+        SkillTestContext context = prepare(50, 50, "占位符", "森林木桩*2", "占位符+烈火焚神1", "神祈");
         CardInfo c占位符1 = context.addToField(0, 0);
         CardInfo c森林木桩1 = context.addToField(1, 0);
         CardInfo c森林木桩2 = context.addToField(2, 0);
@@ -261,7 +261,7 @@ public class SpecificRuneTest extends SkillValidationTest {
     
     @Test
     public void test神祈_中毒() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "占位符", "森林木桩*2", "占位符+毒云1", "神祈");
+        SkillTestContext context = prepare(50, 50, "占位符", "森林木桩*2", "占位符+毒云1", "神祈");
         CardInfo c占位符1 = context.addToField(0, 0);
         CardInfo c森林木桩1 = context.addToField(1, 0);
         CardInfo c森林木桩2 = context.addToField(2, 0);
@@ -288,7 +288,7 @@ public class SpecificRuneTest extends SkillValidationTest {
 
     @Test
     public void test神祈_锁定() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "见习圣骑", "森林木桩*2", "占位符+陷阱1", "神祈");
+        SkillTestContext context = prepare(50, 50, "见习圣骑", "森林木桩*2", "占位符+陷阱1", "神祈");
         CardInfo c见习圣骑 = context.addToField(0, 0);
         context.addToField(1, 0);
         context.addToField(2, 0);
@@ -312,7 +312,7 @@ public class SpecificRuneTest extends SkillValidationTest {
 
     @Test
     public void test神祈_迷魂() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "见习圣骑", "森林木桩*2", "占位符+迷魂1", "神祈");
+        SkillTestContext context = prepare(50, 50, "见习圣骑", "森林木桩*2", "占位符+迷魂1", "神祈");
         CardInfo c见习圣骑 = context.addToField(0, 0);
         context.addToField(1, 0);
         context.addToField(2, 0);
@@ -337,7 +337,7 @@ public class SpecificRuneTest extends SkillValidationTest {
 
     @Test
     public void test神祈_晕眩() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "见习圣骑", "森林木桩*2", "占位符+大地之盾", "神祈");
+        SkillTestContext context = prepare(50, 50, "见习圣骑", "森林木桩*2", "占位符+大地之盾", "神祈");
         CardInfo c见习圣骑 = context.addToField(0, 0);
         context.addToField(1, 0);
         context.addToField(2, 0);
@@ -362,7 +362,7 @@ public class SpecificRuneTest extends SkillValidationTest {
 
     @Test
     public void test神祈_虚弱() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "见习圣骑", "森林木桩*2", "占位符+虚弱", "神祈");
+        SkillTestContext context = prepare(50, 50, "见习圣骑", "森林木桩*2", "占位符+虚弱", "神祈");
         CardInfo c见习圣骑 = context.addToField(0, 0);
         context.addToField(1, 0);
         context.addToField(2, 0);
@@ -388,7 +388,7 @@ public class SpecificRuneTest extends SkillValidationTest {
 
     @Test
     public void test神祈_裂伤() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "占位符+回春1", "森林木桩*2", "毁灭之龙", "神祈");
+        SkillTestContext context = prepare(50, 50, "占位符+回春1", "森林木桩*2", "毁灭之龙", "神祈");
         CardInfo c占位符 = context.addToField(0, 0);
         context.addToField(1, 0);
         context.addToField(2, 0);

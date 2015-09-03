@@ -15,22 +15,6 @@
     <!-- Enable annotations like @Autowired and @Qualifier -->
     <context:annotation-config />
 
-    <!--  <import resource="env.xml" /> -->
-
-	<!--
-    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-        <property name="dataSource" ref="dataSource" />
-        <property name="mapperLocations" value="/WEB-INF/*-mapper.xml" />
-    </bean>
-	-->
-
-	<!--
-    <bean id="postMapperFactory" class="org.mybatis.spring.mapper.MapperFactoryBean">
-        <property name="mapperInterface" value="cfvbaibai.cardfantasy.web.dao.PostMapper" />
-        <property name="sqlSessionFactory" ref="sqlSessionFactory" />
-    </bean>
-	-->
-
     <bean id="dummyGameUI" class="cfvbaibai.cardfantasy.game.DummyGameUI" />
     
     <bean class="cfvbaibai.cardfantasy.RealRandomizer">
@@ -39,16 +23,7 @@
     
     <bean class="cfvbaibai.cardfantasy.data.CardDataStore" factory-method="loadDefault" />
     <bean class="cfvbaibai.cardfantasy.game.LilithDataStore" factory-method="loadDefault" />
-<!--
-    <bean class="cfvbaibai.cardfantasy.web.dao.DaoServiceImpl" />
 
-    <bean class="java.util.concurrent.atomic.AtomicInteger">
-        <qualifier value="active-session-count" />
-        <constructor-arg>
-            <value>1</value>
-        </constructor-arg>
-    </bean>
--->
     <bean class="cfvbaibai.cardfantasy.web.beans.UserActionRecorder" />
 
     <bean class="cfvbaibai.cardfantasy.web.beans.JsonHandler" />
@@ -60,27 +35,8 @@
     <bean class="cfvbaibai.cardfantasy.web.QuestionStore">
         <constructor-arg><value>5</value></constructor-arg>
     </bean>
-    <!-- 
-    <bean class="java.util.logging.Logger" factory-method="getLogger">
-        <qualifier value="communication" />
-        <constructor-arg>
-            <value>cardfantasy-communication</value>
-        </constructor-arg>
-    </bean>
-    -->
-    <!-- 
-    <bean id="user-error-logger" class="java.util.logging.Logger" factory-method="getLogger">
-        <qualifier value="user-error" />
-        <constructor-arg>
-            <value>cardfantasy-user-error</value>
-        </constructor-arg>
-    </bean>
-     -->
     
     <bean class="cfvbaibai.cardfantasy.web.ErrorHelper">
         <constructor-arg index="0" ref="general-logger" />
-<!--
-        <constructor-arg index="1" ref="user-error-logger" />
--->
     </bean>
 </beans>

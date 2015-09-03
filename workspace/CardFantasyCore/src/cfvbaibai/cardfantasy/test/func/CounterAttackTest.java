@@ -12,7 +12,7 @@ public class CounterAttackTest extends SkillValidationTest {
      */
     @Test
     public void test反击_吸血() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "黑夜蝙蝠-1", "人马巡逻者");
+        SkillTestContext context = prepare(50, 50, "黑夜蝙蝠-1", "人马巡逻者");
         CardInfo c黑夜蝙蝠 = context.addToField(0, 0).setBasicHP(79);
         context.addToField(1, 1);
         context.startGame();
@@ -27,7 +27,7 @@ public class CounterAttackTest extends SkillValidationTest {
      */
     @Test
     public void test闪避_雷盾() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "秘银巨石像", "大剑圣", "雷盾");
+        SkillTestContext context = prepare(50, 50, "秘银巨石像", "大剑圣", "雷盾");
         CardInfo c秘银巨石像 = context.addToField(0, 0);
         CardInfo c大剑圣 = context.addToField(1, 1);
         RuneInfo r雷盾 = context.addToRune(0, 1);
@@ -46,7 +46,7 @@ public class CounterAttackTest extends SkillValidationTest {
      */
     @Test
     public void test冰甲岩壁_雷盾() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(
+        SkillTestContext context = prepare(
             50, 50, "光明之龙", "秘银巨石像", "战斗猛犸象", "岩壁", "雷盾");
         CardInfo c光明之龙 = context.addToField(0, 0);
         CardInfo c秘银巨石像 = context.addToField(1, 0);
@@ -69,7 +69,7 @@ public class CounterAttackTest extends SkillValidationTest {
      */
     @Test
     public void test横扫_雷盾() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(
+        SkillTestContext context = prepare(
             50, 50, "秘银巨石像", "光明之龙", "秘银巨石像", "凤凰*3", "雷盾");
         CardInfo c秘银巨石像1 = context.addToField(0, 0);
         CardInfo c光明之龙 = context.addToField(1, 0);
@@ -94,7 +94,7 @@ public class CounterAttackTest extends SkillValidationTest {
      */
     @Test
     public void test横扫_反击() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "光明之龙", "秘银巨石像", "皇家雄狮");
+        SkillTestContext context = prepare(50, 50, "光明之龙", "秘银巨石像", "皇家雄狮");
         CardInfo c光明之龙 = context.addToField(0, 0);
         context.addToField(1, 1);
         context.addToField(2, 1);
@@ -110,7 +110,7 @@ public class CounterAttackTest extends SkillValidationTest {
      */
     @Test
     public void test连锁攻击_雷盾() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "麒麟兽", "秘银巨石像*2", "金属巨龙-15*3", "雷盾");
+        SkillTestContext context = prepare(50, 50, "麒麟兽", "秘银巨石像*2", "金属巨龙-15*3", "雷盾");
         CardInfo c麒麟兽 = context.addToField(0, 0);
         CardInfo c秘银巨石像1 = context.addToField(1, 0);
         CardInfo c秘银巨石像2 = context.addToField(2, 0);
@@ -132,7 +132,7 @@ public class CounterAttackTest extends SkillValidationTest {
      */
     @Test
     public void test无伤害_盾刺() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "占位符*2", "占位符+盾刺10");
+        SkillTestContext context = prepare(50, 50, "占位符*2", "占位符+盾刺10");
         CardInfo c占位符1 = context.addToField(0, 0);
         CardInfo c占位符2 = context.addToField(1, 0);
         context.addToField(2, 1);

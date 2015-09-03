@@ -14,7 +14,7 @@ public class SummonSkillTest extends SkillValidationTest {
      */
     @Test
     public void test降临摧毁_焚天() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "独眼巨人", "焚天", "凤凰-5*2");
+        SkillTestContext context = prepare(50, 50, "独眼巨人", "焚天", "凤凰-5*2");
         context.addToHand(0, 0).setSummonDelay(0);
         RuneInfo r焚天 = context.addToRune(0, 0);
         context.addToField(1, 1);
@@ -34,7 +34,7 @@ public class SummonSkillTest extends SkillValidationTest {
      */
     @Test
     public void test降临传送_相同等待时间() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "隐世先知", "金属巨龙-5", "凤凰-5");
+        SkillTestContext context = prepare(50, 50, "隐世先知", "金属巨龙-5", "凤凰-5");
         context.addToHand(0, 0).setSummonDelay(0);
         CardInfo c金属巨龙 = context.addToHand(1, 1).setSummonDelay(3);
         CardInfo c凤凰 = context.addToHand(2, 1).setSummonDelay(3);
@@ -52,7 +52,7 @@ public class SummonSkillTest extends SkillValidationTest {
      */
     @Test
     public void test献祭_免疫() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "占位符+献祭", "占位符+免疫");
+        SkillTestContext context = prepare(50, 50, "占位符+献祭", "占位符+免疫");
         context.addToHand(0, 0).setSummonDelay(0);
         context.addToHand(1, 0).setSummonDelay(0);
         context.startGame();
@@ -68,7 +68,7 @@ public class SummonSkillTest extends SkillValidationTest {
      */
     @Test
     public void test献祭_复活() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "占位符+复活", "占位符+献祭1", "占位符");
+        SkillTestContext context = prepare(50, 50, "占位符+复活", "占位符+献祭1", "占位符");
         CardInfo c占位符1 = context.addToField(0, 0);
         context.addToGrave(1, 0);
         context.addToField(2, 1);
@@ -93,7 +93,7 @@ public class SummonSkillTest extends SkillValidationTest {
      */
     @Test
     public void test献祭_死契() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "占位符+献祭1", "幽灵巨鲸");
+        SkillTestContext context = prepare(50, 50, "占位符+献祭1", "幽灵巨鲸");
         context.addToHand(0, 0).setSummonDelay(0);
         context.addToHand(1, 0).setSummonDelay(0);
         context.startGame();
@@ -112,7 +112,7 @@ public class SummonSkillTest extends SkillValidationTest {
      */
     @Test
     public void test献祭_时光倒流() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "占位符+献祭", "占位符+时光倒流");
+        SkillTestContext context = prepare(50, 50, "占位符+献祭", "占位符+时光倒流");
         CardInfo c占位符1 = context.addToHand(0, 0).setSummonDelay(0);
         context.addToHand(1, 0).setSummonDelay(0);
         context.startGame();
@@ -128,7 +128,7 @@ public class SummonSkillTest extends SkillValidationTest {
      */
     @Test
     public void test时光倒流_献祭() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "占位符+时光倒流", "占位符+献祭");
+        SkillTestContext context = prepare(50, 50, "占位符+时光倒流", "占位符+献祭");
         CardInfo c占位符1 = context.addToHand(0, 0).setSummonDelay(0);
         context.addToHand(1, 0).setSummonDelay(0);
         context.startGame();
@@ -144,7 +144,7 @@ public class SummonSkillTest extends SkillValidationTest {
      */
     @Test
     public void test种族之力_献祭() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "秘银巨石像+献祭8", "占位符", "隐世先知");
+        SkillTestContext context = prepare(50, 50, "秘银巨石像+献祭8", "占位符", "隐世先知");
         CardInfo c秘银巨石像 = context.addToHand(0, 0).setSummonDelay(0);
         context.addToHand(1, 0).setSummonDelay(0);
         CardInfo c隐世先知 = context.addToHand(2, 0).setSummonDelay(0);
@@ -165,7 +165,7 @@ public class SummonSkillTest extends SkillValidationTest {
      */
     @Test
     public void test种族之力_献祭_离场() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "秘银巨石像+献祭8", "隐世先知");
+        SkillTestContext context = prepare(50, 50, "秘银巨石像+献祭8", "隐世先知");
         CardInfo c秘银巨石像 = context.addToHand(0, 0).setSummonDelay(0);
         context.addToHand(1, 0).setSummonDelay(0);
         context.startGame();
@@ -182,7 +182,7 @@ public class SummonSkillTest extends SkillValidationTest {
      */
     @Test
     public void test被动种族守护_降临暴风雪_法力反射_分别上场() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(
+        SkillTestContext context = prepare(
             50, 50, "圣骑士", "残血王国小兵+降临暴风雪1", "元素灵龙");
         context.addToField(0, 0);
         CardInfo c王国小兵 = context.addToHand(1, 0).setSummonDelay(0);
@@ -201,7 +201,7 @@ public class SummonSkillTest extends SkillValidationTest {
      */
     @Test
     public void test被动种族守护_降临暴风雪_法力反射_同时上场() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50,
+        SkillTestContext context = prepare(50, 50,
             "残血王国小兵+降临暴风雪1", "占位符+王国守护10", "元素灵龙");
         CardInfo c残血王国小兵 = context.addToHand(0, 0).setSummonDelay(0);
         context.addToHand(1, 0).setSummonDelay(0);
@@ -221,7 +221,7 @@ public class SummonSkillTest extends SkillValidationTest {
     // 此为魔卡BUG，而且影响不大，暂时先不测了
     //@Test
     public void test种族守护_献祭_离场() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "邪灵女巫-0", "堕落精灵+地狱守护5");
+        SkillTestContext context = prepare(50, 50, "邪灵女巫-0", "堕落精灵+地狱守护5");
         CardInfo c邪灵女巫 = context.addToHand(0, 0).setSummonDelay(0);
         context.addToHand(1, 0).setSummonDelay(0);
         context.startGame();
@@ -238,7 +238,7 @@ public class SummonSkillTest extends SkillValidationTest {
      */
     @Test
     public void test降临烈焰风暴_献祭() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "秘银巨石像+献祭8", "占位符+降临烈焰风暴1", "占位符");
+        SkillTestContext context = prepare(50, 50, "秘银巨石像+献祭8", "占位符+降临烈焰风暴1", "占位符");
         CardInfo c秘银巨石像 = context.addToHand(0, 0).setSummonDelay(0);
         context.addToHand(1, 0).setSummonDelay(0);
         CardInfo c占位符2 = context.addToField(2, 1);
@@ -257,7 +257,7 @@ public class SummonSkillTest extends SkillValidationTest {
      */
     @Test
     public void test神性祈求_封印() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(
+        SkillTestContext context = prepare(
             50, 50, "占位符", "占位符+封印", "秘银巨石像+神性祈求", "秘银巨石像");
         CardInfo c占位符1 = context.addToField(0, 0);
         CardInfo c占位符2 = context.addToHand(1, 0).setSummonDelay(0);
@@ -276,7 +276,7 @@ public class SummonSkillTest extends SkillValidationTest {
     
     @Test
     public void test星云锁链_普通() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(
+        SkillTestContext context = prepare(
             50, 50, "占位符+星云锁链", "占位符", "城镇弓箭兵", "攻城弩车手", "秘银巨石像");
         context.addToHand(0, 0).setSummonDelay(0);
         context.addToDeck(1, 0);
@@ -294,7 +294,7 @@ public class SummonSkillTest extends SkillValidationTest {
     
     @Test
     public void test星云锁链_多次() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(
+        SkillTestContext context = prepare(
             50, 50, "占位符+星云锁链*2", "占位符", "城镇弓箭兵", "攻城弩车手", "秘银巨石像");
         context.addToHand(0, 0).setSummonDelay(0);
         context.addToHand(1, 0).setSummonDelay(0);

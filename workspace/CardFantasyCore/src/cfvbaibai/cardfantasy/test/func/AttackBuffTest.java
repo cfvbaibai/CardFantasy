@@ -12,7 +12,7 @@ public class AttackBuffTest extends SkillValidationTest {
      */
     @Test
     public void test嗜血_暴击() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "犀牛人武士", "凤凰+格挡10");
+        SkillTestContext context = prepare(50, 50, "犀牛人武士", "凤凰+格挡10");
         context.addToField(0, 0);
         CardInfo c凤凰 = context.addToField(1, 1);
         context.startGame();
@@ -34,7 +34,7 @@ public class AttackBuffTest extends SkillValidationTest {
      */
     @Test
     public void test狂热_暴击() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "洪荒巨熊", "秘银巨石像");
+        SkillTestContext context = prepare(50, 50, "洪荒巨熊", "秘银巨石像");
         context.addToField(0, 0);
         CardInfo c秘银 = context.addToField(1, 1);
         context.startGame();
@@ -55,7 +55,7 @@ public class AttackBuffTest extends SkillValidationTest {
      */
     @Test
     public void test邪灵汲取_削弱() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "隐世先知+弱点攻击", "末日预言师", "时空旅者");
+        SkillTestContext context = prepare(50, 50, "隐世先知+弱点攻击", "末日预言师", "时空旅者");
         CardInfo c隐世先知 = context.addToField(0, 0);
         CardInfo c末日预言师 = context.addToField(1, 1);
         context.addToField(2, 1);
@@ -91,7 +91,7 @@ public class AttackBuffTest extends SkillValidationTest {
      */
     @Test
     public void test邪灵汲取_淬炼_暴击_虚弱() throws HeroDieSignal {
-        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "东方幻术师", "远古海妖-5", "淬炼");
+        SkillTestContext context = prepare(50, 50, "东方幻术师", "远古海妖-5", "淬炼");
         CardInfo c东方幻术师 = context.addToField(0, 0);
         CardInfo c远古海妖 = context.addToField(1, 1);
         context.addToRune(0, 1);
@@ -117,7 +117,7 @@ public class AttackBuffTest extends SkillValidationTest {
      */
     @Test
     public void test邪灵汲取_种族克制_虚弱() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "东方幻术师", "末日预言师", "占位符", "秘银巨石像");
+        SkillTestContext context = prepare(50, 50, "东方幻术师", "末日预言师", "占位符", "秘银巨石像");
         context.addToField(0, 0);
         context.addToField(1, 0);
         context.addToField(2, 1);
@@ -144,7 +144,7 @@ public class AttackBuffTest extends SkillValidationTest {
      */
     @Test
     public void test邪灵汲取_淬炼_完全抵消() throws HeroDieSignal {
-        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "秘银巨石像", "远古海妖-5", "淬炼");
+        SkillTestContext context = prepare(50, 50, "秘银巨石像", "远古海妖-5", "淬炼");
         CardInfo c秘银巨石像 = context.addToField(0, 0);
         CardInfo c远古海妖 = context.addToField(1, 1);
         context.addToRune(0, 0);
@@ -179,7 +179,7 @@ public class AttackBuffTest extends SkillValidationTest {
      */
     @Test
     public void test邪灵汲取_淬炼_部分抵消() throws HeroDieSignal {
-        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "隐世先知+弱点攻击", "末日预言师", "淬炼");
+        SkillTestContext context = prepare(50, 50, "隐世先知+弱点攻击", "末日预言师", "淬炼");
         CardInfo c隐世先知 = context.addToField(0, 0);
         CardInfo c末日预言师 = context.addToField(1, 1);
         context.addToRune(0, 0);
@@ -213,7 +213,7 @@ public class AttackBuffTest extends SkillValidationTest {
      */
     @Test
     public void test连锁攻击() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "纯洁圣女", "降临天使*2");
+        SkillTestContext context = prepare(50, 50, "纯洁圣女", "降临天使*2");
         context.addToField(0, 0);
         CardInfo c降临天使1 = context.addToField(1, 1);
         CardInfo c降临天使2 = context.addToField(2, 1);
@@ -236,7 +236,7 @@ public class AttackBuffTest extends SkillValidationTest {
      */
     @Test
     public void test穷追猛打_寒霜冲击() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "怒雪咆哮+穷追猛打1", "占位符");
+        SkillTestContext context = prepare(50, 50, "怒雪咆哮+穷追猛打1", "占位符");
         context.addToField(0, 0);
         CardInfo c占位符 = context.addToField(1, 1);
         context.startGame();
@@ -249,7 +249,7 @@ public class AttackBuffTest extends SkillValidationTest {
 
     @Test
     public void test穷追猛打_冰弹冻结() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "堕落精灵法师+穷追猛打1", "占位符");
+        SkillTestContext context = prepare(50, 50, "堕落精灵法师+穷追猛打1", "占位符");
         context.addToField(0, 0);
         CardInfo c占位符 = context.addToField(1, 1);
         context.startGame();
@@ -264,7 +264,7 @@ public class AttackBuffTest extends SkillValidationTest {
      */
     @Test
     public void test种族之力_凯撒之击() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(
+        SkillTestContext context = prepare(
             50, 50, "秘银巨石像+凯撒之击1", "秘银巨石像+王国之力10", "占位符");
         context.addToField(0, 0);
         context.addToHand(1, 0).setSummonDelay(0);
@@ -277,7 +277,7 @@ public class AttackBuffTest extends SkillValidationTest {
     
     @Test
     public void test同调_普通() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(
+        SkillTestContext context = prepare(
             50, 50, "秘银巨石像+王国同调1", "秘银巨石像*2", "占位符");
         context.addToField(0, 0);
         context.addToHand(1, 0).setSummonDelay(0);
@@ -294,7 +294,7 @@ public class AttackBuffTest extends SkillValidationTest {
      */
     @Test
     public void test同调_自我反馈() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(
+        SkillTestContext context = prepare(
             50, 50, "秘银巨石像+王国同调1", "占位符");
         context.addToHand(0, 0).setSummonDelay(0);
         CardInfo c占位符 = context.addToField(1, 1);
@@ -309,7 +309,7 @@ public class AttackBuffTest extends SkillValidationTest {
      */
     @Test
     public void test同调_下场() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(
+        SkillTestContext context = prepare(
             50, 50, "秘银巨石像+王国同调1", "秘银巨石像*2", "占位符", "金属巨龙-15");
         context.addToField(0, 0);
         context.addToHand(1, 0).setSummonDelay(0);
@@ -331,7 +331,7 @@ public class AttackBuffTest extends SkillValidationTest {
      */
     @Test
     public void test同调_召唤物() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(
+        SkillTestContext context = prepare(
             50, 50, "秘银巨石像+森林同调1", "星夜女神", "占位符");
         context.addToField(0, 0);
         context.addToHand(1, 0).setSummonDelay(0);
@@ -347,7 +347,7 @@ public class AttackBuffTest extends SkillValidationTest {
      */
     @Test
     public void test同调_上场前() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(
+        SkillTestContext context = prepare(
             50, 50, "秘银巨石像", "秘银巨石像+王国同调1", "占位符*2");
         context.addToField(0, 0);
         context.addToHand(1, 0).setSummonDelay(0);

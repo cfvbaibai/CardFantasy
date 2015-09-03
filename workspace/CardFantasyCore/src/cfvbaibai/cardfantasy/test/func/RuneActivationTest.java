@@ -13,7 +13,7 @@ public class RuneActivationTest extends SkillValidationTest {
      */
     @Test
     public void test回魂_石林() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(
+        SkillTestContext context = prepare(
             50, 50, "冥河船夫", "战斗猛犸象*2", "石林", "凤凰");
         CardInfo c冥河船夫 = context.addToField(0, 0);
         context.addToGrave(1, 0);
@@ -52,7 +52,7 @@ public class RuneActivationTest extends SkillValidationTest {
      */
     @Test
     public void test清泉_激活条件() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(
+        SkillTestContext context = prepare(
             50, 50, "秘银巨石像*2", "清泉", "秘银巨石像");
         CardInfo c秘银巨石像1 = context.addToField(0, 0);
         context.addToField(1, 0);
@@ -78,7 +78,7 @@ public class RuneActivationTest extends SkillValidationTest {
      */
     @Test
     public void test雷狱永冻灭世死域_激活条件() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(
+        SkillTestContext context = prepare(
             50, 50, "秘银巨石像*2", "凤凰*2", "雷兽*2", "恐惧之王*2", "雷狱", "永冻", "灭世", "死域", "占位符");
         for (int i = 0; i < 4; ++i) {
             context.addToHand(i, 0).setSummonDelay(0);
@@ -110,7 +110,7 @@ public class RuneActivationTest extends SkillValidationTest {
      */
     @Test
     public void test雷盾岩壁赤谷_激活条件() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(
+        SkillTestContext context = prepare(
             50, 50, "战斗猛犸象*2", "金属巨龙*2", "雷盾", "岩壁", "赤谷");
         context.addToField(0, 0);
         context.addToField(1, 0);

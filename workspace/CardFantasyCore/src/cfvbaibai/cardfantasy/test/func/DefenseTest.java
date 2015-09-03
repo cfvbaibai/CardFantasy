@@ -14,7 +14,7 @@ public class DefenseTest extends SkillValidationTest {
      */
     @Test
     public void test冰封_冰甲() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "金属巨龙-1", "战斗猛犸象", "冰封");
+        SkillTestContext context = prepare(50, 50, "金属巨龙-1", "战斗猛犸象", "冰封");
         context.addToField(0, 0);
         CardInfo c战斗猛犸象 = context.addToField(1, 1);
         RuneInfo r冰封 = context.addToRune(0, 1);
@@ -32,7 +32,7 @@ public class DefenseTest extends SkillValidationTest {
      */
     @Test
     public void test格挡_冰封() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "秘银巨石像", "金属巨龙", "冰封");
+        SkillTestContext context = prepare(50, 50, "秘银巨石像", "金属巨龙", "冰封");
         context.addToField(0, 0);
         CardInfo c金属巨龙 = context.addToField(1, 1);
         RuneInfo r冰封 = context.addToRune(0, 1);
@@ -49,7 +49,7 @@ public class DefenseTest extends SkillValidationTest {
      */
     @Test
     public void test岩壁_冰甲() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "秘银巨石像", "凤凰+冰甲1", "岩壁-1");
+        SkillTestContext context = prepare(50, 50, "秘银巨石像", "凤凰+冰甲1", "岩壁-1");
         context.addToField(0, 0);
         CardInfo c冰甲凤凰 = context.addToField(1, 1);
         RuneInfo r岩壁 = context.addToRune(0, 1);
@@ -66,7 +66,7 @@ public class DefenseTest extends SkillValidationTest {
      */
     @Test
     public void test横扫_格挡() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "光明之龙", "牛头人酋长*2");
+        SkillTestContext context = prepare(50, 50, "光明之龙", "牛头人酋长*2");
         context.addToField(0, 0);
         CardInfo c牛头人酋长1 = context.addToField(1, 1);
         CardInfo c牛头人酋长2 = context.addToField(2, 1);
@@ -82,7 +82,7 @@ public class DefenseTest extends SkillValidationTest {
      */
     @Test
     public void test横扫_冰甲() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "光明之龙", "战斗猛犸象", "秘银巨石像");
+        SkillTestContext context = prepare(50, 50, "光明之龙", "战斗猛犸象", "秘银巨石像");
         context.addToField(0, 0);
         CardInfo c战斗猛犸象 = context.addToField(1, 1);
         CardInfo c秘银巨石像 = context.addToField(2, 1);
@@ -98,7 +98,7 @@ public class DefenseTest extends SkillValidationTest {
      */
     @Test
     public void test横扫_正面闪避() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "光明之龙", "大剑圣", "秘银巨石像");
+        SkillTestContext context = prepare(50, 50, "光明之龙", "大剑圣", "秘银巨石像");
         context.addToField(0, 0);
         CardInfo c大剑圣 = context.addToField(1, 1);
         CardInfo c秘银巨石像 = context.addToField(2, 1);
@@ -116,7 +116,7 @@ public class DefenseTest extends SkillValidationTest {
      */
     @Test
     public void test横扫_侧翼闪避() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "占位符", "光明之龙", "大剑圣", "秘银巨石像*2");
+        SkillTestContext context = prepare(50, 50, "占位符", "光明之龙", "大剑圣", "秘银巨石像*2");
         context.addToField(0, 0);
         context.addToField(1, 0);
         CardInfo c大剑圣 = context.addToField(2, 1);
@@ -137,7 +137,7 @@ public class DefenseTest extends SkillValidationTest {
      */
     @Test
     public void test连锁攻击_格挡() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "麒麟兽", "牛头人酋长*3");
+        SkillTestContext context = prepare(50, 50, "麒麟兽", "牛头人酋长*3");
         context.addToField(0, 0);
         CardInfo c牛头人酋长1 = context.addToField(1, 1);
         CardInfo c牛头人酋长2 = context.addToField(2, 1);
@@ -155,7 +155,7 @@ public class DefenseTest extends SkillValidationTest {
      */
     @Test
     public void test连锁攻击_冰甲() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "麒麟兽", "战斗猛犸象*2");
+        SkillTestContext context = prepare(50, 50, "麒麟兽", "战斗猛犸象*2");
         context.addToField(0, 0);
         CardInfo c战斗猛犸象1 = context.addToField(1, 1);
         CardInfo c战斗猛犸象2 = context.addToField(2, 1);
@@ -171,7 +171,7 @@ public class DefenseTest extends SkillValidationTest {
      */
     @Test
     public void test连锁攻击_正面闪避() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "麒麟兽", "大剑圣*2");
+        SkillTestContext context = prepare(50, 50, "麒麟兽", "大剑圣*2");
         context.addToField(0, 0);
         CardInfo c大剑圣1 = context.addToField(1, 1);
         CardInfo c大剑圣2 = context.addToField(2, 1);
@@ -189,7 +189,7 @@ public class DefenseTest extends SkillValidationTest {
      */
     @Test
     public void test连锁攻击_连锁闪避() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "麒麟兽", "大剑圣*4");
+        SkillTestContext context = prepare(50, 50, "麒麟兽", "大剑圣*4");
         context.addToField(0, 0);
         CardInfo c大剑圣1 = context.addToField(1, 1);
         CardInfo c大剑圣2 = context.addToField(2, 1);
@@ -210,7 +210,7 @@ public class DefenseTest extends SkillValidationTest {
 
     @Test
     public void test圣盾_基本() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "秘银巨石像", "混元大师");
+        SkillTestContext context = prepare(50, 50, "秘银巨石像", "混元大师");
         context.addToField(0, 0);
         CardInfo c混元大师 = context.addToHand(1, 1).setSummonDelay(0);
         context.startGame();
@@ -232,7 +232,7 @@ public class DefenseTest extends SkillValidationTest {
      */
     @Test
     public void test圣盾_转生() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "秘银巨石像-15", "混元大师+转生10");
+        SkillTestContext context = prepare(50, 50, "秘银巨石像-15", "混元大师+转生10");
         context.addToField(0, 0);
         CardInfo c混元大师 = context.addToField(1, 1);
         context.startGame();
@@ -265,7 +265,7 @@ public class DefenseTest extends SkillValidationTest {
     
     @Test
     public void test圣盾_横扫_溅射破盾() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "光明之龙", "秘银巨石像", "占位符", "混元大师-15");
+        SkillTestContext context = prepare(50, 50, "光明之龙", "秘银巨石像", "占位符", "混元大师-15");
         context.addToField(0, 0);
         context.addToField(1, 0);
         context.addToField(2, 1);
@@ -278,7 +278,7 @@ public class DefenseTest extends SkillValidationTest {
     
     @Test
     public void test圣盾_横扫_完全抵挡() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "光明之龙", "混元大师-15", "占位符");
+        SkillTestContext context = prepare(50, 50, "光明之龙", "混元大师-15", "占位符");
         context.addToField(0, 0);
         context.addToField(1, 1);
         CardInfo c占位符 = context.addToField(2, 1);
@@ -293,7 +293,7 @@ public class DefenseTest extends SkillValidationTest {
      */
     @Test
     public void test大地之盾_免疫() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "金属巨龙", "怒雪咆哮-1");
+        SkillTestContext context = prepare(50, 50, "金属巨龙", "怒雪咆哮-1");
         CardInfo c金属巨龙 = context.addToField(0, 0);
         CardInfo c怒雪咆哮 = context.addToField(1, 1);
         context.startGame();
@@ -315,7 +315,7 @@ public class DefenseTest extends SkillValidationTest {
      */
     @Test
     public void test大地之盾_脱困() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "皇室舞者-1", "怒雪咆哮-1");
+        SkillTestContext context = prepare(50, 50, "皇室舞者-1", "怒雪咆哮-1");
         CardInfo c皇室舞者 = context.addToField(0, 0);
         CardInfo c怒雪咆哮 = context.addToField(1, 1);
         context.startGame();
@@ -331,7 +331,7 @@ public class DefenseTest extends SkillValidationTest {
      */
     @Test
     public void test大地之盾_横扫() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "光明之龙", "占位符", "怒雪咆哮-1");
+        SkillTestContext context = prepare(50, 50, "光明之龙", "占位符", "怒雪咆哮-1");
         CardInfo c光明之龙 = context.addToField(0, 0);
         context.addToField(1, 1);
         CardInfo c怒雪咆哮 = context.addToField(2, 1);
@@ -354,7 +354,7 @@ public class DefenseTest extends SkillValidationTest {
      */
     @Test
     public void test大地之盾_多重() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "光明之龙", "怒雪咆哮-1*2");
+        SkillTestContext context = prepare(50, 50, "光明之龙", "怒雪咆哮-1*2");
         CardInfo c光明之龙 = context.addToField(0, 0);
         context.addToField(1, 1);
         context.addToField(2, 1);
@@ -375,7 +375,7 @@ public class DefenseTest extends SkillValidationTest {
      */
     @Test
     public void test大地之盾_零伤害() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "占位符", "占位符+大地之盾");
+        SkillTestContext context = prepare(50, 50, "占位符", "占位符+大地之盾");
         CardInfo c占位符1 = context.addToField(0, 0);
         context.addToField(1, 1);
         context.startGame();
@@ -390,7 +390,7 @@ public class DefenseTest extends SkillValidationTest {
      */
     @Test
     public void test大地之盾_闪避() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "占位符", "堕落精灵+大地之盾");
+        SkillTestContext context = prepare(50, 50, "占位符", "堕落精灵+大地之盾");
         CardInfo c占位符1 = context.addToField(0, 0);
         context.addToField(1, 1);
         context.startGame();
@@ -406,7 +406,7 @@ public class DefenseTest extends SkillValidationTest {
      */
     @Test
     public void test种族之盾_嗜血() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "战斗猛犸象", "半鹿人号角手");
+        SkillTestContext context = prepare(50, 50, "战斗猛犸象", "半鹿人号角手");
         CardInfo c战斗猛犸象 = context.addToField(0, 0);
         CardInfo c半鹿人号角手 = context.addToField(1, 1);
         context.startGame();
@@ -426,7 +426,7 @@ public class DefenseTest extends SkillValidationTest {
      */
     @Test
     public void test种族之盾_格挡() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "战斗猛犸象*2", "半鹿人号角手+格挡10", "金属巨龙+森林之盾5");
+        SkillTestContext context = prepare(50, 50, "战斗猛犸象*2", "半鹿人号角手+格挡10", "金属巨龙+森林之盾5");
         context.addToField(0, 0);
         context.addToField(1, 0);
         CardInfo c半鹿人号角手 = context.addToField(2, 1);
@@ -443,7 +443,7 @@ public class DefenseTest extends SkillValidationTest {
      */
     @Test
     public void test种族之盾_横扫() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "震源岩蟾", "半鹿人号角手", "占位符");
+        SkillTestContext context = prepare(50, 50, "震源岩蟾", "半鹿人号角手", "占位符");
         context.addToField(0, 0);
         CardInfo c半鹿人号角手 = context.addToField(1, 1);
         CardInfo c占位符 = context.addToField(2, 1);
@@ -456,7 +456,7 @@ public class DefenseTest extends SkillValidationTest {
     
     @Test
     public void test反击_灵巧() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "圣泉元神", "占位符+反击10");
+        SkillTestContext context = prepare(50, 50, "圣泉元神", "占位符+反击10");
         CardInfo c圣泉元神 = context.addToField(0, 0);
         context.addToField(1, 1);
         context.startGame();
@@ -467,7 +467,7 @@ public class DefenseTest extends SkillValidationTest {
     
     @Test
     public void test盾刺_灵巧() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "圣泉元神", "秘银巨石像", "占位符+盾刺10", "占位符+盾刺10");
+        SkillTestContext context = prepare(50, 50, "圣泉元神", "秘银巨石像", "占位符+盾刺10", "占位符+盾刺10");
         CardInfo c圣泉元神 = context.addToField(0, 0);
         CardInfo c秘银巨石像 = context.addToField(1, 0);
         context.addToField(2, 1);
@@ -484,7 +484,7 @@ public class DefenseTest extends SkillValidationTest {
      */
     @Test
     public void test鲜血盛宴_法力反射() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "占位符+鲜血盛宴1", "秘银巨石像");
+        SkillTestContext context = prepare(50, 50, "占位符+鲜血盛宴1", "秘银巨石像");
         CardInfo c占位符 = context.addToField(0, 0).setBasicHP(500);
         CardInfo c秘银巨石像 = context.addToField(1, 1);
         context.startGame();
@@ -500,7 +500,7 @@ public class DefenseTest extends SkillValidationTest {
      */
     @Test
     public void test鲜血盛宴_法力反射_多对象() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "占位符+鲜血盛宴1", "秘银巨石像*2", "占位符");
+        SkillTestContext context = prepare(50, 50, "占位符+鲜血盛宴1", "秘银巨石像*2", "占位符");
         CardInfo c占位符1 = context.addToField(0, 0).setBasicHP(200);
         CardInfo c秘银巨石像1 = context.addToField(1, 1);
         CardInfo c秘银巨石像2 = context.addToField(2, 1);
@@ -519,7 +519,7 @@ public class DefenseTest extends SkillValidationTest {
     
     @Test
     public void test守护_残血() throws HeroDieSignal {
-        SkillTestContext context = SkillValidationTestSuite.prepare(
+        SkillTestContext context = prepare(
             50, 50, "占位符", "秘银巨石像", "占位符+守护");
         context.addToField(0, 0);
         context.addToField(1, 0);

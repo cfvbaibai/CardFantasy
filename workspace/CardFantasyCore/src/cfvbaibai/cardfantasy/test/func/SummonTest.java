@@ -13,7 +13,7 @@ public class SummonTest extends SkillValidationTest {
      */
     @Test
     public void test召唤王国战士() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "陨星魔法使", "占位符*3");
+        SkillTestContext context = prepare(50, 50, "陨星魔法使", "占位符*3");
         context.addToField(0, 0);
         CardInfo c1 = context.addToField(1, 1);
         CardInfo c2 = context.addToField(2, 1);
@@ -42,7 +42,7 @@ public class SummonTest extends SkillValidationTest {
      */
     @Test
     public void test召唤王国战士_被召唤卡死亡() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "陨星魔法使", "占位符", "金属巨龙");
+        SkillTestContext context = prepare(50, 50, "陨星魔法使", "占位符", "金属巨龙");
         CardInfo c陨星魔法师 = context.addToField(0, 0);
         context.addToField(1, 1);
         context.addToField(2, 1);
@@ -65,7 +65,7 @@ public class SummonTest extends SkillValidationTest {
     
     @Test
     public void test召唤王国战士_送还() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "陨星魔法使", "占位符", "降临天使");
+        SkillTestContext context = prepare(50, 50, "陨星魔法使", "占位符", "降临天使");
         context.addToField(0, 0);
         context.addToField(1, 1);
         context.addToField(2, 1);
@@ -81,7 +81,7 @@ public class SummonTest extends SkillValidationTest {
 
     @Test
     public void test召唤王国战士_多张陨星() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "陨星魔法使*2", "占位符*2", "金属巨龙", "占位符", "金属巨龙");
+        SkillTestContext context = prepare(50, 50, "陨星魔法使*2", "占位符*2", "金属巨龙", "占位符", "金属巨龙");
         context.addToField(0, 0);
         context.addToField(1, 0);
         context.addToField(2, 1);
@@ -125,7 +125,7 @@ public class SummonTest extends SkillValidationTest {
      */
     @Test
     public void test召唤王国战士_复活再召唤() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "陨星魔法使", "复活者", "金属巨龙+暴击6-15", "女神侍者-0");
+        SkillTestContext context = prepare(50, 50, "陨星魔法使", "复活者", "金属巨龙+暴击6-15", "女神侍者-0");
         context.addToField(0, 0);
         context.startGame();
 
@@ -175,7 +175,7 @@ public class SummonTest extends SkillValidationTest {
      */
     @Test
     public void test召唤王国战士_前有空位() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "占位符", "陨星魔法使", "占位符*2", "雷盾");
+        SkillTestContext context = prepare(50, 50, "占位符", "陨星魔法使", "占位符*2", "雷盾");
         context.addToField(0, 0).setBasicHP(1);
         context.addToField(1, 0);
         context.addToField(2, 1);
@@ -198,7 +198,7 @@ public class SummonTest extends SkillValidationTest {
      */
     @Test
     public void test召唤王国战士_秽土() {
-        SkillTestContext context = SkillValidationTestSuite.prepare(50, 50, "陨星魔法使", "秽土", "占位符", "金属巨龙+暴击10", "蜘蛛人女王*3");
+        SkillTestContext context = prepare(50, 50, "陨星魔法使", "秽土", "占位符", "金属巨龙+暴击10", "蜘蛛人女王*3");
         context.addToField(0, 0);
         context.addToField(1, 1);
         context.addToField(2, 1);
