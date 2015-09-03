@@ -31,6 +31,10 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2015-08-29: <ul>
+                        <li>添加新卡【鬼灵搜索师】，感谢<x>咬起来喀嚓喀嚓</x>的提醒</li>
+                        <li>添加新卡【不屈之灵】</li>
+                    </ul></li>
                     <li>2015-08-27: 添加新卡【雪月花】</li>
                     <li>2015-08-15: <ul>
                         <li>添加【保存录像】和【<a href="#view-video-page">播放录像</a>】供能<br />
