@@ -19,8 +19,14 @@ License
 Compilation Dependencies
 ========================
     
-	- JRE1.8
+	- JDK 1.8
 	- MAVEN 3.2
+	
+To start with, go into /workspace folder and run
+
+    mvn clean install
+	
+WAR output could be find under %MAVEN_REPOSITORY%/cfvbaibai/mkhx.web/1.0 folder.
 
 Runtime Dependencies
 =======================
