@@ -6,7 +6,6 @@ import java.util.List;
 
 import org.junit.Test;
 
-import cfvbaibai.cardfantasy.Table;
 import cfvbaibai.cardfantasy.data.CardData;
 import cfvbaibai.cardfantasy.data.CardDataStore;
 import cfvbaibai.cardfantasy.data.PlayerInfo;
