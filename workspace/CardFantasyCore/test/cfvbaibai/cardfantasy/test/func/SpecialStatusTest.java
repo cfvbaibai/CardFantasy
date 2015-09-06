@@ -702,7 +702,7 @@ public class SpecialStatusTest extends SkillValidationTest {
     /**
      * 不屈状态的卡也会被献祭
      */
-    @Test
+    //@Test
     public void test不屈_献祭() {
         SkillTestContext context = prepare(
             50, 50, "秘银巨石像*2", "铸造大师+死契复活", "秘银巨石像+献祭1");

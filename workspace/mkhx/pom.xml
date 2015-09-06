@@ -3,8 +3,8 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>cfvbaibai</groupId>
     <artifactId>mkhx.web</artifactId>
-    <version>1.0-SNAPSHOT</version>
-    <name>mkhx.web</name>
+    <version>1.0</version>
+    <packaging>war</packaging>
     <build>
         <sourceDirectory>src</sourceDirectory>
         <resources>
@@ -22,6 +22,14 @@
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>2.1.1</version>
+                <configuration>
+                    <webXml>WebContent/WEB-INF/web.xml</webXml>
                 </configuration>
             </plugin>
         </plugins>
@@ -53,6 +61,11 @@
             <version>1.1.6</version>
         </dependency>
         <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>3.1.0</version>
+        </dependency>
+        <dependency>
             <groupId>jstl</groupId>
             <artifactId>jstl</artifactId>
             <version>1.2</version>
@@ -77,5 +90,14 @@
             <artifactId>aspectjweaver</artifactId>
             <version>1.8.6</version>
         </dependency>
+        <!-- Local Project -->
+        <dependency>
+            <groupId>cfvbaibai</groupId>
+            <artifactId>mkhx.core</artifactId>
+            <version>1.0</version>
+        </dependency>
     </dependencies>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
 </project>

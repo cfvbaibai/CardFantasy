@@ -1,4 +1,4 @@
-﻿package cfvbaibai.cardfantasy.web.controller;
+package cfvbaibai.cardfantasy.web.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
