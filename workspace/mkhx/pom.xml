@@ -7,14 +7,6 @@
     <packaging>war</packaging>
     <build>
         <sourceDirectory>src</sourceDirectory>
-        <resources>
-            <resource>
-                <directory>src</directory>
-                <excludes>
-                    <exclude>**/*.java</exclude>
-                </excludes>
-            </resource>
-        </resources>
         <plugins>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -29,7 +21,12 @@
                 <artifactId>maven-war-plugin</artifactId>
                 <version>2.1.1</version>
                 <configuration>
-                    <webXml>WebContent/WEB-INF/web.xml</webXml>
+                    <webResources>
+                        <resource>
+                            <directory>WebContent</directory>
+                        </resource>
+                    </webResources>
+                    <packagingExcludes>WEB-INF/web.xml</packagingExcludes>
                 </configuration>
             </plugin>
         </plugins>
