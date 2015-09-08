@@ -31,6 +31,9 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2015-09-08: 改进【魔神战】的结果显示，现在除了基本信息外，还会有伤害分布图：
+                        <img class='help-img' src='<c:url value="/resources/img/help/DamageDistributionChart.png" />' />
+                    </li>
                     <li>2015-09-06: 修复一个【送还】、【不动】、【魔神之刃】相互作用时候的BUG，感谢<x>dzx276941963</x>发现BUG</li>
                     <li>2015-09-03: <ul>
                         <li>添加新卡【处女座】，感谢<x>戒不了你IQ</x>的提醒</li>
