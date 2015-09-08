@@ -28,6 +28,7 @@ import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
 import cfvbaibai.cardfantasy.CardFantasyUserRuntimeException;
 import cfvbaibai.cardfantasy.Compressor;
 import cfvbaibai.cardfantasy.GameUI;
+import cfvbaibai.cardfantasy.OneDimensionDataStat;
 import cfvbaibai.cardfantasy.Randomizer;
 import cfvbaibai.cardfantasy.data.Card;
 import cfvbaibai.cardfantasy.data.CardData;
@@ -60,13 +61,13 @@ import cfvbaibai.cardfantasy.game.PvlGameTimeoutException;
 import cfvbaibai.cardfantasy.game.SkillBuilder;
 import cfvbaibai.cardfantasy.game.VictoryCondition;
 import cfvbaibai.cardfantasy.web.ErrorHelper;
-import cfvbaibai.cardfantasy.web.OneDimensionDataStat;
 import cfvbaibai.cardfantasy.web.Utils;
 import cfvbaibai.cardfantasy.web.animation.BattleRecord;
 import cfvbaibai.cardfantasy.web.animation.EntityDataRuntimeInfo;
 import cfvbaibai.cardfantasy.web.animation.SkillTypeRuntimeInfo;
 import cfvbaibai.cardfantasy.web.animation.StructuredRecordGameUI;
 import cfvbaibai.cardfantasy.web.animation.WebPlainTextGameUI;
+import cfvbaibai.cardfantasy.web.beans.BossMassiveGameResult;
 import cfvbaibai.cardfantasy.web.beans.JsonHandler;
 import cfvbaibai.cardfantasy.web.beans.Logger;
 import cfvbaibai.cardfantasy.web.beans.UserAction;
@@ -487,6 +488,22 @@ public class AutoBattleController {
         }
     }
 
+    /**
+     * 
+     * @param request
+     * @param response
+     * @param deck
+     * @param count
+     * @param guardType
+     * @param heroLv
+     * @param bossName
+     * @param buffKingdom
+     * @param buffForest
+     * @param buffSavage
+     * @param buffHell
+     * @throws IOException
+     * Response JSON: BossMassiveGameResult
+     */
     @RequestMapping(value = "/PlayBossMassiveGame")
     public void playBossMassiveGame(HttpServletRequest request, HttpServletResponse response,
             @RequestParam("deck") String deck, @RequestParam("count") int count, @RequestParam("gt") int guardType,
@@ -498,12 +515,15 @@ public class AutoBattleController {
             logger.info("PlayBossMassiveGame from " + request.getRemoteAddr() + ":");
             logger.info("Deck = " + deck);
             logger.info("Count = " + count + ", Hero LV = " + heroLv + ", Boss = " + bossName);
+            response.setContentType("application/json");
             this.userActionRecorder.addAction(new UserAction(new Date(), request.getRemoteAddr(), "Play Boss Massive Game",
                     String.format("Deck=%s<br />HeroLV=%d, Boss=%s, Count=%d, GuardType=%d", deck, heroLv, bossName, count, guardType)));
             List<Skill> legionBuffs = SkillBuilder.buildLegionBuffs(buffKingdom, buffForest, buffSavage, buffHell);
             PlayerInfo player2 = PlayerBuilder.build(true, "玩家", deck, heroLv, legionBuffs, 100);
-            writer.append(Utils.getCurrentDateTime() + "<br />");
-            writer.print(this.getDeckValidationResult(null, player2));
+            
+            //writer.append(Utils.getCurrentDateTime() + "<br />");
+            //writer.print(this.getDeckValidationResult(null, player2));
+            String validationResult = this.getDeckValidationResult(null, player2);
             OneDimensionDataStat stat = new OneDimensionDataStat();
             int timeoutCount = 0;
             Rule rule = Rule.getBossBattle();
@@ -519,7 +539,7 @@ public class AutoBattleController {
             if (gameCount <= 1) {
                 gameCount = 1;
             }
-            writer.append("模拟场次: " + gameCount + "<br />");
+            //writer.append("模拟场次: " + gameCount + "<br />");
             
             int totalCostForCoolDown = 0;
             for (Card card : player2.getCards()) {
@@ -547,40 +567,44 @@ public class AutoBattleController {
                 }
             }
 
-            if (timeoutCount > 0) {
-                writer.append("超时次数(大于999回合): " + timeoutCount + "<br />");
-                writer.append("您的卡组实在太厉害了！已经超出模拟器的承受能力，结果可能不准确，建议直接实测。<br />");
-            }
+            //if (timeoutCount > 0) {
+                //writer.append("超时次数(大于999回合): " + timeoutCount + "<br />");
+                //writer.append("您的卡组实在太厉害了！已经超出模拟器的承受能力，结果可能不准确，建议直接实测。<br />");
+            //}
 
             long averageDamageToBoss = Math.round(stat.getAverage());
-            long cvPercentage = Math.round(stat.getCoefficientOfVariation() * 100);
-            long minDamage = Math.round(stat.getMin());
-            long maxDamage = Math.round(stat.getMax());
+            //long cvPercentage = Math.round(stat.getCoefficientOfVariation() * 100);
+            //long minDamage = Math.round(stat.getMin());
+            //long maxDamage = Math.round(stat.getMax());
 
-            long testMinute = 99999;
-            long testBattleCount = 1 + (60 * testMinute / coolDown);
-            long testTotalDamage = testBattleCount * averageDamageToBoss;
-            long averageDamagePerMinute = testTotalDamage / testMinute;
+            //long testMinute = 99999;
+            //long testBattleCount = 1 + (60 * testMinute / coolDown);
+            //long testTotalDamage = testBattleCount * averageDamageToBoss;
+            //long averageDamagePerMinute = testTotalDamage / testMinute;
 
-            writer.append("<table>");
-            writer.append("<tr><td>卡组总COST: </td><td>" + totalCost + "</td></tr>");
-            writer.append("<tr><td>冷却时间: </td><td>" + coolDown + "</td></tr>");
-            writer.append("<tr><td>总体平均每分钟伤害: </td><td>" + averageDamagePerMinute + "</td></tr>");
-            writer.append("<tr><td>最小伤害: </td><td>" + minDamage + "</td></tr>");
-            writer.append("<tr><td>平均每次伤害: </td><td>" + averageDamageToBoss + "</td></tr>");
-            writer.append("<tr><td>最大伤害: </td><td>" + maxDamage + "</td></tr>");
-            writer.append("<tr><td>不稳定度: </td><td>" + cvPercentage + "%</td></tr>");
-            writer.append("<tr><td colspan='2'><table style='text-align: center'><tr style='font-weight: bold'><td>魔神存活</td><td>战斗次数</td><td>总伤害</td><td>平均每分钟伤害</td></tr>");
-            for (int i = 1; i <= 20; ++i) {
-                int attackCount = 1 + (60 * i / coolDown);
-                long totalDamage = attackCount * averageDamageToBoss;
-                writer.append("<tr><td>" + i + "分钟</td><td>" + attackCount + "</td><td>" + totalDamage + "</td><td>" + (totalDamage / i) + "</td></tr>");
-            }
-            writer.append("</table></td></tr>");
-            writer.append("</table>");
+            //writer.append("<table>");
+            //writer.append("<tr><td>卡组总COST: </td><td>" + totalCost + "</td></tr>");
+            //writer.append("<tr><td>冷却时间: </td><td>" + coolDown + "</td></tr>");
+            //writer.append("<tr><td>总体平均每分钟伤害: </td><td>" + averageDamagePerMinute + "</td></tr>");
+            //writer.append("<tr><td>最小伤害: </td><td>" + minDamage + "</td></tr>");
+            //writer.append("<tr><td>平均每次伤害: </td><td>" + averageDamageToBoss + "</td></tr>");
+            //writer.append("<tr><td>最大伤害: </td><td>" + maxDamage + "</td></tr>");
+            //writer.append("<tr><td>不稳定度: </td><td>" + cvPercentage + "%</td></tr>");
+            //writer.append("<tr><td colspan='2'><table style='text-align: center'><tr style='font-weight: bold'><td>魔神存活</td><td>战斗次数</td><td>总伤害</td><td>平均每分钟伤害</td></tr>");
+            //for (int i = 1; i <= 20; ++i) {
+                //int attackCount = 1 + (60 * i / coolDown);
+                //long totalDamage = attackCount * averageDamageToBoss;
+                //writer.append("<tr><td>" + i + "分钟</td><td>" + attackCount + "</td><td>" + totalDamage + "</td><td>" + (totalDamage / i) + "</td></tr>");
+            //}
+            //writer.append("</table></td></tr>");
+            //writer.append("</table>");
             logger.info("Average damage to boss: " + averageDamageToBoss);
+            BossMassiveGameResult result = new BossMassiveGameResult(
+                validationResult, coolDown, totalCost, timeoutCount, stat);
+            writer.print(jsonHandler.toJson(result));
         } catch (Exception e) {
-            writer.print(errorHelper.handleError(e, false));
+            response.setStatus(400);
+            writer.print("{'error':'" + e.getMessage() + "'}");
         }
     }
 

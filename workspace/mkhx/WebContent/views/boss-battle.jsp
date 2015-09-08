@@ -132,6 +132,25 @@
             <div id="boss-battle-div" data-mini="true" data-role="collapsible" data-collapsed="false" data-theme="c" data-content-theme="d">
                 <h3>战斗记录</h3>
                 <div id="boss-battle-output" class="battle-output">没有战斗</div>
+                <div id="boss-battle-massive-output" style="display: none">
+                    <div id="boss-battle-massive-stat">
+                        <table style="font-size: smaller" class="boss-battle-massive">
+                            <tr>
+                                <td>战斗次数</td><td id="boss-battle-game-count"></td>
+                                <td>最小伤害</td><td id="boss-battle-min-damage"></td>
+                                <td>平均伤害</td><td id="boss-battle-avg-damage"></td>
+                            </tr>
+                            <tr>
+                                <td>超时次数</td><td id="boss-battle-timeout-count"></td>
+                                <td>最大伤害</td><td id="boss-battle-max-damage"></td>
+                                <td>不稳定度</td><td id="boss-battle-cv-damage"></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div id="boss-battle-chart-wrapper">
+                        <canvas id="boss-battle-chart" width="300" height="200"></canvas>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

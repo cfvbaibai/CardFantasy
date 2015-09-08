@@ -108,16 +108,16 @@ var createDivTable = function(rows, colNames, colLabels) {
 };
 Core.createDivTable = createDivTable;
 
-var sendRequest = function(url, postData, outputDivId, isAnimation) {
+var sendRequest = function(url, postData, outputDivId, isAnimation, completeHandler, errorHandler) {
     var buttons = $('a.battle-button');
     buttons.addClass("ui-disabled");
-    var errorHandler = function(context, xhr, status, error) {
+    errorHandler = errorHandler || function(context, xhr, status, error) {
         context.result = "<span style='COLOR: red'>发生错误! 状态=" + status + ", 细节=" + error + "</span>";
         if (status == 'error' && error == 'Not Found') {
             context.result += "<div>服务器可能正在更新，请稍等1分钟左右再试试看</div>";
         }
     };
-    var completeHandler = function(context) {
+    completeHandler = completeHandler || function(context) {
         buttons.removeClass("ui-disabled");
         if (outputDivId) {
             var outputDiv = $("#" + outputDivId);
@@ -219,15 +219,46 @@ var playBossGame = function(count) {
     $.cookie('boss-battle', JSON.stringify(postData), { expires: 365 });
     var isAnimation = false;
     var url;
+    var completeHandler = null;
     if (count == 1) {
         url = 'PlayBoss1MatchGame';
+        completeHandler = function(context) {
+            $('#boss-battle-output').html(context.result);
+        };
+        $('#boss-battle-massive-output').hide();
+        $('#boss-battle-output').show();
     } else if (count == -1) {
         url = 'SimulateBoss1MatchGame';
         isAnimation = true;
     } else {
         url = 'PlayBossMassiveGame';
+        completeHandler = function(context) {
+            var result = context.result;
+            $('#boss-battle-game-count').text(result.gameCount);
+            $('#boss-battle-timeout-count').text(result.timeoutCount);
+            $('#boss-battle-min-damage').text(result.minDamage);
+            $('#boss-battle-max-damage').text(result.maxDamage);
+            $('#boss-battle-avg-damage').text(Math.round(result.avgDamage));
+            $('#boss-battle-cv-damage').text(Math.round(result.cvDamage * 100) + '%');
+            var chartData = { labels: [], datasets: [{
+                label: "伤害",
+                fillColor: "rgba(151,187,205,0.5)",
+                strokeColor: "rgba(151,187,205,0.8)",
+                highlightFill: "rgba(151,187,205,0.75)",
+                highlightStroke: "rgba(151,187,205,1)",
+                data: []
+            }]};
+            for (var i = 0; i < result.dataItems.length; ++i) {
+                chartData.labels.push(result.dataItems[i].label);
+                chartData.datasets[0].data.push(result.dataItems[i].count);
+            }
+            $('#boss-battle-massive-output').show();
+            //$('#boss-battle-chart').width($('#boss-battle-chart-wrapper').width());
+            $('#boss-battle-output').hide();
+            Core.bossBattleChart.Bar(chartData);
+        };
     }
-    sendRequest(url, postData, 'boss-battle-output', isAnimation);
+    sendRequest(url, postData, 'boss-battle-output', isAnimation, completeHandler);
 };
 Core.playBossGame = playBossGame;
 
@@ -478,6 +509,7 @@ $(document)
     showVictoryCondition();
 })
 .on("pageinit", "#boss-battle", function(event) {
+    Core.bossBattleChart = new Chart($("#boss-battle-chart")[0].getContext("2d"));
     var dataText = $.cookie('boss-battle');
     if (dataText) {
         var data = JSON.parse(dataText);

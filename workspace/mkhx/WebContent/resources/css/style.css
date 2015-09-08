@@ -1,335 +1,319 @@
 @CHARSET "UTF-8";
 
+.flex-container {
+    display: -moz-box; /* Firefox */
+    display: -ms-flexbox; /* IE10 */
+    display: -webkit-box; /* Safari */
+    display: -webkit-flex; /* Chrome, WebKit */
+    display: box;
+    display: flexbox;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    background-color: gray;
+}
+
 html {
-   overflow-y: scroll;
-   height: 101%
+    overflow-y: scroll;
+    height: 101%
 }
 
 div#main-container {
-	padding: 0;
-	margin-left: auto;
-	margin-right: auto;
+    padding: 0;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #help {
-	font-size: small;
+    font-size: small;
 }
 
 img.help-img {
-	width: 250px;
+    width: 250px;
 }
 
 .battle-output {
-	height: 400px;
-	overflow: auto;
-	white-space: nowrap;
-	font-family: 新宋体, 宋体, consolas, tahoma, arial;
-	font-size: small;
+    height: 400px;
+    overflow: auto;
+    white-space: nowrap;
+    font-family: 新宋体, 宋体, consolas, tahoma, arial;
+    font-size: small;
 }
 
 body {
-	font-size: 90%;
+    font-size: 90%;
 }
 
 div.ui-block-label-select {
-	padding-top: 10px;
+    padding-top: 10px;
 }
 
 div.ui-block-label-number {
-	padding-top: 12px;
+    padding-top: 12px;
 }
 
 div.player div.ui-block-a {
-	display: block;
-	width: 80px;
-	white-space: nowrap;
+    display: block;
+    width: 80px;
+    white-space: nowrap;
 }
 
 div.player div.ui-block-b {
-	width: 60px;
+    width: 60px;
 }
 
 div.player div.ui-block-b div.ui-input-text {
-	width: 40px;
+    width: 40px;
 }
 
 div.player div.ui-block-c {
-	padding-left: 5px;
+    padding-left: 5px;
 }
 
 div.ui-collapsible-content {
-	padding-left: 5px;
-	padding-top: 2px;
-	padding-bottom: 2px;
-	padding-right: 5px;
+    padding-left: 5px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-right: 5px;
 }
 
 div#command a {
-	min-width: 75px;
+    min-width: 75px;
 }
 
 div.recommended-url {
-	padding: 5px;
-	font-size: smaller;
+    padding: 5px;
+    font-size: smaller;
 }
 
 body .ui-content {
-	padding: 0;
-	max-width: 800px;
-	margin-left: auto;
-	margin-right: auto;
+    padding: 0;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 fieldset div.ui-controlgroup-controls {
-	width: 100%;
+    width: 100%;
 }
 
 fieldset.select-4 div.ui-controlgroup-controls .ui-select {
-	width: 25%;
+    width: 25%;
 }
 
 fieldset.select-2 div.ui-controlgroup-controls .ui-select {
     width: 50%;
 }
 
-fieldset.select-6-4 div.ui-controlgroup-controls > .ui-select:nth-child(1) {
+fieldset.select-6-4 div.ui-controlgroup-controls>.ui-select:nth-child(1)
+    {
     width: 60%;
 }
-fieldset.select-6-4 div.ui-controlgroup-controls > .ui-select:nth-child(2) {
+
+fieldset.select-6-4 div.ui-controlgroup-controls>.ui-select:nth-child(2)
+    {
     width: 40%;
 }
 
 .ui-dialog-contain {
-	width: 90%;
-	max-width: 800px;
-	margin: 1% auto 0 auto;
-	padding: 0;
-	position: relative;
+    width: 90%;
+    max-width: 800px;
+    margin: 1% auto 0 auto;
+    padding: 0;
+    position: relative;
 }
 
-.ui-dialog-contain > .ui-content {
-	padding: 1px;
+.ui-dialog-contain>.ui-content {
+    padding: 1px;
 }
 
 .fixed-width .ui-dialog-contain {
-	width: 98%;
-	max-width: 500px;
-	top: -40px;
+    width: 98%;
+    max-width: 500px;
+    top: -40px;
 }
 
-div#battle-canvas canvas{
-	margin-left: auto;
-	margin-right: auto;
+div#battle-canvas canvas {
+    margin-left: auto;
+    margin-right: auto;
 }
 
 div#canvas-outline {
-	padding: 2px;
+    padding: 2px;
 }
 
 div#player-status {
-	margin: 5px;
-	padding: 2px;
-	border: 2px #888888 inset;
-	border-radius: 3px;
-	text-align: center;
+    margin: 5px;
+    padding: 2px;
+    border: 2px #888888 inset;
+    border-radius: 3px;
+    text-align: center;
 }
 
-table.form tr td:nth-of-type(1)  {
-	padding-right: 20px;
-	white-space: nowrap;
-	font-weight: bold;
+table.form tr td:nth-of-type(1) {
+    padding-right: 20px;
+    white-space: nowrap;
+    font-weight: bold;
 }
 
-table.form tr td:nth-of-type(2),
-table.form tr td:nth-of-type(3),
-table.form tr td:nth-of-type(4) {
-	width: 100%;
+table.form tr td:nth-of-type(2), table.form tr td:nth-of-type(3), table.form tr td:nth-of-type(4)
+    {
+    width: 100%;
 }
 
 table.form {
-	width: 100%;
+    width: 100%;
 }
 
 table.2d {
-	background-color: #222222;
+    background-color: #222222;
 }
 
 table.2d td {
-	background-color: #FFFFFF;
+    background-color: #FFFFFF;
 }
 
 table.line-separated {
     display: table;
     border-collapse: collapse;
-    width; 100%;
+    width;
+    100%;
 }
+
 table.line-separated th {
     padding: 10px;
     text-align: left;
 }
+
 table.line-separated td {
     padding: 10px;
     border-top: solid 1px black;
 }
 
 table.data td {
-	padding: 5px;
+    padding: 5px;
 }
+
 div.header-template {
-	max-width: 800px;
-	margin-left: auto;
-	margin-right: auto;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 div.header-template.ui-panel-content-fixed-toolbar-open {
-	left: 0;
-	right: 0;
+    left: 0;
+    right: 0;
 }
 
 div.entity-title {
-	text-align: center;
-	font-size: 150%;
-	font-weight: bold;
-	text-shadow: 0 -1px #BBBBBB, 0 2px #FFFFFF;
+    text-align: center;
+    font-size: 150%;
+    font-weight: bold;
+    text-shadow: 0 -1px #BBBBBB, 0 2px #FFFFFF;
 }
 
 #deck-chooser div.candidate {
-	width: 100%;
-	height: 100px;
-	overflow: auto;
-	border: solid 1px #CCCCCC;
-}
-
-#communication textarea {
-	height: 50px;
-	font-size: 80%;
-}
-
-#communication input[type="text"] {
-	font-size: 80%;
-}
-
-#new-thread-table {
-	margin-top: 15px;
-}
-
-#new-thread-table div.frame-inner {
-	padding: 3px;
+    width: 100%;
+    height: 100px;
+    overflow: auto;
+    border: solid 1px #CCCCCC;
 }
 
 div.frame-outer {
-	padding: 0;
-	border-top: solid 1px #CCCCFF;
+    padding: 0;
+    border-top: solid 1px #CCCCFF;
 }
 
 div.frame-inner {
-	margin: 0;
-	border-top: solid 1px #FFFFFF;
+    margin: 0;
+    border-top: solid 1px #FFFFFF;
 }
 
 div#card-details div.entity-basic-info {
-	margin-left: auto;
-	margin-right: auto;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 div#card-details div.entity-basic-info div {
-	float: left;
-	padding-right: 5px;
+    float: left;
+    padding-right: 5px;
 }
 
 div.dashboard {
-	padding: 2px;
+    padding: 2px;
 }
 
 div.dashboard ul {
-	margin-top: 5px;
-	margin-bottom: 5px;
-	padding-left: 20px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding-left: 20px;
 }
 
-#news ul.news-content > li:first-child {
-	color: red;
+#news ul.news-content>li:first-child {
+    color: red;
 }
 
 #news li.emphasize {
-	font-size: 100%;
-	font-weight: bold;
-	color: blue;
-}
-#recommend-boss-battle-deck div.result-frame div.result-inner-frame {
-	min-height: 200px;
+    font-size: 100%;
+    font-weight: bold;
+    color: blue;
 }
 
-#recommend-boss-battle-deck input.ui-input-text {
-	text-align: center;
-}
-
-div.recommend-boss-battle-result > div > div:nth-child(1),
-div.recommend-boss-battle-result > div > div:nth-child(2),
-div.recommend-boss-battle-result > div > div:nth-child(3),
-div.recommend-boss-battle-result > div > div:nth-child(4) {
-	width: 20%;
-}
-
-div.recommend-boss-battle-result > div > div:last-child {
-	width: 100%;
-	border-bottom: solid 1px #CCCCFF;
-}
-
-div.recommend-boss-battle-result > div > div {
-	padding: 5px;
-}
-
-div.recommend-boss-battle-result > div:first-child > div:last-child {
-	padding: 0;
+#boss-battle table.boss-battle-massive td {
+    padding-left: 5px;
+    padding-right: 5px;
 }
 
 #test-rp div {
-
+    
 }
 
 #test-rp div.to-test-rp-text {
-	text-align: center;
-	padding: 10px;
-	font-size: 150%;
+    text-align: center;
+    padding: 10px;
+    font-size: 150%;
 }
 
 #test-rp div.test-rp-result-text {
-	padding: 10px;
-	width: 100%;
-	max-width: 400px;
-	margin-left: auto;
-	margin-right: auto;
+    padding: 10px;
+    width: 100%;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
 }
+
 #test-rp div.test-rp-result-text div.portrait {
+    
 }
+
 #test-rp div.test-rp-result-text div.portrait img {
-	padding-top: 10px;
+    padding-top: 10px;
 }
+
 #arena-battle-options-text {
-	display: none;
+    display: none;
 }
 
 table.view-card-table {
-	margin-left: auto;
-	margin-right: auto;
-	text-align: center;
-	width: 100%;
-	max-width: 600px;
-	border-collapse: collapse;
-	border: 1px #AAAAAA solid;
-	background-color: white;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    width: 100%;
+    max-width: 600px;
+    border-collapse: collapse;
+    border: 1px #AAAAAA solid;
+    background-color: white;
 }
 
 table.view-card-table td {
-	border: 1px #AAAAAA solid;
-	vertical-align: middle;
+    border: 1px #AAAAAA solid;
+    vertical-align: middle;
 }
 
 table.view-card-table td.logo {
-	min-width: 100px;
-	height: 100px;
-	padding: 0;
+    min-width: 100px;
+    height: 100px;
+    padding: 0;
 }
 
 table.view-card-table td.logo img {
@@ -339,8 +323,8 @@ table.view-card-table td.logo img {
 }
 
 table.view-card-table td.label {
-	height: 55px;
-	width: 20%;
+    height: 55px;
+    width: 20%;
 }
 
 table.view-card-table td.value {
@@ -348,14 +332,14 @@ table.view-card-table td.value {
 }
 
 table.view-card-table td.title {
-	height: 55px;
+    height: 55px;
 }
 
 table.view-card-table td.skill {
-	text-align: left;
+    text-align: left;
 }
 
 table.view-card-table td.skill div {
-	margin-left: 10px;
-	margin-right: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
 }

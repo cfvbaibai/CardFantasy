@@ -16,11 +16,11 @@
 <script src="http://libs.useso.com/js/jquery/1.9.1/jquery.min.js"></script>
 <script src='<c:url value="/resources/js/jquery.browser.js" />'></script>
 <script src='<c:url value="/resources/js/jquery.cookie.js" />'></script>
-<script src='<c:url value="/resources/js/jquery.pager.js" />'></script>
 <script src='<c:url value="/resources/js/ZeroClipboard.min.js" />'></script>
 <script src="http://libs.useso.com/js/jqueryui/1.10.3/jquery-ui.js"></script>
 <script src="http://libs.useso.com/js/jquery-mobile/1.3.1/jquery.mobile.min.js"></script>
 <script src='<c:url value="/resources/js/kinetic-v4.5.4.min.js" />'></script>
+<script src="http://libs.useso.com/js/Chart.js/0.2.0/Chart.min.js"></script>
 
 <script src='<c:url value="/resources/js/core.js" />?version=<%= version %>'></script>
 <script src='<c:url value="/resources/js/battle-animation.js" />?version=<%= version %>'></script>
