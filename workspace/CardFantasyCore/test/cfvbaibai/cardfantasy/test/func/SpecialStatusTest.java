@@ -727,17 +727,13 @@ public class SpecialStatusTest extends SkillValidationTest {
      */
     @Test
     public void test不屈_自爆() {
-        System.out.println("Test 12");
-        /*
         SkillTestContext context = prepare(50, 50, "秘银巨石像", "铸造大师+自爆1");
         CardInfo c秘银巨石像 = context.addToField(0, 0);
         CardInfo c铸造大师 = context.addToField(1, 1).setBasicHP(2);
         context.startGame();
         context.proceedOneRound();
         Assert.assertTrue(c铸造大师.getStatus().containsStatus(CardStatusType.不屈));
-        System.out.println("石像HP = " + c秘银巨石像.getHP());
         Assert.assertEquals(1400, c秘银巨石像.getHP());
-        */
     }
 
     @Test

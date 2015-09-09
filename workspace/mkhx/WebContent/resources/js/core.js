@@ -235,10 +235,11 @@ var playBossGame = function(count) {
         completeHandler = function(context) {
             var result = context.result;
             $('#boss-battle-game-count').text(result.gameCount);
-            $('#boss-battle-timeout-count').text(result.timeoutCount);
+            //$('#boss-battle-timeout-count').text(result.timeoutCount);
             $('#boss-battle-min-damage').text(result.minDamage);
             $('#boss-battle-max-damage').text(result.maxDamage);
             $('#boss-battle-avg-damage').text(Math.round(result.avgDamage));
+            $('#boss-battle-avg-damage-per-minute').text(Math.round(result.avgDamagePerMinute));
             $('#boss-battle-cv-damage').text(Math.round(result.cvDamage * 100) + '%');
             var chartData = { labels: [], datasets: [{
                 label: "伤害",

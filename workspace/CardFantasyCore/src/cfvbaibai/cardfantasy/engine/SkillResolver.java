@@ -596,7 +596,8 @@ public class SkillResolver {
             }
         }
         for (SkillUseInfo deadCardSkillUseInfo : deadCard.getAllUsableSkills()) {
-            if (deadCardSkillUseInfo.getType() == SkillType.自爆) {
+            // IMPORTANT: Unbending card cannot trigger 自爆
+            if (deadCardSkillUseInfo.getType() == SkillType.自爆 && !result.unbending) {
                 Explode.apply(this, deadCardSkillUseInfo.getSkill(), killerCard, deadCard);
             } else if (deadCardSkillUseInfo.getType() == SkillType.燕返) {
                 TsubameGaeshi.apply(deadCardSkillUseInfo, this, killerCard.getOwner(), deadCard);
@@ -608,7 +609,8 @@ public class SkillResolver {
         }
         {
             RuneInfo rune = deadCard.getOwner().getActiveRuneOf(RuneData.爆裂);
-            if (rune != null && !deadCard.justRevived()) {
+            // IMPORTANT: Unbending card cannot trigger 爆裂
+            if (rune != null && !deadCard.justRevived() && !result.unbending) {
                 Explode.apply(this, rune.getSkill(), killerCard, deadCard);
             }
         }
@@ -912,6 +914,7 @@ public class SkillResolver {
         if (card == null) {
             return;
         }
+        this.removeStatus(card, CardStatusType.不屈);
         CardStatus status = card.getStatus();
         if (status.containsStatus(CardStatusType.锁定)) {
             return;
@@ -1501,9 +1504,9 @@ public class SkillResolver {
     }
 
     public void removeOneRoundEffects(Player activePlayer) {
-        for (CardInfo card : activePlayer.getField().getAliveCards()) {
-            this.removeStatus(card, CardStatusType.不屈);
-        }
+        //for (CardInfo card : activePlayer.getField().getAliveCards()) {
+            // this.removeStatus(card, CardStatusType.不屈);
+        //}
     }
 
     public void killCard(CardInfo attacker, CardInfo victim, Skill cardSkill) throws HeroDieSignal {

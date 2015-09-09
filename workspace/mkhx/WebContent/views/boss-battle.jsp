@@ -141,9 +141,9 @@
                                 <td>平均伤害</td><td id="boss-battle-avg-damage"></td>
                             </tr>
                             <tr>
-                                <td>超时次数</td><td id="boss-battle-timeout-count"></td>
-                                <td>最大伤害</td><td id="boss-battle-max-damage"></td>
                                 <td>不稳定度</td><td id="boss-battle-cv-damage"></td>
+                                <td>最大伤害</td><td id="boss-battle-max-damage"></td>
+                                <td>60秒伤害</td><td id="boss-battle-avg-damage-per-minute"></td>
                             </tr>
                         </table>
                     </div>

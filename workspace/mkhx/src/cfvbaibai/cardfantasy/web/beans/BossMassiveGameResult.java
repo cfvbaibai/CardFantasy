@@ -11,6 +11,7 @@ public class BossMassiveGameResult {
     private int timeoutCount;
     private double minDamage;
     private double avgDamage;
+    private double avgDamagePerMinute;
     private double maxDamage;
     private double cvDamage;
     private ChartDataItem[] dataItems;
@@ -23,6 +24,7 @@ public class BossMassiveGameResult {
         this.timeoutCount = timeoutCount;
         this.minDamage = stat.getMin();
         this.avgDamage = stat.getAverage();
+        this.avgDamagePerMinute = this.avgDamage * (double)60 / (double)coolDown;
         this.maxDamage = stat.getMax();
         this.cvDamage = stat.getCoefficientOfVariation();
         this.dataItems = stat.getChartDataItems(10, 0);
@@ -47,6 +49,9 @@ public class BossMassiveGameResult {
     }
     public double getAvgDamage() {
         return avgDamage;
+    }
+    public double getAvgDamagePerMinute() {
+        return avgDamagePerMinute;
     }
     public double getMaxDamage() {
         return maxDamage;

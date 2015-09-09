@@ -26,7 +26,6 @@
 <script src='<c:url value="/resources/js/core.js" />?version=<%= version %>'></script>
 <script src='<c:url value="/resources/js/battle-animation.js" />?version=<%= version %>'></script>
 <script src='<c:url value="/resources/js/deck-builder.js" />?version=<%= version %>'></script>
-<script src='<c:url value="/resources/js/communication.js" />?version=<%= version %>'></script>
 <script src='<c:url value="/resources/js/test-rp.js" />?version=<%= version %>'></script>
 <script src='<c:url value="/resources/js/wiki.js" />?version=<%= version %>'></script>
 
