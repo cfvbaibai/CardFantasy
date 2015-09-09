@@ -401,16 +401,6 @@ var getMap = function() {
     return $('#map-id').val() + '-' + $('#map-difficulty').val();
 };
 
-(function() {
-    var validBrowser = $.browser.webkit;
-    if (!validBrowser) {
-        if (!$.cookie('browser-detection-confirmed')) {
-            alert('您使用的浏览器可能无法很好地支持本站的高级功能（战斗动画等），\r\n建议使用最新版的Chrome或Safari浏览器。');
-            $.cookie('browser-detection-confirmed', 'true', { expires: 7 });
-        }
-    }
-})();
-
 (function () {
     var leftPanelInited = false;
     $(document).on('pageinit', 'div.main-page', function (event) {

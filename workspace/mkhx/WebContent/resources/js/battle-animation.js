@@ -115,7 +115,7 @@ var CfPos = function(attr) {
 };
 
 var ArenaSettings = function() {
-    this.fontSizeFactor = $.browser.webkit ? 1 : 1.4;
+    this.fontSizeFactor = 1;
     this.maxWidth = 495;
     this.heightRate = 1.0;
     this.width = this.maxWidth;
