@@ -235,7 +235,9 @@ var playBossGame = function(count) {
         completeHandler = function(context) {
             var result = context.result;
             $('#boss-battle-game-count').text(result.gameCount);
-            //$('#boss-battle-timeout-count').text(result.timeoutCount);
+            $('#boss-battle-timeout-count').text(result.timeoutCount);
+            $('#boss-battle-cooldown').text(result.coolDown + '秒');
+            $('#boss-battle-deck-cost').text(result.totalCost);
             $('#boss-battle-min-damage').text(result.minDamage);
             $('#boss-battle-max-damage').text(result.maxDamage);
             $('#boss-battle-avg-damage').text(Math.round(result.avgDamage));
@@ -254,7 +256,6 @@ var playBossGame = function(count) {
                 chartData.datasets[0].data.push(result.dataItems[i].count);
             }
             $('#boss-battle-massive-output').show();
-            //$('#boss-battle-chart').width($('#boss-battle-chart-wrapper').width());
             $('#boss-battle-output').hide();
             Core.bossBattleChart.Bar(chartData);
         };

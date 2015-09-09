@@ -137,18 +137,23 @@
                         <table style="font-size: smaller" class="boss-battle-massive">
                             <tr>
                                 <td>战斗次数</td><td id="boss-battle-game-count"></td>
+                                <td>冷却时间</td><td id="boss-battle-cooldown"></td>
+                                <td>总COST</td><td id="boss-battle-deck-cost"></td>
+                            </tr>
+                            <tr>
+                                <td>不稳定度</td><td id="boss-battle-cv-damage"></td>
                                 <td>最小伤害</td><td id="boss-battle-min-damage"></td>
                                 <td>平均伤害</td><td id="boss-battle-avg-damage"></td>
                             </tr>
                             <tr>
-                                <td>不稳定度</td><td id="boss-battle-cv-damage"></td>
+                                <td>超时次数</td><td id="boss-battle-timeout-count"></td>
                                 <td>最大伤害</td><td id="boss-battle-max-damage"></td>
                                 <td>60秒伤害</td><td id="boss-battle-avg-damage-per-minute"></td>
                             </tr>
                         </table>
                     </div>
                     <div id="boss-battle-chart-wrapper">
-                        <canvas id="boss-battle-chart" width="300" height="200"></canvas>
+                        <canvas id="boss-battle-chart" width="300" height="180"></canvas>
                     </div>
                 </div>
             </div>
