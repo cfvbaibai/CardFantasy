@@ -156,10 +156,9 @@
                                 </td>
                             </tr>
                         </table>
-                        
                     </div>
                     <div id="boss-battle-chart-wrapper">
-                        <canvas id="boss-battle-chart" width="300" height="180"></canvas>
+                        <canvas id="boss-battle-chart" width="300" height="150"></canvas>
                     </div>
                 </div>
             </div>

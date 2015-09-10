@@ -260,8 +260,11 @@ div.dashboard ul {
 }
 
 #boss-battle table.boss-battle-massive td {
-    padding-left: 2px;
     padding-right: 2px;
+}
+
+#boss-battle table.boss-battle-massive td:nth-child(odd) {
+    font-weight: bold;
 }
 
 #test-rp div {
