@@ -12,6 +12,7 @@ public enum CardStatusType {
     弱化(false, "弱"),
     召唤(false, "召"),
     晕眩(false, "晕"),
+    // 不屈在触发后一直持续到下一次攻击阶段结束（中毒、燃烧和物理反击的结算是在攻击阶段之后）
     不屈(false, "倔"),
     死印(false, "死"),
     魔印(false, "魔"),

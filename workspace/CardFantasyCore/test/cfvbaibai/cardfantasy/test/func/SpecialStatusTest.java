@@ -361,11 +361,30 @@ public class SpecialStatusTest extends SkillValidationTest {
         Assert.assertTrue(c王国小兵.getStatus().containsStatus(CardStatusType.不屈));
         Assert.assertTrue(c王国小兵.getStatus().containsStatus(CardStatusType.中毒));
         Assert.assertEquals(1, c王国小兵.getHP());
-        
+
         context.proceedOneRound();
         Assert.assertEquals(0, context.getPlayer(0).getField().size());
         Assert.assertFalse(c王国小兵.getStatus().containsStatus(CardStatusType.不屈));
         Assert.assertTrue(c王国小兵.isDead());
+    }
+
+    @Test
+    public void test不屈_法力反射() {
+        SkillTestContext context = prepare(50, 50, "精灵法师+不屈", "秘银巨石像");
+        CardInfo c精灵法师 = context.addToField(0, 0).setBasicHP(2);
+        context.addToField(1, 1);
+        context.startGame();
+
+        random.addNextPicks(0); // 火球
+        random.addNextNumbers(0);
+        random.addNextPicks(0); // 火墙
+        random.addNextNumbers(0);
+        context.proceedOneRound();
+        Assert.assertEquals(1, c精灵法师.getHP());
+        Assert.assertFalse(c精灵法师.getStatus().containsStatus(CardStatusType.不屈));
+
+        context.proceedOneRound();
+        Assert.assertTrue(c精灵法师.isDead());
     }
 
     /**
