@@ -397,7 +397,7 @@ public class SpecialStatusTest extends SkillValidationTest {
     }
     
     /**
-     * 在己方回合发动的不屈，在下个敌方回合仍然有效
+     * 在己方回合反击结算阶段发动的不屈，一直持续到那张卡下一回合的攻击阶段结束
      */
     @Test
     public void test不屈_盾刺() {
@@ -427,31 +427,18 @@ public class SpecialStatusTest extends SkillValidationTest {
 
     
     /**
-     * 在己方回合发动的不屈，在下个敌方回合仍然有效
+     * 在己方回合反击结算阶段发动的不屈，一直持续到那张卡下一回合的攻击阶段结束
      */
     @Test
     public void test不屈_连续盾刺() {
-        SkillTestContext context = prepare(50, 50, "见习圣骑+不屈", "占位符", "秘银巨石像+盾刺10*2");
-        CardInfo c见习圣骑 = context.addToField(0, 0).setBasicHP(2);
-        context.addToField(1, 0);
+        SkillTestContext context = prepare(50, 50, "秘银巨石像", "见习圣骑+不屈", "秘银巨石像+盾刺10*2");
+        context.addToField(0, 0);
+        CardInfo c见习圣骑 = context.addToField(1, 0).setBasicHP(2);
         context.addToField(2, 1);
         context.addToField(3, 1);
         context.startGame();
 
-        // 本回合盾刺被发动两次，第一次触发不屈，第二次被不屈挡下
-        context.proceedOneRound();
-        Assert.assertEquals(2, context.getPlayer(0).getField().size());
-        Assert.assertTrue(c见习圣骑.getStatus().containsStatus(CardStatusType.不屈));
-        Assert.assertEquals(1, c见习圣骑.getHP());
-
-        // 本回合不屈依然有效
-        random.addNextNumbers(1000);   // 见习圣骑闪避失败
-        context.proceedOneRound();
-        Assert.assertEquals(2, context.getPlayer(0).getField().size());
-        Assert.assertTrue(c见习圣骑.getStatus().containsStatus(CardStatusType.不屈));
-        Assert.assertEquals(1, c见习圣骑.getHP());
-
-        // 本回合不屈失效，被盾刺弹死
+        // 本回合盾刺被发动两次，第一次触发不屈，第二次无法被不屈挡下，因为盾刺是在攻击阶段结算结束后发动的
         context.proceedOneRound();
         Assert.assertEquals(1, context.getPlayer(0).getField().size());
         Assert.assertFalse(c见习圣骑.getStatus().containsStatus(CardStatusType.不屈));
@@ -581,7 +568,7 @@ public class SpecialStatusTest extends SkillValidationTest {
         c王国小兵.setBasicHP(2);
         context.proceedOneRound();
         // 王国小兵被雷兽盾刺弹死，发动不屈
-        Assert.assertTrue(c王国小兵.getStatus().containsStatus(CardStatusType.不屈));
+        Assert.assertFalse(c王国小兵.getStatus().containsStatus(CardStatusType.不屈));
         Assert.assertEquals(1, c王国小兵.getHP());
 
         context.proceedOneRound();
@@ -618,20 +605,25 @@ public class SpecialStatusTest extends SkillValidationTest {
     @Test
     public void test不屈_治疗() {
         SkillTestContext context = prepare(
-            50, 50, "秘银巨石像", "金属巨龙+不屈", "占位符+治疗1", "占位符+盾刺10");
-        CardInfo c秘银巨石像 = context.addToField(0, 0);
-        CardInfo c金属巨龙 = context.addToField(1, 0).setBasicHP(2);
-        CardInfo c占位符1 = context.addToField(2, 0);
+            50, 50, "占位符+治疗", "残血王国小兵+不屈", "秘银巨石像*2");
+        context.addToField(0, 0);
+        CardInfo c王国小兵 = context.addToField(1, 0).setBasicHP(2);
+        context.addToField(2, 1);
         context.addToField(3, 1);
+
         context.startGame();
+        context.getStage().setActivePlayerNumber(1);
 
         context.proceedOneRound();
-        Assert.assertEquals(3, context.getPlayer(0).getField().size());
+        Assert.assertEquals(2, context.getPlayer(0).getField().size());
+        Assert.assertTrue(c王国小兵.getStatus().containsStatus(CardStatusType.不屈));
+        Assert.assertEquals(1, c王国小兵.getHP());
+
+        random.addNextPicks(1);     // 占位符治疗王国小兵
+        context.proceedOneRound();
         // 不屈的卡无法被治疗
-        Assert.assertEquals(1, c金属巨龙.getHP());
-        // 二重狙击打在两个后方占位符上
-        Assert.assertEquals(200 /* 盾刺 */ - 25 /* 治疗1 */, 1400 - c秘银巨石像.getHP());
-        Assert.assertEquals(0, 5000 - c占位符1.getHP());
+        Assert.assertEquals(1, c王国小兵.getHP());
+        Assert.assertFalse(c王国小兵.getStatus().containsStatus(CardStatusType.不屈));
     }
 
     /**
@@ -640,20 +632,25 @@ public class SpecialStatusTest extends SkillValidationTest {
     @Test
     public void test不屈_甘霖() {
         SkillTestContext context = prepare(
-            50, 50, "秘银巨石像", "金属巨龙+不屈", "占位符+甘霖1", "占位符+盾刺10");
-        CardInfo c秘银巨石像 = context.addToField(0, 0);
-        CardInfo c金属巨龙 = context.addToField(1, 0).setBasicHP(2);
-        CardInfo c占位符1 = context.addToField(2, 0);
+                50, 50, "占位符+甘霖", "残血王国小兵+不屈", "秘银巨石像*2");
+        context.addToField(0, 0);
+        CardInfo c王国小兵 = context.addToField(1, 0).setBasicHP(2);
+        context.addToField(2, 1);
         context.addToField(3, 1);
+
         context.startGame();
+        context.getStage().setActivePlayerNumber(1);
 
         context.proceedOneRound();
-        Assert.assertEquals(3, context.getPlayer(0).getField().size());
+        Assert.assertEquals(2, context.getPlayer(0).getField().size());
+        Assert.assertTrue(c王国小兵.getStatus().containsStatus(CardStatusType.不屈));
+        Assert.assertEquals(1, c王国小兵.getHP());
+
+        random.addNextPicks(0, 1);     // 占位符甘霖
+        context.proceedOneRound();
         // 不屈的卡无法被甘霖
-        Assert.assertEquals(1, c金属巨龙.getHP());
-        // 二重狙击打在两个后方占位符上
-        Assert.assertEquals(200 /* 盾刺 */ - 25 /* 治疗1 */, 1400 - c秘银巨石像.getHP());
-        Assert.assertEquals(0, 5000 - c占位符1.getHP());
+        Assert.assertEquals(1, c王国小兵.getHP());
+        Assert.assertFalse(c王国小兵.getStatus().containsStatus(CardStatusType.不屈));
     }
 
     /**

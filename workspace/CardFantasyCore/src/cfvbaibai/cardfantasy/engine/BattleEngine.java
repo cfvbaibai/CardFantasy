@@ -288,6 +288,7 @@ public class BattleEngine {
                 resolver.removeStatus(myField.getCard(i), CardStatusType.麻痹);
                 resolver.removeStatus(myField.getCard(i), CardStatusType.晕眩);
                 resolver.removeStatus(myField.getCard(i), CardStatusType.致盲);
+                resolver.removeStatus(myField.getCard(i), CardStatusType.不屈);
             } else {
                 tryAttackEnemy(myField, opField, i);
             }
@@ -344,6 +345,7 @@ public class BattleEngine {
         if (opField.getCard(i) == null) {
             resolver.resolvePreAttackHeroSkills(myField.getCard(i), getInactivePlayer());
             resolver.attackHero(myField.getCard(i), getInactivePlayer(), null, myField.getCard(i).getCurrentAT());
+            resolver.removeStatus(myField.getCard(i), CardStatusType.不屈);
         } else {
             tryAttackCard(myField, opField, i);
         }
@@ -360,6 +362,7 @@ public class BattleEngine {
         if (opField.getCard(i) == null) {
             resolver.resolvePreAttackHeroSkills(myField.getCard(i), getInactivePlayer());
             resolver.attackHero(myField.getCard(i), getInactivePlayer(), null, myField.getCard(i).getCurrentAT());
+            resolver.removeStatus(myField.getCard(i), CardStatusType.不屈);
         } else {
             processAttackCard(myField, opField, i);
         }
@@ -410,7 +413,6 @@ public class BattleEngine {
         }
         Player player = this.getActivePlayer();
         this.stage.getResolver().deactivateRunes(player);
-        this.stage.getResolver().removeOneRoundEffects(player);
         if (player.getDeck().size() == 0 && player.getField().size() == 0
                 && player.getHand().size() == 0) {
             throw new AllCardsDieSignal(player);

@@ -884,9 +884,7 @@ public class SkillResolver {
         } finally {
             if (attacker instanceof CardInfo) {
                 CardInfo attackerCard = (CardInfo)attacker;
-                if (attackerCard.removeStatus(CardStatusType.麻痹)) {
-                    this.stage.getUI().removeCardStatus(attackerCard, CardStatusType.麻痹);
-                }
+                this.removeStatus(attackerCard, CardStatusType.麻痹);
             }
         }
     }
@@ -914,7 +912,6 @@ public class SkillResolver {
         if (card == null) {
             return;
         }
-        this.removeStatus(card, CardStatusType.不屈);
         CardStatus status = card.getStatus();
         if (status.containsStatus(CardStatusType.锁定)) {
             return;
@@ -944,11 +941,13 @@ public class SkillResolver {
         OnAttackBlockingResult blockingResult = stage.getResolver().resolveAttackBlockingSkills(
                 attacker, defender, skill, damage);
         if (!blockingResult.isAttackable()) {
+            this.removeStatus(attacker, CardStatusType.不屈);
             return null;
         }
         this.stage.getUI().attackCard(attacker, defender, skill, blockingResult.getDamage());
         OnDamagedResult damagedResult = stage.getResolver().applyDamage(defender, skill, blockingResult.getDamage());
-
+        this.removeStatus(attacker, CardStatusType.不屈);
+        
         resolvePostAttackSkills(attacker, defender, defender.getOwner(), skill, damagedResult.actualDamage);
         stage.getResolver().resolveDeathSkills(attacker, defender, skill, damagedResult);
 
@@ -1501,12 +1500,6 @@ public class SkillResolver {
                 Purify.apply(rune.getSkillUseInfo(), this, rune);
             }
         }
-    }
-
-    public void removeOneRoundEffects(Player activePlayer) {
-        //for (CardInfo card : activePlayer.getField().getAliveCards()) {
-            // this.removeStatus(card, CardStatusType.不屈);
-        //}
     }
 
     public void killCard(CardInfo attacker, CardInfo victim, Skill cardSkill) throws HeroDieSignal {
