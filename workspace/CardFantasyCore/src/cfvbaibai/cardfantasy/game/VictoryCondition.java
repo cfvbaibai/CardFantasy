@@ -186,8 +186,9 @@ class CardOfRaceVictoryCondition extends VictoryCondition {
     }
     public boolean meetCriteria(GameResult result) {
         int count = 0;
-        for (CardInfo card : result.getWinner().getAllPrimaryCards()) {
-            if (card.getRace() == this.race) {
+        List<CardInfo> primaryCards = result.getWinner().getAllPrimaryCards();
+        for (CardInfo card : primaryCards) {
+            if (card.getOriginalRace() == this.race) {
                 ++count;
             }
         }

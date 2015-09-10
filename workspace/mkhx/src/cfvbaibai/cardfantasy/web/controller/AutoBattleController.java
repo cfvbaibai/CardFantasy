@@ -535,9 +535,12 @@ public class AutoBattleController {
                 ++timeoutCount;
             }
             stat.addData(trialResult.getDamageToBoss());
-            int gameCount = 5000 / trialResult.getRound();
-            if (gameCount <= 1) {
-                gameCount = 1;
+            int gameCount = 10000 / trialResult.getRound();
+            if (gameCount < 100) {
+                gameCount = 100;
+            }
+            if (gameCount > 1000) {
+                gameCount = 1000;
             }
             //writer.append("模拟场次: " + gameCount + "<br />");
             
