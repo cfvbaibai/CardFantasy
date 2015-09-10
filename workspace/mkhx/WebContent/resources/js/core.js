@@ -243,6 +243,7 @@ var playBossGame = function(count) {
             $('#boss-battle-avg-damage').text(Math.round(result.avgDamage));
             $('#boss-battle-avg-damage-per-minute').text(Math.round(result.avgDamagePerMinute));
             $('#boss-battle-cv-damage').text(Math.round(result.cvDamage * 100) + '%');
+            $('#boss-battle-deck-validation-result').html(result.validationResult);
             var chartData = { labels: [], datasets: [{
                 label: "伤害",
                 fillColor: "rgba(151,187,205,0.5)",

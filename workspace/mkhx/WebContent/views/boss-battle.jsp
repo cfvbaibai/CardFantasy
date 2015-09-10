@@ -150,7 +150,13 @@
                                 <td>最大伤害</td><td id="boss-battle-max-damage"></td>
                                 <td>60秒伤害</td><td id="boss-battle-avg-damage-per-minute"></td>
                             </tr>
+                            <tr>
+                                <td colspan="6">
+                                    <div id="boss-battle-deck-validation-result"></div>
+                                </td>
+                            </tr>
                         </table>
+                        
                     </div>
                     <div id="boss-battle-chart-wrapper">
                         <canvas id="boss-battle-chart" width="300" height="180"></canvas>
