@@ -259,12 +259,12 @@ div.dashboard ul {
     color: blue;
 }
 
-#boss-battle table.boss-battle-massive td {
+#boss-battle table.boss-battle-massive td:nth-child(even) {
     padding-right: 2px;
 }
 
 #boss-battle table.boss-battle-massive td:nth-child(odd) {
-    font-weight: bold;
+    color: rgba(0, 0, 0, 0.25);
 }
 
 #test-rp div {

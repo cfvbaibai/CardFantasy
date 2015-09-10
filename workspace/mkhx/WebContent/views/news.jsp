@@ -31,6 +31,9 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2015-09-10: <ul>
+                        <li>对【魔神战】的结果显示方法进行一些微调，感谢<x>主公摇头怕怕</x>的建议</li>
+                    </ul></li>
                     <li>2015-09-09: <ul>
                         <li>修复【不屈】会引发【自爆】的BUG，感谢<x>邪眼真王二代目</x>发现BUG</li>
                         <li>修复【不屈】在我方回合被触发时的处理机制，感谢<x>pk810219899</x>发现BUG</li>
