@@ -148,6 +148,8 @@ public class SkillResolver {
                 Snipe.apply(skillUseInfo.getSkill(), this, attacker, defender, 2);
             } else if (skillUseInfo.getType() == SkillType.迷魂) {
                 Confusion.apply(skillUseInfo, this, attacker, defender, 1);
+            } else if (skillUseInfo.getType() == SkillType.混乱领域) {
+                Confusion.apply(skillUseInfo, this, attacker, defender, 3);
             } else if (skillUseInfo.getType() == SkillType.烈火焚神) {
                 BurningFlame.apply(skillUseInfo, this, attacker, defender);
             } else if (skillUseInfo.getType() == SkillType.诅咒) {

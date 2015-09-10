@@ -1451,7 +1451,7 @@ var Animater = function() {
                 text: skill,
                 duration: settings.skillDuration,
             });
-        } else if (skill == '迷魂') {
+        } else if (skill == '迷魂' || skill == '混乱领域') {
             this.flyImage({ fileName: 'heart.png', width: 24, height: 24, text: skill },
                     attacker, defenders, settings.skillDuration);
         } else if (skill == '自爆') {
