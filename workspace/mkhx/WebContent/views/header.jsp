@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<% String version = "20150909001"; %>
+<% String version = "20150924001"; %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,6 +28,9 @@
 <script src='<c:url value="/resources/js/deck-builder.js" />?version=<%= version %>'></script>
 <script src='<c:url value="/resources/js/test-rp.js" />?version=<%= version %>'></script>
 <script src='<c:url value="/resources/js/wiki.js" />?version=<%= version %>'></script>
+
+<!-- 百度广告 -->
+<script type="text/javascript" src="http://cbjs.baidu.com/js/m.js"></script>
 
 <script>var resDir = '<c:url value="/resources" />'; var rootDir = '<c:url value="/" />'; var seed = new Date().getTime();</script>
 <meta name="description" content="魔卡幻想战斗模拟器">

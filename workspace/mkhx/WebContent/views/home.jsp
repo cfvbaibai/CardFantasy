@@ -15,7 +15,11 @@
             <a class="nav-button right-nav-button" data-iconpos="right">导航</a>
         </div>
     </div>
-    
+<!--
+    <div>
+        <script type="text/javascript">BAIDU_CLB_fillSlot("1136893");</script>
+    </div>
+-->
     <%@ include file="news.jsp" %>
     <%@ include file="map-battle.jsp" %>
     <%@ include file="arena-battle.jsp" %>

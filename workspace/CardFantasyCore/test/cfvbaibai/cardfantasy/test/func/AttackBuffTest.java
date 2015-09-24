@@ -4,7 +4,9 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import cfvbaibai.cardfantasy.engine.CardInfo;
+import cfvbaibai.cardfantasy.engine.CardStatusType;
 import cfvbaibai.cardfantasy.engine.HeroDieSignal;
+import cfvbaibai.cardfantasy.engine.RuneInfo;
 
 public class AttackBuffTest extends SkillValidationTest {
     /**
@@ -357,5 +359,171 @@ public class AttackBuffTest extends SkillValidationTest {
 
         context.proceedOneRound();
         Assert.assertEquals(810, 5000 - c占位符2.getHP());
+    }
+    
+    @Test
+    public void test斩杀_基础() {
+        SkillTestContext context = prepare(50, 50, "秘银巨石像+斩杀", "占位符");
+        context.addToField(0, 0);
+        CardInfo c占位符 = context.addToField(1, 1).setBasicHP(2499);
+        context.startGame();
+
+        context.proceedOneRound();
+        Assert.assertTrue(c占位符.isDead());
+    }
+
+    /*
+     * 刚好一半HP无法斩杀
+     */
+    @Test
+    public void test斩杀_刚好一半HP() {
+        SkillTestContext context = prepare(50, 50, "秘银巨石像+斩杀", "占位符");
+        context.addToField(0, 0);
+        CardInfo c占位符 = context.addToField(1, 1).setBasicHP(2500);
+        context.startGame();
+
+        context.proceedOneRound();
+        Assert.assertFalse(c占位符.isDead());
+        Assert.assertEquals(810, 2500 - c占位符.getHP());
+    }
+
+    /*
+     * 免疫对斩杀无效
+     */
+    @Test
+    public void test斩杀_免疫() {
+        SkillTestContext context = prepare(50, 50, "秘银巨石像+斩杀", "占位符+免疫");
+        context.addToField(0, 0);
+        CardInfo c占位符 = context.addToField(1, 1).setBasicHP(2499);
+        context.startGame();
+
+        context.proceedOneRound();
+        Assert.assertTrue(c占位符.isDead());
+    }
+
+    /*
+     * 格挡对斩杀无效
+     */
+    @Test
+    public void test斩杀_格挡() {
+        SkillTestContext context = prepare(50, 50, "秘银巨石像+斩杀", "占位符+格挡10");
+        context.addToField(0, 0);
+        CardInfo c占位符 = context.addToField(1, 1).setBasicHP(2499);
+        context.startGame();
+
+        context.proceedOneRound();
+        Assert.assertTrue(c占位符.isDead());
+    }
+
+    /*
+     * 岩壁对斩杀无效
+     */
+    @Test
+    public void test斩杀_岩壁() {
+        SkillTestContext context = prepare(50, 50, "秘银巨石像+斩杀", "占位符", "岩壁-4");
+        context.addToField(0, 0);
+        CardInfo c占位符 = context.addToField(1, 1).setBasicHP(2499);
+        RuneInfo c岩壁 = context.addToRune(0, 1);
+        context.startGame();
+
+        c岩壁.activate();
+        context.proceedOneRound();
+        Assert.assertTrue(c占位符.isDead());
+    }
+
+    /*
+     * 冰甲对斩杀无效
+     */
+    @Test
+    public void test斩杀_冰甲() {
+        SkillTestContext context = prepare(50, 50, "秘银巨石像+斩杀", "占位符+冰甲10");
+        context.addToField(0, 0);
+        CardInfo c占位符 = context.addToField(1, 1).setBasicHP(2499);
+        context.startGame();
+
+        context.proceedOneRound();
+        Assert.assertTrue(c占位符.isDead());
+    }
+
+    /*
+     * 冰封对斩杀无效
+     */
+    @Test
+    public void test斩杀_冰封() {
+        SkillTestContext context = prepare(50, 50, "秘银巨石像+斩杀", "占位符", "冰封-4");
+        context.addToField(0, 0);
+        CardInfo c占位符 = context.addToField(1, 1).setBasicHP(2499);
+        RuneInfo c冰封 = context.addToRune(0, 1);
+        context.startGame();
+
+        c冰封.activate();
+        context.proceedOneRound();
+        Assert.assertTrue(c占位符.isDead());
+    }
+
+    /*
+     * 闪避对斩杀有效
+     */
+    @Test
+    public void test斩杀_闪避() {
+        SkillTestContext context = prepare(50, 50, "秘银巨石像+斩杀", "占位符+闪避10");
+        context.addToField(0, 0);
+        CardInfo c占位符 = context.addToField(1, 1).setBasicHP(2499);
+        context.startGame();
+
+        random.addNextNumbers(0); // 占位符闪避成功
+        context.proceedOneRound();
+        Assert.assertFalse(c占位符.isDead());
+        Assert.assertEquals(2499, c占位符.getHP());
+    }
+
+    /*
+     * 致盲对斩杀有效
+     */
+    @Test
+    public void test斩杀_致盲() {
+        SkillTestContext context = prepare(50, 50, "占位符+致盲10", "秘银巨石像+斩杀");
+        CardInfo c占位符 = context.addToField(0, 0).setBasicHP(2499);
+        CardInfo c秘银巨石像 = context.addToField(1, 1);
+        context.startGame();
+
+        random.addNextPicks(0); // 占位符对秘银巨石像使用致盲
+        context.proceedOneRound();
+        Assert.assertTrue(c秘银巨石像.getStatus().containsStatus(CardStatusType.致盲));
+
+        random.addNextNumbers(0); // 占位符闪避成功
+        context.proceedOneRound();
+        Assert.assertFalse(c占位符.isDead());
+        Assert.assertEquals(2499, c占位符.getHP());
+    }
+
+    /*
+     * 斩杀造成的所有伤害都可转化为吸血量
+     */
+    @Test
+    public void test斩杀_吸血() {
+        SkillTestContext context = prepare(50, 50, "豺狼人刺客+斩杀", "占位符");
+        CardInfo c豺狼人刺客 = context.addToField(0, 0).setBasicHP(2);
+        CardInfo c占位符 = context.addToField(1, 1).setBasicHP(100);
+        context.startGame();
+
+        context.proceedOneRound();
+        Assert.assertTrue(c占位符.isDead());
+        Assert.assertEquals(40 /* 吸血4吸取40%伤害量 */ + 2, c豺狼人刺客.getHP());
+    }
+
+    /*
+     * 斩杀对魔神无效
+     */
+    @Test
+    public void test斩杀_魔神() {
+        SkillTestContext context = prepare(50, 50, "秘银巨石像+斩杀", "迷魂邪龙之神");
+        context.addToField(0, 0);
+        CardInfo c邪龙之神 = context.addToField(1, 1).setBasicHP(1000);
+        context.startGame();
+
+        context.proceedOneRound();
+        Assert.assertFalse(c邪龙之神.isDead());
+        Assert.assertEquals(1000 - 810, c邪龙之神.getHP());
     }
 }

@@ -14,7 +14,7 @@
                     <!-- <li>小提示：可以灵活使用*0的表达法来方便配卡哦。</li> -->
                 </ul>
             </div>
-            <%-- 
+            <%--
             <div data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">
                 <h3>技能细节问答，欢迎大家来补完技能细节，使模拟器更准确</h3>
                 <ul>
@@ -31,6 +31,10 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2015-09-24: <ul>
+                        <li>添加新卡【黄金毒龙】</li>
+                        <li>添加新卡【永夜真祖】</li>
+                    </ul></li>
                     <li>2015-09-10: <ul>
                         <li>对【魔神战】的结果显示方法进行一些微调，感谢<x>主公摇头怕怕</x>的建议</li>
                         <li>添加新卡【月樱公主】，感谢<x>咬起来喀嚓喀嚓</x>的提醒</li>

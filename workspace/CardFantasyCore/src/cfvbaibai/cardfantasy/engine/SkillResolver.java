@@ -946,6 +946,13 @@ public class SkillResolver {
             this.removeStatus(attacker, CardStatusType.不屈);
             return null;
         }
+        if (skill == null) {
+            for (SkillUseInfo cardSkillUseInfo : attacker.getAllUsableSkills()) {
+                if (cardSkillUseInfo.getType() == SkillType.斩杀) {
+                    SuddenKill.apply(this, cardSkillUseInfo, attacker, defender, blockingResult);
+                }
+            }
+        }
         this.stage.getUI().attackCard(attacker, defender, skill, blockingResult.getDamage());
         OnDamagedResult damagedResult = stage.getResolver().applyDamage(defender, skill, blockingResult.getDamage());
         this.removeStatus(attacker, CardStatusType.不屈);
@@ -1270,8 +1277,9 @@ public class SkillResolver {
     public boolean resolveCounterBlockSkill(Skill cardSkill, CardInfo attacker, CardInfo defender) {
         for (SkillUseInfo attackerSkillUseInfo : attacker.getNormalUsableSkills()) {
             if (attackerSkillUseInfo.getType() == SkillType.弱点攻击) {
-                return WeakPointAttack.isBlockSkillDisabled(this, attackerSkillUseInfo.getSkill(), cardSkill,
-                        attacker, defender);
+                return WeakPointAttack.isBlockSkillDisabled(this, attackerSkillUseInfo.getSkill(), cardSkill, attacker, defender);
+            } else if (attackerSkillUseInfo.getType() == SkillType.斩杀) {
+                return SuddenKill.isBlockSkillDisabled(this, attackerSkillUseInfo.getSkill(), cardSkill, attacker, defender);
             }
         }
         return false;
