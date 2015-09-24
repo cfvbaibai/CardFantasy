@@ -8,9 +8,9 @@ import cfvbaibai.cardfantasy.engine.SkillResolver;
 import cfvbaibai.cardfantasy.engine.SkillUseInfo;
 
 public final class WeaponSummon extends PreAttackCardSkill {
-    public static void apply(SkillResolver resolver, SkillUseInfo skillUseInfo, CardInfo attacker, CardInfo defender) {
+    public static void apply(SkillResolver resolver, SkillUseInfo skillUseInfo, CardInfo attacker, CardInfo defender, int min, int max) {
         Skill skill = skillUseInfo.getSkill();
-        int adjAT = resolver.getStage().getRandomizer().next(500, 1700);
+        int adjAT = resolver.getStage().getRandomizer().next(min, max);
         resolver.getStage().getUI().useSkill(attacker, skill, true);
         resolver.getStage().getUI().adjustAT(attacker, attacker, adjAT, skill);
         attacker.addEffect(new SkillEffect(SkillEffectType.ATTACK_CHANGE, skillUseInfo, adjAT, false));

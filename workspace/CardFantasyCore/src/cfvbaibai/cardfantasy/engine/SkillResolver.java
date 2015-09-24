@@ -201,6 +201,8 @@ public class SkillResolver {
                 Soften.apply(skillUseInfo, this, attacker, defender, 10);
             } else if (skillUseInfo.getType() == SkillType.召唤王国战士) {
                 Summon.apply(this, skillUseInfo, attacker, "圣骑士", "魔剑士");
+            } else if (skillUseInfo.getType() == SkillType.召唤骷髅战士) {
+                Summon.apply(this, skillUseInfo, attacker, "骷髅战士", "骷髅战士");
             } else if (skillUseInfo.getType() == SkillType.召唤噩梦护卫) {
                 Summon.apply(this, skillUseInfo, attacker, "时光女神", "金属巨龙");
             } else if (skillUseInfo.getType() == SkillType.召唤邪龙护卫) {
@@ -716,7 +718,9 @@ public class SkillResolver {
                 } else if (skillUseInfo.getType() == SkillType.暴击) {
                     CriticalAttack.apply(this, skillUseInfo, attacker, defender);
                 } else if (skillUseInfo.getType() == SkillType.神兵召唤) {
-                    WeaponSummon.apply(this, skillUseInfo, attacker, defender);
+                    WeaponSummon.apply(this, skillUseInfo, attacker, defender, 500, 1700);
+                } else if (skillUseInfo.getType() == SkillType.厨具召唤) {
+                    WeaponSummon.apply(this, skillUseInfo, attacker, defender, 1, 500);
                 } else if (skillUseInfo.getType() == SkillType.穷追猛打) {
                     Pursuit.apply(this, skillUseInfo, attacker, defender);
                 } else if (skillUseInfo.getType() == SkillType.战意) {
@@ -778,7 +782,7 @@ public class SkillResolver {
                 HeroKiller.remove(this, effect.getCause(), card);
             } else if (type == SkillType.凯撒之击) {
                 CaeserAttack.remove(this, effect.getCause(), card);
-            } else if (type == SkillType.神兵召唤) {
+            } else if (type == SkillType.神兵召唤 || type == SkillType.厨具召唤) {
                 WeaponSummon.remove(this, effect.getCause(), card);
             }
         }

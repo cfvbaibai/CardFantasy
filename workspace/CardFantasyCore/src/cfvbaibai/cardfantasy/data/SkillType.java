@@ -36,7 +36,6 @@ public enum SkillType {
     暗杀("31138", 15, 15, SkillTag.额外攻击加成),
     污染("31139", 15, 15, SkillTag.额外攻击加成),
     暴击("30948", 20, SkillTag.额外攻击加成),
-    神兵召唤("", 0, SkillTag.额外攻击加成),
     凯撒之击("", 10, 5, SkillTag.额外攻击加成),
     穷追猛打("30958", 15, SkillTag.额外攻击加成),
     战意("31125", 15, SkillTag.额外攻击加成),
@@ -46,6 +45,8 @@ public enum SkillType {
     复仇("40086", 40, 10, SkillTag.独立攻击加成),
     振奋("80192", 40, 10, SkillTag.独立攻击加成),
     奋战("", 40, 10, SkillTag.独立攻击加成),
+    神兵召唤("", 0, SkillTag.额外攻击加成),
+    厨具召唤("", 0, SkillTag.额外攻击加成),
 
     虚弱("57000", 0, SkillTag.额外攻击加成, SkillTag.抗免疫, SkillTag.抗不屈),
     战争怒吼("57022", 0, SkillTag.额外攻击加成, SkillTag.抗免疫, SkillTag.抗不屈),
@@ -170,6 +171,7 @@ public enum SkillType {
     生命链接("", 0),
 
     召唤王国战士("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
+    召唤骷髅战士("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
     召唤邪龙护卫("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
     召唤噩梦护卫("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
     召唤复仇护卫("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
