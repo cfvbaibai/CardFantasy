@@ -23,7 +23,7 @@ public class MagicMark {
         for (CardInfo victim : victims) {
             CardStatusItem statusItem = CardStatusItem.magicMark(skillUseInfo);
             if (!resolver.resolveAttackBlockingSkills(caster, victim, skill, 1).isAttackable()) {
-                return;
+                continue;
             }
             ui.addCardStatus(caster, victim, skill, statusItem);
             victim.addStatus(statusItem);
