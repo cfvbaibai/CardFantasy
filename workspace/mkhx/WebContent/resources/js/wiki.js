@@ -24,6 +24,7 @@ var toRaceText = function(race) {
 
 var store = {};
 $(document).on("pageinit", "#wiki", function(event) {
+    CardFantasy.Core.uploadToCnzzUrl('wiki');
     $('#wiki-card-search').click(function() {
         var starFilter = $('#wiki-card-star-filter').val();
         var raceFilter = $('#wiki-card-race-filter').val();
@@ -31,7 +32,7 @@ $(document).on("pageinit", "#wiki", function(event) {
         var queryUrl ='OfficialData/Cards?stars=' + starFilter + '&races=' + raceFilter + '&skillTypes=' + skillTypeFilter;
 
         $('#wiki-card-search').addClass('ui-disabled');
-        $('#wiki-card-search').changeButtonText('搜索中...');
+        $.mobile.loading('show');
         $.get(queryUrl, function(data) {
             var wideResult = "";
             var narrowResult = "";
@@ -70,7 +71,7 @@ $(document).on("pageinit", "#wiki", function(event) {
             $('#wiki-card-result').html(wideResult + narrowResult);
         }).complete(function () {
             $('#wiki-card-search').removeClass('ui-disabled');
-            $('#wiki-card-search').changeButtonText('搜索');
+            $.mobile.loading('hide');
         });
     });
 });

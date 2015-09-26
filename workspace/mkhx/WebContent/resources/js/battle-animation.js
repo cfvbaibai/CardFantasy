@@ -2351,6 +2351,7 @@ BattleAnimation.showBattle = function(data) {
 
 BattleAnimation.showSaveVideoPanel = function(show) {
     if (show) {
+        CardFantasy.Core.uploadToCnzzUrl('SaveVideo');
         $('#video-content').select();
         $('#canvas-outline').hide('fast');
         $('#video-content-panel').show('fast');
@@ -2366,6 +2367,7 @@ BattleAnimation.showSaveVideoPanel = function(show) {
 
 BattleAnimation.viewVideo = function() {
     var videoText = $('#video-content-to-view').val();
+    CardFantasy.Core.uploadToCnzzUrl('ViewVideo');
     $.ajax({
         url: "Video/Decompact",
         data: { 'videoData': videoText },
