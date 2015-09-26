@@ -33,18 +33,20 @@ import cfvbaibai.cardfantasy.Randomizer;
 import cfvbaibai.cardfantasy.data.Card;
 import cfvbaibai.cardfantasy.data.CardData;
 import cfvbaibai.cardfantasy.data.CardDataStore;
+import cfvbaibai.cardfantasy.data.LilithCardBuffSkill;
+import cfvbaibai.cardfantasy.data.PlayerCardBuffSkill;
 import cfvbaibai.cardfantasy.data.PlayerInfo;
 import cfvbaibai.cardfantasy.data.RuneData;
 import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.data.SkillTag;
 import cfvbaibai.cardfantasy.data.SkillType;
-import cfvbaibai.cardfantasy.data.TrivialSkill;
 import cfvbaibai.cardfantasy.engine.BattleEngine;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.GameEndCause;
 import cfvbaibai.cardfantasy.engine.GameResult;
 import cfvbaibai.cardfantasy.engine.Player;
 import cfvbaibai.cardfantasy.engine.Rule;
+import cfvbaibai.cardfantasy.game.DeckBuilder;
 import cfvbaibai.cardfantasy.game.DummyGameUI;
 import cfvbaibai.cardfantasy.game.DummyVictoryCondition;
 import cfvbaibai.cardfantasy.game.GameResultStat;
@@ -101,6 +103,29 @@ public class AutoBattleController {
             stat.addResult(BattleEngine.play1v1(ui, rule, p1, p2));
         }
         return stat;
+    }
+
+    private static List<Skill> buildBuffsForLilithEvents(String eventCardNames) {
+        List<Skill> player2Buffs = new ArrayList<Skill>();
+        if (eventCardNames != null) {
+            String[] eventCardNameArray = DeckBuilder.splitDescsText(eventCardNames);
+            for (String eventCardName : eventCardNameArray) {
+                CardData cardData = CardDataStore.loadDefault().getCard(eventCardName);
+                if (cardData == null) {
+                    throw new CardFantasyRuntimeException("无效的活动卡牌：" + eventCardName);
+                }
+                int level = 0;
+                switch (cardData.getStar()) {
+                    case 3: level = 50; break;
+                    case 4: level = 100; break;
+                    case 5: level = 200; break;
+                    default: throw new CardFantasyRuntimeException("无效的活动卡牌：" + eventCardName);
+                }
+                player2Buffs.add(new LilithCardBuffSkill(SkillType.原始体力调整, level, eventCardName));
+                player2Buffs.add(new LilithCardBuffSkill(SkillType.原始攻击调整, level, eventCardName));
+            }
+        }
+        return player2Buffs;
     }
 
     private void outputBattleOptions(PrintWriter writer, int firstAttack, int deckOrder, int p1hhpb, int p1catb, int p1chpb, int p2hhpb, int p2catb, int p2chpb, VictoryCondition vc1) {
@@ -162,18 +187,18 @@ public class AutoBattleController {
             outputBattleOptions(writer, firstAttack, deckOrder, p1HeroHpBuff, p1CardAtBuff, p1CardHpBuff, p2HeroHpBuff, p2CardAtBuff, p2CardHpBuff, vc1);
             List<Skill> p1CardBuffs = new ArrayList<Skill>();
             if (p1CardAtBuff != 100) {
-                p1CardBuffs.add(new TrivialSkill(SkillType.原始攻击调整, p1CardAtBuff - 100));
+                p1CardBuffs.add(new PlayerCardBuffSkill(SkillType.原始攻击调整, p1CardAtBuff - 100));
             }
             if (p1CardHpBuff != 100) {
-                p1CardBuffs.add(new TrivialSkill(SkillType.原始体力调整, p1CardHpBuff - 100));
+                p1CardBuffs.add(new PlayerCardBuffSkill(SkillType.原始体力调整, p1CardHpBuff - 100));
             }
             PlayerInfo player1 = PlayerBuilder.build(heroLv1 != 0, "玩家1", deck1, heroLv1, p1CardBuffs, p1HeroHpBuff);
             List<Skill> p2CardBuffs = new ArrayList<Skill>();
             if (p2CardAtBuff != 100) {
-                p2CardBuffs.add(new TrivialSkill(SkillType.原始攻击调整, p2CardAtBuff - 100));
+                p2CardBuffs.add(new PlayerCardBuffSkill(SkillType.原始攻击调整, p2CardAtBuff - 100));
             }
             if (p2CardHpBuff != 100) {
-                p2CardBuffs.add(new TrivialSkill(SkillType.原始体力调整, p2CardHpBuff - 100));
+                p2CardBuffs.add(new PlayerCardBuffSkill(SkillType.原始体力调整, p2CardHpBuff - 100));
             }
             PlayerInfo player2 = PlayerBuilder.build(heroLv2 != 0, "玩家2", deck2, heroLv2, p2CardBuffs, p2HeroHpBuff);
             WebPlainTextGameUI ui = new WebPlainTextGameUI();
@@ -227,18 +252,18 @@ public class AutoBattleController {
 
             List<Skill> p1CardBuffs = new ArrayList<Skill>();
             if (p1CardAtBuff != 100) {
-                p1CardBuffs.add(new TrivialSkill(SkillType.原始攻击调整, p1CardAtBuff - 100));
+                p1CardBuffs.add(new PlayerCardBuffSkill(SkillType.原始攻击调整, p1CardAtBuff - 100));
             }
             if (p1CardHpBuff != 100) {
-                p1CardBuffs.add(new TrivialSkill(SkillType.原始体力调整, p1CardHpBuff - 100));
+                p1CardBuffs.add(new PlayerCardBuffSkill(SkillType.原始体力调整, p1CardHpBuff - 100));
             }
             PlayerInfo player1 = PlayerBuilder.build(heroLv1 != 0, "玩家1", deck1, heroLv1, p1CardBuffs, p1HeroHpBuff);
             List<Skill> p2CardBuffs = new ArrayList<Skill>();
             if (p2CardAtBuff != 100) {
-                p2CardBuffs.add(new TrivialSkill(SkillType.原始攻击调整, p2CardAtBuff - 100));
+                p2CardBuffs.add(new PlayerCardBuffSkill(SkillType.原始攻击调整, p2CardAtBuff - 100));
             }
             if (p2CardHpBuff != 100) {
-                p2CardBuffs.add(new TrivialSkill(SkillType.原始体力调整, p2CardHpBuff - 100));
+                p2CardBuffs.add(new PlayerCardBuffSkill(SkillType.原始体力调整, p2CardHpBuff - 100));
             }
             PlayerInfo player2 = PlayerBuilder.build(heroLv2 != 0, "玩家2", deck2, heroLv2, p2CardBuffs, p2HeroHpBuff);
             StructuredRecordGameUI ui = new StructuredRecordGameUI();
@@ -273,18 +298,18 @@ public class AutoBattleController {
             outputBattleOptions(writer, firstAttack, deckOrder, p1HeroHpBuff, p1CardAtBuff, p1CardHpBuff, p2HeroHpBuff, p2CardAtBuff, p2CardHpBuff, vc1);
             List<Skill> p1CardBuffs = new ArrayList<Skill>();
             if (p1CardAtBuff != 100) {
-                p1CardBuffs.add(new TrivialSkill(SkillType.原始攻击调整, p1CardAtBuff - 100));
+                p1CardBuffs.add(new PlayerCardBuffSkill(SkillType.原始攻击调整, p1CardAtBuff - 100));
             }
             if (p1CardHpBuff != 100) {
-                p1CardBuffs.add(new TrivialSkill(SkillType.原始体力调整, p1CardHpBuff - 100));
+                p1CardBuffs.add(new PlayerCardBuffSkill(SkillType.原始体力调整, p1CardHpBuff - 100));
             }
             PlayerInfo player1 = PlayerBuilder.build(heroLv1 != 0, "玩家1", deck1, heroLv1, p1CardBuffs, p1HeroHpBuff);
             List<Skill> p2CardBuffs = new ArrayList<Skill>();
             if (p2CardAtBuff != 100) {
-                p2CardBuffs.add(new TrivialSkill(SkillType.原始攻击调整, p2CardAtBuff - 100));
+                p2CardBuffs.add(new PlayerCardBuffSkill(SkillType.原始攻击调整, p2CardAtBuff - 100));
             }
             if (p2CardHpBuff != 100) {
-                p2CardBuffs.add(new TrivialSkill(SkillType.原始体力调整, p2CardHpBuff - 100));
+                p2CardBuffs.add(new PlayerCardBuffSkill(SkillType.原始体力调整, p2CardHpBuff - 100));
             }
             PlayerInfo player2 = PlayerBuilder.build(heroLv2 != 0, "玩家2", deck2, heroLv2, p2CardBuffs, p2HeroHpBuff);
             GameResultStat stat = play(player1, player2, count, new Rule(5, 999, firstAttack, deckOrder, false, vc1));
@@ -396,16 +421,18 @@ public class AutoBattleController {
     public void playLilith1MatchGame(HttpServletRequest request, HttpServletResponse response,
             @RequestParam("deck") String deck, @RequestParam("count") int count, @RequestParam("gt") int gameType,
             @RequestParam("hlv") int heroLv, @RequestParam("ln") String lilithName,
-            @RequestParam("tc") int targetRemainingGuardCount, @RequestParam("rhp") int remainingHP
+            @RequestParam("tc") int targetRemainingGuardCount, @RequestParam("rhp") int remainingHP,
+            @RequestParam("ec") String eventCardNames
             ) throws IOException {
         PrintWriter writer = response.getWriter();
         WebPlainTextGameUI ui = new WebPlainTextGameUI();
         try {
-            String logMessage = String.format("Deck=%s<br />HeroLV=%d, Lilith=%s, GameType=%d", deck, heroLv, lilithName, gameType);
+            String logMessage = String.format("Deck=%s<br />HeroLV=%d, Lilith=%s, GameType=%d, EventCards=%s", deck, heroLv, lilithName, gameType, eventCardNames);
             logger.info("PlayLilith1MatchGame: " + logMessage);
             this.userActionRecorder.addAction(new UserAction(new Date(), request.getRemoteAddr(), "Play Lilith 1Match Game", logMessage));
             PlayerInfo player1 = PlayerBuilder.buildLilith(lilithDataStore, lilithName, gameType == 0);
-            PlayerInfo player2 = PlayerBuilder.build(true, "玩家", deck, heroLv, null, 100);
+            List<Skill> player2Buffs = buildBuffsForLilithEvents(eventCardNames);
+            PlayerInfo player2 = PlayerBuilder.build(true, "玩家", deck, heroLv, player2Buffs, 100);
             PvlEngine engine = new PvlEngine(ui, Rule.getDefault());
             PvlGameResult result = null;
             if (gameType == 0) {
@@ -462,16 +489,18 @@ public class AutoBattleController {
     public void simulateLilith1MatchGame(HttpServletRequest request, HttpServletResponse response,
         @RequestParam("deck") String deck, @RequestParam("count") int count, @RequestParam("gt") int gameType,
         @RequestParam("hlv") int heroLv, @RequestParam("ln") String lilithName,
-        @RequestParam("tc") int targetRemainingGuardCount, @RequestParam("rhp") int remainingHP
+        @RequestParam("tc") int targetRemainingGuardCount, @RequestParam("rhp") int remainingHP,
+        @RequestParam("ec") String eventCardNames
         ) throws IOException {
         PrintWriter writer = response.getWriter();
         response.setContentType("application/json");
         try {
-            String logMessage = String.format("Deck=%s<br />HeroLV=%d, Lilith=%s, GameType=%d", deck, heroLv, lilithName, gameType);
+            String logMessage = String.format("Deck=%s<br />HeroLV=%d, Lilith=%s, GameType=%d, EventCards=%s", deck, heroLv, lilithName, gameType, eventCardNames);
             logger.info("SimulateLilith1MatchGame: " + logMessage);
             this.userActionRecorder.addAction(new UserAction(new Date(), request.getRemoteAddr(), "Simulate Lilith 1Match Game", logMessage));
             PlayerInfo player1 = PlayerBuilder.buildLilith(lilithDataStore, lilithName, gameType == 0);
-            PlayerInfo player2 = PlayerBuilder.build(true, "玩家", deck, heroLv, null, 100);
+            List<Skill> player2Buffs = buildBuffsForLilithEvents(eventCardNames);
+            PlayerInfo player2 = PlayerBuilder.build(true, "玩家", deck, heroLv, player2Buffs, 100);
             StructuredRecordGameUI ui = new StructuredRecordGameUI();
             BattleEngine engine = new BattleEngine(ui, Rule.getDefault());
             engine.registerPlayers(player1, player2);
@@ -615,16 +644,18 @@ public class AutoBattleController {
     public void playLilithMassiveGame(HttpServletRequest request, HttpServletResponse response,
         @RequestParam("deck") String deck, @RequestParam("count") int count, @RequestParam("gt") int gameType,
         @RequestParam("hlv") int heroLv, @RequestParam("ln") String lilithName,
-        @RequestParam("tc") int targetRemainingGuardCount, @RequestParam("rhp") int remainingHP
+        @RequestParam("tc") int targetRemainingGuardCount, @RequestParam("rhp") int remainingHP,
+        @RequestParam("ec") String eventCardNames
         ) throws IOException {
         PrintWriter writer = response.getWriter();
         try {
-            String logMessage = String.format("Deck=%s<br />HeroLV=%d, Lilith=%s, GameType=%d", deck, heroLv, lilithName, gameType);
+            String logMessage = String.format("Deck=%s<br />HeroLV=%d, Lilith=%s, GameType=%d, EventCards=%s", deck, heroLv, lilithName, gameType, eventCardNames);
             logger.info("PlayLilithMassiveGame: " + logMessage);
             this.userActionRecorder.addAction(new UserAction(new Date(), request.getRemoteAddr(), "Play Lilith Massive Game", logMessage));
 
             PlayerInfo player1 = PlayerBuilder.buildLilith(lilithDataStore, lilithName, gameType == 0);
-            PlayerInfo player2 = PlayerBuilder.build(true, "玩家", deck, heroLv, null, 100);
+            List<Skill> player2Buffs = buildBuffsForLilithEvents(eventCardNames);
+            PlayerInfo player2 = PlayerBuilder.build(true, "玩家", deck, heroLv, player2Buffs, 100);
             OneDimensionDataStat statBattleCount = new OneDimensionDataStat();
             OneDimensionDataStat statAvgDamageToLilith = new OneDimensionDataStat();
             int gameCount = 100;

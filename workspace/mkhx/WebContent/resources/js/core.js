@@ -272,6 +272,7 @@ var playLilithGame = function(count) {
     var gameType = $('#lilith-game-type').val();
     var targetRemainingGuardCount = $('#lilith-target-remaining-guard-count').val();
     var remainingHP = $('#lilith-remaining-hp').val();
+    var eventCards = $('#lilith-event-cards').val();
     var postData = {
         deck: deck,
         hlv: heroLv,
@@ -279,7 +280,8 @@ var playLilithGame = function(count) {
         count: count,
         gt: gameType,
         tc: targetRemainingGuardCount,
-        rhp: remainingHP
+        rhp: remainingHP,
+        ec: eventCards,
     };
 
     $.cookie('lilith-battle', JSON.stringify(postData), { expires: 365 });

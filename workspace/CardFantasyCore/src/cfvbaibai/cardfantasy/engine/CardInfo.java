@@ -10,11 +10,11 @@ import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
 import cfvbaibai.cardfantasy.NonSerializable;
 import cfvbaibai.cardfantasy.data.Card;
 import cfvbaibai.cardfantasy.data.CardSkill;
+import cfvbaibai.cardfantasy.data.PlayerCardBuffSkill;
 import cfvbaibai.cardfantasy.data.Race;
 import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.data.SkillTag;
 import cfvbaibai.cardfantasy.data.SkillType;
-import cfvbaibai.cardfantasy.data.TrivialSkill;
 
 public class CardInfo extends EntityInfo {
     @NonSerializable
@@ -498,7 +498,7 @@ public class CardInfo extends EntityInfo {
     }
 
     public void applySurvivalStatus() {
-        Skill skill = new TrivialSkill(SkillType.原始体力调整, -eternalWound);
+        Skill skill = new PlayerCardBuffSkill(SkillType.原始体力调整, -eternalWound);
         SkillUseInfo skillUseInfo = new SkillUseInfo(this.getOwner(), skill);
         SkillEffect effect = new SkillEffect(SkillEffectType.MAXHP_CHANGE, skillUseInfo, -eternalWound, true);
         this.addEffect(effect);

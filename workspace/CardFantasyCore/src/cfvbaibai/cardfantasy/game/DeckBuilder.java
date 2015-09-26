@@ -39,14 +39,16 @@ public final class DeckBuilder {
 
     private final static Pattern CARD_PATTERN = Pattern.compile(CARD_REGEX);
 
-    public static DeckStartupInfo multiBuild(String descsText) {
+    public static String[] splitDescsText(String descsText) {
         descsText = descsText.replace(' ', ',').replace('　', ',').replace('，', ',').replace('、', ',');
         descsText = descsText.replace("\r\n", ",").replace("\n", ",");
         descsText = descsText.replace('＋', '+').replace('＊', '*').replace('－', '-');
         descsText = descsText.replace(":", "").replace("：", "");
         descsText = Zht2Zhs.getInstance().convert(descsText);
-        String[] descs = descsText.split(",");
-        return build(descs);
+        return descsText.split(",");
+    }
+    public static DeckStartupInfo multiBuild(String descsText) {
+        return build(splitDescsText(descsText));
     }
 
     public static DeckStartupInfo build(String ... descs) {

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
+import cfvbaibai.cardfantasy.data.BuffSkill;
 import cfvbaibai.cardfantasy.data.Race;
 import cfvbaibai.cardfantasy.data.RuneActivationType;
 import cfvbaibai.cardfantasy.data.RuneActivator;
@@ -1001,6 +1002,12 @@ public class SkillResolver {
                 // 召唤物不享受加成
                 if (card.getStatus().containsStatus(CardStatusType.召唤)) {
                     continue;
+                }
+                Skill skill = skillUseInfo.getSkill();
+                if (skill instanceof BuffSkill) {
+                    if (!((BuffSkill)skill).canApplyTo(card)) {
+                        continue;
+                    }
                 }
                 if (skillUseInfo.getType() == SkillType.军团王国之力) {
                     LegionBuff.apply(this, card, skillUseInfo, Race.KINGDOM);
