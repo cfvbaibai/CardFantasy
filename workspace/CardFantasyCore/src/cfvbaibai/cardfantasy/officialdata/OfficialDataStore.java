@@ -17,14 +17,16 @@ public class OfficialDataStore {
         Gson gson = new Gson();
         OfficialDataStore newInstance = new OfficialDataStore();
         InputStreamReader skillDataReader = new InputStreamReader(
-            OfficialDataStore.class.getClassLoader().getResourceAsStream("cfvbaibai/cardfantasy/officialdata/allskill"));
+            OfficialDataStore.class.getClassLoader().getResourceAsStream("cfvbaibai/cardfantasy/officialdata/allskill"),
+            "UTF-8");
         try {
             newInstance.skillStore = gson.fromJson(skillDataReader, OfficialSkillDataStore.class);
         } finally {
             skillDataReader.close();
         }
         InputStreamReader cardDataReader = new InputStreamReader(
-            OfficialDataStore.class.getClassLoader().getResourceAsStream("cfvbaibai/cardfantasy/officialdata/allcard"));
+            OfficialDataStore.class.getClassLoader().getResourceAsStream("cfvbaibai/cardfantasy/officialdata/allcard"),
+            "UTF-8");
         try {
             newInstance.cardStore = gson.fromJson(cardDataReader, OfficialCardDataStore.class);
         } finally {

@@ -5,12 +5,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import cfvbaibai.cardfantasy.data.CardDataStore;
 import cfvbaibai.cardfantasy.officialdata.OfficialCard;
@@ -46,8 +46,8 @@ public class OfficialDataController {
         return filterText;
     }
 
-    @RequestMapping(value = "/OfficialData/Cards", headers = "Accept=application/json", produces = "application/json;charset=UTF-8")
-    public @ResponseBody List<OfficialCardInfo> queryCards(HttpServletRequest request,
+    @RequestMapping(value = "/OfficialData/Cards", headers = "Accept=application/json")
+    public void queryCards(HttpServletRequest request, HttpServletResponse response,
             @RequestParam(value = "stars", required = false) String starFilter,
             @RequestParam(value = "races", required = false) String raceFilter,
             @RequestParam(value = "skillTypes", required = false) String skillTypeFilter,
@@ -96,6 +96,7 @@ public class OfficialDataController {
             }
             result.add(cardInfo);
         }
-        return result;
+        response.setContentType("application/json");
+        response.getWriter().println(jsonHandler.toJson(result));
     }
 }

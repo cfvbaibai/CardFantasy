@@ -12,10 +12,10 @@ var toStarText = function(star) {
 
 var toRaceText = function(race) {
     switch (race) {
-        case '0': return '王国';
-        case '1': return '森林';
-        case '2': return '蛮荒';
-        case '3': return '地狱';
+        case '1': return '王国';
+        case '2': return '森林';
+        case '3': return '蛮荒';
+        case '4': return '地狱';
         case '97': return '魔王';
         case '100': return '魔神';
         default: return '未知';
@@ -30,6 +30,8 @@ $(document).on("pageinit", "#wiki", function(event) {
         var skillTypeFilter = $('#wiki-card-skill-type-filter').val();
         var queryUrl ='OfficialData/Cards?stars=' + starFilter + '&races=' + raceFilter + '&skillTypes=' + skillTypeFilter;
 
+        $('#wiki-card-search').addClass('ui-disabled');
+        $('#wiki-card-search').changeButtonText('搜索中...');
         $.get(queryUrl, function(data) {
             var wideResult = "";
             var narrowResult = "";
@@ -66,6 +68,9 @@ $(document).on("pageinit", "#wiki", function(event) {
             wideResult += "</table>";
             narrowResult += "</table>";
             $('#wiki-card-result').html(wideResult + narrowResult);
+        }).complete(function () {
+            $('#wiki-card-search').removeClass('ui-disabled');
+            $('#wiki-card-search').changeButtonText('搜索');
         });
     });
 });
