@@ -80,11 +80,11 @@ public class OfficialDataController {
             if (skillTypeFilter != null && !skillTypeFilter.equals("")) {
                 boolean skillDesired = false;
                 for (String desiredSkillType : desiredSkillTypes) {
-                    if (cardInfo.skill1 != null && cardInfo.skill1.Name.startsWith(desiredSkillType) ||
-                        cardInfo.skill2 != null && cardInfo.skill2.Name.startsWith(desiredSkillType) ||
-                        cardInfo.skill3 != null && cardInfo.skill3.Name.startsWith(desiredSkillType) ||
-                        cardInfo.skill4 != null && cardInfo.skill4.Name.startsWith(desiredSkillType) ||
-                        cardInfo.skill5 != null && cardInfo.skill5.Name.startsWith(desiredSkillType)
+                    if (cardInfo.skill1 != null && cardInfo.skill1.Name.contains(desiredSkillType) ||
+                        cardInfo.skill2 != null && cardInfo.skill2.Name.contains(desiredSkillType) ||
+                        cardInfo.skill3 != null && cardInfo.skill3.Name.contains(desiredSkillType) ||
+                        cardInfo.skill4 != null && cardInfo.skill4.Name.contains(desiredSkillType) ||
+                        cardInfo.skill5 != null && cardInfo.skill5.Name.contains(desiredSkillType)
                         ) {
                         skillDesired = true;
                         break;

@@ -12,11 +12,11 @@
                             <option value="2">2星</option>
                             <option value="3">3星</option>
                             <option value="4">4星</option>
-                            <option value="5">5星</option>
+                            <option value="5" selected="selected">5星</option>
                         </select>
                         <select id="wiki-card-race-filter" data-theme="c" data-mini="true" data-native-menu="false">
                             <option value="0">全部种族</option>
-                            <option value="1">王国</option>
+                            <option value="1" selected="selected">王国</option>
                             <option value="2">森林</option>
                             <option value="3">蛮荒</option>
                             <option value="4">地狱</option>
@@ -27,7 +27,10 @@
                     <table class="form">
                         <tr>
                             <td>技能</td>
-                            <td><input id="wiki-card-skill-type-filter" data-theme="c" data-mini="true" type="text" /></td>
+                            <td>
+                                <input id="wiki-card-skill-type-filter" data-theme="c" data-mini="true" type="text"
+                                    placeholder="在这里输入技能搜索关键字，例如：复活" />
+                            </td>
                         </tr>
                     </table>
                 </div>
