@@ -446,6 +446,20 @@ public class AttackBuffTest extends SkillValidationTest {
     }
 
     /*
+     * 慕和BUG，如果对方血量低于本方AT，则不发动斩杀，被冰甲挡下
+     */
+    @Test
+    public void test斩杀_冰甲BUG() {
+        SkillTestContext context = prepare(50, 50, "秘银巨石像+斩杀", "占位符+冰甲10");
+        context.addToField(0, 0);
+        CardInfo c占位符 = context.addToField(1, 1).setBasicHP(300);
+        context.startGame();
+
+        context.proceedOneRound();
+        Assert.assertFalse(c占位符.isDead());
+    }
+
+    /*
      * 冰封对斩杀无效
      */
     @Test

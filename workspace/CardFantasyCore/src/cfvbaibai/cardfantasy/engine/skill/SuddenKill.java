@@ -19,6 +19,9 @@ public final class SuddenKill {
         if (defender == null) {
             throw new CardFantasyRuntimeException("defender is null");
         }
+        if (defender.getHP() < attacker.getCurrentAT()) {
+            return false;
+        }
         if (blockSkill.getType().containsTag(SkillTag.物理护甲) && blockSkill.getType() != SkillType.闪避) {
             resolver.getStage().getUI().useSkill(attacker, defender, counterBlockSkill, true);
             resolver.getStage().getUI().disableBlock(attacker, defender, counterBlockSkill, blockSkill);
@@ -31,6 +34,9 @@ public final class SuddenKill {
     public static void apply(SkillResolver resolver, SkillUseInfo skillUseInfo, CardInfo attacker,
             CardInfo defender, OnAttackBlockingResult blockingResult) {
         if (defender.getHP() >= defender.getMaxHP() / 2) {
+            return;
+        }
+        if (defender.getHP() < attacker.getCurrentAT()) {
             return;
         }
         if (defender.getRace() == Race.BOSS) {

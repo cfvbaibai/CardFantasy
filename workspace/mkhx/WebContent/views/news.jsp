@@ -8,8 +8,8 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">
                 <h3>公告</h3>
                 <ul>
-                    <li>技术壕站长最近沉迷于WOW，所以更新速度越来越慢了……</li>
                     <li><a href="#" data-type="bug">魔卡幻想模拟器贴吧</a>已成立，欢迎大家来提BUG、提需求、提供技能结算细节。</li>
+                    <li>目前官方【斩杀】技能有无法杀死低血量冰甲卡的BUG，模拟器也实现了那个BUG，一旦慕和修好了，还望大家提醒我把BUG改回来</li>
                     <!-- <li>小提示：如果想保存卡组，只要把卡组的文字表述记下来存在文本文件或者手机备忘录里，下次要用的时候复制回来就行。</li> -->
                     <!-- <li>小提示：可以灵活使用*0的表达法来方便配卡哦。</li> -->
                 </ul>
