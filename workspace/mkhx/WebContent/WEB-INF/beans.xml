@@ -10,7 +10,7 @@
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
         http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd">
 
-    <context:component-scan base-package="cfvbaibai.cardfantasy.web.listener,cfvbaibai.cardfantasy.web.dao" />
+    <context:component-scan base-package="cfvbaibai.cardfantasy.web.listener" />
 
     <!-- Enable annotations like @Autowired and @Qualifier -->
     <context:annotation-config />
@@ -23,6 +23,7 @@
     
     <bean class="cfvbaibai.cardfantasy.data.CardDataStore" factory-method="loadDefault" />
     <bean class="cfvbaibai.cardfantasy.game.LilithDataStore" factory-method="loadDefault" />
+    <bean class="cfvbaibai.cardfantasy.officialdata.OfficialDataStore" factory-method="getInstance" />
 
     <bean class="cfvbaibai.cardfantasy.web.beans.UserActionRecorder" />
 

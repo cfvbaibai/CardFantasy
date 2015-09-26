@@ -4,8 +4,6 @@
 <title>魔卡幻想卡牌信息</title>
 <meta name="description" content="${keyword}" />
 <meta name="keywords" content="${keyword}" />
-<script src='<c:url value="/resources/js/all-card.js" />'></script>
-<script src='<c:url value="/resources/js/all-skill.js" />'></script>
 <script>
 var races = [];
 races[1] = '王国';
@@ -16,23 +14,11 @@ races[100] = '魔神';
 races[97] = '魔王';
 $(document).ready(generate);
 
-function getSkillText(skillId) {
-    if (!skillId) {
-        return '';
-    }
-    var skill = null;
-    for (var i = 0; i < allSkills.Skills.length; ++i) {
-        if (allSkills.Skills[i].SkillId == skillId) {
-            skill = allSkills.Skills[i];
-            break;
-        }
-    }
+function getSkillText(skill) {
     if (!skill) {
-        return '';
+        return "";
     }
-    var result = '<div>' + skill.Name + '</div>';
-    result += '<div>' + skill.Desc + '</div>';
-    return result;
+    return "<div style='font-weight: bold'>= " + skill.Name + " =</div><div> " + skill.Desc + "</div>";
 }
 
 function generate() {
@@ -41,44 +27,39 @@ function generate() {
     if (!keyword) {
         return;
     }
-    for (var i = 0; i < allCards.Cards.length; ++i) {
-        if (allCards.Cards[i].CardId == keyword) {
-            card = allCards.Cards[i];
-            break;
-        } else if (allCards.Cards[i].CardName == keyword) {
-            card = allCards.Cards[i];
-            break;
+    $.get("../OfficialData/Cards?names=" + keyword, function(data) {
+        if (data.length == 0) {
+            $('#view-card-name').text('暂时没有【' + keyword + '】的资料');
+            return;
         }
-    }
-    if (card == null) {
-        $('#view-card-name').text('暂时没有【' + keyword + '】的资料');
-        return;
-    }
-    
-    var internalId = $('#view-card-internal-id').val();
-    $('#view-card-logo').html('<img src="' + resDir + '/img/cardlogo/' + internalId + '.jpg" />');
-    $('#view-card-name').text(card.CardName);
-    var race = races[card.Race] || '未知';
-    $('#view-card-race-star').text(race + card.Color + '星');
-    $('#view-card-delay').text(card.Wait);
-    $('#view-card-cost').text(card.Cost);
-    $('#view-card-evo-cost').text(card.EvoCost);
-    $('#view-card-at0').text(card.AttackArray[0]);
-    $('#view-card-at5').text(card.AttackArray[5]);
-    $('#view-card-at10').text(card.AttackArray[10]);
-    $('#view-card-at15').text(card.AttackArray[15]);
-    $('#view-card-hp0').text(card.HpArray[0]);
-    $('#view-card-hp5').text(card.HpArray[5]);
-    $('#view-card-hp10').text(card.HpArray[10]);
-    $('#view-card-hp15').text(card.HpArray[15]);
-    $('#view-card-exp0').text(card.ExpArray[0]);
-    $('#view-card-exp5').text(card.ExpArray[5]);
-    $('#view-card-exp10').text(card.ExpArray[10]);
-    $('#view-card-exp15').text(card.ExpArray[15]);
-    $('#view-card-skill1').html(getSkillText(card.Skill));
-    $('#view-card-skill2').html(getSkillText(card.LockSkill1));
-    $('#view-card-skill3').html(getSkillText(card.LockSkill2));
-    $('#view-card-skill4').html(getSkillText(card.LockSkill3));
+        var cardInfo = data[0];
+        var card = cardInfo.card;
+        var internalId = cardInfo.internalId;
+        $('#view-card-logo').html('<img src="' + resDir + '/img/cardlogo/' + internalId + '.jpg" />');
+        $('#view-card-name').text(card.CardName);
+        var race = races[card.Race] || '未知';
+        $('#view-card-race-star').text(race + card.Color + '星');
+        $('#view-card-delay').text(card.Wait);
+        $('#view-card-cost').text(card.Cost);
+        $('#view-card-evo-cost').text(card.EvoCost);
+        $('#view-card-at0').text(card.AttackArray[0]);
+        $('#view-card-at5').text(card.AttackArray[5]);
+        $('#view-card-at10').text(card.AttackArray[10]);
+        $('#view-card-at15').text(card.AttackArray[15]);
+        $('#view-card-hp0').text(card.HpArray[0]);
+        $('#view-card-hp5').text(card.HpArray[5]);
+        $('#view-card-hp10').text(card.HpArray[10]);
+        $('#view-card-hp15').text(card.HpArray[15]);
+        $('#view-card-exp0').text(card.ExpArray[0]);
+        $('#view-card-exp5').text(card.ExpArray[5]);
+        $('#view-card-exp10').text(card.ExpArray[10]);
+        $('#view-card-exp15').text(card.ExpArray[15]);
+        $('#view-card-skill1').html(getSkillText(cardInfo.skill1));
+        $('#view-card-skill2').html(getSkillText(cardInfo.skill2));
+        $('#view-card-skill3').html(getSkillText(cardInfo.skill3));
+        $('#view-card-skill4').html(getSkillText(cardInfo.skill4));
+        $('#view-card-skill5').html(getSkillText(cardInfo.skill5));
+    });
 }
 </script>
 </head>
@@ -152,6 +133,10 @@ function generate() {
             <tr>
                 <td class="label">技能4</td>
                 <td id="view-card-skill4" class="skill" colspan="4"></td>
+            </tr>
+            <tr>
+                <td class="label">技能5</td>
+                <td id="view-card-skill5" class="skill" colspan="4"></td>
             </tr>
         </tbody>
     </table>

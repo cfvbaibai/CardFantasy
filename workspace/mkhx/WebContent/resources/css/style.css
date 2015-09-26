@@ -190,8 +190,62 @@ table.line-separated td {
     border-top: solid 1px black;
 }
 
-table.data td {
+div.wiki-card-result td {
     padding: 5px;
+}
+
+table.wiki-card-result-wide {
+    display: table;
+    border-collapse: collapse;
+    margin: auto;
+    width: 100%;
+}
+table.wiki-card-result-narrow {
+    display: none;
+}
+table.wiki-card-result-wide tr {
+    border: solid 1px #BBBBBB;
+}
+table.wiki-card-result-wide tr:first-child {
+    white-space: nowrap;
+}
+table.wiki-card-result-wide tr td:nth-child(1),
+table.wiki-card-result-wide tr td:nth-child(2),
+table.wiki-card-result-wide tr td:nth-child(3) {
+    white-space: nowrap;
+}
+table.wiki-card-result-wide tr td:nth-child(4),
+table.wiki-card-result-wide tr td:nth-child(5),
+table.wiki-card-result-wide tr td:nth-child(6),
+table.wiki-card-result-wide tr td:nth-child(7),
+table.wiki-card-result-wide tr td:nth-child(8) {
+    text-align: center;
+}
+@media (max-width: 400px) {
+    table.wiki-card-result-wide {
+        display: none;
+    }
+    table.wiki-card-result-narrow {
+        display: table;
+        border-collapse: collapse;
+        width: 100%;
+    }
+    table.wiki-card-result-narrow tr.normal-line td:nth-child(1),
+    table.wiki-card-result-narrow tr.normal-line td:nth-child(2) {
+        width: 1px;
+        white-space: nowrap;
+    }
+    table.wiki-card-result-narrow tr {
+        border-style: solid;
+        border-color: #BBBBBB;
+        border-width: 0 1px 0 1px;
+    }
+    table.wiki-card-result-narrow tr:first-child {
+        border-width: 1px 1px 1px 1px;
+    }
+    table.wiki-card-result-narrow tr.skill-extra-line {
+        border-bottom-width: 1px;
+    }
 }
 
 div.header-template {

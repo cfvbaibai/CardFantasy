@@ -15,20 +15,28 @@
                             <option value="5">5星</option>
                         </select>
                         <select id="wiki-card-race-filter" data-theme="c" data-mini="true" data-native-menu="false">
-                            <option value="All">全部种族</option>
-                            <option value="KINGDOM">王国</option>
-                            <option value="FOREST">森林</option>
-                            <option value="SAVAGE">蛮荒</option>
-                            <option value="HELL">地狱</option>
+                            <option value="0">全部种族</option>
+                            <option value="1">王国</option>
+                            <option value="2">森林</option>
+                            <option value="3">蛮荒</option>
+                            <option value="4">地狱</option>
+                            <option value="97">魔王</option>
+                            <option value="100">魔神</option>
                         </select>
                     </fieldset>
+                    <table class="form">
+                        <tr>
+                            <td>技能</td>
+                            <td><input id="wiki-card-skill-type-filter" data-theme="c" data-mini="true" type="text" /></td>
+                        </tr>
+                    </table>
                 </div>
-                <a data-role="button" id="wiki-card-search" class="ui-disabled" data-theme="c" data-mini="true">搜索</a>
+                <a data-role="button" id="wiki-card-search" data-theme="c" data-mini="true">搜索</a>
             </div>
         </div>
         <div data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">
             <h3>搜索结果</h3>
-            <div id="wiki-result-content">
+            <div id="wiki-card-result" class="wiki-card-result" style="padding-top: 5px; min-height: 200px">
             </div>
         </div>
     </div>

@@ -28,6 +28,8 @@
 <script src='<c:url value="/resources/js/deck-builder.js" />?version=<%= version %>'></script>
 <script src='<c:url value="/resources/js/test-rp.js" />?version=<%= version %>'></script>
 <script src='<c:url value="/resources/js/wiki.js" />?version=<%= version %>'></script>
+<script src='<c:url value="/resources/js/all-card.js" />?version=<%= version %>'></script>
+<script src='<c:url value="/resources/js/all-skill.js" />?version=<%= version %>'></script>
 
 <!-- 百度广告 -->
 <script type="text/javascript" src="http://cbjs.baidu.com/js/m.js"></script>
