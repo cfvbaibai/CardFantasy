@@ -69,7 +69,7 @@ function generate() {
     <table class="view-card-table">
         <tbody>
             <tr>
-                <td id="view-card-name" class="title" colspan="5"></td>
+                <td id="view-card-name" class="title" colspan="5">正在加载${keyword}的数据……</td>
             </tr>
             <tr>
                 <td id="view-card-logo" class="logo" rowspan="2">LOGO</td>

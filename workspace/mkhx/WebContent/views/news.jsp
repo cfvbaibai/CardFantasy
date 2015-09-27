@@ -31,6 +31,7 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2015-09-27: 修复一个【斩杀】和【冰甲】相互作用时的BUG，感谢<x>k221135</x>报告BUG</li>
                     <li>2015-09-26: <ul>
                         <li>为【<a href="#lilith-battle">莉莉丝战</a>】添加【活动卡牌】的支持，感谢<x>咬起来喀嚓喀嚓</x>和<x>泥鳅sined</x>提供信息</li>
                         <li>补上【炎魔】、【投掷巨人】、【鬼符咒术师】、【恐怖失血者】和【复仇铠甲】的卡图，感谢<x>御洛念</x>和<x>咬起来喀嚓喀嚓</x>提供的卡图</li>

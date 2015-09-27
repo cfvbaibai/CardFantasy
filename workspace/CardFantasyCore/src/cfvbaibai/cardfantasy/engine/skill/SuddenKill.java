@@ -19,6 +19,9 @@ public final class SuddenKill {
         if (defender == null) {
             throw new CardFantasyRuntimeException("defender is null");
         }
+        if (defender.getHP() >= defender.getMaxHP() / 2) {
+            return false;
+        }
         if (defender.getHP() < attacker.getCurrentAT()) {
             return false;
         }

@@ -415,6 +415,17 @@ public class AttackBuffTest extends SkillValidationTest {
         Assert.assertTrue(c占位符.isDead());
     }
 
+    @Test
+    public void test斩杀_格挡_未触发() {
+        SkillTestContext context = prepare(50, 50, "秘银巨石像+斩杀", "占位符+格挡10");
+        context.addToField(0, 0);
+        CardInfo c占位符 = context.addToField(1, 1);
+        context.startGame();
+
+        context.proceedOneRound();
+        Assert.assertEquals(810 - 200 /* 格挡10 */, 5000 - c占位符.getHP());
+    }
+
     /*
      * 岩壁对斩杀无效
      */
@@ -443,6 +454,17 @@ public class AttackBuffTest extends SkillValidationTest {
 
         context.proceedOneRound();
         Assert.assertTrue(c占位符.isDead());
+    }
+    
+    @Test
+    public void test斩杀_冰甲_未触发() {
+        SkillTestContext context = prepare(50, 50, "秘银巨石像+斩杀", "占位符+冰甲10");
+        context.addToField(0, 0);
+        CardInfo c占位符 = context.addToField(1, 1);
+        context.startGame();
+
+        context.proceedOneRound();
+        Assert.assertEquals(90, 5000 - c占位符.getHP());
     }
 
     /*
