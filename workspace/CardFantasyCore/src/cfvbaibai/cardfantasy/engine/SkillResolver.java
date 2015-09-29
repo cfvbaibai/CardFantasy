@@ -68,7 +68,9 @@ public class SkillResolver {
         for (CardInfo card : cards) {
             for (SkillUseInfo skillUseInfo : card.getNormalUsableSkills()) {
                 if (skillUseInfo.getType() == SkillType.神性祈求) {
-                    Purify.apply(skillUseInfo, this, card);
+                    Purify.apply(skillUseInfo, this, card, -1);
+                } else if (skillUseInfo.getType() == SkillType.净魂领域) {
+                    Purify.apply(skillUseInfo, this, card, -2);
                 }
             }
         }
@@ -192,7 +194,7 @@ public class SkillResolver {
             } else if (skillUseInfo.getType() == SkillType.加速) {
                 SpeedUp.apply(skillUseInfo, this, attacker);
             } else if (skillUseInfo.getType() == SkillType.净化) {
-                Purify.apply(skillUseInfo, this, attacker);
+                Purify.apply(skillUseInfo, this, attacker, -1);
             } else if (skillUseInfo.getType() == SkillType.虚弱) {
                 Soften.apply(skillUseInfo, this, attacker, defender, 1);
             } else if (skillUseInfo.getType() == SkillType.圣光洗礼 || skillUseInfo.getType() == SkillType.森林沐浴 ||
@@ -1114,7 +1116,7 @@ public class SkillResolver {
                     } else if (skillUseInfo.getType() == SkillType.关小黑屋) {
                         Enprison.apply(this, skillUseInfo.getSkill(), card, opField.getOwner());
                     } else if (skillUseInfo.getType() == SkillType.净化){
-                        Purify.apply(skillUseInfo, this, card);
+                        Purify.apply(skillUseInfo, this, card, -1);
                     } else if (skillUseInfo.getType() == SkillType.战争怒吼) {
                         Soften.apply(skillUseInfo, this, card, opField.getOwner(), -1);
                     } else if (skillUseInfo.getType() == SkillType.阻碍) {
@@ -1518,7 +1520,7 @@ public class SkillResolver {
             } else if (rune.is(RuneData.龙吟)) {
                 Bless.apply(rune.getSkillUseInfo().getSkill(), this, rune);
             } else if (rune.is(RuneData.神祈)) {
-                Purify.apply(rune.getSkillUseInfo(), this, rune);
+                Purify.apply(rune.getSkillUseInfo(), this, rune, -1);
             }
         }
     }

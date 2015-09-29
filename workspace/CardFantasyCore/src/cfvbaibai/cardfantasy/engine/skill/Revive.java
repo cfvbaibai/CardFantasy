@@ -42,6 +42,9 @@ public final class Revive {
             return;
         }
         resolver.getStage().getUI().useSkill(reviver, cardToRevive, skill, true);
+        if (SoulSeal.soulSealed(resolver, reviver)) {
+            return;
+        }
         reviver.getOwner().getGrave().removeCard(cardToRevive);
         resolver.summonCard(reviver.getOwner(), cardToRevive, reviver);
         CardStatusItem item = CardStatusItem.weak(skillUseInfo);

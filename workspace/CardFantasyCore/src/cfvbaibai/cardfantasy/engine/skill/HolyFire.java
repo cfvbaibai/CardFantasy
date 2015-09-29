@@ -15,6 +15,9 @@ public final class HolyFire {
         CardInfo victim = resolver.getStage().getRandomizer().pickRandom(
             defender.getGrave().toList(), 1, true, null).get(0);
         ui.useSkill(attacker, victim, cardSkill, true);
+        if (SoulSeal.soulSealed(resolver, attacker)) {
+            return;
+        }
         ui.cardToOutField(defender, victim);
         defender.getGrave().removeCard(victim);
         defender.getOutField().addCard(victim);

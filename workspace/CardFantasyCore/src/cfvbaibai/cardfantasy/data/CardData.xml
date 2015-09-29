@@ -546,6 +546,11 @@
         <Skill type="星云锁链" level="0" unlock="5" />
         <Skill type="不动" level="0" unlock="10" />
     </Card>
+    <Card id="1533" name="灵峰剑姬" wikiId="" race="王国" speed="4" star="5" cost="17" incrCost="2" at="280" hp="1440" incrAT="42" incrHP="45">
+        <Skill type="振奋" level="7" unlock="0" />
+        <Skill type="凯撒之击" level="5" unlock="5" />
+        <Skill type="弱点攻击" level="0" unlock="10" />
+    </Card>
 
     <!-- 森林 -->
     <Card id="2101" name="人马巡逻者" wikiId="30976" race="森林" speed="2" star="1" cost="3" incrCost="2" at="95" hp="310" incrAT="17" incrHP="11">
@@ -904,6 +909,11 @@
         <Skill type="治疗之雾" level="8" unlock="5" />
         <Skill type="加速" level="1" unlock="10" />
     </Card>
+    <Card id="2437" name="森林弹唱者" wikiId="" race="森林" speed="4" star="4" cost="15" incrCost="2" at="215" hp="1050" incrAT="26" incrHP="35">
+        <Skill type="祈福" level="1" unlock="0" />
+        <Skill type="全体加速" level="1" unlock="5" />
+        <Skill type="森林守护" level="5" unlock="10" />
+    </Card>
 
     <Card id="2501" name="金属巨龙" wikiId="31004" race="森林" speed="6" star="5" cost="14" incrCost="3" at="355" hp="1480" incrAT="30" incrHP="23">
         <Skill type="暴击" level="6" unlock="0" />
@@ -1029,6 +1039,11 @@
         <Skill type="精神狂乱" level="0" unlock="0" />
         <Skill type="不动" level="0" unlock="5" />
         <Skill type="修罗地火攻" level="6" unlock="10" />
+    </Card>
+    <Card id="2526" name="龙灵使者" wikiId="" race="森林" speed="3" star="5" cost="17" incrCost="2" at="340" hp="1770" incrAT="41" incrHP="33">
+        <Skill type="灵魂禁锢" level="0" unlock="0" />
+        <Skill type="转生" level="8" unlock="5" />
+        <Skill type="不屈" level="0" unlock="10" />
     </Card>
 
     <!-- 蛮荒  -->
@@ -2073,6 +2088,11 @@
         <Skill type="斩杀" level="0" unlock="0" />
         <Skill type="吸血" level="7" unlock="5" />
         <Skill type="转生" level="8" unlock="10" />
+    </Card>
+    <Card id="4531" name="天秤座" wikiId="" race="地狱" speed="4" star="5" cost="18" incrCost="2" at="380" hp="1810" incrAT="41" incrHP="46">
+        <Skill type="净魂领域" level="0" unlock="0" />
+        <Skill type="不动" level="0" unlock="5" />
+        <Skill type="法力反射" level="6" unlock="10" />
     </Card>
 
     <!-- 魔神 -->

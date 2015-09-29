@@ -1377,7 +1377,7 @@ var Animater = function() {
         '圣光', '要害', '暗杀', '污染', '连锁攻击', '凯撒之击', '神兵召唤'
     ];
     this.selfUsedSkills = [
-        '不动', '脱困', '群体脱困', '法力反射', '冰甲', '闪避', '守护', '魔神之甲', '灵巧',
+        '不动', '脱困', '群体脱困', '法力反射', '冰甲', '闪避', '守护', '魔神之甲', '灵巧', '灵魂禁锢',
         '王国之盾', '森林之盾', '蛮荒之盾', '地狱之盾', '弱点攻击', '无效', '圣盾', '不屈', '圣炎', '斩杀'
     ];
     this.__useSkill = function(data) {
@@ -1472,7 +1472,7 @@ var Animater = function() {
         } else if (skill == '法力侵蚀' || skill == '破魔手') {
             this.flyImage({ fileName: 'mana-drain.png', width: 48, height: 48, text: skill },
                     attacker, defenders, settings.skillDuration);
-        } else if (skill == '净化' || skill == '神性祈求') {
+        } else if (skill == '净化' || skill == '神性祈求' || skill == '净魂领域') {
             this.flyImage({ fileName: 'purify.png', width: 48, height: 48, text: skill },
                     attacker, defenders, settings.skillDuration);
         } else if (skill == '血炼' || skill == '鲜血盛宴') {

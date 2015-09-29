@@ -753,6 +753,21 @@ public class SpecialStatusTest extends SkillValidationTest {
     }
 
     @Test
+    public void test不屈_冰冻() {
+        SkillTestContext context = prepare(50, 50, "秘银巨石像+冰弹1", "占位符+不屈");
+        context.addToField(0, 0);
+        CardInfo c占位符 = context.addToField(1, 1).setBasicHP(2);
+        context.startGame();
+
+        random.addNextPicks(0).addNextNumbers(0); // 冰弹冰冻占位符
+        context.proceedOneRound();
+        Assert.assertTrue(c占位符.getStatus().containsStatus(CardStatusType.不屈));
+
+        context.proceedOneRound();
+        Assert.assertFalse(c占位符.getStatus().containsStatus(CardStatusType.不屈));
+    }
+
+    @Test
     public void test森林沐浴_基本() {
         SkillTestContext context = prepare(
             50, 50, "赤面天狗", "占位符");

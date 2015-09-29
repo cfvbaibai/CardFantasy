@@ -28,6 +28,9 @@ public final class Resurrection {
         }
         GameUI ui = resolver.getStage().getUI();
         ui.useSkill(resurrector, cardsToResurrect, skill, true);
+        if (SoulSeal.soulSealed(resolver, resurrector)) {
+            return;
+        }
         for (CardInfo card : cardsToResurrect) {
             ui.cardToDeck(player, card);
             player.getGrave().removeCard(card);

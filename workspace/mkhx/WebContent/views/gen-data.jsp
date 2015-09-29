@@ -78,27 +78,29 @@ function generateSkill(skill, unlockLevel) {
 }
 
 function showSkillLaunchTypes() {
-   var skillLaunchTypes = {};
-   var i;
-   for (i = 0; i < allSkills.Skills.length; ++i) {
-       var skill = allSkills.Skills[i];
-       var launchTypeKey = 'LT' + skill.LanchType;
-       var skillName = skill.Name.replace(/\d/g, '');
-       if (!skillLaunchTypes[launchTypeKey]) {
-           skillLaunchTypes[launchTypeKey] = [ skillName ];
-       } else if (skillLaunchTypes[launchTypeKey].indexOf(skillName) < 0) {
-           skillLaunchTypes[launchTypeKey].push(skillName);
+    var skillLaunchTypes = {};
+    $.get("../OfficialData/Skills", function(data) {
+       var i;
+       for (i = 0; i < data.length; ++i) {
+           var skill = data[i];
+           var launchTypeKey = 'LT' + skill.LanchType;
+           var skillName = skill.Name.replace(/\d/g, '');
+           if (!skillLaunchTypes[launchTypeKey]) {
+               skillLaunchTypes[launchTypeKey] = [ skillName ];
+           } else if (skillLaunchTypes[launchTypeKey].indexOf(skillName) < 0) {
+               skillLaunchTypes[launchTypeKey].push(skillName);
+           }
        }
-   }
-   var result = '';
-   for (var launchTypeKey in skillLaunchTypes) {
-       result += launchTypeKey + ': ';
-       for (i = 0; i < skillLaunchTypes[launchTypeKey].length; ++i) {
-           result += skillLaunchTypes[launchTypeKey][i] + ', ';
+       var result = '';
+       for (var launchTypeKey in skillLaunchTypes) {
+           result += launchTypeKey + ': ';
+           for (i = 0; i < skillLaunchTypes[launchTypeKey].length; ++i) {
+               result += skillLaunchTypes[launchTypeKey][i] + ', ';
+           }
+           result += '<br />';
        }
-       result += '<br />';
-   }
-   $('#skill-launch-types').html(result);
+       $('#skill-launch-types').html(result);
+   });
 }
 
 function showBossHelpers() {

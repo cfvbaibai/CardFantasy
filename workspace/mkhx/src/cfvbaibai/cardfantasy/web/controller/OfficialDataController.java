@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import cfvbaibai.cardfantasy.data.CardDataStore;
 import cfvbaibai.cardfantasy.officialdata.OfficialCard;
 import cfvbaibai.cardfantasy.officialdata.OfficialDataStore;
+import cfvbaibai.cardfantasy.officialdata.OfficialSkill;
 import cfvbaibai.cardfantasy.web.ErrorHelper;
 import cfvbaibai.cardfantasy.web.beans.JsonHandler;
 import cfvbaibai.cardfantasy.web.beans.Logger;
@@ -44,6 +45,14 @@ public class OfficialDataController {
             }
         }
         return filterText;
+    }
+    
+    @RequestMapping(value = "/OfficialData/Skills", headers = "Accept=application/json")
+    public void querySkills(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        List<OfficialSkill> result = new ArrayList<OfficialSkill>();
+        result.addAll(officialStore.skillStore.data.Skills);
+        response.setContentType("application/json");
+        response.getWriter().println(jsonHandler.toJson(result));
     }
 
     @RequestMapping(value = "/OfficialData/Cards", headers = "Accept=application/json")
