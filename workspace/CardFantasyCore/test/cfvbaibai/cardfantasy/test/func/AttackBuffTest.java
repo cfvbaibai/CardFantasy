@@ -478,7 +478,7 @@ public class AttackBuffTest extends SkillValidationTest {
         context.startGame();
 
         context.proceedOneRound();
-        Assert.assertFalse(c占位符.isDead());
+        Assert.assertTrue(c占位符.isDead());
     }
 
     /*
