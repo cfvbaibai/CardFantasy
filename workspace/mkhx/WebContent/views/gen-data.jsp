@@ -104,15 +104,17 @@ function showSkillLaunchTypes() {
 }
 
 function showBossHelpers() {
-    var i = 0;
-    var card;
-    var result = "";
-    for (i = 0; i < allCards.Cards.length; ++i) {
-        card = allCards.Cards[i];
-        if (card.Color == 5 && card.BossHelper == 1)
-            result += '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"' + card.CardName + '",<br />';
-    }
-    $('#boss-helpers').html(result);
+    $.get("../OfficialData/Cards", function(data) {
+        var i = 0;
+        var card;
+        var result = "";
+        for (i = 0; i < data.length; ++i) {
+            card = data[i].card;
+            if (card.BossHelper == 1)
+                result += '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"' + card.CardName + '",<br />';
+        }
+        $('#boss-helpers').html(result);
+    });
 }
 </script>
 </head>
