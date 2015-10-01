@@ -27,12 +27,12 @@ var getParam = function(originalName) {
 Core.getParam = getParam;
 
 var uploadToCnzzUrl = function(url) {
-    /*
-    $.get(
-            'http://cnrdn.com/rd.htm?id=1344758&r=' + url + '&seed=' + seed,
-            function(data) { console.log('Visit to ' + url + ' uploaded to CNZZ.'); }
-    );
-    */
+    $.ajax({
+        url: 'Usage/' + url,
+        type: 'PUT',
+        complete: function(data) { console.log('Visit to ' + url + ' uploaded to CNZZ.'); },
+        error: function(data) { console.log('Failed to upload visit to ' + url + ' to CNZZ.'); }
+    });
 };
 Core.uploadToCnzzUrl = uploadToCnzzUrl;
 

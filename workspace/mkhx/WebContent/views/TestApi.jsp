@@ -5,9 +5,18 @@
     $(document).ready(function() {
         $('#send-request-button').click(function() {
             eval('var data = ' + $('#request-body').val() + ';');
-            $.post($('#request-url').val(), data).complete(function(response) {
-                $('#response-status').text(response.status);
-                $('#response-body').val(formatJson(response.responseText));
+            $.ajax({
+                url: $('#request-url').val(),
+                data: data,
+                type: $('#request-method').val(),
+                complete: function(response) {
+                    $('#response-status').text(response.status);
+                    try {
+                        $('#response-body').val(formatJson(response.responseText));
+                    } catch (e) {
+                        $('#response-body').val(response.responseText);
+                    }
+                }
             });
         });
     });

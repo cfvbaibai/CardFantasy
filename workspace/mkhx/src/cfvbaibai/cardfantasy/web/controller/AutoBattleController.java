@@ -77,7 +77,6 @@ import cfvbaibai.cardfantasy.web.beans.UserActionRecorder;
 
 @Controller
 public class AutoBattleController {
-    
     @Autowired
     private JsonHandler jsonHandler;
     
