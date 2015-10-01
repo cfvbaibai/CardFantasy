@@ -837,6 +837,28 @@ public class AutoBattleController {
             writer.print(errorHelper.handleError(e, true));
         }
     }
+
+    @RequestMapping(value = "/CardSkills/{cardName}")
+    public void getCardSkills(HttpServletRequest request, HttpServletResponse response,
+        @PathVariable("cardName") String cardName) throws IOException {
+        PrintWriter writer = response.getWriter();
+        try {
+            logger.info("Getting card skills: " + cardName);
+            CardData cardData = this.store.getCard(cardName);
+            if (cardData == null) {
+                writer.println("无效的卡牌: " + cardName);
+                response.setStatus(404);
+                return;
+            }
+            for (Skill skill : cardData.getSkills()) {
+                if (skill.getType() != SkillType.无效) {
+                    writer.print(skill.getShortDesc());
+                }
+            }
+        } catch (Exception e) {
+            writer.print(errorHelper.handleError(e, true));
+        }
+    }
     
     @RequestMapping(value = "/GetMapDeckInfo", headers = "Accept=application/json")
     public void getMapDeckInfo(HttpServletRequest request, HttpServletResponse response,
@@ -857,23 +879,6 @@ public class AutoBattleController {
             writer.print(errorHelper.handleError(e, true));
         }
     }
-    
-    /*
-    @RequestMapping(value = "/RecommendBossBattleDeck", headers = "Accept=application/json")
-    public void recommendBossBattleDeck(
-            HttpServletRequest request, HttpServletResponse response,
-            @RequestParam("bossName") String bossName,
-            @RequestParam("maxHeroLv") int maxHeroLv) throws IOException {
-        PrintWriter writer = response.getWriter();
-        response.setContentType("application/json");
-        try {
-            RecommendedBossBattleDecks decks = service.recommendBossBattleDeck(bossName, maxHeroLv);
-            writer.print(jsonHandler.toJson(decks));
-        } catch (Exception e) {
-            writer.print(handleError(e, true));
-        }
-    }
-    */
 
     @RequestMapping(value = "/Cards/{keyword}")
     public ModelAndView getCardById(HttpServletRequest request, @PathVariable String keyword) {

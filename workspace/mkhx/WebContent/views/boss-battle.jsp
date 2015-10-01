@@ -5,7 +5,7 @@
                 <h3>设置阵容</h3>
                 <div>
                     <fieldset class="select-2" data-theme="c" data-role="controlgroup" data-type="horizontal">
-                        <select data-theme="c" name="boss-name" id="boss-name" data-mini="true" data-native-menu="false">
+                        <select data-theme="c" name="boss-name" class="boss-name" id="boss-name" data-mini="true" data-native-menu="false">
                             <option value="强魔刃复仇女神">强魔刃复仇女神</option>
                             <option value="狙击复仇女神">狙击复仇女神</option>
                             <option value="送还复仇女神">送还复仇女神</option>
@@ -16,6 +16,7 @@
                             <option value="强魔甲噩梦之主">强魔甲噩梦之主</option>
                             <option value="振奋噩梦之主">振奋噩梦之主</option>
                             <option value="格挡噩梦之主">格挡噩梦之主</option>
+                            <option value="法侵格挡噩梦">法侵格挡噩梦</option>
                             <option value="强魔咒毁灭之神">强魔咒毁灭之神</option>
                             <option value="邪吸毁灭之神">邪吸毁灭之神</option>
                             <option value="焚神毁灭之神">焚神毁灭之神</option>
@@ -32,6 +33,9 @@
                             <option value="2" selected="selected">随机强杂兵</option>
                         </select>
                     </fieldset>
+                    <table class="form">
+                        <tr><td>技能: </td><td><div id="boss-skills" style="font-size: smaller"></div></td></tr>
+                    </table>
                     <!-- +：10级， -->
                     <fieldset class="select-4" data-theme="c" data-role="controlgroup" data-type="horizontal">
                         <select data-theme="c" name="buff-kingdom" id="buff-kingdom" data-mini="true" data-native-menu="false">

@@ -514,6 +514,20 @@ $(document)
     $('#play-boss-1-game-button').attr('href', 'javascript:CardFantasy.Core.playBossGame(1);');
     $('#simulate-boss-1-game-button').attr('href', 'javascript:CardFantasy.Core.playBossGame(-1);');
     $('#play-boss-massive-game-button').attr('href', 'javascript:CardFantasy.Core.playBossGame(1000);');
+
+    var showBossSkills = function() {
+        $.get('CardSkills/' + $('#boss-name').val(), function(data) {
+            console.log($('#boss-name').val() + " skills: " + data);
+            $("#boss-skills").text(data);
+        }).fail(function(xhr, status, error) {
+            $("#boss-skills").text("无法获得魔神技能: " + status + ", " + error);
+        });
+    };
+    $(document).on('change', 'select.boss-name', function(e) {
+        // Get current option value: this.options[e.target.selectedIndex].text
+        showBossSkills();
+    });
+    showBossSkills();
 })
 .on("pageinit", "#lilith-battle", function(event) {
     var updateRemainingHp = function() {

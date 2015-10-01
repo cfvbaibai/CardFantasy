@@ -2174,6 +2174,13 @@
         <Skill type="免疫" level="0" unlock="10" />
         <Skill type="无效" level="0" unlock="10" />
     </Card>
+    <Card id="5534" name="法侵格挡噩梦" wikiId="30871" race="魔神" speed="4" star="5" cost="79" incrCost="0" at="900" hp="8800000" incrAT="0" incrHP="0">
+        <Skill type="法力侵蚀" level="10" unlock="0" />
+        <Skill type="格挡" level="10" unlock="0" />
+        <Skill type="魔神之甲" level="3" unlock="5" />
+        <Skill type="免疫" level="0" unlock="10" />
+        <Skill type="无效" level="0" unlock="10" />
+    </Card>
 
     <Card id="5504" name="邪吸毁灭之神" wikiId="30871" race="魔神" speed="4" star="5" cost="79" incrCost="0" at="1200" hp="11200000" incrAT="0" incrHP="0">
         <Skill type="邪灵汲取" level="8" unlock="0" />
