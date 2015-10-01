@@ -2174,7 +2174,7 @@
         <Skill type="免疫" level="0" unlock="10" />
         <Skill type="无效" level="0" unlock="10" />
     </Card>
-    <Card id="5534" name="法侵格挡噩梦" wikiId="30871" race="魔神" speed="4" star="5" cost="79" incrCost="0" at="900" hp="8800000" incrAT="0" incrHP="0">
+    <Card id="5534" name="法侵格挡噩梦" wikiId="30871" race="魔神" speed="4" star="5" cost="79" incrCost="0" at="900" hp="1320000" incrAT="0" incrHP="0">
         <Skill type="法力侵蚀" level="10" unlock="0" />
         <Skill type="格挡" level="10" unlock="0" />
         <Skill type="魔神之甲" level="3" unlock="5" />
