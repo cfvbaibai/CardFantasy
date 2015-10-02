@@ -40,13 +40,17 @@ $(document).on("pageinit", "#wiki", function(event) {
             wideResult += "<tr><td>卡牌</td><td>星数</td><td>种族</td><td colspan='5'>技能</td></tr>";
             narrowResult += "<table class='wiki-card-result-narrow'>";
             narrowResult += "<tr><td>卡牌</td><td>星数</td><td>种族</td></tr>";
+            var getSkillHtml = function(skill) {
+                if (!skill) { return ''; }
+                return '<a href="OfficialData/Skills/' + skill.Name + '" target="_blank">' + skill.Name + '</a>';
+            }
             $.each(data, function(i, cardInfo) {
                 var card = cardInfo.card;
-                var skill1 = (cardInfo.skill1 ? cardInfo.skill1.Name : '');
-                var skill2 = (cardInfo.skill2 ? cardInfo.skill2.Name : '');
-                var skill3 = (cardInfo.skill3 ? cardInfo.skill3.Name : '');
-                var skill4 = (cardInfo.skill4 ? cardInfo.skill4.Name : '');
-                var skill5 = (cardInfo.skill5 ? cardInfo.skill5.Name : '');
+                var skill1 = getSkillHtml(cardInfo.skill1);
+                var skill2 = getSkillHtml(cardInfo.skill2);
+                var skill3 = getSkillHtml(cardInfo.skill3);
+                var skill4 = getSkillHtml(cardInfo.skill4);
+                var skill5 = getSkillHtml(cardInfo.skill5);
                 var cardName = "<a href='OfficialData/Cards/" + card.CardName + "' target='_blank'>" + card.CardName + "</a>";
                 var starText = toStarText(card.Color);
                 var raceText = toRaceText(card.Race);
@@ -74,6 +78,7 @@ $(document).on("pageinit", "#wiki", function(event) {
             $.mobile.loading('hide');
         });
     });
+    $('#wiki-card-search').click();
 });
 
 })(CardFantasy.Wiki);

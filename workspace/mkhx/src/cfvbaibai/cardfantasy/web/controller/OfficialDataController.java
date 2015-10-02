@@ -24,6 +24,7 @@ import cfvbaibai.cardfantasy.web.ErrorHelper;
 import cfvbaibai.cardfantasy.web.beans.JsonHandler;
 import cfvbaibai.cardfantasy.web.beans.Logger;
 import cfvbaibai.cardfantasy.web.beans.OfficialCardInfo;
+import cfvbaibai.cardfantasy.web.beans.OfficialSkillInfo;
 import cfvbaibai.cardfantasy.web.beans.UserAction;
 import cfvbaibai.cardfantasy.web.beans.UserActionRecorder;
 
@@ -84,7 +85,43 @@ public class OfficialDataController {
         }
         return mv;
     }
-    
+
+    @RequestMapping(value = "/OfficialData/Skills/{skillName}")
+    public ModelAndView querySkill(HttpServletRequest request, @PathVariable("skillName") String skillName,
+            HttpServletResponse response) throws IOException {
+        ModelAndView mv = new ModelAndView();
+        try {
+            this.logger.info("Getting official skill data: " + skillName);
+            this.userActionRecorder.addAction(new UserAction(new Date(), request.getRemoteAddr(), "View Skill", skillName));
+            if (skillName == null) {
+                response.setStatus(404);
+                return mv;
+            }
+            mv.setViewName("view-skill");
+            String skillType = this.officialStore.getSkillTypeFromName(skillName);
+            if (skillType == null) {
+                response.setStatus(404);
+                return mv;
+            }
+            OfficialSkill[] skills = this.officialStore.getSkillsByType(skillType);
+            if (skills.length == 0) {
+                response.setStatus(404);
+                return mv;
+            }
+            OfficialSkillInfo[] skillInfos = new OfficialSkillInfo[skills.length];
+            for (int i = 0; i < skills.length; ++i) {
+                OfficialSkillInfo skillInfo = OfficialSkillInfo.build(skills[i], officialStore);
+                skillInfos[i] = skillInfo;
+            }
+            
+            mv.addObject("skillInfos", skillInfos);
+            mv.addObject("skillType", skillType);
+        } catch (Exception e) {
+            this.logger.error(e);
+        }
+        return mv;
+    }
+
     @RequestMapping(value = "/OfficialData/Skills", headers = "Accept=application/json")
     public void querySkills(HttpServletRequest request, HttpServletResponse response) throws IOException {
         List<OfficialSkill> result = new ArrayList<OfficialSkill>();
