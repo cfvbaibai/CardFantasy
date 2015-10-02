@@ -373,4 +373,9 @@
                 </ul>
             </div>
         </div>
+        <div id="hiddenSeoLinks" style="display: none">
+            <c:forEach var="card" items="${officialCardData}">
+                <a href="OfficialData/Cards/${card.cardName}" target="_blank">${card.cardName}</a>
+            </c:forEach>
+        </div>
     </div>

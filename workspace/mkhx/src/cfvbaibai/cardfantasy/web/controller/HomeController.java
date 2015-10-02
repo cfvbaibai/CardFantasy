@@ -14,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import cfvbaibai.cardfantasy.game.LilithDataStore;
 import cfvbaibai.cardfantasy.game.LilithStartupInfo;
+import cfvbaibai.cardfantasy.officialdata.OfficialDataStore;
 import cfvbaibai.cardfantasy.web.QuestionStore;
 import cfvbaibai.cardfantasy.web.beans.Logger;
 import cfvbaibai.cardfantasy.web.beans.UserAction;
@@ -32,9 +33,12 @@ public class HomeController {
 
     @Autowired(required = true)
     private QuestionStore questionStore;
-    
+
     @Autowired
     private LilithDataStore lilithDataStore;
+
+    @Autowired
+    private OfficialDataStore officialDataStore;
 
     @RequestMapping(value = "/")
     public ModelAndView home(HttpServletRequest request
@@ -47,9 +51,7 @@ public class HomeController {
         List<LilithStartupInfo> allLilithData = lilithDataStore.getAll();
         Collections.sort(allLilithData, new LilithDataComparator());
         mv.addObject("lilithDatas", allLilithData);
-        //int activeSessionCountValue = activeSessionCount.intValue();
-        //mv.addObject("activeSessionCount", activeSessionCountValue);
-        //logger.info("Active Session Count: " + activeSessionCountValue);
+        mv.addObject("officialCardData", officialDataStore.cardStore.data.Cards);
         this.userActionRecorder.addAction(new UserAction(new Date(), request.getRemoteAddr(), "Visit Home", ""));
         return mv;
     }
