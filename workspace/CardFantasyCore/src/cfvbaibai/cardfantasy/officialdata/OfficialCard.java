@@ -84,7 +84,7 @@ public class OfficialCard {
     public String BossHelper;
     public String Fragment;
     private String LockSkill1;
-    public String MaxInDeck;
+    public int MaxInDeck;
     private String LockSkill2;
     public String ComposePrice;
     public String RacePacket;
@@ -156,6 +156,9 @@ public class OfficialCard {
     }
     public int[] getExpArray() {
         return this.ExpArray;
+    }
+    public int getMaxInDeck() {
+        return this.MaxInDeck;
     }
 
     public static String toRaceName(String raceId) {

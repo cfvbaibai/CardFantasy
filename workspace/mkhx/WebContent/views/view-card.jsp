@@ -19,7 +19,12 @@ $(document).ready(function () {
     <table class="view-card-table">
         <tbody>
             <tr>
-                <td id="view-card-name" class="title" colspan="5">${cardName}</td>
+                <td id="view-card-name" class="title" colspan="5">
+                    ${cardName}
+                    <c:if test="${cardInfo.maxInDeck > 0}">
+                        <span>(限定 ${cardInfo.maxInDeck} 张)</span>
+                    </c:if>
+                </td>
             </tr>
             <tr>
                 <td id="view-card-logo" class="logo" rowspan="2">LOGO</td>

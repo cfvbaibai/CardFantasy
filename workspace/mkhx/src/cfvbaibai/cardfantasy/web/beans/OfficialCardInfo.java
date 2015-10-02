@@ -61,6 +61,9 @@ public class OfficialCardInfo {
     public OfficialSkill getSkill5() {
         return this.skill5;
     }
+    public int getMaxInDeck() {
+        return this.card.getMaxInDeck();
+    }
 
     public static OfficialCardInfo build(OfficialCard card, CardDataStore myStore, OfficialSkillData skillData) {
         OfficialCardInfo cardInfo = new OfficialCardInfo();
