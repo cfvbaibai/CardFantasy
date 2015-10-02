@@ -66,13 +66,13 @@ public class OneDimensionDataStat {
         if (this.dataList.isEmpty()) {
             return 0.0;
         }
-        double min = Double.MIN_VALUE;
+        double max = 0.0;
         for (double data : this.dataList) {
-            if (data > min) {
-                min = data;
+            if (data > max) {
+                max = data;
             }
         }
-        return min;
+        return max;
     }
 
     public int getCount() {
@@ -102,6 +102,9 @@ public class OneDimensionDataStat {
         }
         double s = 0.0;
         double avg = this.getAverage();
+        if (avg == 0.0) {
+            return 0.0;
+        }
         for (double data : this.dataList) {
             s += (data - avg) * (data - avg);
         }

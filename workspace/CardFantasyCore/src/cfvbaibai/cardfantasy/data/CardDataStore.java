@@ -125,7 +125,7 @@ public class CardDataStore {
         "天界守护者"
     };
 
-    public static String[] allBossGuardians = new String[] {
+    public static String[] weakBossGuardians = new String[] {
         "小矮人狙击者",
         "精灵法师",
         "精灵暗杀者",
@@ -357,5 +357,9 @@ public class CardDataStore {
     public CardData getRandomCard() {
         String key = this.allKeys.get(Randomizer.getRandomizer().next(0, this.allKeys.size()));
         return this.cardMap.get(key);
+    }
+    
+    public String[] getWeakBossHelpers() {
+        return null;
     }
 }

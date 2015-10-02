@@ -50,8 +50,9 @@ var sendAjaxRequest = function(attrs) {
     var postData = attrs.postData;
     var requestType = attrs.requestType; // json for JSON request or undefined for plain text request
     var dataHandler = attrs.dataHandler || function(context, data) {};
-    var errorHandler = attrs.errorHandler || function(context, xhr, status, error) { alert('Error: ' + status + '! ' + error); };
-    var completeHandler = attrs.completeHandler || function(context) {};
+    var successHandler = attrs.successHandler || function(context, responseText, statusCode, statusText) {};
+    var errorHandler = attrs.errorHandler || function(context, responseText, statusCode, statusText) { alert('Error: ' + statusText + '! ' + responseText); };
+    var completeHandler = attrs.completeHandler || function(context, responseText, statusCode, statusText) {};
 
     uploadToCnzzUrl(cnzzUrl);
     var buttons = $('a.battle-button');
@@ -60,12 +61,17 @@ var sendAjaxRequest = function(attrs) {
     var context = {};
     $.post(url, postData, function(data) {
         dataHandler(context, data);
-    }, requestType).fail(function(xhr, status, error) {
-        errorHandler(context, xhr, status, error);
-    }).complete(function () {
+    }, requestType)
+    .success(function(xhr) {
+        successHandler(context, xhr.responseText, xhr.status, xhr.statusText);
+    })
+    .fail(function(xhr) {
+        errorHandler(context, xhr.responseText, xhr.status, xhr.statusText);
+    })
+    .complete(function (xhr) {
         $.mobile.loading('hide');
         buttons.removeClass("ui-disabled");
-        completeHandler(context);
+        completeHandler(context, xhr.responseText, xhr.status, xhr.statusText);
     });
 };
 Core.sendAjaxRequest = sendAjaxRequest;
@@ -108,12 +114,15 @@ var createDivTable = function(rows, colNames, colLabels) {
 };
 Core.createDivTable = createDivTable;
 
-var sendRequest = function(url, postData, outputDivId, isAnimation, completeHandler, errorHandler) {
+var sendRequest = function(url, postData, outputDivId, isJson, isAnimation, dataHandler, completeHandler, errorHandler, successHandler) {
     var buttons = $('a.battle-button');
     buttons.addClass("ui-disabled");
-    errorHandler = errorHandler || function(context, xhr, status, error) {
-        context.result = "<span style='COLOR: red'>发生错误! 状态=" + status + ", 细节=" + error + "</span>";
-        if (status == 'error' && error == 'Not Found') {
+    dataHandler = dataHandler || function(context, data) {
+        context.result = data;
+    };
+    errorHandler = errorHandler || function(context, responseText, statusCode, statusText) {
+        context.result = "<div style='COLOR: red'>发生错误! 状态=" + statusCode + ' ' + statusText + ", 细节=" + responseText + "</div>";
+        if (statusText == 'error' && status == 0 || status == 404) {
             context.result += "<div>服务器可能正在更新，请稍等1分钟左右再试试看</div>";
         }
     };
@@ -126,10 +135,10 @@ var sendRequest = function(url, postData, outputDivId, isAnimation, completeHand
         }
     };
     if (isAnimation) {
-        sendJsonRequest({
+        sendAjaxRequest({
             url: url,
             postData: postData,
-            requestType: 'json',
+            requestType: isJson ? 'json' : null,
             dataHandler: function(context, data) {
                 if (data.error) {
                     context.result = data.message;
@@ -140,17 +149,18 @@ var sendRequest = function(url, postData, outputDivId, isAnimation, completeHand
                 }
             },
             errorHandler: errorHandler,
-            completeHandler: completeHandler
+            completeHandler: completeHandler,
+            successHandler: successHandler
         });
     } else {
         sendAjaxRequest({
             url: url,
             postData: postData,
-            dataHandler: function(context, data) {
-                context.result = data;
-            },
+            requestType: isJson ? 'json' : null,
+            dataHandler: dataHandler,
             errorHandler: errorHandler,
-            completeHandler: completeHandler
+            completeHandler: completeHandler,
+            successHandler: successHandler
         });
     }
 };
@@ -191,7 +201,7 @@ var playAutoGame = function(count) {
     } else {
         url = 'PlayAutoMassiveGame';
     }
-    sendRequest(url, postData, 'battle-output', isAnimation);
+    sendRequest(url, postData, 'battle-output', isAnimation, isAnimation);
 };
 Core.playAutoGame = playAutoGame;
 
@@ -217,23 +227,22 @@ var playBossGame = function(count) {
     };
 
     $.cookie('boss-battle', JSON.stringify(postData), { expires: 365 });
-    var isAnimation = false;
     var url;
-    var completeHandler = null;
     if (count == 1) {
         url = 'PlayBoss1MatchGame';
-        completeHandler = function(context) {
-            $('#boss-battle-output').html(context.result);
+        var dataHandler = function(context, data) {
+            $('#boss-battle-output').html(data);
         };
         $('#boss-battle-massive-output').hide();
         $('#boss-battle-output').show();
+        sendRequest(url, postData, 'boss-battle-output', false, false, dataHandler);
     } else if (count == -1) {
         url = 'SimulateBoss1MatchGame';
-        isAnimation = true;
+        sendRequest(url, postData, 'boss-battle-output', true, true);
     } else {
         url = 'PlayBossMassiveGame';
-        completeHandler = function(context) {
-            var result = context.result;
+        var dataHandler = function(context, data) {
+            var result = data;
             $('#boss-battle-game-count').text(result.gameCount);
             $('#boss-battle-timeout-count').text(result.timeoutCount);
             $('#boss-battle-cooldown').text(result.coolDown + '秒');
@@ -260,8 +269,8 @@ var playBossGame = function(count) {
             $('#boss-battle-output').hide();
             Core.bossBattleChart.Bar(chartData);
         };
+        sendRequest(url, postData, 'boss-battle-output', true, false, dataHandler);
     }
-    sendRequest(url, postData, 'boss-battle-output', isAnimation, completeHandler);
 };
 Core.playBossGame = playBossGame;
 
@@ -295,7 +304,7 @@ var playLilithGame = function(count) {
     } else {
         url = 'PlayLilithMassiveGame';
     }
-    sendRequest(url, postData, 'lilith-battle-output', isAnimation);
+    sendRequest(url, postData, 'lilith-battle-output', isAnimation, isAnimation);
 };
 Core.playLilithGame = playLilithGame;
 
@@ -321,7 +330,7 @@ var playMapGame = function(count) {
     } else {
         url = 'PlayMapMassiveGame';
     }
-    sendRequest(url, postData, 'map-battle-output', isAnimation);
+    sendRequest(url, postData, 'map-battle-output', isAnimation, isAnimation);
 };
 Core.playMapGame = playMapGame;
 

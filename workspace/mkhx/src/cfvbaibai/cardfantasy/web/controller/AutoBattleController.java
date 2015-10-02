@@ -349,7 +349,7 @@ public class AutoBattleController {
                 bossGuards.clear();
                 int totalCost = 0;
                 for (int i = 0; i < 9; ++i) {
-                    CardData bossGuard = getBossGuard(CardDataStore.allBossGuardians);
+                    CardData bossGuard = getBossGuard(CardDataStore.weakBossGuardians);
                     bossGuards.add(bossGuard);
                     totalCost += bossGuard.getBaseCost();
                 }
@@ -368,7 +368,7 @@ public class AutoBattleController {
                     totalCost += fiveStarBossGuard.getBaseCost();
                 }
                 for (int i = 3; i < 9; ++i) {
-                    CardData bossGuard = getBossGuard(CardDataStore.allBossGuardians);
+                    CardData bossGuard = getBossGuard(CardDataStore.weakBossGuardians);
                     bossGuards.add(bossGuard);
                     totalCost += bossGuard.getBaseCost();
                 }
@@ -633,9 +633,11 @@ public class AutoBattleController {
             BossMassiveGameResult result = new BossMassiveGameResult(
                 validationResult, coolDown, totalCost, timeoutCount, stat);
             writer.print(jsonHandler.toJson(result));
+            //throw new CardFantasyRuntimeException("e");
         } catch (Exception e) {
-            response.setStatus(400);
+            response.setStatus(500);
             writer.print("{'error':'" + e.getMessage() + "'}");
+            this.logger.error(e);
         }
     }
 
