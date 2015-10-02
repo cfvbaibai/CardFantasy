@@ -34,4 +34,7 @@ public class OfficialSkill {
     public String getDescription() {
         return this.Desc;
     }
+    public int getCategory() {
+        return this.SkillCategory;
+    }
 }

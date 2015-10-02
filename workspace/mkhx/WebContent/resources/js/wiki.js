@@ -25,6 +25,18 @@ var toRaceText = function(race) {
 var store = {};
 $(document).on("pageinit", "#wiki", function(event) {
     CardFantasy.Core.uploadToCnzzUrl('wiki');
+
+        var queryUrl = 'OfficialData/SkillTypes';
+        $.get(queryUrl, function(data) {
+            var result = '<div class="wiki-skill-result">';
+            for (var i = 0; i < data.length; ++i) {
+                var skillType = data[i];
+                result += '<div style="float: left"><a href="OfficialData/Skills/' + skillType + '" target="_blank">' + skillType + '</a></div>';
+            }
+            result += '<div style="clear: both"></div></div>';
+            $('#wiki-skill-result').html(result);
+        });
+
     $('#wiki-card-search').click(function() {
         var starFilter = $('#wiki-card-star-filter').val();
         var raceFilter = $('#wiki-card-race-filter').val();
@@ -72,12 +84,13 @@ $(document).on("pageinit", "#wiki", function(event) {
 
             wideResult += "</table>";
             narrowResult += "</table>";
-            $('#wiki-card-result').html(wideResult + narrowResult);
+            $('#wiki-result').html(wideResult + narrowResult);
         }).complete(function () {
             $('#wiki-card-search').removeClass('ui-disabled');
             $.mobile.loading('hide');
         });
     });
+    
     $('#wiki-card-search').click();
 });
 

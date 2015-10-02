@@ -122,10 +122,41 @@ public class OfficialDataController {
         return mv;
     }
 
-    @RequestMapping(value = "/OfficialData/Skills", headers = "Accept=application/json")
-    public void querySkills(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        List<OfficialSkill> result = new ArrayList<OfficialSkill>();
-        result.addAll(officialStore.skillStore.data.Skills);
+    @RequestMapping(value = "/OfficialData/SkillTypes", headers = "Accept=application/json")
+    public void querySkills(HttpServletRequest request, HttpServletResponse response,
+            @RequestParam(value = "categories", required = false) String categoriesFilter,
+            @RequestParam(value = "names", required = false) String namesFilter) throws IOException {
+        if ("0".equals(categoriesFilter)) {
+            categoriesFilter = null;
+        }
+        categoriesFilter = normalizeCommaDelimitedFilter(categoriesFilter);
+        namesFilter = normalizeCommaDelimitedFilter(namesFilter);
+        String[] desiredNames = null;
+        if (namesFilter != null) {
+            desiredNames = namesFilter.split(",");
+        }
+        List<String> result = new ArrayList<String>();
+        for (OfficialSkill skill : officialStore.skillStore.data.Skills) {
+            if (categoriesFilter != null && !categoriesFilter.contains("," + skill.getCategory() + ",")) {
+                continue;
+            }
+            if (desiredNames != null) {
+                boolean nameFound = false;
+                for (String desiredName : desiredNames) {
+                    if (skill.getName().contains(desiredName)) {
+                        nameFound = true;
+                        break;
+                    }
+                }
+                if (!nameFound) {
+                    continue;
+                }
+            }
+            String skillType = officialStore.getSkillTypeFromName(skill.getName());
+            if (!result.contains(skillType)) {
+                result.add(skillType);
+            }
+        }
         response.setContentType("application/json");
         response.getWriter().println(jsonHandler.toJson(result));
     }
