@@ -400,3 +400,13 @@ table.view-card-table td.skill div {
     margin-left: 10px;
     margin-right: 10px;
 }
+
+table.view-card-table td.skill div:nth-child(1) {
+    font-weight: bold;
+}
+
+table.view-card-table td.skill div:nth-child(2) {
+    font-size: smaller;
+    color: #999999;
+    margin-top: 5px;
+}

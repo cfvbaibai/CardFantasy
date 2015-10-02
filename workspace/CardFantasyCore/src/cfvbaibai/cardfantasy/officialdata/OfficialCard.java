@@ -1,11 +1,10 @@
 package cfvbaibai.cardfantasy.officialdata;
 
-import java.util.List;
 
 /*
 {
     "ActivityPacket": "0", 
-    "DungeonsCard": "0", 
+    "DungeonsCard": "0",    // 迷宫卡
     "FragMaze": "0", 
     "FragMasterPacket": "0", 
     "DungeonsFrag": "0", 
@@ -37,13 +36,13 @@ import java.util.List;
     "BossHelper": "0", 
     "Fragment": "0", 
     "LockSkill1": "", 
-    "MaxInDeck": "0", 
+    "MaxInDeck": "0", // 限定
     "LockSkill2": "", 
     "ComposePrice": "0", 
-    "RacePacket": "0", 
+    "RacePacket": "0", // 种族包
     "ImageId": "0", 
     "DustLevel": "0", 
-    "RacePacketRoll": "0", 
+    "RacePacketRoll": "0",
     "FullImageId": "0", 
     "DecomposeGet": "0", 
     "CanDecompose": "0", 
@@ -62,24 +61,24 @@ public class OfficialCard {
     public String BaseExp;
     public String Dust;
     public String DustNumber;
-    public List<String> ExpArray;
+    public int[] ExpArray;
     public String FightRank;
     public String FragRobber;
     public String FragRacePacket;
     public int[] AttackArray;
     public String CardId;
-    public String CardName;
+    private String CardName;
     public String Attack;
-    public String Cost;
+    public int Cost;
     public String FragMagicCard;
-    public String EvoCost;
-    public String Color;
+    public int EvoCost;
+    public int Color;
     public String ActivityPacketRoll;
     public String Glory;
     public String Race;
     public int[] HpArray;
     public String Rank;
-    public String Wait;
+    public int Wait;
     private String Skill;
     public String PriceRank;
     public String BossHelper;
@@ -130,5 +129,42 @@ public class OfficialCard {
             return lockSkill2Parts[2];
         }
         return null;
+    }
+    public String getCardName() {
+        return this.CardName;
+    }
+    public String getRaceName() {
+        return toRaceName(this.Race);
+    }
+    public int getColor() {
+        return this.Color;
+    }
+    public int getWait() {
+        return this.Wait;
+    }
+    public int getCost() {
+        return this.Cost;
+    }
+    public int getEvoCost() {
+        return this.EvoCost;
+    }
+    public int[] getAttackArray() {
+        return this.AttackArray;
+    }
+    public int[] getHpArray() {
+        return this.HpArray;
+    }
+    public int[] getExpArray() {
+        return this.ExpArray;
+    }
+
+    public static String toRaceName(String raceId) {
+        if ("1".equals(raceId)) { return "王国"; }
+        if ("2".equals(raceId)) { return "森林"; }
+        if ("3".equals(raceId)) { return "蛮荒"; }
+        if ("4".equals(raceId)) { return "地狱"; }
+        if ("97".equals(raceId)) { return "魔王"; }
+        if ("100".equals(raceId)) { return "魔神"; }
+        return "未知";
     }
 }

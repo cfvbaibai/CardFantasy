@@ -47,7 +47,7 @@ $(document).on("pageinit", "#wiki", function(event) {
                 var skill3 = (cardInfo.skill3 ? cardInfo.skill3.Name : '');
                 var skill4 = (cardInfo.skill4 ? cardInfo.skill4.Name : '');
                 var skill5 = (cardInfo.skill5 ? cardInfo.skill5.Name : '');
-                var cardName = "<a href='Cards/" + card.CardName + "' target='_blank'>" + card.CardName + "</a>";
+                var cardName = "<a href='OfficialData/Cards/" + card.CardName + "' target='_blank'>" + card.CardName + "</a>";
                 var starText = toStarText(card.Color);
                 var raceText = toRaceText(card.Race);
 

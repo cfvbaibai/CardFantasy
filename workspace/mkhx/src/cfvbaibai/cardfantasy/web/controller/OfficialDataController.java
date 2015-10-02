@@ -2,6 +2,7 @@ package cfvbaibai.cardfantasy.web.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -9,9 +10,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
+import cfvbaibai.cardfantasy.data.CardData;
 import cfvbaibai.cardfantasy.data.CardDataStore;
 import cfvbaibai.cardfantasy.officialdata.OfficialCard;
 import cfvbaibai.cardfantasy.officialdata.OfficialDataStore;
@@ -20,9 +24,13 @@ import cfvbaibai.cardfantasy.web.ErrorHelper;
 import cfvbaibai.cardfantasy.web.beans.JsonHandler;
 import cfvbaibai.cardfantasy.web.beans.Logger;
 import cfvbaibai.cardfantasy.web.beans.OfficialCardInfo;
+import cfvbaibai.cardfantasy.web.beans.UserAction;
+import cfvbaibai.cardfantasy.web.beans.UserActionRecorder;
 
 @Controller
 public class OfficialDataController {
+    @Autowired
+    private UserActionRecorder userActionRecorder;
     @Autowired
     private Logger logger;
     @Autowired
@@ -45,6 +53,36 @@ public class OfficialDataController {
             }
         }
         return filterText;
+    }
+    
+    @RequestMapping(value = "/OfficialData/Cards/{cardName}")
+    public ModelAndView queryCard(HttpServletRequest request,
+            @PathVariable("cardName") String cardName, HttpServletResponse response) throws IOException {
+        ModelAndView mv = new ModelAndView();
+        try {
+            this.logger.info("Getting official card data: " + cardName);
+            this.userActionRecorder.addAction(new UserAction(new Date(), request.getRemoteAddr(), "View Card", cardName));
+            if (cardName == null) {
+                response.setStatus(404);
+                return mv;
+            }
+            mv.setViewName("view-card");
+            OfficialCard card = this.officialStore.getCardByName(cardName);
+            if (card == null) {
+                response.setStatus(404);
+                return mv;
+            }
+            CardData myCardData = this.myStore.getCard(cardName);
+            if (myCardData != null) {
+                mv.addObject("internalId", myCardData.getId());
+            }
+            OfficialCardInfo cardInfo = OfficialCardInfo.build(card, myStore, officialStore.skillStore.data);
+            mv.addObject("cardInfo", cardInfo);
+            mv.addObject("cardName", cardName);
+        } catch (Exception e) {
+            this.logger.error(e);
+        }
+        return mv;
     }
     
     @RequestMapping(value = "/OfficialData/Skills", headers = "Accept=application/json")
@@ -76,7 +114,7 @@ public class OfficialDataController {
         }
         List<OfficialCardInfo> result = new ArrayList<OfficialCardInfo>();
         for (OfficialCard card : officialStore.cardStore.data.Cards) {
-            if (cardNameFilter != null && !cardNameFilter.contains("," + card.CardName + ",")) {
+            if (cardNameFilter != null && !cardNameFilter.contains("," + card.getCardName() + ",")) {
                 continue;
             }
             if (starFilter != null && !starFilter.contains("," + card.Color + ",")) {

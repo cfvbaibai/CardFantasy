@@ -466,7 +466,7 @@ $(document).ready(function() {
         x.innerHTML = '<a href="http://tieba.baidu.com/home/main?un=' + encodeURI(x.innerHTML) + '&ie=utf-8&fr=pb" target="_blank">' + x.innerHTML + '</a>';
     });
     $('c').each(function (i, c) {
-        c.innerHTML = '【<a href="Cards/' + encodeURI(c.innerHTML) + '" target="_blank">' + c.innerHTML + '</a>】';
+        c.innerHTML = '【<a href="OfficialData/Cards/' + encodeURI(c.innerHTML) + '" target="_blank">' + c.innerHTML + '</a>】';
     })
     $('#news').trigger('create');
 });

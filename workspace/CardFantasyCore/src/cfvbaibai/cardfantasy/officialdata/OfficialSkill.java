@@ -27,4 +27,11 @@ public class OfficialSkill {
     public int LanchType;
     public String Name;
     public int SkillCategory;
+
+    public String getName() {
+        return this.Name;
+    }
+    public String getDescription() {
+        return this.Desc;
+    }
 }

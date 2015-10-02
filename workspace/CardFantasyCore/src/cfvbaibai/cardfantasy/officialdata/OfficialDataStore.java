@@ -35,4 +35,13 @@ public class OfficialDataStore {
         instance = newInstance;
         return newInstance;
     }
+    
+    public OfficialCard getCardByName(String cardName) {
+        for (OfficialCard card : cardStore.data.Cards) {
+            if (card.getCardName().equalsIgnoreCase(cardName)) {
+                return card;
+            }
+        }
+        return null;
+    }
 }

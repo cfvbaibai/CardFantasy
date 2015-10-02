@@ -21,7 +21,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
 
 import cfvbaibai.cardfantasy.Base64Encoder;
 import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
@@ -79,19 +78,19 @@ import cfvbaibai.cardfantasy.web.beans.UserActionRecorder;
 public class AutoBattleController {
     @Autowired
     private JsonHandler jsonHandler;
-    
+
     @Autowired
     private UserActionRecorder userActionRecorder;
-    
+
     @Autowired
     private MapStages maps;
-    
+
     @Autowired
     private LilithDataStore lilithDataStore;
-    
+
     @Autowired
     private Logger logger;
-    
+
     @Autowired
     private ErrorHelper errorHelper;
 
@@ -548,9 +547,7 @@ public class AutoBattleController {
                     String.format("Deck=%s<br />HeroLV=%d, Boss=%s, Count=%d, GuardType=%d", deck, heroLv, bossName, count, guardType)));
             List<Skill> legionBuffs = SkillBuilder.buildLegionBuffs(buffKingdom, buffForest, buffSavage, buffHell);
             PlayerInfo player2 = PlayerBuilder.build(true, "玩家", deck, heroLv, legionBuffs, 100);
-            
-            //writer.append(Utils.getCurrentDateTime() + "<br />");
-            //writer.print(this.getDeckValidationResult(null, player2));
+
             String validationResult = this.getDeckValidationResult(null, player2);
             OneDimensionDataStat stat = new OneDimensionDataStat();
             int timeoutCount = 0;
@@ -570,7 +567,6 @@ public class AutoBattleController {
             if (gameCount > 1000) {
                 gameCount = 1000;
             }
-            //writer.append("模拟场次: " + gameCount + "<br />");
             
             int totalCostForCoolDown = 0;
             for (Card card : player2.getCards()) {
@@ -598,42 +594,11 @@ public class AutoBattleController {
                 }
             }
 
-            //if (timeoutCount > 0) {
-                //writer.append("超时次数(大于999回合): " + timeoutCount + "<br />");
-                //writer.append("您的卡组实在太厉害了！已经超出模拟器的承受能力，结果可能不准确，建议直接实测。<br />");
-            //}
-
             long averageDamageToBoss = Math.round(stat.getAverage());
-            //long cvPercentage = Math.round(stat.getCoefficientOfVariation() * 100);
-            //long minDamage = Math.round(stat.getMin());
-            //long maxDamage = Math.round(stat.getMax());
-
-            //long testMinute = 99999;
-            //long testBattleCount = 1 + (60 * testMinute / coolDown);
-            //long testTotalDamage = testBattleCount * averageDamageToBoss;
-            //long averageDamagePerMinute = testTotalDamage / testMinute;
-
-            //writer.append("<table>");
-            //writer.append("<tr><td>卡组总COST: </td><td>" + totalCost + "</td></tr>");
-            //writer.append("<tr><td>冷却时间: </td><td>" + coolDown + "</td></tr>");
-            //writer.append("<tr><td>总体平均每分钟伤害: </td><td>" + averageDamagePerMinute + "</td></tr>");
-            //writer.append("<tr><td>最小伤害: </td><td>" + minDamage + "</td></tr>");
-            //writer.append("<tr><td>平均每次伤害: </td><td>" + averageDamageToBoss + "</td></tr>");
-            //writer.append("<tr><td>最大伤害: </td><td>" + maxDamage + "</td></tr>");
-            //writer.append("<tr><td>不稳定度: </td><td>" + cvPercentage + "%</td></tr>");
-            //writer.append("<tr><td colspan='2'><table style='text-align: center'><tr style='font-weight: bold'><td>魔神存活</td><td>战斗次数</td><td>总伤害</td><td>平均每分钟伤害</td></tr>");
-            //for (int i = 1; i <= 20; ++i) {
-                //int attackCount = 1 + (60 * i / coolDown);
-                //long totalDamage = attackCount * averageDamageToBoss;
-                //writer.append("<tr><td>" + i + "分钟</td><td>" + attackCount + "</td><td>" + totalDamage + "</td><td>" + (totalDamage / i) + "</td></tr>");
-            //}
-            //writer.append("</table></td></tr>");
-            //writer.append("</table>");
             logger.info("Average damage to boss: " + averageDamageToBoss);
             BossMassiveGameResult result = new BossMassiveGameResult(
                 validationResult, coolDown, totalCost, timeoutCount, stat);
             writer.print(jsonHandler.toJson(result));
-            //throw new CardFantasyRuntimeException("e");
         } catch (Exception e) {
             response.setStatus(500);
             writer.print("{'error':'" + e.getMessage() + "'}");
@@ -880,23 +845,6 @@ public class AutoBattleController {
         } catch (Exception e) {
             writer.print(errorHelper.handleError(e, true));
         }
-    }
-
-    @RequestMapping(value = "/Cards/{keyword}")
-    public ModelAndView getCardById(HttpServletRequest request, @PathVariable String keyword) {
-        CardData card = this.store.getCard(keyword);
-        String internalId = null;
-        if (card != null) {
-            internalId = card.getId();
-        }
-        ModelAndView mv = new ModelAndView();
-        mv.setViewName("view-card");
-        mv.addObject("keyword", keyword);
-        if (internalId != null) {
-            mv.addObject("internalId", internalId);
-        }
-        this.userActionRecorder.addAction(new UserAction(new Date(), request.getRemoteAddr(), "View Card", keyword));
-        return mv;
     }
 
     @RequestMapping(value = "/Video/{mode}", method = RequestMethod.POST, headers = "Accept=application/json")
