@@ -39,7 +39,7 @@
                 </div>
             </div>
         </div>
-        <div data-role="collapsible-set" data-theme="c" data-content-theme="d">
+        <div id="wiki-result-panel-set" data-role="collapsible-set" data-theme="c" data-content-theme="d">
             <div data-role="collapsible" data-collapsed="true" data-mini="true" data-content-theme="d" data-theme="c">
                 <h3>显示全部技能</h3>
                 <div id="wiki-skill-result" class="wiki-result">
@@ -47,7 +47,7 @@
             </div>
             <div data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">
                 <h3>搜索卡牌结果</h3>
-                <div id="wiki-result" class="wiki-result" style="padding-top: 5px; min-height: 200px">
+                <div id="wiki-card-result" class="wiki-result" style="padding-top: 5px; min-height: 200px">
                 </div>
             </div>
         </div>
