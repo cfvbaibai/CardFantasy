@@ -55,7 +55,7 @@ public class OfficialDataController {
         }
         return filterText;
     }
-    
+
     @RequestMapping(value = "/OfficialData/Cards/{cardName}")
     public ModelAndView queryCard(HttpServletRequest request,
             @PathVariable("cardName") String cardName, HttpServletResponse response) throws IOException {

@@ -10,7 +10,7 @@ public class CardSkill extends Skill implements Cloneable {
         this.summonSkill = summonSkill;
         this.deathSkill = deathSkill;
     }
-    
+
     public int getUnlockLevel() {
         return unlockLevel;
     }
@@ -19,7 +19,7 @@ public class CardSkill extends Skill implements Cloneable {
     public String getShortDesc() {
         return String.format("【%s】", this.getParsableDesc());
     }
-    
+
     public String getParsableDesc() {
         String prefix = "";
         if (this.isSummonSkill()) {
@@ -30,7 +30,7 @@ public class CardSkill extends Skill implements Cloneable {
         }
         return String.format("%s%s%s", prefix, type.getDisplayName(), level == 0 ? "" : String.valueOf(level));
     }
-    
+
     @Override
     public boolean isSummonSkill() {
         return this.summonSkill;

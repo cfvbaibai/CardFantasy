@@ -18,7 +18,6 @@ public class OfficialCardInfo {
     public OfficialCard getCard() {
         return this.card;
     }
-
     public String getCardName() {
         return this.card.getCardName();
     }
@@ -63,6 +62,15 @@ public class OfficialCardInfo {
     }
     public int getMaxInDeck() {
         return this.card.getMaxInDeck();
+    }
+    public String getImageId() {
+        return this.card.ImageId;
+    }
+    public String getFullImageId() {
+        return this.card.FullImageId;
+    }
+    public String getCardId() {
+        return this.card.CardId;
     }
 
     public static OfficialCardInfo build(OfficialCard card, CardDataStore myStore, OfficialSkillData skillData) {

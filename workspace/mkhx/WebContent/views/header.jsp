@@ -33,8 +33,8 @@
 <script type="text/javascript" src="http://cbjs.baidu.com/js/m.js"></script>
 
 <script>var resDir = '<c:url value="/resources" />'; var rootDir = '<c:url value="/" />'; var seed = new Date().getTime();</script>
-<meta name="description" content="魔卡幻想战斗模拟器">
-<meta name="keywords" content="魔卡幻想,模拟器,四国战机,魔法卡牌,竞技场,魔神战,莉莉丝,Lies of Astaroth">
+<meta name="description" content="魔卡幻想战斗模拟器 魔卡幻想WIKI 魔卡幻想百科">
+<meta name="keywords" content="魔卡幻想,模拟器,魔卡幻想百科,魔神战,莉莉丝,Lies of Astaroth">
 <!-- 
 Note above that there is a meta viewport tag in the head to specify how the browser should display the page zoom level and dimensions.
 If this isn't set, many mobile browsers will use a "virtual" page width around 900 pixels to make it work well with existing desktop

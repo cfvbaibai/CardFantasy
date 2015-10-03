@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<div id="wiki" class="main-page" data-role="page" data-title="魔卡WIKI" data-mini="true">
+<div id="wiki" class="main-page" data-role="page" data-title="魔卡幻想WIKI" data-mini="true">
+    <h1 style="display: none">魔卡幻想百科</h1>
+    <h1 style="display: none">魔卡幻想WIKI</h1>
     <div id="wiki-content" data-role="content">
         <div id="wiki-card-filter">
             <div data-role="collapsible-set" data-theme="c" data-content-theme="d">

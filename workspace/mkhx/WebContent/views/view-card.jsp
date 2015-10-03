@@ -24,6 +24,11 @@ $(document).ready(function () {
                     <c:if test="${cardInfo.maxInDeck > 0}">
                         <span>(限定 ${cardInfo.maxInDeck} 张)</span>
                     </c:if>
+                    <%--
+                    <span>ImgId: ${cardInfo.imageId}</span>
+                    <span>FullImgId: ${cardInfo.fullImageId}</span>
+                    <span>CardId: ${cardInfo.cardId}</span>
+                     --%>
                 </td>
             </tr>
             <tr>
