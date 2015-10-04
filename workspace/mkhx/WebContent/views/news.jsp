@@ -10,6 +10,7 @@
                 <h3>公告</h3>
                 <ul>
                     <li><a href="#" data-type="bug">魔卡幻想模拟器贴吧</a>已成立，欢迎大家来提BUG、提需求、提供技能结算细节。</li>
+                    <li><a href="<c:url value="/wiki" />">魔卡幻想WIKI</a>作为子站点正式成立，本WIKI力求做到最准确，最及时，欢迎大家来<a href="#" data-type="bug">贴吧</a>提需求和报告BUG。</li>
                     <!-- <li>小提示：如果想保存卡组，只要把卡组的文字表述记下来存在文本文件或者手机备忘录里，下次要用的时候复制回来就行。</li> -->
                     <!-- <li>小提示：可以灵活使用*0的表达法来方便配卡哦。</li> -->
                 </ul>
@@ -31,7 +32,7 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">
                 <h3>更新日志</h3>
                 <ul class="news-content">
-                    <li>2015-10-02: 升级【卡牌WIKI】为【<a href="#wiki">魔卡幻想WIKI</a>】，现在可以搜索技能了</li>
+                    <li>2015-10-02: 升级【卡牌WIKI】为【<a href="<c:url value="/wiki" />">魔卡幻想WIKI</a>】，现在可以搜索技能了</li>
                     <li>2015-10-01: 在【<a href="#boss-battle">魔神战</a>】界面添加显示魔神的技能</li>
                     <li>2015-09-29: 添加新卡<cf:c>天秤座</cf:c>、<cf:c>龙灵使者</cf:c>、<cf:c>森林弹唱者</cf:c>、<cf:c>灵峰剑姬</cf:c></li>
                     <li>2015-09-27: 修复一个【斩杀】和【冰甲】相互作用时的BUG，感谢<x>k221135</x>报告BUG</li>

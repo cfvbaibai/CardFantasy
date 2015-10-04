@@ -12,7 +12,7 @@ races[100] = '魔神';
 
 function generate() {
     var cardName = $('#card-name').val();
-    $.get("../OfficialData/Cards?names=" + cardName, function(data) {
+    $.get("../Wiki/Cards?names=" + cardName, function(data) {
         if (data.length == 0) {
             $('#card-xml').text(cardName + '不存在');
             return;
@@ -79,7 +79,7 @@ function generateSkill(skill, unlockLevel) {
 
 function showSkillLaunchTypes() {
     var skillLaunchTypes = {};
-    $.get("../OfficialData/Skills", function(data) {
+    $.get("../Wiki/Skills", function(data) {
        var i;
        for (i = 0; i < data.length; ++i) {
            var skill = data[i];
@@ -104,7 +104,7 @@ function showSkillLaunchTypes() {
 }
 
 function showBossHelpers() {
-    $.get("../OfficialData/Cards", function(data) {
+    $.get("../Wiki/Cards", function(data) {
         var i = 0;
         var card;
         var result = "";

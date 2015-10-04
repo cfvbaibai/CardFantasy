@@ -431,16 +431,13 @@ var getMap = function() {
         }
 
         var header = $('#header-template').clone();
-        header.find("a.nav-button").attr('href', '#' + currentPanelId);
+        header.find("a.left-nav-button").attr('href', '#' + currentPanelId);
         header.find("h3.header-title").text($(currentPage).attr('data-title'));
         $(currentPage).prepend(header);
         
         var panel = $('#left-panel-template').clone().attr('id', currentPanelId);
         panel.find("a[href='#" + currentPage.id + "']").addClass('ui-disabled');
         $(currentPage).prepend(panel);
-        
-        // Hide right-nav-button by default. Sub page could show it in its own pageinit event handler.
-        header.find('a.right-nav-button').hide();
 
         $(this).trigger('pagecreate');
         console.log('div.main-page -> #' + currentPanelId + '.pageinit ends');
@@ -466,7 +463,7 @@ $(document).ready(function() {
         x.innerHTML = '<a href="http://tieba.baidu.com/home/main?un=' + encodeURI(x.innerHTML) + '&ie=utf-8&fr=pb" target="_blank">' + x.innerHTML + '</a>';
     });
     $('c').each(function (i, c) {
-        c.innerHTML = '【<a href="OfficialData/Cards/' + encodeURI(c.innerHTML) + '" target="_blank">' + c.innerHTML + '</a>】';
+        c.innerHTML = '【<a href="Wiki/Cards/' + encodeURI(c.innerHTML) + '" target="_blank">' + c.innerHTML + '</a>】';
     })
     $('#news').trigger('create');
 });

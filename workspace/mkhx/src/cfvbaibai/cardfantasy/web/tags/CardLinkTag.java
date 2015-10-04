@@ -16,7 +16,7 @@ public class CardLinkTag extends SimpleTagSupport {
         String cardName = sw.toString();
         sw.close();
         JspWriter out = this.getJspContext().getOut();
-        out.print("【<a href='OfficialData/Cards/");
+        out.print("【<a href='Wiki/Cards/");
         out.print(cardName);
         out.print("' target='_blank' title='");
         out.print(cardName);

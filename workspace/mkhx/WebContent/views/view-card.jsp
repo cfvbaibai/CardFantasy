@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="header.jsp"%>
-<title>魔卡幻想卡牌信息</title>
+<title>${cardName} - 魔卡幻想WIKI</title>
 <meta name="description" content="${cardName}" />
 <meta name="keywords" content="${cardName}" />
 <script>
@@ -16,8 +16,8 @@ $(document).ready(function () {
 </head>
 <body>
     <input type="hidden" id="view-card-internal-id" value="${internalId}" />
-    <%@ include file="nav-back-header.jsp" %>
-    <table class="view-card-table">
+    <%@ include file="wiki-header.jsp" %>
+    <table class="view-card-table wiki-table">
         <tbody>
             <tr>
                 <td id="view-card-name" class="title" colspan="5">
@@ -33,7 +33,9 @@ $(document).ready(function () {
                 </td>
             </tr>
             <tr>
-                <td id="view-card-logo" class="logo" rowspan="2">LOGO</td>
+                <td id="view-card-logo" class="logo" rowspan="2">
+                    <img src="<c:url value="/resources/img/cardlogo/" />/${internalId}.jpg" />
+                </td>
                 <td class="label">种族星级</td>
                 <td id="view-card-race-star" class="value">${cardInfo.raceName}${cardInfo.color}星</td>
                 <td class="label">等待</td>

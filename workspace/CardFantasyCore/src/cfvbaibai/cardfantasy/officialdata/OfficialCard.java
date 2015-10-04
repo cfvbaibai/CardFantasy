@@ -75,7 +75,7 @@ public class OfficialCard {
     public int Color;
     public String ActivityPacketRoll;
     public String Glory;
-    public String Race;
+    public int Race;
     public int[] HpArray;
     public String Rank;
     public int Wait;
@@ -134,7 +134,7 @@ public class OfficialCard {
         return this.CardName;
     }
     public String getRaceName() {
-        return toRaceName(this.Race);
+        return OfficialCard.getRaceNameById(this.getRace());
     }
     public int getColor() {
         return this.Color;
@@ -160,14 +160,18 @@ public class OfficialCard {
     public int getMaxInDeck() {
         return this.MaxInDeck;
     }
-
-    public static String toRaceName(String raceId) {
-        if ("1".equals(raceId)) { return "王国"; }
-        if ("2".equals(raceId)) { return "森林"; }
-        if ("3".equals(raceId)) { return "蛮荒"; }
-        if ("4".equals(raceId)) { return "地狱"; }
-        if ("97".equals(raceId)) { return "魔王"; }
-        if ("100".equals(raceId)) { return "魔神"; }
-        return "未知";
+    public int getRace() {
+        return this.Race;
+    }
+    public static String getRaceNameById(int raceId) {
+        switch (raceId) {
+        case 1: return "王国";
+        case 2: return "森林";
+        case 3: return "蛮荒";
+        case 4: return "地狱";
+        case 97: return "魔王";
+        case 100: return "魔神";
+        default: return "未知";
+        }
     }
 }

@@ -262,6 +262,20 @@ div.wiki-skill-result div {
     width: 125px;
 }
 
+div.wiki-categories > div {
+    float: left;
+    width: 15%;
+    min-width: 100px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+div.wiki-categories > div:last-child {
+    float: none;
+    clear: both;
+}
+
 div.header-template {
     max-width: 800px;
     margin-left: auto;
@@ -365,8 +379,7 @@ div.dashboard ul {
     display: none;
 }
 
-table.view-card-table,
-table.view-skill-table {
+table.wiki-table {
     margin-left: auto;
     margin-right: auto;
     text-align: center;
@@ -377,8 +390,7 @@ table.view-skill-table {
     background-color: white;
 }
 
-table.view-card-table td,
-table.view-skill-table td {
+table.wiki-table td {
     border: 1px #AAAAAA solid;
     vertical-align: middle;
 }
@@ -404,11 +416,20 @@ table.view-card-table td.value {
     width: 20%;
 }
 
-table.view-card-table td.title,
-table.view-skill-table td.title {
+table.wiki-table td.title {
     height: 55px;
     font-size: larger;
     font-weight: bold;
+}
+
+table.wiki-table td.content > div {
+    text-align: center;
+    float: left;
+    width: 120px;
+}
+
+table.wiki-table td.content > div:last-child {
+    clear: both;
 }
 
 table.view-card-table td.skill {
@@ -448,4 +469,8 @@ table.view-skill-table tr.content td:nth-child(2) {
 table.view-skill-table tr.content td:nth-child(3) {
     font-size: smaller;
     width: 25%;
+}
+
+table.view-card-category-table td.label {
+    width: 50px;
 }

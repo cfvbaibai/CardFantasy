@@ -4,12 +4,10 @@
 <title>魔卡幻想技能信息</title>
 <meta name="description" content="${skillType}" />
 <meta name="keywords" content="${skillType}" />
-<script>
-</script>
 </head>
 <body>
-    <%@ include file="nav-back-header.jsp" %>
-    <table class="view-skill-table">
+    <%@ include file="wiki-header.jsp" %>
+    <table class="view-skill-table wiki-table">
         <tbody>
             <tr>
                 <td id="view-skill-type" class="title" colspan="4">${skillType}</td>

@@ -25,23 +25,15 @@ var toRaceText = function(race) {
 var store = {};
 $(document).on("pageinit", "#wiki", function(event) {
     CardFantasy.Core.uploadToCnzzUrl('wiki');
-
-    var queryUrl = 'OfficialData/SkillTypes';
-    $.get(queryUrl, function(data) {
-        var result = '<div class="wiki-skill-result">';
-        for (var i = 0; i < data.length; ++i) {
-            var skillType = data[i];
-            result += '<div style="float: left"><a href="OfficialData/Skills/' + skillType + '" target="_blank">' + skillType + '</a></div>';
-        }
-        result += '<div style="clear: both"></div></div>';
-        $('#wiki-skill-result').html(result);
-    });
-
+    if ($(window).width() < 400) {
+        //$('#wiki > div > div').addClass('ui-collapsible-content-collapsed');
+        //$(this).trigger('pagecreate');
+    }
     $('#wiki-card-search').click(function() {
         var starFilter = $('#wiki-card-star-filter').val();
         var raceFilter = $('#wiki-card-race-filter').val();
         var skillTypeFilter = $('#wiki-card-skill-type-filter').val();
-        var queryUrl ='OfficialData/Cards?stars=' + starFilter + '&races=' + raceFilter + '&skillTypes=' + skillTypeFilter;
+        var queryUrl ='Wiki/Cards?stars=' + starFilter + '&races=' + raceFilter + '&skillTypes=' + skillTypeFilter;
 
         $('#wiki-card-search').addClass('ui-disabled');
         $.mobile.loading('show');
@@ -54,7 +46,7 @@ $(document).on("pageinit", "#wiki", function(event) {
             narrowResult += "<tr><td>卡牌</td><td>星数</td><td>种族</td></tr>";
             var getSkillHtml = function(skill) {
                 if (!skill) { return ''; }
-                return '<a href="OfficialData/Skills/' + skill.Name + '" target="_blank">' + skill.Name + '</a>';
+                return '<a href="Wiki/Skills/' + skill.Name + '" target="_blank">' + skill.Name + '</a>';
             }
             $.each(data, function(i, cardInfo) {
                 var card = cardInfo.card;
@@ -63,7 +55,7 @@ $(document).on("pageinit", "#wiki", function(event) {
                 var skill3 = getSkillHtml(cardInfo.skill3);
                 var skill4 = getSkillHtml(cardInfo.skill4);
                 var skill5 = getSkillHtml(cardInfo.skill5);
-                var cardName = "<a href='OfficialData/Cards/" + card.CardName + "' target='_blank'>" + card.CardName + "</a>";
+                var cardName = "<a href='Wiki/Cards/" + card.CardName + "' target='_blank'>" + card.CardName + "</a>";
                 var starText = toStarText(card.Color);
                 var raceText = toRaceText(card.Race);
 
@@ -86,14 +78,11 @@ $(document).on("pageinit", "#wiki", function(event) {
             narrowResult += "</table>";
             $('#wiki-card-result').html(wideResult + narrowResult);
             $('#wiki-card-result').parent().removeClass('ui-collapsible-content-collapsed');
-            $('#wiki-skill-result').parent().addClass('ui-collapsible-content-collapsed');
         }).complete(function () {
             $('#wiki-card-search').removeClass('ui-disabled');
             $.mobile.loading('hide');
         });
     });
-    
-    $('#wiki-card-search').click();
 });
 
 })(CardFantasy.Wiki);

@@ -92,4 +92,64 @@ public class OfficialDataStore {
         String skillType = matcher.group("SkillType");
         return skillType;
     }
+
+    public List<OfficialCard> getCardOfStar(int star) {
+        List<OfficialCard> result = new ArrayList<OfficialCard>();
+        for (OfficialCard card : cardStore.data.Cards) {
+            if (card.getColor() == star) {
+                result.add(card);
+            }
+        }
+        return result;
+    }
+
+    public String[] getRaceNames() {
+        return new String[] { "王国", "森林", "蛮荒", "地狱", "魔王", "魔神" };
+    }
+
+    public String getRaceNameById(int raceId) {
+        return OfficialCard.getRaceNameById(raceId);
+    }
+
+    public List<OfficialCard> getCardOfRace(int race) {
+        List<OfficialCard> result = new ArrayList<OfficialCard>();
+        for (OfficialCard card : cardStore.data.Cards) {
+            if (card.getRace() == race) {
+                result.add(card);
+            }
+        }
+        return result;
+    }
+
+    private List<OfficialSkillCategory> skillCategoriesCache;
+    public List<OfficialSkillCategory> getSkillCategories() {
+        if (this.skillCategoriesCache != null) {
+            return this.skillCategoriesCache;
+        }
+        List<Integer> skillCategoryIds = new ArrayList<Integer>();
+        for (OfficialSkill skill : this.skillStore.data.Skills) {
+            if (!skillCategoryIds.contains(Integer.valueOf(skill.getCategory()))) {
+                skillCategoryIds.add(skill.getCategory());
+            }
+        }
+        List<OfficialSkillCategory> skillCategories = new ArrayList<OfficialSkillCategory>();
+        for (Integer skillCategoryId : skillCategoryIds) {
+            skillCategories.add(new OfficialSkillCategory(skillCategoryId));
+        }
+        this.skillCategoriesCache = skillCategories;
+        return this.skillCategoriesCache;
+    }
+
+    public List<String> getSkillTypesByCategory(int category) {
+        List<String> result = new ArrayList<String>();
+        for (OfficialSkill skill : this.skillStore.data.Skills) {
+            if (skill.getCategory() == category) {
+                String skillType = this.getSkillTypeFromName(skill.getName());
+                if (!result.contains(skillType)) {
+                    result.add(skillType);
+                }
+            }
+        }
+        return result;
+    }
 }

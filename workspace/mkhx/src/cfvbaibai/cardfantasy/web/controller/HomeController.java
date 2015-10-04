@@ -51,7 +51,6 @@ public class HomeController {
         List<LilithStartupInfo> allLilithData = lilithDataStore.getAll();
         Collections.sort(allLilithData, new LilithDataComparator());
         mv.addObject("lilithDatas", allLilithData);
-        mv.addObject("officialCardData", officialDataStore.cardStore.data.Cards);
         this.userActionRecorder.addAction(new UserAction(new Date(), request.getRemoteAddr(), "Visit Home", ""));
         return mv;
     }

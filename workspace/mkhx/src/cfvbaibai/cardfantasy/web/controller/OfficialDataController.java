@@ -20,11 +20,13 @@ import cfvbaibai.cardfantasy.data.CardDataStore;
 import cfvbaibai.cardfantasy.officialdata.OfficialCard;
 import cfvbaibai.cardfantasy.officialdata.OfficialDataStore;
 import cfvbaibai.cardfantasy.officialdata.OfficialSkill;
+import cfvbaibai.cardfantasy.officialdata.OfficialSkillCategory;
 import cfvbaibai.cardfantasy.web.ErrorHelper;
 import cfvbaibai.cardfantasy.web.beans.JsonHandler;
 import cfvbaibai.cardfantasy.web.beans.Logger;
 import cfvbaibai.cardfantasy.web.beans.OfficialCardInfo;
 import cfvbaibai.cardfantasy.web.beans.OfficialSkillInfo;
+import cfvbaibai.cardfantasy.web.beans.SubCategory;
 import cfvbaibai.cardfantasy.web.beans.UserAction;
 import cfvbaibai.cardfantasy.web.beans.UserActionRecorder;
 
@@ -56,7 +58,79 @@ public class OfficialDataController {
         return filterText;
     }
 
-    @RequestMapping(value = "/OfficialData/Cards/{cardName}")
+    @RequestMapping(value = "/Wiki/Cards/Stars/{star}")
+    public ModelAndView queryCardOfStars(HttpServletRequest request,
+            @PathVariable("star") int star, HttpServletResponse response) throws IOException {
+        this.logger.info("Getting cards of star: " + star);
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("view-card-category");
+        mv.addObject("category", star + "星卡牌");
+        List<SubCategory> subCategories = new ArrayList<SubCategory>();
+        try {
+            List<OfficialCard> cards = this.officialStore.getCardOfStar(star);
+            for (String raceName : this.officialStore.getRaceNames()) {
+                SubCategory subCategory = new SubCategory();
+                subCategory.setName(raceName);
+                for (OfficialCard card : cards) {
+                    if (card.getRaceName().equals(raceName)) {
+                        subCategory.addCard(card);
+                    }
+                }
+                subCategories.add(subCategory);
+            }
+            mv.addObject("subCategories", subCategories);
+        } catch (Exception e) {
+            this.logger.error(e);
+        }
+        return mv;
+    }
+
+    @RequestMapping(value = "/Wiki/Cards/Races/{race}")
+    public ModelAndView queryCardOfRaces(HttpServletRequest request,
+            @PathVariable("race") int race, HttpServletResponse response) throws IOException {
+        this.logger.info("Getting cards of race: " + race);
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("view-card-category");
+        String raceName = this.officialStore.getRaceNameById(race);
+        mv.addObject("category", raceName + "卡牌");
+        List<SubCategory> subCategories = new ArrayList<SubCategory>();
+        try {
+            List<OfficialCard> cards = this.officialStore.getCardOfRace(race);
+            for (int i = 1; i <= 5; ++i) {
+                SubCategory subCategory = new SubCategory();
+                subCategory.setName(i + "星");
+                for (OfficialCard card : cards) {
+                    if (card.getColor() == i) {
+                        subCategory.addCard(card);
+                    }
+                }
+                subCategories.add(subCategory);
+            }
+            mv.addObject("subCategories", subCategories);
+        } catch (Exception e) {
+            this.logger.error(e);
+        }
+        return mv;
+    }
+
+    @RequestMapping(value = "/Wiki/Skills/Categories/{category}")
+    public ModelAndView querySkillsOfCategories(HttpServletRequest request,
+            @PathVariable("category") int categoryId, HttpServletResponse response) throws IOException {
+        this.logger.info("Getting skills of category: " + categoryId);
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("view-skill-category");
+        String categoryName = OfficialSkillCategory.getCategoryNameFromId(categoryId);
+        mv.addObject("category", categoryName + "技能");
+        try {
+            List<String> skillTypes = this.officialStore.getSkillTypesByCategory(categoryId);
+            mv.addObject("skillTypes", skillTypes);
+        } catch (Exception e) {
+            this.logger.error(e);
+        }
+        return mv;
+    }
+
+    @RequestMapping(value = "/Wiki/Cards/{cardName}")
     public ModelAndView queryCard(HttpServletRequest request,
             @PathVariable("cardName") String cardName, HttpServletResponse response) throws IOException {
         ModelAndView mv = new ModelAndView();
@@ -86,7 +160,7 @@ public class OfficialDataController {
         return mv;
     }
 
-    @RequestMapping(value = "/OfficialData/Skills/{skillName}")
+    @RequestMapping(value = "/Wiki/Skills/{skillName}")
     public ModelAndView querySkill(HttpServletRequest request, @PathVariable("skillName") String skillName,
             HttpServletResponse response) throws IOException {
         ModelAndView mv = new ModelAndView();
@@ -122,7 +196,7 @@ public class OfficialDataController {
         return mv;
     }
 
-    @RequestMapping(value = "/OfficialData/SkillTypes", headers = "Accept=application/json")
+    @RequestMapping(value = "/Wiki/SkillTypes", headers = "Accept=application/json")
     public void querySkills(HttpServletRequest request, HttpServletResponse response,
             @RequestParam(value = "categories", required = false) String categoriesFilter,
             @RequestParam(value = "names", required = false) String namesFilter) throws IOException {
@@ -161,7 +235,7 @@ public class OfficialDataController {
         response.getWriter().println(jsonHandler.toJson(result));
     }
 
-    @RequestMapping(value = "/OfficialData/Cards", headers = "Accept=application/json")
+    @RequestMapping(value = "/Wiki/Cards", headers = "Accept=application/json")
     public void queryCards(HttpServletRequest request, HttpServletResponse response,
             @RequestParam(value = "stars", required = false) String starFilter,
             @RequestParam(value = "races", required = false) String raceFilter,

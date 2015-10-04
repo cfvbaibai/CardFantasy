@@ -37,4 +37,10 @@ public class OfficialSkill {
     public int getCategory() {
         return this.SkillCategory;
     }
+    public String getCategoryName() {
+        return OfficialSkillCategory.getCategoryNameFromId(getCategory());
+    }
+    public int getType() {
+        return this.Type;
+    }
 }
