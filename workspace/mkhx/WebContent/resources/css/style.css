@@ -371,7 +371,7 @@ table.view-skill-table {
     margin-right: auto;
     text-align: center;
     width: 100%;
-    max-width: 600px;
+    max-width: 800px;
     border-collapse: collapse;
     border: 1px #AAAAAA solid;
     background-color: white;
@@ -428,10 +428,6 @@ table.view-card-table td.skill div:nth-child(2) {
     font-size: smaller;
     color: #999999;
     margin-top: 5px;
-}
-
-table.view-skill-table {
-    max-width: 1024px;
 }
 
 table.view-skill-table td {

@@ -16,6 +16,7 @@ $(document).ready(function () {
 </head>
 <body>
     <input type="hidden" id="view-card-internal-id" value="${internalId}" />
+    <%@ include file="nav-back-header.jsp" %>
     <table class="view-card-table">
         <tbody>
             <tr>

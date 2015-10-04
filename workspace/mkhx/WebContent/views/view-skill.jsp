@@ -8,6 +8,7 @@
 </script>
 </head>
 <body>
+    <%@ include file="nav-back-header.jsp" %>
     <table class="view-skill-table">
         <tbody>
             <tr>
