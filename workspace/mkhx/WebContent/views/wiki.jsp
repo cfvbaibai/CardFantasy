@@ -97,8 +97,8 @@
                 </div>
             </div>
         </div>
-        <div data-role="footer" data-position="fixed" data-content-theme="d" data-theme="c">  
-            <div data-role="navbar">  
+        <div class="wiki-footer" data-role="footer" data-position="fixed" data-content-theme="d" data-theme="c">  
+            <div data-role="navbar">
                 <ul>  
                     <li><a href="#wiki-card-pedia" target="_self">卡牌</a></li>  
                     <li><a href="#wiki-rune-pedia" target="_self">符文</a></li>  

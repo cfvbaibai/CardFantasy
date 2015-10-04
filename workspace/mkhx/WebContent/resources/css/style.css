@@ -276,6 +276,17 @@ div.wiki-categories > div:last-child {
     clear: both;
 }
 
+div.wiki-footer {
+     max-width: 800px;
+     margin-left: auto;
+     margin-right: auto;
+}
+@media (min-height: 600px) {
+    div.wiki-footer {
+        display: none;
+    }
+}
+
 div.header-template {
     max-width: 800px;
     margin-left: auto;
