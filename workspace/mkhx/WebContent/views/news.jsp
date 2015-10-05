@@ -32,7 +32,7 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">
                 <h3>更新日志</h3>
                 <ul class="news-content">
-                    <li>2015-10-05: 【<a href="<c:url value="/wiki" />">WIKI</a>】中添加了符文信息</li>
+                    <li>2015-10-05: 【<a href="<c:url value="/wiki" />">WIKI</a>】中添加了符文和关卡信息</li>
                     <li>2015-10-02: 升级【卡牌WIKI】为【<a href="<c:url value="/wiki" />">魔卡幻想WIKI</a>】，现在可以搜索技能了</li>
                     <li>2015-10-01: 在【<a href="#boss-battle">魔神战</a>】界面添加显示魔神的技能</li>
                     <li>2015-09-29: 添加新卡<cf:c>天秤座</cf:c>、<cf:c>龙灵使者</cf:c>、<cf:c>森林弹唱者</cf:c>、<cf:c>灵峰剑姬</cf:c></li>
@@ -53,7 +53,7 @@
                         <li>修复【不屈】在我方回合被触发时的处理机制，感谢<x>pk810219899</x>发现BUG</li>
                     </ul></li>
                     <li>2015-09-08: 改进【<a href="#boss-battle">魔神战</a>】的结果显示，现在除了基本信息外，还会有伤害分布图：
-                        <img class='help-img' src='<c:url value="/resources/img/help/DamageDistributionChart.png" />' />
+                        <img class='help-img' alt="伤害分布图" src='<c:url value="/resources/img/help/DamageDistributionChart.png" />' />
                     </li>
                     <li>2015-09-06: 修复一个【送还】、【不动】、【魔神之刃】相互作用时候的BUG，感谢<x>dzx276941963</x>发现BUG</li>
                     <li>2015-09-03: <ul>
@@ -68,8 +68,8 @@
                     <li>2015-08-27: 添加新卡<cf:c>雪月花</cf:c></li>
                     <li>2015-08-15: <ul>
                         <li>添加【保存录像】和【<a href="#view-video-page">播放录像</a>】供能<br />
-                        <img class='help-img' src='<c:url value="/resources/img/help/showSaveVideoDataPanel.jpg" />' />
-                        <img class='help-img' src='<c:url value="/resources/img/help/copyVideoData.jpg" />' /><br />
+                        <img class='help-img' alt="保存录像" src='<c:url value="/resources/img/help/showSaveVideoDataPanel.jpg" />' />
+                        <img class='help-img' alt="复制录像数据" src='<c:url value="/resources/img/help/copyVideoData.jpg" />' /><br />
                         <span>然后将录像数据保存到随便什么地方，或者分享到贴吧</span><br />
                         <span>要观看录像的小伙伴可以把录像数据直接复制进【<a href="#view-video-page">播放录像</a>】的界面里观看</span><br />
                         <li>修复一个魔神战COST显示的BUG，感谢<x>wanghwx2014</x>报告BUG</li>
@@ -151,8 +151,8 @@
                     <li>2015-05-09: <ul>
                         <li>取消COST和卡槽数量限制，方便地下城的模拟</li>
                         <li>现在可以在竞技场战里设置胜利条件了: <br />
-                            <img class='help-img' src='<c:url value="/resources/img/help/VictoryCondition1.png" />' />
-                            <img class='help-img' src='<c:url value="/resources/img/help/VictoryCondition2.png" />' />
+                            <img class='help-img' alt="胜利条件1" src='<c:url value="/resources/img/help/VictoryCondition1.png" />' />
+                            <img class='help-img' alt="胜利条件2" src='<c:url value="/resources/img/help/VictoryCondition2.png" />' />
                         </li>
                     </ul></li>
                     <li>2015-04-25: <ul>

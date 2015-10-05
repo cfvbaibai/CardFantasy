@@ -4,15 +4,6 @@
 <title>${cardName} - 魔卡幻想WIKI</title>
 <meta name="description" content="${cardName}" />
 <meta name="keywords" content="${cardName}" />
-<script>
-$(document).ready(function () {
-    var internalId = $('#view-card-internal-id').val();
-    if (!internalId) {
-        return;
-    }
-    $('#view-card-logo').html('<img src="' + resDir + '/img/cardlogo/' + internalId + '.jpg" />');
-});
-</script>
 </head>
 <body>
     <input type="hidden" id="view-card-internal-id" value="${internalId}" />
@@ -34,7 +25,7 @@ $(document).ready(function () {
             </tr>
             <tr>
                 <td id="view-card-logo" class="logo" rowspan="2">
-                    <img src="${cardInfo.logoUrl}" />
+                    <div><img alt="${cardInfo.cardName}" src="${cardInfo.logoUrl}" style="background: url('${defaultLogoUrl}')" /></div>
                 </td>
                 <td class="label">种族星级</td>
                 <td id="view-card-race-star" class="value">${cardInfo.raceName}${cardInfo.color}星</td>

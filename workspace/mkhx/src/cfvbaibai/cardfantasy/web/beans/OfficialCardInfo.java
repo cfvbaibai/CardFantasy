@@ -69,7 +69,7 @@ public class OfficialCardInfo {
     public String getFullImageId() {
         return this.card.FullImageId;
     }
-    public String getCardId() {
+    public int getCardId() {
         return this.card.CardId;
     }
     public String getLogoUrl() {

@@ -23,12 +23,14 @@ import cfvbaibai.cardfantasy.officialdata.OfficialRune;
 import cfvbaibai.cardfantasy.officialdata.OfficialRuneProperty;
 import cfvbaibai.cardfantasy.officialdata.OfficialSkill;
 import cfvbaibai.cardfantasy.officialdata.OfficialSkillCategory;
+import cfvbaibai.cardfantasy.officialdata.OfficialStage;
 import cfvbaibai.cardfantasy.web.ErrorHelper;
 import cfvbaibai.cardfantasy.web.beans.JsonHandler;
 import cfvbaibai.cardfantasy.web.beans.Logger;
 import cfvbaibai.cardfantasy.web.beans.OfficialCardInfo;
 import cfvbaibai.cardfantasy.web.beans.OfficialRuneInfo;
 import cfvbaibai.cardfantasy.web.beans.OfficialSkillInfo;
+import cfvbaibai.cardfantasy.web.beans.OfficialStageInfo;
 import cfvbaibai.cardfantasy.web.beans.SubCategory;
 import cfvbaibai.cardfantasy.web.beans.UserAction;
 import cfvbaibai.cardfantasy.web.beans.UserActionRecorder;
@@ -179,6 +181,39 @@ public class OfficialDataController {
         mv.setViewName("view-skill-category");
         String categoryName = OfficialSkillCategory.getCategoryNameFromId(categoryId);
         mv.addObject("category", categoryName + "技能");
+        List<SubCategory<String>> subCategories = new ArrayList<SubCategory<String>>();
+        try {
+            List<String> skillTypes = this.officialStore.getSkillTypesByCategory(categoryId);
+            for (String skillType : skillTypes) {
+                String subCategoryName = "普通";
+                if (skillType.startsWith("[降临]")) {
+                    subCategoryName = "降临";
+                } else if (skillType.startsWith("[死契]")) {
+                    subCategoryName = "死契";
+                } else if (skillType.startsWith("召唤")) {
+                    subCategoryName = "召唤";
+                } else if (skillType.startsWith("觉醒")) {
+                    subCategoryName = "觉醒";
+                }
+                boolean subCategoryFound = false;
+                for (SubCategory<String> subCategory : subCategories) {
+                    if (subCategory.getName().equals(subCategoryName)) {
+                        subCategory.addItem(skillType);
+                        subCategoryFound = true;
+                        break;
+                    }
+                }
+                if (!subCategoryFound) {
+                    SubCategory<String> newSubCategory = new SubCategory<String>();
+                    newSubCategory.setName(subCategoryName);
+                    newSubCategory.addItem(skillType);
+                    subCategories.add(newSubCategory);
+                }
+            }
+            mv.addObject("subCategories", subCategories);
+        } catch (Exception e) {
+            this.logger.error(e);
+        }
         try {
             List<String> skillTypes = this.officialStore.getSkillTypesByCategory(categoryId);
             mv.addObject("skillTypes", skillTypes);
@@ -238,6 +273,7 @@ public class OfficialDataController {
             OfficialCardInfo cardInfo = OfficialCardInfo.build(card, myStore, officialStore.skillStore.data);
             mv.addObject("cardInfo", cardInfo);
             mv.addObject("cardName", cardName);
+            mv.addObject("defaultLogoUrl", OfficialDataStore.DEFAULT_LOGO_110x110_URL);
         } catch (Exception e) {
             this.logger.error(e);
         }
@@ -257,10 +293,6 @@ public class OfficialDataController {
             }
             mv.setViewName("view-skill");
             String skillType = this.officialStore.getSkillTypeFromName(skillName);
-            if (skillType == null) {
-                response.setStatus(404);
-                return mv;
-            }
             OfficialSkill[] skills = this.officialStore.getSkillsByType(skillType);
             if (skills.length == 0) {
                 response.setStatus(404);
@@ -277,6 +309,21 @@ public class OfficialDataController {
         } catch (Exception e) {
             this.logger.error(e);
         }
+        return mv;
+    }
+
+    @RequestMapping(value = "/Wiki/Stages/{stageId}")
+    public ModelAndView queryStage(HttpServletRequest request, @PathVariable("stageId") int stageId,
+            HttpServletResponse response) throws IOException {
+        ModelAndView mv = new ModelAndView();
+        OfficialStage stage = this.officialStore.getStageById(stageId);
+        if (stage == null) {
+            response.setStatus(404);
+            return mv;
+        }
+        mv.setViewName("view-stage");
+        OfficialStageInfo stageInfo = new OfficialStageInfo(stage, officialStore);
+        mv.addObject("stageInfo", stageInfo);
         return mv;
     }
 

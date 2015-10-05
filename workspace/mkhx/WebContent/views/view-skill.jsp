@@ -22,10 +22,13 @@
             <tr class="content">
                 <td>${skillInfo.name}</td>
                 <td>${skillInfo.description}</td>
-                <td>
+                <td class="content">
                     <c:forEach var="owningCard" items="${skillInfo.owningCards}">
+                    <div class="item">
                         <a href="../Cards/${owningCard.cardName}">${owningCard.cardName}</a>
+                    </div>
                     </c:forEach>
+                    <div></div>
                 </td>
                 <td>
                     <c:forEach var="owningRune" items="${skillInfo.owningRunes}">

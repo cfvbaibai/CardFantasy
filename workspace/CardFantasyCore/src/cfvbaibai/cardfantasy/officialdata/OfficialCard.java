@@ -66,7 +66,7 @@ public class OfficialCard {
     public String FragRobber;
     public String FragRacePacket;
     public int[] AttackArray;
-    public String CardId;
+    public int CardId;
     private String CardName;
     public String Attack;
     public int Cost;

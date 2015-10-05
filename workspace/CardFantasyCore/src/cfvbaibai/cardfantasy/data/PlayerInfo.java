@@ -177,4 +177,8 @@ public class PlayerInfo {
     public void removeCard(Card card) {
         this.cards.remove(card);
     }
+    
+    public static int getHpAtLevel(int level) {
+        return hps[level];
+    }
 }

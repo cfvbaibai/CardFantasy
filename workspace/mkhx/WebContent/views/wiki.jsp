@@ -68,10 +68,15 @@
                     </div>
                 </div>
             </div>
-            <div id="wiki-map-pedia" data-role="collapsible" data-collapsed="true" data-mini="true" data-content-theme="d" data-theme="c">
-                <h3>地图图鉴（施工中……）</h3>
-                <div id="wiki-map-pedia" class="wiki-result">
-                    <div>施工中……</div>
+            <div id="wiki-stage-pedia" data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">
+                <h3>地图图鉴</h3>
+                <div id="wiki-stage-pedia" class="wiki-result">
+                    <div class="wiki-categories">
+                        <c:forEach var="stageInfo" items="${stageInfos}">
+                            <div><a href="Wiki/Stages/${stageInfo.mapStageId}">${stageInfo.fullName}</a></div>
+                        </c:forEach>
+                        <div></div>
+                    </div>
                 </div>
             </div>
             <div id="wiki-search-box" data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">

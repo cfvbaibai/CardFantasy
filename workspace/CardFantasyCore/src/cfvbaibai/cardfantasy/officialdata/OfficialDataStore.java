@@ -11,13 +11,15 @@ import com.google.gson.Gson;
 
 public class OfficialDataStore {
     public final static String IFREE_CDN_BASE = "http://cache.ifreecdn.com/mkhx/public/swf";
+    public final static String DEFAULT_LOGO_110x110_URL = IFREE_CDN_BASE + "/card/110_110/img_photoCard_default.jpg";
     public OfficialSkillDataStore skillStore;
     public OfficialCardDataStore cardStore;
     public OfficialRuneDataStore runeStore;
+    public OfficialStageDataStore stageStore;
 
     private final static String SKILL_REGEX = 
             "^" +
-            "(?<SkillType>[^\\d]+)" +
+            "(?<SkillType>.*[^\\d]+)" +
             "(?<SkillLevel>\\d*)" +
             "$";
 
@@ -47,13 +49,21 @@ public class OfficialDataStore {
             cardDataReader.close();
         }
         InputStreamReader runeDataReader = new InputStreamReader(
-                OfficialDataStore.class.getClassLoader().getResourceAsStream("cfvbaibai/cardfantasy/officialdata/allrune"),
-                "UTF-8");
-            try {
-                newInstance.runeStore = gson.fromJson(runeDataReader, OfficialRuneDataStore.class);
-            } finally {
-                runeDataReader.close();
-            }
+            OfficialDataStore.class.getClassLoader().getResourceAsStream("cfvbaibai/cardfantasy/officialdata/allrune"),
+            "UTF-8");
+        try {
+            newInstance.runeStore = gson.fromJson(runeDataReader, OfficialRuneDataStore.class);
+        } finally {
+            runeDataReader.close();
+        }
+        InputStreamReader stageDataReader = new InputStreamReader(
+            OfficialDataStore.class.getClassLoader().getResourceAsStream("cfvbaibai/cardfantasy/officialdata/allstage"),
+            "UTF-8");
+        try {
+            newInstance.stageStore = gson.fromJson(stageDataReader, OfficialStageDataStore.class);
+        } finally {
+            stageDataReader.close();
+        }
         instance = newInstance;
         return newInstance;
     }
@@ -97,7 +107,7 @@ public class OfficialDataStore {
     public String getSkillTypeFromName(String skillName) {
         Matcher matcher = SKILL_PATTERN.matcher(skillName);
         if (!matcher.find()) {
-            return null;
+            return skillName;
         }
         String skillType = matcher.group("SkillType");
         return skillType;
@@ -191,6 +201,42 @@ public class OfficialDataStore {
         for (OfficialRune rune : this.runeStore.data.Runes) {
             if (rune.getRuneName().equalsIgnoreCase(runeName)) {
                 return rune;
+            }
+        }
+        return null;
+    }
+
+    public OfficialStage getStageById(int stageId) {
+        for (OfficialStage stage : this.stageStore.data) {
+            if (stage.MapStageId == stageId) {
+                return stage;
+            }
+        }
+        return null;
+    }
+
+    public OfficialCard getCardById(int id) {
+        for (OfficialCard card : this.cardStore.data.Cards) {
+            if (card.CardId == id) {
+                return card;
+            }
+        }
+        return null;
+    }
+
+    public OfficialRune getRuneById(int id) {
+        for (OfficialRune rune : this.runeStore.data.Runes) {
+            if (rune.RuneId == id) {
+                return rune;
+            }
+        }
+        return null;
+    }
+
+    public OfficialSkill getSkillById(String id) {
+        for (OfficialSkill skill : this.skillStore.data.Skills) {
+            if (skill.SkillId.equals(id)) {
+                return skill;
             }
         }
         return null;

@@ -230,32 +230,6 @@ table.wiki-card-result-wide tr td:nth-child(7),
 table.wiki-card-result-wide tr td:nth-child(8) {
     text-align: center;
 }
-@media (max-width: 400px) {
-    table.wiki-card-result-wide {
-        display: none;
-    }
-    table.wiki-card-result-narrow {
-        display: table;
-        border-collapse: collapse;
-        width: 100%;
-    }
-    table.wiki-card-result-narrow tr.normal-line td:nth-child(1),
-    table.wiki-card-result-narrow tr.normal-line td:nth-child(2) {
-        width: 1px;
-        white-space: nowrap;
-    }
-    table.wiki-card-result-narrow tr {
-        border-style: solid;
-        border-color: #BBBBBB;
-        border-width: 0 1px 0 1px;
-    }
-    table.wiki-card-result-narrow tr:first-child {
-        border-width: 1px 1px 1px 1px;
-    }
-    table.wiki-card-result-narrow tr.skill-extra-line {
-        border-bottom-width: 1px;
-    }
-}
 
 div.wiki-skill-result div {
     margin: 5px;
@@ -482,15 +456,36 @@ table.view-skill-table tr.content td:nth-child(1) {
 
 table.view-skill-table tr.content td:nth-child(2) {
     text-align: left;
-    width: 50%;
+    width: 40%;
     padding-left: 2%;
 }
 
-table.view-skill-table tr.content td:nth-child(3) {
-    font-size: smaller;
-    width: 25%;
+table.view-skill-table tr.content td:nth-child(3),
+table.view-skill-table tr.content td:nth-child(4) {
+    min-width: 40px;
+    padding-left: 1%;
+    padding-right: 1%;
 }
 
+table.view-skill-table tr.content td:nth-child(3) div {
+    font-size: smaller;
+    width: 80px;
+    text-align: left;
+}
+table.view-skill-table tr.content td:nth-child(4) div {
+    font-size: smaller;
+    width: 40px;
+}
+table.view-skill-table tr.content td:nth-child(3) div:last-child,
+table.view-skill-table tr.content td:nth-child(4) div:last-child {
+    width: 0;
+    float: none;
+    clear: both;
+}
+
+table.view-skill-category-table td.label {
+    width: 10%;
+}
 table.view-rune-table td.label {
     width: 20%;
 }
@@ -504,4 +499,96 @@ table.view-rune-table td.value {
 
 table.view-category-table td.label {
     width: 50px;
+}
+
+table.view-stage-detail-table {
+    margin: 10px 0 10px 0;
+}
+
+table.view-stage-detail-table td.bonus > div {
+    margin: 5px 0 5px 2%;
+    font-size: smaller;
+    text-align: left;
+}
+
+table.view-stage-detail-table td.value > div {
+    margin: 2px 0 2px 0;
+    text-align: left;
+}
+
+table.view-stage-detail-table td.label:nth-child(1) {
+    width: 10%;
+}
+
+table.view-stage-detail-table td.label:nth-child(2) {
+    width: 35%;
+}
+
+table.view-stage-detail-table td.value:nth-child(2) {
+    font-size: smaller;
+}
+
+table.view-stage-detail-table td.cards,
+table.view-stage-detail-table td.runes {
+    font-size: smaller;
+    text-align: left;
+    padding: 8px;
+}
+
+table.view-stage-detail-table td.cards div.item {
+    float: left;
+    width: 180px;
+}
+
+table.view-stage-detail-table td.runes div.item {
+    float: left;
+    width: 50px;
+}
+
+table.view-stage-detail-table div.clear {
+    float: none;
+    clear: both;
+}
+
+@media (max-width: 400px) {
+    table.wiki-table td.label {
+        font-size: smaller;
+    }
+    table.wiki-card-result-wide {
+        display: none;
+    }
+    table.wiki-card-result-narrow {
+        display: table;
+        border-collapse: collapse;
+        width: 100%;
+    }
+    table.wiki-card-result-narrow tr.normal-line td:nth-child(1),
+    table.wiki-card-result-narrow tr.normal-line td:nth-child(2) {
+        width: 1px;
+        white-space: nowrap;
+    }
+    table.wiki-card-result-narrow tr {
+        border-style: solid;
+        border-color: #BBBBBB;
+        border-width: 0 1px 0 1px;
+    }
+    table.wiki-card-result-narrow tr:first-child {
+        border-width: 1px 1px 1px 1px;
+    }
+    table.wiki-card-result-narrow tr.skill-extra-line {
+        border-bottom-width: 1px;
+    }
+    table.view-card-table td.logo {
+        min-width: 50px;
+    }
+    table.view-card-table td.logo img {
+        width: 50px;
+        height: 50px;
+    }
+    table.wiki-table td.label {
+        height: 25px;
+    }
+    table.wiki-table td.title {
+        height: 25px;
+    }
 }

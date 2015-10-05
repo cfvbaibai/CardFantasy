@@ -26,9 +26,7 @@ public class OfficialSkillInfo {
             }
         }
         skillInfo.owningRunes = new ArrayList<OfficialRune>();
-        System.out.println(skill.getName() + " = " + skill.SkillId);
         for (OfficialRune rune : store.runeStore.data.Runes) {
-            System.out.println(rune.getRuneName() + " = " + rune.getSkill1() + " " + rune.getSkill2() + " " + rune.getSkill3() + " " + rune.getSkill4() + " " + rune.getSkill5());
             if (skill.SkillId.equalsIgnoreCase(rune.getSkill1()) ||
                 skill.SkillId.equalsIgnoreCase(rune.getSkill2()) ||
                 skill.SkillId.equalsIgnoreCase(rune.getSkill3()) ||

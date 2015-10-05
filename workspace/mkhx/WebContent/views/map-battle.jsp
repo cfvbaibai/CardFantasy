@@ -233,7 +233,7 @@
                             <td>过关条件</td>
                             <td>
                                 <span id="map-victory-condition">未知</span>
-                                <a id="view-map-deck-link" data-rel="dialog" data-mini="true">查看阵容</a>
+                                <a id="view-map-deck-link" data-rel="dialog" data-mini="true">查看关卡阵容</a>
                             </td>
                         </tr>
                     </table>

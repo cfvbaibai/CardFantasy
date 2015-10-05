@@ -15,14 +15,17 @@
                     ${category}
                 </td>
             </tr>
+            <c:forEach var="subCategory" items="${subCategories}">
             <tr>
+                <td class="label">${subCategory.name}</td>
                 <td class="content">
-                    <c:forEach var="skillType" items="${skillTypes}">
+                    <c:forEach var="skillType" items="${subCategory.items}">
                         <div><a href="<c:url value="/" />Wiki/Skills/${skillType}">${skillType}</a></div>
                     </c:forEach>
                     <div></div>
                 </td>
             </tr>
+            </c:forEach>
         </tbody>
     </table>
     <!-- CNZZ Begins -->
