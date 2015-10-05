@@ -16,6 +16,9 @@
                     <c:if test="${cardInfo.maxInDeck > 0}">
                         <span>(限定 ${cardInfo.maxInDeck} 张)</span>
                     </c:if>
+                    <c:if test="${cardInfo.isMaterial()}">
+                        <span>(素材卡)</span>
+                    </c:if>
                     <%--
                     <span>ImgId: ${cardInfo.imageId}</span>
                     <span>FullImgId: ${cardInfo.fullImageId}</span>
