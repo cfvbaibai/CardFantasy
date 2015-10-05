@@ -413,6 +413,15 @@ table.view-card-table div.skill-text {
     position: absolute;
 }
 
+table.view-card-table div.ability-text  {
+    position: absolute;
+    color: white;
+    font-style: italic;
+    font-size: 30px;
+    font-family: Arial;
+    text-shadow: 2px 2px 2px #777777, -2px -2px 2px #777777;
+}
+
 table.wiki-table td.title {
     height: 55px;
     font-size: larger;

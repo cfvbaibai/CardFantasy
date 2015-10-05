@@ -57,13 +57,13 @@
                             <div style="position: absolute; left: 120px; top: 330px">
                                 <img src="<c:url value="/resources/img/frame/ATK.png" />" style="width: 55px" />
                             </div>
-                            <div style="position: absolute; left: 185px; top: 330px; color: white; font-style: italic; font-size: 30px; font-family: Arial">
+                            <div class="ability-text" style="left: 185px; top: 330px">
                                 ${cardInfo.attackArray[10]}
                             </div>
-                            <div style="position: absolute; left: 80px; top: 380px">
+                            <div style="position: absolute; left: 75px; top: 380px">
                                 <img src="<c:url value="/resources/img/frame/HP.png" />" style="width: 55px" />
                             </div>
-                            <div style="position: absolute; left: 138px; top: 380px; color: white; font-style: italic; font-size: 30px; font-family: Arial">
+                            <div class="ability-text" style="left: 125px; top: 380px">
                                 ${cardInfo.hpArray[10]}
                             </div>
                             <!-- FIFTH LINE -->
