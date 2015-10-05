@@ -70,7 +70,7 @@
                             <div style="position: absolute; right: 15px; top: 295px">
                                 <img src="<c:url value="/resources/img/frame/blackshadow.png" />" style="width: 130px" />
                             </div>
-                            <div style="position: absolute; right: 52px; top: 298px; color: white; font-size: 16px; font-family: 微软雅黑">
+                            <div class="skill-text" style="right: 52px; top: 298px">
                                 <c:choose>
                                     <c:when test="${cardInfo.skill5 != null}">${cardInfo.skill5.name}</c:when>
                                     <c:when test="${cardInfo.skill4 != null}">${cardInfo.skill4.name}</c:when>
@@ -88,7 +88,7 @@
                             <div style="position: absolute; right: 15px; top: 266px">
                                 <img src="<c:url value="/resources/img/frame/blackshadow.png" />" style="width: 130px" />
                             </div>
-                            <div style="position: absolute; right: 52px; top: 269px; color: white; font-size: 16px; font-family: 微软雅黑">
+                            <div class="skill-text" style="right: 52px; top: 269px">
                                 <c:choose>
                                     <c:when test="${cardInfo.skill5 != null}">${cardInfo.skill4.name}</c:when>
                                     <c:when test="${cardInfo.skill4 != null}">${cardInfo.skill3.name}</c:when>
@@ -106,7 +106,7 @@
                             <div style="position: absolute; right: 15px; top: 237px">
                                 <img src="<c:url value="/resources/img/frame/blackshadow.png" />" style="width: 130px" />
                             </div>
-                            <div style="position: absolute; right: 52px; top: 240px; color: white; font-size: 16px; font-family: 微软雅黑">
+                            <div class="skill-text" style="right: 52px; top: 240px">
                                 <c:choose>
                                     <c:when test="${cardInfo.skill5 != null}">${cardInfo.skill3.name}</c:when>
                                     <c:when test="${cardInfo.skill4 != null}">${cardInfo.skill2.name}</c:when>
@@ -126,7 +126,7 @@
                             <div style="position: absolute; right: 15px; top: 208px">
                                 <img src="<c:url value="/resources/img/frame/blackshadow.png" />" style="width: 130px" />
                             </div>
-                            <div style="position: absolute; right: 52px; top: 211px; color: white; font-size: 16px; font-family: 微软雅黑">
+                            <div class="skill-text" style="right: 52px; top: 211px">
                                 <c:choose>
                                     <c:when test="${cardInfo.skill5 != null}">${cardInfo.skill2.name}</c:when>
                                     <c:otherwise>${cardInfo.skill1.name}</c:otherwise>
@@ -144,7 +144,7 @@
                             <div style="position: absolute; right: 15px; top: 178px">
                                 <img src="<c:url value="/resources/img/frame/blackshadow.png" />" style="width: 130px" />
                             </div>
-                            <div style="position: absolute; right: 52px; top: 182px; color: white; font-size: 16px; font-family: 微软雅黑">
+                            <div class="skill-text" style="right: 52px; top: 182px">
                                 ${cardInfo.skill1.name}
                             </div>
                             <div style="position: absolute; right: 15px; top: 178px">
@@ -186,7 +186,7 @@
                 <td class="label">0级</td>
                 <td class="label">5级</td>
                 <td class="label">10级</td>
-                <td class="label">15级(需进化)</td>
+                <td class="label">15级</td>
             </tr>
             <tr>
                 <td class="label">AT</td>
