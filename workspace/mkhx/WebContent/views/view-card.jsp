@@ -54,10 +54,10 @@
                             <div style="position: absolute; left: 25px; top: 390px; color: white; font-style: italic; font-size: 26px; font-family: Arial"> 
                                 10
                             </div>
-                            <div style="position: absolute; left: 120px; top: 330px">
+                            <div style="position: absolute; left: 120px; top: 333px">
                                 <img src="<c:url value="/resources/img/frame/ATK.png" />" style="width: 55px" />
                             </div>
-                            <div class="ability-text" style="left: 185px; top: 330px">
+                            <div class="ability-text" style="left: 185px; top: 333px">
                                 ${cardInfo.attackArray[10]}
                             </div>
                             <div style="position: absolute; left: 75px; top: 380px">

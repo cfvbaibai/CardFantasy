@@ -69,6 +69,17 @@ public class OfficialDataStore {
     }
     
     public OfficialCard getCardByName(String cardName) {
+        if (cardName.equals("圣炎魔法师")) {
+            cardName = "驭灵法师";
+        } else if (cardName.equals("血祭恶魔")) {
+            cardName = "恶魔伯爵";
+        } else if (cardName.equals("血炼巫妖")) {
+            cardName = "巫妖学徒";
+        } else if (cardName.equals("血瞳魔剑师")) {
+            cardName = "赤瞳魔剑师";
+        } else if (cardName.equals("血色骑士")) {
+            cardName = "暗色骑士";
+        }
         for (OfficialCard card : cardStore.data.Cards) {
             if (card.getCardName().equalsIgnoreCase(cardName)) {
                 return card;

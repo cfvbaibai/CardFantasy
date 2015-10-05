@@ -262,6 +262,11 @@ span.wiki-home-link {
     }
 }
 
+div.wiki-header .ui-panel-content-fixed-toolbar-open {
+    left: 0;
+    right: 0;
+}
+
 div.wiki-header {
     max-width: 800px;
     margin-left: auto;
