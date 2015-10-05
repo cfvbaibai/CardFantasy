@@ -37,7 +37,7 @@
                                 <img src="<c:url value="/resources/img/frame" />/star_${cardInfo.color}.png" style="width: 100%" />
                             </div>
                             <div style="position: absolute; left: 85px; top: 0; color: white; font-size: 22px; text-shadow: 1px 0 1px #000000, 1px 1px 1px #000000, -1px -1px 1px #000000, 0 1px 1px #000000, -1px 1px 1px #000000, -1px 0 1px #000000, 0 -1px 1px #000000, 0 0 1px #000000; font-family:微软雅黑">
-                                ${cardInfo.cardName}
+                                ${cardName}
                             </div>
                             <div style="position: absolute; left: 222px; top: 23px; color: #ede739; font-style: italic; width: 70px; font-size: 26px; font-family: Arial">
                                 ${cardInfo.cost} 
