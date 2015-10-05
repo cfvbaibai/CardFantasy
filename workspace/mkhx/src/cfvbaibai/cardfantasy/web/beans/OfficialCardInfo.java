@@ -72,7 +72,9 @@ public class OfficialCardInfo {
     public String getCardId() {
         return this.card.CardId;
     }
-
+    public String getLogoUrl() {
+        return this.card.getLogoUrl();
+    }
     public static OfficialCardInfo build(OfficialCard card, CardDataStore myStore, OfficialSkillData skillData) {
         OfficialCardInfo cardInfo = new OfficialCardInfo();
         cardInfo.card = card;

@@ -10,6 +10,7 @@ import java.util.regex.Pattern;
 import com.google.gson.Gson;
 
 public class OfficialDataStore {
+    public final static String IFREE_CDN_BASE = "http://cache.ifreecdn.com/mkhx/public/swf";
     public OfficialSkillDataStore skillStore;
     public OfficialCardDataStore cardStore;
     public OfficialRuneDataStore runeStore;

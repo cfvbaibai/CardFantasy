@@ -174,4 +174,7 @@ public class OfficialCard {
         default: return "未知";
         }
     }
+    public String getLogoUrl() {
+        return OfficialDataStore.IFREE_CDN_BASE + "/card/110_110/img_photoCard_" + this.CardId + ".jpg";
+    }
 }

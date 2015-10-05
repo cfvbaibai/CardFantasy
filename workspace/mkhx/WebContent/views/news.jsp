@@ -32,6 +32,7 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2015-10-05: 【<a href="<c:url value="/wiki" />">WIKI</a>】中添加了符文信息</li>
                     <li>2015-10-02: 升级【卡牌WIKI】为【<a href="<c:url value="/wiki" />">魔卡幻想WIKI</a>】，现在可以搜索技能了</li>
                     <li>2015-10-01: 在【<a href="#boss-battle">魔神战</a>】界面添加显示魔神的技能</li>
                     <li>2015-09-29: 添加新卡<cf:c>天秤座</cf:c>、<cf:c>龙灵使者</cf:c>、<cf:c>森林弹唱者</cf:c>、<cf:c>灵峰剑姬</cf:c></li>

@@ -73,4 +73,7 @@ public class OfficialRuneInfo {
     public OfficialSkill getSkill5() {
         return this.skill5;
     }
+    public String getSmallIconUrl() {
+        return this.rune.getSmallIconUrl();
+    }
 }

@@ -34,7 +34,7 @@ $(document).ready(function () {
             </tr>
             <tr>
                 <td id="view-card-logo" class="logo" rowspan="2">
-                    <img src="<c:url value="/resources/img/cardlogo/" />/${internalId}.jpg" />
+                    <img src="${cardInfo.logoUrl}" />
                 </td>
                 <td class="label">种族星级</td>
                 <td id="view-card-race-star" class="value">${cardInfo.raceName}${cardInfo.color}星</td>
@@ -84,35 +84,35 @@ $(document).ready(function () {
             <tr>
                 <td class="label">技能1</td>
                 <td id="view-card-skill1" class="skill" colspan="4">
-                    <div><a href="../Skills/${cardInfo.skill1.name}" target="_blank">${cardInfo.skill1.name}</a></div>
+                    <div><a href="../Skills/${cardInfo.skill1.name}">${cardInfo.skill1.name}</a></div>
                     <div>${cardInfo.skill1.description}</div>
                 </td>
             </tr>
             <tr>
                 <td class="label">技能2</td>
                 <td id="view-card-skill2" class="skill" colspan="4">
-                    <div><a href="../Skills/${cardInfo.skill2.name}" target="_blank">${cardInfo.skill2.name}</a></div>
+                    <div><a href="../Skills/${cardInfo.skill2.name}">${cardInfo.skill2.name}</a></div>
                     <div>${cardInfo.skill2.description}</div>
                 </td>
             </tr>
             <tr>
                 <td class="label">技能3</td>
                 <td id="view-card-skill3" class="skill" colspan="4">
-                  <div><a href="../Skills/${cardInfo.skill3.name}" target="_blank">${cardInfo.skill3.name}</a></div>
+                  <div><a href="../Skills/${cardInfo.skill3.name}">${cardInfo.skill3.name}</a></div>
                     <div>${cardInfo.skill3.description}</div>
                 </td>
             </tr>
             <tr>
                 <td class="label">技能4</td>
                 <td id="view-card-skill4" class="skill" colspan="4">
-                    <div><a href="../Skills/${cardInfo.skill4.name}" target="_blank">${cardInfo.skill4.name}</a></div>
+                    <div><a href="../Skills/${cardInfo.skill4.name}">${cardInfo.skill4.name}</a></div>
                     <div>${cardInfo.skill4.description}</div>
                 </td>
             </tr>
             <tr>
                 <td class="label">技能5</td>
                 <td id="view-card-skill5" class="skill" colspan="4">
-                    <div><a href="../Skills/${cardInfo.skill5.name}" target="_blank">${cardInfo.skill5.name}</a></div>
+                    <div><a href="../Skills/${cardInfo.skill5.name}">${cardInfo.skill5.name}</a></div>
                     <div>${cardInfo.skill5.description}</div>
                 </td>
             </tr>

@@ -91,4 +91,7 @@ public class OfficialRune {
     public String getSkill5() {
         return LockSkill5;
     }
+    public String getSmallIconUrl() {
+        return OfficialDataStore.IFREE_CDN_BASE + "/rune/110_110/rune_" + this.RuneId + ".png";
+    }
 }

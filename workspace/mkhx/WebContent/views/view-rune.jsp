@@ -9,7 +9,11 @@
     <%@ include file="wiki-header.jsp" %>
     <table class="view-rune-table wiki-table">
         <tbody>
-            <tr><td id="view-rune-name" class="title" colspan="4">${runeName}</td></tr>
+            <tr>
+                <td id="view-rune-name" class="title" colspan="4">
+                    <span>${runeName}</span>
+                </td>
+            </tr>
             <tr>
                 <td class="label">属性</td>
                 <td id="view-rune-property" class="value">${runeInfo.propertyName}</td>
