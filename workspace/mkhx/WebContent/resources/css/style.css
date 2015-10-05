@@ -409,7 +409,7 @@ table.view-card-table div.skill-text {
     color: white;
     font-size: 16px;
     font-family: 微软雅黑;
-    text-shadow: 2px 2px 2px #000000;
+    text-shadow: 2px 2px 2px #000000, -2px -2px 2px #000000, 2px -2px 2px #000000, -2px 2px 2px #000000;
     position: absolute;
 }
 

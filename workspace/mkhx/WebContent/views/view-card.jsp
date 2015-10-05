@@ -67,6 +67,7 @@
                                 ${cardInfo.hpArray[10]}
                             </div>
                             <!-- FIFTH LINE -->
+                            <c:if test="${cardInfo.skill1 != null || cardInfo.skill2 != null}">
                             <div style="position: absolute; right: 15px; top: 295px">
                                 <img src="<c:url value="/resources/img/frame/blackshadow.png" />" style="width: 130px" />
                             </div>
@@ -74,17 +75,23 @@
                                 <c:choose>
                                     <c:when test="${cardInfo.skill5 != null}">${cardInfo.skill5.name}</c:when>
                                     <c:when test="${cardInfo.skill4 != null}">${cardInfo.skill4.name}</c:when>
-                                    <c:otherwise>${cardInfo.skill3.name}</c:otherwise>
+                                    <c:when test="${cardInfo.skill3 != null}">${cardInfo.skill3.name}</c:when>
+                                    <c:when test="${cardInfo.skill2 != null}">${cardInfo.skill2.name}</c:when>
+                                    <c:otherwise>${cardInfo.skill1.name}</c:otherwise>
                                 </c:choose>
                             </div>
                             <div style="position: absolute; right: 15px; top: 295px">
                                 <c:choose>
                                     <c:when test="${cardInfo.skill5 != null}"><img src="<c:url value="/resources/img/frame" />/Skill_Category_${cardInfo.skill5.category}.png" style="width: 30px" /></c:when>
                                     <c:when test="${cardInfo.skill4 != null}"><img src="<c:url value="/resources/img/frame" />/Skill_Category_${cardInfo.skill4.category}.png" style="width: 30px" /></c:when>
-                                    <c:otherwise><img src="<c:url value="/resources/img/frame" />/Skill_Category_${cardInfo.skill3.category}.png" style="width: 30px" /></c:otherwise>
+                                    <c:when test="${cardInfo.skill3 != null}"><img src="<c:url value="/resources/img/frame" />/Skill_Category_${cardInfo.skill3.category}.png" style="width: 30px" /></c:when>
+                                    <c:when test="${cardInfo.skill2 != null}"><img src="<c:url value="/resources/img/frame" />/Skill_Category_${cardInfo.skill2.category}.png" style="width: 30px" /></c:when>
+                                    <c:otherwise><img src="<c:url value="/resources/img/frame" />/Skill_Category_${cardInfo.skill1.category}.png" style="width: 30px" /></c:otherwise>
                                 </c:choose>
                             </div>
+                            </c:if>
                             <!-- FOURTH LINE -->
+                            <c:if test="${cardInfo.skill2 != null}">
                             <div style="position: absolute; right: 15px; top: 266px">
                                 <img src="<c:url value="/resources/img/frame/blackshadow.png" />" style="width: 130px" />
                             </div>
@@ -92,17 +99,21 @@
                                 <c:choose>
                                     <c:when test="${cardInfo.skill5 != null}">${cardInfo.skill4.name}</c:when>
                                     <c:when test="${cardInfo.skill4 != null}">${cardInfo.skill3.name}</c:when>
-                                    <c:otherwise>${cardInfo.skill2.name}</c:otherwise>
+                                    <c:when test="${cardInfo.skill3 != null}">${cardInfo.skill2.name}</c:when>
+                                    <c:otherwise>${cardInfo.skill1.name}</c:otherwise>
                                 </c:choose>
                             </div>
                             <div style="position: absolute; right: 15px; top: 266px">
                                 <c:choose>
                                     <c:when test="${cardInfo.skill5 != null}"><img src="<c:url value="/resources/img/frame" />/Skill_Category_${cardInfo.skill4.category}.png" style="width: 30px" /></c:when>
                                     <c:when test="${cardInfo.skill4 != null}"><img src="<c:url value="/resources/img/frame" />/Skill_Category_${cardInfo.skill3.category}.png" style="width: 30px" /></c:when>
-                                    <c:otherwise><img src="<c:url value="/resources/img/frame" />/Skill_Category_${cardInfo.skill2.category}.png" style="width: 30px" /></c:otherwise>
+                                    <c:when test="${cardInfo.skill3 != null}"><img src="<c:url value="/resources/img/frame" />/Skill_Category_${cardInfo.skill2.category}.png" style="width: 30px" /></c:when>
+                                    <c:otherwise><img src="<c:url value="/resources/img/frame" />/Skill_Category_${cardInfo.skill1.category}.png" style="width: 30px" /></c:otherwise>
                                 </c:choose>
                             </div>
+                            </c:if>
                             <!-- THIRD LINE -->
+                            <c:if test="${cardInfo.skill3 != null && (cardInfo.skill4 != null || cardInfo.skill5 != null || cardInfo.skill1 != null)}">
                             <div style="position: absolute; right: 15px; top: 237px">
                                 <img src="<c:url value="/resources/img/frame/blackshadow.png" />" style="width: 130px" />
                             </div>
@@ -120,9 +131,9 @@
                                     <c:otherwise><img src="<c:url value="/resources/img/frame" />/Skill_Category_${cardInfo.skill1.category}.png" style="width: 30px" /></c:otherwise>
                                 </c:choose>
                             </div>
+                            </c:if>
                             <!-- SECOND LINE -->
                             <c:if test="${cardInfo.skill4 != null}">
-                            THIS IS TEST
                             <div style="position: absolute; right: 15px; top: 208px">
                                 <img src="<c:url value="/resources/img/frame/blackshadow.png" />" style="width: 130px" />
                             </div>

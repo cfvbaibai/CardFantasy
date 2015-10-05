@@ -32,6 +32,10 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2015-10-06: 【<a href="<c:url value="/wiki" />">WIKI</a>】中的卡牌现在有图了，以<cf:c>时光女神</cf:c>为例: <br />
+                        <img class="help-img" alt="示例卡牌图片1" src="<c:url value="/resources/img/help/SampleCardPortrait1.png" />" />
+                        <img class="help-img" alt="示例卡牌图片1" src="<c:url value="/resources/img/help/SampleCardPortrait2.png" />" />
+                    </li>
                     <li>2015-10-05: 【<a href="<c:url value="/wiki" />">WIKI</a>】中添加了符文和关卡信息</li>
                     <li>2015-10-02: 升级【卡牌WIKI】为【<a href="<c:url value="/wiki" />">魔卡幻想WIKI</a>】，现在可以搜索技能了</li>
                     <li>2015-10-01: 在【<a href="#boss-battle">魔神战</a>】界面添加显示魔神的技能</li>
