@@ -131,12 +131,20 @@ public class OfficialDataController {
                 SubCategory<OfficialCard> subCategory = new SubCategory<OfficialCard>();
                 subCategory.setName(raceName);
                 for (OfficialCard card : cards) {
-                    if (card.getRaceName().equals(raceName)) {
+                    if (card.getRaceName().equals(raceName) && !card.isMaterial()) {
                         subCategory.addItem(card);
                     }
                 }
                 subCategories.add(subCategory);
             }
+            SubCategory<OfficialCard> materialSubCategory = new SubCategory<OfficialCard>();
+            materialSubCategory.setName("素材");
+            for (OfficialCard card : cards) {
+                if (card.isMaterial()) {
+                    materialSubCategory.addItem(card);
+                }
+            }
+            subCategories.add(materialSubCategory);
             mv.addObject("subCategories", subCategories);
         } catch (Exception e) {
             this.logger.error(e);
@@ -159,12 +167,20 @@ public class OfficialDataController {
                 SubCategory<OfficialCard> subCategory = new SubCategory<OfficialCard>();
                 subCategory.setName(i + "星");
                 for (OfficialCard card : cards) {
-                    if (card.getColor() == i) {
+                    if (card.getColor() == i && !card.isMaterial()) {
                         subCategory.addItem(card);
                     }
                 }
                 subCategories.add(subCategory);
             }
+            SubCategory<OfficialCard> materialSubCategory = new SubCategory<OfficialCard>();
+            materialSubCategory.setName("素材");
+            for (OfficialCard card : cards) {
+                if (card.isMaterial()) {
+                    materialSubCategory.addItem(card);
+                }
+            }
+            subCategories.add(materialSubCategory);
             mv.addObject("subCategories", subCategories);
         } catch (Exception e) {
             this.logger.error(e);
@@ -178,10 +194,12 @@ public class OfficialDataController {
         this.logger.info("Getting skills of category: " + categoryId);
         ModelAndView mv = new ModelAndView();
         mv.setViewName("view-skill-category");
-        String categoryName = OfficialSkillCategory.getCategoryNameFromId(categoryId);
-        mv.addObject("category", categoryName + "技能");
-        List<SubCategory<String>> subCategories = new ArrayList<SubCategory<String>>();
         try {
+            String categoryName = OfficialSkillCategory.getCategoryNameFromId(categoryId);
+            mv.addObject("category", categoryName + "技能");
+            List<SubCategory<String>> subCategories = new ArrayList<SubCategory<String>>();
+            SubCategory<String> materialSubCategory = new SubCategory<String>();
+            materialSubCategory.setName("素材");
             List<String> skillTypes = this.officialStore.getSkillTypesByCategory(categoryId);
             for (String skillType : skillTypes) {
                 String subCategoryName = "普通";
@@ -194,21 +212,27 @@ public class OfficialDataController {
                 } else if (skillType.startsWith("觉醒")) {
                     subCategoryName = "觉醒";
                 }
-                boolean subCategoryFound = false;
-                for (SubCategory<String> subCategory : subCategories) {
-                    if (subCategory.getName().equals(subCategoryName)) {
-                        subCategory.addItem(skillType);
-                        subCategoryFound = true;
-                        break;
+                OfficialSkill[] skills = this.officialStore.getSkillsByType(skillType);
+                if (skills.length > 0 && skills[0].isMaterial()) {
+                    materialSubCategory.addItem(skillType);
+                } else {
+                    boolean subCategoryFound = false;
+                    for (SubCategory<String> subCategory : subCategories) {
+                        if (subCategory.getName().equals(subCategoryName)) {
+                            subCategory.addItem(skillType);
+                            subCategoryFound = true;
+                            break;
+                        }
+                    }
+                    if (!subCategoryFound) {
+                        SubCategory<String> newSubCategory = new SubCategory<String>();
+                        newSubCategory.setName(subCategoryName);
+                        newSubCategory.addItem(skillType);
+                        subCategories.add(newSubCategory);
                     }
                 }
-                if (!subCategoryFound) {
-                    SubCategory<String> newSubCategory = new SubCategory<String>();
-                    newSubCategory.setName(subCategoryName);
-                    newSubCategory.addItem(skillType);
-                    subCategories.add(newSubCategory);
-                }
             }
+            subCategories.add(materialSubCategory);
             mv.addObject("subCategories", subCategories);
         } catch (Exception e) {
             this.logger.error(e);
@@ -265,7 +289,7 @@ public class OfficialDataController {
                 response.setStatus(404);
                 return mv;
             }
-            OfficialCardInfo cardInfo = OfficialCardInfo.build(card, myStore, officialStore.skillStore.data);
+            OfficialCardInfo cardInfo = OfficialCardInfo.build(card, officialStore.skillStore.data);
             mv.addObject("cardInfo", cardInfo);
             mv.addObject("cardName", cardName);
             mv.addObject("defaultLogoUrl", OfficialDataStore.DEFAULT_LOGO_110x110_URL);
@@ -391,15 +415,15 @@ public class OfficialDataController {
             if (raceFilter != null && !raceFilter.contains("," + card.Race + ",")) {
                 continue;
             }
-            OfficialCardInfo cardInfo = OfficialCardInfo.build(card, myStore, officialStore.skillStore.data);
+            OfficialCardInfo cardInfo = OfficialCardInfo.build(card, officialStore.skillStore.data);
             if (skillTypeFilter != null && !skillTypeFilter.equals("")) {
                 boolean skillDesired = false;
                 for (String desiredSkillType : desiredSkillTypes) {
-                    if (cardInfo.skill1 != null && cardInfo.skill1.Name.contains(desiredSkillType) ||
-                        cardInfo.skill2 != null && cardInfo.skill2.Name.contains(desiredSkillType) ||
-                        cardInfo.skill3 != null && cardInfo.skill3.Name.contains(desiredSkillType) ||
-                        cardInfo.skill4 != null && cardInfo.skill4.Name.contains(desiredSkillType) ||
-                        cardInfo.skill5 != null && cardInfo.skill5.Name.contains(desiredSkillType)
+                    if (cardInfo.getSkill1() != null && cardInfo.getSkill1().Name.contains(desiredSkillType) ||
+                        cardInfo.getSkill2() != null && cardInfo.getSkill2().Name.contains(desiredSkillType) ||
+                        cardInfo.getSkill3() != null && cardInfo.getSkill3().Name.contains(desiredSkillType) ||
+                        cardInfo.getSkill4() != null && cardInfo.getSkill4().Name.contains(desiredSkillType) ||
+                        cardInfo.getSkill5() != null && cardInfo.getSkill5().Name.contains(desiredSkillType)
                         ) {
                         skillDesired = true;
                         break;

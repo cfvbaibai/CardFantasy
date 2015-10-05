@@ -1,19 +1,16 @@
 package cfvbaibai.cardfantasy.web.beans;
 
-import cfvbaibai.cardfantasy.data.CardData;
-import cfvbaibai.cardfantasy.data.CardDataStore;
 import cfvbaibai.cardfantasy.officialdata.OfficialCard;
 import cfvbaibai.cardfantasy.officialdata.OfficialSkill;
 import cfvbaibai.cardfantasy.officialdata.OfficialSkillData;
 
 public class OfficialCardInfo {
-    public String internalId;
-    public OfficialCard card;
-    public OfficialSkill skill1;
-    public OfficialSkill skill2;
-    public OfficialSkill skill3;
-    public OfficialSkill skill4;
-    public OfficialSkill skill5;
+    private OfficialCard card;
+    private OfficialSkill skill1;
+    private OfficialSkill skill2;
+    private OfficialSkill skill3;
+    private OfficialSkill skill4;
+    private OfficialSkill skill5;
 
     public OfficialCard getCard() {
         return this.card;
@@ -78,7 +75,10 @@ public class OfficialCardInfo {
     public String getLargePortraitUrl() {
         return this.card.getLargePortraitUrl();
     }
-    public static OfficialCardInfo build(OfficialCard card, CardDataStore myStore, OfficialSkillData skillData) {
+    public boolean isMaterial() {
+        return this.card.isMaterial();
+    }
+    public static OfficialCardInfo build(OfficialCard card, OfficialSkillData skillData) {
         OfficialCardInfo cardInfo = new OfficialCardInfo();
         cardInfo.card = card;
         for (OfficialSkill skill : skillData.Skills) {
@@ -97,10 +97,6 @@ public class OfficialCardInfo {
             if (skill.SkillId.equals(card.getSkill5())) {
                 cardInfo.skill5 = skill;
             }
-        }
-        CardData data = myStore.getCard(card.getCardName());
-        if (data != null) {
-            cardInfo.internalId = data.getId();
         }
         return cardInfo;
     }

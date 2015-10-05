@@ -27,6 +27,8 @@
                         <div><a href="Wiki/Cards/Races/4">地狱卡牌</a></div>
                         <div><a href="Wiki/Cards/Races/97">魔王卡牌</a></div>
                         <div><a href="Wiki/Cards/Races/100">魔神卡牌</a></div>
+                        <div><a href="Wiki/Cards/Races/98">万能卡牌</a></div>
+                        <div><a href="Wiki/Cards/Races/99">道具卡牌</a></div>
                         <div></div>
                     </div>
                 </div>

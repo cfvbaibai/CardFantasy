@@ -39,7 +39,7 @@
                             <div style="position: absolute; left: 85px; top: 0; color: white; font-size: 22px; text-shadow: 1px 0 1px #000000, 1px 1px 1px #000000, -1px -1px 1px #000000, 0 1px 1px #000000, -1px 1px 1px #000000, -1px 0 1px #000000, 0 -1px 1px #000000, 0 0 1px #000000; font-family:微软雅黑">
                                 ${cardName}
                             </div>
-                            <div style="position: absolute; left: 222px; top: 23px; color: #ede739; font-style: italic; width: 70px; font-size: 26px; font-family: Arial">
+                            <div style="position: absolute; left: 225px; top: 23px; color: #ede739; font-style: italic; width: 70px; font-size: 26px; font-family: Arial">
                                 ${cardInfo.cost} 
                             </div>
                             <div style="position: absolute; left: 32px; top: 320px; width: 32px">

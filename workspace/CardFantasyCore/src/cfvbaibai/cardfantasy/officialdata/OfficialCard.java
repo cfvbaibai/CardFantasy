@@ -170,14 +170,22 @@ public class OfficialCard {
         case 3: return "蛮荒";
         case 4: return "地狱";
         case 97: return "魔王";
+        case 98: return "万能";
+        case 99: return "道具";
         case 100: return "魔神";
         default: return "未知";
         }
+    }
+    public static String[] getRaceNames() {
+        return new String[] { "王国", "森林", "蛮荒", "地狱", "魔王", "魔神", "道具", "万能" };
     }
     public String getLogoUrl() {
         return OfficialDataStore.IFREE_CDN_BASE + "/card/110_110/img_photoCard_" + this.CardId + ".jpg";
     }
     public String getLargePortraitUrl() {
         return OfficialDataStore.IFREE_CDN_BASE + "/card/370_570/img_maxCard_" + this.CardId + ".jpg";
+    }
+    public boolean isMaterial() {
+        return this.AttackArray[0] == 1 && this.Cost == 99 && this.getRace() < 5 && (this.getSkill2() == null || this.getSkill2().equals(""));
     }
 }

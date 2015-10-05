@@ -135,7 +135,7 @@ public class OfficialDataStore {
     }
 
     public String[] getRaceNames() {
-        return new String[] { "王国", "森林", "蛮荒", "地狱", "魔王", "魔神" };
+        return OfficialCard.getRaceNames();
     }
 
     public String getRaceNameById(int raceId) {
