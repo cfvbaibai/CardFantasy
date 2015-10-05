@@ -24,8 +24,148 @@
                 </td>
             </tr>
             <tr>
+                <td colspan="5">
+                    <div style="float: left; height: 450px">
+                        <div style="position: relative; display: inline-block; width: 300px; margin: 10px">
+                            <div style="position: absolute; left: 0; top: 0; width: 100%">
+                                <img src="${cardInfo.largePortraitUrl}" style="width: 100%" />
+                            </div>
+                            <div style="position: absolute; left: 0; top: 0; width: 100%">
+                                <img src="<c:url value="/resources/img/frame" />/Race_${cardInfo.raceName}_Border.png" style="width: 100%" />
+                            </div>
+                            <div style="position: absolute; left: 0; top: 0; width: 100%">
+                                <img src="<c:url value="/resources/img/frame" />/star_${cardInfo.color}.png" style="width: 100%" />
+                            </div>
+                            <div style="position: absolute; left: 85px; top: 0; color: white; font-size: 22px; text-shadow: 1px 0 1px #000000, 1px 1px 1px #000000, -1px -1px 1px #000000, 0 1px 1px #000000, -1px 1px 1px #000000, -1px 0 1px #000000, 0 -1px 1px #000000, 0 0 1px #000000; font-family:微软雅黑">
+                                ${cardInfo.cardName}
+                            </div>
+                            <div style="position: absolute; left: 222px; top: 23px; color: #ede739; font-style: italic; width: 70px; font-size: 26px; font-family: Arial">
+                                ${cardInfo.cost} 
+                            </div>
+                            <div style="position: absolute; left: 32px; top: 320px; width: 32px">
+                                <img src="<c:url value="/resources/img/frame/blueblock.png" />" />
+                            </div>
+                            <div style="position: absolute; left: 8px; top: 320px; width: 42px">
+                                <img src="<c:url value="/resources/img/frame/timeglass.png" />" />
+                            </div>
+                            <div style="position: absolute; left: 45px; top: 330px; color: white; font-style: italic; font-size: 26px; font-family :Arial; text-shadow: 1px 0 1px #000000, 1px 1px 1px #000000, -1px -1px 1px #000000, 0 1px 1px #000000, -1px 1px 1px #000000, -1px 0 1px #000000, 0 -1px 1px #000000, 0 0 1px #000000">
+                                ${cardInfo.wait}
+                            </div>
+                            <div style="position: absolute; left: 25px; top: 390px; color: white; font-style: italic; font-size: 26px; font-family: Arial"> 
+                                10
+                            </div>
+                            <div style="position: absolute; left: 120px; top: 330px">
+                                <img src="<c:url value="/resources/img/frame/ATK.png" />" style="width: 55px" />
+                            </div>
+                            <div style="position: absolute; left: 185px; top: 330px; color: white; font-style: italic; font-size: 30px; font-family: Arial">
+                                ${cardInfo.attackArray[10]}
+                            </div>
+                            <div style="position: absolute; left: 80px; top: 380px">
+                                <img src="<c:url value="/resources/img/frame/HP.png" />" style="width: 55px" />
+                            </div>
+                            <div style="position: absolute; left: 138px; top: 380px; color: white; font-style: italic; font-size: 30px; font-family: Arial">
+                                ${cardInfo.hpArray[10]}
+                            </div>
+                            <!-- FIFTH LINE -->
+                            <div style="position: absolute; right: 15px; top: 295px">
+                                <img src="<c:url value="/resources/img/frame/blackshadow.png" />" style="width: 130px" />
+                            </div>
+                            <div style="position: absolute; right: 52px; top: 298px; color: white; font-size: 16px; font-family: 微软雅黑">
+                                <c:choose>
+                                    <c:when test="${cardInfo.skill5 != null}">${cardInfo.skill5.name}</c:when>
+                                    <c:when test="${cardInfo.skill4 != null}">${cardInfo.skill4.name}</c:when>
+                                    <c:otherwise>${cardInfo.skill3.name}</c:otherwise>
+                                </c:choose>
+                            </div>
+                            <div style="position: absolute; right: 15px; top: 295px">
+                                <c:choose>
+                                    <c:when test="${cardInfo.skill5 != null}"><img src="<c:url value="/resources/img/frame" />/Skill_Category_${cardInfo.skill5.category}.png" style="width: 30px" /></c:when>
+                                    <c:when test="${cardInfo.skill4 != null}"><img src="<c:url value="/resources/img/frame" />/Skill_Category_${cardInfo.skill4.category}.png" style="width: 30px" /></c:when>
+                                    <c:otherwise><img src="<c:url value="/resources/img/frame" />/Skill_Category_${cardInfo.skill3.category}.png" style="width: 30px" /></c:otherwise>
+                                </c:choose>
+                            </div>
+                            <!-- FOURTH LINE -->
+                            <div style="position: absolute; right: 15px; top: 266px">
+                                <img src="<c:url value="/resources/img/frame/blackshadow.png" />" style="width: 130px" />
+                            </div>
+                            <div style="position: absolute; right: 52px; top: 269px; color: white; font-size: 16px; font-family: 微软雅黑">
+                                <c:choose>
+                                    <c:when test="${cardInfo.skill5 != null}">${cardInfo.skill4.name}</c:when>
+                                    <c:when test="${cardInfo.skill4 != null}">${cardInfo.skill3.name}</c:when>
+                                    <c:otherwise>${cardInfo.skill2.name}</c:otherwise>
+                                </c:choose>
+                            </div>
+                            <div style="position: absolute; right: 15px; top: 266px">
+                                <c:choose>
+                                    <c:when test="${cardInfo.skill5 != null}"><img src="<c:url value="/resources/img/frame" />/Skill_Category_${cardInfo.skill4.category}.png" style="width: 30px" /></c:when>
+                                    <c:when test="${cardInfo.skill4 != null}"><img src="<c:url value="/resources/img/frame" />/Skill_Category_${cardInfo.skill3.category}.png" style="width: 30px" /></c:when>
+                                    <c:otherwise><img src="<c:url value="/resources/img/frame" />/Skill_Category_${cardInfo.skill2.category}.png" style="width: 30px" /></c:otherwise>
+                                </c:choose>
+                            </div>
+                            <!-- THIRD LINE -->
+                            <div style="position: absolute; right: 15px; top: 237px">
+                                <img src="<c:url value="/resources/img/frame/blackshadow.png" />" style="width: 130px" />
+                            </div>
+                            <div style="position: absolute; right: 52px; top: 240px; color: white; font-size: 16px; font-family: 微软雅黑">
+                                <c:choose>
+                                    <c:when test="${cardInfo.skill5 != null}">${cardInfo.skill3.name}</c:when>
+                                    <c:when test="${cardInfo.skill4 != null}">${cardInfo.skill2.name}</c:when>
+                                    <c:otherwise>${cardInfo.skill1.name}</c:otherwise>
+                                </c:choose>
+                            </div>
+                            <div style="position: absolute; right: 15px; top: 237px">
+                                <c:choose>
+                                    <c:when test="${cardInfo.skill5 != null}"><img src="<c:url value="/resources/img/frame" />/Skill_Category_${cardInfo.skill3.category}.png" style="width: 30px" /></c:when>
+                                    <c:when test="${cardInfo.skill4 != null}"><img src="<c:url value="/resources/img/frame" />/Skill_Category_${cardInfo.skill2.category}.png" style="width: 30px" /></c:when>
+                                    <c:otherwise><img src="<c:url value="/resources/img/frame" />/Skill_Category_${cardInfo.skill1.category}.png" style="width: 30px" /></c:otherwise>
+                                </c:choose>
+                            </div>
+                            <!-- SECOND LINE -->
+                            <c:if test="${cardInfo.skill4 != null}">
+                            THIS IS TEST
+                            <div style="position: absolute; right: 15px; top: 208px">
+                                <img src="<c:url value="/resources/img/frame/blackshadow.png" />" style="width: 130px" />
+                            </div>
+                            <div style="position: absolute; right: 52px; top: 211px; color: white; font-size: 16px; font-family: 微软雅黑">
+                                <c:choose>
+                                    <c:when test="${cardInfo.skill5 != null}">${cardInfo.skill2.name}</c:when>
+                                    <c:otherwise>${cardInfo.skill1.name}</c:otherwise>
+                                </c:choose>
+                            </div>
+                            <div style="position: absolute; right: 15px; top: 208px">
+                                <c:choose>
+                                    <c:when test="${cardInfo.skill5 != null}"><img src="<c:url value="/resources/img/frame" />/Skill_Category_${cardInfo.skill2.category}.png" style="width: 30px" /></c:when>
+                                    <c:otherwise><img src="<c:url value="/resources/img/frame" />/Skill_Category_${cardInfo.skill1.category}.png" style="width: 30px" /></c:otherwise>
+                                </c:choose>
+                            </div>
+                            </c:if>
+                            <!-- FIRST LINE -->
+                            <c:if test="${cardInfo.skill5 != null}">
+                            <div style="position: absolute; right: 15px; top: 178px">
+                                <img src="<c:url value="/resources/img/frame/blackshadow.png" />" style="width: 130px" />
+                            </div>
+                            <div style="position: absolute; right: 52px; top: 182px; color: white; font-size: 16px; font-family: 微软雅黑">
+                                ${cardInfo.skill1.name}
+                            </div>
+                            <div style="position: absolute; right: 15px; top: 178px">
+                                <img src="<c:url value="/resources/img/frame" />/Skill_Category_${cardInfo.skill1.category}.png" style="width: 30px" />
+                            </div>
+                            </c:if>
+                        </div>
+                    </div>
+                    <div style="float: left; width: 300px; height: auto; margin: 10px">
+                        <img src="${cardInfo.largePortraitUrl}" style="width: 100%; height: auto" />
+                    </div>
+                    <div style="clear: both"></div>
+                </td>
+            </tr>
+            <tr>
                 <td id="view-card-logo" class="logo" rowspan="2">
-                    <div><img alt="${cardInfo.cardName}" src="${cardInfo.logoUrl}" style="background: url('${defaultLogoUrl}')" /></div>
+                    <div>
+                        <a href="${cardInfo.largePortraitUrl}" target="_blank">
+                            <img alt="${cardInfo.cardName}" src="${cardInfo.logoUrl}" style="background: url('${defaultLogoUrl}')" />
+                        </a>
+                    </div>
                 </td>
                 <td class="label">种族星级</td>
                 <td id="view-card-race-star" class="value">${cardInfo.raceName}${cardInfo.color}星</td>

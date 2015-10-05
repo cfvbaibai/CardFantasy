@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import cfvbaibai.cardfantasy.data.CardData;
 import cfvbaibai.cardfantasy.data.CardDataStore;
 import cfvbaibai.cardfantasy.officialdata.OfficialCard;
 import cfvbaibai.cardfantasy.officialdata.OfficialDataStore;
@@ -265,10 +264,6 @@ public class OfficialDataController {
             if (card == null) {
                 response.setStatus(404);
                 return mv;
-            }
-            CardData myCardData = this.myStore.getCard(cardName);
-            if (myCardData != null) {
-                mv.addObject("internalId", myCardData.getId());
             }
             OfficialCardInfo cardInfo = OfficialCardInfo.build(card, myStore, officialStore.skillStore.data);
             mv.addObject("cardInfo", cardInfo);
