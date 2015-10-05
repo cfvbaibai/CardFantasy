@@ -18,6 +18,11 @@ CardFantasy.Core = {};
 // OUTERMOST IIFE
 (function(Core) {
 
+var goBackOrGoto = function(defaultUrl) {
+    history.go(-1);
+};
+Core.goBackOrGoto = goBackOrGoto;
+
 var getParam = function(originalName) {
     var paramName = originalName.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
     var regex = new RegExp("[\\?&]" + paramName + "=([^&#]*)"),

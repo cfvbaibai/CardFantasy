@@ -250,26 +250,22 @@ div.wiki-categories > div:last-child {
     clear: both;
 }
 
-div.wiki-footer {
-     max-width: 800px;
-     margin-left: auto;
-     margin-right: auto;
+span.wiki-home-link {
+    display: none;
 }
-@media (min-height: 600px) {
+@media (min-width: 570px) {
     div.wiki-footer {
         display: none;
     }
+    span.wiki-home-link {
+        display: inline;
+    }
 }
 
-div.header-template {
+div.wiki-header {
     max-width: 800px;
     margin-left: auto;
     margin-right: auto;
-}
-
-div.header-template.ui-panel-content-fixed-toolbar-open {
-    left: 0;
-    right: 0;
 }
 
 div.entity-title {
