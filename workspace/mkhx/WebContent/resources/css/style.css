@@ -418,8 +418,12 @@ table.view-card-table td.logo img {
     height: 100px;
 }
 
-table.view-card-table td.label {
+table.wiki-table td.label {
     height: 55px;
+    background-color: #eee;
+}
+
+table.view-card-table td.label {
     width: 20%;
 }
 
@@ -431,32 +435,36 @@ table.wiki-table td.title {
     height: 55px;
     font-size: larger;
     font-weight: bold;
+    background-color: rgba(100, 100, 100, 0.2);
 }
 
 table.wiki-table td.content > div {
     text-align: center;
     float: left;
     width: 120px;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 
 table.wiki-table td.content > div:last-child {
     clear: both;
+    margin: 0;
 }
 
-table.view-card-table td.skill {
+table.wiki-table td.skill {
     text-align: left;
 }
 
-table.view-card-table td.skill div {
+table.wiki-table td.skill div {
     margin-left: 10px;
     margin-right: 10px;
 }
 
-table.view-card-table td.skill div:nth-child(1) {
+table.wiki-table td.skill div:nth-child(1) {
     font-weight: bold;
 }
 
-table.view-card-table td.skill div:nth-child(2) {
+table.wiki-table td.skill div:nth-child(2) {
     font-size: smaller;
     color: #999999;
     margin-top: 5px;
@@ -475,6 +483,7 @@ table.view-skill-table tr.content td:nth-child(1) {
 table.view-skill-table tr.content td:nth-child(2) {
     text-align: left;
     width: 50%;
+    padding-left: 2%;
 }
 
 table.view-skill-table tr.content td:nth-child(3) {
@@ -482,6 +491,17 @@ table.view-skill-table tr.content td:nth-child(3) {
     width: 25%;
 }
 
-table.view-card-category-table td.label {
+table.view-rune-table td.label {
+    width: 20%;
+}
+
+table.view-rune-table td.value {
+    width: 30%;
+    text-align: center;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+table.view-category-table td.label {
     width: 50px;
 }

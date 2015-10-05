@@ -24,10 +24,14 @@
                 <td>${skillInfo.description}</td>
                 <td>
                     <c:forEach var="owningCard" items="${skillInfo.owningCards}">
-                        <a href="../Cards/${owningCard.cardName}" target="_blank">${owningCard.cardName}</a>
+                        <a href="../Cards/${owningCard.cardName}">${owningCard.cardName}</a>
                     </c:forEach>
                 </td>
-                <td></td>
+                <td>
+                    <c:forEach var="owningRune" items="${skillInfo.owningRunes}">
+                        <a href="../Runes/${owningRune.runeName}">${owningRune.runeName}</a>
+                    </c:forEach>
+                </td>
             </tr>
             </c:forEach>    
         </tbody>

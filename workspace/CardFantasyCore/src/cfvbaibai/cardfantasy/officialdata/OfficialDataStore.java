@@ -12,6 +12,7 @@ import com.google.gson.Gson;
 public class OfficialDataStore {
     public OfficialSkillDataStore skillStore;
     public OfficialCardDataStore cardStore;
+    public OfficialRuneDataStore runeStore;
 
     private final static String SKILL_REGEX = 
             "^" +
@@ -44,6 +45,14 @@ public class OfficialDataStore {
         } finally {
             cardDataReader.close();
         }
+        InputStreamReader runeDataReader = new InputStreamReader(
+                OfficialDataStore.class.getClassLoader().getResourceAsStream("cfvbaibai/cardfantasy/officialdata/allrune"),
+                "UTF-8");
+            try {
+                newInstance.runeStore = gson.fromJson(runeDataReader, OfficialRuneDataStore.class);
+            } finally {
+                runeDataReader.close();
+            }
         instance = newInstance;
         return newInstance;
     }
@@ -151,5 +160,38 @@ public class OfficialDataStore {
             }
         }
         return result;
+    }
+
+    public List<OfficialRune> getRunesOfStar(int star) {
+        List<OfficialRune> result = new ArrayList<OfficialRune>();
+        for (OfficialRune rune : this.runeStore.data.Runes) {
+            if (rune.getColor() == star) {
+                result.add(rune);
+            }
+        }
+        return result;
+    }
+
+    public String[] getPropertyNames() {
+        return new String[] { "地", "水", "风", "火" };
+    }
+
+    public List<OfficialRune> getRunesOfProperty(int property) {
+        List<OfficialRune> result = new ArrayList<OfficialRune>();
+        for (OfficialRune rune : this.runeStore.data.Runes) {
+            if (rune.getProperty() == property) {
+                result.add(rune);
+            }
+        }
+        return result;
+    }
+
+    public OfficialRune getRuneByName(String runeName) {
+        for (OfficialRune rune : this.runeStore.data.Runes) {
+            if (rune.getRuneName().equalsIgnoreCase(runeName)) {
+                return rune;
+            }
+        }
+        return null;
     }
 }

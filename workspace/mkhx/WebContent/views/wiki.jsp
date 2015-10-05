@@ -37,10 +37,24 @@
                     </div>
                 </div>
             </div>
-            <div id="wiki-rune-pedia" data-role="collapsible" data-collapsed="true" data-mini="true" data-content-theme="d" data-theme="c">
-                <h3>符文图鉴（施工中……）</h3>
+            <div id="wiki-rune-pedia" data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">
+                <h3>符文图鉴</h3>
                 <div id="wiki-rune-pedia" class="wiki-result">
-                    <div>施工中……</div>
+                    <div class="wiki-categories">
+                        <div><a href="Wiki/Runes/Stars/5">五星符文</a></div>
+                        <div><a href="Wiki/Runes/Stars/4">四星符文</a></div>
+                        <div><a href="Wiki/Runes/Stars/3">三星符文</a></div>
+                        <div><a href="Wiki/Runes/Stars/2">二星符文</a></div>
+                        <div><a href="Wiki/Runes/Stars/1">一星符文</a></div>
+                        <div></div>
+                    </div>
+                    <div class="wiki-categories">
+                        <div><a href="Wiki/Runes/Properties/1">地属性符文</a></div>
+                        <div><a href="Wiki/Runes/Properties/2">水属性符文</a></div>
+                        <div><a href="Wiki/Runes/Properties/3">风属性符文</a></div>
+                        <div><a href="Wiki/Runes/Properties/4">火属性符文</a></div>
+                        <div></div>
+                    </div>
                 </div>
             </div>
             <div id="wiki-skill-pedia" data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">
@@ -97,6 +111,7 @@
                 </div>
             </div>
         </div>
+        <!-- 
         <div class="wiki-footer" data-role="footer" data-position="fixed" data-content-theme="d" data-theme="c">  
             <div data-role="navbar">
                 <ul>  
@@ -108,6 +123,7 @@
                 </ul>  
             </div>  
         </div>
+         -->
     </div>
 </body>
 </html>

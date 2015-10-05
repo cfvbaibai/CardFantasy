@@ -5,11 +5,13 @@ import java.util.List;
 
 import cfvbaibai.cardfantasy.officialdata.OfficialCard;
 import cfvbaibai.cardfantasy.officialdata.OfficialDataStore;
+import cfvbaibai.cardfantasy.officialdata.OfficialRune;
 import cfvbaibai.cardfantasy.officialdata.OfficialSkill;
 
 public class OfficialSkillInfo {
     public OfficialSkill skill;
     public List<OfficialCard> owningCards;
+    public List<OfficialRune> owningRunes;
     public static OfficialSkillInfo build(OfficialSkill skill, OfficialDataStore store) {
         OfficialSkillInfo skillInfo = new OfficialSkillInfo();
         skillInfo.skill = skill;
@@ -23,15 +25,27 @@ public class OfficialSkillInfo {
                 skillInfo.owningCards.add(card);
             }
         }
+        skillInfo.owningRunes = new ArrayList<OfficialRune>();
+        System.out.println(skill.getName() + " = " + skill.SkillId);
+        for (OfficialRune rune : store.runeStore.data.Runes) {
+            System.out.println(rune.getRuneName() + " = " + rune.getSkill1() + " " + rune.getSkill2() + " " + rune.getSkill3() + " " + rune.getSkill4() + " " + rune.getSkill5());
+            if (skill.SkillId.equalsIgnoreCase(rune.getSkill1()) ||
+                skill.SkillId.equalsIgnoreCase(rune.getSkill2()) ||
+                skill.SkillId.equalsIgnoreCase(rune.getSkill3()) ||
+                skill.SkillId.equalsIgnoreCase(rune.getSkill4()) ||
+                skill.SkillId.equalsIgnoreCase(rune.getSkill5())) {
+                skillInfo.owningRunes.add(rune);
+            }
+        }
         return skillInfo;
     }
-    
-    public OfficialCard[] getOwningCards() {
-        OfficialCard[] result = new OfficialCard[this.owningCards.size()];
-        for (int i = 0; i < this.owningCards.size(); ++i) {
-            result[i] = this.owningCards.get(i);
-        }
-        return result;
+
+    public List<OfficialCard> getOwningCards() {
+        return this.owningCards;
+    }
+
+    public List<OfficialRune> getOwningRunes() {
+        return this.owningRunes;
     }
 
     public String getName() {

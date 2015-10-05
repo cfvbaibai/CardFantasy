@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="cf" uri="/WEB-INF/CardFantasyTags.tld" %>
 <%@ include file="header.jsp"%>
 <title>魔卡幻想WIKI - ${category}</title>
 <meta name="description" content="${category}" />
@@ -19,8 +18,8 @@
             <tr>
                 <td class="label">${subCategory.name}</td>
                 <td class="content">
-                    <c:forEach var="card" items="${subCategory.items}">
-                        <div><a href="<c:url value="/" />Wiki/Cards/${card.cardName}">${card.cardName}</a></div>
+                    <c:forEach var="rune" items="${subCategory.items}">
+                        <div><a href="<c:url value="/" />Wiki/Runes/${rune.runeName}">${rune.runeName}</a></div>
                     </c:forEach>
                     <div></div>
                 </td>

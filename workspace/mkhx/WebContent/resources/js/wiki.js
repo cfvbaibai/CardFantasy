@@ -12,12 +12,12 @@ var toStarText = function(star) {
 
 var toRaceText = function(race) {
     switch (race) {
-        case '1': return '王国';
-        case '2': return '森林';
-        case '3': return '蛮荒';
-        case '4': return '地狱';
-        case '97': return '魔王';
-        case '100': return '魔神';
+        case 1: return '王国';
+        case 2: return '森林';
+        case 3: return '蛮荒';
+        case 4: return '地狱';
+        case 97: return '魔王';
+        case 100: return '魔神';
         default: return '未知';
     }
 };

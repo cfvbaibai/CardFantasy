@@ -6,9 +6,9 @@ CardFantasy.DeckBuilder = {};
 var store = null;
 var outputDivId = null;
 
-var getWikiUrl = function(name) {
+var getWikiUrl = function(type, name) {
     //return 'http://cnrdn.com/rd.htm?id=1344758&r=' + encodeURIComponent('http://mkhx.joyme.com/wiki/' + name);
-    return rootDir + 'Cards/' + name;
+    return rootDir + 'Wiki/' + type + 's/' + name;
 };
 
 DeckBuilder.buildDeck = function(_outputDivId) {
@@ -94,7 +94,7 @@ var updateSkillDetailButtonHref = function() {
         }
     }
     if (skill && skill.wikiId) {
-        button.attr('href', getWikiUrl(skill.name));
+        button.attr('href', getWikiUrl('Skill', skill.name));
     } else {
         button.attr('href', '#');
     }
@@ -124,14 +124,14 @@ DeckBuilder.onAddCardButtonClick = function(id) {
     var entity = $('#' + id).data('entity');
     $.mobile.changePage("#new-card-props", { transition : 'slidedown', role : 'dialog' });
     $('#new-card-props div.entity-title span.entity-title-text').text(entity.name);
-    $('#new-card-props a.entity-detail-button').attr('href', getWikiUrl(entity.name));
+    $('#new-card-props a.entity-detail-button').attr('href', getWikiUrl('Card', entity.name));
 };
 
 DeckBuilder.onAddRuneButtonClick = function(id) {
     var entity = $('#' + id).data('entity');
     $.mobile.changePage("#new-rune-props", { transition : 'slidedown', role : 'dialog' });
     $('#new-rune-props div.entity-title span.entity-title-text').text(entity.name);
-    $('#new-rune-props a.entity-detail-button').attr('href', getWikiUrl(entity.name));
+    $('#new-rune-props a.entity-detail-button').attr('href', getWikiUrl('Card', entity.name));
 };
 
 var filterCard = function() {

@@ -3,21 +3,19 @@ package cfvbaibai.cardfantasy.web.beans;
 import java.util.ArrayList;
 import java.util.List;
 
-import cfvbaibai.cardfantasy.officialdata.OfficialCard;
-
-public class SubCategory {
+public class SubCategory<T> {
     private String name;
-    private List<OfficialCard> cards = new ArrayList<OfficialCard>();
+    private List<T> items = new ArrayList<T>();
     public String getName() {
         return name;
     }
     public void setName(String name) {
         this.name = name;
     }
-    public List<OfficialCard> getCards() {
-        return this.cards;
+    public List<T> getItems() {
+        return this.items;
     }
-    public void addCard(OfficialCard card) {
-        this.cards.add(card);
+    public void addItem(T item) {
+        this.items.add(item);
     }
 }

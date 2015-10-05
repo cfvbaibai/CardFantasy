@@ -19,12 +19,15 @@ import cfvbaibai.cardfantasy.data.CardData;
 import cfvbaibai.cardfantasy.data.CardDataStore;
 import cfvbaibai.cardfantasy.officialdata.OfficialCard;
 import cfvbaibai.cardfantasy.officialdata.OfficialDataStore;
+import cfvbaibai.cardfantasy.officialdata.OfficialRune;
+import cfvbaibai.cardfantasy.officialdata.OfficialRuneProperty;
 import cfvbaibai.cardfantasy.officialdata.OfficialSkill;
 import cfvbaibai.cardfantasy.officialdata.OfficialSkillCategory;
 import cfvbaibai.cardfantasy.web.ErrorHelper;
 import cfvbaibai.cardfantasy.web.beans.JsonHandler;
 import cfvbaibai.cardfantasy.web.beans.Logger;
 import cfvbaibai.cardfantasy.web.beans.OfficialCardInfo;
+import cfvbaibai.cardfantasy.web.beans.OfficialRuneInfo;
 import cfvbaibai.cardfantasy.web.beans.OfficialSkillInfo;
 import cfvbaibai.cardfantasy.web.beans.SubCategory;
 import cfvbaibai.cardfantasy.web.beans.UserAction;
@@ -58,6 +61,61 @@ public class OfficialDataController {
         return filterText;
     }
 
+    @RequestMapping(value = "/Wiki/Runes/Stars/{star}")
+    public ModelAndView queryRuneOfStars(HttpServletRequest request,
+            @PathVariable("star") int star, HttpServletResponse response) throws IOException {
+        this.logger.info("Getting runes of star: " + star);
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("view-rune-category");
+        mv.addObject("category", star + "星符文");
+        List<SubCategory<OfficialRune>> subCategories = new ArrayList<SubCategory<OfficialRune>>();
+        try {
+            List<OfficialRune> runes = this.officialStore.getRunesOfStar(star);
+            for (String propertyName : this.officialStore.getPropertyNames()) {
+                SubCategory<OfficialRune> subCategory = new SubCategory<OfficialRune>();
+                subCategory.setName(propertyName);
+                for (OfficialRune rune : runes) {
+                    if (rune.getPropertyName().equals(propertyName)) {
+                        subCategory.addItem(rune);
+                    }
+                }
+                subCategories.add(subCategory);
+            }
+            mv.addObject("subCategories", subCategories);
+        } catch (Exception e) {
+            this.logger.error(e);
+        }
+        return mv;
+    }
+
+    @RequestMapping(value = "/Wiki/Runes/Properties/{property}")
+    public ModelAndView queryRuneOfProperties(HttpServletRequest request,
+            @PathVariable("property") int property, HttpServletResponse response) throws IOException {
+        this.logger.info("Getting runes of property: " + property);
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("view-rune-category");
+        String propertyName = OfficialRuneProperty.getNameFromId(property);
+        mv.addObject("category", propertyName + "属性符文");
+        List<SubCategory<OfficialRune>> subCategories = new ArrayList<SubCategory<OfficialRune>>();
+        try {
+            List<OfficialRune> runes = this.officialStore.getRunesOfProperty(property);
+            for (int i = 1; i <= 5; ++i) {
+                SubCategory<OfficialRune> subCategory = new SubCategory<OfficialRune>();
+                subCategory.setName(i + "星");
+                for (OfficialRune rune : runes) {
+                    if (rune.getColor() == i) {
+                        subCategory.addItem(rune);
+                    }
+                }
+                subCategories.add(subCategory);
+            }
+            mv.addObject("subCategories", subCategories);
+        } catch (Exception e) {
+            this.logger.error(e);
+        }
+        return mv;
+    }
+
     @RequestMapping(value = "/Wiki/Cards/Stars/{star}")
     public ModelAndView queryCardOfStars(HttpServletRequest request,
             @PathVariable("star") int star, HttpServletResponse response) throws IOException {
@@ -65,15 +123,15 @@ public class OfficialDataController {
         ModelAndView mv = new ModelAndView();
         mv.setViewName("view-card-category");
         mv.addObject("category", star + "星卡牌");
-        List<SubCategory> subCategories = new ArrayList<SubCategory>();
+        List<SubCategory<OfficialCard>> subCategories = new ArrayList<SubCategory<OfficialCard>>();
         try {
             List<OfficialCard> cards = this.officialStore.getCardOfStar(star);
             for (String raceName : this.officialStore.getRaceNames()) {
-                SubCategory subCategory = new SubCategory();
+                SubCategory<OfficialCard> subCategory = new SubCategory<OfficialCard>();
                 subCategory.setName(raceName);
                 for (OfficialCard card : cards) {
                     if (card.getRaceName().equals(raceName)) {
-                        subCategory.addCard(card);
+                        subCategory.addItem(card);
                     }
                 }
                 subCategories.add(subCategory);
@@ -93,15 +151,15 @@ public class OfficialDataController {
         mv.setViewName("view-card-category");
         String raceName = this.officialStore.getRaceNameById(race);
         mv.addObject("category", raceName + "卡牌");
-        List<SubCategory> subCategories = new ArrayList<SubCategory>();
+        List<SubCategory<OfficialCard>> subCategories = new ArrayList<SubCategory<OfficialCard>>();
         try {
             List<OfficialCard> cards = this.officialStore.getCardOfRace(race);
             for (int i = 1; i <= 5; ++i) {
-                SubCategory subCategory = new SubCategory();
+                SubCategory<OfficialCard> subCategory = new SubCategory<OfficialCard>();
                 subCategory.setName(i + "星");
                 for (OfficialCard card : cards) {
                     if (card.getColor() == i) {
-                        subCategory.addCard(card);
+                        subCategory.addItem(card);
                     }
                 }
                 subCategories.add(subCategory);
@@ -124,6 +182,32 @@ public class OfficialDataController {
         try {
             List<String> skillTypes = this.officialStore.getSkillTypesByCategory(categoryId);
             mv.addObject("skillTypes", skillTypes);
+        } catch (Exception e) {
+            this.logger.error(e);
+        }
+        return mv;
+    }
+
+    @RequestMapping(value = "/Wiki/Runes/{runeName}")
+    public ModelAndView queryRune(HttpServletRequest request,
+            @PathVariable("runeName") String runeName, HttpServletResponse response) throws IOException {
+        ModelAndView mv = new ModelAndView();
+        try {
+            this.logger.info("Getting official rune data: " + runeName);
+            this.userActionRecorder.addAction(new UserAction(new Date(), request.getRemoteAddr(), "View Rune", runeName));
+            if (runeName == null) {
+                response.setStatus(404);
+                return mv;
+            }
+            mv.setViewName("view-rune");
+            OfficialRune rune = this.officialStore.getRuneByName(runeName);
+            if (rune == null) {
+                response.setStatus(404);
+                return mv;
+            }
+            OfficialRuneInfo runeInfo = new OfficialRuneInfo(rune, officialStore);
+            mv.addObject("runeInfo", runeInfo);
+            mv.addObject("runeName", runeName);
         } catch (Exception e) {
             this.logger.error(e);
         }
