@@ -20,7 +20,7 @@
                 <td class="label">${subCategory.name}</td>
                 <td class="content">
                     <c:forEach var="card" items="${subCategory.items}">
-                        <div><a href="<c:url value="/" />Wiki/Cards/${card.cardName}">${card.cardName}</a></div>
+                        <div><a href="<c:url value="/Wiki" />/Cards/${card.cardName}">${card.cardName}</a></div>
                     </c:forEach>
                     <div></div>
                 </td>

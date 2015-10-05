@@ -46,7 +46,7 @@
                     <div>过关条件： ${levelInfo.winConditionText}</div>
                     <c:if test="${levelInfo.firstWinBonus != null}">
                     <div>固定奖励：
-                        <a href="<c:url value="/" />/Wiki/${levelInfo.firstWinBonus.typeName}s/${levelInfo.firstWinBonus.name}">
+                        <a href="<c:url value="/Wiki" />/${levelInfo.firstWinBonus.typeName}s/${levelInfo.firstWinBonus.name}">
                             ${levelInfo.firstWinBonus.name}
                         </a>
                     </div>
@@ -55,7 +55,7 @@
                 <td class="value cards">
                     <c:forEach var="card" items="${levelInfo.deckInfo.cards}">
                         <div class="item">
-                            <a href="<c:url value="/" />/Wiki/Cards/${card.cardName}">${card.cardName}</a>-${card.level}<c:if test="${card.extraSkill != null}">+<a href="<c:url value="/" />/Wiki/Skills/${card.extraSkill.name}">${card.extraSkill.name}</a></c:if>,
+                            <a href="<c:url value="/Wiki" />/Cards/${card.cardName}">${card.cardName}</a>-${card.level}<c:if test="${card.extraSkill != null}">+<a href="<c:url value="/Wiki" />/Skills/${card.extraSkill.name}">${card.extraSkill.name}</a></c:if>,
                         </div>
                     </c:forEach>
                     <div class="clear"></div>
@@ -65,7 +65,7 @@
                 <td class="value runes">
                     <c:forEach var="rune" items="${levelInfo.deckInfo.runes}">
                         <div class="item">
-                            <a href="<c:url value="/" />/Wiki/Runes/${rune.runeName}">${rune.runeName}-${rune.level}</a>
+                            <a href="<c:url value="/Wiki" />/Runes/${rune.runeName}">${rune.runeName}-${rune.level}</a>
                         </div>
                     </c:forEach>
                     <div class="clear"></div>

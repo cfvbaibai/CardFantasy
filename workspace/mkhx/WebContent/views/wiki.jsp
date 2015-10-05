@@ -9,12 +9,6 @@
     <div id="wiki" class="main-page" data-role="page">
         <%@ include file="wiki-header.jsp" %>
         <div data-role="content">
-            <!-- 
-            <div data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">
-                <h3>公告</h3>
-                <div style="padding: 5px">魔卡幻想WIKI作为<a href="<c:url value="/" />" target="_blank">魔卡幻想模拟器</a>子站点正式成立</div>
-            </div>
-             -->
             <div id="wiki-card-pedia" data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">
                 <h3>卡牌图鉴</h3>
                 <div id="wiki-card-pedia" class="wiki-result">
