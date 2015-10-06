@@ -53,6 +53,9 @@ public class OfficialStageLevelInfo {
         OfficialStageDeckInfo deckInfo = new OfficialStageDeckInfo();
         String[] cardDescParts = level.CardList.split(",");
         for (String cardDesc : cardDescParts) {
+            if (cardDesc.equals("")) {
+                continue;
+            }
             String[] cardParts = cardDesc.split("_");
             int cardId = Integer.parseInt(cardParts[0]);
             OfficialCard card = this.store.getCardById(cardId);
@@ -66,6 +69,9 @@ public class OfficialStageLevelInfo {
         }
         String[] runeDescParts = level.RuneList.split(",");
         for (String runeDesc : runeDescParts) {
+            if (runeDesc.equals("")) {
+                continue;
+            }
             String[] runeParts = runeDesc.split("_");
             int runeId = Integer.parseInt(runeParts[0]);
             OfficialRune rune = this.store.getRuneById(runeId);
