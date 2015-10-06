@@ -407,6 +407,10 @@ table.wiki-table td.label {
     background-color: #eee;
 }
 
+table.wiki-table td.label.small {
+    height: 1px;
+}
+
 table.view-card-table td.label {
     width: 20%;
 }
@@ -479,43 +483,22 @@ table.view-skill-table td {
     padding-bottom: 5px;
 }
 
-table.view-skill-table tr.content td:nth-child(1) {
-    min-width: 50px;
+table.view-skill-table td.skill-name {
     max-width: 100px;
-}
-
-table.view-skill-table tr.content td:nth-child(2) {
-    text-align: left;
-    width: 40%;
-    padding-left: 2%;
-}
-
-table.view-skill-table tr.content td:nth-child(3),
-table.view-skill-table tr.content td:nth-child(4) {
-    min-width: 40px;
     padding-left: 1%;
     padding-right: 1%;
 }
 
-table.view-skill-table tr.content td:nth-child(3) div {
-    font-size: smaller;
-    width: 80px;
+table.view-skill-table td.skill-desc,
+table.view-skill-table tr.owning td {
     text-align: left;
-}
-table.view-skill-table tr.content td:nth-child(4) div {
-    font-size: smaller;
-    width: 40px;
-}
-table.view-skill-table tr.content td:nth-child(3) div:last-child,
-table.view-skill-table tr.content td:nth-child(4) div:last-child {
-    width: 0;
-    float: none;
-    clear: both;
+    padding-left: 2%;
 }
 
 table.view-skill-category-table td.label {
     width: 10%;
 }
+
 table.view-rune-table td.label {
     width: 20%;
 }
@@ -531,42 +514,73 @@ table.view-category-table td.label {
     width: 50px;
 }
 
-table.view-category-table td.card-logos-container {
+.title img.property-icon,
+.label img.property-icon {
+    width: 38px;
+}
+
+table.wiki-table .logos-container {
     text-align: left;
     padding: 3px 0 0 3px;
 }
 
-table.view-category-table div.card-logo-container {
+div.clear {
+    float: none;
+    clear: both;
+}
+
+/****************************************************************
+ *** START OF CardLogoTag & RuneLogoTag
+ ****************************************************************/
+div.card-logo-container,
+div.rune-logo-container {
     display: inline-block;
     position: relative;
     width: 78px;
 }
 
-table.view-category-table div.clear {
-    float: none;
-    clear: both;
-}
-
-table.view-category-table div.card-frame {
+div.card-frame,
+div.rune-frame {
     position: relative;
     width: 100%;
 }
 
-table.view-category-table div.card-logo {
+div.card-logo,
+div.rune-logo {
     left: 0;
     top: 0;
     position: absolute;
     margin: 4px;
 }
 
-table.view-category-table div.card-star {
+div.card-star,
+div.rune-star {
     left: 0;
     top: 56px;
     position: absolute;
     margin: 4px;
 }
 
-table.view-category-table div.card-name {
+@media (max-width: 400px) {
+.responsive div.card-star,
+.responsive div.rune-star {
+    top: 27px;
+}
+div.responsive.card-logo-container,
+div.responsive.rune-logo-container {
+    width: 48px;
+}
+.responsive div.card-name,
+.responsive div.rune-name {
+    width: 100%;
+    margin: 0;
+    left: 0;
+    top: 0;
+}
+}
+
+div.card-name,
+div.rune-name {
     position: absolute;
     top: 1px;
     left: 1px;
@@ -574,13 +588,20 @@ table.view-category-table div.card-name {
     font-size: 12px;
     color: white;
     font-family: 微软雅黑;
-    margin: 1px 4px;
+    margin: 1px 2px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
-table.view-category-table img.card-logo {
+img.card-logo,
+img.rune-logo {
     width: 100%;
 }
-
+/****************************************************************
+ *** END OF CardLogoTag & RuneLogoTag
+ ****************************************************************/
+ 
 table.view-stage-detail-table {
     margin: 10px 0 10px 0;
 }

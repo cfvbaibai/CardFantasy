@@ -8,30 +8,35 @@ import javax.servlet.jsp.tagext.TagSupport;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import cfvbaibai.cardfantasy.officialdata.OfficialCard;
 import cfvbaibai.cardfantasy.officialdata.OfficialDataStore;
+import cfvbaibai.cardfantasy.officialdata.OfficialRune;
 import cfvbaibai.cardfantasy.web.beans.Logger;
 
-public class CardLogoTag extends TagSupport {
+public class RuneLogoTag extends TagSupport {
     private static final long serialVersionUID = -6869551922232242199L;
-    private String cardName;
-    private boolean cardNameVisible = true;
+    private String runeName;
+    private boolean runeNameVisible = true;
     private boolean starBarVisible = true;
     private boolean frameVisible = true;
     private boolean responsive = false;
-
-    public String getCardName() {
-        return cardName;
+    
+    public boolean isResponsive() {
+        return responsive;
     }
-    public void setCardName(String cardName) {
-        this.cardName = cardName;
+    public void setResponsive(boolean responsive) {
+        this.responsive = responsive;
     }
-
-    public boolean isCardNameVisible() {
-        return cardNameVisible;
+    public String getRuneName() {
+        return runeName;
     }
-    public void setCardNameVisible(boolean cardNameVisible) {
-        this.cardNameVisible = cardNameVisible;
+    public void setRuneName(String runeName) {
+        this.runeName = runeName;
+    }
+    public boolean isRuneNameVisible() {
+        return runeNameVisible;
+    }
+    public void setRuneNameVisible(boolean runeNameVisible) {
+        this.runeNameVisible = runeNameVisible;
     }
     public boolean isStarBarVisible() {
         return starBarVisible;
@@ -45,12 +50,6 @@ public class CardLogoTag extends TagSupport {
     public void setFrameVisible(boolean frameVisible) {
         this.frameVisible = frameVisible;
     }
-    public boolean isResponsive() {
-        return responsive;
-    }
-    public void setResponsive(boolean responsive) {
-        this.responsive = responsive;
-    }
 
     @Autowired
     private Logger logger;
@@ -59,13 +58,13 @@ public class CardLogoTag extends TagSupport {
     public int doEndTag() {
         JspWriter writer = this.pageContext.getOut();
         try {
-            OfficialCard card = OfficialDataStore.getInstance().getCardByName(this.getCardName());
+            OfficialRune rune = OfficialDataStore.getInstance().getRuneByName(this.getRuneName());
             String contextPath = this.pageContext.getServletContext().getContextPath();
-            String cardPageUrl = contextPath + "/Wiki/Cards/" + this.getCardName();
-            String frameUrlFormat = contextPath + "/resources/img/frame/Square_%s_Frame.png";
+            String runePageUrl = contextPath + "/Wiki/Runes/" + this.getRuneName();
+            String frameUrlFormat = contextPath + "/resources/img/frame/Square_Frame.png";
             String invisibleFrameUrl = contextPath + "/resources/img/frame/Invisible_Square_Frame.png";
-            String starUrl = contextPath + "/resources/img/frame/Star_" + card.getColor() + "_Bar.png";
-            String logoUrl = card.getLogoUrl();
+            String starUrl = contextPath + "/resources/img/frame/Star_" + rune.getColor() + "_Bar.png";
+            String logoUrl = rune.getSmallIconUrl();
             
             /*
              *                     <div class="card-logo-container">
@@ -78,26 +77,26 @@ public class CardLogoTag extends TagSupport {
                     </div>
              */
             writer.println(String.format(
-                "<div class='card-logo-container%s'>",
+                "<div class='rune-logo-container%s'>",
                 this.isResponsive() ? " responsive" : ""));
             writer.println(String.format(
-                    "<div class='card-frame'><img src='%s' style='width: 100%%' /></div>",
-                    this.frameVisible ? String.format(frameUrlFormat, card.getRaceName()) : invisibleFrameUrl));
+                    "<div class='rune-frame'><img src='%s' style='width: 100%%' /></div>",
+                    this.frameVisible ? frameUrlFormat : invisibleFrameUrl));
             writer.println(String.format(
-                    "<div class='card-logo'>" +
+                    "<div class='rune-logo'>" +
                         "<a href='%s' target='_self'>" +
                             "<img src='%s' alt='%s' title='%s' style='width: 100%%' />" +
                         "</a>" +
                     "</div>",
-                cardPageUrl,
-                logoUrl, this.getCardName(), this.getCardName()));
-            if (this.cardNameVisible) {
+                runePageUrl,
+                logoUrl, this.getRuneName(), this.getRuneName()));
+            if (this.runeNameVisible) {
                 writer.println(String.format(
-                    "<div class='card-name'>%s</div>", this.getCardName()));
+                    "<div class='rune-name'>%s</div>", this.getRuneName()));
             }
             if (this.starBarVisible) {
                 writer.println(String.format(
-                    "<div class='card-star'><img src='%s' style='width: 100%%' /></div>", starUrl)); 
+                    "<div class='rune-star'><img src='%s' style='width: 100%%' /></div>", starUrl)); 
             }
             writer.println(
                 "</div>");

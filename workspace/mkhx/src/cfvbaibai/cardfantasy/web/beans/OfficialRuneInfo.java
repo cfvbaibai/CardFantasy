@@ -73,6 +73,16 @@ public class OfficialRuneInfo {
     public OfficialSkill getSkill5() {
         return this.skill5;
     }
+    public OfficialSkill getSkill(int i) {
+        switch (i) {
+        case 1: return this.skill1;
+        case 2: return this.skill2;
+        case 3: return this.skill3;
+        case 4: return this.skill4;
+        case 5: return this.skill5;
+        default: return null;
+        }
+    }
     public String getSmallIconUrl() {
         return this.rune.getSmallIconUrl();
     }

@@ -108,6 +108,7 @@ public class OfficialDataController {
                 }
                 subCategories.add(subCategory);
             }
+            mv.addObject("propertyName", propertyName);
             mv.addObject("subCategories", subCategories);
         } catch (Exception e) {
             this.logger.error(e);
@@ -314,12 +315,11 @@ public class OfficialDataController {
                 response.setStatus(404);
                 return mv;
             }
-            OfficialSkillInfo[] skillInfos = new OfficialSkillInfo[skills.length];
+            List<OfficialSkillInfo> skillInfos = new ArrayList<OfficialSkillInfo>();
             for (int i = 0; i < skills.length; ++i) {
                 OfficialSkillInfo skillInfo = OfficialSkillInfo.build(skills[i], officialStore);
-                skillInfos[i] = skillInfo;
+                skillInfos.add(skillInfo);
             }
-            
             mv.addObject("skillInfos", skillInfos);
             mv.addObject("skillType", skillType);
         } catch (Exception e) {

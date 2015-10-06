@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="cf" uri="/WEB-INF/CardFantasyTags.tld" %>
 <%@ include file="header.jsp"%>
 <title>${runeName} - 魔卡幻想WIKI</title>
 <meta name="description" content="${runeName}" />
@@ -11,7 +12,8 @@
         <tbody>
             <tr>
                 <td id="view-rune-name" class="title" colspan="4">
-                    <span>${runeName}</span>
+                    <div>${runeName}</div>
+                    <div><cf:runeLogo runeName="${runeName}" runeNameVisible="false" starBarVisible="false"  /></div>
                 </td>
             </tr>
             <tr>
@@ -32,44 +34,25 @@
                 <td class="label">碎片兑换</td>
                 <td id="view-rune-fragment" class="value">${runeInfo.fragmentDesc}</td>
             </tr>
+        </tbody>
+    </table>
+    <table class="view-rune-table wiki-table">
+        <tbody>
             <tr>
-                <td class="title" colspan="5">符文技能</td>
+                <td class="title" colspan="3">符文技能</td>
             </tr>
+            <c:forEach var="i" begin="1" end="5" step="1">
             <tr>
-                <td class="label">LEVEL 0</td>
-                <td id="view-rune-skill1" class="skill" colspan="4">
-                    <div><a href="../Skills/${runeInfo.skill1.name}">${runeInfo.skill1.name}</a></div>
-                    <div>${runeInfo.skill1.description}</div>
+                <td class="label">LEVEL ${i - 1}</td>
+                <td class="skill-category-icon">
+                    <cf:skillCategoryIcon categoryId="${runeInfo.getSkill(i).category}" />
+                </td>
+                <td id="view-rune-skill${i}" class="skill" colspan="4">
+                    <div><a href="../Skills/${runeInfo.getSkill(i).name}">${runeInfo.getSkill(i).name}</a></div>
+                    <div>${runeInfo.getSkill(i).description}</div>
                 </td>
             </tr>
-            <tr>
-                <td class="label">LEVEL 1</td>
-                <td id="view-rune-skill2" class="skill" colspan="4">
-                    <div><a href="../Skills/${runeInfo.skill2.name}">${runeInfo.skill2.name}</a></div>
-                    <div>${runeInfo.skill2.description}</div>
-                </td>
-            </tr>
-            <tr>
-                <td class="label">LEVEL 2</td>
-                <td id="view-rune-skill3" class="skill" colspan="4">
-                  <div><a href="../Skills/${runeInfo.skill3.name}">${runeInfo.skill3.name}</a></div>
-                    <div>${runeInfo.skill3.description}</div>
-                </td>
-            </tr>
-            <tr>
-                <td class="label">LEVEL 3</td>
-                <td id="view-rune-skill4" class="skill" colspan="4">
-                    <div><a href="../Skills/${runeInfo.skill4.name}">${runeInfo.skill4.name}</a></div>
-                    <div>${runeInfo.skill4.description}</div>
-                </td>
-            </tr>
-            <tr>
-                <td class="label">LEVEL 4</td>
-                <td id="view-rune-skill5" class="skill" colspan="4">
-                    <div><a href="../Skills/${runeInfo.skill5.name}">${runeInfo.skill5.name}</a></div>
-                    <div>${runeInfo.skill5.description}</div>
-                </td>
-            </tr>
+            </c:forEach>
         </tbody>
     </table>
     <!-- CNZZ Begins -->

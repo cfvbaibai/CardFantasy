@@ -18,7 +18,7 @@
             <c:forEach var="subCategory" items="${subCategories}">
             <tr>
                 <td class="label">${subCategory.name}</td>
-                <td class="card-logos-container">
+                <td class="logos-container">
                     <c:forEach var="card" items="${subCategory.items}">
                         <cf:cardLogo cardName="${card.cardName}" />
                     </c:forEach>
