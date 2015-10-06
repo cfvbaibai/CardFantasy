@@ -186,7 +186,7 @@ public class OfficialCard {
         return OfficialDataStore.IFREE_CDN_BASE + "/card/370_570/img_maxCard_" + this.CardId + ".jpg";
     }
     public boolean isMaterial() {
-        return this.AttackArray[0] == 1 && this.Cost == 99 && this.getRace() < 5 &&
+        return this.AttackArray[0] == this.AttackArray[10] && this.Cost == 99 && this.getRace() < 5 &&
                 (this.getSkill2() == null || this.getSkill2().equals("") || this.getSkill2().equals("0"));
     }
 }
