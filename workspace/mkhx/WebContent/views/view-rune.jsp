@@ -48,7 +48,7 @@
                     <cf:skillCategoryIcon categoryId="${runeInfo.getSkill(i).category}" />
                 </td>
                 <td id="view-rune-skill${i}" class="skill" colspan="4">
-                    <div><a href="../Skills/${runeInfo.getSkill(i).name}">${runeInfo.getSkill(i).name}</a></div>
+                    <div><a href="../Skills/${runeInfo.getSkill(i).name}" target="_self">${runeInfo.getSkill(i).name}</a></div>
                     <div>${runeInfo.getSkill(i).description}</div>
                 </td>
             </tr>

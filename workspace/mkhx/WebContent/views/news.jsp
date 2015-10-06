@@ -10,7 +10,7 @@
                 <h3>公告</h3>
                 <ul>
                     <li><a href="#" data-type="bug">魔卡幻想模拟器贴吧</a>已成立，欢迎大家来提BUG、提需求、提供技能结算细节。</li>
-                    <li><a href="<c:url value="/wiki" />">魔卡幻想WIKI</a>子站点正式成立，作为新的尝试，欢迎大家来<a href="#" data-type="bug">贴吧</a>提需求和报告BUG。</li>
+                    <li><a href="<c:url value="/wiki" />" target="_blank">魔卡幻想WIKI</a>子站点正式成立，作为新的尝试，欢迎大家来<a href="#" data-type="bug">贴吧</a>提需求和报告BUG。</li>
                     <!-- <li>小提示：如果想保存卡组，只要把卡组的文字表述记下来存在文本文件或者手机备忘录里，下次要用的时候复制回来就行。</li> -->
                     <!-- <li>小提示：可以灵活使用*0的表达法来方便配卡哦。</li> -->
                 </ul>
@@ -33,22 +33,22 @@
                 <h3>更新日志</h3>
                 <ul class="news-content">
                     <li>2015-10-06: <ul>
-                        <li>【<a href="<c:url value="/wiki" />">WIKI</a>】将素材卡单独抽取为一类，感谢<x>虚梦杀</x>的建议</li>
-                        <li>【<a href="<c:url value="/wiki" />">WIKI</a>】修复某些关卡信息不正确的BUG，感谢<x>dzx276941963</x>报告BUG</li>
-                        <li>【<a href="<c:url value="/wiki" />">WIKI</a>】中的卡牌现在有图了，以<cf:c>时光女神</cf:c>为例: <br />
+                        <li>【<a href="<c:url value="/wiki" />" target="_self">WIKI</a>】将素材卡单独抽取为一类，感谢<x>虚梦杀</x>的建议</li>
+                        <li>【<a href="<c:url value="/wiki" />" target="_self">WIKI</a>】修复某些关卡信息不正确的BUG，感谢<x>dzx276941963</x>报告BUG</li>
+                        <li>【<a href="<c:url value="/wiki" />" target="_self">WIKI</a>】中的卡牌现在有图了，以<cf:c>时光女神</cf:c>为例: <br />
                             <img class="help-img" alt="示例卡牌图片1" src="<c:url value="/resources/img/help/SampleCardPortrait1.png" />" />
                             <img class="help-img" alt="示例卡牌图片1" src="<c:url value="/resources/img/help/SampleCardPortrait2.png" />" />
                         </li>
                     </ul></li>
-                    <li>2015-10-05: 【<a href="<c:url value="/wiki" />">WIKI</a>】中添加了符文和关卡信息</li>
-                    <li>2015-10-02: 升级【卡牌WIKI】为【<a href="<c:url value="/wiki" />">魔卡幻想WIKI</a>】，现在可以搜索技能了</li>
+                    <li>2015-10-05: 【<a href="<c:url value="/wiki" />" target="_self">WIKI</a>】中添加了符文和关卡信息</li>
+                    <li>2015-10-02: 升级【卡牌WIKI】为【<a href="<c:url value="/wiki" />" target="_self">魔卡幻想WIKI</a>】，现在可以搜索技能了</li>
                     <li>2015-10-01: 在【<a href="#boss-battle">魔神战</a>】界面添加显示魔神的技能</li>
                     <li>2015-09-29: 添加新卡<cf:c>天秤座</cf:c>、<cf:c>龙灵使者</cf:c>、<cf:c>森林弹唱者</cf:c>、<cf:c>灵峰剑姬</cf:c></li>
                     <li>2015-09-27: 修复一个【斩杀】和【冰甲】相互作用时的BUG，感谢<x>k221135</x>报告BUG</li>
                     <li>2015-09-26: <ul>
                         <li>为【<a href="#lilith-battle">莉莉丝战</a>】添加【活动卡牌】的支持，感谢<x>咬起来喀嚓喀嚓</x>和<x>泥鳅sined</x>提供信息</li>
                         <li>补上<cf:c>炎魔</cf:c>、<cf:c>投掷巨人</cf:c>、<cf:c>鬼符咒术师</cf:c>、<cf:c>恐怖失血者</cf:c>和<cf:c>复仇铠甲</cf:c>的卡图，感谢<x>御洛念</x>和<x>咬起来喀嚓喀嚓</x>提供的卡图</li>
-                        <li>加强了【<a href="#wiki">卡牌WIKI</a>】的功能和外观，现在魔王、魔神可以正确地显示，也能通过技能来搜索卡牌了，感谢<x>虚梦杀</x>的建议</li>
+                        <li>加强了【<a href="<c:url value="/wiki" />" target="_self">WIKI</a>】的功能和外观，现在魔王、魔神可以正确地显示，也能通过技能来搜索卡牌了，感谢<x>虚梦杀</x>的建议</li>
                     </ul></li>
                     <li>2015-09-24: 添加新卡<cf:c>黄金毒龙</cf:c>、<cf:c>永夜真祖</cf:c>、<cf:c>水母精灵</cf:c>、<cf:c>王国厨师长</cf:c>、<cf:c>鬼符咒术师</cf:c>、<cf:c>丰饶之神</cf:c></li>
                     <li>2015-09-10: <ul>
@@ -169,7 +169,7 @@
                     </ul></li>
                     <li>2015-03-28: 添加新卡<cf:c>元素之灵</cf:c>，关于同调技能尚不完善，欢迎大家踊跃回答问题补充技能细节。感谢<x>不渝小溪</x>, <x>老子衿</x>, <x>brunoweiyang</x>, <x>裘可拉kiss</x>的帮助</li>
                     <li>2015-03-26: 添加新卡<cf:c>精灵王亡灵</cf:c></li>
-                    <li>2015-03-21: 添加【<a href="#wiki">卡牌WIKI</a>】页面，现在可以直接在站内查询卡牌数据资料了</li>
+                    <li>2015-03-21: 添加【<a href="<c:url value="/wiki" />" target="_self">WIKI</a>】页面，现在可以直接在站内查询卡牌数据资料了</li>
                     <li>2015-03-15: <ul>
                         <li>修复COST计算上的一些问题，感谢<x>十二下弦月</x>, <x>sincever123</x>, <x>习题盖浇饭</x>, <x>za7183</x>, <x>NobodyHere_</x></li>
                         <li>修复【旧噩梦之主】的攻击力问题，感谢<x>dzx276941963</x></li>

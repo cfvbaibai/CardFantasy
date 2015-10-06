@@ -21,7 +21,7 @@
                 <td class="label">${subCategory.name}</td>
                 <td class="content">
                     <c:forEach var="skillType" items="${subCategory.items}">
-                        <div><a href="<c:url value="/Wiki" />/Skills/${skillType}">${skillType}</a></div>
+                        <div><a href="<c:url value="/Wiki" />/Skills/${skillType}" target="_self">${skillType}</a></div>
                     </c:forEach>
                     <div></div>
                 </td>
