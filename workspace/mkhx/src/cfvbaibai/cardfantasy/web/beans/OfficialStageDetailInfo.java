@@ -21,7 +21,7 @@ public class OfficialStageDetailInfo {
         return detail.Rank;
     }
     public String getRankName() {
-        if (detail.Type == 2) {
+        if (detail.Type == 0) {
             return "隐藏";
         } else {
             return String.valueOf(detail.Rank + 1);

@@ -26,7 +26,7 @@
         </tbody>
     </table>
     <c:forEach var="stageDetailInfo" items="${stageInfo.detailInfos}">
-    <c:if test="${stageDetailInfo.type == 1 || stageDetailInfo.type == 2}">
+    <c:if test="${stageDetailInfo.type <= 2}">
         <table class="view-stage-detail-table wiki-table">
             <tr>
                 <td class="title" colspan="4">${stageDetailInfo.fullName}</td>

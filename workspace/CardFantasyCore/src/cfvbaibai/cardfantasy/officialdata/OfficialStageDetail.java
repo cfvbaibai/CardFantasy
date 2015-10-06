@@ -29,6 +29,13 @@ public class OfficialStageDetail {
     public String FightImg;
     public int MapStageDetailId;
     public int Next;
+    /*
+     * 0: 隐藏
+     * 1: 普通
+     * 2: 关底
+     * 3: 塔
+     * 4: 战役
+     */
     public int Type;
     public String Name;
     public int NextBranch;
