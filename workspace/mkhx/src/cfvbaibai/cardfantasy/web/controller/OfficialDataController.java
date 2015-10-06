@@ -19,7 +19,6 @@ import cfvbaibai.cardfantasy.data.CardDataStore;
 import cfvbaibai.cardfantasy.officialdata.OfficialCard;
 import cfvbaibai.cardfantasy.officialdata.OfficialDataStore;
 import cfvbaibai.cardfantasy.officialdata.OfficialRune;
-import cfvbaibai.cardfantasy.officialdata.OfficialRuneProperty;
 import cfvbaibai.cardfantasy.officialdata.OfficialSkill;
 import cfvbaibai.cardfantasy.officialdata.OfficialSkillCategory;
 import cfvbaibai.cardfantasy.officialdata.OfficialStage;

@@ -18,11 +18,10 @@
             <c:forEach var="subCategory" items="${subCategories}">
             <tr>
                 <td class="label">${subCategory.name}</td>
-                <td class="content">
+                <td class="card-logos-container">
                     <c:forEach var="card" items="${subCategory.items}">
-                        <div><a href="<c:url value="/Wiki" />/Cards/${card.cardName}">${card.cardName}</a></div>
+                        <cf:cardLogo cardName="${card.cardName}" />
                     </c:forEach>
-                    <div></div>
                 </td>
             </tr>
             </c:forEach>
