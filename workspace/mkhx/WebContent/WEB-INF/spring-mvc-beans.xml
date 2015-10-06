@@ -18,14 +18,14 @@
     <!--  Enable annotations like @Aspect -->
     <aop:aspectj-autoproxy />
     <bean class="cfvbaibai.cardfantasy.web.aspects.EncodingAspect" />
-    
+
     <mvc:resources mapping="/resources/**" location="/resources/" />
-    
+
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/views/" />
         <property name="suffix" value=".jsp" />
     </bean>
-    
+
     <!-- also add the following beans to get rid of some exceptions -->
     <!-- Need a way to get rid of the deprecated warnings -->
     <!-- http://stackoverflow.com/questions/1483063/spring-mvc-3-and-handling-static-content-am-i-missing-something -->

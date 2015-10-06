@@ -1,21 +1,32 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<% String version = "20151004001"; %>
+<% String version = "20151006002"; %>
 <!DOCTYPE html>
 <html>
 <head>
 <!-- JQuery 1.9.1 and plugins -->
+<!--
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js'></script>
+ -->
+<script src="<c:url value="/resources/lib/jquery-1.9.1/jquery.min.js" />"></script>
+<script src="<c:url value="/resources/lib/jquery-cookie-1.4.1/jquery.cookie.min.js" />"></script>
+<!-- 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-mobile/1.3.2/jquery.mobile.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-mobile/1.3.2/jquery.mobile.min.css" />
+-->
+<script src="<c:url value="/resources/lib/jquery-mobile-1.3.2/jquery.mobile-1.3.2.min.js" />"></script>
+<link rel="stylesheet" href="<c:url value="/resources/lib/jquery-mobile-1.3.2/jquery.mobile-1.3.2.min.css" />" />
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-mobile/1.3.1/jquery.mobile.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-mobile/1.3.1/jquery.mobile.min.css" />
-
+<!--
 <script src="https://cdnjs.cloudflare.com/ajax/libs/kineticjs/4.6.0/kinetic.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/0.2.0/Chart.min.js"></script>
+-->
+<script src="<c:url value="/resources/lib/kineticjs-4.6.0/kinetic.min.js" />"></script>
+<script src="<c:url value="/resources/lib/chartjs-0.2.0/Chart.min.js" />"></script>
 
-<script src='<c:url value="/resources/js/ZeroClipboard.min.js" />'></script>
+<script src='<c:url value="/resources/lib/ZeroClipboard-2.1.6/ZeroClipboard.min.js" />'></script>
 
 <link href='<c:url value="/resources/img/logo.png" />' rel="bookmark" type="image/x-icon" /> 
 <link href='<c:url value="/resources/img/logo.png" />' rel="icon" type="image/x-icon" /> 
@@ -30,7 +41,7 @@
 <script src='<c:url value="/resources/js/wiki.js" />?version=<%= version %>'></script>
 
 <!-- 百度广告 -->
-<script type="text/javascript" src="http://cbjs.baidu.com/js/m.js"></script>
+<!-- <script type="text/javascript" src="http://cbjs.baidu.com/js/m.js"></script> -->
 
 <script>var resDir = '<c:url value="/resources" />'; var rootDir = '<c:url value="/" />'; var seed = new Date().getTime();</script>
 <meta name="description" content="魔卡幻想战斗模拟器 魔卡幻想WIKI 魔卡幻想百科">
