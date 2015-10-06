@@ -262,7 +262,8 @@ span.wiki-home-link {
     }
 }
 
-div.header-template .ui-panel-content-fixed-toolbar-open {
+/* Fix JQM header bug */
+div.header-template.ui-panel-content-fixed-toolbar-open {
     left: 0;
     right: 0;
 }
@@ -271,6 +272,8 @@ div.header-template {
     max-width: 800px;
     margin-left: auto;
     margin-right: auto;
+    left: 0;
+    right: 0;
 }
 
 div.entity-title {
