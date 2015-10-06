@@ -12,7 +12,8 @@
         <tbody>
             <tr>
                 <td class="title" colspan="2">
-                    ${category}
+                    <div><cf:skillCategoryIcon categoryId="${categoryId}" /></div>
+                    <div>${category}</div>
                 </td>
             </tr>
             <c:forEach var="subCategory" items="${subCategories}">

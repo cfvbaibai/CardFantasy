@@ -195,6 +195,7 @@ public class OfficialDataController {
         try {
             String categoryName = OfficialSkillCategory.getCategoryNameFromId(categoryId);
             mv.addObject("category", categoryName + "技能");
+            mv.addObject("categoryId", categoryId);
             List<SubCategory<String>> subCategories = new ArrayList<SubCategory<String>>();
             SubCategory<String> materialSubCategory = new SubCategory<String>();
             materialSubCategory.setName("素材");

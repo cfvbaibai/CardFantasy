@@ -12,7 +12,10 @@
     <table class="view-skill-table wiki-table">
         <tbody>
             <tr>
-                <td id="view-skill-type" class="title" colspan="4">${skillType}</td>
+                <td id="view-skill-type" class="title" colspan="4">
+                    <div><cf:skillCategoryIcon categoryId="${skillInfos.get(0).categoryId}" /></div>
+                    <div>${skillType}</div>
+                </td>
             </tr>
             <c:if test="${!uniqueSkill}">
             <tr class="head">

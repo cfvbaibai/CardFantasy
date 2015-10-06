@@ -53,4 +53,8 @@ public class OfficialSkillInfo {
     public String getDescription() {
         return this.skill.getDescription();
     }
+    
+    public int getCategoryId() {
+        return this.skill.getCategory();
+    }
 }
