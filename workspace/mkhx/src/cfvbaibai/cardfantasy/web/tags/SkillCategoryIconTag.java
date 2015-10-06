@@ -39,7 +39,7 @@ public class SkillCategoryIconTag extends TagSupport {
                     this.pageContext.getServletContext().getContextPath(),
                     this.getCategoryId(),
                     (this.cssClass == null || this.cssClass.isEmpty()) ? "skill-category-icon" : this.cssClass);
-            writer.println(tagText);
+            writer.print(tagText);
         } catch (IOException e) {
             logger.error(e);
         }

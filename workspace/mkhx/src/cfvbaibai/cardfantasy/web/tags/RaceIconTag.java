@@ -39,7 +39,7 @@ public class RaceIconTag extends TagSupport {
                     this.pageContext.getServletContext().getContextPath(),
                     this.getRaceName(),
                     (this.cssClass == null || this.cssClass.isEmpty()) ? "race-icon" : this.cssClass);
-            writer.println(tagText);
+            writer.print(tagText);
         } catch (IOException e) {
             logger.error(e);
         }

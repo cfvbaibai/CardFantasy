@@ -16,8 +16,8 @@
                     <div class="wiki-categories">
                         <c:forEach begin="1" end="5" step="1" var="i">
                         <div>
-                            <cf:starIcon star="${i}" /><br />
-                            <a href="Wiki/Cards/Stars/${i}">${i}星卡牌</a>
+                            <a href="Wiki/Cards/Stars/${i}" target="_self"><cf:starIcon star="${i}" /></a><br />
+                            <a href="Wiki/Cards/Stars/${i}" target="_self">${i}星卡牌</a>
                         </div>
                         </c:forEach>
                         <div></div>
@@ -25,8 +25,8 @@
                     <div class="wiki-categories">
                         <c:forEach var="raceName" items="${raceNames}">
                         <div>
-                            <cf:raceIcon raceName="${raceName}" /><br />
-                            <a href="Wiki/Cards/Races/${raceName}">${raceName}卡牌</a>
+                            <a href="Wiki/Cards/Races/${raceName}" target="_self"><cf:raceIcon raceName="${raceName}" /></a><br />
+                            <a href="Wiki/Cards/Races/${raceName}" target="_self">${raceName}卡牌</a>
                         </div>
                         </c:forEach>
                         <div></div>
@@ -39,8 +39,8 @@
                     <div class="wiki-categories">
                         <c:forEach var="i" begin="1" end="5" step="1">
                         <div>
-                            <cf:starIcon star="${i}" /><br />
-                            <a href="Wiki/Runes/Stars/${i}">${i}星符文</a>
+                            <a href="Wiki/Runes/Stars/${i}" target="_self"><cf:starIcon star="${i}" /></a><br />
+                            <a href="Wiki/Runes/Stars/${i}" target="_self">${i}星符文</a>
                         </div>
                         </c:forEach>
                         <div></div>
@@ -48,8 +48,8 @@
                     <div class="wiki-categories">
                         <c:forEach var="propertyName" items="${propertyNames}">
                         <div>
-                            <cf:propertyIcon propertyName="${propertyName}" /><br />
-                            <a href="Wiki/Runes/Properties/${propertyName}">${propertyName}属性符文</a>
+                            <a href="Wiki/Runes/Properties/${propertyName}" target="_self"><cf:propertyIcon propertyName="${propertyName}" /></a><br />
+                            <a href="Wiki/Runes/Properties/${propertyName}" target="_self">${propertyName}属性符文</a>
                         </div>
                         </c:forEach>
                         <div></div>
@@ -62,8 +62,8 @@
                     <div class="wiki-categories">
                         <c:forEach var="skillCategory" items="${skillCategories}">
                             <div>
-                                <cf:skillCategoryIcon categoryId="${skillCategory.id}" /><br />
-                                <a href="Wiki/Skills/Categories/${skillCategory.id}">${skillCategory.name}技能</a>
+                                <a href="Wiki/Skills/Categories/${skillCategory.id}" target="_self"><cf:skillCategoryIcon categoryId="${skillCategory.id}" /></a><br />
+                                <a href="Wiki/Skills/Categories/${skillCategory.id}" target="_self">${skillCategory.name}技能</a>
                             </div>
                         </c:forEach>
                         <div></div>
@@ -75,7 +75,7 @@
                 <div id="wiki-stage-pedia" class="wiki-result">
                     <div class="wiki-categories">
                         <c:forEach var="stageInfo" items="${stageInfos}">
-                            <div><a href="Wiki/Stages/${stageInfo.mapStageId}">${stageInfo.fullName}</a></div>
+                            <div><a href="Wiki/Stages/${stageInfo.mapStageId}" target="_self">${stageInfo.fullName}</a></div>
                         </c:forEach>
                         <div></div>
                     </div>

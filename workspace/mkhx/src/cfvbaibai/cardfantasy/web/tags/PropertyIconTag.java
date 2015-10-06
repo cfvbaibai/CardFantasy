@@ -39,7 +39,7 @@ public class PropertyIconTag extends TagSupport {
                     this.pageContext.getServletContext().getContextPath(),
                     this.getPropertyName(),
                     (this.cssClass == null || this.cssClass.isEmpty()) ? "property-icon" : this.cssClass);
-            writer.println(tagText);
+            writer.print(tagText);
         } catch (IOException e) {
             logger.error(e);
         }
