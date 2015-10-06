@@ -35,9 +35,9 @@ public class RaceIconTag extends TagSupport {
         JspWriter writer = this.pageContext.getOut();
         try {
             String tagText = String.format(
-                    "<img src='%s/resources/img/frame/Race_%s_Icon.png' class='%s' />",
+                    "<img src='%s/resources/img/frame/Race_%s_Icon.png' alt='%s' title='%s' class='%s' />",
                     this.pageContext.getServletContext().getContextPath(),
-                    this.getRaceName(),
+                    this.getRaceName(), this.getRaceName(), this.getRaceName(),
                     (this.cssClass == null || this.cssClass.isEmpty()) ? "race-icon" : this.cssClass);
             writer.print(tagText);
         } catch (IOException e) {

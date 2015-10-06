@@ -12,12 +12,20 @@
         <tbody>
             <tr>
                 <td class="title" colspan="2">
-                    ${category}
+                    <div>${category}</div>
+                    <c:if test="${raceName != null}">
+                    <div><cf:raceIcon raceName="${raceName}" /></div>
+                    </c:if>
                 </td>
             </tr>
             <c:forEach var="subCategory" items="${subCategories}">
             <tr>
-                <td class="label">${subCategory.name}</td>
+                <td class="label">
+                    <div>${subCategory.name}</div>
+                    <c:if test="${star != null && !subCategory.name.equals('素材')}">
+                    <div><cf:raceIcon raceName="${subCategory.name}" /></div>
+                    </c:if>
+                </td>
                 <td class="logos-container">
                     <c:forEach var="card" items="${subCategory.items}">
                         <cf:cardLogo cardName="${card.cardName}" />

@@ -515,7 +515,9 @@ table.view-category-table td.label {
 }
 
 .title img.property-icon,
-.label img.property-icon {
+.label img.property-icon,
+.title img.race-icon,
+.label img.race-icon {
     width: 38px;
 }
 

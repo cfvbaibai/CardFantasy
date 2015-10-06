@@ -123,6 +123,7 @@ public class OfficialDataController {
         ModelAndView mv = new ModelAndView();
         mv.setViewName("view-card-category");
         mv.addObject("category", star + "星卡牌");
+        mv.addObject("star", star);
         List<SubCategory<OfficialCard>> subCategories = new ArrayList<SubCategory<OfficialCard>>();
         try {
             List<OfficialCard> cards = this.officialStore.getCardOfStar(star);
@@ -158,6 +159,7 @@ public class OfficialDataController {
         ModelAndView mv = new ModelAndView();
         mv.setViewName("view-card-category");
         mv.addObject("category", raceName + "卡牌");
+        mv.addObject("raceName", raceName);
         List<SubCategory<OfficialCard>> subCategories = new ArrayList<SubCategory<OfficialCard>>();
         try {
             List<OfficialCard> cards = this.officialStore.getCardsOfRaceName(raceName);
