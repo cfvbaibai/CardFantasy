@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="cf" uri="/WEB-INF/CardFantasyTags.tld" %>
 <%@ include file="header.jsp"%>
 <title>魔卡幻想WIKI</title>
 <meta name="description" content="魔卡幻想WIKI,魔卡幻想百科" />
@@ -13,22 +14,21 @@
                 <h3>卡牌图鉴</h3>
                 <div id="wiki-card-pedia" class="wiki-result">
                     <div class="wiki-categories">
-                        <div><a href="Wiki/Cards/Stars/5">五星卡牌</a></div>
-                        <div><a href="Wiki/Cards/Stars/4">四星卡牌</a></div>
-                        <div><a href="Wiki/Cards/Stars/3">三星卡牌</a></div>
-                        <div><a href="Wiki/Cards/Stars/2">二星卡牌</a></div>
-                        <div><a href="Wiki/Cards/Stars/1">一星卡牌</a></div>
+                        <c:forEach begin="1" end="5" step="1" var="i">
+                        <div>
+                            <cf:starIcon star="${i}" /><br />
+                            <a href="Wiki/Cards/Stars/${i}">${i}星卡牌</a>
+                        </div>
+                        </c:forEach>
                         <div></div>
                     </div>
                     <div class="wiki-categories">
-                        <div><a href="Wiki/Cards/Races/1">王国卡牌</a></div>
-                        <div><a href="Wiki/Cards/Races/2">森林卡牌</a></div>
-                        <div><a href="Wiki/Cards/Races/3">蛮荒卡牌</a></div>
-                        <div><a href="Wiki/Cards/Races/4">地狱卡牌</a></div>
-                        <div><a href="Wiki/Cards/Races/97">魔王卡牌</a></div>
-                        <div><a href="Wiki/Cards/Races/100">魔神卡牌</a></div>
-                        <div><a href="Wiki/Cards/Races/98">万能卡牌</a></div>
-                        <div><a href="Wiki/Cards/Races/99">道具卡牌</a></div>
+                        <c:forEach var="raceName" items="${raceNames}">
+                        <div>
+                            <cf:raceIcon raceName="${raceName}" /><br />
+                            <a href="Wiki/Cards/Races/${raceName}">${raceName}卡牌</a>
+                        </div>
+                        </c:forEach>
                         <div></div>
                     </div>
                 </div>
@@ -37,18 +37,21 @@
                 <h3>符文图鉴</h3>
                 <div id="wiki-rune-pedia" class="wiki-result">
                     <div class="wiki-categories">
-                        <div><a href="Wiki/Runes/Stars/5">五星符文</a></div>
-                        <div><a href="Wiki/Runes/Stars/4">四星符文</a></div>
-                        <div><a href="Wiki/Runes/Stars/3">三星符文</a></div>
-                        <div><a href="Wiki/Runes/Stars/2">二星符文</a></div>
-                        <div><a href="Wiki/Runes/Stars/1">一星符文</a></div>
+                        <c:forEach var="i" begin="1" end="5" step="1">
+                        <div>
+                            <cf:starIcon star="${i}" /><br />
+                            <a href="Wiki/Runes/Stars/${i}">${i}星符文</a>
+                        </div>
+                        </c:forEach>
                         <div></div>
                     </div>
                     <div class="wiki-categories">
-                        <div><a href="Wiki/Runes/Properties/1">地属性符文</a></div>
-                        <div><a href="Wiki/Runes/Properties/2">水属性符文</a></div>
-                        <div><a href="Wiki/Runes/Properties/3">风属性符文</a></div>
-                        <div><a href="Wiki/Runes/Properties/4">火属性符文</a></div>
+                        <c:forEach var="propertyName" items="${propertyNames}">
+                        <div>
+                            <cf:propertyIcon propertyName="${propertyName}" /><br />
+                            <a href="Wiki/Runes/Properties/${propertyName}">${propertyName}属性符文</a>
+                        </div>
+                        </c:forEach>
                         <div></div>
                     </div>
                 </div>
@@ -58,7 +61,10 @@
                 <div class="wiki-result">
                     <div class="wiki-categories">
                         <c:forEach var="skillCategory" items="${skillCategories}">
-                            <div><a href="Wiki/Skills/Categories/${skillCategory.id}">${skillCategory.name}技能</a></div>
+                            <div>
+                                <cf:skillCategoryIcon categoryId="${skillCategory.id}" /><br />
+                                <a href="Wiki/Skills/Categories/${skillCategory.id}">${skillCategory.name}技能</a>
+                            </div>
                         </c:forEach>
                         <div></div>
                     </div>

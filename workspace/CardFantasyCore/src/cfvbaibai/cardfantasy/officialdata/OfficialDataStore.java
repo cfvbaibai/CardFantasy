@@ -142,10 +142,20 @@ public class OfficialDataStore {
         return OfficialCard.getRaceNameById(raceId);
     }
 
-    public List<OfficialCard> getCardOfRace(int race) {
+    public List<OfficialCard> getCardsOfRace(int race) {
         List<OfficialCard> result = new ArrayList<OfficialCard>();
         for (OfficialCard card : cardStore.data.Cards) {
             if (card.getRace() == race) {
+                result.add(card);
+            }
+        }
+        return result;
+    }
+
+    public List<OfficialCard> getCardsOfRaceName(String raceName) {
+        List<OfficialCard> result = new ArrayList<OfficialCard>();
+        for (OfficialCard card : cardStore.data.Cards) {
+            if (card.getRaceName().equals(raceName)) {
                 result.add(card);
             }
         }
@@ -251,5 +261,15 @@ public class OfficialDataStore {
             }
         }
         return null;
+    }
+
+    public List<OfficialRune> getRunesOfPropertyName(String propertyName) {
+        List<OfficialRune> result = new ArrayList<OfficialRune>();
+        for (OfficialRune rune : this.runeStore.data.Runes) {
+            if (rune.getPropertyName().equals(propertyName)) {
+                result.add(rune);
+            }
+        }
+        return result;
     }
 }

@@ -89,17 +89,16 @@ public class OfficialDataController {
         return mv;
     }
 
-    @RequestMapping(value = "/Wiki/Runes/Properties/{property}")
+    @RequestMapping(value = "/Wiki/Runes/Properties/{propertyName}")
     public ModelAndView queryRuneOfProperties(HttpServletRequest request,
-            @PathVariable("property") int property, HttpServletResponse response) throws IOException {
-        this.logger.info("Getting runes of property: " + property);
+            @PathVariable("propertyName") String propertyName, HttpServletResponse response) throws IOException {
+        this.logger.info("Getting runes of property: " + propertyName);
         ModelAndView mv = new ModelAndView();
         mv.setViewName("view-rune-category");
-        String propertyName = OfficialRuneProperty.getNameFromId(property);
         mv.addObject("category", propertyName + "属性符文");
         List<SubCategory<OfficialRune>> subCategories = new ArrayList<SubCategory<OfficialRune>>();
         try {
-            List<OfficialRune> runes = this.officialStore.getRunesOfProperty(property);
+            List<OfficialRune> runes = this.officialStore.getRunesOfPropertyName(propertyName);
             for (int i = 1; i <= 5; ++i) {
                 SubCategory<OfficialRune> subCategory = new SubCategory<OfficialRune>();
                 subCategory.setName(i + "星");
@@ -154,15 +153,14 @@ public class OfficialDataController {
 
     @RequestMapping(value = "/Wiki/Cards/Races/{race}")
     public ModelAndView queryCardOfRaces(HttpServletRequest request,
-            @PathVariable("race") int race, HttpServletResponse response) throws IOException {
-        this.logger.info("Getting cards of race: " + race);
+            @PathVariable("race") String raceName, HttpServletResponse response) throws IOException {
+        this.logger.info("Getting cards of race: " + raceName);
         ModelAndView mv = new ModelAndView();
         mv.setViewName("view-card-category");
-        String raceName = this.officialStore.getRaceNameById(race);
         mv.addObject("category", raceName + "卡牌");
         List<SubCategory<OfficialCard>> subCategories = new ArrayList<SubCategory<OfficialCard>>();
         try {
-            List<OfficialCard> cards = this.officialStore.getCardOfRace(race);
+            List<OfficialCard> cards = this.officialStore.getCardsOfRaceName(raceName);
             for (int i = 1; i <= 5; ++i) {
                 SubCategory<OfficialCard> subCategory = new SubCategory<OfficialCard>();
                 subCategory.setName(i + "星");

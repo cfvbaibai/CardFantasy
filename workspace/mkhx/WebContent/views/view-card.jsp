@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="cf" uri="/WEB-INF/CardFantasyTags.tld" %>
 <%@ include file="header.jsp"%>
 <title>${cardName} - 魔卡幻想WIKI</title>
 <meta name="description" content="${cardName}" />
@@ -223,44 +224,29 @@
                 <td id="view-card-exp10" class="value">${cardInfo.expArray[10]}</td>
                 <td id="view-card-exp15" class="value">${cardInfo.expArray[15]}</td>
             </tr>
+        </tbody>
+    </table>
+    <table class="view-card-table wiki-table">
+        <tbody>
             <tr>
-                <td class="title" colspan="5">卡牌技能</td>
+                <td class="title" colspan="3">卡牌技能</td>
             </tr>
+            <c:forEach begin="1" end="5" step="1" var="i"> 
             <tr>
-                <td class="label">技能1</td>
-                <td id="view-card-skill1" class="skill" colspan="4">
-                    <div><a href="../Skills/${cardInfo.skill1.name}">${cardInfo.skill1.name}</a></div>
-                    <div>${cardInfo.skill1.description}</div>
+                <td class="label">技能${i}</td>
+                <td class="skill-category-icon">
+                <c:if test="${cardInfo.getSkill(i) != null}">
+                    <cf:skillCategoryIcon categoryId="${cardInfo.getSkill(i).category}" />
+                </c:if>
+                </td>
+                <td id="view-card-skill${i}" class="skill" colspan="4">
+                <c:if test="${cardInfo.getSkill(i) != null}">
+                    <div class="skill-name"><a href="../Skills/${cardInfo.getSkill(i).name}">${cardInfo.getSkill(i).name}</a></div>
+                    <div class="skill-desc">${cardInfo.getSkill(i).description}</div>
+                </c:if>
                 </td>
             </tr>
-            <tr>
-                <td class="label">技能2</td>
-                <td id="view-card-skill2" class="skill" colspan="4">
-                    <div><a href="../Skills/${cardInfo.skill2.name}">${cardInfo.skill2.name}</a></div>
-                    <div>${cardInfo.skill2.description}</div>
-                </td>
-            </tr>
-            <tr>
-                <td class="label">技能3</td>
-                <td id="view-card-skill3" class="skill" colspan="4">
-                  <div><a href="../Skills/${cardInfo.skill3.name}">${cardInfo.skill3.name}</a></div>
-                    <div>${cardInfo.skill3.description}</div>
-                </td>
-            </tr>
-            <tr>
-                <td class="label">技能4</td>
-                <td id="view-card-skill4" class="skill" colspan="4">
-                    <div><a href="../Skills/${cardInfo.skill4.name}">${cardInfo.skill4.name}</a></div>
-                    <div>${cardInfo.skill4.description}</div>
-                </td>
-            </tr>
-            <tr>
-                <td class="label">技能5</td>
-                <td id="view-card-skill5" class="skill" colspan="4">
-                    <div><a href="../Skills/${cardInfo.skill5.name}">${cardInfo.skill5.name}</a></div>
-                    <div>${cardInfo.skill5.description}</div>
-                </td>
-            </tr>
+            </c:forEach>
         </tbody>
     </table>
     <!-- CNZZ Begins -->

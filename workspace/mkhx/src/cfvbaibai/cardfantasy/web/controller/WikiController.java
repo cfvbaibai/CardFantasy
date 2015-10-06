@@ -39,6 +39,8 @@ public class WikiController {
         ModelAndView mv = new ModelAndView();
         mv.setViewName("wiki");
         mv.addObject("officialCardData", officialStore.cardStore.data.Cards);
+        mv.addObject("raceNames", officialStore.getRaceNames());
+        mv.addObject("propertyNames", officialStore.getPropertyNames());
         mv.addObject("skillCategories", officialStore.getSkillCategories());
         List<OfficialStageInfo> stageInfos = new ArrayList<OfficialStageInfo>();
         for (OfficialStage stage : officialStore.stageStore.data) {

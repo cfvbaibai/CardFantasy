@@ -245,6 +245,12 @@ div.wiki-categories > div {
     text-align: center;
 }
 
+div.wiki-categories img.star-icon,
+div.wiki-categories img.race-icon,
+div.wiki-categories img.property-icon {
+    width: 39px;
+}
+
 div.wiki-categories > div:last-child {
     float: none;
     clear: both;
@@ -441,28 +447,31 @@ table.wiki-table td.content > div {
     margin-bottom: 5px;
 }
 
-table.wiki-table td.content > div:last-child {
-    clear: both;
-    margin: 0;
+table.wiki-table td.skill-category-icon {
+    padding-left: 10px;
+    border-right-style: none;
+    vertical-align: middle;
+    width: 1px;
 }
 
 table.wiki-table td.skill {
+    border-left-style: none;
+}
+
+table.wiki-table td.skill > div {
     text-align: left;
-}
-
-table.wiki-table td.skill div {
     margin-left: 10px;
-    margin-right: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 
-table.wiki-table td.skill div:nth-child(1) {
+table.wiki-table td.skill div.skill-name {
     font-weight: bold;
 }
 
-table.wiki-table td.skill div:nth-child(2) {
+table.wiki-table td.skill div.skill-desc {
     font-size: smaller;
     color: #999999;
-    margin-top: 5px;
 }
 
 table.view-skill-table td {
@@ -611,5 +620,18 @@ table.view-stage-detail-table div.clear {
     }
     table.wiki-table td.title {
         height: 25px;
+    }
+    table.wiki-table td.skill-category-icon {
+        padding-left: 5px;
+        vertical-align: top;
+        padding-top: 3px;
+    }
+    table.wiki-table td.skill-category-icon img.skill-category-icon {
+        width: 16px;
+    }
+    table.wiki-table td.skill > div {
+        margin-left: 2px;
+        margin-top: 2px;
+        margin-bottom: 2px;
     }
 }

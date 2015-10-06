@@ -57,6 +57,19 @@ public class OfficialCardInfo {
     public OfficialSkill getSkill5() {
         return this.skill5;
     }
+    public OfficialSkill getSkill(int i) {
+        switch (i) {
+        case 1: return this.skill1;
+        case 2: return this.skill2;
+        case 3: return this.skill3;
+        case 4: return this.skill4;
+        case 5: return this.skill5;
+        default: return null;
+        }
+    }
+    public OfficialSkill[] getSkills() {
+        return new OfficialSkill[] { this.skill1, this.skill2, this.skill3, this.skill4, this.skill5 };
+    }
     public int getMaxInDeck() {
         return this.card.getMaxInDeck();
     }

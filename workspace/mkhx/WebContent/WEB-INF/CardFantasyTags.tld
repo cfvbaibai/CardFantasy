@@ -1,4 +1,7 @@
-<taglib>
+<?xml version="1.0" encoding="UTF-8"?>
+<taglib xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee web-jsptaglibrary_2_0.xsd"
+    version="2.0">
     <tlib-version>1.0</tlib-version>
     <jsp-version>2.3</jsp-version>
     <short-name>CardLink</short-name>
@@ -6,5 +9,65 @@
         <name>c</name>
         <tag-class>cfvbaibai.cardfantasy.web.tags.CardLinkTag</tag-class>
         <body-content>scriptless</body-content>
+    </tag>
+    <tag>
+        <name>skillCategoryIcon</name>
+        <tag-class>cfvbaibai.cardfantasy.web.tags.SkillCategoryIconTag</tag-class>
+        <body-content>empty</body-content>
+        <attribute>
+            <name>categoryId</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <name>class</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
+    <tag>
+        <name>starIcon</name>
+        <tag-class>cfvbaibai.cardfantasy.web.tags.StarIconTag</tag-class>
+        <body-content>empty</body-content>
+        <attribute>
+            <name>star</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <name>class</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
+    <tag>
+        <name>raceIcon</name>
+        <tag-class>cfvbaibai.cardfantasy.web.tags.RaceIconTag</tag-class>
+        <body-content>empty</body-content>
+        <attribute>
+            <name>raceName</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <name>class</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
+    <tag>
+        <name>propertyIcon</name>
+        <tag-class>cfvbaibai.cardfantasy.web.tags.PropertyIconTag</tag-class>
+        <body-content>empty</body-content>
+        <attribute>
+            <name>propertyName</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <name>class</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
     </tag>
 </taglib>
