@@ -6,6 +6,6 @@
 </div>
 <div class="wiki-footer" data-role="footer" data-theme="c" data-position="fixed">
     <div data-role="navbar">
-        <ul><li><a href="<c:url value="/wiki" />" target="_self">返回WIKI主页</a></li></ul>
+        <ul><li><a href="<c:url value="/Wiki" />" target="_self">返回WIKI主页</a></li></ul>
     </div>
 </div>
