@@ -18,6 +18,9 @@ CardFantasy.Core = {};
 // OUTERMOST IIFE
 (function(Core) {
 
+var tiebaUrl = 'http://tieba.baidu.com/f?kw=%E9%AD%94%E5%8D%A1%E5%B9%BB%E6%83%B3%E6%A8%A1%E6%8B%9F%E5%99%A8';
+Core.tiebaUrl = tiebaUrl;
+    
 var goBackOrGoto = function(defaultUrl) {
     history.go(-1);
 };
@@ -462,7 +465,6 @@ Core.showMapDeck = function() {
 };
 
 $(document).ready(function() {
-    var tiebaUrl = 'http://tieba.baidu.com/f?kw=%E9%AD%94%E5%8D%A1%E5%B9%BB%E6%83%B3%E6%A8%A1%E6%8B%9F%E5%99%A8';
     $('a[data-type="bug"]').attr('href', tiebaUrl).attr('target', '_blank');
     $('x').each(function (i, x) {
         x.innerHTML = '<a href="http://tieba.baidu.com/home/main?un=' + encodeURI(x.innerHTML) + '&ie=utf-8&fr=pb" target="_blank">' + x.innerHTML + '</a>';

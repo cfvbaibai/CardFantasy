@@ -5,6 +5,26 @@
 <title>${cardName} - 魔卡幻想WIKI</title>
 <meta name="description" content="${cardName}" />
 <meta name="keywords" content="${cardName}" />
+<script src='<c:url value="/resources/js/wiki.js" />?version=<%= version %>'></script>
+<script>
+$(document).ready(function() {
+    CardFantasy.Wiki.fillPortrait('view-card-portrait', {
+        imgUrl: '${cardInfo.largePortraitUrl}',
+        cardName: '${cardInfo.cardName}',
+        raceName: '${cardInfo.raceName}',
+        star: '${cardInfo.color}',
+        cost: '${cardInfo.cost}',
+        wait: '${cardInfo.wait}',
+        atk: '${cardInfo.attackArray[10]}',
+        hp: '${cardInfo.hpArray[10]}',
+        skill1: { name: '${cardInfo.skill1.name}', category: '${cardInfo.skill1.category}' },
+        skill2: { name: '${cardInfo.skill2.name}', category: '${cardInfo.skill2.category}' },
+        skill3: { name: '${cardInfo.skill3.name}', category: '${cardInfo.skill3.category}' },
+        skill4: { name: '${cardInfo.skill4.name}', category: '${cardInfo.skill4.category}' },
+        skill5: { name: '${cardInfo.skill5.name}', category: '${cardInfo.skill5.category}' },
+    });
+});
+</script>
 </head>
 <body>
     <input type="hidden" id="view-card-internal-id" value="${internalId}" />
@@ -20,153 +40,12 @@
                     <c:if test="${cardInfo.isMaterial()}">
                         <span>(素材卡)</span>
                     </c:if>
-                    <%--
-                    <span>ImgId: ${cardInfo.imageId}</span>
-                    <span>FullImgId: ${cardInfo.fullImageId}</span>
-                    <span>CardId: ${cardInfo.cardId}</span>
-                     --%>
                 </td>
             </tr>
             <tr>
                 <td colspan="5">
-                    <div style="float: left; height: 450px">
-                        <div style="position: relative; display: inline-block; width: 300px; margin: 10px">
-                            <div style="position: absolute; left: 0; top: 0; width: 100%">
-                                <img src="${cardInfo.largePortraitUrl}" style="width: 100%" />
-                            </div>
-                            <div style="position: absolute; left: 0; top: 0; width: 100%">
-                                <img src="<c:url value="/resources/img/frame" />/Race_${cardInfo.raceName}_Border.png" style="width: 100%" />
-                            </div>
-                            <div style="position: absolute; left: 0; top: 0; width: 100%">
-                                <img src="<c:url value="/resources/img/frame" />/star_${cardInfo.color}.png" style="width: 100%" />
-                            </div>
-                            <div style="position: absolute; left: 85px; top: 0; color: white; font-size: 22px; text-shadow: 1px 0 1px #000000, 1px 1px 1px #000000, -1px -1px 1px #000000, 0 1px 1px #000000, -1px 1px 1px #000000, -1px 0 1px #000000, 0 -1px 1px #000000, 0 0 1px #000000; font-family:微软雅黑">
-                                ${cardName}
-                            </div>
-                            <div style="position: absolute; left: 225px; top: 23px; color: #ede739; font-style: italic; width: 70px; font-size: 26px; font-family: Arial">
-                                ${cardInfo.cost} 
-                            </div>
-                            <div style="position: absolute; left: 32px; top: 320px; width: 32px">
-                                <img src="<c:url value="/resources/img/frame/blueblock.png" />" />
-                            </div>
-                            <div style="position: absolute; left: 8px; top: 320px; width: 42px">
-                                <img src="<c:url value="/resources/img/frame/timeglass.png" />" />
-                            </div>
-                            <div style="position: absolute; left: 45px; top: 330px; color: white; font-style: italic; font-size: 26px; font-family :Arial; text-shadow: 1px 0 1px #000000, 1px 1px 1px #000000, -1px -1px 1px #000000, 0 1px 1px #000000, -1px 1px 1px #000000, -1px 0 1px #000000, 0 -1px 1px #000000, 0 0 1px #000000">
-                                ${cardInfo.wait}
-                            </div>
-                            <div style="position: absolute; left: 25px; top: 390px; color: white; font-style: italic; font-size: 26px; font-family: Arial"> 
-                                10
-                            </div>
-                            <div style="position: absolute; left: 120px; top: 333px">
-                                <img src="<c:url value="/resources/img/frame/ATK.png" />" style="width: 55px" />
-                            </div>
-                            <div class="ability-text" style="left: 185px; top: 333px">
-                                ${cardInfo.attackArray[10]}
-                            </div>
-                            <div style="position: absolute; left: 75px; top: 380px">
-                                <img src="<c:url value="/resources/img/frame/HP.png" />" style="width: 55px" />
-                            </div>
-                            <div class="ability-text" style="left: 125px; top: 380px">
-                                ${cardInfo.hpArray[10]}
-                            </div>
-                            <!-- FIFTH LINE -->
-                            <c:if test="${cardInfo.skill1 != null || cardInfo.skill2 != null}">
-                            <div style="position: absolute; right: 15px; top: 295px">
-                                <img src="<c:url value="/resources/img/frame/blackshadow.png" />" style="width: 130px" />
-                            </div>
-                            <div class="skill-text" style="right: 52px; top: 298px">
-                                <c:choose>
-                                    <c:when test="${cardInfo.skill5 != null}">${cardInfo.skill5.name}</c:when>
-                                    <c:when test="${cardInfo.skill4 != null}">${cardInfo.skill4.name}</c:when>
-                                    <c:when test="${cardInfo.skill3 != null}">${cardInfo.skill3.name}</c:when>
-                                    <c:when test="${cardInfo.skill2 != null}">${cardInfo.skill2.name}</c:when>
-                                    <c:otherwise>${cardInfo.skill1.name}</c:otherwise>
-                                </c:choose>
-                            </div>
-                            <div style="position: absolute; right: 15px; top: 295px">
-                                <c:choose>
-                                    <c:when test="${cardInfo.skill5 != null}"><img src="<c:url value="/resources/img/frame" />/Skill_Category_${cardInfo.skill5.category}.png" style="width: 30px" /></c:when>
-                                    <c:when test="${cardInfo.skill4 != null}"><img src="<c:url value="/resources/img/frame" />/Skill_Category_${cardInfo.skill4.category}.png" style="width: 30px" /></c:when>
-                                    <c:when test="${cardInfo.skill3 != null}"><img src="<c:url value="/resources/img/frame" />/Skill_Category_${cardInfo.skill3.category}.png" style="width: 30px" /></c:when>
-                                    <c:when test="${cardInfo.skill2 != null}"><img src="<c:url value="/resources/img/frame" />/Skill_Category_${cardInfo.skill2.category}.png" style="width: 30px" /></c:when>
-                                    <c:otherwise><img src="<c:url value="/resources/img/frame" />/Skill_Category_${cardInfo.skill1.category}.png" style="width: 30px" /></c:otherwise>
-                                </c:choose>
-                            </div>
-                            </c:if>
-                            <!-- FOURTH LINE -->
-                            <c:if test="${cardInfo.skill2 != null}">
-                            <div style="position: absolute; right: 15px; top: 266px">
-                                <img src="<c:url value="/resources/img/frame/blackshadow.png" />" style="width: 130px" />
-                            </div>
-                            <div class="skill-text" style="right: 52px; top: 269px">
-                                <c:choose>
-                                    <c:when test="${cardInfo.skill5 != null}">${cardInfo.skill4.name}</c:when>
-                                    <c:when test="${cardInfo.skill4 != null}">${cardInfo.skill3.name}</c:when>
-                                    <c:when test="${cardInfo.skill3 != null}">${cardInfo.skill2.name}</c:when>
-                                    <c:otherwise>${cardInfo.skill1.name}</c:otherwise>
-                                </c:choose>
-                            </div>
-                            <div style="position: absolute; right: 15px; top: 266px">
-                                <c:choose>
-                                    <c:when test="${cardInfo.skill5 != null}"><img src="<c:url value="/resources/img/frame" />/Skill_Category_${cardInfo.skill4.category}.png" style="width: 30px" /></c:when>
-                                    <c:when test="${cardInfo.skill4 != null}"><img src="<c:url value="/resources/img/frame" />/Skill_Category_${cardInfo.skill3.category}.png" style="width: 30px" /></c:when>
-                                    <c:when test="${cardInfo.skill3 != null}"><img src="<c:url value="/resources/img/frame" />/Skill_Category_${cardInfo.skill2.category}.png" style="width: 30px" /></c:when>
-                                    <c:otherwise><img src="<c:url value="/resources/img/frame" />/Skill_Category_${cardInfo.skill1.category}.png" style="width: 30px" /></c:otherwise>
-                                </c:choose>
-                            </div>
-                            </c:if>
-                            <!-- THIRD LINE -->
-                            <c:if test="${cardInfo.skill3 != null && (cardInfo.skill4 != null || cardInfo.skill5 != null || cardInfo.skill1 != null)}">
-                            <div style="position: absolute; right: 15px; top: 237px">
-                                <img src="<c:url value="/resources/img/frame/blackshadow.png" />" style="width: 130px" />
-                            </div>
-                            <div class="skill-text" style="right: 52px; top: 240px">
-                                <c:choose>
-                                    <c:when test="${cardInfo.skill5 != null}">${cardInfo.skill3.name}</c:when>
-                                    <c:when test="${cardInfo.skill4 != null}">${cardInfo.skill2.name}</c:when>
-                                    <c:otherwise>${cardInfo.skill1.name}</c:otherwise>
-                                </c:choose>
-                            </div>
-                            <div style="position: absolute; right: 15px; top: 237px">
-                                <c:choose>
-                                    <c:when test="${cardInfo.skill5 != null}"><img src="<c:url value="/resources/img/frame" />/Skill_Category_${cardInfo.skill3.category}.png" style="width: 30px" /></c:when>
-                                    <c:when test="${cardInfo.skill4 != null}"><img src="<c:url value="/resources/img/frame" />/Skill_Category_${cardInfo.skill2.category}.png" style="width: 30px" /></c:when>
-                                    <c:otherwise><img src="<c:url value="/resources/img/frame" />/Skill_Category_${cardInfo.skill1.category}.png" style="width: 30px" /></c:otherwise>
-                                </c:choose>
-                            </div>
-                            </c:if>
-                            <!-- SECOND LINE -->
-                            <c:if test="${cardInfo.skill4 != null}">
-                            <div style="position: absolute; right: 15px; top: 208px">
-                                <img src="<c:url value="/resources/img/frame/blackshadow.png" />" style="width: 130px" />
-                            </div>
-                            <div class="skill-text" style="right: 52px; top: 211px">
-                                <c:choose>
-                                    <c:when test="${cardInfo.skill5 != null}">${cardInfo.skill2.name}</c:when>
-                                    <c:otherwise>${cardInfo.skill1.name}</c:otherwise>
-                                </c:choose>
-                            </div>
-                            <div style="position: absolute; right: 15px; top: 208px">
-                                <c:choose>
-                                    <c:when test="${cardInfo.skill5 != null}"><img src="<c:url value="/resources/img/frame" />/Skill_Category_${cardInfo.skill2.category}.png" style="width: 30px" /></c:when>
-                                    <c:otherwise><img src="<c:url value="/resources/img/frame" />/Skill_Category_${cardInfo.skill1.category}.png" style="width: 30px" /></c:otherwise>
-                                </c:choose>
-                            </div>
-                            </c:if>
-                            <!-- FIRST LINE -->
-                            <c:if test="${cardInfo.skill5 != null}">
-                            <div style="position: absolute; right: 15px; top: 178px">
-                                <img src="<c:url value="/resources/img/frame/blackshadow.png" />" style="width: 130px" />
-                            </div>
-                            <div class="skill-text" style="right: 52px; top: 182px">
-                                ${cardInfo.skill1.name}
-                            </div>
-                            <div style="position: absolute; right: 15px; top: 178px">
-                                <img src="<c:url value="/resources/img/frame" />/Skill_Category_${cardInfo.skill1.category}.png" style="width: 30px" />
-                            </div>
-                            </c:if>
-                        </div>
+                    <div id="view-card-portrait" style="float: left; height: 450px">
+                        <%@ include file="card-portrait-template.jsp" %>
                     </div>
                     <div style="float: left; width: 300px; height: auto; margin: 10px">
                         <img src="${cardInfo.largePortraitUrl}" style="width: 100%; height: auto" />

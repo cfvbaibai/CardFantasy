@@ -419,7 +419,16 @@ table.view-card-table td.value {
     width: 20%;
 }
 
-table.view-card-table div.skill-text {
+img.cpt-large-portrait-img {
+    width: 300px;
+    height: 430px;
+}
+
+div.cpt-skill-line {
+    display: none;
+}
+
+div.cpt-skill-name {
     color: white;
     font-size: 16px;
     font-family: 微软雅黑;
@@ -427,7 +436,7 @@ table.view-card-table div.skill-text {
     position: absolute;
 }
 
-table.view-card-table div.ability-text  {
+div.cpt-ability-text  {
     position: absolute;
     color: white;
     font-style: italic;
@@ -653,7 +662,43 @@ table.view-stage-detail-table div.clear {
     clear: both;
 }
 
+div.float-div {
+    z-index: 10;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.75);
+}
+
+div.float-div > table  {
+    width: 100%;
+    border-width: 0;
+    vertical-align: middle;
+    text-align: center;
+    height: 100%;
+}
+
+div.float-div div.content {
+    position: relative;
+    border: solid 2px gray;
+    margin: auto;
+    background-color: black;
+}
+
+div.float-header {
+    color: white;
+    margin-bottom: 10px;
+}
+
+div.float-footer {
+    margin-top: 10px;
+}
+
 @media (max-width: 400px) {
+    #wiki-tools {
+        display: none;
+    }
     table.wiki-table td.label {
         font-size: smaller;
     }

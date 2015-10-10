@@ -5,12 +5,21 @@
 <title>魔卡幻想WIKI</title>
 <meta name="description" content="魔卡幻想WIKI,魔卡幻想百科" />
 <meta name="keywords" content="魔卡幻想WIKI,魔卡幻想百科" />
-<script src='<c:url value="/resources/js/wiki.js" />?version=<%= version %>'></script>
+<script src='<c:url value="/resources/js/wiki.js" />?version=<%= version %>' async="async"></script>
 </head>
 <body class="ui-mobile-viewport">
     <div id="wiki" class="main-page" data-role="page">
         <%@ include file="wiki-header.jsp" %>
         <div data-role="content">
+            <div id="wiki-tools" data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">
+                <h3>工具</h3>
+                <div class="wiki-result">
+                    <div class="wiki-categories">
+                        <div style="width: 150px"><a href="<c:url value="/Wiki/GenCardPortrait" />" target="_self">自定义卡图生成器</a></div>
+                        <div></div>
+                    </div>
+                </div>
+            </div>
             <div id="wiki-card-pedia" data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">
                 <h3>卡牌图鉴</h3>
                 <div id="wiki-card-pedia" class="wiki-result">

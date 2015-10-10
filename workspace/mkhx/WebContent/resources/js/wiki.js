@@ -22,6 +22,30 @@ var toRaceText = function(race) {
     }
 };
 
+var fillPortrait = function(portraitDivId, cardInfo) {
+    var id = '#' + portraitDivId + ' ';
+    $(id + 'img.cpt-large-portrait-img')[0].src = cardInfo.imgUrl;
+    $(id + 'img.cpt-border-img')[0].src = resDir + '/img/frame/Race_' + cardInfo.raceName + '_Border.png';
+    $(id + 'img.cpt-star-img')[0].src = resDir + '/img/frame/star_' + cardInfo.star + '.png';
+    $(id + '.cpt-card-name').text(cardInfo.cardName);
+    $(id + '.cpt-cost').text(cardInfo.cost);
+    $(id + '.cpt-wait').text(cardInfo.wait);
+    $(id + '.cpt-atk').text(cardInfo.atk);
+    $(id + '.cpt-hp').text(cardInfo.hp);
+    var availableSkills = [];
+    if (cardInfo.skill5 && cardInfo.skill5.name) { availableSkills.push(cardInfo.skill5); }
+    if (cardInfo.skill4 && cardInfo.skill4.name) { availableSkills.push(cardInfo.skill4); }
+    if (cardInfo.skill3 && cardInfo.skill3.name) { availableSkills.push(cardInfo.skill3); }
+    if (cardInfo.skill2 && cardInfo.skill2.name) { availableSkills.push(cardInfo.skill2); }
+    if (cardInfo.skill1 && cardInfo.skill1.name) { availableSkills.push(cardInfo.skill1); }
+    for (var i = 0; i < availableSkills.length; ++i) {
+        $(id + '.cpt-skill-line-' + i).show();
+        $(id + 'img.cpt-skill-category-' + i)[0].src = resDir + '/img/frame/Skill_Category_' + availableSkills[i].category + '.png';
+        $(id + '.cpt-skill-name-' + i).text(availableSkills[i].name);
+    }
+};
+Wiki.fillPortrait = fillPortrait;
+
 var store = {};
 $(document).on("pageinit", "#wiki", function(event) {
     CardFantasy.Core.uploadToCnzzUrl('wiki');

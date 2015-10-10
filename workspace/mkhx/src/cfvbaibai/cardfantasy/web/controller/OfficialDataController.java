@@ -65,6 +65,7 @@ public class OfficialDataController {
     public ModelAndView wiki(HttpServletRequest request) {
         return wiki();
     }
+
     private ModelAndView wiki() {
         ModelAndView mv = new ModelAndView();
         mv.setViewName("wiki");
@@ -80,6 +81,13 @@ public class OfficialDataController {
         return mv;
     }
 
+    @RequestMapping(value = "/Wiki/GenCardPortrait")
+    public ModelAndView genCardPortrait(HttpServletRequest request) {
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("gen-card-portrait");
+        return mv;
+    }
+    
     @RequestMapping(value = "/Wiki/Runes/Stars/{star}")
     public ModelAndView queryRuneOfStars(HttpServletRequest request,
             @PathVariable("star") int star, HttpServletResponse response) throws IOException {

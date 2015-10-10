@@ -32,6 +32,10 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2015-10-11: 在【<a href="<c:url value="/Wiki" />" target="_self">WIKI</a>】中添加了【自定义卡图生成器】功能（手机版目前还看不到，只有电脑能用），只需提供自己喜欢的底图和设定，就能生成魔卡样式的卡图:<br />
+                        <img src="<c:url value="/resources/img/help/customCardPortraitEntrance.png" />" style="width: 100%; max-width: 406px" />
+                        <img src="<c:url value="/resources/img/help/customCardPortrait.png" />" style="width: 100%; max-width: 704px" />
+                    </li>
                     <li>2015-10-06: <ul>
                         <li>【<a href="<c:url value="/Wiki" />" target="_self">WIKI</a>】将素材卡单独抽取为一类，感谢<x>虚梦杀</x>的建议</li>
                         <li>【<a href="<c:url value="/Wiki" />" target="_self">WIKI</a>】修复某些关卡信息不正确的BUG，感谢<x>dzx276941963</x>报告BUG</li>
