@@ -78,8 +78,5 @@
     </c:forEach>
     </div>
     </div>
-    <!-- CNZZ Begins -->
-    <script src="http://s25.cnzz.com/stat.php?id=5496691&web_id=5496691&online=1"></script>
-    <!-- CNZZ Ends -->
 </body>
 </html>

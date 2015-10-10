@@ -5,6 +5,7 @@
 <title>魔卡幻想WIKI</title>
 <meta name="description" content="魔卡幻想WIKI,魔卡幻想百科" />
 <meta name="keywords" content="魔卡幻想WIKI,魔卡幻想百科" />
+<script src='<c:url value="/resources/js/wiki.js" />?version=<%= version %>'></script>
 </head>
 <body class="ui-mobile-viewport">
     <div id="wiki" class="main-page" data-role="page">

@@ -12,7 +12,7 @@
         <div id="header-template" class="header-template" data-role="header" data-theme="c" data-position="fixed">
             <a class="nav-button left-nav-button" href="#" data-icon="bars" data-iconpos="left">导航</a>
             <h3 class="header-title"></h3>
-            <a class="nav-button right-nav-button" href="<c:url value="/wiki" />" target="_self" data-icon="grid" data-iconpos="right">WIKI</a>
+            <a class="nav-button right-nav-button" href="<c:url value="/Wiki" />" target="_self" data-icon="grid" data-iconpos="right">WIKI</a>
         </div>
     </div>
 <!--
@@ -34,9 +34,6 @@
     <%@ include file="deck-builder.jsp" %>
     <%@ include file="arena-battle-options.jsp" %>
 
-    <!-- CNZZ Begins -->
-    <script src="http://s25.cnzz.com/stat.php?id=5496691&web_id=5496691&online=1&show=line"></script>
-    <!-- CNZZ Ends -->
     <!-- JiaThis Button BEGIN -->
     <!-- 
     <script type="text/javascript" >
