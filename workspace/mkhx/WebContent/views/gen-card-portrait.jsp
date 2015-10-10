@@ -121,6 +121,9 @@ $(document).ready(function () {
                         <div style="position: absolute; right: 0; top: 0; width: 97px; height: 97px">
                             <img id="limit-img" src="" /> 
                         </div>
+                        <div style="position: absolute; right: 8px; bottom: 8px; color: rgba(255, 255, 255, 0.25); font-size: smaller">
+                            <span>生成器：http://www.mkhx.cc/Wiki/GenCardPortrait</span>
+                        </div>
                         <div>
                             <div id="desc-card-name" style="margin-top: 10px; font-size: 18px; font-weight: bold; text-align: center"></div>
                             <div>种族: <span id="desc-race-name"></span></div>
