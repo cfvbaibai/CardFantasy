@@ -6,27 +6,11 @@
 <html>
 <head>
 <!-- JQuery 1.9.1 and plugins -->
-<!--
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js'></script>
- -->
 <script src="<c:url value="/resources/lib/jquery-1.9.1/jquery.min.js" />"></script>
 <script src="<c:url value="/resources/lib/jquery-cookie-1.4.1/jquery.cookie.min.js" />"></script>
-<!-- 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-mobile/1.3.2/jquery.mobile.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-mobile/1.3.2/jquery.mobile.min.css" />
--->
+
 <script src="<c:url value="/resources/lib/jquery-mobile-1.3.2/jquery.mobile-1.3.2.min.js" />"></script>
 <link rel="stylesheet" href="<c:url value="/resources/lib/jquery-mobile-1.3.2/jquery.mobile-1.3.2.min.css" />" />
-
-<!--
-<script src="https://cdnjs.cloudflare.com/ajax/libs/kineticjs/4.6.0/kinetic.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/0.2.0/Chart.min.js"></script>
--->
-<script src="<c:url value="/resources/lib/kineticjs-4.6.0/kinetic.min.js" />" async="async"></script>
-<script src="<c:url value="/resources/lib/chartjs-0.2.0/Chart.min.js" />" async="async"></script>
-
-<script src='<c:url value="/resources/lib/ZeroClipboard-2.1.6/ZeroClipboard.min.js" />' async="async"></script>
 
 <link href='<c:url value="/resources/img/logo.png" />' rel="bookmark" type="image/x-icon" /> 
 <link href='<c:url value="/resources/img/logo.png" />' rel="icon" type="image/x-icon" /> 
@@ -35,9 +19,6 @@
 <link rel="stylesheet" href='<c:url value="/resources/css/style.css" />?version=<%= version %>' />
 
 <script src='<c:url value="/resources/js/core.js" />?version=<%= version %>'></script>
-<script src='<c:url value="/resources/js/battle-animation.js" />?version=<%= version %>' async="async"></script>
-<script src='<c:url value="/resources/js/deck-builder.js" />?version=<%= version %>' async="async"></script>
-<script src='<c:url value="/resources/js/test-rp.js" />?version=<%= version %>' async="async"></script>
 
 <!-- 百度广告 -->
 <!-- <script type="text/javascript" src="http://cbjs.baidu.com/js/m.js"></script> -->
