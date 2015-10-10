@@ -75,7 +75,7 @@ var showTestRPResult = function(testRpResult) {
     page.find('div.to-test-rp').hide();
     page.find('div.test-date').text('测试日期: ' + data.testDate + '(每天只能测一次哦)');
     page.find('div.portrait img').attr('src', resDir + '/img/cardportrait/' + data.cardId + '.jpg');
-    page.find('div.card-name').text('人品实力代表: ' + data.cardName);
+    page.find('div.test-rp-card-name').text('人品实力代表: ' + data.cardName);
     page.find('div.rp-index').text('人品指数(最高100): ' + data.rpIndex);
     page.find('div.remark').text(data.remark);
     page.find('div.test-rp-result').show();

@@ -8,7 +8,7 @@
         <div class="test-rp-result" style="display: none">
             <div class="test-rp-result-text">
                 <div class="test-date"></div>
-                <div class="card-name"></div>
+                <div class="test-rp-card-name"></div>
                 <div class="rp-index"></div>
                 <div class="remark"></div>
                 <div class="portrait"><img /></div>
