@@ -32,7 +32,7 @@
                 <td class="skill-desc">${skillInfo.description}</td>
             </tr>
             <c:if test="${anyOwning}">
-            <tr><td class="label small">拥有者</td></tr>
+            <tr><td class="small">拥有者</td></tr>
             <tr class="owning">
                 <td>
                     <div class="logos-container small-logos-container">

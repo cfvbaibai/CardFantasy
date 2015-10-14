@@ -32,6 +32,10 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2015-10-14:<ul>
+                        <li>添加新卡<cf:c>晓之奏者</cf:c></li>
+                        <li>添加【网页版邪龙之神】，感谢<x>a27180411</x>的提醒</li>
+                    </ul></li>
                     <li>2015-10-11:<ul> 
                         <li>在【<a href="<c:url value="/Wiki" />" target="_self">WIKI</a>】中添加了【自定义卡图生成器】功能（手机版目前还看不到，只有电脑能用），只需提供自己喜欢的底图和设定，就能生成魔卡样式的卡图:<br />
                             <img src="<c:url value="/resources/img/help/customCardPortraitEntrance.png" />" style="width: 100%; max-width: 406px" />

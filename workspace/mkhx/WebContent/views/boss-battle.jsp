@@ -13,6 +13,7 @@
                             <option value="强魔咒邪龙之神">强魔咒邪龙之神</option>
                             <option value="迷魂邪龙之神">迷魂邪龙之神</option>
                             <option value="盾刺邪龙之神">盾刺邪龙之神</option>
+                            <option value="网页版邪龙之神">网页版邪龙之神</option>
                             <option value="强魔甲噩梦之主">强魔甲噩梦之主</option>
                             <option value="振奋噩梦之主">振奋噩梦之主</option>
                             <option value="格挡噩梦之主">格挡噩梦之主</option>

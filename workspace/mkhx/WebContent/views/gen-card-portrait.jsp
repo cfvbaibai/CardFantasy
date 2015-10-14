@@ -117,7 +117,7 @@ $(document).ready(function () {
                             <%@ include file="card-portrait-template.jsp" %>
                         </div>
                     </td>
-                    <td style="border-width: 0; vertical-align: top; font-family: 微软雅黑; text-align: left; padding-left: 20px; padding-right: 20px; position: relative">
+                    <td style="border-width: 0; vertical-align: top; font-family: 微软雅黑; text-align: left; padding-left: 20px; padding-right: 20px">
                         <div style="position: absolute; right: 0; top: 0; width: 97px; height: 97px">
                             <img id="limit-img" src="" /> 
                         </div>
