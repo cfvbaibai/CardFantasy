@@ -5,11 +5,12 @@
                 <h3>设置阵容</h3>
                 <div>
                     <fieldset class="select-2" data-theme="c" data-role="controlgroup" data-type="horizontal">
-                        <select data-theme="c" name="boss-name" class="boss-name" id="boss-name" data-mini="true" data-native-menu="false">
+                        <select data-theme="c" name="boss-name" class="boss-name" id="boss-name" data-mini="true" data-native-menu="true">
                             <option value="强魔刃复仇女神">强魔刃复仇女神</option>
                             <option value="狙击复仇女神">狙击复仇女神</option>
                             <option value="送还复仇女神">送还复仇女神</option>
                             <option value="连锁复仇女神">连锁复仇女神</option>
+                            <option value="网页版复仇女神">网页版复仇女神</option>
                             <option value="强魔咒邪龙之神">强魔咒邪龙之神</option>
                             <option value="迷魂邪龙之神">迷魂邪龙之神</option>
                             <option value="盾刺邪龙之神">盾刺邪龙之神</option>
@@ -17,18 +18,21 @@
                             <option value="强魔甲噩梦之主">强魔甲噩梦之主</option>
                             <option value="振奋噩梦之主">振奋噩梦之主</option>
                             <option value="格挡噩梦之主">格挡噩梦之主</option>
-                            <option value="法侵格挡噩梦">法侵格挡噩梦</option>
+                            <option value="网页版噩梦之主">网页版噩梦之主</option>
                             <option value="强魔咒毁灭之神">强魔咒毁灭之神</option>
                             <option value="邪吸毁灭之神">邪吸毁灭之神</option>
                             <option value="焚神毁灭之神">焚神毁灭之神</option>
+                            <option value="网页版毁灭之神">网页版毁灭之神</option>
                             <option value="强魔甲深渊影魔">强魔甲深渊影魔</option>
                             <option value="弱点深渊影魔">弱点深渊影魔</option>
                             <option value="诅咒深渊影魔">诅咒深渊影魔</option>
+                            <option value="网页版深渊影魔">网页版深渊影魔</option>
                             <option value="强魔刃万蛛之后">强魔刃万蛛之后</option>
                             <option value="回魂万蛛之后">回魂万蛛之后</option>
                             <option value="无回魂万蛛之后">无回魂万蛛之后</option>
+                            <option value="网页版万蛛之后">网页版万蛛之后</option>
                         </select>
-                        <select data-theme="c" name="guard-type" id="guard-type" data-mini="true" data-native-menu="false">
+                        <select data-theme="c" name="guard-type" id="guard-type" data-mini="true" data-native-menu="true">
                             <option value="0">无杂兵</option>
                             <option value="1">随机杂兵</option>
                             <option value="2" selected="selected">随机强杂兵</option>
@@ -39,7 +43,7 @@
                     </table>
                     <!-- +：10级， -->
                     <fieldset class="select-4" data-theme="c" data-role="controlgroup" data-type="horizontal">
-                        <select data-theme="c" name="buff-kingdom" id="buff-kingdom" data-mini="true" data-native-menu="false">
+                        <select data-theme="c" name="buff-kingdom" id="buff-kingdom" data-mini="true" data-native-menu="true">
                             <option value="0">王+0</option>
                             <option value="1">王+1</option>
                             <option value="2">王+2</option>
@@ -52,7 +56,7 @@
                             <option value="9">王+9</option>
                             <option value="10" selected="selected">王+10</option>
                         </select>
-                        <select data-theme="c" name="buff-savage" id="buff-savage" data-mini="true" data-native-menu="false">
+                        <select data-theme="c" name="buff-savage" id="buff-savage" data-mini="true" data-native-menu="true">
                             <option value="0">蛮+0</option>
                             <option value="1">蛮+1</option>
                             <option value="2">蛮+2</option>
@@ -65,7 +69,7 @@
                             <option value="9">蛮+9</option>
                             <option value="10" selected="selected">蛮+10</option>
                         </select>
-                        <select data-theme="c" name="buff-forest" id="buff-forest" data-mini="true" data-native-menu="false">
+                        <select data-theme="c" name="buff-forest" id="buff-forest" data-mini="true" data-native-menu="true">
                             <option value="0">森+0</option>
                             <option value="1">森+1</option>
                             <option value="2">森+2</option>
@@ -78,7 +82,7 @@
                             <option value="9">森+9</option>
                             <option value="10" selected="selected">森+10</option>
                         </select>
-                        <select data-theme="c" name="buff-hell" id="buff-hell" data-mini="true" data-native-menu="false">
+                        <select data-theme="c" name="buff-hell" id="buff-hell" data-mini="true" data-native-menu="true">
                             <option value="0">地+0</option>
                             <option value="1">地+1</option>
                             <option value="2">地+2</option>

@@ -1073,7 +1073,8 @@ public class SkillResolver {
 
         // Standard summoning skills
         for (CardInfo card : summonedCards) {
-            if (myField.getCard(card.getPosition()) == null) {
+            int position = card.getPosition();
+            if (position < 0 || myField.getCard(position) == null) {
                 // Killed or returned by other summoning skills 
                 continue;
             }
@@ -1142,7 +1143,8 @@ public class SkillResolver {
         }
 
         for (CardInfo card : summonedCards) {
-            if (myField.getCard(card.getPosition()) == null) {
+            int position = card.getPosition();
+            if (position < 0 || myField.getCard(position) == null) {
                 // Killed or returned by other summoning skills 
                 continue;
             }
