@@ -44,4 +44,10 @@
     <bean class="cfvbaibai.cardfantasy.web.Cnzz">
         <constructor-arg index="0" ref="general-logger" />
     </bean>
+    
+    <bean class="cfvbaibai.cardfantasy.web.SimpleUsageRecorder">
+        <constructor-arg index="0"><value>/CfData/BossBattle</value></constructor-arg>
+        <constructor-arg index="1"><value>Count</value></constructor-arg>
+        <constructor-arg index="2" ref="general-logger" />
+    </bean>
 </beans>

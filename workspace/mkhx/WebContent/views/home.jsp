@@ -39,21 +39,7 @@
     <%@ include file="arena.jsp" %>
     <%@ include file="deck-builder.jsp" %>
     <%@ include file="arena-battle-options.jsp" %>
-
-    <!-- JiaThis Button BEGIN -->
-    <!-- 
-    <script type="text/javascript" >
-    var jiathis_config={
-        url:"http://www.mkhx.cc:8080",
-        summary:"有了魔卡幻想模拟器，轻松打魔神，切基友！",
-        title:"魔卡幻想模拟器 ##魔卡幻想##",
-        showClose:true,
-        shortUrl:true,
-        hideMore:false
-    }
-    </script>
-    <script type="text/javascript" src="http://v3.jiathis.com/code/jiathis_r.js?btn=r.gif&move=0" charset="utf-8"></script>
-     -->
-    <!-- JiaThis Button END -->
+    
+    <iframe id="stat-iframe" height="0" width="0"></iframe>
 </body>
 </html>

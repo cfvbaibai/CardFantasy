@@ -234,6 +234,7 @@ var playBossGame = function(count) {
         gt: guardType
     };
 
+    $('#stat-iframe')[0].src = 'Stat/BossBattle/' + bossName + '/view';
     $.cookie('boss-battle', JSON.stringify(postData), { expires: 365 });
     var url;
     if (count == 1) {

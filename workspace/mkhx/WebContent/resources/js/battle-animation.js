@@ -1377,7 +1377,7 @@ var Animater = function() {
         '圣光', '要害', '暗杀', '污染', '连锁攻击', '凯撒之击', '神兵召唤'
     ];
     this.selfUsedSkills = [
-        '不动', '脱困', '群体脱困', '法力反射', '冰甲', '闪避', '守护', '魔神之甲', '灵巧', '灵魂禁锢',
+        '不动', '脱困', '群体脱困', '法力反射', '冰甲', '水流护甲', '闪避', '守护', '魔神之甲', '灵巧', '灵魂禁锢',
         '王国之盾', '森林之盾', '蛮荒之盾', '地狱之盾', '弱点攻击', '无效', '圣盾', '不屈', '圣炎', '斩杀'
     ];
     this.__useSkill = function(data) {
@@ -1546,7 +1546,7 @@ var Animater = function() {
         }
         if (skill == '普通攻击') {
             this.normalAttack(attacker, defenderHero, true);
-        } else if (skill == '祈祷' || skill == '祈福') {
+        } else if (skill == '祈祷' || skill == '祈福' || skill == '水流护甲') {
             this.flyImage({ fileName: 'heal.png', width: 24, height: 24, text: skill },
                     attacker, defenderHero, settings.skillDuration);
         } else if (skill == '诅咒' || skill == '魔神之咒') {

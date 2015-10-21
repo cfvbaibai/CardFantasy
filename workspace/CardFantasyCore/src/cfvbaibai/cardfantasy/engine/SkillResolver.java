@@ -406,6 +406,12 @@ public class SkillResolver {
                     if (!result.isAttackable()) {
                         return result;
                     }
+                    if (blockSkillUseInfo.getType() == SkillType.水流护甲) {
+                        result.setDamage(WaterArmor.apply(blockSkillUseInfo.getSkill(), this, cardAttacker, defender, result.getDamage()));
+                    }
+                    if (!result.isAttackable()) {
+                        return result;
+                    }
                 }
                 {
                     RuneInfo rune = defender.getOwner().getActiveRuneOf(RuneData.冰封);

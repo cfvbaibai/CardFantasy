@@ -529,4 +529,48 @@ public class DefenseTest extends SkillValidationTest {
         context.proceedOneRound();
         Assert.assertEquals(10, 5000 - c守护占位符.getHP());
     }
+    
+    @Test
+    public void test水流护甲_基本() throws HeroDieSignal {
+        SkillTestContext context = prepare(50, 50, "秘银巨石像", "占位符+水流护甲1");
+        context.addToField(0, 0);
+        CardInfo c占位符 = context.addToField(1, 1);
+        context.getPlayer(1).setHP(100);
+        context.startGame();
+        context.proceedOneRound();
+        Assert.assertEquals(600, 5000 - c占位符.getHP());
+        Assert.assertEquals(100 + 50, context.getPlayer(1).getHP());
+    }
+
+    /*
+     * 弱点攻击无法破解水流护甲
+     */
+    @Test
+    public void test水流护甲_弱点攻击() throws HeroDieSignal {
+        SkillTestContext context = prepare(50, 50, "秘银巨石像+弱点攻击", "占位符+水流护甲1");
+        context.addToField(0, 0);
+        CardInfo c占位符 = context.addToField(1, 1);
+        context.getPlayer(1).setHP(100);
+        context.startGame();
+        context.proceedOneRound();
+        Assert.assertEquals(600, 5000 - c占位符.getHP());
+        Assert.assertEquals(100 + 50, context.getPlayer(1).getHP());
+    }
+
+    /*
+     * 水流护甲无法防御燕返
+     */
+    @Test
+    public void test水流护甲_燕返() throws HeroDieSignal {
+        SkillTestContext context = prepare(50, 50, "秘银巨石像+水流护甲1", "魔剑士+燕返");
+        CardInfo c秘银巨石像1 = context.addToField(0, 0);
+        CardInfo c魔剑士 = context.addToField(1, 1);
+        c魔剑士.setBasicHP(1);
+        context.getPlayer(1).setHP(100);
+        context.startGame();
+        context.proceedOneRound();
+        Assert.assertTrue(c魔剑士.isDead());
+        Assert.assertEquals(100 /* 水流护甲面对燕返无效 */, context.getPlayer(1).getHP());
+        Assert.assertEquals(275 * 2, 1550 - c秘银巨石像1.getHP());
+    }
 }

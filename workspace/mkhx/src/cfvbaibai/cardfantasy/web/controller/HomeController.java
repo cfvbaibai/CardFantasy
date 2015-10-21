@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -60,5 +61,12 @@ public class HomeController {
         public int compare(LilithStartupInfo a, LilithStartupInfo b) {
             return a.getCardBuffs().get(0).getLevel() - b.getCardBuffs().get(0).getLevel();
         }
+    }
+    
+    @RequestMapping(value = "/Stat/BossBattle/{bossName}/view")
+    public ModelAndView statRecord(HttpServletRequest request, @PathVariable("bossName") String bossName) {
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("stat-recorder");
+        return mv;
     }
 }
