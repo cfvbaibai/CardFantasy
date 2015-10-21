@@ -16,11 +16,11 @@
     <context:annotation-config />
 
     <bean id="dummyGameUI" class="cfvbaibai.cardfantasy.game.DummyGameUI" />
-    
+
     <bean class="cfvbaibai.cardfantasy.RealRandomizer">
         <constructor-arg ref="dummyGameUI" />
     </bean>
-    
+
     <bean class="cfvbaibai.cardfantasy.data.CardDataStore" factory-method="loadDefault" />
     <bean class="cfvbaibai.cardfantasy.game.LilithDataStore" factory-method="loadDefault" />
     <bean class="cfvbaibai.cardfantasy.officialdata.OfficialDataStore" factory-method="getInstance" />
@@ -36,18 +36,12 @@
     <bean class="cfvbaibai.cardfantasy.web.QuestionStore">
         <constructor-arg><value>5</value></constructor-arg>
     </bean>
-    
+
     <bean class="cfvbaibai.cardfantasy.web.ErrorHelper">
         <constructor-arg index="0" ref="general-logger" />
     </bean>
     
     <bean class="cfvbaibai.cardfantasy.web.Cnzz">
         <constructor-arg index="0" ref="general-logger" />
-    </bean>
-    
-    <bean class="cfvbaibai.cardfantasy.web.SimpleUsageRecorder">
-        <constructor-arg index="0"><value>/CfData/BossBattle</value></constructor-arg>
-        <constructor-arg index="1"><value>Count</value></constructor-arg>
-        <constructor-arg index="2" ref="general-logger" />
     </bean>
 </beans>

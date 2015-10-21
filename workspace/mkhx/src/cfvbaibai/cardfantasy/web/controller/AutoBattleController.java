@@ -62,7 +62,6 @@ import cfvbaibai.cardfantasy.game.PvlGameTimeoutException;
 import cfvbaibai.cardfantasy.game.SkillBuilder;
 import cfvbaibai.cardfantasy.game.VictoryCondition;
 import cfvbaibai.cardfantasy.web.ErrorHelper;
-import cfvbaibai.cardfantasy.web.SimpleUsageRecorder;
 import cfvbaibai.cardfantasy.web.Utils;
 import cfvbaibai.cardfantasy.web.animation.BattleRecord;
 import cfvbaibai.cardfantasy.web.animation.EntityDataRuntimeInfo;
@@ -94,9 +93,6 @@ public class AutoBattleController {
 
     @Autowired
     private ErrorHelper errorHelper;
-
-    @Autowired
-    private SimpleUsageRecorder usageRecorder;
     
     private static GameResultStat play(PlayerInfo p1, PlayerInfo p2, int count, Rule rule) {
         GameResultStat stat = new GameResultStat(p1, p2, rule);
