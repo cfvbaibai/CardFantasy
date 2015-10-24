@@ -47,7 +47,9 @@ var fillPortrait = function(portraitDivId, cardInfo) {
 Wiki.fillPortrait = fillPortrait;
 
 var store = {};
-$(document).on("pageinit", "#wiki", function(event) {
+//$(document).on("pageinit", "#wiki", function(event) {
+$(document).ready(function () {
+    console.log('Initing page: #wiki');
     CardFantasy.Core.uploadToCnzzUrl('wiki');
     if ($(window).width() < 400) {
         //$('#wiki > div > div').addClass('ui-collapsible-content-collapsed');
