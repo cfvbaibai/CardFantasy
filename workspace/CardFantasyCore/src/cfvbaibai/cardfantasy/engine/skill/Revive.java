@@ -46,7 +46,7 @@ public final class Revive {
             return;
         }
         reviver.getOwner().getGrave().removeCard(cardToRevive);
-        resolver.summonCard(reviver.getOwner(), cardToRevive, reviver);
+        resolver.summonCard(reviver.getOwner(), cardToRevive, reviver, false);
         CardStatusItem item = CardStatusItem.weak(skillUseInfo);
         resolver.getStage().getUI().addCardStatus(reviver, cardToRevive, skill, item);
         cardToRevive.addStatus(item);

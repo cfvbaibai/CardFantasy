@@ -177,7 +177,7 @@ public class BattleEngine {
             }
         }
 
-        this.stage.getResolver().summonCards(player, summonedCards, null);
+        this.stage.getResolver().summonCards(player, summonedCards, null, false);
 
         player.getField().compact();
         this.getInactivePlayer().getField().compact();

@@ -1003,12 +1003,12 @@ public class SkillResolver {
 
     // reviver: for most of the cases, it should be null.
     // It is only set when the summoning skill performer is revived by another card.
-    public void resolveSummoningSkills(List<CardInfo> summonedCards, Field myField, Field opField, CardInfo reviver) throws HeroDieSignal {
+    public void resolveSummoningSkills(List<CardInfo> summonedCards, Field myField, Field opField, CardInfo reviver, boolean isMinion) throws HeroDieSignal {
         Player player = myField.getOwner();
         for (SkillUseInfo skillUseInfo : player.getCardBuffs()) {
             for (CardInfo card : summonedCards) {
                 // 召唤物不享受加成
-                if (card.getStatus().containsStatus(CardStatusType.召唤)) {
+                if (isMinion) {
                     continue;
                 }
                 Skill skill = skillUseInfo.getSkill();
@@ -1251,10 +1251,10 @@ public class SkillResolver {
         return new BlockStatusResult(false);
     }
 
-    public void summonCard(Player player, CardInfo card, CardInfo reviver) throws HeroDieSignal {
+    public void summonCard(Player player, CardInfo card, CardInfo reviver, boolean isMinion) throws HeroDieSignal {
         List<CardInfo> cards = new ArrayList<CardInfo>();
         cards.add(card);
-        summonCards(player, cards, reviver);
+        summonCards(player, cards, reviver, isMinion);
     }
 
     /**
@@ -1265,7 +1265,7 @@ public class SkillResolver {
      * @param reviver
      * @throws HeroDieSignal
      */
-    public void summonCards(Player player, List<CardInfo> cards, CardInfo reviver) throws HeroDieSignal {
+    public void summonCards(Player player, List<CardInfo> cards, CardInfo reviver, boolean isMinion) throws HeroDieSignal {
         for (CardInfo card : cards) {
             card.reset();
             this.stage.getUI().summonCard(player, card);
@@ -1285,7 +1285,7 @@ public class SkillResolver {
             }
         }
 
-        this.resolveSummoningSkills(cards, player.getField(), enemy.getField(), reviver);
+        this.resolveSummoningSkills(cards, player.getField(), enemy.getField(), reviver, isMinion);
     }
 
     /**

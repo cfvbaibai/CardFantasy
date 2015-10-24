@@ -98,10 +98,10 @@ $(document).ready(function() {
             </tr>
             <tr>
                 <td class="label">所需经验</td>
-                <td id="view-card-exp0" class="value">${cardInfo.expArray[0]}</td>
-                <td id="view-card-exp5" class="value">${cardInfo.expArray[5]}</td>
-                <td id="view-card-exp10" class="value">${cardInfo.expArray[10]}</td>
-                <td id="view-card-exp15" class="value">${cardInfo.expArray[15]}</td>
+                <td id="view-card-exp0" class="value">0</td>
+                <td id="view-card-exp5" class="value">${cardInfo.toLevel5Exp}</td>
+                <td id="view-card-exp10" class="value">${cardInfo.toLevel10Exp}</td>
+                <td id="view-card-exp15" class="value">${cardInfo.toLevel15Exp}</td>
             </tr>
         </tbody>
     </table>

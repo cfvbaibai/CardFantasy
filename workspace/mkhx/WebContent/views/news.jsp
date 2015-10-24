@@ -32,6 +32,7 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2015-10-24: 修复召唤物享受军团加成的BUG，感谢<x>ttmaster1</x>报告BUG</li>
                     <li>2015-10-21: 添加新卡<cf:c>叹惋之歌</cf:c>，感谢<x>catree1988</x>(一喵)和<x>1000127900</x>提供的资料。目前的实现是不能破冰甲</li>
                     <li>2015-10-18: <ul>
                         <li>添加【网页版复仇女神】，【网页版噩梦之主】，【网页版深渊魔影】，【网页版毁灭之神】，【网页版万蛛之后】，感谢<x>a27180411</x>提供的资料</li>

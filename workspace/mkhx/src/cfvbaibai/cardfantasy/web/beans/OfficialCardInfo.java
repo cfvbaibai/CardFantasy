@@ -42,6 +42,24 @@ public class OfficialCardInfo {
     public int[] getExpArray() {
         return this.card.getExpArray();
     }
+    private int getToLevelExp(int level) {
+        int[] expArray = this.card.getExpArray();
+        int sum = 0; 
+        for (int i = 0; i <= level; ++i) {
+            sum += expArray[i];
+        }
+        return sum;
+    }
+    public int getToLevel5Exp() {
+        return this.getToLevelExp(5);
+    }
+    public int getToLevel10Exp() {
+        return this.getToLevelExp(10);
+    }
+    public int getToLevel15Exp() {
+        return this.getToLevelExp(15);
+    }
+
     public OfficialSkill getSkill1() {
         return this.skill1;
     }
