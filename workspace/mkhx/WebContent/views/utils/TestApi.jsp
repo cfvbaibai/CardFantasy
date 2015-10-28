@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ include file="header.jsp"%>
+<%@ include file="/views/header.jsp"%>
 <title>Test REST API</title>
 <script type="text/javascript">
     $(document).ready(function() {

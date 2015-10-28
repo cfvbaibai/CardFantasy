@@ -1505,7 +1505,7 @@ var Animater = function() {
         } else if (skill == '摧毁') {
             this.flyImage({ fileName: 'bomb.png', width: 48, height: 48, text: skill },
                     attacker, defenders, settings.skillDuration);
-        } else if (skill == '盾刺' || skill == '反击') {
+        } else if (skill == '盾刺' || skill == '反击' || skill == '物理反弹') {
             this.flyImage({ fileName: 'spike.png', width: 48, height: 48, rotate: Math.PI * 4, text: skill },
                     attacker, defenders, settings.skillDuration);
         } else if (skill == '献祭') {

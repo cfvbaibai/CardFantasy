@@ -142,4 +142,56 @@ public class CounterAttackTest extends SkillValidationTest {
         Assert.assertEquals(5000, c占位符1.getHP());
         Assert.assertEquals(5000, c占位符2.getHP());
     }
+    
+    @Test
+    public void test物理反弹_基本() {
+        SkillTestContext context = prepare(50, 50, "秘银巨石像", "占位符+物理反弹");
+        CardInfo c秘银巨石像 = context.addToField(0, 0);
+        CardInfo c占位符 = context.addToField(1, 1);
+        context.startGame();
+        
+        context.proceedOneRound();
+        Assert.assertEquals(660 / 2 /* 物理反弹造成一半伤害反弹 */, 1400 - c秘银巨石像.getHP());
+        Assert.assertEquals(660, 5000 - c占位符.getHP());
+    }
+    
+    @Test
+    public void test物理反弹_格挡() {
+        SkillTestContext context = prepare(50, 50, "秘银巨石像", "金属巨龙+物理反弹");
+        CardInfo c秘银巨石像 = context.addToField(0, 0);
+        CardInfo c金属巨龙 = context.addToField(1, 1);
+        context.startGame();
+        
+        context.proceedOneRound();
+        Assert.assertEquals((660 - 160) / 2 /* 物理反弹造成一半伤害反弹 */, 1400 - c秘银巨石像.getHP());
+        Assert.assertEquals(660 - 160, 1825 - c金属巨龙.getHP());
+    }
+
+    @Test
+    public void test物理反弹_横扫_仅溅射() {
+        SkillTestContext context = prepare(50, 50, "秘银巨石像+横扫", "占位符", "占位符+物理反弹");
+        CardInfo c秘银巨石像 = context.addToField(0, 0);
+        CardInfo c占位符1 = context.addToField(1, 1);
+        CardInfo c占位符2 = context.addToField(2, 1);
+        context.startGame();
+        
+        context.proceedOneRound();
+        Assert.assertEquals(810 / 2 /* 物理反弹造成一半伤害反弹 */, 1550 - c秘银巨石像.getHP());
+        Assert.assertEquals(810, 5000 - c占位符1.getHP());
+        Assert.assertEquals(810, 5000 - c占位符2.getHP());
+    }
+
+    @Test
+    public void test物理反弹_横扫_双溅射() {
+        SkillTestContext context = prepare(50, 50, "秘银巨石像+横扫", "占位符+物理反弹", "占位符+物理反弹");
+        CardInfo c秘银巨石像 = context.addToField(0, 0);
+        CardInfo c占位符1 = context.addToField(1, 1);
+        CardInfo c占位符2 = context.addToField(2, 1);
+        context.startGame();
+        
+        context.proceedOneRound();
+        Assert.assertEquals(810 / 2 /* 物理反弹造成一半伤害反弹 */ * 2, 1550 - c秘银巨石像.getHP());
+        Assert.assertEquals(810, 5000 - c占位符1.getHP());
+        Assert.assertEquals(810, 5000 - c占位符2.getHP());
+    }
 }

@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ include file="header.jsp"%>
+<%@ include file="/views/header.jsp"%>
 <title>Test Canvas</title>
 <script>
 var races = []
@@ -12,7 +12,7 @@ races[100] = '魔神';
 
 function generate() {
     var cardName = $('#card-name').val();
-    $.get("../Wiki/Cards?names=" + cardName, function(data) {
+    $.get("../../Wiki/Cards?names=" + cardName, function(data) {
         if (data.length == 0) {
             $('#card-xml').text(cardName + '不存在');
             return;

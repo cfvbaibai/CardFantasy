@@ -32,6 +32,12 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2015-10-28: 添加新卡<cf:c>天蝎座</cf:c>，不过效果是我YY的： <ul>
+                        <li>普通攻击打上来被冰甲削减到110，所以只能反弹55伤害</li>
+                        <li>弱点攻击打上来就能反弹攻击的一半伤害</li>
+                        <li>横扫溅射、连锁攻击溅射也能反弹55伤害</li>
+                        <li>斩杀因为破冰，所以也能反弹一半伤害</li>
+                    </ul></li>
                     <li>2015-10-24: <ul>
                         <li>修复召唤物享受军团加成的BUG，感谢<x>ttmaster1</x>报告BUG</li>
                         <li>修复搜索卡牌无效的BUG，感谢<x>戒不了你IQ</x>报告BUG</li>

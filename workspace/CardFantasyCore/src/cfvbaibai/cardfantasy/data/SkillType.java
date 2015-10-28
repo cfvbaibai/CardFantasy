@@ -65,6 +65,7 @@ public enum SkillType {
     格挡("30955", 20),
     陷阱("30975", 1, SkillTag.控制),
     反击("30957", 20, SkillTag.抗免疫, SkillTag.反击),
+    物理反弹("", 0, SkillTag.抗免疫, SkillTag.反击),
     火球("30969", 25, SkillTag.魔法),
     冰弹("30961", 20, SkillTag.魔法),
     守护("30973", 0),
