@@ -3,6 +3,7 @@ package cfvbaibai.cardfantasy.game;
 public class PvlGameResult {
     private int battleCount;
     private int damageToLilith;
+
     public int resultMessage() {
         return battleCount;
     }

@@ -43,6 +43,14 @@ public class MapStages {
         }
     }
     
+    private static MapStages instance;
+    public static MapStages loadDefault() {
+        if (instance == null) {
+            instance = new MapStages();
+        }
+        return instance;
+    }
+    
     public MapInfo getMap(String id) {
         return this.mapStages.get(id);
     }

@@ -19,6 +19,7 @@ import cfvbaibai.cardfantasy.game.PlayerBuilder;
 import cfvbaibai.cardfantasy.game.PvlEngine;
 import cfvbaibai.cardfantasy.game.PvlGameResult;
 import cfvbaibai.cardfantasy.game.SkillBuilder;
+import cfvbaibai.cardfantasy.game.launcher.GameLauncherFacade;
 
 public class FreeTest extends PveEngineTest {
 
@@ -638,5 +639,11 @@ public class FreeTest extends PveEngineTest {
         PvlEngine engine = new PvlEngine(new TestGameUI(), Rule.getDefault());
         PvlGameResult result = engine.clearGuards(lilith, player, 1);
         System.out.println("Battle Count = " + result.getBattleCount() + ", Damage to Lilith = " + result.getDamageToLilith());
+    }
+    
+    @Test
+    public void testGameLauncherFacade() {
+        String resultText = GameLauncherFacade.playArenaGame("凤凰", "凤凰", 50, 50, 100, 100, 100, 100, 100, 100, 0, 0, "Any", 10);
+        System.out.println(resultText);
     }
 }

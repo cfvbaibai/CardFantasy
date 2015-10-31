@@ -16,7 +16,9 @@ public class GameResultStat {
     private PlayerInfo p1;
     private PlayerInfo p2;
     private Rule rule;
-    
+
+    private GameResult lastResult;
+
     public GameResultStat(PlayerInfo p1, PlayerInfo p2, Rule rule) {
         p1WinCount = 0;
         p2WinCount = 0;
@@ -40,6 +42,7 @@ public class GameResultStat {
         if (rule.getCondition() != null && rule.getCondition().meetCriteria(result) && winnerId.equals(p1.getId())) {
             ++this.conditionMetCount;
         }
+        this.lastResult = result;
     }
     
     public int count() {
@@ -80,5 +83,9 @@ public class GameResultStat {
 
     public int getConditionMet() {
         return this.conditionMetCount;
+    }
+    
+    public GameResult getLastResult() {
+        return this.lastResult;
     }
 }
