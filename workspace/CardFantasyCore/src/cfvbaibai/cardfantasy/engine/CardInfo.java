@@ -515,4 +515,17 @@ public class CardInfo extends EntityInfo {
     public void setRemainingHP(int remainingHP) {
         this.eternalWound += this.getMaxHP() - remainingHP;
     }
+
+    public boolean isAwaken(Race race) {
+        if (this.isDead()) {
+            return false;
+        }
+        List<CardInfo> aliveCards = this.getOwner().getField().getAliveCards();
+        for (CardInfo aliveCard : aliveCards) {
+            if (aliveCard.getRace() == race) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

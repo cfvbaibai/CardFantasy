@@ -562,4 +562,33 @@ public class AttackBuffTest extends SkillValidationTest {
         Assert.assertFalse(c邪龙之神.isDead());
         Assert.assertEquals(1000 - 810, c邪龙之神.getHP());
     }
+
+    @Test
+    public void test神兵召唤_基础() {
+        SkillTestContext context = prepare(50, 50, "占位符+神兵召唤", "占位符");
+        CardInfo c占位符1 = context.addToField(0, 0);
+        CardInfo c占位符2 = context.addToField(1, 1);
+        context.startGame();
+
+        random.addNextNumbers(0);
+        context.proceedOneRound();
+        
+        Assert.assertEquals(500, 5000 - c占位符2.getHP());
+        Assert.assertEquals(0, c占位符1.getCurrentAT());
+    }
+
+    @Test
+    public void test觉醒神兵召唤_基础() {
+        SkillTestContext context = prepare(50, 50, "秘银巨石像+觉醒神兵召唤", "战斗猛犸象", "占位符");
+        CardInfo c秘银巨石像1 = context.addToField(0, 0);
+        context.addToField(1, 0);
+        CardInfo c占位符 = context.addToField(2, 1);
+        context.startGame();
+
+        random.addNextNumbers(0);
+        context.proceedOneRound();
+        
+        Assert.assertEquals(810 + 500, 5000 - c占位符.getHP());
+        Assert.assertEquals(810, c秘银巨石像1.getCurrentAT());
+    }
 }

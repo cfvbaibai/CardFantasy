@@ -46,6 +46,7 @@ public enum SkillType {
     振奋("80192", 40, 10, SkillTag.独立攻击加成),
     奋战("", 40, 10, SkillTag.独立攻击加成),
     神兵召唤("", 0, SkillTag.额外攻击加成),
+    觉醒神兵召唤("", 0, SkillTag.额外攻击加成),
     厨具召唤("", 0, SkillTag.额外攻击加成),
 
     虚弱("57000", 0, SkillTag.额外攻击加成, SkillTag.抗免疫, SkillTag.抗不屈),

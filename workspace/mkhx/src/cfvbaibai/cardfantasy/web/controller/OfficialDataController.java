@@ -418,6 +418,8 @@ public class OfficialDataController {
             @RequestParam(value = "races", required = false) String raceFilter,
             @RequestParam(value = "skillTypes", required = false) String skillTypeFilter,
             @RequestParam(value = "names", required = false) String cardNameFilter) throws IOException {
+        this.logger.info(String.format("starFilter = %s, raceFilter = %s, skillTypeFilter = %s, cardNameFilter = %s",
+                starFilter, raceFilter, skillTypeFilter, cardNameFilter));
         if ("0".equals(starFilter)) {
             starFilter = null;
         }

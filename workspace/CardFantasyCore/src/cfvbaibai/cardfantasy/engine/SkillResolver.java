@@ -700,7 +700,7 @@ public class SkillResolver {
            }
         }
     }
-    
+
     /**
      * 
      * @param attacker
@@ -728,7 +728,8 @@ public class SkillResolver {
                     RacialAttackSkill.apply(this, skillUseInfo, attacker, defender, Race.FOREST);
                 } else if (skillUseInfo.getType() == SkillType.暴击) {
                     CriticalAttack.apply(this, skillUseInfo, attacker, defender);
-                } else if (skillUseInfo.getType() == SkillType.神兵召唤) {
+                } else if (skillUseInfo.getType() == SkillType.神兵召唤 ||
+                        skillUseInfo.getType() == SkillType.觉醒神兵召唤 && attacker.isAwaken(Race.SAVAGE)) {
                     WeaponSummon.apply(this, skillUseInfo, attacker, defender, 500, 1700);
                 } else if (skillUseInfo.getType() == SkillType.厨具召唤) {
                     WeaponSummon.apply(this, skillUseInfo, attacker, defender, 1, 500);
@@ -793,7 +794,7 @@ public class SkillResolver {
                 HeroKiller.remove(this, effect.getCause(), card);
             } else if (type == SkillType.凯撒之击) {
                 CaeserAttack.remove(this, effect.getCause(), card);
-            } else if (type == SkillType.神兵召唤 || type == SkillType.厨具召唤) {
+            } else if (type == SkillType.神兵召唤 || type == SkillType.厨具召唤 || type == SkillType.觉醒神兵召唤) {
                 WeaponSummon.remove(this, effect.getCause(), card);
             }
         }

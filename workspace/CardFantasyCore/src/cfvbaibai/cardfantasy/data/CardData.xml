@@ -1422,6 +1422,11 @@
         <Skill type="吸血" level="6" unlock="5" />
         <Skill type="横扫" level="0" unlock="10" />
     </Card>
+    <Card id="3441" name="恶魔猎人" wikiId="" race="蛮荒" speed="2" star="4" cost="14" incrCost="2" at="220" hp="1220" incrAT="26" incrHP="29">
+        <Skill type="觉醒神兵召唤" level="0" unlock="0" />
+        <Skill type="脱困" level="0" unlock="5" />
+        <Skill type="法力反射" level="4" unlock="10" />
+    </Card>
 
     <Card id="3501" name="雷兽" wikiId="31034" race="蛮荒" speed="6" star="5" cost="14" incrCost="2" at="340" hp="1100" incrAT="20" incrHP="45">
         <Skill type="雷暴" level="7" unlock="0" />
