@@ -1101,4 +1101,68 @@ public class SpecialStatusTest extends SkillValidationTest {
         Assert.assertEquals(0, 1550 - c秘银巨石像2.getHP());
         Assert.assertEquals(810, 1400 - c秘银巨石像3.getHP());
     }
+
+    /*
+     * 精神狂乱无法被格挡闪避冰甲
+     */
+    @Test
+    public void test精神狂乱_格挡冰甲() {
+        SkillTestContext context = prepare(
+            50, 50, "占位符", "占位符+精神狂乱", "秘银巨石像+格挡10", "秘银巨石像", "秘银巨石像+冰甲10");
+        context.addToField(0, 0);
+        context.addToField(1, 0);
+        CardInfo c秘银巨石像1 = context.addToField(2, 1);
+        CardInfo c秘银巨石像2 = context.addToField(3, 1);
+        CardInfo c秘银巨石像3 = context.addToField(4, 1);
+        context.startGame();
+
+        random.addNextPicks(1); /* 精神狂乱 */
+        context.proceedOneRound();
+        Assert.assertEquals(660, 1550 - c秘银巨石像1.getHP());
+        Assert.assertEquals(0, 1400 - c秘银巨石像2.getHP());
+        Assert.assertEquals(660, 1550 - c秘银巨石像3.getHP());
+    }
+
+    /*
+     * 精神狂乱无法被格挡闪避冰甲
+     */
+    @Test
+    public void test精神狂乱_闪避() {
+        SkillTestContext context = prepare(
+            50, 50, "占位符", "占位符+精神狂乱", "秘银巨石像", "秘银巨石像", "秘银巨石像+闪避10");
+        context.addToField(0, 0);
+        context.addToField(1, 0);
+        CardInfo c秘银巨石像1 = context.addToField(2, 1);
+        CardInfo c秘银巨石像2 = context.addToField(3, 1);
+        CardInfo c秘银巨石像3 = context.addToField(4, 1);
+        context.startGame();
+
+        random.addNextPicks(1); /* 精神狂乱 */
+        context.proceedOneRound();
+        Assert.assertEquals(660, 1400 - c秘银巨石像1.getHP());
+        Assert.assertEquals(0, 1400 - c秘银巨石像2.getHP());
+        Assert.assertEquals(660, 1550 - c秘银巨石像3.getHP());
+    }
+
+    /*
+     * 被迷魂状态仍然可以发动精神狂乱
+     */
+    @Test
+    public void test精神狂乱_迷魂() {
+        SkillTestContext context = prepare(
+            50, 50, "占位符+迷魂10", "占位符+精神狂乱", "秘银巨石像", "秘银巨石像", "秘银巨石像+闪避10");
+        context.addToField(0, 0);
+        context.addToField(1, 0);
+        CardInfo c秘银巨石像1 = context.addToField(2, 1);
+        CardInfo c秘银巨石像2 = context.addToField(3, 1);
+        CardInfo c秘银巨石像3 = context.addToField(4, 1);
+        context.startGame();
+
+        random.addNextPicks(1).addNextNumbers(0); /* 迷魂10 */
+        random.addNextPicks(1); /* 精神狂乱 */
+        context.proceedOneRound();
+        Assert.assertEquals(660, 1400 - c秘银巨石像1.getHP());
+        Assert.assertEquals(0, 1400 - c秘银巨石像2.getHP());
+        Assert.assertEquals(660, 1550 - c秘银巨石像3.getHP());
+    }
 }
