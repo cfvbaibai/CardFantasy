@@ -32,6 +32,7 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2015-11-02: 修复<cf:c>恶灵之剑</cf:c>技能数据的错误，感谢<x>dl8o8lb</x>报告BUG</li>
                     <li>2015-11-01: 添加新卡<cf:c>恶魔猎人</cf:c>，不过效果是我YY的</li>
                     <li>2015-10-28: 添加新卡<cf:c>天蝎座</cf:c>，不过效果是我YY的： <ul>
                         <li>普通攻击打上来被冰甲削减到110，所以只能反弹55伤害</li>

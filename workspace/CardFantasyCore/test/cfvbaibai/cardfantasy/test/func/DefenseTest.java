@@ -401,6 +401,18 @@ public class DefenseTest extends SkillValidationTest {
         Assert.assertFalse(c占位符1.getStatus().containsStatus(CardStatusType.晕眩));
     }
 
+    @Test
+    public void test种族之盾_基本() {
+        SkillTestContext context = prepare(50, 50, "金属巨龙", "恶灵之剑");
+        context.addToField(0, 0);
+        CardInfo c恶灵之剑 = context.addToField(1, 1);
+        context.startGame();
+
+        random.addNextNumbers(1000); // 金属巨龙暴击失败
+        context.proceedOneRound();
+        Assert.assertEquals(328 /* 被地狱之盾挡住50%伤害 */, 1350 - c恶灵之剑.getHP());
+    }
+
     /**
      * 种族之盾总是按照伤害，而不是对方的攻击力算
      */
