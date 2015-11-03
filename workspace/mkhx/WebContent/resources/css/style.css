@@ -77,10 +77,6 @@ div.ui-collapsible-content {
     padding-right: 5px;
 }
 
-div#command a {
-    min-width: 75px;
-}
-
 div.recommended-url {
     padding: 5px;
     font-size: smaller;
