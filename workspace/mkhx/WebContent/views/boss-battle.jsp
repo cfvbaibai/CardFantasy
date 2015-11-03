@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
     <div id="boss-battle" class="main-page" data-role="page" data-title="魔神战" data-mini="true">
         <div id="boss-battle-content" data-role="content">
-            <div data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">
+            <div data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>设置阵容</h3>
                 <div>
-                    <fieldset class="select-2" data-theme="c" data-role="controlgroup" data-type="horizontal">
-                        <select data-theme="c" name="boss-name" class="boss-name" id="boss-name" data-mini="true" data-native-menu="true">
+                    <fieldset class="select-2" data-role="controlgroup" data-type="horizontal">
+                        <select name="boss-name" class="boss-name" id="boss-name" data-mini="true" data-native-menu="true">
                             <option value="强魔刃复仇女神">强魔刃复仇女神</option>
                             <option value="狙击复仇女神">狙击复仇女神</option>
                             <option value="送还复仇女神">送还复仇女神</option>
@@ -32,7 +32,7 @@
                             <option value="无回魂万蛛之后">无回魂万蛛之后</option>
                             <option value="网页版万蛛之后">网页版万蛛之后</option>
                         </select>
-                        <select data-theme="c" name="guard-type" id="guard-type" data-mini="true" data-native-menu="true">
+                        <select name="guard-type" id="guard-type" data-mini="true" data-native-menu="true">
                             <option value="0">无杂兵</option>
                             <option value="1">随机杂兵</option>
                             <option value="2" selected="selected">随机强杂兵</option>
@@ -42,8 +42,8 @@
                         <tr><td>技能: </td><td><div id="boss-skills" style="font-size: smaller"></div></td></tr>
                     </table>
                     <!-- +：10级， -->
-                    <fieldset class="select-4" data-theme="c" data-role="controlgroup" data-type="horizontal">
-                        <select data-theme="c" name="buff-kingdom" id="buff-kingdom" data-mini="true" data-native-menu="true">
+                    <fieldset class="select-4" data-role="controlgroup" data-type="horizontal">
+                        <select name="buff-kingdom" id="buff-kingdom" data-mini="true" data-native-menu="true">
                             <option value="0">王+0</option>
                             <option value="1">王+1</option>
                             <option value="2">王+2</option>
@@ -56,7 +56,7 @@
                             <option value="9">王+9</option>
                             <option value="10" selected="selected">王+10</option>
                         </select>
-                        <select data-theme="c" name="buff-savage" id="buff-savage" data-mini="true" data-native-menu="true">
+                        <select name="buff-savage" id="buff-savage" data-mini="true" data-native-menu="true">
                             <option value="0">蛮+0</option>
                             <option value="1">蛮+1</option>
                             <option value="2">蛮+2</option>
@@ -69,7 +69,7 @@
                             <option value="9">蛮+9</option>
                             <option value="10" selected="selected">蛮+10</option>
                         </select>
-                        <select data-theme="c" name="buff-forest" id="buff-forest" data-mini="true" data-native-menu="true">
+                        <select name="buff-forest" id="buff-forest" data-mini="true" data-native-menu="true">
                             <option value="0">森+0</option>
                             <option value="1">森+1</option>
                             <option value="2">森+2</option>
@@ -82,7 +82,7 @@
                             <option value="9">森+9</option>
                             <option value="10" selected="selected">森+10</option>
                         </select>
-                        <select data-theme="c" name="buff-hell" id="buff-hell" data-mini="true" data-native-menu="true">
+                        <select name="buff-hell" id="buff-hell" data-mini="true" data-native-menu="true">
                             <option value="0">地+0</option>
                             <option value="1">地+1</option>
                             <option value="2">地+2</option>
@@ -110,7 +110,7 @@
                         </div>
                     </div>
                     <div>
-                        <textarea data-theme="c" id="boss-guards" name="boss-guards" rows="5" cols="40" data-mini="true"></textarea>
+                        <textarea id="boss-guards" name="boss-guards" rows="5" cols="40" data-mini="true"></textarea>
                     </div>
                     -->
                     <div id="player" class="player ui-grid-c">
@@ -118,27 +118,27 @@
                             <span>玩家等级: </span>
                         </div>
                         <div class="ui-block-b">
-                            <input data-theme="c" type="number" id="heroLv" name="heroLv" data-mini="true" value="75" />
+                            <input type="number" id="heroLv" name="heroLv" data-mini="true" value="75" />
                         </div>
                         <div class="ui-block-c ui-block-label-number">
                             <span>玩家卡组: </span>
                         </div>
-                        <div data-theme="c" class="ui-block-d">
+                        <div class="ui-block-d">
                             <a id="build-boss-deck-button" data-role="button" data-rel="dialog" data-mini="true">组卡</a>
                         </div>
                     </div>
                     <div>
-                        <textarea data-theme="c" id="deck" name="deck" rows="5" cols="40" data-mini="true">堕落精灵*2,淬炼,绝杀</textarea>
+                        <textarea id="deck" name="deck" rows="5" cols="40" data-mini="true">堕落精灵*2,淬炼,绝杀</textarea>
                     </div>
                 </div>
             </div>
             <div id="boss-command" data-mini="true" data-role="controlgroup" data-type="horizontal" data-disabled="false">
-                <a id="play-boss-1-game-button" class="battle-button" data-role="button" data-mini="true" data-theme="c">文字战斗</a>
-                <a id="simulate-boss-1-game-button" class="battle-button" data-role="button" data-mini="true" data-theme="c">动画战斗</a>
-                <a id="play-boss-massive-game-button" class="battle-button" data-role="button" data-mini="true" data-theme="c">卡组强度分析</a>
-                <a data-role="button" data-mini="true" data-theme="c" data-type="bug" href="#">提BUG</a>
+                <a id="play-boss-1-game-button" class="battle-button" data-role="button" data-mini="true">文字战斗</a>
+                <a id="simulate-boss-1-game-button" class="battle-button" data-role="button" data-mini="true">动画战斗</a>
+                <a id="play-boss-massive-game-button" class="battle-button" data-role="button" data-mini="true">卡组强度分析</a>
+                <a data-role="button" data-mini="true" data-type="bug" href="#">提BUG</a>
             </div>
-            <div id="boss-battle-div" data-mini="true" data-role="collapsible" data-collapsed="false" data-theme="c" data-content-theme="d">
+            <div id="boss-battle-div" data-mini="true" data-role="collapsible" data-collapsed="false">
                 <h3>战斗记录</h3>
                 <div id="boss-battle-output" class="battle-output">没有战斗</div>
                 <div id="boss-battle-massive-output" style="display: none">

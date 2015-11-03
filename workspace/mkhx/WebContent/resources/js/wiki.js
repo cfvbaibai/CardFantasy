@@ -53,7 +53,7 @@ $(document).ready(function () {
     CardFantasy.Core.uploadToCnzzUrl('wiki');
     if ($(window).width() < 400) {
         //$('#wiki > div > div').addClass('ui-collapsible-content-collapsed');
-        //$(this).trigger('pagecreate');
+        //$(this).trigger('create');
     }
     $('#wiki-card-search').click(function() {
         var starFilter = $('#wiki-card-star-filter').val();

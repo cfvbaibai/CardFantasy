@@ -448,7 +448,7 @@ var getMap = function() {
         panel.find("a[href='#" + currentPage.id + "']").addClass('ui-disabled');
         $(currentPage).prepend(panel);
 
-        $(this).trigger('pagecreate');
+        $(this).trigger('create');
         console.log('div.main-page -> #' + currentPanelId + '.pageinit ends');
     });
 })();

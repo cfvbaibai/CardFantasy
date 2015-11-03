@@ -2,11 +2,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="cf" uri="/WEB-INF/CardFantasyTags.tld" %>
     <div id="news" class="main-page" data-role="page" data-category="main-page" data-title="魔卡幻想模拟器" data-mini="true">
-        <div class="dashboard" data-role="content" data-theme="c">
+        <div class="dashboard" data-role="content">
             <div>
                 <a href="#news-left-panel" data-role="button" data-mini="true" data-theme="b">点击左上角导航按钮开始使用模拟器</a>
             </div>
-            <div data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">
+            <div data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>公告</h3>
                 <ul>
                     <li><a href="#" data-type="bug">魔卡幻想模拟器贴吧</a>已成立，欢迎大家来提BUG、提需求、提供技能结算细节。</li>
@@ -16,7 +16,7 @@
                 </ul>
             </div>
             <%--
-            <div data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">
+            <div data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d">
                 <h3>技能细节问答，欢迎大家来补完技能细节，使模拟器更准确</h3>
                 <ul>
                     <c:forEach items="${questions}" var="question">
@@ -29,7 +29,7 @@
                 </ul>
             </div>
             --%>
-            <div data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">
+            <div data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>更新日志</h3>
                 <ul class="news-content">
                     <li>2015-11-02: 修复<cf:c>恶灵之剑</cf:c>技能数据的错误，感谢<x>dl8o8lb</x>报告BUG</li>

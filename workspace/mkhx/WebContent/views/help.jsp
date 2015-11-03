@@ -2,17 +2,17 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div id="help" class="main-page" data-role="page" data-title="帮助" data-mini="true">
     <div data-role="content">
-        <div data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">
+        <div data-role="collapsible" data-collapsed="false" data-mini="true">
             <h3>友情支持</h3>
             <div id="help">
-                <ul data-theme="c">
+                <ul>
                     <li><a href="<c:url value="/Wiki" />" target="_blank">魔卡幻想WIKI</a>
                     <li><a href="http://tieba.baidu.com/f?kw=%C4%A7%BF%A8%BB%C3%CF%EB" target="_blank">魔卡幻想贴吧</a></li>
                     <li><a data-type="bug">魔卡幻想模拟器贴吧</a></li>
                 </ul>
             </div>
         </div>
-        <div data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">
+        <div data-role="collapsible" data-collapsed="false" data-mini="true">
             <h3>输入胜利条件的方法</h3>
             <div id="help">
                 <table class="2d" style="width: 100%; max-width: 600px; text-align: left">
@@ -32,10 +32,10 @@
                 </table>
             </div>
         </div>
-        <div data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">
+        <div data-role="collapsible" data-collapsed="false" data-mini="true">
             <h3>手动输入卡组的方法</h3>
             <div id="help">
-                <ul data-theme="c">
+                <ul>
                     <li>在输入框里输入卡组符文的信息，卡牌与符文之间用逗号隔开，不要留多余的空格，例如： 金属巨龙,降临天使,冰封,永冻</li>
                     <li>默认卡牌等级10级，符文等级4级，想要改变等级的话，在名称后面添加"-数字"。例如10级金属就是"金属巨龙-10"。</li>
                     <li>重复添加同一个卡牌可以使用星号，例如"凤凰*5"表示5张10级凤凰，"凤凰-15*5"表示5张15级凤凰，注意符文不能重复。</li>

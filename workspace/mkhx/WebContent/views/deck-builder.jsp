@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
     <div id="deck-builder" data-role="page" data-title="组卡" data-mini="true">
-        <div data-role="header" data-theme="c" data-position="fixed">
+        <div data-role="header" data-position="fixed">
             <h3 style="text-align: center">组卡</h3>
         </div>
-        <div data-role="content" data-theme="c">
+        <div data-role="content">
             <div id="deck-chooser">
-                <div data-role="collapsible-set" data-theme="c" data-content-theme="d">
+                <div data-role="collapsible-set">
                     <div data-role="collapsible" data-mini="true" data-collapsed="false">
                         <h3>卡牌</h3>
                         <div>
@@ -68,7 +68,7 @@
                     </div>
                 </div>
             </div>
-            <div data-role="collapsible" data-mini="true" data-content-theme="d" data-collapsed="false">
+            <div data-role="collapsible" data-mini="true" data-collapsed="false">
                 <h3>牌组</h3>
                 <div id="deck-output" style="OVERFLOW: auto; height: 100px">
                     <a href="#a" data-role="button" data-mini="true" data-inline="true" data-icon="delete" data-iconpos="right">金属巨龙+吸血-15</a>
@@ -79,20 +79,20 @@
             </div>
             <div class="ui-grid-a" id="deck-builder-control-panel" data-mini="true">
                 <div class="ui-block-a">
-                    <a id="update-deck-button" data-role="button" data-mini="true" data-theme="c">确定</a>
+                    <a id="update-deck-button" data-role="button" data-mini="true">确定</a>
                 </div>
                 <div class="ui-block-b">
-                    <a data-role="button" data-mini="true" data-theme="c" href="javascript:history.go(-1)">取消</a>
+                    <a data-role="button" data-mini="true" href="javascript:history.go(-1)">取消</a>
                 </div>
             </div>
         </div>
     </div>
 
     <div data-role="page" data-title="设定符文属性" data-mini="true" id="new-rune-props" class="fixed-width">
-        <div data-role="header" data-theme="c" data-position="fixed">
+        <div data-role="header" data-position="fixed">
             <h3 style="text-align: center">设定符文属性</h3>
         </div>
-        <div data-role="content" data-theme="c">
+        <div data-role="content">
             <div class="entity-title">
                 <span class="entity-title-text"></span>
                 <span><a class="entity-detail-button" target="_blank" data-role="button" data-mini="true" data-inline="true">详情</a></span>
@@ -123,10 +123,10 @@
     </div>
     
     <div data-role="page" data-title="设定卡牌属性" data-mini="true" id="new-card-props" class="fixed-width">
-        <div data-role="header" data-theme="c" data-position="fixed">
+        <div data-role="header" data-position="fixed">
             <h3 style="text-align: center">设定卡牌属性</h3>
         </div>
-        <div data-role="content" data-theme="c">
+        <div data-role="content">
             <div class="entity-title">
                 <span class="entity-title-text"></span>
                 <span><a class="entity-detail-button" target="_blank" data-role="button" data-mini="true" data-inline="true">详情</a></span>

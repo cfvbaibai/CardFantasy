@@ -9,8 +9,8 @@
 <script src="<c:url value="/resources/lib/jquery-1.9.1/jquery.min.js" />"></script>
 <script src="<c:url value="/resources/lib/jquery-cookie-1.4.1/jquery.cookie.min.js" />"></script>
 
-<script src="<c:url value="/resources/lib/jquery-mobile-1.3.2/jquery.mobile-1.3.2.min.js" />"></script>
-<link rel="stylesheet" href="<c:url value="/resources/lib/jquery-mobile-1.3.2/jquery.mobile-1.3.2.min.css" />" />
+<script src="<c:url value="/resources/lib/jquery-mobile-1.4.5/jquery.mobile-1.4.5.min.js" />"></script>
+<link rel="stylesheet" href="<c:url value="/resources/lib/jquery-mobile-1.4.5/jquery.mobile-1.4.5.min.css" />" />
 
 <link href='<c:url value="/resources/img/logo.png" />' rel="bookmark" type="image/x-icon" /> 
 <link href='<c:url value="/resources/img/logo.png" />' rel="icon" type="image/x-icon" /> 

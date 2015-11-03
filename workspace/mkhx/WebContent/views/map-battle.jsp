@@ -1,14 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
     <div id="map-battle" class="main-page" data-role="page" data-title="地图战" data-mini="true">
         <div data-role="content">
-            <div data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">
+            <div data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>设置阵容</h3>
                 <div>
                     <table class="form">
                         <tr>
                             <td>地图</td>
                             <td>
-                                <select data-theme="c" name="map-id" id="map-id" class="map-select" data-mini="true" data-native-menu="false">
+                                <select name="map-id" id="map-id" class="map-select" data-mini="true" data-native-menu="false">
                                     <optgroup label="17图">
                                         <option value="17-1" selected="selected">17-1 异界之门</option>
                                         <option value="17-2">17-2 挽歌丘陵</option>
@@ -222,7 +222,7 @@
                         <tr>
                             <td>难度</td>
                             <td>
-                                <select data-theme="c" name="map-difficulty" id="map-difficulty" class="map-select" data-mini="true" data-native-menu="false">
+                                <select name="map-difficulty" id="map-difficulty" class="map-select" data-mini="true" data-native-menu="false">
                                     <option value="1" selected="selected">简单</option>
                                     <option value="2">普通</option>
                                     <option value="3">困难</option>
@@ -242,40 +242,40 @@
                             <span>玩家等级: </span>
                         </div>
                         <div class="ui-block-b">
-                            <input data-theme="c" type="number" id="map-hero-lv" name="map-hero-lv" data-mini="true" value="75" />
+                            <input type="number" id="map-hero-lv" name="map-hero-lv" data-mini="true" value="75" />
                         </div>
                         <div class="ui-block-c ui-block-label-number">
                             <span>玩家卡组: </span>
                         </div>
-                        <div data-theme="c" class="ui-block-d">
+                        <div class="ui-block-d">
                             <a id="build-map-deck-button" data-role="button" data-rel="dialog" data-mini="true">组卡</a>
                         </div>
                     </div>
                     <div>
-                        <textarea data-theme="c" id="map-deck" name="map-deck" rows="5" cols="40" data-mini="true">精灵法师-10</textarea>
+                        <textarea id="map-deck" name="map-deck" rows="5" cols="40" data-mini="true">精灵法师-10</textarea>
                     </div>
                 </div>
             </div>
             <div data-mini="true" data-role="controlgroup" data-type="horizontal" data-disabled="false">
-                <a id="play-map-1-game-button" class="battle-button" data-role="button" data-mini="true" data-theme="c">文字战斗</a>
-                <a id="simulate-map-1-game-button" class="battle-button" data-role="button" data-mini="true" data-theme="c">动画战斗</a>
-                <a id="play-map-massive-game-button" class="battle-button" data-role="button" data-mini="true" data-theme="c">连续千场</a>
-                <a data-role="button" data-mini="true" data-theme="c" data-type="bug" href="#">提BUG</a>
+                <a id="play-map-1-game-button" class="battle-button" data-role="button" data-mini="true">文字战斗</a>
+                <a id="simulate-map-1-game-button" class="battle-button" data-role="button" data-mini="true">动画战斗</a>
+                <a id="play-map-massive-game-button" class="battle-button" data-role="button" data-mini="true">连续千场</a>
+                <a data-role="button" data-mini="true" data-type="bug" href="#">提BUG</a>
             </div>
-            <div id="map-battle-div" data-mini="true" data-role="collapsible" data-collapsed="false" data-theme="c" data-content-theme="d">
+            <div id="map-battle-div" data-mini="true" data-role="collapsible" data-collapsed="false">
                 <h3>战斗记录</h3>
                 <div id="map-battle-output" class="battle-output">没有战斗</div>
             </div>
         </div>
     </div>
     <div data-role="page" data-title="查看关卡阵容" data-mini="true" id="view-map-deck-page" class="fixed-width">
-        <div data-role="header" data-theme="c" data-position="fixed">
+        <div data-role="header" data-position="fixed">
             <h3 style="text-align: center">查看关卡阵容</h3>
         </div>
-        <div data-role="content" data-theme="c">
+        <div data-role="content">
             <div id="map-deck-info" style="height: 200px; padding: 10px"></div>
             <div style="width: 100%">
-                <a data-role="button" data-mini="true" data-theme="c" href="javascript:history.go(-1)">返回</a>
+                <a data-role="button" data-mini="true" href="javascript:history.go(-1)">返回</a>
             </div>
         </div>
     </div>

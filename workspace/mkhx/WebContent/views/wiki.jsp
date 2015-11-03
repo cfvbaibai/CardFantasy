@@ -11,7 +11,7 @@
     <div id="wiki" class="main-page" data-role="page">
         <%@ include file="wiki-header.jsp" %>
         <div data-role="content">
-            <div id="wiki-tools" data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">
+            <div id="wiki-tools" data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>工具</h3>
                 <div class="wiki-result">
                     <div class="wiki-categories">
@@ -20,7 +20,7 @@
                     </div>
                 </div>
             </div>
-            <div id="wiki-card-pedia" data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">
+            <div id="wiki-card-pedia" data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>卡牌图鉴</h3>
                 <div id="wiki-card-pedia" class="wiki-result">
                     <div class="wiki-categories">
@@ -43,7 +43,7 @@
                     </div>
                 </div>
             </div>
-            <div id="wiki-rune-pedia" data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">
+            <div id="wiki-rune-pedia" data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>符文图鉴</h3>
                 <div id="wiki-rune-pedia" class="wiki-result">
                     <div class="wiki-categories">
@@ -66,7 +66,7 @@
                     </div>
                 </div>
             </div>
-            <div id="wiki-skill-pedia" data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">
+            <div id="wiki-skill-pedia" data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>技能图鉴</h3>
                 <div class="wiki-result">
                     <div class="wiki-categories">
@@ -80,7 +80,7 @@
                     </div>
                 </div>
             </div>
-            <div id="wiki-stage-pedia" data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">
+            <div id="wiki-stage-pedia" data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>地图图鉴</h3>
                 <div id="wiki-stage-pedia" class="wiki-result">
                     <div class="wiki-categories">
@@ -91,11 +91,11 @@
                     </div>
                 </div>
             </div>
-            <div id="wiki-search-box" data-role="collapsible" data-collapsed="false" data-mini="true" data-content-theme="d" data-theme="c">
+            <div id="wiki-search-box" data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>搜索卡牌</h3>
                 <div>
-                    <fieldset class="select-2" data-theme="c" data-role="controlgroup" data-type="horizontal">
-                        <select id="wiki-card-star-filter" data-theme="c" data-mini="true" data-native-menu="false">
+                    <fieldset class="select-2" data-role="controlgroup" data-type="horizontal">
+                        <select id="wiki-card-star-filter" data-mini="true" data-native-menu="false">
                             <option value="0">全部星数</option>
                             <option value="1">1星</option>
                             <option value="2">2星</option>
@@ -103,7 +103,7 @@
                             <option value="4">4星</option>
                             <option value="5" selected="selected">5星</option>
                         </select>
-                        <select id="wiki-card-race-filter" data-theme="c" data-mini="true" data-native-menu="false">
+                        <select id="wiki-card-race-filter" data-mini="true" data-native-menu="false">
                             <option value="0">全部种族</option>
                             <option value="1" selected="selected">王国</option>
                             <option value="2">森林</option>
@@ -117,19 +117,19 @@
                         <tr>
                             <td>技能</td>
                             <td>
-                                <input id="wiki-card-skill-type-filter" data-theme="c" data-mini="true" type="text"
+                                <input id="wiki-card-skill-type-filter" data-mini="true" type="text"
                                     placeholder="在这里输入技能搜索关键字，例如：复活" />
                             </td>
                         </tr>
                     </table>
                 </div>
-                <a data-role="button" id="wiki-card-search" data-theme="c" data-mini="true">搜索卡牌</a>
+                <a data-role="button" id="wiki-card-search" data-mini="true">搜索卡牌</a>
                 <div id="wiki-card-result" class="wiki-result" style="padding-top: 5px;">
                 </div>
             </div>
         </div>
         <!-- 
-        <div class="wiki-footer" data-role="footer" data-position="fixed" data-content-theme="d" data-theme="c">  
+        <div class="wiki-footer" data-role="footer" data-position="fixed">  
             <div data-role="navbar">
                 <ul>  
                     <li><a href="#wiki-card-pedia" target="_self">卡牌</a></li>  

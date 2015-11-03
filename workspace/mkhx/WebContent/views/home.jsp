@@ -11,11 +11,11 @@
 <body class="ui-mobile-viewport">
     <!-- This div is the shared left navigation panel -->
     <div style="display: none">
-        <div id="left-panel-template" data-role="panel" data-position="left" data-display="overlay">
+        <div id="left-panel-template" data-role="panel" data-position="left" data-position-fixed="true" data-display="overlay">
             <ul data-role="listview"></ul>
         </div>
 
-        <div id="header-template" class="header-template" data-role="header" data-theme="c" data-position="fixed">
+        <div id="header-template" class="header-template" data-role="header" data-position="fixed">
             <a class="nav-button left-nav-button" href="#" data-icon="bars" data-iconpos="left">导航</a>
             <h3 class="header-title"></h3>
             <a class="nav-button right-nav-button" href="<c:url value="/Wiki" />" target="_self" data-icon="grid" data-iconpos="right">WIKI</a>

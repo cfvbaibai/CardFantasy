@@ -3,30 +3,6 @@ CardFantasy.BattleAnimation = {};
 // OUTERMOST IIFE
 (function (BattleAnimation) {
 
-(function($) {
-    /*
-     * Changes the displayed text for a jquery mobile button.
-     * Encapsulates the idiosyncracies of how jquery re-arranges the DOM
-     * to display a button for either an <a> link or <input type="button">
-     */
-    $.fn.changeButtonText = function(newText) {
-        return this.each(function() {
-            var $this = $(this);
-            if( $this.is('a') ) {
-                $('span.ui-btn-text', $this).text(newText);
-                return;
-            }
-            if( $this.is('input') ) {
-                $this.val(newText);
-                // go up the tree
-                var ctx = $this.closest('.ui-btn');
-                $('span.ui-btn-text', ctx).text(newText);
-                return;
-            }
-        });
-    };
-})(jQuery);
-
 Kinetic.Text.prototype.center = function(rect) {
     this.setX(rect.getX() + rect.getWidth() / 2 - this.getWidth() / 2);
     return this;
@@ -2291,7 +2267,7 @@ var animater = null;
 var refreshPlayStatus = function() {
     var playButton = $('#play-button');
     if (animater.playing) {
-        playButton.changeButtonText('暂停');
+        playButton.text('暂停');
         if (animater.isSpeedIncreasible()) {
             $('#faster-button').removeClass('ui-disabled');
         } else {
@@ -2303,7 +2279,7 @@ var refreshPlayStatus = function() {
             $('#slower-button').addClass('ui-disabled');
         }
     } else {
-        playButton.changeButtonText('播放');
+        playButton.text('播放');
         $('#faster-button').addClass('ui-disabled');
         $('#slower-button').addClass('ui-disabled');
     }
@@ -2341,7 +2317,7 @@ BattleAnimation.slower = function() {
 
 BattleAnimation.showBattle = function(data) {
     animater.playing = true;
-    $('#play-button').changeButtonText('暂停');
+    $('#play-button').text('暂停');
     refreshPlayStatus();
     animater.setup(data);
     animater.dumpAnimations();
@@ -2355,12 +2331,12 @@ BattleAnimation.showSaveVideoPanel = function(show) {
         $('#video-content').select();
         $('#canvas-outline').hide('fast');
         $('#video-content-panel').show('fast');
-        $('#save-video-button').changeButtonText('动画');
+        $('#save-video-button').text('动画');
         $('#save-video-button').attr('href', 'javascript:CardFantasy.BattleAnimation.showSaveVideoPanel(false)');
     } else {
         $('#video-content-panel').hide('fast');
         $('#canvas-outline').show('fast');
-        $('#save-video-button').changeButtonText('保存');
+        $('#save-video-button').text('保存');
         $('#save-video-button').attr('href', 'javascript:CardFantasy.BattleAnimation.showSaveVideoPanel(true)');
     } 
 };
