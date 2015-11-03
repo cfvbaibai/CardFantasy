@@ -32,6 +32,7 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2015-11-03: 更新网站主题，同时修复一些手机上黑屏或滚动条失灵的BUG，感谢<x>_R_Y_O_</x>的提醒</li>
                     <li>2015-11-02: 修复<cf:c>恶灵之剑</cf:c>技能数据的错误，感谢<x>dl8o8lb</x>报告BUG</li>
                     <li>2015-11-01: 添加新卡<cf:c>恶魔猎人</cf:c>，不过效果是我YY的</li>
                     <li>2015-10-28: 添加新卡<cf:c>天蝎座</cf:c>，不过效果是我YY的： <ul>

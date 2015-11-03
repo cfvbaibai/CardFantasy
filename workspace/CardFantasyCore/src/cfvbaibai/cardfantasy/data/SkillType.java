@@ -60,7 +60,7 @@ public enum SkillType {
     本源守护("30936", 40),
     神圣守护("31123", 50),
 
-    狙击("30962", 25, SkillTag.抗免疫),
+    狙击("30962", 25, SkillTag.抗免疫, SkillTag.狙击),
     连环闪电("30959", 25, SkillTag.魔法),
     穿刺("30960", 15, SkillTag.抗免疫),
     格挡("30955", 20),
@@ -114,7 +114,7 @@ public enum SkillType {
     灵魂禁锢("", 0),
 
     回魂("31131", 1),
-    二重狙击("31130", 25, SkillTag.抗免疫),
+    二重狙击("31130", 25, SkillTag.抗免疫, SkillTag.狙击),
     迷魂("31129", 30, 5, SkillTag.控制),
     混乱领域("", 30, 5, SkillTag.控制),
     精神狂乱("", 0),
@@ -207,7 +207,7 @@ public enum SkillType {
     原始攻击调整("", 0, 1, SkillTag.永久, SkillTag.原始攻击加成, SkillTag.不可洗炼),
     原始体力调整("", 0, 1, SkillTag.永久, SkillTag.原始体力加成, SkillTag.不可洗炼),
 
-    魔神之刃("", 0, 1000, SkillTag.抗免疫, SkillTag.不可洗炼),
+    魔神之刃("", 0, 1000, SkillTag.抗免疫, SkillTag.不可洗炼, SkillTag.狙击),
     魔神之甲("", 0, 500, SkillTag.抗免疫, SkillTag.不可洗炼, SkillTag.反击),
     魔神之咒("", 0, 1000, SkillTag.抗免疫, SkillTag.不可洗炼),
     // 用于处理各技能中"对魔神无效"的描述

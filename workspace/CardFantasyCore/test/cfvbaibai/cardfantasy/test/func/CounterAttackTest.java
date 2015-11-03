@@ -194,4 +194,29 @@ public class CounterAttackTest extends SkillValidationTest {
         Assert.assertEquals(810, 5000 - c占位符1.getHP());
         Assert.assertEquals(810, 5000 - c占位符2.getHP());
     }
+
+    @Test
+    public void test物理反弹_魔神() {
+        SkillTestContext context = prepare(50, 50, "网页版毁灭之神", "秘银巨石像+物理反弹");
+        CardInfo c网页版毁灭之神 = context.addToField(0, 0);
+        CardInfo c秘银巨石像 = context.addToField(1, 1);
+        context.startGame();
+
+        random.addNextPicks(0); /* 摧毁 */
+        context.proceedOneRound();
+        Assert.assertEquals(1200 / 2 /* 物理反弹造成一半伤害反弹 */, 5040000 - c网页版毁灭之神.getHP());
+        Assert.assertEquals(1200, 1550 - c秘银巨石像.getHP());
+    }
+
+    @Test
+    public void test物理反弹_狙击() {
+        SkillTestContext context = prepare(50, 50, "占位符+狙击10", "占位符+物理反弹");
+        CardInfo c占位符1 = context.addToField(0, 0);
+        CardInfo c占位符2 = context.addToField(1, 1);
+        context.startGame();
+
+        context.proceedOneRound();
+        Assert.assertEquals(250 / 2 /* 物理反弹造成狙击的一半伤害被反弹 */, 5000 - c占位符1.getHP());
+        Assert.assertEquals(250, 5000 - c占位符2.getHP());
+    }
 }

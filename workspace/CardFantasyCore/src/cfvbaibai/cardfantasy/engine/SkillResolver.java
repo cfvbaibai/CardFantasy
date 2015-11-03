@@ -256,6 +256,13 @@ public class SkillResolver {
 
     public void resolveCounterAttackSkills(CardInfo attacker, CardInfo defender, Skill attackSkill,
             OnAttackBlockingResult result, OnDamagedResult damagedResult) throws HeroDieSignal {
+        if (isSnipeSkill(attackSkill)) {
+            for (SkillUseInfo skillUseInfo : defender.getNormalUsableSkills()) {
+                if (skillUseInfo.getType() == SkillType.物理反弹) {
+                    PhysicalReflection.apply(skillUseInfo.getSkill(), this, attacker, defender, result.getDamage());
+                }
+            }
+        }
         if (isPhysicalAttackSkill(attackSkill) && damagedResult.actualDamage > 0) {
             for (SkillUseInfo skillUseInfo : defender.getNormalUsableSkills()) {
                 if (skillUseInfo.getType() == SkillType.反击) {
@@ -300,6 +307,10 @@ public class SkillResolver {
                 }
             }
         }
+    }
+
+    private boolean isSnipeSkill(Skill attackSkill) {
+        return attackSkill != null && attackSkill.getType().containsTag(SkillTag.狙击);
     }
 
     public OnAttackBlockingResult resolveHealBlockingSkills(EntityInfo healer, CardInfo healee, Skill cardSkill) {
