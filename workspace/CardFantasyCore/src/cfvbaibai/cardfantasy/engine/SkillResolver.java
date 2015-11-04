@@ -259,7 +259,7 @@ public class SkillResolver {
         if (isSnipeSkill(attackSkill)) {
             for (SkillUseInfo skillUseInfo : defender.getNormalUsableSkills()) {
                 if (skillUseInfo.getType() == SkillType.物理反弹) {
-                    PhysicalReflection.apply(skillUseInfo.getSkill(), this, attacker, defender, result.getDamage());
+                    PhysicalReflection.apply(skillUseInfo.getSkill(), this, attacker, defender, damagedResult.actualDamage);
                 }
             }
         }
@@ -270,7 +270,7 @@ public class SkillResolver {
                 } else if (skillUseInfo.getType() == SkillType.盾刺) {
                     Spike.apply(skillUseInfo.getSkill(), this, attacker, defender, attackSkill, result.getDamage());
                 } else if (skillUseInfo.getType() == SkillType.物理反弹) {
-                    PhysicalReflection.apply(skillUseInfo.getSkill(), this, attacker, defender, result.getDamage());
+                    PhysicalReflection.apply(skillUseInfo.getSkill(), this, attacker, defender, damagedResult.actualDamage);
                 } else if (skillUseInfo.getType() == SkillType.魔神之甲) {
                     Spike.apply(skillUseInfo.getSkill(), this, attacker, defender, attackSkill, result.getDamage());
                 } else if (skillUseInfo.getType() == SkillType.燃烧) {

@@ -219,4 +219,17 @@ public class CounterAttackTest extends SkillValidationTest {
         Assert.assertEquals(250 / 2 /* 物理反弹造成狙击的一半伤害被反弹 */, 5000 - c占位符1.getHP());
         Assert.assertEquals(250, 5000 - c占位符2.getHP());
     }
+    
+    @Test
+    public void test物理反弹_死亡() {
+        SkillTestContext context = prepare(50, 50, "秘银巨石像", "占位符+物理反弹");
+        CardInfo c秘银巨石像 = context.addToField(0, 0);
+        CardInfo c占位符 = context.addToField(1, 1);
+        c占位符.setBasicHP(200);
+        context.startGame();
+
+        context.proceedOneRound();
+        Assert.assertEquals(200 / 2 /* 物理反弹造成一半伤害反弹 */, 1400 - c秘银巨石像.getHP());
+        Assert.assertTrue(c占位符.isDead());
+    }
 }

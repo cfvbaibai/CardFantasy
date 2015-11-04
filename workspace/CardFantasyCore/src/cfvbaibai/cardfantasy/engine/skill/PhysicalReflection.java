@@ -15,17 +15,14 @@ import cfvbaibai.cardfantasy.engine.HeroDieSignal;
  */
 public final class PhysicalReflection {
     public static void apply(Skill cardSkill, SkillResolver resolver, CardInfo attacker, CardInfo defender,
-            int attackDamage) throws HeroDieSignal {
-        if (attackDamage <= 0) {
+            int actualDamage) throws HeroDieSignal {
+        if (actualDamage <= 0) {
             return;
         }
         if (attacker == null) {
             return;
         }
-        if (defender.isDead()) {
-            return;
-        }
-        int damage = attackDamage / 2;
+        int damage = actualDamage / 2;
         GameUI ui = resolver.getStage().getUI();
         ui.useSkill(defender, attacker, cardSkill, true);
         if (!resolver.resolverCounterAttackBlockSkill(cardSkill, attacker, defender)) {
