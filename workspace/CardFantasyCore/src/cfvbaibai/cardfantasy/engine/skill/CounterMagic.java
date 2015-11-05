@@ -2,11 +2,10 @@ package cfvbaibai.cardfantasy.engine.skill;
 
 import cfvbaibai.cardfantasy.GameUI;
 import cfvbaibai.cardfantasy.data.Skill;
-import cfvbaibai.cardfantasy.data.SkillTag;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.EntityInfo;
-import cfvbaibai.cardfantasy.engine.SkillResolver;
 import cfvbaibai.cardfantasy.engine.HeroDieSignal;
+import cfvbaibai.cardfantasy.engine.SkillResolver;
 
 public final class CounterMagic {
 
@@ -15,7 +14,7 @@ public final class CounterMagic {
         if (attacker == null) {
             return false;
         }
-        if (attackSkill.getType().containsTag(SkillTag.魔法)) {
+        if (resolver.isMagicalSkill(attackSkill)) {
             int damage = cardSkill.getImpact();
             GameUI ui = resolver.getStage().getUI();
             ui.useSkill(defender, attacker, cardSkill, true);

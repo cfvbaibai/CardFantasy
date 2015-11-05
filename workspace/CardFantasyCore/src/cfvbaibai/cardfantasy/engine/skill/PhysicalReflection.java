@@ -6,13 +6,6 @@ import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.SkillResolver;
 import cfvbaibai.cardfantasy.engine.HeroDieSignal;
 
-/**
- * Defensive CardSkill
- * Give 20*level damage to attacker.
- * Unavoidable.
- * 
- * Cannot be blocked by Immue or Dodge.
- */
 public final class PhysicalReflection {
     public static void apply(Skill cardSkill, SkillResolver resolver, CardInfo attacker, CardInfo defender,
             int actualDamage) throws HeroDieSignal {

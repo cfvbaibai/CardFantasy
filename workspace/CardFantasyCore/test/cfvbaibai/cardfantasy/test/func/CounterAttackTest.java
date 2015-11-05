@@ -216,7 +216,7 @@ public class CounterAttackTest extends SkillValidationTest {
         context.startGame();
 
         context.proceedOneRound();
-        Assert.assertEquals(250 / 2 /* 物理反弹造成狙击的一半伤害被反弹 */, 5000 - c占位符1.getHP());
+        Assert.assertEquals(0 /* 物理反弹不能反弹狙击 */, 5000 - c占位符1.getHP());
         Assert.assertEquals(250, 5000 - c占位符2.getHP());
     }
     
@@ -231,5 +231,21 @@ public class CounterAttackTest extends SkillValidationTest {
         context.proceedOneRound();
         Assert.assertEquals(200 / 2 /* 物理反弹造成一半伤害反弹 */, 1400 - c秘银巨石像.getHP());
         Assert.assertTrue(c占位符.isDead());
+    }
+
+    /*
+     * 物理反弹无法反弹燕返
+     */
+    @Test
+    public void test物理反弹_燕返() {
+        SkillTestContext context = prepare(50, 50, "秘银巨石像+物理反弹", "铸造大师+燕返");
+        CardInfo c秘银巨石像 = context.addToField(0, 0);
+        CardInfo c铸造大师 = context.addToField(1, 1);
+        c铸造大师.setBasicHP(200);
+        context.startGame();
+
+        context.proceedOneRound();
+        Assert.assertEquals(1 /* 不屈 */, c铸造大师.getHP());
+        Assert.assertEquals(560 * 2/* 燕返 */, 1550 - c秘银巨石像.getHP());
     }
 }
