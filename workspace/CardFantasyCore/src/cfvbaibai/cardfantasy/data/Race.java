@@ -7,7 +7,8 @@ public enum Race {
     SAVAGE("蛮荒"),
     HELL("地狱"),
     BOSS("魔神"),
-    MOE("萌货");
+    MOE("萌货"),
+    ITEM("物品");
     
     private String displayName;
     Race(String displayName) {
@@ -32,7 +33,11 @@ public enum Race {
         }
         if ("萌货".equals(displayName)) {
             return MOE;
+        }if ("物品".equals(displayName))
+        {
+        	return ITEM;
         }
+        
         throw new IllegalArgumentException("Invalid Race: " + displayName);
     }
 
