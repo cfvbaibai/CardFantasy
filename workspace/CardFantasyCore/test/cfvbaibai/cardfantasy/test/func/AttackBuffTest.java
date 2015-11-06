@@ -564,6 +564,17 @@ public class AttackBuffTest extends SkillValidationTest {
     }
 
     @Test
+    public void test斩杀_种族之盾() {
+        SkillTestContext context = prepare(50, 50, "秘银巨石像+斩杀", "占位符+蛮荒之盾10");
+        context.addToField(0, 0);
+        CardInfo c占位符 = context.addToField(1, 1).setBasicHP(1000);
+        context.startGame();
+
+        context.proceedOneRound();
+        Assert.assertEquals(1000 * 35 / 100 /* 斩杀伤害被种族之盾减少 */, 1000 - c占位符.getHP());
+    }
+
+    @Test
     public void test神兵召唤_基础() {
         SkillTestContext context = prepare(50, 50, "占位符+神兵召唤", "占位符");
         CardInfo c占位符1 = context.addToField(0, 0);

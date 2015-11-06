@@ -1365,7 +1365,7 @@ var Animater = function() {
         }
         if (skill.indexOf('军团') == 0 ||
             skill.indexOf('原始') == 0 ||
-            skill.indexOf('守护') == skill.length - 2 ||
+            skill.indexOf('守护') == skill.length - 2 && skill != '骑士守护' ||
             skill.indexOf('之力') == skill.length - 2 ||
             this.msgIgnoredSkills.indexOf(skill) >= 0) {
             return;
@@ -1416,6 +1416,9 @@ var Animater = function() {
                     attacker, [ attacker ], settings.skillDuration);
         } else if (skill == '魔甲') {
             this.flyImage({ fileName: 'magicshield.png', width: 48, height: 48 },
+                    attacker, [ attacker ], settings.skillDuration);
+        } else if (skill == '骑士守护') {
+            this.flyImage({ fileName: 'knightguardian.png', width: 48, height: 48 },
                     attacker, [ attacker ], settings.skillDuration);
         } else if (skill == '燃烧' || skill == '烈火焚神') {
             this.flyImage({ fileName: 'burn.png', width: 48, height: 48 },

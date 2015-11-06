@@ -585,4 +585,128 @@ public class DefenseTest extends SkillValidationTest {
         Assert.assertEquals(100 /* 水流护甲面对燕返无效 */, context.getPlayer(1).getHP());
         Assert.assertEquals(275 * 2, 1550 - c秘银巨石像1.getHP());
     }
+    
+    @Test
+    public void test骑士守护_基本() {
+        SkillTestContext context = prepare(50, 50, "秘银巨石像", "占位符+骑士守护");
+        context.addToField(0, 0);
+        CardInfo c占位符 = context.addToField(1, 1);
+        context.startGame();
+
+        context.proceedOneRound();
+        Assert.assertEquals(660 / 2 /* 骑士守护减半伤害 */, 5000 - c占位符.getHP());
+    }
+    
+    /**
+     * 骑士守护无法防御斩杀
+     */
+    @Test
+    public void test骑士守护_斩杀() {
+        SkillTestContext context = prepare(50, 50, "秘银巨石像+斩杀", "占位符+骑士守护");
+        context.addToField(0, 0);
+        CardInfo c占位符 = context.addToField(1, 1);
+        c占位符.setBasicHP(1000);
+        context.startGame();
+
+        context.proceedOneRound();
+        Assert.assertTrue(c占位符.isDead());
+    }
+    
+    /**
+     * 骑士守护能挡住横扫
+     */
+    @Test
+    public void test骑士守护_横扫() {
+        SkillTestContext context = prepare(50, 50, "秘银巨石像+横扫", "占位符", "占位符+骑士守护");
+        context.addToField(0, 0);
+        CardInfo c占位符1 = context.addToField(1, 1);
+        CardInfo c占位符2 = context.addToField(2, 1);
+        context.startGame();
+
+        context.proceedOneRound();
+        Assert.assertEquals(810, 5000 - c占位符1.getHP());
+        Assert.assertEquals(810 / 2 /* 骑士守护减半伤害 */, 5000 - c占位符2.getHP());
+    }
+
+    @Test
+    public void test骑士守护_魔法() {
+        SkillTestContext context = prepare(50, 50, "占位符+火球2", "占位符+冰弹2", "占位符+落雷2", "占位符+血炼2", "占位符+骑士守护");
+        context.addToField(0, 0);
+        context.addToField(1, 0);
+        context.addToField(2, 0);
+        context.addToField(3, 0);
+        CardInfo c占位符 = context.addToField(4, 1);
+        context.startGame();
+
+        random.addNextPicks(0).addNextNumbers(0); // 火球
+        random.addNextPicks(0).addNextNumbers(0); // 冰弹
+        random.addNextPicks(0).addNextNumbers(0); // 落雷
+        random.addNextPicks(0); // 血炼
+
+        context.proceedOneRound();
+        int damage = 25 /* 火球2减半 */ + 20 /* 冰弹2减半 */ + 25 /* 落雷2减半 */ + 20 /* 血炼2减半 */;
+        Assert.assertEquals(damage, 5000 - c占位符.getHP());
+    }
+
+    @Test
+    public void test骑士守护_魔法_鲜血盛宴() {
+        SkillTestContext context = prepare(50, 50, "占位符+鲜血盛宴10", "占位符+骑士守护*2");
+        context.addToField(0, 0);
+        CardInfo c占位符2 = context.addToField(1, 1);
+        CardInfo c占位符3 = context.addToField(2, 1);
+        context.startGame();
+
+        random.addNextPicks(0, 1); // 血炼
+
+        context.proceedOneRound();
+        int damage = 200 / 2 /* 鲜血盛宴被挡住一半伤害 */;
+        Assert.assertEquals(damage, 5000 - c占位符2.getHP());
+        Assert.assertEquals(damage, 5000 - c占位符3.getHP());
+    }
+
+    @Test
+    public void test骑士守护_魔法_烈焰风暴() {
+        SkillTestContext context = prepare(50, 50, "占位符+烈焰风暴10", "占位符+骑士守护*2");
+        context.addToField(0, 0);
+        CardInfo c占位符2 = context.addToField(1, 1);
+        CardInfo c占位符3 = context.addToField(2, 1);
+        context.startGame();
+
+        random.addNextPicks(0, 1).addNextNumbers(0, 0);   // 烈焰风暴10
+        context.proceedOneRound();
+        int damage = 250 / 2 /* 烈焰风暴被挡住一半伤害 */;
+        Assert.assertEquals(damage, 5000 - c占位符2.getHP());
+        Assert.assertEquals(damage, 5000 - c占位符3.getHP());
+    }
+
+    /**
+     * 骑士守护无法防御精神狂乱
+     */
+    @Test
+    public void test骑士守护_精神狂乱() {
+        SkillTestContext context = prepare(50, 50, "占位符+精神狂乱", "秘银巨石像", "占位符+骑士守护");
+        context.addToField(0, 0);
+        context.addToField(1, 1);
+        CardInfo c占位符2 = context.addToField(2, 1);
+        context.startGame();
+
+        random.addNextPicks(0); // 精神狂乱
+        context.proceedOneRound();
+        Assert.assertEquals(660, 5000 - c占位符2.getHP());
+    }
+    
+    /**
+     * 骑士守护无法减少燕返伤害
+     */
+    @Test
+    public void test骑士守护_燕返() {
+        SkillTestContext context = prepare(50, 50, "秘银巨石像+骑士守护", "魔剑士+燕返");
+        CardInfo c秘银巨石像 = context.addToField(0, 0);
+        CardInfo c魔剑士 = context.addToField(1, 1);
+        c魔剑士.setBasicHP(2);
+        context.startGame();
+
+        context.proceedOneRound();
+        Assert.assertEquals(275 * 2 /* 燕返伤害无法被减免 */, 1550 - c秘银巨石像.getHP());
+    }
 }

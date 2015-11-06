@@ -26,11 +26,11 @@ public final class BloodPaint {
                 }
                 continue;
             }
-            damage = onAttackBlockingResult.getDamage(); 
-            ui.attackCard(attacker, victim, cardSkill, damage);
-            OnDamagedResult onDamagedResult = resolver.applyDamage(victim, cardSkill, damage);
-            ui.healCard(attacker, attacker, cardSkill, damage);
-            resolver.applyDamage(attacker, cardSkill, -damage);
+            int actualDamage = onAttackBlockingResult.getDamage(); 
+            ui.attackCard(attacker, victim, cardSkill, actualDamage);
+            OnDamagedResult onDamagedResult = resolver.applyDamage(victim, cardSkill, actualDamage);
+            ui.healCard(attacker, attacker, cardSkill, actualDamage);
+            resolver.applyDamage(attacker, cardSkill, -actualDamage);
             resolver.resolveDeathSkills(attacker, victim, cardSkill, onDamagedResult);
         }
     }

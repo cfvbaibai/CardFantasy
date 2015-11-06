@@ -26,8 +26,12 @@ public class SkillResolver {
         return this.stage;
     }
 
-    private boolean isPhysicalAttackSkill(Skill skill) {
+    public boolean isPhysicalAttackSkill(Skill skill) {
         return skill == null || skill.getType().containsTag(SkillTag.物理攻击);
+    }
+    
+    public boolean isMagicalSkill(Skill skill) {
+        return skill != null && skill.getType().containsTag(SkillTag.魔法);
     }
 
     public void removeStatus(CardInfo card, CardStatusType statusType) {
@@ -256,13 +260,6 @@ public class SkillResolver {
 
     public void resolveCounterAttackSkills(CardInfo attacker, CardInfo defender, Skill attackSkill,
             OnAttackBlockingResult result, OnDamagedResult damagedResult) throws HeroDieSignal {
-        if (isSnipeSkill(attackSkill)) {
-            for (SkillUseInfo skillUseInfo : defender.getNormalUsableSkills()) {
-                if (skillUseInfo.getType() == SkillType.物理反弹) {
-                    PhysicalReflection.apply(skillUseInfo.getSkill(), this, attacker, defender, damagedResult.actualDamage);
-                }
-            }
-        }
         if (isPhysicalAttackSkill(attackSkill) && damagedResult.actualDamage > 0) {
             for (SkillUseInfo skillUseInfo : defender.getNormalUsableSkills()) {
                 if (skillUseInfo.getType() == SkillType.反击) {
@@ -307,10 +304,6 @@ public class SkillResolver {
                 }
             }
         }
-    }
-
-    private boolean isSnipeSkill(Skill attackSkill) {
-        return attackSkill != null && attackSkill.getType().containsTag(SkillTag.狙击);
     }
 
     public OnAttackBlockingResult resolveHealBlockingSkills(EntityInfo healer, CardInfo healee, Skill cardSkill) {
@@ -385,30 +378,9 @@ public class SkillResolver {
                         }
                     }
                 }
-                for (SkillUseInfo blockSkillUseInfo : defender.getNormalUsableSkills()) {
-                    if (blockSkillUseInfo.getType() == SkillType.王国之盾) {
-                        result.setDamage(RacialShield.apply(blockSkillUseInfo.getSkill(), this, cardAttacker,
-                                defender, defender, result.getDamage(), Race.HELL));
-                    }
-                    if (blockSkillUseInfo.getType() == SkillType.森林之盾) {
-                        result.setDamage(RacialShield.apply(blockSkillUseInfo.getSkill(), this, cardAttacker,
-                                defender, defender, result.getDamage(), Race.SAVAGE));
-                    }
-                    if (blockSkillUseInfo.getType() == SkillType.蛮荒之盾) {
-                        result.setDamage(RacialShield.apply(blockSkillUseInfo.getSkill(), this, cardAttacker,
-                                defender, defender, result.getDamage(), Race.KINGDOM));
-                    }
-                    if (blockSkillUseInfo.getType() == SkillType.地狱之盾) {
-                        result.setDamage(RacialShield.apply(blockSkillUseInfo.getSkill(), this, cardAttacker,
-                                defender, defender, result.getDamage(), Race.FOREST));
-                    }
-                    if (blockSkillUseInfo.getType() == SkillType.格挡) {
-                        result.setDamage(Block.apply(blockSkillUseInfo.getSkill(), this, cardAttacker, defender,
-                                defender, result.getDamage()));
-                    }
-                    if (!result.isAttackable()) {
-                        return result;
-                    }
+                resolveShieldBlockingSkills(cardAttacker, defender, true, result);
+                if (!result.isAttackable()) {
+                    return result;
                 }
 
                 for (SkillUseInfo blockSkillUseInfo : defender.getNormalUsableSkills()) {
@@ -445,6 +417,13 @@ public class SkillResolver {
                     if (!result.isAttackable()) {
                         return result;
                     }
+                }
+            }
+
+            for (SkillUseInfo blockSkillUseInfo : defender.getNormalUsableSkills()) {
+                if (blockSkillUseInfo.getType() == SkillType.骑士守护) {
+                    result.setDamage(KnightGuardian.apply(this, blockSkillUseInfo.getSkill(), attacker, defender,
+                            attackSkill, result.getDamage()));
                 }
             }
 
@@ -536,6 +515,9 @@ public class SkillResolver {
                     if (blockSkillUseInfo.getType() == SkillType.魔甲) {
                         result.setDamage(MagicShield.apply(this, blockSkillUseInfo.getSkill(), attacker, defender,
                                 attackSkill, result.getDamage()));
+                    } else if (blockSkillUseInfo.getType() == SkillType.骑士守护) {
+                        result.setDamage(KnightGuardian.apply(this, blockSkillUseInfo.getSkill(), attacker, defender,
+                                attackSkill, result.getDamage()));
                     }
                     if (!result.isAttackable()) {
                         return result;
@@ -555,6 +537,34 @@ public class SkillResolver {
         }
 
         return result;
+    }
+
+    public void resolveShieldBlockingSkills(CardInfo cardAttacker, CardInfo defender, boolean includeBlocking,
+            OnAttackBlockingResult result) {
+        for (SkillUseInfo blockSkillUseInfo : defender.getNormalUsableSkills()) {
+            if (blockSkillUseInfo.getType() == SkillType.王国之盾) {
+                result.setDamage(RacialShield.apply(blockSkillUseInfo.getSkill(), this, cardAttacker,
+                        defender, defender, result.getDamage(), Race.HELL));
+            }
+            if (blockSkillUseInfo.getType() == SkillType.森林之盾) {
+                result.setDamage(RacialShield.apply(blockSkillUseInfo.getSkill(), this, cardAttacker,
+                        defender, defender, result.getDamage(), Race.SAVAGE));
+            }
+            if (blockSkillUseInfo.getType() == SkillType.蛮荒之盾) {
+                result.setDamage(RacialShield.apply(blockSkillUseInfo.getSkill(), this, cardAttacker,
+                        defender, defender, result.getDamage(), Race.KINGDOM));
+            }
+            if (blockSkillUseInfo.getType() == SkillType.地狱之盾) {
+                result.setDamage(RacialShield.apply(blockSkillUseInfo.getSkill(), this, cardAttacker,
+                        defender, defender, result.getDamage(), Race.FOREST));
+            }
+            if (includeBlocking) {
+                if (blockSkillUseInfo.getType() == SkillType.格挡) {
+                    result.setDamage(Block.apply(blockSkillUseInfo.getSkill(), this, cardAttacker, defender,
+                            defender, result.getDamage()));
+                }
+            }
+        }
     }
 
     /**
@@ -827,7 +837,7 @@ public class SkillResolver {
         result.originalDamage += damage;
         result.actualDamage += actualDamage;
 
-        if (skill != null && skill.getType().containsTag(SkillTag.魔法) && damage > 0) {
+        if (isMagicalSkill(skill) && damage > 0) {
             // 治疗法术不受魔法印记影响
             List<CardStatusItem> magicMarkStatusItems = card.getStatus().getStatusOf(CardStatusType.魔印);
             for (CardStatusItem item : magicMarkStatusItems) {
