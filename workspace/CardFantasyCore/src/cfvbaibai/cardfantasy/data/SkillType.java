@@ -213,6 +213,7 @@ public enum SkillType {
     魔神之咒("", 0, 1000, SkillTag.抗免疫, SkillTag.不可洗炼),
     // 用于处理各技能中"对魔神无效"的描述
     无效("", 0, 0, SkillTag.不可洗炼),
+    物品技能("",0),
 
     关小黑屋("", 0, 1, SkillTag.即死),
     吐槽("", 0, 1, SkillTag.控制),
