@@ -33,6 +33,33 @@
                         <input type="number" id="lilith-remaining-hp" data-mini="true" value="300000" />
                     </div>
                 </div>
+                <div>
+                    <input type="checkbox" id="enable-custom-lilith-guards" data-mini="true" />
+                    <label for="enable-custom-lilith-guards">自定义小兵</label>
+                </div>
+                <div id="custom-lilith-guards">
+                    <table class="avg-group-4">
+                        <tr>
+                            <td>攻击BUFF%</td>
+                            <td><input type="number" id="custom-lilith-guards-atbuff" data-mini="true" value="100" /></td>
+                            <td>体力BUFF%</td>
+                            <td><input type="number" id="custom-lilith-guards-hpbuff" data-mini="true" value="100" /></td>
+                        </tr>
+                    </table>
+                    <!-- 
+                    <div class="ui-grid-c">
+                        <div class="ui-block-a ui-block-label-number">攻击BUFF%</div>
+                        <div class="ui-block-b">
+                            <input type="number" id="custom-lilith-guards-atbuff" data-mini="true" value="100" />
+                        </div>
+                        <div class="ui-block-c ui-block-label-number">体力BUFF%</div>
+                        <div class="ui-block-d">
+                            <input type="number" id="custom-lilith-guards-hpbuff" data-mini="true" value="100" />
+                        </div>
+                    </div>
+                     -->
+                    <textarea id="custom-lilith-guards-deck" rows="5" cols="40" data-mini="true">岩壁-4,死域-4,石林-4,飞岩-4,毁灭之龙-10,巫妖领主-10,黑甲铁骑士+战意5-15,震源岩蟾-10,熊人武士+不动-15,牛头人酋长-10,战斗猛犸象-10,金属巨龙-10,战神+不动-15</textarea>
+                </div>
                 <div id="lilith-player" class="player ui-grid-c">
                     <div class="ui-block-a ui-block-label-number">
                         <span>玩家等级: </span>

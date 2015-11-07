@@ -174,8 +174,18 @@ table.avg-group-2 {
     width: 100%;
 }
 
-table.avg-group-2 tr td {
+table.avg-group-2 > tbody > tr > td,
+table.avg-group-2 > tr > td {
     width: 50%;
+}
+
+table.avg-group-4 {
+    width: 100%;
+}
+
+table.avg-group-4 > tbody > tr > td,
+table.avg-group-4 > tr > td {
+    width: 25%;
 }
 
 table.line-separated {
