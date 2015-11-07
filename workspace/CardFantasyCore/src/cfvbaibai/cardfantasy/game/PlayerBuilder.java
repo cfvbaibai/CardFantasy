@@ -3,9 +3,7 @@ package cfvbaibai.cardfantasy.game;
 import java.util.List;
 
 import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
-import cfvbaibai.cardfantasy.data.Card;
 import cfvbaibai.cardfantasy.data.PlayerInfo;
-import cfvbaibai.cardfantasy.data.Race;
 import cfvbaibai.cardfantasy.data.Skill;
 
 public class PlayerBuilder {
@@ -32,15 +30,8 @@ public class PlayerBuilder {
         if (lsi == null) {
             throw new CardFantasyRuntimeException("Invalid Lilith ID: " + bossId);
         }
-        DeckStartupInfo dsi = lsi.getDeckStartupInfo();
-        PlayerInfo playerInfo = new PlayerInfo(false, bossId, 9999999, lsi.getCardBuffs(), 100, dsi.getRunes(), dsi.getCards());
-        if (!withGuards) {
-            for (Card card : playerInfo.getCards()) {
-                if (card.getRace() != Race.BOSS) {
-                    playerInfo.removeCard(card);
-                }
-            }
-        }
+        List<Skill> buffs = PvlEngine.getCardBuffs(lsi.getCardAtBuff(), lsi.getCardHpBuff());
+        PlayerInfo playerInfo = PlayerBuilder.build(false, bossId, 9999999, buffs, 100, lsi.getDeckDescs(withGuards));
         return playerInfo;
     }
 }

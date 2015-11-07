@@ -1,11 +1,15 @@
 package cfvbaibai.cardfantasy.game;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
 import cfvbaibai.cardfantasy.GameUI;
+import cfvbaibai.cardfantasy.data.PlayerCardBuffSkill;
 import cfvbaibai.cardfantasy.data.PlayerInfo;
 import cfvbaibai.cardfantasy.data.Race;
+import cfvbaibai.cardfantasy.data.Skill;
+import cfvbaibai.cardfantasy.data.SkillType;
 import cfvbaibai.cardfantasy.engine.BattleEngine;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.GameResult;
@@ -22,6 +26,13 @@ public class PvlEngine extends GameEngine {
     public PvlEngine(GameUI ui, Rule rule, int timeout) {
         super(ui, rule);
         this.timeout = timeout;
+    }
+    
+    public static List<Skill> getCardBuffs(int cardAtBuff, int cardHpBuff) {
+        List<Skill> result = new ArrayList<Skill>();
+        result.add(new PlayerCardBuffSkill(SkillType.原始攻击调整, cardAtBuff));
+        result.add(new PlayerCardBuffSkill(SkillType.原始体力调整, cardHpBuff));
+        return result;
     }
 
     public PvlGameResult rushBoss(PlayerInfo lilith, int initialHP, PlayerInfo player) {

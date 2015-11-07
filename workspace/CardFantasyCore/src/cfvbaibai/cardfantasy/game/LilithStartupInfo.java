@@ -1,30 +1,38 @@
 package cfvbaibai.cardfantasy.game;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import cfvbaibai.cardfantasy.data.Skill;
 
 public class LilithStartupInfo {
-    private DeckStartupInfo dsi;
+    private String deckDescsText;
     private String bossId;
-    private List<Skill> cardBuffs;
-    public LilithStartupInfo(String bossId, String deckDescs, List<Skill> cardBuffs) {
+    private int cardAtBuff;
+    private int cardHpBuff;
+    public LilithStartupInfo(String bossId, String deckDescsText, int cardAtBuff, int cardHpBuff) {
         this.bossId = bossId;
-        this.dsi = DeckBuilder.multiBuild(deckDescs);
-        if (cardBuffs == null) {
-            this.cardBuffs = new ArrayList<Skill>();
-        } else {
-            this.cardBuffs = new ArrayList<Skill>(cardBuffs);
-        }
-    }
-    public List<Skill> getCardBuffs() {
-        return new ArrayList<Skill>(this.cardBuffs);
-    }
-    public DeckStartupInfo getDeckStartupInfo() {
-        return this.dsi;
+        this.deckDescsText = deckDescsText;
+        this.cardAtBuff = cardAtBuff;
+        this.cardHpBuff = cardHpBuff;
     }
     public String getBossId() {
         return this.bossId;
+    }
+    public String[] getDeckDescs(boolean withGuards) {
+        String[] parts = this.deckDescsText.split(",");
+        if (withGuards) {
+            return parts;
+        }
+        if (parts.length == 0) {
+            return new String[0];
+        }
+        return new String[] { parts[0] };
+    }
+    public int getCardAtBuff() {
+        return cardAtBuff;
+    }
+    public int getCardHpBuff() {
+        return cardHpBuff;
+    }
+    public String getDeckDescsText(boolean withGuards) {
+        String[] deckDescs = this.getDeckDescs(withGuards);
+        return String.join(",", deckDescs);
     }
 }

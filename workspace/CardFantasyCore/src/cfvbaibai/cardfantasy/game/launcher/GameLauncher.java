@@ -23,6 +23,7 @@ import cfvbaibai.cardfantasy.engine.Rule;
 import cfvbaibai.cardfantasy.game.DeckBuilder;
 import cfvbaibai.cardfantasy.game.GameResultStat;
 import cfvbaibai.cardfantasy.game.LilithDataStore;
+import cfvbaibai.cardfantasy.game.LilithStartupInfo;
 import cfvbaibai.cardfantasy.game.MapStages;
 import cfvbaibai.cardfantasy.game.PlayerBuilder;
 import cfvbaibai.cardfantasy.game.PveEngine;
@@ -109,12 +110,14 @@ public final class GameLauncher {
         }
         return player2Buffs;
     }
-    
-    public static LilithGameResult playLilithGame(String playerDeck, String lilithName, int heroLv,
+
+    public static LilithGameResult playCustomLilithGame(
+            String playerDeck, String lilithDeck, int playerHeroLv, int lilithCardAtBuff, int lilithCardHpBuff,
             int gameType, int remainingGuard, int remainingHp, String eventCardNames, int gameCount, GameUI ui) {
-        PlayerInfo player1 = PlayerBuilder.buildLilith(LilithDataStore.loadDefault(), lilithName, gameType == 0);
+        List<Skill> player1Buffs = PvlEngine.getCardBuffs(lilithCardAtBuff, lilithCardHpBuff);
+        PlayerInfo player1 = PlayerBuilder.build(false, "莉莉丝", lilithDeck, 9999999, player1Buffs, 100); 
         List<Skill> player2Buffs = buildBuffsForLilithEvents(eventCardNames);
-        PlayerInfo player2 = PlayerBuilder.build(true, "玩家", playerDeck, heroLv, player2Buffs, 100);
+        PlayerInfo player2 = PlayerBuilder.build(true, "玩家", playerDeck, playerHeroLv, player2Buffs, 100);
         String validationResult = getDeckValidationResult(null, player2);
         OneDimensionDataStat statBattleCount = new OneDimensionDataStat();
         OneDimensionDataStat statDamageToLilith = new OneDimensionDataStat();
@@ -148,7 +151,15 @@ public final class GameLauncher {
         result.setValidationResult(validationResult);
         return result;
     }
-    
+
+    public static LilithGameResult playLilithGame(String playerDeck, String lilithName, int heroLv,
+            int gameType, int remainingGuard, int remainingHp, String eventCardNames, int gameCount, GameUI ui) {
+        LilithStartupInfo lsi = LilithDataStore.loadDefault().getStartupInfo(lilithName);
+        String lilithDeck = lsi.getDeckDescsText(gameType == 0);
+        return playCustomLilithGame(playerDeck, lilithDeck, heroLv, lsi.getCardAtBuff(), lsi.getCardHpBuff(),
+                gameType, remainingGuard, remainingHp, eventCardNames, gameCount, ui);
+    }
+
     public static MapGameResult playMapGame(String playerDeck, String mapName, int heroLv, int gameCount, GameUI ui) {
         PveEngine engine = new PveEngine(ui, Rule.getDefault(), MapStages.loadDefault());
         PlayerInfo player = PlayerBuilder.build(true, "玩家", playerDeck, heroLv);

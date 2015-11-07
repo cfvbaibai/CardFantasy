@@ -51,6 +51,16 @@ public final class GameLauncherFacade {
         String textResult = gson.toJson(result);
         return textResult;
     }
+    
+    public static String playCustomLilithGame(
+            String playerDeck, String lilithDeck, int heroLv, int lilithCardAtBuff, int lilithCardHpBuff,
+            int gameType, int remainingGuard, int remainingHp, String eventCardNames, int gameCount) {
+        LilithGameResult result = GameLauncher.playCustomLilithGame(
+                playerDeck, lilithDeck, heroLv, lilithCardAtBuff, lilithCardHpBuff, gameType, remainingGuard,
+                remainingHp, eventCardNames, gameCount, new DummyGameUI());
+            String textResult = gson.toJson(result);
+            return textResult;
+    }
 }
 
 class TrivialArenaGameResult {
