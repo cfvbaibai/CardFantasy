@@ -32,6 +32,7 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2015-11-08: 修复【骑士守护】计算残血法术伤害的一个问题，感谢<x>idleidol</x>报告BUG</li>
                     <li>2015-11-07: 现在【莉莉丝战】可以自定义小兵了</li>
                     <li>2015-11-05: <ul>
                         <li>添加新卡<cf:c>骑士王血魂</cf:c>，感谢<x>idleidol</x>, <x>1000127900</x>提供情报</li>

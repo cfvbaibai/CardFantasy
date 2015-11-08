@@ -709,4 +709,41 @@ public class DefenseTest extends SkillValidationTest {
         context.proceedOneRound();
         Assert.assertEquals(275 * 2 /* 燕返伤害无法被减免 */, 1550 - c秘银巨石像.getHP());
     }
+    
+    @Test
+    public void test骑士守护_物理攻击_致死() {
+        SkillTestContext context = prepare(50, 50, "秘银巨石像", "残血王国小兵+骑士守护");
+        context.addToField(0, 0);
+        CardInfo c残血王国小兵 = context.addToField(1, 1).setBasicHP(10);
+        context.startGame();
+
+        context.proceedOneRound();
+        Assert.assertTrue(c残血王国小兵.isDead()); // 骑士守护无法防御物理致死攻击
+    }
+
+    @Test
+    public void test骑士守护_魔法攻击_致死() {
+        SkillTestContext context = prepare(50, 50, "占位符+血炼10*2", "残血王国小兵+骑士守护");
+        context.addToField(0, 0);
+        context.addToField(1, 0);
+        CardInfo c残血王国小兵 = context.addToField(2, 1).setBasicHP(7);
+        context.startGame();
+
+        random.addNextPicks(0, 0); // 血炼10
+        context.proceedOneRound();
+        Assert.assertEquals(1 /* 法术致死伤害按剩余血量一半算 */, c残血王国小兵.getHP());
+        Assert.assertFalse(c残血王国小兵.isDead());
+    }
+    
+    @Test
+    public void test骑士守护_魔法攻击_杀死() {
+        SkillTestContext context = prepare(50, 50, "占位符+血炼10", "残血王国小兵+骑士守护");
+        context.addToField(0, 0);
+        CardInfo c残血王国小兵 = context.addToField(1, 1).setBasicHP(1);
+        context.startGame();
+
+        random.addNextPicks(0); // 血炼10
+        context.proceedOneRound();
+        Assert.assertTrue(c残血王国小兵.isDead());
+    }
 }
