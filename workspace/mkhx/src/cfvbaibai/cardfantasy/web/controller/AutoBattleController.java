@@ -305,13 +305,13 @@ public class AutoBattleController {
             this.userActionRecorder.addAction(new UserAction(new Date(), request.getRemoteAddr(), "Play Lilith 1Match Game", logMessage));
             LilithGameResult result = null;
             if (enableCustomGuards) {
-                result = GameLauncher.playLilithGame(
-                        deck, lilithName, heroLv, gameType, 
-                        targetRemainingGuardCount, remainingHP, eventCardNames, 1, ui);
-            } else {
                 result = GameLauncher.playCustomLilithGame(
                         deck, lilithName + "," + customGuards, heroLv, customGuardsAtBuff, customGuardsHpBuff,
                         gameType, targetRemainingGuardCount, remainingHP, eventCardNames, 1, ui);
+            } else {
+                result = GameLauncher.playLilithGame(
+                        deck, lilithName, heroLv, gameType, 
+                        targetRemainingGuardCount, remainingHP, eventCardNames, 1, ui);
             }
 
             writer.print(Utils.getCurrentDateTime() + "<br />");
@@ -376,10 +376,10 @@ public class AutoBattleController {
 
             PlayerInfo player1 = null;
             if (enableCustomGuards) {
-                player1 = PlayerBuilder.buildLilith(lilithDataStore, lilithName, gameType == 0);
-            } else {
                 List<Skill> player1Buffs = PvlEngine.getCardBuffs(customGuardsAtBuff, customGuardsHpBuff);
                 player1 = PlayerBuilder.build(false, "莉莉丝", lilithName + "," + customGuards, 9999999, player1Buffs, 100);
+            } else {
+                player1 = PlayerBuilder.buildLilith(lilithDataStore, lilithName, gameType == 0);
             }
             List<Skill> player2Buffs = buildBuffsForLilithEvents(eventCardNames);
             PlayerInfo player2 = PlayerBuilder.build(true, "玩家", deck, heroLv, player2Buffs, 100);
@@ -466,13 +466,13 @@ public class AutoBattleController {
                 LilithGameResult result = null;
                 GameUI ui = new DummyGameUI();
                 if (enableCustomGuards) {
-                    result = GameLauncher.playLilithGame(
-                            deck, lilithName, heroLv, gameType, 
-                            targetRemainingGuardCount, remainingHP, eventCardNames, 1, ui);
-                } else {
                     result = GameLauncher.playCustomLilithGame(
                             deck, lilithName + "," + customGuards, heroLv, customGuardsAtBuff, customGuardsHpBuff,
-                            gameType, targetRemainingGuardCount, remainingHP, eventCardNames, 1, ui);
+                            gameType, targetRemainingGuardCount, remainingHP, eventCardNames, count, ui);
+                } else {
+                    result = GameLauncher.playLilithGame(
+                            deck, lilithName, heroLv, gameType, 
+                            targetRemainingGuardCount, remainingHP, eventCardNames, count, ui);
                 }
                 writer.print("<div style='color: red'>" + result.getValidationResult() + "</div>");
                 writer.append("<table>");

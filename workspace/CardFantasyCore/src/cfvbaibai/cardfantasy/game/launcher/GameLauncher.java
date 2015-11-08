@@ -147,7 +147,7 @@ public final class GameLauncher {
         result.setAvgBattleCount(statBattleCount.getAverage());
         result.setAvgDamageToLilith(statDamageToLilith.getAverage());
         result.setCvBattleCount(statBattleCount.getCoefficientOfVariation());
-        result.setCvDamageToLilith(statBattleCount.getCoefficientOfVariation());
+        result.setCvDamageToLilith(statDamageToLilith.getCoefficientOfVariation());
         result.setValidationResult(validationResult);
         return result;
     }
