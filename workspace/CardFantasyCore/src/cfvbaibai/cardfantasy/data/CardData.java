@@ -131,4 +131,8 @@ public class CardData {
     public List <CardSkill> getSkills() {
         return this.cardSkills;
     }
+
+    public boolean isMaterial() {
+        return this.getIncrAT() == 0 && this.getBaseCost() == 99 && this.getSkills().size() <= 1;
+    }
 }

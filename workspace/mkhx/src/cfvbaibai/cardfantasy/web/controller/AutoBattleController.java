@@ -588,7 +588,9 @@ public class AutoBattleController {
             List<EntityDataRuntimeInfo> entities = new ArrayList<EntityDataRuntimeInfo>();
             List<CardData> cards = store.getAllCards();
             for (CardData card : cards) {
-                entities.add(new EntityDataRuntimeInfo(card));
+                if (!card.isMaterial()) {
+                    entities.add(new EntityDataRuntimeInfo(card));
+                }
             }
             RuneData[] runes = RuneData.values();
             for (RuneData rune : runes) {
