@@ -718,6 +718,11 @@ public class SkillResolver {
         for (SkillUseInfo skillUseInfo : attacker.getNormalUsableSkills()) {
            if (skillUseInfo.getType() == SkillType.英雄杀手) {
                HeroKiller.apply(this, skillUseInfo, attacker, defenderPlayer);
+           } else if (skillUseInfo.getType() == SkillType.厨具召唤) {
+               WeaponSummon.apply(this, skillUseInfo, attacker, defenderPlayer, 1, 500);
+           } else if (skillUseInfo.getType() == SkillType.神兵召唤 ||
+                   skillUseInfo.getType() == SkillType.觉醒神兵召唤 && attacker.isAwaken(Race.SAVAGE)) {
+               WeaponSummon.apply(this, skillUseInfo, attacker, defenderPlayer, 500, 1700);
            }
         }
     }
