@@ -701,6 +701,13 @@ div.float-footer {
     margin-top: 10px;
 }
 
+audio {
+    position: fixed;
+    right: 0;
+    top: 55px;
+    z-index: 9999;
+}
+
 @media (max-width: 400px) {
     #wiki-tools {
         display: none;

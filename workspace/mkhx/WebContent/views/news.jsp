@@ -33,6 +33,10 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2015-11-14: <ul>
+                        <li>修复组卡器中【详情】按钮有时候通往不存在页面的BUG</li>
+                        <li>去除组卡器中的素材卡，感谢<x>吹水不啰嗦</x>的建议</li>
+                    </ul></li>
                     <li>2015-11-08: <ul>
                         <li>修复【骑士守护】计算残血法术伤害的一个问题，感谢<x>idleidol</x>报告BUG</li>
                         <li>修复最近更新自定义小兵后【莉莉丝战】统计数据显示的问题，感谢<x>单曲调调</x>报告BUG</li>

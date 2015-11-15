@@ -304,7 +304,7 @@ public class AutoBattleController {
             logger.info("PlayLilith1MatchGame: " + logMessage);
             this.userActionRecorder.addAction(new UserAction(new Date(), request.getRemoteAddr(), "Play Lilith 1Match Game", logMessage));
             LilithGameResult result = null;
-            if (enableCustomGuards) {
+            if (enableCustomGuards && gameType == 0) {
                 result = GameLauncher.playCustomLilithGame(
                         deck, lilithName + "," + customGuards, heroLv, customGuardsAtBuff, customGuardsHpBuff,
                         gameType, targetRemainingGuardCount, remainingHP, eventCardNames, 1, ui);
@@ -375,7 +375,7 @@ public class AutoBattleController {
             this.userActionRecorder.addAction(new UserAction(new Date(), request.getRemoteAddr(), "Simulate Lilith 1Match Game", logMessage));
 
             PlayerInfo player1 = null;
-            if (enableCustomGuards) {
+            if (enableCustomGuards && gameType == 0) {
                 List<Skill> player1Buffs = PvlEngine.getCardBuffs(customGuardsAtBuff, customGuardsHpBuff);
                 player1 = PlayerBuilder.build(false, "莉莉丝", lilithName + "," + customGuards, 9999999, player1Buffs, 100);
             } else {
@@ -465,7 +465,7 @@ public class AutoBattleController {
             try {
                 LilithGameResult result = null;
                 GameUI ui = new DummyGameUI();
-                if (enableCustomGuards) {
+                if (enableCustomGuards && gameType == 0) {
                     result = GameLauncher.playCustomLilithGame(
                             deck, lilithName + "," + customGuards, heroLv, customGuardsAtBuff, customGuardsHpBuff,
                             gameType, targetRemainingGuardCount, remainingHP, eventCardNames, count, ui);
