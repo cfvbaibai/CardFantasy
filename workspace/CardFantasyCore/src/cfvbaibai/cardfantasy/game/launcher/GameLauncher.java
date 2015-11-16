@@ -2,6 +2,11 @@ package cfvbaibai.cardfantasy.game.launcher;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 
 import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
 import cfvbaibai.cardfantasy.CardFantasyUserRuntimeException;
@@ -35,6 +40,11 @@ import cfvbaibai.cardfantasy.game.VictoryCondition;
 
 public final class GameLauncher {
     private GameLauncher() {
+    }
+
+    public static ExecutorService getExecutorService() {
+        int availableProcessorCount = Runtime.getRuntime().availableProcessors();
+        return Executors.newFixedThreadPool(availableProcessorCount);
     }
 
     private static String getDeckValidationResult(PlayerInfo player1, PlayerInfo player2) {
@@ -75,8 +85,28 @@ public final class GameLauncher {
     public static ArenaGameResult playArenaGame(GameSetup setup) {
         GameStartupInfo gsi = initGame(setup);
         GameResultStat stat = new GameResultStat(gsi.getP1(), gsi.getP2(), gsi.getRule());
+
+        class ArenaGameBattle implements Callable<GameResult> {
+            @Override
+            public GameResult call() {
+                return BattleEngine.play1v1(setup.getUi(), gsi.getRule(), gsi.getP1(), gsi.getP2());
+            }
+        }
+
+        List<ArenaGameBattle> battles = new ArrayList<>(setup.getGameCount());
         for (int i = 0; i < setup.getGameCount(); ++i) {
-            stat.addResult(BattleEngine.play1v1(setup.getUi(), gsi.getRule(), gsi.getP1(), gsi.getP2()));
+            battles.add(new ArenaGameBattle());
+        }
+        ExecutorService execSvc = getExecutorService();
+        try {
+            List<Future<GameResult>> results = execSvc.invokeAll(battles);
+            for (Future<GameResult> futureResult : results) {
+                stat.addResult(futureResult.get());
+            }
+        } catch (InterruptedException | ExecutionException e) {
+            throw new CardFantasyRuntimeException("计算被打断或发生错误!", e);
+        } finally {
+            execSvc.shutdown();
         }
 
         ArenaGameResult result = new ArenaGameResult();
@@ -132,17 +162,39 @@ public final class GameLauncher {
             battleEngine.playGame();
             return null;
         }
-        for (int i = 0; i < gameCount; ++i) {
-            PvlEngine engine = new PvlEngine(ui, Rule.getDefault());
-            PvlGameResult pvlGameResult = null;
-            if (gameType == 0) {
-                pvlGameResult = engine.clearGuards(player1, player2, remainingGuard);
-            } else {
-                pvlGameResult = engine.rushBoss(player1, remainingHp, player2);
+        
+        class LilithGameBattle implements Callable<PvlGameResult> {
+            @Override
+            public PvlGameResult call() {
+                PvlEngine engine = new PvlEngine(ui, Rule.getDefault());
+                PvlGameResult pvlGameResult = null;
+                if (gameType == 0) {
+                    pvlGameResult = engine.clearGuards(player1, player2, remainingGuard);
+                } else {
+                    pvlGameResult = engine.rushBoss(player1, remainingHp, player2);
+                }
+                return pvlGameResult;
             }
-            statBattleCount.addData(pvlGameResult.getBattleCount());
-            statDamageToLilith.addData(pvlGameResult.getAvgDamageToLilith());
         }
+        ExecutorService execSvc = getExecutorService();
+        List<LilithGameBattle> battles = new ArrayList<>();
+        for (int i = 0; i < gameCount - 1; ++i) {
+            battles.add(new LilithGameBattle());
+        }
+        List<Future<PvlGameResult>> results;
+        try {
+            results = execSvc.invokeAll(battles);
+            for (Future<PvlGameResult> futureResult : results) {
+                PvlGameResult result = futureResult.get();
+                statBattleCount.addData(result.getBattleCount());
+                statDamageToLilith.addData(result.getAvgDamageToLilith());
+            }
+        } catch (InterruptedException | ExecutionException e) {
+            throw new CardFantasyRuntimeException("计算被打断或发生错误!", e);
+        } finally {
+            execSvc.shutdown();
+        }
+
         LilithGameResult result = new LilithGameResult();
         result.setAvgBattleCount(statBattleCount.getAverage());
         result.setAvgDamageToLilith(statDamageToLilith.getAverage());
@@ -207,16 +259,36 @@ public final class GameLauncher {
 
         GameResult lastDetail = trialResult;
         if (gameCount > 0) {
+            class BossGameBattle implements Callable<GameResult> {
+                @Override
+                public GameResult call() {
+                    return BattleEngine.play1v1(setup.getUi(), gsi.getRule(), gsi.getP1(), gsi.getP2());
+                }
+            }
+            ExecutorService execSvc = getExecutorService();
+            List<BossGameBattle> battles = new ArrayList<>();
             for (int i = 0; i < gameCount - 1; ++i) {
-                lastDetail = BattleEngine.play1v1(setup.getUi(), gsi.getRule(), gsi.getP1(), gsi.getP2());
-                if (lastDetail.getCause() == GameEndCause.战斗超时) {
-                    ++timeoutCount;
+                battles.add(new BossGameBattle());
+            }
+            List<Future<GameResult>> results;
+            try {
+                results = execSvc.invokeAll(battles);
+                for (Future<GameResult> futureResult : results) {
+                    GameResult result = futureResult.get();
+                    if (result.getCause() == GameEndCause.战斗超时) {
+                        ++timeoutCount;
+                    }
+                    int damageToBoss = result.getDamageToBoss();
+                    if (damageToBoss < 0) {
+                        damageToBoss = 0;
+                    }
+                    stat.addData(damageToBoss);
+                    lastDetail = result;
                 }
-                int damageToBoss = lastDetail.getDamageToBoss();
-                if (damageToBoss < 0) {
-                    damageToBoss = 0;
-                }
-                stat.addData(damageToBoss);
+            } catch (InterruptedException | ExecutionException e) {
+                throw new CardFantasyRuntimeException("计算被打断或发生错误!", e);
+            } finally {
+                execSvc.shutdown();
             }
         }
 

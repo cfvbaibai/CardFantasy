@@ -33,6 +33,7 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2015-11-16: 优化战斗引擎在多CPU环境里的性能</li>
                     <li>2015-11-14: <ul>
                         <li>修复组卡器中【详情】按钮有时候通往不存在页面的BUG</li>
                         <li>去除组卡器中的素材卡，感谢<x>吹水不啰嗦</x>的建议</li>
