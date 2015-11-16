@@ -12,7 +12,10 @@ public final class KnightGuardian {
         if (!resolver.isPhysicalAttackSkill(attackSkill) && !resolver.isMagicalSkill(attackSkill)) {
             return originalDamage;
         }
-        int actualDamage = originalDamage / 2;
+        int actualDamage = (originalDamage + 1) / 2;
+        if (resolver.isMagicalSkill(attackSkill) && defender.getHP() < actualDamage) {
+            actualDamage = (defender.getHP() + 1) / 2;
+        }
         GameUI ui = resolver.getStage().getUI();
         ui.useSkill(defender, attacker, skill, true);
         ui.blockDamage(defender, attacker, defender, skill, originalDamage, actualDamage);

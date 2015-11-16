@@ -287,6 +287,7 @@ var playLilithGame = function(count) {
     var deck = $('#lilith-player-deck').val().trim();
     var heroLv = $('#lilith-player-heroLv').val();
     var lilithName = $('#lilith-name').val();
+    var enableCustomGuards = $('#enable-custom-lilith-guards').prop('checked') || false;
     var gameType = $('#lilith-game-type').val();
     var targetRemainingGuardCount = $('#lilith-target-remaining-guard-count').val();
     var remainingHP = $('#lilith-remaining-hp').val();
@@ -300,6 +301,10 @@ var playLilithGame = function(count) {
         tc: targetRemainingGuardCount,
         rhp: remainingHP,
         ec: eventCards,
+        ecg: enableCustomGuards,
+        cg: $('#custom-lilith-guards-deck').val(),
+        cgab: $('#custom-lilith-guards-atbuff').val(),
+        cghb: $('#custom-lilith-guards-hpbuff').val()
     };
 
     $.cookie('lilith-battle', JSON.stringify(postData), { expires: 365 });
@@ -470,9 +475,6 @@ $(document).ready(function() {
     $('x').each(function (i, x) {
         x.innerHTML = '<a href="http://tieba.baidu.com/home/main?un=' + encodeURI(x.innerHTML) + '&ie=utf-8&fr=pb" target="_blank">' + x.innerHTML + '</a>';
     });
-    $('c').each(function (i, c) {
-        c.innerHTML = '【<a href="Wiki/Cards/' + encodeURI(c.innerHTML) + '" target="_blank">' + c.innerHTML + '</a>】';
-    })
     $('#news').trigger('create');
 });
 
@@ -557,6 +559,15 @@ $(document)
             $('#lilith-remaining-hp').val(250000);
         }
     };
+    var updateCustomLilithGuardsVisibility = function () {
+        var checked = $('#enable-custom-lilith-guards').prop('checked');
+        if (checked) {
+            $('#custom-lilith-guards').show('fast');
+        } else {
+            $('#custom-lilith-guards').hide('fast');
+        }
+    };
+
     $('#lilith-game-type').change(function() { 
         var gameType = $(this).children('option:selected').val(); 
         if (gameType == 0) {
@@ -568,18 +579,24 @@ $(document)
         }
     });
     $('#lilith-name').change(updateRemainingHp);
+    $('#enable-custom-lilith-guards').change(updateCustomLilithGuardsVisibility);
     var dataText = $.cookie('lilith-battle');
     if (dataText) {
         var data = JSON.parse(dataText);
         if (data.deck) { $('#lilith-player-deck').val(data.deck); }
         if (data.hlv) { $('#lilith-player-heroLv').val(data.hlv); }
         if (data.bn) { $('#lilith-name').val(data.bn).selectmenu('refresh'); }
+        if (data.ecg) { $('#enable-custom-lilith-guards').prop('checked', true).checkboxradio('refresh'); }
+        if (data.cg || data.cg === '') { $('#custom-lilith-guards-deck').val(data.cg); }
+        if (data.cgab) { $('#custom-lilith-guards-atbuff').val(data.cgab); }
+        if (data.cghb) { $('#custom-lilith-guards-hpbuff').val(data.cghb); }
         updateRemainingHp();
     }
     $('#play-lilith-1-game-button').attr('href', 'javascript:CardFantasy.Core.playLilithGame(1);');
     $('#simulate-lilith-1-game-button').attr('href', 'javascript:CardFantasy.Core.playLilithGame(-1);');
     $('#play-lilith-massive-game-button').attr('href', 'javascript:CardFantasy.Core.playLilithGame(100);');
     $('#lilith-config-1').hide();
+    updateCustomLilithGuardsVisibility();
 })
 .on("pageinit", "#arena-battle", function(event) {
     var dataText = $.cookie('arena-battle');

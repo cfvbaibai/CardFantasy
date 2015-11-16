@@ -59,7 +59,7 @@ public class HomeController {
     private class LilithDataComparator implements Comparator<LilithStartupInfo> {
         @Override
         public int compare(LilithStartupInfo a, LilithStartupInfo b) {
-            return a.getCardBuffs().get(0).getLevel() - b.getCardBuffs().get(0).getLevel();
+            return a.getCardAtBuff() - b.getCardAtBuff();
         }
     }
     

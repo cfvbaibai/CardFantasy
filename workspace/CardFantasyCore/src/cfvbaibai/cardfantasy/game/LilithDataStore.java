@@ -12,9 +12,6 @@ import org.dom4j.Node;
 import org.dom4j.io.SAXReader;
 
 import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
-import cfvbaibai.cardfantasy.data.PlayerCardBuffSkill;
-import cfvbaibai.cardfantasy.data.Skill;
-import cfvbaibai.cardfantasy.data.SkillType;
 
 public class LilithDataStore {
     private Map<String, LilithStartupInfo> lilithStartupInfos;
@@ -35,14 +32,11 @@ public class LilithDataStore {
             @SuppressWarnings("unchecked")
             List<Node> lilithNodes = doc.selectNodes("/Liliths/Lilith");
             for (Node lilithNode : lilithNodes) {
-                List<Skill> cardBuffs = new ArrayList<Skill>();
                 int adjAT = Integer.parseInt(lilithNode.valueOf("@adjAT"));
                 int adjHP = Integer.parseInt(lilithNode.valueOf("@adjHP"));
-                cardBuffs.add(new PlayerCardBuffSkill(SkillType.原始攻击调整, adjAT));
-                cardBuffs.add(new PlayerCardBuffSkill(SkillType.原始体力调整, adjHP));
                 String id = lilithNode.valueOf("@id");
                 String deckDescs = lilithNode.getText();
-                LilithStartupInfo lsi = new LilithStartupInfo(id, deckDescs, cardBuffs);
+                LilithStartupInfo lsi = new LilithStartupInfo(id, deckDescs, adjAT, adjHP);
                 store.add(lsi);
             }
             return store;

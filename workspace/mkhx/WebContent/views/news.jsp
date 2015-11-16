@@ -11,6 +11,7 @@
                 <ul>
                     <li><a href="#" data-type="bug">魔卡幻想模拟器贴吧</a>已成立，欢迎大家来提BUG、提需求、提供技能结算细节。</li>
                     <li><a href="<c:url value="/Wiki" />" target="_blank">魔卡幻想WIKI</a>子站点正式成立，作为新的尝试，欢迎大家来<a href="#" data-type="bug">贴吧</a>提需求和报告BUG。</li>
+                    <li>注意：iOS9上的UC浏览器里无法使用组卡器。碰到问题的朋友请使用Safari或者Chrome</li>
                     <!-- <li>小提示：如果想保存卡组，只要把卡组的文字表述记下来存在文本文件或者手机备忘录里，下次要用的时候复制回来就行。</li> -->
                     <!-- <li>小提示：可以灵活使用*0的表达法来方便配卡哦。</li> -->
                 </ul>
@@ -32,6 +33,15 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2015-11-14: <ul>
+                        <li>修复组卡器中【详情】按钮有时候通往不存在页面的BUG</li>
+                        <li>去除组卡器中的素材卡，感谢<x>吹水不啰嗦</x>的建议</li>
+                    </ul></li>
+                    <li>2015-11-08: <ul>
+                        <li>修复【骑士守护】计算残血法术伤害的一个问题，感谢<x>idleidol</x>报告BUG</li>
+                        <li>修复最近更新自定义小兵后【莉莉丝战】统计数据显示的问题，感谢<x>单曲调调</x>报告BUG</li>
+                    </ul></li>
+                    <li>2015-11-07: 现在【莉莉丝战】可以自定义小兵了</li>
                     <li>2015-11-05: <ul>
                         <li>添加新卡<cf:c>骑士王血魂</cf:c>，感谢<x>idleidol</x>, <x>1000127900</x>提供情报</li>
                         <li>感谢<x>idleidol</x>实测确认<cf:c>天蝎座</cf:c>的技能</li>

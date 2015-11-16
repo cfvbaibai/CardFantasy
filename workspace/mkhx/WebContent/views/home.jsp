@@ -4,6 +4,7 @@
 <script src="<c:url value="/resources/lib/kineticjs-4.6.0/kinetic.min.js" />"></script>
 <script src="<c:url value="/resources/lib/chartjs-0.2.0/Chart.min.js" />"></script>
 <script src='<c:url value="/resources/lib/ZeroClipboard-2.1.6/ZeroClipboard.min.js" />'></script>
+
 <script src='<c:url value="/resources/js/battle-animation.js" />?version=<%= version %>'></script>
 <script src='<c:url value="/resources/js/deck-builder.js" />?version=<%= version %>'></script>
 <script src='<c:url value="/resources/js/test-rp.js" />?version=<%= version %>'></script>
@@ -39,7 +40,8 @@
     <%@ include file="arena.jsp" %>
     <%@ include file="deck-builder.jsp" %>
     <%@ include file="arena-battle-options.jsp" %>
-    
+
+    <%--<audio src='<c:url value="/resources/audio/战狐-乐正绫.mp3" />' class="audioplayer-mini" controls="controls" autoplay="autoplay" loop="loop"></audio> --%>
     <iframe id="stat-iframe" height="0" width="0"></iframe>
 </body>
 </html>

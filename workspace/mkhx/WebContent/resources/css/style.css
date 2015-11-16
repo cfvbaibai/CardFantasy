@@ -174,8 +174,18 @@ table.avg-group-2 {
     width: 100%;
 }
 
-table.avg-group-2 tr td {
+table.avg-group-2 > tbody > tr > td,
+table.avg-group-2 > tr > td {
     width: 50%;
+}
+
+table.avg-group-4 {
+    width: 100%;
+}
+
+table.avg-group-4 > tbody > tr > td,
+table.avg-group-4 > tr > td {
+    width: 25%;
 }
 
 table.line-separated {
@@ -689,6 +699,13 @@ div.float-header {
 
 div.float-footer {
     margin-top: 10px;
+}
+
+audio {
+    position: fixed;
+    right: 0;
+    top: 55px;
+    z-index: 9999;
 }
 
 @media (max-width: 400px) {

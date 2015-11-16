@@ -49,6 +49,7 @@ import cfvbaibai.cardfantasy.game.MapStages;
 import cfvbaibai.cardfantasy.game.PlayerBuilder;
 import cfvbaibai.cardfantasy.game.PveEngine;
 import cfvbaibai.cardfantasy.game.PveGameResult;
+import cfvbaibai.cardfantasy.game.PvlEngine;
 import cfvbaibai.cardfantasy.game.PvlGameTimeoutException;
 import cfvbaibai.cardfantasy.game.VictoryCondition;
 import cfvbaibai.cardfantasy.game.launcher.ArenaGameResult;
@@ -289,7 +290,9 @@ public class AutoBattleController {
 
     @RequestMapping(value = "/PlayLilith1MatchGame")
     public void playLilith1MatchGame(HttpServletRequest request, HttpServletResponse response,
-            @RequestParam("deck") String deck, @RequestParam("count") int count, @RequestParam("gt") int gameType,
+            @RequestParam("deck") String deck, @RequestParam("ecg") boolean enableCustomGuards, @RequestParam("cg") String customGuards,
+            @RequestParam("cgab") int customGuardsAtBuff, @RequestParam("cghb") int customGuardsHpBuff,
+            @RequestParam("count") int count, @RequestParam("gt") int gameType,
             @RequestParam("hlv") int heroLv, @RequestParam("ln") String lilithName,
             @RequestParam("tc") int targetRemainingGuardCount, @RequestParam("rhp") int remainingHP,
             @RequestParam("ec") String eventCardNames
@@ -300,7 +303,17 @@ public class AutoBattleController {
             String logMessage = String.format("Deck=%s<br />HeroLV=%d, Lilith=%s, GameType=%d, EventCards=%s", deck, heroLv, lilithName, gameType, eventCardNames);
             logger.info("PlayLilith1MatchGame: " + logMessage);
             this.userActionRecorder.addAction(new UserAction(new Date(), request.getRemoteAddr(), "Play Lilith 1Match Game", logMessage));
-            LilithGameResult result = GameLauncher.playLilithGame(deck, lilithName, heroLv, gameType, targetRemainingGuardCount, remainingHP, eventCardNames, 1, ui);
+            LilithGameResult result = null;
+            if (enableCustomGuards && gameType == 0) {
+                result = GameLauncher.playCustomLilithGame(
+                        deck, lilithName + "," + customGuards, heroLv, customGuardsAtBuff, customGuardsHpBuff,
+                        gameType, targetRemainingGuardCount, remainingHP, eventCardNames, 1, ui);
+            } else {
+                result = GameLauncher.playLilithGame(
+                        deck, lilithName, heroLv, gameType, 
+                        targetRemainingGuardCount, remainingHP, eventCardNames, 1, ui);
+            }
+
             writer.print(Utils.getCurrentDateTime() + "<br />");
             String resultMessage = String.format("共进行 %f 轮进攻，平均每轮对莉莉丝造成 %f 点伤害<br />",
                 result.getAvgBattleCount(), result.getAvgDamageToLilith());
@@ -347,7 +360,9 @@ public class AutoBattleController {
 
     @RequestMapping(value = "/SimulateLilith1MatchGame", headers = "Accept=application/json")
     public void simulateLilith1MatchGame(HttpServletRequest request, HttpServletResponse response,
-        @RequestParam("deck") String deck, @RequestParam("count") int count, @RequestParam("gt") int gameType,
+        @RequestParam("deck") String deck, @RequestParam("ecg") boolean enableCustomGuards,
+        @RequestParam("cg") String customGuards, @RequestParam("cgab") int customGuardsAtBuff, @RequestParam("cghb") int customGuardsHpBuff,
+        @RequestParam("count") int count, @RequestParam("gt") int gameType,
         @RequestParam("hlv") int heroLv, @RequestParam("ln") String lilithName,
         @RequestParam("tc") int targetRemainingGuardCount, @RequestParam("rhp") int remainingHP,
         @RequestParam("ec") String eventCardNames
@@ -358,7 +373,14 @@ public class AutoBattleController {
             String logMessage = String.format("Deck=%s<br />HeroLV=%d, Lilith=%s, GameType=%d, EventCards=%s", deck, heroLv, lilithName, gameType, eventCardNames);
             logger.info("SimulateLilith1MatchGame: " + logMessage);
             this.userActionRecorder.addAction(new UserAction(new Date(), request.getRemoteAddr(), "Simulate Lilith 1Match Game", logMessage));
-            PlayerInfo player1 = PlayerBuilder.buildLilith(lilithDataStore, lilithName, gameType == 0);
+
+            PlayerInfo player1 = null;
+            if (enableCustomGuards && gameType == 0) {
+                List<Skill> player1Buffs = PvlEngine.getCardBuffs(customGuardsAtBuff, customGuardsHpBuff);
+                player1 = PlayerBuilder.build(false, "莉莉丝", lilithName + "," + customGuards, 9999999, player1Buffs, 100);
+            } else {
+                player1 = PlayerBuilder.buildLilith(lilithDataStore, lilithName, gameType == 0);
+            }
             List<Skill> player2Buffs = buildBuffsForLilithEvents(eventCardNames);
             PlayerInfo player2 = PlayerBuilder.build(true, "玩家", deck, heroLv, player2Buffs, 100);
             StructuredRecordGameUI ui = new StructuredRecordGameUI();
@@ -424,7 +446,9 @@ public class AutoBattleController {
 
     @RequestMapping(value = "/PlayLilithMassiveGame")
     public void playLilithMassiveGame(HttpServletRequest request, HttpServletResponse response,
-        @RequestParam("deck") String deck, @RequestParam("count") int count, @RequestParam("gt") int gameType,
+        @RequestParam("deck") String deck, @RequestParam("ecg") boolean enableCustomGuards, @RequestParam("cg") String customGuards,
+        @RequestParam("cgab") int customGuardsAtBuff, @RequestParam("cghb") int customGuardsHpBuff,
+        @RequestParam("count") int count, @RequestParam("gt") int gameType,
         @RequestParam("hlv") int heroLv, @RequestParam("ln") String lilithName,
         @RequestParam("tc") int targetRemainingGuardCount, @RequestParam("rhp") int remainingHP,
         @RequestParam("ec") String eventCardNames
@@ -439,8 +463,17 @@ public class AutoBattleController {
             writer.append("模拟场次: " + count + "<br />");
 
             try {
-                LilithGameResult result = GameLauncher.playLilithGame(
-                    deck, lilithName, heroLv, gameType, targetRemainingGuardCount, remainingHP, eventCardNames, count, new DummyGameUI());
+                LilithGameResult result = null;
+                GameUI ui = new DummyGameUI();
+                if (enableCustomGuards && gameType == 0) {
+                    result = GameLauncher.playCustomLilithGame(
+                            deck, lilithName + "," + customGuards, heroLv, customGuardsAtBuff, customGuardsHpBuff,
+                            gameType, targetRemainingGuardCount, remainingHP, eventCardNames, count, ui);
+                } else {
+                    result = GameLauncher.playLilithGame(
+                            deck, lilithName, heroLv, gameType, 
+                            targetRemainingGuardCount, remainingHP, eventCardNames, count, ui);
+                }
                 writer.print("<div style='color: red'>" + result.getValidationResult() + "</div>");
                 writer.append("<table>");
                 writer.append("<tr><td>平均需要进攻次数: </td><td>" + result.getAvgBattleCount() + "</td></tr>");
@@ -555,7 +588,9 @@ public class AutoBattleController {
             List<EntityDataRuntimeInfo> entities = new ArrayList<EntityDataRuntimeInfo>();
             List<CardData> cards = store.getAllCards();
             for (CardData card : cards) {
-                entities.add(new EntityDataRuntimeInfo(card));
+                if (!card.isMaterial()) {
+                    entities.add(new EntityDataRuntimeInfo(card));
+                }
             }
             RuneData[] runes = RuneData.values();
             for (RuneData rune : runes) {

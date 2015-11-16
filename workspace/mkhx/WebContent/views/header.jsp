@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<% String version = "20151104001"; %>
+<% String version = "20151105002"; %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,6 +11,10 @@
 
 <script src="<c:url value="/resources/lib/jquery-mobile-1.4.5/jquery.mobile-1.4.5.min.js" />"></script>
 <link rel="stylesheet" href="<c:url value="/resources/lib/jquery-mobile-1.4.5/jquery.mobile-1.4.5.min.css" />" />
+<%--
+<script src='<c:url value="/resources/lib/audioplayer.min.js" />?version=<%= version %>'></script>
+<link rel="stylesheet" href='<c:url value="/resources/lib/audioplayer/audioplayer.css" />' />
+ --%>
 
 <link href='<c:url value="/resources/img/logo.png" />' rel="bookmark" type="image/x-icon" /> 
 <link href='<c:url value="/resources/img/logo.png" />' rel="icon" type="image/x-icon" /> 

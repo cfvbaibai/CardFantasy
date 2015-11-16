@@ -7,8 +7,7 @@ var store = null;
 var outputDivId = null;
 
 var getWikiUrl = function(type, name) {
-    //return 'http://cnrdn.com/rd.htm?id=1344758&r=' + encodeURIComponent('http://mkhx.joyme.com/wiki/' + name);
-    return rootDir + 'Wiki/' + type + 's/' + name;
+    return rootDir + '/Wiki/' + type + 's/' + name;
 };
 
 DeckBuilder.buildDeck = function(_outputDivId) {
