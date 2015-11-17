@@ -2400,7 +2400,7 @@
         <Skill type="弱点攻击" level="0" unlock="5" />
         <Skill type="横扫" level="0" unlock="10" />
     </Card>
-    <Card id="4534" name="邪月翼魔" wikiId="" race="地狱" speed="1" star="5" cost="17" incrCost="2" at="380" hp="1420" incrAT="28" incrHP="20">
+    <Card id="4534" name="邪月翼魔" wikiId="" race="地狱" speed="3" star="5" cost="17" incrCost="2" at="380" hp="1260" incrAT="28" incrHP="20">
         <Skill type="逃跑" level="0" unlock="0" />
         <Skill type="魔甲" level="8" unlock="5" />
         <Skill type="净化" level="0" unlock="10" summon="true" />
