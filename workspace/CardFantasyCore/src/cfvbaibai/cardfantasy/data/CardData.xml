@@ -1220,7 +1220,7 @@
         <Skill type="本源守护" level="7" unlock="5" />
         <Skill type="本源之力" level="6" unlock="10" />
     </Card>
-    <Card id="2528" name="射手座" wikiId="" race="森林" speed="2" star="5" cost="19" incrCost="21" at="330" hp="1450" incrAT="35" incrHP="29">
+    <Card id="2528" name="射手座" wikiId="" race="森林" speed="2" star="5" cost="19" incrCost="2" at="330" hp="1450" incrAT="35" incrHP="29">
         <Skill type="神箭三重奏" level="7" unlock="0" />
         <Skill type="逃跑" level="0" unlock="5" />
         <Skill type="全体加速" level="1" unlock="10" summon="true" />
