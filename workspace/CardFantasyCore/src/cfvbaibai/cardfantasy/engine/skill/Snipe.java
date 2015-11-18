@@ -1,8 +1,10 @@
 package cfvbaibai.cardfantasy.engine.skill;
 
+import java.util.HashMap;
 import java.util.List;
 
 import cfvbaibai.cardfantasy.data.Skill;
+import cfvbaibai.cardfantasy.data.SkillType;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.EntityInfo;
 import cfvbaibai.cardfantasy.engine.OnAttackBlockingResult;
@@ -15,6 +17,30 @@ public final class Snipe {
     public static void apply(Skill cardSkill, SkillResolver resolver, EntityInfo attacker, Player defenderPlayer,
             int targetCount) throws HeroDieSignal {
         int damage = cardSkill.getImpact();
+        if(cardSkill.getType() == SkillType.神箭三重奏) //Tripling Snipe needs custom damage setting
+        {
+        	HashMap<Integer,Integer> hLevelToDamage = new HashMap<Integer,Integer>();
+        	hLevelToDamage.put(1, 250);
+        	hLevelToDamage.put(2, 270);
+        	hLevelToDamage.put(3, 300);
+        	hLevelToDamage.put(4, 320);
+        	hLevelToDamage.put(5, 350);
+        	hLevelToDamage.put(6, 370);
+        	hLevelToDamage.put(7, 400);
+        	hLevelToDamage.put(8, 420);
+        	hLevelToDamage.put(9, 450);
+        	hLevelToDamage.put(10, 500);
+        	Integer level = cardSkill.getLevel();
+        	if (hLevelToDamage.containsKey(level))
+        	{
+        		damage = hLevelToDamage.get(level);
+        	}
+        	else
+        	{
+        		damage = 400;
+        	}
+        }
+        
         List<CardInfo> victims = defenderPlayer.getField().getCardsWithLowestHP(targetCount);
         resolver.getStage().getUI().useSkill(attacker, victims, cardSkill, true);
         for (CardInfo victim : victims) {

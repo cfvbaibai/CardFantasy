@@ -671,6 +671,12 @@
     <Card id="1537" name="胜利女神" wikiId="9911" race="王国" speed="4" star="5" cost="99" incrCost="0" at="93" hp="93" incrAT="0" incrHP="0">
       <Skill type="物品技能" level="0" unlock="0" />
     </Card>
+    <!--
+    <Card id="1538" name="圣剑持有者" wikiId="" race="王国" speed="4" star="5" cost="17" incrCost="2" at="350" hp="1530" incrAT="33" incrHP="52">
+        <Skill type="月恩术" level="6" unlock="0" />
+        <Skill type="圣器召唤" level="0" unlock="5" />
+        <Skill type="弱点攻击" level="0" unlock="10" />
+    </Card>-->
     <!-- 森林 -->
     <Card id="2101" name="人马巡逻者" wikiId="30976" race="森林" speed="2" star="1" cost="3" incrCost="2" at="95" hp="310" incrAT="17" incrHP="11">
         <Skill type="要害" level="3" unlock="5" />
@@ -1215,6 +1221,12 @@
         <Skill type="本源守护" level="7" unlock="5" />
         <Skill type="本源之力" level="6" unlock="10" />
     </Card>
+    <!--
+    <Card id="2528" name="射手座" wikiId="" race="森林" speed="2" star="5" cost="19" incrCost="2" at="330" hp="1450" incrAT="35" incrHP="29">
+        <Skill type="神箭三重奏" level="7" unlock="0" />
+        <Skill type="逃跑" level="0" unlock="5" />
+        <Skill type="全体加速" level="1" unlock="10" summon="true" />
+    </Card>-->
 
     <!-- 蛮荒  -->
     <Card id="3101" name="穴居人奴隶" wikiId="31006" race="蛮荒" speed="2" star="1" cost="4" incrCost="2" at="90" hp="390" incrAT="18" incrHP="11">
@@ -1783,6 +1795,13 @@
     <Card id="3527" name="蛮皇女帝" wikiId="9910" race="蛮荒" speed="4" star="5" cost="99" incrCost="0" at="1" hp="1" incrAT="0" incrHP="0">
       <Skill type="物品技能" level="0" unlock="0" />
     </Card>
+    <!--
+    <Card id="3528" name="贪吃少女" wikiId="" race="蛮荒" speed="4" star="5" cost="18" incrCost="2" at="330" hp="1640" incrAT="41" incrHP="45">
+        <Skill type="毒刃" level="0" unlock="0" />
+        <Skill type="贪吃" level="7" unlock="5" />
+        <Skill type="不动" level="0" unlock="10" />
+    </Card>   -->
+    
     <!-- 地狱 -->
     <Card id="4101" name="恶魔小鬼" wikiId="31036" race="地狱" speed="2" star="1" cost="3" incrCost="2" at="80" hp="270" incrAT="19" incrHP="6">
         <Skill type="火球" level="2" unlock="0" />
@@ -2384,6 +2403,12 @@
         <Skill type="弱点攻击" level="0" unlock="5" />
         <Skill type="横扫" level="0" unlock="10" />
     </Card>
+    <!--
+    <Card id="4534" name="邪月翼魔" wikiId="" race="地狱" speed="3" star="5" cost="17" incrCost="2" at="380" hp="1260" incrAT="28" incrHP="20">
+        <Skill type="逃跑" level="0" unlock="0" />
+        <Skill type="魔甲" level="8" unlock="5" />
+        <Skill type="净化" level="0" unlock="10" summon="true" />
+    </Card>-->
 
     <!-- 魔神 -->
     <Card id="5501" name="狙击复仇女神" wikiId="30871" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="1200" hp="10400000" incrAT="0" incrHP="0">

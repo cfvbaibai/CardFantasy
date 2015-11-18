@@ -19,4 +19,22 @@ public class SnipeTest extends SkillValidationTest {
         Assert.assertEquals(0, context.getPlayer(0).getField().size());
         Assert.assertTrue(c王国小兵.isDead());
     }
+    
+    @Test
+    public void test狙击_神箭三重奏() {
+        SkillTestContext context = prepare(50, 50, "残血王国小兵","残血王国小兵","残血王国小兵","占位符","占位符","占位符", "占位符+神箭三重奏1");
+        CardInfo c王国小兵1 = context.addToField(0, 0);
+        CardInfo c王国小兵2 =context.addToField(1, 0);
+        CardInfo c王国小兵3 =context.addToField(2, 0);
+        context.addToField(3, 1);
+        context.addToField(4, 1);
+        context.addToField(5, 1);
+        context.addToField(6, 1);
+        context.startGame();
+
+        context.getStage().setActivePlayerNumber(1);
+        context.proceedOneRound();
+        Assert.assertEquals(0, context.getPlayer(0).getField().size());
+        Assert.assertTrue(c王国小兵1.isDead()&&c王国小兵2.isDead()&&c王国小兵3.isDead());
+    }
 }

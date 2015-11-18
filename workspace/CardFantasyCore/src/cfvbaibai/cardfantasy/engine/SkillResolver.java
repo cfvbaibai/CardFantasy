@@ -153,7 +153,9 @@ public class SkillResolver {
                 Resurrection.apply(this, skillUseInfo, attacker);
             } else if (skillUseInfo.getType() == SkillType.二重狙击) {
                 Snipe.apply(skillUseInfo.getSkill(), this, attacker, defender, 2);
-            } else if (skillUseInfo.getType() == SkillType.迷魂) {
+            } else if (skillUseInfo.getType() == SkillType.神箭三重奏) {
+                Snipe.apply(skillUseInfo.getSkill(), this, attacker, defender, 3);
+            }else if (skillUseInfo.getType() == SkillType.迷魂) {
                 Confusion.apply(skillUseInfo, this, attacker, defender, 1);
             } else if (skillUseInfo.getType() == SkillType.混乱领域) {
                 Confusion.apply(skillUseInfo, this, attacker, defender, 3);
@@ -278,6 +280,8 @@ public class SkillResolver {
                     CounterSummon.apply(this, defender, skillUseInfo.getSkill(), 5);
                 } else if (skillUseInfo.getType() == SkillType.大地之盾) {
                     EarthShield.apply(skillUseInfo, this, attacker, defender);
+                }else if (skillUseInfo.getType() == SkillType.物理反弹) {
+                    Flee.apply(skillUseInfo.getSkill(), this, attacker, defender, damagedResult.actualDamage);
                 }
             }
             {
@@ -302,6 +306,11 @@ public class SkillResolver {
                 if (rune != null && !defender.justRevived()) {
                     Zealot.apply(rune.getSkillUseInfo(), this, attacker, defender, result);
                 }
+            }
+            for (SkillUseInfo skillUseInfo : defender.getNormalUsableSkills()) {
+	            if (skillUseInfo.getType() == SkillType.逃跑) {
+	                Flee.apply(skillUseInfo.getSkill(), this, attacker, defender, damagedResult.actualDamage);
+	            } 
             }
         }
     }
@@ -703,6 +712,10 @@ public class SkillResolver {
                     ChainAttack.apply(this, skillUseInfo, attacker, defender, attackSkill, damageResult.originalDamage);
                 } else if (skillUseInfo.getType() == SkillType.疾病) {
                     Disease.apply(skillUseInfo, this, attacker, defender, normalAttackDamage);
+                } else if (skillUseInfo.getType() == SkillType.贪吃) {
+                    BloodThirsty.apply(this, skillUseInfo, attacker, normalAttackDamage);
+                } else if (skillUseInfo.getType() == SkillType.毒刃) {
+                    PosionBlade.apply(this, skillUseInfo, attacker, defender, normalAttackDamage);
                 }
             }
         }
@@ -723,7 +736,9 @@ public class SkillResolver {
            } else if (skillUseInfo.getType() == SkillType.神兵召唤 ||
                    skillUseInfo.getType() == SkillType.觉醒神兵召唤 && attacker.isAwaken(Race.SAVAGE)) {
                WeaponSummon.apply(this, skillUseInfo, attacker, defenderPlayer, 500, 1700);
-           }
+           }else if (skillUseInfo.getType() == SkillType.圣器召唤) {
+               WeaponSummon.apply(this, skillUseInfo, attacker, defenderPlayer, 300, 1300);
+           } 
         }
     }
 
@@ -759,7 +774,9 @@ public class SkillResolver {
                     WeaponSummon.apply(this, skillUseInfo, attacker, defender, 500, 1700);
                 } else if (skillUseInfo.getType() == SkillType.厨具召唤) {
                     WeaponSummon.apply(this, skillUseInfo, attacker, defender, 1, 500);
-                } else if (skillUseInfo.getType() == SkillType.穷追猛打) {
+                } else if (skillUseInfo.getType() == SkillType.圣器召唤) {
+                    WeaponSummon.apply(this, skillUseInfo, attacker, defender, 300, 1300);
+                }else if (skillUseInfo.getType() == SkillType.穷追猛打) {
                     Pursuit.apply(this, skillUseInfo, attacker, defender);
                 } else if (skillUseInfo.getType() == SkillType.战意) {
                     Wrath.apply(this, skillUseInfo, attacker, defender);
@@ -820,7 +837,7 @@ public class SkillResolver {
                 HeroKiller.remove(this, effect.getCause(), card);
             } else if (type == SkillType.凯撒之击) {
                 CaeserAttack.remove(this, effect.getCause(), card);
-            } else if (type == SkillType.神兵召唤 || type == SkillType.厨具召唤 || type == SkillType.觉醒神兵召唤) {
+            } else if (type == SkillType.神兵召唤 || type == SkillType.厨具召唤 || type == SkillType.觉醒神兵召唤 || type == SkillType.圣器召唤 ) {
                 WeaponSummon.remove(this, effect.getCause(), card);
             }
         }
@@ -962,6 +979,11 @@ public class SkillResolver {
         }
         for (SkillUseInfo cardSkillUseInfo : card.getNormalUsableSkills()) {
             if (cardSkillUseInfo.getType() == SkillType.回春) {
+                Rejuvenate.apply(cardSkillUseInfo.getSkill(), this, card);
+            }
+        }
+        for (SkillUseInfo cardSkillUseInfo : card.getNormalUsableSkills()) {
+            if (cardSkillUseInfo.getType() == SkillType.月恩术) {
                 Rejuvenate.apply(cardSkillUseInfo.getSkill(), this, card);
             }
         }

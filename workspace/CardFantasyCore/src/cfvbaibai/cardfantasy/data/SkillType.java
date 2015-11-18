@@ -7,7 +7,7 @@ public enum SkillType {
     /* 攻击力削弱技能 */
     削弱("30964", 10, SkillTag.永久, SkillTag.基础攻击加成, SkillTag.抗不屈),
     群体削弱("30952", 5, SkillTag.永久, SkillTag.基础攻击加成, SkillTag.抗不屈),
-
+    毒刃("",0,SkillTag.永久, SkillTag.原始体力加成, SkillTag.抗不屈,SkillTag.抗免疫),
     /*
      * 削弱可以被淬炼、种族之力抵消，但瘟疫不能
      */
@@ -25,6 +25,7 @@ public enum SkillType {
     狂热("30880", 10, SkillTag.永久, SkillTag.基础攻击加成),
     嗜血("30940", 10, SkillTag.永久, SkillTag.基础攻击加成),
     透支("30946", 20, SkillTag.永久, SkillTag.基础攻击加成),
+    贪吃("",100, 20, SkillTag.永久, SkillTag.基础攻击加成),
     邪灵汲取("43445", 0, 3, SkillTag.抗免疫, SkillTag.永久, SkillTag.基础攻击加成, SkillTag.抗不屈),
     森林之力("31121", 25, SkillTag.基础攻击加成, SkillTag.抗削弱),
     地狱之力("31140", 25, SkillTag.基础攻击加成, SkillTag.抗削弱),
@@ -48,17 +49,18 @@ public enum SkillType {
     神兵召唤("", 0, SkillTag.额外攻击加成),
     觉醒神兵召唤("", 0, SkillTag.额外攻击加成),
     厨具召唤("", 0, SkillTag.额外攻击加成),
+    圣器召唤("", 0, SkillTag.额外攻击加成),
 
     虚弱("57000", 0, SkillTag.额外攻击加成, SkillTag.抗免疫, SkillTag.抗不屈),
     战争怒吼("57022", 0, SkillTag.额外攻击加成, SkillTag.抗免疫, SkillTag.抗不屈),
 
     /* HP 上限调整技能 */
-    王国守护("30949", 50),
-    蛮荒守护("31147", 50), 
-    地狱守护("31143", 50),
-    森林守护("31122", 50),
-    本源守护("30936", 40),
-    神圣守护("31123", 50),
+    王国守护("30949", 50,SkillTag.抗毒刃),
+    蛮荒守护("31147", 50,SkillTag.抗毒刃), 
+    地狱守护("31143", 50,SkillTag.抗毒刃),
+    森林守护("31122", 50,SkillTag.抗毒刃),
+    本源守护("30936", 40,SkillTag.抗毒刃),
+    神圣守护("31123", 50,SkillTag.抗毒刃),
 
     狙击("30962", 25, SkillTag.抗免疫, SkillTag.狙击),
     连环闪电("30959", 25, SkillTag.魔法),
@@ -77,6 +79,7 @@ public enum SkillType {
     甘霖("30930", 25),
     治疗之雾("57018", 80, 20),
     回春("30944", 30),
+    月恩术("",300,50),
     月神的护佑("", new int[] { 8, 10, 13, 15, 18, 20, 23, 25, 28, 30, 35 }),
     月神的触碰("", new int[] { 8, 10, 13, 15, 18, 20, 23, 25, 28, 30, 35 }),
 
@@ -116,6 +119,7 @@ public enum SkillType {
 
     回魂("31131", 1),
     二重狙击("31130", 25, SkillTag.抗免疫, SkillTag.狙击),
+    神箭三重奏("",0,SkillTag.抗免疫, SkillTag.狙击),
     迷魂("31129", 30, 5, SkillTag.控制),
     混乱领域("", 30, 5, SkillTag.控制),
     精神狂乱("", 0),
@@ -175,6 +179,7 @@ public enum SkillType {
 
     星云锁链("", 0, 0),
     生命链接("", 0),
+    逃跑("",0),
 
     召唤王国战士("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
     召唤骷髅战士("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
