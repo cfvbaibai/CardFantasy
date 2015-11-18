@@ -311,4 +311,80 @@ public class SummonSkillTest extends SkillValidationTest {
         Assert.assertEquals(c秘银巨石像.getUniqueName(), context.getPlayer(0).getField().getCard(2).getUniqueName());
         Assert.assertEquals(c攻城弩车手.getUniqueName(), context.getPlayer(0).getField().getCard(3).getUniqueName());
     }
+    
+    @Test
+    public void test逃跑_基本()
+    {
+        SkillTestContext context = prepare(
+                50, 50, "时光女神+逃跑-15",  "末日预言师");
+        CardInfo c时光女神逃 = context.addToDeck(0, 0);
+        CardInfo c末日预言师 = context.addToDeck(1, 1);
+        
+        context.startGame();
+        context.proceedOneRound();
+        context.proceedOneRound();
+        context.proceedOneRound();
+        context.proceedOneRound();
+        context.proceedOneRound();
+        //5回合后，逃跑时光下来
+        Assert.assertEquals(1,context.getPlayer(0).getField().size());
+        Assert.assertEquals(0,context.getPlayer(1).getField().size());
+        context.proceedOneRound();
+        Assert.assertEquals(1,context.getPlayer(1).getField().size());
+        //6回合被打回手牌
+        Assert.assertEquals(0,context.getPlayer(0).getField().size());
+        Assert.assertEquals((4-1),c时光女神逃.getSummonDelay());
+    }
+    
+    @Test
+    public void test逃跑_死亡()
+    {
+        SkillTestContext context = prepare(
+                120, 50, "城镇弓箭兵+逃跑-15",  "羽翼化蛇");
+        CardInfo c时光女神逃 = context.addToDeck(0, 0);
+        CardInfo c末日预言师 = context.addToDeck(1, 1);
+        context.getEngine().getStage().getRule().setDeckOrder(1);
+        context.startGame();
+        context.proceedOneRound();
+        context.proceedOneRound();
+        context.proceedOneRound();
+        context.proceedOneRound();
+        context.proceedOneRound();
+        Assert.assertEquals(1,context.getPlayer(0).getField().size());
+        Assert.assertEquals(0,context.getPlayer(1).getField().size());
+        context.proceedOneRound();
+        Assert.assertEquals(1,context.getPlayer(1).getField().size());
+        //6回合被打死
+        Assert.assertEquals(1,context.getPlayer(0).getGrave().size());
+    }
+    
+    @Test
+    public void test逃跑_横扫()
+    {
+        SkillTestContext context = prepare(
+                120, 50, "末日预言师+逃跑-15", "占位符", "占位符","战场女武神");
+        CardInfo c末日逃 = context.addToDeck(0, 0);
+        context.addToDeck(1, 0);
+        context.addToDeck(2, 1);
+        CardInfo c战场女武神 = context.addToDeck(3, 1);
+        context.getEngine().getStage().getRule().setDeckOrder(1);
+        context.startGame();
+        context.proceedOneRound();
+        context.proceedOneRound();
+        context.proceedOneRound();
+        context.proceedOneRound();
+        context.proceedOneRound();
+        //5回合后，逃跑时光下来
+        Assert.assertEquals(1,context.getPlayer(0).getField().size());
+        Assert.assertEquals(0,context.getPlayer(1).getField().size());
+        context.proceedOneRound();
+        //6回合占位符没有攻击力，无法触发逃跑
+        Assert.assertEquals(1,context.getPlayer(0).getField().size());
+        context.proceedOneRound();
+        context.proceedOneRound();
+        Assert.assertEquals(2,context.getPlayer(1).getField().size());
+        //6回合被打回手牌
+        Assert.assertEquals(1,context.getPlayer(0).getField().size());
+        Assert.assertEquals((3 -1),c末日逃.getSummonDelay());
+    }
 }

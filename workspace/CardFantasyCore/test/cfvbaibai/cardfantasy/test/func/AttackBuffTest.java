@@ -602,4 +602,18 @@ public class AttackBuffTest extends SkillValidationTest {
         Assert.assertEquals(810 + 500, 5000 - c占位符.getHP());
         Assert.assertEquals(810, c秘银巨石像1.getCurrentAT());
     }
+    
+    @Test
+    public void test圣器召唤_基础() {
+        SkillTestContext context = prepare(50, 50, "占位符+圣器召唤", "占位符");
+        CardInfo c占位符1 = context.addToField(0, 0);
+        CardInfo c占位符2 = context.addToField(1, 1);
+        context.startGame();
+
+        random.addNextNumbers(0);
+        context.proceedOneRound();
+        
+        Assert.assertEquals(300, 5000 - c占位符2.getHP());
+        Assert.assertEquals(0, c占位符1.getCurrentAT());
+    }
 }
