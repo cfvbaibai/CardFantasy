@@ -8,7 +8,6 @@ import cfvbaibai.cardfantasy.Combination;
 import cfvbaibai.cardfantasy.data.Card;
 import cfvbaibai.cardfantasy.data.PlayerInfo;
 import cfvbaibai.cardfantasy.data.Rune;
-import cfvbaibai.cardfantasy.engine.Rule;
 import cfvbaibai.cardfantasy.game.DeckEvaluation;
 import cfvbaibai.cardfantasy.game.DeckStartupInfo;
 import cfvbaibai.cardfantasy.game.DummyGameUI;
@@ -24,8 +23,8 @@ public class PveEngineTest {
 
     public PveEngineTest() {
         MapStages maps = new MapStages();
-        engine = new PveEngine(new TestGameUI(), Rule.getDefault(), maps);
-        massiveEngine = new PveEngine(new DummyGameUI(), Rule.getDefault(), maps);
+        engine = new PveEngine(new TestGameUI(), maps);
+        massiveEngine = new PveEngine(new DummyGameUI(), maps);
     }
 
     @Test

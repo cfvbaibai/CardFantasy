@@ -14,8 +14,8 @@ import cfvbaibai.cardfantasy.engine.Rule;
 
 public class PveEngine extends GameEngine {
     protected MapStages maps;
-    public PveEngine(GameUI ui, Rule rule, MapStages maps) {
-        super(ui, rule);
+    public PveEngine(GameUI ui, MapStages maps) {
+        super(ui, Rule.getMapBattle());
         this.maps = maps;
     }
 

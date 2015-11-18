@@ -161,7 +161,7 @@ public final class GameLauncher {
     }
 
     public static MapGameResult playMapGame(String playerDeck, String mapName, int heroLv, int gameCount, GameUI ui) {
-        PveEngine engine = new PveEngine(ui, Rule.getDefault(), MapStages.loadDefault());
+        PveEngine engine = new PveEngine(ui, MapStages.loadDefault());
         PlayerInfo player = PlayerBuilder.build(true, "玩家", playerDeck, heroLv);
         MapGameResult result = new MapGameResult();
         PveGameResultStat stat = engine.massivePlay(player, mapName, gameCount);

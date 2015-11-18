@@ -58,6 +58,10 @@ public class Rule {
         return new Rule(5, 999, 0, 0, false, null);
     }
     
+    public static Rule getMapBattle() {
+        return new Rule(5, 999, 1, 0, false, null);
+    }
+    
     public static Rule getBossBattle() {
         return new Rule(5, 999, 0, 0, true, null);
     }

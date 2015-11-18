@@ -525,7 +525,7 @@ public class AutoBattleController {
                     String.format("Deck=%s<br />HeroLV=%d, Map=%s", deck, heroLv, map)));
             PlayerInfo player = PlayerBuilder.build(true, "玩家", deck, heroLv);
             StructuredRecordGameUI ui = new StructuredRecordGameUI();
-            PveEngine engine = new PveEngine(ui, Rule.getDefault(), this.maps);
+            PveEngine engine = new PveEngine(ui, this.maps);
             PveGameResult gameResult = engine.play(player, map);
             BattleRecord record = ui.getRecord();
             writer.println(jsonHandler.toJson(record));
