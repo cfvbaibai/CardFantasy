@@ -575,7 +575,7 @@ public class DefenseTest extends SkillValidationTest {
     @Test
     public void test水流护甲_燕返() throws HeroDieSignal {
         SkillTestContext context = prepare(50, 50, "秘银巨石像+水流护甲1", "魔剑士+燕返");
-        CardInfo c秘银巨石像1 = context.addToField(0, 0);
+        CardInfo c秘银巨石像 = context.addToField(0, 0);
         CardInfo c魔剑士 = context.addToField(1, 1);
         c魔剑士.setBasicHP(1);
         context.getPlayer(1).setHP(100);
@@ -583,9 +583,38 @@ public class DefenseTest extends SkillValidationTest {
         context.proceedOneRound();
         Assert.assertTrue(c魔剑士.isDead());
         Assert.assertEquals(100 /* 水流护甲面对燕返无效 */, context.getPlayer(1).getHP());
-        Assert.assertEquals(275 * 2, 1550 - c秘银巨石像1.getHP());
+        Assert.assertEquals(275 * 2, 1550 - c秘银巨石像.getHP());
     }
-    
+
+    /*
+     * 即使英雄在回合中被杀死，仍能在本回合被水流护甲救回
+     */
+    @Test
+    public void test水流护甲_复活英雄() {
+        SkillTestContext context = prepare(50, 50, "秘银巨石像+魔神之咒10", "占位符+水流护甲10");
+        context.addToField(0, 0);
+        CardInfo c占位符 = context.addToField(1, 1);
+        context.getPlayer(1).setHP(100);
+        context.startGame();
+        context.proceedOneRound();
+
+        random.addNextPicks(0);
+        Assert.assertEquals(500, context.getPlayer(1).getHP());
+        Assert.assertEquals(150, 5000 - c占位符.getHP());
+    }
+
+    @Test
+    public void test水流护甲_未超额() {
+        SkillTestContext context = prepare(50, 50, "魔剑士", "占位符+水流护甲10");
+        context.addToField(0, 0);
+        CardInfo c占位符 = context.addToField(1, 1);
+        context.getPlayer(1).setHP(100);
+        context.startGame();
+        context.proceedOneRound();
+        Assert.assertEquals(150, 5000 - c占位符.getHP());
+        Assert.assertEquals(100 + (225 - 150), context.getPlayer(1).getHP());
+    }
+
     @Test
     public void test骑士守护_基本() {
         SkillTestContext context = prepare(50, 50, "秘银巨石像", "占位符+骑士守护");

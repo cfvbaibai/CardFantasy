@@ -118,10 +118,14 @@ public class Player extends EntityInfo {
         return this.getPlayerInfo().getId();
     }
 
-    public void setHP(int hp) throws HeroDieSignal {
+    public void setHP(int hp) {
         this.hp = hp;
         if (this.hp <= 0) {
-            throw new HeroDieSignal(this);
+            // throw new HeroDieSignal(this);
+            // Now the game will not stop if hero is killed in the middle of the round.
+            // It is possible that hero is cured even after he's killed (e.g. 叹惋之歌)
+            // Hero HP is only checked when the round ends.
+            this.hp = 0;
         }
     }
     

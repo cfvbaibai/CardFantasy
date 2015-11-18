@@ -33,6 +33,10 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2015-11-18： <ul>
+                        <li>现在<cf:c>叹惋之歌</cf:c>能在英雄当前回合HP降的0的情况下拯救英雄了，感谢<x>dd3254690</x>报告BUG</li>
+                        <li>添加新卡<cf:c>贪吃少女</cf:c></li>
+                    </ul></li>
                     <li>2015-11-14: <ul>
                         <li>修复组卡器中【详情】按钮有时候通往不存在页面的BUG</li>
                         <li>去除组卡器中的素材卡，感谢<x>吹水不啰嗦</x>的建议</li>

@@ -1499,6 +1499,12 @@ var Animater = function() {
         } else if (skill == '生命链接') {
             this.flyImage({ fileName: 'life-chain.png', width: 48, height: 48, text: skill, },
                     attacker, defenders, settings.skillDuration);
+        } else if (skill == '贪吃') {
+            this.flyImage({ fileName: 'eat.png', width: 48, height: 48, text: skill, },
+                    attacker, defenders, settings.skillDuration);
+        } else if (skill == '毒刃') {
+            this.flyImage({ fileName: 'poison-dagger.png', width: 48, height: 48, text: skill, },
+                    attacker, defenders, settings.skillDuration);
         } else {
             var text = attacker.ownerId + "的" + attacker.uniqueName + "\r\n";
             text += "\r\n" + skill + "\r\n\r\n";

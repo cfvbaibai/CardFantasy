@@ -315,10 +315,9 @@ public class SummonSkillTest extends SkillValidationTest {
     @Test
     public void test逃跑_基本()
     {
-        SkillTestContext context = prepare(
-                50, 50, "时光女神+逃跑-15",  "末日预言师");
+        SkillTestContext context = prepare(50, 50, "时光女神+逃跑-15",  "末日预言师");
         CardInfo c时光女神逃 = context.addToDeck(0, 0);
-        CardInfo c末日预言师 = context.addToDeck(1, 1);
+        context.addToDeck(1, 1);
         
         context.startGame();
         context.proceedOneRound();
@@ -339,10 +338,9 @@ public class SummonSkillTest extends SkillValidationTest {
     @Test
     public void test逃跑_死亡()
     {
-        SkillTestContext context = prepare(
-                120, 50, "城镇弓箭兵+逃跑-15",  "羽翼化蛇");
-        CardInfo c时光女神逃 = context.addToDeck(0, 0);
-        CardInfo c末日预言师 = context.addToDeck(1, 1);
+        SkillTestContext context = prepare(120, 50, "城镇弓箭兵+逃跑-15",  "羽翼化蛇");
+        context.addToDeck(0, 0);
+        context.addToDeck(1, 1);
         context.getEngine().getStage().getRule().setDeckOrder(1);
         context.startGame();
         context.proceedOneRound();
@@ -361,12 +359,11 @@ public class SummonSkillTest extends SkillValidationTest {
     @Test
     public void test逃跑_横扫()
     {
-        SkillTestContext context = prepare(
-                120, 50, "末日预言师+逃跑-15", "占位符", "占位符","战场女武神");
+        SkillTestContext context = prepare(120, 50, "末日预言师+逃跑-15", "占位符", "占位符","战场女武神");
         CardInfo c末日逃 = context.addToDeck(0, 0);
         context.addToDeck(1, 0);
         context.addToDeck(2, 1);
-        CardInfo c战场女武神 = context.addToDeck(3, 1);
+        context.addToDeck(3, 1);
         context.getEngine().getStage().getRule().setDeckOrder(1);
         context.startGame();
         context.proceedOneRound();

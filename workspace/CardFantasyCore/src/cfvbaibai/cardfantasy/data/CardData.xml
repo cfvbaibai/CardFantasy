@@ -1795,13 +1795,12 @@
     <Card id="3527" name="蛮皇女帝" wikiId="9910" race="蛮荒" speed="4" star="5" cost="99" incrCost="0" at="1" hp="1" incrAT="0" incrHP="0">
       <Skill type="物品技能" level="0" unlock="0" />
     </Card>
-    <!--
     <Card id="3528" name="贪吃少女" wikiId="" race="蛮荒" speed="4" star="5" cost="18" incrCost="2" at="330" hp="1640" incrAT="41" incrHP="45">
         <Skill type="毒刃" level="0" unlock="0" />
         <Skill type="贪吃" level="7" unlock="5" />
         <Skill type="不动" level="0" unlock="10" />
-    </Card>   -->
-    
+    </Card>
+
     <!-- 地狱 -->
     <Card id="4101" name="恶魔小鬼" wikiId="31036" race="地狱" speed="2" star="1" cost="3" incrCost="2" at="80" hp="270" incrAT="19" incrHP="6">
         <Skill type="火球" level="2" unlock="0" />

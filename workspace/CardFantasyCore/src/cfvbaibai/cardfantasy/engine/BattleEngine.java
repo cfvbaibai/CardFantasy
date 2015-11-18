@@ -412,6 +412,9 @@ public class BattleEngine {
             throw new GameOverSignal();
         }
         Player player = this.getActivePlayer();
+        if (player.getHP() <= 0) {
+            throw new HeroDieSignal(player);
+        }
         this.stage.getResolver().deactivateRunes(player);
         if (player.getDeck().size() == 0 && player.getField().size() == 0
                 && player.getHand().size() == 0) {
