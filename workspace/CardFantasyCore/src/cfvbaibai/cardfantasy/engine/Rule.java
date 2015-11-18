@@ -59,7 +59,7 @@ public class Rule {
     }
     
     public static Rule getMapBattle() {
-        return new Rule(5, 999, 1, 0, false, null);
+        return new Rule(5, 999, -1, 0, false, null);
     }
     
     public static Rule getBossBattle() {
