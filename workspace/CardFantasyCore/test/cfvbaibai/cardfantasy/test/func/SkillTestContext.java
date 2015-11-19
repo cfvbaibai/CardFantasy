@@ -1,7 +1,8 @@
 package cfvbaibai.cardfantasy.test.func;
 
-import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.BattleEngine;
+import cfvbaibai.cardfantasy.engine.CardInfo;
+import cfvbaibai.cardfantasy.engine.GameResult;
 import cfvbaibai.cardfantasy.engine.Player;
 import cfvbaibai.cardfantasy.engine.RuneInfo;
 import cfvbaibai.cardfantasy.engine.StageInfo;
@@ -52,8 +53,7 @@ public class SkillTestContext {
         this.getStage().gameStarted();
         return this;
     }
-    public SkillTestContext proceedOneRound() {
-        this.getEngine().proceedOneRound();
-        return this;
+    public GameResult proceedOneRound() {
+        return this.getEngine().proceedOneRound();
     }
 }

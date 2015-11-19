@@ -4,6 +4,9 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import cfvbaibai.cardfantasy.engine.CardInfo;
+import cfvbaibai.cardfantasy.engine.GameEndCause;
+import cfvbaibai.cardfantasy.engine.GameResult;
+import cfvbaibai.cardfantasy.engine.Player;
 
 public class HealingTest extends SkillValidationTest {
     @Test
@@ -119,5 +122,48 @@ public class HealingTest extends SkillValidationTest {
         Assert.assertEquals(1100, c占位符2.getHP());
         Assert.assertEquals(4500, c占位符3.getHP());
         Assert.assertEquals(5000, c占位符4.getHP());
+    }
+    
+    @Test
+    public void test祈祷_普通() {
+        SkillTestContext context = prepare(50, 50, "占位符+祈祷10", "占位符");
+        context.addToField(0, 0);
+        Player player1 = context.getStage().getPlayers().get(0);
+        player1.setHP(100);
+        context.startGame();
+        
+        context.proceedOneRound();
+        Assert.assertEquals(100 + 500, player1.getHP());
+    }
+    
+    @Test
+    public void test祈祷_死亡() {
+        SkillTestContext context = prepare(50, 50, "占位符+魔神之咒10", "占位符+祈祷10");
+        context.addToField(0, 0);
+        context.addToField(1, 1);
+        Player player2 = context.getStage().getPlayers().get(1);
+        player2.setHP(100);
+        context.startGame();
+
+        GameResult result1 = context.proceedOneRound();
+        Assert.assertEquals(GameEndCause.一时中断, result1.getCause());
+        GameResult result2 = context.proceedOneRound();
+        Assert.assertEquals(GameEndCause.英雄死亡, result2.getCause());
+        Assert.assertEquals("PlayerA", result2.getWinner().getId());
+    }
+
+    @Test
+    public void test祈祷_自动扣血() {
+        SkillTestContext context = prepare(50, 50, "占位符+祈祷10", "占位符");
+        context.addToField(0, 0);
+        context.addToField(1, 1);
+        Player player1 = context.getStage().getPlayers().get(0);
+        player1.setHP(250);
+        context.getStage().setRound(120);
+        context.startGame();
+
+        GameResult result = context.proceedOneRound();
+        Assert.assertEquals(GameEndCause.英雄死亡, result.getCause());
+        Assert.assertEquals("PlayerB", result.getWinner().getId());
     }
 }

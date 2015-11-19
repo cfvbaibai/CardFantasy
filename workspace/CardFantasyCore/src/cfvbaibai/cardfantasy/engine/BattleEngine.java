@@ -123,12 +123,17 @@ public class BattleEngine {
         return result;
     }
 
-    public BattleEngine proceedOneRound() {
-        proceedGame(GameMode.OneRound);
-        return this;
+    public GameResult proceedOneRound() {
+        return proceedGame(GameMode.OneRound);
     }
 
     private GameResult proceedGame(GameMode gameMode) {
+        if (!this.getStage().isStarted()) {
+            throw new CardFantasyRuntimeException("战斗未开始");
+        }
+        if (this.getStage().isEnded()) {
+            throw new CardFantasyRuntimeException("战斗已结束");
+        }
         Phase phase = Phase.开始;
         Phase nextPhase = Phase.未知;
         try {
@@ -156,10 +161,13 @@ public class BattleEngine {
                 nextPhase = Phase.未知;
             }
         } catch (GameOverSignal signal) {
+            this.getStage().setEnded(true);
             return stage.result(this.stage.getPlayers().get(0), GameEndCause.战斗超时);
         } catch (HeroDieSignal signal) {
+            this.getStage().setEnded(true);
             return stage.result(getOpponent(signal.getDeadPlayer()), GameEndCause.英雄死亡);
         } catch (AllCardsDieSignal signal) {
+            this.getStage().setEnded(true);
             return stage.result(getOpponent(signal.getDeadPlayer()), GameEndCause.卡片全灭);
         }
     }
@@ -415,11 +423,11 @@ public class BattleEngine {
         if (player.getHP() <= 0) {
             throw new HeroDieSignal(player);
         }
-        this.stage.getResolver().deactivateRunes(player);
-        if (player.getDeck().size() == 0 && player.getField().size() == 0
-                && player.getHand().size() == 0) {
+        if (player.getDeck().size() == 0 && player.getField().size() == 0 && player.getHand().size() == 0) {
             throw new AllCardsDieSignal(player);
         }
+
+        this.stage.getResolver().deactivateRunes(player);
 
         this.stage.getUI().roundStarted(player, this.stage.getRound());
         int thresholdRound = 51;
@@ -429,6 +437,9 @@ public class BattleEngine {
             int heroDamage = 50 + extraRound * 30;
             Skill skill = Skill.自动扣血();
             this.stage.getResolver().attackHero(player, player, skill, heroDamage);
+        }
+        if (player.getHP() <= 0) {
+            throw new HeroDieSignal(player);
         }
         return Phase.抽卡;
     }

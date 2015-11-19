@@ -13,6 +13,9 @@ import cfvbaibai.cardfantasy.data.PlayerInfo;
 import cfvbaibai.cardfantasy.data.Race;
 
 public class StageInfo {
+    private boolean started;
+    private boolean ended;
+
     private Board board;
     private int activePlayerNumber;
     private Phase phase;
@@ -33,10 +36,23 @@ public class StageInfo {
         this.resolver = new SkillResolver(this);
         this.randomizer = Randomizer.getRandomizer().setUI(ui);
         this.globalSkillMap = new HashMap<SkillUseInfo, Boolean>();
-
+        this.started = false;
+        this.ended = false;
         this.ui.stageCreated();
     }
     
+    public boolean isStarted() {
+        return this.started;
+    }
+
+    public boolean isEnded() {
+        return this.ended;
+    }
+
+    public void setEnded(boolean ended) {
+        this.ended = ended;
+    }
+
     public void setUsed(SkillUseInfo skillUseInfo, boolean used) {
         this.globalSkillMap.put(skillUseInfo, used);
     }
@@ -135,6 +151,7 @@ public class StageInfo {
         this.ui.showMessage(this.getPlayers().get(firstPlayer).getShortDesc() + "先攻");
         this.ui.gameStarted(this.getBoard(), this.getRule());
         this.activePlayerNumber = firstPlayer;
+        this.started = true;
     }
     
     private int determineFirstPlayer() {
