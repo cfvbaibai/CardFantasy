@@ -400,12 +400,6 @@ public class SkillResolver {
                     if (!result.isAttackable()) {
                         return result;
                     }
-                    if (blockSkillUseInfo.getType() == SkillType.水流护甲) {
-                        result.setDamage(WaterArmor.apply(blockSkillUseInfo.getSkill(), this, cardAttacker, defender, result.getDamage()));
-                    }
-                    if (!result.isAttackable()) {
-                        return result;
-                    }
                 }
                 {
                     RuneInfo rune = defender.getOwner().getActiveRuneOf(RuneData.冰封);
@@ -549,7 +543,7 @@ public class SkillResolver {
     }
 
     public void resolveShieldBlockingSkills(CardInfo cardAttacker, CardInfo defender, boolean includeBlocking,
-            OnAttackBlockingResult result) {
+            OnAttackBlockingResult result) throws HeroDieSignal {
         for (SkillUseInfo blockSkillUseInfo : defender.getNormalUsableSkills()) {
             if (blockSkillUseInfo.getType() == SkillType.王国之盾) {
                 result.setDamage(RacialShield.apply(blockSkillUseInfo.getSkill(), this, cardAttacker,
@@ -571,6 +565,9 @@ public class SkillResolver {
                 if (blockSkillUseInfo.getType() == SkillType.格挡) {
                     result.setDamage(Block.apply(blockSkillUseInfo.getSkill(), this, cardAttacker, defender,
                             defender, result.getDamage()));
+                }
+                if (blockSkillUseInfo.getType() == SkillType.水流护甲) {
+                    result.setDamage(WaterArmor.apply(blockSkillUseInfo.getSkill(), this, cardAttacker, defender, result.getDamage()));
                 }
             }
         }

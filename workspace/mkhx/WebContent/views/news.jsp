@@ -33,6 +33,10 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2015-11-21: <ul>
+                        <li>修复<cf:c>机械魔偶</cf:c>的15级数值问题，感谢<x>Never_枫纸</x>报告BUG</li>
+                        <li>修复<cf:c>叹惋之歌</cf:c>洗【格挡】后伤害结算的问题，感谢<x>947053627</x>报告BUG</li>
+                    </ul></li>
                     <li>2015-11-19: 修复【自动扣血】和【祈祷】相互作用时的问题，感谢<x>凉宫春日de倔强</x>, <x>ykkgoodboy</x>, <x>请问在8</x>报告BUG</li>
                     <li>2015-11-18： <ul>
                         <li>现在<cf:c>叹惋之歌</cf:c>能在英雄当前回合HP降的0的情况下拯救英雄了，感谢<x>dd3254690</x>报告BUG</li>

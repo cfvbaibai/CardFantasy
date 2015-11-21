@@ -585,6 +585,22 @@ public class DefenseTest extends SkillValidationTest {
         Assert.assertEquals(100 /* 水流护甲面对燕返无效 */, context.getPlayer(1).getHP());
         Assert.assertEquals(275 * 2, 1550 - c秘银巨石像.getHP());
     }
+    
+    /*
+     * 水流护甲和格挡是相同发动时机，结算顺序按技能顺序来
+     */
+    @Test
+    public void test水流护甲_格挡() {
+        SkillTestContext context = prepare(50, 50, "秘银巨石像", "叹惋之歌+格挡5");
+        context.addToField(0, 0);
+        CardInfo c叹惋之歌 = context.addToField(1, 1);
+        context.getPlayer(1).setHP(100);
+        context.startGame();
+        context.proceedOneRound();
+
+        Assert.assertEquals(100 + 300 /* 水流护甲6，格挡掉的部分不会影响水流护甲的回复量 */, context.getPlayer(1).getHP());
+        Assert.assertEquals(350 /* 水流护甲6 */ - 100 /* 格挡5 */, 2205 - c叹惋之歌.getHP());
+    }
 
     /*
      * 即使英雄在回合中被杀死，仍能在本回合被水流护甲救回

@@ -475,7 +475,7 @@
         <Skill type="暴击" level="5" unlock="5" />
         <Skill type="裂伤" level="0" unlock="10" />
     </Card>
-    <Card id="1439" name="机械魔偶" wikiId="" race="王国" speed="2" star="4" cost="12" incrCost="2" at="320" hp="1000" incrAT="0" incrHP="0">
+    <Card id="1439" name="机械魔偶" wikiId="" race="王国" speed="2" star="4" cost="12" incrCost="2" at="320" hp="1000" incrAT="28" incrHP="35">
         <Skill type="二重狙击" level="7" unlock="0" />
         <Skill type="免疫" level="0" unlock="5" />
         <Skill type="转生" level="5" unlock="10" />
@@ -657,7 +657,7 @@
         <Skill type="凯撒之击" level="5" unlock="5" />
         <Skill type="弱点攻击" level="0" unlock="10" />
     </Card>
-    <Card id="1534" name="叹惋之歌" wikiId="" race="王国" speed="2" star="5" cost="17" incrCost="2" at="330" hp="1680" incrAT="39" incrHP="44">
+    <Card id="1534" name="叹惋之歌" wikiId="" race="王国" speed="2" star="5" cost="17" incrCost="2" at="330" hp="1680" incrAT="39" incrHP="35">
         <Skill type="送还" level="0" unlock="0" />
         <Skill type="水流护甲" level="6" unlock="5" />
         <Skill type="免疫" level="0" unlock="10" />
@@ -1793,7 +1793,7 @@
         <Skill type="透支" level="6" unlock="10" />
     </Card>
     <Card id="3527" name="蛮皇女帝" wikiId="9910" race="蛮荒" speed="4" star="5" cost="99" incrCost="0" at="1" hp="1" incrAT="0" incrHP="0">
-      <Skill type="物品技能" level="0" unlock="0" />
+        <Skill type="物品技能" level="0" unlock="0" />
     </Card>
     <Card id="3528" name="贪吃少女" wikiId="" race="蛮荒" speed="4" star="5" cost="18" incrCost="2" at="330" hp="1640" incrAT="41" incrHP="45">
         <Skill type="毒刃" level="0" unlock="0" />
