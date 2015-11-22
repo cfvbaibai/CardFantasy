@@ -352,6 +352,8 @@ public class CardInfo extends EntityInfo {
                 sb.append("HP变化");
             } else if (effect.getType() == SkillEffectType.SKILL_USED) {
                 sb.append("技能已使用");
+            } else if (effect.getType() == SkillEffectType.SKILL_AWAKEN) {
+                sb.append("技能觉醒");
             } else {
                 throw new CardFantasyRuntimeException("Unknown skill effect type: " + effect.getType().name());
             }
@@ -517,13 +519,20 @@ public class CardInfo extends EntityInfo {
         this.eternalWound += this.getMaxHP() - remainingHP;
     }
 
-    public boolean isAwaken(Race race) {
+    public boolean isAwaken(SkillUseInfo skillUseInfo, Race race) {
         if (this.isDead()) {
             return false;
+        }
+        List<SkillEffect> skillEffects = this.getEffectsCausedBy(skillUseInfo);
+        for (SkillEffect effect : skillEffects) {
+            if (effect.getType() == SkillEffectType.SKILL_AWAKEN) {
+                return true;
+            }
         }
         List<CardInfo> aliveCards = this.getOwner().getField().getAliveCards();
         for (CardInfo aliveCard : aliveCards) {
             if (aliveCard.getRace() == race) {
+                this.addEffect(new SkillEffect(SkillEffectType.SKILL_AWAKEN, skillUseInfo, 0, true));
                 return true;
             }
         }

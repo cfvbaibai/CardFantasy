@@ -590,19 +590,44 @@ public class AttackBuffTest extends SkillValidationTest {
 
     @Test
     public void test觉醒神兵召唤_基础() {
-        SkillTestContext context = prepare(50, 50, "秘银巨石像+觉醒神兵召唤", "战斗猛犸象", "占位符");
-        CardInfo c秘银巨石像1 = context.addToField(0, 0);
-        context.addToField(1, 0);
+        SkillTestContext context = prepare(50, 50, "秘银巨石像+觉醒神兵召唤", "金牌火鸡", "占位符", "秘银巨石像");
+        CardInfo c秘银巨石像 = context.addToField(0, 0);
+        CardInfo c金牌火鸡 = context.addToField(1, 0);
         CardInfo c占位符 = context.addToField(2, 1);
+        context.addToField(3, 1);
         context.startGame();
 
         random.addNextNumbers(0);
         context.proceedOneRound();
-        
+
+        // 神兵召唤被激活
         Assert.assertEquals(810 + 500, 5000 - c占位符.getHP());
-        Assert.assertEquals(810, c秘银巨石像1.getCurrentAT());
+        Assert.assertEquals(810, c秘银巨石像.getCurrentAT());
+
+        context.proceedOneRound();
+        // 此轮金牌火鸡被打死
+        Assert.assertTrue(c金牌火鸡.isDead());
+
+        random.addNextNumbers(0);
+        context.proceedOneRound();
+        // 由于神兵召唤已被激活，此轮虽然金牌火鸡已死，神兵召唤仍发挥效果
+        Assert.assertEquals(810 + 500 + 810 + 500, 5000 - c占位符.getHP());
+        Assert.assertEquals(810, c秘银巨石像.getCurrentAT());
     }
-    
+
+    @Test
+    public void test觉醒神兵召唤_未觉醒() {
+        SkillTestContext context = prepare(50, 50, "秘银巨石像+觉醒神兵召唤", "占位符");
+        CardInfo c秘银巨石像 = context.addToField(0, 0);
+        CardInfo c占位符 = context.addToField(1, 1);
+        context.startGame();
+
+        context.proceedOneRound();
+
+        Assert.assertEquals(810, 5000 - c占位符.getHP());
+        Assert.assertEquals(810, c秘银巨石像.getCurrentAT());
+    }
+
     @Test
     public void test圣器召唤_基础() {
         SkillTestContext context = prepare(50, 50, "占位符+圣器召唤", "占位符");

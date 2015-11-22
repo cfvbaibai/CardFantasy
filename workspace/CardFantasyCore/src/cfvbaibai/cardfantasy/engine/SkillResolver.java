@@ -731,7 +731,7 @@ public class SkillResolver {
            } else if (skillUseInfo.getType() == SkillType.厨具召唤) {
                WeaponSummon.apply(this, skillUseInfo, attacker, defenderPlayer, 1, 500);
            } else if (skillUseInfo.getType() == SkillType.神兵召唤 ||
-                   skillUseInfo.getType() == SkillType.觉醒神兵召唤 && attacker.isAwaken(Race.SAVAGE)) {
+                   skillUseInfo.getType() == SkillType.觉醒神兵召唤 && attacker.isAwaken(skillUseInfo, Race.SAVAGE)) {
                WeaponSummon.apply(this, skillUseInfo, attacker, defenderPlayer, 500, 1700);
            }else if (skillUseInfo.getType() == SkillType.圣器召唤) {
                WeaponSummon.apply(this, skillUseInfo, attacker, defenderPlayer, 300, 1300);
@@ -767,7 +767,7 @@ public class SkillResolver {
                 } else if (skillUseInfo.getType() == SkillType.暴击) {
                     CriticalAttack.apply(this, skillUseInfo, attacker, defender);
                 } else if (skillUseInfo.getType() == SkillType.神兵召唤 ||
-                        skillUseInfo.getType() == SkillType.觉醒神兵召唤 && attacker.isAwaken(Race.SAVAGE)) {
+                        skillUseInfo.getType() == SkillType.觉醒神兵召唤 && attacker.isAwaken(skillUseInfo, Race.SAVAGE)) {
                     WeaponSummon.apply(this, skillUseInfo, attacker, defender, 500, 1700);
                 } else if (skillUseInfo.getType() == SkillType.厨具召唤) {
                     WeaponSummon.apply(this, skillUseInfo, attacker, defender, 1, 500);
