@@ -30,6 +30,7 @@ public final class Flee {
             ui.cardToDeck(defender.getOwner(), defender);
             defender.getOwner().getDeck().addCard(defender);
         } else {
+            ui.returnCard(attacker, defender, cardSkill);
             ui.cardToHand(defender.getOwner(), defender);
             hand.addCard(defender);
         }

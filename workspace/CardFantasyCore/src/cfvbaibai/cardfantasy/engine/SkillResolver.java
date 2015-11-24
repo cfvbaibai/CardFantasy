@@ -308,9 +308,9 @@ public class SkillResolver {
                 }
             }
             for (SkillUseInfo skillUseInfo : defender.getNormalUsableSkills()) {
-	            if (skillUseInfo.getType() == SkillType.逃跑) {
-	                Flee.apply(skillUseInfo.getSkill(), this, attacker, defender, damagedResult.actualDamage);
-	            } 
+                if (skillUseInfo.getType() == SkillType.逃跑) {
+                    Flee.apply(skillUseInfo.getSkill(), this, attacker, defender, damagedResult.actualDamage);
+                } 
             }
         }
     }
