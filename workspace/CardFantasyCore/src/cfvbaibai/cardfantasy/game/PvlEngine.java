@@ -5,6 +5,7 @@ import java.util.List;
 
 import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
 import cfvbaibai.cardfantasy.GameUI;
+import cfvbaibai.cardfantasy.data.Card;
 import cfvbaibai.cardfantasy.data.PlayerCardBuffSkill;
 import cfvbaibai.cardfantasy.data.PlayerInfo;
 import cfvbaibai.cardfantasy.data.Race;
@@ -15,6 +16,7 @@ import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.GameResult;
 import cfvbaibai.cardfantasy.engine.Player;
 import cfvbaibai.cardfantasy.engine.Rule;
+import cfvbaibai.cardfantasy.engine.SkillUseInfo;
 
 public class PvlEngine extends GameEngine {
     private int timeout;
@@ -64,6 +66,8 @@ public class PvlEngine extends GameEngine {
     public PvlGameResult clearGuards(PlayerInfo lilith, PlayerInfo player, int targetLilithAliveCardCount) {
         int battleCount = 0;
         List<CardInfo> survivors = null;
+        int MaxLilithHp = getLilithCardHp(lilith);
+        
         while (true) {
             BattleEngine engine = this.createBattleEngine();
             engine.registerPlayers(lilith, player);
@@ -77,24 +81,27 @@ public class PvlEngine extends GameEngine {
             }
             survivors = engine.exportSurvivers(0);
             if (result.getWinner().getId().equals(player.getId())) {
-                return getClearGuardsResult(battleCount, result.getLoser());
+                return getClearGuardsResult(battleCount, result.getLoser(),MaxLilithHp);
             }
             Player lilithPlayer = result.getWinner();
+            /*
             if (isLilithKilled(lilithPlayer)) {
                 return getClearGuardsResult(battleCount, lilithPlayer);
-            }
+            }*/
             int lilithAliveCardCount = 0;
             lilithAliveCardCount += lilithPlayer.getDeck().size();
             lilithAliveCardCount += lilithPlayer.getHand().size();
             lilithAliveCardCount += lilithPlayer.getField().getAliveCards().size();
             if (lilithAliveCardCount <= targetLilithAliveCardCount) {
-                return getClearGuardsResult(battleCount, lilithPlayer);
+                return getClearGuardsResult(battleCount, lilithPlayer,MaxLilithHp);
             }
         }
     }
 
-    private PvlGameResult getClearGuardsResult(int battleCount, Player lilith) {
+    private PvlGameResult getClearGuardsResult(int battleCount, Player lilith,int maxLilithHp) {
+    	int CardNumber = 0;
         for (CardInfo card : lilith.getField().getAliveCards()) {
+        	CardNumber++;
             if (card.getRace() == Race.BOSS) {
                 return new PvlGameResult(battleCount, card.getEternalWound());
             }
@@ -110,15 +117,22 @@ public class PvlEngine extends GameEngine {
             }
         }
         for (CardInfo card : lilith.getDeck().toList()) {
+        	CardNumber++;
             if (card.getRace() == Race.BOSS) {
                 return new PvlGameResult(battleCount, card.getEternalWound());
             }
         }
         for (CardInfo card : lilith.getHand().toList()) {
+        	CardNumber++;
             if (card.getRace() == Race.BOSS) {
                 return new PvlGameResult(battleCount, card.getEternalWound());
             }
         }
+        if (CardNumber >0) //如果剩余下来卡牌不是莉莉丝
+        {
+        	return new PvlGameResult(battleCount, maxLilithHp);
+        }
+        
         throw new CardFantasyRuntimeException("Should not reach here.");
     }
     
@@ -135,4 +149,35 @@ public class PvlEngine extends GameEngine {
         }
         return false;
     }
+    
+    private int getLilithCardHp(PlayerInfo lilith)
+    {
+    	Card LilithCard = null;
+    	for(Card card : lilith.getCards())
+    	{
+    		if (card.getRace() == Race.BOSS)
+    		{
+    			LilithCard = card;
+    			break;    			
+    		}
+    	}
+    	
+    	if (LilithCard == null)
+    	{
+    		throw new CardFantasyRuntimeException("Could not find lilith card.");
+    	}
+    	
+    	int Level = 0;
+        for (Skill cardBuff : lilith.getCardBuffs()) {
+            if (cardBuff.getType() ==SkillType.原始体力调整 )
+            {
+            	Level = cardBuff.getLevel();
+            }
+        }
+        int MaxHp =  LilithCard.getMaxHP() ;
+        return MaxHp;
+    }
+
+
+    
 }
