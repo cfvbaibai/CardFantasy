@@ -16,7 +16,6 @@ import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.GameResult;
 import cfvbaibai.cardfantasy.engine.Player;
 import cfvbaibai.cardfantasy.engine.Rule;
-import cfvbaibai.cardfantasy.engine.SkillUseInfo;
 
 public class PvlEngine extends GameEngine {
     private int timeout;
@@ -99,9 +98,9 @@ public class PvlEngine extends GameEngine {
     }
 
     private PvlGameResult getClearGuardsResult(int battleCount, Player lilith,int maxLilithHp) {
-    	int CardNumber = 0;
+        int CardNumber = 0;
         for (CardInfo card : lilith.getField().getAliveCards()) {
-        	CardNumber++;
+            CardNumber++;
             if (card.getRace() == Race.BOSS) {
                 return new PvlGameResult(battleCount, card.getEternalWound());
             }
@@ -117,25 +116,25 @@ public class PvlEngine extends GameEngine {
             }
         }
         for (CardInfo card : lilith.getDeck().toList()) {
-        	CardNumber++;
+            CardNumber++;
             if (card.getRace() == Race.BOSS) {
                 return new PvlGameResult(battleCount, card.getEternalWound());
             }
         }
         for (CardInfo card : lilith.getHand().toList()) {
-        	CardNumber++;
+            CardNumber++;
             if (card.getRace() == Race.BOSS) {
                 return new PvlGameResult(battleCount, card.getEternalWound());
             }
         }
         if (CardNumber >0) //如果剩余下来卡牌不是莉莉丝
         {
-        	return new PvlGameResult(battleCount, maxLilithHp);
+            return new PvlGameResult(battleCount, maxLilithHp);
         }
         
         throw new CardFantasyRuntimeException("Should not reach here.");
     }
-    
+/*
     private boolean isLilithKilled(Player lilith) {
         for (CardInfo card : lilith.getGrave().toList()) {
             if (card.getRace() == Race.BOSS) {
@@ -149,35 +148,21 @@ public class PvlEngine extends GameEngine {
         }
         return false;
     }
-    
-    private int getLilithCardHp(PlayerInfo lilith)
-    {
-    	Card LilithCard = null;
-    	for(Card card : lilith.getCards())
-    	{
-    		if (card.getRace() == Race.BOSS)
-    		{
-    			LilithCard = card;
-    			break;    			
-    		}
-    	}
-    	
-    	if (LilithCard == null)
-    	{
-    		throw new CardFantasyRuntimeException("Could not find lilith card.");
-    	}
-    	
-    	int Level = 0;
-        for (Skill cardBuff : lilith.getCardBuffs()) {
-            if (cardBuff.getType() ==SkillType.原始体力调整 )
-            {
-            	Level = cardBuff.getLevel();
+*/
+    private int getLilithCardHp(PlayerInfo lilith) {
+        Card lilithCard = null;
+        for (Card card : lilith.getCards()) {
+            if (card.getRace() == Race.BOSS) {
+                lilithCard = card;
+                break;
             }
         }
-        int MaxHp =  LilithCard.getMaxHP() ;
-        return MaxHp;
+
+        if (lilithCard == null) {
+            throw new CardFantasyRuntimeException("Could not find lilith card.");
+        }
+
+        int maxHp = lilithCard.getMaxHP();
+        return maxHp;
     }
-
-
-    
 }

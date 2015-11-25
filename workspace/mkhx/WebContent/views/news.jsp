@@ -33,6 +33,11 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2015-11-25: <ul>
+                        <li>更新莉莉丝卡组</li>
+                        <li>添加新卡<cf:c>福音乐师</cf:c>和<cf:c>幻想炼金士</cf:c></li>
+                    </ul></li>
+                    <li>2015-11-24: 添加新卡<cf:c>圣剑持有者</cf:c>和<cf:c>邪月翼魔</cf:c></li>
                     <li>2015-11-21: <ul>
                         <li>修复<cf:c>机械魔偶</cf:c>的15级数值问题，感谢<x>Never_枫纸</x>报告BUG</li>
                         <li>修复<cf:c>叹惋之歌</cf:c>洗【格挡】后伤害结算的问题，感谢<x>947053627</x>报告BUG</li>
