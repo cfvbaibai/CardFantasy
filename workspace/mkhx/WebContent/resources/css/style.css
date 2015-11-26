@@ -44,6 +44,10 @@ body {
     font-size: 90%;
 }
 
+.ui-content ul.ui-selectmenu-list {
+    margin: 0;
+}
+
 div.ui-block-label-select {
     padding-top: 10px;
 }
@@ -114,7 +118,7 @@ fieldset.select-6-4 div.ui-controlgroup-controls>.ui-select:nth-child(2)
 .ui-dialog-contain {
     width: 90%;
     max-width: 800px;
-    margin: 1% auto 0 auto;
+    margin: 20px auto 0 auto;
     padding: 0;
     position: relative;
 }

@@ -5,12 +5,12 @@
             <h3>设置阵容</h3>
             <div>
                 <fieldset class="select-6-4" data-role="controlgroup" data-type="horizontal">
-                    <select id="lilith-name" data-mini="true" data-native-menu="true">
+                    <select id="lilith-name" data-mini="true" data-native-menu="false">
                     <c:forEach items="${lilithDatas}" var="data">
                         <option value="<c:out value="${data.bossId}" />"> <c:out value="${data.bossId}" /></option>
                     </c:forEach>
                     </select>
-                    <select id="lilith-game-type" data-mini="true" data-native-menu="true">
+                    <select id="lilith-game-type" data-mini="true" data-native-menu="false">
                         <option value="0">清怪模式</option>
                         <option value="1">尾刀模式</option>
                     </select>

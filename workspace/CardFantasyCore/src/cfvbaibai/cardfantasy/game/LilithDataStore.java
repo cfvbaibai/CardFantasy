@@ -55,6 +55,10 @@ public class LilithDataStore {
     }
     
     public List<LilithStartupInfo> getAll() {
-        return new ArrayList<LilithStartupInfo>(this.lilithStartupInfos.values());
+        List<LilithStartupInfo> result = new ArrayList<>();
+        for (String key : allKeys) {
+            result.add(this.lilithStartupInfos.get(key));
+        }
+        return result;
     }
 }

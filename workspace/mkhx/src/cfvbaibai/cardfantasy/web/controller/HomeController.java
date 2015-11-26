@@ -1,7 +1,5 @@
 package cfvbaibai.cardfantasy.web.controller;
 
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 
@@ -50,19 +48,11 @@ public class HomeController {
         mv.addObject("isNewSession", request.getSession().isNew());
         mv.addObject("questions", questionStore.pickRandom());
         List<LilithStartupInfo> allLilithData = lilithDataStore.getAll();
-        Collections.sort(allLilithData, new LilithDataComparator());
         mv.addObject("lilithDatas", allLilithData);
         this.userActionRecorder.addAction(new UserAction(new Date(), request.getRemoteAddr(), "Visit Home", ""));
         return mv;
     }
-    
-    private class LilithDataComparator implements Comparator<LilithStartupInfo> {
-        @Override
-        public int compare(LilithStartupInfo a, LilithStartupInfo b) {
-            return a.getCardAtBuff() - b.getCardAtBuff();
-        }
-    }
-    
+
     @RequestMapping(value = "/Stat/BossBattle/{bossName}/view")
     public ModelAndView statRecord(HttpServletRequest request, @PathVariable("bossName") String bossName) {
         ModelAndView mv = new ModelAndView();
