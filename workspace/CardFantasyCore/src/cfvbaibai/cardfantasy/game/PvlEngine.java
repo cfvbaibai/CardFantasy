@@ -65,8 +65,8 @@ public class PvlEngine extends GameEngine {
     public PvlGameResult clearGuards(PlayerInfo lilith, PlayerInfo player, int targetLilithAliveCardCount) {
         int battleCount = 0;
         List<CardInfo> survivors = null;
-        int MaxLilithHp = getLilithCardHp(lilith);
-        
+        int maxLilithHp = getLilithCardHp(lilith);
+
         while (true) {
             BattleEngine engine = this.createBattleEngine();
             engine.registerPlayers(lilith, player);
@@ -80,7 +80,7 @@ public class PvlEngine extends GameEngine {
             }
             survivors = engine.exportSurvivers(0);
             if (result.getWinner().getId().equals(player.getId())) {
-                return getClearGuardsResult(battleCount, result.getLoser(),MaxLilithHp);
+                return getClearGuardsResult(battleCount, result.getLoser(), maxLilithHp);
             }
             Player lilithPlayer = result.getWinner();
             /*
@@ -92,15 +92,15 @@ public class PvlEngine extends GameEngine {
             lilithAliveCardCount += lilithPlayer.getHand().size();
             lilithAliveCardCount += lilithPlayer.getField().getAliveCards().size();
             if (lilithAliveCardCount <= targetLilithAliveCardCount) {
-                return getClearGuardsResult(battleCount, lilithPlayer,MaxLilithHp);
+                return getClearGuardsResult(battleCount, lilithPlayer, maxLilithHp);
             }
         }
     }
 
-    private PvlGameResult getClearGuardsResult(int battleCount, Player lilith,int maxLilithHp) {
-        int CardNumber = 0;
+    private PvlGameResult getClearGuardsResult(int battleCount, Player lilith, int maxLilithHp) {
+        //int cardNumber = 0;
         for (CardInfo card : lilith.getField().getAliveCards()) {
-            CardNumber++;
+            //cardNumber++;
             if (card.getRace() == Race.BOSS) {
                 return new PvlGameResult(battleCount, card.getEternalWound());
             }
@@ -116,23 +116,26 @@ public class PvlEngine extends GameEngine {
             }
         }
         for (CardInfo card : lilith.getDeck().toList()) {
-            CardNumber++;
+            //cardNumber++;
             if (card.getRace() == Race.BOSS) {
                 return new PvlGameResult(battleCount, card.getEternalWound());
             }
         }
         for (CardInfo card : lilith.getHand().toList()) {
-            CardNumber++;
+            //cardNumber++;
             if (card.getRace() == Race.BOSS) {
                 return new PvlGameResult(battleCount, card.getEternalWound());
             }
         }
-        if (CardNumber >0) //如果剩余下来卡牌不是莉莉丝
+        /*
+        if (cardNumber > 0) //如果剩余下来卡牌不是莉莉丝
         {
+        */
             return new PvlGameResult(battleCount, maxLilithHp);
+        /*
         }
-        
-        throw new CardFantasyRuntimeException("Should not reach here.");
+            throw new CardFantasyRuntimeException("Should not reach here.");
+        */
     }
 /*
     private boolean isLilithKilled(Player lilith) {

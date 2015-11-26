@@ -33,6 +33,7 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2015-11-26: 修复新莉莉丝卡组里的一些bug，感谢<x>tyghgpp</x>, <x>传说中基巴传说</x>, <x>咬起来喀嚓喀嚓</x>报告BUG</li>
                     <li>2015-11-25: <ul>
                         <li>更新莉莉丝卡组</li>
                         <li>添加新卡<cf:c>福音乐师</cf:c>和<cf:c>幻想炼金士</cf:c></li>
