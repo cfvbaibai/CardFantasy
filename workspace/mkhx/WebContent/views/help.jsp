@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<div id="help" class="main-page" data-role="page" data-title="帮助" data-mini="true">
+<div id="help" class="main-page" data-role="page" data-title="帮助" data-mini="true" data-theme="${theme}">
     <div data-role="content">
         <div data-role="collapsible" data-collapsed="false" data-mini="true">
             <h3>友情支持</h3>

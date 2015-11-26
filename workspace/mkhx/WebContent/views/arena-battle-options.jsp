@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-    <div id="battle-options" data-role="page" data-title="战斗选项设置" data-mini="true">
+    <div id="battle-options" data-role="page" data-title="战斗选项设置" data-mini="true" data-theme="${theme}">
         <div data-role="header" data-position="fixed">
             <h3 style="text-align: center">战斗规则设置</h3>
         </div>

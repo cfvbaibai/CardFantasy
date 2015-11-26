@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<div id="lilith-battle" class="main-page" data-role="page" data-title="莉莉丝战" data-mini="true">
+<div id="lilith-battle" class="main-page" data-role="page" data-title="莉莉丝战" data-mini="true" data-theme="${theme}">
     <div data-role="content">
         <div data-role="collapsible" data-collapsed="false" data-mini="true">
             <h3>设置阵容</h3>

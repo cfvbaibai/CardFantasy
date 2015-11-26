@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-    <div id="deck-builder" data-role="page" data-title="组卡" data-mini="true">
+    <div id="deck-builder" data-role="page" data-title="组卡" data-mini="true" data-theme="${theme}">
         <div data-role="header" data-position="fixed">
             <h3 style="text-align: center">组卡</h3>
         </div>

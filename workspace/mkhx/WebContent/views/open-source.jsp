@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<div id="open-source" class="main-page" data-role="page" data-title="加入模拟器开发" data-mini="true">
+<div id="open-source" class="main-page" data-role="page" data-title="加入模拟器开发" data-mini="true" data-theme="${theme}">
     <div data-role="content">
         <div>
             <p>以下是加入模拟器开发的具体要点：</p>

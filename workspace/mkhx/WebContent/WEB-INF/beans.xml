@@ -40,7 +40,7 @@
     <bean class="cfvbaibai.cardfantasy.web.ErrorHelper">
         <constructor-arg index="0" ref="general-logger" />
     </bean>
-    
+
     <bean class="cfvbaibai.cardfantasy.web.Cnzz">
         <constructor-arg index="0" ref="general-logger" />
     </bean>

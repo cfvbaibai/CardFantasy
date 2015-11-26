@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-    <div id="arena-battle" class="main-page" data-role="page" data-title="竞技场战" data-mini="true">
+    <div id="arena-battle" class="main-page" data-role="page" data-title="竞技场战" data-mini="true" data-theme="${theme}">
         <div data-role="content">
             <div data-role="collapsible" data-mini="true" data-collapsed="false">
                 <h3>设置双方阵容</h3>

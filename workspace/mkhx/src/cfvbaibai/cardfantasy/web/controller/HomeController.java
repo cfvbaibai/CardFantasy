@@ -47,6 +47,7 @@ public class HomeController {
         mv.setViewName("home");
         mv.addObject("isNewSession", request.getSession().isNew());
         mv.addObject("questions", questionStore.pickRandom());
+        mv.addObject("theme", "a");
         List<LilithStartupInfo> allLilithData = lilithDataStore.getAll();
         mv.addObject("lilithDatas", allLilithData);
         this.userActionRecorder.addAction(new UserAction(new Date(), request.getRemoteAddr(), "Visit Home", ""));

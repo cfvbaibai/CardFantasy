@@ -10,7 +10,7 @@
 <body class="ui-mobile-viewport">
     <div id="wiki" class="main-page" data-role="page">
         <%@ include file="wiki-header.jsp" %>
-        <div data-role="content">
+        <div data-role="content" data-theme="${theme}">
             <div id="wiki-tools" data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>工具</h3>
                 <div class="wiki-result">

@@ -27,6 +27,7 @@
         <script type="text/javascript">BAIDU_CLB_fillSlot("1136893");</script>
     </div>
 -->
+    <div data-theme="c">
     <%@ include file="news.jsp" %>
     <%@ include file="map-battle.jsp" %>
     <%@ include file="arena-battle.jsp" %>
@@ -40,7 +41,7 @@
     <%@ include file="arena.jsp" %>
     <%@ include file="deck-builder.jsp" %>
     <%@ include file="arena-battle-options.jsp" %>
-
+    </div>
     <%--<audio src='<c:url value="/resources/audio/战狐-乐正绫.mp3" />' class="audioplayer-mini" controls="controls" autoplay="autoplay" loop="loop"></audio> --%>
     <iframe id="stat-iframe" height="0" width="0"></iframe>
 </body>

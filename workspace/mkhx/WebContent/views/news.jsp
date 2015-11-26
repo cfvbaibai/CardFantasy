@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="cf" uri="/WEB-INF/CardFantasyTags.tld" %>
-    <div id="news" class="main-page" data-role="page" data-category="main-page" data-title="魔卡幻想模拟器" data-mini="true">
+    <div id="news" class="main-page" data-role="page" data-category="main-page" data-title="魔卡幻想模拟器" data-mini="true" data-theme="${theme}">
         <div class="dashboard" data-role="content">
             <div>
                 <a href="#news-left-panel" data-role="button" data-mini="true" data-theme="b">点击左上角导航按钮开始使用模拟器</a>
