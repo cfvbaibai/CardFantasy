@@ -1,10 +1,17 @@
 package cfvbaibai.cardfantasy.data;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
@@ -16,6 +23,7 @@ import cfvbaibai.cardfantasy.Randomizer;
 
 public class CardDataStore {
     private Map<String, CardData> cardMap;
+    // Only used in getRandomCard
     private List<String> allKeys;
 
     private CardDataStore() {
@@ -25,6 +33,58 @@ public class CardDataStore {
 
     public static CardDataStore loadDefault() {
         CardDataStore store = new CardDataStore();
+
+        Map<String, List<String>> aliasMap = new HashMap<>(); // Key: card name, Value: alias list.
+        Set<String> aliasSet = new HashSet<>(); // To check whether duplicate alias exists.
+        InputStream aliasStream = CardDataStore.class.getClassLoader().getResourceAsStream("cfvbaibai/cardfantasy/data/alias.txt");
+        BufferedReader aliasReader;
+        try {
+            aliasReader = new BufferedReader(new InputStreamReader(aliasStream, "UTF-8"));
+        } catch (UnsupportedEncodingException e) {
+            throw new CardFantasyRuntimeException("UTF-8 is not supported on the machine", e);
+        }
+        String line = null;
+        int lineNumber = 0;
+        try {
+            while ((line = aliasReader.readLine()) != null) {
+                ++lineNumber;
+                if (line.startsWith("#")) {
+                    continue;
+                }
+                if (line.length() == 0) {
+                    continue;
+                }
+                int iEqualSign = line.indexOf('=');
+                if (iEqualSign < 0 || iEqualSign == 0 || iEqualSign == line.length() - 1) {
+                    throw new CardFantasyRuntimeException("Invalid alias at line " + lineNumber + ": " + line);
+                }
+                String cardName = line.substring(0, iEqualSign);
+                String[] aliases = line.substring(iEqualSign + 1).split(",");
+                if (aliases.length == 0) {
+                    throw new CardFantasyRuntimeException("Invalid alias at line " + lineNumber + ": " + line);
+                }
+                List<String> aliasList = new ArrayList<>();
+                for (int i = 0; i < aliases.length; ++i) {
+                    if (aliasSet.contains(aliases[i])) {
+                        throw new CardFantasyRuntimeException("Duplicate alias found at line " + lineNumber + ": " + aliases[i]);
+                    }
+                    aliasSet.add(aliases[i]);
+                    aliasList.add(aliases[i]);
+                }
+                if (aliasMap.containsKey(cardName)) {
+                    aliasMap.get(cardName).addAll(aliasList);
+                } else {
+                    aliasMap.put(cardName, aliasList);
+                }
+            }
+        } catch (IOException e) {
+            throw new CardFantasyRuntimeException("Cannot read line from alias file.", e);
+        }
+        try {
+            aliasReader.close();
+        } catch (IOException e) {
+            throw new CardFantasyRuntimeException("Cannot close alias reader.", e);
+        }
 
         URL url = CardDataStore.class.getClassLoader().getResource("cfvbaibai/cardfantasy/data/CardData.xml");
         SAXReader reader = new SAXReader();
@@ -60,11 +120,22 @@ public class CardDataStore {
                     cardData.getSkills().add(new CardSkill(type, level, unlockLevel, isSummonSkill, isDeathSkill));
                 }
                 store.addCard(cardData);
+                if (aliasMap.containsKey(cardData.getName())) {
+                    for (String alias : aliasMap.get(cardData.getName())) {
+                        store.addAlias(alias, cardData);
+                    }
+                }
             }
             return store;
         } catch (DocumentException e) {
             throw new CardFantasyRuntimeException("Cannot load card info XML.", e);
         }
+    }
+
+    private void addAlias(String alias, CardData cardData) {
+        this.cardMap.put(alias, cardData);
+        // allKeys used in getRandomCard, so we should add alias to it. 
+        //this.allKeys.add(alias);
     }
 
     private void addCard(CardData cardData) {
