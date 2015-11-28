@@ -256,6 +256,7 @@ public class AutoBattleController {
                 writer.append("<tr><td>条件符合: </td><td>" + stat.getConditionMet() + "</td></tr>");
             }
             writer.append("</table>");
+            writer.append("<input type='hidden' value='myrate" + stat.getP1Win() + "' />");
             logger.info("TO:P1:P2 = " + stat.getTimeoutCount() + ":" + stat.getP1Win() + ":" + stat.getP2Win());
         } catch (Exception e) {
             writer.print(errorHelper.handleError(e, false));
