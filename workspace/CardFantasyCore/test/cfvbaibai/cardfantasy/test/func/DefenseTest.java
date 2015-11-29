@@ -956,4 +956,20 @@ public class DefenseTest extends SkillValidationTest {
         Assert.assertEquals(0, context.getPlayer(1).getGrave().size());
         Assert.assertEquals(0, context.getPlayer(1).getOutField().size());
     }
+
+    @Test
+    public void test逃跑_转生() {
+        SkillTestContext context = prepare(50, 50, "秘银巨石像", "淘气灯灵+逃跑");
+        context.addToField(0, 0);
+        context.addToField(1, 1).setBasicHP(2);
+        context.startGame();
+
+        random.addNextNumbers(0); // 灯灵转生
+        context.proceedOneRound();
+        Assert.assertEquals(0, context.getPlayer(1).getField().size());
+        Assert.assertEquals(1, context.getPlayer(1).getHand().size());
+        Assert.assertEquals(0, context.getPlayer(1).getDeck().size());
+        Assert.assertEquals(0, context.getPlayer(1).getGrave().size());
+        Assert.assertEquals(0, context.getPlayer(1).getOutField().size());
+    }
 }

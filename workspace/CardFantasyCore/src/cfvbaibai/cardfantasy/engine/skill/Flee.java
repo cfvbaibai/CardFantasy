@@ -23,10 +23,13 @@ public final class Flee {
             return;
         }
         */
+        if (defender.getOwner().getHand().contains(defender) || defender.getOwner().getDeck().contains(defender)) {
+            // 如果已经转生了，那么就不再发动逃跑了
+            return;
+        }
         GameUI ui = resolver.getStage().getUI();
         ui.useSkill(defender, attacker, cardSkill, true);
         if (defender.isDead()) {
-            // 如果是直接被物理攻击秒杀，需要从墓地把卡牌去除
             defender.getOwner().getGrave().removeCard(defender);
         } else {
             // 如果没被物理攻击直接秒杀，需要从场上把卡牌去除
