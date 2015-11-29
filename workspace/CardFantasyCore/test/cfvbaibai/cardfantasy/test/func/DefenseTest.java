@@ -804,6 +804,56 @@ public class DefenseTest extends SkillValidationTest {
         Assert.assertEquals(1, context.getPlayer(1).getHand().size());
     }
 
+    @Test
+    public void test逃跑_两次逃跑() {
+        SkillTestContext context = prepare(50, 50, "时光女神+逃跑-15",  "末日预言师");
+        CardInfo c时光女神逃 = context.addToDeck(0, 0);
+        context.addToDeck(1, 1);
+        
+        context.startGame();
+        context.proceedOneRound();
+        context.proceedOneRound();
+        context.proceedOneRound();
+        context.proceedOneRound();
+        context.proceedOneRound();
+        //5回合后，逃跑时光下来
+        Assert.assertEquals(1,context.getPlayer(0).getField().size());
+        Assert.assertEquals(0,context.getPlayer(1).getField().size());
+        context.proceedOneRound();
+        Assert.assertEquals(1,context.getPlayer(1).getField().size());
+        //6回合被打回手牌
+        Assert.assertEquals(0,context.getPlayer(0).getField().size());
+        Assert.assertEquals((4 - 1),c时光女神逃.getSummonDelay());
+    }
+
+    @Test
+    public void test逃跑_横扫() {
+        SkillTestContext context = prepare(120, 50, "末日预言师+逃跑-15", "占位符", "占位符", "战场女武神");
+        CardInfo c末日逃 = context.addToDeck(0, 0);
+        context.addToDeck(1, 0);
+        context.addToDeck(2, 1);
+        context.addToDeck(3, 1);
+        context.getEngine().getStage().getRule().setDeckOrder(1);
+        context.startGame();
+        context.proceedOneRound();
+        context.proceedOneRound();
+        context.proceedOneRound();
+        context.proceedOneRound();
+        context.proceedOneRound();
+        //5回合后，逃跑时光下来
+        Assert.assertEquals(1,context.getPlayer(0).getField().size());
+        Assert.assertEquals(0,context.getPlayer(1).getField().size());
+        context.proceedOneRound();
+        //6回合占位符没有攻击力，无法触发逃跑
+        Assert.assertEquals(1,context.getPlayer(0).getField().size());
+        context.proceedOneRound();
+        context.proceedOneRound();
+        Assert.assertEquals(2,context.getPlayer(1).getField().size());
+        //6回合被打回手牌
+        Assert.assertEquals(1,context.getPlayer(0).getField().size());
+        Assert.assertEquals((3 - 1),c末日逃.getSummonDelay());
+    }
+
     /**
      * 手牌满时送回卡堆
      */
@@ -890,5 +940,20 @@ public class DefenseTest extends SkillValidationTest {
         Assert.assertEquals(0, context.getPlayer(0).getHand().size());
         Assert.assertTrue(c秘银巨石像1.isDead());
         Assert.assertTrue(c秘银巨石像2.isDead());
+    }
+
+    @Test
+    public void test逃跑_圣炎() {
+        SkillTestContext context = prepare(50, 50, "秘银巨石像+圣炎", "占位符+逃跑");
+        context.addToField(0, 0);
+        context.addToField(1, 1).setBasicHP(2);
+        context.startGame();
+
+        context.proceedOneRound();
+        Assert.assertEquals(0, context.getPlayer(1).getField().size());
+        Assert.assertEquals(1, context.getPlayer(1).getHand().size());
+        Assert.assertEquals(0, context.getPlayer(1).getDeck().size());
+        Assert.assertEquals(0, context.getPlayer(1).getGrave().size());
+        Assert.assertEquals(0, context.getPlayer(1).getOutField().size());
     }
 }

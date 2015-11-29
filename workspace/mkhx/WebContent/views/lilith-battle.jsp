@@ -82,7 +82,7 @@
         <div id="lilith-command" data-mini="true" data-role="controlgroup" data-type="horizontal" data-disabled="false">
             <a id="play-lilith-1-game-button" class="battle-button" data-role="button" data-mini="true">文字战斗</a>
             <a id="simulate-lilith-1-game-button" class="battle-button" data-role="button" data-mini="true">动画战斗</a>
-            <a id="play-lilith-massive-game-button" class="battle-button" data-role="button" data-mini="true">卡组强度分析</a>
+            <a id="play-lilith-massive-game-button" class="battle-button" data-role="button" data-mini="true">强度分析</a>
             <a data-role="button" data-mini="true" data-type="bug" href="#">提BUG</a>
         </div>
         <div id="lilith-battle-div" data-mini="true" data-role="collapsible" data-collapsed="false">

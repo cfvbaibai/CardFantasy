@@ -3,7 +3,6 @@ package cfvbaibai.cardfantasy.engine.skill;
 import cfvbaibai.cardfantasy.GameUI;
 import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.engine.CardInfo;
-import cfvbaibai.cardfantasy.engine.Field;
 import cfvbaibai.cardfantasy.engine.Hand;
 import cfvbaibai.cardfantasy.engine.HeroDieSignal;
 import cfvbaibai.cardfantasy.engine.SkillResolver;
@@ -26,8 +25,13 @@ public final class Flee {
         */
         GameUI ui = resolver.getStage().getUI();
         ui.useSkill(defender, attacker, cardSkill, true);
-        Field field = defender.getOwner().getField();
-        field.removeCard(defender);
+        if (defender.isDead()) {
+            // 如果是直接被物理攻击秒杀，需要从墓地把卡牌去除
+            defender.getOwner().getGrave().removeCard(defender);
+        } else {
+            // 如果没被物理攻击直接秒杀，需要从场上把卡牌去除
+            defender.getOwner().getField().removeCard(defender);
+        }
         Hand hand = defender.getOwner().getHand();
         if (hand.isFull()) {
             ui.cardToDeck(defender.getOwner(), defender);
