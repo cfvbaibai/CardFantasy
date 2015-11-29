@@ -33,7 +33,10 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>更新日志</h3>
                 <ul class="news-content">
-                    <li>2015-11-29: 现在模拟器能识别卡牌的昵称和简称了，例如"黑丝","金属"</li>
+                    <li>2015-11-29: <ul>
+                        <li><b>现在模拟器能识别卡牌的昵称和简称了，例如"黑丝","金属"</b></li>
+                        <li>修复卡牌被物理技能杀死时不能触发逃跑的问题，感谢<x>程love翔</x>报告BUG</li>
+                    </ul></li>
                     <li>2015-11-28: 添加网页版里独有的本源守护莉莉丝, 感谢<x>苍真在天</x>提供的数据</li>
                     <li>2015-11-26: <ul>
                         <li>修复新莉莉丝卡组里的一些bug，感谢<x>tyghgpp</x>, <x>传说中基巴传说</x>和<x>咬起来喀嚓喀嚓</x>报告BUG</li>

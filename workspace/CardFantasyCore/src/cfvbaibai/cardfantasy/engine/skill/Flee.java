@@ -17,10 +17,13 @@ public final class Flee {
         if (attacker == null) {
             return;
         }
+        /*
+         * 即使卡牌死了也能发动逃跑
         if (defender.isDead())
         {
             return;
         }
+        */
         GameUI ui = resolver.getStage().getUI();
         ui.useSkill(defender, attacker, cardSkill, true);
         Field field = defender.getOwner().getField();

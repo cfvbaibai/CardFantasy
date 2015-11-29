@@ -779,7 +779,7 @@ public class DefenseTest extends SkillValidationTest {
         Assert.assertEquals(1 /* 法术致死伤害按剩余血量一半算 */, c残血王国小兵.getHP());
         Assert.assertFalse(c残血王国小兵.isDead());
     }
-    
+
     @Test
     public void test骑士守护_魔法攻击_杀死() {
         SkillTestContext context = prepare(50, 50, "占位符+血炼10", "残血王国小兵+骑士守护");
@@ -790,5 +790,105 @@ public class DefenseTest extends SkillValidationTest {
         random.addNextPicks(0); // 血炼10
         context.proceedOneRound();
         Assert.assertTrue(c残血王国小兵.isDead());
+    }
+
+    @Test
+    public void test逃跑_基本() {
+        SkillTestContext context = prepare(50, 50, "秘银巨石像", "占位符+逃跑");
+        context.addToField(0, 0);
+        context.addToField(1, 1);
+        context.startGame();
+
+        context.proceedOneRound();
+        Assert.assertEquals(0, context.getPlayer(1).getField().size());
+        Assert.assertEquals(1, context.getPlayer(1).getHand().size());
+    }
+
+    /**
+     * 手牌满时送回卡堆
+     */
+    @Test
+    public void test逃跑_手牌满() {
+        SkillTestContext context = prepare(50, 50, "秘银巨石像", "占位符+逃跑", "金属巨龙*5");
+        context.addToField(0, 0);
+        context.addToField(1, 1);
+        context.addToHand(2, 1);
+        context.addToHand(3, 1);
+        context.addToHand(4, 1);
+        context.addToHand(5, 1);
+        context.addToHand(6, 1);
+        context.startGame();
+
+        context.proceedOneRound();
+        Assert.assertEquals(0, context.getPlayer(1).getField().size());
+        Assert.assertEquals(5, context.getPlayer(1).getHand().size());
+        Assert.assertEquals(1, context.getPlayer(1).getDeck().size());
+    }
+
+    /**
+     * 物理伤害即使杀死卡牌逃跑也会发动
+     */
+    @Test
+    public void test逃跑_物理伤害_杀死() {
+        SkillTestContext context = prepare(50, 50, "秘银巨石像", "占位符+逃跑");
+        context.addToField(0, 0);
+        context.addToField(1, 1).setBasicHP(2);
+        context.startGame();
+
+        context.proceedOneRound();
+        Assert.assertEquals(0, context.getPlayer(1).getField().size());
+        Assert.assertEquals(1, context.getPlayer(1).getHand().size());
+    }
+
+    /**
+     * 魔法伤害不会触发逃跑
+     */
+    @Test
+    public void test逃跑_魔法伤害() {
+        SkillTestContext context = prepare(50, 50, "秘银巨石像+火球1", "占位符", "占位符+逃跑");
+        context.addToField(0, 0);
+        context.addToField(1, 1);
+        CardInfo c占位符2 = context.addToField(2, 1);
+        context.startGame();
+
+        random.addNextPicks(1).addNextNumbers(0); // 火球1
+        context.proceedOneRound();
+        Assert.assertEquals(2, context.getPlayer(1).getField().size());
+        Assert.assertEquals(0, context.getPlayer(1).getHand().size());
+        Assert.assertEquals(25, 5000 - c占位符2.getHP());
+    }
+
+    /**
+     * 魔法伤害能杀死逃跑卡
+     */
+    @Test
+    public void test逃跑_魔法伤害_杀死() {
+        SkillTestContext context = prepare(50, 50, "秘银巨石像+火球1", "占位符+逃跑");
+        context.addToField(0, 0);
+        CardInfo c占位符 = context.addToField(1, 1).setBasicHP(2);
+        context.startGame();
+
+        random.addNextPicks(0).addNextNumbers(0); // 火球1
+        context.proceedOneRound();
+        Assert.assertEquals(0, context.getPlayer(1).getField().size());
+        Assert.assertEquals(0, context.getPlayer(1).getHand().size());
+        Assert.assertTrue(c占位符.isDead());
+    }
+
+    /**
+     * 燕返不会触发逃跑
+     */
+    @Test
+    public void test逃跑_燕返() {
+        SkillTestContext context = prepare(50, 50, "秘银巨石像+逃跑", "秘银巨石像+燕返");
+        CardInfo c秘银巨石像1 = context.addToField(0, 0).setBasicHP(2);
+        CardInfo c秘银巨石像2 = context.addToField(1, 1).setBasicHP(2);
+        context.startGame();
+
+        context.proceedOneRound();
+        Assert.assertEquals(0, context.getPlayer(0).getField().size());
+        Assert.assertEquals(0, context.getPlayer(0).getHand().size());
+        Assert.assertTrue(c秘银巨石像1.isDead());
+        Assert.assertTrue(c秘银巨石像2.isDead());
     }
 }
