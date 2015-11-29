@@ -23,12 +23,14 @@ import cfvbaibai.cardfantasy.Randomizer;
 
 public class CardDataStore {
     private Map<String, CardData> cardMap;
+    private Map<String, CardData> aliasCardMap;
     // Only used in getRandomCard
     private List<String> allKeys;
 
     private CardDataStore() {
-        this.cardMap = new HashMap<String, CardData>();
-        this.allKeys = new ArrayList<String>();
+        this.cardMap = new HashMap<>();
+        this.aliasCardMap = new HashMap<>();
+        this.allKeys = new ArrayList<>();
     }
 
     public static CardDataStore loadDefault() {
@@ -133,7 +135,7 @@ public class CardDataStore {
     }
 
     private void addAlias(String alias, CardData cardData) {
-        this.cardMap.put(alias, cardData);
+        this.aliasCardMap.put(alias, cardData);
         // allKeys used in getRandomCard, so we should add alias to it. 
         //this.allKeys.add(alias);
     }
@@ -146,6 +148,8 @@ public class CardDataStore {
     public CardData getCard(String name) {
         if (this.cardMap.containsKey(name)) {
             return this.cardMap.get(name);
+        } else if (this.aliasCardMap.containsKey(name)) {
+            return this.aliasCardMap.get(name);
         } else {
             return null;
         }
