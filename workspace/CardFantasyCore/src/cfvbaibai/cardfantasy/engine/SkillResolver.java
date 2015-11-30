@@ -1184,7 +1184,9 @@ public class SkillResolver {
                         skillUseInfo.getType() == SkillType.圣光洗礼 || skillUseInfo.getType() == SkillType.森林沐浴 ||
                         skillUseInfo.getType() == SkillType.蛮荒威压 || skillUseInfo.getType() == SkillType.地狱同化) {
                         RaceChange.apply(this, skillUseInfo, card, opField.getOwner());
-                    } 
+                    } else if (skillUseInfo.getType() == SkillType.全体加速){
+                        AllSpeedUp.apply(skillUseInfo, this, card);
+                    }
                 }
                 else if (!skillUseInfo.getSkill().isDeathSkill()) {
                     if (skillUseInfo.getType() == SkillType.反噬) {

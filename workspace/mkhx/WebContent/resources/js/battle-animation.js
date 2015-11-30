@@ -1491,7 +1491,7 @@ var Animater = function() {
         } else if (skill == '献祭') {
             this.flyImage({ fileName: 'round-cross.png', width: 48, height: 48, text: skill },
                     attacker, defenders, settings.skillDuration);
-        } else if (skill == '狙击' || skill == '二重狙击' || skill == '魔神之刃') {
+        } else if (skill == '狙击' || skill == '二重狙击' || skill == '神箭三重奏' || skill == '魔神之刃') {
             this.flyImage({ fileName: 'aim.png', width: 48, height: 48, text: skill, },
                     attacker, defenders, settings.skillDuration);
         } else if (skill == '精神狂乱') {

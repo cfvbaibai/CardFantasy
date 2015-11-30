@@ -33,6 +33,7 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2015-11-30: 添加新卡<cf:c>射手座</cf:c></li>
                     <li>2015-11-29: <ul>
                         <li><b>现在模拟器能识别卡牌的昵称和简称了，例如"黑丝","金属"</b></li>
                         <li>修复逃跑引发的各种问题，感谢<x>程love翔</x>报告BUG</li>
