@@ -16,25 +16,20 @@ public final class Flee {
         if (attacker == null) {
             return;
         }
-        /*
-         * 即使卡牌死了也能发动逃跑
         if (defender.isDead())
         {
             return;
         }
-        */
         if (defender.getOwner().getHand().contains(defender) || defender.getOwner().getDeck().contains(defender)) {
             // 如果已经转生了，那么就不再发动逃跑了
             return;
         }
         GameUI ui = resolver.getStage().getUI();
         ui.useSkill(defender, attacker, cardSkill, true);
-        if (defender.isDead()) {
-            defender.getOwner().getGrave().removeCard(defender);
-        } else {
-            // 如果没被物理攻击直接秒杀，需要从场上把卡牌去除
-            defender.getOwner().getField().removeCard(defender);
-        }
+        // 如果没被物理攻击直接秒杀，需要从场上把卡牌去除
+        // defender.getOwner().getField().removeCard(defender); BUG! 不能用removeCard，那样会使场上的卡重排，战斗中不该重排
+        defender.getOwner().getField().expelCard(defender.getPosition());
+
         Hand hand = defender.getOwner().getHand();
         if (hand.isFull()) {
             ui.cardToDeck(defender.getOwner(), defender);

@@ -33,6 +33,10 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2015-12-01: <ul>
+                        <li>添加新卡<cf:c>潮汐王女</cf:c></li>
+                        <li>慕和修了逃跑的BUG，模拟器也跟着改了</li>
+                    </ul></li>
                     <li>2015-11-30: 添加新卡<cf:c>射手座</cf:c></li>
                     <li>2015-11-29: <ul>
                         <li><b>现在模拟器能识别卡牌的昵称和简称了，例如"黑丝","金属"</b></li>

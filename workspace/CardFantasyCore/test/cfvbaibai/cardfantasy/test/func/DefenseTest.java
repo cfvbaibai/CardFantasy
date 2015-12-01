@@ -876,7 +876,7 @@ public class DefenseTest extends SkillValidationTest {
     }
 
     /**
-     * 物理伤害即使杀死卡牌逃跑也会发动
+     * 物理伤害杀死卡牌的话逃跑就不能发动
      */
     @Test
     public void test逃跑_物理伤害_杀死() {
@@ -887,7 +887,9 @@ public class DefenseTest extends SkillValidationTest {
 
         context.proceedOneRound();
         Assert.assertEquals(0, context.getPlayer(1).getField().size());
-        Assert.assertEquals(1, context.getPlayer(1).getHand().size());
+        Assert.assertEquals(0, context.getPlayer(1).getHand().size());
+        Assert.assertEquals(0, context.getPlayer(1).getDeck().size());
+        Assert.assertEquals(1, context.getPlayer(1).getGrave().size());
     }
 
     /**
@@ -946,7 +948,7 @@ public class DefenseTest extends SkillValidationTest {
     public void test逃跑_圣炎() {
         SkillTestContext context = prepare(50, 50, "秘银巨石像+圣炎", "占位符+逃跑");
         context.addToField(0, 0);
-        context.addToField(1, 1).setBasicHP(2);
+        context.addToField(1, 1);
         context.startGame();
 
         context.proceedOneRound();
@@ -954,6 +956,21 @@ public class DefenseTest extends SkillValidationTest {
         Assert.assertEquals(1, context.getPlayer(1).getHand().size());
         Assert.assertEquals(0, context.getPlayer(1).getDeck().size());
         Assert.assertEquals(0, context.getPlayer(1).getGrave().size());
+        Assert.assertEquals(0, context.getPlayer(1).getOutField().size());
+    }
+
+    @Test
+    public void test逃跑_杀死_圣炎() {
+        SkillTestContext context = prepare(50, 50, "秘银巨石像+圣炎", "占位符+逃跑");
+        context.addToField(0, 0);
+        context.addToField(1, 1).setBasicHP(2);
+        context.startGame();
+
+        context.proceedOneRound();
+        Assert.assertEquals(0, context.getPlayer(1).getField().size());
+        Assert.assertEquals(0, context.getPlayer(1).getHand().size());
+        Assert.assertEquals(0, context.getPlayer(1).getDeck().size());
+        Assert.assertEquals(1, context.getPlayer(1).getGrave().size());
         Assert.assertEquals(0, context.getPlayer(1).getOutField().size());
     }
 
@@ -971,5 +988,26 @@ public class DefenseTest extends SkillValidationTest {
         Assert.assertEquals(0, context.getPlayer(1).getDeck().size());
         Assert.assertEquals(0, context.getPlayer(1).getGrave().size());
         Assert.assertEquals(0, context.getPlayer(1).getOutField().size());
+    }
+
+    @Test
+    public void test逃跑_多只() {
+        SkillTestContext context = prepare(50, 50, "秘银巨石像*3", "占位符+逃跑*6");
+        context.addToField(0, 0);
+        context.addToField(1, 0);
+        context.addToField(2, 0);
+        context.addToField(3, 1);
+        context.addToField(4, 1);
+        context.addToField(5, 1);
+        context.addToHand(6, 1);
+        context.addToHand(7, 1);
+        context.addToHand(8, 1);
+        context.startGame();
+
+        context.proceedOneRound();
+        Assert.assertEquals(0, context.getPlayer(1).getField().size());
+        Assert.assertEquals(5, context.getPlayer(1).getHand().size());
+        Assert.assertEquals(1, context.getPlayer(1).getDeck().size());
+        Assert.assertEquals(0, context.getPlayer(1).getGrave().size());
     }
 }
