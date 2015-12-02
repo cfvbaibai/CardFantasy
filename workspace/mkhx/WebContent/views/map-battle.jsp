@@ -8,7 +8,7 @@
                         <tr>
                             <td>地图</td>
                             <td>
-                                <select name="map-id" id="map-id" class="map-select" data-mini="true" data-native-menu="false">
+                                <select name="map-id" id="map-id" class="map-select" data-mini="true" data-native-menu="true">
                                     <optgroup label="17图">
                                         <option value="17-1" selected="selected">17-1 异界之门</option>
                                         <option value="17-2">17-2 挽歌丘陵</option>
@@ -222,7 +222,7 @@
                         <tr>
                             <td>难度</td>
                             <td>
-                                <select name="map-difficulty" id="map-difficulty" class="map-select" data-mini="true" data-native-menu="false">
+                                <select name="map-difficulty" id="map-difficulty" class="map-select" data-mini="true" data-native-menu="true">
                                     <option value="1" selected="selected">简单</option>
                                     <option value="2">普通</option>
                                     <option value="3">困难</option>

@@ -5,7 +5,7 @@
                 <h3>设置阵容</h3>
                 <div>
                     <fieldset class="select-2" data-role="controlgroup" data-type="horizontal">
-                        <select name="boss-name" class="boss-name" id="boss-name" data-mini="true" data-native-menu="false">
+                        <select name="boss-name" class="boss-name" id="boss-name" data-mini="true" data-native-menu="true">
                             <option value="强魔刃复仇女神">强魔刃复仇女神</option>
                             <option value="狙击复仇女神">狙击复仇女神</option>
                             <option value="送还复仇女神">送还复仇女神</option>
@@ -32,7 +32,7 @@
                             <option value="无回魂万蛛之后">无回魂万蛛之后</option>
                             <option value="网页版万蛛之后">网页版万蛛之后</option>
                         </select>
-                        <select name="guard-type" id="guard-type" data-mini="true" data-native-menu="false">
+                        <select name="guard-type" id="guard-type" data-mini="true" data-native-menu="true">
                             <option value="0">无杂兵</option>
                             <option value="1">随机杂兵</option>
                             <option value="2" selected="selected">随机强杂兵</option>
@@ -43,7 +43,7 @@
                     </table>
                     <!-- +：10级， -->
                     <fieldset class="select-4" data-role="controlgroup" data-type="horizontal">
-                        <select name="buff-kingdom" id="buff-kingdom" data-mini="true" data-native-menu="false">
+                        <select name="buff-kingdom" id="buff-kingdom" data-mini="true" data-native-menu="true">
                             <option value="0">王+0</option>
                             <option value="1">王+1</option>
                             <option value="2">王+2</option>
@@ -56,7 +56,7 @@
                             <option value="9">王+9</option>
                             <option value="10" selected="selected">王+10</option>
                         </select>
-                        <select name="buff-savage" id="buff-savage" data-mini="true" data-native-menu="false">
+                        <select name="buff-savage" id="buff-savage" data-mini="true" data-native-menu="true">
                             <option value="0">蛮+0</option>
                             <option value="1">蛮+1</option>
                             <option value="2">蛮+2</option>
@@ -69,7 +69,7 @@
                             <option value="9">蛮+9</option>
                             <option value="10" selected="selected">蛮+10</option>
                         </select>
-                        <select name="buff-forest" id="buff-forest" data-mini="true" data-native-menu="false">
+                        <select name="buff-forest" id="buff-forest" data-mini="true" data-native-menu="true">
                             <option value="0">森+0</option>
                             <option value="1">森+1</option>
                             <option value="2">森+2</option>
@@ -82,7 +82,7 @@
                             <option value="9">森+9</option>
                             <option value="10" selected="selected">森+10</option>
                         </select>
-                        <select name="buff-hell" id="buff-hell" data-mini="true" data-native-menu="false">
+                        <select name="buff-hell" id="buff-hell" data-mini="true" data-native-menu="true">
                             <option value="0">地+0</option>
                             <option value="1">地+1</option>
                             <option value="2">地+2</option>

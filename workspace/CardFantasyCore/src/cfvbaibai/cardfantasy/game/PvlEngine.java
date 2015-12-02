@@ -3,7 +3,6 @@ package cfvbaibai.cardfantasy.game;
 import java.util.ArrayList;
 import java.util.List;
 
-import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
 import cfvbaibai.cardfantasy.GameUI;
 import cfvbaibai.cardfantasy.data.Card;
 import cfvbaibai.cardfantasy.data.PlayerCardBuffSkill;
@@ -161,8 +160,9 @@ public class PvlEngine extends GameEngine {
             }
         }
 
+        // 模拟贼的情况，没有BOSS卡，随便拿张卡当BOSS
         if (lilithCard == null) {
-            throw new CardFantasyRuntimeException("Could not find lilith card.");
+            lilithCard = lilith.getCards().get(0);
         }
 
         int maxHp = lilithCard.getMaxHP();

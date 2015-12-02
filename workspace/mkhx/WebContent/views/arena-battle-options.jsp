@@ -7,12 +7,12 @@
             <div id="battle-options-setter">
                 <div>
                     <fieldset class="select-2" data-role="controlgroup" data-type="horizontal">
-                        <select id="first-attack" data-mini="true" data-native-menu="false">
+                        <select id="first-attack" data-mini="true" data-native-menu="true">
                             <option value="-1">先攻：按规则</option>
                             <option value="0">先攻：玩家1</option>
                             <option value="1">先攻：玩家2</option>
                         </select>
-                        <select id="deck-order" data-mini="true" data-native-menu="false">
+                        <select id="deck-order" data-mini="true" data-native-menu="true">
                             <option value="0">出牌顺序：随机</option>
                             <option value="1">出牌顺序：指定</option>
                         </select>

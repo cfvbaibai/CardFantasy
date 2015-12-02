@@ -95,7 +95,7 @@
                 <h3>搜索卡牌</h3>
                 <div>
                     <fieldset class="select-2" data-role="controlgroup" data-type="horizontal">
-                        <select id="wiki-card-star-filter" data-mini="true" data-native-menu="false">
+                        <select id="wiki-card-star-filter" data-mini="true" data-native-menu="true">
                             <option value="0">全部星数</option>
                             <option value="1">1星</option>
                             <option value="2">2星</option>
@@ -103,7 +103,7 @@
                             <option value="4">4星</option>
                             <option value="5" selected="selected">5星</option>
                         </select>
-                        <select id="wiki-card-race-filter" data-mini="true" data-native-menu="false">
+                        <select id="wiki-card-race-filter" data-mini="true" data-native-menu="true">
                             <option value="0">全部种族</option>
                             <option value="1" selected="selected">王国</option>
                             <option value="2">森林</option>
