@@ -92,6 +92,7 @@ public enum SkillType {
     火墙("30950", 25, SkillTag.魔法),
     烈焰风暴("31128", 25, SkillTag.魔法),
     雷暴("31151", 25, SkillTag.魔法),
+    雷神降临("",70,10,30,5, SkillTag.魔法),
     转生("30935", 30, 5),
     我还会回来的("", 0),
 
@@ -124,6 +125,7 @@ public enum SkillType {
     混乱领域("", 30, 5, SkillTag.控制),
     精神狂乱("", 0),
     烈火焚神("31127", 20),
+    天怒("",150,50),
 
     毒液("31150", 20),
     毒雾("31148", 20),
@@ -193,6 +195,7 @@ public enum SkillType {
     召唤树人守护者("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
     召唤炎魔("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
     双子之身("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
+    召唤北海神兽("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
 
     圣光洗礼("", 0, 0, SkillTag.抗免疫, SkillTag.不可洗炼),
     森林沐浴("", 1, 0, SkillTag.抗免疫, SkillTag.不可洗炼),
