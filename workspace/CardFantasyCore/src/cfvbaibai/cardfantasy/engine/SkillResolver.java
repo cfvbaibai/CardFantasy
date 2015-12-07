@@ -111,6 +111,8 @@ public class SkillResolver {
                 LighteningMagic.apply(skillUseInfo, this, attacker, defender, 3, 40);
             } else if (skillUseInfo.getType() == SkillType.雷暴) {
                 LighteningMagic.apply(skillUseInfo, this, attacker, defender, -1, 35);
+            } else if (skillUseInfo.getType() == SkillType.雷神降临) {
+                LighteningMagic.apply(skillUseInfo, this, attacker, defender, -1, 35);
             } else if (skillUseInfo.getType() == SkillType.冰弹) {
                 IceMagic.apply(skillUseInfo, this, attacker, defender, 1, 45, 0);
             } else if (skillUseInfo.getType() == SkillType.霜冻新星) {

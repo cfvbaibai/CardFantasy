@@ -16,12 +16,15 @@ public class CardLinkTag extends SimpleTagSupport {
         String cardName = sw.toString();
         sw.close();
         JspWriter out = this.getJspContext().getOut();
-        out.print("【<a href='Wiki/Cards/");
+        // Remove link from card logo and let's see if this can improve SEO for baidu.
+        out.print("【");
+        //out.print("【<a href='Wiki/Cards/");
+        //out.print(cardName);
+        //out.print("' target='_blank' title='");
+        //out.print(cardName);
+        //out.print("'>");
         out.print(cardName);
-        out.print("' target='_blank' title='");
-        out.print(cardName);
-        out.print("'>");
-        out.print(cardName);
-        out.print("</a>】");
+        //out.print("</a>】");
+        out.print("】");
     }
 }

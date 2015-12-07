@@ -1473,7 +1473,7 @@ var Animater = function() {
         } else if (skill == '火球' || skill == '火墙' || skill == '烈焰风暴' || skill == '修罗地火攻') {
             this.flyImage({ fileName: 'fire.png', width: 24, height: 24, text: skill },
                     attacker, defenders, settings.skillDuration);
-        } else if (skill == '落雷' || skill == '连环闪电' || skill == '雷暴') {
+        } else if (skill == '落雷' || skill == '连环闪电' || skill == '雷暴' || skill == '雷神降临') {
             this.flyImage({ fileName: 'lightening.png', width: 24, height: 24, text: skill },
                     attacker, defenders, settings.skillDuration);
         } else if (skill == '毒液' || skill == '毒雾' || skill == '毒云') {

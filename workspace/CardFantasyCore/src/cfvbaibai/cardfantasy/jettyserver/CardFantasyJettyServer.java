@@ -15,7 +15,17 @@ import org.eclipse.jetty.servlet.ServletHandler;
 public class CardFantasyJettyServer {
 
     public static void main(String[] args) throws Exception {
-        Server server = new Server(7878);
+        int port = 7878;
+        if (args.length > 1) {
+            if ("-port".equalsIgnoreCase(args[0])) {
+                try {
+                    port = Integer.parseInt(args[1]);
+                } catch (Exception e) {
+                    throw new IllegalArgumentException("Invalid port number " + args[1]);
+                }
+            }
+        }
+        Server server = new Server(port);
 
         HandlerList handlers = new HandlerList();
 

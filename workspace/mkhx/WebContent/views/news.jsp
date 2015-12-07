@@ -33,6 +33,7 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2015-12-07: 添加新卡<cf:c>制裁之锤</cf:c>, <cf:c>断罪之镰</cf:c>，感谢<x>希灵天使12345</x>提供数据。</li>
                     <li>2015-12-01: <ul>
                         <li>添加新卡<cf:c>潮汐王女</cf:c></li>
                         <li>慕和修了逃跑的BUG，模拟器也跟着改了</li>
@@ -99,41 +100,41 @@
                         <li>添加【网页版邪龙之神】，感谢<x>a27180411</x>提供的资料</li>
                     </ul></li>
                     <li>2015-10-11:<ul> 
-                        <li>在【<a href="<c:url value="/Wiki" />" target="_self">WIKI</a>】中添加了【自定义卡图生成器】功能（手机版目前还看不到，只有电脑能用），只需提供自己喜欢的底图和设定，就能生成魔卡样式的卡图:<br />
+                        <li>在【WIKI】中添加了【自定义卡图生成器】功能（手机版目前还看不到，只有电脑能用），只需提供自己喜欢的底图和设定，就能生成魔卡样式的卡图:<br />
                             <img src="<c:url value="/resources/img/help/customCardPortraitEntrance.png" />" style="width: 100%; max-width: 406px" />
                             <img src="<c:url value="/resources/img/help/customCardPortrait.png" />" style="width: 100%; max-width: 704px" />
                         </li>
                         <li>把魔王的图标换成了正确的图标，感谢<x>虚梦杀</x>提供信息</li>
                     </ul></li>
                     <li>2015-10-06: <ul>
-                        <li>【<a href="<c:url value="/Wiki" />" target="_self">WIKI</a>】将素材卡单独抽取为一类，感谢<x>虚梦杀</x>的建议</li>
-                        <li>【<a href="<c:url value="/Wiki" />" target="_self">WIKI</a>】修复某些关卡信息不正确的BUG，感谢<x>dzx276941963</x>报告BUG</li>
-                        <li>【<a href="<c:url value="/Wiki" />" target="_self">WIKI</a>】中的卡牌现在有图了，以<cf:c>时光女神</cf:c>为例: <br />
+                        <li>【WIKI】将素材卡单独抽取为一类，感谢<x>虚梦杀</x>的建议</li>
+                        <li>【WIKI】修复某些关卡信息不正确的BUG，感谢<x>dzx276941963</x>报告BUG</li>
+                        <li>【WIKI】中的卡牌现在有图了，以<cf:c>时光女神</cf:c>为例: <br />
                             <img class="help-img" alt="示例卡牌图片1" src="<c:url value="/resources/img/help/SampleCardPortrait1.png" />" />
                             <img class="help-img" alt="示例卡牌图片1" src="<c:url value="/resources/img/help/SampleCardPortrait2.png" />" />
                         </li>
                     </ul></li>
-                    <li>2015-10-05: 【<a href="<c:url value="/Wiki" />" target="_self">WIKI</a>】中添加了符文和关卡信息</li>
-                    <li>2015-10-02: 升级【卡牌WIKI】为【<a href="<c:url value="/Wiki" />" target="_self">魔卡幻想WIKI</a>】，现在可以搜索技能了</li>
-                    <li>2015-10-01: 在【<a href="#boss-battle">魔神战</a>】界面添加显示魔神的技能</li>
+                    <li>2015-10-05: 【WIKI】中添加了符文和关卡信息</li>
+                    <li>2015-10-02: 升级【卡牌WIKI】为【魔卡幻想WIKI】，现在可以搜索技能了</li>
+                    <li>2015-10-01: 在【魔神战】界面添加显示魔神的技能</li>
                     <li>2015-09-29: 添加新卡<cf:c>天秤座</cf:c>、<cf:c>龙灵使者</cf:c>、<cf:c>森林弹唱者</cf:c>、<cf:c>灵峰剑姬</cf:c></li>
                     <li>2015-09-27: 修复一个【斩杀】和【冰甲】相互作用时的BUG，感谢<x>k221135</x>报告BUG</li>
                     <li>2015-09-26: <ul>
-                        <li>为【<a href="#lilith-battle">莉莉丝战</a>】添加【活动卡牌】的支持，感谢<x>咬起来喀嚓喀嚓</x>和<x>泥鳅sined</x>提供信息</li>
+                        <li>为【莉莉丝战】添加【活动卡牌】的支持，感谢<x>咬起来喀嚓喀嚓</x>和<x>泥鳅sined</x>提供信息</li>
                         <li>补上<cf:c>炎魔</cf:c>、<cf:c>投掷巨人</cf:c>、<cf:c>鬼符咒术师</cf:c>、<cf:c>恐怖失血者</cf:c>和<cf:c>复仇铠甲</cf:c>的卡图，感谢<x>御洛念</x>和<x>咬起来喀嚓喀嚓</x>提供的卡图</li>
-                        <li>加强了【<a href="<c:url value="/Wiki" />" target="_self">WIKI</a>】的功能和外观，现在魔王、魔神可以正确地显示，也能通过技能来搜索卡牌了，感谢<x>虚梦杀</x>的建议</li>
+                        <li>加强了【WIKI】的功能和外观，现在魔王、魔神可以正确地显示，也能通过技能来搜索卡牌了，感谢<x>虚梦杀</x>的建议</li>
                     </ul></li>
                     <li>2015-09-24: 添加新卡<cf:c>黄金毒龙</cf:c>、<cf:c>永夜真祖</cf:c>、<cf:c>水母精灵</cf:c>、<cf:c>王国厨师长</cf:c>、<cf:c>鬼符咒术师</cf:c>、<cf:c>丰饶之神</cf:c></li>
                     <li>2015-09-10: <ul>
-                        <li>对【<a href="#boss-battle">魔神战</a>】的结果显示方法进行一些微调，感谢<x>主公摇头怕怕</x>的建议</li>
+                        <li>对【魔神战】的结果显示方法进行一些微调，感谢<x>主公摇头怕怕</x>的建议</li>
                         <li>添加新卡<cf:c>月樱公主</cf:c>，感谢<x>咬起来喀嚓喀嚓</x>的提醒</li>
-                        <li>修复【<a href="#map-battle">地图战</a>】计算种族类胜利条件时的一个BUG，感谢<x>零崎燎识</x>发现BUG</li>
+                        <li>修复【地图战】计算种族类胜利条件时的一个BUG，感谢<x>零崎燎识</x>发现BUG</li>
                     </ul></li>
                     <li>2015-09-09: <ul>
                         <li>修复【不屈】会引发【自爆】的BUG，感谢<x>邪眼真王二代目</x>发现BUG</li>
                         <li>修复【不屈】在我方回合被触发时的处理机制，感谢<x>pk810219899</x>发现BUG</li>
                     </ul></li>
-                    <li>2015-09-08: 改进【<a href="#boss-battle">魔神战</a>】的结果显示，现在除了基本信息外，还会有伤害分布图：
+                    <li>2015-09-08: 改进【魔神战】的结果显示，现在除了基本信息外，还会有伤害分布图：
                         <img class='help-img' alt="伤害分布图" src='<c:url value="/resources/img/help/DamageDistributionChart.png" />' />
                     </li>
                     <li>2015-09-06: 修复一个【送还】、【不动】、【魔神之刃】相互作用时候的BUG，感谢<x>dzx276941963</x>发现BUG</li>
@@ -148,11 +149,11 @@
                     </ul></li>
                     <li>2015-08-27: 添加新卡<cf:c>雪月花</cf:c></li>
                     <li>2015-08-15: <ul>
-                        <li>添加【保存录像】和【<a href="#view-video-page">播放录像</a>】供能<br />
+                        <li>添加【保存录像】和【播放录像】供能<br />
                         <img class='help-img' alt="保存录像" src='<c:url value="/resources/img/help/showSaveVideoDataPanel.jpg" />' />
                         <img class='help-img' alt="复制录像数据" src='<c:url value="/resources/img/help/copyVideoData.jpg" />' /><br />
                         <span>然后将录像数据保存到随便什么地方，或者分享到贴吧</span><br />
-                        <span>要观看录像的小伙伴可以把录像数据直接复制进【<a href="#view-video-page">播放录像</a>】的界面里观看</span><br />
+                        <span>要观看录像的小伙伴可以把录像数据直接复制进【播放录像】的界面里观看</span><br />
                         <li>修复一个魔神战COST显示的BUG，感谢<x>wanghwx2014</x>报告BUG</li>
                     </ul></li>
                     <li>2015-08-14: 添加新卡<cf:c>残翼羽神</cf:c>、<cf:c>无限之神</cf:c>、<cf:c>银河观测者</cf:c>，感谢<x>咬起来喀嚓喀嚓</x>和<x>heixuanfeng54</x>的提醒</li>
@@ -242,7 +243,7 @@
                     </ul></li>
                     <li>2015-03-28: 添加新卡<cf:c>元素之灵</cf:c>，关于同调技能尚不完善，欢迎大家踊跃回答问题补充技能细节。感谢<x>不渝小溪</x>, <x>老子衿</x>, <x>brunoweiyang</x>, <x>裘可拉kiss</x>的帮助</li>
                     <li>2015-03-26: 添加新卡<cf:c>精灵王亡灵</cf:c></li>
-                    <li>2015-03-21: 添加【<a href="<c:url value="/Wiki" />" target="_self">WIKI</a>】页面，现在可以直接在站内查询卡牌数据资料了</li>
+                    <li>2015-03-21: 添加【WIKI】页面，现在可以直接在站内查询卡牌数据资料了</li>
                     <li>2015-03-15: <ul>
                         <li>修复COST计算上的一些问题，感谢<x>十二下弦月</x>, <x>sincever123</x>, <x>习题盖浇饭</x>, <x>za7183</x>, <x>NobodyHere_</x></li>
                         <li>修复【旧噩梦之主】的攻击力问题，感谢<x>dzx276941963</x></li>
@@ -300,15 +301,15 @@
                     </ul></li>
                     <li>2015-01-13: 修复莉莉丝英雄血量的BUG，感谢<x>office12345</x>, <x>wufan0908</x>, <x>shit水水更健康</x>, <x>enjoy小小康</x>报告BUG</li>
                     <li>2015-01-12: <ul>
-                        <li>现在<a href="#arena-battle">竞技场战</a>可以调整全局卡牌和英雄强度了</li>
-                        <li>修复<a href="#lilith-battle">莉莉丝战</a>无法使用组卡器的BUG，感谢<x>欺一世时光_</x>, <x>哈哈哈雷宇桑</x>报告BUG</li>
+                        <li>现在【竞技场战】可以调整全局卡牌和英雄强度了</li>
+                        <li>修复【莉莉丝战】无法使用组卡器的BUG，感谢<x>欺一世时光_</x>, <x>哈哈哈雷宇桑</x>报告BUG</li>
                     </ul></li>
                     <li>2015-01-11: <ul>
                         <li>添加13-15地图，感谢<x>一喵</x>提供大量模拟器直接可用的信息</li>
                         <li>修复一个关于锁定状态下邪灵汲取的BUG，感谢<x>壹滴海洋</x>发现BUG</li>
                         <li>修正降临系技能的发动顺序，感谢<x>快到碗里来mys</x>, <x>程love翔</x>, <x>原追忆</x>, <x>susss222</x>, <x>恶梦之猫</x>, <x>UlysessDH</x>, <x>血月之下为战鬼</x>提供信息</li>
                     </ul></li>
-                    <li>2015-01-10: 添加新模式<a href="#lilith-battle">莉莉丝战</a>，感谢<x>yezhihuib</x>大神的资料和无私奉献，感谢<x>小猫崽k</x>, <x>快到碗里来mys</x>, <x>阿呆Frank</x>, <x>阿里兰朵</x>, <x>adssgd</x>的热心帮助。
+                    <li>2015-01-10: 添加新模式【莉莉丝战】，感谢<x>yezhihuib</x>大神的资料和无私奉献，感谢<x>小猫崽k</x>, <x>快到碗里来mys</x>, <x>阿呆Frank</x>, <x>阿里兰朵</x>, <x>adssgd</x>的热心帮助。
                     <li>2015-01-09: 添加新卡<cf:c>驭灵法师</cf:c>，感谢<x>均卡</x>提供数据</li>
                     <li>2015-01-08: <ul>
                         <li>添加新卡<cf:c>圣泉元神</cf:c></li>
@@ -368,47 +369,47 @@
                         </ul>
                     </li>
                     <li>2014-01-23: 在动画中给魔神加上了卡图，魔神现在终于有脸了。</li>
-                    <li>2014-01-18: 添加符文 - 【鬼步】（群体脱困），场上地狱大于2张发动，感谢<a data-type="user">高端大气上档次</a>提供情报。</li>
+                    <li>2014-01-18: 添加符文 - 【鬼步】（群体脱困），场上地狱大于2张发动，感谢<b>高端大气上档次</b>提供情报。</li>
                     <li>2014-01-15:<ul>
                         <li>新卡加入 - <cf:c>海军水手</cf:c>王国三星</li>
-                        <li>数据修复 - <cf:c>世界树之灵</cf:c>10级COST修正为16。多谢<a data-type="user">长天渔歌</a>提供情报。</li>
-                        <li>数据修复 - <cf:c>恐惧之王</cf:c>15级COST修正为17。多谢<a data-type="user">高端大气上档次</a>提供情报。</li>
+                        <li>数据修复 - <cf:c>世界树之灵</cf:c>10级COST修正为16。多谢<b>长天渔歌</b>提供情报。</li>
+                        <li>数据修复 - <cf:c>恐惧之王</cf:c>15级COST修正为17。多谢<b>高端大气上档次</b>提供情报。</li>
                         </ul>
                     </li>
-                    <li>2014-01-12: 新功能 - 增加<a href="#test-rp">人品测试房</a>。
-                    <li>2014-01-11: 数据修复 - <cf:c>世界树之灵</cf:c>15级COST修正为17。多谢<a data-type="user">里根</a>和<a data-type="user">乌鸦</a>提供情报。</li>
+                    <li>2014-01-12: 新功能 - 增加【人品测试房】。
+                    <li>2014-01-11: 数据修复 - <cf:c>世界树之灵</cf:c>15级COST修正为17。多谢<b>里根</b>和<b>乌鸦</b>提供情报。</li>
                     <li>2014-01-10:<ul>
                         <li>BUG修复 - 修正交流区的留言时间的时区问题，统一改到北京时间。</li>
-                        <li>BUG修复 - 现在【横扫】遇上【邪灵汲取】后，后续的攻击按照削弱后的攻击力算。感谢<a data-type="user">乌鸦</a>提供情报。</li>
+                        <li>BUG修复 - 现在【横扫】遇上【邪灵汲取】后，后续的攻击按照削弱后的攻击力算。感谢<b>乌鸦</b>提供情报。</li>
                         </ul>
                     </li>
                     <li>2014-01-07:<ul>
-                        <li>BUG修复 - 现在回合数正确地从1开始，而不是之前的0，感谢<a data-type="user">jjkkt</a>提供情报。</li>
-                        <li>BUG修复 - 现在被死契技能控制（冰冻、麻痹、锁定、迷惑）的卡牌会在正确的时机解除控制，感谢<a data-type="user">jjkkt</a>提供情报。</li>
-                        <li>BUG修复 - 现在【吸血】能正确地在死契技能发动前发动，感谢<a data-type="user">a0026881</a>提供情报。</li>
+                        <li>BUG修复 - 现在回合数正确地从1开始，而不是之前的0，感谢<b>jjkkt</b>提供情报。</li>
+                        <li>BUG修复 - 现在被死契技能控制（冰冻、麻痹、锁定、迷惑）的卡牌会在正确的时机解除控制，感谢<b>jjkkt</b>提供情报。</li>
+                        <li>BUG修复 - 现在【吸血】能正确地在死契技能发动前发动，感谢<b>a0026881</b>提供情报。</li>
                         </ul>
                     </li>
                     <li>2014-01-06: 魔神战【卡组强度分析】添加【总体平均每分钟伤害】指标，方便大家计算卡组的平均强度。</li>
                     <li>2014-01-05:<ul>
-                        <li>BUG修复 - 被控制并且被【迷魂】的卡片现在会打自己英雄了。用吧友<a data-type="user">w13210886303</a>的话说就是“被绳子绑着被虐待着还要自己用头撞墙！”感谢<a data-type="user">地花出吠喊</a>提供情报。</li>
-                        <li>BUG修复 - 被【复活】上来处于【复活】状态的卡牌现在不享受符文效果，感谢<a data-type="user">LLOO</a>、<a data-type="user">a0026881</a>等朋友提供情报。</li>
-                        <li>BUG修复 - 现在<cf:c>九头妖蛇</cf:c>在被<cf:c>复活节兔女郎</cf:c>复活后能正确的献祭<cf:c>复活节兔女郎</cf:c>，感谢<a data-type="user">老头是废柴</a>等朋友提供情报。</li>
+                        <li>BUG修复 - 被控制并且被【迷魂】的卡片现在会打自己英雄了。用吧友<b>w13210886303</b>的话说就是“被绳子绑着被虐待着还要自己用头撞墙！”感谢<b>地花出吠喊</b>提供情报。</li>
+                        <li>BUG修复 - 被【复活】上来处于【复活】状态的卡牌现在不享受符文效果，感谢<b>LLOO</b>、<b>a0026881</b>等朋友提供情报。</li>
+                        <li>BUG修复 - 现在<cf:c>九头妖蛇</cf:c>在被<cf:c>复活节兔女郎</cf:c>复活后能正确的献祭<cf:c>复活节兔女郎</cf:c>，感谢<b>老头是废柴</b>等朋友提供情报。</li>
                         <li>优化 - 魔神战的文字战斗现在会在首行显示对魔神造成的伤害，不必再翻页查看。</li>
                         </ul>
                     </li>
-                    <li>2014-01-04: 添加新卡<cf:c>海军司令</cf:c>王国五星，感谢<a data-type="user">我就是那么叼</a>和<a data-type="user">寒风</a>提供情报，感谢<a data-type="user">上行之风</a>发现BUG。</li>
-                    <li>2013-12-30: 添加新卡<cf:c>天界守护者</cf:c>王国五星，感谢<a data-type="user">轩</a>和<a data-type="user">UII</a>提供情报。</li>
-                    <li>2013-12-25: 更新5张新卡，感谢<a data-type="user">a272295516</a>等朋友热情提供情报。
+                    <li>2014-01-04: 添加新卡<cf:c>海军司令</cf:c>王国五星，感谢<b>我就是那么叼</b>和<b>寒风</b>提供情报，感谢<b>上行之风</b>发现BUG。</li>
+                    <li>2013-12-30: 添加新卡<cf:c>天界守护者</cf:c>王国五星，感谢<b>轩</b>和<b>UII</b>提供情报。</li>
+                    <li>2013-12-25: 更新5张新卡，感谢<b>a272295516</b>等朋友热情提供情报。
                         <ul><li>森林：<cf:c>蒲公英仙子</cf:c></li><li>蛮荒：<cf:c>荒漠仙人掌</cf:c> <cf:c>熊人巫医</cf:c> <cf:c>半狮人武士</cf:c> <cf:c>齐天美猴王</cf:c></li></ul>
                     </li>
                     <li>2013-12-10: 修复【透支】之后没有立即死亡被【回春】救活的BUG，感谢<b>IP为118.*.*.129</b>的朋友提供情报</li>
                     <li>2013-12-09: 应大家的需求，魔神战添加更多统计值（最大、最小、平均伤害，不稳定度）</li>
-                    <li>2013-12-08: 修复【脱困】无法防止【迷魂】的BUG，感谢<a data-type="user">a0026881</a>提供情报</li>
+                    <li>2013-12-08: 修复【脱困】无法防止【迷魂】的BUG，感谢<b>a0026881</b>提供情报</li>
                     <li>2013-12-07: BUG修复
                         <ul>
                             <li>修复【背刺】技能的一个BUG，感谢<b>IP为222.*.*.174</b>的朋友提供情报</li>
                             <li>感谢大家的回复，<cf:c>毁灭之龙</cf:c>的HP已修正</li>
-                            <li>修复一个【趁胜追击】和【复仇】攻击英雄时候的BUG，感谢<a data-type="user">DdiTp</a>提供情报</li>
+                            <li>修复一个【趁胜追击】和【复仇】攻击英雄时候的BUG，感谢<b>DdiTp</b>提供情报</li>
                         </ul>
                     </li>
                     <li>2013-12-06: 更新导航界面</li>
@@ -416,20 +417,20 @@
                         <ul>
                             <li>应广大WP玩家的强烈要求，在魔神战中复了添加了旧魔神的模拟</li>
                             <li>修复一个封印技能某些时候会导致错误的BUG</li>
-                            <li>感谢<a data-type="user">福哥马林</a>积极提出各种建议</li>
+                            <li>感谢<b>福哥马林</b>积极提出各种建议</li>
                         </ul>
                     </li>
                     <li>2013-12-03: 魔神更新以及BUG修复
                         <ul>
-                            <li>六大魔神技能全面升级，感谢<a data-type="user">cwal18</a>提供情报</li>
-                            <li>修复<cf:c>虚空假面</cf:c>的攻击力BUG，感谢<a data-type="user">slbtsbc</a>和<b>守望月磐</b>提供情报</li>
-                            <li>修复<cf:c>魔法协会长</cf:c>复活带【封印】或【背刺】卡牌时候的BUG，感谢<a data-type="user">a0026881</a>提供情报</li>
+                            <li>六大魔神技能全面升级，感谢<b>cwal18</b>提供情报</li>
+                            <li>修复<cf:c>虚空假面</cf:c>的攻击力BUG，感谢<b>slbtsbc</b>和<b>守望月磐</b>提供情报</li>
+                            <li>修复<cf:c>魔法协会长</cf:c>复活带【封印】或【背刺】卡牌时候的BUG，感谢<b>a0026881</b>提供情报</li>
                         </ul>
                     </li>
                     <li>2013-11-30: BUG修复
                         <ul>
-                            <li>修复【横扫】触发额外【裂伤】的BUG，感谢<a data-type="user">沸腾的冰红茶</a>提供情报</li>
-                            <li>修复<cf:c>世界树之灵</cf:c>【神圣守护】的BUG，感谢<a data-type="user">hejiangting8</a>提供情报</li>
+                            <li>修复【横扫】触发额外【裂伤】的BUG，感谢<b>沸腾的冰红茶</b>提供情报</li>
+                            <li>修复<cf:c>世界树之灵</cf:c>【神圣守护】的BUG，感谢<b>hejiangting8</b>提供情报</li>
                             <li>修复<cf:c>世界树之灵</cf:c>COST的BUG，感谢<b>IP为221.*.*.158的朋友</b>提供情报</li>
                             <li>更新<cf:c>骸骨大将</cf:c>的第二技能为【[死契]暴风雪6】，感谢<b>IP为112.*.*.134的朋友</b>提供情报</li>
                         </ul>
@@ -441,9 +442,9 @@
                     </li>
                     <li>2013-11-27: 修复几个BUG
                         <ul>
-                            <li><cf:c>精灵女王</cf:c>的COST从19改为17，15级COST改为19（感谢吧友<a data-type="user">uiiysss1</a>提供情报）</li>
-                            <li>修复地图战中<b>无符文</b>的条件判断错误（感谢吧友<a data-type="user">勿忘干将</a>和<a data-type="user">ycphoenix</a>提供情报）</li>
-                            <li>修复<cf:c>魔法协会长</cf:c>总是复活最后死亡的卡的BUG（感谢吧友<a data-type="user">PandaGM</a>提供情报）</li>
+                            <li><cf:c>精灵女王</cf:c>的COST从19改为17，15级COST改为19（感谢吧友<b>uiiysss1</b>提供情报）</li>
+                            <li>修复地图战中<b>无符文</b>的条件判断错误（感谢吧友<b>勿忘干将</b>和<b>ycphoenix</b>提供情报）</li>
+                            <li>修复<cf:c>魔法协会长</cf:c>总是复活最后死亡的卡的BUG（感谢吧友<b>PandaGM</b>提供情报）</li>
                             <li>新加的一些卡片的数据都来源于魔卡WIKI，但是这次WIKI上的COST数值都很诡异，多数卡10级和15级的COST没有区别，可能有错，希望大家一起帮忙排查</li>
                         </ul>
                     </li>
