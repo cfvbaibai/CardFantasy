@@ -138,6 +138,7 @@ public enum SkillType {
     迷魂("31129", 30, 5, SkillTag.控制),
     混乱领域("", 30, 5, SkillTag.控制),
     精神狂乱("", 0),
+    天怒("",150,50),
 
     吸血("31135", 10),
     反噬("31156", 50),
@@ -205,6 +206,7 @@ public enum SkillType {
     召唤树人守护者("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
     召唤炎魔("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
     双子之身("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
+    召唤北海神兽("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
 
     圣光洗礼("", 0, 0, SkillTag.抗免疫, SkillTag.不可洗炼),
     森林沐浴("", 1, 0, SkillTag.抗免疫, SkillTag.不可洗炼),

@@ -1682,6 +1682,12 @@
         <Skill type="法力反射" level="4" unlock="5" />
         <Skill type="不动" level="0" unlock="10" />
     </Card>
+    <!--
+    <Card id="3445" name="北海神兽" wikiId="" race="蛮荒" speed="1" star="4" cost="15" incrCost="2" at="350" hp="1330" incrAT="45" incrHP="49">
+        <Skill type="穷追猛打" level="8" unlock="0" />
+        <Skill type="弱点攻击" level="0" unlock="5" />
+        <Skill type="毒刃" level="0" unlock="10" />
+    </Card>-->
 
     <Card id="3501" name="雷兽" wikiId="31034" race="蛮荒" speed="6" star="5" cost="14" incrCost="2" at="340" hp="1100" incrAT="20" incrHP="45">
         <Skill type="雷暴" level="7" unlock="0" />
@@ -1824,7 +1830,13 @@
         <Skill type="战意" level="8" unlock="5" />
         <Skill type="弱点攻击" level="0" unlock="10" />
     </Card>
-
+    <!--
+    <Card id="3530" name="创世神女" wikiId="" race="蛮荒" speed="4" star="5" cost="19" incrCost="2" at="345" hp="1720" incrAT="37" incrHP="39">
+        <Skill type="天怒" level="7" unlock="0" />
+        <Skill type="免疫" level="0" unlock="5" />
+        <Skill type="召唤北海神兽" level="0" unlock="10" />
+    </Card>
+    -->
     <!-- 地狱 -->
     <Card id="4101" name="恶魔小鬼" wikiId="31036" race="地狱" speed="2" star="1" cost="3" incrCost="2" at="80" hp="270" incrAT="19" incrHP="6">
         <Skill type="火球" level="2" unlock="0" />

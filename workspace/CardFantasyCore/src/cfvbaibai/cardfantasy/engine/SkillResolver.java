@@ -234,6 +234,8 @@ public class SkillResolver {
                 Summon.apply(this, skillUseInfo, attacker, "炎魔");
             } else if (skillUseInfo.getType() == SkillType.双子之身) {
                 Summon.apply(this, skillUseInfo, attacker, "双子座·幻影");
+            } else if (skillUseInfo.getType() == SkillType.召唤北海神兽) {
+                Summon.apply(this, skillUseInfo, attacker, "北海神兽");
             } else if (skillUseInfo.getType() == SkillType.魔力法阵) {
                 MagicMark.apply(this, skillUseInfo, attacker, defender, -1);
             } else if (skillUseInfo.getType() == SkillType.魔力印记) {
@@ -250,6 +252,8 @@ public class SkillResolver {
                 SuraFire.apply(this, skillUseInfo, attacker, defender);
             } else if (skillUseInfo.getType() == SkillType.精神狂乱) {
                 Insane.apply(skillUseInfo, this, attacker, defender, 1);
+            } else if (skillUseInfo.getType() == SkillType.天怒){
+                BurningFlame.apply(skillUseInfo, this, attacker, defender);
             }
         }
         RuneInfo rune = attacker.getOwner().getActiveRuneOf(RuneData.飞岩);
