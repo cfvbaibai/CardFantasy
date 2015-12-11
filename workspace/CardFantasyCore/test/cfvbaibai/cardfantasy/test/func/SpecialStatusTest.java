@@ -112,7 +112,18 @@ public class SpecialStatusTest extends SkillValidationTest {
             6390 - context.getPlayer(1).getHP());
         Assert.assertEquals(80 /* 水源冰弹 */ + 218 /* 水源攻击 */ - 0 /* 无法回春 */, 1560 - c凤凰.getHP());
     }
-    
+
+    @Test
+    public void test燃烧_基础() {
+        SkillTestContext context = prepare(50, 50, "秘银巨石像", "占位符+燃烧10");
+        CardInfo c秘银巨石像 = context.addToField(0, 0);
+        context.addToField(1, 1);
+        context.startGame();
+
+        context.proceedOneRound();
+        Assert.assertEquals(250, 1400 - c秘银巨石像.getHP());
+    }
+
     /**
      * 燃烧比回春先结算
      */
@@ -133,7 +144,54 @@ public class SpecialStatusTest extends SkillValidationTest {
         // 由于燃烧先结算，所以凤凰无法回春而死亡。
         Assert.assertEquals(0, context.getPlayer(1).getField().size());
     }
-    
+
+    /**
+     * 横扫的溅射部分无法引起燃烧
+     */
+    @Test
+    public void test燃烧_横扫溅射() {
+        SkillTestContext context = prepare(50, 50, "秘银巨石像+横扫", "占位符", "占位符+燃烧10");
+        CardInfo c秘银巨石像 = context.addToField(0, 0);
+        context.addToField(1, 1);
+        context.addToField(2, 1);
+        context.startGame();
+
+        context.proceedOneRound();
+        Assert.assertFalse(c秘银巨石像.getStatus().containsStatus(CardStatusType.燃烧));
+    }
+
+    /**
+     * 即使秒杀对手仍然会被燃烧
+     */
+    @Test
+    public void test燃烧_死亡() {
+        SkillTestContext context = prepare(50, 50, "秘银巨石像", "占位符+燃烧10");
+        CardInfo c秘银巨石像 = context.addToField(0, 0);
+        context.addToField(1, 1).setBasicHP(2);
+        context.startGame();
+
+        context.proceedOneRound();
+        Assert.assertTrue(c秘银巨石像.getStatus().containsStatus(CardStatusType.燃烧));
+    }
+
+    /**
+     * 同等级燃烧效果不能叠加
+     */
+    @Test
+    public void test燃烧_同等级() {
+        SkillTestContext context = prepare(50, 50, "秘银巨石像", "占位符+燃烧10", "占位符+燃烧10");
+        CardInfo c秘银巨石像 = context.addToField(0, 0);
+        context.addToField(1, 1).setBasicHP(2);
+        context.addToField(2, 1);
+        context.startGame();
+
+        context.proceedOneRound();
+        Assert.assertTrue(c秘银巨石像.getStatus().containsStatus(CardStatusType.燃烧));
+        context.proceedOneRound();
+        context.proceedOneRound();
+        Assert.assertEquals(1, c秘银巨石像.getStatus().getStatusOf(CardStatusType.燃烧).size());
+    }
+
     /**
      * 中毒比回春先结算
      */

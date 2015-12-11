@@ -118,4 +118,34 @@ public class RacialBufferTest extends SkillValidationTest {
         context.getEngine().proceedOneRound();
         Assert.assertEquals((180 - 30 /* 削弱 */) * 175 / 100 /* 暗杀 */, 620 - c东方僧人.getHP());
     }
+
+    /**
+     * 种族克制造成的额外伤害能被计入横扫的溅射部分伤害
+     */
+    @Test
+    public void test种族克制_横扫() {
+        SkillTestContext context = prepare(50, 50, "震源岩蟾", "秘银巨石像", "占位符");
+        context.addToField(0, 0);
+        CardInfo c秘银巨石像 = context.addToField(1, 1);
+        CardInfo c占位符 = context.addToField(2, 1);
+        context.startGame();
+        context.proceedOneRound();
+        Assert.assertEquals(1364, 1400 - c秘银巨石像.getHP());
+        Assert.assertEquals(1364, 5000 - c占位符.getHP());
+    }
+
+    /**
+     * 横扫溅射部分无法触发种族克制
+     */
+    @Test
+    public void test种族克制_横扫溅射() {
+        SkillTestContext context = prepare(50, 50, "震源岩蟾", "占位符", "秘银巨石像");
+        context.addToField(0, 0);
+        CardInfo c占位符 = context.addToField(1, 1);
+        CardInfo c秘银巨石像 = context.addToField(2, 1);
+        context.startGame();
+        context.proceedOneRound();
+        Assert.assertEquals(620, 5000 - c占位符.getHP());
+        Assert.assertEquals(620, 1400 - c秘银巨石像.getHP());
+    }
 }

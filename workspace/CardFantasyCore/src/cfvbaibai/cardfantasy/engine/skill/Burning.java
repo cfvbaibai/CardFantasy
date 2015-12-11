@@ -16,10 +16,14 @@ public final class Burning {
         if (attacker == null) {
             return;
         }
-        if (defender.isDead()) {
-            return;
+        for (CardStatusItem item : attacker.getStatus().getStatusOf(CardStatusType.燃烧)) {
+            // 同等级燃烧无法叠加
+            if (item.getCause().getSkill().getImpact() == skillUseInfo.getSkill().getImpact()) { 
+                return;
+            }
         }
-        if (attacker.getStatus().containsStatusCausedBy(skillUseInfo, CardStatusType.燃烧)) {
+        if (attacker.getPosition() != defender.getPosition()) {
+            // 横扫溅射部分无法引起燃烧
             return;
         }
         Skill skill = skillUseInfo.getSkill();
