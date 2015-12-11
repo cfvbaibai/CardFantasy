@@ -232,7 +232,69 @@ public class SummonSkillTest extends SkillValidationTest {
         Assert.assertEquals(c邪灵女巫.getUniqueName(), context.getPlayer(0).getField().getCard(0).getUniqueName());
         Assert.assertEquals(1050, c邪灵女巫.getMaxHP());
     }
-    
+
+    @Test
+    public void test神圣守护_基础() {
+        SkillTestContext context = prepare(50, 50, "占位符", "占位符+神圣守护7", "占位符", "占位符");
+        CardInfo c占位符1 = context.addToHand(0, 0).setSummonDelay(0);
+        CardInfo c占位符2 = context.addToHand(1, 0).setSummonDelay(0);
+        CardInfo c占位符3 = context.addToHand(2, 0).setSummonDelay(0);
+        context.addToField(3, 1);
+        context.startGame();
+
+        context.proceedOneRound();
+        Assert.assertEquals(5350, c占位符1.getHP());
+        Assert.assertEquals(5350, c占位符1.getMaxHP());
+        Assert.assertEquals(5350, c占位符2.getHP());
+        Assert.assertEquals(5350, c占位符2.getMaxHP());
+        Assert.assertEquals(5350, c占位符3.getHP());
+        Assert.assertEquals(5350, c占位符3.getMaxHP());
+    }
+
+    @Test
+    public void test神圣守护_隔轮被动() {
+        SkillTestContext context = prepare(50, 50, "占位符+神圣守护7", "占位符", "占位符");
+        CardInfo c占位符1 = context.addToField(0, 0);
+        CardInfo c占位符2 = context.addToHand(1, 0).setSummonDelay(0);
+        context.addToField(2, 1);
+        context.startGame();
+
+        context.proceedOneRound();
+        Assert.assertEquals(5350, c占位符1.getHP());
+        Assert.assertEquals(5350, c占位符1.getMaxHP());
+        Assert.assertEquals(5350, c占位符2.getHP());
+        Assert.assertEquals(5350, c占位符2.getMaxHP());
+    }
+
+    /**
+     * 由于神圣守护卡右边的卡牌死亡而得以靠在右边的卡牌无法获得神圣守护效果
+     */
+    @Test
+    public void test神圣守护_整理靠近() {
+        SkillTestContext context = prepare(50, 50, "占位符+神圣守护7", "残血王国小兵", "占位符", "占位符", "秘银巨石像");
+        CardInfo c占位符1 = context.addToHand(0, 0).setSummonDelay(0);
+        CardInfo c残血王国小兵 = context.addToHand(1, 0).setSummonDelay(0);
+        CardInfo c占位符2 = context.addToHand(2, 0).setSummonDelay(0);
+        context.addToField(3, 1);
+        context.addToField(4, 1);
+        context.startGame();
+
+        context.proceedOneRound();
+        Assert.assertEquals(5350, c占位符1.getHP());
+        Assert.assertEquals(5350, c占位符1.getMaxHP());
+        Assert.assertEquals(351, c残血王国小兵.getHP());
+        Assert.assertEquals(351, c残血王国小兵.getMaxHP());
+        Assert.assertEquals(5000, c占位符2.getHP());
+        Assert.assertEquals(5000, c占位符2.getMaxHP());
+
+        context.proceedOneRound();
+        Assert.assertEquals(5350, c占位符1.getHP());
+        Assert.assertEquals(5350, c占位符1.getMaxHP());
+        Assert.assertTrue(c残血王国小兵.isDead());
+        Assert.assertEquals(5000, c占位符2.getHP());
+        Assert.assertEquals(5000, c占位符2.getMaxHP());
+    }
+
     /**
      * 降临技能优先于献祭
      */

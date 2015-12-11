@@ -421,8 +421,12 @@ public class CardInfo extends EntityInfo {
     public int getRawMaxHP() {
         return this.card.getMaxHP();
     }
-        
 
+
+    /**
+     * 获取原始体力加成后的最大体力值
+     * @return
+     */
     public int getBasicMaxHP() {
         int actualMaxHP = this.card.getMaxHP();
         for (SkillEffect effect : this.getEffects()) {
