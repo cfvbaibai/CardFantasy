@@ -6,6 +6,7 @@ import org.junit.Test;
 import cfvbaibai.cardfantasy.data.Race;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.CardStatusType;
+import cfvbaibai.cardfantasy.engine.RuneInfo;
 
 public class SpecialStatusTest extends SkillValidationTest {
     /**
@@ -190,6 +191,72 @@ public class SpecialStatusTest extends SkillValidationTest {
         context.proceedOneRound();
         context.proceedOneRound();
         Assert.assertEquals(1, c秘银巨石像.getStatus().getStatusOf(CardStatusType.燃烧).size());
+    }
+
+    /**
+     * 法力反射无法防御燃烧
+     */
+    @Test
+    public void test燃烧_法力反射() {
+        SkillTestContext context = prepare(50, 50, "秘银巨石像", "占位符+燃烧10");
+        CardInfo c秘银巨石像 = context.addToField(0, 0);
+        context.addToField(1, 1);
+        context.startGame();
+
+        context.proceedOneRound();
+
+        Assert.assertTrue(c秘银巨石像.getStatus().containsStatus(CardStatusType.燃烧));
+        Assert.assertEquals(250, 1400 - c秘银巨石像.getHP());
+    }
+
+    /**
+     * 燃烧可以被免疫
+     */
+    @Test
+    public void test燃烧_免疫() {
+        SkillTestContext context = prepare(50, 50, "秘银巨石像+免疫", "占位符+燃烧10");
+        CardInfo c秘银巨石像 = context.addToField(0, 0);
+        context.addToField(1, 1);
+        context.startGame();
+
+        context.proceedOneRound();
+        Assert.assertFalse(c秘银巨石像.getStatus().containsStatus(CardStatusType.燃烧));
+        Assert.assertEquals(0, 1550 - c秘银巨石像.getHP());
+    }
+
+    /**
+     * 法力反射无法防御烈火焚神
+     */
+    @Test
+    public void test烈火焚神_法力反射() {
+        SkillTestContext context = prepare(50, 50, "占位符+烈火焚神10", "秘银巨石像");
+        context.addToField(0, 0);
+        CardInfo c秘银巨石像 = context.addToField(1, 1);
+        context.startGame();
+
+        random.addNextPicks(0); // 烈火焚神10
+        context.proceedOneRound();
+
+        Assert.assertTrue(c秘银巨石像.getStatus().containsStatus(CardStatusType.燃烧));
+        Assert.assertEquals(0, 1400 - c秘银巨石像.getHP());
+
+        context.proceedOneRound();
+        Assert.assertEquals(200, 1400 - c秘银巨石像.getHP());
+    }
+
+    @Test
+    public void test烈火焚神_免疫() {
+        SkillTestContext context = prepare(50, 50, "占位符+烈火焚神10", "秘银巨石像+免疫");
+        context.addToField(0, 0);
+        CardInfo c秘银巨石像 = context.addToField(1, 1);
+        context.startGame();
+
+        random.addNextPicks(0); // 烈火焚神10
+        context.proceedOneRound();
+        Assert.assertFalse(c秘银巨石像.getStatus().containsStatus(CardStatusType.燃烧));
+
+        context.proceedOneRound();
+        Assert.assertEquals(0, 1550 - c秘银巨石像.getHP());
     }
 
     /**
@@ -1222,5 +1289,29 @@ public class SpecialStatusTest extends SkillValidationTest {
         Assert.assertEquals(660, 1400 - c秘银巨石像1.getHP());
         Assert.assertEquals(0, 1400 - c秘银巨石像2.getHP());
         Assert.assertEquals(660, 1550 - c秘银巨石像3.getHP());
+    }
+    
+    /**
+     * 法力侵蚀攻击被石林保护的卡牌受到时也会造成三倍伤害
+     */
+    @Test
+    public void test石林_法力侵蚀() {
+        SkillTestContext context = prepare(
+                50, 50, "占位符", "山羊人盾士*2", "占位符+法力侵蚀10", "石林");
+            CardInfo c占位符1 = context.addToField(0, 0);
+            context.addToGrave(1, 0);
+            context.addToGrave(2, 0);
+            CardInfo c占位符2 = context.addToField(3, 1);
+            RuneInfo r石林 = context.addToRune(0, 0);
+            context.startGame();
+
+            context.proceedOneRound();
+
+            random.addNextPicks(0);
+            context.proceedOneRound();
+
+            Assert.assertTrue(r石林.isActivated());
+            Assert.assertEquals(200 * 3, 5000 - c占位符1.getHP());
+            Assert.assertEquals(0, 5000 - c占位符2.getHP());
     }
 }

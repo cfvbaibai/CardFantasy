@@ -3,6 +3,7 @@ package cfvbaibai.cardfantasy.engine.skill;
 import java.util.List;
 
 import cfvbaibai.cardfantasy.GameUI;
+import cfvbaibai.cardfantasy.data.RuneData;
 import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.data.SkillType;
 import cfvbaibai.cardfantasy.engine.CardInfo;
@@ -21,7 +22,8 @@ public final class ManaErode {
         for (CardInfo victim : victims) {
             int actualDamage = damage;
             if (victim.containsUsableSkill(SkillType.免疫) ||
-                victim.containsUsableSkill(SkillType.法力反射)) {
+                victim.containsUsableSkill(SkillType.法力反射) ||
+                defender.getActiveRuneOf(RuneData.石林) != null) {
                 actualDamage *= 3;
             }
             ui.attackCard(attacker, victim, cardSkill, actualDamage);
