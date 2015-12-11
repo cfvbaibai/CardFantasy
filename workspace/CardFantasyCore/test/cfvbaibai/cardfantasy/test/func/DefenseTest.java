@@ -465,7 +465,7 @@ public class DefenseTest extends SkillValidationTest {
         Assert.assertEquals(620 * 60 / 100, 1270 - c半鹿人号角手.getHP());
         Assert.assertEquals(620 * 60 / 100, 5000 - c占位符.getHP());
     }
-    
+
     @Test
     public void test反击_灵巧() {
         SkillTestContext context = prepare(50, 50, "圣泉元神", "占位符+反击10");

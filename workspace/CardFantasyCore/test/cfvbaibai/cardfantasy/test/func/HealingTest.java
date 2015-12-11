@@ -44,7 +44,7 @@ public class HealingTest extends SkillValidationTest {
         Assert.assertEquals(300, c秘银巨石像2.getHP());
         Assert.assertEquals(300, c东方幻术师.getHP());
     }
-    
+
     @Test
     public void test治疗之雾_两卡治疗_右面() {
         SkillTestContext context = prepare(
@@ -60,7 +60,7 @@ public class HealingTest extends SkillValidationTest {
         Assert.assertEquals(300, c秘银巨石像1.getHP());
         Assert.assertEquals(100, c秘银巨石像2.getHP());
     }
-    
+
     @Test
     public void test治疗之雾_单卡治疗() {
         SkillTestContext context = prepare(
@@ -88,7 +88,7 @@ public class HealingTest extends SkillValidationTest {
         Assert.assertEquals(300, c东方幻术师.getHP());
         Assert.assertEquals(1400, c秘银巨石像2.getHP());
     }
-    
+
     @Test
     public void test月神的护佑_普通() {
         SkillTestContext context = prepare(
@@ -106,7 +106,24 @@ public class HealingTest extends SkillValidationTest {
         Assert.assertEquals(5000, c占位符3.getHP());
         Assert.assertEquals(5000, c占位符4.getHP());
     }
-    
+
+    @Test
+    public void test月神的护佑_不同等级() {
+        SkillTestContext context = prepare(
+            50, 50, "占位符*3", "占位符+月神的护佑9");
+        CardInfo c占位符1 = context.addToField(0, 0).setBasicHP(1300);
+        CardInfo c占位符2 = context.addToField(1, 0).setBasicHP(100);
+        CardInfo c占位符3 = context.addToField(2, 0).setBasicHP(4500);
+        CardInfo c占位符4 = context.addToField(3, 0);
+        context.startGame();
+
+        context.proceedOneRound();
+        Assert.assertEquals(2800, c占位符1.getHP());
+        Assert.assertEquals(1600, c占位符2.getHP());
+        Assert.assertEquals(5000, c占位符3.getHP());
+        Assert.assertEquals(5000, c占位符4.getHP());
+    }
+
     @Test
     public void test月神的触碰_普通() {
         SkillTestContext context = prepare(
@@ -123,7 +140,7 @@ public class HealingTest extends SkillValidationTest {
         Assert.assertEquals(4500, c占位符3.getHP());
         Assert.assertEquals(5000, c占位符4.getHP());
     }
-    
+
     @Test
     public void test祈祷_普通() {
         SkillTestContext context = prepare(50, 50, "占位符+祈祷10", "占位符");

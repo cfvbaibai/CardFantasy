@@ -1,5 +1,6 @@
 package cfvbaibai.cardfantasy.data;
 
+import java.util.Arrays;
 import java.util.HashSet;
 
 public enum SkillType {
@@ -65,7 +66,7 @@ public enum SkillType {
     落雷("31132", 25, SkillTag.魔法),
     连环闪电("30959", 25, SkillTag.魔法),
     雷暴("31151", 25, SkillTag.魔法),
-    雷神降临("", 40, 10, 5, 5, SkillTag.魔法),
+    雷神降临("", 70, 10, new int[] { 10, 15, 25, 35, 45, 50, 55, 65, 70, 75, 85, }, SkillTag.魔法),
 
     火球("30969", 25, SkillTag.魔法),
     火墙("30950", 25, SkillTag.魔法),
@@ -246,37 +247,44 @@ public enum SkillType {
     private int incrImpact;
     private int initImpact2;
     private int incrImpact2;
-    private int[] impactList;
+    private int[] impact3;
     private HashSet <SkillTag> tags;
-    
+
+    SkillType(String wikiId, int[] impact3, SkillTag ... tags) {
+        this(wikiId, 0, 0, impact3, tags);
+    }
+
     SkillType(String wikiId, int incrImpact, SkillTag ... tags) {
         this(wikiId, 0, incrImpact, tags);
     }
-    
+
     SkillType(String wikiId, int initImpact, int incrImpact, SkillTag ... tags) {
         this(wikiId, initImpact, incrImpact, 0, 0, tags);
     }
-    
+
+    SkillType(String wikiId, int initImpact, int incrImpact, int[] impact3, SkillTag ... tags) {
+        this(wikiId, initImpact, incrImpact, 0, 0, impact3, tags);
+    }
+
     SkillType(String wikiId, int initImpact, int incrImpact, int initImpact2, int incrImpact2, SkillTag ... tags) {
+        this(wikiId, initImpact, incrImpact, initImpact2, incrImpact2, null, tags);
+    }
+
+    SkillType(String wikiId, int initImpact, int incrImpact, int initImpact2, int incrImpact2, int[] impact3, SkillTag ... tags) {
         this.wikiId = wikiId;
         this.initImpact = initImpact;
         this.incrImpact = incrImpact;
         this.initImpact2 = initImpact2;
         this.incrImpact2 = incrImpact2;
+        if (impact3 != null) {
+            this.impact3 = Arrays.copyOf(impact3, impact3.length);
+        }
         this.tags = new HashSet <SkillTag> ();
         for (SkillTag tag : tags) {
             this.tags.add(tag);
         }
     }
-    
-    SkillType(String wikiId, int[] impactList, SkillTag ... tags) {
-        this.impactList = impactList;
-        this.tags = new HashSet <SkillTag> ();
-        for (SkillTag tag : tags) {
-            this.tags.add(tag);
-        }
-    }
-    
+
     public String getWikiId() {
         return this.wikiId;
     }
@@ -286,21 +294,25 @@ public enum SkillType {
     }
 
     public int getImpact(int level) {
-        if (this.impactList != null && this.impactList.length > level) {
-            return this.impactList[level];
-        }
         return this.initImpact + level * this.incrImpact;
     }
-    
+
     public int getImpact2(int level) {
         return this.initImpact2 + level * this.incrImpact2;
     }
-    
+
+    public int getImpact3(int level) {
+        if (this.impact3 == null || level < 0 || level >= this.impact3.length) {
+            return 0;
+        }
+        return this.impact3[level];
+    }
+
     public boolean containsTag(SkillTag tag) {
         return this.tags.contains(tag);
     }
 
     public boolean isGrowable() {
-        return this.impactList == null && (this.incrImpact != 0 || this.initImpact != 0);
+        return this.impact3 != null || this.incrImpact != 0 || this.initImpact != 0;
     }
 }

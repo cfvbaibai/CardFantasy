@@ -8,9 +8,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.eclipse.jetty.server.Request;
 import org.eclipse.jetty.server.Server;
+import org.eclipse.jetty.server.ServerConnector;
 import org.eclipse.jetty.server.handler.AbstractHandler;
 import org.eclipse.jetty.server.handler.HandlerList;
 import org.eclipse.jetty.servlet.ServletHandler;
+import org.eclipse.jetty.util.thread.QueuedThreadPool;
 
 public class CardFantasyJettyServer {
 
@@ -25,7 +27,13 @@ public class CardFantasyJettyServer {
                 }
             }
         }
-        Server server = new Server(port);
+        QueuedThreadPool threadPool = new QueuedThreadPool();
+        threadPool.setMaxThreads(128);
+        threadPool.setMinThreads(32);
+        Server server = new Server(threadPool);
+        ServerConnector connector = new ServerConnector(server);
+        connector.setPort(port);
+        server.addConnector(connector);
 
         HandlerList handlers = new HandlerList();
 

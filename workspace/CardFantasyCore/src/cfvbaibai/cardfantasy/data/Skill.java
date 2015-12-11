@@ -28,6 +28,10 @@ public abstract class Skill implements Comparable<Skill> {
     public int getImpact2() {
         return this.type.getImpact2(this.level);
     }
+    
+    public int getImpact3() {
+        return this.type.getImpact3(this.level);
+    }
 
     public String getShortDesc() {
         return String.format("【%s%s】", type.getDisplayName(), level == 0 ? "" : String.valueOf(level));

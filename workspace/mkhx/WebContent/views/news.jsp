@@ -33,6 +33,8 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2015-12-11: 更新了WIKI里魔神和魔王的边框，感谢<x>逆水行舟1991</x>和<x>catree1988</x>提供的素材</li>
+                    <li>2015-12-08: 木盒偷偷改了【雷神降临】的数值, 模拟器也跟着更新了，现在这个技能更强大了</li>
                     <li>2015-12-07: 添加新卡<cf:c>制裁之锤</cf:c>, <cf:c>断罪之镰</cf:c>，感谢<x>希灵天使12345</x>提供数据。</li>
                     <li>2015-12-01: <ul>
                         <li>添加新卡<cf:c>潮汐王女</cf:c></li>

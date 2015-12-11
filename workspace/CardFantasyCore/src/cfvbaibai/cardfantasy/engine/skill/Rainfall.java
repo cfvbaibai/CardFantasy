@@ -25,8 +25,8 @@ public final class Rainfall {
         List<Heal> heals = new ArrayList<Heal>();
         for (CardInfo healee : healeeCandidates) {
             int healHP = 0;
-            if (type == HealType.Percentage) {
-                healHP = healee.getMaxHP() * skill.getImpact() / 100;
+            if (type == HealType.Percentage) { // 月神的护佑, 月神的触碰
+                healHP = healee.getMaxHP() * skill.getImpact3() / 100;
             } else {
                 healHP = skill.getImpact();
             }

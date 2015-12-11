@@ -30,9 +30,9 @@ public final class LighteningMagic {
         GameUI ui = resolver.getStage().getUI();
         ui.useSkill(attacker, victims, skill, true);
         int enemyCardCount = defender.getField().getAliveCards().size();
+        int skillMagicalDamage = skill.getImpact() + skill.getImpact3() * enemyCardCount;
         for (CardInfo victim : victims) {
-            int damage = skill.getImpact();
-            damage += skill.getImpact2() * enemyCardCount;
+            int damage = skillMagicalDamage;
             OnAttackBlockingResult result = resolver.resolveAttackBlockingSkills(attacker, victim, skill, damage);
             if (!result.isAttackable()) {
                 continue;
