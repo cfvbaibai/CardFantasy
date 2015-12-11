@@ -7,25 +7,6 @@ import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.CardStatusType;
 
 public class DeathSkillTest extends SkillValidationTest {
-    
-    /**
-     * 法力反射无法防御自爆
-     */
-    @Test
-    public void test法力反射_自爆() {
-        SkillTestContext context = prepare(50, 50, "元素灵龙", "哥布林术士");
-        CardInfo c元素灵龙 = context.addToField(0, 0);
-        context.addToField(1, 1);
-        context.startGame();
-
-        random.addNextPicks(0); // 哥布林术士自爆
-        context.proceedOneRound();
-
-        Assert.assertEquals(0, context.getPlayer(1).getField().size());
-        Assert.assertEquals(120, 1480 - c元素灵龙.getHP());
-    }
-    
-
     @Test
     public void test死亡印记_基本() {
         SkillTestContext context = prepare(

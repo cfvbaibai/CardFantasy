@@ -4,6 +4,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import cfvbaibai.cardfantasy.engine.CardInfo;
+import cfvbaibai.cardfantasy.engine.CardStatusType;
 import cfvbaibai.cardfantasy.engine.RuneInfo;
 
 public class CounterAttackTest extends SkillValidationTest {
@@ -247,5 +248,58 @@ public class CounterAttackTest extends SkillValidationTest {
         context.proceedOneRound();
         Assert.assertEquals(1 /* 不屈 */, c铸造大师.getHP());
         Assert.assertEquals(560 * 2/* 燕返 */, 1550 - c秘银巨石像.getHP());
+    }
+
+    /**
+     * 法力反射无法防御自爆
+     */
+    @Test
+    public void test法力反射_自爆() {
+        SkillTestContext context = prepare(50, 50, "元素灵龙", "哥布林术士");
+        CardInfo c元素灵龙 = context.addToField(0, 0);
+        context.addToField(1, 1);
+        context.startGame();
+
+        random.addNextPicks(0); // 哥布林术士自爆
+        context.proceedOneRound();
+
+        Assert.assertEquals(0, context.getPlayer(1).getField().size());
+        Assert.assertEquals(120, 1480 - c元素灵龙.getHP());
+    }
+
+    /**
+     * 法力反射无法防御燃烧
+     */
+    @Test
+    public void test法力反射_燃烧() {
+        SkillTestContext context = prepare(50, 50, "秘银巨石像", "占位符+燃烧10");
+        CardInfo c秘银巨石像 = context.addToField(0, 0);
+        context.addToField(1, 1);
+        context.startGame();
+
+        context.proceedOneRound();
+
+        Assert.assertTrue(c秘银巨石像.getStatus().containsStatus(CardStatusType.燃烧));
+        Assert.assertEquals(250, 1400 - c秘银巨石像.getHP());
+    }
+
+    /**
+     * 法力反射无法防御烈火焚神
+     */
+    @Test
+    public void test法力反射_烈火焚神() {
+        SkillTestContext context = prepare(50, 50, "占位符+烈火焚神10", "秘银巨石像");
+        context.addToField(0, 0);
+        CardInfo c秘银巨石像 = context.addToField(1, 1);
+        context.startGame();
+
+        random.addNextPicks(0); // 烈火焚神10
+        context.proceedOneRound();
+
+        Assert.assertTrue(c秘银巨石像.getStatus().containsStatus(CardStatusType.燃烧));
+        Assert.assertEquals(0, 1400 - c秘银巨石像.getHP());
+
+        context.proceedOneRound();
+        Assert.assertEquals(200, 1400 - c秘银巨石像.getHP());
     }
 }
