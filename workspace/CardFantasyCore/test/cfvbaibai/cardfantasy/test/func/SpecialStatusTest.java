@@ -1297,21 +1297,46 @@ public class SpecialStatusTest extends SkillValidationTest {
     @Test
     public void test石林_法力侵蚀() {
         SkillTestContext context = prepare(
-                50, 50, "占位符", "山羊人盾士*2", "占位符+法力侵蚀10", "石林");
-            CardInfo c占位符1 = context.addToField(0, 0);
-            context.addToGrave(1, 0);
-            context.addToGrave(2, 0);
-            CardInfo c占位符2 = context.addToField(3, 1);
-            RuneInfo r石林 = context.addToRune(0, 0);
-            context.startGame();
+            50, 50, "占位符", "山羊人盾士*2", "占位符+法力侵蚀10", "石林");
+        CardInfo c占位符1 = context.addToField(0, 0);
+        context.addToGrave(1, 0);
+        context.addToGrave(2, 0);
+        CardInfo c占位符2 = context.addToField(3, 1);
+        RuneInfo r石林 = context.addToRune(0, 0);
+        context.startGame();
 
-            context.proceedOneRound();
+        context.proceedOneRound();
 
-            random.addNextPicks(0);
-            context.proceedOneRound();
+        random.addNextPicks(0);
+        context.proceedOneRound();
 
-            Assert.assertTrue(r石林.isActivated());
-            Assert.assertEquals(200 * 3, 5000 - c占位符1.getHP());
-            Assert.assertEquals(0, 5000 - c占位符2.getHP());
+        Assert.assertTrue(r石林.isActivated());
+        Assert.assertEquals(200 * 3, 5000 - c占位符1.getHP());
+        Assert.assertEquals(0, 5000 - c占位符2.getHP());
+    }
+
+    /**
+     * 即使被锁定仍然可以释放净魂领域
+     */
+    @Test
+    public void test净魂领域_陷阱() {
+        SkillTestContext context = prepare(
+            50, 50, "占位符+陷阱2", "占位符", "秘银巨石像+净魂领域", "秘银巨石像");
+        CardInfo c占位符1 = context.addToField(0, 0);
+        CardInfo c占位符2 = context.addToField(1, 0);
+        CardInfo c秘银巨石像1 = context.addToField(2, 1);
+        CardInfo c秘银巨石像2 = context.addToField(3, 1);
+        context.startGame();
+
+        random.addNextPicks(0, 1);  // 陷阱2
+        random.addNextNumbers(0, 0);// 陷阱2
+        context.proceedOneRound();
+
+        Assert.assertTrue(c秘银巨石像1.getStatus().containsStatus(CardStatusType.锁定));
+        Assert.assertTrue(c秘银巨石像2.getStatus().containsStatus(CardStatusType.锁定));
+
+        context.proceedOneRound();
+        Assert.assertEquals(810, 5000 - c占位符1.getHP());
+        Assert.assertEquals(660, 5000 - c占位符2.getHP());
     }
 }
