@@ -252,7 +252,7 @@
                         </div>
                     </div>
                     <div>
-                        <textarea id="map-deck" name="map-deck" rows="5" cols="40" data-mini="true">精灵法师-10</textarea>
+                        <textarea id="map-deck" name="map-deck" rows="5" cols="40" data-mini="true">熊人武士+蛮荒之力3-15,熊人武士+不动-12,蜘蛛人女王+不动-15,蜘蛛人女王+暴击5-12,水源制造者+森林之力4-15,水源制造者+森林守护4-14,元素灵龙+不动-15,小矮人狙击者+森林守护3-15,雷兽+格挡8-11,暴怒霸龙+吸血6-15,石林-3,扬旗-3,雷盾-3,赤谷-3</textarea>
                     </div>
                 </div>
             </div>

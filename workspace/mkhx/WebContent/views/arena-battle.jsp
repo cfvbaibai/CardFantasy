@@ -21,7 +21,7 @@
                         </div>
                     </div>
                     <div>
-                        <textarea id="deck1" rows="5" cols="40" data-mini="true">金属巨龙*5,降临天使*5,冰封,永冻,雷盾,春风</textarea>
+                        <textarea id="deck1" rows="5" cols="40" data-mini="true">降临天使-10,羽蛇神-10,恶魔猎人-10,圣剑持有者-10,幻想炼金士-10,福音乐师-10,铁血剑豪-10,元素灵龙-10,震源岩蟾-10,冰封,清泉,赤谷,霜冻</textarea>
                     </div>
                     <div id="player2" class="player ui-grid-c">
                         <div class="ui-block-a ui-block-label-number">
@@ -38,7 +38,7 @@
                         </div>
                     </div>
                     <div>
-                        <textarea id="deck2" rows="5" cols="40" data-mini="true">战斗猛犸象+降临传送*5,堕落精灵+转生5*5,岩壁,赤谷,秽土,灼魂</textarea>
+                        <textarea id="deck2" rows="5" cols="40" data-mini="true">熊人武士+蛮荒之力3-15,熊人武士+不动-12,蜘蛛人女王+不动-15,蜘蛛人女王+暴击5-12,水源制造者+森林之力4-15,水源制造者+森林守护4-14,元素灵龙+不动-15,小矮人狙击者+森林守护3-15,雷兽+格挡8-11,暴怒霸龙+吸血6-15,石林-3,扬旗-3,雷盾-3,赤谷-3</textarea>
                     </div>
                 </div>
             </div>
