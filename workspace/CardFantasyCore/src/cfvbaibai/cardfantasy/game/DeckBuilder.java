@@ -43,7 +43,7 @@ public final class DeckBuilder {
         descsText = descsText.replace(' ', ',').replace('　', ',').replace('，', ',').replace('、', ',');
         descsText = descsText.replace("\r\n", ",").replace("\n", ",");
         descsText = descsText.replace('＋', '+').replace('＊', '*').replace('－', '-');
-        descsText = descsText.replace(":", "").replace("：", "");
+        descsText = descsText.replace(":", "").replace("：", "").replace("·", "");
         descsText = Zht2Zhs.getInstance().convert(descsText);
         return descsText.split(",");
     }
