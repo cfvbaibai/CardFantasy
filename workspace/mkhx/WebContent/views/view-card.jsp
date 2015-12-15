@@ -139,13 +139,13 @@ $(document).ready(function() {
             </tr>
             <tr>
                 <td class="label">合成所需碎片</td>
-                <td class="value">${cardInfo.requiredFragmentCount}</td>
+                <td class="value">${cardInfo.requiredFragmentCount == 0 ? "无法合成" : cardInfo.requiredFragmentCount}</td>
                 <td class="label">可用万能碎片</td>
-                <td class="value">${cardInfo.usableGenericFragmentCount}</td>
+                <td class="value">${cardInfo.requiredFragmentCount == 0 ? "无法合成" : cardInfo.usableGenericFragmentCount}</td>
             </tr>
             <tr>
                 <td class="label">合成价格</td>
-                <td class="value">${cardInfo.composePrice}</td>
+                <td class="value">${cardInfo.requiredFragmentCount == 0 ? "无法合成" : cardInfo.composePrice}</td>
                 <td class="label"></td>
                 <td class="value"></td>
             </tr>
