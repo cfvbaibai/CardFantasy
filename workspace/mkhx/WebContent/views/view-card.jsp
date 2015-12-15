@@ -67,11 +67,15 @@ $(document).ready(function() {
                 <td id="view-card-delay" class="value">${cardInfo.wait}</td>
             </tr>
             <tr>
-                <td class="label">进化前COST</td>
-                <td id="view-card-cost" class="value">${cardInfo.cost}</td>
-                <td class="label">进化后COST</td>
-                <td id="view-card-evo-cost" class="value">${cardInfo.evoCost}</td>
+                <td class="label">官方评级</td>
+                <td id="view-card-evo-cost" class="value">${cardInfo.rank == 0 ? "未评级" : cardInfo.rank}</td>
+                <td class="label">COST</td>
+                <td id="view-card-cost" class="value">${cardInfo.cost} / ${cardInfo.evoCost}</td>
             </tr>
+        </tbody>
+    </table>
+    <table class="view-card-table wiki-table">
+        <tbody>
             <tr>
                 <td class="title" colspan="5">属性成长 <a href="#" data-type="bug">报告BUG</a></td>
             </tr>
@@ -126,6 +130,51 @@ $(document).ready(function() {
                 </td>
             </tr>
             </c:forEach>
+        </tbody>
+    </table>
+    <table class="view-card-table wiki-table">
+        <tbody>
+            <tr>
+                <td class="title" colspan="4">其它</td>
+            </tr>
+            <tr>
+                <td class="label">合成所需碎片</td>
+                <td class="value">${cardInfo.requiredFragmentCount}</td>
+                <td class="label">可用万能碎片</td>
+                <td class="value">${cardInfo.usableGenericFragmentCount}</td>
+            </tr>
+            <tr>
+                <td class="label">合成价格</td>
+                <td class="value">${cardInfo.composePrice}</td>
+                <td class="label"></td>
+                <td class="value"></td>
+            </tr>
+            <tr>
+                <td class="label">可分解碎片</td>
+                <td class="value">${cardInfo.canDecompose ? "是" : "否"}</td>
+                <td class="label">可分解得到</td>
+                <td class="value">${cardInfo.obtainableViaDecomposition ? "是" : "否" }</td>
+            </tr>
+            <tr>
+                <td class="label">迷宫碎片</td>
+                <td class="value">${cardInfo.fragmentObtainableInMaze ? "是" : "否"}</td>
+                <td class="label">地下城碎片</td>
+                <td class="value">${cardInfo.fragmentObtainableInDungeon ? "是" : "否"}</td>
+            </tr>
+            <tr>
+                <td class="label">出现在魔神战</td>
+                <td class="value">${cardInfo.bossHelper ? "是" : "否"}</td>
+                <td class="label">出现在地下城</td>
+                <td class="value">${cardInfo.dungeonCard ? "是" : "否"}</td>
+            </tr>
+            <%--
+            <tr>
+                <td class="label">活动包概率</td>
+                <td class="value">${cardInfo.activityPackRollRank}</td>
+                <td class="label">种族包概率</td>
+                <td class="value">${cardInfo.racePackRollRank}</td>
+            </tr>
+             --%>
         </tbody>
     </table>
 </body>

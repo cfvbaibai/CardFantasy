@@ -109,6 +109,82 @@ public class OfficialCardInfo {
     public boolean isMaterial() {
         return this.card.isMaterial();
     }
+    public int getRequiredFragmentCount() {
+        try {
+            return Integer.parseInt(this.card.Fragment);
+        } catch (Exception e) {
+            return 0;
+        }
+    }
+    public int getUsableGenericFragmentCount() {
+        try {
+            return this.getRequiredFragmentCount() - Integer.parseInt(this.card.FragmentCanUse);
+        } catch (Exception e) {
+            return 0;
+        }
+    }
+
+    public boolean isCanDecompose() {
+        return "1".equals(this.card.CanDecompose);
+    }
+
+    public boolean isObtainableViaDecomposition() {
+        return "1".equals(this.card.DecomposeGet);
+    }
+
+    public boolean isFragmentObtainableInMaze() {
+        return !"0".equals(this.card.FragMaze);
+    }
+    
+    public boolean isFragmentObtainableInDungeon() {
+        return !"0".equals(this.card.DungeonsFrag);
+    }
+
+    public boolean isBossHelper() {
+        return "1".equals(this.card.BossHelper);
+    }
+
+    public boolean isDungeonCard() {
+        return "1".equals(this.card.DungeonsCard);
+    }
+
+    public String getRank() {
+        return this.card.Rank;
+    }
+
+    private static String getRankFromPossibility(int p) {
+        if (p == 0) {
+            return "无";
+        }
+        if (p < 20) {
+            return "极低";
+        }
+        if (p < 40) {
+            return "非诚低";
+        }
+        if (p < 60) {
+            return "低";
+        }
+        if (p < 80) {
+            return "稍低";
+        }
+        return "普通";
+    }
+
+    public String getActivityPackRollRank() {
+        int p = Integer.parseInt(this.card.ActivityPacketRoll);
+        return getRankFromPossibility(p);
+    }
+    
+    public String getRacePackRollRank() {
+        int p = Integer.parseInt(this.card.RacePacketRoll);
+        return getRankFromPossibility(p);
+    }
+    
+    public String getComposePrice() {
+        return this.card.ComposePrice;
+    }
+
     public static OfficialCardInfo build(OfficialCard card, OfficialSkillData skillData) {
         OfficialCardInfo cardInfo = new OfficialCardInfo();
         cardInfo.card = card;
