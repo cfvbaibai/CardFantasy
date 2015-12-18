@@ -4,9 +4,15 @@ public abstract class Skill implements Comparable<Skill> {
 
     protected SkillType type;
     protected int level;
+    protected AttachedSkill attachedSkill;
+
     public Skill(SkillType type, int level) {
         this.type = type;
         this.level = level;
+        SkillType attachedType = this.type.getAttachedType();
+        if (attachedType != null) {
+            this.attachedSkill = new AttachedSkill(attachedType, level);
+        }
     }
 
     public SkillType getType() {
@@ -31,6 +37,10 @@ public abstract class Skill implements Comparable<Skill> {
     
     public int getImpact3() {
         return this.type.getImpact3(this.level);
+    }
+
+    public Skill getAttachedSkill() {
+        return this.attachedSkill;
     }
 
     public String getShortDesc() {

@@ -33,6 +33,7 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2015-12-18: 添加新卡<cf:c>创世神女</cf:c>和<cf:c>北海神兽</cf:c>, 感谢<x>zx670122</x>, <x>MikuFanBunz</x>, <x>real11inter</x>的帮助</li>
                     <li>2015-12-11: <ul>
                         <li>更新了WIKI里魔神和魔王的边框，感谢<x>逆水行舟1991</x>和<x>catree1988</x>提供的素材</li>
                         <li>修复了【燃烧】, 【烈火焚神】和【横扫】作用时的BUG</li>

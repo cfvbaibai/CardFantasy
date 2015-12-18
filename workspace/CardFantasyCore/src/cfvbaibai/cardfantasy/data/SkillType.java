@@ -68,11 +68,6 @@ public enum SkillType {
     雷暴("31151", 25, SkillTag.魔法),
     雷神降临("", 70, 10, new int[] { 10, 15, 25, 35, 45, 50, 55, 65, 70, 75, 85, }, SkillTag.魔法),
 
-    火球("30969", 25, SkillTag.魔法),
-    火墙("30950", 25, SkillTag.魔法),
-    烈焰风暴("31128", 25, SkillTag.魔法),
-    修罗地火攻("", 100, 10, 10, 10, SkillTag.魔法),
-
     冰弹("30961", 20, SkillTag.魔法),
     霜冻新星("30965", 20, SkillTag.魔法),
     暴风雪("31133", 20, SkillTag.魔法),
@@ -84,6 +79,13 @@ public enum SkillType {
 
     燃烧("30971", 25),
     烈火焚神("31127", 20),
+    天怒燃烧("", 150, 50),
+
+    火球("30969", 25, SkillTag.魔法),
+    火墙("30950", 25, SkillTag.魔法),
+    烈焰风暴("31128", 25, SkillTag.魔法),
+    修罗地火攻("", 100, 10, 10, 10, SkillTag.魔法),
+    天怒("", 0, 25, SkillType.天怒燃烧, SkillTag.魔法),
 
     狙击("30962", 25, SkillTag.抗免疫, SkillTag.狙击),
     穿刺("30960", 15, SkillTag.抗免疫),
@@ -139,7 +141,6 @@ public enum SkillType {
     迷魂("31129", 30, 5, SkillTag.控制),
     混乱领域("", 30, 5, SkillTag.控制),
     精神狂乱("", 0),
-    天怒("",150,50),
 
     吸血("31135", 10),
     反噬("31156", 50),
@@ -249,6 +250,7 @@ public enum SkillType {
     private int incrImpact2;
     private int[] impact3;
     private HashSet <SkillTag> tags;
+    private SkillType attachedType;
 
     SkillType(String wikiId, int[] impact3, SkillTag ... tags) {
         this(wikiId, 0, 0, impact3, tags);
@@ -261,16 +263,20 @@ public enum SkillType {
     SkillType(String wikiId, int initImpact, int incrImpact, SkillTag ... tags) {
         this(wikiId, initImpact, incrImpact, 0, 0, tags);
     }
+    
+    SkillType(String wikiId, int initImpact, int incrImpact, SkillType attachedType, SkillTag ... tags) {
+        this(wikiId, initImpact, incrImpact, 0, 0, null, attachedType, tags);
+    }
 
     SkillType(String wikiId, int initImpact, int incrImpact, int[] impact3, SkillTag ... tags) {
-        this(wikiId, initImpact, incrImpact, 0, 0, impact3, tags);
+        this(wikiId, initImpact, incrImpact, 0, 0, impact3, null, tags);
     }
 
     SkillType(String wikiId, int initImpact, int incrImpact, int initImpact2, int incrImpact2, SkillTag ... tags) {
-        this(wikiId, initImpact, incrImpact, initImpact2, incrImpact2, null, tags);
+        this(wikiId, initImpact, incrImpact, initImpact2, incrImpact2, null, null, tags);
     }
 
-    SkillType(String wikiId, int initImpact, int incrImpact, int initImpact2, int incrImpact2, int[] impact3, SkillTag ... tags) {
+    SkillType(String wikiId, int initImpact, int incrImpact, int initImpact2, int incrImpact2, int[] impact3, SkillType attachedType, SkillTag ... tags) {
         this.wikiId = wikiId;
         this.initImpact = initImpact;
         this.incrImpact = incrImpact;
@@ -279,6 +285,7 @@ public enum SkillType {
         if (impact3 != null) {
             this.impact3 = Arrays.copyOf(impact3, impact3.length);
         }
+        this.attachedType = attachedType;
         this.tags = new HashSet <SkillTag> ();
         for (SkillTag tag : tags) {
             this.tags.add(tag);
@@ -314,5 +321,9 @@ public enum SkillType {
 
     public boolean isGrowable() {
         return this.impact3 != null || this.incrImpact != 0 || this.initImpact != 0;
+    }
+
+    public SkillType getAttachedType() {
+        return this.attachedType;
     }
 }

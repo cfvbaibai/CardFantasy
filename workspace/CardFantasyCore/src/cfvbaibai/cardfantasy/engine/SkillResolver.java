@@ -253,7 +253,8 @@ public class SkillResolver {
             } else if (skillUseInfo.getType() == SkillType.精神狂乱) {
                 Insane.apply(skillUseInfo, this, attacker, defender, 1);
             } else if (skillUseInfo.getType() == SkillType.天怒){
-                BurningFlame.apply(skillUseInfo, this, attacker, defender);
+                FireMagic.apply(skillUseInfo.getSkill(), this, attacker, defender, -1);
+                BurningFlame.apply(skillUseInfo.getAttachedUseInfo(), this, attacker, defender);
             }
         }
         RuneInfo rune = attacker.getOwner().getActiveRuneOf(RuneData.飞岩);

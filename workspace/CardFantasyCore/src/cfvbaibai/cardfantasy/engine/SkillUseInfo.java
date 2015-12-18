@@ -9,6 +9,7 @@ public class SkillUseInfo {
     @NonSerializable
     private EntityInfo owner;
     private Skill skill;
+    private SkillUseInfo attachedUseInfo;
 
     public EntityInfo getOwner() {
         return owner;
@@ -25,6 +26,13 @@ public class SkillUseInfo {
     public SkillUseInfo(EntityInfo owner, Skill skill) {
         this.skill = skill;
         this.owner = owner;
+        if (this.skill.getAttachedSkill() != null) {
+            this.attachedUseInfo = new SkillUseInfo(owner, this.skill.getAttachedSkill());
+        }
+    }
+    
+    public SkillUseInfo getAttachedUseInfo() {
+        return this.attachedUseInfo;
     }
 
     @Override
