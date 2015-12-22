@@ -104,6 +104,10 @@ public class CardStatusItem {
         }
         return new CardStatusItem(type, 0, cause);
     }
+    
+    public static CardStatusItem slience(SkillUseInfo cause) {
+        return new CardStatusItem(CardStatusType.沉默, 0, cause);
+    }
 
     public String getShortDesc() {
         StringBuffer sb = new StringBuffer();
