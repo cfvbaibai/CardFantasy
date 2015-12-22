@@ -171,7 +171,9 @@ public class SkillResolver {
                 Destroy.apply(this, skillUseInfo.getSkill(), attacker, defender, 1);
             } else if (skillUseInfo.getType() == SkillType.瘟疫) {
                 Plague.apply(skillUseInfo, this, attacker, defender);
-            } else if (skillUseInfo.getType() == SkillType.血炼) {
+            } else if (skillUseInfo.getType() == SkillType.凋零真言) {
+                WitheringWord.apply(skillUseInfo, this, attacker, defender);
+            }else if (skillUseInfo.getType() == SkillType.血炼) {
                 BloodPaint.apply(skillUseInfo.getSkill(), this, attacker, defender, 1);
             } else if (skillUseInfo.getType() == SkillType.鲜血盛宴) {
                 BloodPaint.apply(skillUseInfo.getSkill(), this, attacker, defender, -1);
@@ -275,7 +277,9 @@ public class SkillResolver {
                     CounterAttack.apply(skillUseInfo.getSkill(), this, attacker, defender, result.getDamage());
                 } else if (skillUseInfo.getType() == SkillType.盾刺) {
                     Spike.apply(skillUseInfo.getSkill(), this, attacker, defender, attackSkill, result.getDamage());
-                } else if (skillUseInfo.getType() == SkillType.物理反弹) {
+                } else if (skillUseInfo.getType() == SkillType.荆棘术) {
+                    Spike.apply(skillUseInfo.getSkill(), this, attacker, defender, attackSkill, result.getDamage());
+                }else if (skillUseInfo.getType() == SkillType.物理反弹) {
                     PhysicalReflection.apply(skillUseInfo.getSkill(), this, attacker, defender, damagedResult.actualDamage);
                 } else if (skillUseInfo.getType() == SkillType.魔神之甲) {
                     Spike.apply(skillUseInfo.getSkill(), this, attacker, defender, attackSkill, result.getDamage());
@@ -435,7 +439,7 @@ public class SkillResolver {
                     result.setDamage(KnightGuardian.apply(this, blockSkillUseInfo.getSkill(), attacker, defender,
                             attackSkill, result.getDamage()));
                 }
-            }
+            }	
 
             for (SkillUseInfo skillUseInfo : defender.getAllUsableSkills()) {
                 if (skillUseInfo.getType() == SkillType.生命链接) {
@@ -616,6 +620,8 @@ public class SkillResolver {
                 PoisonMagic.apply(deadCardSkillUseInfo, this, deadCard, killerCard.getOwner(), -1);
             } else if (deadCardSkillUseInfo.getType() == SkillType.瘟疫) {
                 Plague.apply(deadCardSkillUseInfo, this, deadCard, killerCard.getOwner());
+            } else if (deadCardSkillUseInfo.getType() == SkillType.凋零真言) {
+            	Plague.apply(deadCardSkillUseInfo, this, deadCard, killerCard.getOwner());
             } else if (deadCardSkillUseInfo.getType() == SkillType.治疗) {
                 Heal.apply(deadCardSkillUseInfo.getSkill(), this, deadCard.getOwner());
             } else if (deadCardSkillUseInfo.getType() == SkillType.甘霖) {
@@ -788,6 +794,8 @@ public class SkillResolver {
                     DeathMark.apply(this, skillUseInfo, attacker, defender);
                 } else if (skillUseInfo.getType() == SkillType.凯撒之击) {
                     CaeserAttack.apply(this, skillUseInfo, attacker, defender);
+                }else if (skillUseInfo.getType() == SkillType.沉默) {
+                    Silence.apply(this, skillUseInfo, attacker, defender);
                 }
             }
         }
@@ -1151,6 +1159,8 @@ public class SkillResolver {
                         PoisonMagic.apply(skillUseInfo, this, card, opField.getOwner(), -1);
                     } else if (skillUseInfo.getType() == SkillType.瘟疫) {
                         Plague.apply(skillUseInfo, this, card, opField.getOwner());
+                    } else if (skillUseInfo.getType() == SkillType.凋零真言) {
+                        WitheringWord.apply(skillUseInfo, this, card, opField.getOwner());
                     } else if (skillUseInfo.getType() == SkillType.治疗) {
                         Heal.apply(skillUseInfo.getSkill(), this, card);
                     } else if (skillUseInfo.getType() == SkillType.甘霖) {
@@ -1193,6 +1203,8 @@ public class SkillResolver {
                         RaceChange.apply(this, skillUseInfo, card, opField.getOwner());
                     } else if (skillUseInfo.getType() == SkillType.全体加速){
                         AllSpeedUp.apply(skillUseInfo, this, card);
+                    }else if (skillUseInfo.getType() == SkillType.沉默) {
+                        Silence.apply(this, skillUseInfo,  card, opField.getCard(card.getPosition()));
                     }
                 }
                 else if (!skillUseInfo.getSkill().isDeathSkill()) {

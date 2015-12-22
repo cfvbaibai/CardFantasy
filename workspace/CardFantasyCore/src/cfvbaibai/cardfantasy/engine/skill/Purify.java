@@ -38,6 +38,7 @@ public final class Purify {
             resolver.removeStatus(card, CardStatusType.裂伤);
             resolver.removeStatus(card, CardStatusType.死印);
             resolver.removeStatus(card, CardStatusType.致盲);
+            resolver.removeStatus(card, CardStatusType.沉默);
             // 以下为实测表明净化不能解除的状态
             // resolver.removeStatus(card, CardStatusType.王国);
             // resolver.removeStatus(card, CardStatusType.森林);

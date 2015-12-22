@@ -17,10 +17,12 @@ public enum CardStatusType {
     死印(false, "死"),
     魔印(false, "魔"),
     致盲(false, "盲"),
+    沉默(false, "默"),
     王国(false, "王"),
     森林(false, "森"),
     蛮荒(false, "蛮"),
     地狱(false, "地");
+	
 
     private boolean quantitive;
     public boolean isQuantitive() {

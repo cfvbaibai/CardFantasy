@@ -322,6 +322,7 @@ public class BattleEngine {
             resolver.removeStatus(myField.getCard(i), CardStatusType.蛮荒);
             resolver.removeStatus(myField.getCard(i), CardStatusType.地狱);
             resolver.removeStatus(myField.getCard(i), CardStatusType.致盲);
+            resolver.removeStatus(myField.getCard(i), CardStatusType.沉默);
             resolver.resolveDebuff(myField.getCard(i), CardStatusType.中毒);
             resolver.resolveDebuff(myField.getCard(i), CardStatusType.燃烧);
 

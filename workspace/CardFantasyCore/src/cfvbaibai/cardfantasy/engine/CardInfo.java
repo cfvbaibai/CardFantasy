@@ -132,12 +132,30 @@ public class CardInfo extends EntityInfo {
         return at;
     }
     
+    private int getBasicEffectATToReduce() {
+        int at = 0;
+        for (List<SkillEffect> effects : this.effects.values()) {
+            for (SkillEffect effect : effects) {
+                if (effect.getType() == SkillEffectType.ATTACK_CHANGE &&
+                    effect.getCause().getType().containsTag(SkillTag.基础攻击加成) &&
+                    !effect.getCause().getType().containsTag(SkillTag.抗削弱)) {
+                    at += effect.getValue();
+                }
+            }
+        }
+        return at;
+    }
+    
     public int getLevel0AT() {
         return this.getInitAT() + this.getSpecificLevelEffectAT(SkillTag.原始攻击加成);
     }
 
     public int getLevel1AT() {
         return this.getLevel0AT() + this.getSpecificLevelEffectAT(SkillTag.基础攻击加成);
+    }
+    
+    public int getATToReduce() {
+        return this.getLevel0AT() + this.getBasicEffectATToReduce();
     }
     
     public int getLevel2AT() {
@@ -239,6 +257,7 @@ public class CardInfo extends EntityInfo {
                 skillUseInfos.add(skillUseInfo);
             }
         }
+        
         return skillUseInfos;
     }
 
@@ -250,6 +269,7 @@ public class CardInfo extends EntityInfo {
                 skillUseInfos.add(skillUseInfo);
             }
         }
+        
         return skillUseInfos;
     }
 
@@ -261,6 +281,7 @@ public class CardInfo extends EntityInfo {
                 skillUseInfos.add(skillUseInfo);
             }
         }
+        
         return skillUseInfos;
     }
     
@@ -276,6 +297,12 @@ public class CardInfo extends EntityInfo {
                 skillUseInfos.add(skillUseInfo);
             }
         }
+        //如果中了沉默等于没有技能
+        if (this.getStatus().containsStatus(CardStatusType.沉默))
+        {
+        	skillUseInfos = new ArrayList<SkillUseInfo>();
+        }   
+        
         return skillUseInfos;
     }
 
