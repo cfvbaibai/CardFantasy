@@ -254,7 +254,7 @@ public class SkillResolver {
                 SuraFire.apply(this, skillUseInfo, attacker, defender);
             } else if (skillUseInfo.getType() == SkillType.精神狂乱) {
                 Insane.apply(skillUseInfo, this, attacker, defender, 1);
-            } else if (skillUseInfo.getType() == SkillType.天怒){
+            } else if (skillUseInfo.getType() == SkillType.天怒) {
                 FireMagic.apply(skillUseInfo.getSkill(), this, attacker, defender, -1);
                 BurningFlame.apply(skillUseInfo.getAttachedUseInfo(), this, attacker, defender);
             }
@@ -757,7 +757,6 @@ public class SkillResolver {
      * @param attacker
      * @param defender
      * @param prior if TRUE, this is resolved before pre-attack skills are resolved.
-     *              Currently, only RETURN falls in this case.
      * @throws HeroDieSignal
      */
     public void resolvePreAttackCardSkills(CardInfo attacker, CardInfo defender, boolean prior) throws HeroDieSignal {
@@ -767,6 +766,8 @@ public class SkillResolver {
                     Return.apply(this, skillUseInfo.getSkill(), attacker, defender);
                 } else if (skillUseInfo.getType() == SkillType.献祭) {
                     Sacrifice.apply(this, skillUseInfo, attacker, null);
+                } else if (skillUseInfo.getType() == SkillType.沉默) {
+                    Silence.apply(this, skillUseInfo, attacker, defender);
                 }
             } else {
                 if (skillUseInfo.getType() == SkillType.圣光) {
@@ -794,8 +795,6 @@ public class SkillResolver {
                     DeathMark.apply(this, skillUseInfo, attacker, defender);
                 } else if (skillUseInfo.getType() == SkillType.凯撒之击) {
                     CaeserAttack.apply(this, skillUseInfo, attacker, defender);
-                }else if (skillUseInfo.getType() == SkillType.沉默) {
-                    Silence.apply(this, skillUseInfo, attacker, defender);
                 }
             }
         }
@@ -1203,7 +1202,7 @@ public class SkillResolver {
                         RaceChange.apply(this, skillUseInfo, card, opField.getOwner());
                     } else if (skillUseInfo.getType() == SkillType.全体加速){
                         AllSpeedUp.apply(skillUseInfo, this, card);
-                    }else if (skillUseInfo.getType() == SkillType.沉默) {
+                    } else if (skillUseInfo.getType() == SkillType.沉默) {
                         Silence.apply(this, skillUseInfo,  card, opField.getCard(card.getPosition()));
                     }
                 }

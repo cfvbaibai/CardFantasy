@@ -11,7 +11,8 @@
                 <ul>
                     <li><a href="#" data-type="bug">魔卡幻想模拟器贴吧</a>已成立，欢迎大家来提BUG、提需求、提供技能结算细节。</li>
                     <li><a href="<c:url value="/Wiki" />" target="_blank">魔卡幻想WIKI</a>子站点正式成立，作为新的尝试，欢迎大家来<a href="#" data-type="bug">贴吧</a>提需求和报告BUG。</li>
-                    <li>现在模拟器能识别卡牌昵称或简称了，直接手动输入卡组变得更容易了。当然肯定有漏掉的，欢迎大家来<a href="#" data-type="bug">贴吧</a>补充。</li>
+                    <li>三区（前五区）大神【砍掉重练】已经把他的模拟器和这个模拟器合并了，以后都会共同开发，最近的新卡几乎都是他做的。</li>
+                    <!-- <li>现在模拟器能识别卡牌昵称或简称了，直接手动输入卡组变得更容易了。当然肯定有漏掉的，欢迎大家来<a href="#" data-type="bug">贴吧</a>补充。</li> -->
                     <!-- <li>小提示：如果想保存卡组，只要把卡组的文字表述记下来存在文本文件或者手机备忘录里，下次要用的时候复制回来就行。</li> -->
                     <!-- <li>小提示：可以灵活使用*0的表达法来方便配卡哦。</li> -->
                 </ul>
@@ -33,6 +34,7 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2015-12-22: 添加新卡<cf:c>不幸青鸟</cf:c>, <cf:c>红莲魔女</cf:c>和<cf:c>风暴海皇</cf:c>, 感谢<x>希灵天使12345</x>的帮助，【沉默】的效果是YY的，希望大家实测检验。</li>
                     <li>2015-12-18: 添加新卡<cf:c>创世神女</cf:c>和<cf:c>北海神兽</cf:c>, 感谢<x>moon_eyes</x>, <x>zx670122</x>, <x>MikuFanBunz</x>, <x>real11inter</x>和<x>raffinat</x>的帮助</li>
                     <li>2015-12-11: <ul>
                         <li>更新了WIKI里魔神和魔王的边框，感谢<x>逆水行舟1991</x>和<x>catree1988</x>提供的素材</li>
