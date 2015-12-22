@@ -1849,7 +1849,7 @@
         <Skill type="荆棘术" level="6" unlock="5" />
         <Skill type="冰甲" level="7" unlock="10" />
     </Card>
-    <Card id="3532" name="风暴海皇" wikiId="" race="蛮荒" speed="3" star="5" cost="19" incrCost="2" at="410" hp="1380" incrAT="42" incrHP="28">
+    <Card id="3532" name="风暴海皇" wikiId="" race="蛮荒" speed="１" star="5" cost="19" incrCost="2" at="410" hp="1380" incrAT="42" incrHP="28">
         <Skill type="沉默" level="0" unlock="0" summon="true"/>
         <Skill type="战意" level="8" unlock="5" />
         <Skill type="转生" level="8" unlock="10" />
