@@ -20,6 +20,7 @@
     <bean class="cfvbaibai.cardfantasy.web.aspects.EncodingAspect" />
 
     <mvc:resources mapping="/resources/**" location="/resources/" />
+    <mvc:resources mapping="/*" location="/" />
 
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/views/" />
