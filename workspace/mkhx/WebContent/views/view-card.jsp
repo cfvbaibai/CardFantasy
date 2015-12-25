@@ -124,7 +124,7 @@ $(document).ready(function() {
                 </td>
                 <td id="view-card-skill${i}" class="skill" colspan="4">
                 <c:if test="${cardInfo.getSkill(i) != null}">
-                    <div class="skill-name"><a href="../Skills/${cardInfo.getSkill(i).name}" target="_self">${cardInfo.getSkill(i).name}</a></div>
+                    <div class="skill-name"><a href="../Skills/${cardInfo.getSkill(i).id}.shtml" target="_self">${cardInfo.getSkill(i).name}</a></div>
                     <div class="skill-desc">${cardInfo.getSkill(i).description}</div>
                 </c:if>
                 </td>

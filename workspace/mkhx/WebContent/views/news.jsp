@@ -10,7 +10,7 @@
                 <h3>公告</h3>
                 <ul>
                     <li><a href="#" data-type="bug">魔卡幻想模拟器贴吧</a>已成立，欢迎大家来提BUG、提需求、提供技能结算细节。</li>
-                    <li><a href="<c:url value="/Wiki" />" target="_blank">魔卡幻想WIKI</a>子站点正式成立，作为新的尝试，欢迎大家来<a href="#" data-type="bug">贴吧</a>提需求和报告BUG。</li>
+                    <li><a href="<c:url value="/Wiki/index.shtml" />" target="_blank">魔卡幻想WIKI</a>子站点正式成立，作为新的尝试，欢迎大家来<a href="#" data-type="bug">贴吧</a>提需求和报告BUG。</li>
                     <li>三区（前五区）大神【砍掉重练】已经把他的模拟器和这个模拟器合并了，以后都会共同开发，最近的新卡几乎都是他做的。</li>
                     <!-- <li>现在模拟器能识别卡牌昵称或简称了，直接手动输入卡组变得更容易了。当然肯定有漏掉的，欢迎大家来<a href="#" data-type="bug">贴吧</a>补充。</li> -->
                     <!-- <li>小提示：如果想保存卡组，只要把卡组的文字表述记下来存在文本文件或者手机备忘录里，下次要用的时候复制回来就行。</li> -->

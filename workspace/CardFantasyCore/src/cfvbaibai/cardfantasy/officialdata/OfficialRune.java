@@ -55,7 +55,10 @@ public class OfficialRune {
     public String LockSkill5;
     public int ThinkGet;
     public int Price;
-    
+
+    public int getRuneId() {
+        return this.RuneId;
+    }
     public int getColor() {
         return this.Color;
     }

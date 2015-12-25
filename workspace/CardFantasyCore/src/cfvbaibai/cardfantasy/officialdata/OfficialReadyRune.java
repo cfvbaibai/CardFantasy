@@ -25,4 +25,7 @@ public class OfficialReadyRune {
     public String getRuneName() {
         return this.rune.RuneName;
     }
+    public int getId() {
+        return this.rune.getRuneId();
+    }
 }

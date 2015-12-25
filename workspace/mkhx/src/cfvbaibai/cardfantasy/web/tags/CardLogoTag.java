@@ -61,16 +61,16 @@ public class CardLogoTag extends TagSupport {
         try {
             OfficialCard card = OfficialDataStore.getInstance().getCardByName(this.getCardName());
             String contextPath = this.pageContext.getServletContext().getContextPath();
-            String cardPageUrl = contextPath + "/Wiki/Cards/" + this.getCardName();
+            String cardPageUrl = contextPath + "/Wiki/Cards/" + card.getCardId() + ".shtml";
             String frameUrlFormat = contextPath + "/resources/img/frame/Square_%s_Frame.png";
             String invisibleFrameUrl = contextPath + "/resources/img/frame/Invisible_Square_Frame.png";
             String starUrl = contextPath + "/resources/img/frame/Star_" + card.getColor() + "_Bar.png";
             String logoUrl = card.getLogoUrl();
-            
+
             /*
-             *                     <div class="card-logo-container">
+                    <div class="card-logo-container">
                         <div class="card-logo">
-                            <a href="<c:url value="/Wiki" />/Cards/${card.cardName}"><cf:cardLogo cardName="${card.cardName}" /></a>
+                            <a href="<c:url value="/Wiki" />/Cards/${card.cardName}.shtml"><cf:cardLogo cardName="${card.cardName}" /></a>
                         </div>
                         <div class="card-name">
                             ${card.cardName}

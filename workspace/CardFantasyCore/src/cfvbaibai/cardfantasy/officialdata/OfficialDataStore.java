@@ -115,7 +115,7 @@ public class OfficialDataStore {
         return result;
     }
     
-    public String getSkillTypeFromName(String skillName) {
+    public String getSkillTypeNameFromSkillName(String skillName) {
         Matcher matcher = SKILL_PATTERN.matcher(skillName);
         if (!matcher.find()) {
             return skillName;
@@ -140,6 +140,10 @@ public class OfficialDataStore {
 
     public String getRaceNameById(int raceId) {
         return OfficialCard.getRaceNameById(raceId);
+    }
+    
+    public List<OfficialRace> getRaces() {
+        return OfficialCard.getRaces();
     }
 
     public List<OfficialCard> getCardsOfRace(int race) {
@@ -181,13 +185,13 @@ public class OfficialDataStore {
         return this.skillCategoriesCache;
     }
 
-    public List<String> getSkillTypesByCategory(int category) {
+    public List<String> getSkillTypeNamesByCategoryId(int category) {
         List<String> result = new ArrayList<String>();
         for (OfficialSkill skill : this.skillStore.data.Skills) {
             if (skill.getCategory() == category) {
-                String skillType = this.getSkillTypeFromName(skill.getName());
-                if (!result.contains(skillType)) {
-                    result.add(skillType);
+                String skillTypeName = this.getSkillTypeNameFromSkillName(skill.getName());
+                if (!result.contains(skillTypeName)) {
+                    result.add(skillTypeName);
                 }
             }
         }
@@ -206,6 +210,25 @@ public class OfficialDataStore {
 
     public String[] getPropertyNames() {
         return new String[] { "地", "水", "风", "火" };
+    }
+
+    public List<OfficialProperty> getProperties() {
+        List<OfficialProperty> properties = new ArrayList<>();
+        properties.add(new OfficialProperty(1, "地"));
+        properties.add(new OfficialProperty(2, "水"));
+        properties.add(new OfficialProperty(3, "风"));
+        properties.add(new OfficialProperty(4, "火"));
+        return properties;
+    }
+
+    public String getPropertyNameById(int propertyId) {
+        switch (propertyId) {
+            case 1: return "地";
+            case 2: return "水";
+            case 3: return "风";
+            case 4: return "火";
+            default: return null;
+        }
     }
 
     public List<OfficialRune> getRunesOfProperty(int property) {

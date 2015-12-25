@@ -1,5 +1,8 @@
 package cfvbaibai.cardfantasy.officialdata;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 /*
 {
@@ -97,6 +100,9 @@ public class OfficialCard {
     public String Price;
     public String FragSeniorPacket;
 
+    public int getCardId() {
+        return this.CardId;
+    }
     public String getSkill1() {
         return this.Skill;
     }
@@ -175,6 +181,18 @@ public class OfficialCard {
         case 100: return "魔神";
         default: return "未知";
         }
+    }
+    public static List<OfficialRace> getRaces() {
+        List<OfficialRace> races = new ArrayList<OfficialRace>();
+        races.add(new OfficialRace(1, "王国"));
+        races.add(new OfficialRace(2, "森林"));
+        races.add(new OfficialRace(3, "蛮荒"));
+        races.add(new OfficialRace(4, "地狱"));
+        races.add(new OfficialRace(97, "魔王"));
+        races.add(new OfficialRace(98, "万能"));
+        races.add(new OfficialRace(99, "道具"));
+        races.add(new OfficialRace(100, "魔神"));
+        return races;
     }
     public static String[] getRaceNames() {
         return new String[] { "王国", "森林", "蛮荒", "地狱", "魔王", "魔神", "道具", "万能" };

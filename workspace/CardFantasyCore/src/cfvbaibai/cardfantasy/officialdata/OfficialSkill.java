@@ -47,4 +47,7 @@ public class OfficialSkill {
         return Type == 92 && LanchType == 5 && AffectType == 55 && LanchCondition == 0 &&
                 LanchConditionValue == 0 && "0".equals(AffectValue) && AffectValue2 == 0;
     }
+    public String getId() {
+        return this.SkillId;
+    }
 }

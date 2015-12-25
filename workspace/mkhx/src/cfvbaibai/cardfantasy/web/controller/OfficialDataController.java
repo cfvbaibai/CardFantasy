@@ -28,6 +28,7 @@ import cfvbaibai.cardfantasy.web.beans.Logger;
 import cfvbaibai.cardfantasy.web.beans.OfficialCardInfo;
 import cfvbaibai.cardfantasy.web.beans.OfficialRuneInfo;
 import cfvbaibai.cardfantasy.web.beans.OfficialSkillInfo;
+import cfvbaibai.cardfantasy.web.beans.OfficialSkillTypeInfo;
 import cfvbaibai.cardfantasy.web.beans.OfficialStageInfo;
 import cfvbaibai.cardfantasy.web.beans.SubCategory;
 import cfvbaibai.cardfantasy.web.beans.UserAction;
@@ -61,7 +62,7 @@ public class OfficialDataController {
         return filterText;
     }
 
-    @RequestMapping(value = "/Wiki")
+    @RequestMapping(value = "/Wiki/index.shtml")
     public ModelAndView wiki(HttpServletRequest request) {
         return wiki();
     }
@@ -70,8 +71,8 @@ public class OfficialDataController {
         ModelAndView mv = new ModelAndView();
         mv.setViewName("wiki");
         mv.addObject("officialCardData", officialStore.cardStore.data.Cards);
-        mv.addObject("raceNames", officialStore.getRaceNames());
-        mv.addObject("propertyNames", officialStore.getPropertyNames());
+        mv.addObject("races", officialStore.getRaces());
+        mv.addObject("properties", officialStore.getProperties());
         mv.addObject("skillCategories", officialStore.getSkillCategories());
         List<OfficialStageInfo> stageInfos = new ArrayList<OfficialStageInfo>();
         for (OfficialStage stage : officialStore.stageStore.data) {
@@ -88,7 +89,7 @@ public class OfficialDataController {
         return mv;
     }
     
-    @RequestMapping(value = "/Wiki/Runes/Stars/{star}")
+    @RequestMapping(value = "/Wiki/Runes/Stars/{star}.shtml")
     public ModelAndView queryRuneOfStars(HttpServletRequest request,
             @PathVariable("star") int star, HttpServletResponse response) throws IOException {
         this.logger.info("Getting runes of star: " + star);
@@ -115,11 +116,17 @@ public class OfficialDataController {
         return mv;
     }
 
-    @RequestMapping(value = "/Wiki/Runes/Properties/{propertyName}")
+    @RequestMapping(value = "/Wiki/Runes/Properties/{propertyId}.shtml")
     public ModelAndView queryRuneOfProperties(HttpServletRequest request,
-            @PathVariable("propertyName") String propertyName, HttpServletResponse response) throws IOException {
-        this.logger.info("Getting runes of property: " + propertyName);
+            @PathVariable("propertyId") int propertyId, HttpServletResponse response) throws IOException {
+        this.logger.info("Getting runes of property: " + propertyId);
         ModelAndView mv = new ModelAndView();
+        String propertyName = this.officialStore.getPropertyNameById(propertyId);
+        if (propertyName == null) {
+            response.setStatus(404);
+            return mv;
+        }
+        this.logger.info("Rune property name: " + propertyName);
         mv.setViewName("view-rune-category");
         mv.addObject("category", propertyName + "属性符文");
         List<SubCategory<OfficialRune>> subCategories = new ArrayList<SubCategory<OfficialRune>>();
@@ -143,7 +150,7 @@ public class OfficialDataController {
         return mv;
     }
 
-    @RequestMapping(value = "/Wiki/Cards/Stars/{star}")
+    @RequestMapping(value = "/Wiki/Cards/Stars/{star}.shtml")
     public ModelAndView queryCardOfStars(HttpServletRequest request,
             @PathVariable("star") int star, HttpServletResponse response) throws IOException {
         this.logger.info("Getting cards of star: " + star);
@@ -179,10 +186,11 @@ public class OfficialDataController {
         return mv;
     }
 
-    @RequestMapping(value = "/Wiki/Cards/Races/{race}")
+    @RequestMapping(value = "/Wiki/Cards/Races/{raceId}.shtml")
     public ModelAndView queryCardOfRaces(HttpServletRequest request,
-            @PathVariable("race") String raceName, HttpServletResponse response) throws IOException {
-        this.logger.info("Getting cards of race: " + raceName);
+            @PathVariable("raceId") int raceId, HttpServletResponse response) throws IOException {
+        String raceName = this.officialStore.getRaceNameById(raceId);
+        this.logger.info("Getting cards of race: " + raceId + "-" + raceName);
         ModelAndView mv = new ModelAndView();
         mv.setViewName("view-card-category");
         mv.addObject("category", raceName + "卡牌");
@@ -215,9 +223,9 @@ public class OfficialDataController {
         return mv;
     }
 
-    @RequestMapping(value = "/Wiki/Skills/Categories/{category}")
+    @RequestMapping(value = "/Wiki/Skills/Categories/{categoryId}.shtml")
     public ModelAndView querySkillsOfCategories(HttpServletRequest request,
-            @PathVariable("category") int categoryId, HttpServletResponse response) throws IOException {
+            @PathVariable("categoryId") int categoryId, HttpServletResponse response) throws IOException {
         this.logger.info("Getting skills of category: " + categoryId);
         ModelAndView mv = new ModelAndView();
         mv.setViewName("view-skill-category");
@@ -225,10 +233,10 @@ public class OfficialDataController {
             String categoryName = OfficialSkillCategory.getCategoryNameFromId(categoryId);
             mv.addObject("category", categoryName + "技能");
             mv.addObject("categoryId", categoryId);
-            List<SubCategory<String>> subCategories = new ArrayList<SubCategory<String>>();
-            SubCategory<String> materialSubCategory = new SubCategory<String>();
+            List<SubCategory<OfficialSkillTypeInfo>> subCategories = new ArrayList<>();
+            SubCategory<OfficialSkillTypeInfo> materialSubCategory = new SubCategory<>();
             materialSubCategory.setName("素材");
-            List<String> skillTypes = this.officialStore.getSkillTypesByCategory(categoryId);
+            List<String> skillTypes = this.officialStore.getSkillTypeNamesByCategoryId(categoryId);
             for (String skillType : skillTypes) {
                 String subCategoryName = "普通";
                 if (skillType.startsWith("[降临]")) {
@@ -241,21 +249,25 @@ public class OfficialDataController {
                     subCategoryName = "觉醒";
                 }
                 OfficialSkill[] skills = this.officialStore.getSkillsByType(skillType);
-                if (skills.length > 0 && skills[0].isMaterial()) {
-                    materialSubCategory.addItem(skillType);
+                if (skills == null || skills.length == 0) {
+                    continue;
+                }
+                OfficialSkillTypeInfo skillTypeInfo = new OfficialSkillTypeInfo(skillType, skills[0].getId()); 
+                if (skills[0].isMaterial()) {
+                    materialSubCategory.addItem(skillTypeInfo);
                 } else {
                     boolean subCategoryFound = false;
-                    for (SubCategory<String> subCategory : subCategories) {
+                    for (SubCategory<OfficialSkillTypeInfo> subCategory : subCategories) {
                         if (subCategory.getName().equals(subCategoryName)) {
-                            subCategory.addItem(skillType);
+                            subCategory.addItem(skillTypeInfo);
                             subCategoryFound = true;
                             break;
                         }
                     }
                     if (!subCategoryFound) {
-                        SubCategory<String> newSubCategory = new SubCategory<String>();
+                        SubCategory<OfficialSkillTypeInfo> newSubCategory = new SubCategory<>();
                         newSubCategory.setName(subCategoryName);
-                        newSubCategory.addItem(skillType);
+                        newSubCategory.addItem(skillTypeInfo);
                         subCategories.add(newSubCategory);
                     }
                 }
@@ -266,7 +278,7 @@ public class OfficialDataController {
             this.logger.error(e);
         }
         try {
-            List<String> skillTypes = this.officialStore.getSkillTypesByCategory(categoryId);
+            List<String> skillTypes = this.officialStore.getSkillTypeNamesByCategoryId(categoryId);
             mv.addObject("skillTypes", skillTypes);
         } catch (Exception e) {
             this.logger.error(e);
@@ -274,52 +286,50 @@ public class OfficialDataController {
         return mv;
     }
 
-    @RequestMapping(value = "/Wiki/Runes/{runeName}")
+    @RequestMapping(value = "/Wiki/Runes/{runeId}.shtml")
     public ModelAndView queryRune(HttpServletRequest request,
-            @PathVariable("runeName") String runeName, HttpServletResponse response) throws IOException {
+            @PathVariable("runeId") int runeId, HttpServletResponse response) throws IOException {
         ModelAndView mv = new ModelAndView();
         try {
-            this.logger.info("Getting official rune data: " + runeName);
-            this.userActionRecorder.addAction(new UserAction(new Date(), request.getRemoteAddr(), "View Rune", runeName));
-            if (runeName == null) {
-                response.setStatus(404);
-                return mv;
-            }
-            mv.setViewName("view-rune");
-            OfficialRune rune = this.officialStore.getRuneByName(runeName);
+            this.logger.info("Getting official rune data: " + runeId);
+            OfficialRune rune = this.officialStore.getRuneById(runeId);
             if (rune == null) {
                 response.setStatus(404);
                 return mv;
             }
+            this.logger.info("Rune name: " + rune.getRuneName());
+            this.userActionRecorder.addAction(new UserAction(new Date(), request.getRemoteAddr(), "View Rune", rune.getRuneName()));
+            mv.setViewName("view-rune");
             OfficialRuneInfo runeInfo = new OfficialRuneInfo(rune, officialStore);
             mv.addObject("runeInfo", runeInfo);
-            mv.addObject("runeName", runeName);
+            mv.addObject("runeName", rune.getRuneName());
         } catch (Exception e) {
             this.logger.error(e);
         }
         return mv;
     }
 
-    @RequestMapping(value = "/Wiki/Cards/{cardName}")
+    @RequestMapping(value = "/Wiki/Cards/{cardId}.shtml")
     public ModelAndView queryCard(HttpServletRequest request,
-            @PathVariable("cardName") String cardName, HttpServletResponse response) throws IOException {
+            @PathVariable("cardId") int cardId, HttpServletResponse response) throws IOException {
         ModelAndView mv = new ModelAndView();
+        this.logger.info("Getting official card data: " + cardId);
         try {
-            this.logger.info("Getting official card data: " + cardName);
-            this.userActionRecorder.addAction(new UserAction(new Date(), request.getRemoteAddr(), "View Card", cardName));
-            if (cardName == null) {
+            OfficialCard card = this.officialStore.getCardById(cardId);
+            if (card == null) {
                 response.setStatus(404);
                 return mv;
             }
             mv.setViewName("view-card");
-            OfficialCard card = this.officialStore.getCardByName(cardName);
-            if (card == null) {
+            this.logger.info("Card name = " + card.getCardName());
+            this.userActionRecorder.addAction(new UserAction(new Date(), request.getRemoteAddr(), "View Card", card.getCardName()));
+            if (card.getCardName() == null) {
                 response.setStatus(404);
                 return mv;
             }
             OfficialCardInfo cardInfo = OfficialCardInfo.build(card, officialStore.skillStore.data);
             mv.addObject("cardInfo", cardInfo);
-            mv.addObject("cardName", cardName);
+            mv.addObject("cardName", card.getCardName());
             mv.addObject("defaultLogoUrl", OfficialDataStore.DEFAULT_LOGO_110x110_URL);
         } catch (Exception e) {
             this.logger.error(e);
@@ -327,38 +337,41 @@ public class OfficialDataController {
         return mv;
     }
 
-    @RequestMapping(value = "/Wiki/Skills/{skillName}")
-    public ModelAndView querySkill(HttpServletRequest request, @PathVariable("skillName") String skillName,
+    @RequestMapping(value = "/Wiki/Skills/{skillId}.shtml")
+    public ModelAndView querySkill(HttpServletRequest request,
+            @PathVariable("skillId") String skillId,
             HttpServletResponse response) throws IOException {
         ModelAndView mv = new ModelAndView();
         try {
-            this.logger.info("Getting official skill data: " + skillName);
-            this.userActionRecorder.addAction(new UserAction(new Date(), request.getRemoteAddr(), "View Skill", skillName));
-            if (skillName == null) {
+            this.logger.info("Getting official skill data: " + skillId);
+            OfficialSkill[] skills = null;
+            String skillTypeName = null;
+            OfficialSkill skill = this.officialStore.getSkillById(skillId);
+            if (skill == null) {
                 response.setStatus(404);
                 return mv;
             }
+            skillTypeName = this.officialStore.getSkillTypeNameFromSkillName(skill.getName());
+            if (skillTypeName != null) {
+                skills = this.officialStore.getSkillsByType(skillTypeName);
+            }
+            this.logger.info("Skill type: " + skillTypeName);
+            this.userActionRecorder.addAction(new UserAction(new Date(), request.getRemoteAddr(), "View Skill", skillTypeName));
             mv.setViewName("view-skill");
-            String skillType = this.officialStore.getSkillTypeFromName(skillName);
-            OfficialSkill[] skills = this.officialStore.getSkillsByType(skillType);
-            if (skills.length == 0) {
-                response.setStatus(404);
-                return mv;
-            }
             List<OfficialSkillInfo> skillInfos = new ArrayList<OfficialSkillInfo>();
             for (int i = 0; i < skills.length; ++i) {
                 OfficialSkillInfo skillInfo = OfficialSkillInfo.build(skills[i], officialStore);
                 skillInfos.add(skillInfo);
             }
             mv.addObject("skillInfos", skillInfos);
-            mv.addObject("skillType", skillType);
+            mv.addObject("skillType", skillTypeName);
         } catch (Exception e) {
             this.logger.error(e);
         }
         return mv;
     }
 
-    @RequestMapping(value = "/Wiki/Stages/{stageId}")
+    @RequestMapping(value = "/Wiki/Stages/{stageId}.shtml")
     public ModelAndView queryStage(HttpServletRequest request, @PathVariable("stageId") int stageId,
             HttpServletResponse response) throws IOException {
         ModelAndView mv = new ModelAndView();
@@ -403,7 +416,7 @@ public class OfficialDataController {
                     continue;
                 }
             }
-            String skillType = officialStore.getSkillTypeFromName(skill.getName());
+            String skillType = officialStore.getSkillTypeNameFromSkillName(skill.getName());
             if (!result.contains(skillType)) {
                 result.add(skillType);
             }

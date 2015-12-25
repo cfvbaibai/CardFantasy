@@ -19,7 +19,7 @@
         <div id="header-template" class="header-template" data-role="header" data-position="fixed">
             <a class="nav-button left-nav-button" href="#" data-icon="bars" data-iconpos="left">导航</a>
             <h3 class="header-title"></h3>
-            <a class="nav-button right-nav-button" href="<c:url value="/Wiki" />" target="_self" data-icon="grid" data-iconpos="right">WIKI</a>
+            <a class="nav-button right-nav-button" href="<c:url value="/Wiki/index.shtml" />" target="_self" data-icon="grid" data-iconpos="right">WIKI</a>
         </div>
     </div>
 <!--

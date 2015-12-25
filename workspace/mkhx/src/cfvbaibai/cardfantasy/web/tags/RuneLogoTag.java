@@ -60,14 +60,14 @@ public class RuneLogoTag extends TagSupport {
         try {
             OfficialRune rune = OfficialDataStore.getInstance().getRuneByName(this.getRuneName());
             String contextPath = this.pageContext.getServletContext().getContextPath();
-            String runePageUrl = contextPath + "/Wiki/Runes/" + this.getRuneName();
+            String runePageUrl = contextPath + "/Wiki/Runes/" + rune.getRuneId() + ".shtml";
             String frameUrlFormat = contextPath + "/resources/img/frame/Square_Frame.png";
             String invisibleFrameUrl = contextPath + "/resources/img/frame/Invisible_Square_Frame.png";
             String starUrl = contextPath + "/resources/img/frame/Star_" + rune.getColor() + "_Bar.png";
             String logoUrl = rune.getSmallIconUrl();
             
             /*
-             *                     <div class="card-logo-container">
+                    <div class="card-logo-container">
                         <div class="card-logo">
                             <a href="<c:url value="/Wiki" />/Cards/${card.cardName}"><cf:cardLogo cardName="${card.cardName}" /></a>
                         </div>

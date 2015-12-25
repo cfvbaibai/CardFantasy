@@ -36,4 +36,7 @@ public class OfficialReadyCard {
     public String getCardName() {
         return this.card.getCardName();
     }
+    public int getId() {
+        return this.card.getCardId();
+    }
 }

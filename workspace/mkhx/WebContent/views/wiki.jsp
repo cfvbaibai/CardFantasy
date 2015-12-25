@@ -26,17 +26,17 @@
                     <div class="wiki-categories">
                         <c:forEach begin="1" end="5" step="1" var="i">
                         <div>
-                            <a href="Wiki/Cards/Stars/${i}" target="_self"><cf:starIcon star="${i}" /></a><br />
-                            <a href="Wiki/Cards/Stars/${i}" target="_self">${i}星卡牌</a>
+                            <a href="Cards/Stars/${i}.shtml" target="_self"><cf:starIcon star="${i}" /></a><br />
+                            <a href="Cards/Stars/${i}.shtml" target="_self">${i}星卡牌</a>
                         </div>
                         </c:forEach>
                         <div></div>
                     </div>
                     <div class="wiki-categories">
-                        <c:forEach var="raceName" items="${raceNames}">
+                        <c:forEach var="race" items="${races}">
                         <div>
-                            <a href="Wiki/Cards/Races/${raceName}" target="_self"><cf:raceIcon raceName="${raceName}" /></a><br />
-                            <a href="Wiki/Cards/Races/${raceName}" target="_self">${raceName}卡牌</a>
+                            <a href="Cards/Races/${race.id}.shtml" target="_self"><cf:raceIcon raceName="${race.name}" /></a><br />
+                            <a href="Cards/Races/${race.id}.shtml" target="_self">${race.name}卡牌</a>
                         </div>
                         </c:forEach>
                         <div></div>
@@ -49,17 +49,17 @@
                     <div class="wiki-categories">
                         <c:forEach var="i" begin="1" end="5" step="1">
                         <div>
-                            <a href="Wiki/Runes/Stars/${i}" target="_self"><cf:starIcon star="${i}" /></a><br />
-                            <a href="Wiki/Runes/Stars/${i}" target="_self">${i}星符文</a>
+                            <a href="Runes/Stars/${i}.shtml" target="_self"><cf:starIcon star="${i}" /></a><br />
+                            <a href="Runes/Stars/${i}.shtml" target="_self">${i}星符文</a>
                         </div>
                         </c:forEach>
                         <div></div>
                     </div>
                     <div class="wiki-categories">
-                        <c:forEach var="propertyName" items="${propertyNames}">
+                        <c:forEach var="property" items="${properties}">
                         <div>
-                            <a href="Wiki/Runes/Properties/${propertyName}" target="_self"><cf:propertyIcon propertyName="${propertyName}" /></a><br />
-                            <a href="Wiki/Runes/Properties/${propertyName}" target="_self">${propertyName}属性符文</a>
+                            <a href="Runes/Properties/${property.id}.shtml" target="_self"><cf:propertyIcon propertyName="${property.name}" /></a><br />
+                            <a href="Runes/Properties/${property.id}.shtml" target="_self">${property.name}属性符文</a>
                         </div>
                         </c:forEach>
                         <div></div>
@@ -72,8 +72,8 @@
                     <div class="wiki-categories">
                         <c:forEach var="skillCategory" items="${skillCategories}">
                             <div>
-                                <a href="Wiki/Skills/Categories/${skillCategory.id}" target="_self"><cf:skillCategoryIcon categoryId="${skillCategory.id}" /></a><br />
-                                <a href="Wiki/Skills/Categories/${skillCategory.id}" target="_self">${skillCategory.name}技能</a>
+                                <a href="Skills/Categories/${skillCategory.id}.shtml" target="_self"><cf:skillCategoryIcon categoryId="${skillCategory.id}" /></a><br />
+                                <a href="Skills/Categories/${skillCategory.id}.shtml" target="_self">${skillCategory.name}技能</a>
                             </div>
                         </c:forEach>
                         <div></div>
@@ -85,7 +85,7 @@
                 <div id="wiki-stage-pedia" class="wiki-result">
                     <div class="wiki-categories">
                         <c:forEach var="stageInfo" items="${stageInfos}">
-                            <div><a href="Wiki/Stages/${stageInfo.mapStageId}" target="_self">${stageInfo.fullName}</a></div>
+                            <div><a href="Stages/${stageInfo.mapStageId}.shtml" target="_self">${stageInfo.fullName}</a></div>
                         </c:forEach>
                         <div></div>
                     </div>

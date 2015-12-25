@@ -59,7 +59,7 @@ $(document).ready(function () {
         var starFilter = $('#wiki-card-star-filter').val();
         var raceFilter = $('#wiki-card-race-filter').val();
         var skillTypeFilter = $('#wiki-card-skill-type-filter').val();
-        var queryUrl ='Wiki/Cards?stars=' + starFilter + '&races=' + raceFilter + '&skillTypes=' + skillTypeFilter;
+        var queryUrl ='Cards?stars=' + starFilter + '&races=' + raceFilter + '&skillTypes=' + skillTypeFilter;
 
         $('#wiki-card-search').addClass('ui-disabled');
         $.mobile.loading('show');
@@ -72,7 +72,7 @@ $(document).ready(function () {
             narrowResult += "<tr><td>卡牌</td><td>星数</td><td>种族</td></tr>";
             var getSkillHtml = function(skill) {
                 if (!skill) { return ''; }
-                return '<a href="Wiki/Skills/' + skill.Name + '" target="_blank">' + skill.Name + '</a>';
+                return '<a href="Skills/' + skill.SkillId + '.shtml" target="_blank">' + skill.Name + '</a>';
             }
             $.each(data, function(i, cardInfo) {
                 var card = cardInfo.card;
@@ -81,7 +81,7 @@ $(document).ready(function () {
                 var skill3 = getSkillHtml(cardInfo.skill3);
                 var skill4 = getSkillHtml(cardInfo.skill4);
                 var skill5 = getSkillHtml(cardInfo.skill5);
-                var cardName = "<a href='Wiki/Cards/" + card.CardName + "' target='_blank'>" + card.CardName + "</a>";
+                var cardName = "<a href='Cards/" + card.CardId + ".shtml' target='_blank'>" + card.CardName + "</a>";
                 var starText = toStarText(card.Color);
                 var raceText = toRaceText(card.Race);
 
