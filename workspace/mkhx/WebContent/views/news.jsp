@@ -34,6 +34,8 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2015-12-30: 添加新卡<cf:c>天使猎人</cf:c>和<cf:c>摩羯座</cf:c></li>
+                    <li>2015-12-27: 由于<cf:c>风暴海皇</cf:c>实测效果和原本YY的差太多，再加上木盒各种BUG，暂时下架</li>
                     <li>2015-12-22: 添加新卡<cf:c>不幸青鸟</cf:c>, <cf:c>红莲魔女</cf:c>和<cf:c>风暴海皇</cf:c>, 感谢<x>希灵天使12345</x>的帮助，【沉默】的效果是YY的，希望大家实测检验。</li>
                     <li>2015-12-18: 添加新卡<cf:c>创世神女</cf:c>和<cf:c>北海神兽</cf:c>, 感谢<x>moon_eyes</x>, <x>zx670122</x>, <x>MikuFanBunz</x>, <x>real11inter</x>和<x>raffinat</x>的帮助</li>
                     <li>2015-12-11: <ul>

@@ -157,7 +157,7 @@ public class SkillResolver {
                 Snipe.apply(skillUseInfo.getSkill(), this, attacker, defender, 2);
             } else if (skillUseInfo.getType() == SkillType.神箭三重奏) {
                 Snipe.apply(skillUseInfo.getSkill(), this, attacker, defender, 3);
-            }else if (skillUseInfo.getType() == SkillType.迷魂) {
+            } else if (skillUseInfo.getType() == SkillType.迷魂) {
                 Confusion.apply(skillUseInfo, this, attacker, defender, 1);
             } else if (skillUseInfo.getType() == SkillType.混乱领域) {
                 Confusion.apply(skillUseInfo, this, attacker, defender, 3);
@@ -173,7 +173,7 @@ public class SkillResolver {
                 Plague.apply(skillUseInfo, this, attacker, defender);
             } else if (skillUseInfo.getType() == SkillType.凋零真言) {
                 WitheringWord.apply(skillUseInfo, this, attacker, defender);
-            }else if (skillUseInfo.getType() == SkillType.血炼) {
+            } else if (skillUseInfo.getType() == SkillType.血炼) {
                 BloodPaint.apply(skillUseInfo.getSkill(), this, attacker, defender, 1);
             } else if (skillUseInfo.getType() == SkillType.鲜血盛宴) {
                 BloodPaint.apply(skillUseInfo.getSkill(), this, attacker, defender, -1);
@@ -768,6 +768,8 @@ public class SkillResolver {
                     Sacrifice.apply(this, skillUseInfo, attacker, null);
                 } else if (skillUseInfo.getType() == SkillType.沉默) {
                     Silence.apply(this, skillUseInfo, attacker, defender);
+                } else if (skillUseInfo.getType() == SkillType.死亡印记) {
+                    DeathMark.apply(this, skillUseInfo, attacker, defender);
                 }
             } else {
                 if (skillUseInfo.getType() == SkillType.圣光) {
@@ -791,8 +793,6 @@ public class SkillResolver {
                     Pursuit.apply(this, skillUseInfo, attacker, defender);
                 } else if (skillUseInfo.getType() == SkillType.战意) {
                     Wrath.apply(this, skillUseInfo, attacker, defender);
-                } else if (skillUseInfo.getType() == SkillType.死亡印记) {
-                    DeathMark.apply(this, skillUseInfo, attacker, defender);
                 } else if (skillUseInfo.getType() == SkillType.凯撒之击) {
                     CaeserAttack.apply(this, skillUseInfo, attacker, defender);
                 }

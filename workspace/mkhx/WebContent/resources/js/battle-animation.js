@@ -1442,7 +1442,7 @@ var Animater = function() {
         } else if (skill == '虚弱' || skill == '战争怒吼') {
             this.flyImage({ fileName: 'soften.png', width: 48, height: 48, text: skill },
                     attacker, defenders, settings.skillDuration);
-        } else if (skill == '疾病' || skill == '瘟疫') {
+        } else if (skill == '疾病' || skill == '瘟疫' || skill == '凋零真言') {
             this.flyImage({ fileName: 'disease.png', width: 48, height: 48, text: skill },
                     attacker, defenders, settings.skillDuration);
         } else if (skill == '削弱' || skill == '群体削弱') {
@@ -1488,7 +1488,7 @@ var Animater = function() {
         } else if (skill == '摧毁') {
             this.flyImage({ fileName: 'bomb.png', width: 48, height: 48, text: skill },
                     attacker, defenders, settings.skillDuration);
-        } else if (skill == '盾刺' || skill == '反击' || skill == '物理反弹') {
+        } else if (skill == '盾刺' || skill == '反击' || skill == '物理反弹' || skill == '荆棘术') {
             this.flyImage({ fileName: 'spike.png', width: 48, height: 48, rotate: Math.PI * 4, text: skill },
                     attacker, defenders, settings.skillDuration);
         } else if (skill == '献祭') {
