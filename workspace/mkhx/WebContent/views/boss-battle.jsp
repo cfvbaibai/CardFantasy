@@ -33,9 +33,10 @@
                             <option value="网页版万蛛之后">网页版万蛛之后</option>
                         </select>
                         <select name="guard-type" id="guard-type" data-mini="true" data-native-menu="true">
-                            <option value="0">无杂兵</option>
-                            <option value="1">随机杂兵</option>
-                            <option value="2" selected="selected">随机强杂兵</option>
+                            <option value="0">没有杂兵</option>
+                            <option value="1">普通杂兵</option>
+                            <option value="2">强力杂兵</option>
+                            <option value="3" selected="selected">五星杂兵</option>
                         </select>
                     </fieldset>
                     <table class="form">

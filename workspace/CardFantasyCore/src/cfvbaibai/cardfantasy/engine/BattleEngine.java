@@ -347,7 +347,13 @@ public class BattleEngine {
 
     private void tryAttackEnemy(Field myField, Field opField, int i) throws HeroDieSignal {
         SkillResolver resolver = this.stage.getResolver();
+        if (myField.getCard(i) == null) {
+            return;
+        }
         resolver.resolvePreAttackCardSkills(myField.getCard(i), opField.getCard(i), true);
+        if (myField.getCard(i) == null) {
+            return;
+        }
         resolver.resolvePreAttackSkills(myField.getCard(i), getInactivePlayer());
         if (myField.getCard(i) == null) {
             return;
