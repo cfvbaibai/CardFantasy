@@ -19,7 +19,10 @@ import cfvbaibai.cardfantasy.game.PlayerBuilder;
 import cfvbaibai.cardfantasy.game.PvlEngine;
 import cfvbaibai.cardfantasy.game.PvlGameResult;
 import cfvbaibai.cardfantasy.game.SkillBuilder;
+import cfvbaibai.cardfantasy.game.VictoryCondition;
+import cfvbaibai.cardfantasy.game.launcher.GameLauncher;
 import cfvbaibai.cardfantasy.game.launcher.GameLauncherFacade;
+import cfvbaibai.cardfantasy.game.launcher.GameSetup;
 
 public class FreeTest extends PveEngineTest {
 
@@ -645,5 +648,16 @@ public class FreeTest extends PveEngineTest {
     public void testGameLauncherFacade() {
         String resultText = GameLauncherFacade.playArenaGame("凤凰", "凤凰", 50, 50, 100, 100, 100, 100, 100, 100, 0, 0, "Any", 10);
         System.out.println(resultText);
+    }
+
+    @Test
+    public void test转生_献祭bug() {
+        GameSetup setup = GameSetup.setupArenaGame(
+                "秘银巨石像+穿刺3-15,重装半鹿人+落雷3-15,九命猫神+死契毒云6-15,太古魔狼+狙击2-15,铁血剑豪+狙击3-15,熊人巫医+降临陷阱1-15,九头妖蛇+落雷3-15,希望之壳+冰弹3-15,不屈之灵+雷暴3-15,冰雪巨人+闪避2-15,石林-4,岩晶-4,雷云-4,焚天-4",
+                "凤凰+法力反射5-15,九头妖蛇+不动-15,亡灵守护神+治疗之雾6-15,魔幻人偶师+二重狙击4-15,爱之使者+复仇3-15,熊人巫医+战意5-15,森林女神+群体削弱2-15,唤雨师+背刺5-15,琴舞之风+群体削弱4-15,幽灵巨龙+降临烈火焚神4-15,春风-4,清泉-4,岩晶-4,火拳-4",
+                94, 62,
+                100, 100, 100, 100, 100, 100,
+                -1, 1, VictoryCondition.parse("Any"), 1, new TestGameUI());
+        GameLauncher.playArenaGame(setup);
     }
 }

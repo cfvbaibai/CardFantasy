@@ -142,12 +142,10 @@ public class GameSetup {
             }
         }
         else if (guardType == 3) {
-            while (true) {
-                bossGuards.clear();
-                for (int i = 0; i < 9; ++i) {
-                    CardData fiveStarBossGuard = getBossGuard(CardDataStore.fiveStarBossGuardians);
-                    bossGuards.add(fiveStarBossGuard);
-                }
+            bossGuards.clear();
+            for (int i = 0; i < 9; ++i) {
+                CardData fiveStarBossGuard = getBossGuard(CardDataStore.fiveStarBossGuardians);
+                bossGuards.add(fiveStarBossGuard);
             }
         }
         StringBuffer sb = new StringBuffer();

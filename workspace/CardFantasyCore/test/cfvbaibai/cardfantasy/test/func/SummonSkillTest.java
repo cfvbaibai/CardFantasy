@@ -106,7 +106,7 @@ public class SummonSkillTest extends SkillValidationTest {
         Assert.assertEquals(1, context.getPlayer(0).getHand().size());
         Assert.assertEquals(0, context.getPlayer(0).getGrave().size());
     }
-    
+
     /**
      * 献祭和时光倒流是同一个优先级的技能，谁在先就谁先发动
      */

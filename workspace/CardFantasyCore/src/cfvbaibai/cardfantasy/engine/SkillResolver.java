@@ -609,45 +609,46 @@ public class SkillResolver {
         if (!deadCard.getStatus().containsStatus(CardStatusType.不屈)) {
             resolveLeaveSkills(deadCard);
         }
+        Player opponent = this.getStage().getOpponent(deadCard.getOwner());
         for (SkillUseInfo deadCardSkillUseInfo : deadCard.getUsableDeathSkills()) {
             if (deadCardSkillUseInfo.getType() == SkillType.烈焰风暴) {
-                FireMagic.apply(deadCardSkillUseInfo.getSkill(), this, deadCard, killerCard.getOwner(), -1);
+                FireMagic.apply(deadCardSkillUseInfo.getSkill(), this, deadCard, opponent, -1);
             } else if (deadCardSkillUseInfo.getType() == SkillType.雷暴) {
-                LighteningMagic.apply(deadCardSkillUseInfo, this, deadCard, killerCard.getOwner(), -1, 35);
+                LighteningMagic.apply(deadCardSkillUseInfo, this, deadCard, opponent, -1, 35);
             } else if (deadCardSkillUseInfo.getType() == SkillType.暴风雪) {
-                IceMagic.apply(deadCardSkillUseInfo, this, deadCard, killerCard.getOwner(), -1, 30, 0);
+                IceMagic.apply(deadCardSkillUseInfo, this, deadCard, opponent, -1, 30, 0);
             } else if (deadCardSkillUseInfo.getType() == SkillType.毒云) {
-                PoisonMagic.apply(deadCardSkillUseInfo, this, deadCard, killerCard.getOwner(), -1);
+                PoisonMagic.apply(deadCardSkillUseInfo, this, deadCard, opponent, -1);
             } else if (deadCardSkillUseInfo.getType() == SkillType.瘟疫) {
-                Plague.apply(deadCardSkillUseInfo, this, deadCard, killerCard.getOwner());
+                Plague.apply(deadCardSkillUseInfo, this, deadCard, opponent);
             } else if (deadCardSkillUseInfo.getType() == SkillType.凋零真言) {
-            	Plague.apply(deadCardSkillUseInfo, this, deadCard, killerCard.getOwner());
+            	Plague.apply(deadCardSkillUseInfo, this, deadCard, opponent);
             } else if (deadCardSkillUseInfo.getType() == SkillType.治疗) {
-                Heal.apply(deadCardSkillUseInfo.getSkill(), this, deadCard.getOwner());
+                Heal.apply(deadCardSkillUseInfo.getSkill(), this, opponent);
             } else if (deadCardSkillUseInfo.getType() == SkillType.甘霖) {
-                Rainfall.apply(deadCardSkillUseInfo.getSkill(), this, deadCard.getOwner());
+                Rainfall.apply(deadCardSkillUseInfo.getSkill(), this, opponent);
             } else if (deadCardSkillUseInfo.getType() == SkillType.祈祷) {
                 Pray.apply(deadCardSkillUseInfo.getSkill(), this, deadCard);
             } else if (deadCardSkillUseInfo.getType() == SkillType.诅咒) {
-                Curse.apply(this, deadCardSkillUseInfo.getSkill(), deadCard, killerCard.getOwner());
+                Curse.apply(this, deadCardSkillUseInfo.getSkill(), deadCard, opponent);
             } else if (deadCardSkillUseInfo.getType() == SkillType.群体削弱) {
-                WeakenAll.apply(this, deadCardSkillUseInfo, deadCard, killerCard.getOwner());
+                WeakenAll.apply(this, deadCardSkillUseInfo, deadCard, opponent);
             } else if (deadCardSkillUseInfo.getType() == SkillType.烈火焚神) {
-                BurningFlame.apply(deadCardSkillUseInfo, this, deadCard, killerCard.getOwner());
+                BurningFlame.apply(deadCardSkillUseInfo, this, deadCard, opponent);
             } else if (deadCardSkillUseInfo.getType() == SkillType.陷阱) {
-                Trap.apply(deadCardSkillUseInfo, this, deadCard, killerCard.getOwner());
+                Trap.apply(deadCardSkillUseInfo, this, deadCard, opponent);
             } else if (deadCardSkillUseInfo.getType() == SkillType.复活) {
                 Revive.apply(this, deadCardSkillUseInfo, deadCard);
             } else if (deadCardSkillUseInfo.getType() == SkillType.摧毁) {
-                Destroy.apply(this, deadCardSkillUseInfo.getSkill(), deadCard, killerCard.getOwner(), 1);
+                Destroy.apply(this, deadCardSkillUseInfo.getSkill(), deadCard, opponent, 1);
             } else if (deadCardSkillUseInfo.getType() == SkillType.传送) {
-                Transport.apply(this, deadCardSkillUseInfo.getSkill(), deadCard, killerCard.getOwner());
+                Transport.apply(this, deadCardSkillUseInfo.getSkill(), deadCard, opponent);
             } else if (deadCardSkillUseInfo.getType() == SkillType.回魂) {
                 Resurrection.apply(this, deadCardSkillUseInfo, deadCard);
             } else if (deadCardSkillUseInfo.getType() == SkillType.召唤炎魔) {
                 Summon.apply(this, deadCardSkillUseInfo, deadCard, "炎魔");
             } else if (deadCardSkillUseInfo.getType() == SkillType.全体阻碍) {
-                AllDelay.apply(deadCardSkillUseInfo, this, deadCard, killerCard.getOwner());
+                AllDelay.apply(deadCardSkillUseInfo, this, deadCard, opponent);
             }
         }
         for (SkillUseInfo deadCardSkillUseInfo : deadCard.getAllUsableSkills()) {
@@ -655,7 +656,7 @@ public class SkillResolver {
             if (deadCardSkillUseInfo.getType() == SkillType.自爆 && !result.unbending) {
                 Explode.apply(this, deadCardSkillUseInfo.getSkill(), killerCard, deadCard);
             } else if (deadCardSkillUseInfo.getType() == SkillType.燕返) {
-                TsubameGaeshi.apply(deadCardSkillUseInfo, this, killerCard.getOwner(), deadCard);
+                TsubameGaeshi.apply(deadCardSkillUseInfo, this, opponent, deadCard);
             } else if (deadCardSkillUseInfo.getType() == SkillType.九转秘术) {
                 Summon.apply(this, deadCardSkillUseInfo, deadCard, "九命猫神·幻影");
             } else if (deadCardSkillUseInfo.getType() == SkillType.我还会回来的) {

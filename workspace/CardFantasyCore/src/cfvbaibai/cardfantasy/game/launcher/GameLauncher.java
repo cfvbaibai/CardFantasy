@@ -73,19 +73,23 @@ public final class GameLauncher {
     }
 
     public static ArenaGameResult playArenaGame(GameSetup setup) {
-        GameStartupInfo gsi = initGame(setup);
-        GameResultStat stat = new GameResultStat(gsi.getP1(), gsi.getP2(), gsi.getRule());
-        for (int i = 0; i < setup.getGameCount(); ++i) {
-            stat.addResult(BattleEngine.play1v1(setup.getUi(), gsi.getRule(), gsi.getP1(), gsi.getP2()));
+        try {
+            GameStartupInfo gsi = initGame(setup);
+            GameResultStat stat = new GameResultStat(gsi.getP1(), gsi.getP2(), gsi.getRule());
+            for (int i = 0; i < setup.getGameCount(); ++i) {
+                stat.addResult(BattleEngine.play1v1(setup.getUi(), gsi.getRule(), gsi.getP1(), gsi.getP2()));
+            }
+    
+            ArenaGameResult result = new ArenaGameResult();
+            result.setPlayer1(gsi.getP1());
+            result.setPlayer2(gsi.getP2());
+            result.setGameCount(setup.getGameCount());
+            result.setStat(stat);
+            result.setDeckValidationResult(gsi.getValidationResult());
+            return result;
+        } catch (Exception e) {
+            throw new CardFantasyRuntimeException(e.getMessage() + "卡组1: " + setup.getDeck1() + "\r\n卡组2: " + setup.getDeck2(), e);
         }
-
-        ArenaGameResult result = new ArenaGameResult();
-        result.setPlayer1(gsi.getP1());
-        result.setPlayer2(gsi.getP2());
-        result.setGameCount(setup.getGameCount());
-        result.setStat(stat);
-        result.setDeckValidationResult(gsi.getValidationResult());
-        return result;
     }
     
     private static List<Skill> buildBuffsForLilithEvents(String eventCardNames) {

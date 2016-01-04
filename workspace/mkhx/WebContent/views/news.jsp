@@ -34,6 +34,7 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2016-1-4: 打到竞技之王第一了，好高兴，虽然只是半程^0^</li>
                     <li>2015-1-2: 改版【魔神战】杂兵模式，现在一共4种模式：<ul>
                         <li>没有杂兵：顾名思义，没有任何杂兵，适合纯新区</li>
                         <li>普通杂兵：较弱的杂兵，五星极少，适合次新区</li>
