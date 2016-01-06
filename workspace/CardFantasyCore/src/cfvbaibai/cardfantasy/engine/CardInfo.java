@@ -569,4 +569,8 @@ public class CardInfo extends EntityInfo {
         }
         return false;
     }
+
+    public boolean isSilent() {
+        return this.getStatus().containsStatus(CardStatusType.沉默);
+    }
 }

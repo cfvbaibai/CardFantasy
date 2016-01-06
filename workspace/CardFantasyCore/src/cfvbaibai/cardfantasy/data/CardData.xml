@@ -691,7 +691,12 @@
         <Skill type="不动" level="0" unlock="5" />
         <Skill type="月恩术" level="8" unlock="10" />
     </Card>
-    
+    <Card id="1541" name="预言之神" wikiId="" race="王国" speed="6" star="5" cost="21" incrCost="2" at="290" hp="1310" incrAT="37" incrHP="34">
+        <Skill type="连环闪电" level="7" unlock="0" />
+        <Skill type="脱困" level="0" unlock="5" />
+        <Skill type="沉默" level="0" unlock="10" />
+    </Card>
+
     <!-- 森林 -->
     <Card id="2101" name="人马巡逻者" wikiId="30976" race="森林" speed="2" star="1" cost="3" incrCost="2" at="95" hp="310" incrAT="17" incrHP="11">
         <Skill type="要害" level="3" unlock="5" />

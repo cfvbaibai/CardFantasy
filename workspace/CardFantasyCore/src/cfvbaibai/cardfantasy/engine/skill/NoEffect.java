@@ -13,7 +13,7 @@ public class NoEffect {
             attackSkill.getType() == SkillType.战争怒吼 ||
             attackSkill.getType() == SkillType.死亡印记 ||
             attackSkill.getType() == SkillType.魔力法阵 ||
-            // attackSkill.getType() == SkillType.沉默 ||
+            attackSkill.getType() == SkillType.沉默 ||
             attackSkill.getType() == SkillType.大地之盾 ||
             attackSkill.getType() == SkillType.裂伤 ||
             attackSkill.getType() == SkillType.时光倒流 ||

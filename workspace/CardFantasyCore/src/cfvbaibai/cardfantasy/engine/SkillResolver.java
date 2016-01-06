@@ -259,9 +259,11 @@ public class SkillResolver {
                 BurningFlame.apply(skillUseInfo.getAttachedUseInfo(), this, attacker, defender);
             }
         }
-        RuneInfo rune = attacker.getOwner().getActiveRuneOf(RuneData.飞岩);
-        if (rune != null && !attacker.justRevived()) {
-            Snipe.apply(rune.getSkill(), this, attacker, defender, 1);
+        if (!attacker.isSilent()) {
+            RuneInfo rune = attacker.getOwner().getActiveRuneOf(RuneData.飞岩);
+            if (rune != null && !attacker.justRevived()) {
+                Snipe.apply(rune.getSkill(), this, attacker, defender, 1);
+            }
         }
     }
 
@@ -295,27 +297,29 @@ public class SkillResolver {
                     Flee.apply(skillUseInfo.getSkill(), this, attacker, defender, damagedResult.actualDamage);
                 }
             }
-            {
-                RuneInfo rune = defender.getOwner().getActiveRuneOf(RuneData.雷盾);
-                if (rune != null && !defender.justRevived()) {
-                    Spike.apply(rune.getSkill(), this, attacker, defender, attackSkill, result.getDamage());
-                }
-            }
-            {
-                RuneInfo rune = defender.getOwner().getActiveRuneOf(RuneData.漩涡);
-                if (rune != null && !defender.justRevived()) {
-                    CounterAttack.apply(rune.getSkill(), this, attacker, defender, result.getDamage());
-                }
-            }
-            if (!defender.isDead()) {
-                for (SkillUseInfo skillUseInfo : defender.getNormalUsableSkills()) {
-                    if (skillUseInfo.getType() == SkillType.狂热) {
-                        Zealot.apply(skillUseInfo, this, attacker, defender, result);
+            if (!defender.isSilent()) {
+                {
+                    RuneInfo rune = defender.getOwner().getActiveRuneOf(RuneData.雷盾);
+                    if (rune != null && !defender.justRevived()) {
+                        Spike.apply(rune.getSkill(), this, attacker, defender, attackSkill, result.getDamage());
                     }
                 }
-                RuneInfo rune = defender.getOwner().getActiveRuneOf(RuneData.怒涛);
-                if (rune != null && !defender.justRevived()) {
-                    Zealot.apply(rune.getSkillUseInfo(), this, attacker, defender, result);
+                {
+                    RuneInfo rune = defender.getOwner().getActiveRuneOf(RuneData.漩涡);
+                    if (rune != null && !defender.justRevived()) {
+                        CounterAttack.apply(rune.getSkill(), this, attacker, defender, result.getDamage());
+                    }
+                }
+                if (!defender.isDead()) {
+                    for (SkillUseInfo skillUseInfo : defender.getNormalUsableSkills()) {
+                        if (skillUseInfo.getType() == SkillType.狂热) {
+                            Zealot.apply(skillUseInfo, this, attacker, defender, result);
+                        }
+                    }
+                    RuneInfo rune = defender.getOwner().getActiveRuneOf(RuneData.怒涛);
+                    if (rune != null && !defender.justRevived()) {
+                        Zealot.apply(rune.getSkillUseInfo(), this, attacker, defender, result);
+                    }
                 }
             }
             for (SkillUseInfo skillUseInfo : defender.getNormalUsableSkills()) {
@@ -371,7 +375,7 @@ public class SkillResolver {
                         }
                     }
                 }
-                {
+                if (!defender.isSilent()) {
                     RuneInfo rune = defender.getOwner().getActiveRuneOf(RuneData.轻灵);
                     if (rune != null && !defender.justRevived()) {
                         result.setAttackable(!Dodge.apply(rune.getSkill(), this, cardAttacker, defender, result.getDamage()));
@@ -412,24 +416,26 @@ public class SkillResolver {
                         return result;
                     }
                 }
-                {
-                    RuneInfo rune = defender.getOwner().getActiveRuneOf(RuneData.冰封);
-                    if (rune != null && !defender.justRevived()) {
-                        result.setDamage(IceArmor.apply(rune.getSkill(), this, cardAttacker, defender,
-                                result.getDamage()));
+                if (!defender.isSilent()) {
+                    {
+                        RuneInfo rune = defender.getOwner().getActiveRuneOf(RuneData.冰封);
+                        if (rune != null && !defender.justRevived()) {
+                            result.setDamage(IceArmor.apply(rune.getSkill(), this, cardAttacker, defender,
+                                    result.getDamage()));
+                        }
+                        if (!result.isAttackable()) {
+                            return result;
+                        }
                     }
-                    if (!result.isAttackable()) {
-                        return result;
-                    }
-                }
-                {
-                    RuneInfo rune = defender.getOwner().getActiveRuneOf(RuneData.岩壁);
-                    if (rune != null && !defender.justRevived()) {
-                        result.setDamage(Block.apply(rune.getSkill(), this, cardAttacker, defender, rune,
-                                result.getDamage()));
-                    }
-                    if (!result.isAttackable()) {
-                        return result;
+                    {
+                        RuneInfo rune = defender.getOwner().getActiveRuneOf(RuneData.岩壁);
+                        if (rune != null && !defender.justRevived()) {
+                            result.setDamage(Block.apply(rune.getSkill(), this, cardAttacker, defender, rune,
+                                    result.getDamage()));
+                        }
+                        if (!result.isAttackable()) {
+                            return result;
+                        }
                     }
                 }
             }
@@ -482,7 +488,7 @@ public class SkillResolver {
                         }
                     }
                 }
-                {
+                if (!defender.isSilent()) {
                     RuneInfo rune = defender.getOwner().getRuneBox().getRuneOf(RuneData.石林);
                     if (rune != null && rune.isActivated() && !defender.justRevived()) {
                         if (CounterMagic.isSkillBlocked(this, rune.getSkill(), attackSkill, attacker,
@@ -516,7 +522,7 @@ public class SkillResolver {
                         }
                     }
                 }
-                {
+                if (!defender.isSilent()) {
                     RuneInfo rune = defender.getOwner().getActiveRuneOf(RuneData.鬼步);
                     if (rune != null && !defender.justRevived()) {
                         if (Escape.isSkillEscaped(this, rune.getSkill(), attackSkill, attacker, defender)) {
@@ -537,7 +543,7 @@ public class SkillResolver {
                         return result;
                     }
                 }
-                {
+                if (!defender.isSilent()) {
                     RuneInfo rune = defender.getOwner().getActiveRuneOf(RuneData.炎甲);
                     if (rune != null && !defender.justRevived()) {
                         result.setDamage(MagicShield.apply(this, rune.getSkill(), attacker, defender,
@@ -663,7 +669,7 @@ public class SkillResolver {
                 Summon.apply(this, deadCardSkillUseInfo, deadCard, "大毒汁之王-5");
             }
         }
-        {
+        if (!deadCard.isSilent()) {
             RuneInfo rune = deadCard.getOwner().getActiveRuneOf(RuneData.爆裂);
             // IMPORTANT: Unbending card cannot trigger 爆裂
             if (rune != null && !deadCard.justRevived() && !result.unbending) {
@@ -682,7 +688,7 @@ public class SkillResolver {
                 }
             }
         }
-        if (!reincarnated) {
+        if (!reincarnated && !deadCard.isSilent()) {
             RuneInfo rune = deadCard.getOwner().getActiveRuneOf(RuneData.秽土);
             if (rune != null && !deadCard.justRevived()) {
                 Reincarnation.apply(this, rune.getSkill(), deadCard, result.unbending);
@@ -699,7 +705,7 @@ public class SkillResolver {
                 }
             }
         }
-        if (!attacker.isDead()) {
+        if (!attacker.isDead() && !attacker.isSilent()) {
             RuneInfo rune = attacker.getOwner().getActiveRuneOf(RuneData.赤谷);
             if (rune != null && !attacker.justRevived()) {
                 BloodDrain.apply(rune.getSkill(), this, attacker, defender, normalAttackDamage);
@@ -730,7 +736,7 @@ public class SkillResolver {
                 }
             }
         }
-        if (!attacker.isDead()) {
+        if (!attacker.isDead() && !attacker.isSilent()) {
             RuneInfo rune = attacker.getOwner().getActiveRuneOf(RuneData.洞察);
             if (rune != null && !attacker.justRevived()) {
                 BloodThirsty.apply(this, rune.getSkillUseInfo(), attacker, normalAttackDamage);
@@ -800,22 +806,24 @@ public class SkillResolver {
             }
         }
         if (!prior) {
-            {
-                RuneInfo rune = attacker.getOwner().getActiveRuneOf(RuneData.绝杀);
-                if (rune != null && !attacker.justRevived()) {
-                    Wrath.apply(this, rune.getSkillUseInfo(), attacker, defender);
+            if (!attacker.isSilent()) {
+                {
+                    RuneInfo rune = attacker.getOwner().getActiveRuneOf(RuneData.绝杀);
+                    if (rune != null && !attacker.justRevived()) {
+                        Wrath.apply(this, rune.getSkillUseInfo(), attacker, defender);
+                    }
                 }
-            }
-            {
-                RuneInfo rune = attacker.getOwner().getActiveRuneOf(RuneData.寒伤);
-                if (rune != null && !attacker.justRevived()) {
-                    CriticalAttack.apply(this, rune.getSkillUseInfo(), attacker, defender);
+                {
+                    RuneInfo rune = attacker.getOwner().getActiveRuneOf(RuneData.寒伤);
+                    if (rune != null && !attacker.justRevived()) {
+                        CriticalAttack.apply(this, rune.getSkillUseInfo(), attacker, defender);
+                    }
                 }
-            }
-            {
-                RuneInfo rune = attacker.getOwner().getActiveRuneOf(RuneData.扬旗);
-                if (rune != null && !attacker.justRevived()) {
-                    Pursuit.apply(this, rune.getSkillUseInfo(), attacker, defender);
+                {
+                    RuneInfo rune = attacker.getOwner().getActiveRuneOf(RuneData.扬旗);
+                    if (rune != null && !attacker.justRevived()) {
+                        Pursuit.apply(this, rune.getSkillUseInfo(), attacker, defender);
+                    }
                 }
             }
         }
@@ -999,7 +1007,7 @@ public class SkillResolver {
                 Rejuvenate.apply(cardSkillUseInfo.getSkill(), this, card);
             }
         }
-        {
+        if (!card.isSilent()) {
             RuneInfo rune = card.getOwner().getActiveRuneOf(RuneData.复苏);
             if (rune != null && !card.justRevived()) {
                 Rejuvenate.apply(rune.getSkill(), this, card);
@@ -1304,7 +1312,7 @@ public class SkillResolver {
             if (!rune.isActivated()) {
                 continue;
             }
-            if (rune.is(RuneData.鬼步)) {
+            if (rune.is(RuneData.鬼步) && !victim.isSilent()) {
                 if (Escape.isStatusEscaped(rune.getSkill(), this, item, victim)) {
                     return new BlockStatusResult(true);
                 }
