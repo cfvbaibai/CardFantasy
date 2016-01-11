@@ -37,4 +37,16 @@ public class SnipeTest extends SkillValidationTest {
         Assert.assertEquals(0, context.getPlayer(0).getField().size());
         Assert.assertTrue(c王国小兵1.isDead()&&c王国小兵2.isDead()&&c王国小兵3.isDead());
     }
+    
+    @Test
+    public void test精准打击_基本() {
+        SkillTestContext context = prepare(50, 50, "秘银巨石像+精准打击7", "占位符");
+        context.addToField(0, 0);
+        CardInfo c占位符 = context.addToField(1, 1);
+        context.startGame();
+
+        context.proceedOneRound();
+        Assert.assertEquals(810, 5000 - c占位符.getHP());
+        Assert.assertEquals(810 * 170 / 100, 6390 - c占位符.getOwner().getHP());
+    }
 }

@@ -2471,6 +2471,11 @@
         <Skill type="魔甲" level="8" unlock="5" />
         <Skill type="净化" level="0" unlock="10" summon="true" />
     </Card>
+    <Card id="4535" name="机甲魔神" wikiId="" race="地狱" speed="4" star="5" cost="18" incrCost="2" at="330" hp="1780" incrAT="42" incrHP="42">
+        <Skill type="精准打击" level="7" unlock="0" />
+        <Skill type="雷神降临" level="7" unlock="5" />
+        <Skill type="法力反射" level="8" unlock="10" />
+    </Card>
 
     <!-- 魔神 -->
     <Card id="5501" name="狙击复仇女神" wikiId="30871" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="1200" hp="10400000" incrAT="0" incrHP="0">

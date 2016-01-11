@@ -89,6 +89,7 @@ public enum SkillType {
 
     狙击("30962", 25, SkillTag.抗免疫, SkillTag.狙击),
     穿刺("30960", 15, SkillTag.抗免疫),
+    精准打击("", 100, 10, SkillTag.抗免疫),
     格挡("30955", 20),
     陷阱("30975", 1, SkillTag.控制),
     反击("30957", 20, SkillTag.抗免疫, SkillTag.反击),

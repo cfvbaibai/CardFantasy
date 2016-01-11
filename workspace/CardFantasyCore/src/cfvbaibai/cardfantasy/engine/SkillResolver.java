@@ -719,6 +719,8 @@ public class SkillResolver {
             if (!attacker.isDead()) {
                 if (skillUseInfo.getType() == SkillType.穿刺) {
                     Penetration.apply(skillUseInfo.getSkill(), this, attacker, defenderHero, normalAttackDamage);
+                } else if (skillUseInfo.getType() == SkillType.精准打击) {
+                    Penetration.apply(skillUseInfo.getSkill(), this, attacker, defenderHero, normalAttackDamage);
                 } else if (skillUseInfo.getType() == SkillType.削弱) {
                     Weaken.apply(this, skillUseInfo, attacker, defender, normalAttackDamage);
                 } else if (skillUseInfo.getType() == SkillType.裂伤) {
