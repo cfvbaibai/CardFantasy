@@ -10,7 +10,8 @@
                 <h3>公告</h3>
                 <ul>
                     <li><a href="#" data-type="bug">魔卡幻想模拟器贴吧</a>已成立，欢迎大家来提BUG、提需求、提供技能结算细节。</li>
-                    <li><a href="<c:url value="/Wiki/index.shtml" />" target="_blank">魔卡幻想WIKI</a>子站点正式成立，作为新的尝试，欢迎大家来<a href="#" data-type="bug">贴吧</a>提需求和报告BUG。</li>
+                    <li>页游玩家如果想添加新卡，请去贴吧发帖并提供卡牌的星级种族，任意两级二维，技能，CD，进化前后COST和卡图。</li>
+                    <!--<li><a href="<c:url value="/Wiki/index.shtml" />" target="_blank">魔卡幻想WIKI</a>子站点正式成立，作为新的尝试，欢迎大家来<a href="#" data-type="bug">贴吧</a>提需求和报告BUG。</li>-->
                     <li>三区（前五区）大神【砍掉重练】已经把他的模拟器和这个模拟器合并了，以后都会共同开发，最近的新卡几乎都是他做的。</li>
                     <!-- <li>现在模拟器能识别卡牌昵称或简称了，直接手动输入卡组变得更容易了。当然肯定有漏掉的，欢迎大家来<a href="#" data-type="bug">贴吧</a>补充。</li> -->
                     <!-- <li>小提示：如果想保存卡组，只要把卡组的文字表述记下来存在文本文件或者手机备忘录里，下次要用的时候复制回来就行。</li> -->
@@ -34,6 +35,7 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2016-1-12: 添加页游卡【烈焰狂战士】，感谢<x>无限之神X</x>提供的资料</li>
                     <li>2016-1-11: 添加新卡【机甲魔神】, 感谢<x>希灵天使12345</x>的提醒</li>
                     <li>2016-1-6: <ul>
                         <li>重新上架<cf:c>风暴海皇</cf:c></li>
