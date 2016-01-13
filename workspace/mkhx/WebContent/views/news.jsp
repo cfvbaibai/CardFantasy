@@ -35,8 +35,8 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>更新日志</h3>
                 <ul class="news-content">
-                    <li>2016-1-12: 添加页游卡【烈焰狂战士】，感谢<x>无限之神X</x>提供的资料</li>
-                    <li>2016-1-11: 添加新卡【机甲魔神】, 感谢<x>希灵天使12345</x>的提醒</li>
+                    <li>2016-1-12: 添加页游卡【烈焰狂战士】, 【远古吞食者】，感谢<x>无限之神X</x>提供的资料</li>
+                    <li>2016-1-11: 添加新卡<cf:c>机甲魔神</cf:c>, 感谢<x>希灵天使12345</x>的提醒</li>
                     <li>2016-1-6: <ul>
                         <li>重新上架<cf:c>风暴海皇</cf:c></li>
                         <li>添加新卡<cf:c>预言之神</cf:c></li>

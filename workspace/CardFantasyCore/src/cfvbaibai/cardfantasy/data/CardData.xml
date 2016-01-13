@@ -1855,11 +1855,16 @@
         <Skill type="冰甲" level="7" unlock="10" />
     </Card>
     <Card id="3532" name="风暴海皇" wikiId="" race="蛮荒" speed="1" star="5" cost="19" incrCost="2" at="410" hp="1380" incrAT="42" incrHP="28">
-        <Skill type="沉默" level="0" unlock="0" summon="true"/>
+        <Skill type="沉默" level="0" unlock="0" summon="true" />
         <Skill type="战意" level="8" unlock="5" />
         <Skill type="转生" level="8" unlock="10" />
     </Card>
-
+    <Card id="3533" name="远古吞食者" wikiId="" race="蛮荒" speed="4" star="5" cost="16" incrCost="2" at="450" hp="1375" incrAT="28" incrHP="37">
+        <Skill type="弱点攻击" level="0" unlock="0" />
+        <Skill type="脱困" level="0" unlock="5" />
+        <Skill type="吸血" level="10" unlock="10" />
+    </Card>
+    
     <!-- 地狱 -->
     <Card id="4101" name="恶魔小鬼" wikiId="31036" race="地狱" speed="2" star="1" cost="3" incrCost="2" at="80" hp="270" incrAT="19" incrHP="6">
         <Skill type="火球" level="2" unlock="0" />
