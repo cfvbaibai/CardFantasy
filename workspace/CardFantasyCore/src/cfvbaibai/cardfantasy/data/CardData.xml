@@ -2486,6 +2486,11 @@
         <Skill type="不屈" level="0" unlock="5" />
         <Skill type="凯撒之击" level="6" unlock="10" />
     </Card>
+    <Card id="4537" name="水瓶座" wikiId="" race="地狱" speed="3" star="5" cost="18" incrCost="2" at="370" hp="1730" incrAT="41" incrHP="38">
+        <Skill type="末世术" level="6" unlock="0" />
+        <Skill type="脱困" level="0" unlock="5" />
+        <Skill type="转生" level="7" unlock="10" />
+    </Card>
 
     <!-- 魔神 -->
     <Card id="5501" name="狙击复仇女神" wikiId="30871" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="1200" hp="10400000" incrAT="0" incrHP="0">
