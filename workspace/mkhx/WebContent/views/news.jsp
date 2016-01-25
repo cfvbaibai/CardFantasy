@@ -35,6 +35,7 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2016-1-25: 添加新卡<cf:c>火焰巫女</cf:c>, <cf:c>占卜少女</cf:c>, <cf:c>元素精灵使</cf:c>, <cf:c>寒霜冰灵使</cf:c>, <cf:c>生化异形</cf:c>, 感谢<x>希灵天使12345</x>提供的资料</li>
                     <li>2016-1-21: 添加新卡<cf:c>水瓶座</cf:c></li>
                     <li>2016-1-12: 添加页游卡【烈焰狂战士】, 【远古吞食者】，感谢<x>无限之神X</x>提供的资料</li>
                     <li>2016-1-11: 添加新卡<cf:c>机甲魔神</cf:c>, 感谢<x>希灵天使12345</x>的提醒</li>

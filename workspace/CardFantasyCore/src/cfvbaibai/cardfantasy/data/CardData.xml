@@ -696,6 +696,16 @@
         <Skill type="脱困" level="0" unlock="5" />
         <Skill type="沉默" level="0" unlock="10" />
     </Card>
+    <Card id="1542" name="火焰巫女" wikiId="" race="王国" speed="4" star="5" cost="18" incrCost="2" at="330" hp="1650" incrAT="32" incrHP="34">
+        <Skill type="魔力印记" level="5" unlock="0" />
+        <Skill type="天火" level="5" unlock="5" />
+        <Skill type="不动" level="0" unlock="10" />
+    </Card>
+    <Card id="1543" name="占卜少女" wikiId="" race="王国" speed="3" star="5" cost="18" incrCost="2" at="250" hp="1480" incrAT="38" incrHP="34">
+        <Skill type="回魂" level="2" unlock="0" summon="true" />
+        <Skill type="逃跑" level="0" unlock="5" />
+        <Skill type="战争怒吼" level="0" unlock="10" summon="true" />
+    </Card>
 
     <!-- 森林 -->
     <Card id="2101" name="人马巡逻者" wikiId="30976" race="森林" speed="2" star="1" cost="3" incrCost="2" at="95" hp="310" incrAT="17" incrHP="11">
@@ -1109,6 +1119,11 @@
         <Skill type="水流护甲" level="4" unlock="0" />
         <Skill type="本源守护" level="5" unlock="5" />
         <Skill type="不动" level="0" unlock="10" />
+    </Card>
+    <Card id="2439" name="元素精灵使" wikiId="" race="森林" speed="2" star="4" cost="14" incrCost="2" at="270" hp="1580" incrAT="35" incrHP="42">
+        <Skill type="修罗地火攻" level="5" unlock="0" />
+        <Skill type="月恩术" level="5" unlock="5" />
+        <Skill type="免疫" level="0" unlock="10" />
     </Card>
 
     <Card id="2501" name="金属巨龙" wikiId="31004" race="森林" speed="6" star="5" cost="14" incrCost="3" at="355" hp="1480" incrAT="30" incrHP="23">
@@ -1702,6 +1717,11 @@
         <Skill type="弱点攻击" level="0" unlock="5" />
         <Skill type="毒刃" level="0" unlock="10" />
     </Card>
+    <Card id="3446" name="寒霜冰灵使" wikiId="" race="蛮荒" speed="2" star="4" cost="15" incrCost="2" at="290" hp="1480" incrAT="31" incrHP="41">
+        <Skill type="寒霜冲击" level="5" unlock="0" />
+        <Skill type="凋零真言" level="4" unlock="5" />
+        <Skill type="冰甲" level="4" unlock="10" />
+    </Card>
 
     <Card id="3501" name="雷兽" wikiId="31034" race="蛮荒" speed="6" star="5" cost="14" incrCost="2" at="340" hp="1100" incrAT="20" incrHP="45">
         <Skill type="雷暴" level="7" unlock="0" />
@@ -2105,6 +2125,11 @@
     </Card>
     <Card id="4338" name="骑士·圣戟神女" wikiId="8177" race="地狱" speed="6" star="3" cost="99" incrCost="0" at="1" hp="1" incrAT="0" incrHP="0">
       <Skill type="物品技能" level="0" unlock="0" />
+    </Card>
+    <Card id="4339" name="生化异形" wikiId="" race="地狱" speed="2" star="3" cost="12" incrCost="2" at="325" hp="1000" incrAT="34" incrHP="28">
+        <Skill type="凯撒之击" level="3" unlock="0" />
+        <Skill type="毒刃" level="0" unlock="5" />
+        <Skill type="横扫" level="0" unlock="10" />
     </Card>
     <Card id="4401" name="美杜莎女王" wikiId="31058" race="地狱" speed="6" star="4" cost="12" incrCost="2" at="230" hp="870" incrAT="28" incrHP="23">
         <Skill type="诅咒" level="6" unlock="0" />

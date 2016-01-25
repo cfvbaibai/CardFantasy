@@ -1423,7 +1423,7 @@ var Animater = function() {
         } else if (skill == '骑士守护') {
             this.flyImage({ fileName: 'knightguardian.png', width: 48, height: 48 },
                     attacker, [ attacker ], settings.skillDuration);
-        } else if (skill == '燃烧' || skill == '烈火焚神' || skill == '天怒燃烧') {
+        } else if (skill == '燃烧' || skill == '烈火焚神' || skill == '天火') {
             this.flyImage({ fileName: 'burn.png', width: 48, height: 48 },
                     attacker, defenders, settings.skillDuration);
         } else if (skill == '裂伤') {
