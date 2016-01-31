@@ -26,7 +26,23 @@ public class MultiAttackTest extends SkillValidationTest {
         Assert.assertEquals(805 * 175 / 100, 5000 - c占位符3.getHP());
         Assert.assertEquals(805 * 175 / 100, 5000 - c占位符4.getHP());
     }
-    
+
+    /**
+     * 连锁攻击能触发弱点攻击破冰甲
+     */
+    @Test
+    public void test连锁攻击_弱点攻击_冰甲() {
+        SkillTestContext context = prepare(50, 50, "纯洁圣女+弱点攻击", "占位符+冰甲10*2");
+        context.addToField(0, 0);
+        CardInfo c占位符1 = context.addToField(1, 1);
+        CardInfo c占位符2 = context.addToField(2, 1);
+        context.startGame();
+
+        context.proceedOneRound();
+        Assert.assertEquals(750 + 240 /* 背刺6 */, 5000 - c占位符1.getHP());
+        Assert.assertEquals(750 + 240 /* 背刺6 *//* 连锁攻击4 */, 5000 - c占位符2.getHP());
+    }
+
     @Test
     public void test修罗地火攻_普通() {
         SkillTestContext context = prepare(50, 50, "魔装机神-0", "占位符*3");
