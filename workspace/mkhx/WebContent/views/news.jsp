@@ -35,6 +35,7 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2016-2-2: 在【莉莉丝战】中添加【网页版100级神秘盗贼】和【网页版100级精英盗贼】，感谢<x>白猪汪汪汪</x>提供的数据</li>
                     <li>2016-2-1: 添加新卡<cf:c>精灵王子</cf:c></li>
                     <li>2016-1-25: 添加新卡<cf:c>火焰巫女</cf:c>, <cf:c>占卜少女</cf:c>, <cf:c>元素精灵使</cf:c>, <cf:c>寒霜冰灵使</cf:c>, <cf:c>生化异形</cf:c>, 感谢<x>希灵天使12345</x>提供的资料</li>
                     <li>2016-1-21: 添加新卡<cf:c>水瓶座</cf:c></li>
