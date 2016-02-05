@@ -44,11 +44,11 @@
                     <div>失败奖励： 金钱${levelInfo.loseBonusGold} 经验值${levelInfo.loseBonusExp}</div>
                     <div>探索奖励： 金钱${levelInfo.exploreBonusGold} 经验值${levelInfo.exploreBonusExp}</div>
                     <div>过关条件： ${levelInfo.winConditionText}</div>
-                    <c:if test="${levelInfo.firstWinBonus != null}">
+                    <c:if test="${levelInfo.firstWinBonus.size() > 0}">
                     <div>固定奖励：
-                        <a href="<c:url value="/Wiki" />/${levelInfo.firstWinBonus.typeName}s/${levelInfo.firstWinBonus.id}.shtml" target="_self">
-                            ${levelInfo.firstWinBonus.name}
-                        </a>
+                    <c:forEach var="bonus" items="${levelInfo.firstWinBonus}">
+                        <a href="<c:url value="/Wiki" />/${bonus.typeName}s/${bonus.id}.shtml" target="_self">${bonus.name}</a>&nbsp;
+                    </c:forEach>
                     </div>
                     </c:if>
                 </td>

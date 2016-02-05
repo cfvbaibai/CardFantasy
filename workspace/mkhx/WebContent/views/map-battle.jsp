@@ -9,6 +9,21 @@
                             <td>地图</td>
                             <td>
                                 <select name="map-id" id="map-id" class="map-select" data-mini="true" data-native-menu="true">
+                                    <optgroup label="18图">
+                                        <option value="18-1" selected="selected">18-1 万妖之门</option>
+                                        <option value="18-2">18-2 万足街</option>
+                                        <option value="18-3">18-3 荆棘丛林</option>
+                                        <option value="18-4">18-4 毒雾森林</option>
+                                        <option value="18-5">18-5 东风黄沙原</option>
+                                        <option value="18-6">18-6 百里石山</option>
+                                        <option value="18-7">18-7 陨耀坑</option>
+                                        <option value="18-8">18-8 烈焰帝怒</option>
+                                        <option value="18-9">18-9 落九千</option>
+                                        <option value="18-10">18-10 通天桥</option>
+                                        <option value="18-11">18-11 万耀森林</option>
+                                        <option value="18-H">18-H (隐藏)万耀亭</option>
+                                        <option value="18-H2">18-H2 (隐藏)万耀城</option>
+                                    </optgroup>
                                     <optgroup label="17图">
                                         <option value="17-1" selected="selected">17-1 异界之门</option>
                                         <option value="17-2">17-2 挽歌丘陵</option>

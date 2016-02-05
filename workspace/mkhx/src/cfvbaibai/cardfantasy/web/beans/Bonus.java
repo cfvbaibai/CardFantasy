@@ -1,6 +1,6 @@
 package cfvbaibai.cardfantasy.web.beans;
 
-public class FirstWinBonus {
+public class Bonus {
     private String name;
     private int id;
     private String typeName;

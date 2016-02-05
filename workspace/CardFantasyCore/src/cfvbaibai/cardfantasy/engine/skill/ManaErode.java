@@ -7,12 +7,13 @@ import cfvbaibai.cardfantasy.data.RuneData;
 import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.data.SkillType;
 import cfvbaibai.cardfantasy.engine.CardInfo;
+import cfvbaibai.cardfantasy.engine.EntityInfo;
 import cfvbaibai.cardfantasy.engine.SkillResolver;
 import cfvbaibai.cardfantasy.engine.HeroDieSignal;
 import cfvbaibai.cardfantasy.engine.Player;
 
 public final class ManaErode {
-    public static void apply(Skill cardSkill, SkillResolver resolver, CardInfo attacker, Player defender,
+    public static void apply(Skill cardSkill, SkillResolver resolver, EntityInfo attacker, Player defender,
             int victimCount) throws HeroDieSignal {
         List<CardInfo> victims = resolver.getStage().getRandomizer().pickRandom(
             defender.getField().toList(), victimCount, true, null);

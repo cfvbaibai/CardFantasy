@@ -187,6 +187,8 @@ public class SkillResolver {
                 ManaErode.apply(skillUseInfo.getSkill(), this, attacker, defender, 1);
             } else if (skillUseInfo.getType() == SkillType.破魔手) {
                 ManaErode.apply(skillUseInfo.getSkill(), this, attacker, defender, 3);
+            } else if (skillUseInfo.getType() == SkillType.法力风暴) {
+                ManaErode.apply(skillUseInfo.getSkill(), this, attacker, defender, -1);
             } else if (skillUseInfo.getType() == SkillType.趁胜追击) {
                 WinningPursuit.apply(this, skillUseInfo, attacker, defender);
             } else if (skillUseInfo.getType() == SkillType.复仇) {
@@ -259,10 +261,12 @@ public class SkillResolver {
                 BurningFlame.apply(skillUseInfo.getAttachedUseInfo(), this, attacker, defender);
             }
         }
-        if (!attacker.isSilent()) {
-            RuneInfo rune = attacker.getOwner().getActiveRuneOf(RuneData.飞岩);
-            if (rune != null && !attacker.justRevived()) {
-                Snipe.apply(rune.getSkill(), this, attacker, defender, 1);
+        if (!attacker.isDead() && !attacker.isSilent() && !attacker.justRevived()) {
+            {
+                RuneInfo rune = attacker.getOwner().getActiveRuneOf(RuneData.飞岩);
+                if (rune != null) {
+                    Snipe.apply(rune.getSkill(), this, attacker, defender, 1);
+                }
             }
         }
     }
@@ -297,16 +301,16 @@ public class SkillResolver {
                     Flee.apply(skillUseInfo.getSkill(), this, attacker, defender, damagedResult.actualDamage);
                 }
             }
-            if (!defender.isSilent()) {
+            if (!defender.isSilent() && !defender.justRevived()) {
                 {
                     RuneInfo rune = defender.getOwner().getActiveRuneOf(RuneData.雷盾);
-                    if (rune != null && !defender.justRevived()) {
+                    if (rune != null) {
                         Spike.apply(rune.getSkill(), this, attacker, defender, attackSkill, result.getDamage());
                     }
                 }
                 {
                     RuneInfo rune = defender.getOwner().getActiveRuneOf(RuneData.漩涡);
-                    if (rune != null && !defender.justRevived()) {
+                    if (rune != null) {
                         CounterAttack.apply(rune.getSkill(), this, attacker, defender, result.getDamage());
                     }
                 }
@@ -739,9 +743,17 @@ public class SkillResolver {
             }
         }
         if (!attacker.isDead() && !attacker.isSilent()) {
-            RuneInfo rune = attacker.getOwner().getActiveRuneOf(RuneData.洞察);
-            if (rune != null && !attacker.justRevived()) {
-                BloodThirsty.apply(this, rune.getSkillUseInfo(), attacker, normalAttackDamage);
+            {
+                RuneInfo rune = attacker.getOwner().getActiveRuneOf(RuneData.洞察);
+                if (rune != null && !attacker.justRevived()) {
+                    BloodThirsty.apply(this, rune.getSkillUseInfo(), attacker, normalAttackDamage);
+                }
+            }
+            {
+                RuneInfo rune = attacker.getOwner().getActiveRuneOf(RuneData.狂战);
+                if (rune != null && !attacker.justRevived()) {
+                    Penetration.apply(rune.getSkillUseInfo().getSkill(), this, attacker, defenderHero, normalAttackDamage);
+                }
             }
         }
     }
@@ -775,7 +787,8 @@ public class SkillResolver {
                     Return.apply(this, skillUseInfo.getSkill(), attacker, defender);
                 } else if (skillUseInfo.getType() == SkillType.献祭) {
                     Sacrifice.apply(this, skillUseInfo, attacker, null);
-                } else if (skillUseInfo.getType() == SkillType.沉默) {
+                } else if (skillUseInfo.getType() == SkillType.沉默 ||
+                        skillUseInfo.getType() == SkillType.觉醒沉默 && attacker.isAwaken(skillUseInfo, Race.KINGDOM)) {
                     Silence.apply(this, skillUseInfo, attacker, defender);
                 } else if (skillUseInfo.getType() == SkillType.死亡印记) {
                     DeathMark.apply(this, skillUseInfo, attacker, defender);
@@ -1382,6 +1395,14 @@ public class SkillResolver {
                 return SuddenKill.isBlockSkillDisabled(this, attackerSkillUseInfo.getSkill(), cardSkill, attacker, defender);
             }
         }
+        if (!attacker.isDead() && !attacker.isSilent() && !attacker.justRevived()) {
+            {
+                RuneInfo rune = attacker.getOwner().getActiveRuneOf(RuneData.鹰眼);
+                if (rune != null) {
+                    return WeakPointAttack.isBlockSkillDisabled(this, rune.getSkill(), cardSkill, attacker, defender);
+                }
+            }
+        }
         return false;
     }
     
@@ -1608,6 +1629,8 @@ public class SkillResolver {
                 Bless.apply(rune.getSkillUseInfo().getSkill(), this, rune);
             } else if (rune.is(RuneData.神祈)) {
                 Purify.apply(rune.getSkillUseInfo(), this, rune, -1);
+            } else if (rune.is(RuneData.风暴)) {
+                ManaErode.apply(rune.getSkill(), this, rune, defenderHero, -1);
             }
         }
     }

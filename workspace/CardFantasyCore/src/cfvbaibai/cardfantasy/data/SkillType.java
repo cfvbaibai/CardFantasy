@@ -48,7 +48,7 @@ public enum SkillType {
     振奋("80192", 40, 10, SkillTag.独立攻击加成),
     奋战("", 40, 10, SkillTag.独立攻击加成),
     神兵召唤("", 0, SkillTag.额外攻击加成),
-    觉醒神兵召唤("", 0, SkillTag.额外攻击加成),
+    觉醒神兵召唤("", 0, SkillTag.额外攻击加成, SkillTag.不可洗炼),
     厨具召唤("", 0, SkillTag.额外攻击加成),
     圣器召唤("", 0, SkillTag.额外攻击加成),
 
@@ -136,7 +136,8 @@ public enum SkillType {
     弱点攻击("30881", 0),
     灵巧("57020", 0),
     灵魂禁锢("", 0),
-    沉默("",0,SkillTag.抗免疫, SkillTag.抗不屈),
+    沉默("", 0, SkillTag.抗免疫, SkillTag.抗不屈),
+    觉醒沉默("", 0, SkillTag.不可洗炼, SkillTag.抗免疫, SkillTag.抗不屈),
 
     回魂("31131", 1),
     二重狙击("31130", 25, SkillTag.抗免疫, SkillTag.狙击),
@@ -176,8 +177,9 @@ public enum SkillType {
     地狱之盾("40098", 15, 5, SkillTag.种族之盾),
 
     圣炎("43446", 0),
-    法力侵蚀("43447", 20),
+    法力侵蚀("43447", 0, 20),
     破魔手("", 0, 20),
+    法力风暴("", 0, 20),
     九转秘术("", 0, 0),
 
     大地之盾("80193", 0, SkillTag.控制, SkillTag.抗免疫),

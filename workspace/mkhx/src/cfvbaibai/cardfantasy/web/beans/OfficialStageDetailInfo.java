@@ -28,7 +28,7 @@ public class OfficialStageDetailInfo {
         }
     }
     public String getFullName() {
-        return detail.MapStageId + "-" + this.getRankName() + "-" + this.getName();
+        return detail.MapStageId + "-" + this.getRankName().trim() + " " + this.getName().trim();
     }
     public int getId() {
         return detail.MapStageDetailId;

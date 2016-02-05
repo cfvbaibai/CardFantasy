@@ -1,5 +1,8 @@
 package cfvbaibai.cardfantasy.web.beans;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import cfvbaibai.cardfantasy.data.PlayerInfo;
 import cfvbaibai.cardfantasy.officialdata.OfficialCard;
 import cfvbaibai.cardfantasy.officialdata.OfficialDataStore;
@@ -81,26 +84,32 @@ public class OfficialStageLevelInfo {
         return deckInfo;
     }
 
-    public FirstWinBonus getFirstWinBonus() {
+    public List<Bonus> getFirstWinBonus() {
         if (level.FirstBonusWin == null || level.FirstBonusWin.isEmpty()) {
             return null;
         }
-        String[] parts = level.FirstBonusWin.split("_");
-        FirstWinBonus firstWinBonus = new FirstWinBonus();
-        firstWinBonus.setId(Integer.parseInt(parts[1]));
-        firstWinBonus.setTypeName(parts[0]);
-        if (parts[0].equalsIgnoreCase("Card")) {
-            OfficialCard card = store.getCardById(firstWinBonus.getId());
-            if (card != null) {
-                firstWinBonus.setObject(card);
-                firstWinBonus.setName(card.getCardName());
+
+        List<Bonus> firstWinBonus = new ArrayList<Bonus>();
+        String[] bonusParts = level.FirstBonusWin.split(",");
+        for (int i = 0; i < bonusParts.length; ++i) {
+            String[] parts = bonusParts[i].split("_");
+            Bonus bonus = new Bonus();
+            bonus.setId(Integer.parseInt(parts[1]));
+            bonus.setTypeName(parts[0]);
+            if (parts[0].equalsIgnoreCase("Card")) {
+                OfficialCard card = store.getCardById(bonus.getId());
+                if (card != null) {
+                    bonus.setObject(card);
+                    bonus.setName(card.getCardName());
+                }
+            } else if (parts[0].equalsIgnoreCase("Rune")) {
+                OfficialRune rune = store.getRuneById(bonus.getId());
+                if (rune != null) {
+                    bonus.setObject(rune);
+                    bonus.setName(rune.getRuneName());
+                }
             }
-        } else if (parts[0].equalsIgnoreCase("Rune")) {
-            OfficialRune rune = store.getRuneById(firstWinBonus.getId());
-            if (rune != null) {
-                firstWinBonus.setObject(rune);
-                firstWinBonus.setName(rune.getRuneName());
-            }
+            firstWinBonus.add(bonus);
         }
         return firstWinBonus;
     }

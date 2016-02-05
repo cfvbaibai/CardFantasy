@@ -1350,7 +1350,7 @@ var Animater = function() {
     this.msgIgnoredSkills = [
         '背刺', '暴击', '狂热', '嗜血', '横扫', '穿刺', '精准打击', '回春', '吸血', '振奋',
         '透支', '战意', '穷追猛打', '趁胜追击', '复仇', '奋战', '英雄杀手', '反噬',
-        '圣光', '要害', '暗杀', '污染', '连锁攻击', '凯撒之击', '神兵召唤', '末世术'
+        '圣光', '要害', '暗杀', '污染', '连锁攻击', '凯撒之击', '神兵召唤', '觉醒神兵召唤', '末世术'
     ];
     this.selfUsedSkills = [
         '不动', '脱困', '群体脱困', '法力反射', '冰甲', '水流护甲', '闪避', '守护', '魔神之甲', '灵巧', '灵魂禁锢',
@@ -1396,7 +1396,7 @@ var Animater = function() {
         } else if (skill == '吐槽') {
             this.flyImage({ fileName: 'tsukomi.png', width: 48, height: 48, text: skill },
                     attacker, defenders, settings.skillDuration);
-        } else if (skill == '沉默') {
+        } else if (skill == '沉默' || skill == '觉醒沉默') {
             this.flyImage({ fileName: 'silence.png', width: 48, height: 48, text: skill },
                     attacker, defenders, settings.skillDuration);
         } else if (skill == '燕返') {
@@ -1451,7 +1451,7 @@ var Animater = function() {
         } else if (skill == '阻碍' || skill == '加速' || skill == '全体阻碍' || skill == '全体加速' || skill == '时光倒流') {
             this.flyImage({ fileName: 'delay.png', width: 48, height: 48, text: skill },
                     attacker, defenders, settings.skillDuration);
-        } else if (skill == '法力侵蚀' || skill == '破魔手') {
+        } else if (skill == '法力侵蚀' || skill == '破魔手' || skill == '法力风暴') {
             this.flyImage({ fileName: 'mana-drain.png', width: 48, height: 48, text: skill },
                     attacker, defenders, settings.skillDuration);
         } else if (skill == '净化' || skill == '神性祈求' || skill == '净魂领域') {

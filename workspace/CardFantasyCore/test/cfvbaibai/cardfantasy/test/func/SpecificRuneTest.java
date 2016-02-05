@@ -409,4 +409,57 @@ public class SpecificRuneTest extends SkillValidationTest {
         // 裂伤状态被神祈解除，可以回春
         Assert.assertEquals(690 - 30 /* 回春 */, 5000 - c占位符.getHP());
     }
+
+    @Test
+    public void test狂战_基础() {
+        SkillTestContext context = prepare(50, 50, "穴居人奴隶-0*2", "狂战", "占位符*2");
+        context.addToHand(0, 0).setSummonDelay(0);
+        context.addToHand(1, 0).setSummonDelay(0);
+        CardInfo c占位符1 = context.addToField(2, 1);
+        CardInfo c占位符2 = context.addToField(3, 1);
+        RuneInfo r狂战 = context.addToRune(0, 0);
+        context.startGame();
+
+        context.proceedOneRound();
+        Assert.assertTrue(r狂战.isActivated());
+        Assert.assertEquals(90, 5000 - c占位符1.getHP());
+        Assert.assertEquals(90, 5000 - c占位符2.getHP());
+        Assert.assertEquals(90 * 150 / 100 * 2 /* 狂战触发的群体穿刺10 */, 6390 - c占位符1.getOwner().getHP());
+    }
+
+    @Test
+    public void test鹰眼_基础() {
+        SkillTestContext context = prepare(50, 50, "秘银巨石像*3", "鹰眼", "占位符+冰甲10*2");
+        context.addToHand(0, 0).setSummonDelay(0);
+        context.addToHand(1, 0).setSummonDelay(0);
+        context.addToHand(2, 0).setSummonDelay(0);
+        CardInfo c占位符1 = context.addToField(3, 1);
+        CardInfo c占位符2 = context.addToField(4, 1);
+        RuneInfo r鹰眼 = context.addToRune(0, 0);
+        context.startGame();
+
+        context.proceedOneRound();
+        Assert.assertTrue(r鹰眼.isActivated());
+        Assert.assertEquals(660, 5000 - c占位符1.getHP());
+        Assert.assertEquals(660, 5000 - c占位符2.getHP());
+    }
+
+    @Test
+    public void test风暴_基础() {
+        SkillTestContext context = prepare(50, 50, "秘银巨石像*2", "风暴", "占位符+免疫", "占位符", "占位符+免疫");
+        context.addToHand(0, 0).setSummonDelay(0);
+        context.addToHand(1, 0).setSummonDelay(0);
+        CardInfo c占位符1 = context.addToField(2, 1);
+        CardInfo c占位符2 = context.addToField(3, 1);
+        CardInfo c占位符3 = context.addToField(4, 1);
+        RuneInfo r风暴 = context.addToRune(0, 0);
+        context.startGame();
+
+        random.addNextPicks(0, 1, 2); /* 风暴的法力风暴 */
+        context.proceedOneRound();
+        Assert.assertTrue(r风暴.isActivated());
+        Assert.assertEquals(660 + 200 * 3 /* 风暴 */, 5000 - c占位符1.getHP());
+        Assert.assertEquals(660 + 200 /* 风暴 */, 5000 - c占位符2.getHP());
+        Assert.assertEquals(200 * 3 /* 风暴 */, 5000 - c占位符3.getHP());
+    }
 }
