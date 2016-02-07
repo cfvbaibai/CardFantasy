@@ -197,21 +197,24 @@ public class SummonSkillTest extends SkillValidationTest {
     }
 
     /**
-     * 降临技能在种族守护之后触发
+     * 降临技能在种族守护之后触发，但还是一张一张卡结算
      */
     @Test
     public void test被动种族守护_降临暴风雪_法力反射_同时上场() {
         SkillTestContext context = prepare(50, 50,
             "残血王国小兵+降临暴风雪1", "占位符+王国守护10", "元素灵龙");
         CardInfo c残血王国小兵 = context.addToHand(0, 0).setSummonDelay(0);
-        context.addToHand(1, 0).setSummonDelay(0);
+        CardInfo c占位符 = context.addToHand(1, 0).setSummonDelay(0);
         context.addToField(2, 1);
         context.startGame();
         
         random.addNextPicks(0).addNextNumbers(1000); // 降临暴风雪
         context.proceedOneRound();
-        Assert.assertEquals(2, context.getPlayer(0).getField().size());
-        Assert.assertEquals(1 + 500 /* 王国守护10 */ - 120 /* 法力反射 */, c残血王国小兵.getHP());
+
+        // 残血王国小兵发动降临暴风雪时，占位符还未上场，所以被反射死了
+        Assert.assertTrue(c残血王国小兵.isDead());
+        Assert.assertEquals(1, context.getPlayer(0).getField().size());
+        Assert.assertEquals(0, 5000 - c占位符.getHP());
     }
 
     /**

@@ -1086,17 +1086,11 @@ public class SkillResolver {
     public void resolveEnteringSkills(CardInfo card, Field myField, Field opField, CardInfo reviver) throws HeroDieSignal {
 
     }
-
-    // reviver: for most of the cases, it should be null.
-    // It is only set when the summoning skill performer is revived by another card.
-    public void resolveSummoningSkills(List<CardInfo> summonedCards, Field myField, Field opField, CardInfo reviver, boolean isMinion) throws HeroDieSignal {
-        Player player = myField.getOwner();
-        for (SkillUseInfo skillUseInfo : player.getCardBuffs()) {
-            for (CardInfo card : summonedCards) {
-                // 召唤物不享受加成
-                if (isMinion) {
-                    continue;
-                }
+    
+    public void resolveFirstClassSummoningSkills(CardInfo card, Player player, Player enemy, CardInfo reviver, boolean isMinion) throws HeroDieSignal {
+        // 召唤物不享受加成
+        if (!isMinion) {
+            for (SkillUseInfo skillUseInfo : player.getCardBuffs()) {
                 Skill skill = skillUseInfo.getSkill();
                 if (skill instanceof BuffSkill) {
                     if (!((BuffSkill)skill).canApplyTo(card)) {
@@ -1119,14 +1113,12 @@ public class SkillResolver {
             }
         }
 
-        for (CardInfo summonedCard : summonedCards) {
-            if (!summonedCard.isDead()) {
-                summonedCard.applySurvivalStatus();
-            }
+        if (!card.isDead()) {
+            card.applySurvivalStatus();
         }
 
         // Racial buff
-        for (CardInfo fieldCard : myField.getAliveCards()) {
+        for (CardInfo fieldCard : player.getField().getAliveCards()) {
             // 主动种族BUFF
             for (SkillUseInfo skillUseInfo : fieldCard.getNormalUsableSkills()) {
                 if (skillUseInfo.getType() == SkillType.王国之力) {
@@ -1152,94 +1144,96 @@ public class SkillResolver {
                 } else if (skillUseInfo.getType() == SkillType.神圣守护) {
                     HolyGuard.apply(this, skillUseInfo, fieldCard);
                 } else if (skillUseInfo.getType() == SkillType.王国同调) {
-                    Synchrome.apply(this, skillUseInfo, fieldCard, summonedCards, Race.KINGDOM);
+                    Synchrome.apply(this, skillUseInfo, fieldCard, card, Race.KINGDOM);
                 } else if (skillUseInfo.getType() == SkillType.森林同调) {
-                    Synchrome.apply(this, skillUseInfo, fieldCard, summonedCards, Race.FOREST);
+                    Synchrome.apply(this, skillUseInfo, fieldCard, card, Race.FOREST);
                 } else if (skillUseInfo.getType() == SkillType.蛮荒同调) {
-                    Synchrome.apply(this, skillUseInfo, fieldCard, summonedCards, Race.SAVAGE);
+                    Synchrome.apply(this, skillUseInfo, fieldCard, card, Race.SAVAGE);
                 } else if (skillUseInfo.getType() == SkillType.地狱同调) {
-                    Synchrome.apply(this, skillUseInfo, fieldCard, summonedCards, Race.HELL);
+                    Synchrome.apply(this, skillUseInfo, fieldCard, card, Race.HELL);
                 }
             }
         }
 
-        // Standard summoning skills
-        for (CardInfo card : summonedCards) {
-            int position = card.getPosition();
-            if (position < 0 || myField.getCard(position) == null) {
-                // Killed or returned by other summoning skills 
-                continue;
-            }
-            for (SkillUseInfo skillUseInfo : card.getAllUsableSkills()) {
-                if (skillUseInfo.getSkill().isSummonSkill()) {
-                    if (skillUseInfo.getType() == SkillType.烈焰风暴) {
-                        FireMagic.apply(skillUseInfo.getSkill(), this, card, opField.getOwner(), -1);
-                    } else if (skillUseInfo.getType() == SkillType.雷暴) {
-                        LighteningMagic.apply(skillUseInfo, this, card, opField.getOwner(), -1, 35);
-                    } else if (skillUseInfo.getType() == SkillType.暴风雪) {
-                        IceMagic.apply(skillUseInfo, this, card, opField.getOwner(), -1, 30, 0);
-                    } else if (skillUseInfo.getType() == SkillType.毒云) {
-                        PoisonMagic.apply(skillUseInfo, this, card, opField.getOwner(), -1);
-                    } else if (skillUseInfo.getType() == SkillType.瘟疫) {
-                        Plague.apply(skillUseInfo, this, card, opField.getOwner());
-                    } else if (skillUseInfo.getType() == SkillType.凋零真言) {
-                        WitheringWord.apply(skillUseInfo, this, card, opField.getOwner());
-                    } else if (skillUseInfo.getType() == SkillType.治疗) {
-                        Heal.apply(skillUseInfo.getSkill(), this, card);
-                    } else if (skillUseInfo.getType() == SkillType.甘霖) {
-                        Rainfall.apply(skillUseInfo.getSkill(), this, card);
-                    } else if (skillUseInfo.getType() == SkillType.月神的护佑) {
-                        LunaBless.apply(skillUseInfo.getSkill(), this, card);
-                    } else if (skillUseInfo.getType() == SkillType.月神的触碰) {
-                        LunaTouch.apply(skillUseInfo.getSkill(), this, card);
-                    } else if (skillUseInfo.getType() == SkillType.祈祷) {
-                        Pray.apply(skillUseInfo.getSkill(), this, card);
-                    } else if (skillUseInfo.getType() == SkillType.诅咒) {
-                        Curse.apply(this, skillUseInfo.getSkill(), card, opField.getOwner());
-                    } else if (skillUseInfo.getType() == SkillType.群体削弱) {
-                        WeakenAll.apply(this, skillUseInfo, card, opField.getOwner());
-                    } else if (skillUseInfo.getType() == SkillType.烈火焚神) {
-                        BurningFlame.apply(skillUseInfo, this, card, opField.getOwner());
-                    } else if (skillUseInfo.getType() == SkillType.陷阱) {
-                        Trap.apply(skillUseInfo, this, card, opField.getOwner());
-                    } else if (skillUseInfo.getType() == SkillType.送还) {
-                        Return.apply(this, skillUseInfo.getSkill(), card, opField.getCard(card.getPosition()));
-                    } else if (skillUseInfo.getType() == SkillType.摧毁) {
-                        Destroy.apply(this, skillUseInfo.getSkill(), card, opField.getOwner(), 1);
-                    } else if (skillUseInfo.getType() == SkillType.传送) {
-                        Transport.apply(this, skillUseInfo.getSkill(), card, opField.getOwner());
-                    } else if (skillUseInfo.getType() == SkillType.关小黑屋) {
-                        Enprison.apply(this, skillUseInfo.getSkill(), card, opField.getOwner());
-                    } else if (skillUseInfo.getType() == SkillType.净化){
-                        Purify.apply(skillUseInfo, this, card, -1);
-                    } else if (skillUseInfo.getType() == SkillType.战争怒吼) {
-                        Soften.apply(skillUseInfo, this, card, opField.getOwner(), -1);
-                    } else if (skillUseInfo.getType() == SkillType.阻碍) {
-                        OneDelay.apply(skillUseInfo, this, card, opField.getOwner());
-                    } else if (skillUseInfo.getType() == SkillType.全体阻碍) {
-                        AllDelay.apply(skillUseInfo, this, card, opField.getOwner());
-                    } else if (skillUseInfo.getType() == SkillType.烈焰风暴) {
-                        FireMagic.apply(skillUseInfo.getSkill(), this, card, opField.getOwner(), -1);
-                    } else if (
-                        skillUseInfo.getType() == SkillType.圣光洗礼 || skillUseInfo.getType() == SkillType.森林沐浴 ||
-                        skillUseInfo.getType() == SkillType.蛮荒威压 || skillUseInfo.getType() == SkillType.地狱同化) {
-                        RaceChange.apply(this, skillUseInfo, card, opField.getOwner());
-                    } else if (skillUseInfo.getType() == SkillType.全体加速){
-                        AllSpeedUp.apply(skillUseInfo, this, card);
-                    } else if (skillUseInfo.getType() == SkillType.沉默) {
-                        Silence.apply(this, skillUseInfo,  card, opField.getCard(card.getPosition()));
-                    }
+        // 降临系技能（除了降临复活之外）
+        int position = card.getPosition();
+        if (position < 0 || player.getField().getCard(position) == null) {
+            // Killed or returned by other summoning skills 
+            return;
+        }
+        for (SkillUseInfo skillUseInfo : card.getAllUsableSkills()) {
+            if (skillUseInfo.getSkill().isSummonSkill()) {
+                if (skillUseInfo.getType() == SkillType.烈焰风暴) {
+                    FireMagic.apply(skillUseInfo.getSkill(), this, card, enemy, -1);
+                } else if (skillUseInfo.getType() == SkillType.雷暴) {
+                    LighteningMagic.apply(skillUseInfo, this, card, enemy, -1, 35);
+                } else if (skillUseInfo.getType() == SkillType.暴风雪) {
+                    IceMagic.apply(skillUseInfo, this, card, enemy, -1, 30, 0);
+                } else if (skillUseInfo.getType() == SkillType.毒云) {
+                    PoisonMagic.apply(skillUseInfo, this, card, enemy, -1);
+                } else if (skillUseInfo.getType() == SkillType.瘟疫) {
+                    Plague.apply(skillUseInfo, this, card, enemy);
+                } else if (skillUseInfo.getType() == SkillType.凋零真言) {
+                    WitheringWord.apply(skillUseInfo, this, card, enemy);
+                } else if (skillUseInfo.getType() == SkillType.治疗) {
+                    Heal.apply(skillUseInfo.getSkill(), this, card);
+                } else if (skillUseInfo.getType() == SkillType.甘霖) {
+                    Rainfall.apply(skillUseInfo.getSkill(), this, card);
+                } else if (skillUseInfo.getType() == SkillType.月神的护佑) {
+                    LunaBless.apply(skillUseInfo.getSkill(), this, card);
+                } else if (skillUseInfo.getType() == SkillType.月神的触碰) {
+                    LunaTouch.apply(skillUseInfo.getSkill(), this, card);
+                } else if (skillUseInfo.getType() == SkillType.祈祷) {
+                    Pray.apply(skillUseInfo.getSkill(), this, card);
+                } else if (skillUseInfo.getType() == SkillType.诅咒) {
+                    Curse.apply(this, skillUseInfo.getSkill(), card, enemy);
+                } else if (skillUseInfo.getType() == SkillType.群体削弱) {
+                    WeakenAll.apply(this, skillUseInfo, card, enemy);
+                } else if (skillUseInfo.getType() == SkillType.烈火焚神) {
+                    BurningFlame.apply(skillUseInfo, this, card, enemy);
+                } else if (skillUseInfo.getType() == SkillType.陷阱) {
+                    Trap.apply(skillUseInfo, this, card, enemy);
+                } else if (skillUseInfo.getType() == SkillType.送还) {
+                    Return.apply(this, skillUseInfo.getSkill(), card, enemy.getField().getCard(card.getPosition()));
+                } else if (skillUseInfo.getType() == SkillType.摧毁) {
+                    Destroy.apply(this, skillUseInfo.getSkill(), card, enemy, 1);
+                } else if (skillUseInfo.getType() == SkillType.传送) {
+                    Transport.apply(this, skillUseInfo.getSkill(), card, enemy);
+                } else if (skillUseInfo.getType() == SkillType.关小黑屋) {
+                    Enprison.apply(this, skillUseInfo.getSkill(), card, enemy);
+                } else if (skillUseInfo.getType() == SkillType.净化){
+                    Purify.apply(skillUseInfo, this, card, -1);
+                } else if (skillUseInfo.getType() == SkillType.战争怒吼) {
+                    Soften.apply(skillUseInfo, this, card, enemy, -1);
+                } else if (skillUseInfo.getType() == SkillType.阻碍) {
+                    OneDelay.apply(skillUseInfo, this, card, enemy);
+                } else if (skillUseInfo.getType() == SkillType.全体阻碍) {
+                    AllDelay.apply(skillUseInfo, this, card, enemy);
+                } else if (skillUseInfo.getType() == SkillType.烈焰风暴) {
+                    FireMagic.apply(skillUseInfo.getSkill(), this, card, enemy, -1);
+                } else if (
+                    skillUseInfo.getType() == SkillType.圣光洗礼 || skillUseInfo.getType() == SkillType.森林沐浴 ||
+                    skillUseInfo.getType() == SkillType.蛮荒威压 || skillUseInfo.getType() == SkillType.地狱同化) {
+                    RaceChange.apply(this, skillUseInfo, card, enemy);
+                } else if (skillUseInfo.getType() == SkillType.全体加速){
+                    AllSpeedUp.apply(skillUseInfo, this, card);
+                } else if (skillUseInfo.getType() == SkillType.沉默) {
+                    Silence.apply(this, skillUseInfo, card, enemy.getField().getCard(card.getPosition()));
                 }
-                else if (!skillUseInfo.getSkill().isDeathSkill()) {
-                    if (skillUseInfo.getType() == SkillType.反噬) {
-                        CounterBite.apply(skillUseInfo, this, card);
-                    } else if (skillUseInfo.getType() == SkillType.星云锁链) {
-                        NebulaChain.apply(skillUseInfo, this, card);
-                    }
+            }
+            else if (!skillUseInfo.getSkill().isDeathSkill()) {
+                if (skillUseInfo.getType() == SkillType.反噬) {
+                    CounterBite.apply(skillUseInfo, this, card);
+                } else if (skillUseInfo.getType() == SkillType.星云锁链) {
+                    NebulaChain.apply(skillUseInfo, this, card);
                 }
             }
         }
+    }
 
+    // reviver: for most of the cases, it should be null.
+    // It is only set when the summoning skill performer is revived by another card.
+    public void resolveSecondClassSummoningSkills(List<CardInfo> summonedCards, Field myField, Field opField, CardInfo reviver, boolean isMinion) throws HeroDieSignal {
         for (CardInfo card : summonedCards) {
             int position = card.getPosition();
             if (position < 0 || myField.getCard(position) == null) {
@@ -1358,14 +1352,6 @@ public class SkillResolver {
      * @throws HeroDieSignal
      */
     public void summonCards(Player player, List<CardInfo> cards, CardInfo reviver, boolean isMinion) throws HeroDieSignal {
-        for (CardInfo card : cards) {
-            card.reset();
-            this.stage.getUI().summonCard(player, card);
-            player.getField().addCard(card);
-            player.getHand().removeCard(card);
-            // 星云锁链之类可以从卡组直接召唤的情况
-            player.getDeck().removeCard(card);
-        }
         if (this.stage.getPlayerCount() != 2) {
             throw new CardFantasyRuntimeException("There are " + this.stage.getPlayerCount()
                     + " player(s) in the stage, but expect 2");
@@ -1377,7 +1363,17 @@ public class SkillResolver {
             }
         }
 
-        this.resolveSummoningSkills(cards, player.getField(), enemy.getField(), reviver, isMinion);
+        for (CardInfo card : cards) {
+            card.reset();
+            this.stage.getUI().summonCard(player, card);
+            player.getField().addCard(card);
+            player.getHand().removeCard(card);
+            // 星云锁链之类可以从卡组直接召唤的情况
+            player.getDeck().removeCard(card);
+            this.resolveFirstClassSummoningSkills(card, player, enemy, reviver, isMinion);
+        }
+
+        this.resolveSecondClassSummoningSkills(cards, player.getField(), enemy.getField(), reviver, isMinion);
     }
 
     /**
