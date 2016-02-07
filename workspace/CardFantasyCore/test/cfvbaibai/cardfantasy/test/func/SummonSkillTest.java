@@ -318,6 +318,52 @@ public class SummonSkillTest extends SkillValidationTest {
     }
 
     /**
+     * 被降临复活拉回来的卡照常发动降临系技能，仍然遵从[主动BUFF]->[被动BUFF]->[降临系技能]的顺序
+     */
+    @Test
+    public void test降临复活和BUFF_复活的降临系技能() {
+        SkillTestContext context = prepare(50, 50, "月蚀兽+王国守护10", "残血王国小兵+降临烈焰风暴1", "占位符+法力反射1");
+        context.addToHand(0, 0).setSummonDelay(0);
+        CardInfo c残血王国小兵 = context.addToGrave(1, 0);
+        CardInfo c占位符 = context.addToField(2, 1);
+        context.startGame();
+
+        random.addNextPicks(0); // 降临全体阻碍
+        random.addNextPicks(0); // 降临复活
+        random.addNextPicks(0).addNextNumbers(0); // 降临烈焰风暴
+        context.proceedOneRound();
+        // 由于BUFF比降临烈焰风暴先发动，残血王国小兵的血量提升，所以被法力反射打后并没死
+        Assert.assertEquals(2, context.getPlayer(0).getField().size());
+        Assert.assertFalse(c残血王国小兵.justRevived());  // 降临复活拉回来的卡立刻就能行动
+        Assert.assertEquals(30, 1 + 500 - c残血王国小兵.getHP());
+        Assert.assertEquals(825, 5000 - c占位符.getHP());
+    }
+
+
+    /**
+     * 被降临复活拉回来的卡照常发动降临系技能，仍然遵从[主动BUFF]->[被动BUFF]->[降临系技能]的顺序
+     */
+    @Test
+    public void test降临复活_复活的降临系技能() {
+        SkillTestContext context = prepare(50, 50, "月蚀兽", "秘银巨石像+降临烈焰风暴1", "占位符*2");
+        context.addToHand(0, 0).setSummonDelay(0);
+        CardInfo c秘银巨石像 = context.addToGrave(1, 0);
+        CardInfo c占位符1 = context.addToField(2, 1);
+        CardInfo c占位符2 = context.addToField(3, 1); 
+        context.startGame();
+
+        random.addNextPicks(0, 1); // 降临全体阻碍
+        random.addNextPicks(0); // 降临复活
+        random.addNextPicks(0, 1).addNextNumbers(0, 0); // 降临烈焰风暴
+        context.proceedOneRound();
+        Assert.assertEquals(2, context.getPlayer(0).getField().size());
+        Assert.assertFalse(c秘银巨石像.justRevived());  // 降临复活拉回来的卡立刻就能行动
+        Assert.assertEquals(0, 1550 - c秘银巨石像.getHP());
+        Assert.assertEquals(655 + 25, 5000 - c占位符1.getHP());
+        Assert.assertEquals(810 + 25, 5000 - c占位符2.getHP());
+    }
+
+    /**
      * 即使在受控的状况下，依然可以使用神性祈求
      */
     @Test

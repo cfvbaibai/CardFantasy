@@ -1087,7 +1087,7 @@ public class SkillResolver {
 
     }
     
-    public void resolveFirstClassSummoningSkills(CardInfo card, Player player, Player enemy, CardInfo reviver, boolean isMinion) throws HeroDieSignal {
+    public void resolveFirstClassSummoningSkills(CardInfo card, Player player, Player enemy, boolean isMinion) throws HeroDieSignal {
         // 召唤物不享受加成
         if (!isMinion) {
             for (SkillUseInfo skillUseInfo : player.getCardBuffs()) {
@@ -1370,7 +1370,7 @@ public class SkillResolver {
             player.getHand().removeCard(card);
             // 星云锁链之类可以从卡组直接召唤的情况
             player.getDeck().removeCard(card);
-            this.resolveFirstClassSummoningSkills(card, player, enemy, reviver, isMinion);
+            this.resolveFirstClassSummoningSkills(card, player, enemy, isMinion);
         }
 
         this.resolveSecondClassSummoningSkills(cards, player.getField(), enemy.getField(), reviver, isMinion);
