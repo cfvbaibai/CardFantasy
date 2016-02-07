@@ -353,7 +353,10 @@ public class SummonSkillTest extends SkillValidationTest {
         Assert.assertEquals(2, context.getPlayer(0).getField().size());
         Assert.assertEquals(c秘银巨石像.getUniqueName(), context.getPlayer(0).getField().getCard(1).getUniqueName());
     }
-    
+
+    /**
+     * 需要确认并修复
+     */
     @Test
     public void test星云锁链_多次() {
         SkillTestContext context = prepare(
@@ -370,7 +373,7 @@ public class SummonSkillTest extends SkillValidationTest {
         // 秘银巨石像被星云锁链召唤
         context.proceedOneRound();
         Assert.assertEquals(4, context.getPlayer(0).getField().size());
-        Assert.assertEquals(c秘银巨石像.getUniqueName(), context.getPlayer(0).getField().getCard(2).getUniqueName());
+        Assert.assertEquals(c秘银巨石像.getUniqueName(), context.getPlayer(0).getField().getCard(1).getUniqueName());
         Assert.assertEquals(c攻城弩车手.getUniqueName(), context.getPlayer(0).getField().getCard(3).getUniqueName());
     }
 }

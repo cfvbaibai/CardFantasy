@@ -35,7 +35,7 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>更新日志</h3>
                 <ul class="news-content">
-                    <li>2016-2-6: 添加网页版新卡<cf:c>暗黑九头蛇</cf:c>，感谢<x>我去页游大爷的</x>提供的数据</li>
+                    <li>2016-2-6: 添加网页版新卡<cf:c>暗黑九头龙</cf:c>，感谢<x>我去页游大爷的</x>提供的数据</li>
                     <li>2016-2-5: <ul>
                         <li>添加新卡<cf:c>圣枪弥撒</cf:c>, <cf:c>梦妖斩</cf:c>, <cf:c>真·预言之神</cf:c></li>
                         <li>添加新符文【狂战】, 【风暴】, 【鹰眼】</li>

@@ -2531,7 +2531,7 @@
         <Skill type="凯撒之击" level="9" unlock="5" />
         <Skill type="横扫" level="0" unlock="10" />
     </Card>
-    <Card id="4539" name="暗黑九头蛇" wikiId="" race="地狱" speed="8" star="5" cost="28" incrCost="2" at="600" hp="1800" incrAT="30" incrHP="45">
+    <Card id="4539" name="暗黑九头龙" wikiId="" race="地狱" speed="8" star="5" cost="28" incrCost="2" at="600" hp="1800" incrAT="30" incrHP="45">
         <Skill type="横扫" level="0" unlock="0" />
         <Skill type="献祭" level="10" unlock="5" />
         <Skill type="不动" level="0" unlock="10" />
