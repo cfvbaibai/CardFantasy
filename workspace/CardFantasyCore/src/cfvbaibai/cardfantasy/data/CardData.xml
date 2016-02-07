@@ -2536,6 +2536,11 @@
         <Skill type="献祭" level="10" unlock="5" />
         <Skill type="不动" level="0" unlock="10" />
     </Card>
+    <Card id="4540" name="弑神之刃" wikiId="" race="地狱" speed="5" star="5" cost="19" incrCost="2" at="300" hp="1700" incrAT="30" incrHP="45">
+        <Skill type="横扫" level="0" unlock="0" />
+        <Skill type="奋战" level="8" unlock="5" />
+        <Skill type="免疫" level="0" unlock="10" />
+    </Card>
 
     <!-- 魔神 -->
     <Card id="5501" name="狙击复仇女神" wikiId="30871" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="1200" hp="10400000" incrAT="0" incrHP="0">

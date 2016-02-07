@@ -659,6 +659,10 @@ public class SkillResolver {
                 Summon.apply(this, deadCardSkillUseInfo, deadCard, "炎魔");
             } else if (deadCardSkillUseInfo.getType() == SkillType.全体阻碍) {
                 AllDelay.apply(deadCardSkillUseInfo, this, deadCard, opponent);
+            } else if (deadCardSkillUseInfo.getType() == SkillType.全体加速){
+                AllSpeedUp.apply(deadCardSkillUseInfo, this, deadCard);
+            } else if (deadCardSkillUseInfo.getType() == SkillType.战争怒吼) {
+                Soften.apply(deadCardSkillUseInfo, this, deadCard, opponent, -1);
             }
         }
         for (SkillUseInfo deadCardSkillUseInfo : deadCard.getAllUsableSkills()) {
@@ -1219,6 +1223,8 @@ public class SkillResolver {
                     AllSpeedUp.apply(skillUseInfo, this, card);
                 } else if (skillUseInfo.getType() == SkillType.沉默) {
                     Silence.apply(this, skillUseInfo, card, enemy.getField().getCard(card.getPosition()));
+                } else if (skillUseInfo.getType() == SkillType.回魂) {
+                    Resurrection.apply(this, skillUseInfo, card);
                 }
             }
             else if (!skillUseInfo.getSkill().isDeathSkill()) {
