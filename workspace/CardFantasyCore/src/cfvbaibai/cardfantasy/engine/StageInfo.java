@@ -119,7 +119,7 @@ public class StageInfo {
         this.rule = rule;
     }
 
-    private Board getBoard() {
+    public Board getBoard() {
         return board;
     }
 

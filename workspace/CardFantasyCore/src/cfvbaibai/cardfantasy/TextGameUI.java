@@ -11,21 +11,19 @@ import cfvbaibai.cardfantasy.engine.Board;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.CardStatusItem;
 import cfvbaibai.cardfantasy.engine.CardStatusType;
-import cfvbaibai.cardfantasy.engine.Deck;
 import cfvbaibai.cardfantasy.engine.EntityInfo;
 import cfvbaibai.cardfantasy.engine.Field;
 import cfvbaibai.cardfantasy.engine.GameResult;
-import cfvbaibai.cardfantasy.engine.Grave;
-import cfvbaibai.cardfantasy.engine.Hand;
 import cfvbaibai.cardfantasy.engine.Phase;
 import cfvbaibai.cardfantasy.engine.Player;
-import cfvbaibai.cardfantasy.engine.RuneBox;
 import cfvbaibai.cardfantasy.engine.RuneInfo;
 import cfvbaibai.cardfantasy.engine.SkillEffect;
 import cfvbaibai.cardfantasy.game.PveGameResult;
 
-public abstract class TextGameUI extends GameUI {
-    protected abstract void say(String obj);
+public class TextGameUI extends GameUI {
+    protected void say(String obj) {
+        System.out.println(obj.toString());
+    }
     
     protected void sayF(String format, Object... args) {
         say(String.format(format, args));
@@ -172,85 +170,7 @@ public abstract class TextGameUI extends GameUI {
 
     private void showBoard() {
         Board board = this.getBoard();
-        say("-----------------------------------------------------------------------------");
-        Player player = board.getPlayer(0);
-        sayF("玩家: %s - HP: %d", player.getId(), player.getHP());
-        showGrave(player.getGrave());
-        showDeck(player.getDeck());
-        showHand(player.getHand());
-        say("");
-        showRune(player.getRuneBox());
-        showField(player.getField());
-        say("");
-
-        player = board.getPlayer(1);
-        say("");
-        showField(player.getField());
-        showRune(player.getRuneBox());
-        say("");
-        showHand(player.getHand());
-        showDeck(player.getDeck());
-        showGrave(player.getGrave());
-        sayF("玩家: %s - HP: %d", player.getId(), player.getHP());
-        say("-----------------------------------------------------------------------------");
-    }
-
-    private void showRune(RuneBox runeBox) {
-        StringBuffer sb = new StringBuffer();
-        sb.append("符文 : ");
-        for (RuneInfo rune : runeBox.getRunes()) {
-            sb.append(rune.getShortDesc());
-            sb.append(", ");
-        }
-        say(sb.toString());
-    }
-
-    private void showGrave(Grave grave) {
-        StringBuffer sb = new StringBuffer();
-        sb.append("墓地: ");
-        for (CardInfo card : grave.toList()) {
-            sb.append(String.format("%s (等级=%d, 攻击=%d, HP=%d), ", card.getUniqueName(), card.getLevel(), card.getInitAT(),
-                    card.getMaxHP()));
-        }
-        say(sb.toString());
-    }
-
-    private void showField(Field field) {
-        StringBuffer sb = new StringBuffer();
-        // sb.append("Field: ");
-        int i = 0;
-        List<CardInfo> cards = field.getAliveCards();
-        for (CardInfo card : cards) {
-            sb.append(String.format("[%d] %s (等级=%d, 攻击=%d/%d, HP=%d/%d/%d, 状态=%s, 效果=%s)\r\n", i, card.getUniqueName(),
-                    card.getLevel(), card.getCurrentAT(), card.getInitAT(), card.getHP(), card.getMaxHP(),
-                    card.getRawMaxHP(), card.getStatus().getShortDesc(), card.getEffectsDesc()));
-            ++i;
-        }
-        if (cards.size() > 0) {
-            sb.deleteCharAt(sb.length() - 1);
-            sb.deleteCharAt(sb.length() - 1);
-        }
-        say(sb.toString());
-    }
-
-    private void showHand(Hand hand) {
-        StringBuffer sb = new StringBuffer();
-        sb.append("手牌: ");
-        for (CardInfo card : hand.toList()) {
-            sb.append(String.format("%s (等级=%d, 攻击=%d, HP=%d, 等待=%d), ", card.getUniqueName(), card.getLevel(),
-                    card.getInitAT(), card.getMaxHP(), card.getSummonDelay()));
-        }
-        say(sb.toString());
-    }
-
-    private void showDeck(Deck deck) {
-        StringBuffer sb = new StringBuffer();
-        sb.append("牌堆: ");
-        for (CardInfo card : deck.toList()) {
-            sb.append(String.format("%s (等级=%d, 攻击=%d, HP=%d), ", card.getUniqueName(), card.getLevel(), card.getInitAT(),
-                    card.getMaxHP()));
-        }
-        say(sb.toString());
+        say(board.getBoardInText());
     }
 
     @Override

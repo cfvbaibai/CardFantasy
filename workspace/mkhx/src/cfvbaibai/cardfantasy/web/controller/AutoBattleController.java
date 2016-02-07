@@ -26,6 +26,7 @@ import cfvbaibai.cardfantasy.Base64Encoder;
 import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
 import cfvbaibai.cardfantasy.Compressor;
 import cfvbaibai.cardfantasy.GameUI;
+import cfvbaibai.cardfantasy.Global;
 import cfvbaibai.cardfantasy.data.CardData;
 import cfvbaibai.cardfantasy.data.CardDataStore;
 import cfvbaibai.cardfantasy.data.LilithCardBuffSkill;
@@ -541,6 +542,7 @@ public class AutoBattleController {
             @RequestParam("deck") String deck, @RequestParam("hlv") int heroLv, @RequestParam("map") String map,
             @RequestParam("count") int count) throws IOException {
         PrintWriter writer = response.getWriter();
+        GameUI ui = new DummyGameUI();
         try {
             logger.info("PlayMapMassiveGame from " + request.getRemoteAddr() + ":");
             logger.info(String.format("Lv = %d, Map = %s, Count = %d", heroLv, map, count));
@@ -548,7 +550,11 @@ public class AutoBattleController {
             
             this.userActionRecorder.addAction(new UserAction(new Date(), request.getRemoteAddr(), "Play Map Massive Game",
                     String.format("Deck=%s<br />Lv=%d, Count=%d, Map=%s", deck, heroLv, count, map)));
-            MapGameResult result = GameLauncher.playMapGame(deck, map, heroLv, count, new DummyGameUI());
+
+            if (Global.isDebugging()) {
+                ui = new WebPlainTextGameUI();
+            }
+            MapGameResult result = GameLauncher.playMapGame(deck, map, heroLv, count, ui);
             writer.append(Utils.getCurrentDateTime() + "<br />");
             writer.print("<div style='color: red'>" + result.getValidationResult() + "</div>");
             writer.append("<table>");
@@ -566,6 +572,9 @@ public class AutoBattleController {
                     result.getUnknownCount()));
         } catch (Exception e) {
             writer.print(errorHelper.handleError(e, false));
+            if (Global.isDebugging()) {
+                writer.print(((WebPlainTextGameUI)ui).getAllText());
+            }
         }
     }
     

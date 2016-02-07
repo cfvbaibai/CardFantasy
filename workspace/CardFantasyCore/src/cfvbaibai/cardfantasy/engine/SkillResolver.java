@@ -1343,10 +1343,23 @@ public class SkillResolver {
         return new BlockStatusResult(false);
     }
 
-    public void summonCard(Player player, CardInfo card, CardInfo reviver, boolean isMinion) throws HeroDieSignal {
-        List<CardInfo> cards = new ArrayList<CardInfo>();
-        cards.add(card);
-        summonCards(player, cards, reviver, isMinion);
+    private void setCardToField(CardInfo card) {
+        Player player = card.getOwner();
+        card.reset();
+        this.stage.getUI().summonCard(player, card);
+        player.getField().addCard(card);
+        player.getHand().removeCard(card);
+        // 星云锁链之类可以从卡组直接召唤的情况
+        player.getDeck().removeCard(card);
+    }
+    
+    public void summonCard(Player player, CardInfo summonedCard, CardInfo reviver, boolean isMinion) throws HeroDieSignal {
+        Player enemy = this.getStage().getOpponent(player);
+        List<CardInfo> summonedCards = new ArrayList<CardInfo>();
+        summonedCards.add(summonedCard);
+        setCardToField(summonedCard);
+        this.resolveFirstClassSummoningSkills(summonedCard, player, enemy, isMinion);
+        this.resolveSecondClassSummoningSkills(summonedCards, player.getField(), enemy.getField(), reviver, isMinion);
     }
 
     /**
@@ -1357,29 +1370,26 @@ public class SkillResolver {
      * @param reviver
      * @throws HeroDieSignal
      */
-    public void summonCards(Player player, List<CardInfo> cards, CardInfo reviver, boolean isMinion) throws HeroDieSignal {
-        if (this.stage.getPlayerCount() != 2) {
-            throw new CardFantasyRuntimeException("There are " + this.stage.getPlayerCount()
-                    + " player(s) in the stage, but expect 2");
-        }
-        Player enemy = null;
-        for (Player other : stage.getPlayers()) {
-            if (other != player) {
-                enemy = other;
+    public void summonCards(Player player, CardInfo reviver, boolean isMinion) throws HeroDieSignal {
+        Player enemy = this.getStage().getOpponent(player);
+        List<CardInfo> summonedCards = new ArrayList<CardInfo>();
+        while (true) {
+            CardInfo summonedCard = null;
+            for (CardInfo card : player.getHand().toList()) {
+                if (card.getSummonDelay() == 0) {
+                    summonedCard = card;
+                    break;
+                }
             }
+            if (summonedCard == null) {
+                break;
+            }
+            summonedCards.add(summonedCard);
+            setCardToField(summonedCard);
+            this.resolveFirstClassSummoningSkills(summonedCard, player, enemy, isMinion);
         }
 
-        for (CardInfo card : cards) {
-            card.reset();
-            this.stage.getUI().summonCard(player, card);
-            player.getField().addCard(card);
-            player.getHand().removeCard(card);
-            // 星云锁链之类可以从卡组直接召唤的情况
-            player.getDeck().removeCard(card);
-            this.resolveFirstClassSummoningSkills(card, player, enemy, isMinion);
-        }
-
-        this.resolveSecondClassSummoningSkills(cards, player.getField(), enemy.getField(), reviver, isMinion);
+        this.resolveSecondClassSummoningSkills(summonedCards, player.getField(), enemy.getField(), reviver, isMinion);
     }
 
     /**

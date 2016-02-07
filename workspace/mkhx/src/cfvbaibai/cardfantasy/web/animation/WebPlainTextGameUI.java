@@ -13,6 +13,12 @@ public class WebPlainTextGameUI extends TextGameUI {
     }
 
     @Override
+    public void battleBegins() {
+        sb = new StringBuffer();
+        super.battleBegins();
+    }
+
+    @Override
     protected void say(String text) {
         if (text == null) {
             return;

@@ -8,6 +8,7 @@ import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
 import cfvbaibai.cardfantasy.CardFantasyUserRuntimeException;
 import cfvbaibai.cardfantasy.GameOverSignal;
 import cfvbaibai.cardfantasy.GameUI;
+import cfvbaibai.cardfantasy.Global;
 import cfvbaibai.cardfantasy.data.Card;
 import cfvbaibai.cardfantasy.data.PlayerInfo;
 import cfvbaibai.cardfantasy.data.Rune;
@@ -169,6 +170,8 @@ public class BattleEngine {
         } catch (AllCardsDieSignal signal) {
             this.getStage().setEnded(true);
             return stage.result(getOpponent(signal.getDeadPlayer()), GameEndCause.卡片全灭);
+        } catch (CardFantasyRuntimeException e) {
+            throw new CardFantasyRuntimeException(e.getMessage() + System.lineSeparator() + this.getStage().getBoard().getBoardInText(), e);
         }
     }
 
@@ -178,14 +181,7 @@ public class BattleEngine {
 
     private Phase summonCards() throws HeroDieSignal {
         Player player = this.getActivePlayer();
-        List<CardInfo> summonedCards = new ArrayList<CardInfo>();
-        for (CardInfo card : player.getHand().toList()) {
-            if (card.getSummonDelay() == 0) {
-                summonedCards.add(card);
-            }
-        }
-
-        this.stage.getResolver().summonCards(player, summonedCards, null, false);
+        this.stage.getResolver().summonCards(player, null, false);
 
         player.getField().compact();
         this.getInactivePlayer().getField().compact();
@@ -217,6 +213,11 @@ public class BattleEngine {
         int thisRound = stage.getRound();
         this.stage.setRound(thisRound + 1);
         this.stage.getUI().roundEnded(previousPlayer, thisRound);
+
+        if (Global.isDebugging()) {
+            this.getStage().getBoard().validate();
+        }
+        
         int nextPlayerNumber = (this.stage.getActivePlayerNumber() + 1) % stage.getPlayerCount();
         this.stage.setActivePlayerNumber(nextPlayerNumber);
         Player nextPlayer = this.getActivePlayer();
