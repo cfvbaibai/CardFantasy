@@ -13,9 +13,9 @@ public class WebPlainTextGameUI extends TextGameUI {
     }
 
     @Override
-    public void battleBegins() {
+    public void gameStarted() {
         sb = new StringBuffer();
-        super.battleBegins();
+        super.gameStarted();
     }
 
     @Override

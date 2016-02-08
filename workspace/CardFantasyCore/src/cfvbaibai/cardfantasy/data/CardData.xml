@@ -2786,6 +2786,7 @@
         <Skill type="回魂" level="5" unlock="5" />
         <Skill type="免疫" level="0" unlock="10" />
         <Skill type="末世术" level="10" unlock="10" />
+        <Skill type="无效" level="0" unlock="10" />
     </Card>
 
     <!-- 魔神 -->
