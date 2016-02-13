@@ -35,6 +35,10 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2016-2-12: <ul>
+                        <li>更新17-H-2的胜利条件，感谢<x>草拟駡的老巢</x>的提醒</li>
+                        <li>添加网页版新卡<cf:c>飞羽魔女</cf:c>, 感谢<x>xinkai_001</x>提供的数据</li>
+                    </ul></li>
                     <li>2016-2-8: 更新17图中某些场景的胜利条件，感谢<x>暴风飙车手</x>的提醒</li>
                     <li>2016-2-7: <ul>
                         <li>修复回魂和星云锁链以及降临系技能相关的BUG，感谢<x>爆爆团雪莱</x>的帮助</li>

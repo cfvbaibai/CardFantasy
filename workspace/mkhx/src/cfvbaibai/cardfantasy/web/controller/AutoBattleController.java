@@ -556,7 +556,7 @@ public class AutoBattleController {
             }
             MapGameResult result = GameLauncher.playMapGame(deck, map, heroLv, count, ui);
             writer.append(Utils.getCurrentDateTime() + "<br />");
-            writer.print("<div style='color: red'>" + result.getValidationResult() + "</div>");
+            writer.append("<div style='color: red'>" + result.getValidationResult() + "</div>");
             writer.append("<table>");
             writer.append(String.format("<tr><td>战斗出错: </td><td>%d</td></tr>", result.getUnknownCount()));
             writer.append(String.format("<tr><td>失败: </td><td>%d</td></tr>", result.getLostCount()));
@@ -564,6 +564,8 @@ public class AutoBattleController {
             writer.append(String.format("<tr><td>胜利，过关条件符合: </td><td>%d</td></tr>", result.getAdvWinCount()));
             writer.append(String.format("<tr><td>胜利，过关条件不符合: </td><td>%d</td></tr>", result.getWinCount()));
             writer.append("</table>");
+            writer.append(String.format("<input type=\"hidden\" value=\"basicrate%d\">", result.getWinCount()));
+            writer.append(String.format("<input type=\"hidden\" value=\"advrate%d\">", result.getAdvWinCount()));
             logger.info(String.format("TO:LO:BW:AW:UN = %d:%d:%d:%d:%d",
                     result.getTimeoutCount(),
                     result.getLostCount(),
