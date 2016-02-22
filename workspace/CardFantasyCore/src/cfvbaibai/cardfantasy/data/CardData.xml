@@ -1899,7 +1899,10 @@
         <Skill type="脱困" level="0" unlock="5" />
         <Skill type="吸血" level="10" unlock="10" />
     </Card>
-    
+    <Card id="3534" name="双鱼座" wikiId="" race="蛮荒" speed="4" star="5" cost="18" incrCost="2" at="330" hp="1880" incrAT="41" incrHP="36">
+        <Skill type="不动" level="0" unlock="10" />
+    </Card>
+
     <!-- 地狱 -->
     <Card id="4101" name="恶魔小鬼" wikiId="31036" race="地狱" speed="2" star="1" cost="3" incrCost="2" at="80" hp="270" incrAT="19" incrHP="6">
         <Skill type="火球" level="2" unlock="0" />
