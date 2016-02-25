@@ -175,7 +175,7 @@ public class SkillResolver {
                 WitheringWord.apply(skillUseInfo, this, attacker, defender);
             } else if (skillUseInfo.getType() == SkillType.血炼) {
                 BloodPaint.apply(skillUseInfo.getSkill(), this, attacker, defender, 1);
-            } else if (skillUseInfo.getType() == SkillType.鲜血盛宴) {
+            } else if (skillUseInfo.getType() == SkillType.鲜血盛宴 || skillUseInfo.getType() == SkillType.歃血魔咒) {
                 BloodPaint.apply(skillUseInfo.getSkill(), this, attacker, defender, -1);
             } else if (skillUseInfo.getType() == SkillType.天谴 || skillUseInfo.getType() == SkillType.末世术) {
                 HeavenWrath.apply(this, skillUseInfo.getSkill(), attacker, defender);
@@ -183,7 +183,7 @@ public class SkillResolver {
                 Seal.apply(skillUseInfo, this, attacker, defender);
             } else if (skillUseInfo.getType() == SkillType.圣炎) {
                 HolyFire.apply(skillUseInfo.getSkill(), this, attacker, defender);
-            } else if (skillUseInfo.getType() == SkillType.法力侵蚀) {
+            } else if (skillUseInfo.getType() == SkillType.法力侵蚀 || skillUseInfo.getType() == SkillType.灵王的轰击) {
                 ManaErode.apply(skillUseInfo.getSkill(), this, attacker, defender, 1);
             } else if (skillUseInfo.getType() == SkillType.破魔手) {
                 ManaErode.apply(skillUseInfo.getSkill(), this, attacker, defender, 3);

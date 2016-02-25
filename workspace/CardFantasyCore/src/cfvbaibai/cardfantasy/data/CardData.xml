@@ -501,6 +501,11 @@
         <Skill type="本源之力" level="6" unlock="5" />
         <Skill type="净魂领域" level="0" unlock="10" />
     </Card>
+    <Card id="1445" name="夜魅鬼手" wikiId="" race="王国" speed="1" star="4" cost="15" incrCost="2" at="310" hp="1330" incrAT="28" incrHP="32">
+        <Skill type="神箭三重奏" level="5" unlock="0" />
+        <Skill type="逃跑" level="0" unlock="5" />
+        <Skill type="背刺" level="8" unlock="10" />
+    </Card>
 
     <Card id="1501" name="降临天使" wikiId="30922" race="王国" speed="4" star="5" cost="15" incrCost="3" at="365" hp="1800" incrAT="24" incrHP="24">
         <Skill type="魔甲" level="8" unlock="0" />
@@ -1900,6 +1905,8 @@
         <Skill type="吸血" level="10" unlock="10" />
     </Card>
     <Card id="3534" name="双鱼座" wikiId="" race="蛮荒" speed="4" star="5" cost="18" incrCost="2" at="330" hp="1880" incrAT="41" incrHP="36">
+        <Skill type="歃血魔咒" level="7" unlock="0" />
+        <Skill type="灵王的轰击" level="5" unlock="5" />
         <Skill type="不动" level="0" unlock="10" />
     </Card>
 

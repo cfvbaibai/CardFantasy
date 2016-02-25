@@ -1451,13 +1451,13 @@ var Animater = function() {
         } else if (skill == '阻碍' || skill == '加速' || skill == '全体阻碍' || skill == '全体加速' || skill == '时光倒流') {
             this.flyImage({ fileName: 'delay.png', width: 48, height: 48, text: skill },
                     attacker, defenders, settings.skillDuration);
-        } else if (skill == '法力侵蚀' || skill == '破魔手' || skill == '法力风暴') {
+        } else if (skill == '法力侵蚀' || skill == '破魔手' || skill == '灵王的轰击' || skill == '法力风暴') {
             this.flyImage({ fileName: 'mana-drain.png', width: 48, height: 48, text: skill },
                     attacker, defenders, settings.skillDuration);
         } else if (skill == '净化' || skill == '神性祈求' || skill == '净魂领域') {
             this.flyImage({ fileName: 'purify.png', width: 48, height: 48, text: skill },
                     attacker, defenders, settings.skillDuration);
-        } else if (skill == '血炼' || skill == '鲜血盛宴') {
+        } else if (skill == '血炼' || skill == '鲜血盛宴' || skill == '歃血魔咒') {
             this.flyImage({ fileName: 'blood.png', width: 48, height: 48, text: skill },
                     attacker, defenders, settings.skillDuration);
         } else if (skill == '死亡印记') {
