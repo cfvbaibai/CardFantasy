@@ -5,7 +5,9 @@ import java.util.List;
 import cfvbaibai.cardfantasy.GameUI;
 import cfvbaibai.cardfantasy.Randomizer;
 import cfvbaibai.cardfantasy.data.Skill;
+import cfvbaibai.cardfantasy.data.SkillType;
 import cfvbaibai.cardfantasy.engine.CardInfo;
+import cfvbaibai.cardfantasy.engine.CardStatusType;
 import cfvbaibai.cardfantasy.engine.Field;
 import cfvbaibai.cardfantasy.engine.HeroDieSignal;
 import cfvbaibai.cardfantasy.engine.OnAttackBlockingResult;
@@ -15,12 +17,13 @@ import cfvbaibai.cardfantasy.engine.SkillResolver;
 import cfvbaibai.cardfantasy.engine.SkillUseInfo;
 
 public final class Sacrifice {
-    public static void apply(SkillResolver resolver, SkillUseInfo skillUseInfo, CardInfo card, CardInfo reviver) throws HeroDieSignal {
+    public static void apply(SkillResolver resolver, SkillUseInfo skillUseInfo, CardInfo card, Skill summonSkill) throws HeroDieSignal {
         if (card.hasUsed(skillUseInfo)) {
             return;
         }
         // 魔卡新改动，被复活的回合无法发动献祭
-        if (reviver != null) {
+        if (card.getStatus().containsStatus(CardStatusType.复活) ||
+            summonSkill != null && summonSkill.getType() == SkillType.复活) {
             return;
         }
         card.setUsed(skillUseInfo);

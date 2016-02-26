@@ -6,15 +6,17 @@ import cfvbaibai.cardfantasy.Randomizer;
 import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.CardStatusType;
-import cfvbaibai.cardfantasy.engine.SkillResolver;
 import cfvbaibai.cardfantasy.engine.HeroDieSignal;
 import cfvbaibai.cardfantasy.engine.OnAttackBlockingResult;
+import cfvbaibai.cardfantasy.engine.Player;
+import cfvbaibai.cardfantasy.engine.SkillResolver;
 
 public final class Return {
-    public static void apply(SkillResolver resolver, Skill cardSkill, CardInfo attacker, CardInfo defender) throws HeroDieSignal {
+    public static void apply(SkillResolver resolver, Skill cardSkill, CardInfo attacker, Player defenderHero) throws HeroDieSignal {
         if (attacker == null) {
             return;
         }
+        CardInfo defender = defenderHero.getField().getCard(attacker.getPosition());
         if (defender == null) {
             return;
         }

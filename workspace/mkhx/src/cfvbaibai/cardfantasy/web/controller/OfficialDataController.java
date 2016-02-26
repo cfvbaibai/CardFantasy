@@ -309,6 +309,13 @@ public class OfficialDataController {
         return mv;
     }
 
+    @RequestMapping(value = "/Wiki/Cards/{cardName}")
+    public ModelAndView queryCard(HttpServletRequest request,
+            @PathVariable("cardName") String cardName, HttpServletResponse response) throws IOException {
+        OfficialCard card = this.officialStore.getCardByName(cardName);
+        return queryCard(request, card.getCardId(), response);
+    }
+
     @RequestMapping(value = "/Wiki/Cards/{cardId}.shtml")
     public ModelAndView queryCard(HttpServletRequest request,
             @PathVariable("cardId") int cardId, HttpServletResponse response) throws IOException {

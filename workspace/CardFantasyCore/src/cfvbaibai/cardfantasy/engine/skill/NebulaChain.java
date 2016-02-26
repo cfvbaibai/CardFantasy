@@ -9,6 +9,10 @@ import cfvbaibai.cardfantasy.engine.SkillUseInfo;
 
 public final class NebulaChain {
     public static void apply(SkillUseInfo skillUseInfo, SkillResolver resolver, CardInfo attacker) throws HeroDieSignal {
+        if (attacker.hasUsed(skillUseInfo)) {
+            return;
+        }
+        attacker.setUsed(skillUseInfo);
         List<CardInfo> allDeckCards = attacker.getOwner().getDeck().toList();
         CardInfo target = null;
         for (CardInfo card : allDeckCards) {

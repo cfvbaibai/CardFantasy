@@ -37,7 +37,8 @@ public final class Insane {
             int damage = victim.getLevel1AT();
             for (CardInfo cardAttackedByVictim : cardsAttackedByVictim) {
                 ui.attackCard(victim, cardAttackedByVictim, null, damage);
-                resolver.applyDamage(cardAttackedByVictim, null, damage);
+                resolver.resolveDeathSkills(attacker, cardAttackedByVictim, skill, 
+                    resolver.applyDamage(cardAttackedByVictim, null, damage));
             }
         }
     }

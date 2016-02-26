@@ -24,19 +24,18 @@ public final class WitheringWord {
         ui.useSkill(attacker, victims, skill, true);
 
         for (CardInfo victim : victims) {
-            int LifeDamage = (int)(victim.getBasicMaxHP() * Percent);
-            int AttackReduce = (int)(victim.getATToReduce()*Percent);
-            
-            OnAttackBlockingResult result = resolver.resolveAttackBlockingSkills(attacker, victim, skill, LifeDamage);
+            int lifeDamage = (int)(victim.getBasicMaxHP() * Percent);
+            int attackReduce = (int)(victim.getATToReduce() * Percent);
+
+            OnAttackBlockingResult result = resolver.resolveAttackBlockingSkills(attacker, victim, skill, lifeDamage);
             if (!result.isAttackable()) {
                 continue;
-            }           
+            }
 
-
-            ui.attackCard(attacker, victim, skill, LifeDamage);
-            resolver.applyDamage(victim, skill, LifeDamage);
-            ui.adjustAT(attacker, victim, -AttackReduce, skill);
-            victim.addEffect(new SkillEffect(SkillEffectType.ATTACK_CHANGE, skillUseInfo, -AttackReduce, true));
+            ui.adjustAT(attacker, victim, -attackReduce, skill);
+            victim.addEffect(new SkillEffect(SkillEffectType.ATTACK_CHANGE, skillUseInfo, -attackReduce, true));
+            ui.attackCard(attacker, victim, skill, lifeDamage);
+            resolver.resolveDeathSkills(attacker, victim, skill, resolver.applyDamage(victim, skill, lifeDamage));
         }
     }
 }

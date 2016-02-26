@@ -5,11 +5,13 @@ import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.CardStatusItem;
 import cfvbaibai.cardfantasy.engine.HeroDieSignal;
+import cfvbaibai.cardfantasy.engine.Player;
 import cfvbaibai.cardfantasy.engine.SkillResolver;
 import cfvbaibai.cardfantasy.engine.SkillUseInfo;
 
 public class Silence {
-    public static void apply(SkillResolver resolver, SkillUseInfo skillUseInfo, CardInfo caster, CardInfo victim) throws HeroDieSignal {
+    public static void apply(SkillResolver resolver, SkillUseInfo skillUseInfo, CardInfo caster, Player defenderHero) throws HeroDieSignal {
+        CardInfo victim = defenderHero.getField().getCard(caster.getPosition());
         if (victim == null || victim.isDead()) {
             return;
         }

@@ -562,7 +562,7 @@ public class CardInfo extends EntityInfo {
         }
         List<CardInfo> aliveCards = this.getOwner().getField().getAliveCards();
         for (CardInfo aliveCard : aliveCards) {
-            if (aliveCard.getRace() == race) {
+            if (aliveCards != this && aliveCard.getRace() == race) {
                 this.addEffect(new SkillEffect(SkillEffectType.SKILL_AWAKEN, skillUseInfo, 0, true));
                 return true;
             }

@@ -351,7 +351,9 @@ public class BattleEngine {
         if (myField.getCard(i) == null) {
             return;
         }
-        resolver.resolvePreAttackCardSkills(myField.getCard(i), opField.getCard(i), true);
+        List<CardInfo> cards = new ArrayList<CardInfo>();
+        cards.add(myField.getCard(i));
+        resolver.resolveSecondClassSummoningSkills(cards, myField, opField, null, false);
         if (myField.getCard(i) == null) {
             return;
         }
@@ -375,7 +377,7 @@ public class BattleEngine {
 
     private void tryAttackCard(Field myField, Field opField, int i) throws HeroDieSignal {
         SkillResolver resolver = this.stage.getResolver();
-        resolver.resolvePreAttackCardSkills(myField.getCard(i), opField.getCard(i), false);
+        resolver.resolvePreAttackCardSkills(myField.getCard(i), opField.getCard(i));
         if (opField.getCard(i) == null) {
             resolver.resolvePreAttackHeroSkills(myField.getCard(i), getInactivePlayer());
             resolver.attackHero(myField.getCard(i), getInactivePlayer(), null, myField.getCard(i).getCurrentAT());

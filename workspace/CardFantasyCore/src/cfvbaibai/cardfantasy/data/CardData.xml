@@ -1291,6 +1291,16 @@
         <Skill type="甘霖" level="9" unlock="5" />
         <Skill type="混乱领域" level="7" unlock="10" />
     </Card>
+    <Card id="2530" name="全知灵龙" wikiId="" race="森林" speed="3" star="5" cost="20" incrCost="2" at="367" hp="910" incrAT="22" incrHP="20">
+        <Skill type="圣盾" level="0" unlock="0" />
+        <Skill type="转生" level="7" unlock="5" />
+        <Skill type="星云锁链" level="0" unlock="10" />
+    </Card>
+    <Card id="2531" name="森林之主" wikiId="" race="森林" speed="4" star="5" cost="19" incrCost="2" at="440" hp="1920" incrAT="42" incrHP="39">
+        <Skill type="灵魂禁锢" level="0" unlock="0" />
+        <Skill type="觉醒灵王的轰击" level="7" unlock="5" />
+        <Skill type="不屈" level="0" unlock="10" />
+    </Card>
 
     <!-- 蛮荒  -->
     <Card id="3101" name="穴居人奴隶" wikiId="31006" race="蛮荒" speed="2" star="1" cost="4" incrCost="2" at="90" hp="390" incrAT="18" incrHP="11">
@@ -1908,6 +1918,11 @@
         <Skill type="歃血魔咒" level="7" unlock="0" />
         <Skill type="灵王的轰击" level="5" unlock="5" />
         <Skill type="不动" level="0" unlock="10" />
+    </Card>
+    <Card id="3535" name="黄金狮子" wikiId="" race="蛮荒" speed="6" star="5" cost="18" incrCost="2" at="0" hp="2000" incrAT="0" incrHP="200">
+        <Skill type="免疫" level="7" unlock="0" />
+        <Skill type="雷暴" level="10" unlock="5" />
+        <Skill type="烈焰风暴" level="10" unlock="10" />
     </Card>
 
     <!-- 地狱 -->

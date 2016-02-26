@@ -43,11 +43,12 @@ public final class PosionBlade {
                 continue;
             }
             //先恢复物理伤害的HP，因为降生命上限这个动作是连同当前血量一起降
+            // TODO: 检查是否需要触发死契技能
             resolver.applyDamage(defender, skill, -lifeToWeaken);
-            
+
             int lifeWeakened = lifeToWeaken;
             if (lifeWeakened > defender.getBasicMaxHP()) {
-            	lifeWeakened = defender.getBasicMaxHP();
+                lifeWeakened = defender.getBasicMaxHP();
             }
 
             resolver.getStage().getUI().adjustHP(attacker, defender, -lifeWeakened, skill);
@@ -56,10 +57,10 @@ public final class PosionBlade {
                 if (effect.getType() == SkillEffectType.MAXHP_CHANGE && effect.getValue() > 0 &&
                         !effect.getCause().getSkill().getType().containsTag(SkillTag.抗毒刃)) {
                     if (lifeWeakened > effect.getValue()) {
-                    	lifeWeakened -= effect.getValue();
+                        lifeWeakened -= effect.getValue();
                         effect.setValue(0);
                     } else {
-                    	lifeWeakened = 0;
+                        lifeWeakened = 0;
                         effect.setValue(effect.getValue() - lifeWeakened);
                     }
                 }

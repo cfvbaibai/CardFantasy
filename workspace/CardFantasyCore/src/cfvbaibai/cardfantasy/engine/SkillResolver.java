@@ -95,6 +95,13 @@ public class SkillResolver {
             }
             if (skillUseInfo.getType() == SkillType.未知) {
                 // JUST A PLACEHOLDER
+            } else if (skillUseInfo.getType() == SkillType.送还) {
+                Return.apply(this, skillUseInfo.getSkill(), attacker, defender);
+            } else if (skillUseInfo.getType() == SkillType.沉默 ||
+                    skillUseInfo.getType() == SkillType.觉醒沉默 && attacker.isAwaken(skillUseInfo, Race.KINGDOM)) {
+                Silence.apply(this, skillUseInfo, attacker, defender);
+            } else if (skillUseInfo.getType() == SkillType.死亡印记) {
+                DeathMark.apply(this, skillUseInfo, attacker, defender);
             } else if (skillUseInfo.getType() == SkillType.关小黑屋) {
                 Enprison.apply(this, skillUseInfo.getSkill(), attacker, defender);
             } else if (skillUseInfo.getType() == SkillType.吐槽) {
@@ -183,7 +190,8 @@ public class SkillResolver {
                 Seal.apply(skillUseInfo, this, attacker, defender);
             } else if (skillUseInfo.getType() == SkillType.圣炎) {
                 HolyFire.apply(skillUseInfo.getSkill(), this, attacker, defender);
-            } else if (skillUseInfo.getType() == SkillType.法力侵蚀 || skillUseInfo.getType() == SkillType.灵王的轰击) {
+            } else if (skillUseInfo.getType() == SkillType.法力侵蚀 || skillUseInfo.getType() == SkillType.灵王的轰击 ||
+                    skillUseInfo.getType() == SkillType.觉醒灵王的轰击 && attacker.isAwaken(skillUseInfo, Race.FOREST)) {
                 ManaErode.apply(skillUseInfo.getSkill(), this, attacker, defender, 1);
             } else if (skillUseInfo.getType() == SkillType.破魔手) {
                 ManaErode.apply(skillUseInfo.getSkill(), this, attacker, defender, 3);
@@ -259,6 +267,8 @@ public class SkillResolver {
             } else if (skillUseInfo.getType() == SkillType.天怒) {
                 FireMagic.apply(skillUseInfo.getSkill(), this, attacker, defender, -1);
                 BurningFlame.apply(skillUseInfo.getAttachedUseInfo(), this, attacker, defender);
+            } else if (skillUseInfo.getType() == SkillType.传送) {
+                Transport.apply(this, skillUseInfo.getSkill(), attacker, defender);
             }
         }
         if (!attacker.isDead() && !attacker.isSilent() && !attacker.justRevived()) {
@@ -766,12 +776,14 @@ public class SkillResolver {
         for (SkillUseInfo skillUseInfo : attacker.getNormalUsableSkills()) {
            if (skillUseInfo.getType() == SkillType.英雄杀手) {
                HeroKiller.apply(this, skillUseInfo, attacker, defenderPlayer);
+           }  else if (skillUseInfo.getType() == SkillType.凯撒之击) {
+               CaeserAttack.apply(this, skillUseInfo, attacker, defenderPlayer);
            } else if (skillUseInfo.getType() == SkillType.厨具召唤) {
                WeaponSummon.apply(this, skillUseInfo, attacker, defenderPlayer, 1, 500);
            } else if (skillUseInfo.getType() == SkillType.神兵召唤 ||
                    skillUseInfo.getType() == SkillType.觉醒神兵召唤 && attacker.isAwaken(skillUseInfo, Race.SAVAGE)) {
                WeaponSummon.apply(this, skillUseInfo, attacker, defenderPlayer, 500, 1700);
-           }else if (skillUseInfo.getType() == SkillType.圣器召唤) {
+           } else if (skillUseInfo.getType() == SkillType.圣器召唤) {
                WeaponSummon.apply(this, skillUseInfo, attacker, defenderPlayer, 300, 1300);
            } 
         }
@@ -781,68 +793,52 @@ public class SkillResolver {
      * 
      * @param attacker
      * @param defender
-     * @param prior if TRUE, this is resolved before pre-attack skills are resolved.
      * @throws HeroDieSignal
      */
-    public void resolvePreAttackCardSkills(CardInfo attacker, CardInfo defender, boolean prior) throws HeroDieSignal {
+    public void resolvePreAttackCardSkills(CardInfo attacker, CardInfo defender) throws HeroDieSignal {
         for (SkillUseInfo skillUseInfo : attacker.getNormalUsableSkills()) {
-            if (prior) {
-                if (skillUseInfo.getType() == SkillType.送还) {
-                    Return.apply(this, skillUseInfo.getSkill(), attacker, defender);
-                } else if (skillUseInfo.getType() == SkillType.献祭) {
-                    Sacrifice.apply(this, skillUseInfo, attacker, null);
-                } else if (skillUseInfo.getType() == SkillType.沉默 ||
-                        skillUseInfo.getType() == SkillType.觉醒沉默 && attacker.isAwaken(skillUseInfo, Race.KINGDOM)) {
-                    Silence.apply(this, skillUseInfo, attacker, defender);
-                } else if (skillUseInfo.getType() == SkillType.死亡印记) {
-                    DeathMark.apply(this, skillUseInfo, attacker, defender);
-                }
-            } else {
-                if (skillUseInfo.getType() == SkillType.圣光) {
-                    RacialAttackSkill.apply(this, skillUseInfo, attacker, defender, Race.HELL);
-                } else if (skillUseInfo.getType() == SkillType.要害) {
-                    RacialAttackSkill.apply(this, skillUseInfo, attacker, defender, Race.SAVAGE);
-                } else if (skillUseInfo.getType() == SkillType.暗杀) {
-                    RacialAttackSkill.apply(this, skillUseInfo, attacker, defender, Race.KINGDOM);
-                } else if (skillUseInfo.getType() == SkillType.污染) {
-                    RacialAttackSkill.apply(this, skillUseInfo, attacker, defender, Race.FOREST);
-                } else if (skillUseInfo.getType() == SkillType.暴击) {
-                    CriticalAttack.apply(this, skillUseInfo, attacker, defender);
-                } else if (skillUseInfo.getType() == SkillType.神兵召唤 ||
-                        skillUseInfo.getType() == SkillType.觉醒神兵召唤 && attacker.isAwaken(skillUseInfo, Race.SAVAGE)) {
-                    WeaponSummon.apply(this, skillUseInfo, attacker, defender, 500, 1700);
-                } else if (skillUseInfo.getType() == SkillType.厨具召唤) {
-                    WeaponSummon.apply(this, skillUseInfo, attacker, defender, 1, 500);
-                } else if (skillUseInfo.getType() == SkillType.圣器召唤) {
-                    WeaponSummon.apply(this, skillUseInfo, attacker, defender, 300, 1300);
-                }else if (skillUseInfo.getType() == SkillType.穷追猛打) {
-                    Pursuit.apply(this, skillUseInfo, attacker, defender);
-                } else if (skillUseInfo.getType() == SkillType.战意) {
-                    Wrath.apply(this, skillUseInfo, attacker, defender);
-                } else if (skillUseInfo.getType() == SkillType.凯撒之击) {
-                    CaeserAttack.apply(this, skillUseInfo, attacker, defender);
-                }
+            if (skillUseInfo.getType() == SkillType.圣光) {
+                RacialAttackSkill.apply(this, skillUseInfo, attacker, defender, Race.HELL);
+            } else if (skillUseInfo.getType() == SkillType.要害) {
+                RacialAttackSkill.apply(this, skillUseInfo, attacker, defender, Race.SAVAGE);
+            } else if (skillUseInfo.getType() == SkillType.暗杀) {
+                RacialAttackSkill.apply(this, skillUseInfo, attacker, defender, Race.KINGDOM);
+            } else if (skillUseInfo.getType() == SkillType.污染) {
+                RacialAttackSkill.apply(this, skillUseInfo, attacker, defender, Race.FOREST);
+            } else if (skillUseInfo.getType() == SkillType.暴击) {
+                CriticalAttack.apply(this, skillUseInfo, attacker, defender);
+            } else if (skillUseInfo.getType() == SkillType.神兵召唤 ||
+                    skillUseInfo.getType() == SkillType.觉醒神兵召唤 && attacker.isAwaken(skillUseInfo, Race.SAVAGE)) {
+                WeaponSummon.apply(this, skillUseInfo, attacker, defender, 500, 1700);
+            } else if (skillUseInfo.getType() == SkillType.厨具召唤) {
+                WeaponSummon.apply(this, skillUseInfo, attacker, defender, 1, 500);
+            } else if (skillUseInfo.getType() == SkillType.圣器召唤) {
+                WeaponSummon.apply(this, skillUseInfo, attacker, defender, 300, 1300);
+            } else if (skillUseInfo.getType() == SkillType.穷追猛打) {
+                Pursuit.apply(this, skillUseInfo, attacker, defender);
+            } else if (skillUseInfo.getType() == SkillType.战意) {
+                Wrath.apply(this, skillUseInfo, attacker, defender);
+            } else if (skillUseInfo.getType() == SkillType.凯撒之击) {
+                CaeserAttack.apply(this, skillUseInfo, attacker, defender);
             }
         }
-        if (!prior) {
-            if (!attacker.isSilent()) {
-                {
-                    RuneInfo rune = attacker.getOwner().getActiveRuneOf(RuneData.绝杀);
-                    if (rune != null && !attacker.justRevived()) {
-                        Wrath.apply(this, rune.getSkillUseInfo(), attacker, defender);
-                    }
+        if (!attacker.isSilent()) {
+            {
+                RuneInfo rune = attacker.getOwner().getActiveRuneOf(RuneData.绝杀);
+                if (rune != null && !attacker.justRevived()) {
+                    Wrath.apply(this, rune.getSkillUseInfo(), attacker, defender);
                 }
-                {
-                    RuneInfo rune = attacker.getOwner().getActiveRuneOf(RuneData.寒伤);
-                    if (rune != null && !attacker.justRevived()) {
-                        CriticalAttack.apply(this, rune.getSkillUseInfo(), attacker, defender);
-                    }
+            }
+            {
+                RuneInfo rune = attacker.getOwner().getActiveRuneOf(RuneData.寒伤);
+                if (rune != null && !attacker.justRevived()) {
+                    CriticalAttack.apply(this, rune.getSkillUseInfo(), attacker, defender);
                 }
-                {
-                    RuneInfo rune = attacker.getOwner().getActiveRuneOf(RuneData.扬旗);
-                    if (rune != null && !attacker.justRevived()) {
-                        Pursuit.apply(this, rune.getSkillUseInfo(), attacker, defender);
-                    }
+            }
+            {
+                RuneInfo rune = attacker.getOwner().getActiveRuneOf(RuneData.扬旗);
+                if (rune != null && !attacker.justRevived()) {
+                    Pursuit.apply(this, rune.getSkillUseInfo(), attacker, defender);
                 }
             }
         }
@@ -1059,7 +1055,7 @@ public class SkillResolver {
         this.stage.getUI().attackCard(attacker, defender, skill, blockingResult.getDamage());
         OnDamagedResult damagedResult = stage.getResolver().applyDamage(defender, skill, blockingResult.getDamage());
         this.removeStatus(attacker, CardStatusType.不屈);
-        
+
         resolvePostAttackSkills(attacker, defender, defender.getOwner(), skill, damagedResult.actualDamage);
         stage.getResolver().resolveDeathSkills(attacker, defender, skill, damagedResult);
 
@@ -1198,7 +1194,7 @@ public class SkillResolver {
                 } else if (skillUseInfo.getType() == SkillType.陷阱) {
                     Trap.apply(skillUseInfo, this, card, enemy);
                 } else if (skillUseInfo.getType() == SkillType.送还) {
-                    Return.apply(this, skillUseInfo.getSkill(), card, enemy.getField().getCard(card.getPosition()));
+                    Return.apply(this, skillUseInfo.getSkill(), card, enemy);
                 } else if (skillUseInfo.getType() == SkillType.摧毁) {
                     Destroy.apply(this, skillUseInfo.getSkill(), card, enemy, 1);
                 } else if (skillUseInfo.getType() == SkillType.传送) {
@@ -1222,7 +1218,7 @@ public class SkillResolver {
                 } else if (skillUseInfo.getType() == SkillType.全体加速){
                     AllSpeedUp.apply(skillUseInfo, this, card);
                 } else if (skillUseInfo.getType() == SkillType.沉默) {
-                    Silence.apply(this, skillUseInfo, card, enemy.getField().getCard(card.getPosition()));
+                    Silence.apply(this, skillUseInfo, card, enemy);
                 } else if (skillUseInfo.getType() == SkillType.回魂) {
                     Resurrection.apply(this, skillUseInfo, card);
                 }
@@ -1239,7 +1235,7 @@ public class SkillResolver {
 
     // reviver: for most of the cases, it should be null.
     // It is only set when the summoning skill performer is revived by another card.
-    public void resolveSecondClassSummoningSkills(List<CardInfo> summonedCards, Field myField, Field opField, CardInfo reviver, boolean isMinion, Skill summonSkill) throws HeroDieSignal {
+    public void resolveSecondClassSummoningSkills(List<CardInfo> summonedCards, Field myField, Field opField, Skill summonSkill, boolean isSummoning) throws HeroDieSignal {
         if (summonSkill != null && summonSkill.getType() == SkillType.星云锁链) {
             // 木盒的特殊BUG，星云锁链召唤的卡无法发动第二阶降临技能
             return;
@@ -1254,8 +1250,8 @@ public class SkillResolver {
                 if (skillUseInfo.getType() == SkillType.时光倒流) {
                     TimeBack.apply(skillUseInfo, this, myField.getOwner(), opField.getOwner());
                 } else if (skillUseInfo.getType() == SkillType.献祭) {
-                    Sacrifice.apply(this, skillUseInfo, card, reviver);
-                } else if (skillUseInfo.getType() == SkillType.复活 && skillUseInfo.getSkill().isSummonSkill()) {
+                    Sacrifice.apply(this, skillUseInfo, card, summonSkill);
+                } else if (skillUseInfo.getType() == SkillType.复活 && skillUseInfo.getSkill().isSummonSkill() && isSummoning) {
                     Revive.apply(this, skillUseInfo, card);
                 }
             }
@@ -1363,7 +1359,7 @@ public class SkillResolver {
         summonedCards.add(summonedCard);
         setCardToField(summonedCard);
         this.resolveFirstClassSummoningSkills(summonedCard, player, enemy, isMinion);
-        this.resolveSecondClassSummoningSkills(summonedCards, player.getField(), enemy.getField(), reviver, isMinion, summonSkill);
+        this.resolveSecondClassSummoningSkills(summonedCards, player.getField(), enemy.getField(), summonSkill, true);
     }
 
     /**
@@ -1393,7 +1389,7 @@ public class SkillResolver {
             this.resolveFirstClassSummoningSkills(summonedCard, player, enemy, isMinion);
         }
 
-        this.resolveSecondClassSummoningSkills(summonedCards, player.getField(), enemy.getField(), reviver, isMinion, null);
+        this.resolveSecondClassSummoningSkills(summonedCards, player.getField(), enemy.getField(), null, true);
     }
 
     /**

@@ -50,7 +50,7 @@ public final class Rainfall {
             }
             resolver.getStage().getUI().healCard(healer, heal.healee, skill, heal.healHP);
             resolver.applyDamage(heal.healee, skill, -heal.healHP);
-        }        
+        }
     }
 
     public static void apply(Skill cardSkill, SkillResolver resolver, EntityInfo healer) throws HeroDieSignal {

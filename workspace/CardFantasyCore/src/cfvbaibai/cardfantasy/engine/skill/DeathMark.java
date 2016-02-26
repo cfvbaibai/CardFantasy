@@ -12,11 +12,13 @@ import cfvbaibai.cardfantasy.engine.EntityInfo;
 import cfvbaibai.cardfantasy.engine.HeroDieSignal;
 import cfvbaibai.cardfantasy.engine.OnAttackBlockingResult;
 import cfvbaibai.cardfantasy.engine.OnDamagedResult;
+import cfvbaibai.cardfantasy.engine.Player;
 import cfvbaibai.cardfantasy.engine.SkillResolver;
 import cfvbaibai.cardfantasy.engine.SkillUseInfo;
 
 public class DeathMark {
-    public static void apply(SkillResolver resolver, SkillUseInfo skillUseInfo, CardInfo caster, CardInfo victim) throws HeroDieSignal {
+    public static void apply(SkillResolver resolver, SkillUseInfo skillUseInfo, CardInfo caster, Player defenderHero) throws HeroDieSignal {
+        CardInfo victim = defenderHero.getField().getCard(caster.getPosition());
         if (victim == null) {
             return;
         }

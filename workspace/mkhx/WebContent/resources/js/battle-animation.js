@@ -1451,7 +1451,7 @@ var Animater = function() {
         } else if (skill == '阻碍' || skill == '加速' || skill == '全体阻碍' || skill == '全体加速' || skill == '时光倒流') {
             this.flyImage({ fileName: 'delay.png', width: 48, height: 48, text: skill },
                     attacker, defenders, settings.skillDuration);
-        } else if (skill == '法力侵蚀' || skill == '破魔手' || skill == '灵王的轰击' || skill == '法力风暴') {
+        } else if (skill == '法力侵蚀' || skill == '破魔手' || skill == '灵王的轰击' || skill == '觉醒灵王的轰击' || skill == '法力风暴') {
             this.flyImage({ fileName: 'mana-drain.png', width: 48, height: 48, text: skill },
                     attacker, defenders, settings.skillDuration);
         } else if (skill == '净化' || skill == '神性祈求' || skill == '净魂领域') {

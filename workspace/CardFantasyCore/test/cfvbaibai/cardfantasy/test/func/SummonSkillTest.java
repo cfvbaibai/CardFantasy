@@ -79,7 +79,7 @@ public class SummonSkillTest extends SkillValidationTest {
         context.proceedOneRound();
         // 本回合刚被复活，无法献祭
         Assert.assertEquals(2, context.getPlayer(0).getField().size());
-        
+
         context.proceedOneRound();
 
         random.addNextPicks(0); // 献祭
@@ -439,7 +439,6 @@ public class SummonSkillTest extends SkillValidationTest {
         context.getEngine().getStage().getRule().setDeckOrder(1);
         context.startGame();
 
-        
         context.proceedOneRound();
         Player p1 = c占位符1.getOwner();
         Assert.assertEquals(2, p1.getField().size());

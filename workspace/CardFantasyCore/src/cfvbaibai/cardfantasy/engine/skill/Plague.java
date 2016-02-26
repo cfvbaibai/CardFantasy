@@ -6,6 +6,7 @@ import cfvbaibai.cardfantasy.GameUI;
 import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.EntityInfo;
+import cfvbaibai.cardfantasy.engine.OnDamagedResult;
 import cfvbaibai.cardfantasy.engine.SkillEffect;
 import cfvbaibai.cardfantasy.engine.SkillEffectType;
 import cfvbaibai.cardfantasy.engine.SkillUseInfo;
@@ -24,15 +25,16 @@ public final class Plague {
         ui.useSkill(attacker, victims, skill, true);
 
         for (CardInfo victim : victims) {
-            OnAttackBlockingResult result = resolver.resolveAttackBlockingSkills(attacker, victim, skill, damage);
-            if (!result.isAttackable()) {
+            OnAttackBlockingResult blockingResult = resolver.resolveAttackBlockingSkills(attacker, victim, skill, damage);
+            if (!blockingResult.isAttackable()) {
                 continue;
             }
 
-            ui.attackCard(attacker, victim, skill, damage);
-            resolver.applyDamage(victim, skill, damage);
             ui.adjustAT(attacker, victim, -damage, skill);
             victim.addEffect(new SkillEffect(SkillEffectType.ATTACK_CHANGE, skillUseInfo, -damage, true));
+            ui.attackCard(attacker, victim, skill, damage);
+            OnDamagedResult damagedResult = resolver.applyDamage(victim, skill, damage);
+            resolver.resolveDeathSkills(attacker, victim, skill, damagedResult);
         }
     }
 }
