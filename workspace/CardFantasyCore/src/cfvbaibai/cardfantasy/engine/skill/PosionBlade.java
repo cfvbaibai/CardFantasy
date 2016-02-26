@@ -13,15 +13,14 @@ import cfvbaibai.cardfantasy.engine.SkillEffectType;
 import cfvbaibai.cardfantasy.engine.SkillResolver;
 import cfvbaibai.cardfantasy.engine.SkillUseInfo;
 
-/**
- * Decrease defender 10 * level AT if normal attack causes damage.
- * 
- * Can be blocked by Immue.
- */
 public final class PosionBlade {
     public static void apply(SkillResolver resolver, SkillUseInfo skillUseInfo, CardInfo attacker, CardInfo defender,
             int normalAttackDamage) throws HeroDieSignal {
         if (normalAttackDamage <= 0 || defender == null) {
+            return;
+        }
+        if (attacker.getPosition() != defender.getPosition()) {
+            // 横扫或者连锁攻击的溅射部分不触发毒刃
             return;
         }
         Skill skill = skillUseInfo.getSkill();

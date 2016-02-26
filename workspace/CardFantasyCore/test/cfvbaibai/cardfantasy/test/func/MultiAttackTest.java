@@ -43,6 +43,24 @@ public class MultiAttackTest extends SkillValidationTest {
         Assert.assertEquals(750 + 240 /* 背刺6 *//* 连锁攻击4 */, 5000 - c占位符2.getHP());
     }
 
+    /**
+     * 横扫的溅射无法触发毒刃
+     */
+    @Test
+    public void test横扫_毒刃() {
+        SkillTestContext context = prepare(50, 50, "生化异形", "占位符*2");
+        context.addToField(0, 0);
+        CardInfo c占位符1 = context.addToField(1, 1);
+        CardInfo c占位符2 = context.addToField(2, 1);
+        context.startGame();
+
+        context.proceedOneRound();
+        Assert.assertEquals(665, 5000 - c占位符1.getHP());
+        Assert.assertEquals(665, 5000 - c占位符2.getHP());
+        Assert.assertEquals(665, 5000 - c占位符1.getMaxHP());
+        Assert.assertEquals(0, 5000 - c占位符2.getMaxHP());
+    }
+
     @Test
     public void test修罗地火攻_普通() {
         SkillTestContext context = prepare(50, 50, "魔装机神-0", "占位符*3");

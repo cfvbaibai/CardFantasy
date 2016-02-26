@@ -31,7 +31,7 @@ public class Summon {
         List<CardInfo> summonedCards = DeckBuilder.build(summonedCardsDescs).getCardInfos(summoner.getOwner());
         for (int i = 0; i < summonedCards.size(); ++i) {
             CardInfo summonedCard = summonedCards.get(i);
-            resolver.summonCard(summoner.getOwner(), summonedCard, summoner, true);
+            resolver.summonCard(summoner.getOwner(), summonedCard, summoner, true, skill);
             CardStatusItem weakStatusItem = CardStatusItem.weak(skillUseInfo);
             resolver.getStage().getUI().addCardStatus(summoner, summonedCard, skill, weakStatusItem);
             summonedCard.addStatus(weakStatusItem);

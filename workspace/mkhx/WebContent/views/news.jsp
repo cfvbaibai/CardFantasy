@@ -36,6 +36,7 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2016-2-26: 修复一些极端情况下降临系技能的BUG，感谢<x></x>的帮助</li>
                     <li>2016-2-25: <ul>
                         <li>更正<cf:c>双鱼座</cf:c>的技能</li>
                         <li>添加新卡<cf:c>夜魅鬼手</cf:c></li>

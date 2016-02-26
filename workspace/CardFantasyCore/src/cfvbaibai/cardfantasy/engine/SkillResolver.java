@@ -1239,7 +1239,11 @@ public class SkillResolver {
 
     // reviver: for most of the cases, it should be null.
     // It is only set when the summoning skill performer is revived by another card.
-    public void resolveSecondClassSummoningSkills(List<CardInfo> summonedCards, Field myField, Field opField, CardInfo reviver, boolean isMinion) throws HeroDieSignal {
+    public void resolveSecondClassSummoningSkills(List<CardInfo> summonedCards, Field myField, Field opField, CardInfo reviver, boolean isMinion, Skill summonSkill) throws HeroDieSignal {
+        if (summonSkill != null && summonSkill.getType() == SkillType.星云锁链) {
+            // 木盒的特殊BUG，星云锁链召唤的卡无法发动第二阶降临技能
+            return;
+        }
         for (CardInfo card : summonedCards) {
             int position = card.getPosition();
             if (position < 0 || myField.getCard(position) == null) {
@@ -1353,13 +1357,13 @@ public class SkillResolver {
         player.getDeck().removeCard(card);
     }
     
-    public void summonCard(Player player, CardInfo summonedCard, CardInfo reviver, boolean isMinion) throws HeroDieSignal {
+    public void summonCard(Player player, CardInfo summonedCard, CardInfo reviver, boolean isMinion, Skill summonSkill) throws HeroDieSignal {
         Player enemy = this.getStage().getOpponent(player);
         List<CardInfo> summonedCards = new ArrayList<CardInfo>();
         summonedCards.add(summonedCard);
         setCardToField(summonedCard);
         this.resolveFirstClassSummoningSkills(summonedCard, player, enemy, isMinion);
-        this.resolveSecondClassSummoningSkills(summonedCards, player.getField(), enemy.getField(), reviver, isMinion);
+        this.resolveSecondClassSummoningSkills(summonedCards, player.getField(), enemy.getField(), reviver, isMinion, summonSkill);
     }
 
     /**
@@ -1389,7 +1393,7 @@ public class SkillResolver {
             this.resolveFirstClassSummoningSkills(summonedCard, player, enemy, isMinion);
         }
 
-        this.resolveSecondClassSummoningSkills(summonedCards, player.getField(), enemy.getField(), reviver, isMinion);
+        this.resolveSecondClassSummoningSkills(summonedCards, player.getField(), enemy.getField(), reviver, isMinion, null);
     }
 
     /**

@@ -18,4 +18,8 @@ public class Hand extends CardPile {
         newCard.resetSummonDelay();
         return newCard;
     }
+
+    public CardInfo getCard(int i) {
+        return this.getCards().get(i);
+    }
 }

@@ -776,7 +776,7 @@ public class DefenseTest extends SkillValidationTest {
 
         random.addNextPicks(0, 0); // 血炼10
         context.proceedOneRound();
-        Assert.assertEquals(1 /* 法术致死伤害按剩余血量一半算 */, c残血王国小兵.getHP());
+        Assert.assertEquals(2 /* 法术致死伤害按剩余血量一半算 */, c残血王国小兵.getHP());
         Assert.assertFalse(c残血王国小兵.isDead());
     }
 
@@ -789,7 +789,8 @@ public class DefenseTest extends SkillValidationTest {
 
         random.addNextPicks(0); // 血炼10
         context.proceedOneRound();
-        Assert.assertTrue(c残血王国小兵.isDead());
+        // 只剩1HP时候减半伤害，所以无法杀死
+        Assert.assertEquals(1, c残血王国小兵.getHP());
     }
 
     @Test
