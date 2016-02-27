@@ -5692,157 +5692,6 @@
       "Next": "8",
       "MapStageDetails": [
         {
-          "MapStageDetailId": "59",
-          "Name": "末日之镜",
-          "Type": "1",
-          "MapStageId": "7",
-          "Rank": "7",
-          "X": "704",
-          "Y": "184",
-          "Prev": "58",
-          "Next": "60",
-          "NextBranch": "0",
-          "FightName": "绿龙幻象",
-          "FightImg": "27",
-          "Dialogue": [
-            {
-              "StoryId": "306",
-              "Did": "7_8_1",
-              "NPC": "player_name",
-              "Dialogue": "接下来往哪里走？",
-              "Icon": "0_0",
-              "Orientations": "1",
-              "Opportunity": "1"
-            },
-            {
-              "StoryId": "307",
-              "Did": "7_8_2",
-              "NPC": "美狄丝",
-              "Dialogue": "左。",
-              "Icon": "1_5",
-              "Orientations": "2",
-              "Opportunity": "1"
-            },
-            {
-              "StoryId": "308",
-              "Did": "7_8_3",
-              "NPC": "player_name",
-              "Dialogue": "……已经被附身了么？你这个状态还真吓人，第一次听你说话那么简洁。",
-              "Icon": "0_4",
-              "Orientations": "1",
-              "Opportunity": "1"
-            },
-            {
-              "StoryId": "309",
-              "Did": "7_8_4",
-              "NPC": "美狄丝",
-              "Dialogue": "……",
-              "Icon": "1_5",
-              "Orientations": "2",
-              "Opportunity": "1"
-            },
-            {
-              "StoryId": "310",
-              "Did": "7_8_5",
-              "NPC": "player_name",
-              "Dialogue": "……好吧，当我没说。",
-              "Icon": "0_4",
-              "Orientations": "1",
-              "Opportunity": "1"
-            },
-            {
-              "StoryId": "311",
-              "Did": "7_8_6",
-              "NPC": "绿龙幻象",
-              "Dialogue": "吼~",
-              "Icon": "19_0",
-              "Orientations": "2",
-              "Opportunity": "1"
-            },
-            {
-              "StoryId": "312",
-              "Did": "7_8_7",
-              "NPC": "player_name",
-              "Dialogue": "喂喂，你可没说会碰到这家伙啊，接下来该怎么办？",
-              "Icon": "0_3",
-              "Orientations": "1",
-              "Opportunity": "1"
-            },
-            {
-              "StoryId": "313",
-              "Did": "7_8_8",
-              "NPC": "美狄丝",
-              "Dialogue": "战。",
-              "Icon": "1_5",
-              "Orientations": "2",
-              "Opportunity": "1"
-            },
-            {
-              "StoryId": "314",
-              "Did": "7_8_9",
-              "NPC": "player_name",
-              "Dialogue": "……",
-              "Icon": "0_0",
-              "Orientations": "1",
-              "Opportunity": "1"
-            }
-          ],
-          "DialogueAfter": null,
-          "Levels": [
-            {
-              "MapStageDetailId": "59",
-              "Level": "1",
-              "CardList": "45_6,45_6,46_6,46_6,51_6,53_6,54_6,55_8,56_8",
-              "RuneList": "19_1,18_1,27_1,13_1",
-              "HeroLevel": "42",
-              "AchievementId": "0",
-              "EnergyExpend": "2",
-              "BonusWin": "Exp_1260,Coins_1600",
-              "FirstBonusWin": "",
-              "BonusLose": "Exp_80,Coins_80",
-              "AddedBonus": "",
-              "EnergyExplore": "2",
-              "BonusExplore": "Exp_1250,Coins_1600",
-              "Hint": "0",
-              "AchievementText": "战斗胜利"
-            },
-            {
-              "MapStageDetailId": "59",
-              "Level": "2",
-              "CardList": "44_5,45_7,45_7,46_7,46_7,51_8,53_7,54_7,55_10,56_9",
-              "RuneList": "19_2,18_2,27_2,13_2",
-              "HeroLevel": "43",
-              "AchievementId": "2",
-              "EnergyExpend": "2",
-              "BonusWin": "Exp_1570,Coins_2000",
-              "FirstBonusWin": "",
-              "BonusLose": "Exp_80,Coins_80",
-              "AddedBonus": "",
-              "EnergyExplore": "2",
-              "BonusExplore": "Exp_1570,Coins_2000",
-              "Hint": "0",
-              "AchievementText": "36回合数内取得胜利"
-            },
-            {
-              "MapStageDetailId": "59",
-              "Level": "3",
-              "CardList": "44_10,45_8,45_8,46_8,46_8,51_10,53_8,54_8,55_10,56_10",
-              "RuneList": "19_3,18_3,27_3,13_3",
-              "HeroLevel": "44",
-              "AchievementId": "60",
-              "EnergyExpend": "2",
-              "BonusWin": "Exp_1880,Coins_2400",
-              "FirstBonusWin": "Rune_33",
-              "BonusLose": "Exp_80,Coins_80",
-              "AddedBonus": "",
-              "EnergyExplore": "2",
-              "BonusExplore": "Exp_1880,Coins_2400",
-              "Hint": "0",
-              "AchievementText": "卡组中无符文"
-            }
-          ]
-        },
-        {
           "MapStageDetailId": "52",
           "Name": "赤色沼泽",
           "Type": "1",
@@ -6774,6 +6623,157 @@
           ]
         },
         {
+          "MapStageDetailId": "59",
+          "Name": "末日之镜",
+          "Type": "1",
+          "MapStageId": "7",
+          "Rank": "7",
+          "X": "704",
+          "Y": "184",
+          "Prev": "58",
+          "Next": "60",
+          "NextBranch": "0",
+          "FightName": "绿龙幻象",
+          "FightImg": "27",
+          "Dialogue": [
+            {
+              "StoryId": "306",
+              "Did": "7_8_1",
+              "NPC": "player_name",
+              "Dialogue": "接下来往哪里走？",
+              "Icon": "0_0",
+              "Orientations": "1",
+              "Opportunity": "1"
+            },
+            {
+              "StoryId": "307",
+              "Did": "7_8_2",
+              "NPC": "美狄丝",
+              "Dialogue": "左。",
+              "Icon": "1_5",
+              "Orientations": "2",
+              "Opportunity": "1"
+            },
+            {
+              "StoryId": "308",
+              "Did": "7_8_3",
+              "NPC": "player_name",
+              "Dialogue": "……已经被附身了么？你这个状态还真吓人，第一次听你说话那么简洁。",
+              "Icon": "0_4",
+              "Orientations": "1",
+              "Opportunity": "1"
+            },
+            {
+              "StoryId": "309",
+              "Did": "7_8_4",
+              "NPC": "美狄丝",
+              "Dialogue": "……",
+              "Icon": "1_5",
+              "Orientations": "2",
+              "Opportunity": "1"
+            },
+            {
+              "StoryId": "310",
+              "Did": "7_8_5",
+              "NPC": "player_name",
+              "Dialogue": "……好吧，当我没说。",
+              "Icon": "0_4",
+              "Orientations": "1",
+              "Opportunity": "1"
+            },
+            {
+              "StoryId": "311",
+              "Did": "7_8_6",
+              "NPC": "绿龙幻象",
+              "Dialogue": "吼~",
+              "Icon": "19_0",
+              "Orientations": "2",
+              "Opportunity": "1"
+            },
+            {
+              "StoryId": "312",
+              "Did": "7_8_7",
+              "NPC": "player_name",
+              "Dialogue": "喂喂，你可没说会碰到这家伙啊，接下来该怎么办？",
+              "Icon": "0_3",
+              "Orientations": "1",
+              "Opportunity": "1"
+            },
+            {
+              "StoryId": "313",
+              "Did": "7_8_8",
+              "NPC": "美狄丝",
+              "Dialogue": "战。",
+              "Icon": "1_5",
+              "Orientations": "2",
+              "Opportunity": "1"
+            },
+            {
+              "StoryId": "314",
+              "Did": "7_8_9",
+              "NPC": "player_name",
+              "Dialogue": "……",
+              "Icon": "0_0",
+              "Orientations": "1",
+              "Opportunity": "1"
+            }
+          ],
+          "DialogueAfter": null,
+          "Levels": [
+            {
+              "MapStageDetailId": "59",
+              "Level": "1",
+              "CardList": "45_6,45_6,46_6,46_6,51_6,53_6,54_6,55_8,56_8",
+              "RuneList": "19_1,18_1,27_1,13_1",
+              "HeroLevel": "42",
+              "AchievementId": "0",
+              "EnergyExpend": "2",
+              "BonusWin": "Exp_1260,Coins_1600",
+              "FirstBonusWin": "",
+              "BonusLose": "Exp_80,Coins_80",
+              "AddedBonus": "",
+              "EnergyExplore": "2",
+              "BonusExplore": "Exp_1250,Coins_1600",
+              "Hint": "0",
+              "AchievementText": "战斗胜利"
+            },
+            {
+              "MapStageDetailId": "59",
+              "Level": "2",
+              "CardList": "44_5,45_7,45_7,46_7,46_7,51_8,53_7,54_7,55_10,56_9",
+              "RuneList": "19_2,18_2,27_2,13_2",
+              "HeroLevel": "43",
+              "AchievementId": "2",
+              "EnergyExpend": "2",
+              "BonusWin": "Exp_1570,Coins_2000",
+              "FirstBonusWin": "",
+              "BonusLose": "Exp_80,Coins_80",
+              "AddedBonus": "",
+              "EnergyExplore": "2",
+              "BonusExplore": "Exp_1570,Coins_2000",
+              "Hint": "0",
+              "AchievementText": "36回合数内取得胜利"
+            },
+            {
+              "MapStageDetailId": "59",
+              "Level": "3",
+              "CardList": "44_10,45_8,45_8,46_8,46_8,51_10,53_8,54_8,55_10,56_10",
+              "RuneList": "19_3,18_3,27_3,13_3",
+              "HeroLevel": "44",
+              "AchievementId": "60",
+              "EnergyExpend": "2",
+              "BonusWin": "Exp_1880,Coins_2400",
+              "FirstBonusWin": "Rune_33",
+              "BonusLose": "Exp_80,Coins_80",
+              "AddedBonus": "",
+              "EnergyExplore": "2",
+              "BonusExplore": "Exp_1880,Coins_2400",
+              "Hint": "0",
+              "AchievementText": "卡组中无符文"
+            }
+          ]
+        },
+        {
           "MapStageDetailId": "60",
           "Name": "远古通道",
           "Type": "2",
@@ -7006,121 +7006,6 @@
       "Next": "9",
       "MapStageDetails": [
         {
-          "MapStageDetailId": "64",
-          "Name": "金色沙漠",
-          "Type": "1",
-          "MapStageId": "8",
-          "Rank": "1",
-          "X": "159",
-          "Y": "182",
-          "Prev": "63",
-          "Next": "65",
-          "NextBranch": "0",
-          "FightName": "雷兽",
-          "FightImg": "89",
-          "Dialogue": [
-            {
-              "StoryId": "328",
-              "Did": "8_2_1",
-              "NPC": "player_name",
-              "Dialogue": "好大一片沙漠啊，我们的目标到底是哪里啊？",
-              "Icon": "0_0",
-              "Orientations": "1",
-              "Opportunity": "1"
-            },
-            {
-              "StoryId": "329",
-              "Did": "8_2_2",
-              "NPC": "美狄丝",
-              "Dialogue": "找……碑。",
-              "Icon": "1_5",
-              "Orientations": "2",
-              "Opportunity": "1"
-            },
-            {
-              "StoryId": "330",
-              "Did": "8_2_3",
-              "NPC": "player_name",
-              "Dialogue": "找碑？什么碑？在哪里？",
-              "Icon": "0_4",
-              "Orientations": "1",
-              "Opportunity": "1"
-            },
-            {
-              "StoryId": "331",
-              "Did": "8_2_4",
-              "NPC": "美狄丝",
-              "Dialogue": "神力……不……足……",
-              "Icon": "1_5",
-              "Orientations": "2",
-              "Opportunity": "1"
-            },
-            {
-              "StoryId": "332",
-              "Did": "8_2_5",
-              "NPC": "player_name",
-              "Dialogue": "美狄丝……丝丝……丝丝姐！！！",
-              "Icon": "0_4",
-              "Orientations": "1",
-              "Opportunity": "1"
-            }
-          ],
-          "DialogueAfter": null,
-          "Levels": [
-            {
-              "MapStageDetailId": "64",
-              "Level": "1",
-              "CardList": "82_8,82_10,86_6,87_4,87_5,87_6,88_4,88_5,88_6,89_5",
-              "RuneList": "40_2,37_2,7_2,33_2",
-              "HeroLevel": "45",
-              "AchievementId": "0",
-              "EnergyExpend": "2",
-              "BonusWin": "Exp_1540,Coins_1920",
-              "FirstBonusWin": "",
-              "BonusLose": "Exp_90,Coins_90",
-              "AddedBonus": "",
-              "EnergyExplore": "2",
-              "BonusExplore": "Exp_1880,Coins_2320",
-              "Hint": "0",
-              "AchievementText": "战斗胜利"
-            },
-            {
-              "MapStageDetailId": "64",
-              "Level": "2",
-              "CardList": "82_10,82_10,86_8,87_5,87_7,87_9,88_5,88_6,88_7,89_6",
-              "RuneList": "40_3,37_3,7_3,33_3",
-              "HeroLevel": "46",
-              "AchievementId": "52",
-              "EnergyExpend": "2",
-              "BonusWin": "Exp_1920,Coins_2400",
-              "FirstBonusWin": "",
-              "BonusLose": "Exp_90,Coins_90",
-              "AddedBonus": "",
-              "EnergyExplore": "2",
-              "BonusExplore": "Exp_2350,Coins_2900",
-              "Hint": "0",
-              "AchievementText": "卡组中4星卡牌不小于3张"
-            },
-            {
-              "MapStageDetailId": "64",
-              "Level": "3",
-              "CardList": "82_10,82_10,86_10,87_8,87_10,87_8,88_8,88_10,88_8,89_7",
-              "RuneList": "40_4,37_4,7_4,33_4",
-              "HeroLevel": "47",
-              "AchievementId": "24",
-              "EnergyExpend": "2",
-              "BonusWin": "Exp_2300,Coins_2880",
-              "FirstBonusWin": "Card_104",
-              "BonusLose": "Exp_90,Coins_90",
-              "AddedBonus": "",
-              "EnergyExplore": "2",
-              "BonusExplore": "Exp_2820,Coins_3480",
-              "Hint": "0",
-              "AchievementText": "卡组中王国种族卡牌不小于5张"
-            }
-          ]
-        },
-        {
           "MapStageDetailId": "63",
           "Name": "巨人旷野",
           "Type": "1",
@@ -7241,6 +7126,121 @@
               "BonusExplore": "Exp_2820,Coins_3480",
               "Hint": "0",
               "AchievementText": "卡组中地狱种族卡牌不小于5张"
+            }
+          ]
+        },
+        {
+          "MapStageDetailId": "64",
+          "Name": "金色沙漠",
+          "Type": "1",
+          "MapStageId": "8",
+          "Rank": "1",
+          "X": "159",
+          "Y": "182",
+          "Prev": "63",
+          "Next": "65",
+          "NextBranch": "0",
+          "FightName": "雷兽",
+          "FightImg": "89",
+          "Dialogue": [
+            {
+              "StoryId": "328",
+              "Did": "8_2_1",
+              "NPC": "player_name",
+              "Dialogue": "好大一片沙漠啊，我们的目标到底是哪里啊？",
+              "Icon": "0_0",
+              "Orientations": "1",
+              "Opportunity": "1"
+            },
+            {
+              "StoryId": "329",
+              "Did": "8_2_2",
+              "NPC": "美狄丝",
+              "Dialogue": "找……碑。",
+              "Icon": "1_5",
+              "Orientations": "2",
+              "Opportunity": "1"
+            },
+            {
+              "StoryId": "330",
+              "Did": "8_2_3",
+              "NPC": "player_name",
+              "Dialogue": "找碑？什么碑？在哪里？",
+              "Icon": "0_4",
+              "Orientations": "1",
+              "Opportunity": "1"
+            },
+            {
+              "StoryId": "331",
+              "Did": "8_2_4",
+              "NPC": "美狄丝",
+              "Dialogue": "神力……不……足……",
+              "Icon": "1_5",
+              "Orientations": "2",
+              "Opportunity": "1"
+            },
+            {
+              "StoryId": "332",
+              "Did": "8_2_5",
+              "NPC": "player_name",
+              "Dialogue": "美狄丝……丝丝……丝丝姐！！！",
+              "Icon": "0_4",
+              "Orientations": "1",
+              "Opportunity": "1"
+            }
+          ],
+          "DialogueAfter": null,
+          "Levels": [
+            {
+              "MapStageDetailId": "64",
+              "Level": "1",
+              "CardList": "82_8,82_10,86_6,87_4,87_5,87_6,88_4,88_5,88_6,89_5",
+              "RuneList": "40_2,37_2,7_2,33_2",
+              "HeroLevel": "45",
+              "AchievementId": "0",
+              "EnergyExpend": "2",
+              "BonusWin": "Exp_1540,Coins_1920",
+              "FirstBonusWin": "",
+              "BonusLose": "Exp_90,Coins_90",
+              "AddedBonus": "",
+              "EnergyExplore": "2",
+              "BonusExplore": "Exp_1880,Coins_2320",
+              "Hint": "0",
+              "AchievementText": "战斗胜利"
+            },
+            {
+              "MapStageDetailId": "64",
+              "Level": "2",
+              "CardList": "82_10,82_10,86_8,87_5,87_7,87_9,88_5,88_6,88_7,89_6",
+              "RuneList": "40_3,37_3,7_3,33_3",
+              "HeroLevel": "46",
+              "AchievementId": "52",
+              "EnergyExpend": "2",
+              "BonusWin": "Exp_1920,Coins_2400",
+              "FirstBonusWin": "",
+              "BonusLose": "Exp_90,Coins_90",
+              "AddedBonus": "",
+              "EnergyExplore": "2",
+              "BonusExplore": "Exp_2350,Coins_2900",
+              "Hint": "0",
+              "AchievementText": "卡组中4星卡牌不小于3张"
+            },
+            {
+              "MapStageDetailId": "64",
+              "Level": "3",
+              "CardList": "82_10,82_10,86_10,87_8,87_10,87_8,88_8,88_10,88_8,89_7",
+              "RuneList": "40_4,37_4,7_4,33_4",
+              "HeroLevel": "47",
+              "AchievementId": "24",
+              "EnergyExpend": "2",
+              "BonusWin": "Exp_2300,Coins_2880",
+              "FirstBonusWin": "Card_104",
+              "BonusLose": "Exp_90,Coins_90",
+              "AddedBonus": "",
+              "EnergyExplore": "2",
+              "BonusExplore": "Exp_2820,Coins_3480",
+              "Hint": "0",
+              "AchievementText": "卡组中王国种族卡牌不小于5张"
             }
           ]
         },
@@ -8345,6 +8345,121 @@
       "Next": "10",
       "MapStageDetails": [
         {
+          "MapStageDetailId": "77",
+          "Name": "灰熊森林",
+          "Type": "1",
+          "MapStageId": "9",
+          "Rank": "2",
+          "X": "320",
+          "Y": "351",
+          "Prev": "76",
+          "Next": "78",
+          "NextBranch": "0",
+          "FightName": "海岛怪物",
+          "FightImg": "127",
+          "Dialogue": [
+            {
+              "StoryId": "395",
+              "Did": "9_3_1",
+              "NPC": "美狄丝",
+              "Dialogue": "……",
+              "Icon": "1_3",
+              "Orientations": "2",
+              "Opportunity": "1"
+            },
+            {
+              "StoryId": "396",
+              "Did": "9_3_2",
+              "NPC": "player_name",
+              "Dialogue": "看你的嘴脸，我就知道你想吃东西了。",
+              "Icon": "0_3",
+              "Orientations": "1",
+              "Opportunity": "1"
+            },
+            {
+              "StoryId": "397",
+              "Did": "9_3_3",
+              "NPC": "美狄丝",
+              "Dialogue": "真了解我！",
+              "Icon": "1_1",
+              "Orientations": "2",
+              "Opportunity": "1"
+            },
+            {
+              "StoryId": "398",
+              "Did": "9_3_4",
+              "NPC": "player_name",
+              "Dialogue": "你在这等着，俺去去就来。",
+              "Icon": "0_1",
+              "Orientations": "1",
+              "Opportunity": "1"
+            },
+            {
+              "StoryId": "399",
+              "Did": "9_3_5",
+              "NPC": "美狄丝",
+              "Dialogue": "总觉得我应该再收两个小弟。一个胖一点的，另一个用来挑行李。",
+              "Icon": "1_3",
+              "Orientations": "2",
+              "Opportunity": "1"
+            }
+          ],
+          "DialogueAfter": null,
+          "Levels": [
+            {
+              "MapStageDetailId": "77",
+              "Level": "1",
+              "CardList": "145_8,21_10,23_10,158_10,158_8,127_6,90_8,85_10,125_8,125_10",
+              "RuneList": "35_2,9_2,36_2,40_2",
+              "HeroLevel": "49",
+              "AchievementId": "0",
+              "EnergyExpend": "2",
+              "BonusWin": "Exp_1660,Coins_2080",
+              "FirstBonusWin": "",
+              "BonusLose": "Exp_90,Coins_90",
+              "AddedBonus": "",
+              "EnergyExplore": "2",
+              "BonusExplore": "Exp_1880,Coins_2320",
+              "Hint": "0",
+              "AchievementText": "战斗胜利"
+            },
+            {
+              "MapStageDetailId": "77",
+              "Level": "2",
+              "CardList": "145_10,21_10,23_10,158_10,158_8,127_6,90_10,85_10,125_10,125_10",
+              "RuneList": "35_3,9_3,36_3,40_3",
+              "HeroLevel": "51",
+              "AchievementId": "62",
+              "EnergyExpend": "2",
+              "BonusWin": "Exp_2080,Coins_2600",
+              "FirstBonusWin": "",
+              "BonusLose": "Exp_90,Coins_90",
+              "AddedBonus": "",
+              "EnergyExplore": "2",
+              "BonusExplore": "Exp_2350,Coins_2900",
+              "Hint": "0",
+              "AchievementText": "对方卡牌全灭"
+            },
+            {
+              "MapStageDetailId": "77",
+              "Level": "3",
+              "CardList": "145_8,21_10,23_10,158_10,158_8,127_6,90_8,85_10,125_8,125_10",
+              "RuneList": "35_4,9_4,36_4,40_4",
+              "HeroLevel": "53",
+              "AchievementId": "24",
+              "EnergyExpend": "2",
+              "BonusWin": "Exp_2500,Coins_3120",
+              "FirstBonusWin": "Card_77",
+              "BonusLose": "Exp_90,Coins_90",
+              "AddedBonus": "",
+              "EnergyExplore": "2",
+              "BonusExplore": "Exp_2820,Coins_3480",
+              "Hint": "0",
+              "AchievementText": "卡组中王国种族卡牌不小于5张"
+            }
+          ]
+        },
+        {
           "MapStageDetailId": "75",
           "Name": "巨大石块",
           "Type": "1",
@@ -8487,140 +8602,6 @@
           ]
         },
         {
-          "MapStageDetailId": "83",
-          "Name": "珊瑚山",
-          "Type": "1",
-          "MapStageId": "9",
-          "Rank": "8",
-          "X": "360",
-          "Y": "179",
-          "Prev": "82",
-          "Next": "84",
-          "NextBranch": "0",
-          "FightName": "守卫巨龙",
-          "FightImg": "29",
-          "Dialogue": [
-            {
-              "StoryId": "437",
-              "Did": "9_9_1",
-              "NPC": "咕哩咕哩",
-              "Dialogue": "定海珠就在这附近了！两位老大要小心，这里的怪物非常的厉害。咕哩！",
-              "Icon": "27_0",
-              "Orientations": "2",
-              "Opportunity": "1"
-            },
-            {
-              "StoryId": "438",
-              "Did": "9_9_2",
-              "NPC": "美狄丝",
-              "Dialogue": "接下来就你大发神威了~老大~",
-              "Icon": "1_1",
-              "Orientations": "2",
-              "Opportunity": "1"
-            },
-            {
-              "StoryId": "439",
-              "Did": "9_9_3",
-              "NPC": "player_name",
-              "Dialogue": "每次到最后还要靠我……话说，你躲那么远干嘛？",
-              "Icon": "0_3",
-              "Orientations": "1",
-              "Opportunity": "1"
-            },
-            {
-              "StoryId": "440",
-              "Did": "9_9_4",
-              "NPC": "美狄丝",
-              "Dialogue": "这不是让您有更大的发挥空间么~",
-              "Icon": "1_1",
-              "Orientations": "2",
-              "Opportunity": "1"
-            },
-            {
-              "StoryId": "441",
-              "Did": "9_9_5",
-              "NPC": "player_name",
-              "Dialogue": "……",
-              "Icon": "0_3",
-              "Orientations": "1",
-              "Opportunity": "1"
-            }
-          ],
-          "DialogueAfter": [
-            {
-              "StoryId": "442",
-              "Did": "9_9_6",
-              "NPC": "咕哩咕哩",
-              "Dialogue": "好像不在这里，老大们。在附近找找。",
-              "Icon": "27_0",
-              "Orientations": "2",
-              "Opportunity": "2"
-            },
-            {
-              "StoryId": "443",
-              "Did": "9_9_7",
-              "NPC": "player_name",
-              "Dialogue": "好吧，快点找到，一手交珠，一手交船。",
-              "Icon": "0_0",
-              "Orientations": "1",
-              "Opportunity": "2"
-            }
-          ],
-          "Levels": [
-            {
-              "MapStageDetailId": "83",
-              "Level": "1",
-              "CardList": "145_10,14_10,146_8,14_10,14_10,137_8,27_10,133_10,133_6,29_10",
-              "RuneList": "29_2,30_2,28_2,39_2",
-              "HeroLevel": "55",
-              "AchievementId": "0",
-              "EnergyExpend": "2",
-              "BonusWin": "Exp_1660,Coins_2080",
-              "FirstBonusWin": "",
-              "BonusLose": "Exp_90,Coins_90",
-              "AddedBonus": "",
-              "EnergyExplore": "2",
-              "BonusExplore": "Exp_1880,Coins_2320",
-              "Hint": "0",
-              "AchievementText": "战斗胜利"
-            },
-            {
-              "MapStageDetailId": "83",
-              "Level": "2",
-              "CardList": "145_10,14_10,146_8,14_10,14_10,137_10,27_10,133_10,133_6,29_10",
-              "RuneList": "29_3,30_3,28_3,39_3",
-              "HeroLevel": "57",
-              "AchievementId": "28",
-              "EnergyExpend": "2",
-              "BonusWin": "Exp_2080,Coins_2600",
-              "FirstBonusWin": "",
-              "BonusLose": "Exp_90,Coins_90",
-              "AddedBonus": "",
-              "EnergyExplore": "2",
-              "BonusExplore": "Exp_2350,Coins_2900",
-              "Hint": "0",
-              "AchievementText": "卡组中森林种族卡牌不小于4张"
-            },
-            {
-              "MapStageDetailId": "83",
-              "Level": "3",
-              "CardList": "145_10,14_10,146_8,14_10,14_10,137_8,27_10,133_10,133_6,29_10",
-              "RuneList": "29_4,30_4,28_4,39_4",
-              "HeroLevel": "59",
-              "AchievementId": "41",
-              "EnergyExpend": "2",
-              "BonusWin": "Exp_2500,Coins_3120",
-              "FirstBonusWin": "Card_52",
-              "BonusLose": "Exp_90,Coins_90",
-              "AddedBonus": "",
-              "EnergyExplore": "2",
-              "BonusExplore": "Exp_2820,Coins_3480",
-              "Hint": "0",
-              "AchievementText": "卡组中1星卡牌不小于1张"
-            }
-          ]
-        },
-        {
           "MapStageDetailId": "76",
           "Name": "长脊山",
           "Type": "1",
@@ -8732,121 +8713,6 @@
               "BonusExplore": "Exp_2820,Coins_3480",
               "Hint": "0",
               "AchievementText": "卡组中4星卡牌不小于3张"
-            }
-          ]
-        },
-        {
-          "MapStageDetailId": "77",
-          "Name": "灰熊森林",
-          "Type": "1",
-          "MapStageId": "9",
-          "Rank": "2",
-          "X": "320",
-          "Y": "351",
-          "Prev": "76",
-          "Next": "78",
-          "NextBranch": "0",
-          "FightName": "海岛怪物",
-          "FightImg": "127",
-          "Dialogue": [
-            {
-              "StoryId": "395",
-              "Did": "9_3_1",
-              "NPC": "美狄丝",
-              "Dialogue": "……",
-              "Icon": "1_3",
-              "Orientations": "2",
-              "Opportunity": "1"
-            },
-            {
-              "StoryId": "396",
-              "Did": "9_3_2",
-              "NPC": "player_name",
-              "Dialogue": "看你的嘴脸，我就知道你想吃东西了。",
-              "Icon": "0_3",
-              "Orientations": "1",
-              "Opportunity": "1"
-            },
-            {
-              "StoryId": "397",
-              "Did": "9_3_3",
-              "NPC": "美狄丝",
-              "Dialogue": "真了解我！",
-              "Icon": "1_1",
-              "Orientations": "2",
-              "Opportunity": "1"
-            },
-            {
-              "StoryId": "398",
-              "Did": "9_3_4",
-              "NPC": "player_name",
-              "Dialogue": "你在这等着，俺去去就来。",
-              "Icon": "0_1",
-              "Orientations": "1",
-              "Opportunity": "1"
-            },
-            {
-              "StoryId": "399",
-              "Did": "9_3_5",
-              "NPC": "美狄丝",
-              "Dialogue": "总觉得我应该再收两个小弟。一个胖一点的，另一个用来挑行李。",
-              "Icon": "1_3",
-              "Orientations": "2",
-              "Opportunity": "1"
-            }
-          ],
-          "DialogueAfter": null,
-          "Levels": [
-            {
-              "MapStageDetailId": "77",
-              "Level": "1",
-              "CardList": "145_8,21_10,23_10,158_10,158_8,127_6,90_8,85_10,125_8,125_10",
-              "RuneList": "35_2,9_2,36_2,40_2",
-              "HeroLevel": "49",
-              "AchievementId": "0",
-              "EnergyExpend": "2",
-              "BonusWin": "Exp_1660,Coins_2080",
-              "FirstBonusWin": "",
-              "BonusLose": "Exp_90,Coins_90",
-              "AddedBonus": "",
-              "EnergyExplore": "2",
-              "BonusExplore": "Exp_1880,Coins_2320",
-              "Hint": "0",
-              "AchievementText": "战斗胜利"
-            },
-            {
-              "MapStageDetailId": "77",
-              "Level": "2",
-              "CardList": "145_10,21_10,23_10,158_10,158_8,127_6,90_10,85_10,125_10,125_10",
-              "RuneList": "35_3,9_3,36_3,40_3",
-              "HeroLevel": "51",
-              "AchievementId": "62",
-              "EnergyExpend": "2",
-              "BonusWin": "Exp_2080,Coins_2600",
-              "FirstBonusWin": "",
-              "BonusLose": "Exp_90,Coins_90",
-              "AddedBonus": "",
-              "EnergyExplore": "2",
-              "BonusExplore": "Exp_2350,Coins_2900",
-              "Hint": "0",
-              "AchievementText": "对方卡牌全灭"
-            },
-            {
-              "MapStageDetailId": "77",
-              "Level": "3",
-              "CardList": "145_8,21_10,23_10,158_10,158_8,127_6,90_8,85_10,125_8,125_10",
-              "RuneList": "35_4,9_4,36_4,40_4",
-              "HeroLevel": "53",
-              "AchievementId": "24",
-              "EnergyExpend": "2",
-              "BonusWin": "Exp_2500,Coins_3120",
-              "FirstBonusWin": "Card_77",
-              "BonusLose": "Exp_90,Coins_90",
-              "AddedBonus": "",
-              "EnergyExplore": "2",
-              "BonusExplore": "Exp_2820,Coins_3480",
-              "Hint": "0",
-              "AchievementText": "卡组中王国种族卡牌不小于5张"
             }
           ]
         },
@@ -9535,6 +9401,140 @@
           ]
         },
         {
+          "MapStageDetailId": "83",
+          "Name": "珊瑚山",
+          "Type": "1",
+          "MapStageId": "9",
+          "Rank": "8",
+          "X": "360",
+          "Y": "179",
+          "Prev": "82",
+          "Next": "84",
+          "NextBranch": "0",
+          "FightName": "守卫巨龙",
+          "FightImg": "29",
+          "Dialogue": [
+            {
+              "StoryId": "437",
+              "Did": "9_9_1",
+              "NPC": "咕哩咕哩",
+              "Dialogue": "定海珠就在这附近了！两位老大要小心，这里的怪物非常的厉害。咕哩！",
+              "Icon": "27_0",
+              "Orientations": "2",
+              "Opportunity": "1"
+            },
+            {
+              "StoryId": "438",
+              "Did": "9_9_2",
+              "NPC": "美狄丝",
+              "Dialogue": "接下来就你大发神威了~老大~",
+              "Icon": "1_1",
+              "Orientations": "2",
+              "Opportunity": "1"
+            },
+            {
+              "StoryId": "439",
+              "Did": "9_9_3",
+              "NPC": "player_name",
+              "Dialogue": "每次到最后还要靠我……话说，你躲那么远干嘛？",
+              "Icon": "0_3",
+              "Orientations": "1",
+              "Opportunity": "1"
+            },
+            {
+              "StoryId": "440",
+              "Did": "9_9_4",
+              "NPC": "美狄丝",
+              "Dialogue": "这不是让您有更大的发挥空间么~",
+              "Icon": "1_1",
+              "Orientations": "2",
+              "Opportunity": "1"
+            },
+            {
+              "StoryId": "441",
+              "Did": "9_9_5",
+              "NPC": "player_name",
+              "Dialogue": "……",
+              "Icon": "0_3",
+              "Orientations": "1",
+              "Opportunity": "1"
+            }
+          ],
+          "DialogueAfter": [
+            {
+              "StoryId": "442",
+              "Did": "9_9_6",
+              "NPC": "咕哩咕哩",
+              "Dialogue": "好像不在这里，老大们。在附近找找。",
+              "Icon": "27_0",
+              "Orientations": "2",
+              "Opportunity": "2"
+            },
+            {
+              "StoryId": "443",
+              "Did": "9_9_7",
+              "NPC": "player_name",
+              "Dialogue": "好吧，快点找到，一手交珠，一手交船。",
+              "Icon": "0_0",
+              "Orientations": "1",
+              "Opportunity": "2"
+            }
+          ],
+          "Levels": [
+            {
+              "MapStageDetailId": "83",
+              "Level": "1",
+              "CardList": "145_10,14_10,146_8,14_10,14_10,137_8,27_10,133_10,133_6,29_10",
+              "RuneList": "29_2,30_2,28_2,39_2",
+              "HeroLevel": "55",
+              "AchievementId": "0",
+              "EnergyExpend": "2",
+              "BonusWin": "Exp_1660,Coins_2080",
+              "FirstBonusWin": "",
+              "BonusLose": "Exp_90,Coins_90",
+              "AddedBonus": "",
+              "EnergyExplore": "2",
+              "BonusExplore": "Exp_1880,Coins_2320",
+              "Hint": "0",
+              "AchievementText": "战斗胜利"
+            },
+            {
+              "MapStageDetailId": "83",
+              "Level": "2",
+              "CardList": "145_10,14_10,146_8,14_10,14_10,137_10,27_10,133_10,133_6,29_10",
+              "RuneList": "29_3,30_3,28_3,39_3",
+              "HeroLevel": "57",
+              "AchievementId": "28",
+              "EnergyExpend": "2",
+              "BonusWin": "Exp_2080,Coins_2600",
+              "FirstBonusWin": "",
+              "BonusLose": "Exp_90,Coins_90",
+              "AddedBonus": "",
+              "EnergyExplore": "2",
+              "BonusExplore": "Exp_2350,Coins_2900",
+              "Hint": "0",
+              "AchievementText": "卡组中森林种族卡牌不小于4张"
+            },
+            {
+              "MapStageDetailId": "83",
+              "Level": "3",
+              "CardList": "145_10,14_10,146_8,14_10,14_10,137_8,27_10,133_10,133_6,29_10",
+              "RuneList": "29_4,30_4,28_4,39_4",
+              "HeroLevel": "59",
+              "AchievementId": "41",
+              "EnergyExpend": "2",
+              "BonusWin": "Exp_2500,Coins_3120",
+              "FirstBonusWin": "Card_52",
+              "BonusLose": "Exp_90,Coins_90",
+              "AddedBonus": "",
+              "EnergyExplore": "2",
+              "BonusExplore": "Exp_2820,Coins_3480",
+              "Hint": "0",
+              "AchievementText": "卡组中1星卡牌不小于1张"
+            }
+          ]
+        },
+        {
           "MapStageDetailId": "84",
           "Name": "东侧平原",
           "Type": "2",
@@ -9830,199 +9830,6 @@
       "Prev": "9",
       "Next": "11",
       "MapStageDetails": [
-        {
-          "MapStageDetailId": "95",
-          "Name": "恐怖漏斗",
-          "Type": "1",
-          "MapStageId": "10",
-          "Rank": "8",
-          "X": "703",
-          "Y": "396",
-          "Prev": "94",
-          "Next": "96",
-          "NextBranch": "0",
-          "FightName": "海底妖魔",
-          "FightImg": "112",
-          "Dialogue": [
-            {
-              "StoryId": "518",
-              "Did": "10_9_1",
-              "NPC": "美狄丝",
-              "Dialogue": "哇？这海底是怎么回事啊，这么大一个漏斗。海水都漏下去了！",
-              "Icon": "1_0",
-              "Orientations": "2",
-              "Opportunity": "1"
-            },
-            {
-              "StoryId": "519",
-              "Did": "10_9_2",
-              "NPC": "曼托",
-              "Dialogue": "这是恐惧魔王破坏的。他为了破坏水之力量，打算把这里的海水都吸干。",
-              "Icon": "28_0",
-              "Orientations": "1",
-              "Opportunity": "1"
-            },
-            {
-              "StoryId": "520",
-              "Did": "10_9_3",
-              "NPC": "player_name",
-              "Dialogue": "这家伙能搞出这么大的动静？感觉好像很厉害啊……",
-              "Icon": "0_4",
-              "Orientations": "1",
-              "Opportunity": "1"
-            },
-            {
-              "StoryId": "521",
-              "Did": "10_9_4",
-              "NPC": "美狄丝",
-              "Dialogue": "你怕了？",
-              "Icon": "1_0",
-              "Orientations": "2",
-              "Opportunity": "1"
-            },
-            {
-              "StoryId": "522",
-              "Did": "10_9_5",
-              "NPC": "player_name",
-              "Dialogue": "谁，谁会怕啊！",
-              "Icon": "0_2",
-              "Orientations": "1",
-              "Opportunity": "1"
-            },
-            {
-              "StoryId": "523",
-              "Did": "10_9_6",
-              "NPC": "美狄丝",
-              "Dialogue": "说话都不利索了。",
-              "Icon": "1_0",
-              "Orientations": "2",
-              "Opportunity": "1"
-            }
-          ],
-          "DialogueAfter": null,
-          "Levels": [
-            {
-              "MapStageDetailId": "95",
-              "Level": "1",
-              "CardList": "140_10,140_10,120_10,112_10,112_8,24_10,24_10,113_8,113_10,119_10",
-              "RuneList": "10_2,36_2,39_2,6_2",
-              "HeroLevel": "59",
-              "AchievementId": "0",
-              "EnergyExpend": "2",
-              "BonusWin": "Exp_1860,Coins_2320",
-              "FirstBonusWin": "",
-              "BonusLose": "Exp_90,Coins_90",
-              "AddedBonus": "",
-              "EnergyExplore": "2",
-              "BonusExplore": "Exp_1880,Coins_2320",
-              "Hint": "0",
-              "AchievementText": "战斗胜利"
-            },
-            {
-              "MapStageDetailId": "95",
-              "Level": "2",
-              "CardList": "140_10,140_10,120_10,112_10,112_10,24_10,24_10,113_8,113_10,119_10",
-              "RuneList": "10_3,36_3,39_3,6_3",
-              "HeroLevel": "61",
-              "AchievementId": "58",
-              "EnergyExpend": "2",
-              "BonusWin": "Exp_2320,Coins_2900",
-              "FirstBonusWin": "",
-              "BonusLose": "Exp_90,Coins_90",
-              "AddedBonus": "",
-              "EnergyExplore": "2",
-              "BonusExplore": "Exp_2350,Coins_2900",
-              "Hint": "0",
-              "AchievementText": "卡组中包含风属性符文"
-            },
-            {
-              "MapStageDetailId": "95",
-              "Level": "3",
-              "CardList": "140_10,140_10,120_10,112_10,112_10,24_10,24_10,113_10,113_10,119_10",
-              "RuneList": "10_4,36_4,39_4,6_4",
-              "HeroLevel": "63",
-              "AchievementId": "62",
-              "EnergyExpend": "2",
-              "BonusWin": "Exp_2780,Coins_3480",
-              "FirstBonusWin": "Card_160",
-              "BonusLose": "Exp_90,Coins_90",
-              "AddedBonus": "",
-              "EnergyExplore": "2",
-              "BonusExplore": "Exp_2820,Coins_3480",
-              "Hint": "0",
-              "AchievementText": "对方卡牌全灭"
-            }
-          ]
-        },
-        {
-          "MapStageDetailId": "97",
-          "Name": "鱼人村",
-          "Type": "0",
-          "MapStageId": "10",
-          "Rank": "10",
-          "X": "634",
-          "Y": "210",
-          "Prev": "92",
-          "Next": "0",
-          "NextBranch": "0",
-          "FightName": "海底鱼人",
-          "FightImg": "156",
-          "Dialogue": null,
-          "DialogueAfter": null,
-          "Levels": [
-            {
-              "MapStageDetailId": "97",
-              "Level": "1",
-              "CardList": "24_10,24_8,156_10,163_10,163_8,120_10,24_10,60_10,60_10,60_8",
-              "RuneList": "39_2,9_2,29_2,19_2",
-              "HeroLevel": "65",
-              "AchievementId": "0",
-              "EnergyExpend": "2",
-              "BonusWin": "Exp_1860,Coins_2320",
-              "FirstBonusWin": "Card_24",
-              "BonusLose": "Exp_100,Coins_100",
-              "AddedBonus": "",
-              "EnergyExplore": "2",
-              "BonusExplore": "Exp_1880,Coins_2320",
-              "Hint": "0",
-              "AchievementText": "战斗胜利"
-            },
-            {
-              "MapStageDetailId": "97",
-              "Level": "2",
-              "CardList": "24_10,24_10,156_10,163_10,163_10,120_10,24_10,60_10,60_10,60_8",
-              "RuneList": "39_3,9_3,29_3,19_3",
-              "HeroLevel": "68",
-              "AchievementId": "2",
-              "EnergyExpend": "2",
-              "BonusWin": "Exp_2320,Coins_2900",
-              "FirstBonusWin": "Card_151",
-              "BonusLose": "Exp_100,Coins_100",
-              "AddedBonus": "",
-              "EnergyExplore": "2",
-              "BonusExplore": "Exp_2350,Coins_2900",
-              "Hint": "0",
-              "AchievementText": "36回合数内取得胜利"
-            },
-            {
-              "MapStageDetailId": "97",
-              "Level": "3",
-              "CardList": "24_10,24_10,156_10,163_10,163_10,120_10,24_10,60_10,60_10,60_10",
-              "RuneList": "39_4,9_4,29_4,19_4",
-              "HeroLevel": "71",
-              "AchievementId": "35",
-              "EnergyExpend": "2",
-              "BonusWin": "Exp_2780,Coins_3480",
-              "FirstBonusWin": "Card_128",
-              "BonusLose": "Exp_100,Coins_100",
-              "AddedBonus": "",
-              "EnergyExplore": "2",
-              "BonusExplore": "Exp_2820,Coins_3480",
-              "Hint": "0",
-              "AchievementText": "卡组中地狱种族卡牌不小于6张"
-            }
-          ]
-        },
         {
           "MapStageDetailId": "87",
           "Name": "迷雾礁石",
@@ -11125,6 +10932,130 @@
           ]
         },
         {
+          "MapStageDetailId": "95",
+          "Name": "恐怖漏斗",
+          "Type": "1",
+          "MapStageId": "10",
+          "Rank": "8",
+          "X": "703",
+          "Y": "396",
+          "Prev": "94",
+          "Next": "96",
+          "NextBranch": "0",
+          "FightName": "海底妖魔",
+          "FightImg": "112",
+          "Dialogue": [
+            {
+              "StoryId": "518",
+              "Did": "10_9_1",
+              "NPC": "美狄丝",
+              "Dialogue": "哇？这海底是怎么回事啊，这么大一个漏斗。海水都漏下去了！",
+              "Icon": "1_0",
+              "Orientations": "2",
+              "Opportunity": "1"
+            },
+            {
+              "StoryId": "519",
+              "Did": "10_9_2",
+              "NPC": "曼托",
+              "Dialogue": "这是恐惧魔王破坏的。他为了破坏水之力量，打算把这里的海水都吸干。",
+              "Icon": "28_0",
+              "Orientations": "1",
+              "Opportunity": "1"
+            },
+            {
+              "StoryId": "520",
+              "Did": "10_9_3",
+              "NPC": "player_name",
+              "Dialogue": "这家伙能搞出这么大的动静？感觉好像很厉害啊……",
+              "Icon": "0_4",
+              "Orientations": "1",
+              "Opportunity": "1"
+            },
+            {
+              "StoryId": "521",
+              "Did": "10_9_4",
+              "NPC": "美狄丝",
+              "Dialogue": "你怕了？",
+              "Icon": "1_0",
+              "Orientations": "2",
+              "Opportunity": "1"
+            },
+            {
+              "StoryId": "522",
+              "Did": "10_9_5",
+              "NPC": "player_name",
+              "Dialogue": "谁，谁会怕啊！",
+              "Icon": "0_2",
+              "Orientations": "1",
+              "Opportunity": "1"
+            },
+            {
+              "StoryId": "523",
+              "Did": "10_9_6",
+              "NPC": "美狄丝",
+              "Dialogue": "说话都不利索了。",
+              "Icon": "1_0",
+              "Orientations": "2",
+              "Opportunity": "1"
+            }
+          ],
+          "DialogueAfter": null,
+          "Levels": [
+            {
+              "MapStageDetailId": "95",
+              "Level": "1",
+              "CardList": "140_10,140_10,120_10,112_10,112_8,24_10,24_10,113_8,113_10,119_10",
+              "RuneList": "10_2,36_2,39_2,6_2",
+              "HeroLevel": "59",
+              "AchievementId": "0",
+              "EnergyExpend": "2",
+              "BonusWin": "Exp_1860,Coins_2320",
+              "FirstBonusWin": "",
+              "BonusLose": "Exp_90,Coins_90",
+              "AddedBonus": "",
+              "EnergyExplore": "2",
+              "BonusExplore": "Exp_1880,Coins_2320",
+              "Hint": "0",
+              "AchievementText": "战斗胜利"
+            },
+            {
+              "MapStageDetailId": "95",
+              "Level": "2",
+              "CardList": "140_10,140_10,120_10,112_10,112_10,24_10,24_10,113_8,113_10,119_10",
+              "RuneList": "10_3,36_3,39_3,6_3",
+              "HeroLevel": "61",
+              "AchievementId": "58",
+              "EnergyExpend": "2",
+              "BonusWin": "Exp_2320,Coins_2900",
+              "FirstBonusWin": "",
+              "BonusLose": "Exp_90,Coins_90",
+              "AddedBonus": "",
+              "EnergyExplore": "2",
+              "BonusExplore": "Exp_2350,Coins_2900",
+              "Hint": "0",
+              "AchievementText": "卡组中包含风属性符文"
+            },
+            {
+              "MapStageDetailId": "95",
+              "Level": "3",
+              "CardList": "140_10,140_10,120_10,112_10,112_10,24_10,24_10,113_10,113_10,119_10",
+              "RuneList": "10_4,36_4,39_4,6_4",
+              "HeroLevel": "63",
+              "AchievementId": "62",
+              "EnergyExpend": "2",
+              "BonusWin": "Exp_2780,Coins_3480",
+              "FirstBonusWin": "Card_160",
+              "BonusLose": "Exp_90,Coins_90",
+              "AddedBonus": "",
+              "EnergyExplore": "2",
+              "BonusExplore": "Exp_2820,Coins_3480",
+              "Hint": "0",
+              "AchievementText": "对方卡牌全灭"
+            }
+          ]
+        },
+        {
           "MapStageDetailId": "96",
           "Name": "海底山",
           "Type": "2",
@@ -11254,6 +11185,75 @@
               "BonusExplore": "Exp_2820,Coins_3480",
               "Hint": "0",
               "AchievementText": "己方阵亡卡牌小于5张"
+            }
+          ]
+        },
+        {
+          "MapStageDetailId": "97",
+          "Name": "鱼人村",
+          "Type": "0",
+          "MapStageId": "10",
+          "Rank": "10",
+          "X": "634",
+          "Y": "210",
+          "Prev": "92",
+          "Next": "0",
+          "NextBranch": "0",
+          "FightName": "海底鱼人",
+          "FightImg": "156",
+          "Dialogue": null,
+          "DialogueAfter": null,
+          "Levels": [
+            {
+              "MapStageDetailId": "97",
+              "Level": "1",
+              "CardList": "24_10,24_8,156_10,163_10,163_8,120_10,24_10,60_10,60_10,60_8",
+              "RuneList": "39_2,9_2,29_2,19_2",
+              "HeroLevel": "65",
+              "AchievementId": "0",
+              "EnergyExpend": "2",
+              "BonusWin": "Exp_1860,Coins_2320",
+              "FirstBonusWin": "Card_24",
+              "BonusLose": "Exp_100,Coins_100",
+              "AddedBonus": "",
+              "EnergyExplore": "2",
+              "BonusExplore": "Exp_1880,Coins_2320",
+              "Hint": "0",
+              "AchievementText": "战斗胜利"
+            },
+            {
+              "MapStageDetailId": "97",
+              "Level": "2",
+              "CardList": "24_10,24_10,156_10,163_10,163_10,120_10,24_10,60_10,60_10,60_8",
+              "RuneList": "39_3,9_3,29_3,19_3",
+              "HeroLevel": "68",
+              "AchievementId": "2",
+              "EnergyExpend": "2",
+              "BonusWin": "Exp_2320,Coins_2900",
+              "FirstBonusWin": "Card_151",
+              "BonusLose": "Exp_100,Coins_100",
+              "AddedBonus": "",
+              "EnergyExplore": "2",
+              "BonusExplore": "Exp_2350,Coins_2900",
+              "Hint": "0",
+              "AchievementText": "36回合数内取得胜利"
+            },
+            {
+              "MapStageDetailId": "97",
+              "Level": "3",
+              "CardList": "24_10,24_10,156_10,163_10,163_10,120_10,24_10,60_10,60_10,60_10",
+              "RuneList": "39_4,9_4,29_4,19_4",
+              "HeroLevel": "71",
+              "AchievementId": "35",
+              "EnergyExpend": "2",
+              "BonusWin": "Exp_2780,Coins_3480",
+              "FirstBonusWin": "Card_128",
+              "BonusLose": "Exp_100,Coins_100",
+              "AddedBonus": "",
+              "EnergyExplore": "2",
+              "BonusExplore": "Exp_2820,Coins_3480",
+              "Hint": "0",
+              "AchievementText": "卡组中地狱种族卡牌不小于6张"
             }
           ]
         },
@@ -11403,6 +11403,121 @@
           ]
         },
         {
+          "MapStageDetailId": "100",
+          "Name": "火龙遗骸",
+          "Type": "1",
+          "MapStageId": "11",
+          "Rank": "1",
+          "X": "792",
+          "Y": "324",
+          "Prev": "99",
+          "Next": "101",
+          "NextBranch": "0",
+          "FightName": "魔兽遗骸",
+          "FightImg": "118",
+          "Dialogue": [
+            {
+              "StoryId": "536",
+              "Did": "11_2_1",
+              "NPC": "美狄丝",
+              "Dialogue": "哇！！老大，有“魔兽”的骸骨。",
+              "Icon": "1_2",
+              "Orientations": "2",
+              "Opportunity": "1"
+            },
+            {
+              "StoryId": "537",
+              "Did": "11_2_2",
+              "NPC": "player_name",
+              "Dialogue": "这怎么是“魔兽”，我看像龙。",
+              "Icon": "0_3",
+              "Orientations": "1",
+              "Opportunity": "1"
+            },
+            {
+              "StoryId": "538",
+              "Did": "11_2_3",
+              "NPC": "曼托",
+              "Dialogue": "这确实是火龙的骸骨，是什么力量竟然连火龙都可以残杀……",
+              "Icon": "28_0",
+              "Orientations": "2",
+              "Opportunity": "1"
+            },
+            {
+              "StoryId": "539",
+              "Did": "11_2_4",
+              "NPC": "player_name",
+              "Dialogue": "此地不宜久留！",
+              "Icon": "0_2",
+              "Orientations": "1",
+              "Opportunity": "1"
+            },
+            {
+              "StoryId": "540",
+              "Did": "11_2_5",
+              "NPC": "曼托",
+              "Dialogue": "不好，被发现了！快走。",
+              "Icon": "28_1",
+              "Orientations": "2",
+              "Opportunity": "1"
+            }
+          ],
+          "DialogueAfter": null,
+          "Levels": [
+            {
+              "MapStageDetailId": "100",
+              "Level": "1",
+              "CardList": "181_12_411,181_15_412,118_13_102,113_11_361,182_15_688,168_15_834,120_12_688,106_15_412,56_15_688,106_11_845",
+              "RuneList": "46_2,47_2,8_2,10_2",
+              "HeroLevel": "75",
+              "AchievementId": "0",
+              "EnergyExpend": "2",
+              "BonusWin": "Exp_2080,Coins_2540",
+              "FirstBonusWin": "",
+              "BonusLose": "Exp_90,Coins_90",
+              "AddedBonus": "",
+              "EnergyExplore": "2",
+              "BonusExplore": "Exp_2820,Coins_3480",
+              "Hint": "0",
+              "AchievementText": "战斗胜利"
+            },
+            {
+              "MapStageDetailId": "100",
+              "Level": "2",
+              "CardList": "181_12_411,181_15_412,118_13_102,113_15_361,182_15_688,168_15_834,120_12_688,106_15_412,56_15_688,106_11_845",
+              "RuneList": "46_3,47_3,8_3,10_3",
+              "HeroLevel": "77",
+              "AchievementId": "48",
+              "EnergyExpend": "2",
+              "BonusWin": "Exp_2600,Coins_3180",
+              "FirstBonusWin": "",
+              "BonusLose": "Exp_90,Coins_90",
+              "AddedBonus": "",
+              "EnergyExplore": "2",
+              "BonusExplore": "Exp_2820,Coins_3480",
+              "Hint": "0",
+              "AchievementText": "卡组中3星卡牌不小于2张"
+            },
+            {
+              "MapStageDetailId": "100",
+              "Level": "3",
+              "CardList": "181_15_411,181_15_412,118_15_102,113_15_361,182_15_688,168_15_834,120_12_688,106_15_412,56_15_688,106_15_845",
+              "RuneList": "46_4,47_4,8_4,10_4",
+              "HeroLevel": "79",
+              "AchievementId": "3",
+              "EnergyExpend": "2",
+              "BonusWin": "Exp_3120,Coins_3820",
+              "FirstBonusWin": "Card_106",
+              "BonusLose": "Exp_90,Coins_90",
+              "AddedBonus": "",
+              "EnergyExplore": "2",
+              "BonusExplore": "Exp_2820,Coins_3480",
+              "Hint": "0",
+              "AchievementText": "32回合数内取得胜利"
+            }
+          ]
+        },
+        {
           "MapStageDetailId": "101",
           "Name": "火象人村",
           "Type": "1",
@@ -11527,361 +11642,6 @@
           ]
         },
         {
-          "MapStageDetailId": "103",
-          "Name": "荒芜之地",
-          "Type": "1",
-          "MapStageId": "11",
-          "Rank": "4",
-          "X": "631",
-          "Y": "368",
-          "Prev": "102",
-          "Next": "104",
-          "NextBranch": "0",
-          "FightName": "蛮荒野兽",
-          "FightImg": "135",
-          "Dialogue": [
-            {
-              "StoryId": "551",
-              "Did": "11_5_1",
-              "NPC": "美狄丝",
-              "Dialogue": "这里怎么会那么荒芜啊……我记得地图上说这里是一片森林啊……",
-              "Icon": "1_4",
-              "Orientations": "2",
-              "Opportunity": "1"
-            },
-            {
-              "StoryId": "552",
-              "Did": "11_5_2",
-              "NPC": "player_name",
-              "Dialogue": "别提那张地图了……小曼，这是哪？",
-              "Icon": "0_3",
-              "Orientations": "1",
-              "Opportunity": "1"
-            },
-            {
-              "StoryId": "553",
-              "Did": "11_5_3",
-              "NPC": "曼托",
-              "Dialogue": "以前，这里确实是一个青葱的山谷。但是，恶魔们的魔法烧焦了大地，把它变成今天这个样子——荒芜人烟的不毛之地。",
-              "Icon": "28_0",
-              "Orientations": "2",
-              "Opportunity": "1"
-            },
-            {
-              "StoryId": "554",
-              "Did": "11_5_4",
-              "NPC": "美狄丝",
-              "Dialogue": "那些着了魔的火象人一定也有份！哼！",
-              "Icon": "1_2",
-              "Orientations": "2",
-              "Opportunity": "1"
-            }
-          ],
-          "DialogueAfter": null,
-          "Levels": [
-            {
-              "MapStageDetailId": "103",
-              "Level": "1",
-              "CardList": "158_15_540,135_15_492,127_15_243,139_15_434,89_12_243,81_15_45,122_15_120,121_14_189,59_12_340,60_11_46",
-              "RuneList": "38_2,19_2,49_2,20_2",
-              "HeroLevel": "81",
-              "AchievementId": "0",
-              "EnergyExpend": "2",
-              "BonusWin": "Exp_2080,Coins_2540",
-              "FirstBonusWin": "",
-              "BonusLose": "Exp_90,Coins_90",
-              "AddedBonus": "",
-              "EnergyExplore": "2",
-              "BonusExplore": "Exp_2820,Coins_3480",
-              "Hint": "0",
-              "AchievementText": "战斗胜利"
-            },
-            {
-              "MapStageDetailId": "103",
-              "Level": "2",
-              "CardList": "158_15_540,135_15_492,127_15_243,139_15_434,89_14_243,81_15_45,122_15_120,121_14_189,59_12_340,60_13_46",
-              "RuneList": "38_3,19_3,49_3,20_3",
-              "HeroLevel": "83",
-              "AchievementId": "56",
-              "EnergyExpend": "2",
-              "BonusWin": "Exp_2600,Coins_3180",
-              "FirstBonusWin": "",
-              "BonusLose": "Exp_90,Coins_90",
-              "AddedBonus": "",
-              "EnergyExplore": "2",
-              "BonusExplore": "Exp_2820,Coins_3480",
-              "Hint": "0",
-              "AchievementText": "卡组中包含水属性符文"
-            },
-            {
-              "MapStageDetailId": "103",
-              "Level": "3",
-              "CardList": "158_15_540,135_15_492,127_15_243,139_15_434,89_15_243,81_15_45,122_15_120,121_14_189,59_15_340,60_15_46",
-              "RuneList": "38_4,19_4,49_4,20_4",
-              "HeroLevel": "85",
-              "AchievementId": "47",
-              "EnergyExpend": "2",
-              "BonusWin": "Exp_3120,Coins_3820",
-              "FirstBonusWin": "Card_122",
-              "BonusLose": "Exp_90,Coins_90",
-              "AddedBonus": "",
-              "EnergyExplore": "2",
-              "BonusExplore": "Exp_2820,Coins_3480",
-              "Hint": "0",
-              "AchievementText": "卡组中3星卡牌不小于1张"
-            }
-          ]
-        },
-        {
-          "MapStageDetailId": "109",
-          "Name": "火山口",
-          "Type": "2",
-          "MapStageId": "11",
-          "Rank": "10",
-          "X": "500",
-          "Y": "416",
-          "Prev": "108",
-          "Next": "112",
-          "NextBranch": "0",
-          "FightName": "地狱魔灵",
-          "FightImg": "184",
-          "Dialogue": [
-            {
-              "StoryId": "577",
-              "Did": "11_11_1",
-              "NPC": "曼托",
-              "Dialogue": "我没有感受到火元素的力量，难道……",
-              "Icon": "28_1",
-              "Orientations": "1",
-              "Opportunity": "1"
-            },
-            {
-              "StoryId": "578",
-              "Did": "11_11_2",
-              "NPC": "美狄丝",
-              "Dialogue": "老大，快看有个墓碑。墓碑上还有些字。",
-              "Icon": "1_0",
-              "Orientations": "1",
-              "Opportunity": "1"
-            },
-            {
-              "StoryId": "579",
-              "Did": "11_11_3",
-              "NPC": "墓碑",
-              "Dialogue": "黑暗的恐惧魔王不惜代价疯狂的残杀着龙族。火龙不敌如潮水般的攻击，最终倒下。由于火龙的死亡，蛮荒火山被大量的火象人占领。黑暗的力量顺势强大。 我无法抵挡这强大的力量，我选择了离开——特米亚",
-              "Icon": "39_0",
-              "Orientations": "2",
-              "Opportunity": "1"
-            }
-          ],
-          "DialogueAfter": [
-            {
-              "StoryId": "580",
-              "Did": "11_11_4",
-              "NPC": "player_name",
-              "Dialogue": "特米亚会去哪里呢……",
-              "Icon": "0_0",
-              "Orientations": "1",
-              "Opportunity": "2"
-            },
-            {
-              "StoryId": "581",
-              "Did": "11_11_5",
-              "NPC": "曼托",
-              "Dialogue": "我知道她会去哪里。",
-              "Icon": "28_0",
-              "Orientations": "2",
-              "Opportunity": "2"
-            },
-            {
-              "StoryId": "582",
-              "Did": "11_11_6",
-              "NPC": "player_name",
-              "Dialogue": "哪里？！",
-              "Icon": "0_0",
-              "Orientations": "1",
-              "Opportunity": "2"
-            },
-            {
-              "StoryId": "583",
-              "Did": "11_11_7",
-              "NPC": "曼托",
-              "Dialogue": "这片大陆的另一个火焰力量强大的地方——燃烧平原。",
-              "Icon": "28_0",
-              "Orientations": "2",
-              "Opportunity": "2"
-            }
-          ],
-          "Levels": [
-            {
-              "MapStageDetailId": "109",
-              "Level": "1",
-              "CardList": "184_15_667,168_15_273,120_15_1029,184_11_667,168_11_604,120_15_1029,119_11_88,119_15_243,119_10,56_15_688",
-              "RuneList": "47_2,8_2,10_2,5_2",
-              "HeroLevel": "88",
-              "AchievementId": "0",
-              "EnergyExpend": "2",
-              "BonusWin": "Exp_3120,Coins_3820",
-              "FirstBonusWin": "Card_180",
-              "BonusLose": "Exp_100,Coins_100",
-              "AddedBonus": "",
-              "EnergyExplore": "2",
-              "BonusExplore": "Exp_2820,Coins_3480",
-              "Hint": "0",
-              "AchievementText": "战斗胜利"
-            },
-            {
-              "MapStageDetailId": "109",
-              "Level": "2",
-              "CardList": "184_15_667,168_15_273,120_15_1029,184_13_667,168_13_604,120_15_1029,119_13_88,119_15_243,119_10,56_15_688",
-              "RuneList": "47_3,8_3,10_3,5_3",
-              "HeroLevel": "90",
-              "AchievementId": "59",
-              "EnergyExpend": "2",
-              "BonusWin": "Exp_3900,Coins_4770",
-              "FirstBonusWin": "Card_146",
-              "BonusLose": "Exp_100,Coins_100",
-              "AddedBonus": "",
-              "EnergyExplore": "2",
-              "BonusExplore": "Exp_2820,Coins_3480",
-              "Hint": "0",
-              "AchievementText": "卡组中包含地属性符文"
-            },
-            {
-              "MapStageDetailId": "109",
-              "Level": "3",
-              "CardList": "184_15_667,168_15_273,120_15_1029,184_15_667,168_15_604,120_15_1029,119_15_88,119_15_243,119_10,56_15_688",
-              "RuneList": "47_4,8_4,10_4,5_4",
-              "HeroLevel": "92",
-              "AchievementId": "2",
-              "EnergyExpend": "2",
-              "BonusWin": "Exp_4680,Coins_5720",
-              "FirstBonusWin": "Card_182",
-              "BonusLose": "Exp_100,Coins_100",
-              "AddedBonus": "",
-              "EnergyExplore": "2",
-              "BonusExplore": "Exp_2820,Coins_3480",
-              "Hint": "0",
-              "AchievementText": "36回合数内取得胜利"
-            }
-          ]
-        },
-        {
-          "MapStageDetailId": "100",
-          "Name": "火龙遗骸",
-          "Type": "1",
-          "MapStageId": "11",
-          "Rank": "1",
-          "X": "792",
-          "Y": "324",
-          "Prev": "99",
-          "Next": "101",
-          "NextBranch": "0",
-          "FightName": "魔兽遗骸",
-          "FightImg": "118",
-          "Dialogue": [
-            {
-              "StoryId": "536",
-              "Did": "11_2_1",
-              "NPC": "美狄丝",
-              "Dialogue": "哇！！老大，有“魔兽”的骸骨。",
-              "Icon": "1_2",
-              "Orientations": "2",
-              "Opportunity": "1"
-            },
-            {
-              "StoryId": "537",
-              "Did": "11_2_2",
-              "NPC": "player_name",
-              "Dialogue": "这怎么是“魔兽”，我看像龙。",
-              "Icon": "0_3",
-              "Orientations": "1",
-              "Opportunity": "1"
-            },
-            {
-              "StoryId": "538",
-              "Did": "11_2_3",
-              "NPC": "曼托",
-              "Dialogue": "这确实是火龙的骸骨，是什么力量竟然连火龙都可以残杀……",
-              "Icon": "28_0",
-              "Orientations": "2",
-              "Opportunity": "1"
-            },
-            {
-              "StoryId": "539",
-              "Did": "11_2_4",
-              "NPC": "player_name",
-              "Dialogue": "此地不宜久留！",
-              "Icon": "0_2",
-              "Orientations": "1",
-              "Opportunity": "1"
-            },
-            {
-              "StoryId": "540",
-              "Did": "11_2_5",
-              "NPC": "曼托",
-              "Dialogue": "不好，被发现了！快走。",
-              "Icon": "28_1",
-              "Orientations": "2",
-              "Opportunity": "1"
-            }
-          ],
-          "DialogueAfter": null,
-          "Levels": [
-            {
-              "MapStageDetailId": "100",
-              "Level": "1",
-              "CardList": "181_12_411,181_15_412,118_13_102,113_11_361,182_15_688,168_15_834,120_12_688,106_15_412,56_15_688,106_11_845",
-              "RuneList": "46_2,47_2,8_2,10_2",
-              "HeroLevel": "75",
-              "AchievementId": "0",
-              "EnergyExpend": "2",
-              "BonusWin": "Exp_2080,Coins_2540",
-              "FirstBonusWin": "",
-              "BonusLose": "Exp_90,Coins_90",
-              "AddedBonus": "",
-              "EnergyExplore": "2",
-              "BonusExplore": "Exp_2820,Coins_3480",
-              "Hint": "0",
-              "AchievementText": "战斗胜利"
-            },
-            {
-              "MapStageDetailId": "100",
-              "Level": "2",
-              "CardList": "181_12_411,181_15_412,118_13_102,113_15_361,182_15_688,168_15_834,120_12_688,106_15_412,56_15_688,106_11_845",
-              "RuneList": "46_3,47_3,8_3,10_3",
-              "HeroLevel": "77",
-              "AchievementId": "48",
-              "EnergyExpend": "2",
-              "BonusWin": "Exp_2600,Coins_3180",
-              "FirstBonusWin": "",
-              "BonusLose": "Exp_90,Coins_90",
-              "AddedBonus": "",
-              "EnergyExplore": "2",
-              "BonusExplore": "Exp_2820,Coins_3480",
-              "Hint": "0",
-              "AchievementText": "卡组中3星卡牌不小于2张"
-            },
-            {
-              "MapStageDetailId": "100",
-              "Level": "3",
-              "CardList": "181_15_411,181_15_412,118_15_102,113_15_361,182_15_688,168_15_834,120_12_688,106_15_412,56_15_688,106_15_845",
-              "RuneList": "46_4,47_4,8_4,10_4",
-              "HeroLevel": "79",
-              "AchievementId": "3",
-              "EnergyExpend": "2",
-              "BonusWin": "Exp_3120,Coins_3820",
-              "FirstBonusWin": "Card_106",
-              "BonusLose": "Exp_90,Coins_90",
-              "AddedBonus": "",
-              "EnergyExplore": "2",
-              "BonusExplore": "Exp_2820,Coins_3480",
-              "Hint": "0",
-              "AchievementText": "32回合数内取得胜利"
-            }
-          ]
-        },
-        {
           "MapStageDetailId": "102",
           "Name": "石像堡",
           "Type": "1",
@@ -11984,6 +11744,112 @@
               "BonusExplore": "Exp_2820,Coins_3480",
               "Hint": "0",
               "AchievementText": "卡组中地狱种族卡牌不小于4张"
+            }
+          ]
+        },
+        {
+          "MapStageDetailId": "103",
+          "Name": "荒芜之地",
+          "Type": "1",
+          "MapStageId": "11",
+          "Rank": "4",
+          "X": "631",
+          "Y": "368",
+          "Prev": "102",
+          "Next": "104",
+          "NextBranch": "0",
+          "FightName": "蛮荒野兽",
+          "FightImg": "135",
+          "Dialogue": [
+            {
+              "StoryId": "551",
+              "Did": "11_5_1",
+              "NPC": "美狄丝",
+              "Dialogue": "这里怎么会那么荒芜啊……我记得地图上说这里是一片森林啊……",
+              "Icon": "1_4",
+              "Orientations": "2",
+              "Opportunity": "1"
+            },
+            {
+              "StoryId": "552",
+              "Did": "11_5_2",
+              "NPC": "player_name",
+              "Dialogue": "别提那张地图了……小曼，这是哪？",
+              "Icon": "0_3",
+              "Orientations": "1",
+              "Opportunity": "1"
+            },
+            {
+              "StoryId": "553",
+              "Did": "11_5_3",
+              "NPC": "曼托",
+              "Dialogue": "以前，这里确实是一个青葱的山谷。但是，恶魔们的魔法烧焦了大地，把它变成今天这个样子——荒芜人烟的不毛之地。",
+              "Icon": "28_0",
+              "Orientations": "2",
+              "Opportunity": "1"
+            },
+            {
+              "StoryId": "554",
+              "Did": "11_5_4",
+              "NPC": "美狄丝",
+              "Dialogue": "那些着了魔的火象人一定也有份！哼！",
+              "Icon": "1_2",
+              "Orientations": "2",
+              "Opportunity": "1"
+            }
+          ],
+          "DialogueAfter": null,
+          "Levels": [
+            {
+              "MapStageDetailId": "103",
+              "Level": "1",
+              "CardList": "158_15_540,135_15_492,127_15_243,139_15_434,89_12_243,81_15_45,122_15_120,121_14_189,59_12_340,60_11_46",
+              "RuneList": "38_2,19_2,49_2,20_2",
+              "HeroLevel": "81",
+              "AchievementId": "0",
+              "EnergyExpend": "2",
+              "BonusWin": "Exp_2080,Coins_2540",
+              "FirstBonusWin": "",
+              "BonusLose": "Exp_90,Coins_90",
+              "AddedBonus": "",
+              "EnergyExplore": "2",
+              "BonusExplore": "Exp_2820,Coins_3480",
+              "Hint": "0",
+              "AchievementText": "战斗胜利"
+            },
+            {
+              "MapStageDetailId": "103",
+              "Level": "2",
+              "CardList": "158_15_540,135_15_492,127_15_243,139_15_434,89_14_243,81_15_45,122_15_120,121_14_189,59_12_340,60_13_46",
+              "RuneList": "38_3,19_3,49_3,20_3",
+              "HeroLevel": "83",
+              "AchievementId": "56",
+              "EnergyExpend": "2",
+              "BonusWin": "Exp_2600,Coins_3180",
+              "FirstBonusWin": "",
+              "BonusLose": "Exp_90,Coins_90",
+              "AddedBonus": "",
+              "EnergyExplore": "2",
+              "BonusExplore": "Exp_2820,Coins_3480",
+              "Hint": "0",
+              "AchievementText": "卡组中包含水属性符文"
+            },
+            {
+              "MapStageDetailId": "103",
+              "Level": "3",
+              "CardList": "158_15_540,135_15_492,127_15_243,139_15_434,89_15_243,81_15_45,122_15_120,121_14_189,59_15_340,60_15_46",
+              "RuneList": "38_4,19_4,49_4,20_4",
+              "HeroLevel": "85",
+              "AchievementId": "47",
+              "EnergyExpend": "2",
+              "BonusWin": "Exp_3120,Coins_3820",
+              "FirstBonusWin": "Card_122",
+              "BonusLose": "Exp_90,Coins_90",
+              "AddedBonus": "",
+              "EnergyExplore": "2",
+              "BonusExplore": "Exp_2820,Coins_3480",
+              "Hint": "0",
+              "AchievementText": "卡组中3星卡牌不小于1张"
             }
           ]
         },
@@ -12532,6 +12398,140 @@
               "BonusExplore": "Exp_2820,Coins_3480",
               "Hint": "0",
               "AchievementText": "己方阵亡卡牌小于5张"
+            }
+          ]
+        },
+        {
+          "MapStageDetailId": "109",
+          "Name": "火山口",
+          "Type": "2",
+          "MapStageId": "11",
+          "Rank": "10",
+          "X": "500",
+          "Y": "416",
+          "Prev": "108",
+          "Next": "112",
+          "NextBranch": "0",
+          "FightName": "地狱魔灵",
+          "FightImg": "184",
+          "Dialogue": [
+            {
+              "StoryId": "577",
+              "Did": "11_11_1",
+              "NPC": "曼托",
+              "Dialogue": "我没有感受到火元素的力量，难道……",
+              "Icon": "28_1",
+              "Orientations": "1",
+              "Opportunity": "1"
+            },
+            {
+              "StoryId": "578",
+              "Did": "11_11_2",
+              "NPC": "美狄丝",
+              "Dialogue": "老大，快看有个墓碑。墓碑上还有些字。",
+              "Icon": "1_0",
+              "Orientations": "1",
+              "Opportunity": "1"
+            },
+            {
+              "StoryId": "579",
+              "Did": "11_11_3",
+              "NPC": "墓碑",
+              "Dialogue": "黑暗的恐惧魔王不惜代价疯狂的残杀着龙族。火龙不敌如潮水般的攻击，最终倒下。由于火龙的死亡，蛮荒火山被大量的火象人占领。黑暗的力量顺势强大。 我无法抵挡这强大的力量，我选择了离开——特米亚",
+              "Icon": "39_0",
+              "Orientations": "2",
+              "Opportunity": "1"
+            }
+          ],
+          "DialogueAfter": [
+            {
+              "StoryId": "580",
+              "Did": "11_11_4",
+              "NPC": "player_name",
+              "Dialogue": "特米亚会去哪里呢……",
+              "Icon": "0_0",
+              "Orientations": "1",
+              "Opportunity": "2"
+            },
+            {
+              "StoryId": "581",
+              "Did": "11_11_5",
+              "NPC": "曼托",
+              "Dialogue": "我知道她会去哪里。",
+              "Icon": "28_0",
+              "Orientations": "2",
+              "Opportunity": "2"
+            },
+            {
+              "StoryId": "582",
+              "Did": "11_11_6",
+              "NPC": "player_name",
+              "Dialogue": "哪里？！",
+              "Icon": "0_0",
+              "Orientations": "1",
+              "Opportunity": "2"
+            },
+            {
+              "StoryId": "583",
+              "Did": "11_11_7",
+              "NPC": "曼托",
+              "Dialogue": "这片大陆的另一个火焰力量强大的地方——燃烧平原。",
+              "Icon": "28_0",
+              "Orientations": "2",
+              "Opportunity": "2"
+            }
+          ],
+          "Levels": [
+            {
+              "MapStageDetailId": "109",
+              "Level": "1",
+              "CardList": "184_15_667,168_15_273,120_15_1029,184_11_667,168_11_604,120_15_1029,119_11_88,119_15_243,119_10,56_15_688",
+              "RuneList": "47_2,8_2,10_2,5_2",
+              "HeroLevel": "88",
+              "AchievementId": "0",
+              "EnergyExpend": "2",
+              "BonusWin": "Exp_3120,Coins_3820",
+              "FirstBonusWin": "Card_180",
+              "BonusLose": "Exp_100,Coins_100",
+              "AddedBonus": "",
+              "EnergyExplore": "2",
+              "BonusExplore": "Exp_2820,Coins_3480",
+              "Hint": "0",
+              "AchievementText": "战斗胜利"
+            },
+            {
+              "MapStageDetailId": "109",
+              "Level": "2",
+              "CardList": "184_15_667,168_15_273,120_15_1029,184_13_667,168_13_604,120_15_1029,119_13_88,119_15_243,119_10,56_15_688",
+              "RuneList": "47_3,8_3,10_3,5_3",
+              "HeroLevel": "90",
+              "AchievementId": "59",
+              "EnergyExpend": "2",
+              "BonusWin": "Exp_3900,Coins_4770",
+              "FirstBonusWin": "Card_146",
+              "BonusLose": "Exp_100,Coins_100",
+              "AddedBonus": "",
+              "EnergyExplore": "2",
+              "BonusExplore": "Exp_2820,Coins_3480",
+              "Hint": "0",
+              "AchievementText": "卡组中包含地属性符文"
+            },
+            {
+              "MapStageDetailId": "109",
+              "Level": "3",
+              "CardList": "184_15_667,168_15_273,120_15_1029,184_15_667,168_15_604,120_15_1029,119_15_88,119_15_243,119_10,56_15_688",
+              "RuneList": "47_4,8_4,10_4,5_4",
+              "HeroLevel": "92",
+              "AchievementId": "2",
+              "EnergyExpend": "2",
+              "BonusWin": "Exp_4680,Coins_5720",
+              "FirstBonusWin": "Card_182",
+              "BonusLose": "Exp_100,Coins_100",
+              "AddedBonus": "",
+              "EnergyExplore": "2",
+              "BonusExplore": "Exp_2820,Coins_3480",
+              "Hint": "0",
+              "AchievementText": "36回合数内取得胜利"
             }
           ]
         },
@@ -14063,139 +14063,6 @@
       "Next": "14",
       "MapStageDetails": [
         {
-          "MapStageDetailId": "126",
-          "Name": "黑石山梯",
-          "Type": "1",
-          "MapStageId": "13",
-          "Rank": "1",
-          "X": "367",
-          "Y": "202",
-          "Prev": "125",
-          "Next": "127",
-          "NextBranch": "0",
-          "FightName": "世界树之灵",
-          "FightImg": "212",
-          "Dialogue": [
-            {
-              "StoryId": "659",
-              "Did": "13_2_1",
-              "NPC": "曼托",
-              "Dialogue": "伊芙，发生了什么事，为什么你会变成这样？",
-              "Icon": "28_0",
-              "Orientations": "2",
-              "Opportunity": "1"
-            },
-            {
-              "StoryId": "660",
-              "Did": "13_2_2",
-              "NPC": "伊芙",
-              "Dialogue": "这,这样?我本来就是这样的呀",
-              "Icon": "48_0",
-              "Orientations": "2",
-              "Opportunity": "1"
-            },
-            {
-              "StoryId": "661",
-              "Did": "13_2_3",
-              "NPC": "player_name",
-              "Dialogue": "嗯?怎么回事?这不是你们认识的那个伊芙么?",
-              "Icon": "0_0",
-              "Orientations": "1",
-              "Opportunity": "1"
-            },
-            {
-              "StoryId": "662",
-              "Did": "13_2_4",
-              "NPC": "曼托",
-              "Dialogue": "看来伊芙身上一定发生了什么事,这可能和这场异变有关",
-              "Icon": "28_0",
-              "Orientations": "2",
-              "Opportunity": "1"
-            },
-            {
-              "StoryId": "663",
-              "Did": "13_2_5",
-              "NPC": "美狄丝",
-              "Dialogue": "伊芙，我们一定会帮你恢复成原来的样子的！",
-              "Icon": "1_2",
-              "Orientations": "1",
-              "Opportunity": "1"
-            },
-            {
-              "StoryId": "664",
-              "Did": "13_2_6",
-              "NPC": "伊芙",
-              "Dialogue": "...",
-              "Icon": "48_0",
-              "Orientations": "2",
-              "Opportunity": "1"
-            },
-            {
-              "StoryId": "665",
-              "Did": "13_2_7",
-              "NPC": "曼托",
-              "Dialogue": "我们快点离开这里..我感觉到邪恶的气息在逼近...",
-              "Icon": "28_0",
-              "Orientations": "2",
-              "Opportunity": "1"
-            }
-          ],
-          "DialogueAfter": null,
-          "Levels": [
-            {
-              "MapStageDetailId": "126",
-              "Level": "1",
-              "CardList": "212_11_688,305_13_271,305_11_302,296_15_688,263_15_241,29_11_816,186_15_688,257_11_993,262_11_411,257_15_241",
-              "RuneList": "29_4,38_4,27_4,9_4",
-              "HeroLevel": "92",
-              "AchievementId": "0",
-              "EnergyExpend": "2",
-              "BonusWin": "Exp_2560,Coins_2800",
-              "FirstBonusWin": "",
-              "BonusLose": "Exp_90,Coins_90",
-              "AddedBonus": "",
-              "EnergyExplore": "2",
-              "BonusExplore": "Exp_2820,Coins_3480",
-              "Hint": "0",
-              "AchievementText": "战斗胜利"
-            },
-            {
-              "MapStageDetailId": "126",
-              "Level": "2",
-              "CardList": "212_15_688,305_13_271,305_13_302,296_15_688,263_15_241,29_14_816,186_15_688,257_13_993,262_13_411,257_15_241",
-              "RuneList": "29_4,38_4,27_4,9_4",
-              "HeroLevel": "94",
-              "AchievementId": "22",
-              "EnergyExpend": "2",
-              "BonusWin": "Exp_3200,Coins_3500",
-              "FirstBonusWin": "",
-              "BonusLose": "Exp_90,Coins_90",
-              "AddedBonus": "",
-              "EnergyExplore": "2",
-              "BonusExplore": "Exp_2820,Coins_3480",
-              "Hint": "0",
-              "AchievementText": "卡组中王国种族卡牌不小于3张"
-            },
-            {
-              "MapStageDetailId": "126",
-              "Level": "3",
-              "CardList": "212_15_688,305_15_271,305_15_302,296_15_688,263_15_241,29_14_816,186_15_688,257_15_993,262_14_411,257_15_241",
-              "RuneList": "29_4,38_4,27_4,9_4",
-              "HeroLevel": "96",
-              "AchievementId": "50",
-              "EnergyExpend": "2",
-              "BonusWin": "Exp_3840,Coins_4200",
-              "FirstBonusWin": "Card_177",
-              "BonusLose": "Exp_90,Coins_90",
-              "AddedBonus": "",
-              "EnergyExplore": "2",
-              "BonusExplore": "Exp_2820,Coins_3480",
-              "Hint": "0",
-              "AchievementText": "卡组中4星卡牌不小于1张"
-            }
-          ]
-        },
-        {
           "MapStageDetailId": "125",
           "Name": "漆黑岭",
           "Type": "1",
@@ -14380,6 +14247,139 @@
               "BonusExplore": "Exp_2820,Coins_3480",
               "Hint": "0",
               "AchievementText": "己方阵亡卡牌小于5张"
+            }
+          ]
+        },
+        {
+          "MapStageDetailId": "126",
+          "Name": "黑石山梯",
+          "Type": "1",
+          "MapStageId": "13",
+          "Rank": "1",
+          "X": "367",
+          "Y": "202",
+          "Prev": "125",
+          "Next": "127",
+          "NextBranch": "0",
+          "FightName": "世界树之灵",
+          "FightImg": "212",
+          "Dialogue": [
+            {
+              "StoryId": "659",
+              "Did": "13_2_1",
+              "NPC": "曼托",
+              "Dialogue": "伊芙，发生了什么事，为什么你会变成这样？",
+              "Icon": "28_0",
+              "Orientations": "2",
+              "Opportunity": "1"
+            },
+            {
+              "StoryId": "660",
+              "Did": "13_2_2",
+              "NPC": "伊芙",
+              "Dialogue": "这,这样?我本来就是这样的呀",
+              "Icon": "48_0",
+              "Orientations": "2",
+              "Opportunity": "1"
+            },
+            {
+              "StoryId": "661",
+              "Did": "13_2_3",
+              "NPC": "player_name",
+              "Dialogue": "嗯?怎么回事?这不是你们认识的那个伊芙么?",
+              "Icon": "0_0",
+              "Orientations": "1",
+              "Opportunity": "1"
+            },
+            {
+              "StoryId": "662",
+              "Did": "13_2_4",
+              "NPC": "曼托",
+              "Dialogue": "看来伊芙身上一定发生了什么事,这可能和这场异变有关",
+              "Icon": "28_0",
+              "Orientations": "2",
+              "Opportunity": "1"
+            },
+            {
+              "StoryId": "663",
+              "Did": "13_2_5",
+              "NPC": "美狄丝",
+              "Dialogue": "伊芙，我们一定会帮你恢复成原来的样子的！",
+              "Icon": "1_2",
+              "Orientations": "1",
+              "Opportunity": "1"
+            },
+            {
+              "StoryId": "664",
+              "Did": "13_2_6",
+              "NPC": "伊芙",
+              "Dialogue": "...",
+              "Icon": "48_0",
+              "Orientations": "2",
+              "Opportunity": "1"
+            },
+            {
+              "StoryId": "665",
+              "Did": "13_2_7",
+              "NPC": "曼托",
+              "Dialogue": "我们快点离开这里..我感觉到邪恶的气息在逼近...",
+              "Icon": "28_0",
+              "Orientations": "2",
+              "Opportunity": "1"
+            }
+          ],
+          "DialogueAfter": null,
+          "Levels": [
+            {
+              "MapStageDetailId": "126",
+              "Level": "1",
+              "CardList": "212_11_688,305_13_271,305_11_302,296_15_688,263_15_241,29_11_816,186_15_688,257_11_993,262_11_411,257_15_241",
+              "RuneList": "29_4,38_4,27_4,9_4",
+              "HeroLevel": "92",
+              "AchievementId": "0",
+              "EnergyExpend": "2",
+              "BonusWin": "Exp_2560,Coins_2800",
+              "FirstBonusWin": "",
+              "BonusLose": "Exp_90,Coins_90",
+              "AddedBonus": "",
+              "EnergyExplore": "2",
+              "BonusExplore": "Exp_2820,Coins_3480",
+              "Hint": "0",
+              "AchievementText": "战斗胜利"
+            },
+            {
+              "MapStageDetailId": "126",
+              "Level": "2",
+              "CardList": "212_15_688,305_13_271,305_13_302,296_15_688,263_15_241,29_14_816,186_15_688,257_13_993,262_13_411,257_15_241",
+              "RuneList": "29_4,38_4,27_4,9_4",
+              "HeroLevel": "94",
+              "AchievementId": "22",
+              "EnergyExpend": "2",
+              "BonusWin": "Exp_3200,Coins_3500",
+              "FirstBonusWin": "",
+              "BonusLose": "Exp_90,Coins_90",
+              "AddedBonus": "",
+              "EnergyExplore": "2",
+              "BonusExplore": "Exp_2820,Coins_3480",
+              "Hint": "0",
+              "AchievementText": "卡组中王国种族卡牌不小于3张"
+            },
+            {
+              "MapStageDetailId": "126",
+              "Level": "3",
+              "CardList": "212_15_688,305_15_271,305_15_302,296_15_688,263_15_241,29_14_816,186_15_688,257_15_993,262_14_411,257_15_241",
+              "RuneList": "29_4,38_4,27_4,9_4",
+              "HeroLevel": "96",
+              "AchievementId": "50",
+              "EnergyExpend": "2",
+              "BonusWin": "Exp_3840,Coins_4200",
+              "FirstBonusWin": "Card_177",
+              "BonusLose": "Exp_90,Coins_90",
+              "AddedBonus": "",
+              "EnergyExplore": "2",
+              "BonusExplore": "Exp_2820,Coins_3480",
+              "Hint": "0",
+              "AchievementText": "卡组中4星卡牌不小于1张"
             }
           ]
         },
@@ -17884,6 +17884,139 @@
       "Next": "16",
       "MapStageDetails": [
         {
+          "MapStageDetailId": "151",
+          "Name": "巨门关口",
+          "Type": "1",
+          "MapStageId": "15",
+          "Rank": "0",
+          "X": "47",
+          "Y": "249",
+          "Prev": "148",
+          "Next": "152",
+          "NextBranch": "0",
+          "FightName": "海军司令",
+          "FightImg": "237",
+          "Dialogue": [
+            {
+              "StoryId": "876",
+              "Did": "15_1_1",
+              "NPC": "player_name",
+              "Dialogue": "恐惧之地...感觉到这里好多的恶魔气息啊",
+              "Icon": "0_0",
+              "Orientations": "1",
+              "Opportunity": "1"
+            },
+            {
+              "StoryId": "877",
+              "Did": "15_1_2",
+              "NPC": "美狄丝",
+              "Dialogue": "这里真的好恐怖啊....",
+              "Icon": "1_4",
+              "Orientations": "2",
+              "Opportunity": "1"
+            },
+            {
+              "StoryId": "878",
+              "Did": "15_1_3",
+              "NPC": "特米亚",
+              "Dialogue": "哈哈,小妞不要怕,我会保护你的!",
+              "Icon": "40_0",
+              "Orientations": "2",
+              "Opportunity": "1"
+            },
+            {
+              "StoryId": "879",
+              "Did": "15_1_4",
+              "NPC": "曼托",
+              "Dialogue": "伊芙留在了翡翠森林帮助修复月神祭坛了,这次我们四个人要对付恐惧魔王了",
+              "Icon": "28_0",
+              "Orientations": "2",
+              "Opportunity": "1"
+            },
+            {
+              "StoryId": "880",
+              "Did": "15_1_5",
+              "NPC": "player_name",
+              "Dialogue": "那我们一口气打败恐惧魔王,拿回谎言之书的最后一部分吧!",
+              "Icon": "0_0",
+              "Orientations": "1",
+              "Opportunity": "1"
+            },
+            {
+              "StoryId": "881",
+              "Did": "15_1_6",
+              "NPC": "美狄丝",
+              "Dialogue": "好的! 但是我觉得前面的敌人不会同意的",
+              "Icon": "1_0",
+              "Orientations": "1",
+              "Opportunity": "1"
+            },
+            {
+              "StoryId": "882",
+              "Did": "15_1_7",
+              "NPC": "player_name",
+              "Dialogue": "........",
+              "Icon": "0_0",
+              "Orientations": "1",
+              "Opportunity": "1"
+            }
+          ],
+          "DialogueAfter": null,
+          "Levels": [
+            {
+              "MapStageDetailId": "151",
+              "Level": "1",
+              "CardList": "138_12_688,237_15_344,338_14_993,54_14_294,299_15_1215,53_15_1214,58_15_979,56_15_651,228_15_48,176_15_689",
+              "RuneList": "19_4,49_4,16_4,6_4",
+              "HeroLevel": "96",
+              "AchievementId": "0",
+              "EnergyExpend": "2",
+              "BonusWin": "Exp_2880,Coins_2960",
+              "FirstBonusWin": "",
+              "BonusLose": "Exp_90,Coins_90",
+              "AddedBonus": "",
+              "EnergyExplore": "2",
+              "BonusExplore": "Exp_2820,Coins_3480",
+              "Hint": "0",
+              "AchievementText": "战斗胜利"
+            },
+            {
+              "MapStageDetailId": "151",
+              "Level": "2",
+              "CardList": "138_13_688,237_15_344,338_14_993,54_15_294,299_15_1215,53_15_1214,58_15_979,56_15_651,228_15_48,176_15_689",
+              "RuneList": "19_4,49_4,16_4,6_4",
+              "HeroLevel": "98",
+              "AchievementId": "16",
+              "EnergyExpend": "2",
+              "BonusWin": "Exp_3600,Coins_3700",
+              "FirstBonusWin": "",
+              "BonusLose": "Exp_90,Coins_90",
+              "AddedBonus": "",
+              "EnergyExplore": "2",
+              "BonusExplore": "Exp_2820,Coins_3480",
+              "Hint": "0",
+              "AchievementText": "胜利时，己方英雄生命值不低于60%"
+            },
+            {
+              "MapStageDetailId": "151",
+              "Level": "3",
+              "CardList": "138_15_688,237_15_344,338_15_993,54_15_294,299_15_1215,53_15_1214,58_15_979,56_15_651,228_15_48,176_15_689",
+              "RuneList": "19_4,49_4,16_4,6_4",
+              "HeroLevel": "100",
+              "AchievementId": "22",
+              "EnergyExpend": "2",
+              "BonusWin": "Exp_4320,Coins_4440",
+              "FirstBonusWin": "Card_169",
+              "BonusLose": "Exp_90,Coins_90",
+              "AddedBonus": "",
+              "EnergyExplore": "2",
+              "BonusExplore": "Exp_2820,Coins_3480",
+              "Hint": "0",
+              "AchievementText": "卡组中王国种族卡牌不小于3张"
+            }
+          ]
+        },
+        {
           "MapStageDetailId": "152",
           "Name": "幽影森林",
           "Type": "1",
@@ -18086,139 +18219,6 @@
               "BonusExplore": "Exp_2820,Coins_3480",
               "Hint": "0",
               "AchievementText": "卡组中森林种族卡牌不小于4张"
-            }
-          ]
-        },
-        {
-          "MapStageDetailId": "151",
-          "Name": "巨门关口",
-          "Type": "1",
-          "MapStageId": "15",
-          "Rank": "0",
-          "X": "47",
-          "Y": "249",
-          "Prev": "148",
-          "Next": "152",
-          "NextBranch": "0",
-          "FightName": "海军司令",
-          "FightImg": "237",
-          "Dialogue": [
-            {
-              "StoryId": "876",
-              "Did": "15_1_1",
-              "NPC": "player_name",
-              "Dialogue": "恐惧之地...感觉到这里好多的恶魔气息啊",
-              "Icon": "0_0",
-              "Orientations": "1",
-              "Opportunity": "1"
-            },
-            {
-              "StoryId": "877",
-              "Did": "15_1_2",
-              "NPC": "美狄丝",
-              "Dialogue": "这里真的好恐怖啊....",
-              "Icon": "1_4",
-              "Orientations": "2",
-              "Opportunity": "1"
-            },
-            {
-              "StoryId": "878",
-              "Did": "15_1_3",
-              "NPC": "特米亚",
-              "Dialogue": "哈哈,小妞不要怕,我会保护你的!",
-              "Icon": "40_0",
-              "Orientations": "2",
-              "Opportunity": "1"
-            },
-            {
-              "StoryId": "879",
-              "Did": "15_1_4",
-              "NPC": "曼托",
-              "Dialogue": "伊芙留在了翡翠森林帮助修复月神祭坛了,这次我们四个人要对付恐惧魔王了",
-              "Icon": "28_0",
-              "Orientations": "2",
-              "Opportunity": "1"
-            },
-            {
-              "StoryId": "880",
-              "Did": "15_1_5",
-              "NPC": "player_name",
-              "Dialogue": "那我们一口气打败恐惧魔王,拿回谎言之书的最后一部分吧!",
-              "Icon": "0_0",
-              "Orientations": "1",
-              "Opportunity": "1"
-            },
-            {
-              "StoryId": "881",
-              "Did": "15_1_6",
-              "NPC": "美狄丝",
-              "Dialogue": "好的! 但是我觉得前面的敌人不会同意的",
-              "Icon": "1_0",
-              "Orientations": "1",
-              "Opportunity": "1"
-            },
-            {
-              "StoryId": "882",
-              "Did": "15_1_7",
-              "NPC": "player_name",
-              "Dialogue": "........",
-              "Icon": "0_0",
-              "Orientations": "1",
-              "Opportunity": "1"
-            }
-          ],
-          "DialogueAfter": null,
-          "Levels": [
-            {
-              "MapStageDetailId": "151",
-              "Level": "1",
-              "CardList": "138_12_688,237_15_344,338_14_993,54_14_294,299_15_1215,53_15_1214,58_15_979,56_15_651,228_15_48,176_15_689",
-              "RuneList": "19_4,49_4,16_4,6_4",
-              "HeroLevel": "96",
-              "AchievementId": "0",
-              "EnergyExpend": "2",
-              "BonusWin": "Exp_2880,Coins_2960",
-              "FirstBonusWin": "",
-              "BonusLose": "Exp_90,Coins_90",
-              "AddedBonus": "",
-              "EnergyExplore": "2",
-              "BonusExplore": "Exp_2820,Coins_3480",
-              "Hint": "0",
-              "AchievementText": "战斗胜利"
-            },
-            {
-              "MapStageDetailId": "151",
-              "Level": "2",
-              "CardList": "138_13_688,237_15_344,338_14_993,54_15_294,299_15_1215,53_15_1214,58_15_979,56_15_651,228_15_48,176_15_689",
-              "RuneList": "19_4,49_4,16_4,6_4",
-              "HeroLevel": "98",
-              "AchievementId": "16",
-              "EnergyExpend": "2",
-              "BonusWin": "Exp_3600,Coins_3700",
-              "FirstBonusWin": "",
-              "BonusLose": "Exp_90,Coins_90",
-              "AddedBonus": "",
-              "EnergyExplore": "2",
-              "BonusExplore": "Exp_2820,Coins_3480",
-              "Hint": "0",
-              "AchievementText": "胜利时，己方英雄生命值不低于60%"
-            },
-            {
-              "MapStageDetailId": "151",
-              "Level": "3",
-              "CardList": "138_15_688,237_15_344,338_15_993,54_15_294,299_15_1215,53_15_1214,58_15_979,56_15_651,228_15_48,176_15_689",
-              "RuneList": "19_4,49_4,16_4,6_4",
-              "HeroLevel": "100",
-              "AchievementId": "22",
-              "EnergyExpend": "2",
-              "BonusWin": "Exp_4320,Coins_4440",
-              "FirstBonusWin": "Card_169",
-              "BonusLose": "Exp_90,Coins_90",
-              "AddedBonus": "",
-              "EnergyExplore": "2",
-              "BonusExplore": "Exp_2820,Coins_3480",
-              "Hint": "0",
-              "AchievementText": "卡组中王国种族卡牌不小于3张"
             }
           ]
         },
@@ -26789,7 +26789,7 @@
   "message": null,
   "type": null,
   "version": {
-    "http": "201302792",
+    "http": "201302796",
     "stop": "",
     "appversion": "version_1",
     "appurl": "ios://xxx",

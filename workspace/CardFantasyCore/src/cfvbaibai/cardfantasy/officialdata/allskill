@@ -23257,6 +23257,84 @@
         "AffectValue2": 0,
         "SkillCategory": 2,
         "Desc": "使敌方全体卡牌受到550点伤害，并且使自身恢复相同的生命值。"
+      },
+      {
+        "SkillId": 8181,
+        "Name": "精灵之音痴",
+        "Type": 92,
+        "LanchType": 5,
+        "LanchCondition": 0,
+        "LanchConditionValue": 0,
+        "AffectType": 55,
+        "AffectValue": 0,
+        "AffectValue2": 0,
+        "SkillCategory": 3,
+        "Desc": "梦境森林的六位护神精灵，集齐其他5名护神精灵可以合成【森林之主】"
+      },
+      {
+        "SkillId": 8182,
+        "Name": "精灵之狐仙",
+        "Type": 92,
+        "LanchType": 5,
+        "LanchCondition": 0,
+        "LanchConditionValue": 0,
+        "AffectType": 55,
+        "AffectValue": 0,
+        "AffectValue2": 0,
+        "SkillCategory": 3,
+        "Desc": "梦境森林的六位护神精灵，集齐其他5名护神精灵可以合成【森林之主】"
+      },
+      {
+        "SkillId": 8183,
+        "Name": "精灵之若水",
+        "Type": 92,
+        "LanchType": 5,
+        "LanchCondition": 0,
+        "LanchConditionValue": 0,
+        "AffectType": 55,
+        "AffectValue": 0,
+        "AffectValue2": 0,
+        "SkillCategory": 3,
+        "Desc": "梦境森林的六位护神精灵，集齐其他5名护神精灵可以合成【森林之主】"
+      },
+      {
+        "SkillId": 8184,
+        "Name": "精灵之百花",
+        "Type": 92,
+        "LanchType": 5,
+        "LanchCondition": 0,
+        "LanchConditionValue": 0,
+        "AffectType": 55,
+        "AffectValue": 0,
+        "AffectValue2": 0,
+        "SkillCategory": 3,
+        "Desc": "梦境森林的六位护神精灵，集齐其他5名护神精灵可以合成【森林之主】"
+      },
+      {
+        "SkillId": 8185,
+        "Name": "精灵之兔仙",
+        "Type": 92,
+        "LanchType": 5,
+        "LanchCondition": 0,
+        "LanchConditionValue": 0,
+        "AffectType": 55,
+        "AffectValue": 0,
+        "AffectValue2": 0,
+        "SkillCategory": 3,
+        "Desc": "梦境森林的六位护神精灵，集齐其他5名护神精灵可以合成【森林之主】"
+      },
+      {
+        "SkillId": 8186,
+        "Name": "精灵之蛇女",
+        "Type": 92,
+        "LanchType": 5,
+        "LanchCondition": 0,
+        "LanchConditionValue": 0,
+        "AffectType": 55,
+        "AffectValue": 0,
+        "AffectValue2": 0,
+        "SkillCategory": 3,
+        "Desc": "梦境森林的六位护神精灵，集齐其他5名护神精灵可以合成【森林之主】"
       }
     ]
   },
@@ -23264,7 +23342,7 @@
   "message": null,
   "type": null,
   "version": {
-    "http": "201302792",
+    "http": "201302796",
     "stop": "",
     "appversion": "version_1",
     "appurl": "ios://xxx",
