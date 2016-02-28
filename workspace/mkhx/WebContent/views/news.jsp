@@ -36,6 +36,7 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2016-2-28: 修复骑士守护技能对上低血量卡牌时的BUG，感谢<x>爆爆团雪莱</x>的帮助</li>
                     <li>2016-2-26: <ul>
                         <li>修复一些极端情况下降临系技能的BUG，感谢<x>爆爆团雪莱</x>的帮助</li>
                         <li>修复传送非降临死契技能时的BUG，感谢<x>z_bian</x>的帮助</li>
