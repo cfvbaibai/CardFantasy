@@ -157,7 +157,7 @@ $(document).ready(function () {
                         <img id="card-img-preview" src="" style="width: 100px; height: 143px; display: none" />
                     </div>
                     <div id="network-card-img-input">
-                        <input id="network-card-img-url" type="text" value="http://gz.dhyedu.com/student/works/10jy0127/images/bolilingmeng.jpg" />
+                        <input id="network-card-img-url" type="text" value="http://img5q.duitang.com/uploads/item/201411/29/20141129133340_FzZUN.thumb.700_0.jpeg" />
                     </div>
                 </td>
             </tr>
