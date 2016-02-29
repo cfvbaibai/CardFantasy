@@ -7,7 +7,7 @@ var store = null;
 var outputDivId = null;
 
 var getWikiUrl = function(type, name) {
-    return rootDir + '/Wiki/' + type + 's/' + name;
+    return rootDir + 'Wiki/' + type + 's/' + name;
 };
 
 DeckBuilder.buildDeck = function(_outputDivId) {
@@ -130,7 +130,7 @@ DeckBuilder.onAddRuneButtonClick = function(id) {
     var entity = $('#' + id).data('entity');
     $.mobile.changePage("#new-rune-props", { transition : 'slidedown', role : 'dialog' });
     $('#new-rune-props div.entity-title span.entity-title-text').text(entity.name);
-    $('#new-rune-props a.entity-detail-button').attr('href', getWikiUrl('Card', entity.name));
+    $('#new-rune-props a.entity-detail-button').attr('href', getWikiUrl('Rune', entity.name));
 };
 
 var filterCard = function() {

@@ -286,13 +286,25 @@ public class OfficialDataController {
         return mv;
     }
 
+    @RequestMapping(value = "/Wiki/Runes/{runeName}")
+    public ModelAndView queryRuneByName(HttpServletRequest request,
+            @PathVariable("runeName") String runeName, HttpServletResponse response) throws IOException {
+        this.logger.info("Getting official rune data: " + runeName);
+        OfficialRune rune = this.officialStore.getRuneByName(runeName);
+        return queryRune(rune, request, response);
+    }
+
     @RequestMapping(value = "/Wiki/Runes/{runeId}.shtml")
-    public ModelAndView queryRune(HttpServletRequest request,
+    public ModelAndView queryRuneById(HttpServletRequest request,
             @PathVariable("runeId") int runeId, HttpServletResponse response) throws IOException {
+        this.logger.info("Getting official rune data: " + runeId);
+        OfficialRune rune = this.officialStore.getRuneById(runeId);
+        return queryRune(rune, request, response);
+    }
+
+    private ModelAndView queryRune(OfficialRune rune, HttpServletRequest request, HttpServletResponse response) throws IOException {
         ModelAndView mv = new ModelAndView();
         try {
-            this.logger.info("Getting official rune data: " + runeId);
-            OfficialRune rune = this.officialStore.getRuneById(runeId);
             if (rune == null) {
                 response.setStatus(404);
                 return mv;
@@ -312,17 +324,22 @@ public class OfficialDataController {
     @RequestMapping(value = "/Wiki/Cards/{cardName}")
     public ModelAndView queryCard(HttpServletRequest request,
             @PathVariable("cardName") String cardName, HttpServletResponse response) throws IOException {
+        this.logger.info("Getting official card data: " + cardName);
         OfficialCard card = this.officialStore.getCardByName(cardName);
-        return queryCard(request, card.getCardId(), response);
+        return queryCard(card, request, response);
     }
 
     @RequestMapping(value = "/Wiki/Cards/{cardId}.shtml")
-    public ModelAndView queryCard(HttpServletRequest request,
+    public ModelAndView queryCardById(HttpServletRequest request,
             @PathVariable("cardId") int cardId, HttpServletResponse response) throws IOException {
-        ModelAndView mv = new ModelAndView();
         this.logger.info("Getting official card data: " + cardId);
+        OfficialCard card = this.officialStore.getCardById(cardId);
+        return queryCard(card, request, response);
+    }
+
+    private ModelAndView queryCard(OfficialCard card, HttpServletRequest request, HttpServletResponse response) throws IOException {
+        ModelAndView mv = new ModelAndView();
         try {
-            OfficialCard card = this.officialStore.getCardById(cardId);
             if (card == null) {
                 response.setStatus(404);
                 return mv;
@@ -345,15 +362,31 @@ public class OfficialDataController {
     }
 
     @RequestMapping(value = "/Wiki/Skills/{skillId}.shtml")
-    public ModelAndView querySkill(HttpServletRequest request,
-            @PathVariable("skillId") String skillId,
+    public ModelAndView querySkillById(HttpServletRequest request, @PathVariable("skillId") String skillId,
             HttpServletResponse response) throws IOException {
+        this.logger.info("Getting official skill data: " + skillId);
+        OfficialSkill skill = this.officialStore.getSkillById(skillId);
+        return querySkill(skill, request, response);
+    }
+
+    @RequestMapping(value = "/Wiki/Skills/{skillType}")
+    public ModelAndView querySkillByType(HttpServletRequest request, @PathVariable("skillType") String skillType,
+            HttpServletResponse response) throws IOException {
+        this.logger.info("Getting official skill data: " + skillType);
+        OfficialSkill[] skills = this.officialStore.getSkillsByType(skillType);
+        OfficialSkill skill = null;
+        if (skills != null && skills.length > 0) {
+            skill = skills[0];
+        }
+        return querySkill(skill, request, response);
+    }
+
+    private ModelAndView querySkill(OfficialSkill skill, HttpServletRequest request, HttpServletResponse response) throws IOException {
         ModelAndView mv = new ModelAndView();
         try {
-            this.logger.info("Getting official skill data: " + skillId);
             OfficialSkill[] skills = null;
             String skillTypeName = null;
-            OfficialSkill skill = this.officialStore.getSkillById(skillId);
+
             if (skill == null) {
                 response.setStatus(404);
                 return mv;
