@@ -67,10 +67,10 @@ $(document).ready(function() {
                 <td id="view-card-delay" class="value">${cardInfo.wait}</td>
             </tr>
             <tr>
-                <td class="label">官方评级</td>
-                <td id="view-card-evo-cost" class="value">${cardInfo.rank == 0 ? "未评级" : cardInfo.rank}</td>
-                <td class="label">COST</td>
-                <td id="view-card-cost" class="value">${cardInfo.cost} / ${cardInfo.evoCost}</td>
+                <td class="label">进化前COST</td>
+                <td id="view-card-cost" class="value">${cardInfo.cost}</td>
+                <td class="label">进化后COST</td>
+                <td id="view-card-evo-cost" class="value">${cardInfo.evoCost}</td>
             </tr>
         </tbody>
     </table>
@@ -146,8 +146,8 @@ $(document).ready(function() {
             <tr>
                 <td class="label">合成价格</td>
                 <td class="value">${cardInfo.requiredFragmentCount == 0 ? "无法合成" : cardInfo.composePrice}</td>
-                <td class="label"></td>
-                <td class="value"></td>
+                <td class="label">碎片等级</td>
+                <td class="value">${cardInfo.rank == 0 ? "无碎片" : cardInfo.rank}</td>
             </tr>
             <tr>
                 <td class="label">可分解碎片</td>

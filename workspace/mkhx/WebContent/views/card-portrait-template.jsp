@@ -11,7 +11,7 @@
     <div style="position: absolute; left: 0; top: 0; width: 100%">
         <img class="cpt-star-img" src="" style="width: 100%" />
     </div>
-    <div style="position: absolute; left: 85px; top: 4px; color: white; font-size: 22px; text-shadow: 1px 0 1px #000000, 1px 1px 1px #000000, -1px -1px 1px #000000, 0 1px 1px #000000, -1px 1px 1px #000000, -1px 0 1px #000000, 0 -1px 1px #000000, 0 0 1px #000000; font-family:微软雅黑">
+    <div style="position: absolute; left: 85px; top: 2px; color: white; font-size: 22px; text-shadow: 1px 0 1px #000000, 1px 1px 1px #000000, -1px -1px 1px #000000, 0 1px 1px #000000, -1px 1px 1px #000000, -1px 0 1px #000000, 0 -1px 1px #000000, 0 0 1px #000000; font-family:微软雅黑">
         <span class="cpt-card-name"></span>
     </div>
     <div style="position: absolute; left: 225px; top: 23px; color: #ede739; font-style: italic; width: 70px; font-size: 26px; font-family: Arial">

@@ -21,7 +21,19 @@ public class CounterAttackTest extends SkillValidationTest {
         Assert.assertEquals(1, context.getPlayer(0).getField().size());
         Assert.assertEquals(21, c黑夜蝙蝠.getHP());
     }
-    
+
+    @Test
+    public void test反击_死亡() {
+        SkillTestContext context = prepare(50, 50, "秘银巨石像", "占位符+反击10");
+        CardInfo c秘银巨石像 = context.addToField(0, 0);
+        CardInfo c占位符 = context.addToField(1, 1).setBasicHP(10);
+        context.startGame();
+
+        context.proceedOneRound();
+        Assert.assertEquals(200, 1400 - c秘银巨石像.getHP());
+        Assert.assertTrue(c占位符.isDead());
+    }
+
     /**
      * 闪避成功的话不触发雷盾
      */
@@ -142,7 +154,21 @@ public class CounterAttackTest extends SkillValidationTest {
         Assert.assertEquals(5000, c占位符1.getHP());
         Assert.assertEquals(5000, c占位符2.getHP());
     }
-    
+
+    @Test
+    public void test盾刺_死亡() {
+        SkillTestContext context = prepare(50, 50, "秘银巨石像", "占位符", "占位符+盾刺10");
+        CardInfo c秘银巨石像 = context.addToField(0, 0);
+        CardInfo c占位符1 = context.addToField(1, 0);
+        CardInfo c占位符2 = context.addToField(2, 1).setBasicHP(10);
+        context.startGame();
+
+        context.proceedOneRound();
+        Assert.assertEquals(200, 1400 - c秘银巨石像.getHP());
+        Assert.assertEquals(200, 5000 - c占位符1.getHP());
+        Assert.assertTrue(c占位符2.isDead());
+    }
+
     @Test
     public void test物理反弹_基本() {
         SkillTestContext context = prepare(50, 50, "秘银巨石像", "占位符+物理反弹");
