@@ -4,6 +4,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import cfvbaibai.cardfantasy.engine.CardInfo;
+import cfvbaibai.cardfantasy.engine.CardStatusType;
 import cfvbaibai.cardfantasy.engine.RuneInfo;
 
 public class CounterAttackTest extends SkillValidationTest {
@@ -273,5 +274,44 @@ public class CounterAttackTest extends SkillValidationTest {
         context.proceedOneRound();
         Assert.assertEquals(1 /* 不屈 */, c铸造大师.getHP());
         Assert.assertEquals(560 * 2/* 燕返 */, 1550 - c秘银巨石像.getHP());
+    }
+
+    @Test
+    public void test一闪_基本() {
+        SkillTestContext context = prepare(50, 50, "秘银巨石像", "占位符+一闪");
+        CardInfo c秘银巨石像 = context.addToField(0, 0);
+        CardInfo c占位符 = context.addToField(1, 1);
+        context.startGame();
+
+        context.proceedOneRound();
+        Assert.assertEquals(660, 5000 - c占位符.getHP());
+        Assert.assertEquals(660 / 2, 1400 - c秘银巨石像.getHP());
+        Assert.assertTrue(c秘银巨石像.getStatus().containsStatus(CardStatusType.晕眩));
+    }
+
+    @Test
+    public void test一闪_免疫() {
+        SkillTestContext context = prepare(50, 50, "秘银巨石像+免疫", "占位符+一闪");
+        CardInfo c秘银巨石像 = context.addToField(0, 0);
+        CardInfo c占位符 = context.addToField(1, 1);
+        context.startGame();
+
+        context.proceedOneRound();
+        Assert.assertEquals(810, 5000 - c占位符.getHP());
+        Assert.assertEquals(810 / 2, 1550 - c秘银巨石像.getHP());
+        Assert.assertTrue(c秘银巨石像.getStatus().containsStatus(CardStatusType.晕眩));
+    }
+
+    @Test
+    public void test一闪_脱困() {
+        SkillTestContext context = prepare(50, 50, "秘银巨石像+脱困", "占位符+一闪");
+        CardInfo c秘银巨石像 = context.addToField(0, 0);
+        CardInfo c占位符 = context.addToField(1, 1);
+        context.startGame();
+
+        context.proceedOneRound();
+        Assert.assertEquals(810, 5000 - c占位符.getHP());
+        Assert.assertEquals(810 / 2, 1550 - c秘银巨石像.getHP());
+        Assert.assertFalse(c秘银巨石像.getStatus().containsStatus(CardStatusType.晕眩));
     }
 }

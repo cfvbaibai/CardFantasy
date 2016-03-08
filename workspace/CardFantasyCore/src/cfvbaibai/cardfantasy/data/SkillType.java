@@ -186,6 +186,7 @@ public enum SkillType {
     九转秘术("", 0, 0),
 
     大地之盾("80193", 0, SkillTag.控制, SkillTag.抗免疫),
+    一闪("", 0, SkillTag.控制, SkillTag.抗免疫),
     圣盾("56750", 0),
 
     英雄杀手("36260", 0, 15, SkillTag.额外攻击加成, SkillTag.不可洗炼),

@@ -295,7 +295,12 @@ public class SkillResolver {
                     Spike.apply(skillUseInfo.getSkill(), this, attacker, defender, attackSkill, result.getDamage());
                 } else if (skillUseInfo.getType() == SkillType.荆棘术) {
                     Spike.apply(skillUseInfo.getSkill(), this, attacker, defender, attackSkill, result.getDamage());
-                }else if (skillUseInfo.getType() == SkillType.物理反弹) {
+                } else if (skillUseInfo.getType() == SkillType.大地之盾) {
+                    EarthShield.apply(skillUseInfo, this, attacker, defender);
+                } else if (skillUseInfo.getType() == SkillType.物理反弹) {
+                    PhysicalReflection.apply(skillUseInfo.getSkill(), this, attacker, defender, damagedResult.actualDamage);
+                } else if (skillUseInfo.getType() == SkillType.一闪) {
+                    EarthShield.apply(skillUseInfo, this, attacker, defender);
                     PhysicalReflection.apply(skillUseInfo.getSkill(), this, attacker, defender, damagedResult.actualDamage);
                 } else if (skillUseInfo.getType() == SkillType.魔神之甲) {
                     Spike.apply(skillUseInfo.getSkill(), this, attacker, defender, attackSkill, result.getDamage());
@@ -305,10 +310,6 @@ public class SkillResolver {
                     EnergyDrain.apply(skillUseInfo, this, attacker, defender, result, damagedResult);
                 } else if (skillUseInfo.getType() == SkillType.被插出五星) {
                     CounterSummon.apply(this, defender, skillUseInfo.getSkill(), 5);
-                } else if (skillUseInfo.getType() == SkillType.大地之盾) {
-                    EarthShield.apply(skillUseInfo, this, attacker, defender);
-                }else if (skillUseInfo.getType() == SkillType.物理反弹) {
-                    Flee.apply(skillUseInfo.getSkill(), this, attacker, defender, damagedResult.actualDamage);
                 }
             }
             if (!defender.isSilent() && !defender.justRevived()) {

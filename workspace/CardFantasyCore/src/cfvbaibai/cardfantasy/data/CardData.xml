@@ -721,6 +721,11 @@
         <Skill type="闪光弹" level="1" unlock="5" />
         <Skill type="闪避" level="5" unlock="10" />
     </Card>
+    <Card id="1546" name="神风剑豪" wikiId="" race="王国" speed="4" star="5" cost="17" incrCost="2" at="330" hp="1480" incrAT="42" incrHP="44">
+        <Skill type="一闪" level="0" unlock="0" />
+        <Skill type="燕返" level="0" unlock="5" />
+        <Skill type="不屈" level="0" unlock="10" />
+    </Card>
 
     <!-- 森林 -->
     <Card id="2101" name="人马巡逻者" wikiId="30976" race="森林" speed="2" star="1" cost="3" incrCost="2" at="95" hp="310" incrAT="17" incrHP="11">
@@ -2570,6 +2575,16 @@
         <Skill type="横扫" level="0" unlock="0" />
         <Skill type="奋战" level="8" unlock="5" />
         <Skill type="免疫" level="0" unlock="10" />
+    </Card>
+    <Card id="4541" name="暗黑魔灵" wikiId="" race="地狱" speed="4" star="5" cost="16" incrCost="2" at="380" hp="1570" incrAT="44" incrHP="41">
+        <Skill type="凋零真言" level="9" unlock="0" />
+        <Skill type="毒刃" level="0" unlock="5" />
+        <Skill type="末世术" level="7" unlock="10" />
+    </Card>
+    <Card id="4542" name="不动明王" wikiId="" race="地狱" speed="4" star="5" cost="20" incrCost="2" at="305" hp="1700" incrAT="26" incrHP="33">
+        <Skill type="免疫" level="0" unlock="0" />
+        <Skill type="大地之盾" level="0" unlock="5" />
+        <Skill type="冰甲" level="6" unlock="10" />
     </Card>
 
     <!-- 魔神 -->

@@ -12,7 +12,7 @@ public final class PhysicalReflection {
         if (actualDamage <= 0) {
             return;
         }
-        if (attacker == null) {
+        if (attacker == null || attacker.isDead()) {
             return;
         }
         int damage = actualDamage / 2;

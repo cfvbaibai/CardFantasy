@@ -23126,7 +23126,7 @@
         "AffectValue": 2,
         "AffectValue2": 1618,
         "SkillCategory": 2,
-        "Desc": "当我方场上有2张及2张以上森林种族的卡牌时，获得【灵王的轰击7】技能。"
+        "Desc": "当我方场上有2张及2张以上森林种族的卡牌时，获得【灵王的轰击7】技能。（对敌方场上随机一个单位造成600点伤害，如果目标单位拥有免疫或者法力反射技能，则造成300%的伤害。）"
       },
       {
         "SkillId": 1623,
@@ -23335,6 +23335,19 @@
         "AffectValue2": 0,
         "SkillCategory": 3,
         "Desc": "梦境森林的六位护神精灵，集齐其他5名护神精灵可以合成【森林之主】"
+      },
+      {
+        "SkillId": 1633,
+        "Name": "一闪",
+        "Type": 136,
+        "LanchType": 5,
+        "LanchCondition": 0,
+        "LanchConditionValue": 0,
+        "AffectType": 122,
+        "AffectValue": "1331_1473",
+        "AffectValue2": 0,
+        "SkillCategory": 3,
+        "Desc": "眩晕攻击自己的卡牌，被眩晕的卡牌下个回合内无法行动，并且将受到的物理伤害的一半反弹给攻击者。（眩晕效果对魔神,魔王无效）"
       }
     ]
   },
@@ -23342,7 +23355,7 @@
   "message": null,
   "type": null,
   "version": {
-    "http": "201302797",
+    "http": "201302799",
     "stop": "",
     "appversion": "version_1",
     "appurl": "ios://xxx",

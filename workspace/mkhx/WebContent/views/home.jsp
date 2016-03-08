@@ -1,13 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ include file="header.jsp" %>
 <title>魔卡幻想模拟器</title>
-<script src="<c:url value="/resources/lib/kineticjs-4.6.0/kinetic.min.js" />"></script>
-<script src="<c:url value="/resources/lib/chartjs-0.2.0/Chart.min.js" />"></script>
-<script src='<c:url value="/resources/lib/ZeroClipboard-2.1.6/ZeroClipboard.min.js" />'></script>
-
-<script src='<c:url value="/resources/js/battle-animation.js" />?version=<%= version %>'></script>
-<script src='<c:url value="/resources/js/deck-builder.js" />?version=<%= version %>'></script>
-<script src='<c:url value="/resources/js/test-rp.js" />?version=<%= version %>'></script>
 </head>
 <body class="ui-mobile-viewport">
     <!-- This div is the shared left navigation panel -->
@@ -45,4 +38,11 @@
     <%--<audio src='<c:url value="/resources/audio/战狐-乐正绫.mp3" />' class="audioplayer-mini" controls="controls" autoplay="autoplay" loop="loop"></audio> --%>
     <iframe id="stat-iframe" height="0" width="0"></iframe>
 </body>
+<script src="<c:url value="/resources/lib/kineticjs-4.6.0/kinetic.min.js" />"></script>
+<script src="<c:url value="/resources/lib/chartjs-0.2.0/Chart.min.js" />"></script>
+<script src='<c:url value="/resources/lib/ZeroClipboard-2.1.6/ZeroClipboard.min.js" />'></script>
+
+<script src='<c:url value="/resources/js/battle-animation.js" />?version=<%= version %>'></script>
+<script src='<c:url value="/resources/js/deck-builder.js" />?version=<%= version %>'></script>
+<script src='<c:url value="/resources/js/test-rp.js" />?version=<%= version %>'></script>
 </html>
