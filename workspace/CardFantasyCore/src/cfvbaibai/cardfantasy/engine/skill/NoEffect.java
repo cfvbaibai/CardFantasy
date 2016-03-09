@@ -15,6 +15,7 @@ public class NoEffect {
             attackSkill.getType() == SkillType.魔力法阵 ||
             attackSkill.getType() == SkillType.沉默 ||
             attackSkill.getType() == SkillType.大地之盾 ||
+            attackSkill.getType() == SkillType.一闪 ||
             attackSkill.getType() == SkillType.裂伤 ||
             attackSkill.getType() == SkillType.时光倒流 ||
             attackSkill.getType() == SkillType.圣光洗礼 ||
