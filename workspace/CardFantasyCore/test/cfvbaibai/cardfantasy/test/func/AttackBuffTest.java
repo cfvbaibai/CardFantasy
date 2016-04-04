@@ -292,6 +292,27 @@ public class AttackBuffTest extends SkillValidationTest {
                     6390 - context.getPlayer(1).getHP());
     }
 
+    /**
+     * 迷魂中的卡无法发动凯撒之击
+     */
+    @Test
+    public void test凯撒之击_迷魂_攻击英雄() {
+        SkillTestContext context = prepare(
+            50, 50, "占位符+迷魂10", "秘银巨石像", "秘银巨石像+凯撒之击1", "秘银巨石像");
+        context.addToField(0, 0);
+        context.addToField(1, 1);
+        CardInfo c秘银巨石像2 = context.addToField(2, 1);
+        context.addToField(3, 1);
+        context.startGame();
+
+        random.addNextPicks(1).addNextNumbers(0); // 迷魂
+        context.proceedOneRound();
+        Assert.assertTrue(c秘银巨石像2.getStatus().containsStatus(CardStatusType.迷惑));
+
+        context.proceedOneRound();
+        Assert.assertEquals(810, 6390 - context.getPlayer(1).getHP());
+    }
+
     @Test
     public void test同调_普通() {
         SkillTestContext context = prepare(

@@ -426,8 +426,14 @@ public class OfficialDataController {
         return mv;
     }
 
+    @RequestMapping(value = "/Wiki/Skills", headers = "Accept=application/json")
+    public void querySkills(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        response.setContentType("application/json");
+        response.getWriter().println(jsonHandler.toJson(officialStore.skillStore.data.Skills));
+    }
+
     @RequestMapping(value = "/Wiki/SkillTypes", headers = "Accept=application/json")
-    public void querySkills(HttpServletRequest request, HttpServletResponse response,
+    public void querySkillTypes(HttpServletRequest request, HttpServletResponse response,
             @RequestParam(value = "categories", required = false) String categoriesFilter,
             @RequestParam(value = "names", required = false) String namesFilter) throws IOException {
         if ("0".equals(categoriesFilter)) {

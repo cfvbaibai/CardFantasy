@@ -1038,12 +1038,9 @@ public class SkillResolver {
             return;
         }
         for (SkillUseInfo cardSkillUseInfo : card.getUsableNormalSkills()) {
-            if (cardSkillUseInfo.getType() == SkillType.回春) {
-                Rejuvenate.apply(cardSkillUseInfo.getSkill(), this, card);
-            }
-        }
-        for (SkillUseInfo cardSkillUseInfo : card.getUsableNormalSkills()) {
-            if (cardSkillUseInfo.getType() == SkillType.月恩术) {
+            if (cardSkillUseInfo.getType() == SkillType.回春 ||
+                cardSkillUseInfo.getType() == SkillType.月恩术 ||
+                cardSkillUseInfo.getType() == SkillType.圣母回声) {
                 Rejuvenate.apply(cardSkillUseInfo.getSkill(), this, card);
             }
         }

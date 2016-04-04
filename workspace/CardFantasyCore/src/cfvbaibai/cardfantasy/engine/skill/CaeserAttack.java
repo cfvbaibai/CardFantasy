@@ -4,6 +4,7 @@ import java.util.List;
 
 import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.engine.CardInfo;
+import cfvbaibai.cardfantasy.engine.CardStatusType;
 import cfvbaibai.cardfantasy.engine.EntityInfo;
 import cfvbaibai.cardfantasy.engine.SkillEffect;
 import cfvbaibai.cardfantasy.engine.SkillEffectType;
@@ -12,6 +13,10 @@ import cfvbaibai.cardfantasy.engine.SkillUseInfo;
 
 public class CaeserAttack extends PreAttackCardSkill {
     public static void apply(SkillResolver resolver, SkillUseInfo skillUseInfo, CardInfo attacker, EntityInfo defender) {
+        if (attacker.getStatus().containsStatus(CardStatusType.迷惑)) {
+            // 迷魂状态下不发动
+            return;
+        }
         Skill skill = skillUseInfo.getSkill();
         List<CardInfo> adjacentCards = resolver.getAdjacentCards(attacker.getOwner().getField(), attacker.getPosition());
         int adjAT = 0;

@@ -197,7 +197,7 @@ public class BattleEngine {
         this.stage.getResolver().activateRunes(this.getActivePlayer(), this.getInactivePlayer());
         this.stage.getResolver().resolvePreAttackRune(this.getActivePlayer(), this.getInactivePlayer());
         this.stage.getResolver().resolvePreAttackSkills(this.getActivePlayer(), this.getInactivePlayer());
-        for (CardInfo card : this.getActivePlayer().getHand().getCards()) {
+        for (CardInfo card : this.getActivePlayer().getHand().toList()) {
             this.stage.getResolver().resolvePrecastSkills(card, this.getInactivePlayer());
         }
         return Phase.战斗;

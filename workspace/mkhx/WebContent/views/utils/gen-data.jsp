@@ -81,7 +81,7 @@ function generateSkill(skill, unlockLevel) {
 
 function showSkillLaunchTypes() {
     var skillLaunchTypes = {};
-    $.get("../Wiki/Skills", function(data) {
+    $.get("../../Wiki/Skills", function(data) {
        var i;
        for (i = 0; i < data.length; ++i) {
            var skill = data[i];
