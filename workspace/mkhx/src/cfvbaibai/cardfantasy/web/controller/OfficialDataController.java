@@ -243,6 +243,10 @@ public class OfficialDataController {
                     subCategoryName = "降临";
                 } else if (skillType.startsWith("[死契]")) {
                     subCategoryName = "死契";
+                } else if (skillType.startsWith("[先机]")) {
+                    subCategoryName = "先机";
+                } else if (skillType.startsWith("[遗志]")) {
+                    subCategoryName = "遗志";
                 } else if (skillType.startsWith("召唤")) {
                     subCategoryName = "召唤";
                 } else if (skillType.startsWith("觉醒")) {

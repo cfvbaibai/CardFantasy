@@ -121,7 +121,9 @@ public class CardDataStore {
                     boolean isDeathSkill = deathText == null ? false : Boolean.parseBoolean(deathText);
                     String precastText = skillNode.valueOf("@precast");
                     boolean isPrecastSkill = precastText == null ? false : Boolean.parseBoolean(precastText);
-                    cardData.getSkills().add(new CardSkill(type, level, unlockLevel, isSummonSkill, isDeathSkill, isPrecastSkill));
+                    String postcastText = skillNode.valueOf("@postcast");
+                    boolean isPostcastSkill = postcastText == null ? false : Boolean.parseBoolean(postcastText);
+                    cardData.getSkills().add(new CardSkill(type, level, unlockLevel, isSummonSkill, isDeathSkill, isPrecastSkill, isPostcastSkill));
                 }
                 store.addCard(cardData);
                 if (aliasMap.containsKey(cardData.getName())) {

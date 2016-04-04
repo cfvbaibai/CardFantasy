@@ -221,6 +221,8 @@
                                 <label for="card-extra-skill-death">死契</label>
                                 <input type="radio" data-mini="true" name="card-extra-skill-flag" id="card-extra-skill-precast" value="先机" />
                                 <label for="card-extra-skill-precast">先机</label>
+                                <input type="radio" data-mini="true" name="card-extra-skill-flag" id="card-extra-skill-postcast" value="遗志" />
+                                <label for="card-extra-skill-precast">遗志</label>
                             </div>
                         </td>
                     </tr>

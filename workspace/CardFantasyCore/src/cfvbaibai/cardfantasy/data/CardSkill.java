@@ -5,12 +5,14 @@ public class CardSkill extends Skill implements Cloneable {
     protected boolean summonSkill;
     protected boolean deathSkill;
     protected boolean precastSkill;
-    public CardSkill(SkillType type, int level, int unlockLevel, boolean summonSkill, boolean deathSkill, boolean precastSkill) {
+    protected boolean postcastSkill;
+    public CardSkill(SkillType type, int level, int unlockLevel, boolean summonSkill, boolean deathSkill, boolean precastSkill, boolean postcastSkill) {
         super(type, level);
         this.unlockLevel = unlockLevel;
         this.summonSkill = summonSkill;
         this.deathSkill = deathSkill;
         this.precastSkill = precastSkill;
+        this.postcastSkill = postcastSkill;
     }
 
     public int getUnlockLevel() {
@@ -33,6 +35,9 @@ public class CardSkill extends Skill implements Cloneable {
         if (this.isPrecastSkill()) {
             prefix += "先机";
         }
+        if (this.isPostcastSkill()) {
+            prefix += "遗志";
+        }
         return String.format("%s%s%s", prefix, type.getDisplayName(), level == 0 ? "" : String.valueOf(level));
     }
 
@@ -49,5 +54,10 @@ public class CardSkill extends Skill implements Cloneable {
     @Override
     public boolean isPrecastSkill() {
         return this.precastSkill;
+    }
+
+    @Override
+    public boolean isPostcastSkill() {
+        return this.postcastSkill;
     }
 }

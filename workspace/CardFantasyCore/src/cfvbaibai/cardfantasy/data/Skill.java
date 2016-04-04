@@ -98,6 +98,10 @@ public abstract class Skill implements Comparable<Skill> {
         return false;
     }
 
+    public boolean isPostcastSkill() {
+        return false;
+    }
+
     public static Skill 自动扣血() {
         return new RuneSkill(SkillType.自动扣血, 0);
     }

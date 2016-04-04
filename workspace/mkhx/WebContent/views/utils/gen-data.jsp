@@ -73,6 +73,8 @@ function generateSkill(skill, unlockLevel) {
         result += 'death="true" ';
     } else if (special == '[先机]') {
         result += 'precast="true" ';
+    } else if (special == '[遗志]') {
+        result += 'postcast="true" ';
     }
     result += '/&gt;';
     result += '<br />';

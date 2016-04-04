@@ -31,7 +31,7 @@ public final class DeckBuilder {
     private final static String CARD_REGEX = 
         "^" +
         "(?<CardName>[^\\-+SD*]+)" +
-        "(\\+(?<SummonFlag>(S|降临)?)(?<DeathFlag>(D|死契)?)(?<PrecastFlag>(P|先机)?)" +
+        "(\\+(?<SummonFlag>(S|降临)?)(?<DeathFlag>(D|死契)?)(?<PrecastFlag>(PRE|先机)?)(?<PostcastFlag>(POST|遗志)?)" +
         "(?<ExtraSkillName>[^\\d\\-*]+)(?<ExtraSkillLevel>\\d+)?)?" +
         "(\\-(?<CardLevel>\\d+))?" +
         "(\\*(?<Count>\\d+))?" +
@@ -187,6 +187,7 @@ public final class DeckBuilder {
         boolean summonSkill = !StringUtils.isBlank(matcher.group("SummonFlag"));
         boolean deathSkill = !StringUtils.isBlank(matcher.group("DeathFlag"));
         boolean precastSkill = !StringUtils.isBlank(matcher.group("PrecastFlag"));
+        boolean postcastSkill = !StringUtils.isBlank(matcher.group("PostcastFlag"));
         String countText = matcher.group("Count");
         int count = 1;
         if (countText != null) {
@@ -205,7 +206,7 @@ public final class DeckBuilder {
         String prefix = "";
         CardSkill extraSkill = null;
         if (extraSkillType != null) {
-            extraSkill = new CardSkill(extraSkillType, extraSkillLevel, 15, summonSkill, deathSkill, precastSkill);
+            extraSkill = new CardSkill(extraSkillType, extraSkillLevel, 15, summonSkill, deathSkill, precastSkill, postcastSkill);
             prefix = extraSkillName;
             if (extraSkillLevel != 0) {
                 prefix += extraSkillLevel;
@@ -247,6 +248,12 @@ public final class DeckBuilder {
         }
         if (skill.isSummonSkill()) {
             return "降临" + desc;
+        }
+        if (skill.isPrecastSkill()) {
+            return "先机" + desc;
+        }
+        if (skill.isPostcastSkill()) {
+            return "遗志" + desc;
         }
         return desc;
     }
