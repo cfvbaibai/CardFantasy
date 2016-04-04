@@ -31,7 +31,7 @@ public final class SuraFire {
                 resolver.resolveCounterAttackSkills((CardInfo)attacker, victim, skill, result, null);
             }
             ui.attackCard(attacker, victim, skill, damage);
-            resolver.resolveDeathSkills(attacker, victim, skill, resolver.applyDamage(victim, skill, damage));
+            resolver.resolveDeathSkills(attacker, victim, skill, resolver.applyDamage(attacker, victim, skill, damage));
         }
     }
 }

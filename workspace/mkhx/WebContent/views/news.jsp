@@ -29,13 +29,15 @@
                         <c:out value="${question.title}" />
                     </li>
                     </c:forEach>
-                    <li><a href="#" data-type="bug">更多问题...</a></li>
+                    <li><a href="#" data-type="bug">更多问题...</a></li>`
                 </ul>
             </div>
             --%>
             <div data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2016-4-4: 添加新卡<cf:c>机械拳皇</cf:c>和<cf:c>骸骨之王</cf:c>，效果都是我YY的，请大家实战测试</li>
+                    <li>2016-3-30: 修复觉醒沉默对魔神魔王起效的BUG，感谢<x>cgq918</x>发现BUG</li>
                     <li>2016-3-8: <ul>
                         <li>添加新卡<cf:c>神风剑豪</cf:c>，【一闪】的技能效果是我YY的，细节如下，请大家实测检验：<ul>
                             <li>一闪不能减少自己受到的伤害，只能反弹一半伤害给对方</li>

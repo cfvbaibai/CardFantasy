@@ -28,7 +28,7 @@ public final class Guard {
             damage = guardian.getHP();
         }
         resolver.getStage().getUI().attackCard(attacker, guardian, guardSkill, damage);
-        OnDamagedResult result = resolver.applyDamage(guardian, guardSkill, damage);
+        OnDamagedResult result = resolver.applyDamage(attacker, guardian, guardSkill, damage);
         resolver.resolveDeathSkills(attacker, guardian, guardSkill, result);
         return remainingDamage;
     }

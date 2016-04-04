@@ -93,7 +93,11 @@ public abstract class Skill implements Comparable<Skill> {
     public boolean isSummonSkill() {
         return false;
     }
-    
+
+    public boolean isPrecastSkill() {
+        return false;
+    }
+
     public static Skill 自动扣血() {
         return new RuneSkill(SkillType.自动扣血, 0);
     }

@@ -19,7 +19,7 @@ public final class Insane {
         StageInfo stage = resolver.getStage();
         Randomizer random = stage.getRandomizer();
         GameUI ui = stage.getUI();
-    
+
         List<CardInfo> victims = random.pickRandom(defender.getField().toList(), victimCount, true, null);
         ui.useSkill(attacker, victims, skill, true);
         for (CardInfo victim : victims) {
@@ -38,7 +38,7 @@ public final class Insane {
             for (CardInfo cardAttackedByVictim : cardsAttackedByVictim) {
                 ui.attackCard(victim, cardAttackedByVictim, null, damage);
                 resolver.resolveDeathSkills(attacker, cardAttackedByVictim, skill, 
-                    resolver.applyDamage(cardAttackedByVictim, null, damage));
+                    resolver.applyDamage(victim, cardAttackedByVictim, null, damage));
             }
         }
     }

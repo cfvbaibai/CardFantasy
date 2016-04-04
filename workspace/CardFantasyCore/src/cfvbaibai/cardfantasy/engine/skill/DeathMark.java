@@ -62,7 +62,7 @@ public class DeathMark {
                 }
                 damage = result.getDamage();
                 ui.attackCard(killer, victim, skill, damage);
-                resolver.resolveDeathSkills(killer, victim, skill, resolver.applyDamage(victim, skill, damage));
+                resolver.resolveDeathSkills(killer, victim, skill, resolver.applyDamage(deadCard, victim, skill, damage));
             }
         }
     }

@@ -20,7 +20,7 @@ public final class PhysicalReflection {
         ui.useSkill(defender, attacker, cardSkill, true);
         if (!resolver.resolverCounterAttackBlockSkill(cardSkill, attacker, defender)) {
             ui.attackCard(defender, attacker, cardSkill, damage);
-            resolver.resolveDeathSkills(defender, attacker, cardSkill, resolver.applyDamage(attacker, cardSkill, damage));
+            resolver.resolveDeathSkills(defender, attacker, cardSkill, resolver.applyDamage(defender, attacker, cardSkill, damage));
         }
     }
 }

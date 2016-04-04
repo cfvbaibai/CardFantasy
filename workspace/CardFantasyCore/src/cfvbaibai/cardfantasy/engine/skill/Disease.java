@@ -27,6 +27,6 @@ public final class Disease {
         ui.adjustAT(attacker, defender, -damage, skill);
         defender.addEffect(new SkillEffect(SkillEffectType.ATTACK_CHANGE, skillUseInfo, -damage, true));
         ui.attackCard(attacker, defender, skill, damage);
-        resolver.resolveDeathSkills(attacker, defender, skill, resolver.applyDamage(defender, skill, damage));
+        resolver.resolveDeathSkills(attacker, defender, skill, resolver.applyDamage(attacker, defender, skill, damage));
     }
 }

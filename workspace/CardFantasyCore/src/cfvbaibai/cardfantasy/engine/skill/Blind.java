@@ -37,6 +37,6 @@ public class Blind {
             Skill blindSkill = statusItem.getCause().getSkill();
             dodgeLevel = Math.max(dodgeLevel, blindSkill.getImpact());
         }
-        return new CardSkill(SkillType.闪避, dodgeLevel, 0, false, false);
+        return new CardSkill(SkillType.闪避, dodgeLevel, 0, false, false, false);
     }
 }

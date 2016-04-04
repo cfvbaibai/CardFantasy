@@ -197,6 +197,9 @@ public class BattleEngine {
         this.stage.getResolver().activateRunes(this.getActivePlayer(), this.getInactivePlayer());
         this.stage.getResolver().resolvePreAttackRune(this.getActivePlayer(), this.getInactivePlayer());
         this.stage.getResolver().resolvePreAttackSkills(this.getActivePlayer(), this.getInactivePlayer());
+        for (CardInfo card : this.getActivePlayer().getHand().getCards()) {
+            this.stage.getResolver().resolvePrecastSkills(card, this.getInactivePlayer());
+        }
         return Phase.战斗;
     }
 
@@ -384,6 +387,12 @@ public class BattleEngine {
             resolver.removeStatus(myField.getCard(i), CardStatusType.不屈);
         } else {
             processAttackCard(myField, opField, i);
+            if (myField.getCard(i) != null && !myField.getCard(i).isDead() &&
+                opField.getCard(i) != null && !opField.getCard(i).isDead()) {
+                if (myField.getCard(i).containsUsableSkill(SkillType.连击)) {
+                    processAttackCard(myField, opField, i);
+                }
+            }
         }
     }
 
@@ -395,14 +404,14 @@ public class BattleEngine {
             resolver.removeStatus(myField.getCard(i), CardStatusType.麻痹);
             return;
         }
-        for (SkillUseInfo skillUseInfo : myField.getCard(i).getNormalUsableSkills()) {
+        for (SkillUseInfo skillUseInfo : myField.getCard(i).getUsableNormalSkills()) {
             if (skillUseInfo.getSkill().getType() == SkillType.横扫) {
                 ui.useSkill(myField.getCard(i), defender, skillUseInfo.getSkill(), true);
             }
         }
         OnDamagedResult damagedResult = resolver.attackCard(myField.getCard(i), defender, null);
         if (damagedResult != null && damagedResult.originalDamage > 0 && myField.getCard(i) != null) {
-            for (SkillUseInfo skillUseInfo : myField.getCard(i).getNormalUsableSkills()) {
+            for (SkillUseInfo skillUseInfo : myField.getCard(i).getUsableNormalSkills()) {
                 if (skillUseInfo.getSkill().getType() == SkillType.横扫) {
 
                     List<CardInfo> sweepDefenders = new ArrayList<CardInfo>();

@@ -219,6 +219,8 @@
                                 <label for="card-extra-skill-summon">降临</label>
                                 <input type="radio" data-mini="true" name="card-extra-skill-flag" id="card-extra-skill-death" value="死契" />
                                 <label for="card-extra-skill-death">死契</label>
+                                <input type="radio" data-mini="true" name="card-extra-skill-flag" id="card-extra-skill-precast" value="先机" />
+                                <label for="card-extra-skill-precast">先机</label>
                             </div>
                         </td>
                     </tr>

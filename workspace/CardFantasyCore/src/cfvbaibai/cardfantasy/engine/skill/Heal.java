@@ -31,6 +31,6 @@ public final class Heal {
             return;
         }
         ui.healCard(healer, healee, cardSkill, healHP);
-        resolver.applyDamage(healee, cardSkill, -healHP);
+        resolver.applyDamage(healer, healee, cardSkill, -healHP);
     }
 }

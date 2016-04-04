@@ -257,7 +257,6 @@ public class CardInfo extends EntityInfo {
                 skillUseInfos.add(skillUseInfo);
             }
         }
-        
         return skillUseInfos;
     }
 
@@ -269,19 +268,28 @@ public class CardInfo extends EntityInfo {
                 skillUseInfos.add(skillUseInfo);
             }
         }
-        
         return skillUseInfos;
     }
 
-    public List<SkillUseInfo> getNormalUsableSkills() {
+    public List<SkillUseInfo> getUsablePrecastSkills() {
         List<SkillUseInfo> skillUseInfos = new ArrayList<SkillUseInfo>();
         for (SkillUseInfo skillUseInfo : this.getAllUsableSkills()) {
             CardSkill cardSkill = (CardSkill)skillUseInfo.getSkill();
-            if (!cardSkill.isDeathSkill() && !cardSkill.isSummonSkill()) {
+            if (cardSkill.isPrecastSkill()) {
                 skillUseInfos.add(skillUseInfo);
             }
         }
-        
+        return skillUseInfos;
+    }
+
+    public List<SkillUseInfo> getUsableNormalSkills() {
+        List<SkillUseInfo> skillUseInfos = new ArrayList<SkillUseInfo>();
+        for (SkillUseInfo skillUseInfo : this.getAllUsableSkills()) {
+            CardSkill cardSkill = (CardSkill)skillUseInfo.getSkill();
+            if (!cardSkill.isDeathSkill() && !cardSkill.isSummonSkill() && !cardSkill.isPrecastSkill()) {
+                skillUseInfos.add(skillUseInfo);
+            }
+        }
         return skillUseInfos;
     }
     

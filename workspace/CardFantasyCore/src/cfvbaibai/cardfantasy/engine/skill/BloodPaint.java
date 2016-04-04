@@ -28,9 +28,9 @@ public final class BloodPaint {
             }
             int actualDamage = onAttackBlockingResult.getDamage(); 
             ui.attackCard(attacker, victim, cardSkill, actualDamage);
-            OnDamagedResult onDamagedResult = resolver.applyDamage(victim, cardSkill, actualDamage);
+            OnDamagedResult onDamagedResult = resolver.applyDamage(attacker, victim, cardSkill, actualDamage);
             ui.healCard(attacker, attacker, cardSkill, actualDamage);
-            resolver.applyDamage(attacker, cardSkill, -actualDamage);
+            resolver.applyDamage(attacker, attacker, cardSkill, -actualDamage);
             resolver.resolveDeathSkills(attacker, victim, cardSkill, onDamagedResult);
         }
     }

@@ -71,6 +71,8 @@ function generateSkill(skill, unlockLevel) {
         result += 'summon="true" ';
     } else if (special == '[死契]') {
         result += 'death="true" ';
+    } else if (special == '[先机]') {
+        result += 'precast="true" ';
     }
     result += '/&gt;';
     result += '<br />';

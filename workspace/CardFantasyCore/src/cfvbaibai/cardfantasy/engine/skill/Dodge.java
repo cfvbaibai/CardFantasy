@@ -19,7 +19,7 @@ public final class Dodge {
         List<CardStatusItem> blindStatusItems = attacker.getStatus().getStatusOf(CardStatusType.致盲);
         // Two types of dodge: triggered by native dodge skill or blind status
         SkillUseInfo nativeDodgeSkillUseInfo = null;
-        for (SkillUseInfo blockSkillUseInfo : defender.getNormalUsableSkills()) {
+        for (SkillUseInfo blockSkillUseInfo : defender.getUsableNormalSkills()) {
             if (blockSkillUseInfo.getType() == SkillType.闪避) {
                 nativeDodgeSkillUseInfo = blockSkillUseInfo;
                 break;

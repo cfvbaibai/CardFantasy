@@ -18,7 +18,7 @@ public final class WitheringWord {
     public static void apply(SkillUseInfo skillUseInfo, SkillResolver resolver, EntityInfo attacker, Player defenderHero)
             throws HeroDieSignal {
         Skill skill = skillUseInfo.getSkill();
-        double Percent = skill.getImpact() /100.0;
+        double Percent = skill.getImpact() / 100.0;
         GameUI ui = resolver.getStage().getUI();
         List<CardInfo> victims = defenderHero.getField().getAliveCards();
         ui.useSkill(attacker, victims, skill, true);
@@ -35,7 +35,7 @@ public final class WitheringWord {
             ui.adjustAT(attacker, victim, -attackReduce, skill);
             victim.addEffect(new SkillEffect(SkillEffectType.ATTACK_CHANGE, skillUseInfo, -attackReduce, true));
             ui.attackCard(attacker, victim, skill, lifeDamage);
-            resolver.resolveDeathSkills(attacker, victim, skill, resolver.applyDamage(victim, skill, lifeDamage));
+            resolver.resolveDeathSkills(attacker, victim, skill, resolver.applyDamage(attacker, victim, skill, lifeDamage));
         }
     }
 }

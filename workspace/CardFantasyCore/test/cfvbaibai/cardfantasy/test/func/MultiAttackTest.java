@@ -168,4 +168,49 @@ public class MultiAttackTest extends SkillValidationTest {
         Assert.assertEquals(270, 5000 - c占位符4.getHP());
         Assert.assertEquals(811, c秘银巨石像.getHP());
     }
+
+    @Test
+    public void test连击_普通() {
+        SkillTestContext context = prepare(50, 50, "秘银巨石像+连击", "占位符");
+        context.addToField(0, 0);
+        CardInfo c占位符 = context.addToField(1, 1);
+        context.startGame();
+        
+        context.proceedOneRound();
+        Assert.assertEquals(810 * 2, 5000 - c占位符.getHP());
+    }
+
+    @Test
+    public void test连击_无对应卡牌() {
+        SkillTestContext context = prepare(50, 50, "秘银巨石像+连击");
+        context.addToField(0, 0);
+        context.startGame();
+        
+        context.proceedOneRound();
+        Assert.assertEquals(810, context.getPlayer(1).getMaxHP() - context.getPlayer(1).getHP());
+    }
+
+    @Test
+    public void test连击_第一击杀死() {
+        SkillTestContext context = prepare(50, 50, "秘银巨石像+连击", "占位符");
+        context.addToField(0, 0);
+        CardInfo c占位符 = context.addToField(1, 1).setBasicHP(2);
+        context.startGame();
+        
+        context.proceedOneRound();
+        Assert.assertTrue(c占位符.isDead());
+        Assert.assertEquals(0, context.getPlayer(1).getMaxHP() - context.getPlayer(1).getHP());
+    }
+
+    @Test
+    public void test连击_精准打击() {
+        SkillTestContext context = prepare(50, 50, "机械拳皇", "占位符");
+        context.addToField(0, 0);
+        CardInfo c占位符 = context.addToField(1, 1);
+        context.startGame();
+        
+        context.proceedOneRound();
+        Assert.assertEquals((int)(880 * 1.8 * 2), context.getPlayer(1).getMaxHP() - context.getPlayer(1).getHP());
+        Assert.assertEquals(880 * 2, 5000 - c占位符.getHP());
+    }
 }

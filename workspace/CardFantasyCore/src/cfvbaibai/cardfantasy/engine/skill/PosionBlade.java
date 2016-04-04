@@ -44,7 +44,7 @@ public final class PosionBlade {
             }
             //先恢复物理伤害的HP，因为降生命上限这个动作是连同当前血量一起降
             // TODO: 检查是否需要触发死契技能
-            resolver.applyDamage(defender, skill, -lifeToWeaken);
+            resolver.applyDamage(attacker, defender, skill, -lifeToWeaken);
 
             int lifeWeakened = lifeToWeaken;
             if (lifeWeakened > defender.getBasicMaxHP()) {

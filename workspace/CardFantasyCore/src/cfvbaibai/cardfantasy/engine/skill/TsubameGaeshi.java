@@ -30,7 +30,7 @@ public class TsubameGaeshi {
         ui.useSkill(defender, victim, cardSkill, true);
         if (!resolver.resolverCounterAttackBlockSkill(cardSkill, victim, defender)) {
             ui.attackCard(defender, victim, cardSkill, damage);
-            resolver.resolveDeathSkills(defender, victim, cardSkill, resolver.applyDamage(victim, cardSkill, damage));
+            resolver.resolveDeathSkills(defender, victim, cardSkill, resolver.applyDamage(defender, victim, cardSkill, damage));
         }
         defender.setUsed(skillUseInfo);
     }

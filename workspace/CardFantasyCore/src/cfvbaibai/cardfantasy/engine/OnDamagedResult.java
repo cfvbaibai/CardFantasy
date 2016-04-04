@@ -7,6 +7,7 @@ public class OnDamagedResult {
     public int originalDamage;
     public boolean cardDead;
     public boolean unbending;
+    public boolean soulCrushed;
     public OnDamagedResult() {
         
     }

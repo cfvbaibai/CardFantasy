@@ -228,7 +228,7 @@ public class DeathSkillTest extends SkillValidationTest {
         Assert.assertEquals(815 * 2, 1825 - c金属巨龙2.getHP());
         Assert.assertTrue(c欲望惩罚者.isDead());
     }
-    
+
     @Test
     public void test燕返_摧毁() {
         SkillTestContext context = prepare(50, 50, "占位符", "独眼巨人", "欲望惩罚者");
@@ -242,5 +242,49 @@ public class DeathSkillTest extends SkillValidationTest {
         Assert.assertTrue(c欲望惩罚者.isDead());
         Assert.assertEquals(815 * 2, 5000 - c占位符.getHP());
         Assert.assertEquals(0, 1180 - c独眼巨人.getHP());
+    }
+
+    @Test
+    public void test扼杀_普通() {
+        SkillTestContext context = prepare(50, 50, "秘银巨石像+扼杀", "占位符");
+        context.addToField(0, 0);
+        CardInfo c占位符 = context.addToField(1, 1).setBasicHP(2);
+        context.startGame();
+
+        context.proceedOneRound();
+        Assert.assertTrue(c占位符.isDead());
+        Assert.assertEquals(0, c占位符.getOwner().getGrave().size());
+        Assert.assertEquals(1, c占位符.getOwner().getOutField().size());
+        Assert.assertEquals(0, c占位符.getOwner().getHand().size());
+    }
+
+    @Test
+    public void test扼杀_转生() {
+        SkillTestContext context = prepare(50, 50, "秘银巨石像+扼杀", "占位符+转生");
+        context.addToField(0, 0);
+        CardInfo c占位符 = context.addToField(1, 1).setBasicHP(2);
+        context.startGame();
+
+        random.addNextNumbers(0);     // 保证转生成功
+        context.proceedOneRound();
+        Assert.assertTrue(c占位符.isDead());
+        Assert.assertEquals(0, c占位符.getOwner().getGrave().size());
+        Assert.assertEquals(1, c占位符.getOwner().getOutField().size());
+        Assert.assertEquals(0, c占位符.getOwner().getHand().size());
+    }
+
+    @Test
+    public void test扼杀_免疫_转生() {
+        SkillTestContext context = prepare(50, 50, "秘银巨石像+扼杀", "金属巨龙+转生");
+        context.addToField(0, 0);
+        CardInfo c金属巨龙 = context.addToField(1, 1).setBasicHP(2);
+        context.startGame();
+
+        random.addNextNumbers(0);     // 保证转生成功
+        context.proceedOneRound();
+        Assert.assertTrue(c金属巨龙.isDead());
+        Assert.assertEquals(0, c金属巨龙.getOwner().getGrave().size());
+        Assert.assertEquals(1, c金属巨龙.getOwner().getOutField().size());
+        Assert.assertEquals(0, c金属巨龙.getOwner().getHand().size());
     }
 }

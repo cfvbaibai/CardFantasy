@@ -10,7 +10,7 @@ import org.junit.runners.Suite.SuiteClasses;
     HealingTest.class, MagicSkillTest.class, MultiAttackTest.class, RacialBufferTest.class,
     ReviveTest.class, RuneActivationTest.class, SkillSequenceTest.class,
     SnipeTest.class, SpecialStatusTest.class, SpecificCardTest.class,
-    SpecificRuneTest.class, SummonSkillTest.class, SummonTest.class })
+    SpecificRuneTest.class, SummonSkillTest.class, PrecastSkillTest.class, SummonTest.class })
 public class FuncTests {
 
 }
