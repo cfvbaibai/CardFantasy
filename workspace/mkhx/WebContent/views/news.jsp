@@ -11,9 +11,8 @@
                 <ul>
                     <li><a href="#" data-type="bug">魔卡幻想模拟器贴吧</a>已成立，欢迎大家来提BUG、提需求、提供技能结算细节。</li>
                     <!-- <li>页游玩家如果想添加新卡，请去贴吧发帖并提供卡牌的星级种族，任意两级二维，技能，CD，进化前后COST和卡图。</li> -->
-                    <li style="color: red">最近大概因为18图的关系，网站访问量猛增到平时的两倍，会显得略卡……</li>
-                    <!--<li><a href="<c:url value="/Wiki/index.shtml" />" target="_blank">魔卡幻想WIKI</a>子站点正式成立，作为新的尝试，欢迎大家来<a href="#" data-type="bug">贴吧</a>提需求和报告BUG。</li>-->
-                    <!--<li>三区（前五区）大神【砍掉重练】已经把他的模拟器和这个模拟器合并了，以后都会共同开发，最近的新卡几乎都是他做的。</li>-->
+                    <!-- <li><a href="<c:url value="/Wiki/index.shtml" />" target="_blank">魔卡幻想WIKI</a>子站点正式成立，作为新的尝试，欢迎大家来<a href="#" data-type="bug">贴吧</a>提需求和报告BUG。</li>-->
+                    <!-- <li>三区（前五区）大神【砍掉重练】已经把他的模拟器和这个模拟器合并了，以后都会共同开发，最近的新卡几乎都是他做的。</li>-->
                     <!-- <li>现在模拟器能识别卡牌昵称或简称了，直接手动输入卡组变得更容易了。当然肯定有漏掉的，欢迎大家来<a href="#" data-type="bug">贴吧</a>补充。</li> -->
                     <!-- <li>小提示：如果想保存卡组，只要把卡组的文字表述记下来存在文本文件或者手机备忘录里，下次要用的时候复制回来就行。</li> -->
                     <!-- <li>小提示：可以灵活使用*0的表达法来方便配卡哦。</li> -->
@@ -182,18 +181,22 @@
                         <li>添加【网页版邪龙之神】，感谢<x>a27180411</x>提供的资料</li>
                     </ul></li>
                     <li>2015-10-11:<ul> 
-                        <li>在【WIKI】中添加了【自定义卡图生成器】功能（手机版目前还看不到，只有电脑能用），只需提供自己喜欢的底图和设定，就能生成魔卡样式的卡图:<br />
+                        <li>在【WIKI】中添加了【自定义卡图生成器】功能（手机版目前还看不到，只有电脑能用），只需提供自己喜欢的底图和设定，就能生成魔卡样式的卡图
+                        <%--
                             <img src="<c:url value="/resources/img/help/customCardPortraitEntrance.png" />" style="width: 100%; max-width: 406px" />
                             <img src="<c:url value="/resources/img/help/customCardPortrait.png" />" style="width: 100%; max-width: 704px" />
+                         --%>
                         </li>
                         <li>把魔王的图标换成了正确的图标，感谢<x>虚梦杀</x>提供信息</li>
                     </ul></li>
                     <li>2015-10-06: <ul>
                         <li>【WIKI】将素材卡单独抽取为一类，感谢<x>虚梦杀</x>的建议</li>
                         <li>【WIKI】修复某些关卡信息不正确的BUG，感谢<x>dzx276941963</x>报告BUG</li>
-                        <li>【WIKI】中的卡牌现在有图了，以<cf:c>时光女神</cf:c>为例: <br />
+                        <li>【WIKI】中的卡牌现在有图了
+                        <%--
                             <img class="help-img" alt="示例卡牌图片1" src="<c:url value="/resources/img/help/SampleCardPortrait1.png" />" />
                             <img class="help-img" alt="示例卡牌图片1" src="<c:url value="/resources/img/help/SampleCardPortrait2.png" />" />
+                        --%>
                         </li>
                     </ul></li>
                     <li>2015-10-05: 【WIKI】中添加了符文和关卡信息</li>
@@ -216,8 +219,8 @@
                         <li>修复【不屈】会引发【自爆】的BUG，感谢<x>邪眼真王二代目</x>发现BUG</li>
                         <li>修复【不屈】在我方回合被触发时的处理机制，感谢<x>pk810219899</x>发现BUG</li>
                     </ul></li>
-                    <li>2015-09-08: 改进【魔神战】的结果显示，现在除了基本信息外，还会有伤害分布图：
-                        <img class='help-img' alt="伤害分布图" src='<c:url value="/resources/img/help/DamageDistributionChart.png" />' />
+                    <li>2015-09-08: 改进【魔神战】的结果显示，现在除了基本信息外，还会有伤害分布图
+                        <%--<img class='help-img' alt="伤害分布图" src='<c:url value="/resources/img/help/DamageDistributionChart.png" />' /> --%>
                     </li>
                     <li>2015-09-06: 修复一个【送还】、【不动】、【魔神之刃】相互作用时候的BUG，感谢<x>dzx276941963</x>发现BUG</li>
                     <li>2015-09-03: <ul>
@@ -231,11 +234,14 @@
                     </ul></li>
                     <li>2015-08-27: 添加新卡<cf:c>雪月花</cf:c></li>
                     <li>2015-08-15: <ul>
-                        <li>添加【保存录像】和【播放录像】供能<br />
+                        <li>添加【保存录像】和【播放录像】供能
+                        <%--
                         <img class='help-img' alt="保存录像" src='<c:url value="/resources/img/help/showSaveVideoDataPanel.jpg" />' />
                         <img class='help-img' alt="复制录像数据" src='<c:url value="/resources/img/help/copyVideoData.jpg" />' /><br />
                         <span>然后将录像数据保存到随便什么地方，或者分享到贴吧</span><br />
                         <span>要观看录像的小伙伴可以把录像数据直接复制进【播放录像】的界面里观看</span><br />
+                        --%>
+                        </li>
                         <li>修复一个魔神战COST显示的BUG，感谢<x>wanghwx2014</x>报告BUG</li>
                     </ul></li>
                     <li>2015-08-14: 添加新卡<cf:c>残翼羽神</cf:c>、<cf:c>无限之神</cf:c>、<cf:c>银河观测者</cf:c>，感谢<x>咬起来喀嚓喀嚓</x>和<x>heixuanfeng54</x>的提醒</li>
@@ -314,9 +320,11 @@
                     </ul></li>
                     <li>2015-05-09: <ul>
                         <li>取消COST和卡槽数量限制，方便地下城的模拟</li>
-                        <li>现在可以在竞技场战里设置胜利条件了: <br />
+                        <li>现在可以在竞技场战里设置胜利条件了
+                        <%--
                             <img class='help-img' alt="胜利条件1" src='<c:url value="/resources/img/help/VictoryCondition1.png" />' />
                             <img class='help-img' alt="胜利条件2" src='<c:url value="/resources/img/help/VictoryCondition2.png" />' />
+                        --%>
                         </li>
                     </ul></li>
                     <li>2015-04-25: <ul>
