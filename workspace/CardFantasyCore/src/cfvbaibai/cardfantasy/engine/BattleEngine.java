@@ -328,13 +328,12 @@ public class BattleEngine {
             resolver.removeStatus(myField.getCard(i), CardStatusType.致盲);
             resolver.resolveDebuff(myField.getCard(i), CardStatusType.中毒);
             resolver.resolveDebuff(myField.getCard(i), CardStatusType.燃烧);
+            resolver.removeStatus(myField.getCard(i), CardStatusType.沉默);
 
             if (!underControl) {
                 // 回春
                 resolver.resolveCardRoundEndingSkills(myField.getCard(i));
             }
-
-            resolver.removeStatus(myField.getCard(i), CardStatusType.沉默);
 
             // 解除状态
             resolver.removeStatus(myField.getCard(i), CardStatusType.中毒);

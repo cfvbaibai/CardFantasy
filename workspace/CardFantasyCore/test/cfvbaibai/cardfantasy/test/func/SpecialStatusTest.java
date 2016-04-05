@@ -1339,4 +1339,24 @@ public class SpecialStatusTest extends SkillValidationTest {
         Assert.assertEquals(810, 5000 - c占位符1.getHP());
         Assert.assertEquals(660, 5000 - c占位符2.getHP());
     }
+
+    /**
+     * 沉默是在攻击后解除的，回春仍然能发挥作用
+     */
+    @Test
+    public void test沉默_回春() {
+        SkillTestContext context = prepare(
+            50, 50, "秘银巨石像+沉默", "占位符+回春1");
+        context.addToField(0, 0);
+        CardInfo c占位符 = context.addToField(1, 1);
+        context.startGame();
+
+        context.proceedOneRound();
+        Assert.assertTrue(c占位符.getStatus().containsStatus(CardStatusType.沉默));
+        Assert.assertEquals(810, 5000 - c占位符.getHP());
+
+        context.proceedOneRound();
+        Assert.assertFalse(c占位符.getStatus().containsStatus(CardStatusType.沉默));
+        Assert.assertEquals(810 - 30, 5000 - c占位符.getHP());
+    }
 }

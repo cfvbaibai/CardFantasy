@@ -327,6 +327,29 @@ public class DefenseTest extends SkillValidationTest {
     }
 
     /**
+     * 被晕眩的卡在晕眩状态下无法发动回春
+     */
+    @Test
+    public void test大地之盾_回春() {
+        SkillTestContext context = prepare(50, 50, "秘银巨石像+回春1", "占位符+大地之盾");
+        CardInfo c秘银巨石像 = context.addToField(0, 0).setBasicHP(100);
+        CardInfo c占位符 = context.addToField(1, 1);
+        context.startGame();
+
+        context.proceedOneRound();
+        Assert.assertTrue(c秘银巨石像.getStatus().containsStatus(CardStatusType.晕眩));
+        Assert.assertEquals(130, c秘银巨石像.getHP());
+        Assert.assertEquals(810, 5000 - c占位符.getHP());
+
+        context.proceedOneRound();
+        Assert.assertTrue(c秘银巨石像.getStatus().containsStatus(CardStatusType.晕眩));
+
+        context.proceedOneRound();
+        Assert.assertEquals(130, c秘银巨石像.getHP());
+        Assert.assertEquals(810, 5000 - c占位符.getHP());
+    }
+
+    /**
      * 溅射也会造成晕眩
      */
     @Test
