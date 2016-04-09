@@ -1944,6 +1944,11 @@
         <Skill type="雷暴" level="10" unlock="5" />
         <Skill type="烈焰风暴" level="10" unlock="10" />
     </Card>
+    <Card id="3536" name="纷争女神" wikiId="" race="蛮荒" speed="4" star="5" cost="17" incrCost="2" at="420" hp="1260" incrAT="35" incrHP="34">
+        <Skill type="荆棘术" level="3" unlock="0" />
+        <Skill type="法力反射" level="8" unlock="5" />
+        <Skill type="摧毁" level="0" unlock="10" />
+    </Card>
 
     <!-- 地狱 -->
     <Card id="4101" name="恶魔小鬼" wikiId="31036" race="地狱" speed="2" star="1" cost="3" incrCost="2" at="80" hp="270" incrAT="19" incrHP="6">
