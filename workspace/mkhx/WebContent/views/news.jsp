@@ -35,6 +35,7 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2016-4-12: 增加英雄等级至130级, 感谢<x>砍掉重练</x>大神的更新</li>
                     <li>2016-4-9: 添加新卡<cf:c>纷争女神</cf:c>, 感谢<x>游天使</x>提供的资料</li>
                     <li>2016-4-5: 修复【凯撒之击】和【迷魂】相互作用时的BUG，感谢<x>捭阖黑利</x>发现BUG</li>
                     <li>2016-4-4: 添加新卡<cf:c>机械拳皇</cf:c>, <cf:c>智慧女神</cf:c>, <cf:c>花语术师</cf:c>, <cf:c>骸骨之王</cf:c>，效果都是我YY的，请大家实战测试。以下是YY细节：<ul>
