@@ -23383,7 +23383,7 @@
         "LanchCondition": 0,
         "LanchConditionValue": 0,
         "AffectType": 128,
-        "AffectValue": 0,
+        "AffectValue": 2,
         "AffectValue2": 0,
         "SkillCategory": 2,
         "Desc": "将1张对方无复活技能的卡牌从墓地中召唤上场（召唤的对方卡牌在死亡后仍会进入对方墓地。)"
@@ -23608,6 +23608,19 @@
         "AffectValue2": 0,
         "SkillCategory": 3,
         "Desc": "免疫沉默效果并且当受到火、冰、雷、血攻击时，攻击无效，并对攻击方造成210点伤害。"
+      },
+      {
+        "SkillId": 1914,
+        "Name": "召唤：梦境女神",
+        "Type": 125,
+        "LanchType": 4,
+        "LanchCondition": 0,
+        "LanchConditionValue": 0,
+        "AffectType": 101,
+        "AffectValue": 305,
+        "AffectValue2": 305,
+        "SkillCategory": 2,
+        "Desc": "卡牌上场后，召唤2张【梦境女神】上场战斗（召唤出的卡牌不会进入墓地，牌堆），如果场上已经存在自身召唤的卡牌时，则不发动召唤。"
       }
     ]
   },
@@ -23615,7 +23628,7 @@
   "message": null,
   "type": null,
   "version": {
-    "http": "201302811",
+    "http": "201302812",
     "stop": "",
     "appversion": "version_1",
     "appurl": "ios://xxx",

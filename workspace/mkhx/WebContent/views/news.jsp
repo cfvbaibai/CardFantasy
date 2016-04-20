@@ -35,6 +35,7 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2016-4-20: 添加新卡<cf:c>花语祈求者</cf:c></li>
                     <li>2016-4-18: 添加新卡<cf:c>烈焰蛇魔</cf:c>, 效果是我YY的:<ul>
                         <li>【恶灵汲取】的基数是敌方当前生命值，不是最大生命值</li>
                         <li>【恶灵汲取】无视免疫，但对魔王魔神无效</li>

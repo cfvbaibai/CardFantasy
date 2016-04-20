@@ -248,6 +248,8 @@ public class SkillResolver {
                 Summon.apply(this, skillUseInfo, attacker, "双子座·幻影");
             } else if (skillUseInfo.getType() == SkillType.召唤北海神兽) {
                 Summon.apply(this, skillUseInfo, attacker, "北海神兽", "北海神兽");
+            } else if (skillUseInfo.getType() == SkillType.召唤梦境女神) {
+                Summon.apply(this, skillUseInfo, attacker, "梦境女神", "梦境女神");
             } else if (skillUseInfo.getType() == SkillType.魔力法阵) {
                 MagicMark.apply(this, skillUseInfo, attacker, defender, -1);
             } else if (skillUseInfo.getType() == SkillType.魔力印记) {

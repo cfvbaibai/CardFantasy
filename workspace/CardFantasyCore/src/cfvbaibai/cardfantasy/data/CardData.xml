@@ -1326,6 +1326,11 @@
         <Skill type="冰甲" level="7" unlock="5" />
         <Skill type="不动" level="0" unlock="10" />
     </Card>
+    <Card id="2534" name="花语祈求者" wikiId="" race="森林" speed="4" star="5" cost="18" incrCost="2" at="330" hp="1770" incrAT="41" incrHP="45">
+        <Skill type="召唤梦境女神" level="0" unlock="0" />
+        <Skill type="免疫" level="0" unlock="5" />
+        <Skill type="祈福" level="3" unlock="10" />
+    </Card>
 
     <!-- 蛮荒  -->
     <Card id="3101" name="穴居人奴隶" wikiId="31006" race="蛮荒" speed="2" star="1" cost="4" incrCost="2" at="90" hp="390" incrAT="18" incrHP="11">
