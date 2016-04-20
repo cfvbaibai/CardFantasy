@@ -314,4 +314,19 @@ public class CounterAttackTest extends SkillValidationTest {
         Assert.assertEquals(810 / 2, 1550 - c秘银巨石像.getHP());
         Assert.assertFalse(c秘银巨石像.getStatus().containsStatus(CardStatusType.晕眩));
     }
+
+    /**
+     * 恶灵汲取计算的基数是当前生命值，非最大生命值
+     */
+    @Test
+    public void test恶灵汲取_普通() {
+        SkillTestContext context = prepare(50, 50, "秘银巨石像", "占位符+恶灵汲取10");
+        CardInfo c秘银巨石像 = context.addToField(0, 0);
+        CardInfo c占位符 = context.addToField(1, 1).setBasicHP(1000);
+        context.startGame();
+
+        context.proceedOneRound();
+        Assert.assertEquals(1000 - 660 + 1400 * 30 / 100, c占位符.getHP());
+        Assert.assertEquals(1400 * 30 / 100, 1400 - c秘银巨石像.getHP());
+    }
 }

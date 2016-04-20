@@ -22,7 +22,8 @@ public class NoEffect {
             attackSkill.getType() == SkillType.圣光洗礼 ||
             attackSkill.getType() == SkillType.森林沐浴 ||
             attackSkill.getType() == SkillType.蛮荒威压 ||
-            attackSkill.getType() == SkillType.地狱同化) {
+            attackSkill.getType() == SkillType.地狱同化 ||
+            attackSkill.getType() == SkillType.恶灵汲取) {
             GameUI ui = resolver.getStage().getUI();
             ui.useSkill(defender, attacker, cardSkill, true);
             ui.blockSkill(attacker, defender, cardSkill, attackSkill);

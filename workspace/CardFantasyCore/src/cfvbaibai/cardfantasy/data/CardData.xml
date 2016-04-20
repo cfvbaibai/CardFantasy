@@ -1321,6 +1321,11 @@
         <Skill type="冰甲" level="8" unlock="5" />
         <Skill type="免疫" level="0" unlock="10" />
     </Card>
+    <Card id="2533" name="月之公主" wikiId="" race="森林" speed="4" star="5" cost="18" incrCost="2" at="415" hp="1880" incrAT="48" incrHP="52">
+        <Skill type="传送" level="0" unlock="0" summon="true" />
+        <Skill type="冰甲" level="7" unlock="5" />
+        <Skill type="不动" level="0" unlock="10" />
+    </Card>
 
     <!-- 蛮荒  -->
     <Card id="3101" name="穴居人奴隶" wikiId="31006" race="蛮荒" speed="2" star="1" cost="4" incrCost="2" at="90" hp="390" incrAT="18" incrHP="11">
@@ -1772,6 +1777,11 @@
         <Skill type="凋零真言" level="4" unlock="5" />
         <Skill type="冰甲" level="4" unlock="10" />
     </Card>
+    <Card id="3447" name="海盗将军" wikiId="" race="蛮荒" speed="2" star="4" cost="15" incrCost="2" at="290" hp="1410" incrAT="36" incrHP="34">
+        <Skill type="连击" level="0" unlock="0" />
+        <Skill type="陷阱" level="2" unlock="5" />
+        <Skill type="脱困" level="0" unlock="10" />
+    </Card>
 
     <Card id="3501" name="雷兽" wikiId="31034" race="蛮荒" speed="6" star="5" cost="14" incrCost="2" at="340" hp="1100" incrAT="20" incrHP="45">
         <Skill type="雷暴" level="7" unlock="0" />
@@ -1948,6 +1958,11 @@
         <Skill type="荆棘术" level="3" unlock="0" />
         <Skill type="法力反射" level="8" unlock="5" />
         <Skill type="摧毁" level="0" unlock="10" />
+    </Card>
+    <Card id="3537" name="烈焰蛇魔" wikiId="" race="蛮荒" speed="4" star="5" cost="19" incrCost="2" at="340" hp="1920" incrAT="48" incrHP="46">
+        <Skill type="邪灵汲取" level="8" unlock="0" />
+        <Skill type="恶灵汲取" level="8" unlock="5" />
+        <Skill type="不动" level="0" unlock="10" />
     </Card>
 
     <!-- 地狱 -->

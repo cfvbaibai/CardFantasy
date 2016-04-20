@@ -308,6 +308,8 @@ public class SkillResolver {
                     Burning.apply(skillUseInfo, this, attacker, defender);
                 } else if (skillUseInfo.getType() == SkillType.邪灵汲取) {
                     EnergyDrain.apply(skillUseInfo, this, attacker, defender, result, damagedResult);
+                } else if (skillUseInfo.getType() == SkillType.恶灵汲取) {
+                    LifeDrain.apply(skillUseInfo, this, attacker, defender, result, damagedResult);
                 } else if (skillUseInfo.getType() == SkillType.被插出五星) {
                     CounterSummon.apply(this, defender, skillUseInfo.getSkill(), 5);
                 }
