@@ -960,6 +960,7 @@ public class SkillResolver {
                     // 被召唤的卡牌不进入墓地，而是直接死亡
                     return DeadType.PhantomDiminished;
                 }
+                card.restoreOwner();
                 if (attacker instanceof CardInfo && this.isPhysicalAttackSkill(killingSkill)) {
                     CardInfo attackCard = (CardInfo)attacker;
                     if (attackCard.getRace() != Race.BOSS) {
@@ -972,7 +973,6 @@ public class SkillResolver {
                         }
                     }
                 }
-                card.switchOwner(card.getOriginalOwner());
                 card.getOwner().getGrave().addCard(card);
                 break;
             }
@@ -1119,7 +1119,7 @@ public class SkillResolver {
     public void resolveFirstClassSummoningSkills(CardInfo card, Player player, Player enemy, boolean isMinion) throws HeroDieSignal {
         // 召唤物不享受加成
         if (!isMinion) {
-            for (SkillUseInfo skillUseInfo : player.getCardBuffs()) {
+            for (SkillUseInfo skillUseInfo : card.getOriginalOwner().getCardBuffs()) {
                 Skill skill = skillUseInfo.getSkill();
                 if (skill instanceof BuffSkill) {
                     if (!((BuffSkill)skill).canApplyTo(card)) {

@@ -124,8 +124,18 @@ public class CardInfo extends EntityInfo {
     }
 
     public void switchOwner(Player newOwner) {
+        if (newOwner == null || newOwner == this.owner) {
+            return;
+        }
         this.originalOwner = this.owner;
         this.owner = newOwner;
+    }
+    
+    public void restoreOwner() {
+        if (this.originalOwner != null) {
+            this.owner = this.originalOwner;
+            this.originalOwner = null;
+        }
     }
 
     private Card getCard() {
