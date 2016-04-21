@@ -1702,7 +1702,7 @@ public class SkillResolver {
     }
 
     public void resolvePostcastSkills(CardInfo card, Player defenderHero) throws HeroDieSignal {
-        for (SkillUseInfo skillUseInfo : card.getUsablePrecastSkills()) {
+        for (SkillUseInfo skillUseInfo : card.getUsablePostcastSkills()) {
             if (skillUseInfo.getType() == SkillType.灵王的轰击) {
                 ManaErode.apply(skillUseInfo.getSkill(), this, card, defenderHero, 1);
             }
