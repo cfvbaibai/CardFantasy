@@ -69,4 +69,51 @@ public class ReviveTest extends SkillValidationTest {
             Randomizer.registerRandomizer(original);
         }
     }
+
+    @Test
+    public void test夺魂_基本() {
+        SkillTestContext context = prepare(
+            50, 50, "秘银巨石像+夺魂", "占位符", "占位符");
+        context.addToField(0, 0);
+        CardInfo c占位符1 = context.addToField(1, 1);
+        CardInfo c占位符2 = context.addToGrave(2, 1);
+        context.startGame();
+
+        random.addNextPicks(0);
+        context.proceedOneRound();
+
+        Assert.assertEquals(2, context.getPlayer(0).getField().size());
+        Assert.assertEquals(1, context.getPlayer(1).getField().size());
+        Assert.assertEquals(0, context.getPlayer(1).getGrave().size());
+        Assert.assertFalse(c占位符2.isDead());
+        Assert.assertEquals(context.getPlayer(0), c占位符2.getOwner());
+        Assert.assertEquals(context.getPlayer(1), c占位符2.getOriginalOwner());
+        Assert.assertEquals(context.getPlayer(1), c占位符1.getOwner());
+        Assert.assertEquals(context.getPlayer(1), c占位符1.getOriginalOwner());
+    }
+
+    @Test
+    public void test夺魂_死亡() {
+        SkillTestContext context = prepare(
+            50, 50, "秘银巨石像+夺魂", "占位符", "秘银巨石像", "残血王国小兵");
+        context.addToField(0, 0);
+        context.addToField(1, 1);
+        CardInfo c秘银巨石像2 = context.addToField(2, 1);
+        CardInfo c残血王国小兵 = context.addToGrave(3, 1);
+        context.startGame();
+
+        random.addNextPicks(0);
+        context.proceedOneRound();
+
+        // 刚复活的小兵不能攻击
+        Assert.assertEquals(1400, c秘银巨石像2.getHP());
+        Assert.assertEquals(context.getPlayer(0), c残血王国小兵.getOwner());
+
+        context.proceedOneRound();
+        // 秘银巨石像2杀死叛变的小兵，小兵回到原本主人的墓地
+        Assert.assertTrue(context.getPlayer(1).getGrave().contains(c残血王国小兵));
+        Assert.assertEquals(1, context.getPlayer(1).getGrave().size());
+        Assert.assertEquals(1, context.getPlayer(0).getField().size());
+        Assert.assertEquals(context.getPlayer(1), c残血王国小兵.getOwner());
+    }
 }

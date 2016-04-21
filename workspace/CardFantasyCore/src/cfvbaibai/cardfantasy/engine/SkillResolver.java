@@ -154,6 +154,8 @@ public class SkillResolver {
                 Pray.apply(skillUseInfo.getSkill(), this, attacker);
             } else if (skillUseInfo.getType() == SkillType.复活) {
                 Revive.apply(this, skillUseInfo, attacker);
+            } else if (skillUseInfo.getType() == SkillType.夺魂) {
+                SoulControl.apply(this, skillUseInfo, attacker, defender);
             } else if (skillUseInfo.getType() == SkillType.背刺) {
                 BackStab.apply(this, skillUseInfo, attacker);
             } else if (skillUseInfo.getType() == SkillType.群体削弱) {
@@ -970,7 +972,8 @@ public class SkillResolver {
                         }
                     }
                 }
-                owner.getGrave().addCard(card);
+                card.switchOwner(card.getOriginalOwner());
+                card.getOwner().getGrave().addCard(card);
                 break;
             }
         }
@@ -1346,7 +1349,7 @@ public class SkillResolver {
     }
 
     public BlockStatusResult resolveBlockStatusSkills(EntityInfo attacker, CardInfo victim, SkillUseInfo skillUseInfo, CardStatusItem item) {
-        if (Unbending.isStatusEscaped(this, item, victim)) {
+            if (Unbending.isStatusEscaped(this, item, victim)) {
             return new BlockStatusResult(true);
         }
         for (RuneInfo rune : victim.getOwner().getRuneBox().getRunes()) {
@@ -1373,12 +1376,16 @@ public class SkillResolver {
         Player player = card.getOwner();
         card.reset();
         this.stage.getUI().summonCard(player, card);
+        // 夺魂可以从敌方卡组召唤
+        if (card.getOriginalOwner().getGrave().contains(card)) {
+            card.getOriginalOwner().getGrave().removeCard(card);
+        }
         player.getField().addCard(card);
         player.getHand().removeCard(card);
         // 星云锁链之类可以从卡组直接召唤的情况
         player.getDeck().removeCard(card);
     }
-    
+
     public void summonCard(Player player, CardInfo summonedCard, CardInfo reviver, boolean isMinion, Skill summonSkill) throws HeroDieSignal {
         Player enemy = this.getStage().getOpponent(player);
         List<CardInfo> summonedCards = new ArrayList<CardInfo>();
@@ -1690,6 +1697,14 @@ public class SkillResolver {
         for (SkillUseInfo skillUseInfo : card.getUsablePrecastSkills()) {
             if (skillUseInfo.getType() == SkillType.凋零真言) {
                 WitheringWord.apply(skillUseInfo, this, card, defenderHero);
+            }
+        }
+    }
+
+    public void resolvePostcastSkills(CardInfo card, Player defenderHero) throws HeroDieSignal {
+        for (SkillUseInfo skillUseInfo : card.getUsablePrecastSkills()) {
+            if (skillUseInfo.getType() == SkillType.灵王的轰击) {
+                ManaErode.apply(skillUseInfo.getSkill(), this, card, defenderHero, 1);
             }
         }
     }

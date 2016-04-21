@@ -25,6 +25,7 @@ public class CardInfo extends EntityInfo {
     private CardStatus status;
     @NonSerializable
     private Player owner;
+    private Player originalOwner;
     @NonSerializable
     private List<SkillUseInfo> skillUseInfos;
     // Used to record the previous position after card dies.
@@ -109,6 +110,22 @@ public class CardInfo extends EntityInfo {
 
     public void setOwner(Player owner) {
         this.owner = owner;
+    }
+    
+    public Player getOriginalOwner() {
+        if (this.originalOwner == null) {
+            return this.owner;
+        }
+        return this.originalOwner;
+    }
+
+    public void setOriginalOwner(Player originalOwner) {
+        this.originalOwner = originalOwner;
+    }
+
+    public void switchOwner(Player newOwner) {
+        this.originalOwner = this.owner;
+        this.owner = newOwner;
     }
 
     private Card getCard() {

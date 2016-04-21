@@ -200,6 +200,9 @@ public class BattleEngine {
         for (CardInfo card : this.getActivePlayer().getHand().toList()) {
             this.stage.getResolver().resolvePrecastSkills(card, this.getInactivePlayer());
         }
+        for (CardInfo card : this.getActivePlayer().getGrave().toList()) {
+            this.stage.getResolver().resolvePostcastSkills(card, this.getInactivePlayer());
+        }
         return Phase.战斗;
     }
 
