@@ -15,6 +15,9 @@ import cfvbaibai.cardfantasy.engine.SkillUseInfo;
 
 public class SoulControl {
     public static void apply(SkillResolver resolver, SkillUseInfo skillUseInfo, CardInfo attacker, Player defenderHero) throws HeroDieSignal {
+        if (attacker.hasUsed(skillUseInfo)) {
+            return;
+        }
         Skill skill = skillUseInfo.getSkill();
         List<CardInfo> candidates = new ArrayList<CardInfo>();
         for (CardInfo deadCard : defenderHero.getGrave().toList()) {
@@ -34,5 +37,6 @@ public class SoulControl {
         CardStatusItem weakStatusItem = CardStatusItem.weak(skillUseInfo);
         resolver.getStage().getUI().addCardStatus(attacker, victim, skill, weakStatusItem);
         victim.addStatus(weakStatusItem);
+        attacker.setUsed(skillUseInfo);
     }
 }
