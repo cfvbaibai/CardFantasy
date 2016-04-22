@@ -18,6 +18,9 @@ public class SoulControl {
         if (attacker.hasUsed(skillUseInfo)) {
             return;
         }
+        if (SoulSeal.soulSealed(resolver, attacker)) {
+            return;
+        }
         Skill skill = skillUseInfo.getSkill();
         List<CardInfo> candidates = new ArrayList<CardInfo>();
         for (CardInfo deadCard : defenderHero.getGrave().toList()) {
