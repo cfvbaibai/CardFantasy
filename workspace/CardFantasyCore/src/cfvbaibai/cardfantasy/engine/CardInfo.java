@@ -344,12 +344,13 @@ public class CardInfo extends EntityInfo {
                 skillUseInfos.add(skillUseInfo);
             }
         }
-        //如果中了沉默等于没有技能
+
         if (this.getStatus().containsStatus(CardStatusType.沉默))
         {
-        	skillUseInfos = new ArrayList<SkillUseInfo>();
-        }   
-        
+            //skillUseInfos.removeIf(skillUseInfo -> !skillUseInfo.getType().containsTag(SkillTag.抗沉默));
+            skillUseInfos.clear();
+        }
+
         return skillUseInfos;
     }
 

@@ -5,7 +5,7 @@ import java.util.List;
 
 import cfvbaibai.cardfantasy.data.Race;
 import cfvbaibai.cardfantasy.data.Skill;
-import cfvbaibai.cardfantasy.data.SkillType;
+import cfvbaibai.cardfantasy.data.SkillTag;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.CardStatusItem;
 import cfvbaibai.cardfantasy.engine.HeroDieSignal;
@@ -24,8 +24,9 @@ public class SoulControl {
         Skill skill = skillUseInfo.getSkill();
         List<CardInfo> candidates = new ArrayList<CardInfo>();
         for (CardInfo deadCard : defenderHero.getGrave().toList()) {
-            if (!deadCard.containsUsableSkill(SkillType.复活) &&
-                    deadCard.getRace() != Race.BOSS) {
+            if (!deadCard.containsUsableSkillsWithTag(SkillTag.召唤) &&
+                !deadCard.containsUsableSkillsWithTag(SkillTag.复活) &&
+                deadCard.getRace() != Race.BOSS) {
                 candidates.add(deadCard);
             }
         }

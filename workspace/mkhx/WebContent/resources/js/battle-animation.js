@@ -1354,7 +1354,8 @@ var Animater = function() {
     ];
     this.selfUsedSkills = [
         '不动', '脱困', '群体脱困', '法力反射', '冰甲', '水流护甲', '闪避', '守护', '魔神之甲', '灵巧', '灵魂禁锢',
-        '王国之盾', '森林之盾', '蛮荒之盾', '地狱之盾', '弱点攻击', '无效', '圣盾', '不屈', '圣炎', '斩杀', '逃跑'
+        '王国之盾', '森林之盾', '蛮荒之盾', '地狱之盾', '弱点攻击', '无效', '圣盾', '不屈', '圣炎', '斩杀', '逃跑',
+        '镜面装甲'
     ];
     this.__useSkill = function(data) {
         var attacker = data[0]; // EntityRuntimeInfo
@@ -1402,7 +1403,7 @@ var Animater = function() {
         } else if (skill == '燕返') {
             this.flyImage({ fileName: 'tsubame.png', width: 48, height: 48, text: skill },
                     attacker, defenders, settings.skillDuration);
-        } else if (skill == '送还') {
+        } else if (skill == '送还' || skill == '反射装甲') {
             this.flyImage({ fileName: 'cross.png', width: 48, height: 48, text: skill },
                     attacker, defenders, settings.skillDuration);
         } else if (skill == '传送') {

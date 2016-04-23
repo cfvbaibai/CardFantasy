@@ -113,6 +113,8 @@ public enum SkillType {
     月神的触碰("", new int[] { 8, 10, 13, 15, 18, 20, 23, 25, 28, 30, 35 }),
 
     法力反射("30929", 30),
+    反射装甲("", 0, SkillTag.即死),
+    镜面装甲("", 210, 0, SkillTag.抗沉默),
     魔甲("30931", 140, -10),
     盾刺("30972", 20, SkillTag.抗免疫, SkillTag.反击),
     荆棘术("30972", 160, 40, SkillTag.抗免疫, SkillTag.反击),
@@ -138,8 +140,8 @@ public enum SkillType {
     弱点攻击("30881", 0),
     灵巧("57020", 0),
     灵魂禁锢("", 0),
-    沉默("", 0, SkillTag.抗免疫, SkillTag.抗不屈),
-    觉醒沉默("", 0, SkillTag.不可洗炼, SkillTag.抗免疫, SkillTag.抗不屈),
+    沉默("", 0, SkillTag.抗免疫, SkillTag.抗不屈, SkillTag.沉默),
+    觉醒沉默("", 0, SkillTag.不可洗炼, SkillTag.抗免疫, SkillTag.抗不屈, SkillTag.沉默),
 
     回魂("31131", 1),
     二重狙击("31130", 25, SkillTag.抗免疫, SkillTag.狙击),
@@ -208,7 +210,7 @@ public enum SkillType {
     星云锁链("", 0, 0),
     生命链接("", 0),
     逃跑("",0),
-    夺魂("", 0),
+    夺魂("", 0, SkillTag.复活),
 
     召唤王国战士("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
     召唤骷髅战士("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),

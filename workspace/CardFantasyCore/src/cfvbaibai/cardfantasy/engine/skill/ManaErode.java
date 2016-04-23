@@ -24,6 +24,7 @@ public final class ManaErode {
             int actualDamage = damage;
             if (victim.containsUsableSkill(SkillType.免疫) ||
                 victim.containsUsableSkill(SkillType.法力反射) ||
+                victim.containsUsableSkill(SkillType.镜面装甲) ||
                 defender.getActiveRuneOf(RuneData.石林) != null) {
                 actualDamage *= 3;
             }

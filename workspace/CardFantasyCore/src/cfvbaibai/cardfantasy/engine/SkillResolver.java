@@ -316,6 +316,8 @@ public class SkillResolver {
                     LifeDrain.apply(skillUseInfo, this, attacker, defender, result, damagedResult);
                 } else if (skillUseInfo.getType() == SkillType.被插出五星) {
                     CounterSummon.apply(this, defender, skillUseInfo.getSkill(), 5);
+                } else if (skillUseInfo.getType() == SkillType.反射装甲) {
+                    ReflectionArmor.apply(skillUseInfo.getSkill(), this, attacker, defender, attackSkill, damagedResult.actualDamage);
                 }
             }
             if (!defender.isSilent() && !defender.justRevived()) {
@@ -501,7 +503,8 @@ public class SkillResolver {
                 result.setAttackable(false);
             } else {
                 for (SkillUseInfo blockSkillUseInfo : defender.getUsableNormalSkills()) {
-                    if (blockSkillUseInfo.getType() == SkillType.法力反射) {
+                    if (blockSkillUseInfo.getType() == SkillType.法力反射 ||
+                        blockSkillUseInfo.getType() == SkillType.镜面装甲) {
                         if (CounterMagic.isSkillBlocked(this, blockSkillUseInfo.getSkill(), attackSkill,
                                 attacker, defender)) {
                             result.setAttackable(false);
@@ -538,6 +541,12 @@ public class SkillResolver {
                         }
                     } else if (blockSkillUseInfo.getType() == SkillType.不动) {
                         if (Immobility.isSkillBlocked(this, blockSkillUseInfo.getSkill(), attackSkill, attacker, defender)) {
+                            result.setAttackable(false);
+                            return result;
+                        }
+                    } else if (blockSkillUseInfo.getType() == SkillType.镜面装甲) {
+                        if (attackSkill.getType().containsTag(SkillTag.沉默)) {
+                            this.getStage().getUI().blockSkill(attacker, defender, blockSkillUseInfo.getSkill(), attackSkill);
                             result.setAttackable(false);
                             return result;
                         }

@@ -26,11 +26,15 @@ public final class Return {
         if (!result.isAttackable()) {
             return;
         }
+        returnCard(resolver, cardSkill, attacker, defender);
+    }
+
+    public static void returnCard(SkillResolver resolver, Skill cardSkill, CardInfo attacker, CardInfo defender) {
         CardInfo expelledCard = defender.getOwner().getField().expelCard(defender.getPosition());
         if (expelledCard != defender) {
             throw new CardFantasyRuntimeException("expelledCard != defender");
         }
-        
+        GameUI ui = resolver.getStage().getUI();
         ui.returnCard(attacker, defender, cardSkill);
         if (!defender.getStatus().containsStatus(CardStatusType.召唤)) {
             // 被召唤的卡牌不回到卡组，而是直接消失

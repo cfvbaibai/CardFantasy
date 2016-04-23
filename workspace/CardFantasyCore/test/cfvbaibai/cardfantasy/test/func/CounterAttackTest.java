@@ -329,4 +329,152 @@ public class CounterAttackTest extends SkillValidationTest {
         Assert.assertEquals(1000 - 660 + 1400 * 30 / 100, c占位符.getHP());
         Assert.assertEquals(1400 * 30 / 100, 1400 - c秘银巨石像.getHP());
     }
+
+    @Test
+    public void test反射装甲_基础() {
+        SkillTestContext context = prepare(50, 50, "圣骑士", "占位符+反射装甲");
+        CardInfo c圣骑士 = context.addToField(0, 0);
+        CardInfo c占位符 = context.addToField(1, 1);
+        context.startGame();
+
+        context.proceedOneRound();
+        Assert.assertEquals(395, 5000 - c占位符.getHP());
+        Assert.assertEquals(0, c圣骑士.getOwner().getField().size());
+        Assert.assertEquals(1, c圣骑士.getOwner().getDeck().size());
+        Assert.assertEquals(0, c圣骑士.getOwner().getGrave().size());
+    }
+
+    @Test
+    public void test反射装甲_回春() {
+        SkillTestContext context = prepare(50, 50, "圣骑士+回春1", "占位符+反射装甲");
+        CardInfo c圣骑士 = context.addToField(0, 0);
+        CardInfo c占位符 = context.addToField(1, 1);
+        context.startGame();
+
+        context.proceedOneRound();
+        Assert.assertEquals(505, 5000 - c占位符.getHP());
+        Assert.assertEquals(0, c圣骑士.getOwner().getField().size());
+        Assert.assertEquals(1, c圣骑士.getOwner().getDeck().size());
+        Assert.assertEquals(0, c圣骑士.getOwner().getGrave().size());
+    }
+
+    @Test
+    public void test反射装甲_反击() {
+        SkillTestContext context = prepare(50, 50, "圣骑士", "城镇突击兵+反射装甲");
+        CardInfo c圣骑士 = context.addToField(0, 0);
+        CardInfo c城镇突击兵 = context.addToField(1, 1);
+        context.startGame();
+
+        context.proceedOneRound();
+        Assert.assertEquals(395, 675 - c城镇突击兵.getHP());
+        Assert.assertEquals(0, c圣骑士.getOwner().getField().size());
+        Assert.assertEquals(1, c圣骑士.getOwner().getDeck().size());
+        Assert.assertEquals(0, c圣骑士.getOwner().getGrave().size());
+    }
+
+    @Test
+    public void test反射装甲_不动() {
+        SkillTestContext context = prepare(50, 50, "秘银巨石像", "占位符+反射装甲");
+        CardInfo c秘银巨石像 = context.addToField(0, 0);
+        CardInfo c占位符 = context.addToField(1, 1);
+        context.startGame();
+
+        context.proceedOneRound();
+        Assert.assertEquals(660, 5000 - c占位符.getHP());
+        Assert.assertEquals(1, c秘银巨石像.getOwner().getField().size());
+        Assert.assertEquals(0, c秘银巨石像.getOwner().getDeck().size());
+        Assert.assertEquals(0, c秘银巨石像.getOwner().getGrave().size());
+    }
+
+    @Test
+    public void test反射装甲_免疫() {
+        SkillTestContext context = prepare(50, 50, "圣骑士+免疫", "占位符+反射装甲");
+        CardInfo c圣骑士 = context.addToField(0, 0);
+        CardInfo c占位符 = context.addToField(1, 1);
+        context.startGame();
+
+        context.proceedOneRound();
+        Assert.assertEquals(505, 5000 - c占位符.getHP());
+        Assert.assertEquals(0, c圣骑士.getOwner().getField().size());
+        Assert.assertEquals(1, c圣骑士.getOwner().getDeck().size());
+        Assert.assertEquals(0, c圣骑士.getOwner().getGrave().size());
+    }
+
+    @Test
+    public void test法力反射_普通() {
+        SkillTestContext context = prepare(50, 50, "占位符+血炼1", "占位符+法力反射1");
+        CardInfo c占位符1 = context.addToField(0, 0);
+        CardInfo c占位符2 = context.addToField(1, 1);
+        context.startGame();
+
+        random.addNextPicks(0);
+        context.proceedOneRound();
+        Assert.assertEquals(0, 5000 - c占位符2.getHP());
+        Assert.assertEquals(30, 5000 - c占位符1.getHP());
+    }
+
+    @Test
+    public void test法力反射_沉默_法术之后() {
+        SkillTestContext context = prepare(50, 50, "巫妖学徒+沉默", "占位符+法力反射1");
+        CardInfo c巫妖学徒 = context.addToField(0, 0);
+        CardInfo c占位符 = context.addToField(1, 1);
+        context.startGame();
+
+        random.addNextPicks(0);
+        context.proceedOneRound();
+        Assert.assertEquals(30, 1095 - c巫妖学徒.getHP());
+        Assert.assertEquals(580, 5000 - c占位符.getHP());
+    }
+
+    @Test
+    public void test法力反射_沉默_法术之前和之后() {
+        SkillTestContext context = prepare(50, 50, "预言之神+血炼1", "占位符+法力反射1");
+        CardInfo c预言之神 = context.addToField(0, 0);
+        CardInfo c占位符 = context.addToField(1, 1);
+        context.startGame();
+
+        random.addNextPicks(0, 0);
+        context.proceedOneRound();
+        Assert.assertEquals(30 - 20 /* 血炼1 */, 1820 - c预言之神.getHP());
+        Assert.assertEquals(20 + 845, 5000 - c占位符.getHP());
+    }
+
+    @Test
+    public void test镜面装甲_沉默_法术之前和之后() {
+        SkillTestContext context = prepare(50, 50, "预言之神+血炼1", "占位符+镜面装甲");
+        CardInfo c预言之神 = context.addToField(0, 0);
+        CardInfo c占位符 = context.addToField(1, 1);
+        context.startGame();
+
+        random.addNextPicks(0, 0);
+        context.proceedOneRound();
+        Assert.assertEquals(210 + 210, 1820 - c预言之神.getHP());
+        Assert.assertEquals(845, 5000 - c占位符.getHP());
+    }
+
+    @Test
+    public void test镜面装甲_降临沉默_法术之前和之后() {
+        SkillTestContext context = prepare(50, 50, "风暴海皇+血炼1", "占位符+镜面装甲");
+        CardInfo c风暴海皇 = context.addToHand(0, 0).setSummonDelay(0);
+        CardInfo c占位符 = context.addToField(1, 1);
+        context.startGame();
+
+        random.addNextPicks(0);
+        context.proceedOneRound();
+        Assert.assertEquals(210, 1800 - c风暴海皇.getHP());
+        Assert.assertEquals(1040 + 1248, 5000 - c占位符.getHP());
+    }
+
+    @Test
+    public void test镜面装甲_法力侵蚀() {
+        SkillTestContext context = prepare(50, 50, "占位符+法力侵蚀1", "占位符+镜面装甲");
+        CardInfo c占位符1 = context.addToField(0, 0);
+        CardInfo c占位符2 = context.addToField(1, 1);
+        context.startGame();
+
+        random.addNextPicks(0, 0);
+        context.proceedOneRound();
+        Assert.assertEquals(0, 5000 - c占位符1.getHP());
+        Assert.assertEquals(60, 5000 - c占位符2.getHP());
+    }
 }
