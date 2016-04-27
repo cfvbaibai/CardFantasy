@@ -73,7 +73,7 @@ public class ReviveTest extends SkillValidationTest {
     @Test
     public void test夺魂_基本() {
         SkillTestContext context = prepare(
-            50, 50, "秘银巨石像+夺魂", "占位符", "占位符");
+            50, 50, "秘银巨石像+夺魂1", "占位符", "占位符");
         context.addToField(0, 0);
         CardInfo c占位符1 = context.addToField(1, 1);
         CardInfo c占位符2 = context.addToGrave(2, 1);
@@ -95,7 +95,7 @@ public class ReviveTest extends SkillValidationTest {
     @Test
     public void test夺魂_死亡() {
         SkillTestContext context = prepare(
-            50, 50, "秘银巨石像+夺魂", "占位符", "秘银巨石像", "残血王国小兵");
+            50, 50, "秘银巨石像+夺魂1", "占位符", "秘银巨石像", "残血王国小兵");
         context.addToField(0, 0);
         context.addToField(1, 1);
         CardInfo c秘银巨石像2 = context.addToField(2, 1);

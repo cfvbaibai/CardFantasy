@@ -30,7 +30,8 @@ public class SoulControl {
                 candidates.add(deadCard);
             }
         }
-        List<CardInfo> victims = resolver.getStage().getRandomizer().pickRandom(candidates, 1, false, null);
+        int victimCount = skill.getImpact();
+        List<CardInfo> victims = resolver.getStage().getRandomizer().pickRandom(candidates, victimCount, false, null);
         if (victims.size() == 0) {
             return;
         }

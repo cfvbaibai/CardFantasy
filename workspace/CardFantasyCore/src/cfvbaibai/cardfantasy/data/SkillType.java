@@ -210,7 +210,7 @@ public enum SkillType {
     星云锁链("", 0, 0),
     生命链接("", 0),
     逃跑("",0),
-    夺魂("", 0, SkillTag.复活),
+    夺魂("", 0, 1, SkillTag.复活),
 
     召唤王国战士("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
     召唤骷髅战士("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),

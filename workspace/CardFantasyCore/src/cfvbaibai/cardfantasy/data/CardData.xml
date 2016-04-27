@@ -2637,7 +2637,7 @@
         <Skill type="凋零真言" level="5" unlock="10" precast="true" />
     </Card>
     <Card id="4544" name="鬼灵猎杀者" wikiId="" race="地狱" speed="4" star="5" cost="18" incrCost="2" at="340" hp="1910" incrAT="47" incrHP="51">
-        <Skill type="夺魂" level="0" unlock="0" />
+        <Skill type="夺魂" level="1" unlock="0" />
         <Skill type="灵王的轰击" level="9" unlock="5" postcast="true" />
         <Skill type="歃血魔咒" level="7" unlock="10" />
     </Card>
