@@ -1,8 +1,5 @@
 package cfvbaibai.cardfantasy.engine.skill;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.HeroDieSignal;
@@ -20,8 +17,11 @@ public class LifeDrain {
         Skill skill = skillUseInfo.getSkill();
         int damage = attacker.getHP() * skill.getImpact() / 100;
 
-        List<CardInfo> victims = new ArrayList<CardInfo>();
-        victims.add(attacker);
+        OnAttackBlockingResult onAttackBlockingResult = resolver.resolveAttackBlockingSkills(defender, attacker, skill, damage);
+        if (!onAttackBlockingResult.isAttackable()) {
+            return;
+        }
+        damage = onAttackBlockingResult.getDamage();
         resolver.getStage().getUI().attackCard(defender, attacker, skill, damage);
         resolver.resolveDeathSkills(defender, attacker, skill, resolver.applyDamage(defender, attacker, skill, damage));
 

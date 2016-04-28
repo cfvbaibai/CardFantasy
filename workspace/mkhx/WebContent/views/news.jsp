@@ -35,6 +35,7 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2016-4-28: 修复【恶灵汲取】对魔王魔神时的一个BUG，感谢<x>happypower110</x>和<x>千下</x>的帮助</li>
                     <li>2016-4-23: 添加新卡<cf:c>星空战姬</cf:c></li>
                     <li>2016-4-21: 添加新卡<cf:c>鬼灵猎杀者</cf:c></li>
                     <li>2016-4-20: 添加新卡<cf:c>花语祈求者</cf:c></li>

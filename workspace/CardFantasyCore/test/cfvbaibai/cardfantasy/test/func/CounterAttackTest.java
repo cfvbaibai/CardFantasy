@@ -330,6 +330,21 @@ public class CounterAttackTest extends SkillValidationTest {
         Assert.assertEquals(1400 * 30 / 100, 1400 - c秘银巨石像.getHP());
     }
 
+    /**
+     * 恶灵汲取计算的基数是当前生命值，非最大生命值
+     */
+    @Test
+    public void test恶灵汲取_魔神() {
+        SkillTestContext context = prepare(50, 50, "占位魔神", "占位符+恶灵汲取10");
+        CardInfo c占位魔神 = context.addToField(0, 0);
+        CardInfo c占位符 = context.addToField(1, 1);
+        context.startGame();
+
+        context.proceedOneRound();
+        Assert.assertEquals(1, 5000 - c占位符.getHP());
+        Assert.assertEquals(5000, c占位魔神.getHP());
+    }
+
     @Test
     public void test反射装甲_基础() {
         SkillTestContext context = prepare(50, 50, "圣骑士", "占位符+反射装甲");

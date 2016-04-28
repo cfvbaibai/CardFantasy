@@ -2922,6 +2922,10 @@
         <Skill type="免疫" level="0" unlock="10" />
     </Card>
     -->
+    <Card id="5599" name="占位魔神" wikiId="" race="魔神" speed="2" star="5" cost="0" incrCost="0" at="1" hp="5000" incrAT="0" incrHP="0">
+        <Skill type="无效" level="0" unlock="0" />
+    </Card>
+
     <Card id="7501" name="熊老师" wikiId="" race="萌货" speed="4" star="5" cost="0" incrCost="0" at="400" hp="1500" incrAT="40" incrHP="50">
         <Skill type="关小黑屋" level="1" unlock="0" summon="true" />
         <Skill type="吐槽" level="2" unlock="5" />
