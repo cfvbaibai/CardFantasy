@@ -700,7 +700,7 @@ public class SkillResolver {
             } else if (deadCardSkillUseInfo.getType() == SkillType.九转秘术) {
                 Summon.apply(this, deadCardSkillUseInfo, deadCard, "九命猫神·幻影");
             } else if (deadCardSkillUseInfo.getType() == SkillType.我还会回来的) {
-                Summon.apply(this, deadCardSkillUseInfo, deadCard, "大毒汁之王-5");
+                Summon.apply(this, deadCardSkillUseInfo, deadCard, "大毒汁之王本体");
             }
         }
         if (!deadCard.isSilent()) {
@@ -717,7 +717,8 @@ public class SkillResolver {
             // 被扼杀的卡牌无法转生
             boolean reincarnated = false;
             for (SkillUseInfo deadCardSkillUseInfo : deadCard.getAllUsableSkills()) {
-                if (deadCardSkillUseInfo.getType() == SkillType.转生) {
+                if (deadCardSkillUseInfo.getType() == SkillType.转生 ||
+                    deadCardSkillUseInfo.getType() == SkillType.武形秘仪) {
                     if (Reincarnation.apply(this, deadCardSkillUseInfo.getSkill(), deadCard, result.unbending)) {
                         reincarnated = true;
                         break;
@@ -1462,7 +1463,8 @@ public class SkillResolver {
     
     public boolean resolverCounterAttackBlockSkill(Skill counterAttackSkill, CardInfo attacker, CardInfo counterAttacker) {
         for (SkillUseInfo skillUseInfo : attacker.getUsableNormalSkills()) {
-            if (skillUseInfo.getType() == SkillType.灵巧) {
+            if (skillUseInfo.getType() == SkillType.灵巧 ||
+                skillUseInfo.getType() == SkillType.武形秘仪) {
                 return Agile.isCounterAttackSkillDisabled(this, skillUseInfo.getSkill(), counterAttackSkill, attacker, counterAttacker);
             }
         }

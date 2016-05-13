@@ -23386,7 +23386,7 @@
         "AffectValue": 1,
         "AffectValue2": 0,
         "SkillCategory": 2,
-        "Desc": "卡牌上场时,从对方墓地中召唤1张无复活、夺魂、召唤技能的卡牌上场（召唤的对方卡牌在死亡后仍会进入对方墓地，对魔神、魔王无效。)"
+        "Desc": "卡牌上场时,从对方墓地中召唤1张无复活、夺魂、召唤、逃跑技能的卡牌上场（召唤的对方卡牌在死亡后仍会进入对方墓地，对魔神、魔王无效。)"
       },
       {
         "SkillId": 1637,
@@ -23633,7 +23633,7 @@
         "AffectValue": 2,
         "AffectValue2": 0,
         "SkillCategory": 2,
-        "Desc": "卡牌上场时,从对方墓地中召唤2张无复活、夺魂、召唤技能的卡牌上场（召唤的对方卡牌在死亡后仍会进入对方墓地，对魔神、魔王无效。)"
+        "Desc": "卡牌上场时,从对方墓地中召唤2张无复活、夺魂、召唤、逃跑技能的卡牌上场（召唤的对方卡牌在死亡后仍会进入对方墓地，对魔神、魔王无效。)"
       },
       {
         "SkillId": 1655,
@@ -23646,7 +23646,7 @@
         "AffectValue": 3,
         "AffectValue2": 0,
         "SkillCategory": 2,
-        "Desc": "卡牌上场时,从对方墓地中召唤3张无复活、夺魂、召唤技能的卡牌上场（召唤的对方卡牌在死亡后仍会进入对方墓地，对魔神、魔王无效。)"
+        "Desc": "卡牌上场时,从对方墓地中召唤3张无复活、夺魂、召唤、逃跑技能的卡牌上场（召唤的对方卡牌在死亡后仍会进入对方墓地，对魔神、魔王无效。)"
       },
       {
         "SkillId": 1656,
@@ -23659,7 +23659,7 @@
         "AffectValue": 4,
         "AffectValue2": 0,
         "SkillCategory": 2,
-        "Desc": "卡牌上场时,从对方墓地中召唤4张无复活、夺魂、召唤技能的卡牌上场（召唤的对方卡牌在死亡后仍会进入对方墓地，对魔神、魔王无效。)"
+        "Desc": "卡牌上场时,从对方墓地中召唤4张无复活、夺魂、召唤、逃跑技能的卡牌上场（召唤的对方卡牌在死亡后仍会进入对方墓地，对魔神、魔王无效。)"
       },
       {
         "SkillId": 1657,
@@ -23672,7 +23672,7 @@
         "AffectValue": 5,
         "AffectValue2": 0,
         "SkillCategory": 2,
-        "Desc": "卡牌上场时,从对方墓地中召唤5张无复活、夺魂、召唤技能的卡牌上场（召唤的对方卡牌在死亡后仍会进入对方墓地，对魔神、魔王无效。)"
+        "Desc": "卡牌上场时,从对方墓地中召唤5张无复活、夺魂、召唤、逃跑技能的卡牌上场（召唤的对方卡牌在死亡后仍会进入对方墓地，对魔神、魔王无效。)"
       },
       {
         "SkillId": 1658,
@@ -23685,7 +23685,7 @@
         "AffectValue": 6,
         "AffectValue2": 0,
         "SkillCategory": 2,
-        "Desc": "卡牌上场时,从对方墓地中召唤6张无复活、夺魂、召唤技能的卡牌上场（召唤的对方卡牌在死亡后仍会进入对方墓地，对魔神、魔王无效。)"
+        "Desc": "卡牌上场时,从对方墓地中召唤6张无复活、夺魂、召唤、逃跑技能的卡牌上场（召唤的对方卡牌在死亡后仍会进入对方墓地，对魔神、魔王无效。)"
       },
       {
         "SkillId": 1659,
@@ -23698,7 +23698,7 @@
         "AffectValue": 7,
         "AffectValue2": 0,
         "SkillCategory": 2,
-        "Desc": "卡牌上场时,从对方墓地中召唤7张无复活、夺魂、召唤技能的卡牌上场（召唤的对方卡牌在死亡后仍会进入对方墓地，对魔神、魔王无效。)"
+        "Desc": "卡牌上场时,从对方墓地中召唤7张无复活、夺魂、召唤、逃跑技能的卡牌上场（召唤的对方卡牌在死亡后仍会进入对方墓地，对魔神、魔王无效。)"
       },
       {
         "SkillId": 1660,
@@ -23711,7 +23711,7 @@
         "AffectValue": 8,
         "AffectValue2": 0,
         "SkillCategory": 2,
-        "Desc": "卡牌上场时,从对方墓地中召唤8张无复活、夺魂、召唤技能的卡牌上场（召唤的对方卡牌在死亡后仍会进入对方墓地，对魔神、魔王无效。)"
+        "Desc": "卡牌上场时,从对方墓地中召唤8张无复活、夺魂、召唤、逃跑技能的卡牌上场（召唤的对方卡牌在死亡后仍会进入对方墓地，对魔神、魔王无效。)"
       },
       {
         "SkillId": 1661,
@@ -23724,7 +23724,7 @@
         "AffectValue": 9,
         "AffectValue2": 0,
         "SkillCategory": 2,
-        "Desc": "卡牌上场时,从对方墓地中召唤9张无复活、夺魂、召唤技能的卡牌上场（召唤的对方卡牌在死亡后仍会进入对方墓地，对魔神、魔王无效。)"
+        "Desc": "卡牌上场时,从对方墓地中召唤9张无复活、夺魂、召唤、逃跑技能的卡牌上场（召唤的对方卡牌在死亡后仍会进入对方墓地，对魔神、魔王无效。)"
       },
       {
         "SkillId": 1662,
@@ -23737,7 +23737,176 @@
         "AffectValue": 10,
         "AffectValue2": 0,
         "SkillCategory": 2,
-        "Desc": "卡牌上场时,从对方墓地中召唤10张无复活、夺魂、召唤技能的卡牌上场（召唤的对方卡牌在死亡后仍会进入对方墓地，对魔神、魔王无效。)"
+        "Desc": "卡牌上场时,从对方墓地中召唤10张无复活、夺魂、召唤、逃跑技能的卡牌上场（召唤的对方卡牌在死亡后仍会进入对方墓地，对魔神、魔王无效。)"
+      },
+      {
+        "SkillId": 8187,
+        "Name": "秘术转换",
+        "Type": 92,
+        "LanchType": 5,
+        "LanchCondition": 0,
+        "LanchConditionValue": 0,
+        "AffectType": 55,
+        "AffectValue": 0,
+        "AffectValue2": 0,
+        "SkillCategory": 3,
+        "Desc": "魔卡大陆中唯一一位掌握着秘术转换的术师，找到她的话，可以获得意外的惊喜哟！"
+      },
+      {
+        "SkillId": 1663,
+        "Name": "武形秘仪",
+        "Type": 136,
+        "LanchType": 5,
+        "LanchCondition": 0,
+        "LanchConditionValue": 0,
+        "AffectType": 122,
+        "AffectValue": "414_1224",
+        "AffectValue2": 0,
+        "SkillCategory": 3,
+        "Desc": "死亡时有70%的概率进入手牌，如果手牌已满则进入牌堆并且100%的几率避开对方的反击和盾刺。"
+      },
+      {
+        "SkillId": 1664,
+        "Name": "灵魂消散",
+        "Type": 118,
+        "LanchType": 4,
+        "LanchCondition": 0,
+        "LanchConditionValue": 0,
+        "AffectType": 143,
+        "AffectValue": 0,
+        "AffectValue2": 0,
+        "SkillCategory": 2,
+        "Desc": "将对面场上所有召唤出来的卡牌直接移出游戏。"
+      },
+      {
+        "SkillId": 1665,
+        "Name": "武形印记1",
+        "Type": 118,
+        "LanchType": 4,
+        "LanchCondition": 0,
+        "LanchConditionValue": 0,
+        "AffectType": 86,
+        "AffectValue": 1,
+        "AffectValue2": 300,
+        "SkillCategory": 2,
+        "Desc": "对正对面的目标打上武形印记，持续1个回合，如果在效果时间内中标记的卡牌死亡，则对死亡卡牌的相邻单位造成300点伤害。"
+      },
+      {
+        "SkillId": 1666,
+        "Name": "武形印记2",
+        "Type": 118,
+        "LanchType": 4,
+        "LanchCondition": 0,
+        "LanchConditionValue": 0,
+        "AffectType": 86,
+        "AffectValue": 1,
+        "AffectValue2": 600,
+        "SkillCategory": 2,
+        "Desc": "对正对面的目标打上武形印记，持续1个回合，如果在效果时间内中标记的卡牌死亡，则对死亡卡牌的相邻单位造成600点伤害。"
+      },
+      {
+        "SkillId": 1667,
+        "Name": "武形印记3",
+        "Type": 118,
+        "LanchType": 4,
+        "LanchCondition": 0,
+        "LanchConditionValue": 0,
+        "AffectType": 86,
+        "AffectValue": 1,
+        "AffectValue2": 900,
+        "SkillCategory": 2,
+        "Desc": "对正对面的目标打上武形印记，持续1个回合，如果在效果时间内中标记的卡牌死亡，则对死亡卡牌的相邻单位造成900点伤害。"
+      },
+      {
+        "SkillId": 1668,
+        "Name": "武形印记4",
+        "Type": 118,
+        "LanchType": 4,
+        "LanchCondition": 0,
+        "LanchConditionValue": 0,
+        "AffectType": 86,
+        "AffectValue": 1,
+        "AffectValue2": 1200,
+        "SkillCategory": 2,
+        "Desc": "对正对面的目标打上武形印记，持续1个回合，如果在效果时间内中标记的卡牌死亡，则对死亡卡牌的相邻单位造成1200点伤害。"
+      },
+      {
+        "SkillId": 1669,
+        "Name": "武形印记5",
+        "Type": 118,
+        "LanchType": 4,
+        "LanchCondition": 0,
+        "LanchConditionValue": 0,
+        "AffectType": 86,
+        "AffectValue": 1,
+        "AffectValue2": 1500,
+        "SkillCategory": 2,
+        "Desc": "对正对面的目标打上武形印记，持续1个回合，如果在效果时间内中标记的卡牌死亡，则对死亡卡牌的相邻单位造成1500点伤害。"
+      },
+      {
+        "SkillId": 1670,
+        "Name": "武形印记6",
+        "Type": 118,
+        "LanchType": 4,
+        "LanchCondition": 0,
+        "LanchConditionValue": 0,
+        "AffectType": 86,
+        "AffectValue": 1,
+        "AffectValue2": 1800,
+        "SkillCategory": 2,
+        "Desc": "对正对面的目标打上武形印记，持续1个回合，如果在效果时间内中标记的卡牌死亡，则对死亡卡牌的相邻单位造成1800点伤害。"
+      },
+      {
+        "SkillId": 1671,
+        "Name": "武形印记7",
+        "Type": 118,
+        "LanchType": 4,
+        "LanchCondition": 0,
+        "LanchConditionValue": 0,
+        "AffectType": 86,
+        "AffectValue": 1,
+        "AffectValue2": 2100,
+        "SkillCategory": 2,
+        "Desc": "对正对面的目标打上武形印记，持续1个回合，如果在效果时间内中标记的卡牌死亡，则对死亡卡牌的相邻单位造成2100点伤害。"
+      },
+      {
+        "SkillId": 1672,
+        "Name": "武形印记8",
+        "Type": 118,
+        "LanchType": 4,
+        "LanchCondition": 0,
+        "LanchConditionValue": 0,
+        "AffectType": 86,
+        "AffectValue": 1,
+        "AffectValue2": 2400,
+        "SkillCategory": 2,
+        "Desc": "对正对面的目标打上武形印记，持续1个回合，如果在效果时间内中标记的卡牌死亡，则对死亡卡牌的相邻单位造成2400点伤害。"
+      },
+      {
+        "SkillId": 1673,
+        "Name": "武形印记9",
+        "Type": 118,
+        "LanchType": 4,
+        "LanchCondition": 0,
+        "LanchConditionValue": 0,
+        "AffectType": 86,
+        "AffectValue": 1,
+        "AffectValue2": 2700,
+        "SkillCategory": 2,
+        "Desc": "对正对面的目标打上武形印记，持续1个回合，如果在效果时间内中标记的卡牌死亡，则对死亡卡牌的相邻单位造成2700点伤害。"
+      },
+      {
+        "SkillId": 1674,
+        "Name": "武形印记10",
+        "Type": 118,
+        "LanchType": 4,
+        "LanchCondition": 0,
+        "LanchConditionValue": 0,
+        "AffectType": 86,
+        "AffectValue": 1,
+        "AffectValue2": 3000,
+        "SkillCategory": 2,
+        "Desc": "对正对面的目标打上武形印记，持续1个回合，如果在效果时间内中标记的卡牌死亡，则对死亡卡牌的相邻单位造成3000点伤害。"
       }
     ]
   },
@@ -23745,7 +23914,7 @@
   "message": null,
   "type": null,
   "version": {
-    "http": "201302815",
+    "http": "201302821",
     "stop": "",
     "appversion": "version_1",
     "appurl": "ios://xxx",

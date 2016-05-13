@@ -35,6 +35,11 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2016-5-14: <ul>
+                        <li>添加新卡<cf:c>武形剑圣</cf:c>, 感谢<x>liuill</x>的提醒</li>
+                        <li>修复【连锁攻击】和<cf:c>大毒汁之王</cf:c>作用时的一个BUG, 感谢<x>千下</x>的帮助</li>
+                        <li>修复【夺魂】会复活逃跑卡的BUG, 感谢<x>小死灵少女</x>的帮助</li>
+                    </ul></li>
                     <li>2016-4-28: 修复【恶灵汲取】对魔王魔神时的一个BUG，感谢<x>happypower110</x>和<x>千下</x>的帮助</li>
                     <li>2016-4-23: 添加新卡<cf:c>星空战姬</cf:c></li>
                     <li>2016-4-21: 添加新卡<cf:c>鬼灵猎杀者</cf:c></li>

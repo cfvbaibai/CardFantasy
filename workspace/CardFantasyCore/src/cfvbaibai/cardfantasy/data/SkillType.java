@@ -120,6 +120,7 @@ public enum SkillType {
     荆棘术("30972", 160, 40, SkillTag.抗免疫, SkillTag.反击),
 
     转生("30935", 30, 5),
+    武形秘仪("", 70, 0),
     我还会回来的("", 0),
 
     裂伤("30963", 0, SkillTag.抗免疫, SkillTag.抗不屈),
@@ -209,7 +210,7 @@ public enum SkillType {
 
     星云锁链("", 0, 0),
     生命链接("", 0),
-    逃跑("",0),
+    逃跑("", 0, SkillTag.复活),
     夺魂("", 0, 1, SkillTag.复活),
 
     召唤王国战士("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
