@@ -143,6 +143,7 @@ public enum SkillType {
     灵魂禁锢("", 0),
     沉默("", 0, SkillTag.抗免疫, SkillTag.抗不屈, SkillTag.沉默),
     觉醒沉默("", 0, SkillTag.不可洗炼, SkillTag.抗免疫, SkillTag.抗不屈, SkillTag.沉默),
+    灵魂消散("", 0, SkillTag.抗免疫, SkillTag.抗不屈, SkillTag.沉默),
 
     回魂("31131", 1),
     二重狙击("31130", 25, SkillTag.抗免疫, SkillTag.狙击),
@@ -200,6 +201,7 @@ public enum SkillType {
     不屈("56962", 0, 0),
     时光倒流("80196", 0, 0, SkillTag.抗免疫),
     死亡印记("56754", 0, 50),
+    武形印记("", 0, 200),
     闪光弹("", 5, 1),
     致盲("", 1, 1),
     魔力法阵("", 15, 15),

@@ -35,9 +35,13 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2016-5-22: <ul>
+                        <li>添加新卡<cf:c>武形斗圣</cf:c>, 感谢<x>仰落灬</x>的提醒</li>
+                        <li>修改<cf:c>大毒汁之王</cf:c>和<cf:c>大毒汁怪</cf:c>的种族, 感谢<x>白朴1234</x>, <x>双刀月海</x>, <x>愤怒的小虾蛄</x>的提醒</li>
+                    </ul></li>
                     <li>2016-5-14: <ul>
                         <li>添加新卡<cf:c>武形剑圣</cf:c>, 感谢<x>liuill</x>的提醒</li>
-                        <li>修复【连锁攻击】和<cf:c>大毒汁之王</cf:c>作用时的一个BUG, 感谢<x>千下</x>的帮助</li>
+                        <li>修复【连锁攻击】和<cf:c>大毒汁之王</cf:c>作用时的一个BUG, 感谢<x>千下</x>和<x>dzx276941963</x>的帮助</li>
                         <li>修复【夺魂】会复活逃跑卡的BUG, 感谢<x>小死灵少女</x>的帮助</li>
                     </ul></li>
                     <li>2016-4-28: 修复【恶灵汲取】对魔王魔神时的一个BUG，感谢<x>happypower110</x>和<x>千下</x>的帮助</li>

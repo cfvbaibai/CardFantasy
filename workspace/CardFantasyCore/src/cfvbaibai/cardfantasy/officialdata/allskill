@@ -23787,13 +23787,26 @@
         "LanchConditionValue": 0,
         "AffectType": 86,
         "AffectValue": 1,
-        "AffectValue2": 300,
+        "AffectValue2": 200,
         "SkillCategory": 2,
-        "Desc": "对正对面的目标打上武形印记，持续1个回合，如果在效果时间内中标记的卡牌死亡，则对死亡卡牌的相邻单位造成300点伤害。"
+        "Desc": "对正对面的目标打上武形印记，持续1个回合，如果在效果时间内中标记的卡牌死亡，则对死亡卡牌的相邻单位造成200点伤害。"
       },
       {
         "SkillId": 1666,
         "Name": "武形印记2",
+        "Type": 118,
+        "LanchType": 4,
+        "LanchCondition": 0,
+        "LanchConditionValue": 0,
+        "AffectType": 86,
+        "AffectValue": 1,
+        "AffectValue2": 400,
+        "SkillCategory": 2,
+        "Desc": "对正对面的目标打上武形印记，持续1个回合，如果在效果时间内中标记的卡牌死亡，则对死亡卡牌的相邻单位造成400点伤害。"
+      },
+      {
+        "SkillId": 1667,
+        "Name": "武形印记3",
         "Type": 118,
         "LanchType": 4,
         "LanchCondition": 0,
@@ -23805,21 +23818,34 @@
         "Desc": "对正对面的目标打上武形印记，持续1个回合，如果在效果时间内中标记的卡牌死亡，则对死亡卡牌的相邻单位造成600点伤害。"
       },
       {
-        "SkillId": 1667,
-        "Name": "武形印记3",
+        "SkillId": 1668,
+        "Name": "武形印记4",
         "Type": 118,
         "LanchType": 4,
         "LanchCondition": 0,
         "LanchConditionValue": 0,
         "AffectType": 86,
         "AffectValue": 1,
-        "AffectValue2": 900,
+        "AffectValue2": 800,
         "SkillCategory": 2,
-        "Desc": "对正对面的目标打上武形印记，持续1个回合，如果在效果时间内中标记的卡牌死亡，则对死亡卡牌的相邻单位造成900点伤害。"
+        "Desc": "对正对面的目标打上武形印记，持续1个回合，如果在效果时间内中标记的卡牌死亡，则对死亡卡牌的相邻单位造成800点伤害。"
       },
       {
-        "SkillId": 1668,
-        "Name": "武形印记4",
+        "SkillId": 1669,
+        "Name": "武形印记5",
+        "Type": 118,
+        "LanchType": 4,
+        "LanchCondition": 0,
+        "LanchConditionValue": 0,
+        "AffectType": 86,
+        "AffectValue": 1,
+        "AffectValue2": 1000,
+        "SkillCategory": 2,
+        "Desc": "对正对面的目标打上武形印记，持续1个回合，如果在效果时间内中标记的卡牌死亡，则对死亡卡牌的相邻单位造成1000点伤害。"
+      },
+      {
+        "SkillId": 1670,
+        "Name": "武形印记6",
         "Type": 118,
         "LanchType": 4,
         "LanchCondition": 0,
@@ -23831,21 +23857,34 @@
         "Desc": "对正对面的目标打上武形印记，持续1个回合，如果在效果时间内中标记的卡牌死亡，则对死亡卡牌的相邻单位造成1200点伤害。"
       },
       {
-        "SkillId": 1669,
-        "Name": "武形印记5",
+        "SkillId": 1671,
+        "Name": "武形印记7",
         "Type": 118,
         "LanchType": 4,
         "LanchCondition": 0,
         "LanchConditionValue": 0,
         "AffectType": 86,
         "AffectValue": 1,
-        "AffectValue2": 1500,
+        "AffectValue2": 1400,
         "SkillCategory": 2,
-        "Desc": "对正对面的目标打上武形印记，持续1个回合，如果在效果时间内中标记的卡牌死亡，则对死亡卡牌的相邻单位造成1500点伤害。"
+        "Desc": "对正对面的目标打上武形印记，持续1个回合，如果在效果时间内中标记的卡牌死亡，则对死亡卡牌的相邻单位造成1400点伤害。"
       },
       {
-        "SkillId": 1670,
-        "Name": "武形印记6",
+        "SkillId": 1672,
+        "Name": "武形印记8",
+        "Type": 118,
+        "LanchType": 4,
+        "LanchCondition": 0,
+        "LanchConditionValue": 0,
+        "AffectType": 86,
+        "AffectValue": 1,
+        "AffectValue2": 1600,
+        "SkillCategory": 2,
+        "Desc": "对正对面的目标打上武形印记，持续1个回合，如果在效果时间内中标记的卡牌死亡，则对死亡卡牌的相邻单位造成1600点伤害。"
+      },
+      {
+        "SkillId": 1673,
+        "Name": "武形印记9",
         "Type": 118,
         "LanchType": 4,
         "LanchCondition": 0,
@@ -23857,45 +23896,6 @@
         "Desc": "对正对面的目标打上武形印记，持续1个回合，如果在效果时间内中标记的卡牌死亡，则对死亡卡牌的相邻单位造成1800点伤害。"
       },
       {
-        "SkillId": 1671,
-        "Name": "武形印记7",
-        "Type": 118,
-        "LanchType": 4,
-        "LanchCondition": 0,
-        "LanchConditionValue": 0,
-        "AffectType": 86,
-        "AffectValue": 1,
-        "AffectValue2": 2100,
-        "SkillCategory": 2,
-        "Desc": "对正对面的目标打上武形印记，持续1个回合，如果在效果时间内中标记的卡牌死亡，则对死亡卡牌的相邻单位造成2100点伤害。"
-      },
-      {
-        "SkillId": 1672,
-        "Name": "武形印记8",
-        "Type": 118,
-        "LanchType": 4,
-        "LanchCondition": 0,
-        "LanchConditionValue": 0,
-        "AffectType": 86,
-        "AffectValue": 1,
-        "AffectValue2": 2400,
-        "SkillCategory": 2,
-        "Desc": "对正对面的目标打上武形印记，持续1个回合，如果在效果时间内中标记的卡牌死亡，则对死亡卡牌的相邻单位造成2400点伤害。"
-      },
-      {
-        "SkillId": 1673,
-        "Name": "武形印记9",
-        "Type": 118,
-        "LanchType": 4,
-        "LanchCondition": 0,
-        "LanchConditionValue": 0,
-        "AffectType": 86,
-        "AffectValue": 1,
-        "AffectValue2": 2700,
-        "SkillCategory": 2,
-        "Desc": "对正对面的目标打上武形印记，持续1个回合，如果在效果时间内中标记的卡牌死亡，则对死亡卡牌的相邻单位造成2700点伤害。"
-      },
-      {
         "SkillId": 1674,
         "Name": "武形印记10",
         "Type": 118,
@@ -23904,9 +23904,48 @@
         "LanchConditionValue": 0,
         "AffectType": 86,
         "AffectValue": 1,
-        "AffectValue2": 3000,
+        "AffectValue2": 2000,
         "SkillCategory": 2,
-        "Desc": "对正对面的目标打上武形印记，持续1个回合，如果在效果时间内中标记的卡牌死亡，则对死亡卡牌的相邻单位造成3000点伤害。"
+        "Desc": "对正对面的目标打上武形印记，持续1个回合，如果在效果时间内中标记的卡牌死亡，则对死亡卡牌的相邻单位造成2000点伤害。"
+      },
+      {
+        "SkillId": 1675,
+        "Name": "全体沉默",
+        "Type": 119,
+        "LanchType": 4,
+        "LanchCondition": 0,
+        "LanchConditionValue": 0,
+        "AffectType": 89,
+        "AffectValue": 0,
+        "AffectValue2": 10,
+        "SkillCategory": 2,
+        "Desc": "沉默敌方场上所有卡牌"
+      },
+      {
+        "SkillId": 1676,
+        "Name": "魔法毁灭",
+        "Type": 113,
+        "LanchType": 4,
+        "LanchCondition": 0,
+        "LanchConditionValue": 10,
+        "AffectType": 151,
+        "AffectValue": 100,
+        "AffectValue2": 1000,
+        "SkillCategory": 2,
+        "Desc": "对敌方场上所有单位造成100点伤害，如果目标单位拥有免疫或者法力反射技能，则造成1000%的伤害"
+      },
+      {
+        "SkillId": 1677,
+        "Name": "遣散",
+        "Type": 76,
+        "LanchType": 4,
+        "LanchCondition": 0,
+        "LanchConditionValue": 0,
+        "AffectType": 143,
+        "AffectValue": 0,
+        "AffectValue2": 0,
+        "SkillCategory": 2,
+        "Desc": "将对面场上所有召唤出来的卡牌直接移出游戏"
       }
     ]
   },
@@ -23914,7 +23953,7 @@
   "message": null,
   "type": null,
   "version": {
-    "http": "201302821",
+    "http": "201302824",
     "stop": "",
     "appversion": "version_1",
     "appurl": "ios://xxx",

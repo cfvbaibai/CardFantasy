@@ -1461,7 +1461,7 @@ var Animater = function() {
         } else if (skill == '血炼' || skill == '鲜血盛宴' || skill == '歃血魔咒') {
             this.flyImage({ fileName: 'blood.png', width: 48, height: 48, text: skill },
                     attacker, defenders, settings.skillDuration);
-        } else if (skill == '死亡印记') {
+        } else if (skill == '死亡印记' || skill == '武形印记') {
             this.flyImage({ fileName: 'death.png', width: 48, height: 48, text: skill },
                     attacker, defenders, settings.skillDuration);
         } else if (skill == '圣光洗礼' || skill == '森林沐浴' || skill == '蛮荒威压' || skill == '地狱同化') {

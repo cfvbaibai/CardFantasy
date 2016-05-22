@@ -100,7 +100,7 @@ public class SkillResolver {
             } else if (skillUseInfo.getType() == SkillType.沉默 ||
                     skillUseInfo.getType() == SkillType.觉醒沉默 && attacker.isAwaken(skillUseInfo, Race.KINGDOM)) {
                 Silence.apply(this, skillUseInfo, attacker, defender);
-            } else if (skillUseInfo.getType() == SkillType.死亡印记) {
+            } else if (skillUseInfo.getType() == SkillType.死亡印记 || skillUseInfo.getType() == SkillType.武形印记) {
                 DeathMark.apply(this, skillUseInfo, attacker, defender);
             } else if (skillUseInfo.getType() == SkillType.关小黑屋) {
                 Enprison.apply(this, skillUseInfo.getSkill(), attacker, defender);

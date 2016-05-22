@@ -103,6 +103,9 @@ public class OfficialCard {
     public int getCardId() {
         return this.CardId;
     }
+    public void setCardId(int cardId) {
+        this.CardId = cardId;
+    }
     public String getSkill1() {
         return this.Skill;
     }
@@ -138,6 +141,9 @@ public class OfficialCard {
     }
     public String getCardName() {
         return this.CardName;
+    }
+    public void setCardName(String cardName) {
+        this.CardName = cardName;
     }
     public String getRaceName() {
         return OfficialCard.getRaceNameById(this.getRace());

@@ -1883,10 +1883,11 @@
         <Skill type="横扫" level="0" unlock="5" />
         <Skill type="法力反射" level="6" unlock="10" />
     </Card>
-    <Card id="3518" name="大毒汁怪" wikiId="" race="蛮荒" speed="4" star="5" cost="99" incrCost="0" at="1" hp="1" incrAT="0" incrHP="0">
+    <Card id="3518" name="大毒汁怪" wikiId="" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="1" hp="1" incrAT="0" incrHP="0">
         <Skill type="火球" level="1" unlock="0" />
         <Skill type="召唤炎魔" level="0" unlock="5" death="true" />
         <Skill type="不动" level="0" unlock="10" />
+        <Skill type="无效" level="0" unlock="0" />
     </Card>
     <Card id="3519" name="羽蛇神" wikiId="" race="蛮荒" speed="3" star="5" cost="16" incrCost="2" at="380" hp="1780" incrAT="31" incrHP="31">
         <Skill type="法力侵蚀" level="9" unlock="0" />
@@ -1910,16 +1911,18 @@
     </Card>
     <Card id="3523" name="九命猫神·幻影" wikiId="" race="蛮荒" speed="4" star="5" cost="17" incrCost="2" at="415" hp="1550" incrAT="60" incrHP="49">
     </Card>
-    <Card id="3524" name="大毒汁之王" wikiId="" race="蛮荒" speed="2" star="5" cost="99" incrCost="0" at="1200" hp="2400" incrAT="0" incrHP="0">
+    <Card id="3524" name="大毒汁之王" wikiId="" race="魔神" speed="2" star="5" cost="99" incrCost="0" at="1200" hp="2400" incrAT="0" incrHP="0">
         <Skill type="我还会回来的" level="0" unlock="10" />
         <Skill type="弱点攻击" level="0" unlock="5" />
         <Skill type="免疫" level="0" unlock="5" />
         <Skill type="穿刺" level="10" unlock="5" />
+        <Skill type="无效" level="0" unlock="0" />
     </Card>
-    <Card id="3525" name="大毒汁之王本体" wikiId="" race="蛮荒" speed="2" star="5" cost="99" incrCost="0" at="1200" hp="2400" incrAT="0" incrHP="0">
+    <Card id="3525" name="大毒汁之王本体" wikiId="" race="魔神" speed="2" star="5" cost="99" incrCost="0" at="1200" hp="2400" incrAT="0" incrHP="0">
         <Skill type="弱点攻击" level="0" unlock="5" />
         <Skill type="免疫" level="0" unlock="10" />
         <Skill type="穿刺" level="10" unlock="10" />
+        <Skill type="无效" level="0" unlock="0" />
     </Card>
     <Card id="3526" name="黄金毒龙" wikiId="" race="蛮荒" speed="4" star="5" cost="17" incrCost="2" at="500" hp="2000" incrAT="50" incrHP="55">
         <Skill type="自爆" level="6" unlock="0" />
@@ -2645,6 +2648,11 @@
         <Skill type="夺魂" level="1" unlock="0" />
         <Skill type="灵王的轰击" level="9" unlock="5" postcast="true" />
         <Skill type="歃血魔咒" level="7" unlock="10" />
+    </Card>
+    <Card id="4545" name="武形斗圣" wikiId="" race="地狱" speed="1" star="5" cost="19" incrCost="2" at="380" hp="1680" incrAT="48" incrHP="43">
+        <Skill type="武形印记" level="8" unlock="0" />
+        <Skill type="连击" level="0" unlock="5" />
+        <Skill type="武形秘仪" level="0" unlock="10" />
     </Card>
 
     <!-- 魔神 -->
