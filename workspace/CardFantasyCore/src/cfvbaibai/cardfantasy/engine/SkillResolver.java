@@ -275,6 +275,8 @@ public class SkillResolver {
                 BurningFlame.apply(skillUseInfo.getAttachedUseInfo(), this, attacker, defender);
             } else if (skillUseInfo.getType() == SkillType.传送) {
                 Transport.apply(this, skillUseInfo.getSkill(), attacker, defender);
+            } else if (skillUseInfo.getType() == SkillType.灵魂消散) {
+                SoulCrash.apply(skillUseInfo, this, attacker, defender);
             }
         }
         if (!attacker.isDead() && !attacker.isSilent() && !attacker.justRevived()) {
@@ -702,7 +704,7 @@ public class SkillResolver {
             } else if (deadCardSkillUseInfo.getType() == SkillType.九转秘术) {
                 Summon.apply(this, deadCardSkillUseInfo, deadCard, "九命猫神·幻影");
             } else if (deadCardSkillUseInfo.getType() == SkillType.我还会回来的) {
-                Summon.apply(this, deadCardSkillUseInfo, deadCard, "大毒汁之王本体");
+                Summon.apply(this, deadCardSkillUseInfo, deadCard, "大毒汁之王-5");
             }
         }
         if (!deadCard.isSilent()) {

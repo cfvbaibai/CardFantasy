@@ -220,4 +220,21 @@ public class SummonTest extends SkillValidationTest {
         Assert.assertEquals(3, context.getPlayer(0).getGrave().size());
         Assert.assertEquals(2, context.getPlayer(0).getField().size());
     }
+
+    @Test
+    public void test召唤王国战士_灵魂消散() {
+        SkillTestContext context = prepare(50, 50, "残血王国小兵+召唤王国战士", "占位符+灵魂消散");
+        CardInfo c小兵 = context.addToHand(0, 0).setSummonDelay(0);
+        context.addToField(1, 1);
+        context.startGame();
+
+        context.proceedOneRound();
+        Assert.assertEquals(3, c小兵.getOwner().getField().size());
+        Assert.assertEquals(201, c小兵.getHP());
+
+        context.proceedOneRound();
+        Assert.assertEquals(1, c小兵.getOwner().getField().size());
+        Assert.assertFalse(c小兵.isDead());
+        Assert.assertEquals(1, c小兵.getHP());
+    }
 }
