@@ -19,6 +19,9 @@ public class OfficialStageLevelInfo {
         this.level = level;
         this.store = store;
     }
+    public int getLevelId() {
+        return this.level.Level;
+    }
     public String getName() {
         switch (level.Level) {
         case 1: return "简单";

@@ -75,6 +75,20 @@
         </table>
     </c:if>
     </c:forEach>
+    <%--
+    <c:forEach var="stageDetailInfo" items="${stageInfo.detailInfos}">
+        <c:if test="${stageDetailInfo.type <= 2}">
+            <c:forEach var="levelInfo" items="${stageDetailInfo.levelInfos}">
+                <div>
+                    &lt;Map victory="${levelInfo.winConditionText}" heroHP="${levelInfo.heroHp}" id="${stageDetailInfo.stageId}-${stageDetailInfo.rankName}-${levelInfo.levelId}"&gt;
+                    <c:forEach var="rune" items="${levelInfo.deckInfo.runes}">${rune.runeName}-${rune.level},</c:forEach>
+                    <c:forEach var="card" items="${levelInfo.deckInfo.cards}">${card.cardName}<c:if test="${card.extraSkill != null}">+${card.extraSkill.name}-${card.level}</c:if>,</c:forEach>
+                    &lt;/Map&gt;
+                </div>
+            </c:forEach>
+        </c:if>
+    </c:forEach>
+     --%>
     </div>
     </div>
 </body>

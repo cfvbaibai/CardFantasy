@@ -20,13 +20,14 @@ public final class ManaErode {
         GameUI ui = resolver.getStage().getUI();
         ui.useSkill(attacker, victims, cardSkill, true);
         int damage = cardSkill.getImpact();
+        int magnifier = cardSkill.getImpact2();
         for (CardInfo victim : victims) {
             int actualDamage = damage;
             if (victim.containsUsableSkill(SkillType.免疫) ||
                 victim.containsUsableSkill(SkillType.法力反射) ||
                 victim.containsUsableSkill(SkillType.镜面装甲) ||
                 defender.getActiveRuneOf(RuneData.石林) != null) {
-                actualDamage *= 3;
+                actualDamage *= magnifier;
             }
             ui.attackCard(attacker, victim, cardSkill, actualDamage);
             resolver.resolveDeathSkills(attacker, victim, cardSkill, resolver.applyDamage(attacker, victim, cardSkill, actualDamage));

@@ -15,20 +15,20 @@ public class OfficialStageDetailInfo {
         this.store = store;
     }
     public String getName() {
-        return detail.Name;
+        return detail.Name.trim();
     }
     public int getRank() {
         return detail.Rank;
     }
     public String getRankName() {
         if (detail.Type == 0) {
-            return "隐藏";
+            return "H";
         } else {
-            return String.valueOf(detail.Rank + 1);
+            return String.valueOf(detail.Rank + 1).trim();
         }
     }
     public String getFullName() {
-        return detail.MapStageId + "-" + this.getRankName().trim() + " " + this.getName().trim();
+        return detail.MapStageId + "-" + this.getRankName() + " " + this.getName();
     }
     public int getId() {
         return detail.MapStageDetailId;
