@@ -12,14 +12,14 @@
                                     <optgroup label="19-精灵世界">
                                         <option value="19-1" selected="selected">19-1 水晶塔</option>
                                         <option value="19-2">19-2 水晶之桥</option>
-                                        <!-- <option value="19-3">19-3 冻骨峰</option> -->
+                                        <option value="19-3">19-3 冻骨峰</option>
                                         <option value="19-4">19-4 海之绝壁</option>
                                         <option value="19-5">19-5 精灵府</option>
                                         <option value="19-6">19-6 水晶街</option>
                                         <option value="19-7">19-7 水晶国度</option>
                                         <option value="19-8">19-8 深海洞穴</option>
                                         <option value="19-9">19-9 蓝海玉树</option>
-                                        <!-- <option value="19-10">19-10 玉棘丛林</option> -->
+                                        <option value="19-10">19-10 玉棘丛林</option>
                                         <option value="19-11">19-11 冰山危路</option>
                                         <option value="19-H">19-H 水晶溶洞</option>
                                     </optgroup>
