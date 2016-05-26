@@ -26,7 +26,10 @@ public class ReflectionArmor {
             }
         }
         if (!skillBlocked) {
-            Return.returnCard(resolver, cardSkill, defender, attacker);
+            if (attacker.getOwner().getField().getAliveCards().contains(attacker)) {
+                // 横扫击中多个反射装甲的敌方卡牌时，可能导致多次反射
+                Return.returnCard(resolver, cardSkill, defender, attacker);
+            }
         }
     }
 }

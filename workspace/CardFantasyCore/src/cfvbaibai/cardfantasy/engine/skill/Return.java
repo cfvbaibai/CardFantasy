@@ -1,6 +1,5 @@
 package cfvbaibai.cardfantasy.engine.skill;
 
-import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
 import cfvbaibai.cardfantasy.GameUI;
 import cfvbaibai.cardfantasy.Randomizer;
 import cfvbaibai.cardfantasy.data.Skill;
@@ -30,10 +29,11 @@ public final class Return {
     }
 
     public static void returnCard(SkillResolver resolver, Skill cardSkill, CardInfo attacker, CardInfo defender) {
-        CardInfo expelledCard = defender.getOwner().getField().expelCard(defender.getPosition());
-        if (expelledCard != defender) {
-            throw new CardFantasyRuntimeException("expelledCard != defender");
-        }
+        // 这段验证不再有效，因为反射装甲可能将横扫的攻击者送还
+        defender.getOwner().getField().expelCard(defender.getPosition());
+        //if (expelledCard != defender) {
+            //throw new CardFantasyRuntimeException("expelledCard != defender");
+        //}
         GameUI ui = resolver.getStage().getUI();
         ui.returnCard(attacker, defender, cardSkill);
         if (!defender.getStatus().containsStatus(CardStatusType.召唤)) {
