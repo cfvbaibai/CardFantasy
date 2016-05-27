@@ -200,13 +200,15 @@ public class BattleEngine {
         for (CardInfo card : this.getActivePlayer().getHand().toList()) {
             this.stage.getResolver().resolvePrecastSkills(card, this.getInactivePlayer());
         }
-        for (CardInfo card : this.getActivePlayer().getGrave().toList()) {
-            this.stage.getResolver().resolvePostcastSkills(card, this.getInactivePlayer());
-        }
+
         return Phase.战斗;
     }
 
-    private Phase roundEnd() {
+    private Phase roundEnd() throws HeroDieSignal {
+        for (CardInfo card : this.getActivePlayer().getGrave().toList()) {
+            this.stage.getResolver().resolvePostcastSkills(card, this.getInactivePlayer());
+        }
+
         Collection<CardInfo> allHandCards = this.stage.getAllHandCards();
         for (CardInfo card : allHandCards) {
             int summonDelay = card.getSummonDelay();

@@ -35,6 +35,9 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2016-5-27: <ul>
+                        <li>修复遗志技能发动时机的问题，感谢<x>咬起来喀嚓喀嚓</x>的帮助</li>
+                    </ul></li>
                     <li>2016-5-22: <ul>
                         <li>修复一个【反射装甲】的BUG，感谢<x>cgq918</x>的帮助</li>
                         <li>添加19图, 感谢<x>Kica沫雪</x>的帮助</li>
