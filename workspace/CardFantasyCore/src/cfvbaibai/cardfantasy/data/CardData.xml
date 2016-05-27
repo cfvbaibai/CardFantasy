@@ -1894,6 +1894,11 @@
         <Skill type="不动" level="0" unlock="10" />
         <Skill type="无效" level="0" unlock="0" />
     </Card>
+    <Card id="351801" name="蛮荒大毒汁怪" wikiId="" race="蛮荒" speed="4" star="5" cost="99" incrCost="0" at="1" hp="1" incrAT="0" incrHP="0">
+        <Skill type="火球" level="1" unlock="0" />
+        <Skill type="召唤炎魔" level="0" unlock="5" death="true" />
+        <Skill type="不动" level="0" unlock="10" />
+    </Card>
     <Card id="3519" name="羽蛇神" wikiId="" race="蛮荒" speed="3" star="5" cost="16" incrCost="2" at="380" hp="1780" incrAT="31" incrHP="31">
         <Skill type="法力侵蚀" level="9" unlock="0" />
         <Skill type="闪避" level="8" unlock="5" />

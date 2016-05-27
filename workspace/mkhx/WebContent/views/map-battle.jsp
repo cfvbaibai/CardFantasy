@@ -39,6 +39,7 @@
                                         <option value="18-11">18-11 万耀森林</option>
                                         <option value="18-H">18-H 万耀亭</option>
                                         <option value="18-H2">18-H2 万耀城</option>
+                                        <option value="18-H2-wp">18-H2-wp 万耀城(WP版)</option>
                                     </optgroup>
                                     <optgroup label="17-星河之森">
                                         <option value="17-1" selected="selected">17-1 异界之门</option>
@@ -68,6 +69,7 @@
                                         <option value="16-10">16-10 炎狱山巅</option>
                                         <option value="16-11">16-11 火焰矩阵</option>
                                         <option value="16-H">16-H 四魔阵</option>
+                                        <option value="16-H-wp">16-H-wp 四魔阵(WP版)</option>
                                     </optgroup>
                                     <optgroup label="15-后翡翠森林">
                                         <option value="15-1">15-1 巨门关口</option>
