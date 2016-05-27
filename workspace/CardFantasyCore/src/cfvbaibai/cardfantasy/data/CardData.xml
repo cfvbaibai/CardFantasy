@@ -1918,12 +1918,25 @@
         <Skill type="穿刺" level="10" unlock="5" />
         <Skill type="无效" level="0" unlock="0" />
     </Card>
+    <Card id="352401" name="蛮荒大毒汁之王" wikiId="" race="蛮荒" speed="2" star="5" cost="99" incrCost="0" at="1200" hp="2400" incrAT="0" incrHP="0">
+        <Skill type="蛮荒我还会回来的" level="0" unlock="10" />
+        <Skill type="弱点攻击" level="0" unlock="5" />
+        <Skill type="免疫" level="0" unlock="5" />
+        <Skill type="穿刺" level="10" unlock="5" />
+    </Card>
+    <!-- 
     <Card id="3525" name="大毒汁之王本体" wikiId="" race="魔神" speed="2" star="5" cost="99" incrCost="0" at="1200" hp="2400" incrAT="0" incrHP="0">
         <Skill type="弱点攻击" level="0" unlock="5" />
         <Skill type="免疫" level="0" unlock="10" />
         <Skill type="穿刺" level="10" unlock="10" />
         <Skill type="无效" level="0" unlock="0" />
     </Card>
+    <Card id="352501" name="蛮荒大毒汁之王本体" wikiId="" race="蛮荒" speed="2" star="5" cost="99" incrCost="0" at="1200" hp="2400" incrAT="0" incrHP="0">
+        <Skill type="弱点攻击" level="0" unlock="5" />
+        <Skill type="免疫" level="0" unlock="10" />
+        <Skill type="穿刺" level="10" unlock="10" />
+    </Card>
+    -->
     <Card id="3526" name="黄金毒龙" wikiId="" race="蛮荒" speed="4" star="5" cost="17" incrCost="2" at="500" hp="2000" incrAT="50" incrHP="55">
         <Skill type="自爆" level="6" unlock="0" />
         <Skill type="反噬" level="6" unlock="5" />

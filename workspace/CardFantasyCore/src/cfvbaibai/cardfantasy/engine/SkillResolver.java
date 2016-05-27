@@ -705,6 +705,8 @@ public class SkillResolver {
                 Summon.apply(this, deadCardSkillUseInfo, deadCard, "九命猫神·幻影");
             } else if (deadCardSkillUseInfo.getType() == SkillType.我还会回来的) {
                 Summon.apply(this, deadCardSkillUseInfo, deadCard, "大毒汁之王-5");
+            } else if (deadCardSkillUseInfo.getType() == SkillType.蛮荒我还会回来的) {
+                Summon.apply(this, deadCardSkillUseInfo, deadCard, "蛮荒大毒汁之王-5");
             }
         }
         if (!deadCard.isSilent()) {

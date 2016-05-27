@@ -16,6 +16,7 @@
                                         <option value="19-4">19-4 海之绝壁</option>
                                         <option value="19-5">19-5 精灵府</option>
                                         <option value="19-6">19-6 水晶街</option>
+                                        <option value="19-6-wp">19-6-wp 水晶街(WP版)</option>
                                         <option value="19-7">19-7 水晶国度</option>
                                         <option value="19-8">19-8 深海洞穴</option>
                                         <option value="19-9">19-9 蓝海玉树</option>
@@ -30,6 +31,7 @@
                                         <option value="18-4">18-4 毒雾森林</option>
                                         <option value="18-5">18-5 东风黄沙原</option>
                                         <option value="18-6">18-6 百里石山</option>
+                                        <option value="18-6-wp">18-6-wp 百里石山(WP版)</option>
                                         <option value="18-7">18-7 陨耀坑</option>
                                         <option value="18-8">18-8 烈焰帝怒</option>
                                         <option value="18-9">18-9 落九千</option>
@@ -44,6 +46,7 @@
                                         <option value="17-3">17-3 星树池塘</option>
                                         <option value="17-4">17-4 刹那树海</option>
                                         <option value="17-5">17-5 神启遗迹</option>
+                                        <option value="17-5-wp">17-5-wp 神启遗迹(WP版)</option>
                                         <option value="17-6">17-6 荆棘古堡</option>
                                         <option value="17-7">17-7 伤痕裂谷</option>
                                         <option value="17-8">17-8 魔晶盆地</option>
