@@ -14063,6 +14063,139 @@
       "Next": "14",
       "MapStageDetails": [
         {
+          "MapStageDetailId": "133",
+          "Name": "小屋废墟",
+          "Type": "1",
+          "MapStageId": "13",
+          "Rank": "8",
+          "X": "695",
+          "Y": "408",
+          "Prev": "132",
+          "Next": "134",
+          "NextBranch": "0",
+          "FightName": "灵魂收割者",
+          "FightImg": "120",
+          "Dialogue": [
+            {
+              "StoryId": "737",
+              "Did": "13_9_1",
+              "NPC": "player_name",
+              "Dialogue": "多亏你们出手相救，不然今天我们就葬身于此了。",
+              "Icon": "0_0",
+              "Orientations": "1",
+              "Opportunity": "1"
+            },
+            {
+              "StoryId": "738",
+              "Did": "13_9_2",
+              "NPC": "真主圣女",
+              "Dialogue": "请不用在意。现在正是危急时刻，圣明之心需要每一个伙伴。",
+              "Icon": "45_0",
+              "Orientations": "2",
+              "Opportunity": "1"
+            },
+            {
+              "StoryId": "739",
+              "Did": "13_9_3",
+              "NPC": "美狄丝",
+              "Dialogue": "圣女姐姐我好想你~（蹭蹭）",
+              "Icon": "1_1",
+              "Orientations": "2",
+              "Opportunity": "1"
+            },
+            {
+              "StoryId": "740",
+              "Did": "13_9_4",
+              "NPC": "特米亚",
+              "Dialogue": "快看，前面有个废墟！",
+              "Icon": "40_2",
+              "Orientations": "2",
+              "Opportunity": "1"
+            },
+            {
+              "StoryId": "741",
+              "Did": "13_9_5",
+              "NPC": "曼托",
+              "Dialogue": "看来这座小屋和它的主人都遭到了恶魔的毒手。",
+              "Icon": "28_0",
+              "Orientations": "2",
+              "Opportunity": "1"
+            },
+            {
+              "StoryId": "742",
+              "Did": "13_9_6",
+              "NPC": "player_name",
+              "Dialogue": "废墟里还有不少恶魔！大家小心！",
+              "Icon": "0_2",
+              "Orientations": "1",
+              "Opportunity": "1"
+            },
+            {
+              "StoryId": "743",
+              "Did": "13_9_7",
+              "NPC": "真主圣女",
+              "Dialogue": "神不会饶恕你们的！接受神的审判吧！",
+              "Icon": "45_0",
+              "Orientations": "2",
+              "Opportunity": "1"
+            }
+          ],
+          "DialogueAfter": null,
+          "Levels": [
+            {
+              "MapStageDetailId": "133",
+              "Level": "1",
+              "CardList": "120_13_688,119_11_993,119_15_243,119_13_817,290_15_688,290_15_1034,289_12_989,279_15_836,181_13_666,113_15_688",
+              "RuneList": "46_4,47_4,5_4,10_4",
+              "HeroLevel": "92",
+              "AchievementId": "0",
+              "EnergyExpend": "2",
+              "BonusWin": "Exp_2560,Coins_2800",
+              "FirstBonusWin": "",
+              "BonusLose": "Exp_90,Coins_90",
+              "AddedBonus": "",
+              "EnergyExplore": "2",
+              "BonusExplore": "Exp_2820,Coins_3480",
+              "Hint": "0",
+              "AchievementText": "战斗胜利"
+            },
+            {
+              "MapStageDetailId": "133",
+              "Level": "2",
+              "CardList": "120_15_688,119_13_993,119_15_243,119_14_817,290_15_688,290_15_1034,289_13_989,279_15_836,181_15_666,113_15_688",
+              "RuneList": "46_4,47_4,5_4,10_4",
+              "HeroLevel": "94",
+              "AchievementId": "37",
+              "EnergyExpend": "2",
+              "BonusWin": "Exp_3200,Coins_3500",
+              "FirstBonusWin": "",
+              "BonusLose": "Exp_90,Coins_90",
+              "AddedBonus": "",
+              "EnergyExplore": "2",
+              "BonusExplore": "Exp_2820,Coins_3480",
+              "Hint": "0",
+              "AchievementText": "卡组中蛮荒种族卡牌不小于3张"
+            },
+            {
+              "MapStageDetailId": "133",
+              "Level": "3",
+              "CardList": "120_15_688,119_15_993,119_15_243,119_14_817,290_15_688,290_15_1034,289_15_989,279_15_836,181_15_666,113_15_688",
+              "RuneList": "46_4,47_4,5_4,10_4",
+              "HeroLevel": "96",
+              "AchievementId": "51",
+              "EnergyExpend": "2",
+              "BonusWin": "Exp_3840,Coins_4200",
+              "FirstBonusWin": "Card_160",
+              "BonusLose": "Exp_90,Coins_90",
+              "AddedBonus": "",
+              "EnergyExplore": "2",
+              "BonusExplore": "Exp_2820,Coins_3480",
+              "Hint": "0",
+              "AchievementText": "卡组中4星卡牌不小于2张"
+            }
+          ]
+        },
+        {
           "MapStageDetailId": "125",
           "Name": "漆黑岭",
           "Type": "1",
@@ -15442,139 +15575,6 @@
               "BonusExplore": "Exp_2820,Coins_3480",
               "Hint": "0",
               "AchievementText": "对方卡牌全灭"
-            }
-          ]
-        },
-        {
-          "MapStageDetailId": "133",
-          "Name": "小屋废墟",
-          "Type": "1",
-          "MapStageId": "13",
-          "Rank": "8",
-          "X": "695",
-          "Y": "408",
-          "Prev": "132",
-          "Next": "134",
-          "NextBranch": "0",
-          "FightName": "灵魂收割者",
-          "FightImg": "120",
-          "Dialogue": [
-            {
-              "StoryId": "737",
-              "Did": "13_9_1",
-              "NPC": "player_name",
-              "Dialogue": "多亏你们出手相救，不然今天我们就葬身于此了。",
-              "Icon": "0_0",
-              "Orientations": "1",
-              "Opportunity": "1"
-            },
-            {
-              "StoryId": "738",
-              "Did": "13_9_2",
-              "NPC": "真主圣女",
-              "Dialogue": "请不用在意。现在正是危急时刻，圣明之心需要每一个伙伴。",
-              "Icon": "45_0",
-              "Orientations": "2",
-              "Opportunity": "1"
-            },
-            {
-              "StoryId": "739",
-              "Did": "13_9_3",
-              "NPC": "美狄丝",
-              "Dialogue": "圣女姐姐我好想你~（蹭蹭）",
-              "Icon": "1_1",
-              "Orientations": "2",
-              "Opportunity": "1"
-            },
-            {
-              "StoryId": "740",
-              "Did": "13_9_4",
-              "NPC": "特米亚",
-              "Dialogue": "快看，前面有个废墟！",
-              "Icon": "40_2",
-              "Orientations": "2",
-              "Opportunity": "1"
-            },
-            {
-              "StoryId": "741",
-              "Did": "13_9_5",
-              "NPC": "曼托",
-              "Dialogue": "看来这座小屋和它的主人都遭到了恶魔的毒手。",
-              "Icon": "28_0",
-              "Orientations": "2",
-              "Opportunity": "1"
-            },
-            {
-              "StoryId": "742",
-              "Did": "13_9_6",
-              "NPC": "player_name",
-              "Dialogue": "废墟里还有不少恶魔！大家小心！",
-              "Icon": "0_2",
-              "Orientations": "1",
-              "Opportunity": "1"
-            },
-            {
-              "StoryId": "743",
-              "Did": "13_9_7",
-              "NPC": "真主圣女",
-              "Dialogue": "神不会饶恕你们的！接受神的审判吧！",
-              "Icon": "45_0",
-              "Orientations": "2",
-              "Opportunity": "1"
-            }
-          ],
-          "DialogueAfter": null,
-          "Levels": [
-            {
-              "MapStageDetailId": "133",
-              "Level": "1",
-              "CardList": "120_13_688,119_11_993,119_15_243,119_13_817,290_15_688,290_15_1034,289_12_989,279_15_836,181_13_666,113_15_688",
-              "RuneList": "46_4,47_4,5_4,10_4",
-              "HeroLevel": "92",
-              "AchievementId": "0",
-              "EnergyExpend": "2",
-              "BonusWin": "Exp_2560,Coins_2800",
-              "FirstBonusWin": "",
-              "BonusLose": "Exp_90,Coins_90",
-              "AddedBonus": "",
-              "EnergyExplore": "2",
-              "BonusExplore": "Exp_2820,Coins_3480",
-              "Hint": "0",
-              "AchievementText": "战斗胜利"
-            },
-            {
-              "MapStageDetailId": "133",
-              "Level": "2",
-              "CardList": "120_15_688,119_13_993,119_15_243,119_14_817,290_15_688,290_15_1034,289_13_989,279_15_836,181_15_666,113_15_688",
-              "RuneList": "46_4,47_4,5_4,10_4",
-              "HeroLevel": "94",
-              "AchievementId": "37",
-              "EnergyExpend": "2",
-              "BonusWin": "Exp_3200,Coins_3500",
-              "FirstBonusWin": "",
-              "BonusLose": "Exp_90,Coins_90",
-              "AddedBonus": "",
-              "EnergyExplore": "2",
-              "BonusExplore": "Exp_2820,Coins_3480",
-              "Hint": "0",
-              "AchievementText": "卡组中蛮荒种族卡牌不小于3张"
-            },
-            {
-              "MapStageDetailId": "133",
-              "Level": "3",
-              "CardList": "120_15_688,119_15_993,119_15_243,119_14_817,290_15_688,290_15_1034,289_15_989,279_15_836,181_15_666,113_15_688",
-              "RuneList": "46_4,47_4,5_4,10_4",
-              "HeroLevel": "96",
-              "AchievementId": "51",
-              "EnergyExpend": "2",
-              "BonusWin": "Exp_3840,Coins_4200",
-              "FirstBonusWin": "Card_160",
-              "BonusLose": "Exp_90,Coins_90",
-              "AddedBonus": "",
-              "EnergyExplore": "2",
-              "BonusExplore": "Exp_2820,Coins_3480",
-              "Hint": "0",
-              "AchievementText": "卡组中4星卡牌不小于2张"
             }
           ]
         },
@@ -23572,6 +23572,257 @@
       "Next": "19",
       "MapStageDetails": [
         {
+          "MapStageDetailId": "198",
+          "Name": " 落九千",
+          "Type": "1",
+          "MapStageId": "18",
+          "Rank": "8",
+          "X": "684",
+          "Y": "409",
+          "Prev": "197",
+          "Next": "199",
+          "NextBranch": "0",
+          "FightName": "叹惋之歌",
+          "FightImg": "392",
+          "Dialogue": [
+            {
+              "StoryId": "1375",
+              "Did": "18_9_1",
+              "NPC": "泰坦火龙",
+              "Dialogue": "前面就是落九千了，这里的景色很不错的，不过我不能将你们载过去，原因我就不说了，我也是有难言之隐。",
+              "Icon": "58_0",
+              "Orientations": "2",
+              "Opportunity": "1"
+            },
+            {
+              "StoryId": "1376",
+              "Did": "18_9_2",
+              "NPC": "美狄丝",
+              "Dialogue": "喂，你就这样不管我们了！",
+              "Icon": "1_2",
+              "Orientations": "2",
+              "Opportunity": "1"
+            },
+            {
+              "StoryId": "1377",
+              "Did": "18_9_3",
+              "NPC": "奥戈",
+              "Dialogue": "算了，能把我们送到这就很不错了……",
+              "Icon": "61_2",
+              "Orientations": "2",
+              "Opportunity": "1"
+            },
+            {
+              "StoryId": "1378",
+              "Did": "18_9_4",
+              "NPC": "player_name",
+              "Dialogue": "落九千真是太美了，那么多的瀑布，美赞了！",
+              "Icon": "0_1",
+              "Orientations": "2",
+              "Opportunity": "1"
+            },
+            {
+              "StoryId": "1379",
+              "Did": "18_9_5",
+              "NPC": "奥戈",
+              "Dialogue": "快看，水底出现了一个东西！是泰坦水龙！",
+              "Icon": "61_3",
+              "Orientations": "2",
+              "Opportunity": "1"
+            },
+            {
+              "StoryId": "1380",
+              "Did": "18_9_6",
+              "NPC": "美狄丝",
+              "Dialogue": "啊！怎么回事啊！怎么到处都是龙，而且都……都大的这么吓人！救命啊！",
+              "Icon": "1_4",
+              "Orientations": "2",
+              "Opportunity": "1"
+            },
+            {
+              "StoryId": "1381",
+              "Did": "18_9_7",
+              "NPC": "player_name",
+              "Dialogue": "先别慌张，可能她和泰坦火龙一样也很温顺呢！",
+              "Icon": "0_3",
+              "Orientations": "2",
+              "Opportunity": "1"
+            },
+            {
+              "StoryId": "1382",
+              "Did": "18_9_8",
+              "NPC": "奥戈",
+              "Dialogue": "泰坦水龙是出了名的火爆脾气！我们还是快跑吧！",
+              "Icon": "61_3",
+              "Orientations": "2",
+              "Opportunity": "1"
+            },
+            {
+              "StoryId": "1383",
+              "Did": "18_9_9",
+              "NPC": "泰坦水龙",
+              "Dialogue": "不要跑！",
+              "Icon": "57_0",
+              "Orientations": "2",
+              "Opportunity": "1"
+            },
+            {
+              "StoryId": "1384",
+              "Did": "18_9_10",
+              "NPC": "player_name",
+              "Dialogue": "我想休息会啊！能不能等会再打！",
+              "Icon": "0_4",
+              "Orientations": "2",
+              "Opportunity": "1"
+            },
+            {
+              "StoryId": "1385",
+              "Did": "18_9_11",
+              "NPC": "泰坦水龙",
+              "Dialogue": "不要跑！",
+              "Icon": "57_0",
+              "Orientations": "2",
+              "Opportunity": "1"
+            }
+          ],
+          "DialogueAfter": [
+            {
+              "StoryId": "1386",
+              "Did": "18_9_12",
+              "NPC": "泰坦水龙",
+              "Dialogue": "我没想和你们打，刚刚听见了泰坦火龙的声音，他龙呢？",
+              "Icon": "57_0",
+              "Orientations": "2",
+              "Opportunity": "2"
+            },
+            {
+              "StoryId": "1387",
+              "Did": "18_9_13",
+              "NPC": "player_name",
+              "Dialogue": "他刚刚飞走了……",
+              "Icon": "0_3",
+              "Orientations": "1",
+              "Opportunity": "2"
+            },
+            {
+              "StoryId": "1388",
+              "Did": "18_9_14",
+              "NPC": "泰坦水龙",
+              "Dialogue": "可恶啊！泰坦火龙，你还要躲我躲到什么时候！",
+              "Icon": "57_0",
+              "Orientations": "2",
+              "Opportunity": "2"
+            },
+            {
+              "StoryId": "1389",
+              "Did": "18_9_15",
+              "NPC": "美狄丝",
+              "Dialogue": "啊，他究竟做了什么让你这么气愤！",
+              "Icon": "1_3",
+              "Orientations": "2",
+              "Opportunity": "2"
+            },
+            {
+              "StoryId": "1390",
+              "Did": "18_9_16",
+              "NPC": "泰坦水龙",
+              "Dialogue": "能不气愤吗！本来我和他就是夫妻，守护海角的灵石，谁知道他贪玩跑出来了，灵石也不见了，我现在就出来找他，肯定是他偷出来的！",
+              "Icon": "57_0",
+              "Orientations": "2",
+              "Opportunity": "2"
+            },
+            {
+              "StoryId": "1391",
+              "Did": "18_9_17",
+              "NPC": "美狄丝",
+              "Dialogue": "你们竟然是夫妻！",
+              "Icon": "1_3",
+              "Orientations": "2",
+              "Opportunity": "2"
+            },
+            {
+              "StoryId": "1392",
+              "Did": "18_9_18",
+              "NPC": "player_name",
+              "Dialogue": "灵石？你说的红水晶吗？",
+              "Icon": "0_3",
+              "Orientations": "1",
+              "Opportunity": "2"
+            },
+            {
+              "StoryId": "1393",
+              "Did": "18_9_19",
+              "NPC": "泰坦水龙",
+              "Dialogue": "对啊，你们见过？",
+              "Icon": "57_0",
+              "Orientations": "2",
+              "Opportunity": "2"
+            },
+            {
+              "StoryId": "1394",
+              "Did": "18_9_20",
+              "NPC": "player_name",
+              "Dialogue": "没有，我觉得你现在应该赶快去追泰坦火龙，说不定你还能追上！",
+              "Icon": "0_3",
+              "Orientations": "1",
+              "Opportunity": "2"
+            }
+          ],
+          "Levels": [
+            {
+              "MapStageDetailId": "198",
+              "Level": "1",
+              "CardList": "392_15_1588,392_15_1589,710_15_1447,710_15_1327,411_15_1263,411_15_1116,381_15_1481,381_15_619,380_15_1429,380_15_1588,515_15_1209,515_15_689,398_15_286,398_15_1495,332_15_332",
+              "RuneList": "59_4,60_4,56_4,55_4",
+              "HeroLevel": "120",
+              "AchievementId": "0",
+              "EnergyExpend": "2",
+              "BonusWin": "Exp_4750,Coins_4860",
+              "FirstBonusWin": "",
+              "BonusLose": "Exp_100,Coins_100",
+              "AddedBonus": "",
+              "EnergyExplore": "2",
+              "BonusExplore": "Exp_2820,Coins_3480",
+              "Hint": "0",
+              "AchievementText": "战斗胜利"
+            },
+            {
+              "MapStageDetailId": "198",
+              "Level": "2",
+              "CardList": "392_15_1588,392_15_1589,710_15_1447,710_15_1327,411_15_1263,411_15_1116,381_15_1481,381_15_619,380_15_1429,380_15_1588,515_15_1209,515_15_689,398_15_286,398_15_1495,332_15_332",
+              "RuneList": "59_4,60_4,56_4,55_4",
+              "HeroLevel": "120",
+              "AchievementId": "25",
+              "EnergyExpend": "2",
+              "BonusWin": "Exp_5870,Coins_6040",
+              "FirstBonusWin": "",
+              "BonusLose": "Exp_100,Coins_100",
+              "AddedBonus": "",
+              "EnergyExplore": "2",
+              "BonusExplore": "Exp_2820,Coins_3480",
+              "Hint": "0",
+              "AchievementText": "卡组中王国种族卡牌不小于6张"
+            },
+            {
+              "MapStageDetailId": "198",
+              "Level": "3",
+              "CardList": "392_15_1588,392_15_1589,710_15_1447,710_15_1327,411_15_1263,411_15_1116,381_15_1481,381_15_619,380_15_1429,380_15_1588,515_15_1209,515_15_689,398_15_286,398_15_1495,332_15_332",
+              "RuneList": "59_4,60_4,56_4,55_4",
+              "HeroLevel": "120",
+              "AchievementId": "35",
+              "EnergyExpend": "2",
+              "BonusWin": "Exp_6830,Coins_6800",
+              "FirstBonusWin": "Card_518",
+              "BonusLose": "Exp_100,Coins_100",
+              "AddedBonus": "",
+              "EnergyExplore": "2",
+              "BonusExplore": "Exp_2820,Coins_3480",
+              "Hint": "0",
+              "AchievementText": "卡组中地狱种族卡牌不小于6张"
+            }
+          ]
+        },
+        {
           "MapStageDetailId": "190",
           "Name": "万妖之门",
           "Type": "1",
@@ -25557,257 +25808,6 @@
           ]
         },
         {
-          "MapStageDetailId": "198",
-          "Name": " 落九千",
-          "Type": "1",
-          "MapStageId": "18",
-          "Rank": "8",
-          "X": "684",
-          "Y": "409",
-          "Prev": "197",
-          "Next": "199",
-          "NextBranch": "0",
-          "FightName": "叹惋之歌",
-          "FightImg": "392",
-          "Dialogue": [
-            {
-              "StoryId": "1375",
-              "Did": "18_9_1",
-              "NPC": "泰坦火龙",
-              "Dialogue": "前面就是落九千了，这里的景色很不错的，不过我不能将你们载过去，原因我就不说了，我也是有难言之隐。",
-              "Icon": "58_0",
-              "Orientations": "2",
-              "Opportunity": "1"
-            },
-            {
-              "StoryId": "1376",
-              "Did": "18_9_2",
-              "NPC": "美狄丝",
-              "Dialogue": "喂，你就这样不管我们了！",
-              "Icon": "1_2",
-              "Orientations": "2",
-              "Opportunity": "1"
-            },
-            {
-              "StoryId": "1377",
-              "Did": "18_9_3",
-              "NPC": "奥戈",
-              "Dialogue": "算了，能把我们送到这就很不错了……",
-              "Icon": "61_2",
-              "Orientations": "2",
-              "Opportunity": "1"
-            },
-            {
-              "StoryId": "1378",
-              "Did": "18_9_4",
-              "NPC": "player_name",
-              "Dialogue": "落九千真是太美了，那么多的瀑布，美赞了！",
-              "Icon": "0_1",
-              "Orientations": "2",
-              "Opportunity": "1"
-            },
-            {
-              "StoryId": "1379",
-              "Did": "18_9_5",
-              "NPC": "奥戈",
-              "Dialogue": "快看，水底出现了一个东西！是泰坦水龙！",
-              "Icon": "61_3",
-              "Orientations": "2",
-              "Opportunity": "1"
-            },
-            {
-              "StoryId": "1380",
-              "Did": "18_9_6",
-              "NPC": "美狄丝",
-              "Dialogue": "啊！怎么回事啊！怎么到处都是龙，而且都……都大的这么吓人！救命啊！",
-              "Icon": "1_4",
-              "Orientations": "2",
-              "Opportunity": "1"
-            },
-            {
-              "StoryId": "1381",
-              "Did": "18_9_7",
-              "NPC": "player_name",
-              "Dialogue": "先别慌张，可能她和泰坦火龙一样也很温顺呢！",
-              "Icon": "0_3",
-              "Orientations": "2",
-              "Opportunity": "1"
-            },
-            {
-              "StoryId": "1382",
-              "Did": "18_9_8",
-              "NPC": "奥戈",
-              "Dialogue": "泰坦水龙是出了名的火爆脾气！我们还是快跑吧！",
-              "Icon": "61_3",
-              "Orientations": "2",
-              "Opportunity": "1"
-            },
-            {
-              "StoryId": "1383",
-              "Did": "18_9_9",
-              "NPC": "泰坦水龙",
-              "Dialogue": "不要跑！",
-              "Icon": "57_0",
-              "Orientations": "2",
-              "Opportunity": "1"
-            },
-            {
-              "StoryId": "1384",
-              "Did": "18_9_10",
-              "NPC": "player_name",
-              "Dialogue": "我想休息会啊！能不能等会再打！",
-              "Icon": "0_4",
-              "Orientations": "2",
-              "Opportunity": "1"
-            },
-            {
-              "StoryId": "1385",
-              "Did": "18_9_11",
-              "NPC": "泰坦水龙",
-              "Dialogue": "不要跑！",
-              "Icon": "57_0",
-              "Orientations": "2",
-              "Opportunity": "1"
-            }
-          ],
-          "DialogueAfter": [
-            {
-              "StoryId": "1386",
-              "Did": "18_9_12",
-              "NPC": "泰坦水龙",
-              "Dialogue": "我没想和你们打，刚刚听见了泰坦火龙的声音，他龙呢？",
-              "Icon": "57_0",
-              "Orientations": "2",
-              "Opportunity": "2"
-            },
-            {
-              "StoryId": "1387",
-              "Did": "18_9_13",
-              "NPC": "player_name",
-              "Dialogue": "他刚刚飞走了……",
-              "Icon": "0_3",
-              "Orientations": "1",
-              "Opportunity": "2"
-            },
-            {
-              "StoryId": "1388",
-              "Did": "18_9_14",
-              "NPC": "泰坦水龙",
-              "Dialogue": "可恶啊！泰坦火龙，你还要躲我躲到什么时候！",
-              "Icon": "57_0",
-              "Orientations": "2",
-              "Opportunity": "2"
-            },
-            {
-              "StoryId": "1389",
-              "Did": "18_9_15",
-              "NPC": "美狄丝",
-              "Dialogue": "啊，他究竟做了什么让你这么气愤！",
-              "Icon": "1_3",
-              "Orientations": "2",
-              "Opportunity": "2"
-            },
-            {
-              "StoryId": "1390",
-              "Did": "18_9_16",
-              "NPC": "泰坦水龙",
-              "Dialogue": "能不气愤吗！本来我和他就是夫妻，守护海角的灵石，谁知道他贪玩跑出来了，灵石也不见了，我现在就出来找他，肯定是他偷出来的！",
-              "Icon": "57_0",
-              "Orientations": "2",
-              "Opportunity": "2"
-            },
-            {
-              "StoryId": "1391",
-              "Did": "18_9_17",
-              "NPC": "美狄丝",
-              "Dialogue": "你们竟然是夫妻！",
-              "Icon": "1_3",
-              "Orientations": "2",
-              "Opportunity": "2"
-            },
-            {
-              "StoryId": "1392",
-              "Did": "18_9_18",
-              "NPC": "player_name",
-              "Dialogue": "灵石？你说的红水晶吗？",
-              "Icon": "0_3",
-              "Orientations": "1",
-              "Opportunity": "2"
-            },
-            {
-              "StoryId": "1393",
-              "Did": "18_9_19",
-              "NPC": "泰坦水龙",
-              "Dialogue": "对啊，你们见过？",
-              "Icon": "57_0",
-              "Orientations": "2",
-              "Opportunity": "2"
-            },
-            {
-              "StoryId": "1394",
-              "Did": "18_9_20",
-              "NPC": "player_name",
-              "Dialogue": "没有，我觉得你现在应该赶快去追泰坦火龙，说不定你还能追上！",
-              "Icon": "0_3",
-              "Orientations": "1",
-              "Opportunity": "2"
-            }
-          ],
-          "Levels": [
-            {
-              "MapStageDetailId": "198",
-              "Level": "1",
-              "CardList": "392_15_1588,392_15_1589,710_15_1447,710_15_1327,411_15_1263,411_15_1116,381_15_1481,381_15_619,380_15_1429,380_15_1588,515_15_1209,515_15_689,398_15_286,398_15_1495,332_15_332",
-              "RuneList": "59_4,60_4,56_4,55_4",
-              "HeroLevel": "120",
-              "AchievementId": "0",
-              "EnergyExpend": "2",
-              "BonusWin": "Exp_4750,Coins_4860",
-              "FirstBonusWin": "",
-              "BonusLose": "Exp_100,Coins_100",
-              "AddedBonus": "",
-              "EnergyExplore": "2",
-              "BonusExplore": "Exp_2820,Coins_3480",
-              "Hint": "0",
-              "AchievementText": "战斗胜利"
-            },
-            {
-              "MapStageDetailId": "198",
-              "Level": "2",
-              "CardList": "392_15_1588,392_15_1589,710_15_1447,710_15_1327,411_15_1263,411_15_1116,381_15_1481,381_15_619,380_15_1429,380_15_1588,515_15_1209,515_15_689,398_15_286,398_15_1495,332_15_332",
-              "RuneList": "59_4,60_4,56_4,55_4",
-              "HeroLevel": "120",
-              "AchievementId": "25",
-              "EnergyExpend": "2",
-              "BonusWin": "Exp_5870,Coins_6040",
-              "FirstBonusWin": "",
-              "BonusLose": "Exp_100,Coins_100",
-              "AddedBonus": "",
-              "EnergyExplore": "2",
-              "BonusExplore": "Exp_2820,Coins_3480",
-              "Hint": "0",
-              "AchievementText": "卡组中王国种族卡牌不小于6张"
-            },
-            {
-              "MapStageDetailId": "198",
-              "Level": "3",
-              "CardList": "392_15_1588,392_15_1589,710_15_1447,710_15_1327,411_15_1263,411_15_1116,381_15_1481,381_15_619,380_15_1429,380_15_1588,515_15_1209,515_15_689,398_15_286,398_15_1495,332_15_332",
-              "RuneList": "59_4,60_4,56_4,55_4",
-              "HeroLevel": "120",
-              "AchievementId": "35",
-              "EnergyExpend": "2",
-              "BonusWin": "Exp_6830,Coins_6800",
-              "FirstBonusWin": "Card_518",
-              "BonusLose": "Exp_100,Coins_100",
-              "AddedBonus": "",
-              "EnergyExplore": "2",
-              "BonusExplore": "Exp_2820,Coins_3480",
-              "Hint": "0",
-              "AchievementText": "卡组中地狱种族卡牌不小于6张"
-            }
-          ]
-        },
-        {
           "MapStageDetailId": "199",
           "Name": "通天桥",
           "Type": "1",
@@ -26796,6 +26796,408 @@
       "Next": "20",
       "MapStageDetails": [
         {
+          "MapStageDetailId": "209",
+          "Name": "水晶街",
+          "Type": "1",
+          "MapStageId": "19",
+          "Rank": "5",
+          "X": "90",
+          "Y": "170",
+          "Prev": "208",
+          "Next": "210",
+          "NextBranch": "0",
+          "FightName": "谎言之神",
+          "FightImg": "360",
+          "Dialogue": [
+            {
+              "StoryId": "1511",
+              "Did": "19_6_1",
+              "NPC": "鸟精灵",
+              "Dialogue": "他们不是刺客，前几天他还帮我们从坏人手中抢回来了水晶之钻呢！",
+              "Icon": "13_0",
+              "Orientations": "2",
+              "Opportunity": "1"
+            },
+            {
+              "StoryId": "1512",
+              "Did": "19_6_2",
+              "NPC": "守卫精灵",
+              "Dialogue": "实在对不起，不过最近精灵府不太安全，你们自己也小心一点。",
+              "Icon": "11_0",
+              "Orientations": "2",
+              "Opportunity": "1"
+            },
+            {
+              "StoryId": "1513",
+              "Did": "19_6_3",
+              "NPC": "player_name",
+              "Dialogue": "我就说嘛，大家把误会解开就行了嘛！对了你们知道怎么离开精灵世界吗？",
+              "Icon": "0_0",
+              "Orientations": "1",
+              "Opportunity": "1"
+            },
+            {
+              "StoryId": "1514",
+              "Did": "19_6_4",
+              "NPC": "守卫精灵",
+              "Dialogue": "我们精灵族一直都是只有一个出口，你来的时候应该也看到了，冻骨峰非常之高，而且寒冷飓风，我从来都没有听说过有谁知道另一个出口。",
+              "Icon": "11_0",
+              "Orientations": "2",
+              "Opportunity": "1"
+            },
+            {
+              "StoryId": "1515",
+              "Did": "19_6_5",
+              "NPC": "奥戈",
+              "Dialogue": "线索又没了。",
+              "Icon": "61_2",
+              "Orientations": "1",
+              "Opportunity": "1"
+            },
+            {
+              "StoryId": "1516",
+              "Did": "19_6_6",
+              "NPC": "美狄丝",
+              "Dialogue": "别难过了，我饿了，你看这里这么繁华，我们来大吃一顿吧！",
+              "Icon": "1_1",
+              "Orientations": "2",
+              "Opportunity": "1"
+            },
+            {
+              "StoryId": "1517",
+              "Did": "19_6_7",
+              "NPC": "player_name",
+              "Dialogue": "我也饿了呢！我们一起尝尝精灵世界的美食吧！",
+              "Icon": "0_1",
+              "Orientations": "1",
+              "Opportunity": "1"
+            },
+            {
+              "StoryId": "1518",
+              "Did": "19_6_8",
+              "NPC": "奥戈",
+              "Dialogue": "好吧，我也饿了……",
+              "Icon": "61_2",
+              "Orientations": "2",
+              "Opportunity": "1"
+            },
+            {
+              "StoryId": "1519",
+              "Did": "19_6_9",
+              "NPC": "美狄丝",
+              "Dialogue": "再往前面走走就是水晶街了，美食我们来啦！",
+              "Icon": "1_1",
+              "Orientations": "1",
+              "Opportunity": "1"
+            },
+            {
+              "StoryId": "1520",
+              "Did": "19_6_10",
+              "NPC": "精灵",
+              "Dialogue": "有谁可以将这个巨型坚果敲碎，谁就可以免费在我们店吃一顿！",
+              "Icon": "32_0",
+              "Orientations": "2",
+              "Opportunity": "1"
+            },
+            {
+              "StoryId": "1521",
+              "Did": "19_6_11",
+              "NPC": "美狄丝",
+              "Dialogue": "哇，为了美食拼啦！",
+              "Icon": "1_1",
+              "Orientations": "1",
+              "Opportunity": "1"
+            },
+            {
+              "StoryId": "1522",
+              "Did": "19_6_12",
+              "NPC": "鱼精灵",
+              "Dialogue": "想独占美食可没有那么容易，你要先过我这一关！",
+              "Icon": "27_0",
+              "Orientations": "2",
+              "Opportunity": "1"
+            },
+            {
+              "StoryId": "1523",
+              "Did": "19_6_13",
+              "NPC": "player_name",
+              "Dialogue": "哼，不要欺负丝丝，我来和你打！",
+              "Icon": "0_2",
+              "Orientations": "1",
+              "Opportunity": "1"
+            }
+          ],
+          "DialogueAfter": null,
+          "Levels": [
+            {
+              "MapStageDetailId": "209",
+              "Level": "1",
+              "CardList": "9203_15_1580,9202_15_1675,9202_15_1676,9202_15_1676,9203_15_1637,9203_15_416,9203_15_1653,9203_15_1653,9203_15_598,9203_15_1638,9203_15_1635,9203_15_1637,9203_15_620,9203_15_1450,360_15_1320",
+              "RuneList": "59_4,60_4,54_4,55_4",
+              "HeroLevel": "130",
+              "AchievementId": "0",
+              "EnergyExpend": "2",
+              "BonusWin": "Exp_4750,Coins_4860",
+              "FirstBonusWin": "",
+              "BonusLose": "Exp_100,Coins_100",
+              "AddedBonus": "",
+              "EnergyExplore": "2",
+              "BonusExplore": "Exp_2820,Coins_3480",
+              "Hint": "0",
+              "AchievementText": "战斗胜利"
+            },
+            {
+              "MapStageDetailId": "209",
+              "Level": "2",
+              "CardList": "9203_15_1580,9202_15_1675,9202_15_1676,9202_15_1676,9203_15_1637,9203_15_416,9203_15_1653,9203_15_1653,9203_15_598,9203_15_1638,9203_15_1635,9203_15_1637,9203_15_620,9203_15_1450,360_15_1320",
+              "RuneList": "59_4,60_4,54_4,55_4",
+              "HeroLevel": "130",
+              "AchievementId": "41",
+              "EnergyExpend": "2",
+              "BonusWin": "Exp_5870,Coins_6040",
+              "FirstBonusWin": "",
+              "BonusLose": "Exp_100,Coins_100",
+              "AddedBonus": "",
+              "EnergyExplore": "2",
+              "BonusExplore": "Exp_2820,Coins_3480",
+              "Hint": "0",
+              "AchievementText": "卡组中1星卡牌不小于1张"
+            },
+            {
+              "MapStageDetailId": "209",
+              "Level": "3",
+              "CardList": "9203_15_1580,9202_15_1675,9202_15_1676,9202_15_1676,9203_15_1637,9203_15_416,9203_15_1653,9203_15_1653,9203_15_598,9203_15_1638,9203_15_1635,9203_15_1637,9203_15_620,9203_15_1450,360_15_1320",
+              "RuneList": "59_4,60_4,54_4,55_4",
+              "HeroLevel": "130",
+              "AchievementId": "49",
+              "EnergyExpend": "2",
+              "BonusWin": "Exp_6830,Coins_6800",
+              "FirstBonusWin": "Card_417",
+              "BonusLose": "Exp_100,Coins_100",
+              "AddedBonus": "",
+              "EnergyExplore": "2",
+              "BonusExplore": "Exp_2820,Coins_3480",
+              "Hint": "0",
+              "AchievementText": "卡组中3星卡牌不小于3张"
+            }
+          ]
+        },
+        {
+          "MapStageDetailId": "210",
+          "Name": "水晶国度",
+          "Type": "1",
+          "MapStageId": "19",
+          "Rank": "6",
+          "X": "206",
+          "Y": "283",
+          "Prev": "209",
+          "Next": "211",
+          "NextBranch": "0",
+          "FightName": "怒雪咆哮",
+          "FightImg": "265",
+          "Dialogue": [
+            {
+              "StoryId": "1524",
+              "Did": "19_7_1",
+              "NPC": "奥戈",
+              "Dialogue": "吃的好饱啊！",
+              "Icon": "61_1",
+              "Orientations": "2",
+              "Opportunity": "1"
+            },
+            {
+              "StoryId": "1525",
+              "Did": "19_7_2",
+              "NPC": "美狄丝",
+              "Dialogue": "这还是第一次看你这么满足！",
+              "Icon": "1_1",
+              "Orientations": "1",
+              "Opportunity": "1"
+            },
+            {
+              "StoryId": "1526",
+              "Did": "19_7_3",
+              "NPC": "player_name",
+              "Dialogue": "吃饱了上路，前面就是水晶国度了，我想那里应该有人知道路。",
+              "Icon": "0_0",
+              "Orientations": "1",
+              "Opportunity": "1"
+            },
+            {
+              "StoryId": "1527",
+              "Did": "19_7_4",
+              "NPC": "美狄丝",
+              "Dialogue": "听过精灵国度美食更多！",
+              "Icon": "1_1",
+              "Orientations": "2",
+              "Opportunity": "1"
+            },
+            {
+              "StoryId": "1528",
+              "Did": "19_7_5",
+              "NPC": "player_name",
+              "Dialogue": "我们是励志热血少年啊，不是美食节目！",
+              "Icon": "0_2",
+              "Orientations": "1",
+              "Opportunity": "1"
+            },
+            {
+              "StoryId": "1529",
+              "Did": "19_7_6",
+              "NPC": "美狄丝",
+              "Dialogue": "不行，人家就是对美食没有抵抗力嘛！",
+              "Icon": "1_2",
+              "Orientations": "2",
+              "Opportunity": "1"
+            },
+            {
+              "StoryId": "1530",
+              "Did": "19_7_7",
+              "NPC": "守门精灵",
+              "Dialogue": "你们不能通过，我们精灵国度全部戒严了。",
+              "Icon": "7_0",
+              "Orientations": "2",
+              "Opportunity": "1"
+            },
+            {
+              "StoryId": "1531",
+              "Did": "19_7_8",
+              "NPC": "美狄丝",
+              "Dialogue": "不行，我必须要通过戒严！",
+              "Icon": "1_2",
+              "Orientations": "1",
+              "Opportunity": "1"
+            },
+            {
+              "StoryId": "1532",
+              "Did": "19_7_9",
+              "NPC": "守门精灵",
+              "Dialogue": "这个人很奇怪，抓住他！",
+              "Icon": "7_0",
+              "Orientations": "2",
+              "Opportunity": "1"
+            },
+            {
+              "StoryId": "1533",
+              "Did": "19_7_10",
+              "NPC": "精灵",
+              "Dialogue": "！",
+              "Icon": "46_0",
+              "Orientations": "1",
+              "Opportunity": "1"
+            },
+            {
+              "StoryId": "1534",
+              "Did": "19_7_11",
+              "NPC": "player_name",
+              "Dialogue": "确实很奇怪，奥戈，你看看像不像之前的那个偷水晶之钻的家伙。",
+              "Icon": "0_4",
+              "Orientations": "1",
+              "Opportunity": "1"
+            },
+            {
+              "StoryId": "1535",
+              "Did": "19_7_12",
+              "NPC": "奥戈",
+              "Dialogue": "就是他，我们赶紧抓住他吧！",
+              "Icon": "61_4",
+              "Orientations": "2",
+              "Opportunity": "1"
+            }
+          ],
+          "DialogueAfter": [
+            {
+              "StoryId": "1536",
+              "Did": "19_7_13",
+              "NPC": "将军",
+              "Dialogue": "谢谢你们帮我们抓住了刺客，我为我的部下感到抱歉。",
+              "Icon": "8_0",
+              "Orientations": "2",
+              "Opportunity": "2"
+            },
+            {
+              "StoryId": "1537",
+              "Did": "19_7_14",
+              "NPC": "player_name",
+              "Dialogue": "误会解除就好了，没关系啦，我想问问怎么才能离开精灵世界。",
+              "Icon": "0_0",
+              "Orientations": "1",
+              "Opportunity": "2"
+            },
+            {
+              "StoryId": "1538",
+              "Did": "19_7_15",
+              "NPC": "将军",
+              "Dialogue": "我也不知道，相传我们精灵世界是有两个出口的，但是至今没有人知道怎么出去，再往北就是深海洞穴，有人说那是通道地狱的路，也有人说这是另一个出口，你们可以去看看。",
+              "Icon": "8_0",
+              "Orientations": "2",
+              "Opportunity": "2"
+            },
+            {
+              "StoryId": "1539",
+              "Did": "19_7_16",
+              "NPC": "player_name",
+              "Dialogue": "多谢，丝丝，奥戈，我们去深海洞穴吧！",
+              "Icon": "0_0",
+              "Orientations": "1",
+              "Opportunity": "2"
+            }
+          ],
+          "Levels": [
+            {
+              "MapStageDetailId": "210",
+              "Level": "1",
+              "CardList": "265_15_689,265_15_1639,705_15_689,705_15_688,411_15_689,411_15_967,380_15_414,380_15_1497,515_15_1261,515_15_1209,381_15_1481,381_15_1481,398_15_286,398_15_689,380_15_598,525_15_1675,525_15_1676",
+              "RuneList": "19_4,38_4,54_4,55_4",
+              "HeroLevel": "130",
+              "AchievementId": "0",
+              "EnergyExpend": "2",
+              "BonusWin": "Exp_4750,Coins_4860",
+              "FirstBonusWin": "",
+              "BonusLose": "Exp_100,Coins_100",
+              "AddedBonus": "",
+              "EnergyExplore": "2",
+              "BonusExplore": "Exp_2820,Coins_3480",
+              "Hint": "0",
+              "AchievementText": "战斗胜利"
+            },
+            {
+              "MapStageDetailId": "210",
+              "Level": "2",
+              "CardList": "265_15_689,265_15_1639,705_15_689,705_15_688,411_15_689,411_15_967,380_15_414,380_15_1497,515_15_1261,515_15_1209,381_15_1481,381_15_1481,398_15_286,398_15_689,380_15_598,525_15_1675,525_15_1676",
+              "RuneList": "19_4,38_4,54_4,55_4",
+              "HeroLevel": "130",
+              "AchievementId": "38",
+              "EnergyExpend": "2",
+              "BonusWin": "Exp_5870,Coins_6040",
+              "FirstBonusWin": "",
+              "BonusLose": "Exp_100,Coins_100",
+              "AddedBonus": "",
+              "EnergyExplore": "2",
+              "BonusExplore": "Exp_2820,Coins_3480",
+              "Hint": "0",
+              "AchievementText": "卡组中蛮荒种族卡牌不小于4张"
+            },
+            {
+              "MapStageDetailId": "210",
+              "Level": "3",
+              "CardList": "265_15_689,265_15_1639,705_15_689,705_15_688,411_15_689,411_15_967,380_15_414,380_15_1497,515_15_1261,515_15_1209,381_15_1481,381_15_1481,398_15_286,398_15_689,380_15_598,525_15_1675,525_15_1676",
+              "RuneList": "19_4,38_4,54_4,55_4",
+              "HeroLevel": "130",
+              "AchievementId": "25",
+              "EnergyExpend": "2",
+              "BonusWin": "Exp_6830,Coins_6800",
+              "FirstBonusWin": "Card_418",
+              "BonusLose": "Exp_100,Coins_100",
+              "AddedBonus": "",
+              "EnergyExplore": "2",
+              "BonusExplore": "Exp_2820,Coins_3480",
+              "Hint": "0",
+              "AchievementText": "卡组中王国种族卡牌不小于6张"
+            }
+          ]
+        },
+        {
           "MapStageDetailId": "204",
           "Name": "水晶塔",
           "Type": "1",
@@ -27512,408 +27914,6 @@
               "BonusExplore": "Exp_2820,Coins_3480",
               "Hint": "0",
               "AchievementText": "卡组中2星卡牌不小于2张"
-            }
-          ]
-        },
-        {
-          "MapStageDetailId": "209",
-          "Name": "水晶街",
-          "Type": "1",
-          "MapStageId": "19",
-          "Rank": "5",
-          "X": "90",
-          "Y": "170",
-          "Prev": "208",
-          "Next": "210",
-          "NextBranch": "0",
-          "FightName": "谎言之神",
-          "FightImg": "360",
-          "Dialogue": [
-            {
-              "StoryId": "1511",
-              "Did": "19_6_1",
-              "NPC": "鸟精灵",
-              "Dialogue": "他们不是刺客，前几天他还帮我们从坏人手中抢回来了水晶之钻呢！",
-              "Icon": "13_0",
-              "Orientations": "2",
-              "Opportunity": "1"
-            },
-            {
-              "StoryId": "1512",
-              "Did": "19_6_2",
-              "NPC": "守卫精灵",
-              "Dialogue": "实在对不起，不过最近精灵府不太安全，你们自己也小心一点。",
-              "Icon": "11_0",
-              "Orientations": "2",
-              "Opportunity": "1"
-            },
-            {
-              "StoryId": "1513",
-              "Did": "19_6_3",
-              "NPC": "player_name",
-              "Dialogue": "我就说嘛，大家把误会解开就行了嘛！对了你们知道怎么离开精灵世界吗？",
-              "Icon": "0_0",
-              "Orientations": "1",
-              "Opportunity": "1"
-            },
-            {
-              "StoryId": "1514",
-              "Did": "19_6_4",
-              "NPC": "守卫精灵",
-              "Dialogue": "我们精灵族一直都是只有一个出口，你来的时候应该也看到了，冻骨峰非常之高，而且寒冷飓风，我从来都没有听说过有谁知道另一个出口。",
-              "Icon": "11_0",
-              "Orientations": "2",
-              "Opportunity": "1"
-            },
-            {
-              "StoryId": "1515",
-              "Did": "19_6_5",
-              "NPC": "奥戈",
-              "Dialogue": "线索又没了。",
-              "Icon": "61_2",
-              "Orientations": "1",
-              "Opportunity": "1"
-            },
-            {
-              "StoryId": "1516",
-              "Did": "19_6_6",
-              "NPC": "美狄丝",
-              "Dialogue": "别难过了，我饿了，你看这里这么繁华，我们来大吃一顿吧！",
-              "Icon": "1_1",
-              "Orientations": "2",
-              "Opportunity": "1"
-            },
-            {
-              "StoryId": "1517",
-              "Did": "19_6_7",
-              "NPC": "player_name",
-              "Dialogue": "我也饿了呢！我们一起尝尝精灵世界的美食吧！",
-              "Icon": "0_1",
-              "Orientations": "1",
-              "Opportunity": "1"
-            },
-            {
-              "StoryId": "1518",
-              "Did": "19_6_8",
-              "NPC": "奥戈",
-              "Dialogue": "好吧，我也饿了……",
-              "Icon": "61_2",
-              "Orientations": "2",
-              "Opportunity": "1"
-            },
-            {
-              "StoryId": "1519",
-              "Did": "19_6_9",
-              "NPC": "美狄丝",
-              "Dialogue": "再往前面走走就是水晶街了，美食我们来啦！",
-              "Icon": "1_1",
-              "Orientations": "1",
-              "Opportunity": "1"
-            },
-            {
-              "StoryId": "1520",
-              "Did": "19_6_10",
-              "NPC": "精灵",
-              "Dialogue": "有谁可以将这个巨型坚果敲碎，谁就可以免费在我们店吃一顿！",
-              "Icon": "32_0",
-              "Orientations": "2",
-              "Opportunity": "1"
-            },
-            {
-              "StoryId": "1521",
-              "Did": "19_6_11",
-              "NPC": "美狄丝",
-              "Dialogue": "哇，为了美食拼啦！",
-              "Icon": "1_1",
-              "Orientations": "1",
-              "Opportunity": "1"
-            },
-            {
-              "StoryId": "1522",
-              "Did": "19_6_12",
-              "NPC": "鱼精灵",
-              "Dialogue": "想独占美食可没有那么容易，你要先过我这一关！",
-              "Icon": "27_0",
-              "Orientations": "2",
-              "Opportunity": "1"
-            },
-            {
-              "StoryId": "1523",
-              "Did": "19_6_13",
-              "NPC": "player_name",
-              "Dialogue": "哼，不要欺负丝丝，我来和你打！",
-              "Icon": "0_2",
-              "Orientations": "1",
-              "Opportunity": "1"
-            }
-          ],
-          "DialogueAfter": null,
-          "Levels": [
-            {
-              "MapStageDetailId": "209",
-              "Level": "1",
-              "CardList": "9203_15_1580,9202_15_1675,9202_15_1676,9202_15_1676,9203_15_1637,9203_15_416,9203_15_1653,9203_15_1653,9203_15_598,9203_15_1638,9203_15_1635,9203_15_1637,9203_15_620,9203_15_1450,360_15_1320",
-              "RuneList": "59_4,60_4,54_4,55_4",
-              "HeroLevel": "130",
-              "AchievementId": "0",
-              "EnergyExpend": "2",
-              "BonusWin": "Exp_4750,Coins_4860",
-              "FirstBonusWin": "",
-              "BonusLose": "Exp_100,Coins_100",
-              "AddedBonus": "",
-              "EnergyExplore": "2",
-              "BonusExplore": "Exp_2820,Coins_3480",
-              "Hint": "0",
-              "AchievementText": "战斗胜利"
-            },
-            {
-              "MapStageDetailId": "209",
-              "Level": "2",
-              "CardList": "9203_15_1580,9202_15_1675,9202_15_1676,9202_15_1676,9203_15_1637,9203_15_416,9203_15_1653,9203_15_1653,9203_15_598,9203_15_1638,9203_15_1635,9203_15_1637,9203_15_620,9203_15_1450,360_15_1320",
-              "RuneList": "59_4,60_4,54_4,55_4",
-              "HeroLevel": "130",
-              "AchievementId": "41",
-              "EnergyExpend": "2",
-              "BonusWin": "Exp_5870,Coins_6040",
-              "FirstBonusWin": "",
-              "BonusLose": "Exp_100,Coins_100",
-              "AddedBonus": "",
-              "EnergyExplore": "2",
-              "BonusExplore": "Exp_2820,Coins_3480",
-              "Hint": "0",
-              "AchievementText": "卡组中1星卡牌不小于1张"
-            },
-            {
-              "MapStageDetailId": "209",
-              "Level": "3",
-              "CardList": "9203_15_1580,9202_15_1675,9202_15_1676,9202_15_1676,9203_15_1637,9203_15_416,9203_15_1653,9203_15_1653,9203_15_598,9203_15_1638,9203_15_1635,9203_15_1637,9203_15_620,9203_15_1450,360_15_1320",
-              "RuneList": "59_4,60_4,54_4,55_4",
-              "HeroLevel": "130",
-              "AchievementId": "49",
-              "EnergyExpend": "2",
-              "BonusWin": "Exp_6830,Coins_6800",
-              "FirstBonusWin": "Card_417",
-              "BonusLose": "Exp_100,Coins_100",
-              "AddedBonus": "",
-              "EnergyExplore": "2",
-              "BonusExplore": "Exp_2820,Coins_3480",
-              "Hint": "0",
-              "AchievementText": "卡组中3星卡牌不小于3张"
-            }
-          ]
-        },
-        {
-          "MapStageDetailId": "210",
-          "Name": "水晶国度",
-          "Type": "1",
-          "MapStageId": "19",
-          "Rank": "6",
-          "X": "206",
-          "Y": "283",
-          "Prev": "209",
-          "Next": "211",
-          "NextBranch": "0",
-          "FightName": "怒雪咆哮",
-          "FightImg": "265",
-          "Dialogue": [
-            {
-              "StoryId": "1524",
-              "Did": "19_7_1",
-              "NPC": "奥戈",
-              "Dialogue": "吃的好饱啊！",
-              "Icon": "61_1",
-              "Orientations": "2",
-              "Opportunity": "1"
-            },
-            {
-              "StoryId": "1525",
-              "Did": "19_7_2",
-              "NPC": "美狄丝",
-              "Dialogue": "这还是第一次看你这么满足！",
-              "Icon": "1_1",
-              "Orientations": "1",
-              "Opportunity": "1"
-            },
-            {
-              "StoryId": "1526",
-              "Did": "19_7_3",
-              "NPC": "player_name",
-              "Dialogue": "吃饱了上路，前面就是水晶国度了，我想那里应该有人知道路。",
-              "Icon": "0_0",
-              "Orientations": "1",
-              "Opportunity": "1"
-            },
-            {
-              "StoryId": "1527",
-              "Did": "19_7_4",
-              "NPC": "美狄丝",
-              "Dialogue": "听过精灵国度美食更多！",
-              "Icon": "1_1",
-              "Orientations": "2",
-              "Opportunity": "1"
-            },
-            {
-              "StoryId": "1528",
-              "Did": "19_7_5",
-              "NPC": "player_name",
-              "Dialogue": "我们是励志热血少年啊，不是美食节目！",
-              "Icon": "0_2",
-              "Orientations": "1",
-              "Opportunity": "1"
-            },
-            {
-              "StoryId": "1529",
-              "Did": "19_7_6",
-              "NPC": "美狄丝",
-              "Dialogue": "不行，人家就是对美食没有抵抗力嘛！",
-              "Icon": "1_2",
-              "Orientations": "2",
-              "Opportunity": "1"
-            },
-            {
-              "StoryId": "1530",
-              "Did": "19_7_7",
-              "NPC": "守门精灵",
-              "Dialogue": "你们不能通过，我们精灵国度全部戒严了。",
-              "Icon": "7_0",
-              "Orientations": "2",
-              "Opportunity": "1"
-            },
-            {
-              "StoryId": "1531",
-              "Did": "19_7_8",
-              "NPC": "美狄丝",
-              "Dialogue": "不行，我必须要通过戒严！",
-              "Icon": "1_2",
-              "Orientations": "1",
-              "Opportunity": "1"
-            },
-            {
-              "StoryId": "1532",
-              "Did": "19_7_9",
-              "NPC": "守门精灵",
-              "Dialogue": "这个人很奇怪，抓住他！",
-              "Icon": "7_0",
-              "Orientations": "2",
-              "Opportunity": "1"
-            },
-            {
-              "StoryId": "1533",
-              "Did": "19_7_10",
-              "NPC": "精灵",
-              "Dialogue": "！",
-              "Icon": "46_0",
-              "Orientations": "1",
-              "Opportunity": "1"
-            },
-            {
-              "StoryId": "1534",
-              "Did": "19_7_11",
-              "NPC": "player_name",
-              "Dialogue": "确实很奇怪，奥戈，你看看像不像之前的那个偷水晶之钻的家伙。",
-              "Icon": "0_4",
-              "Orientations": "1",
-              "Opportunity": "1"
-            },
-            {
-              "StoryId": "1535",
-              "Did": "19_7_12",
-              "NPC": "奥戈",
-              "Dialogue": "就是他，我们赶紧抓住他吧！",
-              "Icon": "61_4",
-              "Orientations": "2",
-              "Opportunity": "1"
-            }
-          ],
-          "DialogueAfter": [
-            {
-              "StoryId": "1536",
-              "Did": "19_7_13",
-              "NPC": "将军",
-              "Dialogue": "谢谢你们帮我们抓住了刺客，我为我的部下感到抱歉。",
-              "Icon": "8_0",
-              "Orientations": "2",
-              "Opportunity": "2"
-            },
-            {
-              "StoryId": "1537",
-              "Did": "19_7_14",
-              "NPC": "player_name",
-              "Dialogue": "误会解除就好了，没关系啦，我想问问怎么才能离开精灵世界。",
-              "Icon": "0_0",
-              "Orientations": "1",
-              "Opportunity": "2"
-            },
-            {
-              "StoryId": "1538",
-              "Did": "19_7_15",
-              "NPC": "将军",
-              "Dialogue": "我也不知道，相传我们精灵世界是有两个出口的，但是至今没有人知道怎么出去，再往北就是深海洞穴，有人说那是通道地狱的路，也有人说这是另一个出口，你们可以去看看。",
-              "Icon": "8_0",
-              "Orientations": "2",
-              "Opportunity": "2"
-            },
-            {
-              "StoryId": "1539",
-              "Did": "19_7_16",
-              "NPC": "player_name",
-              "Dialogue": "多谢，丝丝，奥戈，我们去深海洞穴吧！",
-              "Icon": "0_0",
-              "Orientations": "1",
-              "Opportunity": "2"
-            }
-          ],
-          "Levels": [
-            {
-              "MapStageDetailId": "210",
-              "Level": "1",
-              "CardList": "265_15_689,265_15_1639,705_15_689,705_15_688,411_15_689,411_15_967,380_15_414,380_15_1497,515_15_1261,515_15_1209,381_15_1481,381_15_1481,398_15_286,398_15_689,380_15_598,525_15_1675,525_15_1676",
-              "RuneList": "19_4,38_4,54_4,55_4",
-              "HeroLevel": "130",
-              "AchievementId": "0",
-              "EnergyExpend": "2",
-              "BonusWin": "Exp_4750,Coins_4860",
-              "FirstBonusWin": "",
-              "BonusLose": "Exp_100,Coins_100",
-              "AddedBonus": "",
-              "EnergyExplore": "2",
-              "BonusExplore": "Exp_2820,Coins_3480",
-              "Hint": "0",
-              "AchievementText": "战斗胜利"
-            },
-            {
-              "MapStageDetailId": "210",
-              "Level": "2",
-              "CardList": "265_15_689,265_15_1639,705_15_689,705_15_688,411_15_689,411_15_967,380_15_414,380_15_1497,515_15_1261,515_15_1209,381_15_1481,381_15_1481,398_15_286,398_15_689,380_15_598,525_15_1675,525_15_1676",
-              "RuneList": "19_4,38_4,54_4,55_4",
-              "HeroLevel": "130",
-              "AchievementId": "38",
-              "EnergyExpend": "2",
-              "BonusWin": "Exp_5870,Coins_6040",
-              "FirstBonusWin": "",
-              "BonusLose": "Exp_100,Coins_100",
-              "AddedBonus": "",
-              "EnergyExplore": "2",
-              "BonusExplore": "Exp_2820,Coins_3480",
-              "Hint": "0",
-              "AchievementText": "卡组中蛮荒种族卡牌不小于4张"
-            },
-            {
-              "MapStageDetailId": "210",
-              "Level": "3",
-              "CardList": "265_15_689,265_15_1639,705_15_689,705_15_688,411_15_689,411_15_967,380_15_414,380_15_1497,515_15_1261,515_15_1209,381_15_1481,381_15_1481,398_15_286,398_15_689,380_15_598,525_15_1675,525_15_1676",
-              "RuneList": "19_4,38_4,54_4,55_4",
-              "HeroLevel": "130",
-              "AchievementId": "25",
-              "EnergyExpend": "2",
-              "BonusWin": "Exp_6830,Coins_6800",
-              "FirstBonusWin": "Card_418",
-              "BonusLose": "Exp_100,Coins_100",
-              "AddedBonus": "",
-              "EnergyExplore": "2",
-              "BonusExplore": "Exp_2820,Coins_3480",
-              "Hint": "0",
-              "AchievementText": "卡组中王国种族卡牌不小于6张"
             }
           ]
         },
@@ -28725,7 +28725,7 @@
   "message": null,
   "type": null,
   "version": {
-    "http": "201302824",
+    "http": "201302826",
     "stop": "",
     "appversion": "version_1",
     "appurl": "ios://xxx",

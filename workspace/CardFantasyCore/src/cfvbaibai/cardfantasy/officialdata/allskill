@@ -23935,17 +23935,30 @@
         "Desc": "对敌方场上所有单位造成100点伤害，如果目标单位拥有免疫或者法力反射技能，则造成1000%的伤害"
       },
       {
-        "SkillId": 1677,
-        "Name": "遣散",
+        "SkillId": 1678,
+        "Name": "全体裂伤",
         "Type": 76,
         "LanchType": 4,
         "LanchCondition": 0,
         "LanchConditionValue": 0,
-        "AffectType": 143,
+        "AffectType": 144,
         "AffectValue": 0,
         "AffectValue2": 0,
         "SkillCategory": 2,
-        "Desc": "将对面场上所有召唤出来的卡牌直接移出游戏"
+        "Desc": "对敌方所有卡牌造成裂伤效果，使其无法回春和被治疗"
+      },
+      {
+        "SkillId": 1679,
+        "Name": "武形天火击",
+        "Type": 76,
+        "LanchType": 2,
+        "LanchCondition": 0,
+        "LanchConditionValue": 0,
+        "AffectType": 149,
+        "AffectValue": 0,
+        "AffectValue2": 0,
+        "SkillCategory": 2,
+        "Desc": "当攻击并对被燃烧的目标造成物理伤害时，直接将其摧毁。"
       }
     ]
   },
@@ -23953,7 +23966,7 @@
   "message": null,
   "type": null,
   "version": {
-    "http": "201302824",
+    "http": "201302826",
     "stop": "",
     "appversion": "version_1",
     "appurl": "ios://xxx",
