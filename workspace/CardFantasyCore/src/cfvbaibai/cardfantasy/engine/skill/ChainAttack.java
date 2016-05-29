@@ -32,7 +32,7 @@ public final class ChainAttack {
         
         List<CardInfo> victims = new ArrayList<CardInfo>();
         for (CardInfo victim : defender.getOwner().getField().getAliveCards()) {
-            if (victim == defender || !CardInfo.isSameType(victim, defender)) {
+            if (victim == defender || !CardInfo.isSameType(victim, defender) || victim.justRevived()) {
                 continue;
             }
             victims.add(victim);
