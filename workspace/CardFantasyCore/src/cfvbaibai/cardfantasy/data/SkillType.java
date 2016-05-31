@@ -144,7 +144,7 @@ public enum SkillType {
     灵魂禁锢("", 0),
     沉默("", 0, SkillTag.抗免疫, SkillTag.抗不屈, SkillTag.沉默),
     觉醒沉默("", 0, SkillTag.不可洗炼, SkillTag.抗免疫, SkillTag.抗不屈, SkillTag.沉默),
-    全体沉默("", 0),
+    全体沉默("", 0, SkillTag.抗免疫, SkillTag.抗不屈, SkillTag.沉默),
     灵魂消散("", 0, SkillTag.抗免疫, SkillTag.抗不屈, SkillTag.沉默),
 
     回魂("31131", 1),
