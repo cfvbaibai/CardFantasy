@@ -16,7 +16,6 @@
                                         <option value="19-4">19-4 海之绝壁</option>
                                         <option value="19-5">19-5 精灵府</option>
                                         <option value="19-6">19-6 水晶街</option>
-                                        <option value="19-6-wp">19-6-wp 水晶街(WP版)</option>
                                         <option value="19-7">19-7 水晶国度</option>
                                         <option value="19-8">19-8 深海洞穴</option>
                                         <option value="19-9">19-9 蓝海玉树</option>
