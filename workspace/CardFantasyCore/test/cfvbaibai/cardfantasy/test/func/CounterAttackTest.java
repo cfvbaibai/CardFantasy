@@ -401,6 +401,23 @@ public class CounterAttackTest extends SkillValidationTest {
         Assert.assertEquals(0, c秘银巨石像.getOwner().getGrave().size());
     }
 
+    /**
+     * 反射装甲无法送还魔神
+     */
+    @Test
+    public void test反射装甲_不动_魔神() {
+        SkillTestContext context = prepare(50, 50, "占位魔神", "占位符+反射装甲");
+        CardInfo c占位魔神 = context.addToField(0, 0);
+        CardInfo c占位符 = context.addToField(1, 1);
+        context.startGame();
+
+        context.proceedOneRound();
+        Assert.assertEquals(1, 5000 - c占位符.getHP());
+        Assert.assertEquals(1, c占位魔神.getOwner().getField().size());
+        Assert.assertEquals(0, c占位魔神.getOwner().getDeck().size());
+        Assert.assertEquals(0, c占位魔神.getOwner().getGrave().size());
+    }
+
     @Test
     public void test反射装甲_免疫() {
         SkillTestContext context = prepare(50, 50, "圣骑士+免疫", "占位符+反射装甲");
@@ -412,6 +429,24 @@ public class CounterAttackTest extends SkillValidationTest {
         Assert.assertEquals(505, 5000 - c占位符.getHP());
         Assert.assertEquals(0, c圣骑士.getOwner().getField().size());
         Assert.assertEquals(1, c圣骑士.getOwner().getDeck().size());
+        Assert.assertEquals(0, c圣骑士.getOwner().getGrave().size());
+    }
+
+    /**
+     * 被沉默的卡牌面对反射装甲仍然能使出不动
+     */
+    @Test
+    public void test反射装甲_沉默_不动() {
+        SkillTestContext context = prepare(50, 50, "沉反占位符", "圣骑士+不动");
+        CardInfo c占位符 = context.addToField(0, 0);
+        CardInfo c圣骑士 = context.addToField(1, 1);
+        context.startGame();
+
+        context.proceedOneRound();
+        context.proceedOneRound();
+        Assert.assertEquals(505, 5000 - c占位符.getHP());
+        Assert.assertEquals(1, c圣骑士.getOwner().getField().size());
+        Assert.assertEquals(0, c圣骑士.getOwner().getDeck().size());
         Assert.assertEquals(0, c圣骑士.getOwner().getGrave().size());
     }
 

@@ -29,8 +29,8 @@ public final class Return {
     }
 
     public static void returnCard(SkillResolver resolver, Skill cardSkill, CardInfo attacker, CardInfo defender) {
-        // 这段验证不再有效，因为反射装甲可能将横扫的攻击者送还
         defender.getOwner().getField().expelCard(defender.getPosition());
+        // 这段验证不再有效，因为反射装甲可能将横扫的攻击者送还
         //if (expelledCard != defender) {
             //throw new CardFantasyRuntimeException("expelledCard != defender");
         //}

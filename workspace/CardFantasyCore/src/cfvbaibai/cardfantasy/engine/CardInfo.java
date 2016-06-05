@@ -333,10 +333,14 @@ public class CardInfo extends EntityInfo {
     }
     
     public List<SkillUseInfo> getAllUsableSkills() {
-        return getUsableSkills();
+        return getUsableSkills(false);
     }
 
-    private List<SkillUseInfo> getUsableSkills() {
+    public List<SkillUseInfo> getAllUsableSkillsIgnoreSilence() {
+        return getUsableSkills(true);
+    }
+
+    private List<SkillUseInfo> getUsableSkills(boolean ignoreSilence) {
         List<SkillUseInfo> skillUseInfos = new ArrayList<SkillUseInfo>(6);
         for (SkillUseInfo skillUseInfo : this.getAllSkills()) {
             CardSkill cardSkill = (CardSkill)skillUseInfo.getSkill();
@@ -345,10 +349,12 @@ public class CardInfo extends EntityInfo {
             }
         }
 
-        if (this.getStatus().containsStatus(CardStatusType.沉默))
-        {
-            //skillUseInfos.removeIf(skillUseInfo -> !skillUseInfo.getType().containsTag(SkillTag.抗沉默));
-            skillUseInfos.clear();
+        if (!ignoreSilence) {
+            if (this.getStatus().containsStatus(CardStatusType.沉默))
+            {
+                //skillUseInfos.removeIf(skillUseInfo -> !skillUseInfo.getType().containsTag(SkillTag.抗沉默));
+                skillUseInfos.clear();
+            }
         }
 
         return skillUseInfos;

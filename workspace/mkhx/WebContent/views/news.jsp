@@ -36,6 +36,7 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2016-6-5: 修复【沉默】【不动】【反射装甲】三者互动时的BUG，感谢<x>爆爆团雪莱</x>的帮助</li>
                     <li>2016-5-31: 修复【全体沉默】和【免疫】作用时的BUG，感谢<x>砍掉重练</x>大大提交的代码。</li>
                     <li>2016-5-27: <ul>
                         <li>修复遗志技能发动时机的问题，感谢<x>咬起来喀嚓喀嚓</x>的帮助</li>

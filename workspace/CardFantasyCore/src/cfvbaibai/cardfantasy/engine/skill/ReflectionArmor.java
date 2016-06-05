@@ -20,9 +20,11 @@ public class ReflectionArmor {
         GameUI ui = resolver.getStage().getUI();
         ui.useSkill(defender, attacker, cardSkill, true);
         boolean skillBlocked = false;
-        for (SkillUseInfo attackerSkillUseInfo : attacker.getUsableNormalSkills()) {
+        for (SkillUseInfo attackerSkillUseInfo : attacker.getAllUsableSkillsIgnoreSilence()) {
             if (attackerSkillUseInfo.getType() == SkillType.不动) {
                 skillBlocked = Immobility.isSkillBlocked(resolver, attackerSkillUseInfo.getSkill(), cardSkill, defender, attacker);
+            } else if (attackerSkillUseInfo.getType() == SkillType.无效) {
+                skillBlocked = NoEffect.isSkillBlocked(resolver, attackerSkillUseInfo.getSkill(), cardSkill, defender, attacker);
             }
         }
         if (!skillBlocked) {
