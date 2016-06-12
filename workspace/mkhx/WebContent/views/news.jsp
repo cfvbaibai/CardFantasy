@@ -36,6 +36,7 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2016-6-12: 修复【反射装甲】和【恶灵汲取】在同一张卡上时会出现的动画BUG，感谢<x>裂空座2012</x>的帮助</li>
                     <li>2016-6-10: 现在部分老五星卡牌加上"WP"后缀可模拟器WP版CD，例如"金属巨龙WP"是WP版的4CD金属巨龙，感谢<x>希灵天使12345</x>提供的数据。</li>
                     <li>2016-6-5: <ul>
                         <li>修复【沉默】【不动】【反射装甲】三者互动时的BUG，感谢<x>爆爆团雪莱</x>和<x>不渝小溪</x>的帮助</li>

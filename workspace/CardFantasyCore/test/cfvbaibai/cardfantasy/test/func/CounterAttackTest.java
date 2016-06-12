@@ -433,6 +433,23 @@ public class CounterAttackTest extends SkillValidationTest {
     }
 
     /**
+     * 未实测，被反射装甲送还的卡仍然会被恶灵汲取
+     */
+    @Test
+    public void test反射装甲_恶灵汲取() {
+        SkillTestContext context = prepare(50, 50, "圣骑士", "星空战姬+恶灵汲取5");
+        CardInfo c圣骑士 = context.addToField(0, 0);
+        CardInfo c星空战姬 = context.addToField(1, 1);
+        context.startGame();
+
+        context.proceedOneRound();
+        Assert.assertEquals(300 - 159, 2600 - c星空战姬.getHP());
+        Assert.assertEquals(0, c圣骑士.getOwner().getField().size());
+        Assert.assertEquals(1, c圣骑士.getOwner().getDeck().size());
+        Assert.assertEquals(0, c圣骑士.getOwner().getGrave().size());
+    }
+
+    /**
      * 被沉默的卡牌面对反射装甲仍然能使出不动
      */
     @Test

@@ -17,13 +17,16 @@ public class LifeDrain {
         Skill skill = skillUseInfo.getSkill();
         int damage = attacker.getHP() * skill.getImpact() / 100;
 
-        OnAttackBlockingResult onAttackBlockingResult = resolver.resolveAttackBlockingSkills(defender, attacker, skill, damage);
-        if (!onAttackBlockingResult.isAttackable()) {
-            return;
+        if (!attacker.isDead()) {
+            // 反射装甲+恶灵汲取的场合，攻击卡牌可能先被送还了，然后再发动恶灵汲取
+            OnAttackBlockingResult onAttackBlockingResult = resolver.resolveAttackBlockingSkills(defender, attacker, skill, damage);
+            if (!onAttackBlockingResult.isAttackable()) {
+                return;
+            }
+            damage = onAttackBlockingResult.getDamage();
+            resolver.getStage().getUI().attackCard(defender, attacker, skill, damage);
+            resolver.resolveDeathSkills(defender, attacker, skill, resolver.applyDamage(defender, attacker, skill, damage));
         }
-        damage = onAttackBlockingResult.getDamage();
-        resolver.getStage().getUI().attackCard(defender, attacker, skill, damage);
-        resolver.resolveDeathSkills(defender, attacker, skill, resolver.applyDamage(defender, attacker, skill, damage));
 
         if (!defender.isDead()) {
             int healHP = damage;
