@@ -517,6 +517,11 @@
         <Skill type="横扫" level="0" unlock="5" />
         <Skill type="免疫" level="0" unlock="10" />
     </Card>
+    <Card id="150201" name="光明之龙WP" wikiId="30923" race="王国" speed="4" star="5" cost="14" incrCost="3" at="350" hp="1450" incrAT="28" incrHP="28">
+        <Skill type="闪避" level="5" unlock="0" />
+        <Skill type="横扫" level="0" unlock="5" />
+        <Skill type="免疫" level="0" unlock="10" />
+    </Card>
     <Card id="1503" name="战神" wikiId="30924" race="王国" speed="4" star="5" cost="16" incrCost="2" at="350" hp="1200" incrAT="40" incrHP="30">
         <Skill type="法力反射" level="7" unlock="0" />
         <Skill type="闪避" level="8" unlock="5" />
@@ -527,7 +532,17 @@
         <Skill type="冰甲" level="4" unlock="5" />
         <Skill type="本源之力" level="7" unlock="10" />
     </Card>
+    <Card id="150401" name="圣诞老人WP" wikiId="30925" race="王国" speed="3" star="5" cost="16" incrCost="2" at="290" hp="1300" incrAT="32" incrHP="24">
+        <Skill type="本源守护" level="7" unlock="0" />
+        <Skill type="冰甲" level="4" unlock="5" />
+        <Skill type="本源之力" level="7" unlock="10" />
+    </Card>
     <Card id="1505" name="纯洁圣女" wikiId="30926" race="王国" speed="4" star="5" cost="15" incrCost="0" at="270" hp="1120" incrAT="32" incrHP="25">
+        <Skill type="背刺" level="6" unlock="0" />
+        <Skill type="连锁攻击" level="4" unlock="5" />
+        <Skill type="转生" level="7" unlock="10" />
+    </Card>
+    <Card id="150501" name="纯洁圣女WP" wikiId="30926" race="王国" speed="2" star="5" cost="15" incrCost="0" at="270" hp="1120" incrAT="32" incrHP="25">
         <Skill type="背刺" level="6" unlock="0" />
         <Skill type="连锁攻击" level="4" unlock="5" />
         <Skill type="转生" level="7" unlock="10" />
@@ -538,6 +553,11 @@
         <Skill type="传送" level="0" unlock="10" summon="true" />
     </Card>
     <Card id="1507" name="战场女武神" wikiId="48085" race="王国" speed="4" star="5" cost="16" incrCost="2" at="405" hp="1530" incrAT="40" incrHP="43">
+        <Skill type="横扫" level="0" unlock="0" />
+        <Skill type="邪灵汲取" level="7" unlock="5" />
+        <Skill type="连锁攻击" level="7" unlock="10" />
+    </Card>
+    <Card id="150701" name="战场女武神WP" wikiId="48085" race="王国" speed="3" star="5" cost="16" incrCost="2" at="405" hp="1530" incrAT="40" incrHP="43">
         <Skill type="横扫" level="0" unlock="0" />
         <Skill type="邪灵汲取" level="7" unlock="5" />
         <Skill type="连锁攻击" level="7" unlock="10" />
@@ -567,7 +587,17 @@
         <Skill type="神圣守护" level="7" unlock="5" />
         <Skill type="净化" level="0" unlock="10" summon="true" />
     </Card>
+    <Card id="151201" name="最终兵器WP" wikiId="56748" race="王国" speed="1" star="5" cost="16" incrCost="2" at="325" hp="1420" incrAT="37" incrHP="48">
+        <Skill type="格挡" level="8" unlock="0" />
+        <Skill type="神圣守护" level="7" unlock="5" />
+        <Skill type="净化" level="0" unlock="10" summon="true" />
+    </Card>
     <Card id="1513" name="钢铁巨神兵" wikiId="62828" race="王国" speed="6" star="5" cost="16" incrCost="2" at="300" hp="1235" incrAT="42" incrHP="36">
+        <Skill type="暴击" level="6" unlock="0" />
+        <Skill type="战意" level="6" unlock="5" />
+        <Skill type="不动" level="0" unlock="10" />
+    </Card>
+    <Card id="151301" name="钢铁巨神兵WP" wikiId="62828" race="王国" speed="4" star="5" cost="16" incrCost="2" at="300" hp="1235" incrAT="42" incrHP="36">
         <Skill type="暴击" level="6" unlock="0" />
         <Skill type="战意" level="6" unlock="5" />
         <Skill type="不动" level="0" unlock="10" />
@@ -587,6 +617,11 @@
         <Skill type="闪避" level="6" unlock="5" />
         <Skill type="复活" level="0" unlock="10" />
     </Card>
+    <Card id="151701" name="星辰主宰WP" wikiId="80175" race="王国" speed="4" star="5" cost="20" incrCost="2" at="275" hp="1250" incrAT="34" incrHP="32">
+        <Skill type="脱困" level="0" unlock="0" />
+        <Skill type="闪避" level="6" unlock="5" />
+        <Skill type="复活" level="0" unlock="10" />
+    </Card>
     <Card id="1518" name="圣炎魔导师" wikiId="80176" race="王国" speed="6" star="5" cost="19" incrCost="0" at="290" hp="1280" incrAT="36" incrHP="29">
         <Skill type="烈焰风暴" level="8" unlock="0" />
         <Skill type="冰甲" level="3" unlock="5" />
@@ -598,6 +633,11 @@
         <Skill type="召唤王国战士" level="0" unlock="10" />
     </Card>
     <Card id="1520" name="驭灵法师" wikiId="" race="王国" speed="6" star="5" cost="19" incrCost="0" at="290" hp="1280" incrAT="36" incrHP="29">
+        <Skill type="烈焰风暴" level="8" unlock="0" />
+        <Skill type="冰甲" level="3" unlock="5" />
+        <Skill type="回魂" level="2" unlock="10" />
+    </Card>
+    <Card id="152001" name="驭灵法师WP" wikiId="" race="王国" speed="4" star="5" cost="19" incrCost="0" at="290" hp="1280" incrAT="36" incrHP="29">
         <Skill type="烈焰风暴" level="8" unlock="0" />
         <Skill type="冰甲" level="3" unlock="5" />
         <Skill type="回魂" level="2" unlock="10" />
@@ -697,6 +737,11 @@
         <Skill type="月恩术" level="8" unlock="10" />
     </Card>
     <Card id="1541" name="预言之神" wikiId="" race="王国" speed="6" star="5" cost="21" incrCost="2" at="290" hp="1310" incrAT="37" incrHP="34">
+        <Skill type="连环闪电" level="7" unlock="0" />
+        <Skill type="脱困" level="0" unlock="5" />
+        <Skill type="沉默" level="0" unlock="10" />
+    </Card>
+    <Card id="154101" name="预言之神WP" wikiId="" race="王国" speed="4" star="5" cost="21" incrCost="2" at="290" hp="1310" incrAT="37" incrHP="34">
         <Skill type="连环闪电" level="7" unlock="0" />
         <Skill type="脱困" level="0" unlock="5" />
         <Skill type="沉默" level="0" unlock="10" />
@@ -1176,7 +1221,17 @@
         <Skill type="格挡" level="8" unlock="5" />
         <Skill type="免疫" level="7" unlock="10" />
     </Card>
+    <Card id="250101" name="金属巨龙WP" wikiId="31004" race="森林" speed="4" star="5" cost="14" incrCost="3" at="355" hp="1480" incrAT="30" incrHP="23">
+        <Skill type="暴击" level="6" unlock="0" />
+        <Skill type="格挡" level="8" unlock="5" />
+        <Skill type="免疫" level="7" unlock="10" />
+    </Card>
     <Card id="2502" name="凤凰" wikiId="31005" race="森林" speed="4" star="5" cost="15" incrCost="1" at="340" hp="1300" incrAT="32" incrHP="26">
+        <Skill type="烈焰风暴" level="8" unlock="0" />
+        <Skill type="回春" level="7" unlock="5" />
+        <Skill type="转生" level="8" unlock="10" />
+    </Card>
+    <Card id="250201" name="凤凰WP" wikiId="31005" race="森林" speed="2" star="5" cost="15" incrCost="1" at="340" hp="1300" incrAT="32" incrHP="26">
         <Skill type="烈焰风暴" level="8" unlock="0" />
         <Skill type="回春" level="7" unlock="5" />
         <Skill type="转生" level="8" unlock="10" />
@@ -1236,12 +1291,22 @@
         <Skill type="邪灵汲取" level="7" unlock="5" />
         <Skill type="弱点攻击" level="0" unlock="10" />
     </Card>
+    <Card id="251301" name="雷雕之魂WP" wikiId="62826" race="森林" speed="3" star="5" cost="17" incrCost="2" at="320" hp="1380" incrAT="34" incrHP="42">
+        <Skill type="横扫" level="0" unlock="0" />
+        <Skill type="邪灵汲取" level="7" unlock="5" />
+        <Skill type="弱点攻击" level="0" unlock="10" />
+    </Card>
     <Card id="2514" name="破晓守卫" wikiId="80142" race="森林" speed="4" star="5" cost="16" incrCost="2" at="310" hp="1420" incrAT="35" incrHP="40">
         <Skill type="森林之力" level="7" unlock="0" />
         <Skill type="回春" level="8" unlock="5" />
         <Skill type="闪避" level="7" unlock="10" />
     </Card>
     <Card id="2515" name="幻翼神丽雅" wikiId="80180" race="森林" speed="4" star="5" cost="17" incrCost="1" at="320" hp="1410" incrAT="37" incrHP="40">
+        <Skill type="圣盾" level="0" unlock="0" /> 
+        <Skill type="脱困" level="0" unlock="5" />
+        <Skill type="加速" level="2" unlock="10" />
+    </Card>
+    <Card id="251501" name="幻翼神丽雅WP" wikiId="80180" race="森林" speed="3" star="5" cost="17" incrCost="1" at="320" hp="1410" incrAT="37" incrHP="40">
         <Skill type="圣盾" level="0" unlock="0" /> 
         <Skill type="脱困" level="0" unlock="5" />
         <Skill type="加速" level="2" unlock="10" />
@@ -1808,7 +1873,17 @@
         <Skill type="盾刺" level="8" unlock="5" />
         <Skill type="免疫" level="0" unlock="10" />
     </Card>
+    <Card id="350101" name="雷兽WP" wikiId="31034" race="蛮荒" speed="4" star="5" cost="14" incrCost="2" at="340" hp="1100" incrAT="20" incrHP="45">
+        <Skill type="雷暴" level="7" unlock="0" />
+        <Skill type="盾刺" level="8" unlock="5" />
+        <Skill type="免疫" level="0" unlock="10" />
+    </Card>
     <Card id="3502" name="九头妖蛇" wikiId="31035" race="蛮荒" speed="4" star="5" cost="15" incrCost="1" at="335" hp="1330" incrAT="33" incrHP="25">
+        <Skill type="献祭" level="8" unlock="0" />
+        <Skill type="毒雾" level="8" unlock="5" />
+        <Skill type="回春" level="10" unlock="10" />
+    </Card>
+    <Card id="350201" name="九头妖蛇WP" wikiId="31035" race="蛮荒" speed="3" star="5" cost="15" incrCost="1" at="335" hp="1330" incrAT="33" incrHP="25">
         <Skill type="献祭" level="8" unlock="0" />
         <Skill type="毒雾" level="8" unlock="5" />
         <Skill type="回春" level="10" unlock="10" />
@@ -1818,7 +1893,17 @@
         <Skill type="毒液" level="8" unlock="5" />
         <Skill type="免疫" level="0" unlock="10" />
     </Card>
+    <Card id="350301" name="远古蝎皇WP" wikiId="31079" race="蛮荒" speed="4" star="5" cost="15" incrCost="2" at="360" hp="1150" incrAT="28" incrHP="35">
+        <Skill type="瘟疫" level="8" unlock="0" />
+        <Skill type="毒液" level="8" unlock="5" />
+        <Skill type="免疫" level="0" unlock="10" />
+    </Card>
     <Card id="3504" name="暴怒霸龙" wikiId="31116" race="蛮荒" speed="6" star="5" cost="17" incrCost="0" at="280" hp="1600" incrAT="50" incrHP="24">
+        <Skill type="回春" level="10" unlock="0" />
+        <Skill type="透支" level="8" unlock="5" />
+        <Skill type="脱困" level="0" unlock="10" />
+    </Card>
+    <Card id="350401" name="暴怒霸龙WP" wikiId="31116" race="蛮荒" speed="4" star="5" cost="17" incrCost="0" at="280" hp="1600" incrAT="50" incrHP="24">
         <Skill type="回春" level="10" unlock="0" />
         <Skill type="透支" level="8" unlock="5" />
         <Skill type="脱困" level="0" unlock="10" />
@@ -1829,6 +1914,11 @@
         <Skill type="弱点攻击" level="0" unlock="10" />
     </Card>
     <Card id="3506" name="羽翼化蛇" wikiId="31117" race="蛮荒" speed="4" star="5" cost="20" incrCost="-1" at="340" hp="1210" incrAT="50" incrHP="27">
+        <Skill type="连锁攻击" level="7" unlock="0" />
+        <Skill type="战意" level="7" unlock="5" />
+        <Skill type="转生" level="9" unlock="10" />
+    </Card>
+    <Card id="350601" name="羽翼化蛇WP" wikiId="31117" race="蛮荒" speed="3" star="5" cost="20" incrCost="-1" at="340" hp="1210" incrAT="50" incrHP="27">
         <Skill type="连锁攻击" level="7" unlock="0" />
         <Skill type="战意" level="7" unlock="5" />
         <Skill type="转生" level="9" unlock="10" />
@@ -2323,6 +2413,11 @@
         <Skill type="复仇" level="7" unlock="5" />
         <Skill type="不动" level="0" unlock="10" />
     </Card>
+    <Card id="441301" name="刀锋女王WP" wikiId="40082" race="地狱" speed="4" star="5" cost="17" incrCost="1" at="355" hp="1410" incrAT="28" incrHP="30">
+        <Skill type="吸血" level="6" unlock="0" />
+        <Skill type="复仇" level="7" unlock="5" />
+        <Skill type="不动" level="0" unlock="10" />
+    </Card>
     <Card id="4414" name="炎刃暗骑士" wikiId="40080" race="地狱" speed="4" star="4" cost="13" incrCost="2" at="295" hp="940" incrAT="24" incrHP="28">
         <Skill type="暴击" level="6" unlock="0" />
         <Skill type="脱困" level="0" unlock="5" />
@@ -2469,7 +2564,17 @@
         <Skill type="裂伤" level="0" unlock="5" />
         <Skill type="免疫" level="0" unlock="10" />
     </Card>
+    <Card id="450101" name="毁灭之龙WP" wikiId="31064" race="地狱" speed="4" star="5" cost="14" incrCost="2" at="350" hp="1270" incrAT="34" incrHP="34">
+        <Skill type="暴击" level="6" unlock="0" />
+        <Skill type="裂伤" level="0" unlock="5" />
+        <Skill type="免疫" level="0" unlock="10" />
+    </Card>
     <Card id="4502" name="灵魂收割者" wikiId="31065" race="地狱" speed="4" star="5" cost="15" incrCost="2" at="365" hp="1300" incrAT="26" incrHP="40">
+        <Skill type="横扫" level="0" unlock="0" />
+        <Skill type="封印" level="0" unlock="5" />
+        <Skill type="吸血" level="8" unlock="10" />
+    </Card>
+    <Card id="450201" name="灵魂收割者WP" wikiId="31065" race="地狱" speed="3" star="5" cost="15" incrCost="2" at="365" hp="1300" incrAT="26" incrHP="40">
         <Skill type="横扫" level="0" unlock="0" />
         <Skill type="封印" level="0" unlock="5" />
         <Skill type="吸血" level="8" unlock="10" />
@@ -2479,7 +2584,17 @@
         <Skill type="封印" level="0" unlock="5" />
         <Skill type="转生" level="7" unlock="10" />
     </Card>
+    <Card id="450301" name="恐惧之王WP" wikiId="31080" race="地狱" speed="2" star="5" cost="17" incrCost="0" at="310" hp="1100" incrAT="25" incrHP="35">
+        <Skill type="诅咒" level="6" unlock="0" />
+        <Skill type="封印" level="0" unlock="5" />
+        <Skill type="转生" level="7" unlock="10" />
+    </Card>
     <Card id="4504" name="背主之影" wikiId="31101" race="地狱" speed="2" star="5" cost="17" incrCost="0" at="260" hp="820" incrAT="26" incrHP="32">
+        <Skill type="背刺" level="8" unlock="0" />
+        <Skill type="狙击" level="10" unlock="5" />
+        <Skill type="转生" level="8" unlock="10" />
+    </Card>
+    <Card id="450401" name="背主之影WP" wikiId="31101" race="地狱" speed="1" star="5" cost="17" incrCost="0" at="260" hp="820" incrAT="26" incrHP="32">
         <Skill type="背刺" level="8" unlock="0" />
         <Skill type="狙击" level="10" unlock="5" />
         <Skill type="转生" level="8" unlock="10" />
@@ -2504,12 +2619,22 @@
         <Skill type="转生" level="5" unlock="5" />
         <Skill type="摧毁" level="0" unlock="10" death="true" />
     </Card>
+    <Card id="450801" name="不死鸟化身WP" wikiId="40077" race="地狱" speed="3" star="5" cost="17" incrCost="1" at="345" hp="1280" incrAT="21" incrHP="37">
+        <Skill type="烈火焚神" level="7" unlock="0" />
+        <Skill type="转生" level="5" unlock="5" />
+        <Skill type="摧毁" level="0" unlock="10" death="true" />
+    </Card>
     <Card id="4509" name="堕落天使" wikiId="43438" race="地狱" speed="4" star="5" cost="16" incrCost="1" at="345" hp="1320" incrAT="35" incrHP="46">
         <Skill type="地狱之力" level="8" unlock="0" />
         <Skill type="圣炎" level="0" unlock="5" />
         <Skill type="法力侵蚀" level="8" unlock="10" />
     </Card>
     <Card id="4510" name="混沌之龙" wikiId="50421" race="地狱" speed="6" star="5" cost="17" incrCost="2" at="365" hp="1370" incrAT="31" incrHP="41">
+        <Skill type="献祭" level="8" unlock="0" />
+        <Skill type="弱点攻击" level="0" unlock="5" />
+        <Skill type="不动" level="0" unlock="10" />
+    </Card>
+    <Card id="451001" name="混沌之龙WP" wikiId="50421" race="地狱" speed="4" star="5" cost="17" incrCost="2" at="365" hp="1370" incrAT="31" incrHP="41">
         <Skill type="献祭" level="8" unlock="0" />
         <Skill type="弱点攻击" level="0" unlock="5" />
         <Skill type="不动" level="0" unlock="10" />
@@ -2545,6 +2670,11 @@
         <Skill type="吸血" level="8" unlock="10" />
     </Card>
     <Card id="4519" name="骨灵巫女" wikiId="80190" race="地狱" speed="3" star="5" cost="16" incrCost="2" at="290" hp="1285" incrAT="28" incrHP="29">
+        <Skill type="穿刺" level="6" unlock="0" />
+        <Skill type="转生" level="7" unlock="5" />
+        <Skill type="横扫" level="0" unlock="10" />
+    </Card>
+    <Card id="451901" name="骨灵巫女WP" wikiId="80190" race="地狱" speed="1" star="5" cost="16" incrCost="2" at="290" hp="1285" incrAT="28" incrHP="29">
         <Skill type="穿刺" level="6" unlock="0" />
         <Skill type="转生" level="7" unlock="5" />
         <Skill type="横扫" level="0" unlock="10" />
@@ -2681,6 +2811,11 @@
         <Skill type="灵魂消散" level="0" unlock="0" />
         <Skill type="精神狂乱" level="0" unlock="5" />
         <Skill type="混乱领域" level="8" unlock="10" />
+    </Card>
+    <Card id="4547" name="邪灵龙母" wikiId="" race="地狱" speed="3" star="5" cost="17" incrCost="2" at="330" hp="1420" incrAT="37" incrHP="28">
+        <Skill type="弱点攻击" level="0" unlock="0" />
+        <Skill type="燕返" level="0" unlock="5" />
+        <Skill type="转生" level="7" unlock="10" />
     </Card>
 
     <!-- 魔神 -->
