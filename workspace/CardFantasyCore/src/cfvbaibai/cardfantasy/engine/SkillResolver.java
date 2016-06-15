@@ -781,6 +781,11 @@ public class SkillResolver {
                     PosionBlade.apply(this, skillUseInfo, attacker, defender, normalAttackDamage);
                 }
             }
+            if (skillUseInfo.getType() == SkillType.武形天火击) {
+                if (!defender.isDead() && defender.getStatus().containsStatus(CardStatusType.燃烧)) {
+                    Destroy.apply(this, skillUseInfo.getSkill(), attacker, defender);
+                }
+            }
         }
         if (!attacker.isDead() && !attacker.isSilent()) {
             {

@@ -287,4 +287,132 @@ public class DeathSkillTest extends SkillValidationTest {
         Assert.assertEquals(1, c金属巨龙.getOwner().getOutField().size());
         Assert.assertEquals(0, c金属巨龙.getOwner().getHand().size());
     }
+
+    @Test
+    public void test武形天火击_普通() {
+        SkillTestContext context = prepare(50, 50, "武形火焰尊者", "占位符");
+        context.addToField(0, 0);
+        CardInfo c占位符 = context.addToField(1, 1);
+        context.startGame();
+
+        random.addNextPicks(0);
+        context.proceedOneRound();
+        Assert.assertTrue(c占位符.isDead());
+    }
+
+    @Test
+    public void test武形天火击_免疫() {
+        SkillTestContext context = prepare(50, 50, "武形火焰尊者", "占位符+免疫");
+        context.addToField(0, 0);
+        CardInfo c占位符 = context.addToField(1, 1);
+        context.startGame();
+
+        random.addNextPicks(0);
+        context.proceedOneRound();
+        Assert.assertFalse(c占位符.isDead());
+        Assert.assertEquals(790, 5000 - c占位符.getHP());
+    }
+
+    @Test
+    public void test武形天火击_免疫_沉默() {
+        SkillTestContext context = prepare(50, 50, "武形火焰尊者+降临沉默", "占位符+免疫");
+        context.addToHand(0, 0).setSummonDelay(0);
+        CardInfo c占位符 = context.addToField(1, 1);
+        context.startGame();
+
+        random.addNextPicks(0);
+        context.proceedOneRound();
+        Assert.assertTrue(c占位符.isDead());
+    }
+
+    @Test
+    public void test武形天火击_不动() {
+        SkillTestContext context = prepare(50, 50, "武形火焰尊者", "占位符+不动");
+        context.addToField(0, 0);
+        CardInfo c占位符 = context.addToField(1, 1);
+        context.startGame();
+
+        random.addNextPicks(0);
+        context.proceedOneRound();
+        Assert.assertFalse(c占位符.isDead());
+        Assert.assertEquals(790, 5000 - c占位符.getHP());
+        Assert.assertTrue(c占位符.getStatus().containsStatus(CardStatusType.燃烧));
+    }
+
+    @Test
+    public void test武形天火击_不动_沉默() {
+        SkillTestContext context = prepare(50, 50, "武形火焰尊者+沉默", "占位符+不动");
+        context.addToField(0, 0);
+        CardInfo c占位符 = context.addToField(1, 1);
+        context.startGame();
+
+        random.addNextPicks(0);
+        context.proceedOneRound();
+        Assert.assertTrue(c占位符.isDead());
+    }
+
+    @Test
+    public void test武形天火击_闪避() {
+        SkillTestContext context = prepare(50, 50, "武形火焰尊者", "占位符+闪避10");
+        context.addToField(0, 0);
+        CardInfo c占位符 = context.addToField(1, 1);
+        context.startGame();
+
+        random.addNextPicks(0);
+        random.addNextNumbers(0);
+        context.proceedOneRound();
+        Assert.assertFalse(c占位符.isDead());
+        Assert.assertEquals(0, 5000 - c占位符.getHP());
+        Assert.assertTrue(c占位符.getStatus().containsStatus(CardStatusType.燃烧));
+    }
+
+    @Test
+    public void test武形天火击_物理攻击已致死() {
+        SkillTestContext context = prepare(50, 50, "武形火焰尊者", "占位符");
+        context.addToField(0, 0);
+        CardInfo c占位符 = context.addToField(1, 1).setBasicHP(2);
+        context.startGame();
+
+        random.addNextPicks(0);
+        context.proceedOneRound();
+        Assert.assertTrue(c占位符.isDead());
+    }
+
+    @Test
+    public void test武形天火击_不屈() {
+        SkillTestContext context = prepare(50, 50, "武形火焰尊者", "占位符+不屈");
+        context.addToField(0, 0);
+        CardInfo c占位符 = context.addToField(1, 1).setBasicHP(2);
+        context.startGame();
+
+        random.addNextPicks(0);
+        context.proceedOneRound();
+        Assert.assertTrue(c占位符.isDead());
+    }
+
+    @Test
+    public void test武形天火击_燕返_不屈() {
+        SkillTestContext context = prepare(50, 50, "元素灵龙+武形天火击", "欲望惩罚者");
+        CardInfo c元素灵龙 = context.addToField(0, 0).setBasicHP(2);
+        CardInfo c欲望惩罚者 = context.addToField(1, 1).setBasicHP(2);
+        context.startGame();
+
+        random.addNextPicks(0);
+        context.proceedOneRound();
+        Assert.assertTrue(c元素灵龙.isDead());
+        Assert.assertTrue(c欲望惩罚者.isDead());
+    }
+
+    @Test
+    public void test武形天火击_盾刺_死亡() {
+        SkillTestContext context = prepare(50, 50, "元素灵龙+武形天火击", "占位符+盾刺10");
+        CardInfo c元素灵龙 = context.addToField(0, 0).setBasicHP(2);
+        CardInfo c占位符 = context.addToField(1, 1);
+        context.startGame();
+
+        random.addNextPicks(0);
+        context.proceedOneRound();
+        Assert.assertTrue(c元素灵龙.isDead());
+        Assert.assertTrue(c占位符.isDead());
+    }
 }

@@ -1,5 +1,6 @@
 package cfvbaibai.cardfantasy.engine.skill;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import cfvbaibai.cardfantasy.GameUI;
@@ -16,6 +17,16 @@ public final class Destroy {
             int victimCount) throws HeroDieSignal {
         List<CardInfo> victims = resolver.getStage().getRandomizer().pickRandom(
             defenderHero.getField().toList(), victimCount, true, null);
+        apply(resolver, cardSkill, attacker, victims);
+    }
+    
+    public static void apply(SkillResolver resolver, Skill cardSkill, CardInfo attacker, CardInfo defender) throws HeroDieSignal {
+        List<CardInfo> victims = new ArrayList<CardInfo>();
+        victims.add(defender);
+        apply(resolver, cardSkill, attacker, victims);
+    }
+    
+    private static void apply(SkillResolver resolver, Skill cardSkill, CardInfo attacker, List<CardInfo> victims) throws HeroDieSignal {
         GameUI ui = resolver.getStage().getUI();
         ui.useSkill(attacker, victims, cardSkill, true);
         for (CardInfo victim : victims) {

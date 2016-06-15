@@ -417,7 +417,6 @@ public class BattleEngine {
         if (damagedResult != null && damagedResult.originalDamage > 0 && myField.getCard(i) != null) {
             for (SkillUseInfo skillUseInfo : myField.getCard(i).getUsableNormalSkills()) {
                 if (skillUseInfo.getSkill().getType() == SkillType.横扫) {
-
                     List<CardInfo> sweepDefenders = new ArrayList<CardInfo>();
                     if (i > 0 && opField.getCard(i - 1) != null) {
                         sweepDefenders.add(opField.getCard(i - 1));

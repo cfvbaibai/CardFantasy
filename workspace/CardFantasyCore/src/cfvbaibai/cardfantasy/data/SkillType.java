@@ -161,6 +161,7 @@ public enum SkillType {
 
     诅咒("31145", 30),
     摧毁("31332", 0, SkillTag.即死, SkillTag.抗不屈),
+    武形天火击("", 0, SkillTag.即死, SkillTag.抗不屈),
 
     封印("31157", 0, SkillTag.控制),
     血炼("31136", 20, SkillTag.魔法),

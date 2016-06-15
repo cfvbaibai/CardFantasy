@@ -1487,7 +1487,7 @@ var Animater = function() {
         } else if (skill == '陷阱' || skill == '封印' || skill == '关小黑屋') {
             this.flyImage({ fileName: 'trap.png', width: 48, height: 48, text: skill },
                     attacker, defenders, settings.skillDuration);
-        } else if (skill == '摧毁' || skill == '灵魂消散') {
+        } else if (skill == '摧毁' || skill == '灵魂消散' || skill == '武形天火击') {
             this.flyImage({ fileName: 'bomb.png', width: 48, height: 48, text: skill },
                     attacker, defenders, settings.skillDuration);
         } else if (skill == '盾刺' || skill == '反击' || skill == '物理反弹' || skill == '荆棘术' || skill == '一闪') {

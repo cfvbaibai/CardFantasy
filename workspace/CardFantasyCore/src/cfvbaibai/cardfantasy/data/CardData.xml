@@ -2095,6 +2095,11 @@
         <Skill type="恶灵汲取" level="8" unlock="5" />
         <Skill type="不动" level="0" unlock="10" />
     </Card>
+    <Card id="3538" name="武形火焰尊者" wikiId="" race="蛮荒" speed="2" star="5" cost="18" incrCost="2" at="360" hp="1790" incrAT="43" incrHP="44">
+        <Skill type="天火" level="8" unlock="0" />
+        <Skill type="武形天火击" level="0" unlock="5" />
+        <Skill type="武形秘仪" level="0" unlock="10" />
+    </Card>
 
     <!-- 地狱 -->
     <Card id="4101" name="恶魔小鬼" wikiId="31036" race="地狱" speed="2" star="1" cost="3" incrCost="2" at="80" hp="270" incrAT="19" incrHP="6">
