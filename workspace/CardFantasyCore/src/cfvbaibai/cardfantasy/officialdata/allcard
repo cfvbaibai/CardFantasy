@@ -45599,7 +45599,7 @@
         "DungeonsCard": "0",
         "DungeonsFrag": "1",
         "FragMaze": "0",
-        "FragRobber": "0",
+        "FragRobber": "100",
         "FragSeniorPacket": "0",
         "FragMasterPacket": "0",
         "FragNewYearPacket": "0",
