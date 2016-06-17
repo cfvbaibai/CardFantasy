@@ -36,7 +36,10 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>更新日志</h3>
                 <ul class="news-content">
-                    <li>2016-6-17: 更新<cf:c>唤潮公主</cf:c>的数据，感谢<x>loyin0000</x>的帮助</li>
+                    <li>2016-6-17: <ul>
+                        <li>更新<cf:c>唤潮公主</cf:c>的数据，感谢<x>loyin0000</x>的帮助</li>
+                        <li>添加网页版新卡【冰霜之心】，感谢<x>AJFASHGA</x>的帮助</li>
+                    </ul></li>
                     <li>2016-6-16: 添加新卡<cf:c>唤潮公主</cf:c>, 感谢<x>qTMyの泪</x>和<x>loyin0000</x>的帮助</li>
                     <li>2016-6-15: <ul>
                         <li>添加新卡<cf:c>武形火焰尊者</cf:c>, 感谢<x>爆爆团雪莱</x>的帮助</li>
