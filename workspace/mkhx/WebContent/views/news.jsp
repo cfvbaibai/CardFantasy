@@ -11,7 +11,7 @@
                 <ul>
                     <li><a href="#" data-type="bug">魔卡幻想模拟器贴吧</a>已成立，欢迎大家来提BUG、提需求、提供技能结算细节。</li>
                     <li>最近工作生活实在太忙，已经快抽不出时间做模拟器了，若有精英愿加入开发阵营，感激不尽！有意者戳<a href="#open-source">这里</a>。</li>
-                    <li>如果想添加新卡，请去贴吧发帖并提供卡牌的10级和15级卡图。</li>
+                    <li>如果想添加新卡，请去贴吧发帖并提供卡牌的0级或10级卡图，再加上15级卡图。</li>
                     <!-- <li><a href="<c:url value="/Wiki/index.shtml" />" target="_blank">魔卡幻想WIKI</a>子站点正式成立，作为新的尝试，欢迎大家来<a href="#" data-type="bug">贴吧</a>提需求和报告BUG。</li>-->
                     <!-- <li>三区（前五区）大神【砍掉重练】已经把他的模拟器和这个模拟器合并了，以后都会共同开发，最近的新卡几乎都是他做的。</li>-->
                     <!-- <li>现在模拟器能识别卡牌昵称或简称了，直接手动输入卡组变得更容易了。当然肯定有漏掉的，欢迎大家来<a href="#" data-type="bug">贴吧</a>补充。</li> -->
@@ -36,6 +36,7 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2016-6-17: 更新<cf:c>唤潮公主</cf:c>的数据，感谢<x>loyin0000</x>的帮助</li>
                     <li>2016-6-16: 添加新卡<cf:c>唤潮公主</cf:c>, 感谢<x>qTMyの泪</x>和<x>loyin0000</x>的帮助</li>
                     <li>2016-6-15: <ul>
                         <li>添加新卡<cf:c>武形火焰尊者</cf:c>, 感谢<x>爆爆团雪莱</x>的帮助</li>

@@ -1416,10 +1416,10 @@
         <Skill type="逃跑" level="0" unlock="5" />
         <Skill type="混乱领域" level="4" unlock="10" />
     </Card>
-    <Card id="2537" name="唤潮公主" wikiId="" race="森林" speed="4" star="5" cost="18" incrCost="2" at="340" hp="1690" incrAT="41" incrHP="24">
+    <Card id="2537" name="唤潮公主" wikiId="" race="森林" speed="4" star="5" cost="18" incrCost="2" at="340" hp="1890" incrAT="41" incrHP="24">
         <Skill type="回魂" level="2" unlock="0" />
         <Skill type="圣母回声" level="0" unlock="5" />
-        <Skill type="不动" level="4" unlock="10" />
+        <Skill type="不动" level="0" unlock="10" />
     </Card>
 
     <!-- 蛮荒  -->
