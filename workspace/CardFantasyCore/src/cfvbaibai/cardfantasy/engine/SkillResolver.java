@@ -550,6 +550,7 @@ public class SkillResolver {
                         }
                     } else if (blockSkillUseInfo.getType() == SkillType.镜面装甲) {
                         if (attackSkill.getType().containsTag(SkillTag.沉默)) {
+                            this.getStage().getUI().useSkill(defender, blockSkillUseInfo.getSkill(), true);
                             this.getStage().getUI().blockSkill(attacker, defender, blockSkillUseInfo.getSkill(), attackSkill);
                             result.setAttackable(false);
                             return result;
