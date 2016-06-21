@@ -506,6 +506,11 @@
         <Skill type="逃跑" level="0" unlock="5" />
         <Skill type="背刺" level="8" unlock="10" />
     </Card>
+    <Card id="1446" name="钢铁士兵" wikiId="" race="王国" speed="2" star="4" cost="14" incrCost="2" at="310" hp="1380" incrAT="41" incrHP="31">
+        <Skill type="镜面装甲" level="0" unlock="0" />
+        <Skill type="脱困" level="0" unlock="5" />
+        <Skill type="战意" level="8" unlock="10" />
+    </Card>
 
     <Card id="1501" name="降临天使" wikiId="30922" race="王国" speed="4" star="5" cost="15" incrCost="3" at="365" hp="1800" incrAT="24" incrHP="24">
         <Skill type="魔甲" level="8" unlock="0" />
@@ -1417,6 +1422,11 @@
         <Skill type="混乱领域" level="4" unlock="10" />
     </Card>
     <Card id="2537" name="唤潮公主" wikiId="" race="森林" speed="4" star="5" cost="18" incrCost="2" at="340" hp="1890" incrAT="41" incrHP="24">
+        <Skill type="回魂" level="2" unlock="0" />
+        <Skill type="圣母回声" level="0" unlock="5" />
+        <Skill type="不动" level="0" unlock="10" />
+    </Card>
+    <Card id="253701" name="弱唤潮公主" wikiId="" race="森林" speed="4" star="5" cost="18" incrCost="2" at="340" hp="1870" incrAT="41" incrHP="24">
         <Skill type="回魂" level="2" unlock="0" />
         <Skill type="圣母回声" level="0" unlock="5" />
         <Skill type="不动" level="0" unlock="10" />
@@ -2836,6 +2846,11 @@
         <Skill type="弱点攻击" level="0" unlock="0" />
         <Skill type="燕返" level="0" unlock="5" />
         <Skill type="转生" level="7" unlock="10" />
+    </Card>
+    <Card id="4548" name="火刃侍者" wikiId="" race="地狱" speed="4" star="5" cost="16" incrCost="2" at="330" hp="1640" incrAT="48" incrHP="39">
+        <Skill type="修罗地火攻" level="6" unlock="0" />
+        <Skill type="毒刃" level="0" unlock="5" />
+        <Skill type="斩杀" level="0" unlock="10" />
     </Card>
 
     <!-- 魔神 -->
