@@ -791,6 +791,11 @@
         <Skill type="连击" level="0" unlock="5" />
         <Skill type="武形秘仪" level="0" unlock="10" />
     </Card>
+    <Card id="1550" name="圣堂刑律官" wikiId="" race="王国" speed="4" star="5" cost="18" incrCost="2" at="350" hp="1780" incrAT="42" incrHP="39">
+        <Skill type="摧毁" level="0" unlock="0" death="true" />
+        <Skill type="复活" level="0" unlock="5" death="true" />
+        <Skill type="不屈" level="0" unlock="10" />
+    </Card>
 
     <!-- 森林 -->
     <Card id="2101" name="人马巡逻者" wikiId="30976" race="森林" speed="2" star="1" cost="3" incrCost="2" at="95" hp="310" incrAT="17" incrHP="11">
