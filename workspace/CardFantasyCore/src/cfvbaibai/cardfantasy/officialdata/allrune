@@ -1650,6 +1650,66 @@
           "3360",
           "7200"
         ]
+      },
+      {
+        "RuneId": "66",
+        "RuneName": "止水",
+        "Property": "2",
+        "Color": "5",
+        "LockSkill1": "1696",
+        "LockSkill2": "1697",
+        "LockSkill3": "1698",
+        "LockSkill4": "1699",
+        "LockSkill5": "1700",
+        "Price": "20000",
+        "SkillTimes": "3",
+        "Condition": "我方英雄生命值小于40%",
+        "SkillConditionSlide": "1",
+        "SkillConditionType": "6",
+        "SkillConditionRace": "0",
+        "SkillConditionColor": "0",
+        "SkillConditionCompare": "3",
+        "SkillConditionValue": "40",
+        "ThinkGet": "0",
+        "Fragment": "0",
+        "BaseExp": "500",
+        "ExpArray": [
+          "0",
+          "240",
+          "1200",
+          "3360",
+          "7200"
+        ]
+      },
+      {
+        "RuneId": "68",
+        "RuneName": "封闭",
+        "Property": "4",
+        "Color": "5",
+        "LockSkill1": "1675",
+        "LockSkill2": "1675",
+        "LockSkill3": "1675",
+        "LockSkill4": "1675",
+        "LockSkill5": "1675",
+        "Price": "20000",
+        "SkillTimes": "3",
+        "Condition": "我方墓地地狱卡牌数量大于2张",
+        "SkillConditionSlide": "1",
+        "SkillConditionType": "2",
+        "SkillConditionRace": "4",
+        "SkillConditionColor": "0",
+        "SkillConditionCompare": "1",
+        "SkillConditionValue": "1",
+        "ThinkGet": "0",
+        "Fragment": "0",
+        "BaseExp": "500",
+        "ExpArray": [
+          "0",
+          "240",
+          "1200",
+          "3360",
+          "7200"
+        ]
       }
     ]
   },
@@ -1657,7 +1717,7 @@
   "message": null,
   "type": null,
   "version": {
-    "http": "201302840",
+    "http": "201302842",
     "stop": "",
     "appversion": "version_1",
     "appurl": "ios://xxx",

@@ -596,6 +596,12 @@ public class SkillResolver {
 
     public void resolveShieldBlockingSkills(CardInfo cardAttacker, CardInfo defender, boolean includeBlocking,
             OnAttackBlockingResult result) throws HeroDieSignal {
+        if (!defender.isSilent() && includeBlocking) {
+            RuneInfo rune = defender.getOwner().getActiveRuneOf(RuneData.止水);
+            if (rune != null && !defender.justRevived()) {
+                result.setDamage(WaterArmor.apply(rune.getSkill(), this, cardAttacker, defender, result.getDamage()));
+            }
+        }
         for (SkillUseInfo blockSkillUseInfo : defender.getUsableNormalSkills()) {
             if (blockSkillUseInfo.getType() == SkillType.王国之盾) {
                 result.setDamage(RacialShield.apply(blockSkillUseInfo.getSkill(), this, cardAttacker,
@@ -1699,6 +1705,8 @@ public class SkillResolver {
                 Purify.apply(rune.getSkillUseInfo(), this, rune, -1);
             } else if (rune.is(RuneData.风暴)) {
                 ManaErode.apply(rune.getSkill(), this, rune, defenderHero, -1);
+            } else if (rune.is(RuneData.封闭)) {
+                Silence.apply(this, rune.getSkillUseInfo(), rune, defenderHero, true);
             }
         }
     }

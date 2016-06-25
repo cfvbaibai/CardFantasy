@@ -34,6 +34,7 @@ public enum RuneData {
     龙吟("", RuneClass.WATER, 5, SkillType.祈福, 5, 1, 5, Growth.RUNE, RuneActivator.myHeroHP(60)),
     风暴("", RuneClass.WATER, 5, SkillType.法力风暴, 6, 1, 5, Growth.RUNE, RuneActivator.myField(1, Race.KINGDOM)),
     鹰眼("", RuneClass.WATER, 5, SkillType.弱点攻击, 0, 0, 5, Growth.RUNE, RuneActivator.myField(2, Race.KINGDOM)),
+    止水("", RuneClass.WATER, 3, SkillType.水流护甲, 6, 1, 5, Growth.RUNE, RuneActivator.myHeroHP(40)),
 
     闪电("31385", RuneClass.WIND, 3, SkillType.落雷, 3, 1, 1, Growth.RUNE, RuneActivator.enemyGrave(2, null)),
     雷云("31472", RuneClass.WIND, 3, SkillType.连环闪电, 1, 1, 1, Growth.RUNE, RuneActivator.myHeroHP(50)),
@@ -61,8 +62,8 @@ public enum RuneData {
     灼魂("30808", RuneClass.FIRE, 6, SkillType.天谴, 6, 1, 4, Growth.RUNE, RuneActivator.myField(1, Race.HELL)),
     灭世("31168", RuneClass.FIRE, 5, SkillType.烈焰风暴, 6, 1, 5, Growth.RUNE, RuneActivator.myGrave(1, Race.HELL)),
     绝杀("30809", RuneClass.FIRE, 4, SkillType.战意, 6, 1, 5, Growth.RUNE, RuneActivator.myGrave(2, Race.HELL)),
-    鬼步("", RuneClass.FIRE, 4, SkillType.群体脱困, 0, 0, 5, Growth.RUNE, RuneActivator.myField(1, Race.HELL))
-    
+    鬼步("", RuneClass.FIRE, 4, SkillType.群体脱困, 0, 0, 5, Growth.RUNE, RuneActivator.myField(1, Race.HELL)),
+    封闭("", RuneClass.FIRE, 3, SkillType.全体沉默, 0, 0, 5, Growth.RUNE, RuneActivator.myGrave(2, Race.HELL)),
     ;
 
     private String wikiId;

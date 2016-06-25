@@ -7,18 +7,20 @@ import cfvbaibai.cardfantasy.GameUI;
 import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.CardStatusItem;
+import cfvbaibai.cardfantasy.engine.EntityInfo;
 import cfvbaibai.cardfantasy.engine.HeroDieSignal;
 import cfvbaibai.cardfantasy.engine.Player;
 import cfvbaibai.cardfantasy.engine.SkillResolver;
 import cfvbaibai.cardfantasy.engine.SkillUseInfo;
 
 public class Silence {
-    public static void apply(SkillResolver resolver, SkillUseInfo skillUseInfo, CardInfo caster, Player defenderHero, boolean isTargetAll) throws HeroDieSignal {
+    public static void apply(SkillResolver resolver, SkillUseInfo skillUseInfo, EntityInfo caster, Player defenderHero, boolean isTargetAll) throws HeroDieSignal {
         List<CardInfo> victims = new ArrayList<CardInfo>();
         if (isTargetAll) {
             victims.addAll(defenderHero.getField().getAliveCards());
         } else {
-            CardInfo victim = defenderHero.getField().getCard(caster.getPosition());
+            CardInfo casterCard = (CardInfo) caster;
+            CardInfo victim = defenderHero.getField().getCard(casterCard.getPosition());
             if (victim == null || victim.isDead()) {
                 return;
             }
@@ -30,7 +32,7 @@ public class Silence {
         for (CardInfo victim : victims) {
             CardStatusItem statusItem = CardStatusItem.slience(skillUseInfo);
             if (!resolver.resolveAttackBlockingSkills(caster, victim, skill, 1).isAttackable()) {
-                return;
+                continue;
             }
             ui.addCardStatus(caster, victim, skill, statusItem);
             victim.addStatus(statusItem);

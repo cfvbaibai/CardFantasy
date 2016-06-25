@@ -36,6 +36,7 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2016-6-25: 添加新符文<cf:c>止水</cf:c>和<cf:c>封闭</cf:c>，效果都是我YY的，欢迎大家用动画战斗检测正确性，感谢<x>Core灬酷睿</x>的帮助</li>
                     <li>2016-6-22: 添加新卡<cf:c>殉道者</cf:c>，感谢<x>白马殡天</x>的帮助</li>
                     <li>2016-6-21:<ul> 
                         <li>添加新卡<cf:c>弱唤潮公主</cf:c>，这张卡15级只有2050HP，用于适应页游的情况</li>
