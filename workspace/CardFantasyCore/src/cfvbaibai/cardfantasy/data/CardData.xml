@@ -796,6 +796,11 @@
         <Skill type="复活" level="0" unlock="5" death="true" />
         <Skill type="不屈" level="0" unlock="10" />
     </Card>
+    <Card id="1551" name="浅灰的微笑" wikiId="" race="王国" speed="2" star="5" cost="18" incrCost="2" at="300" hp="1265" incrAT="30" incrHP="53">
+        <Skill type="回魂" level="2" unlock="0" summon="true" />
+        <Skill type="星云锁链" level="0" unlock="5" />
+        <Skill type="圣炎" level="0" unlock="10" />
+    </Card>
 
     <!-- 森林 -->
     <Card id="2101" name="人马巡逻者" wikiId="30976" race="森林" speed="2" star="1" cost="3" incrCost="2" at="95" hp="310" incrAT="17" incrHP="11">
