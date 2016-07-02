@@ -1036,4 +1036,22 @@ public class DefenseTest extends SkillValidationTest {
         Assert.assertEquals(1, context.getPlayer(1).getDeck().size());
         Assert.assertEquals(0, context.getPlayer(1).getGrave().size());
     }
+
+    @Test
+    public void test阿拉希血统_基础() {
+        SkillTestContext context = prepare(50, 50, "预言之神", "占位符+阿拉希血统");
+        CardInfo c预言之神 = context.addToField(0, 0);
+        CardInfo c占位符 = context.addToField(1, 1);
+        context.startGame();
+
+        random.addNextPicks(0, 0);
+        random.addNextNumbers(1000);
+        context.proceedOneRound();
+        Assert.assertEquals(175 /* 连环闪电7 */ + 660, 5000 - c占位符.getHP());
+        Assert.assertFalse(c占位符.getStatus().containsStatus(CardStatusType.沉默));
+
+        random.addNextNumbers(0);
+        context.proceedOneRound();
+        Assert.assertEquals(500, 1650 - c预言之神.getHP());
+    }
 }

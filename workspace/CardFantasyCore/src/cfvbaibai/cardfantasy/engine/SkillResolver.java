@@ -548,7 +548,8 @@ public class SkillResolver {
                             result.setAttackable(false);
                             return result;
                         }
-                    } else if (blockSkillUseInfo.getType() == SkillType.镜面装甲) {
+                    } else if (blockSkillUseInfo.getType() == SkillType.镜面装甲 ||
+                            blockSkillUseInfo.getType() == SkillType.阿拉希血统) {
                         if (attackSkill.getType().containsTag(SkillTag.沉默)) {
                             this.getStage().getUI().useSkill(defender, blockSkillUseInfo.getSkill(), true);
                             this.getStage().getUI().blockSkill(attacker, defender, blockSkillUseInfo.getSkill(), attackSkill);
@@ -863,6 +864,8 @@ public class SkillResolver {
                 WeaponSummon.apply(this, skillUseInfo, attacker, defender, 1, 500);
             } else if (skillUseInfo.getType() == SkillType.圣器召唤) {
                 WeaponSummon.apply(this, skillUseInfo, attacker, defender, 300, 1300);
+            } else if (skillUseInfo.getType() == SkillType.阿拉希血统) {
+                WeaponSummon.apply(this, skillUseInfo, attacker, defender, 500, 1700);
             } else if (skillUseInfo.getType() == SkillType.穷追猛打) {
                 Pursuit.apply(this, skillUseInfo, attacker, defender);
             } else if (skillUseInfo.getType() == SkillType.战意) {

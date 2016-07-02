@@ -115,6 +115,7 @@ public enum SkillType {
     法力反射("30929", 30),
     反射装甲("", 0, SkillTag.即死),
     镜面装甲("", 210, 0, SkillTag.抗沉默),
+    阿拉希血统("", 0, 0, SkillTag.抗沉默, SkillTag.额外攻击加成),
     魔甲("30931", 140, -10),
     盾刺("30972", 20, SkillTag.抗免疫, SkillTag.反击),
     荆棘术("30972", 160, 40, SkillTag.抗免疫, SkillTag.反击),
