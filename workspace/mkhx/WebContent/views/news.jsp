@@ -36,6 +36,7 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2016-7-2: 添加新符文<cf:c>磐石</cf:c>, 感谢<x>千下</x>的帮助</li>
                     <li>2016-6-28: 添加网页版新卡<cf:c>浅灰的微笑</cf:c>, 感谢<x>游天使</x>的帮助</li>
                     <li>2016-6-25: <ul>
                         <li>添加新符文<cf:c>止水</cf:c>和<cf:c>封闭</cf:c>，效果都是我YY的，欢迎大家用动画战斗检测正确性，感谢<x>Core灬酷睿</x>的帮助</li>

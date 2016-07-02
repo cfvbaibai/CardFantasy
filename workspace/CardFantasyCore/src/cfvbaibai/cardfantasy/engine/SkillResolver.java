@@ -558,11 +558,22 @@ public class SkillResolver {
                     }
                 }
                 if (!defender.isSilent()) {
-                    RuneInfo rune = defender.getOwner().getActiveRuneOf(RuneData.鬼步);
-                    if (rune != null && !defender.justRevived()) {
-                        if (Escape.isSkillEscaped(this, rune.getSkill(), attackSkill, attacker, defender)) {
-                            result.setAttackable(false);
-                            return result;
+                    {
+                        RuneInfo rune = defender.getOwner().getActiveRuneOf(RuneData.鬼步);
+                        if (rune != null && !defender.justRevived()) {
+                            if (Escape.isSkillEscaped(this, rune.getSkill(), attackSkill, attacker, defender)) {
+                                result.setAttackable(false);
+                                return result;
+                            }
+                        }
+                    }
+                    {
+                        RuneInfo rune = defender.getOwner().getActiveRuneOf(RuneData.磐石);
+                        if (rune != null && !defender.justRevived()) {
+                            if (Immobility.isSkillBlocked(this, rune.getSkill(), attackSkill, attacker, defender)) {
+                                result.setAttackable(false);
+                                return result;
+                            }
                         }
                     }
                 }

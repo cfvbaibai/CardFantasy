@@ -49,7 +49,8 @@ public enum RuneData {
     雷狱("31166", RuneClass.WIND, 4, SkillType.雷暴, 6, 1, 5, Growth.RUNE, RuneActivator.myField(1, Race.FOREST)),
     轻灵("30807", RuneClass.WIND, 3, SkillType.闪避, 5, 1, 5, Growth.RUNE, RuneActivator.myGrave(2, Race.FOREST)),
     神祈("", RuneClass.WIND, 5, SkillType.神性祈求, 0, 0, 5, Growth.RUNE, RuneActivator.myField(1, Race.FOREST)),
-    
+    磐石("", RuneClass.WIND, 5, SkillType.不动, 0, 0, 5, Growth.RUNE, RuneActivator.myField(1, Race.HELL)),
+
     火拳("31413", RuneClass.FIRE, 3, SkillType.火球, 3, 1, 1, Growth.RUNE, RuneActivator.enemyField(2, null)),
     热浪("31476", RuneClass.FIRE, 3, SkillType.火墙, 1, 1, 1, Growth.RUNE, RuneActivator.myHeroHP(60)),
     流火("31249", RuneClass.FIRE, 3, SkillType.火球, 5, 1, 2, Growth.RUNE, RuneActivator.round(12)),

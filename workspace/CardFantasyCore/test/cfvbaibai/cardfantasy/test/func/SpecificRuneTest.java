@@ -462,4 +462,21 @@ public class SpecificRuneTest extends SkillValidationTest {
         Assert.assertEquals(660 + 200 /* 风暴 */, 5000 - c占位符2.getHP());
         Assert.assertEquals(200 * 3 /* 风暴 */, 5000 - c占位符3.getHP());
     }
+
+    @Test
+    public void test磐石_基础() {
+        SkillTestContext context = prepare(50, 50, "僵尸犬*2", "磐石", "占位符+送还");
+        context.addToHand(0, 0).setSummonDelay(0);
+        context.addToHand(1, 0).setSummonDelay(0);
+        context.addToField(2, 1);
+        RuneInfo r磐石 = context.addToRune(0, 0);
+        context.startGame();
+
+        context.proceedOneRound();
+        Assert.assertTrue(r磐石.isActivated());
+
+        context.proceedOneRound();
+        Assert.assertTrue(r磐石.isActivated());
+        Assert.assertEquals(2, context.getPlayer(0).getField().size());
+    }
 }
