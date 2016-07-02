@@ -831,7 +831,8 @@ public class SkillResolver {
            } else if (skillUseInfo.getType() == SkillType.厨具召唤) {
                WeaponSummon.apply(this, skillUseInfo, attacker, defenderPlayer, 1, 500);
            } else if (skillUseInfo.getType() == SkillType.神兵召唤 ||
-                   skillUseInfo.getType() == SkillType.觉醒神兵召唤 && attacker.isAwaken(skillUseInfo, Race.SAVAGE)) {
+                   skillUseInfo.getType() == SkillType.觉醒神兵召唤 && attacker.isAwaken(skillUseInfo, Race.SAVAGE) ||
+                   skillUseInfo.getType() == SkillType.阿拉希血统) {
                WeaponSummon.apply(this, skillUseInfo, attacker, defenderPlayer, 500, 1700);
            } else if (skillUseInfo.getType() == SkillType.圣器召唤) {
                WeaponSummon.apply(this, skillUseInfo, attacker, defenderPlayer, 300, 1300);
@@ -858,14 +859,13 @@ public class SkillResolver {
             } else if (skillUseInfo.getType() == SkillType.暴击) {
                 CriticalAttack.apply(this, skillUseInfo, attacker, defender);
             } else if (skillUseInfo.getType() == SkillType.神兵召唤 ||
-                    skillUseInfo.getType() == SkillType.觉醒神兵召唤 && attacker.isAwaken(skillUseInfo, Race.SAVAGE)) {
+                    skillUseInfo.getType() == SkillType.觉醒神兵召唤 && attacker.isAwaken(skillUseInfo, Race.SAVAGE) ||
+                    skillUseInfo.getType() == SkillType.阿拉希血统) {
                 WeaponSummon.apply(this, skillUseInfo, attacker, defender, 500, 1700);
             } else if (skillUseInfo.getType() == SkillType.厨具召唤) {
                 WeaponSummon.apply(this, skillUseInfo, attacker, defender, 1, 500);
             } else if (skillUseInfo.getType() == SkillType.圣器召唤) {
                 WeaponSummon.apply(this, skillUseInfo, attacker, defender, 300, 1300);
-            } else if (skillUseInfo.getType() == SkillType.阿拉希血统) {
-                WeaponSummon.apply(this, skillUseInfo, attacker, defender, 500, 1700);
             } else if (skillUseInfo.getType() == SkillType.穷追猛打) {
                 Pursuit.apply(this, skillUseInfo, attacker, defender);
             } else if (skillUseInfo.getType() == SkillType.战意) {
@@ -924,7 +924,8 @@ public class SkillResolver {
                 HeroKiller.remove(this, effect.getCause(), card);
             } else if (type == SkillType.凯撒之击) {
                 CaeserAttack.remove(this, effect.getCause(), card);
-            } else if (type == SkillType.神兵召唤 || type == SkillType.厨具召唤 || type == SkillType.觉醒神兵召唤 || type == SkillType.圣器召唤 ) {
+            } else if (type == SkillType.神兵召唤 || type == SkillType.厨具召唤 || type == SkillType.觉醒神兵召唤 ||
+                       type == SkillType.圣器召唤 || type == SkillType.阿拉希血统 ) {
                 WeaponSummon.remove(this, effect.getCause(), card);
             }
         }

@@ -38,7 +38,7 @@
                 <ul class="news-content">
                     <li>2016-7-2: <ul>
                         <li>添加新符文<cf:c>磐石</cf:c>, 感谢<x>千下</x>的帮助</li>
-                        <li>添加新卡<cf:c>联盟摄政王</cf:c>, 感谢<x>Core灬酷睿</x>的帮助</li>
+                        <li>添加新卡<cf:c>联盟摄政王</cf:c>, 感谢<x>Core灬酷睿</x>和<x>》鬼鬼《</x>的帮助</li>
                         <li>添加网页版新卡<cf:c>凛冬邪歌</cf:c>, 感谢<x>xinkai_001</x>的帮助</li>
                         <li>WIKI: 增加【英雄数据】页面，可以查体力表，COST表之类信息</li>
                     </ul></li>
