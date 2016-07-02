@@ -479,4 +479,27 @@ public class SpecificRuneTest extends SkillValidationTest {
         Assert.assertTrue(r磐石.isActivated());
         Assert.assertEquals(2, context.getPlayer(0).getField().size());
     }
+
+    /**
+     * 磐石不能覆盖手牌区，即对传送无效
+     */
+    @Test
+    public void test磐石_传送() {
+        SkillTestContext context = prepare(50, 50, "僵尸犬*3", "磐石", "占位符+传送");
+        context.addToHand(0, 0).setSummonDelay(0);
+        context.addToHand(1, 0).setSummonDelay(0);
+        context.addToHand(2, 0);
+        context.addToField(3, 1);
+        RuneInfo r磐石 = context.addToRune(0, 0);
+        context.startGame();
+
+        context.proceedOneRound();
+        Assert.assertTrue(r磐石.isActivated());
+
+        context.proceedOneRound();
+        Assert.assertTrue(r磐石.isActivated());
+        Assert.assertEquals(2, context.getPlayer(0).getField().size());
+        Assert.assertEquals(1, context.getPlayer(0).getHand().size());
+        Assert.assertEquals(0, context.getPlayer(0).getGrave().size());
+    }
 }
