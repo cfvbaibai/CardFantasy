@@ -65,7 +65,7 @@
                 <td class="value runes">
                     <c:forEach var="rune" items="${levelInfo.deckInfo.runes}">
                         <div class="item">
-                            <a href="<c:url value="/Wiki" />/Runes/${rune.id}.shtml" target="_self">${rune.runeName}-${rune.level}</a>
+                            <a href="<c:url value="/Wiki" />/Runes/${rune.id}.shtml" target="_self">${rune.runeName}</a>-${rune.level}
                         </div>
                     </c:forEach>
                     <div class="clear"></div>

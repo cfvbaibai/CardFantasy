@@ -26,6 +26,7 @@ import cfvbaibai.cardfantasy.web.ErrorHelper;
 import cfvbaibai.cardfantasy.web.beans.JsonHandler;
 import cfvbaibai.cardfantasy.web.beans.Logger;
 import cfvbaibai.cardfantasy.web.beans.OfficialCardInfo;
+import cfvbaibai.cardfantasy.web.beans.OfficialHeroSetting;
 import cfvbaibai.cardfantasy.web.beans.OfficialRuneInfo;
 import cfvbaibai.cardfantasy.web.beans.OfficialSkillInfo;
 import cfvbaibai.cardfantasy.web.beans.OfficialSkillTypeInfo;
@@ -529,5 +530,14 @@ public class OfficialDataController {
         }
         response.setContentType("application/json");
         response.getWriter().println(jsonHandler.toJson(result));
+    }
+
+    @RequestMapping(value = "/Wiki/HeroSetting.shtml")
+    public ModelAndView queryHeroInfo(HttpServletRequest request) throws IOException {
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("view-hero-setting");
+        OfficialHeroSetting heroSetting = OfficialHeroSetting.getInstance();
+        mv.addObject("heroSetting", heroSetting);
+        return mv;
     }
 }

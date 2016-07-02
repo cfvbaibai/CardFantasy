@@ -15,14 +15,15 @@
                 <h3>工具</h3>
                 <div class="wiki-result">
                     <div class="wiki-categories">
-                        <div style="width: 150px"><a href="<c:url value="/Wiki/GenCardPortrait" />" target="_self">自定义卡图生成器</a></div>
+                        <div id="gen-card-portrait" style="width: 150px"><a href="<c:url value="/Wiki/GenCardPortrait" />" target="_self">自定义卡图生成器</a></div>
+                        <div><a href="HeroSetting.shtml" target="_self">英雄数据</a></div>
                         <div></div>
                     </div>
                 </div>
             </div>
             <div id="wiki-card-pedia" data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>卡牌图鉴</h3>
-                <div id="wiki-card-pedia" class="wiki-result">
+                <div class="wiki-result">
                     <div class="wiki-categories">
                         <c:forEach begin="1" end="5" step="1" var="i">
                         <div>
@@ -45,7 +46,7 @@
             </div>
             <div id="wiki-rune-pedia" data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>符文图鉴</h3>
-                <div id="wiki-rune-pedia" class="wiki-result">
+                <div class="wiki-result">
                     <div class="wiki-categories">
                         <c:forEach var="i" begin="1" end="5" step="1">
                         <div>
@@ -82,7 +83,7 @@
             </div>
             <div id="wiki-stage-pedia" data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>地图图鉴</h3>
-                <div id="wiki-stage-pedia" class="wiki-result">
+                <div class="wiki-result">
                     <div class="wiki-categories">
                         <c:forEach var="stageInfo" items="${stageInfos}">
                             <div><a href="Stages/${stageInfo.mapStageId}.shtml" target="_self">${stageInfo.fullName}</a></div>
