@@ -1293,6 +1293,8 @@ public class SkillResolver {
                     Silence.apply(this, skillUseInfo, card, enemy, false);
                 } else if (skillUseInfo.getType() == SkillType.回魂) {
                     Resurrection.apply(this, skillUseInfo, card);
+                } else if (skillUseInfo.getType() == SkillType.全体沉默) {
+                    Silence.apply(this, skillUseInfo, card, enemy, true);
                 }
             }
             else if (!skillUseInfo.getSkill().isDeathSkill()) {
@@ -1743,6 +1745,8 @@ public class SkillResolver {
         for (SkillUseInfo skillUseInfo : card.getUsablePrecastSkills()) {
             if (skillUseInfo.getType() == SkillType.凋零真言) {
                 WitheringWord.apply(skillUseInfo, this, card, defenderHero);
+            } else if (skillUseInfo.getType() == SkillType.灵王的轰击) {
+                ManaErode.apply(skillUseInfo.getSkill(), this, card, defenderHero, 1);
             }
         }
     }

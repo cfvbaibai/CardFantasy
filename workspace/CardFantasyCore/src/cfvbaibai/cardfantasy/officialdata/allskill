@@ -18959,7 +18959,7 @@
         "SkillId": 3012,
         "Name": "德意志精神",
         "Type": 77,
-        "LanchType": 12,
+        "LanchType": 0,
         "LanchCondition": 0,
         "LanchConditionValue": 0,
         "AffectType": 51,
@@ -24098,7 +24098,7 @@
         "LanchCondition": 0,
         "LanchConditionValue": 0,
         "AffectType": 60,
-        "AffectValue": 688,
+        "AffectValue": 3012,
         "AffectValue2": 0,
         "SkillCategory": 2,
         "Desc": "我方所有卡牌获得不动(不受摧毁、送还、传送技能影响。)"
@@ -24343,7 +24343,7 @@
   "message": null,
   "type": null,
   "version": {
-    "http": "201302848",
+    "http": "201302853",
     "stop": "",
     "appversion": "version_1",
     "appurl": "ios://xxx",

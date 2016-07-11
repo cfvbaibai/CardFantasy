@@ -190,6 +190,22 @@ public class MultiAttackTest extends SkillValidationTest {
         Assert.assertEquals(810, context.getPlayer(1).getMaxHP() - context.getPlayer(1).getHP());
     }
 
+    /**
+     * 连击（无不动）遇到反射装甲时，连续击打两次后才会被送还
+     */
+    @Test
+    public void test连击_反射装甲() {
+        SkillTestContext context = prepare(50, 50, "魔剑士+连击", "占位符+反射装甲");
+        CardInfo c魔剑士 = context.addToField(0, 0);
+        CardInfo c占位符 = context.addToField(1, 1);
+        context.startGame();
+        
+        context.proceedOneRound();
+        Assert.assertEquals(0, c魔剑士.getOwner().getField().size());
+        Assert.assertEquals(1, c魔剑士.getOwner().getDeck().size());
+        Assert.assertEquals(275 * 2, 5000 - c占位符.getHP());
+    }
+
     @Test
     public void test连击_第一击杀死() {
         SkillTestContext context = prepare(50, 50, "秘银巨石像+连击", "占位符");

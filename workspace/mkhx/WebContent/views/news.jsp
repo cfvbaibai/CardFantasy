@@ -36,6 +36,15 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2016-7-11: <ul>
+                        <li>添加网页版新卡<cf:c>月咏之镰</cf:c>, 感谢<x>1219302710</x>的帮助</li>
+                        <li>添加新卡<cf:c>银河圣剑使</cf:c>, 感谢<x>真白的蓝白那啥</x>的帮助</li>
+                        <li>添加新卡<cf:c>雷眼狂花</cf:c>, 感谢<x>爆爆团雪莱</x>的帮助</li>
+                    </ul></li>
+                    <li>2016-7-9: <ul>
+                        <li>添加新卡<cf:c>暗黑游侠</cf:c>, 感谢<x>dl8o8lb</x>的帮助</li>
+                        <li>添加网页版新卡<cf:c>智慧女神雅典娜</cf:c>, 感谢<x>lwq2928</x>的帮助</li>
+                    </ul></li>
                     <li>2016-7-2: <ul>
                         <li>添加新符文<cf:c>磐石</cf:c>, 感谢<x>千下</x>的帮助</li>
                         <li>添加新卡<cf:c>联盟摄政王</cf:c>, 感谢<x>Core灬酷睿</x>和<x>》鬼鬼《</x>的帮助</li>
