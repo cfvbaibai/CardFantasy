@@ -1359,4 +1359,31 @@ public class SpecialStatusTest extends SkillValidationTest {
         Assert.assertFalse(c占位符.getStatus().containsStatus(CardStatusType.沉默));
         Assert.assertEquals(810 - 30, 5000 - c占位符.getHP());
     }
+    
+    @Test
+    public void test全体裂伤_基础() {
+        SkillTestContext context = prepare(50, 50, "秘银巨石像+全体裂伤", "秘银巨石像-15", "占位符+回春1*2", "占位符+甘霖10");
+        context.addToField(0, 0);
+        context.addToField(1, 0);
+        CardInfo c占位符1 = context.addToField(2, 1);
+        CardInfo c占位符2 = context.addToField(3, 1);
+        CardInfo c占位符3 = context.addToField(4, 1);
+        context.startGame();
+
+        context.proceedOneRound();
+        Assert.assertTrue(c占位符1.getStatus().containsStatus(CardStatusType.裂伤));
+        Assert.assertEquals(810, 5000 - c占位符1.getHP());
+        Assert.assertTrue(c占位符2.getStatus().containsStatus(CardStatusType.裂伤));
+        Assert.assertEquals(810, 5000 - c占位符2.getHP());
+        Assert.assertTrue(c占位符3.getStatus().containsStatus(CardStatusType.裂伤));
+        Assert.assertEquals(0, 5000 - c占位符3.getHP());
+
+        context.proceedOneRound();
+        Assert.assertTrue(c占位符1.getStatus().containsStatus(CardStatusType.裂伤));
+        Assert.assertEquals(810, 5000 - c占位符1.getHP());
+        Assert.assertTrue(c占位符2.getStatus().containsStatus(CardStatusType.裂伤));
+        Assert.assertEquals(810, 5000 - c占位符2.getHP());
+        Assert.assertTrue(c占位符3.getStatus().containsStatus(CardStatusType.裂伤));
+        Assert.assertEquals(0, 5000 - c占位符3.getHP());
+    }
 }

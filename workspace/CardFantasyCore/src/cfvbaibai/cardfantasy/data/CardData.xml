@@ -2170,6 +2170,11 @@
         <Skill type="透支" level="8" unlock="5" />
         <Skill type="战意" level="6" unlock="10" />
     </Card>
+    <Card id="3541" name="霜狼酋长" wikiId="" race="蛮荒" speed="4" star="5" cost="18" incrCost="2" at="420" hp="1950" incrAT="44" incrHP="37">
+        <Skill type="全体裂伤" level="0" unlock="0" />
+        <Skill type="酋长号令" level="0" unlock="5" />
+        <Skill type="战争怒吼" level="0" unlock="10" />
+    </Card>
 
     <!-- 地狱 -->
     <Card id="4101" name="恶魔小鬼" wikiId="31036" race="地狱" speed="2" star="1" cost="3" incrCost="2" at="80" hp="270" incrAT="19" incrHP="6">
@@ -2904,8 +2909,13 @@
     </Card>
     <Card id="4549" name="暗黑游侠" wikiId="" race="地狱" speed="3" star="5" cost="17" incrCost="2" at="400" hp="1770" incrAT="45" incrHP="29">
         <Skill type="全体沉默" level="0" unlock="0" summon="true" />
-        <Skill type="转生" level="6" unlock="5" />
+        <Skill type="上层精灵的挽歌" level="0" unlock="5" />
         <Skill type="精神狂乱" level="0" unlock="10" />
+    </Card>
+    <Card id="4550" name="禁忌之神" wikiId="" race="地狱" speed="6" star="5" cost="18" incrCost="2" at="335" hp="1285" incrAT="31" incrHP="35">
+        <Skill type="免疫" level="0" unlock="0" />
+        <Skill type="鲜血盛宴" level="8" unlock="5" />
+        <Skill type="法力侵蚀" level="6" unlock="10" />
     </Card>
 
     <!-- 魔神 -->

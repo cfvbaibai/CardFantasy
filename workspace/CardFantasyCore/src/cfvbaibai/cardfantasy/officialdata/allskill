@@ -24336,6 +24336,32 @@
         "AffectValue2": 0,
         "SkillCategory": 3,
         "Desc": "当自己在等待区时，每回合移除我方所有卡牌的负面效果。"
+      },
+      {
+        "SkillId": 1708,
+        "Name": "上层精灵的挽歌",
+        "Type": 136,
+        "LanchType": 5,
+        "LanchCondition": 0,
+        "LanchConditionValue": 0,
+        "AffectType": 122,
+        "AffectValue": "1276_1330",
+        "AffectValue2": 0,
+        "SkillCategory": 3,
+        "Desc": "卡牌上场后，墓地中2张卡牌回到牌堆并且当受到致命攻击时，对正对面卡牌造成200%的基础攻击力伤害，该伤害不受冰甲，格挡，闪避影响。"
+      },
+      {
+        "SkillId": 1709,
+        "Name": "[降临]全体沉默",
+        "Type": 119,
+        "LanchType": 10,
+        "LanchCondition": 0,
+        "LanchConditionValue": 0,
+        "AffectType": 153,
+        "AffectValue": 0,
+        "AffectValue2": 10,
+        "SkillCategory": 2,
+        "Desc": "卡牌上场时，沉默敌方场上所有卡牌，该卡牌全场战斗只能使用一次此技能。"
       }
     ]
   },
@@ -24343,7 +24369,7 @@
   "message": null,
   "type": null,
   "version": {
-    "http": "201302853",
+    "http": "201302856",
     "stop": "",
     "appversion": "version_1",
     "appurl": "ios://xxx",

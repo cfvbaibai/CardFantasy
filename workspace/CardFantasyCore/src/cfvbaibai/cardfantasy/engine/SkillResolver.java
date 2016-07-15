@@ -162,7 +162,7 @@ public class SkillResolver {
                 BackStab.apply(this, skillUseInfo, attacker);
             } else if (skillUseInfo.getType() == SkillType.群体削弱) {
                 WeakenAll.apply(this, skillUseInfo, attacker, defender);
-            } else if (skillUseInfo.getType() == SkillType.回魂) {
+            } else if (skillUseInfo.getType() == SkillType.回魂 || skillUseInfo.getType() == SkillType.上层精灵的挽歌) {
                 Resurrection.apply(this, skillUseInfo, attacker);
             } else if (skillUseInfo.getType() == SkillType.二重狙击) {
                 Snipe.apply(skillUseInfo.getSkill(), this, attacker, defender, 2);
@@ -254,6 +254,8 @@ public class SkillResolver {
                 Summon.apply(this, skillUseInfo, attacker, "北海神兽", "北海神兽");
             } else if (skillUseInfo.getType() == SkillType.召唤梦境女神) {
                 Summon.apply(this, skillUseInfo, attacker, "梦境女神", "梦境女神");
+            } else if (skillUseInfo.getType() == SkillType.酋长号令) {
+                Summon.apply(this, skillUseInfo, attacker, "战意斗神", "战意斗神");
             } else if (skillUseInfo.getType() == SkillType.魔力法阵) {
                 MagicMark.apply(this, skillUseInfo, attacker, defender, -1);
             } else if (skillUseInfo.getType() == SkillType.魔力印记) {
@@ -277,6 +279,8 @@ public class SkillResolver {
                 Transport.apply(this, skillUseInfo.getSkill(), attacker, defender);
             } else if (skillUseInfo.getType() == SkillType.灵魂消散) {
                 SoulCrash.apply(skillUseInfo, this, attacker, defender);
+            } else if (skillUseInfo.getType() == SkillType.全体裂伤) {
+                Wound.applyToAll(this, skillUseInfo, attacker, defender);
             }
         }
         if (!attacker.isDead() && !attacker.isSilent() && !attacker.justRevived()) {
@@ -718,7 +722,7 @@ public class SkillResolver {
             // IMPORTANT: Unbending card cannot trigger 自爆
             if (deadCardSkillUseInfo.getType() == SkillType.自爆 && !result.unbending) {
                 Explode.apply(this, deadCardSkillUseInfo.getSkill(), killerCard, deadCard);
-            } else if (deadCardSkillUseInfo.getType() == SkillType.燕返) {
+            } else if (deadCardSkillUseInfo.getType() == SkillType.燕返 || deadCardSkillUseInfo.getType() == SkillType.上层精灵的挽歌) {
                 TsubameGaeshi.apply(deadCardSkillUseInfo, this, opponent, deadCard);
             } else if (deadCardSkillUseInfo.getType() == SkillType.九转秘术) {
                 Summon.apply(this, deadCardSkillUseInfo, deadCard, "九命猫神·幻影");

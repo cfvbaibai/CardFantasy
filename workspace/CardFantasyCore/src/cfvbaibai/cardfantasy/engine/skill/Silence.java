@@ -15,6 +15,12 @@ import cfvbaibai.cardfantasy.engine.SkillUseInfo;
 
 public class Silence {
     public static void apply(SkillResolver resolver, SkillUseInfo skillUseInfo, EntityInfo caster, Player defenderHero, boolean isTargetAll) throws HeroDieSignal {
+        boolean isSummonSilenceAll = skillUseInfo.getSkill().isSummonSkill() && isTargetAll;
+        if (isSummonSilenceAll) {
+            if (resolver.getStage().hasUsed(skillUseInfo)) {
+                return;
+            }
+        }
         List<CardInfo> victims = new ArrayList<CardInfo>();
         if (isTargetAll) {
             victims.addAll(defenderHero.getField().getAliveCards());
@@ -36,6 +42,9 @@ public class Silence {
             }
             ui.addCardStatus(caster, victim, skill, statusItem);
             victim.addStatus(statusItem);
+        }
+        if (isSummonSilenceAll) {
+            resolver.getStage().setUsed(skillUseInfo, true);
         }
     }
 }

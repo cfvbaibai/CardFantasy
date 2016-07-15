@@ -1427,7 +1427,7 @@ var Animater = function() {
         } else if (skill == '燃烧' || skill == '烈火焚神' || skill == '天火') {
             this.flyImage({ fileName: 'burn.png', width: 48, height: 48 },
                     attacker, defenders, settings.skillDuration);
-        } else if (skill == '裂伤') {
+        } else if (skill == '裂伤' || skill == '全体裂伤') {
             this.displayCardMsg({
                 name: skill,
                 cardShape: this.getEntityShape(defenders[0]),

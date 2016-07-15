@@ -126,7 +126,7 @@ public enum SkillType {
     蛮荒我还会回来的("", 0),
 
     裂伤("30963", 0, SkillTag.抗免疫, SkillTag.抗不屈),
-
+    全体裂伤("", 0, SkillTag.抗免疫, SkillTag.抗不屈),
     脱困("30956", 0),
     群体脱困("", 0),
     不动("30928", 0),
@@ -149,6 +149,7 @@ public enum SkillType {
     灵魂消散("", 0, SkillTag.抗免疫, SkillTag.抗不屈, SkillTag.沉默),
 
     回魂("31131", 1),
+    上层精灵的挽歌("", 2, 0),
     二重狙击("31130", 25, SkillTag.抗免疫, SkillTag.狙击),
     神箭三重奏("",0,SkillTag.抗免疫, SkillTag.狙击),
     迷魂("31129", 30, 5, SkillTag.控制),
@@ -212,7 +213,7 @@ public enum SkillType {
     魔力法阵("", 15, 15),
     魔力印记("", 15, 15),
 
-    燕返("", 200, 0),
+    燕返("", 0, 0),
     斩杀("", 0, 0),
 
     星云锁链("", 0, 0),
@@ -234,7 +235,8 @@ public enum SkillType {
     双子之身("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
     召唤北海神兽("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
     召唤梦境女神("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
-    
+    酋长号令("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
+
     圣光洗礼("", 0, 0, SkillTag.抗免疫, SkillTag.不可洗炼),
     森林沐浴("", 1, 0, SkillTag.抗免疫, SkillTag.不可洗炼),
     蛮荒威压("", 2, 0, SkillTag.抗免疫, SkillTag.不可洗炼),
