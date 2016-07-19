@@ -36,6 +36,8 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2016-7-19: 添加新卡<cf:c>邪能控制者</cf:c>, 感谢<x>Core灬酷睿</x>的帮助</li>
+                    <li>2016-7-16: 修复<cf:c>蝶语仙子</cf:c>的星数, 感谢<x>会飞的霍比特人</x>的帮助</li>
                     <li>2016-7-15: <ul>
                         <li>修改<cf:c>暗黑游侠</cf:c>的技能, 感谢<x>白朴1234</x>和<x>dl8o8lb</x>的帮助</li>
                         <li>添加网页版新卡<cf:c>禁忌之神</cf:c>, 感谢<x>lwq2928</x>的帮助</li>
