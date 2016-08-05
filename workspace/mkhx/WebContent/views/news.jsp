@@ -36,6 +36,12 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2016-8-5: <ul>
+                        <li>添加新卡<cf:c>铁马弓箭手</cf:c>, 感谢<x>lwq2928</x>的帮助</li>
+                        <li>添加新卡<cf:c>最后的牧羊人</cf:c>, 感谢<x>会飞的霍比特人</x>的帮助</li>
+                        <li>修复【灵魂消散】会对<cf:c>炎魔</cf:c>起效的BUG，感谢<x>torinouta0314</x>和<x>fesico</x>的帮助</li>
+                    </ul></li>
+                    <li>2016-7-21: 添加新卡<cf:c>钢铁蛮牛兽</cf:c>, 感谢<x>dl8o8lb</x>的帮助</li>
                     <li>2016-7-19: 添加新卡<cf:c>邪能控制者</cf:c>, 感谢<x>Core灬酷睿</x>的帮助</li>
                     <li>2016-7-16: 修复<cf:c>蝶语仙子</cf:c>的星数, 感谢<x>会飞的霍比特人</x>的帮助</li>
                     <li>2016-7-15: <ul>

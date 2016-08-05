@@ -552,8 +552,7 @@ public class SkillResolver {
                             result.setAttackable(false);
                             return result;
                         }
-                    } else if (blockSkillUseInfo.getType() == SkillType.镜面装甲 ||
-                            blockSkillUseInfo.getType() == SkillType.阿拉希血统) {
+                    } else if (blockSkillUseInfo.getType().containsTag(SkillTag.抗沉默)) {
                         if (attackSkill.getType().containsTag(SkillTag.沉默)) {
                             this.getStage().getUI().useSkill(defender, blockSkillUseInfo.getSkill(), true);
                             this.getStage().getUI().blockSkill(attacker, defender, blockSkillUseInfo.getSkill(), attackSkill);
@@ -1094,7 +1093,8 @@ public class SkillResolver {
         for (SkillUseInfo cardSkillUseInfo : card.getUsableNormalSkills()) {
             if (cardSkillUseInfo.getType() == SkillType.回春 ||
                 cardSkillUseInfo.getType() == SkillType.月恩术 ||
-                cardSkillUseInfo.getType() == SkillType.圣母回声) {
+                cardSkillUseInfo.getType() == SkillType.圣母回声 ||
+                cardSkillUseInfo.getType() == SkillType.真理导言) {
                 Rejuvenate.apply(cardSkillUseInfo.getSkill(), this, card);
             }
         }

@@ -1471,6 +1471,11 @@
         <Skill type="不屈" level="0" unlock="5" />
         <Skill type="奋战" level="8" unlock="10" />
     </Card>
+    <Card id="2541" name="最后的牧羊人" wikiId="" race="森林" speed="4" star="5" cost="19" incrCost="2" at="390" hp="1740" incrAT="41" incrHP="38">
+        <Skill type="月神的护佑" level="7" unlock="0" />
+        <Skill type="不动" level="0" unlock="5" />
+        <Skill type="真理导言" level="0" unlock="10" />
+    </Card>
 
     <!-- 蛮荒  -->
     <Card id="3101" name="穴居人奴隶" wikiId="31006" race="蛮荒" speed="2" star="1" cost="4" incrCost="2" at="90" hp="390" incrAT="18" incrHP="11">
@@ -1695,6 +1700,11 @@
     </Card>
     <Card id="3338" name="乐" wikiId="8504" race="蛮荒" speed="6" star="3" cost="99" incrCost="0" at="1" hp="1" incrAT="0" incrHP="0">
       <Skill type="物品技能" level="0" unlock="0" />
+    </Card>
+    <Card id="3339" name="铁马弓箭手" wikiId="" race="蛮荒" speed="2" star="3" cost="11" incrCost="2" at="310" hp="1080" incrAT="40" incrHP="32">
+        <Skill type="神箭三重奏" level="3" unlock="0" />
+        <Skill type="全体加速" level="1" unlock="5" />
+        <Skill type="脱困" level="0" unlock="10" />
     </Card>
     <Card id="3401" name="兽人将领" wikiId="31028" race="蛮荒" speed="6" star="4" cost="11" incrCost="0" at="245" hp="840" incrAT="20" incrHP="52">
         <Skill type="反击" level="7" unlock="0" />
@@ -1926,6 +1936,11 @@
         <Skill type="连击" level="0" unlock="0" />
         <Skill type="陷阱" level="2" unlock="5" />
         <Skill type="脱困" level="0" unlock="10" />
+    </Card>
+    <Card id="3448" name="钢铁蛮牛兽" wikiId="" race="蛮荒" speed="2" star="4" cost="13" incrCost="2" at="330" hp="1580" incrAT="39" incrHP="38">
+        <Skill type="一闪" level="0" unlock="0" />
+        <Skill type="贪吃" level="7" unlock="5" />
+        <Skill type="不屈" level="0" unlock="10" />
     </Card>
 
     <Card id="3501" name="雷兽" wikiId="31034" race="蛮荒" speed="6" star="5" cost="14" incrCost="2" at="340" hp="1100" incrAT="20" incrHP="45">

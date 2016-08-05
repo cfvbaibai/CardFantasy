@@ -4,6 +4,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import cfvbaibai.cardfantasy.engine.CardInfo;
+import cfvbaibai.cardfantasy.engine.CardStatusType;
 import cfvbaibai.cardfantasy.engine.GameEndCause;
 import cfvbaibai.cardfantasy.engine.GameResult;
 import cfvbaibai.cardfantasy.engine.Player;
@@ -182,5 +183,21 @@ public class HealingTest extends SkillValidationTest {
         GameResult result = context.proceedOneRound();
         Assert.assertEquals(GameEndCause.英雄死亡, result.getCause());
         Assert.assertEquals("PlayerB", result.getWinner().getId());
+    }
+
+    @Test
+    public void test真理导言_基础() {
+        SkillTestContext context = prepare(50, 50, "秘银巨石像+沉默", "占位符+真理导言");
+        context.addToField(0, 0);
+        CardInfo c占位符 = context.addToField(1, 1);
+        context.startGame();
+
+        context.proceedOneRound();
+        Assert.assertEquals(810, 5000 - c占位符.getHP());
+        Assert.assertFalse(c占位符.getStatus().containsStatus(CardStatusType.沉默));
+
+        context.proceedOneRound();
+        Assert.assertEquals(810 - 5000 * 6 / 100 /* 真理导言恢复 */, 5000 - c占位符.getHP());
+        Assert.assertFalse(c占位符.getStatus().containsStatus(CardStatusType.沉默));
     }
 }

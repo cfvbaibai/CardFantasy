@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cfvbaibai.cardfantasy.GameUI;
+import cfvbaibai.cardfantasy.data.Race;
 import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.CardStatusType;
@@ -16,7 +17,7 @@ public class SoulCrash {
     public static void apply(SkillUseInfo skillUseInfo, SkillResolver resolver, CardInfo attacker, Player defender) throws HeroDieSignal {
         List<CardInfo> victims = new ArrayList<CardInfo>();
         for (CardInfo card : defender.getField().getAliveCards()) {
-            if (card.isSummonedMinion()) {
+            if (card.isSummonedMinion() && card.getRace() != Race.BOSS) {
                 victims.add(card);
             }
         }

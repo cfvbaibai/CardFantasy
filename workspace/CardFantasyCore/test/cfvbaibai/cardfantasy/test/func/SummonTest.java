@@ -237,4 +237,20 @@ public class SummonTest extends SkillValidationTest {
         Assert.assertFalse(c小兵.isDead());
         Assert.assertEquals(1, c小兵.getHP());
     }
+
+    @Test
+    public void test灵魂消散_魔王() {
+        SkillTestContext context = prepare(50, 50, "秘银巨石像", "占位符+灵魂消散", "大毒汁怪");
+        CardInfo c秘银巨石像 = context.addToField(0, 0);
+        CardInfo c占位符 = context.addToField(1, 0);
+        CardInfo c大毒汁怪 = context.addToField(2, 1).setBasicHP(2);
+        context.startGame();
+
+        context.proceedOneRound();
+        Assert.assertEquals(1, c大毒汁怪.getOwner().getField().size());
+        Assert.assertEquals(1, c大毒汁怪.getOwner().getGrave().size());
+        Assert.assertTrue(c大毒汁怪.isDead());
+        Assert.assertEquals(0, c大毒汁怪.getOwner().getOutField().size());
+        Assert.assertEquals("炎魔", c大毒汁怪.getOwner().getField().getCard(0).getName());
+    }
 }
