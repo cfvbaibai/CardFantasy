@@ -1,11 +1,10 @@
 package cfvbaibai.cardfantasy.engine.skill;
 
 import cfvbaibai.cardfantasy.data.Skill;
-import cfvbaibai.cardfantasy.data.SkillType;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.HeroDieSignal;
-import cfvbaibai.cardfantasy.engine.SkillResolver;
 import cfvbaibai.cardfantasy.engine.OnAttackBlockingResult;
+import cfvbaibai.cardfantasy.engine.SkillResolver;
 
 public final class Rejuvenate {
     public static void apply(Skill cardSkill, SkillResolver resolver, CardInfo card) throws HeroDieSignal {
@@ -14,9 +13,6 @@ public final class Rejuvenate {
             return;
         }
         int healHP = cardSkill.getImpact();
-        if (cardSkill.getType() == SkillType.真理导言) {
-            healHP = card.getMaxHP() * cardSkill.getImpact() / 100;
-        }
         if (healHP + card.getHP() > card.getMaxHP()) {
             healHP = card.getMaxHP() - card.getHP();
         }

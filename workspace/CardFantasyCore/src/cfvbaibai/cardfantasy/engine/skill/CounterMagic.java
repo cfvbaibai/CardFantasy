@@ -2,6 +2,7 @@ package cfvbaibai.cardfantasy.engine.skill;
 
 import cfvbaibai.cardfantasy.GameUI;
 import cfvbaibai.cardfantasy.data.Skill;
+import cfvbaibai.cardfantasy.data.SkillType;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.EntityInfo;
 import cfvbaibai.cardfantasy.engine.HeroDieSignal;
@@ -16,6 +17,9 @@ public final class CounterMagic {
         }
         if (resolver.isMagicalSkill(attackSkill)) {
             int damage = cardSkill.getImpact();
+            if (cardSkill.getType() == SkillType.花族秘术) {
+                damage = cardSkill.getImpact2();
+            }
             GameUI ui = resolver.getStage().getUI();
             ui.useSkill(defender, attacker, cardSkill, true);
             if (attacker instanceof CardInfo) {

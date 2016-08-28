@@ -125,6 +125,7 @@ public enum SkillType {
     武形秘仪("", 70, 0),
     我还会回来的("", 0),
     蛮荒我还会回来的("", 0),
+    花族秘术("", 65, 0, 210, 0),
 
     裂伤("30963", 0, SkillTag.抗免疫, SkillTag.抗不屈),
     全体裂伤("", 0, SkillTag.抗免疫, SkillTag.抗不屈),
@@ -237,6 +238,8 @@ public enum SkillType {
     召唤北海神兽("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
     召唤梦境女神("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
     酋长号令("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
+    召唤花族守卫("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
+    召唤花族侍卫("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
 
     圣光洗礼("", 0, 0, SkillTag.抗免疫, SkillTag.不可洗炼),
     森林沐浴("", 1, 0, SkillTag.抗免疫, SkillTag.不可洗炼),

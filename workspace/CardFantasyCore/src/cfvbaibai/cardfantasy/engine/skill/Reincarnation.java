@@ -25,6 +25,7 @@ public final class Reincarnation {
             return false;
         }
         int rate = cardSkill.getImpact();
+
         GameUI ui = resolver.getStage().getUI();
         boolean bingo = resolver.getStage().getRandomizer().roll100(rate);
         ui.useSkill(card, card, cardSkill, bingo);

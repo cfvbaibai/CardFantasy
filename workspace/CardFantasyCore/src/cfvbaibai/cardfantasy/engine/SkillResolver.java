@@ -256,6 +256,10 @@ public class SkillResolver {
                 Summon.apply(this, skillUseInfo, attacker, "梦境女神", "梦境女神");
             } else if (skillUseInfo.getType() == SkillType.酋长号令) {
                 Summon.apply(this, skillUseInfo, attacker, "战意斗神", "战意斗神");
+            } else if (skillUseInfo.getType() == SkillType.召唤花族守卫) {
+                Summon.apply(this, skillUseInfo, attacker, "黄金金属巨龙", "处女座");
+            } else if (skillUseInfo.getType() == SkillType.召唤花族侍卫) {
+                Summon.apply(this, skillUseInfo, attacker, "时光女神", "雷雕之魂");
             } else if (skillUseInfo.getType() == SkillType.魔力法阵) {
                 MagicMark.apply(this, skillUseInfo, attacker, defender, -1);
             } else if (skillUseInfo.getType() == SkillType.魔力印记) {
@@ -512,7 +516,8 @@ public class SkillResolver {
             } else {
                 for (SkillUseInfo blockSkillUseInfo : defender.getUsableNormalSkills()) {
                     if (blockSkillUseInfo.getType() == SkillType.法力反射 ||
-                        blockSkillUseInfo.getType() == SkillType.镜面装甲) {
+                        blockSkillUseInfo.getType() == SkillType.镜面装甲 ||
+                        blockSkillUseInfo.getType() == SkillType.花族秘术) {
                         if (CounterMagic.isSkillBlocked(this, blockSkillUseInfo.getSkill(), attackSkill,
                                 attacker, defender)) {
                             result.setAttackable(false);
@@ -746,7 +751,8 @@ public class SkillResolver {
             boolean reincarnated = false;
             for (SkillUseInfo deadCardSkillUseInfo : deadCard.getAllUsableSkills()) {
                 if (deadCardSkillUseInfo.getType() == SkillType.转生 ||
-                    deadCardSkillUseInfo.getType() == SkillType.武形秘仪) {
+                    deadCardSkillUseInfo.getType() == SkillType.武形秘仪 ||
+                    deadCardSkillUseInfo.getType() == SkillType.花族秘术) {
                     if (Reincarnation.apply(this, deadCardSkillUseInfo.getSkill(), deadCard, result.unbending)) {
                         reincarnated = true;
                         break;

@@ -1476,6 +1476,11 @@
         <Skill type="不动" level="0" unlock="5" />
         <Skill type="真理导言" level="0" unlock="10" />
     </Card>
+    <Card id="2542" name="花族公主" wikiId="" race="森林" speed="3" star="5" cost="16" incrCost="5" at="320" hp="1580" incrAT="45" incrHP="31">
+        <Skill type="召唤花族守卫" level="0" unlock="0" />
+        <Skill type="召唤花族侍卫" level="0" unlock="5" />
+        <Skill type="花族秘术" level="0" unlock="10" />
+    </Card>
 
     <!-- 蛮荒  -->
     <Card id="3101" name="穴居人奴隶" wikiId="31006" race="蛮荒" speed="2" star="1" cost="4" incrCost="2" at="90" hp="390" incrAT="18" incrHP="11">
