@@ -261,6 +261,8 @@ public class SkillResolver {
                 Summon.apply(this, skillUseInfo, attacker, "黄金金属巨龙", "处女座");
             } else if (skillUseInfo.getType() == SkillType.召唤花族侍卫) {
                 Summon.apply(this, skillUseInfo, attacker, "时光女神", "雷雕之魂");
+            } else if (skillUseInfo.getType() == SkillType.七十二变) {
+                Summon.apply(this, skillUseInfo, attacker, "齐天美猴王", "齐天美猴王");
             } else if (skillUseInfo.getType() == SkillType.魔力法阵) {
                 MagicMark.apply(this, skillUseInfo, attacker, defender, -1);
             } else if (skillUseInfo.getType() == SkillType.魔力印记) {
