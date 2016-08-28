@@ -2673,6 +2673,11 @@
         <Skill type="凋零真言" level="3" unlock="5" />
         <Skill type="转生" level="4" unlock="10" />
     </Card>
+    <Card id="4443" name="念力者" wikiId="" race="地狱" speed="2" star="4" cost="14" incrCost="2" at="210" hp="1310" incrAT="42" incrHP="47">
+        <Skill type="全体加速" level="1" unlock="0" />
+        <Skill type="反射装甲" level="0" unlock="5" />
+        <Skill type="法力反射" level="4" unlock="10" />
+    </Card>
 
     <Card id="4501" name="毁灭之龙" wikiId="31064" race="地狱" speed="6" star="5" cost="14" incrCost="2" at="350" hp="1270" incrAT="34" incrHP="34">
         <Skill type="暴击" level="6" unlock="0" />
