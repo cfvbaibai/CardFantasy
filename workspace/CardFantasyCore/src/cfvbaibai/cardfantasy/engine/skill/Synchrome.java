@@ -17,7 +17,7 @@ public class Synchrome {
         }
         Skill skill = skillUseInfo.getSkill();
         int adjAT = skill.getImpact() * fieldCard.getLevel0AT() / 100;
-        int adjHP = skill.getImpact() * fieldCard.getLevel0AT() / 100;
+        int adjHP = skill.getImpact() * fieldCard.getMaxHP() / 100;
         GameUI ui = resolver.getStage().getUI();
         if (summonedCard == fieldCard) {
             return;
