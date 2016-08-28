@@ -2952,6 +2952,11 @@
         <Skill type="免疫" level="0" unlock="5" />
         <Skill type="法力风暴" level="6" unlock="10" />
     </Card>
+    <Card id="4552" name="黑月魔女" wikiId="" race="地狱" speed="5" star="5" cost="18" incrCost="2" at="350" hp="1660" incrAT="44" incrHP="28">
+        <Skill type="神性祈求" level="0" unlock="0" precast="true" />
+        <Skill type="混乱领域" level="9" unlock="5" />
+        <Skill type="转生" level="8" unlock="10" />
+    </Card>
 
     <!-- 魔神 -->
     <Card id="5501" name="狙击复仇女神" wikiId="30871" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="1200" hp="10400000" incrAT="0" incrHP="0">

@@ -1756,6 +1756,8 @@ public class SkillResolver {
                 WitheringWord.apply(skillUseInfo, this, card, defenderHero);
             } else if (skillUseInfo.getType() == SkillType.灵王的轰击) {
                 ManaErode.apply(skillUseInfo.getSkill(), this, card, defenderHero, 1);
+            } else if (skillUseInfo.getType() == SkillType.神性祈求) {
+                Purify.apply(skillUseInfo, this, card, -1);
             }
         }
     }
