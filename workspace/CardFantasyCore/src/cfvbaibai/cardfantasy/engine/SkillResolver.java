@@ -266,7 +266,7 @@ public class SkillResolver {
                 Blind.apply(this, skillUseInfo, attacker, defender, -1);
             } else if (skillUseInfo.getType() == SkillType.动能追加) {
                 EnergyIncrement.apply(skillUseInfo, this, attacker);
-            } else if (skillUseInfo.getType() == SkillType.祈福) {
+            } else if (skillUseInfo.getType() == SkillType.祈福 || skillUseInfo.getType() == SkillType.真理导言) {
                 Bless.apply(skillUseInfo.getSkill(), this, attacker);
             } else if (skillUseInfo.getType() == SkillType.修罗地火攻) {
                 SuraFire.apply(this, skillUseInfo, attacker, defender);
@@ -1093,8 +1093,7 @@ public class SkillResolver {
         for (SkillUseInfo cardSkillUseInfo : card.getUsableNormalSkills()) {
             if (cardSkillUseInfo.getType() == SkillType.回春 ||
                 cardSkillUseInfo.getType() == SkillType.月恩术 ||
-                cardSkillUseInfo.getType() == SkillType.圣母回声 ||
-                cardSkillUseInfo.getType() == SkillType.真理导言) {
+                cardSkillUseInfo.getType() == SkillType.圣母回声) {
                 Rejuvenate.apply(cardSkillUseInfo.getSkill(), this, card);
             }
         }

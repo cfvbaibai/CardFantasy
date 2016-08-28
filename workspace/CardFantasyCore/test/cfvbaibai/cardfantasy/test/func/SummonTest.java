@@ -241,8 +241,8 @@ public class SummonTest extends SkillValidationTest {
     @Test
     public void test灵魂消散_魔王() {
         SkillTestContext context = prepare(50, 50, "秘银巨石像", "占位符+灵魂消散", "大毒汁怪");
-        CardInfo c秘银巨石像 = context.addToField(0, 0);
-        CardInfo c占位符 = context.addToField(1, 0);
+        context.addToField(0, 0);
+        context.addToField(1, 0);
         CardInfo c大毒汁怪 = context.addToField(2, 1).setBasicHP(2);
         context.startGame();
 

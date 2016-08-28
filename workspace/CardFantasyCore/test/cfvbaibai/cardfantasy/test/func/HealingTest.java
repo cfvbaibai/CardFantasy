@@ -187,17 +187,18 @@ public class HealingTest extends SkillValidationTest {
 
     @Test
     public void test真理导言_基础() {
-        SkillTestContext context = prepare(50, 50, "秘银巨石像+沉默", "占位符+真理导言");
+        SkillTestContext context = prepare(50, 50, "秘银巨石像+沉默*2", "占位符+真理导言");
         context.addToField(0, 0);
-        CardInfo c占位符 = context.addToField(1, 1);
+        context.addToField(1, 0);
+        CardInfo c占位符 = context.addToField(2, 1);
         context.startGame();
 
         context.proceedOneRound();
-        Assert.assertEquals(810, 5000 - c占位符.getHP());
+        Assert.assertEquals(810, 6390 - c占位符.getOwner().getHP());
         Assert.assertFalse(c占位符.getStatus().containsStatus(CardStatusType.沉默));
 
         context.proceedOneRound();
-        Assert.assertEquals(810 - 5000 * 6 / 100 /* 真理导言恢复 */, 5000 - c占位符.getHP());
+        Assert.assertEquals(810 - 6390 * 6 / 100 /* 真理导言恢复 */, 6390 - c占位符.getOwner().getHP());
         Assert.assertFalse(c占位符.getStatus().containsStatus(CardStatusType.沉默));
     }
 }
