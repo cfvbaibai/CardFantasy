@@ -75,7 +75,7 @@
         </table>
     </c:if>
     </c:forEach>
-    <%--
+    
     <c:forEach var="stageDetailInfo" items="${stageInfo.detailInfos}">
         <c:if test="${stageDetailInfo.type <= 2}">
             <c:forEach var="levelInfo" items="${stageDetailInfo.levelInfos}">
@@ -88,7 +88,7 @@
             </c:forEach>
         </c:if>
     </c:forEach>
-     --%>
+     
     </div>
     </div>
 </body>

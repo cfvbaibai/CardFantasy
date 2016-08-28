@@ -9,8 +9,22 @@
                             <td>地图</td>
                             <td>
                                 <select name="map-id" id="map-id" class="map-select" data-mini="true" data-native-menu="true">
+                                    <optgroup label="20-赤月之下">
+                                        <option value="20-1" selected="selected">20-1 静寂小镇</option>
+                                        <option value="20-2">20-2 城镇大桥</option>
+                                        <option value="20-3">20-3 阴森墓地</option>
+                                        <option value="20-4">20-4 赤月教会</option>
+                                        <option value="20-5">20-5 郊外小径</option>
+                                        <option value="20-6">20-6 黄昏之城</option>
+                                        <option value="20-7">20-7 迷雾森林</option>
+                                        <option value="20-8">20-8 风车塔</option>
+                                        <option value="20-9">20-9 古老学院</option>
+                                        <option value="20-10">20-10 湖边悬崖</option>
+                                        <option value="20-11">20-11 月见湖</option>
+                                        <option value="20-H">20-H 遗忘城堡</option>
+                                    </optgroup>
                                     <optgroup label="19-精灵世界">
-                                        <option value="19-1" selected="selected">19-1 水晶塔</option>
+                                        <option value="19-1">19-1 水晶塔</option>
                                         <option value="19-2">19-2 水晶之桥</option>
                                         <option value="19-3">19-3 冻骨峰</option>
                                         <option value="19-4">19-4 海之绝壁</option>
