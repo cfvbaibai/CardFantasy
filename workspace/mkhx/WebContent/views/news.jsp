@@ -36,6 +36,9 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2016-8-28: <ul>
+                        <li>修复同调技能的数值BUG, 感谢<x>office12345</x>的帮助</li>
+                    </ul></li>
                     <li>2016-8-5: <ul>
                         <li>添加新卡<cf:c>铁马弓箭手</cf:c>, 感谢<x>lwq2928</x>的帮助</li>
                         <li>添加新卡<cf:c>最后的牧羊人</cf:c>, 感谢<x>会飞的霍比特人</x>的帮助</li>
