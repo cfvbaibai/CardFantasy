@@ -1397,7 +1397,7 @@ var Animater = function() {
         } else if (skill == '吐槽') {
             this.flyImage({ fileName: 'tsukomi.png', width: 48, height: 48, text: skill },
                     attacker, defenders, settings.skillDuration);
-        } else if (skill == '沉默' || skill == '觉醒沉默' || skill == '全体沉默') {
+        } else if (skill == '沉默' || skill == '觉醒沉默' || skill == '全体沉默' || skill == '无限全体沉默') {
             this.flyImage({ fileName: 'silence.png', width: 48, height: 48, text: skill },
                     attacker, defenders, settings.skillDuration);
         } else if (skill == '燕返') {

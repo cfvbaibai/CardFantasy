@@ -36,6 +36,7 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2016-8-29: 修复20图里敌方射手座的全体沉默只施放一次的BUG, 感谢<x>咱家的小瓶子</x>的帮助</li>
                     <li>2016-8-28: <ul>
                         <li>添加20图到【地图战】</li>
                         <li>修复同调技能的数值BUG, 感谢<x>sens2017</x>的帮助</li>

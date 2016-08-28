@@ -99,9 +99,9 @@ public class SkillResolver {
                 Return.apply(this, skillUseInfo.getSkill(), attacker, defender);
             } else if (skillUseInfo.getType() == SkillType.沉默 ||
                     skillUseInfo.getType() == SkillType.觉醒沉默 && attacker.isAwaken(skillUseInfo, Race.KINGDOM)) {
-                Silence.apply(this, skillUseInfo, attacker, defender, false);
+                Silence.apply(this, skillUseInfo, attacker, defender, false, false);
             } else if (skillUseInfo.getType() == SkillType.全体沉默) {
-                Silence.apply(this, skillUseInfo, attacker, defender, true);
+                Silence.apply(this, skillUseInfo, attacker, defender, true, false);
             } else if (skillUseInfo.getType() == SkillType.死亡印记 || skillUseInfo.getType() == SkillType.武形印记) {
                 DeathMark.apply(this, skillUseInfo, attacker, defender);
             } else if (skillUseInfo.getType() == SkillType.关小黑屋) {
@@ -1302,11 +1302,13 @@ public class SkillResolver {
                 } else if (skillUseInfo.getType() == SkillType.全体加速){
                     AllSpeedUp.apply(skillUseInfo, this, card);
                 } else if (skillUseInfo.getType() == SkillType.沉默) {
-                    Silence.apply(this, skillUseInfo, card, enemy, false);
+                    Silence.apply(this, skillUseInfo, card, enemy, false, false);
                 } else if (skillUseInfo.getType() == SkillType.回魂) {
                     Resurrection.apply(this, skillUseInfo, card);
                 } else if (skillUseInfo.getType() == SkillType.全体沉默) {
-                    Silence.apply(this, skillUseInfo, card, enemy, true);
+                    Silence.apply(this, skillUseInfo, card, enemy, true, true);
+                } else if (skillUseInfo.getType() == SkillType.无限全体沉默) {
+                    Silence.apply(this, skillUseInfo, card, enemy, true, false);
                 }
             }
             else if (!skillUseInfo.getSkill().isDeathSkill()) {
@@ -1735,7 +1737,7 @@ public class SkillResolver {
             } else if (rune.is(RuneData.风暴)) {
                 ManaErode.apply(rune.getSkill(), this, rune, defenderHero, -1);
             } else if (rune.is(RuneData.封闭)) {
-                Silence.apply(this, rune.getSkillUseInfo(), rune, defenderHero, true);
+                Silence.apply(this, rune.getSkillUseInfo(), rune, defenderHero, true, false);
             }
         }
     }
