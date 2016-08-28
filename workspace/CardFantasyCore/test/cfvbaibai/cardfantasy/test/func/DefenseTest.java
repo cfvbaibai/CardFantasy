@@ -1054,4 +1054,26 @@ public class DefenseTest extends SkillValidationTest {
         context.proceedOneRound();
         Assert.assertEquals(500, 1650 - c预言之神.getHP());
     }
+
+    @Test
+    public void test魔龙之血_大于760攻击力() {
+        SkillTestContext context = prepare(50, 50, "秘银巨石像-15", "占位符+魔龙之血");
+        context.addToField(0, 0);
+        CardInfo c占位符 = context.addToField(1, 1);
+        context.startGame();
+
+        context.proceedOneRound();
+        Assert.assertEquals(110, 5000 - c占位符.getHP());
+    }
+
+    @Test
+    public void test魔龙之血_不足760攻击力() {
+        SkillTestContext context = prepare(50, 50, "秘银巨石像", "占位符+魔龙之血");
+        context.addToField(0, 0);
+        CardInfo c占位符 = context.addToField(1, 1);
+        context.startGame();
+
+        context.proceedOneRound();
+        Assert.assertEquals(10, 5000 - c占位符.getHP());
+    }
 }

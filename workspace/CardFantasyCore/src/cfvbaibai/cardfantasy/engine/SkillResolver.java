@@ -443,7 +443,7 @@ public class SkillResolver {
                 }
 
                 for (SkillUseInfo blockSkillUseInfo : defender.getUsableNormalSkills()) {
-                    if (blockSkillUseInfo.getType() == SkillType.冰甲) {
+                    if (blockSkillUseInfo.getType() == SkillType.冰甲 || blockSkillUseInfo.getType() == SkillType.魔龙之血) {
                         result.setDamage(IceArmor.apply(blockSkillUseInfo.getSkill(), this, cardAttacker, defender,
                                 result.getDamage()));
                     }
@@ -640,7 +640,7 @@ public class SkillResolver {
                         defender, defender, result.getDamage(), Race.FOREST));
             }
             if (includeBlocking) {
-                if (blockSkillUseInfo.getType() == SkillType.格挡) {
+                if (blockSkillUseInfo.getType() == SkillType.格挡 || blockSkillUseInfo.getType() == SkillType.魔龙之血) {
                     result.setDamage(Block.apply(blockSkillUseInfo.getSkill(), this, cardAttacker, defender,
                             defender, result.getDamage()));
                 }

@@ -2,6 +2,7 @@ package cfvbaibai.cardfantasy.engine.skill;
 
 import cfvbaibai.cardfantasy.GameUI;
 import cfvbaibai.cardfantasy.data.Skill;
+import cfvbaibai.cardfantasy.data.SkillType;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.SkillResolver;
 
@@ -14,6 +15,9 @@ public final class IceArmor {
         }
         
         int maxDamage = cardSkill.getImpact();
+        if (cardSkill.getType() == SkillType.魔龙之血) {
+            maxDamage = cardSkill.getImpact2();
+        }
         int actualDamage = originalDamage;
         if (actualDamage > maxDamage) {
             actualDamage = maxDamage;
