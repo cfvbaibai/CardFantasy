@@ -2967,6 +2967,11 @@
         <Skill type="混乱领域" level="9" unlock="5" />
         <Skill type="转生" level="8" unlock="10" />
     </Card>
+    <Card id="4553" name="远古元素巨龙" wikiId="" race="地狱" speed="4" star="5" cost="18" incrCost="3" at="400" hp="1650" incrAT="42" incrHP="30">
+        <Skill type="修罗地火攻" level="9" unlock="0" postcast="true" />
+        <Skill type="寒霜冲击" level="9" unlock="5" postcast="true" />
+        <Skill type="全体加速" level="1" unlock="10" precast="true" />
+    </Card>
 
     <!-- 魔神 -->
     <Card id="5501" name="狙击复仇女神" wikiId="30871" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="1200" hp="10400000" incrAT="0" incrHP="0">

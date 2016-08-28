@@ -1761,6 +1761,8 @@ public class SkillResolver {
                 ManaErode.apply(skillUseInfo.getSkill(), this, card, defenderHero, 1);
             } else if (skillUseInfo.getType() == SkillType.神性祈求) {
                 Purify.apply(skillUseInfo, this, card, -1);
+            } else if (skillUseInfo.getType() == SkillType.全体加速){
+                AllSpeedUp.apply(skillUseInfo, this, card);
             }
         }
     }
@@ -1769,6 +1771,10 @@ public class SkillResolver {
         for (SkillUseInfo skillUseInfo : card.getUsablePostcastSkills()) {
             if (skillUseInfo.getType() == SkillType.灵王的轰击) {
                 ManaErode.apply(skillUseInfo.getSkill(), this, card, defenderHero, 1);
+            } else if (skillUseInfo.getType() == SkillType.修罗地火攻) {
+                SuraFire.apply(this, skillUseInfo, card, defenderHero);
+            } else if (skillUseInfo.getType() == SkillType.寒霜冲击) {
+                IceMagic.apply(skillUseInfo, this, card, defenderHero, -1, 50, 45 * defenderHero.getField().getAliveCards().size());
             }
         }
     }
