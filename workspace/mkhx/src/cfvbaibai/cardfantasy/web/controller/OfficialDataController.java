@@ -257,6 +257,11 @@ public class OfficialDataController {
                 if (skills == null || skills.length == 0) {
                     continue;
                 }
+                if (skills.length > 0) {
+                    if (skills[0].getDescription().contains("卡牌上场后，召唤")) {
+                        subCategoryName = "召唤";
+                    }
+                }
                 OfficialSkillTypeInfo skillTypeInfo = new OfficialSkillTypeInfo(skillType, skills[0].getId()); 
                 if (skills[0].isMaterial()) {
                     materialSubCategory.addItem(skillTypeInfo);
