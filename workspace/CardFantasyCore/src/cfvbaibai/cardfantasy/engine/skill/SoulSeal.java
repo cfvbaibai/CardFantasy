@@ -12,7 +12,7 @@ public class SoulSeal {
         for (Player player : resolver.getStage().getPlayers()) {
             for (CardInfo card : player.getField().getAliveCards()) {
                 for (SkillUseInfo skillUseInfo : card.getAllUsableSkills()) {
-                    if (skillUseInfo.getType() == SkillType.灵魂禁锢) {
+                    if (skillUseInfo.getType() == SkillType.灵魂禁锢 || skillUseInfo.getType() == SkillType.灵魂禁封) {
                         resolver.getStage().getUI().useSkill(card, graveOperator, skillUseInfo.getSkill(), true);
                         return true;
                     }

@@ -143,7 +143,7 @@ public class SkillResolver {
                 Heal.apply(skillUseInfo.getSkill(), this, attacker);
             } else if (skillUseInfo.getType() == SkillType.甘霖) {
                 Rainfall.apply(skillUseInfo.getSkill(), this, attacker);
-            } else if (skillUseInfo.getType() == SkillType.月神的护佑) {
+            } else if (skillUseInfo.getType() == SkillType.月神的护佑 || skillUseInfo.getType() == SkillType.月之守护) {
                 LunaBless.apply(skillUseInfo.getSkill(), this, attacker);
             } else if (skillUseInfo.getType() == SkillType.月神的触碰) {
                 LunaTouch.apply(skillUseInfo.getSkill(), this, attacker);
@@ -555,12 +555,12 @@ public class SkillResolver {
                             result.setAttackable(false);
                             return result;
                         }
-                    } else if (blockSkillUseInfo.getType() == SkillType.脱困) {
+                    } else if (blockSkillUseInfo.getType() == SkillType.脱困 || blockSkillUseInfo.getType() == SkillType.神威) {
                         if (Escape.isSkillEscaped(this, blockSkillUseInfo.getSkill(), attackSkill, attacker, defender)) {
                             result.setAttackable(false);
                             return result;
                         }
-                    } else if (blockSkillUseInfo.getType() == SkillType.不动) {
+                    } else if (blockSkillUseInfo.getType().containsTag(SkillTag.不动)) {
                         if (Immobility.isSkillBlocked(this, blockSkillUseInfo.getSkill(), attackSkill, attacker, defender)) {
                             result.setAttackable(false);
                             return result;
@@ -760,7 +760,8 @@ public class SkillResolver {
             for (SkillUseInfo deadCardSkillUseInfo : deadCard.getAllUsableSkills()) {
                 if (deadCardSkillUseInfo.getType() == SkillType.转生 ||
                     deadCardSkillUseInfo.getType() == SkillType.武形秘仪 ||
-                    deadCardSkillUseInfo.getType() == SkillType.花族秘术) {
+                    deadCardSkillUseInfo.getType() == SkillType.花族秘术 ||
+                    deadCardSkillUseInfo.getType() == SkillType.洪荒之术) {
                     if (Reincarnation.apply(this, deadCardSkillUseInfo.getSkill(), deadCard, result.unbending)) {
                         reincarnated = true;
                         break;
@@ -1269,7 +1270,7 @@ public class SkillResolver {
                     Heal.apply(skillUseInfo.getSkill(), this, card);
                 } else if (skillUseInfo.getType() == SkillType.甘霖) {
                     Rainfall.apply(skillUseInfo.getSkill(), this, card);
-                } else if (skillUseInfo.getType() == SkillType.月神的护佑) {
+                } else if (skillUseInfo.getType() == SkillType.月神的护佑 || skillUseInfo.getType() == SkillType.月之守护) {
                     LunaBless.apply(skillUseInfo.getSkill(), this, card);
                 } else if (skillUseInfo.getType() == SkillType.月神的触碰) {
                     LunaTouch.apply(skillUseInfo.getSkill(), this, card);
@@ -1428,7 +1429,7 @@ public class SkillResolver {
             }
         }
         for (SkillUseInfo blockSkillUseInfo : victim.getUsableNormalSkills()) {
-            if (blockSkillUseInfo.getType() == SkillType.脱困) {
+            if (blockSkillUseInfo.getType() == SkillType.脱困 || blockSkillUseInfo.getType() == SkillType.神威) {
                 if (Escape.isStatusEscaped(blockSkillUseInfo.getSkill(), this, item, victim)) {
                     return new BlockStatusResult(true);
                 }

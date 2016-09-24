@@ -1354,8 +1354,8 @@ var Animater = function() {
     ];
     this.selfUsedSkills = [
         '不动', '脱困', '群体脱困', '法力反射', '花族秘术', '冰甲', '水流护甲', '闪避', '守护', '魔神之甲', '灵巧', '灵魂禁锢',
-        '王国之盾', '森林之盾', '蛮荒之盾', '地狱之盾', '弱点攻击', '无效', '圣盾', '不屈', '圣炎', '斩杀', '逃跑',
-        '镜面装甲', '阿拉希血统'
+        '王国之盾', '森林之盾', '蛮荒之盾', '地狱之盾', '弱点攻击', '无效', '圣盾', '不屈', '圣炎', '斩杀', '逃跑', '灵魂禁封',
+        '镜面装甲', '阿拉希血统', '神威', '月之守护', '洪荒之术'
     ];
     this.__useSkill = function(data) {
         var attacker = data[0]; // EntityRuntimeInfo
@@ -1366,7 +1366,7 @@ var Animater = function() {
         }
         if (skill.indexOf('军团') == 0 ||
             skill.indexOf('原始') == 0 ||
-            skill.indexOf('守护') == skill.length - 2 && skill != '骑士守护' ||
+            skill.indexOf('守护') == skill.length - 2 && skill != '骑士守护' && skill != '月之守护' ||
             skill.indexOf('之力') == skill.length - 2 ||
             this.msgIgnoredSkills.indexOf(skill) >= 0) {
             return;
@@ -1469,7 +1469,7 @@ var Animater = function() {
             this.flyImage({ fileName: 'change.png', width: 48, height: 48, text: skill },
                     attacker, defenders, settings.skillDuration);
         } else if (skill == '治疗' || skill == '甘霖' || skill == '回春' || skill == '治疗之雾' ||
-                   skill == '月神的护佑' || skill == '月神的触碰' || skill == '月恩术') {
+                   skill == '月神的护佑' || skill == '月神的触碰' || skill == '月恩术' || skill == '月之守护') {
             this.flyImage({ fileName: 'heal.png', width: 24, height: 24, text: skill },
                     attacker, defenders, settings.skillDuration);
         } else if (skill == '冰弹' || skill == '霜冻新星' || skill == '暴风雪' || skill == '寒霜冲击') {

@@ -2,6 +2,7 @@ package cfvbaibai.cardfantasy.engine.skill;
 
 import cfvbaibai.cardfantasy.GameUI;
 import cfvbaibai.cardfantasy.data.Skill;
+import cfvbaibai.cardfantasy.data.SkillTag;
 import cfvbaibai.cardfantasy.data.SkillType;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.HeroDieSignal;
@@ -21,7 +22,7 @@ public class ReflectionArmor {
         ui.useSkill(defender, attacker, cardSkill, true);
         boolean skillBlocked = false;
         for (SkillUseInfo attackerSkillUseInfo : attacker.getAllUsableSkillsIgnoreSilence()) {
-            if (attackerSkillUseInfo.getType() == SkillType.不动) {
+            if (attackerSkillUseInfo.getType().containsTag(SkillTag.不动)) {
                 skillBlocked = Immobility.isSkillBlocked(resolver, attackerSkillUseInfo.getSkill(), cardSkill, defender, attacker);
             } else if (attackerSkillUseInfo.getType() == SkillType.无效) {
                 skillBlocked = NoEffect.isSkillBlocked(resolver, attackerSkillUseInfo.getSkill(), cardSkill, defender, attacker);
