@@ -677,4 +677,31 @@ public class AttackBuffTest extends SkillValidationTest {
         Assert.assertEquals(300, 5000 - c占位符2.getHP());
         Assert.assertEquals(0, c占位符1.getCurrentAT());
     }
+
+    @Test
+    public void test鬼王之怒_基础() {
+        SkillTestContext context = prepare(50, 50, "魔剑士+鬼王之怒", "秘银巨石像-15");
+        CardInfo c魔剑士 = context.addToField(0, 0).setBasicHP(2);
+        CardInfo c秘银巨石像 = context.addToField(1, 1);
+        context.startGame();
+
+        context.proceedOneRound();
+        
+        Assert.assertEquals(275 * 235 / 100, 1550 - c秘银巨石像.getHP());
+        Assert.assertFalse(c魔剑士.isDead());
+        Assert.assertFalse(c魔剑士.getStatus().containsStatus(CardStatusType.不屈));
+
+        context.proceedOneRound();
+        Assert.assertEquals(1, c魔剑士.getHP());
+        Assert.assertTrue(c魔剑士.getStatus().containsStatus(CardStatusType.不屈));
+
+        context.proceedOneRound();
+        Assert.assertEquals(275 * 235 * 2 / 100, 1550 - c秘银巨石像.getHP());
+        Assert.assertFalse(c魔剑士.isDead());
+        Assert.assertFalse(c魔剑士.getStatus().containsStatus(CardStatusType.不屈));
+
+        context.proceedOneRound();
+        Assert.assertTrue(c魔剑士.isDead());
+        Assert.assertFalse(c魔剑士.getStatus().containsStatus(CardStatusType.不屈));
+    }
 }
