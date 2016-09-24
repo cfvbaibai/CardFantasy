@@ -16,7 +16,10 @@ import cfvbaibai.cardfantasy.engine.Player;
 public final class Snipe {
     public static void apply(Skill cardSkill, SkillResolver resolver, EntityInfo attacker, Player defenderPlayer,
             int targetCount) throws HeroDieSignal {
-        int damage = cardSkill.getImpact();
+        int damage = cardSkill.getImpact3();
+        if (damage == 0) {
+            
+        }
         if (cardSkill.getType() == SkillType.神箭三重奏) {//Tripling Snipe needs custom damage setting
             HashMap<Integer, Integer> hLevelToDamage = new HashMap<Integer, Integer>();
             hLevelToDamage.put(1, 250);

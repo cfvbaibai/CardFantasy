@@ -88,7 +88,11 @@ public enum SkillType {
     修罗地火攻("", 100, 10, 10, 10, SkillTag.魔法),
     天怒("", 0, 25, SkillType.天火, SkillTag.魔法),
 
-    狙击("30962", 25, SkillTag.抗免疫, SkillTag.狙击),
+    狙击("", 0, 0, new int[] { 0, 25, 50, 75, 100, 125, 150, 175, 200, 225, 250 }, SkillTag.抗免疫, SkillTag.狙击),
+    武形秘箭("", 0, 0, new int[] { 220, 250, 270, 300, 320, 350, 370, 400, 420, 450, 500 }, SkillTag.抗免疫, SkillTag.狙击),
+    二重狙击("", 0, 0, new int[] { 0, 25, 50, 75, 100, 125, 150, 175, 200, 225, 250 }, SkillTag.抗免疫, SkillTag.狙击),
+    神箭三重奏("", 0, 0, new int[] { 220, 250, 270, 300, 320, 350, 370, 400, 420, 450, 500 }, SkillTag.抗免疫, SkillTag.狙击),
+    武形神箭("", 0, 0, new int[] { 220, 250, 270, 300, 320, 350, 370, 400, 420, 450, 500 }, SkillTag.抗免疫, SkillTag.狙击),
     穿刺("30960", 15, SkillTag.抗免疫),
     精准打击("", 100, 10, SkillTag.抗免疫),
     格挡("30955", 20),
@@ -155,8 +159,6 @@ public enum SkillType {
 
     回魂("31131", 1),
     上层精灵的挽歌("", 2, 0),
-    二重狙击("31130", 25, SkillTag.抗免疫, SkillTag.狙击),
-    神箭三重奏("",0,SkillTag.抗免疫, SkillTag.狙击),
     迷魂("31129", 30, 5, SkillTag.控制),
     混乱领域("", 30, 5, SkillTag.控制),
     精神狂乱("", 0),
@@ -264,7 +266,7 @@ public enum SkillType {
     原始攻击调整("", 0, 1, SkillTag.永久, SkillTag.原始攻击加成, SkillTag.不可洗炼),
     原始体力调整("", 0, 1, SkillTag.永久, SkillTag.原始体力加成, SkillTag.不可洗炼),
 
-    魔神之刃("", 0, 1000, SkillTag.抗免疫, SkillTag.不可洗炼, SkillTag.狙击),
+    魔神之刃("", 0, 0, new int[] { 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000 }, SkillTag.抗免疫, SkillTag.不可洗炼, SkillTag.狙击),
     魔神之甲("", 0, 500, SkillTag.抗免疫, SkillTag.不可洗炼, SkillTag.反击),
     魔神之咒("", 0, 1000, SkillTag.抗免疫, SkillTag.不可洗炼),
     // 用于处理各技能中"对魔神无效"的描述

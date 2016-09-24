@@ -18,7 +18,7 @@ public class DelayTest extends SkillValidationTest {
         context.startGame();
         
         context.proceedOneRound();
-        Assert.assertEquals(6, c金属巨龙.getSummonDelay());
+        Assert.assertEquals(4, c金属巨龙.getSummonDelay());
     }
 
     @Test

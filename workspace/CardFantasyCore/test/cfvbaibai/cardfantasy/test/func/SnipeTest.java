@@ -49,4 +49,38 @@ public class SnipeTest extends SkillValidationTest {
         Assert.assertEquals(810, 5000 - c占位符.getHP());
         Assert.assertEquals(810 * 170 / 100, 6390 - c占位符.getOwner().getHP());
     }
+
+    @Test
+    public void test武形秘箭_基础() {
+        SkillTestContext context = prepare(50, 50, "占位符+武形秘箭5", "占位符", "占位符+免疫", "占位符+法力反射10", "占位符+冰甲10");
+        context.addToField(0, 0);
+        CardInfo c占位符2 = context.addToField(1, 1);
+        CardInfo c占位符3 = context.addToField(2, 1);
+        CardInfo c占位符4 = context.addToField(3, 1);
+        CardInfo c占位符5 = context.addToField(4, 1);
+        context.startGame();
+
+        context.proceedOneRound();
+        Assert.assertEquals(350, 5000 - c占位符2.getHP());
+        Assert.assertEquals(350, 5000 - c占位符3.getHP());
+        Assert.assertEquals(350, 5000 - c占位符4.getHP());
+        Assert.assertEquals(350, 5000 - c占位符5.getHP());
+    }
+
+    @Test
+    public void test武形神箭_基础() {
+        SkillTestContext context = prepare(50, 50, "占位符+武形神箭5", "占位符", "占位符+免疫", "占位符+法力反射10", "占位符+冰甲10");
+        context.addToField(0, 0);
+        CardInfo c占位符2 = context.addToField(1, 1).setBasicHP(4000);
+        CardInfo c占位符3 = context.addToField(2, 1).setBasicHP(4000);
+        CardInfo c占位符4 = context.addToField(3, 1);
+        CardInfo c占位符5 = context.addToField(4, 1).setBasicHP(4000);
+        context.startGame();
+
+        context.proceedOneRound();
+        Assert.assertEquals(350 * 2, 4000 - c占位符2.getHP());
+        Assert.assertEquals(350 * 2, 4000 - c占位符3.getHP());
+        Assert.assertEquals(350, 5000 - c占位符4.getHP());
+        Assert.assertEquals(350 * 2, 4000 - c占位符5.getHP());
+    }
 }

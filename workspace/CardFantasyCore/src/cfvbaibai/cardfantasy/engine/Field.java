@@ -74,12 +74,15 @@ public class Field extends CardPile {
 
     public List<CardInfo> getCardsWithLowestHP(int targetCount) {
         List<CardInfo> candidates = new ArrayList<CardInfo>();
+        if (targetCount == 0) {
+            return candidates;
+        }
         for (CardInfo aliveCard : this.getAliveCards()) {
             if (!aliveCard.getStatus().containsStatus(CardStatusType.不屈)) {
                 candidates.add(aliveCard);
             }
         }
-        if (candidates.size() <= targetCount) {
+        if (candidates.size() <= targetCount || targetCount < 0) {
             return candidates;
         }
         Collections.sort(candidates, new HPCardComparator());
