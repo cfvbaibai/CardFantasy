@@ -2202,6 +2202,11 @@
         <Skill type="武形天火击" level="0" unlock="5" />
         <Skill type="武形秘仪" level="0" unlock="10" />
     </Card>
+    <Card id="353801" name="网页版武形火焰尊者" wikiId="" race="蛮荒" speed="2" star="5" cost="18" incrCost="2" at="360" hp="1790" incrAT="43" incrHP="44">
+        <Skill type="天火" level="8" unlock="0" />
+        <Skill type="武形天火击" level="0" unlock="5" />
+        <Skill type="闪避" level="8" unlock="10" />
+    </Card>
     <Card id="3539" name="凛冬邪歌" wikiId="" race="蛮荒" speed="5" star="5" cost="20" incrCost="2" at="615" hp="1400" incrAT="32" incrHP="26">
         <Skill type="星云锁链" level="0" unlock="0" />
         <Skill type="战意" level="9" unlock="5" />
