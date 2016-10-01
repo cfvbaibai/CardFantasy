@@ -2087,7 +2087,6 @@
         <Skill type="火球" level="1" unlock="0" />
         <Skill type="召唤炎魔" level="0" unlock="5" death="true" />
         <Skill type="不动" level="0" unlock="10" />
-        <Skill type="无效" level="0" unlock="0" />
     </Card>
     <Card id="351801" name="蛮荒大毒汁怪" wikiId="" race="蛮荒" speed="4" star="5" cost="99" incrCost="0" at="1" hp="1" incrAT="0" incrHP="0">
         <Skill type="火球" level="1" unlock="0" />
@@ -2121,7 +2120,6 @@
         <Skill type="弱点攻击" level="0" unlock="5" />
         <Skill type="免疫" level="0" unlock="5" />
         <Skill type="穿刺" level="10" unlock="5" />
-        <Skill type="无效" level="0" unlock="0" />
     </Card>
     <Card id="352401" name="蛮荒大毒汁之王" wikiId="" race="蛮荒" speed="2" star="5" cost="99" incrCost="0" at="1200" hp="2400" incrAT="0" incrHP="0">
         <Skill type="蛮荒我还会回来的" level="0" unlock="10" />
@@ -2134,7 +2132,6 @@
         <Skill type="弱点攻击" level="0" unlock="5" />
         <Skill type="免疫" level="0" unlock="10" />
         <Skill type="穿刺" level="10" unlock="10" />
-        <Skill type="无效" level="0" unlock="0" />
     </Card>
     <Card id="352501" name="蛮荒大毒汁之王本体" wikiId="" race="蛮荒" speed="2" star="5" cost="99" incrCost="0" at="1200" hp="2400" incrAT="0" incrHP="0">
         <Skill type="弱点攻击" level="0" unlock="5" />
@@ -3010,21 +3007,18 @@
         <Skill type="魔神之刃" level="2" unlock="10" />
         <Skill type="二重狙击" level="10" unlock="10" />
         <Skill type="免疫" level="0" unlock="10" />
-        <Skill type="无效" level="0" unlock="10" />
     </Card>
     <Card id="5521" name="送还复仇女神" wikiId="" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="1200" hp="6500000" incrAT="0" incrHP="0">
         <Skill type="送还" level="0" unlock="0" />
         <Skill type="魔神之刃" level="2" unlock="5" />
         <Skill type="反击" level="10" unlock="10" />
         <Skill type="免疫" level="0" unlock="10" />
-        <Skill type="无效" level="0" unlock="10" />
     </Card>
     <Card id="5531" name="连锁复仇女神" wikiId="" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="1200" hp="4680000" incrAT="0" incrHP="0">
         <Skill type="连锁攻击" level="10" unlock="0" />
         <Skill type="魔神之刃" level="2" unlock="5" />
         <Skill type="反击" level="10" unlock="10" />
         <Skill type="免疫" level="0" unlock="10" />
-        <Skill type="无效" level="0" unlock="10" />
     </Card>
     <Card id="5541" name="强魔刃复仇女神" wikiId="30871" race="魔神" speed="4" star="5" cost="79" incrCost="0" at="1200" hp="10400000" incrAT="0" incrHP="0">
         <Skill type="召唤复仇护卫" level="0" unlock="0" />
@@ -3032,14 +3026,12 @@
         <Skill type="魔神之刃" level="3" unlock="10" />
         <Skill type="二重狙击" level="10" unlock="10" />
         <Skill type="免疫" level="0" unlock="10" />
-        <Skill type="无效" level="0" unlock="10" />
     </Card>
     <Card id="5561" name="网页版复仇女神" wikiId="30871" race="魔神" speed="4" star="5" cost="79" incrCost="0" at="1200" hp="4680000" incrAT="0" incrHP="0">
         <Skill type="连锁攻击" level="10" unlock="0" />
         <Skill type="魔神之刃" level="2" unlock="5" />
         <Skill type="反击" level="10" unlock="10" />
         <Skill type="免疫" level="0" unlock="10" />
-        <Skill type="无效" level="0" unlock="10" />
     </Card>
 
     <Card id="5502" name="迷魂邪龙之神" wikiId="30871" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="1800" hp="8000000" incrAT="0" incrHP="0">
@@ -3048,14 +3040,12 @@
         <Skill type="魔神之咒" level="1" unlock="10" />
         <Skill type="天谴" level="10" unlock="10" />
         <Skill type="免疫" level="0" unlock="10" />
-        <Skill type="无效" level="0" unlock="10" />
     </Card>
     <Card id="5522" name="盾刺邪龙之神" wikiId="" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="1800" hp="7500000" incrAT="0" incrHP="0">
         <Skill type="盾刺" level="10" unlock="0" />
         <Skill type="魔神之咒" level="1" unlock="5" />
         <Skill type="裂伤" level="0" unlock="10" />
         <Skill type="免疫" level="0" unlock="10" />
-        <Skill type="无效" level="0" unlock="10" />
     </Card>
     <Card id="5532" name="强魔咒邪龙之神" wikiId="30871" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="1800" hp="8000000" incrAT="0" incrHP="0">
         <Skill type="召唤邪龙护卫" level="0" unlock="0" />
@@ -3063,14 +3053,12 @@
         <Skill type="魔神之咒" level="4" unlock="10" />
         <Skill type="天谴" level="10" unlock="10" />
         <Skill type="免疫" level="0" unlock="10" />
-        <Skill type="无效" level="0" unlock="10" />
     </Card>
     <Card id="5562" name="网页版邪龙之神" wikiId="30871" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="1800" hp="3600000" incrAT="0" incrHP="0">
         <Skill type="盾刺" level="10" unlock="0" />
         <Skill type="魔神之咒" level="1" unlock="10" />
         <Skill type="天谴" level="10" unlock="10" />
         <Skill type="免疫" level="0" unlock="10" />
-        <Skill type="无效" level="0" unlock="10" />
     </Card>
 
     <Card id="5503" name="振奋噩梦之主" wikiId="30871" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="900" hp="8800000" incrAT="0" incrHP="0">
@@ -3079,14 +3067,12 @@
         <Skill type="魔神之甲" level="3" unlock="5" />
         <Skill type="法力侵蚀" level="10" unlock="10" />
         <Skill type="免疫" level="0" unlock="10" />
-        <Skill type="无效" level="0" unlock="10" />
     </Card>
     <Card id="5523" name="格挡噩梦之主" wikiId="" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="1000" hp="5500000" incrAT="0" incrHP="0">
         <Skill type="格挡" level="10" unlock="0" />
         <Skill type="魔神之甲" level="3" unlock="5" />
         <Skill type="送还" level="0" unlock="10" />
         <Skill type="免疫" level="0" unlock="10" />
-        <Skill type="无效" level="0" unlock="10" />
     </Card>
     <Card id="5533" name="强魔甲噩梦之主" wikiId="30871" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="900" hp="8800000" incrAT="0" incrHP="0">
         <Skill type="召唤噩梦护卫" level="0" unlock="0" />
@@ -3094,14 +3080,12 @@
         <Skill type="魔神之甲" level="6" unlock="5" />
         <Skill type="法力侵蚀" level="10" unlock="10" />
         <Skill type="免疫" level="0" unlock="10" />
-        <Skill type="无效" level="0" unlock="10" />
     </Card>
     <Card id="5563" name="网页版噩梦之主" wikiId="30871" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="900" hp="3960000" incrAT="0" incrHP="0">
         <Skill type="格挡" level="10" unlock="0" />
         <Skill type="魔神之甲" level="3" unlock="5" />
         <Skill type="法力侵蚀" level="10" unlock="10" />
         <Skill type="免疫" level="0" unlock="10" />
-        <Skill type="无效" level="0" unlock="10" />
     </Card>
 
     <Card id="5504" name="邪吸毁灭之神" wikiId="30871" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="1200" hp="11200000" incrAT="0" incrHP="0">
@@ -3110,14 +3094,12 @@
         <Skill type="魔神之咒" level="1" unlock="10" />
         <Skill type="送还" level="0" unlock="10" />
         <Skill type="免疫" level="0" unlock="10" />
-        <Skill type="无效" level="0" unlock="10" />
     </Card>
     <Card id="5524" name="焚神毁灭之神" wikiId="" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="1200" hp="7000000" incrAT="0" incrHP="0">
         <Skill type="烈火焚神" level="10" unlock="0" />
         <Skill type="魔神之咒" level="1" unlock="5" />
         <Skill type="摧毁" level="0" unlock="10" />
         <Skill type="免疫" level="0" unlock="10" />
-        <Skill type="无效" level="0" unlock="10" />
     </Card>
     <Card id="5534" name="强魔咒毁灭之神" wikiId="30871" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="1200" hp="11200000" incrAT="0" incrHP="0">
         <Skill type="邪灵汲取" level="8" unlock="0" />
@@ -3125,14 +3107,12 @@
         <Skill type="魔神之咒" level="4" unlock="10" />
         <Skill type="送还" level="0" unlock="10" />
         <Skill type="免疫" level="0" unlock="10" />
-        <Skill type="无效" level="0" unlock="10" />
     </Card>
     <Card id="5564" name="网页版毁灭之神" wikiId="30871" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="1200" hp="5040000" incrAT="0" incrHP="0">
         <Skill type="邪灵汲取" level="10" unlock="0" />
         <Skill type="魔神之咒" level="1" unlock="5" />
         <Skill type="摧毁" level="0" unlock="10" />
         <Skill type="免疫" level="0" unlock="10" />
-        <Skill type="无效" level="0" unlock="10" />
     </Card>
 
     <Card id="5505" name="弱点深渊影魔" wikiId="30871" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="1500" hp="9600000" incrAT="0" incrHP="0">
@@ -3141,14 +3121,12 @@
         <Skill type="魔神之甲" level="3" unlock="10" />
         <Skill type="毒云" level="10" unlock="10" />
         <Skill type="免疫" level="0" unlock="10" />
-        <Skill type="无效" level="0" unlock="10" />
     </Card>
     <Card id="5525" name="诅咒深渊影魔" wikiId="" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="1500" hp="6000000" incrAT="0" incrHP="0">
         <Skill type="诅咒" level="10" unlock="0" />
         <Skill type="魔神之甲" level="3" unlock="5" />
         <Skill type="毒云" level="10" unlock="10" />
         <Skill type="免疫" level="0" unlock="10" />
-        <Skill type="无效" level="0" unlock="10" />
     </Card>
     <Card id="5535" name="强魔甲深渊影魔" wikiId="30871" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="1500" hp="9600000" incrAT="0" incrHP="0">
         <Skill type="弱点攻击" level="0" unlock="0" />
@@ -3156,14 +3134,12 @@
         <Skill type="魔神之甲" level="6" unlock="10" />
         <Skill type="毒云" level="10" unlock="10" />
         <Skill type="免疫" level="0" unlock="10" />
-        <Skill type="无效" level="0" unlock="10" />
     </Card>
     <Card id="5565" name="网页版深渊影魔" wikiId="30871" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="1500" hp="4320000" incrAT="0" incrHP="0">
         <Skill type="弱点攻击" level="0" unlock="0" />
         <Skill type="魔神之甲" level="3" unlock="5" />
         <Skill type="毒云" level="10" unlock="10" />
         <Skill type="免疫" level="0" unlock="10" />
-        <Skill type="无效" level="0" unlock="10" />
     </Card>
 
     <Card id="5506" name="回魂万蛛之后" wikiId="30871" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="1500" hp="9600000" incrAT="0" incrHP="0">
@@ -3172,14 +3148,12 @@
         <Skill type="魔神之刃" level="2" unlock="10" />
         <Skill type="陷阱" level="5" unlock="10" />
         <Skill type="免疫" level="0" unlock="10" />
-        <Skill type="无效" level="0" unlock="10" />
     </Card>
     <Card id="5526" name="无回魂万蛛之后" wikiId="" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="1500" hp="6000000" incrAT="0" incrHP="0">
         <Skill type="毒云" level="10" unlock="0" />
         <Skill type="魔神之刃" level="2" unlock="5" />
         <Skill type="陷阱" level="5" unlock="10" />
         <Skill type="免疫" level="0" unlock="10" />
-        <Skill type="无效" level="0" unlock="10" />
     </Card>
     <Card id="5536" name="强魔刃万蛛之后" wikiId="30871" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="1500" hp="9600000" incrAT="0" incrHP="0">
         <Skill type="毒云" level="8" unlock="0" />
@@ -3187,45 +3161,38 @@
         <Skill type="魔神之刃" level="3" unlock="10" />
         <Skill type="陷阱" level="5" unlock="10" />
         <Skill type="免疫" level="0" unlock="10" />
-        <Skill type="无效" level="0" unlock="10" />
     </Card>
     <Card id="5566" name="网页版万蛛之后" wikiId="30871" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="1500" hp="4320000" incrAT="0" incrHP="0">
         <Skill type="毒云" level="10" unlock="0" />
         <Skill type="魔神之刃" level="2" unlock="5" />
         <Skill type="陷阱" level="5" unlock="10" />
         <Skill type="免疫" level="0" unlock="10" />
-        <Skill type="无效" level="0" unlock="10" />
     </Card>
 
     <Card id="5510" name="简单莉莉丝" wikiId="" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="1000" hp="0" incrAT="0" incrHP="0">
         <Skill type="不动" level="0" unlock="0" />
         <Skill type="二重狙击" level="10" unlock="5" />
         <Skill type="嗜血" level="8" unlock="10" />
-        <Skill type="无效" level="0" unlock="10" />
     </Card>
     <Card id="5511" name="普通莉莉丝" wikiId="" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="1000" hp="0" incrAT="0" incrHP="0">
         <Skill type="不动" level="0" unlock="0" />
         <Skill type="圣炎" level="0" unlock="5" />
         <Skill type="嗜血" level="8" unlock="10" />
-        <Skill type="无效" level="0" unlock="10" />
     </Card>
     <Card id="5512" name="困难莉莉丝" wikiId="" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="1000" hp="90000" incrAT="0" incrHP="0">
         <Skill type="免疫" level="10" unlock="0" />
         <Skill type="二重狙击" level="10" unlock="5" />
         <Skill type="嗜血" level="8" unlock="10" />
-        <Skill type="无效" level="0" unlock="10" />
     </Card>
     <Card id="5513" name="噩梦莉莉丝" wikiId="" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="1500" hp="160000" incrAT="0" incrHP="0">
         <Skill type="免疫" level="0" unlock="0" />
         <Skill type="圣炎" level="0" unlock="5" />
         <Skill type="弱点攻击" level="0" unlock="10" />
-        <Skill type="无效" level="0" unlock="10" />
     </Card> 
     <Card id="5514" name="炼狱莉莉丝" wikiId="" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="2000" hp="250000" incrAT="0" incrHP="0">
         <Skill type="免疫" level="0" unlock="0" />
         <Skill type="圣炎" level="0" unlock="5" />
         <Skill type="弱点攻击" level="0" unlock="10" />
-        <Skill type="无效" level="0" unlock="10" />
     </Card>
     <Card id="5515" name="炎魔" wikiId="" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="1000" hp="10000" incrAT="0" incrHP="0">、
         <Skill type="免疫" level="0" unlock="0" />
@@ -3233,21 +3200,18 @@
         <Skill type="烈火焚神" level="10" unlock="10" />
         <Skill type="本源守护" level="10" unlock="10" />
         <Skill type="大地之盾" level="0" unlock="10" />
-        <Skill type="无效" level="0" unlock="0" />
     </Card>
     <Card id="5516" name="谎言之神" wikiId="" race="魔神" speed="6" star="5" cost="99" incrCost="-77" at="100" hp="10000" incrAT="0" incrHP="0">
         <Skill type="复活" level="0" unlock="0" />
         <Skill type="免疫" level="0" unlock="5" />
         <Skill type="冰甲" level="10" unlock="10" />
         <Skill type="回魂" level="5" unlock="10" />
-        <Skill type="无效" level="0" unlock="10" />
     </Card>
     <Card id="5517" name="真预言之神" wikiId="" race="魔神" speed="0" star="5" cost="99" incrCost="0" at="1000" hp="10000" incrAT="0" incrHP="0">
         <Skill type="沉默" level="0" unlock="0" />
         <Skill type="回魂" level="5" unlock="5" />
         <Skill type="免疫" level="0" unlock="10" />
         <Skill type="末世术" level="10" unlock="10" />
-        <Skill type="无效" level="0" unlock="10" />
     </Card>
 
     <!-- 魔神 -->
@@ -3284,7 +3248,6 @@
     </Card>
     -->
     <Card id="5599" name="占位魔神" wikiId="" race="魔神" speed="2" star="5" cost="0" incrCost="0" at="1" hp="5000" incrAT="0" incrHP="0">
-        <Skill type="无效" level="0" unlock="0" />
     </Card>
 
     <Card id="7501" name="熊老师" wikiId="" race="萌货" speed="4" star="5" cost="0" incrCost="0" at="400" hp="1500" incrAT="40" incrHP="50">

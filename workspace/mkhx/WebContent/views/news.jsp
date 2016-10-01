@@ -36,6 +36,9 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2016-10-1: <ul>
+                        <li>修复【沉默】和魔神魔王作用时的几个BUG, 感谢<x>欺一世时光_</x>的帮助</li>
+                    </ul></li>
                     <li>2016-9-24: <ul>
                         <li>添加新卡<cf:c>水晶巨龙</cf:c>, 感谢<x>会飞的霍比特人</x>的帮助, 感谢<x>砍掉重练</x>大神的代码</li>
                         <li>添加新卡<cf:c>大江三鬼·红</cf:c>, 感谢<x>会飞的霍比特人</x>的帮助</li>
@@ -43,6 +46,7 @@
                         <li>添加新卡<cf:c>地魔龙</cf:c></li>
                         <li>添加新卡<cf:c>精灵游骑兵</cf:c></li>
                         <li>添加新卡<cf:c>山地兽</cf:c></li>
+                        <li>添加【月之守护】等一系列新技能</li>
                     </ul></li>
                     <li>2016-9-14: 改进WIKI中技能归类的算法</li>
                     <li>2016-9-12: 修改部分老卡的CD, 感谢<x>真白的蓝白那啥</x>, <x>黑岩无敌</x>, <x>Core灬酷睿</x>和<x>yu1pbx</x>的帮助</li>

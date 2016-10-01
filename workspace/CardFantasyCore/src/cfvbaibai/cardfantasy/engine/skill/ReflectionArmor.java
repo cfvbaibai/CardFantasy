@@ -3,7 +3,6 @@ package cfvbaibai.cardfantasy.engine.skill;
 import cfvbaibai.cardfantasy.GameUI;
 import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.data.SkillTag;
-import cfvbaibai.cardfantasy.data.SkillType;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.HeroDieSignal;
 import cfvbaibai.cardfantasy.engine.SkillResolver;
@@ -21,11 +20,13 @@ public class ReflectionArmor {
         GameUI ui = resolver.getStage().getUI();
         ui.useSkill(defender, attacker, cardSkill, true);
         boolean skillBlocked = false;
-        for (SkillUseInfo attackerSkillUseInfo : attacker.getAllUsableSkillsIgnoreSilence()) {
-            if (attackerSkillUseInfo.getType().containsTag(SkillTag.不动)) {
-                skillBlocked = Immobility.isSkillBlocked(resolver, attackerSkillUseInfo.getSkill(), cardSkill, defender, attacker);
-            } else if (attackerSkillUseInfo.getType() == SkillType.无效) {
-                skillBlocked = NoEffect.isSkillBlocked(resolver, attackerSkillUseInfo.getSkill(), cardSkill, defender, attacker);
+        if (attacker.isBoss()) {
+            skillBlocked = NoEffect.isSkillBlocked(resolver, cardSkill, defender, attacker);
+        } else {
+            for (SkillUseInfo attackerSkillUseInfo : attacker.getAllUsableSkillsIgnoreSilence()) {
+                if (attackerSkillUseInfo.getType().containsTag(SkillTag.不动)) {
+                    skillBlocked = Immobility.isSkillBlocked(resolver, attackerSkillUseInfo.getSkill(), cardSkill, defender, attacker);
+                }
             }
         }
         if (!skillBlocked) {

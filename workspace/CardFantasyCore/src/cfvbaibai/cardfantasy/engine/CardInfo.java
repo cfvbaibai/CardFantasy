@@ -627,4 +627,8 @@ public class CardInfo extends EntityInfo {
     public boolean isSilent() {
         return this.getStatus().containsStatus(CardStatusType.沉默);
     }
+
+    public boolean isBoss() {
+        return this.getRace() == Race.BOSS;
+    }
 }

@@ -105,23 +105,20 @@ public class DebufferTest extends SkillValidationTest {
      * 对免疫有效，且破除掉其冰甲邪吸技能,
      */
     @Test
-    public void test沉默_免疫() {
-        SkillTestContext context = prepare(100, 100, "末日预言师+免疫-15", "灵魂收割者+降临沉默-15");
-        CardInfo c末日 = context.addToHand(0, 0);
-        CardInfo c萝莉 = context.addToHand(1, 1);
-
+    public void test降临沉默_免疫() {
+        SkillTestContext context = prepare(100, 100, "灵魂收割者+降临沉默-15", "末日预言师+免疫-15");
+        CardInfo c萝莉 = context.addToHand(0, 0).setSummonDelay(0);
+        CardInfo c末日 = context.addToField(1, 1);
         context.startGame();
 
-        for (int i = 0; i < 6; i++) {
-            random.addNextNumbers(0);
-            context.proceedOneRound();
-        }
-        // 出场了
-        boolean IsLocked = c末日.getStatus().containsStatus(CardStatusType.锁定);
+        random.addNextPicks(0);
+        context.proceedOneRound();
+
+        boolean isLocked = c末日.getStatus().containsStatus(CardStatusType.锁定);
         int expectedLife = 2010 - 755;
         int expectedAttack = 755;
 
-        Assert.assertEquals(true, IsLocked);
+        Assert.assertTrue(isLocked);
         Assert.assertEquals(expectedLife, c末日.getHP());
         Assert.assertEquals(expectedAttack, c萝莉.getCurrentAT());
     }
@@ -131,21 +128,17 @@ public class DebufferTest extends SkillValidationTest {
      */
     @Test
     public void test沉默_鬼步() {
-        SkillTestContext context = prepare(100, 100, "末日预言师+免疫-15",
-                "末日预言师+免疫-15", "灵魂收割者+降临沉默-15", "鬼步-4");
-        CardInfo c末日1 = context.addToHand(0, 0);
-        context.addToHand(1, 0);
-        context.addToHand(2, 1);
-
-        context.addToRune(0, 0);
-
+        SkillTestContext context = prepare(100, 100, "末日预言师+免疫*2", "灵魂收割者+降临沉默", "鬼步");
+        CardInfo c末日1 = context.addToHand(0, 0).setSummonDelay(0);
+        context.addToHand(1, 0).setSummonDelay(0);
+        context.addToHand(2, 1).setSummonDelay(0);
+        RuneInfo r鬼步 = context.addToRune(0, 0);
         context.startGame();
 
-        for (int i = 0; i < 6; i++) {
-            random.addNextNumbers(0);
-            context.proceedOneRound();
-        }
-        // 出场了
+        context.proceedOneRound();
+        Assert.assertTrue(r鬼步.isActivated());
+
+        context.proceedOneRound();
         boolean isLocked = c末日1.getStatus().containsStatus(CardStatusType.锁定);
         int expectedLife = 2010 + 300 - 755;
 
@@ -177,7 +170,7 @@ public class DebufferTest extends SkillValidationTest {
     }
 
     /**
-     * 被沉默的回合回春月恩也无法施放
+     * 被沉默的回合回春月恩可以施放
      */
     @Test
     public void test沉默_回春() {
@@ -192,7 +185,7 @@ public class DebufferTest extends SkillValidationTest {
 
         context.proceedOneRound();
         Assert.assertFalse(c占位符.getStatus().containsStatus(CardStatusType.沉默));
-        Assert.assertEquals(810, 5000 - c占位符.getHP());
+        Assert.assertEquals(810 - 300, 5000 - c占位符.getHP());
     }
 
     /**
@@ -202,7 +195,7 @@ public class DebufferTest extends SkillValidationTest {
     public void test沉默_净化() {
         SkillTestContext context = prepare(100, 100, "秘银巨石像+沉默", "福音乐师");
         context.addToField(0, 0);
-        CardInfo c福音乐师= context.addToField(1, 1);
+        CardInfo c福音乐师 = context.addToField(1, 1);
 
         context.startGame();
 
@@ -212,7 +205,7 @@ public class DebufferTest extends SkillValidationTest {
 
         context.proceedOneRound();
         Assert.assertFalse(c福音乐师.getStatus().containsStatus(CardStatusType.沉默));
-        Assert.assertEquals(810, 1610 - c福音乐师.getHP());
+        Assert.assertEquals(810 - 550 /* 月恩术是在沉默解除后施放的 */, 1610 - c福音乐师.getHP());
     }
 
     /**
@@ -345,5 +338,19 @@ public class DebufferTest extends SkillValidationTest {
         Assert.assertTrue(c秘银巨石像.getStatus().containsStatus(CardStatusType.沉默));
         context.proceedOneRound();
         Assert.assertEquals(1150 + 2, c秘银巨石像.getOwner().getHP());
+    }
+
+    @Test
+    public void test沉默_魔王() {
+        SkillTestContext context = prepare(100, 100, "占位符+全体沉默", "占位符+迷魂10", "真预言之神");
+        context.addToField(0, 0);
+        context.addToField(1, 0);
+        CardInfo c真预言之神 = context.addToField(2, 1);
+        context.startGame();
+
+        random.addNextPicks(0, 0).addNextNumbers(0);
+        context.proceedOneRound();
+        Assert.assertFalse(c真预言之神.getStatus().containsStatus(CardStatusType.沉默));
+        Assert.assertFalse(c真预言之神.getStatus().containsStatus(CardStatusType.迷惑));
     }
 }

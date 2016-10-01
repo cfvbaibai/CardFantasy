@@ -543,15 +543,17 @@ public class SkillResolver {
                         }
                     }
                 }
+                
+                if (defender.isBoss()) {
+                    if (NoEffect.isSkillBlocked(this, attackSkill, attacker, defender)) {
+                        result.setAttackable(false);
+                        return result;
+                    }
+                }
 
                 for (SkillUseInfo blockSkillUseInfo : defender.getUsableNormalSkills()) {
                     if (blockSkillUseInfo.getType() == SkillType.免疫) {
                         if (Immue.isSkillBlocked(this, blockSkillUseInfo.getSkill(), attackSkill, attacker, defender)) {
-                            result.setAttackable(false);
-                            return result;
-                        }
-                    } else if (blockSkillUseInfo.getType() == SkillType.无效) {
-                        if (NoEffect.isSkillBlocked(this, blockSkillUseInfo.getSkill(), attackSkill, attacker, defender)) {
                             result.setAttackable(false);
                             return result;
                         }
