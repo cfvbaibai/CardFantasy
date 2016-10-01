@@ -826,6 +826,16 @@
         <Skill type="免疫" level="0" unlock="5" />
         <Skill type="灵王的轰击" level="8" unlock="10" />
     </Card>
+    <Card id="1556" name="水晶巨龙" wikiId="" race="王国" speed="4" star="5" cost="17" incrCost="2" at="390" hp="1740" incrAT="41" incrHP="26">
+        <Skill type="水流护甲" level="7" unlock="0" />
+        <Skill type="免疫" level="0" unlock="5" />
+        <Skill type="灵王的轰击" level="8" unlock="10" />
+    </Card>
+    <Card id="1557" name="大江三鬼·金" wikiId="" race="王国" speed="2" star="5" cost="18" incrCost="2" at="390" hp="1670" incrAT="41" incrHP="27">
+        <Skill type="反射装甲" level="0" unlock="0" />
+        <Skill type="圣炎" level="0" unlock="5" />
+        <Skill type="鬼王之怒" level="0" unlock="10" />
+    </Card>
 
     <!-- 森林 -->
     <Card id="2101" name="人马巡逻者" wikiId="30976" race="森林" speed="2" star="1" cost="3" incrCost="2" at="95" hp="310" incrAT="17" incrHP="11">
@@ -2236,6 +2246,11 @@
         <Skill type="荆棘术" level="9" unlock="0" />
         <Skill type="恶灵汲取" level="7" unlock="5" />
         <Skill type="镜面装甲" level="0" unlock="10" />
+    </Card>
+    <Card id="3545" name="大江三鬼·银" wikiId="" race="蛮荒" speed="4" star="5" cost="16" incrCost="2" at="430" hp="1680" incrAT="43" incrHP="27">
+        <Skill type="弱点攻击" level="0" unlock="0" />
+        <Skill type="扼杀" level="0" unlock="5" />
+        <Skill type="鬼王之怒" level="0" unlock="10" />
     </Card>
 
     <!-- 地狱 -->
