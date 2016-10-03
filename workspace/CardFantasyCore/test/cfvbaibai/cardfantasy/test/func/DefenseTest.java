@@ -1076,4 +1076,17 @@ public class DefenseTest extends SkillValidationTest {
         context.proceedOneRound();
         Assert.assertEquals(10, 5000 - c占位符.getHP());
     }
+
+    @Test
+    public void test冰神附体_基础() {
+        SkillTestContext context = prepare(50, 50, "秘银巨石像+陷阱1", "占位符+冰神附体");
+        context.addToField(0, 0);
+        CardInfo c占位符 = context.addToField(1, 1);
+        context.startGame();
+
+        random.addNextPicks(0).addNextNumbers(0); // 秘银巨石像的陷阱
+        context.proceedOneRound();
+        Assert.assertFalse(c占位符.getStatus().containsStatus(CardStatusType.锁定));
+        Assert.assertEquals(140, 5000 - c占位符.getHP());
+    }
 }

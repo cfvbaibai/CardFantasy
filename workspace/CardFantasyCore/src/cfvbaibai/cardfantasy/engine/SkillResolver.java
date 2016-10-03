@@ -451,7 +451,9 @@ public class SkillResolver {
                 }
 
                 for (SkillUseInfo blockSkillUseInfo : defender.getUsableNormalSkills()) {
-                    if (blockSkillUseInfo.getType() == SkillType.冰甲 || blockSkillUseInfo.getType() == SkillType.魔龙之血) {
+                    if (blockSkillUseInfo.getType() == SkillType.冰甲 ||
+                        blockSkillUseInfo.getType() == SkillType.魔龙之血 ||
+                        blockSkillUseInfo.getType() == SkillType.冰神附体) {
                         result.setDamage(IceArmor.apply(blockSkillUseInfo.getSkill(), this, cardAttacker, defender,
                                 result.getDamage()));
                     }
@@ -557,7 +559,9 @@ public class SkillResolver {
                             result.setAttackable(false);
                             return result;
                         }
-                    } else if (blockSkillUseInfo.getType() == SkillType.脱困 || blockSkillUseInfo.getType() == SkillType.神威) {
+                    } else if (blockSkillUseInfo.getType() == SkillType.脱困 ||
+                               blockSkillUseInfo.getType() == SkillType.神威 ||
+                               blockSkillUseInfo.getType() == SkillType.冰神附体) {
                         if (Escape.isSkillEscaped(this, blockSkillUseInfo.getSkill(), attackSkill, attacker, defender)) {
                             result.setAttackable(false);
                             return result;
@@ -1431,7 +1435,9 @@ public class SkillResolver {
             }
         }
         for (SkillUseInfo blockSkillUseInfo : victim.getUsableNormalSkills()) {
-            if (blockSkillUseInfo.getType() == SkillType.脱困 || blockSkillUseInfo.getType() == SkillType.神威) {
+            if (blockSkillUseInfo.getType() == SkillType.脱困 ||
+                blockSkillUseInfo.getType() == SkillType.神威 ||
+                blockSkillUseInfo.getType() == SkillType.冰神附体) {
                 if (Escape.isStatusEscaped(blockSkillUseInfo.getSkill(), this, item, victim)) {
                     return new BlockStatusResult(true);
                 }
