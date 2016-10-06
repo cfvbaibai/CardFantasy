@@ -654,7 +654,9 @@ public class SkillResolver {
                         defender, defender, result.getDamage(), Race.FOREST));
             }
             if (includeBlocking) {
-                if (blockSkillUseInfo.getType() == SkillType.格挡 || blockSkillUseInfo.getType() == SkillType.魔龙之血) {
+                if (blockSkillUseInfo.getType() == SkillType.格挡 ||
+                    blockSkillUseInfo.getType() == SkillType.魔龙之血 ||
+                    blockSkillUseInfo.getType() == SkillType.钢铁之肤) {
                     result.setDamage(Block.apply(blockSkillUseInfo.getSkill(), this, cardAttacker, defender,
                             defender, result.getDamage()));
                 }

@@ -1089,4 +1089,15 @@ public class DefenseTest extends SkillValidationTest {
         Assert.assertFalse(c占位符.getStatus().containsStatus(CardStatusType.锁定));
         Assert.assertEquals(140, 5000 - c占位符.getHP());
     }
+
+    @Test
+    public void test钢铁之肤_基础() {
+        SkillTestContext context = prepare(50, 50, "秘银巨石像-15", "占位符+钢铁之肤5");
+        context.addToField(0, 0);
+        CardInfo c占位符 = context.addToField(1, 1);
+        context.startGame();
+
+        context.proceedOneRound();
+        Assert.assertEquals(810 - 450, 5000 - c占位符.getHP());
+    }
 }
