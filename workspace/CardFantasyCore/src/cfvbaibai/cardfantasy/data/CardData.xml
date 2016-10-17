@@ -836,6 +836,11 @@
         <Skill type="恶灵汲取" level="4" unlock="5" />
         <Skill type="猎杀之夜" level="0" unlock="10" />
     </Card>
+    <Card id="1558" name="魂灵利刃" wikiId="" race="王国" speed="3" star="5" cost="16" incrCost="2" at="350" hp="1570" incrAT="39" incrHP="38">
+        <Skill type="精准打击" level="9" unlock="0" />
+        <Skill type="英雄杀手" level="8" unlock="5" />
+        <Skill type="圣器召唤" level="0" unlock="10" />
+    </Card>
 
     <!-- 森林 -->
     <Card id="2101" name="人马巡逻者" wikiId="30976" race="森林" speed="2" star="1" cost="3" incrCost="2" at="95" hp="310" incrAT="17" incrHP="11">
