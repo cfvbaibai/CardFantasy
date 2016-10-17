@@ -36,6 +36,9 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2016-10-17: <ul>
+                        <li>添加新卡<cf:c>梦魇猎手·岚</cf:c></li>
+                    </ul></li>
                     <li>2016-10-3: 添加新技能【冰神附体】, 感谢<x>Core灬酷睿</x>的帮助</li>
                     <li>2016-10-1: <ul>
                         <li>修复【沉默】和魔神魔王作用时的几个BUG, 感谢<x>欺一世时光_</x>的帮助</li>

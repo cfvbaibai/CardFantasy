@@ -1354,7 +1354,7 @@ var Animater = function() {
     ];
     this.selfUsedSkills = [
         '不动', '脱困', '群体脱困', '法力反射', '花族秘术', '冰甲', '水流护甲', '闪避', '守护', '魔神之甲', '灵巧', '灵魂禁锢',
-        '王国之盾', '森林之盾', '蛮荒之盾', '地狱之盾', '弱点攻击', '无效', '圣盾', '不屈', '圣炎', '斩杀', '逃跑', '灵魂禁封',
+        '王国之盾', '森林之盾', '蛮荒之盾', '地狱之盾', '弱点攻击', '无效', '圣盾', '不屈', '圣炎', '斩杀', '送葬之刃', '逃跑', '灵魂禁封',
         '镜面装甲', '阿拉希血统', '神威', '月之守护', '洪荒之术', '冰神附体'
     ];
     this.__useSkill = function(data) {
@@ -1459,7 +1459,7 @@ var Animater = function() {
         } else if (skill == '净化' || skill == '神性祈求' || skill == '净魂领域') {
             this.flyImage({ fileName: 'purify.png', width: 48, height: 48, text: skill },
                     attacker, defenders, settings.skillDuration);
-        } else if (skill == '血炼' || skill == '鲜血盛宴' || skill == '歃血魔咒') {
+        } else if (skill == '血炼' || skill == '鲜血盛宴' || skill == '歃血魔咒' || skill == '猎杀之夜') {
             this.flyImage({ fileName: 'blood.png', width: 48, height: 48, text: skill },
                     attacker, defenders, settings.skillDuration);
         } else if (skill == '死亡印记' || skill == '武形印记') {

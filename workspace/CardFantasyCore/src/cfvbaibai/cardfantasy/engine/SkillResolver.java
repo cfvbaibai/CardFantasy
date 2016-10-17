@@ -192,7 +192,8 @@ public class SkillResolver {
                 WitheringWord.apply(skillUseInfo, this, attacker, defender);
             } else if (skillUseInfo.getType() == SkillType.血炼) {
                 BloodPaint.apply(skillUseInfo.getSkill(), this, attacker, defender, 1);
-            } else if (skillUseInfo.getType() == SkillType.鲜血盛宴 || skillUseInfo.getType() == SkillType.歃血魔咒) {
+            } else if (skillUseInfo.getType() == SkillType.鲜血盛宴 || skillUseInfo.getType() == SkillType.歃血魔咒 ||
+                       skillUseInfo.getType() == SkillType.猎杀之夜) {
                 BloodPaint.apply(skillUseInfo.getSkill(), this, attacker, defender, -1);
             } else if (skillUseInfo.getType() == SkillType.天谴 || skillUseInfo.getType() == SkillType.末世术) {
                 HeavenWrath.apply(this, skillUseInfo.getSkill(), attacker, defender);
@@ -1146,7 +1147,7 @@ public class SkillResolver {
         }
         if (skill == null) {
             for (SkillUseInfo cardSkillUseInfo : attacker.getAllUsableSkills()) {
-                if (cardSkillUseInfo.getType() == SkillType.斩杀) {
+                if (cardSkillUseInfo.getType() == SkillType.斩杀 || cardSkillUseInfo.getType() == SkillType.送葬之刃) {
                     SuddenKill.apply(this, cardSkillUseInfo, attacker, defender, blockingResult);
                 }
             }
@@ -1512,7 +1513,7 @@ public class SkillResolver {
         for (SkillUseInfo attackerSkillUseInfo : attacker.getUsableNormalSkills()) {
             if (attackerSkillUseInfo.getType() == SkillType.弱点攻击) {
                 return WeakPointAttack.isBlockSkillDisabled(this, attackerSkillUseInfo.getSkill(), cardSkill, attacker, defender);
-            } else if (attackerSkillUseInfo.getType() == SkillType.斩杀) {
+            } else if (attackerSkillUseInfo.getType() == SkillType.斩杀 || attackerSkillUseInfo.getType() == SkillType.送葬之刃) {
                 return SuddenKill.isBlockSkillDisabled(this, attackerSkillUseInfo.getSkill(), cardSkill, attacker, defender);
             }
         }
