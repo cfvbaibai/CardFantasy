@@ -165,7 +165,7 @@ public class SkillResolver {
                 Snipe.apply(skillUseInfo.getSkill(), this, attacker, defender, 1);
             } else if (skillUseInfo.getType() == SkillType.魔神之刃) {
                 Snipe.apply(skillUseInfo.getSkill(), this, attacker, defender, 1);
-            } else if (skillUseInfo.getType() == SkillType.武形秘箭) {
+            } else if (skillUseInfo.getType() == SkillType.武形秘箭 || skillUseInfo.getType() == SkillType.骤雨) {
                 Snipe.apply(skillUseInfo.getSkill(), this, attacker, defender, -1);
             } else if (skillUseInfo.getType() == SkillType.二重狙击) {
                 Snipe.apply(skillUseInfo.getSkill(), this, attacker, defender, 2);
