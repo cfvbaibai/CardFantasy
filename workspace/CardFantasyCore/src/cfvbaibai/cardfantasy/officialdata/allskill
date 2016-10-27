@@ -21800,7 +21800,7 @@
         "AffectValue": 120,
         "AffectValue2": 0,
         "SkillCategory": 5,
-        "Desc": "因为贪吃，连进攻的时候都要吃东西，提升120点攻击力。"
+        "Desc": "因为贪吃，连进攻的时候都要吃东西，当攻击并对卡牌造成伤害时提升120点攻击力。"
       },
       {
         "SkillId": 1532,
@@ -21813,7 +21813,7 @@
         "AffectValue": 140,
         "AffectValue2": 0,
         "SkillCategory": 5,
-        "Desc": "因为贪吃，连进攻的时候都要吃东西，提升140点攻击力。"
+        "Desc": "因为贪吃，连进攻的时候都要吃东西，当攻击并对卡牌造成伤害时提升140点攻击力。"
       },
       {
         "SkillId": 1533,
@@ -21826,7 +21826,7 @@
         "AffectValue": 160,
         "AffectValue2": 0,
         "SkillCategory": 5,
-        "Desc": "因为贪吃，连进攻的时候都要吃东西，提升160点攻击力。"
+        "Desc": "因为贪吃，连进攻的时候都要吃东西，当攻击并对卡牌造成伤害时提升160点攻击力。"
       },
       {
         "SkillId": 1534,
@@ -21839,7 +21839,7 @@
         "AffectValue": 180,
         "AffectValue2": 0,
         "SkillCategory": 5,
-        "Desc": "因为贪吃，连进攻的时候都要吃东西，提升180点攻击力。"
+        "Desc": "因为贪吃，连进攻的时候都要吃东西，当攻击并对卡牌造成伤害时提升180点攻击力。"
       },
       {
         "SkillId": 1535,
@@ -21852,7 +21852,7 @@
         "AffectValue": 200,
         "AffectValue2": 0,
         "SkillCategory": 5,
-        "Desc": "因为贪吃，连进攻的时候都要吃东西，提升200点攻击力。"
+        "Desc": "因为贪吃，连进攻的时候都要吃东西，当攻击并对卡牌造成伤害时提升200点攻击力。"
       },
       {
         "SkillId": 1536,
@@ -21865,7 +21865,7 @@
         "AffectValue": 220,
         "AffectValue2": 0,
         "SkillCategory": 5,
-        "Desc": "因为贪吃，连进攻的时候都要吃东西，提升220点攻击力。"
+        "Desc": "因为贪吃，连进攻的时候都要吃东西，当攻击并对卡牌造成伤害时提升220点攻击力。"
       },
       {
         "SkillId": 1537,
@@ -21878,7 +21878,7 @@
         "AffectValue": 240,
         "AffectValue2": 0,
         "SkillCategory": 5,
-        "Desc": "因为贪吃，连进攻的时候都要吃东西，提升240点攻击力。"
+        "Desc": "因为贪吃，连进攻的时候都要吃东西，当攻击并对卡牌造成伤害时提升240点攻击力。"
       },
       {
         "SkillId": 1538,
@@ -21891,7 +21891,7 @@
         "AffectValue": 260,
         "AffectValue2": 0,
         "SkillCategory": 5,
-        "Desc": "因为贪吃，连进攻的时候都要吃东西，提升260点攻击力。"
+        "Desc": "因为贪吃，连进攻的时候都要吃东西，当攻击并对卡牌造成伤害时提升260点攻击力。"
       },
       {
         "SkillId": 1539,
@@ -21904,7 +21904,7 @@
         "AffectValue": 280,
         "AffectValue2": 0,
         "SkillCategory": 5,
-        "Desc": "因为贪吃，连进攻的时候都要吃东西，提升280点攻击力。"
+        "Desc": "因为贪吃，连进攻的时候都要吃东西，当攻击并对卡牌造成伤害时提升280点攻击力。"
       },
       {
         "SkillId": 1540,
@@ -21917,7 +21917,7 @@
         "AffectValue": 300,
         "AffectValue2": 0,
         "SkillCategory": 5,
-        "Desc": "因为贪吃，连进攻的时候都要吃东西，提升300点攻击力。"
+        "Desc": "因为贪吃，连进攻的时候都要吃东西，当攻击并对卡牌造成伤害时提升300点攻击力。"
       },
       {
         "SkillId": 9519,
@@ -25753,6 +25753,188 @@
         "AffectValue2": 0,
         "SkillCategory": 3,
         "Desc": "武之尊形无尽无限。(1)死亡时有65%的概率进入手牌，如果手牌已满则进入牌堆。(2)当受到火、冰、雷、血攻击时，攻击无效，并对攻击方造成210点伤害。"
+      },
+      {
+        "SkillId": 2121,
+        "Name": "三千世界",
+        "Type": 136,
+        "LanchType": 5,
+        "LanchCondition": 0,
+        "LanchConditionValue": 0,
+        "AffectType": 122,
+        "AffectValue": "286_993",
+        "AffectValue2": 0,
+        "SkillCategory": 1,
+        "Desc": "(1)攻击正面卡牌并造成伤害时同时攻击左右2张卡牌。(2)物理攻击时，使对方冰甲和闪避技能无效。"
+      },
+      {
+        "SkillId": 2122,
+        "Name": "大小通吃",
+        "Type": 136,
+        "LanchType": 5,
+        "LanchCondition": 0,
+        "LanchConditionValue": 0,
+        "AffectType": 122,
+        "AffectValue": "286_1535",
+        "AffectValue2": 0,
+        "SkillCategory": 1,
+        "Desc": "(1)攻击正面卡牌并造成伤害时同时攻击左右2张卡牌。(2)当攻击并对卡牌造成伤害时提升200点攻击力。"
+      },
+      {
+        "SkillId": 2123,
+        "Name": "毒杀",
+        "Type": 136,
+        "LanchType": 5,
+        "LanchCondition": 0,
+        "LanchConditionValue": 0,
+        "AffectType": 122,
+        "AffectValue": "286_1499",
+        "AffectValue2": 0,
+        "SkillCategory": 1,
+        "Desc": "(1)攻击正面卡牌并造成伤害时同时攻击左右2张卡牌。(2)物理攻击时，扣除被攻击卡牌的血量上限。"
+      },
+      {
+        "SkillId": 2124,
+        "Name": "鬼彻",
+        "Type": 136,
+        "LanchType": 5,
+        "LanchCondition": 0,
+        "LanchConditionValue": 0,
+        "AffectType": 122,
+        "AffectValue": "286_993",
+        "AffectValue2": 0,
+        "SkillCategory": 1,
+        "Desc": "(1)攻击正面卡牌并造成伤害时同时攻击左右2张卡牌。(2)当对敌方卡牌造成物理伤害时，回复伤害值70%的生命值。"
+      },
+      {
+        "SkillId": 2125,
+        "Name": "会心一击",
+        "Type": 136,
+        "LanchType": 5,
+        "LanchCondition": 0,
+        "LanchConditionValue": 0,
+        "AffectType": 122,
+        "AffectValue": "993_1296",
+        "AffectValue2": 0,
+        "SkillCategory": 1,
+        "Desc": "(1)物理攻击时，使对方冰甲和闪避技能无效。(2)攻击时，提升我方上场卡牌数乘以100攻击力。"
+      },
+      {
+        "SkillId": 2126,
+        "Name": "骑士信仰",
+        "Type": 136,
+        "LanchType": 5,
+        "LanchCondition": 0,
+        "LanchConditionValue": 0,
+        "AffectType": 122,
+        "AffectValue": "1304_1488",
+        "AffectValue2": 0,
+        "SkillCategory": 1,
+        "Desc": "(1)免疫陷阱、封印、迷魂技能，免疫冻结、麻痹效果。(2)减少50%的物理伤害和火，冰，雷，血的技能伤害。"
+      },
+      {
+        "SkillId": 2127,
+        "Name": "神魔之甲",
+        "Type": 136,
+        "LanchType": 5,
+        "LanchCondition": 0,
+        "LanchConditionValue": 0,
+        "AffectType": 122,
+        "AffectValue": "653_675",
+        "AffectValue2": 0,
+        "SkillCategory": 1,
+        "Desc": "(1)每次被物理攻击时最多承受110点伤害。(2)当受到火、冰、雷、血攻击时，每次最多承受60点技能伤害。"
+      },
+      {
+        "SkillId": 2128,
+        "Name": "无我境界",
+        "Type": 136,
+        "LanchType": 5,
+        "LanchCondition": 0,
+        "LanchConditionValue": 0,
+        "AffectType": 122,
+        "AffectValue": "1470_1429",
+        "AffectValue2": 0,
+        "SkillCategory": 1,
+        "Desc": "(1)使对方随机3张卡牌有70%的几率在其下一回合时攻击自己的英雄。(2)对敌方场上随机1个单位使用精神狂乱，使他攻击自身两边的同伴。"
+      },
+      {
+        "SkillId": 2129,
+        "Name": "凋零陷阱",
+        "Type": 136,
+        "LanchType": 5,
+        "LanchCondition": 0,
+        "LanchConditionValue": 0,
+        "AffectType": 122,
+        "AffectValue": "1494_103",
+        "AffectValue2": 0,
+        "SkillCategory": 1,
+        "Desc": "(1)使对方所有卡牌丧失10%攻击力和10%生命值。(2)使敌方3张卡牌65%概率丧失下一个行动回合。"
+      },
+      {
+        "SkillId": 2130,
+        "Name": "毒伤",
+        "Type": 139,
+        "LanchType": 2,
+        "LanchCondition": 2,
+        "LanchConditionValue": 0,
+        "AffectType": 138,
+        "AffectValue": 0,
+        "AffectValue2": 0,
+        "SkillCategory": 2,
+        "Desc": "浸泡北荒最致命的毒药。物理攻击时，扣除被攻击卡牌的血量上限。"
+      },
+      {
+        "SkillId": 2131,
+        "Name": "召唤：星座守护者",
+        "Type": 125,
+        "LanchType": 4,
+        "LanchCondition": 0,
+        "LanchConditionValue": 0,
+        "AffectType": 101,
+        "AffectValue": "701_702_703_704_705_706_707_708_709_710_711_712",
+        "AffectValue2": 2,
+        "SkillCategory": 2,
+        "Desc": "可从12张星座卡牌中随机召唤两张上场战斗（召唤出的卡牌不会进入墓地，牌堆），如果场上已经存在自身召唤的卡牌时，则不发动召唤。"
+      },
+      {
+        "SkillId": 2132,
+        "Name": "召唤：驯龙高手",
+        "Type": 125,
+        "LanchType": 4,
+        "LanchCondition": 0,
+        "LanchConditionValue": 0,
+        "AffectType": 101,
+        "AffectValue": "60_29_216_173_188_189_368_119_183_288_448_449_450",
+        "AffectValue2": 2,
+        "SkillCategory": 2,
+        "Desc": "可从13张龙系五星卡牌中随机召唤两张上场战斗（召唤出的卡牌不会进入墓地，牌堆），如果场上已经存在自身召唤的卡牌时，则不发动召唤。"
+      },
+      {
+        "SkillId": 2133,
+        "Name": "[降临]召唤：星座守护者",
+        "Type": 125,
+        "LanchType": 10,
+        "LanchCondition": 0,
+        "LanchConditionValue": 0,
+        "AffectType": 101,
+        "AffectValue": "701_702_703_704_705_706_707_708_709_710_711_712",
+        "AffectValue2": 2,
+        "SkillCategory": 2,
+        "Desc": "可从12张星座卡牌中随机召唤两张上场战斗（召唤出的卡牌不会进入墓地，牌堆），如果场上已经存在自身召唤的卡牌时，则不发动召唤。"
+      },
+      {
+        "SkillId": 2134,
+        "Name": "[降临]召唤：驯龙高手",
+        "Type": 125,
+        "LanchType": 10,
+        "LanchCondition": 0,
+        "LanchConditionValue": 0,
+        "AffectType": 101,
+        "AffectValue": "60_29_216_173_188_189_368_119_183_288_448_449_450",
+        "AffectValue2": 2,
+        "SkillCategory": 2,
+        "Desc": "可从13张龙系五星卡牌中随机召唤两张上场战斗（召唤出的卡牌不会进入墓地，牌堆），如果场上已经存在自身召唤的卡牌时，则不发动召唤。"
       }
     ]
   },
@@ -25760,7 +25942,7 @@
   "message": null,
   "type": null,
   "version": {
-    "http": "201302930",
+    "http": "201302934",
     "stop": "",
     "appversion": "version_1",
     "appurl": "ios://xxx",

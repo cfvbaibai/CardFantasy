@@ -181,7 +181,7 @@ public class CounterAttackTest extends SkillValidationTest {
         Assert.assertEquals(660 / 2 /* 物理反弹造成一半伤害反弹 */, 1400 - c秘银巨石像.getHP());
         Assert.assertEquals(660, 5000 - c占位符.getHP());
     }
-    
+
     @Test
     public void test物理反弹_格挡() {
         SkillTestContext context = prepare(50, 50, "秘银巨石像", "金属巨龙+物理反弹");
@@ -543,5 +543,17 @@ public class CounterAttackTest extends SkillValidationTest {
         context.proceedOneRound();
         Assert.assertEquals(0, 5000 - c占位符1.getHP());
         Assert.assertEquals(60, 5000 - c占位符2.getHP());
+    }
+
+    @Test
+    public void test武形破剑击_基础() {
+        SkillTestContext context = prepare(50, 50, "秘银巨石像", "占位符+武形破剑击");
+        CardInfo c秘银巨石像 = context.addToField(0, 0);
+        CardInfo c占位符 = context.addToField(1, 1);
+        context.startGame();
+        
+        context.proceedOneRound();
+        Assert.assertEquals(660 /* 伤害反弹 */, 1400 - c秘银巨石像.getHP());
+        Assert.assertEquals(660, 5000 - c占位符.getHP());
     }
 }

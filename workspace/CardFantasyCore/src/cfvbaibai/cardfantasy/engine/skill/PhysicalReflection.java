@@ -15,7 +15,7 @@ public final class PhysicalReflection {
         if (attacker == null || attacker.isDead()) {
             return;
         }
-        int damage = actualDamage / 2;
+        int damage = actualDamage * cardSkill.getImpact() / 100;
         GameUI ui = resolver.getStage().getUI();
         ui.useSkill(defender, attacker, cardSkill, true);
         if (!resolver.resolverCounterAttackBlockSkill(cardSkill, attacker, defender)) {

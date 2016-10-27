@@ -18,7 +18,7 @@
                 <div class="ui-grid-a">
                     <div class="ui-block-a ui-block-label-number">活动卡牌</div>
                     <div class="ui-block-b">
-                        <input type="text" id="lilith-event-cards" data-mini="true" value="龙灵使者,殉道者,暗色骑士,赤瞳魔剑师" />
+                        <input type="text" id="lilith-event-cards" data-mini="true" value="梦魇猎手·胧,魂灵猎鹰,魂灵疾风" />
                     </div>
                 </div>
                 <div id="lilith-config-0" class="ui-grid-a">

@@ -322,7 +322,7 @@ public class SkillResolver {
                     Spike.apply(skillUseInfo.getSkill(), this, attacker, defender, attackSkill, result.getDamage());
                 } else if (skillUseInfo.getType() == SkillType.大地之盾) {
                     EarthShield.apply(skillUseInfo, this, attacker, defender);
-                } else if (skillUseInfo.getType() == SkillType.物理反弹) {
+                } else if (skillUseInfo.getType() == SkillType.物理反弹 || skillUseInfo.getType() == SkillType.武形破剑击) {
                     PhysicalReflection.apply(skillUseInfo.getSkill(), this, attacker, defender, damagedResult.actualDamage);
                 } else if (skillUseInfo.getType() == SkillType.一闪) {
                     EarthShield.apply(skillUseInfo, this, attacker, defender);
@@ -528,7 +528,8 @@ public class SkillResolver {
                 for (SkillUseInfo blockSkillUseInfo : defender.getUsableNormalSkills()) {
                     if (blockSkillUseInfo.getType() == SkillType.法力反射 ||
                         blockSkillUseInfo.getType() == SkillType.镜面装甲 ||
-                        blockSkillUseInfo.getType() == SkillType.花族秘术) {
+                        blockSkillUseInfo.getType() == SkillType.花族秘术 ||
+                        blockSkillUseInfo.getType() == SkillType.武形秘术) {
                         if (CounterMagic.isSkillBlocked(this, blockSkillUseInfo.getSkill(), attackSkill,
                                 attacker, defender)) {
                             result.setAttackable(false);
@@ -770,7 +771,8 @@ public class SkillResolver {
                 if (deadCardSkillUseInfo.getType() == SkillType.转生 ||
                     deadCardSkillUseInfo.getType() == SkillType.武形秘仪 ||
                     deadCardSkillUseInfo.getType() == SkillType.花族秘术 ||
-                    deadCardSkillUseInfo.getType() == SkillType.洪荒之术) {
+                    deadCardSkillUseInfo.getType() == SkillType.洪荒之术 ||
+                    deadCardSkillUseInfo.getType() == SkillType.武形秘术) {
                     if (Reincarnation.apply(this, deadCardSkillUseInfo.getSkill(), deadCard, result.unbending)) {
                         reincarnated = true;
                         break;

@@ -26,6 +26,7 @@ public final class ManaErode {
             if (victim.containsUsableSkill(SkillType.免疫) ||
                 victim.containsUsableSkill(SkillType.法力反射) ||
                 victim.containsUsableSkill(SkillType.镜面装甲) ||
+                victim.containsUsableSkill(SkillType.武形秘术) ||
                 defender.getActiveRuneOf(RuneData.石林) != null) {
                 actualDamage *= magnifier;
             }

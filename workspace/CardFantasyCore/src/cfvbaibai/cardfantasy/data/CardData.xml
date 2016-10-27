@@ -851,6 +851,11 @@
         <Skill type="英雄杀手" level="8" unlock="5" />
         <Skill type="圣器召唤" level="0" unlock="10" />
     </Card>
+    <Card id="1559" name="武形破拳尊者" wikiId="" race="王国" speed="3" star="5" cost="18" incrCost="2" at="430" hp="1710" incrAT="49" incrHP="41">
+        <Skill type="武形破剑击" level="0" unlock="0" />
+        <Skill type="圣母回声" level="0" unlock="5" />
+        <Skill type="武形秘术" level="0" unlock="10" />
+    </Card>
 
     <!-- 森林 -->
     <Card id="2101" name="人马巡逻者" wikiId="30976" race="森林" speed="2" star="1" cost="3" incrCost="2" at="95" hp="310" incrAT="17" incrHP="11">

@@ -17,7 +17,8 @@ public final class CounterMagic {
         }
         if (resolver.isMagicalSkill(attackSkill)) {
             int damage = cardSkill.getImpact();
-            if (cardSkill.getType() == SkillType.花族秘术) {
+            if (cardSkill.getType() == SkillType.花族秘术 ||
+                cardSkill.getType() == SkillType.武形秘术) {
                 damage = cardSkill.getImpact2();
             }
             GameUI ui = resolver.getStage().getUI();
