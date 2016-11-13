@@ -1,5 +1,6 @@
 package cfvbaibai.cardfantasy.engine.skill;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import cfvbaibai.cardfantasy.GameUI;
@@ -32,7 +33,9 @@ public final class Sacrifice {
         Randomizer random = resolver.getStage().getRandomizer();
 
         Field field = card.getOwner().getField();
-        List<CardInfo> candidates = random.pickRandom(field.toList(), 1, true, card);
+        List<CardInfo> exclusions = new ArrayList<CardInfo>();
+        exclusions.add(card);
+        List<CardInfo> candidates = random.pickRandom(field.toList(), 1, true, exclusions);
 
         ui.useSkill(card, candidates, skill, true);
         if (candidates.isEmpty()) {

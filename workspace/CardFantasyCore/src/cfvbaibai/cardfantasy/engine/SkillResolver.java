@@ -234,41 +234,44 @@ public class SkillResolver {
             } else if (skillUseInfo.getType() == SkillType.战争怒吼) {
                 Soften.apply(skillUseInfo, this, attacker, defender, 10);
             } else if (skillUseInfo.getType() == SkillType.召唤王国战士) {
-                Summon.apply(this, skillUseInfo, attacker, "圣骑士", "魔剑士");
+                Summon.apply(this, skillUseInfo, attacker, false, 2, "圣骑士", "魔剑士");
             } else if (skillUseInfo.getType() == SkillType.召唤骷髅战士) {
-                Summon.apply(this, skillUseInfo, attacker, "骷髅战士", "骷髅战士");
+                Summon.apply(this, skillUseInfo, attacker, false, 2, "骷髅战士", "骷髅战士");
             } else if (skillUseInfo.getType() == SkillType.召唤噩梦护卫) {
-                Summon.apply(this, skillUseInfo, attacker, "时光女神", "金属巨龙");
+                Summon.apply(this, skillUseInfo, attacker, false, 2, "时光女神", "金属巨龙");
             } else if (skillUseInfo.getType() == SkillType.召唤邪龙护卫) {
-                Summon.apply(this, skillUseInfo, attacker, "亡灵守护神", "光明之龙");
+                Summon.apply(this, skillUseInfo, attacker, false, 2, "亡灵守护神", "光明之龙");
             } else if (skillUseInfo.getType() == SkillType.召唤复仇护卫) {
-                Summon.apply(this, skillUseInfo, attacker, "雷兽", "末日预言师");
+                Summon.apply(this, skillUseInfo, attacker, false, 2, "雷兽", "末日预言师");
             } else if (skillUseInfo.getType() == SkillType.召唤花仙子) {
-                Summon.apply(this, skillUseInfo, attacker, "花仙子", "花仙子");
+                Summon.apply(this, skillUseInfo, attacker, false, 2, "花仙子", "花仙子");
             } else if (skillUseInfo.getType() == SkillType.召唤火焰乌鸦) {
-                Summon.apply(this, skillUseInfo, attacker, "火焰乌鸦");
+                Summon.apply(this, skillUseInfo, attacker, false, 2, "火焰乌鸦");
             } else if (skillUseInfo.getType() == SkillType.召唤人马巡逻者) {
-                Summon.apply(this, skillUseInfo, attacker, "人马巡逻者", "人马巡逻者");
+                Summon.apply(this, skillUseInfo, attacker, false, 2, "人马巡逻者", "人马巡逻者");
             } else if (skillUseInfo.getType() == SkillType.召唤女神侍者) {
-                Summon.apply(this, skillUseInfo, attacker, "女神侍者", "女神侍者");
+                Summon.apply(this, skillUseInfo, attacker, false, 2, "女神侍者", "女神侍者");
             } else if (skillUseInfo.getType() == SkillType.召唤树人守护者) {
-                Summon.apply(this, skillUseInfo, attacker, "霜雪树人", "树人祭司");
+                Summon.apply(this, skillUseInfo, attacker, false, 2, "霜雪树人", "树人祭司");
             } else if (skillUseInfo.getType() == SkillType.召唤炎魔) {
-                Summon.apply(this, skillUseInfo, attacker, "炎魔");
+                Summon.apply(this, skillUseInfo, attacker, false, 1, "炎魔");
             } else if (skillUseInfo.getType() == SkillType.双子之身) {
-                Summon.apply(this, skillUseInfo, attacker, "双子座·幻影");
+                Summon.apply(this, skillUseInfo, attacker, false, 1, "双子座·幻影");
             } else if (skillUseInfo.getType() == SkillType.召唤北海神兽) {
-                Summon.apply(this, skillUseInfo, attacker, "北海神兽", "北海神兽");
+                Summon.apply(this, skillUseInfo, attacker, false, 2, "北海神兽", "北海神兽");
             } else if (skillUseInfo.getType() == SkillType.召唤梦境女神) {
-                Summon.apply(this, skillUseInfo, attacker, "梦境女神", "梦境女神");
+                Summon.apply(this, skillUseInfo, attacker, false, 2, "梦境女神", "梦境女神");
             } else if (skillUseInfo.getType() == SkillType.酋长号令) {
-                Summon.apply(this, skillUseInfo, attacker, "战意斗神", "战意斗神");
+                Summon.apply(this, skillUseInfo, attacker, false, 2, "战意斗神", "战意斗神");
             } else if (skillUseInfo.getType() == SkillType.召唤花族守卫) {
-                Summon.apply(this, skillUseInfo, attacker, "黄金金属巨龙", "处女座");
+                Summon.apply(this, skillUseInfo, attacker, false, 2, "黄金金属巨龙", "处女座");
             } else if (skillUseInfo.getType() == SkillType.召唤花族侍卫) {
-                Summon.apply(this, skillUseInfo, attacker, "时光女神", "雷雕之魂");
+                Summon.apply(this, skillUseInfo, attacker, false, 2, "时光女神", "雷雕之魂");
             } else if (skillUseInfo.getType() == SkillType.七十二变) {
-                Summon.apply(this, skillUseInfo, attacker, "齐天美猴王", "齐天美猴王");
+                Summon.apply(this, skillUseInfo, attacker, false, 2, "齐天美猴王", "齐天美猴王");
+            } else if (skillUseInfo.getType() == SkillType.英灵降临) {
+                Summon.apply(this, skillUseInfo, attacker, false, 1,
+                        "圣骑士", "狮鹫骑士", "暗色骑士", "密纹骑士", "蔷薇骑士", "地行龙骑士", "黑甲铁骑士", "炎刃暗骑士");
             } else if (skillUseInfo.getType() == SkillType.魔力法阵) {
                 MagicMark.apply(this, skillUseInfo, attacker, defender, -1);
             } else if (skillUseInfo.getType() == SkillType.魔力印记) {
@@ -731,7 +734,7 @@ public class SkillResolver {
             } else if (deadCardSkillUseInfo.getType() == SkillType.回魂) {
                 Resurrection.apply(this, deadCardSkillUseInfo, deadCard);
             } else if (deadCardSkillUseInfo.getType() == SkillType.召唤炎魔) {
-                Summon.apply(this, deadCardSkillUseInfo, deadCard, "炎魔");
+                Summon.apply(this, deadCardSkillUseInfo, deadCard, false, 1, "炎魔");
             } else if (deadCardSkillUseInfo.getType() == SkillType.全体阻碍) {
                 AllDelay.apply(deadCardSkillUseInfo, this, deadCard, opponent);
             } else if (deadCardSkillUseInfo.getType() == SkillType.全体加速){
@@ -747,11 +750,11 @@ public class SkillResolver {
             } else if (deadCardSkillUseInfo.getType() == SkillType.燕返 || deadCardSkillUseInfo.getType() == SkillType.上层精灵的挽歌) {
                 TsubameGaeshi.apply(deadCardSkillUseInfo, this, opponent, deadCard);
             } else if (deadCardSkillUseInfo.getType() == SkillType.九转秘术) {
-                Summon.apply(this, deadCardSkillUseInfo, deadCard, "九命猫神·幻影");
+                Summon.apply(this, deadCardSkillUseInfo, deadCard, false, 1, "九命猫神·幻影");
             } else if (deadCardSkillUseInfo.getType() == SkillType.我还会回来的) {
-                Summon.apply(this, deadCardSkillUseInfo, deadCard, "大毒汁之王-5");
+                Summon.apply(this, deadCardSkillUseInfo, deadCard, false, 1, "大毒汁之王-5");
             } else if (deadCardSkillUseInfo.getType() == SkillType.蛮荒我还会回来的) {
-                Summon.apply(this, deadCardSkillUseInfo, deadCard, "蛮荒大毒汁之王-5");
+                Summon.apply(this, deadCardSkillUseInfo, deadCard, false, 1, "蛮荒大毒汁之王-5");
             }
         }
         if (!deadCard.isSilent()) {
@@ -1327,6 +1330,10 @@ public class SkillResolver {
                     Silence.apply(this, skillUseInfo, card, enemy, true, true);
                 } else if (skillUseInfo.getType() == SkillType.无限全体沉默) {
                     Silence.apply(this, skillUseInfo, card, enemy, true, false);
+                } else if (skillUseInfo.getType() == SkillType.星之所在) {
+                    Summon.apply(this, skillUseInfo, card, true, 2,
+                            "白羊座", "金牛座", "双子座", "巨蟹座", "狮子座", "处女座",
+                            "天秤座", "射手座", "天蝎座", "摩羯座", "水瓶座", "双鱼座");
                 }
             }
             else if (!skillUseInfo.getSkill().isDeathSkill()) {

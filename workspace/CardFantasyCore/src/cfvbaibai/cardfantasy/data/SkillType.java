@@ -257,6 +257,8 @@ public enum SkillType {
     召唤花族守卫("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
     召唤花族侍卫("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
     七十二变("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
+    英灵降临("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
+    星之所在("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
 
     圣光洗礼("", 0, 0, SkillTag.抗免疫, SkillTag.不可洗炼),
     森林沐浴("", 1, 0, SkillTag.抗免疫, SkillTag.不可洗炼),

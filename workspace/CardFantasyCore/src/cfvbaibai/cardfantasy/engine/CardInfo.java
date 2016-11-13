@@ -631,4 +631,12 @@ public class CardInfo extends EntityInfo {
     public boolean isBoss() {
         return this.getRace() == Race.BOSS;
     }
+
+    public EntityInfo getSummoner() {
+        List<CardStatusItem> status = this.getStatus().getStatusOf(CardStatusType.召唤);
+        if (status.isEmpty()) {
+            return null;
+        }
+        return status.get(0).getCause().getOwner();
+    }
 }

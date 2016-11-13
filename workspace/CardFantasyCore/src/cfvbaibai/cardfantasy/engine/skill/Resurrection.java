@@ -1,5 +1,6 @@
 package cfvbaibai.cardfantasy.engine.skill;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
@@ -7,9 +8,9 @@ import cfvbaibai.cardfantasy.GameUI;
 import cfvbaibai.cardfantasy.Randomizer;
 import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.engine.CardInfo;
-import cfvbaibai.cardfantasy.engine.SkillUseInfo;
-import cfvbaibai.cardfantasy.engine.SkillResolver;
 import cfvbaibai.cardfantasy.engine.Player;
+import cfvbaibai.cardfantasy.engine.SkillResolver;
+import cfvbaibai.cardfantasy.engine.SkillUseInfo;
 
 public final class Resurrection {
     public static void apply(SkillResolver resolver, SkillUseInfo skillUseInfo, CardInfo resurrector) {
@@ -20,9 +21,14 @@ public final class Resurrection {
         // Grave is a stack, find the last-in card and revive it.
         int resurrectionCount = skill.getImpact();
         Player player = resurrector.getOwner();
-        CardInfo exclusion = skill.isDeathSkill() ? resurrector : null;
+        List<CardInfo> exclusions = null;
+        if (skill.isDeathSkill()) {
+            exclusions = new ArrayList<CardInfo>();
+            exclusions.add(resurrector);
+        }
         List<CardInfo> deadCards = player.getGrave().toList();
-        List<CardInfo> cardsToResurrect = Randomizer.getRandomizer().pickRandom(deadCards, resurrectionCount, true, exclusion);
+        List<CardInfo> cardsToResurrect = Randomizer.getRandomizer().pickRandom(
+            deadCards, resurrectionCount, true, exclusions);
         if (cardsToResurrect.size() > resurrectionCount) {
             throw new CardFantasyRuntimeException("cardsToResurrect.size() = " + cardsToResurrect.size() + ", resurrectionCount = " + resurrectionCount);
         }

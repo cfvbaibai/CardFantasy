@@ -50,7 +50,7 @@ public class StaticRandomizer extends Randomizer {
     }
 
     @Override
-    public <T> List<T> pickRandom(List<T> list, int max, boolean excludeNull, T extraExclusion) {
+    public <T> List<T> pickRandom(List<T> list, int max, boolean excludeNull, List<T> extraExclusion) {
         getUI().showMessage("pickRandom(Max=" + max + ", excludeNull=" + excludeNull + ")");
         if (list == null) {
             throw new IllegalArgumentException("list cannot be null.");
@@ -67,7 +67,7 @@ public class StaticRandomizer extends Randomizer {
         }
         int pickableCount = 0;
         for (int i = 0; i < list.size(); ++i) {
-            if ((!excludeNull || list.get(i) != null) && list.get(i) != extraExclusion) {
+            if ((!excludeNull || list.get(i) != null) && (extraExclusion == null || !extraExclusion.contains(list.get(i)))) {
                 ++pickableCount;
             }
         }
