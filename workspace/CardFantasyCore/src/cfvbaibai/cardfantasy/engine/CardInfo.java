@@ -236,6 +236,18 @@ public class CardInfo extends EntityInfo {
         }
     }
 
+    public String getParsableDesc() {
+        StringBuffer sb = new StringBuffer();
+        sb.append(this.getName());
+        if (this.getExtraSkill() != null) {
+            sb.append("+");
+            sb.append(this.getExtraSkill().getParsableDesc());
+        }
+        sb.append("-");
+        sb.append(this.getLevel());
+        return sb.toString();
+    }
+
     public void reset() {
         this.hp = this.card.getMaxHP();
         this.status = new CardStatus();

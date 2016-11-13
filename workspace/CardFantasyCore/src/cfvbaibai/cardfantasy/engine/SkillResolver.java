@@ -233,6 +233,8 @@ public class SkillResolver {
                 RaceChange.apply(this, skillUseInfo, attacker, defender);
             } else if (skillUseInfo.getType() == SkillType.战争怒吼) {
                 Soften.apply(skillUseInfo, this, attacker, defender, 10);
+            } else if (skillUseInfo.getType() == SkillType.镜像) {
+                Summon.apply(this, skillUseInfo, attacker, false, 1, attacker.getName() + "·镜像");
             } else if (skillUseInfo.getType() == SkillType.召唤王国战士) {
                 Summon.apply(this, skillUseInfo, attacker, false, 2, "圣骑士", "魔剑士");
             } else if (skillUseInfo.getType() == SkillType.召唤骷髅战士) {

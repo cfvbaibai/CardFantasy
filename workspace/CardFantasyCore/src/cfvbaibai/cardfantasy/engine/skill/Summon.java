@@ -27,7 +27,6 @@ public class Summon {
             cardDescsToSummon.add(summonedCardDesc);
         }
 
-        resolver.getStage().getUI().useSkill(summoner, skill, true);
         List<CardInfo> summonedCards = DeckBuilder.build(summonedCardsDescs).getCardInfos(summoner.getOwner());
         List<CardInfo> aliveSummonedCards = new ArrayList<CardInfo>();
         for (int i = 0; i < summonedCards.size(); ++i) {
@@ -47,6 +46,9 @@ public class Summon {
         }
 
         List<CardInfo> cardsToSummon = Randomizer.getRandomizer().pickRandom(summonedCards, summonPicks, true, aliveSummonedCards);
+        if (cardsToSummon.size() > 0) {
+            resolver.getStage().getUI().useSkill(summoner, skill, true);
+        }
         for (int i = 0; i < cardsToSummon.size(); ++i) {
             CardInfo summonedCard = cardsToSummon.get(i);
             resolver.summonCard(summoner.getOwner(), summonedCard, summoner, true, skill);

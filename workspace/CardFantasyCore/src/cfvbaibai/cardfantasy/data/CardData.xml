@@ -2765,6 +2765,13 @@
         <Skill type="反射装甲" level="0" unlock="5" />
         <Skill type="法力反射" level="4" unlock="10" />
     </Card>
+    <Card id="4444" name="黑鸦收魂者" wikiId="" race="地狱" speed="2" star="4" cost="14" incrCost="2" at="290" hp="1250" incrAT="37" incrHP="32">
+        <Skill type="镜像" level="0" unlock="0" />
+        <Skill type="复活" level="0" unlock="5" />
+        <Skill type="送葬之刃" level="6" unlock="10" />
+    </Card>
+    <Card id="444401" name="黑鸦收魂者·镜像" wikiId="" race="地狱" speed="2" star="4" cost="14" incrCost="2" at="290" hp="1250" incrAT="37" incrHP="32">
+    </Card>
 
     <Card id="4501" name="毁灭之龙" wikiId="31064" race="地狱" speed="4" star="5" cost="14" incrCost="2" at="350" hp="1270" incrAT="34" incrHP="34">
         <Skill type="暴击" level="6" unlock="0" />
