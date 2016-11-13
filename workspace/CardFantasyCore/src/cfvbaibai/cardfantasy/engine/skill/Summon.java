@@ -1,5 +1,6 @@
 package cfvbaibai.cardfantasy.engine.skill;
 
+import java.util.LinkedList;
 import java.util.List;
 
 import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
@@ -18,19 +19,28 @@ public class Summon {
             throw new CardFantasyRuntimeException("summoner should not be null");
         }
         Skill skill = skillUseInfo.getSkill();
-        if (summoner.hasUsed(skillUseInfo)) {
-            return;
-        }
         List<CardInfo> livingCards = summoner.getOwner().getField().getAliveCards();
-        for (CardInfo fieldCard : livingCards) {
-            if (fieldCard.getStatus().containsStatusCausedBy(skillUseInfo, CardStatusType.召唤)) {
-                return;
-            }
+        List<String> cardDescsToSummon = new LinkedList<String>();
+        for (String summonedCardDesc : summonedCardsDescs) {
+            cardDescsToSummon.add(summonedCardDesc);
         }
+
         resolver.getStage().getUI().useSkill(summoner, skill, true);
         List<CardInfo> summonedCards = DeckBuilder.build(summonedCardsDescs).getCardInfos(summoner.getOwner());
         for (int i = 0; i < summonedCards.size(); ++i) {
             CardInfo summonedCard = summonedCards.get(i);
+            boolean cardStillAlive = false;
+            for (CardInfo fieldCard : livingCards) {
+                if (fieldCard.getStatus().containsStatusCausedBy(skillUseInfo, CardStatusType.召唤)) {
+                    if (fieldCard.getName().equals(summonedCard.getName())) {
+                        cardStillAlive = true;
+                        continue;
+                    }
+                }
+            }
+            if (cardStillAlive) {
+                continue;
+            }
             resolver.summonCard(summoner.getOwner(), summonedCard, summoner, true, skill);
             CardStatusItem weakStatusItem = CardStatusItem.weak(skillUseInfo);
             resolver.getStage().getUI().addCardStatus(summoner, summonedCard, skill, weakStatusItem);
@@ -39,6 +49,5 @@ public class Summon {
             resolver.getStage().getUI().addCardStatus(summoner, summonedCard, skill, summonedStatusItem);
             summonedCard.addStatus(summonedStatusItem);
         }
-        summoner.setUsed(skillUseInfo);
     }
 }

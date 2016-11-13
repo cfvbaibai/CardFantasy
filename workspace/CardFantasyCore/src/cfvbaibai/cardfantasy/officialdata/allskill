@@ -16444,7 +16444,7 @@
         "AffectValue": 1,
         "AffectValue2": 0,
         "SkillCategory": 2,
-        "Desc": "卡牌上场后，敌方场上所有卡牌的种族变为“王国”，持续一回合。"
+        "Desc": "卡牌上场后，敌方场上所有卡牌的种族变为“王国”，持续一回合，对魔神、魔王无效。"
       },
       {
         "SkillId": 1266,
@@ -16457,7 +16457,7 @@
         "AffectValue": 2,
         "AffectValue2": 0,
         "SkillCategory": 2,
-        "Desc": "卡牌上场后，敌方场上所有卡牌的种族变为“森林”，持续一回合。"
+        "Desc": "卡牌上场后，敌方场上所有卡牌的种族变为“森林”，持续一回合，对魔神、魔王无效。"
       },
       {
         "SkillId": 1267,
@@ -16470,7 +16470,7 @@
         "AffectValue": 3,
         "AffectValue2": 0,
         "SkillCategory": 2,
-        "Desc": "卡牌上场后，敌方场上所有卡牌的种族变为“蛮荒”，持续一回合。"
+        "Desc": "卡牌上场后，敌方场上所有卡牌的种族变为“蛮荒”，持续一回合，对魔神、魔王无效。"
       },
       {
         "SkillId": 1268,
@@ -16483,7 +16483,7 @@
         "AffectValue": 4,
         "AffectValue2": 0,
         "SkillCategory": 2,
-        "Desc": "卡牌上场后，敌方场上所有卡牌的种族变为“地狱”，持续一回合。"
+        "Desc": "卡牌上场后，敌方场上所有卡牌的种族变为“地狱”，持续一回合，对魔神、魔王无效。"
       },
       {
         "SkillId": 1269,
@@ -17198,7 +17198,7 @@
         "AffectValue": 1,
         "AffectValue2": 0,
         "SkillCategory": 2,
-        "Desc": "卡牌上场后，敌方场上所有卡牌的种族变为“王国”，持续一回合。"
+        "Desc": "卡牌上场后，敌方场上所有卡牌的种族变为“王国”，持续一回合，对魔神、魔王无效。"
       },
       {
         "SkillId": 1324,
@@ -17211,7 +17211,7 @@
         "AffectValue": 2,
         "AffectValue2": 0,
         "SkillCategory": 2,
-        "Desc": "卡牌上场后，敌方场上所有卡牌的种族变为“森林”，持续一回合。"
+        "Desc": "卡牌上场后，敌方场上所有卡牌的种族变为“森林”，持续一回合，对魔神、魔王无效。"
       },
       {
         "SkillId": 1325,
@@ -17224,7 +17224,7 @@
         "AffectValue": 3,
         "AffectValue2": 0,
         "SkillCategory": 2,
-        "Desc": "卡牌上场后，敌方场上所有卡牌的种族变为“蛮荒”，持续一回合。"
+        "Desc": "卡牌上场后，敌方场上所有卡牌的种族变为“蛮荒”，持续一回合，对魔神、魔王无效。"
       },
       {
         "SkillId": 1326,
@@ -17237,7 +17237,7 @@
         "AffectValue": 4,
         "AffectValue2": 0,
         "SkillCategory": 2,
-        "Desc": "卡牌上场后，敌方场上所有卡牌的种族变为“地狱”，持续一回合。"
+        "Desc": "卡牌上场后，敌方场上所有卡牌的种族变为“地狱”，持续一回合，对魔神、魔王无效。"
       },
       {
         "SkillId": 1327,
@@ -20600,8 +20600,8 @@
         "LanchType": 9,
         "LanchCondition": 0,
         "LanchConditionValue": 0,
-        "AffectType": 101,
-        "AffectValue": 9203,
+        "AffectType": 154,
+        "AffectValue": 1,
         "AffectValue2": 0,
         "SkillCategory": 2,
         "Desc": "大毒汁王国永不消散！！！"
@@ -21033,7 +21033,7 @@
         "AffectValue": 0,
         "AffectValue2": 50,
         "SkillCategory": 3,
-        "Desc": "受到物理攻击时减少%50伤害。"
+        "Desc": "受到物理攻击时减少50%伤害。"
       },
       {
         "SkillId": 1487,
@@ -21046,7 +21046,7 @@
         "AffectValue": 0,
         "AffectValue2": 50,
         "SkillCategory": 3,
-        "Desc": "当受到火、冰、雷、血攻击时，每次减少%50的技能伤害。"
+        "Desc": "当受到火、冰、雷、血攻击时，每次减少50%的技能伤害。"
       },
       {
         "SkillId": 1488,
@@ -24663,19 +24663,6 @@
         "Desc": "来自最邪恶的梦境之中的力量，仿佛能够将现实与梦境一同刺穿。(1)物理攻击时，增加当前损失血量乘以50%的攻击力。（不计算增益血量）(2)当对敌方卡牌造成伤害时，敌方英雄同时受到15%的伤害。"
       },
       {
-        "SkillId": 1730,
-        "Name": "镜像",
-        "Type": 125,
-        "LanchType": 4,
-        "LanchCondition": 0,
-        "LanchConditionValue": 0,
-        "AffectType": 101,
-        "AffectValue": 9018,
-        "AffectValue2": 0,
-        "SkillCategory": 2,
-        "Desc": "于混乱次元中映射出来的邪恶幻影。卡牌上场后，召唤1张相同卡牌上场战斗（召唤出的卡牌不会进入墓地，牌堆），如果场上已经存在自身召唤的卡牌时，则不发动召唤。"
-      },
-      {
         "SkillId": 1731,
         "Name": "鬼王之怒",
         "Type": 136,
@@ -25801,7 +25788,7 @@
         "LanchCondition": 0,
         "LanchConditionValue": 0,
         "AffectType": 122,
-        "AffectValue": "286_993",
+        "AffectValue": "286_47",
         "AffectValue2": 0,
         "SkillCategory": 1,
         "Desc": "(1)攻击正面卡牌并造成伤害时同时攻击左右2张卡牌。(2)当对敌方卡牌造成物理伤害时，回复伤害值70%的生命值。"
@@ -25886,7 +25873,7 @@
       },
       {
         "SkillId": 2131,
-        "Name": "召唤：星座守护者",
+        "Name": "星之所在",
         "Type": 125,
         "LanchType": 4,
         "LanchCondition": 0,
@@ -25895,11 +25882,11 @@
         "AffectValue": "701_702_703_704_705_706_707_708_709_710_711_712",
         "AffectValue2": 2,
         "SkillCategory": 2,
-        "Desc": "可从12张星座卡牌中随机召唤两张上场战斗（召唤出的卡牌不会进入墓地，牌堆），如果场上已经存在自身召唤的卡牌时，则不发动召唤。"
+        "Desc": "随机召唤2张星座卡牌上场战斗（召唤出的卡牌不会进入墓地，牌堆，手牌），如果已经在场上召唤出所有可召唤卡牌时，则不发动召唤。"
       },
       {
         "SkillId": 2132,
-        "Name": "召唤：驯龙高手",
+        "Name": "灵龙轰咆",
         "Type": 125,
         "LanchType": 4,
         "LanchCondition": 0,
@@ -25908,11 +25895,11 @@
         "AffectValue": "60_29_216_173_188_189_368_119_183_288_448_449_450",
         "AffectValue2": 2,
         "SkillCategory": 2,
-        "Desc": "可从13张龙系五星卡牌中随机召唤两张上场战斗（召唤出的卡牌不会进入墓地，牌堆），如果场上已经存在自身召唤的卡牌时，则不发动召唤。"
+        "Desc": "随机召唤2张龙系卡牌上场战斗（召唤出的卡牌不会进入墓地，牌堆，手牌），如果已经在场上召唤出所有可召唤卡牌时，则不发动召唤。"
       },
       {
         "SkillId": 2133,
-        "Name": "[降临]召唤：星座守护者",
+        "Name": "[降临]星之所在",
         "Type": 125,
         "LanchType": 10,
         "LanchCondition": 0,
@@ -25921,11 +25908,11 @@
         "AffectValue": "701_702_703_704_705_706_707_708_709_710_711_712",
         "AffectValue2": 2,
         "SkillCategory": 2,
-        "Desc": "可从12张星座卡牌中随机召唤两张上场战斗（召唤出的卡牌不会进入墓地，牌堆），如果场上已经存在自身召唤的卡牌时，则不发动召唤。"
+        "Desc": "随机召唤2张星座卡牌上场战斗（召唤出的卡牌不会进入墓地，牌堆，手牌），如果已经在场上召唤出所有可召唤卡牌时，则不发动召唤。"
       },
       {
         "SkillId": 2134,
-        "Name": "[降临]召唤：驯龙高手",
+        "Name": "[降临]灵龙轰咆",
         "Type": 125,
         "LanchType": 10,
         "LanchCondition": 0,
@@ -25934,7 +25921,163 @@
         "AffectValue": "60_29_216_173_188_189_368_119_183_288_448_449_450",
         "AffectValue2": 2,
         "SkillCategory": 2,
-        "Desc": "可从13张龙系五星卡牌中随机召唤两张上场战斗（召唤出的卡牌不会进入墓地，牌堆），如果场上已经存在自身召唤的卡牌时，则不发动召唤。"
+        "Desc": "随机召唤2张龙系卡牌上场战斗（召唤出的卡牌不会进入墓地，牌堆，手牌），如果已经在场上召唤出所有可召唤卡牌时，则不发动召唤。"
+      },
+      {
+        "SkillId": 2135,
+        "Name": "镜像",
+        "Type": 125,
+        "LanchType": 4,
+        "LanchCondition": 0,
+        "LanchConditionValue": 0,
+        "AffectType": 154,
+        "AffectValue": 1,
+        "AffectValue2": 0,
+        "SkillCategory": 2,
+        "Desc": "于混乱次元中映射出来的邪恶幻影。卡牌上场后，召唤1张相同卡牌上场战斗（召唤出的卡牌不会进入墓地，牌堆），如果场上已经存在自身召唤的卡牌时，则不发动召唤。"
+      },
+      {
+        "SkillId": 2136,
+        "Name": "英灵降临",
+        "Type": 125,
+        "LanchType": 4,
+        "LanchCondition": 0,
+        "LanchConditionValue": 0,
+        "AffectType": 101,
+        "AffectValue": "454_440_521_501_306_351_393_510",
+        "AffectValue2": 1,
+        "SkillCategory": 2,
+        "Desc": "随机召唤1张骑士卡牌上场战斗（召唤出的卡牌不会进入墓地，牌堆，手牌），如果已经在场上召唤出所有可召唤卡牌时，则不发动召唤。"
+      },
+      {
+        "SkillId": 2137,
+        "Name": "[降临]英灵降临",
+        "Type": 125,
+        "LanchType": 10,
+        "LanchCondition": 0,
+        "LanchConditionValue": 0,
+        "AffectType": 101,
+        "AffectValue": "454_440_521_501_306_351_393_510",
+        "AffectValue2": 1,
+        "SkillCategory": 2,
+        "Desc": "随机召唤1张骑士卡牌上场战斗（召唤出的卡牌不会进入墓地，牌堆，手牌），如果已经在场上召唤出所有可召唤卡牌时，则不发动召唤。"
+      },
+      {
+        "SkillId": 2138,
+        "Name": "[降临]镜像",
+        "Type": 125,
+        "LanchType": 10,
+        "LanchCondition": 0,
+        "LanchConditionValue": 0,
+        "AffectType": 154,
+        "AffectValue": 1,
+        "AffectValue2": 0,
+        "SkillCategory": 2,
+        "Desc": "于混乱次元中映射出来的邪恶幻影。卡牌上场后，召唤1张相同卡牌上场战斗（召唤出的卡牌不会进入墓地，牌堆，手牌），如果场上已经存在自身召唤的卡牌时，则不发动召唤。"
+      },
+      {
+        "SkillId": 2139,
+        "Name": "[先机]加速1",
+        "Type": 76,
+        "LanchType": 0,
+        "LanchCondition": 0,
+        "LanchConditionValue": 0,
+        "AffectType": 142,
+        "AffectValue": 1210,
+        "AffectValue2": 0,
+        "SkillCategory": 2,
+        "Desc": "每回合减少我方等待区等待时间最长的卡牌1CD。"
+      },
+      {
+        "SkillId": 2140,
+        "Name": "[先机]阻碍1",
+        "Type": 76,
+        "LanchType": 0,
+        "LanchCondition": 0,
+        "LanchConditionValue": 0,
+        "AffectType": 142,
+        "AffectValue": 1211,
+        "AffectValue2": 0,
+        "SkillCategory": 2,
+        "Desc": "每回合增加敌方等待区等待时间最短的卡牌1CD。"
+      },
+      {
+        "SkillId": 2141,
+        "Name": "[先机]加速2",
+        "Type": 76,
+        "LanchType": 0,
+        "LanchCondition": 0,
+        "LanchConditionValue": 0,
+        "AffectType": 142,
+        "AffectValue": 1212,
+        "AffectValue2": 0,
+        "SkillCategory": 2,
+        "Desc": "每回合减少我方等待区等待时间最长的卡牌2CD。"
+      },
+      {
+        "SkillId": 2142,
+        "Name": "[先机]阻碍2",
+        "Type": 76,
+        "LanchType": 0,
+        "LanchCondition": 0,
+        "LanchConditionValue": 0,
+        "AffectType": 142,
+        "AffectValue": 1213,
+        "AffectValue2": 0,
+        "SkillCategory": 2,
+        "Desc": "每回合增加敌方等待区等待时间最短的卡牌2CD。"
+      },
+      {
+        "SkillId": 2143,
+        "Name": "[遗志]加速1",
+        "Type": 76,
+        "LanchType": 0,
+        "LanchCondition": 0,
+        "LanchConditionValue": 0,
+        "AffectType": 141,
+        "AffectValue": 1210,
+        "AffectValue2": 0,
+        "SkillCategory": 2,
+        "Desc": "每回合减少我方等待区等待时间最长的卡牌1CD。"
+      },
+      {
+        "SkillId": 2144,
+        "Name": "[遗志]阻碍1",
+        "Type": 76,
+        "LanchType": 0,
+        "LanchCondition": 0,
+        "LanchConditionValue": 0,
+        "AffectType": 141,
+        "AffectValue": 1211,
+        "AffectValue2": 0,
+        "SkillCategory": 2,
+        "Desc": "每回合增加敌方等待区等待时间最短的卡牌1CD。"
+      },
+      {
+        "SkillId": 2145,
+        "Name": "[遗志]加速2",
+        "Type": 76,
+        "LanchType": 0,
+        "LanchCondition": 0,
+        "LanchConditionValue": 0,
+        "AffectType": 141,
+        "AffectValue": 1212,
+        "AffectValue2": 0,
+        "SkillCategory": 2,
+        "Desc": "每回合减少我方等待区等待时间最长的卡牌2CD。"
+      },
+      {
+        "SkillId": 2146,
+        "Name": "[遗志]阻碍2",
+        "Type": 76,
+        "LanchType": 0,
+        "LanchCondition": 0,
+        "LanchConditionValue": 0,
+        "AffectType": 141,
+        "AffectValue": 1213,
+        "AffectValue2": 0,
+        "SkillCategory": 2,
+        "Desc": "每回合增加敌方等待区等待时间最短的卡牌2CD。"
       }
     ]
   },
@@ -25942,7 +26085,7 @@
   "message": null,
   "type": null,
   "version": {
-    "http": "201302934",
+    "http": "201302935",
     "stop": "",
     "appversion": "version_1",
     "appurl": "ios://xxx",

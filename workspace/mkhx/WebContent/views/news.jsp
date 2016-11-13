@@ -36,6 +36,9 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2016-11-13: <ul>
+                        <li>更新普通召唤的机制, 感谢<x>Core灬酷睿</x>和<x>donysea</x>的帮助。</li>
+                    </ul></li>
                     <li>2016-10-27: <ul>
                         <li>添加新卡<cf:c>武形破拳尊者</cf:c>, 感谢<x>Core灬酷睿</x>的帮助</li>
                         <li>更新魔神战五星小兵的种类, 感谢<x>Core灬酷睿</x>和<x>会飞的霍比特人</x>的帮助</li>
