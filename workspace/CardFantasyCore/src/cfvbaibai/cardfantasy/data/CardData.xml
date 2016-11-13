@@ -2847,9 +2847,9 @@
         <Skill type="转生" level="6" unlock="10" />
     </Card>
     <Card id="4513" name="死域军神" wikiId="62844" race="地狱" speed="3" star="5" cost="16" incrCost="2" at="380" hp="1210" incrAT="32" incrHP="35">
-        <Skill type="战意" level="6" unlock="0" />
+        <Skill type="鬼王之怒" level="0" unlock="0" />
         <Skill type="弱点攻击" level="0" unlock="5" />
-        <Skill type="转生" level="7" unlock="10" />
+        <Skill type="武形秘术" level="0" unlock="10" />
     </Card>
     <Card id="4514" name="圆月魔女" wikiId="62845" race="地狱" speed="4" star="5" cost="16" incrCost="2" at="310" hp="1390" incrAT="33" incrHP="40">
         <Skill type="法力侵蚀" level="8" unlock="0" />
