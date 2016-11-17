@@ -26,6 +26,7 @@ public enum SkillType {
     狂热("30880", 10, SkillTag.永久, SkillTag.基础攻击加成),
     嗜血("30940", 10, SkillTag.永久, SkillTag.基础攻击加成),
     透支("30946", 20, SkillTag.永久, SkillTag.基础攻击加成),
+    过载("30946", 20, 30, SkillTag.永久, SkillTag.基础攻击加成),
     贪吃("",100, 20, SkillTag.永久, SkillTag.基础攻击加成),
     邪灵汲取("43445", 0, 3, SkillTag.抗免疫, SkillTag.永久, SkillTag.基础攻击加成, SkillTag.抗不屈),
     森林之力("31121", 25, SkillTag.基础攻击加成, SkillTag.抗削弱),
@@ -47,6 +48,7 @@ public enum SkillType {
     背刺("30879", 40, SkillTag.独立攻击加成),
     复仇("40086", 40, 10, SkillTag.独立攻击加成),
     振奋("80192", 40, 10, SkillTag.独立攻击加成),
+    会心一击("", 100, 0, SkillTag.独立攻击加成),
     奋战("", 40, 10, SkillTag.独立攻击加成),
     神兵召唤("", 0, SkillTag.额外攻击加成),
     觉醒神兵召唤("", 0, SkillTag.额外攻击加成, SkillTag.不可洗炼),
@@ -109,6 +111,7 @@ public enum SkillType {
     祈福("", 0, 2),
 
     横扫("30941", 0, SkillTag.抗免疫, SkillTag.物理攻击),
+    三千世界("30941", 0, SkillTag.抗免疫, SkillTag.物理攻击),
     闪避("30939", 20, 5, SkillTag.物理护甲),
     连击("", 0, SkillTag.物理攻击),
 
@@ -171,6 +174,7 @@ public enum SkillType {
     迷魂("31129", 30, 5, SkillTag.控制),
     混乱领域("", 30, 5, SkillTag.控制),
     精神狂乱("", 0),
+    无我境界("", 70, 0, SkillTag.控制),
 
     吸血("31135", 10),
     恶灵汲取("", 0, 3, SkillTag.抗免疫),
@@ -216,7 +220,7 @@ public enum SkillType {
     九转秘术("", 0, 0),
 
     大地之盾("80193", 0, SkillTag.控制, SkillTag.抗免疫),
-    一闪("", 0, SkillTag.控制, SkillTag.抗免疫),
+    一闪("", 50, 0, SkillTag.控制, SkillTag.抗免疫),
     圣盾("56750", 0),
 
     英雄杀手("36260", 0, 15, SkillTag.额外攻击加成, SkillTag.不可洗炼),

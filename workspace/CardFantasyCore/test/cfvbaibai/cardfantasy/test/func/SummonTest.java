@@ -21,7 +21,6 @@ public class SummonTest extends SkillValidationTest {
         context.startGame();
 
         random.addNextPicks(0, 1, 2).addNextNumbers(1000, 1000, 1000);  // 陨星魔法使寒霜冲击
-        random.addNextPicks(0, 1); // 陨星魔法使召唤
         context.proceedOneRound();
         Assert.assertEquals(3, context.getPlayer(0).getField().size());
         // 255 来自寒霜冲击
@@ -50,7 +49,6 @@ public class SummonTest extends SkillValidationTest {
         context.startGame();
 
         random.addNextPicks(0, 1).addNextNumbers(1000);  // 陨星魔法使寒霜冲击
-        random.addNextPicks(0, 1);   // 陨星魔法使召唤
         context.proceedOneRound();
         Assert.assertEquals(3, context.getPlayer(0).getField().size());
         Assert.assertEquals(1850 + 200 /* 召唤圣骑士的王国守护 */, c陨星魔法师.getHP());
@@ -60,9 +58,8 @@ public class SummonTest extends SkillValidationTest {
         Assert.assertEquals(1850, c陨星魔法师.getHP()); // 圣骑士离场，失去BUFF
 
         random.addNextPicks(0, 1).addNextNumbers(1000);  // 陨星魔法使寒霜冲击
-        random.addNextPicks(0); // 陨星魔法使再次召唤
         context.proceedOneRound();
-        Assert.assertEquals(3, context.getPlayer(0).getField().size()); // 召唤的两张卡死了一张，此时召唤死去的那张卡
+        Assert.assertEquals(2, context.getPlayer(0).getField().size()); // 召唤的两张卡死了一张，此时召唤死去的那张卡
         Assert.assertEquals(0, context.getPlayer(0).getGrave().size()); // 被召唤的卡死亡后不进入墓地
     }
     
@@ -75,7 +72,6 @@ public class SummonTest extends SkillValidationTest {
         context.startGame();
 
         random.addNextPicks(0, 1).addNextNumbers(1000, 1000);  // 陨星魔法使寒霜冲击
-        random.addNextPicks(0, 1); // 陨星魔法使召唤
         context.proceedOneRound();
 
         context.proceedOneRound();
@@ -96,9 +92,7 @@ public class SummonTest extends SkillValidationTest {
         context.startGame();
 
         random.addNextPicks(0, 1, 2, 3, 4).addNextNumbers(1000, 1000, 1000);  // 陨星魔法使1寒霜冲击
-        random.addNextPicks(0, 1); // 陨星魔法使1召唤
         random.addNextPicks(0, 1, 2, 3, 4).addNextNumbers(1000, 1000, 1000);  // 陨星魔法使2寒霜冲击
-        random.addNextPicks(0, 1); // 陨星魔法使2召唤
         Field fieldA = context.getPlayer(0).getField();
         context.proceedOneRound();
         Assert.assertEquals(6, fieldA.size()); // 两个陨星魔法使各召唤2张卡
@@ -110,23 +104,20 @@ public class SummonTest extends SkillValidationTest {
         c金属巨龙1.reset(); // 回血免得被打死
         c金属巨龙2.reset(); // 回血免得被打死
         random.addNextPicks(0, 1, 2, 3, 4).addNextNumbers(1000, 1000, 1000);  // 陨星魔法使1寒霜冲击
-        random.addNextPicks(0); // 陨星魔法使1再次召唤
         random.addNextPicks(0, 1, 2, 3, 4).addNextNumbers(1000, 1000, 1000);  // 陨星魔法使2寒霜冲击
-        random.addNextPicks(0); // 陨星魔法使2再次召唤
         context.proceedOneRound();
-        Assert.assertEquals(6, fieldA.size()); // 此时陨星魔法使都能再召唤
+        Assert.assertEquals(4, fieldA.size()); // 此时陨星魔法使不能再召唤
 
         random.addNextNumbers(0, 0); // 两个金属巨龙都暴击成功, 圣骑士仆从被杀死
         context.proceedOneRound();
-        Assert.assertEquals(5, fieldA.size());
+        Assert.assertEquals(3, fieldA.size());
 
         c金属巨龙1.reset(); // 回血免得被打死
         c金属巨龙2.reset(); // 回血免得被打死
         random.addNextPicks(0, 1, 2, 3, 4).addNextNumbers(1000, 1000, 1000);  // 陨星魔法使1寒霜冲击
         random.addNextPicks(0, 1, 2, 3, 4).addNextNumbers(1000, 1000, 1000);  // 陨星魔法使2寒霜冲击
-        random.addNextPicks(0); // 陨星魔法使2再次召唤
         context.proceedOneRound();
-        Assert.assertEquals(6, fieldA.size()); // 陨星魔法使1再次召唤
+        Assert.assertEquals(5, fieldA.size());
     }
 
     /**
@@ -139,7 +130,6 @@ public class SummonTest extends SkillValidationTest {
         context.startGame();
 
         Field fieldA = context.getPlayer(0).getField();
-        random.addNextPicks(0, 1); // 陨星魔法使召唤
         context.proceedOneRound();
         Assert.assertEquals(3, fieldA.size()); // 召唤两个仆从
 
@@ -158,26 +148,24 @@ public class SummonTest extends SkillValidationTest {
         Assert.assertEquals(3, fieldA.size());
         
         random.addNextPicks(0);  // 陨星魔法使寒霜冲击
-        random.addNextPicks(0);  // 陨星魔法使重新召唤圣骑士
         context.proceedOneRound();
-        Assert.assertEquals(4, fieldA.size()); // 复活者无法复活仆从，陨星魔法重新召唤
+        Assert.assertEquals(3, fieldA.size()); // 复活者无法复活仆从，陨星魔法重新召唤
 
         context.addToField(3, 1); // 女神侍者上场
         random.addNextNumbers(0, 0); // 金属巨龙暴击杀死魔剑士
         random.addNextPicks(2).addNextNumbers(0); // 女神侍者冰冻陨星魔法使
         context.proceedOneRound();
-        Assert.assertEquals(3, fieldA.size());
+        Assert.assertEquals(2, fieldA.size());
 
         context.proceedOneRound();
-        Assert.assertEquals(3, fieldA.size()); // 此时陨星魔法使被冰冻，还是不能召唤
+        Assert.assertEquals(2, fieldA.size()); // 此时陨星魔法使被冰冻，还是不能召唤
 
         random.addNextNumbers(1000, 1000); // 金属巨龙不暴击
         random.addNextPicks(0).addNextNumbers(1000); // 女神侍者不冰冻
         context.proceedOneRound();
-        Assert.assertEquals(3, fieldA.size());
+        Assert.assertEquals(2, fieldA.size());
         
         random.addNextPicks(0, 1).addNextNumbers(1000);  // 陨星魔法使寒霜冲击
-        random.addNextPicks(1); // 陨星魔法使重新召唤魔剑士
         context.proceedOneRound();
         Assert.assertEquals(4, fieldA.size()); // 陨星魔法使可以行动了，召唤
     }
@@ -197,7 +185,6 @@ public class SummonTest extends SkillValidationTest {
 
         r雷盾.activate();
         random.addNextPicks(0, 1).addNextNumbers(0, 0); // 陨星魔法使的寒霜冲击
-        random.addNextPicks(0, 1); // 陨星魔法使召唤
         context.proceedOneRound();
         Field fieldA = context.getPlayer(0).getField();
         Assert.assertEquals(3, fieldA.size());
@@ -223,7 +210,6 @@ public class SummonTest extends SkillValidationTest {
         context.addToGrave(4, 0);
         context.addToGrave(5, 0);
         random.addNextPicks(0, 1).addNextNumbers(1000, 1000);      // 陨星魔法使的寒霜冲击无法冻结
-        random.addNextPicks(0, 1); // 陨星魔法使召唤
         context.proceedOneRound();
         
         random.addNextNumbers(0, 0);    // 金属巨龙双暴击
@@ -261,7 +247,6 @@ public class SummonTest extends SkillValidationTest {
         CardInfo c大毒汁怪 = context.addToField(2, 1).setBasicHP(2);
         context.startGame();
 
-        random.addNextPicks(0); // 召唤炎魔
         context.proceedOneRound();
         Assert.assertEquals(1, c大毒汁怪.getOwner().getField().size());
         Assert.assertEquals(1, c大毒汁怪.getOwner().getGrave().size());
