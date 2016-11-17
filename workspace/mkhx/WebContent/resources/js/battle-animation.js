@@ -1349,13 +1349,13 @@ var Animater = function() {
     
     this.msgIgnoredSkills = [
         '背刺', '暴击', '狂热', '嗜血', '横扫', '穿刺', '精准打击', '回春', '月恩术', '圣母回声', '吸血', '振奋',
-        '透支', '战意', '穷追猛打', '趁胜追击', '复仇', '奋战', '英雄杀手', '反噬',
+        '透支', '过载', '会心一击', '战意', '穷追猛打', '趁胜追击', '复仇', '奋战', '英雄杀手', '反噬',
         '圣光', '要害', '暗杀', '污染', '连锁攻击', '凯撒之击', '神兵召唤', '觉醒神兵召唤', '末世术'
     ];
     this.selfUsedSkills = [
         '不动', '脱困', '群体脱困', '法力反射', '花族秘术', '冰甲', '水流护甲', '闪避', '守护', '魔神之甲', '灵巧', '灵魂禁锢',
         '王国之盾', '森林之盾', '蛮荒之盾', '地狱之盾', '弱点攻击', '无效', '圣盾', '不屈', '圣炎', '斩杀', '送葬之刃', '逃跑', '灵魂禁封',
-        '镜面装甲', '阿拉希血统', '神威', '月之守护', '洪荒之术', '冰神附体'
+        '镜面装甲', '阿拉希血统', '神威', '月之守护', '洪荒之术', '冰神附体', '三千世界', '神魔之甲'
     ];
     this.__useSkill = function(data) {
         var attacker = data[0]; // EntityRuntimeInfo
@@ -1500,7 +1500,7 @@ var Animater = function() {
                    skill == '武形秘箭' || skill == '武形神箭' || skill == '骤雨') {
             this.flyImage({ fileName: 'aim.png', width: 48, height: 48, text: skill, },
                     attacker, defenders, settings.skillDuration);
-        } else if (skill == '精神狂乱') {
+        } else if (skill == '精神狂乱' || skill == '无我境界') {
             this.flyImage({ fileName: 'insane.png', width: 48, height: 48, text: skill, },
                     attacker, defenders, settings.skillDuration);
         } else if (skill == '生命链接') {

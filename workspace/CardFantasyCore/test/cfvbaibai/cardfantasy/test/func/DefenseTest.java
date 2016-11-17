@@ -1100,4 +1100,15 @@ public class DefenseTest extends SkillValidationTest {
         context.proceedOneRound();
         Assert.assertEquals(810 - 450, 5000 - c占位符.getHP());
     }
+
+    @Test
+    public void test神魔之甲_三千世界() {
+        SkillTestContext context = prepare(50, 50, "秘银巨石像+三千世界", "占位符+神魔之甲");
+        context.addToField(0, 0);
+        CardInfo c占位符 = context.addToField(1, 1);
+        context.startGame();
+
+        context.proceedOneRound();
+        Assert.assertEquals(810, 5000 - c占位符.getHP());
+    }
 }
