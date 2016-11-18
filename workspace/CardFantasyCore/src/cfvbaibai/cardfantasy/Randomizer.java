@@ -19,7 +19,7 @@ public abstract class Randomizer {
 
     public abstract int next(int min, int max);
     public abstract void shuffle(List<?> list);
-    public abstract <T> List<T> pickRandom(final List<T> list, int max, boolean excludeNull, T extraExclusion);
+    public abstract <T> List<T> pickRandom(final List<T> list, int max, boolean excludeNull, List<T> extraExclusion);
 
     private GameUI ui;
     

@@ -8,6 +8,7 @@ import cfvbaibai.cardfantasy.data.Race;
 import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.CardStatusType;
+import cfvbaibai.cardfantasy.engine.EntityInfo;
 import cfvbaibai.cardfantasy.engine.HeroDieSignal;
 import cfvbaibai.cardfantasy.engine.Player;
 import cfvbaibai.cardfantasy.engine.SkillResolver;
@@ -17,9 +18,18 @@ public class SoulCrash {
     public static void apply(SkillUseInfo skillUseInfo, SkillResolver resolver, CardInfo attacker, Player defender) throws HeroDieSignal {
         List<CardInfo> victims = new ArrayList<CardInfo>();
         for (CardInfo card : defender.getField().getAliveCards()) {
-            if (card.isSummonedMinion() && card.getRace() != Race.BOSS) {
-                victims.add(card);
+            if (!card.isSummonedMinion()) {
+                continue;
+            } else {
+                EntityInfo summoner = card.getSummoner();
+                if (summoner instanceof CardInfo && ((CardInfo)summoner).getRace() == Race.BOSS) {
+                    continue;
+                }
             }
+            if (card.getRace() == Race.BOSS) {
+                continue;
+            }
+            victims.add(card);
         }
         GameUI ui = resolver.getStage().getUI();
         Skill skill = skillUseInfo.getSkill();

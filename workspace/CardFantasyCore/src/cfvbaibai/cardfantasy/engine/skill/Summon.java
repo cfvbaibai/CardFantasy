@@ -1,9 +1,11 @@
 package cfvbaibai.cardfantasy.engine.skill;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
 import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
+import cfvbaibai.cardfantasy.Randomizer;
 import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.CardStatusItem;
@@ -14,7 +16,7 @@ import cfvbaibai.cardfantasy.engine.SkillUseInfo;
 import cfvbaibai.cardfantasy.game.DeckBuilder;
 
 public class Summon {
-    public static void apply(SkillResolver resolver, SkillUseInfo skillUseInfo, CardInfo summoner, String ... summonedCardsDescs) throws HeroDieSignal {
+    public static void apply(SkillResolver resolver, SkillUseInfo skillUseInfo, CardInfo summoner, SummonType summonType, int summonPicks, String ... summonedCardsDescs) throws HeroDieSignal {
         if (summoner == null) {
             throw new CardFantasyRuntimeException("summoner should not be null");
         }
@@ -24,27 +26,50 @@ public class Summon {
         for (String summonedCardDesc : summonedCardsDescs) {
             cardDescsToSummon.add(summonedCardDesc);
         }
-
-        resolver.getStage().getUI().useSkill(summoner, skill, true);
-        List<CardInfo> summonedCards = DeckBuilder.build(summonedCardsDescs).getCardInfos(summoner.getOwner());
-        for (int i = 0; i < summonedCards.size(); ++i) {
-            CardInfo summonedCard = summonedCards.get(i);
-            boolean cardStillAlive = false;
+        List<CardInfo> cardsToSummon = new ArrayList<CardInfo>();
+        List<CardInfo> summonCardCandidates = DeckBuilder.build(summonedCardsDescs).getCardInfos(summoner.getOwner());
+        if (summonType == SummonType.Normal || summonType == SummonType.Summoning) {
+            boolean anySummonedCardStillAlive = false;
             for (CardInfo fieldCard : livingCards) {
                 if (fieldCard.getStatus().containsStatusCausedBy(skillUseInfo, CardStatusType.召唤)) {
-                    if (fieldCard.getName().equals(summonedCard.getName())) {
-                        cardStillAlive = true;
-                        continue;
-                    }
+                    anySummonedCardStillAlive = true;
                 }
             }
-            if (cardStillAlive) {
-                continue;
+            if (!anySummonedCardStillAlive) {
+                cardsToSummon.addAll(summonCardCandidates);
             }
+        } else if (summonType == SummonType.Random || summonType == SummonType.RandomSummoning) {
+            List<CardInfo> aliveSummonedCards = new ArrayList<CardInfo>();
+            for (int i = 0; i < summonCardCandidates.size(); ++i) {
+                CardInfo summonCardCandidate = summonCardCandidates.get(i);
+                boolean cardStillAlive = false;
+                for (CardInfo fieldCard : livingCards) {
+                    if (fieldCard.getStatus().containsStatusCausedBy(skillUseInfo, CardStatusType.召唤)) {
+                        if (fieldCard.getName().equals(summonCardCandidate.getName())) {
+                            cardStillAlive = true;
+                            continue;
+                        }
+                    }
+                }
+                if (cardStillAlive) {
+                    aliveSummonedCards.add(summonCardCandidate);
+                }
+            }
+
+            cardsToSummon = Randomizer.getRandomizer().pickRandom(summonCardCandidates, summonPicks, true, aliveSummonedCards);
+        }
+
+        if (cardsToSummon.size() > 0) {
+            resolver.getStage().getUI().useSkill(summoner, skill, true);
+        }
+        for (int i = 0; i < cardsToSummon.size(); ++i) {
+            CardInfo summonedCard = cardsToSummon.get(i);
             resolver.summonCard(summoner.getOwner(), summonedCard, summoner, true, skill);
-            CardStatusItem weakStatusItem = CardStatusItem.weak(skillUseInfo);
-            resolver.getStage().getUI().addCardStatus(summoner, summonedCard, skill, weakStatusItem);
-            summonedCard.addStatus(weakStatusItem);
+            if (summonType != SummonType.Summoning && summonType != SummonType.RandomSummoning) {
+                CardStatusItem weakStatusItem = CardStatusItem.weak(skillUseInfo);
+                resolver.getStage().getUI().addCardStatus(summoner, summonedCard, skill, weakStatusItem);
+                summonedCard.addStatus(weakStatusItem);
+            }
             CardStatusItem summonedStatusItem = CardStatusItem.summoned(skillUseInfo);
             resolver.getStage().getUI().addCardStatus(summoner, summonedCard, skill, summonedStatusItem);
             summonedCard.addStatus(summonedStatusItem);

@@ -26,6 +26,7 @@ public enum SkillType {
     狂热("30880", 10, SkillTag.永久, SkillTag.基础攻击加成),
     嗜血("30940", 10, SkillTag.永久, SkillTag.基础攻击加成),
     透支("30946", 20, SkillTag.永久, SkillTag.基础攻击加成),
+    过载("30946", 20, 30, SkillTag.永久, SkillTag.基础攻击加成),
     贪吃("",100, 20, SkillTag.永久, SkillTag.基础攻击加成),
     邪灵汲取("43445", 0, 3, SkillTag.抗免疫, SkillTag.永久, SkillTag.基础攻击加成, SkillTag.抗不屈),
     森林之力("31121", 25, SkillTag.基础攻击加成, SkillTag.抗削弱),
@@ -47,6 +48,7 @@ public enum SkillType {
     背刺("30879", 40, SkillTag.独立攻击加成),
     复仇("40086", 40, 10, SkillTag.独立攻击加成),
     振奋("80192", 40, 10, SkillTag.独立攻击加成),
+    会心一击("", 100, 0, SkillTag.独立攻击加成),
     奋战("", 40, 10, SkillTag.独立攻击加成),
     神兵召唤("", 0, SkillTag.额外攻击加成),
     觉醒神兵召唤("", 0, SkillTag.额外攻击加成, SkillTag.不可洗炼),
@@ -109,6 +111,7 @@ public enum SkillType {
     祈福("", 0, 2),
 
     横扫("30941", 0, SkillTag.抗免疫, SkillTag.物理攻击),
+    三千世界("30941", 0, SkillTag.抗免疫, SkillTag.物理攻击),
     闪避("30939", 20, 5, SkillTag.物理护甲),
     连击("", 0, SkillTag.物理攻击),
 
@@ -144,6 +147,7 @@ public enum SkillType {
     复活("30953", 0, SkillTag.复活),
     送还("30943", 0, SkillTag.即死),
     冰甲("30937", 190, -10, SkillTag.物理护甲),
+    神魔之甲("", 60, 0, 110, 0, SkillTag.物理护甲),
     冰神附体("", 140, 0, SkillTag.物理护甲),
     水流护甲("", 650, -50, 0, 50),
     骑士守护("", 0, SkillTag.不可洗炼),
@@ -171,6 +175,7 @@ public enum SkillType {
     迷魂("31129", 30, 5, SkillTag.控制),
     混乱领域("", 30, 5, SkillTag.控制),
     精神狂乱("", 0),
+    无我境界("", 70, 0, SkillTag.控制),
 
     吸血("31135", 10),
     恶灵汲取("", 0, 3, SkillTag.抗免疫),
@@ -216,7 +221,7 @@ public enum SkillType {
     九转秘术("", 0, 0),
 
     大地之盾("80193", 0, SkillTag.控制, SkillTag.抗免疫),
-    一闪("", 0, SkillTag.控制, SkillTag.抗免疫),
+    一闪("", 50, 0, SkillTag.控制, SkillTag.抗免疫),
     圣盾("56750", 0),
 
     英雄杀手("36260", 0, 15, SkillTag.额外攻击加成, SkillTag.不可洗炼),
@@ -239,6 +244,7 @@ public enum SkillType {
     逃跑("", 0, SkillTag.复活),
     夺魂("", 0, 1, SkillTag.复活),
 
+    镜像("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
     召唤王国战士("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
     召唤骷髅战士("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
     召唤邪龙护卫("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
@@ -257,6 +263,8 @@ public enum SkillType {
     召唤花族守卫("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
     召唤花族侍卫("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
     七十二变("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
+    英灵降临("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
+    星之所在("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
 
     圣光洗礼("", 0, 0, SkillTag.抗免疫, SkillTag.不可洗炼),
     森林沐浴("", 1, 0, SkillTag.抗免疫, SkillTag.不可洗炼),

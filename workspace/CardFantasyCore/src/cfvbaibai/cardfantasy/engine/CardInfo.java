@@ -236,6 +236,18 @@ public class CardInfo extends EntityInfo {
         }
     }
 
+    public String getParsableDesc() {
+        StringBuffer sb = new StringBuffer();
+        sb.append(this.getName());
+        if (this.getExtraSkill() != null) {
+            sb.append("+");
+            sb.append(this.getExtraSkill().getParsableDesc());
+        }
+        sb.append("-");
+        sb.append(this.getLevel());
+        return sb.toString();
+    }
+
     public void reset() {
         this.hp = this.card.getMaxHP();
         this.status = new CardStatus();
@@ -630,5 +642,13 @@ public class CardInfo extends EntityInfo {
 
     public boolean isBoss() {
         return this.getRace() == Race.BOSS;
+    }
+
+    public EntityInfo getSummoner() {
+        List<CardStatusItem> status = this.getStatus().getStatusOf(CardStatusType.召唤);
+        if (status.isEmpty()) {
+            return null;
+        }
+        return status.get(0).getCause().getOwner();
     }
 }

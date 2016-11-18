@@ -29,7 +29,8 @@ public class NoEffect {
             attackSkill.getType() == SkillType.恶灵汲取 ||
             attackSkill.getType() == SkillType.反射装甲 ||
             attackSkill.getType() == SkillType.迷魂 ||
-            attackSkill.getType() == SkillType.混乱领域) {
+            attackSkill.getType() == SkillType.混乱领域 ||
+            attackSkill.getType() == SkillType.无我境界) {
             GameUI ui = resolver.getStage().getUI();
             ui.useSkill(defender, attacker, NO_EFFECT_SKILL, true);
             ui.blockSkill(attacker, defender, NO_EFFECT_SKILL, attackSkill);

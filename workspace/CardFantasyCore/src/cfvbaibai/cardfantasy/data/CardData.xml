@@ -856,6 +856,14 @@
         <Skill type="圣母回声" level="0" unlock="5" />
         <Skill type="武形秘术" level="0" unlock="10" />
     </Card>
+    <Card id="1560" name="英灵守护者" wikiId="" race="王国" speed="4" star="5" cost="17" incrCost="2" at="330" hp="1590" incrAT="38" incrHP="35">
+        <Skill type="月神的护佑" level="6" unlock="0" />
+        <Skill type="骑士守护" level="0" unlock="5" />
+        <Skill type="英灵降临" level="0" unlock="10" />
+    </Card>
+    <Card id="1561" name="三国英魂·子龙" wikiId="" race="王国" speed="4" star="5" cost="19" incrCost="2" at="470" hp="1810" incrAT="41" incrHP="38">
+        <Skill type="横扫" level="0" unlock="0" />
+    </Card>
 
     <!-- 森林 -->
     <Card id="2101" name="人马巡逻者" wikiId="30976" race="森林" speed="2" star="1" cost="3" incrCost="2" at="95" hp="310" incrAT="17" incrHP="11">
@@ -1535,6 +1543,11 @@
         <Skill type="骤雨" level="8" unlock="0" />
         <Skill type="混乱领域" level="8" unlock="5" />
         <Skill type="猎杀之夜" level="0" unlock="10" />
+    </Card>
+    <Card id="2545" name="星之守护者" wikiId="" race="森林" speed="3" star="5" cost="18" incrCost="1" at="350" hp="1580" incrAT="37" incrHP="30">
+        <Skill type="守护" level="0" unlock="0" />
+        <Skill type="转生" level="7" unlock="5" />
+        <Skill type="星之所在" level="0" unlock="10" summon="true" />
     </Card>
 
     <!-- 蛮荒  -->
@@ -2755,6 +2768,13 @@
         <Skill type="反射装甲" level="0" unlock="5" />
         <Skill type="法力反射" level="4" unlock="10" />
     </Card>
+    <Card id="4444" name="黑鸦收魂者" wikiId="" race="地狱" speed="2" star="4" cost="14" incrCost="2" at="290" hp="1250" incrAT="37" incrHP="32">
+        <Skill type="镜像" level="0" unlock="0" />
+        <Skill type="复活" level="0" unlock="5" />
+        <Skill type="送葬之刃" level="6" unlock="10" />
+    </Card>
+    <Card id="444401" name="黑鸦收魂者·镜像" wikiId="" race="地狱" speed="2" star="4" cost="14" incrCost="2" at="290" hp="1250" incrAT="37" incrHP="32">
+    </Card>
 
     <Card id="4501" name="毁灭之龙" wikiId="31064" race="地狱" speed="4" star="5" cost="14" incrCost="2" at="350" hp="1270" incrAT="34" incrHP="34">
         <Skill type="暴击" level="6" unlock="0" />
@@ -2846,7 +2866,7 @@
         <Skill type="战争怒吼" level="0" unlock="5" summon="true" /> 
         <Skill type="转生" level="6" unlock="10" />
     </Card>
-    <Card id="4513" name="死域军神" wikiId="62844" race="地狱" speed="3" star="5" cost="16" incrCost="2" at="380" hp="1210" incrAT="32" incrHP="35">
+    <Card id="4513" name="死域军神" wikiId="" race="地狱" speed="3" star="5" cost="16" incrCost="2" at="380" hp="1210" incrAT="39" incrHP="54">
         <Skill type="鬼王之怒" level="0" unlock="0" />
         <Skill type="弱点攻击" level="0" unlock="5" />
         <Skill type="武形秘术" level="0" unlock="10" />

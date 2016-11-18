@@ -19,7 +19,7 @@ public final class Wound {
         if (defender.isDead()) {
             return;
         }
-        if (attackSkill != null && attackSkill.getType() == SkillType.横扫) {
+        if (attackSkill != null && (attackSkill.getType() == SkillType.横扫 || attackSkill.getType() == SkillType.三千世界)) {
             return;
         }
         Skill skill = skillUseInfo.getSkill();

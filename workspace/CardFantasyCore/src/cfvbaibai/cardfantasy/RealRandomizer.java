@@ -32,7 +32,7 @@ public class RealRandomizer extends Randomizer {
     }
 
     @Override
-    public <T> List<T> pickRandom(final List<T> list, int max, boolean excludeNull, T extraExclusion) {
+    public <T> List<T> pickRandom(final List<T> list, int max, boolean excludeNull, List<T> extraExclusion) {
         if (max == 0) {
             return new ArrayList<T>();
         }
@@ -46,7 +46,7 @@ public class RealRandomizer extends Randomizer {
             if (item == null && excludeNull) {
                 continue;
             }
-            if (item == extraExclusion) {
+            if (extraExclusion != null && extraExclusion.contains(item)) {
                 continue;
             }
             result.add(item);

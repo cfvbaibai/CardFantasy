@@ -36,9 +36,19 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2016-11-17: <ul>
+                        <li>修复<cf:c>英灵守卫者</cf:c>召唤的卡牌, 感谢<x>裂空座2012</x>, <x>绯弹亚丝娜</x>和<x>银色孤星</x>的帮助</li>
+                        <li>修复普通召唤技能的BUG, 感谢<x>0728zhJ</x>的帮助</li>
+                        <li>添加新技能【过载】, 【会心一击】, 【三千世界】, 【无我境界】, 【神魔之甲】</li>
+                        <li>添加新卡<cf:c>三国英魂·子龙</cf:c></li>
+                        <li>修复魔神战有时候会出现'Invalid guard name'的错误, 感谢<x>zoujiankun2001</x>和<x>银色孤星</x>的帮助</li>
+                    </ul></li>
                     <li>2016-11-13: <ul>
-                        <li>更新普通召唤的机制, 感谢<x>Core灬酷睿</x>和<x>donysea</x>的帮助</li>
+                        <li>更新召唤的机制, 感谢<x>Core灬酷睿</x>和<x>donysea</x>的帮助</li>
                         <li>更新<cf:c>死域军神</cf:c>的技能, 感谢<x>飞帆过的个</x>的帮助</li>
+                        <li>添加新卡<cf:c>英灵守护者</cf:c>和<cf:c>星之守护者</cf:c>, 感谢<x>Core灬酷睿</x>的帮助</li>
+                        <li>修复【灵魂消散】会对魔神召唤物起效的BUG</li>
+                        <li>添加新卡<cf:c>黑鸦收魂者</cf:c></li>
                     </ul></li>
                     <li>2016-10-27: <ul>
                         <li>添加新卡<cf:c>武形破拳尊者</cf:c>, 感谢<x>Core灬酷睿</x>的帮助</li>

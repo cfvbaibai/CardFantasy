@@ -59,7 +59,7 @@ public class SummonTest extends SkillValidationTest {
 
         random.addNextPicks(0, 1).addNextNumbers(1000);  // 陨星魔法使寒霜冲击
         context.proceedOneRound();
-        Assert.assertEquals(3, context.getPlayer(0).getField().size()); // 召唤的两张卡死了一张，此时召唤死去的那张卡
+        Assert.assertEquals(2, context.getPlayer(0).getField().size()); // 召唤的两张卡死了一张，此时召唤死去的那张卡
         Assert.assertEquals(0, context.getPlayer(0).getGrave().size()); // 被召唤的卡死亡后不进入墓地
     }
     
@@ -106,18 +106,18 @@ public class SummonTest extends SkillValidationTest {
         random.addNextPicks(0, 1, 2, 3, 4).addNextNumbers(1000, 1000, 1000);  // 陨星魔法使1寒霜冲击
         random.addNextPicks(0, 1, 2, 3, 4).addNextNumbers(1000, 1000, 1000);  // 陨星魔法使2寒霜冲击
         context.proceedOneRound();
-        Assert.assertEquals(6, fieldA.size()); // 此时陨星魔法使都能再召唤
+        Assert.assertEquals(4, fieldA.size()); // 此时陨星魔法使不能再召唤
 
         random.addNextNumbers(0, 0); // 两个金属巨龙都暴击成功, 圣骑士仆从被杀死
         context.proceedOneRound();
-        Assert.assertEquals(5, fieldA.size());
+        Assert.assertEquals(3, fieldA.size());
 
         c金属巨龙1.reset(); // 回血免得被打死
         c金属巨龙2.reset(); // 回血免得被打死
         random.addNextPicks(0, 1, 2, 3, 4).addNextNumbers(1000, 1000, 1000);  // 陨星魔法使1寒霜冲击
         random.addNextPicks(0, 1, 2, 3, 4).addNextNumbers(1000, 1000, 1000);  // 陨星魔法使2寒霜冲击
         context.proceedOneRound();
-        Assert.assertEquals(6, fieldA.size()); // 陨星魔法使1的仆从全灭，再次召唤
+        Assert.assertEquals(5, fieldA.size());
     }
 
     /**
@@ -149,21 +149,21 @@ public class SummonTest extends SkillValidationTest {
         
         random.addNextPicks(0);  // 陨星魔法使寒霜冲击
         context.proceedOneRound();
-        Assert.assertEquals(4, fieldA.size()); // 复活者无法复活仆从，陨星魔法重新召唤
+        Assert.assertEquals(3, fieldA.size()); // 复活者无法复活仆从，陨星魔法重新召唤
 
         context.addToField(3, 1); // 女神侍者上场
         random.addNextNumbers(0, 0); // 金属巨龙暴击杀死魔剑士
         random.addNextPicks(2).addNextNumbers(0); // 女神侍者冰冻陨星魔法使
         context.proceedOneRound();
-        Assert.assertEquals(3, fieldA.size());
+        Assert.assertEquals(2, fieldA.size());
 
         context.proceedOneRound();
-        Assert.assertEquals(3, fieldA.size()); // 此时陨星魔法使被冰冻，还是不能召唤
+        Assert.assertEquals(2, fieldA.size()); // 此时陨星魔法使被冰冻，还是不能召唤
 
         random.addNextNumbers(1000, 1000); // 金属巨龙不暴击
         random.addNextPicks(0).addNextNumbers(1000); // 女神侍者不冰冻
         context.proceedOneRound();
-        Assert.assertEquals(3, fieldA.size());
+        Assert.assertEquals(2, fieldA.size());
         
         random.addNextPicks(0, 1).addNextNumbers(1000);  // 陨星魔法使寒霜冲击
         context.proceedOneRound();
@@ -228,6 +228,7 @@ public class SummonTest extends SkillValidationTest {
         context.addToField(1, 1);
         context.startGame();
 
+        random.addNextPicks(0, 1); // 王国小兵召唤
         context.proceedOneRound();
         Assert.assertEquals(3, c小兵.getOwner().getField().size());
         Assert.assertEquals(201, c小兵.getHP());
