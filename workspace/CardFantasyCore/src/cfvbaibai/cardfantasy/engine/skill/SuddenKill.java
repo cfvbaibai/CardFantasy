@@ -24,7 +24,7 @@ public final class SuddenKill {
             return false;
         }
         if (blockSkill.getType().containsTag(SkillTag.物理护甲) &&
-            blockSkill.getType() != SkillType.闪避 ||
+            blockSkill.getType() != SkillType.闪避 && blockSkill.getType() != SkillType.龙胆 ||
             blockSkill.getType().containsTag(SkillTag.种族之盾)) {
             resolver.getStage().getUI().useSkill(attacker, defender, counterBlockSkill, true);
             resolver.getStage().getUI().disableBlock(attacker, defender, counterBlockSkill, blockSkill);

@@ -24,6 +24,7 @@ public enum SkillType {
     献祭("31144", 20, 10, SkillTag.永久, SkillTag.基础攻击加成),
     群攻提升("31754", 15, SkillTag.基础攻击加成, SkillTag.抗削弱),
     狂热("30880", 10, SkillTag.永久, SkillTag.基础攻击加成),
+    亮银("", 220, 0, SkillTag.永久, SkillTag.基础攻击加成),
     嗜血("30940", 10, SkillTag.永久, SkillTag.基础攻击加成),
     透支("30946", 20, SkillTag.永久, SkillTag.基础攻击加成),
     过载("30946", 20, 30, SkillTag.永久, SkillTag.基础攻击加成),
@@ -113,6 +114,7 @@ public enum SkillType {
     横扫("30941", 0, SkillTag.抗免疫, SkillTag.物理攻击),
     三千世界("30941", 0, SkillTag.抗免疫, SkillTag.物理攻击),
     闪避("30939", 20, 5, SkillTag.物理护甲),
+    龙胆("30939", 100, 0, SkillTag.物理护甲),
     连击("", 0, SkillTag.物理攻击),
 
     治疗("30974", 25),
@@ -285,7 +287,7 @@ public enum SkillType {
     原始攻击调整("", 0, 1, SkillTag.永久, SkillTag.原始攻击加成, SkillTag.不可洗炼),
     原始体力调整("", 0, 1, SkillTag.永久, SkillTag.原始体力加成, SkillTag.不可洗炼),
 
-    魔神之刃("", 0, 0, new int[] { 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000 }, SkillTag.抗免疫, SkillTag.不可洗炼, SkillTag.狙击),
+    魔神之刃("", 0, 0, new int[] { 1000, 1000, 3000, 3000, 3000, 3000, 3000, 3000, 3000, 3000, 3000 }, SkillTag.抗免疫, SkillTag.不可洗炼, SkillTag.狙击),
     魔神之甲("", 0, 500, SkillTag.抗免疫, SkillTag.不可洗炼, SkillTag.反击),
     魔神之咒("", 0, 1000, SkillTag.抗免疫, SkillTag.不可洗炼),
     // 用于处理各技能中"对魔神无效"的描述

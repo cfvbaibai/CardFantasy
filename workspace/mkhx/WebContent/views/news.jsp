@@ -36,6 +36,10 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2016-11-18: <ul>
+                        <li>修复【魔神之刃】的数值BUG, 感谢<x>千下</x>和<x>银色孤星</x>的帮助</li>
+                        <li>修复<cf:c>三国英魂·子龙</cf:c>的技能错误, 感谢<x>千下</x>, <x>xiajianke1983</x>和<x>year皮蛋瓜瓜</x>的帮助</li>
+                    </ul></li>
                     <li>2016-11-17: <ul>
                         <li>修复<cf:c>英灵守卫者</cf:c>召唤的卡牌, 感谢<x>裂空座2012</x>, <x>绯弹亚丝娜</x>和<x>银色孤星</x>的帮助</li>
                         <li>修复普通召唤技能的BUG, 感谢<x>0728zhJ</x>的帮助</li>
