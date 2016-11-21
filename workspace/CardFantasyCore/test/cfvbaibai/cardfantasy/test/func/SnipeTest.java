@@ -83,4 +83,19 @@ public class SnipeTest extends SkillValidationTest {
         Assert.assertEquals(350, 5000 - c占位符4.getHP());
         Assert.assertEquals(350 * 2, 4000 - c占位符5.getHP());
     }
+
+    @Test
+    public void test魔神之刃_基本() {
+        SkillTestContext context = prepare(50, 50, "占位符+魔神之刃3", "占位符", "占位符", "占位符");
+        context.addToField(0, 0);
+        CardInfo c占位符1 = context.addToField(1, 1);
+        CardInfo c占位符2 = context.addToField(2, 1).setBasicHP(4000);
+        CardInfo c占位符3 = context.addToField(3, 1);
+        context.startGame();
+
+        context.proceedOneRound();
+        Assert.assertEquals(5000, c占位符1.getHP());
+        Assert.assertEquals(1000, c占位符2.getHP());
+        Assert.assertEquals(5000, c占位符3.getHP());
+    }
 }

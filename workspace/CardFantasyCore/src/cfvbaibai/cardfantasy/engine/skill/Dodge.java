@@ -20,7 +20,8 @@ public final class Dodge {
         // Two types of dodge: triggered by native dodge skill or blind status
         SkillUseInfo nativeDodgeSkillUseInfo = null;
         for (SkillUseInfo blockSkillUseInfo : defender.getUsableNormalSkills()) {
-            if (blockSkillUseInfo.getType() == SkillType.闪避) {
+            if (blockSkillUseInfo.getType() == SkillType.闪避 ||
+                blockSkillUseInfo.getType() == SkillType.龙胆) {
                 nativeDodgeSkillUseInfo = blockSkillUseInfo;
                 break;
             }

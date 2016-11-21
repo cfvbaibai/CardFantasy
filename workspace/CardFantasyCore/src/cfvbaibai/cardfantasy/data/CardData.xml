@@ -863,6 +863,8 @@
     </Card>
     <Card id="1561" name="三国英魂·子龙" wikiId="" race="王国" speed="4" star="5" cost="19" incrCost="2" at="470" hp="1810" incrAT="41" incrHP="38">
         <Skill type="横扫" level="0" unlock="0" />
+        <Skill type="龙胆" level="0" unlock="5" />
+        <Skill type="亮银" level="0" unlock="10" />
     </Card>
 
     <!-- 森林 -->
@@ -2774,6 +2776,8 @@
         <Skill type="送葬之刃" level="6" unlock="10" />
     </Card>
     <Card id="444401" name="黑鸦收魂者·镜像" wikiId="" race="地狱" speed="2" star="4" cost="14" incrCost="2" at="290" hp="1250" incrAT="37" incrHP="32">
+        <Skill type="复活" level="0" unlock="5" />
+        <Skill type="送葬之刃" level="6" unlock="10" />
     </Card>
 
     <Card id="4501" name="毁灭之龙" wikiId="31064" race="地狱" speed="4" star="5" cost="14" incrCost="2" at="350" hp="1270" incrAT="34" incrHP="34">

@@ -420,7 +420,7 @@ public class SkillResolver {
                 return result;
             } else {
                 for (SkillUseInfo blockSkillUseInfo : defender.getUsableNormalSkills()) {
-                    if (blockSkillUseInfo.getType() == SkillType.闪避) {
+                    if (blockSkillUseInfo.getType() == SkillType.闪避 || blockSkillUseInfo.getType() == SkillType.龙胆) {
                         result.setAttackable(!Dodge.apply(blockSkillUseInfo.getSkill(), this, cardAttacker, defender, result.getDamage()));
                         if (!result.isAttackable()) {
                             return result;
@@ -828,7 +828,7 @@ public class SkillResolver {
                     Weaken.apply(this, skillUseInfo, attacker, defender, normalAttackDamage);
                 } else if (skillUseInfo.getType() == SkillType.裂伤) {
                     Wound.apply(this, skillUseInfo, attackSkill, attacker, defender, normalAttackDamage);
-                } else if (skillUseInfo.getType() == SkillType.嗜血) {
+                } else if (skillUseInfo.getType() == SkillType.嗜血 || skillUseInfo.getType() == SkillType.亮银) {
                     BloodThirsty.apply(this, skillUseInfo, attacker, normalAttackDamage);
                 } else if (skillUseInfo.getType() == SkillType.连锁攻击) {
                     ChainAttack.apply(this, skillUseInfo, attacker, defender, attackSkill, damageResult.originalDamage);
@@ -1530,7 +1530,8 @@ public class SkillResolver {
         for (SkillUseInfo attackerSkillUseInfo : attacker.getUsableNormalSkills()) {
             if (attackerSkillUseInfo.getType() == SkillType.弱点攻击 ||
                 attackerSkillUseInfo.getType() == SkillType.会心一击 ||
-                attackerSkillUseInfo.getType() == SkillType.三千世界) {
+                attackerSkillUseInfo.getType() == SkillType.三千世界 ||
+                attackerSkillUseInfo.getType() == SkillType.亮银) {
                 return WeakPointAttack.isBlockSkillDisabled(this, attackerSkillUseInfo.getSkill(), cardSkill, attacker, defender);
             } else if (attackerSkillUseInfo.getType() == SkillType.斩杀 || attackerSkillUseInfo.getType() == SkillType.送葬之刃) {
                 return SuddenKill.isBlockSkillDisabled(this, attackerSkillUseInfo.getSkill(), cardSkill, attacker, defender);
