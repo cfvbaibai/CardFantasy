@@ -36,6 +36,7 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2016-11-24: 添加新卡<cf:c>三国英魂·翼德</cf:c></li>
                     <li>2016-11-19: 修复<cf:c>黑鸦收魂者</cf:c>召唤出的镜像的技能BUG</li>
                     <li>2016-11-18: <ul>
                         <li>修复【魔神之刃】的数值BUG, 感谢<x>千下</x>和<x>银色孤星</x>的帮助</li>

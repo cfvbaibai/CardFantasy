@@ -2297,6 +2297,11 @@
         <Skill type="洪荒之术" level="0" unlock="5" />
         <Skill type="猎杀之夜" level="0" unlock="10" />
     </Card>
+    <Card id="3547" name="三国英魂·翼德" wikiId="" race="蛮荒" speed="3" star="5" cost="19" incrCost="2" at="450" hp="1830" incrAT="45" incrHP="43">
+        <Skill type="趁胜追击" level="9" unlock="0" />
+        <Skill type="脱困" level="0" unlock="5" />
+        <Skill type="咆哮" level="0" unlock="10" />
+    </Card>
 
     <!-- 地狱 -->
     <Card id="4101" name="恶魔小鬼" wikiId="31036" race="地狱" speed="2" star="1" cost="3" incrCost="2" at="80" hp="270" incrAT="19" incrHP="6">
