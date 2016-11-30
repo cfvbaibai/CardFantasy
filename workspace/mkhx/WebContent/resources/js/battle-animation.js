@@ -1354,7 +1354,7 @@ var Animater = function() {
     ];
     this.selfUsedSkills = [
         '不动', '脱困', '群体脱困', '法力反射', '花族秘术', '冰甲', '水流护甲', '闪避', '守护', '魔神之甲', '灵巧', '灵魂禁锢',
-        '王国之盾', '森林之盾', '蛮荒之盾', '地狱之盾', '弱点攻击', '无效', '圣盾', '不屈', '圣炎', '斩杀', '送葬之刃', '逃跑', '灵魂禁封',
+        '王国之盾', '森林之盾', '蛮荒之盾', '地狱之盾', '弱点攻击', '无效', '圣盾', '不屈', '圣炎', '斩杀', '送葬之刃', '逃跑', '灵魂封禁',
         '镜面装甲', '阿拉希血统', '神威', '月之守护', '洪荒之术', '冰神附体', '三千世界', '神魔之甲', '亮银', '龙胆'
     ];
     this.__useSkill = function(data) {
@@ -1406,7 +1406,7 @@ var Animater = function() {
         } else if (skill == '送还' || skill == '反射装甲') {
             this.flyImage({ fileName: 'cross.png', width: 48, height: 48, text: skill },
                     attacker, defenders, settings.skillDuration);
-        } else if (skill == '传送') {
+        } else if (skill == '传送' || skill == '咆哮') {
             this.flyImage({ fileName: 'redcross.png', width: 24, height: 24, text: skill, },
                     attacker, defenders, settings.skillDuration);
         } else if (skill == '魔力法阵' || skill == '魔力印记') {
@@ -1487,7 +1487,7 @@ var Animater = function() {
         } else if (skill == '陷阱' || skill == '封印' || skill == '关小黑屋') {
             this.flyImage({ fileName: 'trap.png', width: 48, height: 48, text: skill },
                     attacker, defenders, settings.skillDuration);
-        } else if (skill == '摧毁' || skill == '灵魂消散' || skill == '武形天火击') {
+        } else if (skill == '摧毁' || skill == '灵魂消散' || skill == '武形天火击' || skill == '咆哮') {
             this.flyImage({ fileName: 'bomb.png', width: 48, height: 48, text: skill },
                     attacker, defenders, settings.skillDuration);
         } else if (skill == '盾刺' || skill == '反击' || skill == '物理反弹' || skill == '荆棘术' || skill == '一闪') {

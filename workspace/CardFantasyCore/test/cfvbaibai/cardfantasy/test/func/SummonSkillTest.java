@@ -449,4 +449,22 @@ public class SummonSkillTest extends SkillValidationTest {
         Assert.assertEquals(1, p1.getGrave().size());
         Assert.assertSame(c占位符4, p1.getGrave().getFirst());
     }
+
+    @Test
+    public void test咆哮_基础() {
+        SkillTestContext context = prepare(50, 50, "占位符+咆哮", "占位符*4");
+        context.addToHand(0, 0).setSummonDelay(0);
+        CardInfo c占位符2 = context.addToField(1, 1);
+        CardInfo c占位符3 = context.addToField(2, 1);
+        CardInfo c占位符4 = context.addToHand(3, 1).setSummonDelay(3);
+        CardInfo c占位符5 = context.addToHand(4, 1).setSummonDelay(4);
+        context.startGame();
+
+        random.addNextPicks(1); // 咆哮杀死占位符3
+        context.proceedOneRound();
+        Assert.assertEquals(5000, c占位符2.getHP());
+        Assert.assertTrue(c占位符3.isDead());
+        Assert.assertEquals(1, c占位符4.getOwner().getHand().size());
+        Assert.assertTrue(c占位符5.isDead());
+    }
 }

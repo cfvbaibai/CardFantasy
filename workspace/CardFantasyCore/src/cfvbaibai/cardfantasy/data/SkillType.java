@@ -157,11 +157,10 @@ public enum SkillType {
     免疫("30942", 0),
     动能追加("", 0),
     不动("30928", 0, SkillTag.不动),
+    灵魂封禁("", 0, 0, SkillTag.不动),
     神威("", 0, SkillTag.不动),
     月之守护("", 0, 0, new int[] { 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23 }, SkillTag.不动),
-    灵魂禁封("", 0, SkillTag.不动),
     洪荒之术("", 55, 0, SkillTag.不动),
-
     传送("31331", 0, SkillTag.即死),
     弱点攻击("30881", 0),
     灵巧("57020", 0),
@@ -187,6 +186,7 @@ public enum SkillType {
     诅咒("31145", 30),
     摧毁("31332", 0, SkillTag.即死, SkillTag.抗不屈),
     武形天火击("", 0, SkillTag.即死, SkillTag.抗不屈),
+    咆哮("", 0, SkillTag.即死, SkillTag.抗不屈),
 
     封印("31157", 0, SkillTag.控制),
     血炼("31136", 20, SkillTag.魔法),

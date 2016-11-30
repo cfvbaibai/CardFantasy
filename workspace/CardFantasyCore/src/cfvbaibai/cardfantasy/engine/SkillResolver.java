@@ -1349,6 +1349,9 @@ public class SkillResolver {
                     CounterBite.apply(skillUseInfo, this, card);
                 } else if (skillUseInfo.getType() == SkillType.星云锁链) {
                     NebulaChain.apply(skillUseInfo, this, card);
+                } else if (skillUseInfo.getType() == SkillType.咆哮) {
+                    Destroy.apply(this, skillUseInfo.getSkill(), card, enemy, 1);
+                    Transport.apply(this, skillUseInfo.getSkill(), card, enemy);
                 }
             }
         }
