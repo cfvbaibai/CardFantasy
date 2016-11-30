@@ -1109,7 +1109,8 @@ public class SkillResolver {
                 continue;
             }
             for (SkillUseInfo defenderSkill : defender.getUsableNormalSkills()) {
-                if (defenderSkill.getType() == SkillType.守护) {
+                if (defenderSkill.getType() == SkillType.守护 ||
+                    defenderSkill.getType() == SkillType.王之守护) {
                     remainingDamage = Guard.apply(defenderSkill.getSkill(), cardSkill, this, attacker, defender, remainingDamage);
                     if (remainingDamage == 0) {
                         return 0;
