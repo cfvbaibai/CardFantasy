@@ -201,13 +201,7 @@ public final class GameLauncher {
             result.setLastDetail(trialResult);
             return result;
         }
-        int gameCount = 10000 / trialResult.getRound();
-        if (gameCount < 100) {
-            gameCount = 100;
-        }
-        if (gameCount > 1000) {
-            gameCount = 1000;
-        }
+        int gameCount = setup.getGameCount();
 
         GameResult lastDetail = trialResult;
         if (gameCount > 0) {
