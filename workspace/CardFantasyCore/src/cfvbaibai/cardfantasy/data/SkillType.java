@@ -14,6 +14,7 @@ public enum SkillType {
      */
     瘟疫("31149", 5, SkillTag.永久, SkillTag.基础攻击加成),
     凋零真言("",4,1,SkillTag.永久, SkillTag.基础攻击加成),
+    凋零陷阱("",4,1,SkillTag.永久, SkillTag.基础攻击加成),
     /* 攻击力加成技能 */
     /**
      * 基础攻击力=初始攻击力*军团战力加成+淬杀+种族之力+本源之力+怒涛加成+嗜血加成+洞察加成+邪灵汲取。魔神战时洞察无效。
@@ -108,6 +109,7 @@ public enum SkillType {
     武形破剑击("", 100, 0, SkillTag.抗免疫, SkillTag.反击),
 
     守护("30973", 0),
+    神之守护("30973", 0),
     祈祷("30954", 50),
     祈福("", 0, 2),
 
@@ -146,6 +148,7 @@ public enum SkillType {
     全体裂伤("", 0, SkillTag.抗免疫, SkillTag.抗不屈),
     脱困("30956", 0),
     群体脱困("", 0),
+    群体追击("", 0),
     复活("30953", 0, SkillTag.复活),
     送还("30943", 0, SkillTag.即死),
     冰甲("30937", 190, -10, SkillTag.物理护甲),
@@ -176,6 +179,7 @@ public enum SkillType {
     上层精灵的挽歌("", 2, 0),
     迷魂("31129", 30, 5, SkillTag.控制),
     混乱领域("", 30, 5, SkillTag.控制),
+    国色("", 60, 0, SkillTag.控制),
     精神狂乱("", 0),
     无我境界("", 70, 0, SkillTag.控制),
 
@@ -231,6 +235,7 @@ public enum SkillType {
 
     不屈("56962", 0, 0),
     时光倒流("80196", 0, 0, SkillTag.抗免疫),
+    时间溯行("80196", 0, 0, SkillTag.抗免疫),
     死亡印记("56754", 0, 50),
     武形印记("", 0, 200),
     闪光弹("", 5, 1),
@@ -268,6 +273,7 @@ public enum SkillType {
     七十二变("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
     英灵降临("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
     星之所在("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
+    灵龙轰咆("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
 
     圣光洗礼("", 0, 0, SkillTag.抗免疫, SkillTag.不可洗炼),
     森林沐浴("", 1, 0, SkillTag.抗免疫, SkillTag.不可洗炼),

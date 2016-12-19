@@ -178,6 +178,8 @@ public class SkillResolver {
                 Confusion.apply(skillUseInfo, this, attacker, defender, 1);
             } else if (skillUseInfo.getType() == SkillType.混乱领域) {
                 Confusion.apply(skillUseInfo, this, attacker, defender, 3);
+            } else if (skillUseInfo.getType() == SkillType.国色) {
+                Confusion.apply(skillUseInfo, this, attacker, defender, -1);
             } else if (skillUseInfo.getType() == SkillType.无我境界) {
                 Confusion.apply(skillUseInfo, this, attacker, defender, 3);
                 Insane.apply(skillUseInfo, this, attacker, defender, 1);
@@ -235,7 +237,7 @@ public class SkillResolver {
                        skillUseInfo.getType() == SkillType.蛮荒威压 || skillUseInfo.getType() == SkillType.地狱同化) {
                 RaceChange.apply(this, skillUseInfo, attacker, defender);
             } else if (skillUseInfo.getType() == SkillType.战争怒吼) {
-                Soften.apply(skillUseInfo, this, attacker, defender, 10);
+                Soften.apply(skillUseInfo, this, attacker, defender, -1);
             } else if (skillUseInfo.getType() == SkillType.镜像) {
                 Summon.apply(this, skillUseInfo, attacker, SummonType.Normal, 1, attacker.getName() + "·镜像");
             } else if (skillUseInfo.getType() == SkillType.召唤王国战士) {
@@ -723,6 +725,8 @@ public class SkillResolver {
                 Heal.apply(deadCardSkillUseInfo.getSkill(), this, opponent);
             } else if (deadCardSkillUseInfo.getType() == SkillType.甘霖) {
                 Rainfall.apply(deadCardSkillUseInfo.getSkill(), this, opponent);
+            } else if (deadCardSkillUseInfo.getType() == SkillType.月神的护佑) {
+                LunaBless.apply(deadCardSkillUseInfo.getSkill(), this, opponent);
             } else if (deadCardSkillUseInfo.getType() == SkillType.祈祷) {
                 Pray.apply(deadCardSkillUseInfo.getSkill(), this, deadCard);
             } else if (deadCardSkillUseInfo.getType() == SkillType.诅咒) {
@@ -1819,6 +1823,8 @@ public class SkillResolver {
                 SuraFire.apply(this, skillUseInfo, card, defenderHero);
             } else if (skillUseInfo.getType() == SkillType.寒霜冲击) {
                 IceMagic.apply(skillUseInfo, this, card, defenderHero, -1, 50, 45 * defenderHero.getField().getAliveCards().size());
+            } else if (skillUseInfo.getType() == SkillType.回魂) {
+                Resurrection.apply(this, skillUseInfo, card);
             }
         }
     }
