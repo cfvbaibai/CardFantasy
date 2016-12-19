@@ -36,7 +36,7 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>更新日志</h3>
                 <ul class="news-content">
-                	<li>2016-12-19: 添加新卡<cf:c>迷途喵娘</cf:c></li> 
+                	<li>2016-12-19: 添加新卡<cf:c>迷途喵娘</cf:c></li>
                     <li>2016-11-30: <ul>
                         <li>添加新技能【王之守护】</li>
                         <li>调整五星小兵阵容, 感谢<x>zoujiankun2001</x>和<x>会飞的霍比特人</x>的帮助</li>
