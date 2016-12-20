@@ -3332,76 +3332,6 @@
         <Skill type="免疫" level="0" unlock="10" />
         <Skill type="末世术" level="10" unlock="10" />
     </Card>
-    <Card id="5518" name="试炼·噩梦之主" wikiId="" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="900" hp="4400" incrAT="0" incrHP="0">
-        <Skill type="召唤噩梦护卫" level="0" unlock="0" />
-        <Skill type="灵王的轰击" level="8" unlock="5" />
-        <Skill type="魔神之甲" level="6" unlock="10" />
-		<Skill type="破魔手" level="10" unlock="10" />
-		<Skill type="神威" level="0" unlock="10" />
-    </Card>
-    <Card id="5519" name="试炼·毁灭之神" wikiId="" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="1200" hp="5600" incrAT="0" incrHP="0">
-        <Skill type="邪灵汲取" level="8" unlock="0" />
-        <Skill type="英雄杀手" level="7" unlock="5" />
-        <Skill type="魔神之咒" level="4" unlock="10" />
-		<Skill type="送还" level="0" unlock="10" />
-		<Skill type="免疫" level="0" unlock="10" />
-    </Card>
-    <Card id="5520" name="试炼·万蛛之后" wikiId="" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="1500" hp="4800" incrAT="0" incrHP="0">
-        <Skill type="天火" level="8" unlock="0" />
-        <Skill type="闪光弹" level="4" unlock="5" />
-        <Skill type="魔神之刃" level="3" unlock="10" />
-		<Skill type="陷阱" level="5" unlock="10" />
-		<Skill type="神威" level="0" unlock="10" />
-    </Card>
-    <Card id="5521" name="试炼·邪龙之神" wikiId="" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="1800" hp="4000" incrAT="0" incrHP="0">
-        <Skill type="召唤邪龙护卫" level="0" unlock="0" />
-        <Skill type="迷魂" level="10" unlock="5" />
-        <Skill type="魔神之咒" level="4" unlock="10" />
-		<Skill type="凋零真言" level="8" unlock="10" />
-		<Skill type="神威" level="0" unlock="10" />
-    </Card>
-    <Card id="5522" name="试炼·复仇女神" wikiId="" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="1200" hp="5200" incrAT="0" incrHP="0">
-        <Skill type="召唤复仇护卫" level="0" unlock="0" />
-        <Skill type="寒霜冲击" level="9" unlock="5" />
-        <Skill type="魔神之刃" level="3" unlock="10" />
-		<Skill type="神箭三重奏" level="10" unlock="10" />
-		<Skill type="免疫" level="0" unlock="10" />
-    </Card>
-    <Card id="5523" name="试炼·深渊影魔" wikiId="" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="1500" hp="4800" incrAT="0" incrHP="0">
-        <Skill type="弱点攻击" level="0" unlock="0" />
-        <Skill type="群体追击" level="10" unlock="5" />
-        <Skill type="魔神之甲" level="6" unlock="10" />
-		<Skill type="天火" level="7" unlock="10" />
-		<Skill type="免疫" level="0" unlock="10" />
-    </Card>
-    <Card id="5524" name="试炼·众神之神" wikiId="" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="1500" hp="5500" incrAT="0" incrHP="0">
-        <Skill type="魔力法阵" level="7" unlock="0" />
-        <Skill type="修罗地火攻" level="9" unlock="5" />
-        <Skill type="魔神之刃" level="3" unlock="10" />
-		<Skill type="混乱领域" level="8" unlock="10" />
-		<Skill type="免疫" level="0" unlock="10" />
-    </Card>
-    <Card id="5525" name="试炼·大地之母" wikiId="" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="2000" hp="4200" incrAT="0" incrHP="0">
-        <Skill type="骤雨" level="9" unlock="0" />
-        <Skill type="守护" level="0" unlock="5" />
-        <Skill type="魔神之甲" level="6" unlock="10" />
-		<Skill type="骑士守护" level="0" unlock="10" />
-		<Skill type="神威" level="0" unlock="10" />
-    </Card>
-    <Card id="5526" name="试炼·冰霜巨人" wikiId="" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="1200" hp="6000" incrAT="0" incrHP="0">
-        <Skill type="冰甲" level="10" unlock="0" />
-        <Skill type="末世术" level="9" unlock="5" />
-        <Skill type="灵魂禁锢" level="0" unlock="10" />
-		<Skill type="荆棘术" level="9" unlock="10" />
-		<Skill type="神威" level="0" unlock="10" />
-    </Card>
-    <Card id="5527" name="试炼·晨星之子" wikiId="" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="900" hp="4800" incrAT="0" incrHP="0">
-        <Skill type="物理反弹" level="0" unlock="0" />
-        <Skill type="精准打击" level="8" unlock="5" />
-        <Skill type="魔神之咒" level="4" unlock="10" />
-		<Skill type="沉默" level="0" unlock="10" />
-		<Skill type="免疫" level="0" unlock="10" />
-    </Card>
 
     <!-- 魔神 -->
 <!-- 
@@ -3438,6 +3368,78 @@
     -->
     <Card id="5599" name="占位魔神" wikiId="" race="魔神" speed="2" star="5" cost="0" incrCost="0" at="1" hp="5000" incrAT="0" incrHP="0">
     </Card>
+    
+    <!-- 试炼魔神 -->
+    <Card id="5618" name="试炼·噩梦之主" wikiId="" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="900" hp="4400" incrAT="0" incrHP="0">
+        <Skill type="召唤噩梦护卫" level="0" unlock="0" />
+        <Skill type="灵王的轰击" level="8" unlock="5" />
+        <Skill type="魔神之甲" level="6" unlock="10" />
+		<Skill type="破魔手" level="10" unlock="10" />
+		<Skill type="神威" level="0" unlock="10" />
+    </Card>
+    <Card id="5619" name="试炼·毁灭之神" wikiId="" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="1200" hp="5600" incrAT="0" incrHP="0">
+        <Skill type="邪灵汲取" level="8" unlock="0" />
+        <Skill type="英雄杀手" level="7" unlock="5" />
+        <Skill type="魔神之咒" level="4" unlock="10" />
+		<Skill type="送还" level="0" unlock="10" />
+		<Skill type="免疫" level="0" unlock="10" />
+    </Card>
+    <Card id="5620" name="试炼·万蛛之后" wikiId="" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="1500" hp="4800" incrAT="0" incrHP="0">
+        <Skill type="天火" level="8" unlock="0" />
+        <Skill type="闪光弹" level="4" unlock="5" />
+        <Skill type="魔神之刃" level="3" unlock="10" />
+		<Skill type="陷阱" level="5" unlock="10" />
+		<Skill type="神威" level="0" unlock="10" />
+    </Card>
+    <Card id="5621" name="试炼·邪龙之神" wikiId="" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="1800" hp="4000" incrAT="0" incrHP="0">
+        <Skill type="召唤邪龙护卫" level="0" unlock="0" />
+        <Skill type="迷魂" level="10" unlock="5" />
+        <Skill type="魔神之咒" level="4" unlock="10" />
+		<Skill type="凋零真言" level="8" unlock="10" />
+		<Skill type="神威" level="0" unlock="10" />
+    </Card>
+    <Card id="5622" name="试炼·复仇女神" wikiId="" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="1200" hp="5200" incrAT="0" incrHP="0">
+        <Skill type="召唤复仇护卫" level="0" unlock="0" />
+        <Skill type="寒霜冲击" level="9" unlock="5" />
+        <Skill type="魔神之刃" level="3" unlock="10" />
+		<Skill type="神箭三重奏" level="10" unlock="10" />
+		<Skill type="免疫" level="0" unlock="10" />
+    </Card>
+    <Card id="5623" name="试炼·深渊影魔" wikiId="" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="1500" hp="4800" incrAT="0" incrHP="0">
+        <Skill type="弱点攻击" level="0" unlock="0" />
+        <Skill type="群体追击" level="10" unlock="5" />
+        <Skill type="魔神之甲" level="6" unlock="10" />
+		<Skill type="天火" level="7" unlock="10" />
+		<Skill type="免疫" level="0" unlock="10" />
+    </Card>
+    <Card id="5624" name="试炼·众神之神" wikiId="" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="1500" hp="5500" incrAT="0" incrHP="0">
+        <Skill type="魔力法阵" level="7" unlock="0" />
+        <Skill type="修罗地火攻" level="9" unlock="5" />
+        <Skill type="魔神之刃" level="3" unlock="10" />
+		<Skill type="混乱领域" level="8" unlock="10" />
+		<Skill type="免疫" level="0" unlock="10" />
+    </Card>
+    <Card id="5625" name="试炼·大地之母" wikiId="" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="2000" hp="4200" incrAT="0" incrHP="0">
+        <Skill type="骤雨" level="9" unlock="0" />
+        <Skill type="守护" level="0" unlock="5" />
+        <Skill type="魔神之甲" level="6" unlock="10" />
+		<Skill type="骑士守护" level="0" unlock="10" />
+		<Skill type="神威" level="0" unlock="10" />
+    </Card>
+    <Card id="5626" name="试炼·冰霜巨人" wikiId="" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="1200" hp="6000" incrAT="0" incrHP="0">
+        <Skill type="冰甲" level="10" unlock="0" />
+        <Skill type="末世术" level="9" unlock="5" />
+        <Skill type="灵魂禁锢" level="0" unlock="10" />
+		<Skill type="荆棘术" level="9" unlock="10" />
+		<Skill type="神威" level="0" unlock="10" />
+    </Card>
+    <Card id="5627" name="试炼·晨星之子" wikiId="" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="900" hp="4800" incrAT="0" incrHP="0">
+        <Skill type="物理反弹" level="0" unlock="0" />
+        <Skill type="精准打击" level="8" unlock="5" />
+        <Skill type="魔神之咒" level="4" unlock="10" />
+		<Skill type="沉默" level="0" unlock="10" />
+		<Skill type="免疫" level="0" unlock="10" />
+    </Card>
 
     <Card id="7501" name="熊老师" wikiId="" race="萌货" speed="4" star="5" cost="0" incrCost="0" at="400" hp="1500" incrAT="40" incrHP="50">
         <Skill type="关小黑屋" level="1" unlock="0" summon="true" />
@@ -3455,7 +3457,7 @@
     </Card>
     <Card id="7506" name="森林木桩" wikiId="" race="森林" speed="4" star="5" cost="0" incrCost="0" at="0" hp="5000" incrAT="0" incrHP="0">
     </Card>
-    <Card id="7506" name="沉反占位符" wikiId="" race="萌货" speed="4" star="5" cost="0" incrCost="0" at="0" hp="5000" incrAT="0" incrHP="0">
+    <Card id="7507" name="沉反占位符" wikiId="" race="萌货" speed="4" star="5" cost="0" incrCost="0" at="0" hp="5000" incrAT="0" incrHP="0">
         <Skill type="沉默" level="0" unlock="0" />
         <Skill type="反射装甲" level="0" unlock="0" />
     </Card>
