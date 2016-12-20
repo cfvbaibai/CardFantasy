@@ -757,7 +757,7 @@ public class SkillResolver {
                 AllSpeedUp.apply(deadCardSkillUseInfo, this, deadCard);
             } else if (deadCardSkillUseInfo.getType() == SkillType.战争怒吼) {
                 Soften.apply(deadCardSkillUseInfo, this, deadCard, opponent, -1);
-            } else if (deadCardSkillUseInfo.getType() == SkillType.时光倒流) {
+            } else if (deadCardSkillUseInfo.getType() == SkillType.时间溯行) {
                 TimeBack.apply(deadCardSkillUseInfo, this, deadCard.getOwner(), opponent);
             }
         }
