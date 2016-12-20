@@ -1355,7 +1355,7 @@ var Animater = function() {
     this.selfUsedSkills = [
         '不动', '脱困', '群体脱困', '法力反射', '花族秘术', '冰甲', '水流护甲', '闪避', '守护', '魔神之甲', '灵巧', '灵魂禁锢',
         '王国之盾', '森林之盾', '蛮荒之盾', '地狱之盾', '弱点攻击', '无效', '圣盾', '不屈', '圣炎', '斩杀', '送葬之刃', '逃跑', '灵魂封禁',
-        '镜面装甲', '阿拉希血统', '神威', '月之守护', '洪荒之术', '冰神附体', '三千世界', '神魔之甲', '亮银', '龙胆', '王之守护'
+        '镜面装甲', '阿拉希血统', '神威', '月之守护', '洪荒之术', '冰神附体', '三千世界', '神魔之甲', '亮银', '龙胆', '王之守护', '神之守护'
     ];
     this.__useSkill = function(data) {
         var attacker = data[0]; // EntityRuntimeInfo
@@ -1366,7 +1366,8 @@ var Animater = function() {
         }
         if (skill.indexOf('军团') == 0 ||
             skill.indexOf('原始') == 0 ||
-            skill.indexOf('守护') == skill.length - 2 && skill != '骑士守护' && skill != '月之守护' ||
+            skill == '王国守护' || skill == '森林守护' || skill == '地狱守护' ||
+            skill == '蛮荒守护' || skill == '本源守护' || skill == '神圣守护' ||
             skill.indexOf('之力') == skill.length - 2 ||
             this.msgIgnoredSkills.indexOf(skill) >= 0) {
             return;
@@ -1434,7 +1435,7 @@ var Animater = function() {
                 text: skill,
                 duration: settings.skillDuration,
             });
-        } else if (skill == '迷魂' || skill == '混乱领域') {
+        } else if (skill == '迷魂' || skill == '混乱领域' || skill == '国色') {
             this.flyImage({ fileName: 'heart.png', width: 24, height: 24, text: skill },
                     attacker, defenders, settings.skillDuration);
         } else if (skill == '自爆') {
@@ -1443,7 +1444,7 @@ var Animater = function() {
         } else if (skill == '虚弱' || skill == '战争怒吼') {
             this.flyImage({ fileName: 'soften.png', width: 48, height: 48, text: skill },
                     attacker, defenders, settings.skillDuration);
-        } else if (skill == '疾病' || skill == '瘟疫' || skill == '凋零真言') {
+        } else if (skill == '疾病' || skill == '瘟疫' || skill == '凋零真言' || skill == '凋零陷阱') {
             this.flyImage({ fileName: 'disease.png', width: 48, height: 48, text: skill },
                     attacker, defenders, settings.skillDuration);
         } else if (skill == '削弱' || skill == '群体削弱') {
@@ -1531,7 +1532,8 @@ var Animater = function() {
         var skill = data[1];    // String
         var defenderHero = data[2]; // PlayerRuntimeInfo
         if (skill.indexOf('军团') == 0 ||
-            skill.indexOf('守护') > 0 ||
+            skill == '王国守护' || skill == '森林守护' || skill == '地狱守护' ||
+            skill == '蛮荒守护' || skill == '本源守护' || skill == '神圣守护' ||
             skill.indexOf('之力') > 0 ||
             this.msgIgnoredSkills.indexOf(skill) >= 0) {
             return;

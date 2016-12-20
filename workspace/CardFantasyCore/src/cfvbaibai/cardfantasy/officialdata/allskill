@@ -16064,7 +16064,7 @@
         "LanchCondition": 0,
         "LanchConditionValue": 0,
         "AffectType": 84,
-        "AffectValue": 10,
+        "AffectValue": 50,
         "AffectValue2": 0,
         "SkillCategory": 4,
         "Desc": "每回合使敌方场上所有单位的当前攻击力减半，持续1回合，对魔神无效。"
@@ -16077,7 +16077,7 @@
         "LanchCondition": 0,
         "LanchConditionValue": 0,
         "AffectType": 84,
-        "AffectValue": 10,
+        "AffectValue": 50,
         "AffectValue2": 0,
         "SkillCategory": 2,
         "Desc": "卡牌上场后，使敌方场上所有单位的当前攻击力减半，持续1回合，对魔神无效。"
@@ -16090,7 +16090,7 @@
         "LanchCondition": 0,
         "LanchConditionValue": 0,
         "AffectType": 84,
-        "AffectValue": 10,
+        "AffectValue": 50,
         "AffectValue2": 0,
         "SkillCategory": 2,
         "Desc": "卡牌死亡后，使敌方场上所有单位的当前攻击力减半，持续1回合，对魔神无效。"
@@ -23917,7 +23917,7 @@
         "LanchConditionValue": 0,
         "AffectType": 89,
         "AffectValue": 0,
-        "AffectValue2": 10,
+        "AffectValue2": 50,
         "SkillCategory": 2,
         "Desc": "沉默敌方场上所有卡牌"
       },
@@ -24281,7 +24281,7 @@
         "LanchConditionValue": 0,
         "AffectType": 89,
         "AffectValue": 0,
-        "AffectValue2": 20,
+        "AffectValue2": 50,
         "SkillCategory": 2,
         "Desc": "卡牌上场时，沉默敌方场上所有卡牌"
       },
@@ -24359,7 +24359,7 @@
         "LanchConditionValue": 0,
         "AffectType": 153,
         "AffectValue": 0,
-        "AffectValue2": 10,
+        "AffectValue2": 50,
         "SkillCategory": 2,
         "Desc": "卡牌上场时，沉默敌方场上所有卡牌，该卡牌全场战斗只能使用一次此技能。"
       },
@@ -24840,7 +24840,7 @@
         "LanchConditionValue": 0,
         "AffectType": 22,
         "AffectValue": 250,
-        "AffectValue2": 20,
+        "AffectValue2": 50,
         "SkillCategory": 1,
         "Desc": "对敌方所有卡牌造成250点狙击伤害。"
       },
@@ -24853,7 +24853,7 @@
         "LanchConditionValue": 0,
         "AffectType": 22,
         "AffectValue": 270,
-        "AffectValue2": 20,
+        "AffectValue2": 50,
         "SkillCategory": 1,
         "Desc": "对敌方所有卡牌造成270点狙击伤害。"
       },
@@ -24866,7 +24866,7 @@
         "LanchConditionValue": 0,
         "AffectType": 22,
         "AffectValue": 300,
-        "AffectValue2": 20,
+        "AffectValue2": 50,
         "SkillCategory": 1,
         "Desc": "对敌方所有卡牌造成300点狙击伤害。"
       },
@@ -24879,7 +24879,7 @@
         "LanchConditionValue": 0,
         "AffectType": 22,
         "AffectValue": 320,
-        "AffectValue2": 20,
+        "AffectValue2": 50,
         "SkillCategory": 1,
         "Desc": "对敌方所有卡牌造成320点狙击伤害。"
       },
@@ -24892,7 +24892,7 @@
         "LanchConditionValue": 0,
         "AffectType": 22,
         "AffectValue": 350,
-        "AffectValue2": 20,
+        "AffectValue2": 50,
         "SkillCategory": 1,
         "Desc": "对敌方所有卡牌造成350点狙击伤害。"
       },
@@ -24905,7 +24905,7 @@
         "LanchConditionValue": 0,
         "AffectType": 22,
         "AffectValue": 370,
-        "AffectValue2": 20,
+        "AffectValue2": 50,
         "SkillCategory": 1,
         "Desc": "对敌方所有卡牌造成370点狙击伤害。"
       },
@@ -24918,7 +24918,7 @@
         "LanchConditionValue": 0,
         "AffectType": 22,
         "AffectValue": 400,
-        "AffectValue2": 20,
+        "AffectValue2": 50,
         "SkillCategory": 1,
         "Desc": "对敌方所有卡牌造成400点狙击伤害。"
       },
@@ -24931,7 +24931,7 @@
         "LanchConditionValue": 0,
         "AffectType": 22,
         "AffectValue": 420,
-        "AffectValue2": 20,
+        "AffectValue2": 50,
         "SkillCategory": 1,
         "Desc": "对敌方所有卡牌造成420点狙击伤害。"
       },
@@ -24944,7 +24944,7 @@
         "LanchConditionValue": 0,
         "AffectType": 22,
         "AffectValue": 450,
-        "AffectValue2": 20,
+        "AffectValue2": 50,
         "SkillCategory": 1,
         "Desc": "对敌方所有卡牌造成450点狙击伤害。"
       },
@@ -24957,7 +24957,7 @@
         "LanchConditionValue": 0,
         "AffectType": 22,
         "AffectValue": 500,
-        "AffectValue2": 20,
+        "AffectValue2": 50,
         "SkillCategory": 1,
         "Desc": "对敌方所有卡牌造成500点狙击伤害。"
       },
@@ -25347,7 +25347,7 @@
         "LanchConditionValue": 0,
         "AffectType": 22,
         "AffectValue": 250,
-        "AffectValue2": 20,
+        "AffectValue2": 50,
         "SkillCategory": 1,
         "Desc": "对敌方所有卡牌造成250点狙击伤害。"
       },
@@ -25360,7 +25360,7 @@
         "LanchConditionValue": 0,
         "AffectType": 22,
         "AffectValue": 270,
-        "AffectValue2": 20,
+        "AffectValue2": 50,
         "SkillCategory": 1,
         "Desc": "对敌方所有卡牌造成270点狙击伤害。"
       },
@@ -25373,7 +25373,7 @@
         "LanchConditionValue": 0,
         "AffectType": 22,
         "AffectValue": 300,
-        "AffectValue2": 20,
+        "AffectValue2": 50,
         "SkillCategory": 1,
         "Desc": "对敌方所有卡牌造成300点狙击伤害。"
       },
@@ -25386,7 +25386,7 @@
         "LanchConditionValue": 0,
         "AffectType": 22,
         "AffectValue": 320,
-        "AffectValue2": 20,
+        "AffectValue2": 50,
         "SkillCategory": 1,
         "Desc": "对敌方所有卡牌造成320点狙击伤害。"
       },
@@ -25399,7 +25399,7 @@
         "LanchConditionValue": 0,
         "AffectType": 22,
         "AffectValue": 350,
-        "AffectValue2": 20,
+        "AffectValue2": 50,
         "SkillCategory": 1,
         "Desc": "对敌方所有卡牌造成350点狙击伤害。"
       },
@@ -25412,7 +25412,7 @@
         "LanchConditionValue": 0,
         "AffectType": 22,
         "AffectValue": 370,
-        "AffectValue2": 20,
+        "AffectValue2": 50,
         "SkillCategory": 1,
         "Desc": "对敌方所有卡牌造成370点狙击伤害。"
       },
@@ -25425,7 +25425,7 @@
         "LanchConditionValue": 0,
         "AffectType": 22,
         "AffectValue": 400,
-        "AffectValue2": 20,
+        "AffectValue2": 50,
         "SkillCategory": 1,
         "Desc": "对敌方所有卡牌造成400点狙击伤害。"
       },
@@ -25438,7 +25438,7 @@
         "LanchConditionValue": 0,
         "AffectType": 22,
         "AffectValue": 420,
-        "AffectValue2": 20,
+        "AffectValue2": 50,
         "SkillCategory": 1,
         "Desc": "对敌方所有卡牌造成420点狙击伤害。"
       },
@@ -25451,7 +25451,7 @@
         "LanchConditionValue": 0,
         "AffectType": 22,
         "AffectValue": 450,
-        "AffectValue2": 20,
+        "AffectValue2": 50,
         "SkillCategory": 1,
         "Desc": "对敌方所有卡牌造成450点狙击伤害。"
       },
@@ -25464,7 +25464,7 @@
         "LanchConditionValue": 0,
         "AffectType": 22,
         "AffectValue": 500,
-        "AffectValue2": 20,
+        "AffectValue2": 50,
         "SkillCategory": 1,
         "Desc": "对敌方所有卡牌造成500点狙击伤害。"
       },
@@ -25609,7 +25609,7 @@
         "AffectValue": 10,
         "AffectValue2": 0,
         "SkillCategory": 4,
-        "Desc": "恢复我方全体卡牌10%生命值。"
+        "Desc": "被消灭时，恢复我方全体卡牌10%生命值。"
       },
       {
         "SkillId": 2111,
@@ -25622,7 +25622,7 @@
         "AffectValue": 13,
         "AffectValue2": 0,
         "SkillCategory": 4,
-        "Desc": "恢复我方全体卡牌13%生命值。"
+        "Desc": "被消灭时，恢复我方全体卡牌13%生命值。"
       },
       {
         "SkillId": 2112,
@@ -25635,7 +25635,7 @@
         "AffectValue": 15,
         "AffectValue2": 0,
         "SkillCategory": 4,
-        "Desc": "恢复我方全体卡牌15%生命值。"
+        "Desc": "被消灭时，恢复我方全体卡牌15%生命值。"
       },
       {
         "SkillId": 2113,
@@ -25648,7 +25648,7 @@
         "AffectValue": 18,
         "AffectValue2": 0,
         "SkillCategory": 4,
-        "Desc": "恢复我方全体卡牌18%生命值。"
+        "Desc": "被消灭时，恢复我方全体卡牌18%生命值。"
       },
       {
         "SkillId": 2114,
@@ -25661,7 +25661,7 @@
         "AffectValue": 20,
         "AffectValue2": 0,
         "SkillCategory": 4,
-        "Desc": "恢复我方全体卡牌20%生命值。"
+        "Desc": "被消灭时，恢复我方全体卡牌20%生命值。"
       },
       {
         "SkillId": 2115,
@@ -25674,7 +25674,7 @@
         "AffectValue": 23,
         "AffectValue2": 0,
         "SkillCategory": 4,
-        "Desc": "恢复我方全体卡牌23%生命值。"
+        "Desc": "被消灭时，恢复我方全体卡牌23%生命值。"
       },
       {
         "SkillId": 2116,
@@ -25687,7 +25687,7 @@
         "AffectValue": 25,
         "AffectValue2": 0,
         "SkillCategory": 4,
-        "Desc": "恢复我方全体卡牌25%生命值。"
+        "Desc": "被消灭时，恢复我方全体卡牌25%生命值。"
       },
       {
         "SkillId": 2117,
@@ -25700,7 +25700,7 @@
         "AffectValue": 28,
         "AffectValue2": 0,
         "SkillCategory": 4,
-        "Desc": "恢复我方全体卡牌28%生命值。"
+        "Desc": "被消灭时，恢复我方全体卡牌28%生命值。"
       },
       {
         "SkillId": 2118,
@@ -25713,7 +25713,7 @@
         "AffectValue": 30,
         "AffectValue2": 0,
         "SkillCategory": 4,
-        "Desc": "恢复我方全体卡牌30%生命值。"
+        "Desc": "被消灭时，恢复我方全体卡牌30%生命值。"
       },
       {
         "SkillId": 2119,
@@ -25726,7 +25726,7 @@
         "AffectValue": 35,
         "AffectValue2": 0,
         "SkillCategory": 4,
-        "Desc": "恢复我方全体卡牌35%生命值。"
+        "Desc": "被消灭时，恢复我方全体卡牌35%生命值。"
       },
       {
         "SkillId": 2120,
@@ -25973,7 +25973,7 @@
         "AffectValue": 1,
         "AffectValue2": 0,
         "SkillCategory": 2,
-        "Desc": "于混乱次元中映射出来的邪恶幻影。卡牌上场后，召唤1张相同卡牌上场战斗（召唤出的卡牌不会进入墓地，牌堆，手牌），如果场上已经存在自身召唤的卡牌时，则不发动召唤。"
+        "Desc": "于混乱次元中映射出来的邪恶幻影。卡牌上场时，召唤1张相同卡牌上场战斗（召唤出的卡牌不会进入墓地，牌堆，手牌），如果场上已经存在自身召唤的卡牌时，则不发动召唤。"
       },
       {
         "SkillId": 2139,
@@ -26038,7 +26038,7 @@
         "AffectValue": 1210,
         "AffectValue2": 0,
         "SkillCategory": 2,
-        "Desc": "每回合减少我方等待区等待时间最长的卡牌1CD。"
+        "Desc": "当自己在墓地时，每回合减少我方等待区等待时间最长的卡牌1CD。"
       },
       {
         "SkillId": 2144,
@@ -26051,7 +26051,7 @@
         "AffectValue": 1211,
         "AffectValue2": 0,
         "SkillCategory": 2,
-        "Desc": "每回合增加敌方等待区等待时间最短的卡牌1CD。"
+        "Desc": "当自己在墓地时，每回合增加敌方等待区等待时间最短的卡牌1CD。"
       },
       {
         "SkillId": 2145,
@@ -26064,7 +26064,7 @@
         "AffectValue": 1212,
         "AffectValue2": 0,
         "SkillCategory": 2,
-        "Desc": "每回合减少我方等待区等待时间最长的卡牌2CD。"
+        "Desc": "当自己在墓地时，每回合减少我方等待区等待时间最长的卡牌2CD。"
       },
       {
         "SkillId": 2146,
@@ -26077,7 +26077,7 @@
         "AffectValue": 1213,
         "AffectValue2": 0,
         "SkillCategory": 2,
-        "Desc": "每回合增加敌方等待区等待时间最短的卡牌2CD。"
+        "Desc": "当自己在墓地时，每回合增加敌方等待区等待时间最短的卡牌2CD。"
       },
       {
         "SkillId": 2147,
@@ -26088,7 +26088,7 @@
         "LanchConditionValue": 0,
         "AffectType": 69,
         "AffectValue": 60,
-        "AffectValue2": 20,
+        "AffectValue2": 50,
         "SkillCategory": 2,
         "Desc": "一愿得江东二乔，虽死无恨！使对方全体卡牌有60%的几率在其下一回合时攻击自己的英雄。"
       },
@@ -26142,7 +26142,7 @@
         "AffectValue": 621,
         "AffectValue2": 0,
         "SkillCategory": 2,
-        "Desc": "墓地中1张卡牌回到牌堆。"
+        "Desc": "当自己在墓地时，墓地中1张卡牌回到牌堆。"
       },
       {
         "SkillId": 2152,
@@ -26155,7 +26155,7 @@
         "AffectValue": 622,
         "AffectValue2": 0,
         "SkillCategory": 2,
-        "Desc": "墓地中2张卡牌回到牌堆。"
+        "Desc": "当自己在墓地时，墓地中2张卡牌回到牌堆。"
       },
       {
         "SkillId": 2153,
@@ -26168,7 +26168,7 @@
         "AffectValue": 623,
         "AffectValue2": 0,
         "SkillCategory": 2,
-        "Desc": "墓地中3张卡牌回到牌堆。"
+        "Desc": "当自己在墓地时，墓地中3张卡牌回到牌堆。"
       },
       {
         "SkillId": 2154,
@@ -26181,7 +26181,7 @@
         "AffectValue": 624,
         "AffectValue2": 0,
         "SkillCategory": 2,
-        "Desc": "墓地中4张卡牌回到牌堆。"
+        "Desc": "当自己在墓地时，墓地中4张卡牌回到牌堆。"
       },
       {
         "SkillId": 2155,
@@ -26194,7 +26194,7 @@
         "AffectValue": 625,
         "AffectValue2": 0,
         "SkillCategory": 2,
-        "Desc": "墓地中5张卡牌回到牌堆。"
+        "Desc": "当自己在墓地时，墓地中5张卡牌回到牌堆。"
       },
       {
         "SkillId": 2156,
@@ -26207,7 +26207,7 @@
         "AffectValue": 0,
         "AffectValue2": 0,
         "SkillCategory": 2,
-        "Desc": "卡牌上场后，除该卡牌自身外，手牌区和场上卡牌全部回到双方的牌堆中，无法被免疫，该技能自身只能发动一次。对魔神魔王单位无效。"
+        "Desc": "被消灭时，除该卡牌自身外，手牌区和场上卡牌全部回到双方的牌堆中，无法被免疫，该技能自身只能发动一次。对魔神魔王单位无效。"
       },
       {
         "SkillId": 2157,
@@ -26221,6 +26221,19 @@
         "AffectValue2": 0,
         "SkillCategory": 3,
         "Desc": "子龙一身都是胆也!100%几率闪避物理攻击。"
+      },
+      {
+        "SkillId": 2159,
+        "Name": "[死契]时间溯行",
+        "Type": 66,
+        "LanchType": 9,
+        "LanchCondition": 0,
+        "LanchConditionValue": 0,
+        "AffectType": 155,
+        "AffectValue": 0,
+        "AffectValue2": 0,
+        "SkillCategory": 2,
+        "Desc": "被消灭时，除该卡牌自身外，手牌区和场上卡牌全部回到双方的牌堆中，无法被免疫。对魔神魔王单位无效。"
       }
     ]
   },
@@ -26228,7 +26241,7 @@
   "message": null,
   "type": null,
   "version": {
-    "http": "1479710945",
+    "http": "1481880505",
     "stop": "",
     "appversion": "version_1",
     "appurl": "ios://xxx",

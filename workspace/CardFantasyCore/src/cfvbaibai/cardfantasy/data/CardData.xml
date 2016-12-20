@@ -455,12 +455,12 @@
         <Skill type="冰甲" level="3" unlock="5" />
         <Skill type="回魂" level="1" unlock="10" />
     </Card>
-    <Card id="1434" name="世界杯美国" wikiId="" race="王国" speed="4" star="4" cost="15" incrCost="2" at="300" hp="1000" incrAT="17" incrHP="37">
+    <Card id="1434" name="世界杯·美国" wikiId="" race="王国" speed="4" star="4" cost="15" incrCost="2" at="300" hp="1000" incrAT="17" incrHP="37">
         <Skill type="王国守护" level="5" unlock="0" />
         <Skill type="王国之力" level="5" unlock="5" />
         <Skill type="脱困" level="0" unlock="10" />
     </Card>
-    <Card id="1435" name="世界杯德国" wikiId="" race="王国" speed="4" star="4" cost="15" incrCost="2" at="300" hp="1000" incrAT="17" incrHP="37">
+    <Card id="1435" name="世界杯·德国" wikiId="" race="王国" speed="4" star="4" cost="15" incrCost="2" at="300" hp="1000" incrAT="17" incrHP="37">
         <Skill type="格挡" level="6" unlock="0" />
         <Skill type="二重狙击" level="6" unlock="5" />
         <Skill type="不动" level="0" unlock="10" />
@@ -866,6 +866,11 @@
         <Skill type="龙胆" level="0" unlock="5" />
         <Skill type="亮银" level="0" unlock="10" />
     </Card>
+    <Card id="1562" name="时之炼金士" wikiId="" race="王国" speed="2" star="5" cost="18" incrCost="2" at="340" hp="1590" incrAT="37" incrHP="35">
+        <Skill type="时间溯行" level="0" unlock="0" death="true" />
+        <Skill type="王之守护" level="0" unlock="5" />
+        <Skill type="圣母回声" level="0" unlock="10" />
+    </Card>
 
     <!-- 森林 -->
     <Card id="2101" name="人马巡逻者" wikiId="30976" race="森林" speed="2" star="1" cost="3" incrCost="2" at="95" hp="310" incrAT="17" incrHP="11">
@@ -1230,12 +1235,12 @@
         <Skill type="魔甲" level="6" unlock="5" />
         <Skill type="召唤花仙子" level="0" unlock="10" />
     </Card>
-    <Card id="2429" name="世界杯法国" wikiId="" race="森林" speed="4" star="4" cost="15" incrCost="2" at="300" hp="1000" incrAT="17" incrHP="37">
+    <Card id="2429" name="世界杯·法国" wikiId="" race="森林" speed="4" star="4" cost="15" incrCost="2" at="300" hp="1000" incrAT="17" incrHP="37">
         <Skill type="森林守护" level="5" unlock="0" />
         <Skill type="森林之力" level="5" unlock="5" />
         <Skill type="法力反射" level="5" unlock="10" />
     </Card>
-    <Card id="2430" name="世界杯巴西" wikiId="" race="森林" speed="4" star="4" cost="15" incrCost="2" at="300" hp="1000" incrAT="17" incrHP="37">
+    <Card id="2430" name="世界杯·巴西" wikiId="" race="森林" speed="4" star="4" cost="15" incrCost="2" at="300" hp="1000" incrAT="17" incrHP="37">
         <Skill type="本源守护" level="5" unlock="0" />
         <Skill type="本源之力" level="5" unlock="5" />
         <Skill type="闪避" level="5" unlock="10" />
@@ -1550,6 +1555,31 @@
         <Skill type="守护" level="0" unlock="0" />
         <Skill type="转生" level="7" unlock="5" />
         <Skill type="星之所在" level="0" unlock="10" summon="true" />
+    </Card>
+    <Card id="2546" name="灵龙守护者" wikiId="" race="森林" speed="3" star="5" cost="18" incrCost="1" at="340" hp="1570" incrAT="36" incrHP="31">
+        <Skill type="寒霜冲击" level="8" unlock="0" />
+        <Skill type="逃跑" level="0" unlock="5" />
+        <Skill type="灵龙轰咆" level="0" unlock="10" summon="true" />
+    </Card>
+    <Card id="2547" name="三国英魂·大乔" wikiId="" race="森林" speed="2" star="5" cost="19" incrCost="2" at="330" hp="1610" incrAT="38" incrHP="35">
+        <Skill type="神之守护" level="0" unlock="0" />
+        <Skill type="回魂" level="2" unlock="5" postcast="true" />
+        <Skill type="国色" level="0" unlock="10" />
+    </Card>
+    <Card id="2548" name="花丛迷子" wikiId="" race="森林" speed="2" star="4" cost="14" incrCost="2" at="270" hp="1360" incrAT="33" incrHP="29">
+        <Skill type="月神的护佑" level="5" unlock="0" death="true" />
+        <Skill type="过载" level="4" unlock="5" />
+        <Skill type="回魂" level="1" unlock="10" postcast="true" />
+    </Card>
+    <Card id="2549" name="懒洋洋仙人掌" wikiId="" race="森林" speed="3" star="3" cost="11" incrCost="2" at="300" hp="980" incrAT="35" incrHP="30">
+        <Skill type="森林守护" level="5" unlock="0" />
+        <Skill type="森林之力" level="5" unlock="5" />
+        <Skill type="逃跑" level="0" unlock="10" />
+    </Card>
+    <Card id="2550" name="气冲冲仙人掌" wikiId="" race="森林" speed="4" star="4" cost="14" incrCost="2" at="310" hp="1420" incrAT="38" incrHP="30">
+        <Skill type="奋战" level="6" unlock="0" />
+        <Skill type="弱点攻击" level="0" unlock="5" />
+        <Skill type="钢铁之肤" level="4" unlock="10" />
     </Card>
 
     <!-- 蛮荒  -->
@@ -1966,7 +1996,7 @@
         <Skill type="转生" level="6" unlock="5" />
         <Skill type="召唤火焰乌鸦" level="0" unlock="10" />
     </Card>
-    <Card id="3438" name="世界杯南非" wikiId="" race="蛮荒" speed="4" star="4" cost="15" incrCost="2" at="300" hp="1000" incrAT="17" incrHP="37">
+    <Card id="3438" name="世界杯·南非" wikiId="" race="蛮荒" speed="4" star="4" cost="15" incrCost="2" at="300" hp="1000" incrAT="17" incrHP="37">
         <Skill type="蛮荒守护" level="5" unlock="0" />
         <Skill type="蛮荒之力" level="5" unlock="5" />
         <Skill type="暴击" level="5" unlock="10" />
@@ -2301,6 +2331,11 @@
         <Skill type="趁胜追击" level="9" unlock="0" />
         <Skill type="脱困" level="0" unlock="5" />
         <Skill type="咆哮" level="0" unlock="10" />
+    </Card>
+    <Card id="3548" name="迷途喵娘" wikiId="" race="蛮荒" speed="1" star="5" cost="20" incrCost="2" at="370" hp="1710" incrAT="42" incrHP="31">
+        <Skill type="逃跑" level="0" unlock="0" />
+        <Skill type="战争怒吼" level="0" unlock="5" />
+        <Skill type="星云锁链" level="0" unlock="10" />
     </Card>
 
     <!-- 地狱 -->
@@ -2720,7 +2755,7 @@
         <Skill type="鲜血盛宴" level="5" unlock="5" />
         <Skill type="嗜血" level="6" unlock="10" />
     </Card>
-    <Card id="4433" name="世界杯韩日" wikiId="" race="地狱" speed="4" star="4" cost="15" incrCost="2" at="300" hp="1000" incrAT="17" incrHP="37">
+    <Card id="4433" name="世界杯·韩日" wikiId="" race="地狱" speed="4" star="4" cost="15" incrCost="2" at="300" hp="1000" incrAT="17" incrHP="37">
         <Skill type="地狱守护" level="5" unlock="0" />
         <Skill type="地狱之力" level="5" unlock="5" />
         <Skill type="转生" level="5" unlock="10" />
@@ -3078,6 +3113,11 @@
         <Skill type="转生" level="9" unlock="5" />
         <Skill type="鬼王之怒" level="0" unlock="10" />
     </Card>
+    <Card id="4555" name="针刺刺仙人掌" wikiId="" race="地狱" speed="4" star="5" cost="16" incrCost="2" at="350" hp="1670" incrAT="45" incrHP="42">
+        <Skill type="凋零陷阱" level="0" unlock="0" />
+        <Skill type="荆棘术" level="7" unlock="5" />
+        <Skill type="骤雨" level="8" unlock="10" />
+    </Card>
 
     <!-- 魔神 -->
     <Card id="5501" name="狙击复仇女神" wikiId="30871" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="1200" hp="10400000" incrAT="0" incrHP="0">
@@ -3248,27 +3288,27 @@
         <Skill type="免疫" level="0" unlock="10" />
     </Card>
 
-    <Card id="5510" name="简单莉莉丝" wikiId="" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="1000" hp="0" incrAT="0" incrHP="0">
+    <Card id="5510" name="简单·莉莉丝" wikiId="" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="1000" hp="0" incrAT="0" incrHP="0">
         <Skill type="不动" level="0" unlock="0" />
         <Skill type="二重狙击" level="10" unlock="5" />
         <Skill type="嗜血" level="8" unlock="10" />
     </Card>
-    <Card id="5511" name="普通莉莉丝" wikiId="" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="1000" hp="0" incrAT="0" incrHP="0">
+    <Card id="5511" name="普通·莉莉丝" wikiId="" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="1000" hp="0" incrAT="0" incrHP="0">
         <Skill type="不动" level="0" unlock="0" />
         <Skill type="圣炎" level="0" unlock="5" />
         <Skill type="嗜血" level="8" unlock="10" />
     </Card>
-    <Card id="5512" name="困难莉莉丝" wikiId="" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="1000" hp="90000" incrAT="0" incrHP="0">
+    <Card id="5512" name="困难·莉莉丝" wikiId="" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="1000" hp="90000" incrAT="0" incrHP="0">
         <Skill type="免疫" level="10" unlock="0" />
         <Skill type="二重狙击" level="10" unlock="5" />
         <Skill type="嗜血" level="8" unlock="10" />
     </Card>
-    <Card id="5513" name="噩梦莉莉丝" wikiId="" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="1500" hp="160000" incrAT="0" incrHP="0">
+    <Card id="5513" name="噩梦·莉莉丝" wikiId="" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="1500" hp="160000" incrAT="0" incrHP="0">
         <Skill type="免疫" level="0" unlock="0" />
         <Skill type="圣炎" level="0" unlock="5" />
         <Skill type="弱点攻击" level="0" unlock="10" />
     </Card> 
-    <Card id="5514" name="炼狱莉莉丝" wikiId="" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="2000" hp="250000" incrAT="0" incrHP="0">
+    <Card id="5514" name="炼狱·莉莉丝" wikiId="" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="2000" hp="250000" incrAT="0" incrHP="0">
         <Skill type="免疫" level="0" unlock="0" />
         <Skill type="圣炎" level="0" unlock="5" />
         <Skill type="弱点攻击" level="0" unlock="10" />
@@ -3286,7 +3326,7 @@
         <Skill type="冰甲" level="10" unlock="10" />
         <Skill type="回魂" level="5" unlock="10" />
     </Card>
-    <Card id="5517" name="真预言之神" wikiId="" race="魔神" speed="0" star="5" cost="99" incrCost="0" at="1000" hp="10000" incrAT="0" incrHP="0">
+    <Card id="5517" name="真·预言之神" wikiId="" race="魔神" speed="0" star="5" cost="99" incrCost="0" at="1000" hp="10000" incrAT="0" incrHP="0">
         <Skill type="沉默" level="0" unlock="0" />
         <Skill type="回魂" level="5" unlock="5" />
         <Skill type="免疫" level="0" unlock="10" />
@@ -3328,6 +3368,78 @@
     -->
     <Card id="5599" name="占位魔神" wikiId="" race="魔神" speed="2" star="5" cost="0" incrCost="0" at="1" hp="5000" incrAT="0" incrHP="0">
     </Card>
+    
+    <!-- 试炼魔神 -->
+    <Card id="5618" name="试炼·噩梦之主" wikiId="" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="900" hp="4400" incrAT="0" incrHP="0">
+        <Skill type="召唤噩梦护卫" level="0" unlock="0" />
+        <Skill type="灵王的轰击" level="8" unlock="5" />
+        <Skill type="魔神之甲" level="6" unlock="10" />
+		<Skill type="破魔手" level="10" unlock="10" />
+		<Skill type="神威" level="0" unlock="10" />
+    </Card>
+    <Card id="5619" name="试炼·毁灭之神" wikiId="" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="1200" hp="5600" incrAT="0" incrHP="0">
+        <Skill type="邪灵汲取" level="8" unlock="0" />
+        <Skill type="英雄杀手" level="7" unlock="5" />
+        <Skill type="魔神之咒" level="4" unlock="10" />
+		<Skill type="送还" level="0" unlock="10" />
+		<Skill type="免疫" level="0" unlock="10" />
+    </Card>
+    <Card id="5620" name="试炼·万蛛之后" wikiId="" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="1500" hp="4800" incrAT="0" incrHP="0">
+        <Skill type="天火" level="8" unlock="0" />
+        <Skill type="闪光弹" level="4" unlock="5" />
+        <Skill type="魔神之刃" level="3" unlock="10" />
+		<Skill type="陷阱" level="5" unlock="10" />
+		<Skill type="神威" level="0" unlock="10" />
+    </Card>
+    <Card id="5621" name="试炼·邪龙之神" wikiId="" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="1800" hp="4000" incrAT="0" incrHP="0">
+        <Skill type="召唤邪龙护卫" level="0" unlock="0" />
+        <Skill type="迷魂" level="10" unlock="5" />
+        <Skill type="魔神之咒" level="4" unlock="10" />
+		<Skill type="凋零真言" level="8" unlock="10" />
+		<Skill type="神威" level="0" unlock="10" />
+    </Card>
+    <Card id="5622" name="试炼·复仇女神" wikiId="" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="1200" hp="5200" incrAT="0" incrHP="0">
+        <Skill type="召唤复仇护卫" level="0" unlock="0" />
+        <Skill type="寒霜冲击" level="9" unlock="5" />
+        <Skill type="魔神之刃" level="3" unlock="10" />
+		<Skill type="神箭三重奏" level="10" unlock="10" />
+		<Skill type="免疫" level="0" unlock="10" />
+    </Card>
+    <Card id="5623" name="试炼·深渊影魔" wikiId="" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="1500" hp="4800" incrAT="0" incrHP="0">
+        <Skill type="弱点攻击" level="0" unlock="0" />
+        <Skill type="群体追击" level="10" unlock="5" />
+        <Skill type="魔神之甲" level="6" unlock="10" />
+		<Skill type="天火" level="7" unlock="10" />
+		<Skill type="免疫" level="0" unlock="10" />
+    </Card>
+    <Card id="5624" name="试炼·众神之神" wikiId="" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="1500" hp="5500" incrAT="0" incrHP="0">
+        <Skill type="魔力法阵" level="7" unlock="0" />
+        <Skill type="修罗地火攻" level="9" unlock="5" />
+        <Skill type="魔神之刃" level="3" unlock="10" />
+		<Skill type="混乱领域" level="8" unlock="10" />
+		<Skill type="免疫" level="0" unlock="10" />
+    </Card>
+    <Card id="5625" name="试炼·大地之母" wikiId="" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="2000" hp="4200" incrAT="0" incrHP="0">
+        <Skill type="骤雨" level="9" unlock="0" />
+        <Skill type="守护" level="0" unlock="5" />
+        <Skill type="魔神之甲" level="6" unlock="10" />
+		<Skill type="骑士守护" level="0" unlock="10" />
+		<Skill type="神威" level="0" unlock="10" />
+    </Card>
+    <Card id="5626" name="试炼·冰霜巨人" wikiId="" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="1200" hp="6000" incrAT="0" incrHP="0">
+        <Skill type="冰甲" level="10" unlock="0" />
+        <Skill type="末世术" level="9" unlock="5" />
+        <Skill type="灵魂禁锢" level="0" unlock="10" />
+		<Skill type="荆棘术" level="9" unlock="10" />
+		<Skill type="神威" level="0" unlock="10" />
+    </Card>
+    <Card id="5627" name="试炼·晨星之子" wikiId="" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="900" hp="4800" incrAT="0" incrHP="0">
+        <Skill type="物理反弹" level="0" unlock="0" />
+        <Skill type="精准打击" level="8" unlock="5" />
+        <Skill type="魔神之咒" level="4" unlock="10" />
+		<Skill type="沉默" level="0" unlock="10" />
+		<Skill type="免疫" level="0" unlock="10" />
+    </Card>
 
     <Card id="7501" name="熊老师" wikiId="" race="萌货" speed="4" star="5" cost="0" incrCost="0" at="400" hp="1500" incrAT="40" incrHP="50">
         <Skill type="关小黑屋" level="1" unlock="0" summon="true" />
@@ -3345,7 +3457,7 @@
     </Card>
     <Card id="7506" name="森林木桩" wikiId="" race="森林" speed="4" star="5" cost="0" incrCost="0" at="0" hp="5000" incrAT="0" incrHP="0">
     </Card>
-    <Card id="7506" name="沉反占位符" wikiId="" race="萌货" speed="4" star="5" cost="0" incrCost="0" at="0" hp="5000" incrAT="0" incrHP="0">
+    <Card id="7507" name="沉反占位符" wikiId="" race="萌货" speed="4" star="5" cost="0" incrCost="0" at="0" hp="5000" incrAT="0" incrHP="0">
         <Skill type="沉默" level="0" unlock="0" />
         <Skill type="反射装甲" level="0" unlock="0" />
     </Card>
