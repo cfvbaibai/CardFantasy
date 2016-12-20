@@ -29,8 +29,9 @@ public class TimeBack {
 
         applyToPlayer(myHero, skillUseInfo, resolver);
         applyToPlayer(opHero, skillUseInfo, resolver);
-        if (skillUseInfo.getType() != SkillType.时间溯行)
-        	resolver.getStage().setUsed(skillUseInfo, true);
+        if (skillUseInfo.getType() != SkillType.时间溯行) {
+            resolver.getStage().setUsed(skillUseInfo, true);
+        }
     }
     
     private static void applyToPlayer(Player player, SkillUseInfo skillUseInfo, SkillResolver resolver) throws HeroDieSignal {

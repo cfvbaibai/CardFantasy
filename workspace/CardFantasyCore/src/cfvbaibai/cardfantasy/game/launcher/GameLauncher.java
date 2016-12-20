@@ -205,7 +205,7 @@ public final class GameLauncher {
         
         GameResult lastDetail = trialResult;
         if (setup.getGameCount() > 0) {
-            for (int i = 0; i < 100 - 1; ++i) {
+            for (int i = 0; i < 99; ++i) {
                 lastDetail = BattleEngine.play1v1(setup.getUi(), gsi.getRule(), gsi.getP1(), gsi.getP2());
                 if (lastDetail.getCause() == GameEndCause.战斗超时) {
                     ++timeoutCount;
@@ -221,11 +221,11 @@ public final class GameLauncher {
             // To avoid long boss battle from taking too much system resources by
             // doing 100 trial games and calculate the game count out of the time the trial game takes.
             int gameCount = 1000000 / gameRound;
-            if (gameCount < 100){
-            	gameCount = 100;
+            if (gameCount < 100) {
+                gameCount = 100;
             }
-            if (gameCount > 1000){
-            	gameCount = 1000;
+            if (gameCount > 1000) {
+                gameCount = 1000;
             }
             
             for (int i = 0; i < gameCount - 100; ++i) {
