@@ -455,12 +455,12 @@
         <Skill type="冰甲" level="3" unlock="5" />
         <Skill type="回魂" level="1" unlock="10" />
     </Card>
-    <Card id="1434" name="世界杯美国" wikiId="" race="王国" speed="4" star="4" cost="15" incrCost="2" at="300" hp="1000" incrAT="17" incrHP="37">
+    <Card id="1434" name="世界杯·美国" wikiId="" race="王国" speed="4" star="4" cost="15" incrCost="2" at="300" hp="1000" incrAT="17" incrHP="37">
         <Skill type="王国守护" level="5" unlock="0" />
         <Skill type="王国之力" level="5" unlock="5" />
         <Skill type="脱困" level="0" unlock="10" />
     </Card>
-    <Card id="1435" name="世界杯德国" wikiId="" race="王国" speed="4" star="4" cost="15" incrCost="2" at="300" hp="1000" incrAT="17" incrHP="37">
+    <Card id="1435" name="世界杯·德国" wikiId="" race="王国" speed="4" star="4" cost="15" incrCost="2" at="300" hp="1000" incrAT="17" incrHP="37">
         <Skill type="格挡" level="6" unlock="0" />
         <Skill type="二重狙击" level="6" unlock="5" />
         <Skill type="不动" level="0" unlock="10" />
@@ -1235,12 +1235,12 @@
         <Skill type="魔甲" level="6" unlock="5" />
         <Skill type="召唤花仙子" level="0" unlock="10" />
     </Card>
-    <Card id="2429" name="世界杯法国" wikiId="" race="森林" speed="4" star="4" cost="15" incrCost="2" at="300" hp="1000" incrAT="17" incrHP="37">
+    <Card id="2429" name="世界杯·法国" wikiId="" race="森林" speed="4" star="4" cost="15" incrCost="2" at="300" hp="1000" incrAT="17" incrHP="37">
         <Skill type="森林守护" level="5" unlock="0" />
         <Skill type="森林之力" level="5" unlock="5" />
         <Skill type="法力反射" level="5" unlock="10" />
     </Card>
-    <Card id="2430" name="世界杯巴西" wikiId="" race="森林" speed="4" star="4" cost="15" incrCost="2" at="300" hp="1000" incrAT="17" incrHP="37">
+    <Card id="2430" name="世界杯·巴西" wikiId="" race="森林" speed="4" star="4" cost="15" incrCost="2" at="300" hp="1000" incrAT="17" incrHP="37">
         <Skill type="本源守护" level="5" unlock="0" />
         <Skill type="本源之力" level="5" unlock="5" />
         <Skill type="闪避" level="5" unlock="10" />
@@ -1996,7 +1996,7 @@
         <Skill type="转生" level="6" unlock="5" />
         <Skill type="召唤火焰乌鸦" level="0" unlock="10" />
     </Card>
-    <Card id="3438" name="世界杯南非" wikiId="" race="蛮荒" speed="4" star="4" cost="15" incrCost="2" at="300" hp="1000" incrAT="17" incrHP="37">
+    <Card id="3438" name="世界杯·南非" wikiId="" race="蛮荒" speed="4" star="4" cost="15" incrCost="2" at="300" hp="1000" incrAT="17" incrHP="37">
         <Skill type="蛮荒守护" level="5" unlock="0" />
         <Skill type="蛮荒之力" level="5" unlock="5" />
         <Skill type="暴击" level="5" unlock="10" />
@@ -2755,7 +2755,7 @@
         <Skill type="鲜血盛宴" level="5" unlock="5" />
         <Skill type="嗜血" level="6" unlock="10" />
     </Card>
-    <Card id="4433" name="世界杯韩日" wikiId="" race="地狱" speed="4" star="4" cost="15" incrCost="2" at="300" hp="1000" incrAT="17" incrHP="37">
+    <Card id="4433" name="世界杯·韩日" wikiId="" race="地狱" speed="4" star="4" cost="15" incrCost="2" at="300" hp="1000" incrAT="17" incrHP="37">
         <Skill type="地狱守护" level="5" unlock="0" />
         <Skill type="地狱之力" level="5" unlock="5" />
         <Skill type="转生" level="5" unlock="10" />
@@ -3288,27 +3288,27 @@
         <Skill type="免疫" level="0" unlock="10" />
     </Card>
 
-    <Card id="5510" name="简单莉莉丝" wikiId="" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="1000" hp="0" incrAT="0" incrHP="0">
+    <Card id="5510" name="简单·莉莉丝" wikiId="" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="1000" hp="0" incrAT="0" incrHP="0">
         <Skill type="不动" level="0" unlock="0" />
         <Skill type="二重狙击" level="10" unlock="5" />
         <Skill type="嗜血" level="8" unlock="10" />
     </Card>
-    <Card id="5511" name="普通莉莉丝" wikiId="" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="1000" hp="0" incrAT="0" incrHP="0">
+    <Card id="5511" name="普通·莉莉丝" wikiId="" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="1000" hp="0" incrAT="0" incrHP="0">
         <Skill type="不动" level="0" unlock="0" />
         <Skill type="圣炎" level="0" unlock="5" />
         <Skill type="嗜血" level="8" unlock="10" />
     </Card>
-    <Card id="5512" name="困难莉莉丝" wikiId="" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="1000" hp="90000" incrAT="0" incrHP="0">
+    <Card id="5512" name="困难·莉莉丝" wikiId="" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="1000" hp="90000" incrAT="0" incrHP="0">
         <Skill type="免疫" level="10" unlock="0" />
         <Skill type="二重狙击" level="10" unlock="5" />
         <Skill type="嗜血" level="8" unlock="10" />
     </Card>
-    <Card id="5513" name="噩梦莉莉丝" wikiId="" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="1500" hp="160000" incrAT="0" incrHP="0">
+    <Card id="5513" name="噩梦·莉莉丝" wikiId="" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="1500" hp="160000" incrAT="0" incrHP="0">
         <Skill type="免疫" level="0" unlock="0" />
         <Skill type="圣炎" level="0" unlock="5" />
         <Skill type="弱点攻击" level="0" unlock="10" />
     </Card> 
-    <Card id="5514" name="炼狱莉莉丝" wikiId="" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="2000" hp="250000" incrAT="0" incrHP="0">
+    <Card id="5514" name="炼狱·莉莉丝" wikiId="" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="2000" hp="250000" incrAT="0" incrHP="0">
         <Skill type="免疫" level="0" unlock="0" />
         <Skill type="圣炎" level="0" unlock="5" />
         <Skill type="弱点攻击" level="0" unlock="10" />
@@ -3326,7 +3326,7 @@
         <Skill type="冰甲" level="10" unlock="10" />
         <Skill type="回魂" level="5" unlock="10" />
     </Card>
-    <Card id="5517" name="真预言之神" wikiId="" race="魔神" speed="0" star="5" cost="99" incrCost="0" at="1000" hp="10000" incrAT="0" incrHP="0">
+    <Card id="5517" name="真·预言之神" wikiId="" race="魔神" speed="0" star="5" cost="99" incrCost="0" at="1000" hp="10000" incrAT="0" incrHP="0">
         <Skill type="沉默" level="0" unlock="0" />
         <Skill type="回魂" level="5" unlock="5" />
         <Skill type="免疫" level="0" unlock="10" />
