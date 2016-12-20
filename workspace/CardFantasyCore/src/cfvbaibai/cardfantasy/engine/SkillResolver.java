@@ -943,6 +943,18 @@ public class SkillResolver {
                     Pursuit.apply(this, rune.getSkillUseInfo(), attacker, defender);
                 }
             }
+            {
+            	if (!attacker.justRevived()) {
+	            	List<CardInfo> cards = attacker.getOwner().getField().getAliveCards();
+	            	for(CardInfo card : cards){
+	            		for (SkillUseInfo skillUseInfo : card.getUsableNormalSkills()) {
+		            		if (skillUseInfo.getType() == SkillType.群体追击){
+		                        Pursuit.apply(this, skillUseInfo, attacker, defender);
+		            		}
+	            		}
+	            	}
+            	}
+            }
         }
     }
 
@@ -1356,8 +1368,8 @@ public class SkillResolver {
                             "天秤座", "射手座", "天蝎座", "摩羯座", "水瓶座", "双鱼座");
                 } else if (skillUseInfo.getType() == SkillType.灵龙轰咆) {
                     Summon.apply(this, skillUseInfo, card, SummonType.RandomSummoning, 2,
-                            "白羊座", "金牛座", "双子座", "巨蟹座", "狮子座", "处女座",
-                            "天秤座", "射手座", "天蝎座", "摩羯座", "水瓶座", "双鱼座");
+                    		"光明之龙", "金属巨龙", "黄金金属巨龙", "元素灵龙", "暴怒霸龙", "毁灭之龙", "幽灵巨龙",
+                    		"水晶巨龙", "毒雾羽龙", "黄金毒龙", "远古元素巨龙", "地魔龙", "邪狱魔龙", "混沌之龙");
                 }
             }
             else if (!skillUseInfo.getSkill().isDeathSkill()) {
