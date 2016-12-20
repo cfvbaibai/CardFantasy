@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cfvbaibai.cardfantasy.GameUI;
+import cfvbaibai.cardfantasy.data.SkillType;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.CardStatusType;
 import cfvbaibai.cardfantasy.engine.HeroDieSignal;
@@ -28,7 +29,8 @@ public class TimeBack {
 
         applyToPlayer(myHero, skillUseInfo, resolver);
         applyToPlayer(opHero, skillUseInfo, resolver);
-        resolver.getStage().setUsed(skillUseInfo, true);
+        if (skillUseInfo.getType() != SkillType.时间溯行)
+        	resolver.getStage().setUsed(skillUseInfo, true);
     }
     
     private static void applyToPlayer(Player player, SkillUseInfo skillUseInfo, SkillResolver resolver) throws HeroDieSignal {

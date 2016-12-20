@@ -304,6 +304,9 @@ public class SkillResolver {
                 SoulCrash.apply(skillUseInfo, this, attacker, defender);
             } else if (skillUseInfo.getType() == SkillType.全体裂伤) {
                 Wound.applyToAll(this, skillUseInfo, attacker, defender);
+            } else if (skillUseInfo.getType() == SkillType.凋零陷阱) {
+                WitheringWord.apply(skillUseInfo, this, attacker, defender);
+                Trap.apply(skillUseInfo.getAttachedUseInfo(), this, attacker, defender);
             }
         }
         if (!attacker.isDead() && !attacker.isSilent() && !attacker.justRevived()) {
@@ -575,7 +578,8 @@ public class SkillResolver {
                         }
                     } else if (blockSkillUseInfo.getType() == SkillType.脱困 ||
                                blockSkillUseInfo.getType() == SkillType.神威 ||
-                               blockSkillUseInfo.getType() == SkillType.冰神附体) {
+                               blockSkillUseInfo.getType() == SkillType.冰神附体 ||
+                               blockSkillUseInfo.getType() == SkillType.神之守护) {
                         if (Escape.isSkillEscaped(this, blockSkillUseInfo.getSkill(), attackSkill, attacker, defender)) {
                             result.setAttackable(false);
                             return result;
@@ -753,6 +757,8 @@ public class SkillResolver {
                 AllSpeedUp.apply(deadCardSkillUseInfo, this, deadCard);
             } else if (deadCardSkillUseInfo.getType() == SkillType.战争怒吼) {
                 Soften.apply(deadCardSkillUseInfo, this, deadCard, opponent, -1);
+            } else if (deadCardSkillUseInfo.getType() == SkillType.时光倒流) {
+                TimeBack.apply(deadCardSkillUseInfo, this, deadCard.getOwner(), opponent);
             }
         }
         for (SkillUseInfo deadCardSkillUseInfo : deadCard.getAllUsableSkills()) {
@@ -1114,7 +1120,8 @@ public class SkillResolver {
             }
             for (SkillUseInfo defenderSkill : defender.getUsableNormalSkills()) {
                 if (defenderSkill.getType() == SkillType.守护 ||
-                    defenderSkill.getType() == SkillType.王之守护) {
+                    defenderSkill.getType() == SkillType.王之守护 ||
+                    defenderSkill.getType() == SkillType.神之守护) {
                     remainingDamage = Guard.apply(defenderSkill.getSkill(), cardSkill, this, attacker, defender, remainingDamage);
                     if (remainingDamage == 0) {
                         return 0;
@@ -1347,6 +1354,10 @@ public class SkillResolver {
                     Summon.apply(this, skillUseInfo, card, SummonType.RandomSummoning, 2,
                             "白羊座", "金牛座", "双子座", "巨蟹座", "狮子座", "处女座",
                             "天秤座", "射手座", "天蝎座", "摩羯座", "水瓶座", "双鱼座");
+                } else if (skillUseInfo.getType() == SkillType.灵龙轰咆) {
+                    Summon.apply(this, skillUseInfo, card, SummonType.RandomSummoning, 2,
+                            "白羊座", "金牛座", "双子座", "巨蟹座", "狮子座", "处女座",
+                            "天秤座", "射手座", "天蝎座", "摩羯座", "水瓶座", "双鱼座");
                 }
             }
             else if (!skillUseInfo.getSkill().isDeathSkill()) {
@@ -1465,7 +1476,8 @@ public class SkillResolver {
         for (SkillUseInfo blockSkillUseInfo : victim.getUsableNormalSkills()) {
             if (blockSkillUseInfo.getType() == SkillType.脱困 ||
                 blockSkillUseInfo.getType() == SkillType.神威 ||
-                blockSkillUseInfo.getType() == SkillType.冰神附体) {
+                blockSkillUseInfo.getType() == SkillType.冰神附体 ||
+                blockSkillUseInfo.getType() == SkillType.神之守护) {
                 if (Escape.isStatusEscaped(blockSkillUseInfo.getSkill(), this, item, victim)) {
                     return new BlockStatusResult(true);
                 }

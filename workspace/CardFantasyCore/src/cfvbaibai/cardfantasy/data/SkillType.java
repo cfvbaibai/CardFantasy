@@ -13,8 +13,9 @@ public enum SkillType {
      * 削弱可以被淬炼、种族之力抵消，但瘟疫不能
      */
     瘟疫("31149", 5, SkillTag.永久, SkillTag.基础攻击加成),
-    凋零真言("",4,1,SkillTag.永久, SkillTag.基础攻击加成),
-    凋零陷阱("",4,1,SkillTag.永久, SkillTag.基础攻击加成),
+    凋零真言("",4,1,SkillTag.永久, SkillTag.基础攻击加成),   
+    凋零陷阱_陷阱("", 3, SkillTag.控制),
+    凋零陷阱("", 10, 0, SkillType.凋零陷阱_陷阱, SkillTag.永久, SkillTag.基础攻击加成),
     /* 攻击力加成技能 */
     /**
      * 基础攻击力=初始攻击力*军团战力加成+淬杀+种族之力+本源之力+怒涛加成+嗜血加成+洞察加成+邪灵汲取。魔神战时洞察无效。
@@ -107,9 +108,10 @@ public enum SkillType {
     反击("30957", 20, SkillTag.抗免疫, SkillTag.反击),
     物理反弹("", 50, 0, SkillTag.抗免疫, SkillTag.反击),
     武形破剑击("", 100, 0, SkillTag.抗免疫, SkillTag.反击),
+    
 
     守护("30973", 0),
-    神之守护("30973", 0),
+    神之守护("", 0),
     祈祷("30954", 50),
     祈福("", 0, 2),
 
@@ -356,6 +358,7 @@ public enum SkillType {
             this.tags.add(tag);
         }
     }
+    
 
     public String getWikiId() {
         return this.wikiId;
