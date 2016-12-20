@@ -220,7 +220,7 @@ public final class GameLauncher {
             
             // To avoid long boss battle from taking too much system resources by
             // doing 100 trial games and calculate the game count out of the time the trial game takes.
-            int gameCount = 1000000 / gameRound;
+            int gameCount = 100000 / gameRound;
             if (gameCount < 100) {
                 gameCount = 100;
             }

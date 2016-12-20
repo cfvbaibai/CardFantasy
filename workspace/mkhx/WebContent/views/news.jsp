@@ -36,7 +36,7 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>更新日志</h3>
                 <ul class="news-content">
-                	<li>2016-12-20: (本次更新由zyhkz提供代码，十分感谢)<ul>
+                    <li>2016-12-20: (本次更新由zyhkz提供代码，十分感谢)<ul>
                         <li>更新游戏数据到2.0</li>
                         <li>添加新卡<cf:c>时之炼金士</cf:c><cf:c>灵龙守护者</cf:c><cf:c>三国英魂·大乔</cf:c><cf:c>花丛迷子</cf:c></li>
                         <li>添加新卡<cf:c>懒洋洋仙人掌</cf:c><cf:c>气冲冲仙人掌</cf:c><cf:c>针刺刺仙人掌</cf:c></li>
@@ -45,7 +45,7 @@
                         <li>修改魔神模拟次数计算机制</li>
                         <li>修复了战争咆哮只能对最多10个单位起效的bug</li>
                     </ul></li>
-                	<li>2016-12-19: 添加新卡<cf:c>迷途喵娘</cf:c></li>
+                    <li>2016-12-19: 添加新卡<cf:c>迷途喵娘</cf:c></li>
                     <li>2016-11-30: <ul>
                         <li>添加新技能【王之守护】</li>
                         <li>调整五星小兵阵容, 感谢<x>zoujiankun2001</x>和<x>会飞的霍比特人</x>的帮助</li>
