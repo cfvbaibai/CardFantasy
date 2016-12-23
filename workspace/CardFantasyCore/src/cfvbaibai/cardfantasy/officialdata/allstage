@@ -17884,6 +17884,166 @@
       "Next": "16",
       "MapStageDetails": [
         {
+          "MapStageDetailId": "156",
+          "Name": "巨神塔",
+          "Type": "1",
+          "MapStageId": "15",
+          "Rank": "5",
+          "X": "784",
+          "Y": "147",
+          "Prev": "155",
+          "Next": "157",
+          "NextBranch": "0",
+          "FightName": "月蚀兽",
+          "FightImg": "213",
+          "Dialogue": [
+            {
+              "StoryId": "936",
+              "Did": "15_6_1",
+              "NPC": "player_name",
+              "Dialogue": "接下来,就是向着恐惧魔王的老巢进军了!",
+              "Icon": "0_0",
+              "Orientations": "1",
+              "Opportunity": "1"
+            },
+            {
+              "StoryId": "937",
+              "Did": "15_6_2",
+              "NPC": "美狄丝",
+              "Dialogue": "噢!让我们拯救世界吧!",
+              "Icon": "1_2",
+              "Orientations": "1",
+              "Opportunity": "1"
+            },
+            {
+              "StoryId": "938",
+              "Did": "15_6_3",
+              "NPC": "曼托",
+              "Dialogue": "不知道战神哥哥怎么样了",
+              "Icon": "28_0",
+              "Orientations": "2",
+              "Opportunity": "1"
+            },
+            {
+              "StoryId": "939",
+              "Did": "15_6_4",
+              "NPC": "特米亚",
+              "Dialogue": "哈哈,你又在担心这个死不了的家伙了!喜欢人家就直接去告白嘛~",
+              "Icon": "40_0",
+              "Orientations": "1",
+              "Opportunity": "1"
+            },
+            {
+              "StoryId": "940",
+              "Did": "15_6_5",
+              "NPC": "曼托",
+              "Dialogue": "告...白...不!!不行!!我们四精灵肩负着拯救苍生的任务,不能恋爱!!",
+              "Icon": "28_0",
+              "Orientations": "1",
+              "Opportunity": "1"
+            },
+            {
+              "StoryId": "941",
+              "Did": "15_6_6",
+              "NPC": "特米亚",
+              "Dialogue": "那...我们拯救完后呢?",
+              "Icon": "40_2",
+              "Orientations": "2",
+              "Opportunity": "1"
+            },
+            {
+              "StoryId": "942",
+              "Did": "15_6_7",
+              "NPC": "曼托",
+              "Dialogue": "...那..那就....小心!!有恶魔的气息!!",
+              "Icon": "28_1",
+              "Orientations": "1",
+              "Opportunity": "1"
+            },
+            {
+              "StoryId": "943",
+              "Did": "15_6_8",
+              "NPC": "特米亚",
+              "Dialogue": "切...岔开话题啊!",
+              "Icon": "40_2",
+              "Orientations": "2",
+              "Opportunity": "1"
+            },
+            {
+              "StoryId": "944",
+              "Did": "15_6_9",
+              "NPC": "美狄丝",
+              "Dialogue": "好像是真的向我们冲过来了~~",
+              "Icon": "1_3",
+              "Orientations": "1",
+              "Opportunity": "1"
+            },
+            {
+              "StoryId": "945",
+              "Did": "15_6_10",
+              "NPC": "player_name",
+              "Dialogue": "一出巨神塔就那么多恶魔啊....",
+              "Icon": "0_3",
+              "Orientations": "1",
+              "Opportunity": "1"
+            }
+          ],
+          "DialogueAfter": null,
+          "Levels": [
+            {
+              "MapStageDetailId": "156",
+              "Level": "1",
+              "CardList": "288_15_286,119_14_48,213_15_1214,60_15_1224,29_15_1205,89_14_70,188_15_47,189_15_544,166_13_1116,263_15_689",
+              "RuneList": "19_4,38_4,46_4,37_4",
+              "HeroLevel": "96",
+              "AchievementId": "0",
+              "EnergyExpend": "2",
+              "BonusWin": "Exp_2880,Coins_2960",
+              "FirstBonusWin": "",
+              "BonusLose": "Exp_90,Coins_90",
+              "AddedBonus": "",
+              "EnergyExplore": "2",
+              "BonusExplore": "Exp_2820,Coins_3480",
+              "Hint": "0",
+              "AchievementText": "战斗胜利"
+            },
+            {
+              "MapStageDetailId": "156",
+              "Level": "2",
+              "CardList": "288_15_286,119_14_48,213_15_1214,60_15_1224,29_15_1205,89_14_70,188_15_47,189_15_544,166_15_1116,263_15_689",
+              "RuneList": "19_4,38_4,46_4,37_4",
+              "HeroLevel": "98",
+              "AchievementId": "47",
+              "EnergyExpend": "2",
+              "BonusWin": "Exp_3600,Coins_3700",
+              "FirstBonusWin": "",
+              "BonusLose": "Exp_90,Coins_90",
+              "AddedBonus": "",
+              "EnergyExplore": "2",
+              "BonusExplore": "Exp_2820,Coins_3480",
+              "Hint": "0",
+              "AchievementText": "卡组中3星卡牌不小于1张"
+            },
+            {
+              "MapStageDetailId": "156",
+              "Level": "3",
+              "CardList": "288_15_286,119_15_48,213_15_1214,60_15_1224,29_15_1205,89_15_70,188_15_47,189_15_544,166_15_1116,263_15_689",
+              "RuneList": "19_4,38_4,46_4,37_4",
+              "HeroLevel": "100",
+              "AchievementId": "50",
+              "EnergyExpend": "2",
+              "BonusWin": "Exp_4320,Coins_4440",
+              "FirstBonusWin": "Card_256",
+              "BonusLose": "Exp_90,Coins_90",
+              "AddedBonus": "",
+              "EnergyExplore": "2",
+              "BonusExplore": "Exp_2820,Coins_3480",
+              "Hint": "0",
+              "AchievementText": "卡组中4星卡牌不小于1张"
+            }
+          ]
+        },
+        {
           "MapStageDetailId": "151",
           "Name": "巨门关口",
           "Type": "1",
@@ -18773,166 +18933,6 @@
               "BonusExplore": "Exp_2820,Coins_3480",
               "Hint": "0",
               "AchievementText": "卡组中4星卡牌不小于2张"
-            }
-          ]
-        },
-        {
-          "MapStageDetailId": "156",
-          "Name": "巨神塔",
-          "Type": "1",
-          "MapStageId": "15",
-          "Rank": "5",
-          "X": "784",
-          "Y": "147",
-          "Prev": "155",
-          "Next": "157",
-          "NextBranch": "0",
-          "FightName": "月蚀兽",
-          "FightImg": "213",
-          "Dialogue": [
-            {
-              "StoryId": "936",
-              "Did": "15_6_1",
-              "NPC": "player_name",
-              "Dialogue": "接下来,就是向着恐惧魔王的老巢进军了!",
-              "Icon": "0_0",
-              "Orientations": "1",
-              "Opportunity": "1"
-            },
-            {
-              "StoryId": "937",
-              "Did": "15_6_2",
-              "NPC": "美狄丝",
-              "Dialogue": "噢!让我们拯救世界吧!",
-              "Icon": "1_2",
-              "Orientations": "1",
-              "Opportunity": "1"
-            },
-            {
-              "StoryId": "938",
-              "Did": "15_6_3",
-              "NPC": "曼托",
-              "Dialogue": "不知道战神哥哥怎么样了",
-              "Icon": "28_0",
-              "Orientations": "2",
-              "Opportunity": "1"
-            },
-            {
-              "StoryId": "939",
-              "Did": "15_6_4",
-              "NPC": "特米亚",
-              "Dialogue": "哈哈,你又在担心这个死不了的家伙了!喜欢人家就直接去告白嘛~",
-              "Icon": "40_0",
-              "Orientations": "1",
-              "Opportunity": "1"
-            },
-            {
-              "StoryId": "940",
-              "Did": "15_6_5",
-              "NPC": "曼托",
-              "Dialogue": "告...白...不!!不行!!我们四精灵肩负着拯救苍生的任务,不能恋爱!!",
-              "Icon": "28_0",
-              "Orientations": "1",
-              "Opportunity": "1"
-            },
-            {
-              "StoryId": "941",
-              "Did": "15_6_6",
-              "NPC": "特米亚",
-              "Dialogue": "那...我们拯救完后呢?",
-              "Icon": "40_2",
-              "Orientations": "2",
-              "Opportunity": "1"
-            },
-            {
-              "StoryId": "942",
-              "Did": "15_6_7",
-              "NPC": "曼托",
-              "Dialogue": "...那..那就....小心!!有恶魔的气息!!",
-              "Icon": "28_1",
-              "Orientations": "1",
-              "Opportunity": "1"
-            },
-            {
-              "StoryId": "943",
-              "Did": "15_6_8",
-              "NPC": "特米亚",
-              "Dialogue": "切...岔开话题啊!",
-              "Icon": "40_2",
-              "Orientations": "2",
-              "Opportunity": "1"
-            },
-            {
-              "StoryId": "944",
-              "Did": "15_6_9",
-              "NPC": "美狄丝",
-              "Dialogue": "好像是真的向我们冲过来了~~",
-              "Icon": "1_3",
-              "Orientations": "1",
-              "Opportunity": "1"
-            },
-            {
-              "StoryId": "945",
-              "Did": "15_6_10",
-              "NPC": "player_name",
-              "Dialogue": "一出巨神塔就那么多恶魔啊....",
-              "Icon": "0_3",
-              "Orientations": "1",
-              "Opportunity": "1"
-            }
-          ],
-          "DialogueAfter": null,
-          "Levels": [
-            {
-              "MapStageDetailId": "156",
-              "Level": "1",
-              "CardList": "288_15_286,119_14_48,213_15_1214,60_15_1224,29_15_1205,89_14_70,188_15_47,189_15_544,166_13_1116,263_15_689",
-              "RuneList": "19_4,38_4,46_4,37_4",
-              "HeroLevel": "96",
-              "AchievementId": "0",
-              "EnergyExpend": "2",
-              "BonusWin": "Exp_2880,Coins_2960",
-              "FirstBonusWin": "",
-              "BonusLose": "Exp_90,Coins_90",
-              "AddedBonus": "",
-              "EnergyExplore": "2",
-              "BonusExplore": "Exp_2820,Coins_3480",
-              "Hint": "0",
-              "AchievementText": "战斗胜利"
-            },
-            {
-              "MapStageDetailId": "156",
-              "Level": "2",
-              "CardList": "288_15_286,119_14_48,213_15_1214,60_15_1224,29_15_1205,89_14_70,188_15_47,189_15_544,166_15_1116,263_15_689",
-              "RuneList": "19_4,38_4,46_4,37_4",
-              "HeroLevel": "98",
-              "AchievementId": "47",
-              "EnergyExpend": "2",
-              "BonusWin": "Exp_3600,Coins_3700",
-              "FirstBonusWin": "",
-              "BonusLose": "Exp_90,Coins_90",
-              "AddedBonus": "",
-              "EnergyExplore": "2",
-              "BonusExplore": "Exp_2820,Coins_3480",
-              "Hint": "0",
-              "AchievementText": "卡组中3星卡牌不小于1张"
-            },
-            {
-              "MapStageDetailId": "156",
-              "Level": "3",
-              "CardList": "288_15_286,119_15_48,213_15_1214,60_15_1224,29_15_1205,89_15_70,188_15_47,189_15_544,166_15_1116,263_15_689",
-              "RuneList": "19_4,38_4,46_4,37_4",
-              "HeroLevel": "100",
-              "AchievementId": "50",
-              "EnergyExpend": "2",
-              "BonusWin": "Exp_4320,Coins_4440",
-              "FirstBonusWin": "Card_256",
-              "BonusLose": "Exp_90,Coins_90",
-              "AddedBonus": "",
-              "EnergyExplore": "2",
-              "BonusExplore": "Exp_2820,Coins_3480",
-              "Hint": "0",
-              "AchievementText": "卡组中4星卡牌不小于1张"
             }
           ]
         },
@@ -30855,7 +30855,7 @@
   "message": null,
   "type": null,
   "version": {
-    "http": "1482198229",
+    "http": "1482402980",
     "stop": "",
     "appversion": "version_1",
     "appurl": "ios://xxx",

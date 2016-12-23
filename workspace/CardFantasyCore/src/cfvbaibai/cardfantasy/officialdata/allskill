@@ -24359,7 +24359,7 @@
         "LanchConditionValue": 0,
         "AffectType": 153,
         "AffectValue": 0,
-        "AffectValue2": 50,
+        "AffectValue2": 10,
         "SkillCategory": 2,
         "Desc": "卡牌上场时，沉默敌方场上所有卡牌，该卡牌全场战斗只能使用一次此技能。"
       },
@@ -26234,6 +26234,84 @@
         "AffectValue2": 0,
         "SkillCategory": 2,
         "Desc": "被消灭时，除该卡牌自身外，手牌区和场上卡牌全部回到双方的牌堆中，无法被免疫。对魔神魔王单位无效。"
+      },
+      {
+        "SkillId": 7007,
+        "Name": "圣诞节快乐！",
+        "Type": 92,
+        "LanchType": 5,
+        "LanchCondition": 0,
+        "LanchConditionValue": 0,
+        "AffectType": 55,
+        "AffectValue": 0,
+        "AffectValue2": 0,
+        "SkillCategory": 3,
+        "Desc": "来自圣诞小鹿的问候！感谢大家一直以来都支持着魔卡幻想！"
+      },
+      {
+        "SkillId": 2162,
+        "Name": "离间",
+        "Type": 132,
+        "LanchType": 4,
+        "LanchCondition": 0,
+        "LanchConditionValue": 0,
+        "AffectType": 157,
+        "AffectValue": 3,
+        "AffectValue2": 0,
+        "SkillCategory": 2,
+        "Desc": "对敌方场上随机3个单位使用精神狂乱，使他攻击自身两边的同伴。"
+      },
+      {
+        "SkillId": 2163,
+        "Name": "闭月",
+        "Type": 136,
+        "LanchType": 5,
+        "LanchCondition": 0,
+        "LanchConditionValue": 0,
+        "AffectType": 122,
+        "AffectValue": "1638_1313",
+        "AffectValue2": 0,
+        "SkillCategory": 4,
+        "Desc": "(1)每回合恢复自身当前生命值上限的血量。(2)回复我方英雄总血量6%的生命值。"
+      },
+      {
+        "SkillId": 7008,
+        "Name": "新年快乐！",
+        "Type": 92,
+        "LanchType": 5,
+        "LanchCondition": 0,
+        "LanchConditionValue": 0,
+        "AffectType": 55,
+        "AffectValue": 0,
+        "AffectValue2": 0,
+        "SkillCategory": 3,
+        "Desc": "魔卡幻想祝大家新春快乐！万事吉祥！"
+      },
+      {
+        "SkillId": 7009,
+        "Name": "年终回馈！",
+        "Type": 92,
+        "LanchType": 5,
+        "LanchCondition": 0,
+        "LanchConditionValue": 0,
+        "AffectType": 55,
+        "AffectValue": 0,
+        "AffectValue2": 0,
+        "SkillCategory": 3,
+        "Desc": "感谢大家一直以来对魔卡幻想的大力支持！"
+      },
+      {
+        "SkillId": 2187,
+        "Name": "觉醒：沉默",
+        "Type": 126,
+        "LanchType": 4,
+        "LanchCondition": 0,
+        "LanchConditionValue": 2,
+        "AffectType": 99,
+        "AffectValue": 2,
+        "AffectValue2": 1259,
+        "SkillCategory": 2,
+        "Desc": "当我方场上有2张及2张以上森林种族的卡牌时，获得【沉默】技能。"
       }
     ]
   },
@@ -26241,7 +26319,7 @@
   "message": null,
   "type": null,
   "version": {
-    "http": "1482198229",
+    "http": "1482402980",
     "stop": "",
     "appversion": "version_1",
     "appurl": "ios://xxx",
