@@ -18,10 +18,12 @@ public class NoEffect {
             attackSkill.getType() == SkillType.沉默 ||
             attackSkill.getType() == SkillType.全体沉默 ||
             attackSkill.getType() == SkillType.觉醒沉默 ||
+            attackSkill.getType() == SkillType.觉醒沉默A ||
             attackSkill.getType() == SkillType.大地之盾 ||
             attackSkill.getType() == SkillType.一闪 ||
             attackSkill.getType() == SkillType.裂伤 ||
             attackSkill.getType() == SkillType.时光倒流 ||
+            attackSkill.getType() == SkillType.时间溯行 ||
             attackSkill.getType() == SkillType.圣光洗礼 ||
             attackSkill.getType() == SkillType.森林沐浴 ||
             attackSkill.getType() == SkillType.蛮荒威压 ||

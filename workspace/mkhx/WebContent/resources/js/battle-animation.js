@@ -1398,7 +1398,7 @@ var Animater = function() {
         } else if (skill == '吐槽') {
             this.flyImage({ fileName: 'tsukomi.png', width: 48, height: 48, text: skill },
                     attacker, defenders, settings.skillDuration);
-        } else if (skill == '沉默' || skill == '觉醒沉默' || skill == '全体沉默' || skill == '无限全体沉默') {
+        } else if (skill == '沉默' || skill == '觉醒沉默' || skill == '觉醒沉默A' || skill == '全体沉默' || skill == '无限全体沉默') {
             this.flyImage({ fileName: 'silence.png', width: 48, height: 48, text: skill },
                     attacker, defenders, settings.skillDuration);
         } else if (skill == '燕返') {
@@ -1450,7 +1450,7 @@ var Animater = function() {
         } else if (skill == '削弱' || skill == '群体削弱') {
             this.flyImage({ fileName: 'weaken.png', width: 48, height: 48, text: skill },
                     attacker, defenders, settings.skillDuration);
-        } else if (skill == '阻碍' || skill == '加速' || skill == '全体阻碍' || skill == '全体加速' || skill == '时光倒流') {
+        } else if (skill == '阻碍' || skill == '加速' || skill == '全体阻碍' || skill == '全体加速' || skill == '时光倒流' || skill == '时间溯行') {
             this.flyImage({ fileName: 'delay.png', width: 48, height: 48, text: skill },
                     attacker, defenders, settings.skillDuration);
         } else if (skill == '法力侵蚀' || skill == '破魔手' || skill == '灵王的轰击' || skill == '觉醒灵王的轰击' ||
