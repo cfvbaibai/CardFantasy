@@ -26,12 +26,15 @@ public final class Insane {
             if (!resolver.resolveAttackBlockingSkills(attacker, victim, skill, 1).isAttackable()) {
                 continue;
             }
+            if(victim.isDead()){
+            	continue;
+            }
             List<CardInfo> cardsAttackedByVictim = resolver.getCardsOnSides(
                 victim.getOwner().getField(), victim.getPosition());
 
             if (cardsAttackedByVictim.size() == 0) {
                 // Only victim itself is counted. No other cards around it. No effect.
-                return;
+                continue;
             }
             ui.useSkill(victim, cardsAttackedByVictim, null, true);
             int damage = victim.getLevel1AT();
