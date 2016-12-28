@@ -564,11 +564,9 @@ public class SkillResolver {
                     }
                 }
                 
-                if (defender.isBoss()) {
-                    if (NoEffect.isSkillBlocked(this, attackSkill, attacker, defender)) {
-                        result.setAttackable(false);
-                        return result;
-                    }
+                if (NoEffect.isSkillBlocked(this, attackSkill, attacker, defender)) {
+                    result.setAttackable(false);
+                    return result;
                 }
 
                 for (SkillUseInfo blockSkillUseInfo : defender.getUsableNormalSkills()) {

@@ -5,6 +5,7 @@ import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.data.SkillTag;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.HeroDieSignal;
+import cfvbaibai.cardfantasy.engine.OnAttackBlockingResult;
 import cfvbaibai.cardfantasy.engine.SkillResolver;
 import cfvbaibai.cardfantasy.engine.SkillUseInfo;
 
@@ -14,26 +15,15 @@ public class ReflectionArmor {
         if (attackDamage <= 0) {
             return;
         }
-        if (attacker == null) {
+        if (attacker == null || attacker.isDead()) {
             return;
         }
         GameUI ui = resolver.getStage().getUI();
         ui.useSkill(defender, attacker, cardSkill, true);
-        boolean skillBlocked = false;
-        if (attacker.isBoss()) {
-            skillBlocked = NoEffect.isSkillBlocked(resolver, cardSkill, defender, attacker);
-        } else {
-            for (SkillUseInfo attackerSkillUseInfo : attacker.getAllUsableSkillsIgnoreSilence()) {
-                if (attackerSkillUseInfo.getType().containsTag(SkillTag.不动)) {
-                    skillBlocked = Immobility.isSkillBlocked(resolver, attackerSkillUseInfo.getSkill(), cardSkill, defender, attacker);
-                }
-            }
+        OnAttackBlockingResult result = resolver.resolveAttackBlockingSkills(defender, attacker, cardSkill, 1);
+        if (!result.isAttackable()) {
+            return;
         }
-        if (!skillBlocked) {
-            if (attacker.getOwner().getField().getAliveCards().contains(attacker)) {
-                // 横扫击中多个反射装甲的敌方卡牌时，可能导致多次反射
-                Return.returnCard(resolver, cardSkill, defender, attacker);
-            }
-        }
+        Return.returnCard(resolver, cardSkill, defender, attacker);
     }
 }
