@@ -26,6 +26,7 @@ public class SoulControl {
         for (CardInfo deadCard : defenderHero.getGrave().toList()) {
             if (!deadCard.containsUsableSkillsWithTag(SkillTag.召唤) &&
                 !deadCard.containsUsableSkillsWithTag(SkillTag.复活) &&
+                !deadCard.containsUsableSkillsWithTag(SkillTag.守护) &&
                 deadCard.getRace() != Race.BOSS) {
                 candidates.add(deadCard);
             }
