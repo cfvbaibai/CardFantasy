@@ -19,10 +19,12 @@ public class Player extends EntityInfo {
     private RuneBox runeBox;
     private List<SkillUseInfo> cardBuffs;
     private int hp;
+    private List<CardInfo> primaryCards;
     
     public Player(PlayerInfo playerInfo, StageInfo stage) {
         this.playerInfo = playerInfo;
-        this.deck = prepareDeck();
+        this.primaryCards = prepareCards();
+        this.deck = new Deck(primaryCards);
         this.hand = new Hand(stage.getRule());
         this.grave = new Grave();
         this.field = new Field(this);
@@ -35,35 +37,12 @@ public class Player extends EntityInfo {
         }
     }
     
-    public List<CardInfo> getAllCards() {
-        List<CardInfo> cards = new ArrayList<CardInfo>();
-        cards.addAll(this.deck.getCards());
-        cards.addAll(this.hand.getCards());
-        cards.addAll(this.grave.getCards());
-        cards.addAll(this.field.getCards());
-        cards.addAll(this.outField.getCards());
-        List<CardInfo> result = new ArrayList<CardInfo>();
-        for (CardInfo card : cards) {
-            if (card != null) {
-                result.add(card);
-            }
-        }
-        return result;
-    }
-    
     /**
      * This method does not return summoned minion cards.
      * @return
      */
     public List<CardInfo> getAllPrimaryCards() {
-        List<CardInfo> allCards = this.getAllCards();
-        List<CardInfo> result = new ArrayList<CardInfo>();
-        for (CardInfo card : allCards) {
-            if (!card.isSummonedMinion()) {
-                result.add(card);
-            }
-        }
-        return result;
+        return new ArrayList<CardInfo>(primaryCards);
     }
 
     public int getMaxCost() {
@@ -129,13 +108,13 @@ public class Player extends EntityInfo {
         }
     }
     
-    private Deck prepareDeck() {
+    private List<CardInfo> prepareCards() {
         Collection <Card> cards = this.getPlayerInfo().getCards();
         List<CardInfo> cardInfos = new ArrayList<CardInfo>();
         for (Card card : cards) {
             cardInfos.add(new CardInfo(card, this));
         }
-        return new Deck(cardInfos);
+        return cardInfos;
     }
 
     public String getShortDesc() {
