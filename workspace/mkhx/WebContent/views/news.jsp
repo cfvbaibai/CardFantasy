@@ -36,7 +36,7 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>更新日志</h3>
                 <ul class="news-content">
-                    <li>2016-12-29:<ul>
+                    <li>2016-12-29: (本次代码由<x>绯弹亚丝娜</x>提供)<ul>
                         <li>感谢<x>银色孤星</x>, <x>huangzhe8263</x>, <x>Core灬酷睿</x>, <x>846533685</x>和<x>左牵黄x右擎苍</x>的帮助</li>
                         <li>添加新卡<cf:c>森之斗者</cf:c><cf:c>三国英魂·奉先</cf:c><cf:c>三国英魂·貂蝉</cf:c></li>
                         <li>添加新技能【无双】，【离间】，【闭月】，【镜面】</li>
@@ -45,7 +45,7 @@
                         <li>修复了时间溯行可以送还魔神的bug</li>
                         <li>修复了夺魂技能导致胜利条件判断出现问题的bug</li>
                     </ul></li>
-                    <li>2016-12-20:<ul>
+                    <li>2016-12-20:(本次代码由<x>绯弹亚丝娜</x>提供)<ul>
                         <li>更新游戏数据到2.0</li>
                         <li>添加新卡<cf:c>时之炼金士</cf:c><cf:c>灵龙守护者</cf:c><cf:c>三国英魂·大乔</cf:c><cf:c>花丛迷子</cf:c></li>
                         <li>添加新卡<cf:c>懒洋洋仙人掌</cf:c><cf:c>气冲冲仙人掌</cf:c><cf:c>针刺刺仙人掌</cf:c></li>
