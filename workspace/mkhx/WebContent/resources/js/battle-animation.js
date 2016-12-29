@@ -1353,9 +1353,9 @@ var Animater = function() {
         '圣光', '要害', '暗杀', '污染', '连锁攻击', '凯撒之击', '神兵召唤', '觉醒神兵召唤', '末世术'
     ];
     this.selfUsedSkills = [
-        '不动', '脱困', '群体脱困', '法力反射', '花族秘术', '冰甲', '水流护甲', '闪避', '守护', '魔神之甲', '灵巧', '灵魂禁锢',
+        '不动', '脱困', '群体脱困', '法力反射', '花族秘术', '冰甲', '水流护甲', '闪避', '守护', '魔神之甲', '灵巧', '灵魂禁锢', '闭月',
         '王国之盾', '森林之盾', '蛮荒之盾', '地狱之盾', '弱点攻击', '无效', '圣盾', '不屈', '圣炎', '斩杀', '送葬之刃', '逃跑', '灵魂封禁',
-        '镜面装甲', '阿拉希血统', '神威', '月之守护', '洪荒之术', '冰神附体', '三千世界', '神魔之甲', '亮银', '龙胆', '王之守护', '神之守护'
+        '镜面装甲', '镜面', '阿拉希血统', '神威', '月之守护', '洪荒之术', '冰神附体', '三千世界', '神魔之甲', '亮银', '龙胆', '王之守护', '神之守护', '无双'
     ];
     this.__useSkill = function(data) {
         var attacker = data[0]; // EntityRuntimeInfo
@@ -1398,7 +1398,7 @@ var Animater = function() {
         } else if (skill == '吐槽') {
             this.flyImage({ fileName: 'tsukomi.png', width: 48, height: 48, text: skill },
                     attacker, defenders, settings.skillDuration);
-        } else if (skill == '沉默' || skill == '觉醒沉默' || skill == '全体沉默' || skill == '无限全体沉默') {
+        } else if (skill == '沉默' || skill == '觉醒沉默' || skill == '觉醒沉默A' || skill == '全体沉默' || skill == '无限全体沉默') {
             this.flyImage({ fileName: 'silence.png', width: 48, height: 48, text: skill },
                     attacker, defenders, settings.skillDuration);
         } else if (skill == '燕返') {
@@ -1450,7 +1450,7 @@ var Animater = function() {
         } else if (skill == '削弱' || skill == '群体削弱') {
             this.flyImage({ fileName: 'weaken.png', width: 48, height: 48, text: skill },
                     attacker, defenders, settings.skillDuration);
-        } else if (skill == '阻碍' || skill == '加速' || skill == '全体阻碍' || skill == '全体加速' || skill == '时光倒流') {
+        } else if (skill == '阻碍' || skill == '加速' || skill == '全体阻碍' || skill == '全体加速' || skill == '时光倒流' || skill == '时间溯行') {
             this.flyImage({ fileName: 'delay.png', width: 48, height: 48, text: skill },
                     attacker, defenders, settings.skillDuration);
         } else if (skill == '法力侵蚀' || skill == '破魔手' || skill == '灵王的轰击' || skill == '觉醒灵王的轰击' ||
@@ -1501,7 +1501,7 @@ var Animater = function() {
                    skill == '武形秘箭' || skill == '武形神箭' || skill == '骤雨') {
             this.flyImage({ fileName: 'aim.png', width: 48, height: 48, text: skill, },
                     attacker, defenders, settings.skillDuration);
-        } else if (skill == '精神狂乱' || skill == '无我境界') {
+        } else if (skill == '精神狂乱' || skill == '无我境界' || skill == '离间') {
             this.flyImage({ fileName: 'insane.png', width: 48, height: 48, text: skill, },
                     attacker, defenders, settings.skillDuration);
         } else if (skill == '生命链接') {
@@ -1540,7 +1540,7 @@ var Animater = function() {
         }
         if (skill == '普通攻击') {
             this.normalAttack(attacker, defenderHero, true);
-        } else if (skill == '祈祷' || skill == '祈福' || skill == '水流护甲') {
+        } else if (skill == '祈祷' || skill == '祈福' || skill == '水流护甲' || skill == '闭月') {
             this.flyImage({ fileName: 'heal.png', width: 24, height: 24, text: skill },
                     attacker, defenderHero, settings.skillDuration);
         } else if (skill == '诅咒' || skill == '魔神之咒') {

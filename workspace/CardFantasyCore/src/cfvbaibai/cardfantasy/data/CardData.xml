@@ -871,6 +871,12 @@
         <Skill type="王之守护" level="0" unlock="5" />
         <Skill type="圣母回声" level="0" unlock="10" />
     </Card>
+    <Card id="1563" name="璀璨王女" wikiId="" race="王国" speed="6" star="5" cost="99" incrCost="0" at="1" hp="1" incrAT="0" incrHP="0">
+        <Skill type="物品技能" level="0" unlock="0" />
+    </Card>
+    <Card id="1564" name="圣诞小鹿" wikiId="" race="王国" speed="6" star="5" cost="99" incrCost="0" at="1" hp="1" incrAT="0" incrHP="0">
+        <Skill type="物品技能" level="0" unlock="0" />
+    </Card>
 
     <!-- 森林 -->
     <Card id="2101" name="人马巡逻者" wikiId="30976" race="森林" speed="2" star="1" cost="3" incrCost="2" at="95" hp="310" incrAT="17" incrHP="11">
@@ -1580,6 +1586,11 @@
         <Skill type="奋战" level="6" unlock="0" />
         <Skill type="弱点攻击" level="0" unlock="5" />
         <Skill type="钢铁之肤" level="4" unlock="10" />
+    </Card>
+    <Card id="2551" name="森之斗者" wikiId="" race="森林" speed="5" star="5" cost="20" incrCost="2" at="320" hp="1600" incrAT="41" incrHP="30">
+        <Skill type="觉醒沉默A" level="0" unlock="0" />
+        <Skill type="法力反射" level="8" unlock="5" />
+        <Skill type="摧毁" level="0" unlock="10" />
     </Card>
 
     <!-- 蛮荒  -->
@@ -3117,6 +3128,16 @@
         <Skill type="凋零陷阱" level="0" unlock="0" />
         <Skill type="荆棘术" level="7" unlock="5" />
         <Skill type="骤雨" level="8" unlock="10" />
+    </Card>
+        <Card id="4556" name="三国英魂·奉先" wikiId="" race="地狱" speed="3" star="5" cost="19" incrCost="2" at="510" hp="1790" incrAT="53" incrHP="33">
+        <Skill type="不动" level="0" unlock="0" />
+        <Skill type="钢铁之肤" level="8" unlock="5" />
+        <Skill type="无双" level="0" unlock="10" />
+    </Card>
+    <Card id="4557" name="三国英魂·貂蝉" wikiId="" race="地狱" speed="4" star="5" cost="18" incrCost="2" at="350" hp="1660" incrAT="43" incrHP="35">
+        <Skill type="末世术" level="7" unlock="0" />
+        <Skill type="闭月" level="0" unlock="5" />
+        <Skill type="离间" level="0" unlock="10" />
     </Card>
 
     <!-- 魔神 -->

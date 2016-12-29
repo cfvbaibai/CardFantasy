@@ -12,11 +12,8 @@ import cfvbaibai.cardfantasy.engine.Player;
 import cfvbaibai.cardfantasy.engine.SkillResolver;
 import cfvbaibai.cardfantasy.engine.SkillUseInfo;
 
-public class TimeBack {
+public class TimeTravel {
     public static void apply(SkillUseInfo skillUseInfo, SkillResolver resolver, Player myHero, Player opHero) throws HeroDieSignal {
-        if (resolver.getStage().hasUsed(skillUseInfo)) {
-            return;
-        }
         GameUI ui = resolver.getStage().getUI();
         CardInfo caster = (CardInfo)skillUseInfo.getOwner();
         List<CardInfo> victims = new ArrayList<CardInfo>();
@@ -29,7 +26,6 @@ public class TimeBack {
 
         applyToPlayer(myHero, skillUseInfo, resolver);
         applyToPlayer(opHero, skillUseInfo, resolver);
-        resolver.getStage().setUsed(skillUseInfo, true);
     }
     
     private static void applyToPlayer(Player player, SkillUseInfo skillUseInfo, SkillResolver resolver) throws HeroDieSignal {
@@ -47,9 +43,11 @@ public class TimeBack {
             }
         }
         for (CardInfo card : player.getHand().toList()) {
-            ui.cardToGrave(player, card);
-            player.getDeck().addCard(card);
-            player.getHand().removeCard(card);
+        	if (resolver.resolveAttackBlockingSkills(caster, card, skillUseInfo.getSkill(), 0).isAttackable()) {
+	            ui.cardToGrave(player, card);
+	            player.getDeck().addCard(card);
+	            player.getHand().removeCard(card);
+        	}
         }
         player.getDeck().shuffle();
     }

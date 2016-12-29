@@ -98,7 +98,8 @@ public class SkillResolver {
             } else if (skillUseInfo.getType() == SkillType.送还) {
                 Return.apply(this, skillUseInfo.getSkill(), attacker, defender);
             } else if (skillUseInfo.getType() == SkillType.沉默 ||
-                    skillUseInfo.getType() == SkillType.觉醒沉默 && attacker.isAwaken(skillUseInfo, Race.KINGDOM)) {
+                    skillUseInfo.getType() == SkillType.觉醒沉默 && attacker.isAwaken(skillUseInfo, Race.KINGDOM) ||
+                    skillUseInfo.getType() == SkillType.觉醒沉默A && attacker.isAwaken(skillUseInfo, Race.FOREST)) {
                 Silence.apply(this, skillUseInfo, attacker, defender, false, false);
             } else if (skillUseInfo.getType() == SkillType.全体沉默) {
                 Silence.apply(this, skillUseInfo, attacker, defender, true, false);
@@ -289,12 +290,16 @@ public class SkillResolver {
                 Blind.apply(this, skillUseInfo, attacker, defender, -1);
             } else if (skillUseInfo.getType() == SkillType.动能追加) {
                 EnergyIncrement.apply(skillUseInfo, this, attacker);
-            } else if (skillUseInfo.getType() == SkillType.祈福 || skillUseInfo.getType() == SkillType.真理导言) {
+            } else if (skillUseInfo.getType() == SkillType.祈福 ||
+            		skillUseInfo.getType() == SkillType.真理导言 ||
+            		skillUseInfo.getType() == SkillType.闭月) {
                 Bless.apply(skillUseInfo.getSkill(), this, attacker);
             } else if (skillUseInfo.getType() == SkillType.修罗地火攻) {
                 SuraFire.apply(this, skillUseInfo, attacker, defender);
             } else if (skillUseInfo.getType() == SkillType.精神狂乱) {
                 Insane.apply(skillUseInfo, this, attacker, defender, 1);
+            } else if (skillUseInfo.getType() == SkillType.离间) {
+                Insane.apply(skillUseInfo, this, attacker, defender, 3);
             } else if (skillUseInfo.getType() == SkillType.天怒) {
                 FireMagic.apply(skillUseInfo.getSkill(), this, attacker, defender, -1);
                 BurningFlame.apply(skillUseInfo.getAttachedUseInfo(), this, attacker, defender);
@@ -563,11 +568,9 @@ public class SkillResolver {
                     }
                 }
                 
-                if (defender.isBoss()) {
-                    if (NoEffect.isSkillBlocked(this, attackSkill, attacker, defender)) {
-                        result.setAttackable(false);
-                        return result;
-                    }
+                if (NoEffect.isSkillBlocked(this, attackSkill, attacker, defender)) {
+                    result.setAttackable(false);
+                    return result;
                 }
 
                 for (SkillUseInfo blockSkillUseInfo : defender.getUsableNormalSkills()) {
@@ -758,7 +761,7 @@ public class SkillResolver {
             } else if (deadCardSkillUseInfo.getType() == SkillType.战争怒吼) {
                 Soften.apply(deadCardSkillUseInfo, this, deadCard, opponent, -1);
             } else if (deadCardSkillUseInfo.getType() == SkillType.时间溯行) {
-                TimeBack.apply(deadCardSkillUseInfo, this, deadCard.getOwner(), opponent);
+            	TimeTravel.apply(deadCardSkillUseInfo, this, deadCard.getOwner(), opponent);
             }
         }
         for (SkillUseInfo deadCardSkillUseInfo : deadCard.getAllUsableSkills()) {
@@ -1071,7 +1074,7 @@ public class SkillResolver {
                     CardInfo attackCard = (CardInfo)attacker;
                     if (attackCard.getRace() != Race.BOSS) {
                         for (SkillUseInfo skillUseInfo : attackCard.getUsableNormalSkills()) {
-                            if (skillUseInfo.getType() == SkillType.扼杀) {
+                            if (skillUseInfo.getType() == SkillType.扼杀 || skillUseInfo.getType() == SkillType.无双) {
                                 this.getStage().getUI().useSkill(attacker, skillUseInfo.getSkill(), true);
                                 owner.getOutField().addCard(card);
                                 return DeadType.SoulCrushed;
@@ -1127,13 +1130,11 @@ public class SkillResolver {
             int damage) throws HeroDieSignal {
         int remainingDamage = damage;
         for (CardInfo defender : defenderPlayer.getField().getAliveCards()) {
-            if (defender == null) {
+            if (defender == null || defender.isDead()) {
                 continue;
             }
             for (SkillUseInfo defenderSkill : defender.getUsableNormalSkills()) {
-                if (defenderSkill.getType() == SkillType.守护 ||
-                    defenderSkill.getType() == SkillType.王之守护 ||
-                    defenderSkill.getType() == SkillType.神之守护) {
+                if (defenderSkill.getType().containsTag(SkillTag.守护)) {
                     remainingDamage = Guard.apply(defenderSkill.getSkill(), cardSkill, this, attacker, defender, remainingDamage);
                     if (remainingDamage == 0) {
                         return 0;
@@ -1157,6 +1158,8 @@ public class SkillResolver {
                 cardSkillUseInfo.getType() == SkillType.月恩术 ||
                 cardSkillUseInfo.getType() == SkillType.圣母回声) {
                 Rejuvenate.apply(cardSkillUseInfo.getSkill(), this, card);
+            } else if (cardSkillUseInfo.getType() == SkillType.闭月) {
+                Rejuvenate.apply(cardSkillUseInfo.getAttachedUseInfo().getSkill(), this, card);
             }
         }
         if (!card.isSilent()) {
@@ -1184,7 +1187,7 @@ public class SkillResolver {
         }
         if (skill == null) {
             for (SkillUseInfo cardSkillUseInfo : attacker.getAllUsableSkills()) {
-                if (cardSkillUseInfo.getType() == SkillType.斩杀 || cardSkillUseInfo.getType() == SkillType.送葬之刃) {
+                if (cardSkillUseInfo.getType() == SkillType.斩杀 || cardSkillUseInfo.getType() == SkillType.送葬之刃 || cardSkillUseInfo.getType() == SkillType.无双) {
                     SuddenKill.apply(this, cardSkillUseInfo, attacker, defender, blockingResult);
                 }
             }
@@ -1565,7 +1568,9 @@ public class SkillResolver {
                 attackerSkillUseInfo.getType() == SkillType.三千世界 ||
                 attackerSkillUseInfo.getType() == SkillType.亮银) {
                 return WeakPointAttack.isBlockSkillDisabled(this, attackerSkillUseInfo.getSkill(), cardSkill, attacker, defender);
-            } else if (attackerSkillUseInfo.getType() == SkillType.斩杀 || attackerSkillUseInfo.getType() == SkillType.送葬之刃) {
+            } else if (attackerSkillUseInfo.getType() == SkillType.斩杀 || 
+            		attackerSkillUseInfo.getType() == SkillType.送葬之刃 || 
+            		attackerSkillUseInfo.getType() == SkillType.无双) {
                 return SuddenKill.isBlockSkillDisabled(this, attackerSkillUseInfo.getSkill(), cardSkill, attacker, defender);
             }
         }
