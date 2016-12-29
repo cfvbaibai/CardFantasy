@@ -27,7 +27,7 @@ public final class Insane {
                 continue;
             }
             if(victim.isDead()){
-            	continue;
+                continue;
             }
             List<CardInfo> cardsAttackedByVictim = resolver.getCardsOnSides(
                 victim.getOwner().getField(), victim.getPosition());

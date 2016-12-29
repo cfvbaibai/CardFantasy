@@ -22,7 +22,7 @@ public enum CardStatusType {
     森林(false, "森"),
     蛮荒(false, "蛮"),
     地狱(false, "地");
-	
+    
 
     private boolean quantitive;
     public boolean isQuantitive() {

@@ -17,9 +17,9 @@ public class CsvWriter {
     
     private FileWriter writer; 
     public CsvWriter(File file) throws IOException {
-    	file.getParentFile().mkdirs();
-    	file.createNewFile();
-    	
+        file.getParentFile().mkdirs();
+        file.createNewFile();
+        
         writer = new FileWriter(file);
     }
     

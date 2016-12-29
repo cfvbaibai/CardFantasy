@@ -16,7 +16,7 @@ import cfvbaibai.cardfantasy.engine.SkillUseInfo;
 
 public final class ThorArrival {
     public static void apply(SkillResolver resolver, SkillUseInfo skillUseInfo, EntityInfo attacker, Player defender
-    		,int paralyzeRate)
+            ,int paralyzeRate)
         throws HeroDieSignal {
         GameUI ui = resolver.getStage().getUI();
         Skill skill = skillUseInfo.getSkill();

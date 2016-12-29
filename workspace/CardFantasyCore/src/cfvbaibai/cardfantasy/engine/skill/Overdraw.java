@@ -16,7 +16,7 @@ public final class Overdraw {
         int adjHP = skill.getImpact();
         int adjAT = skill.getImpact();
         if (skillUseInfo.getType() == SkillType.过载)
-        	adjAT *= 2;
+            adjAT *= 2;
         GameUI ui = resolver.getStage().getUI();
         ui.useSkill(attacker, skill, true);
         ui.adjustAT(attacker, attacker, adjAT, skill);

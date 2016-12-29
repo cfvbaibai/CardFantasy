@@ -291,8 +291,8 @@ public class SkillResolver {
             } else if (skillUseInfo.getType() == SkillType.动能追加) {
                 EnergyIncrement.apply(skillUseInfo, this, attacker);
             } else if (skillUseInfo.getType() == SkillType.祈福 ||
-            		skillUseInfo.getType() == SkillType.真理导言 ||
-            		skillUseInfo.getType() == SkillType.闭月) {
+                    skillUseInfo.getType() == SkillType.真理导言 ||
+                    skillUseInfo.getType() == SkillType.闭月) {
                 Bless.apply(skillUseInfo.getSkill(), this, attacker);
             } else if (skillUseInfo.getType() == SkillType.修罗地火攻) {
                 SuraFire.apply(this, skillUseInfo, attacker, defender);
@@ -727,7 +727,7 @@ public class SkillResolver {
             } else if (deadCardSkillUseInfo.getType() == SkillType.瘟疫) {
                 Plague.apply(deadCardSkillUseInfo, this, deadCard, opponent);
             } else if (deadCardSkillUseInfo.getType() == SkillType.凋零真言) {
-            	Plague.apply(deadCardSkillUseInfo, this, deadCard, opponent);
+                Plague.apply(deadCardSkillUseInfo, this, deadCard, opponent);
             } else if (deadCardSkillUseInfo.getType() == SkillType.治疗) {
                 Heal.apply(deadCardSkillUseInfo.getSkill(), this, opponent);
             } else if (deadCardSkillUseInfo.getType() == SkillType.甘霖) {
@@ -761,7 +761,7 @@ public class SkillResolver {
             } else if (deadCardSkillUseInfo.getType() == SkillType.战争怒吼) {
                 Soften.apply(deadCardSkillUseInfo, this, deadCard, opponent, -1);
             } else if (deadCardSkillUseInfo.getType() == SkillType.时间溯行) {
-            	TimeTravel.apply(deadCardSkillUseInfo, this, deadCard.getOwner(), opponent);
+                TimeTravel.apply(deadCardSkillUseInfo, this, deadCard.getOwner(), opponent);
             }
         }
         for (SkillUseInfo deadCardSkillUseInfo : deadCard.getAllUsableSkills()) {
@@ -947,16 +947,16 @@ public class SkillResolver {
                 }
             }
             {
-            	if (!attacker.justRevived()) {
-	            	List<CardInfo> cards = attacker.getOwner().getField().getAliveCards();
-	            	for(CardInfo card : cards){
-	            		for (SkillUseInfo skillUseInfo : card.getUsableNormalSkills()) {
-		            		if (skillUseInfo.getType() == SkillType.群体追击){
-		                        Pursuit.apply(this, skillUseInfo, attacker, defender);
-		            		}
-	            		}
-	            	}
-            	}
+                if (!attacker.justRevived()) {
+                    List<CardInfo> cards = attacker.getOwner().getField().getAliveCards();
+                    for(CardInfo card : cards){
+                        for (SkillUseInfo skillUseInfo : card.getUsableNormalSkills()) {
+                            if (skillUseInfo.getType() == SkillType.群体追击){
+                                Pursuit.apply(this, skillUseInfo, attacker, defender);
+                            }
+                        }
+                    }
+                }
             }
         }
     }
@@ -1371,8 +1371,8 @@ public class SkillResolver {
                             "天秤座", "射手座", "天蝎座", "摩羯座", "水瓶座", "双鱼座");
                 } else if (skillUseInfo.getType() == SkillType.灵龙轰咆) {
                     Summon.apply(this, skillUseInfo, card, SummonType.RandomSummoning, 2,
-                    		"光明之龙", "金属巨龙", "黄金金属巨龙", "元素灵龙", "暴怒霸龙", "毁灭之龙", "幽灵巨龙",
-                    		"水晶巨龙", "毒雾羽龙", "黄金毒龙", "远古元素巨龙", "地魔龙", "邪狱魔龙", "混沌之龙");
+                            "光明之龙", "金属巨龙", "黄金金属巨龙", "元素灵龙", "暴怒霸龙", "毁灭之龙", "幽灵巨龙",
+                            "水晶巨龙", "毒雾羽龙", "黄金毒龙", "远古元素巨龙", "地魔龙", "邪狱魔龙", "混沌之龙");
                 }
             }
             else if (!skillUseInfo.getSkill().isDeathSkill()) {
@@ -1569,8 +1569,8 @@ public class SkillResolver {
                 attackerSkillUseInfo.getType() == SkillType.亮银) {
                 return WeakPointAttack.isBlockSkillDisabled(this, attackerSkillUseInfo.getSkill(), cardSkill, attacker, defender);
             } else if (attackerSkillUseInfo.getType() == SkillType.斩杀 || 
-            		attackerSkillUseInfo.getType() == SkillType.送葬之刃 || 
-            		attackerSkillUseInfo.getType() == SkillType.无双) {
+                    attackerSkillUseInfo.getType() == SkillType.送葬之刃 || 
+                    attackerSkillUseInfo.getType() == SkillType.无双) {
                 return SuddenKill.isBlockSkillDisabled(this, attackerSkillUseInfo.getSkill(), cardSkill, attacker, defender);
             }
         }

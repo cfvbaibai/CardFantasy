@@ -35,7 +35,7 @@ public enum Race {
             return MOE;
         }if ("物品".equals(displayName))
         {
-        	return ITEM;
+            return ITEM;
         }
         
         throw new IllegalArgumentException("Invalid Race: " + displayName);

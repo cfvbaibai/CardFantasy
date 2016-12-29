@@ -43,11 +43,11 @@ public class TimeTravel {
             }
         }
         for (CardInfo card : player.getHand().toList()) {
-        	if (resolver.resolveAttackBlockingSkills(caster, card, skillUseInfo.getSkill(), 0).isAttackable()) {
-	            ui.cardToGrave(player, card);
-	            player.getDeck().addCard(card);
-	            player.getHand().removeCard(card);
-        	}
+            if (resolver.resolveAttackBlockingSkills(caster, card, skillUseInfo.getSkill(), 0).isAttackable()) {
+                ui.cardToGrave(player, card);
+                player.getDeck().addCard(card);
+                player.getHand().removeCard(card);
+            }
         }
         player.getDeck().shuffle();
     }
