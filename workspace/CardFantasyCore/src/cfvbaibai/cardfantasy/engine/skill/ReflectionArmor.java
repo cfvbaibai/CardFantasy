@@ -24,6 +24,13 @@ public class ReflectionArmor {
         if (!result.isAttackable()) {
             return;
         }
+        for (SkillUseInfo attackerSkillUseInfo : attacker.getAllUsableSkillsIgnoreSilence()) { 
+            if (attackerSkillUseInfo.getType().containsTag(SkillTag.不动)) { 
+                if (Immobility.isSkillBlocked(resolver, attackerSkillUseInfo.getSkill(), cardSkill, defender, attacker)) {
+                    return;
+                }
+            } 
+        } 
         Return.returnCard(resolver, cardSkill, defender, attacker);
     }
 }
