@@ -197,6 +197,7 @@ public class MultiAttackTest extends SkillValidationTest {
     public void test连击_反射装甲() {
         SkillTestContext context = prepare(50, 50, "魔剑士+连击", "占位符+反射装甲");
         CardInfo c魔剑士 = context.addToField(0, 0);
+        @SuppressWarnings("unused")
         CardInfo c占位符 = context.addToField(1, 1);
         context.startGame();
         
