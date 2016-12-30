@@ -1,5 +1,8 @@
 package cfvbaibai.cardfantasy.engine.skill;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
 import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.data.SkillTag;
@@ -16,31 +19,18 @@ public final class Revive {
             throw new CardFantasyRuntimeException("reviver should not be null");
         }
         Grave grave = reviver.getOwner().getGrave();
-        boolean hasRevivableCard = false;
+        List<CardInfo> revivableCards = new ArrayList<CardInfo>();
         for (CardInfo deadCard : grave.toList()) {
-            if (deadCard != null && !deadCard.containsUsableSkillsWithTag(SkillTag.复活)) {
-                hasRevivableCard = true;
-                break;
+            if (deadCard != null && !deadCard.containsUsableSkillsWithTag(SkillTag.复活) && deadCard.getStar() != 1) {
+            	revivableCards.add(deadCard);
             }
         }
-        if (!hasRevivableCard) {
+        if (revivableCards.isEmpty()) {
             return;
         }
         Skill skill = skillUseInfo.getSkill();
-        // Grave is a stack, find the last-in card and revive it.
-        CardInfo cardToRevive = null;
-        while (true) {
-            CardInfo deadCard = resolver.getStage().getRandomizer().pickRandom(
-                grave.toList(), 1, true, null).get(0);
-            if (!deadCard.containsUsableSkillsWithTag(SkillTag.复活)) {
-                cardToRevive = deadCard;
-                break;
-            }
-        }
-
-        if (cardToRevive == null) {
-            return;
-        }
+        CardInfo cardToRevive = resolver.getStage().getRandomizer().pickRandom(
+        		revivableCards, 1, true, null).get(0);
         resolver.getStage().getUI().useSkill(reviver, cardToRevive, skill, true);
         if (SoulSeal.soulSealed(resolver, reviver)) {
             return;
