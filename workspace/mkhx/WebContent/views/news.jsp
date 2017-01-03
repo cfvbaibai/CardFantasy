@@ -36,6 +36,12 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2016-12-30: (本次代码由<x>绯弹亚丝娜</x>提供)<ul>
+                        <li>添加新卡<cf:c>三国英魂·曹操</cf:c><cf:c>红丝绒公主</cf:c></li>
+                        <li>添加新技能【虚梦】</li>
+                        <li>修复了黑鸦收魂者召唤的镜像不能被连锁攻击的bug</li>
+                        <li>更新了进化的卡牌<cf:c>雪月花</cf:c></li>
+                    </ul></li>
                     <li>2016-12-29: (本次代码由<x>绯弹亚丝娜</x>提供)<ul>
                         <li>感谢<x>银色孤星</x>, <x>huangzhe8263</x>, <x>Core灬酷睿</x>, <x>846533685</x>和<x>左牵黄x右擎苍</x>的帮助</li>
                         <li>添加新卡<cf:c>森之斗者</cf:c><cf:c>三国英魂·奉先</cf:c><cf:c>三国英魂·貂蝉</cf:c></li>

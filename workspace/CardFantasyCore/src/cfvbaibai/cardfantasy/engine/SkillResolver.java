@@ -239,8 +239,9 @@ public class SkillResolver {
                 RaceChange.apply(this, skillUseInfo, attacker, defender);
             } else if (skillUseInfo.getType() == SkillType.战争怒吼) {
                 Soften.apply(skillUseInfo, this, attacker, defender, -1);
-            } else if (skillUseInfo.getType() == SkillType.镜像) {
-                Summon.apply(this, skillUseInfo, attacker, SummonType.Normal, 1, attacker.getName() + "·镜像");
+            } else if (skillUseInfo.getType() == SkillType.镜像 || skillUseInfo.getType() == SkillType.虚梦) {
+            	//镜像召唤的单位可以被连锁攻击
+                Summon.apply(this, skillUseInfo, attacker, SummonType.Normal, 1, attacker.getName());
             } else if (skillUseInfo.getType() == SkillType.召唤王国战士) {
                 Summon.apply(this, skillUseInfo, attacker, SummonType.Normal, 2, "圣骑士", "魔剑士");
             } else if (skillUseInfo.getType() == SkillType.召唤骷髅战士) {
@@ -1383,6 +1384,8 @@ public class SkillResolver {
                 } else if (skillUseInfo.getType() == SkillType.咆哮) {
                     Destroy.apply(this, skillUseInfo.getSkill(), card, enemy, 1);
                     Transport.apply(this, skillUseInfo.getSkill(), card, enemy);
+                }else if (skillUseInfo.getType() == SkillType.虚梦) {
+                    Transport.apply(this, skillUseInfo.getAttachedUseInfo().getSkill(), card, enemy);
                 }
             }
         }

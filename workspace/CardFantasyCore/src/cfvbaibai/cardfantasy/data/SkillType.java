@@ -261,6 +261,7 @@ public enum SkillType {
     夺魂("", 0, 1, SkillTag.复活),
 
     镜像("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
+    虚梦("", 0, 0, SkillType.传送, SkillTag.召唤, SkillTag.不可洗炼),
     召唤王国战士("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
     召唤骷髅战士("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
     召唤邪龙护卫("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),

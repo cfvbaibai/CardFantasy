@@ -877,6 +877,11 @@
     <Card id="1564" name="圣诞小鹿" wikiId="" race="王国" speed="6" star="5" cost="99" incrCost="0" at="1" hp="1" incrAT="0" incrHP="0">
         <Skill type="物品技能" level="0" unlock="0" />
     </Card>
+    <Card id="1565" name="红丝绒公主" wikiId="" race="王国" speed="2" star="4" cost="14" incrCost="2" at="280" hp="1270" incrAT="35" incrHP="31">
+        <Skill type="贪吃" level="6" unlock="0" />
+        <Skill type="王国同调" level="6" unlock="5" />
+        <Skill type="圣母回声" level="0" unlock="10" />
+    </Card>
 
     <!-- 森林 -->
     <Card id="2101" name="人马巡逻者" wikiId="30976" race="森林" speed="2" star="1" cost="3" incrCost="2" at="95" hp="310" incrAT="17" incrHP="11">
@@ -2348,6 +2353,11 @@
         <Skill type="战争怒吼" level="0" unlock="5" />
         <Skill type="星云锁链" level="0" unlock="10" />
     </Card>
+    <Card id="3549" name="三国英魂·孟德" wikiId="" race="蛮荒" speed="4" star="5" cost="19" incrCost="2" at="410" hp="1680" incrAT="37" incrHP="31">
+        <Skill type="神兵召唤" level="0" unlock="0" />
+        <Skill type="免疫" level="0" unlock="5" />
+        <Skill type="虚梦" level="0" unlock="10" />
+    </Card>
 
     <!-- 地狱 -->
     <Card id="4101" name="恶魔小鬼" wikiId="31036" race="地狱" speed="2" star="1" cost="3" incrCost="2" at="80" hp="270" incrAT="19" incrHP="6">
@@ -2826,11 +2836,6 @@
         <Skill type="复活" level="0" unlock="5" />
         <Skill type="送葬之刃" level="6" unlock="10" />
     </Card>
-    <Card id="444401" name="黑鸦收魂者·镜像" wikiId="" race="地狱" speed="2" star="4" cost="14" incrCost="2" at="290" hp="1250" incrAT="37" incrHP="32">
-        <Skill type="复活" level="0" unlock="5" />
-        <Skill type="送葬之刃" level="6" unlock="10" />
-    </Card>
-
     <Card id="4501" name="毁灭之龙" wikiId="31064" race="地狱" speed="4" star="5" cost="14" incrCost="2" at="350" hp="1270" incrAT="34" incrHP="34">
         <Skill type="暴击" level="6" unlock="0" />
         <Skill type="裂伤" level="0" unlock="5" />
@@ -2994,10 +2999,10 @@
         <Skill type="地狱之力" level="8" unlock="5" />
         <Skill type="不动" level="0" unlock="10" />
     </Card>
-    <Card id="4529" name="雪月花" wikiId="" race="地狱" speed="3" star="5" cost="17" incrCost="2" at="310" hp="1520" incrAT="33" incrHP="19">
+    <Card id="" name="雪月花" wikiId="" race="地狱" speed="1" star="5" cost="17" incrCost="2" at="310" hp="1520" incrAT="40" incrHP="26">
         <Skill type="净化" level="0" unlock="0" summon="true" />
-        <Skill type="脱困" level="0" unlock="5" />
-        <Skill type="转生" level="8" unlock="10" />
+        <Skill type="神之守护" level="0" unlock="5" />
+        <Skill type="转生" level="9" unlock="10" />
     </Card>
     <Card id="4530" name="永夜真祖" wikiId="" race="地狱" speed="3" star="5" cost="17" incrCost="2" at="360" hp="1580" incrAT="23" incrHP="33">
         <Skill type="斩杀" level="0" unlock="0" />
