@@ -26325,6 +26325,84 @@
         "AffectValue2": 0,
         "SkillCategory": 2,
         "Desc": "吾好梦中杀人！(1)卡牌上场后，召唤1张相同卡牌上场战斗（召唤出的卡牌不会进入墓地，牌堆，手牌），如果场上已经存在自身召唤的卡牌时，则不发动召唤。(2)卡牌上场时，施放一次传送(将对方手牌中等待时间最长的1张卡丢至墓地)。"
+      },
+      {
+        "SkillId": 2178,
+        "Name": "觉醒：白虎守护",
+        "Type": 126,
+        "LanchType": 4,
+        "LanchCondition": 0,
+        "LanchConditionValue": 0,
+        "AffectType": 158,
+        "AffectValue": "1001_5_70",
+        "AffectValue2": "1448_1313",
+        "SkillCategory": 2,
+        "Desc": "当我方英雄生命大于或等于70%时，发动【月神的护佑7】技能；小于70%时发动【祈福3】技能。"
+      },
+      {
+        "SkillId": 2179,
+        "Name": "[死契]魔法毁灭",
+        "Type": 113,
+        "LanchType": 9,
+        "LanchCondition": 0,
+        "LanchConditionValue": 10,
+        "AffectType": 151,
+        "AffectValue": 100,
+        "AffectValue2": 1000,
+        "SkillCategory": 2,
+        "Desc": "被消灭时，对敌方场上所有单位造成100点伤害，如果目标单位拥有免疫或者法力反射技能，则造成1000%的伤害。"
+      },
+      {
+        "SkillId": 2174,
+        "Name": "觉醒：星之意志",
+        "Type": 126,
+        "LanchType": 4,
+        "LanchCondition": 0,
+        "LanchConditionValue": 0,
+        "AffectType": 158,
+        "AffectValue": "1002_1_5",
+        "AffectValue2": "1664_1618",
+        "SkillCategory": 2,
+        "Desc": "敌方场上卡牌数大于或等于5张时，发动【灵魂消散】技能;小于5张时，发动【灵王的轰击7】技能"
+      },
+      {
+        "SkillId": 2170,
+        "Name": "涅槃",
+        "Type": 43,
+        "LanchType": 8,
+        "LanchCondition": 0,
+        "LanchConditionValue": 0,
+        "AffectType": 27,
+        "AffectValue": 100,
+        "AffectValue2": 0,
+        "SkillCategory": 2,
+        "Desc": "死亡时100%进入手牌，如果手牌已满则进入牌堆。"
+      },
+      {
+        "SkillId": 9024,
+        "Name": "晨星之子",
+        "Type": 92,
+        "LanchType": 5,
+        "LanchCondition": 0,
+        "LanchConditionValue": 0,
+        "AffectType": 55,
+        "AffectValue": 0,
+        "AffectValue2": 0,
+        "SkillCategory": 3,
+        "Desc": "晨星之子曾是众神之神最得力的副手，但是在漫长的时光中，他终于无法忍耐整个天界迂腐的氛围。他主动前往地狱，任由黑暗之力将他洁白的翅膀染黑，贪婪地汲取着黑暗之力并组建了自己的邪恶大军，为的只是有朝一日让天上那些傲慢的傻瓜认识到自己的愚蠢。"
+      },
+      {
+        "SkillId": 2198,
+        "Name": "蛇吻",
+        "Type": 136,
+        "LanchType": 5,
+        "LanchCondition": 0,
+        "LanchConditionValue": 0,
+        "AffectType": 122,
+        "AffectValue": "688_47",
+        "AffectValue2": 0,
+        "SkillCategory": 2,
+        "Desc": "(1)不受摧毁、送还、传送技能影响。(2)当对敌方卡牌造成物理伤害时，回复伤害值70%的生命值。"
       }
     ]
   },
@@ -26332,7 +26410,7 @@
   "message": null,
   "type": null,
   "version": {
-    "http": "1483063931",
+    "http": "1484278020",
     "stop": "",
     "appversion": "version_1",
     "appurl": "ios://xxx",
