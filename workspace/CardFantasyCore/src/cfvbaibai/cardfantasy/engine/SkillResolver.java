@@ -763,6 +763,8 @@ public class SkillResolver {
                 Soften.apply(deadCardSkillUseInfo, this, deadCard, opponent, -1);
             } else if (deadCardSkillUseInfo.getType() == SkillType.时间溯行) {
                 TimeTravel.apply(deadCardSkillUseInfo, this, deadCard.getOwner(), opponent);
+            } else if (deadCardSkillUseInfo.getType() == SkillType.魔法毁灭) {
+            	ManaErode.apply(deadCardSkillUseInfo.getSkill(), this, deadCard.getOwner(), opponent, -1);
             }
         }
         for (SkillUseInfo deadCardSkillUseInfo : deadCard.getAllUsableSkills()) {
@@ -797,7 +799,8 @@ public class SkillResolver {
                     deadCardSkillUseInfo.getType() == SkillType.武形秘仪 ||
                     deadCardSkillUseInfo.getType() == SkillType.花族秘术 ||
                     deadCardSkillUseInfo.getType() == SkillType.洪荒之术 ||
-                    deadCardSkillUseInfo.getType() == SkillType.武形秘术) {
+                    deadCardSkillUseInfo.getType() == SkillType.武形秘术 ||
+                    deadCardSkillUseInfo.getType() == SkillType.涅槃) {
                     if (Reincarnation.apply(this, deadCardSkillUseInfo.getSkill(), deadCard, result.unbending)) {
                         reincarnated = true;
                         break;
@@ -817,7 +820,8 @@ public class SkillResolver {
             int normalAttackDamage) throws HeroDieSignal {
         for (SkillUseInfo skillUseInfo : attacker.getUsableNormalSkills()) {
             if (!attacker.isDead()) {
-                if (skillUseInfo.getType() == SkillType.吸血) {
+                if (skillUseInfo.getType() == SkillType.吸血 ||
+                	skillUseInfo.getType() == SkillType.蛇吻) {
                     BloodDrain.apply(skillUseInfo.getSkill(), this, attacker, defender, normalAttackDamage);
                 }
             }
@@ -1001,7 +1005,7 @@ public class SkillResolver {
         OnDamagedResult result = new OnDamagedResult();
         List<CardStatusItem> unbendingStatusItems = defender.getStatus().getStatusOf(CardStatusType.不屈);
         if (!unbendingStatusItems.isEmpty()) {
-            if (skill != null && skill.getType() == SkillType.吸血) {
+            if (skill != null && (skill.getType() == SkillType.吸血 || skill.getType() == SkillType.蛇吻)) {
                 // 不屈状态下可以吸血
             } else {
                 this.getStage().getUI().unbend(defender, unbendingStatusItems.get(0));

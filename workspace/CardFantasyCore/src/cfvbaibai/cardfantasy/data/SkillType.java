@@ -148,6 +148,7 @@ public enum SkillType {
     我还会回来的("", 0),
     蛮荒我还会回来的("", 0),
     花族秘术("", 65, 0, 210, 0),
+    涅槃("", 100, 0),
 
     裂伤("30963", 0, SkillTag.抗免疫, SkillTag.抗不屈, SkillTag.魔王无效),
     全体裂伤("", 0, SkillTag.抗免疫, SkillTag.抗不屈),
@@ -191,6 +192,7 @@ public enum SkillType {
     无我境界("", 70, 0, SkillTag.控制, SkillTag.魔王无效),
 
     吸血("31135", 10),
+    蛇吻("", 70, 0, SkillTag.不动),
     恶灵汲取("", 0, 3, SkillTag.抗免疫, SkillTag.魔王无效),
     反噬("31156", 50),
     疾病("31155", 10),
