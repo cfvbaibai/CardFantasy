@@ -317,6 +317,18 @@ public class SkillResolver {
             } else if (skillUseInfo.getType() == SkillType.凋零陷阱) {
                 WitheringWord.apply(skillUseInfo.getAttachedUseInfo1(), this, attacker, defender);
                 Trap.apply(skillUseInfo.getAttachedUseInfo2(), this, attacker, defender);
+            } else if (skillUseInfo.getType() == SkillType.觉醒白虎守护) {
+            	if(attacker.getOwner().getHP() >= attacker.getOwner().getMaxHP() * 0.7) {
+            		LunaBless.apply(skillUseInfo.getAttachedUseInfo1().getSkill(), this, attacker);
+            	} else {
+            		Bless.apply(skillUseInfo.getAttachedUseInfo2().getSkill(), this, attacker);
+            	}
+            } else if (skillUseInfo.getType() == SkillType.觉醒星之意志) {
+            	if(defender.getField().getAliveCards().size() >= 5){
+            		SoulCrash.apply(skillUseInfo.getAttachedUseInfo1(), this, attacker, defender);
+            	} else {
+            		ManaErode.apply(skillUseInfo.getAttachedUseInfo2().getSkill(), this, attacker, defender, 1);        		
+            	}
             }
         }
         if (!attacker.isDead() && !attacker.isSilent() && !attacker.justRevived()) {

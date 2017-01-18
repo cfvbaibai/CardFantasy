@@ -319,7 +319,9 @@ public enum SkillType {
     凋零陷阱("", SkillType.凋零真言, 6, SkillType.陷阱, 3),
     天怒("", SkillType.烈焰风暴, SkillType.天火),
     闭月("", SkillType.祈福, 3, SkillType.圣母回声, 0),
-    虚梦("", SkillType.镜像, SkillType.传送);
+    虚梦("", SkillType.镜像, SkillType.传送),
+    觉醒白虎守护("", SkillType.月神的护佑, 7, SkillType.祈福, 3),
+    觉醒星之意志("", SkillType.灵魂消散, 0, SkillType.灵王的轰击, 7);
 
     private String wikiId;
     private int initImpact;
