@@ -466,15 +466,13 @@ public class CardInfo extends EntityInfo {
         sb.append("】");
         return sb.toString();
     }
-
+    
     public boolean isDead() {
-        Field field = owner.getField();
-        for (int i = 0; i < field.size(); ++i) {
-            if (field.getCard(i) == this) {
-                return false;
-            }
-        }
-        return true;
+        return !isAlive();
+    }
+    
+    public boolean isAlive() {
+        return owner.getField().contains(this);
     }
 
     public boolean justRevived() {

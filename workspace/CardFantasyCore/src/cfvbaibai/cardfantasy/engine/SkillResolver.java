@@ -239,9 +239,12 @@ public class SkillResolver {
                 RaceChange.apply(this, skillUseInfo, attacker, defender);
             } else if (skillUseInfo.getType() == SkillType.战争怒吼) {
                 Soften.apply(skillUseInfo, this, attacker, defender, -1);
-            } else if (skillUseInfo.getType() == SkillType.镜像 || skillUseInfo.getType() == SkillType.虚梦) {
+            } else if (skillUseInfo.getType() == SkillType.镜像) {
             	//镜像召唤的单位可以被连锁攻击
                 Summon.apply(this, skillUseInfo, attacker, SummonType.Normal, 1, attacker.getName());
+            } else if (skillUseInfo.getType() == SkillType.虚梦) {
+            	//镜像召唤的单位可以被连锁攻击
+                Summon.apply(this, skillUseInfo.getAttachedUseInfo1(), attacker, SummonType.Normal, 1, attacker.getName());
             } else if (skillUseInfo.getType() == SkillType.召唤王国战士) {
                 Summon.apply(this, skillUseInfo, attacker, SummonType.Normal, 2, "圣骑士", "魔剑士");
             } else if (skillUseInfo.getType() == SkillType.召唤骷髅战士) {
@@ -292,9 +295,10 @@ public class SkillResolver {
             } else if (skillUseInfo.getType() == SkillType.动能追加) {
                 EnergyIncrement.apply(skillUseInfo, this, attacker);
             } else if (skillUseInfo.getType() == SkillType.祈福 ||
-                    skillUseInfo.getType() == SkillType.真理导言 ||
-                    skillUseInfo.getType() == SkillType.闭月) {
+                    skillUseInfo.getType() == SkillType.真理导言) {
                 Bless.apply(skillUseInfo.getSkill(), this, attacker);
+            } else if (skillUseInfo.getType() == SkillType.闭月) {
+                Bless.apply(skillUseInfo.getAttachedUseInfo1().getSkill(), this, attacker);
             } else if (skillUseInfo.getType() == SkillType.修罗地火攻) {
                 SuraFire.apply(this, skillUseInfo, attacker, defender);
             } else if (skillUseInfo.getType() == SkillType.精神狂乱) {
@@ -302,8 +306,8 @@ public class SkillResolver {
             } else if (skillUseInfo.getType() == SkillType.离间) {
                 Insane.apply(skillUseInfo, this, attacker, defender, 3);
             } else if (skillUseInfo.getType() == SkillType.天怒) {
-                FireMagic.apply(skillUseInfo.getSkill(), this, attacker, defender, -1);
-                BurningFlame.apply(skillUseInfo.getAttachedUseInfo(), this, attacker, defender);
+                FireMagic.apply(skillUseInfo.getAttachedUseInfo1().getSkill(), this, attacker, defender, -1);
+                BurningFlame.apply(skillUseInfo.getAttachedUseInfo2(), this, attacker, defender);
             } else if (skillUseInfo.getType() == SkillType.传送) {
                 Transport.apply(this, skillUseInfo.getSkill(), attacker, defender);
             } else if (skillUseInfo.getType() == SkillType.灵魂消散) {
@@ -311,8 +315,8 @@ public class SkillResolver {
             } else if (skillUseInfo.getType() == SkillType.全体裂伤) {
                 Wound.applyToAll(this, skillUseInfo, attacker, defender);
             } else if (skillUseInfo.getType() == SkillType.凋零陷阱) {
-                WitheringWord.apply(skillUseInfo, this, attacker, defender);
-                Trap.apply(skillUseInfo.getAttachedUseInfo(), this, attacker, defender);
+                WitheringWord.apply(skillUseInfo.getAttachedUseInfo1(), this, attacker, defender);
+                Trap.apply(skillUseInfo.getAttachedUseInfo2(), this, attacker, defender);
             }
         }
         if (!attacker.isDead() && !attacker.isSilent() && !attacker.justRevived()) {
@@ -1164,7 +1168,7 @@ public class SkillResolver {
                 cardSkillUseInfo.getType() == SkillType.圣母回声) {
                 Rejuvenate.apply(cardSkillUseInfo.getSkill(), this, card);
             } else if (cardSkillUseInfo.getType() == SkillType.闭月) {
-                Rejuvenate.apply(cardSkillUseInfo.getAttachedUseInfo().getSkill(), this, card);
+                Rejuvenate.apply(cardSkillUseInfo.getAttachedUseInfo2().getSkill(), this, card);
             }
         }
         if (!card.isSilent()) {
@@ -1389,7 +1393,7 @@ public class SkillResolver {
                     Destroy.apply(this, skillUseInfo.getSkill(), card, enemy, 1);
                     Transport.apply(this, skillUseInfo.getSkill(), card, enemy);
                 }else if (skillUseInfo.getType() == SkillType.虚梦) {
-                    Transport.apply(this, skillUseInfo.getAttachedUseInfo().getSkill(), card, enemy);
+                    Transport.apply(this, skillUseInfo.getAttachedUseInfo2().getSkill(), card, enemy);
                 }
             }
         }

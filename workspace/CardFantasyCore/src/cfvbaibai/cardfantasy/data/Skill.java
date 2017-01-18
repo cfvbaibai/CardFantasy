@@ -4,14 +4,21 @@ public abstract class Skill implements Comparable<Skill> {
 
     protected SkillType type;
     protected int level;
-    protected AttachedSkill attachedSkill;
+    protected AttachedSkill attachedSkill1;
+    protected AttachedSkill attachedSkill2;
 
     public Skill(SkillType type, int level) {
         this.type = type;
         this.level = level;
-        SkillType attachedType = this.type.getAttachedType();
-        if (attachedType != null) {
-            this.attachedSkill = new AttachedSkill(attachedType, level);
+        SkillType attachedType1 = this.type.getAttachedType1();
+        int attachedLevel1 = this.type.getAttachedLevel1();
+        if (attachedType1 != null) {
+            this.attachedSkill1 = new AttachedSkill(attachedType1, attachedLevel1 == -1 ? level : attachedLevel1, this);            
+        }
+        SkillType attachedType2 = this.type.getAttachedType2();
+        int attachedLevel2 = this.type.getAttachedLevel2();
+        if (attachedType2 != null) {
+            this.attachedSkill2 = new AttachedSkill(attachedType2, attachedLevel2 == -1 ? level : attachedLevel2, this);            
         }
     }
 
@@ -39,8 +46,12 @@ public abstract class Skill implements Comparable<Skill> {
         return this.type.getImpact3(this.level);
     }
 
-    public Skill getAttachedSkill() {
-        return this.attachedSkill;
+    public Skill getAttachedSkill1() {
+        return this.attachedSkill1;
+    }
+    
+    public Skill getAttachedSkill2() {
+        return this.attachedSkill2;
     }
 
     public String getShortDesc() {
