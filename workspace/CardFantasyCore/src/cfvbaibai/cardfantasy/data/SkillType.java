@@ -225,14 +225,16 @@ public enum SkillType {
 
     圣炎("43446", 0),
     扼杀("", 0),
-    法力侵蚀("43447", 0, 20, 3, 0),
-    破魔手("", 0, 20, 3, 0),
-    灵王的轰击("", 250, 50, 3, 0),
-    觉醒灵王的轰击("", 250, 50, 3, 0, SkillTag.不可洗炼),
-    法力风暴("", 0, 20, 3, 0),
-    魔法毁灭("", 100, 0, 10, 0),
     九转秘术("", 0, 0),
-
+    
+    法力侵蚀("43447", 0, 20, 3, 0, SkillTag.抗免疫),
+    破魔手("", 0, 20, 3, 0, SkillTag.抗免疫),
+    灵王的轰击("", 250, 50, 3, 0, SkillTag.抗免疫),
+    觉醒灵王的轰击("", 250, 50, 3, 0, SkillTag.不可洗炼, SkillTag.抗免疫),
+    法力风暴("", 0, 20, 3, 0, SkillTag.抗免疫),
+    魔法毁灭("", 100, 0, 10, 0, SkillTag.抗免疫),
+    寒冰触碰("", 250, 50, 3, 0, new int[] {50}, SkillTag.抗免疫),
+    
     大地之盾("80193", 0, SkillTag.控制, SkillTag.抗免疫, SkillTag.魔王无效),
     一闪("", 50, 0, SkillTag.控制, SkillTag.抗免疫, SkillTag.魔王无效),
     圣盾("56750", 0),
@@ -279,6 +281,7 @@ public enum SkillType {
     召唤花族侍卫("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
     七十二变("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
     英灵降临("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
+    寒霜召唤("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
     星之所在("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
     灵龙轰咆("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
 
@@ -405,8 +408,11 @@ public enum SkillType {
     }
 
     public int getImpact3(int level) {
-        if (this.impact3 == null || level < 0 || level >= this.impact3.length) {
+        if (this.impact3 == null || level < 0) {
             return 0;
+        }
+        if (level >= this.impact3.length) {
+        	return this.impact3[this.impact3.length];
         }
         return this.impact3[level];
     }

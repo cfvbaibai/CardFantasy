@@ -284,6 +284,9 @@ public class SkillResolver {
             } else if (skillUseInfo.getType() == SkillType.英灵降临) {
                 Summon.apply(this, skillUseInfo, attacker, SummonType.Random, 1,
                         "圣剑持有者", "银河圣剑使", "精灵游骑兵", "爱神", "蝗虫公爵", "战场女武神", "龙角将军", "断罪之镰");
+            } else if (skillUseInfo.getType() == SkillType.寒霜召唤) {
+                Summon.apply(this, skillUseInfo, attacker, SummonType.Random, 1,
+                        "陨星魔法使", "怒雪咆哮", "圣诞老人", "寒霜冰灵使", "白羊座", "霜狼酋长", "雪月花", "梦魇猎手·霜");
             } else if (skillUseInfo.getType() == SkillType.魔力法阵) {
                 MagicMark.apply(this, skillUseInfo, attacker, defender, -1);
             } else if (skillUseInfo.getType() == SkillType.魔力印记) {
@@ -329,6 +332,8 @@ public class SkillResolver {
             	} else {
             		ManaErode.apply(skillUseInfo.getAttachedUseInfo2().getSkill(), this, attacker, defender, 1);        		
             	}
+            } else if (skillUseInfo.getType() == SkillType.寒冰触碰){
+            	IceTouch.apply(skillUseInfo, this, attacker, defender, 3);
             }
         }
         if (!attacker.isDead() && !attacker.isSilent() && !attacker.justRevived()) {
@@ -561,28 +566,9 @@ public class SkillResolver {
                 stage.getUI().attackBlocked(attacker, defender, attackSkill, null);
                 result.setAttackable(false);
             } else {
-                for (SkillUseInfo blockSkillUseInfo : defender.getUsableNormalSkills()) {
-                    if (blockSkillUseInfo.getType() == SkillType.法力反射 ||
-                        blockSkillUseInfo.getType() == SkillType.镜面装甲 ||
-                        blockSkillUseInfo.getType() == SkillType.花族秘术 ||
-                        blockSkillUseInfo.getType() == SkillType.武形秘术 ||
-                        blockSkillUseInfo.getType() == SkillType.神魔之甲) {
-                        if (CounterMagic.isSkillBlocked(this, blockSkillUseInfo.getSkill(), attackSkill,
-                                attacker, defender)) {
-                            result.setAttackable(false);
-                            return result;
-                        }
-                    }
-                }
-                if (!defender.isSilent()) {
-                    RuneInfo rune = defender.getOwner().getRuneBox().getRuneOf(RuneData.石林);
-                    if (rune != null && rune.isActivated() && !defender.justRevived()) {
-                        if (CounterMagic.isSkillBlocked(this, rune.getSkill(), attackSkill, attacker,
-                                defender)) {
-                            result.setAttackable(false);
-                            return result;
-                        }
-                    }
+                if (CounterMagic.apply(this, attackSkill, attacker, defender)) {
+                    result.setAttackable(false);
+                    return result;
                 }
                 
                 if (NoEffect.isSkillBlocked(this, attackSkill, attacker, defender)) {
