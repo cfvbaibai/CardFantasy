@@ -7,6 +7,7 @@ import java.util.List;
 import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
 import cfvbaibai.cardfantasy.Randomizer;
 import cfvbaibai.cardfantasy.data.Skill;
+import cfvbaibai.cardfantasy.data.SkillType;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.CardStatusItem;
 import cfvbaibai.cardfantasy.engine.CardStatusType;
@@ -21,7 +22,7 @@ public class Summon {
             throw new CardFantasyRuntimeException("summoner should not be null");
         }
         // 镜像不能再次发动镜像
-        if (summoner.isSummonedMinion()){
+        if (summoner.isSummonedMinion() && skillUseInfo.getType() == SkillType.镜像){
         	return;
         }
         Skill skill = skillUseInfo.getSkill();
