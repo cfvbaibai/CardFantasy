@@ -23,7 +23,7 @@ public class OfficialSkill {
     public String SkillId;
     public String AffectValue;
     public String Desc;
-    public int AffectValue2;
+    public String AffectValue2;
     public int LanchType;
     public String Name;
     public int SkillCategory;
@@ -45,7 +45,7 @@ public class OfficialSkill {
     }
     public boolean isMaterial() {
         return Type == 92 && LanchType == 5 && AffectType == 55 && LanchCondition == 0 &&
-                LanchConditionValue == 0 && "0".equals(AffectValue) && AffectValue2 == 0;
+                LanchConditionValue == 0 && "0".equals(AffectValue) && "0".equals(AffectValue2);
     }
     public String getId() {
         return this.SkillId;

@@ -29,6 +29,11 @@ public final class Flee {
         // 如果没被物理攻击直接秒杀，需要从场上把卡牌去除
         // defender.getOwner().getField().removeCard(defender); BUG! 不能用removeCard，那样会使场上的卡重排，战斗中不该重排
         defender.getOwner().getField().expelCard(defender.getPosition());
+        
+        // 如果是被召唤的卡牌，发动逃跑技能后应该直接消失
+        if (defender.isSummonedMinion()){
+        	return;
+        }
 
         Hand hand = defender.getOwner().getHand();
         if (hand.isFull()) {
