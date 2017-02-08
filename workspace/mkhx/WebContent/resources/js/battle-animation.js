@@ -1354,7 +1354,7 @@ var Animater = function() {
     ];
     this.selfUsedSkills = [
         '不动', '脱困', '群体脱困', '法力反射', '花族秘术', '冰甲', '水流护甲', '闪避', '守护', '魔神之甲', '灵巧', '灵魂禁锢', '闭月',
-        '王国之盾', '森林之盾', '蛮荒之盾', '地狱之盾', '弱点攻击', '无效', '圣盾', '不屈', '圣炎', '斩杀', '送葬之刃', '逃跑', '灵魂封禁',
+        '王国之盾', '森林之盾', '蛮荒之盾', '地狱之盾', '弱点攻击', '无效', '圣盾', '不屈', '圣炎', '斩杀', '双斩', '送葬之刃', '逃跑', '灵魂封禁',
         '镜面装甲', '镜面', '阿拉希血统', '神威', '月之守护', '洪荒之术', '冰神附体', '三千世界', '神魔之甲', '亮银', '龙胆', '王之守护', '神之守护', '无双'
     ];
     this.__useSkill = function(data) {
@@ -1398,7 +1398,7 @@ var Animater = function() {
         } else if (skill == '吐槽') {
             this.flyImage({ fileName: 'tsukomi.png', width: 48, height: 48, text: skill },
                     attacker, defenders, settings.skillDuration);
-        } else if (skill == '沉默' || skill == '觉醒沉默' || skill == '觉醒沉默A' || skill == '全体沉默' || skill == '无限全体沉默') {
+        } else if (skill == '沉默' || skill == '觉醒沉默' || skill == '觉醒沉默A' || skill == '全体沉默' || skill == '全领域沉默' || skill == '无限全体沉默') {
             this.flyImage({ fileName: 'silence.png', width: 48, height: 48, text: skill },
                     attacker, defenders, settings.skillDuration);
         } else if (skill == '燕返') {

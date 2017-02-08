@@ -1081,7 +1081,7 @@ public class SkillResolver {
                     CardInfo attackCard = (CardInfo)attacker;
                     if (attackCard.getRace() != Race.BOSS) {
                         for (SkillUseInfo skillUseInfo : attackCard.getUsableNormalSkills()) {
-                            if (skillUseInfo.getType() == SkillType.扼杀 || skillUseInfo.getType() == SkillType.无双) {
+                            if (skillUseInfo.getType() == SkillType.扼杀 || skillUseInfo.getType() == SkillType.无双 || skillUseInfo.getType() == SkillType.双斩) {
                                 this.getStage().getUI().useSkill(attacker, skillUseInfo.getSkill(), true);
                                 owner.getOutField().addCard(card);
                                 return DeadType.SoulCrushed;
@@ -1194,7 +1194,8 @@ public class SkillResolver {
         }
         if (skill == null) {
             for (SkillUseInfo cardSkillUseInfo : attacker.getAllUsableSkills()) {
-                if (cardSkillUseInfo.getType() == SkillType.斩杀 || cardSkillUseInfo.getType() == SkillType.送葬之刃 || cardSkillUseInfo.getType() == SkillType.无双) {
+                if (cardSkillUseInfo.getType() == SkillType.斩杀 || cardSkillUseInfo.getType() == SkillType.送葬之刃
+                		|| cardSkillUseInfo.getType() == SkillType.无双 || cardSkillUseInfo.getType() == SkillType.双斩) {
                     SuddenKill.apply(this, cardSkillUseInfo, attacker, defender, blockingResult);
                 }
             }
@@ -1369,6 +1370,7 @@ public class SkillResolver {
                 } else if (skillUseInfo.getType() == SkillType.回魂) {
                     Resurrection.apply(this, skillUseInfo, card);
                 } else if (skillUseInfo.getType() == SkillType.全体沉默) {
+                	// 降临全体沉默全场只能发动一次，全领域沉默可以无限发动
                     Silence.apply(this, skillUseInfo, card, enemy, true, true);
                 } else if (skillUseInfo.getType() == SkillType.无限全体沉默) {
                     Silence.apply(this, skillUseInfo, card, enemy, true, false);
@@ -1390,8 +1392,10 @@ public class SkillResolver {
                 } else if (skillUseInfo.getType() == SkillType.咆哮) {
                     Destroy.apply(this, skillUseInfo.getSkill(), card, enemy, 1);
                     Transport.apply(this, skillUseInfo.getSkill(), card, enemy);
-                }else if (skillUseInfo.getType() == SkillType.虚梦) {
+                } else if (skillUseInfo.getType() == SkillType.虚梦) {
                     Transport.apply(this, skillUseInfo.getAttachedUseInfo2().getSkill(), card, enemy);
+                } else if (skillUseInfo.getType() == SkillType.全领域沉默) {
+                    Silence.apply(this, skillUseInfo, card, enemy, true, false);
                 }
             }
         }
@@ -1579,7 +1583,8 @@ public class SkillResolver {
                 return WeakPointAttack.isBlockSkillDisabled(this, attackerSkillUseInfo.getSkill(), cardSkill, attacker, defender);
             } else if (attackerSkillUseInfo.getType() == SkillType.斩杀 || 
                     attackerSkillUseInfo.getType() == SkillType.送葬之刃 || 
-                    attackerSkillUseInfo.getType() == SkillType.无双) {
+                    attackerSkillUseInfo.getType() == SkillType.无双 ||
+                    attackerSkillUseInfo.getType() == SkillType.双斩) {
                 return SuddenKill.isBlockSkillDisabled(this, attackerSkillUseInfo.getSkill(), cardSkill, attacker, defender);
             }
         }
