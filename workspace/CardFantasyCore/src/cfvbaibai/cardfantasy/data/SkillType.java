@@ -176,6 +176,7 @@ public enum SkillType {
     觉醒沉默("", 0, SkillTag.不可洗炼, SkillTag.抗免疫, SkillTag.抗不屈, SkillTag.沉默, SkillTag.魔王无效),
     觉醒沉默A("", 0, SkillTag.不可洗炼, SkillTag.抗免疫, SkillTag.抗不屈, SkillTag.沉默, SkillTag.魔王无效),
     全体沉默("", 0, SkillTag.抗免疫, SkillTag.抗不屈, SkillTag.沉默, SkillTag.魔王无效),
+    全领域沉默("", 0, SkillTag.抗免疫, SkillTag.抗不屈, SkillTag.沉默, SkillTag.魔王无效),
     无限全体沉默("", 0, SkillTag.抗免疫, SkillTag.抗不屈, SkillTag.沉默),
     灵魂消散("", 0, SkillTag.抗免疫, SkillTag.抗不屈, SkillTag.沉默),
 
@@ -253,6 +254,7 @@ public enum SkillType {
 
     燕返("", 0, 0),
     斩杀("", 50, 0),
+    双斩("", 50, 0),
     送葬之刃("", 50, 5),
     无双("", 70, 0),
 
@@ -325,6 +327,43 @@ public enum SkillType {
     虚梦("", SkillType.镜像, SkillType.传送),
     觉醒白虎守护("", SkillType.月神的护佑, 7, SkillType.祈福, 3),
     觉醒星之意志("", SkillType.灵魂消散, 0, SkillType.灵王的轰击, 7);
+	
+//	侵蚀
+//	大小通吃
+//	幻梦之击
+//	无尽华尔兹
+//	无尽梦魇
+//	月之守望
+//	极秘
+//	根源之力
+//	武形降临
+//	灵气
+//	灵魂献祭
+//	灵魂禁封
+//	炼金失败!
+//	物理格挡
+//	狂暴
+//	自毁
+//	鹰眼
+//	魔咒之骸
+//	骑士荣耀
+//	骑士信仰
+//	霜火之怒
+//	化学风暴
+//	魔族之血
+//	LET IT GO
+//	魔龙吐息
+//	山崩
+//	觉醒：天崩地裂
+//	炽焰
+//	赤之魔枪
+//	镜魔
+//	东风
+//	火攻
+//	空城
+//	鬼才
+//	觉醒：狼顾
+//	雷霆一击
 
     private String wikiId;
     private int initImpact;
