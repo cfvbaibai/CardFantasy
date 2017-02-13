@@ -1501,7 +1501,7 @@ var Animater = function() {
                    skill == '武形秘箭' || skill == '武形神箭' || skill == '骤雨') {
             this.flyImage({ fileName: 'aim.png', width: 48, height: 48, text: skill, },
                     attacker, defenders, settings.skillDuration);
-        } else if (skill == '精神狂乱' || skill == '无我境界' || skill == '离间') {
+        } else if (skill == '精神狂乱' || skill == '无我境界' || skill == '离间' || skill == '无尽华尔兹') {
             this.flyImage({ fileName: 'insane.png', width: 48, height: 48, text: skill, },
                     attacker, defenders, settings.skillDuration);
         } else if (skill == '生命链接') {

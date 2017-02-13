@@ -188,6 +188,7 @@ public enum SkillType {
     国色("", 60, 0, SkillTag.控制, SkillTag.魔王无效),
     精神狂乱("", 0),
     离间("", 0),
+    无尽华尔兹("", 0),
     无我境界("", 70, 0, SkillTag.控制, SkillTag.魔王无效),
 
     吸血("31135", 10),
