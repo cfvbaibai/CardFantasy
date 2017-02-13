@@ -1494,7 +1494,7 @@ var Animater = function() {
         } else if (skill == '盾刺' || skill == '反击' || skill == '物理反弹' || skill == '荆棘术' || skill == '一闪') {
             this.flyImage({ fileName: 'spike.png', width: 48, height: 48, rotate: Math.PI * 4, text: skill },
                     attacker, defenders, settings.skillDuration);
-        } else if (skill == '献祭') {
+        } else if (skill == '献祭' || skill == '侵蚀') {
             this.flyImage({ fileName: 'round-cross.png', width: 48, height: 48, text: skill },
                     attacker, defenders, settings.skillDuration);
         } else if (skill == '狙击' || skill == '二重狙击' || skill == '神箭三重奏' || skill == '魔神之刃' ||

@@ -22,6 +22,7 @@ public enum SkillType {
      * 总体伤害值=基础攻击力+提升伤害+额外伤害后，小数点向下取整。
      */
     献祭("31144", 20, 10, SkillTag.永久, SkillTag.基础攻击加成),
+    侵蚀("", 100, 0, SkillTag.永久, SkillTag.基础攻击加成),
     群攻提升("31754", 15, SkillTag.基础攻击加成, SkillTag.抗削弱),
     狂热("30880", 10, SkillTag.永久, SkillTag.基础攻击加成),
     亮银("", 220, 0, SkillTag.永久, SkillTag.基础攻击加成),
@@ -328,7 +329,6 @@ public enum SkillType {
     觉醒白虎守护("", SkillType.月神的护佑, 7, SkillType.祈福, 3),
     觉醒星之意志("", SkillType.灵魂消散, 0, SkillType.灵王的轰击, 7);
 	
-//	侵蚀
 //	大小通吃
 //	幻梦之击
 //	无尽华尔兹
