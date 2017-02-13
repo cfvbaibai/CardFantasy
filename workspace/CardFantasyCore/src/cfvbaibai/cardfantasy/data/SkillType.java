@@ -288,7 +288,10 @@ public enum SkillType {
     寒霜召唤("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
     星之所在("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
     灵龙轰咆("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
-
+    无尽梦魇("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
+    百鬼夜行("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
+    武形降临("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
+    
     圣光洗礼("", 0, 0, SkillTag.抗免疫, SkillTag.不可洗炼, SkillTag.魔王无效),
     森林沐浴("", 1, 0, SkillTag.抗免疫, SkillTag.不可洗炼, SkillTag.魔王无效),
     蛮荒威压("", 2, 0, SkillTag.抗免疫, SkillTag.不可洗炼, SkillTag.魔王无效),
@@ -332,8 +335,6 @@ public enum SkillType {
 	
 //	大小通吃
 //	幻梦之击
-//	无尽华尔兹
-//	无尽梦魇
 //	月之守望
 //	极秘
 //	根源之力
@@ -365,6 +366,7 @@ public enum SkillType {
 //	鬼才
 //	觉醒：狼顾
 //	雷霆一击
+// [降临]封印
 
     private String wikiId;
     private int initImpact;

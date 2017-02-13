@@ -287,6 +287,15 @@ public class SkillResolver {
             } else if (skillUseInfo.getType() == SkillType.寒霜召唤) {
                 Summon.apply(this, skillUseInfo, attacker, SummonType.Random, 1,
                         "陨星魔法使", "怒雪咆哮", "圣诞老人", "寒霜冰灵使", "白羊座", "霜狼酋长", "雪月花", "梦魇猎手·霜");
+            } else if (skillUseInfo.getType() == SkillType.无尽梦魇) {
+                Summon.apply(this, skillUseInfo, attacker, SummonType.Random, 1,
+                        "梦魇猎手·岚", "梦魇猎手·霜", "梦魇猎手·胧");
+            } else if (skillUseInfo.getType() == SkillType.百鬼夜行) {
+                Summon.apply(this, skillUseInfo, attacker, SummonType.Random, 1,
+                        "大江三鬼·银", "大江三鬼·红", "大江三鬼·金");
+            } else if (skillUseInfo.getType() == SkillType.武形降临) {
+                Summon.apply(this, skillUseInfo, attacker, SummonType.Random, 1,
+                        "武形火焰尊者", "武形神射尊者", "武形破拳尊者", "武形剑圣", "武形斗圣");
             } else if (skillUseInfo.getType() == SkillType.魔力法阵) {
                 MagicMark.apply(this, skillUseInfo, attacker, defender, -1);
             } else if (skillUseInfo.getType() == SkillType.魔力印记) {
