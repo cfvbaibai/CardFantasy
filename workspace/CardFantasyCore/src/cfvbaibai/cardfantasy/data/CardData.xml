@@ -3144,6 +3144,11 @@
         <Skill type="闭月" level="0" unlock="5" />
         <Skill type="离间" level="0" unlock="10" />
     </Card>
+    <Card id="4557" name="蛇夫座" wikiId="" race="地狱" speed="4" star="5" cost="18" incrCost="2" at="350" hp="1660" incrAT="43" incrHP="35">
+        <Skill type="觉醒星之意志" level="0" unlock="0" />
+        <Skill type="涅盘" level="0" unlock="5" />
+        <Skill type="毒杀" level="0" unlock="10" />
+    </Card>
 
     <!-- 魔神 -->
     <Card id="5501" name="狙击复仇女神" wikiId="30871" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="1200" hp="10400000" incrAT="0" incrHP="0">
