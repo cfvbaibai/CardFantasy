@@ -14,6 +14,8 @@ public enum SkillType {
      */
     瘟疫("31149", 5, SkillTag.永久, SkillTag.基础攻击加成),
     凋零真言("",4,1,SkillTag.永久, SkillTag.基础攻击加成),   
+    凋零陷阱_陷阱("", 3, 0, SkillTag.控制),
+    凋零陷阱("", 10, 0, SkillType.凋零陷阱_陷阱, SkillTag.永久, SkillTag.基础攻击加成),
     /* 攻击力加成技能 */
     /**
      * 基础攻击力=初始攻击力*军团战力加成+淬杀+种族之力+本源之力+怒涛加成+嗜血加成+洞察加成+邪灵汲取。魔神战时洞察无效。
@@ -89,7 +91,7 @@ public enum SkillType {
     火墙("30950", 25, SkillTag.魔法),
     烈焰风暴("31128", 25, SkillTag.魔法),
     修罗地火攻("", 100, 10, 10, 10, SkillTag.魔法),
-
+    天怒("", 0, 25, SkillType.天火, SkillTag.魔法),
 
     狙击("", 0, 0, new int[] { 0, 25, 50, 75, 100, 125, 150, 175, 200, 225, 250 }, SkillTag.抗免疫, SkillTag.狙击),
     武形秘箭("", 0, 0, new int[] { 220, 250, 270, 300, 320, 350, 370, 400, 420, 450, 500 }, SkillTag.抗免疫, SkillTag.狙击),
@@ -115,6 +117,7 @@ public enum SkillType {
 
     横扫("30941", 0, SkillTag.抗免疫, SkillTag.物理攻击),
     三千世界("30941", 0, SkillTag.抗免疫, SkillTag.物理攻击),
+    毒杀("30941",0,SkillTag.永久,SkillTag.原始体力加成, SkillTag.抗不屈,SkillTag.抗免疫,SkillTag.物理攻击),
     闪避("30939", 20, 5, SkillTag.物理护甲),
     龙胆("30939", 100, 0, SkillTag.物理护甲),
     连击("", 0, SkillTag.物理攻击),
@@ -125,6 +128,7 @@ public enum SkillType {
     回春("30944", 30),
     月恩术("", 300, 50),
     圣母回声("", 99999, 99999),
+    闭月("", 6, 0, SkillType.圣母回声),
     月神的护佑("", new int[] { 8, 10, 13, 15, 18, 20, 23, 25, 28, 30, 35 }),
     月神的触碰("", new int[] { 8, 10, 13, 15, 18, 20, 23, 25, 28, 30, 35 }),
     
@@ -141,11 +145,11 @@ public enum SkillType {
 
     转生("30935", 30, 5),
     武形秘仪("", 70, 0),
+    涅盘("",100,0),
     武形秘术("", 65, 0, 210, 0),
     我还会回来的("", 0),
     蛮荒我还会回来的("", 0),
     花族秘术("", 65, 0, 210, 0),
-    涅槃("", 100, 0),
 
     裂伤("30963", 0, SkillTag.抗免疫, SkillTag.抗不屈, SkillTag.魔王无效),
     全体裂伤("", 0, SkillTag.抗免疫, SkillTag.抗不屈),
@@ -186,10 +190,10 @@ public enum SkillType {
     国色("", 60, 0, SkillTag.控制, SkillTag.魔王无效),
     精神狂乱("", 0),
     离间("", 0),
+    无尽华尔兹("", 0),
     无我境界("", 70, 0, SkillTag.控制, SkillTag.魔王无效),
 
     吸血("31135", 10),
-    蛇吻("", 70, 0, SkillTag.不动),
     恶灵汲取("", 0, 3, SkillTag.抗免疫, SkillTag.魔王无效),
     反噬("31156", 50),
     疾病("31155", 10),
@@ -225,16 +229,15 @@ public enum SkillType {
 
     圣炎("43446", 0),
     扼杀("", 0),
+    法力侵蚀("43447", 0, 20, 3, 0),
+    破魔手("", 0, 20, 3, 0),
+    灵王的轰击("", 250, 50, 3, 0),
+    觉醒星之意志("", 700, 50, 3, 0,SkillTag.抗免疫, SkillTag.抗不屈, SkillTag.沉默),
+    觉醒灵王的轰击("", 250, 50, 3, 0, SkillTag.不可洗炼),
+    法力风暴("", 0, 20, 3, 0),
+    魔法毁灭("", 100, 0, 10, 0),
     九转秘术("", 0, 0),
-    
-    法力侵蚀("43447", 0, 20, 3, 0, SkillTag.抗免疫),
-    破魔手("", 0, 20, 3, 0, SkillTag.抗免疫),
-    灵王的轰击("", 250, 50, 3, 0, SkillTag.抗免疫),
-    觉醒灵王的轰击("", 250, 50, 3, 0, SkillTag.不可洗炼, SkillTag.抗免疫),
-    法力风暴("", 0, 20, 3, 0, SkillTag.抗免疫),
-    魔法毁灭("", 100, 0, 10, 0, SkillTag.抗免疫),
-    寒冰触碰("", 250, 50, 3, 0, new int[] {50}, SkillTag.抗免疫),
-    
+
     大地之盾("80193", 0, SkillTag.控制, SkillTag.抗免疫, SkillTag.魔王无效),
     一闪("", 50, 0, SkillTag.控制, SkillTag.抗免疫, SkillTag.魔王无效),
     圣盾("56750", 0),
@@ -262,6 +265,7 @@ public enum SkillType {
     夺魂("", 0, 1, SkillTag.复活),
 
     镜像("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
+    虚梦("", 0, 0, SkillType.传送, SkillTag.召唤, SkillTag.不可洗炼),
     召唤王国战士("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
     召唤骷髅战士("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
     召唤邪龙护卫("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
@@ -281,7 +285,6 @@ public enum SkillType {
     召唤花族侍卫("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
     七十二变("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
     英灵降临("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
-    寒霜召唤("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
     星之所在("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
     灵龙轰咆("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
 
@@ -316,15 +319,7 @@ public enum SkillType {
     被插出五星("", 0, 1),
 
     自动扣血("", 0, 0, SkillTag.抗守护, SkillTag.不可洗炼),
-    未知("", 0, SkillTag.不可洗炼),
-	
-    // Merged Skills
-    凋零陷阱("", SkillType.凋零真言, 6, SkillType.陷阱, 3),
-    天怒("", SkillType.烈焰风暴, SkillType.天火),
-    闭月("", SkillType.祈福, 3, SkillType.圣母回声, 0),
-    虚梦("", SkillType.镜像, SkillType.传送),
-    觉醒白虎守护("", SkillType.月神的护佑, 7, SkillType.祈福, 3),
-    觉醒星之意志("", SkillType.灵魂消散, 0, SkillType.灵王的轰击, 7);
+    未知("", 0, SkillTag.不可洗炼);
 
     private String wikiId;
     private int initImpact;
@@ -333,10 +328,7 @@ public enum SkillType {
     private int incrImpact2;
     private int[] impact3;
     private HashSet <SkillTag> tags;
-	private SkillType attachedType1;
-	private int attachedLevel1;
-	private SkillType attachedType2;
-	private int attachedLevel2;
+    private SkillType attachedType;
 
     SkillType(String wikiId, int[] impact3, SkillTag ... tags) {
         this(wikiId, 0, 0, impact3, tags);
@@ -349,29 +341,20 @@ public enum SkillType {
     SkillType(String wikiId, int initImpact, int incrImpact, SkillTag ... tags) {
         this(wikiId, initImpact, incrImpact, 0, 0, tags);
     }
+    
+    SkillType(String wikiId, int initImpact, int incrImpact, SkillType attachedType, SkillTag ... tags) {
+        this(wikiId, initImpact, incrImpact, 0, 0, null, attachedType, tags);
+    }
 
     SkillType(String wikiId, int initImpact, int incrImpact, int[] impact3, SkillTag ... tags) {
-        this(wikiId, initImpact, incrImpact, 0, 0, impact3, tags);
+        this(wikiId, initImpact, incrImpact, 0, 0, impact3, null, tags);
     }
 
     SkillType(String wikiId, int initImpact, int incrImpact, int initImpact2, int incrImpact2, SkillTag ... tags) {
-        this(wikiId, initImpact, incrImpact, initImpact2, incrImpact2, null, tags);
+        this(wikiId, initImpact, incrImpact, initImpact2, incrImpact2, null, null, tags);
     }
 
-    SkillType(String wikiId, int initImpact, int incrImpact, int initImpact2, int incrImpact2, int[] impact3, SkillTag ... tags) {
-        this(wikiId, initImpact, incrImpact, initImpact2, incrImpact2, impact3, null, -1, null, -1, tags);
-    }
-    
-    SkillType(String wikiId, SkillType attachedType1, SkillType attachedType2, SkillTag ... tags) {
-        this(wikiId, 0, 0, 0, 0, null, attachedType1, -1, attachedType2, -1, tags);
-    }
-    
-    SkillType(String wikiId, SkillType attachedType1, int attachedLevel1, SkillType attachedType2, int attachedLevel2, SkillTag ... tags) {
-        this(wikiId, 0, 0, 0, 0, null, attachedType1, attachedLevel1, attachedType2, attachedLevel2, tags);
-    }
-    
-    SkillType(String wikiId, int initImpact, int incrImpact, int initImpact2, int incrImpact2, int[] impact3,
-    		SkillType attachedType1, int attachedLevel1, SkillType attachedType2, int attachedLevel2, SkillTag ... tags) {
+    SkillType(String wikiId, int initImpact, int incrImpact, int initImpact2, int incrImpact2, int[] impact3, SkillType attachedType, SkillTag ... tags) {
         this.wikiId = wikiId;
         this.initImpact = initImpact;
         this.incrImpact = incrImpact;
@@ -380,10 +363,7 @@ public enum SkillType {
         if (impact3 != null) {
             this.impact3 = Arrays.copyOf(impact3, impact3.length);
         }
-        this.attachedType1 = attachedType1;
-        this.attachedLevel1 = attachedLevel1;
-        this.attachedType2 = attachedType2;
-        this.attachedLevel2 = attachedLevel2;
+        this.attachedType = attachedType;
         this.tags = new HashSet <SkillTag> ();
         for (SkillTag tag : tags) {
             this.tags.add(tag);
@@ -408,11 +388,8 @@ public enum SkillType {
     }
 
     public int getImpact3(int level) {
-        if (this.impact3 == null || level < 0) {
+        if (this.impact3 == null || level < 0 || level >= this.impact3.length) {
             return 0;
-        }
-        if (level >= this.impact3.length) {
-        	return this.impact3[this.impact3.length];
         }
         return this.impact3[level];
     }
@@ -425,20 +402,7 @@ public enum SkillType {
         return this.impact3 != null || this.incrImpact != 0 || this.initImpact != 0;
     }
 
-	public SkillType getAttachedType1() {
-		return attachedType1;
-	}
-
-	public int getAttachedLevel1() {
-		return attachedLevel1;
-	}
-
-	public SkillType getAttachedType2() {
-		return attachedType2;
-	}
-
-	public int getAttachedLevel2() {
-		return attachedLevel2;
-	}
-
+    public SkillType getAttachedType() {
+        return this.attachedType;
+    }
 }
