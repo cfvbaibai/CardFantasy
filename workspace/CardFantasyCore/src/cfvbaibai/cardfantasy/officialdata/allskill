@@ -26880,10 +26880,10 @@
         "LanchCondition": 0,
         "LanchConditionValue": 0,
         "AffectType": 164,
-        "AffectValue": 300,
+        "AffectValue": 650,
         "AffectValue2": 0,
         "SkillCategory": 5,
-        "Desc": "受到伤害时减少300点伤害。"
+        "Desc": "受到伤害时减少650点伤害。"
       },
       {
         "SkillId": 2191,
@@ -26940,13 +26940,13 @@
       {
         "SkillId": 2196,
         "Name": "魔龙吐息",
-        "Type": 136,
-        "LanchType": 5,
+        "Type": 18,
+        "LanchType": 4,
         "LanchCondition": 0,
         "LanchConditionValue": 0,
-        "AffectType": 122,
-        "AffectValue": "2229_1547",
-        "AffectValue2": 0,
+        "AffectType": 166,
+        "AffectValue": 1,
+        "AffectValue2": "500_1000_500",
         "SkillCategory": 2,
         "Desc": "来自魔龙的怒火，使敌方1张卡牌受到500~1000点伤害，使其在每次行动结束后丢失500点生命值。"
       },
@@ -26972,9 +26972,9 @@
         "LanchConditionValue": 0,
         "AffectType": 158,
         "AffectValue": "1000_6_3",
-        "AffectValue2": "2219_2235",
+        "AffectValue2": "2265_2235",
         "SkillCategory": 2,
-        "Desc": "当场上带有【不动】的卡牌数量大于或等于3时，将敌方所有带有不动技能的卡牌送回至等待区，并增加1CD，如果等待区已满则回到手牌区；小于3时，对敌方场上随机3个单位造成450点伤害，如果目标单位拥有免疫或者法力反射技能，则造成300%的伤害。"
+        "Desc": "当场上带有【不动】的卡牌数量大于或等于3时，将敌方所有带有不动技能的卡牌送回至牌堆；小于3时，对敌方场上随机3个单位造成450点伤害，如果目标单位拥有免疫或者法力反射技能，则造成300%的伤害。"
       },
       {
         "SkillId": 2221,
@@ -27351,7 +27351,7 @@
         "AffectValue": "3_75",
         "AffectValue2": "250_300",
         "SkillCategory": 2,
-        "Desc": "永恒之枪划越天际化作闪电，对敌方随机3个单位造成250的伤害并且有75%的概率造成无法攻击，效果持续1个回合，如果目标单位拥有免疫或者法力反射技能，则造成300%的伤害。"
+        "Desc": "永恒之枪化作闪电划越天际，对敌方随机3个单位造成250的伤害并且有75%的概率造成无法攻击，效果持续1个回合，如果目标单位拥有免疫或者法力反射技能，则造成300%的伤害。"
       },
       {
         "SkillId": 2249,
@@ -27364,7 +27364,7 @@
         "AffectValue": "3_75",
         "AffectValue2": "300_300",
         "SkillCategory": 2,
-        "Desc": "永恒之枪划越天际化作闪电，对敌方随机3个单位造成300的伤害并且有75%的概率造成无法攻击，效果持续1个回合，如果目标单位拥有免疫或者法力反射技能，则造成300%的伤害。"
+        "Desc": "永恒之枪化作闪电划越天际，对敌方随机3个单位造成300的伤害并且有75%的概率造成无法攻击，效果持续1个回合，如果目标单位拥有免疫或者法力反射技能，则造成300%的伤害。"
       },
       {
         "SkillId": 2250,
@@ -27377,7 +27377,7 @@
         "AffectValue": "3_75",
         "AffectValue2": "350_300",
         "SkillCategory": 2,
-        "Desc": "永恒之枪划越天际化作闪电，对敌方随机3个单位造成350的伤害并且有75%的概率造成无法攻击，效果持续1个回合，如果目标单位拥有免疫或者法力反射技能，则造成300%的伤害。"
+        "Desc": "永恒之枪化作闪电划越天际，对敌方随机3个单位造成350的伤害并且有75%的概率造成无法攻击，效果持续1个回合，如果目标单位拥有免疫或者法力反射技能，则造成300%的伤害。"
       },
       {
         "SkillId": 2251,
@@ -27390,7 +27390,7 @@
         "AffectValue": "3_75",
         "AffectValue2": "400_300",
         "SkillCategory": 2,
-        "Desc": "永恒之枪划越天际化作闪电，对敌方随机3个单位造成400的伤害并且有75%的概率造成无法攻击，效果持续1个回合，如果目标单位拥有免疫或者法力反射技能，则造成300%的伤害。"
+        "Desc": "永恒之枪化作闪电划越天际，对敌方随机3个单位造成400的伤害并且有75%的概率造成无法攻击，效果持续1个回合，如果目标单位拥有免疫或者法力反射技能，则造成300%的伤害。"
       },
       {
         "SkillId": 2252,
@@ -27403,7 +27403,7 @@
         "AffectValue": "3_75",
         "AffectValue2": "450_300",
         "SkillCategory": 2,
-        "Desc": "永恒之枪划越天际化作闪电，对敌方随机3个单位造成450的伤害并且有75%的概率造成无法攻击，效果持续1个回合，如果目标单位拥有免疫或者法力反射技能，则造成300%的伤害。"
+        "Desc": "永恒之枪化作闪电划越天际，对敌方随机3个单位造成450的伤害并且有75%的概率造成无法攻击，效果持续1个回合，如果目标单位拥有免疫或者法力反射技能，则造成300%的伤害。"
       },
       {
         "SkillId": 2253,
@@ -27416,7 +27416,7 @@
         "AffectValue": "3_75",
         "AffectValue2": "500_300",
         "SkillCategory": 2,
-        "Desc": "永恒之枪划越天际化作闪电，对敌方随机3个单位造成500的伤害并且有75%的概率造成无法攻击，效果持续1个回合，如果目标单位拥有免疫或者法力反射技能，则造成300%的伤害。"
+        "Desc": "永恒之枪化作闪电划越天际，对敌方随机3个单位造成500的伤害并且有75%的概率造成无法攻击，效果持续1个回合，如果目标单位拥有免疫或者法力反射技能，则造成300%的伤害。"
       },
       {
         "SkillId": 2254,
@@ -27429,7 +27429,7 @@
         "AffectValue": "3_75",
         "AffectValue2": "550_300",
         "SkillCategory": 2,
-        "Desc": "永恒之枪划越天际化作闪电，对敌方随机3个单位造成550的伤害并且有75%的概率造成无法攻击，效果持续1个回合，如果目标单位拥有免疫或者法力反射技能，则造成300%的伤害。"
+        "Desc": "永恒之枪化作闪电划越天际，对敌方随机3个单位造成550的伤害并且有75%的概率造成无法攻击，效果持续1个回合，如果目标单位拥有免疫或者法力反射技能，则造成300%的伤害。"
       },
       {
         "SkillId": 2255,
@@ -27442,7 +27442,7 @@
         "AffectValue": "3_75",
         "AffectValue2": "600_300",
         "SkillCategory": 2,
-        "Desc": "永恒之枪划越天际化作闪电，对敌方随机3个单位造成600的伤害并且有75%的概率造成无法攻击，效果持续1个回合，如果目标单位拥有免疫或者法力反射技能，则造成300%的伤害。"
+        "Desc": "永恒之枪化作闪电划越天际，对敌方随机3个单位造成600的伤害并且有75%的概率造成无法攻击，效果持续1个回合，如果目标单位拥有免疫或者法力反射技能，则造成300%的伤害。"
       },
       {
         "SkillId": 2256,
@@ -27455,7 +27455,7 @@
         "AffectValue": "3_75",
         "AffectValue2": "650_300",
         "SkillCategory": 2,
-        "Desc": "永恒之枪划越天际化作闪电，对敌方随机3个单位造成650的伤害并且有75%的概率造成无法攻击，效果持续1个回合，如果目标单位拥有免疫或者法力反射技能，则造成300%的伤害。"
+        "Desc": "永恒之枪化作闪电划越天际，对敌方随机3个单位造成650的伤害并且有75%的概率造成无法攻击，效果持续1个回合，如果目标单位拥有免疫或者法力反射技能，则造成300%的伤害。"
       },
       {
         "SkillId": 2257,
@@ -27468,7 +27468,7 @@
         "AffectValue": "3_75",
         "AffectValue2": "700_300",
         "SkillCategory": 2,
-        "Desc": "永恒之枪划越天际化作闪电，对敌方随机3个单位造成700的伤害并且有75%的概率造成无法攻击，效果持续1个回合，如果目标单位拥有免疫或者法力反射技能，则造成300%的伤害。"
+        "Desc": "永恒之枪化作闪电划越天际，对敌方随机3个单位造成700的伤害并且有75%的概率造成无法攻击，效果持续1个回合，如果目标单位拥有免疫或者法力反射技能，则造成300%的伤害。"
       },
       {
         "SkillId": 2258,
@@ -27482,6 +27482,253 @@
         "AffectValue2": 0,
         "SkillCategory": 3,
         "Desc": "魔卡幻想祝大家情人节快乐！有情人终成眷属！"
+      },
+      {
+        "SkillId": 2246,
+        "Name": "舌战群儒",
+        "Type": 132,
+        "LanchType": 10,
+        "LanchCondition": 0,
+        "LanchConditionValue": 0,
+        "AffectType": 157,
+        "AffectValue": 0,
+        "AffectValue2": 70,
+        "SkillCategory": 2,
+        "Desc": "吾视曹操百万之众，如群蚁耳！卡牌上场时，对敌方所有卡牌使用精神狂乱，使他攻击自身两边的同伴，造成攻击力70%的伤害。"
+      },
+      {
+        "SkillId": 2260,
+        "Name": "武侯",
+        "Type": 126,
+        "LanchType": 4,
+        "LanchCondition": 0,
+        "LanchConditionValue": 0,
+        "AffectType": 122,
+        "AffectValue": "810_413",
+        "AffectValue2": 0,
+        "SkillCategory": 2,
+        "Desc": "鞠躬尽瘁，死而后已。(1)当自己英雄受到伤害时，替代英雄扣除生命值。(2)死亡时有65%的概率进入手牌，如果手牌已满则进入牌堆。"
+      },
+      {
+        "SkillId": 2267,
+        "Name": "铁壁1",
+        "Type": 91,
+        "LanchType": 14,
+        "LanchCondition": 0,
+        "LanchConditionValue": 0,
+        "AffectType": 168,
+        "AffectValue": 0,
+        "AffectValue2": 10,
+        "SkillCategory": 3,
+        "Desc": "卡牌在场上时,减少10%英雄受到的伤害。"
+      },
+      {
+        "SkillId": 2268,
+        "Name": "铁壁2",
+        "Type": 91,
+        "LanchType": 14,
+        "LanchCondition": 0,
+        "LanchConditionValue": 0,
+        "AffectType": 168,
+        "AffectValue": 0,
+        "AffectValue2": 20,
+        "SkillCategory": 3,
+        "Desc": "卡牌在场上时,减少20%英雄受到的伤害。"
+      },
+      {
+        "SkillId": 2269,
+        "Name": "铁壁3",
+        "Type": 91,
+        "LanchType": 14,
+        "LanchCondition": 0,
+        "LanchConditionValue": 0,
+        "AffectType": 168,
+        "AffectValue": 0,
+        "AffectValue2": 30,
+        "SkillCategory": 3,
+        "Desc": "卡牌在场上时,减少30%英雄受到的伤害。"
+      },
+      {
+        "SkillId": 2270,
+        "Name": "铁壁4",
+        "Type": 91,
+        "LanchType": 14,
+        "LanchCondition": 0,
+        "LanchConditionValue": 0,
+        "AffectType": 168,
+        "AffectValue": 0,
+        "AffectValue2": 40,
+        "SkillCategory": 3,
+        "Desc": "卡牌在场上时,减少40%英雄受到的伤害。"
+      },
+      {
+        "SkillId": 2271,
+        "Name": "铁壁5",
+        "Type": 91,
+        "LanchType": 14,
+        "LanchCondition": 0,
+        "LanchConditionValue": 0,
+        "AffectType": 168,
+        "AffectValue": 0,
+        "AffectValue2": 50,
+        "SkillCategory": 3,
+        "Desc": "卡牌在场上时,减少50%英雄受到的伤害。"
+      },
+      {
+        "SkillId": 2272,
+        "Name": "铁壁6",
+        "Type": 91,
+        "LanchType": 14,
+        "LanchCondition": 0,
+        "LanchConditionValue": 0,
+        "AffectType": 168,
+        "AffectValue": 0,
+        "AffectValue2": 60,
+        "SkillCategory": 3,
+        "Desc": "卡牌在场上时,减少60%英雄受到的伤害。"
+      },
+      {
+        "SkillId": 2273,
+        "Name": "铁壁7",
+        "Type": 91,
+        "LanchType": 14,
+        "LanchCondition": 0,
+        "LanchConditionValue": 0,
+        "AffectType": 168,
+        "AffectValue": 0,
+        "AffectValue2": 70,
+        "SkillCategory": 3,
+        "Desc": "卡牌在场上时,减少70%英雄受到的伤害。"
+      },
+      {
+        "SkillId": 2274,
+        "Name": "铁壁8",
+        "Type": 91,
+        "LanchType": 14,
+        "LanchCondition": 0,
+        "LanchConditionValue": 0,
+        "AffectType": 168,
+        "AffectValue": 0,
+        "AffectValue2": 80,
+        "SkillCategory": 3,
+        "Desc": "卡牌在场上时,减少80%英雄受到的伤害。"
+      },
+      {
+        "SkillId": 2275,
+        "Name": "铁壁9",
+        "Type": 91,
+        "LanchType": 14,
+        "LanchCondition": 0,
+        "LanchConditionValue": 0,
+        "AffectType": 168,
+        "AffectValue": 0,
+        "AffectValue2": 90,
+        "SkillCategory": 3,
+        "Desc": "卡牌在场上时,减少90%英雄受到的伤害。"
+      },
+      {
+        "SkillId": 2276,
+        "Name": "铁壁10",
+        "Type": 91,
+        "LanchType": 14,
+        "LanchCondition": 0,
+        "LanchConditionValue": 0,
+        "AffectType": 168,
+        "AffectValue": 0,
+        "AffectValue2": 50,
+        "SkillCategory": 3,
+        "Desc": "卡牌在场上时,减少100%英雄受到的伤害。"
+      },
+      {
+        "SkillId": 2264,
+        "Name": "结界立场",
+        "Type": 136,
+        "LanchType": 5,
+        "LanchCondition": 0,
+        "LanchConditionValue": 0,
+        "AffectType": 122,
+        "AffectValue": "1652_689",
+        "AffectValue2": 0,
+        "SkillCategory": 3,
+        "Desc": "(1)免疫沉默效果。(2)不受到任何技能造成的伤害及影响。"
+      },
+      {
+        "SkillId": 2265,
+        "Name": "地裂",
+        "Type": 67,
+        "LanchType": 4,
+        "LanchCondition": 0,
+        "LanchConditionValue": 0,
+        "AffectType": 169,
+        "AffectValue": 2,
+        "AffectValue2": 0,
+        "SkillCategory": 2,
+        "Desc": "将敌方场上所有带有不动技能的卡牌送回至卡组。"
+      },
+      {
+        "SkillId": 2299,
+        "Name": "制衡",
+        "Type": 136,
+        "LanchType": 5,
+        "LanchCondition": 0,
+        "LanchConditionValue": 0,
+        "AffectType": 122,
+        "AffectValue": "828_1116_1116",
+        "AffectValue2": 0,
+        "SkillCategory": 2,
+        "Desc": "生子当如孙仲谋。(1)卡牌上场时，随机选择1张场上己方卡牌下场，使自己的攻击力和生命值提高100%。(2)卡牌上场时，施放2次【复活】。"
+      },
+      {
+        "SkillId": 2300,
+        "Name": "反击屏障",
+        "Type": 7,
+        "LanchType": 3,
+        "LanchCondition": 3,
+        "LanchConditionValue": 0,
+        "AffectType": 3,
+        "AffectValue": 0,
+        "AffectValue2": 200,
+        "SkillCategory": 1,
+        "Desc": "被物理攻击后，将受到的物理伤害的200%反弹给攻击者。"
+      },
+      {
+        "SkillId": 6004,
+        "Name": "魔化万能卡牌",
+        "Type": 92,
+        "LanchType": 5,
+        "LanchCondition": 0,
+        "LanchConditionValue": 0,
+        "AffectType": 55,
+        "AffectValue": 0,
+        "AffectValue2": 0,
+        "SkillCategory": 3,
+        "Desc": "魔化万能卡可以作为材料，供已有的其他魔族卡牌进化或洗练使用。（该卡牌不能被分解）"
+      },
+      {
+        "SkillId": 2308,
+        "Name": "[降临]万兽奔腾",
+        "Type": 125,
+        "LanchType": 10,
+        "LanchCondition": 0,
+        "LanchConditionValue": 0,
+        "AffectType": 101,
+        "AffectValue": "174_30_323_90_89_190_211_263_370_213_343_123_447_344",
+        "AffectValue2": 2,
+        "SkillCategory": 2,
+        "Desc": "随机召唤2张野兽卡牌上场战斗（召唤出的卡牌不会进入墓地，牌堆，手牌），如果已经在场上召唤出所有可召唤卡牌时，则不发动召唤。"
+      },
+      {
+        "SkillId": 2309,
+        "Name": "[死契]万兽奔腾",
+        "Type": 125,
+        "LanchType": 9,
+        "LanchCondition": 0,
+        "LanchConditionValue": 0,
+        "AffectType": 101,
+        "AffectValue": "174_30_323_90_89_190_211_263_370_213_343_123_447_344",
+        "AffectValue2": 2,
+        "SkillCategory": 2,
+        "Desc": "随机召唤2张野兽卡牌上场战斗（召唤出的卡牌不会进入墓地，牌堆，手牌），如果已经在场上召唤出所有可召唤卡牌时，则不发动召唤。"
       }
     ]
   },
@@ -27489,7 +27736,7 @@
   "message": null,
   "type": null,
   "version": {
-    "http": "1487314129",
+    "http": "1488435445",
     "stop": "",
     "appversion": "version_1",
     "appurl": "ios://xxx",
