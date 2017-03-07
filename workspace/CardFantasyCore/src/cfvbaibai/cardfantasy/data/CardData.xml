@@ -2283,7 +2283,7 @@
         <Skill type="全体阻碍" level="1" unlock="5" death="true" />
         <Skill type="不屈" level="0" unlock="10" />
     </Card>
-    <Card id="3521" name="七彩之影" wikiId="" race="3" speed="3" star="5" cost="17" incrCost="2" at="1770" hp="355" incrAT="33" incrHP="32">
+    <Card id="3521" name="七彩之影" wikiId="" race="蛮荒" speed="3" star="5" cost="17" incrCost="2" at="1770" hp="355" incrAT="33" incrHP="32">
         <Skill type="月神的护佑" level="6" unlock="0" />
         <Skill type="蛮荒守护" level="6" unlock="5" />
         <Skill type="武形秘术" level="0" unlock="10" />
@@ -2464,12 +2464,12 @@
         <Skill type="觉醒狼顾" level="0" unlock="10" />
     </Card>
     <Card id="3554" name="银喵炼金士" wikiId="" race="蛮荒" speed="2" star="5" cost="18" incrCost="2" at="1750" hp="360" incrAT="35" incrHP="38">
-        <Skill type="炼金失败!" level="0" unlock="0" />
+        <Skill type="炼金失败" level="0" unlock="0" />
         <Skill type="全领域沉默" level="0" unlock="5" />
         <Skill type="封印" level="0" unlock="10" summon="true" />
     </Card>
     <Card id="3555" name="冰原女王" wikiId="" race="蛮荒" speed="4" star="5" cost="18" incrCost="3" at="1730" hp="390" incrAT="39" incrHP="44">
-        <Skill type="LET IT GO" level="0" unlock="0" />
+        <Skill type="LETITGO" level="0" unlock="0" />
         <Skill type="真理导言" level="0" unlock="5" />
         <Skill type="神魔之甲" level="0" unlock="10" />
     </Card>
