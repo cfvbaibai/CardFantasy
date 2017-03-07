@@ -9,6 +9,20 @@
                             <td>地图</td>
                             <td>
                                 <select name="map-id" id="map-id" class="map-select" data-mini="true" data-native-menu="true">
+                                    <optgroup label="21-凛风高原">
+                                        <option value="21-1" selected="selected">21-1 风雪苔原</option>
+                                        <option value="21-2">21-2 精钢城基础层</option>
+                                        <option value="21-3">21-3 精钢城上层</option>
+                                        <option value="21-4">21-4 破败之路</option>
+                                        <option value="21-5">21-5 雾霭灵峰</option>
+                                        <option value="21-6">21-6 暮陨广场</option>
+                                        <option value="21-7">21-7 白翼之宫</option>
+                                        <option value="21-8">21-8 梦境之森</option>
+                                        <option value="21-9">21-9 秽邪小径</option>
+                                        <option value="21-10">21-10 黑翼之宫废墟</option>
+                                        <option value="21-11">21-11 魔龙巢穴</option>
+                                        <option value="21-H">21-H 破碎大厅</option>
+                                    </optgroup>
                                     <optgroup label="20-赤月之下">
                                         <option value="20-1" selected="selected">20-1 静寂小镇</option>
                                         <option value="20-2">20-2 城镇大桥</option>
