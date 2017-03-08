@@ -3699,6 +3699,8 @@
         <Skill type="沉默" level="0" unlock="0" />
         <Skill type="反射装甲" level="0" unlock="0" />
     </Card>
+    <Card id="7508" name="残血王国大兵" wikiId="" race="王国" speed="4" star="5" cost="0" incrCost="0" at="0" hp="1" incrAT="0" incrHP="0">
+    </Card>
 
     <Card id="8201" name="兽骨" wikiId="7001" race="物品" speed="6" star="2" cost="99" incrCost="0" at="1" hp="1" incrAT="0" incrHP="0">
       <Skill type="物品技能" level="0" unlock="0" />

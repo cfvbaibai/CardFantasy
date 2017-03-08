@@ -936,7 +936,8 @@ public class SpecialStatusTest extends SkillValidationTest {
         context.startGame();
         context.getStage().setActivePlayerNumber(1);
         
-        random.addNextPicks(1); // 死契复活占位符+降临森林沐浴
+        //这里的NextPick是指从墓地里拉出的卡的index，墓地里只有一张卡，所以应该是0
+        random.addNextPicks(0); // 死契复活占位符+降临森林沐浴
         context.proceedOneRound();
         Assert.assertEquals(Race.FOREST, c秘银巨石像1.getRace());
         // 秘银巨石像2和3结束行动的同时解除沐浴状态
