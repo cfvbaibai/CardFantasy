@@ -22,6 +22,7 @@ public enum SkillType {
      * 总体伤害值=基础攻击力+提升伤害+额外伤害后，小数点向下取整。
      */
     献祭("31144", 20, 10, SkillTag.永久, SkillTag.基础攻击加成),
+    制衡("", 100, 0, SkillTag.永久, SkillTag.复活,SkillTag.基础攻击加成),
     侵蚀("", 100, 0, SkillTag.永久, SkillTag.基础攻击加成),
     群攻提升("31754", 15, SkillTag.基础攻击加成, SkillTag.抗削弱),
     狂热("30880", 10, SkillTag.永久, SkillTag.基础攻击加成),
@@ -132,6 +133,7 @@ public enum SkillType {
 
     法力反射("30929", 30),
     反射装甲("", 0, SkillTag.即死, SkillTag.抗免疫, SkillTag.魔王无效),
+    LETITGO("", 0, SkillTag.即死, SkillTag.抗免疫, SkillTag.魔王无效),
     镜面装甲("", 210, 0, SkillTag.抗沉默),
     镜面("", 0, SkillTag.抗沉默),
     真理导言("", 6, 0, SkillTag.抗沉默),
@@ -170,6 +172,7 @@ public enum SkillType {
     洪荒之术("", 55, 0, SkillTag.不动),
     王之守护("", 0, SkillTag.不动, SkillTag.守护),
     传送("31331", 0, SkillTag.即死),
+    代表月亮消灭你("", 0,SkillTag.即死),
     弱点攻击("30881", 0),
     灵巧("57020", 0),
     灵魂禁锢("", 0),
@@ -253,6 +256,7 @@ public enum SkillType {
     致盲("", 1, 1),
     魔力法阵("", 15, 15, SkillTag.魔王无效),
     魔力印记("", 15, 15),
+    东风("",175,0),
 
     燕返("", 0, 0),
     斩杀("", 50, 0),
@@ -291,6 +295,7 @@ public enum SkillType {
     无尽梦魇("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
     百鬼夜行("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
     武形降临("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
+    万兽奔腾("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
     
     圣光洗礼("", 0, 0, SkillTag.抗免疫, SkillTag.不可洗炼, SkillTag.魔王无效),
     森林沐浴("", 1, 0, SkillTag.抗免疫, SkillTag.不可洗炼, SkillTag.魔王无效),
@@ -346,23 +351,18 @@ public enum SkillType {
 	// 待更新列表：
     
 	// [降临]封印
-	LETITGO("", 0),
-	万兽奔腾("", 0),
 	万蛛之后("", 0),
 	三个首都("", 0),
 	三姐的新年贺词("", 0),
-	东风("", 0),
 	丰盛的晚餐("", 0),
 	二姐的新年贺词("", 0),
 	五星荣耀("", 0),
-	代表月亮消灭你("", 0),
 	众神之神("", 0),
 	傲慢惩罚者("", 0),
 	光灿侍女("", 0),
 	兽牙("", 0),
 	兽骨("", 0),
 	冰霜巨人("", 0),
-	制衡("", 0),
 	化学风暴("", 0),
 	华伦收藏家("", 0),
 	卖萌("", 0),
