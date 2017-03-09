@@ -36,6 +36,7 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2017-03-09: <x>绯弹亚丝娜</x>更新了一些东西，不过我也搞不大清楚她更新了啥，大家自己试吧...</li>
                     <li>2016-12-30: (本次代码由<x>绯弹亚丝娜</x>提供)<ul>
                         <li>添加新卡<cf:c>三国英魂·曹操</cf:c><cf:c>红丝绒公主</cf:c></li>
                         <li>添加新技能【虚梦】</li>
