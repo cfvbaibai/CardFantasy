@@ -61,7 +61,7 @@ public enum SkillType {
     虚弱("57000", 0, SkillTag.额外攻击加成, SkillTag.抗免疫, SkillTag.抗不屈, SkillTag.魔王无效),
     战争怒吼("57022", 0, SkillTag.额外攻击加成, SkillTag.抗免疫, SkillTag.抗不屈, SkillTag.魔王无效),
 
-    /* HP 上限调整技能 */
+    /* HP 上限调整技能  */
     王国守护("30949", 50,SkillTag.抗毒刃),
     蛮荒守护("31147", 50,SkillTag.抗毒刃), 
     地狱守护("31143", 50,SkillTag.抗毒刃),
