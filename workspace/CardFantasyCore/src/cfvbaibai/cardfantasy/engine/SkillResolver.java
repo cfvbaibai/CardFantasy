@@ -595,7 +595,9 @@ public class SkillResolver {
                             result.setAttackable(false);
                             return result;
                         }
-                    } else if (blockSkillUseInfo.getType() == SkillType.脱困 ||
+                    } 
+                    // 神威既包含脱困又包含不动，还有技能既包含不动又抗沉默的，所以需要将if分开
+                    if (blockSkillUseInfo.getType() == SkillType.脱困 ||
                                blockSkillUseInfo.getType() == SkillType.神威 ||
                                blockSkillUseInfo.getType() == SkillType.冰神附体 ||
                                blockSkillUseInfo.getType() == SkillType.神之守护) {
@@ -603,12 +605,14 @@ public class SkillResolver {
                             result.setAttackable(false);
                             return result;
                         }
-                    } else if (blockSkillUseInfo.getType().containsTag(SkillTag.不动)) {
+                    } 
+                    if (blockSkillUseInfo.getType().containsTag(SkillTag.不动)) {
                         if (Immobility.isSkillBlocked(this, blockSkillUseInfo.getSkill(), attackSkill, attacker, defender)) {
                             result.setAttackable(false);
                             return result;
                         }
-                    } else if (blockSkillUseInfo.getType().containsTag(SkillTag.抗沉默)) {
+                    } 
+                    if (blockSkillUseInfo.getType().containsTag(SkillTag.抗沉默)) {
                         if (attackSkill.getType().containsTag(SkillTag.沉默)) {
                             this.getStage().getUI().useSkill(defender, blockSkillUseInfo.getSkill(), true);
                             this.getStage().getUI().blockSkill(attacker, defender, blockSkillUseInfo.getSkill(), attackSkill);
