@@ -893,7 +893,7 @@
     <Card id="1568" name="情人节玫瑰" wikiId="" race="王国" speed="6" star="5" cost="99" incrCost="0" at="1" hp="1" incrAT="0" incrHP="0">
         <Skill type="物品技能" level="0" unlock="0" />
     </Card>
-    <Card id="1569" name="三国英魂·卧龙" wikiId="" race="王国" speed="4" star="5" cost="19" incrCost="2" at="340" hp="1680" incrAT="45" incrHP="35">
+    <Card id="1569" name="三国英魂卧龙" wikiId="" race="王国" speed="4" star="5" cost="19" incrCost="2" at="340" hp="1680" incrAT="45" incrHP="35">
         <Skill type="东风" level="0" unlock="0" />
         <Skill type="火攻" level="0" unlock="5" />
         <Skill type="空城" level="0" unlock="10" />
@@ -1681,6 +1681,16 @@
     <Card id="2555" name="梦·大地之母" wikiId="" race="森林" speed="6" star="5" cost="99" incrCost="0" at="1" hp="1" incrAT="0" incrHP="0">
         <Skill type="物品技能" level="0" unlock="0" />
     </Card>
+    <Card id="2556" name="三国英魂仲谋" wikiId="" race="森林" speed="3" star="5" cost="19" incrCost="2" at="370" hp="1670" incrAT="37" incrHP="29">
+    <Skill type="寒冰触碰" level="6" unlock="0" />
+    <Skill type="水流护甲" level="7" unlock="5" />
+    <Skill type="制衡" level="0" unlock="10" />
+    </Card>
+    <Card id="2557" name="风之樱女" wikiId="" race="森林" speed="3" star="5" cost="18" incrCost="2" at="350" hp="1620" incrAT="44" incrHP="45">
+        <Skill type="仙子召唤" level="0" unlock="0" summon="true" />
+        <Skill type="祈福" level="3" unlock="5" />
+        <Skill type="王之守护" level="0" unlock="10" />
+    </Card>
 
     <!-- 蛮荒  -->
     <Card id="3101" name="穴居人奴隶" wikiId="31006" race="蛮荒" speed="2" star="1" cost="4" incrCost="2" at="90" hp="390" incrAT="18" incrHP="11">
@@ -2458,7 +2468,7 @@
         <Skill type="连锁攻击" level="8" unlock="5" />
         <Skill type="鹰眼" level="0" unlock="10" />
     </Card>
-    <Card id="3553" name="三国英魂·仲达" wikiId="" race="蛮荒" speed="3" star="5" cost="19" incrCost="2" at="380" hp="1550" incrAT="48" incrHP="31">
+    <Card id="3553" name="三国英魂仲达" wikiId="" race="蛮荒" speed="3" star="5" cost="19" incrCost="2" at="380" hp="1550" incrAT="48" incrHP="31">
         <Skill type="灵魂消散" level="0" unlock="0" />
         <Skill type="鬼才" level="0" unlock="5" />
         <Skill type="觉醒狼顾" level="0" unlock="10" />
@@ -2497,6 +2507,7 @@
     <Card id="3563" name="梦·邪龙之神" wikiId="" race="蛮荒" speed="6" star="5" cost="99" incrCost="0" at="1" hp="1" incrAT="0" incrHP="0">
         <Skill type="物品技能" level="0" unlock="0" />
     </Card>
+
     
     <!-- 地狱 -->
     <Card id="4101" name="恶魔小鬼" wikiId="31036" race="地狱" speed="2" star="1" cost="3" incrCost="2" at="80" hp="270" incrAT="19" incrHP="6">
@@ -3295,7 +3306,7 @@
     </Card>
     <Card id="4560" name="蛇夫座" wikiId="" race="地狱" speed="3" star="5" cost="19" incrCost="2" at="410" hp="1670" incrAT="50" incrHP="31">
         <Skill type="觉醒星之意志" level="0" unlock="0" />
-        <Skill type="涅槃" level="0" unlock="5" />
+        <Skill type="涅盘" level="0" unlock="5" />
         <Skill type="毒杀" level="0" unlock="10" />
     </Card>
     <Card id="4561" name="精灵之若水" wikiId="" race="地狱" speed="6" star="3" cost="99" incrCost="0" at="1" hp="1" incrAT="0" incrHP="0">
@@ -3312,6 +3323,11 @@
     </Card>
     <Card id="4565" name="梦·深渊影魔" wikiId="" race="地狱" speed="6" star="5" cost="99" incrCost="0" at="1" hp="1" incrAT="0" incrHP="0">
         <Skill type="物品技能" level="0" unlock="0" />
+    </Card>
+    <Card id="4566" name="三国英魂孔明" wikiId="" race="地狱" speed="2" star="5" cost="19" incrCost="2" at="370" hp="1570" incrAT="47" incrHP="31">
+        <Skill type="全体沉默" level="0" unlock="0"  summon="true"/>
+        <Skill type="舌战群儒" level="0" unlock="5" />
+        <Skill type="武侯" level="0" unlock="10" />
     </Card>
 
     <!-- 魔神 -->
