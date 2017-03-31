@@ -893,7 +893,7 @@
     <Card id="1568" name="情人节玫瑰" wikiId="" race="王国" speed="6" star="5" cost="99" incrCost="0" at="1" hp="1" incrAT="0" incrHP="0">
         <Skill type="物品技能" level="0" unlock="0" />
     </Card>
-    <Card id="1569" name="三国英魂卧龙" wikiId="" race="王国" speed="4" star="5" cost="19" incrCost="2" at="340" hp="1680" incrAT="45" incrHP="35">
+    <Card id="1569" name="三国英魂·卧龙" wikiId="" race="王国" speed="4" star="5" cost="19" incrCost="2" at="340" hp="1680" incrAT="45" incrHP="35">
         <Skill type="东风" level="0" unlock="0" />
         <Skill type="火攻" level="0" unlock="5" />
         <Skill type="空城" level="0" unlock="10" />
@@ -1681,7 +1681,7 @@
     <Card id="2555" name="梦·大地之母" wikiId="" race="森林" speed="6" star="5" cost="99" incrCost="0" at="1" hp="1" incrAT="0" incrHP="0">
         <Skill type="物品技能" level="0" unlock="0" />
     </Card>
-    <Card id="2556" name="三国英魂仲谋" wikiId="" race="森林" speed="3" star="5" cost="19" incrCost="2" at="370" hp="1670" incrAT="37" incrHP="29">
+    <Card id="2556" name="三国英魂·仲谋" wikiId="" race="森林" speed="3" star="5" cost="19" incrCost="2" at="370" hp="1670" incrAT="37" incrHP="29">
     <Skill type="寒冰触碰" level="6" unlock="0" />
     <Skill type="水流护甲" level="7" unlock="5" />
     <Skill type="制衡" level="0" unlock="10" />
@@ -2468,7 +2468,7 @@
         <Skill type="连锁攻击" level="8" unlock="5" />
         <Skill type="鹰眼" level="0" unlock="10" />
     </Card>
-    <Card id="3553" name="三国英魂仲达" wikiId="" race="蛮荒" speed="3" star="5" cost="19" incrCost="2" at="380" hp="1550" incrAT="48" incrHP="31">
+    <Card id="3553" name="三国英魂·仲达" wikiId="" race="蛮荒" speed="3" star="5" cost="19" incrCost="2" at="380" hp="1550" incrAT="48" incrHP="31">
         <Skill type="灵魂消散" level="0" unlock="0" />
         <Skill type="鬼才" level="0" unlock="5" />
         <Skill type="觉醒狼顾" level="0" unlock="10" />
@@ -3324,7 +3324,7 @@
     <Card id="4565" name="梦·深渊影魔" wikiId="" race="地狱" speed="6" star="5" cost="99" incrCost="0" at="1" hp="1" incrAT="0" incrHP="0">
         <Skill type="物品技能" level="0" unlock="0" />
     </Card>
-    <Card id="4566" name="三国英魂孔明" wikiId="" race="地狱" speed="2" star="5" cost="19" incrCost="2" at="370" hp="1570" incrAT="47" incrHP="31">
+    <Card id="4566" name="三国英魂·孔明" wikiId="" race="地狱" speed="2" star="5" cost="19" incrCost="2" at="370" hp="1570" incrAT="47" incrHP="31">
         <Skill type="全体沉默" level="0" unlock="0"  summon="true"/>
         <Skill type="舌战群儒" level="0" unlock="5" />
         <Skill type="武侯" level="0" unlock="10" />
