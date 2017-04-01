@@ -1682,9 +1682,9 @@
         <Skill type="物品技能" level="0" unlock="0" />
     </Card>
     <Card id="2556" name="三国英魂·仲谋" wikiId="" race="森林" speed="3" star="5" cost="19" incrCost="2" at="370" hp="1670" incrAT="37" incrHP="29">
-    <Skill type="寒冰触碰" level="6" unlock="0" />
-    <Skill type="水流护甲" level="7" unlock="5" />
-    <Skill type="制衡" level="0" unlock="10" />
+        <Skill type="寒冰触碰" level="6" unlock="0" />
+        <Skill type="水流护甲" level="7" unlock="5" />
+        <Skill type="制衡" level="0" unlock="10" />
     </Card>
     <Card id="2557" name="风之樱女" wikiId="" race="森林" speed="3" star="5" cost="18" incrCost="2" at="350" hp="1620" incrAT="44" incrHP="45">
         <Skill type="仙子召唤" level="0" unlock="0" summon="true" />

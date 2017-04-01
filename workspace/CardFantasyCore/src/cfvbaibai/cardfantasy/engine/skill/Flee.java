@@ -31,8 +31,8 @@ public final class Flee {
         defender.getOwner().getField().expelCard(defender.getPosition());
         
         // 如果是被召唤的卡牌，发动逃跑技能后应该直接消失
-        if (defender.isSummonedMinion()){
-        	return;
+        if (defender.isSummonedMinion()) {
+            return;
         }
 
         Hand hand = defender.getOwner().getHand();

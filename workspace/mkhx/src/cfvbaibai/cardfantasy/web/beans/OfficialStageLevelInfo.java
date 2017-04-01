@@ -64,7 +64,7 @@ public class OfficialStageLevelInfo {
             }
             String[] cardParts = cardDesc.split("_");
             if (cardParts.length < 2) {
-            	continue;
+                continue;
             }
             int cardId = Integer.parseInt(cardParts[0]);
             OfficialCard card = this.store.getCardById(cardId);
