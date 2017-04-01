@@ -42,7 +42,6 @@ public class SkillUseInfo {
     public SkillUseInfo getAttachedUseInfo2() {
         return this.attachedUseInfo2;
     }
-
     @Override
     public boolean equals(Object obj) {
         if (obj == null) {
@@ -54,7 +53,6 @@ public class SkillUseInfo {
         }
         return false;
     }
-    
     @Override
     public int hashCode() {
         return this.owner.hashCode() ^ this.skill.hashCode();
