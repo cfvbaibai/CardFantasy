@@ -325,6 +325,7 @@ public class SummonSkillTest extends SkillValidationTest {
     public void test降临复活和BUFF_复活的降临系技能() {
         SkillTestContext context = prepare(50, 50, "月蚀兽+王国守护10", "残血王国大兵+降临烈焰风暴1", "占位符+法力反射1", "残血王国小兵+降临烈焰风暴1");
         context.addToHand(0, 0).setSummonDelay(0);
+        @SuppressWarnings("unused")
         CardInfo c残血王国小兵 = context.addToGrave(3, 0);
         CardInfo c残血王国大兵 = context.addToGrave(1, 0);
         CardInfo c占位符 = context.addToField(2, 1);

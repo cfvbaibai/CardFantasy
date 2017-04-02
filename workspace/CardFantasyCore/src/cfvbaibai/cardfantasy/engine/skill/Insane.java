@@ -14,7 +14,7 @@ import cfvbaibai.cardfantasy.engine.StageInfo;
 
 public final class Insane {
     public static void apply(SkillUseInfo skillUseInfo, SkillResolver resolver, CardInfo attacker, Player defender,
-        int victimCount) throws HeroDieSignal {
+        int victimCount, int multiple) throws HeroDieSignal {
         Skill skill = skillUseInfo.getSkill();
         StageInfo stage = resolver.getStage();
         Randomizer random = stage.getRandomizer();
@@ -26,7 +26,7 @@ public final class Insane {
             if (!resolver.resolveAttackBlockingSkills(attacker, victim, skill, 1).isAttackable()) {
                 continue;
             }
-            if(victim.isDead()){
+            if(victim.isDead()) {
                 continue;
             }
             List<CardInfo> cardsAttackedByVictim = resolver.getCardsOnSides(
@@ -37,7 +37,7 @@ public final class Insane {
                 continue;
             }
             ui.useSkill(victim, cardsAttackedByVictim, null, true);
-            int damage = victim.getLevel1AT();
+            int damage = victim.getLevel1AT()*multiple/100;
             for (CardInfo cardAttackedByVictim : cardsAttackedByVictim) {
                 ui.attackCard(victim, cardAttackedByVictim, null, damage);
                 resolver.resolveDeathSkills(attacker, cardAttackedByVictim, skill, 

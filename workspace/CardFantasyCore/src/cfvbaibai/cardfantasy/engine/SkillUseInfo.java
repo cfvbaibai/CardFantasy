@@ -9,8 +9,8 @@ public class SkillUseInfo {
     @NonSerializable
     private EntityInfo owner;
     private Skill skill;    
-	private SkillUseInfo attachedUseInfo1;
-	private SkillUseInfo attachedUseInfo2;
+    private SkillUseInfo attachedUseInfo1;
+    private SkillUseInfo attachedUseInfo2;
 
     public EntityInfo getOwner() {
         return owner;
@@ -42,7 +42,6 @@ public class SkillUseInfo {
     public SkillUseInfo getAttachedUseInfo2() {
         return this.attachedUseInfo2;
     }
-
     @Override
     public boolean equals(Object obj) {
         if (obj == null) {
@@ -54,7 +53,6 @@ public class SkillUseInfo {
         }
         return false;
     }
-    
     @Override
     public int hashCode() {
         return this.owner.hashCode() ^ this.skill.hashCode();

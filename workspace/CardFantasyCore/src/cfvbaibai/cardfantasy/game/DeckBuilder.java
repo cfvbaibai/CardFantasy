@@ -23,7 +23,7 @@ import cfvbaibai.cardfantasy.data.Zht2Zhs;
 
 public final class DeckBuilder {
 
-    private static CardDataStore store = CardDataStore.loadDefault();
+    private static CardDataStore store;
 
     /**
      * C卡片名-等级+技能名技能等级*数量
@@ -37,7 +37,18 @@ public final class DeckBuilder {
         "(\\*(?<Count>\\d+))?" +
         "$";
 
-    private final static Pattern CARD_PATTERN = Pattern.compile(CARD_REGEX);
+    private static Pattern CARD_PATTERN;
+    
+    static {
+        try {
+            CARD_PATTERN = Pattern.compile(CARD_REGEX);
+            store = CardDataStore.loadDefault();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+            throw e;
+        }
+    }
 
     public static String[] splitDescsText(String descsText) {
         descsText = descsText.replace(' ', ',').replace('　', ',').replace('，', ',').replace('、', ',');

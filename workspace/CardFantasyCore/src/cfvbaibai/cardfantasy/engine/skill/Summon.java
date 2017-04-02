@@ -22,8 +22,8 @@ public class Summon {
             throw new CardFantasyRuntimeException("summoner should not be null");
         }
         // 镜像不能再次发动镜像
-        if (summoner.isSummonedMinion() && skillUseInfo.getType() == SkillType.镜像){
-        	return;
+        if (summoner.isSummonedMinion() && skillUseInfo.getType() == SkillType.镜像) {
+            return;
         }
         Skill skill = skillUseInfo.getSkill();
         List<CardInfo> livingCards = summoner.getOwner().getField().getAliveCards();
