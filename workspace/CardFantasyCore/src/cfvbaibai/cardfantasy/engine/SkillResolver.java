@@ -157,7 +157,7 @@ public class SkillResolver {
             } else if (skillUseInfo.getType() == SkillType.夺魂) {
                 SoulControl.apply(this, skillUseInfo, attacker, defender);
             } else if (skillUseInfo.getType() == SkillType.鬼才) {
-                Clever.applyBySoulControl(this, skillUseInfo, attacker, defender);
+                SoulControl.apply(this, skillUseInfo.getAttachedUseInfo2(), attacker, defender);
             } else if (skillUseInfo.getType() == SkillType.背刺) {
                 BackStab.apply(this, skillUseInfo, attacker);
             } else if (skillUseInfo.getType() == SkillType.群体削弱) {
@@ -305,7 +305,7 @@ public class SkillResolver {
             } else if (skillUseInfo.getType() == SkillType.魔力印记) {
                 MagicMark.apply(this, skillUseInfo, attacker, defender, 1);
             }else if (skillUseInfo.getType() == SkillType.东风) {
-                MagicMark.apply(this, skillUseInfo, attacker, defender, 1);
+                MagicMark.apply(this, skillUseInfo, attacker, defender, -1);
             } else if (skillUseInfo.getType() == SkillType.致盲) {
                 Blind.apply(this, skillUseInfo, attacker, defender, 1);
             } else if (skillUseInfo.getType() == SkillType.闪光弹) {
@@ -348,13 +348,15 @@ public class SkillResolver {
             } else if (skillUseInfo.getType() == SkillType.觉醒星之意志) {
             	if(defender.getField().getAliveCards().size() >= 5){
             		SoulCrash.apply(skillUseInfo.getAttachedUseInfo1(), this, attacker, defender);
-            	} else if(defender.getField().getAliveCards().size() < 5){
+            	}
+            	if(defender.getField().getAliveCards().size() < 5){
             		ManaErode.apply(skillUseInfo.getAttachedUseInfo2().getSkill(), this, attacker, defender, 1);        		
             	}
             } else if (skillUseInfo.getType() == SkillType.觉醒狼顾) {
                 if(defender.getField().getAliveCards().size() >= 5){
                     LighteningMagic.apply(skillUseInfo.getAttachedUseInfo1(),  this, attacker, defender, -1, 75);
-                } else if(defender.getField().getAliveCards().size() < 5){
+                }
+                if(defender.getField().getAliveCards().size() < 5){
                     ThunderStrike.apply(skillUseInfo.getAttachedUseInfo2(), this, attacker, defender, 3);
                 }
             }else if (skillUseInfo.getType() == SkillType.寒冰触碰){
@@ -1403,6 +1405,8 @@ public class SkillResolver {
                     RaceChange.apply(this, skillUseInfo, card, enemy);
                 } else if (skillUseInfo.getType() == SkillType.全体加速){
                     AllSpeedUp.apply(skillUseInfo, this, card);
+                } else if (skillUseInfo.getType() == SkillType.舌战群儒) {
+                    Insane.apply(skillUseInfo, this, card, enemy,-1,70);
                 } else if (skillUseInfo.getType() == SkillType.沉默) {
                     Silence.apply(this, skillUseInfo, card, enemy, false, false);
                 } else if (skillUseInfo.getType() == SkillType.回魂) {
@@ -1426,6 +1430,9 @@ public class SkillResolver {
                     Summon.apply(this, skillUseInfo, card, SummonType.RandomSummoning, 2,
                             "麒麟兽", "凤凰", "浮云青鸟", "九头妖蛇", "雷兽", "羽翼化蛇", "神谕火狐",
                             "齐天美猴王", "羽蛇神", "月蚀兽", "逐月恶狼", "逐日凶狼", "月之神兽", "山地兽");
+                } else if (skillUseInfo.getType() == SkillType.镜魔) {
+                    // 镜像召唤的单位可以被连锁攻击
+                    Summon.apply(this, skillUseInfo, card, SummonType.Normal, 1, card.getName());
                 }
             }
             else if (!skillUseInfo.getSkill().isDeathSkill()) {
@@ -1466,7 +1473,7 @@ public class SkillResolver {
                 } else if (skillUseInfo.getType() == SkillType.侵蚀) {
                 	Erode.apply(this, skillUseInfo, card, opField.getOwner(), summonSkill);
                 } else if (skillUseInfo.getType() == SkillType.鬼才) {
-                    Clever.applyByErode(this, skillUseInfo, card, opField.getOwner(), summonSkill);
+                    Erode.apply(this, skillUseInfo.getAttachedUseInfo1(), card, opField.getOwner(), summonSkill);
                 }else if (skillUseInfo.getType() == SkillType.复活 && skillUseInfo.getSkill().isSummonSkill() && isSummoning) {
                     Revive.apply(this, skillUseInfo, card);
                 } else if (skillUseInfo.getType() == SkillType.制衡) {

@@ -24,7 +24,6 @@ public enum SkillType {
     献祭("31144", 20, 10, SkillTag.永久, SkillTag.基础攻击加成),
     制衡("", 100, 0, SkillTag.永久, SkillTag.复活,SkillTag.基础攻击加成),
     侵蚀("", 100, 0, SkillTag.永久, SkillTag.基础攻击加成),
-    鬼才("", 100, 0, 0,1, SkillTag.永久, SkillTag.基础攻击加成,SkillTag.复活),
     群攻提升("31754", 15, SkillTag.基础攻击加成, SkillTag.抗削弱),
     狂热("30880", 10, SkillTag.永久, SkillTag.基础攻击加成),
     亮银("", 220, 0, SkillTag.永久, SkillTag.基础攻击加成),
@@ -350,6 +349,7 @@ public enum SkillType {
     觉醒星之意志("", SkillType.灵魂消散, 0, SkillType.灵王的轰击, 7),
     觉醒狼顾("",  SkillType.雷神降临, 8, SkillType.雷霆一击, 5),
     空城("",  SkillType.不屈, 0, SkillType.灵魂禁锢, 0),
+    鬼才("", SkillType.侵蚀,0,SkillType.夺魂,1),
 	
     // To Do
     
