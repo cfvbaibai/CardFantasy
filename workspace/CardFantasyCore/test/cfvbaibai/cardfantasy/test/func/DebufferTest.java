@@ -163,9 +163,12 @@ public class DebufferTest extends SkillValidationTest {
         }
         // 出场了
         int expectedLife1 = 2010 - 140;
-        int NextRoundAttack = (int) (805 - (int) (805 * 0.18) + 140 + 795);
+        int NextRoundAttack = (int) (955 - (int) (955 * 0.18) + (int)((140 + 795)*1.40));
         int expectedLife2 = expectedLife1 - NextRoundAttack;
-
+        if(expectedLife2<0)
+        {
+            expectedLife2 = 0;
+        }
         Assert.assertEquals(expectedLife2, c末日.getHP());
     }
 

@@ -350,7 +350,8 @@ public enum SkillType {
     觉醒星之意志("", SkillType.灵魂消散, 0, SkillType.灵王的轰击, 7),
     觉醒狼顾("",  SkillType.雷神降临, 8, SkillType.雷霆一击, 5),
     空城("",  SkillType.不屈, 0, SkillType.灵魂禁锢, 0),
-    
+    鬼才("", SkillType.侵蚀,0,SkillType.夺魂,1),
+
     // To Do
     
     // 以下全部技能皆为待更新的空技能，请在更新之后将其移动到上面适合的位置
