@@ -26,7 +26,7 @@ public final class Insane {
             if (!resolver.resolveAttackBlockingSkills(attacker, victim, skill, 1).isAttackable()) {
                 continue;
             }
-            if(victim.isDead()){
+            if(victim.isDead()) {
                 continue;
             }
             List<CardInfo> cardsAttackedByVictim = resolver.getCardsOnSides(

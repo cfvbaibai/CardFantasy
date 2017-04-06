@@ -21,12 +21,12 @@ public final class ManaErode {
         int damage = skill.getImpact();
         int magnifier = skill.getImpact2();
         for (CardInfo victim : victims) {
-			if (!resolver.resolveAttackBlockingSkills(attacker, victim, skill, damage).isAttackable()) {
-				continue;
-			}
+            if (!resolver.resolveAttackBlockingSkills(attacker, victim, skill, damage).isAttackable()) {
+                continue;
+            }
             int actualDamage = damage;
             if (victim.containsUsableSkill(SkillType.免疫) || CounterMagic.getBlockSkill(victim) != null) {
-            	actualDamage *= magnifier;
+                actualDamage *= magnifier;
             }
             ui.attackCard(attacker, victim, skill, actualDamage);
             resolver.resolveDeathSkills(attacker, victim, skill, resolver.applyDamage(attacker, victim, skill, actualDamage));

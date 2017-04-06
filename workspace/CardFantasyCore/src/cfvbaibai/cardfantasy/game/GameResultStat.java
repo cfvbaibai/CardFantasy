@@ -34,7 +34,7 @@ public class GameResultStat {
             ++this.timeoutCount;
         } else if (winnerId.equals(p1.getId())) {
             ++this.p1WinCount;
-        } else if (winnerId.equals(p2.getId())){
+        } else if (winnerId.equals(p2.getId())) {
             ++this.p2WinCount;
         } else {
             throw new CardFantasyRuntimeException("Invalid result! Unknown winner: " + winnerId);
