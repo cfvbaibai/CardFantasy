@@ -36,6 +36,7 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2017-04-06: 修复了一些BUG</li>
                     <li>2017-04-01: 添加了一堆卡牌功能，具体更新日志留待<x>清风</x>和<x>欢笑</x>下次添加</li>
                     <li>2017-03-09: <x>绯弹亚丝娜</x><ul>
                         <li>更新了21图地图数据和模拟器选项</li>
