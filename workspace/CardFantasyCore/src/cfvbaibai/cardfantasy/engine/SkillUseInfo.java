@@ -9,8 +9,8 @@ public class SkillUseInfo {
     @NonSerializable
     private EntityInfo owner;
     private Skill skill;    
-	private SkillUseInfo attachedUseInfo1;
-	private SkillUseInfo attachedUseInfo2;
+    private SkillUseInfo attachedUseInfo1;
+    private SkillUseInfo attachedUseInfo2;
 
     public EntityInfo getOwner() {
         return owner;

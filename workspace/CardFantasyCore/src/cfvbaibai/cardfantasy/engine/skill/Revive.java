@@ -22,7 +22,7 @@ public final class Revive {
         List<CardInfo> revivableCards = new ArrayList<CardInfo>();
         for (CardInfo deadCard : grave.toList()) {
             if (deadCard != null && !deadCard.containsUsableSkillsWithTag(SkillTag.复活) && deadCard.getStar() != 1) {
-            	revivableCards.add(deadCard);
+                revivableCards.add(deadCard);
             }
         }
         if (revivableCards.isEmpty()) {
@@ -30,7 +30,7 @@ public final class Revive {
         }
         Skill skill = skillUseInfo.getSkill();
         CardInfo cardToRevive = resolver.getStage().getRandomizer().pickRandom(
-        		revivableCards, 1, true, null).get(0);
+                revivableCards, 1, true, null).get(0);
         resolver.getStage().getUI().useSkill(reviver, cardToRevive, skill, true);
         if (SoulSeal.soulSealed(resolver, reviver)) {
             return;
