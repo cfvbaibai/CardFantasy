@@ -84,6 +84,17 @@ public class CardInfo extends EntityInfo {
         }
     }
 
+    public void addCoefficientEffect(SkillEffect effect) {
+        SkillType type = effect.getCause().getSkill().getType();
+        if (!effects.containsKey(type)) {
+            effects.put(type, new LinkedList<SkillEffect>());
+        }
+        this.effects.get(type).add(effect);
+        if (effect.getType() == SkillEffectType.MAXHP_CHANGE) {
+            this.setBasicHP(this.getHP() *(100+ effect.getValue())/100);
+        }
+    }
+
     public List<SkillEffect> getEffectsCausedBy(SkillType cause) {
         List<SkillEffect> result = effects.get(cause);
         if (result == null) {
@@ -383,6 +394,22 @@ public class CardInfo extends EntityInfo {
         }
     }
 
+    public void removeEffectByUse(SkillEffect effect) {
+        List<SkillEffect> result = this.effects.get(effect.getCause().getSkill().getType());
+        if (result == null) {
+            return;
+        }
+        for (Map.Entry entry : this.effects.entrySet()) {
+            if(entry.getKey() == effect.getCause().getSkill().getType())
+            {
+                this.effects.remove(entry.getKey());
+            }
+        }
+        if (effect.getType() == SkillEffectType.MAXHP_CHANGE && this.getHP() > this.getMaxHP()) {
+            this.setBasicHP(this.getMaxHP());
+        }
+    }
+
     public List<SkillEffect> getEffects() {
         List<SkillEffect> result = new ArrayList<SkillEffect>();
         for (List<SkillEffect> effects : this.effects.values()) {
@@ -648,5 +675,9 @@ public class CardInfo extends EntityInfo {
             return null;
         }
         return status.get(0).getCause().getOwner();
+    }
+
+    public void setResetEffect(SkillUseInfo skillUseInfo) {
+        this.removeEffectByUse(new SkillEffect(SkillEffectType.SKILL_USED, skillUseInfo, 0, true));
     }
 }
