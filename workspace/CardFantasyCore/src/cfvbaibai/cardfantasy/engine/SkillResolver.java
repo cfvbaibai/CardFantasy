@@ -157,7 +157,7 @@ public class SkillResolver {
             } else if (skillUseInfo.getType() == SkillType.夺魂) {
                 SoulControl.apply(this, skillUseInfo, attacker, defender);
             } else if (skillUseInfo.getType() == SkillType.鬼才) {
-                Clever.applyBySoulControl(this, skillUseInfo, attacker, defender);
+                SoulControl.apply(this, skillUseInfo.getAttachedUseInfo2(), attacker, defender);
             } else if (skillUseInfo.getType() == SkillType.背刺) {
                 BackStab.apply(this, skillUseInfo, attacker);
             } else if (skillUseInfo.getType() == SkillType.群体削弱) {
@@ -1473,7 +1473,7 @@ public class SkillResolver {
                 } else if (skillUseInfo.getType() == SkillType.侵蚀) {
                     Erode.apply(this, skillUseInfo, card, opField.getOwner(), summonSkill);
                 } else if (skillUseInfo.getType() == SkillType.鬼才) {
-                    Clever.applyByErode(this, skillUseInfo, card, opField.getOwner(), summonSkill);
+                    Erode.apply(this, skillUseInfo.getAttachedUseInfo1(), card, opField.getOwner(), summonSkill);
                 } else if (skillUseInfo.getType() == SkillType.复活 && skillUseInfo.getSkill().isSummonSkill() && isSummoning) {
                     Revive.apply(this, skillUseInfo, card);
                 } else if (skillUseInfo.getType() == SkillType.制衡) {
