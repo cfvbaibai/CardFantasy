@@ -20,6 +20,7 @@ public class Player extends EntityInfo {
     private List<SkillUseInfo> cardBuffs;
     private int hp;
     private List<CardInfo> primaryCards;
+    private int coefficient;
     
     public Player(PlayerInfo playerInfo, StageInfo stage) {
         this.playerInfo = playerInfo;
@@ -32,6 +33,7 @@ public class Player extends EntityInfo {
         this.runeBox = new RuneBox(this, playerInfo.getRunes());
         this.hp = playerInfo.getMaxHP();
         this.cardBuffs = new ArrayList<SkillUseInfo>();
+        this.coefficient = 100;
         for (Skill cardBuff : playerInfo.getCardBuffs()) {
             this.cardBuffs.add(new SkillUseInfo(this, cardBuff));
         }
@@ -83,6 +85,14 @@ public class Player extends EntityInfo {
     
     public OutField getOutField() {
         return this.outField;
+    }
+
+    public int getCoefficient() {
+        return this.coefficient;
+    }
+
+    public void setCoefficient(int coefficient) {
+        this.coefficient = coefficient;
     }
     
     public int getHP() {

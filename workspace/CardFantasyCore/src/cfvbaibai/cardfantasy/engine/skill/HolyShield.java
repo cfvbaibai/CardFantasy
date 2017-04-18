@@ -21,4 +21,13 @@ public final class HolyShield {
         victim.setUsed(skillUseInfo);
         return false;
     }
+    public static void resetApply(SkillUseInfo skillUseInfo, SkillResolver resolver,  CardInfo victim){
+        if (victim == null) {
+            return ;
+        }
+        Skill skill = skillUseInfo.getSkill();
+        GameUI ui = resolver.getStage().getUI();
+        ui.useSkill(victim, skill, true);
+        victim.setResetEffect(skillUseInfo);
+    }
 }
