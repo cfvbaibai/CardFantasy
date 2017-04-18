@@ -21,7 +21,7 @@ public class Summon {
         if (summoner == null) {
             throw new CardFantasyRuntimeException("summoner should not be null");
         }
-        int Number = 0;
+
         // 镜像不能再次发动镜像
         if (summoner.isSummonedMinion() && skillUseInfo.getType() == SkillType.镜像 || summoner.isSummonedMinion() && skillUseInfo.getType() == SkillType.镜魔){
             return;
@@ -33,7 +33,7 @@ public class Summon {
         for (String summonedCardDesc : summonedCardsDescs) {
             cardDescsToSummon.add(summonedCardDesc);
         }
-        Number++;
+
         List<CardInfo> cardsToSummon = new ArrayList<CardInfo>();
         List<CardInfo> summonCardCandidates = DeckBuilder.build(summonedCardsDescs).getCardInfos(summoner.getOwner());
         if (summonType == SummonType.Normal || summonType == SummonType.Summoning) {
