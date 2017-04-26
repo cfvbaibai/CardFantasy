@@ -399,9 +399,8 @@ public class CardInfo extends EntityInfo {
         if (result == null) {
             return;
         }
-        for (Map.Entry entry : this.effects.entrySet()) {
-            if(entry.getKey() == effect.getCause().getSkill().getType())
-            {
+        for (Map.Entry<SkillType, List<SkillEffect>> entry : this.effects.entrySet()) {
+            if(entry.getKey() == effect.getCause().getSkill().getType()) {
                 this.effects.remove(entry.getKey());
             }
         }

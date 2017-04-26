@@ -157,7 +157,7 @@ public class SkillResolver {
             } else if (skillUseInfo.getType() == SkillType.无刀取) {
                 //镜像召唤的单位可以被连锁攻击
                 HolyShield.resetApply(skillUseInfo, this, attacker);
-            }else if (skillUseInfo.getType() == SkillType.夺魂) {
+            } else if (skillUseInfo.getType() == SkillType.夺魂) {
                 SoulControl.apply(this, skillUseInfo, attacker, defender);
             } else if (skillUseInfo.getType() == SkillType.鬼才) {
                 SoulControl.apply(this, skillUseInfo.getAttachedUseInfo2(), attacker, defender);
@@ -292,9 +292,9 @@ public class SkillResolver {
                 Summon.apply(this, skillUseInfo, attacker, SummonType.Normal, 2, "时光女神", "雷雕之魂");
             } else if (skillUseInfo.getType() == SkillType.七十二变) {
                 Summon.apply(this, skillUseInfo, attacker, SummonType.Normal, 2, "齐天美猴王", "齐天美猴王");
-            }else if (skillUseInfo.getType() == SkillType.仙子召唤) {
+            } else if (skillUseInfo.getType() == SkillType.仙子召唤) {
                 Summon.apply(this, skillUseInfo, attacker, SummonType.Normal, 2, "蝶语仙子", "蝶语仙子");
-            }else if (skillUseInfo.getType() == SkillType.英灵降临) {
+            } else if (skillUseInfo.getType() == SkillType.英灵降临) {
                 Summon.apply(this, skillUseInfo, attacker, SummonType.Random, 1,
                         "圣剑持有者", "银河圣剑使", "精灵游骑兵", "爱神", "蝗虫公爵", "战场女武神", "龙角将军", "断罪之镰");
             } else if (skillUseInfo.getType() == SkillType.寒霜召唤) {
@@ -316,7 +316,7 @@ public class SkillResolver {
                 MagicMark.apply(this, skillUseInfo, attacker, defender, -1);
             } else if (skillUseInfo.getType() == SkillType.魔力印记) {
                 MagicMark.apply(this, skillUseInfo, attacker, defender, 1);
-            }else if (skillUseInfo.getType() == SkillType.东风) {
+            } else if (skillUseInfo.getType() == SkillType.东风) {
                 MagicMark.apply(this, skillUseInfo, attacker, defender, -1);
             } else if (skillUseInfo.getType() == SkillType.致盲) {
                 Blind.apply(this, skillUseInfo, attacker, defender, 1);
@@ -824,7 +824,7 @@ public class SkillResolver {
                 Transport.apply(this, deadCardSkillUseInfo.getSkill(), deadCard, opponent);
             } else if (deadCardSkillUseInfo.getType() == SkillType.回魂) {
                 Resurrection.apply(this, deadCardSkillUseInfo, deadCard);
-            }else if (deadCardSkillUseInfo.getType() == SkillType.召唤炎魔) {
+            } else if (deadCardSkillUseInfo.getType() == SkillType.召唤炎魔) {
                 Summon.apply(this, deadCardSkillUseInfo, deadCard, SummonType.Normal, 1, "炎魔");
             } else if (deadCardSkillUseInfo.getType() == SkillType.全体阻碍) {
                 AllDelay.apply(deadCardSkillUseInfo, this, deadCard, opponent);
@@ -858,7 +858,7 @@ public class SkillResolver {
                         "武形火焰尊者", "武形神射尊者", "武形破拳尊者", "武形剑圣", "武形斗圣");
             } else if (deadCardSkillUseInfo.getType() == SkillType.镜像) {
                 Summon.apply(this, deadCardSkillUseInfo, deadCard, SummonType.Normal, 1, deadCard.getName());
-            }else if (deadCardSkillUseInfo.getType() == SkillType.我还会回来的) {
+            } else if (deadCardSkillUseInfo.getType() == SkillType.我还会回来的) {
                 Summon.apply(this, deadCardSkillUseInfo, deadCard, SummonType.Normal, 1, "大毒汁之王-5");
             } else if (deadCardSkillUseInfo.getType() == SkillType.蛮荒我还会回来的) {
                 Summon.apply(this, deadCardSkillUseInfo, deadCard, SummonType.Normal, 1, "蛮荒大毒汁之王-5");
@@ -1390,7 +1390,7 @@ public class SkillResolver {
                     Synchrome.apply(this, skillUseInfo, fieldCard, card, Race.SAVAGE);
                 } else if (skillUseInfo.getType() == SkillType.地狱同调) {
                     Synchrome.apply(this, skillUseInfo, fieldCard, card, Race.HELL);
-                }else if (skillUseInfo.getType() == SkillType.铁壁) {
+                } else if (skillUseInfo.getType() == SkillType.铁壁) {
                     ImpregnableDefenseHeroBuff.apply(this, skillUseInfo, fieldCard);
                 }
             }
@@ -1473,7 +1473,7 @@ public class SkillResolver {
                     Silence.apply(this, skillUseInfo, card, enemy, true, true);
                 } else if (skillUseInfo.getType() == SkillType.无限全体沉默) {
                     Silence.apply(this, skillUseInfo, card, enemy, true, false);
-                }else if (skillUseInfo.getType() == SkillType.仙子召唤) {
+                } else if (skillUseInfo.getType() == SkillType.仙子召唤) {
                     Summon.apply(this, skillUseInfo, card, SummonType.Normal, 2, "蝶语仙子", "蝶语仙子");
                 } else if (skillUseInfo.getType() == SkillType.星之所在) {
                     Summon.apply(this, skillUseInfo, card, SummonType.RandomSummoning, 2,
@@ -1499,7 +1499,7 @@ public class SkillResolver {
                     Transport.apply(this, skillUseInfo.getSkill(), card, enemy);
                 } else if (skillUseInfo.getType() == SkillType.虚梦) {
                     Transport.apply(this, skillUseInfo.getAttachedUseInfo2().getSkill(), card, enemy);
-                }else if (!isMinion&&skillUseInfo.getType() == SkillType.镜魔) {
+                } else if (!isMinion&&skillUseInfo.getType() == SkillType.镜魔) {
                     // 镜像召唤的单位可以被连锁攻击
                     Summon.apply(this, skillUseInfo.getAttachedUseInfo2(), card, SummonType.Normal, 1, card.getName());
                 } else if (skillUseInfo.getType() == SkillType.全领域沉默) {
@@ -1531,9 +1531,9 @@ public class SkillResolver {
                     Erode.apply(this, skillUseInfo, card, opField.getOwner(), summonSkill);
                 } else if (skillUseInfo.getType() == SkillType.鬼才) {
                     Erode.apply(this, skillUseInfo.getAttachedUseInfo1(), card, opField.getOwner(), summonSkill);
-                }else if (skillUseInfo.getType() == SkillType.复活 && skillUseInfo.getSkill().isSummonSkill() && isSummoning) {
+                } else if (skillUseInfo.getType() == SkillType.复活 && skillUseInfo.getSkill().isSummonSkill() && isSummoning) {
                     Revive.apply(this, skillUseInfo, card);
-                }else if (skillUseInfo.getType() == SkillType.灵魂献祭 && skillUseInfo.getSkill().isSummonSkill() && isSummoning) {
+                } else if (skillUseInfo.getType() == SkillType.灵魂献祭 && skillUseInfo.getSkill().isSummonSkill() && isSummoning) {
                     Revive.apply(this, skillUseInfo, card);
                     Sacrifice.apply(this, skillUseInfo, card, summonSkill);
                 } else if (skillUseInfo.getType() == SkillType.制衡) {
@@ -1580,7 +1580,7 @@ public class SkillResolver {
                     || deadCardSkillUseInfo.getType() == SkillType.军团蛮荒之力
                     || deadCardSkillUseInfo.getType() == SkillType.军团地狱之力) {
                 LegionBuff.remove(this, deadCardSkillUseInfo, card);
-            }else if (deadCardSkillUseInfo.getType() == SkillType.铁壁) {
+            } else if (deadCardSkillUseInfo.getType() == SkillType.铁壁) {
                 ImpregnableDefenseHeroBuff.apply(this, deadCardSkillUseInfo, card);
             }
         }
@@ -1989,7 +1989,7 @@ public class SkillResolver {
                 ManaErode.apply(skillUseInfo.getSkill(), this, card, defenderHero, 1);
             } else if (skillUseInfo.getType() == SkillType.神性祈求) {
                 Purify.apply(skillUseInfo, this, card, -1);
-            }else if (skillUseInfo.getType() == SkillType.寒霜冲击) {
+            } else if (skillUseInfo.getType() == SkillType.寒霜冲击) {
                 IceMagic.apply(skillUseInfo, this, card, defenderHero, -1, 50, 45 * defenderHero.getField().getAliveCards().size());
             } else if (skillUseInfo.getType() == SkillType.全体加速){
                 AllSpeedUp.apply(skillUseInfo, this, card);
