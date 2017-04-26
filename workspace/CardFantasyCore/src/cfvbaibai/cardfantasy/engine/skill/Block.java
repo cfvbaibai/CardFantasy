@@ -17,7 +17,7 @@ public final class Block {
         int block = skill.getImpact();
         int actualDamage = originalDamage - block;
         CardInfo attack = (CardInfo) attacker;
-        CardInfo blockOne = (CardInfo) blocker;
+        CardInfo blockOne = (CardInfo) victim;
         if(resolver.resolveStopBlockSkill(skill, attack, blockOne))
         {
             actualDamage = originalDamage;
