@@ -37,6 +37,10 @@ public final class Insane {
                 continue;
             }
             ui.useSkill(victim, cardsAttackedByVictim, null, true);
+            if(multiple ==0)
+            {
+                multiple = skill.getImpact();
+            }
             int damage = victim.getLevel1AT()*multiple/100;
             for (CardInfo cardAttackedByVictim : cardsAttackedByVictim) {
                 ui.attackCard(victim, cardAttackedByVictim, null, damage);

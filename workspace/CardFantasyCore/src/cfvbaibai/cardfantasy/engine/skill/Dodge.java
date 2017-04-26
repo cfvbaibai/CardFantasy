@@ -40,6 +40,9 @@ public final class Dodge {
             if (resolver.resolveCounterBlockSkill(cardSkill, attacker, defender)) {
                 return false;
             }
+            else if (resolver.resolveStopBlockSkill(cardSkill, attacker, defender)) {
+                return false;
+            }
             ui.blockDamage(defender, attacker, defender, cardSkill, originalDamage, 0);
             return true;
         } else {

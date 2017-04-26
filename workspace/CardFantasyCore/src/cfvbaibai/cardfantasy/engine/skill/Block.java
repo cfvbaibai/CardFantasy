@@ -2,6 +2,7 @@ package cfvbaibai.cardfantasy.engine.skill;
 
 import cfvbaibai.cardfantasy.GameUI;
 import cfvbaibai.cardfantasy.data.Skill;
+import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.EntityInfo;
 import cfvbaibai.cardfantasy.engine.SkillResolver;
 
@@ -15,6 +16,12 @@ public final class Block {
             EntityInfo blocker, int originalDamage) {
         int block = skill.getImpact();
         int actualDamage = originalDamage - block;
+        CardInfo attack = (CardInfo) attacker;
+        CardInfo blockOne = (CardInfo) blocker;
+        if(resolver.resolveStopBlockSkill(skill, attack, blockOne))
+        {
+            actualDamage = originalDamage;
+        }
         if (actualDamage < 0) {
             actualDamage = 0;
         }
