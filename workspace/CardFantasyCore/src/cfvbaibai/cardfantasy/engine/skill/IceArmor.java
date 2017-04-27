@@ -13,6 +13,9 @@ public final class IceArmor {
         if (resolver.resolveCounterBlockSkill(cardSkill, attacker, defender)) {
             return originalDamage;
         }
+        if (resolver.resolveStopBlockSkill(cardSkill, attacker, defender)) {
+            return originalDamage;
+        }
         
         int maxDamage = cardSkill.getImpact();
         if (cardSkill.getType() == SkillType.魔龙之血 || cardSkill.getType() == SkillType.神魔之甲) {

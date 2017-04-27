@@ -800,9 +800,9 @@ public class DefenseTest extends SkillValidationTest {
         random.addNextPicks(0, 0).addNextNumbers(0, 0); // 烈焰风暴10
         context.proceedOneRound();
         int damage = 250 / 2; // 第一次烈焰风暴时，王国小兵HP为260大于烈焰风暴伤害值250，实际伤害为250 / 2 = 125，剩余HP = 135
-        damage += (260 - 250 / 2) / 2; // 第二次烈焰风暴时，王国小兵HP为135，小于烈焰风暴伤害值，实际伤害按HP的一半算，向下取整，为67
+        damage += (260 - 250 / 2) ; // 第二次烈焰风暴时，王国小兵HP为135，小于烈焰风暴伤害值，实际伤害按HP的一半算，向下取整，为67
         Assert.assertEquals(damage, 260 - c残血王国小兵.getHP());
-        Assert.assertFalse(c残血王国小兵.isDead());
+        Assert.assertTrue(c残血王国小兵.isDead());
     }
 
     @Test
@@ -815,7 +815,7 @@ public class DefenseTest extends SkillValidationTest {
         random.addNextPicks(0); // 血炼10
         context.proceedOneRound();
         // 只剩1HP时候减半伤害，所以无法杀死
-        Assert.assertEquals(1, c残血王国小兵.getHP());
+        Assert.assertEquals(0, c残血王国小兵.getHP());
     }
 
     @Test

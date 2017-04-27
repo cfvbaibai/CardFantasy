@@ -38,6 +38,7 @@ public enum SkillType {
     蛮荒之力("31141", 25, SkillTag.基础攻击加成, SkillTag.抗削弱),
     王国之力("30932", 25, SkillTag.基础攻击加成, SkillTag.抗削弱),
     本源之力("30938", 20, SkillTag.基础攻击加成, SkillTag.抗削弱),
+    根源之力("", 0,20,0,40, SkillTag.基础攻击加成, SkillTag.抗削弱,SkillTag.抗毒刃),
     圣光("30947", 15, 15, SkillTag.额外攻击加成),
     要害("31124", 15, 15, SkillTag.额外攻击加成),
     暗杀("31138", 15, 15, SkillTag.额外攻击加成),
@@ -173,6 +174,7 @@ public enum SkillType {
     骑士荣耀("",0,SkillTag.不可洗炼,SkillTag.不动),
     自爆("30945", 40),
     免疫("30942", 0),
+    结界立场("", 0,SkillTag.抗沉默),
     动能追加("", 0),
     不动("30928", 0, SkillTag.不动),
     灵魂封禁("", 0, 0, SkillTag.不动),
@@ -184,6 +186,7 @@ public enum SkillType {
     传送("31331", 0, SkillTag.即死),
     代表月亮消灭你("", 0,SkillTag.即死),
     弱点攻击("30881", 0),
+    破军("",45,5),
     灵巧("57020", 0),
     灵魂禁锢("", 0),
     沉默("", 0, SkillTag.抗免疫, SkillTag.抗不屈, SkillTag.沉默, SkillTag.魔王无效),
@@ -194,6 +197,7 @@ public enum SkillType {
     无限全体沉默("", 0, SkillTag.抗免疫, SkillTag.抗不屈, SkillTag.沉默),
     灵魂消散("", 0, SkillTag.抗免疫, SkillTag.抗不屈, SkillTag.沉默),
 
+
     回魂("31131", 1),
     祈愿("", 1),
     上层精灵的挽歌("", 2, 0),
@@ -203,6 +207,7 @@ public enum SkillType {
     精神狂乱("", 0),
     离间("", 0),
     无尽华尔兹("", 0),
+    精神污染("", 10),
     无我境界("", 70, 0, SkillTag.控制, SkillTag.魔王无效),
 
     吸血("31135", 10),
@@ -215,6 +220,8 @@ public enum SkillType {
     摧毁("31332", 0, SkillTag.即死, SkillTag.抗不屈),
     武形天火击("", 0, SkillTag.即死, SkillTag.抗不屈),
     咆哮("", 0, SkillTag.即死, SkillTag.抗不屈),
+
+    炼金失败("", 0),
 
     封印("31157", 0, SkillTag.控制),
     血炼("31136", 20, SkillTag.魔法),
@@ -252,7 +259,8 @@ public enum SkillType {
     魔法毁灭("", 100, 0, 10, 0, SkillTag.抗免疫),
     赤之魔枪("", 200, 50, 3, 0, SkillTag.抗免疫),
     寒冰触碰("", 250, 50, 3, 0, new int[] {50,50,50,50,50,50,50,50,50,50}, SkillTag.抗免疫),
-    雷霆一击("", 200, 50, 3, 0, new int[] {75,75,75,75,75,75,75,75,75,75}, SkillTag.抗免疫),
+    雷霆一击("", 200, 75, 3, 0, new int[] {75,75,75,75,75,75,75,75,75,75}, SkillTag.抗免疫),
+    雷霆之怒("", 200, 75, 3, 0, new int[] {75,75,75,75,75,75,75,75,75,75}, SkillTag.抗免疫),
 
     大地之盾("80193", 0, SkillTag.控制, SkillTag.抗免疫, SkillTag.魔王无效),
     一闪("", 50, 0, SkillTag.控制, SkillTag.抗免疫, SkillTag.魔王无效),
@@ -360,6 +368,9 @@ public enum SkillType {
     鬼才("", SkillType.侵蚀,0,SkillType.夺魂,1),
     镜魔("",SkillType.镜面,0,SkillType.镜像,0 ,SkillTag.抗沉默),
     刀语("",SkillType.连击,0,SkillType.弱点攻击,0 ),
+    逆鳞("",SkillType.武形秘箭,10,SkillType.神箭三重奏,10),
+    突袭("",0,0, SkillTag.即死,SkillTag.额外攻击加成),
+    樱魂("",SkillType.吸血,8,SkillType.奋战,7),
 
     // To Do
 
@@ -383,15 +394,12 @@ public enum SkillType {
     攻击提升("", 0),
     战争咆哮("", 0),
     月之守望("", 0),
-    根源之力("", 0),
     樱花动漫("", 0),
     毒伤("", 0),
     灵魂禁封("", 0),
-    炼金失败("", 0),
     炽焰("", 0),
     物理格挡("", 0),
     狂暴("", 0),
-    结界立场("", 0),
     群体不动("", 0),
     群体冰甲("", 0),
     群体反击("", 0),
