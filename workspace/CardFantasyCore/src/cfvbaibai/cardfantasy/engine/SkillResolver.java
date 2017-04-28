@@ -405,9 +405,9 @@ public class SkillResolver {
                     CounterAttack.apply(skillUseInfo.getSkill(), this, attacker, defender, result.getDamage());
                 } else if (skillUseInfo.getType() == SkillType.盾刺) {
                     Spike.apply(skillUseInfo.getSkill(), this, attacker, defender, attackSkill, result.getDamage());
-                } else if (skillUseInfo.getType() == SkillType.荆棘术) {
+                } else if (skillUseInfo.getType() == SkillType.荆棘术||skillUseInfo.getType() == SkillType.刚烈) {
                     Spike.apply(skillUseInfo.getSkill(), this, attacker, defender, attackSkill, result.getDamage());
-                } else if (skillUseInfo.getType() == SkillType.大地之盾) {
+                } else if (skillUseInfo.getType() == SkillType.大地之盾 || skillUseInfo.getType() == SkillType.寒冰之盾) {
                     EarthShield.apply(skillUseInfo, this, attacker, defender);
                 } else if (skillUseInfo.getType() == SkillType.物理反弹 || skillUseInfo.getType() == SkillType.武形破剑击 || skillUseInfo.getType() == SkillType.反击屏障) {
                     PhysicalReflection.apply(skillUseInfo.getSkill(), this, attacker, defender, damagedResult.actualDamage);
@@ -527,7 +527,7 @@ public class SkillResolver {
                     for (SkillUseInfo blockSkillUseInfo : defender.getUsableNormalSkills()) {
                         if (blockSkillUseInfo.getType() == SkillType.圣盾) {
                             CardInfo attack = (CardInfo) attacker;
-                            if(resolveStopBlockSkill(blockSkillUseInfo.getSkill(), attack, defender))
+                            if(resolveStopBlockSkill(blockSkillUseInfo.getSkill(), cardAttacker, defender))
                             {
                                 result.setAttackable(true);
                             }
@@ -540,7 +540,7 @@ public class SkillResolver {
                     for (SkillUseInfo blockSkillUseInfo : defender.getUsableNormalSkills()) {
                         if (blockSkillUseInfo.getType() == SkillType.无刀取) {
                             CardInfo attack = (CardInfo) attacker;
-                            if(resolveStopBlockSkill(blockSkillUseInfo.getSkill(), attack, defender))
+                            if(resolveStopBlockSkill(blockSkillUseInfo.getSkill(), cardAttacker, defender))
                             {
                                 result.setAttackable(true);
                             }
@@ -560,7 +560,8 @@ public class SkillResolver {
                     if (blockSkillUseInfo.getType() == SkillType.冰甲 ||
                             blockSkillUseInfo.getType() == SkillType.魔龙之血 ||
                             blockSkillUseInfo.getType() == SkillType.冰神附体 ||
-                            blockSkillUseInfo.getType() == SkillType.神魔之甲) {
+                            blockSkillUseInfo.getType() == SkillType.神魔之甲 ||
+                            blockSkillUseInfo.getType() == SkillType.寒冰之盾) {
                         result.setDamage(IceArmor.apply(blockSkillUseInfo.getSkill(), this, cardAttacker, defender,
                                 result.getDamage()));
                     }
@@ -839,6 +840,15 @@ public class SkillResolver {
             } else if (deadCardSkillUseInfo.getType() == SkillType.逆鳞) {
                 Snipe.apply(deadCardSkillUseInfo.getSkill().getAttachedSkill1(), this, deadCard, opponent, -1);
                 Snipe.apply(deadCardSkillUseInfo.getSkill().getAttachedSkill2(), this, deadCard, opponent, 3);
+            } else if (deadCardSkillUseInfo.getType() == SkillType.万兽奔腾) {
+                Summon.apply(this,deadCardSkillUseInfo, deadCard, SummonType.Random, 2,
+                        "凤凰", "浮云青鸟", "九头妖蛇", "雷兽", "羽翼化蛇", "神谕火狐",
+                        "齐天美猴王", "羽蛇神", "月蚀兽", "逐月恶狼", "逐日凶狼", "月之神兽", "山地兽");
+            } else if (deadCardSkillUseInfo.getType() == SkillType.武形降临) {
+                Summon.apply(this, deadCardSkillUseInfo, deadCard, SummonType.Random, 1,
+                        "武形火焰尊者", "武形神射尊者", "武形破拳尊者", "武形剑圣", "武形斗圣");
+            } else if (deadCardSkillUseInfo.getType() == SkillType.镜像) {
+                Summon.apply(this, deadCardSkillUseInfo, deadCard, SummonType.Normal, 1, deadCard.getName());
             }
         }
         for (SkillUseInfo deadCardSkillUseInfo : deadCard.getAllUsableSkills()) {
@@ -849,15 +859,6 @@ public class SkillResolver {
                 TsubameGaeshi.apply(deadCardSkillUseInfo, this, opponent, deadCard);
             } else if (deadCardSkillUseInfo.getType() == SkillType.九转秘术) {
                 Summon.apply(this, deadCardSkillUseInfo, deadCard, SummonType.Normal, 1, "九命猫神·幻影");
-            }else if (deadCardSkillUseInfo.getType() == SkillType.万兽奔腾) {
-                Summon.apply(this,deadCardSkillUseInfo, deadCard, SummonType.Random, 2,
-                        "麒麟兽", "凤凰", "浮云青鸟", "九头妖蛇", "雷兽", "羽翼化蛇", "神谕火狐",
-                        "齐天美猴王", "羽蛇神", "月蚀兽", "逐月恶狼", "逐日凶狼", "月之神兽", "山地兽");
-            } else if (deadCardSkillUseInfo.getType() == SkillType.武形降临) {
-                Summon.apply(this, deadCardSkillUseInfo, deadCard, SummonType.Random, 1,
-                        "武形火焰尊者", "武形神射尊者", "武形破拳尊者", "武形剑圣", "武形斗圣");
-            } else if (deadCardSkillUseInfo.getType() == SkillType.镜像) {
-                Summon.apply(this, deadCardSkillUseInfo, deadCard, SummonType.Normal, 1, deadCard.getName());
             }else if (deadCardSkillUseInfo.getType() == SkillType.我还会回来的) {
                 Summon.apply(this, deadCardSkillUseInfo, deadCard, SummonType.Normal, 1, "大毒汁之王-5");
             } else if (deadCardSkillUseInfo.getType() == SkillType.蛮荒我还会回来的) {

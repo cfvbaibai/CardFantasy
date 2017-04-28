@@ -3417,6 +3417,16 @@
         <Skill type="送葬之刃" level="7" unlock="5" />
         <Skill type="结界立场" level="0" unlock="10" />
     </Card>
+    <Card id="4569" name="暗月魅影" wikiId="" race="地狱" speed="2" star="4" cost="14" incrCost="2" at="270" hp="1260" incrAT="38" incrHP="27">
+        <Skill type="凋零陷阱" level="0" unlock="0" />
+        <Skill type="脱困" level="0" unlock="5" />
+        <Skill type="荆棘术" level="6" unlock="10" />
+    </Card>
+    <Card id="4570" name="三国英魂·元让" wikiId="" race="地狱" speed="3" star="5" cost="19" incrCost="2" at="370" hp="1840" incrAT="43" incrHP="51">
+        <Skill type="刚烈" level="0" unlock="0" />
+        <Skill type="不屈" level="0" unlock="5" />
+        <Skill type="寒冰之盾" level="0" unlock="10" />
+    </Card>
 
     <!-- 魔神 -->
     <Card id="5501" name="狙击复仇女神" wikiId="30871" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="1200" hp="10400000" incrAT="0" incrHP="0">

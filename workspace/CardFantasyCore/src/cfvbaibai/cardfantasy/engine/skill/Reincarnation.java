@@ -38,6 +38,19 @@ public final class Reincarnation {
                 }
                 player.getGrave().addCard(card);
             }
+            if(!player.getGrave().contains(card)&& player.getHand().contains(card))
+            {
+                return true;
+            }
+            if (!player.getGrave().contains(card) && player.getField().contains(card)) {
+                // 特殊情况：万兽之王死契召唤月蚀兽把自己复活了无法涅槃，暂时先hack一下
+//                if (!player.getField().removeCard(card)) {
+//                    throw new CardFantasyRuntimeException(
+//                            "Cannot find card " + card.getShortDesc() + " in field of " + player.getId());
+//                }
+//                player.getGrave().addCard(card);
+                return false;
+            }
             Grave grave = card.getOwner().getGrave();
             grave.removeCard(card);
             Hand hand = card.getOwner().getHand();
