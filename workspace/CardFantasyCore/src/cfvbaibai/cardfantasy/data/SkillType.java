@@ -149,6 +149,7 @@ public enum SkillType {
     魔甲("30931", 140, -10),
     盾刺("30972", 20, SkillTag.抗免疫, SkillTag.反击),
     荆棘术("30972", 160, 40, SkillTag.抗免疫, SkillTag.反击),
+    刚烈("", 800, 0, SkillTag.抗免疫, SkillTag.反击),
 
     转生("30935", 30, 5),
     武形秘仪("", 70, 0),
@@ -167,6 +168,7 @@ public enum SkillType {
     青囊("", 0, SkillTag.复活),
     送还("30943", 0, SkillTag.即死),
     冰甲("30937", 190, -10, SkillTag.物理护甲),
+    寒冰之盾("", 100, 0,SkillTag.控制, SkillTag.抗免疫, SkillTag.魔王无效,SkillTag.物理护甲),
     神魔之甲("", 60, 0, 110, 0, SkillTag.物理护甲),
     冰神附体("", 140, 0, SkillTag.物理护甲),
     水流护甲("", 650, -50, 0, 50),

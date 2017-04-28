@@ -36,6 +36,11 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2017-04-28: <x>欢笑，清风，波波等</x><ul>
+                        <li>添加新卡【三国英魂·元让】【暗月魅影】</li>
+                        <li>添加新技能【刚烈】，【寒冰之盾】</li>
+                        <li>修复了【万兽之王】BUG，修复防御技能BUG</li>
+                    </ul></li>
                     <li>2017-04-26: <x>欢笑，清风，波波等</x><ul>
                         <li>添加新卡【春樱斗魂】【三国樱魂·文远】【四神之青龙】【迷糊女仆】【夜下狂花】【森之小魔女】</li>
                         <li>觉醒卡牌【亡灵守护神】</li>
