@@ -1,12 +1,14 @@
 package cfvbaibai.cardfantasy.engine.skill;
 
+import java.util.List;
+
 import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
 import cfvbaibai.cardfantasy.data.CardSkill;
 import cfvbaibai.cardfantasy.data.Skill;
-import cfvbaibai.cardfantasy.data.SkillType;
-import cfvbaibai.cardfantasy.engine.*;
-
-import java.util.List;
+import cfvbaibai.cardfantasy.engine.CardInfo;
+import cfvbaibai.cardfantasy.engine.Field;
+import cfvbaibai.cardfantasy.engine.SkillResolver;
+import cfvbaibai.cardfantasy.engine.SkillUseInfo;
 
 /**
  * Created by hasee on 2017/5/7.
