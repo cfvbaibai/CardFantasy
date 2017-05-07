@@ -523,6 +523,7 @@ public class SkillResolver {
                 {
                     for (SkillUseInfo blockSkillUseInfo : defender.getUsableNormalSkills()) {
                         if (blockSkillUseInfo.getType() == SkillType.圣盾) {
+
                             CardInfo attack = (CardInfo) attacker;
                             if(resolveStopBlockSkill(blockSkillUseInfo.getSkill(), cardAttacker, defender))
                             {
@@ -536,6 +537,7 @@ public class SkillResolver {
                     }
                     for (SkillUseInfo blockSkillUseInfo : defender.getUsableNormalSkills()) {
                         if (blockSkillUseInfo.getType() == SkillType.无刀取) {
+
                             CardInfo attack = (CardInfo) attacker;
                             if(resolveStopBlockSkill(blockSkillUseInfo.getSkill(), cardAttacker, defender))
                             {
