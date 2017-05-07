@@ -4,14 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
-import cfvbaibai.cardfantasy.data.BuffSkill;
-import cfvbaibai.cardfantasy.data.Race;
-import cfvbaibai.cardfantasy.data.RuneActivationType;
-import cfvbaibai.cardfantasy.data.RuneActivator;
-import cfvbaibai.cardfantasy.data.RuneData;
-import cfvbaibai.cardfantasy.data.Skill;
-import cfvbaibai.cardfantasy.data.SkillTag;
-import cfvbaibai.cardfantasy.data.SkillType;
+import cfvbaibai.cardfantasy.data.*;
 import cfvbaibai.cardfantasy.engine.skill.*;
 
 
@@ -97,7 +90,9 @@ public class SkillResolver {
                 // JUST A PLACEHOLDER
             } else if (skillUseInfo.getType() == SkillType.送还||skillUseInfo.getType() == SkillType.LETITGO || skillUseInfo.getType() == SkillType.突袭) {
                 Return.apply(this, skillUseInfo.getSkill(), attacker, defender);
-            } else if (skillUseInfo.getType() == SkillType.沉默 ||
+            } else if (skillUseInfo.getType() == SkillType.LETITGO) {
+                Return.apply(this, skillUseInfo.getSkill().getAttachedSkill1(), attacker, defender);
+            }else if (skillUseInfo.getType() == SkillType.沉默 ||
                     skillUseInfo.getType() == SkillType.觉醒沉默 && attacker.isAwaken(skillUseInfo, Race.KINGDOM) ||
                     skillUseInfo.getType() == SkillType.觉醒沉默A && attacker.isAwaken(skillUseInfo, Race.FOREST)) {
                 Silence.apply(this, skillUseInfo, attacker, defender, false, false);
@@ -424,8 +419,10 @@ public class SkillResolver {
                     LifeDrain.apply(skillUseInfo, this, attacker, defender, result, damagedResult);
                 } else if (skillUseInfo.getType() == SkillType.被插出五星) {
                     CounterSummon.apply(this, defender, skillUseInfo.getSkill(), 5);
-                } else if (skillUseInfo.getType() == SkillType.反射装甲||skillUseInfo.getType() == SkillType.LETITGO) {
+                } else if (skillUseInfo.getType() == SkillType.反射装甲) {
                     ReflectionArmor.apply(skillUseInfo.getSkill(), this, attacker, defender, attackSkill, damagedResult.actualDamage);
+                } else if (skillUseInfo.getType() == SkillType.LETITGO) {
+                    ReflectionArmor.apply(skillUseInfo.getSkill().getAttachedSkill2(), this, attacker, defender, attackSkill, damagedResult.actualDamage);
                 }
             }
             if (!defender.isSilent() && !defender.justRevived()) {
@@ -783,10 +780,7 @@ public class SkillResolver {
         if (result.cardDead && !result.unbending) {
             deadCard.setDeadOnce(true);
         }
-        // HACKHACK: Cannot find better way to handle 不屈
-        if (!deadCard.getStatus().containsStatus(CardStatusType.不屈)) {
-            resolveLeaveSkills(deadCard);
-        }
+
         Player opponent = this.getStage().getOpponent(deadCard.getOwner());
         for (SkillUseInfo deadCardSkillUseInfo : deadCard.getUsableDeathSkills()) {
             if (deadCardSkillUseInfo.getType() == SkillType.烈焰风暴) {
@@ -884,6 +878,7 @@ public class SkillResolver {
                         deadCardSkillUseInfo.getType() == SkillType.花族秘术 ||
                         deadCardSkillUseInfo.getType() == SkillType.洪荒之术 ||
                         deadCardSkillUseInfo.getType() == SkillType.武形秘术 ||
+                        deadCardSkillUseInfo.getType() == SkillType.武形秘法 ||
                         deadCardSkillUseInfo.getType() == SkillType.涅盘 ||
                         deadCardSkillUseInfo.getType() == SkillType.武侯) {
                     if (Reincarnation.apply(this, deadCardSkillUseInfo.getSkill(), deadCard, result.unbending)) {
@@ -898,6 +893,16 @@ public class SkillResolver {
                     Reincarnation.apply(this, rune.getSkill(), deadCard, result.unbending);
                 }
             }
+        }
+        // HACKHACK: Cannot find better way to handle 不屈/
+        //改变不屈的去掉buff位置，为GiveSideSkill做的处理
+        if (!deadCard.getStatus().containsStatus(CardStatusType.不屈)) {
+            for (SkillUseInfo deadCardSkillUseInfo : deadCard.getAllUsableSkills()) {
+                if (deadCardSkillUseInfo.getSkill().getGiveSkill() == 1) {
+                    deadCard.removeSkill((CardSkill)deadCardSkillUseInfo.getSkill());
+                }
+            }
+            resolveLeaveSkills(deadCard);
         }
     }
 
@@ -1124,7 +1129,8 @@ public class SkillResolver {
             result.cardDead = true;
             for (SkillUseInfo skillUseInfo : defender.getUsableNormalSkills()) {
                 if (skillUseInfo.getType() == SkillType.不屈 ||
-                        skillUseInfo.getType() == SkillType.鬼王之怒) {
+                        skillUseInfo.getType() == SkillType.鬼王之怒 ||
+                        skillUseInfo.getType() == SkillType.武形秘法) {
                     // BUGBUG: The original game does not set cardDead to false
                     // result.cardDead = false
                     result.unbending = Unbending.apply(skillUseInfo, this, defender);
@@ -1381,8 +1387,16 @@ public class SkillResolver {
                     TogetherBuff.apply(this, skillUseInfo, fieldCard, null);
                 } else if (skillUseInfo.getType() == SkillType.生命符文) {
                     CoefficientBuff.apply(this, skillUseInfo, fieldCard, null, SkillEffectType.MAXHP_CHANGE);
+                } else if (skillUseInfo.getType() == SkillType.战歌之鼓) {
+                    CoefficientBuff.apply(this, skillUseInfo, fieldCard, null, SkillEffectType.ATTACK_CHANGE);
                 } else if (skillUseInfo.getType() == SkillType.神圣守护) {
                     HolyGuard.apply(this, skillUseInfo, fieldCard);
+                } else if (skillUseInfo.getType() == SkillType.西凉铁骑) {
+                    GiveSideSkill.apply(this, skillUseInfo, fieldCard,skillUseInfo.getAttachedUseInfo1().getSkill());
+                } else if (skillUseInfo.getType() == SkillType.袈裟斩) {
+                    GiveSideSkill.apply(this, skillUseInfo, card,skillUseInfo.getAttachedUseInfo1().getSkill());
+                } else if (skillUseInfo.getType() == SkillType.致命打击) {
+                    GiveSideSkill.apply(this, skillUseInfo, card,skillUseInfo.getAttachedUseInfo1().getSkill());
                 } else if (skillUseInfo.getType() == SkillType.王国同调) {
                     Synchrome.apply(this, skillUseInfo, fieldCard, card, Race.KINGDOM);
                 } else if (skillUseInfo.getType() == SkillType.森林同调) {
@@ -1574,8 +1588,16 @@ public class SkillResolver {
                 TogetherBuff.remove(this, deadCardSkillUseInfo, card, null);
             } else if (deadCardSkillUseInfo.getType() == SkillType.生命符文) {
                 CoefficientBuff.remove(this, deadCardSkillUseInfo, card, null);
+            } else if (deadCardSkillUseInfo.getType() == SkillType.战歌之鼓) {
+                CoefficientBuff.remove(this, deadCardSkillUseInfo, card, null);
             } else if (deadCardSkillUseInfo.getType() == SkillType.神圣守护) {
                 HolyGuard.remove(this, deadCardSkillUseInfo, card);
+            } else if (deadCardSkillUseInfo.getType() == SkillType.西凉铁骑) {
+                GiveSideSkill.remove(this, deadCardSkillUseInfo, card,deadCardSkillUseInfo.getAttachedUseInfo1().getSkill());
+            } else if (deadCardSkillUseInfo.getType() == SkillType.袈裟斩) {
+                GiveSideSkill.remove(this, deadCardSkillUseInfo, card,deadCardSkillUseInfo.getAttachedUseInfo1().getSkill());
+            } else if (deadCardSkillUseInfo.getType() == SkillType.致命打击) {
+                GiveSideSkill.remove(this, deadCardSkillUseInfo, card,deadCardSkillUseInfo.getAttachedUseInfo1().getSkill());
             } else if (deadCardSkillUseInfo.getType() == SkillType.军团王国之力
                     || deadCardSkillUseInfo.getType() == SkillType.军团森林之力
                     || deadCardSkillUseInfo.getType() == SkillType.军团蛮荒之力

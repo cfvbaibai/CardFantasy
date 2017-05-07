@@ -6,10 +6,12 @@ public abstract class Skill implements Comparable<Skill> {
     protected int level;
     protected AttachedSkill attachedSkill1;
     protected AttachedSkill attachedSkill2;
+    private  int giveSkill;
 
     public Skill(SkillType type, int level) {
         this.type = type;
         this.level = level;
+        this.giveSkill = 0;
         SkillType attachedType1 = this.type.getAttachedType1();
         int attachedLevel1 = this.type.getAttachedLevel1();
         if (attachedType1 != null) {
@@ -44,6 +46,14 @@ public abstract class Skill implements Comparable<Skill> {
 
     public int getImpact3() {
         return this.type.getImpact3(this.level);
+    }
+
+    public int getGiveSkill(){
+        return this.giveSkill;
+    }
+
+    public  void setGiveSkill(int giveSkill){
+        this.giveSkill =giveSkill;
     }
 
     public Skill getAttachedSkill1() {
@@ -112,6 +122,7 @@ public abstract class Skill implements Comparable<Skill> {
     public boolean isPostcastSkill() {
         return false;
     }
+
 
     public static Skill 自动扣血() {
         return new RuneSkill(SkillType.自动扣血, 0);

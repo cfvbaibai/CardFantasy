@@ -39,6 +39,7 @@ public enum SkillType {
     王国之力("30932", 25, SkillTag.基础攻击加成, SkillTag.抗削弱),
     本源之力("30938", 20, SkillTag.基础攻击加成, SkillTag.抗削弱),
     根源之力("", 0,20,0,40, SkillTag.基础攻击加成, SkillTag.抗削弱,SkillTag.抗毒刃),
+    战歌之鼓("", 5, SkillTag.基础攻击加成,SkillTag.抗削弱),
     圣光("30947", 15, 15, SkillTag.额外攻击加成),
     要害("31124", 15, 15, SkillTag.额外攻击加成),
     暗杀("31138", 15, 15, SkillTag.额外攻击加成),
@@ -141,7 +142,6 @@ public enum SkillType {
 
     法力反射("30929", 30),
     反射装甲("", 0, SkillTag.即死, SkillTag.抗免疫, SkillTag.魔王无效),
-    LETITGO("", 0, SkillTag.即死, SkillTag.抗免疫, SkillTag.魔王无效),
     镜面装甲("", 210, 0, SkillTag.抗沉默),
     镜面("", 0, SkillTag.抗沉默),
     真理导言("", 6, 0, SkillTag.抗沉默),
@@ -373,6 +373,11 @@ public enum SkillType {
     逆鳞("",SkillType.武形秘箭,10,SkillType.神箭三重奏,10),
     突袭("",0,0, SkillTag.即死,SkillTag.额外攻击加成),
     樱魂("",SkillType.吸血,8,SkillType.奋战,7),
+    LETITGO("", SkillType.送还,0,SkillType.反射装甲,0),
+    西凉铁骑("",SkillType.破军,5,null,0),
+    袈裟斩("",SkillType.燕返,0,null,0),
+    致命打击("",SkillType.精准打击,9,null,0),
+    武形秘法("",70, 0),
 
     // To Do
 

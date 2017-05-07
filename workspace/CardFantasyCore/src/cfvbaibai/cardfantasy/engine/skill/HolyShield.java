@@ -2,10 +2,9 @@ package cfvbaibai.cardfantasy.engine.skill;
 
 import cfvbaibai.cardfantasy.GameUI;
 import cfvbaibai.cardfantasy.data.Skill;
-import cfvbaibai.cardfantasy.engine.CardInfo;
-import cfvbaibai.cardfantasy.engine.EntityInfo;
-import cfvbaibai.cardfantasy.engine.SkillResolver;
-import cfvbaibai.cardfantasy.engine.SkillUseInfo;
+import cfvbaibai.cardfantasy.engine.*;
+
+import java.util.List;
 
 public final class HolyShield {
     public static boolean apply(SkillUseInfo skillUseInfo, SkillResolver resolver, EntityInfo attacker, CardInfo victim) {
@@ -25,9 +24,16 @@ public final class HolyShield {
         if (victim == null) {
             return ;
         }
+        if (!victim.hasUsed(skillUseInfo)) {
+            return ;
+        }
         Skill skill = skillUseInfo.getSkill();
         GameUI ui = resolver.getStage().getUI();
         ui.useSkill(victim, skill, true);
-        victim.setResetEffect(skillUseInfo);
+        List<SkillEffect> effects = victim.getEffectsCausedBy(skillUseInfo);
+        for (SkillEffect effect : effects) {
+            if(effect.getType() == SkillEffectType.SKILL_USED)
+            victim.removeEffect(effect);
+        }
     }
 }
