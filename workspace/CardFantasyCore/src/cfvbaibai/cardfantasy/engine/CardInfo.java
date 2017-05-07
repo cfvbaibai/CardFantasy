@@ -52,6 +52,36 @@ public class CardInfo extends EntityInfo {
         this.cachedPosition = -1;
         this.deadOnce = false;
     }
+
+    public List<SkillUseInfo> getSkillUserInfos(){
+        return this.skillUseInfos;
+    }
+
+    public void addSkill(CardSkill skill)
+    {
+        boolean tag = false;
+        for(int j=0;j<this.skillUseInfos.size();j++){
+            if(this.skillUseInfos.get(j).getType() == skill.getType()&&this.skillUseInfos.get(j).getSkill().getLevel() == skill.getLevel()&&this.skillUseInfos.get(j).getSkill().getGiveSkill() == 1)
+            {
+                tag = true;
+                break;
+            }
+        }
+        if(!tag) {
+            this.skillUseInfos.add(new SkillUseInfo(this, skill));
+        }
+    }
+
+    public void removeSkill(CardSkill skill)
+    {
+        for(int j=0;j<this.skillUseInfos.size();j++){
+           if(this.skillUseInfos.get(j).getType() == skill.getType()&&this.skillUseInfos.get(j).getSkill().getLevel() == skill.getLevel()&&this.skillUseInfos.get(j).getSkill().getGiveSkill() == 1)
+           {
+               this.skillUseInfos.remove(j);
+               break;
+           }
+        }
+    }
     
     public CardSkill getExtraSkill() {
         return card.getExtraSkill();
@@ -394,20 +424,6 @@ public class CardInfo extends EntityInfo {
         }
     }
 
-    public void removeEffectByUse(SkillEffect effect) {
-        List<SkillEffect> result = this.effects.get(effect.getCause().getSkill().getType());
-        if (result == null) {
-            return;
-        }
-        for (Map.Entry<SkillType, List<SkillEffect>> entry : this.effects.entrySet()) {
-            if(entry.getKey() == effect.getCause().getSkill().getType()) {
-                this.effects.remove(entry.getKey());
-            }
-        }
-        if (effect.getType() == SkillEffectType.MAXHP_CHANGE && this.getHP() > this.getMaxHP()) {
-            this.setBasicHP(this.getMaxHP());
-        }
-    }
 
     public List<SkillEffect> getEffects() {
         List<SkillEffect> result = new ArrayList<SkillEffect>();
@@ -674,9 +690,5 @@ public class CardInfo extends EntityInfo {
             return null;
         }
         return status.get(0).getCause().getOwner();
-    }
-
-    public void setResetEffect(SkillUseInfo skillUseInfo) {
-        this.removeEffectByUse(new SkillEffect(SkillEffectType.SKILL_USED, skillUseInfo, 0, true));
     }
 }

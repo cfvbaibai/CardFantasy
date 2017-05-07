@@ -36,6 +36,12 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2017-05-07: <x>欢笑，清风，波波等</x><ul>
+                        <li>添加新卡【三国英魂·孟起】【武形银枪尊者】【剃刀之尾】</li>
+                        <li>觉醒卡牌【爱神】</li>
+                        <li>添加新技能【西凉铁骑】，【袈裟斩】，【武形秘法】，【致命打击】，【战歌之鼓】</li>
+                        <li>修复了【LET IT GO】技能能主动送还免疫卡的BUG、【无刀取】技能会不断叠加圣盾导致出错的BUG</li>
+                    </ul></li>
                     <li>2017-04-28: <x>欢笑，清风，波波等</x><ul>
                         <li>添加新卡【三国英魂·元让】【暗月魅影】</li>
                         <li>添加新技能【刚烈】，【寒冰之盾】</li>

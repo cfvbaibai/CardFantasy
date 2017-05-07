@@ -983,6 +983,11 @@
         <Skill type="破军" level="8" unlock="5"  />
         <Skill type="免疫" level="0" unlock="10" />
     </Card>
+    <Card id="1592" name="剃刀之尾" wikiId="" race="王国" speed="3" star="5" cost="18" incrCost="2" at="460" hp="1559" incrAT="40" incrHP="32">
+        <Skill type="致命打击" level="0" unlock="0" />
+        <Skill type="战歌之鼓" level="6" unlock="5"  />
+        <Skill type="洪荒之术" level="0" unlock="10" />
+    </Card>
 
 
     <!-- 森林 -->
@@ -1735,13 +1740,18 @@
     </Card>
     <Card id="2560" name="三国英魂·华佗" wikiId="" race="森林" speed="4" star="5" cost="19" incrCost="2" at="370" hp="1430" incrAT="36" incrHP="31">
         <Skill type="生命符文" level="5" unlock="0" />
-        <Skill type="青囊" level="0" unlock="5" death="true" />
+        <Skill type="青囊" level="0" unlock="5" postcast="true" />
         <Skill type="月神的护佑" level="7" unlock="10" />
     </Card>
     <Card id="2561" name="森之小魔女" wikiId="" race="森林" speed="2" star="4" cost="14" incrCost="2" at="270" hp="1330" incrAT="36" incrHP="35">
         <Skill type="祈愿" level="1" unlock="0" />
         <Skill type="回魂" level="1" unlock="5" />
         <Skill type="转生" level="7" unlock="10" />
+    </Card>
+    <Card id="2562" name="武形银枪尊者" wikiId="" race="森林" speed="2" star="5" cost="18" incrCost="2" at="480" hp="1570" incrAT="45" incrHP="36">
+        <Skill type="武形降临" level="0" unlock="0" death="true" />
+        <Skill type="袈裟斩" level="0" unlock="5" />
+        <Skill type="武形秘法" level="0" unlock="10" />
     </Card>
 
     <!-- 蛮荒  -->
@@ -2584,6 +2594,11 @@
         <Skill type="圣母回声" level="0" unlock="5" />
         <Skill type="结界立场" level="0" unlock="10" />
     </Card>
+    <Card id="3569" name="三国英魂·孟起" wikiId="" race="蛮荒" speed="4" star="5" cost="19" incrCost="2" at="425" hp="1735" incrAT="43" incrHP="30">
+        <Skill type="西凉铁骑" level="0" unlock="0" />
+        <Skill type="神兵召唤" level="0" unlock="5" />
+        <Skill type="骑士荣耀" level="0" unlock="10" />
+    </Card>
 
 
 
@@ -3194,10 +3209,10 @@
         <Skill type="污染" level="7" unlock="5" />
         <Skill type="森林沐浴" level="0" unlock="10" summon="true" />
     </Card>
-    <Card id="4522" name="爱神" wikiId="" race="地狱" speed="4" star="5" cost="16" incrCost="2" at="520" hp="1314" incrAT="17" incrHP="35">
+    <Card id="4522" name="爱神" wikiId="" race="地狱" speed="3" star="5" cost="16" incrCost="2" at="520" hp="1314" incrAT="24" incrHP="42">
         <Skill type="神圣守护" level="8" unlock="0" />
-        <Skill type="迷魂" level="8" unlock="5" />
-        <Skill type="冰甲" level="6" unlock="10" />
+        <Skill type="混乱领域" level="8" unlock="5" />
+        <Skill type="冰神附体" level="0" unlock="10" />
     </Card>
     <Card id="4523" name="精灵王亡灵" wikiId="" race="地狱" speed="4" star="5" cost="17" incrCost="2" at="330" hp="1530" incrAT="28" incrHP="30">
         <Skill type="迷魂" level="7" unlock="0" />
