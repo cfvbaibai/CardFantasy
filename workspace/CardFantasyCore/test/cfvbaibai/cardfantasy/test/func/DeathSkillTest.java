@@ -216,31 +216,32 @@ public class DeathSkillTest extends SkillValidationTest {
         
         random.addNextNumbers(0);    // 金属巨龙1暴击
         context.proceedOneRound();
-        Assert.assertEquals(815 * 2, 1825 - c金属巨龙1.getHP());
+        Assert.assertEquals(865 * 2, 1825 - c金属巨龙1.getHP());
         Assert.assertTrue(c欲望惩罚者.getStatus().containsStatus(CardStatusType.不屈));
         Assert.assertTrue(!c欲望惩罚者.isDead());
-        
+
+        random.addNextNumbers(0);
         context.proceedOneRound();
         Assert.assertTrue(c金属巨龙1.isDead());
 
-        random.addNextNumbers(0);   // 金属巨龙2暴击
+        random.addNextNumbers(0,100);   // 金属巨龙2暴击
         context.proceedOneRound();
-        Assert.assertEquals(815 * 2, 1825 - c金属巨龙2.getHP());
+        Assert.assertEquals(865 * 2, 1825 - c金属巨龙2.getHP());
         Assert.assertTrue(c欲望惩罚者.isDead());
     }
 
     @Test
     public void test燕返_摧毁() {
-        SkillTestContext context = prepare(50, 50, "占位符", "独眼巨人", "欲望惩罚者");
+        SkillTestContext context = prepare(50, 50, "占位符", "独眼巨人", "月镰杀手");
         CardInfo c占位符 = context.addToField(0, 0);
         CardInfo c独眼巨人 = context.addToHand(1, 0).setSummonDelay(0);
-        CardInfo c欲望惩罚者 = context.addToField(2, 1);
+        CardInfo c月镰杀手 = context.addToField(2, 1);
         context.startGame();
         
         random.addNextPicks(0); // 摧毁
         context.proceedOneRound();
-        Assert.assertTrue(c欲望惩罚者.isDead());
-        Assert.assertEquals(815 * 2, 5000 - c占位符.getHP());
+        Assert.assertTrue(c月镰杀手.isDead());
+        Assert.assertEquals(565 * 2, 5000 - c占位符.getHP());
         Assert.assertEquals(0, 1180 - c独眼巨人.getHP());
     }
 
@@ -398,6 +399,7 @@ public class DeathSkillTest extends SkillValidationTest {
         context.startGame();
 
         random.addNextPicks(0);
+        random.addNextNumbers(100);
         context.proceedOneRound();
         Assert.assertTrue(c元素灵龙.isDead());
         Assert.assertTrue(c欲望惩罚者.isDead());
