@@ -3457,6 +3457,11 @@
         <Skill type="不屈" level="0" unlock="5" />
         <Skill type="寒冰之盾" level="0" unlock="10" />
     </Card>
+    <Card id="4571" name="三国英魂·甄姬" wikiId="" race="地狱" speed="3" star="5" cost="19" incrCost="2" at="370" hp="1840" incrAT="43" incrHP="51">
+        <Skill type="洛神" level="0" unlock="0" postcast="true"/>
+        <Skill type="星云锁链" level="0" unlock="5" />
+        <Skill type="寒冰触碰" level="4" unlock="10" summon="true"/>
+    </Card>
 
     <!-- 魔神 -->
     <Card id="5501" name="狙击复仇女神" wikiId="30871" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="1200" hp="10400000" incrAT="0" incrHP="0">

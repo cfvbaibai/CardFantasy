@@ -1478,6 +1478,8 @@ public class SkillResolver {
                     IceMagic.apply(skillUseInfo, this, card, enemy, -1, 30, 0);
                 } else if (skillUseInfo.getType() == SkillType.寒霜冲击) {
                     IceMagic.apply(skillUseInfo, this, card, enemy, -1, 50, 45 * enemy.getField().getAliveCards().size());
+                } else if (skillUseInfo.getType() == SkillType.寒冰触碰) {
+                    IceTouch.apply(skillUseInfo, this, card, enemy, 3);
                 } else if (skillUseInfo.getType() == SkillType.法力风暴 || skillUseInfo.getType() == SkillType.魔法毁灭) {
                     ManaErode.apply(skillUseInfo.getSkill(), this, card, enemy, -1);
                 } else if (skillUseInfo.getType() == SkillType.毒云) {
@@ -2088,6 +2090,9 @@ public class SkillResolver {
                 Resurrection.apply(this, skillUseInfo, card);
             } else if (skillUseInfo.getType() == SkillType.青囊) {
                 Revive.apply(this, skillUseInfo, card);
+            } else if (skillUseInfo.getType() == SkillType.洛神) {
+                // 镜像召唤的单位可以被连锁攻击
+                Summon.apply(this, skillUseInfo, card, SummonType.Normal, 1, card.getName());
             }
         }
     }

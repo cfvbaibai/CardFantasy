@@ -36,6 +36,11 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2017-05-15: <x>欢笑，清风，波波等</x><ul>
+                        <li>添加新卡【三国英魂·甄姬】</li>
+                        <li>添加新技能【洛神】</li>
+                        <li>更新wiki</li>
+                    </ul></li>
                     <li>2017-05-12: <x>欢笑，清风，波波等</x><ul>
                         <li>添加新卡【三国英魂·云长】【三国英魂·汉升】【四神之朱雀】【终焉使者】</li>
                         <li>觉醒卡牌【欲望惩罚者】</li>

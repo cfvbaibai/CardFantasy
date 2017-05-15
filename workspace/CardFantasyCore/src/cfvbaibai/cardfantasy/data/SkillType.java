@@ -307,7 +307,8 @@ public enum SkillType {
     逃跑("", 0, SkillTag.复活),
     夺魂("", 0, 1, SkillTag.复活),
 
-    镜像("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
+    镜像("", 0, 0, SkillTag.召唤),
+    洛神("", 0, 0, SkillTag.召唤),
     召唤王国战士("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
     召唤骷髅战士("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
     召唤邪龙护卫("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
@@ -397,6 +398,8 @@ public enum SkillType {
     魔龙吐息("",SkillType.凤鸣,0,SkillType.凤火,0),
     天崩地裂("",0,SkillTag.即死),
     觉醒天崩地裂("", SkillType.天崩地裂,0,SkillType.灵王的轰击,4),
+    新生("",0,0,SkillTag.新生),
+
 
     // To Do
 
