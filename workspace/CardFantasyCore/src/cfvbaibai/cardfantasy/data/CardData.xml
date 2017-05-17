@@ -988,10 +988,15 @@
         <Skill type="战歌之鼓" level="6" unlock="5"  />
         <Skill type="洪荒之术" level="0" unlock="10" />
     </Card>
-    <Card id="1592" name="三国英魂·汉升" wikiId="" race="王国" speed="3" star="5" cost="19" incrCost="2" at="380" hp="1650" incrAT="45" incrHP="31">
+    <Card id="1593" name="三国英魂·汉升" wikiId="" race="王国" speed="3" star="5" cost="19" incrCost="2" at="380" hp="1650" incrAT="45" incrHP="31">
         <Skill type="百步穿杨" level="0" unlock="0" />
         <Skill type="坚毅" level="0" unlock="5"  />
         <Skill type="精准射击" level="0" unlock="10" />
+    </Card>
+    <Card id="1594" name="美味厨娘" wikiId="" race="王国" speed="4" star="5" cost="18" incrCost="2" at="320" hp="1460" incrAT="43" incrHP="35">
+        <Skill type="爱心料理" level="0" unlock="0" />
+        <Skill type="不动" level="0" unlock="5"  />
+        <Skill type="生命符文" level="0" unlock="10" />
     </Card>
 
 
@@ -3457,6 +3462,11 @@
         <Skill type="不屈" level="0" unlock="5" />
         <Skill type="寒冰之盾" level="0" unlock="10" />
     </Card>
+    <Card id="4571" name="三国英魂·甄姬" wikiId="" race="地狱" speed="3" star="5" cost="19" incrCost="2" at="370" hp="1840" incrAT="43" incrHP="51">
+        <Skill type="洛神" level="0" unlock="0" postcast="true"/>
+        <Skill type="星云锁链" level="0" unlock="5" />
+        <Skill type="寒冰触碰" level="4" unlock="10" summon="true"/>
+    </Card>
 
     <!-- 魔神 -->
     <Card id="5501" name="狙击复仇女神" wikiId="30871" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="1200" hp="10400000" incrAT="0" incrHP="0">
@@ -3828,6 +3838,11 @@
         <Skill type="觉醒天崩地裂" level="0" unlock="0" />
         <Skill type="魔族之血" level="0" unlock="5" />
         <Skill type="魔龙吐息" level="0" unlock="10" />
+    </Card>
+    <Card id="6102" name="魅惑魔女" wikiId="" race="魔族" speed="3" star="5" cost="19" incrCost="2" at="550" hp="1430" incrAT="37" incrHP="61">
+        <Skill type="新生" level="0" unlock="0" />
+        <Skill type="魅惑之舞" level="0" unlock="5" summon="true"/>
+        <Skill type="逃跑" level="0" unlock="10" />
     </Card>
 
     <!-- 测试卡 -->

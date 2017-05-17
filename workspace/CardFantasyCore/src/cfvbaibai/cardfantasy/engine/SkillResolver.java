@@ -60,6 +60,31 @@ public class SkillResolver {
         return cards;
     }
 
+    public List<CardInfo> getFrontCards(Field field, int position) {
+        List<CardInfo> cards = this.getCardsOnFront(field, position);
+        CardInfo card = field.getCard(position);
+        if (card != null) {
+            cards.add(card);
+        }
+        return cards;
+    }
+
+    public List<CardInfo> getCardsOnFront(Field field, int position) {
+        List<CardInfo> cards = new ArrayList<CardInfo>();
+        CardInfo frontCard = null;
+        if (position > 0) {
+            for(int i =0;i<position;i++)
+            {
+                frontCard = field.getCard(i);
+                if(frontCard !=null)
+                {
+                  cards.add(frontCard);
+                }
+            }
+        }
+        return cards;
+    }
+
     public void resolvePreAttackSkills(Player attacker, Player defender) throws HeroDieSignal {
         List<CardInfo> cards = attacker.getField().getAliveCards();
         for (CardInfo card : cards) {
@@ -152,7 +177,9 @@ public class SkillResolver {
             } else if (skillUseInfo.getType() == SkillType.无刀取) {
                 //镜像召唤的单位可以被连锁攻击
                 HolyShield.resetApply(skillUseInfo, this, attacker);
-            }else if (skillUseInfo.getType() == SkillType.夺魂) {
+            } else if (skillUseInfo.getType() == SkillType.新生) {
+                NewBorn.apply(this,skillUseInfo,  attacker,1);
+            } else if (skillUseInfo.getType() == SkillType.夺魂) {
                 SoulControl.apply(this, skillUseInfo, attacker, defender);
             } else if (skillUseInfo.getType() == SkillType.鬼才) {
                 SoulControl.apply(this, skillUseInfo.getAttachedUseInfo2(), attacker, defender);
@@ -1306,6 +1333,8 @@ public class SkillResolver {
                 Rejuvenate.apply(cardSkillUseInfo.getSkill(), this, card);
             } else if (cardSkillUseInfo.getType() == SkillType.闭月) {
                 Rejuvenate.apply(cardSkillUseInfo.getAttachedUseInfo2().getSkill(), this, card);
+            } else if (cardSkillUseInfo.getType() == SkillType.圣母吟咏) {
+                PercentGetHp.apply(cardSkillUseInfo.getSkill(), this, card);
             }
         }
         if (!card.isSilent()) {
@@ -1442,6 +1471,8 @@ public class SkillResolver {
                     GiveSideSkill.apply(this, skillUseInfo, card,skillUseInfo.getAttachedUseInfo1().getSkill());
                 } else if (skillUseInfo.getType() == SkillType.致命打击) {
                     GiveSideSkill.apply(this, skillUseInfo, card,skillUseInfo.getAttachedUseInfo1().getSkill());
+                } else if (skillUseInfo.getType() == SkillType.爱心料理) {
+                    GiveSideSkill.apply(this, skillUseInfo, card,skillUseInfo.getAttachedUseInfo1().getSkill());
                 } else if (skillUseInfo.getType() == SkillType.王国同调) {
                     Synchrome.apply(this, skillUseInfo, fieldCard, card, Race.KINGDOM);
                 } else if (skillUseInfo.getType() == SkillType.森林同调) {
@@ -1472,6 +1503,8 @@ public class SkillResolver {
                     IceMagic.apply(skillUseInfo, this, card, enemy, -1, 30, 0);
                 } else if (skillUseInfo.getType() == SkillType.寒霜冲击) {
                     IceMagic.apply(skillUseInfo, this, card, enemy, -1, 50, 45 * enemy.getField().getAliveCards().size());
+                } else if (skillUseInfo.getType() == SkillType.寒冰触碰) {
+                    IceTouch.apply(skillUseInfo, this, card, enemy, 3);
                 } else if (skillUseInfo.getType() == SkillType.法力风暴 || skillUseInfo.getType() == SkillType.魔法毁灭) {
                     ManaErode.apply(skillUseInfo.getSkill(), this, card, enemy, -1);
                 } else if (skillUseInfo.getType() == SkillType.毒云) {
@@ -1500,8 +1533,10 @@ public class SkillResolver {
                     Trap.apply(skillUseInfo, this, card, enemy);
                 } else if (skillUseInfo.getType() == SkillType.送还) {
                     Return.apply(this, skillUseInfo.getSkill(), card, enemy);
-                }  else if (skillUseInfo.getType() == SkillType.觉醒天崩地裂) {
-                    GiantEarthquakesLandslides.apply(this, skillUseInfo.getAttachedUseInfo1().getSkill(), card, enemy);
+                } else if (skillUseInfo.getType() == SkillType.地裂) {
+                    GiantEarthquakesLandslides.apply(this, skillUseInfo.getSkill(), card, enemy, 1);
+                } else if (skillUseInfo.getType() == SkillType.觉醒天崩地裂) {
+                    GiantEarthquakesLandslides.apply(this, skillUseInfo.getAttachedUseInfo1().getSkill(), card, enemy,3);
                     ManaErode.apply(skillUseInfo.getAttachedUseInfo2().getSkill(), this, card, enemy, 3);
                 } else if (skillUseInfo.getType() == SkillType.摧毁) {
                     Destroy.apply(this, skillUseInfo.getSkill(), card, enemy, 1);
@@ -1534,6 +1569,8 @@ public class SkillResolver {
                 } else if (skillUseInfo.getType() == SkillType.全体沉默) {
                     // 降临全体沉默全场只能发动一次，全领域沉默可以无限发动
                     Silence.apply(this, skillUseInfo, card, enemy, true, true);
+                } else if (skillUseInfo.getType() == SkillType.魅惑之舞) {
+                    Confusion.apply(skillUseInfo, this, card, enemy, -1);
                 } else if (skillUseInfo.getType() == SkillType.无限全体沉默) {
                     Silence.apply(this, skillUseInfo, card, enemy, true, false);
                 }else if (skillUseInfo.getType() == SkillType.仙子召唤) {
@@ -1645,6 +1682,8 @@ public class SkillResolver {
             } else if (deadCardSkillUseInfo.getType() == SkillType.袈裟斩) {
                 GiveSideSkill.remove(this, deadCardSkillUseInfo, card,deadCardSkillUseInfo.getAttachedUseInfo1().getSkill());
             } else if (deadCardSkillUseInfo.getType() == SkillType.致命打击) {
+                GiveSideSkill.remove(this, deadCardSkillUseInfo, card,deadCardSkillUseInfo.getAttachedUseInfo1().getSkill());
+            } else if (deadCardSkillUseInfo.getType() == SkillType.爱心料理) {
                 GiveSideSkill.remove(this, deadCardSkillUseInfo, card,deadCardSkillUseInfo.getAttachedUseInfo1().getSkill());
             } else if (deadCardSkillUseInfo.getType() == SkillType.军团王国之力
                     || deadCardSkillUseInfo.getType() == SkillType.军团森林之力
@@ -2082,6 +2121,9 @@ public class SkillResolver {
                 Resurrection.apply(this, skillUseInfo, card);
             } else if (skillUseInfo.getType() == SkillType.青囊) {
                 Revive.apply(this, skillUseInfo, card);
+            } else if (skillUseInfo.getType() == SkillType.洛神) {
+                // 镜像召唤的单位可以被连锁攻击
+                Summon.apply(this, skillUseInfo, card, SummonType.Normal, 1, card.getName());
             }
         }
     }

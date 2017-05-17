@@ -21,7 +21,7 @@ public final class Revive {
         Grave grave = reviver.getOwner().getGrave();
         List<CardInfo> revivableCards = new ArrayList<CardInfo>();
         for (CardInfo deadCard : grave.toList()) {
-            if (deadCard != null && !deadCard.containsUsableSkillsWithTag(SkillTag.复活) && deadCard.getStar() != 1) {
+            if (deadCard != null && !deadCard.containsAllUsableSkillsWithTag(SkillTag.复活) && deadCard.getStar() != 1) {
                 revivableCards.add(deadCard);
             }
         }

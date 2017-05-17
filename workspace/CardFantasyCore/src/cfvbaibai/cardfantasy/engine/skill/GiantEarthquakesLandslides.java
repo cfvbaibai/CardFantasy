@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GiantEarthquakesLandslides {
-    public static void apply(SkillResolver resolver, Skill cardSkill, CardInfo attacker, Player defenderHero) throws HeroDieSignal {
+    public static void apply(SkillResolver resolver, Skill cardSkill, CardInfo attacker, Player defenderHero, int count) throws HeroDieSignal {
         StageInfo stage = resolver.getStage();
         Randomizer random = stage.getRandomizer();
         if (attacker == null) {
@@ -27,7 +27,7 @@ public class GiantEarthquakesLandslides {
                 candidates.add(victim);
             }
         }
-        if (candidates.size() < 3) {
+        if (candidates.size() < count) {
             return;
         }
         GameUI ui = resolver.getStage().getUI();

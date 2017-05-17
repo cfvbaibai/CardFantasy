@@ -364,7 +364,7 @@ public class CardInfo extends EntityInfo {
 
     public List<SkillUseInfo> getUsablePostcastSkills() {
         List<SkillUseInfo> skillUseInfos = new ArrayList<SkillUseInfo>();
-        for (SkillUseInfo skillUseInfo : this.getAllUsableSkills()) {
+        for (SkillUseInfo skillUseInfo : this.getAllUsableSkillsIgnoreSilence()) {
             CardSkill cardSkill = (CardSkill)skillUseInfo.getSkill();
             if (cardSkill.isPostcastSkill()) {
                 skillUseInfos.add(skillUseInfo);
@@ -573,6 +573,16 @@ public class CardInfo extends EntityInfo {
     
     public boolean containsUsableSkillsWithTag(SkillTag tag) {
         for (SkillUseInfo skillUseInfo : this.getAllUsableSkills()) {
+            CardSkill cardSkill = (CardSkill) skillUseInfo.getSkill();
+            if (cardSkill.getType().containsTag(tag)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean containsAllUsableSkillsWithTag(SkillTag tag) {
+        for (SkillUseInfo skillUseInfo : this.getAllUsableSkillsIgnoreSilence()) {
             CardSkill cardSkill = (CardSkill) skillUseInfo.getSkill();
             if (cardSkill.getType().containsTag(tag)) {
                 return true;
