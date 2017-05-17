@@ -56,6 +56,13 @@ public class StageInfo {
     public void setUsed(SkillUseInfo skillUseInfo, boolean used) {
         this.globalSkillMap.put(skillUseInfo, used);
     }
+
+    public void removeUsed(SkillUseInfo skillUseInfo) {
+        if(hasUsed(skillUseInfo))
+        {
+            this.globalSkillMap.remove(skillUseInfo);
+        }
+    }
     
     public boolean hasUsed(SkillUseInfo skillUseInfo) {
         return this.globalSkillMap.containsKey(skillUseInfo) && this.globalSkillMap.get(skillUseInfo);

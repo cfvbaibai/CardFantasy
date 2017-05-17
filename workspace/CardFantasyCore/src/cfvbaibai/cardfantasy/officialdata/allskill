@@ -2,10 +2,10 @@
     "status": 1,
     "version": {
         "appurl": "ios://xxx",
-        "http": "1494830537",
         "appversion": "version_1",
+        "encrypt": 2,
         "stop": "",
-        "encrypt": 2
+        "http": "1494993827"
     },
     "data": {
         "Skills": [
@@ -29947,6 +29947,149 @@
                 "SkillId": 2490,
                 "AffectValue": "3_50",
                 "Desc": "对敌方随机3个单位造成750的伤害并且有50%的概率造成冰冻效果，冰冻效果持续1个回合，如果目标单位拥有免疫或者法力反射技能，则造成300%的伤害。"
+            },
+            {
+                "Name": "圣母吟咏1",
+                "LanchType": 7,
+                "SkillCategory": 4,
+                "LanchCondition": 0,
+                "LanchConditionValue": 0,
+                "AffectValue2": 0,
+                "Type": 41,
+                "AffectType": 152,
+                "SkillId": 2491,
+                "AffectValue": 10,
+                "Desc": "每回合行动结束时恢复自身当前生命值上限10%的血量。"
+            },
+            {
+                "Name": "圣母吟咏2",
+                "LanchType": 7,
+                "SkillCategory": 4,
+                "LanchCondition": 0,
+                "LanchConditionValue": 0,
+                "AffectValue2": 0,
+                "Type": 41,
+                "AffectType": 152,
+                "SkillId": 2492,
+                "AffectValue": 20,
+                "Desc": "每回合行动结束时恢复自身当前生命值上限20%的血量。"
+            },
+            {
+                "Name": "圣母吟咏3",
+                "LanchType": 7,
+                "SkillCategory": 4,
+                "LanchCondition": 0,
+                "LanchConditionValue": 0,
+                "AffectValue2": 0,
+                "Type": 41,
+                "AffectType": 152,
+                "SkillId": 2493,
+                "AffectValue": 30,
+                "Desc": "每回合行动结束时恢复自身当前生命值上限30%的血量。"
+            },
+            {
+                "Name": "圣母吟咏4",
+                "LanchType": 7,
+                "SkillCategory": 4,
+                "LanchCondition": 0,
+                "LanchConditionValue": 0,
+                "AffectValue2": 0,
+                "Type": 41,
+                "AffectType": 152,
+                "SkillId": 2494,
+                "AffectValue": 40,
+                "Desc": "每回合行动结束时恢复自身当前生命值上限40%的血量。"
+            },
+            {
+                "Name": "圣母吟咏5",
+                "LanchType": 7,
+                "SkillCategory": 4,
+                "LanchCondition": 0,
+                "LanchConditionValue": 0,
+                "AffectValue2": 0,
+                "Type": 41,
+                "AffectType": 152,
+                "SkillId": 2495,
+                "AffectValue": 50,
+                "Desc": "每回合行动结束时恢复自身当前生命值上限50%的血量。"
+            },
+            {
+                "Name": "圣母吟咏6",
+                "LanchType": 7,
+                "SkillCategory": 4,
+                "LanchCondition": 0,
+                "LanchConditionValue": 0,
+                "AffectValue2": 0,
+                "Type": 41,
+                "AffectType": 152,
+                "SkillId": 2496,
+                "AffectValue": 60,
+                "Desc": "每回合行动结束时恢复自身当前生命值上限60%的血量。"
+            },
+            {
+                "Name": "圣母吟咏7",
+                "LanchType": 7,
+                "SkillCategory": 4,
+                "LanchCondition": 0,
+                "LanchConditionValue": 0,
+                "AffectValue2": 0,
+                "Type": 41,
+                "AffectType": 152,
+                "SkillId": 2497,
+                "AffectValue": 70,
+                "Desc": "每回合行动结束时恢复自身当前生命值上限70%的血量。"
+            },
+            {
+                "Name": "圣母吟咏8",
+                "LanchType": 7,
+                "SkillCategory": 4,
+                "LanchCondition": 0,
+                "LanchConditionValue": 0,
+                "AffectValue2": 0,
+                "Type": 41,
+                "AffectType": 152,
+                "SkillId": 2498,
+                "AffectValue": 80,
+                "Desc": "每回合行动结束时恢复自身当前生命值上限80%的血量。"
+            },
+            {
+                "Name": "圣母吟咏9",
+                "LanchType": 7,
+                "SkillCategory": 4,
+                "LanchCondition": 0,
+                "LanchConditionValue": 0,
+                "AffectValue2": 0,
+                "Type": 41,
+                "AffectType": 152,
+                "SkillId": 2499,
+                "AffectValue": 90,
+                "Desc": "每回合行动结束时恢复自身当前生命值上限90%的血量。"
+            },
+            {
+                "Name": "圣母吟咏10",
+                "LanchType": 7,
+                "SkillCategory": 4,
+                "LanchCondition": 0,
+                "LanchConditionValue": 0,
+                "AffectValue2": 0,
+                "Type": 41,
+                "AffectType": 152,
+                "SkillId": 2500,
+                "AffectValue": 100,
+                "Desc": "每回合行动结束时恢复自身当前生命值上限100%的血量。"
+            },
+            {
+                "Name": "爱心料理",
+                "LanchType": 19,
+                "SkillCategory": 4,
+                "LanchCondition": 0,
+                "LanchConditionValue": 0,
+                "AffectValue2": 2,
+                "Type": 122,
+                "AffectType": 173,
+                "SkillId": 2501,
+                "AffectValue": 2497,
+                "Desc": "自身及自身身边的两张卡牌每回合行动结束时恢复自身当前生命值上限70%的血量。"
             }
         ]
     }

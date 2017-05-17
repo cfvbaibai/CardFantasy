@@ -36,6 +36,11 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2017-05-17: <x>欢笑，清风，波波等</x><ul>
+                        <li>添加新卡【美味厨娘】</li>
+                        <li>添加新技能【圣母吟咏】，【地裂】，【爱心料理】</li>
+                        <li>修复【逃跑】不能被【复活】的BUG，修复魔族【圣炎】BUG，修复【沉默】导致的遗志BUG和【复活】BUG</li>
+                    </ul></li>
                     <li>2017-05-15: <x>欢笑，清风，波波等</x><ul>
                         <li>添加新卡【三国英魂·甄姬】</li>
                         <li>添加新技能【洛神】</li>

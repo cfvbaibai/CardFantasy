@@ -23,14 +23,16 @@ public final class HolyFire {
                 candidates.add(deadCard);
             }
         }
-        CardInfo victim = resolver.getStage().getRandomizer().pickRandom(
-                candidates, 1, true, null).get(0);
-        ui.useSkill(attacker, victim, cardSkill, true);
-        if (SoulSeal.soulSealed(resolver, attacker)) {
-            return;
+        if(candidates.size() !=0) {
+            CardInfo victim = resolver.getStage().getRandomizer().pickRandom(
+                    candidates, 1, true, null).get(0);
+            ui.useSkill(attacker, victim, cardSkill, true);
+            if (SoulSeal.soulSealed(resolver, attacker)) {
+                return;
+            }
+            ui.cardToOutField(defender, victim);
+            defender.getGrave().removeCard(victim);
+            defender.getOutField().addCard(victim);
         }
-        ui.cardToOutField(defender, victim);
-        defender.getGrave().removeCard(victim);
-        defender.getOutField().addCard(victim);
     }
 }
