@@ -998,6 +998,16 @@
         <Skill type="不动" level="0" unlock="5"  />
         <Skill type="生命符文" level="0" unlock="10" />
     </Card>
+    <Card id="1595" name="血色玫瑰" wikiId="" race="王国" speed="3" star="5" cost="18" incrCost="2" at="410" hp="1580" incrAT="45" incrHP="45">
+        <Skill type="召唤玫瑰剑士" level="0" unlock="0" />
+        <Skill type="剑舞" level="0" unlock="5"  />
+        <Skill type="一闪" level="0" unlock="10" />
+    </Card>
+    <Card id="1596" name="律政佳人" wikiId="" race="王国" speed="2" star="5" cost="18" incrCost="2" at="350" hp="1680" incrAT="44" incrHP="40">
+        <Skill type="雷霆一击" level="5" unlock="0" />
+        <Skill type="圣炎" level="0" unlock="5"  />
+        <Skill type="坚毅" level="0" unlock="10" />
+    </Card>
 
 
     <!-- 森林 -->
@@ -2616,7 +2626,7 @@
     </Card>
     <Card id="3570" name="四神之朱雀" wikiId="" race="蛮荒" speed="3" star="5" cost="19" incrCost="2" at="1" hp="1" incrAT="0" incrHP="0">
         <Skill type="凤凰涅槃" level="0" unlock="0" />
-        <Skill type="业火" level="0" unlock="5" />
+        <Skill type="业火" level="0" unlock="5" summon="true" />
         <Skill type="圣炎" level="0" unlock="10" death="true" />
     </Card>
 

@@ -36,6 +36,11 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2017-05-21: <x>欢笑，清风，波波等</x><ul>
+                        <li>添加新卡【血色玫瑰】，【律政佳人】</li>
+                        <li>添加第四技能【六道轮回】</li>
+                        <li>修复【连斩】只触发一次BUG,修复【生命符文】死亡后移除的BUG,修复【魔龙之血】可以被沉默BUG,修复【魔族】可以被时间溯行和时光倒流的BUG</li>
+                    </ul></li>
                     <li>2017-05-17: <x>欢笑，清风，波波等</x><ul>
                         <li>添加新卡【美味厨娘】</li>
                         <li>添加新技能【圣母吟咏】，【地裂】，【爱心料理】</li>

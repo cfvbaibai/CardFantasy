@@ -30090,7 +30090,59 @@
                 "SkillId": 2501,
                 "AffectValue": 2497,
                 "Desc": "自身及自身身边的两张卡牌每回合行动结束时恢复自身当前生命值上限70%的血量。"
-            }
+            },
+           {
+                "Name": "剑舞",
+                "LanchType": 19,
+                "SkillCategory": 1,
+                "LanchCondition": 0,
+                "LanchConditionValue": 0,
+                "AffectValue2": 2,
+                "Type": 122,
+                "AffectType": 173,
+                "SkillId": 2424,
+                "AffectValue": 1430,
+                "Desc": "自身及自身身边的两张卡牌物理攻击时随机提升500~1700点攻击力。"
+            },
+           {
+                "Name": "[降临]召唤：花舞剑士",
+                "LanchType": 10,
+                "SkillCategory": 2,
+                "LanchCondition": 0,
+                "LanchConditionValue": 0,
+                "AffectValue2": 0,
+                "Type": 125,
+                "AffectType": 101,
+                "SkillId": 2502,
+                "AffectValue": 551,
+                "Desc": "卡牌上场时，召唤1张【花舞剑士】上场战斗（召唤出的卡牌不会进入墓地，牌堆），如果场上已经存在自身召唤的卡牌时，则不发动召唤。"
+           },
+           {
+                "Name": "[死契]召唤：玫瑰甜心",
+                "LanchType": 9,
+                "SkillCategory": 2,
+                "LanchCondition": 0,
+                "LanchConditionValue": 0,
+                "AffectValue2": 0,
+                "Type": 125,
+                "AffectType": 101,
+                "SkillId": 2503,
+                "AffectValue": 563,
+                "Desc": "被消灭时，召唤1张【玫瑰甜心】上场战斗（召唤出的卡牌不会进入墓地，牌堆），如果场上已经存在自身召唤的卡牌时，则不发动召唤。"
+           },
+           {
+                "Name": "召唤：玫瑰剑士",
+                "LanchType": 5,
+                "SkillCategory": 2,
+                "LanchCondition": 0,
+                "LanchConditionValue": 0,
+                "AffectValue2": 0,
+                "Type": 136,
+                "AffectType": 122,
+                "SkillId": 2504,
+                "AffectValue": "2502_2503",
+                "Desc": "卡牌上场时，召唤1张【花舞剑士】上场战斗；被消灭时，召唤1张【玫瑰甜心】上场战斗。（召唤出的卡牌不会进入墓地，牌堆），如果场上已经存在自身召唤的卡牌时，则不发动召唤。"
+           }
         ]
     }
 }
