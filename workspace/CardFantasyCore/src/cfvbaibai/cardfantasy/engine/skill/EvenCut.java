@@ -24,22 +24,5 @@ public class EvenCut {
                 ui.attackCard(attacker, victim, null, damage);
                 resolver.resolveDeathSkills(attacker, victim, skill, resolver.applyDamage(attacker,victim, null, damage));
         }
-        attacker.setUsed(skillUseInfo);
-    }
-    public static void resetApply(SkillUseInfo skillUseInfo, SkillResolver resolver,  CardInfo victim){
-        if (victim == null) {
-            return ;
-        }
-        if (!victim.hasUsed(skillUseInfo)) {
-            return ;
-        }
-        Skill skill = skillUseInfo.getSkill();
-        GameUI ui = resolver.getStage().getUI();
-        ui.useSkill(victim, skill, true);
-        List<SkillEffect> effects = victim.getEffectsCausedBy(skillUseInfo);
-        for (SkillEffect effect : effects) {
-            if(effect.getType() == SkillEffectType.SKILL_USED)
-                victim.removeEffect(effect);
-        }
     }
 }

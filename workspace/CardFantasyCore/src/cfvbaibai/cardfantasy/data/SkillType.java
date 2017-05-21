@@ -113,7 +113,7 @@ public enum SkillType {
     精准射击("", 250, 0, SkillTag.抗免疫),
     格挡("30955", 20),
     钢铁之肤("", 200, 50),
-    魔龙之血("", 650, 0, 110, 0, SkillTag.物理护甲),
+    魔龙之血("", 650, 0, 110, 0, SkillTag.物理护甲,SkillTag.沉默无效),
     陷阱("30975", 1, SkillTag.控制),
     反击("30957", 20, SkillTag.抗免疫, SkillTag.反击),
     物理反弹("", 50, 0, SkillTag.抗免疫, SkillTag.反击),
@@ -161,6 +161,7 @@ public enum SkillType {
     转生("30935", 30, 5),
     武形秘仪("", 70, 0),
     武形秘术("", 65, 0, 210, 0),
+    武形秘法("",70, 0),
     我还会回来的("", 0),
     蛮荒我还会回来的("", 0),
     花族秘术("", 65, 0, 210, 0),
@@ -192,6 +193,7 @@ public enum SkillType {
     神威("", 0, SkillTag.不动),
     月之守护("", 0, 0, new int[] { 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23 }, SkillTag.不动),
     洪荒之术("", 55, 0, SkillTag.不动),
+    六道轮回("", 65, 0, SkillTag.不动),
     王之守护("", 0, SkillTag.不动, SkillTag.守护),
     武侯("", 50,0,  SkillTag.守护),
     传送("31331", 0, SkillTag.即死),
@@ -205,7 +207,7 @@ public enum SkillType {
     觉醒沉默A("", 0, SkillTag.不可洗炼, SkillTag.抗免疫, SkillTag.抗不屈, SkillTag.沉默, SkillTag.魔王无效, SkillTag.魔族天赋),
     全体沉默("", 0, SkillTag.抗免疫, SkillTag.抗不屈, SkillTag.沉默, SkillTag.魔王无效, SkillTag.魔族天赋),
     全领域沉默("", 0, SkillTag.抗免疫, SkillTag.抗不屈, SkillTag.沉默, SkillTag.魔王无效, SkillTag.魔族天赋),
-    无限全体沉默("", 0, SkillTag.抗免疫, SkillTag.抗不屈, SkillTag.沉默),
+    无限全体沉默("", 0, SkillTag.抗免疫, SkillTag.抗不屈, SkillTag.沉默, SkillTag.魔王无效, SkillTag.魔族天赋),
     灵魂消散("", 0, SkillTag.抗免疫, SkillTag.抗不屈, SkillTag.沉默),
     连斩("",0),
     魔族之血("",650,0),
@@ -237,7 +239,7 @@ public enum SkillType {
     武形天火击("", 0, SkillTag.即死, SkillTag.抗不屈),
     咆哮("", 0, SkillTag.即死, SkillTag.抗不屈),
 
-    炼金失败("", 0),
+    炼金失败("",0),
 
     封印("31157", 0, SkillTag.控制),
     血炼("31136", 20, SkillTag.魔法),
@@ -288,8 +290,8 @@ public enum SkillType {
 
     不屈("56962", 0, 0),
     空城("",0,0),
-    时光倒流("80196", 0, 0, SkillTag.抗免疫, SkillTag.魔王无效),
-    时间溯行("80196", 0, 0, SkillTag.即死, SkillTag.魔王无效),
+    时光倒流("80196", 0, 0, SkillTag.抗免疫, SkillTag.魔王无效, SkillTag.魔族天赋),
+    时间溯行("80196", 0, 0, SkillTag.即死, SkillTag.魔王无效, SkillTag.魔族天赋),
     死亡印记("56754", 0, 50, SkillTag.魔王无效),
     武形印记("", 0, 200),
     闪光弹("", 5, 1),
@@ -339,6 +341,7 @@ public enum SkillType {
     万兽奔腾("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
     爱之召唤("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
     仙子召唤("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
+    召唤玫瑰剑士("",0,0,SkillTag.召唤, SkillTag.不可洗炼),
 
     圣光洗礼("", 0, 0, SkillTag.抗免疫, SkillTag.不可洗炼, SkillTag.魔王无效, SkillTag.魔族天赋),
     森林沐浴("", 1, 0, SkillTag.抗免疫, SkillTag.不可洗炼, SkillTag.魔王无效, SkillTag.魔族天赋),
@@ -376,6 +379,10 @@ public enum SkillType {
     自动扣血("", 0, 0, SkillTag.抗守护, SkillTag.不可洗炼),
     未知("", 0, SkillTag.不可洗炼),
 
+    //合并技能中单个技能
+    天崩地裂("",0,SkillTag.即死),
+    地裂("",0,SkillTag.即死),
+
     // Merged Skills
     凋零陷阱("", SkillType.凋零真言, 6, SkillType.陷阱, 3),
     天怒("", SkillType.烈焰风暴, SkillType.天火),
@@ -391,20 +398,18 @@ public enum SkillType {
     突袭("",0,0, SkillTag.即死,SkillTag.额外攻击加成),
     樱魂("",SkillType.吸血,8,SkillType.奋战,7),
     LETITGO("", SkillType.送还,0,SkillType.反射装甲,0),
+    百步穿杨("",SkillType.武形神箭,5,SkillType.穿云箭,1),
+    业火("",SkillType.凤鸣,0,SkillType.凤火,0),
+    魔龙吐息("",SkillType.凤鸣,0,SkillType.凤火,0),
+    觉醒天崩地裂("", SkillType.天崩地裂,0,SkillType.灵王的轰击,4),
+
+    新生("",0,0,SkillTag.新生),
+
     西凉铁骑("",SkillType.破军,5,null,0),
     袈裟斩("",SkillType.燕返,0,null,0),
     致命打击("",SkillType.精准打击,9,null,0),
     爱心料理("",SkillType.圣母吟咏,7,null,0),
-    武形秘法("",70, 0),
-    百步穿杨("",SkillType.武形神箭,5,SkillType.穿云箭,1),
-    业火("",SkillType.凤鸣,0,SkillType.凤火,0),
-    魔龙吐息("",SkillType.凤鸣,0,SkillType.凤火,0),
-    天崩地裂("",0,SkillTag.即死),
-    地裂("",0,SkillTag.即死),
-    觉醒天崩地裂("", SkillType.天崩地裂,0,SkillType.灵王的轰击,4),
-    新生("",0,0,SkillTag.新生),
-
-
+    剑舞("",SkillType.神兵召唤,0,null,0),
     // To Do
 
     // 以下全部技能皆为待更新的空技能，请在更新之后将其移动到上面适合的位置

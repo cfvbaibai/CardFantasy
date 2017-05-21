@@ -384,6 +384,18 @@ public class CardInfo extends EntityInfo {
         }
         return skillUseInfos;
     }
+
+    public List<SkillUseInfo> getUsableNormalSkillsInvalidSilence() {
+        List<SkillUseInfo> skillUseInfos = new ArrayList<SkillUseInfo>();
+        for (SkillUseInfo skillUseInfo : this.getAllUsableSkillsInvalidSilence()) {
+            CardSkill cardSkill = (CardSkill)skillUseInfo.getSkill();
+            if (!cardSkill.isDeathSkill() && !cardSkill.isSummonSkill() &&
+                    !cardSkill.isPrecastSkill() && !cardSkill.isPostcastSkill()) {
+                skillUseInfos.add(skillUseInfo);
+            }
+        }
+        return skillUseInfos;
+    }
     
     public List<SkillUseInfo> getAllUsableSkills() {
         return getUsableSkills(false);
@@ -391,6 +403,10 @@ public class CardInfo extends EntityInfo {
 
     public List<SkillUseInfo> getAllUsableSkillsIgnoreSilence() {
         return getUsableSkills(true);
+    }
+
+    public List<SkillUseInfo> getAllUsableSkillsInvalidSilence() {
+        return getUsableSkillsInvalidSilence(false);
     }
 
     private List<SkillUseInfo> getUsableSkills(boolean ignoreSilence) {
@@ -407,9 +423,40 @@ public class CardInfo extends EntityInfo {
             {
                 //skillUseInfos.removeIf(skillUseInfo -> !skillUseInfo.getType().containsTag(SkillTag.抗沉默));
                 skillUseInfos.clear();
+                for (SkillUseInfo skillUseInfo : this.getAllSkills()) {
+                    CardSkill cardSkill = (CardSkill)skillUseInfo.getSkill();
+                    if (cardSkill.getUnlockLevel() <= this.getCard().getLevel() && cardSkill.getType().containsTag(SkillTag.沉默无效)) {
+                        skillUseInfos.add(skillUseInfo);
+                    }
+                }
             }
         }
 
+        return skillUseInfos;
+    }
+
+    private List<SkillUseInfo> getUsableSkillsInvalidSilence(boolean ignoreSilence) {
+        List<SkillUseInfo> skillUseInfos = new ArrayList<SkillUseInfo>(6);
+        for (SkillUseInfo skillUseInfo : this.getAllSkills()) {
+            CardSkill cardSkill = (CardSkill)skillUseInfo.getSkill();
+            if (cardSkill.getUnlockLevel() <= this.getCard().getLevel()) {
+                skillUseInfos.add(skillUseInfo);
+            }
+        }
+
+        if (!ignoreSilence) {
+            if (this.getStatus().containsStatus(CardStatusType.沉默))
+            {
+                //skillUseInfos.removeIf(skillUseInfo -> !skillUseInfo.getType().containsTag(SkillTag.抗沉默));
+                skillUseInfos.clear();
+                for (SkillUseInfo skillUseInfo : this.getAllSkills()) {
+                    CardSkill cardSkill = (CardSkill)skillUseInfo.getSkill();
+                    if (cardSkill.getUnlockLevel() <= this.getCard().getLevel() && cardSkill.getType().containsTag(SkillTag.沉默无效)) {
+                        skillUseInfos.add(skillUseInfo);
+                    }
+                }
+            }
+        }
         return skillUseInfos;
     }
 
