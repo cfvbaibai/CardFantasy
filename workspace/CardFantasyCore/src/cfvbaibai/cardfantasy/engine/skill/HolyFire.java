@@ -1,15 +1,14 @@
 package cfvbaibai.cardfantasy.engine.skill;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import cfvbaibai.cardfantasy.GameUI;
 import cfvbaibai.cardfantasy.data.Race;
 import cfvbaibai.cardfantasy.data.Skill;
-import cfvbaibai.cardfantasy.data.SkillTag;
 import cfvbaibai.cardfantasy.engine.CardInfo;
-import cfvbaibai.cardfantasy.engine.SkillResolver;
 import cfvbaibai.cardfantasy.engine.Player;
-
-import java.util.ArrayList;
-import java.util.List;
+import cfvbaibai.cardfantasy.engine.SkillResolver;
 
 public final class HolyFire {
     public static void apply(Skill cardSkill, SkillResolver resolver, CardInfo attacker, Player defender) {
