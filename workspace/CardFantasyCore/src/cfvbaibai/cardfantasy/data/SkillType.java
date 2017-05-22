@@ -341,7 +341,9 @@ public enum SkillType {
     万兽奔腾("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
     爱之召唤("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
     仙子召唤("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
-    召唤玫瑰剑士("",0,0,SkillTag.召唤, SkillTag.不可洗炼),
+    召唤花舞剑士("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
+    召唤玫瑰甜心("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
+    召唤玫瑰剑士("",SkillType.召唤花舞剑士,0, SkillType.召唤玫瑰甜心,0, SkillTag.不可洗炼),
 
     圣光洗礼("", 0, 0, SkillTag.抗免疫, SkillTag.不可洗炼, SkillTag.魔王无效, SkillTag.魔族天赋),
     森林沐浴("", 1, 0, SkillTag.抗免疫, SkillTag.不可洗炼, SkillTag.魔王无效, SkillTag.魔族天赋),

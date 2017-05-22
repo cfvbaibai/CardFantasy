@@ -17,13 +17,15 @@ import cfvbaibai.cardfantasy.engine.SkillUseInfo;
 import cfvbaibai.cardfantasy.game.DeckBuilder;
 
 public class Summon {
-    public static void apply(SkillResolver resolver, SkillUseInfo skillUseInfo, CardInfo summoner, SummonType summonType, int summonPicks, String ... summonedCardsDescs) throws HeroDieSignal {
+    public static void apply(SkillResolver resolver, SkillUseInfo skillUseInfo, CardInfo summoner, SummonType summonType, int summonPicks, String... summonedCardsDescs) throws HeroDieSignal {
         if (summoner == null) {
             throw new CardFantasyRuntimeException("summoner should not be null");
         }
+        CardInfo primaryCards = summoner.getOwner().getAllPrimaryCards().get(0);
 
         // 镜像不能再次发动镜像
-        if (summoner.isSummonedMinion() && skillUseInfo.getType() == SkillType.镜像 || summoner.isSummonedMinion() && skillUseInfo.getType() == SkillType.镜魔){
+        if (summoner.isSummonedMinion() && skillUseInfo.getType() == SkillType.镜像 && summoner.getName() == primaryCards.getName()
+                || summoner.isSummonedMinion() && skillUseInfo.getType() == SkillType.镜魔 && summoner.getName() == primaryCards.getName()) {
             return;
         }
 
