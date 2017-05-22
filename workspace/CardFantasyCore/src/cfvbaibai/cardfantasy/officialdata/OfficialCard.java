@@ -181,6 +181,7 @@ public class OfficialCard {
         case 2: return "森林";
         case 3: return "蛮荒";
         case 4: return "地狱";
+        case 5: return "魔族";
         case 97: return "魔王";
         case 98: return "万能";
         case 99: return "道具";
@@ -194,6 +195,7 @@ public class OfficialCard {
         races.add(new OfficialRace(2, "森林"));
         races.add(new OfficialRace(3, "蛮荒"));
         races.add(new OfficialRace(4, "地狱"));
+        races.add(new OfficialRace(5, "魔族"));
         races.add(new OfficialRace(97, "魔王"));
         races.add(new OfficialRace(98, "万能"));
         races.add(new OfficialRace(99, "道具"));
@@ -201,7 +203,7 @@ public class OfficialCard {
         return races;
     }
     public static String[] getRaceNames() {
-        return new String[] { "王国", "森林", "蛮荒", "地狱", "魔王", "魔神", "道具", "万能" };
+        return new String[] { "王国", "森林", "蛮荒", "地狱","魔族", "魔王", "魔神", "道具", "万能" };
     }
     public String getLogoUrl() {
         return OfficialDataStore.IFREE_CDN_BASE + "/card/110_110/img_photoCard_" + this.CardId + ".jpg";

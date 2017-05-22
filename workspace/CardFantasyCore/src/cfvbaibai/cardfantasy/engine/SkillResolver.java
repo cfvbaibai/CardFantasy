@@ -896,7 +896,7 @@ public class SkillResolver {
             } else if (deadCardSkillUseInfo.getType() == SkillType.蛮荒我还会回来的) {
                 Summon.apply(this, deadCardSkillUseInfo, deadCard, SummonType.Normal, 1, "蛮荒大毒汁之王-5");
             } else if (deadCardSkillUseInfo.getType() == SkillType.召唤玫瑰剑士) {
-                Summon.apply(this, deadCardSkillUseInfo, deadCard, SummonType.Normal, 1,
+                Summon.apply(this, deadCardSkillUseInfo.getAttachedUseInfo2(), deadCard, SummonType.Normal, 1,
                         "玫瑰甜心");
             }
         }
@@ -1272,14 +1272,15 @@ public class SkillResolver {
                 return;
             }
             stage.getUI().useSkillToHero(attacker, defenderPlayer, cardSkill);
-            if (damage > defenderPlayer.getHP()) {
-                damage = defenderPlayer.getHP();
-            }
             if (damage >= 0) {
                 int remainingDamage = this.resolveAttackHeroBlockingSkills(attacker, defenderPlayer, cardSkill, damage);
                 if (remainingDamage > 0) {
+                    remainingDamage = remainingDamage*defenderPlayer.getCoefficient()/100;
+                    if (remainingDamage > defenderPlayer.getHP()) {
+                        remainingDamage = defenderPlayer.getHP();
+                    }
                     stage.getUI().attackHero(attacker, defenderPlayer, cardSkill, remainingDamage);
-                    defenderPlayer.setHP(defenderPlayer.getHP() - remainingDamage*defenderPlayer.getCoefficient()/100);
+                    defenderPlayer.setHP(defenderPlayer.getHP() - remainingDamage );
                 }
             } else {
                 if (defenderPlayer.getHP() - damage > defenderPlayer.getMaxHP()) {
@@ -1610,7 +1611,7 @@ public class SkillResolver {
                 } else if (skillUseInfo.getType() == SkillType.全领域沉默) {
                     Silence.apply(this, skillUseInfo, card, enemy, true, false);
                 } else if (skillUseInfo.getType() == SkillType.召唤玫瑰剑士) {
-                    Summon.apply(this, skillUseInfo, card, SummonType.Normal, 1,
+                    Summon.apply(this, skillUseInfo.getAttachedUseInfo1(), card, SummonType.Normal, 1,
                             "花舞剑士");
                 }
             }
