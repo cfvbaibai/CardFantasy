@@ -422,7 +422,6 @@ public class DeathSkillTest extends SkillValidationTest {
     public void test炼金失败_死亡() {
         SkillTestContext context = prepare(50, 50, "占位符+炼金失败", "占位符");
         CardInfo c占位符1 = context.addToField(0, 0).setBasicHP(2);
-        CardInfo c占位符 = context.addToField(1, 1);
         context.startGame();
 
         random.addNextPicks(0);
