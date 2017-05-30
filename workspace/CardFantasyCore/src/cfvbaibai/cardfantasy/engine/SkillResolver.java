@@ -402,6 +402,11 @@ public class SkillResolver {
                 if(defender.getField().getAliveCards().size() < 5){
                     ThunderStrike.apply(skillUseInfo.getAttachedUseInfo2(), this, attacker, defender, 3);
                 }
+            } else if (skillUseInfo.getType() == SkillType.地裂) {
+                GiantEarthquakesLandslides.apply(this, skillUseInfo.getSkill(), attacker, defender, 1);
+            } else if (skillUseInfo.getType() == SkillType.觉醒天崩地裂) {
+                GiantEarthquakesLandslides.apply(this, skillUseInfo.getAttachedUseInfo1().getSkill(), attacker, defender,3);
+                ManaErode.apply(skillUseInfo.getAttachedUseInfo2().getSkill(), this, attacker, defender, 3);
             } else if (skillUseInfo.getType() == SkillType.寒冰触碰){
                 IceTouch.apply(skillUseInfo, this, attacker, defender, 3);
             } else if (skillUseInfo.getType() == SkillType.雷霆一击){
@@ -1176,7 +1181,6 @@ public class SkillResolver {
                     break;
                 }
             }
-
         }
         int actualDamage = defender.applyDamage(damage);
         result.originalDamage += damage;
@@ -1537,12 +1541,7 @@ public class SkillResolver {
                     Trap.apply(skillUseInfo, this, card, enemy);
                 } else if (skillUseInfo.getType() == SkillType.送还) {
                     Return.apply(this, skillUseInfo.getSkill(), card, enemy);
-                } else if (skillUseInfo.getType() == SkillType.地裂) {
-                    GiantEarthquakesLandslides.apply(this, skillUseInfo.getSkill(), card, enemy, 1);
-                } else if (skillUseInfo.getType() == SkillType.觉醒天崩地裂) {
-                    GiantEarthquakesLandslides.apply(this, skillUseInfo.getAttachedUseInfo1().getSkill(), card, enemy,3);
-                    ManaErode.apply(skillUseInfo.getAttachedUseInfo2().getSkill(), this, card, enemy, 3);
-                } else if (skillUseInfo.getType() == SkillType.摧毁) {
+                }else if (skillUseInfo.getType() == SkillType.摧毁) {
                     Destroy.apply(this, skillUseInfo.getSkill(), card, enemy, 1);
                 } else if (skillUseInfo.getType() == SkillType.传送 || skillUseInfo.getType() == SkillType.代表月亮消灭你) {
                     Transport.apply(this, skillUseInfo.getSkill(), card, enemy);

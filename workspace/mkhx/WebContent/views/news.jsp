@@ -36,9 +36,14 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2017-05-30: <x>欢笑，清风，波波等</x><ul>
+                        <li>修复【觉醒天崩地裂】，【地裂】BUG</li>
+                        <li>修复【镜魔】的技能</li>
+                    </ul></li>
                     <li>2017-05-22: <x>欢笑，清风，波波等</x><ul>
                         <li>修复【铁壁】英雄不死亡BUG,感谢Bsctk1提供【铁壁】BUG</li>
                         <li>修复【血色玫瑰】不召唤【玫瑰甜心】BUG,感谢MKAlieZz提供【血色玫瑰】BUG</li>
+                        <li>在wiki中添加【魔族】,感谢paraych建议</li>
                     </ul></li>
                     <li>2017-05-21: <x>欢笑，清风，波波等</x><ul>
                         <li>添加新卡【血色玫瑰】，【律政佳人】</li>
