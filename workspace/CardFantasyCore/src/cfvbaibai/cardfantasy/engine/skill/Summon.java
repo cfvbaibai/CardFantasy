@@ -21,8 +21,6 @@ public class Summon {
         if (summoner == null) {
             throw new CardFantasyRuntimeException("summoner should not be null");
         }
-        CardInfo primaryCards = summoner.getOwner().getAllPrimaryCards().get(0);
-
         // 镜像不能再次发动镜像
         if (summoner.isSummonedMinion() && skillUseInfo.getType() == SkillType.镜像
                 || summoner.isSummonedMinion() && skillUseInfo.getType() == SkillType.镜魔) {
