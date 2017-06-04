@@ -239,7 +239,7 @@ public enum SkillType {
     武形天火击("", 0, SkillTag.即死, SkillTag.抗不屈),
     咆哮("", 0, SkillTag.即死, SkillTag.抗不屈),
 
-    炼金失败("",0),
+    炼金失败("",0,SkillTag.复活),
 
     封印("31157", 0, SkillTag.控制),
     血炼("31136", 20, SkillTag.魔法),
