@@ -1,11 +1,11 @@
 ﻿{
     "status": 1,
     "version": {
+        "http": "1495768515",
         "appurl": "ios://xxx",
         "appversion": "version_1",
-        "encrypt": 2,
         "stop": "",
-        "http": "1494993827"
+        "encrypt": 2
     },
     "data": {
         "Skills": [
@@ -30091,7 +30091,7 @@
                 "AffectValue": 2497,
                 "Desc": "自身及自身身边的两张卡牌每回合行动结束时恢复自身当前生命值上限70%的血量。"
             },
-           {
+            {
                 "Name": "剑舞",
                 "LanchType": 19,
                 "SkillCategory": 1,
@@ -30104,7 +30104,7 @@
                 "AffectValue": 1430,
                 "Desc": "自身及自身身边的两张卡牌物理攻击时随机提升500~1700点攻击力。"
             },
-           {
+            {
                 "Name": "[降临]召唤：花舞剑士",
                 "LanchType": 10,
                 "SkillCategory": 2,
@@ -30116,8 +30116,8 @@
                 "SkillId": 2502,
                 "AffectValue": 551,
                 "Desc": "卡牌上场时，召唤1张【花舞剑士】上场战斗（召唤出的卡牌不会进入墓地，牌堆），如果场上已经存在自身召唤的卡牌时，则不发动召唤。"
-           },
-           {
+            },
+            {
                 "Name": "[死契]召唤：玫瑰甜心",
                 "LanchType": 9,
                 "SkillCategory": 2,
@@ -30129,8 +30129,8 @@
                 "SkillId": 2503,
                 "AffectValue": 563,
                 "Desc": "被消灭时，召唤1张【玫瑰甜心】上场战斗（召唤出的卡牌不会进入墓地，牌堆），如果场上已经存在自身召唤的卡牌时，则不发动召唤。"
-           },
-           {
+            },
+            {
                 "Name": "召唤：玫瑰剑士",
                 "LanchType": 5,
                 "SkillCategory": 2,
@@ -30142,7 +30142,345 @@
                 "SkillId": 2504,
                 "AffectValue": "2502_2503",
                 "Desc": "卡牌上场时，召唤1张【花舞剑士】上场战斗；被消灭时，召唤1张【玫瑰甜心】上场战斗。（召唤出的卡牌不会进入墓地，牌堆），如果场上已经存在自身召唤的卡牌时，则不发动召唤。"
-           }
+            },
+            {
+                "Name": "嘲讽",
+                "LanchType": 20,
+                "SkillCategory": 3,
+                "LanchCondition": 0,
+                "LanchConditionValue": 0,
+                "AffectValue2": 0,
+                "Type": 122,
+                "AffectType": 174,
+                "SkillId": 2451,
+                "AffectValue": 0,
+                "Desc": "将敌方卡牌对卡牌的攻击的转移至此卡牌。"
+            },
+            {
+                "Name": "金属装甲1",
+                "LanchType": 5,
+                "SkillCategory": 3,
+                "LanchCondition": 3,
+                "LanchConditionValue": 0,
+                "AffectValue2": 10,
+                "Type": 25,
+                "AffectType": 19,
+                "SkillId": 2452,
+                "AffectValue": 0,
+                "Desc": "受到物理攻击时减少10%伤害。"
+            },
+            {
+                "Name": "金属装甲2",
+                "LanchType": 5,
+                "SkillCategory": 3,
+                "LanchCondition": 3,
+                "LanchConditionValue": 0,
+                "AffectValue2": 20,
+                "Type": 25,
+                "AffectType": 19,
+                "SkillId": 2453,
+                "AffectValue": 0,
+                "Desc": "受到物理攻击时减少20%伤害。"
+            },
+            {
+                "Name": "金属装甲3",
+                "LanchType": 5,
+                "SkillCategory": 3,
+                "LanchCondition": 3,
+                "LanchConditionValue": 0,
+                "AffectValue2": 30,
+                "Type": 25,
+                "AffectType": 19,
+                "SkillId": 2454,
+                "AffectValue": 0,
+                "Desc": "受到物理攻击时减少30%伤害。"
+            },
+            {
+                "Name": "金属装甲4",
+                "LanchType": 5,
+                "SkillCategory": 3,
+                "LanchCondition": 3,
+                "LanchConditionValue": 0,
+                "AffectValue2": 40,
+                "Type": 25,
+                "AffectType": 19,
+                "SkillId": 2455,
+                "AffectValue": 0,
+                "Desc": "受到物理攻击时减少40%伤害。"
+            },
+            {
+                "Name": "金属装甲5",
+                "LanchType": 5,
+                "SkillCategory": 3,
+                "LanchCondition": 3,
+                "LanchConditionValue": 0,
+                "AffectValue2": 50,
+                "Type": 25,
+                "AffectType": 19,
+                "SkillId": 2456,
+                "AffectValue": 0,
+                "Desc": "受到物理攻击时减少50%伤害。"
+            },
+            {
+                "Name": "金属装甲6",
+                "LanchType": 5,
+                "SkillCategory": 3,
+                "LanchCondition": 3,
+                "LanchConditionValue": 0,
+                "AffectValue2": 60,
+                "Type": 25,
+                "AffectType": 19,
+                "SkillId": 2457,
+                "AffectValue": 0,
+                "Desc": "受到物理攻击时减少60%伤害。"
+            },
+            {
+                "Name": "金属装甲7",
+                "LanchType": 5,
+                "SkillCategory": 3,
+                "LanchCondition": 3,
+                "LanchConditionValue": 0,
+                "AffectValue2": 70,
+                "Type": 25,
+                "AffectType": 19,
+                "SkillId": 2458,
+                "AffectValue": 0,
+                "Desc": "受到物理攻击时减少70%伤害。"
+            },
+            {
+                "Name": "金属装甲8",
+                "LanchType": 5,
+                "SkillCategory": 3,
+                "LanchCondition": 3,
+                "LanchConditionValue": 0,
+                "AffectValue2": 80,
+                "Type": 25,
+                "AffectType": 19,
+                "SkillId": 2459,
+                "AffectValue": 0,
+                "Desc": "受到物理攻击时减少80%伤害。"
+            },
+            {
+                "Name": "金属装甲9",
+                "LanchType": 5,
+                "SkillCategory": 3,
+                "LanchCondition": 3,
+                "LanchConditionValue": 0,
+                "AffectValue2": 90,
+                "Type": 25,
+                "AffectType": 19,
+                "SkillId": 2460,
+                "AffectValue": 0,
+                "Desc": "受到物理攻击时减少90%伤害。"
+            },
+            {
+                "Name": "金属装甲10",
+                "LanchType": 5,
+                "SkillCategory": 3,
+                "LanchCondition": 3,
+                "LanchConditionValue": 0,
+                "AffectValue2": 100,
+                "Type": 25,
+                "AffectType": 19,
+                "SkillId": 2461,
+                "AffectValue": 0,
+                "Desc": "受到物理攻击时减少100%伤害。"
+            },
+            {
+                "Name": "魔法装甲1",
+                "LanchType": 11,
+                "SkillCategory": 3,
+                "LanchCondition": 0,
+                "LanchConditionValue": 0,
+                "AffectValue2": 10,
+                "Type": 75,
+                "AffectType": 50,
+                "SkillId": 2462,
+                "AffectValue": 0,
+                "Desc": "当受到火、冰、雷、血攻击时，每次减少10%的技能伤害。"
+            },
+            {
+                "Name": "魔法装甲2",
+                "LanchType": 11,
+                "SkillCategory": 3,
+                "LanchCondition": 0,
+                "LanchConditionValue": 0,
+                "AffectValue2": 20,
+                "Type": 75,
+                "AffectType": 50,
+                "SkillId": 2463,
+                "AffectValue": 0,
+                "Desc": "当受到火、冰、雷、血攻击时，每次减少20%的技能伤害。"
+            },
+            {
+                "Name": "魔法装甲3",
+                "LanchType": 11,
+                "SkillCategory": 3,
+                "LanchCondition": 0,
+                "LanchConditionValue": 0,
+                "AffectValue2": 30,
+                "Type": 75,
+                "AffectType": 50,
+                "SkillId": 2464,
+                "AffectValue": 0,
+                "Desc": "当受到火、冰、雷、血攻击时，每次减少30%的技能伤害。"
+            },
+            {
+                "Name": "魔法装甲4",
+                "LanchType": 11,
+                "SkillCategory": 3,
+                "LanchCondition": 0,
+                "LanchConditionValue": 0,
+                "AffectValue2": 40,
+                "Type": 75,
+                "AffectType": 50,
+                "SkillId": 2465,
+                "AffectValue": 0,
+                "Desc": "当受到火、冰、雷、血攻击时，每次减少40%的技能伤害。"
+            },
+            {
+                "Name": "魔法装甲5",
+                "LanchType": 11,
+                "SkillCategory": 3,
+                "LanchCondition": 0,
+                "LanchConditionValue": 0,
+                "AffectValue2": 50,
+                "Type": 75,
+                "AffectType": 50,
+                "SkillId": 2466,
+                "AffectValue": 0,
+                "Desc": "当受到火、冰、雷、血攻击时，每次减少50%的技能伤害。"
+            },
+            {
+                "Name": "魔法装甲6",
+                "LanchType": 11,
+                "SkillCategory": 3,
+                "LanchCondition": 0,
+                "LanchConditionValue": 0,
+                "AffectValue2": 60,
+                "Type": 75,
+                "AffectType": 50,
+                "SkillId": 2467,
+                "AffectValue": 0,
+                "Desc": "当受到火、冰、雷、血攻击时，每次减少60%的技能伤害。"
+            },
+            {
+                "Name": "魔法装甲7",
+                "LanchType": 11,
+                "SkillCategory": 3,
+                "LanchCondition": 0,
+                "LanchConditionValue": 0,
+                "AffectValue2": 70,
+                "Type": 75,
+                "AffectType": 50,
+                "SkillId": 2468,
+                "AffectValue": 0,
+                "Desc": "当受到火、冰、雷、血攻击时，每次减少70%的技能伤害。"
+            },
+            {
+                "Name": "魔法装甲8",
+                "LanchType": 11,
+                "SkillCategory": 3,
+                "LanchCondition": 0,
+                "LanchConditionValue": 0,
+                "AffectValue2": 80,
+                "Type": 75,
+                "AffectType": 50,
+                "SkillId": 2469,
+                "AffectValue": 0,
+                "Desc": "当受到火、冰、雷、血攻击时，每次减少80%的技能伤害。"
+            },
+            {
+                "Name": "魔法装甲9",
+                "LanchType": 11,
+                "SkillCategory": 3,
+                "LanchCondition": 0,
+                "LanchConditionValue": 0,
+                "AffectValue2": 90,
+                "Type": 75,
+                "AffectType": 50,
+                "SkillId": 2470,
+                "AffectValue": 0,
+                "Desc": "当受到火、冰、雷、血攻击时，每次减少90%的技能伤害。"
+            },
+            {
+                "Name": "魔法装甲10",
+                "LanchType": 11,
+                "SkillCategory": 3,
+                "LanchCondition": 0,
+                "LanchConditionValue": 0,
+                "AffectValue2": 100,
+                "Type": 75,
+                "AffectType": 50,
+                "SkillId": 2471,
+                "AffectValue": 0,
+                "Desc": "当受到火、冰、雷、血攻击时，每次减少100%的技能伤害。"
+            },
+            {
+                "Name": "酒池肉林",
+                "LanchType": 5,
+                "SkillCategory": 3,
+                "LanchCondition": 0,
+                "LanchConditionValue": 0,
+                "AffectValue2": 0,
+                "Type": 136,
+                "AffectType": 122,
+                "SkillId": 2472,
+                "AffectValue": "2451_2458",
+                "Desc": "天地所不祐，人神所同疾。将敌方卡牌对卡牌的攻击的转移至此卡牌并减少所收到的物理伤害的70%。"
+            },
+            {
+                "Name": "六道轮回",
+                "LanchType": 5,
+                "SkillCategory": 3,
+                "LanchCondition": 0,
+                "LanchConditionValue": 0,
+                "AffectValue2": 0,
+                "Type": 136,
+                "AffectType": 122,
+                "SkillId": 2505,
+                "AffectValue": "688_413",
+                "Desc": "(1)不受摧毁、送还、传送技能影响。(2)死亡时有65%的概率进入手牌，如果手牌已满则进入牌堆。"
+            },
+            {
+                "Name": "[降临]灵魂消散",
+                "LanchType": 10,
+                "SkillCategory": 2,
+                "LanchCondition": 0,
+                "LanchConditionValue": 0,
+                "AffectValue2": 0,
+                "Type": 118,
+                "AffectType": 143,
+                "SkillId": 2506,
+                "AffectValue": 0,
+                "Desc": "卡牌上场时，将对面场上所有召唤出来的卡牌直接移出游戏。"
+            },
+            {
+                "Name": "[死契]灵魂消散",
+                "LanchType": 9,
+                "SkillCategory": 2,
+                "LanchCondition": 0,
+                "LanchConditionValue": 0,
+                "AffectValue2": 0,
+                "Type": 118,
+                "AffectType": 143,
+                "SkillId": 2507,
+                "AffectValue": 0,
+                "Desc": "被消灭时，将对面场上所有召唤出来的卡牌直接移出游戏。"
+            },
+            {
+                "Name": "格式化",
+                "LanchType": 9,
+                "SkillCategory": 2,
+                "LanchCondition": 0,
+                "LanchConditionValue": 0,
+                "AffectValue2": 0,
+                "Type": 118,
+                "AffectType": 143,
+                "SkillId": 2508,
+                "AffectValue": 0,
+                "Desc": "被消灭时，将对面场上所有召唤出来的卡牌直接移出游戏。"
+            }
         ]
     }
 }

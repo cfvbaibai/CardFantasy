@@ -668,6 +668,16 @@ public class CardInfo extends EntityInfo {
         return false;
     }
 
+    public boolean containsAllSkill(SkillType type) {
+        List<SkillUseInfo> skillUseInfos = this.getAllUsableSkillsIgnoreSilence();
+        for (SkillUseInfo skillUseInfo : skillUseInfos) {
+            if (skillUseInfo.getType() == type) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public int getStar() {
         return this.card.getStar();
     }

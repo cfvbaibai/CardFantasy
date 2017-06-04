@@ -1474,13 +1474,13 @@ public class SkillResolver {
                 } else if (skillUseInfo.getType() == SkillType.西凉铁骑) {
                     GiveSideSkill.apply(this, skillUseInfo, fieldCard,skillUseInfo.getAttachedUseInfo1().getSkill());
                 } else if (skillUseInfo.getType() == SkillType.袈裟斩) {
-                    GiveSideSkill.apply(this, skillUseInfo, card,skillUseInfo.getAttachedUseInfo1().getSkill());
+                    GiveSideSkill.apply(this, skillUseInfo, fieldCard,skillUseInfo.getAttachedUseInfo1().getSkill());
                 } else if (skillUseInfo.getType() == SkillType.致命打击) {
-                    GiveSideSkill.apply(this, skillUseInfo, card,skillUseInfo.getAttachedUseInfo1().getSkill());
+                    GiveSideSkill.apply(this, skillUseInfo, fieldCard,skillUseInfo.getAttachedUseInfo1().getSkill());
                 } else if (skillUseInfo.getType() == SkillType.爱心料理) {
-                    GiveSideSkill.apply(this, skillUseInfo, card,skillUseInfo.getAttachedUseInfo1().getSkill());
+                    GiveSideSkill.apply(this, skillUseInfo, fieldCard,skillUseInfo.getAttachedUseInfo1().getSkill());
                 } else if (skillUseInfo.getType() == SkillType.剑舞) {
-                    GiveSideSkill.apply(this, skillUseInfo, card,skillUseInfo.getAttachedUseInfo1().getSkill());
+                    GiveSideSkill.apply(this, skillUseInfo, fieldCard,skillUseInfo.getAttachedUseInfo1().getSkill());
                 } else if (skillUseInfo.getType() == SkillType.王国同调) {
                     Synchrome.apply(this, skillUseInfo, fieldCard, card, Race.KINGDOM);
                 } else if (skillUseInfo.getType() == SkillType.森林同调) {
@@ -1699,7 +1699,7 @@ public class SkillResolver {
                     || deadCardSkillUseInfo.getType() == SkillType.军团地狱之力) {
                 LegionBuff.remove(this, deadCardSkillUseInfo, card);
             }else if (deadCardSkillUseInfo.getType() == SkillType.铁壁) {
-                ImpregnableDefenseHeroBuff.apply(this, deadCardSkillUseInfo, card);
+                ImpregnableDefenseHeroBuff.remove(this, deadCardSkillUseInfo, card);
             }
         }
     }
