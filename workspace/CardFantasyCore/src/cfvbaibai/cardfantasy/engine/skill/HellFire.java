@@ -56,15 +56,21 @@ public class HellFire {
             if (!skipped) {
                 victims.add(candidate);
             }
-        }
-        ui.useSkill(attacker, victims, skill, true);
-        for (CardInfo victim : victims) {
-            OnAttackBlockingResult result = resolver.resolveAttackBlockingSkills(attacker, victim, skill, damage);
-            if (!result.isAttackable()) {
-                continue;
+            ui.useSkill(attacker, candidate, skill, true);
+            OnAttackBlockingResult result2 = resolver.resolveAttackBlockingSkills(attacker, candidate, skill, damage);
+            if (result2.isAttackable()) {
+                ui.addCardStatus(attacker, candidate, skill, newBurningStatus);
+                candidate.addStatus(newBurningStatus);
             }
-            ui.addCardStatus(attacker, victim, skill, newBurningStatus);
-            victim.addStatus(newBurningStatus);
         }
+
+//        for (CardInfo victim : victims) {
+//            OnAttackBlockingResult result = resolver.resolveAttackBlockingSkills(attacker, victim, skill, damage);
+//            if (!result.isAttackable()) {
+//                continue;
+//            }
+//            ui.addCardStatus(attacker, victim, skill, newBurningStatus);
+//            victim.addStatus(newBurningStatus);
+//        }
     }
 }
