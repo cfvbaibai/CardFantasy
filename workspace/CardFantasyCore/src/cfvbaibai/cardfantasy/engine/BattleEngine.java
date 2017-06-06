@@ -372,7 +372,7 @@ public class BattleEngine {
         }
         if (opField.getCard(i) == null) {
             resolver.resolvePreAttackHeroSkills(myField.getCard(i), getInactivePlayer());
-            resolver.attackHero(myField.getCard(i), getInactivePlayer(), null, myField.getCard(i).getCurrentAT());
+            resolver.attackHero(myField.getCard(i), getInactivePlayer(), null, myField.getCard(i).getCurrentAT(),true);
             resolver.removeStatus(myField.getCard(i), CardStatusType.不屈);
         } else {
             tryAttackCard(myField, opField, i);

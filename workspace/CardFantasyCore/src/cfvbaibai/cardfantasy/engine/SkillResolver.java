@@ -187,7 +187,7 @@ public class SkillResolver {
                 BackStab.apply(this, skillUseInfo, attacker);
             } else if (skillUseInfo.getType() == SkillType.群体削弱) {
                 WeakenAll.apply(this, skillUseInfo, attacker, defender);
-            } else if (skillUseInfo.getType() == SkillType.回魂 || skillUseInfo.getType() == SkillType.上层精灵的挽歌) {
+            } else if (skillUseInfo.getType() == SkillType.回魂) {
                 Resurrection.apply(this, skillUseInfo, attacker);
             } else if (skillUseInfo.getType() == SkillType.祈愿) {
                 Supplication.apply(this, skillUseInfo, attacker);
@@ -888,33 +888,6 @@ public class SkillResolver {
                 Summon.apply(this, deadCardSkillUseInfo, deadCard, SummonType.Normal, 1, deadCard.getName());
             }
         }
-        for (SkillUseInfo deadCardSkillUseInfo : deadCard.getAllUsableSkills()) {
-            // IMPORTANT: Unbending card cannot trigger 自爆
-            if (deadCardSkillUseInfo.getType() == SkillType.自爆 && !result.unbending) {
-                Explode.apply(this, deadCardSkillUseInfo.getSkill(), killerCard, deadCard);
-            } else if (deadCardSkillUseInfo.getType() == SkillType.燕返 || deadCardSkillUseInfo.getType() == SkillType.上层精灵的挽歌) {
-                TsubameGaeshi.apply(deadCardSkillUseInfo, this, opponent, deadCard);
-            } else if (deadCardSkillUseInfo.getType() == SkillType.九转秘术) {
-                Summon.apply(this, deadCardSkillUseInfo, deadCard, SummonType.Normal, 1, "九命猫神·幻影");
-            }else if (deadCardSkillUseInfo.getType() == SkillType.我还会回来的) {
-                Summon.apply(this, deadCardSkillUseInfo, deadCard, SummonType.Normal, 1, "大毒汁之王-5");
-            } else if (deadCardSkillUseInfo.getType() == SkillType.蛮荒我还会回来的) {
-                Summon.apply(this, deadCardSkillUseInfo, deadCard, SummonType.Normal, 1, "蛮荒大毒汁之王-5");
-            } else if (deadCardSkillUseInfo.getType() == SkillType.召唤玫瑰剑士) {
-                Summon.apply(this, deadCardSkillUseInfo.getAttachedUseInfo2(), deadCard, SummonType.Normal, 1,
-                        "玫瑰甜心");
-            }
-        }
-        if (!deadCard.isSilent()) {
-            RuneInfo rune = deadCard.getOwner().getActiveRuneOf(RuneData.爆裂);
-            // IMPORTANT: Unbending card cannot trigger 爆裂
-            if (rune != null && !deadCard.justRevived() && !result.unbending) {
-                Explode.apply(this, rune.getSkill(), killerCard, deadCard);
-            }
-        }
-        if (deadCard.getStatus().containsStatus(CardStatusType.死印)) {
-            DeathMark.explode(this, deadCard, result);
-        }
         if (!result.soulCrushed) {
             // 被扼杀的卡牌无法转生
             boolean reincarnated = false;
@@ -941,6 +914,33 @@ public class SkillResolver {
                     Reincarnation.apply(this, rune.getSkill(), deadCard, result.unbending);
                 }
             }
+        }
+        for (SkillUseInfo deadCardSkillUseInfo : deadCard.getAllUsableSkills()) {
+            // IMPORTANT: Unbending card cannot trigger 自爆
+            if (deadCardSkillUseInfo.getType() == SkillType.自爆 && !result.unbending) {
+                Explode.apply(this, deadCardSkillUseInfo.getSkill(), killerCard, deadCard);
+            } else if (deadCardSkillUseInfo.getType() == SkillType.燕返 || deadCardSkillUseInfo.getType() == SkillType.上层精灵的挽歌) {
+                TsubameGaeshi.apply(deadCardSkillUseInfo, this, opponent, deadCard);
+            } else if (deadCardSkillUseInfo.getType() == SkillType.九转秘术) {
+                Summon.apply(this, deadCardSkillUseInfo, deadCard, SummonType.Normal, 1, "九命猫神·幻影");
+            }else if (deadCardSkillUseInfo.getType() == SkillType.我还会回来的) {
+                Summon.apply(this, deadCardSkillUseInfo, deadCard, SummonType.Normal, 1, "大毒汁之王-5");
+            } else if (deadCardSkillUseInfo.getType() == SkillType.蛮荒我还会回来的) {
+                Summon.apply(this, deadCardSkillUseInfo, deadCard, SummonType.Normal, 1, "蛮荒大毒汁之王-5");
+            } else if (deadCardSkillUseInfo.getType() == SkillType.召唤玫瑰剑士) {
+                Summon.apply(this, deadCardSkillUseInfo.getAttachedUseInfo2(), deadCard, SummonType.Normal, 1,
+                        "玫瑰甜心");
+            }
+        }
+        if (!deadCard.isSilent()) {
+            RuneInfo rune = deadCard.getOwner().getActiveRuneOf(RuneData.爆裂);
+            // IMPORTANT: Unbending card cannot trigger 爆裂
+            if (rune != null && !deadCard.justRevived() && !result.unbending) {
+                Explode.apply(this, rune.getSkill(), killerCard, deadCard);
+            }
+        }
+        if (deadCard.getStatus().containsStatus(CardStatusType.死印)) {
+            DeathMark.explode(this, deadCard, result);
         }
         // HACKHACK: Cannot find better way to handle 不屈/
         //改变不屈的去掉buff位置，为GiveSideSkill做的处理
@@ -1049,8 +1049,6 @@ public class SkillResolver {
                 WeaponSummon.apply(this, skillUseInfo, attacker, defenderPlayer, 500, 1700);
             } else if (skillUseInfo.getType() == SkillType.圣器召唤||skillUseInfo.getType() == SkillType.突袭) {
                 WeaponSummon.apply(this, skillUseInfo, attacker, defenderPlayer, 300, 1300);
-            } else if(skillUseInfo.getType() == SkillType.连斩) {
-                 EvenCut.apply(skillUseInfo,this,attacker,defenderPlayer,1,100);
             }
         }
     }
@@ -1266,7 +1264,7 @@ public class SkillResolver {
         return DeadType.Normal;
     }
 
-    public void attackHero(EntityInfo attacker, Player defenderPlayer, Skill cardSkill, int damage)
+    public void attackHero(EntityInfo attacker, Player defenderPlayer, Skill cardSkill, int damage,boolean ...flag)
             throws HeroDieSignal {
         if (attacker == null) {
             return;
@@ -1292,6 +1290,17 @@ public class SkillResolver {
                 }
                 stage.getUI().healHero(attacker, defenderPlayer, cardSkill, -damage);
                 defenderPlayer.setHP(defenderPlayer.getHP() - damage);
+            }
+            if(flag.length !=0){
+                if(flag[0] && attacker instanceof CardInfo){
+                    if(((CardInfo) attacker).containsUsableSkill(SkillType.连斩)&&defenderPlayer.getField().size() >0) {
+                        for (SkillUseInfo skillUseInfo : ((CardInfo) attacker).getUsableNormalSkills()) {
+                            if (skillUseInfo.getType() == SkillType.连斩) {
+                                EvenCut.apply(skillUseInfo,this,((CardInfo) attacker),defenderPlayer,1,100);break;
+                            }
+                        }
+                    }
+                }
             }
             if (defenderPlayer.getHP() > defenderPlayer.getMaxHP()) {
                 throw new CardFantasyRuntimeException("Hero MaxHP < HP");
@@ -1604,7 +1613,9 @@ public class SkillResolver {
                     Transport.apply(this, skillUseInfo.getSkill(), card, enemy);
                 } else if (skillUseInfo.getType() == SkillType.虚梦) {
                     Transport.apply(this, skillUseInfo.getAttachedUseInfo2().getSkill(), card, enemy);
-                }else if (!isMinion&&skillUseInfo.getType() == SkillType.镜魔) {
+                } else if (skillUseInfo.getType() == SkillType.上层精灵的挽歌) {
+                    Resurrection.apply(this, skillUseInfo, card);
+                } else if (!isMinion&&skillUseInfo.getType() == SkillType.镜魔) {
                     // 镜像召唤的单位可以被连锁攻击
                     Summon.apply(this, skillUseInfo.getAttachedUseInfo2(), card, SummonType.Normal, 1, card.getName());
                 } else if (skillUseInfo.getType() == SkillType.全领域沉默) {

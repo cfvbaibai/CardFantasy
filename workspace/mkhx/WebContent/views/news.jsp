@@ -36,6 +36,11 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2017-06-06: <x>欢笑，清风，波波等</x><ul>
+                        <li>修复【三国英魂·云长】打脸触发BUG</li>
+                        <li>修复【暗黑游侠】上层精灵挽歌回魂不是降临技能 </li>
+                        <li>修复【暗黑游侠】上层精灵挽歌燕反和【四神之朱雀】圣炎冲突导致的BUG</li>
+                    </ul></li>
                     <li>2017-06-04: <x>欢笑，清风，波波等</x><ul>
                         <li>更新模拟器动画战斗小头像</li>
                         <li>修复【剑舞】可以给后置卡牌添加技能的BUG</li>
