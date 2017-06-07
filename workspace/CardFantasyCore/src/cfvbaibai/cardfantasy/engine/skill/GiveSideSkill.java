@@ -5,6 +5,7 @@ import java.util.List;
 import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
 import cfvbaibai.cardfantasy.data.CardSkill;
 import cfvbaibai.cardfantasy.data.Skill;
+import cfvbaibai.cardfantasy.data.SkillType;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.Field;
 import cfvbaibai.cardfantasy.engine.SkillResolver;
@@ -25,6 +26,9 @@ public class GiveSideSkill {
         List<CardInfo> allies = resolver.getAdjacentCards(field, card.getPosition());
         for (CardInfo ally : allies) {
             cardSkill.setGiveSkill(1);
+            if(ally.containsUsableSkill(cardSkill.getType())){
+                continue;
+            }
             ally.addSkill(cardSkill);
         }
     }

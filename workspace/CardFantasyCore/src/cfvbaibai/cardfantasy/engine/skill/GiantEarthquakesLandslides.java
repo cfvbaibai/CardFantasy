@@ -24,14 +24,20 @@ public class GiantEarthquakesLandslides {
         StageInfo stage = resolver.getStage();
         Randomizer random = stage.getRandomizer();
         List<CardInfo> victims = random.pickRandom(defenderHero.getField().toList(), -1, true, null);
-
+        List<CardInfo> myVictims = random.pickRandom(attacker.getOwner().getField().toList(), -1, true, null);
         List<CardInfo> candidates = new ArrayList<CardInfo>();
+        List<CardInfo> myCandidates = new ArrayList<CardInfo>();
         for (CardInfo victim : victims){
             if(victim.containsUsableSkillsWithTag(SkillTag.不动) ){
                 candidates.add(victim);
             }
         }
-        if (candidates.size() < count) {
+        for (CardInfo victim : myVictims){
+            if(victim.containsUsableSkillsWithTag(SkillTag.不动) ){
+                myCandidates.add(victim);
+            }
+        }
+        if (candidates.size()+myCandidates.size() < count) {
             return;
         }
         GameUI ui = resolver.getStage().getUI();
