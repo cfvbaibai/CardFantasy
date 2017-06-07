@@ -27,6 +27,7 @@ public class SoulControl {
             if (!deadCard.containsUsableSkillsWithTag(SkillTag.召唤) &&
                 !deadCard.containsUsableSkillsWithTag(SkillTag.复活) &&
                 !deadCard.containsUsableSkillsWithTag(SkillTag.守护) &&
+                !deadCard.containsUsableSkillsWithTag(SkillTag.抗夺魂) &&
                 deadCard.getRace() != Race.BOSS &&
                 deadCard.getRace() != Race.DEMON) {
                 candidates.add(deadCard);

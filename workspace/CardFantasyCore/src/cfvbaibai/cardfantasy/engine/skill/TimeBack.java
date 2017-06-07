@@ -46,9 +46,12 @@ public class TimeBack {
             }
         }
         for (CardInfo card : player.getHand().toList()) {
-            ui.cardToGrave(player, card);
-            player.getDeck().addCard(card);
-            player.getHand().removeCard(card);
+            if (resolver.resolveAttackBlockingSkills(caster, card, skillUseInfo.getSkill(), 0).isAttackable()) {
+                ui.returnCard(caster, card, skillUseInfo.getSkill());
+                ui.cardToGrave(player, card);
+                player.getDeck().addCard(card);
+                player.getHand().removeCard(card);
+            }
         }
         player.getDeck().shuffle();
     }

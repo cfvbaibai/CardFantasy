@@ -751,10 +751,10 @@
         <Skill type="雷神降临" level="8" unlock="5" />
         <Skill type="破魔手" level="8" unlock="10" />
     </Card>
-    <Card id="1540" name="红莲魔女" wikiId="" race="王国" speed="4" star="5" cost="17" incrCost="2" at="385" hp="1770" incrAT="34" incrHP="35">
-        <Skill type="精神狂乱" level="0" unlock="0" />
+    <Card id="1540" name="红莲魔女" wikiId="" race="王国" speed="3" star="5" cost="17" incrCost="2" at="385" hp="1770" incrAT="41" incrHP="42">
+        <Skill type="离间" level="0" unlock="0" />
         <Skill type="不动" level="0" unlock="5" />
-        <Skill type="月恩术" level="8" unlock="10" />
+        <Skill type="圣母回声" level="8" unlock="10" />
     </Card>
     <Card id="1541" name="预言之神" wikiId="" race="王国" speed="4" star="5" cost="21" incrCost="2" at="290" hp="1310" incrAT="37" incrHP="34">
         <Skill type="连环闪电" level="7" unlock="0" />
@@ -3449,7 +3449,7 @@
     </Card>
     <Card id="4566" name="三国英魂·孔明" wikiId="" race="地狱" speed="2" star="5" cost="19" incrCost="2" at="370" hp="1570" incrAT="47" incrHP="31">
         <Skill type="全体沉默" level="0" unlock="0"  summon="true"/>
-        <Skill type="舌战群儒" level="0" unlock="5" summon="true" />
+        <Skill type="舌战群儒" level="0" unlock="5" />
         <Skill type="武侯" level="0" unlock="10" />
     </Card>
     <Card id="4567" name="夜樱少女" wikiId="" race="地狱" speed="2" star="4" cost="14" incrCost="2" at="280" hp="1310" incrAT="37" incrHP="33">
