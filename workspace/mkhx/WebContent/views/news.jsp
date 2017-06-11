@@ -36,6 +36,12 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2017-06-11: <x>欢笑，清风，波波等</x><ul>
+                        <li>修复【神魔之甲】可以被灵王的轰击造成3倍伤害，感谢<x>梦想i号</x>提供帮助</li>
+                        <li>添加技能【化学风暴】【月之守望】</li>
+                        <li>添加卡牌【电脑怪杰】，【极道拳师】，【科技忍者】，【西部火枪手】</li>
+                        <li>添加新的莉莉丝</li>
+                    </ul></li>
                     <li>2017-06-07: <x>欢笑，清风，波波等</x><ul>
                         <li>修复【夺魂】可以夺取拥有【逃跑】技能的卡牌的BUG</li>
                         <li>修复【终焉使者】魔族之血重复发动的BUG </li>

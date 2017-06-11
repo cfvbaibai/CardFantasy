@@ -1008,6 +1008,16 @@
         <Skill type="圣炎" level="0" unlock="5"  />
         <Skill type="坚毅" level="0" unlock="10" />
     </Card>
+    <Card id="1597" name="电脑怪杰" wikiId="" race="王国" speed="3" star="5" cost="18" incrCost="2" at="330" hp="1490" incrAT="40" incrHP="32">
+        <Skill type="夺魂" level="1" unlock="0" />
+        <Skill type="格式化" level="0" unlock="5"  />
+        <Skill type="过载" level="7" unlock="10" />
+    </Card>
+    <Card id="1598" name="科技忍者" wikiId="" race="王国" speed="4" star="5" cost="18" incrCost="2" at="370" hp="1510" incrAT="44" incrHP="38">
+        <Skill type="连锁攻击" level="8" unlock="0" />
+        <Skill type="镜像" level="0" unlock="5" death="true" />
+        <Skill type="雷切" level="0" unlock="10" />
+    </Card>
 
 
     <!-- 森林 -->
@@ -2629,6 +2639,16 @@
         <Skill type="业火" level="0" unlock="5" summon="true" />
         <Skill type="圣炎" level="0" unlock="10" death="true" />
     </Card>
+    <Card id="3571" name="极道拳师" wikiId="" race="蛮荒" speed="4" star="4" cost="14" incrCost="2" at="290" hp="1410" incrAT="35" incrHP="37">
+        <Skill type="破军" level="5" unlock="0" />
+        <Skill type="连击" level="0" unlock="5"  />
+        <Skill type="钢铁之肤" level="4" unlock="10"  />
+    </Card>
+    <Card id="3572" name="西部火枪手" wikiId="" race="蛮荒" speed="3" star="5" cost="18" incrCost="2" at="330" hp="1590" incrAT="46" incrHP="46">
+        <Skill type="混乱领域" level="7" unlock="0" precast="true"/>
+        <Skill type="逃跑" level="0" unlock="5"  />
+        <Skill type="枪林弹雨" level="0" unlock="10"  />
+    </Card>
 
 
 
@@ -3690,6 +3710,31 @@
         <Skill type="回魂" level="5" unlock="5" />
         <Skill type="免疫" level="0" unlock="10" />
         <Skill type="末世术" level="10" unlock="10" />
+    </Card>
+    <Card id="5518" name="新简单·莉莉丝" wikiId="" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="1500" hp="0" incrAT="0" incrHP="0">
+        <Skill type="神威" level="0" unlock="0" />
+        <Skill type="骤雨" level="8" unlock="5" />
+        <Skill type="法力风暴" level="8" unlock="10" />
+    </Card>
+    <Card id="5519" name="新普通·莉莉丝" wikiId="" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="1500" hp="0" incrAT="0" incrHP="0">
+        <Skill type="神威" level="0" unlock="0" />
+        <Skill type="神兵召唤" level="0" unlock="5" />
+        <Skill type="扼杀" level="0" unlock="10" />
+    </Card>
+    <Card id="5520" name="新困难·莉莉丝" wikiId="" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="1800" hp="90000" incrAT="0" incrHP="0">
+        <Skill type="免疫" level="0" unlock="0" />
+        <Skill type="灵魂禁封" level="0" unlock="5" />
+        <Skill type="水流护甲" level="8" unlock="10" />
+    </Card>
+    <Card id="5551" name="新噩梦·莉莉丝" wikiId="" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="2250" hp="160000" incrAT="0" incrHP="0">
+        <Skill type="免疫" level="0" unlock="0" />
+        <Skill type="圣炎" level="0" unlock="5" />
+        <Skill type="魔族之血" level="0" unlock="10" />
+    </Card>
+    <Card id="5552" name="新炼狱·莉莉丝" wikiId="" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="3000" hp="250000" incrAT="0" incrHP="0">
+        <Skill type="神魔之甲" level="0" unlock="0" />
+        <Skill type="神威" level="0" unlock="5" />
+        <Skill type="无尽华尔兹" level="0" unlock="10" />
     </Card>
 
     <!-- 魔神 -->
