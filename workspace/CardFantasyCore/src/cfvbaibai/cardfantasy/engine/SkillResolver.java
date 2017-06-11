@@ -165,7 +165,7 @@ public class SkillResolver {
                 Heal.apply(skillUseInfo.getSkill(), this, attacker);
             } else if (skillUseInfo.getType() == SkillType.甘霖) {
                 Rainfall.apply(skillUseInfo.getSkill(), this, attacker);
-            } else if (skillUseInfo.getType() == SkillType.月神的护佑 || skillUseInfo.getType() == SkillType.月之守护) {
+            } else if (skillUseInfo.getType() == SkillType.月神的护佑 || skillUseInfo.getType() == SkillType.月之守护|| skillUseInfo.getType() == SkillType.月之守望) {
                 LunaBless.apply(skillUseInfo.getSkill(), this, attacker);
             } else if (skillUseInfo.getType() == SkillType.月神的触碰) {
                 LunaTouch.apply(skillUseInfo.getSkill(), this, attacker);
@@ -202,7 +202,14 @@ public class SkillResolver {
             } else if (skillUseInfo.getType() == SkillType.武形神箭) {
                 Snipe.apply(skillUseInfo.getSkill(), this, attacker, defender, -1);
                 Snipe.apply(skillUseInfo.getSkill(), this, attacker, defender, 3);
+            } else if (skillUseInfo.getType() == SkillType.穿云箭) {
+                Snipe.apply(skillUseInfo.getSkill(), this, attacker, defender, 1);
+            } else if (skillUseInfo.getType() == SkillType.左轮射击) {
+                Snipe.apply(skillUseInfo.getSkill(), this, attacker, defender, 1);
             } else if (skillUseInfo.getType() == SkillType.百步穿杨) {
+                Snipe.apply(skillUseInfo.getAttachedUseInfo1().getSkill(), this, attacker, defender, -1);
+                Snipe.apply(skillUseInfo.getAttachedUseInfo2().getSkill(), this, attacker, defender, 1);
+            } else if (skillUseInfo.getType() == SkillType.枪林弹雨) {
                 Snipe.apply(skillUseInfo.getAttachedUseInfo1().getSkill(), this, attacker, defender, -1);
                 Snipe.apply(skillUseInfo.getAttachedUseInfo2().getSkill(), this, attacker, defender, 1);
             } else if (skillUseInfo.getType() == SkillType.迷魂) {
@@ -210,6 +217,8 @@ public class SkillResolver {
             } else if (skillUseInfo.getType() == SkillType.混乱领域) {
                 Confusion.apply(skillUseInfo, this, attacker, defender, 3);
             } else if (skillUseInfo.getType() == SkillType.国色) {
+                Confusion.apply(skillUseInfo, this, attacker, defender, -1);
+            } else if (skillUseInfo.getType() == SkillType.魅惑之舞) {
                 Confusion.apply(skillUseInfo, this, attacker, defender, -1);
             } else if (skillUseInfo.getType() == SkillType.无我境界) {
                 Confusion.apply(skillUseInfo, this, attacker, defender, 3);
@@ -354,6 +363,8 @@ public class SkillResolver {
                 Bless.apply(skillUseInfo.getAttachedUseInfo1().getSkill(), this, attacker);
             } else if (skillUseInfo.getType() == SkillType.修罗地火攻 || skillUseInfo.getType() == SkillType.火攻) {
                 SuraFire.apply(this, skillUseInfo, attacker, defender);
+            } else if (skillUseInfo.getType() == SkillType.化学风暴) {
+                ChemicalRage.apply(this, skillUseInfo, attacker, defender);
             } else if (skillUseInfo.getType() == SkillType.精神狂乱) {
                 Insane.apply(skillUseInfo, this, attacker, defender, 1, 100);
             } else if (skillUseInfo.getType() == SkillType.离间) {
@@ -411,6 +422,8 @@ public class SkillResolver {
                 ThunderStrike.apply(skillUseInfo, this, attacker, defender, -1);
             } else if (skillUseInfo.getType() == SkillType.赤之魔枪) {
                 RedGun.apply(skillUseInfo, this, attacker, defender, 3);
+            } else if (skillUseInfo.getType() == SkillType.雷切) {
+                ThunderStrike.apply(skillUseInfo, this, attacker, defender, 3);
             }
         }
         if (!attacker.isDead() && !attacker.isSilent() && !attacker.justRevived()) {
@@ -686,6 +699,7 @@ public class SkillResolver {
                     if (blockSkillUseInfo.getType() == SkillType.脱困 ||
                             blockSkillUseInfo.getType() == SkillType.神威 ||
                             blockSkillUseInfo.getType() == SkillType.村正 ||
+                            blockSkillUseInfo.getType() == SkillType.月之守望 ||
                             blockSkillUseInfo.getType() == SkillType.冰神附体 ||
                             blockSkillUseInfo.getType() == SkillType.神之守护) {
                         if (Escape.isSkillEscaped(this, blockSkillUseInfo.getSkill(), attackSkill, attacker, defender)) {
@@ -916,6 +930,8 @@ public class SkillResolver {
                 Explode.apply(this, deadCardSkillUseInfo.getSkill(), killerCard, deadCard);
             } else if (deadCardSkillUseInfo.getType() == SkillType.燕返 || deadCardSkillUseInfo.getType() == SkillType.上层精灵的挽歌) {
                 TsubameGaeshi.apply(deadCardSkillUseInfo, this, opponent, deadCard);
+            } else if (deadCardSkillUseInfo.getType() == SkillType.格式化) {
+                SoulCrash.apply(deadCardSkillUseInfo, this, deadCard, opponent);
             } else if (deadCardSkillUseInfo.getType() == SkillType.九转秘术) {
                 Summon.apply(this, deadCardSkillUseInfo, deadCard, SummonType.Normal, 1, "九命猫神·幻影");
             } else if (deadCardSkillUseInfo.getType() == SkillType.我还会回来的) {
@@ -1527,7 +1543,7 @@ public class SkillResolver {
                     Heal.apply(skillUseInfo.getSkill(), this, card);
                 } else if (skillUseInfo.getType() == SkillType.甘霖) {
                     Rainfall.apply(skillUseInfo.getSkill(), this, card);
-                } else if (skillUseInfo.getType() == SkillType.月神的护佑 || skillUseInfo.getType() == SkillType.月之守护) {
+                } else if (skillUseInfo.getType() == SkillType.月神的护佑 || skillUseInfo.getType() == SkillType.月之守护|| skillUseInfo.getType() == SkillType.月之守望) {
                     LunaBless.apply(skillUseInfo.getSkill(), this, card);
                 } else if (skillUseInfo.getType() == SkillType.月神的触碰) {
                     LunaTouch.apply(skillUseInfo.getSkill(), this, card);
@@ -1744,6 +1760,7 @@ public class SkillResolver {
             if (blockSkillUseInfo.getType() == SkillType.脱困 ||
                     blockSkillUseInfo.getType() == SkillType.神威 ||
                     blockSkillUseInfo.getType() == SkillType.村正 ||
+                    blockSkillUseInfo.getType() == SkillType.月之守望 ||
                     blockSkillUseInfo.getType() == SkillType.冰神附体 ||
                     blockSkillUseInfo.getType() == SkillType.神之守护) {
                 if (Escape.isStatusEscaped(blockSkillUseInfo.getSkill(), this, item, victim)) {
@@ -2107,6 +2124,8 @@ public class SkillResolver {
                 IceMagic.apply(skillUseInfo, this, card, defenderHero, -1, 50, 45 * defenderHero.getField().getAliveCards().size());
             } else if (skillUseInfo.getType() == SkillType.全体加速) {
                 AllSpeedUp.apply(skillUseInfo, this, card);
+            } else if (skillUseInfo.getType() == SkillType.混乱领域) {
+                Confusion.apply(skillUseInfo, this, card, defenderHero, 3);
             }
         }
     }
