@@ -67,9 +67,15 @@ var sendAjaxRequest = function(attrs) {
     buttons.addClass('ui-disbaled');
     $.mobile.loading('show');
     var context = {};
-    $.post(url, postData, function(data) {
-        dataHandler(context, data);
-    }, requestType)
+    $.ajax(url, {
+        type: "POST",
+        data: postData,
+        success: function(data) { dataHandler(context, data); },
+        dataType: requestType,
+        headers: {
+            AntiBot: "Enabled"
+        }
+    })
     .success(function(xhr) {
         successHandler(context, xhr.responseText, xhr.status, xhr.statusText);
     })
