@@ -24,7 +24,7 @@ public enum SkillType {
     献祭("31144", 20, 10, SkillTag.永久, SkillTag.基础攻击加成),
     制衡("", 100, 0, SkillTag.永久, SkillTag.复活,SkillTag.基础攻击加成),
     灵魂献祭("", 100, 0, SkillTag.永久, SkillTag.复活,SkillTag.基础攻击加成),
-    侵蚀("", 100, 0, SkillTag.永久, SkillTag.基础攻击加成),
+    侵蚀("", 100, 0, SkillTag.永久, SkillTag.基础攻击加成, SkillTag.魔王无效, SkillTag.魔族天赋),
     群攻提升("31754", 15, SkillTag.基础攻击加成, SkillTag.抗削弱),
     狂热("30880", 10, SkillTag.永久, SkillTag.基础攻击加成),
     亮银("", 220, 0, SkillTag.永久, SkillTag.基础攻击加成),
