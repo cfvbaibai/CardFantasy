@@ -19,7 +19,8 @@ public final class CoefficientBuff {
             if (ally == card || race != null && ally.getOriginalRace() != race) {
                 continue;
             }
-            if (ally.getEffectsCausedBy(skillUseInfo).isEmpty()) {
+            //生命符文可以无限叠加
+//            if (ally.getEffectsCausedBy(skillUseInfo).isEmpty()) {
                 resolver.getStage().getUI().useSkill(card, skill, true);
                 if (effectType == SkillEffectType.ATTACK_CHANGE) {
                     resolver.getStage().getUI().adjustAT(card, ally, impact, skill);
@@ -29,7 +30,7 @@ public final class CoefficientBuff {
                     throw new CardFantasyRuntimeException("Invalid effect type: " + effectType.name());
                 }
                 ally.addCoefficientEffect(new SkillEffect(effectType, skillUseInfo, impact, false));
-            }
+//            }
         }
     }
 
