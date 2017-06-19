@@ -22,10 +22,11 @@ public final  class ThunderStrike {
         int magnifier = skill.getImpact2();
         int rate = skill.getImpact3();
         for (CardInfo victim : victims) {
-            if (!resolver.resolveAttackBlockingSkills(attacker, victim, skillUseInfo.getSkill(), damage).isAttackable()) {
+            OnAttackBlockingResult result = resolver.resolveAttackBlockingSkills(attacker, victim, skillUseInfo.getSkill(), damage);
+            if (!result.isAttackable()) {
                 continue;
             }
-            int actualDamage = damage;
+            int actualDamage = result.getDamage();
             if (victim.containsAllSkill(SkillType.免疫)|| victim.containsAllSkill(SkillType.结界立场) || CounterMagic.getBlockSkill(victim) != null) {
                 actualDamage *= magnifier;
             } else {

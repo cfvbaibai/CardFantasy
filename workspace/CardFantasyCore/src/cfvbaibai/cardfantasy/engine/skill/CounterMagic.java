@@ -18,7 +18,7 @@ public final class CounterMagic {
         if (attacker == null) {
             return false;
         }
-        if (!resolver.isMagicalSkill(attackSkill) || attackSkill.getType()==SkillType.雷霆一击 || attackSkill.getType()==SkillType.雷霆之怒) {
+        if (!resolver.isMagicalSkill(attackSkill) || attackSkill.getType()==SkillType.雷霆一击 || attackSkill.getType()==SkillType.雷霆之怒 || attackSkill.getType()==SkillType.雷切) {
             return false;
         }
         Skill cardSkill = getBlockSkill(defender);

@@ -1018,6 +1018,21 @@
         <Skill type="镜像" level="0" unlock="5" death="true" />
         <Skill type="雷切" level="0" unlock="10" />
     </Card>
+    <Card id="1599" name="巅峰伍长" wikiId="" race="王国" speed="4" star="5" cost="18" incrCost="2" at="390" hp="1750" incrAT="45" incrHP="45">
+        <Skill type="月神的护佑" level="5" unlock="0" />
+        <Skill type="坚壁" level="4" unlock="5" />
+        <Skill type="铁壁" level="4" unlock="10" />
+    </Card>
+    <Card id="1600" name="巅峰兵长" wikiId="" race="王国" speed="4" star="5" cost="18" incrCost="2" at="360" hp="1720" incrAT="45" incrHP="45">
+        <Skill type="精神污染" level="10" unlock="0" summon="true"/>
+        <Skill type="灵魂消散" level="0" unlock="5"  />
+        <Skill type="赤之魔枪" level="5" unlock="10" />
+    </Card>
+    <Card id="1601" name="巅峰军曹" wikiId="" race="王国" speed="4" star="5" cost="18" incrCost="2" at="420" hp="1780" incrAT="45" incrHP="45">
+        <Skill type="突击军势" level="0" unlock="0" />
+        <Skill type="水流护甲" level="8" unlock="5"  />
+        <Skill type="神威" level="0" unlock="10" />
+    </Card>
 
 
     <!-- 森林 -->
@@ -1787,6 +1802,21 @@
         <Skill type="连斩" level="0" unlock="0" />
         <Skill type="脱困" level="0" unlock="5" />
         <Skill type="武圣" level="0" unlock="10" />
+    </Card>
+    <Card id="2564" name="忧郁爱之公主" wikiId="" race="森林" speed="2" star="4" cost="14" incrCost="2" at="310" hp="1220" incrAT="34" incrHP="32">
+        <Skill type="圣炎" level="0" unlock="0" summon="true"/>
+        <Skill type="守护" level="0" unlock="5" />
+        <Skill type="魔法装甲" level="7" unlock="10" />
+    </Card>
+    <Card id="2565" name="三国英魂·伯言" wikiId="" race="森林" speed="4" star="5" cost="19" incrCost="2" at="330" hp="1600" incrAT="42" incrHP="41">
+        <Skill type="连营" level="0" unlock="0" summon="true"/>
+        <Skill type="以逸待劳" level="0" unlock="5" />
+        <Skill type="火烧连营" level="0" unlock="10" />
+    </Card>
+    <Card id="2566" name="三国英魂·子敬" wikiId="" race="森林" speed="3" star="5" cost="19" incrCost="2" at="320" hp="1530" incrAT="47" incrHP="32">
+        <Skill type="合纵连横" level="0" unlock="0" summon="true"/>
+        <Skill type="守护" level="0" unlock="5" />
+        <Skill type="归魂" level="0" unlock="10" death="true" />
     </Card>
 
     <!-- 蛮荒  -->
@@ -2648,6 +2678,11 @@
         <Skill type="混乱领域" level="7" unlock="0" precast="true"/>
         <Skill type="逃跑" level="0" unlock="5"  />
         <Skill type="枪林弹雨" level="0" unlock="10"  />
+    </Card>
+    <Card id="3573" name="三国英魂·仲颖" wikiId="" race="蛮荒" speed="4" star="5" cost="19" incrCost="2" at="360" hp="2130" incrAT="43" incrHP="52">
+        <Skill type="酒池肉林" level="0" unlock="0" />
+        <Skill type="荆棘术" level="10" unlock="5"  />
+        <Skill type="恶灵汲取" level="9" unlock="10"  />
     </Card>
 
 
@@ -3735,6 +3770,8 @@
         <Skill type="神魔之甲" level="0" unlock="0" />
         <Skill type="神威" level="0" unlock="5" />
         <Skill type="无尽华尔兹" level="0" unlock="10" />
+    </Card>
+    <Card id="5553" name="炮灰" wikiId="" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="1" hp="1200" incrAT="0" incrHP="0">
     </Card>
 
     <!-- 魔神 -->
