@@ -36,6 +36,10 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2017-06-20: <x>欢笑，清风，波波，林知兀等</x><ul>
+                        <li>修复【夺魂】不能被复活的BUG</li>
+                        <li>修复【鬼才】可以被夺魂的BUG</li>
+                    </ul></li>
                     <li>2017-06-19: <x>欢笑，清风，波波，林知兀等</x><ul>
                         <li>修复【雷霆一击】不能被魔甲结算的BUG</li>
                         <li>修复【连斩】技能为普通攻击</li>

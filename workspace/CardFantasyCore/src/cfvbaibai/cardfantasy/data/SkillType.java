@@ -324,7 +324,7 @@ public enum SkillType {
     星云锁链("", 0, 0),
     生命链接("", 0),
     逃跑("", 0,SkillTag.抗夺魂),
-    夺魂("", 0, 1, SkillTag.复活),
+    夺魂("", 0, 1, SkillTag.抗夺魂),
 
     镜像("", 0, 0, SkillTag.召唤),
     洛神("", 0, 0, SkillTag.召唤),
@@ -412,7 +412,7 @@ public enum SkillType {
     觉醒白虎守护("", SkillType.月神的护佑, 7, SkillType.祈福, 3),
     觉醒星之意志("", SkillType.灵魂消散, 0, SkillType.灵王的轰击, 7),
     觉醒狼顾("",  SkillType.雷神降临, 8, SkillType.雷霆一击, 5),
-    鬼才("", SkillType.侵蚀,0,SkillType.夺魂,1),
+    鬼才("", SkillType.侵蚀,0,SkillType.夺魂,1,SkillTag.抗夺魂),
     镜魔("",SkillType.镜面,0,SkillType.镜像,0 ,SkillTag.抗沉默),
     刀语("",SkillType.连击,0,SkillType.弱点攻击,0 ),
     逆鳞("",SkillType.武形秘箭,10,SkillType.神箭三重奏,10),
