@@ -496,7 +496,6 @@ public class BattleEngine {
     private boolean randomAttackCard(Field myField, Field opField, int i)throws HeroDieSignal {
         Randomizer random = stage.getRandomizer();
         SkillResolver resolver = this.stage.getResolver();
-        GameUI ui = this.stage.getUI();
         if (myField.getCard(i).getStatus().containsStatus(CardStatusType.麻痹)) {
             resolver.removeStatus(myField.getCard(i), CardStatusType.麻痹);
             return false;
@@ -506,7 +505,7 @@ public class BattleEngine {
             List<CardInfo> victims = random.pickRandom(opField.toList(), 1, true, null);
             for (CardInfo victim : victims) {
                 CardInfo defender = victim;
-                OnDamagedResult damagedResult = resolver.attackCard(myField.getCard(i), defender, null);
+                resolver.attackCard(myField.getCard(i), defender, null);
                 if (defender.isDead()) {
                     return true;
                 }
