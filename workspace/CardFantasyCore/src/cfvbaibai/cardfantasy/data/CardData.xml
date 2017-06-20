@@ -1809,12 +1809,12 @@
         <Skill type="魔法装甲" level="7" unlock="10" />
     </Card>
     <Card id="2565" name="三国英魂·伯言" wikiId="" race="森林" speed="4" star="5" cost="19" incrCost="2" at="330" hp="1600" incrAT="42" incrHP="41">
-        <Skill type="连营" level="0" unlock="0" summon="true"/>
+        <Skill type="连营" level="0" unlock="0" />
         <Skill type="以逸待劳" level="0" unlock="5" />
         <Skill type="火烧连营" level="0" unlock="10" />
     </Card>
     <Card id="2566" name="三国英魂·子敬" wikiId="" race="森林" speed="3" star="5" cost="19" incrCost="2" at="320" hp="1530" incrAT="47" incrHP="32">
-        <Skill type="合纵连横" level="0" unlock="0" summon="true"/>
+        <Skill type="合纵连横" level="0" unlock="0" />
         <Skill type="守护" level="0" unlock="5" />
         <Skill type="归魂" level="0" unlock="10" death="true" />
     </Card>
