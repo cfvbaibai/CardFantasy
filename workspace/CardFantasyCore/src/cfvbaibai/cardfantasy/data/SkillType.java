@@ -311,8 +311,8 @@ public enum SkillType {
     武形印记("", 0, 200),
     闪光弹("", 5, 1),
     致盲("", 1, 1),
-    魔力法阵("", 15, SkillTag.魔王无效),
-    魔力印记("", 20, SkillTag.魔王无效),
+    魔力法阵("", 15),
+    魔力印记("", 20),
     东风("",175,0),
 
     燕返("", 0, 0),
@@ -381,7 +381,7 @@ public enum SkillType {
     军团萌货之力("", 0, SkillTag.不可洗炼),
     原始攻击调整("", 0, 1, SkillTag.永久, SkillTag.原始攻击加成, SkillTag.不可洗炼),
     原始体力调整("", 0, 1, SkillTag.永久, SkillTag.原始体力加成, SkillTag.不可洗炼),
-    铁壁("", 10),
+    铁壁("", 10,SkillTag.沉默无效),
 
     魔神之刃("", 0, 0, new int[] { 1000, 1000, 3000, 3000, 3000, 3000, 3000, 3000, 3000, 3000, 3000 }, SkillTag.抗免疫, SkillTag.不可洗炼, SkillTag.狙击),
     魔神之甲("", 0, 500, SkillTag.抗免疫, SkillTag.不可洗炼, SkillTag.反击),

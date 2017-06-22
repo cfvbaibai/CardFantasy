@@ -962,6 +962,8 @@ public class SkillResolver {
             } else if (deadCardSkillUseInfo.getType() == SkillType.召唤玫瑰剑士) {
                 Summon.apply(this, deadCardSkillUseInfo.getAttachedUseInfo2(), deadCard, SummonType.Normal, 1,
                         "玫瑰甜心");
+            } else if (deadCardSkillUseInfo.getType() == SkillType.铁壁) {
+                ImpregnableDefenseHeroBuff.remove(this, deadCardSkillUseInfo, deadCard);
             }
         }
         if (!deadCard.isSilent()) {
@@ -1512,8 +1514,6 @@ public class SkillResolver {
                     Synchrome.apply(this, skillUseInfo, fieldCard, card, Race.SAVAGE);
                 } else if (skillUseInfo.getType() == SkillType.地狱同调) {
                     Synchrome.apply(this, skillUseInfo, fieldCard, card, Race.HELL);
-                } else if (skillUseInfo.getType() == SkillType.铁壁) {
-                    ImpregnableDefenseHeroBuff.apply(this, skillUseInfo, fieldCard);
                 }
             }
         }
@@ -1556,6 +1556,8 @@ public class SkillResolver {
                     LunaTouch.apply(skillUseInfo.getSkill(), this, card);
                 } else if (skillUseInfo.getType() == SkillType.祈祷) {
                     Pray.apply(skillUseInfo.getSkill(), this, card);
+                } else if (skillUseInfo.getType() == SkillType.魔力法阵) {
+                    MagicMark.apply(this, skillUseInfo, card, enemy, -1);
                 } else if (skillUseInfo.getType() == SkillType.诅咒) {
                     Curse.apply(this, skillUseInfo.getSkill(), card, enemy);
                 } else if (skillUseInfo.getType() == SkillType.群体削弱) {
@@ -1645,6 +1647,8 @@ public class SkillResolver {
                     Insane.apply(skillUseInfo, this, card, enemy, -1, 70);
                 } else if (skillUseInfo.getType() == SkillType.合纵连横) {
                     GiantEarthquakesLandslides.apply(this, skillUseInfo.getSkill(), card, enemy, 1);
+                } else if (skillUseInfo.getType() == SkillType.铁壁) {
+                    ImpregnableDefenseHeroBuff.apply(this, skillUseInfo, card);
                 }
             }
         }
@@ -1716,8 +1720,6 @@ public class SkillResolver {
                 HolyGuard.remove(this, deadCardSkillUseInfo, card);
             } else if (deadCardSkillUseInfo.getType() == SkillType.坚壁) {
                 CoefficientThreeBuff.remove(this, deadCardSkillUseInfo, card);
-            } else if (deadCardSkillUseInfo.getType() == SkillType.剑域) {
-                CoefficientThreeBuff.remove(this, deadCardSkillUseInfo, card);
             } else if (deadCardSkillUseInfo.getType() == SkillType.西凉铁骑) {
                 GiveSideSkill.remove(this, deadCardSkillUseInfo, card, deadCardSkillUseInfo.getAttachedUseInfo1().getSkill());
             } else if (deadCardSkillUseInfo.getType() == SkillType.袈裟斩) {
@@ -1733,8 +1735,6 @@ public class SkillResolver {
                     || deadCardSkillUseInfo.getType() == SkillType.军团蛮荒之力
                     || deadCardSkillUseInfo.getType() == SkillType.军团地狱之力) {
                 LegionBuff.remove(this, deadCardSkillUseInfo, card);
-            } else if (deadCardSkillUseInfo.getType() == SkillType.铁壁) {
-                ImpregnableDefenseHeroBuff.remove(this, deadCardSkillUseInfo, card);
             }
         }
     }
@@ -2140,6 +2140,8 @@ public class SkillResolver {
                 AllSpeedUp.apply(skillUseInfo, this, card);
             } else if (skillUseInfo.getType() == SkillType.混乱领域) {
                 Confusion.apply(skillUseInfo, this, card, defenderHero, 3);
+            } else if (skillUseInfo.getType() == SkillType.镜像) {
+                Summon.apply(this, skillUseInfo, card, SummonType.Summoning, 1, card.getName());
             }
         }
     }
