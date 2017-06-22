@@ -36,6 +36,13 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2017-06-22: <x>欢笑，清风，波波，林知兀等</x><ul>
+                        <li>修复【铁壁】叠加错误的BUG，修复【剑域】不能叠加的BUG</li>
+                        <li>修复【魔力法阵】不能给与魔神debuff的BUG</li>
+                        <li>添加技能降临【魔力法阵】</li>
+                        <li>添加卡牌【都市丽人】</li>
+                        <li>修复卡牌【炮灰】等待时间</li>
+                    </ul></li>
                     <li>2017-06-20: <x>欢笑，清风，波波，林知兀等</x><ul>
                         <li>修复【夺魂】不能被复活的BUG</li>
                         <li>修复【鬼才】可以被夺魂的BUG，感谢欧细诺奇的帮助</li>

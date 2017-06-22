@@ -1033,6 +1033,11 @@
         <Skill type="水流护甲" level="8" unlock="5"  />
         <Skill type="神威" level="0" unlock="10" />
     </Card>
+    <Card id="1602" name="都市丽人" wikiId="" race="王国" speed="3" star="5" cost="18" incrCost="2" at="310" hp="1520" incrAT="46" incrHP="34">
+        <Skill type="镜像" level="0" unlock="0" precast="true"/>
+        <Skill type="寒冰触碰" level="4" unlock="5"  />
+        <Skill type="复活" level="0" unlock="10" sumon="true"/>
+    </Card>
 
 
     <!-- 森林 -->
@@ -3771,7 +3776,7 @@
         <Skill type="神威" level="0" unlock="5" />
         <Skill type="无尽华尔兹" level="0" unlock="10" />
     </Card>
-    <Card id="5553" name="炮灰" wikiId="" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="1" hp="1200" incrAT="0" incrHP="0">
+    <Card id="5553" name="炮灰" wikiId="" race="魔神" speed="6" star="5" cost="99" incrCost="0" at="1" hp="1200" incrAT="0" incrHP="0">
     </Card>
 
     <!-- 魔神 -->

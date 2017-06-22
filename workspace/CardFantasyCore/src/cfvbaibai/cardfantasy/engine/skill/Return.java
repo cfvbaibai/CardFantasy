@@ -3,12 +3,8 @@ package cfvbaibai.cardfantasy.engine.skill;
 import cfvbaibai.cardfantasy.GameUI;
 import cfvbaibai.cardfantasy.Randomizer;
 import cfvbaibai.cardfantasy.data.Skill;
-import cfvbaibai.cardfantasy.engine.CardInfo;
-import cfvbaibai.cardfantasy.engine.CardStatusType;
-import cfvbaibai.cardfantasy.engine.HeroDieSignal;
-import cfvbaibai.cardfantasy.engine.OnAttackBlockingResult;
-import cfvbaibai.cardfantasy.engine.Player;
-import cfvbaibai.cardfantasy.engine.SkillResolver;
+import cfvbaibai.cardfantasy.data.SkillType;
+import cfvbaibai.cardfantasy.engine.*;
 
 public final class Return {
     public static void apply(SkillResolver resolver, Skill cardSkill, CardInfo attacker, Player defenderHero) throws HeroDieSignal {
@@ -48,5 +44,15 @@ public final class Return {
             defender.getOwner().getDeck().insertCardToPosition(defender, index);
         }
         resolver.resolveLeaveSkills(defender);
+        if(defender.containsAllSkill(SkillType.铁壁))
+        {
+            for(SkillUseInfo defenderskill:defender.getAllUsableSkills())
+            {
+                if (defenderskill.getType() == SkillType.铁壁)
+                {
+                    ImpregnableDefenseHeroBuff.remove(resolver, defenderskill, defender);
+                }
+            }
+        }
     }
 }
