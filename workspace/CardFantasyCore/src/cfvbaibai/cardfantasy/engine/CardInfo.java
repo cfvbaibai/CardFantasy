@@ -121,7 +121,7 @@ public class CardInfo extends EntityInfo {
         }
         this.effects.get(type).add(effect);
         if (effect.getType() == SkillEffectType.MAXHP_CHANGE) {
-            this.setBasicHP(this.getHP() *(100+ effect.getValue())/100);
+            this.setBasicHP(this.getHP() + effect.getValue());
         }
     }
 

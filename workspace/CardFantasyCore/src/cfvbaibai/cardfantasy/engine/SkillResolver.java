@@ -1487,15 +1487,15 @@ public class SkillResolver {
                 } else if (skillUseInfo.getType() == SkillType.根源之力) {
                     TogetherBuff.apply(this, skillUseInfo, fieldCard, null);
                 } else if (skillUseInfo.getType() == SkillType.生命符文) {
-                    CoefficientBuff.apply(this, skillUseInfo, fieldCard, null, SkillEffectType.MAXHP_CHANGE);
+                    CoefficientBuff.apply(this, skillUseInfo, fieldCard,card, null, SkillEffectType.MAXHP_CHANGE);
                 } else if (skillUseInfo.getType() == SkillType.战歌之鼓) {
-                    CoefficientBuff.apply(this, skillUseInfo, fieldCard, null, SkillEffectType.ATTACK_CHANGE);
+                    CoefficientBuff.apply(this, skillUseInfo, fieldCard,card, null, SkillEffectType.ATTACK_CHANGE);
                 } else if (skillUseInfo.getType() == SkillType.神圣守护) {
                     HolyGuard.apply(this, skillUseInfo, fieldCard);
                 } else if (skillUseInfo.getType() == SkillType.坚壁) {
-                    CoefficientThreeBuff.apply(this, skillUseInfo, fieldCard ,null, SkillEffectType.MAXHP_CHANGE);
+                    CoefficientThreeBuff.apply(this, skillUseInfo, fieldCard ,card,null, SkillEffectType.MAXHP_CHANGE);
                 } else if (skillUseInfo.getType() == SkillType.剑域) {
-                    CoefficientThreeBuff.apply(this, skillUseInfo, fieldCard ,null, SkillEffectType.ATTACK_CHANGE);
+                    CoefficientThreeBuff.apply(this, skillUseInfo, fieldCard ,card,null, SkillEffectType.ATTACK_CHANGE);
                 } else if (skillUseInfo.getType() == SkillType.西凉铁骑) {
                     GiveSideSkill.apply(this, skillUseInfo, fieldCard, skillUseInfo.getAttachedUseInfo1().getSkill());
                 } else if (skillUseInfo.getType() == SkillType.袈裟斩) {
@@ -1718,8 +1718,6 @@ public class SkillResolver {
                 TogetherBuff.remove(this, deadCardSkillUseInfo, card, null);
             } else if (deadCardSkillUseInfo.getType() == SkillType.神圣守护) {
                 HolyGuard.remove(this, deadCardSkillUseInfo, card);
-            } else if (deadCardSkillUseInfo.getType() == SkillType.坚壁) {
-                CoefficientThreeBuff.remove(this, deadCardSkillUseInfo, card);
             } else if (deadCardSkillUseInfo.getType() == SkillType.西凉铁骑) {
                 GiveSideSkill.remove(this, deadCardSkillUseInfo, card, deadCardSkillUseInfo.getAttachedUseInfo1().getSkill());
             } else if (deadCardSkillUseInfo.getType() == SkillType.袈裟斩) {

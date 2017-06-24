@@ -6,31 +6,57 @@ import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.engine.*;
 
 public final class CoefficientBuff {
-    public static void apply(SkillResolver resolver, SkillUseInfo skillUseInfo, CardInfo card, Race race,
+    public static void apply(SkillResolver resolver, SkillUseInfo skillUseInfo, CardInfo card,CardInfo summorCard, Race race,
                              SkillEffectType effectType) {
         if (card == null) {
             throw new CardFantasyRuntimeException("card cannot be null");
         }
         Skill skill = skillUseInfo.getSkill();
         int impact = skill.getImpact();
+        int impactAdd= 0;
+        boolean flag =false;
+        if(card ==summorCard){
+            flag = true;
+        }
         Field field = card.getOwner().getField();
-        for (CardInfo ally : field.getAliveCards()) {
-            // IMPORTANT: 种族BUFF无视种族改变技能的影响
-            if (ally == card || race != null && ally.getOriginalRace() != race) {
-                continue;
-            }
-            //生命符文可以无限叠加
+        if(flag) {
+            for (CardInfo ally : field.getAliveCards()) {
+                // IMPORTANT: 种族BUFF无视种族改变技能的影响
+                if (ally == card || race != null && ally.getOriginalRace() != race) {
+                    continue;
+                }
+                //生命符文可以无限叠加
 //            if (ally.getEffectsCausedBy(skillUseInfo).isEmpty()) {
                 resolver.getStage().getUI().useSkill(card, skill, true);
                 if (effectType == SkillEffectType.ATTACK_CHANGE) {
-                    resolver.getStage().getUI().adjustAT(card, ally, impact, skill);
+                    impactAdd = ally.getInitAT()*impact/100;
+                    resolver.getStage().getUI().adjustAT(card, ally, impactAdd, skill);
                 } else if (effectType == SkillEffectType.MAXHP_CHANGE) {
-                    resolver.getStage().getUI().adjustHP(card, ally, impact, skill);
+                    impactAdd = ally.getBasicMaxHP()*impact/100;
+                    resolver.getStage().getUI().adjustHP(card, ally, impactAdd, skill);
                 } else {
                     throw new CardFantasyRuntimeException("Invalid effect type: " + effectType.name());
                 }
-                ally.addCoefficientEffect(new SkillEffect(effectType, skillUseInfo, impact, false));
+                ally.addCoefficientEffect(new SkillEffect(effectType, skillUseInfo, impactAdd, false));
 //            }
+            }
+        }
+        else{
+            // IMPORTANT: 种族BUFF无视种族改变技能的影响
+            if ( race != null && summorCard.getOriginalRace() != race) {
+                return;
+            }
+            resolver.getStage().getUI().useSkill(card, skill, true);
+            if (effectType == SkillEffectType.ATTACK_CHANGE) {
+                impactAdd = summorCard.getInitAT()*impact/100;
+                resolver.getStage().getUI().adjustAT(card, summorCard, impactAdd, skill);
+            } else if (effectType == SkillEffectType.MAXHP_CHANGE) {
+                impactAdd = summorCard.getBasicMaxHP()*impact/100;
+                resolver.getStage().getUI().adjustHP(card, summorCard, impactAdd, skill);
+            } else {
+                throw new CardFantasyRuntimeException("Invalid effect type: " + effectType.name());
+            }
+            summorCard.addCoefficientEffect(new SkillEffect(effectType, skillUseInfo, impactAdd, false));
         }
     }
 
