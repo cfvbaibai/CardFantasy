@@ -19,11 +19,15 @@ public class Summon {
         // 镜像不能再次发动镜像
         if (summoner.isSummonedMinion() && skillUseInfo.getType() == SkillType.镜像
                 || summoner.isSummonedMinion() && skillUseInfo.getType() == SkillType.镜魔) {
-            for(CardInfo primaryCardss : summoner.getOwner().getAllPrimaryCards())
+            for(CardStatusItem item : summoner.getStatus().getAllItems())
             {
-                if(summoner.getName().equals(primaryCardss.getName()))
-                {
-                    return;
+                if(item.getType()==CardStatusType.召唤){
+                    if(item.getCause().getOwner() instanceof CardInfo){
+                        if(((CardInfo)item.getCause().getOwner()).getName().equals(summoner.getName()))
+                        {
+                            return;
+                        }
+                    }
                 }
             }
         }
