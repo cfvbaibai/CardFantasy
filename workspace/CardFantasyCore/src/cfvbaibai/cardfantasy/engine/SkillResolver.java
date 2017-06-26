@@ -188,7 +188,7 @@ public class SkillResolver {
             } else if (skillUseInfo.getType() == SkillType.回魂) {
                 Resurrection.apply(this, skillUseInfo, attacker);
             } else if (skillUseInfo.getType() == SkillType.祈愿) {
-                Supplication.apply(this, skillUseInfo, attacker);
+                Supplication.apply(this, skillUseInfo, attacker,defender);
             } else if (skillUseInfo.getType() == SkillType.归魂) {
                 RegressionSoul.apply(this, skillUseInfo, attacker);
             } else if (skillUseInfo.getType() == SkillType.狙击) {
@@ -647,7 +647,7 @@ public class SkillResolver {
             }
 
             for (SkillUseInfo blockSkillUseInfo : defender.getUsableNormalSkills()) {
-                if (blockSkillUseInfo.getType() == SkillType.骑士守护) {
+                if (blockSkillUseInfo.getType() == SkillType.骑士守护 || blockSkillUseInfo.getType() == SkillType.骑士荣耀) {
                     result.setDamage(KnightGuardian.apply(this, blockSkillUseInfo.getSkill(), attacker, defender,
                             attackSkill, result.getDamage()));
                 }
@@ -753,6 +753,21 @@ public class SkillResolver {
                             }
                         }
                     }
+                }
+                if (isMagicalSkill(attackSkill) && damage > 0) {
+                    // 治疗法术不受魔法印记影响
+                    List<CardStatusItem> magicMarkStatusItems = defender.getStatus().getStatusOf(CardStatusType.魔印);
+                    int maxDamage = 0;
+                    for (CardStatusItem item : magicMarkStatusItems) {
+                        Skill magicMarkSkill = item.getCause().getSkill();
+                        this.getStage().getUI().useSkill(defender, magicMarkSkill, true);
+                        int extraDamage = damage * magicMarkSkill.getImpact() / 100;
+                        if(extraDamage >maxDamage)
+                        {
+                            maxDamage = extraDamage;
+                        }
+                    }
+                    result.setDamage(damage+maxDamage);
                 }
                 for (SkillUseInfo blockSkillUseInfo : defender.getUsableNormalSkills()) {
                     if (blockSkillUseInfo.getType() == SkillType.魔甲 ||
@@ -1207,18 +1222,6 @@ public class SkillResolver {
         result.originalDamage += damage;
         result.actualDamage += actualDamage;
 
-        if (isMagicalSkill(skill) && damage > 0) {
-            // 治疗法术不受魔法印记影响
-            List<CardStatusItem> magicMarkStatusItems = defender.getStatus().getStatusOf(CardStatusType.魔印);
-            for (CardStatusItem item : magicMarkStatusItems) {
-                Skill magicMarkSkill = item.getCause().getSkill();
-                this.getStage().getUI().useSkill(defender, magicMarkSkill, true);
-                int extraDamage = damage * magicMarkSkill.getImpact() / 100;
-                this.getStage().getUI().attackCard(item.getCause().getOwner(), defender, magicMarkSkill, extraDamage);
-                result.actualDamage += defender.applyDamage(extraDamage);
-                result.originalDamage += extraDamage;
-            }
-        }
 
         if (defender.getHP() <= 0) {
             result.cardDead = true;
@@ -2124,7 +2127,7 @@ public class SkillResolver {
         this.resolveDeathSkills(attacker, victim, cardSkill, onDamagedResult);
     }
 
-    public void resolvePrecastSkills(CardInfo card, Player defenderHero) throws HeroDieSignal {
+    public void resolvePrecastSkills(CardInfo card, Player defenderHero,boolean flag) throws HeroDieSignal {
         for (SkillUseInfo skillUseInfo : card.getUsablePrecastSkills()) {
             if (skillUseInfo.getType() == SkillType.凋零真言) {
                 WitheringWord.apply(skillUseInfo, this, card, defenderHero);
@@ -2138,7 +2141,7 @@ public class SkillResolver {
                 AllSpeedUp.apply(skillUseInfo, this, card);
             } else if (skillUseInfo.getType() == SkillType.混乱领域) {
                 Confusion.apply(skillUseInfo, this, card, defenderHero, 3);
-            } else if (skillUseInfo.getType() == SkillType.镜像) {
+            } else if (skillUseInfo.getType() == SkillType.镜像&&flag) {
                 Summon.apply(this, skillUseInfo, card, SummonType.Summoning, 1, card.getName());
             }
         }

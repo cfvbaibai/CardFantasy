@@ -36,6 +36,10 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2017-06-26: <x>欢笑，清风，波波，林知兀等</x><ul>
+                        <li>修复技能【魔力法阵】结算魔法伤害是分段结算导致【魔甲】等技能伤害结算不正确</li>
+                        <li>修复技能【祈愿】可以发动一次攻击的先机技能</li>
+                    </ul></li>
                     <li>2017-06-24: <x>欢笑，清风，波波，林知兀等</x><ul>
                         <li>修复技能【坚壁】，【剑域】，【生命符文】BUG</li>
                         <li>修复【血色玫瑰】死契召唤的【玫瑰甜心】无限制镜像BUG</li>
