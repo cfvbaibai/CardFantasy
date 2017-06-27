@@ -13,7 +13,7 @@ import java.util.List;
  * Created by hasee on 2017/4/10.
  */
 public final class Supplication {
-    public static  void apply(SkillResolver resolver, SkillUseInfo skillUseInfo, CardInfo card){
+    public static  void apply(SkillResolver resolver, SkillUseInfo skillUseInfo, CardInfo card,Player defender) throws HeroDieSignal {
         if (card == null) {
             throw new CardFantasyRuntimeException("card should not be null");
         }
@@ -32,13 +32,14 @@ public final class Supplication {
         ui.useSkill(card, card, skill, true);
         for(CardInfo addcard : addHand)
         {
-            ui.cardToHand(player, addcard);
-            player.getDeck().removeCard(addcard);
-            hand.addCard(addcard);
             if(hand.isFull())
             {
                 break;
             }
+            ui.cardToHand(player, addcard);
+            player.getDeck().removeCard(addcard);
+            hand.addCard(addcard);
+            resolver.resolvePrecastSkills(addcard,defender,false);
         }
     }
 }
