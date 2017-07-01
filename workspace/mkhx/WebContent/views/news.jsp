@@ -36,6 +36,10 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2017-06-28: <x>欢笑，清风，波波，林知兀，布萨龙等</x><ul>
+                        <li>添加技能【降临封印】</li>
+                        <li>去除【灵龙轰咆】中的远古元素巨龙</li>
+                    </ul></li>
                     <li>2017-06-26: <x>欢笑，清风，波波，林知兀等</x><ul>
                         <li>修复技能【魔力法阵】结算魔法伤害是分段结算导致【魔甲】等技能伤害结算不正确</li>
                         <li>修复技能【祈愿】可以发动一次攻击的先机技能</li>
