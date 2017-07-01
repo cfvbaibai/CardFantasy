@@ -1577,6 +1577,8 @@ public class SkillResolver {
                     Destroy.apply(this, skillUseInfo.getSkill(), card, enemy, 1);
                 } else if (skillUseInfo.getType() == SkillType.传送 || skillUseInfo.getType() == SkillType.代表月亮消灭你) {
                     Transport.apply(this, skillUseInfo.getSkill(), card, enemy);
+                } else if (skillUseInfo.getType() == SkillType.封印) {
+                    Seal.apply(skillUseInfo, this, card, enemy);
                 } else if (skillUseInfo.getType() == SkillType.业火) {
                     HellFire.apply(skillUseInfo, this, card, enemy, 3);
                 } else if (skillUseInfo.getType() == SkillType.关小黑屋) {
@@ -1620,7 +1622,7 @@ public class SkillResolver {
                 } else if (skillUseInfo.getType() == SkillType.灵龙轰咆) {
                     Summon.apply(this, skillUseInfo, card, SummonType.RandomSummoning, 2,
                             "光明之龙", "金属巨龙", "黄金金属巨龙", "元素灵龙", "暴怒霸龙", "毁灭之龙", "幽灵巨龙",
-                            "水晶巨龙", "毒雾羽龙", "黄金毒龙", "远古元素巨龙", "地魔龙", "邪狱魔龙", "混沌之龙");
+                            "水晶巨龙", "毒雾羽龙", "黄金毒龙",  "地魔龙", "邪狱魔龙", "混沌之龙");
                 } else if (skillUseInfo.getType() == SkillType.万兽奔腾) {
                     Summon.apply(this, skillUseInfo, card, SummonType.RandomSummoning, 2,
                             "麒麟兽", "凤凰", "浮云青鸟", "九头妖蛇", "雷兽", "羽翼化蛇", "神谕火狐",
