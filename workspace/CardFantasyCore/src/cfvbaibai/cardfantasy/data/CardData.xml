@@ -2431,10 +2431,10 @@
         <Skill type="武形秘术" level="0" unlock="10" />
     </Card>
 
-    <Card id="3522" name="九命猫神" wikiId="" race="蛮荒" speed="3" star="5" cost="17" incrCost="2" at="415" hp="1550" incrAT="42" incrHP="31">
-        <Skill type="九转秘术" level="0" unlock="0" />
+    <Card id="3522" name="九命猫神" wikiId="" race="蛮荒" speed="3" star="5" cost="17" incrCost="2" at="415" hp="1550" incrAT="50" incrHP="40">
+        <Skill type="九转禁术" level="0" unlock="0" />
         <Skill type="燕返" level="0" unlock="5" />
-        <Skill type="转生" level="7" unlock="10" />
+        <Skill type="六道轮回" level="0" unlock="10" />
     </Card>
     <Card id="3523" name="九命猫神·幻影" wikiId="" race="蛮荒" speed="4" star="5" cost="17" incrCost="2" at="415" hp="1550" incrAT="60" incrHP="49">
     </Card>
@@ -2688,6 +2688,11 @@
         <Skill type="酒池肉林" level="0" unlock="0" />
         <Skill type="荆棘术" level="10" unlock="5"  />
         <Skill type="恶灵汲取" level="9" unlock="10"  />
+    </Card>
+    <Card id="3574" name="冰原领主" wikiId="" race="蛮荒" speed="4" star="4" cost="16" incrCost="2" at="320" hp="1520" incrAT="38" incrHP="32">
+        <Skill type="寒冰之盾" level="0" unlock="0" />
+        <Skill type="凋零陷阱" level="0" unlock="5"  />
+        <Skill type="寒霜冲击" level="6" unlock="10"  />
     </Card>
 
 

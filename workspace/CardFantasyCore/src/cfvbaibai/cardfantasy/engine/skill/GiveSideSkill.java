@@ -13,7 +13,7 @@ import cfvbaibai.cardfantasy.engine.SkillUseInfo;
 /**
  * Created by hasee on 2017/5/7.
  */
-public class GiveSideSkill {
+public final class GiveSideSkill {
     public static void apply(SkillResolver resolver, SkillUseInfo skillUseInfo, CardInfo card, Skill addSkill) {
         if (card == null || card.isDead()) {
             throw new CardFantasyRuntimeException("card should not be null or dead!");
@@ -38,5 +38,9 @@ public class GiveSideSkill {
             if (ally == null) { continue; }
             ally.removeSkill(cardSkill);
         }
+    }
+
+    public static void removeAll(SkillResolver resolver,SkillUseInfo skillUseInfo,CardInfo card) {
+            card.removeAllGiveSkill();
     }
 }
