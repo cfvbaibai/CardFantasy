@@ -965,11 +965,13 @@ public class SkillResolver {
             if (deadCardSkillUseInfo.getType() == SkillType.自爆 && !result.unbending) {
                 Explode.apply(this, deadCardSkillUseInfo.getSkill(), killerCard, deadCard);
             } else if (deadCardSkillUseInfo.getType() == SkillType.燕返 || deadCardSkillUseInfo.getType() == SkillType.上层精灵的挽歌) {
-                TsubameGaeshi.apply(deadCardSkillUseInfo, this, opponent, deadCard);
+                TsubameGaeshi.apply(deadCardSkillUseInfo,deadCardSkillUseInfo.getSkill(), this, opponent, deadCard);
             } else if (deadCardSkillUseInfo.getType() == SkillType.格式化) {
                 SoulCrash.apply(deadCardSkillUseInfo, this, deadCard, opponent);
-            } else if (deadCardSkillUseInfo.getType() == SkillType.九转秘术) {
+            } else if (deadCardSkillUseInfo.getType() == SkillType.九转秘术 ) {
                 Summon.apply(this, deadCardSkillUseInfo, deadCard, SummonType.Normal, 1, "九命猫神·幻影");
+            } else if (deadCardSkillUseInfo.getType() == SkillType.九转禁术 ) {
+                Summon.apply(this, deadCardSkillUseInfo, deadCard, SummonType.Normal, 1,deadCard.getName());
             } else if (deadCardSkillUseInfo.getType() == SkillType.我还会回来的) {
                 Summon.apply(this, deadCardSkillUseInfo, deadCard, SummonType.Normal, 1, "大毒汁之王-5");
             } else if (deadCardSkillUseInfo.getType() == SkillType.蛮荒我还会回来的) {
@@ -986,6 +988,11 @@ public class SkillResolver {
             // IMPORTANT: Unbending card cannot trigger 爆裂
             if (rune != null && !deadCard.justRevived() && !result.unbending) {
                 Explode.apply(this, rune.getSkill(), killerCard, deadCard);
+            }
+            rune = deadCard.getOwner().getActiveRuneOf(RuneData.背水);
+            // IMPORTANT: Unbending card cannot trigger 背水
+            if (rune != null && !deadCard.justRevived() ) {
+                TsubameGaeshi.apply(null,rune.getSkill(), this, opponent, deadCard);
             }
         }
         if (deadCard.getStatus().containsStatus(CardStatusType.死印)) {
@@ -1738,6 +1745,8 @@ public class SkillResolver {
                     || deadCardSkillUseInfo.getType() == SkillType.军团蛮荒之力
                     || deadCardSkillUseInfo.getType() == SkillType.军团地狱之力) {
                 LegionBuff.remove(this, deadCardSkillUseInfo, card);
+            } else if (deadCardSkillUseInfo.getSkill().getGiveSkill() == 1) {
+                GiveSideSkill.removeAll(this,deadCardSkillUseInfo,card);
             }
         }
     }
@@ -1853,7 +1862,9 @@ public class SkillResolver {
             if (attackerSkillUseInfo.getType() == SkillType.弱点攻击 ||
                     attackerSkillUseInfo.getType() == SkillType.会心一击 ||
                     attackerSkillUseInfo.getType() == SkillType.三千世界 ||
-                    attackerSkillUseInfo.getType() == SkillType.亮银 || attackerSkillUseInfo.getType() == SkillType.鹰眼 ||
+                    attackerSkillUseInfo.getType() == SkillType.亮银 ||
+                    attackerSkillUseInfo.getType() == SkillType.鹰眼 ||
+                    attackerSkillUseInfo.getType() == SkillType.九转禁术 ||
                     attackerSkillUseInfo.getType() == SkillType.刀语 ||
                     attackerSkillUseInfo.getType() == SkillType.武圣) {
                 return WeakPointAttack.isBlockSkillDisabled(this, attackerSkillUseInfo.getSkill(), cardSkill, attacker, defender);

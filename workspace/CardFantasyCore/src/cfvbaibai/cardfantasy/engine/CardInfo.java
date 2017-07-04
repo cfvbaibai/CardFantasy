@@ -82,6 +82,16 @@ public class CardInfo extends EntityInfo {
            }
         }
     }
+
+    public void removeAllGiveSkill()
+    {
+        for(int j=0;j<this.skillUseInfos.size();j++){
+            if(this.skillUseInfos.get(j).getSkill().getGiveSkill() == 1)
+            {
+                this.skillUseInfos.remove(j);
+            }
+        }
+    }
     
     public CardSkill getExtraSkill() {
         return card.getExtraSkill();

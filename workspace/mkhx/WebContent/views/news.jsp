@@ -36,6 +36,12 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2017-07-04: <x>欢笑，清风，波波，林知兀，布萨龙等</x><ul>
+                        <li>添加符文【背水】</li>
+                        <li>觉醒卡牌【九命猫神】</li>
+                        <li>添加卡牌【冰原领主】</li>
+                        <li>修复类似【剑舞】类别附加技能死亡时无法移除的问题</li>
+                    </ul></li>
                     <li>2017-06-28: <x>欢笑，清风，波波，林知兀，布萨龙等</x><ul>
                         <li>添加技能【降临封印】</li>
                         <li>去除【灵龙轰咆】中的远古元素巨龙</li>
