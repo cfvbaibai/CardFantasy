@@ -996,7 +996,7 @@
     <Card id="1594" name="美味厨娘" wikiId="" race="王国" speed="4" star="5" cost="18" incrCost="2" at="320" hp="1460" incrAT="43" incrHP="35">
         <Skill type="爱心料理" level="0" unlock="0" />
         <Skill type="不动" level="0" unlock="5"  />
-        <Skill type="生命符文" level="0" unlock="10" />
+        <Skill type="生命符文" level="4" unlock="10" />
     </Card>
     <Card id="1595" name="血色玫瑰" wikiId="" race="王国" speed="3" star="5" cost="18" incrCost="2" at="410" hp="1580" incrAT="45" incrHP="45">
         <Skill type="召唤玫瑰剑士" level="0" unlock="0" />

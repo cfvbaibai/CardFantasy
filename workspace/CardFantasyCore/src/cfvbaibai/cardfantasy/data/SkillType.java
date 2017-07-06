@@ -360,8 +360,10 @@ public enum SkillType {
     召唤炮灰("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
     召唤花舞剑士("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
     召唤玫瑰甜心("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
-    突击军势("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
-    召唤玫瑰剑士("",SkillType.召唤花舞剑士,0, SkillType.召唤玫瑰甜心,0, SkillTag.不可洗炼),
+    召唤伍长("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
+    召唤兵长("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
+    突击军势("", SkillType.召唤伍长,0, SkillType.召唤兵长,0, SkillTag.不可洗炼,SkillTag.召唤),
+    召唤玫瑰剑士("",SkillType.召唤花舞剑士,0, SkillType.召唤玫瑰甜心,0, SkillTag.不可洗炼,SkillTag.召唤),
 
 
     圣光洗礼("", 0, 0, SkillTag.抗免疫, SkillTag.不可洗炼, SkillTag.魔王无效, SkillTag.魔族天赋),

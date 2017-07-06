@@ -36,6 +36,13 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2017-07-06: <x>欢笑，清风，波波，林知兀，布萨龙等</x><ul>
+                        <li>修复技能【过载】文字显示BUG</li>
+                        <li>修复技能【巅峰军曹】召唤技能没有分开的BUG</li>
+                        <li>修复【美味厨娘】的【生命符文】技能未添加的BUG</li>
+                        <li>修复【血色玫瑰】可被【夺魂】BUG</li>
+                        <li>修复【九命猫神】【镜像】重复发动的BUG</li>
+                    </ul></li>
                     <li>2017-07-04: <x>欢笑，清风，波波，林知兀，布萨龙等</x><ul>
                         <li>添加符文【背水】</li>
                         <li>觉醒卡牌【九命猫神】</li>

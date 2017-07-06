@@ -348,8 +348,13 @@ public class SkillResolver {
             } else if (skillUseInfo.getType() == SkillType.爱之召唤) {
                 Summon.apply(this, skillUseInfo, attacker, SummonType.Random, 2,
                         "爱之使者", "森林丘比特", "占卜少女", "爱神");
+            } else if (skillUseInfo.getType() == SkillType.召唤伍长) {
+                Summon.apply(this, skillUseInfo, attacker, SummonType.Normal, 1, "巅峰伍长");
+            } else if (skillUseInfo.getType() == SkillType.召唤兵长) {
+                Summon.apply(this, skillUseInfo, attacker, SummonType.Normal, 1,  "巅峰兵长");
             } else if (skillUseInfo.getType() == SkillType.突击军势) {
-                Summon.apply(this, skillUseInfo, attacker, SummonType.Normal, 2, "巅峰伍长", "巅峰兵长");
+                Summon.apply(this, skillUseInfo.getAttachedUseInfo1(), attacker, SummonType.Normal, 1, "巅峰伍长");
+                Summon.apply(this, skillUseInfo.getAttachedUseInfo2(), attacker, SummonType.Normal, 1,  "巅峰兵长");
             } else if (skillUseInfo.getType() == SkillType.连营) {
                 Summon.apply(this, skillUseInfo.getAttachedUseInfo1(), attacker, SummonType.Normal, 2, "炮灰", "炮灰");
                 MagicMark.apply(this, skillUseInfo.getAttachedUseInfo2(), attacker, defender, -1);
