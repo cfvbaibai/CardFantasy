@@ -2680,7 +2680,7 @@
         <Skill type="骑士荣耀" level="0" unlock="10" />
     </Card>
     <Card id="3570" name="四神之朱雀" wikiId="" race="蛮荒" speed="3" star="5" cost="19" incrCost="2" at="1" hp="1" incrAT="0" incrHP="0">
-        <Skill type="凤凰涅槃" level="0" unlock="0" />
+        <Skill type="凤凰涅盘" level="0" unlock="0" />
         <Skill type="业火" level="0" unlock="5" summon="true" />
         <Skill type="圣炎" level="0" unlock="10" death="true" />
     </Card>

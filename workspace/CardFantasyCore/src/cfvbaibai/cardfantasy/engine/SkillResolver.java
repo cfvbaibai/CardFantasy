@@ -244,7 +244,7 @@ public class SkillResolver {
                 Curse.apply(this, skillUseInfo.getSkill(), attacker, defender);
             } else if (skillUseInfo.getType() == SkillType.摧毁) {
                 Destroy.apply(this, skillUseInfo.getSkill(), attacker, defender, 1);
-            } else if (skillUseInfo.getType() == SkillType.炼金失败 || skillUseInfo.getType() == SkillType.凤凰涅槃) {
+            } else if (skillUseInfo.getType() == SkillType.炼金失败 || skillUseInfo.getType() == SkillType.凤凰涅盘) {
                 AlchemyFailure.apply(this, skillUseInfo.getSkill(), attacker);
             } else if (skillUseInfo.getType() == SkillType.瘟疫) {
                 Plague.apply(skillUseInfo, this, attacker, defender);
@@ -961,7 +961,7 @@ public class SkillResolver {
                         deadCardSkillUseInfo.getType() == SkillType.武形秘术 ||
                         deadCardSkillUseInfo.getType() == SkillType.武形秘法 ||
                         deadCardSkillUseInfo.getType() == SkillType.涅盘 ||
-                        deadCardSkillUseInfo.getType() == SkillType.凤凰涅槃 ||
+                        deadCardSkillUseInfo.getType() == SkillType.凤凰涅盘 ||
                         deadCardSkillUseInfo.getType() == SkillType.武侯) {
                     if (Reincarnation.apply(this, deadCardSkillUseInfo.getSkill(), deadCard, result.unbending)) {
                         reincarnated = true;
