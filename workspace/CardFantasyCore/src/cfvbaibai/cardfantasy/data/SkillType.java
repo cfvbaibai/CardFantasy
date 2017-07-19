@@ -175,7 +175,7 @@ public enum SkillType {
     蛮荒我还会回来的("", 0),
     花族秘术("", 65, 0, 210, 0),
     涅盘("", 100, 0),
-    凤凰涅槃("", 100, 0),
+    凤凰涅盘("", 100, 0),
 
     裂伤("30963", 0, SkillTag.抗免疫, SkillTag.抗不屈, SkillTag.魔王无效),
     全体裂伤("", 0, SkillTag.抗免疫, SkillTag.抗不屈),
@@ -227,6 +227,7 @@ public enum SkillType {
     回魂("31131", 1),
     祈愿("", 1),
     归魂("",1),
+    号角("",1),
     上层精灵的挽歌("", 2, 0),
     迷魂("31129", 30, 5, SkillTag.控制, SkillTag.魔王无效),
     混乱领域("", 30, 5, SkillTag.控制, SkillTag.魔王无效),
@@ -364,6 +365,8 @@ public enum SkillType {
     召唤兵长("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
     突击军势("", SkillType.召唤伍长,0, SkillType.召唤兵长,0, SkillTag.不可洗炼,SkillTag.召唤),
     召唤玫瑰剑士("",SkillType.召唤花舞剑士,0, SkillType.召唤玫瑰甜心,0, SkillTag.不可洗炼,SkillTag.召唤),
+    桃园结义("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
+    白帝托孤("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
 
 
     圣光洗礼("", 0, 0, SkillTag.抗免疫, SkillTag.不可洗炼, SkillTag.魔王无效, SkillTag.魔族天赋),
@@ -428,6 +431,7 @@ public enum SkillType {
     魔龙吐息("",SkillType.凤鸣,0,SkillType.凤火,0),
     觉醒天崩地裂("", SkillType.天崩地裂,0,SkillType.灵王的轰击,4),
     连营("",SkillType.召唤炮灰,0,SkillType.魔力法阵,5),
+    觉醒风之祈愿("",SkillType.号角,1,SkillType.祈愿,1),
 
     新生("",0,0,SkillTag.新生),
 
@@ -435,6 +439,7 @@ public enum SkillType {
     袈裟斩("",SkillType.燕返,0,null,0),
     致命打击("",SkillType.精准打击,9,null,0),
     爱心料理("",SkillType.圣母吟咏,7,null,0),
+    仁德之君("",SkillType.圣母吟咏,5,null,0,SkillTag.守护),
     剑舞("",SkillType.神兵召唤,0,null,0),
     // To Do
 

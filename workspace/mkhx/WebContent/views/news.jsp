@@ -36,6 +36,13 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2017-07-18: <x>欢笑，清风，波波，林知兀，布萨龙等</x><ul>
+                        <li>感谢波波和清风整理的噩梦地图阵容，<a href="<c:url value="/resources/download/噩梦地图阵容信息.txt" />" download="噩梦地图阵容信息" target="_blank">下载噩梦地图</a></li>
+                    </ul></li>
+                    <li>2017-07-17: <x>欢笑，清风，波波，林知兀，布萨龙等</x><ul>
+                        <li>更新卡牌【悠风奏者】,【三国英魂·玄德】</li>
+                        <li>修复【玫瑰甜心】二维错误,感谢<x>静默灬低吟</x>提供帮助</li>
+                    </ul></li>
                     <li>2017-07-06: <x>欢笑，清风，波波，林知兀，布萨龙等</x><ul>
                         <li>修复技能【过载】文字显示BUG</li>
                         <li>修复技能【巅峰军曹】召唤技能没有分开的BUG</li>
