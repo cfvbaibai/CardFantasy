@@ -1043,6 +1043,11 @@
         <Skill type="仁德之君" level="0" unlock="5"  />
         <Skill type="白帝托孤" level="0" unlock="10" />
     </Card>
+    <Card id="1604" name="萌喵女仆" wikiId="" race="王国" speed="3" star="5" cost="18" incrCost="2" at="330" hp="1450" incrAT="43" incrHP="42">
+        <Skill type="魅惑之舞" level="7" unlock="0" summon="true"/>
+        <Skill type="嘲讽" level="0" unlock="5"  />
+        <Skill type="六道轮回" level="0" unlock="10" />
+    </Card>
 
 
     <!-- 森林 -->
@@ -3953,7 +3958,7 @@
     </Card>
     <Card id="6102" name="魅惑魔女" wikiId="" race="魔族" speed="3" star="5" cost="19" incrCost="2" at="550" hp="1430" incrAT="37" incrHP="61">
         <Skill type="新生" level="0" unlock="0" />
-        <Skill type="魅惑之舞" level="0" unlock="5" summon="true"/>
+        <Skill type="魅惑之舞" level="6" unlock="5" summon="true"/>
         <Skill type="逃跑" level="0" unlock="10" />
     </Card>
 

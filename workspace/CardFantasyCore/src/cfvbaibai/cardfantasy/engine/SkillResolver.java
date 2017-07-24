@@ -245,7 +245,7 @@ public class SkillResolver {
             } else if (skillUseInfo.getType() == SkillType.摧毁) {
                 Destroy.apply(this, skillUseInfo.getSkill(), attacker, defender, 1);
             } else if (skillUseInfo.getType() == SkillType.炼金失败 || skillUseInfo.getType() == SkillType.凤凰涅盘) {
-                AlchemyFailure.apply(this, skillUseInfo.getSkill(), attacker);
+                AlchemyFailure.apply(this,skillUseInfo, skillUseInfo.getSkill(), attacker);
             } else if (skillUseInfo.getType() == SkillType.瘟疫) {
                 Plague.apply(skillUseInfo, this, attacker, defender);
             } else if (skillUseInfo.getType() == SkillType.凋零真言) {
@@ -1413,7 +1413,9 @@ public class SkillResolver {
         OnAttackBlockingResult blockingResult = stage.getResolver().resolveAttackBlockingSkills(
                 attacker, defender, skill, damage);
         if (!blockingResult.isAttackable()) {
-            this.removeStatus(attacker, CardStatusType.不屈);
+            if(!(attacker.containsUsableSkill(SkillType.炼金失败)|| attacker.containsUsableSkill(SkillType.凤凰涅盘))){
+                this.removeStatus(attacker, CardStatusType.不屈);
+            }
             return null;
         }
         if (skill == null) {
@@ -1426,7 +1428,9 @@ public class SkillResolver {
         }
         this.stage.getUI().attackCard(attacker, defender, skill, blockingResult.getDamage());
         OnDamagedResult damagedResult = stage.getResolver().applyDamage(attacker, defender, skill, blockingResult.getDamage());
-        this.removeStatus(attacker, CardStatusType.不屈);
+        if(!(attacker.containsUsableSkill(SkillType.炼金失败)|| attacker.containsUsableSkill(SkillType.凤凰涅盘))){
+            this.removeStatus(attacker, CardStatusType.不屈);
+        }
 
         resolvePostAttackSkills(attacker, defender, defender.getOwner(), skill, damagedResult.actualDamage);
         stage.getResolver().resolveDeathSkills(attacker, defender, skill, damagedResult);
