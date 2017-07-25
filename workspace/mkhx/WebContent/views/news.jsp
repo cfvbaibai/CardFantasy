@@ -36,6 +36,11 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2017-07-24: <x>欢笑，清风，波波，林知兀，布萨龙等</x><ul>
+                        <li>更新卡牌【萌喵女仆】</li>
+                        <li>修复【不屈】技能在【炼金失败时】不发动BUG</li>
+                        <li>修复【归魂】手牌满时墓地卡牌消失BUG</li>
+                    </ul></li>
                     <li>2017-07-18: <x>欢笑，清风，波波，林知兀，布萨龙等</x><ul>
                         <li>感谢波波和清风整理的噩梦地图阵容，<a href="<c:url value="/resources/download/噩梦地图阵容信息.txt" />" download="噩梦地图阵容信息" target="_blank">下载噩梦地图</a></li>
                     </ul></li>
