@@ -354,6 +354,41 @@ var playMapGame = function(count) {
 };
 Core.playMapGame = playMapGame;
 
+var playDungeonsGame = function(count) {
+        var deck = $('#dungeons-deck').val().trim();
+        var heroLv = $('#dungeons-hero-lv').val();
+        var map = getDungeons();
+        var postData = {
+            'fa': dungeonsBattleOptions.firstAttack,
+            'do': dungeonsBattleOptions.deckOrder,
+            'p1hhpb': dungeonsBattleOptions.p1HeroHpBuff,
+            'p1catb': dungeonsBattleOptions.p1CardAtBuff,
+            'p1chpb': dungeonsBattleOptions.p1CardHpBuff,
+            'p2hhpb': dungeonsBattleOptions.p2HeroHpBuff,
+            'p2catb': dungeonsBattleOptions.p2CardAtBuff,
+            'p2chpb': dungeonsBattleOptions.p2CardHpBuff,
+            'vc1': dungeonsBattleOptions.victoryCondition1,
+            deck: deck,
+            hlv: heroLv,
+            map: map,
+            count: count
+        };
+
+        $.cookie('dungeons-battle', JSON.stringify(postData), { expires: 365 });
+        var isAnimation = false;
+        var url;
+        if (count == 1) {
+            url = 'PlayDungeons1MatchGame';
+        } else if (count == -1) {
+            url = 'SimulateDungeons1MatchGame';
+            isAnimation = true;
+        } else {
+            url = 'PlayDungeonsMassiveGame';
+        }
+        sendRequest(url, postData, 'dungeons-battle-output', isAnimation, isAnimation);
+    };
+Core.playDungeonsGame = playDungeonsGame;
+
 var BattleOptions = function() {
     this.firstAttack = -1;
     this.deckOrder = 0;
@@ -393,6 +428,8 @@ var BattleOptions = function() {
 
 var arenaBattleOptions = new BattleOptions();
 Core.arenaBattleOptions = arenaBattleOptions;
+var dungeonsBattleOptions = new BattleOptions();
+Core.dungeonsBattleOptions = dungeonsBattleOptions;
 
 var setBattleOptions = function(options, optionsDivId) {
     $.mobile.changePage("#battle-options", { transition : 'flip', role : 'dialog' });
@@ -435,6 +472,58 @@ var getMap = function() {
     return $('#map-id').val() + '-' + $('#map-difficulty').val();
 };
 
+var getDungeons = function() {
+    return $('#dungeons-id').val() + '-' + $('#dungeons-difficulty').val();
+};
+
+var layerAddition =function(heroHpAdd,cardAtAdd,cardHpAdd){
+    var layerAddtionObj = new Object();
+    layerAddtionObj.heroHpAdd = heroHpAdd;
+    layerAddtionObj.cardAtAdd = cardAtAdd;
+    layerAddtionObj.cardHpAdd = cardHpAdd;
+    return layerAddtionObj;
+};
+
+var allLayerAddition=function(){
+    var allObj = new Object();
+    allObj['0']=layerAddition(100,100,100);
+    allObj['1']=layerAddition(168,160,160);
+    allObj['2']=layerAddition(168,160,160);
+    allObj['100']=layerAddition(250,180,200);
+    allObj['104']=layerAddition(250,180,180);
+    allObj['105']=layerAddition(250,200,200);
+    allObj['106']=layerAddition(250,210,220);
+    allObj['107']=layerAddition(250,220,220);
+    allObj['108']=layerAddition(250,230,230);
+    allObj['109']=layerAddition(250,240,240);
+    allObj['110']=layerAddition(250,250,250);
+    return allObj;
+};
+
+var setSelectBuff = function(layerValue){
+    if(arguments == "" || arguments == undefined || arguments == null)
+    {
+        return ;
+    }
+    var buffObj = allLayerAddition();
+    var currentObj;
+    if(layerValue==100)
+    {
+        currentObj = buffObj['100']
+    }
+    else if(layerValue>100&&layerValue<104)
+    {
+        currentObj = buffObj['100']
+    }
+    else
+    {
+        currentObj = buffObj[layerValue]
+    }
+    dungeonsBattleOptions.p1HeroHpBuff = currentObj.heroHpAdd;
+    dungeonsBattleOptions.p1CardAtBuff = currentObj.cardAtAdd;
+    dungeonsBattleOptions.p1CardHpBuff= currentObj.cardHpAdd;
+};
+
 (function () {
     var leftPanelInited = false;
     $(document).on('pageinit', 'div.main-page', function (event) {
@@ -475,6 +564,17 @@ Core.showMapDeck = function() {
         $.mobile.changePage("#view-map-deck-page", { transition : 'flip', role : 'dialog' });
     });
 };
+Core.showDungeonsDeck = function() {
+    var map = getDungeons();
+    $.get('GetDungeonsDeckInfo?map=' + map, function(data) {
+        console.log("Map deck info for '" + map + "': " + JSON.stringify(data));
+        $("#dungeons-deck-info").text(data);
+        $.mobile.changePage("#view-dungeons-deck-page", { transition : 'flip', role : 'dialog' });
+    }, 'json').fail(function(xhr, status, error) {
+        $("#dungeons-deck-info").text("无法获得地图关卡阵容: " + status + ", " + error);
+        $.mobile.changePage("#view-dungeons-deck-page", { transition : 'flip', role : 'dialog' });
+    });
+};
 
 $(document).ready(function() {
     $('a[data-type="bug"]').attr('href', tiebaUrl).attr('target', '_blank');
@@ -504,7 +604,7 @@ $(document)
     $('#play-map-1-game-button').attr('href', 'javascript:CardFantasy.Core.playMapGame(1);');
     $('#simulate-map-1-game-button').attr('href', 'javascript:CardFantasy.Core.playMapGame(-1);');
     $('#play-map-massive-game-button').attr('href', 'javascript:CardFantasy.Core.playMapGame(1000);');
-    
+
     var showVictoryCondition = function() {
         var map = getMap();
         $.get('GetMapVictoryCondition?map=' + map, function(data) {
@@ -515,6 +615,7 @@ $(document)
         });
     };
 
+
     $('#view-map-deck-link').attr('href', "javascript:CardFantasy.Core.showMapDeck();");
 
     $(document).on('change', 'select.map-select', function(e) {
@@ -522,6 +623,51 @@ $(document)
         showVictoryCondition();
     });
     showVictoryCondition();
+})
+.on("pageinit", "#dungeons-battle", function(event) {
+    var dataText = $.cookie('dungeons-battle');
+    if (dataText) {
+        (function() {
+            var data = JSON.parse(dataText);
+            if (data.deck) { $('#dungeons-deck').val(data.deck); }
+            if (data.hlv) { $('#dungeons-hero-lv').val(data.hlv); }
+            if (data.map) {
+                // data.map = '7-5-1'
+                var parts = data.map.split('-');
+                $('#dungeons-id').val(parts[0] + '-' + parts[1]).selectmenu('refresh');
+                $('#dungeons-difficulty').val(parts[2]).selectmenu('refresh');
+            }
+        })();
+    }
+    $('#show-dungeons-battle-options-button').attr('href', 'javascript:CardFantasy.Core.setBattleOptions(CardFantasy.Core.dungeonsBattleOptions, "dungeons-battle-options-text");');
+    $('#update-battle-options-button').attr('href', 'javascript:CardFantasy.Core.updateBattleOptions();');
+    $('#play-dungeons-1-game-button').attr('href', 'javascript:CardFantasy.Core.playDungeonsGame(1);');
+    $('#simulate-dungeons-1-game-button').attr('href', 'javascript:CardFantasy.Core.playDungeonsGame(-1);');
+    $('#play-dungeons-massive-game-button').attr('href', 'javascript:CardFantasy.Core.playDungeonsGame(1000);');
+    setBattleOptionsText(dungeonsBattleOptions, 'dungeons-battle-options-text');
+
+    var showVictoryCondition = function() {
+        var map = getDungeons();
+        $.get('GetDungeonsVictoryCondition?map=' + map, function(data) {
+            console.log("Map victory condition for '" + map + "': " + JSON.stringify(data));
+            $("#dungeons-victory-condition").text(data);
+        }, 'json').fail(function(xhr, status, error) {
+            $("#dungeons-victory-condition").text("无法获得地图过关条件: " + status + ", " + error);
+        });
+    };
+
+    $('#view-dungeons-deck-link').attr('href', "javascript:CardFantasy.Core.showDungeonsDeck();");
+
+    $(document).on('change', 'select.map-select', function(e) {
+        // Get current option value: this.options[e.target.selectedIndex].text
+        showVictoryCondition();
+    });
+    showVictoryCondition();
+    $(document).on('change', 'select.layer-select', function(e) {
+        // Get current option value: this.options[e.target.selectedIndex].text
+
+        setSelectBuff($('#layer-select').val());
+    });
 })
 .on("pageinit", "#boss-battle", function(event) {
     Core.bossBattleChart = new Chart($("#boss-battle-chart")[0].getContext("2d"));
@@ -620,6 +766,5 @@ $(document)
     $('#update-battle-options-button').attr('href', 'javascript:CardFantasy.Core.updateBattleOptions();');
     setBattleOptionsText(arenaBattleOptions, 'arena-battle-options-text');
 });
-
 // END OF OUTERMOST IIFE
 })(CardFantasy.Core);

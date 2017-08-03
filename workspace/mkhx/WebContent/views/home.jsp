@@ -23,6 +23,7 @@
     <div data-theme="c">
     <%@ include file="news.jsp" %>
     <%@ include file="map-battle.jsp" %>
+    <%@ include file="dungeons-battle.jsp" %>
     <%@ include file="arena-battle.jsp" %>
     <%@ include file="boss-battle.jsp" %>
     <%@ include file="lilith-battle.jsp" %>
