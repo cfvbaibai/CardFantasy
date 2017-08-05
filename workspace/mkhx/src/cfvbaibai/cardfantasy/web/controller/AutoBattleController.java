@@ -15,6 +15,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import cfvbaibai.cardfantasy.data.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,14 +28,6 @@ import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
 import cfvbaibai.cardfantasy.Compressor;
 import cfvbaibai.cardfantasy.GameUI;
 import cfvbaibai.cardfantasy.Global;
-import cfvbaibai.cardfantasy.data.CardData;
-import cfvbaibai.cardfantasy.data.CardDataStore;
-import cfvbaibai.cardfantasy.data.LilithCardBuffSkill;
-import cfvbaibai.cardfantasy.data.PlayerInfo;
-import cfvbaibai.cardfantasy.data.RuneData;
-import cfvbaibai.cardfantasy.data.Skill;
-import cfvbaibai.cardfantasy.data.SkillTag;
-import cfvbaibai.cardfantasy.data.SkillType;
 import cfvbaibai.cardfantasy.engine.BattleEngine;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.GameResult;
@@ -47,7 +40,9 @@ import cfvbaibai.cardfantasy.game.GameResultStat;
 import cfvbaibai.cardfantasy.game.LilithDataStore;
 import cfvbaibai.cardfantasy.game.MapInfo;
 import cfvbaibai.cardfantasy.game.MapStages;
+import cfvbaibai.cardfantasy.game.DungeonsStages;
 import cfvbaibai.cardfantasy.game.PlayerBuilder;
+import cfvbaibai.cardfantasy.game.PvdEngine;
 import cfvbaibai.cardfantasy.game.PveEngine;
 import cfvbaibai.cardfantasy.game.PveGameResult;
 import cfvbaibai.cardfantasy.game.PvlEngine;
@@ -82,6 +77,9 @@ public class AutoBattleController {
 
     @Autowired
     private MapStages maps;
+
+    @Autowired
+    private DungeonsStages  dungeons;
 
     @Autowired
     private LilithDataStore lilithDataStore;
@@ -579,6 +577,118 @@ public class AutoBattleController {
             }
         }
     }
+
+    @RequestMapping(value = "/PlayDungeons1MatchGame")
+    public void playDungeons1MatchGame(HttpServletRequest request, HttpServletResponse response,
+                                  @RequestParam("fa") int firstAttack, @RequestParam("do") int deckOrder,
+                                  @RequestParam("p1hhpb") int p1HeroHpBuff, @RequestParam("p1catb") int p1CardAtBuff, @RequestParam("p1chpb") int p1CardHpBuff,
+                                  @RequestParam("p2hhpb") int p2HeroHpBuff, @RequestParam("p2catb") int p2CardAtBuff, @RequestParam("p2chpb") int p2CardHpBuff,
+                                  @RequestParam("vc1") String victoryConditionText1,
+                                  @RequestParam("deck") String deck, @RequestParam("count") int count,
+                                  @RequestParam("hlv") int heroLv, @RequestParam("map") String map) throws IOException {
+        PrintWriter writer = response.getWriter();
+        try {
+            logger.info("PlayMap1MatchGame from " + request.getRemoteAddr() + ":");
+            logger.info("Deck = " + deck);
+            logger.info("Hero LV = " + heroLv + ", Map = " + map);
+            this.userActionRecorder.addAction(new UserAction(new Date(), request.getRemoteAddr(), "Play Map 1Match Game",
+                    String.format("Deck=%s<br />HeroLV=%d, Map=%s", deck, heroLv, map)));
+            VictoryCondition vc1 = VictoryCondition.parse(victoryConditionText1);
+            Rule rule = new Rule(5, 999, firstAttack, deckOrder, false, vc1);
+            WebPlainTextGameUI ui = new WebPlainTextGameUI();
+            MapGameResult result = GameLauncher.playDungeonsGame(p1HeroHpBuff,p1CardAtBuff,p2CardHpBuff,p2HeroHpBuff,p2CardAtBuff,p2CardHpBuff,deck, map, heroLv, 1,rule, ui);
+            writer.print(Utils.getCurrentDateTime() + "<br />");
+            writer.print("<div style='color: red'>" + result.getValidationResult() + "</div>");
+            writer.print(ui.getAllText());
+            logger.info("Result: " + result.getLastResultName());
+        } catch (Exception e) {
+            writer.print(errorHelper.handleError(e, false));
+        }
+    }
+
+    @RequestMapping(value = "/SimulateDungeons1MatchGame", headers = "Accept=application/json")
+    public void simulateDungeons1MatchGame(HttpServletRequest request, HttpServletResponse response,
+                                      @RequestParam("fa") int firstAttack, @RequestParam("do") int deckOrder,
+                                      @RequestParam("p1hhpb") int p1HeroHpBuff, @RequestParam("p1catb") int p1CardAtBuff, @RequestParam("p1chpb") int p1CardHpBuff,
+                                      @RequestParam("p2hhpb") int p2HeroHpBuff, @RequestParam("p2catb") int p2CardAtBuff, @RequestParam("p2chpb") int p2CardHpBuff,
+                                      @RequestParam("vc1") String victoryConditionText1,
+                                      @RequestParam("deck") String deck, @RequestParam("count") int count,
+                                      @RequestParam("hlv") int heroLv, @RequestParam("map") String map) throws IOException {
+        response.setContentType("application/json");
+        PrintWriter writer = response.getWriter();
+        try {
+            logger.info("SimulateMap1MatchGame from " + request.getRemoteAddr() + ":");
+            logger.info("Deck = " + deck);
+            logger.info("Hero LV = " + heroLv + ", Map = " + map);
+            this.userActionRecorder.addAction(new UserAction(new Date(), request.getRemoteAddr(), "Simulate Map 1Match Game",
+                    String.format("Deck=%s<br />HeroLV=%d, Map=%s", deck, heroLv, map)));
+            VictoryCondition vc1 = VictoryCondition.parse(victoryConditionText1);
+            Rule rule = new Rule(5, 999, firstAttack, deckOrder, false, vc1);
+            List<Skill> p2CardBuffs = new ArrayList<Skill>();
+            if (p2CardAtBuff != 100) {
+                p2CardBuffs.add(new PlayerCardBuffSkill(SkillType.原始攻击调整, p2CardAtBuff - 100));
+            }
+            if (p2CardHpBuff != 100) {
+                p2CardBuffs.add(new PlayerCardBuffSkill(SkillType.原始体力调整, p2CardHpBuff - 100));
+            }
+            PlayerInfo player = PlayerBuilder.build(true, "玩家", deck, heroLv,p2CardBuffs,p2CardHpBuff);
+            StructuredRecordGameUI ui = new StructuredRecordGameUI();
+            PvdEngine engine = new PvdEngine(ui, this.dungeons);
+            PveGameResult gameResult = engine.play(player, map,rule,p1HeroHpBuff,p1CardAtBuff,p1CardHpBuff);
+            BattleRecord record = ui.getRecord();
+            writer.println(jsonHandler.toJson(record));
+            logger.info("Result: " + gameResult.name());
+        } catch (Exception e) {
+            writer.println(errorHelper.handleError(e, true));
+        }
+    }
+
+    @RequestMapping(value = "/PlayDungeonsMassiveGame")
+    public void playDungeonsMassiveGame(HttpServletRequest request, HttpServletResponse response,
+                                   @RequestParam("fa") int firstAttack, @RequestParam("do") int deckOrder,
+                                   @RequestParam("p1hhpb") int p1HeroHpBuff, @RequestParam("p1catb") int p1CardAtBuff, @RequestParam("p1chpb") int p1CardHpBuff,
+                                   @RequestParam("p2hhpb") int p2HeroHpBuff, @RequestParam("p2catb") int p2CardAtBuff, @RequestParam("p2chpb") int p2CardHpBuff,
+                                   @RequestParam("vc1") String victoryConditionText1,
+                                   @RequestParam("deck") String deck, @RequestParam("hlv") int heroLv, @RequestParam("map") String map,
+                                   @RequestParam("count") int count) throws IOException {
+        PrintWriter writer = response.getWriter();
+        GameUI ui = new DummyGameUI();
+        try {
+            logger.info("PlayMapMassiveGame from " + request.getRemoteAddr() + ":");
+            logger.info(String.format("Lv = %d, Map = %s, Count = %d", heroLv, map, count));
+            logger.info("Deck = " + deck);
+            this.userActionRecorder.addAction(new UserAction(new Date(), request.getRemoteAddr(), "Play Map Massive Game",
+                    String.format("Deck=%s<br />Lv=%d, Count=%d, Map=%s", deck, heroLv, count, map)));
+            VictoryCondition vc1 = VictoryCondition.parse(victoryConditionText1);
+            Rule rule = new Rule(5, 999, firstAttack, deckOrder, false, vc1);
+            if (Global.isDebugging()) {
+                ui = new WebPlainTextGameUI();
+            }
+            MapGameResult result = GameLauncher.playDungeonsGame(p1HeroHpBuff,p1CardAtBuff,p2CardHpBuff,p2HeroHpBuff,p2CardAtBuff,p2CardHpBuff,deck, map, heroLv, count,rule, ui);
+            writer.append(Utils.getCurrentDateTime() + "<br />");
+            writer.append("<div style='color: red'>" + result.getValidationResult() + "</div>");
+            writer.append("<table>");
+            writer.append(String.format("<tr><td>战斗出错: </td><td>%d</td></tr>", result.getUnknownCount()));
+            writer.append(String.format("<tr><td>失败: </td><td>%d</td></tr>", result.getLostCount()));
+            writer.append(String.format("<tr><td>战斗超时: </td><td>%d</td></tr>", result.getTimeoutCount()));
+            writer.append(String.format("<tr><td>胜利，过关条件符合: </td><td>%d</td></tr>", result.getAdvWinCount()));
+            writer.append(String.format("<tr><td>胜利，过关条件不符合: </td><td>%d</td></tr>", result.getWinCount()));
+            writer.append("</table>");
+            writer.append(String.format("<input type=\"hidden\" value=\"basicrate%d\">", result.getWinCount()));
+            writer.append(String.format("<input type=\"hidden\" value=\"advrate%d\">", result.getAdvWinCount()));
+            logger.info(String.format("TO:LO:BW:AW:UN = %d:%d:%d:%d:%d",
+                    result.getTimeoutCount(),
+                    result.getLostCount(),
+                    result.getWinCount(),
+                    result.getAdvWinCount(),
+                    result.getUnknownCount()));
+        } catch (Exception e) {
+            writer.print(errorHelper.handleError(e, false));
+            if (Global.isDebugging()) {
+                writer.print(((WebPlainTextGameUI)ui).getAllText());
+            }
+        }
+    }
     
     @RequestMapping(value = "/GetCardDetail", headers = "Accept=application/json")
     public void getCardDetail(HttpServletRequest request, HttpServletResponse response,
@@ -652,6 +762,26 @@ public class AutoBattleController {
         }
     }
 
+    @RequestMapping(value = "/GetDungeonsVictoryCondition", headers = "Accept=application/json")
+    public void getDungeonsVictoryCondition(HttpServletRequest request, HttpServletResponse response,
+                                       @RequestParam("map") String map) throws IOException {
+        PrintWriter writer = response.getWriter();
+        response.setContentType("application/json");
+        try {
+            logger.info("Getting map victory condition: " + map);
+            String condition = "";
+            MapInfo mapInfo = this.dungeons.getDungeons(map);
+            if (mapInfo == null) {
+                condition = "无效的地图：" + map;
+            } else {
+                condition = mapInfo.getCondition().getDescription();
+            }
+            writer.print(jsonHandler.toJson(condition));
+        } catch (Exception e) {
+            writer.print(errorHelper.handleError(e, true));
+        }
+    }
+
     @RequestMapping(value = "/CardSkills/{cardName}")
     public void getCardSkills(HttpServletRequest request, HttpServletResponse response,
         @PathVariable("cardName") String cardName) throws IOException {
@@ -683,6 +813,27 @@ public class AutoBattleController {
             logger.info("Getting map stage: " + map);
             String deckInfo = "";
             MapInfo mapInfo = this.maps.getMap(map);
+            if (mapInfo == null) {
+                deckInfo = "无效的地图：" + map;
+            } else {
+                deckInfo = mapInfo.getDeckInfo();
+            }
+            writer.print(jsonHandler.toJson(deckInfo));
+        } catch (Exception e) {
+            writer.print(errorHelper.handleError(e, true));
+        }
+    }
+
+    //地下城模块数据
+    @RequestMapping(value = "/GetDungeonsDeckInfo", headers = "Accept=application/json")
+    public void getDungeonsDeckInfo(HttpServletRequest request, HttpServletResponse response,
+                               @RequestParam("map") String map) throws IOException {
+        PrintWriter writer = response.getWriter();
+        response.setContentType("application/json");
+        try {
+            logger.info("Getting map stage: " + map);
+            String deckInfo = "";
+            MapInfo mapInfo = this.dungeons.getDungeons(map);
             if (mapInfo == null) {
                 deckInfo = "无效的地图：" + map;
             } else {

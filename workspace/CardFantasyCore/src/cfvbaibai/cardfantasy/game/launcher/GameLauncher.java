@@ -7,31 +7,14 @@ import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
 import cfvbaibai.cardfantasy.CardFantasyUserRuntimeException;
 import cfvbaibai.cardfantasy.GameUI;
 import cfvbaibai.cardfantasy.OneDimensionDataStat;
-import cfvbaibai.cardfantasy.data.Card;
-import cfvbaibai.cardfantasy.data.CardData;
-import cfvbaibai.cardfantasy.data.CardDataStore;
-import cfvbaibai.cardfantasy.data.LilithCardBuffSkill;
-import cfvbaibai.cardfantasy.data.PlayerInfo;
-import cfvbaibai.cardfantasy.data.Skill;
-import cfvbaibai.cardfantasy.data.SkillType;
+import cfvbaibai.cardfantasy.data.*;
 import cfvbaibai.cardfantasy.engine.BattleEngine;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.GameEndCause;
 import cfvbaibai.cardfantasy.engine.GameResult;
 import cfvbaibai.cardfantasy.engine.Player;
 import cfvbaibai.cardfantasy.engine.Rule;
-import cfvbaibai.cardfantasy.game.DeckBuilder;
-import cfvbaibai.cardfantasy.game.GameResultStat;
-import cfvbaibai.cardfantasy.game.LilithDataStore;
-import cfvbaibai.cardfantasy.game.LilithStartupInfo;
-import cfvbaibai.cardfantasy.game.MapStages;
-import cfvbaibai.cardfantasy.game.PlayerBuilder;
-import cfvbaibai.cardfantasy.game.PveEngine;
-import cfvbaibai.cardfantasy.game.PveGameResult;
-import cfvbaibai.cardfantasy.game.PveGameResultStat;
-import cfvbaibai.cardfantasy.game.PvlEngine;
-import cfvbaibai.cardfantasy.game.PvlGameResult;
-import cfvbaibai.cardfantasy.game.VictoryCondition;
+import cfvbaibai.cardfantasy.game.*;
 
 public final class GameLauncher {
     private GameLauncher() {
@@ -169,6 +152,27 @@ public final class GameLauncher {
         PlayerInfo player = PlayerBuilder.build(true, "玩家", playerDeck, heroLv);
         MapGameResult result = new MapGameResult();
         PveGameResultStat stat = engine.massivePlay(player, mapName, gameCount);
+        result.setTimeoutCount(stat.getStat(PveGameResult.TIMEOUT));
+        result.setLostCount(stat.getStat(PveGameResult.LOSE));
+        result.setWinCount(stat.getStat(PveGameResult.BASIC_WIN));
+        result.setAdvWinCount(stat.getStat(PveGameResult.ADVANCED_WIN));
+        result.setUnknownCount(stat.getStat(PveGameResult.UNKNOWN));
+        result.setValidationResult(getDeckValidationResult(null, player));
+        return result;
+    }
+
+    public static MapGameResult playDungeonsGame(int p1HeroHpBuff,int p1CardAtBuff,int p1CardHpBuff,int p2HeroHpBuff,int p2CardAtBuff,int p2CardHpBuff, String playerDeck, String mapName, int heroLv, int gameCount,Rule rule, GameUI ui) {
+        PvdEngine engine = new PvdEngine(ui, DungeonsStages.loadDefault());
+        List<Skill> p2CardBuffs = new ArrayList<Skill>();
+        if (p2CardAtBuff != 100) {
+            p2CardBuffs.add(new PlayerCardBuffSkill(SkillType.原始攻击调整, p2CardAtBuff - 100));
+        }
+        if (p2CardHpBuff != 100) {
+            p2CardBuffs.add(new PlayerCardBuffSkill(SkillType.原始体力调整, p2CardHpBuff - 100));
+        }
+        PlayerInfo player = PlayerBuilder.build(true, "玩家", playerDeck, heroLv,p2CardBuffs,p2HeroHpBuff);
+        MapGameResult result = new MapGameResult();
+        PveGameResultStat stat = engine.massivePlay(player, mapName, gameCount,rule,p1HeroHpBuff,p1CardAtBuff,p1CardHpBuff);
         result.setTimeoutCount(stat.getStat(PveGameResult.TIMEOUT));
         result.setLostCount(stat.getStat(PveGameResult.LOSE));
         result.setWinCount(stat.getStat(PveGameResult.BASIC_WIN));
