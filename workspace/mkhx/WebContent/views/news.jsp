@@ -36,6 +36,9 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2017-08-05: <x>欢笑，清风，波波</x><ul>
+                        <li>修复孟德，伯言，猫神，黑羽可以被夺魂的bug，感谢<x>心坚手残信仰白</x>的帮助。</li>
+                    </ul></li>
                     <li>2017-08-03: <x>欢笑，清风，波波</x><ul>
                         <li>添加地下城模块，地下城模块可以模拟100层以后（包括100层）地下城关卡和噩梦地图，地下城和噩梦地图的过关条件需要自己添加，后续会更新噩梦地图的过关条件。</li>
                     </ul></li>
