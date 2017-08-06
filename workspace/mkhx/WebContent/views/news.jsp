@@ -36,6 +36,11 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2017-08-06: <x>欢笑，清风，波波</x><ul>
+                        <li>修复新生技能有可能不发动BUG</li>
+                        <li>调整100-110层地下城的加成</li>
+                        <li>修改冰原领主15级cost</li>
+                    </ul></li>
                     <li>2017-08-05: <x>欢笑，清风，波波</x><ul>
                         <li>修复孟德，伯言，猫神，黑羽可以被夺魂的bug，感谢<x>心坚手残信仰白</x>的帮助。</li>
                     </ul></li>

@@ -62,10 +62,11 @@ public class SkillResolver {
 
     public List<CardInfo> getFrontCards(Field field, int position) {
         List<CardInfo> cards = this.getCardsOnFront(field, position);
-        CardInfo card = field.getCard(position);
-        if (card != null) {
-            cards.add(card);
-        }
+        //前置卡不包含本身
+//        CardInfo card = field.getCard(position);
+//        if (card != null) {
+//            cards.add(card);
+//        }
         return cards;
     }
 
