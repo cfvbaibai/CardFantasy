@@ -491,12 +491,12 @@ var allLayerAddition=function(){
     allObj['2']=layerAddition(168,160,160);
     allObj['100']=layerAddition(250,180,200);
     allObj['104']=layerAddition(250,180,180);
-    allObj['105']=layerAddition(250,200,200);
-    allObj['106']=layerAddition(250,210,220);
-    allObj['107']=layerAddition(250,220,220);
-    allObj['108']=layerAddition(250,230,230);
-    allObj['109']=layerAddition(250,240,240);
-    allObj['110']=layerAddition(250,250,250);
+    allObj['105']=layerAddition(260,200,200);
+    allObj['106']=layerAddition(260,210,210);
+    allObj['107']=layerAddition(270,220,220);
+    allObj['108']=layerAddition(270,230,230);
+    allObj['109']=layerAddition(280,240,240);
+    allObj['110']=layerAddition(280,250,250);
     return allObj;
 };
 

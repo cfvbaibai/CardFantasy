@@ -2704,7 +2704,7 @@
         <Skill type="荆棘术" level="10" unlock="5"  />
         <Skill type="恶灵汲取" level="9" unlock="10"  />
     </Card>
-    <Card id="3574" name="冰原领主" wikiId="" race="蛮荒" speed="4" star="4" cost="16" incrCost="2" at="320" hp="1520" incrAT="38" incrHP="32">
+    <Card id="3574" name="冰原领主" wikiId="" race="蛮荒" speed="4" star="4" cost="16" incrCost="0" at="320" hp="1520" incrAT="38" incrHP="32">
         <Skill type="寒冰之盾" level="0" unlock="0" />
         <Skill type="凋零陷阱" level="0" unlock="5"  />
         <Skill type="寒霜冲击" level="6" unlock="10"  />
