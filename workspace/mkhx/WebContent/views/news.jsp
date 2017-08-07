@@ -36,6 +36,9 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2017-08-07: <x>欢笑，清风，波波</x><ul>
+                        <li>修复地下城模块地图卡牌血量加成错误的BUG</li>
+                    </ul></li>
                     <li>2017-08-06: <x>欢笑，清风，波波</x><ul>
                         <li>修复新生技能有可能不发动BUG</li>
                         <li>调整100-110层地下城的加成</li>
