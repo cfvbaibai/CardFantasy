@@ -596,7 +596,7 @@ public class AutoBattleController {
             VictoryCondition vc1 = VictoryCondition.parse(victoryConditionText1);
             Rule rule = new Rule(5, 999, firstAttack, deckOrder, false, vc1);
             WebPlainTextGameUI ui = new WebPlainTextGameUI();
-            MapGameResult result = GameLauncher.playDungeonsGame(p1HeroHpBuff,p1CardAtBuff,p2CardHpBuff,p2HeroHpBuff,p2CardAtBuff,p2CardHpBuff,deck, map, heroLv, 1,rule, ui);
+            MapGameResult result = GameLauncher.playDungeonsGame(p1HeroHpBuff,p1CardAtBuff,p1CardHpBuff,p2HeroHpBuff,p2CardAtBuff,p2CardHpBuff,deck, map, heroLv, 1,rule, ui);
             writer.print(Utils.getCurrentDateTime() + "<br />");
             writer.print("<div style='color: red'>" + result.getValidationResult() + "</div>");
             writer.print(ui.getAllText());
@@ -664,7 +664,7 @@ public class AutoBattleController {
             if (Global.isDebugging()) {
                 ui = new WebPlainTextGameUI();
             }
-            MapGameResult result = GameLauncher.playDungeonsGame(p1HeroHpBuff,p1CardAtBuff,p2CardHpBuff,p2HeroHpBuff,p2CardAtBuff,p2CardHpBuff,deck, map, heroLv, count,rule, ui);
+            MapGameResult result = GameLauncher.playDungeonsGame(p1HeroHpBuff,p1CardAtBuff,p1CardHpBuff,p2HeroHpBuff,p2CardAtBuff,p2CardHpBuff,deck, map, heroLv, count,rule, ui);
             writer.append(Utils.getCurrentDateTime() + "<br />");
             writer.append("<div style='color: red'>" + result.getValidationResult() + "</div>");
             writer.append("<table>");
