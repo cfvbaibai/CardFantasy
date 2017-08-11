@@ -65,6 +65,7 @@ public enum SkillType {
 
     虚弱("57000", 0, SkillTag.额外攻击加成, SkillTag.抗免疫, SkillTag.抗不屈, SkillTag.魔王无效, SkillTag.魔族天赋),
     战争怒吼("57022", 0, SkillTag.额外攻击加成, SkillTag.抗免疫, SkillTag.抗不屈, SkillTag.魔王无效, SkillTag.魔族天赋),
+    常夏日光("57022", 0, SkillTag.额外攻击加成, SkillTag.抗免疫, SkillTag.抗不屈, SkillTag.魔王无效, SkillTag.魔族天赋),
 
     /* HP 上限调整技能  */
     王国守护("30949", 50,SkillTag.抗毒刃),
@@ -107,11 +108,13 @@ public enum SkillType {
 
     狙击("", 0, 0, new int[] { 0, 25, 50, 75, 100, 125, 150, 175, 200, 225, 250 }, SkillTag.抗免疫, SkillTag.狙击),
     穿云箭("", 0, 0, new int[] { 1200, 1200, 1200, 1200, 1200, 1200, 1200, 1200, 1200, 1200, 1200 }, SkillTag.抗免疫, SkillTag.狙击),
+    绯弹("", 0, 0, new int[] { 800, 800, 800, 800, 800, 800, 800, 800, 800, 800, 800 }, SkillTag.抗免疫, SkillTag.狙击),
     左轮射击("", 0, 0, new int[] { 1200, 1200, 1200, 1200, 1200, 1200, 1200, 1200, 1200, 1200, 1200 }, SkillTag.抗免疫, SkillTag.狙击),
     武形秘箭("", 0, 0, new int[] { 220, 250, 270, 300, 320, 350, 370, 400, 420, 450, 500 }, SkillTag.抗免疫, SkillTag.狙击),
     骤雨("", 0, 0, new int[] { 220, 250, 270, 300, 320, 350, 370, 400, 420, 450, 500 }, SkillTag.抗免疫, SkillTag.狙击),
     二重狙击("", 0, 0, new int[] { 0, 25, 50, 75, 100, 125, 150, 175, 200, 225, 250 }, SkillTag.抗免疫, SkillTag.狙击),
     神箭三重奏("", 0, 0, new int[] { 220, 250, 270, 300, 320, 350, 370, 400, 420, 450, 500 }, SkillTag.抗免疫, SkillTag.狙击),
+    寒莹触碰("", 0, 0, new int[] { 750, 750, 750, 750, 750, 750, 750, 750, 750, 750, 750 }, SkillTag.抗免疫, SkillTag.狙击),
     武形神箭("", 0, 0, new int[] { 220, 250, 270, 300, 320, 350, 370, 400, 420, 450, 500 }, SkillTag.抗免疫, SkillTag.狙击),
     穿刺("30960", 15, SkillTag.抗免疫),
     精准打击("", 100, 10, SkillTag.抗免疫),
@@ -124,6 +127,11 @@ public enum SkillType {
     物理反弹("", 50, 0, SkillTag.抗免疫, SkillTag.反击),
     武形破剑击("", 100, 0, SkillTag.抗免疫, SkillTag.反击),
     反击屏障("", 200, 0, SkillTag.抗免疫, SkillTag.反击),
+
+    强链原核("",0,SkillTag.抗夺魂,SkillTag.抗沉默),
+    原素共鸣("",0),
+    原素裂变("",75,0),
+    不灭原核("", 12, 0, SkillTag.抗免疫, SkillTag.永久, SkillTag.基础攻击加成, SkillTag.抗不屈),
 
 
     守护("30973", 0, SkillTag.守护),
@@ -192,6 +200,7 @@ public enum SkillType {
     金属装甲("", 10),
     冰神附体("", 140, 0, SkillTag.物理护甲),
     水流护甲("", 650, -50, 0, 50),
+    真夏通雨("",400,0,1000,0),
     骑士守护("", 0, SkillTag.不可洗炼),
     骑士荣耀("",0,SkillTag.不可洗炼,SkillTag.不动),
     自爆("30945", 40),
@@ -238,7 +247,11 @@ public enum SkillType {
     离间("", 0),
     无尽华尔兹("", 0),
     精神污染("", 10),
+    圣洁魅惑("", 0),
     无我境界("", 70, 0, SkillTag.控制, SkillTag.魔王无效),
+
+    连续魔法("", 10),
+    黄天当立("", 80,0),
 
     吸血("31135", 10),
     蛇吻("", 70, 0, SkillTag.不动),
@@ -295,7 +308,9 @@ public enum SkillType {
     赤之魔枪("", 200, 50, 3, 0, SkillTag.抗免疫),
     寒冰触碰("", 250, 50, 3, 0, new int[] {50,50,50,50,50,50,50,50,50,50}, SkillTag.抗免疫),
     雷霆一击("", 200, 50, 3, 0, new int[] {75,75,75,75,75,75,75,75,75,75}, SkillTag.抗免疫,SkillTag.魔法),
+    雷公助我("", 450, 0, 3, 0, new int[] {75,75,75,75,75,75,75,75,75,75}, SkillTag.抗免疫,SkillTag.魔法),
     雷霆之怒("", 200, 50, 3, 0, new int[] {75,75,75,75,75,75,75,75,75,75}, SkillTag.抗免疫,SkillTag.魔法),
+    薜荔之怒("", 800, 0, 2, 0, new int[] {75,75,75,75,75,75,75,75,75,75}, SkillTag.抗免疫,SkillTag.魔法),
     雷切("",400,0,3, 0,new int[] {75,75,75,75,75,75,75,75,75,75},SkillTag.抗免疫),
 
     大地之盾("80193", 0, SkillTag.控制, SkillTag.抗免疫, SkillTag.魔王无效, SkillTag.魔族天赋),
@@ -368,6 +383,7 @@ public enum SkillType {
     召唤玫瑰剑士("",SkillType.召唤花舞剑士,0, SkillType.召唤玫瑰甜心,0, SkillTag.不可洗炼,SkillTag.召唤),
     桃园结义("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
     白帝托孤("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
+    灵龟羁绊("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
 
 
     圣光洗礼("", 0, 0, SkillTag.抗免疫, SkillTag.不可洗炼, SkillTag.魔王无效, SkillTag.魔族天赋),
@@ -433,6 +449,9 @@ public enum SkillType {
     觉醒天崩地裂("", SkillType.天崩地裂,0,SkillType.灵王的轰击,4),
     连营("",SkillType.召唤炮灰,0,SkillType.魔力法阵,5,SkillTag.召唤),
     觉醒风之祈愿("",SkillType.号角,1,SkillType.祈愿,1),
+    觉醒原素之舞("",SkillType.薜荔之怒,0,SkillType.寒莹触碰,0),
+    太平要术("",SkillType.归魂,1,SkillType.月神的护佑,3),
+
 
     新生("",0,0,SkillTag.新生),
 
