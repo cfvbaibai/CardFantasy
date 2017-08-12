@@ -677,10 +677,10 @@
         <Skill type="陷阱" level="3" unlock="5" />
         <Skill type="圣炎" level="0" unlock="10" />
     </Card>
-    <Card id="1524" name="命运占卜师" wikiId="" race="王国" speed="4" star="5" cost="17" incrCost="2" at="330" hp="1380" incrAT="38" incrHP="38">
-        <Skill type="破魔手" level="8" unlock="0" />
-        <Skill type="复活" level="0" unlock="5" death="true" />
-        <Skill type="不动" level="0" unlock="10" />
+    <Card id="1524" name="命运占卜师" wikiId="" race="王国" speed="3" star="5" cost="17" incrCost="2" at="430" hp="1490" incrAT="38" incrHP="38">
+        <Skill type="赤之魔枪" level="4" unlock="0" />
+        <Skill type="复活" level="0" unlock="5" summon="true" />
+        <Skill type="神威" level="0" unlock="10" />
     </Card>
     <Card id="1525" name="巨蟹座" wikiId="" race="王国" speed="4" star="5" cost="18" incrCost="0" at="320" hp="1400" incrAT="40" incrHP="55">
         <Skill type="祈福" level="2" unlock="0" />
@@ -1038,7 +1038,7 @@
         <Skill type="寒冰触碰" level="4" unlock="5"  />
         <Skill type="复活" level="0" unlock="10" sumon="true"/>
     </Card>
-    <Card id="1603" name="三国英魂玄德" wikiId="" race="王国" speed="3" star="5" cost="19" incrCost="2" at="335" hp="1315" incrAT="47" incrHP="40">
+    <Card id="1603" name="三国英魂·玄德" wikiId="" race="王国" speed="3" star="5" cost="19" incrCost="2" at="335" hp="1315" incrAT="47" incrHP="40">
         <Skill type="桃园结义" level="0" unlock="0" />
         <Skill type="仁德之君" level="0" unlock="5"  />
         <Skill type="白帝托孤" level="0" unlock="10" />
@@ -1047,6 +1047,21 @@
         <Skill type="魅惑之舞" level="7" unlock="0" summon="true"/>
         <Skill type="嘲讽" level="0" unlock="5"  />
         <Skill type="六道轮回" level="0" unlock="10" />
+    </Card>
+    <Card id="1605" name="拂夏清风" wikiId="" race="王国" speed="2" star="4" cost="16" incrCost="0" at="320" hp="1520" incrAT="38" incrHP="32">
+        <Skill type="号角" level="1" unlock="0" summon="true"/>
+        <Skill type="净魂领域" level="0" unlock="5"  />
+        <Skill type="不动" level="0" unlock="10" />
+    </Card>
+    <Card id="1606" name="强袭少女" wikiId="" race="王国" speed="4" star="4" cost="14" incrCost="2" at="375" hp="1295" incrAT="40" incrHP="30">
+        <Skill type="脱困" level="1" unlock="0" />
+        <Skill type="会心一击" level="0" unlock="5"  />
+        <Skill type="绯弹" level="0" unlock="10" />
+    </Card>
+    <Card id="1607" name="晴空夏影" wikiId="" race="王国" speed="4" star="5" cost="18" incrCost="2" at="395" hp="1695" incrAT="31" incrHP="35">
+        <Skill type="生命符文" level="4" unlock="0" />
+        <Skill type="水流护甲" level="6" unlock="5"  />
+        <Skill type="不动" level="0" unlock="10" />
     </Card>
 
 
@@ -1838,6 +1853,31 @@
         <Skill type="归魂" level="2" unlock="5" summon="true"/>
         <Skill type="全体加速" level="2" unlock="10"  />
     </Card>
+    <Card id="2568" name="喜雨少女" wikiId="" race="森林" speed="4" star="5" cost="18" incrCost="2" at="300" hp="1430" incrAT="38" incrHP="43">
+        <Skill type="月神的护佑" level="5" unlock="0" />
+        <Skill type="真夏通雨" level="0" unlock="5" />
+        <Skill type="生命符文" level="4" unlock="10"  />
+    </Card>
+    <Card id="2569" name="寒莹原素" wikiId="" race="森林" speed="1" star="5" cost="14" incrCost="2" at="230" hp="1830" incrAT="40" incrHP="38">
+        <Skill type="寒莹触碰" level="0" unlock="0" />
+        <Skill type="强链原核" level="0" unlock="5" />
+        <Skill type="原素共鸣" level="0" unlock="10"  />
+    </Card>
+    <Card id="2570" name="薜荔原素" wikiId="" race="森林" speed="1" star="5" cost="14" incrCost="2" at="230" hp="1830" incrAT="40" incrHP="38">
+        <Skill type="薜荔之怒" level="0" unlock="0" />
+        <Skill type="强链原核" level="0" unlock="5" />
+        <Skill type="原素共鸣" level="0" unlock="10"  />
+    </Card>
+    <Card id="2571" name="波涛海韵" wikiId="" race="森林" speed="4" star="5" cost="18" incrCost="2" at="405" hp="1495" incrAT="40" incrHP="32">
+        <Skill type="根源之力" level="7" unlock="0" />
+        <Skill type="寒冰触碰" level="7" unlock="5" />
+        <Skill type="寒冰之盾" level="0" unlock="10"  />
+    </Card>
+    <Card id="2572" name="灿日娇阳" wikiId="" race="森林" speed="2" star="5" cost="19" incrCost="2" at="495" hp="1495" incrAT="40" incrHP="27">
+        <Skill type="过载" level="10" unlock="0" />
+        <Skill type="转生" level="8" unlock="5" />
+        <Skill type="常夏日光" level="0" unlock="10"  />
+    </Card>
 
     <!-- 蛮荒  -->
     <Card id="3101" name="穴居人奴隶" wikiId="31006" race="蛮荒" speed="2" star="1" cost="4" incrCost="2" at="90" hp="390" incrAT="18" incrHP="11">
@@ -2148,10 +2188,10 @@
         <Skill type="迷魂" level="7" unlock="5" />
         <Skill type="闪避" level="5" unlock="10" />
     </Card>
-    <Card id="3417" name="巨岛龟幼崽" wikiId="43443" race="蛮荒" speed="4" star="4" cost="12" incrCost="2" at="235" hp="890" incrAT="21" incrHP="37">
+    <Card id="3417" name="巨岛龟幼崽" wikiId="43443" race="蛮荒" speed="4" star="4" cost="12" incrCost="2" at="235" hp="1160" incrAT="30" incrHP="45">
         <Skill type="盾刺" level="5" unlock="0" />
-        <Skill type="邪灵汲取" level="4" unlock="5" />
-        <Skill type="回春" level="6" unlock="10" />
+        <Skill type="水流护甲" level="5" unlock="5" />
+        <Skill type="嘲讽" level="0" unlock="10" />
     </Card>
     <Card id="3418" name="枭羊族祭司" wikiId="43442" race="蛮荒" speed="4" star="4" cost="13" incrCost="2" at="310" hp="920" incrAT="20" incrHP="34">
         <Skill type="连环闪电" level="5" unlock="0" />
@@ -2708,6 +2748,11 @@
         <Skill type="寒冰之盾" level="0" unlock="0" />
         <Skill type="凋零陷阱" level="0" unlock="5"  />
         <Skill type="寒霜冲击" level="6" unlock="10"  />
+    </Card>
+    <Card id="3574" name="祈愿少女" wikiId="" race="蛮荒" speed="4" star="5" cost="18" incrCost="0" at="310" hp="1200" incrAT="37" incrHP="39">
+        <Skill type="灵龟羁绊" level="0" unlock="0" />
+        <Skill type="净化" level="0" unlock="5"  summon="true"/>
+        <Skill type="守护" level="0" unlock="10"  />
     </Card>
 
 
@@ -3557,6 +3602,21 @@
         <Skill type="星云锁链" level="0" unlock="5" />
         <Skill type="寒冰触碰" level="4" unlock="10" summon="true"/>
     </Card>
+    <Card id="4572" name="夜魅菡萏" wikiId="" race="地狱" speed="4" star="5" cost="18" incrCost="2" at="375" hp="1240" incrAT="42" incrHP="42">
+        <Skill type="祈福" level="2" unlock="0" />
+        <Skill type="圣洁魅惑" level="0" unlock="5" />
+        <Skill type="连续魔法" level="8" unlock="10" />
+    </Card>
+    <Card id="4573" name="三国英魂·张角" wikiId="" race="地狱" speed="3" star="5" cost="19" incrCost="2" at="325" hp="1585" incrAT="44" incrHP="40">
+        <Skill type="雷公助我" level="0" unlock="0" />
+        <Skill type="太平要术" level="0" unlock="5" />
+        <Skill type="黄天当立" level="0" unlock="10" />
+    </Card>
+    <Card id="4574" name="绯炎少校" wikiId="" race="地狱" speed="4" star="5" cost="18" incrCost="2" at="400" hp="1460" incrAT="44" incrHP="40">
+        <Skill type="战歌之鼓" level="3" unlock="0" />
+        <Skill type="凋零陷阱" level="0" unlock="5" />
+        <Skill type="坚毅" level="0" unlock="10" />
+    </Card>
 
     <!-- 魔神 -->
     <Card id="5501" name="狙击复仇女神" wikiId="30871" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="1200" hp="10400000" incrAT="0" incrHP="0">
@@ -3960,6 +4020,11 @@
         <Skill type="新生" level="0" unlock="0" />
         <Skill type="魅惑之舞" level="6" unlock="5" summon="true"/>
         <Skill type="逃跑" level="0" unlock="10" />
+    </Card>
+    <Card id="6103" name="原素曜灵" wikiId="" race="魔族" speed="3" star="5" cost="99" incrCost="2" at="485" hp="1850" incrAT="50" incrHP="50">
+        <Skill type="觉醒原素之舞" level="0" unlock="0" />
+        <Skill type="原素裂变" level="0" unlock="5" />
+        <Skill type="不灭原核" level="0" unlock="10" />
     </Card>
 
     <!-- 测试卡 -->
