@@ -241,6 +241,10 @@ public class CardInfo extends EntityInfo {
     }
 
     public int getLevel3AT() {
+        if((this.getLevel2AT() + this.getSpecificLevelEffectAT(SkillTag.独立攻击加成)) <0)
+        {
+            return 0;
+        }
         return this.getLevel2AT() + this.getSpecificLevelEffectAT(SkillTag.独立攻击加成);
     }
     

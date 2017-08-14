@@ -36,6 +36,11 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2017-08-14: <x>欢笑，清风，波波</x><ul>
+                        <li>修复技能【常夏日光】，【太平要术】</li>
+                        <li>添加【寒莹触碰】50%冰冻效果</li>
+                        <li>修改技能【复活】可以复活1星卡牌</li>
+                    </ul></li>
                     <li>2017-08-12: <x>欢笑，清风，波波</x><ul>
                         <li>更新131级到135级英雄血量和英雄cost</li>
                         <li>修复【反击屏障】血量不足时，反击伤害结算错误的BUG</li>

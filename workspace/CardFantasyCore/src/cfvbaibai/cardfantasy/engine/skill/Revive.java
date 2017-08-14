@@ -21,7 +21,8 @@ public final class Revive {
         Grave grave = reviver.getOwner().getGrave();
         List<CardInfo> revivableCards = new ArrayList<CardInfo>();
         for (CardInfo deadCard : grave.toList()) {
-            if (deadCard != null && !deadCard.containsAllUsableSkillsWithTag(SkillTag.复活) && deadCard.getStar() != 1) {
+            // && deadCard.getStar() != 1去掉条件是一星的卡牌，现在可以复活一星。
+            if (deadCard != null && !deadCard.containsAllUsableSkillsWithTag(SkillTag.复活)) {
                 revivableCards.add(deadCard);
             }
         }

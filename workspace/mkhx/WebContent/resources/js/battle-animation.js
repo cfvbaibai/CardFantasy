@@ -1441,7 +1441,7 @@ var Animater = function() {
         } else if (skill == '自爆') {
             this.flyImage({ fileName: 'explode.png', width: 48, height: 48, text: skill },
                     attacker, defenders, settings.skillDuration);
-        } else if (skill == '虚弱' || skill == '战争怒吼') {
+        } else if (skill == '虚弱' || skill == '战争怒吼'|| skill == '常夏日光') {
             this.flyImage({ fileName: 'soften.png', width: 48, height: 48, text: skill },
                     attacker, defenders, settings.skillDuration);
         } else if (skill == '疾病' || skill == '瘟疫' || skill == '凋零真言' || skill == '凋零陷阱') {
