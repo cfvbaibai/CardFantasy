@@ -5,17 +5,12 @@ import java.util.List;
 
 import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.data.SkillType;
-import cfvbaibai.cardfantasy.engine.CardInfo;
-import cfvbaibai.cardfantasy.engine.EntityInfo;
-import cfvbaibai.cardfantasy.engine.OnAttackBlockingResult;
-import cfvbaibai.cardfantasy.engine.OnDamagedResult;
-import cfvbaibai.cardfantasy.engine.SkillResolver;
-import cfvbaibai.cardfantasy.engine.HeroDieSignal;
-import cfvbaibai.cardfantasy.engine.Player;
+import cfvbaibai.cardfantasy.engine.*;
 
 public final class Snipe {
-    public static void apply(Skill cardSkill, SkillResolver resolver, EntityInfo attacker, Player defenderPlayer,
+    public static void apply(SkillUseInfo skillUseInfo,Skill cardSkill, SkillResolver resolver, EntityInfo attacker, Player defenderPlayer,
             int targetCount) throws HeroDieSignal {
+        int rate = cardSkill.getImpact();
         int damage = cardSkill.getImpact3();
         if (damage == 0) {
             
@@ -49,6 +44,16 @@ public final class Snipe {
             resolver.getStage().getUI().attackCard(attacker, victim, cardSkill, damage);
             OnDamagedResult damageResult = resolver.applyDamage(attacker, victim, cardSkill, damage);
             if (attacker instanceof CardInfo) {
+                if(rate>0)
+                {
+                    if (resolver.getStage().getRandomizer().roll100(rate)) {
+                        CardStatusItem status = CardStatusItem.frozen(skillUseInfo);
+                        if (!resolver.resolveBlockStatusSkills(attacker, victim, skillUseInfo, status).isBlocked()) {
+                            resolver.getStage().getUI().addCardStatus(attacker, victim, cardSkill, status);
+                            victim.addStatus(status);
+                        }
+                    }
+                }
                 OnAttackBlockingResult blockResult = new OnAttackBlockingResult(true, damage);
                 resolver.resolveCounterAttackSkills((CardInfo)attacker, victim, cardSkill, blockResult, damageResult);
             }

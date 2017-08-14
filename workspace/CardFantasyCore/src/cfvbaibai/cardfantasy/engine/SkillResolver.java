@@ -204,35 +204,35 @@ public class SkillResolver {
             } else if (skillUseInfo.getType() == SkillType.归魂) {
                 RegressionSoul.apply(this, skillUseInfo, attacker);
             } else if (skillUseInfo.getType() == SkillType.太平要术) {
-                RegressionSoul.apply(this, skillUseInfo, attacker);
-                LunaBless.apply(skillUseInfo.getSkill(), this, attacker);
+                RegressionSoul.apply(this, skillUseInfo.getAttachedUseInfo1(), attacker);
+                LunaBless.apply(skillUseInfo.getAttachedUseInfo2().getSkill(), this, attacker);
             } else if (skillUseInfo.getType() == SkillType.狙击) {
-                Snipe.apply(skillUseInfo.getSkill(), this, attacker, defender, 1);
+                Snipe.apply(skillUseInfo,skillUseInfo.getSkill(), this, attacker, defender, 1);
             } else if (skillUseInfo.getType() == SkillType.魔神之刃) {
-                Snipe.apply(skillUseInfo.getSkill(), this, attacker, defender, 1);
+                Snipe.apply(skillUseInfo,skillUseInfo.getSkill(), this, attacker, defender, 1);
             } else if (skillUseInfo.getType() == SkillType.武形秘箭 || skillUseInfo.getType() == SkillType.骤雨) {
-                Snipe.apply(skillUseInfo.getSkill(), this, attacker, defender, -1);
+                Snipe.apply(skillUseInfo,skillUseInfo.getSkill(), this, attacker, defender, -1);
             } else if (skillUseInfo.getType() == SkillType.二重狙击) {
-                Snipe.apply(skillUseInfo.getSkill(), this, attacker, defender, 2);
+                Snipe.apply(skillUseInfo,skillUseInfo.getSkill(), this, attacker, defender, 2);
             } else if (skillUseInfo.getType() == SkillType.神箭三重奏) {
-                Snipe.apply(skillUseInfo.getSkill(), this, attacker, defender, 3);
+                Snipe.apply(skillUseInfo,skillUseInfo.getSkill(), this, attacker, defender, 3);
             } else if (skillUseInfo.getType() == SkillType.寒莹触碰) {
-                Snipe.apply(skillUseInfo.getSkill(), this, attacker, defender, 3);
+                Snipe.apply(skillUseInfo,skillUseInfo.getSkill(), this, attacker, defender, 3);
             } else if (skillUseInfo.getType() == SkillType.武形神箭) {
-                Snipe.apply(skillUseInfo.getSkill(), this, attacker, defender, -1);
-                Snipe.apply(skillUseInfo.getSkill(), this, attacker, defender, 3);
+                Snipe.apply(skillUseInfo,skillUseInfo.getSkill(), this, attacker, defender, -1);
+                Snipe.apply(skillUseInfo,skillUseInfo.getSkill(), this, attacker, defender, 3);
             } else if (skillUseInfo.getType() == SkillType.穿云箭) {
-                Snipe.apply(skillUseInfo.getSkill(), this, attacker, defender, 1);
+                Snipe.apply(skillUseInfo,skillUseInfo.getSkill(), this, attacker, defender, 1);
             } else if (skillUseInfo.getType() == SkillType.绯弹) {
-                Snipe.apply(skillUseInfo.getSkill(), this, attacker, defender, 1);
+                Snipe.apply(skillUseInfo,skillUseInfo.getSkill(), this, attacker, defender, 1);
             } else if (skillUseInfo.getType() == SkillType.左轮射击) {
-                Snipe.apply(skillUseInfo.getSkill(), this, attacker, defender, 1);
+                Snipe.apply(skillUseInfo,skillUseInfo.getSkill(), this, attacker, defender, 1);
             } else if (skillUseInfo.getType() == SkillType.百步穿杨) {
-                Snipe.apply(skillUseInfo.getAttachedUseInfo1().getSkill(), this, attacker, defender, -1);
-                Snipe.apply(skillUseInfo.getAttachedUseInfo2().getSkill(), this, attacker, defender, 1);
+                Snipe.apply(skillUseInfo,skillUseInfo.getAttachedUseInfo1().getSkill(), this, attacker, defender, -1);
+                Snipe.apply(skillUseInfo,skillUseInfo.getAttachedUseInfo2().getSkill(), this, attacker, defender, 1);
             } else if (skillUseInfo.getType() == SkillType.枪林弹雨) {
-                Snipe.apply(skillUseInfo.getAttachedUseInfo1().getSkill(), this, attacker, defender, -1);
-                Snipe.apply(skillUseInfo.getAttachedUseInfo2().getSkill(), this, attacker, defender, 1);
+                Snipe.apply(skillUseInfo,skillUseInfo.getAttachedUseInfo1().getSkill(), this, attacker, defender, -1);
+                Snipe.apply(skillUseInfo,skillUseInfo.getAttachedUseInfo2().getSkill(), this, attacker, defender, 1);
             } else if (skillUseInfo.getType() == SkillType.迷魂) {
                 Confusion.apply(skillUseInfo, this, attacker, defender, 1);
             } else if (skillUseInfo.getType() == SkillType.混乱领域) {
@@ -451,7 +451,7 @@ public class SkillResolver {
                     ThunderStrike.apply(skillUseInfo.getAttachedUseInfo1(), this, attacker, defender, -1);
                 }
                 if (defender.getField().getAliveCards().size() < 5) {
-                    Snipe.apply(skillUseInfo.getAttachedUseInfo2().getSkill(), this, attacker, defender, 3);
+                    Snipe.apply(skillUseInfo,skillUseInfo.getAttachedUseInfo2().getSkill(), this, attacker, defender, 3);
                 }
             } else if (skillUseInfo.getType() == SkillType.原素共鸣) {
                 ResonantElements.apply(this,skillUseInfo,attacker,"原素曜灵");
@@ -489,7 +489,7 @@ public class SkillResolver {
             {
                 RuneInfo rune = attacker.getOwner().getActiveRuneOf(RuneData.飞岩);
                 if (rune != null) {
-                    Snipe.apply(rune.getSkill(), this, attacker, defender, 1);
+                    Snipe.apply(rune.getSkillUseInfo(),rune.getSkill(), this, attacker, defender, 1);
                 }
             }
         }
@@ -972,8 +972,8 @@ public class SkillResolver {
             } else if (deadCardSkillUseInfo.getType() == SkillType.魔法毁灭) {
                 ManaErode.apply(deadCardSkillUseInfo.getSkill(), this, deadCard.getOwner(), opponent, -1);
             } else if (deadCardSkillUseInfo.getType() == SkillType.逆鳞) {
-                Snipe.apply(deadCardSkillUseInfo.getSkill().getAttachedSkill1(), this, deadCard, opponent, -1);
-                Snipe.apply(deadCardSkillUseInfo.getSkill().getAttachedSkill2(), this, deadCard, opponent, 3);
+                Snipe.apply(deadCardSkillUseInfo,deadCardSkillUseInfo.getSkill().getAttachedSkill1(), this, deadCard, opponent, -1);
+                Snipe.apply(deadCardSkillUseInfo,deadCardSkillUseInfo.getSkill().getAttachedSkill2(), this, deadCard, opponent, 3);
             } else if (deadCardSkillUseInfo.getType() == SkillType.万兽奔腾) {
                 Summon.apply(this, deadCardSkillUseInfo, deadCard, SummonType.Random, 2,
                         "凤凰", "浮云青鸟", "九头妖蛇", "雷兽", "羽翼化蛇", "神谕火狐",
@@ -2163,7 +2163,7 @@ public class SkillResolver {
             } else if (rune.is(RuneData.霹雳)) {
                 LighteningMagic.apply(rune.getSkillUseInfo(), this, rune, defenderHero, 1, 50);
             } else if (rune.is(RuneData.飞羽)) {
-                Snipe.apply(rune.getSkill(), this, rune, defenderHero, 1);
+                Snipe.apply(rune.getSkillUseInfo(),rune.getSkill(), this, rune, defenderHero, 1);
             } else if (rune.is(RuneData.飓风)) {
                 LighteningMagic.apply(rune.getSkillUseInfo(), this, rune, defenderHero, 3, 40);
             } else if (rune.is(RuneData.春风)) {

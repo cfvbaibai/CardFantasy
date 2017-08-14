@@ -271,6 +271,7 @@ public class BattleEngine {
             if (!softenedStatusItems.isEmpty()) {
                 CardInfo myCard = myField.getCard(i);
                 int currentBaseAT = myCard.getLevel1AT();
+                int number = 0;
                 // 允许多重弱化
                 for (int j = 0; j < softenedStatusItems.size(); ++j) {
                     SkillUseInfo skillUseInfo = softenedStatusItems.get(j).getCause();

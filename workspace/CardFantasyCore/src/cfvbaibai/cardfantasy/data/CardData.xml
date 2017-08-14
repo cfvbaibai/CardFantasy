@@ -1876,7 +1876,7 @@
     <Card id="2572" name="灿日娇阳" wikiId="" race="森林" speed="2" star="5" cost="19" incrCost="2" at="495" hp="1495" incrAT="40" incrHP="27">
         <Skill type="过载" level="10" unlock="0" />
         <Skill type="转生" level="8" unlock="5" />
-        <Skill type="常夏日光" level="0" unlock="10"  />
+        <Skill type="常夏日光" level="0" unlock="10"  summon="true"/>
     </Card>
 
     <!-- 蛮荒  -->
@@ -2749,7 +2749,7 @@
         <Skill type="凋零陷阱" level="0" unlock="5"  />
         <Skill type="寒霜冲击" level="6" unlock="10"  />
     </Card>
-    <Card id="3574" name="祈愿少女" wikiId="" race="蛮荒" speed="4" star="5" cost="18" incrCost="0" at="310" hp="1200" incrAT="37" incrHP="39">
+    <Card id="3575" name="祈愿少女" wikiId="" race="蛮荒" speed="4" star="5" cost="18" incrCost="0" at="310" hp="1200" incrAT="37" incrHP="39">
         <Skill type="灵龟羁绊" level="0" unlock="0" />
         <Skill type="净化" level="0" unlock="5"  summon="true"/>
         <Skill type="守护" level="0" unlock="10"  />
