@@ -262,6 +262,9 @@ $(document)
 .on("pageinit", "#map-battle", function(event) {
     $('#build-map-deck-button').attr('href', "javascript:CardFantasy.DeckBuilder.buildDeck('map-deck');");
 })
+.on("pageinit", "#dungeons-battle", function(event) {
+    $('#build-dungeons-deck-button').attr('href', "javascript:CardFantasy.DeckBuilder.buildDeck('dungeons-deck');");
+})
 .on("pageinit", "#deck-builder", function(event) {
     $('#update-deck-button').attr('href', 'javascript:CardFantasy.DeckBuilder.updateDeck();');
     $('#card-filter select').change(function(e, ui) { filterCard(); });

@@ -16,12 +16,12 @@ import cfvbaibai.cardfantasy.engine.OnAttackBlockingResult;
 import cfvbaibai.cardfantasy.engine.Player;
 
 public final class BurningFlame {
-    public static void apply(SkillUseInfo skillUseInfo, SkillResolver resolver, EntityInfo attacker, Player defender)
+    public static void apply(SkillUseInfo skillUseInfo, SkillResolver resolver, EntityInfo attacker, Player defender,int victimCount)
             throws HeroDieSignal {
         Skill skill = skillUseInfo.getSkill();
         int damage = skill.getImpact();
         List<CardInfo> candidates = resolver.getStage().getRandomizer().pickRandom(
-            defender.getField().toList(), -1, true, null);
+            defender.getField().toList(), victimCount, true, null);
         CardStatusItem newBurningStatus = CardStatusItem.burning(damage, skillUseInfo);
         List<CardInfo> victims = new ArrayList<CardInfo>();
         for (CardInfo candidate : candidates) {

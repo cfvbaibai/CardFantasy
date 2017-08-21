@@ -13,6 +13,14 @@ public class RacialShield {
         if (attacker.getRace() != targetRace) {
             return originalDamage;
         }
+        if(blocker instanceof  CardInfo)
+        {
+            CardInfo defender = (CardInfo) blocker;
+            if(resolver.resolveStopBlockSkill(skill, attacker, defender))
+            {
+                return originalDamage;
+            }
+        }
         GameUI ui = resolver.getStage().getUI();
         ui.useSkill(blocker, skill, true);
         int reduction = skill.getImpact();

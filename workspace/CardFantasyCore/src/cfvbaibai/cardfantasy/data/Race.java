@@ -8,6 +8,7 @@ public enum Race {
     HELL("地狱"),
     BOSS("魔神"),
     MOE("萌货"),
+    DEMON("魔族"),
     ITEM("物品");
     
     private String displayName;
@@ -30,6 +31,9 @@ public enum Race {
         }
         if ("魔神".equals(displayName)) {
             return BOSS;
+        }
+        if ("魔族".equals(displayName)) {
+            return DEMON;
         }
         if ("萌货".equals(displayName)) {
             return MOE;

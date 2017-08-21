@@ -996,7 +996,7 @@ public class SpecialStatusTest extends SkillValidationTest {
         random.addNextPicks(0); /* 魔力法阵 */
         random.addNextPicks(0).addNextNumbers(0); /* 火球4 */
         context.proceedOneRound();
-        Assert.assertEquals(200 + 100 + 30 /* 只有第二个火球享受加成 */, 5000 - c占位符4.getHP());
+        Assert.assertEquals(200 + 100 + 15 /* 只有第二个火球享受加成 */, 5000 - c占位符4.getHP());
         Assert.assertTrue(c占位符4.getStatus().containsStatus(CardStatusType.魔印));
     }
     
@@ -1013,8 +1013,8 @@ public class SpecialStatusTest extends SkillValidationTest {
         random.addNextNumbers(0, 0, 0, 0);
         context.proceedOneRound();
 
-        Assert.assertEquals(200 + 210 + 570 + 200 + 210 + 210, 5000 - c占位符1.getHP());
-        Assert.assertEquals(200 + 210 + 200 + 210 + 210 + 570, 5000 - c占位符2.getHP());
+        Assert.assertEquals(380+570+380, 5000 - c占位符1.getHP());
+        Assert.assertEquals(380+380+ 570, 5000 - c占位符2.getHP());
     }
     
     @Test
@@ -1032,7 +1032,7 @@ public class SpecialStatusTest extends SkillValidationTest {
         context.proceedOneRound();
         Assert.assertEquals(0, 5000 - c占位符3.getHP());
         Assert.assertFalse(c占位符3.getStatus().containsStatus(CardStatusType.魔印));
-        Assert.assertEquals(100 /* 烈焰风暴4 */ + 30 /* 魔力法阵加成 */, 5000 - c占位符4.getHP());
+        Assert.assertEquals(100 /* 烈焰风暴4 */ + 15 /* 魔力法阵加成 */, 5000 - c占位符4.getHP());
         Assert.assertTrue(c占位符4.getStatus().containsStatus(CardStatusType.魔印));
     }
 

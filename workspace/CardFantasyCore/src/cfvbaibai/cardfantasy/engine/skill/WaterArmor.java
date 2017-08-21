@@ -10,7 +10,10 @@ public final class WaterArmor {
     public static int apply(Skill cardSkill, SkillResolver resolver, CardInfo attacker, CardInfo defender, int originalDamage) throws HeroDieSignal {
         GameUI ui = resolver.getStage().getUI();
         ui.useSkill(defender, attacker, cardSkill, true);
-
+        if(resolver.resolveStopBlockSkill(cardSkill, attacker, defender))
+        {
+            return originalDamage;
+        }
         int maxDamage = cardSkill.getImpact();
         int maxHealHeroDamage = cardSkill.getImpact2();
         int actualDamage = originalDamage;

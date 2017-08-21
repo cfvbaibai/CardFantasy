@@ -110,6 +110,7 @@
                             <option value="2">森林</option>
                             <option value="3">蛮荒</option>
                             <option value="4">地狱</option>
+                            <option value="5">魔族</option>
                             <option value="97">魔王</option>
                             <option value="100">魔神</option>
                         </select>

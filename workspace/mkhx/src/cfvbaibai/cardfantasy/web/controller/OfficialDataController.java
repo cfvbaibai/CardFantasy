@@ -15,14 +15,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import cfvbaibai.cardfantasy.data.CardDataStore;
 import cfvbaibai.cardfantasy.officialdata.OfficialCard;
 import cfvbaibai.cardfantasy.officialdata.OfficialDataStore;
 import cfvbaibai.cardfantasy.officialdata.OfficialRune;
 import cfvbaibai.cardfantasy.officialdata.OfficialSkill;
 import cfvbaibai.cardfantasy.officialdata.OfficialSkillCategory;
 import cfvbaibai.cardfantasy.officialdata.OfficialStage;
-import cfvbaibai.cardfantasy.web.ErrorHelper;
 import cfvbaibai.cardfantasy.web.beans.JsonHandler;
 import cfvbaibai.cardfantasy.web.beans.Logger;
 import cfvbaibai.cardfantasy.web.beans.OfficialCardInfo;
@@ -42,11 +40,7 @@ public class OfficialDataController {
     @Autowired
     private Logger logger;
     @Autowired
-    private ErrorHelper errorHelper;
-    @Autowired
     private OfficialDataStore officialStore;
-    @Autowired
-    private CardDataStore myStore;
     @Autowired
     private JsonHandler jsonHandler;
 

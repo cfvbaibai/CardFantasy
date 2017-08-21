@@ -25,7 +25,7 @@ public class RedGun {
                 continue;
             }
             int actualDamage = damage;
-            if (victim.containsUsableSkill(SkillType.免疫) || CounterMagic.getBlockSkill(victim) != null) {
+            if (victim.containsAllSkill(SkillType.免疫)|| victim.containsAllSkill(SkillType.结界立场) || CounterMagic.getBlockSkill(victim) != null) {
                 actualDamage *= magnifier;
             }
             ui.attackCard(attacker, victim, skill, actualDamage);

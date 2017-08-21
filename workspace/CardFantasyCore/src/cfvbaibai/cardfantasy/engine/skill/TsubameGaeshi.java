@@ -14,8 +14,7 @@ import cfvbaibai.cardfantasy.engine.SkillUseInfo;
  *
  */
 public class TsubameGaeshi {
-    public static void apply(SkillUseInfo skillUseInfo, SkillResolver resolver, Player attackerHero, CardInfo defender) throws HeroDieSignal {
-        Skill cardSkill = skillUseInfo.getSkill();
+    public static void apply(SkillUseInfo skillUseInfo,Skill cardSkill, SkillResolver resolver, Player attackerHero, CardInfo defender) throws HeroDieSignal {
         int damage = 200 * defender.getLevel0AT() / 100;
         int position = defender.getPosition();
         if (position == -1) {
@@ -32,6 +31,8 @@ public class TsubameGaeshi {
             ui.attackCard(defender, victim, cardSkill, damage);
             resolver.resolveDeathSkills(defender, victim, cardSkill, resolver.applyDamage(defender, victim, cardSkill, damage));
         }
-        defender.setUsed(skillUseInfo);
+        if(skillUseInfo !=null){
+            defender.setUsed(skillUseInfo);
+        }
     }
 }

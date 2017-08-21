@@ -18,6 +18,7 @@
     <!--  Enable annotations like @Aspect -->
     <aop:aspectj-autoproxy />
     <bean class="cfvbaibai.cardfantasy.web.aspects.EncodingAspect" />
+    <bean class="cfvbaibai.cardfantasy.web.aspects.AntiBotAspect" />
 
     <mvc:resources mapping="/resources/**" location="/resources/" />
     <mvc:resources mapping="/*" location="/" />

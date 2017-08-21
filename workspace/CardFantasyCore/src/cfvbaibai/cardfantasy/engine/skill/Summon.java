@@ -8,34 +8,57 @@ import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
 import cfvbaibai.cardfantasy.Randomizer;
 import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.data.SkillType;
-import cfvbaibai.cardfantasy.engine.CardInfo;
-import cfvbaibai.cardfantasy.engine.CardStatusItem;
-import cfvbaibai.cardfantasy.engine.CardStatusType;
-import cfvbaibai.cardfantasy.engine.HeroDieSignal;
-import cfvbaibai.cardfantasy.engine.SkillResolver;
-import cfvbaibai.cardfantasy.engine.SkillUseInfo;
+import cfvbaibai.cardfantasy.engine.*;
 import cfvbaibai.cardfantasy.game.DeckBuilder;
 
 public class Summon {
-    public static void apply(SkillResolver resolver, SkillUseInfo skillUseInfo, CardInfo summoner, SummonType summonType, int summonPicks, String ... summonedCardsDescs) throws HeroDieSignal {
+    public static void apply(SkillResolver resolver, SkillUseInfo skillUseInfo, CardInfo summoner, SummonType summonType, int summonPicks, String... summonedCardsDescs) throws HeroDieSignal {
         if (summoner == null) {
             throw new CardFantasyRuntimeException("summoner should not be null");
         }
-        int Number = 0;
         // 镜像不能再次发动镜像
-        if (summoner.isSummonedMinion() && skillUseInfo.getType() == SkillType.镜像 || summoner.isSummonedMinion() && skillUseInfo.getType() == SkillType.镜魔){
-            return;
+        if (summoner.isSummonedMinion() && skillUseInfo.getType() == SkillType.镜像
+                || summoner.isSummonedMinion() && skillUseInfo.getType() == SkillType.镜魔 || summoner.isSummonedMinion() && skillUseInfo.getType() == SkillType.九转禁术) {
+            for(CardStatusItem item : summoner.getStatus().getAllItems())
+            {
+                if(item.getType()==CardStatusType.召唤){
+                    if(item.getCause().getOwner() instanceof CardInfo){
+                        if(((CardInfo)item.getCause().getOwner()).getName().equals(summoner.getName()))
+                        {
+                            return;
+                        }
+                    }
+                }
+            }
         }
-
+        boolean opSklill = false;
+        if(skillUseInfo.getType() == SkillType.召唤炮灰)
+        {
+            opSklill = true;
+        }
         Skill skill = skillUseInfo.getSkill();
-        List<CardInfo> livingCards = summoner.getOwner().getField().getAliveCards();
+        List<CardInfo> livingCards = null;
+        Player enemy = null;
+        if(opSklill)
+        {
+            enemy = resolver.getStage().getOpponent(summoner.getOwner());
+            livingCards = enemy.getField().getAliveCards();
+        }
+        else {
+            livingCards = summoner.getOwner().getField().getAliveCards();
+        }
         List<String> cardDescsToSummon = new LinkedList<String>();
         for (String summonedCardDesc : summonedCardsDescs) {
             cardDescsToSummon.add(summonedCardDesc);
         }
-        Number++;
+
         List<CardInfo> cardsToSummon = new ArrayList<CardInfo>();
-        List<CardInfo> summonCardCandidates = DeckBuilder.build(summonedCardsDescs).getCardInfos(summoner.getOwner());
+        List<CardInfo> summonCardCandidates = null;
+        if(opSklill)
+        {
+            summonCardCandidates = DeckBuilder.build(summonedCardsDescs).getCardInfos(enemy);
+        }
+        else {summonCardCandidates = DeckBuilder.build(summonedCardsDescs).getCardInfos(summoner.getOwner());}
         if (summonType == SummonType.Normal || summonType == SummonType.Summoning) {
             boolean anySummonedCardStillAlive = false;
             for (CardInfo fieldCard : livingCards) {
