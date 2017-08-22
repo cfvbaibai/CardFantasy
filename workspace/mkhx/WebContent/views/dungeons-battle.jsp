@@ -52,10 +52,10 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>层数选择</td>
+                            <td>层数/噩梦加成</td>
                             <td>
                                 <select name="layer-select" id="layer-select" class="layer-select"  data-mini="true" data-native-menu="true">
-                                    <option value="0" selected="selected">不选择层数</option>
+                                    <option value="0" selected="selected">不选择层数/地图</option>
                                     <option value="1">噩梦地图1图</option>
                                     <option value="2">噩梦地图2图</option>
                                     <option value="100" >地下城100层</option>
