@@ -36,6 +36,11 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2017-08-22: <x>欢笑，清风，波波</x><ul>
+                        <li>添加技能【灵龙轰咆】，【死契时光倒流】</li>
+                        <li>将噩梦地图的加成和地下城加成标识</li>
+                        <li>噩梦地图的过关条件暂未添加，需要自己添加</li>
+                    </ul></li>
                     <li>2017-08-14: <x>欢笑，清风，波波</x><ul>
                         <li>修复技能【常夏日光】，【太平要术】</li>
                         <li>添加【寒莹触碰】50%冰冻效果</li>

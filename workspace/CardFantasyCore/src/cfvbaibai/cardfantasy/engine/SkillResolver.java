@@ -374,6 +374,10 @@ public class SkillResolver {
             } else if (skillUseInfo.getType() == SkillType.突击军势) {
                 Summon.apply(this, skillUseInfo.getAttachedUseInfo1(), attacker, SummonType.Normal, 1, "巅峰伍长");
                 Summon.apply(this, skillUseInfo.getAttachedUseInfo2(), attacker, SummonType.Normal, 1,  "巅峰兵长");
+            } else if (skillUseInfo.getType() == SkillType.灵龙轰咆) {
+                Summon.apply(this, skillUseInfo, attacker, SummonType.Random, 2,
+                        "光明之龙", "金属巨龙", "黄金金属巨龙", "元素灵龙", "暴怒霸龙", "毁灭之龙", "幽灵巨龙",
+                        "水晶巨龙", "毒雾羽龙", "黄金毒龙",  "地魔龙", "邪狱魔龙", "混沌之龙");
             } else if (skillUseInfo.getType() == SkillType.连营) {
                 Summon.apply(this, skillUseInfo.getAttachedUseInfo1(), attacker, SummonType.Normal, 2, "炮灰", "炮灰");
                 MagicMark.apply(this, skillUseInfo.getAttachedUseInfo2(), attacker, defender, -1);
@@ -959,7 +963,9 @@ public class SkillResolver {
                 Resurrection.apply(this, deadCardSkillUseInfo, deadCard);
             } else if (deadCardSkillUseInfo.getType() == SkillType.归魂) {
                 RegressionSoul.apply(this, deadCardSkillUseInfo, deadCard);
-            } else if (deadCardSkillUseInfo.getType() == SkillType.召唤炎魔) {
+            } else if (deadCardSkillUseInfo.getType() == SkillType.时光倒流) {
+                TimeBack.apply(deadCardSkillUseInfo, this,deadCard.getOwner(), opponent);
+            }  else if (deadCardSkillUseInfo.getType() == SkillType.召唤炎魔) {
                 Summon.apply(this, deadCardSkillUseInfo, deadCard, SummonType.Normal, 1, "炎魔");
             } else if (deadCardSkillUseInfo.getType() == SkillType.全体阻碍) {
                 AllDelay.apply(deadCardSkillUseInfo, this, deadCard, opponent);
