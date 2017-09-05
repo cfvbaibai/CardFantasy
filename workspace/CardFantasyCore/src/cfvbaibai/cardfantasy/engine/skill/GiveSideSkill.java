@@ -10,9 +10,6 @@ import cfvbaibai.cardfantasy.engine.Field;
 import cfvbaibai.cardfantasy.engine.SkillResolver;
 import cfvbaibai.cardfantasy.engine.SkillUseInfo;
 
-/**
- * Created by hasee on 2017/5/7.
- */
 public final class GiveSideSkill {
     public static void apply(SkillResolver resolver, SkillUseInfo skillUseInfo, CardInfo card, Skill addSkill) {
         if (card == null || card.isDead()) {

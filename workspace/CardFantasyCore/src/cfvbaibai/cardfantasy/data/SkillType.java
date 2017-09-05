@@ -108,6 +108,7 @@ public enum SkillType {
 
     狙击("", 0, 0, new int[] { 0, 25, 50, 75, 100, 125, 150, 175, 200, 225, 250 }, SkillTag.抗免疫, SkillTag.狙击),
     穿云箭("", 0, 0, new int[] { 1200, 1200, 1200, 1200, 1200, 1200, 1200, 1200, 1200, 1200, 1200 }, SkillTag.抗免疫, SkillTag.狙击),
+    厄运枪狙击("", 0, 0, new int[] { 1200, 1200, 1200, 1200, 1200, 1200, 1200, 1200, 1200, 1200, 1200 }, SkillTag.抗免疫, SkillTag.狙击),
     绯弹("", 0, 0, new int[] { 800, 800, 800, 800, 800, 800, 800, 800, 800, 800, 800 }, SkillTag.抗免疫, SkillTag.狙击),
     左轮射击("", 0, 0, new int[] { 1200, 1200, 1200, 1200, 1200, 1200, 1200, 1200, 1200, 1200, 1200 }, SkillTag.抗免疫, SkillTag.狙击),
     武形秘箭("", 0, 0, new int[] { 220, 250, 270, 300, 320, 350, 370, 400, 420, 450, 500 }, SkillTag.抗免疫, SkillTag.狙击),
@@ -167,6 +168,7 @@ public enum SkillType {
     法力反射("30929", 30),
     反射装甲("", 0, SkillTag.即死, SkillTag.抗免疫, SkillTag.魔王无效),
     镜面装甲("", 210, 0, SkillTag.抗沉默),
+    不夜蔷薇("", 240,0,SkillTag.不动),
     镜面("", 0, SkillTag.抗沉默),
     真理导言("", 6, 0, SkillTag.抗沉默),
     阿拉希血统("", 0, 0, SkillTag.抗沉默, SkillTag.额外攻击加成),
@@ -268,6 +270,7 @@ public enum SkillType {
     咆哮("", 0, SkillTag.即死, SkillTag.抗不屈),
 
     炼金失败("",0,SkillTag.复活),
+    海滨危机("",0,SkillTag.复活),
 
     封印("31157", 0, SkillTag.控制),
     血炼("31136", 20, SkillTag.魔法),
@@ -334,6 +337,7 @@ public enum SkillType {
     东风("",175,0),
 
     燕返("", 0, 0),
+    袈裟斩燕返("", 0, 0),
     斩杀("", 50, 0),
     双斩("", 50, 0),
     送葬之刃("", 50, 5),
@@ -384,6 +388,7 @@ public enum SkillType {
     桃园结义("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
     白帝托孤("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
     灵龟羁绊("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
+    法师契约("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
 
 
     圣光洗礼("", 0, 0, SkillTag.抗免疫, SkillTag.不可洗炼, SkillTag.魔王无效, SkillTag.魔族天赋),
@@ -435,6 +440,7 @@ public enum SkillType {
     觉醒白虎守护("", SkillType.月神的护佑, 7, SkillType.祈福, 3),
     觉醒星之意志("", SkillType.灵魂消散, 0, SkillType.灵王的轰击, 7),
     觉醒狼顾("",  SkillType.雷神降临, 8, SkillType.雷霆一击, 5),
+    觉醒雷狱("",  SkillType.雷神降临, 9, SkillType.雷霆一击, 6),
     鬼才("", SkillType.侵蚀,0,SkillType.夺魂,1,SkillTag.抗夺魂),
     镜魔("",SkillType.镜面,0,SkillType.镜像,0 ,SkillTag.抗沉默,SkillTag.召唤),
     刀语("",SkillType.连击,0,SkillType.弱点攻击,0 ),
@@ -451,16 +457,25 @@ public enum SkillType {
     觉醒风之祈愿("",SkillType.号角,1,SkillType.祈愿,1),
     觉醒原素之舞("",SkillType.薜荔之怒,0,SkillType.寒莹触碰,0),
     太平要术("",SkillType.归魂,1,SkillType.月神的护佑,3),
+    驱虎吞狼("",SkillType.侵蚀,0,SkillType.铁壁,4,SkillTag.沉默无效),
+    北海报恩("", 70,0, SkillTag.基础攻击加成,SkillTag.抗削弱,SkillTag.召唤),
+    神亭酣战("",SkillType.吸血,8,SkillType.钢铁之肤,8),
+
 
 
     新生("",0,0,SkillTag.新生),
 
+    //两侧卡牌添加技能
     西凉铁骑("",SkillType.破军,5,null,0),
-    袈裟斩("",SkillType.燕返,0,null,0),
+    袈裟斩("",SkillType.袈裟斩燕返,0,null,0),
     致命打击("",SkillType.精准打击,9,null,0),
     爱心料理("",SkillType.圣母吟咏,7,null,0),
     仁德之君("",SkillType.圣母吟咏,5,null,0,SkillTag.守护),
     剑舞("",SkillType.神兵召唤,0,null,0),
+    厄运枪("",SkillType.厄运枪狙击,0,null,0),
+
+    //手牌添加技能
+    王佐之才("",SkillType.镜面,0,null,0),
     // To Do
 
     // 以下全部技能皆为待更新的空技能，请在更新之后将其移动到上面适合的位置

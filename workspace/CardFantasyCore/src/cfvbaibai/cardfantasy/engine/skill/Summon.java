@@ -18,7 +18,7 @@ public class Summon {
         }
         // 镜像不能再次发动镜像
         if (summoner.isSummonedMinion() && skillUseInfo.getType() == SkillType.镜像
-                || summoner.isSummonedMinion() && skillUseInfo.getType() == SkillType.镜魔 || summoner.isSummonedMinion() && skillUseInfo.getType() == SkillType.九转禁术) {
+                || summoner.isSummonedMinion() && skillUseInfo.getType() == SkillType.镜魔 || summoner.isSummonedMinion() && skillUseInfo.getType() == SkillType.九转禁术|| summoner.isSummonedMinion() && skillUseInfo.getType() == SkillType.北海报恩) {
             for(CardStatusItem item : summoner.getStatus().getAllItems())
             {
                 if(item.getType()==CardStatusType.召唤){
