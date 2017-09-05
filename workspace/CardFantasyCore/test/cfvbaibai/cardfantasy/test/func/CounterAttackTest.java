@@ -190,7 +190,7 @@ public class CounterAttackTest extends SkillValidationTest {
         context.startGame();
         
         context.proceedOneRound();
-        Assert.assertEquals((660 - 160) / 2 /* 物理反弹造成一半伤害反弹 */, 1400 - c秘银巨石像.getHP());
+        Assert.assertEquals(660 / 2 /* 物理反弹造成一半伤害反弹 */, 1400 - c秘银巨石像.getHP());
         Assert.assertEquals(660 - 160, 1825 - c金属巨龙.getHP());
     }
 
@@ -256,7 +256,7 @@ public class CounterAttackTest extends SkillValidationTest {
         context.startGame();
 
         context.proceedOneRound();
-        Assert.assertEquals(200 / 2 /* 物理反弹造成一半伤害反弹 */, 1400 - c秘银巨石像.getHP());
+        Assert.assertEquals(660 / 2 /* 物理反弹造成一半伤害反弹 */, 1400 - c秘银巨石像.getHP());
         Assert.assertTrue(c占位符.isDead());
     }
 
