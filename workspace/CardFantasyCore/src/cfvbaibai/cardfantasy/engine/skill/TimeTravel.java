@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cfvbaibai.cardfantasy.GameUI;
+import cfvbaibai.cardfantasy.data.SkillType;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.CardStatusType;
 import cfvbaibai.cardfantasy.engine.HeroDieSignal;
@@ -33,6 +34,20 @@ public class TimeTravel {
         for (CardInfo card : player.getField().getAliveCards()) {
             if (card != caster) {
                 if (resolver.resolveAttackBlockingSkills(caster, card, skillUseInfo.getSkill(), 0).isAttackable()) {
+                    //移除附加的第四技能
+                    resolver.resolveLeaveSkills(card);
+                    if (card.containsAllSkill(SkillType.铁壁)||card.containsAllSkill(SkillType.驱虎吞狼)) {
+                        for (SkillUseInfo defenderskill : card.getAllUsableSkills()) {
+                            if (defenderskill.getType() == SkillType.铁壁) {
+                                ImpregnableDefenseHeroBuff.remove(resolver, defenderskill, card);
+                            }
+                            if (defenderskill.getType() == SkillType.驱虎吞狼)
+                            {
+                                ImpregnableDefenseHeroBuff.remove(resolver, defenderskill.getAttachedUseInfo2(), card);
+                            }
+                        }
+                    }
+
                     ui.returnCard(caster, card, skillUseInfo.getSkill());
                     if (!card.getStatus().containsStatus(CardStatusType.召唤)) {
                         player.getDeck().addCard(card);

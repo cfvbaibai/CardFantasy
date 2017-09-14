@@ -36,6 +36,12 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2017-09-14: <x>欢笑，清风，波波</x><ul>
+                        <li>修复文若遇到时间溯行铁壁，镜面不能正常移除的bug</li>
+                    </ul></li>
+                    <li>2017-09-11: <x>欢笑，清风，波波</x><ul>
+                        <li>修复觉醒技能在需要多张卡牌时触发异常的BUG</li>
+                    </ul></li>
                     <li>2017-09-05: <x>欢笑，清风，波波</x><ul>
                         <li>O_O久违的更新</li>
                         <li>添加卡牌【萌喵少女】，【死亡微笑】，【地狱雷龙】，【腥红罪枪】，【眠梦公主】，【三国英魂·文若】，【三国英魂·子义】，【缚魂者】</li>
