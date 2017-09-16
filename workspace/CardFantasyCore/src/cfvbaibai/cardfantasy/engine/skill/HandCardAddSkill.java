@@ -1,17 +1,16 @@
 package cfvbaibai.cardfantasy.engine.skill;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
 import cfvbaibai.cardfantasy.data.CardSkill;
 import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.data.SkillTag;
-import cfvbaibai.cardfantasy.engine.Hand;
-import cfvbaibai.cardfantasy.engine.SkillUseInfo;
-import cfvbaibai.cardfantasy.engine.SkillResolver;
 import cfvbaibai.cardfantasy.engine.CardInfo;
-
-import java.util.ArrayList;
-import java.util.List;
+import cfvbaibai.cardfantasy.engine.SkillResolver;
+import cfvbaibai.cardfantasy.engine.SkillUseInfo;
 
 //给两个手牌添加技能
 public class HandCardAddSkill {
@@ -27,42 +26,34 @@ public class HandCardAddSkill {
         CardInfo twoCard = null;
         List<CardInfo> addCard=new ArrayList<CardInfo>();
         for (CardInfo ally : allHandCards) {
-            if(!(null ==oneCard)){
-                if(ally.getSummonDelay()<oneCard.getSummonDelay())
-                {
+            if (oneCard != null){
+                if (ally.getSummonDelay() < oneCard.getSummonDelay()) {
                     twoCard = oneCard;
-                    oneCard =ally;
+                    oneCard = ally;
                 }
-                else if(!(null==twoCard))
-                {
-                    if(ally.getSummonDelay()<oneCard.getSummonDelay())
-                    {
+                else if (twoCard != null) {
+                    if (ally.getSummonDelay()<oneCard.getSummonDelay()) {
                         twoCard = ally;
                     }
-                }
-                else{
+                } else {
                     twoCard = ally;
                 }
-            }
-            else{
+            } else {
                 oneCard = ally;
             }
         }
-        if(!(null ==oneCard))
-        {
+        if (oneCard != null) {
             addCard.add(oneCard);
         }
-        if(!(null==twoCard))
-        {
+        if (twoCard != null) {
             addCard.add(twoCard);
         }
         for (CardInfo once : addCard) {
-            if(once.containsAllUsableSkillsWithTag(SkillTag.抗沉默)&&addSkill.getType().containsTag(SkillTag.抗沉默))
-            {
+            if (once.containsAllUsableSkillsWithTag(SkillTag.抗沉默)&&addSkill.getType().containsTag(SkillTag.抗沉默)) {
                 continue;
             }
             cardSkill.setGiveSkill(1);
-            if(once.containsUsableSkill(cardSkill.getType())){
+            if (once.containsUsableSkill(cardSkill.getType())){
                 continue;
             }
             once.addSkill(cardSkill);
