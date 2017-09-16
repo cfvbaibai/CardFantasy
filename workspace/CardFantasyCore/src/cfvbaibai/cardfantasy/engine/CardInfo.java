@@ -737,7 +737,7 @@ public class CardInfo extends EntityInfo {
         this.eternalWound += this.getMaxHP() - remainingHP;
     }
 
-    public boolean isAwaken(SkillUseInfo skillUseInfo, Race race) {
+    public boolean isAwaken(SkillUseInfo skillUseInfo, Race race,int count) {
         if (this.isDead()) {
             return false;
         }
@@ -749,9 +749,12 @@ public class CardInfo extends EntityInfo {
         }
         List<CardInfo> aliveCards = this.getOwner().getField().getAliveCards();
         for (CardInfo aliveCard : aliveCards) {
-            if (aliveCards != this && aliveCard.getRace() == race) {
-                this.addEffect(new SkillEffect(SkillEffectType.SKILL_AWAKEN, skillUseInfo, 0, true));
-                return true;
+            if (aliveCard.getRace() == race) {
+                count = count-1;
+                if(count<1) {
+                    this.addEffect(new SkillEffect(SkillEffectType.SKILL_AWAKEN, skillUseInfo, 0, true));
+                    return true;
+                }
             }
         }
         return false;

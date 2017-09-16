@@ -44,13 +44,17 @@ public final class Return {
             defender.getOwner().getDeck().insertCardToPosition(defender, index);
         }
         resolver.resolveLeaveSkills(defender);
-        if(defender.containsAllSkill(SkillType.铁壁))
+        if(defender.containsAllSkill(SkillType.铁壁)||defender.containsAllSkill(SkillType.驱虎吞狼))
         {
             for(SkillUseInfo defenderskill:defender.getAllUsableSkills())
             {
                 if (defenderskill.getType() == SkillType.铁壁)
                 {
                     ImpregnableDefenseHeroBuff.remove(resolver, defenderskill, defender);
+                }
+                if (defenderskill.getType() == SkillType.驱虎吞狼)
+                {
+                    ImpregnableDefenseHeroBuff.remove(resolver, defenderskill.getAttachedUseInfo2(), defender);
                 }
             }
         }
