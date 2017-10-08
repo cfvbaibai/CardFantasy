@@ -3,6 +3,7 @@ package cfvbaibai.cardfantasy.engine.skill;
 import cfvbaibai.cardfantasy.GameUI;
 import cfvbaibai.cardfantasy.data.RuneData;
 import cfvbaibai.cardfantasy.data.Skill;
+import cfvbaibai.cardfantasy.data.SkillTag;
 import cfvbaibai.cardfantasy.data.SkillType;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.EntityInfo;
@@ -18,7 +19,7 @@ public final class CounterMagic {
         if (attacker == null) {
             return false;
         }
-        if (!resolver.isMagicalSkill(attackSkill) || attackSkill.getType()==SkillType.雷霆一击 || attackSkill.getType()==SkillType.雷霆之怒 || attackSkill.getType()==SkillType.雷切) {
+        if (!resolver.isMagicalSkill(attackSkill) || attackSkill.getType().containsTag(SkillTag.雷系灵轰)) {
             return false;
         }
         Skill cardSkill = getBlockSkill(defender);

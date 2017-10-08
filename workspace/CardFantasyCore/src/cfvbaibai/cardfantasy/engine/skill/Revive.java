@@ -30,8 +30,15 @@ public final class Revive {
             return;
         }
         Skill skill = skillUseInfo.getSkill();
-        CardInfo cardToRevive = resolver.getStage().getRandomizer().pickRandom(
-                revivableCards, 1, true, null).get(0);
+        CardInfo cardToRevive =null;
+        if(revivableCards.size()==1)
+        {
+            cardToRevive =revivableCards.get(0);
+        }
+        else {
+            cardToRevive = resolver.getStage().getRandomizer().pickRandom(
+                    revivableCards, 1, true, null).get(0);
+        }
         resolver.getStage().getUI().useSkill(reviver, cardToRevive, skill, true);
         if (SoulSeal.soulSealed(resolver, reviver)) {
             return;
