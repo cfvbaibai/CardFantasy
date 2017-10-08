@@ -5,7 +5,6 @@ import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
 import cfvbaibai.cardfantasy.data.CardSkill;
 import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.data.SkillTag;
-import cfvbaibai.cardfantasy.engine.Hand;
 import cfvbaibai.cardfantasy.engine.SkillUseInfo;
 import cfvbaibai.cardfantasy.engine.SkillResolver;
 import cfvbaibai.cardfantasy.engine.CardInfo;

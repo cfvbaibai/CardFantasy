@@ -43,7 +43,7 @@ public class GiantEarthquakesLandslides {
         GameUI ui = resolver.getStage().getUI();
         for(CardInfo effectCard : candidates){
             ui.useSkill(attacker, effectCard, cardSkill, true);
-            Return.returnCard(resolver, cardSkill, attacker,effectCard);
+            Return.returnCard2(resolver, cardSkill, attacker,effectCard);
         }
     }
 }

@@ -276,7 +276,7 @@ public class BattleEngine {
                     SkillUseInfo skillUseInfo = softenedStatusItems.get(j).getCause();
                     ui.softened(myCard);
                     int adjAT = -currentBaseAT / 2;
-                    if(skillUseInfo.getType() == SkillType.常夏日光)
+                    if(skillUseInfo.getType() == SkillType.常夏日光||skillUseInfo.getType() == SkillType.碎裂怒吼)
                     {
                         adjAT = -currentBaseAT;
                         currentBaseAT = 0;
@@ -363,7 +363,8 @@ public class BattleEngine {
         }
         List<CardInfo> cards = new ArrayList<CardInfo>();
         cards.add(myField.getCard(i));
-        resolver.resolveSecondClassSummoningSkills(cards, myField, opField, null, false);
+        //二段技能发动时机改变
+//        resolver.resolveSecondClassSummoningSkills(cards, myField, opField, null, false);
         if (myField.getCard(i) == null) {
             return;
         }
@@ -402,11 +403,11 @@ public class BattleEngine {
             resolver.attackHero(myField.getCard(i), getInactivePlayer(), null, myField.getCard(i).getCurrentAT());
             resolver.removeStatus(myField.getCard(i), CardStatusType.不屈);
         } else {
-            processAttackCard(myField, opField, i);
+            processAttackCard(myField, opField, i,true);
             if (myField.getCard(i) != null && !myField.getCard(i).isDead() &&
                     opField.getCard(i) != null && !opField.getCard(i).isDead()) {
                 if (myField.getCard(i)!=null&&myField.getCard(i).containsUsableSkill(SkillType.连击) || myField.getCard(i).containsUsableSkill(SkillType.刀语)) {
-                    processAttackCard(myField, opField, i);
+                    processAttackCard(myField, opField, i,false);
                 }
             }
             if (myField.getCard(i) != null && !myField.getCard(i).isDead() &&
@@ -424,7 +425,7 @@ public class BattleEngine {
         }
     }
 
-    private void processAttackCard(Field myField, Field opField, int i) throws HeroDieSignal {
+    private void processAttackCard(Field myField, Field opField, int i,boolean attackflag) throws HeroDieSignal {
         CardInfo defender = opField.getCard(i);
         SkillResolver resolver = this.stage.getResolver();
         GameUI ui = this.stage.getUI();
@@ -440,7 +441,7 @@ public class BattleEngine {
         }
         CardInfo taunt = tauntCard(opField);
         OnDamagedResult damagedResult =null;
-        if (taunt!=null)
+        if (taunt!=null&&attackflag)
         {
             Skill skill = null;
             for(SkillUseInfo skillUseInfo: taunt.getUsableNormalSkills())
