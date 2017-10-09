@@ -4,7 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
-import cfvbaibai.cardfantasy.data.*;
+import cfvbaibai.cardfantasy.data.BuffSkill;
+import cfvbaibai.cardfantasy.data.CardSkill;
+import cfvbaibai.cardfantasy.data.Race;
+import cfvbaibai.cardfantasy.data.RuneActivationType;
+import cfvbaibai.cardfantasy.data.RuneActivator;
+import cfvbaibai.cardfantasy.data.RuneData;
+import cfvbaibai.cardfantasy.data.Skill;
+import cfvbaibai.cardfantasy.data.SkillTag;
+import cfvbaibai.cardfantasy.data.SkillType;
 import cfvbaibai.cardfantasy.engine.skill.*;
 
 
