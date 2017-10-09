@@ -41,7 +41,9 @@ public final class Resurrection {
             ui.cardToDeck(player, card);
             player.getGrave().removeCard(card);
             if (player.getDeck().size() > 0) {
-            int position = Randomizer.getRandomizer().next(0, player.getDeck().size());
+       //     int position = Randomizer.getRandomizer().next(0, player.getDeck().size());
+         // 回魂是有顺序的。
+                int position = 0;
                 player.getDeck().insertCardToPosition(card, position);
             } else {
                 player.getDeck().addCard(card);

@@ -1023,7 +1023,7 @@
         <Skill type="坚壁" level="4" unlock="5" />
         <Skill type="铁壁" level="4" unlock="10" />
     </Card>
-    <Card id="1600" name="巅峰兵长" wikiId="" race="王国" speed="4" star="5" cost="18" incrCost="2" at="360" hp="1720" incrAT="45" incrHP="45">
+    <Card id="1600" name="巅峰兵长" wikiId="" race="王国" speed="3" star="5" cost="18" incrCost="2" at="360" hp="1720" incrAT="45" incrHP="45">
         <Skill type="精神污染" level="10" unlock="0" summon="true"/>
         <Skill type="灵魂消散" level="0" unlock="5"  />
         <Skill type="赤之魔枪" level="5" unlock="10" />
@@ -1072,6 +1072,21 @@
         <Skill type="祈愿" level="2" unlock="0" />
         <Skill type="驱虎吞狼" level="0" unlock="5"  />
         <Skill type="王佐之才" level="0" unlock="10" />
+    </Card>
+    <Card id="1610" name="圣域裁决者" wikiId="" race="王国" speed="3" star="5" cost="17" incrCost="2" at="415" hp="1590" incrAT="39" incrHP="33">
+        <Skill type="圣堂召唤" level="0" unlock="0" />
+        <Skill type="觉醒异端审判" level="0" unlock="5"  />
+        <Skill type="圣炎" level="0" unlock="10" />
+    </Card>
+    <Card id="1611" name="圣德修女" wikiId="" race="王国" speed="3" star="5" cost="15" incrCost="2" at="305" hp="1405" incrAT="29" incrHP="35">
+        <Skill type="圣德同伴" level="0" unlock="0" />
+        <Skill type="冰甲" level="5" unlock="5"  />
+        <Skill type="圣母回声" level="0" unlock="10" />
+    </Card>
+    <Card id="1612" name="愈音憩梦" wikiId="" race="王国" speed="4" star="5" cost="16" incrCost="2" at="325" hp="1430" incrAT="35" incrHP="35">
+        <Skill type="愈音" level="0" unlock="0" />
+        <Skill type="脱困" level="0" unlock="5"  />
+        <Skill type="连奏" level="0" unlock="10" />
     </Card>
 
 
@@ -1649,10 +1664,10 @@
         <Skill type="不屈" level="0" unlock="5" />
         <Skill type="战意" level="7" unlock="10" />
     </Card>
-    <Card id="2524" name="银河观测者" wikiId="" race="森林" speed="4" star="5" cost="17" incrCost="2" at="300" hp="1680" incrAT="35" incrHP="38">
-        <Skill type="月神的护佑" level="7" unlock="0" />
-        <Skill type="法力反射" level="6" unlock="5" />
-        <Skill type="脱困" level="0" unlock="10" />
+    <Card id="2524" name="银河观测者" wikiId="" race="森林" speed="4" star="5" cost="17" incrCost="2" at="390" hp="1730" incrAT="40" incrHP="38">
+        <Skill type="月之守望" level="0" unlock="0" />
+        <Skill type="镜面装甲" level="0" unlock="5" />
+        <Skill type="月神的恩泽" level="0" unlock="10" />
     </Card>
     <Card id="2525" name="处女座" wikiId="" race="森林" speed="4" star="5" cost="18" incrCost="2" at="300" hp="1680" incrAT="38" incrHP="45">
         <Skill type="精神狂乱" level="0" unlock="0" />
@@ -1884,9 +1899,19 @@
         <Skill type="寒冰之盾" level="0" unlock="10"  />
     </Card>
     <Card id="2572" name="灿日娇阳" wikiId="" race="森林" speed="2" star="5" cost="19" incrCost="2" at="495" hp="1495" incrAT="40" incrHP="27">
-        <Skill type="海滨危机" level="10" unlock="0" />
+        <Skill type="海滨危机" level="0" unlock="0" />
         <Skill type="转生" level="8" unlock="5" />
         <Skill type="常夏日光" level="0" unlock="10"  summon="true"/>
+    </Card>
+    <Card id="2573" name="森林仙子" wikiId="" race="森林" speed="1" star="5" cost="14" incrCost="2" at="300" hp="1560" incrAT="40" incrHP="33">
+        <Skill type="森林的梦幻" level="0" unlock="0" />
+        <Skill type="守护" level="0" unlock="5" />
+        <Skill type="转生" level="6" unlock="10"  />
+    </Card>
+    <Card id="2574" name="纯白刀华" wikiId="" race="森林" speed="3" star="5" cost="16" incrCost="2" at="485" hp="1490" incrAT="35" incrHP="35">
+        <Skill type="直感" level="0" unlock="0" />
+        <Skill type="连击" level="0" unlock="5" />
+        <Skill type="一闪" level="0" unlock="10"  />
     </Card>
 
     <!-- 蛮荒  -->
@@ -2774,6 +2799,11 @@
         <Skill type="北海报恩" level="6" unlock="5" />
         <Skill type="神亭酣战" level="5" unlock="10"  />
     </Card>
+    <Card id="3578" name="机车少女" wikiId="" race="蛮荒" speed="3" star="5" cost="16" incrCost="2" at="455" hp="1230" incrAT="40" incrHP="39">
+        <Skill type="逃跑" level="0" unlock="0" />
+        <Skill type="全体加速" level="1" unlock="5" summon="true"/>
+        <Skill type="突突突" level="0" unlock="10"  />
+    </Card>
 
 
 
@@ -3656,6 +3686,16 @@
         <Skill type="铁壁" level="4" unlock="0" />
         <Skill type="邪灵汲取" level="7" unlock="5" />
         <Skill type="吸血" level="7" unlock="10" />
+    </Card>
+    <Card id="4579" name="四神之玄武" wikiId="" race="地狱" speed="4" star="5" cost="19" incrCost="2" at="300" hp="2000" incrAT="30" incrHP="30">
+        <Skill type="嘲讽" level="0" unlock="0" />
+        <Skill type="灵魂消散" level="0" unlock="5" death="true"/>
+        <Skill type="司命" level="0" unlock="10" />
+    </Card>
+    <Card id="4580" name="镰舞姬夜" wikiId="" race="地狱" speed="4" star="5" cost="17" incrCost="2" at="465" hp="1515" incrAT="35" incrHP="35">
+        <Skill type="鬼彻" level="0" unlock="0" />
+        <Skill type="凯撒之击" level="7" unlock="5" />
+        <Skill type="不屈" level="0" unlock="10" />
     </Card>
 
     <!-- 魔神 -->
