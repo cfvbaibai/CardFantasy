@@ -72,7 +72,7 @@ public final class Return {
         if (!defender.getStatus().containsStatus(CardStatusType.召唤)) {
             // 被召唤的卡牌不回到卡组，而是直接消失
             // 送还的卡是随机插入卡组而非加在末尾
-            int deckSize = defender.getOwner().getDeck().size();
+            //int deckSize = defender.getOwner().getDeck().size();
             int index = 0;
             //地裂的抽卡是有顺序的。
 //            if (deckSize > 0)
