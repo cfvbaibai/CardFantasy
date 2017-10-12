@@ -1817,10 +1817,14 @@ public class SkillResolver {
     // It is only set when the summoning skill performer is revived by another card.
     public void resolveSecondClassSummoningSkills(List<CardInfo> summonedCards, Field myField, Field opField, Skill summonSkill, boolean isSummoning) throws HeroDieSignal {
 //        if (summonSkill != null && summonSkill.getType() == SkillType.星云锁链) {
-//            // 木盒的特殊BUG，星云锁链召唤的卡无法发动第二阶降临技能
+//            // 木盒的特殊BUG，星云锁链召唤的卡无法发动第二阶降临技能//这个作废可以发动二段降临技能
 //            return;
 //        }
         for (CardInfo card : summonedCards) {
+            if(null==card)
+            {
+                continue;
+            }
             int position = card.getPosition();
             if (position < 0 || myField.getCard(position) == null) {
                 // Killed or returned by other summoning skills

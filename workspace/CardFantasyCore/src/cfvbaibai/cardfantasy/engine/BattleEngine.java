@@ -179,6 +179,9 @@ public class BattleEngine {
 
     private Phase summonCards() throws HeroDieSignal {
         Player player = this.getActivePlayer();
+        for (CardInfo card : this.getActivePlayer().getField().getAliveCards()) {
+            this.stage.getResolver().removeStatus(card, CardStatusType.复活);
+        }
         this.stage.getResolver().summonCards(player, null, false);
 
         player.getField().compact();
