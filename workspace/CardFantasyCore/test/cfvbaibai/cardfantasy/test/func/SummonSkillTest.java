@@ -439,7 +439,7 @@ public class SummonSkillTest extends SkillValidationTest {
         CardInfo c占位符1 = context.addToHand(0, 0).setSummonDelay(0);
         CardInfo c占位符2 = context.addToDeck(1, 0);
         CardInfo c占位符3 = context.addToDeck(2, 0);
-        CardInfo c占位符4 = context.addToGrave(3, 0);
+        context.addToGrave(3, 0);
         context.addToField(4, 1);
         context.getEngine().getStage().getRule().setDeckOrder(1);
         context.startGame();

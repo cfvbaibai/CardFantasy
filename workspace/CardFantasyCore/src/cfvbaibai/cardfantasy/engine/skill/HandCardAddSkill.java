@@ -24,9 +24,9 @@ public class HandCardAddSkill {
         List<CardInfo> allHandCards = card.getOwner().getHand().toList();
         CardInfo oneCard = null;
         CardInfo twoCard = null;
-        List<CardInfo> addCard=new ArrayList<CardInfo>();
+        List<CardInfo> addCard = new ArrayList<CardInfo>();
         for (CardInfo ally : allHandCards) {
-            if (oneCard != null){
+            if (oneCard != null) {
                 if (ally.getSummonDelay() < oneCard.getSummonDelay()) {
                     twoCard = oneCard;
                     oneCard = ally;
