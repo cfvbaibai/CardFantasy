@@ -28,9 +28,11 @@ public enum SkillType {
     群攻提升("31754", 15, SkillTag.基础攻击加成, SkillTag.抗削弱),
     狂热("30880", 10, SkillTag.永久, SkillTag.基础攻击加成),
     亮银("", 220, 0, SkillTag.永久, SkillTag.基础攻击加成),
+    拔刀术("", 600, 0, SkillTag.永久, SkillTag.基础攻击加成),
     嗜血("30940", 10, SkillTag.永久, SkillTag.基础攻击加成),
     透支("30946", 20, SkillTag.永久, SkillTag.基础攻击加成),
     过载("30946", 20, 30, SkillTag.永久, SkillTag.基础攻击加成),
+    修罗道("", 1600, 0,600,0, SkillTag.永久, SkillTag.基础攻击加成),
     贪吃("",100, 20, SkillTag.永久, SkillTag.基础攻击加成),
     邪灵汲取("43445", 0, 3, SkillTag.抗免疫, SkillTag.永久, SkillTag.基础攻击加成, SkillTag.抗不屈),
     森林之力("31121", 25, SkillTag.基础攻击加成, SkillTag.抗削弱),
@@ -50,6 +52,7 @@ public enum SkillType {
     穷追猛打("30958", 15, SkillTag.额外攻击加成),
     战意("31125", 15, SkillTag.额外攻击加成),
     鬼王之怒("", 135, 0, SkillTag.额外攻击加成),
+    正义追击("", 75, 0, SkillTag.额外攻击加成),
     连锁攻击("30934", 0, 25, SkillTag.额外攻击加成, SkillTag.抗免疫, SkillTag.物理攻击),
     趁胜追击("40090", 40, 10, SkillTag.独立攻击加成),
     背刺("30879", 40, SkillTag.独立攻击加成),
@@ -75,7 +78,7 @@ public enum SkillType {
     森林守护("31122", 50,SkillTag.抗毒刃),
     本源守护("30936", 40,SkillTag.抗毒刃),
     神圣守护("31123", 50,SkillTag.抗毒刃),
-    生命符文("31123", 5,SkillTag.抗毒刃),
+    生命符文("", 5,SkillTag.抗毒刃),
     坚壁("",10,SkillTag.抗毒刃),
 
     落雷("31132", 25, SkillTag.魔法),
@@ -105,6 +108,7 @@ public enum SkillType {
     火烧连营("", 150, 0, 60, 0, SkillTag.魔法),
     化学风暴("", 700, 0, 50, 0, SkillTag.魔法),
     凤鸣("",500,0,SkillTag.魔法),
+    淬毒手里剑("", 300, 0, 150, 0, SkillTag.魔法),
 
 
     狙击("", 0, 0, new int[] { 0, 25, 50, 75, 100, 125, 150, 175, 200, 225, 250 }, SkillTag.抗免疫, SkillTag.狙击),
@@ -206,6 +210,7 @@ public enum SkillType {
     金属装甲("", 10),
     冰神附体("", 140, 0, SkillTag.物理护甲),
     水流护甲("", 650, -50, 0, 50),
+    传承黯影("", 200, 0, 400, 0),
     真夏通雨("",400,0,1000,0),
     骑士守护("", 0, SkillTag.不可洗炼),
     骑士荣耀("",0,SkillTag.不可洗炼,SkillTag.不动),
@@ -254,6 +259,7 @@ public enum SkillType {
     无尽华尔兹("", 0),
     精神污染("", 10),
     圣洁魅惑("", 0),
+    学园骚乱("", 0),
     无我境界("", 70, 0, SkillTag.控制, SkillTag.魔王无效),
 
     连续魔法("", 10),
@@ -314,7 +320,9 @@ public enum SkillType {
     法力风暴("", 0, 20, 3, 0, SkillTag.抗免疫),
     魔法毁灭("", 100, 0, 10, 0, SkillTag.抗免疫),
     赤之魔枪("", 200, 50, 3, 0, SkillTag.抗免疫),
+    全垒打("", 200, 0, 8, 0, SkillTag.抗免疫),
     寒冰触碰("", 250, 50, 3, 0, new int[] {50,50,50,50,50,50,50,50,50,50}, SkillTag.抗免疫),
+    魔力碎片("", 400, 0, 3, 0, new int[] {75,75,75,75,75,75,75,75,75,75}, SkillTag.抗免疫),
     雷霆一击("", 200, 50, 3, 0, new int[] {75,75,75,75,75,75,75,75,75,75}, SkillTag.抗免疫,SkillTag.魔法,SkillTag.雷系灵轰),
     雷公助我("", 450, 0, 3, 0, new int[] {75,75,75,75,75,75,75,75,75,75}, SkillTag.抗免疫,SkillTag.魔法,SkillTag.雷系灵轰),
     雷霆之怒("", 200, 50, 3, 0, new int[] {75,75,75,75,75,75,75,75,75,75}, SkillTag.抗免疫,SkillTag.魔法,SkillTag.雷系灵轰),
@@ -332,13 +340,16 @@ public enum SkillType {
     不屈("56962", 0, 0),
     空城("",0,0),
     时光倒流("80196", 0, 0, SkillTag.抗免疫, SkillTag.魔王无效, SkillTag.魔族天赋),
-    时间溯行("80196", 0, 0, SkillTag.即死, SkillTag.魔王无效, SkillTag.魔族天赋),
+    时间溯行("", 0, 0, SkillTag.即死, SkillTag.魔王无效, SkillTag.魔族天赋),
+    决胜时刻("", 0, 0, SkillTag.即死, SkillTag.魔王无效, SkillTag.魔族天赋),
     死亡印记("56754", 0, 50, SkillTag.魔王无效),
-    武形印记("", 0, 200),
+    武形印记("", 0, 200,SkillTag.魔王无效),
+    霜火炸弹("", 0, 200,SkillTag.魔王无效),
     闪光弹("", 5, 1),
     致盲("", 1, 1),
     魔力法阵("", 15),
     魔力印记("", 20),
+    酩酊("",155,0),
     东风("",175,0),
 
     燕返("", 0, 0),
@@ -397,6 +408,7 @@ public enum SkillType {
     圣堂召唤("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
     圣德同伴("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
     森林的梦幻("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
+    育龙者("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
 
 
     圣光洗礼("", 0, 0, SkillTag.抗免疫, SkillTag.不可洗炼, SkillTag.魔王无效, SkillTag.魔族天赋),
@@ -438,6 +450,7 @@ public enum SkillType {
     //合并技能中单个技能
     天崩地裂("",0,SkillTag.即死),
     地裂("",0,SkillTag.即死),
+    三振出局("",0,SkillTag.即死),
     合纵连横("",0,SkillTag.即死),
 
     // Merged Skills
@@ -470,6 +483,7 @@ public enum SkillType {
     北海报恩("", 70,0, SkillTag.基础攻击加成,SkillTag.抗削弱,SkillTag.召唤),
     神亭酣战("",SkillType.吸血,8,SkillType.钢铁之肤,8),
     雀之引("",1,0,SkillTag.不动),
+    公平竞争("",2500,0),
 
 
 
@@ -486,15 +500,28 @@ public enum SkillType {
     剑舞("",SkillType.神兵召唤,0,null,0),
     厄运枪("",SkillType.厄运枪狙击,0,null,0),
 
+    //攻击对方全体
+    一文字("", 0),
+
     //手牌添加技能
     王佐之才("",SkillType.镜面,0,null,0),
     愈音("",SkillType.治愈音符,0,null,0),
 
+    //给手牌添加buff
+    偷偷削弱("", -50,0),
+
     //自身和前置位添加技能
     月神的恩泽("",SkillType.无刀取,0,null,0),
 
+    //给自身场上所有卡牌添加技能
+    致命晶莹("",SkillType.霜火炸弹,0,null,0),
+
+    //给自身场上所有卡牌添加技能除自己以外
+    隐遁之术("",SkillType.无刀取,0,null,0),
+
     //给对手手牌添加技能
     突突突("",SkillType.炼金失败,0,null,0),
+    新卡作成("",SkillType.炼金失败,0,null,0),
     // To Do
 
     // 以下全部技能皆为待更新的空技能，请在更新之后将其移动到上面适合的位置

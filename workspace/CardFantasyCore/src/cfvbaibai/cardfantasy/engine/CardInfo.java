@@ -310,6 +310,26 @@ public class CardInfo extends EntityInfo {
         this.setDeadOnce(false);
     }
 
+    public void resetStart() {
+        this.hp = this.card.getMaxHP();
+        this.status = new CardStatus();
+        List<SkillEffect> addEffect = new ArrayList<SkillEffect>();
+        for(SkillType key : this.effects.keySet())
+        {
+            if(key== SkillType.拔刀术)
+            {
+                addEffect = this.effects.get(key);
+            }
+
+        }
+        this.effects.clear();
+        if(addEffect.size()!=0)
+        {
+            this.effects.put(SkillType.拔刀术,addEffect);
+        }
+        this.setDeadOnce(false);
+    }
+
     public void resetSummonDelay() {
         this.setSummonDelay(this.card.getSummonSpeed());
     }

@@ -18,7 +18,7 @@ public enum RuneData {
     秽土("30803", RuneClass.GROUND, 4, SkillType.转生, 4, 1, 5, Growth.RUNE, RuneActivator.myGrave(1, Race.SAVAGE)),
     玄石("", RuneClass.GROUND, 5, SkillType.全体加速, 2, 0, 5, Growth.RUNE, RuneActivator.fieldDiff(1)),
     狂战("", RuneClass.GROUND, 5, SkillType.穿刺, 6, 1, 5, Growth.RUNE, RuneActivator.myField(1, Race.SAVAGE)),
-    背水("", RuneClass.GROUND, 5, SkillType.燕返, 0, 0, 5, Growth.RUNE, RuneActivator.fieldDiff(0)),
+    背水("", RuneClass.GROUND, 5, SkillType.袈裟斩燕返, 0, 0, 5, Growth.RUNE, RuneActivator.fieldDiff(0)),
 
     霜冻("31466", RuneClass.WATER, 3, SkillType.冰弹, 3, 1, 1, Growth.RUNE, RuneActivator.myGrave(2, null)),
     寒潮("31400", RuneClass.WATER, 3, SkillType.霜冻新星, 1, 1, 1, Growth.RUNE, RuneActivator.myDeck(2, null)),
@@ -36,6 +36,7 @@ public enum RuneData {
     风暴("", RuneClass.WATER, 5, SkillType.法力风暴, 6, 1, 5, Growth.RUNE, RuneActivator.myField(1, Race.KINGDOM)),
     鹰眼("", RuneClass.WATER, 5, SkillType.弱点攻击, 0, 0, 5, Growth.RUNE, RuneActivator.myField(2, Race.KINGDOM)),
     止水("", RuneClass.WATER, 3, SkillType.水流护甲, 6, 1, 5, Growth.RUNE, RuneActivator.myHeroHP(40)),
+    明镜("", RuneClass.WATER, 5, SkillType.镜面, 0, 0, 5, Growth.RUNE, RuneActivator.myField(5, null)),
 
     闪电("31385", RuneClass.WIND, 3, SkillType.落雷, 3, 1, 1, Growth.RUNE, RuneActivator.enemyGrave(2, null)),
     雷云("31472", RuneClass.WIND, 3, SkillType.连环闪电, 1, 1, 1, Growth.RUNE, RuneActivator.myHeroHP(50)),
