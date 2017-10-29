@@ -36,6 +36,11 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2017-10-29: <x>欢笑，清风，波波</x><ul>
+                        <li>修复都市丽人先机镜像BUG</li>
+                        <li>添加卡牌【冰雪女王】，【莹丸香子兰】，【斩羽斑鸠】，【钻石王牌】，【酒馆老板】，【封印守望者】，【魔卡策划】，【松鼠精灵】，【暗影龙母】，【鬼半藏】</li>
+                        <li>添加符文【明镜】</li>
+                    </ul></li>
                     <li>2017-10-08: <x>欢笑，清风，波波</x><ul>
                         <li>修复逃跑铁壁，镜面不能正常移除的bug，感谢<x>灬淡蓝色de雪</x>的帮助</li>
                         <li>修改回魂，地裂机制</li>
