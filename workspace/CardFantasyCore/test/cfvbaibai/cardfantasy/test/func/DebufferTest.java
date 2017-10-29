@@ -169,7 +169,7 @@ public class DebufferTest extends SkillValidationTest {
         {
             expectedLife2 = 0;
         }
-        Assert.assertEquals(expectedLife2, c末日.getHP());
+        Assert.assertEquals(2010, c末日.getHP());
     }
 
     /**

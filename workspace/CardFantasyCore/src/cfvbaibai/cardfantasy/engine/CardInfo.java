@@ -314,11 +314,16 @@ public class CardInfo extends EntityInfo {
         this.hp = this.card.getMaxHP();
         this.status = new CardStatus();
         List<SkillEffect> addEffect = new ArrayList<SkillEffect>();
+        List<SkillEffect> addEffect2 = new ArrayList<SkillEffect>();
         for(SkillType key : this.effects.keySet())
         {
             if(key== SkillType.拔刀术)
             {
                 addEffect = this.effects.get(key);
+            }
+            if(key== SkillType.偷偷削弱)
+            {
+                addEffect2 = this.effects.get(key);
             }
 
         }
@@ -326,6 +331,10 @@ public class CardInfo extends EntityInfo {
         if(addEffect.size()!=0)
         {
             this.effects.put(SkillType.拔刀术,addEffect);
+        }
+        if(addEffect2.size()!=0)
+        {
+            this.effects.put(SkillType.偷偷削弱,addEffect2);
         }
         this.setDeadOnce(false);
     }
