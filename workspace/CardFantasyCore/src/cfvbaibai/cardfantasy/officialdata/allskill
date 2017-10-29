@@ -38274,7 +38274,7 @@
                 "DESCRIBE_NEW": "对敌方随机3个单位造成300加上150乘以敌方卡牌数的魔法伤害,同时减少卡牌所收到伤害值的最大生命值",
                 "LanchConditionValue": 0,
                 "Name": "淬毒手里剑",
-                "Type": "29_139",
+                "Type": 29,
                 "AffectType": 179,
                 "AffectValue": 3,
                 "AffectValue2": "300_150",
