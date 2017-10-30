@@ -50,7 +50,7 @@ public class BattleEngine {
      * This method will tag survivors with remaining HP in deck.
      *
      * @param playerIndex
-     * @param survivers
+     * @param survivors
      */
     public void importSurvivers(int playerIndex, List<CardInfo> survivors) {
         Player player = this.getStage().getPlayers().get(playerIndex);
@@ -501,6 +501,7 @@ public class BattleEngine {
                             break;
                         }
                     }
+                    break;
                 }
             }
         }

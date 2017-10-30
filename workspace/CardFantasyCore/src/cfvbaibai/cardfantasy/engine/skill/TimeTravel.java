@@ -15,7 +15,7 @@ import cfvbaibai.cardfantasy.engine.SkillUseInfo;
 public class TimeTravel {
     public static void apply(SkillUseInfo skillUseInfo, SkillResolver resolver, Player myHero, Player opHero) throws HeroDieSignal {
         GameUI ui = resolver.getStage().getUI();
-        CardInfo caster = (CardInfo)skillUseInfo.getOwner();
+        CardInfo caster = (CardInfo) skillUseInfo.getOwner();
         List<CardInfo> victims = new ArrayList<CardInfo>();
         victims.addAll(myHero.getField().getAliveCards());
         victims.addAll(opHero.getField().getAliveCards());
@@ -27,33 +27,39 @@ public class TimeTravel {
         applyToPlayer(myHero, skillUseInfo, resolver);
         applyToPlayer(opHero, skillUseInfo, resolver);
     }
-    
+
     private static void applyToPlayer(Player player, SkillUseInfo skillUseInfo, SkillResolver resolver) throws HeroDieSignal {
         GameUI ui = resolver.getStage().getUI();
-        CardInfo caster = (CardInfo)skillUseInfo.getOwner();
+        boolean flag = false;
+        CardInfo caster = (CardInfo) skillUseInfo.getOwner();
+        if (skillUseInfo.getSkill().getType() == SkillType.决胜时刻) {
+            flag = true;
+        }
         for (CardInfo card : player.getField().getAliveCards()) {
+            if (flag && card == caster) {
+                continue;
+            }
             if (card != caster) {
-                if (resolver.resolveAttackBlockingSkills(caster, card, skillUseInfo.getSkill(), 0).isAttackable()) {
-                    //移除附加的第四技能
-                    resolver.resolveLeaveSkills(card);
-                    if (card.containsAllSkill(SkillType.铁壁)||card.containsAllSkill(SkillType.驱虎吞狼)) {
-                        for (SkillUseInfo defenderskill : card.getAllUsableSkills()) {
-                            if (defenderskill.getType() == SkillType.铁壁) {
-                                ImpregnableDefenseHeroBuff.remove(resolver, defenderskill, card);
-                            }
-                            if (defenderskill.getType() == SkillType.驱虎吞狼)
-                            {
-                                ImpregnableDefenseHeroBuff.remove(resolver, defenderskill.getAttachedUseInfo2(), card);
-                            }
+            if (resolver.resolveAttackBlockingSkills(caster, card, skillUseInfo.getSkill(), 0).isAttackable()) {
+                //移除附加的第四技能
+                resolver.resolveLeaveSkills(card);
+                if (card.containsAllSkill(SkillType.铁壁) || card.containsAllSkill(SkillType.驱虎吞狼)) {
+                    for (SkillUseInfo defenderskill : card.getAllUsableSkills()) {
+                        if (defenderskill.getType() == SkillType.铁壁) {
+                            ImpregnableDefenseHeroBuff.remove(resolver, defenderskill, card);
+                        }
+                        if (defenderskill.getType() == SkillType.驱虎吞狼) {
+                            ImpregnableDefenseHeroBuff.remove(resolver, defenderskill.getAttachedUseInfo2(), card);
                         }
                     }
-
-                    ui.returnCard(caster, card, skillUseInfo.getSkill());
-                    if (!card.getStatus().containsStatus(CardStatusType.召唤)) {
-                        player.getDeck().addCard(card);
-                    }
-                    player.getField().removeCard(card);
                 }
+
+                ui.returnCard(caster, card, skillUseInfo.getSkill());
+                if (!card.getStatus().containsStatus(CardStatusType.召唤)) {
+                    player.getDeck().addCard(card);
+                }
+                player.getField().removeCard(card);
+            }
             }
         }
         for (CardInfo card : player.getHand().toList()) {
