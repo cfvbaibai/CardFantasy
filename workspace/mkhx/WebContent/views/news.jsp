@@ -36,6 +36,9 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2017-10-30: <x>欢笑，清风，波波</x><ul>
+                        <li>修复横扫类技能叠加冲突的BUG，修复技能【决胜时刻】BUG</li>
+                    </ul></li>
                     <li>2017-10-29: <x>欢笑，清风，波波</x><ul>
                         <li>修复都市丽人先机镜像BUG</li>
                         <li>添加卡牌【冰雪女王】，【莹丸香子兰】，【斩羽斑鸠】，【钻石王牌】，【酒馆老板】，【封印守望者】，【魔卡策划】，【松鼠精灵】，【暗影龙母】，【鬼半藏】</li>
