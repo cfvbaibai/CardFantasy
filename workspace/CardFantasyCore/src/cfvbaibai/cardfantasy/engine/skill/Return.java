@@ -42,6 +42,7 @@ public final class Return {
                 index = Randomizer.getRandomizer().next(0, deckSize);
             }
             defender.getOwner().getDeck().insertCardToPosition(defender, index);
+            defender.reset();
         }
         resolver.resolveLeaveSkills(defender);
         if(defender.containsAllSkill(SkillType.铁壁)||defender.containsAllSkill(SkillType.驱虎吞狼))
@@ -80,6 +81,7 @@ public final class Return {
 //                index = Randomizer.getRandomizer().next(0, deckSize);
 //            }
             defender.getOwner().getDeck().insertCardToPosition(defender, index);
+            defender.reset();
         }
         resolver.resolveLeaveSkills(defender);
         if(defender.containsAllSkill(SkillType.铁壁)||defender.containsAllSkill(SkillType.驱虎吞狼))

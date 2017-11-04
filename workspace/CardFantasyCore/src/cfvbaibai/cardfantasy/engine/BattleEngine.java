@@ -509,10 +509,11 @@ public class BattleEngine {
             for (SkillUseInfo skillUseInfo : myField.getCard(i).getUsableNormalSkills()) {
                 if (skillUseInfo.getType() == SkillType.一文字) {
                     for (CardInfo sweepDefender : opField.getAliveCards()) {
-                        if(sweepDefender == opField.getCard(i))
-                        {
-                            continue;
-                        }
+                        //一文字可以攻击自己。
+//                        if(sweepDefender == opField.getCard(i))
+//                        {
+//                            continue;
+//                        }
                         ui.useSkill(myField.getCard(i), sweepDefender, skillUseInfo.getSkill(), true);
                         resolver.attackCard(myField.getCard(i), sweepDefender, skillUseInfo, damagedResult.originalDamage);
                         if (myField.getCard(i) == null ||myField.getCard(i).isDead()) {

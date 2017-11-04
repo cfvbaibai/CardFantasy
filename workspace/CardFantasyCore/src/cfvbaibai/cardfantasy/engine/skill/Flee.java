@@ -54,10 +54,12 @@ public final class Flee {
         if (hand.isFull()) {
             ui.cardToDeck(defender.getOwner(), defender);
             defender.getOwner().getDeck().addCard(defender);
+            defender.reset();
         } else {
             ui.returnCard(attacker, defender, cardSkill);
             ui.cardToHand(defender.getOwner(), defender);
             hand.addCard(defender);
+            defender.reset();
         }
     }
 }
