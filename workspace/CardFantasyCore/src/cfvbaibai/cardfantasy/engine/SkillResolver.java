@@ -98,6 +98,8 @@ public class SkillResolver {
             for (SkillUseInfo skillUseInfo : card.getUsableNormalSkills()) {
                 if (skillUseInfo.getType() == SkillType.神性祈求) {
                     Purify.apply(skillUseInfo, this, card, -1);
+                } else if (skillUseInfo.getType() == SkillType.净化领域) {
+                    Purify.apply(skillUseInfo, this, card, -1);
                 } else if (skillUseInfo.getType() == SkillType.净魂领域) {
                     Purify.apply(skillUseInfo, this, card, -2);
                 } else if (skillUseInfo.getType() == SkillType.月神的恩泽) {

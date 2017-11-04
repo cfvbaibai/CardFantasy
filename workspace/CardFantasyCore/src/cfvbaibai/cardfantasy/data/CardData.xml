@@ -3414,10 +3414,10 @@
         <Skill type="弱点攻击" level="0" unlock="5" />
         <Skill type="武形秘术" level="0" unlock="10" />
     </Card>
-    <Card id="4514" name="圆月魔女" wikiId="62845" race="地狱" speed="4" star="5" cost="16" incrCost="2" at="310" hp="1390" incrAT="33" incrHP="40">
-        <Skill type="法力侵蚀" level="8" unlock="0" />
-        <Skill type="不动" level="0" unlock="5" />
-        <Skill type="神性祈求" level="0" unlock="10" />
+    <Card id="4514" name="圆月魔女" wikiId="62845" race="地狱" speed="2" star="5" cost="16" incrCost="2" at="450" hp="1510" incrAT="40" incrHP="35">
+        <Skill type="灵王的轰击" level="8" unlock="0" />
+        <Skill type="镜像" level="0" unlock="5" death="true"/>
+        <Skill type="净化领域" level="0" unlock="10" />
     </Card>
     <Card id="4516" name="逐月恶狼" wikiId="80144" race="地狱" speed="4" star="5" cost="16" incrCost="2" at="345" hp="1290" incrAT="42" incrHP="38">
         <Skill type="吸血" level="6" unlock="0" />
@@ -3742,7 +3742,7 @@
         <Skill type="歃血魔咒" level="6" unlock="5" />
         <Skill type="育龙者" level="0" unlock="10" />
     </Card>
-    <Card id="4583" name="鬼半藏" wikiId="" race="地狱" speed="2" star="5" cost="18" incrCost="2" at="490" hp="1610" incrAT="42" incrHP="30">
+    <Card id="4583" name="鬼半藏" wikiId="" race="地狱" speed="1" star="5" cost="18" incrCost="2" at="490" hp="1610" incrAT="42" incrHP="30">
         <Skill type="逃跑" level="0" unlock="0" />
         <Skill type="隐遁之术" level="0" unlock="5" />
         <Skill type="淬毒手里剑" level="0" unlock="10" />

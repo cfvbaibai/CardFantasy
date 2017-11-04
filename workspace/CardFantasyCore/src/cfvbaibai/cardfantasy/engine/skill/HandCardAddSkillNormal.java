@@ -21,7 +21,21 @@ public class HandCardAddSkillNormal {
         List<CardInfo> allHandCards = card.getOwner().getHand().toList();
         List<CardInfo> addCard=new ArrayList<CardInfo>();
         List<CardInfo> revivableCards = new ArrayList<CardInfo>();
+        boolean flag = true;
         for (CardInfo handCard : allHandCards) {
+            for(SkillUseInfo skillInfo:handCard.getSkillUserInfos())
+            {
+                if(skillInfo.getSkill().getGiveSkill()==1)
+                {
+                    flag=false;
+                    break;
+                }
+            }
+            if(!flag)
+            {
+                flag =true;
+                continue;
+            }
             if (handCard != null && !handCard.containsAllSkill(addSkill.getType())) {
                 revivableCards.add(handCard);
             }
