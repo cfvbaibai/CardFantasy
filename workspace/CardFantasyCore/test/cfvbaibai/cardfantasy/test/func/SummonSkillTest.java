@@ -433,25 +433,26 @@ public class SummonSkillTest extends SkillValidationTest {
 
     @Test
     public void test星云锁链_降临复活() {
+        //修改星云锁链的降临复活会在生效。
         SkillTestContext context = prepare(
                 50, 50, "占位符+星云锁链", "占位符", "占位符+降临复活", "占位符", "占位符");
         CardInfo c占位符1 = context.addToHand(0, 0).setSummonDelay(0);
         CardInfo c占位符2 = context.addToDeck(1, 0);
         CardInfo c占位符3 = context.addToDeck(2, 0);
-        CardInfo c占位符4 = context.addToGrave(3, 0);
+        context.addToGrave(3, 0);
         context.addToField(4, 1);
         context.getEngine().getStage().getRule().setDeckOrder(1);
         context.startGame();
 
         context.proceedOneRound();
         Player p1 = c占位符1.getOwner();
-        Assert.assertEquals(2, p1.getField().size());
+        Assert.assertEquals(3, p1.getField().size());
         Assert.assertSame(c占位符1, p1.getField().getCard(0));
         Assert.assertSame(c占位符3, p1.getField().getCard(1));
         Assert.assertEquals(1, p1.getHand().size());
         Assert.assertSame(c占位符2, p1.getHand().getCard(0));
-        Assert.assertEquals(1, p1.getGrave().size());
-        Assert.assertSame(c占位符4, p1.getGrave().getFirst());
+        Assert.assertEquals(0, p1.getGrave().size());
+        Assert.assertSame(null, p1.getGrave().getFirst());
     }
 
     @Test

@@ -310,6 +310,35 @@ public class CardInfo extends EntityInfo {
         this.setDeadOnce(false);
     }
 
+    public void resetStart() {
+        this.hp = this.card.getMaxHP();
+        this.status = new CardStatus();
+        List<SkillEffect> addEffect = new ArrayList<SkillEffect>();
+        List<SkillEffect> addEffect2 = new ArrayList<SkillEffect>();
+        for(SkillType key : this.effects.keySet())
+        {
+            if(key== SkillType.拔刀术)
+            {
+                addEffect = this.effects.get(key);
+            }
+            if(key== SkillType.偷偷削弱)
+            {
+                addEffect2 = this.effects.get(key);
+            }
+
+        }
+        this.effects.clear();
+        if(addEffect.size()!=0)
+        {
+            this.effects.put(SkillType.拔刀术,addEffect);
+        }
+        if(addEffect2.size()!=0)
+        {
+            this.effects.put(SkillType.偷偷削弱,addEffect2);
+        }
+        this.setDeadOnce(false);
+    }
+
     public void resetSummonDelay() {
         this.setSummonDelay(this.card.getSummonSpeed());
     }
@@ -737,7 +766,7 @@ public class CardInfo extends EntityInfo {
         this.eternalWound += this.getMaxHP() - remainingHP;
     }
 
-    public boolean isAwaken(SkillUseInfo skillUseInfo, Race race) {
+    public boolean isAwaken(SkillUseInfo skillUseInfo, Race race,int count) {
         if (this.isDead()) {
             return false;
         }
@@ -749,9 +778,12 @@ public class CardInfo extends EntityInfo {
         }
         List<CardInfo> aliveCards = this.getOwner().getField().getAliveCards();
         for (CardInfo aliveCard : aliveCards) {
-            if (aliveCards != this && aliveCard.getRace() == race) {
-                this.addEffect(new SkillEffect(SkillEffectType.SKILL_AWAKEN, skillUseInfo, 0, true));
-                return true;
+            if (aliveCard.getRace() == race) {
+                count = count-1;
+                if(count<1) {
+                    this.addEffect(new SkillEffect(SkillEffectType.SKILL_AWAKEN, skillUseInfo, 0, true));
+                    return true;
+                }
             }
         }
         return false;

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cfvbaibai.cardfantasy.GameUI;
+import cfvbaibai.cardfantasy.data.SkillType;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.CardStatusType;
 import cfvbaibai.cardfantasy.engine.HeroDieSignal;
@@ -28,6 +29,24 @@ public class TimeBack {
 
         applyToPlayer(myHero, skillUseInfo, resolver);
         applyToPlayer(opHero, skillUseInfo, resolver);
+        for(CardInfo card: victims) {
+            if(card.isBoss())
+            {
+                continue;
+            }
+            resolver.resolveLeaveSkills(card);
+            if (card.containsAllSkill(SkillType.铁壁)||card.containsAllSkill(SkillType.驱虎吞狼)) {
+                for (SkillUseInfo defenderskill : card.getAllUsableSkills()) {
+                    if (defenderskill.getType() == SkillType.铁壁) {
+                        ImpregnableDefenseHeroBuff.remove(resolver, defenderskill, card);
+                    }
+                    if (defenderskill.getType() == SkillType.驱虎吞狼)
+                    {
+                        ImpregnableDefenseHeroBuff.remove(resolver, defenderskill.getAttachedUseInfo2(), card);
+                    }
+                }
+            }
+        }
         resolver.getStage().setUsed(skillUseInfo, true);
     }
     

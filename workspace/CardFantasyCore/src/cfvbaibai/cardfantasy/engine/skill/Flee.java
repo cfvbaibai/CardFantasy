@@ -2,10 +2,8 @@ package cfvbaibai.cardfantasy.engine.skill;
 
 import cfvbaibai.cardfantasy.GameUI;
 import cfvbaibai.cardfantasy.data.Skill;
-import cfvbaibai.cardfantasy.engine.CardInfo;
-import cfvbaibai.cardfantasy.engine.Hand;
-import cfvbaibai.cardfantasy.engine.HeroDieSignal;
-import cfvbaibai.cardfantasy.engine.SkillResolver;
+import cfvbaibai.cardfantasy.data.SkillType;
+import cfvbaibai.cardfantasy.engine.*;
 
 public final class Flee {
     public static void apply(Skill cardSkill, SkillResolver resolver, CardInfo attacker, CardInfo defender,
@@ -29,6 +27,23 @@ public final class Flee {
         // 如果没被物理攻击直接秒杀，需要从场上把卡牌去除
         // defender.getOwner().getField().removeCard(defender); BUG! 不能用removeCard，那样会使场上的卡重排，战斗中不该重排
         defender.getOwner().getField().expelCard(defender.getPosition());
+
+        //逃跑卡牌会移除4技能的buff和铁壁效果。
+        resolver.resolveLeaveSkills(defender);
+        if(defender.containsAllSkill(SkillType.铁壁)||defender.containsAllSkill(SkillType.驱虎吞狼))
+        {
+            for(SkillUseInfo defenderskill:defender.getAllUsableSkills())
+            {
+                if (defenderskill.getType() == SkillType.铁壁)
+                {
+                    ImpregnableDefenseHeroBuff.remove(resolver, defenderskill, defender);
+                }
+                if (defenderskill.getType() == SkillType.驱虎吞狼)
+                {
+                    ImpregnableDefenseHeroBuff.remove(resolver, defenderskill.getAttachedUseInfo2(), defender);
+                }
+            }
+        }
         
         // 如果是被召唤的卡牌，发动逃跑技能后应该直接消失
         if (defender.isSummonedMinion()) {
@@ -39,10 +54,12 @@ public final class Flee {
         if (hand.isFull()) {
             ui.cardToDeck(defender.getOwner(), defender);
             defender.getOwner().getDeck().addCard(defender);
+            defender.reset();
         } else {
             ui.returnCard(attacker, defender, cardSkill);
             ui.cardToHand(defender.getOwner(), defender);
             hand.addCard(defender);
+            defender.reset();
         }
     }
 }
