@@ -65,6 +65,8 @@ public enum SkillType {
     觉醒神兵召唤("", 0, SkillTag.额外攻击加成, SkillTag.不可洗炼),
     厨具召唤("", 0, SkillTag.额外攻击加成),
     圣器召唤("", 0, SkillTag.额外攻击加成),
+    极寒裂伤("", 0, SkillTag.额外攻击加成),
+    陨星攻击("", 0, SkillTag.额外攻击加成),
 
     虚弱("57000", 0, SkillTag.额外攻击加成, SkillTag.抗免疫, SkillTag.抗不屈, SkillTag.魔王无效, SkillTag.魔族天赋),
     战争怒吼("57022", 0, SkillTag.额外攻击加成, SkillTag.抗免疫, SkillTag.抗不屈, SkillTag.魔王无效, SkillTag.魔族天赋),
@@ -158,6 +160,7 @@ public enum SkillType {
     龙胆("", 100, 0, SkillTag.物理护甲),
     鬼彻("", 70, 0, SkillTag.抗免疫, SkillTag.物理攻击),
     连击("", 0, SkillTag.物理攻击),
+    敏捷("",new int[] { 0,25, 35, 45, 50, 60, 70, 75, 80, 90, 100 }, SkillTag.物理护甲),
 
     治疗("30974", 25),
     甘霖("30930", 25),
@@ -170,7 +173,8 @@ public enum SkillType {
     圣母咏叹调("", 99999, 99999,SkillTag.抗沉默),
     月神的护佑("", new int[] { 8, 10, 13, 15, 18, 20, 23, 25, 28, 30, 35 }),
     月神的触碰("", new int[] { 8, 10, 13, 15, 18, 20, 23, 25, 28, 30, 35 }),
-    月之守望("", new int[] { 23, 23, 23, 23, 23, 20, 23, 23, 23, 23, 23 }),
+    月之守望("", new int[] { 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23 }),
+    紫气东来("", new int[] { 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20 }),
 
 
     法力反射("30929", 30),
@@ -319,6 +323,7 @@ public enum SkillType {
     灵王的轰击("", 250, 50, 3, 0, SkillTag.抗免疫),
     觉醒灵王的轰击("", 250, 50, 3, 0, SkillTag.不可洗炼, SkillTag.抗免疫),
     法力风暴("", 0, 20, 3, 0, SkillTag.抗免疫),
+    片翼天使("", 300, 0, 6, 0, SkillTag.抗免疫),
     魔法毁灭("", 100, 0, 10, 0, SkillTag.抗免疫),
     赤之魔枪("", 200, 50, 3, 0, SkillTag.抗免疫),
     全垒打("", 200, 0, 8, 0, SkillTag.抗免疫),
@@ -410,6 +415,10 @@ public enum SkillType {
     圣德同伴("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
     森林的梦幻("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
     育龙者("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
+    召唤小黑("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
+    三国英才("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
+    三国武魂("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
+    繁星("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
 
 
     圣光洗礼("", 0, 0, SkillTag.抗免疫, SkillTag.不可洗炼, SkillTag.魔王无效, SkillTag.魔族天赋),
@@ -475,6 +484,7 @@ public enum SkillType {
     枪林弹雨("",SkillType.骤雨,5,SkillType.左轮射击,1),
     业火("",SkillType.凤鸣,0,SkillType.凤火,0),
     魔龙吐息("",SkillType.凤鸣,0,SkillType.凤火,0),
+    天照("",SkillType.修罗地火攻,9,SkillType.烈火焚神,9),
     觉醒天崩地裂("", SkillType.天崩地裂,0,SkillType.灵王的轰击,4),
     连营("",SkillType.召唤炮灰,0,SkillType.魔力法阵,5,SkillTag.召唤),
     觉醒风之祈愿("",SkillType.号角,1,SkillType.祈愿,1),
@@ -485,20 +495,26 @@ public enum SkillType {
     神亭酣战("",SkillType.吸血,8,SkillType.钢铁之肤,8),
     雀之引("",1,0,SkillTag.不动),
     公平竞争("",2500,0),
+    王牌飞刀("", 0,SkillTag.额外攻击加成, SkillTag.控制),
+    分解反应("",SkillType.摧毁,0,SkillType.全体阻碍,1),
+    王母挥袂("", 14, 0,SkillTag.抗沉默),
+    灵击("", 60,0, SkillTag.额外攻击加成,SkillTag.抗免疫, SkillTag.物理攻击),
 
 
 
     新生("",0,0,SkillTag.新生),
 
-    司命("",0),
+    司命("",100,0),
+    不灭定律("",50,0),
 
-    //两侧卡牌添加技能
+    //两侧卡牌以及自身添加技能
     西凉铁骑("",SkillType.破军,5,null,0),
     袈裟斩("",SkillType.袈裟斩燕返,0,null,0),
     致命打击("",SkillType.精准打击,9,null,0),
     爱心料理("",SkillType.圣母吟咏,7,null,0),
     仁德之君("",SkillType.圣母吟咏,5,null,0,SkillTag.守护),
     剑舞("",SkillType.神兵召唤,0,null,0),
+    陨星("",SkillType.陨星攻击,0,null,0),
     厄运枪("",SkillType.厄运枪狙击,0,null,0),
 
     //攻击对方全体
@@ -513,6 +529,11 @@ public enum SkillType {
 
     //自身和前置位添加技能
     月神的恩泽("",SkillType.无刀取,0,null,0),
+
+    //给两侧卡牌添加技能
+    水榭桃盈("",SkillType.水流护甲,9,null,0),
+    铁舞天衣("",SkillType.钢铁之肤,8,null,0),
+
 
     //给自身场上所有卡牌添加技能
     致命晶莹("",SkillType.霜火炸弹,0,null,0),

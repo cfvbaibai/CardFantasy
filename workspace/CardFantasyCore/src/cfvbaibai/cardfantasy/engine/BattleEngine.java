@@ -438,7 +438,10 @@ public class BattleEngine {
         }
         for (SkillUseInfo skillUseInfo : myField.getCard(i).getUsableNormalSkills()) {
             if (skillUseInfo.getType() == SkillType.横扫 ||
-                    skillUseInfo.getType() == SkillType.三千世界 || skillUseInfo.getType() == SkillType.鬼彻 || skillUseInfo.getType() == SkillType.毒杀) {
+                    skillUseInfo.getType() == SkillType.灵击 ||
+                    skillUseInfo.getType() == SkillType.三千世界 ||
+                    skillUseInfo.getType() == SkillType.鬼彻 ||
+                    skillUseInfo.getType() == SkillType.毒杀) {
                 ui.useSkill(myField.getCard(i), defender, skillUseInfo.getSkill(), true);
             }
             else if (skillUseInfo.getType() == SkillType.一文字) {
@@ -466,7 +469,10 @@ public class BattleEngine {
         if (damagedResult != null && damagedResult.originalDamage > 0 && myField.getCard(i) != null&&attackflag) {
             for (SkillUseInfo skillUseInfo : myField.getCard(i).getUsableNormalSkills()) {
                 if (skillUseInfo.getType() == SkillType.横扫 ||
-                        skillUseInfo.getType() == SkillType.三千世界 || skillUseInfo.getType() == SkillType.鬼彻 || skillUseInfo.getType() == SkillType.毒杀) {
+                        skillUseInfo.getType() == SkillType.三千世界 ||
+                        skillUseInfo.getType() == SkillType.鬼彻 ||
+                        skillUseInfo.getType() == SkillType.灵击 ||
+                        skillUseInfo.getType() == SkillType.毒杀) {
                     List<CardInfo> sweepDefenders = new ArrayList<CardInfo>();
                     if (i > 0 && opField.getCard(i - 1) != null) {
                         sweepDefenders.add(opField.getCard(i - 1));

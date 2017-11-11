@@ -11,6 +11,12 @@
                             <td>
                                 <select name="dungeons-id" id="dungeons-id" class="dungeons-select" data-mini="true" data-native-menu="true">
                                     <optgroup label="地下城">
+                                        <option value="d-11">十二星座关90</option>
+                                        <option value="d-12">免疫神风关90</option>
+                                        <option value="d-13">传送圣枪关90</option>
+                                        <option value="d-14">传送叹惋关90</option>
+                                        <option value="d-15">转生龙灵关90</option>
+                                        <option value="d-16">免疫森主关90</option>
                                         <option value="d-1">涅槃魅魔关</option>
                                         <option value="d-2">洪荒青龙关</option>
                                         <option value="d-3">不动朱雀关</option>
@@ -58,6 +64,16 @@
                                     <option value="0" selected="selected">不选择层数/地图</option>
                                     <option value="1">噩梦地图1图</option>
                                     <option value="2">噩梦地图2图</option>
+                                    <option value="90" >地下城90层</option>
+                                    <option value="91" >地下城91层</option>
+                                    <option value="92" >地下城92层</option>
+                                    <option value="93" >地下城93层</option>
+                                    <option value="94" >地下城94层</option>
+                                    <option value="95" >地下城95层</option>
+                                    <option value="96" >地下城96层</option>
+                                    <option value="97" >地下城97层</option>
+                                    <option value="98" >地下城98层</option>
+                                    <option value="99" >地下城99层</option>
                                     <option value="100" >地下城100层</option>
                                     <option value="101">地下城101层</option>
                                     <option value="102">地下城102层</option>

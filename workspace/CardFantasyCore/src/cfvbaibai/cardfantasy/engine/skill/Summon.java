@@ -18,7 +18,10 @@ public class Summon {
         }
         // 镜像不能再次发动镜像
         if (summoner.isSummonedMinion() && skillUseInfo.getType() == SkillType.镜像
-                || summoner.isSummonedMinion() && skillUseInfo.getType() == SkillType.镜魔 || summoner.isSummonedMinion() && skillUseInfo.getType() == SkillType.九转禁术|| summoner.isSummonedMinion() && skillUseInfo.getType() == SkillType.北海报恩) {
+                || summoner.isSummonedMinion() && skillUseInfo.getType() == SkillType.虚梦
+                || summoner.isSummonedMinion() && skillUseInfo.getType() == SkillType.镜魔
+                || summoner.isSummonedMinion() && skillUseInfo.getType() == SkillType.九转禁术
+                || summoner.isSummonedMinion() && skillUseInfo.getType() == SkillType.北海报恩) {
             for(CardStatusItem item : summoner.getStatus().getAllItems())
             {
                 if(item.getType()==CardStatusType.召唤){
@@ -95,7 +98,6 @@ public class Summon {
         }
         for (int i = 0; i < cardsToSummon.size(); ++i) {
             CardInfo summonedCard = cardsToSummon.get(i);
-            resolver.summonCard(summoner.getOwner(), summonedCard, summoner, true, skill);
             if (summonType != SummonType.Summoning && summonType != SummonType.RandomSummoning) {
                 CardStatusItem weakStatusItem = CardStatusItem.weak(skillUseInfo);
                 resolver.getStage().getUI().addCardStatus(summoner, summonedCard, skill, weakStatusItem);
@@ -104,6 +106,7 @@ public class Summon {
             CardStatusItem summonedStatusItem = CardStatusItem.summoned(skillUseInfo);
             resolver.getStage().getUI().addCardStatus(summoner, summonedCard, skill, summonedStatusItem);
             summonedCard.addStatus(summonedStatusItem);
+            resolver.summonCard(summoner.getOwner(), summonedCard, summoner, true, skill,1);
         }
     }
 }

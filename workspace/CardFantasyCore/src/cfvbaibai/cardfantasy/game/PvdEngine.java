@@ -29,6 +29,7 @@ public class PvdEngine extends GameEngine {
         if (map == null) {
             throw new CardFantasyRuntimeException("无法找到地图: " + mapId);
         }
+        rule.setCondition(map.getCondition());
         ui.showMessage("启动战斗引擎...");
         List<Skill> p1CardBuffs = new ArrayList<Skill>();
         if (p1CardAtBuff != 100) {
