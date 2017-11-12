@@ -9,9 +9,9 @@ import cfvbaibai.cardfantasy.engine.HeroDieSignal;
 
 public final class CounterBite {
     public static void apply(SkillUseInfo skillUseInfo, SkillResolver resolver, CardInfo card) throws HeroDieSignal {
-        if (card == null || card.isDead()) {
-            throw new CardFantasyRuntimeException("card is null or dead!");
-        }
+//        if (card == null || card.isDead()) {
+//            throw new CardFantasyRuntimeException("card is null or dead!");
+//        }
         if (card.hasUsed(skillUseInfo)) {
             return;
         }

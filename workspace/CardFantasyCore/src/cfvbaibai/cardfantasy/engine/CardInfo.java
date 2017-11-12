@@ -31,6 +31,7 @@ public class CardInfo extends EntityInfo {
     // Used to record the previous position after card dies.
     private int cachedPosition;
     private boolean deadOnce;
+    private boolean isSumon;
     
     private int eternalWound = 0;
 
@@ -51,6 +52,7 @@ public class CardInfo extends EntityInfo {
         }
         this.cachedPosition = -1;
         this.deadOnce = false;
+        this.isSumon = false;
     }
 
     public List<SkillUseInfo> getSkillUserInfos(){
@@ -808,4 +810,13 @@ public class CardInfo extends EntityInfo {
         }
         return status.get(0).getCause().getOwner();
     }
+
+    public boolean getIsSummon(){
+        return this.isSumon;
+    }
+
+    public void setIsSummon(boolean isSummon){
+        this.isSumon = isSummon;
+    }
+
 }

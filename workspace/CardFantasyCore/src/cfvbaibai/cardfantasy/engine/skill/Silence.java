@@ -5,19 +5,23 @@ import java.util.List;
 
 import cfvbaibai.cardfantasy.GameUI;
 import cfvbaibai.cardfantasy.data.Skill;
-import cfvbaibai.cardfantasy.engine.CardInfo;
-import cfvbaibai.cardfantasy.engine.CardStatusItem;
-import cfvbaibai.cardfantasy.engine.EntityInfo;
-import cfvbaibai.cardfantasy.engine.HeroDieSignal;
-import cfvbaibai.cardfantasy.engine.Player;
-import cfvbaibai.cardfantasy.engine.SkillResolver;
-import cfvbaibai.cardfantasy.engine.SkillUseInfo;
+import cfvbaibai.cardfantasy.data.SkillType;
+import cfvbaibai.cardfantasy.engine.*;
 
 public class Silence {
     public static void apply(SkillResolver resolver, SkillUseInfo skillUseInfo, EntityInfo caster, Player defenderHero, boolean isTargetAll, boolean onlyCastOnce) throws HeroDieSignal {
         if (onlyCastOnce) {
             if (resolver.getStage().hasUsed(skillUseInfo)) {
                 return;
+            }
+            if(caster instanceof CardInfo){
+                CardInfo sumCard = (CardInfo) caster;
+                if(sumCard.isSummonedMinion()) {
+                    SkillUseInfo sumSkillInfo = new SkillUseInfo(sumCard.getStatus().getStatusOf(CardStatusType.召唤).get(0).getCause().getOwner(), sumCard.getStatus().getStatusOf(CardStatusType.召唤).get(0).getCause().getSkill());
+                    if (resolver.getStage().hasUsed(sumSkillInfo)) {
+                        return;
+                    }
+                }
             }
         }
         List<CardInfo> victims = new ArrayList<CardInfo>();
@@ -43,6 +47,13 @@ public class Silence {
             victim.addStatus(statusItem);
         }
         if (onlyCastOnce) {
+            if(caster instanceof CardInfo){
+                CardInfo summoncard = (CardInfo) caster;
+                if(summoncard.isSummonedMinion()) {
+                    SkillUseInfo summonSkillInfo = new SkillUseInfo(summoncard.getStatus().getStatusOf(CardStatusType.召唤).get(0).getCause().getOwner(), summoncard.getStatus().getStatusOf(CardStatusType.召唤).get(0).getCause().getSkill());
+                    resolver.getStage().setUsed(summonSkillInfo, true);
+                }
+            }
             resolver.getStage().setUsed(skillUseInfo, true);
         }
     }

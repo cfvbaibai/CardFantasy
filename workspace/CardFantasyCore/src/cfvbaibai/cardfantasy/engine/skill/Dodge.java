@@ -13,15 +13,23 @@ import cfvbaibai.cardfantasy.engine.SkillUseInfo;
 
 public final class Dodge {
     public static boolean apply(Skill cardSkill, SkillResolver resolver, CardInfo attacker, CardInfo defender, int originalDamage) {
-        int dodgeRate = cardSkill.getImpact();
+        int dodgeRate = 0;
+        if(cardSkill.getType()==SkillType.敏捷)
+        {
+            dodgeRate = cardSkill.getImpact3();
+        }
+        else {
+            dodgeRate = cardSkill.getImpact();
+        }
         GameUI ui = resolver.getStage().getUI();
         boolean bingo = true;
         List<CardStatusItem> blindStatusItems = attacker.getStatus().getStatusOf(CardStatusType.致盲);
         // Two types of dodge: triggered by native dodge skill or blind status
         SkillUseInfo nativeDodgeSkillUseInfo = null;
         for (SkillUseInfo blockSkillUseInfo : defender.getUsableNormalSkills()) {
-            if (blockSkillUseInfo.getType() == SkillType.闪避 ||
-                blockSkillUseInfo.getType() == SkillType.龙胆) {
+            if (blockSkillUseInfo.getType() == SkillType.闪避 || blockSkillUseInfo.getType() == SkillType.直感
+                    || blockSkillUseInfo.getType() == SkillType.敏捷
+                    || blockSkillUseInfo.getType() == SkillType.龙胆) {
                 nativeDodgeSkillUseInfo = blockSkillUseInfo;
                 break;
             }

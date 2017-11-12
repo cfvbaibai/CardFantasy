@@ -6,6 +6,7 @@
             <h3>友情支持</h3>
             <div id="help">
                 <ul>
+                    <li><a href="http://mkhx.humphreyj.com/" target="_blank">魔卡幻想百科</a></li>
                     <li><a href="<c:url value="/Wiki/index.shtml" />" target="_blank">魔卡幻想WIKI</a>
                     <li><a href="http://tieba.baidu.com/f?kw=%C4%A7%BF%A8%BB%C3%CF%EB" target="_blank">魔卡幻想贴吧</a></li>
                     <li><a data-type="bug">魔卡幻想模拟器贴吧</a></li>

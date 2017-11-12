@@ -14,14 +14,19 @@ public final class Reborn {
             return ; // The card is unbending!
         }
         if (!player.getGrave().contains(card) && player.getField().contains(card)) {
-            // 不屈中，此时不发动转生
+            // 不屈中，此时不发动司命
             return ;
         }
+        int rate = cardSkill.getImpact();
+
         GameUI ui = resolver.getStage().getUI();
-        ui.useSkill(card, card, cardSkill, true);
+        boolean bingo = resolver.getStage().getRandomizer().roll100(rate);
+        ui.useSkill(card, card, cardSkill, bingo);
         ui.summonCard(player,card);
-        Grave grave = card.getOwner().getGrave();
-        grave.removeCard(card);
-        player.getField().addCard(card);
+        if(bingo) {
+            Grave grave = card.getOwner().getGrave();
+            grave.removeCard(card);
+            player.getField().addCard(card);
+        }
     }
 }
