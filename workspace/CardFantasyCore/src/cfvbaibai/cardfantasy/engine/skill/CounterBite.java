@@ -1,11 +1,10 @@
 package cfvbaibai.cardfantasy.engine.skill;
 
-import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
 import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.engine.CardInfo;
-import cfvbaibai.cardfantasy.engine.SkillUseInfo;
-import cfvbaibai.cardfantasy.engine.SkillResolver;
 import cfvbaibai.cardfantasy.engine.HeroDieSignal;
+import cfvbaibai.cardfantasy.engine.SkillResolver;
+import cfvbaibai.cardfantasy.engine.SkillUseInfo;
 
 public final class CounterBite {
     public static void apply(SkillUseInfo skillUseInfo, SkillResolver resolver, CardInfo card) throws HeroDieSignal {
