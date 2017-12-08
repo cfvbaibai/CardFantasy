@@ -20,20 +20,25 @@ public final class GiveSideSkill {
         resolver.getStage().getUI().useSkill(card, skill, true);
         Field field = card.getOwner().getField();
         List<CardInfo> allies = resolver.getAdjacentCards(field, card.getPosition());
+        SkillUseInfo thisSkillUserInfo=null;
         for (CardInfo ally : allies) {
-            cardSkill.setGiveSkill(1);
             if(ally.containsUsableSkill(cardSkill.getType())){
                 continue;
             }
-            ally.addSkill(cardSkill);
+            thisSkillUserInfo = new SkillUseInfo(ally,cardSkill);
+            thisSkillUserInfo.setGiveSkill(1);
+            ally.addSkill(thisSkillUserInfo);
         }
     }
 
     public static void remove(SkillResolver resolver, SkillUseInfo skillUseInfo, CardInfo card,Skill addSkill) {
         CardSkill cardSkill = new CardSkill(addSkill.getType(), addSkill.getLevel(), 0, false, false, false, false);
+        SkillUseInfo thisSkillUserInfo = null;
         for (CardInfo ally : card.getOwner().getField().toList()) {
             if (ally == null) { continue; }
-            ally.removeSkill(cardSkill);
+            thisSkillUserInfo = new SkillUseInfo(ally,cardSkill);
+            thisSkillUserInfo.setGiveSkill(1);
+            ally.removeSkill(thisSkillUserInfo);
         }
     }
 

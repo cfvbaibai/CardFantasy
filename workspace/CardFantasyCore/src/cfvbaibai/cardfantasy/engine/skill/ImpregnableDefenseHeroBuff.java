@@ -13,7 +13,7 @@ public final class ImpregnableDefenseHeroBuff {
         Skill skill = skillUseInfo.getSkill();
         int impact = skill.getImpact();
         Player atacter = card.getOwner();
-        int coefficient = atacter.getCoefficient()*impact/100;
+        int coefficient =atacter.getCoefficient()*impact/100;
         GameUI ui = resolver.getStage().getUI();
         ui.useSkill(card, card, skill,true);
         atacter.setCoefficient(coefficient);

@@ -22,6 +22,12 @@ public class CardStatus {
         while (iterator.hasNext()) {
             CardStatusItem next = iterator.next();
             if (next.getType() == type) {
+                //加个if控制下buff的持续回合数
+                if(next.getEffectNumber()>1)
+                {
+                    next.setEffectNumber(next.getEffectNumber()-1);
+                    break;
+                }
                 iterator.remove();
                 removedAny = true;
             }

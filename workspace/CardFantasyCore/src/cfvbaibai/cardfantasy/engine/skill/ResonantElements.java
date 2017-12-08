@@ -19,11 +19,13 @@ public final class ResonantElements {
         summonedCardsDescs = summonedCardsDescs+'-' + resonantCard.getLevel();
         summonCardCandidates = DeckBuilder.build(summonedCardsDescs).getCardInfos(player);
         CardInfo addCard = summonCardCandidates.get(0);
+        SkillUseInfo thisSkillUserInfo= null;
         if(resonantCard.getLevel()>=15){
             int size = resonantCard.getAllUsableSkills().size();
             Skill additionalSkill = resonantCard.getAllUsableSkills().get(size-1).getSkill();
             CardSkill cardSkill = new CardSkill(additionalSkill.getType(), additionalSkill.getLevel(), 0, false, false, false, false);
-            addCard.addSkill(cardSkill);
+            thisSkillUserInfo = new SkillUseInfo(addCard,cardSkill);
+            addCard.addSkill(thisSkillUserInfo);
         }
         List<CardInfo> livingCards = null;
         livingCards = player.getField().getAliveCards();

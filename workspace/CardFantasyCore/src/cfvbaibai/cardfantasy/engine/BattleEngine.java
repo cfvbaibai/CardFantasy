@@ -482,6 +482,10 @@ public class BattleEngine {
                     }
 
                     for (CardInfo sweepDefender : sweepDefenders) {
+                        if(!sweepDefender.isAlive())
+                        {
+                            continue;
+                        }
                         //木盒修改嘲讽卡牌对横扫不生效。
 //                        CardInfo tauntTwo = tauntCard(opField);
 //                        if (tauntTwo!=null)
@@ -520,6 +524,10 @@ public class BattleEngine {
 //                        {
 //                            continue;
 //                        }
+                        if(!sweepDefender.isAlive())
+                        {
+                            continue;
+                        }
                         ui.useSkill(myField.getCard(i), sweepDefender, skillUseInfo.getSkill(), true);
                         resolver.attackCard(myField.getCard(i), sweepDefender, skillUseInfo, damagedResult.originalDamage);
                         if (myField.getCard(i) == null ||myField.getCard(i).isDead()) {

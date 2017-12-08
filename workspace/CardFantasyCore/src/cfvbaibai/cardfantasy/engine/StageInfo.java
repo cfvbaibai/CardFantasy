@@ -198,7 +198,7 @@ public class StageInfo {
             Player boss = this.getPlayers().get(0);
             CardInfo bossCard = null;
             for (CardInfo card : boss.getField().getAliveCards()) {
-                if (card.getRace() == Race.BOSS) {
+                if (card.getRace() == Race.BOSS&&!card.getName().equals("炮灰")) {
                     bossCard = card;
                 }
             }
@@ -208,7 +208,7 @@ public class StageInfo {
                     if (card == null) {
                         continue;
                     }
-                    if (card.getRace() == Race.BOSS) {
+                    if (card.getRace() == Race.BOSS&&!card.getName().equals("炮灰")) {
                         bossCard = card;
                         damageToBoss = card.getRawMaxHP();
                         break;

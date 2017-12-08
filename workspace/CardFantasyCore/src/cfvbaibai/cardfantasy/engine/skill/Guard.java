@@ -3,6 +3,7 @@ package cfvbaibai.cardfantasy.engine.skill;
 import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
 import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.data.SkillTag;
+import cfvbaibai.cardfantasy.data.SkillType;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.EntityInfo;
 import cfvbaibai.cardfantasy.engine.HeroDieSignal;
@@ -22,10 +23,19 @@ public final class Guard {
         if (damage > guardian.getOwner().getHP()) {
             damage = guardian.getOwner().getHP();
         }
+        int sdamage = damage;
+        if(guardSkill.getType()== SkillType.诲人不倦)
+        {
+            sdamage = damage*30/100;
+        }
         int remainingDamage = 0;
-        if (damage > guardian.getHP()) {
+        if (sdamage > guardian.getHP()) {
             remainingDamage = damage - guardian.getHP();
             damage = guardian.getHP();
+        }
+        else{
+            remainingDamage = damage -sdamage;
+            damage = sdamage;
         }
         resolver.getStage().getUI().attackCard(attacker, guardian, guardSkill, damage);
         OnDamagedResult result = resolver.applyDamage(attacker, guardian, guardSkill, damage);

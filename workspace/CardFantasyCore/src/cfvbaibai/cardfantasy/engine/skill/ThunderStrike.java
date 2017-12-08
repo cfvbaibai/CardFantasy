@@ -27,7 +27,7 @@ public final  class ThunderStrike {
                 continue;
             }
             int actualDamage = result.getDamage();
-            if (victim.containsAllSkill(SkillType.免疫)|| victim.containsAllSkill(SkillType.结界立场) || CounterMagic.getBlockSkill(victim) != null) {
+            if (victim.containsAllSkill(SkillType.免疫)|| victim.containsAllSkill(SkillType.结界立场)|| victim.containsAllSkill(SkillType.影青龙) || victim.containsAllSkill(SkillType.魔力抗性)|| CounterMagic.getBlockSkill(victim) != null) {
                 actualDamage *= magnifier;
             } else {
                 if (resolver.getStage().getRandomizer().roll100(rate)) {

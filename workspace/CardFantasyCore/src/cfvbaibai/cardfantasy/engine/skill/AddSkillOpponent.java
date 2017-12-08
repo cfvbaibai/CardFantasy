@@ -22,11 +22,12 @@ public class AddSkillOpponent {
         List<CardInfo> allHandCards = defenderHero.getHand().toList();
         List<CardInfo> addCard= new ArrayList<CardInfo>();
         List<CardInfo> revivableCards = new ArrayList<CardInfo>();
+        SkillUseInfo thisSkillUserInfo=null;
         boolean flag = true;
         for (CardInfo handCard : allHandCards) {
             for(SkillUseInfo skillInfo:handCard.getSkillUserInfos())
             {
-                if(skillInfo.getSkill().getGiveSkill()==1)
+                if(skillInfo.getGiveSkill()==1)
                 {
                     flag=false;
                     break;
@@ -52,8 +53,9 @@ public class AddSkillOpponent {
             {
                 continue;
             }
-            cardSkill.setGiveSkill(1);
-            once.addSkill(cardSkill);
+            thisSkillUserInfo = new SkillUseInfo(once,cardSkill);
+            thisSkillUserInfo.setGiveSkill(1);
+            once.addSkill(thisSkillUserInfo);
         }
     }
 

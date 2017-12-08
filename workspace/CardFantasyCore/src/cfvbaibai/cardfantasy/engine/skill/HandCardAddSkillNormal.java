@@ -13,7 +13,7 @@ import java.util.List;
 public class HandCardAddSkillNormal {
     public static void apply(SkillResolver resolver, SkillUseInfo skillUseInfo, CardInfo card, Skill addSkill,int number) {
         if (card == null || card.isDead()) {
-            throw new CardFantasyRuntimeException("card should not be null or dead!");
+            return;
         }
         Skill skill = skillUseInfo.getSkill();
         CardSkill cardSkill = new CardSkill(addSkill.getType(), addSkill.getLevel(), 0, false, false, false, false);
@@ -21,11 +21,12 @@ public class HandCardAddSkillNormal {
         List<CardInfo> allHandCards = card.getOwner().getHand().toList();
         List<CardInfo> addCard=new ArrayList<CardInfo>();
         List<CardInfo> revivableCards = new ArrayList<CardInfo>();
+        SkillUseInfo thisSkillUserInfo= null;
         boolean flag = true;
         for (CardInfo handCard : allHandCards) {
             for(SkillUseInfo skillInfo:handCard.getSkillUserInfos())
             {
-                if(skillInfo.getSkill().getGiveSkill()==1)
+                if(skillInfo.getGiveSkill()==1)
                 {
                     flag=false;
                     break;
@@ -52,8 +53,9 @@ public class HandCardAddSkillNormal {
             {
                 continue;
             }
-            cardSkill.setGiveSkill(1);
-            once.addSkill(cardSkill);
+            thisSkillUserInfo = new SkillUseInfo(once,cardSkill);
+            thisSkillUserInfo.setGiveSkill(1);
+            once.addSkill(thisSkillUserInfo);
         }
     }
 }

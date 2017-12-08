@@ -25,6 +25,7 @@ public class HandCardAddSkill {
         CardInfo oneCard = null;
         CardInfo twoCard = null;
         List<CardInfo> addCard = new ArrayList<CardInfo>();
+        SkillUseInfo thisSkillUserInfo= null;
         boolean flag = true;
         for (CardInfo ally : allHandCards) {
             if (oneCard != null) {
@@ -52,7 +53,7 @@ public class HandCardAddSkill {
         for (CardInfo once : addCard) {
             for(SkillUseInfo skillInfo:once.getSkillUserInfos())
             {
-                if(skillInfo.getSkill().getGiveSkill()==1)
+                if(skillInfo.getGiveSkill()==1)
                 {
                     flag=false;
                     break;
@@ -66,11 +67,12 @@ public class HandCardAddSkill {
             if (once.containsAllUsableSkillsWithTag(SkillTag.抗沉默)&&addSkill.getType().containsTag(SkillTag.抗沉默)) {
                 continue;
             }
-            cardSkill.setGiveSkill(1);
             if (once.containsUsableSkill(cardSkill.getType())){
                 continue;
             }
-            once.addSkill(cardSkill);
+            thisSkillUserInfo = new SkillUseInfo(once,cardSkill);
+            thisSkillUserInfo.setGiveSkill(1);
+            once.addSkill(thisSkillUserInfo);
         }
     }
 
