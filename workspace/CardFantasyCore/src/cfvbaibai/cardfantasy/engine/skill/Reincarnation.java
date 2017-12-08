@@ -39,7 +39,7 @@ public final class Reincarnation {
                 player.getGrave().addCard(card);
             }
             if(!player.getGrave().contains(card)&& player.getHand().contains(card))
-            {
+                {
                 return true;
             }
             if (!player.getGrave().contains(card) && player.getField().contains(card)) {
@@ -52,6 +52,12 @@ public final class Reincarnation {
                 return false;
             }
             Grave grave = card.getOwner().getGrave();
+            if(!player.getGrave().contains(card))
+            {
+                //某些情况下召唤属性丢失导致卡牌不能找到。
+                System.out.print("错误转生");
+                return false;
+            }
             grave.removeCard(card);
             Hand hand = card.getOwner().getHand();
             if (hand.isFull()) {

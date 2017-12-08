@@ -9,6 +9,20 @@
                             <td>地图</td>
                             <td>
                                 <select name="map-id" id="map-id" class="map-select" data-mini="true" data-native-menu="true">
+                                    <optgroup label="22-白银之森">
+                                        <option value="22-1" selected="selected">22-1 月光林地</option>
+                                        <option value="22-2">22-2 邂逅之泉</option>
+                                        <option value="22-3">22-3 古旧神社</option>
+                                        <option value="22-4">22-4 荒漠外围(旧)</option>
+                                        <option value="22-5">22-5 银之海</option>
+                                        <option value="22-6">22-6 长眠之地</option>
+                                        <option value="22-7">22-7 枯骨洞穴</option>
+                                        <option value="22-8">22-8 迷雾森林</option>
+                                        <option value="22-9">22-9 精灵村庄</option>
+                                        <option value="22-10">22-10 英灵冢</option>
+                                        <option value="22-11">22-11 流星祭坛</option>
+                                        <option value="22-H">22-H 回声剧院</option>
+                                    </optgroup>
                                     <optgroup label="21-凛风高原">
                                         <option value="21-1" selected="selected">21-1 风雪苔原</option>
                                         <option value="21-2">21-2 精钢城基础层</option>

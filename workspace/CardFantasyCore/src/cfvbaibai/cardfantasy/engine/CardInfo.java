@@ -59,25 +59,25 @@ public class CardInfo extends EntityInfo {
         return this.skillUseInfos;
     }
 
-    public void addSkill(CardSkill skill)
+    public void addSkill(SkillUseInfo skillUseInfo)
     {
         boolean tag = false;
         for(int j=0;j<this.skillUseInfos.size();j++){
-            if(this.skillUseInfos.get(j).getType() == skill.getType()&&this.skillUseInfos.get(j).getSkill().getLevel() == skill.getLevel()&&this.skillUseInfos.get(j).getSkill().getGiveSkill() == 1)
+            if(this.skillUseInfos.get(j).getType() == skillUseInfo.getType()&&this.skillUseInfos.get(j).getSkill().getLevel() == skillUseInfo.getSkill().getLevel()&&this.skillUseInfos.get(j).getGiveSkill() == 1)
             {
                 tag = true;
                 break;
             }
         }
         if(!tag) {
-            this.skillUseInfos.add(new SkillUseInfo(this, skill));
+            this.skillUseInfos.add(skillUseInfo);
         }
     }
 
-    public void removeSkill(CardSkill skill)
+    public void removeSkill(SkillUseInfo skillUseInfo)
     {
         for(int j=0;j<this.skillUseInfos.size();j++){
-           if(this.skillUseInfos.get(j).getType() == skill.getType()&&this.skillUseInfos.get(j).getSkill().getLevel() == skill.getLevel()&&this.skillUseInfos.get(j).getSkill().getGiveSkill() == 1)
+           if(this.skillUseInfos.get(j).getType() == skillUseInfo.getType()&&this.skillUseInfos.get(j).getSkill().getLevel() == skillUseInfo.getSkill().getLevel()&&this.skillUseInfos.get(j).getGiveSkill() == 1)
            {
                this.skillUseInfos.remove(j);
                break;
@@ -88,7 +88,7 @@ public class CardInfo extends EntityInfo {
     public void removeAllGiveSkill()
     {
         for(int j=0;j<this.skillUseInfos.size();j++){
-            if(this.skillUseInfos.get(j).getSkill().getGiveSkill() == 1)
+            if(this.skillUseInfos.get(j).getGiveSkill() == 1)
             {
                 this.skillUseInfos.remove(j);
             }

@@ -20,6 +20,7 @@ public final class MoonBounty {
         CardSkill cardSkill = new CardSkill(addSkill.getType(), addSkill.getLevel(), 0, false, false, false, false);
         resolver.getStage().getUI().useSkill(card, skill, true);
         CardInfo frontCard = null;
+        SkillUseInfo thisSkillUserInfo = null;
         if(card.getPosition() >0) {
              frontCard = card.getOwner().getField().getCard(card.getPosition()-1);
         }
@@ -29,19 +30,23 @@ public final class MoonBounty {
         {
             addCard.add(frontCard);
         }
-        cardSkill.setGiveSkill(1);
         for (CardInfo thisCard : addCard) {
             if(thisCard.containsUsableSkill(cardSkill.getType())){
                 continue;
             }
-            thisCard.addSkill(cardSkill);
+            thisSkillUserInfo = new SkillUseInfo(thisCard,cardSkill);
+            thisSkillUserInfo.setGiveSkill(1);
+            thisCard.addSkill(thisSkillUserInfo);
         }
     }
     public static void remove(SkillResolver resolver, SkillUseInfo skillUseInfo, CardInfo card,Skill addSkill) {
         CardSkill cardSkill = new CardSkill(addSkill.getType(), addSkill.getLevel(), 0, false, false, false, false);
+        SkillUseInfo thisSkillUserInfo = null;
         for (CardInfo ally : card.getOwner().getField().toList()) {
             if (ally == null) { continue; }
-            ally.removeSkill(cardSkill);
+            thisSkillUserInfo = new SkillUseInfo(ally,cardSkill);
+            thisSkillUserInfo.setGiveSkill(1);
+            ally.removeSkill(thisSkillUserInfo);
         }
     }
 }
