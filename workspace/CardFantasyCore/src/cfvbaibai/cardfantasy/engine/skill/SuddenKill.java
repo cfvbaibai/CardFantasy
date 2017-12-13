@@ -37,6 +37,10 @@ public final class SuddenKill {
     public static void apply(SkillResolver resolver, SkillUseInfo skillUseInfo, CardInfo attacker,
             CardInfo defender, OnAttackBlockingResult blockingResult) throws HeroDieSignal {
         int threshold = skillUseInfo.getSkill().getImpact();
+        if(skillUseInfo.getType() == SkillType.双斩)
+        {
+            threshold = skillUseInfo.getSkill().getImpact3();
+        }
         if (defender.getHP() >= defender.getMaxHP() * threshold / 100) {
             return;
         }

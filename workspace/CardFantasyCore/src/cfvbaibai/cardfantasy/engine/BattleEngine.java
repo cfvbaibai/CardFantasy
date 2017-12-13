@@ -440,6 +440,7 @@ public class BattleEngine {
             if (skillUseInfo.getType() == SkillType.横扫 ||
                     skillUseInfo.getType() == SkillType.灵击 ||
                     skillUseInfo.getType() == SkillType.三千世界 ||
+                    skillUseInfo.getType() == SkillType.魔龙之怒 ||
                     skillUseInfo.getType() == SkillType.鬼彻 ||
                     skillUseInfo.getType() == SkillType.毒杀) {
                 ui.useSkill(myField.getCard(i), defender, skillUseInfo.getSkill(), true);
@@ -470,6 +471,7 @@ public class BattleEngine {
             for (SkillUseInfo skillUseInfo : myField.getCard(i).getUsableNormalSkills()) {
                 if (skillUseInfo.getType() == SkillType.横扫 ||
                         skillUseInfo.getType() == SkillType.三千世界 ||
+                        skillUseInfo.getType() == SkillType.魔龙之怒 ||
                         skillUseInfo.getType() == SkillType.鬼彻 ||
                         skillUseInfo.getType() == SkillType.灵击 ||
                         skillUseInfo.getType() == SkillType.毒杀) {

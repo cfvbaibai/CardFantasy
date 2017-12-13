@@ -1113,6 +1113,11 @@
         <Skill type="敏助" level="0" unlock="5"  />
         <Skill type="连续魔法" level="7" unlock="10" />
     </Card>
+    <Card id="1618" name="圣诞王女" wikiId="" race="王国" speed="4" star="5" cost="16" incrCost="2" at="325" hp="1500" incrAT="40" incrHP="34">
+        <Skill type="漫天风雪" level="0" unlock="0" />
+        <Skill type="碎冰成雪" level="0" unlock="5"  />
+        <Skill type="圣母回声" level="0" unlock="10" />
+    </Card>
 
 
     <!-- 森林 -->
@@ -1967,6 +1972,11 @@
         <Skill type="误人子弟" level="0" unlock="0" precast="true"/>
         <Skill type="诲人不倦" level="0" unlock="5" />
         <Skill type="天下桃李" level="0" unlock="10"  />
+    </Card>
+    <Card id="2581" name="圣诞剑灵使" wikiId="" race="森林" speed="3" star="5" cost="17" incrCost="2" at="385" hp="1350" incrAT="38" incrHP="36">
+        <Skill type="灵魂消散" level="0" unlock="0"/>
+        <Skill type="双斩" level="5" unlock="5" />
+        <Skill type="寒心恨雪" level="0" unlock="10"/>
     </Card>
 
     <!-- 蛮荒  -->
@@ -2888,6 +2898,11 @@
         <Skill type="吴国英魂" level="0" unlock="0" />
         <Skill type="江东无双" level="0" unlock="5" />
         <Skill type="霸王之姿" level="0" unlock="10"  />
+    </Card>
+    <Card id="3585" name="圣诞·孟起" wikiId="" race="蛮荒" speed="3" star="5" cost="16" incrCost="2" at="395" hp="1435" incrAT="43" incrHP="30">
+        <Skill type="骑士荣耀" level="0" unlock="0" />
+        <Skill type="临风傲雪" level="0" unlock="5" />
+        <Skill type="剑域" level="6" unlock="10"  />
     </Card>
 
 

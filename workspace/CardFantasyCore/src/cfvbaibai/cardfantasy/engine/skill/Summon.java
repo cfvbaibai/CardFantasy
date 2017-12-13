@@ -22,6 +22,7 @@ public class Summon {
                 || summoner.isSummonedMinion() && skillUseInfo.getType() == SkillType.镜魔
                 || summoner.isSummonedMinion() && skillUseInfo.getType() == SkillType.九转禁术
                 || summoner.isSummonedMinion() && skillUseInfo.getType() == SkillType.影青龙
+                || summoner.isSummonedMinion() && skillUseInfo.getType() == SkillType.寒心恨雪
                 || summoner.isSummonedMinion() && skillUseInfo.getType() == SkillType.北海报恩) {
             for(CardStatusItem item : summoner.getStatus().getAllItems())
             {

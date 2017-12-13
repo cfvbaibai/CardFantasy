@@ -30,7 +30,7 @@ public final class CountryBuff {
                 if (ally == card || race != null && ally.getOriginalRace() != race) {
                     continue;
                 }
-                if (!judgeCountry(summonCardCandidates, card)) {
+                if (!judgeCountry(summonCardCandidates, ally)) {
                     continue;
                 }
                 if (ally.getEffectsCausedBy(skillUseInfo).isEmpty()) {
@@ -52,7 +52,7 @@ public final class CountryBuff {
             if (race != null && summorCard.getOriginalRace() != race) {
                 return;
             }
-            if (!judgeCountry(summonCardCandidates, card)) {
+            if (!judgeCountry(summonCardCandidates, summorCard)) {
                 return;
             }
             resolver.getStage().getUI().useSkill(card, skill, true);

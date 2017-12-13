@@ -153,8 +153,9 @@ public enum SkillType {
     酒池肉林("",70,0),
 
     横扫("30941", 0, SkillTag.抗免疫, SkillTag.物理攻击),
-    三千世界("30941", 0, SkillTag.抗免疫, SkillTag.物理攻击),
+    三千世界("", 0, SkillTag.抗免疫, SkillTag.物理攻击),
     毒杀("",0,SkillTag.永久, SkillTag.原始体力加成, SkillTag.抗不屈,SkillTag.抗免疫,SkillTag.物理攻击),
+    魔龙之怒("",240, 0, SkillTag.永久, SkillTag.基础攻击加成, SkillTag.抗免疫, SkillTag.物理攻击),
     鹰眼("",100,0,SkillTag.额外攻击加成),
     闪避("30939", 20, 5, SkillTag.物理护甲),
     直感("", 60, 0, SkillTag.物理护甲),
@@ -368,7 +369,7 @@ public enum SkillType {
     燕返("", 0, 0),
     袈裟斩燕返("", 0, 0),
     斩杀("", 50, 0),
-    双斩("", 50, 0),
+    双斩("",0,0,new int[] {45,50,55,60,65,75,80,85,90,95,100}),
     送葬之刃("", 50, 5),
     无双("", 70, 0),
 
@@ -429,6 +430,7 @@ public enum SkillType {
     三国英才("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
     三国武魂("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
     繁星("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
+    星河召唤("", 0, 0,SkillTag.召唤),
 
     //生成卡牌置入战场
     魏国英魂("", 2, 0),
@@ -483,7 +485,7 @@ public enum SkillType {
     凋零陷阱("", SkillType.凋零真言, 6, SkillType.陷阱, 3),
     天怒("", SkillType.烈焰风暴, SkillType.天火),
     闭月("", SkillType.祈福, 3, SkillType.圣母回声, 0),
-    虚梦("", SkillType.镜像, SkillType.传送,SkillTag.召唤),
+    虚梦("", SkillType.镜像,0, SkillType.传送,0,SkillTag.召唤),
     觉醒白虎守护("", SkillType.月神的护佑, 7, SkillType.祈福, 3),
     觉醒星之意志("", SkillType.灵魂消散, 0, SkillType.灵王的轰击, 7),
     觉醒狼顾("",  SkillType.雷神降临, 8, SkillType.雷霆一击, 5),
@@ -520,6 +522,8 @@ public enum SkillType {
     英雄之敌("",0,15, SkillTag.抗免疫,SkillTag.额外攻击加成, SkillTag.不可洗炼),
     误人子弟("", SkillType.魅惑之舞,10,SkillType.魅惑之舞,6),
     影青龙("", 0,0,SkillTag.召唤),
+    漫天风雪("", SkillType.寒霜冲击,7,SkillType.寒冰触碰,5),
+    寒心恨雪("", SkillType.镜像,0, SkillType.骤雨,7,SkillTag.召唤),
 
 
 
@@ -541,6 +545,7 @@ public enum SkillType {
     陨星("",SkillType.陨星攻击,0,null,0),
     厄运枪("",SkillType.厄运枪狙击,0,null,0),
     顽石契约("",SkillType.钢铁之肤,4,null,0),
+    碎冰成雪("",SkillType.冰甲,8,null,0),
 
     //攻击对方全体
     一文字("", 0),
@@ -557,6 +562,7 @@ public enum SkillType {
 
     //自身和前置位添加技能
     月神的恩泽("",SkillType.无刀取,0,null,0),
+    临风傲雪("",SkillType.破军,1,null,0),
 
     //给两侧卡牌添加技能
     水榭桃盈("",SkillType.水流护甲,9,null,0),
@@ -585,6 +591,7 @@ public enum SkillType {
     吴之勇("", 70,0,SkillTag.抗毒刃),
     吴之力("", 70,0, SkillTag.基础攻击加成,SkillTag.抗削弱),
     江东无双("", 70,0,SkillTag.抗毒刃,SkillTag.基础攻击加成,SkillTag.抗削弱),
+    森之星河("",SkillType.森林之力,8,SkillType.森林守护,8),
 
     // 以下全部技能皆为待更新的空技能，请在更新之后将其移动到上面适合的位置
     // 对于物品技能，请将其（按顺序）加入下面的物品技能列表，用来以后更改自动卡牌数据更新工具
