@@ -19,7 +19,11 @@ public final class Wound {
         if (defender.isDead()) {
             return;
         }
-        if (attackSkill != null && (attackSkill.getType() == SkillType.横扫 || attackSkill.getType() == SkillType.三千世界)) {
+        if (attackSkill != null && (attackSkill.getType() == SkillType.横扫 || attackSkill.getType() == SkillType.三千世界|| attackSkill.getType() == SkillType.一文字|| attackSkill.getType() == SkillType.灵击 ||
+                attackSkill.getType() == SkillType.三千世界 ||
+                attackSkill.getType() == SkillType.魔龙之怒 ||
+                attackSkill.getType() == SkillType.鬼彻 ||
+                attackSkill.getType() == SkillType.毒杀)) {
             return;
         }
         Skill skill = skillUseInfo.getSkill();

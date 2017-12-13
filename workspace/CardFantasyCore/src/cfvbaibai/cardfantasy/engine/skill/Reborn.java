@@ -18,6 +18,11 @@ public final class Reborn {
             // 不屈中，此时不发动司命
             return ;
         }
+        if(!player.getGrave().contains(card))
+        {
+            //夺魂处理墓地没有卡牌,不发动。
+            return;
+        }
         int rate;
         if(cardSkill.getType()== SkillType.不灭||cardSkill.getType()== SkillType.顽强)
         {
@@ -30,8 +35,8 @@ public final class Reborn {
         GameUI ui = resolver.getStage().getUI();
         boolean bingo = resolver.getStage().getRandomizer().roll100(rate);
         ui.useSkill(card, card, cardSkill, bingo);
-        ui.summonCard(player,card);
         if(bingo) {
+            ui.summonCard(player,card);
             Grave grave = card.getOwner().getGrave();
             grave.removeCard(card);
             player.getField().addCard(card);

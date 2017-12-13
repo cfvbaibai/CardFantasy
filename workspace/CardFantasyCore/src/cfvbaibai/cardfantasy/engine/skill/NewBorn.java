@@ -29,13 +29,19 @@ public class NewBorn {
                     resolver.getStage().removeUsed(victimSkillUseInfo);
                 }
                 ui.useSkill(card, victim, skillUseInfo.getSkill(), true);
-                Return.returnCard(resolver, skill, card, victim);
+                OnDamagedResult result = new OnDamagedResult();
+                result.cardDead = true;
                 resolver.getStage().getUI().useSkill(card, victim, skillUseInfo.getSkill(), true);
                 if (victim.getStatus().containsStatus(CardStatusType.召唤)) {
-                    Summon.apply(resolver, skillUseInfo, card, SummonType.Normal, 1, victim.getName());
-                    return;
+                    Return.returnCard(resolver, skill, card, victim);
+                    resolver.resolveDeathSkills(card,victim,skillUseInfo.getSkill(),result);//新生可以发动死契
+                    Summon.apply(resolver, skillUseInfo, card, SummonType.Summoning, 1, victim.getName());//新生卡牌可以立即攻击。
                 }
-                resolver.summonCard(card.getOwner(), victim, null, false, skillUseInfo.getSkill());
+                else{
+                    Return.returnCard(resolver, skill, card, victim);
+                    resolver.resolveDeathSkills(card,victim,skillUseInfo.getSkill(),result);//新生可以发动死契
+                    resolver.summonCard(card.getOwner(), victim, null, false, skillUseInfo.getSkill());
+                }
             }
         }
 
