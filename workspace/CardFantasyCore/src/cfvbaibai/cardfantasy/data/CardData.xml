@@ -1978,6 +1978,11 @@
         <Skill type="双斩" level="5" unlock="5" />
         <Skill type="寒心恨雪" level="0" unlock="10"/>
     </Card>
+    <Card id="2582" name="终焉守护" wikiId="" race="森林" speed="4" star="5" cost="17" incrCost="2" at="420" hp="1570" incrAT="32" incrHP="42">
+        <Skill type="歃血魔咒" level="5" unlock="0"/>
+        <Skill type="骤雨" level="7" unlock="5" />
+        <Skill type="结界立场" level="0" unlock="10"/>
+    </Card>
 
     <!-- 蛮荒  -->
     <Card id="3101" name="穴居人奴隶" wikiId="31006" race="蛮荒" speed="2" star="1" cost="4" incrCost="2" at="90" hp="390" incrAT="18" incrHP="11">
@@ -2889,7 +2894,7 @@
         <Skill type="连击" level="0" unlock="5" />
         <Skill type="极寒裂伤" level="0" unlock="10"  />
     </Card>
-    <Card id="3583" name="炙火酋长" wikiId="" race="蛮荒" speed="3" star="5" cost="15" incrCost="2" at="365" hp="1375" incrAT="39" incrHP="30">
+    <Card id="3583" name="炙火酋长" wikiId="" race="蛮荒" speed="3" star="4" cost="15" incrCost="2" at="365" hp="1375" incrAT="39" incrHP="30">
         <Skill type="战争怒吼" level="0" unlock="0" />
         <Skill type="顽石契约" level="0" unlock="5" />
         <Skill type="炎敷" level="0" unlock="10"  />
@@ -2903,6 +2908,16 @@
         <Skill type="骑士荣耀" level="0" unlock="0" />
         <Skill type="临风傲雪" level="0" unlock="5" />
         <Skill type="剑域" level="6" unlock="10"  />
+    </Card>
+    <Card id="3586" name="祭血先锋" wikiId="" race="蛮荒" speed="2" star="4" cost="15" incrCost="2" at="405" hp="1270" incrAT="35" incrHP="30">
+        <Skill type="送葬之刃" level="6" unlock="0" />
+        <Skill type="天火" level="4" unlock="5" />
+        <Skill type="横扫" level="0" unlock="10"  />
+    </Card>
+    <Card id="3587" name="高维进化者" wikiId="" race="蛮荒" speed="3" star="5" cost="18" incrCost="2" at="395" hp="1320" incrAT="35" incrHP="34">
+        <Skill type="质能展开" level="0" unlock="0" />
+        <Skill type="燕返" level="0" unlock="5" />
+        <Skill type="镜像" level="0" unlock="10" death="true" />
     </Card>
 
 

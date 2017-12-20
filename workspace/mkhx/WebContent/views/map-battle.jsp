@@ -13,7 +13,7 @@
                                         <option value="22-1" selected="selected">22-1 月光林地</option>
                                         <option value="22-2">22-2 邂逅之泉</option>
                                         <option value="22-3">22-3 古旧神社</option>
-                                        <option value="22-4">22-4 荒漠外围(旧)</option>
+                                        <option value="22-4">22-4 荒漠外围</option>
                                         <option value="22-5">22-5 银之海</option>
                                         <option value="22-6">22-6 长眠之地</option>
                                         <option value="22-7">22-7 枯骨洞穴</option>

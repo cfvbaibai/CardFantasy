@@ -3,13 +3,10 @@ package cfvbaibai.cardfantasy.engine.skill;
 import cfvbaibai.cardfantasy.GameUI;
 import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.data.SkillType;
-import cfvbaibai.cardfantasy.engine.CardInfo;
-import cfvbaibai.cardfantasy.engine.Grave;
-import cfvbaibai.cardfantasy.engine.Player;
-import cfvbaibai.cardfantasy.engine.SkillResolver;
+import cfvbaibai.cardfantasy.engine.*;
 
 public final class Reborn {
-    public static void apply(SkillResolver resolver, Skill cardSkill, CardInfo card, boolean unbending) {
+    public static void apply(SkillResolver resolver, Skill cardSkill, CardInfo card, boolean unbending) throws HeroDieSignal {
         Player player = card.getOwner();
         if (unbending) {
             return ; // The card is unbending!
@@ -36,10 +33,11 @@ public final class Reborn {
         boolean bingo = resolver.getStage().getRandomizer().roll100(rate);
         ui.useSkill(card, card, cardSkill, bingo);
         if(bingo) {
-            ui.summonCard(player,card);
+          //  ui.summonCard(player,card);
             Grave grave = card.getOwner().getGrave();
             grave.removeCard(card);
-            player.getField().addCard(card);
+          //  player.getField().addCard(card);
+            resolver.summonCard(card.getOwner(), card, card, true, cardSkill,1);//司命可以发动降临技能
         }
     }
 }

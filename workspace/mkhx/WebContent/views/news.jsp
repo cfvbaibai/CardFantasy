@@ -37,6 +37,14 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2017-12-20: <x>欢笑，波波</x><ul>
+                        <li>修复技能【新卡制成】【突突突】对魔神生效的bug</li>
+                        <li>修改技能【司命】可以发动降临技能</li>
+                        <li>添加卡牌【祭血先锋】,【终焉守护】,【高维进化者】</li>
+                        <li>更新模拟器卡图</li>
+                        <li>更新wiki</li>
+                        <li>更新22图过关条件</li>
+                    </ul></li>
                     <li>2017-12-13: <x>欢笑，波波</x><ul>
                         <li>修复技能【新生】不发动死契的bug，修复【新生】导致召唤物死亡后进入卡组bug</li>
                         <li>修复技能【司命】红字问题</li>
