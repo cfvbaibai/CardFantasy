@@ -22,6 +22,6 @@ public final class AlchemyFailure {
            }
         }
         ui.killCard(card, card, cardSkill);
-        resolver.killCard(null, card, cardSkill);
+        resolver.killCard(card, card, cardSkill);
     }
 }

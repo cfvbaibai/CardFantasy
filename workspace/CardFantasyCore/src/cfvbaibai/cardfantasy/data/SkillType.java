@@ -546,6 +546,7 @@ public enum SkillType {
     厄运枪("",SkillType.厄运枪狙击,0,null,0),
     顽石契约("",SkillType.钢铁之肤,4,null,0),
     碎冰成雪("",SkillType.冰甲,8,null,0),
+    质能展开("",SkillType.精神狂乱,0,null,0),
 
     //攻击对方全体
     一文字("", 0),
@@ -577,8 +578,8 @@ public enum SkillType {
     隐遁之术("",SkillType.无刀取,0,null,0),
 
     //给对手手牌添加技能
-    突突突("",SkillType.炼金失败,0,null,0),
-    新卡作成("",SkillType.炼金失败,0,null,0),
+    突突突("",SkillType.炼金失败,0,null,0,SkillTag.魔王无效, SkillTag.魔族天赋),
+    新卡作成("",SkillType.炼金失败,0,null,0,SkillTag.魔王无效, SkillTag.魔族天赋),
     // To Do
 
     //双buff
