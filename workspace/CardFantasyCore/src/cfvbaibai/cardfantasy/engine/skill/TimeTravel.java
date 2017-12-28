@@ -40,30 +40,36 @@ public class TimeTravel {
                 continue;
             }
             if (card != caster) {
-            if (resolver.resolveAttackBlockingSkills(caster, card, skillUseInfo.getSkill(), 0).isAttackable()) {
-                //移除附加的第四技能
-                resolver.resolveLeaveSkills(card);
-                if (card.containsAllSkill(SkillType.铁壁) || card.containsAllSkill(SkillType.驱虎吞狼)) {
-                    for (SkillUseInfo defenderskill : card.getAllUsableSkills()) {
-                        if (defenderskill.getType() == SkillType.铁壁) {
-                            ImpregnableDefenseHeroBuff.remove(resolver, defenderskill, card);
-                        }
-                        if (defenderskill.getType() == SkillType.驱虎吞狼) {
-                            ImpregnableDefenseHeroBuff.remove(resolver, defenderskill.getAttachedUseInfo2(), card);
+                if (resolver.resolveAttackBlockingSkills(caster, card, skillUseInfo.getSkill(), 0).isAttackable()) {
+                    //移除附加的第四技能
+                    resolver.resolveLeaveSkills(card);
+                    if (card.containsAllSkill(SkillType.铁壁) || card.containsAllSkill(SkillType.驱虎吞狼) || card.containsAllSkill(SkillType.金汤)) {
+                        for (SkillUseInfo defenderskill : card.getAllUsableSkills()) {
+                            if (defenderskill.getType() == SkillType.铁壁 || defenderskill.getType() == SkillType.金汤) {
+                                ImpregnableDefenseHeroBuff.remove(resolver, defenderskill, card);
+                            } else if (defenderskill.getType() == SkillType.驱虎吞狼) {
+                                ImpregnableDefenseHeroBuff.remove(resolver, defenderskill.getAttachedUseInfo2(), card);
+                            }
                         }
                     }
-                }
 
-                ui.returnCard(caster, card, skillUseInfo.getSkill());
-                if (!card.getStatus().containsStatus(CardStatusType.召唤)) {
-                    player.getDeck().addCard(card);
+                    ui.returnCard(caster, card, skillUseInfo.getSkill());
+                    if (!card.getStatus().containsStatus(CardStatusType.召唤)) {
+                        if (card.getOriginalOwner() != null) {
+                            card.restoreOwner();
+                            card.getOriginalOwner().getDeck().addCard(card);
+                        } else {
+                            player.getDeck().addCard(card);
+                        }
+                    }
+                    player.getField().removeCard(card);
                 }
-                player.getField().removeCard(card);
-            }
             }
         }
         for (CardInfo card : player.getHand().toList()) {
             if (resolver.resolveAttackBlockingSkills(caster, card, skillUseInfo.getSkill(), 0).isAttackable()) {
+                //移除附加的第四技能
+                resolver.resolveLeaveSkills(card);
                 ui.cardToGrave(player, card);
                 player.getDeck().addCard(card);
                 player.getHand().removeCard(card);

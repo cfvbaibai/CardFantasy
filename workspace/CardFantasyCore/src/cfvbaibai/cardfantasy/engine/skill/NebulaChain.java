@@ -2,10 +2,7 @@ package cfvbaibai.cardfantasy.engine.skill;
 
 import java.util.List;
 
-import cfvbaibai.cardfantasy.engine.CardInfo;
-import cfvbaibai.cardfantasy.engine.HeroDieSignal;
-import cfvbaibai.cardfantasy.engine.SkillResolver;
-import cfvbaibai.cardfantasy.engine.SkillUseInfo;
+import cfvbaibai.cardfantasy.engine.*;
 
 public final class NebulaChain {
     public static void apply(SkillUseInfo skillUseInfo, SkillResolver resolver, CardInfo attacker) throws HeroDieSignal {
@@ -29,5 +26,7 @@ public final class NebulaChain {
         }
         resolver.getStage().getUI().useSkill(attacker, target, skillUseInfo.getSkill(), true);
         resolver.summonCard(attacker.getOwner(), target, null, false, skillUseInfo.getSkill());
+        CardStatusItem item = CardStatusItem.weak(skillUseInfo);
+        target.addStatus(item);
     }
 }

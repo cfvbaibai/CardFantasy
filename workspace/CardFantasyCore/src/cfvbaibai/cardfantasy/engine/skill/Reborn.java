@@ -6,10 +6,13 @@ import cfvbaibai.cardfantasy.data.SkillType;
 import cfvbaibai.cardfantasy.engine.*;
 
 public final class Reborn {
-    public static void apply(SkillResolver resolver, Skill cardSkill, CardInfo card, boolean unbending) throws HeroDieSignal {
+    public static void apply(SkillResolver resolver, SkillUseInfo skillUseInfo, CardInfo card, boolean unbending) throws HeroDieSignal {
         Player player = card.getOwner();
         if (unbending) {
             return ; // The card is unbending!
+        }
+        if (card.isSummonedMinion()) {
+            return ; // 召唤物不发动司命
         }
         if (!player.getGrave().contains(card) && player.getField().contains(card)) {
             // 不屈中，此时不发动司命
@@ -21,6 +24,7 @@ public final class Reborn {
             return;
         }
         int rate;
+        Skill cardSkill = skillUseInfo.getSkill();
         if(cardSkill.getType()== SkillType.不灭||cardSkill.getType()== SkillType.顽强)
         {
             rate = cardSkill.getImpact3();
@@ -37,7 +41,11 @@ public final class Reborn {
             Grave grave = card.getOwner().getGrave();
             grave.removeCard(card);
           //  player.getField().addCard(card);
+
             resolver.summonCard(card.getOwner(), card, card, true, cardSkill,1);//司命可以发动降临技能
+            CardStatusItem item = CardStatusItem.weak(skillUseInfo);
+            resolver.getStage().getUI().addCardStatus(card, card, cardSkill, item);
+            card.addStatus(item);
         }
     }
 }

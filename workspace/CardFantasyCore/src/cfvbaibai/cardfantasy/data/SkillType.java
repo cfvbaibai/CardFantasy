@@ -112,6 +112,7 @@ public enum SkillType {
     化学风暴("", 700, 0, 50, 0, SkillTag.魔法),
     凤鸣("",500,0,SkillTag.魔法),
     淬毒手里剑("", 300, 0, 150, 0, SkillTag.魔法),
+    八重红彼岸("", 300,0,1100,0, SkillTag.魔法,SkillTag.法术扼杀),
 
 
     狙击("", 0, 0, new int[] { 0, 25, 50, 75, 100, 125, 150, 175, 200, 225, 250 }, SkillTag.抗免疫, SkillTag.狙击),
@@ -192,6 +193,7 @@ public enum SkillType {
     盾刺("30972", 20, SkillTag.抗免疫, SkillTag.反击),
     荆棘术("30972", 160, 40, SkillTag.抗免疫, SkillTag.反击),
     刚烈("", 800, 0, SkillTag.抗免疫, SkillTag.反击),
+    冥界行者("", 0,SkillTag.抗夺魂),
 
     转生("30935", 30, 5),
     武形秘仪("", 70, 0),
@@ -204,6 +206,9 @@ public enum SkillType {
     凤凰涅盘("", 100, 0),
     //特别处理守护三
     诲人不倦("",65,0,SkillTag.守护),
+
+    回生("",0, 0, new int[]{ 50, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100 }),
+    不凋花("",0, 0, new int[]{ 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100 },SkillTag.抗夺魂),
 
     裂伤("30963", 0, SkillTag.抗免疫, SkillTag.抗不屈, SkillTag.魔王无效),
     全体裂伤("", 0, SkillTag.抗免疫, SkillTag.抗不屈),
@@ -271,8 +276,8 @@ public enum SkillType {
     精神污染("", 10),
     圣洁魅惑("", 0),
     学园骚乱("", 0),
-    无我境界("", 70, 0, SkillTag.控制, SkillTag.魔王无效),
-
+    无我境界("", 70, 0, SkillTag.控制),
+    怨魂附身("",  0, SkillTag.控制),
     连续魔法("", 10),
     黄天当立("", 80,0),
     连奏("", 60,0),
@@ -309,6 +314,7 @@ public enum SkillType {
     阻碍("31159", 0, 1),
     加速("57019", 0, 1),
     全体加速("56751", 0, 1),
+    冥域牢囚("", 1, 0),
 
     净化("31160", 0),
     净魂领域("", 0),
@@ -365,6 +371,7 @@ public enum SkillType {
     魔力印记("", 20),
     酩酊("",155,0),
     东风("",175,0),
+    灵力魔阵("", 150,0),
 
     燕返("", 0, 0),
     袈裟斩燕返("", 0, 0),
@@ -430,12 +437,13 @@ public enum SkillType {
     三国英才("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
     三国武魂("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
     繁星("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
-    星河召唤("", 0, 0,SkillTag.召唤),
+    星河召唤("", 0, 0,SkillTag.召唤,SkillTag.不可洗炼),
+    樱色轮舞("", 0, 0,SkillTag.召唤,SkillTag.不可洗炼),
 
     //生成卡牌置入战场
-    魏国英魂("", 2, 0),
-    蜀国英魂("", 2, 0),
-    吴国英魂("", 2, 0),
+    魏国英魂("", 2, 0,SkillTag.抗夺魂),
+    蜀国英魂("", 2, 0,SkillTag.抗夺魂),
+    吴国英魂("", 2, 0,SkillTag.抗夺魂),
 
 
     圣光洗礼("", 0, 0, SkillTag.抗免疫, SkillTag.不可洗炼, SkillTag.魔王无效, SkillTag.魔族天赋),
@@ -578,7 +586,7 @@ public enum SkillType {
     隐遁之术("",SkillType.无刀取,0,null,0),
 
     //给对手手牌添加技能
-    突突突("",SkillType.炼金失败,0,null,0,SkillTag.魔王无效, SkillTag.魔族天赋),
+    突突突("",SkillType.炼金失败,0,null,0,SkillTag.魔王无效, SkillTag.魔族天赋,SkillTag.抗免疫),
     新卡作成("",SkillType.炼金失败,0,null,0,SkillTag.魔王无效, SkillTag.魔族天赋),
     // To Do
 

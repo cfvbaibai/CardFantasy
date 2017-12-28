@@ -7,6 +7,7 @@ import java.util.List;
 import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
 import cfvbaibai.cardfantasy.Randomizer;
 import cfvbaibai.cardfantasy.data.Skill;
+import cfvbaibai.cardfantasy.data.SkillTag;
 import cfvbaibai.cardfantasy.data.SkillType;
 import cfvbaibai.cardfantasy.engine.*;
 import cfvbaibai.cardfantasy.game.DeckBuilder;
@@ -100,11 +101,15 @@ public class Summon {
         }
         for (int i = 0; i < cardsToSummon.size(); ++i) {
             CardInfo summonedCard = cardsToSummon.get(i);
-            if (summonType != SummonType.Summoning && summonType != SummonType.RandomSummoning) {
+            //去掉降临召唤不添加复活，所有召唤都添加复活状态，回合开始移除。
+            //   if (summonType != SummonType.Summoning && summonType != SummonType.RandomSummoning) {
+            //新生召唤的可以直接攻击。
+            if (!skillUseInfo.getType().containsTag(SkillTag.新生)){
                 CardStatusItem weakStatusItem = CardStatusItem.weak(skillUseInfo);
                 resolver.getStage().getUI().addCardStatus(summoner, summonedCard, skill, weakStatusItem);
                 summonedCard.addStatus(weakStatusItem);
-            }
+             }
+         //   }
             CardStatusItem summonedStatusItem = CardStatusItem.summoned(skillUseInfo);
             resolver.getStage().getUI().addCardStatus(summoner, summonedCard, skill, summonedStatusItem);
             summonedCard.addStatus(summonedStatusItem);

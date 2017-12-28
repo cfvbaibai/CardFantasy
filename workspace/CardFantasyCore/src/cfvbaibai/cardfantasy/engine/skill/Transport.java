@@ -29,5 +29,7 @@ public final class Transport {
         resolver.getStage().getUI().cardToGrave(defenderHero, cardToTransport);
         defenderHero.getHand().removeCard(cardToTransport);
         defenderHero.getGrave().addCard(cardToTransport);
+        //传送移除附加技能
+        resolver.resolveLeaveSkills(cardToTransport);
     }
 }

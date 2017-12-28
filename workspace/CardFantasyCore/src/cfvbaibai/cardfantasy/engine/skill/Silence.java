@@ -11,7 +11,7 @@ import cfvbaibai.cardfantasy.engine.*;
 public class Silence {
     public static void apply(SkillResolver resolver, SkillUseInfo skillUseInfo, EntityInfo caster, Player defenderHero, boolean isTargetAll, boolean onlyCastOnce) throws HeroDieSignal {
         if (onlyCastOnce) {
-            if (resolver.getStage().hasUsed(skillUseInfo)) {
+            if (resolver.getStage().hasUsed(skillUseInfo)&&resolver.getStage().hasPlayerUsed(skillUseInfo.getOwner().getOwner())) {
                 return;
             }
             if(caster instanceof CardInfo){
@@ -54,7 +54,10 @@ public class Silence {
                     resolver.getStage().setUsed(summonSkillInfo, true);
                 }
             }
-            resolver.getStage().setUsed(skillUseInfo, true);
+            if(!resolver.getStage().hasUsed(skillUseInfo)) {
+                resolver.getStage().setUsed(skillUseInfo, true);
+            }
+            resolver.getStage().setPlayerUsed(skillUseInfo.getOwner().getOwner(), true);
         }
     }
 }

@@ -10,7 +10,7 @@ public final class EnergyIncrement {
         if (caster == null) {
             return;
         }
-        if (resolver.getStage().hasUsed(skillUseInfo)) {
+        if (resolver.getStage().hasUsed(skillUseInfo)&&resolver.getStage().hasPlayerUsed(skillUseInfo.getOwner().getOwner())) {
             return;
         }
         resolver.getStage().getUI().useSkill(caster, skillUseInfo.getSkill(), true);
@@ -18,6 +18,9 @@ public final class EnergyIncrement {
             runeInfo.setEnergy(runeInfo.getEnergy() + 1);
             resolver.getStage().getUI().updateRuneEnergy(runeInfo);
         }
-        resolver.getStage().setUsed(skillUseInfo, true);
+        if(!resolver.getStage().hasUsed(skillUseInfo)) {
+            resolver.getStage().setUsed(skillUseInfo, true);
+        }
+        resolver.getStage().setPlayerUsed(skillUseInfo.getOwner().getOwner(), true);
     }
 }

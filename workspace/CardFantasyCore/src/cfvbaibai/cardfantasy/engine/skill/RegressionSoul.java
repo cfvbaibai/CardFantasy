@@ -13,7 +13,7 @@ import cfvbaibai.cardfantasy.engine.SkillResolver;
 import cfvbaibai.cardfantasy.engine.SkillUseInfo;
 
 public final class RegressionSoul {
-    public static void apply(SkillResolver resolver, SkillUseInfo skillUseInfo, CardInfo resurrector) {
+    public static void apply(SkillResolver resolver, SkillUseInfo skillUseInfo, CardInfo resurrector,Player opponent) {
         if (resurrector == null) {
             throw new CardFantasyRuntimeException("resurrector should not be null");
         }
@@ -29,6 +29,10 @@ public final class RegressionSoul {
         if (cardsToResurrect.size() > resurrectionCount) {
             throw new CardFantasyRuntimeException("cardsToResurrect.size() = " + cardsToResurrect.size() + ", resurrectionCount = " + resurrectionCount);
         }
+        if(cardsToResurrect.size()==0)
+        {
+            return;
+        }
         GameUI ui = resolver.getStage().getUI();
         ui.useSkill(resurrector, cardsToResurrect, skill, true);
         for (CardInfo card : cardsToResurrect) {
@@ -40,5 +44,6 @@ public final class RegressionSoul {
                 hand.addCard(card);
             }
         }
+        HellPrison.apply(resolver,opponent,player);
     }
 }
