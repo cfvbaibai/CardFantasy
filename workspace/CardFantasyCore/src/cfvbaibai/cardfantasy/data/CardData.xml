@@ -746,10 +746,10 @@
         <Skill type="圣器召唤" level="0" unlock="5" />
         <Skill type="弱点攻击" level="0" unlock="10" />
     </Card>
-    <Card id="1539" name="制裁之锤" wikiId="" race="王国" speed="4" star="5" cost="18" incrCost="2" at="350" hp="1720" incrAT="41" incrHP="44">
-        <Skill type="魔力法阵" level="7" unlock="0" />
-        <Skill type="雷神降临" level="8" unlock="5" />
-        <Skill type="破魔手" level="8" unlock="10" />
+    <Card id="1539" name="制裁之锤" wikiId="" race="王国" speed="3" star="5" cost="18" incrCost="2" at="430" hp="1870" incrAT="41" incrHP="44">
+        <Skill type="灵力魔阵" level="0" unlock="0" />
+        <Skill type="雷神降临" level="10" unlock="5" />
+        <Skill type="雷霆一击" level="4" unlock="10" />
     </Card>
     <Card id="1540" name="红莲魔女" wikiId="" race="王国" speed="3" star="5" cost="17" incrCost="2" at="385" hp="1770" incrAT="41" incrHP="42">
         <Skill type="离间" level="0" unlock="0" />
@@ -1983,6 +1983,11 @@
         <Skill type="骤雨" level="7" unlock="5" />
         <Skill type="结界立场" level="0" unlock="10"/>
     </Card>
+    <Card id="2583" name="丹樱巫女" wikiId="" race="森林" speed="3" star="5" cost="18" incrCost="2" at="565" hp="1625" incrAT="30" incrHP="31">
+        <Skill type="樱色轮舞" level="0" unlock="0"/>
+        <Skill type="八重红彼岸" level="0" unlock="5" />
+        <Skill type="坚毅" level="0" unlock="10"/>
+    </Card>
 
     <!-- 蛮荒  -->
     <Card id="3101" name="穴居人奴隶" wikiId="31006" race="蛮荒" speed="2" star="1" cost="4" incrCost="2" at="90" hp="390" incrAT="18" incrHP="11">
@@ -2635,9 +2640,9 @@
         <Skill type="贪吃" level="7" unlock="5" />
         <Skill type="不动" level="0" unlock="10" />
     </Card>
-    <Card id="3529" name="断罪之镰" wikiId="" race="蛮荒" speed="4" star="5" cost="18" incrCost="2" at="380" hp="1440" incrAT="48" incrHP="28">
+    <Card id="3529" name="断罪之镰" wikiId="" race="蛮荒" speed="3" star="5" cost="18" incrCost="2" at="465" hp="1595" incrAT="48" incrHP="28">
         <Skill type="毒刃" level="0" unlock="0" />
-        <Skill type="战意" level="8" unlock="5" />
+        <Skill type="鬼王之怒" level="0" unlock="5" />
         <Skill type="弱点攻击" level="0" unlock="10" />
     </Card>
     <Card id="3530" name="创世神女" wikiId="" race="蛮荒" speed="4" star="5" cost="19" incrCost="1" at="345" hp="1720" incrAT="37" incrHP="39">
@@ -3841,6 +3846,11 @@
         <Skill type="蜀国英魂" level="0" unlock="0" />
         <Skill type="蜀汉无双" level="0" unlock="5" />
         <Skill type="乐不思蜀" level="0" unlock="10" />
+    </Card>
+    <Card id="4587" name="冥蝶妖姬" wikiId="" race="地狱" speed="1" star="5" cost="20" incrCost="2" at="575" hp="1600" incrAT="32" incrHP="30">
+        <Skill type="冥域牢囚" level="0" unlock="0" />
+        <Skill type="怨魂附身" level="0" unlock="5" />
+        <Skill type="不凋花" level="0" unlock="10" />
     </Card>
 
     <!-- 魔神 -->

@@ -101,6 +101,7 @@ public class SummonSkillTest extends SkillValidationTest {
 
         random.addNextPicks(1); // 献祭幽灵巨鲸
         random.addNextNumbers(0); // 转生成功
+        random.addNextPicks(1);
         context.proceedOneRound();
 
         Assert.assertEquals(1, context.getPlayer(0).getField().size());

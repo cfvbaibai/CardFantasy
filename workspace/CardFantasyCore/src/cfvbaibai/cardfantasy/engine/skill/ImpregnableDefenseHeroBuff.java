@@ -25,7 +25,20 @@ public final class ImpregnableDefenseHeroBuff {
         Skill skill = skillUseInfo.getSkill();
         int impact = skill.getImpact();
         Player atacter = card.getOwner();
-        int coefficient = atacter.getCoefficient()*100/impact;
+        int coefficient=100;
+
+        if(impact==0)
+        {
+             coefficient =100;//暂时hack一下铁壁10
+
+        }
+        else{
+            coefficient = atacter.getCoefficient()*100/impact;
+        }
+        if(coefficient>100)
+        {
+            coefficient=100;//hack一下某些情况下铁壁非正常移除。
+        }
         atacter.setCoefficient(coefficient);
     }
 }

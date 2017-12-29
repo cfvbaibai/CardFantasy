@@ -499,7 +499,7 @@ public class SpecificRuneTest extends SkillValidationTest {
         context.proceedOneRound();
         Assert.assertTrue(r磐石.isActivated());
         Assert.assertEquals(2, context.getPlayer(0).getField().size());
-        Assert.assertEquals(1, context.getPlayer(0).getHand().size());
-        Assert.assertEquals(0, context.getPlayer(0).getGrave().size());
+        Assert.assertEquals(0, context.getPlayer(0).getHand().size());
+        Assert.assertEquals(1, context.getPlayer(0).getGrave().size());
     }
 }

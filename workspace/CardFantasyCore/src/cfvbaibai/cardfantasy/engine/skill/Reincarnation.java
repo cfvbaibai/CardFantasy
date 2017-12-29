@@ -11,7 +11,7 @@ import cfvbaibai.cardfantasy.engine.Player;
 import cfvbaibai.cardfantasy.engine.SkillResolver;
 
 public final class Reincarnation {
-    public static boolean apply(SkillResolver resolver, Skill cardSkill, CardInfo card, boolean unbending) {
+    public static boolean apply(SkillResolver resolver, Skill cardSkill, CardInfo card, boolean unbending,Player opponent) {
         Player player = card.getOwner();
         if (!card.isDead() || unbending) {
             return false; // The card is unbending!
@@ -67,6 +67,7 @@ public final class Reincarnation {
                 ui.cardToHand(card.getOwner(), card);
                 hand.addCard(card);
             }
+            HellPrison.apply(resolver,opponent,player);
             return true;
         }
         return false;

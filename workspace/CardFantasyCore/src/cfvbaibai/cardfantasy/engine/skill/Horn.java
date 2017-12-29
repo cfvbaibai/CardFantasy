@@ -26,7 +26,7 @@ public final class Horn {
         resolver.getStage().getUI().useSkill(attacker, target, skillUseInfo.getSkill(), true);
         resolver.summonCard(attacker.getOwner(), target, null, false, skillUseInfo.getSkill());
         CardStatusItem item = CardStatusItem.weak(skillUseInfo);
+        resolver.getStage().getUI().addCardStatus(attacker, target, skillUseInfo.getSkill(), item);
         target.addStatus(item);
-
     }
 }

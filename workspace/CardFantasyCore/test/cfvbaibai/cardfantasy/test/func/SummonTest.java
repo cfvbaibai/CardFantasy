@@ -121,7 +121,7 @@ public class SummonTest extends SkillValidationTest {
     }
 
     /**
-     * 召唤技能类似背刺、封印，属于一次性技能
+     * 召唤技能类似背刺、封印，属于一次性技能//随机数bug可能是因为filed包含player所以替换陨星为占位符
      */
     @Test
     public void test召唤王国战士_复活再召唤() {
@@ -142,18 +142,18 @@ public class SummonTest extends SkillValidationTest {
         random.addNextPicks(0); // 复活陨星魔法使
         context.proceedOneRound();
         Assert.assertEquals(4, fieldA.size()); // 现在无法重新召唤
-        
+
         random.addNextNumbers(0, 0); // 金属巨龙暴击杀死圣骑士
         context.proceedOneRound();
         Assert.assertEquals(3, fieldA.size());
-        
-        random.addNextPicks(0);  // 陨星魔法使寒霜冲击
+
+      //  random.addNextPicks(0);  // 陨星魔法使寒霜冲击
         context.proceedOneRound();
         Assert.assertEquals(3, fieldA.size()); // 复活者无法复活仆从，陨星魔法重新召唤
 
         context.addToField(3, 1); // 女神侍者上场
         random.addNextNumbers(0, 0); // 金属巨龙暴击杀死魔剑士
-        random.addNextPicks(2).addNextNumbers(0); // 女神侍者冰冻陨星魔法使
+        random.addNextPicks(1).addNextNumbers(0); // 女神侍者冰冻陨星魔法使
         context.proceedOneRound();
         Assert.assertEquals(2, fieldA.size());
 
@@ -164,8 +164,8 @@ public class SummonTest extends SkillValidationTest {
         random.addNextPicks(0).addNextNumbers(1000); // 女神侍者不冰冻
         context.proceedOneRound();
         Assert.assertEquals(2, fieldA.size());
-        
-        random.addNextPicks(0, 1).addNextNumbers(1000);  // 陨星魔法使寒霜冲击
+
+    //    random.addNextPicks(0, 1).addNextNumbers(1000);  // 陨星魔法使寒霜冲击
         context.proceedOneRound();
         Assert.assertEquals(4, fieldA.size()); // 陨星魔法使可以行动了，召唤
     }

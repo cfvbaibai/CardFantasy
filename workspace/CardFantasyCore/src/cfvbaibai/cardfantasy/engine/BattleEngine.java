@@ -179,6 +179,7 @@ public class BattleEngine {
 
     private Phase summonCards() throws HeroDieSignal {
         Player player = this.getActivePlayer();
+        this.stage.getResolver().setStagePhase(Phase.召唤);
         for (CardInfo card : this.getActivePlayer().getField().getAliveCards()) {
             this.stage.getResolver().removeStatus(card, CardStatusType.复活);
         }
@@ -206,6 +207,7 @@ public class BattleEngine {
     }
 
     private Phase roundEnd() throws HeroDieSignal {
+        this.stage.getResolver().setStagePhase(Phase.结束);
         for (CardInfo card : this.getActivePlayer().getGrave().toList()) {
             this.stage.getResolver().resolvePostcastSkills(card, this.getInactivePlayer());
         }
@@ -244,6 +246,7 @@ public class BattleEngine {
          */
 
         SkillResolver resolver = stage.getResolver();
+        this.stage.getResolver().setStagePhase(Phase.战斗);
         GameUI ui = stage.getUI();
 
         ui.battleBegins();
@@ -577,7 +580,7 @@ public class BattleEngine {
         }
 
         this.stage.getResolver().deactivateRunes(player);
-
+        this.stage.getResolver().setStagePhase(Phase.开始);
         this.stage.getUI().roundStarted(player, this.stage.getRound());
         int thresholdRound = 51;
 
@@ -595,6 +598,7 @@ public class BattleEngine {
 
     private Phase drawCard() {
         Player activePlayer = this.getActivePlayer();
+        this.stage.getResolver().setStagePhase(Phase.抽卡);
         Hand hand = activePlayer.getHand();
         if (hand.size() >= this.stage.getRule().getMaxHandCards()) {
             stage.getUI().cantDrawHandFull(activePlayer);

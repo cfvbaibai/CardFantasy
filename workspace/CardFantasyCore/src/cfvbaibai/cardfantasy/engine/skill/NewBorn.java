@@ -10,7 +10,7 @@ import cfvbaibai.cardfantasy.GameUI;
 import cfvbaibai.cardfantasy.Randomizer;
 
 public class NewBorn {
-    public static void apply(SkillResolver resolver, SkillUseInfo skillUseInfo, CardInfo card,int victimCount) throws HeroDieSignal{
+    public static void apply(SkillResolver resolver, SkillUseInfo skillUseInfo, CardInfo card,Player defender,int victimCount) throws HeroDieSignal{
         if (card == null || card.isDead())  {
             throw new CardFantasyRuntimeException("card should not be null or dead!");
         }
@@ -26,7 +26,7 @@ public class NewBorn {
         for (CardInfo victim : victims) {
             if (!victim.containsAllUsableSkillsWithTag(SkillTag.新生)) {
                 for (SkillUseInfo victimSkillUseInfo : victim.getAllUsableSkillsIgnoreSilence()) {
-                    resolver.getStage().removeUsed(victimSkillUseInfo);
+                    resolver.getStage().removeUsed(victimSkillUseInfo,skillUseInfo.getOwner().getOwner(),defender);
                 }
                 ui.useSkill(card, victim, skillUseInfo.getSkill(), true);
                 OnDamagedResult result = new OnDamagedResult();
