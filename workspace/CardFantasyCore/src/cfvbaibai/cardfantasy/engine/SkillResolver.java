@@ -1542,15 +1542,10 @@ public class SkillResolver {
                     // 被召唤的卡牌不进入墓地，而是直接死亡
                     return DeadType.PhantomDiminished;
                 }
-                if(card.getOriginalOwner()!=null&&card.getOriginalOwner()==card.getOwner())
-                {
-                    card.restoreOwner();
-                    return DeadType.SoulCrushed;
-                }
-                card.restoreOwner();
                 if(killingSkill != null&&killingSkill.getType().containsTag(SkillTag.法术扼杀)&&deadCard.getRace() != Race.BOSS && deadCard.getRace() != Race.DEMON)
                 {
                     this.getStage().getUI().useSkill(attacker, killingSkill, true);
+                    card.restoreOwner();
                     owner.getOutField().addCard(card);
                     return DeadType.SoulCrushed;
                 }
@@ -1561,6 +1556,7 @@ public class SkillResolver {
                         RuneInfo rune = attacker.getOwner().getActiveRuneOf(RuneData.逆流);
                         if (rune != null ) {
                             this.getStage().getUI().useSkill(attacker, rune.getSkill(), true);
+                            card.restoreOwner();
                             owner.getOutField().addCard(card);
                             return DeadType.SoulCrushed;
                         }
@@ -1571,12 +1567,20 @@ public class SkillResolver {
                                     break;
                                 }
                                 this.getStage().getUI().useSkill(attacker, skillUseInfo.getSkill(), true);
+                                card.restoreOwner();
                                 owner.getOutField().addCard(card);
                                 return DeadType.SoulCrushed;
                             }
                         }
                     }
                 }
+                if(card.getOriginalOwner()!=null&&card.getOriginalOwner()!=card.getOwner())
+                {
+                    card.restoreOwner();
+                    card.getOwner().getGrave().addCard(card);
+                    return DeadType.SoulCrushed;
+                }
+                card.restoreOwner();
                 card.getOwner().getGrave().addCard(card);
                 break;
             }

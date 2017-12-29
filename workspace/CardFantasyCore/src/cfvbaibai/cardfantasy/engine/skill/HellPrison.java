@@ -14,6 +14,10 @@ public final class HellPrison {
         Randomizer random = stage.getRandomizer();
         List<CardInfo> fileCard = random.pickRandom(defender.getField().toList(), -1, true, null);
         for(CardInfo attackerCard :fileCard) {
+            if(attackerCard==null)
+            {
+                continue;
+            }
             if(!attackerCard.containsUsableSkill(SkillType.冥域牢囚))
             {
                 continue;

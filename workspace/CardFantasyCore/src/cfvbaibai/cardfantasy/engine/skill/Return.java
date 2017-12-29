@@ -41,14 +41,8 @@ public final class Return {
             {
                 index = Randomizer.getRandomizer().next(0, deckSize);
             }
-            if(defender.getOriginalOwner()!=null)
-            {
-                defender.restoreOwner();
-                defender.getOriginalOwner().getDeck().insertCardToPosition(defender, index);
-            }
-           else {
-                defender.getOwner().getDeck().insertCardToPosition(defender, index);
-            }
+            defender.restoreOwner();
+            defender.getOwner().getDeck().insertCardToPosition(defender, index);
             defender.reset();
 
         }
@@ -88,14 +82,8 @@ public final class Return {
 //            {
 //                index = Randomizer.getRandomizer().next(0, deckSize);
 //            }
-            if(defender.getOriginalOwner()!=null)
-            {
                 defender.restoreOwner();
-                defender.getOriginalOwner().getDeck().insertCardToPosition(defender, index);
-            }
-            else {
                 defender.getOwner().getDeck().insertCardToPosition(defender, index);
-            }
             defender.reset();
         }
         resolver.resolveLeaveSkills(defender);

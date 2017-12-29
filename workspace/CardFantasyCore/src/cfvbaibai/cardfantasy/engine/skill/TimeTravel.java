@@ -55,12 +55,9 @@ public class TimeTravel {
 
                     ui.returnCard(caster, card, skillUseInfo.getSkill());
                     if (!card.getStatus().containsStatus(CardStatusType.召唤)) {
-                        if (card.getOriginalOwner() != null) {
-                            card.restoreOwner();
-                            card.getOriginalOwner().getDeck().addCard(card);
-                        } else {
-                            player.getDeck().addCard(card);
-                        }
+                        card.restoreOwner();
+                        card.getOwner().getDeck().addCard(card);
+
                     }
                     player.getField().removeCard(card);
                 }

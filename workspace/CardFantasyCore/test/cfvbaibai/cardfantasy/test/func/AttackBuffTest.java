@@ -370,14 +370,13 @@ public class AttackBuffTest extends SkillValidationTest {
     @Test
     public void test同调_召唤物() {
         SkillTestContext context = prepare(
-            50, 50, "秘银巨石像+森林同调1", "星夜女神", "占位符");
+            50, 50, "秘银巨石像+森林同调1", "占位符+召唤树人守护者", "占位符");
         context.addToField(0, 0);
         context.addToHand(1, 0).setSummonDelay(0);
         CardInfo c占位符 = context.addToField(2, 1);
         context.startGame();
-
         context.proceedOneRound();
-        Assert.assertEquals(810 * 101 / 100, 5000 - c占位符.getHP());
+        Assert.assertEquals(810 * 100 / 100, 5000 - c占位符.getHP());
     }
     
     /**

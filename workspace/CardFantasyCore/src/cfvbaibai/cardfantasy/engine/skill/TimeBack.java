@@ -55,12 +55,8 @@ public class TimeBack {
                         }
                     }
                     if (!card.getStatus().containsStatus(CardStatusType.召唤)) {
-                        if (card.getOriginalOwner() != null) {
                             card.restoreOwner();
-                            card.getOriginalOwner().getDeck().addCard(card);
-                        } else {
-                            player.getDeck().addCard(card);
-                        }
+                            card.getOwner().getDeck().addCard(card);
                     }
                     player.getField().removeCard(card);
                 }
