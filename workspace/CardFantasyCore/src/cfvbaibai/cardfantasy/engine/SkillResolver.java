@@ -560,6 +560,13 @@ public class SkillResolver {
                 if (defender.getField().getAliveCards().size() < 5) {
                     ThunderStrike.apply(skillUseInfo.getAttachedUseInfo2(), this, attacker, defender, 3);
                 }
+            } else if (skillUseInfo.getType() == SkillType.觉醒圣光惩戒) {
+                if (defender.getField().getAliveCards().size() >= 5) {
+                    LighteningMagic.apply(skillUseInfo.getAttachedUseInfo1(), this, attacker, defender, -1, 75);
+                }
+                if (defender.getField().getAliveCards().size() < 5) {
+                    Bless.apply(skillUseInfo.getAttachedUseInfo2().getSkill(), this, attacker);
+                }
             } else if (skillUseInfo.getType() == SkillType.觉醒异端审判) {
                 if (defender.getField().getAliveCards().size() >= 5) {
                     SoulCrash.apply(skillUseInfo.getAttachedUseInfo1(), this, attacker, defender);
@@ -1054,7 +1061,7 @@ public class SkillResolver {
                     result.setDamage(PhysicalArmor.apply(blockSkillUseInfo.getSkill(), this, cardAttacker, defender,
                             result.getDamage()));
                 }
-                if (blockSkillUseInfo.getType() == SkillType.水流护甲 || blockSkillUseInfo.getType() == SkillType.真夏通雨 || blockSkillUseInfo.getType() == SkillType.传承黯影) {
+                if (blockSkillUseInfo.getType() == SkillType.水流护甲 || blockSkillUseInfo.getType() == SkillType.真夏通雨 || blockSkillUseInfo.getType() == SkillType.水流壁 || blockSkillUseInfo.getType() == SkillType.传承黯影) {
                     result.setDamage(WaterArmor.apply(blockSkillUseInfo.getSkill(), this, cardAttacker, defender, result.getDamage()));
                 }
             }
@@ -1961,7 +1968,7 @@ public class SkillResolver {
                             "三国英魂子龙", "三国英魂翼德", "三国英魂奉先", "三国英魂孟起", "三国樱魂文远", "三国英魂云长", "三国英魂元让", "三国英魂汉升", "三国英魂子义");
                 } else if (skillUseInfo.getType() == SkillType.星河召唤) {
                     Summon.apply(this, skillUseInfo, card, SummonType.RandomSummoning, 2,
-                            "精灵游骑兵", "蝶语仙子", "人马大贤者", "洞察之鹰");
+                            "精灵游骑兵", "蝶语仙子", "人马大贤者", "洞察之鹰","森林弹唱者","森林女神");
                 } else if (skillUseInfo.getType() == SkillType.新生) {
                     NewBorn.apply(this, skillUseInfo, card, enemy, 1);
                 }
