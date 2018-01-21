@@ -537,7 +537,7 @@ public enum SkillType {
     影青龙("", 0,0,SkillTag.召唤),
     漫天风雪("", SkillType.寒霜冲击,7,SkillType.寒冰触碰,5),
     寒心恨雪("", SkillType.镜像,0, SkillType.骤雨,7,SkillTag.召唤),
-
+    栗子军团("",SkillType.归魂,1, SkillType.镜像,0,SkillTag.召唤),
 
 
     新生("",0,0,SkillTag.新生),
@@ -586,6 +586,7 @@ public enum SkillType {
     //给自身场上所有卡牌添加技能
     致命晶莹("",SkillType.霜火炸弹,0,null,0),
     乐不思蜀("",SkillType.治愈音符,0,null,0),
+    御魔屏障("",SkillType.魔甲,2,null,0),
 
     //给自身场上所有卡牌添加技能除自己以外
     隐遁之术("",SkillType.无刀取,0,null,0),

@@ -37,6 +37,12 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2017-01-21: <x>欢笑，波波</x><ul>
+                        <li>调整先机镜像召唤出来的卡可以正常攻击</li>
+                        <li>修复夺魂卡牌死亡时在极复杂的情况下导致回魂归魂等结算不正常的bug</li>
+                        <li>添加新卡【小栗丸】</li>
+                        <li>添加符文【破军】</li>
+                    </ul></li>
                     <li>2017-01-15: <x>欢笑，波波</x><ul>
                         <li>修复因修改【新生】技能机制，导致【司命】和【顽强】被【新生】时结算错误的BUG</li>
                         <li>添加新卡【冥河之主】</li>

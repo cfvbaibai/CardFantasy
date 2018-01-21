@@ -18,6 +18,11 @@ public final class Reborn {
             // 不屈中，此时不发动司命
             return ;
         }
+        //处理顽强司命情况下，卡牌已经回到场上
+        if(card.isAlive())
+        {
+            return;
+        }
         if(!player.getGrave().contains(card))
         {
             //夺魂处理墓地没有卡牌,不发动。

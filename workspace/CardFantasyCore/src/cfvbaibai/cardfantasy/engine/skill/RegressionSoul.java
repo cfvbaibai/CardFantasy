@@ -36,11 +36,11 @@ public final class RegressionSoul {
         GameUI ui = resolver.getStage().getUI();
         ui.useSkill(resurrector, cardsToResurrect, skill, true);
         for (CardInfo card : cardsToResurrect) {
-            Hand hand = card.getOwner().getHand();
+            Hand hand = player.getHand();
             if (hand.isFull()) {
             } else {
+                ui.cardToHand(player, card);
                 player.getGrave().removeCard(card);
-                ui.cardToHand(card.getOwner(), card);
                 hand.addCard(card);
             }
         }

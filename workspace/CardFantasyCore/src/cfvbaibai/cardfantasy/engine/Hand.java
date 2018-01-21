@@ -1,6 +1,8 @@
 package cfvbaibai.cardfantasy.engine;
 
 
+import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
+
 public class Hand extends CardPile {
     
     private Rule rule;
@@ -14,6 +16,7 @@ public class Hand extends CardPile {
 
     @Override
     public CardInfo addCard(CardInfo newCard) {
+        newCard.restoreOwner();
         super.addCard(newCard);
         newCard.resetSummonDelay();
         return newCard;
