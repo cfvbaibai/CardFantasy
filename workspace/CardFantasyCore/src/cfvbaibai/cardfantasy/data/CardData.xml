@@ -4347,6 +4347,11 @@
         <Skill type="原素裂变" level="0" unlock="5" />
         <Skill type="不灭原核" level="0" unlock="10" />
     </Card>
+    <Card id="6104" name="小栗丸" wikiId="" race="魔族" speed="3" star="4" cost="17" incrCost="2" at="345" hp="1650" incrAT="33" incrHP="28">
+        <Skill type="御魔屏障" level="0" unlock="0" />
+        <Skill type="灵王的轰击" level="8" unlock="5" />
+        <Skill type="栗子军团" level="0" unlock="10"/>
+    </Card>
 
     <!-- 测试卡 -->
     <Card id="7501" name="熊老师" wikiId="" race="萌货" speed="4" star="5" cost="0" incrCost="0" at="400" hp="1500" incrAT="40" incrHP="50">

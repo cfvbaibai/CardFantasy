@@ -141,10 +141,10 @@ public class BattleEngine {
                     nextPhase = roundStart();
                 } else if (phase == Phase.抽卡) {
                     nextPhase = drawCard();
-                } else if (phase == Phase.准备) {
-                    nextPhase = standby();
                 } else if (phase == Phase.召唤) {
                     nextPhase = summonCards();
+                } else if (phase == Phase.准备) {
+                    nextPhase = standby();
                 } else if (phase == Phase.战斗) {
                     nextPhase = battle();
                 } else if (phase == Phase.结束) {
@@ -188,9 +188,6 @@ public class BattleEngine {
         player.getField().compact();
         this.getInactivePlayer().getField().compact();
 
-        for (CardInfo card : this.getActivePlayer().getField().getAliveCards()) {
-            this.stage.getResolver().removeStatus(card, CardStatusType.复活);
-        }
 
         return Phase.准备;
     }
@@ -202,7 +199,9 @@ public class BattleEngine {
         for (CardInfo card : this.getActivePlayer().getHand().toList()) {
             this.stage.getResolver().resolvePrecastSkills(card, this.getInactivePlayer(),true);
         }
-
+        for (CardInfo card : this.getActivePlayer().getField().getAliveCards()) {
+            this.stage.getResolver().removeStatus(card, CardStatusType.复活);
+        }
         return Phase.战斗;
     }
 

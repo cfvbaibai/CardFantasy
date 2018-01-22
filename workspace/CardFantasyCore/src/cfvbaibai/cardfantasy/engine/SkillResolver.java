@@ -143,6 +143,8 @@ public class SkillResolver {
                     AllFiledAddSkill.apply(this, skillUseInfo, card, skillUseInfo.getAttachedUseInfo1().getSkill());
                 } else if (skillUseInfo.getType() == SkillType.乐不思蜀) {
                     AllFiledAddSkill.apply(this, skillUseInfo, card, skillUseInfo.getAttachedUseInfo1().getSkill());
+                } else if (skillUseInfo.getType() == SkillType.御魔屏障) {
+                    AllFiledAddSkill.apply(this, skillUseInfo, card, skillUseInfo.getAttachedUseInfo1().getSkill());
                 }
             }
             for (SkillUseInfo skillUseInfo : card.getUsableNormalSkills()) {
@@ -1090,6 +1092,11 @@ public class SkillResolver {
         }
 
         Player opponent = this.getStage().getOpponent(deadCard.getOwner());
+        //位置調整,处理复合型结算时结算错误
+        if(result.soulControlDead)
+        {
+            deadCard.restoreOwner();
+        }
         for (SkillUseInfo deadCardSkillUseInfo : deadCard.getUsableDeathSkills()) {
             if (deadCardSkillUseInfo.getType() == SkillType.烈焰风暴) {
                 FireMagic.apply(deadCardSkillUseInfo.getSkill(), this, deadCard, opponent, -1);
@@ -1224,6 +1231,9 @@ public class SkillResolver {
                 Summon.apply(this, deadCardSkillUseInfo.getAttachedUseInfo1(), deadCard, SummonType.Normal, 1, deadCard.getName());
             } else if (deadCardSkillUseInfo.getType() == SkillType.我还会回来的) {
                 Summon.apply(this, deadCardSkillUseInfo, deadCard, SummonType.Normal, 1, "大毒汁之王-5");
+            } else if (deadCardSkillUseInfo.getType() == SkillType.栗子军团) {
+                RegressionSoul.apply(this, deadCardSkillUseInfo.getAttachedUseInfo1(), deadCard, opponent);
+                Summon.apply(this, deadCardSkillUseInfo.getAttachedUseInfo2(), deadCard, SummonType.Normal, 1, deadCard.getName());
             } else if (deadCardSkillUseInfo.getType() == SkillType.蛮荒我还会回来的) {
                 Summon.apply(this, deadCardSkillUseInfo, deadCard, SummonType.Normal, 1, "蛮荒大毒汁之王-5");
             } else if (deadCardSkillUseInfo.getType() == SkillType.召唤玫瑰剑士) {
@@ -1265,10 +1275,6 @@ public class SkillResolver {
                 }
             }
             resolveLeaveSkills(deadCard);
-        }
-        if(result.soulControlDead)
-        {
-            deadCard.restoreOwner();
         }
         if (!result.unbending) {
             deadCard.reset();
@@ -2161,6 +2167,8 @@ public class SkillResolver {
                 GiveSideSkill.remove(this, deadCardSkillUseInfo, card, deadCardSkillUseInfo.getAttachedUseInfo1().getSkill());
             } else if (deadCardSkillUseInfo.getType() == SkillType.乐不思蜀) {
                 GiveSideSkill.remove(this, deadCardSkillUseInfo, card, deadCardSkillUseInfo.getAttachedUseInfo1().getSkill());
+            } else if (deadCardSkillUseInfo.getType() == SkillType.御魔屏障) {
+                GiveSideSkill.remove(this, deadCardSkillUseInfo, card, deadCardSkillUseInfo.getAttachedUseInfo1().getSkill());
             } else if (deadCardSkillUseInfo.getType() == SkillType.隐遁之术) {
                 GiveSideSkill.remove(this, deadCardSkillUseInfo, card, deadCardSkillUseInfo.getAttachedUseInfo1().getSkill());
             } else if (deadCardSkillUseInfo.getType() == SkillType.致命打击) {
@@ -2328,7 +2336,7 @@ public class SkillResolver {
         if (!attacker.isDead() && !attacker.isSilent() && !attacker.justRevived()) {
             {
                 RuneInfo rune = attacker.getOwner().getActiveRuneOf(RuneData.鹰眼);
-                if (rune != null) {
+                if (rune != null&&!attacker.justRevived()) {
                     return WeakPointAttack.isBlockSkillDisabled(this, rune.getSkill(), cardSkill, attacker, defender);
                 }
             }
@@ -2340,6 +2348,14 @@ public class SkillResolver {
         for (SkillUseInfo attackerSkillUseInfo : attacker.getUsableNormalSkills()) {
             if (attackerSkillUseInfo.getType() == SkillType.破军 || attackerSkillUseInfo.getType() == SkillType.原素裂变) {
                 return DefeatArmy.isDefenSkillDisabled(this, attackerSkillUseInfo.getSkill(), cardSkill, attacker, defender);
+            }
+        }
+        if (!attacker.isDead() && !attacker.isSilent() && !attacker.justRevived()) {
+            {
+                RuneInfo rune = attacker.getOwner().getActiveRuneOf(RuneData.破军);
+                if (rune != null&&!attacker.justRevived()) {
+                    return DefeatArmy.isDefenSkillDisabled(this, rune.getSkill(), cardSkill, attacker, defender);
+                }
             }
         }
         return false;

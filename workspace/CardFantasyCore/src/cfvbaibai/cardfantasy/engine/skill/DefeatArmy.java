@@ -23,7 +23,7 @@ public final class DefeatArmy {
         }
         if (blockSkill.getType().containsTag(SkillTag.物理护甲) || blockSkill.getType() == SkillType.水流护甲
                 || blockSkill.getType() == SkillType.格挡 || blockSkill.getType() == SkillType.钢铁之肤
-                || blockSkill.getType() == SkillType.水流护甲 || blockSkill.getType() == SkillType.圣盾 || blockSkill.getType() == SkillType.骑士守护) {
+                || blockSkill.getType() == SkillType.水流护甲 || blockSkill.getType() == SkillType.圣盾 || blockSkill.getType() == SkillType.无刀取 || blockSkill.getType() == SkillType.骑士守护) {
             resolver.getStage().getUI().useSkill(attacker, defender, attackSkill, true);
             resolver.getStage().getUI().disableBlock(attacker, defender, attackSkill, blockSkill);
 
