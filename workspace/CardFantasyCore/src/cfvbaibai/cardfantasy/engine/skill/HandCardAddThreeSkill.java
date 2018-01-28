@@ -1,9 +1,6 @@
 package cfvbaibai.cardfantasy.engine.skill;
 
 
-import java.util.ArrayList;
-import java.util.List;
-
 import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
 import cfvbaibai.cardfantasy.data.CardSkill;
 import cfvbaibai.cardfantasy.data.Skill;
@@ -12,30 +9,42 @@ import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.SkillResolver;
 import cfvbaibai.cardfantasy.engine.SkillUseInfo;
 
-//给两个手牌添加技能
-public class HandCardAddSkill {
+import java.util.ArrayList;
+import java.util.List;
+
+//给三个手牌添加技能
+public class HandCardAddThreeSkill {
     public static void apply(SkillResolver resolver, SkillUseInfo skillUseInfo, CardInfo card, Skill addSkill) {
-        if (card == null || card.isDead()) {
-            throw new CardFantasyRuntimeException("card should not be null or dead!");
-        }
         Skill skill = skillUseInfo.getSkill();
         CardSkill cardSkill = new CardSkill(addSkill.getType(), addSkill.getLevel(), 0, false, false, false, false);
         resolver.getStage().getUI().useSkill(card, skill, true);
         List<CardInfo> allHandCards = card.getOwner().getHand().toList();
         CardInfo oneCard = null;
         CardInfo twoCard = null;
+        CardInfo threeCard = null;
         List<CardInfo> addCard = new ArrayList<CardInfo>();
         SkillUseInfo thisSkillUserInfo= null;
         boolean flag = true;
         for (CardInfo ally : allHandCards) {
             if (oneCard != null) {
                 if (ally.getSummonDelay() < oneCard.getSummonDelay()) {
+                    threeCard = twoCard;
                     twoCard = oneCard;
                     oneCard = ally;
                 }
                 else if (twoCard != null) {
                     if (ally.getSummonDelay()<twoCard.getSummonDelay()) {
+                        threeCard = twoCard;
                         twoCard = ally;
+                    }
+                    else if(threeCard !=null)
+                    {
+                        if (ally.getSummonDelay()<threeCard.getSummonDelay()) {
+                            threeCard = ally;
+                        }
+                    }
+                    else{
+                        threeCard = ally;
                     }
                 } else {
                     twoCard = ally;
@@ -50,6 +59,9 @@ public class HandCardAddSkill {
         if (twoCard != null) {
             addCard.add(twoCard);
         }
+        if (threeCard != null) {
+            addCard.add(threeCard);
+        }
         for (CardInfo once : addCard) {
             for(SkillUseInfo skillInfo:once.getSkillUserInfos())
             {
@@ -62,9 +74,6 @@ public class HandCardAddSkill {
             if(!flag)
             {
                 flag =true;
-                continue;
-            }
-            if (once.containsAllUsableSkillsWithTag(SkillTag.抗沉默)&&addSkill.getType().containsTag(SkillTag.抗沉默)) {
                 continue;
             }
             if (once.containsUsableSkill(cardSkill.getType())){

@@ -75,7 +75,7 @@ public final class CoefficientThreeBuff {
     }
 
     public static void remove(SkillResolver resolver, SkillUseInfo skillUseInfo, CardInfo card) {
-        for (CardInfo ally : card.getOwner().getField().toList()) {
+        for (CardInfo ally : card.getOwner().getField().getAliveCards()) {
             if (ally == null) {
                 continue;
             }

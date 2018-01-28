@@ -115,10 +115,12 @@ public enum SkillType {
     淬毒手里剑("", 300, 0, 150, 0, SkillTag.魔法),
     熔魂之刃("", 300, 0, 150, 0, SkillTag.魔法),
     八重红彼岸("", 300,0,1100,0, SkillTag.魔法,SkillTag.法术扼杀),
+    望月杀阵("", 400, 0, 100, 0, SkillTag.魔法),
 
 
     狙击("", 0, 0, new int[] { 0, 25, 50, 75, 100, 125, 150, 175, 200, 225, 250 }, SkillTag.抗免疫, SkillTag.狙击),
     穿云箭("", 0, 0, new int[] { 1200, 1200, 1200, 1200, 1200, 1200, 1200, 1200, 1200, 1200, 1200 }, SkillTag.抗免疫, SkillTag.狙击),
+    掠影("", 0, 0, new int[] { 1200, 1200, 1200, 1200, 1200, 1200, 1200, 1200, 1200, 1200, 1200 }, SkillTag.抗免疫, SkillTag.狙击),
     异端裁决("", 0, 0, new int[] { 1800, 1800, 1800, 1800, 1800, 1800, 1800, 1800, 1800, 1800, 1800 }, SkillTag.抗免疫, SkillTag.狙击),
     厄运枪狙击("", 0, 0, new int[] { 1200, 1200, 1200, 1200, 1200, 1200, 1200, 1200, 1200, 1200, 1200 }, SkillTag.抗免疫, SkillTag.狙击),
     绯弹("", 0, 0, new int[] { 800, 800, 800, 800, 800, 800, 800, 800, 800, 800, 800 }, SkillTag.抗免疫, SkillTag.狙击),
@@ -443,6 +445,7 @@ public enum SkillType {
     繁星("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
     星河召唤("", 0, 0,SkillTag.召唤,SkillTag.不可洗炼),
     樱色轮舞("", 0, 0,SkillTag.召唤,SkillTag.不可洗炼),
+    月影分身("", 0,0, SkillTag.召唤),
 
     //生成卡牌置入战场
     魏国英魂("", 2, 0,SkillTag.抗夺魂),
@@ -566,6 +569,7 @@ public enum SkillType {
 
     //手牌添加技能 有判定的
     王佐之才("",SkillType.镜面,0,null,0),
+    逆命华舞("",SkillType.燕返,0,null,0),
     //手牌添加技能 无判定
     愈音("",SkillType.治愈音符,0,null,0),
     敏助("",SkillType.敏捷,5,null,0),
@@ -594,7 +598,9 @@ public enum SkillType {
     //给对手手牌添加技能
     突突突("",SkillType.炼金失败,0,null,0,SkillTag.魔王无效, SkillTag.魔族天赋,SkillTag.抗免疫),
     新卡作成("",SkillType.炼金失败,0,null,0,SkillTag.魔王无效, SkillTag.魔族天赋),
-    // To Do
+
+    //连携技能
+    流光回梦("",SkillType.脱困,0,SkillType.圣盾,0),
 
     //双buff
     魏之勇("", 70,0,SkillTag.抗毒刃),

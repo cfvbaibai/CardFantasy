@@ -1138,6 +1138,11 @@
         <Skill type="寒冰触碰" level="3" unlock="5"  />
         <Skill type="冰神附体" level="0" unlock="10" />
     </Card>
+    <Card id="1623" name="华舞霓裳" wikiId="" race="王国" speed="0" star="5" cost="19" incrCost="2" at="545" hp="1595" incrAT="33" incrHP="30">
+        <Skill type="流光回梦" level="0" unlock="0" />
+        <Skill type="逆命华舞" level="0" unlock="5"  />
+        <Skill type="星云锁链" level="0" unlock="10" />
+    </Card>
 
 
     <!-- 森林 -->
@@ -2983,6 +2988,11 @@
         <Skill type="弱点攻击" level="0" unlock="0" />
         <Skill type="极寒裂伤" level="0" unlock="5" />
         <Skill type="骑士荣耀" level="0" unlock="10"  />
+    </Card>
+    <Card id="3591" name="望月千代女" wikiId="" race="蛮荒" speed="3" star="5" cost="18" incrCost="2" at="575" hp="1565" incrAT="33" incrHP="30">
+        <Skill type="掠影" level="0" unlock="0" />
+        <Skill type="望月杀阵" level="0" unlock="5" />
+        <Skill type="月影分身" level="0" unlock="10"  />
     </Card>
 
 

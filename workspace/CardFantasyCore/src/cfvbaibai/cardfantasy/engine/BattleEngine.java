@@ -210,7 +210,10 @@ public class BattleEngine {
         for (CardInfo card : this.getActivePlayer().getGrave().toList()) {
             this.stage.getResolver().resolvePostcastSkills(card, this.getInactivePlayer());
         }
-
+        for(CardInfo defenderCard : this.getInactivePlayer().getField().getAliveCards())
+        {
+            this.stage.getResolver().removeGiveSkills(defenderCard);
+        }
         Collection<CardInfo> allHandCards = this.stage.getAllHandCards();
         for (CardInfo card : allHandCards) {
             int summonDelay = card.getSummonDelay();
