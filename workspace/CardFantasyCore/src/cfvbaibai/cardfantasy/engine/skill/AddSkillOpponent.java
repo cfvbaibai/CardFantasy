@@ -25,7 +25,7 @@ public class AddSkillOpponent {
         for (CardInfo handCard : allHandCards) {
             for(SkillUseInfo skillInfo:handCard.getSkillUserInfos())
             {
-                if(skillInfo.getGiveSkill()==1)
+                if(skillInfo.getGiveSkill()==2)
                 {
                     flag=false;
                     break;
@@ -56,7 +56,7 @@ public class AddSkillOpponent {
                 continue;
             }
             thisSkillUserInfo = new SkillUseInfo(once,cardSkill);
-            thisSkillUserInfo.setGiveSkill(1);
+            thisSkillUserInfo.setGiveSkill(2);
             once.addSkill(thisSkillUserInfo);
         }
     }

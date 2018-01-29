@@ -34,7 +34,7 @@ public final class GiveSideSkill {
     public static void remove(SkillResolver resolver, SkillUseInfo skillUseInfo, CardInfo card,Skill addSkill) {
         CardSkill cardSkill = new CardSkill(addSkill.getType(), addSkill.getLevel(), 0, false, false, false, false);
         SkillUseInfo thisSkillUserInfo = null;
-        for (CardInfo ally : card.getOwner().getField().toList()) {
+        for (CardInfo ally : card.getOwner().getField().getAliveCards()) {
             if (ally == null) { continue; }
             thisSkillUserInfo = new SkillUseInfo(ally,cardSkill);
             thisSkillUserInfo.setGiveSkill(1);

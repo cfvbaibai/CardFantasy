@@ -26,7 +26,7 @@ public class HandCardAddSkillNormal {
         for (CardInfo handCard : allHandCards) {
             for(SkillUseInfo skillInfo:handCard.getSkillUserInfos())
             {
-                if(skillInfo.getGiveSkill()==1)
+                if(skillInfo.getGiveSkill()==2)
                 {
                     flag=false;
                     break;
@@ -54,7 +54,7 @@ public class HandCardAddSkillNormal {
                 continue;
             }
             thisSkillUserInfo = new SkillUseInfo(once,cardSkill);
-            thisSkillUserInfo.setGiveSkill(1);
+            thisSkillUserInfo.setGiveSkill(2);
             once.addSkill(thisSkillUserInfo);
         }
     }

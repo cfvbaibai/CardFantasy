@@ -37,6 +37,10 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2017-01-28: <x>欢笑，波波</x><ul>
+                        <li>调整额外技能移除的机制，现机制为额外技能在对方回合结束移除（原为赋予卡牌死亡时移除）</li>
+                        <li>添加新卡【华舞霓裳】，【望月千代女】</li>
+                    </ul></li>
                     <li>2017-01-21: <x>欢笑，波波</x><ul>
                         <li>调整先机镜像召唤出来的卡可以正常攻击</li>
                         <li>修复夺魂卡牌死亡时在极复杂的情况下导致回魂归魂等结算不正常的bug</li>

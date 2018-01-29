@@ -85,10 +85,25 @@ public class CardInfo extends EntityInfo {
         }
     }
 
+    //对方回合结束移除技能附加的技能
+    public void removeGiveSkill()
+    {
+        for(int j=0;j<this.skillUseInfos.size();j++){
+            if(this.skillUseInfos.get(j).getGiveSkill() == 1)
+            {
+                this.skillUseInfos.remove(j);
+            }
+        }
+    }
+
     public void removeAllGiveSkill()
     {
         for(int j=0;j<this.skillUseInfos.size();j++){
             if(this.skillUseInfos.get(j).getGiveSkill() == 1)
+            {
+                this.skillUseInfos.remove(j);
+            }
+            else if(this.skillUseInfos.get(j).getGiveSkill() == 2)
             {
                 this.skillUseInfos.remove(j);
             }
