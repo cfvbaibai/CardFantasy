@@ -28,6 +28,10 @@ public final class Guard {
         {
             sdamage = damage*30/100;
         }
+        else if(guardSkill.getType()== SkillType.心转之术)
+        {
+            sdamage = damage*10/100;
+        }
         int remainingDamage = 0;
         if (sdamage > guardian.getHP()) {
             remainingDamage = damage - guardian.getHP();

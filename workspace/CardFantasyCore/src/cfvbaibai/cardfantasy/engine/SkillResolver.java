@@ -629,9 +629,9 @@ public class SkillResolver {
                 AddSkillOpponent.apply(this, skillUseInfo, attacker, skillUseInfo.getAttachedUseInfo1().getSkill(), 1, defender);
             }
         }
-        if ((attacker.containsAllSkill(SkillType.连续魔法) || attacker.containsAllSkill(SkillType.黄天当立) || attacker.containsAllSkill(SkillType.连奏)) && !attacker.isDead() && status == 0) {
+        if ((attacker.containsAllSkill(SkillType.连续魔法) || attacker.containsAllSkill(SkillType.黄天当立) || attacker.containsAllSkill(SkillType.连奏) || attacker.containsAllSkill(SkillType.时光跳跃)) && !attacker.isDead() && status == 0) {
             for (SkillUseInfo skillUseInfo : attacker.getUsableNormalSkills()) {
-                if (skillUseInfo.getType() == SkillType.连续魔法 || skillUseInfo.getType() == SkillType.黄天当立 || skillUseInfo.getType() == SkillType.连奏) {
+                if (skillUseInfo.getType() == SkillType.连续魔法 || skillUseInfo.getType() == SkillType.黄天当立 || skillUseInfo.getType() == SkillType.连奏 || skillUseInfo.getType() == SkillType.时光跳跃) {
                     ContinuousMagic.apply(this, skillUseInfo, attacker, defender);
                     break;
                 }
@@ -929,6 +929,7 @@ public class SkillResolver {
                             blockSkillUseInfo.getType() == SkillType.以逸待劳 ||
                             blockSkillUseInfo.getType() == SkillType.不灭原核 ||
                             blockSkillUseInfo.getType() == SkillType.黄天当立 ||
+                            blockSkillUseInfo.getType() == SkillType.时光跳跃 ||
                             blockSkillUseInfo.getType() == SkillType.骑士信仰 ||
                             blockSkillUseInfo.getType() == SkillType.灵力魔阵 ||
                             blockSkillUseInfo.getType() == SkillType.神之守护) {
@@ -1190,6 +1191,7 @@ public class SkillResolver {
                         deadCardSkillUseInfo.getType() == SkillType.涅盘 ||
                         deadCardSkillUseInfo.getType() == SkillType.凤凰涅盘 ||
                         deadCardSkillUseInfo.getType() == SkillType.诲人不倦 ||
+                        deadCardSkillUseInfo.getType() == SkillType.心转之术 ||
                         deadCardSkillUseInfo.getType() == SkillType.武侯) {
                     if (Reincarnation.apply(this, deadCardSkillUseInfo.getSkill(), deadCard, result.unbending, opponent)) {
                         reincarnated = true;
@@ -2216,6 +2218,7 @@ public class SkillResolver {
                     blockSkillUseInfo.getType() == SkillType.以逸待劳 ||
                     blockSkillUseInfo.getType() == SkillType.不灭原核 ||
                     blockSkillUseInfo.getType() == SkillType.黄天当立 ||
+                    blockSkillUseInfo.getType() == SkillType.时光跳跃 ||
                     blockSkillUseInfo.getType() == SkillType.骑士信仰 ||
                     blockSkillUseInfo.getType() == SkillType.神之守护) {
                 if (Escape.isStatusEscaped(blockSkillUseInfo.getSkill(), this, item, victim)) {

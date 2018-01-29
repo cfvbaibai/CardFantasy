@@ -37,6 +37,10 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2017-01-29: <x>欢笑，波波</x><ul>
+                        <li>修复【华舞霓裳】和【雪舞霓裳】同时在场时附加技能的一个</li>
+                        <li>添加技能【心转之术】，【时光跳跃】</li>
+                    </ul></li>
                     <li>2017-01-28: <x>欢笑，波波</x><ul>
                         <li>调整额外技能移除的机制，现机制为额外技能在对方回合结束移除（原为赋予卡牌死亡时移除）</li>
                         <li>添加新卡【华舞霓裳】，【望月千代女】</li>
