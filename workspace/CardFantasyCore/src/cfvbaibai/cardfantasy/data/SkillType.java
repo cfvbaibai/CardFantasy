@@ -285,6 +285,7 @@ public enum SkillType {
     无我境界("", 70, 0, SkillTag.控制),
     怨魂附身("",  0, SkillTag.控制),
     连续魔法("", 10),
+    时光跳跃("", 70,0),
     黄天当立("", 80,0),
     连奏("", 60,0),
 
@@ -574,6 +575,7 @@ public enum SkillType {
     愈音("",SkillType.治愈音符,0,null,0),
     敏助("",SkillType.敏捷,5,null,0),
     天下桃李("",0),
+    心转之术("",60,0,SkillTag.守护),
 
     //给手牌添加buff
     偷偷削弱("", -50,0),

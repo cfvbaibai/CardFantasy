@@ -46,6 +46,6 @@ public final class Cooperation {
         }
         onceselfSkillUserInfo = new SkillUseInfo(card,cardSkill1);
         onceselfSkillUserInfo.setGiveSkill(1);
-        card.addSkill(thisSkillUserInfo);
+        card.addSkill(onceselfSkillUserInfo);
     }
 }
