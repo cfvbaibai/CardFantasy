@@ -26,6 +26,7 @@ public enum SkillType {
     制衡("", 100, 0, SkillTag.永久, SkillTag.复活,SkillTag.基础攻击加成),
     灵魂献祭("", 100, 0, SkillTag.永久, SkillTag.复活,SkillTag.基础攻击加成),
     侵蚀("", 100, 0, SkillTag.永久, SkillTag.基础攻击加成, SkillTag.魔王无效, SkillTag.魔族天赋),
+    吞噬("", 30, 0, SkillTag.永久, SkillTag.基础攻击加成, SkillTag.魔王无效, SkillTag.魔族天赋),
     群攻提升("31754", 15, SkillTag.基础攻击加成, SkillTag.抗削弱),
     狂热("30880", 10, SkillTag.永久, SkillTag.基础攻击加成),
     亮银("", 220, 0, SkillTag.永久, SkillTag.基础攻击加成),
@@ -64,6 +65,7 @@ public enum SkillType {
     神兵召唤("", 0, SkillTag.额外攻击加成),
     神兵降临("", 0, SkillTag.额外攻击加成, SkillTag.不动),
     觉醒神兵召唤("", 0, SkillTag.额外攻击加成, SkillTag.不可洗炼),
+    觉醒青龙偃月("", 0, SkillTag.额外攻击加成, SkillTag.不可洗炼),
     厨具召唤("", 0, SkillTag.额外攻击加成),
     圣器召唤("", 0, SkillTag.额外攻击加成),
     极寒裂伤("", 0, SkillTag.额外攻击加成),
@@ -93,6 +95,7 @@ public enum SkillType {
     霜冻新星("30965", 20, SkillTag.魔法),
     暴风雪("31133", 20, SkillTag.魔法),
     寒霜冲击("", 40, 10, SkillTag.魔法),
+    圣诞雪球("", 100,0, SkillTag.魔法),
 
     毒液("31150", 20),
     毒雾("31148", 20),
@@ -109,6 +112,7 @@ public enum SkillType {
     修罗地火攻("", 100, 10, 10, 10, SkillTag.魔法),
     火攻("", 200, 0, 110, 0, SkillTag.魔法),
     火烧连营("", 150, 0, 60, 0, SkillTag.魔法),
+    彻骨霜火("", 200, 0, 40, 0, SkillTag.魔法),
     化学风暴("", 700, 0, 50, 0, SkillTag.魔法),
     凤鸣("",500,0,SkillTag.魔法),
 
@@ -153,6 +157,7 @@ public enum SkillType {
     神之守护("", 0, SkillTag.守护),
     祈祷("30954", 50),
     祈福("", 0, 2),
+    救赎("", 100, 0),
     嘲讽("",0),
     喵喵喵("",0),
     酒池肉林("",70,0),
@@ -280,6 +285,7 @@ public enum SkillType {
     离间("", 0),
     无尽华尔兹("", 0),
     精神污染("", 10),
+    原素之舞("",0),
     圣洁魅惑("", 0),
     学园骚乱("", 0),
     无我境界("", 70, 0, SkillTag.控制),
@@ -352,6 +358,7 @@ public enum SkillType {
     雷霆一击("", 200, 50, 3, 0, new int[] {75,75,75,75,75,75,75,75,75,75}, SkillTag.抗免疫,SkillTag.魔法,SkillTag.雷系灵轰),
     雷公助我("", 450, 0, 3, 0, new int[] {75,75,75,75,75,75,75,75,75,75}, SkillTag.抗免疫,SkillTag.魔法,SkillTag.雷系灵轰),
     雷霆之怒("", 200, 50, 3, 0, new int[] {75,75,75,75,75,75,75,75,75,75}, SkillTag.抗免疫,SkillTag.魔法,SkillTag.雷系灵轰),
+    天神下凡("", 2500, 0, 1, 0, new int[] {100,100,100,100,100,100,100,100,100,100}, SkillTag.抗免疫,SkillTag.魔法,SkillTag.雷系灵轰),
     薜荔之怒("", 800, 0, 2, 0, new int[] {75,75,75,75,75,75,75,75,75,75}, SkillTag.抗免疫,SkillTag.魔法,SkillTag.雷系灵轰),
     雷切("",400,0,3, 0,new int[] {75,75,75,75,75,75,75,75,75,75},SkillTag.抗免疫,SkillTag.魔法,SkillTag.雷系灵轰),
 
@@ -393,6 +400,7 @@ public enum SkillType {
     逃跑("", 0,SkillTag.抗夺魂),
     撤退("", 0,SkillTag.抗夺魂,SkillTag.不动),
     夺魂("", 0, 1, SkillTag.抗夺魂),
+    天召("", 0, 0),
 
     镜像("", 0, 0, SkillTag.召唤),
     洛神("", 0, 0, SkillTag.召唤),
@@ -447,9 +455,11 @@ public enum SkillType {
     星河召唤("", 0, 0,SkillTag.召唤,SkillTag.不可洗炼),
     樱色轮舞("", 0, 0,SkillTag.召唤,SkillTag.不可洗炼),
     月影分身("", 0,0, SkillTag.召唤),
+    召唤圣诞雪人("", 0,0, SkillTag.召唤),
+    圣诞狂欢("", 0,0, SkillTag.召唤),
+    大地召唤("", 0,0, SkillTag.召唤),
 
     //生成卡牌置入战场
-    魏国英魂("", 2, 0,SkillTag.抗夺魂),
     蜀国英魂("", 2, 0,SkillTag.抗夺魂),
     吴国英魂("", 2, 0,SkillTag.抗夺魂),
 
@@ -542,6 +552,10 @@ public enum SkillType {
     漫天风雪("", SkillType.寒霜冲击,7,SkillType.寒冰触碰,5),
     寒心恨雪("", SkillType.镜像,0, SkillType.骤雨,7,SkillTag.召唤),
     栗子军团("",SkillType.归魂,1, SkillType.镜像,0,SkillTag.召唤),
+    圣诞大狂欢("",SkillType.召唤圣诞雪人,0, SkillType.圣诞狂欢,0,SkillTag.召唤),
+    莫测("", SkillType.末世术,6, SkillType.连续魔法,5),
+    生命湍流("",1,0,SkillTag.复活),
+
 
 
     新生("",0,0,SkillTag.新生),
@@ -603,6 +617,7 @@ public enum SkillType {
 
     //连携技能
     流光回梦("",SkillType.脱困,0,SkillType.圣盾,0),
+    魏国英魂("",2,0,SkillType.神兵召唤,0,SkillType.连击,0),//生成卡牌，连携
 
     //双buff
     魏之勇("", 70,0,SkillTag.抗毒刃),
@@ -862,6 +877,10 @@ public enum SkillType {
 
     SkillType(String wikiId, SkillType attachedType1, int attachedLevel1, SkillType attachedType2, int attachedLevel2, SkillTag ... tags) {
         this(wikiId, 0, 0, 0, 0, null, attachedType1, attachedLevel1, attachedType2, attachedLevel2, tags);
+    }
+
+    SkillType(String wikiId,int initImpact, int incrImpact, SkillType attachedType1, int attachedLevel1, SkillType attachedType2, int attachedLevel2, SkillTag ... tags) {
+        this(wikiId, initImpact, incrImpact,  0, 0, null, attachedType1, attachedLevel1, attachedType2, attachedLevel2, tags);
     }
 
     SkillType(String wikiId, int initImpact, int incrImpact, int initImpact2, int incrImpact2, int[] impact3,

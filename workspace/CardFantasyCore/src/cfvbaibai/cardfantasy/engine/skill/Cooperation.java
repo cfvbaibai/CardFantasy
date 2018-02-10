@@ -18,7 +18,7 @@ public final class Cooperation {
         }
         Skill skill = skillUseInfo.getSkill();
         Skill skill1 = skillUseInfo.getAttachedUseInfo1().getSkill();//自身添加技能
-        Skill skill2 = skillUseInfo.getAttachedUseInfo1().getSkill();//连携卡牌添加技能
+        Skill skill2 = skillUseInfo.getAttachedUseInfo2().getSkill();//连携卡牌添加技能
         CardSkill cardSkill1 = new CardSkill(skill1.getType(), skill1.getLevel(), 0, false, false, false, false);
         CardSkill cardSkill2 = new CardSkill(skill2.getType(), skill2.getLevel(), 0, false, false, false, false);
         List<CardInfo> addCard=new ArrayList<CardInfo>();
