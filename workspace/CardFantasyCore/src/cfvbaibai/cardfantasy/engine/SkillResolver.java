@@ -147,6 +147,10 @@ public class SkillResolver {
                     AllFiledAddSkill.apply(this, skillUseInfo, card, skillUseInfo.getAttachedUseInfo1().getSkill());
                 } else if (skillUseInfo.getType() == SkillType.流光回梦) {
                     Cooperation.apply(this, skillUseInfo, card, "雪舞霓裳");
+                } else if (skillUseInfo.getType() == SkillType.流光回梦) {
+                    Cooperation.apply(this, skillUseInfo, card, "雪舞霓裳");
+                } else if (skillUseInfo.getType() == SkillType.魏国英魂) {
+                    Cooperation.apply(this, skillUseInfo, card, "三国英魂·孟德");
                 }
             }
             for (SkillUseInfo skillUseInfo : card.getUsableNormalSkills()) {
@@ -213,6 +217,8 @@ public class SkillResolver {
                 LighteningMagic.apply(skillUseInfo, this, attacker, defender, -1, 75);
             } else if (skillUseInfo.getType() == SkillType.冰弹) {
                 IceMagic.apply(skillUseInfo, this, attacker, defender, 1, 45, 0);
+            } else if (skillUseInfo.getType() == SkillType.圣诞雪球) {
+                IceMagic.apply(skillUseInfo, this, attacker, defender, 1, 90, 0);
             } else if (skillUseInfo.getType() == SkillType.霜冻新星) {
                 IceMagic.apply(skillUseInfo, this, attacker, defender, 3, 35, 0);
             } else if (skillUseInfo.getType() == SkillType.暴风雪) {
@@ -419,6 +425,11 @@ public class SkillResolver {
             } else if (skillUseInfo.getType() == SkillType.英灵降临) {
                 Summon.apply(this, skillUseInfo, attacker, SummonType.Random, 1,
                         "圣剑持有者", "银河圣剑使", "精灵游骑兵", "爱神", "蝗虫公爵", "战场女武神", "龙角将军", "断罪之镰");
+            } else if (skillUseInfo.getType() == SkillType.圣诞大狂欢) {
+                SummonOpponent.apply(this, skillUseInfo.getAttachedUseInfo1(), attacker, SummonType.Normal, 4, "圣诞雪人", "圣诞雪人", "圣诞雪人", "圣诞雪人");
+                Summon.apply(this, skillUseInfo.getAttachedUseInfo2(), attacker, SummonType.Normal, 4, "圣诞老人", "圣诞树人", "圣诞麋鹿", "圣诞麋鹿");
+            } else if (skillUseInfo.getType() == SkillType.大地召唤) {
+                SummonOpponent.apply(this, skillUseInfo, attacker, SummonType.Normal, 1, "网页版大地之影");
             } else if (skillUseInfo.getType() == SkillType.樱色轮舞) {
                 Summon.apply(this, skillUseInfo, attacker, SummonType.Random, 1,
                         "月樱公主", "风之樱女", "春樱斗魂");
@@ -509,7 +520,7 @@ public class SkillResolver {
                 HandSword.apply(this, skillUseInfo, attacker, defender, -1);
             } else if (skillUseInfo.getType() == SkillType.熔魂之刃) {
                 HandSword.apply(this, skillUseInfo, attacker, defender, 1);
-            } else if (skillUseInfo.getType() == SkillType.火烧连营) {
+            } else if (skillUseInfo.getType() == SkillType.火烧连营||skillUseInfo.getType() == SkillType.彻骨霜火) {
                 ContinuousFire.apply(this, skillUseInfo, attacker, defender);
             } else if (skillUseInfo.getType() == SkillType.化学风暴) {
                 ChemicalRage.apply(this, skillUseInfo, attacker, defender);
@@ -521,6 +532,8 @@ public class SkillResolver {
                 Insane.apply(skillUseInfo, this, attacker, defender, 2, 200);
             } else if (skillUseInfo.getType() == SkillType.精神污染) {
                 Insane.apply(skillUseInfo, this, attacker, defender, 3, 0);
+            } else if (skillUseInfo.getType() == SkillType.原素之舞) {
+                Insane.apply(skillUseInfo, this, attacker, defender, 5, 70);
             } else if (skillUseInfo.getType() == SkillType.无尽华尔兹) {
                 Insane.apply(skillUseInfo, this, attacker, defender, -1, 100);
             } else if (skillUseInfo.getType() == SkillType.圣洁魅惑) {
@@ -627,12 +640,25 @@ public class SkillResolver {
                 HandCardBuff.apply(this, skillUseInfo, attacker, SkillEffectType.MAXHP_CHANGE, 1);
             } else if (skillUseInfo.getType() == SkillType.新卡作成) {
                 AddSkillOpponent.apply(this, skillUseInfo, attacker, skillUseInfo.getAttachedUseInfo1().getSkill(), 1, defender);
+            } else if (skillUseInfo.getType() == SkillType.吞噬) {
+                Erode.apply(this, skillUseInfo, attacker, defender, null);
+            } else if (skillUseInfo.getType() == SkillType.天召) {
+                DivineSummon.apply(skillUseInfo, this, attacker);
             }
         }
         if ((attacker.containsAllSkill(SkillType.连续魔法) || attacker.containsAllSkill(SkillType.黄天当立) || attacker.containsAllSkill(SkillType.连奏) || attacker.containsAllSkill(SkillType.时光跳跃)) && !attacker.isDead() && status == 0) {
             for (SkillUseInfo skillUseInfo : attacker.getUsableNormalSkills()) {
                 if (skillUseInfo.getType() == SkillType.连续魔法 || skillUseInfo.getType() == SkillType.黄天当立 || skillUseInfo.getType() == SkillType.连奏 || skillUseInfo.getType() == SkillType.时光跳跃) {
                     ContinuousMagic.apply(this, skillUseInfo, attacker, defender);
+                    break;
+                }
+            }
+        }
+        if ((attacker.containsAllSkill(SkillType.莫测)) && !attacker.isDead() && status == 0) {
+            for (SkillUseInfo skillUseInfo : attacker.getUsableNormalSkills()) {
+                if (skillUseInfo.getType() == SkillType.莫测) {
+                    HeavenWrath.apply(this, skillUseInfo.getAttachedUseInfo1().getSkill(), attacker, defender);
+                    ContinuousMagic.apply(this, skillUseInfo.getAttachedUseInfo2(), attacker, defender);
                     break;
                 }
             }
@@ -1261,6 +1287,8 @@ public class SkillResolver {
                 ImpregnableDefenseHeroBuff.remove(this, deadCardSkillUseInfo, deadCard);
             } else if (deadCardSkillUseInfo.getType() == SkillType.驱虎吞狼) {
                 ImpregnableDefenseHeroBuff.remove(this, deadCardSkillUseInfo.getAttachedUseInfo2(), deadCard);
+            } else if (deadCardSkillUseInfo.getType() == SkillType.生命湍流) {
+                Revive.apply(this, deadCardSkillUseInfo, deadCard);
             }
         }
         if (!deadCard.isSilent()) {
@@ -1377,6 +1405,8 @@ public class SkillResolver {
                     skillUseInfo.getType() == SkillType.觉醒神兵召唤 && attacker.isAwaken(skillUseInfo, Race.SAVAGE, 2) ||
                     skillUseInfo.getType() == SkillType.阿拉希血统) {
                 WeaponSummon.apply(this, skillUseInfo, attacker, defenderPlayer, 500, 1700);
+            } else if (skillUseInfo.getType() == SkillType.觉醒青龙偃月 && attacker.isAwaken(skillUseInfo, Race.FOREST, 3)) {
+                WeaponSummon.apply(this, skillUseInfo, attacker, defenderPlayer, 1300, 1780);
             } else if (skillUseInfo.getType() == SkillType.圣器召唤 || skillUseInfo.getType() == SkillType.王牌飞刀 || skillUseInfo.getType() == SkillType.突袭) {
                 WeaponSummon.apply(this, skillUseInfo, attacker, defenderPlayer, 300, 1300);
             } else if (skillUseInfo.getType() == SkillType.极寒裂伤) {
@@ -1409,6 +1439,8 @@ public class SkillResolver {
                     skillUseInfo.getType() == SkillType.觉醒神兵召唤 && attacker.isAwaken(skillUseInfo, Race.SAVAGE, 2) ||
                     skillUseInfo.getType() == SkillType.阿拉希血统) {
                 WeaponSummon.apply(this, skillUseInfo, attacker, defender, 500, 1700);
+            } else if (skillUseInfo.getType() == SkillType.觉醒青龙偃月 && attacker.isAwaken(skillUseInfo, Race.FOREST, 3)) {
+                WeaponSummon.apply(this, skillUseInfo, attacker, defender, 1300, 1780);
             } else if (skillUseInfo.getType() == SkillType.厨具召唤) {
                 WeaponSummon.apply(this, skillUseInfo, attacker, defender, 1, 500);
             } else if (skillUseInfo.getType() == SkillType.圣器召唤 || skillUseInfo.getType() == SkillType.王牌飞刀 || skillUseInfo.getType() == SkillType.突袭) {
@@ -1489,7 +1521,7 @@ public class SkillResolver {
                 HeroKiller.remove(this, effect.getCause(), card);
             } else if (type == SkillType.凯撒之击) {
                 CaeserAttack.remove(this, effect.getCause(), card);
-            } else if (type == SkillType.神兵召唤 || type == SkillType.神兵降临 || type == SkillType.厨具召唤 || type == SkillType.觉醒神兵召唤 ||
+            } else if (type == SkillType.神兵召唤 || type == SkillType.神兵降临 || type == SkillType.厨具召唤 || type == SkillType.觉醒神兵召唤 || type == SkillType.觉醒青龙偃月 ||
                     type == SkillType.圣器召唤 || type == SkillType.突袭 || type == SkillType.极寒裂伤 || type == SkillType.陨星攻击 || type == SkillType.王牌飞刀 || type == SkillType.阿拉希血统) {
                 WeaponSummon.remove(this, effect.getCause(), card);
             }
@@ -1989,12 +2021,16 @@ public class SkillResolver {
                             "精灵游骑兵", "蝶语仙子", "人马大贤者", "洞察之鹰","森林弹唱者","森林女神");
                 } else if (skillUseInfo.getType() == SkillType.新生) {
                     NewBorn.apply(this, skillUseInfo, card, enemy, 1);
+                } else if (skillUseInfo.getType() == SkillType.祈福) {
+                    Bless.apply(skillUseInfo.getSkill(), this, card);
                 }
             } else if (!skillUseInfo.getSkill().isDeathSkill()) {
                 if (skillUseInfo.getType() == SkillType.反噬) {
                     CounterBite.apply(skillUseInfo, this, card);
                 } else if (skillUseInfo.getType() == SkillType.星云锁链 || skillUseInfo.getType() == SkillType.星团锁链) {
                     NebulaChain.apply(skillUseInfo, this, card);
+                } else if (skillUseInfo.getType() == SkillType.救赎) {
+                    Bless.apply(skillUseInfo.getSkill(), this, card);
                 } else if (skillUseInfo.getType() == SkillType.掠影) {
                     Snipe.apply(skillUseInfo, skillUseInfo.getSkill(), this, card, enemy, 1);
                 } else if (skillUseInfo.getType() == SkillType.天下桃李) {
@@ -2646,6 +2682,8 @@ public class SkillResolver {
                 // 镜像召唤的单位可以被连锁攻击
                 Summon.apply(this, skillUseInfo, card, SummonType.Normal, 1, card.getName());
             } else if (skillUseInfo.getType() == SkillType.归魂) {
+                RegressionSoul.apply(this, skillUseInfo, card, defenderHero);
+            } else if (skillUseInfo.getType() == SkillType.生命湍流) {
                 RegressionSoul.apply(this, skillUseInfo, card, defenderHero);
             }
         }

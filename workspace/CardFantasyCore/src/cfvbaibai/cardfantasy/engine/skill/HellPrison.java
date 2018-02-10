@@ -12,7 +12,7 @@ public final class HellPrison {
         List<CardInfo> allHandCards = defender.getHand().toList();
         StageInfo stage = resolver.getStage();
         Randomizer random = stage.getRandomizer();
-        List<CardInfo> fileCard = random.pickRandom(defender.getField().toList(), -1, true, null);
+        List<CardInfo> fileCard = random.pickRandom(player.getField().toList(), -1, true, null);
         for(CardInfo attackerCard :fileCard) {
             if(attackerCard==null)
             {
