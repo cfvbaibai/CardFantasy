@@ -36,7 +36,7 @@ public class AddCard {
         }
         for (int i = 0; i < cardsToSummon.size(); ++i) {
             CardInfo summonedCard = cardsToSummon.get(i);
-            resolver.summonCard(summoner.getOwner(), summonedCard, summoner, true, skillUseInfo.getSkill(),1);
+            resolver.summonCard(summoner.getOwner(), summonedCard, summoner, false, skillUseInfo.getSkill(),1);
         }
     }
 }

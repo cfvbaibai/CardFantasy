@@ -69,9 +69,34 @@ public class Summon {
         else {summonCardCandidates = DeckBuilder.build(summonedCardsDescs).getCardInfos(summoner.getOwner());}
         if (summonType == SummonType.Normal || summonType == SummonType.Summoning) {
             boolean anySummonedCardStillAlive = false;
+            String parentCardName="";
             for (CardInfo fieldCard : livingCards) {
                 if (fieldCard.getStatus().containsStatusCausedBy(skillUseInfo, CardStatusType.召唤)) {
                     anySummonedCardStillAlive = true;
+                }
+                //else if判断的是卡牌的召唤物的召唤物不能重复召唤。
+                else if(summoner.isSummonedMinion())
+                {
+                    for(CardStatusItem item : fieldCard.getStatus().getAllItems())
+                    {
+                        if(item.getType()==CardStatusType.召唤){
+                            if(item.getCause().getOwner() instanceof CardInfo){
+                                if(((CardInfo)item.getCause().getOwner()).isSummonedMinion())
+                                {
+                                    parentCardName=((CardInfo) item.getCause().getOwner()).getName();
+                                    break;
+                                }
+                            }
+                            break;
+                        }
+                    }
+                    if(!parentCardName.equals(""))
+                    {
+                        if(summoner.getName().equals(parentCardName))
+                        {
+                                anySummonedCardStillAlive = true;
+                        }
+                    }
                 }
             }
             if (!anySummonedCardStillAlive) {
@@ -82,11 +107,38 @@ public class Summon {
             for (int i = 0; i < summonCardCandidates.size(); ++i) {
                 CardInfo summonCardCandidate = summonCardCandidates.get(i);
                 boolean cardStillAlive = false;
+                String parentCard="";
                 for (CardInfo fieldCard : livingCards) {
                     if (fieldCard.getStatus().containsStatusCausedBy(skillUseInfo, CardStatusType.召唤)) {
                         if (fieldCard.getName().equals(summonCardCandidate.getName())) {
                             cardStillAlive = true;
                             continue;
+                        }
+                    }
+                    //else if判断的是卡牌的召唤物的召唤物不能重复召唤。
+                    else if(summoner.isSummonedMinion())
+                    {
+                        for(CardStatusItem item : fieldCard.getStatus().getAllItems())
+                        {
+                            if(item.getType()==CardStatusType.召唤){
+                                if(item.getCause().getOwner() instanceof CardInfo){
+                                    if(((CardInfo)item.getCause().getOwner()).isSummonedMinion())
+                                    {
+                                        parentCard=((CardInfo) item.getCause().getOwner()).getName();
+                                        break;
+                                    }
+                                }
+                                break;
+                            }
+                        }
+                        if(!parentCard.equals(""))
+                        {
+                            if(summoner.getName().equals(parentCard))
+                            {
+                                if (fieldCard.getName().equals(summonCardCandidate.getName())) {
+                                    cardStillAlive = true;
+                                }
+                            }
                         }
                     }
                 }

@@ -41,7 +41,7 @@ public class SoulControl {
         CardInfo victim = victims.get(0);
         resolver.getStage().getUI().useSkill(attacker, victim, skill, true);
         victim.switchOwner(attacker.getOwner());
-        resolver.summonCard(victim.getOwner(), victim, attacker, true, skill);
+        resolver.summonCard(victim.getOwner(), victim, attacker, false, skill);
         CardStatusItem weakStatusItem = CardStatusItem.weak(skillUseInfo);
         resolver.getStage().getUI().addCardStatus(attacker, victim, skill, weakStatusItem);
         victim.addStatus(weakStatusItem);
