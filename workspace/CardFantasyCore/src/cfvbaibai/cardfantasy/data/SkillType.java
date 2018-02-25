@@ -291,7 +291,7 @@ public enum SkillType {
     无我境界("", 70, 0, SkillTag.控制),
     怨魂附身("",  0, SkillTag.控制),
     连续魔法("", 10),
-    时光跳跃("", 70,0),
+    时光迁跃("", 70,0),
     黄天当立("", 80,0),
     连奏("", 60,0),
 
@@ -421,6 +421,7 @@ public enum SkillType {
     酋长号令("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
     召唤花族守卫("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
     召唤花族侍卫("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
+    原召唤花族侍卫("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
     七十二变("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
     英灵降临("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
     寒霜召唤("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),

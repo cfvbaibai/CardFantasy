@@ -1654,10 +1654,10 @@
         <Skill type="迷魂" level="8" unlock="5" />
         <Skill type="甘霖" level="7" unlock="10" />
     </Card>
-    <Card id="2509" name="时光女神" wikiId="50687" race="森林" speed="4" star="5" cost="17" incrCost="2" at="275" hp="1260" incrAT="34" incrHP="39">
-        <Skill type="法力侵蚀" level="7" unlock="0" />
-        <Skill type="冰甲" level="2" unlock="5" />
-        <Skill type="不动" level="0" unlock="10" />
+    <Card id="2509" name="时光女神" wikiId="50687" race="森林" speed="3" star="5" cost="17" incrCost="2" at="495" hp="1580" incrAT="34" incrHP="33">
+        <Skill type="灵王的轰击" level="8" unlock="0" />
+        <Skill type="水流壁" level="0" unlock="5" />
+        <Skill type="时光迁跃" level="0" unlock="10" />
     </Card>
     <Card id="2510" name="梦境女神" wikiId="52635" race="森林" speed="4" star="5" cost="16" incrCost="2" at="355" hp="1360" incrAT="38" incrHP="36">
         <Skill type="脱困" level="0" unlock="0" />
@@ -2077,6 +2077,16 @@
         <Skill type="祈福" level="9" unlock="0" summon="true"/>
         <Skill type="生命湍流" level="0" unlock="5"/>
         <Skill type="王之守护" level="0" unlock="10"/>
+    </Card>
+    <Card id="2593" name="原时光女神" wikiId="50687" race="森林" speed="4" star="5" cost="17" incrCost="2" at="275" hp="1260" incrAT="34" incrHP="39">
+        <Skill type="法力侵蚀" level="7" unlock="0" />
+        <Skill type="冰甲" level="2" unlock="5" />
+        <Skill type="不动" level="0" unlock="10" />
+    </Card>
+    <Card id="2542" name="原花族公主" wikiId="" race="森林" speed="3" star="5" cost="16" incrCost="5" at="320" hp="1580" incrAT="45" incrHP="31">
+        <Skill type="召唤花族守卫" level="0" unlock="0" />
+        <Skill type="原召唤花族侍卫" level="0" unlock="5" />
+        <Skill type="花族秘术" level="0" unlock="10" />
     </Card>
 
     <!-- 蛮荒  -->
@@ -4259,7 +4269,7 @@
         <Skill type="神兵召唤" level="0" unlock="5" />
         <Skill type="扼杀" level="0" unlock="10" />
     </Card>
-    <Card id="5520" name="新困难·莉莉丝" wikiId="" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="1800" hp="90000" incrAT="0" incrHP="0">
+    <Card id="5520" name="新困难·莉莉丝" wikiId="" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="1200" hp="90000" incrAT="0" incrHP="0">
         <Skill type="免疫" level="0" unlock="0" />
         <Skill type="LETITGO" level="0" unlock="5" />
         <Skill type="水流护甲" level="8" unlock="10" />

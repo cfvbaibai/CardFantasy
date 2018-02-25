@@ -336,7 +336,9 @@ public class SkillResolver {
                 BloodPaint.apply(skillUseInfo.getSkill(), this, attacker, defender, -1);
             } else if (skillUseInfo.getType() == SkillType.天谴 || skillUseInfo.getType() == SkillType.末世术 || skillUseInfo.getType() == SkillType.以逸待劳) {
                 HeavenWrath.apply(this, skillUseInfo.getSkill(), attacker, defender);
-            } else if (skillUseInfo.getType() == SkillType.封印) {
+            } else if (skillUseInfo.getType() == SkillType.莫测) {
+                HeavenWrath.apply(this, skillUseInfo.getAttachedUseInfo1().getSkill(), attacker, defender);
+            }  else if (skillUseInfo.getType() == SkillType.封印) {
                 Seal.apply(skillUseInfo, this, attacker, defender);
             } else if (skillUseInfo.getType() == SkillType.圣炎) {
                 HolyFire.apply(skillUseInfo.getSkill(), this, attacker, defender);
@@ -414,6 +416,8 @@ public class SkillResolver {
                 Summon.apply(this, skillUseInfo, attacker, SummonType.Normal, 2, "黄金金属巨龙", "处女座");
             } else if (skillUseInfo.getType() == SkillType.召唤花族侍卫) {
                 Summon.apply(this, skillUseInfo, attacker, SummonType.Normal, 2, "时光女神", "雷雕之魂");
+            } else if (skillUseInfo.getType() == SkillType.原召唤花族侍卫) {
+                Summon.apply(this, skillUseInfo, attacker, SummonType.Normal, 2, "原时光女神", "雷雕之魂");
             } else if (skillUseInfo.getType() == SkillType.七十二变) {
                 Summon.apply(this, skillUseInfo, attacker, SummonType.Normal, 2, "齐天美猴王", "齐天美猴王");
             } else if (skillUseInfo.getType() == SkillType.仙子召唤) {
@@ -432,7 +436,7 @@ public class SkillResolver {
                 SummonOpponent.apply(this, skillUseInfo, attacker, SummonType.Normal, 1, "网页版大地之影");
             } else if (skillUseInfo.getType() == SkillType.樱色轮舞) {
                 Summon.apply(this, skillUseInfo, attacker, SummonType.Random, 1,
-                        "月樱公主", "风之樱女", "春樱斗魂");
+                        "风之樱女");
             } else if (skillUseInfo.getType() == SkillType.魏国英魂) {
                 AddCard.apply(this, skillUseInfo, attacker, SummonType.Summoning, 1,
                         "三国英魂孟德", "三国英魂仲达", "三国樱魂文远", "三国英魂元让", "三国英魂甄姬", "三国英魂文若");
@@ -646,9 +650,9 @@ public class SkillResolver {
                 DivineSummon.apply(skillUseInfo, this, attacker);
             }
         }
-        if ((attacker.containsAllSkill(SkillType.连续魔法) || attacker.containsAllSkill(SkillType.黄天当立) || attacker.containsAllSkill(SkillType.连奏) || attacker.containsAllSkill(SkillType.时光跳跃)) && !attacker.isDead() && status == 0) {
+        if ((attacker.containsAllSkill(SkillType.连续魔法) || attacker.containsAllSkill(SkillType.黄天当立) || attacker.containsAllSkill(SkillType.连奏) || attacker.containsAllSkill(SkillType.时光迁跃)) && !attacker.isDead() && status == 0) {
             for (SkillUseInfo skillUseInfo : attacker.getUsableNormalSkills()) {
-                if (skillUseInfo.getType() == SkillType.连续魔法 || skillUseInfo.getType() == SkillType.黄天当立 || skillUseInfo.getType() == SkillType.连奏 || skillUseInfo.getType() == SkillType.时光跳跃) {
+                if (skillUseInfo.getType() == SkillType.连续魔法 || skillUseInfo.getType() == SkillType.黄天当立 || skillUseInfo.getType() == SkillType.连奏 || skillUseInfo.getType() == SkillType.时光迁跃) {
                     ContinuousMagic.apply(this, skillUseInfo, attacker, defender);
                     break;
                 }
@@ -657,7 +661,6 @@ public class SkillResolver {
         if ((attacker.containsAllSkill(SkillType.莫测)) && !attacker.isDead() && status == 0) {
             for (SkillUseInfo skillUseInfo : attacker.getUsableNormalSkills()) {
                 if (skillUseInfo.getType() == SkillType.莫测) {
-                    HeavenWrath.apply(this, skillUseInfo.getAttachedUseInfo1().getSkill(), attacker, defender);
                     ContinuousMagic.apply(this, skillUseInfo.getAttachedUseInfo2(), attacker, defender);
                     break;
                 }
@@ -955,7 +958,7 @@ public class SkillResolver {
                             blockSkillUseInfo.getType() == SkillType.以逸待劳 ||
                             blockSkillUseInfo.getType() == SkillType.不灭原核 ||
                             blockSkillUseInfo.getType() == SkillType.黄天当立 ||
-                            blockSkillUseInfo.getType() == SkillType.时光跳跃 ||
+                            blockSkillUseInfo.getType() == SkillType.时光迁跃 ||
                             blockSkillUseInfo.getType() == SkillType.骑士信仰 ||
                             blockSkillUseInfo.getType() == SkillType.灵力魔阵 ||
                             blockSkillUseInfo.getType() == SkillType.神之守护) {
@@ -1317,7 +1320,10 @@ public class SkillResolver {
             resolveLeaveSkills(deadCard);
         }
         if (!result.unbending) {
-            deadCard.reset();
+            if(!deadCard.isSummonedMinion())
+            {
+                deadCard.reset();
+            }
         }
     }
 
@@ -2114,7 +2120,7 @@ public class SkillResolver {
                 continue;
             }
             for (SkillUseInfo skillUseInfo : card.getAllUsableSkills()) {
-                if (skillUseInfo.getType() == SkillType.时光倒流) {
+                if (skillUseInfo.getType() == SkillType.时光倒流&&!skillUseInfo.getSkill().isDeathSkill()) {
                     TimeBack.apply(skillUseInfo, this, myField.getOwner(), opField.getOwner());
                 } else if (skillUseInfo.getType() == SkillType.献祭) {
                     Sacrifice.apply(this, skillUseInfo, card, summonSkill);
@@ -2254,7 +2260,7 @@ public class SkillResolver {
                     blockSkillUseInfo.getType() == SkillType.以逸待劳 ||
                     blockSkillUseInfo.getType() == SkillType.不灭原核 ||
                     blockSkillUseInfo.getType() == SkillType.黄天当立 ||
-                    blockSkillUseInfo.getType() == SkillType.时光跳跃 ||
+                    blockSkillUseInfo.getType() == SkillType.时光迁跃 ||
                     blockSkillUseInfo.getType() == SkillType.骑士信仰 ||
                     blockSkillUseInfo.getType() == SkillType.神之守护) {
                 if (Escape.isStatusEscaped(blockSkillUseInfo.getSkill(), this, item, victim)) {
