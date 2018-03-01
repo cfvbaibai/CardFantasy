@@ -26,6 +26,19 @@ public class HandCardAddThreeSkill {
         SkillUseInfo thisSkillUserInfo= null;
         boolean flag = true;
         for (CardInfo ally : allHandCards) {
+            for(SkillUseInfo skillInfo:ally.getSkillUserInfos())
+            {
+                if(skillInfo.getGiveSkill()==2)
+                {
+                    flag=false;
+                    break;
+                }
+            }
+            if(!flag)
+            {
+                flag =true;
+                continue;
+            }
             if (oneCard != null) {
                 if (ally.getSummonDelay() < oneCard.getSummonDelay()) {
                     threeCard = twoCard;
@@ -63,19 +76,6 @@ public class HandCardAddThreeSkill {
             addCard.add(threeCard);
         }
         for (CardInfo once : addCard) {
-            for(SkillUseInfo skillInfo:once.getSkillUserInfos())
-            {
-                if(skillInfo.getGiveSkill()==2)
-                {
-                    flag=false;
-                    break;
-                }
-            }
-            if(!flag)
-            {
-                flag =true;
-                continue;
-            }
             if (once.containsUsableSkill(cardSkill.getType())){
                 continue;
             }

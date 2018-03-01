@@ -25,6 +25,10 @@ public class SoulCrash {
                 if (summoner instanceof CardInfo && ((CardInfo)summoner).getRace() == Race.BOSS) {
                     continue;
                 }
+                else if(summoner instanceof CardInfo && ((CardInfo)summoner).getRace() == Race.DEMON)
+                {
+                    continue;
+                }
             }
             if (card.getRace() == Race.BOSS) {
                 continue;
