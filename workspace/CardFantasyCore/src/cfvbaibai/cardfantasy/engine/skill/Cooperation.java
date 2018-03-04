@@ -12,14 +12,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public final class Cooperation {
-    public static void apply(SkillResolver resolver, SkillUseInfo skillUseInfo, CardInfo card,String conCard) {
+    public static void apply(SkillResolver resolver, SkillUseInfo skillUseInfo, CardInfo card,String conCard,boolean flag) {
         if (card == null || card.isDead()) {
             throw new CardFantasyRuntimeException("card should not be null or dead!");
         }
         Skill skill = skillUseInfo.getSkill();
-        Skill skill1 = skillUseInfo.getAttachedUseInfo1().getSkill();//自身添加技能
+
         Skill skill2 = skillUseInfo.getAttachedUseInfo2().getSkill();//连携卡牌添加技能
-        CardSkill cardSkill1 = new CardSkill(skill1.getType(), skill1.getLevel(), 0, false, false, false, false);
         CardSkill cardSkill2 = new CardSkill(skill2.getType(), skill2.getLevel(), 0, false, false, false, false);
         List<CardInfo> addCard=new ArrayList<CardInfo>();
         for(CardInfo fieldCard :card.getOwner().getField().getAliveCards())
@@ -44,8 +43,12 @@ public final class Cooperation {
             thisSkillUserInfo.setGiveSkill(1);
             thisCard.addSkill(thisSkillUserInfo);
         }
-        onceselfSkillUserInfo = new SkillUseInfo(card,cardSkill1);
-        onceselfSkillUserInfo.setGiveSkill(1);
-        card.addSkill(onceselfSkillUserInfo);
+        if(flag) {
+            Skill skill1 = skillUseInfo.getAttachedUseInfo1().getSkill();//自身添加技能
+            CardSkill cardSkill1 = new CardSkill(skill1.getType(), skill1.getLevel(), 0, false, false, false, false);
+            onceselfSkillUserInfo = new SkillUseInfo(card, cardSkill1);
+            onceselfSkillUserInfo.setGiveSkill(1);
+            card.addSkill(onceselfSkillUserInfo);
+        }
     }
 }
