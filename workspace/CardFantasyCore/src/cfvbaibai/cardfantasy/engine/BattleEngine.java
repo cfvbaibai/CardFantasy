@@ -439,6 +439,7 @@ public class BattleEngine {
         GameUI ui = this.stage.getUI();
         if (myField.getCard(i).getStatus().containsStatus(CardStatusType.麻痹)) {
             resolver.removeStatus(myField.getCard(i), CardStatusType.麻痹);
+            resolver.removeStatus(myField.getCard(i), CardStatusType.不屈);
             return;
         }
         for (SkillUseInfo skillUseInfo : myField.getCard(i).getUsableNormalSkills()) {

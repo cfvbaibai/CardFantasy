@@ -32,6 +32,7 @@ public class CardInfo extends EntityInfo {
     private int cachedPosition;
     private boolean deadOnce;
     private boolean isSumon;
+    private CardInfo relationCardInfo;//关联卡牌,变身前卡牌和变身后卡牌
     
     private int eternalWound = 0;
 
@@ -53,6 +54,7 @@ public class CardInfo extends EntityInfo {
         this.cachedPosition = -1;
         this.deadOnce = false;
         this.isSumon = false;
+        this.relationCardInfo = null;
     }
 
     public List<SkillUseInfo> getSkillUserInfos(){
@@ -834,4 +836,11 @@ public class CardInfo extends EntityInfo {
         this.isSumon = isSummon;
     }
 
+    public CardInfo getRelationCardInfo() {
+        return relationCardInfo;
+    }
+
+    public void setRelationCardInfo(CardInfo relationCardInfo) {
+        this.relationCardInfo = relationCardInfo;
+    }
 }

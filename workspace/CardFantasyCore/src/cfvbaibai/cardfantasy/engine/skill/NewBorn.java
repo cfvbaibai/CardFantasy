@@ -42,7 +42,7 @@ public class NewBorn {
                         victim.switchOwner(victim.getOwner());
                     }
                     //处理顽强司命情况下，卡牌已经回到场上，不需要再次结算死契
-                    if(card.isAlive())
+                    if(victim.isAlive())
                     {
                         return;
                     }

@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 public class HandCardAddSkillNormal {
     public static void apply(SkillResolver resolver, SkillUseInfo skillUseInfo, CardInfo card, Skill addSkill,int number) {
-        if (card == null || card.isDead()) {
+        if (card == null ) {
             return;
         }
         Skill skill = skillUseInfo.getSkill();

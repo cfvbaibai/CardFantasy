@@ -47,7 +47,7 @@ public final class Reborn {
             grave.removeCard(card);
           //  player.getField().addCard(card);
 
-            resolver.summonCard(card.getOwner(), card, card, false, cardSkill,1);//司命可以发动降临技能
+            resolver.summonCard(card.getOwner(), card, card, false, cardSkill,0);//司命可以发动降临技能
             CardStatusItem item = CardStatusItem.weak(skillUseInfo);
             resolver.getStage().getUI().addCardStatus(card, card, cardSkill, item);
             card.addStatus(item);

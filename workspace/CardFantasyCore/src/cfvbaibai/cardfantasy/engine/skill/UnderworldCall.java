@@ -17,7 +17,7 @@ public final class UnderworldCall {
                 defenderHero.getField().toList(), victimCount, true, null);
         ui.useSkill(attacker, victims, cardSkill, true);
         for (CardInfo victim : victims) {
-            if(victim.containsUsableSkill(SkillType.免疫)||victim.containsUsableSkill(SkillType.结界立场)||victim.isBoss()||victim.isDeman())
+            if(victim.containsUsableSkill(SkillType.免疫)||victim.containsUsableSkill(SkillType.结界立场)|| victim.containsUsableSkill(SkillType.影青龙) || victim.containsUsableSkill(SkillType.魔力抗性) ||victim.isBoss()||victim.isDeman())
             {
                 continue;
             }
