@@ -1,43 +1,49 @@
 package cfvbaibai.cardfantasy.engine.skill;
 
+import cfvbaibai.cardfantasy.GameUI;
+import cfvbaibai.cardfantasy.Randomizer;
+import cfvbaibai.cardfantasy.data.Skill;
+import cfvbaibai.cardfantasy.engine.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
-import cfvbaibai.cardfantasy.GameUI;
-import cfvbaibai.cardfantasy.data.Skill;
-import cfvbaibai.cardfantasy.engine.CardInfo;
-import cfvbaibai.cardfantasy.engine.CardStatusItem;
-import cfvbaibai.cardfantasy.engine.CardStatusType;
-import cfvbaibai.cardfantasy.engine.EntityInfo;
-import cfvbaibai.cardfantasy.engine.HeroDieSignal;
-import cfvbaibai.cardfantasy.engine.OnAttackBlockingResult;
-import cfvbaibai.cardfantasy.engine.OnDamagedResult;
-import cfvbaibai.cardfantasy.engine.Player;
-import cfvbaibai.cardfantasy.engine.SkillResolver;
-import cfvbaibai.cardfantasy.engine.SkillUseInfo;
+public class Polymorph {
+    public static void apply(SkillResolver resolver, SkillUseInfo skillUseInfo, CardInfo attackCard, Player defenderHero,int victimCount,int effectNumber) throws HeroDieSignal {
 
-public class DeathMark {
-    public static void apply(SkillResolver resolver, SkillUseInfo skillUseInfo, CardInfo caster, Player defenderHero,int effectNumber) throws HeroDieSignal {
-        CardInfo victim = defenderHero.getField().getCard(caster.getPosition());
-        if (victim == null) {
+        StageInfo stage = resolver.getStage();
+        Randomizer random = stage.getRandomizer();
+        List<CardInfo> victims = random.pickRandom(defenderHero.getField().toList(), victimCount, true, null);
+        if (victims.size() == 0) {
             return;
         }
         GameUI ui = resolver.getStage().getUI();
         Skill skill = skillUseInfo.getSkill();
-        ui.useSkill(caster, victim, skill, true);
-        CardStatusItem statusItem = CardStatusItem.deathMark(skillUseInfo);
-        if (!resolver.resolveAttackBlockingSkills(caster, victim, skill, 1).isAttackable()) {
-            return;
-        }
+        ui.useSkill(attackCard, victims, skill, true);
+        CardStatusItem statusItem = CardStatusItem.sheep(skillUseInfo);
+        CardStatusItem statusItemSlience = CardStatusItem.slience(skillUseInfo);
         statusItem.setEffectNumber(effectNumber);
-        if(effectNumber>0)
-        {
-            if(!victim.getStatus().getStatusOf(CardStatusType.死印).isEmpty()){
-                return;
+        for (CardInfo victim : victims) {
+            if (!resolver.resolveAttackBlockingSkills(attackCard, victim, skill, 1).isAttackable()) {
+                continue;
             }
+            if(effectNumber>0)
+            {
+                if(!victim.getStatus().getStatusOf(CardStatusType.变羊).isEmpty()){
+                    continue;
+                }
+            }
+            ui.addCardStatus(attackCard, victim, skill, statusItem);
+            victim.addStatus(statusItem);
+            ui.addCardStatus(attackCard, victim, skill, statusItemSlience);
+            victim.addStatus(statusItemSlience);
+            int impactAdd = victim.getInitAT()-1;
+            resolver.getStage().getUI().adjustAT(attackCard, victim, -impactAdd, skill);
+            victim.addCoefficientEffect(new SkillEffect(SkillEffectType.ATTACK_CHANGE, skillUseInfo, -impactAdd, false));
+            int impactHpAdd = victim.getHP()-skill.getImpact2();
+            resolver.getStage().getUI().adjustHP(attackCard, victim, -impactHpAdd, skill);
+            victim.addCoefficientEffect(new SkillEffect(SkillEffectType.MAXHP_CHANGE, skillUseInfo, -impactHpAdd, false));
         }
-        ui.addCardStatus(caster, victim, skill, statusItem);
-        victim.addStatus(statusItem);
     }
 
     public static void explode(SkillResolver resolver, CardInfo deadCard, OnDamagedResult onDamagedResult) throws HeroDieSignal {

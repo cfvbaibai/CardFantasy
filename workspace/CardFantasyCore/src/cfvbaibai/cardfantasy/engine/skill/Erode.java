@@ -21,11 +21,6 @@ public final class Erode {
         if (card.hasUsed(skillUseInfo)) {
             return;
         }
-        // 魔卡新改动，被复活的回合无法发动献祭或侵蚀
-        if (skillUseInfo.getSkill().getType()==SkillType.献祭 &&(card.getStatus().containsStatus(CardStatusType.复活) ||
-            summonSkill != null && summonSkill.getType() == SkillType.复活)) {
-            return;
-        }
         card.setUsed(skillUseInfo);
         Skill skill = skillUseInfo.getSkill();
         GameUI ui = resolver.getStage().getUI();

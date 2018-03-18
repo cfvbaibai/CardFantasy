@@ -32,7 +32,7 @@ public class CardInfo extends EntityInfo {
     private int cachedPosition;
     private boolean deadOnce;
     private boolean isSumon;
-    private CardInfo relationCardInfo;//关联卡牌,变身前卡牌和变身后卡牌
+    private CardInfo relationCardInfo;//关联卡牌,变身前卡牌和变身后卡牌//或者召唤者
     
     private int eternalWound = 0;
 
@@ -301,6 +301,10 @@ public class CardInfo extends EntityInfo {
         return this.status.remove(type);
     }
 
+    public boolean removeForce(CardStatusType type) {
+        return this.status.removeForce(type);
+    }
+
     @Override
     public String getShortDesc() {
         if (this.getPosition() >= 0) {
@@ -530,6 +534,10 @@ public class CardInfo extends EntityInfo {
         result.remove(effect);
         if (effect.getType() == SkillEffectType.MAXHP_CHANGE && this.getHP() > this.getMaxHP()) {
             this.setBasicHP(this.getMaxHP());
+        }
+        if(effect.getType() == SkillEffectType.MAXHP_CHANGE && effect.getValue()<0)
+        {
+            this.setBasicHP(this.hp-effect.getValue());
         }
     }
 
