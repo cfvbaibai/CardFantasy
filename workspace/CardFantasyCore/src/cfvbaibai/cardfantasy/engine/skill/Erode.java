@@ -21,11 +21,6 @@ public final class Erode {
         if (card.hasUsed(skillUseInfo)) {
             return;
         }
-        // 魔卡新改动，被复活的回合无法发动献祭或侵蚀
-        if (card.getStatus().containsStatus(CardStatusType.复活) ||
-            summonSkill != null && summonSkill.getType() == SkillType.复活) {
-            return;
-        }
         card.setUsed(skillUseInfo);
         Skill skill = skillUseInfo.getSkill();
         GameUI ui = resolver.getStage().getUI();
@@ -44,7 +39,7 @@ public final class Erode {
         }
 
         int adjHP = skill.getImpact() * card.getMaxHP() / 100;
-        int adjAT = skill.getImpact() * card.getLevel1AT() / 100;
+        int adjAT = skill.getImpact() * card.getLevel0AT() / 100;//修改为原始攻击力加成
         ui.adjustHP(card, card, adjHP, skill);
         ui.adjustAT(card, card, adjAT, skill);
         card.addEffect(new SkillEffect(SkillEffectType.MAXHP_CHANGE, skillUseInfo, adjHP, true));

@@ -119,10 +119,13 @@ public enum SkillType {
     彻骨霜火("", 200, 0, 40, 0, SkillTag.魔法),
     化学风暴("", 700, 0, 50, 0, SkillTag.魔法),
     凤鸣("",500,0,SkillTag.魔法),
+    流火("", 300,0,900,0, SkillTag.魔法),
 
     淬毒手里剑("", 300, 0, 150, 0, SkillTag.魔法),
     熔魂之刃("", 300, 0, 150, 0, SkillTag.魔法),
     八重红彼岸("", 300,0,1100,0, SkillTag.魔法,SkillTag.法术扼杀),
+    浩劫("",400,0,1000,0, SkillTag.魔法,SkillTag.法术扼杀),
+    奥术湮灭("",100,0,1000,0, SkillTag.魔法,SkillTag.法术扼杀),
     望月杀阵("", 400, 0, 100, 0, SkillTag.魔法),
 
 
@@ -159,6 +162,7 @@ public enum SkillType {
     守护("30973", 0, SkillTag.守护),
     神之守护("", 0, SkillTag.守护),
     祈祷("30954", 50),
+    终极祈祷("", 2500,0),
     祈福("", 0, 2),
     救赎("", 100, 0),
     嘲讽("",0),
@@ -239,6 +243,7 @@ public enum SkillType {
     水流壁("", 650, -50, 0, 50,SkillTag.不动),
     传承黯影("", 200, 0, 400, 0),
     真夏通雨("",400,0,1000,0),
+    回光返照("",270,0,999999,0),
     骑士守护("", 0, SkillTag.不可洗炼),
     骑士荣耀("",0,SkillTag.不可洗炼,SkillTag.不动),
     骑士信仰("", 0),
@@ -261,6 +266,7 @@ public enum SkillType {
     弱点攻击("30881", 0),
     破军("",45,5),
     溶骨的毒酒("",100,0),
+    死亡收割("",85,0),
     灵巧("57020", 0),
     灵魂禁锢("", 0),
     沉默("", 0, SkillTag.抗免疫, SkillTag.抗不屈, SkillTag.沉默, SkillTag.魔王无效, SkillTag.魔族天赋),
@@ -273,7 +279,8 @@ public enum SkillType {
     格式化("", 0, SkillTag.抗免疫, SkillTag.抗不屈, SkillTag.沉默,SkillTag.魔王无效, SkillTag.魔族天赋),
     邪灵退散("", 0, SkillTag.抗免疫, SkillTag.抗不屈, SkillTag.沉默,SkillTag.魔王无效, SkillTag.魔族天赋),
     连斩("",0),
-    魔族之血("",650,0),
+    魔族之血("",650,0,SkillTag.沉默无效),
+    邪甲术("",350,0,SkillTag.沉默无效),
 
 
     回魂("31131", 1),
@@ -311,9 +318,11 @@ public enum SkillType {
     疾病("31155", 10),
 
     诅咒("31145", 30),
+    终极天谴("", 2500,0),
     摧毁("31332", 0, SkillTag.即死, SkillTag.抗不屈),
     武形天火击("", 0, SkillTag.即死, SkillTag.抗不屈),
     咆哮("", 0, SkillTag.即死, SkillTag.抗不屈),
+    瓦解("", 0, SkillTag.即死, SkillTag.抗不屈),
     冥府之召("",75,0,570,0, SkillTag.魔法),
 
     炼金失败("",0,SkillTag.复活),
@@ -321,6 +330,7 @@ public enum SkillType {
 
     封印("31157", 0, SkillTag.控制),
     血炼("31136", 20, SkillTag.魔法),
+    生命吸取("", 555,0, SkillTag.魔法),
     鲜血盛宴("54209", 0, 20, SkillTag.魔法),
     歃血魔咒("", 50, 50, SkillTag.魔法),
     猎杀之夜("", 450, 0, SkillTag.魔法, SkillTag.抗沉默),
@@ -392,6 +402,7 @@ public enum SkillType {
     致盲("", 1, 1),
     魔力法阵("", 15),
     魔力印记("", 20),
+    腐蚀术("", 100,0),
     酩酊("",155,0),
     东风("",175,0),
     灵力魔阵("", 150,0),
@@ -572,6 +583,9 @@ public enum SkillType {
     纷争乱境("", SkillType.无尽华尔兹,0, SkillType.侵蚀,0, SkillTag.不可洗炼),
     烈焰之肤("", SkillType.烈焰,0, SkillType.钢铁之肤,8, SkillTag.不可洗炼),
     破阵弧光("", 0, 0, new int[] { 1200, 1200, 1200, 1200, 1200, 1200, 1200, 1200, 1200, 1200, 1200 }, SkillTag.抗免疫, SkillTag.狙击),
+    涤罪神启("", SkillType.灵魂消散,0, SkillType.祈福,4, SkillTag.不可洗炼),
+    纯质流火("",SkillType.流火,0,SkillType.天火,6),
+    噬血狂袭("",SkillType.终极天谴,0,SkillType.终极祈祷,0),
 
 
     新生("",0,0,SkillTag.新生),
@@ -579,6 +593,7 @@ public enum SkillType {
     司命("",100,0),
     不灭定律("",50,0),
     我又回来了("",75,0),
+    灵魂脱壳("",50,0, new int[]{ 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100}),
     不灭("",new int[] { 0,20, 25, 35, 45, 55, 65, 70, 75, 80, 90 }),
     顽强("",new int[] { 0,20, 25, 35, 45, 55, 65, 70, 75, 80, 90 }, SkillTag.不动),
 
@@ -620,12 +635,15 @@ public enum SkillType {
     水榭桃盈("",SkillType.水流护甲,9,null,0),
     铁舞天衣("",SkillType.钢铁之肤,8,null,0),
     荆棘守护("",SkillType.武形破剑击,0,null,0,SkillTag.复活),
+    庇护光环("",SkillType.圣盾,0,null,0),
+    骑士庇护("",SkillType.圣盾,0,null,0),
 
 
     //给自身场上所有卡牌添加技能
     致命晶莹("",SkillType.霜火炸弹,0,null,0),
     乐不思蜀("",SkillType.治愈音符,0,null,0),
     御魔屏障("",SkillType.魔甲,2,null,0),
+    邪恶光环("",SkillType.生命吸取,0,null,0),
 
     //给自身场上所有卡牌添加技能除自己以外
     隐遁之术("",SkillType.无刀取,0,null,0),
@@ -657,6 +675,10 @@ public enum SkillType {
     暗之归还("",30,0),
     银色之棘毁灭("",50,0),
     银色之棘守护("",100,0),
+
+    //给对方卡牌添加回合buff
+    绝对压制("",1,0,300,0,SkillTag.抗免疫, SkillTag.抗不屈, SkillTag.魔王无效, SkillTag.魔族天赋,SkillTag.基础攻击加成),
+    支配亡灵("",0, SkillTag.魔王无效, SkillTag.魔族天赋,SkillTag.召唤),
 
     // 以下全部技能皆为待更新的空技能，请在更新之后将其移动到上面适合的位置
     // 对于物品技能，请将其（按顺序）加入下面的物品技能列表，用来以后更改自动卡牌数据更新工具

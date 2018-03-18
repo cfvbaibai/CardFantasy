@@ -44,7 +44,7 @@ public final class CoefficientThreeBuff {
                     impactAdd = ally.getInitAT() * impact / 100;
                     resolver.getStage().getUI().adjustAT(card, ally, impactAdd, skill);
                 } else if (effectType == SkillEffectType.MAXHP_CHANGE) {
-                    impactAdd = ally.getBasicMaxHP() * impact / 100;
+                    impactAdd = ally.getMaxHP() * impact / 100;
                     resolver.getStage().getUI().adjustHP(card, ally, impactAdd, skill);
                 } else {
                     throw new CardFantasyRuntimeException("Invalid effect type: " + effectType.name());
@@ -64,7 +64,7 @@ public final class CoefficientThreeBuff {
                     impactAdd = summonCard.getInitAT() * impact / 100;
                     resolver.getStage().getUI().adjustAT(card, summonCard, impactAdd, skill);
                 } else if (effectType == SkillEffectType.MAXHP_CHANGE) {
-                    impactAdd = summonCard.getBasicMaxHP() * impact / 100;
+                    impactAdd = summonCard.getMaxHP() * impact / 100;
                     resolver.getStage().getUI().adjustHP(card, summonCard, impactAdd, skill);
                 } else {
                     throw new CardFantasyRuntimeException("Invalid effect type: " + effectType.name());

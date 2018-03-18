@@ -28,8 +28,10 @@ public final class ReturnToHandAndDelay {
             ui.useSkill(attacker, defender, cardSkill, true);
             Return.returnHand(resolver, cardSkill, attacker, defender);
             int summonDelay = defender.getSummonDelay();
-            resolver.getStage().getUI().increaseSummonDelay(defender, delay);
-            defender.setSummonDelay(summonDelay + delay);
+            if(!defender.getStatus().containsStatus(CardStatusType.召唤)) {
+                resolver.getStage().getUI().increaseSummonDelay(defender, delay);
+                defender.setSummonDelay(summonDelay + delay);
+            }
         }
     }
 }

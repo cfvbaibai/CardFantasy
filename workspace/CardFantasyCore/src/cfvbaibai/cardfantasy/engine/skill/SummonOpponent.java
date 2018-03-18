@@ -112,7 +112,7 @@ public class SummonOpponent {
             CardStatusItem summonedStatusItem = CardStatusItem.summoned(skillUseInfo);
             resolver.getStage().getUI().addCardStatus(summoner, summonedCard, skill, summonedStatusItem);
             summonedCard.addStatus(summonedStatusItem);
-            resolver.summonCard(summoner.getOwner(), summonedCard, summoner, true, skill,1);
+            resolver.summonCard(summonedCard.getOwner(), summonedCard, summoner, true, skill,1);
         }
     }
 }

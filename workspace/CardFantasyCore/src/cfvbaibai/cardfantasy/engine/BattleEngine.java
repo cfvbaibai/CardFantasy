@@ -326,6 +326,8 @@ public class BattleEngine {
                 CardInfo myCard = myField.getCard(i);
                 List<SkillEffect> effects = myCard.getEffectsCausedBy(SkillType.虚弱);
                 effects.addAll(myCard.getEffectsCausedBy(SkillType.战争怒吼));
+                effects.addAll(myCard.getEffectsCausedBy(SkillType.碎裂怒吼));
+                effects.addAll(myCard.getEffectsCausedBy(SkillType.常夏日光));
                 for (SkillEffect effect : effects) {
                     resolver.getStage().getUI().loseAdjustATEffect(myCard, effect);
                     myCard.removeEffect(effect);
@@ -345,6 +347,32 @@ public class BattleEngine {
             resolver.resolveDebuff(myField.getCard(i), CardStatusType.中毒);
             resolver.resolveDebuff(myField.getCard(i), CardStatusType.燃烧);
             resolver.removeStatus(myField.getCard(i), CardStatusType.沉默);
+            resolver.removeStatus(myField.getCard(i), CardStatusType.死咒);
+            if (status.containsStatus(CardStatusType.变羊)) {
+                //变羊类技能恢复原状
+                List<CardStatusItem>  sheepStatus= status.getStatusOf(CardStatusType.变羊);
+                {
+                    for(CardStatusItem statusItem:sheepStatus)
+                    {
+                        if(myField.getCard(i)==null)
+                        {
+                            break;
+                        }
+                        for (SkillEffect effect : myField.getCard(i).getEffectsCausedBy(statusItem.getCause())) {
+                            if (effect.getType() == SkillEffectType.ATTACK_CHANGE) {
+                                resolver.getStage().getUI().loseAdjustATEffect(myField.getCard(i), effect);
+                            } else if (effect.getType() == SkillEffectType.MAXHP_CHANGE) {
+                                myField.getCard(i).setBasicHP(statusItem.getCause().getSkill().getImpact2());
+                                resolver.getStage().getUI().loseAdjustHPEffect(myField.getCard(i), effect);
+                            } else {
+                                throw new CardFantasyRuntimeException("Invalid effect type: " + effect.getType().name());
+                            }
+                            myField.getCard(i).removeEffect(effect);
+                        }
+                    }
+                }
+                resolver.removeStatus(myField.getCard(i), CardStatusType.变羊);
+            }
 
             if (!underControl) {
                 // 回春
@@ -383,7 +411,7 @@ public class BattleEngine {
         if (opField.getCard(i) == null) {
             resolver.resolvePreAttackHeroSkills(myField.getCard(i), getInactivePlayer());
             resolver.attackHero(myField.getCard(i), getInactivePlayer(), null, myField.getCard(i).getCurrentAT());
-            if (myField.getCard(i)!=null&&(myField.getCard(i).containsUsableSkill(SkillType.连斩)||myField.getCard(i).containsUsableSkill(SkillType.原素裂变))) {
+            if (myField.getCard(i)!=null&&(myField.getCard(i).containsUsableSkill(SkillType.连斩)||myField.getCard(i).containsUsableSkill(SkillType.原素裂变)||myField.getCard(i).containsUsableSkill(SkillType.死亡收割))) {
                 boolean killCard = true;
                 for(;killCard;) {
                     killCard = randomAttackCard(myField, opField, i);
@@ -420,7 +448,7 @@ public class BattleEngine {
             }
             if (myField.getCard(i) != null && !myField.getCard(i).isDead() &&
                         (opField.getCard(i) == null || opField.getCard(i).isDead())) {
-                if (myField.getCard(i)!=null&&(myField.getCard(i).containsUsableSkill(SkillType.连斩)||myField.getCard(i).containsUsableSkill(SkillType.原素裂变))) {
+                if (myField.getCard(i)!=null&&(myField.getCard(i).containsUsableSkill(SkillType.连斩)||myField.getCard(i).containsUsableSkill(SkillType.原素裂变)||myField.getCard(i).containsUsableSkill(SkillType.死亡收割))) {
                     boolean killCard = true;
                     for(;killCard;) {
                         killCard = randomAttackCard(myField, opField, i);
