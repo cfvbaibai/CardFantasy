@@ -108,6 +108,7 @@ public final class Return {
             defender.restoreOwner();
             defender.getOwner().getHand().addCard(defender);
             defender.reset();
+            ui.cardToHand(defender.getOwner(), defender);
         }
         resolver.resolveLeaveSkills(defender);
         if (defender.containsAllSkill(SkillType.铁壁) || defender.containsAllSkill(SkillType.驱虎吞狼) || defender.containsAllSkill(SkillType.金汤)) {
@@ -119,6 +120,5 @@ public final class Return {
                 }
             }
         }
-        ui.cardToHand(defender.getOwner(), defender);
     }
 }

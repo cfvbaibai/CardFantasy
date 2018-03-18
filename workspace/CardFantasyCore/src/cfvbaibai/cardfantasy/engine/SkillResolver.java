@@ -453,7 +453,7 @@ public class SkillResolver {
                 SummonOpponent.apply(this, skillUseInfo, attacker, SummonType.Normal, 1, "网页版大地之影");
             } else if (skillUseInfo.getType() == SkillType.樱色轮舞) {
                 Summon.apply(this, skillUseInfo, attacker, SummonType.Random, 1,
-                        "风之樱女");
+                        "月樱公主","风之樱女","春樱斗魂");
             } else if (skillUseInfo.getType() == SkillType.魏国英魂) {
                 AddCard.apply(this, skillUseInfo, attacker, SummonType.Summoning, 1,
                         "三国英魂孟德", "三国英魂仲达", "三国樱魂文远", "三国英魂元让", "三国英魂甄姬", "三国英魂文若");

@@ -81,6 +81,10 @@ public class Summon {
                     {
                         if(item.getType()==CardStatusType.召唤){
                             if(item.getCause().getOwner() instanceof CardInfo){
+                                if(item.getCause().getSkill()!=skillUseInfo.getSkill())
+                                {
+                                    break;//修复召唤物多次召唤同一个时只发动一次。
+                                }
                                 if(((CardInfo)item.getCause().getOwner()).isSummonedMinion())
                                 {
                                     parentCardName=((CardInfo) item.getCause().getOwner()).getName();
