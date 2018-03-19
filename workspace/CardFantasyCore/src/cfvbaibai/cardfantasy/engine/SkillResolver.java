@@ -151,6 +151,8 @@ public class SkillResolver {
                     AllFiledAddSkill.apply(this, skillUseInfo, card, skillUseInfo.getAttachedUseInfo1().getSkill());
                 } else if (skillUseInfo.getType() == SkillType.庇护光环) {
                     AddSidesSkill.apply(this, skillUseInfo, card, skillUseInfo.getAttachedUseInfo1().getSkill());
+                } else if (skillUseInfo.getType() == SkillType.骑士庇护) {
+                    AddSidesSkill.apply(this, skillUseInfo, card, skillUseInfo.getAttachedUseInfo1().getSkill());
                 } else if (skillUseInfo.getType() == SkillType.流光回梦) {
                     Cooperation.apply(this, skillUseInfo, card, "雪舞霓裳",true);
                 } else if (skillUseInfo.getType() == SkillType.暗红魔导阵) {
@@ -2385,8 +2387,15 @@ public class SkillResolver {
 
     public void summonCard(Player player, CardInfo summonedCard, CardInfo reviver, boolean isMinion, Skill summonSkill, int... args) throws HeroDieSignal {
         Player enemy = this.getStage().getOpponent(player);
-        List<CardInfo> summonedCards = new ArrayList<CardInfo>();
-        summonedCards.add(summonedCard);
+        if ((player.getDeck().contains(summonedCard)||player.getHand().contains(summonedCard))&&(summonedCard.getOriginalOwner() != null && summonedCard.getOriginalOwner() != player)) {
+            player.getHand().removeCard(summonedCard);
+            // 星云锁链之类可以从卡组直接召唤的情况
+            player.getDeck().removeCard(summonedCard);
+        }
+        else if(summonedCard.getOwner()!=player)
+        {
+            player.getHand().removeCard(summonedCard);//夺魂导致开局手牌错误hack一下不是自己的卡直接移除
+        }
         int flag = 0;
         for (int i = 0; i < args.length; i++) {
             flag = args[i];
@@ -2419,6 +2428,13 @@ public class SkillResolver {
             }
             if (summonedCard == null) {
                 break;
+            }
+            if (player.getHand().contains(summonedCard)&&(summonedCard.getOriginalOwner() != null && summonedCard.getOriginalOwner() != player)) {
+                player.getHand().removeCard(summonedCard);//hack一下
+            }
+           else if(summonedCard.getOwner()!=player)
+            {
+                player.getHand().removeCard(summonedCard);//hack一下
             }
             summonedCards.add(summonedCard);
             setCardToField(summonedCard, 0);

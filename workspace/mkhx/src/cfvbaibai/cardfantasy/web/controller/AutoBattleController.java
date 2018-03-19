@@ -377,7 +377,7 @@ public class AutoBattleController {
             PlayerInfo player1 = null;
             if (enableCustomGuards && gameType == 0) {
                 List<Skill> player1Buffs = PvlEngine.getCardBuffs(customGuardsAtBuff, customGuardsHpBuff);
-                player1 = PlayerBuilder.build(false, "莉莉丝", lilithName + "," + customGuards, 9999999, player1Buffs, 100);
+                player1 = PlayerBuilder.build(false, "莉莉丝", lilithName + "," + customGuards, 99999, player1Buffs, 100);
             } else {
                 player1 = PlayerBuilder.buildLilith(lilithDataStore, lilithName, gameType == 0);
             }
