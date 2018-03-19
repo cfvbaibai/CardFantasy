@@ -1173,6 +1173,11 @@
         <Skill type="送葬之刃" level="7" unlock="5"  />
         <Skill type="坚毅" level="0" unlock="10" />
     </Card>
+    <Card id="1630" name="原无限之神" wikiId="" race="王国" speed="4" star="5" cost="19" incrCost="1" at="290" hp="1660" incrAT="39" incrHP="19">
+        <Skill type="复活" level="0" unlock="0" summon="true" />
+        <Skill type="星云锁链" level="0" unlock="5" />
+        <Skill type="转生" level="7" unlock="10" />
+    </Card>
 
 
     <!-- 森林 -->
@@ -4212,6 +4217,11 @@
         <Skill type="英雄杀手" level="8" unlock="0" />
         <Skill type="送还" level="0" unlock="5" />
         <Skill type="免疫" level="0" unlock="10" />
+    </Card>
+    <Card id="4610" name="原死域军神" wikiId="62844" race="地狱" speed="3" star="5" cost="16" incrCost="2" at="380" hp="1210" incrAT="32" incrHP="35">
+        <Skill type="战意" level="6" unlock="0" />
+        <Skill type="弱点攻击" level="0" unlock="5" />
+        <Skill type="转生" level="7" unlock="10" />
     </Card>
 
 

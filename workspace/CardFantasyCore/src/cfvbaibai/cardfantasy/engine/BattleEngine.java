@@ -133,6 +133,7 @@ public class BattleEngine {
         if (this.getStage().isEnded()) {
             throw new CardFantasyRuntimeException("战斗已结束");
         }
+        clearDeck();//hack莉莉丝连续作战的夺魂bug.
         Phase phase = Phase.开始;
         Phase nextPhase = Phase.未知;
         try {
@@ -657,5 +658,31 @@ public class BattleEngine {
         }
         return  null;
 
+    }
+
+    //暂时hack手牌清理阶段，手牌中可能有别的玩家的卡牌（莉莉丝的连续作战导致）
+    private void clearDeck(){
+        Player player = this.getActivePlayer();
+        Player player2 = this.getInactivePlayer();
+        for(CardInfo deckCard:player.getDeck().toList())
+        {
+            if (player.getDeck().contains(deckCard)&&(deckCard.getOriginalOwner() != null && deckCard.getOriginalOwner() != player)) {
+                player.getDeck().removeCard(deckCard);//hack一下
+            }
+            else if(deckCard.getOwner()!=player)
+            {
+                player.getDeck().removeCard(deckCard);//hack一下
+            }
+        }
+        for(CardInfo otherDeckCard:player2.getDeck().toList())
+        {
+            if (player2.getDeck().contains(otherDeckCard)&&(otherDeckCard.getOriginalOwner() != null && otherDeckCard.getOriginalOwner() != player2)) {
+                player2.getDeck().removeCard(otherDeckCard);//hack一下
+            }
+            else if(otherDeckCard.getOwner()!=player2)
+            {
+                player2.getDeck().removeCard(otherDeckCard);//hack一下
+            }
+        }
     }
 }

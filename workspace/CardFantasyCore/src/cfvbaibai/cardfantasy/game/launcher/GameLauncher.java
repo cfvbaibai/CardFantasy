@@ -102,7 +102,7 @@ public final class GameLauncher {
             String playerDeck, String lilithDeck, int playerHeroLv, int lilithCardAtBuff, int lilithCardHpBuff,
             int gameType, int remainingGuard, int remainingHp, String eventCardNames, int gameCount, GameUI ui) {
         List<Skill> player1Buffs = PvlEngine.getCardBuffs(lilithCardAtBuff, lilithCardHpBuff);
-        PlayerInfo player1 = PlayerBuilder.build(false, "莉莉丝", lilithDeck, 9999999, player1Buffs, 100); 
+        PlayerInfo player1 = PlayerBuilder.build(false, "莉莉丝", lilithDeck, 99999, player1Buffs, 100);
         List<Skill> player2Buffs = buildBuffsForLilithEvents(eventCardNames);
         PlayerInfo player2 = PlayerBuilder.build(true, "玩家", playerDeck, playerHeroLv, player2Buffs, 100);
         String validationResult = getDeckValidationResult(null, player2);

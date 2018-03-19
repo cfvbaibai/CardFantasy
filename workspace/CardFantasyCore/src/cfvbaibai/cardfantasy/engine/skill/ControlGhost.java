@@ -82,6 +82,9 @@ public class ControlGhost {
                     CardStatusItem summonedStatusItem = CardStatusItem.summoned(skillUseInfo);
                     resolver.getStage().getUI().addCardStatus(deadCard, summonedCard, skill, summonedStatusItem);
                     summonedCard.addStatus(summonedStatusItem);
+                    CardStatusItem weakStatusItem = CardStatusItem.weak(skillUseInfo);
+                    resolver.getStage().getUI().addCardStatus(deadCard, summonedCard, skill, weakStatusItem);
+                    summonedCard.addStatus(weakStatusItem);
                     summonedCard.setRelationCardInfo(attackCard);
                     resolver.summonCard(summonedCard.getOwner(), summonedCard, deadCard, true, skill,1);
                 }

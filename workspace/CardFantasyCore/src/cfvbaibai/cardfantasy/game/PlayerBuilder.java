@@ -31,7 +31,7 @@ public class PlayerBuilder {
             throw new CardFantasyRuntimeException("Invalid Lilith ID: " + bossId);
         }
         List<Skill> buffs = PvlEngine.getCardBuffs(lsi.getCardAtBuff(), lsi.getCardHpBuff());
-        PlayerInfo playerInfo = PlayerBuilder.build(false, bossId, 9999999, buffs, 100, lsi.getDeckDescs(withGuards));
+        PlayerInfo playerInfo = PlayerBuilder.build(false, bossId, 99999, buffs, 100, lsi.getDeckDescs(withGuards));
         return playerInfo;
     }
 }
