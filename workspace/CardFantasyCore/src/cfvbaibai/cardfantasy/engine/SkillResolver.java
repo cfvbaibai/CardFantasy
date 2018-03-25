@@ -1370,7 +1370,7 @@ public class SkillResolver {
             DeathMark.explode(this, deadCard, result);
         }
         if (deadCard.getStatus().containsStatus(CardStatusType.死咒)) {
-            ControlGhost.explode(this, deadCard, result,"摄魂","嗜血","贪魔","夺魄");
+            ControlGhost.explode(this, deadCard, result,"摄魂","噬血","贪魔","夺魄");
         }
         // HACKHACK: Cannot find better way to handle 不屈/
         //改变不屈的去掉buff位置，为GiveSideSkill做的处理
@@ -2095,8 +2095,6 @@ public class SkillResolver {
                 } else if (skillUseInfo.getType() == SkillType.星河召唤) {
                     Summon.apply(this, skillUseInfo, card, SummonType.RandomSummoning, 2,
                             "精灵游骑兵", "蝶语仙子", "人马大贤者", "洞察之鹰", "森林弹唱者", "森林女神");
-                } else if (skillUseInfo.getType() == SkillType.新生) {
-                    NewBorn.apply(this, skillUseInfo, card, enemy, 1);
                 } else if (skillUseInfo.getType() == SkillType.祈福) {
                     Bless.apply(skillUseInfo.getSkill(), this, card);
                 }
@@ -2246,6 +2244,8 @@ public class SkillResolver {
                             Revive.apply(this, skillUseInfo, card);
                         }
                     }
+                } else if  (skillUseInfo.getType() == SkillType.新生 && skillUseInfo.getSkill().isSummonSkill() && isSummoning) {
+                    NewBorn.apply(this, skillUseInfo, card, opField.getOwner(), 1);
                 }
             }
         }

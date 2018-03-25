@@ -8,7 +8,7 @@
         "encrypt": 2
     },
     "data": {
-        "Runes": [
+        "Runes":[
             {
                 "RuneId": "1",
                 "RuneName": "火拳",
@@ -1673,6 +1673,36 @@
                 "SkillTimes": "6",
                 "Condition": "敌方场上卡牌数量大于4张",
                 "SkillConditionSlide": "2",
+                "SkillConditionType": "4",
+                "SkillConditionRace": "0",
+                "SkillConditionColor": "0",
+                "SkillConditionCompare": "1",
+                "SkillConditionValue": "4",
+                "ThinkGet": "0",
+                "Fragment": "0",
+                "BaseExp": "500",
+                "ExpArray": [
+                    "0",
+                    "240",
+                    "1200",
+                    "3360",
+                    "7200"
+                ]
+            },
+            {
+                "RuneId": "62",
+                "RuneName": "破军",
+                "Property": "3",
+                "Color": "5",
+                "LockSkill1": "2687",
+                "LockSkill2": "2688",
+                "LockSkill3": "2689",
+                "LockSkill4": "2690",
+                "LockSkill5": "2691",
+                "Price": "20000",
+                "SkillTimes": "4",
+                "Condition": "我方场上卡牌数量大于4张",
+                "SkillConditionSlide": "1",
                 "SkillConditionType": "4",
                 "SkillConditionRace": "0",
                 "SkillConditionColor": "0",
