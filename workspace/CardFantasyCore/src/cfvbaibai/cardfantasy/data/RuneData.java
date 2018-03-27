@@ -18,7 +18,7 @@ public enum RuneData {
     秽土("30803", RuneClass.GROUND, 4, SkillType.转生, 4, 1, 5, Growth.RUNE, RuneActivator.myGrave(1, Race.SAVAGE)),
     玄石("", RuneClass.GROUND, 5, SkillType.全体加速, 2, 0, 5, Growth.RUNE, RuneActivator.fieldDiff(1)),
     狂战("", RuneClass.GROUND, 5, SkillType.穿刺, 6, 1, 5, Growth.RUNE, RuneActivator.myField(1, Race.SAVAGE)),
-    背水("", RuneClass.GROUND, 5, SkillType.袈裟斩燕返, 0, 0, 5, Growth.RUNE, RuneActivator.fieldDiff(0)),
+    背水("", RuneClass.GROUND, 5, SkillType.袈裟斩燕返, 0, 0, 5, Growth.RUNE, RuneActivator.fieldDiff(1)),
 
     霜冻("31466", RuneClass.WATER, 3, SkillType.冰弹, 3, 1, 1, Growth.RUNE, RuneActivator.myGrave(2, null)),
     寒潮("31400", RuneClass.WATER, 3, SkillType.霜冻新星, 1, 1, 1, Growth.RUNE, RuneActivator.myDeck(2, null)),

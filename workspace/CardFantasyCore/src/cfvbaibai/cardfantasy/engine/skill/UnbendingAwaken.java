@@ -10,6 +10,10 @@ public class UnbendingAwaken {
     public static boolean apply(SkillUseInfo skillUseInfo, SkillResolver resolver, CardInfo card) {
         int awakenCount = skillUseInfo.getSkill().getImpact();
         int fieldCount = card.getOwner().getField().getAliveCards().size();
+        List<CardStatusItem> items = card.getStatus().getStatusOf(CardStatusType.不屈);
+        if (!items.isEmpty()) {
+            return false;
+        }
         if(fieldCount>awakenCount)
         {
             return false;

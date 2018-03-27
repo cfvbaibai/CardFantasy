@@ -23580,6 +23580,266 @@
             "Next": "19",
             "MapStageDetails": [
                 {
+                    "MapStageDetailId": "200",
+                    "Name": "万耀森林",
+                    "Type": "2",
+                    "MapStageId": "18",
+                    "Rank": "10",
+                    "X": "654",
+                    "Y": "252",
+                    "Prev": "199",
+                    "Next": "0",
+                    "NextBranch": "202",
+                    "FightName": "真·预言之神",
+                    "FightImg": "9919",
+                    "Dialogue": [
+                        {
+                            "StoryId": "1409",
+                            "Did": "18_11_1",
+                            "NPC": "美狄丝",
+                            "Dialogue": "我们终于逃离那些变异的万足虫了！",
+                            "Icon": "1_1",
+                            "Orientations": "2",
+                            "Opportunity": "1"
+                        },
+                        {
+                            "StoryId": "1410",
+                            "Did": "18_11_2",
+                            "NPC": "player_name",
+                            "Dialogue": "丝丝，我觉得你与世界末日比起来你更加的可怕！",
+                            "Icon": "0_3",
+                            "Orientations": "1",
+                            "Opportunity": "1"
+                        },
+                        {
+                            "StoryId": "1411",
+                            "Did": "18_11_3",
+                            "NPC": "美狄丝",
+                            "Dialogue": "真的很抱歉，下次我小心……",
+                            "Icon": "1_3",
+                            "Orientations": "2",
+                            "Opportunity": "1"
+                        },
+                        {
+                            "StoryId": "1412",
+                            "Did": "18_11_4",
+                            "NPC": "奥戈",
+                            "Dialogue": "没想到这桥的风景真不错！下面是万耀森林！超赞的！",
+                            "Icon": "61_1",
+                            "Orientations": "2",
+                            "Opportunity": "1"
+                        },
+                        {
+                            "StoryId": "1413",
+                            "Did": "18_11_5",
+                            "NPC": "player_name",
+                            "Dialogue": "这个桥怎么会建在空中，而且这么长……",
+                            "Icon": "0_0",
+                            "Orientations": "1",
+                            "Opportunity": "1"
+                        },
+                        {
+                            "StoryId": "1414",
+                            "Did": "18_11_6",
+                            "NPC": "美狄丝",
+                            "Dialogue": "快看哪里有蝴蝶，好大的蝴蝶！",
+                            "Icon": "1_1",
+                            "Orientations": "2",
+                            "Opportunity": "1"
+                        },
+                        {
+                            "StoryId": "1415",
+                            "Did": "18_11_7",
+                            "NPC": "奥戈",
+                            "Dialogue": "好像是森林护卫精灵！是友好的！",
+                            "Icon": "61_1",
+                            "Orientations": "2",
+                            "Opportunity": "1"
+                        },
+                        {
+                            "StoryId": "1416",
+                            "Did": "18_11_8",
+                            "NPC": "美狄丝",
+                            "Dialogue": "哈喽！我是丝丝！",
+                            "Icon": "1_1",
+                            "Orientations": "2",
+                            "Opportunity": "1"
+                        },
+                        {
+                            "StoryId": "1417",
+                            "Did": "18_11_9",
+                            "NPC": "森林护卫精灵",
+                            "Dialogue": "是侵略者，进攻！",
+                            "Icon": "61_0",
+                            "Orientations": "2",
+                            "Opportunity": "1"
+                        },
+                        {
+                            "StoryId": "1418",
+                            "Did": "18_11_10",
+                            "NPC": "player_name",
+                            "Dialogue": "奥戈，你不是说他是友好的吗！怎么会攻击我们？",
+                            "Icon": "0_3",
+                            "Orientations": "1",
+                            "Opportunity": "1"
+                        },
+                        {
+                            "StoryId": "1419",
+                            "Did": "18_11_11",
+                            "NPC": "奥戈",
+                            "Dialogue": "我也不知道啊！",
+                            "Icon": "61_3",
+                            "Orientations": "2",
+                            "Opportunity": "1"
+                        },
+                        {
+                            "StoryId": "1420",
+                            "Did": "18_11_12",
+                            "NPC": "美狄丝",
+                            "Dialogue": "快跑啊！万耀森林飞出来好多巨蜂！",
+                            "Icon": "1_4",
+                            "Orientations": "2",
+                            "Opportunity": "1"
+                        }
+                    ],
+                    "DialogueAfter": [
+                        {
+                            "StoryId": "1421",
+                            "Did": "18_11_13",
+                            "NPC": "森林护卫精灵",
+                            "Dialogue": "我还以为你们是侵略者。",
+                            "Icon": "20_0",
+                            "Orientations": "2",
+                            "Opportunity": "2"
+                        },
+                        {
+                            "StoryId": "1422",
+                            "Did": "18_11_14",
+                            "NPC": "player_name",
+                            "Dialogue": "发生什么事了吗？",
+                            "Icon": "0_0",
+                            "Orientations": "1",
+                            "Opportunity": "2"
+                        },
+                        {
+                            "StoryId": "1423",
+                            "Did": "18_11_15",
+                            "NPC": "森林护卫精灵",
+                            "Dialogue": "在十年前这里突然出现一个超级巨龙，在这里为非作歹，本来这里全部都是森林，现在也只剩这么多了……",
+                            "Icon": "20_0",
+                            "Orientations": "2",
+                            "Opportunity": "2"
+                        },
+                        {
+                            "StoryId": "1424",
+                            "Did": "18_11_16",
+                            "NPC": "player_name",
+                            "Dialogue": "我是来帮助你们的，你们能把你们知道的全部告诉我吗？",
+                            "Icon": "0_0",
+                            "Orientations": "1",
+                            "Opportunity": "2"
+                        },
+                        {
+                            "StoryId": "1425",
+                            "Did": "18_11_17",
+                            "NPC": "森林护卫精灵",
+                            "Dialogue": "当然，十年前有一只超级巨龙来到这里，他叫钢铁雷龙，他非常的邪恶，不仅和我们抢夺资源，还破坏环境，把我们很多精灵族抓到万耀国建造城堡。后来又跑来一只泰坦巨龙，他说可以帮我们赶走钢铁雷龙，但是没想到就是他不仅没有赶走钢铁雷龙还让我们的情况更加的恶化，我们正要找他算账的时候，他就突然不见了，自那次以后，东边就出现一个大坑，凡事接近大坑的生物都会妖魔化，只有待在森林我们才能安全。",
+                            "Icon": "20_0",
+                            "Orientations": "2",
+                            "Opportunity": "2"
+                        },
+                        {
+                            "StoryId": "1426",
+                            "Did": "18_11_18",
+                            "NPC": "player_name",
+                            "Dialogue": "原来如此……",
+                            "Icon": "0_2",
+                            "Orientations": "1",
+                            "Opportunity": "2"
+                        },
+                        {
+                            "StoryId": "1427",
+                            "Did": "18_11_19",
+                            "NPC": "美狄丝",
+                            "Dialogue": "又是泰坦火龙……",
+                            "Icon": "1_2",
+                            "Orientations": "2",
+                            "Opportunity": "2"
+                        },
+                        {
+                            "StoryId": "1428",
+                            "Did": "18_11_20",
+                            "NPC": "奥戈",
+                            "Dialogue": "真不知道泰坦火龙在这里到底处于什么样的一个位置，到底是好人还是坏人？",
+                            "Icon": "61_3",
+                            "Orientations": "2",
+                            "Opportunity": "2"
+                        },
+                        {
+                            "StoryId": "1429",
+                            "Did": "18_11_21",
+                            "NPC": "player_name",
+                            "Dialogue": "都别猜了，前面应该快到万耀国了，我们去一探究竟，救出那些精灵们！",
+                            "Icon": "0_2",
+                            "Orientations": "1",
+                            "Opportunity": "2"
+                        }
+                    ],
+                    "Levels": [
+                        {
+                            "MapStageDetailId": "200",
+                            "Level": "1",
+                            "CardList": "701_15_1263,703_15_1259,709_15_1327,704_15_597,707_15_1499,702_15_1429,711_15_1450,712_15_1569,706_15_688,705_15_1482,710_15_1261,381_15_1482,398_15_286,398_15_1224,9919_15_386",
+                            "RuneList": "58_4,59_4,60_4,55_4",
+                            "HeroLevel": "120",
+                            "AchievementId": "0",
+                            "EnergyExpend": "2",
+                            "BonusWin": "Exp_7790,Coins_7790",
+                            "FirstBonusWin": "Card_407",
+                            "BonusLose": "Exp_100,Coins_100",
+                            "AddedBonus": "",
+                            "EnergyExplore": "2",
+                            "BonusExplore": "Exp_2820,Coins_3480",
+                            "Hint": "0",
+                            "AchievementText": "战斗胜利"
+                        },
+                        {
+                            "MapStageDetailId": "200",
+                            "Level": "2",
+                            "CardList": "701_15_1263,703_15_1259,709_15_1327,704_15_597,707_15_1499,702_15_1429,711_15_1450,712_15_1569,706_15_688,705_15_1482,710_15_1261,381_15_1482,398_15_286,398_15_1224,9919_15_386",
+                            "RuneList": "58_4,59_4,60_4,55_4",
+                            "HeroLevel": "120",
+                            "AchievementId": "58",
+                            "EnergyExpend": "2",
+                            "BonusWin": "Exp_8750,Coins_8750",
+                            "FirstBonusWin": "Card_409",
+                            "BonusLose": "Exp_100,Coins_100",
+                            "AddedBonus": "",
+                            "EnergyExplore": "2",
+                            "BonusExplore": "Exp_2820,Coins_3480",
+                            "Hint": "0",
+                            "AchievementText": "卡组中包含风属性符文"
+                        },
+                        {
+                            "MapStageDetailId": "200",
+                            "Level": "3",
+                            "CardList": "701_15_1263,703_15_1259,709_15_1327,704_15_597,707_15_1499,702_15_1429,711_15_1450,712_15_1569,706_15_688,705_15_1482,710_15_1261,381_15_1482,398_15_286,398_15_1224,9919_15_386",
+                            "RuneList": "58_4,59_4,60_4,55_4",
+                            "HeroLevel": "120",
+                            "AchievementId": "61",
+                            "EnergyExpend": "2",
+                            "BonusWin": "Exp_9710,Coins_9710",
+                            "FirstBonusWin": "Card_376",
+                            "BonusLose": "Exp_100,Coins_100",
+                            "AddedBonus": "",
+                            "EnergyExplore": "2",
+                            "BonusExplore": "Exp_2820,Coins_3480",
+                            "Hint": "0",
+                            "AchievementText": "对方英雄阵亡"
+                        }
+                    ]
+                },
+                {
                     "MapStageDetailId": "190",
                     "Name": "万妖之门",
                     "Type": "1",
@@ -26008,266 +26268,6 @@
                             "BonusExplore": "Exp_2820,Coins_3480",
                             "Hint": "0",
                             "AchievementText": "卡组中1星卡牌不小于2张"
-                        }
-                    ]
-                },
-                {
-                    "MapStageDetailId": "200",
-                    "Name": "万耀森林",
-                    "Type": "2",
-                    "MapStageId": "18",
-                    "Rank": "10",
-                    "X": "654",
-                    "Y": "252",
-                    "Prev": "199",
-                    "Next": "0",
-                    "NextBranch": "202",
-                    "FightName": "真·预言之神",
-                    "FightImg": "9919",
-                    "Dialogue": [
-                        {
-                            "StoryId": "1409",
-                            "Did": "18_11_1",
-                            "NPC": "美狄丝",
-                            "Dialogue": "我们终于逃离那些变异的万足虫了！",
-                            "Icon": "1_1",
-                            "Orientations": "2",
-                            "Opportunity": "1"
-                        },
-                        {
-                            "StoryId": "1410",
-                            "Did": "18_11_2",
-                            "NPC": "player_name",
-                            "Dialogue": "丝丝，我觉得你与世界末日比起来你更加的可怕！",
-                            "Icon": "0_3",
-                            "Orientations": "1",
-                            "Opportunity": "1"
-                        },
-                        {
-                            "StoryId": "1411",
-                            "Did": "18_11_3",
-                            "NPC": "美狄丝",
-                            "Dialogue": "真的很抱歉，下次我小心……",
-                            "Icon": "1_3",
-                            "Orientations": "2",
-                            "Opportunity": "1"
-                        },
-                        {
-                            "StoryId": "1412",
-                            "Did": "18_11_4",
-                            "NPC": "奥戈",
-                            "Dialogue": "没想到这桥的风景真不错！下面是万耀森林！超赞的！",
-                            "Icon": "61_1",
-                            "Orientations": "2",
-                            "Opportunity": "1"
-                        },
-                        {
-                            "StoryId": "1413",
-                            "Did": "18_11_5",
-                            "NPC": "player_name",
-                            "Dialogue": "这个桥怎么会建在空中，而且这么长……",
-                            "Icon": "0_0",
-                            "Orientations": "1",
-                            "Opportunity": "1"
-                        },
-                        {
-                            "StoryId": "1414",
-                            "Did": "18_11_6",
-                            "NPC": "美狄丝",
-                            "Dialogue": "快看哪里有蝴蝶，好大的蝴蝶！",
-                            "Icon": "1_1",
-                            "Orientations": "2",
-                            "Opportunity": "1"
-                        },
-                        {
-                            "StoryId": "1415",
-                            "Did": "18_11_7",
-                            "NPC": "奥戈",
-                            "Dialogue": "好像是森林护卫精灵！是友好的！",
-                            "Icon": "61_1",
-                            "Orientations": "2",
-                            "Opportunity": "1"
-                        },
-                        {
-                            "StoryId": "1416",
-                            "Did": "18_11_8",
-                            "NPC": "美狄丝",
-                            "Dialogue": "哈喽！我是丝丝！",
-                            "Icon": "1_1",
-                            "Orientations": "2",
-                            "Opportunity": "1"
-                        },
-                        {
-                            "StoryId": "1417",
-                            "Did": "18_11_9",
-                            "NPC": "森林护卫精灵",
-                            "Dialogue": "是侵略者，进攻！",
-                            "Icon": "61_0",
-                            "Orientations": "2",
-                            "Opportunity": "1"
-                        },
-                        {
-                            "StoryId": "1418",
-                            "Did": "18_11_10",
-                            "NPC": "player_name",
-                            "Dialogue": "奥戈，你不是说他是友好的吗！怎么会攻击我们？",
-                            "Icon": "0_3",
-                            "Orientations": "1",
-                            "Opportunity": "1"
-                        },
-                        {
-                            "StoryId": "1419",
-                            "Did": "18_11_11",
-                            "NPC": "奥戈",
-                            "Dialogue": "我也不知道啊！",
-                            "Icon": "61_3",
-                            "Orientations": "2",
-                            "Opportunity": "1"
-                        },
-                        {
-                            "StoryId": "1420",
-                            "Did": "18_11_12",
-                            "NPC": "美狄丝",
-                            "Dialogue": "快跑啊！万耀森林飞出来好多巨蜂！",
-                            "Icon": "1_4",
-                            "Orientations": "2",
-                            "Opportunity": "1"
-                        }
-                    ],
-                    "DialogueAfter": [
-                        {
-                            "StoryId": "1421",
-                            "Did": "18_11_13",
-                            "NPC": "森林护卫精灵",
-                            "Dialogue": "我还以为你们是侵略者。",
-                            "Icon": "20_0",
-                            "Orientations": "2",
-                            "Opportunity": "2"
-                        },
-                        {
-                            "StoryId": "1422",
-                            "Did": "18_11_14",
-                            "NPC": "player_name",
-                            "Dialogue": "发生什么事了吗？",
-                            "Icon": "0_0",
-                            "Orientations": "1",
-                            "Opportunity": "2"
-                        },
-                        {
-                            "StoryId": "1423",
-                            "Did": "18_11_15",
-                            "NPC": "森林护卫精灵",
-                            "Dialogue": "在十年前这里突然出现一个超级巨龙，在这里为非作歹，本来这里全部都是森林，现在也只剩这么多了……",
-                            "Icon": "20_0",
-                            "Orientations": "2",
-                            "Opportunity": "2"
-                        },
-                        {
-                            "StoryId": "1424",
-                            "Did": "18_11_16",
-                            "NPC": "player_name",
-                            "Dialogue": "我是来帮助你们的，你们能把你们知道的全部告诉我吗？",
-                            "Icon": "0_0",
-                            "Orientations": "1",
-                            "Opportunity": "2"
-                        },
-                        {
-                            "StoryId": "1425",
-                            "Did": "18_11_17",
-                            "NPC": "森林护卫精灵",
-                            "Dialogue": "当然，十年前有一只超级巨龙来到这里，他叫钢铁雷龙，他非常的邪恶，不仅和我们抢夺资源，还破坏环境，把我们很多精灵族抓到万耀国建造城堡。后来又跑来一只泰坦巨龙，他说可以帮我们赶走钢铁雷龙，但是没想到就是他不仅没有赶走钢铁雷龙还让我们的情况更加的恶化，我们正要找他算账的时候，他就突然不见了，自那次以后，东边就出现一个大坑，凡事接近大坑的生物都会妖魔化，只有待在森林我们才能安全。",
-                            "Icon": "20_0",
-                            "Orientations": "2",
-                            "Opportunity": "2"
-                        },
-                        {
-                            "StoryId": "1426",
-                            "Did": "18_11_18",
-                            "NPC": "player_name",
-                            "Dialogue": "原来如此……",
-                            "Icon": "0_2",
-                            "Orientations": "1",
-                            "Opportunity": "2"
-                        },
-                        {
-                            "StoryId": "1427",
-                            "Did": "18_11_19",
-                            "NPC": "美狄丝",
-                            "Dialogue": "又是泰坦火龙……",
-                            "Icon": "1_2",
-                            "Orientations": "2",
-                            "Opportunity": "2"
-                        },
-                        {
-                            "StoryId": "1428",
-                            "Did": "18_11_20",
-                            "NPC": "奥戈",
-                            "Dialogue": "真不知道泰坦火龙在这里到底处于什么样的一个位置，到底是好人还是坏人？",
-                            "Icon": "61_3",
-                            "Orientations": "2",
-                            "Opportunity": "2"
-                        },
-                        {
-                            "StoryId": "1429",
-                            "Did": "18_11_21",
-                            "NPC": "player_name",
-                            "Dialogue": "都别猜了，前面应该快到万耀国了，我们去一探究竟，救出那些精灵们！",
-                            "Icon": "0_2",
-                            "Orientations": "1",
-                            "Opportunity": "2"
-                        }
-                    ],
-                    "Levels": [
-                        {
-                            "MapStageDetailId": "200",
-                            "Level": "1",
-                            "CardList": "701_15_1263,703_15_1259,709_15_1327,704_15_597,707_15_1499,702_15_1429,711_15_1450,712_15_1569,706_15_688,705_15_1482,710_15_1261,381_15_1482,398_15_286,398_15_1224,9919_15_386",
-                            "RuneList": "58_4,59_4,60_4,55_4",
-                            "HeroLevel": "120",
-                            "AchievementId": "0",
-                            "EnergyExpend": "2",
-                            "BonusWin": "Exp_7790,Coins_7790",
-                            "FirstBonusWin": "Card_407",
-                            "BonusLose": "Exp_100,Coins_100",
-                            "AddedBonus": "",
-                            "EnergyExplore": "2",
-                            "BonusExplore": "Exp_2820,Coins_3480",
-                            "Hint": "0",
-                            "AchievementText": "战斗胜利"
-                        },
-                        {
-                            "MapStageDetailId": "200",
-                            "Level": "2",
-                            "CardList": "701_15_1263,703_15_1259,709_15_1327,704_15_597,707_15_1499,702_15_1429,711_15_1450,712_15_1569,706_15_688,705_15_1482,710_15_1261,381_15_1482,398_15_286,398_15_1224,9919_15_386",
-                            "RuneList": "58_4,59_4,60_4,55_4",
-                            "HeroLevel": "120",
-                            "AchievementId": "58",
-                            "EnergyExpend": "2",
-                            "BonusWin": "Exp_8750,Coins_8750",
-                            "FirstBonusWin": "Card_409",
-                            "BonusLose": "Exp_100,Coins_100",
-                            "AddedBonus": "",
-                            "EnergyExplore": "2",
-                            "BonusExplore": "Exp_2820,Coins_3480",
-                            "Hint": "0",
-                            "AchievementText": "卡组中包含风属性符文"
-                        },
-                        {
-                            "MapStageDetailId": "200",
-                            "Level": "3",
-                            "CardList": "701_15_1263,703_15_1259,709_15_1327,704_15_597,707_15_1499,702_15_1429,711_15_1450,712_15_1569,706_15_688,705_15_1482,710_15_1261,381_15_1482,398_15_286,398_15_1224,9919_15_386",
-                            "RuneList": "58_4,59_4,60_4,55_4",
-                            "HeroLevel": "120",
-                            "AchievementId": "61",
-                            "EnergyExpend": "2",
-                            "BonusWin": "Exp_9710,Coins_9710",
-                            "FirstBonusWin": "Card_376",
-                            "BonusLose": "Exp_100,Coins_100",
-                            "AddedBonus": "",
-                            "EnergyExplore": "2",
-                            "BonusExplore": "Exp_2820,Coins_3480",
-                            "Hint": "0",
-                            "AchievementText": "对方英雄阵亡"
                         }
                     ]
                 },
@@ -33309,437 +33309,6 @@
             "Next": "23",
             "MapStageDetails": [
                 {
-                    "MapStageDetailId": "247",
-                    "Name": "长眠之地",
-                    "Type": "1",
-                    "MapStageId": "22",
-                    "Rank": "5",
-                    "X": "473",
-                    "Y": "210",
-                    "Prev": "246",
-                    "Next": "248",
-                    "NextBranch": "253",
-                    "FightName": "晴空樱女",
-                    "FightImg": "573",
-                    "Dialogue": [
-                        {
-                            "StoryId": "2024",
-                            "Did": "22_6_1",
-                            "NPC": "美雪",
-                            "Dialogue": "我们到了。",
-                            "Icon": "46_0",
-                            "Orientations": "1",
-                            "Opportunity": "1"
-                        },
-                        {
-                            "StoryId": "2025",
-                            "Did": "22_6_2",
-                            "NPC": "美狄丝",
-                            "Dialogue": "这水晶居然有那么大！",
-                            "Icon": "1_0",
-                            "Orientations": "2",
-                            "Opportunity": "1"
-                        },
-                        {
-                            "StoryId": "2026",
-                            "Did": "22_6_3",
-                            "NPC": "player_name",
-                            "Dialogue": "那么我们要怎么找到它呢？",
-                            "Icon": "0_0",
-                            "Orientations": "1",
-                            "Opportunity": "1"
-                        },
-                        {
-                            "StoryId": "2027",
-                            "Did": "22_6_4",
-                            "NPC": "伊莎贝拉",
-                            "Dialogue": "看来不用我们去找，我们的到来已经提前唤醒它了！",
-                            "Icon": "46_0",
-                            "Orientations": "1",
-                            "Opportunity": "1"
-                        },
-                        {
-                            "StoryId": "2028",
-                            "Did": "22_6_5",
-                            "NPC": "我是可爱的旁白君",
-                            "Dialogue": "突然大地开始剧烈地颤动，天空不知何时已经被乌云笼罩，巨大的气旋伴随着闪电开始在水晶的上空旋转，紧接着一道紫色的光束从水晶中扫出。",
-                            "Icon": "46_0",
-                            "Orientations": "1",
-                            "Opportunity": "1"
-                        },
-                        {
-                            "StoryId": "2029",
-                            "Did": "22_6_6",
-                            "NPC": "player_name",
-                            "Dialogue": "丝丝，危险！",
-                            "Icon": "0_2",
-                            "Orientations": "1",
-                            "Opportunity": "1"
-                        },
-                        {
-                            "StoryId": "2030",
-                            "Did": "22_6_7",
-                            "NPC": "我是可爱的旁白君",
-                            "Dialogue": "光束从人群中扫过，大部分人都及时闪开了，但还是有2位精灵闪避不及，直接蒸发了。紧接着是剧烈的爆炸，然后遮天蔽日的巨兽现身了。",
-                            "Icon": "46_0",
-                            "Orientations": "1",
-                            "Opportunity": "1"
-                        },
-                        {
-                            "StoryId": "2031",
-                            "Did": "22_6_8",
-                            "NPC": "白银毁灭者",
-                            "Dialogue": "吼！",
-                            "Icon": "46_0",
-                            "Orientations": "2",
-                            "Opportunity": "1"
-                        },
-                        {
-                            "StoryId": "2032",
-                            "Did": "22_6_9",
-                            "NPC": "伊莎贝拉",
-                            "Dialogue": "各单位散开，使用阵型C，开始作战！",
-                            "Icon": "46_0",
-                            "Orientations": "1",
-                            "Opportunity": "1"
-                        },
-                        {
-                            "StoryId": "2033",
-                            "Did": "22_6_10",
-                            "NPC": "美雪",
-                            "Dialogue": "各位，决战的时刻到来了，在这里结束这千年的噩梦吧！",
-                            "Icon": "46_0",
-                            "Orientations": "1",
-                            "Opportunity": "1"
-                        },
-                        {
-                            "StoryId": "2034",
-                            "Did": "22_6_11",
-                            "NPC": "player_name",
-                            "Dialogue": "又有怪兽过来了，真是不会看时机，这些杂鱼就交给我吧！",
-                            "Icon": "0_0",
-                            "Orientations": "1",
-                            "Opportunity": "1"
-                        },
-                        {
-                            "StoryId": "2035",
-                            "Did": "22_6_12",
-                            "NPC": "美狄丝",
-                            "Dialogue": "上吧老大！",
-                            "Icon": "1_2",
-                            "Orientations": "2",
-                            "Opportunity": "1"
-                        }
-                    ],
-                    "DialogueAfter": [
-                        {
-                            "StoryId": "2036",
-                            "Did": "22_6_13",
-                            "NPC": "伊莎贝拉",
-                            "Dialogue": "雷神剑轰击模式，最大功率发射！",
-                            "Icon": "46_0",
-                            "Orientations": "1",
-                            "Opportunity": "2"
-                        },
-                        {
-                            "StoryId": "2037",
-                            "Did": "22_6_14",
-                            "NPC": "我是可爱的旁白君",
-                            "Dialogue": "伊莎贝拉的雷神剑从中间裂开，然后耀眼的光束从中间射出，以毁天灭地的气势席卷过去，直击了白银毁灭者的左肩。",
-                            "Icon": "46_0",
-                            "Orientations": "1",
-                            "Opportunity": "2"
-                        },
-                        {
-                            "StoryId": "2038",
-                            "Did": "22_6_15",
-                            "NPC": "精灵弓箭手",
-                            "Dialogue": "成功了吗？",
-                            "Icon": "11_0",
-                            "Orientations": "2",
-                            "Opportunity": "2"
-                        },
-                        {
-                            "StoryId": "2039",
-                            "Did": "22_6_16",
-                            "NPC": "美雪",
-                            "Dialogue": "不行！",
-                            "Icon": "46_0",
-                            "Orientations": "2",
-                            "Opportunity": "2"
-                        },
-                        {
-                            "StoryId": "2040",
-                            "Did": "22_6_17",
-                            "NPC": "骑士",
-                            "Dialogue": "居然毫发未损？",
-                            "Icon": "18_0",
-                            "Orientations": "1",
-                            "Opportunity": "2"
-                        },
-                        {
-                            "StoryId": "2041",
-                            "Did": "22_6_18",
-                            "NPC": "美雪",
-                            "Dialogue": "它的体表有吸取来的生命力凝聚成的护盾，可以抵挡攻击，据传说它的弱点在胸部的核心！",
-                            "Icon": "46_0",
-                            "Orientations": "1",
-                            "Opportunity": "2"
-                        },
-                        {
-                            "StoryId": "2042",
-                            "Did": "22_6_19",
-                            "NPC": "美狄丝",
-                            "Dialogue": "老大，有谎言之神的气息！",
-                            "Icon": "1_2",
-                            "Orientations": "2",
-                            "Opportunity": "2"
-                        },
-                        {
-                            "StoryId": "2043",
-                            "Did": "22_6_20",
-                            "NPC": "player_name",
-                            "Dialogue": "什么，这种时候？难道……糟糕！",
-                            "Icon": "0_4",
-                            "Orientations": "1",
-                            "Opportunity": "2"
-                        },
-                        {
-                            "StoryId": "2044",
-                            "Did": "22_6_21",
-                            "NPC": "我是可爱的旁白君",
-                            "Dialogue": "伊莎贝拉瞄准白银毁灭者胸部的核心再次发射了雷神剑，但这一次光束似乎被吸收了，紧接着从白银毁灭者身体的各处都放射出光束，开始了扫射。",
-                            "Icon": "46_0",
-                            "Orientations": "1",
-                            "Opportunity": "2"
-                        },
-                        {
-                            "StoryId": "2045",
-                            "Did": "22_6_22",
-                            "NPC": "伊莎贝拉",
-                            "Dialogue": "它吸收了雷神剑的能量，力量反而增强了？",
-                            "Icon": "46_0",
-                            "Orientations": "1",
-                            "Opportunity": "2"
-                        },
-                        {
-                            "StoryId": "2046",
-                            "Did": "22_6_23",
-                            "NPC": "player_name",
-                            "Dialogue": "丝丝，我来保护你，赶紧解除谎言之神的咒术！",
-                            "Icon": "0_2",
-                            "Orientations": "1",
-                            "Opportunity": "2"
-                        },
-                        {
-                            "StoryId": "2047",
-                            "Did": "22_6_24",
-                            "NPC": "美狄丝",
-                            "Dialogue": "我尽量！",
-                            "Icon": "1_0",
-                            "Orientations": "2",
-                            "Opportunity": "2"
-                        },
-                        {
-                            "StoryId": "2048",
-                            "Did": "22_6_25",
-                            "NPC": "我是可爱的旁白君",
-                            "Dialogue": "美狄丝施展了法术，从美雪的身上驱散了黑色的气息。而此时，四散的光束已经把联军打得溃不成军。",
-                            "Icon": "46_0",
-                            "Orientations": "1",
-                            "Opportunity": "2"
-                        },
-                        {
-                            "StoryId": "2049",
-                            "Did": "22_6_26",
-                            "NPC": "美雪",
-                            "Dialogue": "发生了什么……好像有什么篡改了我的记忆……",
-                            "Icon": "46_0",
-                            "Orientations": "1",
-                            "Opportunity": "2"
-                        },
-                        {
-                            "StoryId": "2050",
-                            "Did": "22_6_27",
-                            "NPC": "player_name",
-                            "Dialogue": "之后再和你解释，它真正的弱点在哪里？",
-                            "Icon": "0_2",
-                            "Orientations": "1",
-                            "Opportunity": "2"
-                        },
-                        {
-                            "StoryId": "2051",
-                            "Did": "22_6_28",
-                            "NPC": "美雪",
-                            "Dialogue": "在额头上！",
-                            "Icon": "46_0",
-                            "Orientations": "1",
-                            "Opportunity": "2"
-                        },
-                        {
-                            "StoryId": "2052",
-                            "Did": "22_6_29",
-                            "NPC": "美狄丝",
-                            "Dialogue": "那么高？至少有100米高！但从下往上雷神剑不可能打中额头啊！",
-                            "Icon": "1_0",
-                            "Orientations": "2",
-                            "Opportunity": "2"
-                        },
-                        {
-                            "StoryId": "2053",
-                            "Did": "22_6_30",
-                            "NPC": "伊莎贝拉",
-                            "Dialogue": "我可不止那一招，雷神剑放射模式！",
-                            "Icon": "46_0",
-                            "Orientations": "1",
-                            "Opportunity": "2"
-                        },
-                        {
-                            "StoryId": "2054",
-                            "Did": "22_6_31",
-                            "NPC": "我是可爱的旁白君",
-                            "Dialogue": "伊莎贝拉将雷神剑向地面发射，用反作用力飞上了天空，笔直往白银毁灭者的头部冲去，白银毁灭者也向着她张开了嘴。",
-                            "Icon": "46_0",
-                            "Orientations": "1",
-                            "Opportunity": "2"
-                        },
-                        {
-                            "StoryId": "2055",
-                            "Did": "22_6_32",
-                            "NPC": "美雪",
-                            "Dialogue": "我来掩护你！奥义·月光！",
-                            "Icon": "46_0",
-                            "Orientations": "1",
-                            "Opportunity": "2"
-                        },
-                        {
-                            "StoryId": "2056",
-                            "Did": "22_6_33",
-                            "NPC": "我是可爱的旁白君",
-                            "Dialogue": "美雪在地面上使出了居合斩，斩击居然割裂空间直接命中了白银毁灭者的头部，虽然没造成直接伤害但使它喷射的光束打偏了。",
-                            "Icon": "46_0",
-                            "Orientations": "1",
-                            "Opportunity": "2"
-                        },
-                        {
-                            "StoryId": "2057",
-                            "Did": "22_6_34",
-                            "NPC": "伊莎贝拉",
-                            "Dialogue": "雷神剑斩击模式，极限过载！",
-                            "Icon": "46_0",
-                            "Orientations": "1",
-                            "Opportunity": "2"
-                        },
-                        {
-                            "StoryId": "2058",
-                            "Did": "22_6_35",
-                            "NPC": "我是可爱的旁白君",
-                            "Dialogue": "伊莎贝拉全身的护甲发出红光，挥出的全力一击命中了巨兽的额头，巨大爆炸冲击传到地面，崩裂了地表，联军伴随着沙土一起滚落……",
-                            "Icon": "46_0",
-                            "Orientations": "1",
-                            "Opportunity": "2"
-                        },
-                        {
-                            "StoryId": "2059",
-                            "Did": "22_6_36",
-                            "NPC": "美狄丝",
-                            "Dialogue": "不好，要掉下去了！",
-                            "Icon": "1_3",
-                            "Orientations": "2",
-                            "Opportunity": "2"
-                        },
-                        {
-                            "StoryId": "2060",
-                            "Did": "22_6_37",
-                            "NPC": "player_name",
-                            "Dialogue": "伊莎贝拉，还好吗！",
-                            "Icon": "0_4",
-                            "Orientations": "1",
-                            "Opportunity": "2"
-                        },
-                        {
-                            "StoryId": "2061",
-                            "Did": "22_6_38",
-                            "NPC": "骑士",
-                            "Dialogue": "不好，团长好像失去意识掉下来了！",
-                            "Icon": "18_0",
-                            "Orientations": "2",
-                            "Opportunity": "2"
-                        },
-                        {
-                            "StoryId": "2062",
-                            "Did": "22_6_39",
-                            "NPC": "美雪",
-                            "Dialogue": "我来接住她！",
-                            "Icon": "46_0",
-                            "Orientations": "1",
-                            "Opportunity": "2"
-                        },
-                        {
-                            "StoryId": "2063",
-                            "Did": "22_6_40",
-                            "NPC": "我是可爱的旁白君",
-                            "Dialogue": "美雪一跃而起，不断以落下的巨石为落脚点向上跳跃，终于在空中接到了下坠的伊莎贝拉，紧接着天地都被沙土淹没了……",
-                            "Icon": "46_0",
-                            "Orientations": "1",
-                            "Opportunity": "2"
-                        }
-                    ],
-                    "Levels": [
-                        {
-                            "MapStageDetailId": "247",
-                            "Level": "1",
-                            "CardList": "515_15_1737,380_15_2170,648_15_2843,645_15_2863,537_15_2706,614_15_2843,537_15_2505,514_15_1209,545_15_1732,545_15_2549,509_15_1013,287_15_2424,553_15_2615,592_15_2863,612_15_2597,583_15_2505,486_15_1209,541_15_2138",
-                            "RuneList": "69_4,55_4,64_4,56_4",
-                            "HeroLevel": "135",
-                            "AchievementId": "0",
-                            "EnergyExpend": "2",
-                            "BonusWin": "Exp_4750,Coins_4860",
-                            "FirstBonusWin": "",
-                            "BonusLose": "Exp_100,Coins_100",
-                            "AddedBonus": "",
-                            "EnergyExplore": "2",
-                            "BonusExplore": "Exp_2820,Coins_3480",
-                            "Hint": "0",
-                            "AchievementText": "战斗胜利"
-                        },
-                        {
-                            "MapStageDetailId": "247",
-                            "Level": "2",
-                            "CardList": "515_15_1737,380_15_2170,648_15_2843,645_15_2863,537_15_2706,614_15_2843,537_15_2505,514_15_1209,545_15_1732,545_15_2549,509_15_1013,287_15_2424,553_15_2615,592_15_2863,612_15_2597,583_15_2505,486_15_1209,541_15_2138",
-                            "RuneList": "69_4,55_4,64_4,56_4",
-                            "HeroLevel": "137",
-                            "AchievementId": "20",
-                            "EnergyExpend": "2",
-                            "BonusWin": "Exp_5870,Coins_6040",
-                            "FirstBonusWin": "",
-                            "BonusLose": "Exp_100,Coins_100",
-                            "AddedBonus": "",
-                            "EnergyExplore": "2",
-                            "BonusExplore": "Exp_2820,Coins_3480",
-                            "Hint": "0",
-                            "AchievementText": "胜利时，己方英雄生命值不低于100%"
-                        },
-                        {
-                            "MapStageDetailId": "247",
-                            "Level": "3",
-                            "CardList": "515_15_1737,380_15_2170,648_15_2843,645_15_2863,537_15_2706,614_15_2843,537_15_2505,514_15_1209,545_15_1732,545_15_2549,509_15_1013,287_15_2424,553_15_2615,592_15_2863,612_15_2597,583_15_2505,486_15_1209,541_15_2138",
-                            "RuneList": "69_4,55_4,64_4,56_4",
-                            "HeroLevel": "140",
-                            "AchievementId": "5",
-                            "EnergyExpend": "2",
-                            "BonusWin": "Exp_6830,Coins_6800",
-                            "FirstBonusWin": "Card_616",
-                            "BonusLose": "Exp_100,Coins_100",
-                            "AddedBonus": "",
-                            "EnergyExplore": "2",
-                            "BonusExplore": "Exp_2820,Coins_3480",
-                            "Hint": "0",
-                            "AchievementText": "24回合数内取得胜利"
-                        }
-                    ]
-                },
-                {
                     "MapStageDetailId": "242",
                     "Name": "月光林地",
                     "Type": "1",
@@ -34655,486 +34224,388 @@
                     ]
                 },
                 {
-                    "MapStageDetailId": "245",
-                    "Name": "荒漠外围",
+                    "MapStageDetailId": "247",
+                    "Name": "长眠之地",
                     "Type": "1",
                     "MapStageId": "22",
-                    "Rank": "3",
-                    "X": "274",
-                    "Y": "353",
-                    "Prev": "244",
-                    "Next": "246",
-                    "NextBranch": "0",
-                    "FightName": "沙滩王女",
-                    "FightImg": "633",
+                    "Rank": "5",
+                    "X": "473",
+                    "Y": "210",
+                    "Prev": "246",
+                    "Next": "248",
+                    "NextBranch": "253",
+                    "FightName": "晴空樱女",
+                    "FightImg": "573",
                     "Dialogue": [
                         {
-                            "StoryId": "1981",
-                            "Did": "22_4_1",
-                            "NPC": "player_name",
-                            "Dialogue": "这是……森林之中居然有一片沙漠！",
-                            "Icon": "0_0",
+                            "StoryId": "2024",
+                            "Did": "22_6_1",
+                            "NPC": "美雪",
+                            "Dialogue": "我们到了。",
+                            "Icon": "46_0",
                             "Orientations": "1",
                             "Opportunity": "1"
                         },
                         {
-                            "StoryId": "1982",
-                            "Did": "22_4_2",
-                            "NPC": "美雪",
-                            "Dialogue": "这里曾经是我们一族的家园，但是白银毁灭者苏醒后开始失控，它庞大的魔力流入地下，把所有的一切都化为了结晶。",
-                            "Icon": "46_0",
-                            "Orientations": "2",
-                            "Opportunity": "1"
-                        },
-                        {
-                            "StoryId": "1983",
-                            "Did": "22_4_3",
+                            "StoryId": "2025",
+                            "Did": "22_6_2",
                             "NPC": "美狄丝",
-                            "Dialogue": "真的耶，到处都有大块的水晶！",
+                            "Dialogue": "这水晶居然有那么大！",
                             "Icon": "1_0",
                             "Orientations": "2",
                             "Opportunity": "1"
                         },
                         {
-                            "StoryId": "1984",
-                            "Did": "22_4_4",
+                            "StoryId": "2026",
+                            "Did": "22_6_3",
+                            "NPC": "player_name",
+                            "Dialogue": "那么我们要怎么找到它呢？",
+                            "Icon": "0_0",
+                            "Orientations": "1",
+                            "Opportunity": "1"
+                        },
+                        {
+                            "StoryId": "2027",
+                            "Did": "22_6_4",
                             "NPC": "伊莎贝拉",
-                            "Dialogue": "而且这些沙子都是风化的水晶碎屑。而在这片沙漠中，居然感受不到一丝生命的气息！",
+                            "Dialogue": "看来不用我们去找，我们的到来已经提前唤醒它了！",
                             "Icon": "46_0",
                             "Orientations": "1",
                             "Opportunity": "1"
                         },
                         {
-                            "StoryId": "1985",
-                            "Did": "22_4_5",
-                            "NPC": "美雪",
-                            "Dialogue": "这就是那个怪物的恐怖之处，它可以通过这些水晶吸收周围生物的生命力，并用这力量来强化自己。",
+                            "StoryId": "2028",
+                            "Did": "22_6_5",
+                            "NPC": "我是可爱的旁白君",
+                            "Dialogue": "突然大地开始剧烈地颤动，天空不知何时已经被乌云笼罩，巨大的气旋伴随着闪电开始在水晶的上空旋转，紧接着一道紫色的光束从水晶中扫出。",
+                            "Icon": "46_0",
+                            "Orientations": "1",
+                            "Opportunity": "1"
+                        },
+                        {
+                            "StoryId": "2029",
+                            "Did": "22_6_6",
+                            "NPC": "player_name",
+                            "Dialogue": "丝丝，危险！",
+                            "Icon": "0_2",
+                            "Orientations": "1",
+                            "Opportunity": "1"
+                        },
+                        {
+                            "StoryId": "2030",
+                            "Did": "22_6_7",
+                            "NPC": "我是可爱的旁白君",
+                            "Dialogue": "光束从人群中扫过，大部分人都及时闪开了，但还是有2位精灵闪避不及，直接蒸发了。紧接着是剧烈的爆炸，然后遮天蔽日的巨兽现身了。",
+                            "Icon": "46_0",
+                            "Orientations": "1",
+                            "Opportunity": "1"
+                        },
+                        {
+                            "StoryId": "2031",
+                            "Did": "22_6_8",
+                            "NPC": "白银毁灭者",
+                            "Dialogue": "吼！",
                             "Icon": "46_0",
                             "Orientations": "2",
                             "Opportunity": "1"
                         },
                         {
-                            "StoryId": "1986",
-                            "Did": "22_4_6",
-                            "NPC": "美雪",
-                            "Dialogue": "我给你们施加了防护法术，但是也不能在这沙漠里逗留太久，不然我们的力量也会被它吸走。",
+                            "StoryId": "2032",
+                            "Did": "22_6_9",
+                            "NPC": "伊莎贝拉",
+                            "Dialogue": "各单位散开，使用阵型C，开始作战！",
                             "Icon": "46_0",
-                            "Orientations": "2",
+                            "Orientations": "1",
                             "Opportunity": "1"
                         },
                         {
-                            "StoryId": "1987",
-                            "Did": "22_4_7",
+                            "StoryId": "2033",
+                            "Did": "22_6_10",
+                            "NPC": "美雪",
+                            "Dialogue": "各位，决战的时刻到来了，在这里结束这千年的噩梦吧！",
+                            "Icon": "46_0",
+                            "Orientations": "1",
+                            "Opportunity": "1"
+                        },
+                        {
+                            "StoryId": "2034",
+                            "Did": "22_6_11",
+                            "NPC": "player_name",
+                            "Dialogue": "又有怪兽过来了，真是不会看时机，这些杂鱼就交给我吧！",
+                            "Icon": "0_0",
+                            "Orientations": "1",
+                            "Opportunity": "1"
+                        },
+                        {
+                            "StoryId": "2035",
+                            "Did": "22_6_12",
+                            "NPC": "美狄丝",
+                            "Dialogue": "上吧老大！",
+                            "Icon": "1_2",
+                            "Orientations": "2",
+                            "Opportunity": "1"
+                        }
+                    ],
+                    "DialogueAfter": [
+                        {
+                            "StoryId": "2036",
+                            "Did": "22_6_13",
+                            "NPC": "伊莎贝拉",
+                            "Dialogue": "雷神剑轰击模式，最大功率发射！",
+                            "Icon": "46_0",
+                            "Orientations": "1",
+                            "Opportunity": "2"
+                        },
+                        {
+                            "StoryId": "2037",
+                            "Did": "22_6_14",
+                            "NPC": "我是可爱的旁白君",
+                            "Dialogue": "伊莎贝拉的雷神剑从中间裂开，然后耀眼的光束从中间射出，以毁天灭地的气势席卷过去，直击了白银毁灭者的左肩。",
+                            "Icon": "46_0",
+                            "Orientations": "1",
+                            "Opportunity": "2"
+                        },
+                        {
+                            "StoryId": "2038",
+                            "Did": "22_6_15",
                             "NPC": "精灵弓箭手",
-                            "Dialogue": "报告，四周有怪物接近！",
+                            "Dialogue": "成功了吗？",
                             "Icon": "11_0",
                             "Orientations": "2",
-                            "Opportunity": "1"
+                            "Opportunity": "2"
                         },
                         {
-                            "StoryId": "1988",
-                            "Did": "22_4_8",
+                            "StoryId": "2039",
+                            "Did": "22_6_16",
+                            "NPC": "美雪",
+                            "Dialogue": "不行！",
+                            "Icon": "46_0",
+                            "Orientations": "2",
+                            "Opportunity": "2"
+                        },
+                        {
+                            "StoryId": "2040",
+                            "Did": "22_6_17",
+                            "NPC": "骑士",
+                            "Dialogue": "居然毫发未损？",
+                            "Icon": "18_0",
+                            "Orientations": "1",
+                            "Opportunity": "2"
+                        },
+                        {
+                            "StoryId": "2041",
+                            "Did": "22_6_18",
+                            "NPC": "美雪",
+                            "Dialogue": "它的体表有吸取来的生命力凝聚成的护盾，可以抵挡攻击，据传说它的弱点在胸部的核心！",
+                            "Icon": "46_0",
+                            "Orientations": "1",
+                            "Opportunity": "2"
+                        },
+                        {
+                            "StoryId": "2042",
+                            "Did": "22_6_19",
+                            "NPC": "美狄丝",
+                            "Dialogue": "老大，有谎言之神的气息！",
+                            "Icon": "1_2",
+                            "Orientations": "2",
+                            "Opportunity": "2"
+                        },
+                        {
+                            "StoryId": "2043",
+                            "Did": "22_6_20",
                             "NPC": "player_name",
-                            "Dialogue": "可恶的怪物，尽管放马过来吧！",
+                            "Dialogue": "什么，这种时候？难道……糟糕！",
+                            "Icon": "0_4",
+                            "Orientations": "1",
+                            "Opportunity": "2"
+                        },
+                        {
+                            "StoryId": "2044",
+                            "Did": "22_6_21",
+                            "NPC": "我是可爱的旁白君",
+                            "Dialogue": "伊莎贝拉瞄准白银毁灭者胸部的核心再次发射了雷神剑，但这一次光束似乎被吸收了，紧接着从白银毁灭者身体的各处都放射出光束，开始了扫射。",
+                            "Icon": "46_0",
+                            "Orientations": "1",
+                            "Opportunity": "2"
+                        },
+                        {
+                            "StoryId": "2045",
+                            "Did": "22_6_22",
+                            "NPC": "伊莎贝拉",
+                            "Dialogue": "它吸收了雷神剑的能量，力量反而增强了？",
+                            "Icon": "46_0",
+                            "Orientations": "1",
+                            "Opportunity": "2"
+                        },
+                        {
+                            "StoryId": "2046",
+                            "Did": "22_6_23",
+                            "NPC": "player_name",
+                            "Dialogue": "丝丝，我来保护你，赶紧解除谎言之神的咒术！",
                             "Icon": "0_2",
                             "Orientations": "1",
-                            "Opportunity": "1"
-                        }
-                    ],
-                    "DialogueAfter": [
-                        {
-                            "StoryId": "1989",
-                            "Did": "22_4_9",
-                            "NPC": "伊莎贝拉",
-                            "Dialogue": "继续前进吧。",
-                            "Icon": "46_0",
-                            "Orientations": "1",
                             "Opportunity": "2"
                         },
                         {
-                            "StoryId": "1990",
-                            "Did": "22_4_10",
-                            "NPC": "我是可爱的旁白君",
-                            "Dialogue": "此时，在另一个时空……",
-                            "Icon": "46_0",
-                            "Orientations": "1",
-                            "Opportunity": "2"
-                        },
-                        {
-                            "StoryId": "1991",
-                            "Did": "22_4_11",
-                            "NPC": "奥戈",
-                            "Dialogue": "看来进行得比预期顺利嘛。",
-                            "Icon": "61_0",
-                            "Orientations": "1",
-                            "Opportunity": "2"
-                        },
-                        {
-                            "StoryId": "1992",
-                            "Did": "22_4_12",
-                            "NPC": "谎言之神",
-                            "Dialogue": "奥戈，你怎么回来了？",
-                            "Icon": "46_0",
-                            "Orientations": "2",
-                            "Opportunity": "2"
-                        },
-                        {
-                            "StoryId": "1993",
-                            "Did": "22_4_13",
-                            "NPC": "我是可爱的旁白君",
-                            "Dialogue": "奥戈立刻切换了频道，假装什么都没有发生的样子。",
-                            "Icon": "46_0",
-                            "Orientations": "1",
-                            "Opportunity": "2"
-                        },
-                        {
-                            "StoryId": "1994",
-                            "Did": "22_4_14",
-                            "NPC": "奥戈",
-                            "Dialogue": "哦哦，暂时休个假，没事啦，一切进展顺利呢。",
-                            "Icon": "61_1",
-                            "Orientations": "1",
-                            "Opportunity": "2"
-                        },
-                        {
-                            "StoryId": "1995",
-                            "Did": "22_4_15",
-                            "NPC": "谎言之神",
-                            "Dialogue": "你在看什么？",
-                            "Icon": "46_0",
-                            "Orientations": "2",
-                            "Opportunity": "2"
-                        },
-                        {
-                            "StoryId": "1996",
-                            "Did": "22_4_16",
-                            "NPC": "奥戈",
-                            "Dialogue": "王国中央剧院的新剧目，《贵族的名义》，很精彩啊，错过就可惜了！",
-                            "Icon": "61_4",
-                            "Orientations": "1",
-                            "Opportunity": "2"
-                        },
-                        {
-                            "StoryId": "1997",
-                            "Did": "22_4_17",
-                            "NPC": "谎言之神",
-                            "Dialogue": "哼，你还有闲工夫看那种东西，不要忘了我们的计划！",
-                            "Icon": "46_0",
-                            "Orientations": "2",
-                            "Opportunity": "2"
-                        },
-                        {
-                            "StoryId": "1998",
-                            "Did": "22_4_18",
-                            "NPC": "奥戈",
-                            "Dialogue": "当然，我记着呢，不就是消灭预言之神嘛，没问题的啦，啊，达康伯爵登场了！",
-                            "Icon": "61_1",
-                            "Orientations": "1",
-                            "Opportunity": "2"
-                        },
-                        {
-                            "StoryId": "1999",
-                            "Did": "22_4_19",
-                            "NPC": "谎言之神",
-                            "Dialogue": "我继续去布置计划了，你少浪费时间了！",
-                            "Icon": "46_0",
-                            "Orientations": "2",
-                            "Opportunity": "2"
-                        },
-                        {
-                            "StoryId": "2000",
-                            "Did": "22_4_20",
-                            "NPC": "奥戈",
-                            "Dialogue": "是是是，看完这个就去工作啦！",
-                            "Icon": "61_1",
-                            "Orientations": "1",
-                            "Opportunity": "2"
-                        },
-                        {
-                            "StoryId": "2001",
-                            "Did": "22_4_21",
-                            "NPC": "奥戈",
-                            "Dialogue": "哼，愚蠢。",
-                            "Icon": "61_2",
-                            "Orientations": "1",
-                            "Opportunity": "2"
-                        }
-                    ],
-                    "Levels": [
-                        {
-                            "MapStageDetailId": "245",
-                            "Level": "1",
-                            "CardList": "569_15_2861,583_15_2505,589_15_2190,491_15_2863,543_15_2606,491_15_2549,591_15_2605,538_15_2706,628_15_1322,632_15_2630,643_15_1734,546_15_1703,570_15_2666,632_15_2738,673_15_2303,545_15_2710,599_15_2299,545_15_2549",
-                            "RuneList": "69_4,55_4,64_4,56_4",
-                            "HeroLevel": "135",
-                            "AchievementId": "0",
-                            "EnergyExpend": "2",
-                            "BonusWin": "Exp_4750,Coins_4860",
-                            "FirstBonusWin": "",
-                            "BonusLose": "Exp_100,Coins_100",
-                            "AddedBonus": "",
-                            "EnergyExplore": "2",
-                            "BonusExplore": "Exp_2820,Coins_3480",
-                            "Hint": "0",
-                            "AchievementText": "战斗胜利"
-                        },
-                        {
-                            "MapStageDetailId": "245",
-                            "Level": "2",
-                            "CardList": "569_15_2861,583_15_2505,589_15_2190,491_15_2863,543_15_2606,491_15_2549,591_15_2605,538_15_2706,628_15_1322,632_15_2630,643_15_1734,546_15_1703,570_15_2666,632_15_2738,673_15_2303,545_15_2710,599_15_2299,545_15_2549",
-                            "RuneList": "69_4,55_4,64_4,56_4",
-                            "HeroLevel": "137",
-                            "AchievementId": "60",
-                            "EnergyExpend": "2",
-                            "BonusWin": "Exp_5870,Coins_6040",
-                            "FirstBonusWin": "",
-                            "BonusLose": "Exp_100,Coins_100",
-                            "AddedBonus": "",
-                            "EnergyExplore": "2",
-                            "BonusExplore": "Exp_2820,Coins_3480",
-                            "Hint": "0",
-                            "AchievementText": "卡组中无符文"
-                        },
-                        {
-                            "MapStageDetailId": "245",
-                            "Level": "3",
-                            "CardList": "569_15_2861,583_15_2505,589_15_2190,491_15_2863,543_15_2606,491_15_2549,591_15_2605,538_15_2706,628_15_1322,632_15_2630,643_15_1734,546_15_1703,570_15_2666,632_15_2738,673_15_2303,545_15_2710,599_15_2299,545_15_2549",
-                            "RuneList": "69_4,55_4,64_4,61_4",
-                            "HeroLevel": "140",
-                            "AchievementId": "30",
-                            "EnergyExpend": "2",
-                            "BonusWin": "Exp_6830,Coins_6800",
-                            "FirstBonusWin": "Card_551",
-                            "BonusLose": "Exp_100,Coins_100",
-                            "AddedBonus": "",
-                            "EnergyExplore": "2",
-                            "BonusExplore": "Exp_2820,Coins_3480",
-                            "Hint": "0",
-                            "AchievementText": "卡组中森林种族卡牌不小于6张"
-                        }
-                    ]
-                },
-                {
-                    "MapStageDetailId": "246",
-                    "Name": "银之海",
-                    "Type": "1",
-                    "MapStageId": "22",
-                    "Rank": "4",
-                    "X": "325",
-                    "Y": "226",
-                    "Prev": "245",
-                    "Next": "247",
-                    "NextBranch": "0",
-                    "FightName": "俏皮千金",
-                    "FightImg": "644",
-                    "Dialogue": [
-                        {
-                            "StoryId": "2002",
-                            "Did": "22_5_1",
-                            "NPC": "伊莎贝拉",
-                            "Dialogue": "距离中心越来也近了，那块巨大的水晶也变得显眼起来，比想象中更为巨大呢。",
-                            "Icon": "46_0",
-                            "Orientations": "1",
-                            "Opportunity": "1"
-                        },
-                        {
-                            "StoryId": "2003",
-                            "Did": "22_5_2",
-                            "NPC": "美雪",
-                            "Dialogue": "那就是白银毁灭者被封印的地方。这块巨大的水晶便是它数千年来吸收的生命力所凝结而成的。",
-                            "Icon": "46_0",
-                            "Orientations": "2",
-                            "Opportunity": "1"
-                        },
-                        {
-                            "StoryId": "2004",
-                            "Did": "22_5_3",
+                            "StoryId": "2047",
+                            "Did": "22_6_24",
                             "NPC": "美狄丝",
-                            "Dialogue": "被封印后它也在持续吸收力量吗？",
+                            "Dialogue": "我尽量！",
+                            "Icon": "1_0",
+                            "Orientations": "2",
+                            "Opportunity": "2"
+                        },
+                        {
+                            "StoryId": "2048",
+                            "Did": "22_6_25",
+                            "NPC": "我是可爱的旁白君",
+                            "Dialogue": "美狄丝施展了法术，从美雪的身上驱散了黑色的气息。而此时，四散的光束已经把联军打得溃不成军。",
+                            "Icon": "46_0",
+                            "Orientations": "1",
+                            "Opportunity": "2"
+                        },
+                        {
+                            "StoryId": "2049",
+                            "Did": "22_6_26",
+                            "NPC": "美雪",
+                            "Dialogue": "发生了什么……好像有什么篡改了我的记忆……",
+                            "Icon": "46_0",
+                            "Orientations": "1",
+                            "Opportunity": "2"
+                        },
+                        {
+                            "StoryId": "2050",
+                            "Did": "22_6_27",
+                            "NPC": "player_name",
+                            "Dialogue": "之后再和你解释，它真正的弱点在哪里？",
+                            "Icon": "0_2",
+                            "Orientations": "1",
+                            "Opportunity": "2"
+                        },
+                        {
+                            "StoryId": "2051",
+                            "Did": "22_6_28",
+                            "NPC": "美雪",
+                            "Dialogue": "在额头上！",
+                            "Icon": "46_0",
+                            "Orientations": "1",
+                            "Opportunity": "2"
+                        },
+                        {
+                            "StoryId": "2052",
+                            "Did": "22_6_29",
+                            "NPC": "美狄丝",
+                            "Dialogue": "那么高？至少有100米高！但从下往上雷神剑不可能打中额头啊！",
+                            "Icon": "1_0",
+                            "Orientations": "2",
+                            "Opportunity": "2"
+                        },
+                        {
+                            "StoryId": "2053",
+                            "Did": "22_6_30",
+                            "NPC": "伊莎贝拉",
+                            "Dialogue": "我可不止那一招，雷神剑放射模式！",
+                            "Icon": "46_0",
+                            "Orientations": "1",
+                            "Opportunity": "2"
+                        },
+                        {
+                            "StoryId": "2054",
+                            "Did": "22_6_31",
+                            "NPC": "我是可爱的旁白君",
+                            "Dialogue": "伊莎贝拉将雷神剑向地面发射，用反作用力飞上了天空，笔直往白银毁灭者的头部冲去，白银毁灭者也向着她张开了嘴。",
+                            "Icon": "46_0",
+                            "Orientations": "1",
+                            "Opportunity": "2"
+                        },
+                        {
+                            "StoryId": "2055",
+                            "Did": "22_6_32",
+                            "NPC": "美雪",
+                            "Dialogue": "我来掩护你！奥义·月光！",
+                            "Icon": "46_0",
+                            "Orientations": "1",
+                            "Opportunity": "2"
+                        },
+                        {
+                            "StoryId": "2056",
+                            "Did": "22_6_33",
+                            "NPC": "我是可爱的旁白君",
+                            "Dialogue": "美雪在地面上使出了居合斩，斩击居然割裂空间直接命中了白银毁灭者的头部，虽然没造成直接伤害但使它喷射的光束打偏了。",
+                            "Icon": "46_0",
+                            "Orientations": "1",
+                            "Opportunity": "2"
+                        },
+                        {
+                            "StoryId": "2057",
+                            "Did": "22_6_34",
+                            "NPC": "伊莎贝拉",
+                            "Dialogue": "雷神剑斩击模式，极限过载！",
+                            "Icon": "46_0",
+                            "Orientations": "1",
+                            "Opportunity": "2"
+                        },
+                        {
+                            "StoryId": "2058",
+                            "Did": "22_6_35",
+                            "NPC": "我是可爱的旁白君",
+                            "Dialogue": "伊莎贝拉全身的护甲发出红光，挥出的全力一击命中了巨兽的额头，巨大爆炸冲击传到地面，崩裂了地表，联军伴随着沙土一起滚落……",
+                            "Icon": "46_0",
+                            "Orientations": "1",
+                            "Opportunity": "2"
+                        },
+                        {
+                            "StoryId": "2059",
+                            "Did": "22_6_36",
+                            "NPC": "美狄丝",
+                            "Dialogue": "不好，要掉下去了！",
                             "Icon": "1_3",
                             "Orientations": "2",
-                            "Opportunity": "1"
+                            "Opportunity": "2"
                         },
                         {
-                            "StoryId": "2005",
-                            "Did": "22_5_4",
-                            "NPC": "美雪",
-                            "Dialogue": "恐怕是的，这才是它最可怕的地方，这几千年来它的力量可能更强了，而我们完全没有阻止的方法。",
-                            "Icon": "46_0",
-                            "Orientations": "1",
-                            "Opportunity": "1"
-                        },
-                        {
-                            "StoryId": "2006",
-                            "Did": "22_5_5",
-                            "NPC": "伊莎贝拉",
-                            "Dialogue": "那么我们更要趁现在把它消灭了，拖下去只会对我们更不利。",
-                            "Icon": "46_0",
-                            "Orientations": "1",
-                            "Opportunity": "1"
-                        },
-                        {
-                            "StoryId": "2007",
-                            "Did": "22_5_6",
+                            "StoryId": "2060",
+                            "Did": "22_6_37",
                             "NPC": "player_name",
-                            "Dialogue": "注意，又有怪物围过来了！",
-                            "Icon": "0_2",
-                            "Orientations": "1",
-                            "Opportunity": "1"
-                        }
-                    ],
-                    "DialogueAfter": [
-                        {
-                            "StoryId": "2008",
-                            "Did": "22_5_7",
-                            "NPC": "player_name",
-                            "Dialogue": "可恶，真是没完没了。",
-                            "Icon": "0_2",
+                            "Dialogue": "伊莎贝拉，还好吗！",
+                            "Icon": "0_4",
                             "Orientations": "1",
                             "Opportunity": "2"
                         },
                         {
-                            "StoryId": "2009",
-                            "Did": "22_5_8",
+                            "StoryId": "2061",
+                            "Did": "22_6_38",
+                            "NPC": "骑士",
+                            "Dialogue": "不好，团长好像失去意识掉下来了！",
+                            "Icon": "18_0",
+                            "Orientations": "2",
+                            "Opportunity": "2"
+                        },
+                        {
+                            "StoryId": "2062",
+                            "Did": "22_6_39",
                             "NPC": "美雪",
-                            "Dialogue": "这些怪物都是被水晶泄露的魔力引诱而来的，但这其实是白银毁灭者放出的饵食。怪物们以为能够吸取魔力，实际上它们也正在被汲取生命。",
-                            "Icon": "46_0",
-                            "Orientations": "2",
-                            "Opportunity": "2"
-                        },
-                        {
-                            "StoryId": "2010",
-                            "Did": "22_5_9",
-                            "NPC": "美狄丝",
-                            "Dialogue": "好可怕的手段！",
-                            "Icon": "1_4",
-                            "Orientations": "2",
-                            "Opportunity": "2"
-                        },
-                        {
-                            "StoryId": "2011",
-                            "Did": "22_5_10",
-                            "NPC": "player_name",
-                            "Dialogue": "那么，我们要怎样才能对抗这个怪物呢？",
-                            "Icon": "0_0",
-                            "Orientations": "1",
-                            "Opportunity": "2"
-                        },
-                        {
-                            "StoryId": "2012",
-                            "Did": "22_5_11",
-                            "NPC": "美雪",
-                            "Dialogue": "根据传说，普通的武器并不能贯穿它的装甲，能对它造成伤害的只有圣剑，然而自从异邦的勇者牺牲后，再也没人能使用圣剑了。",
-                            "Icon": "46_0",
-                            "Orientations": "2",
-                            "Opportunity": "2"
-                        },
-                        {
-                            "StoryId": "2013",
-                            "Did": "22_5_12",
-                            "NPC": "player_name",
-                            "Dialogue": "为什么？",
-                            "Icon": "0_0",
-                            "Orientations": "1",
-                            "Opportunity": "2"
-                        },
-                        {
-                            "StoryId": "2014",
-                            "Did": "22_5_13",
-                            "NPC": "美雪",
-                            "Dialogue": "圣剑似乎是有意识的，它会选择主人，在我们手中它只是一把普通的剑。",
-                            "Icon": "46_0",
-                            "Orientations": "2",
-                            "Opportunity": "2"
-                        },
-                        {
-                            "StoryId": "2015",
-                            "Did": "22_5_14",
-                            "NPC": "伊莎贝拉",
-                            "Dialogue": "所以刚刚你说的牺牲自己，用圣剑封印它，也只是虚张声势，其实你根本发挥不了圣剑的力量咯？",
+                            "Dialogue": "我来接住她！",
                             "Icon": "46_0",
                             "Orientations": "1",
                             "Opportunity": "2"
                         },
                         {
-                            "StoryId": "2016",
-                            "Did": "22_5_15",
-                            "NPC": "美雪",
-                            "Dialogue": "话虽如此……但我也确实有牺牲自己的觉悟！",
+                            "StoryId": "2063",
+                            "Did": "22_6_40",
+                            "NPC": "我是可爱的旁白君",
+                            "Dialogue": "美雪一跃而起，不断以落下的巨石为落脚点向上跳跃，终于在空中接到了下坠的伊莎贝拉，紧接着天地都被沙土淹没了……",
                             "Icon": "46_0",
-                            "Orientations": "2",
-                            "Opportunity": "2"
-                        },
-                        {
-                            "StoryId": "2017",
-                            "Did": "22_5_16",
-                            "NPC": "伊莎贝拉",
-                            "Dialogue": "好啦好啦，现在有我们在，总会有办法的。普通的武器不行，但我有这个。",
-                            "Icon": "46_0",
-                            "Orientations": "1",
-                            "Opportunity": "2"
-                        },
-                        {
-                            "StoryId": "2018",
-                            "Did": "22_5_17",
-                            "NPC": "伊莎贝拉",
-                            "Dialogue": "这把雷神剑，可是由古代遗物驱动的，王国最好的机械工房和炼金术师联合制造的技术结晶，它的威力这位佣兵也见识过。",
-                            "Icon": "46_0",
-                            "Orientations": "1",
-                            "Opportunity": "2"
-                        },
-                        {
-                            "StoryId": "2019",
-                            "Did": "22_5_18",
-                            "NPC": "player_name",
-                            "Dialogue": "对，确实十分惊人。",
-                            "Icon": "0_0",
-                            "Orientations": "1",
-                            "Opportunity": "2"
-                        },
-                        {
-                            "StoryId": "2020",
-                            "Did": "22_5_19",
-                            "NPC": "伊莎贝拉",
-                            "Dialogue": "只要有它，即使是白银毁灭者也可以打败的！",
-                            "Icon": "46_0",
-                            "Orientations": "1",
-                            "Opportunity": "2"
-                        },
-                        {
-                            "StoryId": "2021",
-                            "Did": "22_5_20",
-                            "NPC": "美雪",
-                            "Dialogue": "现在也只能这样祈祷了。",
-                            "Icon": "46_0",
-                            "Orientations": "2",
-                            "Opportunity": "2"
-                        },
-                        {
-                            "StoryId": "2022",
-                            "Did": "22_5_21",
-                            "NPC": "奥戈",
-                            "Dialogue": "来吧，开始你们的表演吧，虽然一年前就看过了，观看重播也是一种乐趣啊！",
-                            "Icon": "61_1",
-                            "Orientations": "1",
-                            "Opportunity": "2"
-                        },
-                        {
-                            "StoryId": "2023",
-                            "Did": "22_5_22",
-                            "NPC": "奥戈",
-                            "Dialogue": "不过，剧情的发展已经不同了，有点期待呢。",
-                            "Icon": "61_0",
                             "Orientations": "1",
                             "Opportunity": "2"
                         }
                     ],
                     "Levels": [
                         {
-                            "MapStageDetailId": "246",
+                            "MapStageDetailId": "247",
                             "Level": "1",
-                            "CardList": "648_15_2724,648_15_2843,652_15_1209,652_15_2153,583_15_2863,583_15_2241,647_15_2426,647_15_2437,681_15_2168,681_15_2671,646_15_2621,646_15_2866,643_15_2164,643_15_1209,632_15_1664,632_15_2153,0,0",
-                            "RuneList": "66_4,55_4,61_4,56_4",
+                            "CardList": "515_15_1737,380_15_2170,648_15_2843,645_15_2863,537_15_2706,614_15_2843,537_15_2505,514_15_1209,545_15_1732,545_15_2549,509_15_1013,287_15_2424,553_15_2615,592_15_2863,612_15_2597,583_15_2505,486_15_1209,541_15_2138",
+                            "RuneList": "69_4,55_4,64_4,56_4",
                             "HeroLevel": "135",
                             "AchievementId": "0",
                             "EnergyExpend": "2",
@@ -35148,12 +34619,12 @@
                             "AchievementText": "战斗胜利"
                         },
                         {
-                            "MapStageDetailId": "246",
+                            "MapStageDetailId": "247",
                             "Level": "2",
-                            "CardList": "648_15_2724,648_15_2843,652_15_1209,652_15_2153,583_15_2863,583_15_2241,647_15_2426,647_15_2437,681_15_2168,681_15_2671,646_15_2621,646_15_2866,643_15_2164,643_15_1209,632_15_1664,632_15_2153,0,0",
-                            "RuneList": "66_4,55_4,61_4,56_4",
+                            "CardList": "515_15_1737,380_15_2170,648_15_2843,645_15_2863,537_15_2706,614_15_2843,537_15_2505,514_15_1209,545_15_1732,545_15_2549,509_15_1013,287_15_2424,553_15_2615,592_15_2863,612_15_2597,583_15_2505,486_15_1209,541_15_2138",
+                            "RuneList": "69_4,55_4,64_4,56_4",
                             "HeroLevel": "137",
-                            "AchievementId": "60",
+                            "AchievementId": "20",
                             "EnergyExpend": "2",
                             "BonusWin": "Exp_5870,Coins_6040",
                             "FirstBonusWin": "",
@@ -35162,18 +34633,18 @@
                             "EnergyExplore": "2",
                             "BonusExplore": "Exp_2820,Coins_3480",
                             "Hint": "0",
-                            "AchievementText": "卡组中无符文"
+                            "AchievementText": "胜利时，己方英雄生命值不低于100%"
                         },
                         {
-                            "MapStageDetailId": "246",
+                            "MapStageDetailId": "247",
                             "Level": "3",
-                            "CardList": "648_15_2724,648_15_2843,652_15_1209,652_15_2153,583_15_2863,583_15_2241,647_15_2426,647_15_2437,681_15_2168,681_15_2671,646_15_2621,646_15_2866,643_15_2164,643_15_1209,632_15_1664,632_15_2153,0,0",
-                            "RuneList": "66_4,55_4,61_4,56_4",
+                            "CardList": "515_15_1737,380_15_2170,648_15_2843,645_15_2863,537_15_2706,614_15_2843,537_15_2505,514_15_1209,545_15_1732,545_15_2549,509_15_1013,287_15_2424,553_15_2615,592_15_2863,612_15_2597,583_15_2505,486_15_1209,541_15_2138",
+                            "RuneList": "69_4,55_4,64_4,56_4",
                             "HeroLevel": "140",
                             "AchievementId": "5",
                             "EnergyExpend": "2",
                             "BonusWin": "Exp_6830,Coins_6800",
-                            "FirstBonusWin": "Card_591",
+                            "FirstBonusWin": "Card_616",
                             "BonusLose": "Exp_100,Coins_100",
                             "AddedBonus": "",
                             "EnergyExplore": "2",
@@ -37280,9 +36751,537 @@
                             "AchievementText": "对方卡牌全灭"
                         }
                     ]
+                },
+                {
+                    "MapStageDetailId": "245",
+                    "Name": "荒漠外围",
+                    "Type": "1",
+                    "MapStageId": "22",
+                    "Rank": "3",
+                    "X": "274",
+                    "Y": "353",
+                    "Prev": "244",
+                    "Next": "246",
+                    "NextBranch": "0",
+                    "FightName": "沙滩王女",
+                    "FightImg": "633",
+                    "Dialogue": [
+                        {
+                            "StoryId": "1981",
+                            "Did": "22_4_1",
+                            "NPC": "player_name",
+                            "Dialogue": "这是……森林之中居然有一片沙漠！",
+                            "Icon": "0_0",
+                            "Orientations": "1",
+                            "Opportunity": "1"
+                        },
+                        {
+                            "StoryId": "1982",
+                            "Did": "22_4_2",
+                            "NPC": "美雪",
+                            "Dialogue": "这里曾经是我们一族的家园，但是白银毁灭者苏醒后开始失控，它庞大的魔力流入地下，把所有的一切都化为了结晶。",
+                            "Icon": "46_0",
+                            "Orientations": "2",
+                            "Opportunity": "1"
+                        },
+                        {
+                            "StoryId": "1983",
+                            "Did": "22_4_3",
+                            "NPC": "美狄丝",
+                            "Dialogue": "真的耶，到处都有大块的水晶！",
+                            "Icon": "1_0",
+                            "Orientations": "2",
+                            "Opportunity": "1"
+                        },
+                        {
+                            "StoryId": "1984",
+                            "Did": "22_4_4",
+                            "NPC": "伊莎贝拉",
+                            "Dialogue": "而且这些沙子都是风化的水晶碎屑。而在这片沙漠中，居然感受不到一丝生命的气息！",
+                            "Icon": "46_0",
+                            "Orientations": "1",
+                            "Opportunity": "1"
+                        },
+                        {
+                            "StoryId": "1985",
+                            "Did": "22_4_5",
+                            "NPC": "美雪",
+                            "Dialogue": "这就是那个怪物的恐怖之处，它可以通过这些水晶吸收周围生物的生命力，并用这力量来强化自己。",
+                            "Icon": "46_0",
+                            "Orientations": "2",
+                            "Opportunity": "1"
+                        },
+                        {
+                            "StoryId": "1986",
+                            "Did": "22_4_6",
+                            "NPC": "美雪",
+                            "Dialogue": "我给你们施加了防护法术，但是也不能在这沙漠里逗留太久，不然我们的力量也会被它吸走。",
+                            "Icon": "46_0",
+                            "Orientations": "2",
+                            "Opportunity": "1"
+                        },
+                        {
+                            "StoryId": "1987",
+                            "Did": "22_4_7",
+                            "NPC": "精灵弓箭手",
+                            "Dialogue": "报告，四周有怪物接近！",
+                            "Icon": "11_0",
+                            "Orientations": "2",
+                            "Opportunity": "1"
+                        },
+                        {
+                            "StoryId": "1988",
+                            "Did": "22_4_8",
+                            "NPC": "player_name",
+                            "Dialogue": "可恶的怪物，尽管放马过来吧！",
+                            "Icon": "0_2",
+                            "Orientations": "1",
+                            "Opportunity": "1"
+                        }
+                    ],
+                    "DialogueAfter": [
+                        {
+                            "StoryId": "1989",
+                            "Did": "22_4_9",
+                            "NPC": "伊莎贝拉",
+                            "Dialogue": "继续前进吧。",
+                            "Icon": "46_0",
+                            "Orientations": "1",
+                            "Opportunity": "2"
+                        },
+                        {
+                            "StoryId": "1990",
+                            "Did": "22_4_10",
+                            "NPC": "我是可爱的旁白君",
+                            "Dialogue": "此时，在另一个时空……",
+                            "Icon": "46_0",
+                            "Orientations": "1",
+                            "Opportunity": "2"
+                        },
+                        {
+                            "StoryId": "1991",
+                            "Did": "22_4_11",
+                            "NPC": "奥戈",
+                            "Dialogue": "看来进行得比预期顺利嘛。",
+                            "Icon": "61_0",
+                            "Orientations": "1",
+                            "Opportunity": "2"
+                        },
+                        {
+                            "StoryId": "1992",
+                            "Did": "22_4_12",
+                            "NPC": "谎言之神",
+                            "Dialogue": "奥戈，你怎么回来了？",
+                            "Icon": "46_0",
+                            "Orientations": "2",
+                            "Opportunity": "2"
+                        },
+                        {
+                            "StoryId": "1993",
+                            "Did": "22_4_13",
+                            "NPC": "我是可爱的旁白君",
+                            "Dialogue": "奥戈立刻切换了频道，假装什么都没有发生的样子。",
+                            "Icon": "46_0",
+                            "Orientations": "1",
+                            "Opportunity": "2"
+                        },
+                        {
+                            "StoryId": "1994",
+                            "Did": "22_4_14",
+                            "NPC": "奥戈",
+                            "Dialogue": "哦哦，暂时休个假，没事啦，一切进展顺利呢。",
+                            "Icon": "61_1",
+                            "Orientations": "1",
+                            "Opportunity": "2"
+                        },
+                        {
+                            "StoryId": "1995",
+                            "Did": "22_4_15",
+                            "NPC": "谎言之神",
+                            "Dialogue": "你在看什么？",
+                            "Icon": "46_0",
+                            "Orientations": "2",
+                            "Opportunity": "2"
+                        },
+                        {
+                            "StoryId": "1996",
+                            "Did": "22_4_16",
+                            "NPC": "奥戈",
+                            "Dialogue": "王国中央剧院的新剧目，《贵族的名义》，很精彩啊，错过就可惜了！",
+                            "Icon": "61_4",
+                            "Orientations": "1",
+                            "Opportunity": "2"
+                        },
+                        {
+                            "StoryId": "1997",
+                            "Did": "22_4_17",
+                            "NPC": "谎言之神",
+                            "Dialogue": "哼，你还有闲工夫看那种东西，不要忘了我们的计划！",
+                            "Icon": "46_0",
+                            "Orientations": "2",
+                            "Opportunity": "2"
+                        },
+                        {
+                            "StoryId": "1998",
+                            "Did": "22_4_18",
+                            "NPC": "奥戈",
+                            "Dialogue": "当然，我记着呢，不就是消灭预言之神嘛，没问题的啦，啊，达康伯爵登场了！",
+                            "Icon": "61_1",
+                            "Orientations": "1",
+                            "Opportunity": "2"
+                        },
+                        {
+                            "StoryId": "1999",
+                            "Did": "22_4_19",
+                            "NPC": "谎言之神",
+                            "Dialogue": "我继续去布置计划了，你少浪费时间了！",
+                            "Icon": "46_0",
+                            "Orientations": "2",
+                            "Opportunity": "2"
+                        },
+                        {
+                            "StoryId": "2000",
+                            "Did": "22_4_20",
+                            "NPC": "奥戈",
+                            "Dialogue": "是是是，看完这个就去工作啦！",
+                            "Icon": "61_1",
+                            "Orientations": "1",
+                            "Opportunity": "2"
+                        },
+                        {
+                            "StoryId": "2001",
+                            "Did": "22_4_21",
+                            "NPC": "奥戈",
+                            "Dialogue": "哼，愚蠢。",
+                            "Icon": "61_2",
+                            "Orientations": "1",
+                            "Opportunity": "2"
+                        }
+                    ],
+                    "Levels": [
+                        {
+                            "MapStageDetailId": "245",
+                            "Level": "1",
+                            "CardList": "569_15_2861,583_15_2505,589_15_2190,491_15_2863,543_15_2606,491_15_2549,591_15_2605,538_15_2706,628_15_1322,632_15_2630,643_15_1734,546_15_1703,570_15_2666,632_15_2738,673_15_2303,545_15_2710,599_15_2299,545_15_2549",
+                            "RuneList": "69_4,55_4,64_4,56_4",
+                            "HeroLevel": "135",
+                            "AchievementId": "0",
+                            "EnergyExpend": "2",
+                            "BonusWin": "Exp_4750,Coins_4860",
+                            "FirstBonusWin": "",
+                            "BonusLose": "Exp_100,Coins_100",
+                            "AddedBonus": "",
+                            "EnergyExplore": "2",
+                            "BonusExplore": "Exp_2820,Coins_3480",
+                            "Hint": "0",
+                            "AchievementText": "战斗胜利"
+                        },
+                        {
+                            "MapStageDetailId": "245",
+                            "Level": "2",
+                            "CardList": "569_15_2861,583_15_2505,589_15_2190,491_15_2863,543_15_2606,491_15_2549,591_15_2605,538_15_2706,628_15_1322,632_15_2630,643_15_1734,546_15_1703,570_15_2666,632_15_2738,673_15_2303,545_15_2710,599_15_2299,545_15_2549",
+                            "RuneList": "69_4,55_4,64_4,56_4",
+                            "HeroLevel": "137",
+                            "AchievementId": "60",
+                            "EnergyExpend": "2",
+                            "BonusWin": "Exp_5870,Coins_6040",
+                            "FirstBonusWin": "",
+                            "BonusLose": "Exp_100,Coins_100",
+                            "AddedBonus": "",
+                            "EnergyExplore": "2",
+                            "BonusExplore": "Exp_2820,Coins_3480",
+                            "Hint": "0",
+                            "AchievementText": "卡组中无符文"
+                        },
+                        {
+                            "MapStageDetailId": "245",
+                            "Level": "3",
+                            "CardList": "569_15_2861,583_15_2505,589_15_2190,491_15_2863,543_15_2606,491_15_2549,591_15_2605,538_15_2706,628_15_1322,632_15_2630,643_15_1734,546_15_1703,570_15_2666,632_15_2738,673_15_2303,545_15_2710,599_15_2299,545_15_2549",
+                            "RuneList": "69_4,55_4,64_4,61_4",
+                            "HeroLevel": "140",
+                            "AchievementId": "30",
+                            "EnergyExpend": "2",
+                            "BonusWin": "Exp_6830,Coins_6800",
+                            "FirstBonusWin": "Card_551",
+                            "BonusLose": "Exp_100,Coins_100",
+                            "AddedBonus": "",
+                            "EnergyExplore": "2",
+                            "BonusExplore": "Exp_2820,Coins_3480",
+                            "Hint": "0",
+                            "AchievementText": "卡组中森林种族卡牌不小于6张"
+                        }
+                    ]
+                },
+                {
+                    "MapStageDetailId": "246",
+                    "Name": "银之海",
+                    "Type": "1",
+                    "MapStageId": "22",
+                    "Rank": "4",
+                    "X": "325",
+                    "Y": "226",
+                    "Prev": "245",
+                    "Next": "247",
+                    "NextBranch": "0",
+                    "FightName": "俏皮千金",
+                    "FightImg": "644",
+                    "Dialogue": [
+                        {
+                            "StoryId": "2002",
+                            "Did": "22_5_1",
+                            "NPC": "伊莎贝拉",
+                            "Dialogue": "距离中心越来也近了，那块巨大的水晶也变得显眼起来，比想象中更为巨大呢。",
+                            "Icon": "46_0",
+                            "Orientations": "1",
+                            "Opportunity": "1"
+                        },
+                        {
+                            "StoryId": "2003",
+                            "Did": "22_5_2",
+                            "NPC": "美雪",
+                            "Dialogue": "那就是白银毁灭者被封印的地方。这块巨大的水晶便是它数千年来吸收的生命力所凝结而成的。",
+                            "Icon": "46_0",
+                            "Orientations": "2",
+                            "Opportunity": "1"
+                        },
+                        {
+                            "StoryId": "2004",
+                            "Did": "22_5_3",
+                            "NPC": "美狄丝",
+                            "Dialogue": "被封印后它也在持续吸收力量吗？",
+                            "Icon": "1_3",
+                            "Orientations": "2",
+                            "Opportunity": "1"
+                        },
+                        {
+                            "StoryId": "2005",
+                            "Did": "22_5_4",
+                            "NPC": "美雪",
+                            "Dialogue": "恐怕是的，这才是它最可怕的地方，这几千年来它的力量可能更强了，而我们完全没有阻止的方法。",
+                            "Icon": "46_0",
+                            "Orientations": "1",
+                            "Opportunity": "1"
+                        },
+                        {
+                            "StoryId": "2006",
+                            "Did": "22_5_5",
+                            "NPC": "伊莎贝拉",
+                            "Dialogue": "那么我们更要趁现在把它消灭了，拖下去只会对我们更不利。",
+                            "Icon": "46_0",
+                            "Orientations": "1",
+                            "Opportunity": "1"
+                        },
+                        {
+                            "StoryId": "2007",
+                            "Did": "22_5_6",
+                            "NPC": "player_name",
+                            "Dialogue": "注意，又有怪物围过来了！",
+                            "Icon": "0_2",
+                            "Orientations": "1",
+                            "Opportunity": "1"
+                        }
+                    ],
+                    "DialogueAfter": [
+                        {
+                            "StoryId": "2008",
+                            "Did": "22_5_7",
+                            "NPC": "player_name",
+                            "Dialogue": "可恶，真是没完没了。",
+                            "Icon": "0_2",
+                            "Orientations": "1",
+                            "Opportunity": "2"
+                        },
+                        {
+                            "StoryId": "2009",
+                            "Did": "22_5_8",
+                            "NPC": "美雪",
+                            "Dialogue": "这些怪物都是被水晶泄露的魔力引诱而来的，但这其实是白银毁灭者放出的饵食。怪物们以为能够吸取魔力，实际上它们也正在被汲取生命。",
+                            "Icon": "46_0",
+                            "Orientations": "2",
+                            "Opportunity": "2"
+                        },
+                        {
+                            "StoryId": "2010",
+                            "Did": "22_5_9",
+                            "NPC": "美狄丝",
+                            "Dialogue": "好可怕的手段！",
+                            "Icon": "1_4",
+                            "Orientations": "2",
+                            "Opportunity": "2"
+                        },
+                        {
+                            "StoryId": "2011",
+                            "Did": "22_5_10",
+                            "NPC": "player_name",
+                            "Dialogue": "那么，我们要怎样才能对抗这个怪物呢？",
+                            "Icon": "0_0",
+                            "Orientations": "1",
+                            "Opportunity": "2"
+                        },
+                        {
+                            "StoryId": "2012",
+                            "Did": "22_5_11",
+                            "NPC": "美雪",
+                            "Dialogue": "根据传说，普通的武器并不能贯穿它的装甲，能对它造成伤害的只有圣剑，然而自从异邦的勇者牺牲后，再也没人能使用圣剑了。",
+                            "Icon": "46_0",
+                            "Orientations": "2",
+                            "Opportunity": "2"
+                        },
+                        {
+                            "StoryId": "2013",
+                            "Did": "22_5_12",
+                            "NPC": "player_name",
+                            "Dialogue": "为什么？",
+                            "Icon": "0_0",
+                            "Orientations": "1",
+                            "Opportunity": "2"
+                        },
+                        {
+                            "StoryId": "2014",
+                            "Did": "22_5_13",
+                            "NPC": "美雪",
+                            "Dialogue": "圣剑似乎是有意识的，它会选择主人，在我们手中它只是一把普通的剑。",
+                            "Icon": "46_0",
+                            "Orientations": "2",
+                            "Opportunity": "2"
+                        },
+                        {
+                            "StoryId": "2015",
+                            "Did": "22_5_14",
+                            "NPC": "伊莎贝拉",
+                            "Dialogue": "所以刚刚你说的牺牲自己，用圣剑封印它，也只是虚张声势，其实你根本发挥不了圣剑的力量咯？",
+                            "Icon": "46_0",
+                            "Orientations": "1",
+                            "Opportunity": "2"
+                        },
+                        {
+                            "StoryId": "2016",
+                            "Did": "22_5_15",
+                            "NPC": "美雪",
+                            "Dialogue": "话虽如此……但我也确实有牺牲自己的觉悟！",
+                            "Icon": "46_0",
+                            "Orientations": "2",
+                            "Opportunity": "2"
+                        },
+                        {
+                            "StoryId": "2017",
+                            "Did": "22_5_16",
+                            "NPC": "伊莎贝拉",
+                            "Dialogue": "好啦好啦，现在有我们在，总会有办法的。普通的武器不行，但我有这个。",
+                            "Icon": "46_0",
+                            "Orientations": "1",
+                            "Opportunity": "2"
+                        },
+                        {
+                            "StoryId": "2018",
+                            "Did": "22_5_17",
+                            "NPC": "伊莎贝拉",
+                            "Dialogue": "这把雷神剑，可是由古代遗物驱动的，王国最好的机械工房和炼金术师联合制造的技术结晶，它的威力这位佣兵也见识过。",
+                            "Icon": "46_0",
+                            "Orientations": "1",
+                            "Opportunity": "2"
+                        },
+                        {
+                            "StoryId": "2019",
+                            "Did": "22_5_18",
+                            "NPC": "player_name",
+                            "Dialogue": "对，确实十分惊人。",
+                            "Icon": "0_0",
+                            "Orientations": "1",
+                            "Opportunity": "2"
+                        },
+                        {
+                            "StoryId": "2020",
+                            "Did": "22_5_19",
+                            "NPC": "伊莎贝拉",
+                            "Dialogue": "只要有它，即使是白银毁灭者也可以打败的！",
+                            "Icon": "46_0",
+                            "Orientations": "1",
+                            "Opportunity": "2"
+                        },
+                        {
+                            "StoryId": "2021",
+                            "Did": "22_5_20",
+                            "NPC": "美雪",
+                            "Dialogue": "现在也只能这样祈祷了。",
+                            "Icon": "46_0",
+                            "Orientations": "2",
+                            "Opportunity": "2"
+                        },
+                        {
+                            "StoryId": "2022",
+                            "Did": "22_5_21",
+                            "NPC": "奥戈",
+                            "Dialogue": "来吧，开始你们的表演吧，虽然一年前就看过了，观看重播也是一种乐趣啊！",
+                            "Icon": "61_1",
+                            "Orientations": "1",
+                            "Opportunity": "2"
+                        },
+                        {
+                            "StoryId": "2023",
+                            "Did": "22_5_22",
+                            "NPC": "奥戈",
+                            "Dialogue": "不过，剧情的发展已经不同了，有点期待呢。",
+                            "Icon": "61_0",
+                            "Orientations": "1",
+                            "Opportunity": "2"
+                        }
+                    ],
+                    "Levels": [
+                        {
+                            "MapStageDetailId": "246",
+                            "Level": "1",
+                            "CardList": "648_15_2724,648_15_2843,652_15_1209,652_15_2153,583_15_2863,583_15_2241,647_15_2426,647_15_2437,681_15_2168,681_15_2671,646_15_2621,646_15_2866,643_15_2164,643_15_1209,632_15_1664,632_15_2153,0,0",
+                            "RuneList": "66_4,55_4,61_4,56_4",
+                            "HeroLevel": "135",
+                            "AchievementId": "0",
+                            "EnergyExpend": "2",
+                            "BonusWin": "Exp_4750,Coins_4860",
+                            "FirstBonusWin": "",
+                            "BonusLose": "Exp_100,Coins_100",
+                            "AddedBonus": "",
+                            "EnergyExplore": "2",
+                            "BonusExplore": "Exp_2820,Coins_3480",
+                            "Hint": "0",
+                            "AchievementText": "战斗胜利"
+                        },
+                        {
+                            "MapStageDetailId": "246",
+                            "Level": "2",
+                            "CardList": "648_15_2724,648_15_2843,652_15_1209,652_15_2153,583_15_2863,583_15_2241,647_15_2426,647_15_2437,681_15_2168,681_15_2671,646_15_2621,646_15_2866,643_15_2164,643_15_1209,632_15_1664,632_15_2153,0,0",
+                            "RuneList": "66_4,55_4,61_4,56_4",
+                            "HeroLevel": "137",
+                            "AchievementId": "60",
+                            "EnergyExpend": "2",
+                            "BonusWin": "Exp_5870,Coins_6040",
+                            "FirstBonusWin": "",
+                            "BonusLose": "Exp_100,Coins_100",
+                            "AddedBonus": "",
+                            "EnergyExplore": "2",
+                            "BonusExplore": "Exp_2820,Coins_3480",
+                            "Hint": "0",
+                            "AchievementText": "卡组中无符文"
+                        },
+                        {
+                            "MapStageDetailId": "246",
+                            "Level": "3",
+                            "CardList": "648_15_2724,648_15_2843,652_15_1209,652_15_2153,583_15_2863,583_15_2241,647_15_2426,647_15_2437,681_15_2168,681_15_2671,646_15_2621,646_15_2866,643_15_2164,643_15_1209,632_15_1664,632_15_2153,0,0",
+                            "RuneList": "66_4,55_4,61_4,56_4",
+                            "HeroLevel": "140",
+                            "AchievementId": "5",
+                            "EnergyExpend": "2",
+                            "BonusWin": "Exp_6830,Coins_6800",
+                            "FirstBonusWin": "Card_591",
+                            "BonusLose": "Exp_100,Coins_100",
+                            "AddedBonus": "",
+                            "EnergyExplore": "2",
+                            "BonusExplore": "Exp_2820,Coins_3480",
+                            "Hint": "0",
+                            "AchievementText": "24回合数内取得胜利"
+                        }
+                    ]
                 }
             ]
         }
-
     ]
 }

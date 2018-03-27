@@ -22,10 +22,11 @@ public class SoulCrash {
                 continue;
             } else {
                 EntityInfo summoner = card.getSummoner();
-                if (summoner instanceof CardInfo && ((CardInfo)summoner).getRace() == Race.BOSS) {
-                    continue;
-                }
-                else if(summoner instanceof CardInfo && ((CardInfo)summoner).getRace() == Race.DEMON)
+                //现在魔王和魔神可以消散。
+//                if (summoner instanceof CardInfo && ((CardInfo)summoner).getRace() == Race.BOSS) {
+//                    continue;
+//                }
+                if(summoner instanceof CardInfo && ((CardInfo)summoner).getRace() == Race.DEMON)
                 {
                     continue;
                 }
