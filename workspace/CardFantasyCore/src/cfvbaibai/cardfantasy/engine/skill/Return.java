@@ -45,6 +45,8 @@ public final class Return {
             defender.reset();
 
         }
+        defender.setSummonNumber(0);
+        defender.setRuneActive(false);
         resolver.resolveLeaveSkills(defender);
         if (defender.containsAllSkill(SkillType.铁壁) || defender.containsAllSkill(SkillType.驱虎吞狼) || defender.containsAllSkill(SkillType.金汤)) {
             for (SkillUseInfo defenderskill : defender.getAllUsableSkills()) {
@@ -81,6 +83,8 @@ public final class Return {
             defender.reset();
         }
         resolver.resolveLeaveSkills(defender);
+        defender.setSummonNumber(0);
+        defender.setRuneActive(false);
         //flag判断是否是从手牌回到牌库
         if (flag) {
             if (defender.containsAllSkill(SkillType.铁壁) || defender.containsAllSkill(SkillType.驱虎吞狼) || defender.containsAllSkill(SkillType.金汤)) {
@@ -110,6 +114,8 @@ public final class Return {
             defender.reset();
             ui.cardToHand(defender.getOwner(), defender);
         }
+        defender.setSummonNumber(0);
+        defender.setRuneActive(false);
         resolver.resolveLeaveSkills(defender);
         if (defender.containsAllSkill(SkillType.铁壁) || defender.containsAllSkill(SkillType.驱虎吞狼) || defender.containsAllSkill(SkillType.金汤)) {
             for (SkillUseInfo defenderskill : defender.getAllUsableSkills()) {

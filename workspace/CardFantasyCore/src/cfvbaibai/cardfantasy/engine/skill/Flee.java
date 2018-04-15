@@ -29,6 +29,8 @@ public final class Flee {
         defender.getOwner().getField().expelCard(defender.getPosition());
 
         //逃跑卡牌会移除4技能的buff和铁壁效果。
+        defender.setSummonNumber(0);
+        defender.setRuneActive(false);
         resolver.resolveLeaveSkills(defender);
         if(defender.containsAllSkill(SkillType.铁壁)||defender.containsAllSkill(SkillType.驱虎吞狼)||defender.containsAllSkill(SkillType.金汤))
         {

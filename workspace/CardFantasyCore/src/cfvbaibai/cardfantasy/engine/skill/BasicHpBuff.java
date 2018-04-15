@@ -10,7 +10,8 @@ import cfvbaibai.cardfantasy.engine.SkillUseInfo;
 
 public class BasicHpBuff {
     public static void apply(SkillResolver resolver, SkillUseInfo skillUseInfo, CardInfo card) {
-        if (card.getRace() == Race.BOSS) {
+        //地下城魔神享受加成
+        if (card.getRace() == Race.BOSS&&!card.getOwner().getId().equals("地下城")) {
             return;
         }
         Skill skill = skillUseInfo.getSkill();

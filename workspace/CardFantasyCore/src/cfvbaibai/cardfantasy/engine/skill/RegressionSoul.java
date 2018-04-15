@@ -23,7 +23,10 @@ public final class RegressionSoul {
         Player player = resurrector.getOwner();
 
         List<CardInfo> deadCards = player.getGrave().toList();
-        deadCards.remove(resurrector);
+        if(!skillUseInfo.getSkill().isPostcastSkill())
+        {
+            deadCards.remove(resurrector);
+        }
         List<CardInfo> cardsToResurrect = Randomizer.getRandomizer().pickRandom(
                 deadCards, resurrectionCount, true, null);
         if (cardsToResurrect.size() > resurrectionCount) {

@@ -19,6 +19,12 @@ public class Hand extends CardPile {
         newCard.restoreOwner();
         super.addCard(newCard);
         newCard.resetSummonDelay();
+        if(newCard.getAddDelay()>0)
+        {
+            //解决加入卡组的卡牌也被延迟等待的问题。
+            newCard.setSummonDelay(newCard.getSummonDelay() + newCard.getAddDelay());
+            newCard.setAddDelay(0);
+        }
         return newCard;
     }
 

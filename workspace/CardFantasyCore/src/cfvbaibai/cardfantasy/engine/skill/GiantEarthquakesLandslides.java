@@ -22,9 +22,7 @@ public class GiantEarthquakesLandslides {
         StageInfo stage = resolver.getStage();
         Randomizer random = stage.getRandomizer();
         List<CardInfo> victims = random.pickRandom(defenderHero.getField().toList(), -1, true, null);
-        List<CardInfo> handCards = random.pickRandom(defenderHero.getHand().toList(), -1, true, null);
         List<CardInfo> myVictims = random.pickRandom(attacker.getOwner().getField().toList(), -1, true, null);
-        List<CardInfo> handCandidates = new ArrayList<CardInfo>();
         List<CardInfo> candidates = new ArrayList<CardInfo>();
         List<CardInfo> myCandidates = new ArrayList<CardInfo>();
         RuneInfo defenerrune = defenderHero.getOwner().getActiveRuneOf(RuneData.磐石);
@@ -36,11 +34,6 @@ public class GiantEarthquakesLandslides {
                 if (victim.containsUsableSkillsWithTag(SkillTag.不动)) {
                     candidates.add(victim);
                 }
-            }
-        }
-        for (CardInfo handCard : handCards) {
-            if (handCard.containsUsableSkillsWithTag(SkillTag.不动)) {
-                handCandidates.add(handCard);
             }
         }
         if (attackrune != null) {
@@ -57,15 +50,11 @@ public class GiantEarthquakesLandslides {
         }
         GameUI ui = resolver.getStage().getUI();
         for (CardInfo effectCard : candidates) {
+            if (effectCard.containsAllSkill(SkillType.免疫)|| effectCard.containsAllSkill(SkillType.结界立场)|| effectCard.containsAllSkill(SkillType.影青龙) || effectCard.containsAllSkill(SkillType.魔力抗性)) {
+                continue;
+            }
             ui.useSkill(attacker, effectCard, cardSkill, true);
             Return.returnCard2(resolver, cardSkill, attacker, effectCard,true);
-        }
-        if(cardSkill.getType()== SkillType.觉醒天崩地裂)
-        {
-            for (CardInfo effectHandCard : handCandidates) {
-                ui.useSkill(attacker, effectHandCard, cardSkill, true);
-                Return.returnCard2(resolver, cardSkill, attacker, effectHandCard,false);
-            }
         }
     }
 }

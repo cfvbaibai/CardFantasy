@@ -12,10 +12,10 @@ import cfvbaibai.cardfantasy.engine.SkillUseInfo;
 import java.util.ArrayList;
 import java.util.List;
 
-//给两个手牌添加技能
+//给一个手牌添加技能
 public class HandCardAddOneSkill {
     public static void apply(SkillResolver resolver, SkillUseInfo skillUseInfo, CardInfo card, Skill addSkill) {
-        if (card == null || card.isDead()) {
+        if (card == null) {
             throw new CardFantasyRuntimeException("card should not be null or dead!");
         }
         Skill skill = skillUseInfo.getSkill();
