@@ -1407,6 +1407,7 @@ public class SkillResolver {
                 }
             }
             deadCard.setSummonNumber(0);
+            deadCard.setAddDelay(0);
             deadCard.setRuneActive(false);
             resolveLeaveSkills(deadCard);
         }
@@ -1769,7 +1770,10 @@ public class SkillResolver {
             if (damage >= 0) {
                 int remainingDamage = this.resolveAttackHeroBlockingSkills(attacker, defenderPlayer, cardSkill, damage);
                 if (remainingDamage > 0) {
-                    remainingDamage = remainingDamage * defenderPlayer.getCoefficient() / 100;
+                    if(!(cardSkill!=null&&cardSkill.getType()==SkillType.自动扣血))
+                    {
+                        remainingDamage = remainingDamage * defenderPlayer.getCoefficient() / 100;
+                    }
                     if (remainingDamage > defenderPlayer.getHP()) {
                         remainingDamage = defenderPlayer.getHP();
                     }
@@ -2424,6 +2428,7 @@ public class SkillResolver {
         }
         player.getField().addCard(card);
         card.setSummonNumber(1);
+        card.setAddDelay(0);
         player.getHand().removeCard(card);
         // 星云锁链之类可以从卡组直接召唤的情况
         player.getDeck().removeCard(card);

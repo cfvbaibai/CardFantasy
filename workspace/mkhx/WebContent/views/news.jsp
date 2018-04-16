@@ -38,6 +38,10 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2017-04-16: <x>欢笑，波波</x><ul>
+                        <li>修复【雷系灵王】遇到【免疫魔甲】时结算3倍魔甲伤害的bug</li>
+                        <li>修复【铁壁】不能减免【自动扣血】伤害</li>
+                    </ul></li>
                     <li>2017-04-15: <x>欢笑，波波</x><ul>
                         <li>修复【遗志回魂】，【遗志归魂】不能选择卡牌自身的BUG</li>
                         <li>添加卡牌是否可以发动符文标志，【先机镜像】，【号角】当回合不触发符文</li>
