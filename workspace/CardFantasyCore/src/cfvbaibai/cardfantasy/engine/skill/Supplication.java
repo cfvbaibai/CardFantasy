@@ -9,9 +9,7 @@ import cfvbaibai.cardfantasy.engine.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by hasee on 2017/4/10.
- */
+
 public final class Supplication {
     public static  void apply(SkillResolver resolver, SkillUseInfo skillUseInfo, CardInfo card,Player defender) throws HeroDieSignal {
         if (card == null) {

@@ -1178,6 +1178,16 @@
         <Skill type="星云锁链" level="0" unlock="5" />
         <Skill type="转生" level="7" unlock="10" />
     </Card>
+    <Card id="1631" name="直死暗鸦" wikiId="" race="王国" speed="4" star="5" cost="17" incrCost="5" at="470" hp="1570" incrAT="40" incrHP="30">
+        <Skill type="破片手雷" level="0" unlock="0" />
+        <Skill type="王牌狙击" level="0" unlock="5" />
+        <Skill type="隐蔽" level="0" unlock="10" />
+    </Card>
+    <Card id="1632" name="月咏先知" wikiId="" race="王国" speed="3" star="4" cost="15" incrCost="2" at="310" hp="1375" incrAT="29" incrHP="33">
+        <Skill type="祈愿" level="1" unlock="0" />
+        <Skill type="圣盾" level="0" unlock="5" />
+        <Skill type="月神的恩赐" level="0" unlock="10" />
+    </Card>
 
 
     <!-- 森林 -->
@@ -2153,6 +2163,22 @@
         <Skill type="奋战" level="6" unlock="5" />
         <Skill type="免疫" level="0" unlock="10" />
     </Card>
+    <Card id="2605" name="远古之神" wikiId="" race="森林" speed="2" star="5" cost="17" incrCost="2" at="465" hp="1650" incrAT="30" incrHP="38">
+        <Skill type="荆棘刺盾" level="0" unlock="0" />
+        <Skill type="月神的护佑" level="7" unlock="5" />
+        <Skill type="回生" level="10" unlock="10" />
+    </Card>
+    <Card id="2606" name="丛林魅影" wikiId="" race="森林" speed="3" star="5" cost="17" incrCost="5" at="455" hp="1510" incrAT="36" incrHP="31">
+        <Skill type="连狙" level="0" unlock="0" />
+        <Skill type="屏息" level="7" unlock="5" />
+        <Skill type="爆震弹" level="10" unlock="10" />
+    </Card>
+    <Card id="2607" name="迷雾奏者" wikiId="" race="森林" speed="3" star="5" cost="16" incrCost="3" at="365" hp="1325" incrAT="29" incrHP="32">
+        <Skill type="幻音" level="0" unlock="0" />
+        <Skill type="诀隐" level="0" unlock="5" />
+        <Skill type="根源之力" level="7" unlock="10" />
+    </Card>
+
 
     <!-- 蛮荒  -->
     <Card id="3101" name="穴居人奴隶" wikiId="31006" race="蛮荒" speed="2" star="1" cost="4" incrCost="2" at="90" hp="390" incrAT="18" incrHP="11">
@@ -3175,6 +3201,16 @@
         <Skill type="九转秘术" level="0" unlock="0" />
         <Skill type="燕返" level="0" unlock="5" />
         <Skill type="转生" level="7" unlock="10" />
+    </Card>
+    <Card id="3605" name="爆弹强袭" wikiId="" race="蛮荒" speed="3" star="5" cost="18" incrCost="4" at="500" hp="1635" incrAT="34" incrHP="32">
+        <Skill type="制裁之拳" level="0" unlock="0" />
+        <Skill type="火力压制" level="0" unlock="5" />
+        <Skill type="战术性撤退" level="0" unlock="10" />
+    </Card>
+    <Card id="3606" name="破空之拳" wikiId="" race="蛮荒" speed="4" star="4" cost="15" incrCost="2" at="385" hp="1350" incrAT="35" incrHP="37">
+        <Skill type="摧毁" level="0" unlock="0" />
+        <Skill type="暴击" level="6" unlock="5" />
+        <Skill type="敏捷" level="6" unlock="10" />
     </Card>
 
 
@@ -4218,6 +4254,16 @@
         <Skill type="弱点攻击" level="0" unlock="5" />
         <Skill type="转生" level="7" unlock="10" />
     </Card>
+    <Card id="4610" name="深海怪鱼" wikiId="" race="地狱" speed="4" star="5" cost="17" incrCost="2" at="480" hp="1465" incrAT="31" incrHP="32">
+        <Skill type="侵蚀" level="0" unlock="0" />
+        <Skill type="横扫" level="0" unlock="5" />
+        <Skill type="圣母回声" level="0" unlock="10" />
+    </Card>
+    <Card id="4611" name="荒野蔷薇" wikiId="" race="地狱" speed="2" star="5" cost="17" incrCost="5" at="430" hp="1560" incrAT="30" incrHP="35">
+        <Skill type="击溃" level="0" unlock="0" />
+        <Skill type="突突突" level="0" unlock="5" />
+        <Skill type="肾上腺素" level="0" unlock="10" />
+    </Card>
 
 
     <!-- 魔神 -->
@@ -4649,6 +4695,32 @@
         <Skill type="生命链接" level="0" unlock="5" />
         <Skill type="圣母回声" level="0" unlock="10" />
     </Card>
+    <Card id="5712" name="死亡天使" wikiId="" race="魔神" speed="99" star="5" cost="99" incrCost="0" at="2000" hp="1000" incrAT="0" incrHP="0">
+        <Skill type="英雄之敌" level="10" unlock="0" />
+        <Skill type="破军" level="8" unlock="5" />
+        <Skill type="LETITGO" level="0" unlock="10" />
+        <Skill type="免疫" level="0" unlock="10" />
+        <Skill type="镜像" level="0" unlock="10"  precast="true"/>
+        <Skill type="再生" level="0" unlock="10"  death="true"/>
+    </Card>
+    <Card id="5713" name="末日使魔" wikiId="" race="魔神" speed="40" star="5" cost="99" incrCost="0" at="630" hp="1670" incrAT="43" incrHP="28">
+        <Skill type="时光倒流" level="0" unlock="0" />
+        <Skill type="终焉时刻" level="0" unlock="5" />
+    </Card>
+    <Card id="5714" name="无双·晨星之子" wikiId="" race="魔神" speed="10" star="5" cost="99" incrCost="0" at="5000" hp="5000" incrAT="0" incrHP="0">
+        <Skill type="英雄杀手" level="10" unlock="0" />
+        <Skill type="守护" level="10" unlock="5" />
+        <Skill type="免疫" level="10" unlock="10" />
+        <Skill type="鬼神乱舞" level="0" unlock="10" precast="true"/>
+        <Skill type="弱者溃散" level="8" unlock="10" death="true"/>
+        <Skill type="不屈" level="0" unlock="10" />
+        <Skill type="涅盘" level="0" unlock="10" />
+    </Card>
+    <Card id="5715" name="变异毒汁怪" wikiId="" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="610" hp="1610" incrAT="45" incrHP="45">
+        <Skill type="溶骨的毒酒" level="0" unlock="0" />
+        <Skill type="连斩" level="0" unlock="5" />
+        <Skill type="免疫" level="0" unlock="10" />
+    </Card>
 
     <!-- 魔族卡 -->
     <Card id="6101" name="终焉使者" wikiId="" race="魔族" speed="3" star="5" cost="19" incrCost="2" at="690" hp="1560" incrAT="41" incrHP="63">
@@ -4671,16 +4743,16 @@
         <Skill type="灵王的轰击" level="8" unlock="5" />
         <Skill type="栗子军团" level="0" unlock="10"/>
     </Card>
-    <Card id="6105" name="幻境魔导" wikiId="" race="魔族" speed="2" star="5" cost="19" incrCost="2" at="430" hp="1320" incrAT="37" incrHP="55">
+    <Card id="6105" name="幻镜魔导" wikiId="" race="魔族" speed="2" star="5" cost="19" incrCost="2" at="430" hp="1320" incrAT="37" incrHP="55">
         <Skill type="雷霆一击" level="5" unlock="0" />
         <Skill type="万华镜" level="0" unlock="5" />
         <Skill type="暗之献祭" level="0" unlock="10" />
     </Card>
-    <Card id="6106" name="幻境魔导镜像" wikiId="" race="魔族" speed="2" star="5" cost="19" incrCost="2" at="430" hp="1320" incrAT="37" incrHP="55">
+    <Card id="6106" name="幻镜魔导镜像" wikiId="" race="魔族" speed="2" star="5" cost="19" incrCost="2" at="430" hp="1320" incrAT="37" incrHP="55">
         <Skill type="雷霆一击" level="5" unlock="0" />
         <Skill type="不屈" level="0" unlock="5" />
     </Card>
-    <Card id="6107" name="真·幻境魔导" wikiId="" race="魔族" speed="6" star="5" cost="99" incrCost="2" at="1050" hp="2500" incrAT="0" incrHP="0">
+    <Card id="6107" name="真·幻镜魔导" wikiId="" race="魔族" speed="6" star="5" cost="99" incrCost="2" at="1050" hp="2500" incrAT="0" incrHP="0">
         <Skill type="灵魂消散" level="5" unlock="0" />
         <Skill type="暗红魔导阵" level="0" unlock="5" />
         <Skill type="暗之归还" level="0" unlock="10" />

@@ -16,6 +16,7 @@ public final class ReturnToHandAndDelay {
         StageInfo stage = resolver.getStage();
         Randomizer random = stage.getRandomizer();
         List<CardInfo> defenderList = random.pickRandom(defenderHero.getField().getAliveCards(), victimCount, true, null);
+        GameUI ui = resolver.getStage().getUI();
         for(CardInfo defender :defenderList) {
             if(defenderHero.getHand().isFull())
             {
@@ -24,7 +25,6 @@ public final class ReturnToHandAndDelay {
             if (defender == null || defender.isBoss()) {
                 continue;
             }
-            GameUI ui = resolver.getStage().getUI();
             ui.useSkill(attacker, defender, cardSkill, true);
             Return.returnHand(resolver, cardSkill, attacker, defender);
             int summonDelay = defender.getSummonDelay();

@@ -44,6 +44,16 @@
                                         <option value="2-5">2-5 黄昏镇</option>
                                         <option value="2-6">2-6 银月港</option>
                                     </optgroup>
+                                    <optgroup label="噩梦3图">
+                                        <option value="3-1">3-1 风暴岛</option>
+                                        <option value="3-2">3-2 南港</option>
+                                        <option value="3-3">3-3 星辰学院</option>
+                                        <option value="3-4">3-4 竞技场</option>
+                                        <option value="3-5">3-5 星象塔</option>
+                                        <option value="3-6">3-6 龙牙山</option>
+                                        <option value="3-7">3-7 神秘山洞</option>
+                                        <option value="3-8">3-8 地下图书馆</option>
+                                    </optgroup>
                                 </select>
                             </td>
                         </tr>
@@ -64,6 +74,7 @@
                                     <option value="0" selected="selected">不选择层数/地图</option>
                                     <option value="1">噩梦地图1图</option>
                                     <option value="2">噩梦地图2图</option>
+                                    <option value="3">噩梦地图3图</option>
                                     <option value="90" >地下城90层</option>
                                     <option value="91" >地下城91层</option>
                                     <option value="92" >地下城92层</option>

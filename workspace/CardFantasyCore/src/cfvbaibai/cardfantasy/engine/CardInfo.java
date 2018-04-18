@@ -20,6 +20,7 @@ public class CardInfo extends EntityInfo {
     @NonSerializable
     private Card card;
     private int hp;
+    private int addDelay;//判断卡牌在卡组中额外的等待
     private int summonDelay;
     @NonSerializable
     private CardStatus status;
@@ -33,6 +34,8 @@ public class CardInfo extends EntityInfo {
     private boolean deadOnce;
     private boolean isSumon;
     private CardInfo relationCardInfo;//关联卡牌,变身前卡牌和变身后卡牌//或者召唤者
+    private int summonNumber;//判断卡牌存在回合
+    private boolean runeActive;//判断卡牌是否激活符文
     
     private int eternalWound = 0;
 
@@ -55,6 +58,9 @@ public class CardInfo extends EntityInfo {
         this.deadOnce = false;
         this.isSumon = false;
         this.relationCardInfo = null;
+        this.addDelay = 0;
+        this.summonNumber=0;
+        this.runeActive=false;
     }
 
     public List<SkillUseInfo> getSkillUserInfos(){
@@ -286,6 +292,15 @@ public class CardInfo extends EntityInfo {
 
     public CardInfo setSummonDelay(int summonDelay) {
         this.summonDelay = summonDelay;
+        return this;
+    }
+
+    public int getAddDelay() {
+        return this.addDelay;
+    }
+
+    public CardInfo setAddDelay(int addDelay) {
+        this.addDelay = addDelay;
         return this;
     }
 
@@ -842,6 +857,22 @@ public class CardInfo extends EntityInfo {
 
     public void setIsSummon(boolean isSummon){
         this.isSumon = isSummon;
+    }
+
+    public int getSummonNumber(){
+        return this.summonNumber;
+    }
+
+    public void setSummonNumber(int summonNumber){
+        this.summonNumber = summonNumber;
+    }
+
+    public boolean getRuneActive(){
+        return this.runeActive;
+    }
+
+    public void setRuneActive(boolean runeActive){
+        this.runeActive = runeActive;
     }
 
     public CardInfo getRelationCardInfo() {

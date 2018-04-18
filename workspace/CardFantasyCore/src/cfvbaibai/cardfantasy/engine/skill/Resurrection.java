@@ -36,7 +36,7 @@ public final class Resurrection {
             return;
         }
         for (int i=0;i<=deadCards.size()-1&&i<=resurrectionCount-1;i++) {
-            if(deadCards.get(i)==resurrector)
+            if(deadCards.get(i)==resurrector&&!skillUseInfo.getSkill().isPostcastSkill())
             {
                 resurrectionCount=resurrectionCount+1;
                 continue;
