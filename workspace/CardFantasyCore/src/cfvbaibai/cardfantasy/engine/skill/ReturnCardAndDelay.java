@@ -20,11 +20,10 @@ public final class ReturnCardAndDelay {
            if(defenderHero.getHand().isFull()){
                 ui.useSkill(attacker, defender, cardSkill, true);
                 Return.returnCard2(resolver, cardSkill, attacker, defender,true);
-                int summonDelay = defender.getSummonDelay();
-                if(!defender.getStatus().containsStatus(CardStatusType.召唤)) {
-                    resolver.getStage().getUI().increaseSummonDelay(defender, delay);
-                    defender.setSummonDelay(summonDelay + delay);
-                }
+               if(!defender.getStatus().containsStatus(CardStatusType.召唤)) {
+                   resolver.getStage().getUI().increaseSummonDelay(defender, delay);
+                   defender.setAddDelay(2);
+               }
                 continue;
             }
             ui.useSkill(attacker, defender, cardSkill, true);
@@ -32,7 +31,7 @@ public final class ReturnCardAndDelay {
             int summonDelay = defender.getSummonDelay();
             if(!defender.getStatus().containsStatus(CardStatusType.召唤)) {
                 resolver.getStage().getUI().increaseSummonDelay(defender, delay);
-                defender.setAddDelay(2);
+                defender.setSummonDelay(summonDelay + delay);
             }
         }
     }

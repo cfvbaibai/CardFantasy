@@ -3,6 +3,7 @@ package cfvbaibai.cardfantasy.engine.skill;
 import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
 import cfvbaibai.cardfantasy.GameUI;
 import cfvbaibai.cardfantasy.data.Skill;
+import cfvbaibai.cardfantasy.data.SkillType;
 import cfvbaibai.cardfantasy.engine.*;
 
 public final class ImpregnableDefenseHeroBuff {
@@ -40,5 +41,18 @@ public final class ImpregnableDefenseHeroBuff {
             coefficient=100;//hack一下某些情况下铁壁非正常移除。
         }
         atacter.setCoefficient(coefficient);
+    }
+    public static void removeSkill(CardInfo card, SkillResolver resolver) {
+        if (card.containsAllSkill(SkillType.铁壁)||card.containsAllSkill(SkillType.驱虎吞狼)||card.containsAllSkill(SkillType.金汤)||card.containsAllSkill(SkillType.光之守护)) {
+            for (SkillUseInfo defenderskill : card.getAllUsableSkills()) {
+                if (defenderskill.getType() == SkillType.铁壁||defenderskill.getType() == SkillType.金汤||defenderskill.getType() == SkillType.光之守护) {
+                    ImpregnableDefenseHeroBuff.remove(resolver, defenderskill, card);
+                }
+                else if (defenderskill.getType() == SkillType.驱虎吞狼)
+                {
+                    ImpregnableDefenseHeroBuff.remove(resolver, defenderskill.getAttachedUseInfo2(), card);
+                }
+            }
+        }
     }
 }

@@ -32,6 +32,8 @@ public final class Return {
         //}
         GameUI ui = resolver.getStage().getUI();
         ui.returnCard(attacker, defender, cardSkill);
+        resolver.resolveLeaveSkills(defender);
+        ImpregnableDefenseHeroBuff.removeSkill(defender,resolver);//移除铁壁的buff
         if (!defender.getStatus().containsStatus(CardStatusType.召唤)) {
             // 被召唤的卡牌不回到卡组，而是直接消失
             // 送还的卡是随机插入卡组而非加在末尾
@@ -46,17 +48,8 @@ public final class Return {
 
         }
         defender.setSummonNumber(0);
+        defender.setAddDelay(0);
         defender.setRuneActive(false);
-        resolver.resolveLeaveSkills(defender);
-        if (defender.containsAllSkill(SkillType.铁壁) || defender.containsAllSkill(SkillType.驱虎吞狼) || defender.containsAllSkill(SkillType.金汤)) {
-            for (SkillUseInfo defenderskill : defender.getAllUsableSkills()) {
-                if (defenderskill.getType() == SkillType.铁壁 || defenderskill.getType() == SkillType.金汤) {
-                    ImpregnableDefenseHeroBuff.remove(resolver, defenderskill, defender);
-                } else if (defenderskill.getType() == SkillType.驱虎吞狼) {
-                    ImpregnableDefenseHeroBuff.remove(resolver, defenderskill.getAttachedUseInfo2(), defender);
-                }
-            }
-        }
     }
 
     //地裂等牌返回牌库是有顺序的。
@@ -68,6 +61,11 @@ public final class Return {
         //}
         GameUI ui = resolver.getStage().getUI();
         ui.returnCard(attacker, defender, cardSkill);
+        //flag判断是否是从手牌回到牌库
+        if (flag) {
+            ImpregnableDefenseHeroBuff.removeSkill(defender,resolver);//移除铁壁的buff
+        }
+        resolver.resolveLeaveSkills(defender);
         if (!defender.getStatus().containsStatus(CardStatusType.召唤)) {
             // 被召唤的卡牌不回到卡组，而是直接消失
             // 送还的卡是随机插入卡组而非加在末尾
@@ -82,21 +80,9 @@ public final class Return {
             defender.getOwner().getDeck().insertCardToPosition(defender, index);
             defender.reset();
         }
-        resolver.resolveLeaveSkills(defender);
         defender.setSummonNumber(0);
+        defender.setAddDelay(0);
         defender.setRuneActive(false);
-        //flag判断是否是从手牌回到牌库
-        if (flag) {
-            if (defender.containsAllSkill(SkillType.铁壁) || defender.containsAllSkill(SkillType.驱虎吞狼) || defender.containsAllSkill(SkillType.金汤)) {
-                for (SkillUseInfo defenderskill : defender.getAllUsableSkills()) {
-                    if (defenderskill.getType() == SkillType.铁壁 || defenderskill.getType() == SkillType.金汤) {
-                        ImpregnableDefenseHeroBuff.remove(resolver, defenderskill, defender);
-                    } else if (defenderskill.getType() == SkillType.驱虎吞狼) {
-                        ImpregnableDefenseHeroBuff.remove(resolver, defenderskill.getAttachedUseInfo2(), defender);
-                    }
-                }
-            }
-        }
     }
 
     //卡牌返回到手牌
@@ -108,6 +94,8 @@ public final class Return {
         defender.getOwner().getField().expelCard(defender.getPosition());
         GameUI ui = resolver.getStage().getUI();
         ui.returnCard(attacker, defender, cardSkill);
+        resolver.resolveLeaveSkills(defender);
+        ImpregnableDefenseHeroBuff.removeSkill(defender,resolver);//移除铁壁的buff
         if (!defender.getStatus().containsStatus(CardStatusType.召唤)) {
             defender.restoreOwner();
             defender.getOwner().getHand().addCard(defender);
@@ -115,16 +103,7 @@ public final class Return {
             ui.cardToHand(defender.getOwner(), defender);
         }
         defender.setSummonNumber(0);
+        defender.setAddDelay(0);
         defender.setRuneActive(false);
-        resolver.resolveLeaveSkills(defender);
-        if (defender.containsAllSkill(SkillType.铁壁) || defender.containsAllSkill(SkillType.驱虎吞狼) || defender.containsAllSkill(SkillType.金汤)) {
-            for (SkillUseInfo defenderskill : defender.getAllUsableSkills()) {
-                if (defenderskill.getType() == SkillType.铁壁 || defenderskill.getType() == SkillType.金汤) {
-                    ImpregnableDefenseHeroBuff.remove(resolver, defenderskill, defender);
-                } else if (defenderskill.getType() == SkillType.驱虎吞狼) {
-                    ImpregnableDefenseHeroBuff.remove(resolver, defenderskill.getAttachedUseInfo2(), defender);
-                }
-            }
-        }
     }
 }

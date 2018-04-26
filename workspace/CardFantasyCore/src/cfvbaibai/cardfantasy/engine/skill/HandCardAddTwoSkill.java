@@ -13,7 +13,7 @@ import cfvbaibai.cardfantasy.engine.SkillResolver;
 import cfvbaibai.cardfantasy.engine.SkillUseInfo;
 
 //给两个手牌添加技能
-public class HandCardAddSkill {
+public class HandCardAddTwoSkill {
     public static void apply(SkillResolver resolver, SkillUseInfo skillUseInfo, CardInfo card, Skill addSkill) {
         if (card == null) {
             throw new CardFantasyRuntimeException("card should not be null or dead!");

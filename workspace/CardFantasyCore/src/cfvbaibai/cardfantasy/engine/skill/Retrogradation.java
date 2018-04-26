@@ -16,7 +16,7 @@ public final class Retrogradation {
             return false;
         }
         if (!player.getGrave().contains(card) && player.getField().contains(card)) {
-            // 不屈中，此时不发动转生
+            // 不屈中，此时不发动回生
             return false;
         }
         int rate = cardSkill.getImpact3();

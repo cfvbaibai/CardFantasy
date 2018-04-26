@@ -351,6 +351,7 @@ public class BattleEngine {
             resolver.resolveDebuff(myField.getCard(i), CardStatusType.燃烧);
             resolver.removeStatus(myField.getCard(i), CardStatusType.沉默);
             resolver.removeStatus(myField.getCard(i), CardStatusType.死咒);
+            resolver.removeStatus(myField.getCard(i), CardStatusType.魂殇);
             if (status.containsStatus(CardStatusType.变羊)) {
                 //变羊类技能恢复原状
                 List<CardStatusItem>  sheepStatus= status.getStatusOf(CardStatusType.变羊);
@@ -477,12 +478,13 @@ public class BattleEngine {
             if (skillUseInfo.getType() == SkillType.横扫 ||
                     skillUseInfo.getType() == SkillType.灵击 ||
                     skillUseInfo.getType() == SkillType.三千世界 ||
+                    skillUseInfo.getType() == SkillType.大小通吃 ||
                     skillUseInfo.getType() == SkillType.魔龙之怒 ||
                     skillUseInfo.getType() == SkillType.鬼彻 ||
                     skillUseInfo.getType() == SkillType.毒杀) {
                 ui.useSkill(myField.getCard(i), defender, skillUseInfo.getSkill(), true);
             }
-            else if (skillUseInfo.getType() == SkillType.一文字) {
+            else if (skillUseInfo.getType() == SkillType.一文字||skillUseInfo.getType() == SkillType.横扫千军) {
                 ui.useSkill(myField.getCard(i), defender, skillUseInfo.getSkill(), true);
             }
         }
@@ -508,6 +510,7 @@ public class BattleEngine {
             for (SkillUseInfo skillUseInfo : myField.getCard(i).getUsableNormalSkills()) {
                 if (skillUseInfo.getType() == SkillType.横扫 ||
                         skillUseInfo.getType() == SkillType.三千世界 ||
+                        skillUseInfo.getType() == SkillType.大小通吃 ||
                         skillUseInfo.getType() == SkillType.魔龙之怒 ||
                         skillUseInfo.getType() == SkillType.鬼彻 ||
                         skillUseInfo.getType() == SkillType.灵击 ||
@@ -556,7 +559,7 @@ public class BattleEngine {
         }
         if (damagedResult != null && damagedResult.originalDamage > 0 && myField.getCard(i) != null&&attackflag) {
             for (SkillUseInfo skillUseInfo : myField.getCard(i).getUsableNormalSkills()) {
-                if (skillUseInfo.getType() == SkillType.一文字) {
+                if (skillUseInfo.getType() == SkillType.一文字||skillUseInfo.getType() == SkillType.横扫千军) {
                     for (CardInfo sweepDefender : opField.getAliveCards()) {
                         //一文字可以攻击自己。
 //                        if(sweepDefender == opField.getCard(i))
