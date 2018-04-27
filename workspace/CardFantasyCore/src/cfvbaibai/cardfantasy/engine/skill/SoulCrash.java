@@ -20,18 +20,21 @@ public class SoulCrash {
         for (CardInfo card : defender.getField().getAliveCards()) {
             if (!card.isSummonedMinion()) {
                 continue;
-            } else {
-                EntityInfo summoner = card.getSummoner();
-                //现在魔王和魔神可以消散。
+            }
+//            else {
+               //EntityInfo summoner = card.getSummoner();
+                //现在魔王和魔神可以消散。--只能消散普通召唤物
 //                if (summoner instanceof CardInfo && ((CardInfo)summoner).getRace() == Race.BOSS) {
 //                    continue;
 //                }
-                if(summoner instanceof CardInfo && ((CardInfo)summoner).getRace() == Race.DEMON)
-                {
-                    continue;
-                }
-            }
-            if (card.getRace() == Race.BOSS) {
+
+//                if(card.getRace() == Race.DEMON||card.getRace() == Race.BOSS)
+//                {
+//                    continue;
+//                }
+//            }
+            //2018-04-26 召唤物是魔族或者魔神不能被消散
+            if (card.getRace() == Race.DEMON||card.getRace() == Race.BOSS) {
                 continue;
             }
             victims.add(card);

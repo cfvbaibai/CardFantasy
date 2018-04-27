@@ -30,22 +30,10 @@ public final class Flee {
 
         //逃跑卡牌会移除4技能的buff和铁壁效果。
         defender.setSummonNumber(0);
+        defender.setAddDelay(0);
         defender.setRuneActive(false);
         resolver.resolveLeaveSkills(defender);
-        if(defender.containsAllSkill(SkillType.铁壁)||defender.containsAllSkill(SkillType.驱虎吞狼)||defender.containsAllSkill(SkillType.金汤))
-        {
-            for(SkillUseInfo defenderskill:defender.getAllUsableSkills())
-            {
-                if (defenderskill.getType() == SkillType.铁壁||defenderskill.getType() == SkillType.金汤)
-                {
-                    ImpregnableDefenseHeroBuff.remove(resolver, defenderskill, defender);
-                }
-                else if (defenderskill.getType() == SkillType.驱虎吞狼)
-                {
-                    ImpregnableDefenseHeroBuff.remove(resolver, defenderskill.getAttachedUseInfo2(), defender);
-                }
-            }
-        }
+        ImpregnableDefenseHeroBuff.removeSkill(defender,resolver);//移除铁壁的buff
         
         // 如果是被召唤的卡牌，发动逃跑技能后应该直接消失
         if (defender.isSummonedMinion()) {

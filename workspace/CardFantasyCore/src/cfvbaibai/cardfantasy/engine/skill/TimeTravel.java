@@ -45,23 +45,17 @@ public class TimeTravel {
                     card.setSummonNumber(0);
                     card.setRuneActive(false);
                     resolver.resolveLeaveSkills(card);
-                    if (card.containsAllSkill(SkillType.铁壁) || card.containsAllSkill(SkillType.驱虎吞狼) || card.containsAllSkill(SkillType.金汤)) {
-                        for (SkillUseInfo defenderskill : card.getAllUsableSkills()) {
-                            if (defenderskill.getType() == SkillType.铁壁 || defenderskill.getType() == SkillType.金汤) {
-                                ImpregnableDefenseHeroBuff.remove(resolver, defenderskill, card);
-                            } else if (defenderskill.getType() == SkillType.驱虎吞狼) {
-                                ImpregnableDefenseHeroBuff.remove(resolver, defenderskill.getAttachedUseInfo2(), card);
-                            }
-                        }
-                    }
+                    ImpregnableDefenseHeroBuff.removeSkill(card,resolver);//移除铁壁的buff
 
                     ui.returnCard(caster, card, skillUseInfo.getSkill());
                     if (!card.getStatus().containsStatus(CardStatusType.召唤)) {
                         card.restoreOwner();
                         card.getOwner().getDeck().addCard(card);
-
                     }
                     player.getField().removeCard(card);
+                    card.setSummonNumber(0);
+                    card.setAddDelay(0);
+                    card.setRuneActive(false);
                 }
             }
         }
@@ -72,6 +66,9 @@ public class TimeTravel {
                 ui.cardToGrave(player, card);
                 player.getDeck().addCard(card);
                 player.getHand().removeCard(card);
+                card.setSummonNumber(0);
+                card.setAddDelay(0);
+                card.setRuneActive(false);
             }
         }
         player.getDeck().shuffle();

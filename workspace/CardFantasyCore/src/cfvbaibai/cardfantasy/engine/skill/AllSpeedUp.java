@@ -14,14 +14,15 @@ public class AllSpeedUp {
         resolver.getStage().getUI().useSkill(attacker, allHandCards, skillUseInfo.getSkill(), true);
         for (CardInfo card : allHandCards) {
             int summonDelay = card.getSummonDelay();
+            int summonDelayOffsetReally = summonDelayOffset;
             if (summonDelay < summonDelayOffset) {
-                summonDelayOffset = summonDelay;
+                summonDelayOffsetReally = summonDelay;
             }
-            if (summonDelayOffset == 0) {
+            if (summonDelayOffsetReally == 0) {
                 continue;
             }
-            resolver.getStage().getUI().increaseSummonDelay(card, -summonDelayOffset);
-            card.setSummonDelay(summonDelay - summonDelayOffset);
+            resolver.getStage().getUI().increaseSummonDelay(card, -summonDelayOffsetReally);
+            card.setSummonDelay(summonDelay - summonDelayOffsetReally);
         }
     }
 }
