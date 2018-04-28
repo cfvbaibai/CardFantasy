@@ -535,6 +535,7 @@ public enum SkillType {
     樱蝶重生("", 0, 0, SkillTag.召唤),
     魔化冥蝶("", 0, 0, SkillTag.召唤),
     原素召唤("", 0, 0, SkillTag.召唤),
+    页游星之所在("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
 
     //生成卡牌置入战场
     蜀国英魂("", 2, 0,SkillTag.抗夺魂),

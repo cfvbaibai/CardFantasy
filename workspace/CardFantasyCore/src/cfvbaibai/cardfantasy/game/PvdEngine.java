@@ -38,7 +38,7 @@ public class PvdEngine extends GameEngine {
         if (p1CardHpBuff != 100) {
             p1CardBuffs.add(new PlayerCardBuffSkill(SkillType.原始体力调整, p1CardHpBuff - 100));
         }
-        PlayerInfo player2 = PlayerBuilder.build(true, "地下城", map.getDeckInfo(), 135,p1CardBuffs,p1HeroHpBuff);
+        PlayerInfo player2 = PlayerBuilder.build(true, "地下城", map.getDeckInfo(), 130,p1CardBuffs,p1HeroHpBuff);
         BattleEngine engine = new BattleEngine(ui, rule);
         engine.registerPlayers(player2, player);
         ui.showMessage("战斗开始...");

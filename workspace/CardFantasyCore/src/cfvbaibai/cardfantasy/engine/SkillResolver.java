@@ -770,6 +770,8 @@ public class SkillResolver {
             } else if (skillUseInfo.getType() == SkillType.弑主 ) {
                 CounterBite.apply(skillUseInfo.getAttachedUseInfo1(), this, attacker);
                 TheSword.apply(this, skillUseInfo.getAttachedUseInfo2(), attacker);
+            } else if (skillUseInfo.getType() == SkillType.士气振奋 ) {
+                TheSword.apply(this, skillUseInfo, attacker);
             }
         }
         if ((attacker.containsAllSkill(SkillType.连续魔法) || attacker.containsAllSkill(SkillType.黄天当立) || attacker.containsAllSkill(SkillType.连奏)|| attacker.containsAllSkill(SkillType.神性爆发) || attacker.containsAllSkill(SkillType.时光迁跃)) && !attacker.isDead() && status == 0) {
@@ -2219,6 +2221,10 @@ public class SkillResolver {
                     Summon.apply(this, skillUseInfo, card, SummonType.RandomSummoning, 2,
                             "白羊座", "金牛座", "双子座", "巨蟹座", "狮子座", "处女座",
                             "天秤座", "射手座", "天蝎座", "摩羯座", "水瓶座", "双鱼座");
+                } else if (skillUseInfo.getType() == SkillType.页游星之所在) {
+                    Summon.apply(this, skillUseInfo, card, SummonType.RandomSummoning, 2,
+                            "网页版白羊座", "网页版金牛座", "双子座", "巨蟹座", "狮子座", "处女座",
+                            "天秤座", "射手座", "天蝎座", "摩羯座", "网页版水瓶座", "网页版双鱼座");
                 } else if (skillUseInfo.getType() == SkillType.灵龙轰咆) {
                     Summon.apply(this, skillUseInfo, card, SummonType.RandomSummoning, 2,
                             "光明之龙", "金属巨龙", "黄金金属巨龙", "元素灵龙", "暴怒霸龙", "毁灭之龙", "幽灵巨龙",
@@ -2285,7 +2291,7 @@ public class SkillResolver {
                     Summon.apply(this, skillUseInfo.getAttachedUseInfo1(), card, SummonType.Summoning, 1,
                             "花舞剑士");
                 } else if (skillUseInfo.getType() == SkillType.剑道) {
-                    Summon.apply(this, skillUseInfo.getAttachedUseInfo1(), card, SummonType.Summoning, 2,
+                    Summon.apply(this, skillUseInfo, card, SummonType.Normal, 2,
                             "武形剑圣","武形剑圣");
                 } else if (skillUseInfo.getType() == SkillType.桃园结义) {
                     Summon.apply(this, skillUseInfo, card, SummonType.Summoning, 2,

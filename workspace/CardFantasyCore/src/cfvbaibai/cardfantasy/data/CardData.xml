@@ -2250,6 +2250,11 @@
         <Skill type="转生" level="10" unlock="5" />
         <Skill type="常夏日光" level="0" unlock="10"  summon="true"/>
     </Card>
+    <Card id="2617" name="网页版星之守护者" wikiId="" race="森林" speed="3" star="5" cost="18" incrCost="1" at="350" hp="1580" incrAT="37" incrHP="30">
+        <Skill type="守护" level="0" unlock="0" />
+        <Skill type="转生" level="7" unlock="5" />
+        <Skill type="页游星之所在" level="0" unlock="10" summon="true" />
+    </Card>
 
 
     <!-- 蛮荒  -->
