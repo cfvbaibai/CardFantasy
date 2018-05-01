@@ -176,4 +176,30 @@ public class Summon {
             resolver.summonCard(summonedCard.getOwner(), summonedCard, summoner, true, skill,1);
         }
     }
+
+    //新生的召唤
+    public static void newBornApply(SkillResolver resolver, SkillUseInfo skillUseInfo, CardInfo summoner, SummonType summonType, int summonPicks,CardStatusItem summonedStatusItem, String... summonedCardsDescs) throws HeroDieSignal {
+        if (summoner == null) {
+            throw new CardFantasyRuntimeException("summoner should not be null");
+        }
+        Skill skill = skillUseInfo.getSkill();
+        List<CardInfo> livingCards = null;
+        Player enemy = null;
+        List<String> cardDescsToSummon = new LinkedList<String>();
+        for (String summonedCardDesc : summonedCardsDescs) {
+            cardDescsToSummon.add(summonedCardDesc);
+        }
+        List<CardInfo> cardsToSummon = null;
+        cardsToSummon = DeckBuilder.build(summonedCardsDescs).getCardInfos(summoner.getOwner());
+
+        if (cardsToSummon.size() > 0) {
+            resolver.getStage().getUI().useSkill(summoner, skill, true);
+        }
+        for (int i = 0; i < cardsToSummon.size(); ++i) {
+            CardInfo summonedCard = cardsToSummon.get(i);
+            resolver.getStage().getUI().addCardStatus(summoner, summonedCard, skill, summonedStatusItem);
+            summonedCard.addStatus(summonedStatusItem);
+            resolver.summonCard(summonedCard.getOwner(), summonedCard, summoner, true, skill,1);
+        }
+    }
 }

@@ -772,6 +772,8 @@ public class SkillResolver {
                 TheSword.apply(this, skillUseInfo.getAttachedUseInfo2(), attacker);
             } else if (skillUseInfo.getType() == SkillType.士气振奋 ) {
                 TheSword.apply(this, skillUseInfo, attacker);
+            } else if (skillUseInfo.getType() == SkillType.魂之枷锁) {
+                SoulChains.apply(this, skillUseInfo, attacker, defender, 5,4);
             }
         }
         if ((attacker.containsAllSkill(SkillType.连续魔法) || attacker.containsAllSkill(SkillType.黄天当立) || attacker.containsAllSkill(SkillType.连奏)|| attacker.containsAllSkill(SkillType.神性爆发) || attacker.containsAllSkill(SkillType.时光迁跃)) && !attacker.isDead() && status == 0) {
@@ -1039,17 +1041,25 @@ public class SkillResolver {
             boolean isAttackerDisabled = (status.containsStatus(CardStatusType.冰冻)
                     || status.containsStatus(CardStatusType.锁定)
                     || status.containsStatus(CardStatusType.复活));
-            if (attacker instanceof CardInfo) {
-                if(((CardInfo) attacker).isDead())
-                {
-                    result.setAttackable(true);
-                }
-            }
             if (!attackSkill.isDeathSkill() && isAttackerDisabled && attackSkill.getType() != SkillType.邪灵汲取) {
                 // BUGBUG: Why we need go here? Hack 邪灵汲取 here temporarily.
-                stage.getUI().attackBlocked(attacker, defender, attackSkill, null);
                 result.setAttackable(false);
-            } else {
+                //死亡的卡牌魔法技能正常发动
+                if (attacker instanceof CardInfo) {
+                    if(((CardInfo) attacker).isDead())
+                    {
+                        result.setAttackable(true);
+                    }
+                    else if(((CardInfo) attacker).getIsSummon())
+                    {
+                        result.setAttackable(true);
+                    }
+                }
+                if(!result.isAttackable())
+                {
+                    stage.getUI().attackBlocked(attacker, defender, attackSkill, null);
+                }
+            } else if(result.isAttackable()){
                 if (CounterMagic.apply(this, attackSkill, attacker, defender)) {
                     result.setAttackable(false);
                     return result;
@@ -1510,7 +1520,7 @@ public class SkillResolver {
             deadCard.setRuneActive(false);
             resolveLeaveSkills(deadCard);
         }
-        if (!result.unbending) {
+        if (!result.unbending&&!deadCard.isAlive()) {
             if (!deadCard.isSummonedMinion()) {
                 deadCard.reset();
             }
@@ -2329,8 +2339,6 @@ public class SkillResolver {
                     Confusion.apply(skillUseInfo.getAttachedUseInfo1(), this, card, enemy, -1);
                 } else if (skillUseInfo.getType() == SkillType.支配亡灵) {
                     ControlGhost.apply(this, skillUseInfo, card, enemy, -1,3);
-                } else if (skillUseInfo.getType() == SkillType.魂之枷锁) {
-                    SoulChains.apply(this, skillUseInfo, card, enemy, 5,4);
                 } else if (skillUseInfo.getType() == SkillType.涤罪神启) {
                     SoulCrash.apply(skillUseInfo.getAttachedUseInfo1(), this, card, enemy);
                     Bless.apply(skillUseInfo.getAttachedUseInfo2().getSkill(), this, card);

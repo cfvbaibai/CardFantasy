@@ -45,6 +45,7 @@ public final class Reborn {
           //  ui.summonCard(player,card);
             Grave grave = card.getOwner().getGrave();
             grave.removeCard(card);
+            card.reset();
           //  player.getField().addCard(card);
 
             resolver.summonCard(card.getOwner(), card, card, false, cardSkill,0);//司命可以发动降临技能
