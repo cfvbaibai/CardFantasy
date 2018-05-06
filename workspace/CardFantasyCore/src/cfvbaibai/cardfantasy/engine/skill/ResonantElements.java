@@ -23,7 +23,27 @@ public final class ResonantElements {
         if(resonantCard.getLevel()>=15){
             int size = resonantCard.getAllUsableSkills().size();
             Skill additionalSkill = resonantCard.getAllUsableSkills().get(size-1).getSkill();
-            CardSkill cardSkill = new CardSkill(additionalSkill.getType(), additionalSkill.getLevel(), 0, false, false, false, false);
+            Boolean summonSkill = false;
+            Boolean preSkill = false;
+            Boolean deathSkill = false;
+            Boolean postSkill = false;
+            if(additionalSkill.isPostcastSkill())
+            {
+                postSkill = true;
+            }
+            else if(additionalSkill.isDeathSkill())
+            {
+                deathSkill =true;
+            }
+            else if(additionalSkill.isPrecastSkill())
+            {
+                preSkill = true;
+            }
+            else if(additionalSkill.isSummonSkill())
+            {
+                summonSkill = true;
+            }
+            CardSkill cardSkill = new CardSkill(additionalSkill.getType(), additionalSkill.getLevel(), 0, summonSkill, deathSkill, preSkill, postSkill);
             thisSkillUserInfo = new SkillUseInfo(addCard,cardSkill);
             addCard.addSkill(thisSkillUserInfo);
         }
@@ -31,9 +51,11 @@ public final class ResonantElements {
         livingCards = player.getField().getAliveCards();
         for (CardInfo fieldCard : livingCards) {
             if(fieldCard.containsAllSkill(SkillType.原素共鸣)&&!fieldCard.getName().equals(resonantCard.getName())) {
-                player.getField().removeCard(resonantCard);
+//                player.getField().removeCard(resonantCard);
+                player.getField().expelCard(resonantCard.getPosition());
                 player.getOutField().addCard(resonantCard);
-                player.getField().removeCard(fieldCard);
+//                player.getField().removeCard(fieldCard);
+                player.getField().expelCard(fieldCard.getPosition());
                 player.getOutField().addCard(fieldCard);
                 player.getField().addCard(addCard);
                 resolver.getStage().getUI().useSkill(resonantCard, skillUseInfo.getSkill(), true);

@@ -5,12 +5,7 @@ import java.util.List;
 import cfvbaibai.cardfantasy.GameUI;
 import cfvbaibai.cardfantasy.Randomizer;
 import cfvbaibai.cardfantasy.data.Skill;
-import cfvbaibai.cardfantasy.engine.CardInfo;
-import cfvbaibai.cardfantasy.engine.HeroDieSignal;
-import cfvbaibai.cardfantasy.engine.Player;
-import cfvbaibai.cardfantasy.engine.SkillResolver;
-import cfvbaibai.cardfantasy.engine.SkillUseInfo;
-import cfvbaibai.cardfantasy.engine.StageInfo;
+import cfvbaibai.cardfantasy.engine.*;
 
 public final class Insane {
     public static void apply(SkillUseInfo skillUseInfo, SkillResolver resolver, CardInfo attacker, Player defender,
@@ -26,7 +21,7 @@ public final class Insane {
             if (!resolver.resolveAttackBlockingSkills(attacker, victim, skill, 1).isAttackable()) {
                 continue;
             }
-            if(victim.isDead()) {
+            if(victim.isDead()||victim.getStatus().containsStatus(CardStatusType.不屈)) {
                 continue;
             }
             List<CardInfo> cardsAttackedByVictim = resolver.getCardsOnSides(

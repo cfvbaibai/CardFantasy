@@ -94,7 +94,7 @@
                                     <option value="106">地下城106层</option>
                                     <option value="107">地下城107层</option>
                                     <option value="108">地下城108层</option>
-                                    <option value="108">地下城109层</option>
+                                    <option value="109">地下城109层</option>
                                     <option value="110">地下城110层</option>
                                 </select>
                             </td>

@@ -26,7 +26,8 @@ public class Deformation {
         if (summoner.getRelationCardInfo() != null) {
             addCard = summoner.getRelationCardInfo();
             player.getOutField().removeCard(addCard);
-            player.getField().removeCard(summoner);
+            //player.getField().removeCard(summoner);
+            player.getField().expelCard(summoner.getPosition());
             player.getOutField().addCard(summoner);
             resolver.getStage().getUI().cardDead(summoner);
             resolver.summonCard(summoner.getOwner(), addCard, summoner, false, skillUseInfo.getSkill(), 0);
@@ -35,13 +36,34 @@ public class Deformation {
                 int size = summoner.getAllUsableSkills().size();
                 SkillUseInfo thisSkillUserInfo= null;
                 Skill additionalSkill = summoner.getAllUsableSkills().get(size - 1).getSkill();
-                CardSkill cardSkill = new CardSkill(additionalSkill.getType(), additionalSkill.getLevel(), 0, false, false, false, false);
+                Boolean summonSkill = false;
+                Boolean preSkill = false;
+                Boolean deathSkill = false;
+                Boolean postSkill = false;
+                if(additionalSkill.isPostcastSkill())
+                {
+                    postSkill = true;
+                }
+                else if(additionalSkill.isDeathSkill())
+                {
+                    deathSkill =true;
+                }
+                else if(additionalSkill.isPrecastSkill())
+                {
+                    preSkill = true;
+                }
+                else if(additionalSkill.isSummonSkill())
+                {
+                    summonSkill = true;
+                }
+                CardSkill cardSkill = new CardSkill(additionalSkill.getType(), additionalSkill.getLevel(), 0, summonSkill, deathSkill, preSkill, postSkill);
                 thisSkillUserInfo = new SkillUseInfo(addCard, cardSkill);
                 addCard.addSkill(thisSkillUserInfo);
             }
             addCard.setRelationCardInfo(summoner);
             summoner.setRelationCardInfo(addCard);
-            player.getField().removeCard(summoner);
+//            player.getField().removeCard(summoner);
+            player.getField().expelCard(summoner.getPosition());
             player.getOutField().addCard(summoner);
             resolver.getStage().getUI().cardDead(summoner);
             resolver.summonCard(summoner.getOwner(), addCard, summoner, false, skillUseInfo.getSkill(), 1);

@@ -1,12 +1,7 @@
 package cfvbaibai.cardfantasy.engine.skill;
 
 import cfvbaibai.cardfantasy.data.Skill;
-import cfvbaibai.cardfantasy.engine.CardInfo;
-import cfvbaibai.cardfantasy.engine.HeroDieSignal;
-import cfvbaibai.cardfantasy.engine.OnAttackBlockingResult;
-import cfvbaibai.cardfantasy.engine.OnDamagedResult;
-import cfvbaibai.cardfantasy.engine.SkillResolver;
-import cfvbaibai.cardfantasy.engine.SkillUseInfo;
+import cfvbaibai.cardfantasy.engine.*;
 
 public class LifeDrain {
     public static void apply(SkillUseInfo skillUseInfo, SkillResolver resolver, CardInfo attacker, CardInfo defender,
@@ -30,11 +25,12 @@ public class LifeDrain {
 
         if (!defender.isDead()) {
             int healHP = damage;
-            if (healHP + defender.getHP() > defender.getMaxHP()) {
-                healHP = defender.getMaxHP() - defender.getHP();
-            }
+//            if (healHP + defender.getHP() > defender.getMaxHP()) {
+//                healHP = defender.getMaxHP() - defender.getHP();
+//            }
             resolver.getStage().getUI().adjustHP(defender, defender, healHP, skill);
-            resolver.applyDamage(defender, defender, skill, -healHP);
+         //   resolver.applyDamage(defender, defender, skill, -healHP);
+            defender.addEffect(new SkillEffect(SkillEffectType.MAXHP_CHANGE, skillUseInfo, healHP, false));
         }
     }
 }
