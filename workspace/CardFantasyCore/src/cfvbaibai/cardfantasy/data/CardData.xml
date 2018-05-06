@@ -1213,6 +1213,11 @@
         <Skill type="圣炎" level="0" unlock="5" />
         <Skill type="圣母咏叹调" level="0" unlock="10" />
     </Card>
+    <Card id="1638" name="圣临天使" wikiId="" race="王国" speed="3" star="5" cost="19" incrCost="2" at="515" hp="1650" incrAT="29" incrHP="31">
+        <Skill type="天使降临" level="0" unlock="0"  />
+        <Skill type="神圣光环" level="0" unlock="5" />
+        <Skill type="月之守护" level="0" unlock="10" />
+    </Card>
 
 
     <!-- 森林 -->
@@ -2254,6 +2259,11 @@
         <Skill type="守护" level="0" unlock="0" />
         <Skill type="转生" level="7" unlock="5" />
         <Skill type="页游星之所在" level="0" unlock="10" summon="true" />
+    </Card>
+    <Card id="2618" name="原星之守护者" wikiId="" race="森林" speed="3" star="5" cost="18" incrCost="1" at="350" hp="1580" incrAT="37" incrHP="30">
+        <Skill type="守护" level="0" unlock="0" />
+        <Skill type="转生" level="7" unlock="5" />
+        <Skill type="原星之所在" level="0" unlock="10" summon="true" />
     </Card>
 
 
@@ -3320,6 +3330,11 @@
         <Skill type="崩坏" level="0" unlock="5"/>
         <Skill type="武形秘法" level="0" unlock="10" />
         <Skill type="战争怒吼" level="0" unlock="10" />
+    </Card>
+    <Card id="3613" name="原金牛座" wikiId="" race="蛮荒" speed="4" star="5" cost="17" incrCost="2" at="420" hp="1500" incrAT="40" incrHP="30">
+        <Skill type="山崩" level="0" unlock="0" summon="true"/>
+        <Skill type="全体阻碍" level="1" unlock="5" death="true"/>
+        <Skill type="不屈" level="0" unlock="10" />
     </Card>
 
 
@@ -4404,6 +4419,11 @@
         <Skill type="禁术召唤" level="0" unlock="0" />
         <Skill type="神魔之甲" level="0" unlock="5" />
         <Skill type="神威" level="0" unlock="10" />
+    </Card>
+    <Card id="4618" name="梦魇小丑" wikiId="" race="地狱" speed="2" star="5" cost="15" incrCost="2" at="450" hp="1310" incrAT="26" incrHP="29">
+        <Skill type="噩梦马戏团" level="0" unlock="0" />
+        <Skill type="振奋" level="6" unlock="5" />
+        <Skill type="自爆" level="10" unlock="10" />
     </Card>
 
 

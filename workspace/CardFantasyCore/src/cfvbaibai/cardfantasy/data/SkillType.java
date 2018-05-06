@@ -536,6 +536,8 @@ public enum SkillType {
     魔化冥蝶("", 0, 0, SkillTag.召唤),
     原素召唤("", 0, 0, SkillTag.召唤),
     页游星之所在("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
+    噩梦马戏团("", 0, 0, SkillTag.召唤),
+    原星之所在("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
 
     //生成卡牌置入战场
     蜀国英魂("", 2, 0,SkillTag.抗夺魂),
@@ -655,6 +657,7 @@ public enum SkillType {
     弑主("", SkillType.弑主之血,0,SkillType.弑主攻击,0,SkillTag.永久, SkillTag.基础攻击加成),
 
 
+
     新生("",0,0,SkillTag.新生),
 
     司命("",100,0),
@@ -677,6 +680,7 @@ public enum SkillType {
     顽石契约("",SkillType.钢铁之肤,4,null,0),
     碎冰成雪("",SkillType.冰甲,8,null,0),
     质能展开("",SkillType.精神狂乱,0,null,0),
+    神圣光环("",SkillType.魔甲,4,null,0),
 
     //攻击对方全体
     一文字("", 0),
@@ -737,6 +741,9 @@ public enum SkillType {
 
     弱者溃散("",0),
     崩坏("",0),
+    山崩("",0),
+    神圣放逐("",0),
+    天使降临("", SkillType.灵魂消散,0,SkillType.神圣放逐,0),
     //连携技能
     流光回梦("",SkillType.脱困,0,SkillType.圣盾,0),
     魏国英魂("",2,0,SkillType.神兵召唤,0,SkillType.连击,0),//生成卡牌，连携
@@ -779,7 +786,6 @@ public enum SkillType {
     // 待更新列表：
     变身("", 0),
     卖萌("", 0),
-    山崩("", 0),
     幻梦之击("", 0),
     技能格挡("", 0),
     攻击提升("", 0),
