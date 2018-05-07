@@ -5,6 +5,7 @@ import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.data.SkillTag;
 import cfvbaibai.cardfantasy.engine.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import cfvbaibai.cardfantasy.GameUI;
 import cfvbaibai.cardfantasy.Randomizer;
@@ -20,18 +21,23 @@ public class NewBorn {
         resolver.getStage().getUI().useSkill(card, skill, true);
         Field field = card.getOwner().getField();
         List<CardInfo> frontCards = resolver.getFrontCards(field, card.getPosition());
-        for(CardInfo victim : frontCards)
-        {
-            if(victim.containsAllUsableSkillsWithTag(SkillTag.新生))
-            {
-                frontCards.remove(victim);
-            }
-        }
-        if(frontCards.size()==0)
+        List<CardInfo> selectFrontCards =  new ArrayList<CardInfo>();;
+        if(frontCards.size()<=0)
         {
             return;
         }
-        List<CardInfo> victims = random.pickRandom(frontCards , victimCount, true, null);
+        for(CardInfo victim : frontCards)
+        {
+            if(!victim.containsAllUsableSkillsWithTag(SkillTag.新生))
+            {
+                selectFrontCards.add(victim);
+            }
+        }
+        if(selectFrontCards.size()==0)
+        {
+            return;
+        }
+        List<CardInfo> victims = random.pickRandom(selectFrontCards , victimCount, true, null);
         GameUI ui = resolver.getStage().getUI();
 
         for (CardInfo victim : victims) {
