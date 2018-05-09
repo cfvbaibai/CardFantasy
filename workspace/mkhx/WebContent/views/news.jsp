@@ -38,6 +38,9 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2018-05-07: <x>欢笑，波波</x><ul>
+                        <li>修复多个【新生】卡牌时产生的一个BUG。</li>
+                    </ul></li>
                     <li>2018-05-06: <x>欢笑，波波</x><ul>
                         <li>添加卡牌【梦魇小丑】，【圣临天使】</li>
                         <li>觉醒n区卡牌【金牛座】为【原金牛座】，改动n区卡牌【星之守护者】为【原星之守护者】</li>
