@@ -1070,7 +1070,8 @@ public class SkillResolver {
                 {
                     stage.getUI().attackBlocked(attacker, defender, attackSkill, null);
                 }
-            } else if(result.isAttackable()){
+            }
+            if(result.isAttackable()){
                 if (CounterMagic.apply(this, attackSkill, attacker, defender)) {
                     result.setAttackable(false);
                     return result;
@@ -1514,10 +1515,10 @@ public class SkillResolver {
                 TsubameGaeshi.apply(null, rune.getSkill(), this, opponent, deadCard);
             }
         }
-        if (deadCard.getStatus().containsStatus(CardStatusType.死印)) {
+        if (deadCard.getStatus().containsStatus(CardStatusType.死印)&&deadCard.isDead()) {
             DeathMark.explode(this, deadCard, result);
         }
-        if (deadCard.getStatus().containsStatus(CardStatusType.死咒)) {
+        if (deadCard.getStatus().containsStatus(CardStatusType.死咒)&&deadCard.isDead()) {
             ControlGhost.explode(this, deadCard, result,"摄魂","噬血","贪魔","夺魄");
         }
         // HACKHACK: Cannot find better way to handle 不屈/

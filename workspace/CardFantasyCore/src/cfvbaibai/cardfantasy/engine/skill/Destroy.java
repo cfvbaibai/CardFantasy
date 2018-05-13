@@ -32,7 +32,7 @@ public final class Destroy {
         for (CardInfo victim : victims) {
             OnAttackBlockingResult result = resolver.resolveAttackBlockingSkills(attacker, victim, cardSkill, 1);
             if (!result.isAttackable()) {
-                return;
+               continue;
             }
             ui.killCard(attacker, victim, cardSkill);
             victim.removeStatus(CardStatusType.不屈);
