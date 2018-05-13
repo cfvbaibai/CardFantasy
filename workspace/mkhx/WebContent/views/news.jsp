@@ -38,6 +38,10 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2018-05-13: <x>欢笑，波波</x><ul>
+                        <li>修复【降临】【死契】技能无视【免疫】【种族特效】等技能的BUG</li>
+                        <li>修复【制裁之拳】技能遇见对手【不动】【免疫】技能时停止的bug</li>
+                    </ul></li>
                     <li>2018-05-07: <x>欢笑，波波</x><ul>
                         <li>修复多个【新生】卡牌时产生的一个BUG。</li>
                     </ul></li>
