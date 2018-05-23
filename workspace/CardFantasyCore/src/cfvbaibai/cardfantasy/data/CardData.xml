@@ -2260,7 +2260,7 @@
         <Skill type="转生" level="7" unlock="5" />
         <Skill type="页游星之所在" level="0" unlock="10" summon="true" />
     </Card>
-    <Card id="2618" name="261" wikiId="" race="森林" speed="3" star="5" cost="18" incrCost="1" at="350" hp="1580" incrAT="37" incrHP="30">
+    <Card id="2618" name="原星之守护者" wikiId="" race="森林" speed="3" star="5" cost="18" incrCost="1" at="350" hp="1580" incrAT="37" incrHP="30">
         <Skill type="守护" level="0" unlock="0" />
         <Skill type="转生" level="7" unlock="5" />
         <Skill type="原星之所在" level="0" unlock="10" summon="true" />
