@@ -15,6 +15,10 @@ public final class HolyFire {
         if (defender.getGrave().size() == 0) {
             return;
         }
+        if(!resolver.resolveStopHolyFire(defender))
+        {
+            return;
+        }
         GameUI ui = resolver.getStage().getUI();
         List<CardInfo> candidates = new ArrayList<CardInfo>();
         for (CardInfo deadCard : defender.getGrave().toList()) {

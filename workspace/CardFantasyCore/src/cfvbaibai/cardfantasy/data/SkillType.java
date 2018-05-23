@@ -125,6 +125,8 @@ public enum SkillType {
     化学风暴("", 700, 0, 50, 0, SkillTag.魔法),
     凤鸣("",500,0,SkillTag.魔法),
     流火("", 300,0,900,0, SkillTag.魔法),
+    凰火("", 300,0,700,0, SkillTag.魔法),
+    凰鸣("",1200,0,SkillTag.魔法),
 
     淬毒手里剑("", 300, 0, 150, 0, SkillTag.魔法),
     熔魂之刃("", 300, 0, 150, 0, SkillTag.魔法),
@@ -260,6 +262,7 @@ public enum SkillType {
     寒冰之盾("", 100, 0,SkillTag.控制, SkillTag.抗免疫, SkillTag.魔王无效,SkillTag.物理护甲, SkillTag.魔族天赋),
     神魔之甲("", 60, 0, 110, 0, SkillTag.物理护甲),
     金属装甲("", 10),
+    物理免疫("",100,0),
     冰神附体("", 140, 0, SkillTag.物理护甲),
     水流护甲("", 650, -50, 0, 50),
     水流壁("", 650, -50, 0, 50,SkillTag.不动),
@@ -360,6 +363,7 @@ public enum SkillType {
     瓦解("", 0, SkillTag.即死, SkillTag.抗不屈),
     冥府之召("",75,0,570,0, SkillTag.魔法),
     死亡宣告("",100,0,700,0, SkillTag.魔法),
+    烈焰审判("",70,0,700,0, SkillTag.魔法),
 
 
     炼金失败("",0,SkillTag.复活),
@@ -387,7 +391,6 @@ public enum SkillType {
     加速("57019", 0, 1),
     全体加速("56751", 0, 1),
     神行术("", 1, 0,SkillTag.不动),
-    冥域牢囚("", 1, 0),
 
     净化("31160", 0),
     净魂领域("", 0),
@@ -655,10 +658,15 @@ public enum SkillType {
     幻音("", SkillType.魅惑之舞,6,SkillType.净魂领域,0),
     觉醒极寒("", SkillType.寒霜冲击,8,SkillType.极寒冲击,0),
     弑主("", SkillType.弑主之血,0,SkillType.弑主攻击,0,SkillTag.永久, SkillTag.基础攻击加成),
+    逆羽罡风("", SkillType.烈焰审判,0,SkillType.归魂,1),
+    凤凰业火("", SkillType.凰火,0,SkillType.凰鸣,0),
+    浴火("", SkillType.凤凰业火,0,SkillType.圣母回声,0),
+    妖力侵蚀("", SkillType.雷霆一击,9,SkillType.夺魂,1,SkillTag.抗夺魂),
+    蝶语("", SkillType.魅惑之舞,8,SkillType.转生,7,SkillTag.不动),
+    蝶息("", SkillType.不屈,0,SkillType.全体加速,1,SkillTag.不动),
 
-
-
-    新生("",0,0,SkillTag.新生),
+    新生("",0,0,SkillTag.新生,SkillTag.抗夺魂),
+    重整("",0,0,SkillTag.新生,SkillTag.抗夺魂),
 
     司命("",100,0),
     不灭定律("",50,0),
@@ -731,6 +739,8 @@ public enum SkillType {
 
     //给自身场上所有卡牌添加技能除自己以外
     隐遁之术("",SkillType.无刀取,0,null,0),
+    神兵召唤光环("",SkillType.神兵召唤,0,null,0),
+    天降神兵("",SkillType.神兵召唤,0,null,0),
 
     //给对手手牌添加技能
     突突突("",SkillType.炼金失败,0,null,0,SkillTag.魔王无效, SkillTag.魔族天赋,SkillTag.抗免疫),
@@ -748,8 +758,11 @@ public enum SkillType {
     流光回梦("",SkillType.脱困,0,SkillType.圣盾,0),
     魏国英魂("",2,0,SkillType.神兵召唤,0,SkillType.连击,0),//生成卡牌，连携
     暗红魔导阵("",null,0,SkillType.连续魔法,5),
+    冥域牢囚("",1,0,SkillType.蝶语,0,SkillType.蝶息,0),
+    //连携技能
     //给除特定卡牌以外的卡牌添加技能
     卡组保护("",null,0,SkillType.不屈,0),
+
 
     //双buff
     魏之勇("", 70,0,SkillTag.抗毒刃),
@@ -774,6 +787,9 @@ public enum SkillType {
     绝对压制("",1,0,300,0,SkillTag.抗免疫, SkillTag.抗不屈, SkillTag.魔王无效, SkillTag.魔族天赋,SkillTag.基础攻击加成),
     支配亡灵("",0, SkillTag.魔王无效, SkillTag.魔族天赋,SkillTag.召唤),
     魂之枷锁("",5,0, SkillTag.抗免疫,SkillTag.魔王无效),
+
+    //防御圣炎
+    庇护("",0),
 
     // 以下全部技能皆为待更新的空技能，请在更新之后将其移动到上面适合的位置
     // 对于物品技能，请将其（按顺序）加入下面的物品技能列表，用来以后更改自动卡牌数据更新工具
