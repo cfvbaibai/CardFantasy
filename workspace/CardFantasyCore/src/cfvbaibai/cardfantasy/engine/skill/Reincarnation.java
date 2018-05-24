@@ -68,6 +68,7 @@ public final class Reincarnation {
                 hand.addCard(card);
             }
             HellPrison.apply(resolver,opponent,player);
+            HellPrison.applyCoordination(resolver,opponent);
             return true;
         }
         return false;

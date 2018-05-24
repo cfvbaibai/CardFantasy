@@ -46,7 +46,6 @@ public class NewBorn {
                     resolver.getStage().removeUsed(victimSkillUseInfo,skillUseInfo.getOwner().getOwner(),defender);
                 }
                 ui.useSkill(card, victim, skillUseInfo.getSkill(), true);
-                resolver.getStage().getUI().useSkill(card, victim, skillUseInfo.getSkill(), true);
                 if (victim.getStatus().containsStatus(CardStatusType.召唤)) {
                     resolver.killCard(card,victim,skill);//改为杀死卡进入墓地
                  //   resolver.resolveDeathSkills(card,victim,skillUseInfo.getSkill(),result);//新生可以发动死契

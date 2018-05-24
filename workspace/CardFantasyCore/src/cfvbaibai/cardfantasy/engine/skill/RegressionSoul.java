@@ -48,5 +48,6 @@ public final class RegressionSoul {
             }
         }
         HellPrison.apply(resolver,opponent,player);
+        HellPrison.applyCoordination(resolver,opponent);
     }
 }

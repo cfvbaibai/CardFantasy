@@ -380,7 +380,7 @@ public class BattleEngine {
 
             if (!underControl) {
                 // 回春
-                resolver.resolveCardRoundEndingSkills(myField.getCard(i));
+                resolver.resolveCardRoundEndingSkills(myField.getCard(i), getInactivePlayer());
             }
 
             // 解除状态

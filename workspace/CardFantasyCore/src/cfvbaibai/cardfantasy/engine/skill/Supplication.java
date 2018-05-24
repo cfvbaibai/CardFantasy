@@ -40,5 +40,6 @@ public final class Supplication {
             resolver.resolvePrecastSkills(addcard,defender,false);
         }
         HellPrison.apply(resolver,defender,player);
+        HellPrison.applyCoordination(resolver,defender);
     }
 }
