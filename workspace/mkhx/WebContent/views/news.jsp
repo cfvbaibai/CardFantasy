@@ -38,6 +38,12 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2018-06-05: <x>欢笑，波波</x><ul>
+                        <li>优化【夺魂】的判断，莉莉丝的【夺魂】【召唤】技能不在进行hack,而是放在【莉莉丝】模块进行处理</li>
+                        <li>修改【重整】技能不能重置限定技能</li>
+                        <li>修改【时光倒流】技能可以对魔族生效</li>
+                        <li>添加生命值(?HP)，攻击力(?AT)设定（例子：三国英魂孟德+星云锁链*2?HP300?AT200）（按照先HP后AT）</li>
+                    </ul></li>
                     <li>2018-05-23: <x>欢笑，波波</x><ul>
                         <li>更新新卡【大天狗】，【圣殿守护者】</li>
                         <li>补齐部分卡牌卡图</li>

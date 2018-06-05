@@ -21,9 +21,10 @@ public class Reforming {
         Skill skill = skillUseInfo.getSkill();
         resolver.getStage().getUI().useSkill(card, skill, true);
         GameUI ui = resolver.getStage().getUI();
-        for (SkillUseInfo victimSkillUseInfo : card.getAllUsableSkillsIgnoreSilence()) {
-            resolver.getStage().removeUsed(victimSkillUseInfo,skillUseInfo.getOwner().getOwner(),defender);
-        }
+        //重整不重置限定技能
+//        for (SkillUseInfo victimSkillUseInfo : card.getAllUsableSkillsIgnoreSilence()) {
+//            resolver.getStage().removeUsed(victimSkillUseInfo,skillUseInfo.getOwner().getOwner(),defender);
+//        }
         ui.useSkill(card, card, skillUseInfo.getSkill(), true);
         Player attackPlayer = card.getOwner();
         resolver.killCard(card,card,skill);//改为杀死卡进入墓地

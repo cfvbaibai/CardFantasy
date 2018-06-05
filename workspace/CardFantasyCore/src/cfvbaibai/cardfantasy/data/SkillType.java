@@ -439,7 +439,7 @@ public enum SkillType {
     不屈("56962", 0, 0),
     怨起("", 3, 0),
     空城("",0,0),
-    时光倒流("80196", 0, 0, SkillTag.抗免疫, SkillTag.魔王无效, SkillTag.魔族天赋),
+    时光倒流("80196", 0, 0, SkillTag.抗免疫, SkillTag.魔王无效),
     时间溯行("", 0, 0, SkillTag.即死, SkillTag.魔王无效, SkillTag.魔族天赋),
     决胜时刻("", 0, 0, SkillTag.即死, SkillTag.魔王无效, SkillTag.魔族天赋),
     死亡印记("56754", 0, 50, SkillTag.魔王无效),
