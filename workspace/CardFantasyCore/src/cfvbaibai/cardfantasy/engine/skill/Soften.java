@@ -15,11 +15,11 @@ import cfvbaibai.cardfantasy.engine.SkillUseInfo;
 
 public class Soften {
     public static void apply(SkillUseInfo skillUseInfo, SkillResolver resolver, EntityInfo attacker, Player defender, int victimCount)
-        throws HeroDieSignal {
+            throws HeroDieSignal {
         Skill skill = skillUseInfo.getSkill();
 
         List<CardInfo> victims = resolver.getStage().getRandomizer().pickRandom(
-            defender.getField().toList(), victimCount, true, null);
+                defender.getField().toList(), victimCount, true, null);
         GameUI ui = resolver.getStage().getUI();
         ui.useSkill(attacker, victims, skill, true);
 
@@ -28,17 +28,59 @@ public class Soften {
         }
 
         for (CardInfo victim : victims) {
-        List<CardStatusItem> items = victim.getStatus().getStatusOf(CardStatusType.弱化);
+            List<CardStatusItem> items = victim.getStatus().getStatusOf(CardStatusType.弱化);
+            boolean flag = false;
             for (int i = 0; i < items.size(); ++i) {
                 if (items.get(i).getCause() == skillUseInfo) {
-                    continue;
+                    flag = true;
+                    break;
                 }
+            }
+            if (flag) {
+                continue;
             }
 
             if (!resolver.resolveAttackBlockingSkills(attacker, victim, skill, 1).isAttackable()) {
                 continue;
             }
-    
+            int magicEchoSkillResult = resolver.resolveMagicEchoSkill(attacker, victim, skill);
+            if (magicEchoSkillResult == 1 || magicEchoSkillResult == 2) {
+                if (attacker instanceof CardInfo) {
+                    CardInfo attackCard = (CardInfo) attacker;
+                    if (attackCard.isDead()) {
+                        if (magicEchoSkillResult == 1) {
+                            continue;
+                        }
+                    } else {
+                        List<CardStatusItem> items2 = attackCard.getStatus().getStatusOf(CardStatusType.弱化);
+                        boolean flag2 = false;
+                        for (int i = 0; i < items2.size(); ++i) {
+                            if (items2.get(i).getCause() == skillUseInfo) {
+                                flag2=true;
+                                break;
+                            }
+                        }
+                        if (flag2) {
+                            if (magicEchoSkillResult == 1) {
+                                continue;
+                            }
+                        } else {
+                            if (!resolver.resolveAttackBlockingSkills(victim, attackCard, skill, 1).isAttackable()) {
+                                if (magicEchoSkillResult == 1) {
+                                    continue;
+                                }
+                            } else {
+                                CardStatusItem status = CardStatusItem.softened(skillUseInfo);
+                                ui.addCardStatus(victim, attackCard, skill, status);
+                                attackCard.addStatus(status);
+                            }
+                        }
+                    }
+                }
+                if (magicEchoSkillResult == 1) {
+                    continue;
+                }
+            }
             CardStatusItem status = CardStatusItem.softened(skillUseInfo);
             ui.addCardStatus(attacker, victim, skill, status);
             victim.addStatus(status);

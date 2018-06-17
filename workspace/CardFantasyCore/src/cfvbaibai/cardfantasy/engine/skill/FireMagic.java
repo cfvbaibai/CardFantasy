@@ -28,10 +28,34 @@ public final class FireMagic {
             if (!result.isAttackable()) {
                 continue;
             }
-            damage = result.getDamage();
-            if (attacker instanceof CardInfo) {
-                resolver.resolveCounterAttackSkills((CardInfo)attacker, victim, cardSkill, result, null);
+            int magicEchoSkillResult = resolver.resolveMagicEchoSkill(attacker, victim, cardSkill);
+            if (magicEchoSkillResult==1||magicEchoSkillResult==2) {
+                if (attacker instanceof CardInfo) {
+                    CardInfo attackCard =  (CardInfo)attacker;
+                    if(attackCard.isDead())
+                    {
+                        if (magicEchoSkillResult == 1) {
+                            continue;
+                        }
+                    } else {
+                        OnAttackBlockingResult result2 = resolver.resolveAttackBlockingSkills(victim, attackCard, cardSkill, damage);
+                        int damage2 = result2.getDamage();
+                        if (!result2.isAttackable()) {
+                            if (magicEchoSkillResult == 1) {
+                                continue;
+                            }
+                        }
+                        else {
+                            ui.attackCard(victim, attackCard, cardSkill, damage2);
+                            resolver.resolveDeathSkills(victim, attackCard, cardSkill, resolver.applyDamage(victim, attackCard, cardSkill, damage2));
+                        }
+                    }
+                }
+                if (magicEchoSkillResult == 1) {
+                    continue;
+                }
             }
+            damage = result.getDamage();
             ui.attackCard(attacker, victim, cardSkill, damage);
             resolver.resolveDeathSkills(attacker, victim, cardSkill, resolver.applyDamage(attacker, victim, cardSkill, damage));
         }

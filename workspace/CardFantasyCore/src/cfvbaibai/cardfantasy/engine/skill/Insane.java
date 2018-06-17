@@ -24,6 +24,53 @@ public final class Insane {
             if(victim.isDead()||victim.getStatus().containsStatus(CardStatusType.不屈)) {
                 continue;
             }
+            int magicEchoSkillResult = resolver.resolveMagicEchoSkill(attacker, victim, skill);
+            if (magicEchoSkillResult==1||magicEchoSkillResult==2) {
+                if(attacker.isDead())
+                {
+                    if (magicEchoSkillResult == 1) {
+                        continue;
+                    }
+                }
+                else{
+                    if (!resolver.resolveAttackBlockingSkills(victim, attacker, skill, 1).isAttackable()) {
+                        if (magicEchoSkillResult == 1) {
+                            continue;
+                        }
+                    }
+                    else if(attacker.isDead()||attacker.getStatus().containsStatus(CardStatusType.不屈)) {
+                        if (magicEchoSkillResult == 1) {
+                            continue;
+                        }
+                    }
+                    else {
+                        List<CardInfo> cardsAttackedByAttacker = resolver.getCardsOnSides(
+                                attacker.getOwner().getField(), attacker.getPosition());
+
+                        if (cardsAttackedByAttacker.size() == 0) {
+                            // Only victim itself is counted. No other cards around it. No effect.
+                            if (magicEchoSkillResult == 1) {
+                                continue;
+                            }
+                        }
+                        else {
+                            ui.useSkill(attacker, cardsAttackedByAttacker, null, true);
+                            if (multiple == 0) {
+                                multiple = skill.getImpact();
+                            }
+                            int damage2 = attacker.getLevel1AT() * multiple / 100;
+                            for (CardInfo cardAttackedByAttacker : cardsAttackedByAttacker) {
+                                ui.attackCard(attacker, cardAttackedByAttacker, null, damage2);
+                                resolver.resolveDeathSkills(attacker, cardAttackedByAttacker, skill,
+                                        resolver.applyDamage(attacker, cardAttackedByAttacker, null, damage2));
+                            }
+                        }
+                    }
+                }
+                if (magicEchoSkillResult == 1) {
+                    continue;
+                }
+            }
             List<CardInfo> cardsAttackedByVictim = resolver.getCardsOnSides(
                 victim.getOwner().getField(), victim.getPosition());
 

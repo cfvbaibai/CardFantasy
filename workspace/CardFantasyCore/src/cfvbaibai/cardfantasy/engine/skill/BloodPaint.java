@@ -26,6 +26,32 @@ public final class BloodPaint {
                 }
                 continue;
             }
+            int magicEchoSkillResult = resolver.resolveMagicEchoSkill(attacker, victim, cardSkill);
+            if (magicEchoSkillResult == 1 || magicEchoSkillResult == 2) {
+                if(attacker.isDead())
+                {
+                    if (magicEchoSkillResult == 1) {
+                        continue;
+                    }
+                }
+                else{
+                    OnAttackBlockingResult onAttackBlockingResult2 = resolver.resolveAttackBlockingSkills(victim, attacker, cardSkill, damage);
+                    if (!onAttackBlockingResult2.isAttackable()) {
+                        continue;
+                    }
+                    else {
+                        int actualDamage2 = onAttackBlockingResult2.getDamage();
+                        ui.attackCard(victim, attacker, cardSkill, actualDamage2);
+                        OnDamagedResult onDamagedResult2 = resolver.applyDamage(victim, attacker, cardSkill, actualDamage2);
+                        ui.healCard(victim, victim, cardSkill, actualDamage2);
+                        resolver.applyDamage(victim, attacker, cardSkill, -actualDamage2);
+                        resolver.resolveDeathSkills(victim, attacker, cardSkill, onDamagedResult2);
+                    }
+                }
+                if (magicEchoSkillResult == 1) {
+                    continue;
+                }
+            }
             int actualDamage = onAttackBlockingResult.getDamage(); 
             ui.attackCard(attacker, victim, cardSkill, actualDamage);
             OnDamagedResult onDamagedResult = resolver.applyDamage(attacker, victim, cardSkill, actualDamage);

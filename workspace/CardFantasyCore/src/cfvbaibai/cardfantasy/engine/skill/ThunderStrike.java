@@ -26,6 +26,49 @@ public final  class ThunderStrike {
             if (!result.isAttackable()) {
                 continue;
             }
+            int magicEchoSkillResult = resolver.resolveMagicEchoSkill(attacker, victim, skill);
+            if (magicEchoSkillResult==1||magicEchoSkillResult==2) {
+                if (attacker instanceof CardInfo) {
+                    CardInfo attackCard = (CardInfo) attacker;
+                    if (attackCard.isDead()) {
+                        if (magicEchoSkillResult == 1) {
+                            continue;
+                        }
+                    }
+                    else {
+                        int damage2 = damage;
+                        OnAttackBlockingResult result2 = resolver.resolveAttackBlockingSkills(victim, attackCard, skillUseInfo.getSkill(), damage2);
+                        if (!result2.isAttackable()){
+                            if (magicEchoSkillResult == 1) {
+                                continue;
+                            }
+                        }
+                        else{
+                            int actualDamage2 = result2.getDamage();
+                            if (attackCard.containsAllSkill(SkillType.免疫)|| attackCard.containsAllSkill(SkillType.结界立场)|| attackCard.containsAllSkill(SkillType.影青龙)|| attackCard.containsAllSkill(SkillType.恶龙血脉)|| attackCard.containsAllSkill(SkillType.魔力抗性) || CounterMagic.getBlockSkill(attackCard) != null) {
+                                if(actualDamage2>=damage2)
+                                {
+                                    actualDamage2 *= magnifier;
+                                }
+                            } else {
+                                if (resolver.getStage().getRandomizer().roll100(rate)) {
+                                    CardStatusItem status = CardStatusItem.paralyzed(skillUseInfo);
+                                    if (!resolver.resolveBlockStatusSkills(victim, attackCard, skillUseInfo, status).isBlocked()) {
+                                        ui.addCardStatus(victim, attackCard, skill, status);
+                                        attackCard.addStatus(status);
+                                    }
+                                }
+                            }
+                            ui.attackCard(victim, attackCard, skill, damage2);
+                            resolver.resolveDeathSkills(victim, attackCard, skill,
+                                    resolver.applyDamage(victim, attackCard, skill, actualDamage2));
+                        }
+                    }
+                }
+                if (magicEchoSkillResult == 1) {
+                    continue;
+                }
+            }
             int actualDamage = result.getDamage();
             if (victim.containsAllSkill(SkillType.免疫)|| victim.containsAllSkill(SkillType.结界立场)|| victim.containsAllSkill(SkillType.影青龙)|| victim.containsAllSkill(SkillType.恶龙血脉) || victim.containsAllSkill(SkillType.魔力抗性)|| CounterMagic.getBlockSkill(victim) != null) {
                 if(actualDamage>=damage)

@@ -38,6 +38,9 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2018-06-10: <x>欢笑，波波</x><ul>
+                        <li>去除魔法技能对物理反击类技能的判断</li>
+                    </ul></li>
                     <li>2018-06-05: <x>欢笑，波波</x><ul>
                         <li>优化【夺魂】的判断，莉莉丝的【夺魂】【召唤】技能不在进行hack,而是放在【莉莉丝】模块进行处理</li>
                         <li>修改【重整】技能不能重置限定技能</li>

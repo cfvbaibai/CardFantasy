@@ -19,18 +19,38 @@ public class Blind {
         GameUI ui = resolver.getStage().getUI();
         Skill skill = skillUseInfo.getSkill();
         Randomizer random = resolver.getStage().getRandomizer();
-        List<CardInfo> victims = random.pickRandom(enemyHero.getField().toList(), victimCount, true, null); 
+        List<CardInfo> victims = random.pickRandom(enemyHero.getField().toList(), victimCount, true, null);
         ui.useSkill(caster, victims, skill, true);
         for (CardInfo victim : victims) {
             CardStatusItem statusItem = CardStatusItem.blind(skillUseInfo);
             if (!resolver.resolveAttackBlockingSkills(caster, victim, skill, 1).isAttackable()) {
                 return;
             }
+            int magicEchoSkillResult = resolver.resolveMagicEchoSkill(caster, victim, skill);
+            if (magicEchoSkillResult == 1 || magicEchoSkillResult == 2) {
+                if (caster.isDead()) {
+                    if (magicEchoSkillResult == 1) {
+                        continue;
+                    }
+                } else {
+                    if (!resolver.resolveAttackBlockingSkills(victim, caster, skill, 1).isAttackable()) {
+                        if (magicEchoSkillResult == 1) {
+                            continue;
+                        }
+                    } else {
+                        ui.addCardStatus(victim, caster, skill, statusItem);
+                        caster.addStatus(statusItem);
+                    }
+                }
+                if (magicEchoSkillResult == 1) {
+                    continue;
+                }
+            }
             ui.addCardStatus(caster, victim, skill, statusItem);
             victim.addStatus(statusItem);
         }
     }
-    
+
     public static Skill getDodgeSkill(List<CardStatusItem> statusItems) {
         int dodgeLevel = -1;
         for (CardStatusItem statusItem : statusItems) {

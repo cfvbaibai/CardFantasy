@@ -53,6 +53,33 @@ public class GiantEarthquakesLandslides {
             if (effectCard.containsAllSkill(SkillType.免疫)|| effectCard.containsAllSkill(SkillType.结界立场)|| effectCard.containsAllSkill(SkillType.影青龙)|| effectCard.containsAllSkill(SkillType.恶龙血脉) || effectCard.containsAllSkill(SkillType.魔力抗性)) {
                 continue;
             }
+            int magicEchoSkillResult = resolver.resolveMagicEchoSkill(attacker, effectCard, cardSkill);
+            if (magicEchoSkillResult == 1 || magicEchoSkillResult == 2) {
+                if (attacker.isDead()) {
+                    if (magicEchoSkillResult == 1) {
+                        continue;
+                    }
+                } else {
+                    if (attacker.containsAllSkill(SkillType.免疫)|| attacker.containsAllSkill(SkillType.结界立场)|| attacker.containsAllSkill(SkillType.影青龙)|| attacker.containsAllSkill(SkillType.恶龙血脉) || attacker.containsAllSkill(SkillType.魔力抗性)) {
+                        if (magicEchoSkillResult == 1) {
+                            continue;
+                        }
+                    }
+                    else if(!attacker.containsUsableSkillsWithTag(SkillTag.不动))
+                    {
+                        if (magicEchoSkillResult == 1) {
+                            continue;
+                        }
+                    }
+                    else {
+                        ui.useSkill(effectCard, attacker, cardSkill, true);
+                        Return.returnCard2(resolver, cardSkill, effectCard, attacker, true);
+                    }
+                }
+                if (magicEchoSkillResult == 1) {
+                    continue;
+                }
+            }
             ui.useSkill(attacker, effectCard, cardSkill, true);
             Return.returnCard2(resolver, cardSkill, attacker, effectCard,true);
         }

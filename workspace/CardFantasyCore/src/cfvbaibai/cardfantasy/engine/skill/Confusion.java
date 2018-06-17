@@ -29,6 +29,35 @@ public final class Confusion {
             if (!resolver.resolveAttackBlockingSkills(attacker, victim, skill, 1).isAttackable()) {
                 continue;
             }
+            int magicEchoSkillResult = resolver.resolveMagicEchoSkill(attacker, victim, skill);
+            if (magicEchoSkillResult==1||magicEchoSkillResult==2) {
+                if(attacker.isDead())
+                {
+                    if (magicEchoSkillResult == 1) {
+                        continue;
+                    }
+                }
+                else{
+                    if (!resolver.resolveAttackBlockingSkills(victim, attacker, skill, 1).isAttackable()) {
+                        if (magicEchoSkillResult == 1) {
+                            continue;
+                        }
+                    }
+                    else if (attacker.getStatus().containsStatus(CardStatusType.迷惑)) {
+                        if (magicEchoSkillResult == 1) {
+                            continue;
+                        }
+                    }
+                    else if (random.roll100(rate)) {
+                        CardStatusItem status = CardStatusItem.confused(skillUseInfo);
+                        ui.addCardStatus(victim, attacker, skill, status);
+                        attacker.addStatus(status);
+                    }
+                }
+                if (magicEchoSkillResult == 1) {
+                    continue;
+                }
+            }
             if (victim.getStatus().containsStatus(CardStatusType.迷惑)) {
                 continue;
             }

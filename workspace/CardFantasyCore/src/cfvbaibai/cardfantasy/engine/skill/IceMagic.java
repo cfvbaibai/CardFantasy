@@ -33,6 +33,41 @@ public final class IceMagic {
             if (!onAttackBlockingResult.isAttackable()) {
                 continue;
             }
+            int magicEchoSkillResult = resolver.resolveMagicEchoSkill(attacker, victim, skill);
+            if (magicEchoSkillResult==1||magicEchoSkillResult==2) {
+                if (attacker instanceof CardInfo) {
+                    CardInfo attackCard =  (CardInfo)attacker;
+                    if(attackCard.isDead())
+                    {
+                        if (magicEchoSkillResult == 1) {
+                            continue;
+                        }
+                    }
+                    else {
+                        OnAttackBlockingResult result2 = resolver.resolveAttackBlockingSkills(victim, attackCard, skill, damage);
+                        int damage2 = result2.getDamage();
+                        if (!result2.isAttackable()) {
+                            if (magicEchoSkillResult == 1) {
+                                continue;
+                            }
+                        }
+                        else {
+                            if (resolver.getStage().getRandomizer().roll100(rate)) {
+                                CardStatusItem status = CardStatusItem.frozen(skillUseInfo);
+                                if (!resolver.resolveBlockStatusSkills(victim, attackCard, skillUseInfo, status).isBlocked()) {
+                                    ui.addCardStatus(victim, attackCard, skill, status);
+                                    attackCard.addStatus(status);
+                                }
+                            }
+                            ui.attackCard(victim, attackCard, skill, damage2);
+                            resolver.resolveDeathSkills(victim, attackCard, skill, resolver.applyDamage(victim, attackCard, skill, damage2));
+                        }
+                    }
+                }
+                if (magicEchoSkillResult == 1) {
+                    continue;
+                }
+            }
             if (resolver.getStage().getRandomizer().roll100(rate)) {
                 CardStatusItem status = CardStatusItem.frozen(skillUseInfo);
                 if (!resolver.resolveBlockStatusSkills(attacker, victim, skillUseInfo, status).isBlocked()) {
@@ -43,9 +78,6 @@ public final class IceMagic {
             damage = onAttackBlockingResult.getDamage();
             ui.attackCard(attacker, victim, skill, damage);
             OnDamagedResult onDamagedResult = resolver.applyDamage(attacker, victim, skill, damage);
-            if (attacker instanceof CardInfo) {
-                resolver.resolveCounterAttackSkills((CardInfo)attacker, victim, skill, onAttackBlockingResult, null);
-            }
             resolver.resolveDeathSkills(attacker, victim, skill, onDamagedResult);
         }
     }

@@ -25,6 +25,30 @@ public final class Seal {
             if (!resolver.resolveAttackBlockingSkills(attacker, victim, skill, 1).isAttackable()) {
                 continue;
             }
+            int magicEchoSkillResult = resolver.resolveMagicEchoSkill(attacker, victim, skill);
+            if (magicEchoSkillResult==1||magicEchoSkillResult==2) {
+                if(attacker.isDead())
+                {
+                    if (magicEchoSkillResult == 1) {
+                        continue;
+                    }
+                }
+                else{
+                    if (!resolver.resolveAttackBlockingSkills(victim, attacker, skill, 1).isAttackable()) {
+                        if (magicEchoSkillResult == 1) {
+                            continue;
+                        }
+                    }
+                    else {
+                        CardStatusItem status = CardStatusItem.trapped(skillUseInfo);
+                        ui.addCardStatus(victim, attacker, skill, status);
+                        attacker.addStatus(status);
+                    }
+                }
+                if (magicEchoSkillResult == 1) {
+                    continue;
+                }
+            }
             CardStatusItem status = CardStatusItem.trapped(skillUseInfo);
             ui.addCardStatus(attacker, victim, skill, status);
             victim.addStatus(status);

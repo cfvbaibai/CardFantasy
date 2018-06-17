@@ -2,6 +2,7 @@ package cfvbaibai.cardfantasy.engine;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
 import cfvbaibai.cardfantasy.data.*;
@@ -175,10 +176,7 @@ public class SkillResolver {
                     Cooperation.apply(this, skillUseInfo, card, "樱蝶仙子",true);
                 } else if (skillUseInfo.getType() == SkillType.重整) {
                     Reforming.reset(skillUseInfo,card);
-                }
-            }
-            for (SkillUseInfo skillUseInfo : card.getUsableNormalSkills()) {
-                if (skillUseInfo.getType() == SkillType.无刀取) {
+                } else if (skillUseInfo.getType() == SkillType.无刀取) {
                     HolyShield.resetApply(skillUseInfo, this, card);
                 }
             }
@@ -906,6 +904,50 @@ public class SkillResolver {
                 }
             }
         }
+    }
+
+    //返回int类型，0表示不反弹，1表述反弹并且不受伤害，2表示反弹受伤害
+    public int resolveMagicEchoSkill(EntityInfo attacter, CardInfo defender, Skill cardSkill) {
+        if(defender.containsAllSkill(SkillType.奥术回声))
+        {
+            if(attacter instanceof CardInfo)
+            {
+                CardInfo attacterCard = (CardInfo) attacter;
+                if(attacterCard.isDeman()||attacterCard.isBoss()) {
+                    return 2;
+                }
+                if(cardSkill.getType().containsTag(SkillTag.雷系灵轰))
+                {
+                    //暂时的处理雷系和魔族为2的处理
+                    return 2;
+                }
+                if(attacterCard.containsAllSkill(SkillType.奥术回声))
+                {
+                    return 0;
+                }
+                for(SkillUseInfo defenderSkillInfo:defender.getAllUsableSkillsInvalidSilence())
+                {
+                    if(defenderSkillInfo.getType()==SkillType.奥术回声)
+                    {
+                        stage.getUI().useSkill(defender,defenderSkillInfo.getSkill(),true);
+                        break;
+                    }
+                }
+                return 1;
+            }
+            else{
+                for(SkillUseInfo defenderSkillInfo:defender.getAllUsableSkillsInvalidSilence())
+                {
+                    if(defenderSkillInfo.getType()==SkillType.奥术回声)
+                    {
+                        stage.getUI().useSkill(defender,defenderSkillInfo.getSkill(),true);
+                        break;
+                    }
+                }
+                return 1;
+            }
+        }
+        return 0;
     }
 
     public OnAttackBlockingResult resolveHealBlockingSkills(EntityInfo healer, CardInfo healee, Skill cardSkill) {

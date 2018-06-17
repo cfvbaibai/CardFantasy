@@ -28,12 +28,43 @@ public final class PoisonMagic {
             if (!onAttackBlockingResult.isAttackable()) {
                 continue;
             }
+            int magicEchoSkillResult = resolver.resolveMagicEchoSkill(attacker, victim, skill);
+            if (magicEchoSkillResult==1||magicEchoSkillResult==2) {
+                if (attacker instanceof CardInfo) {
+                    CardInfo attackCard =  (CardInfo)attacker;
+                    if(attackCard.isDead())
+                    {
+                        if (magicEchoSkillResult == 1) {
+                            continue;
+                        }
+                    }
+                    else {
+                        OnAttackBlockingResult result2 = resolver.resolveAttackBlockingSkills(victim, attackCard, skill, damage);
+                        int damage2 = result2.getDamage();
+                        if (!result2.isAttackable()) {
+                            if (magicEchoSkillResult == 1) {
+                                continue;
+                            }
+                        }
+                        else {
+                            ui.attackCard(victim, attackCard, skill, damage2);
+                            OnDamagedResult onDamagedResult2 = resolver.applyDamage(victim, attackCard, skill, damage2);
+                            resolver.resolveDeathSkills(victim, attackCard, skill, onDamagedResult2);
+                            if (!onDamagedResult2.cardDead) {
+                                CardStatusItem status = CardStatusItem.poisoned(damage, skillUseInfo);
+                                ui.addCardStatus(victim, attackCard, skill, status);
+                                attackCard.addStatus(status);
+                            }
+                        }
+                    }
+                }
+                if (magicEchoSkillResult == 1) {
+                    continue;
+                }
+            }
             damage = onAttackBlockingResult.getDamage();
             ui.attackCard(attacker, victim, skill, damage);
             OnDamagedResult onDamagedResult = resolver.applyDamage(attacker, victim, skill, damage);
-            if (attacker instanceof CardInfo) {
-                resolver.resolveCounterAttackSkills((CardInfo)attacker, victim, skill, onAttackBlockingResult, null);
-            }
             resolver.resolveDeathSkills(attacker, victim, skill, onDamagedResult);
             if (!onDamagedResult.cardDead) {
                 CardStatusItem status = CardStatusItem.poisoned(damage, skillUseInfo);

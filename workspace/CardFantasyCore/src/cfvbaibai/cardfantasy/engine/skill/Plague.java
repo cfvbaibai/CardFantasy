@@ -29,7 +29,35 @@ public final class Plague {
             if (!blockingResult.isAttackable()) {
                 continue;
             }
-
+            int magicEchoSkillResult = resolver.resolveMagicEchoSkill(attacker, victim, skill);
+            if (magicEchoSkillResult == 1 || magicEchoSkillResult == 2) {
+                if (attacker instanceof CardInfo) {
+                    CardInfo attackCard =  (CardInfo)attacker;
+                    if(attackCard.isDead())
+                    {
+                        if (magicEchoSkillResult == 1) {
+                            continue;
+                        }
+                    }
+                    else {
+                        OnAttackBlockingResult blockingResult2 = resolver.resolveAttackBlockingSkills(victim, attackCard, skill, damage);
+                        if (!blockingResult2.isAttackable()) {
+                            if (magicEchoSkillResult == 1) {
+                                continue;
+                            }
+                        } else {
+                            ui.adjustAT(victim, attackCard, -damage, skill);
+                            attackCard.addEffect(new SkillEffect(SkillEffectType.ATTACK_CHANGE, skillUseInfo, -damage, true));
+                            ui.attackCard(victim, attackCard, skill, damage);
+                            OnDamagedResult damagedResult2 = resolver.applyDamage(victim, attackCard, skill, damage);
+                            resolver.resolveDeathSkills(victim, attackCard, skill, damagedResult2);
+                        }
+                    }
+                }
+                if (magicEchoSkillResult == 1) {
+                    continue;
+                }
+            }
             ui.adjustAT(attacker, victim, -damage, skill);
             victim.addEffect(new SkillEffect(SkillEffectType.ATTACK_CHANGE, skillUseInfo, -damage, true));
             ui.attackCard(attacker, victim, skill, damage);

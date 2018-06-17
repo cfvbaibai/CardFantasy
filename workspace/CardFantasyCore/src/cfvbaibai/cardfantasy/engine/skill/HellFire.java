@@ -36,10 +36,55 @@ public class HellFire {
             if (!result.isAttackable()) {
                 continue;
             }
-            damage2 = result.getDamage();
-            if (attacker instanceof CardInfo) {
-                resolver.resolveCounterAttackSkills((CardInfo)attacker, candidate, cardSkill, result, null);
+            int magicEchoSkillResult = resolver.resolveMagicEchoSkill(attacker, candidate, skill);
+            if (magicEchoSkillResult==1||magicEchoSkillResult==2) {
+                if (attacker instanceof CardInfo) {
+                    CardInfo attackCard = (CardInfo) attacker;
+                    if (attackCard.isDead()) {
+                        if (magicEchoSkillResult == 1) {
+                            continue;
+                        }
+                    }
+                    else {
+                        int damage3=damage2;
+                        OnAttackBlockingResult result3 = resolver.resolveAttackBlockingSkills(candidate, attackCard, skill, damage3);
+                        if (!result3.isAttackable()) {
+                            if (magicEchoSkillResult == 1) {
+                                continue;
+                            }
+                        }
+                        else{
+                            damage3 = result3.getDamage();
+                            ui.attackCard(candidate, attackCard, skill, damage2);
+                            resolver.resolveDeathSkills(candidate, attackCard, skill, resolver.applyDamage(candidate, attackCard, skill, damage2));
+                            boolean skipped2 = false;
+                            for (CardStatusItem existingBurningStatus : candidate.getStatus().getStatusOf(CardStatusType.燃烧)) {
+                                if (existingBurningStatus.getEffect() == newBurningStatus.getEffect()) {
+                                    skipped2 = true;
+                                    break;
+                                }
+                            }
+                            if (!skipped2) {
+                                if (magicEchoSkillResult == 1) {
+                                    continue;
+                                }
+                            }
+                            else{
+                                ui.useSkill(candidate, attackCard, skill, true);
+                                OnAttackBlockingResult result4 = resolver.resolveAttackBlockingSkills(candidate, attackCard, skill, damage);
+                                if (result4.isAttackable()) {
+                                    ui.addCardStatus(candidate, attackCard, skill, newBurningStatus);
+                                    attackCard.addStatus(newBurningStatus);
+                                }
+                            }
+                        }
+                    }
+                }
+                if (magicEchoSkillResult == 1) {
+                    continue;
+                }
             }
+            damage2 = result.getDamage();
             ui.attackCard(attacker, candidate, cardSkill, damage2);
             resolver.resolveDeathSkills(attacker, candidate, cardSkill, resolver.applyDamage(attacker, candidate, cardSkill, damage2));
             /*
@@ -54,7 +99,8 @@ public class HellFire {
                 }
             }
             if (!skipped) {
-                victims.add(candidate);
+//                victims.add(candidate);
+                continue;
             }
             ui.useSkill(attacker, candidate, skill, true);
             OnAttackBlockingResult result2 = resolver.resolveAttackBlockingSkills(attacker, candidate, skill, damage);

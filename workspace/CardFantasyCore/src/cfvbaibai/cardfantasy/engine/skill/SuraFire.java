@@ -19,6 +19,7 @@ public final class SuraFire {
         Skill skill = skillUseInfo.getSkill();
     
         List<CardInfo> victims = defender.getField().getAliveCards();
+        List<CardInfo> attackVictims = skillUseInfo.getOwner().getOwner().getField().getAliveCards();
         ui.useSkill(attacker, victims, skill, true);
         for (CardInfo victim : victims) {
             int damage = skill.getImpact() + skill.getImpact2() * victims.size(); 
@@ -26,10 +27,35 @@ public final class SuraFire {
             if (!result.isAttackable()) {
                 continue;
             }
-            damage = result.getDamage();
-            if (attacker instanceof CardInfo) {
-                resolver.resolveCounterAttackSkills((CardInfo)attacker, victim, skill, result, null);
+            int magicEchoSkillResult = resolver.resolveMagicEchoSkill(attacker, victim, skill);
+            if (magicEchoSkillResult==1||magicEchoSkillResult==2) {
+                if (attacker instanceof CardInfo) {
+                    CardInfo attackCard = (CardInfo) attacker;
+                    if (attackCard.isDead()) {
+                        if (magicEchoSkillResult == 1) {
+                            continue;
+                        }
+                    }
+                    else {
+                        int damage2 = skill.getImpact() + skill.getImpact2() * attackVictims.size();
+                        OnAttackBlockingResult result2 = resolver.resolveAttackBlockingSkills(victim, attackCard, skill, damage2);
+                        if (!result2.isAttackable()) {
+                            if (magicEchoSkillResult == 1) {
+                                continue;
+                            }
+                        }
+                        else{
+                            damage2 = result2.getDamage();
+                            ui.attackCard(victim, attackCard, skill, damage2);
+                            resolver.resolveDeathSkills(victim, attackCard, skill, resolver.applyDamage(victim, attackCard, skill, damage2));
+                        }
+                    }
+                }
+                if (magicEchoSkillResult == 1) {
+                    continue;
+                }
             }
+            damage = result.getDamage();
             ui.attackCard(attacker, victim, skill, damage);
             resolver.resolveDeathSkills(attacker, victim, skill, resolver.applyDamage(attacker, victim, skill, damage));
         }

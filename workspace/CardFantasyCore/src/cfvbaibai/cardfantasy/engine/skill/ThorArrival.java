@@ -39,10 +39,7 @@ public final class ThorArrival {
             damage = result.getDamage();
             ui.attackCard(attacker, victim, skill, damage);
             OnDamagedResult onDamagedResult = resolver.applyDamage(attacker, victim, skill, damage);
-            if (attacker instanceof CardInfo) {
-                resolver.resolveCounterAttackSkills((CardInfo)attacker, victim, skill, result, null);
-            }
-            resolver.resolveDeathSkills(attacker, victim, skill, onDamagedResult);       
+            resolver.resolveDeathSkills(attacker, victim, skill, onDamagedResult);
          }
     }
 }
