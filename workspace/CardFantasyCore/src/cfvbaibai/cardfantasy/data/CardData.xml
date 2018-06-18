@@ -572,10 +572,10 @@
         <Skill type="王国之力" level="7" unlock="5" />
         <Skill type="传送" level="0" unlock="10" summon="true" />
     </Card>
-    <Card id="1507" name="战场女武神" wikiId="48085" race="王国" speed="3" star="5" cost="16" incrCost="2" at="405" hp="1530" incrAT="40" incrHP="43">
-        <Skill type="横扫" level="0" unlock="0" />
+    <Card id="1507" name="战场女武神" wikiId="48085" race="王国" speed="3" star="5" cost="16" incrCost="2" at="535" hp="1650" incrAT="45" incrHP="50">
+        <Skill type="鬼彻" level="0" unlock="0" />
         <Skill type="邪灵汲取" level="7" unlock="5" />
-        <Skill type="连锁攻击" level="7" unlock="10" />
+        <Skill type="女武神之辉" level="0" unlock="10" />
     </Card>
     <Card id="150701" name="战场女武神WP" wikiId="48085" race="王国" speed="3" star="5" cost="16" incrCost="2" at="405" hp="1530" incrAT="40" incrHP="43">
         <Skill type="横扫" level="0" unlock="0" />
@@ -1217,6 +1217,11 @@
         <Skill type="天使降临" level="0" unlock="0"  />
         <Skill type="神圣光环" level="0" unlock="5" />
         <Skill type="月之守护" level="0" unlock="10" />
+    </Card>
+    <Card id="1639" name="原战场女武神" wikiId="48085" race="王国" speed="3" star="5" cost="16" incrCost="2" at="405" hp="1530" incrAT="40" incrHP="43">
+        <Skill type="横扫" level="0" unlock="0" />
+        <Skill type="邪灵汲取" level="7" unlock="5" />
+        <Skill type="连锁攻击" level="7" unlock="10" />
     </Card>
 
 
@@ -2274,6 +2279,11 @@
         <Skill type="天降神兵" level="0" unlock="0" />
         <Skill type="物理免疫" level="0" unlock="5" />
         <Skill type="神威" level="0" unlock="10" />
+    </Card>
+    <Card id="2621" name="沉睡精灵" wikiId="" race="森林" speed="3" star="4" cost="15" incrCost="2" at="370" hp="1345" incrAT="30" incrHP="31">
+        <Skill type="极寒冲击" level="4" unlock="0" />
+        <Skill type="烈火冲击" level="0" unlock="5" />
+        <Skill type="灵王的轰击" level="3" unlock="10" />
     </Card>
 
 
@@ -4435,6 +4445,11 @@
         <Skill type="振奋" level="6" unlock="5" />
         <Skill type="自爆" level="10" unlock="10" />
     </Card>
+    <Card id="4619" name="夜行神龙" wikiId="" race="地狱" speed="3" star="5" cost="20" incrCost="2" at="565" hp="1645" incrAT="37" incrHP="40">
+        <Skill type="大背刺" level="0" unlock="0" />
+        <Skill type="夜袭" level="0" unlock="5" />
+        <Skill type="护体石肤" level="0" unlock="10" />
+    </Card>
 
 
     <!-- 魔神 -->
@@ -5035,6 +5050,11 @@
         <Skill type="灵魂消散" level="0" unlock="0" />
         <Skill type="暗红魔导阵" level="0" unlock="5" />
         <Skill type="暗之归还" level="0" unlock="10" />
+    </Card>
+    <Card id="6108" name="烈焰凤凰" wikiId="" race="魔族" speed="4" star="5" cost="20" incrCost="2" at="545" hp="1830" incrAT="40" incrHP="58">
+        <Skill type="奥术回声" level="0" unlock="0" />
+        <Skill type="浴火" level="0" unlock="5" />
+        <Skill type="逆羽罡风" level="0" unlock="10" />
     </Card>
 
     <!-- 测试卡 -->

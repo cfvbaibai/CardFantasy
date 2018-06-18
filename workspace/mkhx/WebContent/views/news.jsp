@@ -38,6 +38,12 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2018-06-18: <x>欢笑，波波</x><ul>
+                        <li>更新技能【奥术回声】</li>
+                        <li>更新卡牌【烈焰凤凰】，【夜行神龙】，【沉睡精灵】</li>
+                        <li>觉醒卡牌【战场女武神】</li>
+                        <li>修复【寒霜冲击】等技能的bug</li>
+                    </ul></li>
                     <li>2018-06-10: <x>欢笑，波波</x><ul>
                         <li>去除魔法技能对物理反击类技能的判断</li>
                     </ul></li>
