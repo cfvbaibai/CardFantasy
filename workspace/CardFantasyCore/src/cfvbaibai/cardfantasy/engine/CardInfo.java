@@ -36,6 +36,7 @@ public class CardInfo extends EntityInfo {
     private CardInfo relationCardInfo;//关联卡牌,变身前卡牌和变身后卡牌//或者召唤者
     private int summonNumber;//判断卡牌存在回合
     private boolean runeActive;//判断卡牌是否激活符文
+    private boolean isDeathNow;//判断卡牌是否是当前回合死亡
     
     private int eternalWound = 0;
 
@@ -61,6 +62,7 @@ public class CardInfo extends EntityInfo {
         this.addDelay = 0;
         this.summonNumber=0;
         this.runeActive=false;
+        this.isDeathNow=false;
     }
 
     public List<SkillUseInfo> getSkillUserInfos(){
@@ -873,6 +875,14 @@ public class CardInfo extends EntityInfo {
 
     public void setRuneActive(boolean runeActive){
         this.runeActive = runeActive;
+    }
+
+    public boolean getIsDeathNow(){
+        return this.isDeathNow;
+    }
+
+    public void setIsDeathNow(boolean isDeathNow){
+        this.isDeathNow = isDeathNow;
     }
 
     public CardInfo getRelationCardInfo() {

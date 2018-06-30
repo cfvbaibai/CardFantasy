@@ -217,6 +217,7 @@ public class BattleEngine {
             defenderCard.setSummonNumber(defenderCard.getSummonNumber()+1);//存在回合数+1
             this.stage.getResolver().removeGiveSkills(defenderCard);
         }
+        this.stage.getResolver().endOutField(this.getActivePlayer());
         Collection<CardInfo> allHandCards = this.stage.getAllHandCards();
         for (CardInfo card : allHandCards) {
             int summonDelay = card.getSummonDelay();

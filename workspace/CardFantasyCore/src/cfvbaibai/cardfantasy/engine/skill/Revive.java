@@ -22,7 +22,7 @@ public final class Revive {
         List<CardInfo> revivableCards = new ArrayList<CardInfo>();
         for (CardInfo deadCard : grave.toList()) {
             // && deadCard.getStar() != 1去掉条件是一星的卡牌，现在可以复活一星。
-            if (deadCard != null && !deadCard.containsAllUsableSkillsWithTag(SkillTag.复活)) {
+            if (deadCard != null &&!deadCard.getIsDeathNow()&& !deadCard.containsAllUsableSkillsWithTag(SkillTag.复活)) {
                 revivableCards.add(deadCard);
             }
         }
@@ -44,7 +44,7 @@ public final class Revive {
             return;
         }
         reviver.getOwner().getGrave().removeCard(cardToRevive);
-        resolver.summonCard(reviver.getOwner(), cardToRevive, reviver, false, skill);
+        resolver.summonCard(reviver.getOwner(), cardToRevive, reviver, false, skill,0);
         CardStatusItem item = CardStatusItem.weak(skillUseInfo);
         resolver.getStage().getUI().addCardStatus(reviver, cardToRevive, skill, item);
         cardToRevive.addStatus(item);

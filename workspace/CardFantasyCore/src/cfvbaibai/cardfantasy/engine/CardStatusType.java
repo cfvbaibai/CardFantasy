@@ -21,6 +21,7 @@ public enum CardStatusType {
     变羊(false, "羊"),
     死咒(false, "咒"),
     魂殇(false, "殇"),
+    离魂(false, "离"),
     王国(false, "王"),
     森林(false, "森"),
     蛮荒(false, "蛮"),

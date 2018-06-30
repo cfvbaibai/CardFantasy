@@ -1814,10 +1814,10 @@
         <Skill type="转生" level="8" unlock="5" />
         <Skill type="不屈" level="0" unlock="10" />
     </Card>
-    <Card id="2527" name="晓之奏者" wikiId="" race="森林" speed="2" star="5" cost="16" incrCost="2" at="360" hp="1480" incrAT="31" incrHP="40">
-        <Skill type="加速" level="2" unlock="0" />
-        <Skill type="本源守护" level="7" unlock="5" />
-        <Skill type="本源之力" level="6" unlock="10" />
+    <Card id="2527" name="晓之奏者" wikiId="" race="森林" speed="1" star="5" cost="16" incrCost="2" at="560" hp="1680" incrAT="37" incrHP="42">
+        <Skill type="号角" level="1" unlock="0" summon="true"/>
+        <Skill type="全体加速" level="2" unlock="5" />
+        <Skill type="守护" level="0" unlock="10" />
     </Card>
     <Card id="2528" name="射手座" wikiId="" race="森林" speed="2" star="5" cost="19" incrCost="2" at="330" hp="1450" incrAT="35" incrHP="29">
         <Skill type="神箭三重奏" level="7" unlock="0" />
@@ -2284,6 +2284,11 @@
         <Skill type="极寒冲击" level="4" unlock="0" />
         <Skill type="烈火冲击" level="0" unlock="5" />
         <Skill type="灵王的轰击" level="3" unlock="10" />
+    </Card>
+    <Card id="2622" name="原晓之奏者" wikiId="" race="森林" speed="2" star="5" cost="16" incrCost="2" at="360" hp="1480" incrAT="31" incrHP="40">
+        <Skill type="加速" level="2" unlock="0" />
+        <Skill type="本源守护" level="7" unlock="5" />
+        <Skill type="本源之力" level="6" unlock="10" />
     </Card>
 
 
@@ -3355,6 +3360,14 @@
         <Skill type="山崩" level="0" unlock="0" summon="true"/>
         <Skill type="全体阻碍" level="1" unlock="5" death="true"/>
         <Skill type="不屈" level="0" unlock="10" />
+    </Card>
+    <Card id="3614" name="妲己" wikiId="" race="蛮荒" speed="3" star="5" cost="20" incrCost="2" at="585" hp="1685" incrAT="44" incrHP="47">
+        <Skill type="离魂芳印" level="0" unlock="0" />
+        <Skill type="倾城之舞" level="0" unlock="5" />
+        <Skill type="乱世红颜" level="0" unlock="10" />
+    </Card>
+    <Card id="3615" name="肉林" wikiId="" race="蛮荒" speed="3" star="5" cost="16" incrCost="2" at="1" hp="3000" incrAT="0" incrHP="0">
+        <Skill type="嘲讽" level="0" unlock="0" />
     </Card>
 
 
@@ -4450,6 +4463,11 @@
         <Skill type="夜袭" level="0" unlock="5" />
         <Skill type="护体石肤" level="0" unlock="10" />
     </Card>
+    <Card id="4620" name="贝斯特" wikiId="" race="地狱" speed="3" star="5" cost="18" incrCost="2" at="500" hp="1650" incrAT="28" incrHP="31">
+        <Skill type="猫神的低语" level="0" unlock="0" />
+        <Skill type="灵魂禁锢" level="0" unlock="5" />
+        <Skill type="转生" level="7" unlock="10" />
+    </Card>
 
 
     <!-- 魔神 -->
@@ -4708,6 +4726,31 @@
     <Card id="5556" name="网页版彩蛋·莉莉丝" wikiId="" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="0" hp="10000" incrAT="0" incrHP="0">
         <Skill type="免疫" level="0" unlock="0" />
         <Skill type="魔族之血" level="0" unlock="5" />
+    </Card>
+    <Card id="5557" name="最新简单·莉莉丝" wikiId="" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="1200" hp="20000" incrAT="0" incrHP="0">
+        <Skill type="神威" level="0" unlock="0" />
+        <Skill type="雷霆之怒" level="8" unlock="5" />
+        <Skill type="武形神箭" level="8" unlock="10" />
+    </Card>
+    <Card id="5558" name="最新普通·莉莉丝" wikiId="" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="1200" hp="65000" incrAT="0" incrHP="0">
+        <Skill type="免疫" level="0" unlock="0" />
+        <Skill type="一文字" level="0" unlock="5" />
+        <Skill type="扼杀" level="0" unlock="10" />
+    </Card>
+    <Card id="5559" name="最新困难·莉莉丝" wikiId="" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="1800" hp="140000" incrAT="0" incrHP="0">
+        <Skill type="免疫" level="0" unlock="0" />
+        <Skill type="流光回梦" level="0" unlock="5" />
+        <Skill type="魔族之血" level="0" unlock="10" />
+    </Card>
+    <Card id="5560" name="最新噩梦·莉莉丝" wikiId="" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="2700" hp="230000" incrAT="0" incrHP="0">
+        <Skill type="免疫" level="0" unlock="0" />
+        <Skill type="圣炎" level="0" unlock="5" />
+        <Skill type="连续魔法" level="7" unlock="10" />
+    </Card>
+    <Card id="5567" name="最新炼狱·莉莉丝" wikiId="" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="4000" hp="350000" incrAT="0" incrHP="0">
+        <Skill type="神威" level="0" unlock="0" />
+        <Skill type="奥术回声" level="0" unlock="5" />
+        <Skill type="反击屏障" level="0" unlock="10" />
     </Card>
 
     <!-- 魔神 -->

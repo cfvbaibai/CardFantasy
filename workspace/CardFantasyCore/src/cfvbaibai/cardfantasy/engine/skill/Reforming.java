@@ -44,7 +44,7 @@ public class Reforming {
         defender.getHand().removeCard(card);
         defender.getDeck().removeCard(card);
         defender.getField().removeCard(card);
-        resolver.summonCard(card.getOwner(), card, null, false, skillUseInfo.getSkill());
+        resolver.summonCard(card.getOwner(), card, null, false, skillUseInfo.getSkill(),0);
         card.setUsed(skillUseInfo);
     }
 

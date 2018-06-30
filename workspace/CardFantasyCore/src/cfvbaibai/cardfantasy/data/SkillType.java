@@ -232,6 +232,7 @@ public enum SkillType {
     阿拉希血统("", 0, 0, SkillTag.抗沉默, SkillTag.额外攻击加成),
     魔甲("30931", 140, -10),
     魔法装甲("", 10),
+    却魔装甲("", 140, -10,SkillTag.不动),
     盾刺("30972", 20, SkillTag.抗免疫, SkillTag.反击),
     荆棘术("30972", 160, 40, SkillTag.抗免疫, SkillTag.反击),
     刚烈("", 800, 0, SkillTag.抗免疫, SkillTag.反击),
@@ -292,6 +293,7 @@ public enum SkillType {
     王之守护("", 0, SkillTag.不动, SkillTag.守护),
     武侯("", 50,0,  SkillTag.守护),
     传送("31331", 0, SkillTag.即死),
+    万里追魂("31331", 0, SkillTag.即死, SkillTag.不动),
     代表月亮消灭你("", 0,SkillTag.即死),
     弱点攻击("30881", 0),
     破军("",45,5),
@@ -368,6 +370,7 @@ public enum SkillType {
     冥府之召("",75,0,570,0, SkillTag.魔法),
     死亡宣告("",100,0,700,0, SkillTag.魔法),
     烈焰审判("",70,0,700,0, SkillTag.魔法),
+    潜摧("", 0, SkillTag.即死, SkillTag.抗不屈, SkillTag.不动),
 
 
     炼金失败("",0,SkillTag.复活),
@@ -545,6 +548,8 @@ public enum SkillType {
     页游星之所在("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
     噩梦马戏团("", 0, 0, SkillTag.召唤),
     原星之所在("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
+    猫神的低语("",0,0, SkillTag.不可洗炼,SkillTag.召唤),
+    乱世红颜("",0,0, SkillTag.不可洗炼,SkillTag.召唤),
 
     //生成卡牌置入战场
     蜀国英魂("", 2, 0,SkillTag.抗夺魂),
@@ -671,6 +676,7 @@ public enum SkillType {
     蝶息("", SkillType.不屈,0,SkillType.全体加速,1,SkillTag.不动),
     夜袭("",SkillType.破军,6,SkillType.英雄杀手,8,SkillTag.额外攻击加成, SkillTag.不可洗炼),
     护体石肤("",SkillType.魔甲,2,SkillType.自愈,6),
+    倾城之舞("",SkillType.魅惑之舞,10,SkillType.生命符文,10),
 
     新生("",0,0,SkillTag.新生,SkillTag.抗夺魂),
     重整("",0,0,SkillTag.新生,SkillTag.抗夺魂),
@@ -794,6 +800,7 @@ public enum SkillType {
     绝对压制("",1,0,300,0,SkillTag.抗免疫, SkillTag.抗不屈, SkillTag.魔王无效, SkillTag.魔族天赋,SkillTag.基础攻击加成),
     支配亡灵("",0, SkillTag.魔王无效, SkillTag.魔族天赋,SkillTag.召唤),
     魂之枷锁("",5,0, SkillTag.抗免疫,SkillTag.魔王无效),
+    离魂芳印("",2,0,1,0,SkillTag.抗不屈, SkillTag.魔王无效, SkillTag.魔族天赋),
 
     //防御圣炎
     庇护("",0),

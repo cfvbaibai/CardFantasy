@@ -21,7 +21,7 @@ public final class DivineSummon {
             return;
         }
         resolver.getStage().getUI().useSkill(attacker, target, skillUseInfo.getSkill(), true);
-        resolver.summonCard(attacker.getOwner(), target, null, false, skillUseInfo.getSkill());
+        resolver.summonCard(attacker.getOwner(), target, null, false, skillUseInfo.getSkill(),0);
         CardStatusItem item = CardStatusItem.weak(skillUseInfo);
         target.addStatus(item);
     }

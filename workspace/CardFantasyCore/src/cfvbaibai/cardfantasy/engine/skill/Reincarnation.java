@@ -55,7 +55,7 @@ public final class Reincarnation {
             if(!player.getGrave().contains(card))
             {
                 //某些情况下召唤属性丢失导致卡牌不能找到。
-                System.out.print("错误转生");
+              //  System.out.print("错误转生");
                 return false;
             }
             grave.removeCard(card);
