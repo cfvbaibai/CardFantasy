@@ -123,6 +123,10 @@ public class CardStatusItem {
         return new CardStatusItem(CardStatusType.魂殇, 0, cause);
     }
 
+    public static CardStatusItem Rapture(SkillUseInfo cause) {
+        return new CardStatusItem(CardStatusType.离魂, 0, cause);
+    }
+
     public String getShortDesc() {
         StringBuffer sb = new StringBuffer();
         sb.append(getType().name());

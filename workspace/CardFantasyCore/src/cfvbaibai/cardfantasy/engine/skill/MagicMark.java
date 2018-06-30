@@ -25,6 +25,31 @@ public class MagicMark {
             if (!resolver.resolveAttackBlockingSkills(caster, victim, skill, 1).isAttackable()) {
                 continue;
             }
+            int magicEchoSkillResult = resolver.resolveMagicEchoSkill(caster, victim, skill);
+            if (magicEchoSkillResult == 1 || magicEchoSkillResult == 2) {
+                if (caster instanceof CardInfo) {
+                    CardInfo attackCard = (CardInfo) caster;
+                    if (attackCard.isDead()) {
+                        if (magicEchoSkillResult == 1) {
+                            continue;
+                        }
+                    }
+                    else{
+                        if (!resolver.resolveAttackBlockingSkills(victim, attackCard, skill, 1).isAttackable()) {
+                            if (magicEchoSkillResult == 1) {
+                                continue;
+                            }
+                        }
+                        else{
+                            ui.addCardStatus(victim, attackCard, skill, statusItem);
+                            attackCard.addStatus(statusItem);
+                        }
+                    }
+                }
+                if (magicEchoSkillResult == 1) {
+                    continue;
+                }
+            }
             ui.addCardStatus(caster, victim, skill, statusItem);
             victim.addStatus(statusItem);
         }

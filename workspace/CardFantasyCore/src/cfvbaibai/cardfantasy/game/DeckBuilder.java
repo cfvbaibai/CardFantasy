@@ -30,11 +30,13 @@ public final class DeckBuilder {
      */
     private final static String CARD_REGEX = 
         "^" +
-        "(?<CardName>[^\\-+SD*]+)" +
+        "(?<CardName>[^\\-+SD*?]+)" +
         "(\\+(?<SummonFlag>(S|降临)?)(?<DeathFlag>(D|死契)?)(?<PrecastFlag>(PRE|先机)?)(?<PostcastFlag>(POST|遗志)?)" +
-        "(?<ExtraSkillName>[^\\d\\-*]+)(?<ExtraSkillLevel>\\d+)?)?" +
+        "(?<ExtraSkillName>[^\\d\\-*?]+)(?<ExtraSkillLevel>\\d+)?)?" +
         "(\\-(?<CardLevel>\\d+))?" +
         "(\\*(?<Count>\\d+))?" +
+        "(\\?HP(?<HP>\\d+))?" +
+        "(\\?AT(?<AT>\\d+))?" +
         "$";
 
     private static Pattern CARD_PATTERN;
@@ -53,7 +55,8 @@ public final class DeckBuilder {
     public static String[] splitDescsText(String descsText) {
         descsText = descsText.replace(' ', ',').replace('　', ',').replace('，', ',').replace('、', ',');
         descsText = descsText.replace("\r\n", ",").replace("\n", ",");
-        descsText = descsText.replace('＋', '+').replace('＊', '*').replace('－', '-');
+        descsText = descsText.replace('＋', '+').replace('＊', '*').replace('－', '-')
+                .replace('？', '?').replace('h', 'H').replace('p', 'P').replace('a', 'A').replace('t', 'T');
         descsText = descsText.replace(":", "").replace("：", "").replace("·", "");
         descsText = Zht2Zhs.getInstance().convert(descsText);
         return descsText.split(",");
@@ -194,6 +197,30 @@ public final class DeckBuilder {
         if (extraSkillLevel < 0 || extraSkillLevel > 10) {
             throw new DeckBuildRuntimeException("无效的卡牌：" + desc + "，洗炼技能等级不得大于10");
         }
+        String hpText = matcher.group("HP");
+        int hp = -1;
+        if (hpText != null) {
+            try {
+                hp = Integer.parseInt(hpText);
+            } catch (NumberFormatException e) {
+                throw new DeckBuildRuntimeException("无效的卡牌: " + desc, e);
+            }
+        }
+        if (hp <= 0&&hp!=-1 ) {
+            throw new DeckBuildRuntimeException("无效的卡牌：" + desc + "，卡牌生命值不得小于0");
+        }
+        String atText = matcher.group("AT");
+        int at = -1;
+        if (atText != null) {
+            try {
+                at = Integer.parseInt(atText);
+            } catch (NumberFormatException e) {
+                throw new DeckBuildRuntimeException("无效的卡牌: " + desc, e);
+            }
+        }
+        if (at <= 0&&at!=-1 ) {
+            throw new DeckBuildRuntimeException("无效的卡牌：" + desc + "，攻击力不得小于0");
+        }
        
         boolean summonSkill = !StringUtils.isBlank(matcher.group("SummonFlag"));
         boolean deathSkill = !StringUtils.isBlank(matcher.group("DeathFlag"));
@@ -225,7 +252,7 @@ public final class DeckBuilder {
         }
         
         for (int j = 0; j < count; ++j) {
-            Card card = new Card(data, cardLevel, extraSkill, prefix, String.valueOf(getCardNameSuffix()));
+            Card card = new Card(data, cardLevel, extraSkill, prefix, String.valueOf(getCardNameSuffix()),hp,at);
             ret.add(card);
         }
         

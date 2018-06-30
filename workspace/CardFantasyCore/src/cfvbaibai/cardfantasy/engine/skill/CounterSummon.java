@@ -35,7 +35,7 @@ public class CounterSummon {
                 throw new CardFantasyRuntimeException(
                     "[CounterSummon] Cannot find card " + summonCard.getShortDesc() + " in deck of " + defender.getId());
             }
-            resolver.summonCard(summonCard.getOwner(), summonCard, defender, false, skill);
+            resolver.summonCard(summonCard.getOwner(), summonCard, defender, false, skill,0);
         }
     }
 }

@@ -37,7 +37,7 @@ public final class Erode {
         if (!result.isAttackable()) {
             return;
         }
-
+        //暂不处理回声
         int adjHP = skill.getImpact() * card.getMaxHP() / 100;
         int adjAT = skill.getImpact() * card.getLevel0AT() / 100;//修改为原始攻击力加成
         ui.adjustHP(card, card, adjHP, skill);

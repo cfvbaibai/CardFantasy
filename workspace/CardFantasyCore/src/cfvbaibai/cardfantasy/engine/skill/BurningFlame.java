@@ -47,6 +47,42 @@ public final class BurningFlame {
             if (!result.isAttackable()) {
                 continue;
             }
+            int magicEchoSkillResult = resolver.resolveMagicEchoSkill(attacker, victim, skill);
+            if (magicEchoSkillResult==1||magicEchoSkillResult==2) {
+                if (attacker instanceof CardInfo) {
+                    CardInfo attackCard =  (CardInfo)attacker;
+                    if(attackCard.isDead())
+                    {
+                        if (magicEchoSkillResult == 1) {
+                            continue;
+                        }
+                    }
+                    else {
+                        boolean skipped = false;
+                        for (CardStatusItem existingBurningStatus : attackCard.getStatus().getStatusOf(CardStatusType.燃烧)) {
+                            if (existingBurningStatus.getEffect() == newBurningStatus.getEffect()) {
+                                skipped = true;
+                                break;
+                            }
+                        }
+                        if (!skipped) {
+                            OnAttackBlockingResult result2 = resolver.resolveAttackBlockingSkills(victim, attackCard, skill, damage);
+                            if (!result2.isAttackable()) {
+                                if (magicEchoSkillResult == 1) {
+                                    continue;
+                                }
+                            }
+                            else {
+                                ui.addCardStatus(victim, attackCard, skill, newBurningStatus);
+                                attackCard.addStatus(newBurningStatus);
+                            }
+                        }
+                    }
+                }
+                if (magicEchoSkillResult == 1) {
+                    continue;
+                }
+            }
             ui.addCardStatus(attacker, victim, skill, newBurningStatus);
             victim.addStatus(newBurningStatus);
         }

@@ -87,6 +87,24 @@ public class PvlEngine extends GameEngine {
                 return getClearGuardsResult(battleCount, lilithPlayer);
             }*/
             int lilithAliveCardCount = 0;
+            List<CardInfo> removeCards=new ArrayList<CardInfo>();
+            for(CardInfo filedCard :lilithPlayer.getField().getAliveCards())
+            {
+                if(filedCard.isSummonedMinion())
+                {
+                    removeCards.add(filedCard);
+                    continue;
+                }
+                if(filedCard.getOriginalOwner() != null && filedCard.getOriginalOwner() != lilithPlayer)
+                {
+                    removeCards.add(filedCard);
+                    continue;
+                }
+            }
+            for(CardInfo removeCard :removeCards)
+            {
+                survivors.remove(removeCard);
+            }
             lilithAliveCardCount += lilithPlayer.getDeck().size();
             lilithAliveCardCount += lilithPlayer.getHand().size();
             lilithAliveCardCount += lilithPlayer.getField().getAliveCards().size();

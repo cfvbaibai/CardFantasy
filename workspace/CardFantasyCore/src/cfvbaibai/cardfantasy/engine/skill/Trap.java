@@ -29,6 +29,32 @@ public final class Trap {
             if (!resolver.resolveAttackBlockingSkills(attacker, victim, skill, 1).isAttackable()) {
                 continue;
             }
+            int magicEchoSkillResult = resolver.resolveMagicEchoSkill(attacker, victim, skill);
+            if (magicEchoSkillResult==1||magicEchoSkillResult==2) {
+                if(attacker.isDead())
+                {
+                    if (magicEchoSkillResult == 1) {
+                        continue;
+                    }
+                }
+                else{
+                    if (!resolver.resolveAttackBlockingSkills(victim, attacker, skill, 1).isAttackable()) {
+                        if (magicEchoSkillResult == 1) {
+                            continue;
+                        }
+                    }
+                    else{
+                        if (resolver.getStage().getRandomizer().roll100(65)) {
+                            CardStatusItem status = CardStatusItem.trapped(skillUseInfo);
+                            ui.addCardStatus(victim, attacker, skill, status);
+                            attacker.addStatus(status);
+                        }
+                    }
+                }
+                if (magicEchoSkillResult == 1) {
+                    continue;
+                }
+            }
             if (resolver.getStage().getRandomizer().roll100(65)) {
                 CardStatusItem status = CardStatusItem.trapped(skillUseInfo);
                 ui.addCardStatus(attacker, victim, skill, status);

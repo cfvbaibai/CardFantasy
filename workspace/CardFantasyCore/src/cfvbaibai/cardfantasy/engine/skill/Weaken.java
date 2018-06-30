@@ -28,11 +28,11 @@ public final class Weaken {
         resolver.getStage().getUI().useSkill(attacker, defender, skill, true);
         List<CardInfo> defenders = new ArrayList<CardInfo>();
         defenders.add(defender);
-        weakenCard(resolver, skillUseInfo, skill.getImpact(), attacker, defenders);
+        weakenCard(resolver, skillUseInfo, skill.getImpact(), attacker, defenders,false);
     }
 
     public static int weakenCard(SkillResolver resolver, SkillUseInfo skillUseInfo, int attackToWeaken, EntityInfo attacker,
-            List<CardInfo> defenders) throws HeroDieSignal {
+            List<CardInfo> defenders,boolean attackSkillFlag) throws HeroDieSignal {
         int totalAttackWeakened = 0;
         for (CardInfo defender : defenders) {
             if (defender == null) {
@@ -41,6 +41,53 @@ public final class Weaken {
             Skill skill = skillUseInfo.getSkill();
             if (!resolver.resolveAttackBlockingSkills(attacker, defender, skill, 1).isAttackable()) {
                 continue;
+            }
+            if(attackSkillFlag){
+                int magicEchoSkillResult = resolver.resolveMagicEchoSkill(attacker, defender, skill);
+                if (magicEchoSkillResult==1||magicEchoSkillResult==2) {
+                    if (attacker instanceof CardInfo) {
+                        CardInfo attackCard =  (CardInfo)attacker;
+                        if(attackCard.isDead())
+                        {
+                            if (magicEchoSkillResult == 1) {
+                                continue;
+                            }
+                        }
+                        else if (!resolver.resolveAttackBlockingSkills(defender,attackCard , skill, 1).isAttackable()) {
+                            if (magicEchoSkillResult == 1) {
+                                continue;
+                            }
+                        }
+                        else {
+                            int attackWeakened2 = attackToWeaken;
+                            if (attackWeakened2 > attackCard.getCurrentAT()) {
+                                attackWeakened2 = attackCard.getCurrentAT();
+                            }
+                            resolver.getStage().getUI().adjustAT(defender, attackCard, -attackWeakened2, skill);
+                            List<SkillEffect> effects = attackCard.getEffects();
+                            for (SkillEffect effect : effects) {
+                                if (effect.getType() == SkillEffectType.ATTACK_CHANGE && effect.getValue() > 0 &&
+                                        effect.getCause().getSkill().getType().containsTag(SkillTag.抗削弱)) {
+                                    // TODO: 现在只有群攻提升，不过以后会有其它的
+                                    if (attackWeakened2 > effect.getValue()) {
+                                        attackWeakened2 -= effect.getValue();
+                                        effect.setValue(0);
+                                    } else {
+                                        attackWeakened2 = 0;
+                                        effect.setValue(effect.getValue() - attackWeakened2);
+                                    }
+                                }
+                                if (attackWeakened2 == 0) {
+                                    break;
+                                }
+                            }
+                            attackCard.addEffect(new SkillEffect(SkillEffectType.ATTACK_CHANGE, skillUseInfo, -attackWeakened2, true));
+                        }
+                    }
+                    if (magicEchoSkillResult == 1) {
+                        continue;
+                    }
+                }
             }
             int attackWeakened = attackToWeaken;
             if (attackWeakened > defender.getCurrentAT()) {

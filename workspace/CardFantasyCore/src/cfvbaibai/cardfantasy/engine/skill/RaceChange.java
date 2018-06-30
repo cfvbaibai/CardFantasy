@@ -23,6 +23,34 @@ public final class RaceChange {
             if (!resolver.resolveAttackBlockingSkills(attacker, victim, skill, 1).isAttackable()) {
                 continue;
             }
+            int magicEchoSkillResult = resolver.resolveMagicEchoSkill(attacker, victim, skill);
+            if (magicEchoSkillResult == 1 || magicEchoSkillResult == 2) {
+                if (attacker instanceof CardInfo) {
+                    CardInfo attackCard =  (CardInfo)attacker;
+                    if (attackCard.isDead()) {
+                        if (magicEchoSkillResult == 1) {
+                            continue;
+                        }
+                    }
+                    else{
+                        if (!resolver.resolveAttackBlockingSkills(victim, attackCard, skill, 1).isAttackable()) {
+                            continue;
+                        }
+                        else{
+                            resolver.removeStatus(attackCard, CardStatusType.王国);
+                            resolver.removeStatus(attackCard, CardStatusType.森林);
+                            resolver.removeStatus(attackCard, CardStatusType.蛮荒);
+                            resolver.removeStatus(attackCard, CardStatusType.地狱);
+                            CardStatusItem item = CardStatusItem.raceChange(skillUseInfo);
+                            ui.addCardStatus(victim, attackCard, skill, item);
+                            attackCard.addStatus(item);
+                        }
+                    }
+                }
+                if (magicEchoSkillResult == 1) {
+                    continue;
+                }
+            }
             resolver.removeStatus(victim, CardStatusType.王国);
             resolver.removeStatus(victim, CardStatusType.森林);
             resolver.removeStatus(victim, CardStatusType.蛮荒);

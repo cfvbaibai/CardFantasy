@@ -11,16 +11,17 @@ public class Card implements Cloneable, Comparable <Card> {
     private String uniqueName;
     private CardSkill extraSkill;
     private int overrideHP = -1;
+    private int overrideAT = -1;
 
     public Card(CardData sourceInfo) {
         this(sourceInfo, 0, "");
     }
 
     public Card(CardData sourceInfo, int cardLevel, String suffix) {
-        this(sourceInfo, cardLevel, null, null, suffix);
+        this(sourceInfo, cardLevel, null, null, suffix,-1,-1);
     }
 
-    public Card(CardData sourceInfo, int cardLevel, CardSkill extraSkill, String prefix, String suffix) {
+    public Card(CardData sourceInfo, int cardLevel, CardSkill extraSkill, String prefix, String suffix,int overrideHP,int overrideAT) {
         if (sourceInfo == null) {
             throw new CardFantasyRuntimeException("sourceInfo should not be null");
         }
@@ -34,6 +35,8 @@ public class Card implements Cloneable, Comparable <Card> {
         this.growToLevel(cardLevel);
         this.extraSkill = extraSkill;
         this.uniqueName = prefix + sourceInfo.getName() + suffix;
+        this.overrideHP = overrideHP;
+        this.overrideAT = overrideAT;
     }
     
     public String getId() {
@@ -57,7 +60,12 @@ public class Card implements Cloneable, Comparable <Card> {
     }
     
     public int getInitAT() {
-        return this.sourceInfo.getBaseAT() + this.sourceInfo.getIncrAT() * this.getLevel();
+        if (this.overrideAT <= 0) {
+            return this.sourceInfo.getBaseAT() + this.sourceInfo.getIncrAT() * this.getLevel();
+        }
+        else{
+            return this.overrideAT;
+        }
     }
 
     public int getMaxHP() {

@@ -31,7 +31,36 @@ public final class WitheringWord {
             if (!result.isAttackable()) {
                 continue;
             }
+            int magicEchoSkillResult = resolver.resolveMagicEchoSkill(attacker, victim, skill);
+            if (magicEchoSkillResult == 1 || magicEchoSkillResult == 2) {
+                if (attacker instanceof CardInfo) {
+                    CardInfo attackCard =  (CardInfo)attacker;
+                    if(attackCard.isDead())
+                    {
+                        if (magicEchoSkillResult == 1) {
+                            continue;
+                        }
+                    }
+                    else{
+                        int lifeDamage2 = (int)(attackCard.getBasicMaxHP() * Percent);
+                        int attackReduce2 = (int)(attackCard.getATToReduce() * Percent);
 
+                        OnAttackBlockingResult result2 = resolver.resolveAttackBlockingSkills(victim, attackCard, skill, lifeDamage2);
+                        if (!result2.isAttackable()) {
+                            continue;
+                        }
+                        else {
+                            ui.adjustAT(victim, attackCard, -attackReduce2, skill);
+                            attackCard.addEffect(new SkillEffect(SkillEffectType.ATTACK_CHANGE, skillUseInfo, -attackReduce2, true));
+                            ui.attackCard(victim, attackCard, skill, lifeDamage2);
+                            resolver.resolveDeathSkills(victim, attackCard, skill, resolver.applyDamage(victim, attackCard, skill, lifeDamage2));
+                        }
+                    }
+                }
+                if (magicEchoSkillResult == 1) {
+                    continue;
+                }
+            }
             ui.adjustAT(attacker, victim, -attackReduce, skill);
             victim.addEffect(new SkillEffect(SkillEffectType.ATTACK_CHANGE, skillUseInfo, -attackReduce, true));
             ui.attackCard(attacker, victim, skill, lifeDamage);

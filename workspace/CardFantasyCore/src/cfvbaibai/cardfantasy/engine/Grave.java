@@ -26,7 +26,6 @@ public class Grave extends CardPile {
             throw new CardFantasyRuntimeException("Cannot add an existing card to grave. "
                     + card.getShortDesc());
         }
-        card.restoreOwner();
         this.getCards().add(0, card);
         return card;
     }

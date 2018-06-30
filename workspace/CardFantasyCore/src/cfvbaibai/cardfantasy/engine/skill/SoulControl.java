@@ -24,7 +24,7 @@ public class SoulControl {
         Skill skill = skillUseInfo.getSkill();
         List<CardInfo> candidates = new ArrayList<CardInfo>();
         for (CardInfo deadCard : defenderHero.getGrave().toList()) {
-            if (!deadCard.containsUsableSkillsWithTag(SkillTag.召唤) &&
+            if (!deadCard.getIsDeathNow() && !deadCard.containsUsableSkillsWithTag(SkillTag.召唤) &&
                 !deadCard.containsUsableSkillsWithTag(SkillTag.复活) &&
                 !deadCard.containsUsableSkillsWithTag(SkillTag.守护) &&
                 !deadCard.containsUsableSkillsWithTag(SkillTag.抗夺魂) &&
@@ -41,7 +41,7 @@ public class SoulControl {
         CardInfo victim = victims.get(0);
         resolver.getStage().getUI().useSkill(attacker, victim, skill, true);
         victim.switchOwner(attacker.getOwner());
-        resolver.summonCard(victim.getOwner(), victim, attacker, false, skill);
+        resolver.summonCard(victim.getOwner(), victim, attacker, false, skill,0);
         CardStatusItem weakStatusItem = CardStatusItem.weak(skillUseInfo);
         resolver.getStage().getUI().addCardStatus(attacker, victim, skill, weakStatusItem);
         victim.addStatus(weakStatusItem);

@@ -16,7 +16,6 @@ public class Hand extends CardPile {
 
     @Override
     public CardInfo addCard(CardInfo newCard) {
-        newCard.restoreOwner();
         super.addCard(newCard);
         newCard.resetSummonDelay();
         if(newCard.getAddDelay()>0)

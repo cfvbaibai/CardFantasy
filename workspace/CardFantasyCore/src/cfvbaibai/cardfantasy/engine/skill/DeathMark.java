@@ -36,6 +36,35 @@ public class DeathMark {
                 return;
             }
         }
+        int magicEchoSkillResult = resolver.resolveMagicEchoSkill(caster, victim, skill);
+        if(magicEchoSkillResult==1||magicEchoSkillResult==2) {
+            if(caster.isDead())
+            {
+                if (magicEchoSkillResult == 1) {
+                    return;
+                }
+            }
+            else if (!resolver.resolveAttackBlockingSkills(victim, caster, skill, 1).isAttackable()) {
+                if (magicEchoSkillResult == 1) {
+                    return;
+                }
+            }
+            else if(effectNumber>0)
+            {
+                if(!caster.getStatus().getStatusOf(CardStatusType.死印).isEmpty()){
+                    if (magicEchoSkillResult == 1) {
+                        return;
+                    }
+                }
+            }
+            else {
+                ui.addCardStatus(victim, caster, skill, statusItem);
+                caster.addStatus(statusItem);
+                if (magicEchoSkillResult == 1) {
+                    return;
+                }
+            }
+        }
         ui.addCardStatus(caster, victim, skill, statusItem);
         victim.addStatus(statusItem);
     }

@@ -18,6 +18,7 @@ public final class ChemicalRage {
         Skill skill = skillUseInfo.getSkill();
 
         List<CardInfo> allVictims = defender.getField().getAliveCards();
+        List<CardInfo> attackVictims = attacker.getOwner().getField().getAliveCards();
         List<CardInfo> victims = resolver.getAdjacentCards(defender.getField(), attacker.getPosition());
         ui.useSkill(attacker, victims, skill, true);
         for (CardInfo victim : victims) {
@@ -26,10 +27,30 @@ public final class ChemicalRage {
             if (!result.isAttackable()) {
                 continue;
             }
-            damage = result.getDamage();
-            if (attacker instanceof CardInfo) {
-                resolver.resolveCounterAttackSkills((CardInfo)attacker, victim, skill, result, null);
+            int magicEchoSkillResult = resolver.resolveMagicEchoSkill(attacker, victim, skill);
+            if (magicEchoSkillResult==1||magicEchoSkillResult==2) {
+                if (attacker.isDead()) {
+                    if (magicEchoSkillResult == 1) {
+                        continue;
+                    }
+                } else {
+                    int damage2 = skill.getImpact() + skill.getImpact2() * attackVictims.size();
+                    OnAttackBlockingResult result2 = resolver.resolveAttackBlockingSkills(victim, attacker, skill, damage2);
+                    if (!result2.isAttackable()) {
+                        if (magicEchoSkillResult == 1) {
+                            continue;
+                        }
+                    } else {
+                        damage2 = result2.getDamage();
+                        ui.attackCard(victim, attacker, skill, damage2);
+                        resolver.resolveDeathSkills(victim, attacker, skill, resolver.applyDamage(victim, attacker, skill, damage2));
+                    }
+                }
+                if (magicEchoSkillResult == 1) {
+                    continue;
+                }
             }
+            damage = result.getDamage();
             ui.attackCard(attacker, victim, skill, damage);
             resolver.resolveDeathSkills(attacker, victim, skill, resolver.applyDamage(attacker, victim, skill, damage));
         }

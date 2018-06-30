@@ -40,7 +40,8 @@ public final class RegressionSoul {
         ui.useSkill(resurrector, cardsToResurrect, skill, true);
         for (CardInfo card : cardsToResurrect) {
             Hand hand = player.getHand();
-            if (hand.isFull()) {
+            if (hand.isFull()||card.getIsDeathNow()) {
+
             } else {
                 ui.cardToHand(player, card);
                 player.getGrave().removeCard(card);
