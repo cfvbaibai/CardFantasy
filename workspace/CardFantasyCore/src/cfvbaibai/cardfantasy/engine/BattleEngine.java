@@ -416,7 +416,7 @@ public class BattleEngine {
         if (opField.getCard(i) == null) {
             resolver.resolvePreAttackHeroSkills(myField.getCard(i), getInactivePlayer());
             resolver.attackHero(myField.getCard(i), getInactivePlayer(), null, myField.getCard(i).getCurrentAT());
-            if (myField.getCard(i)!=null&&(myField.getCard(i).containsUsableSkill(SkillType.连斩)||myField.getCard(i).containsUsableSkill(SkillType.原素裂变)||myField.getCard(i).containsUsableSkill(SkillType.死亡收割)||myField.getCard(i).containsUsableSkill(SkillType.连狙))) {
+            if (myField.getCard(i)!=null&&(myField.getCard(i).containsUsableSkill(SkillType.连斩)||myField.getCard(i).containsUsableSkill(SkillType.原素裂变)||myField.getCard(i).containsUsableSkill(SkillType.死亡收割)||myField.getCard(i).containsUsableSkill(SkillType.连狙)||myField.getCard(i).containsUsableSkill(SkillType.战神))) {
                 boolean killCard = true;
                 for(;killCard;) {
                     killCard = randomAttackCard(myField, opField, i);
@@ -453,7 +453,7 @@ public class BattleEngine {
             }
             if (myField.getCard(i) != null && !myField.getCard(i).isDead() &&
                         (opField.getCard(i) == null || opField.getCard(i).isDead())) {
-                if (myField.getCard(i)!=null&&(myField.getCard(i).containsUsableSkill(SkillType.连斩)||myField.getCard(i).containsUsableSkill(SkillType.原素裂变)||myField.getCard(i).containsUsableSkill(SkillType.死亡收割)||myField.getCard(i).containsUsableSkill(SkillType.连狙))) {
+                if (myField.getCard(i)!=null&&(myField.getCard(i).containsUsableSkill(SkillType.连斩)||myField.getCard(i).containsUsableSkill(SkillType.原素裂变)||myField.getCard(i).containsUsableSkill(SkillType.死亡收割)||myField.getCard(i).containsUsableSkill(SkillType.连狙)||myField.getCard(i).containsUsableSkill(SkillType.战神))) {
                     boolean killCard = true;
                     for(;killCard;) {
                         killCard = randomAttackCard(myField, opField, i);

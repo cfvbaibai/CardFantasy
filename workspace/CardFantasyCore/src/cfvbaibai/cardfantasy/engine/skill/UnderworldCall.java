@@ -18,7 +18,7 @@ public final class UnderworldCall {
         ui.useSkill(attacker, victims, cardSkill, true);
         for (CardInfo victim : victims) {
             int damage = damageInit;
-            if(victim.containsUsableSkill(SkillType.免疫)||victim.containsUsableSkill(SkillType.结界立场)|| victim.containsUsableSkill(SkillType.影青龙)|| victim.containsAllSkill(SkillType.恶龙血脉) || victim.containsUsableSkill(SkillType.魔力抗性) ||victim.isBoss()||victim.isDeman())
+            if(resolver.resolveIsImmune(victim,1))
             {
                 continue;
             }
@@ -26,6 +26,12 @@ public final class UnderworldCall {
                 int magicEchoSkillResult = resolver.resolveMagicEchoSkill(attacker, victim, cardSkill);
                 if (magicEchoSkillResult==1||magicEchoSkillResult==2) {
                     if(attacker.isDead())
+                    {
+                        if (magicEchoSkillResult == 1) {
+                            continue;
+                        }
+                    }
+                    else if(resolver.resolveIsImmune(attacker,1))
                     {
                         if (magicEchoSkillResult == 1) {
                             continue;

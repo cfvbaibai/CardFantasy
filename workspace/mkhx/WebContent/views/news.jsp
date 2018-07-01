@@ -38,6 +38,9 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2018-06-31: <x>欢笑，波波</x><ul>
+                        <li>更新世界杯系列卡牌【7·锋线尖刀】，【5·清道夫】，【9·前场锋霸】，【10·中场核心】，【11·影子前锋】，【魔幻神杯】</li>
+                    </ul></li>
                     <li>2018-06-30: <x>欢笑，波波</x><ul>
                         <li>修复玄武和白骨同时在场时【夺魂】导致的错位bug</li>
                         <li>修复地图22-11某些特殊情况下朱雀导致的死循环问题</li>

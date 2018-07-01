@@ -1223,6 +1223,11 @@
         <Skill type="邪灵汲取" level="7" unlock="5" />
         <Skill type="连锁攻击" level="7" unlock="10" />
     </Card>
+    <Card id="1640" name="9·前场锋霸" wikiId="" race="王国" speed="2" star="5" cost="18" incrCost="2" at="550" hp="1530" incrAT="34" incrHP="31">
+        <Skill type="头槌破门" level="0" unlock="0" />
+        <Skill type="潘帕斯雄鹰" level="0" unlock="5" />
+        <Skill type="战神" level="0" unlock="10" />
+    </Card>
 
 
     <!-- 森林 -->
@@ -2289,6 +2294,16 @@
         <Skill type="加速" level="2" unlock="0" />
         <Skill type="本源守护" level="7" unlock="5" />
         <Skill type="本源之力" level="6" unlock="10" />
+    </Card>
+    <Card id="2623" name="10·中场核心" wikiId="" race="森林" speed="3" star="5" cost="18" incrCost="2" at="530" hp="1515" incrAT="33" incrHP="35">
+        <Skill type="盘球大师" level="0" unlock="0" />
+        <Skill type="桑巴之舞" level="0" unlock="5" />
+        <Skill type="天选之子" level="0" unlock="10" />
+    </Card>
+    <Card id="2624" name="11·影子前锋" wikiId="" race="森林" speed="4" star="5" cost="18" incrCost="2" at="510" hp="1535" incrAT="33" incrHP="37">
+        <Skill type="高位逼抢" level="0" unlock="0" />
+        <Skill type="无冕之王" level="0" unlock="5" />
+        <Skill type="小飞侠" level="0" unlock="10" />
     </Card>
 
 
@@ -3368,6 +3383,11 @@
     </Card>
     <Card id="3615" name="肉林" wikiId="" race="蛮荒" speed="3" star="5" cost="16" incrCost="2" at="1" hp="3000" incrAT="0" incrHP="0">
         <Skill type="嘲讽" level="0" unlock="0" />
+    </Card>
+    <Card id="3616" name="5·清道夫" wikiId="" race="蛮荒" speed="3" star="5" cost="18" incrCost="2" at="500" hp="1600" incrAT="32" incrHP="38">
+        <Skill type="链式防守" level="0" unlock="0" />
+        <Skill type="亚平宁之蓝" level="0" unlock="5" />
+        <Skill type="热血战士" level="0" unlock="10" />
     </Card>
 
 
@@ -4468,6 +4488,11 @@
         <Skill type="灵魂禁锢" level="0" unlock="5" />
         <Skill type="转生" level="7" unlock="10" />
     </Card>
+    <Card id="4621" name="7·锋线尖刀" wikiId="" race="地狱" speed="3" star="5" cost="18" incrCost="2" at="560" hp="1450" incrAT="35" incrHP="34">
+        <Skill type="流星火球" level="0" unlock="0" />
+        <Skill type="禁区之王" level="0" unlock="5" />
+        <Skill type="核弹头" level="0" unlock="10" />
+    </Card>
 
 
     <!-- 魔神 -->
@@ -5098,6 +5123,11 @@
         <Skill type="奥术回声" level="0" unlock="0" />
         <Skill type="浴火" level="0" unlock="5" />
         <Skill type="逆羽罡风" level="0" unlock="10" />
+    </Card>
+    <Card id="6109" name="魔幻神杯" wikiId="" race="魔族" speed="3" star="5" cost="18" incrCost="2" at="520" hp="1508" incrAT="32" incrHP="34">
+        <Skill type="生命之杯" level="0" unlock="0" />
+        <Skill type="荣誉之地" level="0" unlock="5" />
+        <Skill type="我们生命中的时光" level="0" unlock="10" />
     </Card>
 
     <!-- 测试卡 -->
