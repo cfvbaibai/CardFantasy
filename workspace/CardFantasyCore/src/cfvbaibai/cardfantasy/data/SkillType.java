@@ -341,6 +341,7 @@ public enum SkillType {
     国色("", 60, 0, SkillTag.控制, SkillTag.魔王无效),
     魅惑之舞("", 30, 5, SkillTag.控制, SkillTag.魔王无效),
     精神狂乱("", 0),
+    癫狂之舞("", 0),
     离间("", 0),
     无尽华尔兹("", 0),
     禁术无尽华尔兹("", 0),
@@ -563,6 +564,7 @@ public enum SkillType {
     原星之所在("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
     猫神的低语("",0,0, SkillTag.不可洗炼,SkillTag.召唤),
     乱世红颜("",0,0, SkillTag.不可洗炼,SkillTag.召唤),
+    伎町迷影("",0,0, SkillTag.不可洗炼,SkillTag.召唤),
 
     //生成卡牌置入战场
     蜀国英魂("", 2, 0,SkillTag.抗夺魂),
@@ -690,11 +692,14 @@ public enum SkillType {
     妖力侵蚀("", SkillType.雷霆一击,9,SkillType.夺魂,1,SkillTag.抗夺魂),
     蝶语("", SkillType.魅惑之舞,8,SkillType.转生,7,SkillTag.不动),
     蝶息("", SkillType.不屈,0,SkillType.全体加速,1,SkillTag.不动),
+    樱蝶加速("",null,0,SkillType.全体加速,1,SkillTag.不动),
     夜袭("",SkillType.破军,6,SkillType.英雄杀手,8,SkillTag.额外攻击加成, SkillTag.不可洗炼),
     护体石肤("",SkillType.魔甲,2,SkillType.自愈,6),
     倾城之舞("",SkillType.魅惑之舞,10,SkillType.生命符文,10),
     小飞侠("", SkillType.祈愿,2,SkillType.全体加速,1),
     生命之杯("", SkillType.祈福,2,SkillType.生命的触碰,0),
+    酒意被动("", 650, 0, 110, 0, SkillTag.物理护甲,SkillTag.沉默无效),
+    酒意("", SkillType.酒意被动,0,SkillType.自愈,2),
 
     新生("",0,0,SkillTag.新生,SkillTag.抗夺魂),
     重整("",0,0,SkillTag.新生,SkillTag.抗夺魂),
@@ -746,6 +751,7 @@ public enum SkillType {
     敏助("",SkillType.敏捷,5,null,0),
     八卦阵("",1,0),
     荣誉之地("",SkillType.圣盾,0,null,0),
+    花酿("",SkillType.酒意,0,null,0),
 
     //给手牌添加buff
     偷偷削弱("", -50,0),

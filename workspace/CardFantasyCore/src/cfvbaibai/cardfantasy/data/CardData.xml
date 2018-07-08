@@ -1228,6 +1228,16 @@
         <Skill type="潘帕斯雄鹰" level="0" unlock="5" />
         <Skill type="战神" level="0" unlock="10" />
     </Card>
+    <Card id="1641" name="烈火雄心" wikiId="" race="王国" speed="3" star="5" cost="19" incrCost="2" at="520" hp="1600" incrAT="33" incrHP="35">
+        <Skill type="新生" level="0" unlock="0" />
+        <Skill type="神性祈求" level="0" unlock="5" summon="true"/>
+        <Skill type="不屈" level="0" unlock="10" />
+    </Card>
+    <Card id="1642" name="梅洛·斯卡莱特" wikiId="" race="王国" speed="2" star="5" cost="18" incrCost="2" at="485" hp="1535" incrAT="33" incrHP="34">
+        <Skill type="酒意" level="0" unlock="0" />
+        <Skill type="祈愿" level="2" unlock="5"/>
+        <Skill type="花酿" level="0" unlock="10" />
+    </Card>
 
 
     <!-- 森林 -->
@@ -4492,6 +4502,11 @@
         <Skill type="流星火球" level="0" unlock="0" />
         <Skill type="禁区之王" level="0" unlock="5" />
         <Skill type="核弹头" level="0" unlock="10" />
+    </Card>
+    <Card id="4622" name="出云阿国" wikiId="" race="地狱" speed="3" star="5" cost="18" incrCost="2" at="470" hp="1560" incrAT="32" incrHP="30">
+        <Skill type="癫狂之舞" level="0" unlock="0" />
+        <Skill type="伎町迷影" level="0" unlock="5" />
+        <Skill type="樱蝶加速" level="0" unlock="10" />
     </Card>
 
 
