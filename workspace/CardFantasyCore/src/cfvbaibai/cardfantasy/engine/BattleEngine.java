@@ -481,6 +481,7 @@ public class BattleEngine {
                     skillUseInfo.getType() == SkillType.三千世界 ||
                     skillUseInfo.getType() == SkillType.大小通吃 ||
                     skillUseInfo.getType() == SkillType.魔龙之怒 ||
+                    skillUseInfo.getType() == SkillType.兽人之血 ||
                     skillUseInfo.getType() == SkillType.鬼彻 ||
                     skillUseInfo.getType() == SkillType.毒杀) {
                 ui.useSkill(myField.getCard(i), defender, skillUseInfo.getSkill(), true);
@@ -513,6 +514,7 @@ public class BattleEngine {
                         skillUseInfo.getType() == SkillType.三千世界 ||
                         skillUseInfo.getType() == SkillType.大小通吃 ||
                         skillUseInfo.getType() == SkillType.魔龙之怒 ||
+                        skillUseInfo.getType() == SkillType.兽人之血 ||
                         skillUseInfo.getType() == SkillType.鬼彻 ||
                         skillUseInfo.getType() == SkillType.灵击 ||
                         skillUseInfo.getType() == SkillType.毒杀) {

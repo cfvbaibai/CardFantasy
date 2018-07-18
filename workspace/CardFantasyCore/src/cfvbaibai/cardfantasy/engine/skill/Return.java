@@ -21,26 +21,7 @@ public final class Return {
         if (!result.isAttackable()) {
             return;
         }
-        int magicEchoSkillResult =resolver.resolveMagicEchoSkill(attacker,defender,cardSkill);
-        if(magicEchoSkillResult==1||magicEchoSkillResult==2)
-        {
-            if(attacker.isDead())
-            {
-                if (magicEchoSkillResult == 1) {
-                    return;
-                }
-            }
-            else {
-                OnAttackBlockingResult result2 = resolver.resolveAttackBlockingSkills(defender, attacker, cardSkill, 1);
-                if (!result2.isAttackable()) {
-                    if (magicEchoSkillResult == 1) {
-                        return;
-                    }
-                }
-               else returnCard(resolver, cardSkill, defender, attacker);
-            }
-        }
-        if(magicEchoSkillResult==0||magicEchoSkillResult==2) {returnCard(resolver, cardSkill, attacker, defender);}
+        returnCard(resolver, cardSkill, attacker, defender);
     }
 
     public static void returnCard(SkillResolver resolver, Skill cardSkill, CardInfo attacker, CardInfo defender) {

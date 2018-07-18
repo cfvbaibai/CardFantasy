@@ -18,12 +18,12 @@ public final class HellPrison {
             {
                 continue;
             }
-            if(!attackerCard.containsUsableSkill(SkillType.冥域牢囚))
+            if(!attackerCard.containsUsableSkill(SkillType.冥狱牢囚))
             {
                 continue;
             }
             for(SkillUseInfo skillUseInfo :attackerCard.getAllUsableSkills()) {
-                if(skillUseInfo.getSkill().getType()==SkillType.冥域牢囚) {
+                if(skillUseInfo.getSkill().getType()==SkillType.冥狱牢囚) {
                     resolver.getStage().getUI().useSkill(attackerCard, allHandCards, skillUseInfo.getSkill(), true);
                     for (CardInfo card : allHandCards) {
                         resolver.getStage().getUI().useSkill(attackerCard, allHandCards, skillUseInfo.getSkill(), true);
