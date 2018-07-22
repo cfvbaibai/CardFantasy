@@ -349,6 +349,8 @@ public class BattleEngine {
             resolver.removeStatus(myField.getCard(i), CardStatusType.地狱);
             resolver.removeStatus(myField.getCard(i), CardStatusType.致盲);
             resolver.resolveDebuff(myField.getCard(i), CardStatusType.中毒);
+            resolver.resolveDebuff(myField.getCard(i), CardStatusType.咒怨);
+            resolver.resolveAddATDebuff(myField.getCard(i), CardStatusType.咒怨);
             resolver.resolveDebuff(myField.getCard(i), CardStatusType.燃烧);
             resolver.removeStatus(myField.getCard(i), CardStatusType.沉默);
             resolver.removeStatus(myField.getCard(i), CardStatusType.死咒);
@@ -386,6 +388,7 @@ public class BattleEngine {
 
             // 解除状态
             resolver.removeStatus(myField.getCard(i), CardStatusType.中毒);
+            resolver.removeStatus(myField.getCard(i), CardStatusType.咒怨);
             ui.cardActionEnds(card);
         }
 
@@ -416,7 +419,7 @@ public class BattleEngine {
         if (opField.getCard(i) == null) {
             resolver.resolvePreAttackHeroSkills(myField.getCard(i), getInactivePlayer());
             resolver.attackHero(myField.getCard(i), getInactivePlayer(), null, myField.getCard(i).getCurrentAT());
-            if (myField.getCard(i)!=null&&(myField.getCard(i).containsUsableSkill(SkillType.连斩)||myField.getCard(i).containsUsableSkill(SkillType.原素裂变)||myField.getCard(i).containsUsableSkill(SkillType.死亡收割)||myField.getCard(i).containsUsableSkill(SkillType.连狙))) {
+            if (myField.getCard(i)!=null&&(myField.getCard(i).containsUsableSkill(SkillType.连斩)||myField.getCard(i).containsUsableSkill(SkillType.原素裂变)||myField.getCard(i).containsUsableSkill(SkillType.死亡收割)||myField.getCard(i).containsUsableSkill(SkillType.连狙)||myField.getCard(i).containsUsableSkill(SkillType.战神))) {
                 boolean killCard = true;
                 for(;killCard;) {
                     killCard = randomAttackCard(myField, opField, i);
@@ -453,7 +456,7 @@ public class BattleEngine {
             }
             if (myField.getCard(i) != null && !myField.getCard(i).isDead() &&
                         (opField.getCard(i) == null || opField.getCard(i).isDead())) {
-                if (myField.getCard(i)!=null&&(myField.getCard(i).containsUsableSkill(SkillType.连斩)||myField.getCard(i).containsUsableSkill(SkillType.原素裂变)||myField.getCard(i).containsUsableSkill(SkillType.死亡收割)||myField.getCard(i).containsUsableSkill(SkillType.连狙))) {
+                if (myField.getCard(i)!=null&&(myField.getCard(i).containsUsableSkill(SkillType.连斩)||myField.getCard(i).containsUsableSkill(SkillType.原素裂变)||myField.getCard(i).containsUsableSkill(SkillType.死亡收割)||myField.getCard(i).containsUsableSkill(SkillType.连狙)||myField.getCard(i).containsUsableSkill(SkillType.战神))) {
                     boolean killCard = true;
                     for(;killCard;) {
                         killCard = randomAttackCard(myField, opField, i);
@@ -481,6 +484,7 @@ public class BattleEngine {
                     skillUseInfo.getType() == SkillType.三千世界 ||
                     skillUseInfo.getType() == SkillType.大小通吃 ||
                     skillUseInfo.getType() == SkillType.魔龙之怒 ||
+                    skillUseInfo.getType() == SkillType.兽人之血 ||
                     skillUseInfo.getType() == SkillType.鬼彻 ||
                     skillUseInfo.getType() == SkillType.毒杀) {
                 ui.useSkill(myField.getCard(i), defender, skillUseInfo.getSkill(), true);
@@ -513,6 +517,7 @@ public class BattleEngine {
                         skillUseInfo.getType() == SkillType.三千世界 ||
                         skillUseInfo.getType() == SkillType.大小通吃 ||
                         skillUseInfo.getType() == SkillType.魔龙之怒 ||
+                        skillUseInfo.getType() == SkillType.兽人之血 ||
                         skillUseInfo.getType() == SkillType.鬼彻 ||
                         skillUseInfo.getType() == SkillType.灵击 ||
                         skillUseInfo.getType() == SkillType.毒杀) {

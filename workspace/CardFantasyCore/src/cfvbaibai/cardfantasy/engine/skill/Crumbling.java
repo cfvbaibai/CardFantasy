@@ -50,8 +50,10 @@ public class Crumbling {
         }
         GameUI ui = resolver.getStage().getUI();
         for (CardInfo effectCard : candidates) {
-            if (effectCard.containsAllSkill(SkillType.免疫)|| effectCard.containsAllSkill(SkillType.结界立场)|| effectCard.containsAllSkill(SkillType.影青龙)|| effectCard.containsAllSkill(SkillType.恶龙血脉) || effectCard.containsAllSkill(SkillType.魔力抗性)) {
-                continue;
+            ui.useSkill(attacker, effectCard, cardSkill, true);
+            OnAttackBlockingResult result = resolver.resolveAttackBlockingSkills(attacker, effectCard, cardSkill, 1);
+            if (!result.isAttackable()) {
+                return;
             }
             int magicEchoSkillResult = resolver.resolveMagicEchoSkill(attacker, effectCard, cardSkill);
             if (magicEchoSkillResult == 1 || magicEchoSkillResult == 2) {
@@ -60,9 +62,11 @@ public class Crumbling {
                         continue;
                     }
                 } else {
-                    if (attacker.containsAllSkill(SkillType.免疫)|| attacker.containsAllSkill(SkillType.结界立场)|| attacker.containsAllSkill(SkillType.影青龙)|| attacker.containsAllSkill(SkillType.恶龙血脉) || attacker.containsAllSkill(SkillType.魔力抗性)) {
+                    ui.useSkill(effectCard, attacker, cardSkill, true);
+                    OnAttackBlockingResult result2 = resolver.resolveAttackBlockingSkills(effectCard, attacker, cardSkill, 1);
+                    if (!result2.isAttackable()) {
                         if (magicEchoSkillResult == 1) {
-                            continue;
+                            return;
                         }
                     }
                     else if(!attacker.containsUsableSkillsWithTag(SkillTag.不动))
@@ -72,7 +76,6 @@ public class Crumbling {
                         }
                     }
                     else {
-                        ui.useSkill(effectCard, attacker, cardSkill, true);
                         if (attacker == null || attacker.isBoss()) {
                             if (magicEchoSkillResult == 1) {
                                 continue;
@@ -103,7 +106,6 @@ public class Crumbling {
                     continue;
                 }
             }
-            ui.useSkill(attacker, effectCard, cardSkill, true);
             if (effectCard == null || effectCard.isBoss()) {
                 continue;
             }

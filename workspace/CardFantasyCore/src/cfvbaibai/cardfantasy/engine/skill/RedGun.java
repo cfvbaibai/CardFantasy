@@ -41,7 +41,7 @@ public class RedGun {
                             }
                         }
                         else{
-                            if (attackCard.containsAllSkill(SkillType.免疫)|| attackCard.containsAllSkill(SkillType.结界立场)|| attackCard.containsAllSkill(SkillType.影青龙)|| attackCard.containsAllSkill(SkillType.恶龙血脉)|| attackCard.containsAllSkill(SkillType.魔力抗性) || CounterMagic.getBlockSkill(attackCard) != null) {
+                            if (resolver.resolveIsImmune(attackCard,0)) {
                                 damage2 *= magnifier;
                             }
                             ui.attackCard(victim, attackCard, skill, damage2);
@@ -55,7 +55,7 @@ public class RedGun {
                 }
             }
             int actualDamage = damage;
-            if (victim.containsAllSkill(SkillType.免疫)|| victim.containsAllSkill(SkillType.结界立场)|| victim.containsAllSkill(SkillType.影青龙)|| victim.containsAllSkill(SkillType.恶龙血脉)|| victim.containsAllSkill(SkillType.魔力抗性) || CounterMagic.getBlockSkill(victim) != null) {
+            if (resolver.resolveIsImmune(victim,0)) {
                 actualDamage *= magnifier;
             }
             ui.attackCard(attacker, victim, skill, actualDamage);

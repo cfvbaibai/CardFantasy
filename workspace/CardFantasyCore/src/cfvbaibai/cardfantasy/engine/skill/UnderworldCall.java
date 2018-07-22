@@ -18,7 +18,11 @@ public final class UnderworldCall {
         ui.useSkill(attacker, victims, cardSkill, true);
         for (CardInfo victim : victims) {
             int damage = damageInit;
-            if(victim.containsUsableSkill(SkillType.免疫)||victim.containsUsableSkill(SkillType.结界立场)|| victim.containsUsableSkill(SkillType.影青龙)|| victim.containsAllSkill(SkillType.恶龙血脉) || victim.containsUsableSkill(SkillType.魔力抗性) ||victim.isBoss()||victim.isDeman())
+            if(resolver.resolveIsImmune(victim,1))
+            {
+                continue;
+            }
+            else if(victim.isBoss())
             {
                 continue;
             }
@@ -31,8 +35,14 @@ public final class UnderworldCall {
                             continue;
                         }
                     }
+                    else if(resolver.resolveIsImmune(attacker,1)||attacker.isBoss())
+                    {
+                        if (magicEchoSkillResult == 1) {
+                            continue;
+                        }
+                    }
                     else{
-                        if (attacker.getHP() >= attacker.getMaxHP() * threshold / 100) {
+                        if (attacker.getHP() > attacker.getMaxHP() * threshold / 100) {
                             OnAttackBlockingResult result2 = resolver.resolveAttackBlockingSkills(victim, attacker, cardSkill, damage);
                             if (!result2.isAttackable()) {
                                 if (magicEchoSkillResult == 1) {
@@ -55,7 +65,7 @@ public final class UnderworldCall {
                         continue;
                     }
                 }
-                if (victim.getHP() >= victim.getMaxHP() * threshold / 100) {
+                if (victim.getHP() > victim.getMaxHP() * threshold / 100) {
                     OnAttackBlockingResult result = resolver.resolveAttackBlockingSkills(attacker, victim, cardSkill, damage);
                     if (!result.isAttackable()) {
                         continue;

@@ -7,11 +7,12 @@ import cfvbaibai.cardfantasy.GameUI;
 import cfvbaibai.cardfantasy.data.Race;
 import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.engine.CardInfo;
+import cfvbaibai.cardfantasy.engine.EntityInfo;
 import cfvbaibai.cardfantasy.engine.Player;
 import cfvbaibai.cardfantasy.engine.SkillResolver;
 
 public final class HolyFire {
-    public static void apply(Skill cardSkill, SkillResolver resolver, CardInfo attacker, Player defender) {
+    public static void apply(Skill cardSkill, SkillResolver resolver, EntityInfo attacker, Player defender) {
         if (defender.getGrave().size() == 0) {
             return;
         }

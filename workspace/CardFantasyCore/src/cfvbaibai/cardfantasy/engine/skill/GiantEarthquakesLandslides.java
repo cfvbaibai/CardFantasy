@@ -51,7 +51,7 @@ public class GiantEarthquakesLandslides {
         }
         GameUI ui = resolver.getStage().getUI();
         for (CardInfo effectCard : candidates) {
-            if (effectCard.containsAllSkill(SkillType.免疫)|| effectCard.containsAllSkill(SkillType.结界立场)|| effectCard.containsAllSkill(SkillType.影青龙)|| effectCard.containsAllSkill(SkillType.恶龙血脉) || effectCard.containsAllSkill(SkillType.魔力抗性)) {
+            if (resolver.resolveIsImmune(effectCard,1)) {
                 continue;
             }
             int magicEchoSkillResult = resolver.resolveMagicEchoSkill(attacker, effectCard, cardSkill);
@@ -61,7 +61,7 @@ public class GiantEarthquakesLandslides {
                         continue;
                     }
                 } else {
-                    if (attacker.containsAllSkill(SkillType.免疫)|| attacker.containsAllSkill(SkillType.结界立场)|| attacker.containsAllSkill(SkillType.影青龙)|| attacker.containsAllSkill(SkillType.恶龙血脉) || attacker.containsAllSkill(SkillType.魔力抗性)) {
+                    if (resolver.resolveIsImmune(attacker,1)) {
                         if (magicEchoSkillResult == 1) {
                             continue;
                         }

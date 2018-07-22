@@ -9,7 +9,7 @@ import java.util.List;
 
 public final class GreatFireMagic {
     public static void apply(Skill cardSkill, SkillResolver resolver, EntityInfo attacker, Player defender,
-            int victimCount) throws HeroDieSignal {
+            int victimCount,boolean deathFlag) throws HeroDieSignal {
         StageInfo stage = resolver.getStage();
         Randomizer random = stage.getRandomizer();
         GameUI ui = stage.getUI();
@@ -52,7 +52,11 @@ public final class GreatFireMagic {
             }
             damage = result.getDamage();
             ui.attackCard(attacker, victim, cardSkill, damage);
-            resolver.resolveDeathSkills(attacker, victim, cardSkill, resolver.applyDamage(attacker, victim, cardSkill, damage));
+            OnDamagedResult resultDamage=resolver.applyDamage(attacker, victim, cardSkill, damage);
+            //判断是否触发死亡技能
+            if(deathFlag) {
+                resolver.resolveDeathSkills(attacker, victim, cardSkill, resultDamage);
+            }
         }
     }
 }

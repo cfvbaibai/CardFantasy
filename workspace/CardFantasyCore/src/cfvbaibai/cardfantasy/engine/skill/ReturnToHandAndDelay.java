@@ -25,38 +25,9 @@ public final class ReturnToHandAndDelay {
             if (defender == null || defender.isBoss()) {
                 continue;
             }
-            int magicEchoSkillResult =resolver.resolveMagicEchoSkill(attacker,defender,cardSkill);
-            if(magicEchoSkillResult==1||magicEchoSkillResult==2)
-            {
-                if(attacker.isDead())
-                {
-                    if (magicEchoSkillResult == 1) {
-                        continue;
-                    }
-                }
-                else if(attacker.getOwner().getHand().isFull())
-                {
-                    if (magicEchoSkillResult == 1) {
-                        continue;
-                    }
-                }
-                else if (attacker == null || attacker.isBoss()) {
-                    if (magicEchoSkillResult == 1) {
-                        continue;
-                    }
-                }
-                else {
-                    ui.useSkill(defender, attacker, cardSkill, true);
-                    Return.returnHand(resolver, cardSkill, defender, attacker);
-                    int summonDelay = attacker.getSummonDelay();
-                    if (!attacker.getStatus().containsStatus(CardStatusType.召唤)) {
-                        resolver.getStage().getUI().increaseSummonDelay(attacker, delay);
-                        attacker.setSummonDelay(summonDelay + delay);
-                    }
-                    if (magicEchoSkillResult == 1) {
-                        continue;
-                    }
-                }
+            OnAttackBlockingResult result = resolver.resolveAttackBlockingSkills(attacker, defender, cardSkill, 1);
+            if (!result.isAttackable()) {
+                continue;
             }
             ui.useSkill(attacker, defender, cardSkill, true);
             Return.returnHand(resolver, cardSkill, attacker, defender);

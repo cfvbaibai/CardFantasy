@@ -18,7 +18,7 @@ public final class IceArmor {
         }
         
         int maxDamage = cardSkill.getImpact();
-        if (cardSkill.getType() == SkillType.魔龙之血 || cardSkill.getType() == SkillType.神魔之甲) {
+        if (cardSkill.getType() == SkillType.魔龙之血 || cardSkill.getType() == SkillType.神魔之甲|| cardSkill.getType() == SkillType.酒意|| cardSkill.getType() == SkillType.酒意被动) {
             maxDamage = cardSkill.getImpact2();
         }
         int actualDamage = originalDamage;
