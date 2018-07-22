@@ -38,6 +38,11 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2018-07-22: <x>欢笑，波波</x><ul>
+                        <li>更新卡牌【萌虎御风使】，【帝国守望者】，【帝国审判者】，【雪女】，【熔岩领主】，【混沌体】</li>
+                        <li>觉醒n区卡牌【原白羊座】以及更改卡牌【原星之守护者】</li>
+                        <li>修改【守护】不能抵挡【自动扣血】</li>
+                    </ul></li>
                     <li>2018-07-18: <x>欢笑，波波</x><ul>
                         <li>修改技能【奥术回声】，调整法术扼杀类技能不再触发死契技能</li>
                     </ul></li>

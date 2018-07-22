@@ -1264,6 +1264,21 @@
         <Skill type="寒冰触碰" level="6" unlock="5" />
         <Skill type="零度领域" level="0" unlock="10" />
     </Card>
+    <Card id="1648" name="萌虎御风使" wikiId="" race="王国" speed="3" star="5" cost="19" incrCost="2" at="535" hp="1655" incrAT="35" incrHP="35">
+        <Skill type="羽扇虎拳" level="0" unlock="0" />
+        <Skill type="药桶爆弹" level="0" unlock="5" />
+        <Skill type="赤焰战场" level="0" unlock="10" />
+    </Card>
+    <Card id="1649" name="帝国审判者" wikiId="" race="王国" speed="3" star="5" cost="19" incrCost="2" at="575" hp="1585" incrAT="40" incrHP="40">
+        <Skill type="灵魂消散" level="0" unlock="0" />
+        <Skill type="侵蚀" level="0" unlock="5" />
+        <Skill type="最终判决" level="0" unlock="10" />
+    </Card>
+    <Card id="1650" name="帝国守望者" wikiId="" race="王国" speed="3" star="5" cost="19" incrCost="2" at="540" hp="1650" incrAT="40" incrHP="42">
+        <Skill type="帝国光辉" level="0" unlock="0" />
+        <Skill type="荣耀降临" level="0" unlock="5" />
+        <Skill type="审判之姿" level="0" unlock="10" />
+    </Card>
 
 
     <!-- 森林 -->
@@ -2350,6 +2365,11 @@
         <Skill type="森之助" level="0" unlock="0" />
         <Skill type="御魔屏障" level="0" unlock="5" />
         <Skill type="铁壁方阵" level="0" unlock="10" />
+    </Card>
+    <Card id="2627" name="原白羊座" wikiId="" race="森林" speed="4" star="5" cost="17" incrCost="2" at="280" hp="1600" incrAT="29" incrHP="46">
+        <Skill type="星座能量控制" level="0" unlock="0" />
+        <Skill type="寒霜冲击" level="8" unlock="5" />
+        <Skill type="全体裂伤" level="0" unlock="10" />
     </Card>
 
 
@@ -4614,6 +4634,19 @@
         <Skill type="星座能量平衡" level="0" unlock="0" />
         <Skill type="回魂" level="2" unlock="5" summon="true"/>
         <Skill type="祈愿" level="1" unlock="10" />
+    </Card>
+    <Card id="4632" name="雪女" wikiId="" race="地狱" speed="3" star="5" cost="21" incrCost="2" at="590" hp="1670" incrAT="47" incrHP="43">
+        <Skill type="咒怨" level="0" unlock="0" />
+        <Skill type="雪幕" level="0" unlock="5" />
+        <Skill type="冰肌雪骨" level="0" unlock="10" />
+    </Card>
+    <Card id="4633" name="熔岩领主" wikiId="" race="地狱" speed="4" star="5" cost="16" incrCost="2" at="555" hp="1450" incrAT="35" incrHP="39">
+        <Skill type="混乱之源" level="0" unlock="0" />
+        <Skill type="地狱烈焰" level="0" unlock="5" />
+        <Skill type="赤焰战场" level="0" unlock="10" />
+    </Card>
+    <Card id="4634" name="混沌体" wikiId="" race="地狱" speed="6" star="5" cost="99" incrCost="0" at="1" hp="800" incrAT="0" incrHP="0">
+        <Skill type="不屈" level="0" unlock="0" />
     </Card>
 
 
