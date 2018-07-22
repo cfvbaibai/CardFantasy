@@ -45,10 +45,11 @@ public class Grudge {
         }
     }
 
-    public static void Infected(SkillResolver resolver, CardInfo defendCard, Player defenderHero) throws HeroDieSignal {
+    public static void Infected(SkillResolver resolver, CardInfo defendCard) throws HeroDieSignal {
         if (defendCard == null) {
             return;
         }
+        Player defenderHero = defendCard.getOwner();
         List<CardStatusItem> items = defendCard.getStatus().getStatusOf(CardStatusType.咒怨);
         CardStatusItem item = items.get(0);
         SkillUseInfo skillUseInfo=item.getCause();

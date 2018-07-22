@@ -1680,7 +1680,7 @@ public class SkillResolver {
             ControlGhost.explode(this, deadCard, result, "摄魂", "噬血", "贪魔", "夺魄");
         }
         if (deadCard.getStatus().containsStatus(CardStatusType.咒怨) && deadCard.isDead()) {
-            Grudge.Infected(this,deadCard,opponent);
+            Grudge.Infected(this,deadCard);
         }
         // HACKHACK: Cannot find better way to handle 不屈/
         //改变不屈的去掉buff位置，为GiveSideSkill做的处理
