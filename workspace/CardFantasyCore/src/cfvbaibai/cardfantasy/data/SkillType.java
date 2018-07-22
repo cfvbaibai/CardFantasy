@@ -408,10 +408,10 @@ public enum SkillType {
     武形天火击("", 0, SkillTag.即死, SkillTag.抗不屈),
     咆哮("", 0, SkillTag.即死, SkillTag.抗不屈),
     瓦解("", 0, SkillTag.即死, SkillTag.抗不屈),
-    冥府之召("",75,0,570,0, SkillTag.魔法, SkillTag.魔王无效, SkillTag.魔族天赋),
-    药桶爆弹("",70,0,700,0, SkillTag.魔法, SkillTag.魔王无效, SkillTag.魔族天赋),
-    死亡宣告("",100,0,700,0, SkillTag.魔法),
-    烈焰审判("",70,0,700,0, SkillTag.魔法),
+    冥府之召("",75,0,570,0, SkillTag.魔法, SkillTag.魔王无效),
+    药桶爆弹("",70,0,700,0, SkillTag.魔法, SkillTag.魔王无效),
+    死亡宣告("",100,0,700,0, SkillTag.魔法, SkillTag.魔王无效),
+    烈焰审判("",70,0,700,0, SkillTag.魔法, SkillTag.魔王无效),
     潜摧("", 0, SkillTag.即死, SkillTag.抗不屈, SkillTag.不动),
 
 

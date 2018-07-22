@@ -1407,7 +1407,7 @@ public class SkillResolver {
                 {
                     for (SkillUseInfo skillUseInfo : attackFiled.getUsableNormalSkills()) {
                         if (skillUseInfo.getType() == SkillType.羽扇虎拳) {
-                            PercentagAttackHero.apply(this, skillUseInfo.getSkill(), attackFiled, opponent);
+                            PercentagAttackHero.apply(this, skillUseInfo.getSkill(), attackFiled,deadCard);
                         }
                     }
                 }

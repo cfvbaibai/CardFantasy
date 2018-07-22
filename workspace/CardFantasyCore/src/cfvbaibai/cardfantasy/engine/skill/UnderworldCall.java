@@ -22,6 +22,10 @@ public final class UnderworldCall {
             {
                 continue;
             }
+            else if(victim.isBoss())
+            {
+                continue;
+            }
             else{
                 int magicEchoSkillResult = resolver.resolveMagicEchoSkill(attacker, victim, cardSkill);
                 if (magicEchoSkillResult==1||magicEchoSkillResult==2) {
@@ -31,14 +35,14 @@ public final class UnderworldCall {
                             continue;
                         }
                     }
-                    else if(resolver.resolveIsImmune(attacker,1))
+                    else if(resolver.resolveIsImmune(attacker,1)||attacker.isBoss())
                     {
                         if (magicEchoSkillResult == 1) {
                             continue;
                         }
                     }
                     else{
-                        if (attacker.getHP() >= attacker.getMaxHP() * threshold / 100) {
+                        if (attacker.getHP() > attacker.getMaxHP() * threshold / 100) {
                             OnAttackBlockingResult result2 = resolver.resolveAttackBlockingSkills(victim, attacker, cardSkill, damage);
                             if (!result2.isAttackable()) {
                                 if (magicEchoSkillResult == 1) {
@@ -61,7 +65,7 @@ public final class UnderworldCall {
                         continue;
                     }
                 }
-                if (victim.getHP() >= victim.getMaxHP() * threshold / 100) {
+                if (victim.getHP() > victim.getMaxHP() * threshold / 100) {
                     OnAttackBlockingResult result = resolver.resolveAttackBlockingSkills(attacker, victim, cardSkill, damage);
                     if (!result.isAttackable()) {
                         continue;
