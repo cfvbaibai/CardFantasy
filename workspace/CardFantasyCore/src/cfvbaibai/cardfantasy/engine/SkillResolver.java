@@ -864,6 +864,8 @@ public class SkillResolver {
                 }
             }
         }
+        resolveDebuff(attacker, CardStatusType.咒怨);
+        resolveAddATDebuff(attacker, CardStatusType.咒怨);
     }
 
     public void resolvePostAttackSkills(CardInfo attacker, Player defender) {
@@ -1922,17 +1924,19 @@ public class SkillResolver {
     public OnDamagedResult applyDamage(EntityInfo attacker, CardInfo defender, Skill skill, int damage) throws HeroDieSignal {
         OnDamagedResult result = new OnDamagedResult();
         List<CardStatusItem> unbendingStatusItems = defender.getStatus().getStatusOf(CardStatusType.不屈);
-        if ((defender.containsUsableSkill(SkillType.魔族之血) || defender.containsUsableSkill(SkillType.邪甲术) || defender.containsUsableSkill(SkillType.不朽原核) || defender.containsUsableSkill(SkillType.白袍银甲))) {
-            for (SkillUseInfo skillUseInfo : defender.getUsableNormalSkills()) {
-                if (skillUseInfo.getType() == SkillType.魔族之血 || skillUseInfo.getType() == SkillType.邪甲术 || skillUseInfo.getType() == SkillType.不朽原核 || skillUseInfo.getType() == SkillType.白袍银甲) {
-                    if (attacker instanceof CardInfo) {
-                        if (resolveStopBlockSkill(skillUseInfo.getSkill(), (CardInfo) attacker, defender)) {
-                            break;
+        if(skill.getType()!=SkillType.咒怨) {
+            if ((defender.containsUsableSkill(SkillType.魔族之血) || defender.containsUsableSkill(SkillType.邪甲术) || defender.containsUsableSkill(SkillType.不朽原核) || defender.containsUsableSkill(SkillType.白袍银甲))) {
+                for (SkillUseInfo skillUseInfo : defender.getUsableNormalSkills()) {
+                    if (skillUseInfo.getType() == SkillType.魔族之血 || skillUseInfo.getType() == SkillType.邪甲术 || skillUseInfo.getType() == SkillType.不朽原核 || skillUseInfo.getType() == SkillType.白袍银甲) {
+                        if (attacker instanceof CardInfo) {
+                            if (resolveStopBlockSkill(skillUseInfo.getSkill(), (CardInfo) attacker, defender)) {
+                                break;
+                            }
                         }
+                        damage = (damage - skillUseInfo.getSkill().getImpact()) > 0 ? (damage - skillUseInfo.getSkill().getImpact()) : 0;
+                        stage.getUI().useSkill(defender, skillUseInfo.getSkill(), true);
+                        break;
                     }
-                    damage = (damage - skillUseInfo.getSkill().getImpact()) > 0 ? (damage - skillUseInfo.getSkill().getImpact()) : 0;
-                    stage.getUI().useSkill(defender, skillUseInfo.getSkill(), true);
-                    break;
                 }
             }
         }

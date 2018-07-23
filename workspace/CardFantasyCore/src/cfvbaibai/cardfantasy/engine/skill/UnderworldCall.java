@@ -18,8 +18,8 @@ public final class UnderworldCall {
         ui.useSkill(attacker, victims, cardSkill, true);
         for (CardInfo victim : victims) {
             int damage = damageInit;
-            if(resolver.resolveIsImmune(victim,1))
-            {
+            OnAttackBlockingResult result = resolver.resolveAttackBlockingSkills(attacker, victim, cardSkill, damage);
+            if (!result.isAttackable()) {
                 continue;
             }
             else if(victim.isBoss())
@@ -35,41 +35,30 @@ public final class UnderworldCall {
                             continue;
                         }
                     }
-                    else if(resolver.resolveIsImmune(attacker,1)||attacker.isBoss())
-                    {
-                        if (magicEchoSkillResult == 1) {
-                            continue;
-                        }
-                    }
-                    else{
-                        if (attacker.getHP() > attacker.getMaxHP() * threshold / 100) {
-                            OnAttackBlockingResult result2 = resolver.resolveAttackBlockingSkills(victim, attacker, cardSkill, damage);
-                            if (!result2.isAttackable()) {
-                                if (magicEchoSkillResult == 1) {
-                                    continue;
-                                }
+                    else {
+                        OnAttackBlockingResult result2 = resolver.resolveAttackBlockingSkills(victim, attacker, cardSkill, damageInit);
+                        if (!result2.isAttackable()) {
+                            if (magicEchoSkillResult == 1) {
+                                continue;
                             }
-                            else {
-                                int damage2 = result2.getDamage();
-                                ui.attackCard(victim, attacker, cardSkill, damage2);
-                                resolver.resolveDeathSkills(victim, attacker, cardSkill, resolver.applyDamage(victim, attacker, cardSkill, damage2));
+                        } else {
+                            if (attacker.getHP() >= attacker.getMaxHP() * threshold / 100) {
+                                    int damage2 = result2.getDamage();
+                                    ui.attackCard(victim, attacker, cardSkill, damage2);
+                                    resolver.resolveDeathSkills(victim, attacker, cardSkill, resolver.applyDamage(victim, attacker, cardSkill, damage2));
+                            } else {
+                                ui.killCard(victim, attacker, cardSkill);
+                                attacker.removeStatus(CardStatusType.不屈);
+                                resolver.killCard(victim, attacker, cardSkill);
                             }
-                        }
-                        else{
-                            ui.killCard(victim, attacker, cardSkill);
-                            attacker.removeStatus(CardStatusType.不屈);
-                            resolver.killCard(victim, attacker, cardSkill);
                         }
                     }
                     if (magicEchoSkillResult == 1) {
                         continue;
                     }
+
                 }
-                if (victim.getHP() > victim.getMaxHP() * threshold / 100) {
-                    OnAttackBlockingResult result = resolver.resolveAttackBlockingSkills(attacker, victim, cardSkill, damage);
-                    if (!result.isAttackable()) {
-                        continue;
-                    }
+                if (victim.getHP() >= victim.getMaxHP() * threshold / 100) {
                     damage = result.getDamage();
                     ui.attackCard(attacker, victim, cardSkill, damage);
                     resolver.resolveDeathSkills(attacker, victim, cardSkill,  resolver.applyDamage(attacker, victim, cardSkill,damage));

@@ -13,7 +13,15 @@ public class Grudge {
 
         StageInfo stage = resolver.getStage();
         Randomizer random = stage.getRandomizer();
-        List<CardInfo> victims = random.pickRandom(defenderHero.getField().toList(), victimCount, true, null);
+        List<CardInfo> excluCards=new ArrayList<>();
+        for(CardInfo fieldCard:defenderHero.getField().getAliveCards())
+        {
+            if(fieldCard.getStatus().containsStatus(CardStatusType.咒怨))
+            {
+                excluCards.add(fieldCard);
+            }
+        }
+        List<CardInfo> victims = random.pickRandom(defenderHero.getField().toList(), victimCount, true, excluCards);
 
         if (victims.size() == 0) {
             return;

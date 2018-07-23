@@ -349,8 +349,6 @@ public class BattleEngine {
             resolver.removeStatus(myField.getCard(i), CardStatusType.地狱);
             resolver.removeStatus(myField.getCard(i), CardStatusType.致盲);
             resolver.resolveDebuff(myField.getCard(i), CardStatusType.中毒);
-            resolver.resolveDebuff(myField.getCard(i), CardStatusType.咒怨);
-            resolver.resolveAddATDebuff(myField.getCard(i), CardStatusType.咒怨);
             resolver.resolveDebuff(myField.getCard(i), CardStatusType.燃烧);
             resolver.removeStatus(myField.getCard(i), CardStatusType.沉默);
             resolver.removeStatus(myField.getCard(i), CardStatusType.死咒);
