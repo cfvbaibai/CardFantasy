@@ -399,7 +399,7 @@ public class SkillResolver {
                 Seal.apply(skillUseInfo, this, attacker, defender);
             } else if (skillUseInfo.getType() == SkillType.圣炎) {
                 HolyFire.apply(skillUseInfo.getSkill(), this, attacker, defender);
-            } else if (skillUseInfo.getType() == SkillType.法力侵蚀 || skillUseInfo.getType() == SkillType.灵王的轰击 ||
+            } else if (skillUseInfo.getType() == SkillType.法力侵蚀 || skillUseInfo.getType() == SkillType.灵王的轰击 || skillUseInfo.getType() == SkillType.灵能冲击 ||
                     skillUseInfo.getType() == SkillType.觉醒灵王的轰击 && attacker.isAwaken(skillUseInfo, Race.FOREST, 2)) {
                 ManaErode.apply(skillUseInfo.getSkill(), this, attacker, defender, 1);
             } else if (skillUseInfo.getType() == SkillType.破魔手) {
@@ -533,6 +533,9 @@ public class SkillResolver {
                         "光明之龙", "金属巨龙", "黄金金属巨龙", "元素灵龙", "暴怒霸龙", "毁灭之龙", "幽灵巨龙",
                         "水晶巨龙", "毒雾羽龙", "黄金毒龙", "地魔龙", "邪狱魔龙", "混沌之龙", "地狱雷龙");
             } else if (skillUseInfo.getType() == SkillType.寒霜召唤) {
+                Summon.apply(this, skillUseInfo, attacker, SummonType.Random, 1,
+                        "陨星魔法使", "怒雪咆哮", "圣诞老人", "寒霜冰灵使", "白羊座", "霜狼酋长", "雪月花", "梦魇猎手·霜");
+            } else if (skillUseInfo.getType() == SkillType.原寒霜召唤) {
                 Summon.apply(this, skillUseInfo, attacker, SummonType.Random, 1,
                         "陨星魔法使", "怒雪咆哮", "圣诞老人", "寒霜冰灵使", "白羊座", "霜狼酋长", "雪月花", "梦魇猎手·霜");
             } else if (skillUseInfo.getType() == SkillType.无尽梦魇) {
@@ -1200,7 +1203,7 @@ public class SkillResolver {
 
                 for (SkillUseInfo blockSkillUseInfo : defender.getUsableNormalSkills()) {
                     if (blockSkillUseInfo.getType() == SkillType.免疫 || blockSkillUseInfo.getType() == SkillType.结界立场 || blockSkillUseInfo.getType() == SkillType.影青龙
-                            || blockSkillUseInfo.getType() == SkillType.禁区之王 || blockSkillUseInfo.getType() == SkillType.恶龙血脉
+                            || blockSkillUseInfo.getType() == SkillType.禁区之王 || blockSkillUseInfo.getType() == SkillType.恶龙血脉|| blockSkillUseInfo.getType() == SkillType.彻骨之寒|| blockSkillUseInfo.getType() == SkillType.灵能冲击
                             || blockSkillUseInfo.getType() == SkillType.魔力抗性 || blockSkillUseInfo.getType() == SkillType.轮回渡厄 || blockSkillUseInfo.getType() == SkillType.明月渡我) {
                         if (Immue.isSkillBlocked(this, blockSkillUseInfo.getSkill(), attackSkill, attacker, defender)) {
                             result.setAttackable(false);
@@ -1466,6 +1469,12 @@ public class SkillResolver {
                 ManaErode.apply(deadCardSkillUseInfo.getSkill(), this, deadCard.getOwner(), opponent, -1);
             } else if (deadCardSkillUseInfo.getType() == SkillType.万兽奔腾) {
                 Summon.apply(this, deadCardSkillUseInfo, deadCard, SummonType.Random, 2,
+                        "麒麟兽","凤凰", "浮云青鸟", "九头妖蛇", "雷兽", "羽翼化蛇", "神谕火狐",
+                        "齐天美猴王", "羽蛇神", "月蚀兽", "逐月恶狼", "逐日凶狼", "月之神兽", "山地兽","逐月恶狼","圣翼白虎",
+                        "炙阳麒麟","霜月麒麟","雪峰飞狐","九尾妖狐","魔卡策划","深海怪鱼","冰霜巨蛙","冰焰狼"
+                );
+            } else if (deadCardSkillUseInfo.getType() == SkillType.狂野之怒) {
+                Summon.apply(this, deadCardSkillUseInfo, deadCard, SummonType.Random, 2,
                         "凤凰", "浮云青鸟", "九头妖蛇", "雷兽", "羽翼化蛇", "神谕火狐",
                         "齐天美猴王", "羽蛇神", "月蚀兽", "逐月恶狼", "逐日凶狼", "月之神兽", "山地兽");
             } else if (deadCardSkillUseInfo.getType() == SkillType.武形降临) {
@@ -1654,6 +1663,8 @@ public class SkillResolver {
             } else if (deadCardSkillUseInfo.getType() == SkillType.逆鳞) {
                 Snipe.apply(deadCardSkillUseInfo, deadCardSkillUseInfo.getSkill().getAttachedSkill1(), this, deadCard, opponent, -1);
                 Snipe.apply(deadCardSkillUseInfo, deadCardSkillUseInfo.getSkill().getAttachedSkill2(), this, deadCard, opponent, 3);
+            } else if (deadCardSkillUseInfo.getType() == SkillType.幻化) {
+                Summon.apply(this, deadCardSkillUseInfo, deadCard, SummonType.Normal, 1, deadCard.getName());
             }
         }
         if (!deadCard.isSilent()) {
@@ -1754,6 +1765,9 @@ public class SkillResolver {
                 if (!defender.isDead() && defender.getStatus().containsStatus(CardStatusType.燃烧)) {
                     Destroy.apply(this, skillUseInfo.getSkill(), attacker, defender);
                 }
+            }
+            if (skillUseInfo.getType() == SkillType.幻影军团) {
+                SummonWhenAttack.apply(this, skillUseInfo, attacker, 2,attacker.getName());
             }
         }
         if (!attacker.isDead() && !attacker.isSilent()) {
@@ -2092,6 +2106,18 @@ public class SkillResolver {
             if (attacker instanceof CardInfo) {
                 CardInfo attackerCard = (CardInfo) attacker;
                 this.removeStatus(attackerCard, CardStatusType.麻痹);
+            }
+        }
+    }
+
+    public void resolveExtraAttackHeroSkills(CardInfo attacker, Player defenderHero) throws HeroDieSignal {
+        if (!attacker.containsUsableSkill(SkillType.幻影军团))
+        {
+            return;
+        }
+        for (SkillUseInfo skillUseInfo : attacker.getUsableNormalSkills()) {
+            if (skillUseInfo.getType() == SkillType.幻影军团) {
+                SummonWhenAttack.apply(this, skillUseInfo, attacker, 2,attacker.getName());
             }
         }
     }
@@ -2456,6 +2482,10 @@ public class SkillResolver {
                     Summon.apply(this, skillUseInfo, card, SummonType.RandomSummoning, 2,
                             "麒麟兽", "凤凰", "浮云青鸟", "九头妖蛇", "雷兽", "羽翼化蛇", "神谕火狐",
                             "齐天美猴王", "羽蛇神", "月蚀兽", "逐月恶狼", "逐日凶狼", "月之神兽", "山地兽");
+                } else if (skillUseInfo.getType() == SkillType.狂野之怒) {
+                    Summon.apply(this, skillUseInfo, card, SummonType.RandomSummoning, 2,
+                            "凤凰", "浮云青鸟", "九头妖蛇", "雷兽", "羽翼化蛇", "神谕火狐",
+                            "齐天美猴王", "羽蛇神", "月蚀兽", "逐月恶狼", "逐日凶狼", "月之神兽", "山地兽");
                 } else if (skillUseInfo.getType() == SkillType.三国英才) {
                     Summon.apply(this, skillUseInfo, card, SummonType.RandomSummoning, 1,
                             "三国英魂卧龙", "三国英魂仲达", "三国英魂孔明", "三国英魂子敬", "三国英魂伯言", "三国英魂文若");
@@ -2619,6 +2649,10 @@ public class SkillResolver {
                 } else if (skillUseInfo.getType() == SkillType.猫神的低语) {
                     Summon.apply(this, skillUseInfo, card, SummonType.Summoning, 1,
                             "帝国审判者");
+                } else if (skillUseInfo.getType() == SkillType.彻骨之寒) {
+                    IceTouch.apply(skillUseInfo, this, card, enemy, 3);
+                } else if (skillUseInfo.getType() == SkillType.凛冬将至) {
+                    IceTouch.apply(skillUseInfo, this, card, enemy, -1);
                 }
             }
         }
@@ -2967,13 +3001,14 @@ public class SkillResolver {
     public boolean resolveIsImmune(CardInfo defender, int type) {
         //0包括法反，1只有免疫
         if (type == 0) {
-            if (defender.containsAllSkill(SkillType.免疫) || defender.containsAllSkill(SkillType.结界立场) || defender.containsAllSkill(SkillType.影青龙) || defender.containsAllSkill(SkillType.禁区之王)
-                    || defender.containsAllSkill(SkillType.恶龙血脉) || defender.containsAllSkill(SkillType.魔力抗性) || defender.containsAllSkill(SkillType.轮回渡厄) || defender.containsAllSkill(SkillType.明月渡我) || CounterMagic.getBlockSkill(defender) != null) {
+            if (defender.containsAllSkill(SkillType.免疫) || defender.containsAllSkill(SkillType.结界立场) || defender.containsAllSkill(SkillType.影青龙) || defender.containsAllSkill(SkillType.禁区之王)|| defender.containsAllSkill(SkillType.彻骨之寒)
+                    || defender.containsAllSkill(SkillType.恶龙血脉) || defender.containsAllSkill(SkillType.魔力抗性) || defender.containsAllSkill(SkillType.灵能冲击)
+                    || defender.containsAllSkill(SkillType.轮回渡厄) || defender.containsAllSkill(SkillType.明月渡我) || CounterMagic.getBlockSkill(defender) != null) {
                 return true;
             }
         } else if (type == 1) {
-            if (defender.containsAllSkill(SkillType.免疫) || defender.containsAllSkill(SkillType.结界立场) || defender.containsAllSkill(SkillType.影青龙)
-                    || defender.containsAllSkill(SkillType.禁区之王) || defender.containsAllSkill(SkillType.恶龙血脉) || defender.containsAllSkill(SkillType.魔力抗性)
+            if (defender.containsAllSkill(SkillType.免疫) || defender.containsAllSkill(SkillType.结界立场) || defender.containsAllSkill(SkillType.影青龙)|| defender.containsAllSkill(SkillType.彻骨之寒)
+                    || defender.containsAllSkill(SkillType.禁区之王) || defender.containsAllSkill(SkillType.恶龙血脉) || defender.containsAllSkill(SkillType.魔力抗性)|| defender.containsAllSkill(SkillType.灵能冲击)
                     || defender.containsAllSkill(SkillType.轮回渡厄) || defender.containsAllSkill(SkillType.明月渡我)) {
                 return true;
             }

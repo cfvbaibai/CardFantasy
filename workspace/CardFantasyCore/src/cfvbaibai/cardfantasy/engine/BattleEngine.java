@@ -417,6 +417,7 @@ public class BattleEngine {
         if (opField.getCard(i) == null) {
             resolver.resolvePreAttackHeroSkills(myField.getCard(i), getInactivePlayer());
             resolver.attackHero(myField.getCard(i), getInactivePlayer(), null, myField.getCard(i).getCurrentAT());
+            resolver.resolveExtraAttackHeroSkills(myField.getCard(i), getInactivePlayer());
             if (myField.getCard(i)!=null&&(myField.getCard(i).containsUsableSkill(SkillType.连斩)||myField.getCard(i).containsUsableSkill(SkillType.原素裂变)||myField.getCard(i).containsUsableSkill(SkillType.死亡收割)||myField.getCard(i).containsUsableSkill(SkillType.连狙)||myField.getCard(i).containsUsableSkill(SkillType.战神))) {
                 boolean killCard = true;
                 for(;killCard;) {

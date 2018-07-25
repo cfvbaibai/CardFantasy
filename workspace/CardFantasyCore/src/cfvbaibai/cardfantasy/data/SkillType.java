@@ -463,6 +463,7 @@ public enum SkillType {
     核弹头("", 550, 0, 3, 0, SkillTag.抗免疫),
     破魔手("", 0, 20, 3, 0, SkillTag.抗免疫),
     灵王的轰击("", 250, 50, 3, 0, SkillTag.抗免疫),
+    灵能冲击("", 250, 50, 3, 0, SkillTag.抗免疫),
     觉醒灵王的轰击("", 250, 50, 3, 0, SkillTag.不可洗炼, SkillTag.抗免疫),
     法力风暴("", 0, 20, 3, 0, SkillTag.抗免疫),
     片翼天使("", 300, 0, 6, 0, SkillTag.抗免疫),
@@ -480,6 +481,9 @@ public enum SkillType {
     天神下凡("", 2500, 0, 1, 0, new int[] {100,100,100,100,100,100,100,100,100,100,100}, SkillTag.抗免疫,SkillTag.魔法,SkillTag.雷系灵轰),
     薜荔之怒("", 800, 0, 2, 0, new int[] {75,75,75,75,75,75,75,75,75,75,75}, SkillTag.抗免疫,SkillTag.魔法,SkillTag.雷系灵轰),
     雷切("",400,0,3, 0,new int[] {75,75,75,75,75,75,75,75,75,75,75},SkillTag.抗免疫,SkillTag.魔法,SkillTag.雷系灵轰),
+
+    彻骨之寒("", 600, 0, 3, 0, new int[] {50,50,50,50,50,50,50,50,50,50,50}, SkillTag.抗免疫),
+    凛冬将至("", 300, 0, 3, 0, new int[] {50,50,50,50,50,50,50,50,50,50,50}, SkillTag.抗免疫),
 
     大地之盾("80193", 0, SkillTag.控制, SkillTag.抗免疫, SkillTag.魔王无效, SkillTag.魔族天赋),
     一闪("", 50, 0, SkillTag.控制, SkillTag.抗免疫, SkillTag.魔王无效, SkillTag.魔族天赋),
@@ -552,6 +556,7 @@ public enum SkillType {
     七十二变("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
     英灵降临("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
     寒霜召唤("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
+    原寒霜召唤("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
     星之所在("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
     灵龙轰咆("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
     无尽梦魇("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
@@ -603,6 +608,9 @@ public enum SkillType {
     化鹏("",0,0, SkillTag.不可洗炼,SkillTag.召唤),
     审判之姿("",0,0, SkillTag.不可洗炼,SkillTag.召唤),
     混乱之源("",0,0, SkillTag.不可洗炼,SkillTag.召唤),
+    狂野之怒("",0,0, SkillTag.不可洗炼,SkillTag.召唤),
+    幻化("",0,0, SkillTag.不可洗炼,SkillTag.召唤,SkillTag.不动),
+    幻影军团("",4,0,70,0, SkillTag.不可洗炼,SkillTag.召唤),
 
     //生成卡牌置入战场
     蜀国英魂("", 2, 0,SkillTag.抗夺魂),
