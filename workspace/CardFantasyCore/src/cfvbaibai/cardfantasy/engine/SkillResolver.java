@@ -187,7 +187,7 @@ public class SkillResolver {
 
     public void resolvePreAttackSkills(CardInfo attacker, Player defender, int status) throws HeroDieSignal {
         for (SkillUseInfo skillUseInfo : attacker.getUsableNormalSkills()) {
-            if (attacker.isDead()) {
+            if (attacker.isDead()||attacker.getStatus().containsStatus(CardStatusType.不屈)) {
                 continue;
             }
             if (skillUseInfo.getType() == SkillType.透支 || skillUseInfo.getType() == SkillType.过载) {
@@ -195,7 +195,7 @@ public class SkillResolver {
             }
         }
         for (SkillUseInfo skillUseInfo : attacker.getUsableNormalSkills()) {
-            if (attacker.isDead()) {
+            if (attacker.isDead()||attacker.getStatus().containsStatus(CardStatusType.不屈)) {
                 continue;
             }
             if (skillUseInfo.getType() == SkillType.未知) {
@@ -2188,7 +2188,7 @@ public class SkillResolver {
         OnAttackBlockingResult blockingResult = stage.getResolver().resolveAttackBlockingSkills(
                 attacker, defender, skill, damage);
         if (!blockingResult.isAttackable()) {
-            this.removeStatus(attacker, CardStatusType.不屈);
+         //   this.removeStatus(attacker, CardStatusType.不屈);
             return null;
         }
         if (skill == null) {
@@ -2201,7 +2201,7 @@ public class SkillResolver {
         }
         this.stage.getUI().attackCard(attacker, defender, skill, blockingResult.getDamage());
         OnDamagedResult damagedResult = stage.getResolver().applyDamage(attacker, defender, skill, blockingResult.getDamage());
-        this.removeStatus(attacker, CardStatusType.不屈);
+       // this.removeStatus(attacker, CardStatusType.不屈);
 
         resolvePostAttackSkills(attacker, defender, defender.getOwner(), skill, damagedResult.actualDamage);
         stage.getResolver().resolveDeathSkills(attacker, defender, skill, damagedResult);
@@ -2925,6 +2925,10 @@ public class SkillResolver {
             this.resolveFirstClassSummoningSkills(summonedCard, player, enemy, isMinion);
         }
         List<CardInfo> fieldCards = player.getField().toList();
+
+        for (CardInfo card : fieldCards) {
+            this.stage.getResolver().removeStatus(card, CardStatusType.复活);
+        }
 //      改变发动技能是所有卡牌不是当回合召唤卡牌
 //        this.resolveSecondClassSummoningSkills(summonedCards, player.getField(), enemy.getField(), null, true);
         this.resolveSecondClassSummoningSkills(fieldCards, player.getField(), enemy.getField(), null, true);

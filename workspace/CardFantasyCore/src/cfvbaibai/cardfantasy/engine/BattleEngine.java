@@ -200,9 +200,10 @@ public class BattleEngine {
         for (CardInfo card : this.getActivePlayer().getHand().toList()) {
             this.stage.getResolver().resolvePrecastSkills(card, this.getInactivePlayer(),true);
         }
-        for (CardInfo card : this.getActivePlayer().getField().getAliveCards()) {
-            this.stage.getResolver().removeStatus(card, CardStatusType.复活);
-        }
+        //复活调整为发动二段技能前
+//        for (CardInfo card : this.getActivePlayer().getField().getAliveCards()) {
+//            this.stage.getResolver().removeStatus(card, CardStatusType.复活);
+//        }
         return Phase.战斗;
     }
 
@@ -405,13 +406,17 @@ public class BattleEngine {
         }
         List<CardInfo> cards = new ArrayList<CardInfo>();
         cards.add(myField.getCard(i));
+
+        //不屈移除的阶段进行调整，调整为卡牌行动前
+        resolver.removeStatus(myField.getCard(i), CardStatusType.不屈);
+
         //二段技能发动时机改变
 //        resolver.resolveSecondClassSummoningSkills(cards, myField, opField, null, false);
         if (myField.getCard(i) == null) {
             return;
         }
         resolver.resolvePreAttackSkills(myField.getCard(i), getInactivePlayer(),0);
-        if (myField.getCard(i) == null) {
+        if (myField.getCard(i) == null||myField.getCard(i).getStatus().containsStatus(CardStatusType.不屈)) {
             return;
         }
         if (opField.getCard(i) == null) {
@@ -427,7 +432,7 @@ public class BattleEngine {
                     }
                 }
             }
-            resolver.removeStatus(myField.getCard(i), CardStatusType.不屈);
+       //     resolver.removeStatus(myField.getCard(i), CardStatusType.不屈);
         } else {
             tryAttackCard(myField, opField, i);
         }
@@ -444,7 +449,7 @@ public class BattleEngine {
         if (opField.getCard(i) == null) {
             resolver.resolvePreAttackHeroSkills(myField.getCard(i), getInactivePlayer());
             resolver.attackHero(myField.getCard(i), getInactivePlayer(), null, myField.getCard(i).getCurrentAT());
-            resolver.removeStatus(myField.getCard(i), CardStatusType.不屈);
+         //   resolver.removeStatus(myField.getCard(i), CardStatusType.不屈);
         } else {
             processAttackCard(myField, opField, i,true);
             if (myField.getCard(i) != null && !myField.getCard(i).isDead() &&
@@ -474,7 +479,7 @@ public class BattleEngine {
         GameUI ui = this.stage.getUI();
         if (myField.getCard(i).getStatus().containsStatus(CardStatusType.麻痹)) {
             resolver.removeStatus(myField.getCard(i), CardStatusType.麻痹);
-            resolver.removeStatus(myField.getCard(i), CardStatusType.不屈);
+         //   resolver.removeStatus(myField.getCard(i), CardStatusType.不屈);
             return;
         }
         for (SkillUseInfo skillUseInfo : myField.getCard(i).getUsableNormalSkills()) {
@@ -592,6 +597,10 @@ public class BattleEngine {
         SkillResolver resolver = this.stage.getResolver();
         if (myField.getCard(i).getStatus().containsStatus(CardStatusType.麻痹)) {
             resolver.removeStatus(myField.getCard(i), CardStatusType.麻痹);
+            return false;
+        }
+        if(myField.getCard(i).getStatus().containsStatus(CardStatusType.不屈))
+        {
             return false;
         }
         if(opField.size()>0)

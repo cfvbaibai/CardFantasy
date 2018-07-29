@@ -38,6 +38,13 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2018-07-29: <x>欢笑，波波</x><ul>
+                        <li>修改【不屈】移除时机，调整【不屈】状态下无法普通攻击和发动【普通技能】</li>
+                        <li>调整【奥术回声】会反弹【侵蚀】</li>
+                    </ul></li>
+                    <li>2018-07-27: <x>欢笑，波波</x><ul>
+                        <li>修改【复活状态】移除时机，调整为二段降临技能发动前移除</li>
+                    </ul></li>
                     <li>2018-07-25: <x>欢笑，波波</x><ul>
                         <li>更新卡牌【幻影剑魔】</li>
                         <li>n区更改卡牌【原雪舞霓裳】</li>
