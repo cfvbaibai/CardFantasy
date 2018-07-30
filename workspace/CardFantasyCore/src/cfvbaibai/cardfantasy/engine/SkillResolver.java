@@ -2125,7 +2125,11 @@ public class SkillResolver {
     private int resolveAttackHeroBlockingSkills(EntityInfo attacker, Player defenderPlayer, Skill cardSkill,
                                                 int damage) throws HeroDieSignal {
         int remainingDamage = damage;
-        if (!(cardSkill != null && (cardSkill.getType() == SkillType.自动扣血 || cardSkill.getType() == SkillType.羽扇虎拳))) {
+        if(cardSkill==null)
+        {
+            return remainingDamage;
+        }
+        else if(cardSkill.getType() == SkillType.自动扣血 || cardSkill.getType() == SkillType.羽扇虎拳){
             return remainingDamage;
         }
         for (CardInfo defender : defenderPlayer.getField().getAliveCards()) {

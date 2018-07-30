@@ -38,6 +38,9 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2018-07-30: <x>欢笑，波波</x><ul>
+                        <li>修改【守护】不生效的bug,修复【先机镜像】不攻击的bug</li>
+                    </ul></li>
                     <li>2018-07-29: <x>欢笑，波波</x><ul>
                         <li>修改【不屈】移除时机，调整【不屈】状态下无法普通攻击和发动【普通技能】</li>
                         <li>调整【奥术回声】会反弹【侵蚀】</li>

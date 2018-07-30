@@ -200,10 +200,10 @@ public class BattleEngine {
         for (CardInfo card : this.getActivePlayer().getHand().toList()) {
             this.stage.getResolver().resolvePrecastSkills(card, this.getInactivePlayer(),true);
         }
-        //复活调整为发动二段技能前
-//        for (CardInfo card : this.getActivePlayer().getField().getAliveCards()) {
-//            this.stage.getResolver().removeStatus(card, CardStatusType.复活);
-//        }
+        //复活调整为发动二段技能前--2018-07-30 先机镜像会移除复活状态
+        for (CardInfo card : this.getActivePlayer().getField().getAliveCards()) {
+            this.stage.getResolver().removeStatus(card, CardStatusType.复活);
+        }
         return Phase.战斗;
     }
 
