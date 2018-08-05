@@ -1,5 +1,6 @@
 package cfvbaibai.cardfantasy.engine.skill;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import cfvbaibai.cardfantasy.GameUI;
@@ -26,7 +27,23 @@ public final class Erode {
         GameUI ui = resolver.getStage().getUI();
         Randomizer random = resolver.getStage().getRandomizer();
 
-        List<CardInfo> candidates = random.pickRandom(defender.getField().toList(), 1, true, null);
+        List<CardInfo> selectCard =new ArrayList<>();
+        for(CardInfo fieldCard:defender.getField().getAliveCards())
+        {
+            if(fieldCard!=null)
+            {
+                selectCard.add(fieldCard);
+            }
+        }
+        for(CardInfo beforeCard:defender.getBeforeDeath().toList())
+        {
+            if(beforeCard!=null)
+            {
+                selectCard.add(beforeCard);
+            }
+        }
+
+        List<CardInfo> candidates = random.pickRandom(selectCard, 1, true, null);
 
         ui.useSkill(card, candidates, skill, true);
         if (candidates.isEmpty()) {
@@ -75,6 +92,10 @@ public final class Erode {
         card.addEffect(new SkillEffect(SkillEffectType.MAXHP_CHANGE, skillUseInfo, adjHP, true));
         card.addEffect(new SkillEffect(SkillEffectType.ATTACK_CHANGE, skillUseInfo, adjAT, true));
 
+        if(defender.getBeforeDeath().contains(oblation))
+        {
+           return;
+        }
         ui.killCard(card, oblation, skill);
         resolver.killCard(card, oblation, skill);
     }

@@ -1,15 +1,15 @@
 package cfvbaibai.cardfantasy.engine.skill;
 
-import java.util.List;
-
 import cfvbaibai.cardfantasy.data.CardSkill;
 import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.data.SkillType;
 import cfvbaibai.cardfantasy.engine.*;
 import cfvbaibai.cardfantasy.game.DeckBuilder;
 
-public final class ResonantElements {
-    public static void apply(SkillResolver resolver, SkillUseInfo skillUseInfo, CardInfo resonantCard, String summonedCardsDescs) throws HeroDieSignal{
+import java.util.List;
+
+public final class Evolution {
+    public static void apply(SkillResolver resolver, SkillUseInfo skillUseInfo, CardInfo resonantCard,String needCard, String summonedCardsDescs) throws HeroDieSignal{
         if(resonantCard ==null || resonantCard.isDead())
         {
             return;
@@ -50,17 +50,17 @@ public final class ResonantElements {
         List<CardInfo> livingCards = null;
         livingCards = player.getField().getAliveCards();
         for (CardInfo fieldCard : livingCards) {
-            if(fieldCard.containsAllSkill(SkillType.原素共鸣)&&!fieldCard.getName().equals(resonantCard.getName())) {
+            if(fieldCard.getName().equals(needCard)) {
 //                player.getField().removeCard(resonantCard);
                 player.getField().expelCard(resonantCard.getPosition());
                 player.getOutField().addCard(resonantCard);
 //                player.getField().removeCard(fieldCard);
                 player.getField().expelCard(fieldCard.getPosition());
                 player.getOutField().addCard(fieldCard);
-//                player.getField().addCard(addCard);
+              //  player.getField().addCard(addCard);
                 resolver.summonCard(addCard.getOwner(), addCard, null, false, skillUseInfo.getSkill(),0);
                 resolver.getStage().getUI().useSkill(resonantCard, skillUseInfo.getSkill(), true);
-              //  resolver.getStage().getUI().summonCard(player, addCard);
+        //        resolver.getStage().getUI().summonCard(player, addCard);
                 resolver.getStage().getUI().cardDead(resonantCard);
                 resolver.getStage().getUI().cardDead(fieldCard);
                 break;

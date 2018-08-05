@@ -15,8 +15,16 @@ public final class Retrogradation {
             // Summoned card cannot be reincarnated.
             return false;
         }
-        if (!player.getGrave().contains(card) && player.getField().contains(card)) {
+//        if (!player.getGrave().contains(card) && player.getField().contains(card)) {
+//            // 不屈中，此时不发动回生
+//            return false;
+//        }
+        if (!player.getBeforeDeath().contains(card) && player.getField().contains(card)) {
             // 不屈中，此时不发动回生
+            return false;
+        }
+        if (!player.getBeforeDeath().contains(card)) {
+            // 反弹时光倒流等导致卡牌回到deck
             return false;
         }
         int rate = cardSkill.getImpact3();
@@ -25,38 +33,46 @@ public final class Retrogradation {
         boolean bingo = resolver.getStage().getRandomizer().roll100(rate);
         ui.useSkill(card, card, cardSkill, bingo);
         if (bingo) {
-            if (!player.getGrave().contains(card) && player.getDeck().contains(card)) {
-                // 特殊情况：兔子死亡复活上来的卡把兔子降临回魂了，导致无法转生，暂时先hack一下
-                if (!player.getDeck().removeCard(card)) {
-                    throw new CardFantasyRuntimeException(
-                        "Cannot find card " + card.getShortDesc() + " in deck of " + player.getId());
-                }
-                player.getGrave().addCard(card);
-            }
-            if(!player.getGrave().contains(card)&& player.getHand().contains(card))
-                {
-                return true;
-            }
-            if (!player.getGrave().contains(card) && player.getField().contains(card)) {
-                // 特殊情况：万兽之王死契召唤月蚀兽把自己复活了无法涅槃，暂时先hack一下
-//                if (!player.getField().removeCard(card)) {
+//            if (!player.getGrave().contains(card) && player.getDeck().contains(card)) {
+//                // 特殊情况：兔子死亡复活上来的卡把兔子降临回魂了，导致无法转生，暂时先hack一下
+//                if (!player.getDeck().removeCard(card)) {
 //                    throw new CardFantasyRuntimeException(
-//                            "Cannot find card " + card.getShortDesc() + " in field of " + player.getId());
+//                        "Cannot find card " + card.getShortDesc() + " in deck of " + player.getId());
 //                }
 //                player.getGrave().addCard(card);
-                return false;
-            }
-            Grave grave = card.getOwner().getGrave();
-            if(!player.getGrave().contains(card))
+//            }
+//            if(!player.getGrave().contains(card)&& player.getHand().contains(card))
+//                {
+//                return true;
+//            }
+//            if (!player.getGrave().contains(card) && player.getField().contains(card)) {
+//                // 特殊情况：万兽之王死契召唤月蚀兽把自己复活了无法涅槃，暂时先hack一下
+////                if (!player.getField().removeCard(card)) {
+////                    throw new CardFantasyRuntimeException(
+////                            "Cannot find card " + card.getShortDesc() + " in field of " + player.getId());
+////                }
+////                player.getGrave().addCard(card);
+//                return false;
+//            }
+//            Grave grave = card.getOwner().getGrave();
+//            if(!player.getGrave().contains(card))
+//            {
+//                //某些情况下召唤属性丢失导致卡牌不能找到。
+//                System.out.print("错误回生");
+//                return false;
+//            }
+//            grave.removeCard(card);
+            BeforeDeath beforeDeath = card.getOwner().getBeforeDeath();
+            if(!beforeDeath.contains(card))
             {
                 //某些情况下召唤属性丢失导致卡牌不能找到。
-                System.out.print("错误回生");
+                //  System.out.print("错误转生");
                 return false;
             }
-            grave.removeCard(card);
+            beforeDeath.removeCard(card);
             if (player.getDeck().size() > 0) {
                 //     int position = Randomizer.getRandomizer().next(0, player.getDeck().size());
-                // 回魂是有顺序的。
+                // 回生是有顺序的。
                 int position = 0;
                 player.getDeck().insertCardToPosition(card, position);
             } else {

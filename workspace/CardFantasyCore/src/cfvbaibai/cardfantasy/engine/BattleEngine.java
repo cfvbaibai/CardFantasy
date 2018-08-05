@@ -311,6 +311,7 @@ public class BattleEngine {
                     ui.confused(myField.getCard(i));
                     resolver.resolvePreAttackHeroSkills(myField.getCard(i), getActivePlayer());
                     resolver.attackHero(myField.getCard(i), getActivePlayer(), null, myField.getCard(i).getCurrentAT());
+                    resolver.resolveExtraAttackHeroSkills(myField.getCard(i), getInactivePlayer());
                 } else {
                     ui.cannotAction(myField.getCard(i));
                 }
@@ -353,6 +354,7 @@ public class BattleEngine {
             resolver.resolveDebuff(myField.getCard(i), CardStatusType.燃烧);
             resolver.removeStatus(myField.getCard(i), CardStatusType.沉默);
             resolver.removeStatus(myField.getCard(i), CardStatusType.死咒);
+            resolver.removeStatus(myField.getCard(i), CardStatusType.炼成);
             resolver.removeStatus(myField.getCard(i), CardStatusType.魂殇);
             if (status.containsStatus(CardStatusType.变羊)) {
                 //变羊类技能恢复原状

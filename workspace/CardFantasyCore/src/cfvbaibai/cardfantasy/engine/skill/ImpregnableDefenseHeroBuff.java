@@ -43,9 +43,11 @@ public final class ImpregnableDefenseHeroBuff {
         atacter.setCoefficient(coefficient);
     }
     public static void removeSkill(CardInfo card, SkillResolver resolver) {
-        if (card.containsAllSkill(SkillType.铁壁)||card.containsAllSkill(SkillType.驱虎吞狼)||card.containsAllSkill(SkillType.金汤)||card.containsAllSkill(SkillType.铁壁方阵)||card.containsAllSkill(SkillType.光之守护)) {
+        if (card.containsAllSkill(SkillType.铁壁)||card.containsAllSkill(SkillType.驱虎吞狼)||card.containsAllSkill(SkillType.金汤)
+                ||card.containsAllSkill(SkillType.铁壁方阵)||card.containsAllSkill(SkillType.光之守护)||card.containsAllSkill(SkillType.聚能立场)) {
             for (SkillUseInfo defenderskill : card.getAllUsableSkills()) {
-                if (defenderskill.getType() == SkillType.铁壁||defenderskill.getType() == SkillType.金汤||defenderskill.getType() == SkillType.光之守护||defenderskill.getType() == SkillType.铁壁方阵) {
+                if (defenderskill.getType() == SkillType.铁壁||defenderskill.getType() == SkillType.金汤
+                        ||defenderskill.getType() == SkillType.光之守护||defenderskill.getType() == SkillType.铁壁方阵||defenderskill.getType() == SkillType.聚能立场) {
                     ImpregnableDefenseHeroBuff.remove(resolver, defenderskill, card);
                 }
                 else if (defenderskill.getType() == SkillType.驱虎吞狼)

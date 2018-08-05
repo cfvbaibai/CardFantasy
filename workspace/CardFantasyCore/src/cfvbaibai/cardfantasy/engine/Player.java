@@ -14,6 +14,7 @@ public class Player extends EntityInfo {
     private Deck deck;
     private Hand hand;
     private Grave grave;
+    private BeforeDeath beforeDeath;
     private Field field;
     private OutField outField;
     private RuneBox runeBox;
@@ -28,6 +29,7 @@ public class Player extends EntityInfo {
         this.deck = new Deck(primaryCards);
         this.hand = new Hand(stage.getRule());
         this.grave = new Grave();
+        this.beforeDeath = new BeforeDeath();
         this.field = new Field(this);
         this.outField = new OutField();
         this.runeBox = new RuneBox(this, playerInfo.getRunes());
@@ -77,6 +79,10 @@ public class Player extends EntityInfo {
     
     public Grave getGrave() {
         return this.grave;
+    }
+
+    public BeforeDeath getBeforeDeath() {
+        return this.beforeDeath;
     }
     
     public Field getField() {
