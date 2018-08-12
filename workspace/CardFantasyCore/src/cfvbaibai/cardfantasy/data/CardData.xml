@@ -5210,6 +5210,8 @@
     <Card id="5713" name="末日使魔" wikiId="" race="魔神" speed="40" star="5" cost="99" incrCost="0" at="630" hp="1670" incrAT="43" incrHP="28">
         <Skill type="时光倒流" level="0" unlock="0" />
         <Skill type="终焉时刻" level="0" unlock="5" />
+        <Skill type="免疫" level="0" unlock="10" />
+        <Skill type="司命" level="0" unlock="10" />
     </Card>
     <Card id="5714" name="无双·晨星之子" wikiId="" race="魔神" speed="10" star="5" cost="99" incrCost="0" at="5000" hp="5000" incrAT="0" incrHP="0">
         <Skill type="英雄杀手" level="10" unlock="0" />
