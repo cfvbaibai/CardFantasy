@@ -4991,6 +4991,31 @@
         <Skill type="全领域沉默" level="0" unlock="5" />
         <Skill type="反击屏障" level="0" unlock="10" />
     </Card>
+    <Card id="5568" name="最新简单·莉莉丝" wikiId="" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="1000" hp="20000" incrAT="0" incrHP="0">
+        <Skill type="不动" level="0" unlock="0" />
+        <Skill type="神箭三重奏" level="8" unlock="5" />
+        <Skill type="嗜血" level="8" unlock="10" />
+    </Card>
+    <Card id="5569" name="原普通·莉莉丝" wikiId="" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="1000" hp="65000" incrAT="0" incrHP="0">
+        <Skill type="神威" level="0" unlock="0" />
+        <Skill type="法力风暴" level="8" unlock="5" />
+        <Skill type="弱点攻击" level="0" unlock="10" />
+    </Card>
+    <Card id="5570" name="原困难·莉莉丝" wikiId="" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="1200" hp="140000" incrAT="0" incrHP="0">
+        <Skill type="神威" level="0" unlock="0" />
+        <Skill type="骤雨" level="8" unlock="5" />
+        <Skill type="LETITGO" level="0" unlock="10" />
+    </Card>
+    <Card id="5571" name="原噩梦·莉莉丝" wikiId="" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="1500" hp="230000" incrAT="0" incrHP="0">
+        <Skill type="免疫" level="0" unlock="0" />
+        <Skill type="圣炎" level="0" unlock="5" />
+        <Skill type="水流护甲" level="8" unlock="10" />
+    </Card>
+    <Card id="5572" name="原炼狱·莉莉丝" wikiId="" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="2000" hp="350000" incrAT="0" incrHP="0">
+        <Skill type="免疫" level="0" unlock="0" />
+        <Skill type="圣炎" level="0" unlock="5" />
+        <Skill type="破军" level="8" unlock="10" />
+    </Card>
 
     <!-- 魔神 -->
     <!--

@@ -50,6 +50,7 @@ public final class MultipleReincarnation {
             return true;
         }
         else if(rate1+rate2>=reallyRate){
+            beforeDeath.removeCard(card);
             if (player.getDeck().size() > 0) {
                 //     int position = Randomizer.getRandomizer().next(0, player.getDeck().size());
                 // 回生是有顺序的。
