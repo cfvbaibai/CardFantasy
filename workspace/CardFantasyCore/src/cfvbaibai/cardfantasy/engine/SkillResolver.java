@@ -98,7 +98,7 @@ public class SkillResolver {
                     Purify.apply(skillUseInfo, this, card, -1);
                 } else if (skillUseInfo.getType() == SkillType.净化领域) {
                     Purify.apply(skillUseInfo, this, card, -1);
-                } else if (skillUseInfo.getType() == SkillType.净魂领域) {
+                } else if (skillUseInfo.getType() == SkillType.净魂领域 || skillUseInfo.getType() == SkillType.星座能量清醒) {
                     Purify.apply(skillUseInfo, this, card, -2);
                 } else if (skillUseInfo.getType() == SkillType.幻音) {
                     Purify.apply(skillUseInfo.getAttachedUseInfo2(), this, card, -2);
@@ -847,6 +847,9 @@ public class SkillResolver {
             } else if (skillUseInfo.getType() == SkillType.星座能量控制) {
                 SuraFire.apply(this, skillUseInfo.getAttachedUseInfo1(), attacker, defender);
                 IceMagic.apply(skillUseInfo.getAttachedUseInfo2(), this, attacker, defender, -1, 90, 0);
+            } else if (skillUseInfo.getType() == SkillType.星座能量神秘) {
+                EnergyIncrement.apply(skillUseInfo, this, attacker);
+                SoulCrash.apply(skillUseInfo, this, attacker, defender);
             }
         }
         if ((attacker.containsAllSkill(SkillType.连续魔法) || attacker.containsAllSkill(SkillType.黄天当立) || attacker.containsAllSkill(SkillType.连奏) || attacker.containsAllSkill(SkillType.神性爆发) || attacker.containsAllSkill(SkillType.时光迁跃) || attacker.containsAllSkill(SkillType.我们生命中的时光)) && !attacker.isDead() && status == 0) {
@@ -1586,6 +1589,11 @@ public class SkillResolver {
                         reincarnated = true;
                         break;
                     }
+                } else if(deadCardSkillUseInfo.getType() == SkillType.真龙九现){
+                    if (MultipleReincarnation.apply(this, deadCardSkillUseInfo, deadCard, result.unbending, opponent,65,15,19)) {
+                        reincarnated = true;
+                        break;
+                    }
                 }
             }
             if (!reincarnated && !deadCard.isSilent()) {
@@ -1839,6 +1847,7 @@ public class SkillResolver {
                     skillUseInfo.getType() == SkillType.天降神兵 ||
                     skillUseInfo.getType() == SkillType.神兵降临 ||
                     skillUseInfo.getType() == SkillType.觉醒神兵召唤 && attacker.isAwaken(skillUseInfo, Race.SAVAGE, 2) ||
+                    skillUseInfo.getType() == SkillType.星座能量清醒 ||
                     skillUseInfo.getType() == SkillType.阿拉希血统) {
                 WeaponSummon.apply(this, skillUseInfo, attacker, defenderPlayer, 500, 1700);
             } else if (skillUseInfo.getType() == SkillType.觉醒青龙偃月 && attacker.isAwaken(skillUseInfo, Race.FOREST, 3)) {
@@ -1874,6 +1883,7 @@ public class SkillResolver {
                     skillUseInfo.getType() == SkillType.天降神兵 ||
                     skillUseInfo.getType() == SkillType.神兵降临 ||
                     skillUseInfo.getType() == SkillType.觉醒神兵召唤 && attacker.isAwaken(skillUseInfo, Race.SAVAGE, 2) ||
+                    skillUseInfo.getType() == SkillType.星座能量清醒 ||
                     skillUseInfo.getType() == SkillType.阿拉希血统) {
                 WeaponSummon.apply(this, skillUseInfo, attacker, defender, 500, 1700);
             } else if (skillUseInfo.getType() == SkillType.觉醒青龙偃月 && attacker.isAwaken(skillUseInfo, Race.FOREST, 3)) {
@@ -1961,7 +1971,7 @@ public class SkillResolver {
             } else if (type == SkillType.凯撒之击) {
                 CaeserAttack.remove(this, effect.getCause(), card);
             } else if (type == SkillType.神兵召唤 || type == SkillType.天降神兵 || type == SkillType.神兵降临 || type == SkillType.厨具召唤 || type == SkillType.觉醒神兵召唤 || type == SkillType.觉醒青龙偃月 ||
-                    type == SkillType.圣器召唤 || type == SkillType.突袭 || type == SkillType.极寒裂伤 || type == SkillType.陨星攻击 || type == SkillType.王牌飞刀 || type == SkillType.阿拉希血统) {
+                    type == SkillType.圣器召唤 || type == SkillType.突袭 || type == SkillType.极寒裂伤 || type == SkillType.陨星攻击 || type == SkillType.王牌飞刀 || type == SkillType.阿拉希血统 || type == SkillType.星座能量清醒) {
                 WeaponSummon.remove(this, effect.getCause(), card);
             }
         }
@@ -2513,7 +2523,7 @@ public class SkillResolver {
                             "天秤座", "射手座", "天蝎座", "摩羯座", "水瓶座", "双鱼座");
                 } else if (skillUseInfo.getType() == SkillType.原星之所在) {
                     Summon.apply(this, skillUseInfo, card, SummonType.RandomSummoning, 2,
-                            "原白羊座", "原金牛座", "双子座", "巨蟹座", "狮子座", "处女座",
+                            "原白羊座", "原金牛座", "双子座", "巨蟹座", "原狮子座", "原处女座",
                             "原天秤座", "射手座", "天蝎座", "原摩羯座", "水瓶座", "双鱼座");
                 } else if (skillUseInfo.getType() == SkillType.页游星之所在) {
                     Summon.apply(this, skillUseInfo, card, SummonType.RandomSummoning, 2,

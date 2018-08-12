@@ -1312,6 +1312,11 @@
         <Skill type="重整" level="0" unlock="5" />
         <Skill type="龙战于野" level="0" unlock="10" />
     </Card>
+    <Card id="1658" name="原狮子座" wikiId="" race="王国" speed="4" star="5" cost="18" incrCost="1" at="120" hp="1750" incrAT="50" incrHP="41">
+        <Skill type="星座能量清醒" level="0" unlock="0" />
+        <Skill type="弱点攻击" level="0" unlock="5" />
+        <Skill type="扼杀" level="0" unlock="10" />
+    </Card>
 
 
 
@@ -2404,6 +2409,11 @@
         <Skill type="星座能量控制" level="0" unlock="0" />
         <Skill type="寒霜冲击" level="8" unlock="5" />
         <Skill type="全体裂伤" level="0" unlock="10" />
+    </Card>
+    <Card id="2628" name="原处女座" wikiId="" race="森林" speed="4" star="5" cost="18" incrCost="2" at="300" hp="1680" incrAT="38" incrHP="45">
+        <Skill type="星座能量神秘" level="0" unlock="0" />
+        <Skill type="不动" level="0" unlock="5" />
+        <Skill type="精神污染" level="10" unlock="10" />
     </Card>
 
 

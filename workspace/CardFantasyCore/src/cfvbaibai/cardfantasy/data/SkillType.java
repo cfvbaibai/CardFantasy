@@ -83,6 +83,7 @@ public enum SkillType {
     圣器召唤("", 0, SkillTag.额外攻击加成),
     极寒裂伤("", 0, SkillTag.额外攻击加成),
     陨星攻击("", 0, SkillTag.额外攻击加成),
+    星座能量清醒("", 0, SkillTag.额外攻击加成),
 
     虚弱("57000", 0, SkillTag.额外攻击加成, SkillTag.抗免疫, SkillTag.抗不屈, SkillTag.魔王无效, SkillTag.魔族天赋),
     战争怒吼("57022", 0, SkillTag.额外攻击加成, SkillTag.抗免疫, SkillTag.抗不屈, SkillTag.魔王无效, SkillTag.魔族天赋),
@@ -319,6 +320,7 @@ public enum SkillType {
     禁区之王("", 0, SkillTag.控制, SkillTag.抗免疫, SkillTag.魔王无效, SkillTag.魔族天赋),
     魔力抗性("",140, -10),
     动能追加("", 0),
+    星座能量神秘("", 0, SkillTag.抗免疫, SkillTag.抗不屈, SkillTag.魔王无效, SkillTag.魔族天赋),
     不动("30928", 0, SkillTag.不动),
     坚毅("", 0, SkillTag.不动),
     灵魂禁封("", 0, 0, SkillTag.不动),
@@ -920,6 +922,9 @@ public enum SkillType {
     羽扇虎拳("",3,0),
 
     雪幕("",SkillType.不灭,6,SkillType.冰天雪地冰封,0),
+
+    //真龙九现类型
+    真龙九现("",0),
 
   // 以下全部技能皆为待更新的空技能，请在更新之后将其移动到上面适合的位置
     // 对于物品技能，请将其（按顺序）加入下面的物品技能列表，用来以后更改自动卡牌数据更新工具
