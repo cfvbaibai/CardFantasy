@@ -1,5 +1,6 @@
 package cfvbaibai.cardfantasy.engine.skill;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import cfvbaibai.cardfantasy.GameUI;
@@ -26,7 +27,23 @@ public final class Erode {
         GameUI ui = resolver.getStage().getUI();
         Randomizer random = resolver.getStage().getRandomizer();
 
-        List<CardInfo> candidates = random.pickRandom(defender.getField().toList(), 1, true, null);
+        List<CardInfo> selectCard =new ArrayList<>();
+        for(CardInfo fieldCard:defender.getField().getAliveCards())
+        {
+            if(fieldCard!=null)
+            {
+                selectCard.add(fieldCard);
+            }
+        }
+        for(CardInfo beforeCard:defender.getBeforeDeath().toList())
+        {
+            if(beforeCard!=null)
+            {
+                selectCard.add(beforeCard);
+            }
+        }
+
+        List<CardInfo> candidates = random.pickRandom(selectCard, 1, true, null);
 
         ui.useSkill(card, candidates, skill, true);
         if (candidates.isEmpty()) {
@@ -37,7 +54,37 @@ public final class Erode {
         if (!result.isAttackable()) {
             return;
         }
-        //暂不处理回声
+        int magicEchoSkillResult = resolver.resolveMagicEchoSkill(card, oblation, skill);
+        if (magicEchoSkillResult==1||magicEchoSkillResult==2) {
+            if(card.isDead())
+            {
+                if (magicEchoSkillResult == 1) {
+                    return;
+                }
+            }
+            else{
+                OnAttackBlockingResult result2 = resolver.resolveAttackBlockingSkills(oblation, card, skill, 1);
+                if (!result2.isAttackable()) {
+                    if (magicEchoSkillResult == 1) {
+                        return;
+                    }
+                }
+                else{
+                    int adjHP = skill.getImpact() *oblation .getMaxHP() / 100;
+                    int adjAT = skill.getImpact() * oblation.getLevel0AT() / 100;//修改为原始攻击力加成
+                    ui.adjustHP(oblation, oblation, adjHP, skill);
+                    ui.adjustAT(oblation, oblation, adjAT, skill);
+                    oblation.addEffect(new SkillEffect(SkillEffectType.MAXHP_CHANGE, skillUseInfo, adjHP, true));
+                    oblation.addEffect(new SkillEffect(SkillEffectType.ATTACK_CHANGE, skillUseInfo, adjAT, true));
+
+                    ui.killCard(oblation, card, skill);
+                    resolver.killCard(oblation, card, skill);
+                }
+            }
+            if (magicEchoSkillResult == 1) {
+                return;
+            }
+        }
         int adjHP = skill.getImpact() * card.getMaxHP() / 100;
         int adjAT = skill.getImpact() * card.getLevel0AT() / 100;//修改为原始攻击力加成
         ui.adjustHP(card, card, adjHP, skill);
@@ -45,6 +92,10 @@ public final class Erode {
         card.addEffect(new SkillEffect(SkillEffectType.MAXHP_CHANGE, skillUseInfo, adjHP, true));
         card.addEffect(new SkillEffect(SkillEffectType.ATTACK_CHANGE, skillUseInfo, adjAT, true));
 
+        if(defender.getBeforeDeath().contains(oblation))
+        {
+           return;
+        }
         ui.killCard(card, oblation, skill);
         resolver.killCard(card, oblation, skill);
     }

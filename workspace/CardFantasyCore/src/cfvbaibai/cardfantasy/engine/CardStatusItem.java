@@ -119,6 +119,10 @@ public class CardStatusItem {
         return new CardStatusItem(CardStatusType.死咒, 0, cause);
     }
 
+    public static CardStatusItem humanRefining(SkillUseInfo cause) {
+        return new CardStatusItem(CardStatusType.炼成, 0, cause);
+    }
+
     public static CardStatusItem SoulWound(SkillUseInfo cause) {
         return new CardStatusItem(CardStatusType.魂殇, 0, cause);
     }

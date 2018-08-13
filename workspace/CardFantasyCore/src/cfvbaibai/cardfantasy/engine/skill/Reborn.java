@@ -14,7 +14,11 @@ public final class Reborn {
         if (card.isSummonedMinion()) {
             return false; // 召唤物不发动司命
         }
-        if (!player.getGrave().contains(card) && player.getField().contains(card)) {
+//        if (!player.getGrave().contains(card) && player.getField().contains(card)) {
+//            // 不屈中，此时不发动司命
+//            return false;
+//        }
+       if (!player.getBeforeDeath().contains(card) && player.getField().contains(card)) {
             // 不屈中，此时不发动司命
             return false;
         }
@@ -23,9 +27,14 @@ public final class Reborn {
         {
             return false;
         }
-        if(!player.getGrave().contains(card))
+//        if(!player.getGrave().contains(card))
+//        {
+//            //夺魂处理墓地没有卡牌,不发动。
+//            return false;
+//        }
+        if(!player.getBeforeDeath().contains(card))
         {
-            //夺魂处理墓地没有卡牌,不发动。
+            //处理死亡前目的没有卡牌,不发动。
             return false;
         }
         int rate;
@@ -43,8 +52,16 @@ public final class Reborn {
         ui.useSkill(card, card, cardSkill, bingo);
         if(bingo) {
           //  ui.summonCard(player,card);
-            Grave grave = card.getOwner().getGrave();
-            grave.removeCard(card);
+//            Grave grave = card.getOwner().getGrave();
+//            grave.removeCard(card);
+            BeforeDeath beforeDeath = card.getOwner().getBeforeDeath();
+            if(!beforeDeath.contains(card))
+            {
+                //某些情况下召唤属性丢失导致卡牌不能找到。
+                //  System.out.print("错误转生");
+                return false;
+            }
+            beforeDeath.removeCard(card);
             card.reset();
           //  player.getField().addCard(card);
 
