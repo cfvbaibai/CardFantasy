@@ -12,6 +12,10 @@ public final class OneDelay {
         int summonDelayOffset = skillUseInfo.getSkill().getImpact();
         List<CardInfo> allHandCards = defender.getHand().toList();
         CardInfo victim = null;
+        if(!resolver.resolveStopDelay(defender))
+        {
+            return;
+        }
         for (CardInfo card : allHandCards) {
             if (victim == null || card.getSummonDelay() < victim.getSummonDelay()) {
                 victim = card;

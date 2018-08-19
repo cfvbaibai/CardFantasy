@@ -20,7 +20,7 @@ public class SummonWhenAttack {
         Skill skill = skillUseInfo.getSkill();
         int maxNumber = skill.getImpact();
         int rate = skill.getImpact2();
-        if(resolver.getStage().getRandomizer().roll100(rate))
+        if(!resolver.getStage().getRandomizer().roll100(rate))
         {
             return ;
         }

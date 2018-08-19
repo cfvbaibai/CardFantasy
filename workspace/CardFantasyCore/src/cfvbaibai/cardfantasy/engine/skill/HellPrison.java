@@ -13,6 +13,10 @@ public final class HellPrison {
         StageInfo stage = resolver.getStage();
         Randomizer random = stage.getRandomizer();
         List<CardInfo> fileCard = random.pickRandom(player.getField().toList(), -1, true, null);
+        if(!resolver.resolveStopDelay(defender))
+        {
+            return;
+        }
         for(CardInfo attackerCard :fileCard) {
             if(attackerCard==null)
             {

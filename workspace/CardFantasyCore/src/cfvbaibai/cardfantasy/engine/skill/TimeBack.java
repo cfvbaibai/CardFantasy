@@ -60,7 +60,7 @@ public class TimeBack {
         for (CardInfo card : player.getHand().toList()) {
             if (resolver.resolveAttackBlockingSkills(caster, card, skillUseInfo.getSkill(), 0).isAttackable()) {
                 ui.returnCard(caster, card, skillUseInfo.getSkill());
-                ui.cardToGrave(player, card);
+                ui.cardToDeck(player, card);
                 resolver.resolveLeaveSkills(card);
                 player.getDeck().addCard(card);
                 player.getHand().removeCard(card);

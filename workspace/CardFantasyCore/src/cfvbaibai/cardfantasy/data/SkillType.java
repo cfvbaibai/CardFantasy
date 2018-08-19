@@ -557,6 +557,7 @@ public enum SkillType {
     召唤梦境女神("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
     酋长号令("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
     召唤花族守卫("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
+    原召唤花族守卫("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
     召唤花族侍卫("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
     原召唤花族侍卫("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
     七十二变("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
@@ -610,13 +611,13 @@ public enum SkillType {
     猫神的低语("",0,0, SkillTag.不可洗炼,SkillTag.召唤),
     乱世红颜("",0,0, SkillTag.不可洗炼,SkillTag.召唤),
     伎町迷影("",0,0, SkillTag.不可洗炼,SkillTag.召唤),
-    复仇亡灵("",0,0, SkillTag.不可洗炼,SkillTag.召唤),
+    复仇亡灵("",0,0, SkillTag.不可洗炼),
     化鹏("",0,0, SkillTag.不可洗炼,SkillTag.召唤),
     审判之姿("",0,0, SkillTag.不可洗炼,SkillTag.召唤),
     混乱之源("",0,0, SkillTag.不可洗炼,SkillTag.召唤),
     狂野之怒("",0,0, SkillTag.不可洗炼,SkillTag.召唤),
     幻化("",0,0, SkillTag.不可洗炼,SkillTag.召唤,SkillTag.不动),
-    幻影军团("",4,0,70,0, SkillTag.不可洗炼,SkillTag.召唤),
+    幻影军团("",4,0,70,0, SkillTag.不可洗炼),
     英魂唤醒("",0,0, SkillTag.不可洗炼,SkillTag.召唤,SkillTag.不动),
     英魂召集("",0,0, SkillTag.不可洗炼,SkillTag.召唤,SkillTag.不动),
     英灵召唤("",SkillType.英魂唤醒,0, SkillType.英魂召集,0, SkillTag.不可洗炼,SkillTag.召唤),
@@ -925,6 +926,10 @@ public enum SkillType {
 
     //真龙九现类型
     真龙九现("",0),
+
+    //防止技能类型
+    稳定("",0),
+    风行("",0),
 
   // 以下全部技能皆为待更新的空技能，请在更新之后将其移动到上面适合的位置
     // 对于物品技能，请将其（按顺序）加入下面的物品技能列表，用来以后更改自动卡牌数据更新工具

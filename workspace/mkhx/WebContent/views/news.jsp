@@ -38,6 +38,12 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2018-08-13: <x>欢笑，波波</x><ul>
+                        <li>修改卡牌【白骨夫人】，【幻影剑魔】可以被夺魂，修复【幻影剑魔】召唤几率错误的问题</li>
+                        <li>修改卡牌【原花族公主】</li>
+                        <%--<li>添加新技能</li>--%>
+                        <li>添加功能方便测试</li>
+                    </ul></li>
                     <li>2018-08-12: <x>欢笑，波波</x><ul>
                         <li>添加技能【真龙九现】</li>
                         <li>添加n区卡牌【原狮子座】，【原处女座】</li>

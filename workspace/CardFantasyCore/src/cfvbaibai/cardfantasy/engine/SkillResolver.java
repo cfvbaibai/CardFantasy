@@ -469,6 +469,8 @@ public class SkillResolver {
                 Summon.apply(this, skillUseInfo, attacker, SummonType.Normal, 2, "梦境女神", "梦境女神");
             } else if (skillUseInfo.getType() == SkillType.酋长号令) {
                 Summon.apply(this, skillUseInfo, attacker, SummonType.Normal, 2, "战意斗神", "战意斗神");
+            } else if (skillUseInfo.getType() == SkillType.原召唤花族守卫) {
+                Summon.apply(this, skillUseInfo, attacker, SummonType.Normal, 2, "黄金金属巨龙", "原处女座");
             } else if (skillUseInfo.getType() == SkillType.召唤花族守卫) {
                 Summon.apply(this, skillUseInfo, attacker, SummonType.Normal, 2, "黄金金属巨龙", "处女座");
             } else if (skillUseInfo.getType() == SkillType.召唤花族侍卫) {
@@ -3056,6 +3058,25 @@ public class SkillResolver {
         for (CardInfo defenderCard : defender.getField().getAliveCards()) {
             for (SkillUseInfo defenderSkillUseInfo : defenderCard.getUsableNormalSkills()) {
                 if (defenderSkillUseInfo.getType() == SkillType.庇护 || defenderSkillUseInfo.getType() == SkillType.浴火) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    public boolean resolveStopDelay(Player defender) {
+        for (CardInfo defenderCard : defender.getField().getAliveCards()) {
+            for (SkillUseInfo defenderSkillUseInfo : defenderCard.getUsableNormalSkills()) {
+                if (defenderSkillUseInfo.getType() == SkillType.稳定) {
+                    return false;
+                }
+            }
+        }
+
+        for (CardInfo defenderCard : defender.getHand().toList()) {
+            for (SkillUseInfo defenderSkillUseInfo : defenderCard.getUsableNormalSkills()) {
+                if (defenderSkillUseInfo.getType() == SkillType.风行) {
                     return false;
                 }
             }

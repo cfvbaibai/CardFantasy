@@ -1317,6 +1317,8 @@
         <Skill type="弱点攻击" level="0" unlock="5" />
         <Skill type="扼杀" level="0" unlock="10" />
     </Card>
+    <Card id="1659" name="王国占位符" wikiId="" race="王国" speed="4" star="5" cost="0" incrCost="0" at="0" hp="5000" incrAT="0" incrHP="0">
+    </Card>
 
 
 
@@ -2239,7 +2241,7 @@
         <Skill type="不动" level="0" unlock="10" />
     </Card>
     <Card id="2594" name="原花族公主" wikiId="" race="森林" speed="3" star="5" cost="16" incrCost="5" at="320" hp="1580" incrAT="45" incrHP="31">
-        <Skill type="召唤花族守卫" level="0" unlock="0" />
+        <Skill type="原召唤花族守卫" level="0" unlock="0" />
         <Skill type="原召唤花族侍卫" level="0" unlock="5" />
         <Skill type="花族秘术" level="0" unlock="10" />
     </Card>
@@ -2414,6 +2416,8 @@
         <Skill type="星座能量神秘" level="0" unlock="0" />
         <Skill type="不动" level="0" unlock="5" />
         <Skill type="精神污染" level="10" unlock="10" />
+    </Card>
+    <Card id="2630" name="森林占位符" wikiId="" race="森林" speed="4" star="5" cost="0" incrCost="0" at="0" hp="5000" incrAT="0" incrHP="0">
     </Card>
 
 
@@ -3533,6 +3537,8 @@
         <Skill type="狂野之怒" level="0" unlock="0"  summon ="true"/>
         <Skill type="狂野之怒" level="0" unlock="5" death="true"/>
         <Skill type="涅盘" level="0" unlock="10" />
+    </Card>
+    <Card id="3624" name="蛮荒占位符" wikiId="" race="蛮荒" speed="4" star="5" cost="0" incrCost="0" at="0" hp="5000" incrAT="0" incrHP="0">
     </Card>
 
 
@@ -4707,6 +4713,8 @@
         <Skill type="金汤" level="4" unlock="5" />
         <Skill type="归魂" level="1" unlock="10" summon="true"/>
     </Card>
+    <Card id="4636" name="地狱占位符" wikiId="" race="地狱" speed="4" star="5" cost="0" incrCost="0" at="0" hp="5000" incrAT="0" incrHP="0">
+    </Card>
 
 
     <!-- 魔神 -->
@@ -5369,6 +5377,8 @@
         <Skill type="生命之杯" level="0" unlock="0" />
         <Skill type="荣誉之地" level="0" unlock="5" />
         <Skill type="我们生命中的时光" level="0" unlock="10" />
+    </Card>
+    <Card id="6110" name="魔族占位符" wikiId="" race="魔族" speed="4" star="5" cost="0" incrCost="0" at="0" hp="5000" incrAT="0" incrHP="0">
     </Card>
 
     <!-- 测试卡 -->
