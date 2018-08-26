@@ -38,6 +38,10 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2018-08-19: <x>欢笑，波波</x><ul>
+                        <li>添加卡牌【利维坦】，【库卡隆战士】，【生命古树】</li>
+                        <li>修复技能【安魂引】无归魂的bug</li>
+                    </ul></li>
                     <li>2018-08-13: <x>欢笑，波波</x><ul>
                         <li>修改卡牌【白骨夫人】，【幻影剑魔】可以被夺魂，修复【幻影剑魔】召唤几率错误的问题</li>
                         <li>修改卡牌【原花族公主】</li>

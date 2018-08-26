@@ -29,6 +29,7 @@ public class Summon {
                 || summoner.isSummonedMinion() && skillUseInfo.getType() == SkillType.月影分身
                 || summoner.isSummonedMinion() && skillUseInfo.getType() == SkillType.樱蝶重生
                 || summoner.isSummonedMinion() && skillUseInfo.getType() == SkillType.幻化
+                || summoner.isSummonedMinion() && skillUseInfo.getType() == SkillType.幻影
                 || summoner.isSummonedMinion() && skillUseInfo.getType() == SkillType.北海报恩) {
             for(CardStatusItem item : summoner.getStatus().getAllItems())
             {

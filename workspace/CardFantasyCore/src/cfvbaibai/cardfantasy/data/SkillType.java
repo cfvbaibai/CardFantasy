@@ -84,6 +84,7 @@ public enum SkillType {
     极寒裂伤("", 0, SkillTag.额外攻击加成),
     陨星攻击("", 0, SkillTag.额外攻击加成),
     星座能量清醒("", 0, SkillTag.额外攻击加成),
+    致命一击("", 400,0, SkillTag.额外攻击加成),
 
     虚弱("57000", 0, SkillTag.额外攻击加成, SkillTag.抗免疫, SkillTag.抗不屈, SkillTag.魔王无效, SkillTag.魔族天赋),
     战争怒吼("57022", 0, SkillTag.额外攻击加成, SkillTag.抗免疫, SkillTag.抗不屈, SkillTag.魔王无效, SkillTag.魔族天赋),
@@ -364,7 +365,7 @@ public enum SkillType {
     祈愿("", 1),
     放飞自我("", 3,0),
     归魂("",1),
-    降临归魂("",1),
+    降归魂("",1),
     号角("",1),
     集结旗帜("",1,SkillTag.不动),
     进军之令("",5,0),
@@ -404,6 +405,8 @@ public enum SkillType {
 
     诅咒("31145", 30),
     终极天谴("", 2500,0),
+    擒拿("", 2000,0),
+    舍身("", 2000,0, SkillTag.守护),
     弑主之血("", 1600,0),
     终焉时刻("", 9999999,0),
     归隐("", 20000,0),
@@ -621,6 +624,7 @@ public enum SkillType {
     英魂唤醒("",0,0, SkillTag.不可洗炼,SkillTag.召唤,SkillTag.不动),
     英魂召集("",0,0, SkillTag.不可洗炼,SkillTag.召唤,SkillTag.不动),
     英灵召唤("",SkillType.英魂唤醒,0, SkillType.英魂召集,0, SkillTag.不可洗炼,SkillTag.召唤),
+    幻影("",0,0, SkillTag.不可洗炼,SkillTag.召唤),
 
     //生成卡牌置入战场
     蜀国英魂("", 2, 0,SkillTag.抗夺魂),
@@ -772,14 +776,17 @@ public enum SkillType {
 
     新生("",0,0,SkillTag.新生,SkillTag.抗夺魂),
     重整("",0,0,SkillTag.新生,SkillTag.抗夺魂),
+    不朽岿岩("",0,0,SkillTag.新生,SkillTag.抗夺魂,SkillTag.不动),
 
     司命("",100,0),
     不灭定律("",50,0),
     我又回来了("",75,0),
     灵魂脱壳("",50,0, new int[]{ 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100}),
-    安魂引("",80,0, new int[]{ 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100}),
+    还魂("",80,0, new int[]{ 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100}),
     不灭("",new int[] { 0,20, 25, 35, 45, 55, 65, 70, 75, 80, 90 }),
     顽强("",new int[] { 0,20, 25, 35, 45, 55, 65, 70, 75, 80, 90 }, SkillTag.不动),
+
+    安魂引("",0,0,SkillType.还魂,0,SkillType.归魂,1),
 
     //两侧卡牌以及自身添加技能
     西凉铁骑("",SkillType.破军,5,null,0),
@@ -813,8 +820,8 @@ public enum SkillType {
 
     抗魔石肤("",SkillType.魔法装甲,5,null,0),
     肾上腺素("",SkillType.自愈,3,null,0),
-    传响("",SkillType.降临归魂,1,null,0),
-    诀隐("",1,0,SkillType.降临归魂,1,null,0),
+    传响("",SkillType.降归魂,1,null,0),
+    诀隐("",1,0,SkillType.降归魂,1,null,0),
     逆命华舞("",SkillType.燕返,0,null,0),
     //手牌添加技能 无判定
     愈音("",SkillType.治愈音符,0,null,0),
@@ -857,7 +864,7 @@ public enum SkillType {
     隐遁之术("",SkillType.无刀取,0,null,0),
     聚能立场("",50,0,SkillType.金魔装甲,0,null,0),
     神兵召唤光环("",SkillType.神兵召唤,0,null,0),
-    天降神兵("",SkillType.神兵召唤,0,null,0),
+    天降神兵("",SkillType.神兵召唤,0,null,0, SkillTag.额外攻击加成),
 
     //给对手手牌添加技能
     突突突("",SkillType.炼金失败,0,null,0,SkillTag.魔王无效, SkillTag.魔族天赋,SkillTag.抗免疫),

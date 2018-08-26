@@ -2419,6 +2419,11 @@
     </Card>
     <Card id="2630" name="森林占位符" wikiId="" race="森林" speed="4" star="5" cost="0" incrCost="0" at="0" hp="5000" incrAT="0" incrHP="0">
     </Card>
+    <Card id="2629" name="生命古树" wikiId="" race="森林" speed="2" star="5" cost="16" incrCost="2" at="525" hp="1575" incrAT="34" incrHP="37">
+        <Skill type="归魂" level="1" unlock="0" summon="true"/>
+        <Skill type="祈愿" level="2" unlock="5" />
+        <Skill type="铁壁" level="4" unlock="10" />
+    </Card>
 
 
     <!-- 蛮荒  -->
@@ -3539,6 +3544,16 @@
         <Skill type="涅盘" level="0" unlock="10" />
     </Card>
     <Card id="3624" name="蛮荒占位符" wikiId="" race="蛮荒" speed="4" star="5" cost="0" incrCost="0" at="0" hp="5000" incrAT="0" incrHP="0">
+    </Card>
+    <Card id="3625" name="库卡隆战士" wikiId="" race="蛮荒" speed="2" star="5" cost="16" incrCost="2" at="545" hp="1455" incrAT="38" incrHP="37">
+        <Skill type="致命一击" level="0" unlock="0" />
+        <Skill type="扼杀" level="0" unlock="5" />
+        <Skill type="破军" level="4" unlock="10" />
+    </Card>
+    <Card id="3626" name="利维坦" wikiId="" race="蛮荒" speed="1" star="5" cost="20" incrCost="2" at="580" hp="1560" incrAT="42" incrHP="45">
+        <Skill type="幻影" level="0" unlock="0" precast="true"/>
+        <Skill type="舍身" level="0" unlock="5" />
+        <Skill type="还魂" level="4" unlock="10" />
     </Card>
 
 

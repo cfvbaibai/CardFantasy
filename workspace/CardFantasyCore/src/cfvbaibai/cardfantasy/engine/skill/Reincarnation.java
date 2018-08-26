@@ -20,7 +20,7 @@ public final class Reincarnation {
 //            return false;
 //        }
         if (!player.getBeforeDeath().contains(card) && player.getField().contains(card)) {
-            // 不屈中，此时不发动司命
+            // 不屈中，此时不发动转生
             return false;
         }
         if(!player.getBeforeDeath().contains(card))
