@@ -13,9 +13,10 @@ public final class EnergyIncrement {
         if (resolver.getStage().hasUsed(skillUseInfo)&&resolver.getStage().hasPlayerUsed(skillUseInfo.getOwner().getOwner())) {
             return;
         }
+        int impact = skillUseInfo.getSkill().getImpact();
         resolver.getStage().getUI().useSkill(caster, skillUseInfo.getSkill(), true);
         for (RuneInfo runeInfo : caster.getOwner().getRuneBox().getRunes()) {
-            runeInfo.setEnergy(runeInfo.getEnergy() + 1);
+            runeInfo.setEnergy(runeInfo.getEnergy() + impact);
             resolver.getStage().getUI().updateRuneEnergy(runeInfo);
         }
         if(!resolver.getStage().hasUsed(skillUseInfo)) {

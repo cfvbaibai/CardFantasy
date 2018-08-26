@@ -3555,6 +3555,11 @@
         <Skill type="舍身" level="0" unlock="5" />
         <Skill type="还魂" level="4" unlock="10" />
     </Card>
+    <Card id="3627" name="牛魔王" wikiId="" race="蛮荒" speed="3" star="5" cost="21" incrCost="2" at="610" hp="1615" incrAT="45" incrHP="51">
+        <Skill type="狂舞" level="0" unlock="0" />
+        <Skill type="地煞倾覆" level="0" unlock="5" />
+        <Skill type="嗜魔之体" level="0" unlock="10" />
+    </Card>
 
 
 
@@ -4189,10 +4194,10 @@
     <Card id="4526" name="双子座·幻影" wikiId="" race="地狱" speed="1" star="5" cost="18" incrCost="2" at="390" hp="1600" incrAT="41" incrHP="36">
     </Card>
 
-    <Card id="4527" name="彼岸使者" wikiId="" race="地狱" speed="4" star="5" cost="18" incrCost="2" at="380" hp="1870" incrAT="37" incrHP="33">
-        <Skill type="动能追加" level="0" unlock="0" />
-        <Skill type="闪避" level="7" unlock="5" />
-        <Skill type="迷魂" level="8" unlock="10" />
+    <Card id="4527" name="彼岸使者" wikiId="" race="地狱" speed="1" star="5" cost="18" incrCost="2" at="580" hp="1870" incrAT="40" incrHP="33">
+        <Skill type="彼岸冥灵" level="0" unlock="0" />
+        <Skill type="彼岸轮回" level="7" unlock="5" />
+        <Skill type="魅惑之舞" level="5" unlock="10" summon="true"/>
     </Card>
     <Card id="4528" name="狡诈邪神" wikiId="" race="地狱" speed="4" star="5" cost="17" incrCost="2" at="330" hp="1820" incrAT="30" incrHP="26">
         <Skill type="回魂" level="2" unlock="0" />
@@ -4729,6 +4734,21 @@
         <Skill type="归魂" level="1" unlock="10" summon="true"/>
     </Card>
     <Card id="4636" name="地狱占位符" wikiId="" race="地狱" speed="4" star="5" cost="0" incrCost="0" at="0" hp="5000" incrAT="0" incrHP="0">
+    </Card>
+    <Card id="4637" name="原彼岸使者" wikiId="" race="地狱" speed="4" star="5" cost="18" incrCost="2" at="380" hp="1870" incrAT="37" incrHP="33">
+        <Skill type="动能追加" level="0" unlock="0" />
+        <Skill type="闪避" level="7" unlock="5" />
+        <Skill type="迷魂" level="8" unlock="10" />
+    </Card>
+    <Card id="4638" name="原双子座" wikiId="" race="地狱" speed="1" star="5" cost="18" incrCost="2" at="390" hp="1600" incrAT="40" incrHP="35">
+        <Skill type="星座能量掌握" level="0" unlock="0" />
+        <Skill type="封印" level="0" unlock="5" summon="true"/>
+        <Skill type="转生" level="8" unlock="10" />
+    </Card>
+    <Card id="4639" name="原天蝎座" wikiId="" race="地狱" speed="4" star="5" cost="18" incrCost="2" at="340" hp="1530" incrAT="41" incrHP="48">
+        <Skill type="星座能量直感" level="0" unlock="0" />
+        <Skill type="圣母回声" level="0" unlock="5" />
+        <Skill type="不动" level="0" unlock="10" />
     </Card>
 
 

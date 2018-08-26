@@ -18,14 +18,23 @@ public final class DefeatArmy {
         if (defender == null) {
             throw new CardFantasyRuntimeException("defender is null");
         }
-        if (blockSkill.getType().containsTag(SkillTag.物理护甲) || blockSkill.getType() == SkillType.水流护甲
-                || blockSkill.getType() == SkillType.格挡 || blockSkill.getType() == SkillType.钢铁之肤
-                || blockSkill.getType() == SkillType.水流护甲 || blockSkill.getType() == SkillType.圣盾 || blockSkill.getType() == SkillType.无刀取 || blockSkill.getType() == SkillType.骑士守护|| blockSkill.getType() == SkillType.邪甲术|| blockSkill.getType() == SkillType.魔族之血) {
+//        if (blockSkill.getType().containsTag(SkillTag.物理护甲) || blockSkill.getType() == SkillType.水流护甲
+//                || blockSkill.getType() == SkillType.格挡
+//                || blockSkill.getType() == SkillType.钢铁之肤
+//                || blockSkill.getType() == SkillType.水流护甲
+//                || blockSkill.getType() == SkillType.圣盾
+//                || blockSkill.getType() == SkillType.无刀取
+//                || blockSkill.getType() == SkillType.骑士守护
+//                || blockSkill.getType() == SkillType.邪甲术
+//                || blockSkill.getType() == SkillType.不朽原核
+//                || blockSkill.getType() == SkillType.白袍银甲
+//                || blockSkill.getType() == SkillType.魔族之血) {
+//
+//
+//        }
+        if(bingo){
             resolver.getStage().getUI().useSkill(attacker, defender, attackSkill, true);
             resolver.getStage().getUI().disableBlock(attacker, defender, attackSkill, blockSkill);
-
-        }
-        if(bingo){
             return true;
         }
         else {

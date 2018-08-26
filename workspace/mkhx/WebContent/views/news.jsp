@@ -38,6 +38,13 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2018-08-26: <x>欢笑，波波</x><ul>
+                        <li>添加卡牌【牛魔王】</li>
+                        <li>添加技能【混铁棍】</li>
+                        <li>觉醒卡牌【彼岸使者】</li>
+                        <li>觉醒n卡牌【双子座】，【天蝎座】</li>
+                        <li>修复【天降神兵】BUG,修复【骑士庇护】BUG,调整初始召唤机制，被降临技能等待置为0的卡牌不能上场，本次bug感谢泰尔诺奇的帮助</li>
+                    </ul></li>
                     <li>2018-08-19: <x>欢笑，波波</x><ul>
                         <li>添加卡牌【利维坦】，【库卡隆战士】，【生命古树】</li>
                         <li>修复技能【安魂引】无归魂的bug</li>
