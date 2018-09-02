@@ -3025,13 +3025,15 @@ public class SkillResolver {
 //            this.resolveFirstClassSummoningSkills(summonedCard, player, enemy, isMinion);
 //        }
         for (CardInfo card : player.getHand().toList()) {
-            if (card.getSummonDelay() == 0) {
-                summonedCards.add(card);
-            }
+            summonedCards.add(card);
         }
         for(CardInfo summonedCard: summonedCards) {
-            setCardToField(summonedCard, 0);
-            this.resolveFirstClassSummoningSkills(summonedCard, player, enemy, isMinion);
+            if (summonedCard.getSummonDelay() == 0) {
+                if(player.getHand().contains(summonedCard)) {
+                    setCardToField(summonedCard, 0);
+                    this.resolveFirstClassSummoningSkills(summonedCard, player, enemy, isMinion);
+                }
+            }
         }
         List<CardInfo> fieldCards = player.getField().toList();
 

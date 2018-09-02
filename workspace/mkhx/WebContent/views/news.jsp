@@ -38,6 +38,9 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2018-08-27: <x>欢笑，波波</x><ul>
+                        <li>略微调整召唤机制，降临加速以及入场回合被阻碍都会对卡牌是否入场产生影响</li>
+                    </ul></li>
                     <li>2018-08-26: <x>欢笑，波波</x><ul>
                         <li>添加卡牌【牛魔王】</li>
                         <li>添加技能【混铁棍】</li>
