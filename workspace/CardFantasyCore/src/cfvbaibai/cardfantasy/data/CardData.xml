@@ -1319,6 +1319,16 @@
     </Card>
     <Card id="1659" name="王国占位符" wikiId="" race="王国" speed="4" star="5" cost="0" incrCost="0" at="0" hp="5000" incrAT="0" incrHP="0">
     </Card>
+    <Card id="1660" name="碧海绯樱" wikiId="" race="王国" speed="1" star="5" cost="20" incrCost="2" at="585" hp="1595" incrAT="43" incrHP="50">
+        <Skill type="海滨大作战" level="0" unlock="0" />
+        <Skill type="稳定" level="0" unlock="5" />
+        <Skill type="日光浴" level="0" unlock="10" />
+    </Card>
+    <Card id="1661" name="丽日清风" wikiId="" race="王国" speed="2" star="5" cost="19" incrCost="2" at="560" hp="1535" incrAT="36" incrHP="45">
+        <Skill type="风行" level="0" unlock="0" />
+        <Skill type="星云锁链" level="0" unlock="5" />
+        <Skill type="冲浪集结" level="0" unlock="10" />
+    </Card>
 
 
 
@@ -2423,6 +2433,21 @@
         <Skill type="归魂" level="1" unlock="0" summon="true"/>
         <Skill type="祈愿" level="2" unlock="5" />
         <Skill type="铁壁" level="4" unlock="10" />
+    </Card>
+    <Card id="2633" name="碧海倩影" wikiId="" race="森林" speed="2" star="5" cost="19" incrCost="2" at="545" hp="1540" incrAT="37" incrHP="47">
+        <Skill type="灵魂消散" level="0" unlock="0" summon="true"/>
+        <Skill type="海滨骚乱" level="0" unlock="5" />
+        <Skill type="逃跑" level="0" unlock="10" />
+    </Card>
+    <Card id="2631" name="潜水学徒" wikiId="" race="森林" speed="3" star="5" cost="18" incrCost="2" at="530" hp="1515" incrAT="40" incrHP="40">
+        <Skill type="雷神降临" level="10" unlock="0"/>
+        <Skill type="谜之水枪" level="0" unlock="5" />
+        <Skill type="魔力泳圈" level="0" unlock="10" />
+    </Card>
+    <Card id="2632" name="哥布林炼金师" wikiId="" race="森林" speed="2" star="4" cost="15" incrCost="2" at="430" hp="1250" incrAT="32" incrHP="30">
+        <Skill type="复苏药剂" level="0" unlock="0"/>
+        <Skill type="麻痹药剂" level="0" unlock="5" />
+        <Skill type="连续魔法" level="5" unlock="10" />
     </Card>
 
 
@@ -4749,6 +4774,11 @@
         <Skill type="星座能量直感" level="0" unlock="0" />
         <Skill type="圣母回声" level="0" unlock="5" />
         <Skill type="不动" level="0" unlock="10" />
+    </Card>
+    <Card id="4640" name="王牌教官" wikiId="" race="地狱" speed="2" star="5" cost="18" incrCost="2" at="540" hp="1585" incrAT="42" incrHP="35">
+        <Skill type="武形神箭" level="10" unlock="0" />
+        <Skill type="送葬之刃" level="7" unlock="5" />
+        <Skill type="集训" level="0" unlock="10" />
     </Card>
 
 
