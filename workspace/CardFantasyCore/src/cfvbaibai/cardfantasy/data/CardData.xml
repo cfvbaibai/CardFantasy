@@ -1329,6 +1329,11 @@
         <Skill type="星云锁链" level="0" unlock="5" />
         <Skill type="冲浪集结" level="0" unlock="10" />
     </Card>
+    <Card id="1662" name="混元斗者" wikiId="" race="王国" speed="3" star="5" cost="19" incrCost="2" at="550" hp="1595" incrAT="39" incrHP="41">
+        <Skill type="地裂劲" level="0" unlock="0" />
+        <Skill type="寒霜拳" level="0" unlock="5" />
+        <Skill type="金刚护体" level="0" unlock="10" />
+    </Card>
 
 
 
@@ -4779,6 +4784,11 @@
         <Skill type="武形神箭" level="10" unlock="0" />
         <Skill type="送葬之刃" level="7" unlock="5" />
         <Skill type="集训" level="0" unlock="10" />
+    </Card>
+    <Card id="4641" name="策士统领" wikiId="" race="地狱" speed="3" star="4" cost="15" incrCost="2" at="450" hp="1410" incrAT="35" incrHP="30">
+        <Skill type="灵力魔阵" level="0" unlock="0" />
+        <Skill type="极寒冲击" level="6" unlock="5" />
+        <Skill type="坚毅" level="0" unlock="10" />
     </Card>
 
 

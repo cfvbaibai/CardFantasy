@@ -487,6 +487,7 @@ public class BattleEngine {
         for (SkillUseInfo skillUseInfo : myField.getCard(i).getUsableNormalSkills()) {
             if (skillUseInfo.getType() == SkillType.横扫 ||
                     skillUseInfo.getType() == SkillType.灵击 ||
+                    skillUseInfo.getType() == SkillType.地裂劲 ||
                     skillUseInfo.getType() == SkillType.三千世界 ||
                     skillUseInfo.getType() == SkillType.大小通吃 ||
                     skillUseInfo.getType() == SkillType.魔龙之怒 ||
@@ -520,6 +521,7 @@ public class BattleEngine {
         if (damagedResult != null && damagedResult.originalDamage > 0 && myField.getCard(i) != null&&attackflag) {
             for (SkillUseInfo skillUseInfo : myField.getCard(i).getUsableNormalSkills()) {
                 if (skillUseInfo.getType() == SkillType.横扫 ||
+                        skillUseInfo.getType() == SkillType.地裂劲 ||
                         skillUseInfo.getType() == SkillType.三千世界 ||
                         skillUseInfo.getType() == SkillType.大小通吃 ||
                         skillUseInfo.getType() == SkillType.魔龙之怒 ||

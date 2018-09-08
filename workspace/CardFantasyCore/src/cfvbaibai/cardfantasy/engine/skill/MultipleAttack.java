@@ -17,6 +17,9 @@ public final class MultipleAttack {
         if (attackSkill != null) {
             return;
         }
+        if (attacker.isDead()) {
+            return;
+        }
         if(!firstSkill)
         {
             return;
