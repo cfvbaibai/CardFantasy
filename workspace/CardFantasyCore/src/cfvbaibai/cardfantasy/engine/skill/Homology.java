@@ -41,7 +41,9 @@ public final class Homology {
         resolver.getStage().getUI().useSkill(reviver, revivableCards, skillUseInfo.getSkill(), true);
         for(CardInfo cardInfo:revivableCards)
         {
-            reviver.getOwner().getGrave().removeCard(cardInfo);
+            if( reviver.getOwner().getGrave().contains(cardInfo)) {
+                reviver.getOwner().getGrave().removeCard(cardInfo);
+            }
             reviver.getOwner().getHand().removeCard(cardInfo);
             reviver.getOwner().getDeck().removeCard(cardInfo);
             resolver.summonCard(reviver.getOwner(), cardInfo, reviver, false, skillUseInfo.getSkill(),0);
