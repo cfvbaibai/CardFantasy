@@ -37,6 +37,7 @@ public class CardInfo extends EntityInfo {
     private int summonNumber;//判断卡牌存在回合
     private boolean runeActive;//判断卡牌是否激活符文
     private boolean isDeathNow;//判断卡牌是否是当前回合死亡
+    private SkillUseInfo productSkillUserInfo;//生成该卡牌的技能
     
     private int eternalWound = 0;
 
@@ -63,6 +64,7 @@ public class CardInfo extends EntityInfo {
         this.summonNumber=0;
         this.runeActive=false;
         this.isDeathNow=false;
+        this.productSkillUserInfo = null;
     }
 
     public List<SkillUseInfo> getSkillUserInfos(){
@@ -891,5 +893,13 @@ public class CardInfo extends EntityInfo {
 
     public void setRelationCardInfo(CardInfo relationCardInfo) {
         this.relationCardInfo = relationCardInfo;
+    }
+
+    public SkillUseInfo getProductSkillUserInfo() {
+        return productSkillUserInfo;
+    }
+
+    public void setProductSkillUserInfo(SkillUseInfo productSkillUserInfo) {
+        this.productSkillUserInfo = productSkillUserInfo;
     }
 }

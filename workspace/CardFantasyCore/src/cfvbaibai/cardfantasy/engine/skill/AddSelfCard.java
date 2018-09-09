@@ -2,42 +2,51 @@ package cfvbaibai.cardfantasy.engine.skill;
 
 import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
 import cfvbaibai.cardfantasy.Randomizer;
-import cfvbaibai.cardfantasy.data.Skill;
-import cfvbaibai.cardfantasy.data.SkillType;
-import cfvbaibai.cardfantasy.engine.*;
+import cfvbaibai.cardfantasy.engine.CardInfo;
+import cfvbaibai.cardfantasy.engine.HeroDieSignal;
+import cfvbaibai.cardfantasy.engine.SkillResolver;
+import cfvbaibai.cardfantasy.engine.SkillUseInfo;
 import cfvbaibai.cardfantasy.game.DeckBuilder;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
-public class AddCard {
+public class AddSelfCard {
     public static void apply(SkillResolver resolver, SkillUseInfo skillUseInfo, CardInfo summoner, SummonType summonType, int summonPicks, String... summonedCardsDescs) throws HeroDieSignal {
         if (summoner == null) {
             throw new CardFantasyRuntimeException("summoner should not be null");
         }
         int impact = skillUseInfo.getSkill().getImpact();
-        if(skillUseInfo.getSkillNumber()==0)
+        SkillUseInfo useSkllInfo =null;
+        SkillUseInfo productSkillUserInfo = summoner.getProductSkillUserInfo();
+        if(productSkillUserInfo !=null)
+        {
+            useSkllInfo = productSkillUserInfo;
+        }
+        else{
+            useSkllInfo = skillUseInfo;
+        }
+        if(useSkllInfo.getSkillNumber()==0)
         {
             return;
         }
-        if(skillUseInfo.getSkillNumber()==-1)
+        if(useSkllInfo.getSkillNumber()==-1)
         {
-            skillUseInfo.setSkillNumber(impact);
+            useSkllInfo.setSkillNumber(impact);
         }
-        skillUseInfo.setSkillNumber(skillUseInfo.getSkillNumber()-1);
+        useSkllInfo.setSkillNumber(useSkllInfo.getSkillNumber()-1);
         List<CardInfo> cardsToSummon = new ArrayList<CardInfo>();
         List<CardInfo> summonCardCandidates = null;
         summonCardCandidates = DeckBuilder.build(summonedCardsDescs).getCardInfos(summoner.getOwner());
         cardsToSummon = Randomizer.getRandomizer().pickRandom(summonCardCandidates, summonPicks, true, null);
 
         if (cardsToSummon.size() > 0) {
-            resolver.getStage().getUI().useSkill(summoner, skillUseInfo.getSkill(), true);
+            resolver.getStage().getUI().useSkill(summoner, useSkllInfo.getSkill(), true);
         }
         for (int i = 0; i < cardsToSummon.size(); ++i) {
             CardInfo summonedCard = cardsToSummon.get(i);
-            summonedCard.setProductSkillUserInfo(skillUseInfo);
-            resolver.summonCard(summoner.getOwner(), summonedCard, summoner, false, skillUseInfo.getSkill(),1);
+            summonedCard.setProductSkillUserInfo(useSkllInfo);
+            resolver.summonCard(summoner.getOwner(), summonedCard, summoner, false, useSkllInfo.getSkill(),1);
         }
     }
 }

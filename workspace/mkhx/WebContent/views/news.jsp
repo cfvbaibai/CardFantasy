@@ -38,6 +38,10 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2018-09-09: <x>欢笑，波波</x><ul>
+                        <li>修改英雄cost</li>
+                        <li>添加一些测试卡</li>
+                    </ul></li>
                     <li>2018-09-08: <x>欢笑，波波</x><ul>
                         <li>添加新卡【混元斗者】，【策士统领】，修改噩梦莉莉丝（流光回梦修改为制裁之拳）</li>
                         <li>修改【反射装甲】机制，【反射装甲】可以防御破军。</li>
