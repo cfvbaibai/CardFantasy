@@ -382,11 +382,13 @@ public enum SkillType {
     邪甲术("",350,0,SkillTag.沉默无效),
     白袍银甲("",350,0,SkillTag.抗沉默),
     不朽原核("",10000,0,SkillTag.沉默无效),
+    魔王之血("",2000,0,SkillTag.沉默无效),
 
 
     回魂("31131", 1),
     招魂术("", 1,SkillTag.不动),
     祈愿("", 1),
+    神恩("", 1,SkillTag.抗沉默),
     放飞自我("", 3,0),
     归魂("",1),
     降归魂("",1),
@@ -408,7 +410,7 @@ public enum SkillType {
     禁术无尽华尔兹("", 0),
     桑巴之舞("", 0),
     精神污染("", 10),
-    精污("", 120,0),
+    反间情报("", 120,0),
     原素之舞("",0),
     圣洁魅惑("", 0),
     学园骚乱("", 0),
@@ -666,6 +668,7 @@ public enum SkillType {
     星座能量掌握("",0,0, SkillTag.不可洗炼,SkillTag.召唤),
     日光浴("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼,SkillTag.不动),
     火土风暴("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼,SkillTag.不动,SkillTag.抗沉默),
+    终焉之兆("",0,SkillTag.魔王无效,SkillTag.抗免疫, SkillTag.召唤, SkillTag.不可洗炼),
 
     //生成卡牌置入战场
     蜀国英魂("", 2, 0,SkillTag.抗夺魂),
@@ -818,8 +821,9 @@ public enum SkillType {
     不灭原质("",75,0,SkillType.祈福,5,SkillType.月神的护佑,9),
     天丛云("",0,0,SkillType.应激,0,SkillType.剧毒剑刃,0),
     月神祈福("",0,0,SkillType.祈福,2,SkillType.月神的护佑,6),
-    坚壁剑域("",0,0,SkillType.坚壁,4,SkillType.铁壁,4),
+    王之军阵("",0,0,SkillType.坚壁,4,SkillType.铁壁,4),
     闪耀突击("",0,0,SkillType.号角,1,SkillType.突击,0),
+    魔神加护("",2000,0,SkillType.魔王之血,0,SkillType.铁壁,4,SkillTag.沉默无效,SkillTag.即死, SkillTag.抗免疫, SkillTag.魔王无效, SkillTag.魔族天赋),
 
     新生("",0,0,SkillTag.新生,SkillTag.抗夺魂),
     重整("",0,0,SkillTag.新生,SkillTag.抗夺魂),

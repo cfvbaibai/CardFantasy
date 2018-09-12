@@ -22,6 +22,10 @@ public final class Erode {
         if (card.hasUsed(skillUseInfo)) {
             return;
         }
+        if(card.isSilent())
+        {
+            return;
+        }
         card.setUsed(skillUseInfo);
         Skill skill = skillUseInfo.getSkill();
         GameUI ui = resolver.getStage().getUI();
