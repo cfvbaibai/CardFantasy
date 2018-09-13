@@ -2838,6 +2838,8 @@ public class SkillResolver {
                     Horn.apply(skillUseInfo, this, card);
                 } else if (skillUseInfo.getType() == SkillType.逐光追梦 || skillUseInfo.getType() == SkillType.杀手回梦) {
                     ReturnCard.apply(this, skillUseInfo.getSkill(), card, enemy, 5);
+                } else if (skillUseInfo.getType() == SkillType.逐光 || skillUseInfo.getType() == SkillType.杀手回梦) {
+                    ReturnCard.apply(this, skillUseInfo.getSkill(), card, enemy, 2);
                 } else if (skillUseInfo.getType() == SkillType.反间情报) {
                     Insane.apply(skillUseInfo, this, card, enemy, 3, 0);
                 }

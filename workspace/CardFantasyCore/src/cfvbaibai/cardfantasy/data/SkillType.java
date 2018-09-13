@@ -936,6 +936,7 @@ public enum SkillType {
 
     弱者溃散("",0,SkillTag.魔王无效,SkillTag.抗免疫),
     退散("",0,SkillTag.魔王无效,SkillTag.抗免疫),
+    逐光("",0,SkillTag.魔王无效,SkillTag.抗免疫),
     逐光追梦("",0,SkillTag.魔王无效,SkillTag.抗免疫),
     杀手回梦("",2000,0, SkillTag.额外攻击加成, SkillTag.不可洗炼,SkillTag.魔王无效,SkillTag.抗免疫),
     崩坏("",0,SkillTag.魔王无效),
