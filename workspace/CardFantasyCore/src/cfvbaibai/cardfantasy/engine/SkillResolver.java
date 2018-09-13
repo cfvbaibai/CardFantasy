@@ -894,6 +894,8 @@ public class SkillResolver {
             } else if (skillUseInfo.getType() == SkillType.终焉之兆) {
                 ReturnToHandAndDelay.apply(this, skillUseInfo.getSkill(), attacker, defender, 2, 1);
                 Summon.apply(this, skillUseInfo, attacker, SummonType.Normal, 1, "终焉使魔");
+            } else if (skillUseInfo.getType() == SkillType.月之召唤) {
+                SummonWhenAttack.apply(this, skillUseInfo, attacker, 1, "暗月");
             }
         }
         if ((attacker.containsAllSkill(SkillType.连续魔法) || attacker.containsAllSkill(SkillType.黄天当立) || attacker.containsAllSkill(SkillType.连奏) || attacker.containsAllSkill(SkillType.神性爆发) || attacker.containsAllSkill(SkillType.时光迁跃) || attacker.containsAllSkill(SkillType.我们生命中的时光)) && !attacker.isDead() && status == 0) {
@@ -1911,7 +1913,7 @@ public class SkillResolver {
                 }
             }
             if (skillUseInfo.getType() == SkillType.幻影军团) {
-                SummonWhenAttack.apply(this, skillUseInfo, attacker, 2, attacker.getName());
+                SummonWhenAttack.apply(this, skillUseInfo, attacker, 1, attacker.getName());
             }
         }
         if (!attacker.isDead() && !attacker.isSilent()) {
@@ -2272,7 +2274,7 @@ public class SkillResolver {
         }
         for (SkillUseInfo skillUseInfo : attacker.getUsableNormalSkills()) {
             if (skillUseInfo.getType() == SkillType.幻影军团) {
-                SummonWhenAttack.apply(this, skillUseInfo, attacker, 2, attacker.getName());
+                SummonWhenAttack.apply(this, skillUseInfo, attacker, 1, attacker.getName());
             } else if (skillUseInfo.getType() == SkillType.高级连击) {
                 MultipleAttack.apply(this, skillUseInfo, attacker, defenderHero, null, firstSkill);
             } else if (skillUseInfo.getType() == SkillType.狂舞) {

@@ -669,6 +669,7 @@ public enum SkillType {
     日光浴("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼,SkillTag.不动),
     火土风暴("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼,SkillTag.不动,SkillTag.抗沉默),
     终焉之兆("",0,SkillTag.魔王无效,SkillTag.抗免疫, SkillTag.召唤, SkillTag.不可洗炼),
+    月之召唤("",5,0,100,0, SkillTag.不可洗炼,SkillTag.召唤),
 
     //生成卡牌置入战场
     蜀国英魂("", 2, 0,SkillTag.抗夺魂),

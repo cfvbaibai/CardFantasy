@@ -2489,10 +2489,15 @@
         <Skill type="大地之盾装甲" level="0" unlock="5" />
         <Skill type="结界立场" level="0" unlock="10" />
     </Card>
-    <Card id="2636" name="森林守护者" wikiId="" race="森林" speed="3" star="5" cost="18" incrCost="2" at="575" hp="1575" incrAT="43" incrHP="47">
-        <Skill type="狂舞" level="0" unlock="0"/>
-        <Skill type="幻影军团" level="0" unlock="5" />
-        <Skill type="扼杀" level="0" unlock="10" />
+    <Card id="2636" name="森林守护者" wikiId="" race="森林" speed="3" star="5" cost="17" incrCost="2" at="470" hp="1435" incrAT="38" incrHP="40">
+        <Skill type="月之召唤" level="0" unlock="0"/>
+        <Skill type="神性祈求" level="0" unlock="5" />
+        <Skill type="不屈" level="0" unlock="10" />
+    </Card>
+    <Card id="2637" name="暗月" wikiId="" race="森林" speed="2" star="5" cost="16" incrCost="2" at="390" hp="1345" incrAT="30" incrHP="32">
+        <Skill type="阻碍" level="2" unlock="0"/>
+        <Skill type="英雄杀手" level="6" unlock="5" />
+        <Skill type="圣炎" level="0" unlock="10" death="true"/>
     </Card>
 
 
