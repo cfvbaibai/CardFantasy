@@ -896,6 +896,8 @@ public class SkillResolver {
                 Summon.apply(this, skillUseInfo, attacker, SummonType.Normal, 1, "终焉使魔");
             } else if (skillUseInfo.getType() == SkillType.月之召唤) {
                 SummonWhenAttack.apply(this, skillUseInfo, attacker, 1, "暗月");
+            } else if (skillUseInfo.getType() == SkillType.逐光 || skillUseInfo.getType() == SkillType.杀手回梦) {
+                ReturnCard.apply(this, skillUseInfo.getSkill(), attacker, defender, 2);
             }
         }
         if ((attacker.containsAllSkill(SkillType.连续魔法) || attacker.containsAllSkill(SkillType.黄天当立) || attacker.containsAllSkill(SkillType.连奏) || attacker.containsAllSkill(SkillType.神性爆发) || attacker.containsAllSkill(SkillType.时光迁跃) || attacker.containsAllSkill(SkillType.我们生命中的时光)) && !attacker.isDead() && status == 0) {
@@ -2840,8 +2842,6 @@ public class SkillResolver {
                     Horn.apply(skillUseInfo, this, card);
                 } else if (skillUseInfo.getType() == SkillType.逐光追梦 || skillUseInfo.getType() == SkillType.杀手回梦) {
                     ReturnCard.apply(this, skillUseInfo.getSkill(), card, enemy, 5);
-                } else if (skillUseInfo.getType() == SkillType.逐光 || skillUseInfo.getType() == SkillType.杀手回梦) {
-                    ReturnCard.apply(this, skillUseInfo.getSkill(), card, enemy, 2);
                 } else if (skillUseInfo.getType() == SkillType.反间情报) {
                     Insane.apply(skillUseInfo, this, card, enemy, 3, 0);
                 }
