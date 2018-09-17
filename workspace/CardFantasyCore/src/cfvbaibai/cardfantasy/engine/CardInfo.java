@@ -401,6 +401,8 @@ public class CardInfo extends EntityInfo {
                 race = Race.SAVAGE;
             } else if (item.getType() == CardStatusType.地狱) {
                 race = Race.HELL;
+            } else if (item.getType() == CardStatusType.魔族) {
+                race = Race.DEMON;
             }
         }
         return race;

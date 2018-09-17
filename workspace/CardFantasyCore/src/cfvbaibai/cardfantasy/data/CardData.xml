@@ -2523,12 +2523,12 @@
     </Card>
     <Card id="2636" name="森林守护者" wikiId="" race="森林" speed="3" star="5" cost="17" incrCost="2" at="470" hp="1435" incrAT="38" incrHP="40">
         <Skill type="月之召唤" level="0" unlock="0"/>
-        <Skill type="神性祈求" level="0" unlock="5" />
+        <Skill type="神性祈祷" level="0" unlock="5" />
         <Skill type="不屈" level="0" unlock="10" />
     </Card>
     <Card id="2637" name="暗月" wikiId="" race="森林" speed="2" star="5" cost="16" incrCost="2" at="390" hp="1345" incrAT="30" incrHP="32">
         <Skill type="阻碍" level="2" unlock="0"/>
-        <Skill type="英雄杀手" level="6" unlock="5" />
+        <Skill type="祈福" level="1" unlock="5" />
         <Skill type="圣炎" level="0" unlock="10" death="true"/>
     </Card>
     <Card id="2638" name="原射手座" wikiId="" race="森林" speed="2" star="5" cost="19" incrCost="2" at="330" hp="1450" incrAT="35" incrHP="29">
@@ -5633,6 +5633,11 @@
     <Card id="6111" name="终焉使魔" wikiId="" race="魔族" speed="4" star="5" cost="99" incrCost="0" at="500" hp="5000" incrAT="0" incrHP="0">
         <Skill type="终焉时刻" level="0" unlock="0" />
         <Skill type="末世术" level="10" unlock="5" summon="true"/>
+    </Card>
+    <Card id="6112" name="盗宝松鼠" wikiId="" race="魔族" speed="1" star="5" cost="20" incrCost="2" at="600" hp="1685" incrAT="50" incrHP="55">
+        <Skill type="魔王降临" level="0" unlock="0" />
+        <Skill type="贪欲之体" level="0" unlock="5" />
+        <Skill type="战争狂热" level="0" unlock="0" />
     </Card>
 
     <!-- 测试卡 -->

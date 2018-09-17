@@ -27,7 +27,8 @@ public enum CardStatusType {
     王国(false, "王"),
     森林(false, "森"),
     蛮荒(false, "蛮"),
-    地狱(false, "地");
+    地狱(false, "地"),
+    魔族(false, "族");
     
 
     private boolean quantitive;

@@ -103,6 +103,7 @@ public class CardStatusItem {
             case 1: type = CardStatusType.森林; break;
             case 2: type = CardStatusType.蛮荒; break;
             case 3: type = CardStatusType.地狱; break;
+            case 4: type = CardStatusType.魔族; break;
         }
         return new CardStatusItem(type, 0, cause);
     }

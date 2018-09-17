@@ -216,6 +216,7 @@ public class BattleEngine {
         {
             defenderCard.setRuneActive(false);//符文不发动
             defenderCard.setSummonNumber(defenderCard.getSummonNumber()+1);//存在回合数+1
+            this.stage.getResolver().removeStatus(defenderCard, CardStatusType.魔族);//移除魔族buff
             this.stage.getResolver().removeGiveSkills(defenderCard);
         }
         this.stage.getResolver().endOutField(this.getActivePlayer());

@@ -13,7 +13,7 @@ public final class HellPrison {
         StageInfo stage = resolver.getStage();
         Randomizer random = stage.getRandomizer();
         List<CardInfo> fileCard = random.pickRandom(player.getField().toList(), -1, true, null);
-        if(!resolver.resolveStopDelay(defender))
+        if(resolver.resolveStopDelay(defender))
         {
             return;
         }
@@ -30,6 +30,10 @@ public final class HellPrison {
                 if(skillUseInfo.getSkill().getType()==SkillType.冥狱牢囚) {
                     resolver.getStage().getUI().useSkill(attackerCard, allHandCards, skillUseInfo.getSkill(), true);
                     for (CardInfo card : allHandCards) {
+                        if(resolver.resolveStopCardDelay(card))
+                        {
+                            continue;
+                        }
                         resolver.getStage().getUI().useSkill(attackerCard, allHandCards, skillUseInfo.getSkill(), true);
                         int summonDelay = card.getSummonDelay();
                         resolver.getStage().getUI().increaseSummonDelay(card, skillUseInfo.getSkill().getImpact());
