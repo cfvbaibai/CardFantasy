@@ -31,6 +31,7 @@ public class SummonOpponent {
                 || summoner.isSummonedMinion() && skillUseInfo.getType() == SkillType.幻化
                 || summoner.isSummonedMinion() && skillUseInfo.getType() == SkillType.幻影
                 || summoner.isSummonedMinion() && skillUseInfo.getType() == SkillType.日光浴
+                || summoner.isSummonedMinion() && skillUseInfo.getType() == SkillType.护主
                 || summoner.isSummonedMinion() && skillUseInfo.getType() == SkillType.星座能量掌握
                 || summoner.isSummonedMinion() && skillUseInfo.getType() == SkillType.北海报恩) {
             for(CardStatusItem item : summoner.getStatus().getAllItems())

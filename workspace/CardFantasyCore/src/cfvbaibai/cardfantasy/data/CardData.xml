@@ -1391,6 +1391,11 @@
         <Skill type="一闪" level="0" unlock="5" />
         <Skill type="离魂剑" level="0" unlock="10" />
     </Card>
+    <Card id="1674" name="结界稻草人·极" wikiId="" race="王国" speed="2" star="5" cost="20" incrCost="2" at="410" hp="1760" incrAT="76" incrHP="91">
+        <Skill type="护主" level="0" unlock="0" />
+        <Skill type="圣光奏鸣曲" level="0" unlock="5" />
+        <Skill type="结界立场" level="0" unlock="10" />
+    </Card>
 
 
 
@@ -5636,7 +5641,7 @@
     </Card>
     <Card id="6112" name="盗宝松鼠" wikiId="" race="魔族" speed="1" star="5" cost="20" incrCost="2" at="600" hp="1685" incrAT="50" incrHP="55">
         <Skill type="魔王降临" level="0" unlock="0" />
-        <Skill type="贪欲之体" level="0" unlock="5" />
+        <Skill type="嗜血潜能" level="0" unlock="5" />
         <Skill type="战争狂热" level="0" unlock="0" />
     </Card>
 

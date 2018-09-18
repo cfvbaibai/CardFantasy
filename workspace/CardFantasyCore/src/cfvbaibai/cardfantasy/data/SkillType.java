@@ -44,7 +44,7 @@ public enum SkillType {
     拔刀术("", 600, 0, SkillTag.永久, SkillTag.基础攻击加成),
     嗜血("30940", 10, SkillTag.永久, SkillTag.基础攻击加成),
     透支("30946", 20, SkillTag.永久, SkillTag.基础攻击加成),
-    力竭("", 1000,0),
+    力竭("", 800,0),
     过载("30946", 20, 30, SkillTag.永久, SkillTag.基础攻击加成),
     勤学苦练("", 150, 0, SkillTag.永久, SkillTag.基础攻击加成),
     修罗道("", 1600, 0,600,0, SkillTag.永久, SkillTag.基础攻击加成),
@@ -252,10 +252,10 @@ public enum SkillType {
     回春("30944", 30),
     自愈("30944", 200,200),
     月恩术("", 300, 50),
-    圣母回声("", 99999, 99999),
+    圣母回声("", 999999, 0),
     圣母吟咏("", 10),
     治愈音符("", 50,0),
-    圣母咏叹调("", 99999, 99999,SkillTag.抗沉默),
+    圣母咏叹调("", 999999, 0,SkillTag.抗沉默),
     月神的护佑("", new int[] { 8, 10, 13, 15, 18, 20, 23, 25, 28, 30, 35 }),
     月神的触碰("", new int[] { 8, 10, 13, 15, 18, 20, 2, 25, 28, 30, 35 }),
     生命的触碰("", new int[] { 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50 }),
@@ -307,6 +307,7 @@ public enum SkillType {
     群体脱困("", 0),
     群体追击("", 15, SkillTag.额外攻击加成),
     复活("30953", 0, SkillTag.复活),
+    全体复活("", 0, SkillTag.复活),
     星座能量信念("", 0, SkillTag.复活),
     同调("", 0),
     返生术("", 0, SkillTag.不动,SkillTag.复活),
@@ -689,6 +690,7 @@ public enum SkillType {
     特殊体质("",0,0, SkillTag.不可洗炼,SkillTag.召唤),
     月之暗面("",5,0,100,0, SkillTag.不可洗炼,SkillTag.召唤),
     余香("",5,0,100,0, SkillTag.不可洗炼,SkillTag.召唤),
+    护主("", 40,0,SkillTag.沉默无效, SkillTag.不可洗炼,SkillTag.召唤),
 
     //生成卡牌置入战场
     蜀国英魂("", 2, 0,SkillTag.抗夺魂),
@@ -847,7 +849,7 @@ public enum SkillType {
     魔神加护("",2000,0,SkillType.魔王之血,0,SkillType.铁壁,4,SkillTag.沉默无效,SkillTag.即死, SkillTag.抗免疫, SkillTag.魔王无效, SkillTag.魔族天赋),
     星座能量思考("",0,0,SkillType.全体加速,1,SkillType.骤雨,7),
     觉醒月神降临("", SkillType.救死扶伤, 0, SkillType.月神降临祈福, 0),
-    贪欲之体("",650,0,SkillType.松鼠吞噬,0,null,0,SkillTag.沉默无效),
+    嗜血潜能("",650,0,SkillType.松鼠吞噬,0,null,0,SkillTag.沉默无效),
 
     新生("",0,0,SkillTag.新生,SkillTag.抗夺魂),
     重整("",0,0,SkillTag.新生,SkillTag.抗夺魂),
@@ -927,6 +929,7 @@ public enum SkillType {
     武形破剑光环("",SkillType.武形破剑击,0,null,0),
     镜面光环("",SkillType.镜面,0,null,0),
     秘纹领域("",SkillType.镜面,0,null,0),
+    圣光奏鸣曲("",999999,0,SkillType.圣母吟咏,8,null,0),
 
 
     //给自身场上所有卡牌添加技能
