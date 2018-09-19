@@ -38,6 +38,9 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2018-09-19: <x>欢笑，波波</x><ul>
+                        <li>修复页游技能【归隐】</li>
+                    </ul></li>
                     <li>2018-09-17: <x>欢笑，波波</x><ul>
                         <li>添加卡牌【盗宝松鼠】，【巡林的小红帽】</li>
                         <li>修复技能【勤学苦练】，【根源之力】，【风行】</li>

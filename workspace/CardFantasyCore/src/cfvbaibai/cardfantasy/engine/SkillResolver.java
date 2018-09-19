@@ -829,8 +829,6 @@ public class SkillResolver {
                 Bless.apply(skillUseInfo.getSkill(), this, attacker);
             } else if (skillUseInfo.getType() == SkillType.终焉时刻) {
                 Curse.apply(this, skillUseInfo.getSkill(), attacker, defender);
-            } else if (skillUseInfo.getType() == SkillType.归隐) {
-                Curse.apply(this, skillUseInfo.getSkill(), attacker, defender);
             } else if (skillUseInfo.getType() == SkillType.弑主) {
                 CounterBite.apply(skillUseInfo.getAttachedUseInfo1(), this, attacker);
                 TheSword.apply(this, skillUseInfo.getAttachedUseInfo2(), attacker);
@@ -1772,8 +1770,7 @@ public class SkillResolver {
                     || deadCardSkillUseInfo.getType() == SkillType.金汤 && !deadCard.getStatus().containsStatus(CardStatusType.不屈)
                     || deadCardSkillUseInfo.getType() == SkillType.铁壁方阵 && !deadCard.getStatus().containsStatus(CardStatusType.不屈)
                     || deadCardSkillUseInfo.getType() == SkillType.聚能立场 && !deadCard.getStatus().containsStatus(CardStatusType.不屈)
-                    || deadCardSkillUseInfo.getType() == SkillType.光之守护 && !deadCard.getStatus().containsStatus(CardStatusType.不屈)
-                    || deadCardSkillUseInfo.getType() == SkillType.护主 && !deadCard.getStatus().containsStatus(CardStatusType.不屈)) {
+                    || deadCardSkillUseInfo.getType() == SkillType.光之守护 && !deadCard.getStatus().containsStatus(CardStatusType.不屈)) {
                 ImpregnableDefenseHeroBuff.remove(this, deadCardSkillUseInfo, deadCard);
             } else if (deadCardSkillUseInfo.getType() == SkillType.驱虎吞狼 && !deadCard.getStatus().containsStatus(CardStatusType.不屈)) {
                 ImpregnableDefenseHeroBuff.remove(this, deadCardSkillUseInfo.getAttachedUseInfo2(), deadCard);
@@ -1813,8 +1810,13 @@ public class SkillResolver {
                 Snipe.apply(deadCardSkillUseInfo, deadCardSkillUseInfo.getSkill().getAttachedSkill1(), this, deadCard, opponent, -1);
                 Snipe.apply(deadCardSkillUseInfo, deadCardSkillUseInfo.getSkill().getAttachedSkill2(), this, deadCard, opponent, 3);
             } else if (deadCardSkillUseInfo.getType() == SkillType.幻化 || deadCardSkillUseInfo.getType() == SkillType.幻影
-                    || deadCardSkillUseInfo.getType() == SkillType.日光浴 || deadCardSkillUseInfo.getType() == SkillType.护主) {
+                    || deadCardSkillUseInfo.getType() == SkillType.日光浴) {
                 Summon.apply(this, deadCardSkillUseInfo, deadCard, SummonType.Normal, 1, deadCard.getName());
+            } else if (deadCardSkillUseInfo.getType() == SkillType.护主) {
+                Summon.apply(this, deadCardSkillUseInfo, deadCard, SummonType.Normal, 1, deadCard.getName());
+                if(!deadCard.getStatus().containsStatus(CardStatusType.不屈)) {
+                    ImpregnableDefenseHeroBuff.remove(this, deadCardSkillUseInfo, deadCard);
+                }
             } else if (deadCardSkillUseInfo.getType() == SkillType.安魂引) {
                 RegressionSoul.apply(this, deadCardSkillUseInfo.getAttachedUseInfo2(), deadCard, opponent);
             } else if (deadCardSkillUseInfo.getType() == SkillType.彼岸轮回) {
@@ -1838,6 +1840,8 @@ public class SkillResolver {
                 Revive.apply(this, deadCardSkillUseInfo, deadCard);
             } else if (deadCardSkillUseInfo.getType() == SkillType.余香) {
                 SummonWhenAttack.apply(this, deadCardSkillUseInfo, deadCard, 1, "网页版红玫瑰");
+            } else if (deadCardSkillUseInfo.getType() == SkillType.归隐) {
+                Curse.apply(this, deadCardSkillUseInfo.getSkill(), deadCard, opponent);
             }
         }
         if (!deadCard.isSilent()) {
