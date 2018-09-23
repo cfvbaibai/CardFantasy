@@ -128,6 +128,10 @@ public class CardStatusItem {
         return new CardStatusItem(CardStatusType.魂殇, 0, cause);
     }
 
+    public static CardStatusItem YellowSky(SkillUseInfo cause) {
+        return new CardStatusItem(CardStatusType.黄天, 0, cause);
+    }
+
     public static CardStatusItem Grudge(int effect,SkillUseInfo cause) {
         return new CardStatusItem(CardStatusType.咒怨, effect, cause);
     }

@@ -38,6 +38,13 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2018-09-24: <x>欢笑，波波</x><ul>
+                        <li>修复技能【噬血狂袭】无效的问题</li>
+                        <li>修复页游技能【消逝】和【司命】冲突的问题</li>
+                        <li>添加页游卡牌【网页版魔幻神杯】</li>
+                        <li>上线卡牌【森林守护者】，【暗月】，【结界稻草人·极】</li>
+                        <li>其他一些调整。</li>
+                    </ul></li>
                     <li>2018-09-19: <x>欢笑，波波</x><ul>
                         <li>修复页游技能【归隐】</li>
                     </ul></li>

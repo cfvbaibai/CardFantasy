@@ -22,6 +22,7 @@ public enum CardStatusType {
     死咒(false, "咒"),
     炼成(false, "炼"),
     魂殇(false, "殇"),
+    黄天(false, "黄"),
     离魂(false, "离"),
     咒怨(false, "怨"),
     王国(false, "王"),

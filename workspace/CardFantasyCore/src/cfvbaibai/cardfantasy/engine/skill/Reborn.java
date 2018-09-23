@@ -62,6 +62,7 @@ public final class Reborn {
                 return false;
             }
             beforeDeath.removeCard(card);
+            resolver.resolveLeaveSkills(card);
             card.reset();
           //  player.getField().addCard(card);
 
