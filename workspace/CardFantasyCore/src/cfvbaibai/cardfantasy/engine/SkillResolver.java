@@ -902,7 +902,7 @@ public class SkillResolver {
                 Homology.apply(this, skillUseInfo, attacker,"八岐大蛇");
             } else if (skillUseInfo.getType() == SkillType.月神祈福) {
                 Bless.apply(skillUseInfo.getAttachedUseInfo1().getSkill(), this, attacker);
-                PoisonMagic.apply(skillUseInfo.getAttachedUseInfo2(), this, attacker, defender, -1);
+                LunaBless.apply(skillUseInfo.getAttachedUseInfo2().getSkill(), this, attacker);
             } else if (skillUseInfo.getType() == SkillType.终焉之兆) {
                 ReturnToHandAndDelay.apply(this, skillUseInfo.getSkill(), attacker, defender, 2, 1);
                 Summon.apply(this, skillUseInfo, attacker, SummonType.Normal, 1, "终焉使魔");

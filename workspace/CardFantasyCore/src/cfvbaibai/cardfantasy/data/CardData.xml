@@ -1334,17 +1334,17 @@
         <Skill type="寒霜拳" level="0" unlock="5" />
         <Skill type="金刚护体" level="0" unlock="10" />
     </Card>
-    <Card id="1663" name="巅峰军曹·合金" wikiId="" race="王国" speed="3" star="5" cost="19" incrCost="2" at="550" hp="1595" incrAT="39" incrHP="41">
+    <Card id="1663" name="巅峰军曹·合金" wikiId="" race="王国" speed="3" star="5" cost="20" incrCost="2" at="425" hp="1780" incrAT="76" incrHP="105">
         <Skill type="突击军阵" level="0" unlock="0" />
         <Skill type="铁骨衣" level="8" unlock="5" />
         <Skill type="神威" level="0" unlock="10" />
     </Card>
-    <Card id="1664" name="巅峰伍长·合金" wikiId="" race="王国" speed="3" star="5" cost="19" incrCost="2" at="550" hp="1595" incrAT="39" incrHP="41">
+    <Card id="1664" name="巅峰伍长·合金" wikiId="" race="王国" speed="3" star="5" cost="19" incrCost="2" at="390" hp="1750" incrAT="45" incrHP="45">
         <Skill type="月神祈福" level="0" unlock="0" />
         <Skill type="王之军阵" level="0" unlock="5" />
         <Skill type="铁壁" level="5" unlock="10" />
     </Card>
-    <Card id="1665" name="巅峰兵长·合金" wikiId="" race="王国" speed="3" star="5" cost="19" incrCost="2" at="550" hp="1595" incrAT="39" incrHP="41">
+    <Card id="1665" name="巅峰兵长·合金" wikiId="" race="王国" speed="3" star="5" cost="19" incrCost="2" at="360" hp="1720" incrAT="45" incrHP="45">
         <Skill type="反间情报" level="0" unlock="0"/>
         <Skill type="灵魂消散" level="0" unlock="5" />
         <Skill type="冰之魔枪" level="0" unlock="10" />

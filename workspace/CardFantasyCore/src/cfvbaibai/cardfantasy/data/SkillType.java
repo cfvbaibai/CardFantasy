@@ -163,7 +163,7 @@ public enum SkillType {
     淬毒手里剑("", 300, 0, 150, 0, SkillTag.魔法),
     熔魂之刃("", 300, 0, 150, 0, SkillTag.魔法),
     八重红彼岸("", 300,0,1100,0, SkillTag.魔法,SkillTag.法术扼杀),
-    剧毒剑刃("", 300,0,300,0, SkillTag.魔法,SkillTag.法术扼杀),
+    剧毒剑刃("", 370,0,370,0, SkillTag.魔法,SkillTag.法术扼杀),
     谜之水枪("", 300,0,1000,0, SkillTag.魔法,SkillTag.法术扼杀),
     浩劫("",400,0,1000,0, SkillTag.魔法,SkillTag.法术扼杀),
     奥术湮灭("",100,0,1000,0, SkillTag.魔法,SkillTag.法术扼杀),
