@@ -2018,7 +2018,7 @@
         <Skill type="冰甲" level="8" unlock="5" />
         <Skill type="免疫" level="0" unlock="10" />
     </Card>
-    <Card id="2533" name="月之公主" wikiId="" race="森林" speed="4" star="5" cost="18" incrCost="2" at="415" hp="1880" incrAT="48" incrHP="52">
+    <Card id="2533" name="原月之公主" wikiId="" race="森林" speed="4" star="5" cost="18" incrCost="2" at="415" hp="1880" incrAT="48" incrHP="52">
         <Skill type="传送" level="0" unlock="0" summon="true" />
         <Skill type="冰甲" level="7" unlock="5" />
         <Skill type="不动" level="0" unlock="10" />
@@ -2572,6 +2572,16 @@
         <Skill type="沉默" level="0" unlock="0" />
         <Skill type="花刺" level="0" unlock="5" />
         <Skill type="页游不凋花" level="0" unlock="10" />
+    </Card>
+    <Card id="2645" name="飓风狼骑" wikiId="" race="森林" speed="2" star="4" cost="15" incrCost="2" at="460" hp="1220" incrAT="34" incrHP="35">
+        <Skill type="幻影奇袭" level="0" unlock="0" />
+        <Skill type="退散" level="0" unlock="5" summon="true"/>
+        <Skill type="转生" level="7" unlock="10" />
+    </Card>
+    <Card id="2646" name="月之公主" wikiId="" race="森林" speed="2" star="5" cost="18" incrCost="2" at="500" hp="1880" incrAT="48" incrHP="52">
+        <Skill type="传送" level="0" unlock="0" summon="true"/>
+        <Skill type="王之守护" level="0" unlock="5" />
+        <Skill type="飞天揽月" level="0" unlock="10" />
     </Card>
 
     <!-- 蛮荒  -->
@@ -5654,6 +5664,7 @@
     <Card id="6111" name="终焉使魔" wikiId="" race="魔族" speed="4" star="5" cost="99" incrCost="0" at="500" hp="5000" incrAT="0" incrHP="0">
         <Skill type="终焉时刻" level="0" unlock="0" />
         <Skill type="末世术" level="10" unlock="5" summon="true"/>
+        <Skill type="神威" level="0" unlock="10"/>
     </Card>
     <Card id="6112" name="盗宝松鼠" wikiId="" race="魔族" speed="1" star="5" cost="20" incrCost="2" at="600" hp="1685" incrAT="50" incrHP="55">
         <Skill type="魔王降临" level="0" unlock="0" />

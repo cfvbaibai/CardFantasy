@@ -37,7 +37,7 @@ public class Polymorph {
             victim.addStatus(statusItem);
             ui.addCardStatus(attackCard, victim, skill, statusItemSlience);
             victim.addStatus(statusItemSlience);
-            int impactAdd = victim.getInitAT()-1;
+            int impactAdd = victim.getInitAT()-skill.getImpact();
             resolver.getStage().getUI().adjustAT(attackCard, victim, -impactAdd, skill);
             victim.addCoefficientEffect(new SkillEffect(SkillEffectType.ATTACK_CHANGE, skillUseInfo, -impactAdd, false));
             int impactHpAdd = victim.getHP()-skill.getImpact2();

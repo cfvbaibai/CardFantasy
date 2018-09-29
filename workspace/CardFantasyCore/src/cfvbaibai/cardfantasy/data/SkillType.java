@@ -560,6 +560,7 @@ public enum SkillType {
     超级英雄杀手("", 2000, 0, SkillTag.额外攻击加成, SkillTag.不可洗炼),
 
     不屈("56962", 0, 0),
+    坚韧("", 0, 0,SkillTag.抗沉默),
     怨起("", 3, 0),
     赤焰战场("", 1, 0),
     空城("",0,0),
@@ -683,6 +684,7 @@ public enum SkillType {
     狂野之怒("",0,0, SkillTag.不可洗炼,SkillTag.召唤),
     幻化("",0,0, SkillTag.不可洗炼,SkillTag.召唤,SkillTag.不动),
     幻影军团("",4,0,70,0, SkillTag.不可洗炼),
+    幻影奇袭("",4,0,60,0, SkillTag.不可洗炼),
     英魂唤醒("",0,0, SkillTag.不可洗炼,SkillTag.召唤,SkillTag.不动),
     英魂召集("",0,0, SkillTag.不可洗炼,SkillTag.召唤,SkillTag.不动),
     英灵召唤("",SkillType.英魂唤醒,0, SkillType.英魂召集,0, SkillTag.不可洗炼,SkillTag.召唤),
@@ -950,6 +952,8 @@ public enum SkillType {
     圣战之歌("",SkillType.士气振奋,0,null,0),
     圣域屏障("",SkillType.圣盾,0,null,0),
     足球风暴("",SkillType.射门,0,null,0),
+    破阵之势("",SkillType.破军,8,null,0),
+    蛇蜕之术("",SkillType.魔法装甲,7,null,0,SkillTag.不动),
 
     金魔装甲("", 50,0),
     //给自身场上所有卡牌添加技能除自己以外
@@ -1017,6 +1021,7 @@ public enum SkillType {
 
     //给对方卡牌添加回合buff
     绝对压制("",1,0,300,0,SkillTag.抗免疫, SkillTag.抗不屈, SkillTag.魔王无效, SkillTag.魔族天赋,SkillTag.基础攻击加成),
+    末日降临("",300,0,300,0,SkillTag.抗免疫, SkillTag.抗不屈, SkillTag.魔王无效, SkillTag.魔族天赋,SkillTag.基础攻击加成),
     支配亡灵("",0, SkillTag.魔王无效, SkillTag.魔族天赋,SkillTag.召唤),
     骸骨大军("",0, SkillTag.魔王无效, SkillTag.魔族天赋,SkillTag.召唤),
     魂之枷锁("",5,0, SkillTag.抗免疫,SkillTag.魔王无效),
@@ -1029,6 +1034,7 @@ public enum SkillType {
 
     //防御圣炎
     庇护("",0),
+    圣骸("",0,SkillTag.不动),
 
     //奥数回声类技能
     奥术回声("",0),
@@ -1040,6 +1046,7 @@ public enum SkillType {
 
     //真龙九现类型
     真龙九现("",0),
+    飞天揽月("",0),
     终焉脱壳("",9999999,0),
 
     //防止技能类型

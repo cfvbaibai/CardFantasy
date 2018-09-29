@@ -162,7 +162,8 @@ public class SkillResolver {
                     AllFiledAddSkill.apply(this, skillUseInfo, card, skillUseInfo.getAttachedUseInfo1().getSkill());
                 } else if (skillUseInfo.getType() == SkillType.圣战之歌) {
                     AllFiledAddSkill.apply(this, skillUseInfo, card, skillUseInfo.getAttachedUseInfo1().getSkill());
-                } else if (skillUseInfo.getType() == SkillType.圣域屏障 || skillUseInfo.getType() == SkillType.足球风暴) {
+                } else if (skillUseInfo.getType() == SkillType.圣域屏障 || skillUseInfo.getType() == SkillType.足球风暴 || skillUseInfo.getType() == SkillType.破阵之势
+                        || skillUseInfo.getType() == SkillType.蛇蜕之术) {
                     AllFiledAddSkill.apply(this, skillUseInfo, card, skillUseInfo.getAttachedUseInfo1().getSkill());
                 } else if (skillUseInfo.getType() == SkillType.庇护光环 || skillUseInfo.getType() == SkillType.武形破剑光环 || skillUseInfo.getType() == SkillType.镜面光环
                         || skillUseInfo.getType() == SkillType.秘纹领域 || skillUseInfo.getType() == SkillType.圣光奏鸣曲) {
@@ -826,6 +827,8 @@ public class SkillResolver {
                 DivineSummon.apply(skillUseInfo, this, attacker);
             } else if (skillUseInfo.getType() == SkillType.绝对压制) {
                 Polymorph.apply(this, skillUseInfo, attacker, defender, 1, 1);
+            } else if (skillUseInfo.getType() == SkillType.末日降临) {
+                Polymorph.apply(this, skillUseInfo, attacker, defender, -1, 1);
             } else if (skillUseInfo.getType() == SkillType.终极天谴) {
                 Curse.apply(this, skillUseInfo.getSkill(), attacker, defender);
             } else if (skillUseInfo.getType() == SkillType.终极祈祷) {
@@ -904,7 +907,7 @@ public class SkillResolver {
                 ReturnToHandAndDelay.apply(this, skillUseInfo.getSkill(), attacker, defender, 2, 1);
                 Summon.apply(this, skillUseInfo, attacker, SummonType.Normal, 1, "终焉使魔");
             } else if (skillUseInfo.getType() == SkillType.月之召唤) {
-                SummonWhenAttack.apply(this, skillUseInfo, attacker, 1, "暗月");
+                SummonWhenAttack.apply(this, skillUseInfo, attacker, 1,false, "暗月");
             } else if (skillUseInfo.getType() == SkillType.逐光 || skillUseInfo.getType() == SkillType.杀手回梦) {
                 ReturnToHandAndDelay.apply(this, skillUseInfo.getSkill(), attacker, defender, 2, 2);
             } else if (skillUseInfo.getType() == SkillType.特殊体质) {
@@ -920,7 +923,7 @@ public class SkillResolver {
                     Bless.apply(skillUseInfo.getAttachedUseInfo2().getSkill(), this, attacker);
                 }
             } else if (skillUseInfo.getType() == SkillType.月之暗面) {
-                SummonWhenAttack.apply(this, skillUseInfo, attacker, 1, "网页版暗之月蚀");
+                SummonWhenAttack.apply(this, skillUseInfo, attacker, 1,false, "网页版暗之月蚀");
             } else if (skillUseInfo.getType() == SkillType.魔王降临) {
                 RaceChangeSelf.apply(this, skillUseInfo, attacker);
             } else if (skillUseInfo.getType() == SkillType.嗜血潜能) {
@@ -1611,107 +1614,6 @@ public class SkillResolver {
                 ReviveMultiple.apply(this, deadCardSkillUseInfo, deadCard);
             }
         }
-        if (!result.soulCrushed && !result.soulControlDead && !deadCard.getStatus().containsStatus(CardStatusType.魂殇)) {
-            // 被扼杀的卡牌无法转生
-            boolean reincarnated = false;
-
-            for (SkillUseInfo deadCardSkillUseInfo : deadCard.getAllUsableSkills()) {
-                if (deadCardSkillUseInfo.getType() == SkillType.转生 ||
-                        deadCardSkillUseInfo.getType() == SkillType.武形秘仪 ||
-                        deadCardSkillUseInfo.getType() == SkillType.花族秘术 ||
-                        deadCardSkillUseInfo.getType() == SkillType.洪荒之术 ||
-                        deadCardSkillUseInfo.getType() == SkillType.六道轮回 ||
-                        deadCardSkillUseInfo.getType() == SkillType.武形秘术 ||
-                        deadCardSkillUseInfo.getType() == SkillType.武形秘法 ||
-                        deadCardSkillUseInfo.getType() == SkillType.涅盘 ||
-                        deadCardSkillUseInfo.getType() == SkillType.战术性撤退 ||
-                        deadCardSkillUseInfo.getType() == SkillType.凤凰涅盘 ||
-                        deadCardSkillUseInfo.getType() == SkillType.诲人不倦 ||
-                        deadCardSkillUseInfo.getType() == SkillType.鞠躬尽瘁 ||
-                        deadCardSkillUseInfo.getType() == SkillType.心转之术 ||
-                        deadCardSkillUseInfo.getType() == SkillType.天选之子 ||
-                        deadCardSkillUseInfo.getType() == SkillType.轮回渡厄 ||
-                        deadCardSkillUseInfo.getType() == SkillType.明月渡我 ||
-                        deadCardSkillUseInfo.getType() == SkillType.生物进化 ||
-                        deadCardSkillUseInfo.getType() == SkillType.精神补完 ||
-                        deadCardSkillUseInfo.getType() == SkillType.武侯) {
-                    if (Reincarnation.apply(this, deadCardSkillUseInfo.getSkill(), deadCard, result.unbending, opponent)) {
-                        reincarnated = true;
-                        break;
-                    }
-                } else if (deadCardSkillUseInfo.getType() == SkillType.蝶语) {
-                    if (Reincarnation.apply(this, deadCardSkillUseInfo.getAttachedUseInfo2().getSkill(), deadCard, result.unbending, opponent)) {
-                        reincarnated = true;
-                        break;
-                    }
-                } else if (deadCardSkillUseInfo.getType() == SkillType.司命 || deadCardSkillUseInfo.getType() == SkillType.不灭定律 || deadCardSkillUseInfo.getType() == SkillType.不灭 || deadCardSkillUseInfo.getType() == SkillType.顽强 || deadCardSkillUseInfo.getType() == SkillType.我又回来了) {
-                    if (Reborn.apply(this, deadCardSkillUseInfo, deadCard, result.unbending)) {
-                        reincarnated = true;
-                        break;
-                    }
-                } else if (deadCardSkillUseInfo.getType() == SkillType.不灭原质) {
-                    Bless.apply(deadCardSkillUseInfo.getAttachedUseInfo1().getSkill(), this, deadCard);
-                    LunaBless.apply(deadCardSkillUseInfo.getAttachedUseInfo2().getSkill(), this, deadCard);
-                    if (Reborn.apply(this, deadCardSkillUseInfo, deadCard, result.unbending)) {
-                        reincarnated = true;
-                        break;
-                    }
-                } else if (deadCardSkillUseInfo.getType() == SkillType.雪幕) {
-                    if (Reborn.apply(this, deadCardSkillUseInfo.getAttachedUseInfo1(), deadCard, result.unbending)) {
-                        reincarnated = true;
-                        break;
-                    }
-                } else if (deadCardSkillUseInfo.getType() == SkillType.回生 || deadCardSkillUseInfo.getType() == SkillType.不凋花) {
-                    if (Retrogradation.apply(this, deadCardSkillUseInfo.getSkill(), deadCard, result.unbending)) {
-                        reincarnated = true;
-                        break;
-                    }
-                } else if (deadCardSkillUseInfo.getType() == SkillType.灵魂脱壳) {
-                    if (Reborn.apply(this, deadCardSkillUseInfo, deadCard, result.unbending)) {
-                        reincarnated = true;
-                        break;
-                    } else {
-                        Retrogradation.apply(this, deadCardSkillUseInfo.getSkill(), deadCard, result.unbending);
-                        reincarnated = true;
-                        break;
-                    }
-                } else if (deadCardSkillUseInfo.getType() == SkillType.还魂) {
-                    if (Reincarnation.apply(this, deadCardSkillUseInfo.getSkill(), deadCard, result.unbending, opponent)) {
-                        reincarnated = true;
-                        break;
-                    } else {
-                        Retrogradation.apply(this, deadCardSkillUseInfo.getSkill(), deadCard, result.unbending);
-                        reincarnated = true;
-                        break;
-                    }
-                } else if (deadCardSkillUseInfo.getType() == SkillType.安魂引) {
-                    if (Reincarnation.apply(this, deadCardSkillUseInfo.getAttachedUseInfo1().getSkill(), deadCard, result.unbending, opponent)) {
-                        reincarnated = true;
-                        break;
-                    } else {
-                        Retrogradation.apply(this, deadCardSkillUseInfo.getAttachedUseInfo1().getSkill(), deadCard, result.unbending);
-                        reincarnated = true;
-                        break;
-                    }
-                } else if (deadCardSkillUseInfo.getType() == SkillType.真龙九现) {
-                    if (MultipleReincarnation.apply(this, deadCardSkillUseInfo, deadCard, result.unbending, opponent, 65, 15, 19)) {
-                        reincarnated = true;
-                        break;
-                    }
-                } else if (deadCardSkillUseInfo.getType() == SkillType.终焉脱壳) {
-                    if (MultipleReincarnation.apply(this, deadCardSkillUseInfo, deadCard, result.unbending, opponent, 50, 0, 50)) {
-                        reincarnated = true;
-                        break;
-                    }
-                }
-            }
-            if (!reincarnated && !deadCard.isSilent()) {
-                RuneInfo rune = deadCard.getOwner().getActiveRuneOf(RuneData.秽土);
-                if (rune != null && !deadCard.justRevived()) {
-                    Reincarnation.apply(this, rune.getSkill(), deadCard, result.unbending, opponent);
-                }
-            }
-        }
         for (SkillUseInfo deadCardSkillUseInfo : deadCard.getAllUsableSkills()) {
             // IMPORTANT: Unbending card cannot trigger 自爆
             if (deadCardSkillUseInfo.getType() == SkillType.自爆 && !result.unbending) {
@@ -1836,6 +1738,7 @@ public class SkillResolver {
                         "八岐大蛇");
                 Bless.apply(deadCardSkillUseInfo.getAttachedUseInfo1().getSkill(), this, deadCard);
             } else if (deadCardSkillUseInfo.getType() == SkillType.元素分离) {
+                SoulCrash.apply(deadCardSkillUseInfo, this, deadCard, opponent);
                 Summon.apply(this, deadCardSkillUseInfo, deadCard, SummonType.Normal, 3, "风暴熊猫","土熊猫","火熊猫");
             } else if (deadCardSkillUseInfo.getType() == SkillType.终焉脱壳) {
                 Curse.apply(this, deadCardSkillUseInfo.getSkill(), deadCard, opponent);
@@ -1844,13 +1747,14 @@ public class SkillResolver {
             } else if (deadCardSkillUseInfo.getType() == SkillType.星座能量信念) {
                 Revive.apply(this, deadCardSkillUseInfo, deadCard);
             } else if (deadCardSkillUseInfo.getType() == SkillType.余香) {
-                SummonWhenAttack.apply(this, deadCardSkillUseInfo, deadCard, 1, "网页版红玫瑰");
+                SummonWhenAttack.apply(this, deadCardSkillUseInfo, deadCard, 1,false, "网页版红玫瑰");
             } else if (deadCardSkillUseInfo.getType() == SkillType.归隐) {
                 Curse.apply(this, deadCardSkillUseInfo.getSkill(), deadCard, opponent);
             } else if (deadCardSkillUseInfo.getType() == SkillType.大地吟咏) {
                 Revive.apply(this, deadCardSkillUseInfo, deadCard);
             }
         }
+
         if (!deadCard.isSilent()) {
             RuneInfo rune = deadCard.getOwner().getActiveRuneOf(RuneData.爆裂);
             // IMPORTANT: Unbending card cannot trigger 爆裂
@@ -1863,6 +1767,7 @@ public class SkillResolver {
                 TsubameGaeshi.apply(null, rune.getSkill(), this, opponent, deadCard);
             }
         }
+
         if (deadCard.getStatus().containsStatus(CardStatusType.死印) && deadCard.isDead()) {
             DeathMark.explode(this, deadCard, result);
         }
@@ -1878,12 +1783,8 @@ public class SkillResolver {
         if (deadCard.getStatus().containsStatus(CardStatusType.咒怨) && deadCard.isDead()) {
             Grudge.Infected(this, deadCard);
         }
-        // HACKHACK: Cannot find better way to handle 不屈/
-        //改变不屈的去掉buff位置，为GiveSideSkill做的处理
-        if (result.soulControlDead) {
-            deadCard.restoreOwner();
-        }
-        if (!deadCard.getStatus().containsStatus(CardStatusType.不屈)) {
+
+        if (!deadCard.getStatus().containsStatus(CardStatusType.不屈)&& !deadCard.isAlive()) {
             for (SkillUseInfo deadCardSkillUseInfo : deadCard.getAllUsableSkills()) {
                 if (deadCardSkillUseInfo.getGiveSkill() == 1) {
                     deadCard.removeSkill(deadCardSkillUseInfo);
@@ -1892,14 +1793,124 @@ public class SkillResolver {
             deadCard.setSummonNumber(0);
             deadCard.setAddDelay(0);
             deadCard.setRuneActive(false);
-            if(deadCard.isDead()) {
-                resolveLeaveSkills(deadCard);
-            }
+            resolveLeaveSkills(deadCard);
         }
         if (!result.unbending && !deadCard.isAlive()) {
             if (!deadCard.isSummonedMinion()) {
                 deadCard.reset();
             }
+        }
+        if (!result.soulCrushed && !result.soulControlDead && !deadCard.getStatus().containsStatus(CardStatusType.魂殇)) {
+            // 被扼杀的卡牌无法转生
+            boolean reincarnated = false;
+
+            for (SkillUseInfo deadCardSkillUseInfo : deadCard.getAllUsableSkills()) {
+                if (deadCardSkillUseInfo.getType() == SkillType.转生 ||
+                        deadCardSkillUseInfo.getType() == SkillType.武形秘仪 ||
+                        deadCardSkillUseInfo.getType() == SkillType.花族秘术 ||
+                        deadCardSkillUseInfo.getType() == SkillType.洪荒之术 ||
+                        deadCardSkillUseInfo.getType() == SkillType.六道轮回 ||
+                        deadCardSkillUseInfo.getType() == SkillType.武形秘术 ||
+                        deadCardSkillUseInfo.getType() == SkillType.武形秘法 ||
+                        deadCardSkillUseInfo.getType() == SkillType.涅盘 ||
+                        deadCardSkillUseInfo.getType() == SkillType.战术性撤退 ||
+                        deadCardSkillUseInfo.getType() == SkillType.凤凰涅盘 ||
+                        deadCardSkillUseInfo.getType() == SkillType.诲人不倦 ||
+                        deadCardSkillUseInfo.getType() == SkillType.鞠躬尽瘁 ||
+                        deadCardSkillUseInfo.getType() == SkillType.心转之术 ||
+                        deadCardSkillUseInfo.getType() == SkillType.天选之子 ||
+                        deadCardSkillUseInfo.getType() == SkillType.轮回渡厄 ||
+                        deadCardSkillUseInfo.getType() == SkillType.明月渡我 ||
+                        deadCardSkillUseInfo.getType() == SkillType.生物进化 ||
+                        deadCardSkillUseInfo.getType() == SkillType.精神补完 ||
+                        deadCardSkillUseInfo.getType() == SkillType.武侯) {
+                    if (Reincarnation.apply(this, deadCardSkillUseInfo.getSkill(), deadCard, result.unbending, opponent)) {
+                        reincarnated = true;
+                        break;
+                    }
+                } else if (deadCardSkillUseInfo.getType() == SkillType.蝶语) {
+                    if (Reincarnation.apply(this, deadCardSkillUseInfo.getAttachedUseInfo2().getSkill(), deadCard, result.unbending, opponent)) {
+                        reincarnated = true;
+                        break;
+                    }
+                } else if (deadCardSkillUseInfo.getType() == SkillType.司命 || deadCardSkillUseInfo.getType() == SkillType.不灭定律 || deadCardSkillUseInfo.getType() == SkillType.不灭 || deadCardSkillUseInfo.getType() == SkillType.顽强 || deadCardSkillUseInfo.getType() == SkillType.我又回来了) {
+                    if (Reborn.apply(this, deadCardSkillUseInfo, deadCard, result.unbending)) {
+                        reincarnated = true;
+                        break;
+                    }
+                } else if (deadCardSkillUseInfo.getType() == SkillType.不灭原质) {
+                    Bless.apply(deadCardSkillUseInfo.getAttachedUseInfo1().getSkill(), this, deadCard);
+                    LunaBless.apply(deadCardSkillUseInfo.getAttachedUseInfo2().getSkill(), this, deadCard);
+                    if (Reborn.apply(this, deadCardSkillUseInfo, deadCard, result.unbending)) {
+                        reincarnated = true;
+                        break;
+                    }
+                } else if (deadCardSkillUseInfo.getType() == SkillType.雪幕) {
+                    if (Reborn.apply(this, deadCardSkillUseInfo.getAttachedUseInfo1(), deadCard, result.unbending)) {
+                        reincarnated = true;
+                        break;
+                    }
+                } else if (deadCardSkillUseInfo.getType() == SkillType.回生 || deadCardSkillUseInfo.getType() == SkillType.不凋花) {
+                    if (Retrogradation.apply(this, deadCardSkillUseInfo.getSkill(), deadCard, result.unbending)) {
+                        reincarnated = true;
+                        break;
+                    }
+                } else if (deadCardSkillUseInfo.getType() == SkillType.灵魂脱壳) {
+                    if (Reborn.apply(this, deadCardSkillUseInfo, deadCard, result.unbending)) {
+                        reincarnated = true;
+                        break;
+                    } else {
+                        Retrogradation.apply(this, deadCardSkillUseInfo.getSkill(), deadCard, result.unbending);
+                        reincarnated = true;
+                        break;
+                    }
+                } else if (deadCardSkillUseInfo.getType() == SkillType.还魂) {
+                    if (Reincarnation.apply(this, deadCardSkillUseInfo.getSkill(), deadCard, result.unbending, opponent)) {
+                        reincarnated = true;
+                        break;
+                    } else {
+                        Retrogradation.apply(this, deadCardSkillUseInfo.getSkill(), deadCard, result.unbending);
+                        reincarnated = true;
+                        break;
+                    }
+                } else if (deadCardSkillUseInfo.getType() == SkillType.安魂引) {
+                    if (Reincarnation.apply(this, deadCardSkillUseInfo.getAttachedUseInfo1().getSkill(), deadCard, result.unbending, opponent)) {
+                        reincarnated = true;
+                        break;
+                    } else {
+                        Retrogradation.apply(this, deadCardSkillUseInfo.getAttachedUseInfo1().getSkill(), deadCard, result.unbending);
+                        reincarnated = true;
+                        break;
+                    }
+                } else if (deadCardSkillUseInfo.getType() == SkillType.真龙九现) {
+                    if (MultipleReincarnation.apply(this, deadCardSkillUseInfo, deadCard, result.unbending, opponent, 65, 15, 19)) {
+                        reincarnated = true;
+                        break;
+                    }
+                } else if (deadCardSkillUseInfo.getType() == SkillType.终焉脱壳) {
+                    if (MultipleReincarnation.apply(this, deadCardSkillUseInfo, deadCard, result.unbending, opponent, 50, 0, 50)) {
+                        reincarnated = true;
+                        break;
+                    }
+                } else if (deadCardSkillUseInfo.getType() == SkillType.飞天揽月) {
+                    if (MultipleReincarnation.apply(this, deadCardSkillUseInfo, deadCard, result.unbending, opponent, 40, 40, 0)) {
+                        reincarnated = true;
+                        break;
+                    }
+                }
+            }
+            if (!reincarnated && !deadCard.isSilent()) {
+                RuneInfo rune = deadCard.getOwner().getActiveRuneOf(RuneData.秽土);
+                if (rune != null && !deadCard.justRevived()) {
+                    Reincarnation.apply(this, rune.getSkill(), deadCard, result.unbending, opponent);
+                }
+            }
+        }
+
+        // HACKHACK: Cannot find better way to handle 不屈/
+        //改变不屈的去掉buff位置，为GiveSideSkill做的处理
+        if (result.soulControlDead) {
+            deadCard.restoreOwner();
         }
         if (deadCard.getOwner().getBeforeDeath().contains(deadCard)) {
             deadCard.getOwner().getBeforeDeath().removeCard(deadCard);
@@ -1966,8 +1977,8 @@ public class SkillResolver {
                     Destroy.apply(this, skillUseInfo.getSkill(), attacker, defender);
                 }
             }
-            else if (skillUseInfo.getType() == SkillType.幻影军团) {
-                SummonWhenAttack.apply(this, skillUseInfo, attacker, 1, attacker.getName());
+            else if (skillUseInfo.getType() == SkillType.幻影军团 || skillUseInfo.getType() == SkillType.幻影奇袭) {
+                SummonWhenAttack.apply(this, skillUseInfo, attacker, 1,true, attacker.getName());
             }
             else if (skillUseInfo.getType() == SkillType.离魂剑) {
                 SoulControlMutiple.apply(this, skillUseInfo, attacker, defenderHero);
@@ -2191,6 +2202,7 @@ public class SkillResolver {
                         skillUseInfo.getType() == SkillType.蝶息 ||
                         skillUseInfo.getType() == SkillType.逆鳞 ||
                         skillUseInfo.getType() == SkillType.嗜魔之体 ||
+                        skillUseInfo.getType() == SkillType.坚韧 ||
                         skillUseInfo.getType() == SkillType.坚毅) {
                     // BUGBUG: The original game does not set cardDead to false
                     // result.cardDead = false
@@ -2330,8 +2342,8 @@ public class SkillResolver {
             return;
         }
         for (SkillUseInfo skillUseInfo : attacker.getUsableNormalSkills()) {
-            if (skillUseInfo.getType() == SkillType.幻影军团) {
-                SummonWhenAttack.apply(this, skillUseInfo, attacker, 1, attacker.getName());
+            if (skillUseInfo.getType() == SkillType.幻影军团 || skillUseInfo.getType() == SkillType.幻影奇袭) {
+                SummonWhenAttack.apply(this, skillUseInfo, attacker, 1,true, attacker.getName());
             } else if (skillUseInfo.getType() == SkillType.高级连击) {
                 MultipleAttack.apply(this, skillUseInfo, attacker, defenderHero, null, firstSkill);
             } else if (skillUseInfo.getType() == SkillType.狂舞) {
@@ -2743,6 +2755,8 @@ public class SkillResolver {
                     Curse.apply(this, skillUseInfo.getSkill(), card, enemy);
                 } else if (skillUseInfo.getType() == SkillType.天谴 || skillUseInfo.getType() == SkillType.末世术) {
                     HeavenWrath.apply(this, skillUseInfo.getSkill(), card, enemy);
+                } else if (skillUseInfo.getType() == SkillType.退散) {
+                    ReturnCard.apply(this, skillUseInfo.getSkill(), card, enemy, 1);
                 }
             } else if (!skillUseInfo.getSkill().isDeathSkill()) {
                 if (skillUseInfo.getType() == SkillType.反噬) {
@@ -3281,7 +3295,7 @@ public class SkillResolver {
     public boolean resolveStopHolyFire(Player defender) {
         for (CardInfo defenderCard : defender.getField().getAliveCards()) {
             for (SkillUseInfo defenderSkillUseInfo : defenderCard.getUsableNormalSkills()) {
-                if (defenderSkillUseInfo.getType() == SkillType.庇护 || defenderSkillUseInfo.getType() == SkillType.浴火) {
+                if (defenderSkillUseInfo.getType() == SkillType.庇护 || defenderSkillUseInfo.getType() == SkillType.浴火 || defenderSkillUseInfo.getType() == SkillType.圣骸) {
                     return false;
                 }
             }
