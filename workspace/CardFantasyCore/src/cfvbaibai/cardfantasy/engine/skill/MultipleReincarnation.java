@@ -40,7 +40,9 @@ public final class MultipleReincarnation {
         BeforeDeath beforeDeath = card.getOwner().getBeforeDeath();
         if (rate1>=reallyRate) {
             beforeDeath.removeCard(card);
-            card.reset();
+            //发动成功重置死亡卡牌
+            resolver.resetDeadCard(card);
+            //card.reset();
             //  player.getField().addCard(card);
 
             resolver.summonCard(card.getOwner(), card, card, false, cardSkill,0);//司命可以发动降临技能
@@ -51,6 +53,8 @@ public final class MultipleReincarnation {
         }
         else if(rate1+rate2>=reallyRate){
             beforeDeath.removeCard(card);
+            //发动成功重置死亡卡牌
+            resolver.resetDeadCard(card);
             if (player.getDeck().size() > 0) {
                 //     int position = Randomizer.getRandomizer().next(0, player.getDeck().size());
                 // 回生是有顺序的。
@@ -63,6 +67,8 @@ public final class MultipleReincarnation {
         }
         else if(rate1+rate2+rate3>=reallyRate){
             beforeDeath.removeCard(card);
+            //发动成功重置死亡卡牌
+            resolver.resetDeadCard(card);
             Hand hand = card.getOwner().getHand();
             if (hand.isFull()) {
                 ui.cardToDeck(card.getOwner(), card);

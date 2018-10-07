@@ -276,6 +276,7 @@ public enum SkillType {
     真理导言("", 6, 0, SkillTag.抗沉默),
     阿拉希血统("", 0, 0, SkillTag.抗沉默, SkillTag.额外攻击加成),
     蛇魔之甲("", 300, 0),
+    灵蛇腹甲("", 450, 0),
     魔甲("30931", 140, -10),
     魔法装甲("", 10),
     却魔装甲("", 140, -10,SkillTag.不动),
@@ -692,7 +693,6 @@ public enum SkillType {
     幻影("",0,0, SkillTag.不可洗炼,SkillTag.召唤),
     星座能量掌握("",0,0, SkillTag.不可洗炼,SkillTag.召唤),
     日光浴("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼,SkillTag.不动),
-    元素分离("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼,SkillTag.不动),
     终焉之兆("",0,SkillTag.魔王无效,SkillTag.抗免疫, SkillTag.召唤, SkillTag.不可洗炼),
     月之召唤("",5,0,100,0, SkillTag.不可洗炼,SkillTag.召唤),
     特殊体质("",0,0, SkillTag.不可洗炼,SkillTag.召唤),
@@ -955,6 +955,8 @@ public enum SkillType {
     足球风暴("",SkillType.射门,0,null,0),
     破阵之势("",SkillType.破军,8,null,0),
     蛇蜕之术("",SkillType.蛇魔之甲,0,null,0,SkillTag.不动),
+    灵蛇行("",SkillType.灵蛇腹甲,0,null,0),
+    出云蛇势("",SkillType.镜面,0,灵蛇腹甲,0,SkillTag.不动),
 
     金魔装甲("", 50,0),
     //给自身场上所有卡牌添加技能除自己以外
@@ -994,6 +996,11 @@ public enum SkillType {
     魏国英魂("",2,0,SkillType.神兵召唤,0,SkillType.连击,0),//生成卡牌，连携
     暗红魔导阵("",null,0,SkillType.连续魔法,5),
     冥狱牢囚("",1,0,SkillType.蝶语,0,SkillType.蝶息,0),
+    熊猫之土("",null,0,SkillType.铁壁,4),
+    熊猫之火("",null,0,SkillType.神兵召唤,0),
+    熊猫之风("",null,0,SkillType.连续魔法,6),
+    熊猫土火("",熊猫之土,0,SkillType.熊猫之火,0),
+    元素分离("", 熊猫土火,0,SkillType.熊猫之风,0, SkillTag.召唤, SkillTag.不可洗炼,SkillTag.不动),
     //连携技能
     //给除特定卡牌以外的卡牌添加技能
     卡组保护("",null,0,SkillType.不屈,0),

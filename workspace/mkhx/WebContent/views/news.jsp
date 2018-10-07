@@ -38,6 +38,12 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2018-10-07: <x>欢笑，波波，星河陨灭</x><ul>
+                        <li>修复【熊猫教父】连携技能</li>
+                        <li>添加技能【灵蛇行】，【灵蛇腹甲】，【出云蛇势】</li>
+                        <li>修复守护技能不结算物理伤害的问题</li>
+                        <li>修复死契技能执行顺序问题，调整死契和转生类技能的结算问题</li>
+                    </ul></li>
                     <li>2018-09-29: <x>欢笑，波波</x><ul>
                         <li>修复巅峰伍长合金技能【月神祈福】问题，感谢笑傲天涯客提供的帮助</li>
                     </ul></li>
