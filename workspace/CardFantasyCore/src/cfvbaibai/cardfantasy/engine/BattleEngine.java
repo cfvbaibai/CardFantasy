@@ -309,10 +309,11 @@ public class BattleEngine {
                 underControl = true;
 
                 if (status.containsStatus(CardStatusType.迷惑)) {
-                    ui.confused(myField.getCard(i));
-                    resolver.resolvePreAttackHeroSkills(myField.getCard(i), getActivePlayer());
-                    resolver.attackHero(myField.getCard(i), getActivePlayer(), null, myField.getCard(i).getCurrentAT());
-                    resolver.resolveExtraAttackHeroSkills(myField.getCard(i), getInactivePlayer(),false);
+                    CardInfo myCard = myField.getCard(i);
+                    ui.confused(myCard);
+                    resolver.resolvePreAttackHeroSkills(myCard, getActivePlayer());
+                    resolver.attackHero(myCard, getActivePlayer(), null, myCard.getCurrentAT());
+                    resolver.resolveExtraAttackHeroSkills(myCard, getInactivePlayer(), false);
                 } else {
                     ui.cannotAction(myField.getCard(i));
                 }
