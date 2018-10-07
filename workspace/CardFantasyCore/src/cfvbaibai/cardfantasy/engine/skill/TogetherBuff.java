@@ -12,6 +12,7 @@ public final class TogetherBuff {
         }
         Skill skill = skillUseInfo.getSkill();
         int impact = skill.getImpact();
+        int impact2 = skill.getImpact2();
         Field field = card.getOwner().getField();
         for (CardInfo ally : field.getAliveCards()) {
             // IMPORTANT: 种族BUFF无视种族改变技能的影响
@@ -21,9 +22,9 @@ public final class TogetherBuff {
             if (ally.getEffectsCausedBy(skillUseInfo).isEmpty()) {
                 resolver.getStage().getUI().useSkill(card, skill, true);
                 resolver.getStage().getUI().adjustAT(card, ally, impact, skill);
-                resolver.getStage().getUI().adjustHP(card, ally, impact, skill);
+                resolver.getStage().getUI().adjustHP(card, ally, impact2, skill);
                 ally.addEffect(new SkillEffect(SkillEffectType.ATTACK_CHANGE, skillUseInfo, impact, false));
-                ally.addEffect(new SkillEffect(SkillEffectType.MAXHP_CHANGE, skillUseInfo, impact, false));
+                ally.addEffect(new SkillEffect(SkillEffectType.MAXHP_CHANGE, skillUseInfo, impact2, false));
             }
         }
     }

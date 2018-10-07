@@ -51,7 +51,7 @@ public final class ChainAttack {
         ui.adjustAT(attacker, attacker, adjAT, skill);
         attacker.addEffect(effect);
         for (CardInfo victim : victims) {
-            OnDamagedResult damagedResult = resolver.attackCard(attacker, victim, skillUseInfo, chainAT);
+            OnDamagedResult damagedResult = resolver.attackCard(attacker, victim, skillUseInfo, chainAT,false);
             if (damagedResult == null) {
                 // 闪避导致连锁中断
                 break;

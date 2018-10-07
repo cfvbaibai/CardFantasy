@@ -22,12 +22,14 @@ public enum CardStatusType {
     死咒(false, "咒"),
     炼成(false, "炼"),
     魂殇(false, "殇"),
+    黄天(false, "黄"),
     离魂(false, "离"),
     咒怨(false, "怨"),
     王国(false, "王"),
     森林(false, "森"),
     蛮荒(false, "蛮"),
-    地狱(false, "地");
+    地狱(false, "地"),
+    魔族(false, "族");
     
 
     private boolean quantitive;

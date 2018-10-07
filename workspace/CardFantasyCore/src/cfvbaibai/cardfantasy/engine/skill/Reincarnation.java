@@ -20,7 +20,7 @@ public final class Reincarnation {
 //            return false;
 //        }
         if (!player.getBeforeDeath().contains(card) && player.getField().contains(card)) {
-            // 不屈中，此时不发动司命
+            // 不屈中，此时不发动转生
             return false;
         }
         if(!player.getBeforeDeath().contains(card))
@@ -70,6 +70,8 @@ public final class Reincarnation {
                 return false;
             }
             beforeDeath.removeCard(card);
+            //发动成功重置死亡卡牌
+            resolver.resetDeadCard(card);
             Hand hand = card.getOwner().getHand();
             if (hand.isFull()) {
                 ui.cardToDeck(card.getOwner(), card);

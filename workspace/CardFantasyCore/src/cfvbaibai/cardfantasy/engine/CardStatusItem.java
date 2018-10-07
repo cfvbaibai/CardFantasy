@@ -103,6 +103,7 @@ public class CardStatusItem {
             case 1: type = CardStatusType.森林; break;
             case 2: type = CardStatusType.蛮荒; break;
             case 3: type = CardStatusType.地狱; break;
+            case 4: type = CardStatusType.魔族; break;
         }
         return new CardStatusItem(type, 0, cause);
     }
@@ -125,6 +126,10 @@ public class CardStatusItem {
 
     public static CardStatusItem SoulWound(SkillUseInfo cause) {
         return new CardStatusItem(CardStatusType.魂殇, 0, cause);
+    }
+
+    public static CardStatusItem YellowSky(SkillUseInfo cause) {
+        return new CardStatusItem(CardStatusType.黄天, 0, cause);
     }
 
     public static CardStatusItem Grudge(int effect,SkillUseInfo cause) {

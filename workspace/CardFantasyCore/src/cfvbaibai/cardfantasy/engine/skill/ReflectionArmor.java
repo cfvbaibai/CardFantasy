@@ -15,7 +15,7 @@ public class ReflectionArmor {
         if (attackDamage <= 0) {
             return;
         }
-        if (attacker == null || attacker.isDead()) {
+        if (attacker == null || attacker.isDead() || defender.isSilent()) {
             return;
         }
         GameUI ui = resolver.getStage().getUI();

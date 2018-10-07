@@ -70,6 +70,7 @@ public enum RuneData {
     绝杀("30809", RuneClass.FIRE, 4, SkillType.战意, 6, 1, 5, Growth.RUNE, RuneActivator.myGrave(2, Race.HELL)),
     鬼步("", RuneClass.FIRE, 4, SkillType.群体脱困, 0, 0, 5, Growth.RUNE, RuneActivator.myField(1, Race.HELL)),
     封闭("", RuneClass.FIRE, 3, SkillType.全体沉默, 0, 0, 5, Growth.RUNE, RuneActivator.myGrave(2, Race.HELL)),
+    升阳("", RuneClass.WATER, 5, SkillType.镜面, 0, 0, 5, Growth.RUNE, RuneActivator.myField(3, null)),
     ;
 
     private String wikiId;

@@ -18,11 +18,17 @@ import cfvbaibai.cardfantasy.engine.SkillResolver;
 import cfvbaibai.cardfantasy.engine.SkillUseInfo;
 
 public final class Erode {
-    public static void apply(SkillResolver resolver, SkillUseInfo skillUseInfo, CardInfo card, Player defender, Skill summonSkill) throws HeroDieSignal {
+    public static void apply(SkillResolver resolver, SkillUseInfo skillUseInfo, CardInfo card, Player defender, Skill summonSkill,Boolean onceSkill) throws HeroDieSignal {
         if (card.hasUsed(skillUseInfo)) {
             return;
         }
-        card.setUsed(skillUseInfo);
+        if(card.isSilent())
+        {
+            return;
+        }
+        if(onceSkill) {
+            card.setUsed(skillUseInfo);
+        }
         Skill skill = skillUseInfo.getSkill();
         GameUI ui = resolver.getStage().getUI();
         Randomizer random = resolver.getStage().getRandomizer();

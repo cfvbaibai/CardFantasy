@@ -2,6 +2,7 @@ package cfvbaibai.cardfantasy.engine.skill;
 
 import cfvbaibai.cardfantasy.GameUI;
 import cfvbaibai.cardfantasy.data.Skill;
+import cfvbaibai.cardfantasy.data.SkillType;
 import cfvbaibai.cardfantasy.engine.CardInfo;
 import cfvbaibai.cardfantasy.engine.HeroDieSignal;
 import cfvbaibai.cardfantasy.engine.SkillResolver;
@@ -16,6 +17,11 @@ public final class WaterArmor {
         }
         int maxDamage = cardSkill.getImpact();
         int maxHealHeroDamage = cardSkill.getImpact2();
+        if(cardSkill.getType() == SkillType.铁骨衣)
+        {
+            maxDamage = 650 - cardSkill.getImpact()*50;
+            maxHealHeroDamage = 50*cardSkill.getImpact();
+        }
         int actualDamage = originalDamage;
         int healHero = 0;
         if (actualDamage > maxDamage) {

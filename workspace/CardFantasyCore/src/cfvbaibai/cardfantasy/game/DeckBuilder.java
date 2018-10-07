@@ -31,12 +31,19 @@ public final class DeckBuilder {
     private final static String CARD_REGEX = 
         "^" +
         "(?<CardName>[^\\-+SD*?]+)" +
+        "(\\+SK1(?<SummonFlag1>(S|降临)?)(?<DeathFlag1>(D|死契)?)(?<PrecastFlag1>(PRE|先机)?)(?<PostcastFlag1>(POST|遗志)?)" +
+        "(?<SkillName1>[^\\d\\-*?]+)(?<SkillLevel1>\\d+)?)?" +
+        "(\\+SK2(?<SummonFlag2>(S|降临)?)(?<DeathFlag2>(D|死契)?)(?<PrecastFlag2>(PRE|先机)?)(?<PostcastFlag2>(POST|遗志)?)" +
+        "(?<SkillName2>[^\\d\\-*?]+)(?<SkillLevel2>\\d+)?)?" +
+        "(\\+SK3(?<SummonFlag3>(S|降临)?)(?<DeathFlag3>(D|死契)?)(?<PrecastFlag3>(PRE|先机)?)(?<PostcastFlag3>(POST|遗志)?)" +
+        "(?<SkillName3>[^\\d\\-*?]+)(?<SkillLevel3>\\d+)?)?" +
         "(\\+(?<SummonFlag>(S|降临)?)(?<DeathFlag>(D|死契)?)(?<PrecastFlag>(PRE|先机)?)(?<PostcastFlag>(POST|遗志)?)" +
         "(?<ExtraSkillName>[^\\d\\-*?]+)(?<ExtraSkillLevel>\\d+)?)?" +
         "(\\-(?<CardLevel>\\d+))?" +
         "(\\*(?<Count>\\d+))?" +
         "(\\?HP(?<HP>\\d+))?" +
         "(\\?AT(?<AT>\\d+))?" +
+        "(\\?DE(?<Delay>\\d+))?" +
         "$";
 
     private static Pattern CARD_PATTERN;
@@ -56,7 +63,8 @@ public final class DeckBuilder {
         descsText = descsText.replace(' ', ',').replace('　', ',').replace('，', ',').replace('、', ',');
         descsText = descsText.replace("\r\n", ",").replace("\n", ",");
         descsText = descsText.replace('＋', '+').replace('＊', '*').replace('－', '-')
-                .replace('？', '?').replace('h', 'H').replace('p', 'P').replace('a', 'A').replace('t', 'T');
+                .replace('？', '?').replace('h', 'H').replace('p', 'P').replace('a', 'A').replace('d', 'D')
+                .replace('t', 'T').replace('s', 'S').replace('k', 'K');
         descsText = descsText.replace(":", "").replace("：", "").replace("·", "");
         descsText = Zht2Zhs.getInstance().convert(descsText);
         return descsText.split(",");
@@ -152,7 +160,7 @@ public final class DeckBuilder {
      * Card description text pattern:
      * C卡片名-等级+技能名技能等级*数量
      * Example: C金属巨龙-10+暴风雪1*5
-     * @param deck
+     * @param desc
      * @param desc
      */
     public static List<Card> parseCardDesc(String desc) {
@@ -221,11 +229,31 @@ public final class DeckBuilder {
         if (at <= 0&&at!=-1 ) {
             throw new DeckBuildRuntimeException("无效的卡牌：" + desc + "，攻击力不得小于0");
         }
+
+        //new add start
        
         boolean summonSkill = !StringUtils.isBlank(matcher.group("SummonFlag"));
         boolean deathSkill = !StringUtils.isBlank(matcher.group("DeathFlag"));
         boolean precastSkill = !StringUtils.isBlank(matcher.group("PrecastFlag"));
         boolean postcastSkill = !StringUtils.isBlank(matcher.group("PostcastFlag"));
+
+        boolean summonSkill1 = !StringUtils.isBlank(matcher.group("SummonFlag1"));
+        boolean deathSkill1 = !StringUtils.isBlank(matcher.group("DeathFlag1"));
+        boolean precastSkill1 = !StringUtils.isBlank(matcher.group("PrecastFlag1"));
+        boolean postcastSkill1 = !StringUtils.isBlank(matcher.group("PostcastFlag1"));
+
+        boolean summonSkill2 = !StringUtils.isBlank(matcher.group("SummonFlag2"));
+        boolean deathSkill2 = !StringUtils.isBlank(matcher.group("DeathFlag2"));
+        boolean precastSkill2 = !StringUtils.isBlank(matcher.group("PrecastFlag2"));
+        boolean postcastSkill2 = !StringUtils.isBlank(matcher.group("PostcastFlag2"));
+
+        boolean summonSkill3 = !StringUtils.isBlank(matcher.group("SummonFlag3"));
+        boolean deathSkill3 = !StringUtils.isBlank(matcher.group("DeathFlag3"));
+        boolean precastSkill3 = !StringUtils.isBlank(matcher.group("PrecastFlag3"));
+        boolean postcastSkill3 = !StringUtils.isBlank(matcher.group("PostcastFlag3"));
+
+        //end
+
         String countText = matcher.group("Count");
         int count = 1;
         if (countText != null) {
@@ -250,9 +278,118 @@ public final class DeckBuilder {
                 prefix += extraSkillLevel;
             }
         }
+
+        //new add start
+
+        String skillName1 = matcher.group("SkillName1");
+        SkillType skillType1 = null;
+        if (skillName1 != null) {
+            try {
+                skillType1 = SkillType.valueOf(skillName1);
+            } catch (IllegalArgumentException e) {
+                throw new DeckBuildRuntimeException("无效的卡牌: " + desc, e);
+            }
+        }
+
+        String skillName2 = matcher.group("SkillName2");
+        SkillType skillType2 = null;
+        if (skillName2 != null) {
+            try {
+                skillType2 = SkillType.valueOf(skillName2);
+            } catch (IllegalArgumentException e) {
+                throw new DeckBuildRuntimeException("无效的卡牌: " + desc, e);
+            }
+        }
+
+        String skillName3 = matcher.group("SkillName3");
+        SkillType skillType3 = null;
+        if (skillName3 != null) {
+            try {
+                skillType3 = SkillType.valueOf(skillName3);
+            } catch (IllegalArgumentException e) {
+                throw new DeckBuildRuntimeException("无效的卡牌: " + desc, e);
+            }
+        }
+
+        String delayText = matcher.group("Delay");
+        int delay = 0;
+        if (delayText != null) {
+            try {
+                delay = Integer.parseInt(delayText);
+            } catch (NumberFormatException e) {
+                throw new DeckBuildRuntimeException("无效的卡牌: " + desc, e);
+            }
+        }
+
+        String skillLevelText1 = matcher.group("SkillLevel1");
+        int skillLevel1 = 0;
+        if (skillLevelText1 != null) {
+            try {
+                skillLevel1 = Integer.parseInt(skillLevelText1);
+            } catch (NumberFormatException e) {
+                throw new DeckBuildRuntimeException("无效的卡牌: " + desc, e);
+            }
+        }
+
+        String skillLevelText2 = matcher.group("SkillLevel2");
+        int skillLevel2 = 0;
+        if (skillLevelText2 != null) {
+            try {
+                skillLevel2 = Integer.parseInt(skillLevelText2);
+            } catch (NumberFormatException e) {
+                throw new DeckBuildRuntimeException("无效的卡牌: " + desc, e);
+            }
+        }
+
+        String skillLevelText3 = matcher.group("SkillLevel3");
+        int skillLevel3 = 0;
+        if (skillLevelText3 != null) {
+            try {
+                skillLevel3 = Integer.parseInt(skillLevelText3);
+            } catch (NumberFormatException e) {
+                throw new DeckBuildRuntimeException("无效的卡牌: " + desc, e);
+            }
+        }
+
+        CardSkill skill1 = null;
+        if (skillType1 != null) {
+            skill1 = new CardSkill(skillType1, skillLevel1, 0, summonSkill1, deathSkill1, precastSkill1, postcastSkill1);
+        }
+
+        CardSkill skill2 = null;
+        if (skillType2 != null) {
+            skill2 = new CardSkill(skillType2, skillLevel2, 5, summonSkill2, deathSkill2, precastSkill2, postcastSkill2);
+        }
+
+        CardSkill skill3 = null;
+        if (skillType3 != null) {
+            skill3 = new CardSkill(skillType3, skillLevel3, 10, summonSkill3, deathSkill3, precastSkill3, postcastSkill3);
+        }
+
+
+        //end
         
         for (int j = 0; j < count; ++j) {
             Card card = new Card(data, cardLevel, extraSkill, prefix, String.valueOf(getCardNameSuffix()),hp,at);
+            //new add start
+            if(skill1!=null)
+            {
+                card.addNormalSkill(skill1);
+            }
+            if(skill2!=null)
+            {
+                card.addNormalSkill(skill2);
+            }
+            if(skill3!=null)
+            {
+                card.addNormalSkill(skill3);
+            }
+            if(delayText!=null)
+            {
+                card.setSetDelay(delay);
+            }
+
+            // new add end
             ret.add(card);
         }
         

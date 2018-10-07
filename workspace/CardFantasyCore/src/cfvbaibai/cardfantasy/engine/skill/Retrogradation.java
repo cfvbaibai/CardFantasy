@@ -70,6 +70,8 @@ public final class Retrogradation {
                 return false;
             }
             beforeDeath.removeCard(card);
+            //发动成功重置死亡卡牌
+            resolver.resetDeadCard(card);
             if (player.getDeck().size() > 0) {
                 //     int position = Randomizer.getRandomizer().next(0, player.getDeck().size());
                 // 回生是有顺序的。

@@ -12,6 +12,8 @@ public class Card implements Cloneable, Comparable <Card> {
     private CardSkill extraSkill;
     private int overrideHP = -1;
     private int overrideAT = -1;
+    private List<CardSkill> normalSkill; //new add
+    private int setDelay; //new add
 
     public Card(CardData sourceInfo) {
         this(sourceInfo, 0, "");
@@ -37,6 +39,8 @@ public class Card implements Cloneable, Comparable <Card> {
         this.uniqueName = prefix + sourceInfo.getName() + suffix;
         this.overrideHP = overrideHP;
         this.overrideAT = overrideAT;
+        this.normalSkill=new ArrayList<>();//new add
+        this.setDelay = -1;//new add
     }
     
     public String getId() {
@@ -52,6 +56,12 @@ public class Card implements Cloneable, Comparable <Card> {
     }
     
     public int getSummonSpeed() {
+        //new add start
+        if(this.setDelay>=0)
+        {
+            return this.setDelay;
+        }
+        //new add end
         return this.sourceInfo.getSummonSpeed();
     }
     
@@ -82,6 +92,15 @@ public class Card implements Cloneable, Comparable <Card> {
 
     public List<CardSkill> getAllSkills() {
         List <CardSkill> skills = new ArrayList<CardSkill>(sourceInfo.getSkills());
+
+        //new add start
+        if (this.normalSkill.size()>0) {
+            for(CardSkill skill:this.normalSkill) {
+                skills.add(skill);
+            }
+        }
+        //new add end
+
         if (this.extraSkill != null) {
             skills.add(this.extraSkill);
         }
@@ -153,4 +172,16 @@ public class Card implements Cloneable, Comparable <Card> {
         sb.append(this.getLevel());
         return sb.toString();
     }
+
+    //new add start
+    public void addNormalSkill(CardSkill skill)
+    {
+        this.normalSkill.add(skill);
+    }
+
+    public void setSetDelay(int setDelay) {
+        this.setDelay = setDelay;
+    }
+
+    //new add end
 }

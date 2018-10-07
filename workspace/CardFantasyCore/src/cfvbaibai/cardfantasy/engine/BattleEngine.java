@@ -216,6 +216,7 @@ public class BattleEngine {
         {
             defenderCard.setRuneActive(false);//符文不发动
             defenderCard.setSummonNumber(defenderCard.getSummonNumber()+1);//存在回合数+1
+            this.stage.getResolver().removeStatus(defenderCard, CardStatusType.魔族);//移除魔族buff
             this.stage.getResolver().removeGiveSkills(defenderCard);
         }
         this.stage.getResolver().endOutField(this.getActivePlayer());
@@ -308,10 +309,11 @@ public class BattleEngine {
                 underControl = true;
 
                 if (status.containsStatus(CardStatusType.迷惑)) {
-                    ui.confused(myField.getCard(i));
-                    resolver.resolvePreAttackHeroSkills(myField.getCard(i), getActivePlayer());
-                    resolver.attackHero(myField.getCard(i), getActivePlayer(), null, myField.getCard(i).getCurrentAT());
-                    resolver.resolveExtraAttackHeroSkills(myField.getCard(i), getInactivePlayer());
+                    CardInfo myCard = myField.getCard(i);
+                    ui.confused(myCard);
+                    resolver.resolvePreAttackHeroSkills(myCard, getActivePlayer());
+                    resolver.attackHero(myCard, getActivePlayer(), null, myCard.getCurrentAT());
+                    resolver.resolveExtraAttackHeroSkills(myCard, getInactivePlayer(), false);
                 } else {
                     ui.cannotAction(myField.getCard(i));
                 }
@@ -424,7 +426,7 @@ public class BattleEngine {
         if (opField.getCard(i) == null) {
             resolver.resolvePreAttackHeroSkills(myField.getCard(i), getInactivePlayer());
             resolver.attackHero(myField.getCard(i), getInactivePlayer(), null, myField.getCard(i).getCurrentAT());
-            resolver.resolveExtraAttackHeroSkills(myField.getCard(i), getInactivePlayer());
+            resolver.resolveExtraAttackHeroSkills(myField.getCard(i), getInactivePlayer(),true);
             if (myField.getCard(i)!=null&&(myField.getCard(i).containsUsableSkill(SkillType.连斩)||myField.getCard(i).containsUsableSkill(SkillType.原素裂变)||myField.getCard(i).containsUsableSkill(SkillType.死亡收割)||myField.getCard(i).containsUsableSkill(SkillType.连狙)||myField.getCard(i).containsUsableSkill(SkillType.战神))) {
                 boolean killCard = true;
                 for(;killCard;) {
@@ -487,6 +489,8 @@ public class BattleEngine {
         for (SkillUseInfo skillUseInfo : myField.getCard(i).getUsableNormalSkills()) {
             if (skillUseInfo.getType() == SkillType.横扫 ||
                     skillUseInfo.getType() == SkillType.灵击 ||
+                    skillUseInfo.getType() == SkillType.地裂劲 ||
+                    skillUseInfo.getType() == SkillType.秘纹领域 ||
                     skillUseInfo.getType() == SkillType.三千世界 ||
                     skillUseInfo.getType() == SkillType.大小通吃 ||
                     skillUseInfo.getType() == SkillType.魔龙之怒 ||
@@ -520,6 +524,8 @@ public class BattleEngine {
         if (damagedResult != null && damagedResult.originalDamage > 0 && myField.getCard(i) != null&&attackflag) {
             for (SkillUseInfo skillUseInfo : myField.getCard(i).getUsableNormalSkills()) {
                 if (skillUseInfo.getType() == SkillType.横扫 ||
+                        skillUseInfo.getType() == SkillType.地裂劲 ||
+                        skillUseInfo.getType() == SkillType.秘纹领域 ||
                         skillUseInfo.getType() == SkillType.三千世界 ||
                         skillUseInfo.getType() == SkillType.大小通吃 ||
                         skillUseInfo.getType() == SkillType.魔龙之怒 ||
@@ -558,7 +564,7 @@ public class BattleEngine {
 //                        }
 //                        else {
                             ui.useSkill(myField.getCard(i), sweepDefender, skillUseInfo.getSkill(), true);
-                            resolver.attackCard(myField.getCard(i), sweepDefender, skillUseInfo, damagedResult.originalDamage);
+                            resolver.attackCard(myField.getCard(i), sweepDefender, skillUseInfo, damagedResult.originalDamage,false);
 //                        }
                         // Physical attack cannot proceed if attacker is killed by counter attack skills.
                         if (myField.getCard(i) == null) {
@@ -583,7 +589,7 @@ public class BattleEngine {
                             continue;
                         }
                         ui.useSkill(myField.getCard(i), sweepDefender, skillUseInfo.getSkill(), true);
-                        resolver.attackCard(myField.getCard(i), sweepDefender, skillUseInfo, damagedResult.originalDamage);
+                        resolver.attackCard(myField.getCard(i), sweepDefender, skillUseInfo, damagedResult.originalDamage,false);
                         if (myField.getCard(i) == null ||myField.getCard(i).isDead()) {
                             break;
                         }

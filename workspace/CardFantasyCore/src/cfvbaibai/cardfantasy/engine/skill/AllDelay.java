@@ -14,7 +14,15 @@ public final class AllDelay {
         int summonDelayOffset = skillUseInfo.getSkill().getImpact(); 
         List<CardInfo> allHandCards = defender.getHand().toList();
         resolver.getStage().getUI().useSkill(attacker, allHandCards, skillUseInfo.getSkill(), true);
+        if(resolver.resolveStopDelay(defender))
+        {
+            return;
+        }
         for (CardInfo card : allHandCards) {
+            if(resolver.resolveStopCardDelay(card))
+            {
+                continue;
+            }
             int summonDelay = card.getSummonDelay();
             resolver.getStage().getUI().increaseSummonDelay(card, summonDelayOffset);
             card.setSummonDelay(summonDelay + summonDelayOffset);
