@@ -275,6 +275,7 @@ public enum SkillType {
     镜面领域("", 0, SkillTag.抗沉默,SkillTag.不动),
     真理导言("", 6, 0, SkillTag.抗沉默),
     阿拉希血统("", 0, 0, SkillTag.抗沉默, SkillTag.额外攻击加成),
+    蛇魔之甲("", 300, 0),
     魔甲("30931", 140, -10),
     魔法装甲("", 10),
     却魔装甲("", 140, -10,SkillTag.不动),
@@ -953,7 +954,7 @@ public enum SkillType {
     圣域屏障("",SkillType.圣盾,0,null,0),
     足球风暴("",SkillType.射门,0,null,0),
     破阵之势("",SkillType.破军,8,null,0),
-    蛇蜕之术("",SkillType.魔法装甲,7,null,0,SkillTag.不动),
+    蛇蜕之术("",SkillType.蛇魔之甲,0,null,0,SkillTag.不动),
 
     金魔装甲("", 50,0),
     //给自身场上所有卡牌添加技能除自己以外

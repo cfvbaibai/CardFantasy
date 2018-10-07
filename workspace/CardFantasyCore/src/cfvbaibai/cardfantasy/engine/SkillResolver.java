@@ -1394,6 +1394,7 @@ public class SkillResolver {
                             blockSkillUseInfo.getType() == SkillType.神魔之甲 ||
                             blockSkillUseInfo.getType() == SkillType.体态丰盈 ||
                             blockSkillUseInfo.getType() == SkillType.却魔装甲 ||
+                            blockSkillUseInfo.getType() == SkillType.蛇魔之甲 ||
                             blockSkillUseInfo.getType() == SkillType.魔力抗性) {
                         result.setDamage(MagicShield.apply(this, blockSkillUseInfo.getSkill(), attacker, defender,
                                 attackSkill, result.getDamage()));
