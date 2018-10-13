@@ -10,12 +10,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AddSkillOpponent {
-    public static void apply(SkillResolver resolver, SkillUseInfo skillUseInfo, CardInfo card, Skill addSkill,int number,Player defenderHero)throws HeroDieSignal {
+    public static void apply(SkillResolver resolver, SkillUseInfo skillUseInfo, CardInfo card, Skill addSkill,int number,Player defenderHero,boolean precastSkill)throws HeroDieSignal {
         if (card == null || card.isDead()) {
             throw new CardFantasyRuntimeException("card should not be null or dead!");
         }
         Skill skill = skillUseInfo.getSkill();
-        CardSkill cardSkill = new CardSkill(addSkill.getType(), addSkill.getLevel(), 0, false, false, false, false);
+        CardSkill cardSkill = new CardSkill(addSkill.getType(), addSkill.getLevel(), 0, false, false, precastSkill, false);
         resolver.getStage().getUI().useSkill(card, skill, true);
         List<CardInfo> allHandCards = defenderHero.getHand().toList();
         List<CardInfo> addCard= new ArrayList<CardInfo>();

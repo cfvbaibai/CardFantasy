@@ -1396,6 +1396,16 @@
         <Skill type="圣光奏鸣曲" level="0" unlock="5" />
         <Skill type="结界立场" level="0" unlock="10" />
     </Card>
+    <Card id="1675" name="刻乱之时" wikiId="" race="王国" speed="3" star="5" cost="19" incrCost="2" at="500" hp="1580" incrAT="38" incrHP="40">
+        <Skill type="地裂" level="0" unlock="0" />
+        <Skill type="阻碍" level="2" unlock="5" />
+        <Skill type="枯萎" level="0" unlock="10" />
+    </Card>
+    <Card id="1676" name="漆黑魔导士" wikiId="" race="王国" speed="1" star="5" cost="21" incrCost="2" at="600" hp="1650" incrAT="46" incrHP="40">
+        <Skill type="黑暗之门" level="0" unlock="0" />
+        <Skill type="死亡链接" level="0" unlock="5" />
+        <Skill type="永生的诅咒" level="0" unlock="10" />
+    </Card>
 
 
 
@@ -2583,6 +2593,12 @@
         <Skill type="王之守护" level="0" unlock="5" />
         <Skill type="飞天揽月" level="0" unlock="10" />
     </Card>
+    <Card id="2647" name="森之御魔使" wikiId="" race="森林" speed="3" star="5" cost="19" incrCost="2" at="540" hp="1510" incrAT="43" incrHP="38">
+        <Skill type="魔力飞刃" level="0" unlock="0" />
+        <Skill type="森之领域" level="0" unlock="5" />
+        <Skill type="坚毅" level="0" unlock="10" />
+    </Card>
+
 
     <!-- 蛮荒  -->
     <Card id="3101" name="穴居人奴隶" wikiId="31006" race="蛮荒" speed="2" star="1" cost="4" incrCost="2" at="90" hp="390" incrAT="18" incrHP="11">
@@ -3732,6 +3748,16 @@
         <Skill type="摧毁" level="0" unlock="0" />
         <Skill type="暴击" level="6" unlock="5" />
         <Skill type="敏捷" level="7" unlock="10" />
+    </Card>
+    <Card id="3631" name="时空女神" wikiId="" race="蛮荒" speed="3" star="5" cost="19" incrCost="2" at="570" hp="1610" incrAT="40" incrHP="44">
+        <Skill type="时空封印" level="0" unlock="0" summon="true"/>
+        <Skill type="神衣" level="0" unlock="5" />
+        <Skill type="回归" level="0" unlock="10" />
+    </Card>
+    <Card id="3632" name="时空守护者" wikiId="" race="蛮荒" speed="3" star="5" cost="19" incrCost="2" at="520" hp="1565" incrAT="40" incrHP="38">
+        <Skill type="传送" level="0" unlock="0" summon="true"/>
+        <Skill type="时空置换" level="0" unlock="5" />
+        <Skill type="神依" level="0" unlock="10" />
     </Card>
 
 
@@ -4979,6 +5005,21 @@
     </Card>
     <Card id="4651" name="战场亡灵" wikiId="" race="地狱" speed="2" star="4" cost="17" incrCost="2" at="1050" hp="1850" incrAT="0" incrHP="0">
         <Skill type="归魂" level="1" unlock="0" summon="true"/>
+    </Card>
+    <Card id="4652" name="真理之光" wikiId="" race="地狱" speed="3" star="5" cost="18" incrCost="2" at="510" hp="1550" incrAT="40" incrHP="40">
+        <Skill type="天启导言" level="0" unlock="0" />
+        <Skill type="觉醒雷神之咒" level="0" unlock="5" />
+        <Skill type="圣炎" level="0" unlock="10"/>
+    </Card>
+    <Card id="4653" name="极道霸王" wikiId="" race="地狱" speed="3" star="5" cost="18" incrCost="2" at="500" hp="1650" incrAT="35" incrHP="45">
+        <Skill type="魔法克星" level="0" unlock="0" />
+        <Skill type="喋喋不休" level="0" unlock="5" />
+        <Skill type="独行" level="0" unlock="10"/>
+    </Card>
+    <Card id="4654" name="黑暗眷属" wikiId="" race="地狱" speed="6" star="5" cost="99" incrCost="0" at="1" hp="2000" incrAT="0" incrHP="0">
+        <Skill type="献祭" level="1" unlock="0" />
+        <Skill type="恶魔契约" level="0" unlock="5" />
+        <Skill type="自毁" level="0" unlock="10"/>
     </Card>
 
 

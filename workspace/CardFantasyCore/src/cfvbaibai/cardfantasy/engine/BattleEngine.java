@@ -358,6 +358,7 @@ public class BattleEngine {
             resolver.removeStatus(myField.getCard(i), CardStatusType.死咒);
             resolver.removeStatus(myField.getCard(i), CardStatusType.炼成);
             resolver.removeStatus(myField.getCard(i), CardStatusType.魂殇);
+            resolver.removeStatus(myField.getCard(i), CardStatusType.链接);
             if (status.containsStatus(CardStatusType.变羊)) {
                 //变羊类技能恢复原状
                 List<CardStatusItem>  sheepStatus= status.getStatusOf(CardStatusType.变羊);
