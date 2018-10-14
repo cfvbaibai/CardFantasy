@@ -221,7 +221,7 @@ public enum SkillType {
     不灭原核("", 12, 0, SkillTag.抗免疫, SkillTag.永久, SkillTag.基础攻击加成, SkillTag.抗不屈),
 
 
-    守护("30973", 0, SkillTag.守护),
+    守护("30973", 10, SkillTag.守护),
     神之守护("", 0, SkillTag.守护),
     祈祷("30954", 50),
     终极祈祷("", 2500,0),
