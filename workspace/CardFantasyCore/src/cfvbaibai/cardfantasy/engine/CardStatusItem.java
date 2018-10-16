@@ -128,6 +128,10 @@ public class CardStatusItem {
         return new CardStatusItem(CardStatusType.魂殇, 0, cause);
     }
 
+    public static CardStatusItem Asthenia(SkillUseInfo cause) {
+        return new CardStatusItem(CardStatusType.虚化, 0, cause);
+    }
+
     public static CardStatusItem SoulLink(SkillUseInfo cause) {
         return new CardStatusItem(CardStatusType.链接, 0, cause);
     }

@@ -30,7 +30,9 @@ public final class Purify {
             resolver.removeStatus(card, CardStatusType.迷惑);
             resolver.removeStatus(card, CardStatusType.冰冻);
             resolver.removeStatus(card, CardStatusType.锁定);
-            resolver.removeStatus(card, CardStatusType.麻痹);
+            if(card.getStatus().getStatusOf(CardStatusType.虚化).isEmpty()){
+                resolver.removeStatus(card, CardStatusType.麻痹);
+            }
             resolver.removeStatus(card, CardStatusType.中毒);
             resolver.removeStatus(card, CardStatusType.燃烧);
             resolver.removeStatus(card, CardStatusType.弱化);

@@ -49,4 +49,38 @@ public final class MultipleAttack {
         }
 
     }
+
+    //只攻击一下，并且有判定卡牌
+    public static void applyFirst(SkillResolver resolver, SkillUseInfo skillUseInfo, CardInfo attacker,Player defender, Skill attackSkill,Boolean firstSkill)
+            throws HeroDieSignal {
+        if (attacker == null) {
+            return;
+        }
+        if (attackSkill != null) {
+            return;
+        }
+        if (attacker.isDead()) {
+            return;
+        }
+        if(!firstSkill)
+        {
+            return;
+        }
+        Skill skill = skillUseInfo.getSkill();
+        int damage = attacker.getCurrentAT();
+        GameUI ui = resolver.getStage().getUI();
+        List<CardInfo> victims = defender.getField().getCardsWithLowestHP(1);
+        if(victims.size()>0) {
+            for(CardInfo card:victims)
+            {
+                 ui.useSkill(attacker,card,skill,true);
+                resolver.attackCard(attacker, card, skillUseInfo, damage,false);
+            }
+        }
+        else {
+            ui.useSkill(attacker,defender,skill,true);
+            resolver.attackHero(attacker, defender, skill, damage);
+        }
+
+    }
 }

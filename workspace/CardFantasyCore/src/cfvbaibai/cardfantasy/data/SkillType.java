@@ -152,6 +152,7 @@ public enum SkillType {
     地狱烈火("", 500, 0, 100, 0, SkillTag.魔法),
     火烧连营("", 150, 0, 60, 0, SkillTag.魔法),
     彻骨霜火("", 200, 0, 40, 0, SkillTag.魔法),
+    妖狐火焰("", 150, 0, 80, 0, SkillTag.魔法),
     化学风暴("", 700, 0, 50, 0, SkillTag.魔法),
     生化风暴("", 700, 0, 180, 0, SkillTag.魔法),
     凤鸣("",500,0,SkillTag.魔法),
@@ -269,6 +270,7 @@ public enum SkillType {
     月神的恩赐("", new int[] { 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100 }),
     自然恩泽("", new int[] { 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100 }),
     救死扶伤("", new int[] { 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70 }),
+    神之契约("", new int[] { 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100 }),
 
 
     法力反射("30929", 30),
@@ -327,6 +329,7 @@ public enum SkillType {
     寒冰之盾("", 100, 0,SkillTag.控制, SkillTag.抗免疫, SkillTag.魔王无效,SkillTag.物理护甲, SkillTag.魔族天赋),
     神魔之甲("", 60, 0, 110, 0, SkillTag.物理护甲),
     金属装甲("", 10),
+    秘银("", 70,0),
     物理屏障("", 75,0),
     兽人之肤("", 70,0),
     物理免疫("",100,0),
@@ -381,6 +384,7 @@ public enum SkillType {
     溶骨的毒酒("",100,0),
     死亡收割("",85,0),
     狂舞("", 70, 0,4,0, SkillTag.抗免疫, SkillTag.物理攻击),
+    黩武("", 500, 0,800,0, SkillTag.抗免疫, SkillTag.物理攻击),
 
     灵巧("57020", 0),
     灵魂禁锢("", 0),
@@ -775,6 +779,7 @@ public enum SkillType {
     闭月("", SkillType.祈福, 3, SkillType.圣母回声, 0),
     虚梦("", SkillType.镜像,0, SkillType.传送,0,SkillTag.召唤),
     觉醒白虎守护("", SkillType.月神的护佑, 7, SkillType.祈福, 3),
+    觉醒神之祈福("", SkillType.祈福, 3, SkillType.祈福, 10),
     觉醒星之意志("", SkillType.灵魂消散, 0, SkillType.灵王的轰击, 7),
     觉醒狼顾("",  SkillType.雷神降临, 8, SkillType.雷霆一击, 5),
     觉醒雷神之咒("",  SkillType.制裁雷云, 0, SkillType.雷霆冲击, 0),
@@ -877,6 +882,7 @@ public enum SkillType {
     觉醒月神降临("", SkillType.救死扶伤, 0, SkillType.月神降临祈福, 0),
     嗜血潜能("",650,0,SkillType.松鼠吞噬,0,null,0,SkillTag.沉默无效),
     森之领域("",75,0,SkillType.荆棘刃甲,0,null,0),
+    月光之阵("",SkillType.月神的护佑,7,SkillType.魔力法阵,7),
 
     新生("",0,0,SkillTag.新生,SkillTag.抗夺魂),
     重整("",0,0,SkillTag.新生,SkillTag.抗夺魂),
@@ -1065,6 +1071,7 @@ public enum SkillType {
     人体炼成("",0, SkillTag.魔王无效, SkillTag.魔族天赋,SkillTag.召唤),
     海滨大作战("",0,0,SkillType.锁魂,0,SkillType.二重大灵轰,0),
     死亡链接("",5,0, SkillTag.抗免疫,SkillTag.魔王无效),
+    虚化("",3,0,50,0, SkillTag.魔王无效,SkillTag.魔族天赋),
 
     //防御圣炎
     庇护("",0),
@@ -1081,6 +1088,7 @@ public enum SkillType {
     //真龙九现类型
     真龙九现("",0),
     飞天揽月("",0),
+    生生不息("",0),
     终焉脱壳("",9999999,0),
 
     //防止技能类型

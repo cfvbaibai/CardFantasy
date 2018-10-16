@@ -1406,6 +1406,11 @@
         <Skill type="死亡链接" level="0" unlock="5" />
         <Skill type="永生的诅咒" level="0" unlock="10" />
     </Card>
+    <Card id="1677" name="皇家炼金士" wikiId="" race="王国" speed="3" star="5" cost="18" incrCost="2" at="545" hp="1610" incrAT="35" incrHP="37">
+        <Skill type="神性祈求" level="0" unlock="0" />
+        <Skill type="觉醒神之祈福" level="0" unlock="5" />
+        <Skill type="神之契约" level="0" unlock="10" />
+    </Card>
 
 
 
@@ -2598,6 +2603,11 @@
         <Skill type="森之领域" level="0" unlock="5" />
         <Skill type="坚毅" level="0" unlock="10" />
     </Card>
+    <Card id="2648" name="巡林守护者" wikiId="" race="蛮荒" speed="2" star="5" cost="16" incrCost="2" at="535" hp="1540" incrAT="40" incrHP="42">
+        <Skill type="星云锁链" level="0" unlock="0" />
+        <Skill type="守护" level="10" unlock="5" />
+        <Skill type="生生不息" level="0" unlock="10" />
+    </Card>
 
 
     <!-- 蛮荒  -->
@@ -3758,6 +3768,11 @@
         <Skill type="传送" level="0" unlock="0" summon="true"/>
         <Skill type="时空置换" level="0" unlock="5" />
         <Skill type="神依" level="0" unlock="10" />
+    </Card>
+    <Card id="3633" name="金角银角" wikiId="" race="蛮荒" speed="3" star="5" cost="21" incrCost="2" at="650" hp="1450" incrAT="50" incrHP="40">
+        <Skill type="虚化" level="0" unlock="0" summon="true"/>
+        <Skill type="黩武" level="0" unlock="5" />
+        <Skill type="灵魂消散" level="0" unlock="10" death="true"/>
     </Card>
 
 
@@ -5020,6 +5035,11 @@
         <Skill type="献祭" level="1" unlock="0" />
         <Skill type="恶魔契约" level="0" unlock="5" />
         <Skill type="自毁" level="0" unlock="10"/>
+    </Card>
+    <Card id="4655" name="月光妖兽" wikiId="" race="地狱" speed="3" star="5" cost="16" incrCost="2" at="520" hp="1520" incrAT="40" incrHP="42">
+        <Skill type="月光之阵" level="0" unlock="0" />
+        <Skill type="妖狐火焰" level="0" unlock="5" />
+        <Skill type="秘银" level="0" unlock="10" />
     </Card>
 
 
