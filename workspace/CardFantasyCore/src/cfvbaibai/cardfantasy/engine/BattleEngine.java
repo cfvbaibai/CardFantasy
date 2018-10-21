@@ -515,7 +515,8 @@ public class BattleEngine {
             Skill skill = null;
             for(SkillUseInfo skillUseInfo: taunt.getUsableNormalSkills())
             {
-                if(skillUseInfo.getType() == SkillType.嘲讽 || skillUseInfo.getType() == SkillType.酒池肉林)
+                if(skillUseInfo.getType() == SkillType.嘲讽 || skillUseInfo.getType() == SkillType.酒池肉林
+                        || skillUseInfo.getType() == SkillType.喵喵喵|| skillUseInfo.getType() == SkillType.蔑视)
                 {
                     skill = skillUseInfo.getSkill();
                 }
@@ -682,7 +683,8 @@ public class BattleEngine {
     private CardInfo tauntCard(Field opField){
         if(opField.size()>0) {
             for (CardInfo card : opField.getAliveCards()) {
-                if(card.containsUsableSkill(SkillType.嘲讽)||card.containsUsableSkill(SkillType.酒池肉林))
+                if(card.containsUsableSkill(SkillType.嘲讽)||card.containsUsableSkill(SkillType.酒池肉林)
+                        ||card.containsUsableSkill(SkillType.喵喵喵)||card.containsUsableSkill(SkillType.蔑视))
                 {
                     return card;
                 }

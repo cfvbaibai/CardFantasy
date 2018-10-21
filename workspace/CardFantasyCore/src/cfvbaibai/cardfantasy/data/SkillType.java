@@ -30,6 +30,7 @@ public enum SkillType {
     制衡("", 100, 0, SkillTag.永久, SkillTag.复活,SkillTag.基础攻击加成),
     灵魂献祭("", 100, 0, SkillTag.永久, SkillTag.复活,SkillTag.基础攻击加成),
     侵蚀("", 100, 0, SkillTag.永久, SkillTag.基础攻击加成, SkillTag.魔王无效, SkillTag.魔族天赋),
+    威慑("", 150, 0, SkillTag.永久, SkillTag.基础攻击加成, SkillTag.魔王无效, SkillTag.魔族天赋),
     松鼠吞噬("", 20, 0, SkillTag.永久, SkillTag.基础攻击加成, SkillTag.魔王无效, SkillTag.魔族天赋),
     冰巨人吞噬("", 30, 0, SkillTag.永久, SkillTag.基础攻击加成, SkillTag.魔王无效, SkillTag.魔族天赋),
     吞噬("", 100, 0, SkillTag.永久, SkillTag.基础攻击加成, SkillTag.魔王无效, SkillTag.魔族天赋),
@@ -172,6 +173,7 @@ public enum SkillType {
     奥术湮灭("",100,0,1000,0, SkillTag.魔法,SkillTag.法术扼杀),
     望月杀阵("", 400, 0, 100, 0, SkillTag.魔法),
     最终判决("", 300,0,1200,0, SkillTag.魔法,SkillTag.法术扼杀),
+    噩梦扼杀("", 100,0,100,0, SkillTag.魔法,SkillTag.法术扼杀),
 
 
     狙击("", 0, 0, new int[] { 0, 25, 50, 75, 100, 125, 150, 175, 200, 225, 250 }, SkillTag.抗免疫, SkillTag.狙击),
@@ -236,6 +238,7 @@ public enum SkillType {
     嘲讽("",0),
     喵喵喵("",0),
     酒池肉林("",70,0),
+    蔑视("",0,SkillTag.抗沉默),
 
     横扫("30941", 0, SkillTag.抗免疫, SkillTag.物理攻击),
     三千世界("", 0, SkillTag.抗免疫, SkillTag.物理攻击),
@@ -414,6 +417,7 @@ public enum SkillType {
     回魂("31131", 1),
     招魂术("", 1,SkillTag.不动),
     祈愿("", 1),
+    萦梦("", 2,0, SkillTag.召唤),
     请帮帮我("", 1),
     神恩("", 1,SkillTag.抗沉默),
     放飞自我("", 3,0),
@@ -434,6 +438,7 @@ public enum SkillType {
     癫狂之舞("", 0),
     离间("", 0),
     无尽华尔兹("", 0),
+    破阵("", 1, 0, SkillTag.抗夺魂),
     醉酒狂暴("", 0),
     死无尽华尔兹("", 0),
     禁术无尽华尔兹("", 0),
@@ -498,6 +503,7 @@ public enum SkillType {
     鲜血盛宴("54209", 0, 20, SkillTag.魔法),
     歃血魔咒("", 50, 50, SkillTag.魔法),
     猎杀之夜("", 450, 0, SkillTag.魔法, SkillTag.抗沉默),
+    武之圣域("", 700, 0, SkillTag.魔法),
     天谴("31137", 20),
     末世术("", 180, 20),
     以逸待劳("", 340, 0),
@@ -519,6 +525,7 @@ public enum SkillType {
     神性祈求("", 0),
     神性祈祷("", 4,0),
     净化领域("", 0,SkillTag.不动),
+    驱魔("", 1000,0),
 
     王国之盾("40099", 15, 5, SkillTag.种族之盾),
     森林之盾("40091", 15, 5, SkillTag.种族之盾),
@@ -1059,6 +1066,7 @@ public enum SkillType {
     绝对压制("",1,0,300,0,SkillTag.抗免疫, SkillTag.抗不屈, SkillTag.魔王无效, SkillTag.魔族天赋,SkillTag.基础攻击加成),
     凤凰之怒("",1,0,1000,0,SkillTag.抗免疫, SkillTag.抗不屈, SkillTag.魔王无效, SkillTag.魔族天赋,SkillTag.基础攻击加成),
     末日降临("",300,0,300,0,SkillTag.抗免疫, SkillTag.抗不屈, SkillTag.魔王无效, SkillTag.魔族天赋,SkillTag.基础攻击加成),
+    噩梦来临("",1,0,100,0,SkillTag.抗免疫, SkillTag.抗不屈, SkillTag.魔王无效, SkillTag.魔族天赋,SkillTag.基础攻击加成),
     支配亡灵("",0, SkillTag.魔王无效, SkillTag.魔族天赋,SkillTag.召唤),
     骸骨大军("",0, SkillTag.魔王无效, SkillTag.魔族天赋,SkillTag.召唤),
     魂之枷锁("",5,0, SkillTag.抗免疫,SkillTag.魔王无效),
@@ -1072,6 +1080,8 @@ public enum SkillType {
     海滨大作战("",0,0,SkillType.锁魂,0,SkillType.二重大灵轰,0),
     死亡链接("",5,0, SkillTag.抗免疫,SkillTag.魔王无效),
     虚化("",3,0,50,0, SkillTag.魔王无效,SkillTag.魔族天赋),
+
+    噩梦("",SkillType.噩梦来临,0,SkillType.噩梦扼杀,0),
 
     //防御圣炎
     庇护("",0),

@@ -34,6 +34,7 @@ public class SummonOpponent {
                 || summoner.isSummonedMinion() && skillUseInfo.getType() == SkillType.护主
                 || summoner.isSummonedMinion() && skillUseInfo.getType() == SkillType.星座能量掌握
                 || summoner.isSummonedMinion() && skillUseInfo.getType() == SkillType.北海报恩
+                || summoner.isSummonedMinion() && skillUseInfo.getType() == SkillType.萦梦
                 || summoner.isSummonedMinion() && skillUseInfo.getType() == SkillType.复仇之影) {
             for(CardStatusItem item : summoner.getStatus().getAllItems())
             {

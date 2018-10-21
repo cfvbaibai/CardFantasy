@@ -5041,6 +5041,11 @@
         <Skill type="妖狐火焰" level="0" unlock="5" />
         <Skill type="秘银" level="0" unlock="10" />
     </Card>
+    <Card id="4656" name="炼狱清算者" wikiId="" race="地狱" speed="2" star="5" cost="20" incrCost="2" at="585" hp="1610" incrAT="43" incrHP="48">
+        <Skill type="凤凰之怒" level="0" unlock="0" />
+        <Skill type="蔑视" level="0" unlock="5" />
+        <Skill type="烈火炙魂" level="0" unlock="10" />
+    </Card>
 
 
 
