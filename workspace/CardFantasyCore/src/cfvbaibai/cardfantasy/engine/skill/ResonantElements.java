@@ -21,8 +21,7 @@ public final class ResonantElements {
         CardInfo addCard = summonCardCandidates.get(0);
         SkillUseInfo thisSkillUserInfo= null;
         if(resonantCard.getLevel()>=15){
-            int size = resonantCard.getAllUsableSkills().size();
-            Skill additionalSkill = resonantCard.getAllUsableSkills().get(size-1).getSkill();
+            Skill additionalSkill = resonantCard.getExtraSkill();
             Boolean summonSkill = false;
             Boolean preSkill = false;
             Boolean deathSkill = false;

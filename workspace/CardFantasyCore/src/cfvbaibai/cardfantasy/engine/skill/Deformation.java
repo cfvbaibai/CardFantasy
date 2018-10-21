@@ -33,9 +33,8 @@ public class Deformation {
             resolver.summonCard(summoner.getOwner(), addCard, summoner, false, skillUseInfo.getSkill(), 0);
         } else {
             if (summoner.getLevel() >= 15) {
-                int size = summoner.getAllUsableSkills().size();
                 SkillUseInfo thisSkillUserInfo= null;
-                Skill additionalSkill = summoner.getAllUsableSkills().get(size - 1).getSkill();
+                Skill additionalSkill = summoner.getExtraSkill();
                 Boolean summonSkill = false;
                 Boolean preSkill = false;
                 Boolean deathSkill = false;
