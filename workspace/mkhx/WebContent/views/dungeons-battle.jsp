@@ -54,6 +54,16 @@
                                         <option value="3-7">3-7 神秘山洞</option>
                                         <option value="3-8">3-8 地下图书馆</option>
                                     </optgroup>
+                                    <optgroup label="噩梦4图">
+                                        <option value="4-1">4-1 微风湾</option>
+                                        <option value="4-2">4-2 巨木村</option>
+                                        <option value="4-3">4-3 坠星湖</option>
+                                        <option value="4-4">4-4 蓝鹰瀑布</option>
+                                        <option value="4-5">4-5 月神祭坛</option>
+                                        <option value="4-6">4-6 月影之井</option>
+                                        <option value="4-7">4-7 耳语渡口</option>
+                                        <option value="4-8">4-8 迷雾之谷</option>
+                                    </optgroup>
                                 </select>
                             </td>
                         </tr>
@@ -75,6 +85,7 @@
                                     <option value="1">噩梦地图1图</option>
                                     <option value="2">噩梦地图2图</option>
                                     <option value="3">噩梦地图3图</option>
+                                    <option value="4">噩梦地图4图</option>
                                     <option value="90" >地下城90层</option>
                                     <option value="91" >地下城91层</option>
                                     <option value="92" >地下城92层</option>

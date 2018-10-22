@@ -5673,6 +5673,7 @@
         <Skill type="免疫风行" level="0" unlock="0" />
         <Skill type="杀手回梦" level="0" unlock="5" />
         <Skill type="终焉脱壳" level="0" unlock="10"/>
+        <Skill type="噩梦" level="0" unlock="10"/>
     </Card>
     <Card id="5735" name="终焉之兆" wikiId="" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="1500" hp="100000" incrAT="0" incrHP="0">
         <Skill type="终焉之兆" level="0" unlock="0" />
@@ -5727,8 +5728,8 @@
     </Card>
     <Card id="6110" name="魔族占位符" wikiId="" race="魔族" speed="4" star="5" cost="0" incrCost="0" at="0" hp="5000" incrAT="0" incrHP="0">
     </Card>
-    <Card id="6111" name="终焉使魔" wikiId="" race="魔族" speed="4" star="5" cost="99" incrCost="0" at="500" hp="5000" incrAT="0" incrHP="0">
-        <Skill type="终焉时刻" level="0" unlock="0" />
+    <Card id="6111" name="终焉使魔" wikiId="" race="魔族" speed="4" star="5" cost="99" incrCost="0" at="500" hp="4000" incrAT="0" incrHP="0">
+        <Skill type="终焉时刻极" level="0" unlock="0" />
         <Skill type="末世术" level="10" unlock="5" summon="true"/>
         <Skill type="神威" level="0" unlock="10"/>
     </Card>
