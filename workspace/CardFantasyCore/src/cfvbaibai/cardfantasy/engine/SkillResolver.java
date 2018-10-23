@@ -1098,7 +1098,10 @@ public class SkillResolver {
 
     //返回int类型，0表示不反弹，1表述反弹并且不受伤害，2表示反弹受伤害
     public int resolveMagicEchoSkill(EntityInfo attacter, CardInfo defender, Skill cardSkill) {
-        return 1;
+        if (defender.containsAllSkill(SkillType.奥术回声)) {
+            return 1;
+        }
+        return 0;
         //新处理奥数回声只要有判定就反弹并且不受伤害
 //        if (defender.containsAllSkill(SkillType.奥术回声)) {
 //            if (attacter instanceof CardInfo) {
