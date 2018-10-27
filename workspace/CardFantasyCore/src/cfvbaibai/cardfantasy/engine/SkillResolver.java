@@ -171,7 +171,10 @@ public class SkillResolver {
                 } else if (skillUseInfo.getType() == SkillType.庇护光环 || skillUseInfo.getType() == SkillType.武形破剑光环 || skillUseInfo.getType() == SkillType.镜面光环
                         || skillUseInfo.getType() == SkillType.秘纹领域 || skillUseInfo.getType() == SkillType.圣光奏鸣曲) {
                     AddSidesSkill.apply(this, skillUseInfo, card, skillUseInfo.getAttachedUseInfo1().getSkill());
-                } else if (skillUseInfo.getType() == SkillType.骑士庇护) {
+                } else if (skillUseInfo.getType() == SkillType.神圣领域) {
+                    AddSidesSkill.apply(this, skillUseInfo, card, skillUseInfo.getAttachedUseInfo1().getSkill());
+                    AddSidesSkill.apply(this, skillUseInfo, card, skillUseInfo.getAttachedUseInfo2().getSkill());
+                }  else if (skillUseInfo.getType() == SkillType.骑士庇护) {
                     AddSidesSkill.apply(this, skillUseInfo, card, skillUseInfo.getAttachedUseInfo1().getSkill());
                     Purify.apply(skillUseInfo, this, card, -1);
                 } else if (skillUseInfo.getType() == SkillType.流光回梦) {
@@ -194,7 +197,7 @@ public class SkillResolver {
                     Cooperation.apply(this, skillUseInfo.getAttachedUseInfo1().getAttachedUseInfo1(), card, "土熊猫", false);
                     Cooperation.apply(this, skillUseInfo.getAttachedUseInfo1().getAttachedUseInfo2(), card, "火熊猫", false);
                     Cooperation.apply(this, skillUseInfo.getAttachedUseInfo2(), card, "风熊猫", false);
-                } else if (skillUseInfo.getType() == SkillType.无刀取) {
+                } else if (skillUseInfo.getType() == SkillType.无刀取 || skillUseInfo.getType() == SkillType.神圣领域) {
                     HolyShield.resetApply(skillUseInfo, this, card);
                 }
             }
@@ -1232,7 +1235,7 @@ public class SkillResolver {
                         }
                     }
                     for (SkillUseInfo blockSkillUseInfo : defender.getUsableNormalSkills()) {
-                        if (blockSkillUseInfo.getType() == SkillType.无刀取) {
+                        if (blockSkillUseInfo.getType() == SkillType.无刀取 || blockSkillUseInfo.getType() == SkillType.神圣领域) {
                             if (resolveStopBlockSkill(blockSkillUseInfo.getSkill(), cardAttacker, defender)) {
                                 result.setAttackable(true);
                             } else
@@ -1820,6 +1823,8 @@ public class SkillResolver {
                     GreatFireMagic.apply(deadCardSkillUseInfo.getAttachedUseInfo2().getSkill(), this, deadCard, opponent, 1, false);
                 } else if (deadCardSkillUseInfo.getType() == SkillType.萦梦) {
                     Summon.apply(this, deadCardSkillUseInfo, deadCard, SummonType.Normal, 1, deadCard.getName());
+                } else if (deadCardSkillUseInfo.getType() == SkillType.智慧之光) {
+                    ReviveMultiple.apply(this, deadCardSkillUseInfo, deadCard);
                 }
             }
         }

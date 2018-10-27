@@ -38,6 +38,12 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2018-10-24: <x>欢笑，波波</x><ul>
+                        <li>更新地下城【111-120层】，分层状况未知</li>
+                        <li>修正噩梦4图细节</li>
+                        <li>更新卡牌【全知之神】</li>
+                        <li>更新技能【神圣领域】【智慧之光】</li>
+                    </ul></li>
                     <li>2018-10-23: <x>欢笑，波波</x><ul>
                         <li>修复【奥数回声】判定错误</li>
                     </ul></li>

@@ -2603,10 +2603,15 @@
         <Skill type="森之领域" level="0" unlock="5" />
         <Skill type="坚毅" level="0" unlock="10" />
     </Card>
-    <Card id="2648" name="巡林守护者" wikiId="" race="蛮荒" speed="2" star="5" cost="16" incrCost="2" at="535" hp="1540" incrAT="40" incrHP="42">
+    <Card id="2648" name="巡林守护者" wikiId="" race="森林" speed="2" star="5" cost="16" incrCost="2" at="535" hp="1540" incrAT="40" incrHP="42">
         <Skill type="星云锁链" level="0" unlock="0" />
         <Skill type="守护" level="10" unlock="5" />
         <Skill type="生生不息" level="0" unlock="10" />
+    </Card>
+    <Card id="2649" name="全知之神" wikiId="" race="森林" speed="3" star="5" cost="20" incrCost="2" at="550" hp="1635" incrAT="45" incrHP="45">
+        <Skill type="奥术回声" level="0" unlock="0" />
+        <Skill type="神圣领域" level="0" unlock="5" />
+        <Skill type="智慧之光" level="0" unlock="10" />
     </Card>
 
 

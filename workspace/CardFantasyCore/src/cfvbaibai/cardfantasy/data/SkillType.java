@@ -322,6 +322,7 @@ public enum SkillType {
     群体追击("", 15, SkillTag.额外攻击加成),
     复活("30953", 0, SkillTag.复活),
     全体复活("", 0, SkillTag.复活),
+    智慧之光("", 0, SkillTag.复活),
     星座能量信念("", 0, SkillTag.复活),
     大地吟咏("", 999999, 0, SkillTag.复活),
     同调("", 0),
@@ -974,6 +975,7 @@ public enum SkillType {
     镜面光环("",SkillType.镜面,0,null,0),
     秘纹领域("",SkillType.镜面,0,null,0),
     圣光奏鸣曲("",999999,0,SkillType.圣母吟咏,8,null,0),
+    神圣领域("",SkillType.圣盾,0,SkillType.免疫,0),
 
 
     //给自身场上所有卡牌添加技能
