@@ -27,6 +27,16 @@
                                         <option value="d-8">狼顾魂乐关</option>
                                         <option value="d-9">传送兽王关</option>
                                         <option value="d-10">鬼才镜姬关</option>
+                                        <option value="d-17">原素家族关111</option>
+                                        <option value="d-18">晴空风樱关111</option>
+                                        <option value="d-19">绯炎厨娘关111</option>
+                                        <option value="d-20">斩羽机车关111</option>
+                                        <option value="d-21">钻石炼金关111</option>
+                                        <option value="d-22">公嗣君主关111</option>
+                                        <option value="d-23">伯符君主111</option>
+                                        <option value="d-24">子桓君主关111</option>
+                                        <option value="d-25">单四神关111</option>
+                                        <option value="d-26">双四神关111</option>
                                     </optgroup>
                                     <optgroup label="噩梦1图">
                                         <option value="1-1">1-1 森林入口</option>
@@ -107,6 +117,16 @@
                                     <option value="108">地下城108层</option>
                                     <option value="109">地下城109层</option>
                                     <option value="110">地下城110层</option>
+                                    <option value="111">地下城111层</option>
+                                    <option value="112">地下城112层</option>
+                                    <option value="113">地下城113层</option>
+                                    <option value="114">地下城114层</option>
+                                    <option value="115">地下城115层</option>
+                                    <option value="116">地下城116层</option>
+                                    <option value="117">地下城117层</option>
+                                    <option value="118">地下城118层</option>
+                                    <option value="119">地下城119层</option>
+                                    <option value="120">地下城120层</option>
                                 </select>
                             </td>
                         </tr>
