@@ -2495,16 +2495,16 @@ public class SkillResolver {
         } else if (cardSkill.getType() == SkillType.自动扣血 || cardSkill.getType() == SkillType.羽扇虎拳) {
             return remainingDamage;
         }
-        boolean exitFlag=true;
-        for(;exitFlag;) {
-            exitFlag = false;
+//        boolean exitFlag=true;
+//        for(;exitFlag;) {
+//            exitFlag = false;
             for (CardInfo defender : defenderPlayer.getField().getAliveCards()) {
                 if (defender == null || defender.isDead()) {
                     continue;
                 }
                 for (SkillUseInfo defenderSkill : defender.getUsableNormalSkills()) {
                     if (defenderSkill.getType().containsTag(SkillTag.守护)) {
-                        exitFlag = true;
+//                        exitFlag = true;
                         remainingDamage = Guard.apply(defenderSkill.getSkill(), cardSkill, this, attacker, defender, remainingDamage);
                         if (remainingDamage == 0) {
                             return 0;
@@ -2512,7 +2512,7 @@ public class SkillResolver {
                     }
                 }
             }
-        }
+//        }
         return remainingDamage;
     }
 
