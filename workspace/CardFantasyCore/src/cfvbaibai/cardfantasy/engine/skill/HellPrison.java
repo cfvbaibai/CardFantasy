@@ -55,12 +55,12 @@ public final class HellPrison {
             {
                 continue;
             }
-            if(!attackerCard.containsUsableSkill(SkillType.蝶息)&&!attackerCard.containsUsableSkill(SkillType.樱蝶加速))
+            if(!attackerCard.containsUsableSkill(SkillType.蝶息)&&!attackerCard.containsUsableSkill(SkillType.樱蝶加速)&&!attackerCard.containsUsableSkill(SkillType.晦月之咒))
             {
                 continue;
             }
             for(SkillUseInfo skillUseInfo :attackerCard.getAllUsableSkills()) {
-                if(skillUseInfo.getSkill().getType()==SkillType.蝶息||skillUseInfo.getSkill().getType()==SkillType.樱蝶加速) {
+                if(skillUseInfo.getSkill().getType()==SkillType.蝶息||skillUseInfo.getSkill().getType()==SkillType.樱蝶加速||skillUseInfo.getSkill().getType()==SkillType.晦月之咒) {
                     int summonDelayOffset = skillUseInfo.getAttachedUseInfo2().getSkill().getImpact();
                     resolver.getStage().getUI().useSkill(attackerCard, allHandCards, skillUseInfo.getSkill(), true);
                     for (CardInfo card : allHandCards) {

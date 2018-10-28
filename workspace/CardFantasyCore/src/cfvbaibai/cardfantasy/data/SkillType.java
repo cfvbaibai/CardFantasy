@@ -1,5 +1,7 @@
 package cfvbaibai.cardfantasy.data;
 
+import cfvbaibai.cardfantasy.engine.SkillUseInfo;
+
 import java.util.Arrays;
 import java.util.HashSet;
 
@@ -174,6 +176,10 @@ public enum SkillType {
     望月杀阵("", 400, 0, 100, 0, SkillTag.魔法),
     最终判决("", 300,0,1200,0, SkillTag.魔法,SkillTag.法术扼杀),
     噩梦扼杀("", 100,0,100,0, SkillTag.魔法,SkillTag.法术扼杀),
+    死亡之矢("", 700,0,1200,0, SkillTag.魔法,SkillTag.法术扼杀),
+    贪魔伐罪("", 700,0,1200,0, SkillTag.魔法,SkillTag.法术扼杀),
+    炼魔枪("", 600,0,1200,0, SkillTag.魔法,SkillTag.法术扼杀),
+    炼狱魔枪("",65,0,SkillType.炼魔枪,0,null,0),
 
 
     狙击("", 0, 0, new int[] { 0, 25, 50, 75, 100, 125, 150, 175, 200, 225, 250 }, SkillTag.抗免疫, SkillTag.狙击),
@@ -864,6 +870,7 @@ public enum SkillType {
     蝶语("", SkillType.魅惑之舞,8,SkillType.转生,7,SkillTag.不动),
     蝶息("", SkillType.不屈,0,SkillType.全体加速,1,SkillTag.不动),
     樱蝶加速("",null,0,SkillType.全体加速,1,SkillTag.不动),
+    晦月之咒("",null,0,SkillType.全体加速,1),
     夜袭("",SkillType.破军,6,SkillType.英雄杀手,8,SkillTag.额外攻击加成, SkillTag.不可洗炼),
     护体石肤("",SkillType.魔甲,2,SkillType.自愈,6),
     倾城之舞("",SkillType.魅惑之舞,10,SkillType.生命符文,10),
@@ -1055,15 +1062,18 @@ public enum SkillType {
     森之星河("",SkillType.森林之力,8,SkillType.森林守护,8),
 
     //变身技能
-    原素共鸣("",0),
-    生物进化("",75,0),
-    精神补完("",75,0),
-    暗之献祭("",30,0),
-    暗之归还("",30,0),
-    银色之棘毁灭("",50,0),
-    银色之棘守护("",100,0),
-    神依("",50,0),
-    回归("",100,0),
+    原素共鸣("",0,SkillTag.抗夺魂),
+    生物进化("",75,0,SkillTag.抗夺魂),
+    精神补完("",75,0,SkillTag.抗夺魂),
+    暗之献祭("",30,0,SkillTag.抗夺魂),
+    晦月献祭("", 50, 0),
+    晦月("", 55, 0,SkillType.晦月献祭,0,null,0,SkillTag.抗夺魂),
+    蚀月("", 50, 0,SkillTag.抗夺魂),
+    暗之归还("",30,0,SkillTag.抗夺魂),
+    银色之棘毁灭("",50,0,SkillTag.抗夺魂),
+    银色之棘守护("",100,0,SkillTag.抗夺魂),
+    神依("",50,0,SkillTag.抗夺魂),
+    回归("",100,0,SkillTag.抗夺魂),
 
     //给对方卡牌添加回合buff
     绝对压制("",1,0,300,0,SkillTag.抗免疫, SkillTag.抗不屈, SkillTag.魔王无效, SkillTag.魔族天赋,SkillTag.基础攻击加成),
@@ -1095,6 +1105,7 @@ public enum SkillType {
 
     //降临离场增益
     羽扇虎拳("",3,0),
+    蚀月之光("",3,0,SkillTag.复活),
 
     雪幕("",SkillType.不灭,6,SkillType.冰天雪地冰封,0),
 

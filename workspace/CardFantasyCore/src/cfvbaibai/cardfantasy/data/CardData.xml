@@ -5051,6 +5051,11 @@
         <Skill type="蔑视" level="0" unlock="5" />
         <Skill type="烈火炙魂" level="0" unlock="10" />
     </Card>
+    <Card id="4657" name="晦月" wikiId="" race="地狱" speed="2" star="5" cost="16" incrCost="2" at="350" hp="1325" incrAT="30" incrHP="45">
+        <Skill type="祈愿" level="1" unlock="0" />
+        <Skill type="晦月之咒" level="0" unlock="5" />
+        <Skill type="蚀月" level="0" unlock="10" />
+    </Card>
 
 
 
