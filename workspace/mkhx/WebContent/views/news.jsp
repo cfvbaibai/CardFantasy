@@ -38,6 +38,10 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2018-10-31: <x>欢笑，波波</x><ul>
+                        <li>修复技能【死亡链接】目标错误的问题</li>
+                        <li>更改技能【破军】，破军可以对【冰甲】卡牌生效（与正常结算一致）</li>
+                    </ul></li>
                     <li>2018-10-28: <x>欢笑，波波</x><ul>
                         <li>调整守护和司命的结算，（王之守护玄武可以抵挡全部伤害）（由于性能的关系，这条结算暂时去掉）</li>
                         <li>更新卡牌【炼狱清算者】【晦月】</li>

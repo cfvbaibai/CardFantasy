@@ -24,11 +24,21 @@ public final class DefeatArmy {
         //反射装甲可以免疫破军
         if(defender.containsUsableSkill(SkillType.反射装甲)||defender.containsUsableSkill(SkillType.LETITGO)||defender.containsUsableSkill(SkillType.击溃)||defender.containsUsableSkill(SkillType.高位逼抢))
         {
-            return false;
+            if(!(defender.containsAllSkill(SkillType.冰甲)||defender.containsAllSkill(SkillType.魔龙之血)||
+                    defender.containsAllSkill(SkillType.冰神附体)||defender.containsAllSkill(SkillType.神魔之甲)||
+                    defender.containsAllSkill(SkillType.寒冰之盾)))
+            {
+                return false;
+            }
         }
         RuneInfo rune = defender.getOwner().getActiveRuneOf(RuneData.升阳);
         if (rune != null && !defender.justRevived()) {
-            return false;
+            if(!(defender.containsAllSkill(SkillType.冰甲)||defender.containsAllSkill(SkillType.魔龙之血)||
+                    defender.containsAllSkill(SkillType.冰神附体)||defender.containsAllSkill(SkillType.神魔之甲)||
+                    defender.containsAllSkill(SkillType.寒冰之盾)))
+            {
+                return false;
+            }
         }
 //        if (blockSkill.getType().containsTag(SkillTag.物理护甲) || blockSkill.getType() == SkillType.水流护甲
 //                || blockSkill.getType() == SkillType.格挡

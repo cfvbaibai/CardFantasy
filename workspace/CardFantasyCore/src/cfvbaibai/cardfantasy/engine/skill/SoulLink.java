@@ -37,7 +37,8 @@ public class SoulLink {
         }
     }
 
-    public static void explode(SkillResolver resolver, CardInfo deadCard, Player defenderHero) throws HeroDieSignal {
+    public static void explode(SkillResolver resolver, CardInfo deadCard) throws HeroDieSignal {
+        Player defenderHero  = deadCard.getOwner();
         List<CardInfo> fieldCards = defenderHero.getField().getAliveCards();
         List<CardStatusItem> statusItems = deadCard.getStatus().getStatusOf(CardStatusType.链接);
         CardStatusItem cardStatusItem = statusItems.get(0);

@@ -1866,7 +1866,7 @@ public class SkillResolver {
             Grudge.Infected(this, deadCard);
         }
         if (deadCard.getStatus().containsStatus(CardStatusType.链接) && deadCard.isDead()) {
-            SoulLink.explode(this, deadCard,opponent);
+            SoulLink.explode(this, deadCard);
         }
         boolean reincarnated = false;
         if (cardSkill == null || (cardSkill.getType() != SkillType.重整 && cardSkill.getType() != SkillType.不朽岿岩
