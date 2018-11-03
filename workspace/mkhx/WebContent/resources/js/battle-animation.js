@@ -1504,7 +1504,7 @@ var Animater = function() {
         } else if (skill == '精神狂乱' || skill == '无我境界' || skill == '离间' || skill == '无尽华尔兹') {
             this.flyImage({ fileName: 'insane.png', width: 48, height: 48, text: skill, },
                     attacker, defenders, settings.skillDuration);
-        } else if (skill == '生命链接') {
+        } else if (skill == '生命链接' || skill == '共生') {
             this.flyImage({ fileName: 'life-chain.png', width: 48, height: 48, text: skill, },
                     attacker, defenders, settings.skillDuration);
         } else if (skill == '贪吃') {

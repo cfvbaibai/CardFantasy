@@ -38,6 +38,11 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2018-11-03: <x>欢笑，波波</x><ul>
+                        <li>更新卡牌【无头死骑】【巨噬藤】【阵列百夫长】</li>
+                        <li>更新技能【诅咒铠甲】【吞噬】【共生】【英勇打击】【反击阵列】【战团之魂】</li>
+                        <li>觉醒卡牌【怒雪咆哮】</li>
+                    </ul></li>
                     <li>2018-10-31: <x>欢笑，波波</x><ul>
                         <li>修复技能【死亡链接】目标错误的问题</li>
                         <li>更改技能【破军】，破军可以对【冰甲】卡牌生效（与正常结算一致）</li>

@@ -1411,6 +1411,11 @@
         <Skill type="觉醒神之祈福" level="0" unlock="5" />
         <Skill type="神之契约" level="0" unlock="10" />
     </Card>
+    <Card id="1678" name="阵列百夫长" wikiId="" race="王国" speed="2" star="4" cost="15" incrCost="2" at="390" hp="1450" incrAT="35" incrHP="32">
+        <Skill type="英勇打击" level="0" unlock="0" />
+        <Skill type="反击阵列" level="0" unlock="5" />
+        <Skill type="战团之魂" level="0" unlock="10" />
+    </Card>
 
 
 
@@ -3181,7 +3186,7 @@
         <Skill type="蛮荒之力" level="6" unlock="5" />
         <Skill type="加速" level="2" unlock="10" />
     </Card>
-    <Card id="3515" name="怒雪咆哮" wikiId="" race="蛮荒" speed="4" star="5" cost="18" incrCost="2" at="390" hp="1650" incrAT="26" incrHP="53">
+    <Card id="3515" name="原怒雪咆哮" wikiId="" race="蛮荒" speed="4" star="5" cost="18" incrCost="2" at="390" hp="1650" incrAT="26" incrHP="53">
         <Skill type="大地之盾" level="0" unlock="0" />
         <Skill type="寒霜冲击" level="8" unlock="5" />
         <Skill type="战争怒吼" level="0" unlock="10" />
@@ -3708,7 +3713,7 @@
         <Skill type="兽人之血" level="0" unlock="10" />
     </Card>
     <Card id="3619" name="网页版冥海巨鲲" wikiId="" race="蛮荒" speed="3" star="5" cost="20" incrCost="1" at="450" hp="1350" incrAT="52" incrHP="46">
-        <Skill type="吞噬" level="0" unlock="0"/>
+        <Skill type="页游吞噬" level="0" unlock="0"/>
         <Skill type="波涛护甲" level="0" unlock="5" />
         <Skill type="化鹏" level="0" unlock="10" />
     </Card>
@@ -3775,9 +3780,19 @@
         <Skill type="神依" level="0" unlock="10" />
     </Card>
     <Card id="3633" name="金角银角" wikiId="" race="蛮荒" speed="3" star="5" cost="21" incrCost="2" at="650" hp="1450" incrAT="50" incrHP="40">
-        <Skill type="虚化" level="0" unlock="0" summon="true"/>
-        <Skill type="黩武" level="0" unlock="5" />
-        <Skill type="灵魂消散" level="0" unlock="10" death="true"/>
+        <Skill type="形散如烟" level="0" unlock="0" />
+        <Skill type="天道无常" level="0" unlock="5" />
+        <Skill type="天罡咒" level="0" unlock="10" />
+    </Card>
+    <Card id="3634" name="巨噬藤" wikiId="" race="蛮荒" speed="2" star="5" cost="19" incrCost="2" at="450" hp="1650" incrAT="40" incrHP="45">
+        <Skill type="吞噬" level="0" unlock="0" />
+        <Skill type="共生" level="0" unlock="5" />
+        <Skill type="洪荒之术" level="0" unlock="10" />
+    </Card>
+    <Card id="3635" name="怒雪咆哮" wikiId="" race="蛮荒" speed="4" star="5" cost="18" incrCost="2" at="390" hp="1650" incrAT="26" incrHP="53">
+        <Skill type="寒冰之盾" level="0" unlock="0" />
+        <Skill type="极寒冲击" level="6" unlock="5" />
+        <Skill type="碎裂怒吼" level="0" unlock="10" />
     </Card>
 
 
@@ -5055,6 +5070,11 @@
         <Skill type="祈愿" level="1" unlock="0" />
         <Skill type="晦月之咒" level="0" unlock="5" />
         <Skill type="蚀月" level="0" unlock="10" />
+    </Card>
+    <Card id="4658" name="无头死骑" wikiId="" race="地狱" speed="2" star="4" cost="16" incrCost="2" at="450" hp="1450" incrAT="35" incrHP="35">
+        <Skill type="侵蚀" level="0" unlock="0" />
+        <Skill type="诅咒铠甲" level="0" unlock="5" />
+        <Skill type="转生" level="8" unlock="10" />
     </Card>
 
 

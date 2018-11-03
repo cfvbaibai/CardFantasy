@@ -12,6 +12,7 @@ public enum SkillType {
     缴械("", 80, SkillTag.永久, SkillTag.基础攻击加成, SkillTag.抗不屈),
     群体削弱("30952", 5, SkillTag.永久, SkillTag.基础攻击加成, SkillTag.抗不屈),
     霸王之姿("", 600,0, SkillTag.永久, SkillTag.基础攻击加成, SkillTag.抗不屈),
+    诅咒之力("", 200,0, SkillTag.永久, SkillTag.基础攻击加成, SkillTag.抗不屈),
     喋喋不休("", 300,0, SkillTag.永久, SkillTag.基础攻击加成, SkillTag.抗不屈, SkillTag.抗沉默),
     毒刃("",0,SkillTag.永久, SkillTag.原始体力加成, SkillTag.抗不屈,SkillTag.抗免疫),
     /*
@@ -35,7 +36,7 @@ public enum SkillType {
     威慑("", 150, 0, SkillTag.永久, SkillTag.基础攻击加成, SkillTag.魔王无效, SkillTag.魔族天赋),
     松鼠吞噬("", 20, 0, SkillTag.永久, SkillTag.基础攻击加成, SkillTag.魔王无效, SkillTag.魔族天赋),
     冰巨人吞噬("", 30, 0, SkillTag.永久, SkillTag.基础攻击加成, SkillTag.魔王无效, SkillTag.魔族天赋),
-    吞噬("", 100, 0, SkillTag.永久, SkillTag.基础攻击加成, SkillTag.魔王无效, SkillTag.魔族天赋),
+    页游吞噬("", 100, 0, SkillTag.永久, SkillTag.基础攻击加成, SkillTag.魔王无效, SkillTag.魔族天赋),
     群攻提升("31754", 15, SkillTag.基础攻击加成, SkillTag.抗削弱),
     狂热("30880", 10, SkillTag.永久, SkillTag.基础攻击加成),
     狂热之血("", 200,0, SkillTag.永久, SkillTag.基础攻击加成),
@@ -86,6 +87,7 @@ public enum SkillType {
     振奋("80192", 40, 10, SkillTag.独立攻击加成),
     会心一击("", 100, 0, SkillTag.独立攻击加成),
     奋战("", 40, 10, SkillTag.独立攻击加成),
+    英勇打击("", 100, 0, SkillTag.独立攻击加成, SkillTag.抗免疫, SkillTag.物理攻击),
     神兵召唤("", 0, SkillTag.额外攻击加成),
     神兵降临("", 0, SkillTag.额外攻击加成, SkillTag.不动),
     混铁棍("", 0, SkillTag.额外攻击加成, SkillTag.抗沉默),
@@ -394,7 +396,6 @@ public enum SkillType {
     溶骨的毒酒("",100,0),
     死亡收割("",85,0),
     狂舞("", 70, 0,4,0, SkillTag.抗免疫, SkillTag.物理攻击),
-    黩武("", 500, 0,800,0, SkillTag.抗免疫, SkillTag.物理攻击),
 
     灵巧("57020", 0),
     灵魂禁锢("", 0),
@@ -559,6 +560,7 @@ public enum SkillType {
 
     屠戮("", 3500, 0, 1, 0, SkillTag.抗免疫),
     赤之魔枪("", 200, 50, 3, 0, SkillTag.抗免疫),
+    天道无常("",1000,0,3,0, SkillTag.抗免疫,SkillTag.新生,SkillTag.抗夺魂),
     制裁雷云("", 850, 0, 3, 0, SkillTag.抗免疫),
     雷霆冲击("", 1300, 0, 3, 0, SkillTag.抗免疫),
     灵能启迪("", 700, 0, 3, 0, SkillTag.抗免疫),
@@ -595,6 +597,7 @@ public enum SkillType {
     不屈("56962", 0, 0),
     坚韧("", 0, 0,SkillTag.抗沉默),
     怨起("", 3, 0),
+    战团之魂("", 2, 0),
     赤焰战场("", 1, 0),
     独行("", 1, 0),
     空城("",0,0),
@@ -899,6 +902,7 @@ public enum SkillType {
     嗜血潜能("",650,0,SkillType.松鼠吞噬,0,null,0,SkillTag.沉默无效),
     森之领域("",75,0,SkillType.荆棘刃甲,0,null,0),
     月光之阵("",SkillType.月神的护佑,7,SkillType.魔力法阵,7),
+    诅咒铠甲("",SkillType.诅咒之力,0,SkillType.钢铁之肤,6),
 
     新生("",0,0,SkillTag.新生,SkillTag.抗夺魂),
     重整("",0,0,SkillTag.新生,SkillTag.抗夺魂),
@@ -934,6 +938,7 @@ public enum SkillType {
     潘帕斯雄鹰("",SkillType.弱点攻击,0,null,0),
     零度领域("",SkillType.镜面,0,null,0),
     冰肌雪骨("",SkillType.武形破剑击,0,null,0,SkillTag.抗沉默),
+    共生("",SkillType.歃血魔咒,7,null,0),
 
     //攻击对方全体
     一文字("", 0),
@@ -983,6 +988,7 @@ public enum SkillType {
     秘纹领域("",SkillType.镜面,0,null,0),
     圣光奏鸣曲("",999999,0,SkillType.圣母吟咏,8,null,0),
     神圣领域("",SkillType.圣盾,0,SkillType.免疫,0),
+    反击阵列("",SkillType.不动,0,SkillType.反击屏障,0),
 
 
     //给自身场上所有卡牌添加技能
@@ -1092,7 +1098,8 @@ public enum SkillType {
     人体炼成("",0, SkillTag.魔王无效, SkillTag.魔族天赋,SkillTag.召唤),
     海滨大作战("",0,0,SkillType.锁魂,0,SkillType.二重大灵轰,0),
     死亡链接("",5,0, SkillTag.抗免疫,SkillTag.魔王无效),
-    虚化("",3,0,50,0, SkillTag.魔王无效,SkillTag.魔族天赋),
+    形散如烟("",3,0,30,0, SkillTag.魔王无效,SkillTag.魔族天赋),
+    吞噬("",1,0,2,0,SkillTag.抗不屈, SkillTag.魔王无效, SkillTag.魔族天赋),
 
     噩梦("",SkillType.噩梦来临,0,SkillType.噩梦扼杀,0),
 
@@ -1106,6 +1113,7 @@ public enum SkillType {
     //降临离场增益
     羽扇虎拳("",3,0),
     蚀月之光("",3,0,SkillTag.复活),
+    天罡咒("", 500,0, SkillTag.抗免疫, SkillTag.抗不屈, SkillTag.魔王无效, SkillTag.魔族天赋),
 
     雪幕("",SkillType.不灭,6,SkillType.冰天雪地冰封,0),
 

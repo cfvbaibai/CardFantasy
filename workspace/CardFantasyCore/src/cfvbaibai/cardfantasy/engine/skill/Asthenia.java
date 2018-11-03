@@ -49,7 +49,7 @@ public class Asthenia {
         GameUI ui = resolver.getStage().getUI();
         bingo = resolver.getStage().getRandomizer().roll100(dodgeRate);
         if (bingo) {
-            List<CardStatusItem> statusItems = defender.getStatus().getStatusOf(CardStatusType.炼成);
+            List<CardStatusItem> statusItems = defender.getStatus().getStatusOf(CardStatusType.虚化);
             for (CardStatusItem statusItem : statusItems) {
                 SkillUseInfo skillUseInfo = statusItem.getCause();
                 EntityInfo attacker = skillUseInfo.getOwner();
