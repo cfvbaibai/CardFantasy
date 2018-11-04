@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-public class HumanRefining {
+public class DeathSacrifice {
     public static void apply(SkillResolver resolver, SkillUseInfo skillUseInfo, CardInfo attackCard, Player defenderHero,int victimCount,int effectNumber) throws HeroDieSignal {
 
         StageInfo stage = resolver.getStage();
@@ -22,7 +22,7 @@ public class HumanRefining {
         GameUI ui = resolver.getStage().getUI();
         Skill skill = skillUseInfo.getSkill();
         ui.useSkill(attackCard, victims, skill, true);
-        CardStatusItem statusItem = CardStatusItem.humanRefining(skillUseInfo);
+        CardStatusItem statusItem = CardStatusItem.deathSacrifice(skillUseInfo);
         statusItem.setEffectNumber(effectNumber);
         for (CardInfo victim : victims) {
             if(victim.getOriginalOwner() != null && victim.getOriginalOwner() != victim.getOwner())
@@ -34,8 +34,8 @@ public class HumanRefining {
             }
             if(effectNumber>0)
             {
-                if(!victim.getStatus().getStatusOf(CardStatusType.炼成).isEmpty()){
-                    victim.removeForce(CardStatusType.炼成);
+                if(!victim.getStatus().getStatusOf(CardStatusType.献祭).isEmpty()){
+                    victim.removeForce(CardStatusType.献祭);
                 }
             }
             ui.addCardStatus(attackCard, victim, skill, statusItem);
@@ -49,7 +49,7 @@ public class HumanRefining {
             return;
         }
         GameUI ui = resolver.getStage().getUI();
-        List<CardStatusItem> statusItems = deadCard.getStatus().getStatusOf(CardStatusType.炼成);
+        List<CardStatusItem> statusItems = deadCard.getStatus().getStatusOf(CardStatusType.献祭);
         for (CardStatusItem statusItem : statusItems) {
             SkillUseInfo skillUseInfo = statusItem.getCause();
             Skill skill = skillUseInfo.getSkill();
@@ -75,7 +75,7 @@ public class HumanRefining {
                         }
                     }
                 }
-                if(summonNumber>=1)
+                if(summonNumber>=5)
                 {
                     return;
                 }

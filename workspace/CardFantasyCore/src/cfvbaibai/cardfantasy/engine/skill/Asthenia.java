@@ -20,7 +20,7 @@ public class Asthenia {
         Skill skill = skillUseInfo.getSkill();
         ui.useSkill(attackCard, victims, skill, true);
         CardStatusItem status = CardStatusItem.paralyzed(skillUseInfo);
-        CardStatusItem statusItem = CardStatusItem.SoulWound(skillUseInfo);
+        CardStatusItem statusItem = CardStatusItem.Asthenia(skillUseInfo);
         statusItem.setEffectNumber(effectNumber);
         for (CardInfo victim : victims) {
             if (!resolver.resolveAttackBlockingSkills(attackCard, victim, skill, 1).isAttackable()) {
@@ -36,7 +36,9 @@ public class Asthenia {
                     victim.removeForce(CardStatusType.麻痹);
                 }
             }
+            ui.addCardStatus(attackCard, victim, skill, status);
             ui.addCardStatus(attackCard, victim, skill, statusItem);
+            victim.addStatus(status);
             victim.addStatus(statusItem);
         }
     }

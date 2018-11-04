@@ -25,10 +25,10 @@ public class SkeletonArmy {
         CardStatusItem statusItem = CardStatusItem.YellowSky(skillUseInfo);
         statusItem.setEffectNumber(effectNumber);
         for (CardInfo victim : victims) {
-            if (!resolver.resolveAttackBlockingSkills(attackCard, victim, skill, 1).isAttackable()) {
+            if (victim.getOriginalOwner() != null && victim.getOriginalOwner() != victim.getOwner()) {
                 continue;
             }
-            if (victim.getOriginalOwner() != null && victim.getOriginalOwner() != victim.getOwner()) {
+            if (!resolver.resolveAttackBlockingSkills(attackCard, victim, skill, 1).isAttackable()) {
                 continue;
             }
             if(effectNumber>0)

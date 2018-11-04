@@ -20,6 +20,7 @@ public enum CardStatusType {
     沉默(false, "默"),
     变羊(false, "羊"),
     死咒(false, "咒"),
+    献祭(false, "祭"),
     炼成(false, "炼"),
     魂殇(false, "殇"),
     黄天(false, "黄"),

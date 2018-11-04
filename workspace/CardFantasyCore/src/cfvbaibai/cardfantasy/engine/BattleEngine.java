@@ -501,6 +501,7 @@ public class BattleEngine {
                     skillUseInfo.getType() == SkillType.魔龙之怒 ||
                     skillUseInfo.getType() == SkillType.兽人之血 ||
                     skillUseInfo.getType() == SkillType.英勇打击 ||
+                    skillUseInfo.getType() == SkillType.死亡践踏 ||
                     skillUseInfo.getType() == SkillType.鬼彻 ||
                     skillUseInfo.getType() == SkillType.毒杀) {
                 ui.useSkill(myField.getCard(i), defender, skillUseInfo.getSkill(), true);
@@ -540,6 +541,7 @@ public class BattleEngine {
                         skillUseInfo.getType() == SkillType.英勇打击 ||
                         skillUseInfo.getType() == SkillType.鬼彻 ||
                         skillUseInfo.getType() == SkillType.灵击 ||
+                        skillUseInfo.getType() == SkillType.死亡践踏 ||
                         skillUseInfo.getType() == SkillType.毒杀) {
                     List<CardInfo> sweepDefenders = new ArrayList<CardInfo>();
                     if (i > 0 && opField.getCard(i - 1) != null) {

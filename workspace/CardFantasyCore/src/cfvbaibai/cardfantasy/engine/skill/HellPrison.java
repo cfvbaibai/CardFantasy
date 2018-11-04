@@ -22,12 +22,26 @@ public final class HellPrison {
             {
                 continue;
             }
-            if(!attackerCard.containsUsableSkill(SkillType.冥狱牢囚))
+            if(!(attackerCard.containsUsableSkill(SkillType.冥狱牢囚)||attackerCard.containsUsableSkill(SkillType.食梦)))
             {
                 continue;
             }
             for(SkillUseInfo skillUseInfo :attackerCard.getAllUsableSkills()) {
                 if(skillUseInfo.getSkill().getType()==SkillType.冥狱牢囚) {
+                    resolver.getStage().getUI().useSkill(attackerCard, allHandCards, skillUseInfo.getSkill(), true);
+                    for (CardInfo card : allHandCards) {
+                        if(resolver.resolveStopCardDelay(card))
+                        {
+                            continue;
+                        }
+                        resolver.getStage().getUI().useSkill(attackerCard, allHandCards, skillUseInfo.getSkill(), true);
+                        int summonDelay = card.getSummonDelay();
+                        resolver.getStage().getUI().increaseSummonDelay(card, skillUseInfo.getSkill().getImpact());
+                        card.setSummonDelay(summonDelay + skillUseInfo.getSkill().getImpact());
+                    }
+                }
+                else if(skillUseInfo.getSkill().getType()==SkillType.食梦)
+                {
                     resolver.getStage().getUI().useSkill(attackerCard, allHandCards, skillUseInfo.getSkill(), true);
                     for (CardInfo card : allHandCards) {
                         if(resolver.resolveStopCardDelay(card))
@@ -55,12 +69,14 @@ public final class HellPrison {
             {
                 continue;
             }
-            if(!attackerCard.containsUsableSkill(SkillType.蝶息)&&!attackerCard.containsUsableSkill(SkillType.樱蝶加速)&&!attackerCard.containsUsableSkill(SkillType.晦月之咒))
+            if(!attackerCard.containsUsableSkill(SkillType.蝶息)&&!attackerCard.containsUsableSkill(SkillType.樱蝶加速)&&!attackerCard.containsUsableSkill(SkillType.晦月之咒)
+                    &&!attackerCard.containsUsableSkill(SkillType.敏言))
             {
                 continue;
             }
             for(SkillUseInfo skillUseInfo :attackerCard.getAllUsableSkills()) {
-                if(skillUseInfo.getSkill().getType()==SkillType.蝶息||skillUseInfo.getSkill().getType()==SkillType.樱蝶加速||skillUseInfo.getSkill().getType()==SkillType.晦月之咒) {
+                if(skillUseInfo.getSkill().getType()==SkillType.蝶息||skillUseInfo.getSkill().getType()==SkillType.樱蝶加速||skillUseInfo.getSkill().getType()==SkillType.晦月之咒
+                        ||skillUseInfo.getSkill().getType()==SkillType.敏言) {
                     int summonDelayOffset = skillUseInfo.getAttachedUseInfo2().getSkill().getImpact();
                     resolver.getStage().getUI().useSkill(attackerCard, allHandCards, skillUseInfo.getSkill(), true);
                     for (CardInfo card : allHandCards) {
