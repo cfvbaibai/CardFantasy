@@ -38,6 +38,9 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2018-11-04: <x>欢笑，波波</x><ul>
+                        <li>更新卡图</li>
+                    </ul></li>
                     <li>2018-11-03: <x>欢笑，波波</x><ul>
                         <li>更新卡牌【无头死骑】【巨噬藤】【阵列百夫长】</li>
                         <li>更新技能【诅咒铠甲】【吞噬】【共生】【英勇打击】【反击阵列】【战团之魂】</li>
