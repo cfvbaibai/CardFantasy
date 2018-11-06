@@ -434,7 +434,7 @@ public class SkillResolver {
                 HeavenWrath.apply(this, skillUseInfo.getAttachedUseInfo1().getSkill(), attacker, defender);
             } else if (skillUseInfo.getType() == SkillType.封印 || skillUseInfo.getType() == SkillType.封锁) {
                 Seal.apply(skillUseInfo, this, attacker, defender);
-            } else if (skillUseInfo.getType() == SkillType.圣炎) {
+            } else if (skillUseInfo.getType() == SkillType.圣炎 || skillUseInfo.getType() == SkillType.噬魂夺魄) {
                 HolyFire.apply(skillUseInfo.getSkill(), this, attacker, defender);
             } else if (skillUseInfo.getType() == SkillType.法力侵蚀 || skillUseInfo.getType() == SkillType.灵王的轰击 || skillUseInfo.getType() == SkillType.灵能冲击 ||
                     skillUseInfo.getType() == SkillType.觉醒灵王的轰击 && attacker.isAwaken(skillUseInfo, Race.FOREST, 2)) {
@@ -576,7 +576,7 @@ public class SkillResolver {
                         "陨星魔法使", "怒雪咆哮", "圣诞老人", "寒霜冰灵使", "白羊座", "霜狼酋长", "雪月花", "梦魇猎手·霜");
             } else if (skillUseInfo.getType() == SkillType.原寒霜召唤) {
                 Summon.apply(this, skillUseInfo, attacker, SummonType.Random, 1,
-                        "陨星魔法使", "怒雪咆哮", "圣诞老人", "寒霜冰灵使", "白羊座", "霜狼酋长", "雪月花", "梦魇猎手·霜");
+                        "陨星魔法使", "原怒雪咆哮", "圣诞老人", "寒霜冰灵使", "原白羊座", "霜狼酋长", "雪月花", "梦魇猎手·霜");
             } else if (skillUseInfo.getType() == SkillType.无尽梦魇) {
                 Summon.apply(this, skillUseInfo, attacker, SummonType.Random, 1,
                         "梦魇猎手·岚", "梦魇猎手·霜", "梦魇猎手·胧");
@@ -1390,7 +1390,8 @@ public class SkillResolver {
                             || blockSkillUseInfo.getType() == SkillType.彻骨之寒 || blockSkillUseInfo.getType() == SkillType.灵能冲击 || blockSkillUseInfo.getType() == SkillType.嗜魔之体
                             || blockSkillUseInfo.getType() == SkillType.魔力抗性 || blockSkillUseInfo.getType() == SkillType.轮回渡厄 || blockSkillUseInfo.getType() == SkillType.明月渡我
                             || blockSkillUseInfo.getType() == SkillType.免疫风行 || blockSkillUseInfo.getType() == SkillType.优雅之姿 || blockSkillUseInfo.getType() == SkillType.神衣
-                            || blockSkillUseInfo.getType() == SkillType.复仇之影 || blockSkillUseInfo.getType() == SkillType.死亡之矢 || blockSkillUseInfo.getType() == SkillType.神佑复苏) {
+                            || blockSkillUseInfo.getType() == SkillType.复仇之影 || blockSkillUseInfo.getType() == SkillType.死亡之矢 || blockSkillUseInfo.getType() == SkillType.神佑复苏
+                            || blockSkillUseInfo.getType() == SkillType.噬魂夺魄) {
                         if (Immue.isSkillBlocked(this, blockSkillUseInfo.getSkill(), attackSkill, attacker, defender)) {
                             result.setAttackable(false);
                             return result;
@@ -3536,7 +3537,7 @@ public class SkillResolver {
                     || defender.containsAllSkill(SkillType.轮回渡厄) || defender.containsAllSkill(SkillType.明月渡我) || defender.containsAllSkill(SkillType.嗜魔之体)
                     || defender.containsAllSkill(SkillType.免疫风行) || defender.containsAllSkill(SkillType.不息神盾) || defender.containsAllSkill(SkillType.魔力泳圈)
                     || defender.containsAllSkill(SkillType.优雅之姿) || defender.containsAllSkill(SkillType.神衣) || defender.containsAllSkill(SkillType.复仇之影)
-                    || defender.containsAllSkill(SkillType.死亡之矢) || defender.containsAllSkill(SkillType.神佑复苏)
+                    || defender.containsAllSkill(SkillType.死亡之矢) || defender.containsAllSkill(SkillType.神佑复苏) || defender.containsAllSkill(SkillType.噬魂夺魄)
                     || CounterMagic.getBlockSkill(defender) != null) {
                 return true;
             }
@@ -3550,7 +3551,7 @@ public class SkillResolver {
                     || defender.containsAllSkill(SkillType.免疫风行) || defender.containsAllSkill(SkillType.魔力泳圈)
                     || defender.containsAllSkill(SkillType.优雅之姿) || defender.containsAllSkill(SkillType.神衣)
                     || defender.containsAllSkill(SkillType.复仇之影) || defender.containsAllSkill(SkillType.死亡之矢)
-                    || defender.containsAllSkill(SkillType.神佑复苏)) {
+                    || defender.containsAllSkill(SkillType.神佑复苏) || defender.containsAllSkill(SkillType.噬魂夺魄)) {
                 return true;
             }
         }

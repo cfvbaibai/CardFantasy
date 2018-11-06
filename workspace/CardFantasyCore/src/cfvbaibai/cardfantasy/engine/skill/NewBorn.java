@@ -72,9 +72,11 @@ public class NewBorn {
                     card.getOwner().getHand().removeCard(victim);
                     card.getOwner().getDeck().removeCard(victim);
                     card.getOwner().getField().removeCard(victim);
+                    card.getOwner().getOutField().removeCard(victim);
                     defender.getHand().removeCard(victim);
                     defender.getDeck().removeCard(victim);
                     defender.getField().removeCard(victim);
+                    defender.getOutField().removeCard(victim);
                     resolver.summonCard(card.getOwner(), victim, null, false, skillUseInfo.getSkill(),0);
                 }
             }

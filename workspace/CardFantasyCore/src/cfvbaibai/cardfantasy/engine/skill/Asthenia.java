@@ -56,7 +56,7 @@ public class Asthenia {
                 SkillUseInfo skillUseInfo = statusItem.getCause();
                 EntityInfo attacker = skillUseInfo.getOwner();
                 if(attacker instanceof CardInfo) {
-                    ui.useSkill(defender, attacker, skillUseInfo.getSkill(), true);
+                    ui.useSkill(attacker, defender, skillUseInfo.getSkill(), true);
                 }
             }
             return true;
