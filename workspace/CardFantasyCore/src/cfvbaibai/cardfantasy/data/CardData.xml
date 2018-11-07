@@ -1416,8 +1416,8 @@
         <Skill type="结界立场" level="0" unlock="5" />
         <Skill type="正义庇所" level="0" unlock="10" />
     </Card>
-    <Card id="1679" name="异画律政" wikiId="" race="王国" speed="2" star="5" cost="20" incrCost="2" at="515" hp="1550" incrAT="46" incrHP="43">
-        <Skill type="敏言" level="0" unlock="0" />
+    <Card id="1679" name="律政佳人逆转" wikiId="" race="王国" speed="2" star="5" cost="20" incrCost="2" at="515" hp="1550" incrAT="46" incrHP="43">
+        <Skill type="审判之印" level="0" unlock="0" />
         <Skill type="正义裁决" level="0" unlock="5" />
         <Skill type="不灭之魂" level="0" unlock="10" />
     </Card>

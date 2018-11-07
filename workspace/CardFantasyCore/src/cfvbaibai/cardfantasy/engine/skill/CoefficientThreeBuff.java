@@ -41,7 +41,7 @@ public final class CoefficientThreeBuff {
                 }
                 resolver.getStage().getUI().useSkill(card, skill, true);
                 if (effectType == SkillEffectType.ATTACK_CHANGE) {
-                    impactAdd = ally.getInitAT() * impact / 100;
+                    impactAdd = ally.getLevel0AT() * impact / 100;
                     resolver.getStage().getUI().adjustAT(card, ally, impactAdd, skill);
                 } else if (effectType == SkillEffectType.MAXHP_CHANGE) {
                     impactAdd = ally.getMaxHP() * impact / 100;

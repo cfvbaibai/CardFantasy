@@ -1000,8 +1000,8 @@ public class SkillResolver {
                 SummonOpponent.apply(this, skillUseInfo, attacker, SummonType.Normal, 1, "黑暗眷属");
             } else if (skillUseInfo.getType() == SkillType.死亡链接) {
                 SoulLink.apply(this, skillUseInfo, attacker, defender, 5, 3);
-            } else if (skillUseInfo.getType() == SkillType.敏言) {
-                Supplication.apply(this, skillUseInfo, attacker, defender);
+            } else if (skillUseInfo.getType() == SkillType.审判之印) {
+                SoulChains.apply(this, skillUseInfo, attacker, defender, 4, 2);
             }
         }
         if ((attacker.containsAllSkill(SkillType.连续魔法) || attacker.containsAllSkill(SkillType.黄天当立) || attacker.containsAllSkill(SkillType.连奏) || attacker.containsAllSkill(SkillType.神性爆发) || attacker.containsAllSkill(SkillType.时光迁跃) || attacker.containsAllSkill(SkillType.我们生命中的时光)) && !attacker.isDead() && status == 0) {
@@ -1391,7 +1391,7 @@ public class SkillResolver {
                             || blockSkillUseInfo.getType() == SkillType.魔力抗性 || blockSkillUseInfo.getType() == SkillType.轮回渡厄 || blockSkillUseInfo.getType() == SkillType.明月渡我
                             || blockSkillUseInfo.getType() == SkillType.免疫风行 || blockSkillUseInfo.getType() == SkillType.优雅之姿 || blockSkillUseInfo.getType() == SkillType.神衣
                             || blockSkillUseInfo.getType() == SkillType.复仇之影 || blockSkillUseInfo.getType() == SkillType.死亡之矢 || blockSkillUseInfo.getType() == SkillType.神佑复苏
-                            || blockSkillUseInfo.getType() == SkillType.噬魂夺魄) {
+                            || blockSkillUseInfo.getType() == SkillType.噬魂夺魄 || blockSkillUseInfo.getType() == SkillType.不灭之魂) {
                         if (Immue.isSkillBlocked(this, blockSkillUseInfo.getSkill(), attackSkill, attacker, defender)) {
                             result.setAttackable(false);
                             return result;
@@ -2364,6 +2364,7 @@ public class SkillResolver {
                         skillUseInfo.getType() == SkillType.坚韧 ||
                         skillUseInfo.getType() == SkillType.空城 ||
                         skillUseInfo.getType() == SkillType.嗜魔之体 ||
+                        skillUseInfo.getType() == SkillType.不灭之魂 ||
                         skillUseInfo.getType() == SkillType.贪魔伐罪 ) {
                     // BUGBUG: The original game does not set cardDead to false
                     // result.cardDead = false
@@ -2372,7 +2373,7 @@ public class SkillResolver {
                     result.unbending = UnbendingAwaken.apply(skillUseInfo, this, defender);
                 } else if (skillUseInfo.getType() == SkillType.战团之魂) {
                     result.unbending = UnbendingAwaken.applyMore(skillUseInfo, this, defender);
-                } else if (skillUseInfo.getType() == SkillType.赤焰战场 || skillUseInfo.getType() == SkillType.独行 || skillUseInfo.getType() == SkillType.不灭之魂) {
+                } else if (skillUseInfo.getType() == SkillType.赤焰战场 || skillUseInfo.getType() == SkillType.独行) {
                     Player opponent = this.getStage().getOpponent(defender.getOwner());
                     result.unbending = UnbendingAwaken.applyLess(skillUseInfo, this, defender, opponent);
                 }
@@ -3538,6 +3539,7 @@ public class SkillResolver {
                     || defender.containsAllSkill(SkillType.免疫风行) || defender.containsAllSkill(SkillType.不息神盾) || defender.containsAllSkill(SkillType.魔力泳圈)
                     || defender.containsAllSkill(SkillType.优雅之姿) || defender.containsAllSkill(SkillType.神衣) || defender.containsAllSkill(SkillType.复仇之影)
                     || defender.containsAllSkill(SkillType.死亡之矢) || defender.containsAllSkill(SkillType.神佑复苏) || defender.containsAllSkill(SkillType.噬魂夺魄)
+                    || defender.containsAllSkill(SkillType.不灭之魂)
                     || CounterMagic.getBlockSkill(defender) != null) {
                 return true;
             }
@@ -3551,7 +3553,8 @@ public class SkillResolver {
                     || defender.containsAllSkill(SkillType.免疫风行) || defender.containsAllSkill(SkillType.魔力泳圈)
                     || defender.containsAllSkill(SkillType.优雅之姿) || defender.containsAllSkill(SkillType.神衣)
                     || defender.containsAllSkill(SkillType.复仇之影) || defender.containsAllSkill(SkillType.死亡之矢)
-                    || defender.containsAllSkill(SkillType.神佑复苏) || defender.containsAllSkill(SkillType.噬魂夺魄)) {
+                    || defender.containsAllSkill(SkillType.神佑复苏) || defender.containsAllSkill(SkillType.噬魂夺魄)
+                    || defender.containsAllSkill(SkillType.不灭之魂)) {
                 return true;
             }
         }
