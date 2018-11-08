@@ -1416,10 +1416,15 @@
         <Skill type="结界立场" level="0" unlock="5" />
         <Skill type="正义庇所" level="0" unlock="10" />
     </Card>
-    <Card id="1679" name="律政佳人逆转" wikiId="" race="王国" speed="2" star="5" cost="20" incrCost="2" at="515" hp="1550" incrAT="46" incrHP="43">
+    <Card id="1679" name="律政佳人·逆转" wikiId="" race="王国" speed="2" star="5" cost="20" incrCost="2" at="515" hp="1550" incrAT="46" incrHP="43">
         <Skill type="审判之印" level="0" unlock="0" />
         <Skill type="正义裁决" level="0" unlock="5" />
         <Skill type="不灭之魂" level="0" unlock="10" />
+    </Card>
+    <Card id="1680" name="五子良将·文远" wikiId="" race="王国" speed="2" star="5" cost="20" incrCost="2" at="550" hp="1550" incrAT="43" incrHP="45">
+        <Skill type="陷阵" level="0" unlock="0" />
+        <Skill type="大突袭" level="0" unlock="5" />
+        <Skill type="突围" level="0" unlock="10" />
     </Card>
 
 

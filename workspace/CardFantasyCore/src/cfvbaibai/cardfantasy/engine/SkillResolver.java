@@ -434,7 +434,7 @@ public class SkillResolver {
                 HeavenWrath.apply(this, skillUseInfo.getAttachedUseInfo1().getSkill(), attacker, defender);
             } else if (skillUseInfo.getType() == SkillType.封印 || skillUseInfo.getType() == SkillType.封锁) {
                 Seal.apply(skillUseInfo, this, attacker, defender);
-            } else if (skillUseInfo.getType() == SkillType.圣炎 || skillUseInfo.getType() == SkillType.噬魂夺魄) {
+            } else if (skillUseInfo.getType() == SkillType.圣炎 || skillUseInfo.getType() == SkillType.弑魂夺魄) {
                 HolyFire.apply(skillUseInfo.getSkill(), this, attacker, defender);
             } else if (skillUseInfo.getType() == SkillType.法力侵蚀 || skillUseInfo.getType() == SkillType.灵王的轰击 || skillUseInfo.getType() == SkillType.灵能冲击 ||
                     skillUseInfo.getType() == SkillType.觉醒灵王的轰击 && attacker.isAwaken(skillUseInfo, Race.FOREST, 2)) {
@@ -1002,6 +1002,15 @@ public class SkillResolver {
                 SoulLink.apply(this, skillUseInfo, attacker, defender, 5, 3);
             } else if (skillUseInfo.getType() == SkillType.审判之印) {
                 SoulChains.apply(this, skillUseInfo, attacker, defender, 4, 2);
+            } else if (skillUseInfo.getType() == SkillType.大突袭) {
+                if (attacker.getOwner().getField().getAliveCards().size() >= 1) {
+                    Transport.apply(this, skillUseInfo.getSkill(), attacker, defender);
+                }
+                if (attacker.getOwner().getField().getAliveCards().size() < 1) {
+                    AllSpeedUp.apply(skillUseInfo, this, defender);
+                }
+            } else if (skillUseInfo.getType() == SkillType.陷阵) {
+                ReturnCard.apply(this, skillUseInfo.getSkill(), attacker, defender, 3);
             }
         }
         if ((attacker.containsAllSkill(SkillType.连续魔法) || attacker.containsAllSkill(SkillType.黄天当立) || attacker.containsAllSkill(SkillType.连奏) || attacker.containsAllSkill(SkillType.神性爆发) || attacker.containsAllSkill(SkillType.时光迁跃) || attacker.containsAllSkill(SkillType.我们生命中的时光)) && !attacker.isDead() && status == 0) {
@@ -1118,7 +1127,7 @@ public class SkillResolver {
                 }
             }
             for (SkillUseInfo skillUseInfo : defender.getUsableNormalSkills()) {
-                if (skillUseInfo.getType() == SkillType.逃跑 || skillUseInfo.getType() == SkillType.强链原核 || skillUseInfo.getType() == SkillType.撤退) {
+                if (skillUseInfo.getType() == SkillType.逃跑 || skillUseInfo.getType() == SkillType.强链原核 || skillUseInfo.getType() == SkillType.撤退 || skillUseInfo.getType() == SkillType.突围) {
                     Flee.apply(skillUseInfo.getSkill(), this, attacker, defender, damagedResult.actualDamage);
                 }
             }
@@ -1391,7 +1400,7 @@ public class SkillResolver {
                             || blockSkillUseInfo.getType() == SkillType.魔力抗性 || blockSkillUseInfo.getType() == SkillType.轮回渡厄 || blockSkillUseInfo.getType() == SkillType.明月渡我
                             || blockSkillUseInfo.getType() == SkillType.免疫风行 || blockSkillUseInfo.getType() == SkillType.优雅之姿 || blockSkillUseInfo.getType() == SkillType.神衣
                             || blockSkillUseInfo.getType() == SkillType.复仇之影 || blockSkillUseInfo.getType() == SkillType.死亡之矢 || blockSkillUseInfo.getType() == SkillType.神佑复苏
-                            || blockSkillUseInfo.getType() == SkillType.噬魂夺魄 || blockSkillUseInfo.getType() == SkillType.不灭之魂) {
+                            || blockSkillUseInfo.getType() == SkillType.弑魂夺魄 || blockSkillUseInfo.getType() == SkillType.不灭之魂) {
                         if (Immue.isSkillBlocked(this, blockSkillUseInfo.getSkill(), attackSkill, attacker, defender)) {
                             result.setAttackable(false);
                             return result;
@@ -2163,7 +2172,8 @@ public class SkillResolver {
     public void resolvePreAttackHeroSkills(CardInfo attacker, Player defenderPlayer) throws HeroDieSignal {
         for (SkillUseInfo skillUseInfo : attacker.getUsableNormalSkills()) {
             if (skillUseInfo.getType() == SkillType.英雄杀手 || skillUseInfo.getType() == SkillType.英雄之敌 || skillUseInfo.getType() == SkillType.头槌破门
-                    || skillUseInfo.getType() == SkillType.龙战于野 || skillUseInfo.getType() == SkillType.超级英雄杀手 ||  skillUseInfo.getType() == SkillType.杀手回梦) {
+                    || skillUseInfo.getType() == SkillType.龙战于野 || skillUseInfo.getType() == SkillType.超级英雄杀手 ||  skillUseInfo.getType() == SkillType.杀手回梦
+                    ||  skillUseInfo.getType() == SkillType.陷阵) {
                 HeroKiller.apply(this, skillUseInfo, attacker, defenderPlayer);
             } else if (skillUseInfo.getType() == SkillType.夜袭) {
                 HeroKiller.apply(this, skillUseInfo.getAttachedUseInfo2(), attacker, defenderPlayer);
@@ -2295,7 +2305,8 @@ public class SkillResolver {
             } else if (type == SkillType.振奋 || type == SkillType.会心一击) {
                 Arouse.remove(this, effect.getCause(), card);
             } else if (type == SkillType.英雄杀手 || type == SkillType.英雄之敌 || type == SkillType.头槌破门
-                    || type == SkillType.龙战于野 || type == SkillType.超级英雄杀手 || type == SkillType.杀手回梦) {
+                    || type == SkillType.龙战于野 || type == SkillType.超级英雄杀手 || type == SkillType.杀手回梦
+                    || type == SkillType.陷阵) {
                 HeroKiller.remove(this, effect.getCause(), card);
             } else if (type == SkillType.夜袭) {
                 HeroKiller.remove(this, effect.getCause(), card);
@@ -2365,6 +2376,7 @@ public class SkillResolver {
                         skillUseInfo.getType() == SkillType.空城 ||
                         skillUseInfo.getType() == SkillType.嗜魔之体 ||
                         skillUseInfo.getType() == SkillType.不灭之魂 ||
+                        skillUseInfo.getType() == SkillType.突围 ||
                         skillUseInfo.getType() == SkillType.贪魔伐罪 ) {
                     // BUGBUG: The original game does not set cardDead to false
                     // result.cardDead = false
@@ -2415,7 +2427,7 @@ public class SkillResolver {
                     return DeadType.PhantomDiminished;
                 }
                 if(!card.getStatus().getStatusOf(CardStatusType.虚化).isEmpty()){
-                    if(Asthenia.explode(this,deadCard,30))
+                    if(Asthenia.explode(this,deadCard,25))
                     {
                         card.restoreOwner();
                         owner.getOutField().addCard(card);
@@ -3538,7 +3550,7 @@ public class SkillResolver {
                     || defender.containsAllSkill(SkillType.轮回渡厄) || defender.containsAllSkill(SkillType.明月渡我) || defender.containsAllSkill(SkillType.嗜魔之体)
                     || defender.containsAllSkill(SkillType.免疫风行) || defender.containsAllSkill(SkillType.不息神盾) || defender.containsAllSkill(SkillType.魔力泳圈)
                     || defender.containsAllSkill(SkillType.优雅之姿) || defender.containsAllSkill(SkillType.神衣) || defender.containsAllSkill(SkillType.复仇之影)
-                    || defender.containsAllSkill(SkillType.死亡之矢) || defender.containsAllSkill(SkillType.神佑复苏) || defender.containsAllSkill(SkillType.噬魂夺魄)
+                    || defender.containsAllSkill(SkillType.死亡之矢) || defender.containsAllSkill(SkillType.神佑复苏) || defender.containsAllSkill(SkillType.弑魂夺魄)
                     || defender.containsAllSkill(SkillType.不灭之魂)
                     || CounterMagic.getBlockSkill(defender) != null) {
                 return true;
@@ -3553,7 +3565,7 @@ public class SkillResolver {
                     || defender.containsAllSkill(SkillType.免疫风行) || defender.containsAllSkill(SkillType.魔力泳圈)
                     || defender.containsAllSkill(SkillType.优雅之姿) || defender.containsAllSkill(SkillType.神衣)
                     || defender.containsAllSkill(SkillType.复仇之影) || defender.containsAllSkill(SkillType.死亡之矢)
-                    || defender.containsAllSkill(SkillType.神佑复苏) || defender.containsAllSkill(SkillType.噬魂夺魄)
+                    || defender.containsAllSkill(SkillType.神佑复苏) || defender.containsAllSkill(SkillType.弑魂夺魄)
                     || defender.containsAllSkill(SkillType.不灭之魂)) {
                 return true;
             }

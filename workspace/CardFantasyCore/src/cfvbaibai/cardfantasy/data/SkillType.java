@@ -547,7 +547,7 @@ public enum SkillType {
     地狱之盾("40098", 15, 5, SkillTag.种族之盾),
 
     圣炎("43446", 0,SkillTag.魔族天赋),
-    噬魂夺魄("", 0,SkillTag.魔族天赋),
+    弑魂夺魄("", 0,SkillTag.魔族天赋),
     热血战士("", 0,SkillTag.魔族天赋),
     扼杀("", 0),
     九转秘术("", 0, 0),
@@ -601,6 +601,7 @@ public enum SkillType {
 
     英雄杀手("36260", 0, 15, SkillTag.额外攻击加成, SkillTag.不可洗炼),
     超级英雄杀手("", 2000, 0, SkillTag.额外攻击加成, SkillTag.不可洗炼),
+    陷阵("",90,0, SkillTag.额外攻击加成, SkillTag.不可洗炼,SkillTag.魔王无效,SkillTag.抗免疫),
 
     不屈("56962", 0, 0),
     坚韧("", 0, 0,SkillTag.抗沉默),
@@ -646,6 +647,7 @@ public enum SkillType {
     夺魂("", 0, 1, SkillTag.抗夺魂),
     离魂剑("", 5, 0,SkillTag.抗夺魂),
     天召("", 0, 0),
+    突围("", 0,SkillTag.抗夺魂),
 
     镜像("", 0, 0, SkillTag.召唤),
     复仇之影("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
@@ -819,6 +821,7 @@ public enum SkillType {
     刀语("",SkillType.连击,0,SkillType.弱点攻击,0 ),
     逆鳞("",SkillType.武形秘箭,10,SkillType.神箭三重奏,10),
     突袭("",0,0, SkillTag.即死,SkillTag.额外攻击加成),
+    大突袭("",1,0, SkillTag.即死),
     樱魂("",SkillType.吸血,8,SkillType.奋战,7),
     LETITGO("", SkillType.送还,0,SkillType.反射装甲,0),
     高位逼抢("", SkillType.送还,0,SkillType.反射装甲,0),
