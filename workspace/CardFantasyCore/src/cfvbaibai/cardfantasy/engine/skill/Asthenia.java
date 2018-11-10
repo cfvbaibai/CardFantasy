@@ -20,6 +20,7 @@ public class Asthenia {
         Skill skill = skillUseInfo.getSkill();
         ui.useSkill(attackCard, victims, skill, true);
         CardStatusItem status = CardStatusItem.paralyzed(skillUseInfo);
+        status.setEffectNumber(effectNumber);
         CardStatusItem statusItem = CardStatusItem.Asthenia(skillUseInfo);
         statusItem.setEffectNumber(effectNumber);
         for (CardInfo victim : victims) {

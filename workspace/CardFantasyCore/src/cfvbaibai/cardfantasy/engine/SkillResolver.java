@@ -2426,12 +2426,13 @@ public class SkillResolver {
                     // 被召唤的卡牌不进入墓地，而是直接死亡
                     return DeadType.PhantomDiminished;
                 }
-                if(!card.getStatus().getStatusOf(CardStatusType.虚化).isEmpty()){
-                    if(Asthenia.explode(this,deadCard,25))
-                    {
-                        card.restoreOwner();
-                        owner.getOutField().addCard(card);
-                        return DeadType.SoulCrushed;
+                if(!(card.isDeman()||card.isBoss())) {
+                    if (!card.getStatus().getStatusOf(CardStatusType.虚化).isEmpty()) {
+                        if (Asthenia.explode(this, deadCard, 25)) {
+                            card.restoreOwner();
+                            owner.getOutField().addCard(card);
+                            return DeadType.SoulCrushed;
+                        }
                     }
                 }
                 if (killingSkill != null && killingSkill.getType().containsTag(SkillTag.法术扼杀) && deadCard.getRace() != Race.BOSS && deadCard.getRace() != Race.DEMON) {

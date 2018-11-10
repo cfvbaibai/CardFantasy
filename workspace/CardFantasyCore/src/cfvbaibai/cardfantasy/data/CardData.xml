@@ -1426,6 +1426,11 @@
         <Skill type="大突袭" level="0" unlock="5" />
         <Skill type="突围" level="0" unlock="10" />
     </Card>
+    <Card id="1681" name="巅峰武师" wikiId="" race="王国" speed="2" star="5" cost="18" incrCost="2" at="510" hp="1600" incrAT="40" incrHP="42">
+        <Skill type="威慑" level="0" unlock="0" />
+        <Skill type="武之圣域" level="0" unlock="5" />
+        <Skill type="破阵" level="0" unlock="10" />
+    </Card>
 
 
 

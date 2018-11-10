@@ -1117,7 +1117,7 @@ public enum SkillType {
     人体炼成("",0, SkillTag.魔王无效, SkillTag.魔族天赋,SkillTag.召唤),
     海滨大作战("",0,0,SkillType.锁魂,0,SkillType.二重大灵轰,0),
     死亡链接("",5,0, SkillTag.抗免疫,SkillTag.魔王无效),
-    形散如烟("",3,0,30,0, SkillTag.魔王无效,SkillTag.魔族天赋),
+    形散如烟("",3,0,30,0, SkillTag.魔王无效,SkillTag.抗免疫),
     吞噬("",1,0,2,0,SkillTag.抗不屈, SkillTag.魔王无效, SkillTag.魔族天赋),
 
     噩梦("",SkillType.噩梦来临,0,SkillType.噩梦扼杀,0),
