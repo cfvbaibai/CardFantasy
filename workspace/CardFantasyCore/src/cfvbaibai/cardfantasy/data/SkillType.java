@@ -370,7 +370,7 @@ public enum SkillType {
     结界立场("", 0,SkillTag.抗沉默),
     嗜魔之体("", 0),
     不灭之魂("", 0),
-    不息神盾("", 0,0,SkillTag.新生,SkillTag.抗夺魂),
+    不息神盾("", 0,0,SkillTag.抗夺魂),
     龙战于野("", 120, 0, SkillTag.额外攻击加成, SkillTag.不可洗炼),
     明月渡我("", 55,0),
     轮回渡厄("", 65,0),
@@ -566,7 +566,7 @@ public enum SkillType {
 
     屠戮("", 3500, 0, 1, 0, SkillTag.抗免疫),
     赤之魔枪("", 200, 50, 3, 0, SkillTag.抗免疫),
-    天道无常("",1000,0,3,0, SkillTag.抗免疫,SkillTag.新生,SkillTag.抗夺魂),
+    天道无常("",1000,0,3,0, SkillTag.抗免疫,SkillTag.抗夺魂),
     制裁雷云("", 850, 0, 3, 0, SkillTag.抗免疫),
     雷霆冲击("", 1300, 0, 3, 0, SkillTag.抗免疫),
     灵能启迪("", 700, 0, 3, 0, SkillTag.抗免疫),
@@ -919,10 +919,10 @@ public enum SkillType {
     诅咒铠甲("",SkillType.诅咒之力,0,SkillType.钢铁之肤,6),
 
     新生("",0,0,SkillTag.新生,SkillTag.抗夺魂),
-    重整("",0,0,SkillTag.新生,SkillTag.抗夺魂),
-    不朽岿岩("",0,0,SkillTag.新生,SkillTag.抗夺魂,SkillTag.不动),
-    再生金蝉("",0,0,SkillTag.新生,SkillTag.抗夺魂,SkillTag.不动),
-    烈火炙魂("",2,0,SkillTag.新生,SkillTag.抗夺魂),
+    重整("",0,0,SkillTag.抗夺魂),
+    不朽岿岩("",0,0,SkillTag.抗夺魂,SkillTag.不动),
+    再生金蝉("",0,0,SkillTag.抗夺魂,SkillTag.不动),
+    烈火炙魂("",2,0,SkillTag.抗夺魂),
 
     司命("",100,0),
     时空置换("",100,0),

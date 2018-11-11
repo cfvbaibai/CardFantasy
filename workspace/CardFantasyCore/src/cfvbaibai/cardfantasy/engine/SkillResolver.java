@@ -2493,7 +2493,7 @@ public class SkillResolver {
             stage.getUI().useSkillToHero(attacker, defenderPlayer, cardSkill);
             if (damage >= 0) {
                 int remainingDamage = damage;
-                if (!(cardSkill != null && (cardSkill.getType() == SkillType.自动扣血 || cardSkill.getType() == SkillType.羽扇虎拳))) {
+                if (!(cardSkill != null && (cardSkill.getType() == SkillType.自动扣血 || cardSkill.getType() == SkillType.羽扇虎拳 || cardSkill.getType() == SkillType.天罡咒))) {
                     remainingDamage = remainingDamage * defenderPlayer.getCoefficient() / 100;
                 }
                 if (remainingDamage > defenderPlayer.getHP()) {
@@ -2548,7 +2548,7 @@ public class SkillResolver {
         int remainingDamage = damage;
         if (cardSkill == null) {
             remainingDamage = damage;
-        } else if (cardSkill.getType() == SkillType.自动扣血 || cardSkill.getType() == SkillType.羽扇虎拳) {
+        } else if (cardSkill.getType() == SkillType.自动扣血 || cardSkill.getType() == SkillType.羽扇虎拳 || cardSkill.getType() == SkillType.天罡咒) {
             return remainingDamage;
         }
 //        boolean exitFlag=true;
@@ -2783,6 +2783,42 @@ public class SkillResolver {
                 } else if (skillUseInfo.getType() == SkillType.王之军阵) {
                     CoefficientThreeBuff.apply(this, skillUseInfo.getAttachedUseInfo1(), fieldCard, card, null, SkillEffectType.MAXHP_CHANGE);
                     CoefficientThreeBuff.apply(this, skillUseInfo.getAttachedUseInfo2(), fieldCard, card, null, SkillEffectType.ATTACK_CHANGE);
+                } else if (skillUseInfo.getType() == SkillType.星座能量热情) {
+                    //TogetherBuffOfStar.apply(this, skillUseInfo, fieldCard, "摩羯座",200,400);
+                    TogetherBuffOfStar.apply(this, skillUseInfo, fieldCard, "原摩羯座",200,400);
+                } else if (skillUseInfo.getType() == SkillType.星座能量清醒) {
+                    TogetherBuffOfStar.apply(this, skillUseInfo, fieldCard, "水瓶座",200,400);
+                    TogetherBuffOfStar.apply(this, skillUseInfo, fieldCard, "原水瓶座",200,400);
+                } else if (skillUseInfo.getType() == SkillType.星座能量直感) {
+                    TogetherBuffOfStar.apply(this, skillUseInfo, fieldCard, "金牛座",200,400);
+                    TogetherBuffOfStar.apply(this, skillUseInfo, fieldCard, "原金牛座",200,400);
+                } else if (skillUseInfo.getType() == SkillType.星座能量信念) {
+                   // TogetherBuffOfStar.apply(this, skillUseInfo, fieldCard, "处女座",200,400);
+                    TogetherBuffOfStar.apply(this, skillUseInfo, fieldCard, "原处女座",200,400);
+                } else if (skillUseInfo.getType() == SkillType.星座能量神秘) {
+                   // TogetherBuffOfStar.apply(this, skillUseInfo, fieldCard, "双鱼座",200,400);
+                    TogetherBuffOfStar.apply(this, skillUseInfo, fieldCard, "原双鱼座",200,400);
+                } else if (skillUseInfo.getType() == SkillType.星座能量智慧) {
+                   // TogetherBuffOfStar.apply(this, skillUseInfo, fieldCard, "狮子座",200,400);
+                    TogetherBuffOfStar.apply(this, skillUseInfo, fieldCard, "原狮子座",200,400);
+                } else if (skillUseInfo.getType() == SkillType.星座能量平衡) {
+                   // TogetherBuffOfStar.apply(this, skillUseInfo, fieldCard, "白羊座",200,400);
+                    TogetherBuffOfStar.apply(this, skillUseInfo, fieldCard, "原白羊座",200,400);
+                } else if (skillUseInfo.getType() == SkillType.星座能量掌握) {
+                  //  TogetherBuffOfStar.apply(this, skillUseInfo, fieldCard, "射手座",200,400);
+                    TogetherBuffOfStar.apply(this, skillUseInfo, fieldCard, "原射手座",200,400);
+                } else if (skillUseInfo.getType() == SkillType.星座能量控制) {
+                    TogetherBuffOfStar.apply(this, skillUseInfo, fieldCard, "天秤座",200,400);
+                    TogetherBuffOfStar.apply(this, skillUseInfo, fieldCard, "原天秤座",200,400);
+                } else if (skillUseInfo.getType() == SkillType.星座能量坚韧) {
+                   // TogetherBuffOfStar.apply(this, skillUseInfo, fieldCard, "巨蟹座",200,400);
+                    TogetherBuffOfStar.apply(this, skillUseInfo, fieldCard, "原巨蟹座",200,400);
+                } else if (skillUseInfo.getType() == SkillType.星座能量思考) {
+                  //  TogetherBuffOfStar.apply(this, skillUseInfo, fieldCard, "双子座",200,400);
+                    TogetherBuffOfStar.apply(this, skillUseInfo, fieldCard, "原双子座",200,400);
+                } else if (skillUseInfo.getType() == SkillType.星座能量力量) {
+                 //   TogetherBuffOfStar.apply(this, skillUseInfo, fieldCard, "天蝎座",200,400);
+                    TogetherBuffOfStar.apply(this, skillUseInfo, fieldCard, "原天蝎座",200,400);
                 }
             }
         }
@@ -3294,6 +3330,13 @@ public class SkillResolver {
             } else if (deadCardSkillUseInfo.getType() == SkillType.森之助) {
                 CoefficientBuffExcludeSummon.remove(this, deadCardSkillUseInfo.getAttachedUseInfo1(), card, Race.FOREST);
                 CoefficientBuffExcludeSummon.remove(this, deadCardSkillUseInfo.getAttachedUseInfo2(), card, Race.FOREST);
+            } else if (deadCardSkillUseInfo.getType() == SkillType.星座能量热情 || deadCardSkillUseInfo.getType() == SkillType.星座能量清醒
+                    || deadCardSkillUseInfo.getType() == SkillType.星座能量直感 || deadCardSkillUseInfo.getType() == SkillType.星座能量信念
+                    || deadCardSkillUseInfo.getType() == SkillType.星座能量神秘 || deadCardSkillUseInfo.getType() == SkillType.星座能量智慧
+                    || deadCardSkillUseInfo.getType() == SkillType.星座能量平衡 || deadCardSkillUseInfo.getType() == SkillType.星座能量掌握
+                    || deadCardSkillUseInfo.getType() == SkillType.星座能量控制 || deadCardSkillUseInfo.getType() == SkillType.星座能量坚韧
+                    || deadCardSkillUseInfo.getType() == SkillType.星座能量思考 || deadCardSkillUseInfo.getType() == SkillType.星座能量力量) {
+                TogetherBuffOfStar.remove(this, deadCardSkillUseInfo, card );
             }
         }
         GiveSideSkill.removeAll(this, null, card);

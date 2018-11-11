@@ -693,9 +693,9 @@
         <Skill type="免疫" level="0" unlock="10" />
     </Card>
     <Card id="1527" name="狮子座" wikiId="" race="王国" speed="4" star="5" cost="18" incrCost="1" at="120" hp="1750" incrAT="50" incrHP="41">
-        <Skill type="神兵召唤" level="0" unlock="0" />
+        <Skill type="星座能量清醒" level="0" unlock="0" />
         <Skill type="弱点攻击" level="0" unlock="5" />
-        <Skill type="法力反射" level="7" unlock="10" />
+        <Skill type="扼杀" level="0" unlock="10" />
     </Card>
     <Card id="1528" name="无限之神" wikiId="" race="王国" speed="1" star="5" cost="19" incrCost="1" at="440" hp="1660" incrAT="39" incrHP="19">
         <Skill type="复活" level="0" unlock="0" summon="true" />
@@ -1994,9 +1994,9 @@
         <Skill type="不屈" level="0" unlock="10" />
     </Card>
     <Card id="2521" name="白羊座" wikiId="" race="森林" speed="4" star="5" cost="17" incrCost="2" at="280" hp="1600" incrAT="29" incrHP="46">
-        <Skill type="魔力法阵" level="6" unlock="0" />
-        <Skill type="寒霜冲击" level="7" unlock="5" />
-        <Skill type="脱困" level="0" unlock="10" />
+        <Skill type="星座能量控制" level="0" unlock="0" />
+        <Skill type="寒霜冲击" level="8" unlock="5" />
+        <Skill type="全体裂伤" level="0" unlock="10" />
     </Card>
     <Card id="2522" name="百花女神" wikiId="" race="森林" speed="4" star="5" cost="16" incrCost="2" at="375" hp="1670" incrAT="34" incrHP="25">
         <Skill type="治疗之雾" level="8" unlock="0" />
@@ -4428,8 +4428,8 @@
     </Card>
     <Card id="4520" name="月蚀兽" wikiId="57007" race="地狱" speed="3" star="5" cost="16" incrCost="2" at="315" hp="1280" incrAT="34" incrHP="37">
         <Skill type="全体阻碍" level="1" unlock="0" summon="true" />
-        <Skill type="复活" level="0" unlock="5" summon="true" />
-        <Skill type="转生" level="5" unlock="10" />
+        <Skill type="蚀月之光" level="0" unlock="5" />
+        <Skill type="晦月" level="0" unlock="10" />
     </Card>
     <Card id="4521" name="赤面天狗" wikiId="95812" race="地狱" speed="4" star="5" cost="18" incrCost="2" at="385" hp="1425" incrAT="36" incrHP="37">
         <Skill type="地狱之盾" level="7" unlock="0" />
@@ -4485,8 +4485,8 @@
         <Skill type="法力反射" level="6" unlock="10" />
     </Card>
     <Card id="4532" name="天蝎座" wikiId="" race="地狱" speed="4" star="5" cost="18" incrCost="2" at="340" hp="1530" incrAT="41" incrHP="48">
-        <Skill type="物理反弹" level="0" unlock="0" />
-        <Skill type="冰甲" level="8" unlock="5" />
+        <Skill type="星座能量直感" level="0" unlock="0" />
+        <Skill type="圣母回声" level="0" unlock="5" />
         <Skill type="不动" level="0" unlock="10" />
     </Card>
     <Card id="4533" name="骑士王血魂" wikiId="" race="地狱" speed="3" star="5" cost="18" incrCost="2" at="510" hp="1680" incrAT="46" incrHP="48">
@@ -5121,6 +5121,11 @@
         <Skill type="食梦" level="0" unlock="0" />
         <Skill type="死亡威慑" level="0" unlock="5" />
         <Skill type="永生魔咒" level="6" unlock="10" />
+    </Card>
+    <Card id="4662" name="原月蚀兽" wikiId="57007" race="地狱" speed="3" star="5" cost="16" incrCost="2" at="315" hp="1280" incrAT="34" incrHP="37">
+        <Skill type="全体阻碍" level="1" unlock="0" summon="true" />
+        <Skill type="复活" level="0" unlock="5" summon="true" />
+        <Skill type="转生" level="5" unlock="10" />
     </Card>
 
 
