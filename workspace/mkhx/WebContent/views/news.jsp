@@ -38,6 +38,12 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2018-11-17: <x>欢笑，波波</x><ul>
+                        <li>更新【金身】【金刚之躯】</li>
+                        <li>修复侵蚀技能bug，感谢泰尔诺奇的帮助</li>
+                        <li>修复生命符文只加成基础生命</li>
+                        <li>修复一文字等技能对免疫无效的问题</li>
+                    </ul></li>
                     <li>2018-11-11: <x>欢笑，波波</x><ul>
                         <li>觉醒卡牌【月蚀兽】【天蝎座】【白羊座】【狮子座】</li>
                     </ul></li>

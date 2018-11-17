@@ -171,6 +171,7 @@ public enum SkillType {
     淬毒手里剑("", 300, 0, 150, 0, SkillTag.魔法),
     熔魂之刃("", 300, 0, 150, 0, SkillTag.魔法),
     八重红彼岸("", 300,0,1100,0, SkillTag.魔法,SkillTag.法术扼杀),
+    灭世之力("", 700,0,1200,0, SkillTag.魔法,SkillTag.法术扼杀),
     剧毒剑刃("", 370,0,370,0, SkillTag.魔法,SkillTag.法术扼杀),
     谜之水枪("", 300,0,1000,0, SkillTag.魔法,SkillTag.法术扼杀),
     浩劫("",400,0,1000,0, SkillTag.魔法,SkillTag.法术扼杀),
@@ -417,8 +418,8 @@ public enum SkillType {
     灵魂消散("", 0, SkillTag.抗免疫, SkillTag.抗不屈, SkillTag.魔王无效, SkillTag.魔族天赋),
     格式化("", 0, SkillTag.抗免疫, SkillTag.抗不屈, SkillTag.魔王无效, SkillTag.魔族天赋),
     邪灵退散("", 0, SkillTag.抗免疫, SkillTag.抗不屈, SkillTag.魔王无效, SkillTag.魔族天赋),
-    连斩("",0),
-    连狙("",0),
+    连斩("",0, SkillTag.抗免疫, SkillTag.物理攻击),
+    连狙("",0, SkillTag.抗免疫, SkillTag.物理攻击),
     魔族之血("",650,0,SkillTag.沉默无效),
     邪甲术("",350,0,SkillTag.沉默无效),
     白袍银甲("",350,0,SkillTag.抗沉默),
@@ -482,6 +483,7 @@ public enum SkillType {
     疾病("31155", 10),
 
     诅咒("31145", 30),
+    反扑("", 1000,0),
     终极天谴("", 2500,0),
     星座能量智慧("", 2500,0),
     擒拿("", 2000,0),
@@ -566,6 +568,8 @@ public enum SkillType {
 
     屠戮("", 3500, 0, 1, 0, SkillTag.抗免疫),
     赤之魔枪("", 200, 50, 3, 0, SkillTag.抗免疫),
+    五雷轰顶("",1000,0,3,0, SkillTag.抗免疫),
+    雷神附体("",1000,0,3,0, SkillTag.抗免疫),
     天道无常("",1000,0,3,0, SkillTag.抗免疫,SkillTag.抗夺魂),
     制裁雷云("", 850, 0, 3, 0, SkillTag.抗免疫),
     雷霆冲击("", 1300, 0, 3, 0, SkillTag.抗免疫),
@@ -917,12 +921,16 @@ public enum SkillType {
     森之领域("",75,0,SkillType.荆棘刃甲,0,null,0),
     月光之阵("",SkillType.月神的护佑,7,SkillType.魔力法阵,7),
     诅咒铠甲("",SkillType.诅咒之力,0,SkillType.钢铁之肤,6),
+    蓄势待发("",SkillType.祈愿,5,SkillType.全体加速,2),
+    风势("",SkillType.全体加速,2,SkillType.全体阻碍,1),
 
     新生("",0,0,SkillTag.新生,SkillTag.抗夺魂),
+    圣灵之泉("",0,0,SkillTag.新生,SkillTag.抗夺魂),
     重整("",0,0,SkillTag.抗夺魂),
     不朽岿岩("",0,0,SkillTag.抗夺魂,SkillTag.不动),
     再生金蝉("",0,0,SkillTag.抗夺魂,SkillTag.不动),
     烈火炙魂("",2,0,SkillTag.抗夺魂),
+    卷土重来("",1,0,SkillTag.抗夺魂),
 
     司命("",100,0),
     时空置换("",100,0),
@@ -957,8 +965,10 @@ public enum SkillType {
     霜之领域("",SkillType.冰甲,1,大地之盾,0,SkillTag.不动),
 
     //攻击对方全体
-    一文字("", 0),
-    横扫千军("", 0),
+    一文字("", 0, SkillTag.抗免疫, SkillTag.物理攻击),
+    横扫千军("", 150,0, SkillTag.抗免疫, SkillTag.物理攻击),
+    页游横扫千军("", 0, SkillTag.抗免疫, SkillTag.物理攻击),
+    纷乱雪月花("", 0, SkillTag.抗免疫, SkillTag.物理攻击),
 
     //手牌添加技能 有判定的
     王佐之才("",SkillType.镜面,0,null,0),
@@ -1022,6 +1032,7 @@ public enum SkillType {
     蛇蜕之术("",SkillType.蛇魔之甲,0,null,0,SkillTag.不动),
     灵蛇行("",SkillType.灵蛇腹甲,0,null,0),
     出云蛇势("",SkillType.镜面,0,灵蛇腹甲,0,SkillTag.不动),
+    破釜沉舟("",SkillType.反扑,0,null,0),
 
     金魔装甲("", 50,0),
     //给自身场上所有卡牌添加技能除自己以外
@@ -1142,6 +1153,8 @@ public enum SkillType {
     生生不息("",0),
     终焉脱壳("",9999999,0),
     永生魔咒("",0),
+    金身("",5),
+    金刚之躯("",35,0),
 
     //防止技能类型
     稳定("",0),

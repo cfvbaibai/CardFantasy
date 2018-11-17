@@ -38,6 +38,10 @@ public final class Erode {
         {
             if(fieldCard!=null)
             {
+                if(fieldCard.isDeman())
+                {
+                    continue;
+                }
                 selectCard.add(fieldCard);
             }
         }
