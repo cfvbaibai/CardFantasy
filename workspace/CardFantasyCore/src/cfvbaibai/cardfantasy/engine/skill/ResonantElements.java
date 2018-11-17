@@ -26,25 +26,20 @@ public final class ResonantElements {
             Boolean preSkill = false;
             Boolean deathSkill = false;
             Boolean postSkill = false;
-            if(additionalSkill.isPostcastSkill())
-            {
-                postSkill = true;
+            if(additionalSkill !=null) {
+                if (additionalSkill.isPostcastSkill()) {
+                    postSkill = true;
+                } else if (additionalSkill.isDeathSkill()) {
+                    deathSkill = true;
+                } else if (additionalSkill.isPrecastSkill()) {
+                    preSkill = true;
+                } else if (additionalSkill.isSummonSkill()) {
+                    summonSkill = true;
+                }
+                CardSkill cardSkill = new CardSkill(additionalSkill.getType(), additionalSkill.getLevel(), 0, summonSkill, deathSkill, preSkill, postSkill);
+                thisSkillUserInfo = new SkillUseInfo(addCard, cardSkill);
+                addCard.addSkill(thisSkillUserInfo);
             }
-            else if(additionalSkill.isDeathSkill())
-            {
-                deathSkill =true;
-            }
-            else if(additionalSkill.isPrecastSkill())
-            {
-                preSkill = true;
-            }
-            else if(additionalSkill.isSummonSkill())
-            {
-                summonSkill = true;
-            }
-            CardSkill cardSkill = new CardSkill(additionalSkill.getType(), additionalSkill.getLevel(), 0, summonSkill, deathSkill, preSkill, postSkill);
-            thisSkillUserInfo = new SkillUseInfo(addCard,cardSkill);
-            addCard.addSkill(thisSkillUserInfo);
         }
         List<CardInfo> livingCards = null;
         livingCards = player.getField().getAliveCards();

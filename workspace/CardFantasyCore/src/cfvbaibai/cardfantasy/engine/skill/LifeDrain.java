@@ -10,7 +10,7 @@ public class LifeDrain {
             return;
         }
         Skill skill = skillUseInfo.getSkill();
-        int damage = attacker.getHP() * skill.getImpact() / 100;
+        int damage = attacker.getBasicMaxHP() * skill.getImpact() / 100;
 
         if (!attacker.isDead()) {
             // 反射装甲+恶灵汲取的场合，攻击卡牌可能先被送还了，然后再发动恶灵汲取
