@@ -337,6 +337,7 @@ public enum SkillType {
     星座能量信念("", 0, SkillTag.复活),
     大地吟咏("", 999999, 0, SkillTag.复活),
     同调("", 0),
+    曹魏之主("", 0, SkillTag.不动),
     返生术("", 0, SkillTag.不动,SkillTag.复活),
     青囊("", 0, SkillTag.复活),
     送还("30943", 0, SkillTag.即死),
@@ -923,6 +924,8 @@ public enum SkillType {
     诅咒铠甲("",SkillType.诅咒之力,0,SkillType.钢铁之肤,6),
     蓄势待发("",SkillType.祈愿,5,SkillType.全体加速,2),
     风势("",SkillType.全体加速,2,SkillType.全体阻碍,1),
+    群星之怒("",SkillType.灵魂消散 ,0,SkillType.雷霆一击,6),
+    星辰变("",SkillType.号角 ,1,SkillType.祈愿,1),
 
     新生("",0,0,SkillTag.新生,SkillTag.抗夺魂),
     圣灵之泉("",0,0,SkillTag.新生,SkillTag.抗夺魂),

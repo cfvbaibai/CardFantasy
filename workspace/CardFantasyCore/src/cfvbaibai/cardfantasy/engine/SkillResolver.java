@@ -3025,6 +3025,20 @@ public class SkillResolver {
                     Rapture.apply(this, skillUseInfo, card, enemy);
                 } else if (skillUseInfo.getType() == SkillType.无尽华尔兹) {
                     Insane.apply(skillUseInfo, this, card, enemy, -1, 100);
+                } else if (skillUseInfo.getType() == SkillType.群星之怒) {
+                    if (enemy.getField().getAliveCards().size() >= 5) {
+                        SoulCrash.apply(skillUseInfo.getAttachedUseInfo1(), this, card, enemy);
+                    }
+                    if (enemy.getField().getAliveCards().size() < 5) {
+                        ThunderStrike.apply(skillUseInfo.getAttachedUseInfo2(), this, card, enemy, 3);
+                    }
+                } else if (skillUseInfo.getType() == SkillType.星辰变) {
+                    if (card.getOwner().getHand().size() >= 1) {
+                        Horn.apply(skillUseInfo.getAttachedUseInfo1(), this, card);
+                    }
+                    if (card.getOwner().getHand().size() < 1) {
+                        Supplication.apply(this, skillUseInfo.getAttachedUseInfo2(), card, enemy);
+                    }
                 }
             } else if (!skillUseInfo.getSkill().isDeathSkill()) {
                 if (skillUseInfo.getType() == SkillType.反噬 || skillUseInfo.getType() == SkillType.恶魔契约) {
@@ -3209,6 +3223,10 @@ public class SkillResolver {
                     Polymorph.apply(this, skillUseInfo, card, enemy, 1, 1);
                 } else if (skillUseInfo.getType() == SkillType.形散如烟) {
                     Asthenia.apply(this, skillUseInfo, card, enemy, 4, 3);
+                } else if (skillUseInfo.getType() == SkillType.曹魏之主) {
+                    Homology.apply(this, skillUseInfo, card,"三国英魂·孟德");
+                    Homology.apply(this, skillUseInfo, card,"三国英魂·甄姬");
+                    Homology.apply(this, skillUseInfo, card,"三国英魂·仲达");
                 }
             }
         }

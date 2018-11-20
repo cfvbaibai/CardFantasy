@@ -17,10 +17,10 @@ public final class Homology {
         Hand hand = reviver.getOwner().getHand();
         Deck deck = reviver.getOwner().getDeck();
         List<CardInfo> revivableCards = new ArrayList<CardInfo>();
-        for (CardInfo deadCard : grave.toList()) {
-            if(deadCard.getName().equals(cardName))
+        for (CardInfo deckCard : deck.toList()) {
+            if(deckCard.getName().equals(cardName))
             {
-                revivableCards.add(deadCard);
+                revivableCards.add(deckCard);
             }
         }
         for (CardInfo handCard : hand.toList()) {
@@ -29,10 +29,10 @@ public final class Homology {
                 revivableCards.add(handCard);
             }
         }
-        for (CardInfo deckCard : deck.toList()) {
-            if(deckCard.getName().equals(cardName))
+        for (CardInfo deadCard : grave.toList()) {
+            if(deadCard.getName().equals(cardName))
             {
-                revivableCards.add(deckCard);
+                revivableCards.add(deadCard);
             }
         }
         if (revivableCards.isEmpty()) {

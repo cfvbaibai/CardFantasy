@@ -2633,6 +2633,12 @@
         <Skill type="神圣领域" level="0" unlock="5" />
         <Skill type="智慧之光" level="0" unlock="10" />
     </Card>
+    <Card id="2650" name="星辰女神" wikiId="" race="森林" speed="1" star="5" cost="16" incrCost="2" at="400" hp="1545" incrAT="31" incrHP="40">
+        <Skill type="群星之怒" level="0" unlock="0" />
+        <Skill type="星辰变" level="0" unlock="5" />
+        <Skill type="铁壁" level="4" unlock="10" />
+        <Skill type="逃跑" level="0" unlock="10" />
+    </Card>
 
 
     <!-- 蛮荒  -->
@@ -4908,7 +4914,7 @@
         <Skill type="神魔之甲" level="0" unlock="5" />
         <Skill type="神威" level="0" unlock="10" />
     </Card>
-    <Card id="4618" name="梦魇小丑" wikiId="" race="地狱" speed="2" star="5" cost="15" incrCost="2" at="450" hp="1310" incrAT="26" incrHP="29">
+    <Card id="4618" name="梦魇小丑" wikiId="" race="地狱" speed="2" star="4" cost="15" incrCost="2" at="450" hp="1310" incrAT="26" incrHP="29">
         <Skill type="噩梦马戏团" level="0" unlock="0" />
         <Skill type="振奋" level="6" unlock="5" />
         <Skill type="自爆" level="10" unlock="10" />
