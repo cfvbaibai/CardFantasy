@@ -45,7 +45,7 @@ public class TimeTravel {
                     card.setSummonNumber(0);
                     card.setRuneActive(false);
                     resolver.resolveLeaveSkills(card);
-                    ImpregnableDefenseHeroBuff.removeSkill(card,resolver);//移除铁壁的buff
+//                    ImpregnableDefenseHeroBuff.removeSkill(card,resolver);//移除铁壁的buff
 
                     ui.returnCard(caster, card, skillUseInfo.getSkill());
                     if (!card.getStatus().containsStatus(CardStatusType.召唤)) {

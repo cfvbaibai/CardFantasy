@@ -33,7 +33,7 @@ public final class Return {
         GameUI ui = resolver.getStage().getUI();
         ui.returnCard(attacker, defender, cardSkill);
         resolver.resolveLeaveSkills(defender);
-        ImpregnableDefenseHeroBuff.removeSkill(defender,resolver);//移除铁壁的buff
+//        ImpregnableDefenseHeroBuff.removeSkill(defender,resolver);//移除铁壁的buff
         if (!defender.getStatus().containsStatus(CardStatusType.召唤)) {
             // 被召唤的卡牌不回到卡组，而是直接消失
             // 送还的卡是随机插入卡组而非加在末尾
@@ -53,7 +53,7 @@ public final class Return {
     }
 
     //地裂等牌返回牌库是有顺序的。
-    public static void returnCard2(SkillResolver resolver, Skill cardSkill, CardInfo attacker, CardInfo defender, boolean flag) {
+    public static void returnCard2(SkillResolver resolver, Skill cardSkill, EntityInfo attacker, CardInfo defender, boolean flag) {
         defender.getOwner().getField().expelCard(defender.getPosition());
         // 这段验证不再有效，因为反射装甲可能将横扫的攻击者送还
         //if (expelledCard != defender) {
@@ -62,9 +62,9 @@ public final class Return {
         GameUI ui = resolver.getStage().getUI();
         ui.returnCard(attacker, defender, cardSkill);
         //flag判断是否是从手牌回到牌库
-        if (flag) {
-            ImpregnableDefenseHeroBuff.removeSkill(defender,resolver);//移除铁壁的buff
-        }
+//        if (flag) {
+//            ImpregnableDefenseHeroBuff.removeSkill(defender,resolver);//移除铁壁的buff
+//        }
         resolver.resolveLeaveSkills(defender);
         if (!defender.getStatus().containsStatus(CardStatusType.召唤)) {
             // 被召唤的卡牌不回到卡组，而是直接消失
@@ -95,7 +95,7 @@ public final class Return {
         GameUI ui = resolver.getStage().getUI();
         ui.returnCard(attacker, defender, cardSkill);
         resolver.resolveLeaveSkills(defender);
-        ImpregnableDefenseHeroBuff.removeSkill(defender,resolver);//移除铁壁的buff
+//        ImpregnableDefenseHeroBuff.removeSkill(defender,resolver);//移除铁壁的buff
         if (!defender.getStatus().containsStatus(CardStatusType.召唤)) {
             defender.restoreOwner();
             defender.getOwner().getHand().addCard(defender);

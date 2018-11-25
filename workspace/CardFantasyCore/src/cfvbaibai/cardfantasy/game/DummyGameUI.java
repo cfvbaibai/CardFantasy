@@ -243,7 +243,7 @@ public class DummyGameUI extends GameUI {
     }
 
     @Override
-    public void returnCard(CardInfo attacker, CardInfo defender, Skill cardSkill) {
+    public void returnCard(EntityInfo attacker, CardInfo defender, Skill cardSkill) {
         // TODO Auto-generated method stub
 
     }

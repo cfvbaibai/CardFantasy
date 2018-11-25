@@ -16,8 +16,9 @@ public class ReformingMult {
         {
             return;
         }
-        if(number==-1)
+        if(number<0)
         {
+            number = impact;
             skillUseInfo.setSkillNumber(impact);
         }
         skillUseInfo.setSkillNumber(number-1);

@@ -2639,6 +2639,11 @@
         <Skill type="铁壁" level="4" unlock="10" />
         <Skill type="逃跑" level="0" unlock="10" />
     </Card>
+    <Card id="2651" name="密林巫医" wikiId="" race="森林" speed="3" star="4" cost="15" incrCost="2" at="380" hp="1400" incrAT="26" incrHP="32">
+        <Skill type="献祭巫术" level="0" unlock="0" />
+        <Skill type="死亡诅咒" level="0" unlock="5" />
+        <Skill type="爆裂巫术" level="0" unlock="10" />
+    </Card>
 
 
     <!-- 蛮荒  -->
@@ -5766,6 +5771,17 @@
         <Skill type="终焉之兆" level="0" unlock="0" />
         <Skill type="魔神加护" level="0" unlock="5" />
         <Skill type="免疫风行" level="0" unlock="10"/>
+    </Card>
+    <Card id="5736" name="海妖商会会长" wikiId="" race="魔神" speed="4" star="5" cost="99" incrCost="0" at="1000" hp="33500" incrAT="0" incrHP="0">
+        <Skill type="土豪卡组" level="0" unlock="0" />
+        <Skill type="重来" level="0" unlock="5" />
+        <Skill type="涅盘" level="0" unlock="10"/>
+        <Skill type="再生" level="0" unlock="10" death="true"/>
+        <Skill type="情况紧急" level="0" unlock="10"/>
+        <Skill type="免疫" level="0" unlock="10"/>
+        <Skill type="镜面" level="0" unlock="10"/>
+        <Skill type="风行" level="0" unlock="10"/>
+        <Skill type="守护" level="8" unlock="10"/>
     </Card>
 
     <!-- 魔族卡 -->

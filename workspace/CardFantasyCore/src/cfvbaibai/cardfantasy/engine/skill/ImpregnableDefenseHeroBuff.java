@@ -45,14 +45,14 @@ public final class ImpregnableDefenseHeroBuff {
     public static void removeSkill(CardInfo card, SkillResolver resolver) {
         if (card.containsAllSkill(SkillType.铁壁)||card.containsAllSkill(SkillType.驱虎吞狼)||card.containsAllSkill(SkillType.金汤)
                 ||card.containsAllSkill(SkillType.铁壁方阵)||card.containsAllSkill(SkillType.光之守护)||card.containsAllSkill(SkillType.聚能立场)
-                ||card.containsAllSkill(SkillType.魔神加护) || card.containsAllSkill(SkillType.护主)) {
-            for (SkillUseInfo defenderskill : card.getAllUsableSkills()) {
+                ||card.containsAllSkill(SkillType.魔神加护) || card.containsAllSkill(SkillType.护主)|| card.containsAllSkill(SkillType.据守)) {
+            for (SkillUseInfo defenderskill : card.getAllNormalSkills()) {
                 if (defenderskill.getType() == SkillType.铁壁||defenderskill.getType() == SkillType.金汤
                         ||defenderskill.getType() == SkillType.光之守护||defenderskill.getType() == SkillType.铁壁方阵
                         ||defenderskill.getType() == SkillType.聚能立场 || defenderskill.getType() == SkillType.护主) {
                     ImpregnableDefenseHeroBuff.remove(resolver, defenderskill, card);
                 }
-                else if (defenderskill.getType() == SkillType.驱虎吞狼 || defenderskill.getType() == SkillType.魔神加护)
+                else if (defenderskill.getType() == SkillType.驱虎吞狼 || defenderskill.getType() == SkillType.魔神加护 || defenderskill.getType() == SkillType.据守)
                 {
                     ImpregnableDefenseHeroBuff.remove(resolver, defenderskill.getAttachedUseInfo2(), card);
                 }

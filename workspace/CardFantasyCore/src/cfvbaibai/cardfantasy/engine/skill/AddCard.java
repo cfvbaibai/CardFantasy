@@ -25,17 +25,42 @@ public class AddCard {
         {
             skillUseInfo.setSkillNumber(impact);
         }
+
         skillUseInfo.setSkillNumber(skillUseInfo.getSkillNumber()-1);
         List<CardInfo> cardsToSummon = new ArrayList<CardInfo>();
         List<CardInfo> summonCardCandidates = null;
         summonCardCandidates = DeckBuilder.build(summonedCardsDescs).getCardInfos(summoner.getOwner());
-        cardsToSummon = Randomizer.getRandomizer().pickRandom(summonCardCandidates, summonPicks, true, null);
+        List<CardInfo> productCards = summoner.getOwner().getProductCards();
+        List<CardInfo> addCardList = new ArrayList<CardInfo>();
+        for(CardInfo cardInfo:summonCardCandidates)
+        {
+            boolean addFlag = true;
+            for(CardInfo productCard:productCards)
+            {
+                if(productCard.getProductSkillUserInfo() == skillUseInfo)
+                {
+                    if(productCard.getName().equals(cardInfo.getName()))
+                    {
+                        addFlag = false;
+                        continue;
+                    }
+                }
+            }
+            if(addFlag)
+            {
+                addCardList.add(cardInfo);
+            }
+        }
+
+        cardsToSummon = Randomizer.getRandomizer().pickRandom(addCardList, summonPicks, true, null);
+
 
         if (cardsToSummon.size() > 0) {
             resolver.getStage().getUI().useSkill(summoner, skillUseInfo.getSkill(), true);
         }
         for (int i = 0; i < cardsToSummon.size(); ++i) {
             CardInfo summonedCard = cardsToSummon.get(i);
+            summoner.getOwner().addProductCards(summonedCard);
             summonedCard.setProductSkillUserInfo(skillUseInfo);
             resolver.summonCard(summoner.getOwner(), summonedCard, summoner, false, skillUseInfo.getSkill(),1);
         }

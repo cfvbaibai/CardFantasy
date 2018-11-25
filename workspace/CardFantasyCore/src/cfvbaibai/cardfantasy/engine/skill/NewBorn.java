@@ -21,7 +21,8 @@ public class NewBorn {
         resolver.getStage().getUI().useSkill(card, skill, true);
         Field field = card.getOwner().getField();
         List<CardInfo> frontCards = resolver.getFrontCards(field, card.getPosition());
-        List<CardInfo> selectFrontCards =  new ArrayList<CardInfo>();;
+        List<CardInfo> selectFrontCards =  new ArrayList<CardInfo>();
+        int position = card.getPosition();
         if(frontCards.size()<=0)
         {
             return;
@@ -41,6 +42,24 @@ public class NewBorn {
         GameUI ui = resolver.getStage().getUI();
 
         for (CardInfo victim : victims) {
+            if(!card.isAlive())
+            {
+                break;
+            }
+            else{
+                if(card.getPosition() != position)
+                {
+                    break;
+                }
+            }
+            if(!victim.isAlive())
+            {
+                continue;
+            }
+            else if(victim.getPosition()>position)
+            {
+                continue;
+            }
             if (!victim.containsAllUsableSkillsWithTag(SkillTag.新生)) {
                 for (SkillUseInfo victimSkillUseInfo : victim.getAllUsableSkillsIgnoreSilence()) {
                     resolver.getStage().removeUsed(victimSkillUseInfo,skillUseInfo.getOwner().getOwner(),defender);

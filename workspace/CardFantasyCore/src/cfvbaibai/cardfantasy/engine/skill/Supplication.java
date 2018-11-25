@@ -11,7 +11,7 @@ import java.util.List;
 
 
 public final class Supplication {
-    public static  void apply(SkillResolver resolver, SkillUseInfo skillUseInfo, CardInfo card,Player defender) throws HeroDieSignal {
+    public static  void apply(SkillResolver resolver, SkillUseInfo skillUseInfo, EntityInfo card,Player defender) throws HeroDieSignal {
         if (card == null) {
             throw new CardFantasyRuntimeException("card should not be null");
         }

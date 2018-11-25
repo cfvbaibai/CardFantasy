@@ -45,6 +45,7 @@ public enum SkillType {
     士气振奋("", 300, 0, SkillTag.永久, SkillTag.基础攻击加成),
     亮银("", 220, 0, SkillTag.永久, SkillTag.基础攻击加成),
     暴食("", 220, 0, SkillTag.永久, SkillTag.基础攻击加成),
+    狂暴之刃("", 220, 0, SkillTag.永久, SkillTag.基础攻击加成),
     大小通吃("", 200, 0, SkillTag.永久, SkillTag.基础攻击加成),
     拔刀术("", 600, 0, SkillTag.永久, SkillTag.基础攻击加成),
     厌战("", -600, 0, SkillTag.永久, SkillTag.基础攻击加成),
@@ -402,6 +403,7 @@ public enum SkillType {
     溶骨的毒酒("",100,0),
     死亡收割("",85,0),
     狂舞("", 70, 0,4,0, SkillTag.抗免疫, SkillTag.物理攻击),
+    夺命骨镰("", 0, 0,4,0, SkillTag.额外攻击加成, SkillTag.抗免疫, SkillTag.物理攻击),
 
     灵巧("57020", 0),
     灵魂禁锢("", 0),
@@ -623,6 +625,7 @@ public enum SkillType {
     武形印记("", 0, 200,SkillTag.魔王无效),
     霜火炸弹("", 0, 200,SkillTag.魔王无效),
     破片手雷("", 1450, 0,SkillTag.魔王无效),
+    爆裂巫术("", 800, 0,SkillTag.魔王无效),
     煮豆燃萁("", 5000, 0, SkillTag.魔王无效),
     闪光弹("", 5, 1),
     致盲("", 1, 1),
@@ -646,6 +649,7 @@ public enum SkillType {
 
     星云锁链("", 0, 0),
     星团锁链("", 0, 0,SkillTag.不动),
+    进军之势("", 3, 0,SkillTag.不动),
     生命链接("", 0),
     逃跑("", 0,SkillTag.抗夺魂),
     撤退("", 0,SkillTag.抗夺魂,SkillTag.不动),
@@ -737,6 +741,7 @@ public enum SkillType {
     狂野之怒("",0,0, SkillTag.不可洗炼,SkillTag.召唤),
     幻化("",0,0, SkillTag.不可洗炼,SkillTag.召唤,SkillTag.不动),
     幻影军团("",4,0,70,0, SkillTag.不可洗炼),
+    秘术投影("",4,0,100,0, SkillTag.不可洗炼),
     幻影奇袭("",4,0,60,0, SkillTag.不可洗炼),
     圣翼骑士("",4,0,70,0, SkillTag.不可洗炼,SkillTag.复活),
     英魂唤醒("",0,0, SkillTag.不可洗炼,SkillTag.召唤,SkillTag.不动),
@@ -759,6 +764,7 @@ public enum SkillType {
     远古召唤("", 1, 0,SkillTag.抗夺魂),
     分裂("", 7, 0,SkillTag.抗夺魂),
     分裂术("",7,0,SkillType.复苏,0,null,0,SkillTag.抗夺魂),//生成卡牌，连携
+    土豪卡组("", 26, 0,SkillTag.抗夺魂),
 
 
     圣光洗礼("", 0, 0, SkillTag.抗免疫, SkillTag.不可洗炼, SkillTag.魔王无效, SkillTag.魔族天赋),
@@ -933,7 +939,10 @@ public enum SkillType {
     不朽岿岩("",0,0,SkillTag.抗夺魂,SkillTag.不动),
     再生金蝉("",0,0,SkillTag.抗夺魂,SkillTag.不动),
     烈火炙魂("",2,0,SkillTag.抗夺魂),
+    据守("",2,0,null,0,SkillType.铁壁,4,SkillTag.抗夺魂),
     卷土重来("",1,0,SkillTag.抗夺魂),
+    摄魂之力("",0,0,SkillTag.抗夺魂),
+    情况紧急("",0,0,SkillTag.抗夺魂),
 
     司命("",100,0),
     时空置换("",100,0),
@@ -972,6 +981,7 @@ public enum SkillType {
     横扫千军("", 150,0, SkillTag.抗免疫, SkillTag.物理攻击),
     页游横扫千军("", 0, SkillTag.抗免疫, SkillTag.物理攻击),
     纷乱雪月花("", 0, SkillTag.抗免疫, SkillTag.物理攻击),
+    醉生梦死("", 0, SkillTag.抗免疫, SkillTag.物理攻击),
 
     //手牌添加技能 有判定的
     王佐之才("",SkillType.镜面,0,null,0),
@@ -1062,6 +1072,7 @@ public enum SkillType {
     页游不凋花("",SkillType.不屈,0,null,0),
 
     弱者溃散("",0,SkillTag.魔王无效,SkillTag.抗免疫),
+    重来("",0,SkillTag.魔王无效,SkillTag.抗免疫),
     退散("",0,SkillTag.魔王无效,SkillTag.抗免疫),
     逐光("",0,SkillTag.魔王无效,SkillTag.抗免疫),
     逐光追梦("",0,SkillTag.魔王无效,SkillTag.抗免疫),
@@ -1119,8 +1130,10 @@ public enum SkillType {
     噩梦来临("",1,0,100,0,SkillTag.抗免疫, SkillTag.抗不屈, SkillTag.魔王无效, SkillTag.魔族天赋,SkillTag.基础攻击加成),
     支配亡灵("",0, SkillTag.魔王无效, SkillTag.魔族天赋,SkillTag.召唤),
     骸骨大军("",0, SkillTag.魔王无效, SkillTag.魔族天赋,SkillTag.召唤),
+    献祭巫术("",0, SkillTag.魔王无效, SkillTag.魔族天赋,SkillTag.召唤),
     死亡献祭("",0, SkillTag.魔王无效, SkillTag.魔族天赋,SkillTag.召唤),
     魂之枷锁("",5,0, SkillTag.抗免疫,SkillTag.魔王无效),
+    死亡诅咒("",1,0, SkillTag.抗免疫,SkillTag.魔王无效),
     审判之印("",4,0, SkillTag.抗免疫,SkillTag.魔王无效),
     永生的诅咒("",100,0, SkillTag.抗免疫,SkillTag.魔王无效),
     血魂之咒("",3,0, SkillTag.抗免疫,SkillTag.魔王无效),
@@ -1133,6 +1146,7 @@ public enum SkillType {
     死亡链接("",5,0, SkillTag.抗免疫,SkillTag.魔王无效),
     形散如烟("",3,0,30,0, SkillTag.魔王无效,SkillTag.抗免疫),
     吞噬("",1,0,2,0,SkillTag.抗不屈, SkillTag.魔王无效, SkillTag.魔族天赋),
+    魂飞魄散("",3,0,30,0, SkillTag.魔王无效,SkillTag.抗免疫),
 
     噩梦("",SkillType.噩梦来临,0,SkillType.噩梦扼杀,0),
 

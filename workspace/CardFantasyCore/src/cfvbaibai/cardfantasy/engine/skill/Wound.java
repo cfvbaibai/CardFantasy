@@ -26,6 +26,7 @@ public final class Wound {
                 || attackSkill.getType() == SkillType.魔龙之怒
                 || attackSkill.getType() == SkillType.鬼彻
                 || attackSkill.getType() == SkillType.纷乱雪月花
+                || attackSkill.getType() == SkillType.醉生梦死
                 || attackSkill.getType() == SkillType.毒杀)) {
             return;
         }

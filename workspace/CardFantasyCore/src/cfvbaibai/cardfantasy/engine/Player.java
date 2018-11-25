@@ -22,6 +22,7 @@ public class Player extends EntityInfo {
     private int hp;
     private List<CardInfo> primaryCards;
     private int coefficient;
+    private List<CardInfo>  productCards;
     
     public Player(PlayerInfo playerInfo, StageInfo stage) {
         this.playerInfo = playerInfo;
@@ -36,6 +37,7 @@ public class Player extends EntityInfo {
         this.hp = playerInfo.getMaxHP();
         this.cardBuffs = new ArrayList<SkillUseInfo>();
         this.coefficient = 100;
+        this.productCards = new ArrayList<CardInfo>();
         for (Skill cardBuff : playerInfo.getCardBuffs()) {
             this.cardBuffs.add(new SkillUseInfo(this, cardBuff));
         }
@@ -164,5 +166,13 @@ public class Player extends EntityInfo {
 
     public List<SkillUseInfo> getCardBuffs() {
          return new ArrayList<SkillUseInfo>(this.cardBuffs);
+    }
+
+    public List<CardInfo> getProductCards() {
+        return productCards;
+    }
+
+    public void addProductCards(CardInfo productCard) {
+        this.productCards.add(productCard);
     }
 }

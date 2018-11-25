@@ -481,9 +481,9 @@ public class CardInfo extends EntityInfo {
         return skillUseInfos;
     }
 
-    public List<SkillUseInfo> getUsableNormalSkillsInvalidSilence() {
+    public List<SkillUseInfo> getAllNormalSkills() {
         List<SkillUseInfo> skillUseInfos = new ArrayList<SkillUseInfo>();
-        for (SkillUseInfo skillUseInfo : this.getAllUsableSkillsInvalidSilence()) {
+        for (SkillUseInfo skillUseInfo : this.getAllUsableSkillsIgnoreSilence()) {
             CardSkill cardSkill = (CardSkill)skillUseInfo.getSkill();
             if (!cardSkill.isDeathSkill() && !cardSkill.isSummonSkill() &&
                     !cardSkill.isPrecastSkill() && !cardSkill.isPostcastSkill()) {

@@ -357,6 +357,7 @@ public class BattleEngine {
             resolver.removeStatus(myField.getCard(i), CardStatusType.沉默);
             resolver.removeStatus(myField.getCard(i), CardStatusType.死咒);
             resolver.removeStatus(myField.getCard(i), CardStatusType.炼成);
+            resolver.removeStatus(myField.getCard(i), CardStatusType.祭奠);
             resolver.removeStatus(myField.getCard(i), CardStatusType.魂殇);
             resolver.removeStatus(myField.getCard(i), CardStatusType.黄天);
             resolver.removeStatus(myField.getCard(i), CardStatusType.虚化);
@@ -449,7 +450,7 @@ public class BattleEngine {
         // Remove lasting effects
         resolver.removeTempEffects(myField.getCard(i));
         //
-        resolver.resolvePostAttackSkills(myField.getCard(i), getInactivePlayer());
+      //  resolver.resolvePostAttackSkills(myField.getCard(i), getInactivePlayer());
     }
 
     private void tryAttackCard(Field myField, Field opField, int i) throws HeroDieSignal {
@@ -507,7 +508,8 @@ public class BattleEngine {
                 ui.useSkill(myField.getCard(i), defender, skillUseInfo.getSkill(), true);
             }
             else if (skillUseInfo.getType() == SkillType.一文字 || skillUseInfo.getType() == SkillType.页游横扫千军
-                    || skillUseInfo.getType() == SkillType.横扫千军 || skillUseInfo.getType() == SkillType.纷乱雪月花) {
+                    || skillUseInfo.getType() == SkillType.横扫千军 || skillUseInfo.getType() == SkillType.纷乱雪月花
+                    || skillUseInfo.getType() == SkillType.醉生梦死) {
                 ui.useSkill(myField.getCard(i), defender, skillUseInfo.getSkill(), true);
             }
         }
@@ -589,7 +591,8 @@ public class BattleEngine {
         if (damagedResult != null && damagedResult.originalDamage > 0 && myField.getCard(i) != null&&attackflag) {
             for (SkillUseInfo skillUseInfo : myField.getCard(i).getUsableNormalSkills()) {
                 if (skillUseInfo.getType() == SkillType.一文字 || skillUseInfo.getType() == SkillType.页游横扫千军
-                        || skillUseInfo.getType() == SkillType.横扫千军 || skillUseInfo.getType() == SkillType.纷乱雪月花) {
+                        || skillUseInfo.getType() == SkillType.横扫千军 || skillUseInfo.getType() == SkillType.纷乱雪月花
+                        || skillUseInfo.getType() == SkillType.醉生梦死) {
                     for (CardInfo sweepDefender : opField.getAliveCards()) {
                         //一文字可以攻击自己。
 //                        if(sweepDefender == opField.getCard(i))

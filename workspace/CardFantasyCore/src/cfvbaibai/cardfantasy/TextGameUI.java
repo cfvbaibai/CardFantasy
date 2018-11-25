@@ -314,7 +314,7 @@ public class TextGameUI extends GameUI {
     }
 
     @Override
-    public void returnCard(CardInfo attacker, CardInfo defender, Skill cardSkill) {
+    public void returnCard(EntityInfo attacker, CardInfo defender, Skill cardSkill) {
         sayF("%s 使用 %s 将 %s 送还至牌堆.", attacker.getShortDesc(), cardSkill.getShortDesc(), defender.getShortDesc());
     }
 

@@ -38,7 +38,7 @@ public final class Flee {
         defender.setAddDelay(0);
         defender.setRuneActive(false);
         resolver.resolveLeaveSkills(defender);
-        ImpregnableDefenseHeroBuff.removeSkill(defender,resolver);//移除铁壁的buff
+//        ImpregnableDefenseHeroBuff.removeSkill(defender,resolver);//移除铁壁的buff
 
         ui.returnCard(attacker, defender, cardSkill);
         // 如果是被召唤的卡牌，发动逃跑技能后应该直接消失

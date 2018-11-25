@@ -21,7 +21,12 @@ public class AddSelfCard {
         SkillUseInfo productSkillUserInfo = summoner.getProductSkillUserInfo();
         if(productSkillUserInfo !=null)
         {
-            useSkllInfo = productSkillUserInfo;
+            if(productSkillUserInfo.getType() == skillUseInfo.getType()) {
+                useSkllInfo = productSkillUserInfo;
+            }
+            else{
+                useSkllInfo = skillUseInfo;
+            }
         }
         else{
             useSkllInfo = skillUseInfo;
@@ -45,6 +50,7 @@ public class AddSelfCard {
         }
         for (int i = 0; i < cardsToSummon.size(); ++i) {
             CardInfo summonedCard = cardsToSummon.get(i);
+            summoner.getOwner().addProductCards(summonedCard);
             summonedCard.setProductSkillUserInfo(useSkllInfo);
             resolver.summonCard(summoner.getOwner(), summonedCard, summoner, false, useSkllInfo.getSkill(),1);
         }
