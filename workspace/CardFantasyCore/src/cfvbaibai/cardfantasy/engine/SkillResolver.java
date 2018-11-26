@@ -1427,7 +1427,9 @@ public class SkillResolver {
                             || blockSkillUseInfo.getType() == SkillType.复仇之影 || blockSkillUseInfo.getType() == SkillType.死亡之矢 || blockSkillUseInfo.getType() == SkillType.神佑复苏
                             || blockSkillUseInfo.getType() == SkillType.弑魂夺魄 || blockSkillUseInfo.getType() == SkillType.不灭之魂 || blockSkillUseInfo.getType() == SkillType.雷神附体
                             || blockSkillUseInfo.getType() == SkillType.秘术投影 || blockSkillUseInfo.getType() == SkillType.夺命骨镰 || blockSkillUseInfo.getType() == SkillType.风势
-                            || blockSkillUseInfo.getType() == SkillType.醉生梦死 || blockSkillUseInfo.getType() == SkillType.魂飞魄散 || blockSkillUseInfo.getType() == SkillType.摄魂之力 ) {
+                            || blockSkillUseInfo.getType() == SkillType.醉生梦死 || blockSkillUseInfo.getType() == SkillType.魂飞魄散 || blockSkillUseInfo.getType() == SkillType.摄魂之力
+                            || blockSkillUseInfo.getType() == SkillType.三位一体 || blockSkillUseInfo.getType() == SkillType.不灭金身 || blockSkillUseInfo.getType() == SkillType.时间扭曲
+                            || blockSkillUseInfo.getType() == SkillType.异元干扰) {
                         if (Immue.isSkillBlocked(this, blockSkillUseInfo.getSkill(), attackSkill, attacker, defender)) {
                             result.setAttackable(false);
                             return result;
@@ -1975,7 +1977,7 @@ public class SkillResolver {
                         }
                     } else if (deadCardSkillUseInfo.getType() == SkillType.司命 || deadCardSkillUseInfo.getType() == SkillType.不灭定律 || deadCardSkillUseInfo.getType() == SkillType.不灭
                             || deadCardSkillUseInfo.getType() == SkillType.顽强 || deadCardSkillUseInfo.getType() == SkillType.我又回来了 || deadCardSkillUseInfo.getType() == SkillType.时空置换
-                            || deadCardSkillUseInfo.getType() == SkillType.蚀月) {
+                            || deadCardSkillUseInfo.getType() == SkillType.蚀月 || deadCardSkillUseInfo.getType() == SkillType.不灭金身) {
                         if (Reborn.apply(this, deadCardSkillUseInfo, deadCard, result.unbending)) {
                             reincarnated = true;
                             break;
@@ -3110,7 +3112,7 @@ public class SkillResolver {
                 } else if (skillUseInfo.getType() == SkillType.剑道) {
                     Summon.apply(this, skillUseInfo, card, SummonType.Normal, 2,
                             "武形剑圣", "武形剑圣");
-                } else if (skillUseInfo.getType() == SkillType.伎町迷影) {
+                } else if (skillUseInfo.getType() == SkillType.伎町迷影 || skillUseInfo.getType() == SkillType.三位一体) {
                     Summon.apply(this, skillUseInfo, card, SummonType.Normal, 2,
                             card.getName(), card.getName());
                 } else if (skillUseInfo.getType() == SkillType.猫神的低语) {
@@ -3259,6 +3261,8 @@ public class SkillResolver {
                             "盗宝松鼠");
                 } else if (skillUseInfo.getType() == SkillType.献祭巫术) {
                     SacrificeBuff.apply(this, skillUseInfo, card, enemy, 1, 2);
+                } else if (skillUseInfo.getType() == SkillType.时间扭曲) {
+                    AllDelay.apply(skillUseInfo, this, card, enemy);
                 }
             }
         }
@@ -3673,7 +3677,8 @@ public class SkillResolver {
                     || defender.containsAllSkill(SkillType.死亡之矢) || defender.containsAllSkill(SkillType.神佑复苏) || defender.containsAllSkill(SkillType.弑魂夺魄)
                     || defender.containsAllSkill(SkillType.不灭之魂) || defender.containsAllSkill(SkillType.雷神附体) || defender.containsAllSkill(SkillType.风势)
                     || defender.containsAllSkill(SkillType.秘术投影) || defender.containsAllSkill(SkillType.夺命骨镰) || defender.containsAllSkill(SkillType.醉生梦死)
-                    || defender.containsAllSkill(SkillType.魂飞魄散) || defender.containsAllSkill(SkillType.摄魂之力)
+                    || defender.containsAllSkill(SkillType.魂飞魄散) || defender.containsAllSkill(SkillType.摄魂之力) || defender.containsAllSkill(SkillType.三位一体)
+                    || defender.containsAllSkill(SkillType.不灭金身) || defender.containsAllSkill(SkillType.时间扭曲) || defender.containsAllSkill(SkillType.异元干扰)
                     || CounterMagic.getBlockSkill(defender) != null) {
                 return true;
             }
@@ -3691,7 +3696,9 @@ public class SkillResolver {
                     || defender.containsAllSkill(SkillType.不灭之魂) || defender.containsAllSkill(SkillType.雷神附体)
                     || defender.containsAllSkill(SkillType.秘术投影) || defender.containsAllSkill(SkillType.风势)
                     || defender.containsAllSkill(SkillType.夺命骨镰) || defender.containsAllSkill(SkillType.醉生梦死)
-                    || defender.containsAllSkill(SkillType.魂飞魄散) || defender.containsAllSkill(SkillType.摄魂之力)) {
+                    || defender.containsAllSkill(SkillType.魂飞魄散) || defender.containsAllSkill(SkillType.摄魂之力)
+                    || defender.containsAllSkill(SkillType.三位一体) || defender.containsAllSkill(SkillType.不灭金身)
+                    || defender.containsAllSkill(SkillType.时间扭曲) || defender.containsAllSkill(SkillType.异元干扰)) {
                 return true;
             }
         }
@@ -4011,6 +4018,16 @@ public class SkillResolver {
                 Transport.apply(this, skillUseInfo.getSkill(), card, defenderHero);
             } else if (skillUseInfo.getType() == SkillType.无上荣耀) {
                 Bless.apply(skillUseInfo.getSkill(), this, card);
+            }
+        }
+        if(card.containsUsableSkill(SkillType.异元干扰))
+        {
+            for(SkillUseInfo skillUseInfo:card.getUsableNormalSkills())
+            {
+                if(skillUseInfo.getType() == SkillType.异元干扰)
+                {
+                    AllDelay.apply(skillUseInfo, this, card, defenderHero);
+                }
             }
         }
     }

@@ -23,19 +23,19 @@ public class AddSkillOpponent {
         SkillUseInfo thisSkillUserInfo=null;
         boolean flag = true;
         for (CardInfo handCard : allHandCards) {
-            for(SkillUseInfo skillInfo:handCard.getSkillUserInfos())
-            {
-                if(skillInfo.getGiveSkill()==2)
-                {
-                    flag=false;
-                    break;
-                }
-            }
-            if(!flag)
-            {
-                flag =true;
-                continue;
-            }
+//            for(SkillUseInfo skillInfo:handCard.getSkillUserInfos())
+//            {
+//                if(skillInfo.getGiveSkill()==2)
+//                {
+//                    flag=false;
+//                    break;
+//                }
+//            }
+//            if(!flag)
+//            {
+//                flag =true;
+//                continue;
+//            }
             if (handCard != null && !handCard.containsAllSkill(addSkill.getType())) {
                 revivableCards.add(handCard);
             }

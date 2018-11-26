@@ -538,6 +538,8 @@ public enum SkillType {
     加速("57019", 0, 1),
     全体加速("56751", 0, 1),
     神行术("", 1, 0,SkillTag.不动),
+    时间扭曲("", 2, 0),
+    异元干扰("", 2, 0),
 
     净化("31160", 0),
     净魂领域("", 0),
@@ -734,6 +736,7 @@ public enum SkillType {
     猫神的低语("",0,0, SkillTag.不可洗炼,SkillTag.召唤),
     乱世红颜("",0,0, SkillTag.不可洗炼,SkillTag.召唤),
     伎町迷影("",0,0, SkillTag.不可洗炼,SkillTag.召唤),
+    三位一体("",0,0, SkillTag.不可洗炼,SkillTag.召唤),
     复仇亡灵("",0,0, SkillTag.不可洗炼),
     化鹏("",0,0, SkillTag.不可洗炼,SkillTag.召唤),
     审判之姿("",0,0, SkillTag.不可洗炼,SkillTag.召唤),
@@ -945,6 +948,7 @@ public enum SkillType {
     情况紧急("",0,0,SkillTag.抗夺魂),
 
     司命("",100,0),
+    不灭金身("",100,0),
     时空置换("",100,0),
     不灭定律("",50,0),
     我又回来了("",75,0),
