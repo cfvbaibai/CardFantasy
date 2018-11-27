@@ -38,6 +38,12 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2018-11-27: <x>欢笑，波波</x><ul>
+                        <li>根据游戏调整【破军】效果，【反射装甲】可以重新保护【冰甲】技能发动</li>
+                    </ul></li>
+                    <li>2018-11-26: <x>欢笑，波波</x><ul>
+                        <li>修改赋予手牌技能的机制，调整为可以重复附加技能</li>
+                    </ul></li>
                     <li>2018-11-25: <x>欢笑，波波</x><ul>
                         <li>修复【地煞倾覆】攻击力不附加的BUG,修复【升阳】对免疫无效的问题，感谢<x>VV大姐头</x>提供的帮助</li>
                         <li>添加卡牌【密林巫医】，感谢<x>忘or想</x>提供的帮助</li>

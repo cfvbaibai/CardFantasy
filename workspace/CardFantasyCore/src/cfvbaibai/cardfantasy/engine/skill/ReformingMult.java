@@ -45,9 +45,11 @@ public class ReformingMult {
         card.getOwner().getHand().removeCard(card);
         card.getOwner().getDeck().removeCard(card);
         card.getOwner().getField().removeCard(card);
+        card.getOwner().getOutField().removeCard(card);
         defender.getHand().removeCard(card);
         defender.getDeck().removeCard(card);
         defender.getField().removeCard(card);
+        card.getOwner().getOutField().removeCard(card);
         resolver.summonCard(card.getOwner(), card, null, false, skillUseInfo.getSkill(),0);
         card.setUsed(skillUseInfo);
     }
