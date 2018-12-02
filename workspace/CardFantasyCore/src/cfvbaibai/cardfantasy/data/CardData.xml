@@ -1431,6 +1431,11 @@
         <Skill type="武之圣域" level="0" unlock="5" />
         <Skill type="破阵" level="0" unlock="10" />
     </Card>
+    <Card id="1682" name="辉夜姬" wikiId="" race="王国" speed="3" star="5" cost="21" incrCost="2" at="600" hp="1650" incrAT="42" incrHP="48">
+        <Skill type="驱魔" level="0" unlock="0" />
+        <Skill type="萦梦" level="0" unlock="5" />
+        <Skill type="英雄之托" level="0" unlock="10" />
+    </Card>
 
 
 
@@ -5119,7 +5124,7 @@
         <Skill type="转生" level="8" unlock="10" />
     </Card>
     <Card id="4659" name="死灵法师" wikiId="" race="地狱" speed="2" star="4" cost="15" incrCost="2" at="440" hp="1400" incrAT="32" incrHP="32">
-        <Skill type="死亡献祭" level="0" unlock="0" />
+        <Skill type="骸骨转化" level="0" unlock="0" />
         <Skill type="寒霜冲击" level="8" unlock="5" />
         <Skill type="寒霜之指" level="8" unlock="10" />
     </Card>
@@ -5137,6 +5142,11 @@
         <Skill type="全体阻碍" level="1" unlock="0" summon="true" />
         <Skill type="复活" level="0" unlock="5" summon="true" />
         <Skill type="转生" level="5" unlock="10" />
+    </Card>
+    <Card id="4663" name="深海精灵" wikiId="" race="地狱" speed="3" star="4" cost="15" incrCost="2" at="410" hp="1350" incrAT="30" incrHP="30">
+        <Skill type="沉默" level="0" unlock="0" summon="true" />
+        <Skill type="深海之力" level="0" unlock="5" />
+        <Skill type="逃跑" level="0" unlock="10" />
     </Card>
 
 

@@ -43,6 +43,7 @@ public class Grudge {
             {
                 if(!victim.getStatus().getStatusOf(CardStatusType.咒怨).isEmpty()){
                     victim.removeForce(CardStatusType.咒怨);
+                    victim.removeForce(CardStatusType.沉默);
                 }
             }
             ui.addCardStatus(attackCard, victim, skill, statusItem2);

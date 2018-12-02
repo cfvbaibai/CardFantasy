@@ -9,6 +9,20 @@
                             <td>地图</td>
                             <td>
                                 <select name="map-id" id="map-id" class="map-select" data-mini="true" data-native-menu="true">
+                                    <optgroup label="23-流亡之地">
+                                        <option value="23-1" selected="selected">23-1 流亡者之家</option>
+                                        <option value="23-2">23-2 红土戈壁</option>
+                                        <option value="23-3">23-3 萃取工厂</option>
+                                        <option value="23-4">23-4 迷失花园</option>
+                                        <option value="23-5">23-5 海妖商会</option>
+                                        <option value="23-6">23-6 鲨鳍镇</option>
+                                        <option value="23-7">23-7 悠歌海湾</option>
+                                        <option value="23-8">23-8 黄金岛</option>
+                                        <option value="23-9">23-9 欲望之海</option>
+                                        <option value="23-10">23-10 法外乐园</option>
+                                        <option value="23-11">23-11 猩红密林</option>
+                                        <option value="23-H">23-H 黑石官邸</option>
+                                    </optgroup>
                                     <optgroup label="22-白银之森">
                                         <option value="22-1" selected="selected">22-1 月光林地</option>
                                         <option value="22-2">22-2 邂逅之泉</option>

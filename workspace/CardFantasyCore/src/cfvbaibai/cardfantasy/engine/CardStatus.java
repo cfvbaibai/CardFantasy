@@ -98,6 +98,10 @@ public class CardStatus {
         return new ArrayList<CardStatusItem>(this.items);
     }
 
+    public void removeItem(CardStatusItem item) {
+        this.items.remove(item);
+    }
+
     public boolean containsStatusCausedBy(SkillUseInfo skillUseInfo, CardStatusType type) {
         List<CardStatusItem> items = this.getStatusOf(type);
         for (CardStatusItem item : items) {

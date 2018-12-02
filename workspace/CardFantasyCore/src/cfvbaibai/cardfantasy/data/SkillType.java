@@ -83,6 +83,7 @@ public enum SkillType {
     趁胜追击("40090", 40, 10, SkillTag.独立攻击加成),
     背刺("30879", 40, SkillTag.独立攻击加成),
     大背刺("", 2000,0, SkillTag.独立攻击加成),
+    深海之力("", 1200,0, SkillTag.独立攻击加成),
     突击("", 1500,0, SkillTag.独立攻击加成),
     复仇("40086", 40, 10, SkillTag.独立攻击加成),
     振奋("80192", 40, 10, SkillTag.独立攻击加成),
@@ -339,6 +340,8 @@ public enum SkillType {
     大地吟咏("", 999999, 0, SkillTag.复活),
     同调("", 0),
     曹魏之主("", 0, SkillTag.不动),
+    竹取("", 0),
+    魏文帝("", 0),
     返生术("", 0, SkillTag.不动,SkillTag.复活),
     青囊("", 0, SkillTag.复活),
     送还("30943", 0, SkillTag.即死),
@@ -989,6 +992,7 @@ public enum SkillType {
 
     //手牌添加技能 有判定的
     王佐之才("",SkillType.镜面,0,null,0),
+    英雄之托("",SkillType.竹取,0,SkillType.涅盘,0,SkillTag.抗沉默),
     你们来啊("",SkillType.进军之令,0,null,0),
     你们上啊("",SkillType.号角,5,null,0),
     还有谁("",SkillType.星云锁链,0,null,0),
@@ -1135,7 +1139,7 @@ public enum SkillType {
     支配亡灵("",0, SkillTag.魔王无效, SkillTag.魔族天赋,SkillTag.召唤),
     骸骨大军("",0, SkillTag.魔王无效, SkillTag.魔族天赋,SkillTag.召唤),
     献祭巫术("",0, SkillTag.魔王无效, SkillTag.魔族天赋,SkillTag.召唤),
-    死亡献祭("",0, SkillTag.魔王无效, SkillTag.魔族天赋,SkillTag.召唤),
+    骸骨转化("",0, SkillTag.魔王无效, SkillTag.魔族天赋,SkillTag.召唤),
     魂之枷锁("",5,0, SkillTag.抗免疫,SkillTag.魔王无效),
     死亡诅咒("",1,0, SkillTag.抗免疫,SkillTag.魔王无效),
     审判之印("",4,0, SkillTag.抗免疫,SkillTag.魔王无效),

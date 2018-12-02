@@ -38,6 +38,10 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2018-12-02: <x>欢笑，波波</x><ul>
+                        <li>更新卡牌【死灵法师】，【深海精灵】</li>
+                        <li>更新技能【骸骨转化】【寒霜之指】【魏文帝】</li>
+                    </ul></li>
                     <li>2018-11-27: <x>欢笑，波波</x><ul>
                         <li>根据游戏调整【破军】效果，【反射装甲】不在保护防御技能</li>
                     </ul></li>
