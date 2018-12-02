@@ -3793,6 +3793,21 @@ public class SkillResolver {
                 if (activatorCardCount > activator.getThreshold()) {
                     shouldActivate = true;
                 }
+            } else if (activator.getType() == RuneActivationType.HandLess) {
+                Player playerToCheck = activator.shouldCheckEnemy() ? enemy : player;
+                int activatorCardCount = 0;
+                if (activator.getRace() == null) {
+                    activatorCardCount = playerToCheck.getHand().size();
+                } else {
+                    for (CardInfo card : playerToCheck.getHand().toList()) {
+                        if (card.getRace() == activator.getRace()) {
+                            ++activatorCardCount;
+                        }
+                    }
+                }
+                if (activatorCardCount <= activator.getThreshold()) {
+                    shouldActivate = true;
+                }
             } else if (activator.getType() == RuneActivationType.Deck) {
                 Player playerToCheck = activator.shouldCheckEnemy() ? enemy : player;
                 int activatorCardCount = 0;

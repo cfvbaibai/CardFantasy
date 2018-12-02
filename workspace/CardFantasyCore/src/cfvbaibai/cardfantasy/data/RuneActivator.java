@@ -47,6 +47,9 @@ public class RuneActivator {
     public static RuneActivator myHand(int threshold, Race race) {
         return new RuneActivator(RuneActivationType.Hand, threshold, race, false);
     }
+    public static RuneActivator myHandLess(int threshold, Race race) {
+        return new RuneActivator(RuneActivationType.HandLess, threshold, race, false);
+    }
     public static RuneActivator round(int threshold) {
         return new RuneActivator(RuneActivationType.Round, threshold, null, true);
     }
