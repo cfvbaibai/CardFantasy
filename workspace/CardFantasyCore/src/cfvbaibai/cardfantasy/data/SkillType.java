@@ -938,6 +938,7 @@ public enum SkillType {
     风势("",SkillType.全体加速,2,SkillType.全体阻碍,1),
     群星之怒("",SkillType.灵魂消散 ,0,SkillType.雷霆一击,6),
     星辰变("",SkillType.号角 ,1,SkillType.祈愿,1),
+    雷狱牢囚("",1,0, null,0,SkillType.转生,6),
 
     新生("",0,0,SkillTag.新生,SkillTag.抗夺魂),
     圣灵之泉("",0,0,SkillTag.新生,SkillTag.抗夺魂),

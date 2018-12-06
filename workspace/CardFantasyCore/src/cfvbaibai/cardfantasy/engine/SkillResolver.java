@@ -1975,7 +1975,7 @@ public class SkillResolver {
                             reincarnated = true;
                             break;
                         }
-                    } else if (deadCardSkillUseInfo.getType() == SkillType.蝶语) {
+                    } else if (deadCardSkillUseInfo.getType() == SkillType.蝶语 || deadCardSkillUseInfo.getType() == SkillType.雷狱牢囚) {
                         if (Reincarnation.apply(this, deadCardSkillUseInfo.getAttachedUseInfo2().getSkill(), deadCard, result.unbending, opponent)) {
                             reincarnated = true;
                             break;

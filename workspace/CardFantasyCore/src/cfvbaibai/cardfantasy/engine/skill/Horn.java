@@ -12,7 +12,7 @@ import java.util.List;
 
 public final class Horn {
     public static void apply(SkillUseInfo skillUseInfo, SkillResolver resolver, CardInfo attacker) throws HeroDieSignal {
-        int inpact = skillUseInfo.getSkill().getLevel();
+        int inpact = skillUseInfo.getSkill().getImpact();
         for(int i=0;i<inpact;i++)
         {
             CardInfo target = null;
