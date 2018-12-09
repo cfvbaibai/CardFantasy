@@ -2649,6 +2649,11 @@
         <Skill type="死亡诅咒" level="0" unlock="5" />
         <Skill type="爆裂巫术" level="0" unlock="10" />
     </Card>
+    <Card id="2652" name="网页版神木守护者" wikiId="" race="森林" speed="3" star="5" cost="20" incrCost="4" at="350" hp="1550" incrAT="40" incrHP="48">
+        <Skill type="灵木之体" level="0" unlock="0" />
+        <Skill type="结界立场" level="0" unlock="5" />
+        <Skill type="龙之守护" level="0" unlock="10" />
+    </Card>
 
 
     <!-- 蛮荒  -->

@@ -57,6 +57,7 @@ public enum SkillType {
     修罗道("", 1600, 0,600,0, SkillTag.永久, SkillTag.基础攻击加成),
     贪吃("",100, 20, SkillTag.永久, SkillTag.基础攻击加成),
     邪灵汲取("43445", 0, 3, SkillTag.抗免疫, SkillTag.永久, SkillTag.基础攻击加成, SkillTag.抗不屈),
+    原木汲取("", 50, 0, SkillTag.抗免疫, SkillTag.永久, SkillTag.基础攻击加成, SkillTag.抗不屈),
     森林之力("31121", 25, SkillTag.基础攻击加成, SkillTag.抗削弱),
     地狱之力("31140", 25, SkillTag.基础攻击加成, SkillTag.抗削弱),
     蛮荒之力("31141", 25, SkillTag.基础攻击加成, SkillTag.抗削弱),
@@ -432,7 +433,6 @@ public enum SkillType {
     不朽原核("",10000,0,SkillTag.沉默无效),
     魔王之血("",2000,0,SkillTag.沉默无效),
 
-
     回魂("31131", 1),
     招魂术("", 1,SkillTag.不动),
     祈愿("", 1),
@@ -796,6 +796,7 @@ public enum SkillType {
     铁壁方阵("", 50,0,SkillTag.沉默无效,SkillTag.不动),
     金汤("", 100,-10,SkillTag.沉默无效,SkillTag.不动),
     光之守护("", 50,0,SkillTag.沉默无效),
+    龙之守护("", 0,0,SkillTag.沉默无效),
 
     魔神之刃("", 0, 0, new int[] { 1000, 1000, 3000, 3000, 3000, 3000, 3000, 3000, 3000, 3000, 3000 }, SkillTag.抗免疫, SkillTag.不可洗炼, SkillTag.狙击),
     魔神之甲("", 0, 500, SkillTag.抗免疫, SkillTag.不可洗炼, SkillTag.反击),
@@ -939,6 +940,7 @@ public enum SkillType {
     群星之怒("",SkillType.灵魂消散 ,0,SkillType.雷霆一击,6),
     星辰变("",SkillType.号角 ,1,SkillType.祈愿,1),
     雷狱牢囚("",1,0, null,0,SkillType.转生,6),
+    灵木之体("",1000,0,SkillType.原木汲取,0,SkillType.恶灵汲取,10),
 
     新生("",0,0,SkillTag.新生,SkillTag.抗夺魂),
     圣灵之泉("",0,0,SkillTag.新生,SkillTag.抗夺魂),
