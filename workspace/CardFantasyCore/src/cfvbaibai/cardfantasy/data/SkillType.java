@@ -360,6 +360,7 @@ public enum SkillType {
 
     水流护甲("", 650, -50, 0, 50),
     优雅之姿("", 0, 0, 999999, 0),
+    忠肝义胆("", 150, 0, 500, 0),
     铁骨衣("",1),
     水流壁("", 650, -50, 0, 50,SkillTag.不动),
     传承黯影("", 200, 0, 400, 0),
@@ -528,6 +529,7 @@ public enum SkillType {
     武之圣域("", 700, 0, SkillTag.魔法),
     天谴("31137", 20),
     末世术("", 180, 20),
+    破城之殇("", 600, 0),
     以逸待劳("", 340, 0),
     末世降临("", 1000, 0),
     禁术末世降临("", 1000, 0),
@@ -758,6 +760,7 @@ public enum SkillType {
     日光浴("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼,SkillTag.不动),
     终焉之兆("",0,SkillTag.魔王无效,SkillTag.抗免疫, SkillTag.召唤, SkillTag.不可洗炼),
     月之召唤("",5,0,100,0, SkillTag.不可洗炼,SkillTag.召唤),
+    天兵下凡尘("",2,0,100,0, SkillTag.不可洗炼,SkillTag.召唤),
     特殊体质("",0,0, SkillTag.不可洗炼,SkillTag.召唤),
     月之暗面("",5,0,100,0, SkillTag.不可洗炼,SkillTag.召唤),
     余香("",5,0,100,0, SkillTag.不可洗炼,SkillTag.召唤),
@@ -812,6 +815,7 @@ public enum SkillType {
     被插出五星("", 0, 1),
 
     自动扣血("", 0, 0, SkillTag.抗守护, SkillTag.不可洗炼),
+    背水("", 110, 0, SkillTag.抗守护, SkillTag.不可洗炼),
     未知("", 0, SkillTag.不可洗炼),
 
     //合并技能中单个技能
@@ -941,6 +945,7 @@ public enum SkillType {
     星辰变("",SkillType.号角 ,1,SkillType.祈愿,1),
     雷狱牢囚("",1,0, null,0,SkillType.转生,6),
     灵木之体("",1000,0,SkillType.原木汲取,0,SkillType.恶灵汲取,10),
+    哀歌("", 祈福,4,SkillType.破城之殇,0),
 
     新生("",0,0,SkillTag.新生,SkillTag.抗夺魂),
     圣灵之泉("",0,0,SkillTag.新生,SkillTag.抗夺魂),
@@ -1103,6 +1108,7 @@ public enum SkillType {
     熊猫之风("",null,0,SkillType.连续魔法,6),
     熊猫土火("",熊猫之土,0,SkillType.熊猫之火,0),
     元素分离("", 熊猫土火,0,SkillType.熊猫之风,0, SkillTag.召唤, SkillTag.不可洗炼,SkillTag.不动),
+    固守("",null,0,null,0,SkillTag.守护),
     //连携技能
     //给除特定卡牌以外的卡牌添加技能
     卡组保护("",null,0,SkillType.不屈,0),
@@ -1152,6 +1158,7 @@ public enum SkillType {
     离魂芳印("",2,0,1,0,SkillTag.抗不屈, SkillTag.魔王无效, SkillTag.魔族天赋),
     时空封印("",1,0,1,0,SkillTag.抗不屈, SkillTag.魔王无效, SkillTag.魔族天赋),
     咒怨("",2,0,500,0,SkillTag.抗不屈,SkillTag.永久, SkillTag.基础攻击加成, SkillTag.魔王无效),
+    默示("",2,0,1000,0,SkillTag.抗不屈,SkillTag.永久, SkillTag.基础攻击加成, SkillTag.魔王无效),
     人体炼成("",0, SkillTag.魔王无效, SkillTag.魔族天赋,SkillTag.召唤),
     海滨大作战("",0,0,SkillType.锁魂,0,SkillType.二重大灵轰,0),
     死亡链接("",5,0, SkillTag.抗免疫,SkillTag.魔王无效),

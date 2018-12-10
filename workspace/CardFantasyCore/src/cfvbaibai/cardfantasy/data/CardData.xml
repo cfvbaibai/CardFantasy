@@ -1436,6 +1436,16 @@
         <Skill type="萦梦" level="0" unlock="5" />
         <Skill type="英雄之托" level="0" unlock="10" />
     </Card>
+    <Card id="1683" name="龙城飞将" wikiId="" race="王国" speed="2" star="5" cost="21" incrCost="2" at="600" hp="1600" incrAT="50" incrHP="40">
+        <Skill type="背水" level="0" unlock="0" />
+        <Skill type="忠肝义胆" level="0" unlock="5" />
+        <Skill type="天兵下凡尘" level="0" unlock="10" />
+    </Card>
+    <Card id="1684" name="龙城义士" wikiId="" race="王国" speed="2" star="5" cost="21" incrCost="2" at="600" hp="1600" incrAT="40" incrHP="50">
+        <Skill type="固守" level="0" unlock="0" />
+        <Skill type="默示" level="0" unlock="5" />
+        <Skill type="哀歌" level="0" unlock="10" />
+    </Card>
 
 
 
@@ -3840,7 +3850,7 @@
         <Skill type="死亡践踏" level="0" unlock="5" />
         <Skill type="神佑复苏" level="0" unlock="10" />
     </Card>
-    <Card id="3638" name="结界稻草人·极" wikiId="" race="王国" speed="2" star="5" cost="20" incrCost="2" at="410" hp="1760" incrAT="76" incrHP="91">
+    <Card id="3638" name="结界稻草人·极" wikiId="" race="蛮荒" speed="2" star="5" cost="20" incrCost="2" at="410" hp="1760" incrAT="76" incrHP="91">
         <Skill type="护主" level="0" unlock="0" />
         <Skill type="圣光奏鸣曲" level="0" unlock="5" />
         <Skill type="结界立场" level="0" unlock="10" />

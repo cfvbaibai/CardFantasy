@@ -19,10 +19,16 @@ public final class TogetherBuffOfStar {
             }
             if (ally.getEffectsCausedBy(skillUseInfo).isEmpty()) {
                 resolver.getStage().getUI().useSkill(card, skill, true);
-                resolver.getStage().getUI().adjustAT(card, ally, addAttack, skill);
-                resolver.getStage().getUI().adjustHP(card, ally, addHp, skill);
-                ally.addEffect(new SkillEffect(SkillEffectType.ATTACK_CHANGE, skillUseInfo, addAttack, false));
-                ally.addEffect(new SkillEffect(SkillEffectType.MAXHP_CHANGE, skillUseInfo, addHp, false));
+                if(addAttack>0)
+                {
+                    resolver.getStage().getUI().adjustAT(card, ally, addAttack, skill);
+                    ally.addEffect(new SkillEffect(SkillEffectType.ATTACK_CHANGE, skillUseInfo, addAttack, false));
+                }
+                if(addHp>0)
+                {
+                    resolver.getStage().getUI().adjustHP(card, ally, addHp, skill);
+                    ally.addEffect(new SkillEffect(SkillEffectType.MAXHP_CHANGE, skillUseInfo, addHp, false));
+                }
             }
         }
     }

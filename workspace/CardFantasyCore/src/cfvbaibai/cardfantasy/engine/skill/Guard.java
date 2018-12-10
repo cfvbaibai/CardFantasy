@@ -32,6 +32,10 @@ public final class Guard {
         {
             sdamage = damage*10/100;
         }
+        else if(guardSkill.getType()== SkillType.固守)
+        {
+            sdamage = damage*50/100;
+        }
         //调整守护，但是不影响旧技能
         int impact = guardSkill.getImpact();
         if(guardSkill.getType() == SkillType.守护)
