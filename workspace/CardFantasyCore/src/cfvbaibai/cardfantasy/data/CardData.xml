@@ -5163,6 +5163,21 @@
         <Skill type="深海之力" level="0" unlock="5" />
         <Skill type="逃跑" level="0" unlock="10" />
     </Card>
+    <Card id="4664" name="风暴主宰" wikiId="" race="地狱" speed="1" star="5" cost="21" incrCost="2" at="615" hp="1600" incrAT="40" incrHP="48">
+        <Skill type="风暴之力" level="0" unlock="0"  />
+        <Skill type="不灭灵体" level="0" unlock="5" />
+        <Skill type="能量汇集" level="0" unlock="10" />
+    </Card>
+    <Card id="4665" name="风眼" wikiId="" race="地狱" speed="6" star="5" cost="99" incrCost="0" at="1000" hp="2000" incrAT="0" incrHP="0">
+        <Skill type="不息之风" level="0" unlock="0"  />
+        <Skill type="摧毁" level="0" unlock="5" />
+        <Skill type="风暴涌动" level="0" unlock="10" />
+    </Card>
+    <Card id="4666" name="雷云" wikiId="" race="地狱" speed="6" star="5" cost="99" incrCost="0" at="1000" hp="2000" incrAT="0" incrHP="0">
+        <Skill type="不息之风" level="0" unlock="0"  />
+        <Skill type="雷霆一击" level="8" unlock="5" />
+        <Skill type="风暴雷云" level="0" unlock="10" />
+    </Card>
 
 
 

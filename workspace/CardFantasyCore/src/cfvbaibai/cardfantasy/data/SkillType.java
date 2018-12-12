@@ -159,6 +159,7 @@ public enum SkillType {
     火攻("", 200, 0, 110, 0, SkillTag.魔法),
     地狱烈火("", 500, 0, 100, 0, SkillTag.魔法),
     火烧连营("", 150, 0, 60, 0, SkillTag.魔法),
+    侵略如火("", 160, 0, 70, 0, SkillTag.魔法,SkillTag.抗沉默),
     彻骨霜火("", 200, 0, 40, 0, SkillTag.魔法),
     妖狐火焰("", 150, 0, 80, 0, SkillTag.魔法),
     化学风暴("", 700, 0, 50, 0, SkillTag.魔法),
@@ -240,6 +241,7 @@ public enum SkillType {
     神之守护("", 0, SkillTag.守护),
     祈祷("30954", 50),
     终极祈祷("", 2500,0),
+    补给("", 700,0),
     祈福("", 0, 2),
     复苏("", 5, 0),
     月神降临祈福("", 50, 0),
@@ -292,6 +294,7 @@ public enum SkillType {
     法力反射("30929", 30),
     魔法克星("", 1500,0),
     反射装甲("", 0, SkillTag.即死, SkillTag.抗免疫, SkillTag.魔王无效, SkillTag.魔族天赋),
+    不息之风("", 0, SkillTag.即死, SkillTag.抗免疫, SkillTag.魔王无效, SkillTag.魔族天赋),
     镜面装甲("", 210, 0, SkillTag.抗沉默),
     不夜蔷薇("", 240,0,SkillTag.不动),
     镜面("", 0, SkillTag.抗沉默),
@@ -321,6 +324,9 @@ public enum SkillType {
     涅盘("", 100, 0),
     凤凰涅盘("", 100, 0,SkillTag.复活),
     天选之子("", 60, 0),
+    净身明礼("", 65, 0,SkillTag.抗沉默),
+
+
     //特别处理守护三
     诲人不倦("",65,0,SkillTag.守护),
     鞠躬尽瘁("",65,0,SkillTag.守护),
@@ -360,6 +366,7 @@ public enum SkillType {
 
     水流护甲("", 650, -50, 0, 50),
     优雅之姿("", 0, 0, 999999, 0),
+    不灭灵体("", 1, 0, 999999, 0),
     忠肝义胆("", 150, 0, 500, 0),
     铁骨衣("",1),
     水流壁("", 650, -50, 0, 50,SkillTag.不动),
@@ -446,6 +453,7 @@ public enum SkillType {
     彼岸轮回("",1),
     号角("",1),
     集结旗帜("",1,SkillTag.不动),
+    疾如风("",2,0,SkillTag.抗沉默),
     冲浪集结("",2,0),
     进军之令("",5,0),
     上层精灵的挽歌("", 2, 0),
@@ -759,8 +767,11 @@ public enum SkillType {
     星座能量掌握("",0,0, SkillTag.不可洗炼,SkillTag.召唤),
     日光浴("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼,SkillTag.不动),
     终焉之兆("",0,SkillTag.魔王无效,SkillTag.抗免疫, SkillTag.召唤, SkillTag.不可洗炼),
+
     月之召唤("",5,0,100,0, SkillTag.不可洗炼,SkillTag.召唤),
     天兵下凡尘("",2,0,100,0, SkillTag.不可洗炼,SkillTag.召唤),
+    风暴之力("",4,0,100,0, SkillTag.不可洗炼,SkillTag.召唤),
+
     特殊体质("",0,0, SkillTag.不可洗炼,SkillTag.召唤),
     月之暗面("",5,0,100,0, SkillTag.不可洗炼,SkillTag.召唤),
     余香("",5,0,100,0, SkillTag.不可洗炼,SkillTag.召唤),
@@ -800,6 +811,7 @@ public enum SkillType {
     金汤("", 100,-10,SkillTag.沉默无效,SkillTag.不动),
     光之守护("", 50,0,SkillTag.沉默无效),
     龙之守护("", 0,0,SkillTag.沉默无效),
+    不动如山("", 35,0,SkillTag.抗沉默),
 
     魔神之刃("", 0, 0, new int[] { 1000, 1000, 3000, 3000, 3000, 3000, 3000, 3000, 3000, 3000, 3000 }, SkillTag.抗免疫, SkillTag.不可洗炼, SkillTag.狙击),
     魔神之甲("", 0, 500, SkillTag.抗免疫, SkillTag.不可洗炼, SkillTag.反击),
@@ -957,6 +969,7 @@ public enum SkillType {
     卷土重来("",1,0,SkillTag.抗夺魂),
     摄魂之力("",0,0,SkillTag.抗夺魂),
     情况紧急("",0,0,SkillTag.抗夺魂),
+    风暴雷云("",0,0,SkillTag.抗夺魂),
 
     司命("",100,0),
     不灭金身("",100,0),
@@ -967,6 +980,7 @@ public enum SkillType {
     还魂("",80,0, new int[]{ 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100}),
     不灭("",new int[] { 0,20, 25, 35, 45, 55, 65, 70, 75, 80, 90 }),
     顽强("",new int[] { 0,20, 25, 35, 45, 55, 65, 70, 75, 80, 90 }, SkillTag.不动),
+    难知如阴("",80,0,SkillTag.抗沉默),
 
     安魂引("",0,0,SkillType.还魂,0,SkillType.归魂,1),
 
@@ -1062,6 +1076,8 @@ public enum SkillType {
     灵蛇行("",SkillType.灵蛇腹甲,0,null,0),
     出云蛇势("",SkillType.镜面,0,灵蛇腹甲,0,SkillTag.不动),
     破釜沉舟("",SkillType.反扑,0,null,0),
+    行军补给("",SkillType.补给,0,null,0),
+    徐如林("",SkillType.补给,0,null,0,SkillTag.抗沉默),
 
     金魔装甲("", 50,0),
     //给自身场上所有卡牌添加技能除自己以外
@@ -1081,6 +1097,7 @@ public enum SkillType {
     海滨骚乱("", SkillType.炼金失败,0,null,0,SkillTag.魔王无效, SkillTag.魔族天赋,SkillTag.抗免疫),
     星座能量热情("",0,0,SkillType.祈福,3,SkillType.突突突,0),
     枯萎("", SkillType.厌战,0,null,0,SkillTag.魔王无效, SkillTag.魔族天赋,SkillTag.抗免疫),
+    能量汇集("", SkillType.自毁,0,null,0,SkillTag.魔王无效, SkillTag.魔族天赋,SkillTag.抗免疫,SkillTag.不动),
 
     亡魂咒印("",SkillType.炼金失败,0,null,0,SkillTag.魔王无效, SkillTag.魔族天赋,SkillTag.抗免疫),
     //只给自己添加技能
@@ -1109,6 +1126,7 @@ public enum SkillType {
     熊猫土火("",熊猫之土,0,SkillType.熊猫之火,0),
     元素分离("", 熊猫土火,0,SkillType.熊猫之风,0, SkillTag.召唤, SkillTag.不可洗炼,SkillTag.不动),
     固守("",null,0,null,0,SkillTag.守护),
+    风暴涌动("",null,0,连续魔法,10),
     //连携技能
     //给除特定卡牌以外的卡牌添加技能
     卡组保护("",null,0,SkillType.不屈,0),
