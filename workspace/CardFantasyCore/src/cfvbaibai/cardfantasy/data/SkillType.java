@@ -769,7 +769,7 @@ public enum SkillType {
     终焉之兆("",0,SkillTag.魔王无效,SkillTag.抗免疫, SkillTag.召唤, SkillTag.不可洗炼),
 
     月之召唤("",5,0,100,0, SkillTag.不可洗炼,SkillTag.召唤),
-    天兵下凡尘("",2,0,100,0, SkillTag.不可洗炼,SkillTag.召唤),
+    龙城之志("",2,0,100,0, SkillTag.不可洗炼,SkillTag.召唤),
     风暴之力("",4,0,100,0, SkillTag.不可洗炼,SkillTag.召唤),
 
     特殊体质("",0,0, SkillTag.不可洗炼,SkillTag.召唤),
@@ -980,7 +980,6 @@ public enum SkillType {
     还魂("",80,0, new int[]{ 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100}),
     不灭("",new int[] { 0,20, 25, 35, 45, 55, 65, 70, 75, 80, 90 }),
     顽强("",new int[] { 0,20, 25, 35, 45, 55, 65, 70, 75, 80, 90 }, SkillTag.不动),
-    难知如阴("",80,0,SkillTag.抗沉默),
 
     安魂引("",0,0,SkillType.还魂,0,SkillType.归魂,1),
 
@@ -1168,6 +1167,8 @@ public enum SkillType {
     献祭巫术("",0, SkillTag.魔王无效, SkillTag.魔族天赋,SkillTag.召唤),
     骸骨转化("",0, SkillTag.魔王无效, SkillTag.魔族天赋,SkillTag.召唤),
     魂之枷锁("",5,0, SkillTag.抗免疫,SkillTag.魔王无效),
+    安魂曲("",3,0, SkillTag.抗免疫,SkillTag.魔王无效),
+
     死亡诅咒("",1,0, SkillTag.抗免疫,SkillTag.魔王无效),
     审判之印("",4,0, SkillTag.抗免疫,SkillTag.魔王无效),
     永生的诅咒("",100,0, SkillTag.抗免疫,SkillTag.魔王无效),
@@ -1207,7 +1208,9 @@ public enum SkillType {
     终焉脱壳("",9999999,0),
     永生魔咒("",0),
     金身("",5),
+    金元仙躯("",35,0),
     金刚之躯("",35,0),
+    难知如阴("",80,0,SkillTag.抗沉默),
 
     //防止技能类型
     稳定("",0),

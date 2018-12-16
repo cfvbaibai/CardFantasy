@@ -1421,7 +1421,7 @@
         <Skill type="正义裁决" level="0" unlock="5" />
         <Skill type="不灭之魂" level="0" unlock="10" />
     </Card>
-    <Card id="1680" name="五子良将·文远" wikiId="" race="王国" speed="2" star="5" cost="20" incrCost="2" at="550" hp="1550" incrAT="43" incrHP="45">
+    <Card id="1680" name="五子良将·张辽" wikiId="" race="王国" speed="2" star="5" cost="20" incrCost="2" at="550" hp="1550" incrAT="43" incrHP="45">
         <Skill type="陷阵" level="0" unlock="0" />
         <Skill type="大突袭" level="0" unlock="5" />
         <Skill type="突围" level="0" unlock="10" />
@@ -1439,7 +1439,7 @@
     <Card id="1683" name="龙城飞将" wikiId="" race="王国" speed="2" star="5" cost="21" incrCost="2" at="600" hp="1600" incrAT="50" incrHP="40">
         <Skill type="背水" level="0" unlock="0" />
         <Skill type="忠肝义胆" level="0" unlock="5" />
-        <Skill type="天兵下凡尘" level="0" unlock="10" />
+        <Skill type="龙城之志" level="0" unlock="10" />
     </Card>
     <Card id="1684" name="龙城义士" wikiId="" race="王国" speed="2" star="5" cost="21" incrCost="2" at="600" hp="1600" incrAT="40" incrHP="50">
         <Skill type="固守" level="0" unlock="0" />
@@ -2664,6 +2664,12 @@
         <Skill type="结界立场" level="0" unlock="5" />
         <Skill type="龙之守护" level="0" unlock="10" />
     </Card>
+    <Card id="2653" name="银月精灵" wikiId="" race="森林" speed="3" star="5" cost="16" incrCost="2" at="500" hp="1545" incrAT="35" incrHP="35">
+        <Skill type="嘲讽" level="0" unlock="0" />
+        <Skill type="不灭" level="6" unlock="5" />
+        <Skill type="安魂曲" level="0" unlock="10" />
+    </Card>
+
 
 
     <!-- 蛮荒  -->
