@@ -38,9 +38,12 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2018-12-17: <x>欢笑，波波</x><ul>
+                        <li>调整技能【背水】</li>
+                    </ul></li>
                     <li>2018-12-16: <x>欢笑，波波</x><ul>
                         <li>更新卡牌【银月精灵】</li>
-                        <li>更新技能【安魂曲】，【金元先躯】</li>
+                        <li>更新技能【安魂曲】，【金元仙躯】</li>
                         <li>修复技能【难知如阴】</li>
                         <li>【五子良将·文远】变更为【五子良将·张辽】</li>
                     </ul></li>

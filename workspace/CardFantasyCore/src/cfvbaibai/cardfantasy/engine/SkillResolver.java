@@ -2566,17 +2566,7 @@ public class SkillResolver {
             }
             stage.getUI().useSkillToHero(attacker, defenderPlayer, cardSkill);
             if (damage >= 0) {
-                int remainingDamage = damage;
-                if (!(cardSkill != null && (cardSkill.getType() == SkillType.自动扣血 || cardSkill.getType() == SkillType.羽扇虎拳 || cardSkill.getType() == SkillType.天罡咒))) {
-                    remainingDamage = remainingDamage * defenderPlayer.getCoefficient() / 100;
-                }
-                if (remainingDamage > defenderPlayer.getHP()) {
-                    remainingDamage = defenderPlayer.getHP();
-                }
-                remainingDamage = this.resolveAttackHeroBlockingSkills(attacker, defenderPlayer, cardSkill, remainingDamage);
-                if (remainingDamage > 0) {
-                    stage.getUI().attackHero(attacker, defenderPlayer, cardSkill, remainingDamage);
-                    defenderPlayer.setHP(defenderPlayer.getHP() - remainingDamage);
+                if (damage > 0) {
                     if(!(cardSkill != null && (cardSkill.getType() == SkillType.背水)))
                     {
                         for (CardInfo cardInfo : defenderPlayer.getField().getAliveCards()) {
@@ -2589,6 +2579,19 @@ public class SkillResolver {
                             }
                         }
                     }
+                }
+                int remainingDamage = damage;
+                if (!(cardSkill != null && (cardSkill.getType() == SkillType.自动扣血 || cardSkill.getType() == SkillType.羽扇虎拳 || cardSkill.getType() == SkillType.天罡咒))) {
+                    remainingDamage = remainingDamage * defenderPlayer.getCoefficient() / 100;
+                }
+                if (remainingDamage > defenderPlayer.getHP()) {
+                    remainingDamage = defenderPlayer.getHP();
+                }
+                remainingDamage = this.resolveAttackHeroBlockingSkills(attacker, defenderPlayer, cardSkill, remainingDamage);
+                if(remainingDamage >0)
+                {
+                    stage.getUI().attackHero(attacker, defenderPlayer, cardSkill, remainingDamage);
+                    defenderPlayer.setHP(defenderPlayer.getHP() - remainingDamage);
                 }
             } else {
                 if (defenderPlayer.getHP() - damage > defenderPlayer.getMaxHP()) {
