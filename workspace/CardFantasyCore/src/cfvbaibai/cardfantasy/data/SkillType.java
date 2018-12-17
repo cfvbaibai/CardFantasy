@@ -827,7 +827,7 @@ public enum SkillType {
     被插出五星("", 0, 1),
 
     自动扣血("", 0, 0, SkillTag.抗守护, SkillTag.不可洗炼),
-    背水("", 110, 0, SkillTag.抗守护, SkillTag.不可洗炼),
+    背水("", 110, 0, SkillTag.不可洗炼),
     未知("", 0, SkillTag.不可洗炼),
 
     //合并技能中单个技能

@@ -2574,7 +2574,7 @@ public class SkillResolver {
                             {
                                 if(skillUseInfo.getType() == SkillType.背水)
                                 {
-                                    attackHero(cardInfo,attacker.getOwner(),skillUseInfo.getSkill(),damage);
+                                    attackHero(cardInfo,attacker.getOwner(),skillUseInfo.getSkill(),damage*skillUseInfo.getSkill().getImpact());
                                 }
                             }
                         }
