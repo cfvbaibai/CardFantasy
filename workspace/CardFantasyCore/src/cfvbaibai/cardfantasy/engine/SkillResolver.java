@@ -332,8 +332,11 @@ public class SkillResolver {
                 Resurrection.apply(this, skillUseInfo, attacker);
             } else if (skillUseInfo.getType() == SkillType.祈愿 || skillUseInfo.getType() == SkillType.神恩|| skillUseInfo.getType() == SkillType.萦梦) {
                 Supplication.apply(this, skillUseInfo, attacker, defender);
-            } else if (skillUseInfo.getType() == SkillType.号角 || skillUseInfo.getType() == SkillType.集结旗帜 || skillUseInfo.getType() == SkillType.疾如风) {
+            } else if (skillUseInfo.getType() == SkillType.号角 || skillUseInfo.getType() == SkillType.集结旗帜) {
                 Horn.apply(skillUseInfo, this, attacker);
+            } else if (skillUseInfo.getType() == SkillType.疾如风) {
+                Supplication.apply(this, skillUseInfo.getAttachedUseInfo1(), attacker, defender);
+                Horn.apply(skillUseInfo.getAttachedUseInfo2(), this, attacker);
             } else if (skillUseInfo.getType() == SkillType.觉醒风之祈愿) {
                 if (skillUseInfo.getOwner().getOwner().getHand().isFull()) {
                     Horn.apply(skillUseInfo.getAttachedUseInfo1(), this, attacker);
@@ -673,8 +676,11 @@ public class SkillResolver {
                 HandSword.apply(this, skillUseInfo, attacker, defender, -1);
             } else if (skillUseInfo.getType() == SkillType.熔魂之刃) {
                 HandSword.apply(this, skillUseInfo, attacker, defender, 1);
-            } else if (skillUseInfo.getType() == SkillType.火烧连营 || skillUseInfo.getType() == SkillType.彻骨霜火 || skillUseInfo.getType() == SkillType.妖狐火焰 || skillUseInfo.getType() == SkillType.侵略如火) {
+            } else if (skillUseInfo.getType() == SkillType.火烧连营 || skillUseInfo.getType() == SkillType.彻骨霜火 || skillUseInfo.getType() == SkillType.妖狐火焰) {
                 ContinuousFire.apply(this, skillUseInfo, attacker, defender);
+            } else if (skillUseInfo.getType() == SkillType.侵略如火) {
+                MagicMark.apply(this, skillUseInfo.getAttachedUseInfo1(), attacker, defender, -1);
+                ContinuousFire.apply(this, skillUseInfo.getAttachedUseInfo2(), attacker, defender);
             } else if (skillUseInfo.getType() == SkillType.化学风暴 || skillUseInfo.getType() == SkillType.生化风暴) {
                 ChemicalRage.apply(this, skillUseInfo, attacker, defender);
             } else if (skillUseInfo.getType() == SkillType.精神狂乱) {
@@ -2081,7 +2087,7 @@ public class SkillResolver {
                             break;
                         }
                     } else if (deadCardSkillUseInfo.getType() == SkillType.难知如阴) {
-                        if (MultipleReincarnation.apply(this, deadCardSkillUseInfo, deadCard, result.unbending, opponent, 20, 0, 80)) {
+                        if (MultipleReincarnation.apply(this, deadCardSkillUseInfo, deadCard, result.unbending, opponent, 50, 0, 50)) {
                             reincarnated = true;
                             break;
                         }
@@ -2400,6 +2406,13 @@ public class SkillResolver {
                 if (skillUseInfo.getType() == SkillType.魔族之血 || skillUseInfo.getType() == SkillType.邪甲术 || skillUseInfo.getType() == SkillType.不朽原核
                         || skillUseInfo.getType() == SkillType.白袍银甲 || skillUseInfo.getType() == SkillType.魔王之血 || skillUseInfo.getType() == SkillType.魔神加护
                         || skillUseInfo.getType() == SkillType.嗜血潜能 || skillUseInfo.getType() == SkillType.灵木之体) {
+
+                    //减伤技能只对敌方造成的伤害生效
+                    if(attacker.getOwner() == defender.getOwner())
+                    {
+                        break;
+                    }
+
                     if(isPhysicalAttackSkill(skill)) {
                         if (attacker instanceof CardInfo) {
                             if (resolveStopBlockSkill(skillUseInfo.getSkill(), (CardInfo) attacker, defender)) {
@@ -3323,6 +3336,9 @@ public class SkillResolver {
                     SacrificeBuff.apply(this, skillUseInfo, card, enemy, 1, 2);
                 } else if (skillUseInfo.getType() == SkillType.时间扭曲) {
                     AllDelay.apply(skillUseInfo, this, card, enemy);
+                } else if (skillUseInfo.getType() == SkillType.木牛流马) {
+                    Horn.apply(skillUseInfo.getAttachedUseInfo1(), this, card);
+                    RegressionSoul.apply(this, skillUseInfo.getAttachedUseInfo2(), card, enemy);
                 }
             }
         }
@@ -3720,7 +3736,7 @@ public class SkillResolver {
     }
 
     public boolean resolveStopCardDelay(CardInfo defenderCard) {
-        if(defenderCard.containsUsableSkill(SkillType.风行) || defenderCard.containsUsableSkill(SkillType.免疫风行))
+        if(defenderCard.containsUsableSkill(SkillType.风行) || defenderCard.containsUsableSkill(SkillType.免疫风行)  || defenderCard.containsUsableSkill(SkillType.徐如林))
         {
             return true;
         }

@@ -38,6 +38,11 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2018-12-19: <x>欢笑，波波</x><ul>
+                        <li>调整减伤类技能，减伤只对敌方伤害生效。（过载，狂乱类技能不在受减伤影响）</li>
+                        <li>调整技能【难知如阴】【不动如山】【侵略如火】【疾如风】【徐如林】</li>
+                        <li>添加技能【木牛流马】</li>
+                    </ul></li>
                     <li>2018-12-17: <x>欢笑，波波</x><ul>
                         <li>调整技能【背水】</li>
                     </ul></li>
