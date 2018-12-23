@@ -94,7 +94,7 @@ public class SkillResolver {
         List<CardInfo> cards = attacker.getField().getAliveCards();
         for (CardInfo card : cards) {
             for (SkillUseInfo skillUseInfo : card.getUsableNormalSkills()) {
-                if (skillUseInfo.getType() == SkillType.神性祈求 || skillUseInfo.getType() == SkillType.神性祈祷) {
+                if (skillUseInfo.getType() == SkillType.神性祈求 || skillUseInfo.getType() == SkillType.神性祈祷 || skillUseInfo.getType() == SkillType.阴阳印) {
                     Purify.apply(skillUseInfo, this, card, -1);
                 } else if (skillUseInfo.getType() == SkillType.净化领域) {
                     Purify.apply(skillUseInfo, this, card, -1);
@@ -226,6 +226,8 @@ public class SkillResolver {
                 Overdraw.apply(this, skillUseInfo, attacker);
             } else if (skillUseInfo.getType() == SkillType.力竭) {
                 Exhausted.apply(this, skillUseInfo, attacker);
+            } else if (skillUseInfo.getType() == SkillType.燃能) {
+                Genie.apply(this, skillUseInfo, attacker);
             }
             else if (skillUseInfo.getType() == SkillType.未知) {
                 // JUST A PLACEHOLDER
@@ -715,10 +717,6 @@ public class SkillResolver {
                     || skillUseInfo.getType() == SkillType.火焰呼吸) {
                 GreatFireMagic.apply(skillUseInfo.getAttachedUseInfo1().getSkill(), this, attacker, defender, -1, true);
                 BurningFlame.apply(skillUseInfo.getAttachedUseInfo2(), this, attacker, defender, -1);
-            } else if (skillUseInfo.getType() == SkillType.圣火) {
-                Silence.apply(this, skillUseInfo, attacker, defender, false, false);
-                GreatFireMagic.apply(skillUseInfo.getAttachedUseInfo1().getSkill(), this, attacker, defender, -1, true);
-                BurningFlame.apply(skillUseInfo.getAttachedUseInfo2(), this, attacker, defender, -1);
             } else if (skillUseInfo.getType() == SkillType.浴火) {
                 GreatFireMagic.apply(skillUseInfo.getAttachedUseInfo1().getAttachedUseInfo1().getSkill(), this, attacker, defender, -1, true);
                 BurningFlame.apply(skillUseInfo.getAttachedUseInfo1().getAttachedUseInfo2(), this, attacker, defender, -1);
@@ -1055,6 +1053,13 @@ public class SkillResolver {
                 SummonWhenAttack.apply(this, skillUseInfo, attacker, 1,false, "风眼","雷云");
             } else if (skillUseInfo.getType() == SkillType.能量汇集) {
                 AddSkillOpponent.apply(this, skillUseInfo, attacker, skillUseInfo.getAttachedUseInfo1().getSkill(), 1, defender,2);
+            } else if (skillUseInfo.getType() == SkillType.审判) {
+                Silence.apply(this, skillUseInfo.getAttachedUseInfo1(), attacker, defender, false, false);
+            } else if (skillUseInfo.getType() == SkillType.契约式神) {
+                AddCardAndExtraSkill.apply(this, skillUseInfo, attacker, SummonType.Summoning, 1,
+                        "酒吞童子", "大天狗", "雪女", "八岐大蛇", "辉夜姬");
+            } else if (skillUseInfo.getType() == SkillType.阴阳印) {
+                MagicMark.apply(this, skillUseInfo, attacker, defender, 2);
             }
         }
         if ((attacker.containsAllSkill(SkillType.连续魔法) || attacker.containsAllSkill(SkillType.黄天当立) || attacker.containsAllSkill(SkillType.连奏) || attacker.containsAllSkill(SkillType.神性爆发) || attacker.containsAllSkill(SkillType.时光迁跃) || attacker.containsAllSkill(SkillType.我们生命中的时光)) && !attacker.isDead() && status == 0) {
@@ -1925,6 +1930,10 @@ public class SkillResolver {
                     HeavenWrath.apply(this, deadCardSkillUseInfo.getAttachedUseInfo2().getSkill(), deadCard, opponent);
                 } else if (deadCardSkillUseInfo.getType() == SkillType.安魂曲) {
                     SoulChains.apply(this, deadCardSkillUseInfo, deadCard, opponent, 3, 2);
+                } else if (deadCardSkillUseInfo.getType() == SkillType.圣火) {
+                    HolyFire.apply(deadCardSkillUseInfo.getAttachedUseInfo1().getSkill(), this, deadCard, opponent);
+                    GreatFireMagic.apply(deadCardSkillUseInfo.getAttachedUseInfo2().getAttachedUseInfo1().getSkill(), this, deadCard, opponent, -1, true);
+                    BurningFlame.apply(deadCardSkillUseInfo.getAttachedUseInfo2().getAttachedUseInfo2(), this, deadCard, opponent, -1);
                 }
             }
         }
@@ -3339,6 +3348,9 @@ public class SkillResolver {
                 } else if (skillUseInfo.getType() == SkillType.木牛流马) {
                     Horn.apply(skillUseInfo.getAttachedUseInfo1(), this, card);
                     RegressionSoul.apply(this, skillUseInfo.getAttachedUseInfo2(), card, enemy);
+                } else if (skillUseInfo.getType() == SkillType.召唤式神) {
+                    Summon.apply(this, skillUseInfo, card, SummonType.RandomSummoning, 1,
+                            "酒吞童子", "大天狗", "雪女", "八岐大蛇", "辉夜姬");
                 }
             }
         }

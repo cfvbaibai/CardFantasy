@@ -55,6 +55,7 @@ public enum SkillType {
     过载("30946", 20, 30, SkillTag.永久, SkillTag.基础攻击加成),
     勤学苦练("", 150, 0, SkillTag.永久, SkillTag.基础攻击加成),
     修罗道("", 1600, 0,600,0, SkillTag.永久, SkillTag.基础攻击加成),
+    燃能("", 1000, 0,1000,0, SkillTag.永久, SkillTag.基础攻击加成),
     贪吃("",100, 20, SkillTag.永久, SkillTag.基础攻击加成),
     邪灵汲取("43445", 0, 3, SkillTag.抗免疫, SkillTag.永久, SkillTag.基础攻击加成, SkillTag.抗不屈),
     原木汲取("", 50, 0, SkillTag.抗免疫, SkillTag.永久, SkillTag.基础攻击加成, SkillTag.抗不屈),
@@ -650,6 +651,7 @@ public enum SkillType {
     酩酊("",155,0),
     东风("",175,0),
     灵力魔阵("", 150,0),
+    阴阳印("", 900,0),
 
     燕返("", 0, 0),
     袈裟斩燕返("", 0, 0),
@@ -767,6 +769,7 @@ public enum SkillType {
     星座能量掌握("",0,0, SkillTag.不可洗炼,SkillTag.召唤),
     日光浴("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼,SkillTag.不动),
     终焉之兆("",0,SkillTag.魔王无效,SkillTag.抗免疫, SkillTag.召唤, SkillTag.不可洗炼),
+    召唤式神("",0,0, SkillTag.不可洗炼,SkillTag.召唤),
 
     月之召唤("",5,0,100,0, SkillTag.不可洗炼,SkillTag.召唤),
     龙城之志("",2,0,100,0, SkillTag.不可洗炼,SkillTag.召唤),
@@ -785,6 +788,8 @@ public enum SkillType {
     分裂("", 7, 0,SkillTag.抗夺魂),
     分裂术("",7,0,SkillType.复苏,0,null,0,SkillTag.抗夺魂),//生成卡牌，连携
     土豪卡组("", 26, 0,SkillTag.抗夺魂),
+    契约式神("", 5, 0,SkillTag.抗夺魂),
+
 
 
     圣光洗礼("", 0, 0, SkillTag.抗免疫, SkillTag.不可洗炼, SkillTag.魔王无效, SkillTag.魔族天赋),
@@ -901,7 +906,7 @@ public enum SkillType {
     破阵弧光("", 0, 0, new int[] { 1200, 1200, 1200, 1200, 1200, 1200, 1200, 1200, 1200, 1200, 1200 }, SkillTag.抗免疫, SkillTag.狙击),
     涤罪神启("", SkillType.灵魂消散,0, SkillType.祈福,4, SkillTag.不可洗炼),
     纯质流火("",SkillType.流火,0,SkillType.天火,6),
-    圣火("", SkillType.流火,0,SkillType.天火,6, SkillTag.抗免疫, SkillTag.抗不屈, SkillTag.沉默, SkillTag.魔王无效, SkillTag.魔族天赋),
+    圣火("", SkillType.圣炎,0,SkillType.纯质流火,0),
     火焰呼吸("",SkillType.呼吸火焰,0,SkillType.天火,9),
     烈火冲击("",SkillType.烈火,0,SkillType.天火,1),
     噬血狂袭("",2500,0,SkillType.终极天谴,0,SkillType.终极祈祷,0),
@@ -961,6 +966,7 @@ public enum SkillType {
     木牛流马("", 号角,1,SkillType.归魂,1,SkillTag.不动),
     侵略如火("",SkillType.侵略法阵,0,SkillType.侵略火,0,SkillTag.抗沉默),
     疾如风("",SkillType.祈愿,1,SkillType.号角,2,SkillTag.抗沉默),
+    审判("",SkillType.沉默,0,SkillType.连斩,0),
 
     新生("",0,0,SkillTag.新生,SkillTag.抗夺魂),
     圣灵之泉("",0,0,SkillTag.新生,SkillTag.抗夺魂),
