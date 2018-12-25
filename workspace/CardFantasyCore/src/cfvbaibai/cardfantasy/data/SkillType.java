@@ -55,7 +55,6 @@ public enum SkillType {
     过载("30946", 20, 30, SkillTag.永久, SkillTag.基础攻击加成),
     勤学苦练("", 150, 0, SkillTag.永久, SkillTag.基础攻击加成),
     修罗道("", 1600, 0,600,0, SkillTag.永久, SkillTag.基础攻击加成),
-    燃能("", 1000, 0,1000,0, SkillTag.永久, SkillTag.基础攻击加成),
     贪吃("",100, 20, SkillTag.永久, SkillTag.基础攻击加成),
     邪灵汲取("43445", 0, 3, SkillTag.抗免疫, SkillTag.永久, SkillTag.基础攻击加成, SkillTag.抗不屈),
     原木汲取("", 50, 0, SkillTag.抗免疫, SkillTag.永久, SkillTag.基础攻击加成, SkillTag.抗不屈),
@@ -342,6 +341,7 @@ public enum SkillType {
     群体脱困("", 0),
     群体追击("", 15, SkillTag.额外攻击加成),
     复活("30953", 0, SkillTag.复活),
+    不死灵药("", 0, SkillTag.不动,SkillTag.复活),
     全体复活("", 0, SkillTag.复活),
     智慧之光("", 0, SkillTag.复活),
     星座能量信念("", 0, SkillTag.复活),
@@ -586,6 +586,7 @@ public enum SkillType {
 
     屠戮("", 3500, 0, 1, 0, SkillTag.抗免疫),
     赤之魔枪("", 200, 50, 3, 0, SkillTag.抗免疫),
+    圣火("", 600, 0, 3, 0, SkillTag.抗免疫),
     五雷轰顶("",1000,0,3,0, SkillTag.抗免疫),
     雷神附体("",1000,0,3,0, SkillTag.抗免疫),
     天道无常("",1000,0,3,0, SkillTag.抗免疫,SkillTag.抗夺魂),
@@ -906,7 +907,6 @@ public enum SkillType {
     破阵弧光("", 0, 0, new int[] { 1200, 1200, 1200, 1200, 1200, 1200, 1200, 1200, 1200, 1200, 1200 }, SkillTag.抗免疫, SkillTag.狙击),
     涤罪神启("", SkillType.灵魂消散,0, SkillType.祈福,4, SkillTag.不可洗炼),
     纯质流火("",SkillType.流火,0,SkillType.天火,6),
-    圣火("", SkillType.圣炎,0,SkillType.纯质流火,0),
     火焰呼吸("",SkillType.呼吸火焰,0,SkillType.天火,9),
     烈火冲击("",SkillType.烈火,0,SkillType.天火,1),
     噬血狂袭("",2500,0,SkillType.终极天谴,0,SkillType.终极祈祷,0),
@@ -966,7 +966,6 @@ public enum SkillType {
     木牛流马("", 号角,1,SkillType.归魂,1,SkillTag.不动),
     侵略如火("",SkillType.侵略法阵,0,SkillType.侵略火,0,SkillTag.抗沉默),
     疾如风("",SkillType.祈愿,1,SkillType.号角,2,SkillTag.抗沉默),
-    审判("",SkillType.沉默,0,SkillType.连斩,0),
 
     新生("",0,0,SkillTag.新生,SkillTag.抗夺魂),
     圣灵之泉("",0,0,SkillTag.新生,SkillTag.抗夺魂),
@@ -1065,8 +1064,9 @@ public enum SkillType {
     秘纹领域("",SkillType.镜面,0,null,0),
     圣光奏鸣曲("",999999,0,SkillType.圣母吟咏,8,null,0),
     神圣领域("",SkillType.圣盾,0,SkillType.免疫,0),
-    反击阵列("",SkillType.不动,0,SkillType.反击屏障,0),
+    反击阵列("",200,0,SkillType.不动,0,SkillType.反击屏障,0,SkillTag.不动, SkillTag.抗免疫, SkillTag.反击),
     正义庇所("",50,0,SkillType.物理免疫,0,SkillType.魔法免疫,0),
+    不可侵犯("",SkillType.镜面装甲,0,null,0),
 
 
     //给自身场上所有卡牌添加技能

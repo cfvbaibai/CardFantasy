@@ -3852,9 +3852,9 @@
         <Skill type="碎裂怒吼" level="0" unlock="10" />
     </Card>
     <Card id="3636" name="灰烬天使" wikiId="" race="蛮荒" speed="3" star="5" cost="18" incrCost="2" at="520" hp="1550" incrAT="45" incrHP="40">
-        <Skill type="审判" level="0" unlock="0" />
-        <Skill type="燃能" level="0" unlock="5" />
-        <Skill type="圣火" level="0" unlock="10" />
+        <Skill type="制裁之拳" level="0" unlock="0" />
+        <Skill type="圣火" level="0" unlock="5" />
+        <Skill type="不可侵犯" level="0" unlock="10" />
     </Card>
     <Card id="3637" name="死亡麋鹿" wikiId="" race="蛮荒" speed="3" star="5" cost="18" incrCost="2" at="545" hp="1550" incrAT="38" incrHP="40">
         <Skill type="极寒冲击" level="5" unlock="0" />
