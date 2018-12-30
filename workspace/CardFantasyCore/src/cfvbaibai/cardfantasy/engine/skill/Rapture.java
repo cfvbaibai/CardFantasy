@@ -36,6 +36,7 @@ public class Rapture {
             ui.addCardStatus(attackCard, victim, skill, statusItem);
             victim.addStatus(statusItem);
             defenderHero.getField().removeCard(victim);
+            resolver.resolveLeaveSkills(victim);
             ui.returnCard(attackCard, victim, skill);
             if(victim.isSummonedMinion())
             {

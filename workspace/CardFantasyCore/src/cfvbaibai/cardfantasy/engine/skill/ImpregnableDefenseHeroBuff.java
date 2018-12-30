@@ -58,7 +58,7 @@ public final class ImpregnableDefenseHeroBuff {
         }
         for(SkillUseInfo skillUseInfo:removeSkillUserInfoList)
         {
-            attacker.getOwner().removeCounterAttackHero(skillUseInfo);
+            attacker.getOwner().removeImpregnableDefenseHero(skillUseInfo);
         }
     }
 }

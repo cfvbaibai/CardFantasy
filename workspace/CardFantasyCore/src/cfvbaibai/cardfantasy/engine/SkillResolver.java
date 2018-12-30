@@ -2560,10 +2560,11 @@ public class SkillResolver {
                     }
                 }
                 if (card.getOriginalOwner() != null && card.getOriginalOwner() != card.getOwner()) {
+                    Player opponent = deadCard.getOwner();
                     card.restoreOwner();
                     //    card.getOwner().getGrave().addCard(card);
                     card.getOwner().getBeforeDeath().addCard(card);
-                    card.switchOwner(attacker.getOwner());
+                    card.switchOwner(opponent);
                     return DeadType.SoulControlDead;
                 }
                 card.restoreOwner();
