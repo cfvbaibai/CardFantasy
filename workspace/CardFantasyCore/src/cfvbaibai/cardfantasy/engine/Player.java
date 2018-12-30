@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
 import cfvbaibai.cardfantasy.data.Card;
 import cfvbaibai.cardfantasy.data.PlayerInfo;
 import cfvbaibai.cardfantasy.data.RuneData;
@@ -21,8 +22,9 @@ public class Player extends EntityInfo {
     private List<SkillUseInfo> cardBuffs;
     private int hp;
     private List<CardInfo> primaryCards;
-    private int coefficient;
     private List<CardInfo>  productCards;
+    private List<SkillUseInfo>  counterAttackHero;//背水系列技能
+    private List<SkillUseInfo>  impregnableDefenseHero;//铁壁系列技能
     
     public Player(PlayerInfo playerInfo, StageInfo stage) {
         this.playerInfo = playerInfo;
@@ -36,8 +38,9 @@ public class Player extends EntityInfo {
         this.runeBox = new RuneBox(this, playerInfo.getRunes());
         this.hp = playerInfo.getMaxHP();
         this.cardBuffs = new ArrayList<SkillUseInfo>();
-        this.coefficient = 100;
         this.productCards = new ArrayList<CardInfo>();
+        this.counterAttackHero = new ArrayList<SkillUseInfo>();
+        this.impregnableDefenseHero = new ArrayList<SkillUseInfo>();
         for (Skill cardBuff : playerInfo.getCardBuffs()) {
             this.cardBuffs.add(new SkillUseInfo(this, cardBuff));
         }
@@ -93,14 +96,6 @@ public class Player extends EntityInfo {
     
     public OutField getOutField() {
         return this.outField;
-    }
-
-    public int getCoefficient() {
-        return this.coefficient;
-    }
-
-    public void setCoefficient(int coefficient) {
-        this.coefficient = coefficient;
     }
     
     public int getHP() {
@@ -174,5 +169,43 @@ public class Player extends EntityInfo {
 
     public void addProductCards(CardInfo productCard) {
         this.productCards.add(productCard);
+    }
+
+    public List<SkillUseInfo> getCounterAttackHero() {
+        return this.counterAttackHero;
+    }
+
+    public void addCounterAttackHero(SkillUseInfo skillUseInfo) {
+        for(SkillUseInfo addSkillUserInfo:this.counterAttackHero)
+        {
+            if(addSkillUserInfo == skillUseInfo)
+            {
+                throw new CardFantasyRuntimeException("skillUseInfo is reused");
+            }
+        }
+        this.counterAttackHero.add(skillUseInfo);
+    }
+
+    public void removeCounterAttackHero(SkillUseInfo skillUseInfo) {
+        this.counterAttackHero.remove(skillUseInfo);
+    }
+
+    public List<SkillUseInfo> getImpregnableDefenseHero() {
+        return this.impregnableDefenseHero;
+    }
+
+    public void addImpregnableDefenseHero(SkillUseInfo skillUseInfo) {
+        for(SkillUseInfo addSkillUserInfo:this.impregnableDefenseHero)
+        {
+            if(addSkillUserInfo == skillUseInfo)
+            {
+                throw new CardFantasyRuntimeException("skillUseInfo is reused");
+            }
+        }
+        this.impregnableDefenseHero.add(skillUseInfo);
+    }
+
+    public void removeImpregnableDefenseHero(SkillUseInfo skillUseInfo) {
+        this.impregnableDefenseHero.remove(skillUseInfo);
     }
 }

@@ -668,6 +668,7 @@ public enum SkillType {
     星云锁链("", 0, 0),
     星团锁链("", 0, 0,SkillTag.不动),
     进军之势("", 3, 0,SkillTag.不动),
+    荼蘼盛放("", 0, 0,SkillTag.不动),
     生命链接("", 0),
     逃跑("", 0,SkillTag.抗夺魂),
     撤退("", 0,SkillTag.抗夺魂,SkillTag.不动),
@@ -762,6 +763,7 @@ public enum SkillType {
     幻影军团("",4,0,70,0, SkillTag.不可洗炼),
     秘术投影("",4,0,100,0, SkillTag.不可洗炼),
     幻影奇袭("",4,0,60,0, SkillTag.不可洗炼),
+    幻象幽灵("",2,0,100,0, SkillTag.不可洗炼),
     圣翼骑士("",4,0,70,0, SkillTag.不可洗炼,SkillTag.复活),
     英魂唤醒("",0,0, SkillTag.不可洗炼,SkillTag.召唤,SkillTag.不动),
     英魂召集("",0,0, SkillTag.不可洗炼,SkillTag.召唤,SkillTag.不动),
@@ -966,6 +968,7 @@ public enum SkillType {
     木牛流马("", 号角,1,SkillType.归魂,1,SkillTag.不动),
     侵略如火("",SkillType.侵略法阵,0,SkillType.侵略火,0,SkillTag.抗沉默),
     疾如风("",SkillType.祈愿,1,SkillType.号角,2,SkillTag.抗沉默),
+    幽灵幻象("",SkillType.吸血,10,SkillType.幻象幽灵,0),
 
     新生("",0,0,SkillTag.新生,SkillTag.抗夺魂),
     圣灵之泉("",0,0,SkillTag.新生,SkillTag.抗夺魂),

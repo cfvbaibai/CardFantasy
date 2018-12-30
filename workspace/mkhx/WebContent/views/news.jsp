@@ -38,6 +38,11 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2018-12-30: <x>欢笑，波波</x><ul>
+                        <li>优化技能【背水】【铁壁】的结算</li>
+                        <li>添加技能【荼蘼盛放】</li>
+                        <li>添加卡牌【幽灵禁卫】</li>
+                    </ul></li>
                     <li>2018-12-25: <x>欢笑，波波</x><ul>
                         <li>修改技能【反击阵列】添加不动和反击屏障效果</li>
                         <li>修改技能【驱魔】不能驱散【压制】，【沉默】</li>

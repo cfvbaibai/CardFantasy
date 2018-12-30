@@ -94,7 +94,7 @@ public class SkillResolver {
         List<CardInfo> cards = attacker.getField().getAliveCards();
         for (CardInfo card : cards) {
             for (SkillUseInfo skillUseInfo : card.getUsableNormalSkills()) {
-                if (skillUseInfo.getType() == SkillType.神性祈求 || skillUseInfo.getType() == SkillType.神性祈祷 || skillUseInfo.getType() == SkillType.阴阳印) {
+                if (skillUseInfo.getType() == SkillType.神性祈求 || skillUseInfo.getType() == SkillType.神性祈祷 || skillUseInfo.getType() == SkillType.阴阳印 || skillUseInfo.getType() == SkillType.荼蘼盛放) {
                     Purify.apply(skillUseInfo, this, card, -1);
                 } else if (skillUseInfo.getType() == SkillType.净化领域) {
                     Purify.apply(skillUseInfo, this, card, -1);
@@ -2162,7 +2162,8 @@ public class SkillResolver {
                         skillUseInfo.getType() == SkillType.村正) {
                     BloodDrain.apply(skillUseInfo.getSkill(), this, attacker, defender, normalAttackDamage);
                 }
-                if (skillUseInfo.getType() == SkillType.樱魂 || skillUseInfo.getType() == SkillType.神亭酣战 || skillUseInfo.getType() == SkillType.肉食者) {
+                if (skillUseInfo.getType() == SkillType.樱魂 || skillUseInfo.getType() == SkillType.神亭酣战 || skillUseInfo.getType() == SkillType.肉食者
+                        || skillUseInfo.getType() == SkillType.幽灵幻象) {
                     BloodDrain.apply(skillUseInfo.getSkill().getAttachedSkill1(), this, attacker, defender, normalAttackDamage);
                 }
             }
@@ -2208,6 +2209,9 @@ public class SkillResolver {
             else if (skillUseInfo.getType() == SkillType.幻影军团 || skillUseInfo.getType() == SkillType.幻影奇袭
                     || skillUseInfo.getType() == SkillType.圣翼骑士 || skillUseInfo.getType() == SkillType.秘术投影) {
                 SummonWhenAttack.apply(this, skillUseInfo, attacker, 1,true, attacker.getName());
+            }
+            else if (skillUseInfo.getType() == SkillType.幽灵幻象) {
+                SummonWhenAttack.apply(this, skillUseInfo.getAttachedUseInfo2(), attacker, 1,true, attacker.getName());
             }
             else if (skillUseInfo.getType() == SkillType.离魂剑) {
                 SoulControlMutiple.apply(this, skillUseInfo, attacker, defenderHero);
@@ -2585,20 +2589,12 @@ public class SkillResolver {
                 if (damage > 0) {
                     if(!(cardSkill != null && (cardSkill.getType() == SkillType.背水)))
                     {
-                        for (CardInfo cardInfo : defenderPlayer.getField().getAliveCards()) {
-                            for(SkillUseInfo skillUseInfo:cardInfo.getAllNormalSkills())
-                            {
-                                if(skillUseInfo.getType() == SkillType.背水)
-                                {
-                                    attackHero(cardInfo,attacker.getOwner(),skillUseInfo.getSkill(),damage*skillUseInfo.getSkill().getImpact()/100);
-                                }
-                            }
-                        }
+                        CounterAttackHero.explode(this,attacker,defenderPlayer,damage);
                     }
                 }
                 int remainingDamage = damage;
                 if (!(cardSkill != null && (cardSkill.getType() == SkillType.自动扣血 || cardSkill.getType() == SkillType.羽扇虎拳 || cardSkill.getType() == SkillType.天罡咒))) {
-                    remainingDamage = remainingDamage * defenderPlayer.getCoefficient() / 100;
+                    remainingDamage = ImpregnableDefenseHeroBuff.explode(this,attacker,defenderPlayer,remainingDamage);
                 }
                 if (remainingDamage > defenderPlayer.getHP()) {
                     remainingDamage = defenderPlayer.getHP();
@@ -3135,7 +3131,7 @@ public class SkillResolver {
             } else if (!skillUseInfo.getSkill().isDeathSkill()) {
                 if (skillUseInfo.getType() == SkillType.反噬 || skillUseInfo.getType() == SkillType.恶魔契约) {
                     CounterBite.apply(skillUseInfo, this, card);
-                } else if (skillUseInfo.getType() == SkillType.星云锁链 || skillUseInfo.getType() == SkillType.星团锁链) {
+                } else if (skillUseInfo.getType() == SkillType.星云锁链 || skillUseInfo.getType() == SkillType.星团锁链 || skillUseInfo.getType() == SkillType.荼蘼盛放) {
                     NebulaChain.apply(skillUseInfo, this, card);
                 } else if (skillUseInfo.getType() == SkillType.进军之势) {
                     NebulaChain.applyMult(skillUseInfo, this, card);
@@ -3208,6 +3204,8 @@ public class SkillResolver {
                         || skillUseInfo.getType() == SkillType.光之守护 || skillUseInfo.getType() == SkillType.聚能立场 || skillUseInfo.getType() == SkillType.护主
                         || skillUseInfo.getType() == SkillType.龙之守护 || skillUseInfo.getType() == SkillType.不动如山) {
                     ImpregnableDefenseHeroBuff.apply(this, skillUseInfo, card);
+                } else if (skillUseInfo.getType() == SkillType.背水 ) {
+                    CounterAttackHero.apply(skillUseInfo,this, card);
                 } else if (skillUseInfo.getType() == SkillType.驱虎吞狼) {
                     ImpregnableDefenseHeroBuff.apply(this, skillUseInfo.getAttachedUseInfo2(), card);
                     Erode.apply(this, skillUseInfo.getAttachedUseInfo1(), card, enemy, null,true);
@@ -3503,7 +3501,8 @@ public class SkillResolver {
             }
         }
         GiveSideSkill.removeAll(this, null, card);
-        ImpregnableDefenseHeroBuff.removeSkill(card,this); //铁壁的移除和buff的移除放在一起
+        ImpregnableDefenseHeroBuff.remove(card,this); //铁壁的移除和buff的移除放在一起
+        CounterAttackHero.remove(card,this); //背水的移除和buff的移除放在一起
     }
 
     public void removeGiveSkills(CardInfo card) {

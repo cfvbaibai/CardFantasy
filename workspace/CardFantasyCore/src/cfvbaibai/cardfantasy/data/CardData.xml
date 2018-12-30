@@ -2674,6 +2674,11 @@
         <Skill type="不灭" level="6" unlock="5" />
         <Skill type="安魂曲" level="0" unlock="10" />
     </Card>
+    <Card id="2654" name="幽灵禁卫" wikiId="" race="森林" speed="2" star="4" cost="15" incrCost="2" at="420" hp="1475" incrAT="32" incrHP="34">
+        <Skill type="幽灵幻象" level="0" unlock="0" />
+        <Skill type="嘲讽" level="0" unlock="5" />
+        <Skill type="敏捷" level="9" unlock="10" />
+    </Card>
 
 
 
