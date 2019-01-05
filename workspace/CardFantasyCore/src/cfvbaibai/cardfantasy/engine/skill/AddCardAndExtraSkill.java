@@ -85,6 +85,7 @@ public class AddCardAndExtraSkill {
             CardInfo summonedCard = cardsToSummon.get(i);
             if(cardSkill !=null)
             {
+                summonedCard.setExtraSkill(cardSkill);
                 SkillUseInfo thisSkillUserInfo = new SkillUseInfo(summonedCard, cardSkill);
                 summonedCard.addSkill(thisSkillUserInfo);
             }

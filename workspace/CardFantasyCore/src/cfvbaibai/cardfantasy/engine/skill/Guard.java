@@ -32,7 +32,7 @@ public final class Guard {
         {
             sdamage = damage*10/100;
         }
-        else if(guardSkill.getType()== SkillType.固守)
+        else if(guardSkill.getType()== SkillType.固守 || guardSkill.getType()== SkillType.龙脉)
         {
             sdamage = damage*50/100;
         }

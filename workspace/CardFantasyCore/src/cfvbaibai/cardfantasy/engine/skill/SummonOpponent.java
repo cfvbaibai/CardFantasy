@@ -35,6 +35,7 @@ public class SummonOpponent {
                 || summoner.isSummonedMinion() && skillUseInfo.getType() == SkillType.星座能量掌握
                 || summoner.isSummonedMinion() && skillUseInfo.getType() == SkillType.龙城之志
                 || summoner.isSummonedMinion() && skillUseInfo.getType() == SkillType.北海报恩
+                || summoner.isSummonedMinion() && skillUseInfo.getType() == SkillType.熔岩分身
                 || summoner.isSummonedMinion() && skillUseInfo.getType() == SkillType.萦梦
                 || summoner.isSummonedMinion() && skillUseInfo.getType() == SkillType.复仇之影) {
             for(CardStatusItem item : summoner.getStatus().getAllItems())

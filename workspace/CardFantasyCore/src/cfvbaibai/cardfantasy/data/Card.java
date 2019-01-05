@@ -123,6 +123,10 @@ public class Card implements Cloneable, Comparable <Card> {
         return this.extraSkill;
     }
 
+    public void setExtraSkill(CardSkill extraSkill) {
+         this.extraSkill = extraSkill;
+    }
+
     public int getCost() {
         int cost = this.sourceInfo.getBaseCost();
         if (this.getLevel() > 10 || this.extraSkill != null) {

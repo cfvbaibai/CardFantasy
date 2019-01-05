@@ -2679,6 +2679,11 @@
         <Skill type="嘲讽" level="0" unlock="5" />
         <Skill type="敏捷" level="9" unlock="10" />
     </Card>
+    <Card id="2655" name="丛林妖精" wikiId="" race="森林" speed="3" star="4" cost="15" incrCost="2" at="400" hp="1415" incrAT="32" incrHP="32">
+        <Skill type="雷公助我" level="0" unlock="0" />
+        <Skill type="归魂" level="1" unlock="5" summon="true"/>
+        <Skill type="迷影" level="0" unlock="10" />
+    </Card>
 
 
 
@@ -3870,6 +3875,11 @@
         <Skill type="护主" level="0" unlock="0" />
         <Skill type="圣光奏鸣曲" level="0" unlock="5" />
         <Skill type="结界立场" level="0" unlock="10" />
+    </Card>
+    <Card id="3639" name="熔岩支配者" wikiId="" race="蛮荒" speed="3" star="5" cost="19" incrCost="2" at="515" hp="1585" incrAT="40" incrHP="40">
+        <Skill type="凋零陷阱" level="0" unlock="0" />
+        <Skill type="熔岩护甲" level="0" unlock="5" />
+        <Skill type="熔岩分身" level="0" unlock="10" />
     </Card>
 
 
@@ -5193,6 +5203,16 @@
         <Skill type="不息之风" level="0" unlock="0"  />
         <Skill type="雷霆一击" level="8" unlock="5" />
         <Skill type="风暴雷云" level="0" unlock="10" />
+    </Card>
+    <Card id="4667" name="钟馗" wikiId="" race="地狱" speed="3" star="5" cost="21" incrCost="2" at="615" hp="1545" incrAT="45" incrHP="50">
+        <Skill type="龙脉守将炙魂" level="0" unlock="0"  />
+        <Skill type="七星剑" level="0" unlock="5" />
+        <Skill type="降魔炙魂" level="0" unlock="10" />
+    </Card>
+    <Card id="4668" name="龙脉封印" wikiId="" race="地狱" speed="6" star="5" cost="99" incrCost="0" at="1100" hp="2200" incrAT="0" incrHP="0">
+        <Skill type="龙脉" level="0" unlock="0"  />
+        <Skill type="龙脉守护" level="0" unlock="5" />
+        <Skill type="封印解除" level="0" unlock="10" />
     </Card>
 
 

@@ -38,8 +38,9 @@ public final class Purify {
             resolver.removeStatus(card, CardStatusType.弱化);
             resolver.removeStatus(card, CardStatusType.晕眩);
             resolver.removeStatus(card, CardStatusType.裂伤);
-            card.removeForce(CardStatusType.死印);
-            resolver.getStage().getUI().removeCardStatus(card, CardStatusType.死印);
+            if( card.removeForce(CardStatusType.死印)) {
+                resolver.getStage().getUI().removeCardStatus(card, CardStatusType.死印);
+            }
             resolver.removeStatus(card, CardStatusType.致盲);
 
             // 以下为实测表明净化不能解除的状态

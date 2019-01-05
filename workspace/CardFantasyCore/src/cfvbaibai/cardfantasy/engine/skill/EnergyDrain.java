@@ -24,7 +24,7 @@ public final class EnergyDrain {
 
         List<CardInfo> victims = new ArrayList<CardInfo>();
         victims.add(attacker);
-        int totalAttackWeakened = Weaken.weakenCard(resolver, skillUseInfo, adjAT, defender, victims,false);
+        int totalAttackWeakened = Weaken.weakenCardOfEnergyDrain(resolver, skillUseInfo, adjAT, defender, victims);
 
         if (!defender.isDead()) {
             resolver.getStage().getUI().adjustAT(defender, defender, adjAT, skill);

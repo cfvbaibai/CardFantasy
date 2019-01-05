@@ -38,6 +38,7 @@ public final class ResonantElements {
                 }
                 CardSkill cardSkill = new CardSkill(additionalSkill.getType(), additionalSkill.getLevel(), 0, summonSkill, deathSkill, preSkill, postSkill);
                 thisSkillUserInfo = new SkillUseInfo(addCard, cardSkill);
+                addCard.setExtraSkill(cardSkill);
                 addCard.addSkill(thisSkillUserInfo);
             }
         }

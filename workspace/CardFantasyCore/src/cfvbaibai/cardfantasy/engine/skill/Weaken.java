@@ -118,4 +118,40 @@ public final class Weaken {
         }
         return totalAttackWeakened;
     }
+
+    public static int weakenCardOfEnergyDrain(SkillResolver resolver, SkillUseInfo skillUseInfo, int attackToWeaken, EntityInfo attacker,
+                                 List<CardInfo> defenders) throws HeroDieSignal {
+        int totalAttackWeakened = 0;
+        for (CardInfo defender : defenders) {
+            if (defender == null) {
+                continue;
+            }
+            Skill skill = skillUseInfo.getSkill();
+            int attackWeakened = attackToWeaken;
+            if (attackWeakened > defender.getCurrentAT()) {
+                attackWeakened = defender.getCurrentAT();
+            }
+            resolver.getStage().getUI().adjustAT(attacker, defender, -attackWeakened, skill);
+            List<SkillEffect> effects = defender.getEffects();
+            for (SkillEffect effect : effects) {
+                if (effect.getType() == SkillEffectType.ATTACK_CHANGE && effect.getValue() > 0 &&
+                        effect.getCause().getSkill().getType().containsTag(SkillTag.抗削弱)) {
+                    // TODO: 现在只有群攻提升，不过以后会有其它的
+                    if (attackWeakened > effect.getValue()) {
+                        attackWeakened -= effect.getValue();
+                        effect.setValue(0);
+                    } else {
+                        attackWeakened = 0;
+                        effect.setValue(effect.getValue() - attackWeakened);
+                    }
+                }
+                if (attackWeakened == 0) {
+                    break;
+                }
+            }
+            defender.addEffect(new SkillEffect(SkillEffectType.ATTACK_CHANGE, skillUseInfo, -attackWeakened, true));
+            totalAttackWeakened += attackWeakened;
+        }
+        return totalAttackWeakened;
+    }
 }

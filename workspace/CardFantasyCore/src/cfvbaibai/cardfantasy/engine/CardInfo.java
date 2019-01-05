@@ -125,6 +125,10 @@ public class CardInfo extends EntityInfo {
     public CardSkill getExtraSkill() {
         return card.getExtraSkill();
     }
+
+    public void setExtraSkill(CardSkill cardSkill) {
+        this.card.setExtraSkill(cardSkill);
+    }
     
 /*    private boolean isFirstRound() {
         return firstRound;
