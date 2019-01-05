@@ -20,8 +20,12 @@ public class CounterAttackHero {
     public static void explode(SkillResolver resolver, EntityInfo attacker, Player defender,int damage) throws HeroDieSignal {
 
         List<SkillUseInfo> skillUseInfoList = defender.getCounterAttackHero();
-
+        List<SkillUseInfo> counterSkillUserInfoList = new ArrayList<>();
         for(SkillUseInfo skillUseInfo:skillUseInfoList)
+        {
+            counterSkillUserInfoList.add(skillUseInfo);
+        }
+        for(SkillUseInfo skillUseInfo:counterSkillUserInfoList)
         {
             Skill skill = skillUseInfo.getSkill();
             resolver.getStage().getUI().useSkill(skillUseInfo.getOwner(), skill, true);

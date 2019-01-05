@@ -38,6 +38,15 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2019-01-05: <x>欢笑，波波</x><ul>
+                        <li>修复技能【背水】红字问题</li>
+                    </ul></li>
+                    <li>2019-01-05: <x>欢笑，波波</x><ul>
+                        <li>更新卡牌【丛林妖精】【熔岩支配者】</li>
+                        <li>更新技能【迷影】【熔岩护甲】【能量汲取】</li>
+                        <li>修正技能【雪幕】【木牛流马】</li>
+                        <li>修改星座连携BUFF结算</li>
+                    </ul></li>
                     <li>2018-12-30: <x>欢笑，波波</x><ul>
                         <li>修复技能【夺魂】死契目标结算错误的BUG，修复技能【离魂芳印】没有移除buff的BUG</li>
                     </ul></li>

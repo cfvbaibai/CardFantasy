@@ -24,7 +24,13 @@ public final class ImpregnableDefenseHeroBuff {
 
         int remainingDamage = damage;
 
+        List<SkillUseInfo> impregnableDefenseHeroList = new ArrayList<>();
         for(SkillUseInfo skillUseInfo:skillUseInfoList)
+        {
+            impregnableDefenseHeroList.add(skillUseInfo);
+        }
+
+        for(SkillUseInfo skillUseInfo:impregnableDefenseHeroList)
         {
             Skill skill = skillUseInfo.getSkill();
             int impact = skill.getImpact();
