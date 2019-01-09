@@ -932,7 +932,7 @@ public class SkillResolver {
                 SoulChains.apply(this, skillUseInfo, attacker, defender, 1, 2);
             } else if (skillUseInfo.getType() == SkillType.血魂之咒) {
                 SoulChains.apply(this, skillUseInfo, attacker, defender, 3, 3);
-            } else if (skillUseInfo.getType() == SkillType.离魂芳印) {
+            } else if (skillUseInfo.getType() == SkillType.离魂芳印 || skillUseInfo.getType() == SkillType.斗者) {
                 Rapture.apply(this, skillUseInfo, attacker, defender);
             } else if (skillUseInfo.getType() == SkillType.吞噬) {
                 Rapture.apply(this, skillUseInfo, attacker, defender);
@@ -1068,6 +1068,9 @@ public class SkillResolver {
             } else if (skillUseInfo.getType() == SkillType.召唤式神) {
                 Summon.apply(this, skillUseInfo, attacker, SummonType.RandomSummoning, 1,
                         "酒吞童子", "大天狗", "雪女", "八岐大蛇", "辉夜姬");
+            } else if (skillUseInfo.getType() == SkillType.冲锋之令) {
+                Supplication.apply(this, skillUseInfo.getAttachedUseInfo1(), attacker, defender);
+                Horn.apply(skillUseInfo.getAttachedUseInfo2(), this, attacker);
             }
         }
         if ((attacker.containsAllSkill(SkillType.连续魔法) || attacker.containsAllSkill(SkillType.黄天当立) || attacker.containsAllSkill(SkillType.连奏) || attacker.containsAllSkill(SkillType.神性爆发) || attacker.containsAllSkill(SkillType.时光迁跃) || attacker.containsAllSkill(SkillType.我们生命中的时光)) && !attacker.isDead() && status == 0) {
@@ -1465,7 +1468,7 @@ public class SkillResolver {
                             || blockSkillUseInfo.getType() == SkillType.醉生梦死 || blockSkillUseInfo.getType() == SkillType.魂飞魄散 || blockSkillUseInfo.getType() == SkillType.摄魂之力
                             || blockSkillUseInfo.getType() == SkillType.三位一体 || blockSkillUseInfo.getType() == SkillType.不灭金身 || blockSkillUseInfo.getType() == SkillType.时间扭曲
                             || blockSkillUseInfo.getType() == SkillType.忠肝义胆 || blockSkillUseInfo.getType() == SkillType.异元干扰 || blockSkillUseInfo.getType() == SkillType.金元仙躯
-                            || blockSkillUseInfo.getType() == SkillType.魏文帝) {
+                            || blockSkillUseInfo.getType() == SkillType.迷影森森 || blockSkillUseInfo.getType() == SkillType.魏文帝) {
                         if (Immue.isSkillBlocked(this, blockSkillUseInfo.getSkill(), attackSkill, attacker, defender)) {
                             result.setAttackable(false);
                             return result;
@@ -1474,6 +1477,7 @@ public class SkillResolver {
                     // 神威既包含脱困又包含不动，还有技能既包含不动又抗沉默的，所以需要将if分开
                     if (blockSkillUseInfo.getType() == SkillType.脱困 ||
                             blockSkillUseInfo.getType() == SkillType.神威 ||
+                            blockSkillUseInfo.getType() == SkillType.临 ||
                             blockSkillUseInfo.getType() == SkillType.村正 ||
                             blockSkillUseInfo.getType() == SkillType.敏捷 ||
                             blockSkillUseInfo.getType() == SkillType.月之守望 ||
@@ -1548,6 +1552,7 @@ public class SkillResolver {
                 }
                 for (SkillUseInfo blockSkillUseInfo : defender.getUsableNormalSkills()) {
                     if (blockSkillUseInfo.getType() == SkillType.魔甲 ||
+                            blockSkillUseInfo.getType() == SkillType.临 ||
                             blockSkillUseInfo.getType() == SkillType.铁骨衣 ||
                             blockSkillUseInfo.getType() == SkillType.神魔之甲 ||
                             blockSkillUseInfo.getType() == SkillType.体态丰盈 ||
@@ -2705,6 +2710,7 @@ public class SkillResolver {
                     cardSkillUseInfo.getType() == SkillType.自愈 ||
                     cardSkillUseInfo.getType() == SkillType.月恩术 ||
                     cardSkillUseInfo.getType() == SkillType.圣母回声 ||
+                    cardSkillUseInfo.getType() == SkillType.兵 ||
                     cardSkillUseInfo.getType() == SkillType.大地吟咏 ||
                     cardSkillUseInfo.getType() == SkillType.神佑复苏 ||
                     cardSkillUseInfo.getType() == SkillType.圣光奏鸣曲 ||
@@ -3201,7 +3207,7 @@ public class SkillResolver {
                 } else if (skillUseInfo.getType() == SkillType.剑道) {
                     Summon.apply(this, skillUseInfo, card, SummonType.Normal, 2,
                             "武形剑圣", "武形剑圣");
-                } else if (skillUseInfo.getType() == SkillType.伎町迷影 || skillUseInfo.getType() == SkillType.三位一体) {
+                } else if (skillUseInfo.getType() == SkillType.伎町迷影 || skillUseInfo.getType() == SkillType.三位一体 || skillUseInfo.getType() == SkillType.迷影森森) {
                     Summon.apply(this, skillUseInfo, card, SummonType.Normal, 2,
                             card.getName(), card.getName());
                 } else if (skillUseInfo.getType() == SkillType.猫神的低语) {
@@ -3364,6 +3370,8 @@ public class SkillResolver {
                 } else if (skillUseInfo.getType() == SkillType.契约式神) {
                     AddCardAndExtraSkill.apply(this, skillUseInfo, card, SummonType.Summoning, 1,
                             "酒吞童子-15", "大天狗-15", "雪女-15", "八岐大蛇-15", "辉夜姬-15");
+                } else if (skillUseInfo.getType() == SkillType.蜀汉后主) {
+                    HomologyMult.apply(this, skillUseInfo, card,"三国英魂·孔明","三国英魂·玄德","三国英魂·子龙");
                 }
             }
         }
@@ -3582,6 +3590,7 @@ public class SkillResolver {
         for (SkillUseInfo blockSkillUseInfo : victim.getUsableNormalSkills()) {
             if (blockSkillUseInfo.getType() == SkillType.脱困 ||
                     blockSkillUseInfo.getType() == SkillType.神威 ||
+                    blockSkillUseInfo.getType() == SkillType.临 ||
                     blockSkillUseInfo.getType() == SkillType.村正 ||
                     blockSkillUseInfo.getType() == SkillType.敏捷 ||
                     blockSkillUseInfo.getType() == SkillType.灵力魔阵 ||
@@ -3786,6 +3795,7 @@ public class SkillResolver {
                     || defender.containsAllSkill(SkillType.魂飞魄散) || defender.containsAllSkill(SkillType.摄魂之力) || defender.containsAllSkill(SkillType.三位一体)
                     || defender.containsAllSkill(SkillType.不灭金身) || defender.containsAllSkill(SkillType.时间扭曲) || defender.containsAllSkill(SkillType.异元干扰)
                     || defender.containsAllSkill(SkillType.忠肝义胆) || defender.containsAllSkill(SkillType.金元仙躯) || defender.containsAllSkill(SkillType.魏文帝)
+                    || defender.containsAllSkill(SkillType.迷影森森)
                     || CounterMagic.getBlockSkill(defender) != null) {
                 return true;
             }
@@ -3807,7 +3817,7 @@ public class SkillResolver {
                     || defender.containsAllSkill(SkillType.三位一体) || defender.containsAllSkill(SkillType.不灭金身)
                     || defender.containsAllSkill(SkillType.时间扭曲) || defender.containsAllSkill(SkillType.异元干扰)
                     || defender.containsAllSkill(SkillType.忠肝义胆) || defender.containsAllSkill(SkillType.金元仙躯)
-                    || defender.containsAllSkill(SkillType.魏文帝)) {
+                    || defender.containsAllSkill(SkillType.迷影森森) || defender.containsAllSkill(SkillType.魏文帝)) {
                 return true;
             }
         }

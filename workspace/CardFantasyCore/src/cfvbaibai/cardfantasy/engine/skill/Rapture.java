@@ -29,7 +29,7 @@ public class Rapture {
             if (!resolver.resolveAttackBlockingSkills(attackCard, victim, skill, 1).isAttackable()) {
                 continue;
             }
-            if(victim.containsAllSkill(SkillType.离魂芳印))
+            if(victim.containsAllSkill(SkillType.离魂芳印) || victim.containsAllSkill(SkillType.斗者))
             {
                 continue;
             }

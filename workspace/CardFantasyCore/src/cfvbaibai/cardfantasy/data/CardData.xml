@@ -2163,7 +2163,7 @@
         <Skill type="弱点攻击" level="0" unlock="5" />
         <Skill type="钢铁之肤" level="4" unlock="10" />
     </Card>
-    <Card id="2551" name="森之斗者" wikiId="" race="森林" speed="5" star="5" cost="20" incrCost="2" at="320" hp="1600" incrAT="41" incrHP="30">
+    <Card id="2551" name="原森之斗者" wikiId="" race="森林" speed="5" star="5" cost="20" incrCost="2" at="320" hp="1600" incrAT="41" incrHP="30">
         <Skill type="觉醒沉默A" level="0" unlock="0" />
         <Skill type="法力反射" level="8" unlock="5" />
         <Skill type="摧毁" level="0" unlock="10" />
@@ -2674,7 +2674,7 @@
         <Skill type="不灭" level="6" unlock="5" />
         <Skill type="安魂曲" level="0" unlock="10" />
     </Card>
-    <Card id="2654" name="幽灵禁卫" wikiId="" race="森林" speed="2" star="4" cost="15" incrCost="2" at="420" hp="1475" incrAT="32" incrHP="34">
+    <Card id="2654" name="幽林禁卫" wikiId="" race="森林" speed="2" star="4" cost="15" incrCost="2" at="420" hp="1475" incrAT="32" incrHP="34">
         <Skill type="幽灵幻象" level="0" unlock="0" />
         <Skill type="嘲讽" level="0" unlock="5" />
         <Skill type="敏捷" level="9" unlock="10" />
@@ -2683,6 +2683,11 @@
         <Skill type="雷公助我" level="0" unlock="0" />
         <Skill type="归魂" level="1" unlock="5" summon="true"/>
         <Skill type="迷影" level="0" unlock="10" />
+    </Card>
+    <Card id="2656" name="森之斗者" wikiId="" race="森林" speed="3" star="5" cost="20" incrCost="2" at="520" hp="1600" incrAT="41" incrHP="40">
+        <Skill type="临" level="0" unlock="0" />
+        <Skill type="兵" level="0" unlock="5" />
+        <Skill type="斗者" level="0" unlock="10" />
     </Card>
 
 
