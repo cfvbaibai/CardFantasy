@@ -427,6 +427,7 @@ public enum SkillType {
     死亡收割("",85,0),
     狂舞("", 70, 0,4,0, SkillTag.抗免疫, SkillTag.物理攻击),
     夺命骨镰("", 0, 0,4,0, SkillTag.额外攻击加成, SkillTag.抗免疫, SkillTag.物理攻击),
+    正义之击("",50,0,1,0, SkillTag.抗免疫, SkillTag.物理攻击),
 
     灵巧("57020", 0),
     灵魂禁锢("", 0),
@@ -533,6 +534,7 @@ public enum SkillType {
     炼金失败("",0,SkillTag.复活),
     海滨危机("",0,SkillTag.复活),
     战术性撤退("",100,0,SkillTag.复活),
+    巧变("",100,0,SkillTag.复活),
     自毁("", 0),
     消逝("",0,SkillTag.复活),
 
@@ -596,6 +598,7 @@ public enum SkillType {
 
     屠戮("", 3500, 0, 1, 0, SkillTag.抗免疫),
     赤之魔枪("", 200, 50, 3, 0, SkillTag.抗免疫),
+    用兵之道("", 700, 0, 3, 0, SkillTag.抗免疫),
     圣火("", 600, 0, 3, 0, SkillTag.抗免疫),
     五雷轰顶("",1000,0,3,0, SkillTag.抗免疫),
     雷神附体("",1000,0,3,0, SkillTag.抗免疫),
@@ -778,7 +781,7 @@ public enum SkillType {
     秘术投影("",4,0,100,0, SkillTag.不可洗炼),
     幻影奇袭("",4,0,60,0, SkillTag.不可洗炼),
     幻象幽灵("",2,0,100,0, SkillTag.不可洗炼),
-    圣翼骑士("",4,0,70,0, SkillTag.不可洗炼,SkillTag.复活),
+    圣翼军团("",4,0,70,0, SkillTag.不可洗炼,SkillTag.复活),
 
     英魂唤醒("",0,0, SkillTag.不可洗炼,SkillTag.召唤,SkillTag.不动),
     英魂召集("",0,0, SkillTag.不可洗炼,SkillTag.召唤,SkillTag.不动),
@@ -988,6 +991,7 @@ public enum SkillType {
     疾如风("",SkillType.祈愿,1,SkillType.号角,2,SkillTag.抗沉默),
     幽灵幻象("",SkillType.吸血,10,SkillType.幻象幽灵,0),
     冲锋之令("",SkillType.祈愿,2,SkillType.号角,1,SkillTag.抗沉默),
+    正义之师("",100,0,SkillType.正义之击,0,null,0),
 
     新生("",0,0,SkillTag.新生,SkillTag.抗夺魂),
     圣灵之泉("",0,0,SkillTag.新生,SkillTag.抗夺魂),
@@ -1087,7 +1091,7 @@ public enum SkillType {
     圣光奏鸣曲("",999999,0,SkillType.圣母吟咏,8,null,0),
     神圣领域("",SkillType.圣盾,0,SkillType.免疫,0),
     反击阵列("",200,0,SkillType.不动,0,SkillType.反击屏障,0,SkillTag.不动, SkillTag.抗免疫, SkillTag.反击),
-    正义庇所("",50,0,SkillType.物理免疫,0,SkillType.魔法免疫,0),
+    正义庇所("",SkillType.正义之师,0,null,0),
     不可侵犯("",SkillType.镜面装甲,0,null,0),
 
 

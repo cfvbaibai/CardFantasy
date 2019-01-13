@@ -173,9 +173,10 @@ public class SkillResolver {
                     AllFiledAddSkill.apply(this, skillUseInfo, card, skillUseInfo.getAttachedUseInfo1().getSkill());
                     AllFiledAddSkill.apply(this, skillUseInfo, card, skillUseInfo.getAttachedUseInfo2().getSkill());
                 } else if (skillUseInfo.getType() == SkillType.庇护光环 || skillUseInfo.getType() == SkillType.武形破剑光环 || skillUseInfo.getType() == SkillType.镜面光环
-                        || skillUseInfo.getType() == SkillType.秘纹领域 || skillUseInfo.getType() == SkillType.圣光奏鸣曲 || skillUseInfo.getType() == SkillType.不可侵犯) {
+                        || skillUseInfo.getType() == SkillType.秘纹领域 || skillUseInfo.getType() == SkillType.圣光奏鸣曲 || skillUseInfo.getType() == SkillType.不可侵犯
+                        || skillUseInfo.getType() == SkillType.正义庇所) {
                     AddSidesSkill.apply(this, skillUseInfo, card, skillUseInfo.getAttachedUseInfo1().getSkill());
-                } else if (skillUseInfo.getType() == SkillType.神圣领域 || skillUseInfo.getType() == SkillType.反击阵列 || skillUseInfo.getType() == SkillType.正义庇所) {
+                } else if (skillUseInfo.getType() == SkillType.神圣领域 || skillUseInfo.getType() == SkillType.反击阵列) {
                     AddSidesSkill.apply(this, skillUseInfo, card, skillUseInfo.getAttachedUseInfo1().getSkill());
                     AddSidesSkill.apply(this, skillUseInfo, card, skillUseInfo.getAttachedUseInfo2().getSkill());
                 } else if (skillUseInfo.getType() == SkillType.骑士庇护) {
@@ -433,7 +434,7 @@ public class SkillResolver {
             } else if (skillUseInfo.getType() == SkillType.烈焰审判) {
                 UnderworldCall.apply(this, skillUseInfo.getSkill(), attacker, defender, 3);
             } else if (skillUseInfo.getType() == SkillType.炼金失败 || skillUseInfo.getType() == SkillType.凤凰涅盘 || skillUseInfo.getType() == SkillType.海滨危机
-                    || skillUseInfo.getType() == SkillType.战术性撤退 || skillUseInfo.getType() == SkillType.自毁) {
+                    || skillUseInfo.getType() == SkillType.战术性撤退 || skillUseInfo.getType() == SkillType.自毁 || skillUseInfo.getType() == SkillType.巧变) {
                 AlchemyFailure.apply(this, skillUseInfo, skillUseInfo.getSkill(), attacker);
             } else if (skillUseInfo.getType() == SkillType.瘟疫) {
                 Plague.apply(skillUseInfo, this, attacker, defender);
@@ -1570,7 +1571,7 @@ public class SkillResolver {
                         result.setDamage(KnightGuardian.apply(this, blockSkillUseInfo.getSkill(), attacker, defender,
                                 attackSkill, result.getDamage()));
                     } else if (blockSkillUseInfo.getType() == SkillType.魔法装甲 || blockSkillUseInfo.getType() == SkillType.金魔装甲|| blockSkillUseInfo.getType() == SkillType.秘银
-                            || blockSkillUseInfo.getType() == SkillType.魔法免疫) {
+                            || blockSkillUseInfo.getType() == SkillType.魔法免疫 || blockSkillUseInfo.getType() == SkillType.正义之师) {
                         result.setDamage(MagicArmor.apply(this, blockSkillUseInfo.getSkill(), attacker, defender,
                                 attackSkill, result.getDamage()));
                     }
@@ -1635,7 +1636,7 @@ public class SkillResolver {
                 } else if (blockSkillUseInfo.getType() == SkillType.金属装甲 || blockSkillUseInfo.getType() == SkillType.酒池肉林 || blockSkillUseInfo.getType() == SkillType.物理免疫
                         || blockSkillUseInfo.getType() == SkillType.兽人之肤 || blockSkillUseInfo.getType() == SkillType.金魔装甲 || blockSkillUseInfo.getType() == SkillType.金刚护体
                         || blockSkillUseInfo.getType() == SkillType.大地庇护 || blockSkillUseInfo.getType() == SkillType.森之领域 || blockSkillUseInfo.getType() == SkillType.物理屏障
-                        || blockSkillUseInfo.getType() == SkillType.秘银) {
+                        || blockSkillUseInfo.getType() == SkillType.秘银 || blockSkillUseInfo.getType() == SkillType.正义之师) {
                     result.setDamage(PhysicalArmor.apply(blockSkillUseInfo.getSkill(), this, cardAttacker, defender,
                             result.getDamage()));
                 } else if (blockSkillUseInfo.getType() == SkillType.水流护甲 || blockSkillUseInfo.getType() == SkillType.真夏通雨 || blockSkillUseInfo.getType() == SkillType.水流壁
@@ -1950,6 +1951,8 @@ public class SkillResolver {
                 } else if (deadCardSkillUseInfo.getType() == SkillType.封印解除) {
                     Summon.applyAndAddSkill(this, deadCardSkillUseInfo, deadCard, SummonType.Random, 1,deadCardSkillUseInfo.getAttachedUseInfo1().getSkill(),
                             "白骨夫人-15", "黑白无常-15", "妲己-15", "牛魔王-15", "金角银角-15");
+                } else if (deadCardSkillUseInfo.getType() == SkillType.用兵之道) {
+                    RedGun.apply(deadCardSkillUseInfo, this, deadCard, opponent, 3);
                 }
             }
         }
@@ -2011,6 +2014,7 @@ public class SkillResolver {
                             deadCardSkillUseInfo.getType() == SkillType.武形秘法 ||
                             deadCardSkillUseInfo.getType() == SkillType.涅盘 ||
                             deadCardSkillUseInfo.getType() == SkillType.战术性撤退 ||
+                            deadCardSkillUseInfo.getType() == SkillType.巧变 ||
                             deadCardSkillUseInfo.getType() == SkillType.凤凰涅盘 ||
                             deadCardSkillUseInfo.getType() == SkillType.诲人不倦 ||
                             deadCardSkillUseInfo.getType() == SkillType.鞠躬尽瘁 ||
@@ -2229,7 +2233,7 @@ public class SkillResolver {
                 }
             }
             else if (skillUseInfo.getType() == SkillType.幻影军团 || skillUseInfo.getType() == SkillType.幻影奇袭
-                    || skillUseInfo.getType() == SkillType.圣翼骑士 || skillUseInfo.getType() == SkillType.秘术投影) {
+                    || skillUseInfo.getType() == SkillType.圣翼军团 || skillUseInfo.getType() == SkillType.秘术投影) {
                 SummonWhenAttack.apply(this, skillUseInfo, attacker, 1,true, attacker.getName());
             }
             else if (skillUseInfo.getType() == SkillType.幽灵幻象) {
@@ -2256,17 +2260,17 @@ public class SkillResolver {
     }
 
     public void resolveMultAttackSkills(CardInfo attacker, CardInfo defender, Player defenderHero, Skill attackSkill, OnDamagedResult damageResult, boolean firstSkill) throws HeroDieSignal {
-        if(attacker.containsUsableSkill(SkillType.高级连击) || attacker.containsUsableSkill(SkillType.狂舞) || attacker.containsUsableSkill(SkillType.正义庇所)
-                || attacker.containsUsableSkill(SkillType.夺命骨镰)) {
-            for (SkillUseInfo skillUseInfo : attacker.getUsableNormalSkills()) {
-                if (!attacker.isDead()) {
-                    if (skillUseInfo.getType() == SkillType.高级连击) {
-                        MultipleAttack.apply(this, skillUseInfo, attacker, defenderHero, attackSkill, firstSkill);
-                    } else if (skillUseInfo.getType() == SkillType.狂舞 || skillUseInfo.getType() == SkillType.夺命骨镰) {
-                        MultipleAttack.apply(this, skillUseInfo, attacker, defenderHero, attackSkill, firstSkill);
-                    } else if (skillUseInfo.getType() == SkillType.正义庇所) {
-                        MultipleAttack.applyMultiple(this, skillUseInfo, attacker, defenderHero, attackSkill);
-                    }
+        for (SkillUseInfo skillUseInfo : attacker.getUsableNormalSkills()) {
+            if (!attacker.isDead()) {
+                if (skillUseInfo.getType() == SkillType.高级连击) {
+                    MultipleAttack.apply(this, skillUseInfo, attacker, defenderHero, attackSkill, firstSkill);
+                    break;
+                } else if (skillUseInfo.getType() == SkillType.狂舞 || skillUseInfo.getType() == SkillType.夺命骨镰) {
+                    MultipleAttack.apply(this, skillUseInfo, attacker, defenderHero, attackSkill, firstSkill);
+                    break;
+                } else if (skillUseInfo.getType() == SkillType.正义之师) {
+                    MultipleAttack.applyMultiple(this, skillUseInfo.getAttachedUseInfo1(), attacker, defenderHero, attackSkill);
+                    break;
                 }
             }
         }
@@ -2647,21 +2651,20 @@ public class SkillResolver {
     }
 
     public void resolveExtraAttackHeroSkills(CardInfo attacker, Player defenderHero, Boolean firstSkill) throws HeroDieSignal {
-        if (!(attacker.containsUsableSkill(SkillType.幻影军团) || attacker.containsUsableSkill(SkillType.高级连击) || attacker.containsUsableSkill(SkillType.狂舞)
-                || attacker.containsUsableSkill(SkillType.离魂剑) || attacker.containsUsableSkill(SkillType.幻影奇袭) || attacker.containsUsableSkill(SkillType.圣翼骑士)
-                || attacker.containsUsableSkill(SkillType.正义庇所) || attacker.containsUsableSkill(SkillType.秘术投影) || attacker.containsUsableSkill(SkillType.夺命骨镰))) {
-            return;
-        }
+        boolean multAttackFlag = true;
         for (SkillUseInfo skillUseInfo : attacker.getUsableNormalSkills()) {
             if (skillUseInfo.getType() == SkillType.幻影军团 || skillUseInfo.getType() == SkillType.幻影奇袭
-                    || skillUseInfo.getType() == SkillType.圣翼骑士 || skillUseInfo.getType() == SkillType.秘术投影) {
+                    || skillUseInfo.getType() == SkillType.圣翼军团 || skillUseInfo.getType() == SkillType.秘术投影) {
                 SummonWhenAttack.apply(this, skillUseInfo, attacker, 1,true, attacker.getName());
-            } else if (skillUseInfo.getType() == SkillType.高级连击) {
+            } else if (skillUseInfo.getType() == SkillType.高级连击 &&multAttackFlag) {
                 MultipleAttack.apply(this, skillUseInfo, attacker, defenderHero, null, firstSkill);
-            } else if (skillUseInfo.getType() == SkillType.狂舞 || skillUseInfo.getType() == SkillType.夺命骨镰) {
+                multAttackFlag = false;
+            } else if ((skillUseInfo.getType() == SkillType.狂舞 || skillUseInfo.getType() == SkillType.夺命骨镰)&&multAttackFlag) {
                 MultipleAttack.apply(this, skillUseInfo, attacker, defenderHero, null, firstSkill);
-            } else if (skillUseInfo.getType() == SkillType.正义庇所) {
-                MultipleAttack.applyMultiple(this, skillUseInfo, attacker, defenderHero, null);
+                multAttackFlag = false;
+            } else if (skillUseInfo.getType() == SkillType.正义之师&&multAttackFlag) {
+                MultipleAttack.applyMultiple(this, skillUseInfo.getAttachedUseInfo1(), attacker, defenderHero, null);
+                multAttackFlag = false;
             } else if (skillUseInfo.getType() == SkillType.离魂剑) {
                 SoulControlMutiple.apply(this, skillUseInfo, attacker, defenderHero);
             }
@@ -3452,7 +3455,7 @@ public class SkillResolver {
                     }
                 } else if (skillUseInfo.getType() == SkillType.新生 && skillUseInfo.getSkill().isSummonSkill() && isSummoning) {
                     NewBorn.apply(this, skillUseInfo, card, opField.getOwner(), 1);
-                } else if (skillUseInfo.getType() == SkillType.圣翼骑士 && isSummoning) {
+                } else if (skillUseInfo.getType() == SkillType.圣翼军团 && isSummoning) {
                     if (!card.hasUsed(skillUseInfo)) {
                         Revive.apply(this, skillUseInfo, card);
                         card.setUsed(skillUseInfo);
