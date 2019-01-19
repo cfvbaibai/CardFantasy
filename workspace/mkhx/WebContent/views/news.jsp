@@ -38,6 +38,10 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2019-01-19: <x>欢笑，波波</x><ul>
+                        <li>修复变身时【铁壁】技能未移除的BUG(对应关卡4-7-3)，感谢尖吻蝮提供的帮助</li>
+                        <li>调整不屈状态下【铁壁】失效</li>
+                    </ul></li>
                     <li>2019-01-13: <x>欢笑，波波</x><ul>
                         <li>更新卡牌【五子良将·张郃】</li>
                         <li>更新技能【用兵之道】【巧变】</li>

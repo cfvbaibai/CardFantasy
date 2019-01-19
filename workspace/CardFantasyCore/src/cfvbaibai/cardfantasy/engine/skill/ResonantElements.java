@@ -53,6 +53,10 @@ public final class ResonantElements {
                 player.getField().expelCard(fieldCard.getPosition());
                 player.getOutField().addCard(fieldCard);
 //                player.getField().addCard(addCard);
+
+                resolver.resolveLeaveSkills(resonantCard);
+                resolver.resolveLeaveSkills(fieldCard);
+
                 resolver.summonCard(addCard.getOwner(), addCard, null, false, skillUseInfo.getSkill(),0);
                 resolver.getStage().getUI().useSkill(resonantCard, skillUseInfo.getSkill(), true);
               //  resolver.getStage().getUI().summonCard(player, addCard);

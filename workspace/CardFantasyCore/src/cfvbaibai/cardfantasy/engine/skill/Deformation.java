@@ -30,6 +30,7 @@ public class Deformation {
             player.getField().expelCard(summoner.getPosition());
             player.getOutField().addCard(summoner);
             resolver.getStage().getUI().cardDead(summoner);
+            resolver.resolveLeaveSkills(summoner);
             resolver.summonCard(summoner.getOwner(), addCard, summoner, false, skillUseInfo.getSkill(), 0);
         } else {
             if (summoner.getLevel() >= 15) {
@@ -61,6 +62,7 @@ public class Deformation {
             player.getField().expelCard(summoner.getPosition());
             player.getOutField().addCard(summoner);
             resolver.getStage().getUI().cardDead(summoner);
+            resolver.resolveLeaveSkills(summoner);
             resolver.summonCard(summoner.getOwner(), addCard, summoner, false, skillUseInfo.getSkill(), 1);
         }
     }

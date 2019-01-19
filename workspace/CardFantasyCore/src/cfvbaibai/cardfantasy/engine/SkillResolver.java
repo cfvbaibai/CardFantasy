@@ -438,7 +438,7 @@ public class SkillResolver {
                 AlchemyFailure.apply(this, skillUseInfo, skillUseInfo.getSkill(), attacker);
             } else if (skillUseInfo.getType() == SkillType.瘟疫) {
                 Plague.apply(skillUseInfo, this, attacker, defender);
-            } else if (skillUseInfo.getType() == SkillType.凋零真言 || skillUseInfo.getType() == SkillType.暗之凋零 || skillUseInfo.getType() == SkillType.花刺) {
+            } else if (skillUseInfo.getType() == SkillType.凋零真言 || skillUseInfo.getType() == SkillType.暗之凋零) {
                 WitheringWord.apply(skillUseInfo, this, attacker, defender);
             } else if (skillUseInfo.getType() == SkillType.血炼 || skillUseInfo.getType() == SkillType.生命吸取) {
                 BloodPaint.apply(skillUseInfo.getSkill(), this, attacker, defender, 1);
@@ -1902,7 +1902,7 @@ public class SkillResolver {
                     Bless.apply(deadCardSkillUseInfo.getAttachedUseInfo1().getSkill(), this, deadCard);
                 } else if (deadCardSkillUseInfo.getType() == SkillType.元素分离) {
                     SoulCrash.apply(deadCardSkillUseInfo, this, deadCard, opponent);
-                    Summon.apply(this, deadCardSkillUseInfo, deadCard, SummonType.Normal, 3, "风暴熊猫","土熊猫","火熊猫");
+                    Summon.apply(this, deadCardSkillUseInfo, deadCard, SummonType.RandomSummoning, 3, "风暴熊猫","土熊猫","火熊猫");
                 } else if (deadCardSkillUseInfo.getType() == SkillType.天丛云) {
                     GreatFireMagic.apply(deadCardSkillUseInfo.getAttachedUseInfo2().getSkill(), this, deadCard, opponent, 1, false);
                 } else if (deadCardSkillUseInfo.getType() == SkillType.星座能量信念) {
@@ -1953,6 +1953,8 @@ public class SkillResolver {
                             "白骨夫人-15", "黑白无常-15", "妲己-15", "牛魔王-15", "金角银角-15");
                 } else if (deadCardSkillUseInfo.getType() == SkillType.用兵之道) {
                     RedGun.apply(deadCardSkillUseInfo, this, deadCard, opponent, 3);
+                } else if (deadCardSkillUseInfo.getType() == SkillType.花刺) {
+                    WitheringWord.apply(deadCardSkillUseInfo, this, deadCard, opponent);
                 }
             }
         }

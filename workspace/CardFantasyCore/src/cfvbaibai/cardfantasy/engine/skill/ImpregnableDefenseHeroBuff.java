@@ -32,6 +32,10 @@ public final class ImpregnableDefenseHeroBuff {
 
         for(SkillUseInfo skillUseInfo:impregnableDefenseHeroList)
         {
+            if(skillUseInfo.getOwner().getStatus().containsStatus(CardStatusType.不屈))
+            {
+                continue;
+            }
             Skill skill = skillUseInfo.getSkill();
             int impact = skill.getImpact();
             resolver.getStage().getUI().useSkill(skillUseInfo.getOwner(), skill, true);

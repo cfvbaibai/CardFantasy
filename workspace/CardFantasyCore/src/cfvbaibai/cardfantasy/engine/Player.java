@@ -10,6 +10,8 @@ import cfvbaibai.cardfantasy.data.PlayerInfo;
 import cfvbaibai.cardfantasy.data.RuneData;
 import cfvbaibai.cardfantasy.data.Skill;
 
+import javax.naming.spi.Resolver;
+
 public class Player extends EntityInfo {
     private PlayerInfo playerInfo;
     private Deck deck;
