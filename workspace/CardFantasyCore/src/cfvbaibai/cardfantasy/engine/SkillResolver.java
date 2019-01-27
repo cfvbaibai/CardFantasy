@@ -487,7 +487,7 @@ public class SkillResolver {
             } else if (skillUseInfo.getType() == SkillType.圣光洗礼 || skillUseInfo.getType() == SkillType.森林沐浴 ||
                     skillUseInfo.getType() == SkillType.蛮荒威压 || skillUseInfo.getType() == SkillType.地狱同化) {
                 RaceChange.apply(this, skillUseInfo, attacker, defender);
-            } else if (skillUseInfo.getType() == SkillType.战争怒吼 || skillUseInfo.getType() == SkillType.常夏日光 || skillUseInfo.getType() == SkillType.碎裂怒吼) {
+            } else if (skillUseInfo.getType() == SkillType.战争怒吼 || skillUseInfo.getType() == SkillType.常夏日光 || skillUseInfo.getType() == SkillType.碎裂怒吼 || skillUseInfo.getType() == SkillType.阴阳印) {
                 Soften.apply(skillUseInfo, this, attacker, defender, -1);
             } else if (skillUseInfo.getType() == SkillType.镜像) {
                 // 镜像召唤的单位可以被连锁攻击
@@ -1053,8 +1053,6 @@ public class SkillResolver {
                 SummonWhenAttack.apply(this, skillUseInfo, attacker, 1,false, "风眼","雷云");
             } else if (skillUseInfo.getType() == SkillType.能量汇集) {
                 AddSkillOpponent.apply(this, skillUseInfo, attacker, skillUseInfo.getAttachedUseInfo1().getSkill(), 1, defender,2);
-            } else if (skillUseInfo.getType() == SkillType.阴阳印) {
-                MagicMark.apply(this, skillUseInfo, attacker, defender, 2);
             } else if (skillUseInfo.getType() == SkillType.圣火) {
                 RedGun.apply(skillUseInfo, this, attacker, defender, 3);
                 HolyFire.apply(skillUseInfo.getSkill(), this, attacker, defender);
@@ -1066,9 +1064,6 @@ public class SkillResolver {
                 for(int i=0;i<attacker.getSummonNumber()&&i<=3;i++) {
                     ThunderStrike.apply(skillUseInfo, this, attacker, defender, -1);
                 }
-            } else if (skillUseInfo.getType() == SkillType.召唤式神) {
-                Summon.apply(this, skillUseInfo, attacker, SummonType.RandomSummoning, 1,
-                        "酒吞童子", "大天狗", "雪女", "八岐大蛇", "辉夜姬");
             } else if (skillUseInfo.getType() == SkillType.冲锋之令) {
                 Supplication.apply(this, skillUseInfo.getAttachedUseInfo1(), attacker, defender);
                 Horn.apply(skillUseInfo.getAttachedUseInfo2(), this, attacker);
@@ -1955,6 +1950,9 @@ public class SkillResolver {
                     RedGun.apply(deadCardSkillUseInfo, this, deadCard, opponent, 3);
                 } else if (deadCardSkillUseInfo.getType() == SkillType.花刺) {
                     WitheringWord.apply(deadCardSkillUseInfo, this, deadCard, opponent);
+                } else if (deadCardSkillUseInfo.getType() == SkillType.生灭) {
+                    Summon.apply(this, deadCardSkillUseInfo.getAttachedUseInfo2(), deadCard, SummonType.Normal, 1,
+                            "雪女");
                 }
             }
         }
@@ -3377,6 +3375,11 @@ public class SkillResolver {
                             "酒吞童子-15", "大天狗-15", "雪女-15", "八岐大蛇-15", "辉夜姬-15");
                 } else if (skillUseInfo.getType() == SkillType.蜀汉后主) {
                     HomologyMult.apply(this, skillUseInfo, card,"三国英魂·孔明","三国英魂·玄德","三国英魂·子龙");
+                } else if (skillUseInfo.getType() == SkillType.下自成蹊) {
+                    Horn.apply(skillUseInfo, this, card);
+                } else if (skillUseInfo.getType() == SkillType.生灭) {
+                    Summon.apply(this, skillUseInfo.getAttachedUseInfo1(), card, SummonType.Summoning, 1,
+                            "酒吞童子");
                 }
             }
         }
@@ -4099,6 +4102,8 @@ public class SkillResolver {
                 GiantEarthquakesLandslides.apply(this, rune.getSkillUseInfo().getSkill(), rune, defenderHero, 1);
             } else if (rune.is(RuneData.景星)) {
                 Supplication.apply(this, rune.getSkillUseInfo(), rune, defenderHero);
+            } else if (rune.is(RuneData.祥瑞)) {
+                RegressionSoul.apply(this, rune.getSkillUseInfo(), rune, attackerHero);
             }
         }
     }

@@ -466,6 +466,7 @@ public enum SkillType {
     号角("",1),
     集结旗帜("",1,SkillTag.不动),
     冲浪集结("",2,0),
+    下自成蹊("",2,0),
     进军之令("",5,0),
     上层精灵的挽歌("", 2, 0),
     迷魂("31129", 30, 5, SkillTag.控制, SkillTag.魔王无效),
@@ -777,6 +778,10 @@ public enum SkillType {
     幻化("",0,0, SkillTag.不可洗炼,SkillTag.召唤,SkillTag.不动),
     封印解除("", 0, 0,SkillType.守护,5,null,0, SkillTag.召唤, SkillTag.不可洗炼),
 
+    召唤酒吞("",0,0, SkillTag.不可洗炼,SkillTag.召唤),
+    召唤雪女("",0,0, SkillTag.不可洗炼,SkillTag.召唤),
+    生灭("",SkillType.召唤酒吞,0, SkillType.召唤雪女,0, SkillTag.不可洗炼,SkillTag.召唤),
+
     幻影军团("",4,0,70,0, SkillTag.不可洗炼),
     秘术投影("",4,0,100,0, SkillTag.不可洗炼),
     幻影奇袭("",4,0,60,0, SkillTag.不可洗炼),
@@ -790,7 +795,6 @@ public enum SkillType {
     星座能量掌握("",0,0, SkillTag.不可洗炼,SkillTag.召唤,SkillTag.基础攻击加成, SkillTag.抗削弱,SkillTag.抗毒刃),
     日光浴("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼,SkillTag.不动),
     终焉之兆("",0,SkillTag.魔王无效,SkillTag.抗免疫, SkillTag.召唤, SkillTag.不可洗炼),
-    召唤式神("",0,0, SkillTag.不可洗炼,SkillTag.召唤),
     熔岩分身("", 0, 0, SkillTag.召唤),
 
     月之召唤("",5,0,100,0, SkillTag.不可洗炼,SkillTag.召唤),
@@ -811,7 +815,7 @@ public enum SkillType {
     分裂("", 7, 0,SkillTag.抗夺魂),
     分裂术("",7,0,SkillType.复苏,0,null,0,SkillTag.抗夺魂),//生成卡牌，连携
     土豪卡组("", 26, 0,SkillTag.抗夺魂),
-    契约式神("", 5, 0,SkillTag.抗夺魂),
+    契约式神("", 1, 0,SkillTag.抗夺魂),
 
 
 

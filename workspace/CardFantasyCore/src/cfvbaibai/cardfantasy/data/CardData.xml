@@ -1448,7 +1448,7 @@
     </Card>
     <!--<Card id="1685" name="晴明" wikiId="" race="王国" speed="3" star="5" cost="21" incrCost="2" at="585" hp="1645" incrAT="41" incrHP="47">-->
         <!--<Skill type="契约式神" level="0" unlock="0" />-->
-        <!--<Skill type="召唤式神" level="0" unlock="5" />-->
+        <!--<Skill type="生灭" level="0" unlock="5" />-->
         <!--<Skill type="阴阳印" level="0" unlock="10" />-->
     <!--</Card>-->
 
@@ -5224,6 +5224,11 @@
         <!--<Skill type="龙脉守护" level="0" unlock="5" />-->
         <!--<Skill type="封印解除" level="0" unlock="10" />-->
     <!--</Card>-->
+    <Card id="4669" name="五子良将·于禁" wikiId="" race="地狱" speed="3" star="5" cost="20" incrCost="2" at="500" hp="1610" incrAT="40" incrHP="47">
+        <Skill type="骤雨" level="10" unlock="0"  />
+        <Skill type="金汤" level="5" unlock="5" />
+        <Skill type="战团之魂" level="0" unlock="10" />
+    </Card>
 
 
 
