@@ -440,7 +440,7 @@ public enum SkillType {
     禁术全领域沉默("", 0, SkillTag.抗免疫, SkillTag.抗不屈, SkillTag.沉默, SkillTag.魔王无效, SkillTag.魔族天赋),
     无限全体沉默("", 0, SkillTag.抗免疫, SkillTag.抗不屈, SkillTag.沉默, SkillTag.魔王无效, SkillTag.魔族天赋),
     半数沉默("", 0, SkillTag.抗免疫, SkillTag.抗不屈, SkillTag.沉默, SkillTag.魔王无效, SkillTag.魔族天赋),
-    地煞倾覆("", 300,0, SkillTag.抗免疫, SkillTag.抗不屈, SkillTag.沉默, SkillTag.魔王无效, SkillTag.魔族天赋),
+    地煞倾覆("", 300,0, SkillTag.抗免疫, SkillTag.抗不屈, SkillTag.沉默, SkillTag.魔王无效, SkillTag.魔族天赋,SkillTag.永久, SkillTag.基础攻击加成),
 
     灵魂消散("", 0, SkillTag.抗免疫, SkillTag.抗不屈, SkillTag.魔王无效, SkillTag.魔族天赋),
     格式化("", 0, SkillTag.抗免疫, SkillTag.抗不屈, SkillTag.魔王无效, SkillTag.魔族天赋),
@@ -476,6 +476,7 @@ public enum SkillType {
     魅惑之舞("", 30, 5, SkillTag.控制, SkillTag.魔王无效),
     精神狂乱("", 0),
     癫狂之舞("", 0),
+    死亡恐惧("", 0),
     离间("", 0),
     无尽华尔兹("", 0),
     破阵("", 1, 0, SkillTag.抗夺魂),
@@ -667,7 +668,7 @@ public enum SkillType {
     酩酊("",155,0),
     东风("",175,0),
     灵力魔阵("", 150,0),
-    阴阳印("", 900,0),
+    阳式阴式("", 900,0),
 
     燕返("", 0, 0),
     袈裟斩燕返("", 0, 0),
@@ -688,6 +689,7 @@ public enum SkillType {
     逃跑("", 0,SkillTag.抗夺魂),
     撤退("", 0,SkillTag.抗夺魂,SkillTag.不动),
     夺魂("", 0, 1, SkillTag.抗夺魂),
+    灵魂支配("", 1, 0, SkillTag.抗夺魂,SkillTag.复活),
     离魂剑("", 5, 0,SkillTag.抗夺魂),
     天召("", 0, 0),
     突围("", 0,SkillTag.抗夺魂),

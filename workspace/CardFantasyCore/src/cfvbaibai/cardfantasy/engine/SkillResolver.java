@@ -94,7 +94,7 @@ public class SkillResolver {
         List<CardInfo> cards = attacker.getField().getAliveCards();
         for (CardInfo card : cards) {
             for (SkillUseInfo skillUseInfo : card.getUsableNormalSkills()) {
-                if (skillUseInfo.getType() == SkillType.神性祈求 || skillUseInfo.getType() == SkillType.神性祈祷 || skillUseInfo.getType() == SkillType.阴阳印 || skillUseInfo.getType() == SkillType.荼蘼盛放) {
+                if (skillUseInfo.getType() == SkillType.神性祈求 || skillUseInfo.getType() == SkillType.神性祈祷 || skillUseInfo.getType() == SkillType.阳式阴式 || skillUseInfo.getType() == SkillType.荼蘼盛放) {
                     Purify.apply(skillUseInfo, this, card, -1);
                 } else if (skillUseInfo.getType() == SkillType.净化领域) {
                     Purify.apply(skillUseInfo, this, card, -1);
@@ -317,7 +317,7 @@ public class SkillResolver {
                 NewBorn.apply(this, skillUseInfo, attacker, defender, 1);
             } else if (skillUseInfo.getType() == SkillType.圣灵之泉) {
                 NewBorn.apply(this, skillUseInfo, attacker, defender, -1);
-            } else if (skillUseInfo.getType() == SkillType.夺魂) {
+            } else if (skillUseInfo.getType() == SkillType.夺魂 || skillUseInfo.getType() == SkillType.灵魂支配) {
                 SoulControl.apply(this, skillUseInfo, attacker, defender);
             } else if (skillUseInfo.getType() == SkillType.鬼才) {
                 SoulControl.apply(this, skillUseInfo.getAttachedUseInfo2(), attacker, defender);
@@ -487,7 +487,7 @@ public class SkillResolver {
             } else if (skillUseInfo.getType() == SkillType.圣光洗礼 || skillUseInfo.getType() == SkillType.森林沐浴 ||
                     skillUseInfo.getType() == SkillType.蛮荒威压 || skillUseInfo.getType() == SkillType.地狱同化) {
                 RaceChange.apply(this, skillUseInfo, attacker, defender);
-            } else if (skillUseInfo.getType() == SkillType.战争怒吼 || skillUseInfo.getType() == SkillType.常夏日光 || skillUseInfo.getType() == SkillType.碎裂怒吼 || skillUseInfo.getType() == SkillType.阴阳印) {
+            } else if (skillUseInfo.getType() == SkillType.战争怒吼 || skillUseInfo.getType() == SkillType.常夏日光 || skillUseInfo.getType() == SkillType.碎裂怒吼 || skillUseInfo.getType() == SkillType.阳式阴式) {
                 Soften.apply(skillUseInfo, this, attacker, defender, -1);
             } else if (skillUseInfo.getType() == SkillType.镜像) {
                 // 镜像召唤的单位可以被连锁攻击
@@ -1067,6 +1067,11 @@ public class SkillResolver {
             } else if (skillUseInfo.getType() == SkillType.冲锋之令) {
                 Supplication.apply(this, skillUseInfo.getAttachedUseInfo1(), attacker, defender);
                 Horn.apply(skillUseInfo.getAttachedUseInfo2(), this, attacker);
+            } else if (skillUseInfo.getType() == SkillType.死亡恐惧) {
+                Insane.apply(skillUseInfo, this, attacker, defender, 5, 100);
+            } else if (skillUseInfo.getType() == SkillType.灵魂支配) {
+                SoulControl.apply(this, skillUseInfo, attacker, defender);
+                Revive.apply(this, skillUseInfo, attacker);
             }
         }
         if ((attacker.containsAllSkill(SkillType.连续魔法) || attacker.containsAllSkill(SkillType.黄天当立) || attacker.containsAllSkill(SkillType.连奏) || attacker.containsAllSkill(SkillType.神性爆发) || attacker.containsAllSkill(SkillType.时光迁跃) || attacker.containsAllSkill(SkillType.我们生命中的时光)) && !attacker.isDead() && status == 0) {

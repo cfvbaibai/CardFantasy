@@ -290,7 +290,7 @@ public class BattleEngine {
                     SkillUseInfo skillUseInfo = softenedStatusItems.get(j).getCause();
                     ui.softened(myCard);
                     int adjAT = -currentBaseAT / 2;
-                    if(skillUseInfo.getType() == SkillType.常夏日光||skillUseInfo.getType() == SkillType.碎裂怒吼||skillUseInfo.getType() == SkillType.阴阳印)
+                    if(skillUseInfo.getType() == SkillType.常夏日光||skillUseInfo.getType() == SkillType.碎裂怒吼||skillUseInfo.getType() == SkillType.阳式阴式)
                     {
                         adjAT = -currentBaseAT;
                         currentBaseAT = 0;

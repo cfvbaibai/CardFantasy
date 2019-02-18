@@ -1446,11 +1446,11 @@
         <Skill type="默示" level="0" unlock="5" />
         <Skill type="哀歌" level="0" unlock="10" />
     </Card>
-    <!--<Card id="1685" name="晴明" wikiId="" race="王国" speed="3" star="5" cost="21" incrCost="2" at="585" hp="1645" incrAT="41" incrHP="47">-->
-        <!--<Skill type="契约式神" level="0" unlock="0" />-->
-        <!--<Skill type="生灭" level="0" unlock="5" />-->
-        <!--<Skill type="阴阳印" level="0" unlock="10" />-->
-    <!--</Card>-->
+    <Card id="1685" name="安倍晴明" wikiId="" race="王国" speed="3" star="5" cost="21" incrCost="2" at="585" hp="1645" incrAT="41" incrHP="47">
+        <Skill type="契约式神" level="0" unlock="0" />
+        <Skill type="生灭" level="0" unlock="5" />
+        <Skill type="阳式阴式" level="0" unlock="10" />
+    </Card>
 
 
 
@@ -5228,6 +5228,11 @@
         <Skill type="骤雨" level="10" unlock="0"  />
         <Skill type="金汤" level="5" unlock="5" />
         <Skill type="战团之魂" level="0" unlock="10" />
+    </Card>
+    <Card id="4670" name="亡灵支配者" wikiId="" race="地狱" speed="3" star="5" cost="18" incrCost="2" at="525" hp="1545" incrAT="42" incrHP="45">
+        <Skill type="死亡恐惧" level="0" unlock="0"  />
+        <Skill type="灵魂支配" level="0" unlock="5" />
+        <Skill type="不屈" level="0" unlock="10" />
     </Card>
 
 

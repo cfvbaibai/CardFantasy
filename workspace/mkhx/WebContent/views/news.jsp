@@ -38,6 +38,11 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2019-01-30: <x>欢笑，波波</x><ul>
+                        <li>更新卡牌【安倍晴明】【亡灵支配者】</li>
+                        <li>更新技能【契约式神】【生灭】【阳式阴式】【死亡恐惧】【灵魂支配】</li>
+                        <li>修复【地煞倾覆】bug，感谢立华奏的大力帮助</li>
+                    </ul></li>
                     <li>2019-01-27: <x>欢笑，波波</x><ul>
                         <li>更新卡牌【五子良将·于禁】</li>
                         <li>更新技能【下自成蹊】</li>
