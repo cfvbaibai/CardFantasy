@@ -675,7 +675,8 @@ public class BattleEngine {
         return Phase.抽卡;
     }
 
-    private Phase drawCard() {
+    private Phase drawCard()throws HeroDieSignal {
+        this.stage.getResolver().activateIndentures(this.getActivePlayer(), this.getInactivePlayer());
         Player activePlayer = this.getActivePlayer();
         this.stage.getResolver().setStagePhase(Phase.抽卡);
         Hand hand = activePlayer.getHand();
@@ -701,7 +702,9 @@ public class BattleEngine {
                         ||card.containsUsableSkill(SkillType.喵喵喵)||card.containsUsableSkill(SkillType.蔑视)
                         ||card.containsUsableSkill(SkillType.龙之守护))
                 {
-                    return card;
+                    if(!card.getStatus().containsStatus(CardStatusType.不屈)){
+                        return card;
+                    }
                 }
             }
         }

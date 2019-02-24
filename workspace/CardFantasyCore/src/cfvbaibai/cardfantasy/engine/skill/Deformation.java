@@ -25,13 +25,17 @@ public class Deformation {
         resolver.getStage().getUI().useSkill(summoner, skillUseInfo.getSkill(), true);
         if (summoner.getRelationCardInfo() != null) {
             addCard = summoner.getRelationCardInfo();
+            addCard.reset();
+            for(CardStatusItem cardStatusItem:summoner.getStatus().getStatusOf(CardStatusType.召唤)){
+                addCard.addStatus(cardStatusItem);
+            }
             player.getOutField().removeCard(addCard);
             //player.getField().removeCard(summoner);
             player.getField().expelCard(summoner.getPosition());
             player.getOutField().addCard(summoner);
             resolver.getStage().getUI().cardDead(summoner);
             resolver.resolveLeaveSkills(summoner);
-            resolver.summonCard(summoner.getOwner(), addCard, summoner, false, skillUseInfo.getSkill(), 0);
+            resolver.summonCard(summoner.getOwner(), addCard, summoner, false, skillUseInfo.getSkill(), 1);
         } else {
             if (summoner.getLevel() >= 15) {
                 SkillUseInfo thisSkillUserInfo= null;
@@ -55,6 +59,9 @@ public class Deformation {
                     addCard.setExtraSkill(cardSkill);
                     addCard.addSkill(thisSkillUserInfo);
                 }
+            }
+            for(CardStatusItem cardStatusItem:summoner.getStatus().getStatusOf(CardStatusType.召唤)){
+                addCard.addStatus(cardStatusItem);
             }
             addCard.setRelationCardInfo(summoner);
             summoner.setRelationCardInfo(addCard);

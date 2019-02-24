@@ -15,6 +15,7 @@ public class PlayerInfo {
     private int heroHpAdj;
     private Collection<Card> cards;
     private Collection<Rune> runes;
+    private Collection<Indenture> indentures;
     private static int[] hps = new int[] {
         0,
         1000,  1070,  1140,  1210,  1280,  1350,  1420,  1490,  1560,  1630,
@@ -74,14 +75,18 @@ public class PlayerInfo {
         for (Card card : cards) {
             cardList.add(card);
         }
-        init(isNormalPlayer, id, level, cardBuffs, heroHpAdj, runes, cardList);
+        init(isNormalPlayer, id, level, cardBuffs, heroHpAdj, runes,null, cardList);
     }
     
     public PlayerInfo(boolean isNormalPlayer, String id, int level, List<Skill> cardBuffs, int heroHpAdj, Collection <Rune> runes, Collection <Card> cards) {
-        init(isNormalPlayer, id, level, cardBuffs, heroHpAdj, runes, cards);
+        init(isNormalPlayer, id, level, cardBuffs, heroHpAdj, runes,null, cards);
+    }
+
+    public PlayerInfo(boolean isNormalPlayer, String id, int level, List<Skill> cardBuffs, int heroHpAdj, Collection <Rune> runes,Collection <Indenture> indentures, Collection <Card> cards) {
+        init(isNormalPlayer, id, level, cardBuffs, heroHpAdj, runes,indentures, cards);
     }
     
-    private final void init(boolean isNormalPlayer, String id, int level, List<Skill> cardBuffs, int heroHpAdj, Collection <Rune> runes, Collection <Card> cards) {
+    private final void init(boolean isNormalPlayer, String id, int level, List<Skill> cardBuffs, int heroHpAdj, Collection <Rune> runes,Collection <Indenture> indentures, Collection <Card> cards) {
         this.isNormalPlayer = isNormalPlayer;
         this.id = id;
         this.level = level;
@@ -93,6 +98,11 @@ public class PlayerInfo {
         this.heroHpAdj = heroHpAdj;
         this.runes = new ArrayList<Rune>(runes);
         this.cards = new ArrayList<Card>(cards);
+        if(indentures == null){
+            this.indentures = new ArrayList<Indenture>();
+        } else{
+            this.indentures = new ArrayList<Indenture>(indentures);
+        }
     }
     
     public List<Skill> getCardBuffs() {
@@ -147,6 +157,10 @@ public class PlayerInfo {
 
     public Collection<Rune> getRunes() {
         return new ArrayList<Rune>(this.runes);
+    }
+
+    public Collection<Indenture> getIndentures() {
+        return indentures;
     }
 
     public int getLevel() {

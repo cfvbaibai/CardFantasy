@@ -809,6 +809,7 @@ public enum SkillType {
     余香("",5,0,100,0, SkillTag.不可洗炼,SkillTag.召唤),
     护主("", 40,0,SkillTag.沉默无效, SkillTag.不可洗炼,SkillTag.召唤),
     黑暗之门("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
+    召唤契约("",0,0, SkillTag.不可洗炼,SkillTag.召唤),
 
     //生成卡牌置入战场
     蜀国英魂("", 2, 0,SkillTag.抗夺魂),

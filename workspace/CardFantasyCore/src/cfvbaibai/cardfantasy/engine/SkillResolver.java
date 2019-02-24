@@ -3656,6 +3656,14 @@ public class SkillResolver {
         //取消召唤类技能直接发动二段技能。
     }
 
+    public void summonCardIndenture(Player player, CardInfo summonedCard, IndentureInfo reviver, boolean isMinion, Skill summonSkill, int flag) throws HeroDieSignal {
+        Player enemy = this.getStage().getOpponent(player);
+        setCardToField(summonedCard, flag);
+        this.resolveFirstClassSummoningSkills(summonedCard, player, enemy, isMinion);
+        // this.resolveSecondClassSummoningSkills(summonedCards, player.getField(), enemy.getField(), summonSkill, true);
+        //取消召唤类技能直接发动二段技能。
+    }
+
     /**
      * 1. Process racial buff skills
      * 2. Process summoning skills
@@ -3983,6 +3991,127 @@ public class SkillResolver {
             if (shouldActivate) {
                 this.stage.getUI().activateRune(rune);
                 rune.activate();
+            }
+        }
+    }
+
+    public void activateIndentures(Player player, Player enemy) throws HeroDieSignal {
+        for (IndentureInfo indenture : player.getIndentureBox().getIndentureInfos()) {
+            IndentureActivator activator = indenture.getIndentureActivator();
+            if (activator.getType() == RuneActivationType.HeroHPLess) {
+                if (player.getHP() < indenture.getEffectNumber() * player.getMaxHP() / 100) {
+                    SummonOfIndenture.apply(this,indenture);
+                }
+            } else if (activator.getType() == RuneActivationType.Field) {
+                Player playerToCheck = activator.shouldCheckEnemy() ? enemy : player;
+                int activatorCardCount = 0;
+                if (activator.getRace() == null) {
+                    activatorCardCount = playerToCheck.getField().getAliveCards().size();
+                } else {
+                    for (CardInfo card : playerToCheck.getField().getAliveCards()) {
+                        if (card.getRace() == activator.getRace()) {
+                            ++activatorCardCount;
+                        }
+                    }
+                }
+                if (activatorCardCount > indenture.getEffectNumber()) {
+                    SummonOfIndenture.apply(this,indenture);
+                }
+            } else if (activator.getType() == RuneActivationType.HeroHpMore) {
+                if (player.getHP() > indenture.getEffectNumber() * player.getMaxHP() / 100) {
+                    SummonOfIndenture.apply(this,indenture);
+                }
+            } else if (activator.getType() == RuneActivationType.RoundMore) {
+                if (stage.getRound() > indenture.getEffectNumber()) {
+                    SummonOfIndenture.apply(this,indenture);
+                }
+            } else if (activator.getType() == RuneActivationType.RoundLess) {
+                if (stage.getRound() < indenture.getEffectNumber()) {
+                    SummonOfIndenture.apply(this,indenture);
+                }
+            } else if (activator.getType() == RuneActivationType.FieldDiff) {
+                if(enemy.getField().getAliveCards().size() - player.getField().getAliveCards().size() > indenture.getEffectNumber()){
+                    SummonOfIndenture.apply(this,indenture);
+                }
+            } else if (activator.getType() == RuneActivationType.Deck) {
+                Player playerToCheck = activator.shouldCheckEnemy() ? enemy : player;
+                int activatorCardCount = 0;
+                if (activator.getRace() == null) {
+                    activatorCardCount = playerToCheck.getDeck().size();
+                } else {
+                    for (CardInfo card : playerToCheck.getDeck().toList()) {
+                        if (card.getRace() == activator.getRace()) {
+                            ++activatorCardCount;
+                        }
+                    }
+                }
+                if (activatorCardCount < indenture.getEffectNumber()) {
+                    SummonOfIndenture.apply(this,indenture);
+                }
+            } else if (activator.getType() == RuneActivationType.Grave) {
+                Player playerToCheck = activator.shouldCheckEnemy() ? enemy : player;
+                int activatorCardCount = 0;
+                if (activator.getRace() == null) {
+                    activatorCardCount = playerToCheck.getGrave().size();
+                } else {
+                    for (CardInfo card : playerToCheck.getGrave().toList()) {
+                        if (card.getRace() == activator.getRace()) {
+                            ++activatorCardCount;
+                        }
+                    }
+                }
+                if (activatorCardCount > indenture.getEffectNumber()) {
+                    SummonOfIndenture.apply(this,indenture);
+                }
+            } else if (activator.getType() == RuneActivationType.Hand) {
+                Player playerToCheck = activator.shouldCheckEnemy() ? enemy : player;
+                int activatorCardCount = 0;
+                if (activator.getRace() == null) {
+                    activatorCardCount = playerToCheck.getHand().size();
+                } else {
+                    for (CardInfo card : playerToCheck.getHand().toList()) {
+                        if (card.getRace() == activator.getRace()) {
+                            ++activatorCardCount;
+                        }
+                    }
+                }
+                if (activatorCardCount > indenture.getEffectNumber()) {
+                    SummonOfIndenture.apply(this,indenture);
+                }
+            } else if (activator.getType() == RuneActivationType.DobleOrRace) {
+                Player playerToCheck = activator.shouldCheckEnemy() ? enemy : player;
+                int activatorCardCount = 0;
+                for (CardInfo card : playerToCheck.getField().getAliveCards()) {
+                    if (card.getRace() == Race.KINGDOM || card.getRace() == Race.FOREST) {
+                        ++activatorCardCount;
+                    }
+                }
+                if (activatorCardCount > indenture.getEffectNumber()) {
+                    SummonOfIndenture.apply(this,indenture);
+                }
+            } else if (activator.getType() == RuneActivationType.DoubleRace) {
+                Player playerToCheck = activator.shouldCheckEnemy() ? enemy : player;
+                int activatorCardCount = 0;
+                int kingdomCount = 0;
+                int forestCount = 0;
+                for (CardInfo card : playerToCheck.getField().getAliveCards()) {
+                    if (card.getRace() == Race.KINGDOM ) {
+                        ++kingdomCount;
+                    }
+                    else if( card.getRace() == Race.FOREST ){
+                        ++forestCount;
+                    }
+                }
+                activatorCardCount = kingdomCount > forestCount ? forestCount : kingdomCount;
+                if (activatorCardCount > indenture.getEffectNumber()) {
+                    SummonOfIndenture.apply(this,indenture);
+                }
+            } else if (activator.getType() == RuneActivationType.FourRace) {
+                int activatorCardCount = 0;
+                activatorCardCount = player.getField().getAliveCards().size();
+                if(activatorCardCount > indenture.getEffectNumber()){
+                    SummonOfIndenture.apply(this,indenture);
+                }
             }
         }
     }

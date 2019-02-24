@@ -13,7 +13,7 @@ public class PlayerBuilder {
 
     public static PlayerInfo build(boolean isNormalPlayer, String id, int level, List<Skill> cardBuffs, int heroHpAdj, String... descs) {
         DeckStartupInfo deck = DeckBuilder.build(descs);
-        return new PlayerInfo(isNormalPlayer, id, level, cardBuffs, heroHpAdj, deck.getRunes(), deck.getCards());
+        return new PlayerInfo(isNormalPlayer, id, level, cardBuffs, heroHpAdj, deck.getRunes(), deck.getIndentures(), deck.getCards());
     }
 
     public static PlayerInfo build(boolean isNormalPlayer, String id, String descText, int level) {
@@ -22,7 +22,7 @@ public class PlayerBuilder {
 
     public static PlayerInfo build(boolean isNormalPlayer, String id, String descText, int level, List<Skill> cardBuffs, int heroHpAdj) {
         DeckStartupInfo deck = DeckBuilder.multiBuild(descText);
-        return new PlayerInfo(isNormalPlayer, id, level, cardBuffs, heroHpAdj, deck.getRunes(), deck.getCards());
+        return new PlayerInfo(isNormalPlayer, id, level, cardBuffs, heroHpAdj, deck.getRunes(), deck.getIndentures(), deck.getCards());
     }
 
     public static PlayerInfo buildLilith(LilithDataStore lds, String bossId, boolean withGuards) {
