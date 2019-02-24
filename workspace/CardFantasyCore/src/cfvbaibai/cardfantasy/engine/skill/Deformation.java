@@ -32,7 +32,9 @@ public class Deformation {
             player.getOutField().removeCard(addCard);
             //player.getField().removeCard(summoner);
             player.getField().expelCard(summoner.getPosition());
-            player.getOutField().addCard(summoner);
+            if(!player.getOutField().contains(summoner)){
+                player.getOutField().addCard(summoner);
+            }
             resolver.getStage().getUI().cardDead(summoner);
             resolver.resolveLeaveSkills(summoner);
             resolver.summonCard(summoner.getOwner(), addCard, summoner, false, skillUseInfo.getSkill(), 1);

@@ -5,6 +5,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
+import cfvbaibai.cardfantasy.data.Skill;
 
 public class CardPile {
 
@@ -22,7 +23,7 @@ public class CardPile {
         return new ArrayList<CardInfo>(this.getCards());
     }
 
-    //    public CardInfo addCard(CardInfo newCard,SkillResolve... resolve) { //debug use
+//        public CardInfo addCard(CardInfo newCard,SkillResolver... resolve) { //debug use
     public CardInfo addCard(CardInfo newCard) {
         checkCardExistence(newCard);
         this.cards.add(newCard);
@@ -45,7 +46,7 @@ public class CardPile {
         }
     }
 
-    //    private void checkCardExistence(CardInfo newCard,SkillResolve... resolve) { //debug use
+//        private void checkCardExistence(CardInfo newCard,SkillResolver... resolve) { //debug use
     private void checkCardExistence(CardInfo newCard) {
         if (cards.contains(newCard)) {
             throw new CardFantasyRuntimeException("Cannot add an existing card to CardPile. "
