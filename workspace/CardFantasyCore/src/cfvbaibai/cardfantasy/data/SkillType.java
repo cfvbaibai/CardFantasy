@@ -421,6 +421,7 @@ public enum SkillType {
     弱点攻击("30881", 0),
 
     破军("",45,5),
+    战舞("", 60,0, SkillTag.物理攻击),
     七星剑("",80,0, SkillTag.抗免疫, SkillTag.抗不屈, SkillTag.魔王无效, SkillTag.魔族天赋),
     地裂劲("",70,0),
     溶骨的毒酒("",100,0),
@@ -461,6 +462,7 @@ public enum SkillType {
     神恩("", 1,SkillTag.抗沉默),
     放飞自我("", 3,0),
     归魂("",1),
+    逆转之风("", 1,0, SkillTag.即死),
     降归魂("",1),
     彼岸轮回("",1),
     号角("",1),
@@ -611,6 +613,7 @@ public enum SkillType {
     灵能爆发("", 700, 0, 3, 0, SkillTag.抗免疫),
     全垒打("", 200, 0, 8, 0, SkillTag.抗免疫),
     寒冰触碰("", 250, 50, 3, 0, new int[] {50,50,50,50,50,50,50,50,50,50,50}, SkillTag.抗免疫),
+    冰刃("", 450, 0, 3, 0, new int[] {100,100,100,100,100,100,100,100,100,100,100}, SkillTag.抗免疫),
     寒霜之指("", 500, 0, 3, 0, new int[] {50,50,50,50,50,50,50,50,50,50,50}, SkillTag.抗免疫),
     风暴汇集("", 250, 0, 5, 0, new int[] {80,80,80,80,80,80,80,80,80,80,80}, SkillTag.抗免疫),
     冰之魔枪("", 450, 0, 3, 0, new int[] {50,50,50,50,50,50,50,50,50,50,50}, SkillTag.抗免疫),
@@ -1042,6 +1045,7 @@ public enum SkillType {
     零度领域("",SkillType.镜面,0,null,0),
     冰肌雪骨("",SkillType.武形破剑击,0,null,0,SkillTag.抗沉默),
     共生("",SkillType.歃血魔咒,7,null,0),
+    名将之风("",SkillType.归魂,1,null,0),
 
     霜之领域("",SkillType.冰甲,1,大地之盾,0,SkillTag.不动),
 
@@ -1100,6 +1104,7 @@ public enum SkillType {
     反击阵列("",200,0,SkillType.不动,0,SkillType.反击屏障,0,SkillTag.不动, SkillTag.抗免疫, SkillTag.反击),
     正义庇所("",SkillType.正义之师,0,null,0),
     不可侵犯("",SkillType.镜面装甲,0,null,0),
+    严阵以待("",SkillType.不动,0,null,0),
 
 
     //给自身场上所有卡牌添加技能
@@ -1208,6 +1213,7 @@ public enum SkillType {
     献祭巫术("",0, SkillTag.魔王无效, SkillTag.魔族天赋,SkillTag.召唤),
     骸骨转化("",0, SkillTag.魔王无效, SkillTag.魔族天赋,SkillTag.召唤),
     魂之枷锁("",5,0, SkillTag.抗免疫,SkillTag.魔王无效),
+    兵粮寸断("",3,0, SkillTag.抗免疫,SkillTag.魔王无效),
     安魂曲("",3,0, SkillTag.抗免疫,SkillTag.魔王无效),
 
     死亡诅咒("",1,0, SkillTag.抗免疫,SkillTag.魔王无效),

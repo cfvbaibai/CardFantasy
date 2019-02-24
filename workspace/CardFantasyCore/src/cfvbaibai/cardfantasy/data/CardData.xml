@@ -1451,6 +1451,11 @@
         <Skill type="生灭" level="0" unlock="5" />
         <Skill type="阳式阴式" level="0" unlock="10" />
     </Card>
+    <Card id="1686" name="五子良将·乐进" wikiId="" race="王国" speed="3" star="5" cost="20" incrCost="2" at="565" hp="1575" incrAT="41" incrHP="41">
+        <Skill type="战歌之鼓" level="6" unlock="0" />
+        <Skill type="星云锁链" level="0" unlock="5" />
+        <Skill type="号角" level="1" unlock="10" summon="true"/>
+    </Card>
 
 
 
@@ -2694,6 +2699,11 @@
         <Skill type="镜像" level="0" unlock="5" death="true" />
         <Skill type="巧变" level="0" unlock="10" />
     </Card>
+    <Card id="2658" name="风之唤潮师" wikiId="" race="森林" speed="3" star="5" cost="16" incrCost="2" at="515" hp="1550" incrAT="41" incrHP="42">
+        <Skill type="冰刃" level="0" unlock="0" />
+        <Skill type="逆转之风" level="0" unlock="5" />
+        <Skill type="水流护甲" level="9" unlock="10" />
+    </Card>
 
 
 
@@ -3890,6 +3900,16 @@
         <Skill type="凋零陷阱" level="0" unlock="0" />
         <Skill type="熔岩护甲" level="0" unlock="5" />
         <Skill type="熔岩分身" level="0" unlock="10" />
+    </Card>
+    <Card id="3640" name="炎之战舞者" wikiId="" race="蛮荒" speed="3" star="5" cost="16" incrCost="2" at="540" hp="1560" incrAT="41" incrHP="40">
+        <Skill type="扼杀" level="0" unlock="0" />
+        <Skill type="战舞" level="0" unlock="5" />
+        <Skill type="重整" level="0" unlock="10" />
+    </Card>
+    <Card id="3641" name="五子良将·徐晃" wikiId="" race="蛮荒" speed="3" star="5" cost="20" incrCost="2" at="525" hp="1635" incrAT="40" incrHP="45">
+        <Skill type="兵粮寸断" level="0" unlock="0" />
+        <Skill type="严阵以待" level="0" unlock="5"  />
+        <Skill type="名将之风" level="0" unlock="10" />
     </Card>
 
 

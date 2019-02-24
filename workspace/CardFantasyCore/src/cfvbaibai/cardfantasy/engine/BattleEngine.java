@@ -466,7 +466,8 @@ public class BattleEngine {
             processAttackCard(myField, opField, i,true);
             if (myField.getCard(i) != null && !myField.getCard(i).isDead() &&
                     opField.getCard(i) != null && !opField.getCard(i).isDead()) {
-                if (myField.getCard(i)!=null&&myField.getCard(i).containsUsableSkill(SkillType.连击) || myField.getCard(i).containsUsableSkill(SkillType.刀语)|| myField.getCard(i).containsUsableSkill(SkillType.正义追击)) {
+                if (myField.getCard(i)!=null&&myField.getCard(i).containsUsableSkill(SkillType.连击) || myField.getCard(i).containsUsableSkill(SkillType.刀语)|| myField.getCard(i).containsUsableSkill(SkillType.正义追击)
+                        || myField.getCard(i).containsUsableSkill(SkillType.战舞)) {
                     processAttackCard(myField, opField, i,false);
                 }
             }
