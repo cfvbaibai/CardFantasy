@@ -106,6 +106,7 @@ public enum SkillType {
     龙脉守护("",0,SkillTag.守护, SkillTag.基础攻击加成, SkillTag.抗削弱,SkillTag.抗毒刃),
     星座连携("", 200,0,400,0, SkillTag.基础攻击加成, SkillTag.抗削弱,SkillTag.抗毒刃),
     星座能量清醒("", 0,0,SkillType.星座连携,0,null,0, SkillTag.额外攻击加成),
+    破魔神兵("", 0, SkillTag.额外攻击加成),
 
     虚弱("57000", 0, SkillTag.额外攻击加成, SkillTag.抗免疫, SkillTag.抗不屈, SkillTag.魔王无效, SkillTag.魔族天赋),
     战争怒吼("57022", 0, SkillTag.额外攻击加成, SkillTag.抗免疫, SkillTag.抗不屈, SkillTag.魔王无效, SkillTag.魔族天赋),
@@ -281,6 +282,7 @@ public enum SkillType {
     自愈("30944", 200,200),
     月恩术("", 300, 50),
     圣母回声("", 999999, 0),
+    守护之翼("", 999999, 0),
     兵("", 999999, 0),
     神佑复苏("", 999999, 0),
     圣母吟咏("", 10),
@@ -329,6 +331,7 @@ public enum SkillType {
     蛮荒我还会回来的("", 0),
     花族秘术("", 65, 0, 210, 0),
     涅盘("", 100, 0),
+    粗中有细("", 100, 0),
     凤凰涅盘("", 100, 0,SkillTag.复活),
     天选之子("", 60, 0),
     净身明礼("", 65, 0,SkillTag.抗沉默),
@@ -534,6 +537,8 @@ public enum SkillType {
     烈焰审判("",70,0,700,0, SkillTag.魔法, SkillTag.魔王无效),
     潜摧("", 0, SkillTag.即死, SkillTag.抗不屈, SkillTag.不动),
 
+    代罪("", 999999,0, SkillTag.魔王无效, SkillTag.抗免疫,SkillTag.即死,SkillTag.抗不屈),
+
 
     炼金失败("",0,SkillTag.复活),
     海滨危机("",0,SkillTag.复活),
@@ -675,6 +680,7 @@ public enum SkillType {
 
     燕返("", 0, 0),
     袈裟斩燕返("", 0, 0),
+    五子反弹("", 0, 0),
     斩杀("", 50, 0),
     双斩("",0,0,new int[] {45,50,55,60,65,75,80,85,90,95,100}),
     送葬之刃("", 50, 5),
@@ -692,6 +698,7 @@ public enum SkillType {
     逃跑("", 0,SkillTag.抗夺魂),
     撤退("", 0,SkillTag.抗夺魂,SkillTag.不动),
     夺魂("", 0, 1, SkillTag.抗夺魂),
+    归心("", 1, 0, SkillTag.抗夺魂),
     灵魂支配("", 1, 0, SkillTag.抗夺魂,SkillTag.复活),
     离魂剑("", 5, 0,SkillTag.抗夺魂),
     天召("", 0, 0),
@@ -782,6 +789,8 @@ public enum SkillType {
     狂野之怒("",0,0, SkillTag.不可洗炼,SkillTag.召唤),
     幻化("",0,0, SkillTag.不可洗炼,SkillTag.召唤,SkillTag.不动),
     封印解除("", 0, 0,SkillType.守护,5,null,0, SkillTag.召唤, SkillTag.不可洗炼),
+    虚实("",-2,0,SkillTag.魔王无效,SkillTag.抗免疫,SkillTag.召唤, SkillTag.不可洗炼),
+    毅重("",0,0, SkillTag.不可洗炼,SkillTag.召唤,SkillTag.抗沉默),
 
     召唤酒吞("",0,0, SkillTag.不可洗炼,SkillTag.召唤),
     召唤雪女("",0,0, SkillTag.不可洗炼,SkillTag.召唤),
@@ -975,6 +984,7 @@ public enum SkillType {
     地狱烈焰("",SkillType.末世术,6,SkillType.地狱烈火,5),
     星座能量控制("",SkillType.魔力法阵,6,SkillType.冰封禁制,0,SkillTag.基础攻击加成, SkillTag.抗削弱,SkillTag.抗毒刃),
     星座能量坚韧("",SkillType.邪灵汲取,6,SkillType.恶灵汲取,6,SkillTag.基础攻击加成, SkillTag.抗削弱,SkillTag.抗毒刃),
+    圣焰附体("",SkillType.邪灵汲取,7,SkillType.恶灵汲取,7,SkillTag.基础攻击加成, SkillTag.抗削弱,SkillTag.抗毒刃),
     原质("",SkillType.祈福,5,SkillType.月神的护佑,9),
     不灭原质("",75,0,SkillType.祈福,5,SkillType.月神的护佑,9),
     天丛云("",0,0,SkillType.应激,0,SkillType.剧毒剑刃,0),
@@ -990,6 +1000,7 @@ public enum SkillType {
     诅咒铠甲("",SkillType.诅咒之力,0,SkillType.钢铁之肤,6),
     蓄势待发("",SkillType.祈愿,5,SkillType.全体加速,2),
     风势("",SkillType.全体加速,2,SkillType.全体阻碍,1),
+    呼风唤雨("",SkillType.全体加速,1,SkillType.全体阻碍,1),
     群星之怒("",SkillType.灵魂消散 ,0,SkillType.雷霆一击,6),
     星辰变("",SkillType.号角 ,1,SkillType.祈愿,1),
     雷狱牢囚("",1,0, null,0,SkillType.转生,6),
@@ -1024,6 +1035,8 @@ public enum SkillType {
     还魂("",80,0, new int[]{ 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100}),
     不灭("",new int[] { 0,20, 25, 35, 45, 55, 65, 70, 75, 80, 90 }),
     顽强("",new int[] { 0,20, 25, 35, 45, 55, 65, 70, 75, 80, 90 }, SkillTag.不动),
+    阴阳术轮回("",65,0),
+    壮心不已("",65,0,SkillTag.抗沉默),
 
     安魂引("",0,0,SkillType.还魂,0,SkillType.归魂,1),
 
@@ -1072,6 +1085,7 @@ public enum SkillType {
     传响("",SkillType.降归魂,1,null,0),
     诀隐("",1,0,SkillType.降归魂,1,null,0),
     逆命华舞("",SkillType.燕返,0,null,0),
+    匹夫之勇("", 2000,0),
     //手牌添加技能 无判定
     愈音("",SkillType.治愈音符,0,null,0),
     亚平宁之蓝("",99999, 99999,SkillType.链式防守,0,null,0),
@@ -1172,6 +1186,7 @@ public enum SkillType {
     熊猫土火("",熊猫之土,0,SkillType.熊猫之火,0),
     元素分离("", 熊猫土火,0,SkillType.熊猫之风,0, SkillTag.召唤, SkillTag.不可洗炼,SkillTag.不动),
     风暴涌动("",null,0,连续魔法,10),
+    天下英主("",55,0,null,0,SkillType.五子反弹,0,SkillTag.抗沉默),
     //连携技能
     //给除特定卡牌以外的卡牌添加技能
     卡组保护("",null,0,SkillType.不屈,0),
@@ -1229,9 +1244,10 @@ public enum SkillType {
     人体炼成("",0, SkillTag.魔王无效, SkillTag.魔族天赋,SkillTag.召唤),
     海滨大作战("",0,0,SkillType.锁魂,0,SkillType.二重大灵轰,0),
     死亡链接("",5,0, SkillTag.抗免疫,SkillTag.魔王无效),
-    形散如烟("",3,0,30,0, SkillTag.魔王无效,SkillTag.抗免疫),
+    形散如烟("",3,0,25,0, SkillTag.魔王无效,SkillTag.抗免疫),
     吞噬("",1,0,2,0,SkillTag.抗不屈, SkillTag.魔王无效, SkillTag.魔族天赋),
     魂飞魄散("",3,0,30,0, SkillTag.魔王无效,SkillTag.抗免疫),
+    肝胆俱裂("",1,0,70,0, SkillTag.魔王无效,SkillTag.抗免疫),
 
     噩梦("",SkillType.噩梦来临,0,SkillType.噩梦扼杀,0),
 

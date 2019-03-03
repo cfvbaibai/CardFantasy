@@ -1456,6 +1456,12 @@
         <Skill type="星云锁链" level="0" unlock="5" />
         <Skill type="号角" level="1" unlock="10" summon="true"/>
     </Card>
+    <Card id="1687" name="烈焰神兵" wikiId="" race="王国" speed="3" star="5" cost="18" incrCost="2" at="505" hp="1585" incrAT="41" incrHP="45">
+        <Skill type="守护之翼" level="6" unlock="0" />
+        <Skill type="圣焰附体" level="0" unlock="5" />
+        <Skill type="赤焰战场" level="1" unlock="10" />
+    </Card>
+
 
 
 
@@ -3911,6 +3917,11 @@
         <Skill type="严阵以待" level="0" unlock="5"  />
         <Skill type="名将之风" level="0" unlock="10" />
     </Card>
+    <Card id="3642" name="魏武王·曹操" wikiId="" race="蛮荒" speed="2" star="5" cost="20" incrCost="2" at="610" hp="1610" incrAT="40" incrHP="49">
+        <Skill type="虚实" level="0" unlock="0" />
+        <Skill type="代罪" level="0" unlock="5"  />
+        <Skill type="归心" level="0" unlock="10" />
+    </Card>
 
 
 
@@ -5253,6 +5264,16 @@
         <Skill type="死亡恐惧" level="0" unlock="0"  />
         <Skill type="灵魂支配" level="0" unlock="5" />
         <Skill type="不屈" level="0" unlock="10" />
+    </Card>
+    <Card id="4671" name="五虎上将·张飞" wikiId="" race="地狱" speed="3" star="5" cost="20" incrCost="2" at="505" hp="1400" incrAT="40" incrHP="33">
+        <Skill type="肝胆俱裂" level="0" unlock="0"  />
+        <Skill type="匹夫之勇" level="0" unlock="5" />
+        <Skill type="粗中有细" level="0" unlock="10" />
+    </Card>
+    <Card id="4672" name="风暴领主" wikiId="" race="地狱" speed="2" star="4" cost="15" incrCost="2" at="475" hp="1310" incrAT="35" incrHP="35">
+        <Skill type="破魔神兵" level="0" unlock="0"  />
+        <Skill type="雷霆一击" level="8" unlock="5" />
+        <Skill type="呼风唤雨" level="0" unlock="10" />
     </Card>
 
 

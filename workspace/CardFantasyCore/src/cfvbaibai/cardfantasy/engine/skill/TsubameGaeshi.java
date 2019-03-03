@@ -14,8 +14,8 @@ import cfvbaibai.cardfantasy.engine.SkillUseInfo;
  *
  */
 public class TsubameGaeshi {
-    public static void apply(SkillUseInfo skillUseInfo,Skill cardSkill, SkillResolver resolver, Player attackerHero, CardInfo defender) throws HeroDieSignal {
-        int damage = 200 * defender.getLevel0AT() / 100;
+    public static void apply(SkillUseInfo skillUseInfo,Skill cardSkill, SkillResolver resolver, Player attackerHero, CardInfo defender,int impact) throws HeroDieSignal {
+        int damage = impact * defender.getLevel0AT() / 100;
         int position = defender.getPosition();
         if (position == -1) {
             throw new IllegalArgumentException("Invalid defender position! Defender: " + defender.getUniqueName());

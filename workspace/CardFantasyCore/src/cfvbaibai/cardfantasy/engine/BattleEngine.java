@@ -527,7 +527,7 @@ public class BattleEngine {
             {
                 if(skillUseInfo.getType() == SkillType.嘲讽 || skillUseInfo.getType() == SkillType.酒池肉林
                         || skillUseInfo.getType() == SkillType.喵喵喵|| skillUseInfo.getType() == SkillType.蔑视
-                        || skillUseInfo.getType() == SkillType.龙之守护)
+                        || skillUseInfo.getType() == SkillType.龙之守护 || skillUseInfo.getType() == SkillType.守护之翼)
                 {
                     skill = skillUseInfo.getSkill();
                 }
@@ -701,7 +701,7 @@ public class BattleEngine {
             for (CardInfo card : opField.getAliveCards()) {
                 if(card.containsUsableSkill(SkillType.嘲讽)||card.containsUsableSkill(SkillType.酒池肉林)
                         ||card.containsUsableSkill(SkillType.喵喵喵)||card.containsUsableSkill(SkillType.蔑视)
-                        ||card.containsUsableSkill(SkillType.龙之守护))
+                        ||card.containsUsableSkill(SkillType.龙之守护)||card.containsUsableSkill(SkillType.守护之翼))
                 {
                     if(!card.getStatus().containsStatus(CardStatusType.不屈)){
                         return card;

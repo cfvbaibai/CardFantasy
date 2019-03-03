@@ -40,7 +40,8 @@ public class SummonOpponent {
                 || summoner.isSummonedMinion() && skillUseInfo.getType() == SkillType.伎町迷影
                 || summoner.isSummonedMinion() && skillUseInfo.getType() == SkillType.三位一体
                 || summoner.isSummonedMinion() && skillUseInfo.getType() == SkillType.迷影森森
-                || summoner.isSummonedMinion() && skillUseInfo.getType() == SkillType.复仇之影) {
+                || summoner.isSummonedMinion() && skillUseInfo.getType() == SkillType.复仇之影
+                || summoner.isSummonedMinion() && skillUseInfo.getType() == SkillType.毅重) {
             for(CardStatusItem item : summoner.getStatus().getAllItems())
             {
                 if(item.getType()==CardStatusType.召唤){

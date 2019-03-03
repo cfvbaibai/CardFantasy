@@ -18,8 +18,10 @@ public class Asthenia {
         }
         GameUI ui = resolver.getStage().getUI();
         Skill skill = skillUseInfo.getSkill();
+        int impact = skill.getImpact2();
         ui.useSkill(attackCard, victims, skill, true);
         CardStatusItem status = CardStatusItem.paralyzed(skillUseInfo);
+        status.setEffect(impact);
         status.setEffectNumber(effectNumber);
         CardStatusItem statusItem = CardStatusItem.Asthenia(skillUseInfo);
         statusItem.setEffectNumber(effectNumber);
