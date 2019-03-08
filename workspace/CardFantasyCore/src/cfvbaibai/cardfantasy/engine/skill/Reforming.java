@@ -33,14 +33,18 @@ public class Reforming {
             card.switchOwner(attackPlayer);
         }
         if (card.getStatus().containsStatus(CardStatusType.召唤)) {
+            CardStatusItem summonStatusItem = null;
             for(CardStatusItem summonedStatusItem:card.getStatus().getAllItems())
             {
                 if(summonedStatusItem.getType()==CardStatusType.召唤){
-                    Summon.newBornApply(resolver, skillUseInfo, card, SummonType.Summoning, 1,summonedStatusItem, card.getName());//新生卡牌可以立即攻击。
+                    summonStatusItem = summonedStatusItem;
                     break;
                 }
             }
+            card.reset();
+            card.addStatus(summonStatusItem);
             card.setUsed(skillUseInfo);
+            resolver.summonCard(card.getOwner(), card, card, true, skill,1);
         } else {
             //处理顽强司命情况下，卡牌已经回到场上，不需要再次结算降临技能。
             if (card.isAlive()) {
