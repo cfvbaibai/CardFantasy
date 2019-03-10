@@ -42,6 +42,7 @@ public class Summon {
                 || summoner.isSummonedMinion() && skillUseInfo.getType() == SkillType.迷影森森
                 || summoner.isSummonedMinion() && skillUseInfo.getType() == SkillType.熔岩分身
                 || summoner.isSummonedMinion() && skillUseInfo.getType() == SkillType.复仇之影
+                || summoner.isSummonedMinion() && skillUseInfo.getType() == SkillType.碎裂幻像
                 || summoner.isSummonedMinion() && skillUseInfo.getType() == SkillType.毅重) {
             for(CardStatusItem item : summoner.getStatus().getAllItems())
             {
@@ -239,6 +240,7 @@ public class Summon {
                 || summoner.isSummonedMinion() && skillUseInfo.getType() == SkillType.萦梦
                 || summoner.isSummonedMinion() && skillUseInfo.getType() == SkillType.熔岩分身
                 || summoner.isSummonedMinion() && skillUseInfo.getType() == SkillType.复仇之影
+                || summoner.isSummonedMinion() && skillUseInfo.getType() == SkillType.碎裂幻像
                 || summoner.isSummonedMinion() && skillUseInfo.getType() == SkillType.毅重) {
             for(CardStatusItem item : summoner.getStatus().getAllItems())
             {

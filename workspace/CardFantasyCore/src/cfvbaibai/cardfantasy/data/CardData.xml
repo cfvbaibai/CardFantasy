@@ -1461,6 +1461,11 @@
         <Skill type="圣焰附体" level="0" unlock="5" />
         <Skill type="赤焰战场" level="1" unlock="10" />
     </Card>
+    <Card id="1688" name="圣翼光龙" wikiId="" race="王国" speed="2" star="4" cost="15" incrCost="2" at="470" hp="1315" incrAT="34" incrHP="32">
+        <Skill type="圣翼裁决" level="0" unlock="0" />
+        <Skill type="结界立场" level="0" unlock="5" />
+        <Skill type="圣光复活" level="0" unlock="10" />
+    </Card>
 
 
 
@@ -2709,6 +2714,16 @@
         <Skill type="冰刃" level="0" unlock="0" />
         <Skill type="逆转之风" level="0" unlock="5" />
         <Skill type="水流护甲" level="9" unlock="10" />
+    </Card>
+    <Card id="2659" name="五虎上将·黄忠" wikiId="" race="森林" speed="3" star="5" cost="20" incrCost="2" at="515" hp="1565" incrAT="41" incrHP="42">
+        <Skill type="赤血刀" level="0" unlock="0" />
+        <Skill type="百发百中" level="0" unlock="5" />
+        <Skill type="老当益壮" level="0" unlock="10" />
+    </Card>
+    <Card id="2660" name="迷失之森" wikiId="" race="森林" speed="2" star="4" cost="15" incrCost="2" at="415" hp="1495" incrAT="30" incrHP="33">
+        <Skill type="号角" level="1" unlock="0" />
+        <Skill type="迷幻之境" level="0" unlock="5" />
+        <Skill type="森之护佑" level="0" unlock="10" />
     </Card>
 
 
@@ -5275,6 +5290,17 @@
         <Skill type="雷霆一击" level="8" unlock="5" />
         <Skill type="呼风唤雨" level="0" unlock="10" />
     </Card>
+    <Card id="4673" name="金属巨龙·霜" wikiId="" race="地狱" speed="3" star="5" cost="21" incrCost="2" at="575" hp="1600" incrAT="45" incrHP="45">
+        <Skill type="破坏之爪" level="0" unlock="0"  />
+        <Skill type="邪龙领域" level="8" unlock="5" />
+        <Skill type="神赐之躯" level="0" unlock="10" />
+    </Card>
+    <Card id="4674" name="邪恶巨龙" wikiId="" race="地狱" speed="3" star="5" cost="19" incrCost="2" at="500" hp="1560" incrAT="43" incrHP="40">
+        <Skill type="恶魔印记" level="0" unlock="0"  />
+        <Skill type="邪龙之怒" level="0" unlock="5" />
+        <Skill type="重整" level="0" unlock="10" />
+    </Card>
+
 
 
 
