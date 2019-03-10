@@ -2318,11 +2318,14 @@ public class SkillResolver {
                 if (skillUseInfo.getType() == SkillType.高级连击) {
                     MultipleAttack.apply(this, skillUseInfo, attacker, defenderHero, attackSkill, firstSkill,100);
                     break;
-                } else if (skillUseInfo.getType() == SkillType.狂舞 || skillUseInfo.getType() == SkillType.夺命骨镰 || skillUseInfo.getType() == SkillType.破坏之爪) {
+                } else if (skillUseInfo.getType() == SkillType.狂舞 || skillUseInfo.getType() == SkillType.夺命骨镰) {
                     MultipleAttack.apply(this, skillUseInfo, attacker, defenderHero, attackSkill, firstSkill,100);
                     break;
                 } else if (skillUseInfo.getType() == SkillType.正义之师) {
                     MultipleAttack.apply(this, skillUseInfo.getAttachedUseInfo1(), attacker, defenderHero, attackSkill, firstSkill,50);
+                    break;
+                }else if (skillUseInfo.getType() == SkillType.破坏之爪) {
+                    MultipleAttack.apply(this, skillUseInfo.getAttachedUseInfo1(), attacker, defenderHero, attackSkill, firstSkill,40);
                     break;
                 }
             }
@@ -2724,6 +2727,9 @@ public class SkillResolver {
                 multAttackFlag = false;
             } else if ((skillUseInfo.getType() == SkillType.狂舞 || skillUseInfo.getType() == SkillType.夺命骨镰 || skillUseInfo.getType() == SkillType.破坏之爪) && multAttackFlag) {
                 MultipleAttack.apply(this, skillUseInfo, attacker, defenderHero, null, firstSkill,100);
+                multAttackFlag = false;
+            } else if ((skillUseInfo.getType() == SkillType.破坏之爪) && multAttackFlag) {
+                MultipleAttack.apply(this, skillUseInfo, attacker, defenderHero, null, firstSkill,40);
                 multAttackFlag = false;
             } else if (skillUseInfo.getType() == SkillType.正义之师 && multAttackFlag) {
                 MultipleAttack.apply(this, skillUseInfo.getAttachedUseInfo1(), attacker, defenderHero, null, firstSkill,50);
