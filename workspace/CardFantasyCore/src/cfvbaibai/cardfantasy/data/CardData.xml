@@ -682,9 +682,14 @@
         <Skill type="复活" level="0" unlock="5" summon="true" />
         <Skill type="神威" level="0" unlock="10" />
     </Card>
+    <!--<Card id="1525" name="巨蟹座" wikiId="" race="王国" speed="4" star="5" cost="18" incrCost="0" at="320" hp="1400" incrAT="40" incrHP="55">-->
+        <!--<Skill type="祈福" level="2" unlock="0" />-->
+        <!--<Skill type="大地之盾" level="0" unlock="5" />-->
+        <!--<Skill type="免疫" level="0" unlock="10" />-->
+    <!--</Card>-->
     <Card id="1525" name="巨蟹座" wikiId="" race="王国" speed="4" star="5" cost="18" incrCost="0" at="320" hp="1400" incrAT="40" incrHP="55">
-        <Skill type="祈福" level="2" unlock="0" />
-        <Skill type="大地之盾" level="0" unlock="5" />
+        <Skill type="星座能量热情" level="2" unlock="0" />
+        <Skill type="清泉之盾" level="0" unlock="5" />
         <Skill type="免疫" level="0" unlock="10" />
     </Card>
     <Card id="1526" name="魔装机神" wikiId="" race="王国" speed="4" star="5" cost="18" incrCost="1" at="320" hp="1830" incrAT="39" incrHP="42">
@@ -1465,6 +1470,11 @@
         <Skill type="圣翼裁决" level="0" unlock="0" />
         <Skill type="结界立场" level="0" unlock="5" />
         <Skill type="圣光复活" level="0" unlock="10" />
+    </Card>
+    <Card id="1689" name="悠歌卫士" wikiId="" race="王国" speed="2" star="4" cost="16" incrCost="2" at="400" hp="1500" incrAT="35" incrHP="50">
+        <Skill type="王国卫士" level="0" unlock="0" />
+        <Skill type="声呐" level="0" unlock="5" />
+        <Skill type="王国悠歌" level="0" unlock="10" />
     </Card>
 
 
@@ -2725,6 +2735,11 @@
         <Skill type="迷幻之境" level="0" unlock="5" />
         <Skill type="森之护佑" level="0" unlock="10" />
     </Card>
+    <Card id="2661" name="花园使者" wikiId="" race="森林" speed="2" star="4" cost="15" incrCost="2" at="440" hp="1290" incrAT="30" incrHP="42">
+        <Skill type="疯长的植物" level="0" unlock="0" />
+        <Skill type="转生" level="6" unlock="5" />
+        <Skill type="荆棘护体" level="0" unlock="10" />
+    </Card>
 
 
 
@@ -3404,10 +3419,15 @@
         <Skill type="脱困" level="0" unlock="5" />
         <Skill type="吸血" level="10" unlock="10" />
     </Card>
+    <!--<Card id="3534" name="双鱼座" wikiId="" race="蛮荒" speed="4" star="5" cost="18" incrCost="2" at="330" hp="1880" incrAT="41" incrHP="36">-->
+        <!--<Skill type="歃血魔咒" level="7" unlock="0" />-->
+        <!--<Skill type="灵王的轰击" level="5" unlock="5" />-->
+        <!--<Skill type="不动" level="0" unlock="10" />-->
+    <!--</Card>-->
     <Card id="3534" name="双鱼座" wikiId="" race="蛮荒" speed="4" star="5" cost="18" incrCost="2" at="330" hp="1880" incrAT="41" incrHP="36">
-        <Skill type="歃血魔咒" level="7" unlock="0" />
-        <Skill type="灵王的轰击" level="5" unlock="5" />
-        <Skill type="不动" level="0" unlock="10" />
+        <Skill type="星座能量信念" level="0" unlock="0" />
+        <Skill type="赤之魔枪" level="4" unlock="5" />
+        <Skill type="坚毅" level="0" unlock="10" />
     </Card>
     <Card id="3535" name="黄金狮子" wikiId="" race="蛮荒" speed="6" star="5" cost="18" incrCost="2" at="0" hp="2000" incrAT="0" incrHP="200">
         <Skill type="免疫" level="7" unlock="0" />
@@ -3936,6 +3956,11 @@
         <Skill type="虚实" level="0" unlock="0" />
         <Skill type="代罪" level="0" unlock="5"  />
         <Skill type="归心" level="0" unlock="10" />
+    </Card>
+    <Card id="3643" name="五虎上将·马超" wikiId="" race="蛮荒" speed="2" star="5" cost="20" incrCost="2" at="525" hp="1615" incrAT="41" incrHP="40">
+        <Skill type="一骑当千" level="0" unlock="0" />
+        <Skill type="铁骑破阵" level="0" unlock="5"  />
+        <Skill type="马术" level="0" unlock="10" />
     </Card>
 
 
@@ -4564,9 +4589,14 @@
         <Skill type="鹰眼" level="0" unlock="5" />
         <Skill type="武形秘法" level="0" unlock="10" />
     </Card>
+    <!--<Card id="4525" name="双子座" wikiId="" race="地狱" speed="1" star="5" cost="18" incrCost="2" at="390" hp="1600" incrAT="40" incrHP="35">-->
+        <!--<Skill type="双子之身" level="0" unlock="0" />-->
+        <!--<Skill type="封印" level="0" unlock="5" />-->
+        <!--<Skill type="转生" level="8" unlock="10" />-->
+    <!--</Card>-->
     <Card id="4525" name="双子座" wikiId="" race="地狱" speed="1" star="5" cost="18" incrCost="2" at="390" hp="1600" incrAT="40" incrHP="35">
-        <Skill type="双子之身" level="0" unlock="0" />
-        <Skill type="封印" level="0" unlock="5" />
+        <Skill type="星座能量掌握" level="0" unlock="0" />
+        <Skill type="封印" level="0" unlock="5" summon="true"/>
         <Skill type="转生" level="8" unlock="10" />
     </Card>
     <Card id="4526" name="双子座·幻影" wikiId="" race="地狱" speed="1" star="5" cost="18" incrCost="2" at="390" hp="1600" incrAT="41" incrHP="36">
@@ -4607,7 +4637,7 @@
         <Skill type="三千世界" level="0" unlock="5" />
         <Skill type="血魂之咒" level="0" unlock="10" />
     </Card>
-    <Card id="4534" name="邪月翼魔" wikiId="" race="地狱" speed="3" star="5" cost="17" incrCost="2" at="380" hp="1260" incrAT="28" incrHP="20">
+    <Card id="4534" name="原邪月翼魔" wikiId="" race="地狱" speed="3" star="5" cost="17" incrCost="2" at="380" hp="1260" incrAT="28" incrHP="20">
         <Skill type="逃跑" level="0" unlock="0" />
         <Skill type="魔甲" level="8" unlock="5" />
         <Skill type="净化" level="0" unlock="10" summon="true" />
@@ -5300,6 +5330,31 @@
         <Skill type="邪龙之怒" level="0" unlock="5" />
         <Skill type="重整" level="0" unlock="10" />
     </Card>
+    <Card id="4675" name="邪月翼魔" wikiId="" race="地狱" speed="2" star="5" cost="17" incrCost="2" at="480" hp="1460" incrAT="38" incrHP="40">
+        <Skill type="月之潮汐" level="0" unlock="0" />
+        <Skill type="神魔之甲" level="0" unlock="5" />
+        <Skill type="残月之辉" level="0" unlock="10" />
+    </Card>
+    <Card id="4676" name="狂暴羽蛇" wikiId="" race="地狱" speed="3" star="5" cost="18" incrCost="2" at="500" hp="1525" incrAT="42" incrHP="48">
+        <Skill type="蛇影迷踪" level="0" unlock="0" />
+        <Skill type="狂怒" level="0" unlock="5" />
+        <Skill type="神性" level="0" unlock="10" />
+    </Card>
+    <Card id="4677" name="狂暴羽蛇分身" wikiId="" race="地狱" speed="3" star="5" cost="99" incrCost="0" at="500" hp="1525" incrAT="42" incrHP="48">
+        <Skill type="狂怒" level="0" unlock="5" />
+        <Skill type="神性" level="0" unlock="10" />
+    </Card>
+    <Card id="4678" name="钟馗" wikiId="" race="地狱" speed="2" star="5" cost="21" incrCost="2" at="700" hp="1550" incrAT="50" incrHP="45">
+        <Skill type="灵魂汲取" level="0" unlock="0" />
+        <Skill type="封魔神剑" level="0" unlock="5" />
+        <Skill type="天道承负" level="0" unlock="10" />
+    </Card>
+    <Card id="4679" name="迷失之魇" wikiId="" race="地狱" speed="3" star="5" cost="16" incrCost="2" at="410" hp="1550" incrAT="42" incrHP="35">
+        <Skill type="威吓" level="0" unlock="0" />
+        <Skill type="对决" level="0" unlock="5" />
+        <Skill type="追击" level="0" unlock="10" />
+    </Card>
+
 
 
 

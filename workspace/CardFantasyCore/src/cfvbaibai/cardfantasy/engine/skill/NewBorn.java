@@ -97,6 +97,13 @@ public class NewBorn {
                     defender.getField().removeCard(victim);
                     defender.getOutField().removeCard(victim);
                     resolver.summonCard(card.getOwner(), victim, null, false, skillUseInfo.getSkill(),0);
+
+                    //修改新生技能,可以发动二段降临
+                    List<CardInfo> cardInfoList = new ArrayList<>();
+                    cardInfoList.add(card);
+                    if(card.isAlive()) {
+                        resolver.resolveSecondClassSummoningSkills(cardInfoList, card.getOwner().getField(), defender.getField(), skillUseInfo.getSkill(), true);
+                    }
                 }
             }
         }

@@ -1,6 +1,7 @@
 package cfvbaibai.cardfantasy.engine.skill;
 
 import cfvbaibai.cardfantasy.CardFantasyRuntimeException;
+import cfvbaibai.cardfantasy.Randomizer;
 import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.engine.*;
 
@@ -8,12 +9,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public final class RemoveDebuffStatus {
-    public static void apply(SkillUseInfo skillUseInfo, SkillResolver resolver, EntityInfo attacker)
+    public static void apply(SkillUseInfo skillUseInfo, SkillResolver resolver, EntityInfo attacker,int number)
             throws HeroDieSignal {
         List<CardInfo> cards = null;
         Skill skill = skillUseInfo.getSkill();
         int impact = skill.getImpact();
-        cards = attacker.getOwner().getField().getAliveCards();
+//        cards = attacker.getOwner().getField().getAliveCards();
+        StageInfo stage = resolver.getStage();
+        Randomizer random = stage.getRandomizer();
+        cards = random.pickRandom(attacker.getOwner().getField().toList(), number, true, null);
         resolver.getStage().getUI().useSkill(attacker, cards, skillUseInfo.getSkill(), true);
         for (CardInfo card : cards) {
             CardStatus cardStatus = card.getStatus();
@@ -24,7 +28,7 @@ public final class RemoveDebuffStatus {
                         || cardStatusItem.getType() == CardStatusType.死咒 || cardStatusItem.getType() == CardStatusType.献祭
                         || cardStatusItem.getType() == CardStatusType.炼成 || cardStatusItem.getType() == CardStatusType.魂殇
                         || cardStatusItem.getType() == CardStatusType.黄天 || cardStatusItem.getType() == CardStatusType.祭奠
-                        || cardStatusItem.getType() == CardStatusType.离魂
+                        || cardStatusItem.getType() == CardStatusType.离魂 || cardStatusItem.getType() == CardStatusType.蛇影
                         || cardStatusItem.getType() == CardStatusType.链接) {
                     deleteItems.add(cardStatusItem);
                 } else if (cardStatusItem.getType() == CardStatusType.虚化) {

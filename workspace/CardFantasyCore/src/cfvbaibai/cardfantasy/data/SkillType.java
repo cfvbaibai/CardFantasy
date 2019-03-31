@@ -12,6 +12,7 @@ public enum SkillType {
     缴械("", 80, SkillTag.永久, SkillTag.基础攻击加成, SkillTag.抗不屈),
     群体削弱("30952", 5, SkillTag.永久, SkillTag.基础攻击加成, SkillTag.抗不屈),
     霸王之姿("", 600,0, SkillTag.永久, SkillTag.基础攻击加成, SkillTag.抗不屈),
+    威吓("", 400,0, SkillTag.永久, SkillTag.基础攻击加成, SkillTag.抗不屈),
     诅咒之力("", 200,0, SkillTag.永久, SkillTag.基础攻击加成, SkillTag.抗不屈),
     喋喋不休("", 300,0, SkillTag.永久, SkillTag.基础攻击加成, SkillTag.抗不屈, SkillTag.抗沉默),
     毒刃("",0,SkillTag.永久, SkillTag.原始体力加成, SkillTag.抗不屈,SkillTag.抗免疫),
@@ -34,6 +35,7 @@ public enum SkillType {
     灵魂献祭("", 100, 0, SkillTag.永久, SkillTag.复活,SkillTag.基础攻击加成),
     侵蚀("", 100, 0, SkillTag.永久, SkillTag.基础攻击加成, SkillTag.魔王无效, SkillTag.魔族天赋),
     威慑("", 150, 0, SkillTag.永久, SkillTag.基础攻击加成, SkillTag.魔王无效, SkillTag.魔族天赋),
+    骁袭("", 150, 0, SkillTag.永久, SkillTag.基础攻击加成, SkillTag.魔王无效, SkillTag.魔族天赋,SkillTag.不动),
     松鼠吞噬("", 20, 0, SkillTag.永久, SkillTag.基础攻击加成, SkillTag.魔王无效, SkillTag.魔族天赋),
     冰巨人吞噬("", 30, 0, SkillTag.永久, SkillTag.基础攻击加成, SkillTag.魔王无效, SkillTag.魔族天赋),
     页游吞噬("", 100, 0, SkillTag.永久, SkillTag.基础攻击加成, SkillTag.魔王无效, SkillTag.魔族天赋),
@@ -261,6 +263,7 @@ public enum SkillType {
     喵喵喵("",0),
     酒池肉林("",70,0),
     蔑视("",0,SkillTag.抗沉默),
+    月之潮汐("", 12, 0,SkillTag.抗夺魂),
 
     横扫("30941", 0, SkillTag.抗免疫, SkillTag.物理攻击),
     三千世界("", 0, SkillTag.抗免疫, SkillTag.物理攻击),
@@ -334,6 +337,7 @@ public enum SkillType {
     蛮荒我还会回来的("", 0),
     花族秘术("", 65, 0, 210, 0),
     涅盘("", 100, 0),
+    神性("", 100, 0),
     粗中有细("", 100, 0),
     凤凰涅盘("", 100, 0,SkillTag.复活),
     天选之子("", 60, 0),
@@ -385,6 +389,7 @@ public enum SkillType {
     迷影("", 400, 0, 250, 0,SkillTag.抗夺魂),
     优雅之姿("", 0, 0, 999999, 0),
     不灭灵体("", 1, 0, 999999, 0),
+    马术("", 1, 0, 999999, 0,SkillTag.抗夺魂),
     忠肝义胆("", 150, 0, 500, 0),
     铁骨衣("",1),
     水流壁("", 650, -50, 0, 50,SkillTag.不动),
@@ -402,6 +407,8 @@ public enum SkillType {
     免疫("30942", 0),
     结界立场("", 0,SkillTag.抗沉默),
     嗜魔之体("", 0),
+    三界行者("", 170, 0, SkillTag.永久, SkillTag.基础攻击加成),
+    起死回生("",70,0),
     不灭之魂("", 0),
     不息神盾("", 0,0,SkillTag.抗夺魂),
     龙战于野("", 120, 0, SkillTag.额外攻击加成, SkillTag.不可洗炼),
@@ -435,6 +442,7 @@ public enum SkillType {
     溶骨的毒酒("",100,0),
     死亡收割("",85,0),
     狂舞("", 70, 0,4,0, SkillTag.抗免疫, SkillTag.物理攻击),
+    追击("", 70, 0,1,0, SkillTag.抗免疫, SkillTag.物理攻击),
     夺命骨镰("", 0, 0,4,0, SkillTag.额外攻击加成, SkillTag.抗免疫, SkillTag.物理攻击),
     正义之击("",50,0,1,0, SkillTag.抗免疫, SkillTag.物理攻击),
     破坏之爪("",100,0,2,0, SkillTag.抗免疫, SkillTag.物理攻击),
@@ -450,6 +458,8 @@ public enum SkillType {
     禁术全领域沉默("", 0, SkillTag.抗免疫, SkillTag.抗不屈, SkillTag.沉默, SkillTag.魔王无效, SkillTag.魔族天赋),
     无限全体沉默("", 0, SkillTag.抗免疫, SkillTag.抗不屈, SkillTag.沉默, SkillTag.魔王无效, SkillTag.魔族天赋),
     半数沉默("", 0, SkillTag.抗免疫, SkillTag.抗不屈, SkillTag.沉默, SkillTag.魔王无效, SkillTag.魔族天赋),
+    声呐("", 0, SkillTag.抗免疫, SkillTag.抗不屈, SkillTag.沉默, SkillTag.魔王无效, SkillTag.魔族天赋),
+    一骑当千("", 0, SkillTag.抗免疫, SkillTag.抗不屈, SkillTag.沉默, SkillTag.魔王无效, SkillTag.魔族天赋),
     地煞倾覆("", 300,0, SkillTag.抗免疫, SkillTag.抗不屈, SkillTag.沉默, SkillTag.魔王无效, SkillTag.魔族天赋,SkillTag.永久, SkillTag.基础攻击加成),
 
     灵魂消散("", 0, SkillTag.抗免疫, SkillTag.抗不屈, SkillTag.魔王无效, SkillTag.魔族天赋),
@@ -463,6 +473,7 @@ public enum SkillType {
     不朽原核("",10000,0,SkillTag.沉默无效),
     魔王之血("",2000,0,SkillTag.沉默无效),
     神赐之躯("",1000,0),
+    无常索命("", 700,0,SkillType.灵魂消散,0,null,0, SkillTag.永久, SkillTag.基础攻击加成, SkillTag.抗不屈),
 
     回魂("31131", 1),
     招魂术("", 1,SkillTag.不动),
@@ -491,6 +502,7 @@ public enum SkillType {
     癫狂之舞("", 0),
     死亡恐惧("", 0),
     离间("", 0),
+    铁骑破阵("", 0),
     无尽华尔兹("", 0),
     破阵("", 1, 0, SkillTag.抗夺魂),
     醉酒狂暴("", 0),
@@ -519,6 +531,7 @@ public enum SkillType {
     村正("",70, 0),
     狂暴("", 100,0),
     恶灵汲取("", 0, 3, SkillTag.抗免疫, SkillTag.魔王无效, SkillTag.魔族天赋),
+    灵魂汲取("", 30, 0,SkillType.灵魂消散,0,null,0, SkillTag.抗免疫, SkillTag.魔王无效, SkillTag.魔族天赋),
     反噬("31156", 50),
     恶魔契约("", 1000,0),
     疾病("31155", 10),
@@ -590,6 +603,7 @@ public enum SkillType {
     神性祈祷("", 4,0),
     净化领域("", 0,SkillTag.不动),
     驱魔("", 1000,0),
+    残月之辉("", 1000,0),
 
     王国之盾("40099", 15, 5, SkillTag.种族之盾),
     森林之盾("40091", 15, 5, SkillTag.种族之盾),
@@ -616,6 +630,7 @@ public enum SkillType {
 
     屠戮("", 3500, 0, 1, 0, SkillTag.抗免疫),
     赤之魔枪("", 200, 50, 3, 0, SkillTag.抗免疫),
+    狂怒("", 800, 0, 3, 0, SkillTag.抗免疫),
     用兵之道("", 700, 0, 3, 0, SkillTag.抗免疫),
     圣火("", 600, 0, 3, 0, SkillTag.抗免疫),
     五雷轰顶("",1000,0,3,0, SkillTag.抗免疫),
@@ -760,6 +775,9 @@ public enum SkillType {
     突击军势("", SkillType.召唤伍长,0, SkillType.召唤兵长,0, SkillTag.不可洗炼,SkillTag.召唤),
     突击军阵("", SkillType.召唤合金伍长,0, SkillType.召唤合金兵长,0, SkillTag.不可洗炼,SkillTag.召唤),
     召唤玫瑰剑士("",SkillType.召唤花舞剑士,0, SkillType.召唤玫瑰甜心,0, SkillTag.不可洗炼,SkillTag.召唤),
+    播种("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
+    收获("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
+    疯长的植物("",SkillType.播种,0, SkillType.收获,0, SkillTag.不可洗炼,SkillTag.召唤),
     剑道("",0,0, SkillTag.不可洗炼,SkillTag.召唤),
     桃园结义("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
     白帝托孤("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
@@ -813,6 +831,7 @@ public enum SkillType {
     幻影奇袭("",4,0,60,0, SkillTag.不可洗炼),
     幻象幽灵("",2,0,100,0, SkillTag.不可洗炼),
     圣翼军团("",4,0,70,0, SkillTag.不可洗炼,SkillTag.复活),
+    王国卫士("",2,0,70,0, SkillTag.不可洗炼),
 
     英魂唤醒("",0,0, SkillTag.不可洗炼,SkillTag.召唤,SkillTag.不动),
     英魂召集("",0,0, SkillTag.不可洗炼,SkillTag.召唤,SkillTag.不动),
@@ -834,6 +853,7 @@ public enum SkillType {
     护主("", 40,0,SkillTag.沉默无效, SkillTag.不可洗炼,SkillTag.召唤),
     黑暗之门("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
     召唤契约("",0,0, SkillTag.不可洗炼,SkillTag.召唤),
+    天道承负("", new int[] { 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100 }, SkillTag.召唤),
 
     //生成卡牌置入战场
     蜀国英魂("", 2, 0,SkillTag.抗夺魂),
@@ -1133,6 +1153,7 @@ public enum SkillType {
     正义庇所("",SkillType.正义之师,0,null,0),
     不可侵犯("",SkillType.镜面装甲,0,null,0),
     严阵以待("",SkillType.不动,0,null,0),
+    荆棘护体("",SkillType.荆棘术,10,null,0),
 
 
     //给自身场上所有卡牌添加技能
@@ -1217,6 +1238,7 @@ public enum SkillType {
     吴之力("", 70,0, SkillTag.基础攻击加成,SkillTag.抗削弱),
     江东无双("", 70,0,SkillTag.抗毒刃,SkillTag.基础攻击加成,SkillTag.抗削弱),
     森之星河("",SkillType.森林之力,8,SkillType.森林守护,8),
+    王国悠歌("",SkillType.王国之力,8,SkillType.王国守护,8),
 
     //变身技能
     原素共鸣("",0,SkillTag.抗夺魂),
@@ -1238,6 +1260,7 @@ public enum SkillType {
     末日降临("",300,0,300,0,SkillTag.抗免疫, SkillTag.抗不屈, SkillTag.魔王无效, SkillTag.魔族天赋,SkillTag.基础攻击加成),
     噩梦来临("",1,0,100,0,SkillTag.抗免疫, SkillTag.抗不屈, SkillTag.魔王无效, SkillTag.魔族天赋,SkillTag.基础攻击加成),
     支配亡灵("",0, SkillTag.魔王无效, SkillTag.魔族天赋,SkillTag.召唤),
+    蛇影迷踪("",0, SkillTag.魔王无效, SkillTag.魔族天赋,SkillTag.召唤),
     骸骨大军("",0, SkillTag.魔王无效, SkillTag.魔族天赋,SkillTag.召唤),
     献祭巫术("",0, SkillTag.魔王无效, SkillTag.魔族天赋,SkillTag.召唤),
     骸骨转化("",0, SkillTag.魔王无效, SkillTag.魔族天赋,SkillTag.召唤),
@@ -1294,6 +1317,9 @@ public enum SkillType {
     稳定("",0),
     风行("",0),
     免疫风行("",0),
+
+    封魔神剑("", 444, 0, 44,0,SkillTag.永久, SkillTag.基础攻击加成),
+    对决("", 400, 0, 40,0,SkillTag.永久, SkillTag.基础攻击加成),
 
   // 以下全部技能皆为待更新的空技能，请在更新之后将其移动到上面适合的位置
     // 对于物品技能，请将其（按顺序）加入下面的物品技能列表，用来以后更改自动卡牌数据更新工具
