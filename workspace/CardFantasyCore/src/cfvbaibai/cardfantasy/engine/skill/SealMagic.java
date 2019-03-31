@@ -26,14 +26,17 @@ public class SealMagic {
                 int adjAT = skill.getImpact();
                 resolver.getStage().getUI().adjustAT(attacker, attacker, adjAT, skill);
                 attacker.addEffect(new SkillEffect(SkillEffectType.ATTACK_CHANGE, skillUseInfo, adjAT, true));
-                ui.cardToOutField(defender, card);
-                if (card.getRace() != Race.DEMON && card.getRace() != Race.BOSS) {
-                    if (resolver.getStage().getRandomizer().roll100(skill.getImpact2())) {
-                        defender.getOwner().getField().expelCard(card.getPosition());
-//                      defender.getField().removeCard(card);
-                        defender.getOutField().addCard(card);
-                    }
-                }
+                ui.killCard(attacker, card, skill);
+                card.removeStatus(CardStatusType.不屈);
+                resolver.killCard(attacker, card, skill);
+//                ui.cardToOutField(defender, card);
+//                if (card.getRace() != Race.DEMON && card.getRace() != Race.BOSS) {
+//                    if (resolver.getStage().getRandomizer().roll100(skill.getImpact2())) {
+//                        defender.getOwner().getField().expelCard(card.getPosition());
+////                      defender.getField().removeCard(card);
+//                        defender.getOutField().addCard(card);
+//                    }
+//                }
             }
         }
     }

@@ -2652,6 +2652,14 @@ public class SkillResolver {
                     owner.getOutField().addCard(card);
                     return DeadType.SoulCrushed;
                 }
+                if (killingSkill != null && (killingSkill.getType()==SkillType.对决 || killingSkill.getType()==SkillType.封魔神剑) && deadCard.getRace() != Race.BOSS && deadCard.getRace() != Race.DEMON) {
+                    if (this.getStage().getRandomizer().roll100(killingSkill.getImpact2())) {
+                        this.getStage().getUI().useSkill(attacker, killingSkill, true);
+                        card.restoreOwner();
+                        owner.getOutField().addCard(card);
+                        return DeadType.SoulCrushed;
+                    }
+                }
                 if (attacker instanceof CardInfo && this.isPhysicalAttackSkill(killingSkill)) {
                     CardInfo attackCard = (CardInfo) attacker;
                     if (deadCard.getRace() != Race.BOSS && deadCard.getRace() != Race.DEMON) {
