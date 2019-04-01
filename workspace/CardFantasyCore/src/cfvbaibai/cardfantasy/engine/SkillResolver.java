@@ -2348,7 +2348,7 @@ public class SkillResolver {
                     MultipleAttack.apply(this, skillUseInfo.getAttachedUseInfo1(), attacker, defenderHero, attackSkill, firstSkill,50);
                     break;
                 }else if (skillUseInfo.getType() == SkillType.破坏之爪) {
-                    MultipleAttack.apply(this, skillUseInfo.getAttachedUseInfo1(), attacker, defenderHero, attackSkill, firstSkill,40);
+                    MultipleAttack.apply(this, skillUseInfo, attacker, defenderHero, attackSkill, firstSkill,40);
                     break;
                 }
             }
