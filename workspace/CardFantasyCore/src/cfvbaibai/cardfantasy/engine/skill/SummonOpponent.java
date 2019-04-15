@@ -33,7 +33,16 @@ public class SummonOpponent {
                 || summoner.isSummonedMinion() && skillUseInfo.getType() == SkillType.日光浴
                 || summoner.isSummonedMinion() && skillUseInfo.getType() == SkillType.护主
                 || summoner.isSummonedMinion() && skillUseInfo.getType() == SkillType.星座能量掌握
-                || summoner.isSummonedMinion() && skillUseInfo.getType() == SkillType.北海报恩) {
+                || summoner.isSummonedMinion() && skillUseInfo.getType() == SkillType.龙城之志
+                || summoner.isSummonedMinion() && skillUseInfo.getType() == SkillType.北海报恩
+                || summoner.isSummonedMinion() && skillUseInfo.getType() == SkillType.熔岩分身
+                || summoner.isSummonedMinion() && skillUseInfo.getType() == SkillType.萦梦
+                || summoner.isSummonedMinion() && skillUseInfo.getType() == SkillType.伎町迷影
+                || summoner.isSummonedMinion() && skillUseInfo.getType() == SkillType.三位一体
+                || summoner.isSummonedMinion() && skillUseInfo.getType() == SkillType.迷影森森
+                || summoner.isSummonedMinion() && skillUseInfo.getType() == SkillType.复仇之影
+                || summoner.isSummonedMinion() && skillUseInfo.getType() == SkillType.碎裂幻像
+                || summoner.isSummonedMinion() && skillUseInfo.getType() == SkillType.毅重) {
             for(CardStatusItem item : summoner.getStatus().getAllItems())
             {
                 if(item.getType()==CardStatusType.召唤){

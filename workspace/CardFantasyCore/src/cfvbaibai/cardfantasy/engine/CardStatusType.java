@@ -20,16 +20,21 @@ public enum CardStatusType {
     沉默(false, "默"),
     变羊(false, "羊"),
     死咒(false, "咒"),
+    献祭(false, "祭"),
     炼成(false, "炼"),
     魂殇(false, "殇"),
     黄天(false, "黄"),
+    祭奠(false, "奠"),
     离魂(false, "离"),
     咒怨(false, "怨"),
+    链接(false, "链"),
+    虚化(false, "虚"),
     王国(false, "王"),
     森林(false, "森"),
     蛮荒(false, "蛮"),
     地狱(false, "地"),
-    魔族(false, "族");
+    魔族(false, "族"),
+    蛇影(false, "蛇");
     
 
     private boolean quantitive;

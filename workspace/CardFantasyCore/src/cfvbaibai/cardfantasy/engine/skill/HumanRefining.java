@@ -25,6 +25,10 @@ public class HumanRefining {
         CardStatusItem statusItem = CardStatusItem.humanRefining(skillUseInfo);
         statusItem.setEffectNumber(effectNumber);
         for (CardInfo victim : victims) {
+            if(victim.getOriginalOwner() != null && victim.getOriginalOwner() != victim.getOwner())
+            {
+                continue;
+            }
             if (!resolver.resolveAttackBlockingSkills(attackCard, victim, skill, 1).isAttackable()) {
                 continue;
             }

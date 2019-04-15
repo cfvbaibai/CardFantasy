@@ -29,13 +29,14 @@ public class Rapture {
             if (!resolver.resolveAttackBlockingSkills(attackCard, victim, skill, 1).isAttackable()) {
                 continue;
             }
-            if(victim.containsAllSkill(SkillType.离魂芳印))
+            if(victim.containsAllSkill(SkillType.离魂芳印) || victim.containsAllSkill(SkillType.斗者))
             {
                 continue;
             }
             ui.addCardStatus(attackCard, victim, skill, statusItem);
             victim.addStatus(statusItem);
             defenderHero.getField().removeCard(victim);
+            resolver.resolveLeaveSkills(victim);
             ui.returnCard(attackCard, victim, skill);
             if(victim.isSummonedMinion())
             {

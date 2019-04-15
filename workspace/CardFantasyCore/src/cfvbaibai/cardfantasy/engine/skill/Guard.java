@@ -32,6 +32,22 @@ public final class Guard {
         {
             sdamage = damage*10/100;
         }
+        else if(guardSkill.getType()== SkillType.固守 || guardSkill.getType()== SkillType.龙脉)
+        {
+            sdamage = damage*50/100;
+        }
+        //调整守护，但是不影响旧技能
+        int impact = guardSkill.getImpact();
+        if(guardSkill.getType() == SkillType.守护)
+        {
+            if(impact == 0)
+            {
+                sdamage = damage;
+            }
+            else{
+                sdamage = damage*impact/100;
+            }
+        }
         int remainingDamage = 0;
         if (sdamage > guardian.getHP()) {
             remainingDamage = damage - guardian.getHP();

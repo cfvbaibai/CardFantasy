@@ -11,7 +11,7 @@ import java.util.List;
 
 
 public final class Supplication {
-    public static  void apply(SkillResolver resolver, SkillUseInfo skillUseInfo, CardInfo card,Player defender) throws HeroDieSignal {
+    public static  void apply(SkillResolver resolver, SkillUseInfo skillUseInfo, EntityInfo card,Player defender) throws HeroDieSignal {
         if (card == null) {
             throw new CardFantasyRuntimeException("card should not be null");
         }
@@ -34,10 +34,12 @@ public final class Supplication {
             {
                 break;
             }
-            ui.cardToHand(player, addcard);
-            player.getDeck().removeCard(addcard);
-            hand.addCard(addcard);
-            resolver.resolvePrecastSkills(addcard,defender,false);
+            if(player.getDeck().contains(addcard)) {
+                ui.cardToHand(player, addcard);
+                player.getDeck().removeCard(addcard);
+                hand.addCard(addcard);
+                resolver.resolvePrecastSkills(addcard, defender, false);
+            }
         }
         HellPrison.apply(resolver,defender,player);
         HellPrison.applyCoordination(resolver,defender);

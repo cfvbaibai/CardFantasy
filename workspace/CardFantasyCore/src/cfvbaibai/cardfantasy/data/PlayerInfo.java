@@ -15,6 +15,7 @@ public class PlayerInfo {
     private int heroHpAdj;
     private Collection<Card> cards;
     private Collection<Rune> runes;
+    private Collection<Indenture> indentures;
     private static int[] hps = new int[] {
         0,
         1000,  1070,  1140,  1210,  1280,  1350,  1420,  1490,  1560,  1630,
@@ -31,6 +32,7 @@ public class PlayerInfo {
         23000, 23380, 23760, 24140, 24520, 24900, 25280, 25660, 26040, 26420,
         26800, 27100, 27500, 27800, 28200, 28500, 28900, 29500, 29800, 30500,
         30800, 31100, 31400, 31700, 32000, 32300, 32600, 32900, 33200, 33500,
+        33600, 33700, 33800, 33900, 34000, 34100, 34200, 34300, 34400, 34500,
     };
     
     private static int[] costs = new int[] {
@@ -49,6 +51,7 @@ public class PlayerInfo {
         191, 192, 193, 194, 195, 196, 197, 198, 199, 200,
         201, 202, 203, 204, 205, 206, 207, 208, 209, 210,
         211, 212, 213, 214, 215, 216, 217, 218, 219, 220,
+        221, 222, 223, 224, 225, 226, 227, 228, 229, 230,
     };
     
     private static int[] cardSlots = new int[] {
@@ -72,14 +75,18 @@ public class PlayerInfo {
         for (Card card : cards) {
             cardList.add(card);
         }
-        init(isNormalPlayer, id, level, cardBuffs, heroHpAdj, runes, cardList);
+        init(isNormalPlayer, id, level, cardBuffs, heroHpAdj, runes,null, cardList);
     }
     
     public PlayerInfo(boolean isNormalPlayer, String id, int level, List<Skill> cardBuffs, int heroHpAdj, Collection <Rune> runes, Collection <Card> cards) {
-        init(isNormalPlayer, id, level, cardBuffs, heroHpAdj, runes, cards);
+        init(isNormalPlayer, id, level, cardBuffs, heroHpAdj, runes,null, cards);
+    }
+
+    public PlayerInfo(boolean isNormalPlayer, String id, int level, List<Skill> cardBuffs, int heroHpAdj, Collection <Rune> runes,Collection <Indenture> indentures, Collection <Card> cards) {
+        init(isNormalPlayer, id, level, cardBuffs, heroHpAdj, runes,indentures, cards);
     }
     
-    private final void init(boolean isNormalPlayer, String id, int level, List<Skill> cardBuffs, int heroHpAdj, Collection <Rune> runes, Collection <Card> cards) {
+    private final void init(boolean isNormalPlayer, String id, int level, List<Skill> cardBuffs, int heroHpAdj, Collection <Rune> runes,Collection <Indenture> indentures, Collection <Card> cards) {
         this.isNormalPlayer = isNormalPlayer;
         this.id = id;
         this.level = level;
@@ -91,6 +98,11 @@ public class PlayerInfo {
         this.heroHpAdj = heroHpAdj;
         this.runes = new ArrayList<Rune>(runes);
         this.cards = new ArrayList<Card>(cards);
+        if(indentures == null){
+            this.indentures = new ArrayList<Indenture>();
+        } else{
+            this.indentures = new ArrayList<Indenture>(indentures);
+        }
     }
     
     public List<Skill> getCardBuffs() {
@@ -145,6 +157,10 @@ public class PlayerInfo {
 
     public Collection<Rune> getRunes() {
         return new ArrayList<Rune>(this.runes);
+    }
+
+    public Collection<Indenture> getIndentures() {
+        return indentures;
     }
 
     public int getLevel() {

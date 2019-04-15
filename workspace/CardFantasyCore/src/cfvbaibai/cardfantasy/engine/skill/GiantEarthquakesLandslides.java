@@ -13,7 +13,7 @@ import cfvbaibai.cardfantasy.data.SkillType;
 import cfvbaibai.cardfantasy.engine.*;
 
 public class GiantEarthquakesLandslides {
-    public static void apply(SkillResolver resolver, Skill cardSkill, CardInfo attacker, Player defenderHero, int count) throws HeroDieSignal {
+    public static void apply(SkillResolver resolver, Skill cardSkill, EntityInfo attacker, Player defenderHero, int count) throws HeroDieSignal {
         if (defenderHero == null) {
             return;
         }
@@ -56,29 +56,30 @@ public class GiantEarthquakesLandslides {
             }
             int magicEchoSkillResult = resolver.resolveMagicEchoSkill(attacker, effectCard, cardSkill);
             if (magicEchoSkillResult == 1 || magicEchoSkillResult == 2) {
-                if (attacker.isDead()) {
+
+                if(attacker instanceof  CardInfo) {
+                    CardInfo attackCard = (CardInfo) attacker;
+                    if (attackCard.isDead()) {
+                        if (magicEchoSkillResult == 1) {
+                            continue;
+                        }
+                    } else {
+                        if (resolver.resolveIsImmune(attackCard, 1)) {
+                            if (magicEchoSkillResult == 1) {
+                                continue;
+                            }
+                        } else if (!attackCard.containsUsableSkillsWithTag(SkillTag.不动)) {
+                            if (magicEchoSkillResult == 1) {
+                                continue;
+                            }
+                        } else {
+                            ui.useSkill(effectCard, attacker, cardSkill, true);
+                            Return.returnCard2(resolver, cardSkill, effectCard, attackCard, true);
+                        }
+                    }
                     if (magicEchoSkillResult == 1) {
                         continue;
                     }
-                } else {
-                    if (resolver.resolveIsImmune(attacker,1)) {
-                        if (magicEchoSkillResult == 1) {
-                            continue;
-                        }
-                    }
-                    else if(!attacker.containsUsableSkillsWithTag(SkillTag.不动))
-                    {
-                        if (magicEchoSkillResult == 1) {
-                            continue;
-                        }
-                    }
-                    else {
-                        ui.useSkill(effectCard, attacker, cardSkill, true);
-                        Return.returnCard2(resolver, cardSkill, effectCard, attacker, true);
-                    }
-                }
-                if (magicEchoSkillResult == 1) {
-                    continue;
                 }
             }
             ui.useSkill(attacker, effectCard, cardSkill, true);

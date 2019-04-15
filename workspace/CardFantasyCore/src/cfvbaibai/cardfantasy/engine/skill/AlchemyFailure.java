@@ -11,6 +11,11 @@ import cfvbaibai.cardfantasy.engine.SkillUseInfo;
 public final class AlchemyFailure {
     public static void apply(SkillResolver resolver, SkillUseInfo skillUseInfo, Skill cardSkill, CardInfo card) throws HeroDieSignal {
         GameUI ui = resolver.getStage().getUI();
+        if(card.isDeman())
+        {
+            ui.useSkill(card, card, cardSkill, false);
+            return;
+        }
         ui.useSkill(card, card, cardSkill, true);
         //处理炼金失败触发涅盘的问题，但是可能会导致魔族之血出问题。
 //        if(card.containsUsableSkill(SkillType.不屈))

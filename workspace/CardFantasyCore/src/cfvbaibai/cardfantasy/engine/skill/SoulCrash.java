@@ -19,7 +19,9 @@ public class SoulCrash {
         List<CardInfo> victims = new ArrayList<CardInfo>();
         for (CardInfo card : defender.getField().getAliveCards()) {
             if (!card.isSummonedMinion()) {
-                continue;
+                if(card.getStatus().getStatusOf(CardStatusType.虚化).isEmpty()){
+                    continue;
+                }
             }
 //            else {
                //EntityInfo summoner = card.getSummoner();

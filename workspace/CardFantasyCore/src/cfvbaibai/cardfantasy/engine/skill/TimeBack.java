@@ -45,7 +45,7 @@ public class TimeBack {
                     card.setSummonNumber(0);
                     card.setRuneActive(false);
                     resolver.resolveLeaveSkills(card);
-                    ImpregnableDefenseHeroBuff.removeSkill(card,resolver);//移除铁壁的buff
+//                    ImpregnableDefenseHeroBuff.removeSkill(card,resolver);//移除铁壁的buff
                     if (!card.getStatus().containsStatus(CardStatusType.召唤)) {
                             card.restoreOwner();
                             card.getOwner().getDeck().addCard(card);

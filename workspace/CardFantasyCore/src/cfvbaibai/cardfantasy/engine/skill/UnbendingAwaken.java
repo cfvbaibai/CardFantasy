@@ -31,6 +31,30 @@ public class UnbendingAwaken {
         return true;
     }
 
+    public static boolean applyMore(SkillUseInfo skillUseInfo, SkillResolver resolver, CardInfo card) {
+        int awakenCount = skillUseInfo.getSkill().getImpact();
+        int fieldCount = card.getOwner().getField().getAliveCards().size();
+        List<CardStatusItem> items = card.getStatus().getStatusOf(CardStatusType.不屈);
+        if (!items.isEmpty()) {
+            return false;
+        }
+        if(fieldCount<awakenCount)
+        {
+            return false;
+        }
+        GameUI ui = resolver.getStage().getUI();
+        Skill skill = skillUseInfo.getSkill();
+        ui.useSkill(card, skill, true);
+        if (card.getHP() == 0) {
+            ui.adjustHP(card, card, 1, skill);
+            card.setBasicHP(1);
+        }
+        CardStatusItem statusItem = CardStatusItem.unbending(skillUseInfo);
+        ui.addCardStatus(card, card, skill, statusItem);
+        card.addStatus(statusItem);
+        return true;
+    }
+
     public static boolean applyLess(SkillUseInfo skillUseInfo, SkillResolver resolver, CardInfo card,Player attacker) {
         int awakenCount = skillUseInfo.getSkill().getImpact();
         int attackFieldCount = attacker.getField().getAliveCards().size();

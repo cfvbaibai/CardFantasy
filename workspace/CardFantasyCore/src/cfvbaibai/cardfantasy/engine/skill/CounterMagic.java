@@ -49,6 +49,7 @@ public final class CounterMagic {
                 blockSkillUseInfo.getType() == SkillType.镜面装甲 ||
                 blockSkillUseInfo.getType() == SkillType.花族秘术 ||
                 blockSkillUseInfo.getType() == SkillType.不夜蔷薇 ||
+                blockSkillUseInfo.getType() == SkillType.魔法克星 ||
                 blockSkillUseInfo.getType() == SkillType.武形秘术 ) {
                 return blockSkillUseInfo.getSkill();
             }

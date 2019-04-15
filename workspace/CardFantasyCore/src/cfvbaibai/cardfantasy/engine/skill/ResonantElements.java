@@ -21,31 +21,26 @@ public final class ResonantElements {
         CardInfo addCard = summonCardCandidates.get(0);
         SkillUseInfo thisSkillUserInfo= null;
         if(resonantCard.getLevel()>=15){
-            int size = resonantCard.getAllUsableSkills().size();
-            Skill additionalSkill = resonantCard.getAllUsableSkills().get(size-1).getSkill();
+            Skill additionalSkill = resonantCard.getExtraSkill();
             Boolean summonSkill = false;
             Boolean preSkill = false;
             Boolean deathSkill = false;
             Boolean postSkill = false;
-            if(additionalSkill.isPostcastSkill())
-            {
-                postSkill = true;
+            if(additionalSkill !=null) {
+                if (additionalSkill.isPostcastSkill()) {
+                    postSkill = true;
+                } else if (additionalSkill.isDeathSkill()) {
+                    deathSkill = true;
+                } else if (additionalSkill.isPrecastSkill()) {
+                    preSkill = true;
+                } else if (additionalSkill.isSummonSkill()) {
+                    summonSkill = true;
+                }
+                CardSkill cardSkill = new CardSkill(additionalSkill.getType(), additionalSkill.getLevel(), 0, summonSkill, deathSkill, preSkill, postSkill);
+                thisSkillUserInfo = new SkillUseInfo(addCard, cardSkill);
+                addCard.setExtraSkill(cardSkill);
+                addCard.addSkill(thisSkillUserInfo);
             }
-            else if(additionalSkill.isDeathSkill())
-            {
-                deathSkill =true;
-            }
-            else if(additionalSkill.isPrecastSkill())
-            {
-                preSkill = true;
-            }
-            else if(additionalSkill.isSummonSkill())
-            {
-                summonSkill = true;
-            }
-            CardSkill cardSkill = new CardSkill(additionalSkill.getType(), additionalSkill.getLevel(), 0, summonSkill, deathSkill, preSkill, postSkill);
-            thisSkillUserInfo = new SkillUseInfo(addCard,cardSkill);
-            addCard.addSkill(thisSkillUserInfo);
         }
         List<CardInfo> livingCards = null;
         livingCards = player.getField().getAliveCards();
@@ -58,6 +53,10 @@ public final class ResonantElements {
                 player.getField().expelCard(fieldCard.getPosition());
                 player.getOutField().addCard(fieldCard);
 //                player.getField().addCard(addCard);
+
+                resolver.resolveLeaveSkills(resonantCard);
+                resolver.resolveLeaveSkills(fieldCard);
+
                 resolver.summonCard(addCard.getOwner(), addCard, null, false, skillUseInfo.getSkill(),0);
                 resolver.getStage().getUI().useSkill(resonantCard, skillUseInfo.getSkill(), true);
               //  resolver.getStage().getUI().summonCard(player, addCard);

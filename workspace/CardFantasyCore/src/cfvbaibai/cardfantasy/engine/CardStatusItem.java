@@ -120,12 +120,33 @@ public class CardStatusItem {
         return new CardStatusItem(CardStatusType.死咒, 0, cause);
     }
 
+    public static CardStatusItem snakeShadow(SkillUseInfo cause) {
+        return new CardStatusItem(CardStatusType.蛇影, 0, cause);
+    }
+
+
+    public static CardStatusItem deathSacrifice(SkillUseInfo cause) {
+        return new CardStatusItem(CardStatusType.献祭, 0, cause);
+    }
+
     public static CardStatusItem humanRefining(SkillUseInfo cause) {
         return new CardStatusItem(CardStatusType.炼成, 0, cause);
     }
 
+    public static CardStatusItem sacrifice(SkillUseInfo cause) {
+        return new CardStatusItem(CardStatusType.祭奠, 0, cause);
+    }
+
     public static CardStatusItem SoulWound(SkillUseInfo cause) {
         return new CardStatusItem(CardStatusType.魂殇, 0, cause);
+    }
+
+    public static CardStatusItem Asthenia(SkillUseInfo cause) {
+        return new CardStatusItem(CardStatusType.虚化, 0, cause);
+    }
+
+    public static CardStatusItem SoulLink(SkillUseInfo cause) {
+        return new CardStatusItem(CardStatusType.链接, 0, cause);
     }
 
     public static CardStatusItem YellowSky(SkillUseInfo cause) {

@@ -6,57 +6,69 @@ import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.data.SkillType;
 import cfvbaibai.cardfantasy.engine.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public final class ImpregnableDefenseHeroBuff {
-    public static void apply(SkillResolver resolver, SkillUseInfo skillUseInfo, CardInfo card) {
-        if (card == null) {
-            throw new CardFantasyRuntimeException("card cannot be null");
-        }
-        Skill skill = skillUseInfo.getSkill();
-        int impact = skill.getImpact();
-        Player atacter = card.getOwner();
-        int coefficient =atacter.getCoefficient()*impact/100;
-        GameUI ui = resolver.getStage().getUI();
-        ui.useSkill(card, card, skill,true);
-        atacter.setCoefficient(coefficient);
-    }
-    public static void remove(SkillResolver resolver, SkillUseInfo skillUseInfo, CardInfo card) {
-        if (card == null) {
-            throw new CardFantasyRuntimeException("card cannot be null");
-        }
-        Skill skill = skillUseInfo.getSkill();
-        int impact = skill.getImpact();
-        Player atacter = card.getOwner();
-        int coefficient=100;
+    public static void apply(SkillResolver resolver, SkillUseInfo skillUseInfo, EntityInfo attacker) {
 
-        if(impact==0)
-        {
-             coefficient =100;//暂时hack一下铁壁10
+        Player player = attacker.getOwner();
+        resolver.getStage().getUI().useSkill(attacker, skillUseInfo.getSkill(), true);
+        player.addImpregnableDefenseHero(skillUseInfo);
 
-        }
-        else{
-            coefficient = atacter.getCoefficient()*100/impact;
-        }
-        if(coefficient>100)
-        {
-            coefficient=100;//hack一下某些情况下铁壁非正常移除。
-        }
-        atacter.setCoefficient(coefficient);
     }
-    public static void removeSkill(CardInfo card, SkillResolver resolver) {
-        if (card.containsAllSkill(SkillType.铁壁)||card.containsAllSkill(SkillType.驱虎吞狼)||card.containsAllSkill(SkillType.金汤)
-                ||card.containsAllSkill(SkillType.铁壁方阵)||card.containsAllSkill(SkillType.光之守护)||card.containsAllSkill(SkillType.聚能立场)
-                ||card.containsAllSkill(SkillType.魔神加护) || card.containsAllSkill(SkillType.护主)) {
-            for (SkillUseInfo defenderskill : card.getAllUsableSkills()) {
-                if (defenderskill.getType() == SkillType.铁壁||defenderskill.getType() == SkillType.金汤
-                        ||defenderskill.getType() == SkillType.光之守护||defenderskill.getType() == SkillType.铁壁方阵
-                        ||defenderskill.getType() == SkillType.聚能立场 || defenderskill.getType() == SkillType.护主) {
-                    ImpregnableDefenseHeroBuff.remove(resolver, defenderskill, card);
-                }
-                else if (defenderskill.getType() == SkillType.驱虎吞狼 || defenderskill.getType() == SkillType.魔神加护)
-                {
-                    ImpregnableDefenseHeroBuff.remove(resolver, defenderskill.getAttachedUseInfo2(), card);
-                }
+
+    public static int explode(SkillResolver resolver, EntityInfo attacker, Player defender,int damage) throws HeroDieSignal {
+
+        List<SkillUseInfo> skillUseInfoList = defender.getImpregnableDefenseHero();
+
+        int remainingDamage = damage;
+
+        List<SkillUseInfo> impregnableDefenseHeroList = new ArrayList<>();
+        for(SkillUseInfo skillUseInfo:skillUseInfoList)
+        {
+            impregnableDefenseHeroList.add(skillUseInfo);
+        }
+
+        for(SkillUseInfo skillUseInfo:impregnableDefenseHeroList)
+        {
+            if(skillUseInfo.getOwner().getStatus().containsStatus(CardStatusType.不屈))
+            {
+                continue;
             }
+            Skill skill = skillUseInfo.getSkill();
+            int impact = skill.getImpact();
+            resolver.getStage().getUI().useSkill(skillUseInfo.getOwner(), skill, true);
+
+            remainingDamage = remainingDamage *impact/100;
+        }
+
+        return remainingDamage;
+    }
+
+    public static void remove(EntityInfo attacker, SkillResolver resolver) {
+        if (attacker == null) {
+            throw new CardFantasyRuntimeException("card cannot be null");
+        }
+        List<SkillUseInfo> skillUseInfoList = attacker.getOwner().getImpregnableDefenseHero();
+
+        if(skillUseInfoList.size() == 0)
+        {
+            return;
+        }
+
+        List<SkillUseInfo> removeSkillUserInfoList = new ArrayList<>();
+
+        for(SkillUseInfo skillUseInfo:skillUseInfoList)
+        {
+            if(skillUseInfo.getOwner() == attacker)
+            {
+                removeSkillUserInfoList.add(skillUseInfo);
+            }
+        }
+        for(SkillUseInfo skillUseInfo:removeSkillUserInfoList)
+        {
+            attacker.getOwner().removeImpregnableDefenseHero(skillUseInfo);
         }
     }
 }

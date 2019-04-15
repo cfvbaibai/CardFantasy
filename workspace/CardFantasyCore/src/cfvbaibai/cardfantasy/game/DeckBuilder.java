@@ -7,19 +7,10 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import cfvbaibai.cardfantasy.data.*;
 import org.apache.commons.lang3.StringUtils;
 
 import cfvbaibai.cardfantasy.DeckBuildRuntimeException;
-import cfvbaibai.cardfantasy.data.Card;
-import cfvbaibai.cardfantasy.data.CardData;
-import cfvbaibai.cardfantasy.data.CardDataStore;
-import cfvbaibai.cardfantasy.data.CardSkill;
-import cfvbaibai.cardfantasy.data.Skill;
-import cfvbaibai.cardfantasy.data.SkillType;
-import cfvbaibai.cardfantasy.data.PlayerInfo;
-import cfvbaibai.cardfantasy.data.Rune;
-import cfvbaibai.cardfantasy.data.RuneData;
-import cfvbaibai.cardfantasy.data.Zht2Zhs;
 
 public final class DeckBuilder {
 
@@ -46,11 +37,45 @@ public final class DeckBuilder {
         "(\\?DE(?<Delay>\\d+))?" +
         "$";
 
+    /**
+     * C卡片名-等级+技能名技能等级*数量
+     */
+    private final static String INDEBTURE_REGEX =
+//            "^" +
+//                    "(?<CardName>[^\\-+SD*?]+)" +
+//                    "(\\+(?<SummonFlag>(S|降临)?)(?<DeathFlag>(D|死契)?)(?<PrecastFlag>(PRE|先机)?)(?<PostcastFlag>(POST|遗志)?)" +
+//                    "(?<ExtraSkillName>[^\\d\\-*?]+)(?<ExtraSkillLevel>\\d+)?)?" +
+//                    "(\\-(?<CardLevel>\\d+))?" +
+//                    "(\\*(?<Count>\\d+))?" +
+////                    "(\\+IN(?<IndentureName>[^\\d\\-*?]+)(?<IndentureLevel>\\d+)?)?" +
+//                    "$";
+            "^" +
+                    "(?<CardName>[^\\-+SD*]+)" +
+                    "(\\+(?<SummonFlag>(S|降临)?)(?<DeathFlag>(D|死契)?)(?<PrecastFlag>(PRE|先机)?)(?<PostcastFlag>(POST|遗志)?)" +
+                    "(?<ExtraSkillName>[^\\d\\-*?]+)(?<ExtraSkillLevel>\\d+)?)?" +
+                    "(\\-(?<CardLevel>\\d+))?" +
+                    "(\\*(?<Count>\\d+))?" +
+                    "(\\?IN(?<IndentureName>[^\\d\\-*?]+)(?<IndentureLevel>\\d+)?)?" +
+                    "$";
+
     private static Pattern CARD_PATTERN;
-    
+
     static {
         try {
             CARD_PATTERN = Pattern.compile(CARD_REGEX);
+            store = CardDataStore.loadDefault();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    private static Pattern INDEBTURE_PATTERN;
+
+    static {
+        try {
+            INDEBTURE_PATTERN = Pattern.compile(INDEBTURE_REGEX);
             store = CardDataStore.loadDefault();
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -64,7 +89,7 @@ public final class DeckBuilder {
         descsText = descsText.replace("\r\n", ",").replace("\n", ",");
         descsText = descsText.replace('＋', '+').replace('＊', '*').replace('－', '-')
                 .replace('？', '?').replace('h', 'H').replace('p', 'P').replace('a', 'A').replace('d', 'D')
-                .replace('t', 'T').replace('s', 'S').replace('k', 'K');
+                .replace('t', 'T').replace('s', 'S').replace('k', 'K').replace('i', 'I').replace('n', 'N');
         descsText = descsText.replace(":", "").replace("：", "").replace("·", "");
         descsText = Zht2Zhs.getInstance().convert(descsText);
         return descsText.split(",");
@@ -84,6 +109,8 @@ public final class DeckBuilder {
                 parseAndAddCard(deck, desc.substring(1));
             } else if (desc.length() > 1 && desc.charAt(0) == 'R') {
                 parseAndAddRune(deck, desc.substring(1));
+            } else if (desc.length() > 1 && desc.charAt(0) == 'Q') {
+                parseAndAddIndenture(deck, desc.substring(1));
             } else {
                 if (!parseAndAddCard(deck, desc)) {
                     if (!parseAndAddRune(deck, desc)) {
@@ -393,6 +420,131 @@ public final class DeckBuilder {
             ret.add(card);
         }
         
+        return ret;
+    }
+
+    private static boolean parseAndAddIndenture(DeckStartupInfo deck, String desc) {
+        List<Indenture> indentures = parseIndentureDesc(desc);
+
+        if (indentures == null) {
+            return false;
+        }
+
+        for (Indenture indenture : indentures) {
+            deck.addIndentures(indenture);
+        }
+
+        return true;
+    }
+
+    /**
+     * Indenture description text pattern:
+     * Q卡片名-等级+技能名技能等级*数量?IN契约名称
+     * Example: C金属巨龙-10+暴风雪1*5?IN契约名称
+     * @param desc
+     * @param desc
+     */
+    public static List<Indenture> parseIndentureDesc(String desc) {
+        List<Indenture> ret = new ArrayList<Indenture>();
+        String indentureDesc = desc;
+        Matcher matcher = INDEBTURE_PATTERN.matcher(indentureDesc);
+        if (!matcher.matches()) {
+            throw new DeckBuildRuntimeException("无效的契约: " + desc);
+        }
+        String countText = matcher.group("Count");
+        int count = 1;
+        if (countText != null) {
+            try {
+                count = Integer.parseInt(countText);
+            } catch (NumberFormatException e) {
+                throw new DeckBuildRuntimeException("无效的卡牌: " + desc, e);
+            }
+        }
+        if(count == 0){
+            return  ret;
+        }
+        if (!matcher.matches()) {
+            throw new DeckBuildRuntimeException("无效的卡牌: " + desc);
+        }
+        String cardName = matcher.group("CardName");
+        String cardLevelText = matcher.group("CardLevel");
+        int cardLevel = 10;
+        if (cardLevelText != null) {
+            try {
+                cardLevel = Integer.parseInt(cardLevelText);
+            } catch (NumberFormatException e) {
+                throw new DeckBuildRuntimeException("无效的卡牌: " + desc, e);
+            }
+        }
+        String extraSkillName = matcher.group("ExtraSkillName");
+        SkillType extraSkillType = null;
+        if (extraSkillName != null) {
+            try {
+                extraSkillType = SkillType.valueOf(extraSkillName);
+            } catch (IllegalArgumentException e) {
+                throw new DeckBuildRuntimeException("无效的卡牌: " + desc, e);
+            }
+        }
+        if (extraSkillType != null && cardLevelText == null) {
+            cardLevel = 15;
+        }
+        String extraSkillLevelText = matcher.group("ExtraSkillLevel");
+        int extraSkillLevel = 0;
+        if (extraSkillLevelText != null) {
+            try {
+                extraSkillLevel = Integer.parseInt(extraSkillLevelText);
+            } catch (NumberFormatException e) {
+                throw new DeckBuildRuntimeException("无效的卡牌: " + desc, e);
+            }
+        }
+        if (extraSkillLevel < 0 || extraSkillLevel > 10) {
+            throw new DeckBuildRuntimeException("无效的卡牌：" + desc + "，洗炼技能等级不得大于10");
+        }
+
+        boolean summonSkill = !StringUtils.isBlank(matcher.group("SummonFlag"));
+        boolean deathSkill = !StringUtils.isBlank(matcher.group("DeathFlag"));
+        boolean precastSkill = !StringUtils.isBlank(matcher.group("PrecastFlag"));
+        boolean postcastSkill = !StringUtils.isBlank(matcher.group("PostcastFlag"));
+
+        String indentureText = matcher.group("IndentureName");
+        IndentureData indentureData = null;
+        try {
+            indentureData = IndentureData.valueOf(indentureText);
+        } catch (IllegalArgumentException e) {
+            throw new DeckBuildRuntimeException("无效的契约: " + desc, e);
+        }
+
+        String indentureLevelText = matcher.group("IndentureLevel");
+        int indentureLevel = 1;
+        if (indentureLevelText != null) {
+            try {
+                indentureLevel = Integer.parseInt(indentureLevelText);
+            } catch (NumberFormatException e) {
+                throw new DeckBuildRuntimeException("无效的契约: " + desc, e);
+            }
+        }
+
+        CardData data = store.getCard(cardName);
+        if (data == null) {
+            return null;
+        }
+
+        String prefix = "";
+        CardSkill extraSkill = null;
+        if (extraSkillType != null) {
+            extraSkill = new CardSkill(extraSkillType, extraSkillLevel, 15, summonSkill, deathSkill, precastSkill, postcastSkill);
+            prefix = extraSkillName;
+            if (extraSkillLevel != 0) {
+                prefix += extraSkillLevel;
+            }
+        }
+
+        for (int j = 0; j < count; ++j) {
+            Card card = new Card(data, cardLevel, extraSkill, prefix, String.valueOf(getCardNameSuffix()),-1,-1);
+            Indenture indenture = new Indenture(indentureData,card,indentureLevel);
+            ret.add(indenture);
+        }
+
         return ret;
     }
 

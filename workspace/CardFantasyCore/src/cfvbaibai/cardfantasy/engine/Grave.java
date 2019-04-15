@@ -21,6 +21,7 @@ public class Grave extends CardPile {
     }
     
     @Override
+//    public CardInfo addCard(CardInfo card,SkillResolver... resolver) {
     public CardInfo addCard(CardInfo card) {
         if (card.getOriginalOwner() != null && card.getOriginalOwner() != card.getOwner()) {
             throw new CardFantasyRuntimeException("Cannot add an existing card to grave. "

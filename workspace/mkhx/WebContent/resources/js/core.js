@@ -490,6 +490,7 @@ var allLayerAddition=function(){
     allObj['1']=layerAddition(168,160,160);
     allObj['2']=layerAddition(168,160,160);
     allObj['3']=layerAddition(231,220,220);
+    allObj['4']=layerAddition(294,280,280);
     allObj['90']=layerAddition(200,150,160);
     allObj['91']=layerAddition(200,160,160);
     allObj['92']=layerAddition(210,160,160);
@@ -508,6 +509,16 @@ var allLayerAddition=function(){
     allObj['108']=layerAddition(270,230,230);
     allObj['109']=layerAddition(280,240,240);
     allObj['110']=layerAddition(280,250,250);
+    allObj['111']=layerAddition(297,200,200);
+    allObj['112']=layerAddition(297,200,200);
+    allObj['113']=layerAddition(297,200,200);
+    allObj['114']=layerAddition(297,200,200);
+    allObj['115']=layerAddition(308,220,220);
+    allObj['116']=layerAddition(308,230,250);
+    allObj['117']=layerAddition(319,240,240);
+    allObj['118']=layerAddition(319,250,250);
+    allObj['119']=layerAddition(330,260,260);
+    allObj['120']=layerAddition(330,280,280);
     return allObj;
 };
 

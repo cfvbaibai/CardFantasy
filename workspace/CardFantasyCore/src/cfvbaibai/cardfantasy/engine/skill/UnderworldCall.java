@@ -47,9 +47,9 @@ public final class UnderworldCall {
                                     ui.attackCard(victim, attacker, cardSkill, damage2);
                                     resolver.resolveDeathSkills(victim, attacker, cardSkill, resolver.applyDamage(victim, attacker, cardSkill, damage2));
                             } else {
-                                ui.killCard(victim, attacker, cardSkill);
-                                attacker.removeStatus(CardStatusType.不屈);
-                                resolver.killCard(victim, attacker, cardSkill);
+                                damage = attacker.getMaxHP();
+                                ui.attackCard(victim, attacker, cardSkill, damage);
+                                resolver.resolveDeathSkills(victim, attacker, cardSkill,  resolver.applyDamage(attacker, victim, cardSkill,damage));
                             }
                         }
                     }
@@ -64,9 +64,9 @@ public final class UnderworldCall {
                     resolver.resolveDeathSkills(attacker, victim, cardSkill,  resolver.applyDamage(attacker, victim, cardSkill,damage));
                 }
                 else{
-                    ui.killCard(attacker, victim, cardSkill);
-                    victim.removeStatus(CardStatusType.不屈);
-                    resolver.killCard(attacker, victim, cardSkill);
+                    damage = victim.getMaxHP();
+                    ui.attackCard(attacker, victim, cardSkill, damage);
+                    resolver.resolveDeathSkills(attacker, victim, cardSkill,  resolver.applyDamage(attacker, victim, cardSkill,damage));
                 }
             }
 

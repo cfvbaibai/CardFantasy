@@ -21,7 +21,8 @@ public class NewBorn {
         resolver.getStage().getUI().useSkill(card, skill, true);
         Field field = card.getOwner().getField();
         List<CardInfo> frontCards = resolver.getFrontCards(field, card.getPosition());
-        List<CardInfo> selectFrontCards =  new ArrayList<CardInfo>();;
+        List<CardInfo> selectFrontCards =  new ArrayList<CardInfo>();
+        int position = card.getPosition();
         if(frontCards.size()<=0)
         {
             return;
@@ -41,6 +42,24 @@ public class NewBorn {
         GameUI ui = resolver.getStage().getUI();
 
         for (CardInfo victim : victims) {
+            if(!card.isAlive())
+            {
+                break;
+            }
+            else{
+                if(card.getPosition() != position)
+                {
+                    break;
+                }
+            }
+            if(!victim.isAlive())
+            {
+                continue;
+            }
+            else if(victim.getPosition()>position)
+            {
+                continue;
+            }
             if (!victim.containsAllUsableSkillsWithTag(SkillTag.新生)) {
                 for (SkillUseInfo victimSkillUseInfo : victim.getAllUsableSkillsIgnoreSilence()) {
                     resolver.getStage().removeUsed(victimSkillUseInfo,skillUseInfo.getOwner().getOwner(),defender);
@@ -72,10 +91,19 @@ public class NewBorn {
                     card.getOwner().getHand().removeCard(victim);
                     card.getOwner().getDeck().removeCard(victim);
                     card.getOwner().getField().removeCard(victim);
+                    card.getOwner().getOutField().removeCard(victim);
                     defender.getHand().removeCard(victim);
                     defender.getDeck().removeCard(victim);
                     defender.getField().removeCard(victim);
+                    defender.getOutField().removeCard(victim);
                     resolver.summonCard(card.getOwner(), victim, null, false, skillUseInfo.getSkill(),0);
+
+                    //修改新生技能,可以发动二段降临
+                    List<CardInfo> cardInfoList = new ArrayList<>();
+                    cardInfoList.add(card);
+                    if(card.isAlive()) {
+                        resolver.resolveSecondClassSummoningSkills(cardInfoList, card.getOwner().getField(), defender.getField(), skillUseInfo.getSkill(), true);
+                    }
                 }
             }
         }
