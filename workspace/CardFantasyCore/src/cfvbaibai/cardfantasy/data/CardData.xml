@@ -1476,6 +1476,21 @@
         <Skill type="声呐" level="0" unlock="5" />
         <Skill type="王国悠歌" level="0" unlock="10" />
     </Card>
+    <Card id="1690" name="五虎上将·赵云" wikiId="" race="王国" speed="3" star="5" cost="20" incrCost="2" at="550" hp="1650" incrAT="40" incrHP="45">
+        <Skill type="真龙之魄" level="0" unlock="0" />
+        <Skill type="常胜" level="0" unlock="5" />
+        <Skill type="绝境重生" level="0" unlock="10" />
+    </Card>
+    <Card id="1691" name="汉昭烈帝·刘备" wikiId="" race="王国" speed="3" star="5" cost="20" incrCost="2" at="610" hp="1610" incrAT="40" incrHP="49">
+        <Skill type="以德服人" level="0" unlock="0" />
+        <Skill type="知人善任" level="0" unlock="5" />
+        <Skill type="乱世枭雄" level="0" unlock="10" />
+    </Card>
+    <Card id="1692" name="五虎上将·关羽" wikiId="" race="王国" speed="3" star="5" cost="20" incrCost="2" at="570" hp="1610" incrAT="42" incrHP="42">
+        <Skill type="义绝" level="0" unlock="0" />
+        <Skill type="青龙偃月" level="0" unlock="5" />
+        <Skill type="武圣之威" level="0" unlock="10" />
+    </Card>
 
 
 
@@ -5353,6 +5368,16 @@
         <Skill type="威吓" level="0" unlock="0" />
         <Skill type="对决" level="0" unlock="5" />
         <Skill type="追击" level="0" unlock="10" />
+    </Card>
+    <Card id="4680" name="德古拉" wikiId="" race="地狱" speed="4" star="5" cost="21" incrCost="2" at="575" hp="1615" incrAT="50" incrHP="50">
+        <Skill type="鲜血记忆" level="0" unlock="0" />
+        <Skill type="血之眷顾" level="0" unlock="5" />
+        <Skill type="永夜" level="0" unlock="10" />
+    </Card>
+    <Card id="4681" name="暗裔疫骑" wikiId="" race="地狱" speed="1" star="5" cost="18" incrCost="2" at="575" hp="1510" incrAT="42" incrHP="42">
+        <Skill type="暗影侵蚀" level="0" unlock="0" />
+        <Skill type="死亡收割" level="0" unlock="5" />
+        <Skill type="幽魂铁骑" level="0" unlock="10" />
     </Card>
 
 

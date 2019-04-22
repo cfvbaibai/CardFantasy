@@ -602,10 +602,11 @@ public class BattleEngine {
                         || skillUseInfo.getType() == SkillType.醉生梦死) {
                     for (CardInfo sweepDefender : opField.getAliveCards()) {
                         //一文字可以攻击自己。
-//                        if(sweepDefender == opField.getCard(i))
-//                        {
-//                            continue;
-//                        }
+                        //开放一文字不会再攻击自己（19.4.22）
+                        if(sweepDefender == opField.getCard(i))
+                        {
+                            continue;
+                        }
                         if(!sweepDefender.isAlive())
                         {
                             continue;
