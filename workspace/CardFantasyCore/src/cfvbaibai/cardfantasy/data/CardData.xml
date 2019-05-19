@@ -1491,6 +1491,22 @@
         <Skill type="青龙偃月" level="0" unlock="5" />
         <Skill type="武圣之威" level="0" unlock="10" />
     </Card>
+    <Card id="1693" name="东吴四杰·周瑜" wikiId="" race="王国" speed="2" star="5" cost="19" incrCost="2" at="550" hp="1650" incrAT="40" incrHP="40">
+        <Skill type="反间" level="0" unlock="0" />
+        <Skill type="灰飞烟灭" level="0" unlock="5" />
+        <Skill type="俊才" level="0" unlock="10" />
+    </Card>
+    <Card id="1694" name="昆仑剑仙" wikiId="" race="王国" speed="3" star="5" cost="19" incrCost="2" at="520" hp="1575" incrAT="43" incrHP="40">
+        <Skill type="御剑" level="0" unlock="0" precast="true"/>
+        <Skill type="万剑归宗" level="0" unlock="5" />
+        <Skill type="六道轮回" level="0" unlock="10" />
+    </Card>
+    <Card id="1695" name="牢狱主宰" wikiId="" race="王国" speed="3" star="5" cost="18" incrCost="2" at="505" hp="1705" incrAT="40" incrHP="45">
+        <Skill type="异变" level="0" unlock="0" />
+        <Skill type="燎原之势" level="0" unlock="5" />
+        <Skill type="牢狱异火" level="0" unlock="10" />
+    </Card>
+
 
 
 
@@ -3977,6 +3993,21 @@
         <Skill type="铁骑破阵" level="0" unlock="5"  />
         <Skill type="马术" level="0" unlock="10" />
     </Card>
+    <Card id="3644" name="美杜莎" wikiId="" race="蛮荒" speed="3" star="5" cost="21" incrCost="2" at="515" hp="1615" incrAT="40" incrHP="55">
+        <Skill type="淬毒之刃" level="0" unlock="0" />
+        <Skill type="支配者" level="0" unlock="5"  />
+        <Skill type="复仇者" level="0" unlock="10" />
+    </Card>
+    <Card id="3645" name="东吴四杰·陆逊" wikiId="" race="蛮荒" speed="1" star="5" cost="19" incrCost="2" at="535" hp="1515" incrAT="40" incrHP="45">
+        <Skill type="烈火攻心" level="0" unlock="0" />
+        <Skill type="诱敌深入" level="0" unlock="5"  />
+        <Skill type="战术性撤退" level="0" unlock="10" />
+    </Card>
+    <Card id="3646" name="灵魂熔炼者" wikiId="" race="蛮荒" speed="3" star="4" cost="15" incrCost="2" at="415" hp="1485" incrAT="33" incrHP="40">
+        <Skill type="凋零陷阱" level="0" unlock="0" />
+        <Skill type="精神污染" level="10" unlock="5"  />
+        <Skill type="赤焰战场" level="0" unlock="10" />
+    </Card>
 
 
 
@@ -5378,6 +5409,20 @@
         <Skill type="暗影侵蚀" level="0" unlock="0" />
         <Skill type="死亡收割" level="0" unlock="5" />
         <Skill type="幽魂铁骑" level="0" unlock="10" />
+    </Card>
+    <Card id="4682" name="诈降卡牌" wikiId="" race="地狱" speed="6" star="5" cost="99" incrCost="0" at="0" hp="3000" incrAT="0" incrHP="0">
+        <Skill type="自毁" level="0" unlock="0" />
+        <Skill type="诈降" level="0" unlock="5" />
+    </Card>
+    <Card id="4683" name="东吴四杰·吕蒙" wikiId="" race="地狱" speed="4" star="5" cost="19" incrCost="2" at="545" hp="1615" incrAT="41" incrHP="42">
+        <Skill type="白衣渡江" level="0" unlock="0" />
+        <Skill type="克己奉公" level="0" unlock="5" />
+        <Skill type="勤能补拙" level="0" unlock="10" />
+    </Card>
+    <Card id="4684" name="晶石开掘者" wikiId="" race="地狱" speed="3" star="4" cost="15" incrCost="2" at="435" hp="1320" incrAT="32" incrHP="40">
+        <Skill type="意外的挖掘" level="0" unlock="0" />
+        <Skill type="快速甬道" level="0" unlock="5" />
+        <Skill type="晶石铠甲" level="0" unlock="10" />
     </Card>
 
 

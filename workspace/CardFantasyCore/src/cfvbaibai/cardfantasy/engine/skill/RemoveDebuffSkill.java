@@ -11,6 +11,15 @@ import java.util.List;
 public final class RemoveDebuffSkill {
     public static void apply(SkillUseInfo skillUseInfo, SkillResolver resolver, EntityInfo attacker,int number,Player defener)
             throws HeroDieSignal {
+        CardStatus status = attacker.getStatus();
+        if (status.containsStatus(CardStatusType.迷惑) ||
+                status.containsStatus(CardStatusType.冰冻) ||
+                status.containsStatus(CardStatusType.锁定) ||
+                status.containsStatus(CardStatusType.石化) ||
+                status.containsStatus(CardStatusType.复活) ||
+                status.containsStatus(CardStatusType.晕眩)) {
+            return ;
+        }
         List<CardInfo> cards = null;
         Skill skill = skillUseInfo.getSkill();
         SkillUseInfo extraSkillUserInfo = skillUseInfo.getAttachedUseInfo1();

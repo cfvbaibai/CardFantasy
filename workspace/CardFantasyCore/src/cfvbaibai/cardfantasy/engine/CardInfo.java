@@ -121,6 +121,19 @@ public class CardInfo extends EntityInfo {
             }
         }
     }
+
+    public void removeAssignGiveSkill(SkillUseInfo skillUseInfo)
+    {
+        for(int j=0;j<this.skillUseInfos.size();j++){
+            if(this.skillUseInfos.get(j) == skillUseInfo) {
+                if (this.skillUseInfos.get(j).getGiveSkill() == 1) {
+                    this.skillUseInfos.remove(j);
+                } else if (this.skillUseInfos.get(j).getGiveSkill() == 2) {
+                    this.skillUseInfos.remove(j);
+                }
+            }
+        }
+    }
     
     public CardSkill getExtraSkill() {
         return card.getExtraSkill();

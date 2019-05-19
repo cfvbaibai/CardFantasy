@@ -10,6 +10,7 @@ import cfvbaibai.cardfantasy.data.PlayerInfo;
 import cfvbaibai.cardfantasy.data.Rune;
 import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.data.SkillType;
+import cfvbaibai.cardfantasy.engine.skill.Petrifaction;
 
 public class BattleEngine {
 
@@ -304,6 +305,7 @@ public class BattleEngine {
             if (status.containsStatus(CardStatusType.迷惑) ||
                     status.containsStatus(CardStatusType.冰冻) ||
                     status.containsStatus(CardStatusType.锁定) ||
+                    status.containsStatus(CardStatusType.石化) ||
                     status.containsStatus(CardStatusType.复活) ||
                     status.containsStatus(CardStatusType.晕眩)) {
                 underControl = true;
@@ -363,6 +365,9 @@ public class BattleEngine {
             resolver.removeStatus(myField.getCard(i), CardStatusType.虚化);
             resolver.removeStatus(myField.getCard(i), CardStatusType.链接);
             resolver.removeStatus(myField.getCard(i), CardStatusType.蛇影);
+
+            Petrifaction.reset(myField.getCard(i),1); //重置技能
+            resolver.removeStatus(myField.getCard(i), CardStatusType.石化);
             if (status.containsStatus(CardStatusType.变羊)) {
                 //变羊类技能恢复原状
                 List<CardStatusItem>  sheepStatus= status.getStatusOf(CardStatusType.变羊);

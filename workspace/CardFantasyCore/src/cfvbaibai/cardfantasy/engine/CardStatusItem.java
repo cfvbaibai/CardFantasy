@@ -124,6 +124,10 @@ public class CardStatusItem {
         return new CardStatusItem(CardStatusType.蛇影, 0, cause);
     }
 
+    public static CardStatusItem petrifaction(SkillUseInfo cause) {
+        return new CardStatusItem(CardStatusType.石化, 0, cause);
+    }
+
 
     public static CardStatusItem deathSacrifice(SkillUseInfo cause) {
         return new CardStatusItem(CardStatusType.献祭, 0, cause);
