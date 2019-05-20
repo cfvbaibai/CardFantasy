@@ -15,9 +15,13 @@ import java.util.List;
 public final class Petrifaction {
     public static void apply(SkillUseInfo skillUseInfo, SkillResolver resolver, CardInfo attacker, Player defender)
             throws HeroDieSignal {
+        int position = attacker.getPosition();
+        if(defender.getField().getCard(position) == null){
+            return;
+        }
         Skill skill = skillUseInfo.getSkill();
         int effectNumber = skill.getImpact2();
-        List<CardInfo> victims = resolver.getAdjacentCards(defender.getField(), attacker.getPosition());
+        List<CardInfo> victims = resolver.getAdjacentCards(defender.getField(),position);
         GameUI ui = resolver.getStage().getUI();
         ui.useSkill(attacker, victims, skill, true);
         CardStatusItem statusItem = CardStatusItem.petrifaction(skillUseInfo);
