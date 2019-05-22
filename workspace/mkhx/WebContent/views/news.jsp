@@ -39,6 +39,9 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2019-05-22<x>欢笑，波波</x><ul>
+                        <li>确认【支配者】为游戏BUG,调整技能【支配者】（对位卡牌为空时不会选取两侧卡牌）</li>
+                    </ul></li>
                     <li>2019-05-21<x>欢笑，波波</x><ul>
                         <li>根据游戏实际效果调整技能【支配者】（当对位卡牌为空时会选取两侧卡牌），感谢<x>白马病挑</x>提供的帮助</li>
                         <li>修复卡牌【风暴领主】种族错误的BUG，感谢<x>今夜比较肥</x>提供的帮助</li>
