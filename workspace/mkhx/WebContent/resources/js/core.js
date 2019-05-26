@@ -519,6 +519,16 @@ var allLayerAddition=function(){
     allObj['118']=layerAddition(319,250,250);
     allObj['119']=layerAddition(330,260,260);
     allObj['120']=layerAddition(330,280,280);
+    allObj['121']=layerAddition(308,220,220);
+    allObj['122']=layerAddition(319,230,230);
+    allObj['123']=layerAddition(330,240,240);
+    allObj['124']=layerAddition(341,250,250);
+    allObj['125']=layerAddition(352,260,260);
+    allObj['126']=layerAddition(363,270,270);
+    allObj['127']=layerAddition(374,280,280);
+    allObj['128']=layerAddition(396,300,300);
+    allObj['129']=layerAddition(418,330,330);
+    allObj['130']=layerAddition(440,360,360);
     return allObj;
 };
 
