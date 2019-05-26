@@ -379,6 +379,7 @@ public enum SkillType {
     青囊("", 0, SkillTag.复活),
     送还("30943", 0, SkillTag.即死),
     食梦("", 1,0, SkillTag.即死),
+    全体送还("", 0, SkillTag.即死),
     冰甲("30937", 190, -10, SkillTag.物理护甲),
     寒冰之盾("", 100, 0,SkillTag.控制, SkillTag.抗免疫, SkillTag.魔王无效,SkillTag.物理护甲, SkillTag.魔族天赋),
     神魔之甲("", 60, 0, 110, 0, SkillTag.物理护甲),
@@ -571,6 +572,7 @@ public enum SkillType {
     万剑归宗("",80,0,500,0, SkillTag.魔法, SkillTag.魔王无效),
 
     代罪("", 999999,0, SkillTag.魔王无效, SkillTag.抗免疫,SkillTag.即死,SkillTag.抗不屈),
+    紊乱("", 999999,0, SkillTag.魔王无效, SkillTag.抗免疫,SkillTag.即死,SkillTag.抗不屈),
 
 
     炼金失败("",0,SkillTag.复活),

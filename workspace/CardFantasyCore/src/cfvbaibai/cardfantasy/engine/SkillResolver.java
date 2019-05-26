@@ -201,7 +201,7 @@ public class SkillResolver {
                     ReformingMult.reset(skillUseInfo, card);
                 } else if (skillUseInfo.getType() == SkillType.俊才) {
                     UnbendingAwaken.resetCount(skillUseInfo, card);
-                } else if (skillUseInfo.getType() == SkillType.代罪) {
+                } else if (skillUseInfo.getType() == SkillType.代罪 || skillUseInfo.getType() == SkillType.紊乱) {
                     Reforming.reset(skillUseInfo, card);
                 } else if (skillUseInfo.getType() == SkillType.风暴雷云) {
                     ReformingAwaken.reset(skillUseInfo, card);
@@ -240,6 +240,8 @@ public class SkillResolver {
                 // JUST A PLACEHOLDER
             } else if (skillUseInfo.getType() == SkillType.送还 || skillUseInfo.getType() == SkillType.突袭 || skillUseInfo.getType() == SkillType.食梦) {
                 Return.apply(this, skillUseInfo.getSkill(), attacker, defender);
+            } else if (skillUseInfo.getType() == SkillType.全体送还) {
+                ReturnNumber.apply(this, skillUseInfo.getSkill(), attacker, defender,-1);
             } else if (skillUseInfo.getType() == SkillType.流光回梦) {
                 ReturnToHandAndDelay.apply(this, skillUseInfo.getSkill(), attacker, defender, 2, 1);
             } else if (skillUseInfo.getType() == SkillType.退散) {
@@ -2649,7 +2651,15 @@ public class SkillResolver {
                             scapegoat = true;
                         }
                     }
-                }else if (skillUseInfo.getType() == SkillType.俊才) {
+                } else if (skillUseInfo.getType() == SkillType.紊乱) {
+                    if (!defender.hasUsed(skillUseInfo)) {
+                        Player opponent = this.getStage().getOpponent(defender.getOwner());
+                        Disorder.apply(skillUseInfo, this, defender,opponent);
+                        if (defender.getHP() > 0 && defender.isAlive()) {
+                            scapegoat = true;
+                        }
+                    }
+                } else if (skillUseInfo.getType() == SkillType.俊才) {
                     result.unbending = UnbendingAwaken.applyCount(skillUseInfo, this, defender);
                 }
             }
