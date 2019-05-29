@@ -39,6 +39,10 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2019-05-29<x>欢笑，波波</x><ul>
+                        <li>更新地下城到130层</li>
+                        <li>更新技能【紊乱】</li>
+                    </ul></li>
                     <li>2019-05-22<x>欢笑，波波</x><ul>
                         <li>确认【支配者】为游戏BUG,调整技能【支配者】（对位卡牌为空时不会选取两侧卡牌）</li>
                     </ul></li>

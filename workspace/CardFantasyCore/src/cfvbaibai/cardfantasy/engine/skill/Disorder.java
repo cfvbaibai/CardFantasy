@@ -18,7 +18,6 @@ public final class Disorder {
         StageInfo stage = resolver.getStage();
         Randomizer random = stage.getRandomizer();
         List<CardInfo> extraCard =new ArrayList<>();
-        List<CardInfo> extraDefenderCard =new ArrayList<>();
         extraCard.add(card);
         for(CardInfo cardInfo:player.getField().getAliveCards()){
             if(cardInfo == card){
@@ -31,18 +30,16 @@ public final class Disorder {
         }
         for(CardInfo cardInfo:defenderHero.getField().getAliveCards()){
             if(cardInfo.isDeman() || cardInfo.isBoss()){
-                extraDefenderCard.add(cardInfo);
+                extraCard.add(cardInfo);
             }else if(cardInfo.getStatus().containsStatus(CardStatusType.不屈)){
-                extraDefenderCard.add(cardInfo);
+                extraCard.add(cardInfo);
             }
         }
-        List<CardInfo> attackerList = random.pickRandom(player.getField().getAliveCards(), 1, true, extraCard);
-        List<CardInfo> defenderList = random.pickRandom(defenderHero.getField().getAliveCards(), 1, true, extraDefenderCard);
-        for(CardInfo cardInfo:attackerList){
-            resolver.killCard(card,cardInfo,skill);//杀死己方卡牌
-        }
-        for(CardInfo cardInfo:defenderList){
-            resolver.killCard(card,cardInfo,skill);//杀死对方卡牌
+        List<CardInfo> cardInfoList = player.getField().getAliveCards();
+        cardInfoList.addAll(defenderHero.getField().getAliveCards());
+        List<CardInfo> effectCardList = random.pickRandom(cardInfoList, 1, true, extraCard);
+        for(CardInfo cardInfo:effectCardList){
+            resolver.killCard(card,cardInfo,skill);//杀死卡牌
         }
         int healHP = skill.getImpact();
         if (healHP + card.getHP() > card.getMaxHP()) {

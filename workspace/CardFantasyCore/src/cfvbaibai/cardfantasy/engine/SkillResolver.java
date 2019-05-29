@@ -166,7 +166,7 @@ public class SkillResolver {
                     AllFiledAddSkill.apply(this, skillUseInfo, card, skillUseInfo.getAttachedUseInfo1().getSkill());
                 } else if (skillUseInfo.getType() == SkillType.圣域屏障 || skillUseInfo.getType() == SkillType.足球风暴 || skillUseInfo.getType() == SkillType.破阵之势
                         || skillUseInfo.getType() == SkillType.蛇蜕之术 || skillUseInfo.getType() == SkillType.破釜沉舟 || skillUseInfo.getType() == SkillType.行军补给
-                        || skillUseInfo.getType() == SkillType.徐如林 || skillUseInfo.getType() == SkillType.晶石铠甲) {
+                        || skillUseInfo.getType() == SkillType.徐如林 || skillUseInfo.getType() == SkillType.晶石铠甲 || skillUseInfo.getType() == SkillType.奥数之源) {
                     AllFiledAddSkill.apply(this, skillUseInfo, card, skillUseInfo.getAttachedUseInfo1().getSkill());
                 } else if (skillUseInfo.getType() == SkillType.出云蛇势) {
                     AllFiledAddSkill.apply(this, skillUseInfo, card, skillUseInfo.getAttachedUseInfo1().getSkill());
@@ -1558,7 +1558,8 @@ public class SkillResolver {
                             || blockSkillUseInfo.getType() == SkillType.迷影森森 || blockSkillUseInfo.getType() == SkillType.魏文帝 || blockSkillUseInfo.getType() == SkillType.归心
                             || blockSkillUseInfo.getType() == SkillType.阴阳术轮回 || blockSkillUseInfo.getType() == SkillType.神赐之躯 || blockSkillUseInfo.getType() == SkillType.魏之恋
                             || blockSkillUseInfo.getType() == SkillType.三界行者 ||  blockSkillUseInfo.getType() == SkillType.起死回生 || blockSkillUseInfo.getType() == SkillType.乱世枭雄
-                            || blockSkillUseInfo.getType() == SkillType.净世破魔 || blockSkillUseInfo.getType() == SkillType.圣剑) {
+                            || blockSkillUseInfo.getType() == SkillType.净世破魔 || blockSkillUseInfo.getType() == SkillType.圣剑
+                            || blockSkillUseInfo.getType() == SkillType.海滨乐园 || blockSkillUseInfo.getType() == SkillType.奥数之源) {
                         if (Immue.isSkillBlocked(this, blockSkillUseInfo.getSkill(), attackSkill, attacker, defender)) {
                             result.setAttackable(false);
                             return result;
@@ -3605,8 +3606,11 @@ public class SkillResolver {
                     FireMagic.apply(skillUseInfo.getSkill(), this, card, enemy, -1);
                 } else if (skillUseInfo.getType() == SkillType.淬毒之刃) {
                     PoisonMagic.apply(skillUseInfo, this, card, enemy, -1);
-                }else if (skillUseInfo.getType() == SkillType.支配者) {
+                } else if (skillUseInfo.getType() == SkillType.支配者) {
                     Petrifaction.apply(skillUseInfo, this, card, enemy);
+                } else if (skillUseInfo.getType() == SkillType.海滨乐园) {
+                    Summon.apply(this, skillUseInfo, card, SummonType.Normal, 2,
+                            "悠风奏者", "悠风奏者");
                 }
             }
         }
@@ -4051,8 +4055,9 @@ public class SkillResolver {
                         || blockSkillUseInfo.getType() == SkillType.忠肝义胆 || blockSkillUseInfo.getType() == SkillType.异元干扰 || blockSkillUseInfo.getType() == SkillType.金元仙躯
                         || blockSkillUseInfo.getType() == SkillType.迷影森森 || blockSkillUseInfo.getType() == SkillType.魏文帝 || blockSkillUseInfo.getType() == SkillType.归心
                         || blockSkillUseInfo.getType() == SkillType.阴阳术轮回 || blockSkillUseInfo.getType() == SkillType.神赐之躯 || blockSkillUseInfo.getType() == SkillType.魏之恋
-                        || blockSkillUseInfo.getType() == SkillType.三界行者 ||  blockSkillUseInfo.getType() == SkillType.起死回生 || blockSkillUseInfo.getType() == SkillType.乱世枭雄
-                        || blockSkillUseInfo.getType() == SkillType.净世破魔 || blockSkillUseInfo.getType() == SkillType.圣剑) {
+                        || blockSkillUseInfo.getType() == SkillType.三界行者 || blockSkillUseInfo.getType() == SkillType.起死回生 || blockSkillUseInfo.getType() == SkillType.乱世枭雄
+                        || blockSkillUseInfo.getType() == SkillType.净世破魔 || blockSkillUseInfo.getType() == SkillType.海滨乐园 || blockSkillUseInfo.getType() == SkillType.圣剑
+                        || blockSkillUseInfo.getType() == SkillType.奥数之源) {
                     return true;
                 } else if (blockSkillUseInfo.getType() == SkillType.法力反射 ||
                         blockSkillUseInfo.getType() == SkillType.镜面装甲 ||
@@ -4081,7 +4086,8 @@ public class SkillResolver {
                         || blockSkillUseInfo.getType() == SkillType.迷影森森 || blockSkillUseInfo.getType() == SkillType.魏文帝 || blockSkillUseInfo.getType() == SkillType.归心
                         || blockSkillUseInfo.getType() == SkillType.阴阳术轮回 || blockSkillUseInfo.getType() == SkillType.神赐之躯 || blockSkillUseInfo.getType() == SkillType.魏之恋
                         || blockSkillUseInfo.getType() == SkillType.三界行者 ||  blockSkillUseInfo.getType() == SkillType.起死回生 || blockSkillUseInfo.getType() == SkillType.乱世枭雄
-                        || blockSkillUseInfo.getType() == SkillType.净世破魔 || blockSkillUseInfo.getType() == SkillType.圣剑) {
+                        || blockSkillUseInfo.getType() == SkillType.净世破魔 || blockSkillUseInfo.getType() == SkillType.圣剑
+                        || blockSkillUseInfo.getType() == SkillType.海滨乐园 || blockSkillUseInfo.getType() == SkillType.奥数之源) {
                     return true;
                 }
             }

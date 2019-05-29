@@ -848,6 +848,7 @@ public enum SkillType {
     幽魂铁骑("",0,0, SkillTag.不可洗炼,SkillTag.召唤),
     反间("", 3000, 0, SkillTag.魔王无效,SkillTag.召唤),
     意外的挖掘("", 0, 0, SkillTag.召唤, SkillTag.不可洗炼),
+    海滨乐园("",0,0, SkillTag.不可洗炼,SkillTag.召唤),
 
     召唤酒吞("",0,0, SkillTag.不可洗炼,SkillTag.召唤),
     召唤雪女("",0,0, SkillTag.不可洗炼,SkillTag.召唤),
@@ -1210,6 +1211,7 @@ public enum SkillType {
     行军补给("",SkillType.补给,0,null,0),
     徐如林("",SkillType.补给,0,null,0,SkillTag.抗沉默),
     晶石铠甲("",SkillType.钢铁之肤,2,null,0),
+    奥数之源("",SkillType.连续魔法,10,null,0),
 
     //给场上随机卡牌添加多个技能
     善任("",SkillType.祈愿,1,SkillType.加速,1),
