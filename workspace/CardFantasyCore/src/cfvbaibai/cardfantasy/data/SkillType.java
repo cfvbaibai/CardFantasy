@@ -1211,7 +1211,7 @@ public enum SkillType {
     行军补给("",SkillType.补给,0,null,0),
     徐如林("",SkillType.补给,0,null,0,SkillTag.抗沉默),
     晶石铠甲("",SkillType.钢铁之肤,2,null,0),
-    奥数之源("",SkillType.连续魔法,10,null,0),
+    奥术之源("",SkillType.连续魔法,10,null,0),
 
     //给场上随机卡牌添加多个技能
     善任("",SkillType.祈愿,1,SkillType.加速,1),
