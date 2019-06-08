@@ -2306,6 +2306,19 @@ public class SkillResolver {
         }
     }
 
+    //特殊添加，法术扼杀类技能导致死亡时不触发死契
+    public void resetDeadCard( OnDamagedResult result,CardInfo deadCard) {
+        if (result.cardDead && !result.unbending) {
+            deadCard.setSummonNumber(0);
+            deadCard.setAddDelay(0);
+            deadCard.setRuneActive(false);
+            resolveLeaveSkills(deadCard);
+            if (!deadCard.isSummonedMinion()) {
+                deadCard.reset();
+            }
+        }
+    }
+
     public void resolvePostAttackSkills(CardInfo attacker, CardInfo defender, Player defenderHero, Skill attackSkill,
                                         int normalAttackDamage) throws HeroDieSignal {
         for (SkillUseInfo skillUseInfo : attacker.getUsableNormalSkills()) {

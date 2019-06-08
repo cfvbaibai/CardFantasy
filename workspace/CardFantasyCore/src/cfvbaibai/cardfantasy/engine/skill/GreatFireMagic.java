@@ -42,7 +42,11 @@ public final class GreatFireMagic {
                         }
                        else {
                             ui.attackCard(victim, attackCard, cardSkill, damage2);
-                            resolver.resolveDeathSkills(victim, attackCard, cardSkill, resolver.applyDamage(victim, attackCard, cardSkill, damage2));
+                            if(deathFlag) {
+                                resolver.resolveDeathSkills(victim, attackCard, cardSkill, resolver.applyDamage(victim, attackCard, cardSkill, damage2));
+                            } else {
+                                resolver.resetDeadCard(resolver.applyDamage(victim, attackCard, cardSkill, damage2),attackCard);
+                            }
                         }
                     }
                 }
@@ -56,6 +60,8 @@ public final class GreatFireMagic {
             //判断是否触发死亡技能
             if(deathFlag) {
                 resolver.resolveDeathSkills(attacker, victim, cardSkill, resultDamage);
+            } else{
+                resolver.resetDeadCard(resultDamage,victim);
             }
         }
     }
