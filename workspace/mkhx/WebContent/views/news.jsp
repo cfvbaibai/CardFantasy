@@ -39,6 +39,11 @@
             <div data-role="collapsible" data-collapsed="false" data-mini="true">
                 <h3>更新日志</h3>
                 <ul class="news-content">
+                    <li>2019-06-10<x>欢笑，波波</x><ul>
+                        <li>更新卡牌【蚀月骑士】</li>
+                        <li>修复法术扼杀类技能不发动死契导致【铁壁】【背水】无法正常移除的BUG，感谢<x>我不是天宫妖娆</x>提供的帮助</li>
+                        <li>修复【三国张角幼年】召唤物错误的BUG</li>
+                    </ul></li>
                     <li>2019-05-29<x>欢笑，波波</x><ul>
                         <li>更新地下城到130层</li>
                         <li>更新技能【紊乱】</li>

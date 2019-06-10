@@ -31,7 +31,7 @@ public class Grudge {
         int effectNumber = skill.getImpact();
         int damage = skill.getImpact2();
         ui.useSkill(attackCard, victims, skill, true);
-        CardStatusItem statusItem2 = CardStatusItem.Grudge(damage,skillUseInfo);
+        CardStatusItem statusItem2 = CardStatusItem.grudge(damage,skillUseInfo);
         CardStatusItem statusItem1 = CardStatusItem.slience(skillUseInfo);
         statusItem1.setEffectNumber(effectNumber);
         statusItem2.setEffectNumber(effectNumber);
@@ -83,7 +83,7 @@ public class Grudge {
         int effectNumber = skill.getImpact();
         int damage = skill.getImpact2();
         ui.useSkill(skillUseInfo.getOwner(), victims, skill, true);
-        CardStatusItem statusItem2 = CardStatusItem.Grudge(damage,skillUseInfo);
+        CardStatusItem statusItem2 = CardStatusItem.grudge(damage,skillUseInfo);
         CardStatusItem statusItem1 = CardStatusItem.slience(skillUseInfo);
         statusItem1.setEffectNumber(effectNumber);
         statusItem2.setEffectNumber(effectNumber);

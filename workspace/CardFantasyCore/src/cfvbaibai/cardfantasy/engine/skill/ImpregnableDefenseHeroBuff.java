@@ -20,9 +20,9 @@ public final class ImpregnableDefenseHeroBuff {
 
     public static int explode(SkillResolver resolver, EntityInfo attacker, Player defender,int damage) throws HeroDieSignal {
 
-        List<SkillUseInfo> skillUseInfoList = defender.getImpregnableDefenseHero();
-
         int remainingDamage = damage;
+
+        List<SkillUseInfo> skillUseInfoList = defender.getImpregnableDefenseHero();
 
         List<SkillUseInfo> impregnableDefenseHeroList = new ArrayList<>();
         for(SkillUseInfo skillUseInfo:skillUseInfoList)
@@ -36,11 +36,12 @@ public final class ImpregnableDefenseHeroBuff {
             {
                 continue;
             }
-            Skill skill = skillUseInfo.getSkill();
-            int impact = skill.getImpact();
-            resolver.getStage().getUI().useSkill(skillUseInfo.getOwner(), skill, true);
-
-            remainingDamage = remainingDamage *impact/100;
+            if(!FailureSkillUseInfoList.explode(resolver,skillUseInfo.getOwner(),attacker.getOwner())) {
+                Skill skill = skillUseInfo.getSkill();
+                int impact = skill.getImpact();
+                resolver.getStage().getUI().useSkill(skillUseInfo.getOwner(), skill, true);
+                remainingDamage = remainingDamage *impact/100;
+            }
         }
 
         return remainingDamage;

@@ -23,7 +23,7 @@ public class Asthenia {
         CardStatusItem status = CardStatusItem.paralyzed(skillUseInfo);
         status.setEffect(impact);
         status.setEffectNumber(effectNumber);
-        CardStatusItem statusItem = CardStatusItem.Asthenia(skillUseInfo);
+        CardStatusItem statusItem = CardStatusItem.asthenia(skillUseInfo);
         statusItem.setEffectNumber(effectNumber);
         for (CardInfo victim : victims) {
             if (!resolver.resolveAttackBlockingSkills(attackCard, victim, skill, 1).isAttackable()) {

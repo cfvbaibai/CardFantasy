@@ -80,6 +80,36 @@ public class UnbendingAwaken {
         return true;
     }
 
+    public static boolean applyCardName(SkillUseInfo skillUseInfo, SkillResolver resolver, CardInfo card,String cardName) {
+        List<CardStatusItem> items = card.getStatus().getStatusOf(CardStatusType.不屈);
+        if (!items.isEmpty()) {
+            return false;
+        }
+        Player defender = card.getOwner();
+        boolean flag = false;
+        for(CardInfo cardInfo:defender.getField().getAliveCards()){
+            if(cardInfo!=null){
+                if(cardInfo.getName().equals(cardName)){
+                    flag = true;
+                }
+            }
+        }
+        if(!flag){
+            return  flag;
+        }
+        GameUI ui = resolver.getStage().getUI();
+        Skill skill = skillUseInfo.getSkill();
+        ui.useSkill(card, skill, true);
+        if (card.getHP() == 0) {
+            ui.adjustHP(card, card, 1, skill);
+            card.setBasicHP(1);
+        }
+        CardStatusItem statusItem = CardStatusItem.unbending(skillUseInfo);
+        ui.addCardStatus(card, card, skill, statusItem);
+        card.addStatus(statusItem);
+        return true;
+    }
+
     public static boolean applyCount(SkillUseInfo skillUseInfo, SkillResolver resolver, CardInfo card) {
         List<CardStatusItem> items = card.getStatus().getStatusOf(CardStatusType.不屈);
         if (!items.isEmpty()) {

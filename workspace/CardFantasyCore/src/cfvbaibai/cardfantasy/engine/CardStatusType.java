@@ -23,6 +23,7 @@ public enum CardStatusType {
     献祭(false, "祭"),
     炼成(false, "炼"),
     魂殇(false, "殇"),
+    蚀月(false, "蚀"),
     黄天(false, "黄"),
     祭奠(false, "奠"),
     离魂(false, "离"),

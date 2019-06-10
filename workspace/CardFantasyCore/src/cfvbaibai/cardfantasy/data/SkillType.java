@@ -1081,6 +1081,7 @@ public enum SkillType {
     常胜("",SkillType.祈愿,2,SkillType.全体加速,1),
     克己奉公("", 100, 0, null,0,SkillType.钢铁之肤,6, SkillTag.永久, SkillTag.基础攻击加成, SkillTag.魔王无效, SkillTag.魔族天赋),
     异变("",650,0, null, 0, SkillType.圣母回声, 0),
+    死亡之舞("",SkillType.无尽华尔兹,0,SkillType.死亡宣告,0),
 
     新生("",0,0,SkillTag.新生,SkillTag.抗夺魂),
     圣灵之泉("",0,0,SkillTag.新生,SkillTag.抗夺魂),
@@ -1314,6 +1315,7 @@ public enum SkillType {
     支配者("", 3,0,6,0,SkillType.魔法装甲,10,null,0, SkillTag.抗免疫,SkillTag.魔王无效),
 
     死亡诅咒("",1,0, SkillTag.抗免疫,SkillTag.魔王无效),
+    蚀月军团("",1,0, SkillTag.抗免疫,SkillTag.魔王无效),
     审判之印("",4,0, SkillTag.抗免疫,SkillTag.魔王无效),
     永生的诅咒("",100,0, SkillTag.抗免疫,SkillTag.魔王无效),
     血魂之咒("",3,0, SkillTag.抗免疫,SkillTag.魔王无效),
@@ -1371,6 +1373,9 @@ public enum SkillType {
 
     封魔神剑("", 444, 0, 44,0,SkillTag.永久, SkillTag.基础攻击加成),
     对决("", 400, 0, 40,0,SkillTag.永久, SkillTag.基础攻击加成),
+
+    //腐化之地
+    腐化之地("", 0, 0, SkillTag.不可洗炼),
 
   // 以下全部技能皆为待更新的空技能，请在更新之后将其移动到上面适合的位置
     // 对于物品技能，请将其（按顺序）加入下面的物品技能列表，用来以后更改自动卡牌数据更新工具

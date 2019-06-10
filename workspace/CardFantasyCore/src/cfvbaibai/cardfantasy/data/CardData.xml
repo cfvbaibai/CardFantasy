@@ -6127,7 +6127,12 @@
     <Card id="6112" name="盗宝松鼠" wikiId="" race="魔族" speed="1" star="5" cost="20" incrCost="2" at="600" hp="1685" incrAT="50" incrHP="55">
         <Skill type="魔王降临" level="0" unlock="0" />
         <Skill type="嗜血潜能" level="0" unlock="5" />
-        <Skill type="战争狂热" level="0" unlock="0" />
+        <Skill type="战争狂热" level="0" unlock="10" />
+    </Card>
+    <Card id="6113" name="蚀月骑士" wikiId="" race="魔族" speed="2" star="5" cost="20" incrCost="2" at="660" hp="1660" incrAT="47" incrHP="50">
+        <Skill type="腐化之地" level="0" unlock="0" />
+        <Skill type="蚀月军团" level="0" unlock="5" />
+        <Skill type="死亡之舞" level="0" unlock="10" />
     </Card>
 
     <!-- 测试卡 -->

@@ -22,7 +22,7 @@ public class SoulChains {
         GameUI ui = resolver.getStage().getUI();
         Skill skill = skillUseInfo.getSkill();
         ui.useSkill(attackCard, victims, skill, true);
-        CardStatusItem statusItem = CardStatusItem.SoulWound(skillUseInfo);
+        CardStatusItem statusItem = CardStatusItem.soulWound(skillUseInfo);
         statusItem.setEffectNumber(effectNumber);
         for (CardInfo victim : victims) {
             if (!resolver.resolveAttackBlockingSkills(attackCard, victim, skill, 1).isAttackable()) {

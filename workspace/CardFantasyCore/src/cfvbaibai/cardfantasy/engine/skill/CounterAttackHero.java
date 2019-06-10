@@ -27,9 +27,11 @@ public class CounterAttackHero {
         }
         for(SkillUseInfo skillUseInfo:counterSkillUserInfoList)
         {
-            Skill skill = skillUseInfo.getSkill();
-            resolver.getStage().getUI().useSkill(skillUseInfo.getOwner(), skill, true);
-            resolver.attackHero(skillUseInfo.getOwner(),attacker.getOwner(),skill,damage*skill.getImpact()/100);
+            if(!FailureSkillUseInfoList.explode(resolver,skillUseInfo.getOwner(),attacker.getOwner())) {
+                Skill skill = skillUseInfo.getSkill();
+                resolver.getStage().getUI().useSkill(skillUseInfo.getOwner(), skill, true);
+                resolver.attackHero(skillUseInfo.getOwner(), attacker.getOwner(), skill, damage * skill.getImpact() / 100);
+            }
         }
     }
 
