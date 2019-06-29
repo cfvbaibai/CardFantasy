@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public final class RemoveDebuffSkill {
-    public static void apply(SkillUseInfo skillUseInfo, SkillResolver resolver, EntityInfo attacker,int number,Player defener)
+    public static void apply(SkillUseInfo skillUseInfo, SkillResolver resolver, CardInfo attacker,int number,Player defener)
             throws HeroDieSignal {
         CardStatus status = attacker.getStatus();
         if (status.containsStatus(CardStatusType.迷惑) ||
@@ -76,8 +76,10 @@ public final class RemoveDebuffSkill {
                 }
                 else{
                     cardStatus.removeItem(deleteItem);
-                    if(exitSkill.getType() == SkillType.祈愿) {
+                    if(exitSkill.getType() == SkillType.归魂) {
                         RegressionSoul.apply(resolver, extraSkillUserInfo, attacker, defener);
+                    } else if(exitSkill.getType() == SkillType.复活) {
+                        Revive.apply(resolver, extraSkillUserInfo, attacker);
                     }
                 }
             }

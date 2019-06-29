@@ -1506,6 +1506,16 @@
         <Skill type="燎原之势" level="0" unlock="5" />
         <Skill type="牢狱异火" level="0" unlock="10" />
     </Card>
+    <Card id="1696" name="木马骑士" wikiId="" race="王国" speed="3" star="4" cost="15" incrCost="2" at="455" hp="1215" incrAT="35" incrHP="32">
+        <Skill type="英雄之敌" level="6" unlock="0" />
+        <Skill type="传送" level="0" unlock="5" />
+        <Skill type="冰甲" level="6" unlock="10" />
+    </Card>
+    <Card id="1697" name="东吴四杰·鲁肃" wikiId="" race="王国" speed="3" star="5" cost="19" incrCost="2" at="515" hp="1585" incrAT="42" incrHP="45">
+        <Skill type="仁厚" level="0" unlock="0" />
+        <Skill type="乐善好施" level="0" unlock="5" />
+        <Skill type="稳定" level="0" unlock="10" />
+    </Card>
 
 
 
@@ -2770,6 +2780,16 @@
         <Skill type="疯长的植物" level="0" unlock="0" />
         <Skill type="转生" level="6" unlock="5" />
         <Skill type="荆棘护体" level="0" unlock="10" />
+    </Card>
+    <Card id="2662" name="吴大帝·孙权" wikiId="" race="森林" speed="3" star="5" cost="21" incrCost="2" at="615" hp="1655" incrAT="40" incrHP="40">
+        <Skill type="号令三军" level="0" unlock="0" />
+        <Skill type="游击" level="0" unlock="5" />
+        <Skill type="卧薪尝胆" level="0" unlock="10" />
+    </Card>
+    <Card id="2663" name="圣灵法师" wikiId="" race="森林" speed="3" star="5" cost="18" incrCost="2" at="515" hp="1615" incrAT="40" incrHP="40">
+        <Skill type="圣灵之力" level="0" unlock="0" />
+        <Skill type="圣灵领域" level="0" unlock="5" />
+        <Skill type="御魔长袍" level="0" unlock="10" />
     </Card>
 
 
@@ -5424,6 +5444,12 @@
         <Skill type="快速甬道" level="0" unlock="5" />
         <Skill type="晶石铠甲" level="0" unlock="10" />
     </Card>
+    <Card id="4685" name="弗兰肯斯坦" wikiId="" race="地狱" speed="3" star="5" cost="21" incrCost="2" at="605" hp="1605" incrAT="41" incrHP="48">
+        <Skill type="自我改造" level="0" unlock="0" />
+        <Skill type="灵魂试炼" level="0" unlock="5" />
+        <Skill type="生死界限" level="0" unlock="10" />
+    </Card>
+
 
 
 

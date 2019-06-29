@@ -220,7 +220,6 @@ public class BattleEngine {
             this.stage.getResolver().removeStatus(defenderCard, CardStatusType.魔族);//移除魔族buff
             this.stage.getResolver().removeGiveSkills(defenderCard);
         }
-        this.stage.getResolver().endOutField(this.getActivePlayer());
         Collection<CardInfo> allHandCards = this.stage.getAllHandCards();
         for (CardInfo card : allHandCards) {
             int summonDelay = card.getSummonDelay();
@@ -442,8 +441,13 @@ public class BattleEngine {
             if (myField.getCard(i)!=null&&(myField.getCard(i).containsUsableSkill(SkillType.连斩)||myField.getCard(i).containsUsableSkill(SkillType.原素裂变)
                     ||myField.getCard(i).containsUsableSkill(SkillType.死亡收割)||myField.getCard(i).containsUsableSkill(SkillType.连狙)
                     ||myField.getCard(i).containsUsableSkill(SkillType.战神))) {
+                int limitNumber = 0; //连斩在结算熊猫教父时会出现死循环，特殊处理限定连斩最多触发30次
                 boolean killCard = true;
                 for(;killCard;) {
+                    limitNumber++;
+                    if(limitNumber>30){
+                        break;
+                    }
                     killCard = randomAttackCard(myField, opField, i);
                     if (myField.getCard(i) == null || myField.getCard(i).isDead()){
                         killCard = false;
@@ -708,7 +712,8 @@ public class BattleEngine {
             for (CardInfo card : opField.getAliveCards()) {
                 if(card.containsUsableSkill(SkillType.嘲讽)||card.containsUsableSkill(SkillType.酒池肉林)
                         ||card.containsUsableSkill(SkillType.喵喵喵)||card.containsUsableSkill(SkillType.蔑视)
-                        ||card.containsUsableSkill(SkillType.龙之守护)||card.containsUsableSkill(SkillType.守护之翼))
+                        ||card.containsUsableSkill(SkillType.龙之守护)||card.containsUsableSkill(SkillType.守护之翼)
+                        ||card.containsUsableSkill(SkillType.百里))
                 {
                     if(!card.getStatus().containsStatus(CardStatusType.不屈)){
                         return card;

@@ -35,7 +35,7 @@ public final class FailureSkillUseInfoList {
             return flag;
         }
 
-        List<SkillUseInfo> skillUseInfoList = defender.getImpregnableDefenseHero();
+        List<SkillUseInfo> skillUseInfoList = defender.getFailureSkillUseInfoList();
         StageInfo stage = resolver.getStage();
         GameUI ui = stage.getUI();
         for(SkillUseInfo skillUseInfo:skillUseInfoList){
@@ -63,7 +63,7 @@ public final class FailureSkillUseInfoList {
             return flag;
         }
 
-        List<SkillUseInfo> skillUseInfoList = defender.getImpregnableDefenseHero();
+        List<SkillUseInfo> skillUseInfoList = defender.getFailureSkillUseInfoList();
         StageInfo stage = resolver.getStage();
         GameUI ui = stage.getUI();
         for(SkillUseInfo skillUseInfo:skillUseInfoList){
