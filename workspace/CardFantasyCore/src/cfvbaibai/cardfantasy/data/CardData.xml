@@ -672,7 +672,7 @@
         <Skill type="吸血" level="5" unlock="5" />
         <Skill type="不屈" level="0" unlock="10" />
     </Card>
-    <Card id="1523" name="魔幻人偶师" wikiId="" race="王国" speed="4" star="5" cost="17" incrCost="2" at="360" hp="1380" incrAT="40" incrHP="37">
+    <Card id="1523" name="原魔幻人偶师" wikiId="" race="王国" speed="4" star="5" cost="17" incrCost="2" at="360" hp="1380" incrAT="40" incrHP="37">
         <Skill type="闪避" level="8" unlock="0" />
         <Skill type="陷阱" level="3" unlock="5" />
         <Skill type="圣炎" level="0" unlock="10" />
@@ -1515,6 +1515,16 @@
         <Skill type="仁厚" level="0" unlock="0" />
         <Skill type="乐善好施" level="0" unlock="5" />
         <Skill type="稳定" level="0" unlock="10" />
+    </Card>
+    <Card id="1698" name="魔幻人偶师" wikiId="" race="王国" speed="3" star="5" cost="17" incrCost="2" at="495" hp="1510" incrAT="40" incrHP="37">
+        <Skill type="牵丝诡术" level="0" unlock="0" />
+        <Skill type="魔偶替身" level="0" unlock="5" />
+        <Skill type="霜火交织" level="0" unlock="10" />
+    </Card>
+    <Card id="1699" name="的卢" wikiId="" race="王国" speed="0" star="5" cost="19" incrCost="2" at="515" hp="1800" incrAT="40" incrHP="65">
+        <Skill type="良禽择木" level="0" unlock="0" />
+        <Skill type="绝境之志" level="0" unlock="5" />
+        <Skill type="柳暗花明" level="0" unlock="10" />
     </Card>
 
 
@@ -2791,6 +2801,11 @@
         <Skill type="圣灵领域" level="0" unlock="5" />
         <Skill type="御魔长袍" level="0" unlock="10" />
     </Card>
+    <Card id="2664" name="赤兔" wikiId="" race="森林" speed="3" star="5" cost="19" incrCost="2" at="585" hp="1650" incrAT="46" incrHP="42">
+        <Skill type="绝尘" level="0" unlock="0" />
+        <Skill type="狂性" level="0" unlock="5" />
+        <Skill type="良驹" level="0" unlock="10" />
+    </Card>
 
 
 
@@ -4032,6 +4047,16 @@
         <Skill type="破魔神兵" level="0" unlock="0"  />
         <Skill type="雷霆一击" level="8" unlock="5" />
         <Skill type="呼风唤雨" level="0" unlock="10" />
+    </Card>
+    <Card id="3648" name="爪黄飞电" wikiId="" race="蛮荒" speed="2" star="5" cost="19" incrCost="2" at="515" hp="1650" incrAT="40" incrHP="45">
+        <Skill type="残影" level="0" unlock="0"  />
+        <Skill type="疾驰" level="0" unlock="5" />
+        <Skill type="阻碍" level="2" unlock="10" />
+    </Card>
+    <Card id="3649" name="爪黄飞电·幻影" wikiId="" race="蛮荒" speed="2" star="5" cost="99" incrCost="0" at="1" hp="1" incrAT="0" incrHP="0">
+        <Skill type="星云锁链" level="0" unlock="0"  />
+        <Skill type="退散" level="0" unlock="5"  summon="true"/>
+        <Skill type="复活" level="0" unlock="10" death="true"/>
     </Card>
 
 
@@ -5386,68 +5411,73 @@
         <Skill type="匹夫之勇" level="0" unlock="5" />
         <Skill type="粗中有细" level="0" unlock="10" />
     </Card>
-    <Card id="4673" name="金属巨龙·霜" wikiId="" race="地狱" speed="3" star="5" cost="21" incrCost="2" at="575" hp="1600" incrAT="45" incrHP="45">
+    <Card id="4672" name="金属巨龙·霜" wikiId="" race="地狱" speed="3" star="5" cost="21" incrCost="2" at="575" hp="1600" incrAT="45" incrHP="45">
         <Skill type="破坏之爪" level="0" unlock="0"  />
         <Skill type="邪龙领域" level="8" unlock="5" />
         <Skill type="神赐之躯" level="0" unlock="10" />
     </Card>
-    <Card id="4674" name="邪恶巨龙" wikiId="" race="地狱" speed="3" star="5" cost="19" incrCost="2" at="500" hp="1560" incrAT="43" incrHP="40">
+    <Card id="4673" name="邪恶巨龙" wikiId="" race="地狱" speed="3" star="5" cost="19" incrCost="2" at="500" hp="1560" incrAT="43" incrHP="40">
         <Skill type="恶魔印记" level="0" unlock="0"  />
         <Skill type="邪龙之怒" level="0" unlock="5" />
         <Skill type="重整" level="0" unlock="10" />
     </Card>
-    <Card id="4675" name="邪月翼魔" wikiId="" race="地狱" speed="2" star="5" cost="17" incrCost="2" at="480" hp="1460" incrAT="38" incrHP="40">
+    <Card id="4674" name="邪月翼魔" wikiId="" race="地狱" speed="2" star="5" cost="17" incrCost="2" at="480" hp="1460" incrAT="38" incrHP="40">
         <Skill type="月之潮汐" level="0" unlock="0" />
         <Skill type="神魔之甲" level="0" unlock="5" />
         <Skill type="残月之辉" level="0" unlock="10" />
     </Card>
-    <Card id="4676" name="狂暴羽蛇" wikiId="" race="地狱" speed="3" star="5" cost="18" incrCost="2" at="500" hp="1525" incrAT="42" incrHP="48">
+    <Card id="4675" name="狂暴羽蛇" wikiId="" race="地狱" speed="3" star="5" cost="18" incrCost="2" at="500" hp="1525" incrAT="42" incrHP="48">
         <Skill type="蛇影迷踪" level="0" unlock="0" />
         <Skill type="狂怒" level="0" unlock="5" />
         <Skill type="神性" level="0" unlock="10" />
     </Card>
-    <Card id="4677" name="狂暴羽蛇分身" wikiId="" race="地狱" speed="3" star="5" cost="99" incrCost="0" at="500" hp="1525" incrAT="42" incrHP="48">
+    <Card id="4676" name="狂暴羽蛇分身" wikiId="" race="地狱" speed="3" star="5" cost="99" incrCost="0" at="500" hp="1525" incrAT="42" incrHP="48">
         <Skill type="狂怒" level="0" unlock="5" />
         <Skill type="神性" level="0" unlock="10" />
     </Card>
-    <Card id="4678" name="钟馗" wikiId="" race="地狱" speed="2" star="5" cost="21" incrCost="2" at="700" hp="1550" incrAT="50" incrHP="45">
+    <Card id="4677" name="钟馗" wikiId="" race="地狱" speed="2" star="5" cost="21" incrCost="2" at="700" hp="1550" incrAT="50" incrHP="45">
         <Skill type="灵魂汲取" level="0" unlock="0" />
         <Skill type="封魔神剑" level="0" unlock="5" />
         <Skill type="天道承负" level="0" unlock="10" />
     </Card>
-    <Card id="4679" name="迷失之魇" wikiId="" race="地狱" speed="3" star="5" cost="16" incrCost="2" at="410" hp="1550" incrAT="42" incrHP="35">
+    <Card id="4678" name="迷失之魇" wikiId="" race="地狱" speed="3" star="5" cost="16" incrCost="2" at="410" hp="1550" incrAT="42" incrHP="35">
         <Skill type="威吓" level="0" unlock="0" />
         <Skill type="对决" level="0" unlock="5" />
         <Skill type="追击" level="0" unlock="10" />
     </Card>
-    <Card id="4680" name="德古拉" wikiId="" race="地狱" speed="4" star="5" cost="21" incrCost="2" at="575" hp="1615" incrAT="50" incrHP="50">
+    <Card id="4679" name="德古拉" wikiId="" race="地狱" speed="4" star="5" cost="21" incrCost="2" at="575" hp="1615" incrAT="50" incrHP="50">
         <Skill type="鲜血记忆" level="0" unlock="0" />
         <Skill type="血之眷顾" level="0" unlock="5" />
         <Skill type="永夜" level="0" unlock="10" />
     </Card>
-    <Card id="4681" name="暗裔疫骑" wikiId="" race="地狱" speed="1" star="5" cost="18" incrCost="2" at="575" hp="1510" incrAT="42" incrHP="42">
+    <Card id="4680" name="暗裔疫骑" wikiId="" race="地狱" speed="1" star="5" cost="18" incrCost="2" at="575" hp="1510" incrAT="42" incrHP="42">
         <Skill type="暗影侵蚀" level="0" unlock="0" />
         <Skill type="死亡收割" level="0" unlock="5" />
         <Skill type="幽魂铁骑" level="0" unlock="10" />
     </Card>
-    <Card id="4682" name="诈降卡牌" wikiId="" race="地狱" speed="6" star="5" cost="99" incrCost="0" at="0" hp="3000" incrAT="0" incrHP="0">
+    <Card id="4681" name="诈降卡牌" wikiId="" race="地狱" speed="6" star="5" cost="99" incrCost="0" at="0" hp="3000" incrAT="0" incrHP="0">
         <Skill type="自毁" level="0" unlock="0" />
         <Skill type="诈降" level="0" unlock="5" />
     </Card>
-    <Card id="4683" name="东吴四杰·吕蒙" wikiId="" race="地狱" speed="4" star="5" cost="19" incrCost="2" at="545" hp="1615" incrAT="41" incrHP="42">
+    <Card id="4682" name="东吴四杰·吕蒙" wikiId="" race="地狱" speed="4" star="5" cost="19" incrCost="2" at="545" hp="1615" incrAT="41" incrHP="42">
         <Skill type="白衣渡江" level="0" unlock="0" />
         <Skill type="克己奉公" level="0" unlock="5" />
         <Skill type="勤能补拙" level="0" unlock="10" />
     </Card>
-    <Card id="4684" name="晶石开掘者" wikiId="" race="地狱" speed="3" star="4" cost="15" incrCost="2" at="435" hp="1320" incrAT="32" incrHP="40">
+    <Card id="4683" name="晶石开掘者" wikiId="" race="地狱" speed="3" star="4" cost="15" incrCost="2" at="435" hp="1320" incrAT="32" incrHP="40">
         <Skill type="意外的挖掘" level="0" unlock="0" />
         <Skill type="快速甬道" level="0" unlock="5" />
         <Skill type="晶石铠甲" level="0" unlock="10" />
     </Card>
-    <Card id="4685" name="弗兰肯斯坦" wikiId="" race="地狱" speed="3" star="5" cost="21" incrCost="2" at="605" hp="1605" incrAT="41" incrHP="48">
+    <Card id="4684" name="弗兰肯斯坦" wikiId="" race="地狱" speed="3" star="5" cost="21" incrCost="2" at="605" hp="1605" incrAT="41" incrHP="48">
         <Skill type="自我改造" level="0" unlock="0" />
         <Skill type="灵魂试炼" level="0" unlock="5" />
         <Skill type="生死界限" level="0" unlock="10" />
+    </Card>
+    <Card id="4685" name="乌骓" wikiId="" race="地狱" speed="1" star="5" cost="19" incrCost="2" at="525" hp="1575" incrAT="48" incrHP="40">
+        <Skill type="风驰电掣" level="0" unlock="0" />
+        <Skill type="踢雪" level="0" unlock="5" />
+        <Skill type="真龙九现" level="0" unlock="10" />
     </Card>
 
 

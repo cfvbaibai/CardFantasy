@@ -519,7 +519,8 @@ public class BattleEngine {
                     skillUseInfo.getType() == SkillType.英勇打击 ||
                     skillUseInfo.getType() == SkillType.死亡践踏 ||
                     skillUseInfo.getType() == SkillType.鬼彻 ||
-                    skillUseInfo.getType() == SkillType.毒杀) {
+                    skillUseInfo.getType() == SkillType.毒杀 ||
+                    skillUseInfo.getType() == SkillType.狂性) {
                 ui.useSkill(myField.getCard(i), defender, skillUseInfo.getSkill(), true);
             }
             else if (skillUseInfo.getType() == SkillType.一文字 || skillUseInfo.getType() == SkillType.页游横扫千军
@@ -561,7 +562,8 @@ public class BattleEngine {
                         skillUseInfo.getType() == SkillType.鬼彻 ||
                         skillUseInfo.getType() == SkillType.灵击 ||
                         skillUseInfo.getType() == SkillType.死亡践踏 ||
-                        skillUseInfo.getType() == SkillType.毒杀) {
+                        skillUseInfo.getType() == SkillType.毒杀 ||
+                        skillUseInfo.getType() == SkillType.狂性) {
                     List<CardInfo> sweepDefenders = new ArrayList<CardInfo>();
                     if (i > 0 && opField.getCard(i - 1) != null) {
                         sweepDefenders.add(opField.getCard(i - 1));
