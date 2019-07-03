@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Reforming {
-    public static void apply(SkillResolver resolver, SkillUseInfo skillUseInfo, CardInfo card,Player defender) throws HeroDieSignal{
+    public static void apply(SkillResolver resolver, SkillUseInfo skillUseInfo, CardInfo card,Player attacker) throws HeroDieSignal{
         if (card == null || card.isDead())  {
             throw new CardFantasyRuntimeException("card should not be null or dead!");
         }
@@ -48,6 +48,7 @@ public class Reforming {
         } else {
             //处理顽强司命情况下，卡牌已经回到场上，不需要再次结算降临技能。
             if (card.isAlive()) {
+                card.setUsed(skillUseInfo);
                 return;
             }
             //强制移除卡牌，防止新生以后出现卡牌复制。
@@ -55,10 +56,10 @@ public class Reforming {
             card.getOwner().getDeck().removeCard(card);
             card.getOwner().getField().removeCard(card);
             card.getOwner().getOutField().removeCard(card);
-            defender.getHand().removeCard(card);
-            defender.getDeck().removeCard(card);
-            defender.getField().removeCard(card);
-            defender.getOutField().removeCard(card);
+            attacker.getHand().removeCard(card);
+            attacker.getDeck().removeCard(card);
+            attacker.getField().removeCard(card);
+            attacker.getOutField().removeCard(card);
             resolver.summonCard(card.getOwner(), card, null, false, skillUseInfo.getSkill(), 0);
             card.setUsed(skillUseInfo);
         }

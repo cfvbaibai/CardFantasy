@@ -121,6 +121,19 @@ public class CardInfo extends EntityInfo {
             }
         }
     }
+
+    public void removeAssignGiveSkill(SkillUseInfo skillUseInfo)
+    {
+        for(int j=0;j<this.skillUseInfos.size();j++){
+            if(this.skillUseInfos.get(j) == skillUseInfo) {
+                if (this.skillUseInfos.get(j).getGiveSkill() == 1) {
+                    this.skillUseInfos.remove(j);
+                } else if (this.skillUseInfos.get(j).getGiveSkill() == 2) {
+                    this.skillUseInfos.remove(j);
+                }
+            }
+        }
+    }
     
     public CardSkill getExtraSkill() {
         return card.getExtraSkill();
@@ -359,38 +372,18 @@ public class CardInfo extends EntityInfo {
     public void resetStart() {
         this.hp = this.card.getMaxHP();
         this.status = new CardStatus();
-        List<SkillEffect> addEffect = new ArrayList<SkillEffect>();
-        List<SkillEffect> addEffect2 = new ArrayList<SkillEffect>();
-        List<SkillEffect> addEffect3 = new ArrayList<SkillEffect>();
-        for(SkillType key : this.effects.keySet())
-        {
-            if(key== SkillType.拔刀术)
-            {
-                addEffect = this.effects.get(key);
+        Map<SkillType,List<SkillEffect>> addEffect = new HashMap<>();
+        for(SkillType key : this.effects.keySet()) {
+            if(key== SkillType.拔刀术) {
+                addEffect.put(SkillType.拔刀术,this.effects.get(key));
+            } else if(key== SkillType.偷偷削弱) {
+                addEffect.put(SkillType.偷偷削弱,this.effects.get(key));
+            } else if(key== SkillType.厌战) {
+                addEffect.put(SkillType.厌战,this.effects.get(key));
             }
-            if(key== SkillType.偷偷削弱)
-            {
-                addEffect2 = this.effects.get(key);
-            }
-            if(key== SkillType.厌战)
-            {
-                addEffect3 = this.effects.get(key);
-            }
-
         }
         this.effects.clear();
-        if(addEffect.size()!=0)
-        {
-            this.effects.put(SkillType.拔刀术,addEffect);
-        }
-        if(addEffect2.size()!=0)
-        {
-            this.effects.put(SkillType.偷偷削弱,addEffect2);
-        }
-        if(addEffect3.size()!=0)
-        {
-            this.effects.put(SkillType.厌战,addEffect3);
-        }
+        this.effects = addEffect;
         this.setDeadOnce(false);
     }
 

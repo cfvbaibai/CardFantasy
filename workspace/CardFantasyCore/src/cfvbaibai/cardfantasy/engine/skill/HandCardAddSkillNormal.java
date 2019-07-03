@@ -21,7 +21,6 @@ public class HandCardAddSkillNormal {
         List<CardInfo> allHandCards = card.getOwner().getHand().toList();
         List<CardInfo> addCard=new ArrayList<CardInfo>();
         List<CardInfo> revivableCards = new ArrayList<CardInfo>();
-        SkillUseInfo thisSkillUserInfo= null;
         boolean flag = true;
         for (CardInfo handCard : allHandCards) {
 //            for(SkillUseInfo skillInfo:handCard.getSkillUserInfos())
@@ -53,6 +52,7 @@ public class HandCardAddSkillNormal {
             {
                 continue;
             }
+            SkillUseInfo thisSkillUserInfo= null;
             thisSkillUserInfo = new SkillUseInfo(once,cardSkill);
             thisSkillUserInfo.setGiveSkill(2);
             once.addSkill(thisSkillUserInfo);

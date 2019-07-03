@@ -10,6 +10,7 @@ import cfvbaibai.cardfantasy.data.PlayerInfo;
 import cfvbaibai.cardfantasy.data.Rune;
 import cfvbaibai.cardfantasy.data.Skill;
 import cfvbaibai.cardfantasy.data.SkillType;
+import cfvbaibai.cardfantasy.engine.skill.Petrifaction;
 
 public class BattleEngine {
 
@@ -219,7 +220,6 @@ public class BattleEngine {
             this.stage.getResolver().removeStatus(defenderCard, CardStatusType.魔族);//移除魔族buff
             this.stage.getResolver().removeGiveSkills(defenderCard);
         }
-        this.stage.getResolver().endOutField(this.getActivePlayer());
         Collection<CardInfo> allHandCards = this.stage.getAllHandCards();
         for (CardInfo card : allHandCards) {
             int summonDelay = card.getSummonDelay();
@@ -304,6 +304,7 @@ public class BattleEngine {
             if (status.containsStatus(CardStatusType.迷惑) ||
                     status.containsStatus(CardStatusType.冰冻) ||
                     status.containsStatus(CardStatusType.锁定) ||
+                    status.containsStatus(CardStatusType.石化) ||
                     status.containsStatus(CardStatusType.复活) ||
                     status.containsStatus(CardStatusType.晕眩)) {
                 underControl = true;
@@ -363,6 +364,9 @@ public class BattleEngine {
             resolver.removeStatus(myField.getCard(i), CardStatusType.虚化);
             resolver.removeStatus(myField.getCard(i), CardStatusType.链接);
             resolver.removeStatus(myField.getCard(i), CardStatusType.蛇影);
+
+            Petrifaction.reset(myField.getCard(i),1); //重置技能
+            resolver.removeStatus(myField.getCard(i), CardStatusType.石化);
             if (status.containsStatus(CardStatusType.变羊)) {
                 //变羊类技能恢复原状
                 List<CardStatusItem>  sheepStatus= status.getStatusOf(CardStatusType.变羊);
@@ -437,8 +441,13 @@ public class BattleEngine {
             if (myField.getCard(i)!=null&&(myField.getCard(i).containsUsableSkill(SkillType.连斩)||myField.getCard(i).containsUsableSkill(SkillType.原素裂变)
                     ||myField.getCard(i).containsUsableSkill(SkillType.死亡收割)||myField.getCard(i).containsUsableSkill(SkillType.连狙)
                     ||myField.getCard(i).containsUsableSkill(SkillType.战神))) {
+                int limitNumber = 0; //连斩在结算熊猫教父时会出现死循环，特殊处理限定连斩最多触发30次
                 boolean killCard = true;
                 for(;killCard;) {
+                    limitNumber++;
+                    if(limitNumber>30){
+                        break;
+                    }
                     killCard = randomAttackCard(myField, opField, i);
                     if (myField.getCard(i) == null || myField.getCard(i).isDead()){
                         killCard = false;
@@ -510,7 +519,8 @@ public class BattleEngine {
                     skillUseInfo.getType() == SkillType.英勇打击 ||
                     skillUseInfo.getType() == SkillType.死亡践踏 ||
                     skillUseInfo.getType() == SkillType.鬼彻 ||
-                    skillUseInfo.getType() == SkillType.毒杀) {
+                    skillUseInfo.getType() == SkillType.毒杀 ||
+                    skillUseInfo.getType() == SkillType.狂性) {
                 ui.useSkill(myField.getCard(i), defender, skillUseInfo.getSkill(), true);
             }
             else if (skillUseInfo.getType() == SkillType.一文字 || skillUseInfo.getType() == SkillType.页游横扫千军
@@ -552,7 +562,8 @@ public class BattleEngine {
                         skillUseInfo.getType() == SkillType.鬼彻 ||
                         skillUseInfo.getType() == SkillType.灵击 ||
                         skillUseInfo.getType() == SkillType.死亡践踏 ||
-                        skillUseInfo.getType() == SkillType.毒杀) {
+                        skillUseInfo.getType() == SkillType.毒杀 ||
+                        skillUseInfo.getType() == SkillType.狂性) {
                     List<CardInfo> sweepDefenders = new ArrayList<CardInfo>();
                     if (i > 0 && opField.getCard(i - 1) != null) {
                         sweepDefenders.add(opField.getCard(i - 1));
@@ -602,10 +613,11 @@ public class BattleEngine {
                         || skillUseInfo.getType() == SkillType.醉生梦死) {
                     for (CardInfo sweepDefender : opField.getAliveCards()) {
                         //一文字可以攻击自己。
-//                        if(sweepDefender == opField.getCard(i))
-//                        {
-//                            continue;
-//                        }
+                        //开放一文字不会再攻击自己（19.4.22）
+                        if(sweepDefender == opField.getCard(i))
+                        {
+                            continue;
+                        }
                         if(!sweepDefender.isAlive())
                         {
                             continue;
@@ -702,7 +714,8 @@ public class BattleEngine {
             for (CardInfo card : opField.getAliveCards()) {
                 if(card.containsUsableSkill(SkillType.嘲讽)||card.containsUsableSkill(SkillType.酒池肉林)
                         ||card.containsUsableSkill(SkillType.喵喵喵)||card.containsUsableSkill(SkillType.蔑视)
-                        ||card.containsUsableSkill(SkillType.龙之守护)||card.containsUsableSkill(SkillType.守护之翼))
+                        ||card.containsUsableSkill(SkillType.龙之守护)||card.containsUsableSkill(SkillType.守护之翼)
+                        ||card.containsUsableSkill(SkillType.百里))
                 {
                     if(!card.getStatus().containsStatus(CardStatusType.不屈)){
                         return card;

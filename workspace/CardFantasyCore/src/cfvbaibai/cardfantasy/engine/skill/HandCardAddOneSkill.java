@@ -24,7 +24,6 @@ public class HandCardAddOneSkill {
         List<CardInfo> allHandCards = card.getOwner().getHand().toList();
         CardInfo oneCard = null;
         List<CardInfo> addCard = new ArrayList<CardInfo>();
-        SkillUseInfo thisSkillUserInfo= null;
         boolean flag = true;
         for (CardInfo ally : allHandCards) {
 //            for(SkillUseInfo skillInfo:ally.getSkillUserInfos())
@@ -55,6 +54,7 @@ public class HandCardAddOneSkill {
             if (once.containsUsableSkill(cardSkill.getType())){
                 continue;
             }
+            SkillUseInfo thisSkillUserInfo= null;
             thisSkillUserInfo = new SkillUseInfo(once,cardSkill);
             thisSkillUserInfo.setGiveSkill(2);
             once.addSkill(thisSkillUserInfo);

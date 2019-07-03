@@ -120,8 +120,16 @@ public class CardStatusItem {
         return new CardStatusItem(CardStatusType.死咒, 0, cause);
     }
 
+    public static CardStatusItem lunarEclipse(SkillUseInfo cause) {
+        return new CardStatusItem(CardStatusType.蚀月, 0, cause);
+    }
+
     public static CardStatusItem snakeShadow(SkillUseInfo cause) {
         return new CardStatusItem(CardStatusType.蛇影, 0, cause);
+    }
+
+    public static CardStatusItem petrifaction(SkillUseInfo cause) {
+        return new CardStatusItem(CardStatusType.石化, 0, cause);
     }
 
 
@@ -137,23 +145,23 @@ public class CardStatusItem {
         return new CardStatusItem(CardStatusType.祭奠, 0, cause);
     }
 
-    public static CardStatusItem SoulWound(SkillUseInfo cause) {
+    public static CardStatusItem soulWound(SkillUseInfo cause) {
         return new CardStatusItem(CardStatusType.魂殇, 0, cause);
     }
 
-    public static CardStatusItem Asthenia(SkillUseInfo cause) {
+    public static CardStatusItem asthenia(SkillUseInfo cause) {
         return new CardStatusItem(CardStatusType.虚化, 0, cause);
     }
 
-    public static CardStatusItem SoulLink(SkillUseInfo cause) {
+    public static CardStatusItem soulLink(SkillUseInfo cause) {
         return new CardStatusItem(CardStatusType.链接, 0, cause);
     }
 
-    public static CardStatusItem YellowSky(SkillUseInfo cause) {
+    public static CardStatusItem yellowSky(SkillUseInfo cause) {
         return new CardStatusItem(CardStatusType.黄天, 0, cause);
     }
 
-    public static CardStatusItem Grudge(int effect,SkillUseInfo cause) {
+    public static CardStatusItem grudge(int effect,SkillUseInfo cause) {
         return new CardStatusItem(CardStatusType.咒怨, effect, cause);
     }
 

@@ -57,6 +57,7 @@ public class ReformingAwaken {
         } else {
             //处理顽强司命情况下，卡牌已经回到场上，不需要再次结算降临技能。
             if (card.isAlive()) {
+                card.setUsed(skillUseInfo);
                 return;
             }
             //强制移除卡牌，防止新生以后出现卡牌复制。

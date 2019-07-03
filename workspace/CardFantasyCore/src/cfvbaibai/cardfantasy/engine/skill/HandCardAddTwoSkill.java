@@ -25,7 +25,6 @@ public class HandCardAddTwoSkill {
         CardInfo oneCard = null;
         CardInfo twoCard = null;
         List<CardInfo> addCard = new ArrayList<CardInfo>();
-        SkillUseInfo thisSkillUserInfo= null;
         boolean flag = true;
         for (CardInfo ally : allHandCards) {
 //            for(SkillUseInfo skillInfo:ally.getSkillUserInfos())
@@ -64,12 +63,13 @@ public class HandCardAddTwoSkill {
             addCard.add(twoCard);
         }
         for (CardInfo once : addCard) {
-            if (once.containsAllUsableSkillsWithTag(SkillTag.抗沉默)&&addSkill.getType().containsTag(SkillTag.抗沉默)) {
-                continue;
-            }
+//            if (once.containsAllUsableSkillsWithTag(SkillTag.抗沉默)&&addSkill.getType().containsTag(SkillTag.抗沉默)) {
+//                continue;
+//            }
             if (once.containsUsableSkill(cardSkill.getType())){
                 continue;
             }
+            SkillUseInfo thisSkillUserInfo= null;
             thisSkillUserInfo = new SkillUseInfo(once,cardSkill);
             thisSkillUserInfo.setGiveSkill(2);
             once.addSkill(thisSkillUserInfo);

@@ -11,7 +11,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class SoulChains {
-    public static void apply(SkillResolver resolver, SkillUseInfo skillUseInfo, CardInfo attackCard, Player defenderHero,int victimCount,int effectNumber) throws HeroDieSignal {
+    public static void apply(SkillResolver resolver, SkillUseInfo skillUseInfo, EntityInfo attacker, Player defenderHero,int victimCount,int effectNumber) throws HeroDieSignal {
 
         StageInfo stage = resolver.getStage();
         Randomizer random = stage.getRandomizer();
@@ -21,11 +21,11 @@ public class SoulChains {
         }
         GameUI ui = resolver.getStage().getUI();
         Skill skill = skillUseInfo.getSkill();
-        ui.useSkill(attackCard, victims, skill, true);
-        CardStatusItem statusItem = CardStatusItem.SoulWound(skillUseInfo);
+        ui.useSkill(attacker, victims, skill, true);
+        CardStatusItem statusItem = CardStatusItem.soulWound(skillUseInfo);
         statusItem.setEffectNumber(effectNumber);
         for (CardInfo victim : victims) {
-            if (!resolver.resolveAttackBlockingSkills(attackCard, victim, skill, 1).isAttackable()) {
+            if (!resolver.resolveAttackBlockingSkills(attacker, victim, skill, 1).isAttackable()) {
                 continue;
             }
             if(effectNumber>0)
@@ -34,7 +34,7 @@ public class SoulChains {
                     victim.removeForce(CardStatusType.魂殇);
                 }
             }
-            ui.addCardStatus(attackCard, victim, skill, statusItem);
+            ui.addCardStatus(attacker, victim, skill, statusItem);
             victim.addStatus(statusItem);
         }
     }

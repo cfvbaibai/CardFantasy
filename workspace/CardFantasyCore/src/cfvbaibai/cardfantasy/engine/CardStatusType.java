@@ -23,6 +23,7 @@ public enum CardStatusType {
     献祭(false, "祭"),
     炼成(false, "炼"),
     魂殇(false, "殇"),
+    蚀月(false, "蚀"),
     黄天(false, "黄"),
     祭奠(false, "奠"),
     离魂(false, "离"),
@@ -34,7 +35,8 @@ public enum CardStatusType {
     蛮荒(false, "蛮"),
     地狱(false, "地"),
     魔族(false, "族"),
-    蛇影(false, "蛇");
+    蛇影(false, "蛇"),
+    石化(false, "石");
     
 
     private boolean quantitive;

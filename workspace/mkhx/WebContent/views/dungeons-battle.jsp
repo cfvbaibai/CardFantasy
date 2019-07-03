@@ -37,6 +37,18 @@
                                         <option value="d-24">子桓君主关111</option>
                                         <option value="d-25">单四神关111</option>
                                         <option value="d-26">双四神关111</option>
+                                        <option value="d-27">月光妖兽关121</option>
+                                        <option value="d-28">幻影凤凰关121</option>
+                                        <option value="d-29">满地孙猴关121(s)</option>
+                                        <option value="d-30"> 满地孙猴关121（n）</option>
+                                        <option value="d-31"> 烈火南华关121</option>
+                                        <option value="d-32">秘术投影关121</option>
+                                        <option value="d-33">泳池派对关121</option>
+                                        <option value="d-34">魔法季关121</option>
+                                        <option value="d-35">坚韧九霄关121</option>
+                                        <option value="d-36">日本妖怪关121</option>
+                                        <option value="d-37">中国妖怪关121(s)</option>
+                                        <option value="d-38">中国妖怪关121(n)</option>
                                     </optgroup>
                                     <optgroup label="噩梦1图">
                                         <option value="1-1">1-1 森林入口</option>
@@ -127,6 +139,16 @@
                                     <option value="118">地下城118层</option>
                                     <option value="119">地下城119层</option>
                                     <option value="120">地下城120层</option>
+                                    <option value="121">地下城121层</option>
+                                    <option value="122">地下城122层</option>
+                                    <option value="123">地下城123层</option>
+                                    <option value="124">地下城124层</option>
+                                    <option value="125">地下城125层</option>
+                                    <option value="126">地下城126层</option>
+                                    <option value="127">地下城127层</option>
+                                    <option value="128">地下城128层</option>
+                                    <option value="129">地下城129层</option>
+                                    <option value="130">地下城130层</option>
                                 </select>
                             </td>
                         </tr>

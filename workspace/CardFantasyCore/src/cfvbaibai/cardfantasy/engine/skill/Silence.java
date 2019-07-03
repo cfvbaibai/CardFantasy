@@ -49,31 +49,6 @@ public class Silence {
             if (!resolver.resolveAttackBlockingSkills(caster, victim, skill, 1).isAttackable()) {
                 continue;
             }
-            int magicEchoSkillResult = resolver.resolveMagicEchoSkill(caster, victim, skill);
-            if (magicEchoSkillResult==1||magicEchoSkillResult==2) {
-                if(caster instanceof CardInfo)
-                {
-                    CardInfo casterCard = (CardInfo) caster;
-                    if(casterCard.isDead())
-                    {
-                        if (magicEchoSkillResult == 1) {
-                            continue;
-                        }
-                    }
-                    else if (!resolver.resolveAttackBlockingSkills(victim, casterCard, skill, 1).isAttackable()) {
-                        if (magicEchoSkillResult == 1) {
-                            continue;
-                        }
-                    }
-                    else {
-                        ui.addCardStatus(victim, casterCard, skill, statusItem);
-                        casterCard.addStatus(statusItem);
-                    }
-                }
-                if (magicEchoSkillResult == 1) {
-                    continue;
-                }
-            }
             ui.addCardStatus(caster, victim, skill, statusItem);
             victim.addStatus(statusItem);
         }

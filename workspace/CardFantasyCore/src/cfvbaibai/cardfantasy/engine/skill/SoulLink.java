@@ -20,7 +20,7 @@ public class SoulLink {
         GameUI ui = resolver.getStage().getUI();
         Skill skill = skillUseInfo.getSkill();
         ui.useSkill(attackCard, victims, skill, true);
-        CardStatusItem statusItem = CardStatusItem.SoulLink(skillUseInfo);
+        CardStatusItem statusItem = CardStatusItem.soulLink(skillUseInfo);
         statusItem.setEffectNumber(effectNumber);
         for (CardInfo victim : victims) {
             if (!resolver.resolveAttackBlockingSkills(attackCard, victim, skill, 1).isAttackable()) {

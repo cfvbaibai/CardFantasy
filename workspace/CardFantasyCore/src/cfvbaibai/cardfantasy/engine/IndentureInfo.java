@@ -38,8 +38,10 @@ public class IndentureInfo extends EntityInfo {
     }
 
     public String getShortDesc() {
-        return String.format("【%s%d-%s%d-%s%d】", this.indenture.getName(), this.indenture.getLevel(), this.cardInfo.getName(),
-                this.cardInfo.getLevel(), this.cardInfo.getExtraSkill().getName(),this.cardInfo.getExtraSkill().getLevel());
+//        return String.format("【%s%d-%s%d-%s%d】", this.indenture.getName(), this.indenture.getLevel(), this.cardInfo.getName(),
+//                this.cardInfo.getLevel(), this.cardInfo.getExtraSkill().getName(),this.cardInfo.getExtraSkill().getLevel());
+        return String.format("【%s%d-%s%d】", this.indenture.getName(), this.indenture.getLevel(), this.cardInfo.getName(),
+                this.cardInfo.getLevel());
     }
 
     public boolean is(IndentureData data) {

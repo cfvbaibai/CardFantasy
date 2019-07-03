@@ -22,7 +22,7 @@ public class SkeletonArmy {
         GameUI ui = resolver.getStage().getUI();
         Skill skill = skillUseInfo.getSkill();
         ui.useSkill(attackCard, victims, skill, true);
-        CardStatusItem statusItem = CardStatusItem.YellowSky(skillUseInfo);
+        CardStatusItem statusItem = CardStatusItem.yellowSky(skillUseInfo);
         statusItem.setEffectNumber(effectNumber);
         for (CardInfo victim : victims) {
             if (victim.getOriginalOwner() != null && victim.getOriginalOwner() != victim.getOwner()) {
